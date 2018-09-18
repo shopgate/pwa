@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Image from '@shopgate/pwa-common/components/Image';
-import Placeholder from 'Components/icons/PlaceholderIcon';
+import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
+import colors from 'Styles/colors';
 import styles from './style';
 
 /**
@@ -61,10 +62,6 @@ class ProductImage extends Component {
     };
   }
 
-  state = {
-    showPlaceholder: false,
-  };
-
   /**
    * Called when the component props change.
    * @param {Object} nextProps The new component properties
@@ -103,8 +100,8 @@ class ProductImage extends Component {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={styles.placeholderContainer}>
-          <div className={styles.placeholderContent}>
+        <div className={styles.placeholderContainer} >
+          <div className={styles.placeholderContent} data-test-id="placeHolder">
             <Placeholder className={styles.placeholder} />
           </div>
         </div>
@@ -113,7 +110,11 @@ class ProductImage extends Component {
 
     // Return the actual image.
     return (
-      <Image {...this.props} onError={this.imageLoadingFailed} />
+      <Image
+        {...this.props}
+        backgroundColor={colors.light}
+        onError={this.imageLoadingFailed}
+      />
     );
   }
 }

@@ -18,6 +18,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     }
     controls={false}
     disabled={false}
+    historyPath=""
     indicators={true}
     initialSlide={0}
     interval={3000}
@@ -29,6 +30,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
   >
     <div
       className="css-1allyey"
+      data-test-id="liveShoppingWidget"
       key="1234"
     >
       <Card
@@ -36,6 +38,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323334"
         >
           <Grid
@@ -127,6 +130,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     </div>
     <div
       className="css-1allyey"
+      data-test-id="liveShoppingWidget"
       key="1235"
     >
       <Card
@@ -134,6 +138,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323335"
         >
           <Grid
@@ -243,6 +248,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     }
     controls={false}
     disabled={false}
+    historyPath=""
     indicators={true}
     initialSlide={0}
     interval={3000}
@@ -254,6 +260,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
   >
     <div
       className="css-1allyey"
+      data-test-id="liveShoppingWidget"
       key="1234"
     >
       <Card
@@ -261,6 +268,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323334"
         >
           <Grid

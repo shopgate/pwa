@@ -24,7 +24,6 @@ class FilterBar extends Component {
   /**
    * Constructs a new component instance.
    * @param {Object} props The component properties.
-   * @param {Object} context The component context.
    */
   constructor(props) {
     super(props);
@@ -261,7 +260,7 @@ class FilterBar extends Component {
 
     return (
       <div>
-        <div ref={this.setRef} className={classes.join(' ')} style={this.wrapperStyle}>
+        <div ref={this.setRef} className={classes.join(' ')} style={this.wrapperStyle} data-test-id="filterBar">
           <Content componentUpdated={this.setSpacerHeight} />
         </div>
         <div style={{ height: this.state.spacerHeight }} />

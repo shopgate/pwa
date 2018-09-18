@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import {
   mockedStateWithTwoReviews,
   mockedStateWithoutReview,
@@ -11,8 +12,9 @@ import Rating from './index';
 import { getElementById } from './mock';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  hasReviews: true,
-  showWriteReview: true,
+  get hasReviews() { return true; },
+  get showWriteReview() { return true; },
+  themeConfig: mockedConfig,
 }));
 
 describe('Rating (product header)', () => {

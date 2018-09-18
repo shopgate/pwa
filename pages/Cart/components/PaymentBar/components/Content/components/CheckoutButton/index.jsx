@@ -2,22 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import RippleButton from 'Components/RippleButton';
+import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';
+import styles from './style';
 
 /**
  * The checkout button component.
- * @returns {JSX}
+ * @param {boolean} isActive Should the button shown as active.
+ * @return {JSX}
  */
 const CheckoutButton = ({ isActive }) => (
-  <Link href={CHECKOUT_PATH}>
+  <Link href={CHECKOUT_PATH} disabled={!isActive}>
     <RippleButton
       disabled={!isActive}
-      flat={false}
-      type="secondary"
+      type="regular"
+      className={isActive ? styles.button : styles.disabledButton}
     >
-      <I18n.Text string="cart.checkout"/>
+      <I18n.Text string="cart.checkout" />
     </RippleButton>
   </Link>
 );

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Ripple from 'Components/Ripple';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
 import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
-import GridIcon from 'Components/icons/GridIcon';
-import ListIcon from 'Components/icons/ListIcon';
+import GridIcon from '@shopgate/pwa-ui-shared/icons/GridIcon';
+import ListIcon from '@shopgate/pwa-ui-shared/icons/ListIcon';
 import connect from './connector';
 import styles from './style';
 
@@ -16,6 +16,7 @@ const ViewSwitch = ({ toggleViewMode, viewMode }) => (
   <button
     className={styles.button}
     onClick={() => toggleViewMode(viewMode === GRID_VIEW ? LIST_VIEW : GRID_VIEW)}
+    data-test-id="viewSwitch"
   >
     <Ripple className={styles.ripple} overflow>
       {viewMode === GRID_VIEW &&

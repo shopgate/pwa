@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import PlaceholderParagraph from 'Components/PlaceholderParagraph';
+import PlaceholderParagraph from '@shopgate/pwa-ui-shared/PlaceholderParagraph';
 import connect from './connector';
 import styles from './style';
 
@@ -22,7 +22,7 @@ const Description = ({ html }) => {
         <I18n.Text string="product.description_heading" />
       </div>
       <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
-        <div className={styles.content}>
+        <div className={styles.content} data-test-id={html}>
           <HtmlSanitizer settings={{ html }}>
             {html}
           </HtmlSanitizer>

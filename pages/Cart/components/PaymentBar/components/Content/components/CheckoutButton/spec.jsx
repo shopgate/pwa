@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RippleButton from 'Components/RippleButton';
+import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import CheckoutButton from './index';
 
 // Mock the history connector
@@ -19,17 +19,17 @@ describe('<CheckoutButton />', () => {
   jest.useFakeTimers();
 
   let wrapper;
-  let childButton;
+  let childLink;
 
   describe('Checkout is possible', () => {
     beforeEach(() => {
       wrapper = shallow(<CheckoutButton />);
-      childButton = wrapper.find(RippleButton);
+      childLink = wrapper.find(Link);
     });
 
     it('should render without any props', () => {
       expect(wrapper).toMatchSnapshot();
-      expect(childButton.props().disabled).toBe(true);
+      expect(childLink.props().disabled).toBe(true);
     });
   });
 });

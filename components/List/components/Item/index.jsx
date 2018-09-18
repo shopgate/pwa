@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import Glow from 'Components/Glow';
+import Glow from '@shopgate/pwa-ui-shared/Glow';
 import styles from './style';
 
 /**
@@ -18,6 +18,7 @@ class Item extends Component {
     link: PropTypes.string,
     onClick: PropTypes.func,
     rightComponent: PropTypes.element,
+    testId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -28,6 +29,7 @@ class Item extends Component {
     link: null,
     onClick: null,
     rightComponent: null,
+    testId: null,
   };
 
   /**
@@ -47,7 +49,9 @@ class Item extends Component {
    * @returns {JSX}
    */
   renderContent() {
-    const { isDisabled, isSelected, title } = this.props;
+    const {
+      isDisabled, isSelected, title,
+    } = this.props;
 
     let gridStyles = styles.grid;
     let titleStyles = styles.title;
@@ -62,9 +66,11 @@ class Item extends Component {
 
     return (
       <Grid className={gridStyles} component="div">
-        <div className={styles.image}>
-          {this.props.image}
-        </div>
+        {this.props.image && (
+          <div className={styles.image}>
+            {this.props.image}
+          </div>
+        )}
         <Grid.Item
           className={titleStyles}
           component="div"
@@ -109,7 +115,7 @@ class Item extends Component {
     }
 
     return (
-      <div aria-hidden onClick={this.props.onClick}>
+      <div aria-hidden onClick={this.props.onClick} data-test-id={this.props.testId}>
         <Glow className={this.props.className}>
           {this.renderContent()}
         </Glow>

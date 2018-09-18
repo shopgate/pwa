@@ -1,16 +1,19 @@
 import { connect } from 'react-redux';
 import addToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { isBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { isBaseProduct, isOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { MODAL_VARIANT_SELECT } from 'Components/Dialog/constants';
+import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
 
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props Props
+ * @param {string} props.productId Id of the product
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  isBaseProduct: productId => isBaseProduct(state, productId),
+const mapStateToProps = (state, { productId }) => ({
+  isBaseProduct: isBaseProduct(state, productId),
+  isOrderable: isOrderable(state, productId),
 });
 
 /**

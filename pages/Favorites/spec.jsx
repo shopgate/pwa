@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import {
   mockedState,
   mockedEmptyState,
@@ -19,7 +20,8 @@ jest.mock('@shopgate/pwa-common/actions/history/goBackHistory', () => () => ({
   type: 'goback',
 }));
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  hasFavorites: true,
+  get hasFavorites() { return true; },
+  themeConfig: mockedConfig,
 }));
 /**
  * Creates component

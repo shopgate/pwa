@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import { forgotPasswordUrl } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
+
+const { forgotPasswordUrl } = appConfig;
 
 /**
  * The ForgotPassword component.
@@ -23,7 +25,7 @@ const ForgotPassword = ({ showForgotPasswordPopup }) => {
   }
 
   return (
-    <div className={styles} onClick={showForgotPasswordPopup} aria-hidden>
+    <div className={styles} onClick={showForgotPasswordPopup} aria-hidden data-test-id="forgotPasswordButton">
       <I18n.Text string={forgotPasswordString} />
     </div>
   );

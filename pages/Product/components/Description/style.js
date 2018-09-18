@@ -16,6 +16,9 @@ const title = css({
 
 const content = css({
   lineHeight: 1.7,
+  overflow: 'hidden',
+  wordBreak: ['break-all', 'break-word'],
+  hyphens: 'auto',
   ' ul': {
     listStyle: 'disc',
   },
@@ -31,8 +34,7 @@ const content = css({
     margin: '-.35em',
     padding: '.35em',
     position: 'relative',
-    zIndex: 1,
-  }
+  },
 }).toString();
 
 const placeholder = css({

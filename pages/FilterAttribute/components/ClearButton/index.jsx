@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Button from 'Components/Button';
+import Button from '@shopgate/pwa-ui-shared/Button';
 import connect from './connector';
 import styles from './style';
 
@@ -10,13 +10,14 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ClearButton = ({ values, currentAttribute, removeTemporaryFilter }) => (
+const ClearButton = ({ disabled, currentAttribute, removeTemporaryFilter }) => (
   <div className={styles}>
     <Button
       flat
       type="regular"
       onClick={() => removeTemporaryFilter(currentAttribute.id)}
-      disabled={!values.length}
+      disabled={disabled}
+      testId="clearAllButton"
     >
       <I18n.Text string="filter.clear" />
     </Button>
@@ -25,13 +26,13 @@ const ClearButton = ({ values, currentAttribute, removeTemporaryFilter }) => (
 
 ClearButton.propTypes = {
   currentAttribute: PropTypes.shape().isRequired,
+  disabled: PropTypes.bool,
   removeTemporaryFilter: PropTypes.func,
-  values: PropTypes.arrayOf(PropTypes.string),
 };
 
 ClearButton.defaultProps = {
+  disabled: false,
   removeTemporaryFilter: () => {},
-  values: [],
 };
 
 export default connect(ClearButton);

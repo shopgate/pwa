@@ -34,6 +34,10 @@ const info = css({
   justifyContent: 'space-between',
 }).toString();
 
+const priceInfo = css({
+  textAlign: 'right',
+}).toString();
+
 const disclaimerSpacer = css({
   width: 10,
 }).toString();
@@ -45,4 +49,5 @@ export default {
   content,
   info,
   disclaimerSpacer,
+  priceInfo,
 };

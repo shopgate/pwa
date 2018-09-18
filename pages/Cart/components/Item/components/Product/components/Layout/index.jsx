@@ -5,7 +5,8 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import ProductImage from 'Components/ProductImage';
-import Properties from 'Components/ProductProperties';
+import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
+import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
@@ -50,6 +51,11 @@ const Layout = (props, context) => (
             defaultPrice={props.product.price.default}
             specialPrice={props.product.price.special}
           />
+          {
+            props.product.price.info && (
+              <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
+            )
+          }
         </Grid.Item>
         {showTaxDisclaimer && (
           <Grid.Item

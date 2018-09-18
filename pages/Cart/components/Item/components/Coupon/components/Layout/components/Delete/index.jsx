@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CrossIcon from 'Components/icons/CrossIcon';
+import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import styles from './style';
 
 /**
@@ -9,7 +9,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Delete = ({ handleDelete }) => (
-  <button className={styles} onClick={handleDelete}>
+  <button className={styles} onClick={handleDelete} data-test-id="deleteCoupon">
     <CrossIcon />
   </button>
 );

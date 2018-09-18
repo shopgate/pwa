@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
-import LoadingIndicator from 'Components/LoadingIndicator';
+import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import Iterator from './components/Iterator';
 import Layout from './components/Layout';
 
@@ -17,6 +17,7 @@ const ProductGrid = ({
   handleGetProducts,
   products,
   totalProductCount,
+  requestHash,
 }) => {
   if (!infiniteLoad) {
     return (
@@ -43,6 +44,7 @@ const ProductGrid = ({
       totalItems={totalProductCount}
       initialLimit={6}
       limit={ITEMS_PER_LOAD}
+      requestHash={requestHash}
     />
   );
 };
@@ -52,6 +54,7 @@ ProductGrid.propTypes = {
   handleGetProducts: PropTypes.func,
   infiniteLoad: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape()),
+  requestHash: PropTypes.string,
   totalProductCount: PropTypes.number,
 };
 
@@ -60,6 +63,7 @@ ProductGrid.defaultProps = {
   handleGetProducts: () => { },
   infiniteLoad: true,
   products: null,
+  requestHash: null,
   totalProductCount: null,
 };
 

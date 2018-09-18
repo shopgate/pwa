@@ -16,7 +16,7 @@ const CartItem = (props) => {
   }
 
   return (
-    <Item {...props} count={count} />
+    <Item {...props} count={count} testId="navDrawerCartButton" />
   );
 };
 

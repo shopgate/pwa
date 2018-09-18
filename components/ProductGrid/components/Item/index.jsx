@@ -1,18 +1,15 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
+import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import ProductImage from 'Components/ProductImage';
-import DiscountBadge from 'Components/DiscountBadge';
-import Price from 'Components/Price';
-import PriceStriked from 'Components/PriceStriked';
-import PriceInfo from 'Components/PriceInfo';
-import FavoritesButton from 'Components/FavoritesButton';
+import ProductGridPrice from 'Components/ProductGridPrice';
 import styles from './style';
 import connect from './connector';
 
@@ -52,7 +49,7 @@ const Item = ({ product, display, isFavorite }) => (
     {/* FAVORITES BUTTONS */}
     <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={{ productId: product.id }} />
     <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON} props={{ productId: product.id }}>
-      <div className={styles.favorites}>
+      <div className={styles.favorites} data-test-id="favorites">
         <FavoritesButton active={isFavorite} productId={product.id} noShadow removeWithRelatives />
       </div>
     </Portal>
@@ -66,7 +63,7 @@ const Item = ({ product, display, isFavorite }) => (
           <Fragment>
             <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
             <Portal name={portals.PRODUCT_ITEM_NAME} props={{ productId: product.id }}>
-              <div className={styles.title} itemProp="name">
+              <div className={styles.title} itemProp="name" data-test-id={`Productname: ${product.name}`}>
                 <Ellipsis>{product.name}</Ellipsis>
               </div>
             </Portal>
@@ -79,39 +76,7 @@ const Item = ({ product, display, isFavorite }) => (
           <Fragment>
             <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
             <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
-              <Grid className={styles.priceWrapper} wrap>
-                <Grid.Item grow={1}>
-                  <Price
-                    unitPrice={product.price.unitPrice}
-                    unitPriceMin={product.price.unitPriceMin}
-                    discounted={!!product.price.discount}
-                    currency={product.price.currency}
-                  />
-                </Grid.Item>
-                {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
-                  <Grid.Item>
-                    <PriceStriked
-                      value={product.price.msrp}
-                      currency={product.price.currency}
-                    />
-                  </Grid.Item>
-                )}
-                {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
-                  <Grid.Item>
-                    <PriceStriked
-                      value={product.price.unitPriceStriked}
-                      currency={product.price.currency}
-                    />
-                  </Grid.Item>
-                )}
-              </Grid>
-              <Grid>
-                {product.price.info && (
-                  <Grid.Item>
-                    <PriceInfo className={styles.basicPrice} text={product.price.info} />
-                  </Grid.Item>
-                )}
-              </Grid>
+              <ProductGridPrice price={product.price} />
             </Portal>
             <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
           </Fragment>

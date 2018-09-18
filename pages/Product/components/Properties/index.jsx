@@ -20,7 +20,7 @@ const Properties = ({ properties }) => {
           {properties.map(({ label, value }) => (
             <tr key={label}>
               <td className={styles.cell}>{label}</td>
-              <td className={styles.cell}>{value}</td>
+              <td className={styles.cell} data-test-id={`property: ${value}`}>{value}</td>
             </tr>
           ))}
         </tbody>
