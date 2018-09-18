@@ -4,7 +4,10 @@ import { isEqual } from 'lodash';
 import { logger } from '@shopgate/pwa-core/helpers';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Form from '@shopgate/pwa-ui-shared/Form';
-import * as portals from '@shopgate/user/constants/Portals';
+import {
+  BEFORE,
+  AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import ActionListener from './classes/ActionListener';
 import {
   ELEMENT_TYPE_EMAIL,
@@ -341,13 +344,13 @@ class Builder extends Component {
             {this.formElements.map(element => (
               <Fragment key={`${this.props.name}.${element.id}`}>
                 <Portal
-                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${portals.BEFORE}`}
+                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
                 />
                 <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
                   { this.renderElement(element) }
                 </Portal>
                 <Portal
-                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${portals.AFTER}`}
+                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}
                 />
               </Fragment>
             ))}

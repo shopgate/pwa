@@ -68,12 +68,11 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
     </Underline>
     <ErrorText
       className={null}
-      error={null}
       errorText=""
       translate={true}
     >
       <div
-        className="css-hmgfge"
+        className=""
       >
         <Translate
           className=""
@@ -153,12 +152,11 @@ exports[`<FormElement /> should render a focused form element 1`] = `
     </Underline>
     <ErrorText
       className={null}
-      error={null}
       errorText=""
       translate={true}
     >
       <div
-        className="css-hmgfge"
+        className=""
       >
         <Translate
           className=""
@@ -242,12 +240,11 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
     </Underline>
     <ErrorText
       className={null}
-      error={null}
       errorText=""
       translate={true}
     >
       <div
-        className="css-hmgfge"
+        className=""
       >
         <Translate
           className=""
@@ -328,12 +325,11 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
     </Underline>
     <ErrorText
       className={null}
-      error={null}
       errorText=""
       translate={true}
     >
       <div
-        className="css-hmgfge"
+        className=""
       >
         <Translate
           className=""
@@ -413,12 +409,11 @@ exports[`<FormElement /> should show the error message 1`] = `
     </Underline>
     <ErrorText
       className={null}
-      error={null}
       errorText="The error text"
       translate={true}
     >
       <div
-        className="css-hmgfge"
+        className=""
       >
         <Translate
           className=""
@@ -511,12 +506,11 @@ exports[`<FormElement /> should show the label 1`] = `
     </Underline>
     <ErrorText
       className={null}
-      error={null}
       errorText=""
       translate={true}
     >
       <div
-        className="css-hmgfge"
+        className=""
       >
         <Translate
           className=""
@@ -603,12 +597,11 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
     </Underline>
     <ErrorText
       className={null}
-      error={null}
       errorText=""
       translate={true}
     >
       <div
-        className="css-hmgfge"
+        className=""
       >
         <Translate
           className=""

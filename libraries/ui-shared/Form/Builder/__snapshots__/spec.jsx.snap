@@ -112,11 +112,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -360,11 +356,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -566,11 +558,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -814,11 +802,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -1140,11 +1124,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -1333,11 +1313,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -1588,11 +1564,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -1799,11 +1771,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -2054,11 +2022,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label
@@ -2265,11 +2229,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </Hint>
                 <Label

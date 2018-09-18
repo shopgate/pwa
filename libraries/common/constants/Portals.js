@@ -28,9 +28,9 @@ const LOGOUT = 'logout';
 const CONTAINER = 'container';
 
 // POSITIONS
-const BEFORE = 'before';
-const AFTER = 'after';
-const CENTER = 'center';
+export const BEFORE = 'before';
+export const AFTER = 'after';
+export const CENTER = 'center';
 
 export const APP_GLOBALS = `${APP}.${GLOBALS}`;
 export const APP_ROUTES = `${APP}.${ROUTES}`;
