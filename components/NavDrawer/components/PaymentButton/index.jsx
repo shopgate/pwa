@@ -26,6 +26,7 @@ const PaymentButton = ({ navigate }) => (
         label={LABEL}
         icon={CreditCardIcon}
         onClick={navigate(PAYMENT_PATH, LABEL)}
+        testId="navDrawerPaymentButton"
       />
     </Portal>
     <Portal name={NAV_MENU_PAYMENT_AFTER} />

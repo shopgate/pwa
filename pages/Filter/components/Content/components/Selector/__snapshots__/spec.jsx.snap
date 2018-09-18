@@ -4,6 +4,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
 <FilterContentItem>
   <Accordion
     renderLabel={[Function]}
+    testId="foo"
   >
     <div
       className={

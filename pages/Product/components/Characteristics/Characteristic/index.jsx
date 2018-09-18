@@ -111,6 +111,7 @@ class Characteristic extends PureComponent {
         onClick={this.handleButtonClick}
         ref={charRef}
         style={transition[state]}
+        data-test-id={label}
       >
         {selected && <div className={styles.label}>{label}</div>}
         <div className={styles.selection}>{buttonLabel}</div>

@@ -26,6 +26,7 @@ const LogoutButton = ({ loggedIn, logout }) => (
           label="navigation.logout"
           icon={LogoutIcon}
           onClick={logout}
+          testId="navDrawerLogOutButton"
         />
       </Portal>
       <Portal name={NAV_MENU_LOGOUT_AFTER} />

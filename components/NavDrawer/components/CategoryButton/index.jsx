@@ -25,6 +25,7 @@ const CategoryButton = ({ navigate }) => (
         label={LABEL}
         icon={ViewListIcon}
         onClick={navigate(CATEGORY_PATH, LABEL)}
+        testId="navDrawerCategoriesButton"
       />
     </Portal>
     <Portal name={NAV_MENU_CATEGORIES_AFTER} />

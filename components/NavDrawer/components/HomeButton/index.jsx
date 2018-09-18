@@ -25,6 +25,7 @@ const HomeButton = ({ navigate }) => (
         label={LABEL}
         icon={HomeIcon}
         onClick={navigate(INDEX_PATH, LABEL)}
+        testId="navDrawerHomeButton"
       />
     </Portal>
     <Portal name={NAV_MENU_HOME_AFTER} />

@@ -27,6 +27,7 @@ const FavoritesButton = ({ navigate }) => (
         label={LABEL}
         icon={HeartIcon}
         onClick={navigate(FAVORITES_PATH, LABEL)}
+        testId="navDrawerFavoritesButton"
       />
     </Portal>
     <Portal name={NAV_MENU_FAVORITES_AFTER} />
