@@ -12,10 +12,10 @@
   "npmClientArgs": [
     "--no-optional"
   ],
-  "commands": {
+  "command": {
     "publish": {
       "access": "public",
-      "ignore": [
+      "ignoreChanges": [
         "ignored-file",
         "*.spec.*",
         "*.mock.*",

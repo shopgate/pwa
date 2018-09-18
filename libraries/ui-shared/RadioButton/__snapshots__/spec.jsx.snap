@@ -11,6 +11,7 @@ exports[`RadioButton should render selected RadioButton 1`] = `
         className="css-17u2540"
       />
     }
+    disabled={false}
     label={null}
     labelPosition="left"
     onCheck={[Function]}
@@ -65,6 +66,7 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
         className="css-17u2540"
       />
     }
+    disabled={false}
     label={null}
     labelPosition="left"
     onCheck={[Function]}

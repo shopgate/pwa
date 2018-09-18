@@ -5,6 +5,7 @@ exports[`<TextField /> should focus the input 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -14,11 +15,12 @@ exports[`<TextField /> should focus the input 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -54,6 +56,7 @@ exports[`<TextField /> should focus the input 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -68,6 +71,7 @@ exports[`<TextField /> should focus the input 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -86,6 +90,7 @@ exports[`<TextField /> should focus the input 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -135,6 +140,7 @@ exports[`<TextField /> should focus the input 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -156,6 +162,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -165,11 +172,12 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -205,6 +213,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -219,6 +228,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -237,6 +247,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -286,6 +297,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -307,6 +319,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -316,11 +329,12 @@ exports[`<TextField /> should render a simple text field 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -356,6 +370,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -370,6 +385,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -388,6 +404,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -437,6 +454,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -458,6 +476,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -467,11 +486,12 @@ exports[`<TextField /> should render the text field as password 1`] = `
   onValidate={[Function]}
   password={true}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -507,6 +527,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -521,6 +542,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -539,6 +561,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -588,6 +611,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -609,6 +633,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -618,11 +643,12 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value="FooBar"
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -658,6 +684,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -672,6 +699,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -690,6 +718,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -739,6 +768,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -760,6 +790,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -769,11 +800,12 @@ exports[`<TextField /> should replace the error text with custom validation erro
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -809,6 +841,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -823,6 +856,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -841,6 +875,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -889,6 +924,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError="Custom validation error"
     >
       <div
@@ -916,6 +952,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -925,11 +962,12 @@ exports[`<TextField /> should sanitize the input 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -965,6 +1003,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -979,6 +1018,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -997,6 +1037,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1046,6 +1087,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -1067,6 +1109,7 @@ exports[`<TextField /> should show the error message 1`] = `
   className=""
   errorText="This is an error here"
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -1076,11 +1119,12 @@ exports[`<TextField /> should show the error message 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -1116,6 +1160,7 @@ exports[`<TextField /> should show the error message 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -1130,6 +1175,7 @@ exports[`<TextField /> should show the error message 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -1148,6 +1194,7 @@ exports[`<TextField /> should show the error message 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1196,6 +1243,7 @@ exports[`<TextField /> should show the error message 1`] = `
     <ErrorText
       className=""
       errorText="This is an error here"
+      translate={true}
       validationError={null}
     >
       <div
@@ -1223,6 +1271,7 @@ exports[`<TextField /> should show the hint text 1`] = `
   className=""
   errorText=""
   hintText="This is the hint text"
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -1232,11 +1281,12 @@ exports[`<TextField /> should show the hint text 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText="This is the hint text"
@@ -1278,6 +1328,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -1292,6 +1343,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -1310,6 +1362,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1359,6 +1412,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -1380,6 +1434,7 @@ exports[`<TextField /> should show the label 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label="This is the label"
   multiLine={false}
   name="test-input"
@@ -1389,11 +1444,12 @@ exports[`<TextField /> should show the label 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -1435,6 +1491,7 @@ exports[`<TextField /> should show the label 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -1449,6 +1506,7 @@ exports[`<TextField /> should show the label 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -1467,6 +1525,7 @@ exports[`<TextField /> should show the label 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1516,6 +1575,7 @@ exports[`<TextField /> should show the label 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -1537,6 +1597,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -1567,11 +1628,12 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
   onValidate={[Function]}
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -1607,6 +1669,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -1621,6 +1684,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -1639,6 +1703,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1688,6 +1753,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div
@@ -1709,6 +1775,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   className=""
   errorText=""
   hintText=""
+  isControlled={false}
   label=""
   multiLine={false}
   name="test-input"
@@ -1732,11 +1799,12 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   }
   password={false}
   setRef={[Function]}
+  translateErrorText={true}
   type="text"
   value=""
 >
   <div
-    className="css-1vjh8yv "
+    className="css-e4z0u6 "
   >
     <Hint
       hintText=""
@@ -1772,6 +1840,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     </Label>
     <FormElement
       id="test-input"
+      isControlled={false}
       multiLine={false}
       name="test-input"
       onChange={[Function]}
@@ -1786,6 +1855,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       <Component
         className="css-keangt"
         id="test-input"
+        isControlled={false}
         multiLine={false}
         name="test-input"
         onChange={[Function]}
@@ -1804,6 +1874,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           className="css-keangt"
           disabled={false}
           id="test-input"
+          isControlled={false}
           multiLine={false}
           name="test-input"
           onChange={[Function]}
@@ -1853,6 +1924,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     <ErrorText
       className=""
       errorText=""
+      translate={true}
       validationError={null}
     >
       <div

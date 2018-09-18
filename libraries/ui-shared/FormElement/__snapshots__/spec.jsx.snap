@@ -4,11 +4,14 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
 <FormElement
   className=""
   errorText=""
+  hasPlaceholder={true}
+  hasUnderline={true}
   hasValue={true}
   htmlFor="test-input"
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -35,7 +38,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       label=""
     >
       <label
-        className="css-u7lqu6 css-16msjt6 css-1fekhao"
+        className="css-1nn9zl4 css-16msjt6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -67,9 +70,10 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       className={null}
       error={null}
       errorText=""
+      translate={true}
     >
       <div
-        className=""
+        className="css-hmgfge"
       >
         <Translate
           className=""
@@ -86,11 +90,14 @@ exports[`<FormElement /> should render a focused form element 1`] = `
 <FormElement
   className=""
   errorText=""
+  hasPlaceholder={true}
+  hasUnderline={true}
   hasValue={false}
   htmlFor="test-input"
   isFocused={true}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -117,7 +124,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       label=""
     >
       <label
-        className="css-u7lqu6 css-16msjt6 css-nil"
+        className="css-1nn9zl4 css-16msjt6 css-nil"
         htmlFor="test-input"
       >
         <Translate
@@ -148,9 +155,10 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       className={null}
       error={null}
       errorText=""
+      translate={true}
     >
       <div
-        className=""
+        className="css-hmgfge"
       >
         <Translate
           className=""
@@ -167,11 +175,14 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
 <FormElement
   className=""
   errorText=""
+  hasPlaceholder={true}
+  hasUnderline={true}
   hasValue={false}
   htmlFor="test-input"
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -198,7 +209,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       label=""
     >
       <label
-        className="css-u7lqu6 css-1fekhao"
+        className="css-1nn9zl4 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -233,9 +244,10 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       className={null}
       error={null}
       errorText=""
+      translate={true}
     >
       <div
-        className=""
+        className="css-hmgfge"
       >
         <Translate
           className=""
@@ -252,11 +264,14 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
 <FormElement
   className=""
   errorText=""
+  hasPlaceholder={true}
+  hasUnderline={true}
   hasValue={false}
   htmlFor="test-input"
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -283,7 +298,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       label=""
     >
       <label
-        className="css-u7lqu6 css-1fekhao"
+        className="css-1nn9zl4 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -315,9 +330,10 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       className={null}
       error={null}
       errorText=""
+      translate={true}
     >
       <div
-        className=""
+        className="css-hmgfge"
       >
         <Translate
           className=""
@@ -334,11 +350,14 @@ exports[`<FormElement /> should show the error message 1`] = `
 <FormElement
   className=""
   errorText="The error text"
+  hasPlaceholder={true}
+  hasUnderline={true}
   hasValue={false}
   htmlFor="test-input"
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -365,7 +384,7 @@ exports[`<FormElement /> should show the error message 1`] = `
       label=""
     >
       <label
-        className="css-u7lqu6 css-1fekhao"
+        className="css-1nn9zl4 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -396,9 +415,10 @@ exports[`<FormElement /> should show the error message 1`] = `
       className={null}
       error={null}
       errorText="The error text"
+      translate={true}
     >
       <div
-        className=""
+        className="css-hmgfge"
       >
         <Translate
           className=""
@@ -421,11 +441,14 @@ exports[`<FormElement /> should show the label 1`] = `
 <FormElement
   className=""
   errorText=""
+  hasPlaceholder={true}
+  hasUnderline={true}
   hasValue={false}
   htmlFor="test-input"
   isFocused={false}
   label="The label"
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -452,7 +475,7 @@ exports[`<FormElement /> should show the label 1`] = `
       label="The label"
     >
       <label
-        className="css-u7lqu6 css-1fekhao"
+        className="css-1nn9zl4 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -490,9 +513,10 @@ exports[`<FormElement /> should show the label 1`] = `
       className={null}
       error={null}
       errorText=""
+      translate={true}
     >
       <div
-        className=""
+        className="css-hmgfge"
       >
         <Translate
           className=""
@@ -509,11 +533,14 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
 <FormElement
   className=""
   errorText=""
+  hasPlaceholder={true}
+  hasUnderline={true}
   hasValue={false}
   htmlFor="test-input"
   isFocused={false}
   label=""
   placeholder="The placeholder"
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -546,7 +573,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       label=""
     >
       <label
-        className="css-u7lqu6 css-1fekhao"
+        className="css-1nn9zl4 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -578,9 +605,10 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       className={null}
       error={null}
       errorText=""
+      translate={true}
     >
       <div
-        className=""
+        className="css-hmgfge"
       >
         <Translate
           className=""

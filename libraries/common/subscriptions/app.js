@@ -55,6 +55,7 @@ export default function app(subscribe) {
       errorCodes.EACCESS,
       errorCodes.E999,
       errorCodes.ENOTFOUND,
+      errorCodes.EVALIDATION,
     ]);
 
     // Map the error events into the Observable streams.
