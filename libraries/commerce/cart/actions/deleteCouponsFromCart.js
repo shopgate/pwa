@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import deleteCoupons from '../action-creators/deleteCouponsFromCart';
@@ -16,11 +17,12 @@ const deleteCouponsFromCart = couponIds => (dispatch) => {
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_DELETE_COUPONS);
   request.setInput({ couponCodes: couponIds })
+    .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         dispatch(errorDeleteCouponsFromCart(couponIds, messages, requestsPending));
         return;
       }

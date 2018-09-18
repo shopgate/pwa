@@ -1,0 +1,394 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> should render select with 1 selected option 1`] = `
+<Select
+  className=""
+  errorText=""
+  isControlled={false}
+  label=""
+  name="test-name"
+  onChange={[Function]}
+  options={
+    Object {
+      "DE": "Germany",
+      "US": "United states",
+    }
+  }
+  placeholder=""
+  translateErrorText={true}
+  value="DE"
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={true}
+    htmlFor="test-name"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-name"
+        isFloating={true}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+          htmlFor="test-name"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <select
+        className="css-x8w2oy"
+        id="test-name"
+        name="test-name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        value="DE"
+      >
+        <option
+          key="test-name_DE"
+          value="DE"
+        >
+          Germany
+        </option>
+        <option
+          key="test-name_US"
+          value="US"
+        >
+          United states
+        </option>
+      </select>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</Select>
+`;
+
+exports[`<Select /> should render select with 2 options 1`] = `
+<Select
+  className=""
+  errorText=""
+  isControlled={false}
+  label=""
+  name="test-name"
+  onChange={[Function]}
+  options={
+    Object {
+      "DE": "Germany",
+      "US": "United states",
+    }
+  }
+  placeholder=""
+  translateErrorText={true}
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-name"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-name"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-name"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <select
+        className="css-x8w2oy"
+        id="test-name"
+        name="test-name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        value=""
+      >
+        <option
+          key="test-name_DE"
+          value="DE"
+        >
+          Germany
+        </option>
+        <option
+          key="test-name_US"
+          value="US"
+        >
+          United states
+        </option>
+      </select>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</Select>
+`;
+
+exports[`<Select /> should render select with no options 1`] = `
+<Select
+  className=""
+  errorText=""
+  isControlled={false}
+  label=""
+  name="test-name"
+  onChange={[Function]}
+  options={Object {}}
+  placeholder=""
+  translateErrorText={true}
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-name"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-name"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-name"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <select
+        className="css-x8w2oy"
+        id="test-name"
+        name="test-name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        value=""
+      />
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</Select>
+`;

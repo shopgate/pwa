@@ -58,8 +58,14 @@ const externalLink = (url) => {
  */
 const legacyLink = (options) => {
   if (options.url) {
+    let src = `sgapi:${options.url.substring(1)}`;
+    // Sgapi links must not end with slash.
+    if (src.endsWith('/')) {
+      src = src.slice(0, -1);
+    }
+
     openPage({
-      src: `sgapi:${options.url.substring(1)}`,
+      src,
       previewSrc: 'sgapi:page_preview',
       targetTab: options.targetTab,
       animated: false,

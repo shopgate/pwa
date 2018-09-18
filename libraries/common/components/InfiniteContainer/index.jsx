@@ -19,6 +19,7 @@ class InfiniteContainer extends Component {
     limit: PropTypes.number,
     loadingIndicator: PropTypes.node,
     preloadMultiplier: PropTypes.number,
+    requestHash: PropTypes.string,
     totalItems: PropTypes.number,
     wrapper: PropTypes.oneOfType([
       PropTypes.node,
@@ -31,6 +32,7 @@ class InfiniteContainer extends Component {
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
     preloadMultiplier: 2,
+    requestHash: null,
     totalItems: null,
     wrapper: 'div',
   };
@@ -74,8 +76,8 @@ class InfiniteContainer extends Component {
 
     // Initially request items if none received.
     if (!this.props.items.length) {
-      const [start, length] = this.state.offset;
-      this.props.loader(start, length);
+      const [start] = this.state.offset;
+      this.props.loader(start);
     }
 
     this.verifyAllDone();
@@ -86,6 +88,10 @@ class InfiniteContainer extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
+    if (nextProps.requestHash !== this.props.requestHash) {
+      this.resetComponent();
+    }
+
     if (this.receivedTotalItems(nextProps)) {
       // Trigger loading if totalItems are available
       this.handleLoading(true, nextProps);
@@ -115,8 +121,8 @@ class InfiniteContainer extends Component {
     if (!this.domScrollContainer) {
       this.domScrollContainer = getScrollParent(this.domElement);
 
-      // Make sure that there are still items left to be received.
-      if (this.needsToReceiveItems()) {
+      // Make sure that there are still items left to be received/rendered.
+      if (!this.allItemsAreRendered()) {
         this.bindEvents();
       }
     }
@@ -157,8 +163,8 @@ class InfiniteContainer extends Component {
    */
   needsToReceiveItems(props = this.props) {
     return (
-      props.items.length !== props.totalItems ||
       props.totalItems === null
+      || props.items.length < props.totalItems
     );
   }
 
@@ -193,9 +199,31 @@ class InfiniteContainer extends Component {
    */
   increaseOffset() {
     const [start, length] = this.state.offset;
+    let newOffset = start + length;
 
+    /**
+     * When items are cached, the initial limit can be "6".
+     * Then, new offset should be limited to the "normal" limit (30).
+     * Otherwise, with cached items, this component would skip the inital number of items
+     * when the cache is out.
+     */
+    if (start % this.props.limit) {
+      // Example: when 6, bump to 30, not 36.
+      newOffset = this.props.limit;
+    }
     this.setState({
-      offset: [start + length, this.props.limit],
+      offset: [newOffset, this.props.limit],
+    });
+  }
+
+  /**
+   * Resets the state and domScrollContainer.
+   */
+  resetComponent() {
+    this.domScrollContainer = null;
+    this.setState({
+      offset: [0, this.props.limit],
+      awaitingItems: true,
     });
   }
 
@@ -262,7 +290,7 @@ class InfiniteContainer extends Component {
         // We already rendered all received items but there are more available.
         // Therefore request new items.
         this.isLoading = true;
-        loader(start, length);
+        loader(start);
         // If necessary increase render offset for upcoming items.
         if (renderLength < items.length + length) {
           this.increaseOffset();

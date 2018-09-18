@@ -4,7 +4,10 @@ import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/v
 import logGroup from '../../helpers/logGroup';
 import * as appCommands from '../../constants/AppCommands';
 import BrowserConnector from '../BrowserConnector';
-
+import {
+  GET_PERMISSIONS_COMMAND_NAME,
+  REQUEST_PERMISSIONS_COMMAND_NAME,
+} from '../../constants/AppPermissions';
 /**
  * The app command class.
  */
@@ -23,6 +26,8 @@ class AppCommand {
       appCommands.COMMAND_SEND_PIPELINE_REQUEST,
       appCommands.COMMAND_SEND_HTTP_REQUEST,
       appCommands.COMMAND_GET_WEBSTORAGE_ENTRY,
+      GET_PERMISSIONS_COMMAND_NAME,
+      REQUEST_PERMISSIONS_COMMAND_NAME,
     ];
   }
 
@@ -88,7 +93,6 @@ class AppCommand {
 
   /**
    * Creates the command object which will be dispatched through the JavaScript bridge.
-   * @private
    * @return {Object|null}
    */
   buildCommand() {
@@ -104,7 +108,7 @@ class AppCommand {
    * Dispatches the command to the app.
    * The returned promise will not be rejected for now in error cases to avoid the necessity
    * of refactoring within existing code. But it resolves with FALSE in those cases.
-   * @param {Object} params The command params.
+   * @param {Object} [params] The command params.
    * @return {Promise<boolean>}
    */
   async dispatch(params) {

@@ -1,9 +1,9 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
-NPM_PACKAGES = commerce common core tracking tracking-core webcheckout
+NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
-UTILS = eslint-config unit-tests
+UTILS = eslint-config unit-tests e2e
 THEMES = gmd ios11
 REPO_VERSION = ''
 
@@ -26,16 +26,24 @@ release:
 		make git-publish
 		make clean-build
 		make post-release
-		@echo "\n\nDone releasing!\n\n"
+		@echo " "
+		@echo " "
+		@echo "Done releasing!"
+		@echo " "
+		@echo " "
 
 pre-release:
 ifneq ($(REPO_VERSION), '')
-		@echo "\nReleasing version $(REPO_VERSION)\n"
+		@echo " "
+		@echo "Releasing version $(REPO_VERSION)"
+		@echo " "
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call prepare-release)
 		$(call merge-master, $(SUBSTR))
 else
-		@echo "\nPeforming manual release process!!\n"
+		@echo " "
+		@echo "Peforming manual release process!!"
+		@echo " "
 endif
 
 # Clean the repository before starting a release.
@@ -49,10 +57,12 @@ clean:
 # Lerna change all the version numbers.
 pre-publish:
 ifneq ($(REPO_VERSION), '')
+		@echo " "
 		@echo "$(strip $(REPO_VERSION))"
-		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish --yes
+		@echo " "
+		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish --yes --exact
 else
-		lerna publish --skip-npm --skip-git --force-publish
+		lerna publish --skip-npm --skip-git --force-publish --exact
 endif
 
 # Change the version in the extensions extension-config.json
@@ -87,19 +97,28 @@ clean-build:
 
 post-release:
 ifneq ($(REPO_VERSION), '')
-		@echo "\nFinishing release for version $(REPO_VERSION)\n"
+		@echo " "
+		@echo "Finishing release for version $(REPO_VERSION)"
+		@echo " "
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call merge-develop, $(SUBSTR))
 endif
 
-coverage:
-		$(foreach package, $(NPM_PACKAGES), $(call run-libraries-coverage, $(package)))
+e2e-gmd:
+		cd themes/gmd && yarn run e2e
 
+e2e-ios11:
+		cd themes/ios11 && yarn run e2e
+
+e2e-checkout:
+		cd themes/gmd && yarn run e2e:checkout
 
 # DEFINITIONS
 
 define prepare-release
-		@echo "\nChecking out develop branches ... \n"
+		@echo " "
+		@echo "Checking out develop branches ... "
+		@echo " "
 		git checkout develop
 		git submodule foreach --recursive git checkout develop
 		git fetch --all && git submodule foreach --recursive git fetch --all
@@ -110,13 +129,17 @@ endef
 define merge-master
 		@if [ "$(strip $(1))" != "beta" ]; \
 			then \
-				echo "\nMerging into master ... \n"; \
+				echo " "; \
+				echo "Merging into master ... "; \
+				echo " "; \
 				git checkout master; \
 				git submodule foreach --recursive git checkout master; \
 				git merge develop && git push; \
 				git submodule foreach --recursive git merge develop && git submodule foreach --recursive git push; \
 			else \
-				echo "\nNot using master: beta release!\n"; \
+				echo " "; \
+				echo "Not using master: beta release!"; \
+				echo " "; \
 		fi;
 
 endef
@@ -124,7 +147,9 @@ endef
 define merge-develop
 		@if [ "$(strip $(1))" != "beta" ]; \
 			then \
-				echo "\nMerging back into develop ... \n"; \
+				echo " "; \
+				echo "Merging back into develop ... "; \
+				echo " "; \
 				git checkout develop; \
 				git submodule foreach --recursive git checkout develop; \
 				git merge master && git push; \

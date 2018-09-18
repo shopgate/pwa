@@ -59,7 +59,7 @@ export const getProductById = (state, id) => getProducts(state)[id];
 /**
  * Retrieves the current base product page from the store.
  * @param {Object} state The current application state.
- * @return {string} The id of the current base product.
+ * @return {string|null} The id of the current base product.
  */
 export const getCurrentBaseProductId = state => state.product.currentProduct.productId;
 
@@ -193,6 +193,7 @@ export const getPopulatedProductsResult = (state, hash, result) => {
     products,
     totalProductCount,
     sort,
+    hash,
   };
 };
 
@@ -295,6 +296,63 @@ export const getProductManufacturer = createSelector(
 );
 
 /**
+ * Retrieves the current product stock information.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getCurrentProductStock = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.stock;
+  }
+);
+
+/**
+ * Retrieves the product stock information.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductStockInfo = createSelector(
+  getProductById,
+  (product) => {
+    if (!product || !product.productData) {
+      return null;
+    }
+    return product.productData.stock;
+  }
+);
+
+/**
+ * Retrieves the current product orderable information.
+ * @param {Object} state The current application state.
+ * @return {boolean}
+ */
+export const isProductOrderable = createSelector(
+  getCurrentProductStock,
+  (stockInfo) => {
+    if (!stockInfo) {
+      return true;
+    }
+
+    return stockInfo.orderable;
+  }
+);
+
+/**
+ * Retrieves the product orderable information.
+ * @param {Object} state The current application state.
+ * @return {boolean}
+ */
+export const isOrderable = createSelector(
+  getProductStockInfo,
+  stockInfo => stockInfo && stockInfo.orderable
+);
+
+/**
  * Selects the product shipping state.
  * @param {Object} state The current application state.
  * @return {Object} The product shipping state.
@@ -365,7 +423,7 @@ export const getProductDescription = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product properties state.
  */
-const getProductPropertiesState = state => state.product.propertiesByProductId;
+export const getProductPropertiesState = state => state.product.propertiesByProductId;
 
 /**
  * Retrieves the current product properties.
@@ -392,7 +450,8 @@ export const getProductProperties = createSelector(
  */
 export const getProductMetadata = createSelector(
   getProductById,
-  product => product.productData.metadata || null
+  // Skip product, if not found or return null if no metadata is set
+  product => (product && product.productData.metadata) || null
 );
 
 /**

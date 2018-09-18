@@ -1,13 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Link /> should construct disabled parsed-link and click should be noop 1`] = `
+<Link
+  className=""
+  disabled={true}
+  href="/category/toClick"
+>
+  <div
+    aria-hidden={true}
+    className="css-c6ki83 "
+    data-test-id="link: /category/toClick"
+    onClick={[Function]}
+    role="link"
+  >
+    <span>
+      Test
+    </span>
+  </div>
+</Link>
+`;
+
 exports[`<Link /> should construct parsed-link and open it when clicked 1`] = `
 <Link
   className=""
+  disabled={false}
   href="/category/123"
 >
   <div
     aria-hidden={true}
     className="css-c6ki83 "
+    data-test-id="link: /category/123"
     onClick={[Function]}
     role="link"
   >
@@ -22,6 +44,7 @@ exports[`<Link /> should render inner content of the link 1`] = `
 <div
   aria-hidden={true}
   className="css-c6ki83 "
+  data-test-id="link: /"
   onClick={[Function]}
   role="link"
 >

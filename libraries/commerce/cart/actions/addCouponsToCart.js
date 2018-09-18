@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import addCoupons from '../action-creators/addCouponsToCart';
@@ -15,11 +16,13 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_COUPONS);
   request.setInput({ couponCodes: couponIds })
+    .setResponseProcessed(PROCESS_SEQUENTIAL)
+    .setRetries(0)
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         dispatch(errorAddCouponsToCart(couponIds, messages, requestsPending));
         reject();
         return;

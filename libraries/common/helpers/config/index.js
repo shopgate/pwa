@@ -1,3 +1,4 @@
+import { themeConfig as mock } from './mock';
 /**
  * Provides a default app config as a fallback.
  * @type {Object}
@@ -16,7 +17,12 @@ const defaultAppConfig = {
   shopName: 'Shopgate Connect',
   webCheckoutShopify: null,
   apiUrl: 'https://shop_30177.dev.connect.shopgate.com/',
+  shopCNAME: null,
+  currency: 'USD',
+  showGmdMenuSubHeaders: false,
 };
+
+export const themeName = process.env.THEME || 'theme';
 
 /**
  * Provides a default theme config as a fallback.
@@ -44,7 +50,7 @@ export const componentsConfig = process.env.COMPONENTS_CONFIG || {};
  * The theme configuration.
  * @typedef {Object}
  */
-export const themeConfig = process.env.THEME_CONFIG || defaultThemeConfig;
+export const themeConfig = process.env.NODE_ENV === 'test' ? mock : (process.env.THEME_CONFIG || defaultThemeConfig);
 
 /**
  * The shop number.

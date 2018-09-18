@@ -22,6 +22,7 @@ const image = css({
   top: 0,
   left: 0,
   width: '100%',
+  maxHeight: '100%',
 }).toString();
 
 export default {

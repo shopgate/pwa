@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DiscountBadge /> should render the text 1`] = `
+<div
+  data-test-id="foo"
+>
+  <Translate
+    className="css-pzju2o "
+    params={
+      Array [
+        null,
+      ]
+    }
+    string="foo"
+  />
+</div>
+`;
+
+exports[`<DiscountBadge /> should render the text and discount 1`] = `
+<div
+  data-test-id="SAVE {0}%"
+>
+  <Translate
+    className="css-pzju2o "
+    params={
+      Array [
+        20,
+      ]
+    }
+    string="SAVE {0}%"
+  />
+</div>
+`;

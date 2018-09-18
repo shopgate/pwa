@@ -1,3 +1,5 @@
+import event from '@shopgate/pwa-core/classes/Event/index';
+
 /**
  * Parses a collection of DOM nodes for external script tags.
  * @param {Array} nodes A collection of DOM nodes.
@@ -14,7 +16,6 @@ export const getExternalScripts = (nodes, callback, isRoot = true) => {
       if (node.childNodes && node.childNodes.length) {
         return result.concat(getExternalScripts(node.childNodes, callback, false));
       }
-
       return result;
     }
 
@@ -131,3 +132,71 @@ export const getDOMContainer = (containerID) => {
 
   return container;
 };
+
+/**
+ * Stops a NodeList of youtube players.
+ * @param {NodeList} players YouTube player iframes.
+ */
+const stopPlayer = (players) => {
+  const cmdStop = '{"event":"command","func":"stopVideo","args":""}';
+
+  players.forEach((node, index) => {
+    const yt = players[index];
+    if (yt.contentWindow && yt.contentWindow.postMessage) {
+      yt.contentWindow.postMessage(cmdStop, '*');
+    }
+  });
+};
+
+/**
+ * Handles YouTube iframes so that we are able to controll when the video should be stopped.
+ * It should not play in the background when a tab/page has changed.
+ * @param {NodeList} container HTML widget container.
+ */
+export const handleYouTube = (container) => {
+  const youtubeIframes = container.querySelectorAll('iframe[src*="youtube.com"]');
+
+  youtubeIframes.forEach((node, index) => {
+    let { src } = node;
+
+    // Is it really needed? We just queried for iframes WITH src attribute.
+    if (!src) {
+      return;
+    }
+
+    // Enable the js api
+    if (src.includes('enablejsapi=0')) {
+      src = src.replace('enablejsapi=0', 'enablejsapi=1');
+    }
+
+    if (!src.includes('enablejsapi')) {
+      const queryChar = src.includes('?') ? '&' : '?';
+      src += `${queryChar}enablejsapi=1`;
+    }
+
+    // Set controls to avoid the iframe not being resumable because of controls=0 param on ios.
+    if (!src.includes('controls')) {
+      src += '&controls=1';
+    } else if (src.includes('controls=0')) {
+      src = src.replace('controls=0', 'controls=1');
+    }
+
+    youtubeIframes[index].src = src;
+  });
+
+  /**
+   * Stops the player when a native app event is triggered when a webview gets hidden or when the
+   * user navigated to some other page.
+   */
+  event.addCallback('routeDidChange', () => { stopPlayer(youtubeIframes); });
+  event.addCallback('viewDidDisappear', () => { stopPlayer(youtubeIframes); });
+};
+
+/**
+ * Gets all styles from DOM.
+ * Important: DOM parser might and probably will add <style> tags into <head> while parsing
+ * the html string.
+ * @param {HTMLDocument} dom DOM.
+ * @returns {NodeList}
+ */
+export const getStyles = dom => dom.querySelectorAll('style');

@@ -23,6 +23,7 @@ exports[`<Toast /> should call actionOnClick on action click 1`] = `
       actionButton={[Function]}
       className={null}
       container={[Function]}
+      dismissed={false}
       dispatchAction={[Function]}
       hasNextToast={false}
       message={[Function]}
@@ -37,6 +38,7 @@ exports[`<Toast /> should call actionOnClick on action click 1`] = `
           "message": "hello world",
         }
       }
+      unblockToast={[Function]}
     >
       <div
         aria-live="polite"
@@ -113,6 +115,16 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
           Array [],
           Array [],
         ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
       }
     }
     toast={[Function]}
@@ -121,6 +133,7 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
       actionButton={[Function]}
       className={null}
       container={[Function]}
+      dismissed={false}
       dispatchAction={[Function]}
       hasNextToast={false}
       message={[Function]}
@@ -129,6 +142,16 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
           "calls": Array [
             Array [],
             Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
           ],
         }
       }
@@ -144,12 +167,19 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
                 undefined,
               ],
             ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
           },
           "duration": 2,
           "id": 5,
           "message": "hello world",
         }
       }
+      unblockToast={[Function]}
     >
       <div
         aria-live="polite"
@@ -226,6 +256,7 @@ exports[`<Toast /> should dispatch a toast message 1`] = `
       actionButton={[Function]}
       className={null}
       container={[Function]}
+      dismissed={false}
       dispatchAction={[Function]}
       hasNextToast={false}
       message={[Function]}
@@ -240,6 +271,7 @@ exports[`<Toast /> should dispatch a toast message 1`] = `
           "message": "Toast Message",
         }
       }
+      unblockToast={[Function]}
     >
       <div
         aria-live="polite"

@@ -57,7 +57,10 @@ class WebStorageRequest extends Request {
         value,
       };
 
-      logGroup(`WebStorageResponse %c${this.name}`, { response }, '#f39c12');
+      logGroup(`WebStorageResponse %c${this.name}`, {
+        response,
+        serial: this.serial,
+      }, '#f39c12');
 
       resolve(response);
     };
@@ -65,7 +68,9 @@ class WebStorageRequest extends Request {
     // Apply the event callback.
     event.addCallback(requestCallbackName, requestCallback);
 
-    logGroup(`WebStorageRequest %c${this.name}`, {}, '#e67e22');
+    logGroup(`WebStorageRequest %c${this.name}`, {
+      serial: this.serial,
+    }, '#e67e22');
 
     /**
      * Send the getWebStorageEntry request.

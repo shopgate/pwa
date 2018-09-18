@@ -1,6 +1,6 @@
 {
   "lerna": "2.9.0",
-  "version": "5.3.0-beta.1",
+  "version": "5.9.0-beta.2",
   "packages": [
     "extensions/*/frontend",
     "libraries/*",
@@ -12,10 +12,10 @@
   "npmClientArgs": [
     "--no-optional"
   ],
-  "commands": {
+  "command": {
     "publish": {
       "access": "public",
-      "ignore": [
+      "ignoreChanges": [
         "ignored-file",
         "*.spec.*",
         "*.mock.*",

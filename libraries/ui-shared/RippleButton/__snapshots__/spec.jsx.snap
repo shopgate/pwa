@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
+<RippleButton
+  className=""
+  disabled={true}
+  flat={false}
+  onClick={null}
+  rippleClassName=""
+  rippleSize={null}
+  testId="Button"
+  type="primary"
+  wrapContent={true}
+>
+  <Button
+    className=""
+    disabled={true}
+    flat={false}
+    onClick={null}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    <Button
+      className="css-ot1d6i "
+      disabled={true}
+      onClick={null}
+      testId="Button"
+    >
+      <button
+        className="css-ot1d6i  css-1rn65c0"
+        data-test-id="Button"
+        disabled={true}
+        onClick={null}
+      >
+        <div
+          className="css-4uxwj9"
+        >
+          Press me
+        </div>
+      </button>
+    </Button>
+  </Button>
+</RippleButton>
+`;
+
+exports[`<RippleButton /> should render as a primary ripple button 1`] = `
+<RippleButton
+  className=""
+  disabled={false}
+  flat={false}
+  onClick={null}
+  rippleClassName=""
+  rippleSize={null}
+  testId="Button"
+  type="primary"
+  wrapContent={true}
+>
+  <Button
+    className=""
+    disabled={false}
+    flat={false}
+    onClick={null}
+    testId="Button"
+    type="primary"
+    wrapContent={false}
+  >
+    <Button
+      className="css-cimv5k "
+      disabled={false}
+      onClick={null}
+      testId="Button"
+    >
+      <button
+        className="css-cimv5k  css-1rn65c0"
+        data-test-id="Button"
+        disabled={false}
+        onClick={null}
+      >
+        <Ripple
+          className="css-8s1fw2 "
+          color="#000"
+          disabled={false}
+          fill={true}
+          onComplete={[Function]}
+          overflow={false}
+          size={null}
+        >
+          <div
+            aria-hidden={true}
+            className="css-8s1fw2 "
+            data-test-id="Ripple"
+            onClick={[Function]}
+            style={null}
+          >
+            Press me
+          </div>
+        </Ripple>
+      </button>
+    </Button>
+  </Button>
+</RippleButton>
+`;
+
+exports[`<RippleButton /> should render as a regular ripple button effect if type is omitted 1`] = `
+<Button
+  className=""
+  disabled={false}
+  flat={false}
+  onClick={null}
+  testId="Button"
+  type="primary"
+  wrapContent={false}
+>
+  <Ripple
+    className="css-8s1fw2 "
+    color="#000"
+    disabled={false}
+    fill={true}
+    onComplete={[Function]}
+    overflow={false}
+    size={null}
+  >
+    Press me
+  </Ripple>
+</Button>
+`;
+
+exports[`<RippleButton /> should render as a regular ripple button if type is explicitly defined 1`] = `
+<RippleButton
+  className=""
+  disabled={false}
+  flat={false}
+  onClick={null}
+  rippleClassName=""
+  rippleSize={null}
+  testId="Button"
+  type="regular"
+  wrapContent={true}
+>
+  <Button
+    className=""
+    disabled={false}
+    flat={false}
+    onClick={null}
+    testId="Button"
+    type="regular"
+    wrapContent={false}
+  >
+    <Button
+      className="css-kevfw8 "
+      disabled={false}
+      onClick={null}
+      testId="Button"
+    >
+      <button
+        className="css-kevfw8  css-1rn65c0"
+        data-test-id="Button"
+        disabled={false}
+        onClick={null}
+      >
+        <Ripple
+          className="css-8s1fw2 "
+          color="#000"
+          disabled={false}
+          fill={true}
+          onComplete={[Function]}
+          overflow={false}
+          size={null}
+        >
+          <div
+            aria-hidden={true}
+            className="css-8s1fw2 "
+            data-test-id="Ripple"
+            onClick={[Function]}
+            style={null}
+          >
+            Press me
+          </div>
+        </Ripple>
+      </button>
+    </Button>
+  </Button>
+</RippleButton>
+`;
+
+exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
+<RippleButton
+  className=""
+  disabled={false}
+  flat={false}
+  onClick={null}
+  rippleClassName=""
+  rippleSize={null}
+  testId="Button"
+  type="secondary"
+  wrapContent={true}
+>
+  <Button
+    className=""
+    disabled={false}
+    flat={false}
+    onClick={null}
+    testId="Button"
+    type="secondary"
+    wrapContent={false}
+  >
+    <Button
+      className="css-187rja2 "
+      disabled={false}
+      onClick={null}
+      testId="Button"
+    >
+      <button
+        className="css-187rja2  css-1rn65c0"
+        data-test-id="Button"
+        disabled={false}
+        onClick={null}
+      >
+        <Ripple
+          className="css-8s1fw2 "
+          color="#000"
+          disabled={false}
+          fill={true}
+          onComplete={[Function]}
+          overflow={false}
+          size={null}
+        >
+          <div
+            aria-hidden={true}
+            className="css-8s1fw2 "
+            data-test-id="Ripple"
+            onClick={[Function]}
+            style={null}
+          >
+            Press me
+          </div>
+        </Ripple>
+      </button>
+    </Button>
+  </Button>
+</RippleButton>
+`;

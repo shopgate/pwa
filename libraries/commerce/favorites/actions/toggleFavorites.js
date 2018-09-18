@@ -39,6 +39,7 @@ export const requestSync = () => (dispatch, getState) => {
   dispatch(requestSyncFavorites());
   new PipelineRequest(pipelines.SHOPGATE_USER_PUT_FAVORITES)
     .setInput({ productIds: getFavoritesProductsIds(state) })
+    .setRetries(0)
     .dispatch()
     .then(() => {
       dispatch(receiveSyncFavorites());
@@ -66,7 +67,7 @@ const addFavorites = productId => (dispatch) => {
 /**
  * Removes single product from favorites.
  * @param {string} productId Product id.
- * @param {function} dispatch Disaptch function.
+ * @param {function} dispatch Dispatch function.
  */
 const removeProductFromFavorites = (productId, dispatch) => {
   dispatch(requestRemoveFavorites(productId));
@@ -77,13 +78,13 @@ const removeProductFromFavorites = (productId, dispatch) => {
 /**
  * Remove favorites action.
  * @param {string} productId Product identifier.
- * @param {bool} withRelatives When true relatives which are on list are also removed.
+ * @param {boolean} withRelatives When true relatives which are on list are also removed.
  * @returns {Promise} PipelineRequest dispatch.
  */
 const removeFavorites = (productId, withRelatives = false) => (dispatch, getState) => {
   if (withRelatives) {
     const allIds = getProductRelativesOnFavorites(getState(), productId);
-    allIds.forEach(id => removeProductFromFavorites(id, dispatch, getState));
+    allIds.forEach(id => removeProductFromFavorites(id, dispatch));
     return;
   }
   removeProductFromFavorites(productId, dispatch);

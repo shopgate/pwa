@@ -122,7 +122,7 @@ describe('Reviews actions', () => {
       setTimeout(() => {
         promise[variant]((result) => {
           expect(result.mockInstance.name).toBe(pipelines.SHOPGATE_USER_GET_REVIEW);
-          expect(result.mockInstance.handledErrors).toEqual([EUNKNOWN, EACCESS]);
+          expect(result.mockInstance.errorBlacklist).toEqual([EUNKNOWN, EACCESS]);
           expect(result.mockInstance.input).toEqual({
             productId: 'foo',
           });

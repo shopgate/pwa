@@ -1,8 +1,21 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
+import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
+import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
+import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
+import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
+import onload from '@shopgate/pwa-core/commands/onload';
+import {
+  EACCESS,
+  E999,
+  ENOTFOUND,
+  EVALIDATION,
+} from '@shopgate/pwa-core/constants/Pipeline';
 import { appDidStart$, appWillStart$ } from '../streams/app';
+import { pipelineError$ } from '../streams/error';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
+import showModal from '../actions/modal/showModal';
 import { isAndroid } from '../selectors/client';
 import {
   updateNavigationBarNone,
@@ -10,17 +23,28 @@ import {
   pageContext,
 } from '../helpers/legacy';
 import ParsedLink from '../components/Router/helpers/parsed-link';
+import { appError, pipelineError } from '../action-creators/error';
 
 /**
  * App subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function app(subscribe) {
-  /**
-   * Gets triggered before the app starts.
-   */
+  // Gets triggered before the app starts.
   subscribe(appWillStart$, ({ dispatch, action }) => {
     dispatch(registerLinkEvents(action.location));
+
+    // Suppress errors globally
+    pipelineManager.addSuppressedErrors([
+      EACCESS,
+      E999,
+      ENOTFOUND,
+      EVALIDATION,
+    ]);
+
+    // Map the error events into the Observable streams.
+    errorEmitter.addListener(SOURCE_APP, error => dispatch(appError(error)));
+    errorEmitter.addListener(SOURCE_PIPELINE, error => dispatch(pipelineError(error)));
   });
 
   /**
@@ -61,5 +85,32 @@ export default function app(subscribe) {
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
+    /*
+     * Onload must be send AFTER app did start.
+     * Interjections events (like openPushMessage) would not work if this command is sent
+     * before registering to interjections.
+     */
+    onload();
+  });
+
+  subscribe(pipelineError$, ({ dispatch, action }) => {
+    const { error } = action;
+    const {
+      message, code, context, meta,
+    } = error;
+
+    dispatch(showModal({
+      confirm: 'modal.ok',
+      dismiss: null,
+      title: null,
+      message,
+      type: MODAL_PIPELINE_ERROR,
+      params: {
+        pipeline: context,
+        request: meta.input,
+        message: meta.message,
+        code,
+      },
+    }));
   });
 }
