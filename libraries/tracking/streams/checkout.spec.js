@@ -9,11 +9,10 @@ import { checkoutDidEnter$ } from './checkout';
 describe('Checkout streams', () => {
   let store;
   let dispatch;
-  let getState;
 
   beforeEach(() => {
     store = createMockStore(combineReducers({ user }));
-    ({ dispatch, getState } = store);
+    ({ dispatch } = store);
   });
 
   describe('checkoutDidEnter$', () => {
