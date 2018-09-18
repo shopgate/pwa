@@ -15,10 +15,10 @@ import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
 // import trackingProduct from '@shopgate/pwa-tracking/subscriptions/product';
-// import trackingUser from '@shopgate/pwa-tracking/subscriptions/user';
+import trackingUser from '@shopgate/pwa-tracking/subscriptions/user';
 import trackingCart from '@shopgate/pwa-tracking/subscriptions/cart';
 // import trackingCheckout from '@shopgate/pwa-tracking/subscriptions/checkout';
-// import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
+import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
 // import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
 // Theme
 import app from 'Pages/subscriptions';
@@ -59,10 +59,10 @@ const subscriptions = [
   trackingSetup,
   trackingPages,
   // trackingProduct,
-  // trackingUser,
+  trackingUser,
   trackingCart,
   // trackingCheckout,
-  // trackingSearch,
+  trackingSearch,
   // trackingDeeplinkPush,
   // Theme subscribers.
   app,
