@@ -22,6 +22,8 @@ const REGISTER_LINK = 'register-link'
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
 const IMPRINT = 'imprint';
+const STORE_INFORMATION = 'store-information';
+const MY_ACCOUNT = 'my-account';
 const LOGOUT = 'logout';
 const CONTAINER = 'container';
 
@@ -67,6 +69,14 @@ export const NAV_MENU_PRIVACY_AFTER = `${NAV_MENU}.${PRIVACY}.${AFTER}`;
 export const NAV_MENU_IMPRINT_BEFORE = `${NAV_MENU}.${IMPRINT}.${BEFORE}`;
 export const NAV_MENU_IMPRINT = `${NAV_MENU}.${IMPRINT}`;
 export const NAV_MENU_IMPRINT_AFTER = `${NAV_MENU}.${IMPRINT}.${AFTER}`;
+
+export const NAV_MENU_STORE_INFORMATION_BEFORE = `${NAV_MENU}.${STORE_INFORMATION}.${BEFORE}`;
+export const NAV_MENU_STORE_INFORMATION = `${NAV_MENU}.${STORE_INFORMATION}`;
+export const NAV_MENU_STORE_INFORMATION_AFTER = `${NAV_MENU}.${STORE_INFORMATION}.${AFTER}`;
+
+export const NAV_MENU_MY_ACCOUNT_BEFORE = `${NAV_MENU}.${MY_ACCOUNT}.${BEFORE}`;
+export const NAV_MENU_MY_ACCOUNT = `${NAV_MENU}.${MY_ACCOUNT}`;
+export const NAV_MENU_MY_ACCOUNT_AFTER = `${NAV_MENU}.${MY_ACCOUNT}.${AFTER}`;
 
 export const NAV_MENU_LOGOUT_BEFORE = `${NAV_MENU}.${LOGOUT}.${BEFORE}`;
 export const NAV_MENU_LOGOUT = `${NAV_MENU}.${LOGOUT}`;

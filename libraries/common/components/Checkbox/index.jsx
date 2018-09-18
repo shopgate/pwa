@@ -12,6 +12,7 @@ class Checkbox extends Component {
     checked: PropTypes.bool,
     className: PropTypes.string,
     defaultChecked: PropTypes.bool,
+    disabled: PropTypes.bool,
     label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     labelPosition: PropTypes.oneOf(['left', 'right']),
     name: PropTypes.string,
@@ -22,6 +23,7 @@ class Checkbox extends Component {
     checked: undefined,
     className: undefined,
     defaultChecked: undefined,
+    disabled: false,
     label: null,
     labelPosition: 'left',
     name: undefined,
@@ -39,10 +41,25 @@ class Checkbox extends Component {
 
     if (typeof props.defaultChecked !== 'undefined') {
       // Uncontrolled input.
-      this.state = { checked: false };
+      this.state = { checked: props.defaultChecked };
+    } else {
+      // Controlled input
+      this.state = { checked: props.checked };
     }
   }
 
+  /**
+   * Make sure state is updated with new checked value when input is controlled
+   * @param {Object} nextProps Contains the new "checked" status
+   */
+  componentWillReceiveProps(nextProps) {
+    // Update only for controlled input
+    if (typeof this.props.defaultChecked === 'undefined') {
+      if (this.state.checked !== nextProps.checked) {
+        this.setState({ checked: nextProps.checked });
+      }
+    }
+  }
   /**
    * Returns if the checkbox is checked or not.
    * @return {boolean} Is the checkbox checked?
@@ -58,6 +75,10 @@ class Checkbox extends Component {
    * If the checkbox is uncontrolled, it keeps track of the value.
    */
   handleCheck = () => {
+    if (this.props.disabled) {
+      return;
+    }
+
     const checked = !this.isChecked();
 
     if (typeof this.props.defaultChecked !== 'undefined') {
