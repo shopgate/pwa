@@ -12,7 +12,7 @@ global.process.env = {
 };
 
 // Mocks of the global Headers class.
-global.Headers = () => {};
+global.Headers = () => { };
 
 // Create a mock for the fetch method.
 const mockedFetchResponse = {};

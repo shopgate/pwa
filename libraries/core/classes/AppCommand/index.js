@@ -4,10 +4,14 @@ import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/v
 import logGroup from '../../helpers/logGroup';
 import * as appCommands from '../../constants/AppCommands';
 import BrowserConnector from '../BrowserConnector';
+import DevServerBridge from '../DevServerBridge';
 import {
   GET_PERMISSIONS_COMMAND_NAME,
   REQUEST_PERMISSIONS_COMMAND_NAME,
 } from '../../constants/AppPermissions';
+
+const appConfig = process.env.APP_CONFIG || {};
+
 /**
  * The app command class.
  */
@@ -144,15 +148,19 @@ class AppCommand {
 
     /* istanbul ignore else */
     if (!hasSGJavaScriptBridge()) {
-      bridge = new BrowserConnector(command);
+      if (!appConfig.browserConnector) {
+        bridge = new DevServerBridge();
+      } else {
+        bridge = new BrowserConnector(command);
+      }
     } else {
       bridge = SGJavascriptBridge;
     }
 
     try {
-      if (!hasSGJavaScriptBridge() && 'dispatchCommandForVersion' in bridge) {
+      if ('dispatchCommandForVersion' in bridge) {
         bridge.dispatchCommandForVersion(appLibVersion);
-        /* istanbul ignore else */
+      /* istanbul ignore else */
       } else if ('dispatchCommandsForVersion' in bridge) {
         bridge.dispatchCommandsForVersion([command], appLibVersion);
       } else {
