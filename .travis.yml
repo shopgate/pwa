@@ -10,7 +10,11 @@ node_js:
 cache:
   directories:
     - node_modules
-script: yarn run cover --maxWorkers=4 --ci
+script:
+  - npm i -g @shopgate/cloud-sdk-webpack
+  - sgcloud-webpack --theme=gmd --indexOnly
+  - sgcloud-webpack --theme=ios11 --indexOnly
+  - yarn run cover --maxWorkers=4 --ci
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:

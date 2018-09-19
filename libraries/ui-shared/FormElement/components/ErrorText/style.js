@@ -1,15 +1,14 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const error = css({
-  position: 'absolute',
+export default css({
   bottom: 2,
+  color: themeConfig.colors.error,
   fontSize: 12,
   lineHeight: '14px',
-  color: themeConfig.colors.error,
-  // ...ellipsisLine, TODO: needed?
-}).toString();
-
-export default {
-  error,
-};
+  overflow: 'hidden',
+  position: 'absolute',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  width: '100%',
+});

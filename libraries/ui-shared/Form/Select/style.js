@@ -1,6 +1,7 @@
 import { css } from 'glamor';
 
 const select = css({
+  appearance: 'none',
   position: 'relative',
   padding: 0,
   width: '100%',

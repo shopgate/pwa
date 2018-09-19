@@ -16,6 +16,7 @@ class TextField extends Component {
     className: PropTypes.string,
     errorText: PropTypes.node,
     hintText: PropTypes.node,
+    isControlled: PropTypes.bool,
     label: PropTypes.node,
     multiLine: PropTypes.bool,
     onChange: PropTypes.func,
@@ -24,6 +25,7 @@ class TextField extends Component {
     onValidate: PropTypes.func,
     password: PropTypes.bool,
     setRef: PropTypes.func,
+    translateErrorText: PropTypes.bool,
     type: PropTypes.string,
     value: PropTypes.string,
   };
@@ -33,6 +35,7 @@ class TextField extends Component {
     errorText: '',
     setRef: () => {},
     hintText: '',
+    isControlled: false,
     label: '',
     multiLine: false,
     onChange: () => {},
@@ -40,6 +43,7 @@ class TextField extends Component {
     onSanitize: value => value,
     onValidate: () => true,
     password: false,
+    translateErrorText: true,
     type: 'text',
     value: '',
   };
@@ -163,9 +167,14 @@ class TextField extends Component {
           password={this.props.password}
           type={this.props.type}
           value={this.props.value}
+          isControlled={this.props.isControlled}
         />
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
-        <ErrorText validationError={this.state.validationError} errorText={this.props.errorText} />
+        <ErrorText
+          validationError={this.state.validationError}
+          errorText={this.props.errorText}
+          translate={this.props.translateErrorText}
+        />
       </div>
     );
   }
