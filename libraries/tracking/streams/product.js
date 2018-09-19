@@ -3,7 +3,7 @@ import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { receivedVisibleProduct$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { RECEIVE_PRODUCT, RECEIVE_PRODUCTS } from '@shopgate/pwa-common-commerce/product/constants';
 import { HISTORY_PUSH_ACTION, HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
@@ -25,7 +25,7 @@ export const productReceived$ = main$
 /**
  * Emits when the category route comes active again after a legacy page was active.
  */
-const productRouteReappeared$ = pwaDidAppear$
+export const productRouteReappeared$ = pwaDidAppear$
   .filter(({ action }) => action.route.pattern === PATTERN_ITEM_PAGE);
 
 /**
@@ -57,12 +57,10 @@ export const variantDidChange$ = productDidUpdate$
   .switchMap(() => receivedVisibleProduct$.switchMap((data) => {
     const { id, baseProductId } = data.action.productData;
 
-    const productId = baseProductId !== null ? baseProductId : id;
     const variantId = baseProductId !== null ? id : null;
+    const baseProduct = getBaseProduct(data.getState(), { variantId });
 
-    const product = getProduct(data.getState(), { productId });
-
-    if (variantId && product === null) {
+    if (baseProduct === null) {
       /**
        * A PDP with a variant product was opened, but the base product is not fetched yet.
        * So emitting of the stream is postponed till the data is present.
