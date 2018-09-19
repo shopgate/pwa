@@ -14,7 +14,7 @@ import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
-// import trackingProduct from '@shopgate/pwa-tracking/subscriptions/product';
+import trackingProduct from '@shopgate/pwa-tracking/subscriptions/product';
 import trackingUser from '@shopgate/pwa-tracking/subscriptions/user';
 import trackingCart from '@shopgate/pwa-tracking/subscriptions/cart';
 // import trackingCheckout from '@shopgate/pwa-tracking/subscriptions/checkout';
@@ -58,7 +58,7 @@ const subscriptions = [
   // Tracking subscribers.
   trackingSetup,
   trackingPages,
-  // trackingProduct,
+  trackingProduct,
   trackingUser,
   trackingCart,
   // trackingCheckout,
