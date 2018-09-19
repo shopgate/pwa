@@ -5,12 +5,9 @@ import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { receivedVisibleProduct$ } from '@shopgate/pwa-common-commerce/product/streams';
-import {
-  ITEM_PATH,
-  RECEIVE_PRODUCT,
-  RECEIVE_PRODUCTS,
-} from '@shopgate/pwa-common-commerce/product/constants';
-import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import { RECEIVE_PRODUCT, RECEIVE_PRODUCTS } from '@shopgate/pwa-common-commerce/product/constants';
+import { HISTORY_PUSH_ACTION, HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import { PATTERN_ITEM_PAGE } from '../constants';
 import { pwaDidAppear$ } from './app';
 
 /**
@@ -29,19 +26,35 @@ export const productReceived$ = main$
  * Emits when the category route comes active again after a legacy page was active.
  */
 const productRouteReappeared$ = pwaDidAppear$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId`);
+  .filter(({ action }) => action.route.pattern === PATTERN_ITEM_PAGE);
 
+/**
+ * Emits when a product page was initially opened.
+ */
 export const productDidEnter$ = routeDidEnter$.filter(({ action }) =>
-  action.route.pattern === `${ITEM_PATH}/:productId` &&
+  action.route.pattern === PATTERN_ITEM_PAGE &&
   action.historyAction === HISTORY_PUSH_ACTION);
 
 /**
- * Emits when all necessary product data is present.
+ * Emits when a product page was updated due to a variant product switch.
+ */
+export const productDidUpdate$ = routeDidEnter$.filter(({ action }) =>
+  action.route.pattern === PATTERN_ITEM_PAGE &&
+  action.historyAction === HISTORY_REPLACE_ACTION);
+
+/**
+ * Emits when a product page was initially opened and its data is present.
  */
 export const productIsReady$ = productDidEnter$
   .zip(receivedVisibleProduct$)
-  .map(([, second]) => second)
-  .switchMap((data) => {
+  .map(([, received]) => received)
+  .merge(productRouteReappeared$);
+
+/**
+ * Emits when a variant product was changed.
+ */
+export const variantDidChange$ = productDidUpdate$
+  .switchMap(() => receivedVisibleProduct$.switchMap((data) => {
     const { id, baseProductId } = data.action.productData;
 
     const productId = baseProductId !== null ? baseProductId : id;
@@ -58,4 +71,4 @@ export const productIsReady$ = productDidEnter$
     }
 
     return Observable.of(data);
-  });
+  }));
