@@ -2,7 +2,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
-import configureMockStore from 'redux-mock-store';
 import syncRouter from '@virtuous/redux-conductor';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
@@ -53,16 +52,12 @@ export function configureStore(reducers, subscribers) {
  * @param {Function|Array} subscribers Streams subscribers to initialize.
  * @returns {Store}
  */
-export function createMockStore(reducers = null, subscribers = null) {
-  const mockedStore = configureMockStore([thunk, streams]);
-
-  let state;
-
-  if (typeof reducers === 'function') {
-    state = reducers({}, {});
-  }
-
-  const store = mockedStore(state);
+export function createMockStore(reducers = () => {}, subscribers = null) {
+  const store = createStore(
+    reducers,
+    undefined,
+    applyMiddleware(thunk, streams)
+  );
 
   if (subscribers !== null) {
     initSubscribers([].concat(subscribers));
