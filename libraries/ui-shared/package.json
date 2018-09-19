@@ -5,8 +5,8 @@
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@shopgate/pwa-ui-ios": "5.8.0-beta.8",
-    "@shopgate/pwa-ui-material": "5.8.0-beta.8"
+    "@shopgate/pwa-ui-ios": "5.9.0-beta.2",
+    "@shopgate/pwa-ui-material": "5.9.0-beta.2"
   },
   "devDependencies": {
     "@shopgate/pwa-common": "5.9.0-beta.2",
