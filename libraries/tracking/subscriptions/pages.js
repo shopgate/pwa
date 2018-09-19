@@ -26,6 +26,6 @@ const callPageViewTracker = ({ getState }) => {
 export default function pages(subscribe) {
   subscribe(categoryIsReady$, callPageViewTracker);
   subscribe(searchIsReady$, callPageViewTracker);
-  subscribe(productIsReady$, callPageViewTracker);
+  //  subscribe(productIsReady$, callPageViewTracker);
   subscribe(pagesAreReady$, callPageViewTracker);
 }

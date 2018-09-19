@@ -2,17 +2,15 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
+import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
+import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { receivedVisibleProduct$ } from '@shopgate/pwa-common-commerce/product/streams';
 import {
-  RECEIVE_PRODUCTS,
-  RECEIVE_PRODUCT,
-  SET_PRODUCT_ID,
   ITEM_PATH,
+  RECEIVE_PRODUCT,
+  RECEIVE_PRODUCTS,
 } from '@shopgate/pwa-common-commerce/product/constants';
-import {
-  getCurrentProduct,
-  getCurrentBaseProductId,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { isProductChildrenSelected } from '@shopgate/pwa-common-commerce/product/selectors/variants';
+import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { pwaDidAppear$ } from './app';
 
 /**
@@ -28,41 +26,36 @@ export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT);
 
 /**
- * Emits when the current product id changed.
- */
-const currentProductIdChanged$ = main$
-  .filter(({ action, prevState }) => {
-    // Disabled for now since product data needs to be selected different within PWA 6.0
-    return false;
-    // eslint-disable-next-line no-unreachable
-    const prevId = getCurrentBaseProductId(prevState);
-    return (
-      action.type === SET_PRODUCT_ID &&
-      !!action.productId &&
-      action.productId !== prevId
-    );
-  });
-
-  /**
  * Emits when the category route comes active again after a legacy page was active.
  */
 const productRouteReappeared$ = pwaDidAppear$
-  .filter(({ pathname }) => pathname.startsWith(ITEM_PATH));
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId`);
+
+export const productDidEnter$ = routeDidEnter$.filter(({ action }) =>
+  action.route.pattern === `${ITEM_PATH}/:productId` &&
+  action.historyAction === HISTORY_PUSH_ACTION);
 
 /**
- * Emits when a product page is ready to be tracked, considering loaded or preloaded data.
+ * Emits when all necessary product data is present.
  */
-export const productIsReady$ = currentProductIdChanged$
+export const productIsReady$ = productDidEnter$
+  .zip(receivedVisibleProduct$)
+  .map(([, second]) => second)
   .switchMap((data) => {
-    const product = getCurrentProduct(data.getState()) !== null;
+    const { id, baseProductId } = data.action.productData;
 
-    // Return the productReceived$ stream if the product data is not there yet
-    if (!product) {
+    const productId = baseProductId !== null ? baseProductId : id;
+    const variantId = baseProductId !== null ? id : null;
+
+    const product = getProduct(data.getState(), { productId });
+
+    if (variantId && product === null) {
+      /**
+       * A PDP with a variant product was opened, but the base product is not fetched yet.
+       * So emitting of the stream is postponed till the data is present.
+       */
       return productReceived$;
     }
 
-    // Return a new stream that just emits with the current data.
     return Observable.of(data);
-  })
-  .filter(({ getState }) => !isProductChildrenSelected(getState()))
-  .merge(productRouteReappeared$);
+  });

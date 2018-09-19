@@ -1,9 +1,9 @@
-import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
-import { productIsReady$ } from '../streams/product';
+import { receivedVisibleProduct$ } from '@shopgate/pwa-common-commerce/product/streams';
+import { productIsReady$, variantDidChange$ } from '../streams/product';
 import {
   getSelectedVariantFormatted,
-  getCurrentBaseProductFormatted,
-  getCurrentProductFormatted,
+  getBaseProductFormatted,
+  getProductFormatted,
 } from '../selectors/product';
 import getPage from '../selectors/page';
 import { track } from '../helpers';
@@ -13,6 +13,40 @@ import { track } from '../helpers';
  * @param {Function} subscribe The subscribe function.
  */
 export default function product(subscribe) {
+  subscribe(receivedVisibleProduct$, ({ action, getState }) => {
+    const { id, baseProductId } = action.productData;
+
+    const props = {
+      productId: baseProductId !== null ? baseProductId : id,
+      variantId: baseProductId !== null ? id : null,
+    };
+
+    const state = getState();
+    let trackingData;
+
+    if (props.variantId) {
+      trackingData = {
+        variant: getSelectedVariantFormatted(state, props),
+        baseProduct: getBaseProductFormatted(state, props),
+      };
+    } else {
+      trackingData = {
+        page: getPage(state, props),
+        product: getProductFormatted(state, props),
+      };
+    }
+  });
+
+  subscribe(productIsReady$, (data) => {
+    console.warn('productIsReady$', data, data.action);
+  });
+}
+
+/**
+ * Product tracking subscriptions.
+ * @param {Function} subscribe The subscribe function.
+ */
+export function productx(subscribe) {
   /**
    * Gets triggered on product variant change/selection.
    */
@@ -20,7 +54,7 @@ export default function product(subscribe) {
     const state = getState();
     const trackingData = {
       variant: getSelectedVariantFormatted(state),
-      baseProduct: getCurrentBaseProductFormatted(state),
+      baseProduct: getBaseProductFormatted(state),
     };
 
     track('variantSelected', trackingData, state);
@@ -33,7 +67,7 @@ export default function product(subscribe) {
     const state = getState();
     const trackingData = {
       page: getPage(state),
-      product: getCurrentProductFormatted(state),
+      product: getProductFormatted(state),
     };
 
     track('viewContent', trackingData, state);

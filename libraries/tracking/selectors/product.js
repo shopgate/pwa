@@ -1,6 +1,11 @@
 import { createSelector } from 'reselect';
-import { getSelectedVariant } from '@shopgate/pwa-common-commerce/product/selectors/variants';
-import { getCurrentBaseProduct, getCurrentProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getBaseProduct,
+  getProduct,
+  getSelectedVariant,
+  hasProductVariants,
+  isBaseProduct,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { formatProductData } from '../helpers';
 
 /**
@@ -18,8 +23,8 @@ export const getSelectedVariantFormatted = createSelector(
  * @param {Object} state The current state.
  * @returns {Object} The formatted selected variant.
  */
-export const getCurrentBaseProductFormatted = createSelector(
-  getCurrentBaseProduct,
+export const getBaseProductFormatted = createSelector(
+  getBaseProduct,
   formatProductData
 );
 
@@ -28,8 +33,7 @@ export const getCurrentBaseProductFormatted = createSelector(
  * @param {Object} state The current state.
  * @returns {Object} The formatted selected variant.
  */
-export const getCurrentProductFormatted = createSelector(
-  getCurrentProduct,
+export const getProductFormatted = createSelector(
+  getProduct,
   formatProductData
 );
-

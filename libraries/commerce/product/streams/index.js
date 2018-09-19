@@ -57,6 +57,7 @@ const setVariantId$ = main$.filter(({ action }) => (
 /**
  * Gets triggered when VariantId changes and product data received for this variant.
  * @type {Observable}
+ * @deprecated
  */
 export const variantDidChangeUncached$ = setVariantId$
   .switchMap(({ action }) => (
@@ -75,5 +76,6 @@ const variantDidChangedCached = setVariantId$
 /**
  * Gets triggered when VariantId changes and product data is available.
  * @type {Observable}
+ * @deprecated
  */
 export const variantDidChange$ = variantDidChangeUncached$.merge(variantDidChangedCached);
