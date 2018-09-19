@@ -125,8 +125,10 @@ describe('Action Creators: user', () => {
 
   describe('errorUser()', () => {
     it('should work as expected', () => {
-      const expected = { type: ERROR_USER };
-      expect(errorUser()).toEqual(expected);
+      const err = new Error();
+      // eslint-disable-next-line extra-rules/no-single-line-objects
+      const expected = { type: ERROR_USER, error: err };
+      expect(errorUser(err)).toEqual(expected);
     });
   });
 
