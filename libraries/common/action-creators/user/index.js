@@ -100,10 +100,12 @@ export const receiveUser = user => ({
 
 /**
  * Creates the dispatched ERROR_USER action object.
- * @returns {Object} The dispatched action object.
+ * @param {Object} error error
+ @returns {Object} The dispatched action object.
  */
-export const errorUser = () => ({
+export const errorUser = error => ({
   type: ERROR_USER,
+  error,
 });
 
 /**
