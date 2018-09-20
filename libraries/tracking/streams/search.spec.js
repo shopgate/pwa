@@ -1,23 +1,38 @@
+import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { routeDidEnter, routeDidLeave } from '@shopgate/pwa-common/action-creators/router';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+import product from '@shopgate/pwa-common-commerce/product/reducers';
+import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
+import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import receiveSearchResults from '@shopgate/pwa-common-commerce/search/action-creators/receiveSearchResults';
 import { pwaDidAppear } from '../action-creators';
 import { searchIsReady$ } from './search';
 
-let mockedRoutePattern = '';
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedRoutePattern }));
+let mockedRoutePattern;
+let mockedSearchQuery;
+jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
+  pattern: mockedRoutePattern,
+  query: {
+    ...(mockedSearchQuery && { s: mockedSearchQuery }),
+  },
+  state: {},
+}));
 
 /**
  * A wrapper for the route did enter action creator. Beside returning the action object of the
  * original action creator, it also updates the pattern of the mocked current route.
  * @param {string} pattern The route pattern.
+ * @param {string} searchQuery A search phrase.
  * @return {Object} The dispatched action object.
  */
-const routeDidEnterWrapped = (pattern) => {
+const routeDidEnterWrapped = (pattern, searchQuery) => {
   mockedRoutePattern = pattern;
+  mockedSearchQuery = searchQuery;
+
   return routeDidEnter({
     pattern,
+    query: {
+      ...(searchQuery && { s: searchQuery }),
+    },
   });
 };
 
@@ -29,7 +44,8 @@ describe('Search streams', () => {
     jest.clearAllMocks();
 
     mockedRoutePattern = '';
-    ({ dispatch } = createMockStore());
+    mockedSearchQuery = null;
+    ({ dispatch } = createMockStore(combineReducers({ product })));
 
     searchIsReadySubscriber = jest.fn();
     searchIsReady$.subscribe(searchIsReadySubscriber);
@@ -37,15 +53,16 @@ describe('Search streams', () => {
 
   describe('searchIsReady$', () => {
     describe('search route', () => {
+      const searchQuery = 'Search Query';
+
       it('should emit when the search route is active and search results came in', () => {
-        dispatch(routeDidLeave('/somepath'));
-        dispatch(routeDidEnterWrapped(SEARCH_PATH));
+        dispatch(routeDidEnterWrapped(SEARCH_PATTERN, searchQuery));
         dispatch(receiveSearchResults());
         expect(searchIsReadySubscriber).toHaveBeenCalledTimes(1);
       });
 
       it('should not emit when search route is active but no search results came in yet', () => {
-        dispatch(routeDidEnterWrapped('/somepath'));
+        dispatch(routeDidEnterWrapped(SEARCH_PATTERN));
         expect(searchIsReadySubscriber).not.toHaveBeenCalled();
       });
 
@@ -58,7 +75,7 @@ describe('Search streams', () => {
 
     describe('coming back from legacy pages', () => {
       it('should emit when pwaDidAppear is dispatched and a search path is active', () => {
-        mockedRoutePattern = SEARCH_PATH;
+        mockedRoutePattern = SEARCH_PATTERN;
         dispatch(pwaDidAppear());
         expect(searchIsReadySubscriber).toHaveBeenCalledTimes(1);
       });
