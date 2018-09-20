@@ -39,3 +39,6 @@ export const TYPE_TRUSTED = 'trusted';
 export const EFAVORITE = 'EFAVORITE';
 export const EBIGAPI = 'EBIGAPI';
 
+// Validation errors
+export const EVALIDATION = 'EVALIDATION';
+
