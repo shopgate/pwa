@@ -3,7 +3,8 @@ import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/r
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
-  ITEM_PATH,
+  ITEM_PATTERN,
+  ITEM_GALLERY_PATTERN,
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCT_CACHED,
   SET_PRODUCT_VARIANT_ID,
@@ -11,13 +12,13 @@ import {
 import { getSelectedVariant } from '../selectors/variants';
 
 export const productWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId`);
+  .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
 
 export const galleryWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
+  .filter(({ action }) => action.route.pattern === ITEM_GALLERY_PATTERN);
 
 export const galleryWillLeave$ = routeWillLeave$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
+  .filter(({ action }) => action.route.pattern === ITEM_GALLERY_PATTERN);
 
 export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
