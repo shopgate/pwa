@@ -6,7 +6,7 @@ import { getLoadingViews } from '../../selectors/view';
 
 /**
  * Toggles the visibility of the loading bar for a pathname.
- * @param {boolean} pathname The pathname to set to be not loading.
+ * @param {string} pathname The pathname to set to be not loading.
  * @param {boolean} flush Sets counter to zero.
  * @return {Function} A redux thunk.
  */

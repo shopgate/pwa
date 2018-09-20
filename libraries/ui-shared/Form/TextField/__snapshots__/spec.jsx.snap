@@ -1,0 +1,2047 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField> should focus the input 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  onFocusChange={[MockFunction]}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[MockFunction]}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[MockFunction]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should receive the correct value while typing 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value="foobar"
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should render a simple text field 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should render the text field as password 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  password={true}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                password={true}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={true}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="password"
+                    value=""
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should render the text field with a default value 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value="FooBar"
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={true}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={true}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value="FooBar"
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value="FooBar"
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value="FooBar"
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should sanitize the input 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onSanitize={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value="FOOBAR"
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should show the error message 1`] = `
+<TextField
+  className=""
+  errorText="This is an error here"
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText="This is an error here"
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={true}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={true}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": "#ff0000",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText="This is an error here"
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string="This is an error here"
+          >
+            <span
+              className=""
+            >
+              This is an error here
+            </span>
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should show the label 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label="This is the label"
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label="This is the label"
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label="This is the label"
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string="This is the label"
+          >
+            <span
+              className=""
+            >
+              This is the label
+            </span>
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should show the placeholder text 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  placeholder="This is the placeholder text"
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder="This is the placeholder text"
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder="This is the placeholder text"
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string="This is the placeholder text"
+          >
+            <span
+              className=""
+            >
+              This is the placeholder text
+            </span>
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should trigger the onChange callback 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+        Array [
+          "a",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "",
+                      ],
+                      Array [
+                        "a",
+                      ],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          "",
+                        ],
+                        Array [
+                          "a",
+                        ],
+                      ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value="a"
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;
+
+exports[`<TextField> should trigger the validation callback 1`] = `
+<TextField
+  className=""
+  errorText=""
+  label=""
+  leftElement={null}
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  onValidate={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+          true,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder=""
+  rightElement={null}
+  type="text"
+  value=""
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
+    hasValue={false}
+    htmlFor="test-input"
+    isFocused={false}
+    label=""
+    placeholder=""
+    translateErrorText={true}
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="test-input"
+        isFloating={false}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-1fekhao"
+          htmlFor="test-input"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" css-h7r55a"
+        >
+          <GridItem
+            className=""
+            component="li"
+            grow={1}
+            shrink={1}
+          >
+            <li
+              className=" css-1gs0ko2"
+            >
+              <Component
+                className="css-xtw4m3"
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onValidate={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "",
+                        true,
+                      ],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
+                type="text"
+                validateOnBlur={true}
+                value=""
+              >
+                <SimpleInput
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="css-xtw4m3"
+                  disabled={false}
+                  id={null}
+                  isControlled={false}
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          "",
+                          true,
+                        ],
+                      ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
+                    className="css-xtw4m3"
+                    disabled={false}
+                    id={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </Component>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
+      <Underline
+        hasErrorMessage={false}
+        isFocused={false}
+      >
+        <div
+          className="css-ycal4l"
+        >
+          <div
+            className="css-1tpmuef"
+            style={
+              Object {
+                "borderBottomColor": undefined,
+                "transform": "scale3d(0,1,1)",
+              }
+            }
+          />
+        </div>
+      </Underline>
+      <ErrorText
+        className={null}
+        errorText=""
+        translate={true}
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</TextField>
+`;

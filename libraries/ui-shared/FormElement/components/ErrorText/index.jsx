@@ -9,20 +9,23 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ErrorText = ({ className, error, errorText }) => (
-  <div className={classNames(className, error)}>
-    <I18n.Text string={errorText} />
+const ErrorText = ({ className, errorText, translate }) => (
+  <div className={classNames(className, styles.error)}>
+    {translate && <I18n.Text string={errorText} />}
+    {!translate && errorText}
   </div>
 );
 
 ErrorText.propTypes = {
   className: PropTypes.string,
   errorText: PropTypes.string,
+  translate: PropTypes.bool,
 };
 
 ErrorText.defaultProps = {
   className: null,
   errorText: null,
+  translate: true,
 };
 
 export default ErrorText;
