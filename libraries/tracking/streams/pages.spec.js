@@ -2,10 +2,7 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
 import { setPWAVisibleState } from '../helpers';
 import { pwaDidAppear } from '../action-creators';
-import {
-  blacklistedPaths,
-  pagesAreReady$,
-} from './pages';
+import { blacklistedPatterns, pagesAreReady$ } from './pages';
 
 let mockedPattern;
 jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedPattern }));
@@ -48,7 +45,7 @@ describe('Page streams', () => {
     });
 
     it('should not emit when a blacklisted route is active', () => {
-      dispatch(routeDidEnterWrapped(blacklistedPaths[0]));
+      dispatch(routeDidEnterWrapped(blacklistedPatterns[0]));
       expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
     });
 
@@ -67,7 +64,7 @@ describe('Page streams', () => {
     });
 
     it('should not emit when pwaDidAppear is dispatched and a blacklisted is active', () => {
-      dispatch(routeDidEnterWrapped(blacklistedPaths[0]));
+      dispatch(routeDidEnterWrapped(blacklistedPatterns[0]));
       dispatch(pwaDidAppear());
       expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
     });

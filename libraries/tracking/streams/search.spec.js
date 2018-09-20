@@ -21,7 +21,7 @@ jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
  * A wrapper for the route did enter action creator. Beside returning the action object of the
  * original action creator, it also updates the pattern of the mocked current route.
  * @param {string} pattern The route pattern.
- * @param {string} searchQuery A search phrase.
+ * @param {string} searchQuery A search query.
  * @return {Object} The dispatched action object.
  */
 const routeDidEnterWrapped = (pattern, searchQuery) => {
@@ -67,21 +67,21 @@ describe('Search streams', () => {
       });
 
       it('should not emit when search results came in but the route is not active', () => {
-        dispatch(routeDidEnterWrapped('/somepath'));
+        dispatch(routeDidEnterWrapped('/some/pattern'));
         dispatch(receiveSearchResults());
         expect(searchIsReadySubscriber).not.toHaveBeenCalled();
       });
     });
 
-    describe('coming back from legacy pages', () => {
-      it('should emit when pwaDidAppear is dispatched and a search path is active', () => {
+    describe('navigating back from legacy pages', () => {
+      it('should emit when pwaDidAppear is dispatched and a search route is active', () => {
         mockedRoutePattern = SEARCH_PATTERN;
         dispatch(pwaDidAppear());
         expect(searchIsReadySubscriber).toHaveBeenCalledTimes(1);
       });
 
-      it('should not emit when pwaDidAppear is dispatched and no search path is active', () => {
-        mockedRoutePattern = '/somepath';
+      it('should not emit when pwaDidAppear is dispatched and no search route is active', () => {
+        mockedRoutePattern = '/some/pattern';
         dispatch(pwaDidAppear());
         expect(searchIsReadySubscriber).not.toHaveBeenCalled();
       });
