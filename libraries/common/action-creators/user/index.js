@@ -38,12 +38,14 @@ export const successLogin = () => ({
 
 /**
  * Creates the dispatched ERROR_LOGIN action object.
- * @param {Array} [messages=[]] Array of error messages
+ * @param {Array} [messages=[]] Array of error messages.
+ * @param {string} code The specific error code.
  * @returns {Object} The dispatched action object.
  */
-export const errorLogin = (messages = []) => ({
+export const errorLogin = (messages = [], code = '') => ({
   type: ERROR_LOGIN,
   messages,
+  code,
 });
 
 /**
