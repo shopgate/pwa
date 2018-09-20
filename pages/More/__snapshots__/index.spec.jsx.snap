@@ -127,865 +127,35 @@ exports[`More should render for logged in user 1`] = `
             name="nav-menu.content.before"
             props={
               Object {
+                "Headline": [Function],
                 "Item": [Function],
+                "List": [Function],
               }
             }
           />
-          <Headline
-            small={true}
-            text="navigation.store_information"
-          >
-            <h2
-              className="css-gi5f02"
-              data-test-id="greeting"
-            >
-              <Ellipsis
-                className=""
-                ellipsis="..."
-                rows={3}
-              >
-                <Dotdotdot
-                  clamp={3}
-                  className=""
-                  ellipsis="..."
-                  tagName="div"
-                  truncationChar="…"
-                  useNativeClamp={true}
-                >
-                  <div
-                    className=""
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="navigation.store_information"
-                    >
-                      <span
-                        className=""
-                      >
-                        navigation.store_information
-                      </span>
-                    </Translate>
-                  </div>
-                </Dotdotdot>
-              </Ellipsis>
-            </h2>
-          </Headline>
-          <List
-            className=""
-            hasImages={false}
-          >
-            <List
-              className="css-1tmmo7v"
-            >
-              <ul
-                className="css-gkw1j5 css-1tmmo7v"
-              >
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-0/.0"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.shipping.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-1/.1"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.shipping"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/shipping"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.shipping"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
-                            }
-                          >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
-                            >
-                              <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/shipping"
-                                onClick={null}
-                              >
-                                <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/shipping"
-                                  onClick={[Function]}
-                                  role="link"
-                                >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
-                                  >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
-                                    >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
-                                      >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
-                                        >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.shipping"
-                                          >
-                                            <span
-                                              className=""
-                                            >
-                                              navigation.shipping
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-2/.2"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.shipping.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-3/.3"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.payment.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-4/.4"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.payment"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/payment"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.payment"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
-                            }
-                          >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
-                            >
-                              <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/payment"
-                                onClick={null}
-                              >
-                                <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/payment"
-                                  onClick={[Function]}
-                                  role="link"
-                                >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
-                                  >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
-                                    >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
-                                      >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
-                                        >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.payment"
-                                          >
-                                            <span
-                                              className=""
-                                            >
-                                              navigation.payment
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-5/.5"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.payment.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-6/.6"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.terms.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-7/.7"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.terms"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/terms"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.terms"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
-                            }
-                          >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
-                            >
-                              <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/terms"
-                                onClick={null}
-                              >
-                                <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/terms"
-                                  onClick={[Function]}
-                                  role="link"
-                                >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
-                                  >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
-                                    >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
-                                      >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
-                                        >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.terms"
-                                          >
-                                            <span
-                                              className=""
-                                            >
-                                              navigation.terms
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-8/.8"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.terms.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-9/.9"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.privacy.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-10/.a"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.privacy"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/privacy"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.privacy"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
-                            }
-                          >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
-                            >
-                              <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/privacy"
-                                onClick={null}
-                              >
-                                <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/privacy"
-                                  onClick={[Function]}
-                                  role="link"
-                                >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
-                                  >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
-                                    >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
-                                      >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
-                                        >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.privacy"
-                                          >
-                                            <span
-                                              className=""
-                                            >
-                                              navigation.privacy
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-11/.b"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.privacy.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-12/.c"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.return-policy.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-14/.e"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.return-policy.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-15/.f"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.imprint.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-16/.g"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.imprint"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/imprint"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.about"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
-                            }
-                          >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
-                            >
-                              <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/imprint"
-                                onClick={null}
-                              >
-                                <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/imprint"
-                                  onClick={[Function]}
-                                  role="link"
-                                >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
-                                  >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
-                                    >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
-                                      >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
-                                        >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.about"
-                                          >
-                                            <span
-                                              className=""
-                                            >
-                                              navigation.about
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-17/.h"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.imprint.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-              </ul>
-            </List>
-          </List>
-          <UserMenu
-            entries={
+          <Portal
+            name="nav-menu.store-information.before"
+            props={
               Object {
-                "quicklinks": undefined,
+                "Headline": [Function],
+                "Item": [Function],
+                "List": [Function],
               }
             }
-            isLoggedIn={true}
-            logout={[Function]}
-            user={
+          />
+          <Portal
+            name="nav-menu.store-information"
+            props={
               Object {
-                "firstName": "John",
-                "lastName": "Doe",
+                "Headline": [Function],
+                "Item": [Function],
+                "List": [Function],
               }
             }
           >
             <Headline
               small={true}
-              text="navigation.your_account"
+              text="navigation.store_information"
             >
               <h2
                 className="css-gi5f02"
@@ -1010,12 +180,12 @@ exports[`More should render for logged in user 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
-                        string="navigation.your_account"
+                        string="navigation.store_information"
                       >
                         <span
                           className=""
                         >
-                          navigation.your_account
+                          navigation.store_information
                         </span>
                       </Translate>
                     </div>
@@ -1023,6 +193,863 @@ exports[`More should render for logged in user 1`] = `
                 </Ellipsis>
               </h2>
             </Headline>
+            <List
+              className=""
+              hasImages={false}
+            >
+              <List
+                className="css-1tmmo7v"
+              >
+                <ul
+                  className="css-gkw1j5 css-1tmmo7v"
+                >
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-0/.0"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.shipping.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-1/.1"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.shipping"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/shipping"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.shipping"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/shipping"
+                                  onClick={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/shipping"
+                                    onClick={[Function]}
+                                    role="link"
+                                  >
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
+                                    >
+                                      <div
+                                        className="css-l3889c css-h7r55a"
+                                      >
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
+                                          >
+                                            <Translate
+                                              className=""
+                                              params={Object {}}
+                                              string="navigation.shipping"
+                                            >
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.shipping
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-2/.2"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.shipping.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-3/.3"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.payment.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-4/.4"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.payment"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/payment"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.payment"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/payment"
+                                  onClick={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/payment"
+                                    onClick={[Function]}
+                                    role="link"
+                                  >
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
+                                    >
+                                      <div
+                                        className="css-l3889c css-h7r55a"
+                                      >
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
+                                          >
+                                            <Translate
+                                              className=""
+                                              params={Object {}}
+                                              string="navigation.payment"
+                                            >
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.payment
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-5/.5"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.payment.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-6/.6"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.terms.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-7/.7"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.terms"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/terms"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.terms"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/terms"
+                                  onClick={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/terms"
+                                    onClick={[Function]}
+                                    role="link"
+                                  >
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
+                                    >
+                                      <div
+                                        className="css-l3889c css-h7r55a"
+                                      >
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
+                                          >
+                                            <Translate
+                                              className=""
+                                              params={Object {}}
+                                              string="navigation.terms"
+                                            >
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.terms
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-8/.8"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.terms.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-9/.9"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.privacy.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-10/.a"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.privacy"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/privacy"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.privacy"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/privacy"
+                                  onClick={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/privacy"
+                                    onClick={[Function]}
+                                    role="link"
+                                  >
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
+                                    >
+                                      <div
+                                        className="css-l3889c css-h7r55a"
+                                      >
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
+                                          >
+                                            <Translate
+                                              className=""
+                                              params={Object {}}
+                                              string="navigation.privacy"
+                                            >
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.privacy
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-11/.b"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.privacy.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-12/.c"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.return-policy.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-14/.e"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.return-policy.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-15/.f"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.imprint.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-16/.g"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.imprint"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/imprint"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.about"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/imprint"
+                                  onClick={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/imprint"
+                                    onClick={[Function]}
+                                    role="link"
+                                  >
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
+                                    >
+                                      <div
+                                        className="css-l3889c css-h7r55a"
+                                      >
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
+                                          >
+                                            <Translate
+                                              className=""
+                                              params={Object {}}
+                                              string="navigation.about"
+                                            >
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.about
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-17/.h"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.imprint.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                </ul>
+              </List>
+            </List>
+          </Portal>
+          <Portal
+            name="nav-menu.store-information.after"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+                "List": [Function],
+              }
+            }
+          />
+          <UserMenu
+            entries={
+              Object {
+                "quicklinks": undefined,
+              }
+            }
+            isLoggedIn={true}
+            logout={[Function]}
+            user={
+              Object {
+                "firstName": "John",
+                "lastName": "Doe",
+              }
+            }
+          >
             <Portal
               name="user-menu.container.before"
               props={
@@ -1060,162 +1087,227 @@ exports[`More should render for logged in user 1`] = `
               <LoggedIn
                 logout={[Function]}
               >
-                <div
-                  data-test-id="userMenu"
+                <Portal
+                  name="nav-menu.my-account.before"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                />
+                <Portal
+                  name="nav-menu.my-account"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
                 >
-                  <List
-                    className=""
-                    hasImages={false}
+                  <div
+                    data-test-id="userMenu"
                   >
-                    <List
-                      className="css-1tmmo7v"
+                    <Headline
+                      small={true}
+                      text="navigation.your_account"
                     >
-                      <ul
-                        className="css-gkw1j5 css-1tmmo7v"
+                      <h2
+                        className="css-gi5f02"
+                        data-test-id="greeting"
                       >
-                        <ListItem
-                          className={null}
-                          isSelected={false}
-                          key="child-0/.0"
+                        <Ellipsis
+                          className=""
+                          ellipsis="..."
+                          rows={3}
                         >
-                          <li
-                            className="css-1p5q8vq css-16gj3o1"
+                          <Dotdotdot
+                            clamp={3}
+                            className=""
+                            ellipsis="..."
+                            tagName="div"
+                            truncationChar="…"
+                            useNativeClamp={true}
                           >
                             <div
-                              className="css-15cnm0c"
+                              className=""
                             >
-                              <Portal
-                                name="nav-menu.logout.before"
-                                props={
-                                  Object {
-                                    "Item": [Function],
-                                  }
-                                }
-                              />
-                            </div>
-                          </li>
-                        </ListItem>
-                        <ListItem
-                          className={null}
-                          isSelected={false}
-                          key="child-1/.1"
-                        >
-                          <li
-                            className="css-1p5q8vq css-16gj3o1"
-                          >
-                            <div
-                              className="css-15cnm0c"
-                            >
-                              <Portal
-                                name="nav-menu.logout"
-                                props={
-                                  Object {
-                                    "Item": [Function],
-                                  }
-                                }
+                              <Translate
+                                className=""
+                                params={Object {}}
+                                string="navigation.your_account"
                               >
-                                <Item
-                                  className={null}
-                                  image={null}
-                                  isDisabled={false}
-                                  isSelected={false}
-                                  link={null}
-                                  onClick={[Function]}
-                                  rightComponent={null}
-                                  testId="logoutButton"
-                                  title="navigation.logout"
+                                <span
+                                  className=""
                                 >
-                                  <div
-                                    aria-hidden={true}
-                                    data-test-id="logoutButton"
+                                  navigation.your_account
+                                </span>
+                              </Translate>
+                            </div>
+                          </Dotdotdot>
+                        </Ellipsis>
+                      </h2>
+                    </Headline>
+                    <List
+                      className=""
+                      hasImages={false}
+                    >
+                      <List
+                        className="css-1tmmo7v"
+                      >
+                        <ul
+                          className="css-gkw1j5 css-1tmmo7v"
+                        >
+                          <ListItem
+                            className={null}
+                            isSelected={false}
+                            key="child-0/.0"
+                          >
+                            <li
+                              className="css-1p5q8vq css-16gj3o1"
+                            >
+                              <div
+                                className="css-15cnm0c"
+                              >
+                                <Portal
+                                  name="nav-menu.logout.before"
+                                  props={
+                                    Object {
+                                      "Item": [Function],
+                                    }
+                                  }
+                                />
+                              </div>
+                            </li>
+                          </ListItem>
+                          <ListItem
+                            className={null}
+                            isSelected={false}
+                            key="child-1/.1"
+                          >
+                            <li
+                              className="css-1p5q8vq css-16gj3o1"
+                            >
+                              <div
+                                className="css-15cnm0c"
+                              >
+                                <Portal
+                                  name="nav-menu.logout"
+                                  props={
+                                    Object {
+                                      "Item": [Function],
+                                    }
+                                  }
+                                >
+                                  <Item
+                                    className={null}
+                                    image={null}
+                                    isDisabled={false}
+                                    isSelected={false}
+                                    link={null}
                                     onClick={[Function]}
+                                    rightComponent={null}
+                                    testId="logoutButton"
+                                    title="navigation.logout"
                                   >
-                                    <Glow
-                                      className={null}
-                                      color="#f7f7f7"
-                                      styles={
-                                        Object {
-                                          "container": null,
-                                          "glow": null,
-                                        }
-                                      }
+                                    <div
+                                      aria-hidden={true}
+                                      data-test-id="logoutButton"
+                                      onClick={[Function]}
                                     >
-                                      <div
-                                        aria-hidden={true}
-                                        className="css-13azwyo"
-                                        onTouchTap={[Function]}
-                                        style={null}
+                                      <Glow
+                                        className={null}
+                                        color="#f7f7f7"
+                                        styles={
+                                          Object {
+                                            "container": null,
+                                            "glow": null,
+                                          }
+                                        }
                                       >
                                         <div
-                                          className="css-1bmd5dz"
-                                          style={Object {}}
-                                        />
-                                        <Grid
-                                          className="css-l3889c"
-                                          component="div"
-                                          wrap={false}
+                                          aria-hidden={true}
+                                          className="css-13azwyo"
+                                          onTouchTap={[Function]}
+                                          style={null}
                                         >
                                           <div
-                                            className="css-l3889c css-h7r55a"
+                                            className="css-1bmd5dz"
+                                            style={Object {}}
+                                          />
+                                          <Grid
+                                            className="css-l3889c"
+                                            component="div"
+                                            wrap={false}
                                           >
-                                            <GridItem
-                                              className="css-10fxwvh"
-                                              component="div"
-                                              grow={1}
-                                              shrink={1}
+                                            <div
+                                              className="css-l3889c css-h7r55a"
                                             >
-                                              <div
-                                                className="css-10fxwvh css-1gs0ko2"
+                                              <GridItem
+                                                className="css-10fxwvh"
+                                                component="div"
+                                                grow={1}
+                                                shrink={1}
                                               >
-                                                <Translate
-                                                  className=""
-                                                  params={Object {}}
-                                                  string="navigation.logout"
+                                                <div
+                                                  className="css-10fxwvh css-1gs0ko2"
                                                 >
-                                                  <span
+                                                  <Translate
                                                     className=""
+                                                    params={Object {}}
+                                                    string="navigation.logout"
                                                   >
-                                                    navigation.logout
-                                                  </span>
-                                                </Translate>
-                                              </div>
-                                            </GridItem>
-                                          </div>
-                                        </Grid>
-                                      </div>
-                                    </Glow>
-                                  </div>
-                                </Item>
-                              </Portal>
-                            </div>
-                          </li>
-                        </ListItem>
-                        <ListItem
-                          className={null}
-                          isSelected={false}
-                          key="child-2/.2"
-                        >
-                          <li
-                            className="css-1p5q8vq css-16gj3o1"
+                                                    <span
+                                                      className=""
+                                                    >
+                                                      navigation.logout
+                                                    </span>
+                                                  </Translate>
+                                                </div>
+                                              </GridItem>
+                                            </div>
+                                          </Grid>
+                                        </div>
+                                      </Glow>
+                                    </div>
+                                  </Item>
+                                </Portal>
+                              </div>
+                            </li>
+                          </ListItem>
+                          <ListItem
+                            className={null}
+                            isSelected={false}
+                            key="child-2/.2"
                           >
-                            <div
-                              className="css-15cnm0c"
+                            <li
+                              className="css-1p5q8vq css-16gj3o1"
                             >
-                              <Portal
-                                name="nav-menu.logout.after"
-                                props={
-                                  Object {
-                                    "Item": [Function],
+                              <div
+                                className="css-15cnm0c"
+                              >
+                                <Portal
+                                  name="nav-menu.logout.after"
+                                  props={
+                                    Object {
+                                      "Item": [Function],
+                                    }
                                   }
-                                }
-                              />
-                            </div>
-                          </li>
-                        </ListItem>
-                      </ul>
+                                />
+                              </div>
+                            </li>
+                          </ListItem>
+                        </ul>
+                      </List>
                     </List>
-                  </List>
-                </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="nav-menu.my-account.after"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                />
               </LoggedIn>
             </Portal>
             <Portal
@@ -1240,7 +1332,9 @@ exports[`More should render for logged in user 1`] = `
             name="nav-menu.content.after"
             props={
               Object {
+                "Headline": [Function],
                 "Item": [Function],
+                "List": [Function],
               }
             }
           />
@@ -1584,852 +1678,921 @@ exports[`More should render for logged out user 1`] = `
             name="nav-menu.content.before"
             props={
               Object {
+                "Headline": [Function],
                 "Item": [Function],
+                "List": [Function],
               }
             }
           />
-          <Headline
-            small={true}
-            text="navigation.store_information"
+          <Portal
+            name="nav-menu.store-information.before"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+                "List": [Function],
+              }
+            }
+          />
+          <Portal
+            name="nav-menu.store-information"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+                "List": [Function],
+              }
+            }
           >
-            <h2
-              className="css-gi5f02"
-              data-test-id="greeting"
+            <Headline
+              small={true}
+              text="navigation.store_information"
             >
-              <Ellipsis
-                className=""
-                ellipsis="..."
-                rows={3}
+              <h2
+                className="css-gi5f02"
+                data-test-id="greeting"
               >
-                <Dotdotdot
-                  clamp={3}
+                <Ellipsis
                   className=""
                   ellipsis="..."
-                  tagName="div"
-                  truncationChar="…"
-                  useNativeClamp={true}
+                  rows={3}
                 >
-                  <div
+                  <Dotdotdot
+                    clamp={3}
                     className=""
+                    ellipsis="..."
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
                   >
-                    <Translate
+                    <div
                       className=""
-                      params={Object {}}
-                      string="navigation.store_information"
                     >
-                      <span
+                      <Translate
                         className=""
+                        params={Object {}}
+                        string="navigation.store_information"
                       >
-                        navigation.store_information
-                      </span>
-                    </Translate>
-                  </div>
-                </Dotdotdot>
-              </Ellipsis>
-            </h2>
-          </Headline>
-          <List
-            className=""
-            hasImages={false}
-          >
+                        <span
+                          className=""
+                        >
+                          navigation.store_information
+                        </span>
+                      </Translate>
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </h2>
+            </Headline>
             <List
-              className="css-1tmmo7v"
+              className=""
+              hasImages={false}
             >
-              <ul
-                className="css-gkw1j5 css-1tmmo7v"
+              <List
+                className="css-1tmmo7v"
               >
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-0/.0"
+                <ul
+                  className="css-gkw1j5 css-1tmmo7v"
                 >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-0/.0"
                   >
-                    <div
-                      className="css-15cnm0c"
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
                     >
-                      <Portal
-                        name="nav-menu.shipping.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-1/.1"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.shipping"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
+                      <div
+                        className="css-15cnm0c"
                       >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/shipping"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.shipping"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
+                        <Portal
+                          name="nav-menu.shipping.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
                             }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-1/.1"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.shipping"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/shipping"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.shipping"
                           >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
                             >
                               <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/shipping"
-                                onClick={null}
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
                               >
                                 <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/shipping"
-                                  onClick={[Function]}
-                                  role="link"
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/shipping"
+                                  onClick={null}
                                 >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/shipping"
+                                    onClick={[Function]}
+                                    role="link"
                                   >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
                                     >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
+                                      <div
+                                        className="css-l3889c css-h7r55a"
                                       >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
                                         >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.shipping"
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
                                           >
-                                            <span
+                                            <Translate
                                               className=""
+                                              params={Object {}}
+                                              string="navigation.shipping"
                                             >
-                                              navigation.shipping
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-2/.2"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.shipping
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-2/.2"
                   >
-                    <div
-                      className="css-15cnm0c"
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
                     >
-                      <Portal
-                        name="nav-menu.shipping.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-3/.3"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.payment.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-4/.4"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.payment"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
+                      <div
+                        className="css-15cnm0c"
                       >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/payment"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.payment"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
+                        <Portal
+                          name="nav-menu.shipping.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
                             }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-3/.3"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.payment.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-4/.4"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.payment"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/payment"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.payment"
                           >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
                             >
                               <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/payment"
-                                onClick={null}
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
                               >
                                 <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/payment"
-                                  onClick={[Function]}
-                                  role="link"
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/payment"
+                                  onClick={null}
                                 >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/payment"
+                                    onClick={[Function]}
+                                    role="link"
                                   >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
                                     >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
+                                      <div
+                                        className="css-l3889c css-h7r55a"
                                       >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
                                         >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.payment"
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
                                           >
-                                            <span
+                                            <Translate
                                               className=""
+                                              params={Object {}}
+                                              string="navigation.payment"
                                             >
-                                              navigation.payment
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-5/.5"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.payment
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-5/.5"
                   >
-                    <div
-                      className="css-15cnm0c"
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
                     >
-                      <Portal
-                        name="nav-menu.payment.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-6/.6"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.terms.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-7/.7"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.terms"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
+                      <div
+                        className="css-15cnm0c"
                       >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/terms"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.terms"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
+                        <Portal
+                          name="nav-menu.payment.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
                             }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-6/.6"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.terms.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-7/.7"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.terms"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/terms"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.terms"
                           >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
                             >
                               <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/terms"
-                                onClick={null}
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
                               >
                                 <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/terms"
-                                  onClick={[Function]}
-                                  role="link"
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/terms"
+                                  onClick={null}
                                 >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/terms"
+                                    onClick={[Function]}
+                                    role="link"
                                   >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
                                     >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
+                                      <div
+                                        className="css-l3889c css-h7r55a"
                                       >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
                                         >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.terms"
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
                                           >
-                                            <span
+                                            <Translate
                                               className=""
+                                              params={Object {}}
+                                              string="navigation.terms"
                                             >
-                                              navigation.terms
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-8/.8"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.terms
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-8/.8"
                   >
-                    <div
-                      className="css-15cnm0c"
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
                     >
-                      <Portal
-                        name="nav-menu.terms.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-9/.9"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.privacy.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-10/.a"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.privacy"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
+                      <div
+                        className="css-15cnm0c"
                       >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/privacy"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.privacy"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
+                        <Portal
+                          name="nav-menu.terms.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
                             }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-9/.9"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.privacy.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-10/.a"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.privacy"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/privacy"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.privacy"
                           >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
                             >
                               <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/privacy"
-                                onClick={null}
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
                               >
                                 <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/privacy"
-                                  onClick={[Function]}
-                                  role="link"
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/privacy"
+                                  onClick={null}
                                 >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/privacy"
+                                    onClick={[Function]}
+                                    role="link"
                                   >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
                                     >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
+                                      <div
+                                        className="css-l3889c css-h7r55a"
                                       >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
                                         >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.privacy"
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
                                           >
-                                            <span
+                                            <Translate
                                               className=""
+                                              params={Object {}}
+                                              string="navigation.privacy"
                                             >
-                                              navigation.privacy
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-11/.b"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.privacy
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-11/.b"
                   >
-                    <div
-                      className="css-15cnm0c"
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
                     >
-                      <Portal
-                        name="nav-menu.privacy.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-12/.c"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.return-policy.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-14/.e"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.return-policy.after"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-15/.f"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.imprint.before"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-16/.g"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
-                  >
-                    <div
-                      className="css-15cnm0c"
-                    >
-                      <Portal
-                        name="nav-menu.imprint"
-                        props={
-                          Object {
-                            "Item": [Function],
-                          }
-                        }
+                      <div
+                        className="css-15cnm0c"
                       >
-                        <Item
-                          className={null}
-                          image={null}
-                          isDisabled={false}
-                          isSelected={false}
-                          link="/page/imprint"
-                          onClick={null}
-                          rightComponent={null}
-                          testId={null}
-                          title="navigation.about"
-                        >
-                          <Glow
-                            className={null}
-                            color="#f7f7f7"
-                            styles={
-                              Object {
-                                "container": null,
-                                "glow": null,
-                              }
+                        <Portal
+                          name="nav-menu.privacy.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
                             }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-12/.c"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.return-policy.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-14/.e"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.return-policy.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-15/.f"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.imprint.before"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-16/.g"
+                  >
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
+                    >
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.imprint"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/page/imprint"
+                            onClick={null}
+                            rightComponent={null}
+                            testId={null}
+                            title="navigation.about"
                           >
-                            <div
-                              aria-hidden={true}
-                              className="css-13azwyo"
-                              onTouchTap={[Function]}
-                              style={null}
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
                             >
                               <div
-                                className="css-1bmd5dz"
-                                style={Object {}}
-                              />
-                              <Link
-                                className=""
-                                disabled={false}
-                                href="/page/imprint"
-                                onClick={null}
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onTouchTap={[Function]}
+                                style={null}
                               >
                                 <div
-                                  aria-hidden={true}
-                                  className="css-c6ki83 "
-                                  data-test-id="link: /page/imprint"
-                                  onClick={[Function]}
-                                  role="link"
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Link
+                                  className=""
+                                  disabled={false}
+                                  href="/page/imprint"
+                                  onClick={null}
                                 >
-                                  <Grid
-                                    className="css-l3889c"
-                                    component="div"
-                                    wrap={false}
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-c6ki83 "
+                                    data-test-id="link: /page/imprint"
+                                    onClick={[Function]}
+                                    role="link"
                                   >
-                                    <div
-                                      className="css-l3889c css-h7r55a"
+                                    <Grid
+                                      className="css-l3889c"
+                                      component="div"
+                                      wrap={false}
                                     >
-                                      <GridItem
-                                        className="css-10fxwvh"
-                                        component="div"
-                                        grow={1}
-                                        shrink={1}
+                                      <div
+                                        className="css-l3889c css-h7r55a"
                                       >
-                                        <div
-                                          className="css-10fxwvh css-1gs0ko2"
+                                        <GridItem
+                                          className="css-10fxwvh"
+                                          component="div"
+                                          grow={1}
+                                          shrink={1}
                                         >
-                                          <Translate
-                                            className=""
-                                            params={Object {}}
-                                            string="navigation.about"
+                                          <div
+                                            className="css-10fxwvh css-1gs0ko2"
                                           >
-                                            <span
+                                            <Translate
                                               className=""
+                                              params={Object {}}
+                                              string="navigation.about"
                                             >
-                                              navigation.about
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </GridItem>
-                                    </div>
-                                  </Grid>
-                                </div>
-                              </Link>
-                            </div>
-                          </Glow>
-                        </Item>
-                      </Portal>
-                    </div>
-                  </li>
-                </ListItem>
-                <ListItem
-                  className={null}
-                  isSelected={false}
-                  key="child-17/.h"
-                >
-                  <li
-                    className="css-1p5q8vq css-16gj3o1"
+                                              <span
+                                                className=""
+                                              >
+                                                navigation.about
+                                              </span>
+                                            </Translate>
+                                          </div>
+                                        </GridItem>
+                                      </div>
+                                    </Grid>
+                                  </div>
+                                </Link>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className={null}
+                    isSelected={false}
+                    key="child-17/.h"
                   >
-                    <div
-                      className="css-15cnm0c"
+                    <li
+                      className="css-1p5q8vq css-16gj3o1"
                     >
-                      <Portal
-                        name="nav-menu.imprint.after"
-                        props={
-                          Object {
-                            "Item": [Function],
+                      <div
+                        className="css-15cnm0c"
+                      >
+                        <Portal
+                          name="nav-menu.imprint.after"
+                          props={
+                            Object {
+                              "Headline": [Function],
+                              "Item": [Function],
+                              "List": [Function],
+                            }
                           }
-                        }
-                      />
-                    </div>
-                  </li>
-                </ListItem>
-              </ul>
+                        />
+                      </div>
+                    </li>
+                  </ListItem>
+                </ul>
+              </List>
             </List>
-          </List>
+          </Portal>
+          <Portal
+            name="nav-menu.store-information.after"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+                "List": [Function],
+              }
+            }
+          />
           <Portal
             name="nav-menu.content.after"
             props={
               Object {
+                "Headline": [Function],
                 "Item": [Function],
+                "List": [Function],
               }
             }
           />
