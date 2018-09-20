@@ -55,17 +55,28 @@ describe('Action Creators: user', () => {
     it('should work as expected', () => {
       const expected = {
         type: ERROR_LOGIN,
+        code: 'EUNKNOWN',
         messages,
       };
-      expect(errorLogin(messages)).toEqual(expected);
+      expect(errorLogin(messages, 'EUNKNOWN')).toEqual(expected);
     });
 
     it('should work as expected when the messages parameter is empty', () => {
       const expected = {
         type: ERROR_LOGIN,
+        code: 'EUNKNOWN',
         messages: [],
       };
-      expect(errorLogin()).toEqual(expected);
+      expect(errorLogin(undefined, 'EUNKNOWN')).toEqual(expected);
+    });
+
+    it('should work as expected when the code paramter is empty', () => {
+      const expected = {
+        type: ERROR_LOGIN,
+        code: '',
+        messages,
+      };
+      expect(errorLogin(messages)).toEqual(expected);
     });
   });
 
