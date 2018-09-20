@@ -43,6 +43,6 @@ export default () => (dispatch, getState) => {
           break;
       }
 
-      dispatch(errorUser());
+      dispatch(errorUser(error));
     });
 };
