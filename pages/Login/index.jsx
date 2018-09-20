@@ -12,6 +12,9 @@ import {
   PAGE_LOGIN_REGISTER_LINK_BEFORE,
   PAGE_LOGIN_REGISTER_LINK,
   PAGE_LOGIN_REGISTER_LINK_AFTER,
+  PAGE_LOGIN_FORM_BEFORE,
+  PAGE_LOGIN_FORM,
+  PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import connect from './connector';
@@ -108,35 +111,41 @@ class Login extends Component {
             <div className={styles.subline}>
               <I18n.Text string="login.subline" />
             </div>
-            { /* No validate, browsers reject IDN emails! */ }
-            <form onSubmit={this.handleSubmitForm} noValidate>
-              <TextField
-                type="email"
-                name="email"
-                className={styles.input}
-                label="login.email"
-                onChange={this.handleEmailChange}
-                value={this.state.login}
-                setRef={this.setUserFieldRef}
-              />
-              <TextField
-                password
-                name="password"
-                className={styles.input}
-                label="login.password"
-                onChange={this.handlePasswordChange}
-                value={this.state.password}
-                setRef={this.setPasswordFieldRef}
-              />
-              <div className={styles.forgotWrapper}>
-                <ForgotPassword />
-              </div>
-              <div className={styles.buttonWrapper} data-test-id="LoginButton">
-                <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
-                  <I18n.Text string="login.button" />
-                </RippleButton>
-              </div>
-            </form>
+            <Portal name={PAGE_LOGIN_FORM_BEFORE}>
+              <div className={styles.padLine} />
+            </Portal>
+            <Portal name={PAGE_LOGIN_FORM}>
+              { /* No validate, browsers reject IDN emails! */ }
+              <form onSubmit={this.handleSubmitForm} noValidate>
+                <TextField
+                  type="email"
+                  name="email"
+                  className={styles.input}
+                  label="login.email"
+                  onChange={this.handleEmailChange}
+                  value={this.state.login}
+                  setRef={this.setUserFieldRef}
+                />
+                <TextField
+                  password
+                  name="password"
+                  className={styles.input}
+                  label="login.password"
+                  onChange={this.handlePasswordChange}
+                  value={this.state.password}
+                  setRef={this.setPasswordFieldRef}
+                />
+                <div className={styles.forgotWrapper}>
+                  <ForgotPassword />
+                </div>
+                <div className={styles.buttonWrapper} data-test-id="LoginButton">
+                  <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
+                    <I18n.Text string="login.button" />
+                  </RippleButton>
+                </div>
+              </form>
+            </Portal>
+            <Portal name={PAGE_LOGIN_FORM_AFTER} />
             <div>
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
               <Portal name={PAGE_LOGIN_REGISTER_LINK} >
