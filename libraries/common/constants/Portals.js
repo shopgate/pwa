@@ -10,6 +10,7 @@ const NAV_BUTTON = 'nav-button';
 const ICONS = 'icons';
 const CART_BUTTON = 'cart-button';
 const PROGRESS_BAR = 'progress-bar';
+const FORM = 'form';
 
 // CONTENTS
 const GLOBALS = 'globals';
@@ -42,6 +43,10 @@ export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
 export const PAGE_LOGIN_BEFORE = `${PAGE}.${LOGIN}.${BEFORE}`;
 export const PAGE_LOGIN = `${PAGE}.${LOGIN}`;
 export const PAGE_LOGIN_AFTER = `${PAGE}.${LOGIN}.${AFTER}`;
+
+export const PAGE_LOGIN_FORM_BEFORE = `${PAGE}.${LOGIN}.${FORM}.${BEFORE}`;
+export const PAGE_LOGIN_FORM = `${PAGE}.${LOGIN}.${FORM}`;
+export const PAGE_LOGIN_FORM_AFTER = `${PAGE}.${LOGIN}.${FORM}.${AFTER}`;
 
 export const PAGE_LOGIN_REGISTER_LINK_BEFORE = `${PAGE}.${LOGIN}.${REGISTER_LINK}.${BEFORE}`;
 export const PAGE_LOGIN_REGISTER_LINK = `${PAGE}.${LOGIN}.${REGISTER_LINK}`;
