@@ -33,11 +33,10 @@ class Portal extends Component {
 
   /**
    * Returns the portal components.
-   * @param {string} name - The component name to match.
    * @param {Object} props - The props to pass to the component.
    * @return {Array}
    */
-  getComponents = (name, props) => {
+  getComponents = (props) => {
     const components = [];
 
     if (!config || !config.portals) {
@@ -56,7 +55,7 @@ class Portal extends Component {
 
       portalTarget.forEach((target) => {
         // Stop if there is no key that matches the given name (prop).
-        if (target !== name) {
+        if (target !== props.name) {
           return;
         }
 
@@ -65,15 +64,23 @@ class Portal extends Component {
         // Check that the component is valid.
         if (PortalComponent) {
           const componentKey = `${key}-${index}`;
+
+          const { props: propsFromProps, ...reducedProps } = props;
+
+          const componentProps = {
+            ...propsFromProps,
+            ...reducedProps,
+          };
+
           components.push((
-            <PortalComponent {...props} key={componentKey} />
+            <PortalComponent {...componentProps} key={componentKey} />
           ));
         }
       });
     });
 
     return components;
-  }
+  };
 
   /**
    * Catches errors.
@@ -89,7 +96,7 @@ class Portal extends Component {
   render() {
     const { children } = this.props;
     const { hasError } = this.state;
-    const components = this.getComponents(this.props.name, this.props.props);
+    const components = this.getComponents(this.props);
     const hasComponents = components.length > 0;
 
     /**
