@@ -3,6 +3,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import {
   EINVALIDCALL,
   ELEGACYSGCONNECT,
+  EUNCOMPLETE,
 } from '@shopgate/pwa-core/constants/Pipeline';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import {
@@ -14,17 +15,18 @@ import {
 
 /**
  * Login the current user.
+ * @param {Object} parameters login,password or open auth payload.
+ * @param {string} strategy basic or facebook, amazon, etc
  * @return {Function} A redux thunk.
  */
-export default ({ login, password }) => (dispatch) => {
-  dispatch(requestLogin(login, password));
+export default (parameters, strategy = 'basic') => (dispatch) => {
+  const { login, password } = parameters;
+
+  dispatch(requestLogin(login, password, strategy));
 
   const params = {
-    strategy: 'basic',
-    parameters: {
-      login,
-      password,
-    },
+    strategy,
+    parameters,
   };
 
   new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
@@ -32,6 +34,7 @@ export default ({ login, password }) => (dispatch) => {
     .setHandledErrors([
       EINVALIDCALL,
       ELEGACYSGCONNECT,
+      EUNCOMPLETE,
     ])
     .setInput(params)
     .dispatch()
@@ -58,10 +61,10 @@ export default ({ login, password }) => (dispatch) => {
          * the shop system credentials failed and further steps are necessary to login the user.
          */
         dispatch(errorLegacyConnectRegister());
-        dispatch(errorLogin());
+        dispatch(errorLogin([], ELEGACYSGCONNECT));
       } else {
         logger.error(error);
-        dispatch(errorLogin());
+        dispatch(errorLogin([], code));
       }
     });
 };
