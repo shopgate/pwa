@@ -6,6 +6,8 @@ import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes'
 import {
   DIALOG_TEXT_MESSAGE,
   MODAL_VARIANT_SELECT,
+  MODAL_ACTION_TYPE_PRIMARY,
+  MODAL_ACTION_TYPE_NORMAL,
 } from './constants';
 import PipelineErrorDialog from './components/PipelineErrorDialog';
 import TextMessageDialog from './components/TextMessageDialog';
@@ -32,6 +34,7 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
     actions.push({
       label: modal.dismiss,
       action: onDismiss,
+      type: MODAL_ACTION_TYPE_PRIMARY,
     });
   }
 
@@ -40,6 +43,7 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
     actions.push({
       label: modal.confirm,
       action: onConfirm,
+      type: MODAL_ACTION_TYPE_NORMAL,
     });
   }
 

@@ -197,10 +197,13 @@ class PipelineManager {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
 
-    const { code, message } = request.error || {};
+    const { code, message, validationErrors } = request.error || {};
 
     const err = new Error(message);
     err.code = code;
+    if (validationErrors !== undefined) {
+      err.validationErrors = validationErrors;
+    }
 
     request.reject(err);
 

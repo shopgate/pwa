@@ -1,0 +1,11 @@
+export const ELEMENT_TYPE_EMAIL = 'email';
+export const ELEMENT_TYPE_PASSWORD = 'password';
+export const ELEMENT_TYPE_TEXT = 'text';
+export const ELEMENT_TYPE_NUMBER = 'number';
+export const ELEMENT_TYPE_SELECT = 'select';
+export const ELEMENT_TYPE_COUNTRY = 'country';
+export const ELEMENT_TYPE_PROVINCE = 'province';
+export const ELEMENT_TYPE_CHECKBOX = 'checkbox';
+export const ELEMENT_TYPE_RADIO = 'radio';
+export const ELEMENT_TYPE_DATE = 'date';
+export const ELEMENT_TYPE_PHONE = 'phone';
