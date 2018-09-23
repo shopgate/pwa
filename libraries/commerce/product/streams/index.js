@@ -1,17 +1,31 @@
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH, RECEIVE_PRODUCT, RECEIVE_PRODUCT_CACHED } from '../constants';
+import { HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import { getBaseProduct } from '../selectors/product';
+import {
+  ITEM_PATTERN,
+  ITEM_GALLERY_PATTERN,
+  RECEIVE_PRODUCT,
+  RECEIVE_PRODUCT_CACHED,
+} from '../constants';
 
 export const productWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId`);
+  .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
+
+export const variantWillUpdate$ = routeWillEnter$.filter(({ action }) =>
+  action.route.pattern === ITEM_PATTERN &&
+  action.historyAction === HISTORY_REPLACE_ACTION);
 
 export const galleryWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
+  .filter(({ action }) => action.route.pattern === ITEM_GALLERY_PATTERN);
 
 export const galleryWillLeave$ = routeWillLeave$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
+  .filter(({ action }) => action.route.pattern === ITEM_GALLERY_PATTERN);
 
 export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
@@ -38,3 +52,23 @@ export const receivedVisibleProduct$ = productReceived$.merge(cachedProductRecei
 
     return action.productData.id === hex2bin(route.params.productId);
   });
+
+export const variantDidChange$ = variantWillUpdate$
+  // Take care that the stream only emits when underlying streams emit within the correct order.
+  .switchMap(() => receivedVisibleProduct$.first()
+    .switchMap((data) => {
+      const { id, baseProductId } = data.action.productData;
+
+      const variantId = baseProductId !== null ? id : null;
+      const baseProduct = getBaseProduct(data.getState(), { variantId });
+
+      if (baseProduct === null) {
+        /**
+         * A PDP with a variant product was opened, but the base product is not fetched yet.
+         * So emitting of the stream is postponed till the data is present.
+         */
+        return productReceived$;
+      }
+
+      return Observable.of(data);
+    }));

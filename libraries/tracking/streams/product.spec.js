@@ -1,4 +1,3 @@
-/* eslint-disable extra-rules/no-single-line-objects */
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
@@ -12,12 +11,9 @@ import { ITEM_PATTERN, ITEM_REVIEWS_PATTERN } from '@shopgate/pwa-common-commerc
 import { pwaDidAppear } from '../action-creators';
 import {
   productsReceived$,
-  productReceived$,
   productRouteReappeared$,
   productWillEnter$,
-  productWillUpdate$,
   productIsReady$,
-  variantDidChange$,
 } from './product';
 
 let mockedRoutePattern;
@@ -80,25 +76,6 @@ describe('Product streams', () => {
     });
   });
 
-  describe('productReceived$', () => {
-    let productReceivedSubscriber;
-
-    beforeEach(() => {
-      productReceivedSubscriber = jest.fn();
-      productReceived$.subscribe(productReceivedSubscriber);
-    });
-
-    it('should emit when a product was received', () => {
-      dispatch(receiveProduct());
-      expect(productReceivedSubscriber).toHaveBeenCalledTimes(1);
-    });
-
-    it('should not emit for other actions', () => {
-      dispatch({ type: 'someaction' });
-      expect(productReceivedSubscriber).not.toHaveBeenCalled();
-    });
-  });
-
   describe('productRouteReappeared$', () => {
     let productRouteReappearedSubscriber;
 
@@ -143,30 +120,6 @@ describe('Product streams', () => {
     });
   });
 
-  describe('productWillUpdate$', () => {
-    let productWillUpdateSubscriber;
-
-    beforeEach(() => {
-      productWillUpdateSubscriber = jest.fn();
-      productWillUpdate$.subscribe(productWillUpdateSubscriber);
-    });
-
-    it('should emit when an item page was replaced', () => {
-      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_REPLACE_ACTION));
-      expect(productWillUpdateSubscriber).toHaveBeenCalledTimes(1);
-    });
-
-    it('should not emit when an item page was pushed', () => {
-      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION));
-      expect(productWillUpdateSubscriber).not.toHaveBeenCalled();
-    });
-
-    it('should not emit when an page was replaced which is not the item page', () => {
-      dispatch(wrappedRouteWillEnter(ITEM_REVIEWS_PATTERN, HISTORY_REPLACE_ACTION));
-      expect(productWillUpdateSubscriber).not.toHaveBeenCalled();
-    });
-  });
-
   describe('productIsReady$', () => {
     let productIsReadySubscriber;
 
@@ -188,6 +141,20 @@ describe('Product streams', () => {
       expect(productIsReadySubscriber).not.toHaveBeenCalled();
     });
 
+    it('should only emit when the underlying streams emit in the correct order', () => {
+      const productId = 'abc123';
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION, productId));
+      dispatch(receiveProduct(productId, { id: productId }));
+      expect(productIsReadySubscriber).toHaveBeenCalledTimes(1);
+
+      dispatch(receiveProduct(productId, { id: productId }));
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION, productId));
+      expect(productIsReadySubscriber).toHaveBeenCalledTimes(1);
+
+      dispatch(receiveProduct(productId, { id: productId }));
+      expect(productIsReadySubscriber).toHaveBeenCalledTimes(2);
+    });
+
     it('should emit when the PWA webview reappeared with an active product page', () => {
       dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION));
       dispatch(pwaDidAppear());
@@ -200,36 +167,4 @@ describe('Product streams', () => {
       expect(productIsReadySubscriber).not.toHaveBeenCalled();
     });
   });
-
-  describe('variantDidChange$', () => {
-    const baseProductId = 'baseProductId';
-    const productId = 'productId';
-
-    let variantDidChangeSubscriber;
-
-    beforeEach(() => {
-      variantDidChangeSubscriber = jest.fn();
-      variantDidChange$.subscribe(variantDidChangeSubscriber);
-    });
-
-    it('should emit when a variant was selected and base product data is available', () => {
-      dispatch(receiveProduct(baseProductId, { id: baseProductId }));
-
-      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_REPLACE_ACTION, productId));
-      dispatch(receiveProduct(productId, { id: productId, baseProductId }));
-
-      expect(variantDidChangeSubscriber).toHaveBeenCalledTimes(1);
-    });
-
-    it('should not emit until base product data is available', () => {
-      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_REPLACE_ACTION, productId));
-      dispatch(receiveProduct(productId, { id: productId, baseProductId }));
-      expect(variantDidChangeSubscriber).not.toHaveBeenCalled();
-
-      dispatch(receiveProduct(baseProductId, { id: baseProductId }));
-      expect(variantDidChangeSubscriber).toHaveBeenCalledTimes(1);
-    });
-  });
 });
-
-/* eslint-enable extra-rules/no-single-line-objects */

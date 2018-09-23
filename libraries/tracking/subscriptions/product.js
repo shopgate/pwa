@@ -1,6 +1,7 @@
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { productIsReady$, variantDidChange$ } from '../streams/product';
+import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
+import { productIsReady$ } from '../streams/product';
 import { getBaseProductFormatted, getProductFormatted } from '../selectors/product';
 import getPage from '../selectors/page';
 import { track } from '../helpers';
