@@ -48,13 +48,6 @@ const subscriptions = [
   commonUser,
   commonMenu,
   commonRouter,
-  // Common Commerce subscribers.
-  commerceCart,
-  commerceFavorites,
-  commerceFilter,
-  commerceProduct,
-  commerceReviews,
-  commerceSearch,
   // Tracking subscribers.
   trackingSetup,
   trackingPages,
@@ -64,6 +57,13 @@ const subscriptions = [
   trackingCheckout,
   trackingSearch,
   trackingDeeplinkPush,
+  // Common Commerce subscribers.
+  commerceCart,
+  commerceFavorites,
+  commerceFilter,
+  commerceProduct,
+  commerceReviews,
+  commerceSearch,
   // Theme subscribers.
   app,
   navigator,
