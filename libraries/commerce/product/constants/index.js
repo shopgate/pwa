@@ -1,4 +1,8 @@
 export const ITEM_PATH = '/item';
+export const ITEM_PATTERN = `${ITEM_PATH}/:productId`;
+export const ITEM_GALLERY_PATTERN = `${ITEM_PATH}/:productId/gallery/:slide`;
+export const ITEM_REVIEWS_PATTERN = `${ITEM_PATH}/:productId/reviews`;
+export const ITEM_WRITE_REVIEW_PATTERN = `${ITEM_PATH}/:productId/write_review`;
 
 export const PRODUCT_LIFETIME = 3600000; // 1 hour in milliseconds
 

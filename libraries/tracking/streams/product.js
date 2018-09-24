@@ -47,7 +47,7 @@ const currentProductIdChanged$ = main$
  * Emits when the category route comes active again after a legacy page was active.
  */
 const productRouteReappeared$ = pwaDidAppear$
-  .filter(({ pathname }) => pathname.startsWith(ITEM_PATH));
+  .filter(({ action }) => action.route.pattern.startsWith(ITEM_PATH));
 
 /**
  * Emits when a product page is ready to be tracked, considering loaded or preloaded data.

@@ -20,13 +20,9 @@ jest.mock('redux-logger', () => ({
  * @param {string} pathname The initial pathname.
  * @return {Onject}
  */
-export const createStore = (pathname = '/somepath') => {
-  // eslint-disable-next-line no-undef
-  mockedInitialPathname = pathname;
-  return configureStore({
-    product: productReducers,
-  });
-};
+export const createStore = () => configureStore({
+  product: productReducers,
+});
 
 /**
  * A wrapper for the updated history action creator. It sets up the most common properties.
