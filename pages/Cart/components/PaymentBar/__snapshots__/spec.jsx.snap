@@ -1,0 +1,1525 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
+<I18nProvider
+  lang="en-US"
+  locales={
+    Object {
+      "shipping.free_short": "Free",
+    }
+  }
+>
+  <PaymentBar
+    currency="USD"
+    isVisible={true}
+  >
+    <Sheet
+      animation={
+        Object {
+          "in": "css-31n36f",
+          "out": "css-gyrv08",
+        }
+      }
+      backdrop={false}
+      duration={300}
+      isOpen={true}
+      onClose={null}
+      onOpen={[Function]}
+      title=""
+    >
+      <section>
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": 300,
+              "in": "css-31n36f",
+              "out": "css-gyrv08",
+            }
+          }
+          className="css-h69706"
+          isOpen={true}
+          onClose={null}
+          onOpen={[Function]}
+        >
+          <div
+            className="css-h69706 css-1rg7udn css-31n36f"
+            onAnimationEnd={[Function]}
+            style={
+              Object {
+                "animationDuration": "300ms",
+              }
+            }
+          >
+            <div
+              className="css-mt0ry0 css-k5vpvg"
+            >
+              <Grid
+                className="css-1xadtqu"
+                component="ul"
+                key=".0"
+                wrap={false}
+              >
+                <ul
+                  className="css-1xadtqu css-h7r55a"
+                >
+                  <GridItem
+                    className="css-1e1nulz"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-1e1nulz css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotalLabel
+                          isDisabled={false}
+                        >
+                          <div
+                            className="css-16equ4n "
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="cart.subtotal"
+                            >
+                              <span
+                                className=""
+                              >
+                                cart.subtotal
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </SubTotalLabel>
+                        <ShippingCostsLabel
+                          isDisabled={false}
+                          shipping={2.99}
+                        >
+                          <div
+                            className="css-1h55xt0 "
+                          >
+                            <div
+                              className="css-1e5ezpm"
+                            >
+                              <InfoOutline>
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>"
+                                  size="inherit"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": "inherit",
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </InfoOutline>
+                            </div>
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="titles.shipping"
+                            >
+                              <span
+                                className=""
+                              >
+                                titles.shipping
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </ShippingCostsLabel>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotal
+                          currency="USD"
+                          isDisabled={false}
+                          value={4.99}
+                        >
+                          <div
+                            className="css-rxk16i "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={4.99}
+                            >
+                              <span>
+                                $4.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </SubTotal>
+                        <ShippingCosts
+                          currency="USD"
+                          isDisabled={false}
+                          value={2.99}
+                        >
+                          <div
+                            className="css-13f0gfi "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={2.99}
+                            >
+                              <span>
+                                $2.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </ShippingCosts>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <div
+                          className="css-tmwobs"
+                        >
+                          <CheckoutButton
+                            isActive={true}
+                            pushHistory={[Function]}
+                          >
+                            <RippleButton
+                              className=""
+                              disabled={false}
+                              flat={false}
+                              onClick={[Function]}
+                              rippleClassName=""
+                              rippleSize={null}
+                              type="secondary"
+                              wrapContent={true}
+                            >
+                              <Button
+                                className=""
+                                disabled={false}
+                                flat={false}
+                                onClick={[Function]}
+                                type="secondary"
+                                wrapContent={false}
+                              >
+                                <Button
+                                  className="css-1pv16t3 "
+                                  disabled={false}
+                                  onClick={[Function]}
+                                >
+                                  <button
+                                    className="css-1pv16t3  css-1rn65c0"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                  >
+                                    <Ripple
+                                      className="css-8s1fw2 "
+                                      color="#000"
+                                      fill={true}
+                                      overflow={false}
+                                      size={null}
+                                    >
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8s1fw2 "
+                                        onClick={[Function]}
+                                        style={null}
+                                      >
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.checkout"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.checkout
+                                          </span>
+                                        </Translate>
+                                      </div>
+                                    </Ripple>
+                                  </button>
+                                </Button>
+                              </Button>
+                            </RippleButton>
+                          </CheckoutButton>
+                        </div>
+                      </div>
+                    </li>
+                  </GridItem>
+                </ul>
+              </Grid>
+            </div>
+          </div>
+        </Drawer>
+      </section>
+    </Sheet>
+  </PaymentBar>
+</I18nProvider>
+`;
+
+exports[`<PaymentBar /> should disable the component, if the isDisabled prop is true 1`] = `
+<I18nProvider
+  lang="en-US"
+  locales={
+    Object {
+      "shipping.free_short": "Free",
+    }
+  }
+>
+  <PaymentBar
+    currency="USD"
+    isDisabled={true}
+    isVisible={true}
+  >
+    <Sheet
+      animation={
+        Object {
+          "in": "css-31n36f",
+          "out": "css-gyrv08",
+        }
+      }
+      backdrop={false}
+      duration={300}
+      isOpen={true}
+      onClose={null}
+      onOpen={[Function]}
+      title=""
+    >
+      <section>
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": 300,
+              "in": "css-31n36f",
+              "out": "css-gyrv08",
+            }
+          }
+          className="css-h69706"
+          isOpen={true}
+          onClose={null}
+          onOpen={[Function]}
+        >
+          <div
+            className="css-h69706 css-1rg7udn css-31n36f"
+            onAnimationEnd={[Function]}
+            style={
+              Object {
+                "animationDuration": "300ms",
+              }
+            }
+          >
+            <div
+              className="css-mt0ry0 css-k5vpvg"
+            >
+              <Grid
+                className="css-1xadtqu"
+                component="ul"
+                key=".0"
+                wrap={false}
+              >
+                <ul
+                  className="css-1xadtqu css-h7r55a"
+                >
+                  <GridItem
+                    className="css-1e1nulz"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-1e1nulz css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotalLabel
+                          isDisabled={false}
+                        >
+                          <div
+                            className="css-16equ4n "
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="cart.subtotal"
+                            >
+                              <span
+                                className=""
+                              >
+                                cart.subtotal
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </SubTotalLabel>
+                        <ShippingCostsLabel
+                          isDisabled={false}
+                          shipping={2.99}
+                        >
+                          <div
+                            className="css-1h55xt0 "
+                          >
+                            <div
+                              className="css-1e5ezpm"
+                            >
+                              <InfoOutline>
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>"
+                                  size="inherit"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": "inherit",
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </InfoOutline>
+                            </div>
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="titles.shipping"
+                            >
+                              <span
+                                className=""
+                              >
+                                titles.shipping
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </ShippingCostsLabel>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotal
+                          currency="USD"
+                          isDisabled={false}
+                          value={4.99}
+                        >
+                          <div
+                            className="css-rxk16i "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={4.99}
+                            >
+                              <span>
+                                $4.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </SubTotal>
+                        <ShippingCosts
+                          currency="USD"
+                          isDisabled={false}
+                          value={2.99}
+                        >
+                          <div
+                            className="css-13f0gfi "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={2.99}
+                            >
+                              <span>
+                                $2.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </ShippingCosts>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <div
+                          className="css-tmwobs"
+                        >
+                          <CheckoutButton
+                            isActive={true}
+                            pushHistory={[Function]}
+                          >
+                            <RippleButton
+                              className=""
+                              disabled={false}
+                              flat={false}
+                              onClick={[Function]}
+                              rippleClassName=""
+                              rippleSize={null}
+                              type="secondary"
+                              wrapContent={true}
+                            >
+                              <Button
+                                className=""
+                                disabled={false}
+                                flat={false}
+                                onClick={[Function]}
+                                type="secondary"
+                                wrapContent={false}
+                              >
+                                <Button
+                                  className="css-1pv16t3 "
+                                  disabled={false}
+                                  onClick={[Function]}
+                                >
+                                  <button
+                                    className="css-1pv16t3  css-1rn65c0"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                  >
+                                    <Ripple
+                                      className="css-8s1fw2 "
+                                      color="#000"
+                                      fill={true}
+                                      overflow={false}
+                                      size={null}
+                                    >
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8s1fw2 "
+                                        onClick={[Function]}
+                                        style={null}
+                                      >
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.checkout"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.checkout
+                                          </span>
+                                        </Translate>
+                                      </div>
+                                    </Ripple>
+                                  </button>
+                                </Button>
+                              </Button>
+                            </RippleButton>
+                          </CheckoutButton>
+                        </div>
+                      </div>
+                    </li>
+                  </GridItem>
+                </ul>
+              </Grid>
+            </div>
+          </div>
+        </Drawer>
+      </section>
+    </Sheet>
+  </PaymentBar>
+</I18nProvider>
+`;
+
+exports[`<PaymentBar /> should not be visible if prop isVisible is false 1`] = `
+<I18nProvider
+  lang="en-US"
+  locales={
+    Object {
+      "shipping.free_short": "Free",
+    }
+  }
+>
+  <PaymentBar
+    currency="USD"
+    isVisible={false}
+  >
+    <Sheet
+      animation={
+        Object {
+          "in": "css-31n36f",
+          "out": "css-gyrv08",
+        }
+      }
+      backdrop={false}
+      duration={300}
+      isOpen={false}
+      onClose={null}
+      onOpen={[Function]}
+      title=""
+    >
+      <section>
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": 300,
+              "in": "css-31n36f",
+              "out": "css-gyrv08",
+            }
+          }
+          className="css-h69706"
+          isOpen={false}
+          onClose={null}
+          onOpen={[Function]}
+        />
+      </section>
+    </Sheet>
+  </PaymentBar>
+</I18nProvider>
+`;
+
+exports[`<PaymentBar /> should render without any props 1`] = `
+<I18nProvider
+  lang="en-US"
+  locales={
+    Object {
+      "shipping.free_short": "Free",
+    }
+  }
+>
+  <PaymentBar
+    currency="USD"
+    isVisible={true}
+  >
+    <Sheet
+      animation={
+        Object {
+          "in": "css-31n36f",
+          "out": "css-gyrv08",
+        }
+      }
+      backdrop={false}
+      duration={300}
+      isOpen={true}
+      onClose={null}
+      onOpen={[Function]}
+      title=""
+    >
+      <section>
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": 300,
+              "in": "css-31n36f",
+              "out": "css-gyrv08",
+            }
+          }
+          className="css-h69706"
+          isOpen={true}
+          onClose={null}
+          onOpen={[Function]}
+        >
+          <div
+            className="css-h69706 css-1rg7udn css-31n36f"
+            onAnimationEnd={[Function]}
+            style={
+              Object {
+                "animationDuration": "300ms",
+              }
+            }
+          >
+            <div
+              className="css-mt0ry0 css-k5vpvg"
+            >
+              <Grid
+                className="css-1xadtqu"
+                component="ul"
+                key=".0"
+                wrap={false}
+              >
+                <ul
+                  className="css-1xadtqu css-h7r55a"
+                >
+                  <GridItem
+                    className="css-1e1nulz"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-1e1nulz css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotalLabel
+                          isDisabled={false}
+                        >
+                          <div
+                            className="css-16equ4n "
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="cart.subtotal"
+                            >
+                              <span
+                                className=""
+                              >
+                                cart.subtotal
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </SubTotalLabel>
+                        <ShippingCostsLabel
+                          isDisabled={false}
+                          shipping={2.99}
+                        >
+                          <div
+                            className="css-1h55xt0 "
+                          >
+                            <div
+                              className="css-1e5ezpm"
+                            >
+                              <InfoOutline>
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>"
+                                  size="inherit"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": "inherit",
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </InfoOutline>
+                            </div>
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="titles.shipping"
+                            >
+                              <span
+                                className=""
+                              >
+                                titles.shipping
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </ShippingCostsLabel>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotal
+                          currency="USD"
+                          isDisabled={false}
+                          value={4.99}
+                        >
+                          <div
+                            className="css-rxk16i "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={4.99}
+                            >
+                              <span>
+                                $4.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </SubTotal>
+                        <ShippingCosts
+                          currency="USD"
+                          isDisabled={false}
+                          value={2.99}
+                        >
+                          <div
+                            className="css-13f0gfi "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={2.99}
+                            >
+                              <span>
+                                $2.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </ShippingCosts>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <div
+                          className="css-tmwobs"
+                        >
+                          <CheckoutButton
+                            isActive={true}
+                            pushHistory={[Function]}
+                          >
+                            <RippleButton
+                              className=""
+                              disabled={false}
+                              flat={false}
+                              onClick={[Function]}
+                              rippleClassName=""
+                              rippleSize={null}
+                              type="secondary"
+                              wrapContent={true}
+                            >
+                              <Button
+                                className=""
+                                disabled={false}
+                                flat={false}
+                                onClick={[Function]}
+                                type="secondary"
+                                wrapContent={false}
+                              >
+                                <Button
+                                  className="css-1pv16t3 "
+                                  disabled={false}
+                                  onClick={[Function]}
+                                >
+                                  <button
+                                    className="css-1pv16t3  css-1rn65c0"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                  >
+                                    <Ripple
+                                      className="css-8s1fw2 "
+                                      color="#000"
+                                      fill={true}
+                                      overflow={false}
+                                      size={null}
+                                    >
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8s1fw2 "
+                                        onClick={[Function]}
+                                        style={null}
+                                      >
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.checkout"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.checkout
+                                          </span>
+                                        </Translate>
+                                      </div>
+                                    </Ripple>
+                                  </button>
+                                </Button>
+                              </Button>
+                            </RippleButton>
+                          </CheckoutButton>
+                        </div>
+                      </div>
+                    </li>
+                  </GridItem>
+                </ul>
+              </Grid>
+            </div>
+          </div>
+        </Drawer>
+      </section>
+    </Sheet>
+  </PaymentBar>
+</I18nProvider>
+`;
+
+exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
+<I18nProvider
+  lang="en-US"
+  locales={
+    Object {
+      "shipping.free_short": "Free",
+    }
+  }
+>
+  <PaymentBar
+    currency="USD"
+    isVisible={true}
+  >
+    <Sheet
+      animation={
+        Object {
+          "in": "css-31n36f",
+          "out": "css-gyrv08",
+        }
+      }
+      backdrop={false}
+      duration={300}
+      isOpen={true}
+      onClose={null}
+      onOpen={[Function]}
+      title=""
+    >
+      <section>
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": 300,
+              "in": "css-31n36f",
+              "out": "css-gyrv08",
+            }
+          }
+          className="css-h69706"
+          isOpen={true}
+          onClose={null}
+          onOpen={[Function]}
+        >
+          <div
+            className="css-h69706 css-1rg7udn css-31n36f"
+            onAnimationEnd={[Function]}
+            style={
+              Object {
+                "animationDuration": "300ms",
+              }
+            }
+          >
+            <div
+              className="css-mt0ry0 css-k5vpvg"
+            >
+              <Grid
+                className="css-1xadtqu"
+                component="ul"
+                key=".0"
+                wrap={false}
+              >
+                <ul
+                  className="css-1xadtqu css-h7r55a"
+                >
+                  <GridItem
+                    className="css-1e1nulz"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-1e1nulz css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotalLabel
+                          isDisabled={false}
+                        >
+                          <div
+                            className="css-16equ4n "
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="cart.subtotal"
+                            >
+                              <span
+                                className=""
+                              >
+                                cart.subtotal
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </SubTotalLabel>
+                        <ShippingCostsLabel
+                          isDisabled={false}
+                          shipping={2.99}
+                        >
+                          <div
+                            className="css-1h55xt0 "
+                          >
+                            <div
+                              className="css-1e5ezpm"
+                            >
+                              <InfoOutline>
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>"
+                                  size="inherit"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": "inherit",
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </InfoOutline>
+                            </div>
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="titles.shipping"
+                            >
+                              <span
+                                className=""
+                              >
+                                titles.shipping
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </ShippingCostsLabel>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotal
+                          currency="USD"
+                          isDisabled={false}
+                          value={4.99}
+                        >
+                          <div
+                            className="css-rxk16i "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={4.99}
+                            >
+                              <span>
+                                $4.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </SubTotal>
+                        <ShippingCosts
+                          currency="USD"
+                          isDisabled={false}
+                          value={2.99}
+                        >
+                          <div
+                            className="css-13f0gfi "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={2.99}
+                            >
+                              <span>
+                                $2.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </ShippingCosts>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <div
+                          className="css-tmwobs"
+                        >
+                          <CheckoutButton
+                            isActive={true}
+                            pushHistory={[Function]}
+                          >
+                            <RippleButton
+                              className=""
+                              disabled={false}
+                              flat={false}
+                              onClick={[Function]}
+                              rippleClassName=""
+                              rippleSize={null}
+                              type="secondary"
+                              wrapContent={true}
+                            >
+                              <Button
+                                className=""
+                                disabled={false}
+                                flat={false}
+                                onClick={[Function]}
+                                type="secondary"
+                                wrapContent={false}
+                              >
+                                <Button
+                                  className="css-1pv16t3 "
+                                  disabled={false}
+                                  onClick={[Function]}
+                                >
+                                  <button
+                                    className="css-1pv16t3  css-1rn65c0"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                  >
+                                    <Ripple
+                                      className="css-8s1fw2 "
+                                      color="#000"
+                                      fill={true}
+                                      overflow={false}
+                                      size={null}
+                                    >
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8s1fw2 "
+                                        onClick={[Function]}
+                                        style={null}
+                                      >
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.checkout"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.checkout
+                                          </span>
+                                        </Translate>
+                                      </div>
+                                    </Ripple>
+                                  </button>
+                                </Button>
+                              </Button>
+                            </RippleButton>
+                          </CheckoutButton>
+                        </div>
+                      </div>
+                    </li>
+                  </GridItem>
+                </ul>
+              </Grid>
+            </div>
+          </div>
+        </Drawer>
+      </section>
+    </Sheet>
+  </PaymentBar>
+</I18nProvider>
+`;
+
+exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
+<I18nProvider
+  lang="en-US"
+  locales={
+    Object {
+      "shipping.free_short": "Free",
+    }
+  }
+>
+  <PaymentBar
+    currency="USD"
+    isVisible={true}
+  >
+    <Sheet
+      animation={
+        Object {
+          "in": "css-31n36f",
+          "out": "css-gyrv08",
+        }
+      }
+      backdrop={false}
+      duration={300}
+      isOpen={true}
+      onClose={null}
+      onOpen={[Function]}
+      title=""
+    >
+      <section>
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": 300,
+              "in": "css-31n36f",
+              "out": "css-gyrv08",
+            }
+          }
+          className="css-h69706"
+          isOpen={true}
+          onClose={null}
+          onOpen={[Function]}
+        >
+          <div
+            className="css-h69706 css-1rg7udn css-31n36f"
+            onAnimationEnd={[Function]}
+            style={
+              Object {
+                "animationDuration": "300ms",
+              }
+            }
+          >
+            <div
+              className="css-mt0ry0 css-k5vpvg"
+            >
+              <Grid
+                className="css-1xadtqu"
+                component="ul"
+                key=".0"
+                wrap={false}
+              >
+                <ul
+                  className="css-1xadtqu css-h7r55a"
+                >
+                  <GridItem
+                    className="css-1e1nulz"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-1e1nulz css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotalLabel
+                          isDisabled={false}
+                        >
+                          <div
+                            className="css-16equ4n "
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="cart.subtotal"
+                            >
+                              <span
+                                className=""
+                              >
+                                cart.subtotal
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </SubTotalLabel>
+                        <ShippingCostsLabel
+                          isDisabled={false}
+                          shipping={2.99}
+                        >
+                          <div
+                            className="css-1h55xt0 "
+                          >
+                            <div
+                              className="css-1e5ezpm"
+                            >
+                              <InfoOutline>
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>"
+                                  size="inherit"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": "inherit",
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </InfoOutline>
+                            </div>
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="titles.shipping"
+                            >
+                              <span
+                                className=""
+                              >
+                                titles.shipping
+                              </span>
+                            </Translate>
+                            :
+                          </div>
+                        </ShippingCostsLabel>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <SubTotal
+                          currency="USD"
+                          isDisabled={false}
+                          value={4.99}
+                        >
+                          <div
+                            className="css-rxk16i "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={4.99}
+                            >
+                              <span>
+                                $4.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </SubTotal>
+                        <ShippingCosts
+                          currency="USD"
+                          isDisabled={false}
+                          value={2.99}
+                        >
+                          <div
+                            className="css-13f0gfi "
+                          >
+                            <FormatPrice
+                              currency="USD"
+                              fractions={true}
+                              price={2.99}
+                            >
+                              <span>
+                                $2.99
+                              </span>
+                            </FormatPrice>
+                          </div>
+                        </ShippingCosts>
+                      </div>
+                    </li>
+                  </GridItem>
+                  <GridItem
+                    className="css-127o4v1"
+                    component="li"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <li
+                      className="css-127o4v1 css-1gs0ko2"
+                    >
+                      <div
+                        className="css-w6053m"
+                      >
+                        <div
+                          className="css-tmwobs"
+                        >
+                          <CheckoutButton
+                            isActive={true}
+                            pushHistory={[Function]}
+                          >
+                            <RippleButton
+                              className=""
+                              disabled={false}
+                              flat={false}
+                              onClick={[Function]}
+                              rippleClassName=""
+                              rippleSize={null}
+                              type="secondary"
+                              wrapContent={true}
+                            >
+                              <Button
+                                className=""
+                                disabled={false}
+                                flat={false}
+                                onClick={[Function]}
+                                type="secondary"
+                                wrapContent={false}
+                              >
+                                <Button
+                                  className="css-1pv16t3 "
+                                  disabled={false}
+                                  onClick={[Function]}
+                                >
+                                  <button
+                                    className="css-1pv16t3  css-1rn65c0"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                  >
+                                    <Ripple
+                                      className="css-8s1fw2 "
+                                      color="#000"
+                                      fill={true}
+                                      overflow={false}
+                                      size={null}
+                                    >
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8s1fw2 "
+                                        onClick={[Function]}
+                                        style={null}
+                                      >
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.checkout"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.checkout
+                                          </span>
+                                        </Translate>
+                                      </div>
+                                    </Ripple>
+                                  </button>
+                                </Button>
+                              </Button>
+                            </RippleButton>
+                          </CheckoutButton>
+                        </div>
+                      </div>
+                    </li>
+                  </GridItem>
+                </ul>
+              </Grid>
+            </div>
+          </div>
+        </Drawer>
+      </section>
+    </Sheet>
+  </PaymentBar>
+</I18nProvider>
+`;
