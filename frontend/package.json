@@ -1,0 +1,33 @@
+{
+  "name": "@shopgate/tracking-ga-native",
+  "version": "5.9.0-beta.5",
+  "description": "Shopgate Connect Google Analytics native tracker extension.",
+  "main": "frontend/index.js",
+  "repository": "shopgate/tracking-ga-native",
+  "bugs": "https://github.com/shopgate/tracking-ga-native/issues",
+  "homepage": "https://github.com/shopgate/tracking-ga-native",
+  "license": "Apache-2.0",
+  "scripts": {
+    "lint": "eslint --ignore-path ../.gitignore --ignore-path .eslintignore --ext .js .",
+    "test": "jest",
+    "cover": "jest --coverage"
+  },
+  "dependencies": {
+    "@shopgate/tracking-core": "5.9.0-beta.5"
+  },
+  "devDependencies": {
+    "@shopgate/eslint-config": "5.9.0-beta.5",
+    "@shopgate/pwa-common": "5.9.0-beta.5",
+    "@shopgate/pwa-core": "5.9.0-beta.5",
+    "@shopgate/react-hammerjs": "0.5.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.26.0",
+    "jest": "^23.5.0"
+  }
+}
