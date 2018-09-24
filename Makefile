@@ -15,6 +15,10 @@ checkout-develop:
 		git submodule foreach --recursive git pull
 		make clean
 
+.PHONY: dummy-change
+dummy-change:
+		make checkout-develop
+
 release:
 		make pre-release
 		make clean
