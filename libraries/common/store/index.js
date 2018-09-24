@@ -39,8 +39,11 @@ if (isDev) {
 const configureStore = (customReducers = {}) => {
   const middleware = [thunk];
 
-  // Add benchmark middleware.
-  middleware.push(benchmarkMiddleware);
+  // Add benchmark middleware if enabled via app config.
+  const { benchmark = false } = process.env.APP_CONFIG || {};
+  if (benchmark) {
+    middleware.push(benchmarkMiddleware);
+  }
 
   // Add observable middleware.
   middleware.push(observableMiddleware);
