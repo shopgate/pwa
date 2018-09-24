@@ -10,6 +10,7 @@ import {
   EACCESS,
   E999,
   ENOTFOUND,
+  EVALIDATION,
 } from '@shopgate/pwa-core/constants/Pipeline';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import { pipelineError$ } from '../streams/error';
@@ -38,6 +39,7 @@ export default function app(subscribe) {
       EACCESS,
       E999,
       ENOTFOUND,
+      EVALIDATION,
     ]);
 
     // Map the error events into the Observable streams.

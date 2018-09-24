@@ -56,6 +56,7 @@ const label = css({
   color: themeConfig.colors.shade12,
   transformOrigin: 'left top 0px',
   willChange: 'transform, color',
+  overflow: 'visible',
   transition: `transform ${easing}, color ${easing}`,
   ...ellipsisLine,
 }).toString();

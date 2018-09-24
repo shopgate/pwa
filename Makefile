@@ -42,7 +42,7 @@ ifneq ($(REPO_VERSION), '')
 		$(call merge-master, $(SUBSTR))
 else
 		@echo " "
-		@echo "Peforming manual release process!!"
+		@echo "Performing manual release process!!"
 		@echo " "
 endif
 

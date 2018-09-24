@@ -4,6 +4,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
 <Select
   className=""
   errorText=""
+  isControlled={false}
   label=""
   name="test-name"
   onChange={[Function]}
@@ -14,16 +15,20 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     }
   }
   placeholder=""
+  translateErrorText={true}
   value="DE"
 >
   <FormElement
     className=""
     errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
     hasValue={true}
     htmlFor="test-name"
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -54,7 +59,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-16msjt6 css-1fekhao"
+          className="css-1nn9zl4 css-16msjt6 css-1fekhao"
           htmlFor="test-name"
         >
           <Translate
@@ -69,7 +74,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         </label>
       </Label>
       <select
-        className="css-1lutzxc"
+        className="css-x8w2oy"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -111,9 +116,10 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
-          className=""
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -135,6 +141,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
 <Select
   className=""
   errorText=""
+  isControlled={false}
   label=""
   name="test-name"
   onChange={[Function]}
@@ -145,16 +152,20 @@ exports[`<Select /> should render select with 2 options 1`] = `
     }
   }
   placeholder=""
+  translateErrorText={true}
   value=""
 >
   <FormElement
     className=""
     errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
     hasValue={false}
     htmlFor="test-name"
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -185,7 +196,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-name"
         >
           <Translate
@@ -200,7 +211,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         </label>
       </Label>
       <select
-        className="css-1lutzxc"
+        className="css-x8w2oy"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -242,9 +253,10 @@ exports[`<Select /> should render select with 2 options 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
-          className=""
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -266,21 +278,26 @@ exports[`<Select /> should render select with no options 1`] = `
 <Select
   className=""
   errorText=""
+  isControlled={false}
   label=""
   name="test-name"
   onChange={[Function]}
   options={Object {}}
   placeholder=""
+  translateErrorText={true}
   value=""
 >
   <FormElement
     className=""
     errorText=""
+    hasPlaceholder={true}
+    hasUnderline={true}
     hasValue={false}
     htmlFor="test-name"
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -311,7 +328,7 @@ exports[`<Select /> should render select with no options 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-name"
         >
           <Translate
@@ -326,7 +343,7 @@ exports[`<Select /> should render select with no options 1`] = `
         </label>
       </Label>
       <select
-        className="css-1lutzxc"
+        className="css-x8w2oy"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -355,9 +372,10 @@ exports[`<Select /> should render select with no options 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
-          className=""
+          className="css-hmgfge"
         >
           <Translate
             className=""
