@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
 import getTabActionComponentForType from './helpers/getTabActionComponentForType';
 import connect from './connector';
 import styles, { updateHeightCSSProperty } from './style';
@@ -46,11 +47,15 @@ const TabBar = ({
   }
 
   return (
-    <div data-test-id="tabBar">
-      <Grid className={styles}>
-        {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-      </Grid>
-    </div>
+    <KeyboardConsumer>
+      {({ open }) => !open && (
+        <div data-test-id="tabBar">
+          <Grid className={styles}>
+            {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+          </Grid>
+        </div>
+      )}
+    </KeyboardConsumer>
   );
 };
 
