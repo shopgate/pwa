@@ -14,16 +14,13 @@ const content = (
   isFullscreen = false,
   keyboardHeight = 0
 ) => {
-  const navHeight = hasNavigator ? variables.navbar.height : 0;
-  const navAndStatusBarHeight = `calc(${navHeight}px + var(--safe-area-inset-top))`;
-
   return css({
     overflow: 'auto',
     overflowScrolling: 'touch',
     WebkitOverflowScrolling: 'touch',
     width: '100%',
     position: 'absolute',
-    top: isFullscreen ? 0 : navAndStatusBarHeight,
+    top: 'var(--safe-area-inset-top)',
     paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
     bottom: 0,
     display: 'flex',
@@ -33,7 +30,7 @@ const content = (
       display: 'block',
       top: 0,
       width: '100%',
-      height: isFullscreen ? 0 : navAndStatusBarHeight,
+      height: isFullscreen ? 0 : 'var(--safe-area-inset-top)',
       zIndex: 3,
       content: '""',
       transition: 'box-shadow 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',

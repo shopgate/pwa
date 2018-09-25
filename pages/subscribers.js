@@ -26,10 +26,8 @@ import navigator from 'Components/Navigator/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
 import rootCategory from 'Pages/RootCategory/subscriptions';
 import category from 'Pages/Category/subscriptions';
-import cart from 'Pages/Cart/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
-import filter from 'Pages/Filter/subscriptions';
 import gallery from 'Pages/ProductGallery/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import startPage from 'Pages/StartPage/subscriptions';
@@ -69,11 +67,9 @@ const subscriptions = [
   navigator,
   viewport,
   rootCategory,
-  cart,
   category,
   coupon,
   favorites,
-  filter,
   gallery,
   login,
   startPage,

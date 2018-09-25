@@ -11,9 +11,8 @@ import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
-import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
-import { productRoutesWillEnter$, reviewsRouteWillEnter$ } from './streams';
+import { productRoutesWillEnter$ } from './streams';
 
 /**
  * @param {Function} subscribe The subscribe function.
@@ -31,13 +30,6 @@ export default function writeReview(subscribe) {
     }
 
     dispatch(getUserReview(hex2bin(productId)));
-  });
-
-  /**
-   * Get triggered when reviews or write_reviews route will be entered.
-   */
-  subscribe(reviewsRouteWillEnter$, ({ dispatch }) => {
-    dispatch(setTitle('titles.reviews'));
   });
 
   /**

@@ -2,11 +2,7 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 const container = css({
-  left: 0,
-  position: 'fixed',
-  top: variables.navigator.height,
-  width: '100%',
-  zIndex: 3,
+
 });
 
 const wrapper = css({

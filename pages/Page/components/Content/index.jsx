@@ -7,16 +7,20 @@ import {
   PAGE_CONTENT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
+import { DefaultBar } from 'Components/AppBar/presets';
+import Logo from 'Components/Logo';
 import widgets from 'Extensions/widgets';
 import styles from './style';
 import connect from './connector';
 
 /**
- * @param {Ovject} props.configs The page configs.
+ * @param {Object} props.configs The page configs.
+ * @param {string} props.pageId The page id.
  * @return {JSX}
  */
 const PageContent = ({ configs, pageId }) => (
   <Fragment>
+    <DefaultBar center={<Logo />} />
     <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
     <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
       <div className={styles.widgetWrapper}>

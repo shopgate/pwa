@@ -14,7 +14,6 @@ import { FILTERBAR_UPDATE } from './constants';
  */
 class FilterBar extends Component {
   static propTypes = {
-    setTop: PropTypes.func.isRequired,
     filters: PropTypes.shape(),
     viewRef: PropTypes.shape(),
   };
@@ -46,7 +45,7 @@ class FilterBar extends Component {
    */
   componentDidMount() {
     this.updateView();
-    this.setScrollListener();
+    this.setScrollListener(this.props.viewRef);
   }
 
   /**
@@ -88,18 +87,18 @@ class FilterBar extends Component {
    * Set the top value of the View when the component updates.
    */
   componentDidUpdate() {
-    this.updateView();
+    // this.updateView();
   }
 
   /**
    * Unbinds the event handlers from the scroll element.
    */
   componentWillUnmount() {
-    const { viewRef } = this.props;
+    // const { viewRef } = this.props;
 
-    if (viewRef.current) {
-      viewRef.current.removeEventListener('swipe', this.handleSwipe);
-    }
+    // if (viewRef.current) {
+    //   viewRef.current.removeEventListener('swipe', this.handleSwipe);
+    // }
   }
 
   /**
@@ -117,8 +116,8 @@ class FilterBar extends Component {
    * Binds an event handler to the received props.viewRef.
    * @param {HTMLElement|null} node The node that will be scrolling.
    */
-  setScrollListener(node = this.props.viewRef) {
-    if (!node) {
+  setScrollListener(node) {
+    if (!node || !node.current) {
       return;
     }
 
@@ -133,32 +132,23 @@ class FilterBar extends Component {
       return;
     }
 
-    this.props.setTop(this.node.current.clientHeight);
+    // this.props.setTop(this.node.current.clientHeight);
   }
 
   /**
    * @param {CustomEvent} event The swipe event.
    */
   handleSwipe = (event) => {
-    // Display a shadow if we are scrolled at all.
-    const shadow = event.target.scrollTop > 0;
-
     if (!this.node) {
       return;
     }
 
     // Hide when we scrolled down further that the height of the bar.
     if (event.detail.y > this.node.current.clientHeight) {
-      this.setState({
-        shadow,
-        visible: false,
-      });
+      this.setState({ visible: false });
     // Show when we scrolled up further up a little
     } else if (event.detail.y < -24) {
-      this.setState({
-        shadow,
-        visible: true,
-      });
+      this.setState({ visible: true });
     }
   }
 

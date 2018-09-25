@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Bar from '../Bar';
 import ProductsContent from '../ProductsContent';
 import Empty from '../Empty';
 import CategoryListContent from '../CategoryListContent';
 import connect from './connector';
+import AppBar from '../AppBar';
 
 /**
  * @param {Object} props.categoryId The category id.
@@ -12,7 +12,7 @@ import connect from './connector';
  */
 const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
   <Fragment>
-    {(!hasChildren && hasProducts) && <Bar />}
+    <AppBar hasProducts={hasProducts} hasChildren={hasChildren} />
     <CategoryListContent categoryId={categoryId} />
     <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
     <Empty

@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@virtuous/react-conductor/Router';
-import { ViewContext } from 'Components/View/context';
 import colors from 'Styles/colors';
-import ViewProvider from '../../providers/View';
 import Content from './components/Content';
 import styles from './style';
 
@@ -16,27 +13,18 @@ const View = ({
   children,
   hasNavigator,
   isFullscreen,
-  pathname,
 }) => (
-  <ViewProvider>
-    <section
-      className={styles}
-      data-test-id={`view: ${pathname || '-'}`}
-      style={{ background }}
+  <section
+    className={styles}
+    style={{ background }}
+  >
+    <Content
+      hasNavigator={hasNavigator}
+      isFullscreen={isFullscreen}
     >
-      <ViewContext.Consumer>
-        {({ set }) => (
-          <Content
-            hasNavigator={hasNavigator}
-            isFullscreen={isFullscreen}
-            setRef={set}
-          >
-            {children}
-          </Content>
-        )}
-      </ViewContext.Consumer>
-    </section>
-  </ViewProvider>
+      {children}
+    </Content>
+  </section>
 );
 
 View.propTypes = {
@@ -44,7 +32,6 @@ View.propTypes = {
   children: PropTypes.node,
   hasNavigator: PropTypes.bool,
   isFullscreen: PropTypes.bool,
-  pathname: PropTypes.string,
 };
 
 View.defaultProps = {
@@ -52,13 +39,6 @@ View.defaultProps = {
   children: null,
   hasNavigator: true,
   isFullscreen: false,
-  pathname: null,
 };
 
-export default props => (
-  <RouteContext.Consumer>
-    {({ pathname }) => (
-      <View {...props} pathname={pathname} />
-    )}
-  </RouteContext.Consumer>
-);
+export default View;
