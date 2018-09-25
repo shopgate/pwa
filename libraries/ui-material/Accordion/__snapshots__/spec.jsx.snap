@@ -1,16 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Accordion /> should not render without a renderLabel prop 1`] = `<Accordion />`;
+exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
+<Accordion
+  testId={null}
+/>
+`;
 
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
   renderLabel={[Function]}
+  testId={null}
 />
 `;
 
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
   renderLabel={[Function]}
+  testId={null}
 >
   <AccordionContainer>
     <div
@@ -20,6 +26,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
           "data-css-17o6uz7": "",
         }
       }
+      data-test-id={null}
       onClick={[Function]}
     >
       <div

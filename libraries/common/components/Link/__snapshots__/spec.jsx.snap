@@ -3,6 +3,7 @@
 exports[`<Link /> renders with children 1`] = `
 <div
   className="css-c6ki83 "
+  data-test-id="link: /"
   onClick={[Function]}
   role="link"
 >

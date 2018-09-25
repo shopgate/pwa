@@ -4,37 +4,25 @@ import { Unwrapped as ClientInformation } from './index';
 
 describe('<ClientInformation />', () => {
   const mockData = {
-    isFetching: false,
     appVersion: '1.2.3',
     libVersion: '4.5.6',
     codebaseVersion: '7.8.9',
     deviceId: 'my-awesome-device-id',
+    enableDebugLogging: () => {},
   };
 
   it('should not render if no data is available', () => {
-    const wrapper = shallow(<ClientInformation client={{}} enableDebugLogging={() => {}} />);
+    const wrapper = shallow(<ClientInformation {...mockData} codebaseVersion={null} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('div').exists()).toBe(false);
-  });
-
-  it('should not render if the data is still being fetched', () => {
-    const wrapper = shallow((
-      <ClientInformation
-        client={{ isFetching: true }}
-        enableDebugLogging={() => {}}
-      />
-    ));
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('div').exists()).toBe(false);
+    expect(wrapper.get(0)).toBe(null);
   });
 
   describe('App and lib version, and device ID', () => {
     it('should render the app and lib version', () => {
       const wrapper = shallow((
         <ClientInformation
-          client={mockData}
+          {...mockData}
           enableDebugLogging={() => {}}
         />
       ));
@@ -49,12 +37,7 @@ describe('<ClientInformation />', () => {
     });
 
     it('should show the device ID', () => {
-      const wrapper = shallow((
-        <ClientInformation
-          client={mockData}
-          enableDebugLogging={() => {}}
-        />
-      ));
+      const wrapper = mount(<ClientInformation {...mockData} />);
 
       wrapper.setState({ isDeviceIdVisible: true });
       wrapper.render();
@@ -73,7 +56,7 @@ describe('<ClientInformation />', () => {
     jest.useFakeTimers();
 
     it('should start the timer if touched', () => {
-      const wrapper = mount(<ClientInformation client={mockData} enableDebugLogging={() => {}} />);
+      const wrapper = shallow(<ClientInformation {...mockData} />);
       const instance = wrapper.instance();
 
       instance.showDeviceId = jest.fn();
@@ -85,7 +68,7 @@ describe('<ClientInformation />', () => {
     });
 
     it('should abort the timer if touch ends under 5 seconds', () => {
-      const wrapper = mount(<ClientInformation client={mockData} enableDebugLogging={() => {}} />);
+      const wrapper = mount(<ClientInformation {...mockData} />);
       const instance = wrapper.instance();
 
       instance.showDeviceId = jest.fn();

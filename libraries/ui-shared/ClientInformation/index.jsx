@@ -10,14 +10,18 @@ const TIMEOUT_SHOW_DEVICE_ID = 5000;
  */
 class ClientInformation extends Component {
   static propTypes = {
-    client: PropTypes.shape({
-      isFetching: PropTypes.bool,
-      appVersion: PropTypes.string,
-      libVersion: PropTypes.string,
-      codebaseVersion: PropTypes.string,
-      deviceId: PropTypes.string,
-    }).isRequired,
     enableDebugLogging: PropTypes.func.isRequired,
+    appVersion: PropTypes.string,
+    codebaseVersion: PropTypes.string,
+    deviceId: PropTypes.string,
+    libVersion: PropTypes.string,
+  };
+
+  static defaultProps = {
+    appVersion: null,
+    codebaseVersion: null,
+    deviceId: null,
+    libVersion: null,
   };
 
   /**
@@ -37,6 +41,15 @@ class ClientInformation extends Component {
    */
   componentDidMount() {
     document.addEventListener('touchend', this.cancelTimer);
+  }
+
+  /**
+   * @param {Object} nextProps the next component props.
+   * @param {Object} nextState the next component state.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.isDeviceIdVisible !== nextState.isDeviceIdVisible;
   }
 
   /**
@@ -72,15 +85,14 @@ class ClientInformation extends Component {
    * @return {JSX}
    */
   render() {
-    // Only if isFetching is exactly false then there's data to show.
-    if (this.props.client.isFetching !== false) {
+    if (this.props.codebaseVersion === null) {
       return null;
     }
 
     const { isDeviceIdVisible } = this.state;
     const {
       appVersion, libVersion, deviceId, codebaseVersion,
-    } = this.props.client;
+    } = this.props;
 
     return (
       <div className={styles.wrapper} onTouchStart={this.startTimer}>

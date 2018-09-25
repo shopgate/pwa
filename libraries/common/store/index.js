@@ -5,7 +5,7 @@ import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import { persistState } from '@virtuous/redux-persister';
 import syncRouter from '@virtuous/redux-conductor';
 import persistedReducers from '../collections/PersistedReducers';
-import initScubribers from '../subscriptions';
+import initSubscribers from '../subscriptions';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -41,8 +41,28 @@ export function configureStore(reducers, subscribers) {
     )
   );
 
-  initScubribers(subscribers);
+  initSubscribers(subscribers);
   syncRouter(store);
+
+  return store;
+}
+
+/**
+ * Configures a mocked store for tests.
+ * @param {Function} reducers The reducers to use in the mock store.
+ * @param {Function|Array} subscribers Streams subscribers to initialize.
+ * @returns {Store}
+ */
+export function createMockStore(reducers = () => {}, subscribers = null) {
+  const store = createStore(
+    reducers,
+    undefined,
+    applyMiddleware(thunk, streams)
+  );
+
+  if (subscribers !== null) {
+    initSubscribers([].concat(subscribers));
+  }
 
   return store;
 }
