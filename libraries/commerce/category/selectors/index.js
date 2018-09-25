@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
@@ -180,6 +181,13 @@ export const getChildCategoriesById = createSelector(
 );
 
 export const getCategoryName = createSelector(
+  () => getCurrentRoute(),
   getCurrentCategory,
-  category => (category ? category.name : null)
+  (route, category) => {
+    if (route.state.title) {
+      return route.state.title;
+    }
+
+    return category ? category.name : null;
+  }
 );

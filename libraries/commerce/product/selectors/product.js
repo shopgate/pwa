@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import isEqual from 'lodash/isEqual';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
@@ -184,13 +185,14 @@ export const getProduct = createSelector(
  * @return {string|null}
  */
 export const getProductName = createSelector(
+  () => getCurrentRoute(),
   getProduct,
-  (product) => {
-    if (!product) {
-      return null;
+  (route, product) => {
+    if (route.state.title) {
+      return route.state.title;
     }
 
-    return product.name;
+    return product ? product.name : null;
   }
 );
 

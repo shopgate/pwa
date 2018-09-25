@@ -127,9 +127,9 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@shopgate/eslint-config@5.6.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.6.0.tgz#b952c3c6543e853d9bb5ebf2144de072aeddb74f"
+"@shopgate/eslint-config@5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.8.0.tgz#7be36b8803263e554e4d9dc7691fb66cb39877aa"
   dependencies:
     babel-eslint "^8.2.1"
     eslint-config-airbnb "^16.1.0"
@@ -138,18 +138,17 @@
     eslint-plugin-import "^2.8.0"
     eslint-plugin-jsx-a11y "^6.0.3"
     eslint-plugin-react "^7.6.1"
-    react-hot-loader "4.0.1"
 
-"@shopgate/pwa-common-commerce@5.6.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.6.0.tgz#dfecfba059c7d91a2771ad67db357c2e55b98371"
+"@shopgate/pwa-common-commerce@5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.8.0.tgz#31a7ced88a189f430f5c09c787eaddc70686d5b8"
   dependencies:
     recompose "^0.26.0"
     reselect "^3.0.1"
 
-"@shopgate/pwa-common@5.6.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.6.0.tgz#c2c79fd1454992c6c265b438305117681dc3a4ef"
+"@shopgate/pwa-common@5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.8.0.tgz#5b1fbfb8653cf470df4cca6e6097f682d98da07f"
   dependencies:
     classnames "^2.2.5"
     crypto-js "3.1.9-1"
@@ -174,9 +173,9 @@
     rxjs "^5.4.3"
     url-search-params "^0.10.0"
 
-"@shopgate/pwa-core@5.6.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.6.0.tgz#b1ff63b4fd6332ce440f99063451ec580f9a298c"
+"@shopgate/pwa-core@5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.8.0.tgz#cda9f6ff160c22ffbd3d7d192aafbe947cb6cc39"
   dependencies:
     crypto-js "3.1.9-1"
     isomorphic-fetch "^2.2.1"
@@ -190,9 +189,21 @@
   version "5.8.0-beta.8"
   resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-material/-/pwa-ui-material-5.8.0-beta.8.tgz#e732d66d95aea128a2cca28b9f1434c29325abd3"
 
-"@shopgate/pwa-ui-shared@5.6.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.6.0.tgz#96b05e962eedd314c79d93c8c592a462dd81a810"
+"@shopgate/pwa-ui-shared@5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.8.0.tgz#5c1d67f0386b3fc04fdb863facc0e71d5034886c"
+
+"@shopgate/pwa-unit-test@5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.8.0.tgz#3f8b2d26404e52f540ac5e70d6686496d0aa3b5e"
+  dependencies:
+    cheerio "^1.0.0-rc.2"
+    enzyme "^3.4.4"
+    enzyme-adapter-react-16 "^1.2.0"
+    enzyme-to-json "^3.3.4"
+    identity-obj-proxy "^3.0.0"
+    jest-enzyme "^6.0.3"
+    react-tap-event-plugin "^3.0.2"
 
 "@shopgate/react-hammerjs@0.5.3":
   version "0.5.3"
@@ -200,7 +211,7 @@
   dependencies:
     hammerjs "^2.0.8"
 
-"@shopgate/react-hammerjs@^0.5.3", "@shopgate/react-hammerjs@^0.5.6":
+"@shopgate/react-hammerjs@^0.5.3":
   version "0.5.8"
   resolved "http://registry.npmjs.org/@shopgate/react-hammerjs/-/react-hammerjs-0.5.8.tgz#e5a7eeaad3c1fb73963d881987f52e143a05eb6e"
   dependencies:
@@ -1337,7 +1348,7 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-env@^1.7.0:
+babel-preset-env@^1.6.1, babel-preset-env@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.7.0.tgz#dea79fa4ebeb883cd35dab07e260c1c9c04df77a"
   dependencies:
@@ -2985,7 +2996,7 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@^4.17.0, eslint@^4.19.1:
+eslint@^4.17.0:
   version "4.19.1"
   resolved "http://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz#32d1d653e1d90408854bfb296f076ec7e186a300"
   dependencies:
@@ -6597,6 +6608,15 @@ react-dom@^16.2.0:
     prop-types "^15.6.2"
     schedule "^0.4.0"
 
+react-dom@^16.3.2:
+  version "16.5.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    schedule "^0.5.0"
+
 react-dom@~16.3.2:
   version "16.3.3"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.3.tgz#af4c2aef9f6a66251a46da50253c860a67ae66d9"
@@ -7295,6 +7315,12 @@ sc-formatter@^3.0.1:
 schedule@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/schedule/-/schedule-0.4.0.tgz#fa20cfd0bfbf91c47d02272fd7096780d3170bbb"
+  dependencies:
+    object-assign "^4.1.1"
+
+schedule@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/schedule/-/schedule-0.5.0.tgz#c128fffa0b402488b08b55ae74bb9df55cc29cc8"
   dependencies:
     object-assign "^4.1.1"
 
