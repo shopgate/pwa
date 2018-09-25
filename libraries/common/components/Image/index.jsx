@@ -41,11 +41,6 @@ class Image extends Component {
     ratio: null,
     resolutions: [
       {
-        width: 50,
-        height: 50,
-        blur: 2,
-      },
-      {
         width: 440,
         height: 440,
       },
