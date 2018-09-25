@@ -249,12 +249,32 @@ class BenchmarkController {
    * Pretty prints result.
    */
   print() {
-    this.getKeyFigure('GlobalEvents').stopMeasure('global');
+    const globalEvents = this.getKeyFigure('GlobalEvents');
+    if (globalEvents.started) {
+      this.getKeyFigure('GlobalEvents').stopMeasure('global');
+    }
+
     this.printMostCalledActions();
     this.printHighestAverageAction();
     this.printsActionsWithMostRenders();
     this.printsMostRenderedComponents();
     this.printTotals();
+  }
+
+  /**
+   * Starts benchmarking all key figures.
+   */
+  startAll() {
+    this.keyFigures.forEach(keyFigure => keyFigure.setStarted(true));
+    this.getKeyFigure('GlobalEvents').startMeasure('global');
+  }
+
+  /**
+   * Stops benchmarking all key figures.
+   */
+  stopAll() {
+    this.getKeyFigure('GlobalEvents').stopMeasure('global');
+    this.keyFigures.forEach(keyFigure => keyFigure.setStarted(false));
   }
 }
 

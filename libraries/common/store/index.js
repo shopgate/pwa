@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+=======
+import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+>>>>>>> 3c1b70ae238263b62105227af1304b08a1a5b29f
 import thunk from 'redux-thunk';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import { persistState } from '@virtuous/redux-persister';
@@ -41,8 +47,19 @@ export function configureStore(reducers, subscribers) {
     )
   );
 
+<<<<<<< HEAD
   initSubscribers(subscribers);
   syncRouter(store);
+=======
+  // Add benchmark middleware if enabled via app config.
+  const { benchmark = false } = process.env.APP_CONFIG || {};
+  if (benchmark) {
+    middleware.push(benchmarkMiddleware);
+  }
+
+  // Add observable middleware.
+  middleware.push(observableMiddleware);
+>>>>>>> 3c1b70ae238263b62105227af1304b08a1a5b29f
 
   return store;
 }
