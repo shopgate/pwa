@@ -6,6 +6,7 @@ import syncRouter from '@virtuous/redux-conductor';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
+import appConfig from '../helpers/config';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -33,8 +34,7 @@ export function configureStore(reducers, subscribers) {
   const middlewares = [thunk];
 
   // Add benchmark middleware if enabled via app config.
-  const { benchmark = false } = process.env.APP_CONFIG || {};
-  if (benchmark) {
+  if (appConfig.benchmark) {
     middlewares.push(benchmarkMiddleware);
   }
 

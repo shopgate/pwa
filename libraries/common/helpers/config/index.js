@@ -19,6 +19,7 @@ const defaultAppConfig = {
   shopCNAME: null,
   currency: 'USD',
   showGmdMenuSubHeaders: false,
+  benchmark: false,
 };
 
 export const themeName = process.env.THEME || 'theme';
