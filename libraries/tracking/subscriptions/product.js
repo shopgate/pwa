@@ -1,10 +1,8 @@
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { productIsReady$ } from '../streams/product';
-import {
-  getSelectedVariantFormatted,
-  getCurrentBaseProductFormatted,
-  getCurrentProductFormatted,
-} from '../selectors/product';
+import { getBaseProductFormatted, getProductFormatted } from '../selectors/product';
 import getPage from '../selectors/page';
 import { track } from '../helpers';
 
@@ -18,9 +16,12 @@ export default function product(subscribe) {
    */
   subscribe(variantDidChange$, ({ getState }) => {
     const state = getState();
+    const { params: { productId } } = getCurrentRoute();
+    const props = { productId: hex2bin(productId) };
+
     const trackingData = {
-      variant: getSelectedVariantFormatted(state),
-      baseProduct: getCurrentBaseProductFormatted(state),
+      variant: getProductFormatted(state, props),
+      baseProduct: getBaseProductFormatted(state, props),
     };
 
     track('variantSelected', trackingData, state);
@@ -31,9 +32,12 @@ export default function product(subscribe) {
    */
   subscribe(productIsReady$, ({ getState }) => {
     const state = getState();
+    const { params: { productId } } = getCurrentRoute();
+    const props = { productId: hex2bin(productId) };
+
     const trackingData = {
       page: getPage(state),
-      product: getCurrentProductFormatted(state),
+      product: getProductFormatted(state, props),
     };
 
     track('viewContent', trackingData, state);

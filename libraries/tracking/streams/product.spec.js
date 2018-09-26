@@ -1,19 +1,57 @@
+import { combineReducers } from 'redux';
+import { createMockStore } from '@shopgate/pwa-common/store';
+import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
+import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
+import { HISTORY_PUSH_ACTION, HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import product from '@shopgate/pwa-common-commerce/product/reducers';
 import requestProducts from '@shopgate/pwa-common-commerce/product/action-creators/requestProducts';
 import receiveProducts from '@shopgate/pwa-common-commerce/product/action-creators/receiveProducts';
-import requestProduct from '@shopgate/pwa-common-commerce/product/action-creators/requestProduct';
 import receiveProduct from '@shopgate/pwa-common-commerce/product/action-creators/receiveProduct';
-import setProductId from '@shopgate/pwa-common-commerce/product/action-creators/setProductId';
-import setProductVariantId from '@shopgate/pwa-common-commerce/product/action-creators/setProductVariantId';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { createStore } from './specHelper';
+import { ITEM_PATTERN, ITEM_REVIEWS_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { pwaDidAppear } from '../action-creators';
 import {
   productsReceived$,
-  productReceived$,
+  productRouteReappeared$,
+  productWillEnter$,
   productIsReady$,
 } from './product';
 
-describe.skip('Product streams', () => {
+let mockedRoutePattern;
+let mockedRouteProductId;
+jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
+  pattern: mockedRoutePattern,
+  params: {
+    productId: mockBin2Hex(mockedRouteProductId),
+  },
+}));
+
+/**
+ * Wrapper for the routeWillEnter action. It also sets up the mocked current route.
+ * @param {string} pattern A route pattern.
+ * @param {string} historyAction A history action.
+ * @param {string} productId A product id.
+ * @return {Object}
+ */
+const wrappedRouteWillEnter = (pattern, historyAction, productId = '') => {
+  mockedRoutePattern = pattern;
+  mockedRouteProductId = productId;
+
+  return routeWillEnter({
+    pattern,
+  }, historyAction);
+};
+
+describe('Product streams', () => {
+  let store;
+  let dispatch;
+
+  beforeEach(() => {
+    store = createMockStore(combineReducers({ product }));
+    ({ dispatch } = store);
+    mockedRoutePattern = ITEM_PATTERN;
+    mockedRouteProductId = '';
+  });
+
   describe('productsReceived$', () => {
     let productsReceivedSubscriber;
 
@@ -23,7 +61,6 @@ describe.skip('Product streams', () => {
     });
 
     it('should emit when products where received', () => {
-      const { dispatch } = createStore();
       const hash = 'hash';
       dispatch(requestProducts({ hash }));
       dispatch(receiveProducts({
@@ -34,30 +71,52 @@ describe.skip('Product streams', () => {
     });
 
     it('should not emit for other actions', () => {
-      const { dispatch } = createStore();
       dispatch({ type: 'someaction' });
       expect(productsReceivedSubscriber).not.toHaveBeenCalled();
     });
   });
 
-  describe('productReceived$', () => {
-    let productReceivedSubscriber;
+  describe('productRouteReappeared$', () => {
+    let productRouteReappearedSubscriber;
 
     beforeEach(() => {
-      productReceivedSubscriber = jest.fn();
-      productReceived$.subscribe(productReceivedSubscriber);
+      productRouteReappearedSubscriber = jest.fn();
+      productRouteReappeared$.subscribe(productRouteReappearedSubscriber);
     });
 
-    it('should emit when a product was received', () => {
-      const { dispatch } = createStore();
-      dispatch(receiveProduct());
-      expect(productReceivedSubscriber).toHaveBeenCalledTimes(1);
+    it('should emit when the pwaDidAppear action was dispatched on the item route', () => {
+      dispatch(pwaDidAppear());
+      expect(productRouteReappearedSubscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should not emit for other actions', () => {
-      const { dispatch } = createStore();
-      dispatch({ type: 'someaction' });
-      expect(productReceivedSubscriber).not.toHaveBeenCalled();
+    it('should not emit when the pwaDidAppear action was dispatched on the item route', () => {
+      mockedRoutePattern = ITEM_REVIEWS_PATTERN;
+      dispatch(pwaDidAppear());
+      expect(productRouteReappearedSubscriber).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('productWillEnter$', () => {
+    let productWillEnterSubscriber;
+
+    beforeEach(() => {
+      productWillEnterSubscriber = jest.fn();
+      productWillEnter$.subscribe(productWillEnterSubscriber);
+    });
+
+    it('should emit when an item page was pushed', () => {
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION));
+      expect(productWillEnterSubscriber).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not emit when an item page was replaced', () => {
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_REPLACE_ACTION));
+      expect(productWillEnterSubscriber).not.toHaveBeenCalled();
+    });
+
+    it('should not emit when an page was pushed which is not the item page', () => {
+      dispatch(wrappedRouteWillEnter(ITEM_REVIEWS_PATTERN, HISTORY_PUSH_ACTION));
+      expect(productWillEnterSubscriber).not.toHaveBeenCalled();
     });
   });
 
@@ -70,53 +129,42 @@ describe.skip('Product streams', () => {
     });
 
     it('should emit when a product is ready to be tracked', () => {
-      const { dispatch } = createStore(ITEM_PATH);
       const productId = 'abc123';
-
-      // Put a mocked product into the store.
-      dispatch(receiveProduct(productId, {}));
-      dispatch(setProductId(productId));
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION, productId));
+      dispatch(receiveProduct(productId, { id: productId }));
 
       expect(productIsReadySubscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should emit after a product was received when a product is currently loading', () => {
-      const { dispatch } = createStore(ITEM_PATH);
-      const productId = 'abc123';
-
-      // Simulate an ongoing request.
-      dispatch(requestProduct(productId));
-      dispatch(setProductId(productId));
+    it('should not emit when a product route was entered but the product data was not received yet', () => {
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION));
       expect(productIsReadySubscriber).not.toHaveBeenCalled();
-      // Data came in.
-      dispatch(receiveProduct());
+    });
+
+    it('should only emit when the underlying streams emit in the correct order', () => {
+      const productId = 'abc123';
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION, productId));
+      dispatch(receiveProduct(productId, { id: productId }));
+      expect(productIsReadySubscriber).toHaveBeenCalledTimes(1);
+
+      dispatch(receiveProduct(productId, { id: productId }));
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION, productId));
+      expect(productIsReadySubscriber).toHaveBeenCalledTimes(1);
+
+      dispatch(receiveProduct(productId, { id: productId }));
+      expect(productIsReadySubscriber).toHaveBeenCalledTimes(2);
+    });
+
+    it('should emit when the PWA webview reappeared with an active product page', () => {
+      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION));
+      dispatch(pwaDidAppear());
       expect(productIsReadySubscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should not emit if a variant is selected', () => {
-      const { dispatch } = createStore(ITEM_PATH);
-      const productId = 'abc123';
-      const variantId = '123abc';
-      dispatch(setProductId(productId));
-      dispatch(setProductVariantId(variantId));
-      dispatch(receiveProduct(productId, {}));
-      dispatch(receiveProduct(variantId, {}));
+    it('should not emit when the PWA webview reappeared but the product page is not active', () => {
+      dispatch(wrappedRouteWillEnter(ITEM_REVIEWS_PATTERN, HISTORY_PUSH_ACTION));
+      dispatch(pwaDidAppear());
       expect(productIsReadySubscriber).not.toHaveBeenCalled();
-    });
-
-    describe('coming back from legacy pages', () => {
-      it('should emit when pwaDidAppear is dispatched and a product path is active', () => {
-        const { dispatch } = createStore(ITEM_PATH);
-        dispatch(pwaDidAppear());
-        expect(productIsReadySubscriber).toHaveBeenCalledTimes(1);
-      });
-
-      it('should not emit when pwaDidAppear is dispatched and no product path is active', () => {
-        const { dispatch } = createStore('/somepath');
-        dispatch(pwaDidAppear());
-        expect(productIsReadySubscriber).not.toHaveBeenCalled();
-      });
     });
   });
 });
-
