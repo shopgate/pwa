@@ -5,20 +5,21 @@ import {
   routeDidLeave$,
 } from '@shopgate/pwa-common/streams';
 import {
-  CATEGORY_PATH,
+  ROOT_CATEGORY_PATTERN,
+  CATEGORY_PATTERN,
+  CATEGORY_FILTER_PATTERN,
   RECEIVE_ROOT_CATEGORIES,
   ERROR_CATEGORY,
 } from '../constants';
-import { FILTER_PATH } from '../../filter/constants';
 
 export const categoryWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId`);
+  .filter(({ action }) => action.route.pattern === CATEGORY_PATTERN);
 
 export const categoryDidEnter$ = routeDidEnter$
-  .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId`);
+  .filter(({ action }) => action.route.pattern === CATEGORY_PATTERN);
 
 export const categoryDidLeave$ = routeDidLeave$
-  .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId`);
+  .filter(({ action }) => action.route.pattern === CATEGORY_PATTERN);
 
 /**
  * Gets triggered when leaving a category route.
@@ -27,11 +28,11 @@ export const categoryDidLeave$ = routeDidLeave$
  */
 export const categoryRouteDidLeave$ = routeDidLeave$
   .filter(({ action }) => (
-    action.route.pattern === CATEGORY_PATH
-    || action.route.pattern === `${CATEGORY_PATH}/:categoryId`
+    action.route.pattern === ROOT_CATEGORY_PATTERN
+    || action.route.pattern === CATEGORY_PATTERN
   ))
   .zip(routeDidEnter$.filter(({ action }) => (
-    action.route.pattern !== `${CATEGORY_PATH}/:categoryId${FILTER_PATH}`
+    action.route.pattern !== CATEGORY_FILTER_PATTERN
   )));
 
 /**
@@ -39,8 +40,8 @@ export const categoryRouteDidLeave$ = routeDidLeave$
  */
 export const categoryRouteDidEnter$ = routeDidEnter$
   .filter(({ action }) => (
-    action.route.pattern === CATEGORY_PATH
-    || action.route.pattern === `${CATEGORY_PATH}/:categoryId`
+    action.route.pattern === ROOT_CATEGORY_PATTERN
+    || action.route.pattern === CATEGORY_PATTERN
   ));
 
 /**

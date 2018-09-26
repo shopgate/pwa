@@ -5,7 +5,7 @@ import {
   REQUEST_SEARCH_RESULTS,
   RECEIVE_SEARCH_RESULTS,
   ERROR_SEARCH_RESULTS,
-  SEARCH_PATH,
+  SEARCH_PATTERN,
 } from '../constants';
 
 /**
@@ -26,13 +26,13 @@ export const searchReceived$ = main$.filter(({ action }) => (
 ));
 
 export const searchWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATH);
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
 
 export const searchDidEnter$ = routeDidEnter$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATH);
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
 
 export const searchWillLeave$ = routeWillLeave$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATH);
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
 
 export const searchWillUpdate$ = routeWillEnter$
   .filter(({ action }) => action.historyAction === ACTION_REPLACE);
