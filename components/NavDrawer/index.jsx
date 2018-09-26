@@ -334,8 +334,6 @@ class NavDrawer extends Component {
             <Fragment>
               <Divider close={this.handleClose} />
 
-              {showGmdMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
-
               <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
               <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
                 <Item

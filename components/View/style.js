@@ -28,8 +28,12 @@ const content = (
   const navHeight = hasNavigator ? variables.navbar.height : 0;
   const navAndStatusBarHeight = `calc(${navHeight}px + var(--safe-area-inset-top))`;
 
+  /*
+    Important: there must be no background-color here.
+    If there is background-color applied, on ios10 there is black overlay below the scrollable
+    area and all elements without a background.
+  */
   return css({
-    background: colors.light,
     overflow: 'auto',
     overflowScrolling: 'touch',
     WebkitOverflowScrolling: 'touch',
