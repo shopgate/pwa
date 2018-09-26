@@ -9,6 +9,7 @@ const container = css({
   bottom: 0,
   left: 0,
   right: 0,
+  zIndex: 2,
   padding: variables.gap.small,
   paddingBottom: `calc(${variables.gap.small}px + var(--safe-area-inset-bottom))`,
   background: colors.light,
