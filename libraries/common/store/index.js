@@ -1,5 +1,6 @@
 import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
+import benchmarkController from '@shopgate/pwa-benchmark';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -42,6 +43,7 @@ const configureStore = (customReducers = {}) => {
 
   // Add benchmark middleware if enabled via app config.
   if (appConfig.benchmark) {
+    benchmarkController.startup();
     middleware.push(benchmarkMiddleware);
   }
 
