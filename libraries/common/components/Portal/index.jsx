@@ -4,8 +4,6 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig } from '../../helpers/config';
 
-const { portals = null } = componentsConfig;
-
 /**
  * The Portal component.
  */
@@ -28,54 +26,11 @@ class Portal extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.portals = portalCollection.getPortals();
     this.state = {
       hasError: false,
-      components: this.getComponents(props),
     };
-  }
 
-  /**
-   * Returns the portal components.
-   * @param {Object} componentProps The component props.
-   * @return {Array}
-   */
-  getComponents = (componentProps) => {
-    const { name, props } = componentProps;
-    const components = [];
-
-    if (!portals) {
-      return components;
-    }
-
-    // Loop over the portal keys.
-    Object.keys(portals).forEach((key, index) => {
-      const { target: sourceTarget } = portals[key];
-      const portalTarget = Array.isArray(sourceTarget) ? sourceTarget : [sourceTarget];
-
-      if (portalTarget.length === 0) {
-        return;
-      }
-
-      portalTarget.forEach((target) => {
-        // Stop if there is no key that matches the given name (prop).
-        if (target !== name) {
-          return;
-        }
-
-        const PortalComponent = this.portals[key];
-
-        // Check that the component is valid.
-        if (PortalComponent) {
-          const componentKey = `${key}-${index}`;
-          components.push((
-            <PortalComponent {...props} key={componentKey} />
-          ));
-        }
-      });
-    });
-
-    return components;
+    this.components = this.getPortalComponents(props.name);
   }
 
   /**
@@ -89,30 +44,104 @@ class Portal extends PureComponent {
   }
 
   /**
+   * Returns the portal components.
+   * @param {string} name Name of the portal position
+   * @return {Array}
+   */
+  getPortalComponents = (name) => {
+    const portals = portalCollection.getPortals();
+
+    const components = [];
+
+    if (!portals) {
+      return components;
+    }
+
+    // Loop over the portal keys.
+    Object.keys(componentsConfig.portals).forEach((key, index) => {
+      const { target: sourceTarget } = componentsConfig.portals[key];
+      const portalTarget = Array.isArray(sourceTarget) ? sourceTarget : [sourceTarget];
+
+      if (portalTarget.length === 0) {
+        return;
+      }
+
+      portalTarget.forEach((target) => {
+        // Stop if there is no key that matches the given name (prop).
+        if (target !== name) {
+          return;
+        }
+
+        const PortalComponent = portals[key];
+
+        // Check that the component is valid.
+        if (PortalComponent) {
+          const componentKey = `${key}-${index}`;
+
+          components.push({
+            key: componentKey,
+            PortalComponent,
+          });
+        }
+      });
+    });
+
+    return components;
+  };
+
+  /**
+   * Returns the portal components.
+   * @param {Object} props - The props to pass to the component.
+   * @return {Array}
+   */
+  getRenderedComponents = (props) => {
+    const { props: propsFromProps, ...reducedProps } = props;
+
+    const componentProps = {
+      ...propsFromProps,
+      ...reducedProps,
+    };
+
+    return this.components.map(({ PortalComponent, key }) => (
+      <PortalComponent {...componentProps} key={key} />
+    ));
+  };
+
+  /**
    * Renders the component.
    * @return {JSX}
    */
   render() {
     const { children } = this.props;
-    const { hasError, components } = this.state;
+    const { hasError } = this.state;
+    const renderedComponents = this.getRenderedComponents(this.props);
+    const hasComponents = renderedComponents.length > 0;
 
     /**
      * Render nothing if there are no children, matching components
      * via name or an error occured.
      */
-    if (hasError || components.length === 0) {
-      return children;
+    if (hasError || !(hasComponents || children)) {
+      return null;
     }
 
     /**
      * If there is a child component then we treat the match as an override
      * and we render the last match only.
      */
-    if (children) {
-      return components[components.length - 1];
+    if (hasComponents) {
+      /**
+       * If there is a child component then we treat the match as an override
+       * and we render the last match only.
+       */
+      if (children) {
+        return renderedComponents[renderedComponents.length - 1];
+      }
+
+      return renderedComponents;
     }
 
-    return components;
+    return children;
   }
 }
 
