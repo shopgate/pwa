@@ -24,6 +24,7 @@ release:
 		make build-libraries
 		make npm-publish
 		make git-publish
+		make changelog
 		make clean-build
 		make post-release
 		@echo " "
@@ -42,7 +43,7 @@ ifneq ($(REPO_VERSION), '')
 		$(call merge-master, $(SUBSTR))
 else
 		@echo " "
-		@echo "Peforming manual release process!!"
+		@echo "Performing manual release process!!"
 		@echo " "
 endif
 
@@ -103,6 +104,16 @@ ifneq ($(REPO_VERSION), '')
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call merge-develop, $(SUBSTR))
 endif
+
+changelog:
+		@echo " "
+		@echo "Creating changelog ..."
+		@echo " "
+		./node_modules/.bin/lerna-changelog
+		git add -A
+		git commit -m "$$PACKAGE_VERSION"
+		git push
+		@echo "... done."
 
 e2e-gmd:
 		cd themes/gmd && yarn run e2e

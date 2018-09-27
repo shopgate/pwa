@@ -39,6 +39,11 @@ export const TYPE_TRUSTED = 'trusted';
 export const EFAVORITE = 'EFAVORITE';
 export const EBIGAPI = 'EBIGAPI';
 
+/**
+ * Error that is thrown if login was uncomplete. Used for external identity services.
+ */
+export const EUNCOMPLETE = 'EUNCOMPLETE';
+
 // Validation errors
 export const EVALIDATION = 'EVALIDATION';
 
