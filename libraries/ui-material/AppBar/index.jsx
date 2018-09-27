@@ -16,7 +16,6 @@ class AppBar extends Component {
     left: PropTypes.shape(),
     onMount: PropTypes.func,
     right: PropTypes.shape(),
-    shadow: PropTypes.bool,
     textColor: PropTypes.string,
   }
 
@@ -28,7 +27,6 @@ class AppBar extends Component {
     left: null,
     onMount: null,
     right: null,
-    shadow: true,
     textColor: '#000',
   }
 
@@ -50,12 +48,11 @@ class AppBar extends Component {
    * @returns {Object}
    */
   get style() {
-    const { backgroundColor, shadow, textColor } = this.props;
+    const { backgroundColor, textColor } = this.props;
 
     return {
       background: backgroundColor,
       color: textColor,
-      boxShadow: shadow ? 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px' : 'none',
     };
   }
 
