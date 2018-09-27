@@ -1,17 +1,10 @@
 import React, { PureComponent } from 'react';
 import { AppBar } from '@shopgate/pwa-ui-material';
-import { ViewContext } from 'Components/View/context';
 
 /**
  * The AppBarContainer component.
  */
 class AppBarContainer extends PureComponent {
-  /**
-   * @param {Object} node The ref of the AppBar.
-   */
-  onMount = (node) => {
-    this.props.setTop(node.current.clientHeight);
-  }
 
   ref = React.createRef();
 
@@ -24,22 +17,12 @@ class AppBarContainer extends PureComponent {
     ));
 
     return (
-      <Bar {...this.props} onMount={this.onMount} ref={this.ref} />
+      <Bar {...this.props} ref={this.ref} />
     );
   }
 }
 
-/**
- * @param {Object} props The component props.
- * @returns {JSX}
- */
-const AppBarConsumer = props => (
-  <ViewContext.Consumer>
-    {({ setTop }) => <AppBarContainer {...props} setTop={setTop} />}
-  </ViewContext.Consumer>
-);
+AppBarContainer.Icon = AppBar.Icon;
+AppBarContainer.Title = AppBar.Title;
 
-AppBarConsumer.Icon = AppBar.Icon;
-AppBarConsumer.Title = AppBar.Title;
-
-export default AppBarConsumer;
+export default AppBarContainer;

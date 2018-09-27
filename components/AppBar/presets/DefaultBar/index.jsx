@@ -13,7 +13,7 @@ import CartButton from './components/CartButton';
 function AppBarDefault({ title, ...props }, context) {
   const { __ } = context.i18n();
   const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} />;
-  const center = <AppBar.Title title={__(title)} />;
+  const center = <AppBar.Title title={__(title || '')} />;
   const right = (
     <Fragment>
       <AppBar.Icon icon={MagnifierIcon} onClick={NavDrawer.open} />
@@ -29,7 +29,7 @@ AppBarDefault.propTypes = {
 };
 
 AppBarDefault.defaultProps = {
-  title: '',
+  title: null,
 };
 
 AppBarDefault.contextTypes = {
