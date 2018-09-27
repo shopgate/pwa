@@ -13,12 +13,10 @@ const appConfig = process.env.APP_CONFIG || {};
 class BrowserConnector {
   /**
    * The constructor.
-   * @param {Object} command The command.
    * @param {string} [ip=process.env.IP] The IP of the dev server.
    * @param {number} [port=process.env.PORT] The port of the dev server.
    */
-  constructor(command, ip = process.env.IP, port = process.env.PORT) {
-    this.command = command;
+  constructor(ip = process.env.IP, port = process.env.PORT) {
     this.ip = ip;
     this.port = port;
     this.supportedCommands = [
@@ -119,10 +117,12 @@ class BrowserConnector {
 
   /**
    * Dispatches a single command to the dev server.
+   * @param {Object} command The command to dispatch.
    * @param {string} libVersion The lib version for the command.
    * @return {BrowserConnector}
    */
-  dispatchCommandForVersion(libVersion) {
+  dispatchCommandForVersion(command, libVersion) {
+    this.command = command;
     const { c: name } = this.command || {};
 
     if (this.supportedCommands.includes(name)) {

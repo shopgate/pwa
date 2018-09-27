@@ -151,7 +151,7 @@ class AppCommand {
       if (!appConfig.browserConnector) {
         bridge = new DevServerBridge();
       } else {
-        bridge = new BrowserConnector(command);
+        bridge = new BrowserConnector();
       }
     } else {
       bridge = SGJavascriptBridge;
@@ -159,7 +159,7 @@ class AppCommand {
 
     try {
       if ('dispatchCommandForVersion' in bridge) {
-        bridge.dispatchCommandForVersion(appLibVersion);
+        bridge.dispatchCommandForVersion(command, appLibVersion);
       /* istanbul ignore else */
       } else if ('dispatchCommandsForVersion' in bridge) {
         bridge.dispatchCommandsForVersion([command], appLibVersion);

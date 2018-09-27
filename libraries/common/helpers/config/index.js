@@ -5,6 +5,7 @@ import { themeConfig as mock } from './mock';
  */
 const defaultAppConfig = {
   appId: 'shop_30177',
+  browserConnector: false,
   colors: {},
   forgotPasswordUrl: null,
   hasFavorites: false,
