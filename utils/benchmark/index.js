@@ -22,9 +22,6 @@ class BenchmarkController {
    * Startsup the controller
    */
   startup() {
-    // Add global events.
-    this.getKeyFigure('GlobalEvents').startMeasure('global');
-
     // Redux key figures.
     this.addKeyFigure(
       'ActionCount',
@@ -42,6 +39,9 @@ class BenchmarkController {
       'GlobalEvents',
       new KeyFigure(KEY_FIGURE_MODE_ADD, KEY_FIGURE_METHOD_OBSERVER)
     );
+
+    // Add global events.
+    this.getKeyFigure('GlobalEvents').startMeasure('global');
   }
 
   /**
@@ -238,6 +238,7 @@ class BenchmarkController {
     const globalEvents = this.getKeyFigure('GlobalEvents');
     if (globalEvents.started) {
       this.getKeyFigure('GlobalEvents').stopMeasure('global');
+      this.getKeyFigure('GlobalEvents').startMeasure('global');
     }
 
     this.printMostCalledActions();
@@ -251,7 +252,7 @@ class BenchmarkController {
    * Starts benchmarking all key figures.
    */
   startAll() {
-    this.keyFigures.forEach(keyFigure => keyFigure.setStarted(true));
+    Object.keys(this.keyFigures).forEach(keyFigure => this.keyFigures[keyFigure].setStarted(true));
     this.getKeyFigure('GlobalEvents').startMeasure('global');
   }
 
@@ -260,7 +261,7 @@ class BenchmarkController {
    */
   stopAll() {
     this.getKeyFigure('GlobalEvents').stopMeasure('global');
-    this.keyFigures.forEach(keyFigure => keyFigure.setStarted(false));
+    Object.keys(this.keyFigures).forEach(keyFigure => this.keyFigures[keyFigure].setStarted(false));
   }
 }
 
