@@ -25,19 +25,21 @@ class Portal extends Component {
   constructor(props) {
     super(props);
 
-    this.portals = portalCollection.getPortals();
     this.state = {
       hasError: false,
     };
+
+    this.components = this.getPortalComponents(props.name);
   }
 
   /**
    * Returns the portal components.
-   * @param {string} name - The component name to match.
-   * @param {Object} props - The props to pass to the component.
+   * @param {string} name Name of the portal position
    * @return {Array}
    */
-  getComponents = (name, props) => {
+  getPortalComponents = (name) => {
+    const portals = portalCollection.getPortals();
+
     const components = [];
 
     if (!config || !config.portals) {
@@ -60,20 +62,40 @@ class Portal extends Component {
           return;
         }
 
-        const PortalComponent = this.portals[key];
+        const PortalComponent = portals[key];
 
         // Check that the component is valid.
         if (PortalComponent) {
           const componentKey = `${key}-${index}`;
-          components.push((
-            <PortalComponent {...props} key={componentKey} />
-          ));
+
+          components.push({
+            key: componentKey,
+            PortalComponent,
+          });
         }
       });
     });
 
     return components;
-  }
+  };
+
+  /**
+   * Returns the portal components.
+   * @param {Object} props - The props to pass to the component.
+   * @return {Array}
+   */
+  getRenderedComponents = (props) => {
+    const { props: propsFromProps, ...reducedProps } = props;
+
+    const componentProps = {
+      ...propsFromProps,
+      ...reducedProps,
+    };
+
+    return this.components.map(({ PortalComponent, key }) => (
+      <PortalComponent {...componentProps} key={key} />
+    ));
+  };
 
   /**
    * Catches errors.
@@ -89,8 +111,8 @@ class Portal extends Component {
   render() {
     const { children } = this.props;
     const { hasError } = this.state;
-    const components = this.getComponents(this.props.name, this.props.props);
-    const hasComponents = components.length > 0;
+    const renderedComponents = this.getRenderedComponents(this.props);
+    const hasComponents = renderedComponents.length > 0;
 
     /**
      * Render nothing if there are no children, matching components
@@ -109,10 +131,10 @@ class Portal extends Component {
        * and we render the last match only.
        */
       if (children) {
-        return components[components.length - 1];
+        return renderedComponents[renderedComponents.length - 1];
       }
 
-      return components;
+      return renderedComponents;
     }
 
     return children;

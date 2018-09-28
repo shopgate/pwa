@@ -11,20 +11,24 @@ class Select extends Component {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     errorText: PropTypes.node,
+    isControlled: PropTypes.bool,
     label: PropTypes.node,
     onChange: PropTypes.func,
     options: PropTypes.shape(),
     placeholder: PropTypes.node,
+    translateErrorText: PropTypes.bool,
     value: PropTypes.string,
   };
 
   static defaultProps = {
     className: '',
     errorText: '',
+    isControlled: false,
     placeholder: '',
     label: '',
     onChange: () => {},
     options: {},
+    translateErrorText: true,
     value: '',
   };
 
@@ -40,12 +44,24 @@ class Select extends Component {
       isFocused: false,
     };
   }
+  /**
+   * Update state with new props.
+   * @param {Object} nextProps The new props.
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      ...this.state,
+      value: nextProps.value,
+    });
+  }
 
   /**
    * @param {string} value The entered text.
    */
   handleChange = ({ target }) => {
-    this.setState({ value: target.value });
+    if (!this.props.isControlled) {
+      this.setState({ value: target.value });
+    }
     this.props.onChange(target.value);
   };
 
@@ -60,7 +76,7 @@ class Select extends Component {
    * @return {JSX}
    */
   render() {
-    const { name, options } = this.props;
+    const { name, options, translateErrorText } = this.props;
     return (
       <FormElement
         className={this.props.className}
@@ -68,6 +84,7 @@ class Select extends Component {
         htmlFor={name}
         label={this.props.label}
         errorText={this.props.errorText}
+        translateErrorText={translateErrorText}
         isFocused={this.state.isFocused}
         hasValue={!!this.state.value}
       >

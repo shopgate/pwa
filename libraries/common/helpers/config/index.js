@@ -19,7 +19,10 @@ const defaultAppConfig = {
   shopCNAME: null,
   currency: 'USD',
   benchmark: false,
+  showGmdMenuSubHeaders: false,
 };
+
+export const themeName = process.env.THEME || 'theme';
 
 /**
  * Provides a default theme config as a fallback.
