@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
 import syncRouter from '@virtuous/redux-conductor';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
+import benchmarkController from '@shopgate/pwa-benchmark';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
 import appConfig from '../helpers/config';
@@ -30,22 +31,21 @@ if (window.localStorage) {
  * @return {Object} The redux store.
  */
 export function configureStore(reducers, subscribers) {
-  // Add redux-thunk middleware.
-  const middlewares = [thunk];
-
-  // Add benchmark middleware if enabled via app config.
+  // Starts benchmark controller BEFORE adding the middleware.
   if (appConfig.benchmark) {
-    middlewares.push(benchmarkMiddleware);
+    benchmarkController.startup();
   }
-
-  // Add streams and logger middlewares.
-  middlewares.push(...[streams, logger]);
 
   const store = createStore(
     reducers,
     initialState,
     composeWithDevTools(
-      applyMiddleware(...middlewares),
+      applyMiddleware(...[
+        thunk,
+        ...appConfig.benchmark ? [benchmarkMiddleware] : [],
+        streams,
+        logger,
+      ]),
       persistState({
         key: storeKey,
         paths: persistedReducers.getAll(),

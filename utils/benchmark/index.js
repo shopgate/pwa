@@ -5,6 +5,8 @@ import KeyFigure, {
   KEY_FIGURE_METHOD_OBSERVER,
 } from './keyFigure';
 
+const HEADLINE_STYLE = 'font-size: 24px; margin-top: 32px; margin-bottom: 12px;';
+
 /**
  * Benchmark controller.
  */
@@ -14,7 +16,12 @@ class BenchmarkController {
    */
   constructor() {
     this.keyFigures = {};
+  }
 
+  /**
+   * Startsup the controller
+   */
+  startup() {
     // Redux key figures.
     this.addKeyFigure(
       'ActionCount',
@@ -32,6 +39,8 @@ class BenchmarkController {
       'GlobalEvents',
       new KeyFigure(KEY_FIGURE_MODE_ADD, KEY_FIGURE_METHOD_OBSERVER)
     );
+
+    // Add global events.
     this.getKeyFigure('GlobalEvents').startMeasure('global');
   }
 
@@ -65,26 +74,39 @@ class BenchmarkController {
   }
 
   /**
+   * Sorts measured actions descending.
+   * @param {Array} actions Measured actions.
+   * @param {function} getA Getter to get left side.
+   * @param {function} getB Getter to get right side.
+   * @returns {Array}
+   */
+  sortMeasure = (actions, getA, getB) => actions.sort((a, b) => {
+    const measureA = getA(a);
+    const measureB = getB(b);
+
+    if (measureA < measureB) {
+      return -1;
+    }
+    if (measureA > measureB) {
+      return 1;
+    }
+    return 0;
+  });
+
+  /**
    * Prints most called actions.
    */
   printMostCalledActions() {
     // Most called actions.
     const { measure } = this.getKeyFigure('ActionCount');
     const actions = Object.keys(measure.inclusive);
-    const sortedAction = actions.sort((actionA, actionB) => {
-      const measureA = measure.inclusive[actionA];
-      const measureB = measure.inclusive[actionB];
+    const sortedAction = this.sortMeasure(
+      actions,
+      a => measure.inclusive[a],
+      b => measure.inclusive[b]
+    );
 
-      if (measureA < measureB) {
-        return -1;
-      }
-      if (measureA > measureB) {
-        return 1;
-      }
-      return 0;
-    });
-
-    console.log('%cMost called actions', 'font-size: 24px; margin-bottom: 12px;');
+    console.log('%cMost called actions', HEADLINE_STYLE);
     console.table(sortedAction
       .map(action => ({
         Action: action,
@@ -104,20 +126,13 @@ class BenchmarkController {
     const { measure: measureCount } = this.getKeyFigure('ActionCount');
 
     const actions = Object.keys(measure[type]);
-    const sortedAction = actions.sort((actionA, actionB) => {
-      const measureA = measure[type][actionA] / measureCount[type][actionA];
-      const measureB = measure[type][actionB] / measureCount[type][actionB];
+    const sortedAction = this.sortMeasure(
+      actions,
+      a => measure[type][a] / measureCount[type][a],
+      b => measure[type][b] / measureCount[type][b]
+    );
 
-      if (measureA < measureB) {
-        return -1;
-      }
-      if (measureA > measureB) {
-        return 1;
-      }
-      return 0;
-    });
-
-    console.log(`%cHighest average execution time (${type})`, 'font-size: 24px; margin-top: 32px; margin-bottom: 12px;');
+    console.log(`%cHighest average execution time (${type})`, HEADLINE_STYLE);
     console.table(sortedAction
       .map(action => ({
         Action: action,
@@ -139,20 +154,9 @@ class BenchmarkController {
         renderTime: measure[action][current].renderTime + acc.renderTime,
       }), { action, render: 0, renderTime: 0 }));
 
-    const sortedAction = actions.sort((actionA, actionB) => {
-      const measureA = actionA.render;
-      const measureB = actionB.render;
+    const sortedAction = this.sortMeasure(actions, a => a.render, b => b.render);
 
-      if (measureA < measureB) {
-        return -1;
-      }
-      if (measureA > measureB) {
-        return 1;
-      }
-      return 0;
-    });
-
-    console.log('%cAction that caused most renders', 'font-size: 24px; margin-top: 32px; margin-bottom: 12px;');
+    console.log('%cAction that caused most renders', HEADLINE_STYLE);
     console.table(sortedAction
       .map(action => ({
         Action: action.action,
@@ -165,10 +169,11 @@ class BenchmarkController {
   }
 
   /**
-   * Prints the most rendering components.
+   * Takes measure from all actions / components and adds it to a total.
+   * @param {Array} measure List of measures.
+   * @returns {Array}
    */
-  printsMostRenderedComponents() {
-    const measure = this.getKeyFigure('GlobalEvents').measure.inclusive;
+  getTotals = (measure) => {
     const result = [];
 
     Object.keys(measure)
@@ -188,20 +193,18 @@ class BenchmarkController {
           });
         }));
 
-    const sortedAction = result.sort((actionA, actionB) => {
-      const measureA = actionA.render;
-      const measureB = actionB.render;
+    return result;
+  }
 
-      if (measureA < measureB) {
-        return -1;
-      }
-      if (measureA > measureB) {
-        return 1;
-      }
-      return 0;
-    });
+  /**
+   * Prints the most rendering components.
+   */
+  printsMostRenderedComponents() {
+    const measure = this.getKeyFigure('GlobalEvents').measure.inclusive;
+    const result = this.getTotals(measure);
+    const sortedAction = this.sortMeasure(result, a => a.render, b => b.render);
 
-    console.log('%cMost rendered Components', 'font-size: 24px; margin-top: 32px; margin-bottom: 12px;');
+    console.log('%cMost rendered Components', HEADLINE_STYLE);
     console.table(sortedAction
       .map(action => ({
         Component: action.name,
@@ -218,30 +221,13 @@ class BenchmarkController {
    */
   printTotals() {
     const measure = this.getKeyFigure('GlobalEvents').measure.inclusive;
-    const result = [];
-
-    Object.keys(measure)
-      .forEach(action => Object.keys(measure[action])
-        .forEach((component) => {
-          const found = result.find(r => r.name === component);
-          if (found) {
-            found.render += measure[action][component].render;
-            found.renderTime += measure[action][component].renderTime;
-            return;
-          }
-
-          result.push({
-            name: component,
-            render: measure[action][component].render,
-            renderTime: measure[action][component].renderTime,
-          });
-        }));
+    const result = this.getTotals(measure);
 
     const sumRenders = result.reduce((current, acc) => current + acc.render, 0);
     const sumRenderTime = result.reduce((current, acc) => current + acc.renderTime, 0);
     const avgRenderTime = sumRenderTime / sumRenders;
 
-    console.log('%cRender total', 'font-size: 24px; margin-top: 32px; margin-bottom: 12px;');
+    console.log('%cRender total', HEADLINE_STYLE);
     console.log(`%cRenders: ${sumRenders}; Execution Time: ${sumRenderTime}ms; Average Execution Time: ${avgRenderTime}ms`, 'font-size: 16px; margin-bottom: 12px;');
   }
 
@@ -252,6 +238,7 @@ class BenchmarkController {
     const globalEvents = this.getKeyFigure('GlobalEvents');
     if (globalEvents.started) {
       this.getKeyFigure('GlobalEvents').stopMeasure('global');
+      this.getKeyFigure('GlobalEvents').startMeasure('global');
     }
 
     this.printMostCalledActions();
@@ -265,7 +252,7 @@ class BenchmarkController {
    * Starts benchmarking all key figures.
    */
   startAll() {
-    this.keyFigures.forEach(keyFigure => keyFigure.setStarted(true));
+    Object.keys(this.keyFigures).forEach(keyFigure => this.keyFigures[keyFigure].setStarted(true));
     this.getKeyFigure('GlobalEvents').startMeasure('global');
   }
 
@@ -274,7 +261,7 @@ class BenchmarkController {
    */
   stopAll() {
     this.getKeyFigure('GlobalEvents').stopMeasure('global');
-    this.keyFigures.forEach(keyFigure => keyFigure.setStarted(false));
+    Object.keys(this.keyFigures).forEach(keyFigure => this.keyFigures[keyFigure].setStarted(false));
   }
 }
 
