@@ -4,7 +4,14 @@ export const OS_IOS = 'ios';
 
 export const TYPE_PHONE = 'phone';
 
-export const MODEL_NAMES_IPHONE_X = ['iPhone10,3', 'iPhone10,6'];
+export const MODEL_NAMES_IPHONE_X = [
+  'iPhone10,3',
+  'iPhone10,6',
+  'iPhone11,2',
+  'iPhone11,4',
+  'iPhone11,6',
+  'iPhone11,8',
+];
 
 /**
  * Page insets are device screen areas which can't be used to display content. Those come especially
