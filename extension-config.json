@@ -161,6 +161,15 @@
         "type": "json",
         "label": "Show GMD menu headers"
       }
+    },
+    "benchmark": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Enable / disable frontend benchmarking tools"
+      }
     }
   }
 }
