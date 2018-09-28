@@ -198,7 +198,7 @@ class FilterContent extends PureComponent {
 
     return (
       <Fragment>
-        <CloseBar title="titles.filters" right={right} />
+        <CloseBar title="titles.filter" right={right} />
         {filters.map((filter) => {
           const portalProps = { filter };
           const value = this.getFilterValue(filter.id);

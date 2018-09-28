@@ -37,7 +37,7 @@ const dropdown = css({
   top: variables.filterbar.height,
   left: 0,
   backgroundColor: colors.background,
-  boxShadow: 'rgba(0, 0, 0, 0.16) 0 4px 4px',
+  boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
 }).toString();
 
 const selectItem = css({

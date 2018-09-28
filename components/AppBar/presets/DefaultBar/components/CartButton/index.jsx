@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
+import { AppBar } from '@shopgate/pwa-ui-material';
 import { CartIcon } from '@shopgate/pwa-ui-shared';
 import colors from 'Styles/colors';
-import AppBar from '../../../../index';
 import Badge from '../CartBadge';
 import connect from './connector';
 import styles from './style';

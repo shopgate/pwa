@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { BurgerIcon, MagnifierIcon } from '@shopgate/pwa-ui-shared';
-import AppBar from '../../index';
+import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
+import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import CartButton from './components/CartButton';
+import SearchButton from './components/SearchButton';
 
 /**
  * @param {Object} props the component props.
@@ -16,7 +16,7 @@ function AppBarDefault({ title, ...props }, context) {
   const center = <AppBar.Title title={__(title || '')} />;
   const right = (
     <Fragment>
-      <AppBar.Icon icon={MagnifierIcon} onClick={NavDrawer.open} />
+      <SearchButton />
       <CartButton />
     </Fragment>
   );
