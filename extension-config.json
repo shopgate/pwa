@@ -169,6 +169,15 @@
         "path": "/v1/%(shopId)s",
         "key": "currencyId"
       }
+    },
+    "benchmark": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Enable / disable frontend benchmarking tools"
+      }
     }
   }
 }
