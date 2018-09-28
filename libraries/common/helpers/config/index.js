@@ -18,6 +18,7 @@ const defaultAppConfig = {
   webCheckoutShopify: null,
   shopCNAME: null,
   currency: 'USD',
+  benchmark: false,
   showGmdMenuSubHeaders: false,
 };
 
