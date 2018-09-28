@@ -1,10 +1,13 @@
-import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
 import syncRouter from '@virtuous/redux-conductor';
+import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
+import benchmarkController from '@shopgate/pwa-benchmark';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
+import appConfig from '../helpers/config';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -28,11 +31,21 @@ if (window.localStorage) {
  * @return {Object} The redux store.
  */
 export function configureStore(reducers, subscribers) {
+  // Starts benchmark controller BEFORE adding the middleware.
+  if (appConfig.benchmark) {
+    benchmarkController.startup();
+  }
+
   const store = createStore(
     reducers,
     initialState,
     composeWithDevTools(
-      applyMiddleware(thunk, streams, logger),
+      applyMiddleware(...[
+        thunk,
+        ...appConfig.benchmark ? [benchmarkMiddleware] : [],
+        streams,
+        logger,
+      ]),
       persistState({
         key: storeKey,
         paths: persistedReducers.getAll(),
