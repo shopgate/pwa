@@ -3,6 +3,7 @@ import {
   logger,
   EINVALIDCALL,
   ELEGACYSGCONNECT,
+  EUNCOMPLETE
 } from '@shopgate/pwa-core';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import * as actions from '../../action-creators/user';
@@ -24,6 +25,7 @@ export default function login(credentials, redirect) {
       .setErrorBlacklist([
         EINVALIDCALL,
         ELEGACYSGCONNECT,
+        EUNCOMPLETE,
       ])
       .setInput({
         strategy: 'basic',
@@ -53,10 +55,10 @@ export default function login(credentials, redirect) {
            * the shop system credentials failed and further steps are necessary to login the user.
            */
           dispatch(actions.errorLegacyConnectRegister());
-          dispatch(actions.errorLogin());
+          dispatch(actions.errorLogin([], ELEGACYSGCONNECT));
         } else {
           logger.error(error);
-          dispatch(actions.errorLogin());
+          dispatch(actions.errorLogin([], code));
         }
       });
   };

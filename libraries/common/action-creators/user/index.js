@@ -18,12 +18,14 @@ import {
  * in order to may access it within a stream subscription.
  * @param {string} user The user name.
  * @param {string} password The user password.
+ * @param {string} strategy login strategy
  * @returns {Object} The dispatched action object.
  */
-export const requestLogin = (user, password) => ({
+export const requestLogin = (user, password, strategy = 'basic') => ({
   type: REQUEST_LOGIN,
   user,
   password,
+  strategy,
 });
 
 /**
@@ -38,12 +40,14 @@ export const successLogin = redirect => ({
 
 /**
  * Creates the dispatched ERROR_LOGIN action object.
- * @param {Array} [messages=[]] Array of error messages
+ * @param {Array} [messages=[]] Array of error messages.
+ * @param {string} code The specific error code.
  * @returns {Object} The dispatched action object.
  */
-export const errorLogin = (messages = []) => ({
+export const errorLogin = (messages = [], code = '') => ({
   type: ERROR_LOGIN,
   messages,
+  code,
 });
 
 /**
@@ -100,10 +104,12 @@ export const receiveUser = user => ({
 
 /**
  * Creates the dispatched ERROR_USER action object.
- * @returns {Object} The dispatched action object.
+ * @param {Object} error error
+ @returns {Object} The dispatched action object.
  */
-export const errorUser = () => ({
+export const errorUser = error => ({
   type: ERROR_USER,
+  error,
 });
 
 /**
