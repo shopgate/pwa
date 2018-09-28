@@ -6,6 +6,7 @@ import SliderItem from './components/Item';
 import styles from './style';
 import connect from './connector';
 
+window.foo = [];
 /**
  * The basic slider component.
  */
@@ -28,6 +29,7 @@ class Slider extends Component {
     loop: PropTypes.bool,
     maxIndicators: PropTypes.number,
     onSlideChange: PropTypes.func,
+    rebuildOnUpdate: PropTypes.bool,
     slidesPerView: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.string,
@@ -52,6 +54,7 @@ class Slider extends Component {
     loop: false,
     maxIndicators: null,
     onSlideChange: null,
+    rebuildOnUpdate: false,
     slidesPerView: 1,
     snapItems: true,
   };
@@ -272,6 +275,7 @@ class Slider extends Component {
       maxIndicators,
       slidesPerView,
       snapItems,
+      rebuildOnUpdate,
     } = this.props;
     const hasMultipleChildren = children.length > 1;
 
@@ -313,6 +317,7 @@ class Slider extends Component {
       onTransitionEnd: this.constructor.fixFakeLoop,
       onSlideChangeEnd: this.handleSlideChange,
       onInit: this.initSlider,
+      rebuildOnUpdate,
     };
 
     return (
