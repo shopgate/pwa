@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/shopgate/pwa.svg?branch=develop)](https://travis-ci.org/shopgate/pwa)
 [![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=develop)](https://coveralls.io/github/shopgate/pwa?branch=develop)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## About Shopgate

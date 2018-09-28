@@ -1,5 +1,5 @@
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { PWA_DID_APPEAR } from '../constants';
 
 /**
@@ -7,7 +7,10 @@ import { PWA_DID_APPEAR } from '../constants';
  */
 export const pwaDidAppear$ = main$
   .filter(({ action }) => action.type === PWA_DID_APPEAR)
-  .map(action => ({
-    ...action,
-    pathname: getCurrentPathname(),
+  .map(params => ({
+    ...params,
+    action: {
+      ...params.action,
+      route: getCurrentRoute(),
+    },
   }));
