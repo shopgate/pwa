@@ -39,6 +39,7 @@
     "url-search-params": "^0.10.0"
   },
   "devDependencies": {
+    "@shopgate/pwa-benchmark": "5.9.0-beta.5",
     "@shopgate/eslint-config": "5.9.0-beta.5",
     "@shopgate/pwa-core": "5.9.0-beta.5",
     "@shopgate/react-hammerjs": "^0.5.3",

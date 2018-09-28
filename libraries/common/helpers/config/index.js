@@ -20,6 +20,7 @@ const defaultAppConfig = {
   apiUrl: 'https://shop_30177.dev.connect.shopgate.com/',
   shopCNAME: null,
   currency: 'USD',
+  benchmark: false,
   showGmdMenuSubHeaders: false,
 };
 
