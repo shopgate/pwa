@@ -62,7 +62,6 @@ const subscriptions = [
   trackingDeeplinkPush,
   // Theme subscribers.
   app,
-  navigator,
   viewport,
   rootCategory,
   category,
