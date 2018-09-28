@@ -11,6 +11,7 @@ const outer = css({
 });
 
 const inner = css({
+  background: 'inherit',
   display: 'flex',
   position: 'relative',
   zIndex: 1,

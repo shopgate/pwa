@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
 import styles from './style';
@@ -30,6 +31,7 @@ class AppBar extends Component {
     textColor: '#000',
   }
 
+  static Field = Field;
   static Icon = Icon;
   static Title = Title;
 
