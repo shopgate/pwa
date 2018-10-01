@@ -17,7 +17,7 @@ export default (countryElement, optional = null) => {
   // Build country display list for the country element (whitelist)
   // For 'null', 'undefined' and '[]' it shows all countries
   let countryKeys;
-  if (countryElement.countries && countryElement.countries.length > 0) {
+  if (countryElement.countries.length > 0) {
     countryKeys = countryElement.countries;
   } else {
     countryKeys = Object.keys(iso3166);
