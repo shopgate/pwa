@@ -3,7 +3,7 @@ export FORCE_COLOR = true
 
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
-UTILS = eslint-config unit-tests e2e
+UTILS = eslint-config unit-tests e2e benchmark
 THEMES = gmd ios11
 REPO_VERSION = ''
 
