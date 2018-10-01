@@ -4,7 +4,8 @@ import { themeConfig as mock } from './mock';
  * @type {Object}
  */
 const defaultAppConfig = {
-  appId: 'shop_30179',
+  appId: 'shop_30177',
+  browserConnector: false,
   colors: {},
   forgotPasswordUrl: null,
   hasFavorites: false,
@@ -16,8 +17,10 @@ const defaultAppConfig = {
   publicPath: 'https://example.com/public',
   shopName: 'Shopgate Connect',
   webCheckoutShopify: null,
+  apiUrl: 'https://shop_30177.dev.connect.shopgate.com/',
   shopCNAME: null,
   currency: 'USD',
+  benchmark: false,
   showGmdMenuSubHeaders: false,
 };
 
