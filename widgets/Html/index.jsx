@@ -5,7 +5,7 @@ import { history } from '@shopgate/pwa-common/helpers/router';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import variables from 'Styles/variables';
 import parseHTML from '@shopgate/pwa-common/helpers/html/parseHTML';
-import videoProviders from '@shopgate/pwa-common/helpers/html/video/VideoProviders';
+import { embeddedVideos } from '@shopgate/pwa-common/collections';
 import styles from './style';
 
 /**
@@ -51,7 +51,7 @@ class Html extends Component {
    */
   componentDidMount() {
     this.htmlContainer.addEventListener('click', this.handleTap, true);
-    videoProviders.addContainer(this.htmlContainer);
+    embeddedVideos.addContainer(this.htmlContainer);
   }
 
   /**
@@ -80,7 +80,7 @@ class Html extends Component {
    * Updates youtube iframes within the HTML widget.
    */
   componentDidUpdate() {
-    videoProviders.addContainer(this.htmlContainer);
+    embeddedVideos.addContainer(this.htmlContainer);
   }
 
   /**
@@ -88,7 +88,7 @@ class Html extends Component {
    */
   componentWillUnmount() {
     this.htmlContainer.removeEventListener('click', this.handleTap, true);
-    videoProviders.deleteContainer(this.htmlContainer);
+    embeddedVideos.removeContainer(this.htmlContainer);
   }
 
   /**
