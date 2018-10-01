@@ -24,6 +24,7 @@ import {
 } from '../helpers/legacy';
 import ParsedLink from '../components/Router/helpers/parsed-link';
 import { appError, pipelineError } from '../action-creators/error';
+import { videoProviders, youTube, vimeo } from '../helpers/html/video';
 
 /**
  * App subscriptions.
@@ -51,6 +52,9 @@ export default function app(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, ({ getState }) => {
+    videoProviders.add(youTube);
+    videoProviders.add(vimeo);
+
     // Register for custom events
     registerEvents([
       'showPreviousTab',
