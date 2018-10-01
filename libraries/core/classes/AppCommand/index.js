@@ -2,11 +2,16 @@
 import { logger, hasSGJavaScriptBridge } from '../../helpers';
 import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
+import * as appCommands from '../../constants/AppCommands';
+import BrowserConnector from '../BrowserConnector';
 import DevServerBridge from '../DevServerBridge';
 import {
   GET_PERMISSIONS_COMMAND_NAME,
   REQUEST_PERMISSIONS_COMMAND_NAME,
 } from '../../constants/AppPermissions';
+
+const appConfig = process.env.APP_CONFIG || {};
+
 /**
  * The app command class.
  */
@@ -22,9 +27,9 @@ class AppCommand {
     this.params = null;
     this.libVersion = '9.0';
     this.commandsWithoutLog = [
-      'sendPipelineRequest',
-      'sendHttpRequest',
-      'getWebStorageEntry',
+      appCommands.COMMAND_SEND_PIPELINE_REQUEST,
+      appCommands.COMMAND_SEND_HTTP_REQUEST,
+      appCommands.COMMAND_GET_WEBSTORAGE_ENTRY,
       GET_PERMISSIONS_COMMAND_NAME,
       REQUEST_PERMISSIONS_COMMAND_NAME,
     ];
@@ -143,14 +148,20 @@ class AppCommand {
 
     /* istanbul ignore else */
     if (!hasSGJavaScriptBridge()) {
-      bridge = new DevServerBridge();
+      if (!appConfig.browserConnector) {
+        bridge = new DevServerBridge();
+      } else {
+        bridge = new BrowserConnector();
+      }
     } else {
       bridge = SGJavascriptBridge;
     }
 
     try {
+      if ('dispatchCommandForVersion' in bridge) {
+        bridge.dispatchCommandForVersion(command, appLibVersion);
       /* istanbul ignore else */
-      if ('dispatchCommandsForVersion' in bridge) {
+      } else if ('dispatchCommandsForVersion' in bridge) {
         bridge.dispatchCommandsForVersion([command], appLibVersion);
       } else {
         bridge.dispatchCommandsStringForVersion(
