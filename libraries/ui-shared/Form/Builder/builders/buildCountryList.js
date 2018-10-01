@@ -9,7 +9,7 @@ import iso3166 from './../iso-3166-2';
  */
 export default (countryElement, optional = null) => {
   // Check validity of the country element options list "countries"
-  if (!Array.isArray(countryElement.countries)) {
+  if (countryElement.countries && !Array.isArray(countryElement.countries)) {
     logger.error("Error: Invalid property type 'countries' in element " +
       `'${countryElement.id}'. Must be 'array', 'null' or 'undefined'`);
     return {};
