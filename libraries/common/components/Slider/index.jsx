@@ -6,7 +6,6 @@ import SliderItem from './components/Item';
 import styles from './style';
 import connect from './connector';
 
-window.foo = [];
 /**
  * The basic slider component.
  */
