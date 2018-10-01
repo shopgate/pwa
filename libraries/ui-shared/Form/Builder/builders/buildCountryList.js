@@ -9,7 +9,7 @@ import iso3166 from './../iso-3166-2';
  */
 export default (countryElement, optional = null) => {
   // Check validity of the country element options list "countries"
-  if (!Array.isArray(countryElement.countries)) {
+  if (countryElement.countries && !Array.isArray(countryElement.countries)) {
     logger.error("Error: Invalid property type 'countries' in element " +
       `'${countryElement.id}'. Must be 'array', 'null' or 'undefined'`);
     return {};
@@ -17,7 +17,7 @@ export default (countryElement, optional = null) => {
   // Build country display list for the country element (whitelist)
   // For 'null', 'undefined' and '[]' it shows all countries
   let countryKeys;
-  if (countryElement.countries && countryElement.countries.length > 0) {
+  if (countryElement.countries.length > 0) {
     countryKeys = countryElement.countries;
   } else {
     countryKeys = Object.keys(iso3166);
