@@ -1,23 +1,41 @@
 /* eslint-disable extra-rules/potential-point-free */
 
 /**
- * The Vimeo video provider class.
+ * The Vimeo media provider class.
  */
-class VimeoVideoProvider {
+class VimeoMediaProvider {
   /**
    * Constructor.
    */
   constructor() {
     this.containers = new Map();
-    this.injectPlayer();
+    this.playerReady = false;
+    this.deferred = [];
+
+    this.checkPlayer();
   }
 
   /**
-   * Injects the Vimeo player script into the head.
+   * Checks if the Video player script is already available.
+   * If not, it injects it into the DOM and adds defferred containers.
    */
-  injectPlayer = () => {
+  checkPlayer() {
+    if (typeof window.Vimeo !== 'undefined') {
+      this.playerReady = true;
+      return;
+    }
+
     const script = document.createElement('script');
     script.src = 'https://player.vimeo.com/api/player.js';
+
+    script.onload = () => {
+      this.playerReady = true;
+      this.deferred.forEach((container) => {
+        this.add(container);
+      });
+
+      this.deferred = [];
+    };
 
     document.querySelector('head').appendChild(script);
   }
@@ -26,10 +44,15 @@ class VimeoVideoProvider {
    * Add a DOM container with embedded videos.
    * @param {NodeList} container A DOM container.
    */
-  addContainer(container) {
+  add(container) {
+    if (!this.playerReady) {
+      this.deferred.push(container);
+      return;
+    }
+
     const iframes = container.querySelectorAll('iframe[src*="vimeo.com"]');
 
-    if (!iframes.length || typeof window.Vimeo === 'undefined') {
+    if (!iframes.length) {
       return;
     }
 
@@ -46,7 +69,7 @@ class VimeoVideoProvider {
    * Remove a DOM container.
    * @param {NodeList} container A DOM container.
    */
-  removeContainer(container) {
+  remove(container) {
     this.containers.delete(container);
   }
 
@@ -64,4 +87,4 @@ class VimeoVideoProvider {
 
 /* eslint-enable extra-rules/potential-point-free */
 
-export default VimeoVideoProvider;
+export default VimeoMediaProvider;

@@ -1,1 +1,1 @@
-export { default as embeddedVideos } from './EmbeddedVideos';
+export { default as embeddedMedia } from './EmbeddedMedia';

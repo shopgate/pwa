@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import URLSearchParams from 'url-search-params';
-import YouTube from './YouTube';
+import { YouTube } from './index';
 
 const videos = [
   'https://youtube.com/fooo?enablejsapi=0&controls=0',
@@ -9,7 +9,17 @@ const videos = [
   'https://youtube-nocookie.com/fooo?controls=0',
 ];
 
-describe('YouTube video provider', () => {
+/**
+ * Creates a DOM container with iframes.
+ * @param {Array} srcs A list of video URLs.
+ * @return {Object}
+ */
+const createContainer = (srcs) => {
+  const html = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  return new JSDOM(html).window.document;
+};
+
+describe('YouTube media provider', () => {
   let instance;
 
   beforeEach(() => {
@@ -17,22 +27,22 @@ describe('YouTube video provider', () => {
   });
 
   describe('.constructor()', () => {
-    it('should work as expected', () => {
+    it('should construct as expected', () => {
       expect(instance.containers).toBeInstanceOf(Map);
       expect(instance.containers.size).toBe(0);
     });
   });
 
-  describe('.addContainer()', () => {
+  describe('.add()', () => {
     it('should add multiple containers as expected', () => {
-      const containerOne = new JSDOM(`<iframe src="${videos[0]}"></iframe>`).window.document;
-      const containerTwo = new JSDOM(`<iframe src="${videos[1]}"></iframe>`).window.document;
+      const containerOne = createContainer([videos[0]]);
+      const containerTwo = createContainer([videos[1]]);
       const iframesOne = containerOne.querySelectorAll('iframe');
       const iframesTwo = containerTwo.querySelectorAll('iframe');
 
-      instance.addContainer(containerOne);
-      instance.addContainer(containerTwo);
-      instance.addContainer(containerOne);
+      instance.add(containerOne);
+      instance.add(containerTwo);
+      instance.add(containerOne);
 
       expect(instance.containers.size).toBe(2);
       expect(instance.containers.get(containerOne)).toEqual(iframesOne);
@@ -40,11 +50,10 @@ describe('YouTube video provider', () => {
     });
 
     it('should add a container with different types of YouTube videos', () => {
-      const html = videos.map(src => `<iframe src="${src}"></iframe>`).join('');
-      const container = new JSDOM(html).window.document;
+      const container = createContainer(videos);
       const iframes = container.querySelectorAll('iframe');
 
-      instance.addContainer(container);
+      instance.add(container);
 
       expect(instance.containers.size).toBe(1);
       expect(iframes).toHaveLength(videos.length);
@@ -60,28 +69,28 @@ describe('YouTube video provider', () => {
 
     it('should not add a container when it does not contain a video', () => {
       const container = new JSDOM('<p>Some HTML content</p>').window.document;
-      instance.addContainer(container);
+      instance.add(container);
 
       expect(instance.containers.size).toBe(0);
     });
   });
 
-  describe('.removeContainer()', () => {
+  describe('.remove()', () => {
     it('should remove containers as expected', () => {
-      const containerOne = new JSDOM(`<iframe src="${videos[0]}"></iframe>`).window.document;
-      const containerTwo = new JSDOM(`<iframe src="${videos[1]}"></iframe>`).window.document;
+      const containerOne = createContainer([videos[0]]);
+      const containerTwo = createContainer([videos[1]]);
       const iframesOne = containerOne.querySelectorAll('iframe');
 
-      instance.addContainer(containerOne);
-      instance.addContainer(containerTwo);
+      instance.add(containerOne);
+      instance.add(containerTwo);
 
-      instance.removeContainer(containerTwo);
+      instance.remove(containerTwo);
 
       expect(instance.containers.size).toBe(1);
       expect(instance.containers.get(containerTwo)).toBeUndefined();
       expect(instance.containers.get(containerOne)).toEqual(iframesOne);
 
-      instance.removeContainer(containerOne);
+      instance.remove(containerOne);
 
       expect(instance.containers.size).toBe(0);
     });
@@ -90,11 +99,11 @@ describe('YouTube video provider', () => {
   describe('.stop()', () => {
     it('should stop the videos within mutiple containers', () => {
       const postMessageMock = jest.fn();
-      const containerOne = new JSDOM(`<iframe src="${videos[0]}"></iframe>`).window.document;
-      const containerTwo = new JSDOM(`<iframe src="${videos[1]}"></iframe><iframe src="${videos[2]}"></iframe>`).window.document;
+      const containerOne = createContainer([videos[0]]);
+      const containerTwo = createContainer([videos[1], videos[2]]);
 
-      instance.addContainer(containerOne);
-      instance.addContainer(containerTwo);
+      instance.add(containerOne);
+      instance.add(containerTwo);
 
       const iframesOne = containerOne.querySelectorAll('iframe');
       const iframesTwo = containerTwo.querySelectorAll('iframe');

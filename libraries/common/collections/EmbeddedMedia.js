@@ -1,10 +1,10 @@
 /* eslint-disable extra-rules/potential-point-free */
-import event from '@shopgate/pwa-core/classes/Event/index';
+import event from '@shopgate/pwa-core/classes/Event';
 
 /**
- * Class to maintain embedded videos within DOM containers.
+ * Class to maintain embedded media within DOM containers.
  */
-class EmbeddedVideos {
+class EmbeddedMedia {
   /**
    * Constructor
    */
@@ -16,7 +16,7 @@ class EmbeddedVideos {
   }
 
   /**
-   * Add a provider for embedded videos.
+   * Add a provider for embedded media.
    * @param {Object} provider A provider instance.
    */
   addProvider(provider) {
@@ -24,7 +24,7 @@ class EmbeddedVideos {
   }
 
   /**
-   * Remove a provider for embedded videos.
+   * Remove a provider for embedded media.
    * @param {Object} provider A provider instance.
    */
   removeProvider(provider) {
@@ -32,28 +32,28 @@ class EmbeddedVideos {
   }
 
   /**
-   * Add a DOM container with embedded videos.
+   * Add a DOM container with embedded media.
    * @param {NodeList} container A DOM container.
    */
-  addContainer(container) {
+  add(container) {
     this.providers.forEach((provider) => {
-      provider.addContainer(container);
+      provider.add(container);
     });
   }
 
   /**
    * Remove a DOM container. Should be called whenever a component which hosts a DOM container with
-   * embedded videos is unmounted.
+   * embedded media is unmounted.
    * @param {NodeList} container A DOM container.
    */
-  removeContainer(container) {
+  remove(container) {
     this.providers.forEach((provider) => {
-      provider.removeContainer(container);
+      provider.remove(container);
     });
   }
 
   /**
-   * Stops all playing videos within the DOM containers.
+   * Stops all playing media within the DOM containers.
    */
   stop() {
     this.providers.forEach((provider) => {
@@ -62,6 +62,6 @@ class EmbeddedVideos {
   }
 }
 
-export default new EmbeddedVideos();
+export default new EmbeddedMedia();
 
 /* eslint-enable extra-rules/potential-point-free */

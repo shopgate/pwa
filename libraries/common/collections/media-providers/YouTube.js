@@ -2,9 +2,9 @@
 import URLSearchParams from 'url-search-params';
 
 /**
- * The YouTube video provider class.
+ * The YouTube media provider class.
  */
-class YouTubeVideoProvider {
+class YouTubeMediaProvider {
   /**
    * Constructor.
    */
@@ -16,7 +16,7 @@ class YouTubeVideoProvider {
    * Add a DOM container with embedded videos.
    * @param {NodeList} container A DOM container.
    */
-  addContainer(container) {
+  add(container) {
     const iframes = container
       .querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"]');
 
@@ -35,8 +35,6 @@ class YouTubeVideoProvider {
       urlParams.set('enablejsapi', 1);
       // Enable controls to avoid the iframe not being resumable because of controls=0 param on ios.
       urlParams.set('controls', 1);
-      // Enable inline playing for the video.
-      urlParams.set('playsinline', 1);
 
       iframes[index].src = `${url}?${urlParams.toString()}`;
     });
@@ -48,7 +46,7 @@ class YouTubeVideoProvider {
    * Remove a DOM container.
    * @param {NodeList} container A DOM container.
    */
-  removeContainer(container) {
+  remove(container) {
     this.containers.delete(container);
   }
 
@@ -68,4 +66,4 @@ class YouTubeVideoProvider {
 
 /* eslint-enable extra-rules/potential-point-free */
 
-export default YouTubeVideoProvider;
+export default YouTubeMediaProvider;
