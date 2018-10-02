@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Field from './components/Field';
 import Icon from './components/Icon';
@@ -8,7 +8,7 @@ import styles from './style';
 /**
  * The AppBar component.
  */
-class AppBar extends Component {
+class AppBar extends PureComponent {
   static propTypes = {
     backgroundColor: PropTypes.string,
     below: PropTypes.shape(),
