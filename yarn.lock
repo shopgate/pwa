@@ -100,9 +100,9 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
+"@shopgate/react-hammerjs@0.5.8":
+  version "0.5.8"
+  resolved "http://registry.npmjs.org/@shopgate/react-hammerjs/-/react-hammerjs-0.5.8.tgz#e5a7eeaad3c1fb73963d881987f52e143a05eb6e"
   dependencies:
     hammerjs "^2.0.8"
 
