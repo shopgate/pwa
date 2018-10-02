@@ -25,6 +25,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     loop={true}
     maxIndicators={null}
     onSlideChange={null}
+    rebuildOnUpdate={false}
     slidesPerView={1}
     snapItems={true}
   >
@@ -255,6 +256,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     loop={true}
     maxIndicators={null}
     onSlideChange={null}
+    rebuildOnUpdate={false}
     slidesPerView={1}
     snapItems={true}
   >
