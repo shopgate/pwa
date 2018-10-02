@@ -3,5 +3,5 @@ import colors from 'Styles/colors';
 
 export default css({
   background: colors.light,
-  paddingTop: 4,
+  marginTop: 4,
 });
