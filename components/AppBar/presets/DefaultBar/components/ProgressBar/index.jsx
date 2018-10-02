@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import { ProgressBar as BaseProgressBar } from '@shopgate/pwa-ui-shared';
@@ -7,6 +8,15 @@ import { ProgressBar as BaseProgressBar } from '@shopgate/pwa-ui-shared';
  * The theme progress bar component.
  */
 class ProgressBar extends PureComponent {
+  static propTypes = {
+    pattern: PropTypes.string.isRequired,
+    visible: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    visible: false,
+  };
+
   /**
    * @param {Object} props The component props.
    */

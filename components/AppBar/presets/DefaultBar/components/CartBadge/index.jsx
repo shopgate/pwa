@@ -1,26 +1,39 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import styles from './style';
 
 /**
- * @param {number} props.count The number of products in the cart.
- * @returns {JSX}
+ * The CartButtonBadge component.
  */
-function CartButtonBadge({ count }) {
-  let productCount = count;
+class CartButtonBadge extends PureComponent {
+  static propTypes = {
+    count: PropTypes.number.isRequired,
+  };
 
-  if (count > CART_MAX_ITEMS) {
-    productCount = `${CART_MAX_ITEMS}+`;
+  /**
+   * @returns {string}
+   */
+  get productCount() {
+    const { count } = this.props;
+
+    let productCount = `${count}`;
+
+    if (count > CART_MAX_ITEMS) {
+      productCount = `${CART_MAX_ITEMS}+`;
+    }
+
+    return productCount;
   }
 
-  return (
-    <div className={styles}>{productCount}</div>
-  );
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <div className={styles}>{this.productCount}</div>
+    );
+  }
 }
-
-CartButtonBadge.propTypes = {
-  count: PropTypes.number.isRequired,
-};
 
 export default CartButtonBadge;

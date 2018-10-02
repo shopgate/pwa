@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { AppBar } from '@shopgate/pwa-ui-material';
@@ -10,31 +10,47 @@ import styles from './style';
 import transition from './transition';
 
 /**
- * @param {Function} props.count The number of products in the cart.
- * @param {Function} props.navigate A navigate action.
- * @returns {JSX}
+ * The CartButton component.
  */
-function CartButton({ count, navigate }) {
-  return (
-    <Transition in={!!count} timeout={250}>
-      {state => (
-        <div className={styles} style={transition[state]}>
-          <AppBar.Icon
-            background={colors.primary}
-            badge={() => <Badge count={count} />}
-            color={colors.primaryContrast}
-            icon={CartIcon}
-            onClick={navigate}
-          />
-        </div>
-      )}
-    </Transition>
-  );
-}
+class CartButton extends PureComponent {
+  static propTypes = {
+    count: PropTypes.number.isRequired,
+    navigate: PropTypes.func.isRequired,
+  };
 
-CartButton.propTypes = {
-  count: PropTypes.number.isRequired,
-  navigate: PropTypes.func.isRequired,
-};
+  /**
+   * @returns {JSX}
+   */
+  badge = () => {
+    const { count } = this.props;
+
+    return (
+      <Badge count={count} />
+    );
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { count, navigate } = this.props;
+
+    return (
+      <Transition in={!!count} timeout={250}>
+        {state => (
+          <div className={styles} style={transition[state]}>
+            <AppBar.Icon
+              background={colors.primary}
+              badge={this.badge}
+              color={colors.primaryContrast}
+              icon={CartIcon}
+              onClick={navigate}
+            />
+          </div>
+        )}
+      </Transition>
+    );
+  }
+}
 
 export default connect(CartButton);

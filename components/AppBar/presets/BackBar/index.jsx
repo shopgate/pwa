@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { ArrowIcon } from '@shopgate/pwa-ui-shared';
@@ -6,19 +6,30 @@ import DefaultBar from '../DefaultBar';
 import connect from './connector';
 
 /**
- * @param {Object} props The component props.
- * @returns {JSX}
+ * The BackBar component.
  */
-function BackBar({ goBack, ...rest }) {
-  const left = <AppBar.Icon icon={ArrowIcon} onClick={goBack} />;
+class BackBar extends PureComponent {
+  static propTypes = {
+    goBack: PropTypes.func.isRequired,
+  };
 
-  return (
-    <DefaultBar left={left} {...rest} />
-  );
+  /**
+   * @returns {JSX}
+   */
+  left = () => {
+    const { goBack } = this.props;
+    return <AppBar.Icon icon={ArrowIcon} onClick={goBack} />;
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { goBack, ...rest } = this.props;
+    return (
+      <DefaultBar left={this.left} {...rest} />
+    );
+  }
 }
-
-BackBar.propTypes = {
-  goBack: PropTypes.func.isRequired,
-};
 
 export default connect(BackBar);

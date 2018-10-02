@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import DefaultBar from '../DefaultBar';
 
 /**
- * @param {string} props.title The title in the bar.
- * @returns {JSX}
+ * The SimpleBar component.
  */
-function SimpleBar({ title }) {
-  return (
-    <DefaultBar title={title} right={null} />
-  );
-}
+class SimpleBar extends PureComponent {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+  };
 
-SimpleBar.propTypes = {
-  title: PropTypes.string.isRequired,
-};
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { title } = this.props;
+
+    return (
+      <DefaultBar title={title} right={null} />
+    );
+  }
+}
 
 export default SimpleBar;

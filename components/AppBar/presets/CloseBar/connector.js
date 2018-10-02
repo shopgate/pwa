@@ -9,4 +9,4 @@ const mapDispatchToProps = dispatch => ({
   goBack: () => dispatch(historyPop()),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps, null, { pure: () => null });

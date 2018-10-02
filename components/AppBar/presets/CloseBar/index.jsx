@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { CrossIcon } from '@shopgate/pwa-ui-shared';
@@ -6,19 +6,30 @@ import DefaultBar from '../DefaultBar';
 import connect from './connector';
 
 /**
- * @param {Function} props.goBack The pop history action.
- * @returns {JSX}
+ * The CloseBar component.
  */
-function CloseBar({ goBack, ...rest }) {
-  const left = <AppBar.Icon icon={CrossIcon} onClick={goBack} />;
+class CloseBar extends PureComponent {
+  static propTypes = {
+    goBack: PropTypes.func.isRequired,
+  };
 
-  return (
-    <DefaultBar left={left} right={null} {...rest} />
-  );
+  /**
+   * @returns {JSX}
+   */
+  left = () => {
+    const { goBack } = this.props;
+    return <AppBar.Icon icon={CrossIcon} onClick={goBack} />;
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { goBack, ...rest } = this.props;
+    return (
+      <DefaultBar left={this.leftleft} right={null} {...rest} />
+    );
+  }
 }
-
-CloseBar.propTypes = {
-  goBack: PropTypes.func.isRequired,
-};
 
 export default connect(CloseBar);
