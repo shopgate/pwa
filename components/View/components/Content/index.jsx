@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
-import throttle from 'lodash/throttle';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@virtuous/react-conductor/Router';

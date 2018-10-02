@@ -1,14 +1,13 @@
 import { historyPop } from '@shopgate/pwa-common/actions/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
 import {
   requestReviewSubmit$,
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
-import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
@@ -35,15 +34,17 @@ export default function writeReview(subscribe) {
   /**
    * Get triggered when a review submit is requested.
    */
-  subscribe(requestReviewSubmit$, ({ dispatch, getState }) => {
-    dispatch(setViewLoading(getHistoryPathname(getState())));
+  subscribe(requestReviewSubmit$, () => {
+    const { pattern } = getCurrentRoute();
+    ProgressBar.show(pattern);
   });
 
   /**
    * Get triggered when a review submitted got a response.
    */
-  subscribe(responseReviewSubmit$, ({ dispatch, getState }) => {
-    dispatch(unsetViewLoading(getHistoryPathname(getState())));
+  subscribe(responseReviewSubmit$, () => {
+    const { pattern } = getCurrentRoute();
+    ProgressBar.hide(pattern);
   });
 
   /**

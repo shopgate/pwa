@@ -4,6 +4,7 @@ import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
+import ProgressBar from './components/ProgressBar';
 
 /**
  * @param {Object} props the component props.
@@ -20,8 +21,14 @@ function AppBarDefault({ title, ...props }, context) {
       <CartButton />
     </Fragment>
   );
+  const below = (
+    <Fragment>
+      {props.below}
+      <ProgressBar />
+    </Fragment>
+  );
 
-  return <AppBar left={left} center={center} right={right} {...props} />;
+  return <AppBar left={left} center={center} right={right} {...props} below={below} />;
 }
 
 AppBarDefault.propTypes = {
