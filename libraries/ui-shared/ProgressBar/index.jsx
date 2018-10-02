@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
+import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import styles from './style';
 
-const duration = 300;
+const duration = 150;
 
 const transitionStyles = {
   entering: {
@@ -25,6 +26,25 @@ const transitionStyles = {
  * This component will show the current progress in a linear bar.
  */
 class ProgressBar extends Component {
+  static PROGRESS_BAR_SHOW = 'PROGRESS_BAR_SHOW';
+  static PROGRESS_BAR_HIDE = 'PROGRESS_BAR_HIDE';
+
+  /**
+   * Shows the progress bar.
+   * @param {string} pattern The router pattern to show the bar for.
+   */
+  static show = (pattern) => {
+    UIEvents.emit(ProgressBar.PROGRESS_BAR_SHOW, pattern);
+  }
+
+  /**
+   * Hides the progress bar.
+   * @param {string} pattern The router pattern to hide the bar from.
+   */
+  static hide = (pattern) => {
+    UIEvents.emit(ProgressBar.PROGRESS_BAR_HIDE, pattern);
+  }
+
   static propTypes = {
     isVisible: PropTypes.bool,
   };

@@ -5,11 +5,10 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { historyReset } from '@shopgate/pwa-common/actions/router';
-import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
-import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
+import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
@@ -97,12 +96,12 @@ export default function cart(subscribe) {
     dispatch(fetchCart());
   });
 
-  subscribe(cartBusy$, ({ dispatch }) => {
-    dispatch(setViewLoading(CART_PATH));
+  subscribe(cartBusy$, () => {
+    ProgressBar.show(CART_PATH);
   });
 
-  subscribe(cartIdle$, ({ dispatch }) => {
-    dispatch(unsetViewLoading(CART_PATH));
+  subscribe(cartIdle$, () => {
+    ProgressBar.hide(CART_PATH);
   });
 
   /**

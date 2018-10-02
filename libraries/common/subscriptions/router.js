@@ -6,6 +6,7 @@ import {
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import { logger } from '@shopgate/pwa-core';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
@@ -14,8 +15,6 @@ import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
-import setViewLoading from '../actions/view/setViewLoading';
-import unsetViewLoading from '../actions/view/unsetViewLoading';
 import authRoutes from '../collections/AuthRoutes';
 
 /**
@@ -82,8 +81,8 @@ export default function router(subscribe) {
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
-        const { pathname } = getCurrentRoute();
-        dispatch(setViewLoading(pathname));
+        const { pattern } = getCurrentRoute();
+        ProgressBar.show(pattern);
 
         try {
           redirect = await redirect(params);
@@ -92,7 +91,7 @@ export default function router(subscribe) {
           logger.error(e);
         }
 
-        dispatch(unsetViewLoading(pathname));
+        ProgressBar.hide(pattern);
 
         if (!redirect) {
           return;

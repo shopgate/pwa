@@ -3,19 +3,20 @@ import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const progressBarHeight = 4;
-const progressBarBackground = Color(themeConfig.colors.accent).lighten(0.4);
+const progressBarBackground = Color(themeConfig.colors.accent).fade(0.6);
 
 const wrapper = css({
-  background: progressBarBackground.string(),
-  position: 'relative',
+  position: 'absolute',
+  bottom: 0,
+  background: progressBarBackground,
   width: '100%',
   height: progressBarHeight,
   overflow: 'hidden',
-  transition: 'transform .3s linear',
+  transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  zIndex: '10',
 }).toString();
 
 const innerElement = css({
-  transition: 'width .3s linear',
   ':before': {
     content: '""',
     position: 'absolute',

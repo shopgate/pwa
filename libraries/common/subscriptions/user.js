@@ -1,6 +1,7 @@
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import getUser from '../actions/user/getUser';
 import { successLogin } from '../action-creators';
 import { historyPush } from '../actions/router';
@@ -12,8 +13,6 @@ import {
   userDidLogout$,
   legacyConnectRegisterDidFail$,
 } from '../streams';
-import setViewLoading from '../actions/view/setViewLoading';
-import unsetViewLoading from '../actions/view/unsetViewLoading';
 import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
 import { LEGACY_URL_CONNECT_REGISTER } from '../constants/Registration';
@@ -28,12 +27,12 @@ export default function user(subscribe) {
    */
   const userNeedsUpdate$ = appDidStart$.merge(userDidLogin$);
 
-  subscribe(userWillLogin$, ({ dispatch }) => {
-    dispatch(setViewLoading(LOGIN_PATH));
+  subscribe(userWillLogin$, () => {
+    ProgressBar.show(LOGIN_PATH);
   });
 
-  subscribe(userLoginResponse$, ({ dispatch }) => {
-    dispatch(unsetViewLoading(LOGIN_PATH));
+  subscribe(userLoginResponse$, () => {
+    ProgressBar.hide(LOGIN_PATH);
   });
 
   subscribe(userNeedsUpdate$, ({ dispatch }) => {
