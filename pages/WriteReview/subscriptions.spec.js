@@ -49,12 +49,6 @@ const results = [
   ],
   [
     {
-      title: 'titles.reviews',
-      type: SET_VIEW_TITLE,
-    },
-  ],
-  [
-    {
       pathname: '/item/666f6f/write_review',
       type: SET_VIEW_LOADING,
     },
@@ -179,17 +173,6 @@ describe('Reviews subscriptions', () => {
       });
       const actions = store.getActions();
       expect(actions).toEqual(results[0]);
-    });
-  });
-
-  describe('reviewsRouteWillEnter$', () => {
-    it('should set view title', () => {
-      store = mockedStore({ ...mockedStateWithoutReview });
-      reviewsEnter[1]({
-        ...store,
-      });
-      const actions = store.getActions();
-      expect(actions).toEqual(results[1]);
     });
   });
 
