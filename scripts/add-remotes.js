@@ -31,4 +31,6 @@ Object.keys(extensions).forEach(async (extension) => {
 });
 
 exec('git fetch --all')
-  .catch(error => throw error);
+  .catch((error) => {
+    throw error;
+  });

@@ -51,7 +51,7 @@ clean:
 		find . -name "*debug.log" -type f -delete
 		lerna clean --yes
 		rm -rf ./node_modules/
-		node ./scripts/init-subtree.js # try to set up new git subtree entries.
+		node ./scripts/init-subtrees.js # try to set up new git subtree entries.
 		lerna bootstrap
 
 # Lerna change all the version numbers.
