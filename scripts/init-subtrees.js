@@ -34,6 +34,5 @@ Object.keys(themes).forEach(async (name) => {
 
 // Add the extensions subtrees.
 Object.keys(extensions).forEach(async (extension) => {
-  const name = extension.replace('@shopgate-', 'ext-');
-  await initSubtree('extensions', name, extensions[extension]);
+  await initSubtree('extensions', extension, extensions[extension]);
 });
