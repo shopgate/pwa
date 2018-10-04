@@ -9,10 +9,8 @@ REPO_VERSION = ''
 
 checkout-develop:
 		git checkout develop
-		git submodule foreach --recursive git checkout develop
 		git fetch --all
 		git pull
-		git submodule foreach --recursive git pull
 		make clean
 
 release:
@@ -53,6 +51,7 @@ clean:
 		find . -name "*debug.log" -type f -delete
 		lerna clean --yes
 		rm -rf ./node_modules/
+		node ./scripts/init-subtree.js # try to set up new git subtree entries.
 		lerna bootstrap
 
 # Lerna change all the version numbers.
@@ -101,6 +100,13 @@ ifneq ($(REPO_VERSION), '')
 		@echo " "
 		@echo "Finishing release for version $(REPO_VERSION)"
 		@echo " "
+		@echo "Synchronizing with remote origins ..."
+		@echo " "
+		node ./scripts/add-remotes.js
+		node ./scripts/synch-repos.js
+		@echo " "
+		@echo "... done synchronizing with remotes!"
+		@echo " "
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call merge-develop, $(SUBSTR))
 endif
@@ -131,9 +137,8 @@ define prepare-release
 		@echo "Checking out develop branches ... "
 		@echo " "
 		git checkout develop
-		git submodule foreach --recursive git checkout develop
-		git fetch --all && git submodule foreach --recursive git fetch --all
-		git pull && git submodule foreach --recursive git pull
+		git fetch --all
+		git pull
 
 endef
 
@@ -144,9 +149,8 @@ define merge-master
 				echo "Merging into master ... "; \
 				echo " "; \
 				git checkout master; \
-				git submodule foreach --recursive git checkout master; \
-				git merge develop && git push; \
-				git submodule foreach --recursive git merge develop && git submodule foreach --recursive git push; \
+				git merge develop; \
+				git push; \
 			else \
 				echo " "; \
 				echo "Not using master: beta release!"; \
@@ -162,9 +166,8 @@ define merge-develop
 				echo "Merging back into develop ... "; \
 				echo " "; \
 				git checkout develop; \
-				git submodule foreach --recursive git checkout develop; \
-				git merge master && git push; \
-				git submodule foreach --recursive git merge master && git submodule foreach --recursive git push; \
+				git merge master; \
+				git push; \
 		fi;
 
 endef
@@ -215,10 +218,5 @@ endef
 
 define clean-build-packages
 		rm -rf -f ./libraries/$(strip $(1))/dist
-
-endef
-
-define run-libraries-coverage
-		cd ./libraries/$(strip $(1))/ && yarn run cover
 
 endef
