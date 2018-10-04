@@ -1,6 +1,5 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { SET_VIEW_TITLE } from '@shopgate/pwa-common/constants/ActionTypes';
 import { REQUEST_ROOT_CATEGORIES } from '@shopgate/pwa-common-commerce/category/constants';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import {
@@ -54,7 +53,6 @@ describe('RootCategory subscriptions', () => {
       });
       const actions = store.getActions();
       expect(actions[0].type).toBe(REQUEST_ROOT_CATEGORIES);
-      expect(actions[1].type).toBe(SET_VIEW_TITLE);
     });
 
     it('should not fetch categories again', () => {
@@ -73,8 +71,6 @@ describe('RootCategory subscriptions', () => {
         action,
         dispatch: store.dispatch,
       });
-      const actions = store.getActions();
-      expect(actions[0].type).toBe(SET_VIEW_TITLE);
     });
   });
 });
