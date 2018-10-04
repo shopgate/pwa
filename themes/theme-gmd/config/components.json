@@ -1,0 +1,13 @@
+{
+  "tracking": {
+    "@shopgate/tracking-ga-native/init": {
+      "path": "@shopgate-tracking-ga-native/frontend/index.js"
+    }
+  },
+  "portals": {
+    "@shopgate/product-reviews/RatingSatrs": {
+      "path": "@shopgate-product-reviews/frontend/RatingStars/index.jsx",
+      "target": "product-item.name.before"
+    }
+  }
+}
