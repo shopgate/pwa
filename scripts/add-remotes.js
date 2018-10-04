@@ -11,13 +11,12 @@ const { themes, extensions } = repos;
  * @param {string} url The repository URL.
  */
 async function addRemote(name, url) {
-  const { stderr } = await exec(`git remote add ${name} ${url}`);
-
-  if (stderr) {
-    throw stderr;
+  try {
+    await exec(`git remote add ${name} ${url}`);
+    logger.log(`Added remote to ${name}`);
+  } catch (error) {
+    throw error;
   }
-
-  logger.log(`Added remote to ${name}`);
 }
 
 // Add the theme remotes.

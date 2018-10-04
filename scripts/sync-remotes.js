@@ -12,13 +12,13 @@ const { themes, extensions } = repos;
  */
 async function synchRepo(remote, pathname) {
   const cmd = `git subtree push --prefix=${pathname} ${remote} master`;
-  const { stderr } = await exec(cmd);
 
-  if (stderr) {
-    throw stderr;
+  try {
+    await exec(cmd);
+    logger.log(`Synched master of ${pathname}`);
+  } catch (error) {
+    throw error;
   }
-
-  logger.log(`Synched master of ${pathname}`);
 }
 
 // Synch the themes master.

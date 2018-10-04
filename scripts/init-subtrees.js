@@ -18,13 +18,12 @@ async function initSubtree(group, name, url) {
     return;
   }
 
-  const { stderr } = await exec(`git subtree add --prefix ${prefix} ${url} develop --squash`);
-
-  if (stderr) {
-    throw stderr;
+  try {
+    await exec(`git subtree add --prefix ${prefix} ${url} develop --squash`);
+    logger.log(`Added new subtree ${prefix}`);
+  } catch (error) {
+    throw error;
   }
-
-  logger.log(`Added new subtree ${prefix}`);
 }
 
 // Add the theme subtrees.
