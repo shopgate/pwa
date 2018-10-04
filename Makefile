@@ -45,8 +45,13 @@ else
 		@echo " "
 endif
 
+init:
+		git submodule deinit --all
+		rm -rf .git/modules/*
+
 # Clean the repository before starting a release.
 clean:
+		make init
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
 		lerna clean --yes
