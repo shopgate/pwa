@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> should not render invalid children 1`] = `
+<List
+  className=""
+  hasImages={false}
+>
+  <List
+    className="css-1tmmo7v"
+  >
+    <ul
+      className="css-gkw1j5 css-1tmmo7v"
+    >
+      <ListItem
+        className={null}
+        isSelected={false}
+        key="child-0/.0"
+      >
+        <li
+          className="css-1p5q8vq css-16gj3o1"
+        >
+          <div
+            className="css-15cnm0c"
+          >
+            <Item
+              className={null}
+              image={null}
+              isDisabled={false}
+              isSelected={false}
+              link={null}
+              onClick={null}
+              rightComponent={null}
+              testId={null}
+              title="List Item"
+            >
+              <Grid
+                className="css-l3889c"
+                component="div"
+                wrap={false}
+              >
+                <div
+                  className="css-l3889c css-h7r55a"
+                >
+                  <GridItem
+                    className="css-10fxwvh"
+                    component="div"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <div
+                      className="css-10fxwvh css-1gs0ko2"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="List Item"
+                      >
+                        <span
+                          className=""
+                        >
+                          List Item
+                        </span>
+                      </Translate>
+                    </div>
+                  </GridItem>
+                </div>
+              </Grid>
+            </Item>
+          </div>
+        </li>
+      </ListItem>
+    </ul>
+  </List>
+</List>
+`;
+
+exports[`<List /> should not render without children 1`] = `
+<List
+  className=""
+  hasImages={false}
+/>
+`;
+
+exports[`<List /> should render a child and add styles for list items with images 1`] = `
+<List
+  className=""
+  hasImages={true}
+>
+  <List
+    className="css-1tmmo7v"
+  >
+    <ul
+      className="css-gkw1j5 css-1tmmo7v"
+    >
+      <ListItem
+        className="css-arcouo"
+        isSelected={false}
+        key="child-0/.0"
+      >
+        <li
+          className="css-1p5q8vq css-arcouo css-16gj3o1"
+        >
+          <div
+            className="css-15cnm0c"
+          >
+            <Item
+              className={null}
+              image={null}
+              isDisabled={false}
+              isSelected={false}
+              link={null}
+              onClick={null}
+              rightComponent={null}
+              testId={null}
+              title="List Item"
+            >
+              <Grid
+                className="css-l3889c"
+                component="div"
+                wrap={false}
+              >
+                <div
+                  className="css-l3889c css-h7r55a"
+                >
+                  <GridItem
+                    className="css-10fxwvh"
+                    component="div"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <div
+                      className="css-10fxwvh css-1gs0ko2"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="List Item"
+                      >
+                        <span
+                          className=""
+                        >
+                          List Item
+                        </span>
+                      </Translate>
+                    </div>
+                  </GridItem>
+                </div>
+              </Grid>
+            </Item>
+          </div>
+        </li>
+      </ListItem>
+    </ul>
+  </List>
+</List>
+`;
+
+exports[`<List /> should render with two children 1`] = `
+<List
+  className=""
+  hasImages={false}
+>
+  <List
+    className="css-1tmmo7v"
+  >
+    <ul
+      className="css-gkw1j5 css-1tmmo7v"
+    >
+      <ListItem
+        className={null}
+        isSelected={false}
+        key="child-0/.0"
+      >
+        <li
+          className="css-1p5q8vq css-16gj3o1"
+        >
+          <div
+            className="css-15cnm0c"
+          >
+            <Item
+              className={null}
+              image={null}
+              isDisabled={false}
+              isSelected={false}
+              link={null}
+              onClick={null}
+              rightComponent={null}
+              testId={null}
+              title="List Item"
+            >
+              <Grid
+                className="css-l3889c"
+                component="div"
+                wrap={false}
+              >
+                <div
+                  className="css-l3889c css-h7r55a"
+                >
+                  <GridItem
+                    className="css-10fxwvh"
+                    component="div"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <div
+                      className="css-10fxwvh css-1gs0ko2"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="List Item"
+                      >
+                        <span
+                          className=""
+                        >
+                          List Item
+                        </span>
+                      </Translate>
+                    </div>
+                  </GridItem>
+                </div>
+              </Grid>
+            </Item>
+          </div>
+        </li>
+      </ListItem>
+      <ListItem
+        className={null}
+        isSelected={false}
+        key="child-1/.1"
+      >
+        <li
+          className="css-1p5q8vq css-16gj3o1"
+        >
+          <div
+            className="css-15cnm0c"
+          >
+            <Item
+              className={null}
+              image={null}
+              isDisabled={false}
+              isSelected={false}
+              link={null}
+              onClick={null}
+              rightComponent={null}
+              testId={null}
+              title="List Item"
+            >
+              <Grid
+                className="css-l3889c"
+                component="div"
+                wrap={false}
+              >
+                <div
+                  className="css-l3889c css-h7r55a"
+                >
+                  <GridItem
+                    className="css-10fxwvh"
+                    component="div"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <div
+                      className="css-10fxwvh css-1gs0ko2"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="List Item"
+                      >
+                        <span
+                          className=""
+                        >
+                          List Item
+                        </span>
+                      </Translate>
+                    </div>
+                  </GridItem>
+                </div>
+              </Grid>
+            </Item>
+          </div>
+        </li>
+      </ListItem>
+    </ul>
+  </List>
+</List>
+`;

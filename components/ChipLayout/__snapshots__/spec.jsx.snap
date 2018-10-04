@@ -1,0 +1,386 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChipsLayout /> should render with one chip 1`] = `
+<ChipLayout
+  handleMoreButton={[Function]}
+  invertMoreButton={false}
+  maxRows={2}
+  moreLabel="more"
+  pathname=""
+>
+  <div
+    className="css-1hor112"
+  >
+    <div
+      className="css-1ck9rgi"
+    >
+      <Chip
+        invert={false}
+        onClick={[Function]}
+        onRemove={[Function]}
+        removable={true}
+      >
+        <div
+          className="css-bpa25c"
+        >
+          <Button
+            className="css-i7sqdh"
+            disabled={false}
+            onClick={[Function]}
+            testId="remove foo"
+          >
+            <button
+              className="css-i7sqdh css-1rn65c0"
+              data-test-id="remove foo"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <Cross
+                color="#5ccee3"
+                size={16}
+              >
+                <Icon
+                  className=""
+                  color="#5ccee3"
+                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                  size={16}
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    className="css-yys9hb "
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                      }
+                    }
+                    style={
+                      Object {
+                        "fill": "#5ccee3",
+                        "fontSize": 16,
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  />
+                </Icon>
+              </Cross>
+            </button>
+          </Button>
+          <Button
+            className="css-1al9zi1"
+            disabled={false}
+            onClick={[Function]}
+            testId="foo"
+          >
+            <button
+              className="css-1al9zi1 css-1rn65c0"
+              data-test-id="foo"
+              disabled={false}
+              onClick={[Function]}
+            >
+              foo
+            </button>
+          </Button>
+        </div>
+      </Chip>
+    </div>
+    <div
+      className="css-1sunnf0"
+    >
+      <RippleButton
+        className="css-rz4b27"
+        disabled={false}
+        fill={true}
+        flat={false}
+        onClick={[Function]}
+        rippleClassName=""
+        rippleSize={null}
+        testId="Button"
+        type="plain"
+        wrapContent={true}
+      >
+        <Button
+          className="css-rz4b27"
+          disabled={false}
+          flat={false}
+          onClick={[Function]}
+          testId="Button"
+          type="plain"
+          wrapContent={false}
+        >
+          <Button
+            className="css-1xxwysr css-rz4b27"
+            disabled={false}
+            onClick={[Function]}
+            testId="Button"
+          >
+            <button
+              className="css-1xxwysr css-rz4b27 css-1rn65c0"
+              data-test-id="Button"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <Ripple
+                className="css-8s1fw2 "
+                color="#000"
+                disabled={false}
+                fill={true}
+                onComplete={[Function]}
+                overflow={false}
+                size={null}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-8s1fw2 "
+                  data-test-id="Ripple"
+                  onClick={[Function]}
+                  style={null}
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="more"
+                  >
+                    <span
+                      className=""
+                    >
+                      more
+                    </span>
+                  </Translate>
+                </div>
+              </Ripple>
+            </button>
+          </Button>
+        </Button>
+      </RippleButton>
+    </div>
+  </div>
+</ChipLayout>
+`;
+
+exports[`<ChipsLayout /> should render with two chips 1`] = `
+<ChipLayout
+  handleMoreButton={[Function]}
+  invertMoreButton={false}
+  maxRows={2}
+  moreLabel="more"
+  pathname=""
+>
+  <div
+    className="css-1hor112"
+  >
+    <div
+      className="css-1ck9rgi"
+    >
+      <Chip
+        invert={false}
+        onClick={[Function]}
+        onRemove={[Function]}
+        removable={true}
+      >
+        <div
+          className="css-bpa25c"
+        >
+          <Button
+            className="css-i7sqdh"
+            disabled={false}
+            onClick={[Function]}
+            testId="remove foo"
+          >
+            <button
+              className="css-i7sqdh css-1rn65c0"
+              data-test-id="remove foo"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <Cross
+                color="#5ccee3"
+                size={16}
+              >
+                <Icon
+                  className=""
+                  color="#5ccee3"
+                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                  size={16}
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    className="css-yys9hb "
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                      }
+                    }
+                    style={
+                      Object {
+                        "fill": "#5ccee3",
+                        "fontSize": 16,
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  />
+                </Icon>
+              </Cross>
+            </button>
+          </Button>
+          <Button
+            className="css-1al9zi1"
+            disabled={false}
+            onClick={[Function]}
+            testId="foo"
+          >
+            <button
+              className="css-1al9zi1 css-1rn65c0"
+              data-test-id="foo"
+              disabled={false}
+              onClick={[Function]}
+            >
+              foo
+            </button>
+          </Button>
+        </div>
+      </Chip>
+      <Chip
+        invert={false}
+        onClick={[Function]}
+        onRemove={[Function]}
+        removable={true}
+      >
+        <div
+          className="css-bpa25c"
+        >
+          <Button
+            className="css-i7sqdh"
+            disabled={false}
+            onClick={[Function]}
+            testId="remove bar"
+          >
+            <button
+              className="css-i7sqdh css-1rn65c0"
+              data-test-id="remove bar"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <Cross
+                color="#5ccee3"
+                size={16}
+              >
+                <Icon
+                  className=""
+                  color="#5ccee3"
+                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                  size={16}
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    className="css-yys9hb "
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                      }
+                    }
+                    style={
+                      Object {
+                        "fill": "#5ccee3",
+                        "fontSize": 16,
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  />
+                </Icon>
+              </Cross>
+            </button>
+          </Button>
+          <Button
+            className="css-1al9zi1"
+            disabled={false}
+            onClick={[Function]}
+            testId="bar"
+          >
+            <button
+              className="css-1al9zi1 css-1rn65c0"
+              data-test-id="bar"
+              disabled={false}
+              onClick={[Function]}
+            >
+              bar
+            </button>
+          </Button>
+        </div>
+      </Chip>
+    </div>
+    <div
+      className="css-1sunnf0"
+    >
+      <RippleButton
+        className="css-rz4b27"
+        disabled={false}
+        fill={true}
+        flat={false}
+        onClick={[Function]}
+        rippleClassName=""
+        rippleSize={null}
+        testId="Button"
+        type="plain"
+        wrapContent={true}
+      >
+        <Button
+          className="css-rz4b27"
+          disabled={false}
+          flat={false}
+          onClick={[Function]}
+          testId="Button"
+          type="plain"
+          wrapContent={false}
+        >
+          <Button
+            className="css-1xxwysr css-rz4b27"
+            disabled={false}
+            onClick={[Function]}
+            testId="Button"
+          >
+            <button
+              className="css-1xxwysr css-rz4b27 css-1rn65c0"
+              data-test-id="Button"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <Ripple
+                className="css-8s1fw2 "
+                color="#000"
+                disabled={false}
+                fill={true}
+                onComplete={[Function]}
+                overflow={false}
+                size={null}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-8s1fw2 "
+                  data-test-id="Ripple"
+                  onClick={[Function]}
+                  style={null}
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="more"
+                  >
+                    <span
+                      className=""
+                    >
+                      more
+                    </span>
+                  </Translate>
+                </div>
+              </Ripple>
+            </button>
+          </Button>
+        </Button>
+      </RippleButton>
+    </div>
+  </div>
+</ChipLayout>
+`;
