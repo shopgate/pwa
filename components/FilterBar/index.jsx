@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import classNames from 'classnames';
-import { UIEvents } from '@shopgate/pwa-core';
 import colors from 'Styles/colors';
 import Content from './components/Content';
 import styles from './style';
 import transition from './transition';
-import { FILTERBAR_UPDATE } from './constants';
+import { ViewContext } from '../View/context';
 
 /**
  * The FilterBar component.
@@ -15,17 +13,14 @@ import { FILTERBAR_UPDATE } from './constants';
 class FilterBar extends Component {
   static propTypes = {
     filters: PropTypes.shape(),
-    viewRef: PropTypes.shape(),
   };
 
   static defaultProps = {
     filters: null,
-    viewRef: null,
   };
 
   /**
-   * Constructs a new component instance.
-   * @param {Object} props The component properties.
+   * @param {Object} props The component props.
    */
   constructor(props) {
     super(props);
@@ -36,15 +31,12 @@ class FilterBar extends Component {
       shadow: false,
       visible: true,
     };
-
-    UIEvents.addListener(FILTERBAR_UPDATE, this.updateView);
   }
 
   /**
    * Sets up the scroll DOM elements.
    */
   componentDidMount() {
-    this.updateView();
     this.setScrollListener(this.props.viewRef);
   }
 
@@ -60,13 +52,15 @@ class FilterBar extends Component {
     const hasFilters = nextProps.filters !== null && Object.keys(nextProps.filters).length > 0;
 
     if (hasNewRef) {
-      this.updateView();
       this.setScrollListener(nextProps.viewRef);
     }
 
-    if (hasFilters !== this.state.active) {
-      this.setState({ active: hasFilters });
-    }
+    console.warn(this.node.current.clientHeight, nextProps.offsetY);
+
+    // this.setState({
+    //   active: hasFilters,
+    //   visible: (nextProps.offsetY < this.props.offsetY) || (nextProps.offsetY <= this.node.clientHeight),
+    // });
   }
 
   /**
@@ -76,18 +70,12 @@ class FilterBar extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
+    return true;
     return (
       this.state.active !== nextState.active ||
       this.state.shadow !== nextState.shadow ||
       this.state.visible !== nextState.visible
     );
-  }
-
-  /**
-   * Set the top value of the View when the component updates.
-   */
-  componentDidUpdate() {
-    // this.updateView();
   }
 
   /**
@@ -125,17 +113,6 @@ class FilterBar extends Component {
   }
 
   /**
-   * Update the ViewProvider with the height of the bar.
-   */
-  updateView = () => {
-    if (!this.node.current) {
-      return;
-    }
-
-    // this.props.setTop(this.node.current.clientHeight);
-  }
-
-  /**
    * @param {CustomEvent} event The swipe event.
    */
   handleSwipe = (event) => {
@@ -157,17 +134,12 @@ class FilterBar extends Component {
    * @returns {JSX}
    */
   render() {
-    const classes = classNames(
-      styles.wrapper,
-      { [styles.shaded]: this.state.shadow }
-    );
-
     return (
       <section className={styles.container}>
         <Transition in={this.state.visible} timeout={200}>
           {state => (
             <div
-              className={classes}
+              className={styles.wrapper}
               data-test-id="filterBar"
               ref={this.node}
               style={{
@@ -184,4 +156,8 @@ class FilterBar extends Component {
   }
 }
 
-export default FilterBar;
+export default props => (
+  <ViewContext.Consumer>
+    {({ scrollOffsetY }) => <FilterBar {...props} offsetY={scrollOffsetY || 0} />}
+  </ViewContext.Consumer>
+);

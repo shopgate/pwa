@@ -21,12 +21,9 @@ class CartButton extends PureComponent {
   /**
    * @returns {JSX}
    */
-  badge = () => {
+  get badge() {
     const { count } = this.props;
-
-    return (
-      <Badge count={count} />
-    );
+    return () => <Badge count={count} />;
   }
 
   /**
@@ -36,7 +33,7 @@ class CartButton extends PureComponent {
     const { count, navigate } = this.props;
 
     return (
-      <Transition in={!!count} timeout={250}>
+      <Transition in={count > 0} timeout={250}>
         {state => (
           <div className={styles} style={transition[state]}>
             <AppBar.Icon

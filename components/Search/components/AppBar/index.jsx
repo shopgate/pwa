@@ -4,19 +4,27 @@ import { ArrowIcon, CrossIcon } from '@shopgate/pwa-ui-shared';
 import { AppBar } from '@shopgate/pwa-ui-material';
 
 /**
- * 
- * @param {*} param0 
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
 function SearchAppBar({
-  close, fieldRef, onEnter, onInput, reset, query,
+  close, fieldRef, onEnter, onInput, reset,
 }) {
   return (
     <AppBar
       left={<AppBar.Icon icon={ArrowIcon} onClick={close} />}
-      center={<AppBar.Field fieldRef={fieldRef} onChange={onInput} value={query} onSubmit={onEnter} />}
+      center={<AppBar.Field key={1234} fieldRef={fieldRef} onChange={onInput} onSubmit={onEnter} />}
       right={<AppBar.Icon icon={CrossIcon} onClick={reset} />}
     />
   );
 }
+
+SearchAppBar.propTypes = {
+  close: PropTypes.func.isRequired,
+  fieldRef: PropTypes.shape().isRequired,
+  onEnter: PropTypes.func.isRequired,
+  onInput: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+};
 
 export default SearchAppBar;

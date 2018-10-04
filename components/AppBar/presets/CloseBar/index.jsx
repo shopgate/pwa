@@ -16,7 +16,7 @@ class CloseBar extends PureComponent {
   /**
    * @returns {JSX}
    */
-  left = () => {
+  get left() {
     const { goBack } = this.props;
     return <AppBar.Icon icon={CrossIcon} onClick={goBack} />;
   }
@@ -27,7 +27,7 @@ class CloseBar extends PureComponent {
   render() {
     const { goBack, ...rest } = this.props;
     return (
-      <DefaultBar left={this.leftleft} right={null} {...rest} />
+      <DefaultBar left={this.left} right={null} {...rest} />
     );
   }
 }

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 
 /**
  * Maps the contents of the state to the component props.
@@ -16,20 +17,7 @@ const mapStateToProps = state => ({
  * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: () => dispatch(historyPush({ pathname: '/cart' })),
+  navigate: () => dispatch(historyPush({ pathname: CART_PATH })),
 });
 
-/**
- * @param {Object} next The next component props.
- * @param {Object} prev The previous component props.
- * @returns {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (prev.count !== next.count) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
+export default connect(mapStateToProps, mapDispatchToProps);

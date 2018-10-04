@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
 import AppBar from './components/AppBar';
 import Suggestions from './components/Suggestions';
@@ -68,15 +68,14 @@ class Search extends Component {
    * @param {Event} event The event.
    */
   update = (event) => {
-    event.preventDefault();
     this.fetchSuggestions(event.target.value);
     this.setState({ query: event.target.value });
-  }
+  };
 
   /**
-   * Fetch the search suggestions, throttled by 1 second.
+   * Fetch the search suggestions, debounced by 1 second.
    */
-  fetchSuggestions = throttle((query) => {
+  fetchSuggestions = debounce((query) => {
     if (query.length > SUGGESTIONS_MIN) {
       this.props.fetchSuggestions(query);
     }
@@ -118,19 +117,14 @@ class Search extends Component {
       return null;
     }
 
-    const Bar = React.forwardRef((props, ref) => (
-      <AppBar {...props} fieldRef={ref} />
-    ));
-
     return (
       <div className={styles.view}>
-        <Bar
+        <AppBar
           close={this.close}
           reset={this.reset}
           onInput={this.update}
           onEnter={this.fetchResults}
-          query={query}
-          ref={this.fieldRef}
+          fieldRef={this.fieldRef}
         />
         {query.length > SUGGESTIONS_MIN && (
           <Suggestions onClick={this.fetchResults} searchPhrase={query} />

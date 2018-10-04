@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import conductor from '@virtuous/conductor';
-import { UIEvents } from '@shopgate/pwa-core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import {
@@ -10,7 +9,6 @@ import {
 } from '@shopgate/pwa-common-commerce/filter/constants';
 import Chip from '@shopgate/pwa-ui-shared/Chip';
 import ChipLayout from 'Components/ChipLayout';
-import { FILTERBAR_UPDATE } from '../../../../constants';
 import connect from './connector';
 import styles from './style';
 
@@ -30,13 +28,6 @@ class FilterChips extends Component {
     currentPathname: '',
     filters: null,
   };
-
-  /**
-   * Triggers an event to have the FilterBar update.
-   */
-  componentDidUpdate() {
-    UIEvents.emit(FILTERBAR_UPDATE);
-  }
 
   /**
    * Removes the given filter id from the route state.

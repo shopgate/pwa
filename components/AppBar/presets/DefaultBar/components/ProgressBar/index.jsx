@@ -40,23 +40,23 @@ class ProgressBar extends PureComponent {
   }
 
   /**
-   * @param {string} eventPattern The event pattern argument.
+   * @param {string} routePattern The route pattern.
    */
-  handleShow = (eventPattern) => {
+  handleShow = (routePattern) => {
     const { pattern } = this.props;
 
-    if (eventPattern === pattern) {
+    if (routePattern === pattern) {
       this.setState({ show: true });
     }
   }
 
   /**
-   * @param {string} eventPattern The event pattern argument.
+   * @param {string} routePattern The route pattern.
    */
-  handleHide = (eventPattern) => {
+  handleHide = (routePattern) => {
     const { pattern } = this.props;
 
-    if (eventPattern === pattern) {
+    if (routePattern === pattern) {
       this.setState({ show: false });
     }
   }

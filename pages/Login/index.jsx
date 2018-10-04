@@ -124,7 +124,7 @@ class Login extends Component {
   render() {
     return (
       <View>
-        <CloseBar />
+        <CloseBar shadow={false} />
         <section className={styles.container} data-test-id="LoginPage">
           <Portal name={PAGE_LOGIN_BEFORE} />
           <Portal name={PAGE_LOGIN} >
