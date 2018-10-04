@@ -15,6 +15,8 @@ import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
+import setViewLoading from '../actions/view/setViewLoading';
+import unsetViewLoading from '../actions/view/unsetViewLoading';
 import authRoutes from '../collections/AuthRoutes';
 
 /**
@@ -81,8 +83,9 @@ export default function router(subscribe) {
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
-        const { pattern } = getCurrentRoute();
+        const { pathname, pattern } = getCurrentRoute();
         ProgressBar.show(pattern);
+        dispatch(setViewLoading(pathname));
 
         try {
           redirect = await redirect(params);
@@ -92,6 +95,7 @@ export default function router(subscribe) {
         }
 
         ProgressBar.hide(pattern);
+        dispatch(unsetViewLoading(pathname));
 
         if (!redirect) {
           return;

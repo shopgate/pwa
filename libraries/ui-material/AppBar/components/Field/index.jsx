@@ -10,14 +10,12 @@ class AppBarField extends PureComponent {
     fieldRef: PropTypes.shape(),
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
-    value: PropTypes.string,
   };
 
   static defaultProps = {
     fieldRef: null,
     onChange: null,
     onSubmit: null,
-    value: '',
   };
 
   static contextTypes = {
@@ -28,9 +26,7 @@ class AppBarField extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const {
-      fieldRef, onChange, onSubmit, value,
-    } = this.props;
+    const { fieldRef, onChange, onSubmit } = this.props;
     const { __ } = this.context.i18n();
 
     return (
@@ -40,7 +36,6 @@ class AppBarField extends PureComponent {
           onChange={onChange}
           placeholder={__('search.placeholder')}
           ref={fieldRef}
-          value={value}
         />
       </form>
     );

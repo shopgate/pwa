@@ -13,10 +13,9 @@ class AppBar extends PureComponent {
     backgroundColor: PropTypes.string,
     below: PropTypes.shape(),
     center: PropTypes.shape(),
-    forwardRef: PropTypes.shape(),
     left: PropTypes.shape(),
-    onMount: PropTypes.func,
     right: PropTypes.shape(),
+    shadow: PropTypes.bool,
     textColor: PropTypes.string,
   }
 
@@ -24,10 +23,9 @@ class AppBar extends PureComponent {
     backgroundColor: '#fff',
     below: null,
     center: null,
-    forwardRef: null,
     left: null,
-    onMount: null,
     right: null,
+    shadow: true,
     textColor: '#000',
   }
 
@@ -36,25 +34,15 @@ class AppBar extends PureComponent {
   static Title = Title;
 
   /**
-   * When mounted, call the onMount prop.
-   */
-  componentDidMount() {
-    const { forwardRef, onMount } = this.props;
-
-    if (onMount) {
-      onMount(forwardRef);
-    }
-  }
-
-  /**
    * @returns {Object}
    */
   get style() {
-    const { backgroundColor, textColor } = this.props;
+    const { backgroundColor, shadow, textColor } = this.props;
 
     return {
       background: backgroundColor,
       color: textColor,
+      boxShadow: !shadow ? 'none' : 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px',
     };
   }
 
@@ -63,14 +51,13 @@ class AppBar extends PureComponent {
    */
   render() {
     const {
-      below, center, forwardRef, left, right,
+      below, center, left, right,
     } = this.props;
 
     return (
       <header
         className={styles.outer}
         data-test-id="Navigator"
-        ref={forwardRef}
         role="banner"
         style={this.style}
       >

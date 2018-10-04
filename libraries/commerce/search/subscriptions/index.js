@@ -1,4 +1,6 @@
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
+import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
+import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import {
   searchRequesting$,
   searchReceived$,
@@ -10,11 +12,13 @@ import { SEARCH_PATTERN } from '../constants';
  * @param {Function} subscribe The subscribe function.
  */
 export default function search(subscribe) {
-  subscribe(searchRequesting$, () => {
+  subscribe(searchRequesting$, ({ dispatch }) => {
     ProgressBar.show(SEARCH_PATTERN);
+    dispatch(setViewLoading(SEARCH_PATTERN));
   });
 
-  subscribe(searchReceived$, () => {
+  subscribe(searchReceived$, ({ dispatch }) => {
     ProgressBar.hide(SEARCH_PATTERN);
+    dispatch(unsetViewLoading(SEARCH_PATTERN));
   });
 }
