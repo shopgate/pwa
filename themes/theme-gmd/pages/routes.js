@@ -55,11 +55,6 @@ export const Login = Loadable({
   loading: () => null,
 });
 
-export const Register = Loadable({
-  loader: () => import('./Register'),
-  loading: () => null,
-});
-
 export const Orders = Loadable({
   loader: () => import('./Orders'),
   loading: () => null,
