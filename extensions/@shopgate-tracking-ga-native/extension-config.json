@@ -1,0 +1,30 @@
+{
+  "version": "5.9.0-beta.10",
+  "id": "@shopgate/tracking-ga-native",
+  "components": [
+    {
+      "id": "init",
+      "path": "frontend/index.js",
+      "type": "tracking"
+    }
+  ],
+  "configuration": {
+    "trackers": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s/tracking?type=analytics_native",
+        "key": "trackers"
+      }
+    },
+    "stage": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(targetStage)s"
+      }
+    }
+  }
+}
