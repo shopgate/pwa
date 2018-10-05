@@ -6,7 +6,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Setting up core extension
+## Setting up new core extensions
 
 To set up a new core extension you need to perform the following steps:
 * Add an exception into the `.gitignore` file as it was done with `@shopgate-product-reviews`.
