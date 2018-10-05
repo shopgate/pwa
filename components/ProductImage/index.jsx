@@ -38,11 +38,6 @@ class ProductImage extends Component {
     ratio: null,
     resolutions: [
       {
-        width: 50,
-        height: 50,
-        blur: 2,
-      },
-      {
         width: 440,
         height: 440,
       },
@@ -77,10 +72,14 @@ class ProductImage extends Component {
   /**
    * Should component update given the new props?
    * @param {Object} nextProps The next component props.
+   * @param  {Object} nextState The next component state.
    * @return {boolean} Update or not.
    */
-  shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props, nextProps);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      !isEqual(this.props, nextProps) ||
+      this.state.showPlaceholder !== nextState.showPlaceholder
+    );
   }
 
   /**

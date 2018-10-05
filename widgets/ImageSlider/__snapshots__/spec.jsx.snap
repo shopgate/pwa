@@ -123,11 +123,6 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                           resolutions={
                             Array [
                               Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
                                 "height": 440,
                                 "width": 440,
                               },
@@ -178,11 +173,6 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                           ratio={null}
                           resolutions={
                             Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
                               Object {
                                 "height": 440,
                                 "width": 440,
@@ -269,11 +259,6 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           resolutions={
             Array [
               Object {
-                "blur": 2,
-                "height": 50,
-                "width": 50,
-              },
-              Object {
                 "height": 440,
                 "width": 440,
               },
@@ -337,11 +322,6 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
       ratio={null}
       resolutions={
         Array [
-          Object {
-            "blur": 2,
-            "height": 50,
-            "width": 50,
-          },
           Object {
             "height": 440,
             "width": 440,
@@ -490,11 +470,6 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                           resolutions={
                             Array [
                               Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
                                 "height": 440,
                                 "width": 440,
                               },
@@ -535,11 +510,6 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       ratio={null}
                       resolutions={
                         Array [
-                          Object {
-                            "blur": 2,
-                            "height": 50,
-                            "width": 50,
-                          },
                           Object {
                             "height": 440,
                             "width": 440,
@@ -589,11 +559,6 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                           ratio={null}
                           resolutions={
                             Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
                               Object {
                                 "height": 440,
                                 "width": 440,
@@ -645,11 +610,6 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                           ratio={null}
                           resolutions={
                             Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
                               Object {
                                 "height": 440,
                                 "width": 440,
@@ -807,11 +767,6 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                           resolutions={
                             Array [
                               Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
                                 "height": 440,
                                 "width": 440,
                               },
@@ -862,11 +817,6 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                           ratio={null}
                           resolutions={
                             Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
                               Object {
                                 "height": 440,
                                 "width": 440,
