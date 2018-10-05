@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { JSDOM } from 'jsdom';
 import variables from 'Styles/variables';
+import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import HtmlWidget from './index';
 
 const mockConstructor = jest.fn();
@@ -32,6 +33,8 @@ describe('<HtmlWidget />', () => {
     };
 
     const renderSpy = jest.spyOn(HtmlWidget.prototype, 'render');
+    const embeddedMediaAddSpy = jest.spyOn(embeddedMedia, 'add');
+    const embeddedMediaRemoveSpy = jest.spyOn(embeddedMedia, 'remove');
 
     beforeEach(() => {
       jest.clearAllMocks();
@@ -42,6 +45,8 @@ describe('<HtmlWidget />', () => {
 
       expect(wrapper.render()).toMatchSnapshot();
       expect(wrapper.childAt(0).prop('style')).toEqual({});
+      expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(1);
+      expect(embeddedMediaAddSpy).toHaveBeenCalledWith(wrapper.instance().htmlContainer);
     });
 
     it('should render the HtmlWidget with a padding', () => {
@@ -90,6 +95,19 @@ describe('<HtmlWidget />', () => {
 
       expect(wrapper).toMatchSnapshot();
       expect(renderSpy).toHaveBeenCalledTimes(3);
+      expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(3);
+      expect(embeddedMediaAddSpy).toHaveBeenNthCalledWith(1, wrapper.instance().htmlContainer);
+      expect(embeddedMediaAddSpy).toHaveBeenNthCalledWith(2, wrapper.instance().htmlContainer);
+      expect(embeddedMediaAddSpy).toHaveBeenNthCalledWith(3, wrapper.instance().htmlContainer);
+    });
+
+    it('should remove embedded media handlers on unmount', () => {
+      const wrapper = mount(<HtmlWidget settings={settings} />);
+      const { htmlContainer } = wrapper.instance();
+      wrapper.unmount();
+
+      expect(embeddedMediaRemoveSpy).toHaveBeenCalledTimes(1);
+      expect(embeddedMediaRemoveSpy).toHaveBeenCalledWith(htmlContainer);
     });
   });
 
@@ -160,5 +178,9 @@ describe('<HtmlWidget />', () => {
 
       expect(mockConstructor).toHaveBeenCalledTimes(1);
     });
+  });
+
+  describe('Embedded media', () => {
+
   });
 });
