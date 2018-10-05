@@ -1,4 +1,5 @@
 import { historyPop } from '@shopgate/pwa-common/actions/router';
+import { ITEM_WRITE_REVIEW_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
 import {
@@ -37,18 +38,16 @@ export default function writeReview(subscribe) {
    * Get triggered when a review submit is requested.
    */
   subscribe(requestReviewSubmit$, ({ dispatch }) => {
-    const { pathname, pattern } = getCurrentRoute();
-    ProgressBar.show(pattern);
-    dispatch(setViewLoading(pathname));
+    ProgressBar.show(ITEM_WRITE_REVIEW_PATTERN);
+    dispatch(setViewLoading(ITEM_WRITE_REVIEW_PATTERN));
   });
 
   /**
    * Get triggered when a review submitted got a response.
    */
   subscribe(responseReviewSubmit$, ({ dispatch }) => {
-    const { pathname, pattern } = getCurrentRoute();
-    ProgressBar.hide(pattern);
-    dispatch(unsetViewLoading(pathname));
+    ProgressBar.hide(ITEM_WRITE_REVIEW_PATTERN);
+    dispatch(unsetViewLoading(ITEM_WRITE_REVIEW_PATTERN));
   });
 
   /**
@@ -61,6 +60,7 @@ export default function writeReview(subscribe) {
       message: 'reviews.success_message',
     });
   });
+
   /**
    * When user is logged out reviews relation should be removed.
    */
