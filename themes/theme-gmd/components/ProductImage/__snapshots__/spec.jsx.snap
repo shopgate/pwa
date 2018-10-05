@@ -29,11 +29,6 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   resolutions={
     Array [
       Object {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      Object {
         "height": 440,
         "width": 440,
       },
