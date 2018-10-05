@@ -2,13 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ImageWidget from './index';
 
-describe.skip('<ImageWidget />', () => {
+describe('<ImageWidget />', () => {
   it('should render the ImageWidget', () => {
     const settings = {
       id: '81452',
       alt: 'Alt text',
       image: 'https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg',
-      url: '/category/3339',
+      link: '/category/3339',
     };
 
     const wrapper = shallow(<ImageWidget settings={settings} />);
@@ -21,7 +21,7 @@ describe.skip('<ImageWidget />', () => {
       id: '81452',
       alt: 'Alt text',
       image: 'https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg',
-      url: '',
+      link: '',
     };
 
     const wrapper = shallow(<ImageWidget settings={settings} />);
