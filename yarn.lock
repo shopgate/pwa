@@ -100,17 +100,9 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/pwa-ui-ios@5.8.0-beta.8":
-  version "5.8.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-ios/-/pwa-ui-ios-5.8.0-beta.8.tgz#70fe079a59910f6d47b94f23fa43d0ed006c9840"
-
-"@shopgate/pwa-ui-material@5.8.0-beta.8":
-  version "5.8.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-material/-/pwa-ui-material-5.8.0-beta.8.tgz#e732d66d95aea128a2cca28b9f1434c29325abd3"
-
-"@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
+"@shopgate/react-hammerjs@0.5.8":
+  version "0.5.8"
+  resolved "http://registry.npmjs.org/@shopgate/react-hammerjs/-/react-hammerjs-0.5.8.tgz#e5a7eeaad3c1fb73963d881987f52e143a05eb6e"
   dependencies:
     hammerjs "^2.0.8"
 

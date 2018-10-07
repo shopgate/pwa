@@ -69,7 +69,7 @@ const logGroup = (title, content = {}, actionColor = 'gray') => {
   logger.groupCollapsed(
     ` %c${title} %c@ ${time}`,
     style(actionColor),
-    style('black', 'bold'),
+    style('bold'),
     style()
   );
 

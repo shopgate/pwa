@@ -38,6 +38,7 @@ describe('Action Creators: user', () => {
         type: REQUEST_LOGIN,
         user,
         password,
+        strategy: 'basic',
       };
       expect(requestLogin(user, password)).toEqual(expected);
     });
@@ -54,17 +55,28 @@ describe('Action Creators: user', () => {
     it('should work as expected', () => {
       const expected = {
         type: ERROR_LOGIN,
+        code: 'EUNKNOWN',
         messages,
       };
-      expect(errorLogin(messages)).toEqual(expected);
+      expect(errorLogin(messages, 'EUNKNOWN')).toEqual(expected);
     });
 
     it('should work as expected when the messages parameter is empty', () => {
       const expected = {
         type: ERROR_LOGIN,
+        code: 'EUNKNOWN',
         messages: [],
       };
-      expect(errorLogin()).toEqual(expected);
+      expect(errorLogin(undefined, 'EUNKNOWN')).toEqual(expected);
+    });
+
+    it('should work as expected when the code paramter is empty', () => {
+      const expected = {
+        type: ERROR_LOGIN,
+        code: '',
+        messages,
+      };
+      expect(errorLogin(messages)).toEqual(expected);
     });
   });
 
@@ -124,8 +136,10 @@ describe('Action Creators: user', () => {
 
   describe('errorUser()', () => {
     it('should work as expected', () => {
-      const expected = { type: ERROR_USER };
-      expect(errorUser()).toEqual(expected);
+      const err = new Error();
+      // eslint-disable-next-line extra-rules/no-single-line-objects
+      const expected = { type: ERROR_USER, error: err };
+      expect(errorUser(err)).toEqual(expected);
     });
   });
 
