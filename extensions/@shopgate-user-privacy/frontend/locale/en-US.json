@@ -1,8 +1,0 @@
-{
-  "user": {
-    "delete_account": "Delete my account",
-    "delete_account_success": "We received your request to delete your account.",
-    "delete_account_error": "An unexpected error occurred. Please try again later.",
-    "delete_account_confirm": "Press Confirm to delete all account data. This operation cannot be undone."
-  }
-}
