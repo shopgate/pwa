@@ -1,0 +1,224 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductGallery> page should render 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductGallery
+    id="913"
+    initialSlide={0}
+  >
+    <MockedView
+      hasNavigator={false}
+      isFullscreen={true}
+    >
+      <div>
+        <Connect(ProductGalleryContent)
+          initialSlide={0}
+          productId="913"
+        >
+          <ProductGalleryContent
+            dispatch={[Function]}
+            images={
+              Array [
+                "https://img-cdn.shopgate.com/image.jpg",
+              ]
+            }
+            initialSlide={0}
+            product={
+              Object {
+                "ageRating": 0,
+                "availability": Object {
+                  "state": "ok",
+                  "text": "In stock",
+                },
+                "baseProductId": null,
+                "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                "flags": Object {
+                  "hasChildren": false,
+                  "hasOptions": false,
+                  "hasVariants": false,
+                },
+                "highlight": true,
+                "id": "913",
+                "identifiers": Object {
+                  "sku": "857347363",
+                },
+                "liveshoppings": Array [],
+                "manufacturer": "",
+                "name": "This is a product with a very very long name -5-",
+                "price": Object {
+                  "currency": "EUR",
+                  "info": "",
+                  "msrp": 0,
+                  "taxAmount": 0,
+                  "taxPercent": 0,
+                  "tiers": Array [],
+                  "unitPrice": 89,
+                  "unitPriceMax": 1000,
+                  "unitPriceMin": 0,
+                  "unitPriceNet": 89,
+                  "unitPriceStriked": 0,
+                  "unitPriceWithTax": 89,
+                },
+                "rating": Object {
+                  "average": 0,
+                  "count": 0,
+                  "reviewCount": 0,
+                },
+                "stock": Object {
+                  "ignoreQuantity": true,
+                  "info": "In stock",
+                  "maxOrderQuantity": 10000,
+                  "minOrderQuantity": 1,
+                  "orderable": true,
+                  "quantity": 0,
+                },
+              }
+            }
+            productId="913"
+          >
+            <div
+              className="css-f7yea6"
+            >
+              <ZoomPanSlider
+                autoPlay={false}
+                className="css-sa13d4"
+                classNames={
+                  Object {
+                    "container": "css-sa13d4",
+                    "indicator": "css-vsp2nx",
+                  }
+                }
+                controls={false}
+                disabled={false}
+                historyPath=""
+                indicators={true}
+                initialSlide={0}
+                interval={3000}
+                loop={true}
+                maxIndicators={null}
+                onSlideChange={null}
+                slidesPerView={1}
+                snapItems={true}
+              >
+                <ImageSlider
+                  autoPlay={false}
+                  className="css-sa13d4"
+                  classNames={
+                    Object {
+                      "container": "css-sa13d4",
+                      "indicator": "css-vsp2nx",
+                    }
+                  }
+                  controls={false}
+                  disabled={false}
+                  historyPath=""
+                  indicators={true}
+                  initialSlide={0}
+                  interval={3000}
+                  loop={true}
+                  maxIndicators={null}
+                  onSlideChange={null}
+                  slidesPerView={1}
+                  snapItems={true}
+                >
+                  <ZoomPanContainer
+                    key=".$0/.$https=02//img-cdn.shopgate.com/image.jpg"
+                    maxZoom={4}
+                    minZoom={1}
+                    onZoom={[Function]}
+                    smoothness={500}
+                    zoomBounce={0.3}
+                    zoomOnTap={2}
+                  >
+                    <div
+                      className="css-70kdmd"
+                    >
+                      <MockedComponent
+                        direction="DIRECTION_ALL"
+                        onDoubleTap={[Function]}
+                        onPan={[Function]}
+                        onPanEnd={[Function]}
+                        onPanStart={[Function]}
+                        onPinch={[Function]}
+                        onPinchEnd={[Function]}
+                        onPinchStart={[Function]}
+                        options={
+                          Object {
+                            "recognizers": Object {
+                              "pinch": Object {
+                                "enable": true,
+                              },
+                            },
+                          }
+                        }
+                      >
+                        <div>
+                          <div>
+                            <div
+                              className="css-1b510lo"
+                            >
+                              <div
+                                className="css-ivsd5g"
+                              >
+                                <div
+                                  className="css-1vgjawn"
+                                  key="https://img-cdn.shopgate.com/image.jpg"
+                                >
+                                  <Image
+                                    alt={null}
+                                    animating={true}
+                                    backgroundColor="#f2f2f2"
+                                    className=""
+                                    forcePlaceholder={false}
+                                    highestResolutionLoaded={[Function]}
+                                    onError={null}
+                                    onLoad={null}
+                                    ratio={null}
+                                    resolutions={
+                                      Array [
+                                        Object {
+                                          "height": 440,
+                                          "width": 440,
+                                        },
+                                        Object {
+                                          "height": 2048,
+                                          "width": 2048,
+                                        },
+                                      ]
+                                    }
+                                    src="https://img-cdn.shopgate.com/image.jpg"
+                                    transition={null}
+                                  >
+                                    <div
+                                      className="css-326p2s "
+                                    />
+                                  </Image>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </MockedComponent>
+                    </div>
+                  </ZoomPanContainer>
+                </ImageSlider>
+              </ZoomPanSlider>
+            </div>
+          </ProductGalleryContent>
+        </Connect(ProductGalleryContent)>
+      </div>
+    </MockedView>
+  </ProductGallery>
+</Provider>
+`;

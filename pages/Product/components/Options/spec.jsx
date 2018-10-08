@@ -63,7 +63,7 @@ describe('<Options />', () => {
     renderedElement = mount(
       (
         <I18n.Provider lang="en" locales={{}}>
-          <Options setProductOption={mockSetProductOption} {...props} />
+          <Options storeSelection={mockSetProductOption} {...props} />
         </I18n.Provider>),
       mockRenderOptions
     );

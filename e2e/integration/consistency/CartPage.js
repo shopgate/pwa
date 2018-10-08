@@ -1,7 +1,9 @@
+// eslint-disable-next-line spaced-comment
 /// <reference types="Cypress" />
-
-import {clearProductFromCart} from '../../helper/cart';
+import { clearProductFromCart } from '../../helper/cart';
 import els from '../../elements/de';
+
+// TODO: refactor when bugs solved
 
 describe('AndroidGMDTest CartPage', () => {
   it('it should check for empty cart', () => {
@@ -17,6 +19,7 @@ describe('AndroidGMDTest CartPage', () => {
   it('it should check for product in cart', () => {
     cy.visit('');
     cy.get(els.allProductCategory)
+      .first()
       .click();
     cy.get(els.productWithManyProps4GridViewName)
       .click();

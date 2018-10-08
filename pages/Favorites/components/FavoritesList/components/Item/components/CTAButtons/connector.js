@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import addToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { isBaseProduct, isOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { isBaseProduct, isProductOrderable, hasProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
 
@@ -11,9 +11,10 @@ import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
  * @param {string} props.productId Id of the product
  * @return {Object} The extended component props.
  */
-const mapStateToProps = (state, { productId }) => ({
-  isBaseProduct: isBaseProduct(state, productId),
-  isOrderable: isOrderable(state, productId),
+const mapStateToProps = (state, props) => ({
+  isBaseProduct: isBaseProduct(state, props),
+  hasVariants: hasProductVariants(state, props),
+  isOrderable: isProductOrderable(state, props),
 });
 
 /**
@@ -35,4 +36,21 @@ const mapDispatchToProps = dispatch => ({
   })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.isBaseProduct !== next.isBaseProduct) {
+    return false;
+  }
+
+  if (prev.isOrderable !== next.isOrderable) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

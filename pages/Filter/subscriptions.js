@@ -1,36 +1,21 @@
-import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
-import {
-  routeDidEnter,
-  routeDidLeave,
-} from '@shopgate/pwa-common/streams/history';
-import {
-  setFilterOpened,
-  setFilterClosed,
-} from 'Components/Navigator/action-creators';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import { filterWillEnter$, filterableRoutesWillReenter$ } from '@shopgate/pwa-common-commerce/filter/streams';
+import { toggleNavigatorSearch } from 'Components/Navigator/action-creators';
 
 /**
- * Filter subscriptions.
- * @param {Function} subscribe The subscribe function.
+ * @param {Function} subscribe Subscribes to streams.
  */
 export default function filter(subscribe) {
-  const filterRouteDidEnter$ = routeDidEnter(FILTER_PATH);
-  const filterRouteDidLeave$ = routeDidLeave(FILTER_PATH);
+  subscribe(filterWillEnter$, ({ dispatch, action }) => {
+    dispatch(setTitle('titles.filter'));
 
-  /**
-   * Gets triggered on leaving the filter route.
-   */
-  subscribe(filterRouteDidLeave$, ({ dispatch, pathname }) => {
-    if (!pathname.startsWith(FILTER_PATH)) {
-      dispatch(setFilterClosed());
+    if (action.historyAction === ACTION_PUSH) {
+      dispatch(toggleNavigatorSearch(false));
     }
   });
 
-  /**
-   * Gets triggered on entering the filter route.
-   */
-  subscribe(filterRouteDidEnter$, ({ dispatch, prevPathname }) => {
-    if (!prevPathname.startsWith(FILTER_PATH)) {
-      dispatch(setFilterOpened());
-    }
+  subscribe(filterableRoutesWillReenter$, ({ dispatch }) => {
+    dispatch(toggleNavigatorSearch(true));
   });
 }

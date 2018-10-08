@@ -1,216 +1,79 @@
 import {
-  TOGGLE_NAVIGATOR_CART_ICON,
+  TOGGLE_NAVIGATOR,
+  TOGGLE_NAVIGATOR_CART,
   TOGGLE_NAVIGATOR_SEARCH,
-  TOGGLE_NAV_DRAWER,
-  TOGGLE_PROGRESS_BAR,
-  TOGGLE_LOGIN,
+  TOGGLE_NAVIGATOR_TITLE,
+  TOGGLE_PROGRESSBAR,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
-  SET_NAVIGATOR_SEARCH_QUERY,
-  SET_FILTER_OPENED,
-  SET_FILTER_CLOSED,
-  SET_FILTER_ATTRIBUTE_OPENED,
-  SET_FILTER_ATTRIBUTE_CLOSED,
-  SET_ICON_SHADOW_ENABLED,
-  SET_ICON_SHADOW_DISABLED,
-  SET_SEARCH_ENABLED,
-  SET_SEARCH_DISABLED,
-  SET_TITLE_ENABLED,
-  SET_TITLE_DISABLED,
-  SET_NAVIGATOR_ENABLED,
-  SET_NAVIGATOR_DISABLED,
-  ENABLE_VIEW_TRACKING,
-  DISABLE_VIEW_TRACKING,
 } from '../constants';
 
 /**
- * Toggles the navigator progress bar..
- * @param {boolean} active The state of the progress bar.
+ * Toggles the navigator.
+ * @param {boolean} visible The next state of the navigator.
  * @returns {Object} The action object.
  */
-export const toggleProgressBar = active => ({
-  type: TOGGLE_PROGRESS_BAR,
-  active,
+export const toggleNavigator = visible => ({
+  type: TOGGLE_NAVIGATOR,
+  visible,
 });
 
 /**
  * Toggles the navigator cart icon.
- * @param {boolean} active The cart icon active state.
+ * @param {boolean} visible The next state of the cart icon.
  * @returns {Object} The action object.
  */
-export const toggleCartIcon = active => ({
-  type: TOGGLE_NAVIGATOR_CART_ICON,
-  active,
+export const toggleNavigatorCart = visible => ({
+  type: TOGGLE_NAVIGATOR_CART,
+  visible,
 });
 
 /**
  * Toggles the navigator search.
- * @param {boolean} active The search active state.
+ * @param {boolean} visible The next state of the search.
  * @returns {Object} The action object.
  */
-export const toggleSearch = active => ({
+export const toggleNavigatorSearch = visible => ({
   type: TOGGLE_NAVIGATOR_SEARCH,
-  active,
+  visible,
 });
 
 /**
- * Toggles the navigation drawer visibility state.
- * @param {boolean} active Whether to show the navigation drawer.
+ * Toggles the navigator title.
+ * @param {boolean} visible The next state of the title.
  * @returns {Object} The action object.
  */
-export const toggleNavDrawer = active => ({
-  type: TOGGLE_NAV_DRAWER,
-  active,
+export const toggleNavigatorTitle = visible => ({
+  type: TOGGLE_NAVIGATOR_TITLE,
+  visible,
 });
 
 /**
- * Toggles the login open state.
- * @param {boolean} active Whether the login is open.
+ * Toggles the navigator progress bar.
+ * @param {boolean} visible The next state of the progress bar.
  * @returns {Object} The action object.
  */
-export const toggleLogin = active => ({
-  type: TOGGLE_LOGIN,
-  active,
+export const toggleProgressBar = visible => ({
+  type: TOGGLE_PROGRESSBAR,
+  visible,
 });
 
 /**
  * Sets the background color of the navigator.
- * @param {boolean} color The navigator's new background color.
+ * @param {boolean} color The next background color.
  * @returns {Object} The action object.
  */
-export const setBackgroundColor = color => ({
+export const setNavigatorBackgroundColor = color => ({
   type: SET_NAVIGATOR_BACKGROUND,
   color,
 });
 
 /**
  * Sets the text color of the navigator.
- * @param {string} color The navigator's new text color.
+ * @param {string} color The nexttext color.
  * @returns {Object} The action object.
  */
-export const setTextColor = color => ({
+export const setNavigatorTextColor = color => ({
   type: SET_NAVIGATOR_COLOR,
   color,
-});
-
-/**
- * Sets the navigator search string.
- * @param {string} query The search string.
- * @returns {Object} The action object.
- */
-export const setSearchPhrase = query => ({
-  type: SET_NAVIGATOR_SEARCH_QUERY,
-  query,
-});
-
-/**
- * Creates the dispatched SET_FILTER_OPENED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterOpened = () => ({
-  type: SET_FILTER_OPENED,
-});
-
-/**
- * Creates the dispatched SET_FILTER_CLOSED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterClosed = () => ({
-  type: SET_FILTER_CLOSED,
-});
-
-/**
- * Creates the dispatched SET_FILTER_ATTRIBUTE_OPENED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterAttributeOpened = () => ({
-  type: SET_FILTER_ATTRIBUTE_OPENED,
-});
-
-/**
- * Creates the dispatched SET_FILTER_ATTRIBUTE_CLOSED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterAttributeClosed = () => ({
-  type: SET_FILTER_ATTRIBUTE_CLOSED,
-});
-
-/**
- * Enables the navigators icon shadows.
- * @returns {Object} The action object.
- */
-export const enableIconShadow = () => ({
-  type: SET_ICON_SHADOW_ENABLED,
-});
-
-/**
- * Disables the navigators icon shadows.
- * @returns {Object} The action object.
- */
-export const disableIconShadow = () => ({
-  type: SET_ICON_SHADOW_DISABLED,
-});
-
-/**
- * Enables the navigator search.
- * @returns {Object} The action object.
- */
-export const enableSearch = () => ({
-  type: SET_SEARCH_ENABLED,
-});
-
-/**
- * Disables the navigator search.
- * @returns {Object} The action object.
- */
-export const disableSearch = () => ({
-  type: SET_SEARCH_DISABLED,
-});
-
-/**
- * Enables the navigator title.
- * @returns {Object} The action object.
- */
-export const enableTitle = () => ({
-  type: SET_TITLE_ENABLED,
-});
-
-/**
- * Disables the navigator title
- * @returns {Object} The action object.
- */
-export const disableTitle = () => ({
-  type: SET_TITLE_DISABLED,
-});
-
-/**
- * Creates the SET_NAVIGATOR_ENABLED redux action object.
- * @returns {Object} The action object.
- */
-export const enable = () => ({
-  type: SET_NAVIGATOR_ENABLED,
-});
-
-/**
- * Creates the SET_NAVIGATOR_DISABLED redux action object.
- * @returns {Object} The action object.
- */
-export const disable = () => ({
-  type: SET_NAVIGATOR_DISABLED,
-});
-
-/**
- * Creates the ENABLE_VIEW_TRACKING redux action object.
- * @returns {Object} The action object.
- */
-export const enableViewTracking = () => ({
-  type: ENABLE_VIEW_TRACKING,
-});
-
-/**
- * Creates the DISABLE_VIEW_TRACKING redux action object.
- * @returns {Object} The action object.
- */
-export const disableViewTracking = () => ({
-  type: DISABLE_VIEW_TRACKING,
 });

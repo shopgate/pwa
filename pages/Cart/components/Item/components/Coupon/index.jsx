@@ -31,13 +31,13 @@ class Coupon extends Component {
     deleteCoupon: PropTypes.func,
   };
 
-  static defaultProps = {
-    deleteCoupon: () => {},
-  };
-
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
+  };
+
+  static defaultProps = {
+    deleteCoupon: () => {},
   };
 
   /**

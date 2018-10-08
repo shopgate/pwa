@@ -1,12 +1,12 @@
+// eslint-disable-next-line spaced-comment
 /// <reference types="Cypress" />
-
 import els from '../../elements/de';
 
 describe('AndroidGMDTest filter page', () => {
   it('should check for price range slider', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory)
+    cy.get(els.allProductCategory).first()
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -29,12 +29,8 @@ describe('AndroidGMDTest filter page', () => {
       .click();
     cy.get(els.filterAttributeManufacturer1)
       .should('be.visible')
+      .first()
       .click();
-  });
-
-  it('should check for clear all button', () => {
-    cy.get(els.clearAllButton)
-      .should('be.visible');
   });
 
   it('should check for filter aplly button', () => {

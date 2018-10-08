@@ -13,379 +13,408 @@ exports[`<Header /> should render empty 1`] = `
     }
   }
 >
-  <Header
+  <Connect(Header)
+    productId="foo"
     rating={
       Object {
         "average": 0,
         "count": 0,
       }
     }
-    withTopGap={false}
   >
-    <div
-      className="css-1ppx0ok"
-    >
-      <Connect(AverageRating)
-        rating={
-          Object {
-            "average": 0,
-            "count": 0,
-          }
+    <Header
+      dispatch={[Function]}
+      productId="foo"
+      rating={
+        Object {
+          "average": 0,
+          "count": 0,
         }
+      }
+      withTopGap={false}
+    >
+      <NoReviews
+        productId="foo"
       >
-        <AverageRating
-          dispatch={[Function]}
-          productId="foo"
-          rating={
+        <div
+          className={
             Object {
-              "average": 0,
-              "count": 0,
+              "data-css-1ppx0ok": "",
             }
           }
         >
-          <Link
-            className="css-1us3hnd"
-            data-test-id="ratedStarsAverage"
-            disabled={false}
-            href="/item/666f6f/write_review"
-            itemProp="item"
-            itemScope={true}
-            itemType="http://schema.org/Review"
-            tagName="a"
-          >
-            <div
-              aria-hidden={true}
-              className="css-c6ki83 css-1us3hnd"
-              data-test-id="link: /item/666f6f/write_review"
-              onClick={[Function]}
-              role="link"
-            >
-              <RatingStars
-                className=""
-                display="large"
-                isSelectable={false}
-                onSelection={[Function]}
-                value={0}
-              >
-                <div
-                  aria-label="reviews.rating_stars"
-                  className="css-13azwyo "
-                  data-test-id="ratedStars: 0"
-                >
-                  <div
-                    className="css-4s85e9"
-                  >
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="1"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="2"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="3"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="4"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="5"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                  </div>
-                  <div
-                    className="css-16y9zin"
-                  />
-                </div>
-              </RatingStars>
-              <RatingCount
-                count={0}
-                prominent={false}
-              />
-            </div>
-          </Link>
-        </AverageRating>
-      </Connect(AverageRating)>
-      <div
-        className="css-108dizf"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          string="reviews.no_reviews"
-        >
-          <span
-            className=""
-          >
-            reviews.no_reviews
-          </span>
-        </Translate>
-        <Connect(WriteReviewLink)>
-          <WriteReviewLink
-            dispatch={[Function]}
+          <AverageRating
+            average={0}
+            count={0}
             productId="foo"
           >
-            <div
-              data-test-id="writeReview"
+            <Connect(Link)
+              className="css-1us3hnd"
+              data-test-id="ratedStarsAverage"
+              disabled={false}
+              href="/item/666f6f/write_review"
+              itemProp="item"
+              itemScope={true}
+              itemType="http://schema.org/Review"
+              tagName="a"
             >
-              <ButtonLink
+              <Link
+                className="css-1us3hnd"
+                data-test-id="ratedStarsAverage"
+                disabled={false}
+                historyPush={[Function]}
+                historyReplace={[Function]}
                 href="/item/666f6f/write_review"
-                noGap={true}
+                itemProp="item"
+                itemScope={true}
+                itemType="http://schema.org/Review"
+                replace={false}
+                state={Object {}}
+                tag="div"
+                tagName="a"
               >
-                <ActionButton
-                  className=""
-                  disabled={false}
-                  flat={true}
-                  loading={false}
-                  noGap={true}
+                <div
+                  className="css-c6ki83 css-1us3hnd"
+                  data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId={null}
-                  type="secondary"
-                  wrapContent={true}
+                  role="link"
                 >
-                  <div
-                    className="css-1yv2jt6"
-                    data-test-id={null}
+                  <RatingStars
+                    className=""
+                    display="large"
+                    isSelectable={false}
+                    onSelection={[Function]}
+                    value={0}
                   >
-                    <RippleButton
+                    <div
+                      aria-label="reviews.rating_stars"
+                      className="css-13azwyo "
+                      data-test-id="ratedStars: 0"
+                    >
+                      <div
+                        className="css-4s85e9"
+                      >
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="1"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="2"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="3"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="4"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="5"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                      </div>
+                      <div
+                        className="css-16y9zin"
+                      />
+                    </div>
+                  </RatingStars>
+                  <RatingCount
+                    count={0}
+                    prominent={false}
+                  />
+                </div>
+              </Link>
+            </Connect(Link)>
+          </AverageRating>
+          <div
+            className={
+              Object {
+                "data-css-108dizf": "",
+              }
+            }
+          >
+            <Translate
+              className=""
+              params={Object {}}
+              string="reviews.no_reviews"
+            >
+              <span
+                className=""
+              >
+                reviews.no_reviews
+              </span>
+            </Translate>
+            <WriteReviewLink
+              productId="foo"
+            >
+              <div
+                data-test-id="writeReview"
+              >
+                <Connect(ButtonLink)
+                  href="/item/666f6f/write_review"
+                  noGap={true}
+                >
+                  <ButtonLink
+                    href="/item/666f6f/write_review"
+                    navigate={[Function]}
+                    noGap={true}
+                  >
+                    <ActionButton
                       className=""
                       disabled={false}
                       flat={true}
+                      loading={false}
+                      noGap={true}
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
-                      testId="Button"
+                      testId={null}
                       type="secondary"
                       wrapContent={true}
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={true}
-                        onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={false}
+                      <div
+                        className="css-1yv2jt6"
+                        data-test-id={null}
                       >
-                        <Button
-                          className="css-dh0pju "
+                        <RippleButton
+                          className=""
                           disabled={false}
+                          flat={true}
                           onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
                           testId="Button"
+                          type="secondary"
+                          wrapContent={true}
                         >
-                          <button
-                            className="css-dh0pju  css-1rn65c0"
-                            data-test-id="Button"
+                          <Button
+                            className=""
                             disabled={false}
+                            flat={true}
                             onClick={[Function]}
+                            testId="Button"
+                            type="secondary"
+                            wrapContent={false}
                           >
-                            <Ripple
-                              className="css-8s1fw2 "
-                              color="#000"
+                            <Button
+                              className="css-dh0pju "
                               disabled={false}
-                              fill={true}
-                              onComplete={[Function]}
-                              overflow={false}
-                              size={null}
+                              onClick={[Function]}
+                              testId="Button"
                             >
-                              <div
-                                aria-hidden={true}
-                                className="css-8s1fw2 "
-                                data-test-id="Ripple"
+                              <button
+                                className="css-dh0pju  css-1rn65c0"
+                                data-test-id="Button"
+                                disabled={false}
                                 onClick={[Function]}
-                                style={null}
                               >
-                                <Translate
-                                  className=""
-                                  params={Object {}}
-                                  string="reviews.button_add"
+                                <Ripple
+                                  className="css-8s1fw2 "
+                                  color="#000"
+                                  disabled={false}
+                                  fill={true}
+                                  onClick={[Function]}
+                                  onComplete={[Function]}
+                                  overflow={false}
+                                  size={null}
                                 >
-                                  <span
-                                    className=""
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8s1fw2 "
+                                    data-test-id="Ripple"
+                                    onClick={[Function]}
+                                    style={null}
                                   >
-                                    reviews.button_add
-                                  </span>
-                                </Translate>
-                              </div>
-                            </Ripple>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </div>
-                </ActionButton>
-              </ButtonLink>
-            </div>
-          </WriteReviewLink>
-        </Connect(WriteReviewLink)>
-      </div>
-    </div>
-  </Header>
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="reviews.button_add"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        reviews.button_add
+                                      </span>
+                                    </Translate>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
+                  </ButtonLink>
+                </Connect(ButtonLink)>
+              </div>
+            </WriteReviewLink>
+          </div>
+        </div>
+      </NoReviews>
+    </Header>
+  </Connect(Header)>
 </Provider>
 `;
 
@@ -402,525 +431,554 @@ exports[`<Header /> should render rating summary 1`] = `
     }
   }
 >
-  <Header
+  <Connect(Header)
+    productId="foo"
     rating={
       Object {
         "average": 50,
         "count": 4,
       }
     }
-    withTopGap={false}
   >
-    <div
-      className="css-1ppx0ok"
-      id="reviewsExcerpt"
-    >
-      <Connect(AverageRating)
-        rating={
-          Object {
-            "average": 50,
-            "count": 4,
-          }
+    <Header
+      dispatch={[Function]}
+      productId="foo"
+      rating={
+        Object {
+          "average": 50,
+          "count": 4,
         }
+      }
+      withTopGap={false}
+    >
+      <ReviewsExcerpt
+        average={50}
+        count={4}
+        productId="foo"
+        withTopGap={false}
       >
-        <AverageRating
-          dispatch={[Function]}
-          productId="foo"
-          rating={
-            Object {
-              "average": 50,
-              "count": 4,
-            }
-          }
+        <div
+          className="css-1ppx0ok"
+          id="reviewsExcerpt"
         >
-          <Link
-            className="css-1us3hnd"
-            data-test-id="ratedStarsAverage"
-            disabled={false}
-            href="/item/666f6f/write_review"
-            itemProp="item"
-            itemScope={true}
-            itemType="http://schema.org/Review"
-            tagName="a"
-          >
-            <div
-              aria-hidden={true}
-              className="css-c6ki83 css-1us3hnd"
-              data-test-id="link: /item/666f6f/write_review"
-              onClick={[Function]}
-              role="link"
-            >
-              <RatingStars
-                className=""
-                display="large"
-                isSelectable={false}
-                onSelection={[Function]}
-                value={50}
-              >
-                <div
-                  aria-label="reviews.rating_stars"
-                  className="css-13azwyo "
-                  data-test-id="ratedStars: 2.5"
-                >
-                  <div
-                    className="css-4s85e9"
-                  >
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="1"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="2"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="3"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="4"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="5"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                  </div>
-                  <div
-                    className="css-16y9zin"
-                  >
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="6"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="7"
-                    >
-                      <Star
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </Star>
-                    </div>
-                    <div
-                      className="css-ntfpo9 css-q4owmg"
-                      key="2"
-                    >
-                      <StarHalfIcon
-                        className=""
-                        color={null}
-                        size="2.3em"
-                        viewBox="0 0 24 24"
-                      >
-                        <Icon
-                          className=""
-                          color={null}
-                          content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
-                          size="2.3em"
-                          viewBox="0 0 24 24"
-                        >
-                          <svg
-                            className="css-yys9hb "
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
-                              }
-                            }
-                            style={
-                              Object {
-                                "fill": null,
-                                "fontSize": "2.3em",
-                              }
-                            }
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          />
-                        </Icon>
-                      </StarHalfIcon>
-                    </div>
-                  </div>
-                </div>
-              </RatingStars>
-              <RatingCount
-                count={4}
-                prominent={false}
-              >
-                <Translate
-                  className="css-a7xi3l"
-                  params={
-                    Object {
-                      "count": 4,
-                    }
-                  }
-                  string="reviews.review_count"
-                >
-                  <span
-                    className="css-a7xi3l"
-                  >
-                    reviews.review_count
-                  </span>
-                </Translate>
-              </RatingCount>
-            </div>
-          </Link>
-        </AverageRating>
-      </Connect(AverageRating)>
-      <div
-        className="css-1anve4d"
-      >
-        <Translate
-          className="css-1nftllw"
-          params={Object {}}
-          string="reviews.rating"
-        >
-          <span
-            className="css-1nftllw"
-          >
-            reviews.rating
-            <RatingNumber
-              className="css-shoywj"
-              key=".0"
-              rating={50}
-            >
-              <FormatNumber
-                className="css-shoywj"
-                fractions={2}
-                number={2.5}
-              >
-                <span
-                  className="css-shoywj"
-                >
-                  n
-                </span>
-              </FormatNumber>
-            </RatingNumber>
-          </span>
-        </Translate>
-        <Connect(WriteReviewLink)>
-          <WriteReviewLink
-            dispatch={[Function]}
+          <AverageRating
+            average={50}
+            count={4}
             productId="foo"
           >
-            <div
-              data-test-id="writeReview"
+            <Connect(Link)
+              className="css-1us3hnd"
+              data-test-id="ratedStarsAverage"
+              disabled={false}
+              href="/item/666f6f/write_review"
+              itemProp="item"
+              itemScope={true}
+              itemType="http://schema.org/Review"
+              tagName="a"
             >
-              <ButtonLink
+              <Link
+                className="css-1us3hnd"
+                data-test-id="ratedStarsAverage"
+                disabled={false}
+                historyPush={[Function]}
+                historyReplace={[Function]}
                 href="/item/666f6f/write_review"
-                noGap={true}
+                itemProp="item"
+                itemScope={true}
+                itemType="http://schema.org/Review"
+                replace={false}
+                state={Object {}}
+                tag="div"
+                tagName="a"
               >
-                <ActionButton
-                  className=""
-                  disabled={false}
-                  flat={true}
-                  loading={false}
-                  noGap={true}
+                <div
+                  className="css-c6ki83 css-1us3hnd"
+                  data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId={null}
-                  type="secondary"
-                  wrapContent={true}
+                  role="link"
                 >
-                  <div
-                    className="css-1yv2jt6"
-                    data-test-id={null}
+                  <RatingStars
+                    className=""
+                    display="large"
+                    isSelectable={false}
+                    onSelection={[Function]}
+                    value={50}
                   >
-                    <RippleButton
+                    <div
+                      aria-label="reviews.rating_stars"
+                      className="css-13azwyo "
+                      data-test-id="ratedStars: 2.5"
+                    >
+                      <div
+                        className="css-4s85e9"
+                      >
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="1"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="2"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="3"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="4"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="5"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                      </div>
+                      <div
+                        className="css-16y9zin"
+                      >
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="6"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="7"
+                        >
+                          <Star
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </Star>
+                        </div>
+                        <div
+                          className="css-ntfpo9 css-q4owmg"
+                          key="2"
+                        >
+                          <StarHalfIcon
+                            className=""
+                            color={null}
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <Icon
+                              className=""
+                              color={null}
+                              content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
+  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
+  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
+                              size="2.3em"
+                              viewBox="0 0 24 24"
+                            >
+                              <svg
+                                className="css-yys9hb "
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
+  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
+  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "fill": null,
+                                    "fontSize": "2.3em",
+                                  }
+                                }
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              />
+                            </Icon>
+                          </StarHalfIcon>
+                        </div>
+                      </div>
+                    </div>
+                  </RatingStars>
+                  <RatingCount
+                    count={4}
+                    prominent={false}
+                  >
+                    <Translate
+                      className="css-a7xi3l"
+                      params={
+                        Object {
+                          "count": 4,
+                          "prominent": false,
+                        }
+                      }
+                      string="reviews.review_count"
+                    >
+                      <span
+                        className="css-a7xi3l"
+                      >
+                        reviews.review_count
+                      </span>
+                    </Translate>
+                  </RatingCount>
+                </div>
+              </Link>
+            </Connect(Link)>
+          </AverageRating>
+          <div
+            className={
+              Object {
+                "data-css-1anve4d": "",
+              }
+            }
+          >
+            <Translate
+              className="css-1nftllw"
+              params={Object {}}
+              string="reviews.rating"
+            >
+              <span
+                className="css-1nftllw"
+              >
+                reviews.rating
+                <RatingNumber
+                  className="css-shoywj"
+                  key=".0"
+                  rating={50}
+                >
+                  <FormatNumber
+                    className="css-shoywj"
+                    fractions={2}
+                    number={2.5}
+                  >
+                    <span
+                      className="css-shoywj"
+                    >
+                      n
+                    </span>
+                  </FormatNumber>
+                </RatingNumber>
+              </span>
+            </Translate>
+            <WriteReviewLink
+              productId="foo"
+            >
+              <div
+                data-test-id="writeReview"
+              >
+                <Connect(ButtonLink)
+                  href="/item/666f6f/write_review"
+                  noGap={true}
+                >
+                  <ButtonLink
+                    href="/item/666f6f/write_review"
+                    navigate={[Function]}
+                    noGap={true}
+                  >
+                    <ActionButton
                       className=""
                       disabled={false}
                       flat={true}
+                      loading={false}
+                      noGap={true}
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
-                      testId="Button"
+                      testId={null}
                       type="secondary"
                       wrapContent={true}
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={true}
-                        onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={false}
+                      <div
+                        className="css-1yv2jt6"
+                        data-test-id={null}
                       >
-                        <Button
-                          className="css-dh0pju "
+                        <RippleButton
+                          className=""
                           disabled={false}
+                          flat={true}
                           onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
                           testId="Button"
+                          type="secondary"
+                          wrapContent={true}
                         >
-                          <button
-                            className="css-dh0pju  css-1rn65c0"
-                            data-test-id="Button"
+                          <Button
+                            className=""
                             disabled={false}
+                            flat={true}
                             onClick={[Function]}
+                            testId="Button"
+                            type="secondary"
+                            wrapContent={false}
                           >
-                            <Ripple
-                              className="css-8s1fw2 "
-                              color="#000"
+                            <Button
+                              className="css-dh0pju "
                               disabled={false}
-                              fill={true}
-                              onComplete={[Function]}
-                              overflow={false}
-                              size={null}
+                              onClick={[Function]}
+                              testId="Button"
                             >
-                              <div
-                                aria-hidden={true}
-                                className="css-8s1fw2 "
-                                data-test-id="Ripple"
+                              <button
+                                className="css-dh0pju  css-1rn65c0"
+                                data-test-id="Button"
+                                disabled={false}
                                 onClick={[Function]}
-                                style={null}
                               >
-                                <Translate
-                                  className=""
-                                  params={Object {}}
-                                  string="reviews.button_add"
+                                <Ripple
+                                  className="css-8s1fw2 "
+                                  color="#000"
+                                  disabled={false}
+                                  fill={true}
+                                  onClick={[Function]}
+                                  onComplete={[Function]}
+                                  overflow={false}
+                                  size={null}
                                 >
-                                  <span
-                                    className=""
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8s1fw2 "
+                                    data-test-id="Ripple"
+                                    onClick={[Function]}
+                                    style={null}
                                   >
-                                    reviews.button_add
-                                  </span>
-                                </Translate>
-                              </div>
-                            </Ripple>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </div>
-                </ActionButton>
-              </ButtonLink>
-            </div>
-          </WriteReviewLink>
-        </Connect(WriteReviewLink)>
-      </div>
-    </div>
-  </Header>
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="reviews.button_add"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        reviews.button_add
+                                      </span>
+                                    </Translate>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
+                  </ButtonLink>
+                </Connect(ButtonLink)>
+              </div>
+            </WriteReviewLink>
+          </div>
+        </div>
+      </ReviewsExcerpt>
+    </Header>
+  </Connect(Header)>
 </Provider>
 `;

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 
 /**
  * Maps the contents of the state to the component props.
@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  cancel: () => dispatch(goBackHistory()),
+  cancel: () => dispatch(historyPop()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

@@ -4,12 +4,12 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import styles from './style';
 
 /**
- * The Product Grid Layout component.
+ * The product grid layout component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @returns {JSX}
  */
 const Layout = ({ children }) => (
-  <Grid wrap className={styles.container} itemScope itemType="http://schema.org/ItemList" data-test-id="productGrid">
+  <Grid wrap className={styles} data-test-id="productGrid">
     {children}
   </Grid>
 );

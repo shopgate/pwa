@@ -34,11 +34,9 @@
       "price_desc": "Price: High to Low",
       "price_asc": "Price: Low to High"
     },
-    "apply": "Apply",
+    "apply": "Done",
     "more": "more",
-    "clear": "Clear",
-    "clear_all": "Clear all",
-    "view_all": "View all"
+    "reset": "Reset"
   },
   "price": {
     "from": "From {price}",
@@ -127,7 +125,7 @@
     "payment": "Payment methods",
     "terms": "Terms",
     "privacy": "Privacy policy",
-    "welcome_message": "Welcome {name}",
+    "welcome_message": "Welcome, {name}",
     "return_policy": "Return policy",
     "logout": "Sign out",
     "menuSubHeader": {

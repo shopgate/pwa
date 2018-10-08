@@ -10,35 +10,33 @@ import {
   mockedStoreWithUnknownShipping,
 } from './mock';
 
+const mockedStore = configureStore();
+
 describe('Shipping label', () => {
-  const mockedStore = configureStore();
+  /**
+   * Creates connected the component
+   * @param {Object} state The mocked redux state
+   * @return {ReactWrapper}
+   */
+  const createComponent = state => (mount(
+    <Provider store={mockedStore(state)}>
+      <Shipping productId="fakeId" />
+    </Provider>,
+    mockRenderOptions
+  ));
+
   it('should render shipping price', () => {
-    const component = mount(
-      <Provider store={mockedStore(mockedStoreWithShippingPrice)}>
-        <Shipping />
-      </Provider>,
-      mockRenderOptions
-    );
+    const component = createComponent(mockedStoreWithShippingPrice);
     expect(component).toMatchSnapshot();
     expect(component.html().includes('shipping.cost')).toBe(true);
   });
   it('should render free shipping', () => {
-    const component = mount(
-      <Provider store={mockedStore(mockedStoreWithFreeShipping)}>
-        <Shipping />
-      </Provider>,
-      mockRenderOptions
-    );
+    const component = createComponent(mockedStoreWithFreeShipping);
     expect(component).toMatchSnapshot();
     expect(component.html().includes('shipping.free')).toBe(true);
   });
   it('should not render when shipping is unknown', () => {
-    const component = mount(
-      <Provider store={mockedStore(mockedStoreWithUnknownShipping)}>
-        <Shipping />
-      </Provider>,
-      mockRenderOptions
-    );
+    const component = createComponent(mockedStoreWithUnknownShipping);
     expect(component.html()).toBe(null);
   });
 });

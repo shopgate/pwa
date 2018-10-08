@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -42,7 +42,6 @@ const ProductCard = ({
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
-    {/* <FavoritesButton className={styles.wishlist} productId={product.id} /> */}
     {(!(hidePrice && hideRating)) && (
       <div className={styles.details}>
         {!hideRating && product.rating && product.rating.average > 0 && (

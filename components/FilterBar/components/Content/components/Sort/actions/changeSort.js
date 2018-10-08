@@ -1,7 +1,5 @@
 import changeSortOrder from '@shopgate/pwa-common-commerce/product/actions/changeSortOrder';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
-import getProducts from 'Pages/Category/components/Products/actions/getProducts';
-import setViewTop from 'Components/View/action-creators/setViewTop';
 
 /**
  * Changes the sort order of the products.
@@ -18,12 +16,6 @@ const changeSort = newSort => (dispatch, getState) => {
 
   // Change the sort order
   dispatch(changeSortOrder(newSort));
-
-  // Fetch new products.
-  dispatch(getProducts());
-
-  // Reset the scroll top position of the page.
-  dispatch(setViewTop(true));
 };
 
 export default changeSort;

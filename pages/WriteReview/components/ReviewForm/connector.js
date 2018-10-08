@@ -1,22 +1,21 @@
 import { connect } from 'react-redux';
+import { getUserDisplayName } from '@shopgate/pwa-common/selectors/user';
 import submitReview from '@shopgate/pwa-common-commerce/reviews/actions/submitReview';
 import {
-  getDefaultAuthorName,
   getUserReviewForProduct,
   getUserReviewFirstFetchState,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  authorName: getDefaultAuthorName(state),
-  productId: getCurrentBaseProductId(state),
-  review: getUserReviewForProduct(state),
-  isLoadingUserReview: getUserReviewFirstFetchState(state),
+const mapStateToProps = (state, props) => ({
+  authorName: getUserDisplayName(state),
+  review: getUserReviewForProduct(state, props),
+  isLoadingUserReview: getUserReviewFirstFetchState(state, props),
 });
 
 /**

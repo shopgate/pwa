@@ -2,13 +2,14 @@
 
 exports[`<List /> should not render invalid children 1`] = `
 <List
+  className={null}
   hasImages={false}
 >
   <List
-    className=""
+    className={null}
   >
     <ul
-      className="css-gkw1j5 "
+      className={null}
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n"
@@ -27,6 +28,7 @@ exports[`<List /> should not render invalid children 1`] = `
               isDisabled={false}
               isSelected={false}
               link={null}
+              linkState={null}
               onClick={null}
               rightComponent={null}
               testId={null}
@@ -65,19 +67,21 @@ exports[`<List /> should not render invalid children 1`] = `
 
 exports[`<List /> should not render without children 1`] = `
 <List
+  className={null}
   hasImages={false}
 />
 `;
 
 exports[`<List /> should render a child and add styles for list items with images 1`] = `
 <List
+  className={null}
   hasImages={true}
 >
   <List
-    className=""
+    className={null}
   >
     <ul
-      className="css-gkw1j5 "
+      className={null}
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n css-1brrprg"
@@ -96,6 +100,7 @@ exports[`<List /> should render a child and add styles for list items with image
               isDisabled={false}
               isSelected={false}
               link={null}
+              linkState={null}
               onClick={null}
               rightComponent={null}
               testId={null}
@@ -134,13 +139,14 @@ exports[`<List /> should render a child and add styles for list items with image
 
 exports[`<List /> should render with two children 1`] = `
 <List
+  className={null}
   hasImages={false}
 >
   <List
-    className=""
+    className={null}
   >
     <ul
-      className="css-gkw1j5 "
+      className={null}
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n"
@@ -159,6 +165,7 @@ exports[`<List /> should render with two children 1`] = `
               isDisabled={false}
               isSelected={false}
               link={null}
+              linkState={null}
               onClick={null}
               rightComponent={null}
               testId={null}
@@ -207,6 +214,7 @@ exports[`<List /> should render with two children 1`] = `
               isDisabled={false}
               isSelected={false}
               link={null}
+              linkState={null}
               onClick={null}
               rightComponent={null}
               testId={null}

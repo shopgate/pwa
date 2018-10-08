@@ -3,6 +3,7 @@
 exports[`<ProductDescription /> should not render if no data is available 1`] = `
 <Description
   html={null}
+  navigate={[Function]}
   store={
     Object {
       "clearActions": [Function],
@@ -14,88 +15,102 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
     }
   }
 >
-  <div
-    className="css-1mfzgeo"
+  <Portal
+    name="product.description.before"
+    props={null}
+  />
+  <Portal
+    name="product.description"
+    props={null}
   >
     <div
-      className="css-10lhp8m"
+      className="css-1yk42h8"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string="product.description_heading"
+      <div
+        className="css-10lhp8m"
       >
-        <span
+        <Translate
           className=""
+          params={Object {}}
+          string="product.description_heading"
         >
-          product.description_heading
-        </span>
-      </Translate>
-    </div>
-    <PlaceholderParagraph
-      className="css-1k8v9u5"
-      lines={3}
-      ready={false}
-    >
-      <div>
-        <PlaceholderLabel
-          className="css-1k8v9u5"
-          key="0"
-          ready={false}
-          style={
-            Object {
-              "width": "95%",
-            }
-          }
-        >
-          <div
-            className="css-qd8qpa css-1k8v9u5"
+          <span
+            className=""
+          >
+            product.description_heading
+          </span>
+        </Translate>
+      </div>
+      <PlaceholderParagraph
+        className="css-1k8v9u5"
+        lines={3}
+        ready={false}
+      >
+        <div>
+          <PlaceholderLabel
+            className="css-1k8v9u5"
+            key="0"
+            ready={false}
             style={
               Object {
                 "width": "95%",
               }
             }
-          />
-        </PlaceholderLabel>
-        <PlaceholderLabel
-          className="css-1k8v9u5"
-          key="1"
-          ready={false}
-          style={null}
-        >
-          <div
-            className="css-qd8qpa css-1k8v9u5"
+          >
+            <div
+              className="css-qd8qpa css-1k8v9u5"
+              style={
+                Object {
+                  "width": "95%",
+                }
+              }
+            />
+          </PlaceholderLabel>
+          <PlaceholderLabel
+            className="css-1k8v9u5"
+            key="1"
+            ready={false}
             style={null}
-          />
-        </PlaceholderLabel>
-        <PlaceholderLabel
-          className="css-1k8v9u5"
-          key="2"
-          ready={false}
-          style={
-            Object {
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="css-qd8qpa css-1k8v9u5"
+          >
+            <div
+              className="css-qd8qpa css-1k8v9u5"
+              style={null}
+            />
+          </PlaceholderLabel>
+          <PlaceholderLabel
+            className="css-1k8v9u5"
+            key="2"
+            ready={false}
             style={
               Object {
                 "width": "100%",
               }
             }
-          />
-        </PlaceholderLabel>
-      </div>
-    </PlaceholderParagraph>
-  </div>
+          >
+            <div
+              className="css-qd8qpa css-1k8v9u5"
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            />
+          </PlaceholderLabel>
+        </div>
+      </PlaceholderParagraph>
+    </div>
+  </Portal>
+  <Portal
+    name="product.description.after"
+    props={null}
+  />
 </Description>
 `;
 
 exports[`<ProductDescription /> should render description if data is available 1`] = `
 <Description
   html="<h1>foo</h1>"
+  navigate={[Function]}
   store={
     Object {
       "clearActions": [Function],
@@ -107,51 +122,65 @@ exports[`<ProductDescription /> should render description if data is available 1
     }
   }
 >
-  <div
-    className="css-1mfzgeo"
+  <Portal
+    name="product.description.before"
+    props={null}
+  />
+  <Portal
+    name="product.description"
+    props={null}
   >
     <div
-      className="css-10lhp8m"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string="product.description_heading"
-      >
-        <span
-          className=""
-        >
-          product.description_heading
-        </span>
-      </Translate>
-    </div>
-    <PlaceholderParagraph
-      className="css-1k8v9u5"
-      lines={3}
-      ready={true}
+      className="css-1yk42h8"
     >
       <div
-        className="css-jo3g31"
-        data-test-id="<h1>foo</h1>"
+        className="css-10lhp8m"
       >
-        <HtmlSanitizer
-          decode={false}
-          settings={
-            Object {
-              "html": "<h1>foo</h1>",
-            }
-          }
+        <Translate
+          className=""
+          params={Object {}}
+          string="product.description_heading"
         >
-          <div
-            dangerouslySetInnerHTML={
+          <span
+            className=""
+          >
+            product.description_heading
+          </span>
+        </Translate>
+      </div>
+      <PlaceholderParagraph
+        className="css-1k8v9u5"
+        lines={3}
+        ready={true}
+      >
+        <div
+          className="css-jo3g31"
+          data-test-id="description"
+        >
+          <HtmlSanitizer
+            decode={false}
+            settings={
               Object {
-                "__html": "<h1>foo</h1>",
+                "handleClick": [Function],
+                "html": "<h1>foo</h1>",
               }
             }
-          />
-        </HtmlSanitizer>
-      </div>
-    </PlaceholderParagraph>
-  </div>
+          >
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<h1>foo</h1>",
+                }
+              }
+            />
+          </HtmlSanitizer>
+        </div>
+      </PlaceholderParagraph>
+    </div>
+  </Portal>
+  <Portal
+    name="product.description.after"
+    props={null}
+  />
 </Description>
 `;
