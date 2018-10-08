@@ -10,8 +10,7 @@ const routeMap = {
 };
 
 const viewMap = {
-  ref: 'ref',
-  setTop: 'setTop',
+  ref: 'ref.current',
 };
 
 /**
@@ -21,11 +20,10 @@ const CategoryBar = () => (
   <Consume context={RouteContext} props={routeMap}>
     {({ categoryId, filters }) => (
       <Consume context={ViewContext} props={viewMap}>
-        {({ ref, setTop }) => (
+        {({ ref }) => (
           <FilterBar
             categoryId={categoryId}
             filters={filters}
-            setTop={setTop}
             viewRef={ref}
           />
         )}

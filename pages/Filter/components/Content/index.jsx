@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
@@ -11,7 +10,7 @@ import {
   FILTER_PRICE_RANGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/filter/constants/Portals';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
-import { PORTAL_NAVIGATOR_BUTTON } from 'Components/Navigator/constants';
+import { CloseBar } from 'Components/AppBar/presets';
 import PriceSlider from './components/PriceSlider';
 import Selector from './components/Selector';
 import ApplyButton from './components/ApplyButton';
@@ -42,7 +41,6 @@ class FilterContent extends PureComponent {
     super(props);
 
     this.initialFilters = buildInitialFilters(props.filters, props.activeFilters);
-    this.navigatorPosition = document.getElementById(PORTAL_NAVIGATOR_BUTTON);
     this.state = {
       currentFilters: props.activeFilters || {},
       filters: {},
@@ -196,8 +194,11 @@ class FilterContent extends PureComponent {
       return null;
     }
 
+    const right = <ApplyButton active={this.hasChanged} onClick={this.save} />;
+
     return (
       <Fragment>
+        <CloseBar title="titles.filter" right={right} />
         {filters.map((filter) => {
           const portalProps = { filter };
           const value = this.getFilterValue(filter.id);
@@ -234,10 +235,6 @@ class FilterContent extends PureComponent {
           );
         })}
         <ResetButton active={this.canReset} onClick={this.reset} />
-        {ReactDOM.createPortal(
-          <ApplyButton active={this.hasChanged} onClick={this.save} />,
-          this.navigatorPosition
-        )}
       </Fragment>
     );
   }
