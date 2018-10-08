@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductById } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Maps the current application state to the component props.
@@ -8,7 +8,7 @@ import { getProductById } from '@shopgate/pwa-common-commerce/product/selectors/
  * @return {Object} The populated component props.
  */
 const mapStateToProps = (state, props) => ({
-  product: getProductById(state, props.productId).productData || null,
+  product: getProduct(state, props),
 });
 
 export default connect(mapStateToProps);
