@@ -1,3 +1,5 @@
+import MobileDetect from 'mobile-detect';
+import detector from 'detector';
 import { logger } from './index';
 import { getWebStorageEntry } from '../commands/webStorage';
 
@@ -5,10 +7,26 @@ const MODE_AT_MOST = 'at_most';
 const MODE_AT_LEAST = 'at_least';
 
 export const PLATFORM_ANDROID = 'android';
+export const PLATFORM_IOS = 'ios';
 export const MIN_ANDROID_LIB_VERSION = '13.0';
 
 let versions = null;
 let requesting = false;
+
+const md = new MobileDetect(navigator.userAgent);
+export const defaultClientInformation = {
+  libVersion: MIN_ANDROID_LIB_VERSION,
+  appVersion: '5.18.0',
+  codebaseVersion: '5.18.0',
+  type: (!md.tablet() ? 'phone' : 'tablet'),
+  device: {
+    os: {
+      platform: md.is('AndroidOS') ? PLATFORM_ANDROID : PLATFORM_IOS,
+      ver: detector.os.fullVersion,
+    },
+    model: md.is('AndroidOS') ? 'Android' : `iPhone${detector.os.fullVersion}`,
+  },
+};
 
 /**
  * Waits till a passed handler function returns TRUE and resolves.
@@ -191,8 +209,8 @@ const getVersionsFromClientInformation = async () => {
  * @param {string} requiredVersion The required version - 17[|17.0|17.0.0].
  * @return {Promise}
  */
-export const isLibVersionAtLeast = async (requiredVersion) => {
-  const { libVersion } = await getVersionsFromClientInformation();
+export const isLibVersionAtLeast = (requiredVersion) => {
+  const { libVersion } = defaultClientInformation;
   return isVersionAtLeast(requiredVersion, libVersion);
 };
 
@@ -201,8 +219,8 @@ export const isLibVersionAtLeast = async (requiredVersion) => {
  * @param {string} requiredVersion The required version - 17[|17.0|17.0.0].
  * @return {Promise}
  */
-export const isLibVersionAtMost = async (requiredVersion) => {
-  const { libVersion } = await getVersionsFromClientInformation();
+export const isLibVersionAtMost = (requiredVersion) => {
+  const { libVersion } = defaultClientInformation;
   return isVersionAtMost(requiredVersion, libVersion);
 };
 
@@ -211,8 +229,8 @@ export const isLibVersionAtMost = async (requiredVersion) => {
  * @param {string} requiredVersion The required version - 17[|17.0|17.0.0].
  * @return {Promise}
  */
-export const isLibVersion = async (requiredVersion) => {
-  const { libVersion } = await getVersionsFromClientInformation();
+export const isLibVersion = (requiredVersion) => {
+  const { libVersion } = defaultClientInformation;
   return isVersion(requiredVersion, libVersion);
 };
 
@@ -220,8 +238,8 @@ export const isLibVersion = async (requiredVersion) => {
  * Returns the current libVersion.
  * @return {Promise}
  */
-export const getLibVersion = async () => {
-  const { libVersion } = await getVersionsFromClientInformation();
+export const getLibVersion = () => {
+  const { libVersion } = defaultClientInformation;
   return libVersion;
 };
 
