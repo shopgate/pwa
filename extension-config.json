@@ -1,0 +1,50 @@
+{
+  "version": "6.0.0-beta.13",
+  "id": "@shopgate/user-privacy",
+  "configuration": {
+    "isActive": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/has_user_account_deletion?parsed=true",
+        "key": "value"
+      }
+    }
+  },
+  "components": [
+    {
+      "type": "portals",
+      "id": "DeleteAccount",
+      "path": "frontend/DeleteAccount/index.jsx",
+      "target": "nav-menu.logout.after"
+    },
+    {
+      "id": "DeleteAccountSubscribers",
+      "path": "frontend/DeleteAccount/subscribers.js",
+      "type": "subscribers"
+    },
+    {
+      "id": "en-US",
+      "path": "frontend/locale/en-US.json",
+      "type": "translations"
+    },
+    {
+      "id": "de-DE",
+      "path": "frontend/locale/de-DE.json",
+      "type": "translations"
+    },
+    {
+      "id": "fr-FR",
+      "path": "frontend/locale/fr-FR.json",
+      "type": "translations"
+    },
+    {
+      "id": "nl-NL",
+      "path": "frontend/locale/nl-NL.json",
+      "type": "translations"
+    }
+  ]
+}
