@@ -1,61 +1,116 @@
-import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
+import { addFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import {
+  favoritesWillEnter$,
+  favoritesWillRemoveItem$,
+} from '@shopgate/pwa-common-commerce/favorites/streams';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import subscribe from './subscriptions';
 
-jest.mock('./constants', () => ({
-  FAVORITES_SHOW_TOAST_DELAY: 0,
+let mockedPattern;
+jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedPattern }));
+jest.mock('@shopgate/pwa-common/actions/view/setTitle', () => jest.fn().mockReturnValue('setTitle'));
+jest.mock('@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites', () => ({
+  addFavorites: jest.fn().mockReturnValue('addFavorites'),
 }));
+
+jest.useFakeTimers();
+
 describe('Favorites subscriptions', () => {
-  let subscribeMock;
-  let first;
-  beforeAll(() => {
-    subscribeMock = jest.fn();
-  });
-  it('should subscribe', () => {
+  const subscribeMock = jest.fn();
+  let willEnter;
+  let willRemoveItem;
+
+  beforeEach(() => {
+    mockedPattern = FAVORITES_PATH;
+    jest.clearAllMocks();
     subscribe(subscribeMock);
-    expect(subscribeMock.mock.calls.length).toBe(1);
-    [first] = subscribeMock.mock.calls;
-    expect(first[0]).toBe(favoritesWillRemoveItem$);
+    [willEnter, willRemoveItem] = subscribeMock.mock.calls;
+  });
+
+  it('should subscribe', () => {
+    expect(subscribeMock).toHaveBeenCalledTimes(2);
+  });
+
+  describe('favoritesWillEnter$', () => {
+    let stream;
+    let callback;
+    const dispatch = jest.fn();
+
+    beforeEach(() => {
+      [stream, callback] = willEnter;
+    });
+
+    it('should subscribe', () => {
+      expect(subscribeMock).toHaveBeenCalledTimes(2);
+      expect(stream).toBe(favoritesWillEnter$);
+    });
+
+    it('should set the title on enter', () => {
+      callback({ dispatch });
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(setTitle());
+      expect(setTitle).toHaveBeenCalledWith('titles.favorites');
+    });
   });
 
   describe('favoritesWillRemoveItem$', () => {
-    it('should return when currentPath is not favorites page', () => {
-      /**
-       * Get state function.
-       * @returns {Object}
-       */
-      const getState = () => ({
-        history: {
-          pathname: 'foo',
-        },
-      });
-      // Didn't pass dispatch. If won't return early, exception would be thrown.
-      expect(first[1]({ getState })).toBe(undefined);
+    let stream;
+    let callback;
+
+    const action = { productId: 'abc123' };
+    const dispatch = jest.fn();
+    const events = {
+      emit: jest.fn(),
+    };
+
+    beforeEach(() => {
+      [stream, callback] = willRemoveItem;
     });
-    it('should dispatch create toast action', (done) => {
-      /**
-       * Get state function.
-       * @returns {Object}
-       */
-      const getState = () => ({
-        history: {
-          pathname: FAVORITES_PATH,
-        },
-      });
-      const action = {
-        productId: 123,
-      };
-      const dispatch = jest.fn();
-      first[1]({
-        getState,
+
+    it('should subscribe', () => {
+      expect(subscribeMock).toHaveBeenCalledTimes(2);
+      expect(stream).toBe(favoritesWillRemoveItem$);
+    });
+
+    it('should do nothing when not on the favorites page', () => {
+      mockedPattern = '/some/random/path';
+
+      callback({
         action,
         dispatch,
+        events,
       });
-      setTimeout(() => {
-        dispatch.mock.calls[0][0](dispatch);
-        expect(typeof dispatch.mock.calls[1][0] === 'object').toBe(true);
-        done();
-      }, 1);
+
+      expect(events.emit).not.toHaveBeenCalled();
+    });
+
+    it('should show a toast message when on the favorites page', () => {
+      callback({
+        action,
+        dispatch,
+        events,
+      });
+
+      jest.runAllTimers();
+
+      expect(events.emit).toHaveBeenCalledTimes(1);
+      expect(events.emit).toHaveBeenCalledWith(ToastProvider.ADD, {
+        id: 'favorites.removed',
+        message: 'favorites.removed',
+        action: expect.any(Function),
+        actionLabel: 'common.undo',
+      });
+
+      const { action: toastAction } = events.emit.mock.calls[0][1];
+      toastAction();
+
+      expect(addFavorites).toHaveBeenCalledTimes(1);
+      expect(addFavorites).toHaveBeenCalledWith(action.productId, true);
+
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(addFavorites());
     });
   });
 });

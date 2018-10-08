@@ -3,31 +3,45 @@ import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { Placeholder } from '@shopgate/pwa-ui-shared';
+import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import List from 'Components/List';
-import connect from './connector';
+import styles from './style';
 
 /**
- * The category list component.
- * @param {Array} categories The categories to display.
+ * The CategoryList component.
+ * @param {Object} props The component props.
+ * @param {Array} props.categories The categories to display.
+ * @param {Array} props.categories The number of rows to prerender.
  * @returns {JSX}
  */
-const CategoryList = ({ categories }) => {
-  if (!categories) {
-    return null;
+const CategoryList = ({ categories, prerender }) => {
+  if (!categories || !categories.length) {
+    if (prerender === 0) {
+      return null;
+    }
+
+    return (
+      <List className={styles}>
+        {[...Array(prerender)].map((val, index) => {
+          const key = `placeholder-${index}`;
+          return <Placeholder height={20} key={key} left={0} top={18} width={220} />;
+        })}
+      </List>
+    );
   }
 
   return (
-    <List>
+    <List className={styles}>
       {categories.map(category => (
-        <Portal
-          key={category.id}
-          name={portals.CATEGORY_ITEM}
-          props={{ categoryId: category.id }}
-        >
+        <Portal key={category.id} name={CATEGORY_ITEM} props={{ categoryId: category.id }}>
           <List.Item
             link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
             title={category.name}
+            linkState={{
+              categoryId: category.id,
+              title: category.name,
+            }}
           />
         </Portal>
       ))}
@@ -37,10 +51,12 @@ const CategoryList = ({ categories }) => {
 
 CategoryList.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
+  prerender: PropTypes.number,
 };
 
 CategoryList.defaultProps = {
   categories: null,
+  prerender: 0,
 };
 
-export default connect(CategoryList);
+export default CategoryList;

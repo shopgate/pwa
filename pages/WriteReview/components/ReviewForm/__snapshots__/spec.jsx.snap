@@ -14,33 +14,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
   }
 >
   <Connect(ReviewForm)
-    submit={[Function]}
-  >
-    <ReviewForm
-      authorName="Jane Doe"
-      isLoadingUserReview={false}
-      productId={null}
-      review={Object {}}
-      submit={[Function]}
-    />
-  </Connect(ReviewForm)>
-</Provider>
-`;
-
-exports[`<ReviewForm /> should render form correctly 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [MockFunction],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -313,11 +287,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -356,11 +326,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -483,11 +449,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -525,11 +487,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -652,11 +610,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -694,11 +648,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -819,11 +769,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -891,6 +837,883 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
+                          onComplete={[Function]}
+                          overflow={false}
+                          size={null}
+                        >
+                          <div
+                            aria-hidden={true}
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
+                            onClick={[Function]}
+                            style={null}
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="common.submit"
+                            >
+                              <span
+                                className=""
+                              >
+                                common.submit
+                              </span>
+                            </Translate>
+                          </div>
+                        </Ripple>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </FormButtons>
+          </Connect(FormButtons)>
+        </form>
+      </section>
+    </ReviewForm>
+  </Connect(ReviewForm)>
+</Provider>
+`;
+
+exports[`<ReviewForm /> should render form correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ReviewForm)
+    productId="foo"
+    submit={[Function]}
+  >
+    <ReviewForm
+      authorName="Jane Doe"
+      isLoadingUserReview={false}
+      productId="foo"
+      review={Object {}}
+      submit={[Function]}
+    >
+      <section
+        className="css-rbxhca"
+        data-test-id="reviewForm"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <RatingScale
+            errorText=""
+            onChange={[Function]}
+            value={0}
+          >
+            <div
+              className="css-y3mt5b"
+            >
+              <Translate
+                className="css-mfy564"
+                params={Object {}}
+                string="reviews.review_form_rate"
+              >
+                <span
+                  className="css-mfy564"
+                >
+                  reviews.review_form_rate
+                </span>
+              </Translate>
+              <span
+                className={
+                  Object {
+                    "data-css-yvembi": "",
+                  }
+                }
+              >
+                <RatingStars
+                  className=""
+                  display="large"
+                  errorText=""
+                  isSelectable={true}
+                  onSelection={[Function]}
+                  value={0}
+                >
+                  <div
+                    aria-label="reviews.rating_stars"
+                    className="css-13azwyo "
+                    data-test-id="ratedStars: 0"
+                  >
+                    <div
+                      className="css-4s85e9"
+                    >
+                      <div
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
+                        key="1"
+                        onClick={[Function]}
+                        role="button"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2.3em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2.3em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
+                        key="2"
+                        onClick={[Function]}
+                        role="button"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2.3em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2.3em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
+                        key="3"
+                        onClick={[Function]}
+                        role="button"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2.3em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2.3em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
+                        key="4"
+                        onClick={[Function]}
+                        role="button"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2.3em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2.3em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
+                        key="5"
+                        onClick={[Function]}
+                        role="button"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2.3em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2.3em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2.3em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                    </div>
+                    <div
+                      className="css-16y9zin"
+                    />
+                  </div>
+                </RatingStars>
+                <ErrorText
+                  className="css-c6548q"
+                  errorText=""
+                  translate={true}
+                  validationError={null}
+                >
+                  <div
+                    className="css-c6548q css-hmgfge"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string=""
+                    />
+                  </div>
+                </ErrorText>
+              </span>
+            </div>
+          </RatingScale>
+          <TextField
+            className=""
+            errorText=""
+            hintText=""
+            id="author"
+            isControlled={false}
+            label="reviews.review_form_author"
+            multiLine={false}
+            name="author"
+            onChange={[Function]}
+            onFocusChange={[Function]}
+            onSanitize={[Function]}
+            onValidate={[Function]}
+            password={false}
+            setRef={[Function]}
+            translateErrorText={true}
+            type="text"
+            value=""
+          >
+            <div
+              className="css-e4z0u6 "
+            >
+              <Hint
+                hintText=""
+                visible={false}
+              >
+                <div
+                  className="css-tnfb18 css-1jyyyen"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string=""
+                  />
+                </div>
+              </Hint>
+              <Label
+                hasErrorMessage={false}
+                isFloating={false}
+                isFocused={false}
+                label="reviews.review_form_author"
+                name="author"
+              >
+                <label
+                  className="css-u7lqu6 css-1fekhao"
+                  htmlFor="author"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="reviews.review_form_author"
+                  >
+                    <span
+                      className=""
+                    >
+                      reviews.review_form_author
+                    </span>
+                  </Translate>
+                </label>
+              </Label>
+              <FormElement
+                id="author"
+                isControlled={false}
+                multiLine={false}
+                name="author"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                onSanitize={[Function]}
+                onValidate={[Function]}
+                password={false}
+                setRef={[Function]}
+                type="text"
+                value=""
+              >
+                <Component
+                  className="css-keangt"
+                  id="author"
+                  isControlled={false}
+                  multiLine={false}
+                  name="author"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <SimpleInput
+                    autoComplete={false}
+                    autoCorrect={false}
+                    className="css-keangt"
+                    disabled={false}
+                    id="author"
+                    isControlled={false}
+                    multiLine={false}
+                    name="author"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value=""
+                  >
+                    <input
+                      autoComplete="off"
+                      autoCorrect="off"
+                      className="css-keangt"
+                      disabled={false}
+                      id="author"
+                      name="author"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </SimpleInput>
+                </Component>
+              </FormElement>
+              <Underline
+                hasErrorMessage={false}
+                isFocused={false}
+              >
+                <div
+                  className="css-ycal4l"
+                >
+                  <div
+                    className="css-1tpmuef"
+                    style={
+                      Object {
+                        "borderBottomColor": undefined,
+                        "transform": "scale3d(0,1,1)",
+                      }
+                    }
+                  />
+                </div>
+              </Underline>
+              <ErrorText
+                className=""
+                errorText=""
+                translate={true}
+                validationError={null}
+              >
+                <div
+                  className=" css-hmgfge"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string=""
+                  />
+                </div>
+              </ErrorText>
+            </div>
+          </TextField>
+          <TextField
+            className=""
+            errorText=""
+            hintText=""
+            id="title"
+            isControlled={false}
+            label="reviews.review_form_title"
+            multiLine={false}
+            name="title"
+            onChange={[Function]}
+            onFocusChange={[Function]}
+            onSanitize={[Function]}
+            onValidate={[Function]}
+            password={false}
+            setRef={[Function]}
+            translateErrorText={true}
+            type="text"
+            value=""
+          >
+            <div
+              className="css-e4z0u6 "
+            >
+              <Hint
+                hintText=""
+                visible={false}
+              >
+                <div
+                  className="css-tnfb18 css-1jyyyen"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string=""
+                  />
+                </div>
+              </Hint>
+              <Label
+                hasErrorMessage={false}
+                isFloating={false}
+                isFocused={false}
+                label="reviews.review_form_title"
+                name="title"
+              >
+                <label
+                  className="css-u7lqu6 css-1fekhao"
+                  htmlFor="title"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="reviews.review_form_title"
+                  >
+                    <span
+                      className=""
+                    >
+                      reviews.review_form_title
+                    </span>
+                  </Translate>
+                </label>
+              </Label>
+              <FormElement
+                id="title"
+                isControlled={false}
+                multiLine={false}
+                name="title"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                onSanitize={[Function]}
+                onValidate={[Function]}
+                password={false}
+                setRef={[Function]}
+                type="text"
+                value=""
+              >
+                <Component
+                  className="css-keangt"
+                  id="title"
+                  isControlled={false}
+                  multiLine={false}
+                  name="title"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <SimpleInput
+                    autoComplete={false}
+                    autoCorrect={false}
+                    className="css-keangt"
+                    disabled={false}
+                    id="title"
+                    isControlled={false}
+                    multiLine={false}
+                    name="title"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value=""
+                  >
+                    <input
+                      autoComplete="off"
+                      autoCorrect="off"
+                      className="css-keangt"
+                      disabled={false}
+                      id="title"
+                      name="title"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </SimpleInput>
+                </Component>
+              </FormElement>
+              <Underline
+                hasErrorMessage={false}
+                isFocused={false}
+              >
+                <div
+                  className="css-ycal4l"
+                >
+                  <div
+                    className="css-1tpmuef"
+                    style={
+                      Object {
+                        "borderBottomColor": undefined,
+                        "transform": "scale3d(0,1,1)",
+                      }
+                    }
+                  />
+                </div>
+              </Underline>
+              <ErrorText
+                className=""
+                errorText=""
+                translate={true}
+                validationError={null}
+              >
+                <div
+                  className=" css-hmgfge"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string=""
+                  />
+                </div>
+              </ErrorText>
+            </div>
+          </TextField>
+          <TextField
+            className=""
+            errorText=""
+            hintText=""
+            id="review"
+            isControlled={false}
+            label="reviews.review_form_text"
+            multiLine={true}
+            name="review"
+            onChange={[Function]}
+            onFocusChange={[Function]}
+            onSanitize={[Function]}
+            onValidate={[Function]}
+            password={false}
+            setRef={[Function]}
+            translateErrorText={true}
+            type="text"
+            value=""
+          >
+            <div
+              className="css-4kgshc "
+            >
+              <Hint
+                hintText=""
+                visible={false}
+              >
+                <div
+                  className="css-tnfb18 css-1jyyyen"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string=""
+                  />
+                </div>
+              </Hint>
+              <Label
+                hasErrorMessage={false}
+                isFloating={false}
+                isFocused={false}
+                label="reviews.review_form_text"
+                name="review"
+              >
+                <label
+                  className="css-u7lqu6 css-1fekhao"
+                  htmlFor="review"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="reviews.review_form_text"
+                  >
+                    <span
+                      className=""
+                    >
+                      reviews.review_form_text
+                    </span>
+                  </Translate>
+                </label>
+              </Label>
+              <FormElement
+                id="review"
+                isControlled={false}
+                multiLine={true}
+                name="review"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                onSanitize={[Function]}
+                onValidate={[Function]}
+                password={false}
+                setRef={[Function]}
+                type="text"
+                value=""
+              >
+                <Component
+                  className="css-16r2m5c"
+                  id="review"
+                  isControlled={false}
+                  multiLine={true}
+                  name="review"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
+                >
+                  <MultiLineInput
+                    autoComplete={false}
+                    autoCorrect={false}
+                    className="css-16r2m5c"
+                    disabled={false}
+                    id="review"
+                    isControlled={false}
+                    multiLine={true}
+                    name="review"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value=""
+                  >
+                    <textarea
+                      className="css-16r2m5c"
+                      disabled={false}
+                      id="review"
+                      name="review"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </MultiLineInput>
+                </Component>
+              </FormElement>
+              <Underline
+                hasErrorMessage={false}
+                isFocused={false}
+              >
+                <div
+                  className="css-ycal4l"
+                >
+                  <div
+                    className="css-1tpmuef"
+                    style={
+                      Object {
+                        "borderBottomColor": undefined,
+                        "transform": "scale3d(0,1,1)",
+                      }
+                    }
+                  />
+                </div>
+              </Underline>
+              <ErrorText
+                className=""
+                errorText=""
+                translate={true}
+                validationError={null}
+              >
+                <div
+                  className=" css-hmgfge"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string=""
+                  />
+                </div>
+              </ErrorText>
+            </div>
+          </TextField>
+          <Connect(FormButtons)>
+            <FormButtons
+              cancel={[Function]}
+              isLoading={false}
+            >
+              <div
+                className="css-1v7qljm"
+              >
+                <button
+                  className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="common.cancel"
+                  >
+                    <span
+                      className=""
+                    >
+                      common.cancel
+                    </span>
+                  </Translate>
+                </button>
+                <RippleButton
+                  className=""
+                  disabled={false}
+                  flat={false}
+                  onClick={null}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="sendReviewButton"
+                  type="secondary"
+                  wrapContent={true}
+                >
+                  <Button
+                    className=""
+                    disabled={false}
+                    flat={false}
+                    onClick={null}
+                    testId="sendReviewButton"
+                    type="secondary"
+                    wrapContent={false}
+                  >
+                    <Button
+                      className="css-187rja2 "
+                      disabled={false}
+                      onClick={null}
+                      testId="sendReviewButton"
+                    >
+                      <button
+                        className="css-187rja2  css-1rn65c0"
+                        data-test-id="sendReviewButton"
+                        disabled={false}
+                        onClick={null}
+                      >
+                        <Ripple
+                          className="css-8s1fw2 "
+                          color="#000"
+                          disabled={false}
+                          fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -943,6 +1766,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -998,6 +1822,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -1476,11 +2301,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -1519,11 +2340,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -1646,11 +2463,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -1688,11 +2501,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -1815,11 +2624,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -1857,11 +2662,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -1982,11 +2783,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -2054,6 +2851,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -2106,6 +2904,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -2584,11 +3383,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -2627,11 +3422,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -2754,11 +3545,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -2796,11 +3583,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -2923,11 +3706,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -2965,11 +3744,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -3090,11 +3865,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -3162,6 +3933,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -3214,6 +3986,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -3692,11 +4465,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -3735,11 +4504,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -3862,11 +4627,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -3904,11 +4665,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -4031,11 +4788,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -4073,11 +4826,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -4271,6 +5020,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -4323,6 +5073,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -4801,11 +5552,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -4844,11 +5591,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -4971,11 +5714,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -5013,11 +5752,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -5140,11 +5875,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -5182,11 +5913,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -5380,6 +6107,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -5432,6 +6160,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -5910,11 +6639,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -5953,11 +6678,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -6080,11 +6801,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -6122,11 +6839,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -6249,11 +6962,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -6291,11 +7000,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -6416,11 +7121,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -6488,6 +7189,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -6540,6 +7242,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -6857,11 +7560,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -7027,11 +7726,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -7154,11 +7849,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -7196,11 +7887,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -7321,11 +8008,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -7393,6 +8076,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}

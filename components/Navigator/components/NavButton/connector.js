@@ -1,29 +1,13 @@
 import { connect } from 'react-redux';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
-import toggleNavDrawer from '../../actions/toggleNavDrawer';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 
 /**
  * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @return {Object} The extended component props.
- */
-const mapStateToProps = state => ({
-  action: state.history.action,
-  filterOpen: state.navigator.filterOpen,
-  filterAttributeOpen: state.navigator.filterAttributeOpen,
-  loginOpen: state.navigator.loginOpen,
-  path: state.history.pathname,
-  showIconShadow: state.navigator.showIconShadow,
-});
-
-/**
- * Maps action dispatchers to the component props.
- * @param {function} dispatch The store dispatcher.
+ * @param {Object} dispatch The dispatch method from the store.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  goBackHistory: (amount = 1) => dispatch(goBackHistory(amount)),
-  toggleNavDrawer: active => dispatch(toggleNavDrawer(active)),
+  close: () => dispatch(historyPop()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(null, mapDispatchToProps);

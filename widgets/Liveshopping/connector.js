@@ -1,14 +1,15 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import getLiveshoppingProducts from '@shopgate/pwa-common-commerce/product/actions/getLiveshoppingProducts';
 import { getProductsResult } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  products: getProductsResult(state).products,
+const mapStateToProps = (state, props) => ({
+  products: getProductsResult(state, props).products,
 });
 
 /**
@@ -20,4 +21,14 @@ const mapDispatchToProps = dispatch => ({
   getLiveshoppingProducts: () => dispatch(getLiveshoppingProducts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the component props have even changed.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => (
+  next.products.length === prev.products.length
+);
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

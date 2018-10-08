@@ -9,10 +9,6 @@ import { REVIEW_ITEMS_PER_PAGE } from '../../constants';
  * Load more button for reviews list.
  */
 class LoadMore extends Component {
-  /**
-   * Prop types.
-   * @type {Object}
-   */
   static propTypes = {
     fetchReviews: PropTypes.func.isRequired,
     currentReviewCount: PropTypes.number,
@@ -21,10 +17,6 @@ class LoadMore extends Component {
     totalReviewCount: PropTypes.number,
   };
 
-  /**
-   * Default props.
-   * @type {Object} Default props.
-   */
   static defaultProps = {
     currentReviewCount: 0,
     isFetching: false,

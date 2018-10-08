@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
@@ -11,34 +10,32 @@ import {
   mockedNotReadyState,
   mockedNextProps,
 } from './mock';
+import Favorites from './index';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
-const mockedView = MockedView;
-const mockedStore = configureStore();
-jest.mock('Components/View', () => mockedView);
-jest.mock('@shopgate/pwa-common/actions/history/goBackHistory', () => () => ({
-  type: 'goback',
-}));
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasFavorites() { return true; },
-  themeConfig: mockedConfig,
-}));
+const mockedStore = configureStore([]);
+jest.mock('Components/View');
+
+jest.mock('@shopgate/pwa-common/helpers/config', () => {
+  const originalConfig = require.requireActual('@shopgate/pwa-common/helpers/config');
+  return ({
+    ...originalConfig,
+    get hasFavorites() { return true; },
+    themeConfig: mockedConfig,
+  });
+});
+
 /**
  * Creates component
  * @param {boolean} state State that would be used for store.
  * @return {ReactWrapper}
  */
-const createComponent = (state) => {
-  /* eslint-disable global-require */
-  const Favorites = require('./index').default;
-  /* eslint-enable global-require */
-  return mount(
-    <Provider store={mockedStore(state)}>
-      <Favorites />
-    </Provider>,
-    mockRenderOptions
-  );
-};
+const createComponent = state => mount(
+  <Provider store={mockedStore(state)}>
+    <Favorites />
+  </Provider>,
+  mockRenderOptions
+);
 
 describe('<Favorites> page', () => {
   describe('Initial page', () => {
@@ -50,6 +47,7 @@ describe('<Favorites> page', () => {
       expect(component.find('FavoritesList').exists()).toBe(false);
     });
   });
+
   describe('Empty page', () => {
     let component;
     it('should render an empty page', () => {
@@ -57,24 +55,19 @@ describe('<Favorites> page', () => {
       expect(component).toMatchSnapshot();
       expect(component.find('EmptyFavorites').exists()).toBe(true);
       expect(component.find('svg').exists()).toBe(true);
-      expect(component.find('FavoritesList').html()).toBe(null);
-    });
-    it('should not update when products are still empty', () => {
-      expect(component
-        .find('EmptyFavorites').instance().shouldComponentUpdate({ products: [] }))
-        .toBe(false);
-      component.find('ContinueButton').get(0).props.goBackHistory();
+      expect(component.find('FavoritesList').exists()).toBe(false);
     });
   });
+
   describe('Page with items', () => {
     it('should render a page with products', () => {
       const component = createComponent(mockedState);
       expect(component.find('LoadingIndicator').exists()).toBe(false);
-      expect(component.find('EmptyFavorites').html()).toBe(null);
+      expect(component.find('EmptyFavorites').exists()).toBe(false);
       expect(component.find('FavoritesList').exists()).toBe(true);
     });
 
-    it('should only update when the list changed', () => {
+    it.skip('should only update when the list changed', () => {
       const component = createComponent(mockedState);
 
       const result1 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
@@ -86,6 +79,7 @@ describe('<Favorites> page', () => {
       const result2 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
       expect(result2).toBe(false);
     });
+
     it('should hide when favItemButton is clicked', () => {
       const component = createComponent(mockedState);
       expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(true);
@@ -94,6 +88,7 @@ describe('<Favorites> page', () => {
       expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(false);
     });
   });
+
   describe('Constants', () => {
     it('should export FAVORITES_SHOW_TOAST_DELAY', () => {
       expect(typeof FAVORITES_SHOW_TOAST_DELAY).toBe('number');

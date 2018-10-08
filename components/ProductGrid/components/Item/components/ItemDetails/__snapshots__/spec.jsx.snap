@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemDetails /> should not render with display props set 1`] = `""`;
+
+exports[`<ItemDetails /> should render with minimal props 1`] = `
+<div
+  className={
+    Object {
+      "data-css-16e7pt1": "",
+    }
+  }
+>
+  <ItemName
+    display={null}
+    name="Foo"
+    productId="1234"
+  />
+  <ItemPrice
+    display={null}
+    price={Object {}}
+    productId="1234"
+  />
+</div>
+`;

@@ -1,954 +1,1141 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ImageSliderWidget /> should map the correct image settings to the components 1`] = `
-<ImageSliderWidget
-  className=""
-  settings={
+<Provider
+  store={
     Object {
-      "autostart": false,
-      "delay": 7000,
-      "images": Array [
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-        Object {
-          "image": "http://placehold.it/10x10",
-          "link": "http://other.example.com",
-        },
-      ],
-      "loop": false,
-      "pagination": true,
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <ImageSlider
-    autoPlay={false}
-    className=""
-    classNames={Object {}}
-    controls={false}
-    disabled={false}
-    indicators={true}
-    initialSlide={0}
-    interval={7000}
-    loop={false}
-    onSlideChange={null}
-    slidesPerView={1}
-    snapItems={true}
+  <shouldUpdate(ImageSliderWidget)
+    settings={
+      Object {
+        "autostart": false,
+        "delay": 7000,
+        "images": Array [
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+          Object {
+            "image": "http://placehold.it/10x10",
+            "link": "http://other.example.com",
+          },
+        ],
+        "loop": false,
+        "pagination": true,
+      }
+    }
   >
-    <Slider
-      autoPlay={false}
+    <ImageSliderWidget
       className=""
-      classNames={
+      settings={
         Object {
-          "activeIndicator": "css-so6ht",
-          "container": "css-nil",
-          "inactiveIndicator": "css-1hipsfp",
-          "indicator": "css-17uszht",
-          "slide": "css-nil",
-          "slider": "css-1i764wo",
+          "autostart": false,
+          "delay": 7000,
+          "images": Array [
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+            Object {
+              "image": "http://placehold.it/10x10",
+              "link": "http://other.example.com",
+            },
+          ],
+          "loop": false,
+          "pagination": true,
         }
       }
-      controls={false}
-      disabled={false}
-      indicators={true}
-      initialSlide={0}
-      interval={7000}
-      loop={false}
-      onSlideChange={null}
-      slidesPerView={1}
-      snapItems={true}
     >
-      <div
-        className="css-1hlki0z "
+      <ImageSlider
+        autoPlay={false}
+        className=" css-1u3tffh"
+        classNames={Object {}}
+        controls={false}
+        disabled={false}
+        historyPath=""
+        indicators={true}
+        initialSlide={0}
+        interval={7000}
+        loop={false}
+        maxIndicators={null}
+        onSlideChange={null}
+        slidesPerView={1}
+        snapItems={true}
       >
-        <ReactIdSwiper
-          autoplay={null}
-          bulletActiveClass="css-so6ht"
-          bulletClass="css-1hipsfp"
-          containerClass="sg-swiper-container css-rdsogp css-nil"
-          freeMode={false}
+        <Connect(Slider)
+          autoPlay={false}
+          className=" css-1u3tffh"
+          classNames={
+            Object {
+              "activeIndicator": "css-so6ht",
+              "container": "css-nil",
+              "inactiveIndicator": "css-1hipsfp",
+              "indicator": Object {
+                "bullets": "css-dwzljy",
+                "fraction": "css-eyy1lx",
+              },
+              "slide": "css-nil",
+              "slider": "css-1i764wo",
+            }
+          }
+          controls={false}
+          disabled={false}
+          historyPath=""
+          indicators={true}
           initialSlide={0}
+          interval={7000}
           loop={false}
-          nextButton={null}
-          onInit={[Function]}
-          onSlideChangeEnd={[Function]}
-          onTouchStart={[Function]}
-          onTransitionEnd={[Function]}
-          onTransitionStart={[Function]}
-          pagination=".css-17uszht"
-          paginationModifierClass="sg-swiper-pagination-"
-          prevButton={null}
-          slideClass="sg-swiper-slide"
+          maxIndicators={10}
+          onSlideChange={null}
           slidesPerView={1}
-          wrapperClass="swiper-wrapper"
+          snapItems={true}
         >
-          <div
-            className="sg-swiper-container css-rdsogp css-nil"
+          <Slider
+            autoPlay={false}
+            className=" css-1u3tffh"
+            classNames={
+              Object {
+                "activeIndicator": "css-so6ht",
+                "container": "css-nil",
+                "inactiveIndicator": "css-1hipsfp",
+                "indicator": Object {
+                  "bullets": "css-dwzljy",
+                  "fraction": "css-eyy1lx",
+                },
+                "slide": "css-nil",
+                "slider": "css-1i764wo",
+              }
+            }
+            controls={false}
+            disabled={false}
+            dispatch={[Function]}
+            historyPath="/"
+            indicators={true}
+            initialSlide={0}
+            interval={7000}
+            loop={false}
+            maxIndicators={10}
+            onSlideChange={null}
+            slidesPerView={1}
+            snapItems={true}
           >
             <div
-              className="swiper-wrapper"
+              className="css-1hlki0z  css-1u3tffh"
             >
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s0"
+              <ReactIdSwiper
+                autoplay={null}
+                bulletActiveClass="css-so6ht"
+                bulletClass="css-1hipsfp"
+                containerClass="sg-swiper-container css-rdsogp css-nil"
+                freeMode={false}
+                initialSlide={0}
+                loop={false}
+                nextButton={null}
+                onInit={[Function]}
+                onSlideChangeEnd={[Function]}
+                onTouchStart={[Function]}
+                onTransitionEnd={[Function]}
+                onTransitionStart={[Function]}
+                pagination=".css-dwzljy"
+                paginationModifierClass="sg-swiper-pagination-"
+                paginationType="bullets"
+                prevButton={null}
+                slideClass="sg-swiper-slide"
+                slidesPerView={1}
+                wrapperClass="swiper-wrapper"
               >
-                <SliderItem
-                  key="0"
+                <div
+                  className="sg-swiper-container css-rdsogp css-nil"
                 >
                   <div
-                    className="css-10a4qrv"
+                    className="swiper-wrapper"
                   >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://example.com"
-                      key="si0"
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s0"
                     >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
+                      <SliderItem
+                        key="0"
                       >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si0"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/350x150"
-                          transition={null}
+                        <div
+                          className="css-10a4qrv"
                         >
-                          <div
-                            className="css-326p2s "
-                          />
-                        </Image>
-                      </div>
-                    </Link>
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://example.com"
+                            key="si0"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/350x150"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s1"
+                    >
+                      <SliderItem
+                        key="1"
+                      >
+                        <div
+                          className="css-10a4qrv"
+                        >
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://other.example.com"
+                            key="si1"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://other.example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://other.example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/10x10"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
                   </div>
-                </SliderItem>
-              </div>
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s1"
-              >
-                <SliderItem
-                  key="1"
-                >
                   <div
-                    className="css-10a4qrv"
-                  >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://other.example.com"
-                      key="si1"
-                    >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
-                      >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si1"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/10x10"
-                          transition={null}
-                        >
-                          <div
-                            className="css-326p2s "
-                          />
-                        </Image>
-                      </div>
-                    </Link>
-                  </div>
-                </SliderItem>
-              </div>
+                    className="css-dwzljy "
+                  />
+                </div>
+              </ReactIdSwiper>
             </div>
-            <div
-              className="css-17uszht "
-            />
-          </div>
-        </ReactIdSwiper>
-      </div>
-    </Slider>
-  </ImageSlider>
-</ImageSliderWidget>
+          </Slider>
+        </Connect(Slider)>
+      </ImageSlider>
+    </ImageSliderWidget>
+  </shouldUpdate(ImageSliderWidget)>
+</Provider>
 `;
 
 exports[`<ImageSliderWidget /> should render no slider with just a single image 1`] = `
-<ImageSliderWidget
-  className=""
-  settings={
+<Provider
+  store={
     Object {
-      "autostart": false,
-      "delay": 7000,
-      "images": Array [
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-      ],
-      "loop": false,
-      "pagination": true,
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <ImageSlider
-    autoPlay={false}
-    className=""
-    classNames={Object {}}
-    controls={false}
-    disabled={false}
-    indicators={true}
-    initialSlide={0}
-    interval={7000}
-    loop={false}
-    onSlideChange={null}
-    slidesPerView={1}
-    snapItems={true}
+  <shouldUpdate(ImageSliderWidget)
+    settings={
+      Object {
+        "autostart": false,
+        "delay": 7000,
+        "images": Array [
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+        ],
+        "loop": false,
+        "pagination": true,
+      }
+    }
   >
-    <Link
-      className="css-63oe3q"
-      href="http://example.com"
-      key=".$si0"
+    <ImageSliderWidget
+      className=""
+      settings={
+        Object {
+          "autostart": false,
+          "delay": 7000,
+          "images": Array [
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+          ],
+          "loop": false,
+          "pagination": true,
+        }
+      }
     >
-      <div
-        className="css-c6ki83 css-63oe3q"
-        onClick={[Function]}
-        role="link"
+      <ImageSlider
+        autoPlay={false}
+        className=" css-1u3tffh"
+        classNames={Object {}}
+        controls={false}
+        disabled={false}
+        historyPath=""
+        indicators={true}
+        initialSlide={0}
+        interval={7000}
+        loop={false}
+        maxIndicators={null}
+        onSlideChange={null}
+        slidesPerView={1}
+        snapItems={true}
       >
-        <Image
-          alt={null}
-          animating={true}
-          backgroundColor="#f2f2f2"
-          className=""
-          forcePlaceholder={false}
-          highestResolutionLoaded={[Function]}
-          key="si0"
-          onError={null}
-          onLoad={null}
-          ratio={null}
-          resolutions={
-            Array [
-              Object {
-                "blur": 2,
-                "height": 50,
-                "width": 50,
-              },
-              Object {
-                "height": 440,
-                "width": 440,
-              },
-            ]
-          }
-          src="http://placehold.it/350x150"
-          transition={null}
+        <Connect(Link)
+          className="css-63oe3q"
+          data-test-id="withLink"
+          href="http://example.com"
+          key=".$si0"
         >
-          <div
-            className="css-326p2s "
-          />
-        </Image>
-      </div>
-    </Link>
-  </ImageSlider>
-</ImageSliderWidget>
+          <Link
+            className="css-63oe3q"
+            data-test-id="withLink"
+            disabled={false}
+            historyPush={[Function]}
+            historyReplace={[Function]}
+            href="http://example.com"
+            replace={false}
+            state={Object {}}
+            tag="div"
+          >
+            <div
+              className="css-c6ki83 css-63oe3q"
+              data-test-id="link: http://example.com"
+              onClick={[Function]}
+              role="link"
+            >
+              <img
+                className={
+                  Object {
+                    "data-css-1rozygh": "",
+                  }
+                }
+                data-test-id="link : undefined"
+                src="http://placehold.it/350x150"
+              />
+            </div>
+          </Link>
+        </Connect(Link)>
+      </ImageSlider>
+    </ImageSliderWidget>
+  </shouldUpdate(ImageSliderWidget)>
+</Provider>
 `;
 
 exports[`<ImageSliderWidget /> should render the images unlinked if no link is set 1`] = `
-<ImageSliderWidget
-  className=""
-  settings={
+<Provider
+  store={
     Object {
-      "autostart": false,
-      "delay": 7000,
-      "images": Array [
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": null,
-        },
-      ],
-      "loop": false,
-      "pagination": true,
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <ImageSlider
-    autoPlay={false}
-    className=""
-    classNames={Object {}}
-    controls={false}
-    disabled={false}
-    indicators={true}
-    initialSlide={0}
-    interval={7000}
-    loop={false}
-    onSlideChange={null}
-    slidesPerView={1}
-    snapItems={true}
-  >
-    <Image
-      alt={null}
-      animating={true}
-      backgroundColor="#f2f2f2"
-      className=""
-      forcePlaceholder={false}
-      highestResolutionLoaded={[Function]}
-      key=".$si0"
-      onError={null}
-      onLoad={null}
-      ratio={null}
-      resolutions={
-        Array [
+  <shouldUpdate(ImageSliderWidget)
+    settings={
+      Object {
+        "autostart": false,
+        "delay": 7000,
+        "images": Array [
           Object {
-            "blur": 2,
-            "height": 50,
-            "width": 50,
+            "image": "http://placehold.it/350x150",
+            "link": null,
           },
-          Object {
-            "height": 440,
-            "width": 440,
-          },
-        ]
+        ],
+        "loop": false,
+        "pagination": true,
       }
-      src="http://placehold.it/350x150"
-      transition={null}
+    }
+  >
+    <ImageSliderWidget
+      className=""
+      settings={
+        Object {
+          "autostart": false,
+          "delay": 7000,
+          "images": Array [
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": null,
+            },
+          ],
+          "loop": false,
+          "pagination": true,
+        }
+      }
     >
-      <div
-        className="css-326p2s "
-      />
-    </Image>
-  </ImageSlider>
-</ImageSliderWidget>
+      <ImageSlider
+        autoPlay={false}
+        className=" css-1u3tffh"
+        classNames={Object {}}
+        controls={false}
+        disabled={false}
+        historyPath=""
+        indicators={true}
+        initialSlide={0}
+        interval={7000}
+        loop={false}
+        maxIndicators={null}
+        onSlideChange={null}
+        slidesPerView={1}
+        snapItems={true}
+      >
+        <img
+          className={
+            Object {
+              "data-css-1rozygh": "",
+            }
+          }
+          data-test-id="withoutLink"
+          key=".$si0"
+          src="http://placehold.it/350x150"
+        />
+      </ImageSlider>
+    </ImageSliderWidget>
+  </shouldUpdate(ImageSliderWidget)>
+</Provider>
 `;
 
 exports[`<ImageSliderWidget /> should render the images with links 1`] = `
-<ImageSliderWidget
-  className=""
-  settings={
+<Provider
+  store={
     Object {
-      "autostart": false,
-      "delay": 7000,
-      "images": Array [
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": null,
-        },
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-      ],
-      "loop": false,
-      "pagination": true,
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <ImageSlider
-    autoPlay={false}
-    className=""
-    classNames={Object {}}
-    controls={false}
-    disabled={false}
-    indicators={true}
-    initialSlide={0}
-    interval={7000}
-    loop={false}
-    onSlideChange={null}
-    slidesPerView={1}
-    snapItems={true}
+  <shouldUpdate(ImageSliderWidget)
+    settings={
+      Object {
+        "autostart": false,
+        "delay": 7000,
+        "images": Array [
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": null,
+          },
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+        ],
+        "loop": false,
+        "pagination": true,
+      }
+    }
   >
-    <Slider
-      autoPlay={false}
+    <ImageSliderWidget
       className=""
-      classNames={
+      settings={
         Object {
-          "activeIndicator": "css-so6ht",
-          "container": "css-nil",
-          "inactiveIndicator": "css-1hipsfp",
-          "indicator": "css-17uszht",
-          "slide": "css-nil",
-          "slider": "css-1i764wo",
+          "autostart": false,
+          "delay": 7000,
+          "images": Array [
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": null,
+            },
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+          ],
+          "loop": false,
+          "pagination": true,
         }
       }
-      controls={false}
-      disabled={false}
-      indicators={true}
-      initialSlide={0}
-      interval={7000}
-      loop={false}
-      onSlideChange={null}
-      slidesPerView={1}
-      snapItems={true}
     >
-      <div
-        className="css-1hlki0z "
+      <ImageSlider
+        autoPlay={false}
+        className=" css-1u3tffh"
+        classNames={Object {}}
+        controls={false}
+        disabled={false}
+        historyPath=""
+        indicators={true}
+        initialSlide={0}
+        interval={7000}
+        loop={false}
+        maxIndicators={null}
+        onSlideChange={null}
+        slidesPerView={1}
+        snapItems={true}
       >
-        <ReactIdSwiper
-          autoplay={null}
-          bulletActiveClass="css-so6ht"
-          bulletClass="css-1hipsfp"
-          containerClass="sg-swiper-container css-rdsogp css-nil"
-          freeMode={false}
+        <Connect(Slider)
+          autoPlay={false}
+          className=" css-1u3tffh"
+          classNames={
+            Object {
+              "activeIndicator": "css-so6ht",
+              "container": "css-nil",
+              "inactiveIndicator": "css-1hipsfp",
+              "indicator": Object {
+                "bullets": "css-dwzljy",
+                "fraction": "css-eyy1lx",
+              },
+              "slide": "css-nil",
+              "slider": "css-1i764wo",
+            }
+          }
+          controls={false}
+          disabled={false}
+          historyPath=""
+          indicators={true}
           initialSlide={0}
+          interval={7000}
           loop={false}
-          nextButton={null}
-          onInit={[Function]}
-          onSlideChangeEnd={[Function]}
-          onTouchStart={[Function]}
-          onTransitionEnd={[Function]}
-          onTransitionStart={[Function]}
-          pagination=".css-17uszht"
-          paginationModifierClass="sg-swiper-pagination-"
-          prevButton={null}
-          slideClass="sg-swiper-slide"
+          maxIndicators={10}
+          onSlideChange={null}
           slidesPerView={1}
-          wrapperClass="swiper-wrapper"
+          snapItems={true}
         >
-          <div
-            className="sg-swiper-container css-rdsogp css-nil"
+          <Slider
+            autoPlay={false}
+            className=" css-1u3tffh"
+            classNames={
+              Object {
+                "activeIndicator": "css-so6ht",
+                "container": "css-nil",
+                "inactiveIndicator": "css-1hipsfp",
+                "indicator": Object {
+                  "bullets": "css-dwzljy",
+                  "fraction": "css-eyy1lx",
+                },
+                "slide": "css-nil",
+                "slider": "css-1i764wo",
+              }
+            }
+            controls={false}
+            disabled={false}
+            dispatch={[Function]}
+            historyPath="/"
+            indicators={true}
+            initialSlide={0}
+            interval={7000}
+            loop={false}
+            maxIndicators={10}
+            onSlideChange={null}
+            slidesPerView={1}
+            snapItems={true}
           >
             <div
-              className="swiper-wrapper"
+              className="css-1hlki0z  css-1u3tffh"
             >
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s0"
+              <ReactIdSwiper
+                autoplay={null}
+                bulletActiveClass="css-so6ht"
+                bulletClass="css-1hipsfp"
+                containerClass="sg-swiper-container css-rdsogp css-nil"
+                freeMode={false}
+                initialSlide={0}
+                loop={false}
+                nextButton={null}
+                onInit={[Function]}
+                onSlideChangeEnd={[Function]}
+                onTouchStart={[Function]}
+                onTransitionEnd={[Function]}
+                onTransitionStart={[Function]}
+                pagination=".css-dwzljy"
+                paginationModifierClass="sg-swiper-pagination-"
+                paginationType="bullets"
+                prevButton={null}
+                slideClass="sg-swiper-slide"
+                slidesPerView={1}
+                wrapperClass="swiper-wrapper"
               >
-                <SliderItem
-                  key="0"
+                <div
+                  className="sg-swiper-container css-rdsogp css-nil"
                 >
                   <div
-                    className="css-10a4qrv"
+                    className="swiper-wrapper"
                   >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://example.com"
-                      key="si0"
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s0"
                     >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
+                      <SliderItem
+                        key="0"
                       >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si0"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/350x150"
-                          transition={null}
+                        <div
+                          className="css-10a4qrv"
                         >
-                          <div
-                            className="css-326p2s "
-                          />
-                        </Image>
-                      </div>
-                    </Link>
-                  </div>
-                </SliderItem>
-              </div>
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s1"
-              >
-                <SliderItem
-                  key="1"
-                >
-                  <div
-                    className="css-10a4qrv"
-                  >
-                    <Image
-                      alt={null}
-                      animating={true}
-                      backgroundColor="#f2f2f2"
-                      className=""
-                      forcePlaceholder={false}
-                      highestResolutionLoaded={[Function]}
-                      key="si1"
-                      onError={null}
-                      onLoad={null}
-                      ratio={null}
-                      resolutions={
-                        Array [
-                          Object {
-                            "blur": 2,
-                            "height": 50,
-                            "width": 50,
-                          },
-                          Object {
-                            "height": 440,
-                            "width": 440,
-                          },
-                        ]
-                      }
-                      src="http://placehold.it/350x150"
-                      transition={null}
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://example.com"
+                            key="si0"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/350x150"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s1"
                     >
-                      <div
-                        className="css-326p2s "
-                      />
-                    </Image>
-                  </div>
-                </SliderItem>
-              </div>
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s2"
-              >
-                <SliderItem
-                  key="2"
-                >
-                  <div
-                    className="css-10a4qrv"
-                  >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://example.com"
-                      key="si2"
-                    >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
+                      <SliderItem
+                        key="1"
                       >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si2"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/350x150"
-                          transition={null}
+                        <div
+                          className="css-10a4qrv"
                         >
-                          <div
-                            className="css-326p2s "
+                          <img
+                            className={
+                              Object {
+                                "data-css-1rozygh": "",
+                              }
+                            }
+                            data-test-id="withoutLink"
+                            key="si1"
+                            src="http://placehold.it/350x150"
                           />
-                        </Image>
-                      </div>
-                    </Link>
-                  </div>
-                </SliderItem>
-              </div>
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s3"
-              >
-                <SliderItem
-                  key="3"
-                >
-                  <div
-                    className="css-10a4qrv"
-                  >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://example.com"
-                      key="si3"
+                        </div>
+                      </SliderItem>
+                    </div>
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s2"
                     >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
+                      <SliderItem
+                        key="2"
                       >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si3"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/350x150"
-                          transition={null}
+                        <div
+                          className="css-10a4qrv"
                         >
-                          <div
-                            className="css-326p2s "
-                          />
-                        </Image>
-                      </div>
-                    </Link>
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://example.com"
+                            key="si2"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/350x150"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s3"
+                    >
+                      <SliderItem
+                        key="3"
+                      >
+                        <div
+                          className="css-10a4qrv"
+                        >
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://example.com"
+                            key="si3"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/350x150"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
                   </div>
-                </SliderItem>
-              </div>
+                  <div
+                    className="css-dwzljy "
+                  />
+                </div>
+              </ReactIdSwiper>
             </div>
-            <div
-              className="css-17uszht "
-            />
-          </div>
-        </ReactIdSwiper>
-      </div>
-    </Slider>
-  </ImageSlider>
-</ImageSliderWidget>
+          </Slider>
+        </Connect(Slider)>
+      </ImageSlider>
+    </ImageSliderWidget>
+  </shouldUpdate(ImageSliderWidget)>
+</Provider>
 `;
 
 exports[`<ImageSliderWidget /> should render the slider with the correct number of images 1`] = `
-<ImageSliderWidget
-  className=""
-  settings={
+<Provider
+  store={
     Object {
-      "autostart": false,
-      "delay": 7000,
-      "images": Array [
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-        Object {
-          "image": "http://placehold.it/350x150",
-          "link": "http://example.com",
-        },
-      ],
-      "loop": false,
-      "pagination": true,
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <ImageSlider
-    autoPlay={false}
-    className=""
-    classNames={Object {}}
-    controls={false}
-    disabled={false}
-    indicators={true}
-    initialSlide={0}
-    interval={7000}
-    loop={false}
-    onSlideChange={null}
-    slidesPerView={1}
-    snapItems={true}
+  <shouldUpdate(ImageSliderWidget)
+    settings={
+      Object {
+        "autostart": false,
+        "delay": 7000,
+        "images": Array [
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+          Object {
+            "image": "http://placehold.it/350x150",
+            "link": "http://example.com",
+          },
+        ],
+        "loop": false,
+        "pagination": true,
+      }
+    }
   >
-    <Slider
-      autoPlay={false}
+    <ImageSliderWidget
       className=""
-      classNames={
+      settings={
         Object {
-          "activeIndicator": "css-so6ht",
-          "container": "css-nil",
-          "inactiveIndicator": "css-1hipsfp",
-          "indicator": "css-17uszht",
-          "slide": "css-nil",
-          "slider": "css-1i764wo",
+          "autostart": false,
+          "delay": 7000,
+          "images": Array [
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+            Object {
+              "image": "http://placehold.it/350x150",
+              "link": "http://example.com",
+            },
+          ],
+          "loop": false,
+          "pagination": true,
         }
       }
-      controls={false}
-      disabled={false}
-      indicators={true}
-      initialSlide={0}
-      interval={7000}
-      loop={false}
-      onSlideChange={null}
-      slidesPerView={1}
-      snapItems={true}
     >
-      <div
-        className="css-1hlki0z "
+      <ImageSlider
+        autoPlay={false}
+        className=" css-1u3tffh"
+        classNames={Object {}}
+        controls={false}
+        disabled={false}
+        historyPath=""
+        indicators={true}
+        initialSlide={0}
+        interval={7000}
+        loop={false}
+        maxIndicators={null}
+        onSlideChange={null}
+        slidesPerView={1}
+        snapItems={true}
       >
-        <ReactIdSwiper
-          autoplay={null}
-          bulletActiveClass="css-so6ht"
-          bulletClass="css-1hipsfp"
-          containerClass="sg-swiper-container css-rdsogp css-nil"
-          freeMode={false}
+        <Connect(Slider)
+          autoPlay={false}
+          className=" css-1u3tffh"
+          classNames={
+            Object {
+              "activeIndicator": "css-so6ht",
+              "container": "css-nil",
+              "inactiveIndicator": "css-1hipsfp",
+              "indicator": Object {
+                "bullets": "css-dwzljy",
+                "fraction": "css-eyy1lx",
+              },
+              "slide": "css-nil",
+              "slider": "css-1i764wo",
+            }
+          }
+          controls={false}
+          disabled={false}
+          historyPath=""
+          indicators={true}
           initialSlide={0}
+          interval={7000}
           loop={false}
-          nextButton={null}
-          onInit={[Function]}
-          onSlideChangeEnd={[Function]}
-          onTouchStart={[Function]}
-          onTransitionEnd={[Function]}
-          onTransitionStart={[Function]}
-          pagination=".css-17uszht"
-          paginationModifierClass="sg-swiper-pagination-"
-          prevButton={null}
-          slideClass="sg-swiper-slide"
+          maxIndicators={10}
+          onSlideChange={null}
           slidesPerView={1}
-          wrapperClass="swiper-wrapper"
+          snapItems={true}
         >
-          <div
-            className="sg-swiper-container css-rdsogp css-nil"
+          <Slider
+            autoPlay={false}
+            className=" css-1u3tffh"
+            classNames={
+              Object {
+                "activeIndicator": "css-so6ht",
+                "container": "css-nil",
+                "inactiveIndicator": "css-1hipsfp",
+                "indicator": Object {
+                  "bullets": "css-dwzljy",
+                  "fraction": "css-eyy1lx",
+                },
+                "slide": "css-nil",
+                "slider": "css-1i764wo",
+              }
+            }
+            controls={false}
+            disabled={false}
+            dispatch={[Function]}
+            historyPath="/"
+            indicators={true}
+            initialSlide={0}
+            interval={7000}
+            loop={false}
+            maxIndicators={10}
+            onSlideChange={null}
+            slidesPerView={1}
+            snapItems={true}
           >
             <div
-              className="swiper-wrapper"
+              className="css-1hlki0z  css-1u3tffh"
             >
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s0"
+              <ReactIdSwiper
+                autoplay={null}
+                bulletActiveClass="css-so6ht"
+                bulletClass="css-1hipsfp"
+                containerClass="sg-swiper-container css-rdsogp css-nil"
+                freeMode={false}
+                initialSlide={0}
+                loop={false}
+                nextButton={null}
+                onInit={[Function]}
+                onSlideChangeEnd={[Function]}
+                onTouchStart={[Function]}
+                onTransitionEnd={[Function]}
+                onTransitionStart={[Function]}
+                pagination=".css-dwzljy"
+                paginationModifierClass="sg-swiper-pagination-"
+                paginationType="bullets"
+                prevButton={null}
+                slideClass="sg-swiper-slide"
+                slidesPerView={1}
+                wrapperClass="swiper-wrapper"
               >
-                <SliderItem
-                  key="0"
+                <div
+                  className="sg-swiper-container css-rdsogp css-nil"
                 >
                   <div
-                    className="css-10a4qrv"
+                    className="swiper-wrapper"
                   >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://example.com"
-                      key="si0"
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s0"
                     >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
+                      <SliderItem
+                        key="0"
                       >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si0"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/350x150"
-                          transition={null}
+                        <div
+                          className="css-10a4qrv"
                         >
-                          <div
-                            className="css-326p2s "
-                          />
-                        </Image>
-                      </div>
-                    </Link>
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://example.com"
+                            key="si0"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/350x150"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s1"
+                    >
+                      <SliderItem
+                        key="1"
+                      >
+                        <div
+                          className="css-10a4qrv"
+                        >
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://example.com"
+                            key="si1"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/350x150"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
+                    <div
+                      className="sg-swiper-slide css-1l9a57c "
+                      data-test-id="Slider"
+                      key=".$s2"
+                    >
+                      <SliderItem
+                        key="2"
+                      >
+                        <div
+                          className="css-10a4qrv"
+                        >
+                          <Connect(Link)
+                            className="css-63oe3q"
+                            data-test-id="withLink"
+                            href="http://example.com"
+                            key="si2"
+                          >
+                            <Link
+                              className="css-63oe3q"
+                              data-test-id="withLink"
+                              disabled={false}
+                              historyPush={[Function]}
+                              historyReplace={[Function]}
+                              href="http://example.com"
+                              replace={false}
+                              state={Object {}}
+                              tag="div"
+                            >
+                              <div
+                                className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
+                                onClick={[Function]}
+                                role="link"
+                              >
+                                <img
+                                  className={
+                                    Object {
+                                      "data-css-1rozygh": "",
+                                    }
+                                  }
+                                  data-test-id="link : undefined"
+                                  src="http://placehold.it/350x150"
+                                />
+                              </div>
+                            </Link>
+                          </Connect(Link)>
+                        </div>
+                      </SliderItem>
+                    </div>
                   </div>
-                </SliderItem>
-              </div>
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s1"
-              >
-                <SliderItem
-                  key="1"
-                >
                   <div
-                    className="css-10a4qrv"
-                  >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://example.com"
-                      key="si1"
-                    >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
-                      >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si1"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/350x150"
-                          transition={null}
-                        >
-                          <div
-                            className="css-326p2s "
-                          />
-                        </Image>
-                      </div>
-                    </Link>
-                  </div>
-                </SliderItem>
-              </div>
-              <div
-                className="sg-swiper-slide css-1l9a57c "
-                key=".$s2"
-              >
-                <SliderItem
-                  key="2"
-                >
-                  <div
-                    className="css-10a4qrv"
-                  >
-                    <Link
-                      className="css-63oe3q"
-                      href="http://example.com"
-                      key="si2"
-                    >
-                      <div
-                        className="css-c6ki83 css-63oe3q"
-                        onClick={[Function]}
-                        role="link"
-                      >
-                        <Image
-                          alt={null}
-                          animating={true}
-                          backgroundColor="#f2f2f2"
-                          className=""
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          key="si2"
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placehold.it/350x150"
-                          transition={null}
-                        >
-                          <div
-                            className="css-326p2s "
-                          />
-                        </Image>
-                      </div>
-                    </Link>
-                  </div>
-                </SliderItem>
-              </div>
+                    className="css-dwzljy "
+                  />
+                </div>
+              </ReactIdSwiper>
             </div>
-            <div
-              className="css-17uszht "
-            />
-          </div>
-        </ReactIdSwiper>
-      </div>
-    </Slider>
-  </ImageSlider>
-</ImageSliderWidget>
+          </Slider>
+        </Connect(Slider)>
+      </ImageSlider>
+    </ImageSliderWidget>
+  </shouldUpdate(ImageSliderWidget)>
+</Provider>
 `;

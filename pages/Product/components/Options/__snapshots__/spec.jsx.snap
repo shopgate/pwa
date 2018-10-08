@@ -26,7 +26,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
         },
       ]
     }
-    setProductOption={
+    storeSelection={
       [MockFunction] {
         "calls": Array [
           Array [
@@ -43,108 +43,133 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
       }
     }
   >
-    <div
-      data-test-id="optionsPicker"
+    <Portal
+      name="product.options.before"
+      props={null}
+    />
+    <Portal
+      name="product.options"
+      props={null}
     >
       <div
-        data-test-id="label"
+        data-test-id="optionsPicker"
       >
-        <Picker
-          buttonComponent={null}
-          buttonProps={Object {}}
-          clickDelay={150}
+        <Option
+          id="test-id"
           items={
             Array [
               Object {
                 "currency": "USD",
                 "price": 10,
-                "rightComponent": <PriceDifference
-                  className="css-fxshz5"
-                  currency="USD"
-                  difference={10}
-                />,
               },
               Object {
                 "currency": "USD",
                 "price": 10,
-                "rightComponent": <PriceDifference
-                  className="css-fxshz5"
-                  currency="USD"
-                  difference={10}
-                />,
               },
             ]
           }
           key="test-id"
           label="label"
-          onChange={[Function]}
-          placeholder={
-            <Translate
-              className=""
-              params={
+          onChange={
+            [MockFunction] {
+              "calls": Array [
                 Array [
-                  "label",
+                  "test-id",
+                  undefined,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          value={null}
+        >
+          <div
+            data-test-id="label"
+            key="test-id"
+          >
+            <Picker
+              buttonComponent={null}
+              buttonProps={Object {}}
+              clickDelay={150}
+              items={
+                Array [
+                  Object {
+                    "currency": "USD",
+                    "price": 10,
+                    "rightComponent": <PriceDifference
+                      className="css-fxshz5"
+                      currency="USD"
+                      difference={10}
+                    />,
+                  },
+                  Object {
+                    "currency": "USD",
+                    "price": 10,
+                    "rightComponent": <PriceDifference
+                      className="css-fxshz5"
+                      currency="USD"
+                      difference={10}
+                    />,
+                  },
                 ]
               }
-              string="product.pick_an_attribute"
-            />
-          }
-        >
-          <Picker
-            buttonComponent={[Function]}
-            buttonProps={Object {}}
-            className="css-murgv5"
-            clickDelay={150}
-            disabled={false}
-            duration={300}
-            isOpen={false}
-            items={
-              Array [
-                Object {
-                  "currency": "USD",
-                  "price": 10,
-                  "rightComponent": <PriceDifference
-                    className="css-fxshz5"
-                    currency="USD"
-                    difference={10}
-                  />,
-                },
-                Object {
-                  "currency": "USD",
-                  "price": 10,
-                  "rightComponent": <PriceDifference
-                    className="css-fxshz5"
-                    currency="USD"
-                    difference={10}
-                  />,
-                },
-              ]
-            }
-            label="label"
-            listComponent={[Function]}
-            modalComponent={[Function]}
-            onChange={[Function]}
-            onClose={[Function]}
-            onSelect={[Function]}
-            placeholder={
-              <Translate
-                className=""
-                params={
+              label="label"
+              onChange={[Function]}
+              placeholder={
+                <Translate
+                  className=""
+                  params={
+                    Array [
+                      "label",
+                    ]
+                  }
+                  string="product.pick_an_attribute"
+                />
+              }
+              value={null}
+            >
+              <Picker
+                buttonComponent={[Function]}
+                buttonProps={Object {}}
+                className="css-murgv5"
+                clickDelay={150}
+                disabled={false}
+                duration={300}
+                isOpen={false}
+                items={
                   Array [
-                    "label",
+                    Object {
+                      "currency": "USD",
+                      "price": 10,
+                      "rightComponent": <PriceDifference
+                        className="css-fxshz5"
+                        currency="USD"
+                        difference={10}
+                      />,
+                    },
+                    Object {
+                      "currency": "USD",
+                      "price": 10,
+                      "rightComponent": <PriceDifference
+                        className="css-fxshz5"
+                        currency="USD"
+                        difference={10}
+                      />,
+                    },
                   ]
                 }
-                string="product.pick_an_attribute"
-              />
-            }
-            value={null}
-          >
-            <div
-              className="css-murgv5"
-            >
-              <Button
-                disabled={false}
-                label={
+                label="label"
+                listComponent={[Function]}
+                modalComponent={[Function]}
+                onChange={[Function]}
+                onClose={[Function]}
+                onSelect={[Function]}
+                placeholder={
                   <Translate
                     className=""
                     params={
@@ -155,45 +180,69 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
                     string="product.pick_an_attribute"
                   />
                 }
-                openList={[Function]}
-                value=""
+                value={null}
               >
-                <button
-                  className="css-164ggb6"
-                  onClick={[Function]}
+                <div
+                  className="css-murgv5"
                 >
-                  <span
-                    className="css-1358lbd"
+                  <Button
+                    disabled={false}
+                    label={
+                      <Translate
+                        className=""
+                        params={
+                          Array [
+                            "label",
+                          ]
+                        }
+                        string="product.pick_an_attribute"
+                      />
+                    }
+                    openList={[Function]}
+                    value=""
                   >
-                    <Translate
-                      className=""
-                      params={
-                        Array [
-                          "label",
-                        ]
-                      }
-                      string="product.pick_an_attribute"
+                    <button
+                      className="css-164ggb6"
+                      onClick={[Function]}
                     >
                       <span
-                        className=""
+                        className="css-1358lbd"
                       >
-                        product.pick_an_attribute
+                        <Translate
+                          className=""
+                          params={
+                            Array [
+                              "label",
+                            ]
+                          }
+                          string="product.pick_an_attribute"
+                        >
+                          <span
+                            className=""
+                          >
+                            product.pick_an_attribute
+                          </span>
+                        </Translate>
                       </span>
-                    </Translate>
-                  </span>
-                </button>
-              </Button>
-              <Portal
-                isOpened={true}
-                onClose={[Function]}
-                onOpen={[Function]}
-                onUpdate={[Function]}
-              />
-            </div>
-          </Picker>
-        </Picker>
+                    </button>
+                  </Button>
+                  <Portal
+                    isOpened={true}
+                    onClose={[Function]}
+                    onOpen={[Function]}
+                    onUpdate={[Function]}
+                  />
+                </div>
+              </Picker>
+            </Picker>
+          </div>
+        </Option>
       </div>
-    </div>
+    </Portal>
+    <Portal
+      name="product.options.after"
+      props={null}
+    />
   </Options>
 </I18nProvider>
 `;

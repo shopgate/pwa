@@ -1,35 +1,26 @@
 import { connect } from 'react-redux';
-import {
-  getCurrentProductId,
-  isProductOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isCurrentProductOnFavoriteList } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
-import {
-  isProductPageLoading,
-  isProductPageOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/page';
 
 /**
- * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  isFavorite: isCurrentProductOnFavoriteList(state),
-  productId: getCurrentProductId(state),
-  isLoading: isProductPageLoading(state),
-  isOrderable: isProductPageOrderable(state),
-  isDisabled: !isProductOrderable(state),
+const mapStateToProps = (state, props) => ({
+  isFavorite: isCurrentProductOnFavoriteList(state, props),
 });
 
 /**
- * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
  */
-const mapDispatchToProps = dispatch => ({
-  handleAddToCart: () => dispatch(addCurrentProductToCart()),
-});
+const areStatePropsEqual = (next, prev) => {
+  if (prev.isFavorite !== next.isFavorite) {
+    return false;
+  }
 
-export default connect(mapStateToProps, mapDispatchToProps);
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });

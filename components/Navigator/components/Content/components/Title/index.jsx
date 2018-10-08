@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import { ACTION_POP } from '@virtuous/conductor/constants';
+import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
+import { UIEvents } from '@shopgate/pwa-core';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import connect from './connector';
 import styles from './style';
+import { TOGGLE_NAVIGATOR_TITLE } from '../../../../constants';
 
 /**
- * The Navigator Title component.
+ * The NavigatorTitle component.
  */
-class Title extends Component {
+class NavigatorTitle extends PureComponent {
   static propTypes = {
-    action: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     onClick: PropTypes.func,
   };
@@ -19,15 +22,18 @@ class Title extends Component {
   };
 
   /**
-   * The constructor.
-   * Sets the initial state from connected props.
    * @param {Object} props The component props.
    */
   constructor(props) {
     super(props);
 
-    this.previousTitle = null;
+    this.previousTitle = '';
     this.title = props.title;
+    this.state = {
+      visible: true,
+    };
+
+    UIEvents.on(TOGGLE_NAVIGATOR_TITLE, this.toggle);
   }
 
   /**
@@ -39,15 +45,6 @@ class Title extends Component {
       this.previousTitle = this.title;
       this.title = nextProps.title;
     }
-  }
-
-  /**
-   * Checks if the title was reset and if the component should update.
-   * @param {Object} nextProps The next incoming props.
-   * @returns {boolean} Whether the component should update.
-   */
-  shouldComponentUpdate(nextProps) {
-    return (this.props.title !== nextProps.title) && nextProps.title !== '';
   }
 
   /**
@@ -63,7 +60,7 @@ class Title extends Component {
       };
     }
 
-    const pop = this.props.action === HISTORY_POP_ACTION;
+    const pop = getCurrentAction() === ACTION_POP;
 
     return {
       inactive: pop ? styles.centerToRight : styles.centerToLeft,
@@ -72,27 +69,36 @@ class Title extends Component {
   }
 
   /**
-   * Renders the component.
-   * Displays the Title.
+   * @param {boolean} visible The next visibility state.
+   */
+  toggle = (visible) => {
+    this.setState({ visible });
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
     const transition = this.transitionClass;
 
+    if (!this.state.visible) {
+      return null;
+    }
+
     return (
       <div aria-hidden onClick={this.props.onClick}>
         {/* Renders the inactive / previous title */}
         <div className={`${styles.title} ${transition.inactive}`}>
-          {this.previousTitle}
+          <I18n.Text string={this.previousTitle} />
         </div>
 
         {/* Renders the active / current title */}
         <div className={`${styles.title} ${transition.active}`} data-test-id={`title: ${this.props.title}`}>
-          {this.props.title}
+          <I18n.Text string={this.props.title} />
         </div>
       </div>
     );
   }
 }
 
-export default connect(Title);
+export default connect(NavigatorTitle);

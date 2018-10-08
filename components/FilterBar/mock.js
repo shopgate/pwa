@@ -5,7 +5,6 @@ import {
   FILTER_TYPE_MULTISELECT,
 } from '@shopgate/pwa-common-commerce/filter/constants';
 import { themeConfig as mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
-import { GRID_VIEW } from '../../pages/Category/constants';
 
 const mockedStoreDefault = {
   filter: {
@@ -13,11 +12,6 @@ const mockedStoreDefault = {
     availableFilters: {},
     activeHash: null,
     temporaryFilters: {},
-  },
-  ui: {
-    categoryPage: {
-      viewMode: GRID_VIEW,
-    },
   },
   history: {
     queryParams: {

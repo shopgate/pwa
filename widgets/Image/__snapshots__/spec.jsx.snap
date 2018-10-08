@@ -1,59 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ImageWidget /> should render the ImageWidget 1`] = `
-<Image
-  alt="Alt text"
-  animating={true}
-  backgroundColor="#f2f2f2"
-  className=""
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  onError={null}
-  onLoad={null}
-  ratio={null}
-  resolutions={
-    Array [
-      Object {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "height": 440,
-        "width": 440,
-      },
-    ]
+<shouldUpdate(ImageWidget)
+  settings={
+    Object {
+      "alt": "Alt text",
+      "id": "81452",
+      "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
+      "link": "/category/3339",
+    }
   }
-  src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
-  transition={null}
-/>
+>
+  <ImageWidget
+    settings={
+      Object {
+        "alt": "Alt text",
+        "id": "81452",
+        "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
+        "link": "/category/3339",
+      }
+    }
+  >
+    <Link
+      className="css-63oe3q"
+      data-test-id="link"
+      href="/category/3339"
+    >
+      <div />
+    </Link>
+  </ImageWidget>
+</shouldUpdate(ImageWidget)>
 `;
 
 exports[`<ImageWidget /> should render the ImageWidget without link 1`] = `
-<Image
-  alt="Alt text"
-  animating={true}
-  backgroundColor="#f2f2f2"
-  className=""
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  onError={null}
-  onLoad={null}
-  ratio={null}
-  resolutions={
-    Array [
-      Object {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "height": 440,
-        "width": 440,
-      },
-    ]
+<shouldUpdate(ImageWidget)
+  settings={
+    Object {
+      "alt": "Alt text",
+      "id": "81452",
+      "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
+      "link": "",
+    }
   }
-  src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
-  transition={null}
-/>
+>
+  <ImageWidget
+    settings={
+      Object {
+        "alt": "Alt text",
+        "id": "81452",
+        "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
+        "link": "",
+      }
+    }
+  >
+    <img
+      alt="Alt text"
+      className={
+        Object {
+          "data-css-1rozygh": "",
+        }
+      }
+      data-test-id="imageWidget: "
+      src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
+    />
+  </ImageWidget>
+</shouldUpdate(ImageWidget)>
 `;

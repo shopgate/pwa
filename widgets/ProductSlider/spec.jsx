@@ -6,7 +6,7 @@ import ProductSlider from './index';
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
 
-describe.skip('<ProductSlider />', () => {
+describe('<ProductSlider />', () => {
   /**
    * Mocks the products pipeline request.
    */
@@ -84,23 +84,35 @@ describe.skip('<ProductSlider />', () => {
     return createProducts(amount - 1, products);
   };
 
+  const sliderId = 'some-slider-id';
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should call the products callback on mount', () => {
     const getProducts = jest.fn();
-
+    const settings = getSettings();
     const wrapper = shallow(<ProductSlider
-      settings={getSettings()}
+      id={sliderId}
+      settings={settings}
       getProducts={getProducts}
       products={[]}
     />);
 
-    wrapper.instance().componentDidMount();
-
     expect(wrapper).toMatchSnapshot();
-    expect(getProducts.mock.calls.length).toBe(1);
+    expect(getProducts).toHaveBeenCalledTimes(1);
+    expect(getProducts).toHaveBeenCalledWith(
+      settings.queryType,
+      settings.queryParams,
+      { sort: settings.sortOrder },
+      sliderId
+    );
   });
 
   it('should not render the widget without any data', () => {
     const wrapper = shallow(<ProductSlider
+      id={sliderId}
       settings={getSettings()}
       getProducts={getProductsMock}
       products={createProducts(0)}
@@ -114,6 +126,7 @@ describe.skip('<ProductSlider />', () => {
     const products = createProducts();
 
     const wrapper = shallow(<ProductSlider
+      id={sliderId}
       settings={getSettings()}
       getProducts={getProductsMock}
       products={products}
@@ -125,6 +138,7 @@ describe.skip('<ProductSlider />', () => {
 
   it('should not render an empty headline', () => {
     const wrapper = shallow(<ProductSlider
+      id={sliderId}
       settings={getSettings(false)}
       getProducts={getProductsMock}
       products={createProducts()}
@@ -136,6 +150,7 @@ describe.skip('<ProductSlider />', () => {
 
   it('should render the headline', () => {
     const wrapper = shallow(<ProductSlider
+      id={sliderId}
       settings={getSettings(true)}
       getProducts={getProductsMock}
       products={createProducts()}
@@ -147,6 +162,7 @@ describe.skip('<ProductSlider />', () => {
 
   it('should limit output to a maximum of 30 products', () => {
     const wrapper = shallow(<ProductSlider
+      id={sliderId}
       settings={getSettings(true)}
       getProducts={getProductsMock}
       products={createProducts(40)}

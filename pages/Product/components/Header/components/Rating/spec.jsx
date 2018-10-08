@@ -3,19 +3,15 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import {
+  setMocks,
   mockedStateWithTwoReviews,
   mockedStateWithoutReview,
-} from 'Components/Reviews/mock';
+} from '@shopgate/pwa-common-commerce/reviews/mock';
 import Rating from './index';
 import { getElementById } from './mock';
 
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasReviews() { return true; },
-  get showWriteReview() { return true; },
-  themeConfig: mockedConfig,
-}));
+setMocks();
 
 describe('Rating (product header)', () => {
   const mockedStore = configureStore();
@@ -27,7 +23,7 @@ describe('Rating (product header)', () => {
    */
   const getComponent = state => mount(
     <Provider store={mockedStore(state)}>
-      <Rating />
+      <Rating productId="foo" />
     </Provider>,
     mockRenderOptions
   );
