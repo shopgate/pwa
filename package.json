@@ -32,7 +32,7 @@
     "@shopgate/pwa-ui-material": "6.0.0-beta.13",
     "@shopgate/pwa-ui-shared": "6.0.0-beta.13",
     "@shopgate/pwa-webcheckout-shopify": "6.0.0-beta.13",
-    "@shopgate/react-hammerjs": "^0.5.3",
+    "@shopgate/react-hammerjs": "0.5.8",
     "@shopgate/tracking-core": "6.0.0-beta.13",
     "@virtuous/conductor": "1.0.0-beta.38",
     "@virtuous/conductor-helpers": "1.0.0-beta.38",

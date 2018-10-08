@@ -74,7 +74,12 @@ class ImageSlider extends PureComponent {
       );
     } else {
       content = (
-        <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
+        <BaseImageSlider
+          loop
+          indicators
+          onSlideChange={this.handleSlideChange}
+          rebuildOnUpdate
+        >
           {images.map(image => (
             <ProductImage key={image} src={image} animating={false} resolutions={resolutions} />
           ))}
