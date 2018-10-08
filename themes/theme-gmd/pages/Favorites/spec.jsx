@@ -54,7 +54,6 @@ describe('<Favorites> page', () => {
       component = createComponent(mockedEmptyState);
       expect(component).toMatchSnapshot();
       expect(component.find('EmptyFavorites').exists()).toBe(true);
-      expect(component.find('svg').exists()).toBe(true);
       expect(component.find('FavoritesList').exists()).toBe(false);
     });
   });

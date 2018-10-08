@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import shouldUpdate from 'recompose/shouldUpdate';
-import Navigator from 'Components/Navigator';
 import NavDrawer from 'Components/NavDrawer';
+import Search from 'Components/Search';
 import styles from './style';
 
 /**
@@ -12,9 +12,9 @@ import styles from './style';
  */
 const Viewport = props => (
   <main className={styles} role="main" itemScope itemProp="http://schema.org/MobileApplication">
-    <Navigator />
     <NavDrawer />
     {props.children}
+    <Search />
   </main>
 );
 

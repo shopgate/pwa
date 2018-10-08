@@ -10,7 +10,7 @@ import ProductGalleryContent from './components/Content';
  * @return {JSX}
  */
 const ProductGallery = ({ id, initialSlide }) => (
-  <View hasNavigator={false} isFullscreen>
+  <View>
     {id && <ProductGalleryContent productId={id} initialSlide={initialSlide} />}
   </View>
 );

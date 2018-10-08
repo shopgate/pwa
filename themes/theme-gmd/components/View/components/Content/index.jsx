@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
-import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
+import ViewProvider from '../../../../providers/View';
+import { ViewContext } from '../../context';
 
 /**
  * The ViewContent component.
  */
 class ViewContent extends Component {
   static propTypes = {
-    setRef: PropTypes.func.isRequired,
+    setOffsetY: PropTypes.func.isRequired,
     children: PropTypes.node,
     hasNavigator: PropTypes.bool,
     isFullscreen: PropTypes.bool,
@@ -36,51 +38,22 @@ class ViewContent extends Component {
     super(props);
 
     this.element = React.createRef();
-
     this.state = {
       keyboardHeight: 0,
-      shadow: false,
     };
 
     event.addCallback('keyboardWillChange', this.handleKeyboardChange);
   }
 
   /**
-   * Sets the View ref into the ViewProvider.
-   */
-  componentDidMount() {
-    this.props.setRef('ref', this.element);
-  }
-
-  /**
    * @return {string}
    */
   get contentStyle() {
-    let contentStyle = styles.content(
+    return styles.content(
       this.props.hasNavigator,
       this.props.isFullscreen,
       this.state.keyboardHeight
     );
-
-    if (this.state.shadow) {
-      contentStyle += ` ${styles.contentShaded}`;
-    }
-
-    return contentStyle;
-  }
-
-  /**
-   * Toggles the shadow above the page.
-   * @param {boolean} active The new shadow state.
-   */
-  setShadow = (active) => {
-    if (this.state.shadow === active) {
-      return;
-    }
-
-    this.setState({
-      shadow: active,
-    });
   }
 
   /**
@@ -97,13 +70,6 @@ class ViewContent extends Component {
       });
     }
   }
-
-  /**
-   * Handles the scroll event of this component's element.
-   */
-  handleScroll = throttle(() => {
-    this.setShadow(this.element.current.scrollTop !== 0);
-  }, 10);
 
   /**
    * Handles the swipe down gesture.
@@ -127,6 +93,10 @@ class ViewContent extends Component {
     this.element.current.dispatchEvent(swipeEvent);
   };
 
+  handleScroll = debounce(() => {
+    this.props.setOffsetY('scrollOffsetY', this.element.current.scrollTop);
+  }, 50);
+
   /**
    * @return {JSX}
    */
@@ -149,11 +119,17 @@ class ViewContent extends Component {
  * @return {JSX}
  */
 const ViewContentConsumer = props => (
-  <RouteContext.Consumer>
-    {({ state }) => (
-      <ViewContent {...props} title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName} />
-    )}
-  </RouteContext.Consumer>
+  <ViewProvider>
+    <RouteContext.Consumer>
+      {({ state }) => (
+        <ViewContext.Consumer>
+          {({ set }) => (
+            <ViewContent {...props} setOffsetY={set} title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName} />
+          )}
+        </ViewContext.Consumer>
+      )}
+    </RouteContext.Consumer>
+  </ViewProvider>
 );
 
 export default ViewContentConsumer;

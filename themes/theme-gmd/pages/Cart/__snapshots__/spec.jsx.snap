@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Cart> page should match snapshot 1`] = `
-<_default
+<View
   background="#f8f8f8"
+  hasNavigator={true}
+  isFullscreen={false}
 >
   <Consume
     context={
@@ -28,5 +30,5 @@ exports[`<Cart> page should match snapshot 1`] = `
   >
     <Component />
   </Consume>
-</_default>
+</View>
 `;
