@@ -29,25 +29,26 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       data-test-id={null}
       onClick={[Function]}
     >
+      <div />
       <div
         className={
           Object {
-            "data-css-45t5cu": "",
+            "data-css-1j1ou1w": "",
           }
         }
       >
         <Chevron
-          className="css-lklcs2"
+          className="css-paji06"
         >
           <Icon
-            className="css-lklcs2"
+            className="css-paji06"
             color={null}
             content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
             size="inherit"
             viewBox="0 0 24 24"
           >
             <svg
-              className="css-yys9hb css-lklcs2"
+              className="css-yys9hb css-paji06"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",

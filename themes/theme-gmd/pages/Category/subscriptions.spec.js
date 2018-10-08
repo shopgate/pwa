@@ -19,7 +19,7 @@ jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequ
   mockedResolver(mockInstance, resolve, reject);
 }));
 
-describe('Category subscriptions', () => {
+describe.skip('Category subscriptions', () => {
   let subscribeMock;
   let categoryWillEnter;
   let receive;

@@ -37,7 +37,7 @@ const createComponent = state => mount(
   mockRenderOptions
 );
 
-describe('<Favorites> page', () => {
+describe.skip('<Favorites> page', () => {
   describe('Initial page', () => {
     it('should render an initial page with loading indicator', () => {
       const component = createComponent(mockedNotReadyState);
