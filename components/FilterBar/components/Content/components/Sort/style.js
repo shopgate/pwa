@@ -34,9 +34,9 @@ const dropdown = css({
   position: 'absolute',
   width: '100%',
   zIndex: 2,
-  top: variables.filterbar.height,
+  top: '100%',
   left: 0,
-  backgroundColor: colors.background,
+  background: colors.background,
   boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
 }).toString();
 
