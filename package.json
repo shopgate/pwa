@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
+    "add-remotes": "node ./scripts/add-remotes.js",
+    "remove-remotes": "node ./scripts/remove-remotes.js",
     "clean": "make clean",
     "test": "jest",
     "test:watch": "jest --watch",
