@@ -1,0 +1,192 @@
+{
+  "version": "6.0.0-beta.13",
+  "id": "@shopgate/theme-gmd",
+  "configuration": {
+    "appId": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(appId)s"
+      }
+    },
+    "colors": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": {},
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors?parsed=true",
+        "key": "value"
+      }
+    },
+    "forgotPasswordUrl": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
+        "key": "value"
+      }
+    },
+    "hasFavorites": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_favorites?parsed=true",
+        "key": "value"
+      }
+    },
+    "hasReviews": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
+        "key": "value"
+      }
+    },
+    "showWriteReview": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_show_write_review?parsed=true",
+        "key": "value"
+      }
+    },
+    "language": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "languageId"
+      }
+    },
+    "logo": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "imageUrl"
+      }
+    },
+    "marketId": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "marketId"
+      }
+    },
+    "productPropertiesFilter": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/sg_connect_product_properties?parsed=true",
+        "key": "value"
+      }
+    },
+    "publicPath": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(publicPath)s/%(appId)s/%(themes[0].id)s/%(themes[0].version)s"
+      }
+    },
+    "shopName": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "name"
+      }
+    },
+    "shopCNAME": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "cname"
+      }
+    },
+    "webCheckoutShopify": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
+        "key": "value.frontend"
+      }
+    },
+    "apiUrl": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(browserApplicationAddress)s"
+      }
+    },
+    "browserConnector": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Use browser connector?",
+        "required": true
+      }
+    },
+    "currency": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "currencyId"
+      }
+    },
+    "showGmdMenuSubHeaders": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Show GMD menu headers"
+      }
+    },
+    "benchmark": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Enable / disable frontend benchmarking tools"
+      }
+    }
+  }
+}

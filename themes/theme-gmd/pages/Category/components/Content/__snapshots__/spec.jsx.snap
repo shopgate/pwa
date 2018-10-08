@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Content /> should render 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(CategoryContent)
+    categoryId="1234"
+  >
+    <CategoryContent
+      categoryId="1234"
+      dispatch={[Function]}
+      hasChildren={false}
+      hasProducts={false}
+    >
+      <Connect(CategoryListContent)
+        categoryId="1234"
+      >
+        <CategoryListContent
+          categories={null}
+          categoryId="1234"
+          childrenCount={null}
+          dispatch={[Function]}
+          hasChildren={false}
+        >
+          <Portal
+            name="category.list.before"
+            props={
+              Object {
+                "categoryId": "1234",
+              }
+            }
+          />
+          <Portal
+            name="category.list"
+            props={
+              Object {
+                "categoryId": "1234",
+              }
+            }
+          />
+          <Portal
+            name="category.list.after"
+            props={
+              Object {
+                "categoryId": "1234",
+              }
+            }
+          />
+        </CategoryListContent>
+      </Connect(CategoryListContent)>
+      <ProductsContent
+        categoryId="1234"
+        hasProducts={false}
+      >
+        <Portal
+          name="product.list.before"
+          props={
+            Object {
+              "categoryId": "1234",
+            }
+          }
+        />
+        <Portal
+          name="product.list"
+          props={
+            Object {
+              "categoryId": "1234",
+            }
+          }
+        />
+        <Portal
+          name="product.list.after"
+          props={
+            Object {
+              "categoryId": "1234",
+            }
+          }
+        />
+      </ProductsContent>
+      <Connect(Empty)
+        bodyText="category.no_result.body"
+        categoryId="1234"
+        headlineText="category.no_result.heading"
+      >
+        <Empty
+          bodyText="category.no_result.body"
+          categoryId="1234"
+          dispatch={[Function]}
+          headlineText="category.no_result.heading"
+          isVisible={false}
+        />
+      </Connect(Empty)>
+    </CategoryContent>
+  </Connect(CategoryContent)>
+</Provider>
+`;

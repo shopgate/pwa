@@ -1,0 +1,27 @@
+cache:
+  yarn: true
+  directories:
+    - node_modules
+language: node_js
+node_js:
+- "10"
+cache:
+  directories:
+    - node_modules
+install:
+  - yarn install
+script: yarn run cover --maxWorkers=4 --ci
+after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+branches:
+  only:
+  - develop
+  - PWA-327-Exchange-Router
+notifications:
+  email: false
+  slack:
+    template:
+      - "%{repository_slug}"
+      - "<%{build_url}|#%{build_number}> - %{message}"
+      - "Commit: \"%{commit_subject}\" by %{author}"
+    rooms:
+      - secure: m/wRbMQhDcYaOhHE/z5gY836DG0SexpvH6ax6vPKmS35sgoDmdKo4IL4N3pJ+rDSb6ED78CjaL9Feu78gstCizWe/pYXBwokncqPkHmq5WqZR/BXgX65yUXXUK/CjNDGKVThrViRPosok+cs3oGebw9phZ8Kcl2zordoZOzAddklyE8zhpcRl6QVsJFC3LK+C8rYEiQjn7ThB8yiih9bZFMaYpERs/Zv3KIpyMwizE3QKhtdt99aDGAYCnbsPk9tc90RIbul/FYKklWvPmYSMuXYOcOvM9Qsuk5fls0tK/M2rQaNpIXz8GUWWHnwbhZTosu6gJGN42FGtKXHus55M9ddId+fbKuf1A8E83UgabSD6YG5auRDHOYxQlFLMsKPqJNTMG+UbUg65uutzEtmarhlsV/Sf+gpRZENYT7LtRJ1MHNh3s0XKlOp0voHNH5iD6Wib/nljgq7ETr/9uw90KUEyEM49T9AvS9/8W3sjGq+2Or5x9hZRTfRbqHp735US1kjLIXrwpLwtIX4fYGbKynlxTP68dU54FDeG5BMsNisaYW3COhNQifKTTbcVGHZfiKZjPdExnDmb8hHUkYIzJTLKwJNunHWWHwQzNz0UVRbjCWfEFDXeC8Y9apPoDR2/XqhxVjfWWxLRxri0QwGLK0XdDqd6DIItd3Oed1zR4s=

@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormButtons /> should render submit and cancel button 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(FormButtons)>
+    <FormButtons
+      cancel={[Function]}
+      isLoading={false}
+    >
+      <div
+        className="css-1v7qljm"
+      >
+        <button
+          className="css-kevfw8 css-1mhi2x7"
+          data-test-id="reviewCancelButton"
+          onClick={[Function]}
+          type="button"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string="common.cancel"
+          >
+            <span
+              className=""
+            >
+              common.cancel
+            </span>
+          </Translate>
+        </button>
+        <RippleButton
+          className=""
+          disabled={false}
+          flat={false}
+          onClick={null}
+          rippleClassName=""
+          rippleSize={null}
+          testId="sendReviewButton"
+          type="secondary"
+          wrapContent={true}
+        >
+          <Button
+            className=""
+            disabled={false}
+            flat={false}
+            onClick={null}
+            testId="sendReviewButton"
+            type="secondary"
+            wrapContent={false}
+          >
+            <Button
+              className="css-187rja2 "
+              disabled={false}
+              onClick={null}
+              testId="sendReviewButton"
+            >
+              <button
+                className="css-187rja2  css-1rn65c0"
+                data-test-id="sendReviewButton"
+                disabled={false}
+                onClick={null}
+              >
+                <Ripple
+                  className="css-8s1fw2 "
+                  color="#000"
+                  disabled={false}
+                  fill={true}
+                  onClick={[Function]}
+                  onComplete={[Function]}
+                  overflow={false}
+                  size={null}
+                >
+                  <div
+                    aria-hidden={true}
+                    className="css-8s1fw2 "
+                    data-test-id="Ripple"
+                    onClick={[Function]}
+                    style={null}
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="common.submit"
+                    >
+                      <span
+                        className=""
+                      >
+                        common.submit
+                      </span>
+                    </Translate>
+                  </div>
+                </Ripple>
+              </button>
+            </Button>
+          </Button>
+        </RippleButton>
+      </div>
+    </FormButtons>
+  </Connect(FormButtons)>
+</Provider>
+`;

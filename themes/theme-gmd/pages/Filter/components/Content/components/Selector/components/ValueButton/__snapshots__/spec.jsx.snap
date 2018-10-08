@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ValueButton /> should handle click event 1`] = `
+<button
+  className="css-ssdcv1"
+  data-test-id="someid"
+  onClick={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  value="someid"
+>
+  somelabel
+</button>
+`;
+
+exports[`<ValueButton /> should render as active 1`] = `
+<button
+  className="css-1h48rjj"
+  data-test-id="someid"
+  onClick={[Function]}
+  value="someid"
+>
+  somelabel
+</button>
+`;
+
+exports[`<ValueButton /> should render as inactive 1`] = `
+<button
+  className="css-ssdcv1"
+  data-test-id="someid"
+  onClick={[Function]}
+  value="someid"
+>
+  somelabel
+</button>
+`;

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart> page should match snapshot 1`] = `
+<_default
+  background="#f8f8f8"
+>
+  <Consume
+    context={
+      Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": null,
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
+      }
+    }
+    props={
+      Object {
+        "visible": "visible",
+      }
+    }
+  >
+    <Component />
+  </Consume>
+</_default>
+`;

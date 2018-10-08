@@ -1,0 +1,166 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {Nog maar {time} over} =1 {# day {time}} other {# days {time}}}",
+    "load_more": "Laad meer",
+    "cancel": "Annuleer",
+    "submit": "Zend in",
+    "undo": "Ongedaan maken"
+  },
+  "titles": {
+    "categories": "Alle Categorieën",
+    "filter": "Filter",
+    "cart": "Winkelwagen",
+    "shipping": "Verzending",
+    "reviews": "Reviews",
+    "browse": "Bladeren",
+    "favorites": "Favorieten"
+  },
+  "favorites": {
+    "add": "Voeg aan favorieten toe",
+    "continue": "Doorgaan met winkelen",
+    "empty": "U heeft geen favorieten",
+    "error_add": "Product kon niet aan favorieten worden toegevoegd",
+    "error_remove": "Product kon niet van favorieten verwijderd worden",
+    "remove": "Verwijder van favorieten",
+    "removed": "Verwijderd van favorieten",
+    "modal": {
+      "message": "Om dit product aan uw winkelwagen toe te voegen, selecteer alstublieft de varianten.",
+      "confirm": "Selecteer varianten"
+    }
+  },
+  "filter": {
+    "sort": {
+      "default": "Sorteer op",
+      "most_popular": "Meest populair",
+      "price_desc": "Prijs: Hoog naar Laag",
+      "price_asc": "Prijs: Laag naar Hoog"
+    },
+    "apply": "Toepassen",
+    "more": "meer",
+    "clear": "Wissen",
+    "clear_all": "Wis alles",
+    "view_all": "Bekijk alles"
+  },
+  "price": {
+    "from": "Vanaf {price}",
+    "range": "Prijs van {fromPrice} tot {toPrice}",
+    "tier": {
+      "set": "{from} items: {price}",
+      "range": "{from} of meer dan: {price}"
+    },
+    "msrp": "MSRP",
+    "currency": "EUR"
+  },
+  "product": {
+    "description_heading": "Over",
+    "pick_an_attribute": "Kies een {0}",
+    "tax_disclaimer": "* Incl. BTW plus verzendkosten",
+    "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
+    "add_to_cart": "Voeg aan winkelwagen toe",
+    "go_to_cart": "Winkelwagen"
+  },
+  "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Categorie niet gevonden"
+    },
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Geen producten gevonden."
+    }
+  },
+  "search": {
+    "label": "Zoek",
+    "cancel": "Annuleer",
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
+    }
+  },
+  "shipping": {
+    "unknown": "plus verzendkosten",
+    "free": "Gratis verzending",
+    "free_short": "Gratis",
+    "cost": "{price} verzendkosten"
+  },
+  "liveshopping": {
+    "discount_badge": "BESPAAR {0}%"
+  },
+  "modal": {
+    "confirm": "Bevestig",
+    "dismiss": "Verwerpen",
+    "ok": "Ok",
+    "title_error": "Oops!",
+    "body_error": "Een onverwachte fout is opgetreden. Probeer opnieuw."
+  },
+  "cart": {
+    "subtotal": "Subtotaal",
+    "checkout": "Afrekenen",
+    "remove": "Verwijderen",
+    "edit": "Wijzig",
+    "empty": "Uw winkelwagen is leeg",
+    "continue": "Winkel verder",
+    "redeem_coupon": "Voer coupon code in",
+    "coupon_code": "Code",
+    "default_coupon_label": "Coupon",
+    "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
+    "coupons_not_supported": "Voeg coupons en cadeaubonnen toe tijdens het afprekenproces."
+  },
+  "login": {
+    "headline": "Welkom",
+    "subline": "Log in om door te gaan",
+    "email": "E-mail adres",
+    "password": "Wachtwoord",
+    "forgot_password": "Wachtwoord vergeten?",
+    "forgot_password_popup": "Gebruik alsublieft de desktop website om uw wachtwoord te resetten.",
+    "button": "Log in",
+    "no_account": "Heeft u geen account?",
+    "signup": "Registreer",
+    "logout_message": "U bent uitgelogd.",
+    "error": "Uw gebruikersnaam en wachtwoord matchen geen account."
+  },
+  "navigation": {
+    "login_register": "Log in / Registreer",
+    "your_account": "Uw Account",
+    "home": "Home",
+    "categories": "Categorieën",
+    "my_orders": "Mijn bestellingen",
+    "cart": "Winkelwagen",
+    "shipping": "Verzendmethoden",
+    "about": "Over",
+    "contact": "Contact",
+    "payment": "Betalingsmethoden",
+    "terms": "Algemene Voorwaarden",
+    "privacy": "Privacybeleid",
+    "welcome_message": "Welkom {name}",
+    "return_policy": "Retourbeleid",
+    "logout": "Log uit",
+    "store_information": "Winkel Informatie",
+    "more_menu": "Meer"
+  },
+  "reviews": {
+    "rating": "Rating",
+    "no_reviews": "Wees de eerste die dit product beoordeelt:",
+    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
+    "button_add": "Schrijf een beoordeling",
+    "button_all": "Alle {count} Beoordelingen",
+    "author": "by {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
+    "review_form_rate": "Beoordeel dit product:",
+    "review_form_author": "Uw naam",
+    "review_form_title": "Review titel (optioneel)",
+    "review_form_text": "Product review (optioneel)",
+    "review_form_error_author_empty": "Voer alstublieft uw naam in.",
+    "review_form_rate_error": "Selecteer alstublieft een sterrenbeoordeling.",
+    "review_form_error_length": "Maximum lengte {length} karakters.",
+    "press_to_rate_with_x_stars": "Selecteer om te waarderen met {rate} {rate, plural, =1 {star} other {stars}}.",
+    "success_message": "Bedankt voor uw beoordeling!"
+  },
+  "tab_bar": {
+    "home": "Home",
+    "browse": "Bladeren",
+    "cart": "Winkelwagen",
+    "more": "Meer",
+    "favorites": "Favorieten"
+  }
+}
