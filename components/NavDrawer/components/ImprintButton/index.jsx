@@ -18,7 +18,7 @@ const PAYMENT_PATH = `${PAGE_PATH}/imprint`;
  * @param {Function} props.navigate The navigate action.
  * @returns {JSX}
  */
-const ReturnsButton = ({ navigate }) => (
+const ImprintButton = ({ navigate }) => (
   <Fragment>
     <Portal name={NAV_MENU_IMPRINT_BEFORE} />
     <Portal name={NAV_MENU_IMPRINT}>
@@ -33,8 +33,8 @@ const ReturnsButton = ({ navigate }) => (
   </Fragment>
 );
 
-ReturnsButton.propTypes = {
+ImprintButton.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default connect(ReturnsButton);
+export default connect(ImprintButton);

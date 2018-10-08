@@ -1,14 +1,15 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
-import Reviews from 'Components/Reviews';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import Reviews from 'Components/Reviews';
 import ImageSlider from '../ImageSlider';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
 import Description from '../Description';
 import Properties from '../Properties';
+import AppBar from '../AppBar';
 import connect from './connector';
 import { ProductContext } from '../../context';
 
@@ -98,20 +99,23 @@ class ProductContent extends PureComponent {
     };
 
     return (
-      <ProductContext.Provider value={contextValue}>
-        <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
-        <Header />
-        <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
-        <Options
-          productId={id}
-          storeSelection={this.storeOptionSelection}
-          currentOptions={this.state.options}
-        />
-        <Description productId={this.state.productId} variantId={this.state.variantId} />
-        <Properties productId={this.state.productId} variantId={this.state.variantId} />
-        <Reviews productId={this.state.productId} />
-        <TaxDisclaimer />
-      </ProductContext.Provider>
+      <Fragment>
+        <AppBar productId={this.state.productId} />
+        <ProductContext.Provider value={contextValue}>
+          <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
+          <Header />
+          <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
+          <Options
+            productId={id}
+            storeSelection={this.storeOptionSelection}
+            currentOptions={this.state.options}
+          />
+          <Description productId={this.state.productId} variantId={this.state.variantId} />
+          <Properties productId={this.state.productId} variantId={this.state.variantId} />
+          <Reviews productId={this.state.productId} />
+          <TaxDisclaimer />
+        </ProductContext.Provider>
+      </Fragment>
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'Components/Reviews/components/Header';
 import List from 'Components/Reviews/components/List';
+import { BackBar } from 'Components/AppBar/presets';
 import LoadMoreButton from '../LoadMore';
 import connect from './connector';
 
@@ -11,6 +12,7 @@ import connect from './connector';
  */
 const ReviewsContent = ({ productId, rating, reviews }) => (
   <Fragment>
+    <BackBar title="titles.reviews" right={null} />
     <Header productId={productId} rating={rating} withTopGap />
     <List productId={productId} reviews={reviews} />
     <LoadMoreButton productId={productId} />
