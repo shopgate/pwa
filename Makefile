@@ -4,7 +4,7 @@ export FORCE_COLOR = true
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 UTILS = eslint-config unit-tests e2e benchmark
-THEMES = gmd ios11
+THEMES = theme-gmd theme-ios11
 REPO_VERSION = ''
 GITHUB_AUTH_KEY = ''
 
@@ -134,13 +134,13 @@ else
 endif
 
 e2e-gmd:
-		cd themes/gmd && yarn run e2e
+		cd themes/theme-gmd && yarn run e2e
 
 e2e-ios11:
-		cd themes/ios11 && yarn run e2e
+		cd themes/theme-ios11 && yarn run e2e
 
 e2e-checkout:
-		cd themes/gmd && yarn run e2e:checkout
+		cd themes/theme-gmd && yarn run e2e:checkout
 
 # DEFINITIONS
 
