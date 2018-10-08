@@ -76,6 +76,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                   color="#000"
                   disabled={false}
                   fill={true}
+                  onClick={[Function]}
                   onComplete={[Function]}
                   overflow={false}
                   size={null}

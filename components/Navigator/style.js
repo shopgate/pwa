@@ -3,15 +3,15 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const header = css({
-  position: 'fixed',
+  background: colors.light,
   height: `calc(${variables.navbar.height}px + var(--safe-area-inset-top))`,
-  paddingTop: 'var(--safe-area-inset-top)',
   left: 0,
+  paddingTop: 'var(--safe-area-inset-top)',
+  position: 'fixed',
   top: 0,
   width: '100%',
-  background: colors.light,
   zIndex: 2,
-}).toString();
+});
 
 const grid = css({
   alignItems: 'center',
@@ -19,23 +19,22 @@ const grid = css({
 }).toString();
 
 const title = css({
-  position: 'relative',
-  display: 'flex',
-  height: '100%',
   alignItems: 'center',
-  paddingLeft: variables.gap.big,
-  paddingRight: variables.gap.big,
+  display: 'flex',
   fontSize: '1.25rem',
   fontWeight: 500,
+  height: '100%',
+  padding: `0 ${variables.gap.big}`,
+  position: 'relative',
 }).toString();
 
-const applyButton = css({
-  marginRight: 4,
-}).toString();
+const portal = css({
+  height: '100%',
+});
 
 export default {
   header,
   grid,
   title,
-  applyButton,
+  portal,
 };

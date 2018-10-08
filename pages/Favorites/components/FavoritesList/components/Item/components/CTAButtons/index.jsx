@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
@@ -8,88 +8,98 @@ import styles from './style';
 import connect from './connector';
 
 /**
- * Handles the add to cart action.
- * @param {Object} props The Component props
+ * Favorites item CTA buttons.
  */
-const handleAddToCart = ({
-  productId, addToCart, showVariantModal, isBaseProduct,
-}) => {
-  if (isBaseProduct) {
-    showVariantModal(productId);
-    return;
-  }
-
-  const productData = {
-    productId,
-    quantity: 1,
+class CTAButtons extends Component {
+  static propTypes = {
+    productId: PropTypes.string.isRequired,
+    active: PropTypes.bool,
+    addToCart: PropTypes.func,
+    favoritesOnce: PropTypes.bool,
+    hasVariants: PropTypes.bool,
+    isBaseProduct: PropTypes.bool,
+    isOrderable: PropTypes.bool,
+    onRippleComplete: PropTypes.func,
+    removeThrottle: PropTypes.number,
+    showVariantModal: PropTypes.func,
   };
 
-  addToCart([productData]);
-};
+  static defaultProps = {
+    active: null,
+    addToCart: () => {},
+    favoritesOnce: false,
+    isBaseProduct: true,
+    isOrderable: true,
+    hasVariants: false,
+    onRippleComplete: () => {},
+    removeThrottle: null,
+    showVariantModal: () => {},
+  };
 
-/**
- * Favorites item CTA buttons
- * @param {Object} props The component props.
- * @constructor
- */
-const CTAButtons = props => (
-  <div className={styles.ctaButtonWrapper}>
-    <FavoritesButton
-      productId={props.productId}
-      active={props.active}
-      removeThrottle={props.removeThrottle}
-      onRippleComplete={props.onRippleComplete}
-      once={props.favoritesOnce}
-      readOnlyOnFetch
-    />
-    <Portal name={portals.FAVORITES_ADD_TO_CART_BEFORE} />
-    <Portal
-      name={portals.FAVORITES_ADD_TO_CART}
-      props={{
-        className: styles.cartButton,
-        handleAddToCart: () => handleAddToCart(props),
-        isLoading: false,
-        isBaseProduct: props.isBaseProduct,
-        isDisabled: !props.isOrderable,
-        noShadow: false,
-        productId: props.productId,
-      }}
-    >
-      <AddToCartButton
-        className={styles.cartButton}
-        handleAddToCart={() => handleAddToCart(props)}
-        isLoading={false}
-        isDisabled={!props.isOrderable}
-        isOrderable={!props.isBaseProduct && props.isOrderable}
-      />
-    </Portal>
-    <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />
-  </div>
-);
+  /**
+   * @return {Object}
+   */
+  get portalProps() {
+    return {
+      className: styles.cartButton,
+      handleAddToCart: this.handleAddToCart,
+      isLoading: false,
+      isBaseProduct: this.props.isBaseProduct,
+      isDisabled: !this.props.isOrderable,
+      noShadow: false,
+      productId: this.props.productId,
+    };
+  }
 
-/* eslint-disable react/no-unused-prop-types */
-CTAButtons.propTypes = {
-  productId: PropTypes.string.isRequired,
-  active: PropTypes.bool,
-  addToCart: PropTypes.func,
-  favoritesOnce: PropTypes.bool,
-  isBaseProduct: PropTypes.bool,
-  isOrderable: PropTypes.bool,
-  onRippleComplete: PropTypes.func,
-  removeThrottle: PropTypes.number,
-  showVariantModal: PropTypes.func,
-};
+  /**
+   * Handles the add to cart action.
+   * @param {Object} props The Component props
+   */
+  handleAddToCart = () => {
+    if (this.props.isBaseProduct && this.props.hasVariants) {
+      this.props.showVariantModal(this.props.productId);
+      return;
+    }
 
-CTAButtons.defaultProps = {
-  active: null,
-  addToCart: () => {},
-  favoritesOnce: false,
-  isBaseProduct: true,
-  isOrderable: true,
-  onRippleComplete: () => {},
-  removeThrottle: null,
-  showVariantModal: () => {},
-};
-/* eslint-enable react/no-unused-prop-types */
+    const productData = {
+      productId: this.props.productId,
+      quantity: 1,
+    };
+
+    this.props.addToCart(productData);
+  };
+
+  /**
+   * @return {JSX}
+   */
+  render() {
+    return (
+      <div className={styles.ctaButtonWrapper}>
+        <FavoritesButton
+          productId={this.props.productId}
+          active={this.props.active}
+          removeThrottle={this.props.removeThrottle}
+          onRippleComplete={this.props.onRippleComplete}
+          once={this.props.favoritesOnce}
+          readOnlyOnFetch
+        />
+        <Portal name={portals.FAVORITES_ADD_TO_CART_BEFORE} />
+        <Portal
+          name={portals.FAVORITES_ADD_TO_CART}
+          props={this.portalProps}
+        >
+          <AddToCartButton
+            className={styles.cartButton}
+            onClick={this.handleAddToCart}
+            isLoading={false}
+            isDisabled={!this.props.isOrderable}
+            isOrderable={!this.props.isBaseProduct && this.props.isOrderable}
+          />
+        </Portal>
+        <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />
+      </div>
+    );
+  }
+}
 
 export default connect(CTAButtons);

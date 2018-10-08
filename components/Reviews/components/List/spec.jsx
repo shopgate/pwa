@@ -8,6 +8,7 @@ describe('<List />', () => {
 
   const reviews = [
     {
+      id: 'a',
       author: '',
       date: '2017-09-06T12:38:51.000Z',
       rate: 100,
@@ -15,6 +16,7 @@ describe('<List />', () => {
       review: 'No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.',
     },
     {
+      id: 'b',
       author: 'username123',
       date: '2017-09-06T12:37:40.000Z',
       rate: 40,
@@ -22,6 +24,7 @@ describe('<List />', () => {
       review: 'Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.',
     },
     {
+      id: 'c',
       author: 'Carina Hoffmann',
       date: '2017-09-06T12:30:23.000Z',
       rate: 60,
@@ -29,6 +32,7 @@ describe('<List />', () => {
       review: 'Test review',
     },
     {
+      id: 'd',
       author: '',
       date: '2017-09-06T12:30:23.000Z',
       rate: 20,
@@ -50,7 +54,7 @@ describe('<List />', () => {
     list.setProps({ reviews });
 
     expect(list).toMatchSnapshot();
-    expect(list.find('Review').exists()).toBe(true);
+    expect(list.find('List > div').exists()).toBe(true);
 
     list.find('Review').forEach((node, i) => {
       const ratingNode = node.find('Rating');

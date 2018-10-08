@@ -1,8 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
 import List from '../../index';
+
+jest.mock('@shopgate/pwa-common/components/Link', () => {
+  /**
+   * Mocked LinkComponent.
+   * @return {JSX}
+   */
+  const Link = () => <div />;
+  return Link;
+});
 
 describe('<List.Item />', () => {
   const title = 'My Title';
@@ -53,7 +61,7 @@ describe('<List.Item />', () => {
     const wrapper = mount(<List.Item title={title} link="url/to/somewhere" />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Link).exists()).toBeTruthy();
+    expect(wrapper.find('Link').exists()).toBeTruthy();
   });
 
   it('should render with an onClick element', () => {

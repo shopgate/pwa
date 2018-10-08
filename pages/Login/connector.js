@@ -1,4 +1,4 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import login from '@shopgate/pwa-common/actions/user/login';
 import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  login: credentials => dispatch(login(credentials)),
+  login: (credentials, redirect) => dispatch(login(credentials, redirect)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(mapStateToProps, mapDispatchToProps);

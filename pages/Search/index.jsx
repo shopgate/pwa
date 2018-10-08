@@ -1,55 +1,43 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import FilterBar from 'Components/FilterBar';
+import React, { PureComponent } from 'react';
+import Consume from '@shopgate/pwa-common/components/Consume';
 import View from 'Components/View';
-import Products from 'Pages/Category/components/Products';
-import NoResults from '@shopgate/pwa-ui-shared/NoResults';
-import connect from './connector';
+import { RouteContext } from '@virtuous/react-conductor/Router';
+import colors from 'Styles/colors';
+import Content from './components/Content';
+
+const map = {
+  searchPhrase: 'query.s',
+  visible: 'visible',
+};
 
 /**
- * The Search view component.
+ * The search page component.
  */
-class Search extends Component {
-  static propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    searchPhrase: PropTypes.string.isRequired,
-    isFilterBarShown: PropTypes.bool,
-    products: PropTypes.arrayOf(PropTypes.shape()),
-  };
-
-  static defaultProps = {
-    products: [],
-    isFilterBarShown: true,
-  };
-
+class Search extends PureComponent {
   /**
-   * Returns the number of received products.
+   * @param {Object} props the consumed props.
+   * @returns {JSX}
    */
-  get hasProducts() {
-    return this.props.products.length > 0;
+  consumeRenderer = ({ searchPhrase, visible }) => {
+    if (!visible) {
+      return null;
+    }
+
+    return <Content searchPhrase={searchPhrase} />;
   }
 
   /**
-   * Renders the component.
    * @returns {JSX}
    */
   render() {
-    const { isLoading, searchPhrase } = this.props;
-
     return (
-      <View title={searchPhrase}>
-        {(this.props.isFilterBarShown) && <FilterBar />}
-        <Products />
-        {(!this.hasProducts && !isLoading) && (
-          <NoResults
-            headlineText="search.no_result.heading"
-            bodyText="search.no_result.body"
-            searchPhrase={searchPhrase}
-          />
-        )}
+      <View background={colors.background}>
+        <Consume context={RouteContext} props={map}>
+          {this.consumeRenderer}
+        </Consume>
       </View>
     );
   }
 }
 
-export default connect(Search);
+export default Search;

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
+import { REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import View from 'Components/View';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PAGE_LOGIN_BEFORE,
@@ -16,10 +19,14 @@ import {
   PAGE_LOGIN_FORM,
   PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
 import styles from './style';
+
+const defaultState = {
+  login: '',
+  password: '',
+};
 
 /**
  * The login view component.
@@ -27,12 +34,16 @@ import styles from './style';
 class Login extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool,
+    redirect: PropTypes.shape(),
   };
 
   static defaultProps = {
     isLoading: false,
+    redirect: {},
   };
+
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -43,10 +54,19 @@ class Login extends Component {
     this.userField = null;
     this.passwordField = null;
 
-    this.state = {
-      login: '',
-      password: '',
-    };
+    this.state = defaultState;
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  componentWillReceiveProps(nextProps) {
+    /**
+     * Reset the form values when the page is not visible to the user.
+     */
+    if (this.props.visible && !nextProps.visible) {
+      this.setState(defaultState);
+    }
   }
 
   /**
@@ -91,8 +111,9 @@ class Login extends Component {
     // Blur all the fields.
     this.userField.blur();
     this.passwordField.blur();
-    // Submit the form data.
-    this.props.login(this.state);
+
+    const { redirect = {} } = this.props;
+    this.props.login(this.state, redirect);
   };
 
   /**
@@ -150,7 +171,7 @@ class Login extends Component {
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
               <Portal name={PAGE_LOGIN_REGISTER_LINK} >
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
-                <Link href="/register" className={styles.signup}>
+                <Link href={REGISTER_PATH} className={styles.signup}>
                   <I18n.Text string="login.register" />
                 </Link>
               </Portal>
@@ -164,4 +185,14 @@ class Login extends Component {
   }
 }
 
-export default connect(Login);
+export default connect(props => (
+  <RouteContext.Consumer>
+    {({ state, visible }) => (
+      <Login
+        {...props}
+        redirect={state.redirect}
+        visible={visible}
+      />
+    )}
+  </RouteContext.Consumer>
+));

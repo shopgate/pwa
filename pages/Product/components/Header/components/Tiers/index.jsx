@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import pure from 'recompose/pure';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_TIERS,
+  PRODUCT_TIERS_AFTER,
+  PRODUCT_TIERS_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import Tier from './components/Tier';
 import connect from './connector';
 import styles from './style';
 
@@ -10,32 +17,20 @@ import styles from './style';
  * @return {JSX}
  */
 const Tiers = ({ price }) => {
-  if (!(price && price.tiers && price.tiers.length)) {
+  if (!(price && price.tiers && price.tiers.length > 0)) {
     return null;
   }
 
   return (
-    <div className={styles.wrapper}>
-      {price.tiers.map((tier) => {
-        // Skip tier if tier price is equal the product price
-        if (tier.unitPrice === price.totalPrice) {
-          return null;
-        }
-
-        const i18nKey = tier.from === tier.to ? 'price.tier.set' : 'price.tier.range';
-
-        return (
-          <I18n.Text
-            string={i18nKey}
-            params={{ from: tier.from }}
-            key={tier.from}
-            className={styles.tier}
-          >
-            <I18n.Price forKey="price" price={tier.unitPrice} currency={price.currency} className={styles.price} />
-          </I18n.Text>
-        );
-      })}
-    </div>
+    <Fragment>
+      <Portal name={PRODUCT_TIERS_BEFORE} />
+      <Portal name={PRODUCT_TIERS}>
+        <div className={styles.wrapper}>
+          {price.tiers.map(tier => <Tier tier={tier} price={price} key={`${Object.values(tier).join('_')}`} />)}
+        </div>
+      </Portal>
+      <Portal name={PRODUCT_TIERS_AFTER} />
+    </Fragment>
   );
 };
 
@@ -48,4 +43,4 @@ Tiers.defaultProps = {
 };
 
 export { Tiers as TiersUnconnected };
-export default connect(Tiers);
+export default connect(pure(Tiers));

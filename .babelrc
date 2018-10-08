@@ -10,6 +10,7 @@
     "transform-class-properties",
     "transform-export-extensions",
     "transform-react-jsx-source",
+    "transform-decorators-legacy",
     "dynamic-import-webpack",
     [
       "module-resolver",

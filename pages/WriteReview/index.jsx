@@ -1,35 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
 import ReviewForm from './components/ReviewForm';
 
 /**
  * The view that holds a review form.
+ * @param {string} productId The product id prop
+ * @return {JSX}
+ * @constructor
  */
-class WriteReview extends Component {
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
+const WriteReview = ({ productId }) => (
+  <View>
+    {productId && <ReviewForm productId={productId} />}
+  </View>
+);
 
-  /**
-   * Get view title.
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-    return __('titles.reviews');
-  }
+WriteReview.propTypes = {
+  productId: PropTypes.string,
+};
 
-  /**
-   * Render view
-   * @return {JSX}
-   */
-  render() {
-    return (
-      <View title={this.title}>
-        <ReviewForm />
-      </View>
-    );
-  }
-}
+WriteReview.defaultProps = {
+  productId: null,
+};
 
-export default WriteReview;
+export default () => (
+  <RouteContext.Consumer>
+    {({ params }) => (
+      <WriteReview productId={hex2bin(params.productId) || null} />
+    )}
+  </RouteContext.Consumer>
+);
+
+export { WriteReview as UnwrappedWriteReview };

@@ -1,10 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import SubTotal from './components/Content/components/SubTotal';
 import ShippingCosts from './components/Content/components/ShippingCosts';
 import Content from './components/Content';
 import PaymentBar from './index';
+
+const mockedStore = configureStore();
+jest.mock('../../../../components/View/context.js');
 
 /**
  * Mock the connect() methods of the relevant sub-components.
@@ -70,7 +76,7 @@ jest.mock('./components/Content/components/SubTotalLabel/connector', () => (obj)
   return newObj;
 });
 
-describe.skip('<PaymentBar />', () => {
+describe('<PaymentBar />', () => {
   const testLocales = {
     'shipping.free_short': 'Free',
   };
@@ -82,10 +88,14 @@ describe.skip('<PaymentBar />', () => {
    * @param {Object} props The component props.
    * @return {Object} The mounted component.
    */
-  const renderComponent = (props = {}) => mount((
-    <I18n.Provider lang={langCode} locales={testLocales}>
-      <PaymentBar {...props} currency="USD" />
-    </I18n.Provider>));
+  const renderComponent = (props = {}) => mount(
+    <Provider store={mockedStore()}>
+      <I18n.Provider lang={langCode} locales={testLocales}>
+        <PaymentBar {...props} currency="USD" />
+      </I18n.Provider>
+    </Provider>,
+    mockRenderOptions
+  );
 
   it('should render without any props', () => {
     const wrapper = renderComponent();
@@ -114,15 +124,15 @@ describe.skip('<PaymentBar />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should be visible if prop isVisible is true', () => {
-    const wrapper = renderComponent({ isVisible: true });
+  it('should be visible if prop visible is true', () => {
+    const wrapper = renderComponent({ visible: true });
 
     expect(wrapper.find('FormatPrice').exists()).toBeTruthy();
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should not be visible if prop isVisible is false', () => {
-    const wrapper = renderComponent({ isVisible: false });
+  it('should not be visible if prop visible is false', () => {
+    const wrapper = renderComponent({ visible: false });
 
     expect(wrapper.find('FormatPrice').exists()).toBeFalsy();
     expect(wrapper).toMatchSnapshot();

@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import { history } from '@shopgate/pwa-common/helpers/router';
-import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import variables from 'Styles/variables';
 import parseHTML from '@shopgate/pwa-common/helpers/html/parseHTML';
 import { handleYouTube } from '@shopgate/pwa-common/helpers/html/handleDOM';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The custom HTML widget.
  */
 class Html extends Component {
-  /**
-   * The widget properties.
-   * @type {Object}
-   */
-  static propTypes = {
-    settings: PropTypes.shape({
-      defaultPadding: PropTypes.bool.isRequired,
-      html: PropTypes.string.isRequired,
-    }).isRequired,
-  };
-
   /**
    * Creates the HTML content for the widget.
    * @param {Object} settings The settings of the widget.
@@ -31,6 +19,18 @@ class Html extends Component {
   static createHTML(settings) {
     return parseHTML(settings.html, true, settings, true);
   }
+
+  /**
+   * The widget properties.
+   * @type {Object}
+   */
+  static propTypes = {
+    navigate: PropTypes.func.isRequired,
+    settings: PropTypes.shape({
+      defaultPadding: PropTypes.bool.isRequired,
+      html: PropTypes.string.isRequired,
+    }).isRequired,
+  };
 
   /**
    * Get the escaped HTML from the props, remove and execute the scripts (if any) and put
@@ -99,11 +99,8 @@ class Html extends Component {
     const aTag = e.target.closest('a');
 
     if (aTag && aTag.attributes.href) {
-      const href = aTag.attributes.href.value;
-      const link = new ParsedLink(href);
-
       e.preventDefault();
-      link.open(history);
+      this.props.navigate(aTag.attributes.href.value);
     }
   };
 
@@ -127,4 +124,6 @@ class Html extends Component {
   }
 }
 
-export default Html;
+export default connect(Html);
+
+export { Html as UnwrappedHtml };

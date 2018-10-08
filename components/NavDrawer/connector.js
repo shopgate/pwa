@@ -1,35 +1,16 @@
 import { connect } from 'react-redux';
-import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
-import { hasFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import logout from '@shopgate/pwa-common/actions/user/logout';
-import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import toggleNavDrawer from 'Components/Navigator/actions/toggleNavDrawer';
-import { getMenuById } from './selectors';
-import { QUICKLINKS_MENU } from './constants';
+import { historyPush } from '@shopgate/pwa-common/actions/router';
 
 /**
  * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @return {Object} The extended component props.
- */
-const mapStateToProps = state => ({
-  cartProductCount: getCartProductDisplayCount(state),
-  entries: {
-    quicklinks: getMenuById(state, QUICKLINKS_MENU).entries,
-  },
-  highlightFavorites: hasFavorites(state),
-  navDrawerActive: state.navigator.navDrawerActive,
-  user: isUserLoggedIn(state) ? state.user.data : null,
-});
-
-/**
- * Maps action dispatchers to the component props.
- * @param {function} dispatch The store dispatcher.
- * @return {Object} The extended component props.
+ * @param {Function} dispatch The dispatch method from the store.
+ * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
-  toggleNavDrawer: active => dispatch(toggleNavDrawer(active)),
+  navigate: (pathname, title) => () => dispatch(historyPush({
+    pathname,
+    state: { title },
+  })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(null, mapDispatchToProps);

@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import conductor from '@virtuous/conductor';
+import { UIEvents } from '@shopgate/pwa-core';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import {
   FILTER_TYPE_RANGE,
@@ -7,105 +10,136 @@ import {
 } from '@shopgate/pwa-common-commerce/filter/constants';
 import Chip from '@shopgate/pwa-ui-shared/Chip';
 import ChipLayout from 'Components/ChipLayout';
+import { FILTERBAR_UPDATE } from '../../../../constants';
 import connect from './connector';
 import styles from './style';
 
 /**
- * The Filter Bar Filter Chips component.
- * @param {Object} props The component props.
- * @return {JSX}
+ * The FilterChips component.
  */
-const FilterChips = ({
-  activeFilters,
-  currency,
-  handleFilterRemove,
-  handleOpenFilters,
-  currentPathname,
-}) => {
-  if (activeFilters === null || !Object.keys(activeFilters).length) {
-    return null;
+class FilterChips extends Component {
+  static propTypes = {
+    openFilters: PropTypes.func.isRequired,
+    routeId: PropTypes.string.isRequired,
+    updateFilters: PropTypes.func.isRequired,
+    currentPathname: PropTypes.string,
+    filters: PropTypes.shape(),
+  };
+
+  static defaultProps = {
+    currentPathname: '',
+    filters: null,
+  };
+
+  /**
+   * Triggers an event to have the FilterBar update.
+   */
+  componentDidUpdate() {
+    UIEvents.emit(FILTERBAR_UPDATE);
   }
 
-  const chips = [];
+  /**
+   * Removes the given filter id from the route state.
+   * @param {string} id The id of the filter to remove.
+   * @param {number} value The value to remove (multiselect).
+   */
+  handleRemove = (id, value) => {
+    const { filters, routeId, updateFilters } = this.props;
+    const { [id]: selected, ...rest } = filters;
 
-  Object.keys(activeFilters).forEach((key) => {
-    const filter = activeFilters[key];
+    if (selected.type === FILTER_TYPE_MULTISELECT) {
+      // Check for one key, just remove all in that case
+      if (selected.value.length > 1) {
+        // Remove the index from the selected filter.
+        const newSelected = {
+          ...selected,
+          value: selected.value.filter(entry => entry.id !== value),
+        };
 
-    switch (filter.type) {
-      case FILTER_TYPE_RANGE: {
-        /**
-         * The min and max price need to be rounded before they are passed to the I18n component,
-         * since it rounds to the full nearest number when fractions are deactivated.
-         */
-        const piceMin = Math.floor(filter.minimum / 100);
-        const priceMax = Math.ceil(filter.maximum / 100);
+        const newFilters = {
+          ...filters,
+          [id]: newSelected,
+        };
 
-        chips.push((
-          <Chip
-            key={filter.label}
-            onRemove={() => handleFilterRemove(key)}
-            onClick={handleOpenFilters}
-          >
-            <I18n.Price price={piceMin} currency={currency} fractions={false} />
-            &nbsp;&mdash;&nbsp;
-            <I18n.Price price={priceMax} currency={currency} fractions={false} />
-          </Chip>
-        ));
-
-        break;
+        conductor.update(routeId, { filters: newFilters });
+        updateFilters(newFilters);
+        return;
       }
-      case FILTER_TYPE_MULTISELECT:
-        filter.valueLabels.forEach((value, index) => chips.push((
-          <Chip
-            key={`${filter.label}-${index + 1}`}
-            onRemove={() => handleFilterRemove(key, index)}
-            onClick={handleOpenFilters}
-          >
-            {`${filter.label}: ${value}`}
-          </Chip>
-        )));
-        break;
-      default:
-        chips.push((
-          <Chip
-            key={filter.label}
-            onRemove={() => handleFilterRemove(key)}
-            onClick={handleOpenFilters}
-          >
-            {`${filter.label}: ${filter.valueLabel}`}
-          </Chip>
-        ));
-        break;
     }
-  });
 
-  return (
-    <div className={styles}>
-      <ChipLayout
-        moreLabel="filter.more"
-        handleMoreButton={handleOpenFilters}
-        pathname={currentPathname}
-      >
-        {chips}
-      </ChipLayout>
-    </div>
-  );
-};
+    const newFilters = (Object.keys(rest).length) ? rest : null;
+    conductor.update(routeId, { filters: newFilters });
+    updateFilters(newFilters);
+  }
 
-FilterChips.propTypes = {
-  activeFilters: PropTypes.shape(),
-  currency: PropTypes.string,
-  currentPathname: PropTypes.string,
-  handleFilterRemove: PropTypes.func,
-  handleOpenFilters: PropTypes.func,
-};
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { currentPathname, filters, openFilters } = this.props;
 
-FilterChips.defaultProps = {
-  activeFilters: null,
-  currency: '',
-  currentPathname: '',
-  handleFilterRemove: () => {},
-  handleOpenFilters: () => {},
-};
+    if (filters === null || !Object.keys(filters).length) {
+      return null;
+    }
+
+    const chips = [];
+
+    Object.keys(filters).forEach((key) => {
+      const filter = filters[key];
+
+      switch (filter.type) {
+        case FILTER_TYPE_RANGE: {
+          /**
+           * The min and max price need to be rounded before they are passed to the I18n component,
+           * since it rounds to the full nearest number when fractions are deactivated.
+           */
+          const [minimum, maximum] = filter.value;
+          const piceMin = Math.floor(minimum / 100);
+          const priceMax = Math.ceil(maximum / 100);
+
+          chips.push((
+            <Chip
+              id={key}
+              key={`filter-${key}`}
+              onRemove={this.handleRemove}
+              onClick={openFilters}
+            >
+              <I18n.Price price={piceMin} currency={appConfig.currency} fractions={false} />
+              &nbsp;&mdash;&nbsp;
+              <I18n.Price price={priceMax} currency={appConfig.currency} fractions={false} />
+            </Chip>
+          ));
+
+          break;
+        }
+        default:
+          filter.value.forEach(value => chips.push((
+            <Chip
+              id={value.id}
+              key={`filter-${value.id}`}
+              onRemove={() => this.handleRemove(filter.id, value.id)}
+              onClick={openFilters}
+            >
+              {`${filter.label}: ${value.label}`}
+            </Chip>
+          )));
+
+          break;
+      }
+    });
+
+    return (
+      <div className={styles}>
+        <ChipLayout
+          moreLabel="filter.more"
+          handleMoreButton={openFilters}
+          pathname={currentPathname}
+        >
+          {chips}
+        </ChipLayout>
+      </div>
+    );
+  }
+}
 
 export default connect(FilterChips);

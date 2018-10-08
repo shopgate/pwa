@@ -1,50 +1,35 @@
-import errorManager from '@shopgate/pwa-core/classes/ErrorManager';
-import { EINVALIDCREDENTIALS } from '@shopgate/pwa-core/constants/Pipeline';
-import { SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-common/constants/Pipelines';
-import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { errorManager, EINVALIDCREDENTIALS, SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-core';
+import { appWillStart$ } from '@shopgate/pwa-common/streams';
 import {
-  routeDidEnter,
-  routeDidLeave,
-} from '@shopgate/pwa-common/streams/history';
-import { toggleLogin } from 'Components/Navigator/action-creators';
-import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
-import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
-import disableNavigatorTitle from 'Components/Navigator/actions/disableNavigatorTitle';
-import enableNavigatorTitle from 'Components/Navigator/actions/enableNavigatorTitle';
-import toggleCartIcon from 'Components/Navigator/actions/toggleCartIcon';
-
-// Translate some error messages
-errorManager.setMessage({
-  code: EINVALIDCREDENTIALS,
-  context: SHOPGATE_USER_LOGIN_USER,
-  message: 'login.error',
-});
+  toggleNavigatorCart,
+  toggleNavigatorSearch,
+  toggleNavigatorTitle,
+} from 'Components/Navigator/action-creators';
+import { loginWillEnter$, loginWillLeave$ } from './streams';
 
 /**
  * Login subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function login(subscribe) {
-  const loginRouteDidEnter$ = routeDidEnter(LOGIN_PATH);
-  const loginRouteDidLeave$ = routeDidLeave(LOGIN_PATH);
-
-  /**
-   * Gets triggered on entering the filter route.
-   */
-  subscribe(loginRouteDidEnter$, ({ dispatch }) => {
-    dispatch(toggleLogin(true));
-    dispatch(disableNavigatorTitle());
-    dispatch(disableNavigatorSearch());
-    dispatch(toggleCartIcon(false));
+  subscribe(appWillStart$, () => {
+    // Translate some error messages
+    errorManager.setMessage({
+      code: EINVALIDCREDENTIALS,
+      context: SHOPGATE_USER_LOGIN_USER,
+      message: 'login.error',
+    });
   });
 
-  /**
-   * Gets triggered on leaving the filter route.
-   */
-  subscribe(loginRouteDidLeave$, ({ dispatch }) => {
-    dispatch(toggleLogin(false));
-    dispatch(enableNavigatorTitle());
-    dispatch(enableNavigatorSearch());
-    dispatch(toggleCartIcon(true));
+  subscribe(loginWillEnter$, ({ dispatch }) => {
+    dispatch(toggleNavigatorTitle(false));
+    dispatch(toggleNavigatorSearch(false));
+    dispatch(toggleNavigatorCart(false));
+  });
+
+  subscribe(loginWillLeave$, ({ dispatch }) => {
+    dispatch(toggleNavigatorTitle(true));
+    dispatch(toggleNavigatorSearch(true));
+    dispatch(toggleNavigatorCart(true));
   });
 }

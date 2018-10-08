@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigator Component should match snapshot 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "backgroundColor": "#fff",
+      "routePattern": null,
+      "searchField": false,
+      "searchQuery": "",
+      "setSearchQuery": [Function],
+      "textColor": "#000",
+      "toggleSearchField": [Function],
+      "visible": true,
+    }
+  }
+>
+  <Portal
+    name="nav-bar.before"
+    props={null}
+  />
+  <Portal
+    name="nav-bar"
+    props={null}
+  >
+    <header
+      className={
+        Object {
+          "data-css-1iy1xwg": "",
+        }
+      }
+      data-test-id="Navigator"
+      role="banner"
+      style={
+        Object {
+          "background": "#fff",
+          "color": "#000",
+        }
+      }
+    >
+      <Portal
+        name="nav-bar.navigator.before"
+        props={null}
+      />
+      <Portal
+        name="nav-bar.navigator"
+        props={null}
+      >
+        <Grid
+          className="css-6q3zgq"
+          component="section"
+          wrap={false}
+        >
+          <Connect(NavButton)
+            pattern={null}
+          />
+          <Portal
+            name="nav-bar.navigator.center.before"
+            props={null}
+          />
+          <Portal
+            name="nav-bar.navigator.center"
+            props={null}
+          >
+            <GridItem
+              className="css-1d5ztoz"
+              component="div"
+              grow={1}
+              shrink={1}
+            >
+              <NavigatorContent
+                routePattern={null}
+              />
+            </GridItem>
+          </Portal>
+          <Portal
+            name="nav-bar.navigator.center.after"
+            props={null}
+          />
+          <Portal
+            name="nav-bar.navigator.icons.before"
+            props={null}
+          />
+          <Portal
+            name="nav-bar.navigator.icons"
+            props={null}
+          >
+            <div
+              className={
+                Object {
+                  "data-css-sa13d4": "",
+                }
+              }
+              id="NAVIGATOR_BUTTON"
+            />
+            <_default />
+            <Connect(CartButton) />
+          </Portal>
+          <Portal
+            name="nav-bar.navigator.icons.after"
+            props={null}
+          />
+        </Grid>
+      </Portal>
+      <Portal
+        name="nav-bar.navigator.after"
+        props={null}
+      />
+      <Connect(ProgressBarContainer) />
+    </header>
+  </Portal>
+  <Portal
+    name="nav-bar.after"
+    props={null}
+  />
+</ContextProvider>
+`;

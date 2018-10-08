@@ -1,92 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
-import Image from '@shopgate/pwa-common/components/Image';
-import BackButton from './components/BackButton';
-import ZoomPanSlider from './components/ZoomPanSlider';
-import connect from './connector';
-import styles from './style';
+import ProductGalleryContent from './components/Content';
 
 /**
- * The product images component.
+ * @param {Object} props The component props.
+ * @return {JSX}
  */
-class ProductGallery extends Component {
-  static propTypes = {
-    disableNavigator: PropTypes.func.isRequired,
-    enableNavigator: PropTypes.func.isRequired,
-    getProductImages: PropTypes.func.isRequired,
-    params: PropTypes.shape().isRequired,
-    images: PropTypes.arrayOf(PropTypes.string),
-    initialSlide: PropTypes.number,
-    product: PropTypes.shape(),
-  };
+const ProductGallery = ({ id, initialSlide }) => (
+  <View hasNavigator={false} isFullscreen>
+    {id && <ProductGalleryContent productId={id} initialSlide={initialSlide} />}
+  </View>
+);
 
-  static defaultProps = {
-    images: null,
-    initialSlide: 0,
-    product: null,
-  };
+ProductGallery.propTypes = {
+  id: PropTypes.string,
+  initialSlide: PropTypes.number,
+};
 
-  /**
-   * ComponentDidMount lifecycle hook. Will disable the navigator and request the images.
-   */
-  componentDidMount() {
-    this.props.disableNavigator();
-    this.props.getProductImages();
-  }
+ProductGallery.defaultProps = {
+  id: null,
+  initialSlide: 0,
+};
 
-  /**
-   * ComponentWillUnmount lifecycle hook. Will enable the navigator.
-   */
-  componentWillUnmount() {
-    this.props.enableNavigator();
-  }
+export default () => (
+  <RouteContext.Consumer>
+    {({ params }) => (
+      <ProductGallery
+        id={hex2bin(params.productId) || null}
+        initialSlide={parseInt(params.slide, 10) || 0}
+      />
+    )}
+  </RouteContext.Consumer>
+);
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const title = this.props.product ? this.props.product.name : '';
-    const initialSlide = this.props.params.initialSlide ?
-      parseInt(this.props.params.initialSlide, 10)
-      : 0;
-    const resolutions = [
-      {
-        width: 440,
-        height: 440,
-      },
-      {
-        width: 2048,
-        height: 2048,
-      },
-    ];
-
-    return (
-      <View title={title} hasNavigator={false} isFullscreen>
-        <div className={styles.navButton}>
-          <BackButton />
-        </div>
-        <div className={styles.container}>
-          {this.props.images && (
-            <ZoomPanSlider
-              classNames={styles.sliderStyles}
-              className={styles.slider}
-              initialSlide={initialSlide}
-              indicators
-              loop
-            >
-              {this.props.images.map(imageSrc => (
-                <div className={styles.slide} key={imageSrc}>
-                  <Image src={imageSrc} resolutions={resolutions} />
-                </div>
-              ))}
-            </ZoomPanSlider>
-          )}
-        </div>
-      </View>
-    );
-  }
-}
-
-export default connect(ProductGallery);
+export { ProductGallery as UnwrappedProductGallery };

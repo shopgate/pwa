@@ -1,221 +1,140 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'lodash/debounce';
-import classNames from 'classnames';
-import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import SearchSuggestions from './components/SearchSuggestions';
-import connect from './connector';
+import Transition from 'react-transition-group/Transition';
+import { NavigatorContext } from '../../../../context';
 import styles from './style';
+import transition from './transition';
 
 /**
- * The navigator search component.
+ * The NavigatorSearch component.
  */
-class Search extends Component {
+class NavigatorSearch extends Component {
   static propTypes = {
-    getQueryParam: PropTypes.func.isRequired,
-    active: PropTypes.bool,
-    placeholder: PropTypes.string,
-    searchPhrase: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
-    setSearchPhrase: PropTypes.func,
-    submitSearch: PropTypes.func,
-    toggleSearch: PropTypes.func,
-  };
-
-  static defaultProps = {
-    active: true,
-    placeholder: null,
-    searchPhrase: '',
-    setSearchPhrase: () => {},
-    submitSearch: '',
-    toggleSearch: () => {},
-  };
+    active: PropTypes.bool.isRequired,
+    query: PropTypes.string.isRequired,
+    setSearchQuery: PropTypes.func.isRequired,
+    toggleSearchField: PropTypes.func.isRequired,
+  }
 
   static contextTypes = {
     i18n: PropTypes.func,
   };
 
   /**
-   * The component constructor.
    * @param {Object} props The component props.
    */
   constructor(props) {
     super(props);
 
-    this.inputElement = null;
+    this.inputField = React.createRef();
+
     this.state = {
-      // Determines if this component is rendered
-      active: false,
-      // Determines if animation should be triggered.
-      animate: false,
-      // Value of the input element
-      inputValue: '',
+      value: props.query,
     };
   }
 
   /**
-   * If the components active prop gets set to true,
-   * set active state to true immediately.
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.active !== nextProps.active) {
-      // The search field just became active.
-      if (nextProps.active) {
-        // Get the current search phrase from the query params.
-        const currentSearchPhrase = this.props.getQueryParam('s') || '';
+    if (nextProps.active) {
+      this.inputField.current.focus();
+    }
 
-        this.setState(
-          {
-            active: true,
-            animate: true, // For showing we want animation.
-            inputValue: currentSearchPhrase,
-          },
-          // Auto-focus input element
-          () => {
-            this.inputElement.focus();
-          }
-        );
-
-        return;
-      }
-
-      // No animation if it comes from the outside.
+    if (this.state.value !== nextProps.query) {
       this.setState({
-        active: false,
-        // Hiding comes from the outside where usually many things happen. No animation is safer.
-        animate: false,
+        value: nextProps.query,
       });
     }
   }
 
   /**
-   * Updates the search query.
-   */
-  updateQuery = () => {
-    // Input element can be null.
-    if (!this.inputElement) {
-      return;
-    }
-
-    const { value } = this.inputElement;
-    this.props.setSearchPhrase(value);
-  };
-
-  /**
-   * Updates the search query after a debounced delay.
-   */
-  updateQueryDebounced = debounce(this.updateQuery, 250);
-
-  /**
-   * Handles inputs.
-   */
-  handleInput = () => {
-    this.setState({
-      inputValue: this.inputElement.value,
-    });
-    this.updateQueryDebounced();
-  };
-
-  /**
-   * Sets cursor at the end of input on focus.
+   * Marks the whole input on focus.
    */
   handleFocus = () => {
-    this.inputElement.selectionStart = this.state.inputValue.length;
-    this.inputElement.selectionEnd = this.state.inputValue.length;
+    this.inputField.current.selectionStart = 0;
+    this.inputField.current.selectionEnd = this.state.value.length;
   };
 
   /**
    * Handles blur events on the input element.
    */
-  handleOverlayClick = () => {
-    this.setState({
-      active: false, // Become inactive.
-      animate: true, // With animation.
-    });
+  disableField = () => {
+    this.inputField.current.blur();
+    this.props.toggleSearchField(false);
   };
 
   /**
-   * Handles input submission.
-   * @param {Event} event A submit event.
+   * Handles input events on the input element.
+   * @param {SyntheticEvent} event An input event.
    */
-  handleSubmit = (event) => {
+  handleInput = (event) => {
+    this.props.setSearchQuery(event.target.value);
+  }
+
+  /**
+   * Disabled the search field and submits the search.
+   * @param {SyntheticEvent} event An input event.
+   */
+  submitSearch = (event) => {
     event.preventDefault();
-
-    if (!this.inputElement.value) {
-      // Do not submit if the field is empty.
-      return;
-    }
-
-    this.inputElement.blur();
-    this.updateQuery();
-    this.props.submitSearch();
-  };
+    this.inputField.current.blur();
+    this.props.toggleSearchField(false, true);
+  }
 
   /**
-   * Sets the active state according to active prop
-   * whenever an animation ends.
-   */
-  handleAnimationEnd = () => {
-    // Animation end with inactive state => search is just closed.
-    if (!this.state.active) {
-      this.props.toggleSearch(false);
-
-      return;
-    }
-
-    // Component just came in. Resetting animation flag.
-    this.setState({
-      animate: false,
-    });
-  };
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
+   * @return {JSX}
    */
   render() {
-    if (!this.state.active && !this.state.animate) {
-      return null;
-    }
-    const containerClassName = classNames(
-      styles.container,
-      { [styles.animation.in]: this.state.active },
-      { [styles.animation.out]: !this.state.active }
-    );
-
-    const { inputValue } = this.state;
-    const { placeholder } = this.props;
     const { __ } = this.context.i18n();
-    const inputPlaceholder = placeholder !== null ? placeholder : __('search.placeholder');
+    const placeholder = __('search.placeholder');
 
     return (
-      <div>
-        <form
-          data-test-id="Search"
-          className={containerClassName}
-          onSubmit={this.handleSubmit}
-          onAnimationEnd={this.handleAnimationEnd}
-        >
-          <input
-            className={styles.input}
-            type="search"
-            value={inputValue}
-            onChange={this.handleInput}
-            onBlur={this.handleBlur}
-            placeholder={inputPlaceholder}
-            ref={(element) => { this.inputElement = element; }}
-            onFocus={this.handleFocus}
-          />
-        </form>
-        <Backdrop
-          onClick={this.handleOverlayClick}
-          isVisible={this.state.active}
-          className={styles.backdrop}
-        />
-        <SearchSuggestions phrase={this.state.inputValue} />
-      </div>
+      <Transition in={this.props.active} timeout={0}>
+        {state => (
+          <div
+            className={styles.container}
+            style={transition[state]}
+          >
+            <form
+              className={styles.form}
+              data-test-id="Search"
+              onSubmit={this.submitSearch}
+            >
+              <input
+                className={styles.input}
+                onChange={this.handleInput}
+                onFocus={this.handleFocus}
+                placeholder={placeholder}
+                ref={this.inputField}
+                type="search"
+                value={this.state.value}
+              />
+            </form>
+            <div
+              aria-hidden
+              className={styles.overlay}
+              onClick={this.disableField}
+              role="button"
+            />
+          </div>
+        )}
+      </Transition>
     );
   }
 }
 
-export default connect(Search);
+export default () => (
+  <NavigatorContext.Consumer>
+    {({
+      searchField, searchQuery, setSearchQuery, toggleSearchField,
+    }) => (
+      <NavigatorSearch
+        active={searchField}
+        query={searchQuery}
+        setSearchQuery={setSearchQuery}
+        toggleSearchField={toggleSearchField}
+      />
+    )}
+  </NavigatorContext.Consumer>
+);

@@ -1,143 +1,54 @@
-import React from 'react';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import React, { PureComponent, Fragment } from 'react';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
+import {
+  PRODUCT_HEADER,
+  PRODUCT_HEADER_AFTER,
+  PRODUCT_HEADER_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import CTAButtons from './components/CTAButtons';
 import Rating from './components/Rating';
 import Name from './components/Name';
-import Manufacturer from './components/Manufacturer';
-import PriceStriked from './components/PriceStriked';
-import Shipping from './components/Shipping';
-import Availability from './components/Availability';
-import Price from './components/Price';
-import PriceInfo from './components/PriceInfo';
-import Tiers from './components/Tiers';
+import ProductInfo from './components/ProductInfo';
 import styles from './style';
+import { ProductContext } from './../../context';
 
 /**
- * The product header component that displays textual information
- * - manufacturer
- * - shipping
- * - discount
- * - price
- * - tier prices
- * - price info
- * If not available or animating it will display placeholders
- * @returns {JSX}
+ * The product header component.
  */
-const ProductHeader = () => (
-  <div className={styles.content}>
-    {/* CTAs */}
-    <Portal name={portals.PRODUCT_CTAS_BEFORE} />
-    <Portal name={portals.PRODUCT_CTAS}>
-      <CTAButtons />
-    </Portal>
-    <Portal name={portals.PRODUCT_CTAS_AFTER} />
+class ProductHeader extends PureComponent {
+  /**
+   * @param {Object} props The consumer props.
+   * @returns {JSX}
+   */
+  consumeRenderer = ({ productId, variantId, options }) => {
+    const id = variantId || productId;
 
-    {/* RATING */}
-    <Portal name={portals.PRODUCT_RATING_BEFORE} />
-    <Portal name={portals.PRODUCT_RATING}>
-      <Rating />
-    </Portal>
-    <Portal name={portals.PRODUCT_RATING_AFTER} />
+    return (
+      <div className={styles.content}>
+        <CTAButtons productId={id} />
+        <Rating productId={productId} />
+        <Name productId={id} />
+        <ProductInfo productId={id} options={options} />
+      </div>
+    );
+  }
 
-    {/* NAME */}
-    <Portal name={portals.PRODUCT_NAME_BEFORE} />
-    <Portal name={portals.PRODUCT_NAME}>
-      <Name />
-    </Portal>
-    <Portal name={portals.PRODUCT_NAME_AFTER} />
-
-    {/* INFO */}
-    <Portal name={portals.PRODUCT_INFO_BEFORE} />
-    <Grid component="div">
-      <Portal name={portals.PRODUCT_INFO}>
-        <Grid.Item component="div" grow={1}>
-          <Portal name={portals.PRODUCT_INFO_ROW1}>
-
-            {/* MANUFACTURER */}
-            <div className={styles.productInfo}>
-              <Portal name={portals.PRODUCT_MANUFACTURER_BEFORE} />
-              <Portal name={portals.PRODUCT_MANUFACTURER}>
-                <Manufacturer />
-              </Portal>
-              <Portal name={portals.PRODUCT_MANUFACTURER_AFTER} />
-            </div>
-
-            {/* SHIPPING */}
-            <div className={styles.productInfo}>
-              <Portal name={portals.PRODUCT_SHIPPING_BEFORE} />
-              <Portal name={portals.PRODUCT_SHIPPING}>
-                <Shipping />
-              </Portal>
-              <Portal name={portals.PRODUCT_SHIPPING_AFTER} />
-            </div>
-
-            {/* AVAILABILITY */}
-            <div className={styles.productInfo}>
-              <Portal name={portals.PRODUCT_AVAILABILITY_BEFORE} />
-              <Portal name={portals.PRODUCT_AVAILABILITY}>
-                <Availability />
-              </Portal>
-              <Portal name={portals.PRODUCT_AVAILABILITY_AFTER} />
-            </div>
-
-          </Portal>
-        </Grid.Item>
-        <Grid.Item component="div" className={styles.priceContainer}>
-          <Portal name={portals.PRODUCT_INFO_ROW2}>
-
-            {/* PRICE STRIKED */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_PRICE_STRIKED_BEFORE} />
-              <Portal name={portals.PRODUCT_PRICE_STRIKED}>
-                <PriceStriked />
-              </Portal>
-              <Portal name={portals.PRODUCT_PRICE_STRIKED_AFTER} />
-            </div>
-
-            {/* PRICE */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_PRICE_BEFORE} />
-              <Portal name={portals.PRODUCT_PRICE}>
-                <Price />
-              </Portal>
-              <Portal name={portals.PRODUCT_PRICE_AFTER} />
-            </div>
-
-            {/* PRICE INFO */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_PRICE_INFO_BEFORE} />
-              <Portal name={portals.PRODUCT_PRICE_INFO}>
-                <PriceInfo />
-              </Portal>
-              <Portal name={portals.PRODUCT_PRICE_INFO_AFTER} />
-            </div>
-
-            {/* TIER PRICES */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_TIERS_BEFORE} />
-              <Portal name={portals.PRODUCT_TIERS}>
-                <Tiers />
-              </Portal>
-              <Portal name={portals.PRODUCT_TIERS_AFTER} />
-            </div>
-
-          </Portal>
-        </Grid.Item>
-        {showTaxDisclaimer && (
-          <Grid.Item
-            className={styles.disclaimerSpacer}
-            component="div"
-            grow={0}
-            shrink={0}
-          />
-        )}
-      </Portal>
-    </Grid>
-    <Portal name={portals.PRODUCT_INFO_AFTER} />
-  </div>
-);
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <Fragment>
+        <Portal name={PRODUCT_HEADER_BEFORE} />
+        <Portal name={PRODUCT_HEADER} >
+          <ProductContext.Consumer>
+            {this.consumeRenderer}
+          </ProductContext.Consumer>
+        </Portal>
+        <Portal name={PRODUCT_HEADER_AFTER} />
+      </Fragment>
+    );
+  }
+}
 
 export default ProductHeader;

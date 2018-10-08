@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 
 /**
  * Maps action dispatchers to the component props.
@@ -7,7 +7,7 @@ import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  goBackHistory: () => dispatch(goBackHistory(1)),
+  goBackHistory: () => dispatch(historyPop()),
 });
 
 export default connect(null, mapDispatchToProps);

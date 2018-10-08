@@ -22,16 +22,9 @@ const innerContainer = css({
   position: 'relative',
 }).toString();
 
-const glow = css({
-  bottom: -1,
-  height: '100%',
-  top: -1,
-}).toString();
-
 export default {
   item,
   itemNotLast,
   itemWithImage,
   innerContainer,
-  glow,
 };

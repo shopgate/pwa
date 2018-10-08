@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductsContent /> should render 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <ProductsContent
+    categoryId="1234"
+    hasProducts={false}
+  >
+    <Portal
+      name="product.list.before"
+      props={
+        Object {
+          "categoryId": "1234",
+        }
+      }
+    />
+    <Portal
+      name="product.list"
+      props={
+        Object {
+          "categoryId": "1234",
+        }
+      }
+    />
+    <Portal
+      name="product.list.after"
+      props={
+        Object {
+          "categoryId": "1234",
+        }
+      }
+    />
+  </ProductsContent>
+</Provider>
+`;

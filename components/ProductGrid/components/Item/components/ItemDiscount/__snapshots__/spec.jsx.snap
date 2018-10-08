@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemDiscount /> should render with discount 1`] = `
+<div
+  className={
+    Object {
+      "data-css-dof4od": "",
+    }
+  }
+>
+  <Portal
+    name="product-item.discount.before"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+  <Portal
+    name="product-item.discount"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  >
+    <DiscountBadge
+      className=""
+      discount={null}
+      display="small"
+      text="-12%"
+    />
+  </Portal>
+  <Portal
+    name="product-item.discount.after"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`<ItemDiscount /> should render without discount 1`] = `""`;

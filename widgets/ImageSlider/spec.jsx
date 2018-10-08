@@ -1,11 +1,24 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import Image from '@shopgate/pwa-common/components/Image';
-import Slider from '@shopgate/pwa-common/components/Slider';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import ImageSliderWidget from './index';
 
-describe.skip('<ImageSliderWidget />', () => {
+const mockedStore = configureStore();
+/**
+ * Creates component
+ * @param {Object} props Component props.
+ * @return {ReactWrapper}
+ */
+const createComponent = (props = {}) => mount(
+  <Provider store={mockedStore({})}>
+    <ImageSliderWidget {...props} />
+  </Provider>,
+  mockRenderOptions
+);
+
+describe('<ImageSliderWidget />', () => {
   const testImage = {
     image: 'http://placehold.it/350x150',
     link: 'http://example.com',
@@ -24,21 +37,8 @@ describe.skip('<ImageSliderWidget />', () => {
     images: [],
   };
 
-  const testContext = {
-    router: {
-      push: () => {},
-    },
-  };
-
-  beforeEach(() => {
-    // We don't care about the router.
-    Link.contextTypes = {
-      router: React.PropTypes.any,
-    };
-  });
-
   it('should render the slider with the correct number of images', () => {
-    const mySettings = {
+    const settings = {
       ...testSettings,
       images: [
         testImage,
@@ -47,22 +47,17 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      (
-        <ImageSliderWidget settings={mySettings} />
-      ),
-      testContext
-    );
+    const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Slider.Item).length).toBe(mySettings.images.length);
+    expect(wrapper.find('SliderItem').length).toBe(settings.images.length);
 
-    const images = wrapper.find(Image);
-    expect(images.length).toBe(mySettings.images.length);
+    const images = wrapper.find('img');
+    expect(images.length).toBe(settings.images.length);
   });
 
   it('should map the correct image settings to the components', () => {
-    const mySettings = {
+    const settings = {
       ...testSettings,
       images: [
         testImage,
@@ -70,14 +65,14 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
+    const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    const images = wrapper.find(Image);
+    const images = wrapper.find('Image');
     let index = 0;
     images.forEach((image) => {
       const imageProps = image.props();
-      const imageSettings = mySettings.images[index];
+      const imageSettings = settings.images[index];
       index += 1;
 
       expect(imageProps.src).toBe(imageSettings.image);
@@ -85,21 +80,22 @@ describe.skip('<ImageSliderWidget />', () => {
   });
 
   it('should render no slider with just a single image', () => {
-    const mySettings = {
+    const settings = {
       ...testSettings,
       images: [
         testImage,
       ],
     };
 
-    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
+    const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Slider.Item).length).toBe(0);
+    expect(wrapper.find('SliderItem').length).toBe(0);
+    expect(wrapper.find('img').length).toBe(1);
   });
 
   it('should render the images unlinked if no link is set', () => {
-    const mySettings = {
+    const settings = {
       ...testSettings,
       images: [
         {
@@ -109,14 +105,15 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
+    const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Link).length).toBe(0);
+    expect(wrapper.find('Link').length).toBe(0);
+    expect(wrapper.find('img').length).toBe(1);
   });
 
   it('should render the images with links', () => {
-    const mySettings = {
+    const settings = {
       ...testSettings,
       images: [
         testImage,
@@ -130,9 +127,9 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
+    const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Link).length).toBe(mySettings.images.length - 1);
+    expect(wrapper.find('Link').length).toBe(settings.images.length - 1);
   });
 });

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
@@ -62,7 +62,12 @@ const createProductSliderItem = ({
   return (
     <div key={id} className={styles.card} data-test-id="liveShoppingWidget">
       <Card>
-        <Link href={`${ITEM_PATH}/${bin2hex(id)}`}>
+        <Link
+          href={`${ITEM_PATH}/${bin2hex(id)}`}
+          state={{
+            title: name,
+          }}
+        >
           <Grid>
             <Grid.Item className={styles.imagePane}>
               <ProductImage src={featuredImageUrl} alt={name} />
@@ -144,6 +149,15 @@ class LiveshoppingWidget extends Component {
   }
 
   /**
+   * Checks whether the component can update.
+   * @param {Object} nextProps The next component props.
+   * @return {JSX}
+   */
+  shouldComponentUpdate(nextProps) {
+    return (this.props.products.length !== nextProps.products.length);
+  }
+
+  /**
    * Renders the component.
    * @return {JSX}
    */
@@ -172,3 +186,4 @@ LiveshoppingWidget.propTypes = {
 };
 
 export default connect(LiveshoppingWidget);
+export { LiveshoppingWidget as UnwrappedLiveshoppingWidget };

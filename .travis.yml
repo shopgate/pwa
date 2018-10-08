@@ -15,6 +15,7 @@ after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.
 branches:
   only:
   - develop
+  - PWA-327-Exchange-Router
 notifications:
   email: false
   slack:

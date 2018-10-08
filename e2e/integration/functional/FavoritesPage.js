@@ -40,7 +40,8 @@ describe('e2e functional test favoritePage', () => {
     cy.get(els.basicDialogOkButton)
       .contains('Abbrechen')
       .should('be.visible')
-      .click();
+      .click()
+      .wait(2000);
     cy.get(els.addToCartButton)
       .click();
     cy.get(els.basicDialogText)
@@ -83,14 +84,16 @@ describe('e2e functional test favoritePage', () => {
       .last()
       .click();
     cy.go('back');
-    cy.go('back');
+    cy.go('back')
+      .wait(2000);
     cy.get(els.navigatorButton)
       .should('be.visible')
       .click()
       .wait(1000);
     cy.get(els.navDrawerFavoritesButton)
       .should('be.visible')
-      .click();
+      .click()
+      .wait(3000);
     cy.get(els.favoriteButton)
       .should('be.visible')
       .last()
