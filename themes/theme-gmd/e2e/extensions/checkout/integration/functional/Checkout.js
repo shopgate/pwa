@@ -1,3 +1,4 @@
+// eslint-disable-next-line spaced-comment
 /// <reference types="Cypress" />
 
 import els from '../../elements/de';
@@ -5,7 +6,6 @@ import { clearProductFromCart } from '../../helper/cart';
 import { logOutUser, logInUser } from '../../helper/user';
 
 describe('Native Checkout functional', () => {
-
   it('should check for user not logged in', () => {
     logOutUser();
   });
@@ -24,7 +24,7 @@ describe('Native Checkout functional', () => {
       .click();
     cy.get(els.couponFieldInput)
       .should('be.visible')
-      .type('10fixed{enter}')
+      .type('10fixed{enter}');
     cy.get(els.basicDialogText)
       .contains('Gutschein wurde hinzugefügt')
       .should('be.visible');
@@ -98,7 +98,6 @@ describe('Native Checkout functional', () => {
     cy.get(els.adressFormZip)
       .type('35510');
     cy.go('back');
-
   });
 
   it('should delete coupon and products from cart', () => {

@@ -19,6 +19,12 @@ import styles from './style';
  * The Review Form.
  */
 class ReviewForm extends Component {
+  static validationLengths = {
+    [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
+    [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
+    [FIELD_NAME_REVIEW]: REVIEW_TEXT_MAX_LENGTH,
+  };
+
   static propTypes = {
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
@@ -27,20 +33,14 @@ class ReviewForm extends Component {
     review: PropTypes.shape(),
   };
 
-  static defaultProps = {
-    authorName: '',
-    productId: null,
-    review: {},
-  };
-
   static contextTypes = {
     i18n: PropTypes.func,
   };
 
-  static validationLengths = {
-    [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
-    [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
-    [FIELD_NAME_REVIEW]: REVIEW_TEXT_MAX_LENGTH,
+  static defaultProps = {
+    authorName: '',
+    productId: null,
+    review: {},
   };
 
   /**
@@ -49,12 +49,12 @@ class ReviewForm extends Component {
    */
   constructor(props) {
     super(props);
+
     this.state = {
       ...props.review,
       productId: props.productId,
       validationErrors: {},
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   /**
@@ -65,12 +65,11 @@ class ReviewForm extends Component {
     let stateUpdate = {
       productId: nextProps.productId,
     };
-    if (this.shouldUpdateReviewsStateFields()) {
-      stateUpdate = {
-        ...stateUpdate,
-        ...nextProps.review,
-      };
-    }
+
+    stateUpdate = {
+      ...stateUpdate,
+      ...nextProps.review,
+    };
 
     if (!this.state[FIELD_NAME_AUTHOR]) {
       stateUpdate[FIELD_NAME_AUTHOR] = nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName;
@@ -103,21 +102,6 @@ class ReviewForm extends Component {
     this.setState({ validationErrors });
 
     return !Object.keys(validationErrors).length;
-  }
-
-  /**
-   * Once the review is loaded. Never change it again via props.
-   * This will make the form interaction unchanged if props are changed
-   * for whatever reason.
-   *
-   * @return {boolean}
-   */
-  shouldUpdateReviewsStateFields() {
-    if (this.props.isLoadingUserReview === false) {
-      return false;
-    }
-
-    return true;
   }
 
   /**
@@ -183,17 +167,19 @@ class ReviewForm extends Component {
 
   /**
    * Handles the form submit.
-   * @param {Object} e SyntheticEvent.
+   * @param {Object} event SyntheticEvent.
    * @returns {boolean|false}
    */
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit = (event) => {
+    event.preventDefault();
+
     if (!this.formValid) {
       return false;
     }
 
     const updateRate = !!this.props.review.rate;
     this.props.submit(this.state, updateRate);
+
     return false;
   }
 

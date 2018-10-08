@@ -1,4 +1,4 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import { isIos } from '@shopgate/pwa-common/selectors/client';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { hasCouponSupport } from '@shopgate/pwa-common-commerce/cart/selectors';
@@ -12,7 +12,7 @@ import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
 const mapStateToProps = state => ({
   isIos: isIos(state),
   isLoading: isCurrentViewLoading(state),
-  isVisible: hasCouponSupport(state),
+  isSupported: hasCouponSupport(state),
 });
 
 /**

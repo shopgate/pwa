@@ -1,93 +1,116 @@
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { SET_VIEW_TITLE } from '@shopgate/pwa-common/constants/ActionTypes';
+import { REQUEST_CATEGORY } from '@shopgate/pwa-common-commerce/category/constants';
+import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import {
-  categoryRouteDidEnter$,
-  categoryError$,
-} from '@shopgate/pwa-common-commerce/category/streams';
-import subscriptions from './subscriptions';
+  routerState,
+  childCategoryRouteMock,
+  uiState,
+  categoryState,
+  initialCategoryState,
+} from '@shopgate/pwa-common-commerce/category/mock';
+import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
+import { receivedVisibleCategory$ } from './streams';
+import subscribe from './subscriptions';
 
-const mockedGetCategory = jest.fn();
-jest.mock(
-  '@shopgate/pwa-common-commerce/category/actions/getCategory',
-  () => (...args) => mockedGetCategory(...args)
-);
-
-jest.mock('@shopgate/pwa-common-commerce/category/selectors', () => ({
-  getCurrentCategoryId: () => 1,
+const mockedStore = configureStore([thunk]);
+const mockedResolver = jest.fn();
+jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
+  mockedResolver(mockInstance, resolve, reject);
 }));
 
-const mockedShowModal = jest.fn();
-jest.mock(
-  '@shopgate/pwa-common/actions/modal/showModal',
-  () => (...args) => mockedShowModal(...args)
-);
-
 describe('Category subscriptions', () => {
-  beforeEach(() => {
-    mockedShowModal.mockReset();
+  let subscribeMock;
+  let categoryWillEnter;
+  let receive;
+  let categoryErr;
+  let store = mockedStore();
+  beforeAll(() => {
+    jest.resetAllMocks();
+    store.clearActions();
+    subscribeMock = jest.fn();
   });
-  const subscribe = jest.fn();
-  const expectedStreams = {
-    categoryRouteDidEnter$: {
-      func: categoryRouteDidEnter$,
-      cb: null,
-    },
-    categoryError$: {
-      func: categoryError$,
-      cb: null,
-    },
-  };
+  it('should subscribe', () => {
+    subscribe(subscribeMock);
+    expect(subscribeMock.mock.calls.length).toBe(5);
 
-  it('should subscribe to streams', () => {
-    subscriptions(subscribe);
-    subscribe.mock.calls.forEach(([func, cb]) => {
-      Object.keys(expectedStreams).forEach((key) => {
-        const expected = expectedStreams[key];
-        if (expected.func === func) {
-          expected.cb = cb;
-        }
+    [categoryWillEnter, , receive, categoryErr] = subscribeMock.mock.calls;
+    expect(receive[0]).toBe(receivedVisibleCategory$);
+    expect(categoryErr[0]).toBe(categoryError$);
+  });
+
+  describe.skip('categoryWillEnter$', () => {
+    it('should fetch category when page is entered', () => {
+      const action = {
+        route: childCategoryRouteMock,
+      };
+      const mockedState = {
+        ...routerState,
+        ...initialCategoryState,
+        ...uiState,
+      };
+
+      store = mockedStore(mockedState);
+      categoryWillEnter[1]({
+        action,
+        dispatch: store.dispatch,
       });
+
+      const actions = store.getActions();
+      expect(actions[0].type).toBe(REQUEST_CATEGORY);
+      expect(actions[0].categoryId).toBe(categoryState.category.categoriesById.women.id);
+      expect(actions[1].type).toBe(SET_VIEW_TITLE);
     });
-    Object.keys(expectedStreams).forEach((key) => {
-      expect(typeof expectedStreams[key].cb === 'function').toBe(true);
+
+    it('should not fetch category again when page is entered', () => {
+      const action = {
+        route: childCategoryRouteMock,
+      };
+      const mockedState = {
+        ...routerState,
+        category: {
+          ...categoryState.category,
+          currentCategoryId: 'women',
+        },
+        ...uiState,
+      };
+
+      store = mockedStore(mockedState);
+      categoryWillEnter[1]({
+        action,
+        dispatch: store.dispatch,
+      });
+
+      const actions = store.getActions();
+      expect(actions[0].type).toBe(SET_VIEW_TITLE);
+      expect(actions[0].title).toBe(categoryState.category.categoriesById.women.name);
     });
   });
 
-  it('should dispatch actions on categoryRouteDidEnter$', () => {
-    const dispatch = jest.fn();
-    /**
-     * This function does nothing.
-     */
-    const getState = () => {};
-    expectedStreams.categoryRouteDidEnter$.cb({
-      dispatch,
-      getState,
+  describe('receivedVisibleCategory$', () => {
+    it('should not fetch category again when page is entered', () => {
+      const action = {
+        categoryData: categoryState.category.categoriesById.women,
+      };
+      const mockedState = {
+        ...routerState,
+        category: {
+          ...categoryState.category,
+          currentCategoryId: 'women',
+        },
+        ...uiState,
+      };
+
+      store = mockedStore(mockedState);
+      receive[1]({
+        action,
+        dispatch: store.dispatch,
+      });
+
+      const actions = store.getActions();
+      expect(actions[0].type).toBe(SET_VIEW_TITLE);
+      expect(actions[0].title).toBe(categoryState.category.categoriesById.women.name);
     });
-    expect(dispatch).toHaveBeenCalled();
-    expect(mockedGetCategory).toHaveBeenCalledWith(1);
-  });
-
-  it('should dispatch actions on categoryError$ with generic error', () => {
-    const dispatch = jest.fn();
-    const action = { errorCode: 'EUNKNOWN' };
-    expectedStreams.categoryError$.cb({
-      action,
-      dispatch,
-    });
-
-    expect(dispatch).toHaveBeenCalled();
-    expect(mockedShowModal).toHaveBeenCalled();
-    expect(mockedShowModal.mock.calls[0][0].message).toBe('modal.body_error');
-  });
-
-  it('should dispatch actions on categoryError$ with not found error', () => {
-    const dispatch = jest.fn();
-    const action = { errorCode: 'ENOTFOUND' };
-    expectedStreams.categoryError$.cb({
-      action,
-      dispatch,
-    });
-
-    expect(dispatch).toHaveBeenCalled();
-    expect(mockedShowModal).toHaveBeenCalled();
-    expect(mockedShowModal.mock.calls[0][0].message).toBe('category.error.not_found');
   });
 });

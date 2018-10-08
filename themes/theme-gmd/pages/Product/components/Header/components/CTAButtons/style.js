@@ -1,7 +1,6 @@
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-const cartButtonSize = 56;
 const iconSize = 24;
 
 const buttons = css({
@@ -25,7 +24,6 @@ const ripple = css({
 
 export default {
   buttons,
-  cartButtonSize,
   favButton,
   iconSize,
   ripple,

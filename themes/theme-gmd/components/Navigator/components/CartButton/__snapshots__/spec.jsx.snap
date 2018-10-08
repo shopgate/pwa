@@ -1,115 +1,468 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CartButton /> should not be visible with prop visible set to false 1`] = `
-<button
-  className="css-nmjls1"
-  data-test-id="CartButton"
-  onClick={[Function]}
-  style={Object {}}
->
-  <Ripple
-    className="css-167cazg"
-    color="#000"
-    disabled={false}
-    fill={true}
-    onComplete={[Function]}
-    overflow={false}
-    size={null}
+<Fragment>
+  <Portal
+    name="nav-bar.navigator.icons.cart-button.before"
+    props={null}
+  />
+  <Portal
+    name="nav-bar.navigator.icons.cart-button"
+    props={
+      Object {
+        "CartButton": [Function],
+      }
+    }
   >
-    <CartIcon />
-    <CartButtonBadge
-      productCount={0}
-    />
-  </Ripple>
-</button>
+    <button
+      className="css-nmjls1"
+      data-test-id="CartButton"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <Ripple
+        className="css-167cazg"
+        color="#000"
+        disabled={false}
+        fill={true}
+        onClick={[Function]}
+        onComplete={[Function]}
+        overflow={false}
+        size={null}
+      >
+        <CartIcon />
+        <CartButtonBadge
+          productCount={0}
+        />
+      </Ripple>
+    </button>
+  </Portal>
+  <Portal
+    name="nav-bar.navigator.icons.cart-button.after"
+    props={null}
+  />
+</Fragment>
 `;
 
-exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] = `
-<button
-  className="css-nmjls1"
-  data-test-id="CartButton"
-  onClick={[Function]}
-  style={
+exports[`<CartButton /> should render with cartProductCount beeing set to 1 1`] = `
+<Connect(CartButton)
+  store={
     Object {
-      "minWidth": 56,
-      "transform": "translate3d(0, 0, 0)",
-      "transitionDelay": "600ms",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <Ripple
-    className="css-167cazg"
-    color="#000"
-    disabled={false}
-    fill={true}
-    onComplete={[Function]}
-    overflow={false}
-    size={null}
+  <CartButton
+    activeCartRoute={true}
+    cartProductCount={1}
+    openCart={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
   >
-    <CartIcon />
-    <CartButtonBadge
-      productCount={4}
+    <Portal
+      name="nav-bar.navigator.icons.cart-button.before"
+      props={null}
     />
-  </Ripple>
-</button>
+    <Portal
+      name="nav-bar.navigator.icons.cart-button"
+      props={
+        Object {
+          "CartButton": [Function],
+        }
+      }
+    >
+      <button
+        className="css-nmjls1"
+        data-test-id="CartButton"
+        onClick={[Function]}
+        style={
+          Object {
+            "minWidth": 56,
+            "transform": "translate3d(0, 0, 0)",
+            "transitionDelay": "600ms",
+          }
+        }
+      >
+        <Ripple
+          className="css-167cazg"
+          color="#000"
+          disabled={false}
+          fill={true}
+          onClick={[Function]}
+          onComplete={[Function]}
+          overflow={false}
+          size={null}
+        >
+          <div
+            aria-hidden={true}
+            className="css-167cazg"
+            data-test-id="Ripple"
+            onClick={[Function]}
+            style={null}
+          >
+            <CartIcon>
+              <Icon
+                className=""
+                color={null}
+                content="<path d=\\"M7.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9,18,7.9,18z M17.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S19,18,17.9,18z M8.1,14.8l0-0.1L9,13h7.5c0.7,0,1.4-0.4,1.7-1l3.9-7l-1.7-1h0l-1.1,2l-2.8,5h-7l-0.1-0.3L7.1,6L6.1,4L5.2,2H1.9v2h2l3.6,7.6L6.2,14c-0.2,0.3-0.2,0.6-0.2,1c0,1.1,0.9,2,2,2h12v-2H8.3C8.2,15,8.1,14.9,8.1,14.8z\\"/>"
+                size="inherit"
+                viewBox="0 0 24 24"
+              >
+                <svg
+                  className="css-yys9hb "
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<path d=\\"M7.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9,18,7.9,18z M17.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S19,18,17.9,18z M8.1,14.8l0-0.1L9,13h7.5c0.7,0,1.4-0.4,1.7-1l3.9-7l-1.7-1h0l-1.1,2l-2.8,5h-7l-0.1-0.3L7.1,6L6.1,4L5.2,2H1.9v2h2l3.6,7.6L6.2,14c-0.2,0.3-0.2,0.6-0.2,1c0,1.1,0.9,2,2,2h12v-2H8.3C8.2,15,8.1,14.9,8.1,14.8z\\"/>",
+                    }
+                  }
+                  style={
+                    Object {
+                      "fill": null,
+                      "fontSize": "inherit",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Icon>
+            </CartIcon>
+            <CartButtonBadge
+              productCount={1}
+            >
+              <div
+                className={
+                  Object {
+                    "data-css-8teden": "",
+                  }
+                }
+              >
+                1
+              </div>
+            </CartButtonBadge>
+          </div>
+        </Ripple>
+      </button>
+    </Portal>
+    <Portal
+      name="nav-bar.navigator.icons.cart-button.after"
+      props={null}
+    />
+  </CartButton>
+</Connect(CartButton)>
 `;
 
 exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
-<button
-  className="css-nmjls1"
-  data-test-id="CartButton"
-  onClick={[Function]}
-  style={
+<Connect(CartButton)
+  store={
     Object {
-      "minWidth": 56,
-      "transform": "translate3d(0, 0, 0)",
-      "transitionDelay": "600ms",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <Ripple
-    className="css-167cazg"
-    color="#000"
-    disabled={false}
-    fill={true}
-    onComplete={[Function]}
-    overflow={false}
-    size={null}
+  <CartButton
+    activeCartRoute={true}
+    cartProductCount={115}
+    openCart={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
   >
-    <CartIcon />
-    <CartButtonBadge
-      productCount={115}
+    <Portal
+      name="nav-bar.navigator.icons.cart-button.before"
+      props={null}
     />
-  </Ripple>
-</button>
+    <Portal
+      name="nav-bar.navigator.icons.cart-button"
+      props={
+        Object {
+          "CartButton": [Function],
+        }
+      }
+    >
+      <button
+        className="css-nmjls1"
+        data-test-id="CartButton"
+        onClick={[Function]}
+        style={
+          Object {
+            "minWidth": 56,
+            "transform": "translate3d(0, 0, 0)",
+            "transitionDelay": "600ms",
+          }
+        }
+      >
+        <Ripple
+          className="css-167cazg"
+          color="#000"
+          disabled={false}
+          fill={true}
+          onClick={[Function]}
+          onComplete={[Function]}
+          overflow={false}
+          size={null}
+        >
+          <div
+            aria-hidden={true}
+            className="css-167cazg"
+            data-test-id="Ripple"
+            onClick={[Function]}
+            style={null}
+          >
+            <CartIcon>
+              <Icon
+                className=""
+                color={null}
+                content="<path d=\\"M7.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9,18,7.9,18z M17.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S19,18,17.9,18z M8.1,14.8l0-0.1L9,13h7.5c0.7,0,1.4-0.4,1.7-1l3.9-7l-1.7-1h0l-1.1,2l-2.8,5h-7l-0.1-0.3L7.1,6L6.1,4L5.2,2H1.9v2h2l3.6,7.6L6.2,14c-0.2,0.3-0.2,0.6-0.2,1c0,1.1,0.9,2,2,2h12v-2H8.3C8.2,15,8.1,14.9,8.1,14.8z\\"/>"
+                size="inherit"
+                viewBox="0 0 24 24"
+              >
+                <svg
+                  className="css-yys9hb "
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<path d=\\"M7.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9,18,7.9,18z M17.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S19,18,17.9,18z M8.1,14.8l0-0.1L9,13h7.5c0.7,0,1.4-0.4,1.7-1l3.9-7l-1.7-1h0l-1.1,2l-2.8,5h-7l-0.1-0.3L7.1,6L6.1,4L5.2,2H1.9v2h2l3.6,7.6L6.2,14c-0.2,0.3-0.2,0.6-0.2,1c0,1.1,0.9,2,2,2h12v-2H8.3C8.2,15,8.1,14.9,8.1,14.8z\\"/>",
+                    }
+                  }
+                  style={
+                    Object {
+                      "fill": null,
+                      "fontSize": "inherit",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Icon>
+            </CartIcon>
+            <CartButtonBadge
+              productCount={115}
+            >
+              <div
+                className={
+                  Object {
+                    "data-css-8teden": "",
+                  }
+                }
+              >
+                99+
+              </div>
+            </CartButtonBadge>
+          </div>
+        </Ripple>
+      </button>
+    </Portal>
+    <Portal
+      name="nav-bar.navigator.icons.cart-button.after"
+      props={null}
+    />
+  </CartButton>
+</Connect(CartButton)>
 `;
 
 exports[`<CartButton /> should transition if it has cart amount 1`] = `
-<button
-  className="css-nmjls1"
-  data-test-id="CartButton"
-  onClick={[Function]}
-  style={
+<Connect(CartButton)
+  store={
     Object {
-      "minWidth": 56,
-      "transform": "translate3d(0, 0, 0)",
-      "transitionDelay": "600ms",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <Ripple
-    className="css-167cazg"
-    color="#000"
-    disabled={false}
-    fill={true}
-    onComplete={[Function]}
-    overflow={false}
-    size={null}
+  <CartButton
+    activeCartRoute={true}
+    cartProductCount={1}
+    openCart={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
   >
-    <CartIcon />
-    <CartButtonBadge
-      productCount={5}
+    <Portal
+      name="nav-bar.navigator.icons.cart-button.before"
+      props={null}
     />
-  </Ripple>
-</button>
+    <Portal
+      name="nav-bar.navigator.icons.cart-button"
+      props={
+        Object {
+          "CartButton": [Function],
+        }
+      }
+    >
+      <button
+        className="css-nmjls1"
+        data-test-id="CartButton"
+        onClick={[Function]}
+        style={
+          Object {
+            "minWidth": 56,
+            "transform": "translate3d(0, 0, 0)",
+            "transitionDelay": "600ms",
+          }
+        }
+      >
+        <Ripple
+          className="css-167cazg"
+          color="#000"
+          disabled={false}
+          fill={true}
+          onClick={[Function]}
+          onComplete={[Function]}
+          overflow={false}
+          size={null}
+        >
+          <div
+            aria-hidden={true}
+            className="css-167cazg"
+            data-test-id="Ripple"
+            onClick={[Function]}
+            style={null}
+          >
+            <CartIcon>
+              <Icon
+                className=""
+                color={null}
+                content="<path d=\\"M7.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9,18,7.9,18z M17.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S19,18,17.9,18z M8.1,14.8l0-0.1L9,13h7.5c0.7,0,1.4-0.4,1.7-1l3.9-7l-1.7-1h0l-1.1,2l-2.8,5h-7l-0.1-0.3L7.1,6L6.1,4L5.2,2H1.9v2h2l3.6,7.6L6.2,14c-0.2,0.3-0.2,0.6-0.2,1c0,1.1,0.9,2,2,2h12v-2H8.3C8.2,15,8.1,14.9,8.1,14.8z\\"/>"
+                size="inherit"
+                viewBox="0 0 24 24"
+              >
+                <svg
+                  className="css-yys9hb "
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<path d=\\"M7.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9,18,7.9,18z M17.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S19,18,17.9,18z M8.1,14.8l0-0.1L9,13h7.5c0.7,0,1.4-0.4,1.7-1l3.9-7l-1.7-1h0l-1.1,2l-2.8,5h-7l-0.1-0.3L7.1,6L6.1,4L5.2,2H1.9v2h2l3.6,7.6L6.2,14c-0.2,0.3-0.2,0.6-0.2,1c0,1.1,0.9,2,2,2h12v-2H8.3C8.2,15,8.1,14.9,8.1,14.8z\\"/>",
+                    }
+                  }
+                  style={
+                    Object {
+                      "fill": null,
+                      "fontSize": "inherit",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Icon>
+            </CartIcon>
+            <CartButtonBadge
+              productCount={1}
+            >
+              <div
+                className={
+                  Object {
+                    "data-css-8teden": "",
+                  }
+                }
+              >
+                1
+              </div>
+            </CartButtonBadge>
+          </div>
+        </Ripple>
+      </button>
+    </Portal>
+    <Portal
+      name="nav-bar.navigator.icons.cart-button.after"
+      props={null}
+    />
+  </CartButton>
+</Connect(CartButton)>
 `;

@@ -1,63 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { RouteContext } from '@virtuous/react-conductor/Router';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import View from 'Components/View';
-import Header from 'Components/Reviews/components/Header';
-import List from 'Components/Reviews/components/List';
-import LoadMoreButton from './components/LoadMore';
-import connect from './connector';
+import ReviewsContent from './components/Content';
 
 /**
- * All reviews page component.
+ * The product detail page (PDP).
+ * @return {JSX}
  */
-class Reviews extends Component {
-  /**
-   * Context types definition.
-   * @type {{i18n: shim}}
-   */
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
+const Reviews = ({ id }) => (
+  <View>
+    {id && <ReviewsContent productId={id} />}
+  </View>
+);
 
-  /**
-   * PropTypes definition
-   * @type {{rating: Object, reviews: (*|shim)}}
-   */
-  static propTypes = {
-    rating: PropTypes.shape(),
-    reviews: PropTypes.arrayOf(PropTypes.shape()),
-  };
+Reviews.propTypes = {
+  id: PropTypes.string,
+};
 
-  /**
-   *
-   * @type {{rating: {}, reviews: Array}}
-   */
-  static defaultProps = {
-    rating: {},
-    reviews: [],
-  };
+Reviews.defaultProps = {
+  id: null,
+};
 
-  /**
-   * A title translation string.
-   * @returns {string} Title
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-    return __('titles.reviews');
-  }
+export default () => (
+  <RouteContext.Consumer>
+    {({ params }) => (
+      <Reviews id={hex2bin(params.productId) || null} />
+    )}
+  </RouteContext.Consumer>
+);
 
-  /**
-   * Renders the component
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <View title={this.title}>
-        <Header rating={this.props.rating} withTopGap />
-        <List reviews={this.props.reviews} />
-        <LoadMoreButton />
-      </View>
-    );
-  }
-}
-
-export default connect(Reviews);
+export { Reviews as UnwrappedReviews };

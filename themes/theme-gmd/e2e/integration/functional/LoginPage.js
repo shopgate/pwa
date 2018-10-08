@@ -1,7 +1,9 @@
+// eslint-disable-next-line spaced-comment
 /// <reference types="Cypress" />
-
 import els from '../../elements/de';
 import { logOutUser } from '../../helper/user';
+
+// TODO: refactor when fix is merged
 
 describe('functional tests login page', () => {
   it('should check for wrong credentials', () => {
@@ -45,6 +47,7 @@ describe('functional tests login page', () => {
         .should('be.visible')
         .contains('Hallo Dennis');
     });
+    cy.wait(5000);
     logOutUser();
   });
 

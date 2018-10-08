@@ -9,35 +9,31 @@ import connect from './connector';
 import { container } from './style';
 
 /**
- * Link to all reviews.
- * @param {string} productId The product id.
- * @param {number} totalReviewCount The total number of reviews for the product.
- * @returns {JSX|null}
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-const AllReviewsLink = ({ productId, totalReviewCount }) => {
-  if (!productId || totalReviewCount <= REVIEW_PREVIEW_COUNT) {
+const AllReviewsLink = (props) => {
+  if (!props.productId || props.count <= REVIEW_PREVIEW_COUNT) {
     return null;
   }
 
-  const publicProductId = bin2hex(productId);
-
   return (
     <div className={container} data-test-id="showAllReviewsButton">
-      <ButtonLink href={`${ITEM_PATH}/${publicProductId}/reviews`}>
-        <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
+      <ButtonLink href={`${ITEM_PATH}/${bin2hex(props.productId)}/reviews`}>
+        <I18n.Text string="reviews.button_all" params={props} />
       </ButtonLink>
     </div>
   );
 };
 
 AllReviewsLink.propTypes = {
+  count: PropTypes.number,
   productId: PropTypes.string,
-  totalReviewCount: PropTypes.number,
 };
 
 AllReviewsLink.defaultProps = {
+  count: 0,
   productId: null,
-  totalReviewCount: null,
 };
 
 export default connect(AllReviewsLink);

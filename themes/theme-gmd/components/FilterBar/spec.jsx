@@ -6,11 +6,18 @@ import { themeConfig as mockThemeConfig } from '@shopgate/pwa-common/helpers/con
 import FilterBar from './index';
 import { getDefaultStore } from './mock';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-common-commerce/filter/actions/getFilters', () => () => ({ type: 'foo' }));
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get currency() { return 'USD'; },
   themeConfig: mockThemeConfig,
+}));
+
+jest.mock('@virtuous/react-conductor/Router', () => ({
+  RouteContext: {
+    Consumer: props => props.children({ params: { categoryId: '1337' }, id: 'abc-132' }),
+  },
 }));
 
 describe('<FilterBar>', () => {
@@ -25,6 +32,7 @@ describe('<FilterBar>', () => {
           handleSortChange={() => {}}
           handleOpenFiltersView={() => {}}
           getFilters={() => {}}
+          setTop={() => {}}
         />
       </Provider>,
       mockRenderOptions

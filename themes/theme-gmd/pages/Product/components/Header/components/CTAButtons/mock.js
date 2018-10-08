@@ -13,6 +13,9 @@ export const mockedState = {
             hasVariants: true,
             hasOptions: false,
           },
+          stock: {
+            orderable: true,
+          },
         },
       },
       product_2: {
@@ -56,6 +59,7 @@ export const mockedVariantState = {
             hasVariants: true,
             hasOptions: false,
           },
+          stock: {},
         },
       },
       product_2: {
@@ -67,6 +71,9 @@ export const mockedVariantState = {
           flags: {
             hasVariants: false,
             hasOptions: false,
+          },
+          stock: {
+            orderable: true,
           },
         },
       },

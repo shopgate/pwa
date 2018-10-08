@@ -39,4 +39,17 @@ const mapDispatchToProps = dispatch => ({
   ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the component props have even changed.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.products.length !== next.products.length) return false;
+  if (prev.totalProductCount !== next.totalProductCount) return false;
+  if (prev.isFetching !== next.isFetching) return false;
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

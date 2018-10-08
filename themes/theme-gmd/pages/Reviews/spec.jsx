@@ -1,34 +1,33 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { mockedState } from './mock';
+import { mockedStateWithAll } from '@shopgate/pwa-common-commerce/reviews/mock';
+import { UnwrappedReviews as Reviews } from './index';
 
-const mockedView = MockedView;
-jest.mock('Components/View', () => mockedView);
-jest.mock('./connector', () => Component => Component);
 const mockedStore = configureStore();
+jest.mock('Components/View');
+jest.mock('Components/Reviews/components/Header', () => () => 'div');
+
 /**
  * Creates component
  * @return {ReactWrapper}
  */
-const createComponent = () => {
-  /* eslint-disable global-require */
-  const Reviews = require('./index').default;
-  /* eslint-enable global-require */
-  return mount(
-    <Provider store={mockedStore(mockedState)}>
-      <Reviews params={{ productId: '666f6f' }} fetchReviews={() => {}} />
-    </Provider>,
-    mockRenderOptions
-  );
-};
+const createComponent = () => mount(
+  <Provider store={mockedStore(mockedStateWithAll)}>
+    <Reviews id="foo" />
+  </Provider>,
+  mockRenderOptions
+);
 
 describe('<Reviews> page', () => {
   it('should not crash', () => {
     const component = createComponent();
+    expect(component).toMatchSnapshot();
     expect(component.find('Reviews').exists()).toBe(true);
+    expect(component.find('RatingStars').exists()).toBe(true);
+    expect(component.find('LoadMore').exists()).toBe(true);
+    expect(component.find('List > div').length).toEqual(4);
   });
 });

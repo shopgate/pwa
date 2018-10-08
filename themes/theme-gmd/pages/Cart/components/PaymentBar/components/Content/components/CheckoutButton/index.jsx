@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';

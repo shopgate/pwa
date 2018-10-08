@@ -48,6 +48,7 @@ describe('<QuantityPicker />', () => {
     beforeEach(() => {
       wrapper = mount(<QuantityPicker />);
 
+      /* eslint-disable-next-line */
       input = wrapper.instance().input;
 
       jest.spyOn(input, 'focus');
