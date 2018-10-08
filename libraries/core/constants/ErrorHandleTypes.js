@@ -1,2 +1,0 @@
-export const ERROR_HANDLE_DEFAULT = 'DEFAULT';
-export const ERROR_HANDLE_SUPPRESS = 'SUPPRESS';
