@@ -6,6 +6,7 @@ EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 UTILS = eslint-config unit-tests e2e benchmark
 THEMES = gmd ios11
 REPO_VERSION = ''
+GITHUB_AUTH_KEY = ''
 
 checkout-develop:
 		git checkout develop
@@ -117,14 +118,20 @@ ifneq ($(REPO_VERSION), '')
 endif
 
 changelog:
+ifeq ($(GITHUB_AUTH_KEY), '')
+		@echo " "
+		@echo "NO GITHUB CREDENTIALS PRESENT - Skipping changelog creation!"
+		@echo " "
+else
 		@echo " "
 		@echo "Creating changelog ..."
 		@echo " "
-		./node_modules/.bin/lerna-changelog
+		GITHUB_AUTH=$(GITHUB_AUTH_KEY) ./node_modules/.bin/lerna-changelog
 		git add -A
 		git commit -m "$$PACKAGE_VERSION"
 		git push
 		@echo "... done."
+endif
 
 e2e-gmd:
 		cd themes/gmd && yarn run e2e
