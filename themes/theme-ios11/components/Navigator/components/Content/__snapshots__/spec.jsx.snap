@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Content /> should render the logo 1`] = `<Logo />`;
-
-exports[`<Content /> should render the title 1`] = `<Connect(Title) />`;
