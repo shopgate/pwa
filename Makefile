@@ -127,10 +127,10 @@ changelog:
 		@echo "... done."
 
 e2e-gmd:
-		cd themes/gmd && yarn run e2e
+		cd themes/theme-gmd && yarn run e2e
 
 e2e-ios11:
-		cd themes/ios11 && yarn run e2e
+		cd themes/theme-ios11 && yarn run e2e
 
 e2e-checkout:
 		cd themes/gmd && yarn run e2e:checkout
