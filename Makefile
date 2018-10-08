@@ -58,6 +58,7 @@ clean:
 		lerna clean --yes
 		rm -rf ./node_modules/
 		node ./scripts/init-subtrees.js # try to set up new git subtree entries.
+		git remote
 		lerna bootstrap
 
 # Lerna change all the version numbers.
