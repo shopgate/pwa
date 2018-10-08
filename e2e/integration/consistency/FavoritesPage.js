@@ -49,8 +49,10 @@ describe('AndroidGMDTest FavoritesPage', () => {
       .click();
     cy.get(els.navDrawerFavoritesButton)
       .should('be.visible')
-      .click();
-    cy.get(els.productWithManyProps4Link)
+      .click()
+      .wait(6000);
+    cy.get(els.favoriteListItem)
+      .contains('Product with many Properties - 4 -')
       .should('be.visible');
     cy.reload();
   });

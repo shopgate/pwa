@@ -18,6 +18,7 @@ const Iterator = props => (
     itemScope
     itemType="http://schema.org/ListItem"
     className={styles.item}
+    data-test-id={props.name}
   >
     <Portal name={portals.PRODUCT_ITEM_BEFORE} props={{ productId: props.id }} />
     <Portal name={portals.PRODUCT_ITEM} props={{ productId: props.id }}>
@@ -30,10 +31,12 @@ const Iterator = props => (
 Iterator.propTypes = {
   id: PropTypes.string.isRequired,
   display: PropTypes.shape(),
+  name: PropTypes.string,
 };
 
 Iterator.defaultProps = {
   display: null,
+  name: null,
 };
 
 export default Iterator;
