@@ -97,7 +97,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     <div
                       aria-hidden={true}
                       className="css-13azwyo"
-                      onTouchTap={[Function]}
+                      onClick={[Function]}
                       style={null}
                     >
                       <div
@@ -154,7 +154,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     <div
                       aria-hidden={true}
                       className="css-13azwyo"
-                      onTouchTap={[Function]}
+                      onClick={[Function]}
                       style={null}
                     >
                       <div
