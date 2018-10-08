@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Properties /> should not render if no data is available 1`] = `
+<Properties
+  properties={null}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
+
+exports[`<Properties /> should render table with properties 1`] = `
+<Properties
+  properties={
+    Array [
+      Object {
+        "label": "foo",
+        "value": "bar",
+      },
+      Object {
+        "label": "bar",
+        "value": "foo",
+      },
+    ]
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <div
+    className="css-ybnu97"
+  >
+    <table
+      className="css-13asv6l"
+    >
+      <tbody>
+        <tr
+          key="foo"
+        >
+          <td
+            className="css-19ob0vg"
+          >
+            foo
+          </td>
+          <td
+            className="css-19ob0vg"
+            data-test-id="property: bar"
+          >
+            bar
+          </td>
+        </tr>
+        <tr
+          key="bar"
+        >
+          <td
+            className="css-19ob0vg"
+          >
+            bar
+          </td>
+          <td
+            className="css-19ob0vg"
+            data-test-id="property: foo"
+          >
+            foo
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</Properties>
+`;

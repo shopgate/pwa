@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ImageWidget /> should render the ImageWidget 1`] = `
+<Image
+  alt="Alt text"
+  animating={true}
+  backgroundColor="#f2f2f2"
+  className=""
+  forcePlaceholder={false}
+  highestResolutionLoaded={[Function]}
+  onError={null}
+  onLoad={null}
+  ratio={null}
+  resolutions={
+    Array [
+      Object {
+        "blur": 2,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
+        "height": 440,
+        "width": 440,
+      },
+    ]
+  }
+  src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
+  transition={null}
+/>
+`;
+
+exports[`<ImageWidget /> should render the ImageWidget without link 1`] = `
+<Image
+  alt="Alt text"
+  animating={true}
+  backgroundColor="#f2f2f2"
+  className=""
+  forcePlaceholder={false}
+  highestResolutionLoaded={[Function]}
+  onError={null}
+  onLoad={null}
+  ratio={null}
+  resolutions={
+    Array [
+      Object {
+        "blur": 2,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
+        "height": 440,
+        "width": 440,
+      },
+    ]
+  }
+  src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
+  transition={null}
+/>
+`;
