@@ -68,24 +68,11 @@ export default function cart(subscribe) {
       const [, , coupon] = action.params.pathname.split('/');
 
       if (coupon) {
-        dispatch(addCouponsToCart([coupon]))
-          .catch(() => { });
+        dispatch(addCouponsToCart([coupon]));
       }
 
       return null;
     });
-  });
-
-  /**
-   * Gets triggered when a route with a coupon wihtin the GET parameters will enter.
-   */
-  subscribe(routeWithCouponWillEnter$, ({ dispatch, action }) => {
-    const { coupon } = action.route.query;
-
-    if (coupon) {
-      dispatch(addCouponsToCart([coupon]))
-        .catch(() => { });
-    }
   });
 
   /**
@@ -151,6 +138,17 @@ export default function cart(subscribe) {
           message,
         }));
       });
+    }
+  });
+
+  /**
+   * Gets triggered when a route with a coupon within its GET parameters will enter.
+   */
+  subscribe(routeWithCouponWillEnter$, ({ dispatch, action }) => {
+    const { coupon } = action.route.query;
+
+    if (coupon) {
+      dispatch(addCouponsToCart([coupon]));
     }
   });
 }

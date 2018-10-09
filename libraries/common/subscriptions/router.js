@@ -45,6 +45,11 @@ export default function router(subscribe) {
 
     location = handler.sanitizeLink(location);
 
+    // Stop further processing if the location is empty.
+    if (!location) {
+      return;
+    }
+
     const { pathname: currentPathname } = getCurrentRoute();
 
     // Prevent the current route from being pushed again.
@@ -89,6 +94,7 @@ export default function router(subscribe) {
               ...params.action,
               params: {
                 ...params.action.params,
+                // Merge the sanitized location into the redirect handler payload.
                 pathname: location,
               },
             },
