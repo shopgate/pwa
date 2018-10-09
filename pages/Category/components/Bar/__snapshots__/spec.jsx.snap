@@ -45,9 +45,7 @@ exports[`<Bar /> should render 1`] = `
               filters={null}
               viewRef={null}
             >
-              <section
-                className={Object {}}
-              >
+              <section>
                 <div
                   className="css-gpg0x2"
                   data-test-id="filterBar"
