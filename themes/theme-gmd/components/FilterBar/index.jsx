@@ -67,7 +67,7 @@ class FilterBar extends Component {
     return (
       <section className={styles.container}>
         <div
-          className={styles.wrapper}
+          className={styles}
           data-test-id="filterBar"
           style={this.style}
         >
