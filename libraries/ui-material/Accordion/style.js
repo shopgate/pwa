@@ -6,16 +6,15 @@ export const toggle = css({
 });
 
 export const chevronContainer = css({
-  position: 'absolute',
   fontSize: '1.5rem',
-  top: '.6875rem',
+  position: 'absolute',
   right: '1rem',
+  top: '.6875rem',
 });
 
 export const chevron = css({
   transformOrigin: 'center center',
   transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-  willChange: 'transform',
 });
 
 export const chevronClosed = css(chevron, {

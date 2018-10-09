@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
+import { BackBar } from 'Components/AppBar/presets';
 import ReviewForm from './components/ReviewForm';
 
 /**
@@ -13,7 +14,12 @@ import ReviewForm from './components/ReviewForm';
  */
 const WriteReview = ({ productId }) => (
   <View>
-    {productId && <ReviewForm productId={productId} />}
+    {productId && (
+      <Fragment>
+        <BackBar title="titles.reviews" right={null} />
+        <ReviewForm productId={productId} />
+      </Fragment>
+    )}
   </View>
 );
 

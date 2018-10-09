@@ -72,7 +72,7 @@ class Glow extends Component {
       <div
         aria-hidden
         className={classNames(styles.container, this.props.className)}
-        onTouchTap={this.handleTouchTap}
+        onClick={this.handleTouchTap}
         style={this.props.styles.container}
       >
         <div className={styles.glow} style={innerInlineStyles} />

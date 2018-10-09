@@ -17,10 +17,7 @@ exports[`<ProductGallery> page should render 1`] = `
     id="913"
     initialSlide={0}
   >
-    <MockedView
-      hasNavigator={false}
-      isFullscreen={true}
-    >
+    <MockedView>
       <div>
         <Connect(ProductGalleryContent)
           initialSlide={0}
@@ -108,6 +105,7 @@ exports[`<ProductGallery> page should render 1`] = `
                 loop={true}
                 maxIndicators={null}
                 onSlideChange={null}
+                rebuildOnUpdate={false}
                 slidesPerView={1}
                 snapItems={true}
               >
@@ -129,6 +127,7 @@ exports[`<ProductGallery> page should render 1`] = `
                   loop={true}
                   maxIndicators={null}
                   onSlideChange={null}
+                  rebuildOnUpdate={false}
                   slidesPerView={1}
                   snapItems={true}
                 >

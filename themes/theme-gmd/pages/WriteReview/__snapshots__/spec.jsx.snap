@@ -18,6 +18,121 @@ exports[`<WriteReview> page should not crash 1`] = `
   >
     <MockedView>
       <div>
+        <Connect(BackBar)
+          right={null}
+          title="titles.reviews"
+        >
+          <BackBar
+            goBack={[Function]}
+            right={null}
+            title="titles.reviews"
+          >
+            <AppBarDefault
+              left={[Function]}
+              right={null}
+              title="titles.reviews"
+            >
+              <AppBar
+                backgroundColor="#fff"
+                below={
+                  <React.Fragment>
+                    <_default />
+                  </React.Fragment>
+                }
+                center={
+                  <AppBarTitle
+                    title="titles.reviews"
+                  />
+                }
+                left={[Function]}
+                right={null}
+                shadow={true}
+                textColor="#000"
+                title="titles.reviews"
+              >
+                <header
+                  className={
+                    Object {
+                      "data-css-1gx0ht2": "",
+                    }
+                  }
+                  data-test-id="Navigator"
+                  role="banner"
+                  style={
+                    Object {
+                      "background": "#fff",
+                      "boxShadow": "rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px",
+                      "color": "#000",
+                    }
+                  }
+                >
+                  <div
+                    className={
+                      Object {
+                        "data-css-1qz3sla": "",
+                      }
+                    }
+                  >
+                    <AppBarTitle
+                      title="titles.reviews"
+                    >
+                      <div
+                        className={
+                          Object {
+                            "data-css-16ouezv": "",
+                          }
+                        }
+                      >
+                        titles.reviews
+                      </div>
+                    </AppBarTitle>
+                  </div>
+                  <_default>
+                    <Consumer>
+                      <ProgressBar
+                        pattern=""
+                        visible={true}
+                      >
+                        <ProgressBar
+                          isVisible={false}
+                        >
+                          <Transition
+                            appear={false}
+                            enter={true}
+                            exit={true}
+                            in={false}
+                            mountOnEnter={false}
+                            onEnter={[Function]}
+                            onEntered={[Function]}
+                            onEntering={[Function]}
+                            onExit={[Function]}
+                            onExited={[Function]}
+                            onExiting={[Function]}
+                            timeout={150}
+                            unmountOnExit={false}
+                          >
+                            <div
+                              className="css-guf25f"
+                              style={
+                                Object {
+                                  "transform": "scale(1, 0)",
+                                }
+                              }
+                            >
+                              <div
+                                className="css-cd7tja"
+                              />
+                            </div>
+                          </Transition>
+                        </ProgressBar>
+                      </ProgressBar>
+                    </Consumer>
+                  </_default>
+                </header>
+              </AppBar>
+            </AppBarDefault>
+          </BackBar>
+        </Connect(BackBar)>
         <Component
           productId="foo"
         />

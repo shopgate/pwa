@@ -8,8 +8,8 @@ cache:
     - node_modules
 script:
   - npm i -g @shopgate/cloud-sdk-webpack
-  - sgcloud-webpack --theme=gmd --indexOnly
-  - sgcloud-webpack --theme=ios11 --indexOnly
+  - sgcloud-webpack --theme=theme-gmd --indexOnly
+  - sgcloud-webpack --theme=theme-ios11 --indexOnly
   - yarn run cover --maxWorkers=4 --ci
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:

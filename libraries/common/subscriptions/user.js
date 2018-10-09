@@ -1,6 +1,7 @@
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import getUser from '../actions/user/getUser';
 import { successLogin } from '../action-creators';
 import { historyPush } from '../actions/router';
@@ -29,10 +30,12 @@ export default function user(subscribe) {
   const userNeedsUpdate$ = appDidStart$.merge(userDidLogin$);
 
   subscribe(userWillLogin$, ({ dispatch }) => {
+    ProgressBar.show(LOGIN_PATH);
     dispatch(setViewLoading(LOGIN_PATH));
   });
 
   subscribe(userLoginResponse$, ({ dispatch }) => {
+    ProgressBar.hide(LOGIN_PATH);
     dispatch(unsetViewLoading(LOGIN_PATH));
   });
 

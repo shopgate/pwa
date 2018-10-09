@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo /> should render an image 1`] = `
+<div
+  className={
+    Object {
+      "data-css-ivdtm0": "",
+    }
+  }
+>
+  <img
+    alt="Shopgate Connect"
+    className={
+      Object {
+        "data-css-1yo7ngy": "",
+      }
+    }
+    src="https://example.com/logo"
+  />
+</div>
+`;

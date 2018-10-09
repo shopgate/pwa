@@ -1,14 +1,25 @@
-/* eslint-disable no-console */
-
 import React from 'react';
 import { mount } from 'enzyme';
 import Accordion from './index';
 
 console.error = jest.fn();
+jest.unmock('@shopgate/pwa-ui-shared');
 
 describe('<Accordion />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('should render with renderLabel prop and children', () => {
+    const wrapper = mount((
+      <Accordion renderLabel={() => <div />}>
+        Some content.
+      </Accordion>
+    ));
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('AccordionContent').exists()).toBe(true);
+    expect(console.error).toHaveBeenCalledTimes(0);
   });
 
   it('should not render without a renderLabel prop', () => {
@@ -22,18 +33,4 @@ describe('<Accordion />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(console.error).toHaveBeenCalledTimes(0);
   });
-
-  it('should render with renderLabel prop and children', () => {
-    const wrapper = mount((
-      <Accordion renderLabel={() => {}}>
-        Some content.
-      </Accordion>
-    ));
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('AccordionContent').exists()).toBe(true);
-    expect(console.error).toHaveBeenCalledTimes(0);
-  });
 });
-
-/* eslint-enable no-console */

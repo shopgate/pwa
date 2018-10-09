@@ -1,6 +1,5 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
 const fullSize = {
   position: 'relative',
@@ -16,15 +15,6 @@ const container = css({
   bottom: 0,
   left: 0,
   right: 0,
-}).toString();
-
-const navButton = css({
-  position: 'fixed',
-  top: 'var(--safe-area-inset-top)',
-  left: 0,
-  width: variables.navigator.height,
-  color: colors.light,
-  zIndex: 2,
 }).toString();
 
 const slider = css({
@@ -55,7 +45,6 @@ const sliderStyles = {
 
 export default {
   container,
-  navButton,
   slider,
   slide,
   sliderStyles,

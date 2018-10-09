@@ -8,7 +8,7 @@ import CategoryContent from './components/Content';
 
 const map = {
   id: 'params.categoryId',
-  visible: 'visible',
+  open: 'open',
 };
 
 /**
@@ -19,8 +19,8 @@ class Category extends PureComponent {
    * @param {Object} props the consumed props.
    * @returns {JSX}
    */
-  consumeRenderer = ({ id, visible }) => {
-    if (!visible) {
+  consumeRenderer = ({ id, open }) => {
+    if (!open) {
       return null;
     }
 
