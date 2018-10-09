@@ -14,14 +14,8 @@ const View = ({
   hasNavigator,
   isFullscreen,
 }) => (
-  <section
-    className={styles}
-    style={{ background }}
-  >
-    <Content
-      hasNavigator={hasNavigator}
-      isFullscreen={isFullscreen}
-    >
+  <section className={styles} style={{ background }}>
+    <Content hasNavigator={hasNavigator} isFullscreen={isFullscreen}>
       {children}
     </Content>
   </section>
