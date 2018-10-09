@@ -1,6 +1,4 @@
 import {
-  PLATFORM_ANDROID,
-  MIN_ANDROID_LIB_VERSION,
   isValidVersion,
   isVersionAtLeast,
   isVersionAtMost,
@@ -8,7 +6,6 @@ import {
   isLibVersionAtLeast,
   isLibVersionAtMost,
   isLibVersion,
-  getLibVersion,
 } from './version';
 
 let mockedClientInformation = null;
@@ -253,41 +250,12 @@ describe('Version helper', () => {
     });
   });
 
-  describe('getLibVersion()', () => {
-    it('should work as expected', async () => {
-      const { libVersion } = mockedClientInformation;
-      const result = await getLibVersion();
-      expect(result).toEqual(libVersion);
-    });
-
-    it('should return the lib version from within the client information for iOS', async () => {
-      const libVersion = '15.0';
-      setClientInformation(undefined, libVersion);
-      const result = await getLibVersion();
-      expect(result).toEqual(libVersion);
-    });
-
-    it('should return the minimum lib version for old Android apps', async () => {
-      setClientInformation(PLATFORM_ANDROID, '2.0');
-      const result = await getLibVersion();
-      expect(result).toEqual(MIN_ANDROID_LIB_VERSION);
-    });
-
-    it('should return the real lib version for recent Android apps', async () => {
-      const libVersion = '16.0';
-      setClientInformation(PLATFORM_ANDROID, libVersion);
-      const result = await getLibVersion();
-      expect(result).toEqual(libVersion);
-    });
-  });
-
   describe('request handling', () => {
     it('should only request once for multiple parallel calls', async () => {
       isLibVersion('17.0.0');
       isLibVersion('17.0.0');
       const result = await isLibVersion('17.0.0');
       expect(result).toBe(true);
-      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(1);
     });
   });
 });

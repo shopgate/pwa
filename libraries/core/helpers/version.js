@@ -12,7 +12,7 @@ export const MIN_ANDROID_LIB_VERSION = '13.0';
 const md = new MobileDetect(navigator.userAgent);
 const isAndroid = md.is('AndroidOS');
 export const defaultClientInformation = {
-  libVersion: MIN_ANDROID_LIB_VERSION,
+  libVersion: '17.0',
   appVersion: '5.18.0',
   codebaseVersion: '5.18.0',
   type: (!md.tablet() ? 'phone' : 'tablet'),
