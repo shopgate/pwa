@@ -9,7 +9,6 @@ import {
   isLibVersionAtMost,
   isLibVersion,
   getLibVersion,
-  clearVersionCache,
 } from './version';
 
 let mockedClientInformation = null;
@@ -56,7 +55,6 @@ describe('Version helper', () => {
   beforeEach(() => {
     mockedWebStorageResponse.mockClear();
     setClientInformation();
-    clearVersionCache();
   });
 
   describe('isValidVersion()', () => {
@@ -283,18 +281,6 @@ describe('Version helper', () => {
     });
   });
 
-  describe('clearVersionCache()', () => {
-    it('should work as expected', async () => {
-      clearVersionCache();
-      await isLibVersion('17.0.0');
-      await isLibVersion('17.0.0');
-      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(1);
-      clearVersionCache();
-      await isLibVersion('17.0.0');
-      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(2);
-    });
-  });
-
   describe('request handling', () => {
     it('should only request once for multiple parallel calls', async () => {
       isLibVersion('17.0.0');
@@ -305,4 +291,3 @@ describe('Version helper', () => {
     });
   });
 });
-
