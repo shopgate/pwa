@@ -3,9 +3,8 @@ import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import RootCategory from './index';
-import reducers from '../reducers';
 
-const store = createMockStore(reducers);
+const store = createMockStore();
 jest.mock('../../components/View/context.js');
 
 describe('Pages: <RootCategory />', () => {
