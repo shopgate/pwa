@@ -2,13 +2,13 @@ import 'rxjs/add/operator/debounceTime';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
+import { redirects } from '@shopgate/pwa-common/collections';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { historyReset } from '@shopgate/pwa-common/actions/router';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
@@ -24,12 +24,11 @@ import {
   couponsAdded$,
   couponsUpdated$,
   couponsDeleted$,
-  couponLinkOpened$,
-  couponActionPushNotification$,
+  routeWithCouponWillEnter$,
   remoteCartDidUpdate$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
-import { CART_PATH } from '../constants';
+import { CART_PATH, DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
 
 /**
  * Cart subscriptions.
@@ -59,6 +58,35 @@ export default function cart(subscribe) {
     couponsUpdated$,
     productsUpdated$
   );
+
+  /**
+   * Gets triggered when the app will start.
+   */
+  subscribe(appWillStart$, () => {
+    // Use the redirect system to handle coupons from deeplinks.
+    redirects.set(DEEPLINK_CART_ADD_COUPON_PATTERN, ({ dispatch, action }) => {
+      const [, , coupon] = action.params.pathname.split('/');
+
+      if (coupon) {
+        dispatch(addCouponsToCart([coupon]))
+          .catch(() => { });
+      }
+
+      return null;
+    });
+  });
+
+  /**
+   * Gets triggered when a route with a coupon wihtin the GET parameters will enter.
+   */
+  subscribe(routeWithCouponWillEnter$, ({ dispatch, action }) => {
+    const { coupon } = action.route.query;
+
+    if (coupon) {
+      dispatch(addCouponsToCart([coupon]))
+        .catch(() => { });
+    }
+  });
 
   /**
    * Gets triggered when the app starts.
@@ -103,38 +131,6 @@ export default function cart(subscribe) {
 
   subscribe(cartIdle$, ({ dispatch }) => {
     dispatch(unsetViewLoading(CART_PATH));
-  });
-
-  /**
-   * Gets triggered a coupon link was opened.
-   */
-  subscribe(couponLinkOpened$, ({ action, dispatch }) => {
-    dispatch(addCouponsToCart([action.options.queryParams.coupon]));
-  });
-
-  /**
-   * Gets triggered when a push notification containing a coupon link was received.
-   */
-  subscribe(couponActionPushNotification$, (options) => {
-    const {
-      action,
-      code,
-      dispatch,
-      getState,
-    } = options;
-    const state = getState();
-    const historyLength = getHistoryLength(state);
-    const historyPathname = getHistoryPathname(state);
-
-    /**
-     * Check if the history only has one entry that is the push notification url.
-     * Then reset back to the homepage.
-     */
-    if (historyLength === 1 && historyPathname === action.options.url) {
-      dispatch(historyReset());
-    }
-
-    dispatch(addCouponsToCart([code]));
   });
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {

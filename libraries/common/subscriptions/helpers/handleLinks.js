@@ -9,6 +9,12 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import authRoutes from '../../collections/AuthRoutes';
 
+/**
+ * Parses the protocol of an url
+ * @type {RegExp}
+ */
+const protocolRegex = /^(.*:)(\/\/)?/;
+
 const SHOPGATE_DOMAIN = 'shopgate.com';
 const SHOPGATEPG_DOMAIN = 'shopgatepg.com';
 const SHOPGATE_DOMAINS = [
@@ -25,7 +31,6 @@ export const LEGACY_LINK_ACCOUNT = '/account';
 export const LEGACY_LINK_STOREFINDER = '/storefinder';
 export const LEGACY_LINK_CHANNEL = '/channel';
 export const LEGACY_LINK_ORDERS = '/orders_legacy';
-export const LEGACY_LINK_CART_ADD_COUPON = '/cart_add_coupon';
 export const LEGACY_LINK_CHECKOUT = '/checkout_legacy';
 export const LEGACY_LINK_REGISTER = '/register_legacy';
 export const LEGACY_LINK_CONNECT_REGISTER = '/connect_register';
@@ -47,7 +52,6 @@ const legacyLinks = [
   LEGACY_LINK_STOREFINDER,
   LEGACY_LINK_CHANNEL,
   LEGACY_LINK_ORDERS,
-  LEGACY_LINK_CART_ADD_COUPON,
   LEGACY_LINK_CHECKOUT,
   LEGACY_LINK_REGISTER,
   LEGACY_LINK_CONNECT_REGISTER,
@@ -128,6 +132,35 @@ export const isShopLink = (location) => {
   }
 
   return true;
+};
+
+/**
+ * Sanitizes a link.
+ * @param {string} location The location to sanitzie.
+ * @return {string}
+ */
+export const sanitizeLink = (location) => {
+  let sanitized = location;
+
+  // Remove trailing slashes from the location.
+  if (sanitized && sanitized.length > 1) {
+    const parts = sanitized.split('?');
+
+    if (parts[0].endsWith('/')) {
+      parts[0] = parts[0].slice(0, -1);
+    }
+
+    sanitized = parts.join('?');
+  }
+
+  const protocol = protocolRegex.exec(sanitized);
+
+  // Remove unknown protocols e.g. deeplink prefixes.
+  if (protocol !== null && !hasKnownProtocols(RegExp.$1)) {
+    sanitized = sanitized.replace(`${RegExp.$1}/`, '');
+  }
+
+  return sanitized;
 };
 
 /**
@@ -298,7 +331,6 @@ export const openLegacyLink = (location, historyAction) => {
         historyAction,
       });
       break;
-    case LEGACY_LINK_CART_ADD_COUPON:
     default:
       logger.warn(`openLegacyLink not handled: ${location}`);
       break;

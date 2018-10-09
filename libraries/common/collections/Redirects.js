@@ -1,3 +1,5 @@
+import pathMatch from 'path-match';
+
 /**
  * The Redirects class.
  */
@@ -7,6 +9,11 @@ class Redirects {
    */
   constructor() {
     this.redirects = new Map();
+    this.matcher = pathMatch({
+      sensitive: false,
+      strict: false,
+      end: true,
+    });
   }
 
   /**
@@ -14,7 +21,45 @@ class Redirects {
    * @returns {string|Promise|undefined}
    */
   get(pathname) {
-    return this.redirects.get(pathname);
+    return this.redirects.get(pathname) || null;
+  }
+
+  /**
+   * Returns the redirect for a passed pathname.
+   * @param {string} pathname The pathname to check.
+   * @return {string|null}
+   */
+  getRedirect(pathname) {
+    /**
+     * Try to make a direct match with the pathname.
+     * If we get lucky then we don't have to iterate over the protected patterns.
+     */
+    let redirect = this.get(pathname);
+
+    /**
+     * If we didn't find a direct match then we need to match
+     * the given pathname against the protected patters.
+     */
+    if (!redirect) {
+      // Get the protected patterns as an array.
+      const patterns = Array.from(this.redirects.keys());
+      const [withoutParams] = pathname.split('?');
+
+      // Loop over the patterns until a match is found.
+      patterns.some((pattern) => {
+        // Check for a match.
+        const match = this.matcher(pattern)(withoutParams);
+
+        // Match found, set the redirect.
+        if (match) {
+          redirect = this.redirects.get(pattern);
+        }
+
+        return match;
+      });
+    }
+
+    return redirect;
   }
 
   /**
