@@ -15,9 +15,9 @@ const { themes, extensions } = repos;
  */
 async function synchRepo(remote, pathname, remoteBranchName) {
   const cmd = `git subtree push --prefix=${pathname} ${remote} ${remoteBranchName}`;
-
+console.log(cmd);
   try {
-    await exec(cmd);
+    #await exec(cmd);
     logger.log(`Synchronized '${remoteBranchName}' in ${pathname}`);
   } catch (error) {
     throw error;

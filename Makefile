@@ -22,6 +22,7 @@ release:
 		make bump-themes
 		make build-libraries
 		make npm-publish
+		make prepare-remotes
 		make git-publish
 		make changelog
 		make clean-build
@@ -84,6 +85,9 @@ bump-themes:
 build-libraries:
 		$(foreach package, $(NPM_PACKAGES), $(call build-packages, $(package)))
 
+prepare-remotes:
+		node ./scripts/add-remotes.js
+
 # Create git tags and push everything.
 git-publish:
 		$(call push-main)
@@ -112,8 +116,7 @@ ifneq ($(REPO_VERSION), '')
 		@echo " "
 		@echo "Synchronizing with remote origins ..."
 		@echo " "
-		node ./scripts/add-remotes.js
-		node ./scripts/sync-remotes.js
+		node ./scripts/sync-remotes.js -branch="master"
 		@echo " "
 		@echo "... done synchronizing with remotes!"
 		@echo " "
@@ -212,6 +215,7 @@ define push-main
 endef
 
 define git-tags
+		node ./scripts/sync-remotes.js -branch="$$(git branch | grep \* | cut -d ' ' -f2)"
 		VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd $(1) && git tag v$$VERSION -m "v$$VERSION" && git push --tags
 
 endef
