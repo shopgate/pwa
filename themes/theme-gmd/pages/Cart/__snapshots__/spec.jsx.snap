@@ -16,10 +16,11 @@ exports[`<Cart> page should match snapshot 1`] = `
           "_context": [Circular],
         },
         "_calculateChangedBits": null,
-        "_changedBits": 0,
         "_currentRenderer": null,
+        "_currentRenderer2": null,
         "_currentValue": undefined,
-        "_defaultValue": undefined,
+        "_currentValue2": undefined,
+        "unstable_read": [Function],
       }
     }
     props={
