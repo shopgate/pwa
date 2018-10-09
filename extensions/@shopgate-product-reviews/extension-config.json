@@ -1,0 +1,13 @@
+{
+  "version": "6.0.0-beta.13",
+  "id": "@shopgate/product-reviews",
+  "components": [
+    {
+      "id": "RatingSatrs",
+      "path": "frontend/RatingStars/index.jsx",
+      "target": "product-item.name.before",
+      "type": "portals"
+    }
+  ],
+  "configuration": {}
+}

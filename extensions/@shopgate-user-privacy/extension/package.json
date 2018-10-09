@@ -1,0 +1,30 @@
+{
+  "name": "@shopgate/user-privacy",
+  "version": "1.0.0",
+  "description": "Shopgate Connect user privacy extension",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shopgate/ext-user-privacy"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --use_strict --recursive test/unit",
+    "standard": "./node_modules/.bin/standard"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^5.2.0",
+    "standard": "^10.0.3"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}

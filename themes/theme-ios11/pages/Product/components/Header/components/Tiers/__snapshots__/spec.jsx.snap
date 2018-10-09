@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tiers /> Rendering Rendering with data should render tier prices when tier prices are available 1`] = `
+<Tiers
+  price={
+    Object {
+      "currency": "USD",
+      "tiers": Array [
+        Object {
+          "from": 1,
+          "to": 10,
+          "unitPrice": 99.99,
+        },
+        Object {
+          "from": 11,
+          "to": 9999,
+          "unitPrice": 80,
+        },
+      ],
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <div
+    className="css-ipvvc7"
+  >
+    <Translate
+      className="css-z8ikop"
+      key="1"
+      params={
+        Object {
+          "from": 1,
+        }
+      }
+      string="price.tier.range"
+    >
+      <span
+        className="css-z8ikop"
+      >
+        price.tier.range
+      </span>
+    </Translate>
+    <Translate
+      className="css-z8ikop"
+      key="11"
+      params={
+        Object {
+          "from": 11,
+        }
+      }
+      string="price.tier.range"
+    >
+      <span
+        className="css-z8ikop"
+      >
+        price.tier.range
+      </span>
+    </Translate>
+  </div>
+</Tiers>
+`;
+
+exports[`<Tiers /> Rendering Rendering without data should render nothing when price data are not available ({}) 1`] = `
+<Tiers
+  price={Object {}}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
+
+exports[`<Tiers /> Rendering Rendering without data should render nothing when price data are not available (null) 1`] = `
+<Tiers
+  price={null}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
+
+exports[`<Tiers /> Rendering Rendering without data should render nothing when tier prices are empty ([]) 1`] = `
+<Tiers
+  price={
+    Object {
+      "currency": "USD",
+      "tiers": Array [],
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
+
+exports[`<Tiers /> Rendering Rendering without data should render nothing when tier prices are not available (field missing) 1`] = `
+<Tiers
+  price={
+    Object {
+      "currency": "USD",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;

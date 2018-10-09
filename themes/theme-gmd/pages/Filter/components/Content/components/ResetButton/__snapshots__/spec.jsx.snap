@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter: <ResetButton /> should handle clicks 1`] = `
+<div
+  className={
+    Object {
+      "data-css-lg74ao": "",
+    }
+  }
+>
+  <Button
+    className=""
+    disabled={false}
+    flat={true}
+    onClick={[MockFunction]}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="filter.reset"
+    />
+  </Button>
+</div>
+`;
+
+exports[`Filter: <ResetButton /> should render as activated 1`] = `
+<div
+  className={
+    Object {
+      "data-css-lg74ao": "",
+    }
+  }
+>
+  <Button
+    className=""
+    disabled={false}
+    flat={true}
+    onClick={[Function]}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="filter.reset"
+    />
+  </Button>
+</div>
+`;
+
+exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
+<div
+  className={
+    Object {
+      "data-css-lg74ao": "",
+    }
+  }
+>
+  <Button
+    className=""
+    disabled={true}
+    flat={true}
+    onClick={[Function]}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="filter.reset"
+    />
+  </Button>
+</div>
+`;

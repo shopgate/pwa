@@ -3,22 +3,18 @@ export FORCE_COLOR = true
 
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
-UTILS = eslint-config unit-tests e2e
+UTILS = eslint-config unit-tests e2e benchmark
 THEMES = gmd ios11
 REPO_VERSION = ''
 
 setup:
 		sgconnect init
-		git submodule init
-		git submodule update
 		make clean
 
 checkout-develop:
 		git checkout develop
-		git submodule foreach --recursive git checkout develop
 		git fetch --all
 		git pull
-		git submodule foreach --recursive git pull
 		make clean
 
 release:
@@ -53,14 +49,20 @@ else
 		@echo " "
 endif
 
+init:
+		git submodule deinit --all
+		rm -rf .git/modules/*
+
 # Clean the repository before starting a release.
 clean:
+		make init
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
 		make clean-build
 		lerna clean --yes
 		rm -f ./.git/hooks/pre-commit
 		rm -rf ./node_modules/
+		node ./scripts/init-subtrees.js # try to set up new git subtree entries.
 		rm -rf ./.cache-loader/
 		lerna bootstrap
 
@@ -110,6 +112,13 @@ ifneq ($(REPO_VERSION), '')
 		@echo " "
 		@echo "Finishing release for version $(REPO_VERSION)"
 		@echo " "
+		@echo "Synchronizing with remote origins ..."
+		@echo " "
+		node ./scripts/add-remotes.js
+		node ./scripts/synch-repos.js
+		@echo " "
+		@echo "... done synchronizing with remotes!"
+		@echo " "
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call merge-develop, $(SUBSTR))
 endif
@@ -140,9 +149,8 @@ define prepare-release
 		@echo "Checking out develop branches ... "
 		@echo " "
 		git checkout develop
-		git submodule foreach --recursive git checkout develop
-		git fetch --all && git submodule foreach --recursive git fetch --all
-		git pull && git submodule foreach --recursive git pull
+		git fetch --all
+		git pull
 
 endef
 
@@ -153,9 +161,8 @@ define merge-master
 				echo "Merging into master ... "; \
 				echo " "; \
 				git checkout master; \
-				git submodule foreach --recursive git checkout master; \
-				git merge develop && git push; \
-				git submodule foreach --recursive git merge develop && git submodule foreach --recursive git push; \
+				git merge develop; \
+				git push; \
 			else \
 				echo " "; \
 				echo "Not using master: beta release!"; \
@@ -171,9 +178,8 @@ define merge-develop
 				echo "Merging back into develop ... "; \
 				echo " "; \
 				git checkout develop; \
-				git submodule foreach --recursive git checkout develop; \
-				git merge master && git push; \
-				git submodule foreach --recursive git merge master && git submodule foreach --recursive git push; \
+				git merge master; \
+				git push; \
 		fi;
 
 endef
@@ -224,10 +230,5 @@ endef
 
 define clean-build-packages
 		rm -rf -f ./libraries/$(strip $(1))/dist
-
-endef
-
-define run-libraries-coverage
-		cd ./libraries/$(strip $(1))/ && yarn run cover
 
 endef

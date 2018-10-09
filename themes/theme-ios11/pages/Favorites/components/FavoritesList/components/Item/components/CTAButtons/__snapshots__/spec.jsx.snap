@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CTAButtons /> should render buttons 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(CTAButtons)
+    productId="product_1"
+  >
+    <CTAButtons
+      active={null}
+      addToCart={[Function]}
+      favoritesOnce={false}
+      isBaseProduct={true}
+      isOrderable={true}
+      onRippleComplete={[Function]}
+      productId="product_1"
+      removeThrottle={null}
+      showVariantModal={[Function]}
+    >
+      <div
+        className="css-j25czk"
+      >
+        <Connect(FavoritesButton)
+          active={null}
+          noShadow={true}
+          onRippleComplete={[Function]}
+          once={false}
+          productId="product_1"
+          readOnlyOnFetch={true}
+          removeThrottle={null}
+        >
+          <FavoritesButton
+            active={null}
+            addFavorites={[Function]}
+            className=""
+            noShadow={true}
+            onRippleComplete={[Function]}
+            once={false}
+            productId="product_1"
+            readOnlyOnFetch={true}
+            removeFavorites={[Function]}
+            removeThrottle={null}
+            removeWithRelatives={false}
+            rippleClassName=""
+          />
+        </Connect(FavoritesButton)>
+        <Portal
+          name="favorites.add-to-cart.before"
+          props={null}
+        />
+        <Portal
+          name="favorites.add-to-cart"
+          props={
+            Object {
+              "className": undefined,
+              "handleAddToCart": [Function],
+              "isBaseProduct": true,
+              "isDisabled": false,
+              "isLoading": false,
+              "noShadow": false,
+              "productId": "product_1",
+            }
+          }
+        >
+          <MockedAddToCartButton
+            handleAddToCart={[Function]}
+            isDisabled={false}
+            isLoading={false}
+            isOrderable={false}
+            noShadow={true}
+          >
+            <button
+              onClick={[Function]}
+            />
+          </MockedAddToCartButton>
+        </Portal>
+        <Portal
+          name="favorites.add-to-cart.after"
+          props={null}
+        />
+      </div>
+    </CTAButtons>
+  </Connect(CTAButtons)>
+</Provider>
+`;

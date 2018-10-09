@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HtmlWidget /> Basic rendering should re-render when html updates 1`] = `
+<Html
+  navigate={[MockFunction]}
+  settings={
+    Object {
+      "defaultPadding": false,
+      "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+    }
+  }
+>
+  <div
+    className="css-7v4dr8"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<h1>Hello World!</h1>",
+      }
+    }
+    style={Object {}}
+  />
+</Html>
+`;
+
+exports[`<HtmlWidget /> Basic rendering should re-render when html updates 2`] = `
+<Html
+  navigate={[MockFunction]}
+  settings={
+    Object {
+      "defaultPadding": false,
+      "html": "&lt;h1&gt;Hello User!&lt;/h1&gt;",
+    }
+  }
+>
+  <div
+    className="css-7v4dr8"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<h1>Hello User!</h1>",
+      }
+    }
+    style={Object {}}
+  />
+</Html>
+`;
+
+exports[`<HtmlWidget /> Basic rendering should re-render when html updates 3`] = `
+<Html
+  navigate={[MockFunction]}
+  settings={
+    Object {
+      "defaultPadding": true,
+      "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
+    }
+  }
+>
+  <div
+    className="css-7v4dr8"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<h1>Hello World!</h1>",
+      }
+    }
+    style={
+      Object {
+        "padding": 16,
+      }
+    }
+  />
+</Html>
+`;
+
+exports[`<HtmlWidget /> Basic rendering should render the HtmlWidget 1`] = `
+<div
+  class="css-7v4dr8"
+>
+  <h1>
+    Hello World!
+  </h1>
+</div>
+`;
+
+exports[`<HtmlWidget /> Basic rendering should render the HtmlWidget with a padding 1`] = `
+<div
+  class="css-7v4dr8"
+  style="padding: 16px;"
+>
+  <h1>
+    Hello World!
+  </h1>
+</div>
+`;
+
+exports[`<HtmlWidget /> strips out the script tags 1`] = `
+<Html
+  navigate={[MockFunction]}
+  settings={
+    Object {
+      "defaultPadding": false,
+      "html": "&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt;var x = 42;&lt;/script&gt; &lt;p&gt;Foo Bar&lt;/p&gt; &lt;script&gt;var y = 23;&lt;/script&gt;",
+    }
+  }
+>
+  <div
+    className="css-7v4dr8"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "  <p>Foo Bar</p> ",
+      }
+    }
+    style={Object {}}
+  />
+</Html>
+`;

@@ -127,17 +127,119 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@shopgate/eslint-config@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.9.0-beta.10.tgz#b66dc4262d1c64dcea169e6b84dd78b3d11d33bd"
+  dependencies:
+    babel-eslint "^8.2.1"
+    eslint-config-airbnb "^16.1.0"
+    eslint-plugin-eslint-comments "^1.1.0"
+    eslint-plugin-extra-rules "0.8.1"
+    eslint-plugin-import "^2.8.0"
+    eslint-plugin-jsx-a11y "^6.0.3"
+    eslint-plugin-react "^7.6.1"
+
+"@shopgate/pwa-benchmark@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-benchmark/-/pwa-benchmark-5.9.0-beta.10.tgz#5dfdfc9312449f210181a89a0f2e43c1f47f347d"
+
+"@shopgate/pwa-common-commerce@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.9.0-beta.10.tgz#f7378160542d1a81d081d8f714c1ae5f532189de"
+  dependencies:
+    recompose "^0.26.0"
+    reselect "^3.0.1"
+
+"@shopgate/pwa-common@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.9.0-beta.10.tgz#e6b84cf60d5a89977c1bf92333f063c246dc8ca4"
+  dependencies:
+    "@shopgate/pwa-benchmark" "5.9.0-beta.10"
+    classnames "^2.2.5"
+    crypto-js "3.1.9-1"
+    glamor "^2.20.40"
+    gsap "^1.20.2"
+    history "^4.7.2"
+    intl-messageformat "^2.1.0"
+    jsdom "11.1.0"
+    path-match "^1.2.4"
+    react-dotdotdot "^1.1.0"
+    react-id-swiper "1.4.0"
+    react-inline-transition-group "^2.1.7"
+    react-portal "^3.1.0"
+    react-redux "^5.0.6"
+    react-tap-event-plugin "^3.0.2"
+    recompose "^0.26.0"
+    redux "^3.7.2"
+    redux-logger "^3.0.6"
+    redux-thunk "^2.2.0"
+    remote-redux-devtools "^0.5.12"
+    reselect "^3.0.1"
+    rxjs "^5.4.3"
+    url-search-params "^0.10.0"
+
+"@shopgate/pwa-core@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.9.0-beta.10.tgz#2364ec56213ca948faec4d94dee14a0d28a69dc5"
+  dependencies:
+    crypto-js "3.1.9-1"
+    isomorphic-fetch "^2.2.1"
+    lodash "^4.6.1"
+
+"@shopgate/pwa-e2e-test@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-e2e-test/-/pwa-e2e-test-5.9.0-beta.10.tgz#b26c6f856857c8b30203edb4f1b2712ebf89c333"
+
+"@shopgate/pwa-tracking@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.9.0-beta.10.tgz#5d300d811d85d40ec8be0f16e532edda8f672411"
+
+"@shopgate/pwa-ui-ios@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-ios/-/pwa-ui-ios-5.9.0-beta.10.tgz#81c8fbf6034327685b202b52acf895834f58585a"
+
+"@shopgate/pwa-ui-material@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-material/-/pwa-ui-material-5.9.0-beta.10.tgz#f5e624c451323a82e03e3524008bc1e0decb19b0"
+
+"@shopgate/pwa-ui-shared@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.9.0-beta.10.tgz#0eef549bffe27f2e5974fd087c797298711e8f0d"
+  dependencies:
+    "@shopgate/pwa-ui-ios" "5.9.0-beta.10"
+    "@shopgate/pwa-ui-material" "5.9.0-beta.10"
+
+"@shopgate/pwa-unit-test@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.9.0-beta.10.tgz#913c4480bd1eec3a74c1e619eb32fb984d4bc225"
+  dependencies:
+    cheerio "^1.0.0-rc.2"
+    enzyme "^3.4.4"
+    enzyme-adapter-react-16 "^1.2.0"
+    enzyme-to-json "^3.3.4"
+    identity-obj-proxy "^3.0.0"
+    jest-enzyme "^6.0.3"
+    react-tap-event-plugin "^3.0.2"
+
+"@shopgate/pwa-webcheckout-shopify@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.9.0-beta.10.tgz#8bf8bdb0f96da4e505b2da65baa098788755907b"
+
 "@shopgate/react-hammerjs@0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
 
-"@shopgate/react-hammerjs@^0.5.3":
+"@shopgate/react-hammerjs@0.5.8", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.8"
   resolved "http://registry.npmjs.org/@shopgate/react-hammerjs/-/react-hammerjs-0.5.8.tgz#e5a7eeaad3c1fb73963d881987f52e143a05eb6e"
   dependencies:
     hammerjs "^2.0.8"
+
+"@shopgate/tracking-core@5.9.0-beta.10":
+  version "5.9.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.9.0-beta.10.tgz#d85d2570879dd982b3b0db8e2aee762c0d6b53c6"
 
 "@types/blob-util@1.3.3":
   version "1.3.3"
@@ -1465,6 +1567,10 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
+base-64@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/base-64/-/base-64-0.1.0.tgz#780a99c84e7d600260361511c4877613bf24f6bb"
+
 base@^0.11.1:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/base/-/base-0.11.2.tgz#7bde5ced145b6d551a90db87f83c558b4eb48a8f"
@@ -1829,6 +1935,10 @@ cliui@^4.0.0:
     strip-ansi "^4.0.0"
     wrap-ansi "^2.0.0"
 
+clone@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.1.tgz#d217d1e961118e3ac9a4b8bba3285553bf647cdb"
+
 clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
@@ -1935,7 +2045,7 @@ compare-func@^1.3.1:
     array-ify "^1.0.0"
     dot-prop "^3.0.0"
 
-component-emitter@^1.2.1:
+component-emitter@1.2.1, component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
@@ -3430,6 +3540,10 @@ get-own-enumerable-property-symbols@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-2.0.1.tgz#5c4ad87f2834c4b9b4e84549dc1e0650fb38c24b"
 
+get-params@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/get-params/-/get-params-0.1.2.tgz#bae0dfaba588a0c60d7834c0d8dc2ff60eeef2fe"
+
 get-pkg-repo@^1.0.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/get-pkg-repo/-/get-pkg-repo-1.4.0.tgz#c73b489c06d80cc5536c2c853f9e05232056972d"
@@ -4735,6 +4849,10 @@ js-yaml@^3.11.0, js-yaml@^3.7.0, js-yaml@^3.9.0, js-yaml@^3.9.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+jsan@^3.1.5, jsan@^3.1.9:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/jsan/-/jsan-3.1.10.tgz#ba9917b864defff567e0c990a34ae7a8d5eb1d90"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -5018,6 +5136,10 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+linked-list@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/linked-list/-/linked-list-0.1.0.tgz#798b0ff97d1b92a4fd08480f55aea4e9d49d37bf"
 
 lint-staged@^7.2.2:
   version "7.2.2"
@@ -5321,7 +5443,7 @@ lodash@4.17.4:
   version "4.17.4"
   resolved "http://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
@@ -5693,6 +5815,10 @@ mute-stream@0.0.7:
 nan@^2.9.2:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.0.tgz#574e360e4d954ab16966ec102c0c049fd961a099"
+
+nanoid@^1.0.7:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-1.2.6.tgz#5b9427cabf41f5df1fc371b14c969ffcd3b095aa"
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -6430,7 +6556,7 @@ query-string@^6.1.0:
     decode-uri-component "^0.2.0"
     strict-uri-encode "^2.0.0"
 
-querystring@0.2.0:
+querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
@@ -6479,6 +6605,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-addons-test-utils@^15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.6.2.tgz#c12b6efdc2247c10da7b8770d185080a7b047156"
 
 react-dom@~16.3.2:
   version "16.3.3"
@@ -6750,6 +6880,13 @@ redux-devtools-extension@^2.13.2:
   version "2.13.5"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.5.tgz#3ff34f7227acfeef3964194f5f7fc2765e5c5a39"
 
+redux-devtools-instrument@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/redux-devtools-instrument/-/redux-devtools-instrument-1.9.0.tgz#2faed9ac3292c783284b21843edfaa0567764a0c"
+  dependencies:
+    lodash "^4.2.0"
+    symbol-observable "^1.0.2"
+
 redux-logger@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
@@ -6846,6 +6983,33 @@ regjsparser@^0.1.4:
   resolved "https://registry.yarnpkg.com/regjsparser/-/regjsparser-0.1.5.tgz#7ee8f84dc6fa792d3fd0ae228d24bd949ead205c"
   dependencies:
     jsesc "~0.5.0"
+
+remote-redux-devtools@^0.5.12:
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/remote-redux-devtools/-/remote-redux-devtools-0.5.13.tgz#6bcb1ecfbb0a9c3e75f477882a04d2f197f81e2c"
+  dependencies:
+    jsan "^3.1.5"
+    querystring "^0.2.0"
+    redux-devtools-instrument "^1.9.0"
+    remotedev-utils "^0.1.1"
+    rn-host-detect "^1.0.1"
+    socketcluster-client "^13.0.0"
+
+remotedev-serialize@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/remotedev-serialize/-/remotedev-serialize-0.1.1.tgz#0f598000b7dd7515d67f9b51a61d211e18ce9554"
+  dependencies:
+    jsan "^3.1.9"
+
+remotedev-utils@^0.1.1:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/remotedev-utils/-/remotedev-utils-0.1.4.tgz#643700819a943678073c75eb185e81d96620b348"
+  dependencies:
+    get-params "^0.1.2"
+    jsan "^3.1.5"
+    lodash "^4.0.0"
+    remotedev-serialize "^0.1.0"
+    shortid "^2.2.6"
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
@@ -7024,6 +7188,10 @@ rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   dependencies:
     glob "^7.0.5"
 
+rn-host-detect@^1.0.1:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/rn-host-detect/-/rn-host-detect-1.1.5.tgz#fbecb982b73932f34529e97932b9a63e58d8deb6"
+
 rst-selector-parser@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/rst-selector-parser/-/rst-selector-parser-2.2.3.tgz#81b230ea2fcc6066c89e3472de794285d9b03d91"
@@ -7114,6 +7282,20 @@ sax@^1.1.4, sax@^1.2.1, sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
+sc-channel@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/sc-channel/-/sc-channel-1.2.0.tgz#d9209f3a91e3fa694c66b011ce55c4ad8c3087d9"
+  dependencies:
+    component-emitter "1.2.1"
+
+sc-errors@^1.4.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/sc-errors/-/sc-errors-1.4.1.tgz#53e80030fe647e133d73b51eaa7d2b0f7591fd5b"
+
+sc-formatter@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/sc-formatter/-/sc-formatter-3.0.2.tgz#9abdb14e71873ce7157714d3002477bbdb33c4e6"
+
 schedule@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/schedule/-/schedule-0.4.0.tgz#fa20cfd0bfbf91c47d02272fd7096780d3170bbb"
@@ -7171,6 +7353,12 @@ shebang-regex@^1.0.0:
 shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
+
+shortid@^2.2.6:
+  version "2.2.13"
+  resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.13.tgz#b2441e71c664ace458a341d343959f677910ef5b"
+  dependencies:
+    nanoid "^1.0.7"
 
 signal-exit@^3.0.0, signal-exit@^3.0.1, signal-exit@^3.0.2:
   version "3.0.2"
@@ -7257,6 +7445,21 @@ sntp@1.x.x:
   resolved "https://registry.yarnpkg.com/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
   dependencies:
     hoek "2.x.x"
+
+socketcluster-client@^13.0.0:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/socketcluster-client/-/socketcluster-client-13.0.1.tgz#920e0a2437c228555e84f8ef0c9c5eb720e6067e"
+  dependencies:
+    base-64 "0.1.0"
+    clone "2.1.1"
+    component-emitter "1.2.1"
+    linked-list "0.1.0"
+    querystring "0.2.0"
+    sc-channel "^1.2.0"
+    sc-errors "^1.4.0"
+    sc-formatter "^3.0.1"
+    uuid "3.2.1"
+    ws "5.1.1"
 
 socks-proxy-agent@^3.0.1:
   version "3.0.1"
@@ -7597,7 +7800,7 @@ symbol-observable@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.0.1.tgz#8340fc4702c3122df5d22288f88283f513d3fdd4"
 
-symbol-observable@^1.0.3, symbol-observable@^1.0.4, symbol-observable@^1.1.0:
+symbol-observable@^1.0.2, symbol-observable@^1.0.3, symbol-observable@^1.0.4, symbol-observable@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
 
@@ -7909,6 +8112,10 @@ util.promisify@^1.0.0:
   dependencies:
     inherits "2.0.3"
 
+uuid@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
+
 uuid@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
@@ -8114,6 +8321,12 @@ write@^0.2.1:
   resolved "https://registry.yarnpkg.com/write/-/write-0.2.1.tgz#5fc03828e264cea3fe91455476f7a3c566cb0757"
   dependencies:
     mkdirp "^0.5.1"
+
+ws@5.1.1:
+  version "5.1.1"
+  resolved "http://registry.npmjs.org/ws/-/ws-5.1.1.tgz#1d43704689711ac1942fd2f283e38f825c4b8b95"
+  dependencies:
+    async-limiter "~1.0.0"
 
 ws@^5.2.0:
   version "5.2.2"
