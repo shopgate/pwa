@@ -194,20 +194,6 @@ describe('Router subscriptions', () => {
       });
     });
 
-    it('should handle deeplinks as expected', async () => {
-      const params = {
-        action: ACTION_PUSH,
-        pathname: 'shop-1337://item/abc123',
-        state: {},
-      };
-
-      await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push, {
-        ...params,
-        pathname: '/item/abc123',
-      });
-    });
-
     it('should redirect to a protector route when the user is not logged in', async () => {
       getState.mockReturnValueOnce({ user: { login: { isLoggedIn: false } } });
 

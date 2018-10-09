@@ -46,17 +46,12 @@ describe('handleLinks helpers', () => {
   describe('sanitizeLink()', () => {
     const links = [
       ['http://m.example.com/', 'http://m.example.com'],
-      ['http://m.example.com', 'http://m.example.com'],
-      ['https://m.example.com/page/cms/', 'https://m.example.com/page/cms'],
-      ['https://m.example.com/page/cms', 'https://m.example.com/page/cms'],
-      ['https://m.example.com/page/cms/?some=parameter', 'https://m.example.com/page/cms?some=parameter'],
       ['/page/title/', '/page/title'],
       ['/page/title', '/page/title'],
       ['tel:1234/', 'tel:1234'],
       ['tel:1234', 'tel:1234'],
       ['mailto:noreply@shopgate.com', 'mailto:noreply@shopgate.com'],
-      ['shopgate://cart?coupon=test', '/cart?coupon=test'],
-      ['app-12343://cart_add_coupon/test', '/cart_add_coupon/test'],
+      ['/cart/?coupon=test', '/cart?coupon=test'],
     ];
 
     it.each(links)(

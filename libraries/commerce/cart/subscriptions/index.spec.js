@@ -5,7 +5,7 @@ import { DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
 import { routeWithCouponWillEnter$ } from '../streams';
 import subscription from './index';
 
-jest.mock('../actions/addCouponsToCart', () => jest.fn().mockImplementation(input => input));
+jest.mock('../actions/addCouponsToCart', () => jest.fn());
 
 describe('Cart subscriptions', () => {
   const subscribe = jest.fn();
@@ -57,7 +57,8 @@ describe('Cart subscriptions', () => {
 
       expect(handlerResult).toBeNull();
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(addCouponsToCart([coupon]));
+      expect(addCouponsToCart).toHaveBeenCalledTimes(1);
+      expect(addCouponsToCart).toHaveBeenCalledWith([coupon]);
     });
   });
 
@@ -90,7 +91,8 @@ describe('Cart subscriptions', () => {
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(addCouponsToCart([coupon]));
+      expect(addCouponsToCart).toHaveBeenCalledTimes(1);
+      expect(addCouponsToCart).toHaveBeenCalledWith([coupon]);
     });
   });
 });

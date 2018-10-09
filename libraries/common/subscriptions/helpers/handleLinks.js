@@ -9,12 +9,6 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import authRoutes from '../../collections/AuthRoutes';
 
-/**
- * Parses the protocol of an url
- * @type {RegExp}
- */
-const protocolRegex = /^(.*:)(\/\/)?/;
-
 const SHOPGATE_DOMAIN = 'shopgate.com';
 const SHOPGATEPG_DOMAIN = 'shopgatepg.com';
 const SHOPGATE_DOMAINS = [
@@ -151,13 +145,6 @@ export const sanitizeLink = (location) => {
     }
 
     sanitized = parts.join('?');
-  }
-
-  const protocol = protocolRegex.exec(sanitized);
-
-  // Remove unknown protocols e.g. deeplink prefixes.
-  if (protocol !== null && !hasKnownProtocols(RegExp.$1)) {
-    sanitized = sanitized.replace(`${RegExp.$1}/`, '');
   }
 
   return sanitized;
