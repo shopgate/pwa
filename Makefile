@@ -91,6 +91,9 @@ git-publish:
 		$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
 		$(call git-tags, ./)
 
+git-publish-main:
+		$(call push-main)
+
 # Publish to npm.
 npm-publish:
 		$(eval VERSION=$(shell cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'))
@@ -110,7 +113,7 @@ ifneq ($(REPO_VERSION), '')
 		@echo "Synchronizing with remote origins ..."
 		@echo " "
 		node ./scripts/add-remotes.js
-		node ./scripts/synch-repos.js
+		node ./scripts/sync-remotes.js
 		@echo " "
 		@echo "... done synchronizing with remotes!"
 		@echo " "
