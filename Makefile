@@ -15,8 +15,7 @@ checkout-develop:
 		make clean
 
 release:
-		@echo "-$$(GITHUB_AUTH_KEY)-"
-		git push
+		curl -H "Authorization: token $(GITHUB_AUTH_KEY)" https://api.github.com/repos/shopgate/theme-gmd/releases
 		#make pre-release
 		#make clean
 		#make pre-publish
