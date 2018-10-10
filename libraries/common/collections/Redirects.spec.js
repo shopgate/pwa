@@ -8,14 +8,34 @@ describe('Redirects', () => {
     redirects.constructor();
   });
 
-  describe('get()', () => {
+  describe('.get()', () => {
     it('should get a valid redirect', () => {
       redirects.set(FROM, TO);
       expect(redirects.get(FROM)).toEqual(TO);
     });
+
+    it('should get NULL for an unknown pathname', () => {
+      expect(redirects.get(FROM)).toBeNull();
+    });
   });
 
-  describe('set()', () => {
+  describe('.getRedirect()', () => {
+    it('should get a redirect for a distinct pathname', () => {
+      redirects.set(FROM, TO);
+      expect(redirects.getRedirect(FROM)).toBe(TO);
+    });
+
+    it('should get a redirect for a pathname which matches a registered pattern', () => {
+      redirects.set(`${FROM}/:id`, TO);
+      expect(redirects.getRedirect(`${FROM}/abc123`)).toBe(TO);
+    });
+
+    it('should get NULL for an unknown pathname', () => {
+      expect(redirects.getRedirect(FROM)).toBeNull();
+    });
+  });
+
+  describe('.set()', () => {
     it('should add a redirect', () => {
       redirects.set(FROM, TO);
       expect(redirects.redirects.size).toEqual(1);
@@ -54,7 +74,7 @@ describe('Redirects', () => {
     });
   });
 
-  describe('unset()', () => {
+  describe('.unset()', () => {
     it('should remove a found redirect', () => {
       redirects.set(FROM, TO);
       redirects.set('/somewhere', '/somewhere_else');

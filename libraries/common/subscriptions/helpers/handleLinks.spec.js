@@ -1,4 +1,4 @@
-import { isShopLink } from './handleLinks';
+import { isShopLink, sanitizeLink } from './handleLinks';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   shopCNAME: 'm.example.com',
@@ -41,6 +41,25 @@ describe('handleLinks helpers', () => {
         expect(isShopLink(href)).toBe(false);
       });
     });
+  });
+
+  describe('sanitizeLink()', () => {
+    const links = [
+      ['http://m.example.com/', 'http://m.example.com'],
+      ['/page/title/', '/page/title'],
+      ['/page/title', '/page/title'],
+      ['tel:1234/', 'tel:1234'],
+      ['tel:1234', 'tel:1234'],
+      ['mailto:noreply@shopgate.com', 'mailto:noreply@shopgate.com'],
+      ['/cart/?coupon=test', '/cart?coupon=test'],
+    ];
+
+    it.each(links)(
+      'should sanitize %s to %s',
+      (input, output) => {
+        expect(sanitizeLink(input)).toBe(output);
+      }
+    );
   });
 });
 

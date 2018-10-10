@@ -1,7 +1,6 @@
 export * from './app';
 export * from './client';
 export * from './error';
-export * from './history';
 export * from './menu';
 export * from './modal';
 export * from './page';

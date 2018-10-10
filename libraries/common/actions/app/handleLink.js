@@ -7,11 +7,14 @@ import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
  */
 export default function handleLink(payload) {
   return (dispatch) => {
-    const { link = null } = payload;
+    let { link = null } = payload;
 
     if (!link) {
       return;
     }
+
+    // Remove the deeplink protocol from the link.
+    link = link.replace(/^(.*:)(\/\/)?/, '/');
 
     if (link.startsWith(INDEX_PATH_DEEPLINK)) {
       /**
