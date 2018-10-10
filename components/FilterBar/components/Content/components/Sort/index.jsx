@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { RouteContext } from '@virtuous/react-conductor/Router/context';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import {
   SORT_RELEVANCE,
   SORT_PRICE_ASC,
   SORT_PRICE_DESC,
+  DEFAULT_SORT,
 } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import SelectBox from '@shopgate/pwa-common/components/SelectBox';
 import ArrowDropIcon from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import Item from './components/Item';
@@ -27,30 +31,56 @@ const items = [
 ];
 
 /**
- * Renders the Sort component.
- * @param {Object} props The components props.
- * @returns {JSX}
+ * The Sort component.
  */
-const Sort = ({ changeSort, sort }) => (
-  <SelectBox
-    handleSelectionUpdate={newSort => changeSort(newSort, sort)}
-    items={items}
-    initialValue={sort}
-    icon={ArrowDropIcon}
-    item={Item}
-    className={styles.selectBox}
-    classNames={styles}
-    testId="sorting"
-  />
-);
+class Sort extends PureComponent {
+  static propTypes = {
+    historyReplace: PropTypes.func.isRequired,
+  }
 
-Sort.propTypes = {
-  changeSort: PropTypes.func.isRequired,
-  sort: PropTypes.string,
-};
+  /**
+   * @param {string} sort The new sort string.
+   */
+  handleSelection = (sort) => {
+    const route = getCurrentRoute();
 
-Sort.defaultProps = {
-  sort: null,
-};
+    if (route.query.sort === sort) {
+      return;
+    }
+
+    const query = parseObjectToQueryString({
+      ...route.query,
+      sort,
+    });
+    const pathname = `${window.location.pathname}${query}`;
+
+    this.props.historyReplace({
+      pathname,
+      state: route.state,
+    });
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <RouteContext.Consumer>
+        {route => (
+          <SelectBox
+            handleSelectionUpdate={this.handleSelection}
+            items={items}
+            initialValue={route.query.sort || DEFAULT_SORT}
+            icon={ArrowDropIcon}
+            item={Item}
+            className={styles.selectBox}
+            classNames={styles}
+            testId="sorting"
+          />
+        )}
+      </RouteContext.Consumer>
+    );
+  }
+}
 
 export default connect(Sort);
