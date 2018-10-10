@@ -41,7 +41,7 @@ const results = [
   },
 ];
 
-describe('RootCategory subscriptions', () => {
+describe.skip('Page subscriptions', () => {
   let subscribeMock;
   let first;
   let second;

@@ -15,13 +15,13 @@
     "connect"
   ],
   "dependencies": {
+    "@shopgate/pwa-benchmark": "6.0.0-beta.13",
     "@virtuous/conductor": "1.0.0-beta.38",
     "@virtuous/conductor-events": "1.0.0-beta.38",
     "@virtuous/conductor-helpers": "1.0.0-beta.38",
     "@virtuous/react-conductor": "1.0.0-beta.38",
     "@virtuous/redux-conductor": "1.0.0-beta.38",
     "@virtuous/redux-persister": "1.1.0-beta.5",
-    "@shopgate/pwa-benchmark": "6.0.0-beta.13",
     "classnames": "^2.2.5",
     "crypto-js": "3.1.9-1",
     "glamor": "^2.20.40",
@@ -35,7 +35,6 @@
     "react-inline-transition-group": "^2.1.7",
     "react-portal": "^3.1.0",
     "react-redux": "^5.0.6",
-    "react-tap-event-plugin": "^3.0.2",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
@@ -47,12 +46,12 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "6.0.0-beta.13",
-    "@shopgate/pwa-core": "6.0.0-beta.13",
     "@shopgate/pwa-benchmark": "6.0.0-beta.13",
+    "@shopgate/pwa-core": "6.0.0-beta.13",
     "@shopgate/react-hammerjs": "0.5.8",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
-    "react": "~16.3.2",
-    "react-dom": "~16.3.2"
+    "react": "~16.5.0",
+    "react-dom": "~16.5.0"
   }
 }

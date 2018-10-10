@@ -16,7 +16,6 @@ import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import router from '@virtuous/redux-conductor/reducer';
 import extensions from 'Extensions/reducers';
-import general from 'Components/View/reducer';
 import viewSwitch from 'Components/FilterBar/components/Content/components/ViewSwitch/reducer';
 
 persistReducers.set([
@@ -42,7 +41,6 @@ const reducers = combineReducers({
   reviews,
   search,
   ui: combineReducers({
-    general,
     viewSwitch,
   }),
   url,

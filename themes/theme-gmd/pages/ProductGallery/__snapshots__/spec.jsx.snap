@@ -17,10 +17,7 @@ exports[`<ProductGallery> page should render 1`] = `
     id="913"
     initialSlide={0}
   >
-    <MockedView
-      hasNavigator={false}
-      isFullscreen={true}
-    >
+    <MockedView>
       <div>
         <Connect(ProductGalleryContent)
           initialSlide={0}

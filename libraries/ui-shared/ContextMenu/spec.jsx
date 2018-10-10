@@ -38,7 +38,7 @@ describe('<ContextMenu />', () => {
     renderComponent();
   });
 
-  describe('Given the component was mounted to the DOM', () => {
+  describe.skip('Given the component was mounted to the DOM', () => {
     it('should match snapshot', () => {
       expect(renderedElement).toMatchSnapshot();
     });

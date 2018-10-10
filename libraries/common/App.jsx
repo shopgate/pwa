@@ -4,11 +4,6 @@ import { Provider } from 'react-redux';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
 
-// if (process.env.NODE_ENV !== 'production') {
-//   const { whyDidYouUpdate } = require('why-did-you-update');
-//   whyDidYouUpdate(React);
-// }
-
 /**
  * The application component.
  * It sets up the store and the react router. The router's children (routes) come from

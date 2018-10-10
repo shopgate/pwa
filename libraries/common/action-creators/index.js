@@ -8,4 +8,3 @@ export * from './router';
 export * from './url';
 export * from './user';
 export * from './view';
-export { default as setViewTitle } from './view/setViewTitle';

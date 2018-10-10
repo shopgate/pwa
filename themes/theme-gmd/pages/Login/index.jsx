@@ -19,6 +19,7 @@ import {
   PAGE_LOGIN_FORM,
   PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
+import { CloseBar } from 'Components/AppBar/presets';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
 import styles from './style';
@@ -123,6 +124,7 @@ class Login extends Component {
   render() {
     return (
       <View>
+        <CloseBar shadow={false} />
         <section className={styles.container} data-test-id="LoginPage">
           <Portal name={PAGE_LOGIN_BEFORE} />
           <Portal name={PAGE_LOGIN} >

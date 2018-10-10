@@ -14,7 +14,7 @@ exports[`<Glow /> should render with a smile 1`] = `
   <div
     aria-hidden={true}
     className="css-13azwyo"
-    onTouchTap={[Function]}
+    onClick={[Function]}
     style={null}
   >
     <div

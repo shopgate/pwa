@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Select from '../../Select';
-import { ELEMENT_TYPE_COUNTRY } from './../elementTypes';
 
 /**
  * React component that takes the element and additional data and renders a select box

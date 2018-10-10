@@ -6,7 +6,7 @@ import TextField from './../TextField';
 import style from './style';
 
 /**
- * A component that provides a password text field with visibility toggle.
+ * A component that provides a password field with visibility toggle.
  */
 class Password extends Component {
   /**
@@ -21,6 +21,9 @@ class Password extends Component {
     };
   }
 
+  /**
+   * @param {boolean} isVisible The next isVisible state.
+   */
   togglePasswordVisibility = (isVisible) => {
     this.setState({ isVisible });
   }

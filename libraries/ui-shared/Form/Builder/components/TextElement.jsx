@@ -22,7 +22,6 @@ const mapping = {
 
 /**
  * React component that takes the element and additional data and renders a configured text input.
- * @returns {JSX}
  */
 class TextElement extends PureComponent {
   static propTypes = {
@@ -39,7 +38,6 @@ class TextElement extends PureComponent {
 
   static defaultProps = {
     value: '',
-    visible: false,
     style: { field: '' },
   };
 

@@ -10,10 +10,19 @@ class ViewProvider extends Component {
     children: PropTypes.node.isRequired,
   }
 
-  state = {
-    top: 0,
-    bottom: 0,
-  };
+  /**
+   * 
+   * @param {*} props 
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      ref: props.node,
+      top: 0,
+      bottom: 0,
+    };
+  }
 
   /**
    * @returns {boolean}

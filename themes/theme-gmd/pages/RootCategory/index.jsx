@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import CategoryList from 'Components/CategoryList';
 import View from 'Components/View';
+import { DefaultBar } from 'Components/AppBar/presets';
 import connect from './connector';
 
 /**
- * The root category page.
+ * The RootCategory component.
  */
 class RootCategory extends PureComponent {
   static propTypes = {
@@ -22,6 +23,7 @@ class RootCategory extends PureComponent {
   render() {
     return (
       <View>
+        <DefaultBar title="titles.categories" />
         <CategoryList categories={this.props.categories} prerender={8} />
       </View>
     );

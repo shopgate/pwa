@@ -3,7 +3,7 @@ import {
   logger,
   EINVALIDCALL,
   ELEGACYSGCONNECT,
-  EUNCOMPLETE
+  EUNCOMPLETE,
 } from '@shopgate/pwa-core';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import * as actions from '../../action-creators/user';
