@@ -108,6 +108,7 @@ exports[`<ProductGallery> page should render 1`] = `
                 loop={true}
                 maxIndicators={null}
                 onSlideChange={null}
+                rebuildOnUpdate={false}
                 slidesPerView={1}
                 snapItems={true}
               >
@@ -129,6 +130,7 @@ exports[`<ProductGallery> page should render 1`] = `
                   loop={true}
                   maxIndicators={null}
                   onSlideChange={null}
+                  rebuildOnUpdate={false}
                   slidesPerView={1}
                   snapItems={true}
                 >
