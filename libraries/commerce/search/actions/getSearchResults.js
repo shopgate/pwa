@@ -1,6 +1,5 @@
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
-import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import { DEFAULT_SORT, ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import getProducts from '../../product/actions/getProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
 import receiveSearchResults from '../action-creators/receiveSearchResults';
@@ -8,17 +7,22 @@ import errorSearchResults from '../action-creators/errorSearchResults';
 
 /**
  * Retrieves products for a certain search query.
- * @param {string} searchPhrase The search phrase.
- * @param {number} offset The offset for the products to request.
+ * @param {number} params The params for the products to request.
  * @return {Function} The dispatched action.
  */
-const getSearchResults = (searchPhrase, offset = 0) => (dispatch, getState) => {
+const getSearchResults = params => (dispatch, getState) => {
+  const {
+    offset = 0,
+    searchPhrase,
+    limit = ITEMS_PER_LOAD,
+    sort = DEFAULT_SORT,
+  } = params;
+
   if (!searchPhrase) {
     return;
   }
 
-  const limit = ITEMS_PER_LOAD;
-  const sort = getSortOrder(getState());
+  // TODO: Move to function params.
   const filters = getActiveFilters();
 
   const promise = dispatch(getProducts({
