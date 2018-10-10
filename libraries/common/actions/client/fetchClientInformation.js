@@ -1,4 +1,5 @@
-import { logger } from '@shopgate/pwa-core/helpers';
+import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
 import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
 import {
   requestClientInformation,
@@ -12,6 +13,11 @@ import {
  */
 const fetchClientInformation = () => (dispatch) => {
   dispatch(requestClientInformation());
+
+  if (!hasSGJavaScriptBridge()) {
+    dispatch(receiveClientInformation(defaultClientInformation));
+    return;
+  }
 
   getWebStorageEntry({ name: 'clientInformation' })
     .then(response => dispatch(receiveClientInformation(response.value)))
