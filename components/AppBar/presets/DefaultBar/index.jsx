@@ -5,7 +5,6 @@ import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
-import { ViewContext } from '../../../View/context';
 
 /**
  * The AppBarDefault component.

@@ -7,7 +7,6 @@ import {
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';

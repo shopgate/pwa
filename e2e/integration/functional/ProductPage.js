@@ -111,7 +111,7 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.cartButton += ' div')
-      .contains('1')
+      .contains('1');
   });
 
   it('should clear cart', () => {

@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+// / <reference types="Cypress" />
 
 import els from '../../elements/de';
 
@@ -46,7 +46,7 @@ describe('e2e functional test favoritePage', () => {
       .click();
     cy.get(els.basicDialogText)
       .contains('Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.')
-      .should('be.visible')
+      .should('be.visible');
     cy.get(els.basicDialogOkButton)
       .contains('Varianten wählen')
       .click();
