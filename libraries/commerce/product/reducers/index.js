@@ -8,12 +8,14 @@ import shippingByProductId from './shippingByProductId';
 import variantsByProductId from './variantsByProductId';
 import optionsByProductId from './optionsByProductId';
 import resultsByHash from './resultsByHash';
+import productRelations from './productRelations';
 
 export default combineReducers({
   currentProduct,
   descriptionsByProductId,
   imagesByProductId,
   optionsByProductId,
+  productRelations,
   productsById,
   propertiesByProductId,
   resultsByHash,
