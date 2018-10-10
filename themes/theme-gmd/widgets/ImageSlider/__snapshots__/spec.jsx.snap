@@ -67,6 +67,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
         loop={false}
         maxIndicators={null}
         onSlideChange={null}
+        rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
@@ -95,6 +96,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           loop={false}
           maxIndicators={10}
           onSlideChange={null}
+          rebuildOnUpdate={false}
           slidesPerView={1}
           snapItems={true}
         >
@@ -124,6 +126,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
             loop={false}
             maxIndicators={10}
             onSlideChange={null}
+            rebuildOnUpdate={false}
             slidesPerView={1}
             snapItems={true}
           >
@@ -148,6 +151,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                 paginationModifierClass="sg-swiper-pagination-"
                 paginationType="bullets"
                 prevButton={null}
+                rebuildOnUpdate={false}
                 slideClass="sg-swiper-slide"
                 slidesPerView={1}
                 wrapperClass="swiper-wrapper"
@@ -330,6 +334,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         loop={false}
         maxIndicators={null}
         onSlideChange={null}
+        rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
@@ -433,6 +438,7 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
         loop={false}
         maxIndicators={null}
         onSlideChange={null}
+        rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
@@ -535,6 +541,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
         loop={false}
         maxIndicators={null}
         onSlideChange={null}
+        rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
@@ -563,6 +570,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           loop={false}
           maxIndicators={10}
           onSlideChange={null}
+          rebuildOnUpdate={false}
           slidesPerView={1}
           snapItems={true}
         >
@@ -592,6 +600,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
             loop={false}
             maxIndicators={10}
             onSlideChange={null}
+            rebuildOnUpdate={false}
             slidesPerView={1}
             snapItems={true}
           >
@@ -616,6 +625,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                 paginationModifierClass="sg-swiper-pagination-"
                 paginationType="bullets"
                 prevButton={null}
+                rebuildOnUpdate={false}
                 slideClass="sg-swiper-slide"
                 slidesPerView={1}
                 wrapperClass="swiper-wrapper"
@@ -887,6 +897,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
         loop={false}
         maxIndicators={null}
         onSlideChange={null}
+        rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
@@ -915,6 +926,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           loop={false}
           maxIndicators={10}
           onSlideChange={null}
+          rebuildOnUpdate={false}
           slidesPerView={1}
           snapItems={true}
         >
@@ -944,6 +956,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
             loop={false}
             maxIndicators={10}
             onSlideChange={null}
+            rebuildOnUpdate={false}
             slidesPerView={1}
             snapItems={true}
           >
@@ -968,6 +981,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                 paginationModifierClass="sg-swiper-pagination-"
                 paginationType="bullets"
                 prevButton={null}
+                rebuildOnUpdate={false}
                 slideClass="sg-swiper-slide"
                 slidesPerView={1}
                 wrapperClass="swiper-wrapper"
