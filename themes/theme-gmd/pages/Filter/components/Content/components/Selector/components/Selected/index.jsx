@@ -43,7 +43,7 @@ class Selected extends PureComponent {
     return (
       <Fragment>
         {items.map((item, index) => (
-          <Fragment>
+          <Fragment key={item}>
             <span className={styles.elipsed}>{item}</span>
             {(index < items.length - 1) ? <span className={styles.comma}>, </span> : ''}
           </Fragment>
