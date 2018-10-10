@@ -24,6 +24,8 @@ import {
 } from '../helpers/legacy';
 import ParsedLink from '../components/Router/helpers/parsed-link';
 import { appError, pipelineError } from '../action-creators/error';
+import { embeddedMedia } from '../collections';
+import { Vimeo, YouTube } from '../collections/media-providers';
 
 /**
  * App subscriptions.
@@ -32,6 +34,9 @@ import { appError, pipelineError } from '../action-creators/error';
 export default function app(subscribe) {
   // Gets triggered before the app starts.
   subscribe(appWillStart$, ({ dispatch, action }) => {
+    embeddedMedia.addProvider(new Vimeo());
+    embeddedMedia.addProvider(new YouTube());
+
     dispatch(registerLinkEvents(action.location));
 
     // Suppress errors globally
