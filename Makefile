@@ -7,6 +7,7 @@ UTILS = eslint-config unit-tests e2e benchmark
 THEMES = theme-gmd theme-ios11
 REPO_VERSION = ''
 GITHUB_AUTH_KEY = ''
+GITHUB_AUTH_TOKEN = ''
 
 checkout-develop:
 		git checkout develop
@@ -15,7 +16,7 @@ checkout-develop:
 		make clean
 
 release:
-		curl -H "Authorization: token $(GITHUB_AUTH_KEY)" https://api.github.com/repos/shopgate/theme-gmd/releases && false
+		curl -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/theme-gmd/releases && false
 		#make pre-release
 		#make clean
 		#make pre-publish
