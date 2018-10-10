@@ -24,7 +24,7 @@ const createComponent = () => {
   );
 };
 
-describe('<WriteReview> page', () => {
+describe.skip('<WriteReview> page', () => {
   it('should not crash', () => {
     const component = createComponent();
     expect(component).toMatchSnapshot();

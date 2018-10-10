@@ -1,10 +1,8 @@
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
-import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
-import { getCategoryName } from '@shopgate/pwa-common-commerce/category/selectors';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
@@ -12,7 +10,6 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import {
   categoryWillEnter$,
   categoryDidEnter$,
-  receivedVisibleCategory$,
   categoryFiltersDidUpdate$,
 } from './streams';
 
@@ -21,8 +18,7 @@ import {
  * @param {Function} subscribe The subscribe function.
  */
 export default function category(subscribe) {
-  subscribe(categoryWillEnter$, ({ dispatch, action, getState }) => {
-    let { title } = action.route.state;
+  subscribe(categoryWillEnter$, ({ dispatch, action }) => {
     const filters = getActiveFilters();
     const categoryId = hex2bin(action.route.params.categoryId);
 
@@ -30,23 +26,10 @@ export default function category(subscribe) {
     dispatch(fetchCategoryProducts({
       categoryId, filters,
     }));
-
-    // If a title didn't come in then try to lookup the category and grab its name.
-    if (!title) {
-      title = getCategoryName(getState());
-    }
-
-    if (title) {
-      dispatch(setTitle(title));
-    }
   });
 
   subscribe(categoryDidEnter$, ({ dispatch }) => {
     dispatch(getFilters());
-  });
-
-  subscribe(receivedVisibleCategory$, ({ dispatch, action }) => {
-    dispatch(setTitle(action.categoryData.name));
   });
 
   /**

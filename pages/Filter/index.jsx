@@ -14,7 +14,7 @@ const map = {
 };
 
 /**
- * The filter page.
+ * The Filter page.
  */
 class Filter extends PureComponent {
   /**
@@ -42,6 +42,7 @@ class Filter extends PureComponent {
       />
     );
   }
+
   /**
    * @returns {JSX}
    */

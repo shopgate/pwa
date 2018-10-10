@@ -26,7 +26,7 @@ exports[`<List.Item /> should render with a link 1`] = `
     <div
       aria-hidden={true}
       className="css-13azwyo"
-      onTouchTap={[Function]}
+      onClick={[Function]}
       style={null}
     >
       <div
@@ -221,7 +221,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
       <div
         aria-hidden={true}
         className="css-13azwyo"
-        onTouchTap={[Function]}
+        onClick={[Function]}
         style={null}
       >
         <div

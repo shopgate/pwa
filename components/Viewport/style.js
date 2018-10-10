@@ -32,6 +32,6 @@ export const updatePageInsets = (pageInsets) => {
 export default css({
   minHeight: '100vh',
   overflowX: 'hidden',
-  width: '100vw',
   position: 'relative',
-}).toString();
+  width: '100vw',
+});
