@@ -58,7 +58,7 @@ export default function cart(subscribe) {
   const cartIdle$ = cartReceived$.merge(
     couponsUpdated$,
     productsUpdated$
-  );
+  ).debounceTime(100);
 
   /**
    * Gets triggered when the app will start.
@@ -114,13 +114,13 @@ export default function cart(subscribe) {
   });
 
   subscribe(cartBusy$, ({ dispatch }) => {
-    ProgressBar.show(CART_PATH);
     dispatch(setViewLoading(CART_PATH));
+    ProgressBar.show(CART_PATH);
   });
 
   subscribe(cartIdle$, ({ dispatch }) => {
-    ProgressBar.hide(CART_PATH);
     dispatch(unsetViewLoading(CART_PATH));
+    ProgressBar.hide(CART_PATH);
   });
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
