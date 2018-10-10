@@ -8,6 +8,7 @@ THEMES = theme-gmd theme-ios11
 REPO_VERSION = ''
 GITHUB_AUTH_KEY = ''
 GITHUB_AUTH_TOKEN = ''
+BRANCH_NAME = ''
 
 checkout-develop:
 		git checkout develop
@@ -16,28 +17,27 @@ checkout-develop:
 		make clean
 
 release:
-		curl -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/theme-gmd/releases && false
-		#make pre-release
-		#make clean
-		#make pre-publish
-		#make bump-extensions
-		#make bump-themes
-		#make build-libraries
-		#make npm-publish
-		#make git-publish
-		#make changelog
-		#make clean-build
-		#make post-release
-		#@echo " "
-		#@echo " "
-		#@echo "Done releasing!"
-		#@echo " "
-		#@echo " "
+		make pre-release
+		make clean
+		make pre-publish
+		make bump-extensions
+		make bump-themes
+		make build-libraries
+		make npm-publish
+		make git-publish
+		make changelog
+		make clean-build
+		make post-release
+		@echo " "
+		@echo " "
+		@echo "Done releasing!"
+		@echo " "
+		@echo " "
 
 pre-release:
 ifneq ($(REPO_VERSION), '')
 		@echo " "
-		@echo "Releasing version $(REPO_VERSION)"
+		@echo "Releasing version $(REPO_VERSION) on branch '$(BRANCH_NAME)'"
 		@echo " "
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call prepare-release)
