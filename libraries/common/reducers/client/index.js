@@ -4,12 +4,12 @@ import {
   ERROR_CLIENT_INFORMATION,
 } from '../../constants/ActionTypes';
 import { persist } from '../../store/persistent';
-
 /**
  * The current version of the state created by this reducer.
  * @type {string}
  */
 const STATE_VERSION = 'v1';
+const defaultState = {};
 
 /**
  * Stores all the client information.
@@ -18,7 +18,7 @@ const STATE_VERSION = 'v1';
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const reducer = (state = {}, action) => {
+const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case REQUEST_CLIENT_INFORMATION:
       return {
