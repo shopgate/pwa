@@ -56,9 +56,9 @@ class AuthRoutes {
   }
 
   /**
-   * Check if the given pathname is a protected route.
+   * Returns the protector for a passed location.
    * @param {string} location The location to check.
-   * @returns {boolean}
+   * @return {string|null}
    */
   getProtector(location) {
     /**
@@ -74,11 +74,12 @@ class AuthRoutes {
     if (!protector) {
       // Get the protected patterns as an array.
       const patterns = Array.from(this.routes.keys());
+      const [locationWithoutParams] = location.split('?');
 
       // Loop over the patterns until a match is found.
       patterns.some((pattern) => {
         // Check for a match.
-        const match = this.matcher(pattern)(location);
+        const match = this.matcher(pattern)(locationWithoutParams);
 
         // Match found, set the proector.
         if (match) {

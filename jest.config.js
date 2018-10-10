@@ -12,7 +12,7 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     '/node_modules/',
-    '/themes/ios11/',
+    '/themes/theme-ios11/',
   ],
   transformIgnorePatterns: [
     '/node_modules/',

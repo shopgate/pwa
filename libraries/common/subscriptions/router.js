@@ -44,9 +44,11 @@ export default function router(subscribe) {
     const state = getState();
     let { pathname: location } = action.params;
 
-    // Remove trailing slashes from the location.
-    if (location && location.length > 1 && location.endsWith('/')) {
-      location = location.slice(0, -1);
+    location = handler.sanitizeLink(location);
+
+    // Stop further processing if the location is empty.
+    if (!location) {
+      return;
     }
 
     const { pathname: currentPathname } = getCurrentRoute();
@@ -79,7 +81,7 @@ export default function router(subscribe) {
     }
 
     // Check for a redirect and change location if one is found.
-    let redirect = redirects.get(location);
+    let redirect = redirects.getRedirect(location);
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
@@ -88,7 +90,17 @@ export default function router(subscribe) {
         dispatch(setViewLoading(pathname));
 
         try {
-          redirect = await redirect(params);
+          redirect = await redirect({
+            ...params,
+            action: {
+              ...params.action,
+              params: {
+                ...params.action.params,
+                // Merge the sanitized location into the redirect handler payload.
+                pathname: location,
+              },
+            },
+          });
         } catch (e) {
           redirect = null;
           logger.error(e);
