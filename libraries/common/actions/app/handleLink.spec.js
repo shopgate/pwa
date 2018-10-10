@@ -29,7 +29,7 @@ describe('handleLink()', () => {
     expect(historyReset).toHaveBeenCalledTimes(1);
   });
 
-  it('should dispatch historyPush common deeplinks', () => {
+  it('should dispatch historyPush for common deeplinks', () => {
     const link = '/some/page';
     const deeplink = `shopgate-10006:/${link}`;
     handleLink({ link: deeplink })(dispatch);
