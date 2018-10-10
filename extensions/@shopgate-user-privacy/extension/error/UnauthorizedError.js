@@ -1,4 +1,10 @@
+/**
+ * The Unauthorized error object.
+ */
 class UnauthorizedError extends Error {
+  /**
+   * @param {string} message The error message.
+   */
   constructor (message = '') {
     super()
 

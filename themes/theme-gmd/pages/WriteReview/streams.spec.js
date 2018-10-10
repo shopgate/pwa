@@ -1,6 +1,5 @@
 import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
-  ITEM_PATH,
   ITEM_PATTERN,
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
