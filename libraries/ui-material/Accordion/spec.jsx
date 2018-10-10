@@ -2,8 +2,9 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Accordion from './index';
 
-console.error = jest.fn();
 jest.unmock('@shopgate/pwa-ui-shared');
+
+console.error = jest.fn();
 
 describe('<Accordion />', () => {
   beforeEach(() => {

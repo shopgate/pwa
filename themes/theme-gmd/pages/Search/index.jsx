@@ -7,7 +7,7 @@ import Content from './components/Content';
 
 const map = {
   searchPhrase: 'query.s',
-  visible: 'visible',
+  open: 'open',
 };
 
 /**
@@ -18,8 +18,8 @@ class Search extends PureComponent {
    * @param {Object} props the consumed props.
    * @returns {JSX}
    */
-  consumeRenderer = ({ searchPhrase, visible }) => {
-    if (!visible) {
+  consumeRenderer = ({ searchPhrase, open }) => {
+    if (!open) {
       return null;
     }
 
