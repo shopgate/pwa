@@ -9,18 +9,7 @@ exports[`<Cart> page should match snapshot 1`] = `
   <Consume
     context={
       Object {
-        "$$typeof": Symbol(react.context),
-        "Consumer": [Circular],
-        "Provider": Object {
-          "$$typeof": Symbol(react.provider),
-          "_context": [Circular],
-        },
-        "_calculateChangedBits": null,
-        "_currentRenderer": null,
-        "_currentRenderer2": null,
-        "_currentValue": undefined,
-        "_currentValue2": undefined,
-        "unstable_read": [Function],
+        "Consumer": [Function],
       }
     }
     props={

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Bar /> should render 1`] = `
+exports[`<Bar /> should match snapshot 1`] = `
 <Provider
   store={
     Object {
@@ -30,7 +30,18 @@ exports[`<Bar /> should render 1`] = `
         <Consume
           context={
             Object {
-              "Consumer": [Function],
+              "$$typeof": Symbol(react.context),
+              "Consumer": [Circular],
+              "Provider": Object {
+                "$$typeof": Symbol(react.provider),
+                "_context": [Circular],
+              },
+              "_calculateChangedBits": null,
+              "_currentRenderer": null,
+              "_currentRenderer2": null,
+              "_currentValue": undefined,
+              "_currentValue2": undefined,
+              "unstable_read": [Function],
             }
           }
           props={
@@ -39,32 +50,31 @@ exports[`<Bar /> should render 1`] = `
             }
           }
         >
-          <Consumer>
-            <FilterBar
-              categoryId="1234"
-              filters={null}
-              viewRef={null}
-            >
-              <section>
-                <div
-                  className="css-gpg0x2"
-                  data-test-id="filterBar"
-                  style={
-                    Object {
-                      "background": "#f8f8f8",
-                      "color": "inherit",
-                    }
+          <FilterBar
+            categoryId="1234"
+            filters={null}
+            viewRef={null}
+          >
+            <section>
+              <div
+                className="css-gpg0x2"
+                data-test-id="filterBar"
+                style={
+                  Object {
+                    "background": "#f8f8f8",
+                    "color": "inherit",
                   }
-                >
-                  <FilterBarContent>
-                    <div
-                      className="css-1cqgl9p"
-                    >
-                      <Connect(Sort)>
-                        <Sort
-                          changeSort={[Function]}
-                          sort="relevance"
-                        >
+                }
+              >
+                <FilterBarContent>
+                  <div
+                    className="css-1cqgl9p"
+                  >
+                    <Connect(Sort)>
+                      <Sort
+                        historyReplace={[Function]}
+                      >
+                        <Consumer>
                           <SelectBox
                             className="css-1bjlaf3"
                             classNames={
@@ -335,11 +345,21 @@ exports[`<Bar /> should render 1`] = `
                               </Dropdown>
                             </div>
                           </SelectBox>
-                        </Sort>
-                      </Connect(Sort)>
-                      <_default>
-                        <Consumer>
-                          <Connect(Component)
+                        </Consumer>
+                      </Sort>
+                    </Connect(Sort)>
+                    <_default>
+                      <Consumer>
+                        <Connect(Component)
+                          categoryId="1234"
+                          navigate={[Function]}
+                          query={
+                            Object {
+                              "s": "abc",
+                            }
+                          }
+                        >
+                          <Component
                             categoryId="1234"
                             navigate={[Function]}
                             query={
@@ -348,151 +368,150 @@ exports[`<Bar /> should render 1`] = `
                               }
                             }
                           >
-                            <Component
-                              categoryId="1234"
-                              navigate={[Function]}
-                              query={
-                                Object {
-                                  "s": "abc",
-                                }
-                              }
+                            <button
+                              className="css-1x5kceo"
+                              data-test-id="filterButton"
+                              onClick={[Function]}
                             >
-                              <button
-                                className="css-1x5kceo"
-                                data-test-id="filterButton"
+                              <Ripple
+                                className="css-1xo5u0j"
+                                color="#000"
+                                disabled={false}
+                                fill={true}
                                 onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={false}
+                                size={null}
                               >
-                                <Ripple
+                                <div
+                                  aria-hidden={true}
                                   className="css-1xo5u0j"
-                                  color="#000"
-                                  disabled={false}
-                                  fill={true}
+                                  data-test-id="Ripple"
                                   onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
+                                  style={null}
                                 >
-                                  <div
-                                    aria-hidden={true}
-                                    className="css-1xo5u0j"
-                                    data-test-id="Ripple"
-                                    onClick={[Function]}
-                                    style={null}
+                                  <Grid
+                                    className=""
+                                    component="div"
+                                    wrap={false}
                                   >
-                                    <Grid
-                                      className=""
-                                      component="div"
-                                      wrap={false}
+                                    <div
+                                      className=" css-h7r55a"
                                     >
-                                      <div
-                                        className=" css-h7r55a"
+                                      <GridItem
+                                        className="css-1cqgl9p"
+                                        component="div"
+                                        grow={0}
+                                        shrink={1}
                                       >
-                                        <GridItem
+                                        <div
                                           className="css-1cqgl9p"
-                                          component="div"
-                                          grow={0}
-                                          shrink={1}
                                         >
-                                          <div
-                                            className="css-1cqgl9p"
+                                          <span
+                                            className="css-1vl2hbo"
                                           >
-                                            <span
-                                              className="css-1vl2hbo"
+                                            <Translate
+                                              className=""
+                                              params={Object {}}
+                                              string="titles.filter"
                                             >
-                                              <Translate
+                                              <span
                                                 className=""
-                                                params={Object {}}
-                                                string="titles.filter"
                                               >
-                                                <span
-                                                  className=""
-                                                >
-                                                  titles.filter
-                                                </span>
-                                              </Translate>
-                                            </span>
-                                          </div>
-                                        </GridItem>
-                                        <GridItem
+                                                titles.filter
+                                              </span>
+                                            </Translate>
+                                          </span>
+                                        </div>
+                                      </GridItem>
+                                      <GridItem
+                                        className=""
+                                        component="div"
+                                        grow={0}
+                                        shrink={1}
+                                      >
+                                        <div
                                           className=""
-                                          component="div"
-                                          grow={0}
-                                          shrink={1}
                                         >
-                                          <div
-                                            className=""
-                                          >
-                                            <Filter>
-                                              <Icon
-                                                className=""
-                                                color={null}
-                                                content="<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>"
-                                                size="inherit"
+                                          <Filter>
+                                            <Icon
+                                              className=""
+                                              color={null}
+                                              content="<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>"
+                                              size="inherit"
+                                              viewBox="0 0 24 24"
+                                            >
+                                              <svg
+                                                className="css-yys9hb "
+                                                dangerouslySetInnerHTML={
+                                                  Object {
+                                                    "__html": "<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>",
+                                                  }
+                                                }
+                                                style={
+                                                  Object {
+                                                    "fill": null,
+                                                    "fontSize": "inherit",
+                                                  }
+                                                }
                                                 viewBox="0 0 24 24"
-                                              >
-                                                <svg
-                                                  className="css-yys9hb "
-                                                  dangerouslySetInnerHTML={
-                                                    Object {
-                                                      "__html": "<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>",
-                                                    }
-                                                  }
-                                                  style={
-                                                    Object {
-                                                      "fill": null,
-                                                      "fontSize": "inherit",
-                                                    }
-                                                  }
-                                                  viewBox="0 0 24 24"
-                                                  xmlns="http://www.w3.org/2000/svg"
-                                                />
-                                              </Icon>
-                                            </Filter>
-                                          </div>
-                                        </GridItem>
-                                      </div>
-                                    </Grid>
-                                  </div>
-                                </Ripple>
-                              </button>
-                            </Component>
-                          </Connect(Component)>
-                        </Consumer>
-                      </_default>
-                    </div>
-                    <Consume
-                      context={
-                        Object {
-                          "Consumer": [Function],
-                        }
-                      }
-                      props={
-                        Object {
-                          "filters": "state.filters",
-                          "routeId": "id",
-                        }
-                      }
-                    >
-                      <Consumer>
-                        <Connect(FilterChips)
-                          filters={null}
-                          routeId=""
-                        >
-                          <FilterChips
-                            currentPathname="/"
-                            filters={null}
-                            openFilters={[Function]}
-                            routeId=""
-                            updateFilters={[Function]}
-                          />
-                        </Connect(FilterChips)>
+                                                xmlns="http://www.w3.org/2000/svg"
+                                              />
+                                            </Icon>
+                                          </Filter>
+                                        </div>
+                                      </GridItem>
+                                    </div>
+                                  </Grid>
+                                </div>
+                              </Ripple>
+                            </button>
+                          </Component>
+                        </Connect(Component)>
                       </Consumer>
-                    </Consume>
-                  </FilterBarContent>
-                </div>
-              </section>
-            </FilterBar>
-          </Consumer>
+                    </_default>
+                  </div>
+                  <Consume
+                    context={
+                      Object {
+                        "$$typeof": Symbol(react.context),
+                        "Consumer": [Circular],
+                        "Provider": Object {
+                          "$$typeof": Symbol(react.provider),
+                          "_context": [Circular],
+                        },
+                        "_calculateChangedBits": null,
+                        "_currentRenderer": null,
+                        "_currentRenderer2": null,
+                        "_currentValue": undefined,
+                        "_currentValue2": undefined,
+                        "unstable_read": [Function],
+                      }
+                    }
+                    props={
+                      Object {
+                        "filters": "state.filters",
+                        "routeId": "id",
+                      }
+                    }
+                  >
+                    <Connect(FilterChips)
+                      filters={null}
+                      routeId={null}
+                    >
+                      <FilterChips
+                        currentPathname="/"
+                        filters={null}
+                        openFilters={[Function]}
+                        routeId={null}
+                        updateFilters={[Function]}
+                      />
+                    </Connect(FilterChips)>
+                  </Consume>
+                </FilterBarContent>
+              </div>
+            </section>
+          </FilterBar>
         </Consume>
       </Consumer>
     </Consume>
