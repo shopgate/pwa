@@ -106,7 +106,6 @@ describe.skip('Category subscriptions', () => {
       });
 
       const actions = store.getActions();
-      expect(actions[0].type).toBe(SET_VIEW_TITLE);
       expect(actions[0].title).toBe(categoryState.category.categoriesById.women.name);
     });
   });

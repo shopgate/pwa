@@ -5,10 +5,9 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import Bar from './index';
 
 const store = createMockStore();
-jest.mock('../../../../components/View/context.js');
 
 describe('<Bar />', () => {
-  it('should render', () => {
+  it('should match snapshot', () => {
     const wrapper = mount((
       <Provider store={store}>
         <Bar />

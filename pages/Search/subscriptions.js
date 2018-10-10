@@ -13,14 +13,14 @@ import { searchFiltersDidUpdate$ } from './streams';
  */
 export default function search(subscribe) {
   subscribe(searchWillEnter$, ({ action, dispatch }) => {
-    const { s: searchPhrase } = action.route.query;
-    dispatch(getSearchResults(searchPhrase));
+    const { s: searchPhrase, sort } = action.route.query;
+    dispatch(getSearchResults({ searchPhrase, sort }));
   });
 
   subscribe(searchFiltersDidUpdate$, ({ dispatch }) => {
     const { query } = getCurrentRoute();
-    const { s: searchPhrase } = query;
-    dispatch(getSearchResults(searchPhrase));
+    const { s: searchPhrase, sort } = query;
+    dispatch(getSearchResults({ searchPhrase, sort }));
   });
 
   subscribe(searchDidEnter$, ({ dispatch }) => {

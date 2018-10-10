@@ -13,14 +13,9 @@ const mapStateToProps = (state, props) => ({
   ...getProductsResult(state, props),
 });
 
-/**
- * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
- */
-const mapDispatchToProps = dispatch => ({
-  getProducts: (phrase, offset) => dispatch(getSearchResults(phrase, offset)),
-});
+const mapDispatchToProps = {
+  getProducts: (searchPhrase, offset) => getSearchResults({ searchPhrase, offset }),
+};
 
 /**
  * Check to see if the categories have arrived.
