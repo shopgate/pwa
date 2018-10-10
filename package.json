@@ -17,7 +17,8 @@
     "start-cloud": "sgconnect backend start & sgconnect frontend start"
   },
   "workspaces": [
-    "extensions/*/frontend",
+    "extensions/@shopgate-product-reviews/frontend",
+    "extensions/@shopgate-tracking-ga-native/frontend",
     "libraries/*",
     "themes/*",
     "utils/*"
