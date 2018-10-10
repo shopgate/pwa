@@ -15,22 +15,24 @@ checkout-develop:
 		make clean
 
 release:
-		make pre-release
-		make clean
-		make pre-publish
-		make bump-extensions
-		make bump-themes
-		make build-libraries
-		make npm-publish
-		make git-publish
-		make changelog
-		make clean-build
-		make post-release
-		@echo " "
-		@echo " "
-		@echo "Done releasing!"
-		@echo " "
-		@echo " "
+		@echo "-$$(GITHUB_AUTH_KEY)-"
+		git push
+		#make pre-release
+		#make clean
+		#make pre-publish
+		#make bump-extensions
+		#make bump-themes
+		#make build-libraries
+		#make npm-publish
+		#make git-publish
+		#make changelog
+		#make clean-build
+		#make post-release
+		#@echo " "
+		#@echo " "
+		#@echo "Done releasing!"
+		#@echo " "
+		#@echo " "
 
 pre-release:
 ifneq ($(REPO_VERSION), '')
