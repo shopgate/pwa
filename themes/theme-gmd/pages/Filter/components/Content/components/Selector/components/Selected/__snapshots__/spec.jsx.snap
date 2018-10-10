@@ -3,15 +3,15 @@
 exports[`Filter: <Selected /> should not render without selected 1`] = `""`;
 
 exports[`Filter: <Selected /> should render with selected 1`] = `
-<div>
+<Fragment>
   <span
     className={
       Object {
-        "data-css-xm5bud": "",
+        "data-css-t8bhwo": "",
       }
     }
   >
     fooLabel
   </span>
-</div>
+</Fragment>
 `;
