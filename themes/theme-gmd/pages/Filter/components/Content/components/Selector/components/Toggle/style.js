@@ -3,20 +3,27 @@ import { css } from 'glamor';
 export const toggle = css({
   display: 'flex',
   flexFlow: 'row no-wrap',
-  justifyContent: 'space-between',
+  alignContent: 'stretch',
+  alignItems: 'flex-start',
 });
 
 export const label = css({
-  alignSelf: 'flex-start',
   whiteSpace: 'no-wrap',
   flexShrink: 0,
+  flexGrow: 1,
   textAlign: 'left',
-  marginRight: '3rem',
+  maxWidth: '50%',
+  minWidth: '35%',
+  paddingRight: '16px',
 });
 
 export const selected = css({
-  alignSelf: 'flex-end',
-  textAlign: 'right',
+  display: 'flex',
+  flexFlow: 'row wrap',
+  flexGrow: 1,
+  justifyContent: 'flex-end',
+  minWidth: '50%',
+  maxWidth: '65%',
 });
 
 export const closed = css({
