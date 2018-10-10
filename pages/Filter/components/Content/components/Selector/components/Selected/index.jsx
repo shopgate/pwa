@@ -41,14 +41,14 @@ class Selected extends PureComponent {
     const items = this.getItems();
 
     return (
-      <div>
+      <Fragment>
         {items.map((item, index) => (
-          <Fragment key={item}>
-            <span className={styles.item}>{item}</span>
-            {(index < items.length - 1) ? ', ' : ''}
+          <Fragment>
+            <span className={styles.elipsed}>{item}</span>
+            {(index < items.length - 1) ? <span className={styles.comma}>, </span> : ''}
           </Fragment>
         ))}
-      </div>
+      </Fragment>
     );
   }
 }
