@@ -63,6 +63,10 @@ clean:
 		git remote
 		lerna bootstrap
 
+clean-git:
+		git remote prune origin
+		git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d
+
 # Lerna change all the version numbers.
 pre-publish:
 ifneq ($(REPO_VERSION), '')
