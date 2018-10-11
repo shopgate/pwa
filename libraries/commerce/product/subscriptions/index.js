@@ -54,6 +54,7 @@ function product(subscribe) {
   subscribe(productRelationsReceived$, ({ dispatch, getState, action }) => {
     const { hash } = action;
     const productIds = getProductRelationsByHash(hash)(getState());
+
     dispatch(getProductsById(productIds));
   });
 }

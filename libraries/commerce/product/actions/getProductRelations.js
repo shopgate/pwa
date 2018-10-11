@@ -1,14 +1,12 @@
-import isArray from 'lodash/isArray';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  receiveProductRelations,
-  requestProductRelations,
-  errorProductRelations,
-} from '../action-creators/productRelations';
+import receiveProductRelations from '../action-creators/receiveProductRelations';
+import requestProductRelations from '../action-creators/requestProductRelations';
+import errorProductRelations from '../action-creators/errorProductRelations';
 import { SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS } from '../constants/Pipelines';
 import { generateProductRelationsHash } from '../helpers';
+import { getProductRelationsState } from '../selectors/relations';
 
 /**
  * Action starts product relation fetching process.
@@ -27,8 +25,8 @@ const getProductRelations = ({ productId, type, limit }) =>
       type,
       limit,
     });
-    const currentState = getState().product.productRelations[hash];
 
+    const currentState = getProductRelationsState(getState())[hash];
     if (!shouldFetchData(currentState, 'productIds')) {
       return null;
     }
@@ -44,7 +42,7 @@ const getProductRelations = ({ productId, type, limit }) =>
       .dispatch()
       .then((payload) => {
         const { relations } = payload;
-        if (!isArray(relations)) {
+        if (!Array.isArray(relations)) {
           logger.error(new Error(`Invalid ${pipeline} pipeline response`), payload);
           dispatch(errorProductRelations({ hash }));
           return;

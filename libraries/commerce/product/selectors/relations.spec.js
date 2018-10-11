@@ -18,7 +18,7 @@ describe('Relations selectors', () => {
               },
             },
           },
-          productRelations: {
+          productRelationsByHash: {
             [hash]: {
               productIds: [
                 'b',
@@ -49,8 +49,8 @@ describe('Relations selectors', () => {
       state = {
         product: {
           ...state.product,
-          productRelations: {
-            ...state.product.productRelations,
+          productRelationsByHash: {
+            ...state.product.productRelationsByHash,
             [hash]: {
               productIds: [
                 'b',

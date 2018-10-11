@@ -11,7 +11,7 @@ import {
  * @param {Object} action Action.
  * @returns {Object}
  */
-const productRelations = (state = {}, action) => {
+const productRelationsByHash = (state = {}, action) => {
   switch (action.type) {
     case REQUEST_PRODUCT_RELATIONS:
       return {
@@ -45,4 +45,4 @@ const productRelations = (state = {}, action) => {
   }
 };
 
-export default productRelations;
+export default productRelationsByHash;

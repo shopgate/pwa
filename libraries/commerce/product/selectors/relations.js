@@ -7,12 +7,12 @@ import { getProducts } from './product';
  * @param {Object} state State.
  * @returns {Object}
  */
-export const getProductRelationsState = state => state.product.productRelations;
+export const getProductRelationsState = state => state.product.productRelationsByHash;
 
 /**
- * Returns product relations state for given hash.
+ * Factory of a function that returns selector of product relations state for given hash.
  * @param {string} hash State hash.
- * @returns {function|undefined}
+ * @returns {function}
  */
 export const getProductRelationsByHash = hash => createSelector(
   getProductRelationsState,
