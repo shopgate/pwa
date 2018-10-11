@@ -1,56 +1,79 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
-NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
+#test
+
+LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 UTILS = eslint-config unit-tests e2e benchmark
 THEMES = theme-gmd theme-ios11
-REPO_VERSION = ''
-GITHUB_AUTH_KEY = ''
-GITHUB_AUTH_TOKEN = ''
-BRANCH_NAME = ''
+
+GITHUB_AUTH_KEY =
+GITHUB_AUTH_TOKEN =
+
+# deprecated; use RELEASE_VERSION
+REPO_VERSION =
+
+RELEASE_VERSION = $(strip $(REPO_VERSION))
+# Branch name to start the release from; "develop" by default
+BRANCH_NAME = develop
+
+# Make sure the release name starts with a "v"
+RELEASE_NAME = v$(patsubst v%,%, $(strip $(RELEASE_VERSION)))
+
+# Set up BETA flag to be "true" or "false"
+BETA = $(findstring beta, $(RELEASE_NAME))
+ifeq ("$(BETA)", "beta")
+	BETA = "true"
+else
+	BETA = "false"
+endif
+
+# This causes the Github-API to create draft releases only, without creating tags
+DRAFT_RELEASE = true
 
 checkout-develop:
-		git checkout develop
+		git checkout origin/develop
 		git fetch --all
-		git pull
+		git pull origin develop
 		make clean
 
-release:
-		make pre-release
-		make clean
-		make pre-publish
-		make bump-extensions
-		make bump-themes
-		make build-libraries
-		make npm-publish
-		make git-publish
-		make changelog
-		make clean-build
-		make post-release
-		@echo " "
-		@echo " "
-		@echo "Done releasing!"
-		@echo " "
-		@echo " "
 
-pre-release:
-ifneq ($(REPO_VERSION), '')
-		@echo " "
-		@echo "Releasing version $(REPO_VERSION) on branch '$(BRANCH_NAME)'"
-		@echo " "
-		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
-		$(call prepare-release)
-		$(call merge-master, $(SUBSTR))
-else
-		@echo " "
-		@echo "Performing manual release process!!"
-		@echo " "
-endif
 
 init:
 		git submodule deinit --all
 		rm -rf .git/modules/*
+
+
+
+add-remotes:
+		node ./scripts/add-remotes.js 2> /dev/null # ignore stderr output here
+
+
+
+sanity-check:
+		@if [ "$(RELEASE_VERSION)" = "" ]; then \
+			echo "ERROR:  No VERSION was provided!" && false; \
+		fi;
+		@if [ "$(BRANCH_NAME)" = "" ]; then \
+			echo "ERROR:  No BRANCH was provided!" && false; \
+		fi;
+		@if [ "$(BETA)" != "true" ] && [ "$(BRANCH_NAME)" != "develop" ]; then \
+			echo "ERROR: Stable releases can only be created on 'develop' branch" && false; \
+		fi;
+		@echo "Sanity check OK!"
+
+
+
+release:
+		$(call setup-release)
+		$(call update-versions)
+		$(call build-library-packages)
+		$(call publish-npm-packages)
+		$(call publish-to-github)
+		#(call finalize-release)
+
+
 
 # Clean the repository before starting a release.
 clean:
@@ -59,82 +82,10 @@ clean:
 		find . -name "*debug.log" -type f -delete
 		lerna clean --yes
 		rm -rf ./node_modules/
-		node ./scripts/init-subtrees.js # try to set up new git subtree entries.
-		git remote
+		node ./scripts/init-subtrees.js
 		lerna bootstrap
 
-# Lerna change all the version numbers.
-pre-publish:
-ifneq ($(REPO_VERSION), '')
-		@echo " "
-		@echo "$(strip $(REPO_VERSION))"
-		@echo " "
-		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish --yes --exact
-else
-		lerna publish --skip-npm --skip-git --force-publish --exact
-endif
 
-# Change the version in the extensions extension-config.json
-bump-extensions:
-		$(foreach extension, $(EXTENSIONS), $(call bump-extension-versions, $(extension)))
-
-# Change the version in the thems extension-config.json
-bump-themes:
-		$(foreach theme, $(THEMES), $(call bump-theme-versions, $(theme)))
-
-# Pre build the libraries.
-build-libraries:
-		$(foreach package, $(NPM_PACKAGES), $(call build-packages, $(package)))
-
-# Create git tags and push everything.
-git-publish:
-		$(call push-main)
-		$(foreach theme, $(THEMES), $(call git-tags, ./themes/$(theme)/))
-		$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
-		$(call git-tags, ./)
-
-# Publish to npm.
-npm-publish:
-		$(eval VERSION=$(shell cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'))
-		$(eval SUBSTR=$(findstring beta, $(VERSION)))
-		$(foreach package, $(NPM_PACKAGES), $(call npm-release-libraries, $(package), $(SUBSTR)))
-		$(foreach package, $(UTILS), $(call npm-release-utils, $(package), $(SUBSTR)))
-
-# Clean the builds.
-clean-build:
-		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
-
-post-release:
-ifneq ($(REPO_VERSION), '')
-		@echo " "
-		@echo "Finishing release for version $(REPO_VERSION)"
-		@echo " "
-		@echo "Synchronizing with remote origins ..."
-		@echo " "
-		node ./scripts/add-remotes.js
-		node ./scripts/synch-repos.js
-		@echo " "
-		@echo "... done synchronizing with remotes!"
-		@echo " "
-		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
-		$(call merge-develop, $(SUBSTR))
-endif
-
-changelog:
-ifeq ($(GITHUB_AUTH_KEY), '')
-		@echo " "
-		@echo "NO GITHUB CREDENTIALS PRESENT - Skipping changelog creation!"
-		@echo " "
-else
-		@echo " "
-		@echo "Creating changelog ..."
-		@echo " "
-		GITHUB_AUTH=$(GITHUB_AUTH_KEY) ./node_modules/.bin/lerna-changelog
-		git add -A
-		git commit -m "$$PACKAGE_VERSION"
-		git push
-		@echo "... done."
-endif
 
 e2e-gmd:
 		cd themes/theme-gmd && yarn run e2e
@@ -145,49 +96,110 @@ e2e-ios11:
 e2e-checkout:
 		cd themes/theme-gmd && yarn run e2e:checkout
 
-# DEFINITIONS
 
-define prepare-release
-		@echo " "
-		@echo "Checking out develop branches ... "
-		@echo " "
-		git checkout develop
+
+# SETUP-RELEASE ####################################################################################
+
+define setup-release
+		# Perform "sanity check" before doing anything else
+		make sanity-check
+
+		@echo "======================================================================"
+		@echo "| Releasing version $(RELEASE_VERSION) on branch '$(BRANCH_NAME)'"
+		@echo "======================================================================"
+
+		# Remotes are required to push subtrees later
+		make add-remotes
+
+		 Create a release branch to work with
+		$(call create-pwa-release-branch)
+
+		# Set up dependencies (lerna) and subtrees
+		make clean
+
+endef
+
+
+
+define create-pwa-release-branch
+		@echo "======================================================================"
+		@echo "| Checking out '$(BRANCH_NAME)' branch ... "
+		@echo "======================================================================"
+		git checkout "origin/$(BRANCH_NAME)"
 		git fetch --all
-		git pull
+		git pull origin "$(BRANCH_NAME)"
+		@echo "release-$(RELEASE_NAME)"
+		git checkout -b "release-$(RELEASE_NAME)"
 
 endef
 
-define merge-master
-		@if [ "$(strip $(1))" != "beta" ]; \
-			then \
-				echo " "; \
-				echo "Merging into master ... "; \
-				echo " "; \
-				git checkout master; \
-				git merge develop; \
-				git push; \
-			else \
-				echo " "; \
-				echo "Not using master: beta release!"; \
-				echo " "; \
+
+
+# UPDATE-VERSIONS ##################################################################################
+
+define update-versions
+		$(call update-pwa-versions)
+		$(call update-extension-versions)
+		$(call update-theme-versions)
+
+endef
+
+# Changes all the version numbers using lerna
+define update-pwa-versions
+		@echo "======================================================================"
+		@echo "| Updating pwa versions to '$(RELEASE_VERSION))'"
+		@echo "======================================================================"
+		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact
+
+		# Checking version
+		$(eval PWA_PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'))
+		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
+			then echo "ERROR: Package version mismatch, please theck your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			else echo "Version check OK!"; \
 		fi;
+endef
+
+# Change the version in the extension-config.json file of all extensions
+define update-extension-versions
+		@echo "======================================================================"
+		@echo "| Updating extension versions to '$(RELEASE_VERSION))'"
+		@echo "======================================================================"
+		$(foreach extension, $(EXTENSIONS), $(call update-extension-version, $(extension)))
 
 endef
 
-define merge-develop
-		@if [ "$(strip $(1))" != "beta" ]; \
-			then \
-				echo " "; \
-				echo "Merging back into develop ... "; \
-				echo " "; \
-				git checkout develop; \
-				git merge master; \
-				git push; \
-		fi;
+define update-extension-version
+		node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$(RELEASE_VERSION)" && git add -A && git commit -m "Updated extension '$(strip $(1))' version to '$(RELEASE_VERSION)'"
 
 endef
 
-define build-packages
+# Change the version in the extension-config.json files of all themes
+define update-theme-versions
+		@echo "======================================================================"
+		@echo "| Updating theme versions to '$(RELEASE_VERSION))'"
+		@echo "======================================================================"
+		$(foreach theme, $(THEMES), $(call update-theme-version, $(theme)))
+
+endef
+
+define update-theme-version
+		node ./scripts/bump-extension.js --file="./themes/$(strip $(1))/extension-config.json" --v="$(RELEASE_VERSION)" && git add -A && git commit -m "Updated theme '$(strip $(1))' version to '$(RELEASE_VERSION)'"
+
+endef
+
+
+
+# UPDATE-LIBRARY-PACKAGES ##########################################################################
+
+define build-library-packages
+		@echo "======================================================================"
+		@echo "| Building library npm packages"
+		@echo "======================================================================"
+		$(foreach library, $(LIBRARIES), $(call build-library, $(library)))
+
+endef
+
+define build-library
 		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules
 		cp ./libraries/$(strip $(1))/package.json ./libraries/$(strip $(1))/dist/
 		cp ./libraries/$(strip $(1))/README.md ./libraries/$(strip $(1))/dist/
@@ -195,28 +207,20 @@ define build-packages
 
 endef
 
-define bump-extension-versions
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./extensions/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION"
 
-endef
 
-define bump-theme-versions
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./themes/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./themes/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION"
+# PUBLISH-NPM-PACKAGES #############################################################################
 
-endef
-
-define push-main
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git add -A && git commit -m "$$PACKAGE_VERSION" && git push
-
-endef
-
-define git-tags
-		VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd $(1) && git tag v$$VERSION -m "v$$VERSION" && git push && git push --tags
+# Publish all library and utils npm packages to npm
+define publish-npm-packages
+		$(foreach package, $(LIBRARIES), $(call npm-release-libraries, $(package)))
+		$(foreach package, $(UTILS), $(call npm-release-utils, $(package)))
+		$(call clean-library-packages)
 
 endef
 
 define npm-release-libraries
-		@if [ "$(strip $(2))" == "beta" ]; \
+		@if [ "$(BETA)" != "false" ]; \
 			then npm publish ./libraries/$(strip $(1))/dist/ --access public --tag beta; \
 			else npm publish ./libraries/$(strip $(1))/dist/ --access public; \
 		fi;
@@ -224,14 +228,111 @@ define npm-release-libraries
 endef
 
 define npm-release-utils
-		@if [ "$(strip $(2))" == "beta" ]; \
+		@if [ "$(BETA)" != "false" ]; \
 			then npm publish ./utils/$(strip $(1))/ --access public --tag beta; \
 			else npm publish ./utils/$(strip $(1))/ --access public; \
 		fi;
 
 endef
 
-define clean-build-packages
+# Clean the builds.
+define clean-library-packages
+		$(foreach package, $(LIBRARIES), $(call clean-library-package, $(package)))
+
+endef
+
+define clean-library-package
 		rm -rf -f ./libraries/$(strip $(1))/dist
 
 endef
+
+
+
+# PUBLISH-TO-GITHUB ################################################################################
+debug0:
+		make publish-to-github
+
+# Push everything to github and create releases including tags
+publish-to-github:
+		# Update remotes and push changes into dedicated release branches
+		git fetch --all
+		git push origin "releases/$(RELEASE_NAME)";
+ifeq ($(BETA), "false")
+		# STABLE RELEASE
+		# git push origin "develop"; # TODO: UNCOMMENT THIS
+		# git push origin "master"; # TODO: UNCOMMENT THIS
+		#(call push-subtrees-to-git, master) # TODO ####
+else
+		# BETA RELEASE
+		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
+endif
+		# Create release drafts
+
+define push-subtrees-to-git
+		$(foreach remote, $(THEMES), $(call update-subtree-remotes, themes/$(remote), $(remote), $(strip $(1))))
+		$(foreach remote, $(EXTENSIONS), $(call update-subtree-remotes, extensions/$(remote), $(patsubst @shopgate-%,ext-%,$(remote)), $(strip $(1))))
+
+endef
+
+define update-subtree-remotes
+		git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3))
+
+endef
+
+
+
+# define changelog
+# 		@echo "============================================================"
+# 		@echo "| Creating changelog ..."
+# 		@echo "============================================================"
+#
+# 		GITHUB_AUTH=$(GITHUB_AUTH_KEY) ./node_modules/.bin/lerna-changelog
+#
+# 		@echo "============================================================"
+# 		@echo "| ... done."
+# 		@echo "============================================================"
+#
+# endef
+
+#
+# define finalize-release
+# 		@echo "============================================================"
+# 		@echo "| Finishing release of version $(RELEASE_VERSION)"
+# 		@echo "============================================================"
+# 		@echo " "
+#
+## 		# Cleanup by removing beta branches via github api
+#
+# 		@echo " "
+# 		@echo "============================================================"
+# 		@echo "| Done releasing!"
+# 		@echo "============================================================"
+# 		@echo " "
+#
+# endef
+
+
+
+# GITHUB API HELPER FUNCTIONS ######################################################################
+
+create-github-release:
+ifeq ($(BETA), "false")
+		curl -X POST --silent --data '{"tag_name": "$(1)","target_commitish": "$(2)","name": "","body": "","draft": $(DRAFT_RELEASE),"prerelease": true}' -H "Content-Type: application/json" -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(3))/releases 2>&1 | grep '^  "id":' | cut -d' ' -f 4 | cut -d',' -f 1
+else
+		curl -X POST --silent --data '{"tag_name": "$(1)","target_commitish": "$(2)","name": "","body": "","draft": $(DRAFT_RELEASE),"prerelease": false}' -H "Content-Type: application/json" -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(3))/releases 2>&1 | grep '^  "id":' | cut -d' ' -f 4 | cut -d',' -f 1
+endif
+
+# define delete-github-release
+# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/releases/$(strip $(2)) 2>&1 | cat
+#
+# endef
+#
+# define delete-github-branch
+# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/heads/$(strip $(2)) 2>&1 | cat
+#
+# endef
+#
+# define delete-github-tag
+# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/tags/$(strip $(2)) 2>&1 | cat
+#
+# endef
