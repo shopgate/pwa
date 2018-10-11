@@ -111,7 +111,7 @@ define setup-release
 		# Remotes are required to push subtrees later
 		make add-remotes
 
-		 Create a release branch to work with
+		# Create a release branch to work with
 		$(call create-pwa-release-branch)
 
 		# Set up dependencies (lerna) and subtrees
