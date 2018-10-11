@@ -117,7 +117,7 @@ class ReviewForm extends PureComponent {
     const { validationErrors } = this.state;
     const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
 
-    if (!scope[FIELD_NAME_AUTHOR]) {
+    if (!scope[FIELD_NAME_AUTHOR] || !scope[FIELD_NAME_AUTHOR].length) {
       validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
     } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
       validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_length', { length });
