@@ -2,6 +2,7 @@
 
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
+import { checkForWrongCoupon } from '../../helper/coupon';
 
 describe('functional tests cart page', () => {
   //commented out because a bug from webkit let this test fail everytime executing them in headless mode
@@ -62,10 +63,7 @@ describe('functional tests cart page', () => {
   it('should check for wrong coupon', () => {
     cy.get(els.couponFieldInput)
       .type('wrongCoupon {enter}');
-    cy.get(els.basicDialogText)
-      .contains('Coupon code "wrongCoupon" is not valid.');
-    cy.get(els.basicDialogOkButton)
-      .click();
+    checkForWrongCoupon();
   });
 
   it('should check for right coupon', () => {
@@ -107,12 +105,14 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.blackColorVariant)
       .should('be.visible')
+      .last()
       .click();
     cy.get(els.variantPickerShoeSize)
       .should('be.visible')
       .click();
     cy.get(els.size5ShoeSizeVariant)
       .should('be.visible')
+      .last()
       .click()
       .wait(2000);
     cy.get(els.addToCartButton)
@@ -122,32 +122,6 @@ describe('functional tests cart page', () => {
       .should('be.visible')
       .click();
     cy.get(els.productWithChild1ColorBlackSize5CartItem)
-      .should('be.visible');
-  });
-
-  it('should check for product with options', () => {
-    cy.visit('')
-
-    cy.get(els.productWithOptionsCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.simpleProductWithOptionsNameProductGrid)
-      .should('be.visible')
-      .click();
-    cy.get(els.addToCartButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.cartButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.simpleProductWithOptionsCartItemLink)
-      .should('be.visible');
-    cy.get(els.cartItemLi)
-      .contains('Green Ball')
-      .should('be.visible');
-    cy.get(els.cartItemLi)
-      .contains('bright')
       .should('be.visible');
   });
 

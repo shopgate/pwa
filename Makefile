@@ -7,6 +7,8 @@ UTILS = eslint-config unit-tests e2e benchmark
 THEMES = theme-gmd theme-ios11
 REPO_VERSION = ''
 GITHUB_AUTH_KEY = ''
+GITHUB_AUTH_TOKEN = ''
+BRANCH_NAME = ''
 
 checkout-develop:
 		git checkout develop
@@ -35,7 +37,7 @@ release:
 pre-release:
 ifneq ($(REPO_VERSION), '')
 		@echo " "
-		@echo "Releasing version $(REPO_VERSION)"
+		@echo "Releasing version $(REPO_VERSION) on branch '$(BRANCH_NAME)'"
 		@echo " "
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call prepare-release)
