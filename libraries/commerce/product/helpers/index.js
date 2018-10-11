@@ -1,11 +1,11 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import {
   PROPERTIES_FILTER_BLACKLIST,
   PROPERTIES_FILTER_WHITELIST,
   PRODUCT_RELATIONS_DEFAULT_LIMIT,
 } from '../constants/';
 import { SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS } from '../constants/Pipelines';
-import { generateResultHash } from '../../../common/helpers/redux';
 
 /**
  * Reads the setting for product properties whitelisting/blacklisting
