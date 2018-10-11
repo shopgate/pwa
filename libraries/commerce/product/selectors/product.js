@@ -426,11 +426,11 @@ export const getProductDescription = createSelector(
 export const getProductPropertiesState = state => state.product.propertiesByProductId;
 
 /**
- * Retrieves the current product properties.
+ * Retrieves the current product properties (unfiltered).
  * @param {Object} state The current application state.
  * @return {string|null}
  */
-export const getProductProperties = createSelector(
+export const getProductPropertiesUnfiltered = createSelector(
   getCurrentProductId,
   getProductPropertiesState,
   (productId, properties) => {
@@ -439,7 +439,23 @@ export const getProductProperties = createSelector(
       return null;
     }
 
-    return filterProperties(entry.properties);
+    return entry.properties;
+  }
+);
+
+/**
+ * Retrieves the current product properties (filtered).
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getProductProperties = createSelector(
+  getProductPropertiesUnfiltered,
+  (properties) => {
+    if (!properties) {
+      return properties;
+    }
+
+    return filterProperties(properties);
   }
 );
 

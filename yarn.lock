@@ -100,6 +100,12 @@
   dependencies:
     lodash.once "^4.1.1"
 
+"@shopgate/react-hammerjs@0.5.6":
+  version "0.5.6"
+  resolved "http://registry.npmjs.org/@shopgate/react-hammerjs/-/react-hammerjs-0.5.6.tgz#6bbd2aacf4a31e18d9bafe0074fd7a0385a6381f"
+  dependencies:
+    hammerjs "^2.0.8"
+
 "@shopgate/react-hammerjs@0.5.8":
   version "0.5.8"
   resolved "http://registry.npmjs.org/@shopgate/react-hammerjs/-/react-hammerjs-0.5.8.tgz#e5a7eeaad3c1fb73963d881987f52e143a05eb6e"
@@ -1865,6 +1871,10 @@ colors@0.5.x:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/colors/-/colors-0.5.1.tgz#7d0023eaeb154e8ee9fce75dcb923d0ed1667774"
 
+colors@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-0.6.2.tgz#2423fe6678ac0c5dae8852e5d0e5be08c997abcc"
+
 columnify@^1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/columnify/-/columnify-1.5.4.tgz#4737ddf1c7b69a8a7c340570782e947eec8e78bb"
@@ -1895,6 +1905,12 @@ commander@2.9.0:
 commander@^2.11.0:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.0.tgz#ad2a23a1c3b036e392469b8012cec6b33b4c1322"
+
+commander@~1.1.1:
+  version "1.1.1"
+  resolved "http://registry.npmjs.org/commander/-/commander-1.1.1.tgz#50d1651868ae60eccff0a2d9f34595376bc6b041"
+  dependencies:
+    keypress "0.1.x"
 
 common-tags@1.4.0:
   version "1.4.0"
@@ -2469,6 +2485,13 @@ detect-newline@^2.1.0:
 detect-passive-events@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.4.tgz#6ed477e6e5bceb79079735dcd357789d37f9a91a"
+
+detector@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/detector/-/detector-2.5.0.tgz#7ecbe84cd667c1cbe19fc74f4e516dcc8bde4f6d"
+  dependencies:
+    colors "0.6.2"
+    commander "~1.1.1"
 
 diff@3.2.0:
   version "3.2.0"
@@ -4913,6 +4936,10 @@ jsx-ast-utils@^2.0.0, jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
+keypress@0.1.x:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.1.0.tgz#4a3188d4291b66b4f65edb99f806aa9ae293592a"
+
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -5561,6 +5588,10 @@ mkdirp@0.5.1, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+mobile-detect@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/mobile-detect/-/mobile-detect-1.4.3.tgz#e436a3839f5807dd4d3cd4e081f7d3a51ffda2dd"
 
 mocha-jsdom@^1.1.0:
   version "1.1.0"
