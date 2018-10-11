@@ -70,7 +70,7 @@ release:
 		$(call update-versions)
 		$(call build-library-packages)
 		$(call publish-npm-packages)
-		$(call publish-to-github)
+		make publish-to-github
 		#(call finalize-release)
 
 
@@ -128,7 +128,7 @@ define create-pwa-release-branch
 		git checkout "origin/$(BRANCH_NAME)"
 		git fetch --all
 		git pull origin "$(BRANCH_NAME)"
-		@echo "release-$(RELEASE_NAME)"
+		@echo "releases/$(RELEASE_NAME)"
 		git checkout -b "release-$(RELEASE_NAME)"
 
 endef
