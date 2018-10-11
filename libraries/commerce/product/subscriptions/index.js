@@ -11,6 +11,9 @@ import {
   getCurrentBaseProductId,
   getHistoryPathProductId,
 } from '../selectors/product';
+import { productRelationsReceived$ } from '../streams';
+import getProductsById from '../actions/getProductsById';
+import { getProductRelationsByHash } from '../selectors/relations';
 
 /**
  * Product subscriptions.
@@ -46,6 +49,13 @@ function product(subscribe) {
       dispatch(setProductId(null));
       dispatch(setProductVariantId(null));
     }
+  });
+
+  subscribe(productRelationsReceived$, ({ dispatch, getState, action }) => {
+    const { hash } = action;
+    const productIds = getProductRelationsByHash(hash)(getState());
+
+    dispatch(getProductsById(productIds));
   });
 }
 
