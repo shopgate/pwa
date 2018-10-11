@@ -4,7 +4,6 @@ import {
   getShippingStateForId,
 } from '@shopgate/pwa-common-commerce/product/mock';
 import { getReviewsStateForId } from '@shopgate/pwa-common-commerce/reviews/mock';
-import { defaultState } from 'Components/Navigator/mock';
 
 const { productId } = bpState.product.currentProduct;
 
@@ -14,7 +13,6 @@ const product = {
 };
 const basicProductState = {
   ...bpState,
-  ...defaultState,
   ...getReviewsStateForId(productId),
   product,
   router: {

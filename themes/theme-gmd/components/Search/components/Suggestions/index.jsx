@@ -9,14 +9,12 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Suggestions = ({ onClick, searchPhrase }) => {
-  return (
-    <section className={styles}>
-      <Backdrop />
-      <List onClick={onClick} searchPhrase={searchPhrase} />
-    </section>
-  );
-};
+const Suggestions = ({ onClick, searchPhrase }) => (
+  <section className={styles}>
+    <Backdrop />
+    <List onClick={onClick} searchPhrase={searchPhrase} />
+  </section>
+);
 
 Suggestions.propTypes = {
   onClick: PropTypes.func.isRequired,

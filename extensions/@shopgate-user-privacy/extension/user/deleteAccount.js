@@ -9,9 +9,8 @@ const UnauthorizedError = require('./../error/UnauthorizedError')
 
 /**
  * Create request to delete user account
- *
- * @param {SDKContext} context
- * @param {DeleteAccountInput} input
+ * @param {SDKContext} context The SDK context.
+ * @param {DeleteAccountInput} input The input.
  * @returns {Promise<Object>}
  */
 module.exports = async (context, input) => {
