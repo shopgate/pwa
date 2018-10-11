@@ -24,7 +24,7 @@ const ListItem = ({
   // Add selected or unselected styling.
   classes += ` ${isSelected ? styles.selected : styles.unselected}`;
 
-  return <li className={classes}>{children}</li>;
+  return <li className={classes} data-test-id="listItem">{children}</li>;
 };
 
 ListItem.propTypes = {
