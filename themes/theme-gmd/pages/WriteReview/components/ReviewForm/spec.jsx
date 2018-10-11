@@ -77,7 +77,6 @@ describe('<ReviewForm />', () => {
 
     expect(author.prop('value')).toBeFalsy();
     expect(author.prop('errorText')).toBeDefined();
-    expect(errors.author).toBeDefined();
   });
 
   it('should set form data', () => {

@@ -12,9 +12,9 @@ import ReviewForm from './components/ReviewForm';
  * @return {JSX}
  * @constructor
  */
-const WriteReview = ({ productId }) => (
+const WriteReview = ({ productId, visible }) => (
   <View>
-    {productId && (
+    {(productId && visible) && (
       <Fragment>
         <BackBar title="titles.reviews" right={null} />
         <ReviewForm productId={productId} />
@@ -24,6 +24,7 @@ const WriteReview = ({ productId }) => (
 );
 
 WriteReview.propTypes = {
+  visible: PropTypes.bool.isRequired,
   productId: PropTypes.string,
 };
 
@@ -33,8 +34,8 @@ WriteReview.defaultProps = {
 
 export default () => (
   <RouteContext.Consumer>
-    {({ params }) => (
-      <WriteReview productId={hex2bin(params.productId) || null} />
+    {({ params, visible }) => (
+      <WriteReview productId={hex2bin(params.productId) || null} visible={visible} />
     )}
   </RouteContext.Consumer>
 );
