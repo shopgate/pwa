@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
@@ -18,7 +18,7 @@ import styles from './style';
 /**
  * The Review Form.
  */
-class ReviewForm extends Component {
+class ReviewForm extends PureComponent {
   static validationLengths = {
     [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
     [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
@@ -61,29 +61,14 @@ class ReviewForm extends Component {
    * Update state with next props.
    * @param {Object} nextProps The next props.
    */
-  componentWillReceiveProps(nextProps) {
-    let stateUpdate = {
-      productId: nextProps.productId,
-    };
+  componentWillReceiveProps({ productId, review, authorName }) {
+    const author = review[FIELD_NAME_AUTHOR];
 
-    stateUpdate = {
-      ...stateUpdate,
-      ...nextProps.review,
-    };
-
-    if (!this.state[FIELD_NAME_AUTHOR]) {
-      stateUpdate[FIELD_NAME_AUTHOR] = nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName;
-    }
-
-    this.setState(stateUpdate);
-  }
-
-  /**
-   * Gets current validation errors.
-   * @return {null|*|{}}
-   */
-  get validationErrors() {
-    return { ...this.state.validationErrors };
+    this.setState(prevState => ({
+      productId,
+      ...review,
+      ...!prevState[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || authorName) },
+    }));
   }
 
   /**
@@ -111,7 +96,7 @@ class ReviewForm extends Component {
    */
   validateRate(scope = this.state) {
     const { __ } = this.context.i18n();
-    const { validationErrors } = this;
+    const { validationErrors } = this.state;
 
     if (!scope.rate) {
       validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
@@ -129,14 +114,13 @@ class ReviewForm extends Component {
    */
   validateAuthor(scope = this.state) {
     const { __ } = this.context.i18n();
-    const { validationErrors } = this;
+    const { validationErrors } = this.state;
     const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
 
     if (!scope[FIELD_NAME_AUTHOR]) {
       validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
     } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
-      validationErrors[FIELD_NAME_AUTHOR] =
-        __('reviews.review_form_error_length', { length });
+      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_length', { length });
     } else {
       delete validationErrors[FIELD_NAME_AUTHOR];
     }
@@ -152,12 +136,11 @@ class ReviewForm extends Component {
    */
   validateLength(field, scope = this.state) {
     const { __ } = this.context.i18n();
-    const { validationErrors } = this;
+    const { validationErrors } = this.state;
     const length = this.constructor.validationLengths[field];
 
     if (length && scope[field] && scope[field].length >= length) {
-      validationErrors[field] =
-        __('reviews.review_form_error_length', { length });
+      validationErrors[field] = __('reviews.review_form_error_length', { length });
     } else {
       delete validationErrors[field];
     }
@@ -167,20 +150,64 @@ class ReviewForm extends Component {
 
   /**
    * Handles the form submit.
-   * @param {Object} event SyntheticEvent.
-   * @returns {boolean|false}
+   * @param {SyntheticEvent} event The submit event object.
    */
   handleSubmit = (event) => {
     event.preventDefault();
 
     if (!this.formValid) {
-      return false;
+      return;
     }
 
-    const updateRate = !!this.props.review.rate;
-    this.props.submit(this.state, updateRate);
+    this.props.submit(this.state, !!this.props.review.rate);
+  }
 
-    return false;
+  /**
+   * @param {number} rate The changed rate.
+   */
+  handleRatingChange = (rate) => {
+    const validationErrors = this.validateRate({ rate });
+
+    this.setState({
+      [FIELD_NAME_RATE]: rate,
+      validationErrors,
+    });
+  }
+
+  /**
+   * @param {string} author The review author.
+   */
+  handleAuthorChange = (author) => {
+    const validationErrors = this.validateLength(FIELD_NAME_AUTHOR, { author });
+
+    this.setState({
+      [FIELD_NAME_AUTHOR]: author,
+      validationErrors,
+    });
+  }
+
+  /**
+   * @param {string} title The review title.
+   */
+  handleTitleChange = (title) => {
+    const validationErrors = this.validateLength(FIELD_NAME_TITLE, { title });
+
+    this.setState({
+      [FIELD_NAME_TITLE]: title,
+      validationErrors,
+    });
+  }
+
+  /**
+   * @param {string} review The review content.
+   */
+  handleReviewChange = (review) => {
+    const validationErrors = this.validateLength(FIELD_NAME_REVIEW, { review });
+
+    this.setState({
+      [FIELD_NAME_REVIEW]: review,
+      validationErrors,
+    });
   }
 
   /**
@@ -191,6 +218,7 @@ class ReviewForm extends Component {
     if (this.props.productId === null) {
       return null;
     }
+
     /**
      * Show loading indicator only when review is initially loading and user
      * didn't interact with the form.
@@ -200,18 +228,15 @@ class ReviewForm extends Component {
     if (this.props.isLoadingUserReview && !this.state.rate) {
       return <LoadingIndicator />;
     }
+
+    const { validationErrors } = this.state;
+
     return (
       <section className={styles.container} data-test-id="reviewForm">
         <form onSubmit={this.handleSubmit}>
           <RatingScale
-            onChange={(rate) => {
-              const validationErrors = this.validateRate({ rate });
-              this.setState({
-                rate,
-                validationErrors,
-              });
-            }}
-            errorText={this.state.validationErrors[FIELD_NAME_RATE]}
+            onChange={this.handleRatingChange}
+            errorText={validationErrors[FIELD_NAME_RATE]}
             value={this.state[FIELD_NAME_RATE]}
           />
           <TextField
@@ -219,43 +244,25 @@ class ReviewForm extends Component {
             name={FIELD_NAME_AUTHOR}
             label="reviews.review_form_author"
             value={this.state[FIELD_NAME_AUTHOR]}
-            errorText={this.state.validationErrors[FIELD_NAME_AUTHOR]}
-            onChange={(author) => {
-              const validationErrors = this.validateAuthor({ author });
-              this.setState({
-                author,
-                validationErrors,
-              });
-            }}
+            errorText={validationErrors[FIELD_NAME_AUTHOR]}
+            onChange={this.handleAuthorChange}
           />
           <TextField
             id={FIELD_NAME_TITLE}
             name={FIELD_NAME_TITLE}
             label="reviews.review_form_title"
             value={this.state[FIELD_NAME_TITLE]}
-            errorText={this.state.validationErrors[FIELD_NAME_TITLE]}
-            onChange={(title) => {
-              const validationErrors = this.validateLength(FIELD_NAME_TITLE, { title });
-              this.setState({
-                title,
-                validationErrors,
-              });
-            }}
+            errorText={validationErrors[FIELD_NAME_TITLE]}
+            onChange={this.handleTitleChange}
           />
           <TextField
             id={FIELD_NAME_REVIEW}
             name={FIELD_NAME_REVIEW}
             label="reviews.review_form_text"
             value={this.state[FIELD_NAME_REVIEW]}
-            errorText={this.state.validationErrors[FIELD_NAME_REVIEW]}
+            errorText={validationErrors[FIELD_NAME_REVIEW]}
             multiLine
-            onChange={(review) => {
-              const validationErrors = this.validateLength(FIELD_NAME_REVIEW, { review });
-              this.setState({
-                review,
-                validationErrors,
-              });
-            }}
+            onChange={this.handleReviewChange}
           />
           <FormButtons />
         </form>

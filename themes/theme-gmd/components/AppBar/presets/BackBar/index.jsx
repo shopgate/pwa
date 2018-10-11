@@ -27,7 +27,7 @@ class BackBar extends PureComponent {
   render() {
     const { goBack, ...rest } = this.props;
     return (
-      <DefaultBar left={this.left} {...rest} />
+      <DefaultBar left={this.left()} {...rest} />
     );
   }
 }
