@@ -128,8 +128,7 @@ define create-pwa-release-branch
 		git checkout "origin/$(BRANCH_NAME)"
 		git fetch --all
 		git pull origin "$(BRANCH_NAME)"
-		@echo "releases/$(RELEASE_NAME)"
-		git checkout -b "release-$(RELEASE_NAME)"
+		git checkout -b "releases/$(RELEASE_NAME)"
 
 endef
 
