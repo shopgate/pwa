@@ -46,12 +46,14 @@ describe('functional test product page', () => {
       .click();
     cy.get(els.blackColorVariant)
       .should('be.visible')
+      .last()
       .click();
     cy.get(els.variantPickerShoeSize)
       .should('be.visible')
       .click();
     cy.get(els.size5ShoeSizeVariant)
       .should('be.visible')
+      .last()
       .click();
     cy.wait(1000);
     cy.get('[data-test-id="Color"] span')
@@ -68,46 +70,6 @@ describe('functional test product page', () => {
     cy.get(els.cartButton += ' div')
       .should('be.visible')
       .contains('1');
-  });
-
-  it('should clear cart', () => {
-    clearProductFromCart();
-  });
-
-  it('should check for options select', () => {
-    cy.visit('');
-
-    cy.get(els.productWithOptionsCategory)
-      .scrollIntoView()
-      .click();
-    cy.get(els.simpleProductWithOptionsNameProductGrid)
-      .should('be.visible')
-      .click();
-    cy.get(els.optionPickerBallColor)
-      .should('be.visible')
-      .click();
-    cy.get(els.redBallColorOption)
-      .should('be.visible')
-      .click();
-    cy.wait(1000);
-    cy.get(els.optionPickerGlow)
-      .should('be.visible')
-      .click();
-    cy.get(els.lowGlowOption)
-      .should('be.visible')
-      .click();
-    cy.get('[data-test-id="Ball color"] span')
-      .contains('Red Ball')
-      .should('be.visible');
-    cy.get('[data-test-id="glow"] span')
-      .contains('low')
-      .should('be.visible');
-    cy.wait(1000);
-    cy.get(els.addToCartButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.cartButton += ' div')
-      .contains('1')
   });
 
   it('should clear cart', () => {
