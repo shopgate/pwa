@@ -10,7 +10,7 @@ class Price extends Component {
   static propTypes = {
     price: PropTypes.shape({
       currency: PropTypes.string.isRequired,
-      unitPriceWithTax: PropTypes.number.isRequired,
+      unitPrice: PropTypes.number.isRequired,
       unitPriceStriked: PropTypes.number.isRequired,
       discount: PropTypes.number,
     }).isRequired,
@@ -24,7 +24,7 @@ class Price extends Component {
   shouldComponentUpdate(nextProps) {
     return !(
       this.props.price.currency === nextProps.price.currency
-      && this.props.price.unitPriceWithTax === nextProps.price.unitPriceWithTax
+      && this.props.price.unitPrice === nextProps.price.unitPrice
       && this.props.price.unitPriceStriked === nextProps.price.unitPriceStriked
     );
   }
@@ -46,7 +46,7 @@ class Price extends Component {
         }
         <ProductPrice
           currency={this.props.price.currency}
-          unitPrice={this.props.price.unitPriceWithTax}
+          unitPrice={this.props.price.unitPrice}
           discounted={this.props.price.discount > 0}
           smallStriked
         />
