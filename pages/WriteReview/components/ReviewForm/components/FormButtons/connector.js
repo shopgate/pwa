@@ -21,4 +21,17 @@ const mapDispatchToProps = dispatch => ({
   cancel: () => dispatch(historyPop()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.isLoading !== next.isLoading) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
