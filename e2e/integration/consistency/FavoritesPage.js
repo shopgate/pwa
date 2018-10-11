@@ -38,7 +38,7 @@ describe('AndroidGMDTest FavouritesPage', () => {
     cy.get(els.favoriteButton)
       .should('be.visible')
       .click();
-    cy.wait(2000)
+    cy.wait(2000);
     cy.visit('');
 
     cy.get(els.navigatorButton)

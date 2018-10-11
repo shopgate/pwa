@@ -8,11 +8,11 @@ import { ViewContext } from 'Components/View/context';
 class ViewProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    node: PropTypes.node.isRequired,
   }
 
   /**
-   * 
-   * @param {*} props 
+   * @param {Object} props The component props.
    */
   constructor(props) {
     super(props);
