@@ -11,12 +11,10 @@ const mapStateToProps = (state) => {
   const clientInformation = getClientInformation(state);
 
   return {
-    client: {
-      appVersion: clientInformation.appVersion,
-      libVersion: clientInformation.libVersion,
-      codebaseVersion: clientInformation.codebaseVersion,
-      deviceId: clientInformation.deviceId,
-    },
+    appVersion: clientInformation.appVersion,
+    codebaseVersion: clientInformation.codebaseVersion,
+    deviceId: clientInformation.deviceId,
+    libVersion: clientInformation.libVersion,
   };
 };
 
@@ -33,13 +31,8 @@ const areStatesEqual = (next, prev) => {
   return prevClient.codebaseVersion === nextClient.codebaseVersion;
 };
 
-/**
- * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
- */
-const mapDispatchToProps = dispatch => ({
-  enableDebugLogging: () => dispatch(enableDebugLogging()),
-});
+const mapDispatchToProps = {
+  enableDebugLogging,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { areStatesEqual });
