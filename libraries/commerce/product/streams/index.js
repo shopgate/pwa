@@ -2,6 +2,7 @@ import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   RECEIVE_PRODUCT,
   SET_PRODUCT_VARIANT_ID,
+  RECEIVE_PRODUCT_RELATIONS,
 } from '../constants';
 import { getSelectedVariant } from '../selectors/variants';
 
@@ -45,3 +46,7 @@ const variantDidChangedCached = setVariantId$
  * @type {Observable}
  */
 export const variantDidChange$ = variantDidChangeUncached$.merge(variantDidChangedCached);
+
+export const productRelationsReceived$ =
+               main$.filter(({ action }) => action.type === RECEIVE_PRODUCT_RELATIONS);
+
