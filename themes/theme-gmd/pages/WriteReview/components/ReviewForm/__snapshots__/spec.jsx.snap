@@ -4795,7 +4795,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
           </TextField>
           <TextField
             className=""
-            errorText="reviews.review_form_error_length"
+            errorText=""
             hintText=""
             id="review"
             isControlled={false}
@@ -4830,7 +4830,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 </div>
               </Hint>
               <Label
-                hasErrorMessage={true}
+                hasErrorMessage={false}
                 isFloating={true}
                 isFocused={false}
                 label="reviews.review_form_text"
@@ -4917,7 +4917,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 </Component>
               </FormElement>
               <Underline
-                hasErrorMessage={true}
+                hasErrorMessage={false}
                 isFocused={false}
               >
                 <div
@@ -4927,7 +4927,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className="css-1tpmuef"
                     style={
                       Object {
-                        "borderBottomColor": "#ff0000",
+                        "borderBottomColor": undefined,
+                        "transform": "scale3d(0,1,1)",
                       }
                     }
                   />
@@ -4935,7 +4936,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
               </Underline>
               <ErrorText
                 className=""
-                errorText="reviews.review_form_error_length"
+                errorText=""
                 translate={true}
                 validationError={null}
               >
@@ -4945,14 +4946,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
-                    string="reviews.review_form_error_length"
-                  >
-                    <span
-                      className=""
-                    >
-                      reviews.review_form_error_length
-                    </span>
-                  </Translate>
+                    string=""
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -7529,7 +7524,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
           </RatingScale>
           <TextField
             className=""
-            errorText="reviews.review_form_error_author_empty"
+            errorText=""
             hintText=""
             id="author"
             isControlled={false}
@@ -7564,7 +7559,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 </div>
               </Hint>
               <Label
-                hasErrorMessage={true}
+                hasErrorMessage={false}
                 isFloating={false}
                 isFocused={false}
                 label="reviews.review_form_author"
@@ -7653,7 +7648,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 </Component>
               </FormElement>
               <Underline
-                hasErrorMessage={true}
+                hasErrorMessage={false}
                 isFocused={false}
               >
                 <div
@@ -7663,7 +7658,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className="css-1tpmuef"
                     style={
                       Object {
-                        "borderBottomColor": "#ff0000",
+                        "borderBottomColor": undefined,
+                        "transform": "scale3d(0,1,1)",
                       }
                     }
                   />
@@ -7671,7 +7667,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
               </Underline>
               <ErrorText
                 className=""
-                errorText="reviews.review_form_error_author_empty"
+                errorText=""
                 translate={true}
                 validationError={null}
               >
@@ -7681,14 +7677,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
-                    string="reviews.review_form_error_author_empty"
-                  >
-                    <span
-                      className=""
-                    >
-                      reviews.review_form_error_author_empty
-                    </span>
-                  </Translate>
+                    string=""
+                  />
                 </div>
               </ErrorText>
             </div>

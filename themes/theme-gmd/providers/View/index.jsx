@@ -8,7 +8,6 @@ import { ViewContext } from 'Components/View/context';
 class ViewProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    node: PropTypes.node.isRequired,
   }
 
   /**
@@ -18,7 +17,6 @@ class ViewProvider extends Component {
     super(props);
 
     this.state = {
-      ref: props.node,
       top: 0,
       bottom: 0,
     };
