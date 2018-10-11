@@ -34,6 +34,7 @@
     "@shopgate/pwa-webcheckout-shopify": "5.9.0-beta.10",
     "@shopgate/tracking-core": "5.9.0-beta.10",
     "babel-core": "^6.26.3",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-module-resolver": "^3.1.0",
