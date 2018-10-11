@@ -303,21 +303,21 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
-"@virtuous/conductor-events@1.0.0-beta.38":
-  version "1.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.38.tgz#83a21fc385407649801a63d67945ea7eac32609a"
+"@virtuous/conductor-events@1.0.0-beta.41":
+  version "1.0.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.41.tgz#79d7adc4a129cbb16da84e37be55435918c129ee"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.38"
+    "@virtuous/conductor" "1.0.0-beta.41"
 
-"@virtuous/conductor-helpers@1.0.0-beta.38":
-  version "1.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.38.tgz#a06da76b5856a7567b3a207b60dfc74dc9dee564"
+"@virtuous/conductor-helpers@1.0.0-beta.41":
+  version "1.0.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.41.tgz#345e94eefbd00c56b3b6a19eeebd45333ac0580e"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.38"
+    "@virtuous/conductor" "1.0.0-beta.41"
 
-"@virtuous/conductor@1.0.0-beta.38":
-  version "1.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.38.tgz#01a665dd69737d1049577b00ed467aa45c53b797"
+"@virtuous/conductor@1.0.0-beta.41":
+  version "1.0.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.41.tgz#3379b7d7fadc2f73a752ae8b926b1f330b612354"
   dependencies:
     history "^4.7.2"
     lodash "^4.17.10"
@@ -329,24 +329,24 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.38":
-  version "1.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.38.tgz#de25dae48cf2ac046a88de8ebbab4a0d6e836412"
+"@virtuous/react-conductor@1.0.0-beta.41":
+  version "1.0.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.41.tgz#979d4dd993e9feef1ec3627fa94b1bdd89e7b359"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.38"
-    "@virtuous/conductor-events" "1.0.0-beta.38"
-    "@virtuous/conductor-helpers" "1.0.0-beta.38"
+    "@virtuous/conductor" "1.0.0-beta.41"
+    "@virtuous/conductor-events" "1.0.0-beta.41"
+    "@virtuous/conductor-helpers" "1.0.0-beta.41"
     gsap "^1.20.4"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.38":
-  version "1.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.38.tgz#b07f9e3213ce716b1ee7ecdfeda1e3e277e29079"
+"@virtuous/redux-conductor@1.0.0-beta.41":
+  version "1.0.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.41.tgz#59ecbd26dfdb0a0ceb8ed076b04b8f9cc20081f3"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.38"
-    "@virtuous/conductor-events" "1.0.0-beta.38"
-    "@virtuous/conductor-helpers" "1.0.0-beta.38"
+    "@virtuous/conductor" "1.0.0-beta.41"
+    "@virtuous/conductor-events" "1.0.0-beta.41"
+    "@virtuous/conductor-helpers" "1.0.0-beta.41"
 
 "@virtuous/redux-persister@1.1.0-beta.5":
   version "1.1.0-beta.5"

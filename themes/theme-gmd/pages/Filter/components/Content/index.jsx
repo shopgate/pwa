@@ -179,7 +179,7 @@ class FilterContent extends PureComponent {
     }, null);
 
     conductor.update(this.props.parentId, { filters: newFilters });
-    conductor.pop();
+    setTimeout(conductor.pop, 250);
   }
 
   /**
