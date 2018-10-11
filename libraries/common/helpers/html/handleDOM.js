@@ -152,6 +152,7 @@ const stopPlayer = (players) => {
  * Handles YouTube iframes so that we are able to controll when the video should be stopped.
  * It should not play in the background when a tab/page has changed.
  * @param {NodeList} container HTML widget container.
+ * @deprecated Replaced by the EmbeddedVideos collection system.
  */
 export const handleYouTube = (container) => {
   const youtubeIframes = container.querySelectorAll('iframe[src*="youtube.com"]');

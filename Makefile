@@ -4,8 +4,11 @@ export FORCE_COLOR = true
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 UTILS = eslint-config unit-tests e2e benchmark
-THEMES = gmd ios11
+THEMES = theme-gmd theme-ios11
 REPO_VERSION = ''
+GITHUB_AUTH_KEY = ''
+GITHUB_AUTH_TOKEN = ''
+BRANCH_NAME = ''
 
 checkout-develop:
 		git checkout develop
@@ -34,7 +37,7 @@ release:
 pre-release:
 ifneq ($(REPO_VERSION), '')
 		@echo " "
-		@echo "Releasing version $(REPO_VERSION)"
+		@echo "Releasing version $(REPO_VERSION) on branch '$(BRANCH_NAME)'"
 		@echo " "
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call prepare-release)
@@ -57,6 +60,7 @@ clean:
 		lerna clean --yes
 		rm -rf ./node_modules/
 		node ./scripts/init-subtrees.js # try to set up new git subtree entries.
+		git remote
 		lerna bootstrap
 
 # Lerna change all the version numbers.
@@ -117,14 +121,20 @@ ifneq ($(REPO_VERSION), '')
 endif
 
 changelog:
+ifeq ($(GITHUB_AUTH_KEY), '')
+		@echo " "
+		@echo "NO GITHUB CREDENTIALS PRESENT - Skipping changelog creation!"
+		@echo " "
+else
 		@echo " "
 		@echo "Creating changelog ..."
 		@echo " "
-		./node_modules/.bin/lerna-changelog
+		GITHUB_AUTH=$(GITHUB_AUTH_KEY) ./node_modules/.bin/lerna-changelog
 		git add -A
 		git commit -m "$$PACKAGE_VERSION"
 		git push
 		@echo "... done."
+endif
 
 e2e-gmd:
 		cd themes/theme-gmd && yarn run e2e
@@ -133,7 +143,7 @@ e2e-ios11:
 		cd themes/theme-ios11 && yarn run e2e
 
 e2e-checkout:
-		cd themes/gmd && yarn run e2e:checkout
+		cd themes/theme-gmd && yarn run e2e:checkout
 
 # DEFINITIONS
 

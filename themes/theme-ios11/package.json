@@ -32,7 +32,7 @@
     "@shopgate/pwa-ui-ios": "5.9.0-beta.10",
     "@shopgate/pwa-ui-shared": "5.9.0-beta.10",
     "@shopgate/pwa-webcheckout-shopify": "5.9.0-beta.10",
-    "@shopgate/react-hammerjs": "0.5.8",
+    "@shopgate/react-hammerjs": "0.5.6",
     "@shopgate/tracking-core": "5.9.0-beta.10",
     "babel-core": "^6.26.3",
     "babel-plugin-dynamic-import-webpack": "^1.0.2",
