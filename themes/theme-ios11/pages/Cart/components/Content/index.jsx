@@ -4,7 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import CardList from '@shopgate/pwa-ui-shared/CardList';
 import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
-import { SimpleBar } from 'Components/AppBar/presets';
+import { BackBar } from 'Components/AppBar/presets';
 import Item from '../Item';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
@@ -73,7 +73,7 @@ class CartContent extends Component {
 
     return (
       <Fragment>
-        <SimpleBar title="titles.cart" />
+        <BackBar title="titles.cart" />
         {(this.hasItems || this.hasMessages) && (
           <Fragment>
             {this.hasMessages && <MessageBar messages={messages} />}
