@@ -2,7 +2,6 @@ import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
-import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
 
@@ -33,7 +32,6 @@ class AppBarDefault extends PureComponent {
     const right = (
       <Fragment>
         <SearchButton />
-        <CartButton />
       </Fragment>
     );
     const below = (
