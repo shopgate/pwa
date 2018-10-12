@@ -7,6 +7,7 @@ exports[`<List.Item /> should render with a link 1`] = `
   isDisabled={false}
   isSelected={false}
   link="url/to/somewhere"
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
@@ -25,7 +26,7 @@ exports[`<List.Item /> should render with a link 1`] = `
     <div
       aria-hidden={true}
       className="css-13azwyo"
-      onTouchTap={[Function]}
+      onClick={[Function]}
       style={null}
     >
       <div
@@ -33,51 +34,11 @@ exports[`<List.Item /> should render with a link 1`] = `
         style={Object {}}
       />
       <Link
-        className=""
-        disabled={false}
         href="url/to/somewhere"
         onClick={null}
+        state={null}
       >
-        <div
-          aria-hidden={true}
-          className="css-c6ki83 "
-          data-test-id="link: url/to/somewhere"
-          onClick={[Function]}
-          role="link"
-        >
-          <Grid
-            className="css-l3889c"
-            component="div"
-            wrap={false}
-          >
-            <div
-              className="css-l3889c css-h7r55a"
-            >
-              <GridItem
-                className="css-10fxwvh"
-                component="div"
-                grow={1}
-                shrink={1}
-              >
-                <div
-                  className="css-10fxwvh css-1gs0ko2"
-                >
-                  <Translate
-                    className=""
-                    params={Object {}}
-                    string="My Title"
-                  >
-                    <span
-                      className=""
-                    >
-                      My Title
-                    </span>
-                  </Translate>
-                </div>
-              </GridItem>
-            </div>
-          </Grid>
-        </div>
+        <div />
       </Link>
     </div>
   </Glow>
@@ -91,6 +52,7 @@ exports[`<List.Item /> should render with a right component 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={
     <span>
@@ -100,52 +62,46 @@ exports[`<List.Item /> should render with a right component 1`] = `
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-l3889c"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-l3889c css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          <Translate
-            className=""
-            params={Object {}}
-            string="My Title"
+          <div
+            className="css-10fxwvh css-1gs0ko2"
           >
-            <span
-              className=""
-            >
-              My Title
-            </span>
-          </Translate>
-        </div>
-      </GridItem>
-      <GridItem
-        className=""
-        component="div"
-        grow={1}
-        shrink={1}
-      >
-        <div
-          className=" css-1gs0ko2"
+            My Title
+          </div>
+        </GridItem>
+        <GridItem
+          className=""
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          <span>
-            I\`m a span.
-          </span>
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+          <div
+            className=" css-1gs0ko2"
+          >
+            <span>
+              I\`m a span.
+            </span>
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -156,43 +112,38 @@ exports[`<List.Item /> should render with a title but no image 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-l3889c"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-l3889c css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          <Translate
-            className=""
-            params={Object {}}
-            string="My Title"
+          <div
+            className="css-10fxwvh css-1gs0ko2"
           >
-            <span
-              className=""
-            >
-              My Title
-            </span>
-          </Translate>
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -208,51 +159,46 @@ exports[`<List.Item /> should render with an image 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-l3889c"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-l3889c css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
       <div
-        className="css-1mhrjzj"
-      >
-        <img
-          alt="Alternative text"
-          src="url/to/image"
-        />
-      </div>
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+        className="css-1qcr7hz css-h7r55a"
       >
         <div
-          className="css-10fxwvh css-1gs0ko2"
+          className="css-1mhrjzj"
         >
-          <Translate
-            className=""
-            params={Object {}}
-            string="My Title"
-          >
-            <span
-              className=""
-            >
-              My Title
-            </span>
-          </Translate>
+          <img
+            alt="Alternative text"
+            src="url/to/image"
+          />
         </div>
-      </GridItem>
-    </div>
-  </Grid>
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
+        >
+          <div
+            className="css-10fxwvh css-1gs0ko2"
+          >
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -263,6 +209,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={[Function]}
   rightComponent={null}
   testId={null}
@@ -286,45 +233,39 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
       <div
         aria-hidden={true}
         className="css-13azwyo"
-        onTouchTap={[Function]}
+        onClick={[Function]}
         style={null}
       >
         <div
           className="css-1bmd5dz"
           style={Object {}}
         />
-        <Grid
-          className="css-l3889c"
-          component="div"
-          wrap={false}
+        <div
+          data-test-id={null}
         >
-          <div
-            className="css-l3889c css-h7r55a"
+          <Grid
+            className="css-1qcr7hz"
+            component="div"
+            wrap={false}
           >
-            <GridItem
-              className="css-10fxwvh"
-              component="div"
-              grow={1}
-              shrink={1}
+            <div
+              className="css-1qcr7hz css-h7r55a"
             >
-              <div
-                className="css-10fxwvh css-1gs0ko2"
+              <GridItem
+                className="css-10fxwvh"
+                component="div"
+                grow={1}
+                shrink={1}
               >
-                <Translate
-                  className=""
-                  params={Object {}}
-                  string="My Title"
+                <div
+                  className="css-10fxwvh css-1gs0ko2"
                 >
-                  <span
-                    className=""
-                  >
-                    My Title
-                  </span>
-                </Translate>
-              </div>
-            </GridItem>
-          </div>
-        </Grid>
+                  My Title
+                </div>
+              </GridItem>
+            </div>
+          </Grid>
+        </div>
       </div>
     </Glow>
   </div>
@@ -338,43 +279,38 @@ exports[`<List.Item /> should render without a Glow when disabled 1`] = `
   isDisabled={true}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-l3889c"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-l3889c css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh css-19uk9mv"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-19uk9mv css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh css-19uk9mv"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          <Translate
-            className=""
-            params={Object {}}
-            string="My Title"
+          <div
+            className="css-10fxwvh css-19uk9mv css-1gs0ko2"
           >
-            <span
-              className=""
-            >
-              My Title
-            </span>
-          </Translate>
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -385,42 +321,37 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
   isDisabled={false}
   isSelected={true}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-l3889c css-14bkd8f"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-l3889c css-14bkd8f css-h7r55a"
+    <Grid
+      className="css-1qcr7hz css-7q9yf9"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-7q9yf9 css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          <Translate
-            className=""
-            params={Object {}}
-            string="My Title"
+          <div
+            className="css-10fxwvh css-1gs0ko2"
           >
-            <span
-              className=""
-            >
-              My Title
-            </span>
-          </Translate>
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;

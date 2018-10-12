@@ -6,7 +6,6 @@ const disabled = css({
 }).toString();
 
 const totalValue = css({
-  fontSize: 16,
   textAlign: 'right',
 }).toString();
 

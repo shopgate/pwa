@@ -3,7 +3,16 @@ import { mount } from 'enzyme';
 import List from 'Components/List';
 import { Unwrapped as CategoryListWidget } from './index';
 
-describe.skip('<CategoryListWidget />', () => {
+jest.mock('@shopgate/pwa-common/components/Link', () => {
+  /**
+   * Mocked LinkComponent
+   * @return {JSX}
+   */
+  const Link = () => <div />;
+  return Link;
+});
+
+describe('<CategoryListWidget />', () => {
   it('should not render the CategoryListWidget', () => {
     const props = {
       fetchCategory: () => {},

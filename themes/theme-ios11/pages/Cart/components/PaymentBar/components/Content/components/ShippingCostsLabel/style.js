@@ -6,7 +6,7 @@ const disabled = css({
 }).toString();
 
 const shippingInfoBase = {
-  fontSize: 16,
+  fontSize: '0.875rem',
   color: colors.shade9,
 };
 

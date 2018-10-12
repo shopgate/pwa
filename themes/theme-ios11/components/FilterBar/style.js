@@ -1,15 +1,5 @@
 import { css } from 'glamor';
 
-const wrapper = css({
-  alignItems: 'center',
-  left: 0,
-  position: 'fixed',
-  width: '100%',
-  zIndex: 3,
-  transition: 'transform 100ms linear',
-  willChange: 'transform',
+export default css({
+  transition: 'transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1)',
 }).toString();
-
-export default {
-  wrapper,
-};

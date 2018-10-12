@@ -20,6 +20,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       active={null}
       addToCart={[Function]}
       favoritesOnce={false}
+      hasVariants={true}
       isBaseProduct={true}
       isOrderable={true}
       onRippleComplete={[Function]}
@@ -28,11 +29,10 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       showVariantModal={[Function]}
     >
       <div
-        className="css-j25czk"
+        className="css-wbu9yb"
       >
         <Connect(FavoritesButton)
           active={null}
-          noShadow={true}
           onRippleComplete={[Function]}
           once={false}
           productId="product_1"
@@ -43,7 +43,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             active={null}
             addFavorites={[Function]}
             className=""
-            noShadow={true}
+            noShadow={false}
             onRippleComplete={[Function]}
             once={false}
             productId="product_1"
@@ -62,7 +62,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           name="favorites.add-to-cart"
           props={
             Object {
-              "className": undefined,
+              "className": "css-ipacgg",
               "handleAddToCart": [Function],
               "isBaseProduct": true,
               "isDisabled": false,
@@ -73,11 +73,11 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           }
         >
           <MockedAddToCartButton
-            handleAddToCart={[Function]}
+            className="css-ipacgg"
             isDisabled={false}
             isLoading={false}
             isOrderable={false}
-            noShadow={true}
+            onClick={[Function]}
           >
             <button
               onClick={[Function]}

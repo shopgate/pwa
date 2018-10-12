@@ -18,7 +18,7 @@ const Title = ({ value, handleRemove, toggleEditMode }, context) => (
     <Grid.Item grow={1}>
       <Portal name={portals.CART_ITEM_NAME_BEFORE} props={context} />
       <Portal name={portals.CART_ITEM_NAME} props={context} >
-        <div className={styles.title}>
+        <div className={styles.title} data-test-id={value}>
           {value}
         </div>
       </Portal>

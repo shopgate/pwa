@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
-import Title from './components/Title';
-import Rating from './components/Rating';
-import Text from './components/Text';
-import Info from './components/Info';
+import Title from '../Title';
+import Rating from '../Rating';
+import Text from '../Text';
+import Info from '../Info';
 
 /**
  * Single Review Component.
@@ -12,7 +11,7 @@ import Info from './components/Info';
  * @returns {JSX}
  */
 const Review = ({ review }) => (
-  <div className={styles} data-test-id={`reviewTitle: ${review.title}`}>
+  <div data-test-id={`reviewTitle: ${review.title}`}>
     <Title title={review.title} />
     <Rating rate={review.rate} />
     <Text review={review.review} />

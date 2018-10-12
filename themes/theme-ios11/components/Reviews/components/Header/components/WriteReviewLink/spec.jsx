@@ -2,10 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
-import {
-  mockedStateWithAll,
-  mockedStateProductEmpty,
-} from 'Components/Reviews/mock';
+import { mockedStateWithAll } from '@shopgate/pwa-common-commerce/reviews/mock';
 import WriteReviewLink from './index';
 
 const mockedStore = configureStore();
@@ -18,7 +15,7 @@ const mockedStore = configureStore();
 const createComponent = (mockedState) => {
   const Component = (
     <Provider store={mockedStore(mockedState)}>
-      <WriteReviewLink />
+      <WriteReviewLink productId="foo" />
     </Provider>
   );
   return mount(Component);
@@ -35,11 +32,5 @@ describe('<WriteReviewLink>', () => {
     component = createComponent(mockedStateWithAll);
     expect(component).toMatchSnapshot();
     expect(component.find('span').exists()).toBe(true);
-  });
-
-  it('should not render when current product is empty', () => {
-    component = createComponent(mockedStateProductEmpty);
-    expect(component).toMatchSnapshot();
-    expect(component.find('span').exists()).toBe(false);
   });
 });

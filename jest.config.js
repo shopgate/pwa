@@ -13,17 +13,14 @@ module.exports = {
     '!*/**/jest.config.js',
     '!themes/*/extensions/**/*.js',
     '!themes/*/e2e/**/*.js',
-    '!themes/theme-ios11/**/*.js',
   ],
   testPathIgnorePatterns: [
     '/node_modules/',
-    '/themes/theme-ios11/',
     '/themes/*/extensions/',
     '/themes/*/e2e/',
   ],
   transformIgnorePatterns: [
     '/node_modules/',
-    '/themes/theme-ios11/',
     '/themes/*/extensions/',
     '/themes/*/e2e/',
   ],

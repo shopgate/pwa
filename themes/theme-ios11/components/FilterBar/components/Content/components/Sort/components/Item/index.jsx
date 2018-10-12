@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
 import styles from './style';
 
 /**
@@ -8,9 +9,9 @@ import styles from './style';
  * @returns {JSX}
  */
 const Item = ({ children }) => (
-  <div className={styles}>
+  <Ripple fill className={styles}>
     {children}
-  </div>
+  </Ripple>
 );
 
 Item.propTypes = {

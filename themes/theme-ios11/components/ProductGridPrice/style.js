@@ -1,9 +1,7 @@
 import { css } from 'glamor';
 
 const priceWrapper = css({
-  alignItems: 'center',
-  lineHeight: 1.8,
-  marginTop: 2,
+  lineHeight: 1.75,
 }).toString();
 
 const basicPrice = css({

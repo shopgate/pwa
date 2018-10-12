@@ -4,7 +4,6 @@ node_modules
 coverage
 /pipelines/
 /trustedPipelines/
-/themes/theme-ios11/
 /themes/*/extensions/
 /extensions/*
 !/extensions/@shopgate-product-reviews

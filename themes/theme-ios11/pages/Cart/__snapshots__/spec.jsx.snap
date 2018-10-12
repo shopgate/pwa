@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart> page should match snapshot 1`] = `
+<View
+  background="#f8f8f8"
+  hasNavigator={true}
+  isFullscreen={false}
+>
+  <Consume
+    context={
+      Object {
+        "Consumer": [Function],
+      }
+    }
+    props={
+      Object {
+        "visible": "visible",
+      }
+    }
+  >
+    <Component />
+  </Consume>
+</View>
+`;

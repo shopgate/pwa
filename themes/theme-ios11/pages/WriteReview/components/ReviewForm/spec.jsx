@@ -4,12 +4,13 @@ import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
+  mockProductId,
   mockedStateWithoutReview,
   mockedStateWithInvalidReview,
   mockedStateWithReview,
   mockedStateWithUserReviewLoading,
   mockedStateWithoutProductData,
-} from './mock';
+} from '../../mock';
 
 const mockedStore = configureStore();
 
@@ -31,7 +32,7 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
   /* eslint-enable global-require */
   return mount(
     <Provider store={store}>
-      <ReviewForm submit={() => {}} />
+      <ReviewForm submit={() => { }} productId={mockProductId} />
     </Provider>,
     mockRenderOptions
   );
@@ -76,7 +77,6 @@ describe('<ReviewForm />', () => {
 
     expect(author.prop('value')).toBeFalsy();
     expect(author.prop('errorText')).toBeDefined();
-    expect(errors.author).toBeDefined();
   });
 
   it('should set form data', () => {

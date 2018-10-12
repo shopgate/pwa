@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
@@ -15,13 +14,11 @@ import styles from './style';
  */
 class ProductImage extends Component {
   /**
-   * See Image component manual for detailed description
-   * about the component property types.
+   * See Image component manual for detailed description about the component property types.
    */
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
-    classNames: PropTypes.objectOf(PropTypes.string),
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
@@ -37,22 +34,17 @@ class ProductImage extends Component {
     alt: null,
     animating: true,
     forcePlaceholder: false,
-    classNames: {
-      container: null,
-      glowContainer: null,
-      imageContainer: null,
-    },
-    highestResolutionLoaded: () => { },
+    highestResolutionLoaded: () => {},
     ratio: null,
     resolutions: [
       {
-        blur: 2,
-        height: 50,
         width: 50,
+        height: 50,
+        blur: 2,
       },
       {
-        height: 440,
         width: 440,
+        height: 440,
       },
     ],
     src: null,
@@ -84,42 +76,11 @@ class ProductImage extends Component {
 
   /**
    * Should component update given the new props?
-   * @param  {Object} nextProps The next component props.
+   * @param {Object} nextProps The next component props.
    * @return {boolean} Update or not.
    */
   shouldComponentUpdate(nextProps) {
     return !isEqual(this.props, nextProps);
-  }
-
-  /**
-   * Renders the actual content (image or placeholder).
-   * @return {JSX}
-   */
-  get renderedContent() {
-    if (this.state.showPlaceholder) {
-      // Image is not present or could not be loaded, show a placeholder.
-      return (
-        <div className={styles.placeholderContainer}>
-          <div className={styles.placeholderContent} data-test-id="placeHolder">
-            <Placeholder className={styles.placeholder} />
-          </div>
-        </div>
-      );
-    }
-
-    const classes = classNames(
-      styles.container,
-      this.props.classNames.container
-    );
-
-    return (
-      <Image
-        {...this.props}
-        backgroundColor={colors.light}
-        className={classes}
-        onError={this.imageLoadingFailed}
-      />
-    );
   }
 
   /**
@@ -133,18 +94,27 @@ class ProductImage extends Component {
 
   /**
    * Renders the component.
-   * @return {JSX}
+   * @returns {JSX}
    */
   render() {
-    const classes = classNames(
-      styles.container,
-      this.props.classNames.imageContainer
-    );
+    if (this.state.showPlaceholder) {
+      // Image is not present or could not be loaded, show a placeholder.
+      return (
+        <div className={styles.placeholderContainer} >
+          <div className={styles.placeholderContent} data-test-id="placeHolder">
+            <Placeholder className={styles.placeholder} />
+          </div>
+        </div>
+      );
+    }
 
+    // Return the actual image.
     return (
-      <div className={classes}>
-        {this.renderedContent}
-      </div>
+      <Image
+        {...this.props}
+        backgroundColor={colors.light}
+        onError={this.imageLoadingFailed}
+      />
     );
   }
 }

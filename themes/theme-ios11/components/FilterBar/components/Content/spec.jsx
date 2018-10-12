@@ -6,7 +6,6 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
 import GridIcon from '@shopgate/pwa-ui-shared/icons/GridIcon';
 import ListIcon from '@shopgate/pwa-ui-shared/icons/ListIcon';
-import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
 import { UnwrappedContent as FilterBarContent } from './index';
 
 const activeFilters = {
@@ -62,7 +61,6 @@ describe.skip('<FilterBarContent />', () => {
   it('should render in grid view mode', () => {
     const wrapper = mount(
       <FilterBarContent
-        viewMode={GRID_VIEW}
         handleToggleViewMode={() => {}}
         handleSortChange={() => {}}
         handleOpenFiltersView={() => {}}
@@ -80,7 +78,6 @@ describe.skip('<FilterBarContent />', () => {
   it('should render in list view mode', () => {
     const wrapper = mount(
       <FilterBarContent
-        viewMode={LIST_VIEW}
         handleToggleViewMode={() => {}}
         handleSortChange={() => {}}
         handleOpenFiltersView={() => {}}
@@ -104,7 +101,6 @@ describe.skip('<FilterBarContent />', () => {
       getFiltersSpy = jest.fn();
       filterBarWrapper = shallow(
         <FilterBarContent
-          viewMode={GRID_VIEW}
           handleToggleViewMode={() => {}}
           handleSortChange={() => {}}
           getFilters={getFiltersSpy}
@@ -134,7 +130,6 @@ describe.skip('<FilterBarContent />', () => {
     beforeEach(() => {
       filterBarWrapper = mount(
         <FilterBarContent
-          viewMode={GRID_VIEW}
           handleToggleViewMode={() => {}}
           handleSortChange={() => {}}
           getFilters={() => {}}

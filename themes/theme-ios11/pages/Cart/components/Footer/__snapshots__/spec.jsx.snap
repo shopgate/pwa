@@ -18,7 +18,20 @@ exports[`<Footer /> should render as expected when all items are supposed to be 
       </span>
     </Translate>
   </CouponsHint>
-  <TaxDisclaimer />
+  <TaxDisclaimer>
+    <Portal
+      name="product.tax-disclaimer.before"
+      props={null}
+    />
+    <Portal
+      name="product.tax-disclaimer"
+      props={null}
+    />
+    <Portal
+      name="product.tax-disclaimer.after"
+      props={null}
+    />
+  </TaxDisclaimer>
 </Footer>
 `;
 
@@ -34,7 +47,20 @@ exports[`<Footer /> should render as expected when only the tax disclaimer is su
   showCouponsHint={false}
   showTaxDisclaimer={true}
 >
-  <TaxDisclaimer />
+  <TaxDisclaimer>
+    <Portal
+      name="product.tax-disclaimer.before"
+      props={null}
+    />
+    <Portal
+      name="product.tax-disclaimer"
+      props={null}
+    />
+    <Portal
+      name="product.tax-disclaimer.after"
+      props={null}
+    />
+  </TaxDisclaimer>
 </Footer>
 `;
 

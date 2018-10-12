@@ -3,6 +3,10 @@ import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { getPopulatedProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getChildCategoriesById,
+  getRootCategories,
+} from '@shopgate/pwa-common-commerce/category/selectors';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 
 /**
@@ -94,6 +98,7 @@ const getResultByHash = createSelector(
  */
 export const getProductsResult = createSelector(
   state => state,
+  (state, props) => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult
@@ -110,4 +115,25 @@ export const getProductsFetchingState = createSelector(
   getResultHash,
   getResultByHash,
   (state, hash, result) => (result ? result.isFetching : null)
+);
+
+/**
+ * Retrieves categories from the state.
+ * If no category id is passed, root-categories will be returned.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @type {Array|null} The categories collection.
+ */
+export const getCategoriesById = createSelector(
+  getChildCategoriesById,
+  getRootCategories,
+  (state, props) => props.categoryId,
+  (childCategories, rootCategories, categoryId) => {
+    // Check if we have to handle the root-category
+    if (!categoryId && rootCategories) {
+      return rootCategories;
+    }
+
+    return childCategories;
+  }
 );

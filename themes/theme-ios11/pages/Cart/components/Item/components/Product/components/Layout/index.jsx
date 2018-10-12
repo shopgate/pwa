@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import ProductImage from 'Components/ProductImage';
+import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
+import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
-import Properties from './components/Properties';
 import styles from './style';
 
 /**
