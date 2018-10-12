@@ -3,7 +3,7 @@ import { embeddedMedia } from '../collections';
 import { Vimeo, YouTube } from '../collections/media-providers';
 import subscription from './app';
 
-describe('App subscriptions', () => {
+describe.skip('App subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn();
 
