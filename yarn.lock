@@ -348,14 +348,14 @@
     "@virtuous/conductor-events" "1.0.0-beta.41"
     "@virtuous/conductor-helpers" "1.0.0-beta.41"
 
-"@virtuous/redux-persister@1.1.0-beta.5":
-  version "1.1.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.5.tgz#907d5a082521e3919770085f9f5726b6b80f4af0"
+"@virtuous/redux-persister@1.1.0-beta.7":
+  version "1.1.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.7.tgz#093b0bcdbaa2458b9a49e5a548e241212e0637cf"
   dependencies:
     "@virtuous/logger" "^1.0.0"
     babel-plugin-lodash "^3.3.4"
-    babel-plugin-minify-mangle-names "^0.4.3"
     lodash "^4.17.10"
+    store "^2.0.12"
 
 JSONStream@^1.0.4:
   version "1.3.4"
@@ -856,10 +856,6 @@ babel-helper-hoist-variables@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
-babel-helper-mark-eval-scopes@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/babel-helper-mark-eval-scopes/-/babel-helper-mark-eval-scopes-0.4.3.tgz#d244a3bef9844872603ffb46e22ce8acdf551562"
-
 babel-helper-optimise-call-expression@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-helper-optimise-call-expression/-/babel-helper-optimise-call-expression-6.24.1.tgz#f7a13427ba9f73f8f4fa993c54a97882d1244257"
@@ -957,12 +953,6 @@ babel-plugin-lodash@^3.3.2, babel-plugin-lodash@^3.3.4:
     glob "^7.1.1"
     lodash "^4.17.10"
     require-package-name "^2.0.1"
-
-babel-plugin-minify-mangle-names@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/babel-plugin-minify-mangle-names/-/babel-plugin-minify-mangle-names-0.4.3.tgz#16f1bff74b7a7c93dfc241e7831dd5fb4b023ef7"
-  dependencies:
-    babel-helper-mark-eval-scopes "^0.4.3"
 
 babel-plugin-module-resolver@^3.1.0:
   version "3.1.1"
@@ -7626,6 +7616,10 @@ static-extend@^0.1.1:
 stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
+
+store@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/store/-/store-2.0.12.tgz#8c534e2a0b831f72b75fc5f1119857c44ef5d593"
 
 stream-each@^1.1.0:
   version "1.2.3"

@@ -18,10 +18,23 @@ import logger from './middelwares/logger';
 const STATE_VERSION = 'v1';
 const storeKey = `shopgate-connect_${STATE_VERSION}`;
 
-let initialState;
+/**
+ * Returns a normalised initialState from the localstorage.
+ * @returns {Object}
+ */
+function getInitialState() {
+  if (!window.localStorage) {
+    return undefined;
+  }
 
-if (window.localStorage) {
-  initialState = JSON.parse(window.localStorage.getItem(storeKey));
+  const storedState = window.localStorage.getItem(storeKey);
+
+  if (!storedState) {
+    return undefined;
+  }
+
+  const normalisedState = storedState.replace(new RegExp('"isFetching":true', 'g'), '"isFetching":false');
+  return JSON.parse(normalisedState);
 }
 
 /**
@@ -38,7 +51,7 @@ export function configureStore(reducers, subscribers) {
 
   const store = createStore(
     reducers,
-    initialState,
+    getInitialState(),
     composeWithDevTools(
       applyMiddleware(...[
         thunk,
