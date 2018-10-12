@@ -10,7 +10,10 @@ import {
   productWillEnter$,
   productReceived$,
   cachedProductReceived$,
+  productRelationsReceived$,
 } from '../streams';
+import getProductsById from '../actions/getProductsById';
+import { getProductRelationsByHash } from '../selectors/relations';
 
 /**
  * Product subscriptions.
@@ -51,6 +54,13 @@ function product(subscribe) {
     if (flags.hasOptions) {
       dispatch(getProductOptions(id));
     }
+  });
+
+  subscribe(productRelationsReceived$, ({ dispatch, getState, action }) => {
+    const { hash } = action;
+    const productIds = getProductRelationsByHash(hash)(getState());
+
+    dispatch(getProductsById(productIds));
   });
 }
 

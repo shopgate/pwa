@@ -31,6 +31,8 @@ import {
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
+import { embeddedMedia } from '../collections';
+import { Vimeo, YouTube } from '../collections/media-providers';
 
 /**
  * App subscriptions.
@@ -39,6 +41,9 @@ import {
 export default function app(subscribe) {
   // Gets triggered before the app starts.
   subscribe(appWillStart$, ({ dispatch, action }) => {
+    embeddedMedia.addProvider(new Vimeo());
+    embeddedMedia.addProvider(new YouTube());
+
     dispatch(registerLinkEvents(action.location));
 
     events.onWillPush(id => dispatch(routeWillPush(id)));

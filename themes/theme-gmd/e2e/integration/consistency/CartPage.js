@@ -27,7 +27,8 @@ describe('AndroidGMDTest CartPage', () => {
       .click();
     cy.get(els.cartButton)
       .click();
-    cy.get(els.productWithManyProps4CartItem)
+    cy.get(els.cartItem)
+      .contains('Product with many Properties - 4 -')
       .should('be.visible');
   });
 

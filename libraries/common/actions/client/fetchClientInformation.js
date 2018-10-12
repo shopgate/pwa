@@ -1,21 +1,31 @@
-import { logger, getWebStorageEntry } from '@shopgate/pwa-core';
-import * as actions from '../../action-creators/client';
+import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
+import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
+import {
+  requestClientInformation,
+  receiveClientInformation,
+  errorClientInformation,
+} from '../../action-creators/client';
 
 /**
  * Requests the client information from the web storage.
  * @return {Function} A redux thunk.
  */
-export default function fetchClientInformation() {
+function fetchClientInformation() {
   return (dispatch) => {
     dispatch(actions.requestClientInformation());
 
-    getWebStorageEntry({ name: 'clientInformation' })
-      .then(({ value }) => {
-        dispatch(actions.receiveClientInformation(value));
-      })
-      .catch((error) => {
-        logger.error(error);
-        dispatch(actions.errorClientInformation());
-      });
-  };
-}
+  if (!hasSGJavaScriptBridge()) {
+    dispatch(receiveClientInformation(defaultClientInformation));
+    return;
+  }
+
+  getWebStorageEntry({ name: 'clientInformation' })
+    .then(response => dispatch(receiveClientInformation(response.value)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorClientInformation());
+    });
+};
+
+export default fetchClientInformation;

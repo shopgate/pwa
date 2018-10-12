@@ -2,13 +2,16 @@
   "name": "@shopgate/pwa",
   "private": true,
   "workspaces": [
-    "extensions/*/frontend",
+    "extensions/@shopgate-product-reviews/frontend",
+    "extensions/@shopgate-tracking-ga-native/frontend",
     "libraries/*",
     "themes/*",
     "utils/*"
   ],
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
+    "add-remotes": "node ./scripts/add-remotes.js",
+    "remove-remotes": "node ./scripts/remove-remotes.js",
     "clean": "make clean",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -32,6 +35,7 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.1",
+    "detector": "^2.5.0",
     "eslint": "^4.17.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.13.0",

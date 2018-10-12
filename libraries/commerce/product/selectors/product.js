@@ -476,6 +476,19 @@ export const getProductShipping = createSelector(
   }
 );
 
+export const getProductPropertiesUnfiltered = createSelector(
+  getProductId,
+  getProductPropertiesState,
+  (productId, properties) => {
+    const entry = properties[productId];
+    if (!entry || entry.isFetching || typeof entry.properties === 'undefined') {
+      return null;
+    }
+
+    return entry.properties;
+  }
+);
+
 /**
  * Retrieves the properties for the given product.
  * @param {Object} state The current application state.

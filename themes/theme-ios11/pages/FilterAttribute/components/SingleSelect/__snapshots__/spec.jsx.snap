@@ -44,6 +44,7 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
         >
           <li
             className="css-1p5q8vq css-16gj3o1"
+            data-test-id="listItem"
           >
             <Item
               checked={true}
@@ -213,6 +214,7 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
         >
           <li
             className="css-1p5q8vq css-16gj3o1"
+            data-test-id="listItem"
           >
             <Item
               checked={false}

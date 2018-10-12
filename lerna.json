@@ -2,7 +2,8 @@
   "lerna": "2.9.0",
   "version": "6.0.0-beta.13",
   "packages": [
-    "extensions/*/frontend",
+    "extensions/@shopgate-product-reviews/frontend",
+    "extensions/@shopgate-tracking-ga-native/frontend",
     "libraries/*",
     "themes/*",
     "utils/*"

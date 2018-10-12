@@ -1,8 +1,11 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import {
   PROPERTIES_FILTER_BLACKLIST,
   PROPERTIES_FILTER_WHITELIST,
+  PRODUCT_RELATIONS_DEFAULT_LIMIT,
 } from '../constants/';
+import { SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS } from '../constants/Pipelines';
 
 /**
  * Reads the setting for product properties whitelisting/blacklisting
@@ -32,3 +35,23 @@ export const filterProperties = (properties) => {
     return true;
   });
 };
+
+/**
+ * Generates getProductRelations hash based on productId, type and given limit.
+ * It is used in both action and selectors.
+ * @param {string} productId Product Id.
+ * @param {string} type Type - see `../constants`.
+ * @param {number} limit Limit.
+ * @returns {string}
+ */
+export const generateProductRelationsHash = ({
+  productId,
+  type,
+  limit = PRODUCT_RELATIONS_DEFAULT_LIMIT,
+}) => generateResultHash({
+  pipeline: SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS,
+  productId,
+  type,
+  limit,
+}, false, false);
+

@@ -5,7 +5,7 @@ import {
   ERROR_CLIENT_INFORMATION,
 } from '../../constants/ActionTypes';
 
-persistedReducers.set('client');
+const defaultState = {};
 
 /**
  * Stores all the client information.
@@ -13,7 +13,7 @@ persistedReducers.set('client');
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function clientReducer(state = {}, action) {
+export default function clientReducer(state = defaultState, action) {
   switch (action.type) {
     case REQUEST_CLIENT_INFORMATION:
       return {

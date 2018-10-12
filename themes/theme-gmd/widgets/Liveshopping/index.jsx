@@ -73,7 +73,7 @@ const createProductSliderItem = ({
               <ProductImage src={featuredImageUrl} alt={name} />
             </Grid.Item>
             <Grid.Item className={styles.infoPane}>
-              <div>
+              <div data-test-id={name}>
                 {price.discount > 0 ?
                   <Fragment>
                     <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: id }} />
@@ -104,7 +104,7 @@ const createProductSliderItem = ({
               </div>
               <Grid className={styles.priceGrid}>
                 {priceStriked > 0 ?
-                  <Grid.Item>
+                  <Grid.Item> 
                     <PriceStriked
                       className={styles.priceStriked}
                       value={priceStriked}

@@ -12,7 +12,7 @@ exports[`<ZoomPanContainer /> applies correct position when panned 1`] = `
   <div
     className="css-70kdmd"
   >
-    <Component
+    <Hammer
       direction="DIRECTION_ALL"
       onDoubleTap={[Function]}
       onPan={[Function]}
@@ -73,7 +73,7 @@ exports[`<ZoomPanContainer /> applies correct position when panned 1`] = `
           </div>
         </div>
       </div>
-    </Component>
+    </Hammer>
   </div>
 </ZoomPanContainer>
 `;
@@ -90,7 +90,7 @@ exports[`<ZoomPanContainer /> applies correct zoom factor when pinched 1`] = `
   <div
     className="css-70kdmd"
   >
-    <Component
+    <Hammer
       direction="DIRECTION_ALL"
       onDoubleTap={[Function]}
       onPan={[Function]}
@@ -151,7 +151,7 @@ exports[`<ZoomPanContainer /> applies correct zoom factor when pinched 1`] = `
           </div>
         </div>
       </div>
-    </Component>
+    </Hammer>
   </div>
 </ZoomPanContainer>
 `;
@@ -168,7 +168,7 @@ exports[`<ZoomPanContainer /> applies the correct zoom when double tapped 1`] = 
   <div
     className="css-70kdmd"
   >
-    <Component
+    <Hammer
       direction="DIRECTION_ALL"
       onDoubleTap={[Function]}
       onPan={[Function]}
@@ -229,7 +229,7 @@ exports[`<ZoomPanContainer /> applies the correct zoom when double tapped 1`] = 
           </div>
         </div>
       </div>
-    </Component>
+    </Hammer>
   </div>
 </ZoomPanContainer>
 `;
@@ -238,7 +238,7 @@ exports[`<ZoomPanContainer /> renders the correct initial zoom when minZoom < 1 
 <div
   className="css-70kdmd"
 >
-  <Component
+  <Hammer
     direction="DIRECTION_ALL"
     onDoubleTap={[Function]}
     onPan={[Function]}
@@ -268,7 +268,7 @@ exports[`<ZoomPanContainer /> renders the correct initial zoom when minZoom < 1 
         </div>
       </div>
     </div>
-  </Component>
+  </Hammer>
 </div>
 `;
 
@@ -276,7 +276,7 @@ exports[`<ZoomPanContainer /> renders the correct initial zoom when minZoom > 1 
 <div
   className="css-70kdmd"
 >
-  <Component
+  <Hammer
     direction="DIRECTION_ALL"
     onDoubleTap={[Function]}
     onPan={[Function]}
@@ -306,7 +306,7 @@ exports[`<ZoomPanContainer /> renders the correct initial zoom when minZoom > 1 
         </div>
       </div>
     </div>
-  </Component>
+  </Hammer>
 </div>
 `;
 
@@ -322,7 +322,7 @@ exports[`<ZoomPanContainer /> renders with children 1`] = `
   <div
     className="css-70kdmd"
   >
-    <Component
+    <Hammer
       direction="DIRECTION_ALL"
       onDoubleTap={[Function]}
       onPan={[Function]}
@@ -511,7 +511,7 @@ exports[`<ZoomPanContainer /> renders with children 1`] = `
           </div>
         </div>
       </div>
-    </Component>
+    </Hammer>
   </div>
 </ZoomPanContainer>
 `;
@@ -528,7 +528,7 @@ exports[`<ZoomPanContainer /> triggers the zoom event 1`] = `
   <div
     className="css-70kdmd"
   >
-    <Component
+    <Hammer
       direction="DIRECTION_ALL"
       onDoubleTap={[Function]}
       onPan={[Function]}
@@ -589,7 +589,7 @@ exports[`<ZoomPanContainer /> triggers the zoom event 1`] = `
           </div>
         </div>
       </div>
-    </Component>
+    </Hammer>
   </div>
 </ZoomPanContainer>
 `;

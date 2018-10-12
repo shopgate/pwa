@@ -6,7 +6,7 @@ import {
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import Hammer from '@shopgate/react-hammerjs';
+import Hammer from 'react-hammerjs';
 import ProductImage from 'Components/ProductImage';
 import BaseImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import connect from './connector';

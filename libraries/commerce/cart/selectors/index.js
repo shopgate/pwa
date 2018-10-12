@@ -47,6 +47,18 @@ export const getCartItems = createSelector(
 );
 
 /**
+ * Selects the cartItem of the given Id.
+ * @param {Object} state The current state.
+ * @param {string} params.cartItemId Id of the cartItem.
+ * @return {Array} The cart items.
+ */
+export const getCartItemById = createSelector(
+  (state, { cartItemId }) => cartItemId,
+  getCartItems,
+  (cartItemId, cartItems) => cartItems.find(({ id }) => id === cartItemId)
+);
+
+/**
  * Selects the products from the cart.
  * @param {Object} state The current state.
  * @return {Array} The cart products.

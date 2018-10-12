@@ -12,6 +12,7 @@ import {
   ITEM_GALLERY_PATTERN,
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCT_CACHED,
+  RECEIVE_PRODUCT_RELATIONS,
 } from '../constants';
 
 export const productWillEnter$ = routeWillEnter$
@@ -72,3 +73,6 @@ export const variantDidChange$ = variantWillUpdate$
 
       return Observable.of(data);
     }));
+
+export const productRelationsReceived$ =
+  main$.filter(({ action }) => action.type === RECEIVE_PRODUCT_RELATIONS);

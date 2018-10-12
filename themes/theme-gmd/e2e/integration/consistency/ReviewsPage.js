@@ -11,6 +11,7 @@ describe('AndroidGMDTest reviews page', () => {
       .first()
       .click();
     cy.get(els.productWithManyProps4GridViewName)
+      .scrollIntoView()
       .should('be.visible')
       .click();
     cy.get(els.writeReviewButton)
