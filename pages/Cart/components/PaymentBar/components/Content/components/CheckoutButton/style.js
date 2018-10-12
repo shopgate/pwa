@@ -14,13 +14,7 @@ const disabledButton = css({
   color: `${colors.shade4}!important`,
 }).toString();
 
-const link = css({
-  display: 'block',
-  textAlign: 'center',
-}).toString();
-
 export default {
   button,
   disabledButton,
-  link,
 };

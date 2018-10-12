@@ -9,7 +9,7 @@ const disabled = css({
 
 const selected = css({
   background: colors.shade7,
-  boxShadow: `0 -1px 0 0 ${colors.shade7}, 0 1px 0 0 ${colors.shade7}`,
+  boxShadow: `-16px 0 0 0 ${colors.shade7} !important`,
 }).toString();
 
 const title = css({
@@ -23,7 +23,7 @@ const title = css({
 
 const grid = css({
   alignItems: 'center',
-  minHeight: 50,
+  minHeight: variables.navigator.height,
   padding: `${variables.gap.small}px 0`,
   position: 'relative',
   zIndex: 2,
@@ -32,7 +32,7 @@ const grid = css({
 const image = css({
   alignSelf: 'flex-start',
   flexShrink: 0,
-  margin: `0 ${variables.gap.big}px 0 -${IMAGE_SPACE}px`,
+  margin: `0 ${variables.gap.big}px 0 ${-IMAGE_SPACE + variables.gap.big}px`,
   width: 40,
 }).toString();
 
@@ -43,4 +43,3 @@ export default {
   grid,
   image,
 };
-

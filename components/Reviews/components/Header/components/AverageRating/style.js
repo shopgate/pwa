@@ -1,10 +1,11 @@
 import { css } from 'glamor';
 
 const container = css({
-  display: 'flex',
-  justifyContent: 'space-between',
-  flexDirection: 'column',
   alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  marginBottom: 8,
 }).toString();
 
 export { container };

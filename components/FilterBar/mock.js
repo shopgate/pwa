@@ -4,7 +4,7 @@ import {
   FILTER_TYPE_SINGLE_SELECT,
   FILTER_TYPE_MULTISELECT,
 } from '@shopgate/pwa-common-commerce/filter/constants';
-import { GRID_VIEW } from '../../pages/Category/constants';
+import { themeConfig as mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 
 const mockedStoreDefault = {
   filter: {
@@ -12,11 +12,6 @@ const mockedStoreDefault = {
     availableFilters: {},
     activeHash: null,
     temporaryFilters: {},
-  },
-  ui: {
-    categoryPage: {
-      viewMode: GRID_VIEW,
-    },
   },
   history: {
     queryParams: {
@@ -69,4 +64,16 @@ export function getDefaultStore() {
  */
 export function getStoreWithSelectedFilters() {
   return configureStore([thunk])(mockedStoreAllSelected);
+}
+
+/**
+ * Mock app config
+ */
+export function mockAppConfig() {
+  jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+    default: {
+      currency: 'USD',
+    },
+    themeConfig: mockThemeConfig,
+  }));
 }

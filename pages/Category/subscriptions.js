@@ -1,23 +1,36 @@
-import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
-import { getCurrentCategoryId } from '@shopgate/pwa-common-commerce/category/selectors';
-import {
-  categoryRouteDidEnter$,
-  categoryError$,
-} from '@shopgate/pwa-common-commerce/category/streams';
+import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
+import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
+import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
+import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
+import {
+  categoryWillEnter$,
+  categoryDidEnter$,
+  categoryFiltersDidUpdate$,
+} from './streams';
 
 /**
- * Filter subscriptions.
+ * Category subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function category(subscribe) {
-  /**
-   * Gets triggered on entering the filter route.
-   */
-  subscribe(categoryRouteDidEnter$, ({ dispatch, getState }) => {
-    const state = getState();
-    dispatch(getCategory(getCurrentCategoryId(state)));
+  subscribe(categoryWillEnter$, ({ dispatch, action }) => {
+    const filters = getActiveFilters();
+    const categoryId = hex2bin(action.route.params.categoryId);
+
+    dispatch(fetchCategory(categoryId));
+    dispatch(fetchCategoryProducts({
+      categoryId, filters,
+    }));
+  });
+
+  subscribe(categoryDidEnter$, ({ dispatch }) => {
+    dispatch(getFilters());
   });
 
   /**
@@ -27,7 +40,7 @@ export default function category(subscribe) {
     const { errorCode } = action;
     let message = 'modal.body_error';
 
-    if (errorCode === 'ENOTFOUND') {
+    if (errorCode === ENOTFOUND) {
       message = 'category.error.not_found';
     }
 
@@ -37,6 +50,16 @@ export default function category(subscribe) {
       message,
       title: 'category.error.title',
     }));
-    dispatch(goBackHistory(1));
+    dispatch(historyPop());
+  });
+
+  subscribe(categoryFiltersDidUpdate$, ({ action, dispatch }) => {
+    const { params } = getCurrentRoute();
+    const categoryId = hex2bin(params.categoryId);
+    const { filters } = action;
+
+    dispatch(fetchCategoryProducts({
+      categoryId, filters,
+    }));
   });
 }

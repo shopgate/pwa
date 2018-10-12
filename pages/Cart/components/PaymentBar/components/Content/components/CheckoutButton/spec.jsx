@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import CheckoutButton from './index';
 
 // Mock the history connector
@@ -15,7 +15,7 @@ jest.mock('./connector', () => (obj) => {
   return newObj;
 });
 
-describe('<CheckoutButton /', () => {
+describe('<CheckoutButton />', () => {
   jest.useFakeTimers();
 
   let wrapper;

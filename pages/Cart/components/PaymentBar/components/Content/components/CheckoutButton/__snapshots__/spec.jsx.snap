@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckoutButton / Checkout is possible should render without any props 1`] = `
-<Link
-  className=""
+exports[`<CheckoutButton /> Checkout is possible should render without any props 1`] = `
+<Connect(Link)
   disabled={true}
   href="/checkout"
 >
@@ -18,10 +17,10 @@ exports[`<CheckoutButton / Checkout is possible should render without any props 
     wrapContent={true}
   >
     <Translate
-      className="css-1a2hjg9"
+      className=""
       params={Object {}}
       string="cart.checkout"
     />
   </RippleButton>
-</Link>
+</Connect(Link)>
 `;

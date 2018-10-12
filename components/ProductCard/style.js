@@ -1,10 +1,6 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-/* Styles here are very fragile. There is mix of 3d and non-3d layers, border-radius, shadows, etc.
- * If you for example apply translate3d to `container` it will break the border-radius
- * inheritance at image and glow pseudo-element . */
-
 const container = css({
   position: 'relative',
   display: 'block',

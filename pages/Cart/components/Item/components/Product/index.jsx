@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
+import variables from 'Styles/variables';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import {
@@ -15,6 +16,7 @@ import {
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
+import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../../../constants';
 
 const messageStyles = {
   container: styles.messagesContainer,
@@ -32,20 +34,22 @@ class Product extends Component {
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
     deleteProduct: PropTypes.func,
+    isIos: PropTypes.bool,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
-  };
-
-  static defaultProps = {
-    deleteProduct: () => {},
-    onToggleFocus: () => {},
-    updateProduct: () => {},
   };
 
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
     product: PropTypes.shape(),
+  };
+
+  static defaultProps = {
+    isIos: false,
+    deleteProduct: () => {},
+    onToggleFocus: () => {},
+    updateProduct: () => {},
   };
 
   /**
@@ -86,6 +90,26 @@ class Product extends Component {
    * @param {boolean} [isEnabled=true] Tells if the edit mode is enabled, or disabled.
    */
   toggleEditMode = (isEnabled = true) => {
+    if (!this.props.isIos && isEnabled) {
+      /**
+       * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
+       * Therefore the input has to be scrolled into the viewport again. Since between the focus and
+       * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       *
+       * This should not happen on iOS devices, since their webviews behave different.
+       */
+      setTimeout(() => {
+        const yOffset = -(window.innerHeight / 2)
+          + getAbsoluteHeight(this.cardElement)
+          + variables.paymentBar.height;
+
+        this.cardElement.scrollIntoView({
+          behavior: 'smooth',
+          yOffset,
+        });
+      }, CART_INPUT_AUTO_SCROLL_DELAY);
+    }
+
     this.props.onToggleFocus(isEnabled);
 
     this.setState({

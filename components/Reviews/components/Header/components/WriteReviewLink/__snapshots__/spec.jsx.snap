@@ -1,27 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<WriteReviewLink> should not render when current product is empty 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(WriteReviewLink)>
-    <WriteReviewLink
-      dispatch={[Function]}
-      productId={null}
-    />
-  </Connect(WriteReviewLink)>
-</Provider>
-`;
-
 exports[`<WriteReviewLink> should render when current product is set 1`] = `
 <Provider
   store={
@@ -35,16 +13,19 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
     }
   }
 >
-  <Connect(WriteReviewLink)>
-    <WriteReviewLink
-      dispatch={[Function]}
-      productId="foo"
+  <WriteReviewLink
+    productId="foo"
+  >
+    <div
+      data-test-id="writeReview"
     >
-      <div
-        data-test-id="writeReview"
+      <Connect(ButtonLink)
+        href="/item/666f6f/write_review"
+        noGap={true}
       >
         <ButtonLink
           href="/item/666f6f/write_review"
+          navigate={[Function]}
           noGap={true}
         >
           <ActionButton
@@ -101,6 +82,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                         color="#000"
                         disabled={false}
                         fill={true}
+                        onClick={[Function]}
                         onComplete={[Function]}
                         overflow={false}
                         size={null}
@@ -132,8 +114,8 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
             </div>
           </ActionButton>
         </ButtonLink>
-      </div>
-    </WriteReviewLink>
-  </Connect(WriteReviewLink)>
+      </Connect(ButtonLink)>
+    </div>
+  </WriteReviewLink>
 </Provider>
 `;

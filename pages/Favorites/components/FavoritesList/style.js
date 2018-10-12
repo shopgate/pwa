@@ -3,10 +3,10 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  background: colors.light,
+  background: colors.background,
+  flexGrow: 1,
   paddingTop: variables.gap.xsmall,
-  paddingBottom: variables.gap.xsmall,
-  marginBottom: variables.gap.xxbig, // Place for snackbar.
+  paddingBottom: variables.gap.xxbig,
 }).toString();
 
 export default {

@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
 
 /**
- * The Products component
- * This components optimizes the switching between grid and list view by rendering both
- * all the time and then only switching the inline style directly in the real DOM.
+ * The Category products component.
  */
-class Products extends Component {
+class CategoryProducts extends PureComponent {
   static propTypes = {
+    categoryId: PropTypes.string,
     getProducts: PropTypes.func,
     hash: PropTypes.string,
     products: PropTypes.arrayOf(PropTypes.shape()),
@@ -17,24 +16,24 @@ class Products extends Component {
   };
 
   static defaultProps = {
-    getProducts: () => {},
-    products: null,
+    categoryId: null,
+    getProducts() {},
     hash: null,
+    products: null,
     totalProductCount: null,
   };
 
+  fetchProducts = () => {
+    this.props.getProducts(this.props.categoryId, this.props.products.length);
+  }
+
   /**
-   * Renders the Products component.
    * @returns {JSX}
    */
   render() {
-    if (!this.props.products) {
-      return null;
-    }
-
     return (
       <ProductGrid
-        handleGetProducts={this.props.getProducts}
+        handleGetProducts={this.fetchProducts}
         products={this.props.products}
         totalProductCount={this.props.totalProductCount}
         requestHash={this.props.hash}
@@ -43,4 +42,4 @@ class Products extends Component {
   }
 }
 
-export default connect(Products);
+export default connect(CategoryProducts);

@@ -2,7 +2,6 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const container = css({
-  backgroundColor: colors.shade8,
   fontSize: 14,
   padding: '13px 16px 16px',
   userSelect: 'all',

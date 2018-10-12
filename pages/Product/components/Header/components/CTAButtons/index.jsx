@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import { PRODUCT_CTAS, PRODUCT_CTAS_AFTER, PRODUCT_CTAS_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import CartButton from './components/CartButton';
 import styles from './style';
 import connect from './connector';
 
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).
- *
  * @param {Object} props Props.
  * @returns {JSX}
- * @constructor
  */
-const CTAButtons = props => (
-  <div className={styles.buttons}>
-    <FavoritesButton
-      active={props.isFavorite}
-      productId={props.productId}
-      className={styles.favButton}
-      rippleClassName={styles.ripple}
-      noShadow
-    />
-  </div>
+const CTAButtons = ({ isFavorite, productId }) => (
+  <Fragment>
+    <Portal name={PRODUCT_CTAS_BEFORE} />
+    <Portal name={PRODUCT_CTAS}>
+      <div className={styles.buttons} >
+        <FavoritesButton
+          className={styles.favButton}
+          rippleClassName={styles.ripple}
+          active={isFavorite}
+          productId={productId}
+        />
+        <CartButton />
+      </div>
+    </Portal>
+    <Portal name={PRODUCT_CTAS_AFTER} />
+  </Fragment>
 );
 
 CTAButtons.propTypes = {
@@ -32,4 +40,4 @@ CTAButtons.defaultProps = {
   productId: null,
 };
 
-export default connect(CTAButtons);
+export default connect(pure(CTAButtons));
