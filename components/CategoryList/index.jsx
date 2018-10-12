@@ -42,6 +42,7 @@ const CategoryList = ({ categories, prerender }) => {
               categoryId: category.id,
               title: category.name,
             }}
+            testId={category.name}
           />
         </Portal>
       ))}

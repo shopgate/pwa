@@ -19,7 +19,7 @@ const Iterator = (props) => {
   const { id, display } = props;
 
   return (
-    <Grid.Item key={id} className={styles.item}>
+    <Grid.Item key={id} className={styles.item} data-test-id={props.name}>
       <Portal name={PRODUCT_ITEM_BEFORE} props={portalProps} />
       <Portal name={PRODUCT_ITEM} props={portalProps}>
         <Item product={props} display={display} />
@@ -32,10 +32,12 @@ const Iterator = (props) => {
 Iterator.propTypes = {
   id: PropTypes.string.isRequired,
   display: PropTypes.shape(),
+  name: PropTypes.string,
 };
 
 Iterator.defaultProps = {
   display: null,
+  name: null,
 };
 
 export default Iterator;

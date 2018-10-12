@@ -53,6 +53,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     <List
       className={null}
       hasImages={false}
+      testId={null}
     >
       <List
         className={null}
@@ -67,9 +68,11 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           >
             <li
               className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+              data-test-id="listItem"
             >
               <div
                 className="css-1ckzvk7"
+                data-test-id={null}
               >
                 <Item
                   className={null}
@@ -81,7 +84,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   linkState={null}
                   onClick={null}
                   rightComponent={null}
-                  testId={null}
+                  testId="Headline"
                   title="Headline"
                 >
                   <Glow
@@ -124,9 +127,11 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           >
             <li
               className="css-1p5q8vq css-1nftllw css-16gj3o1"
+              data-test-id="listItem"
             >
               <div
                 className="css-1ckzvk7"
+                data-test-id={null}
               >
                 <Item
                   className={null}
@@ -138,7 +143,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   linkState={null}
                   onClick={null}
                   rightComponent={null}
-                  testId={null}
+                  testId="Headline"
                   title="Headline"
                 >
                   <Glow

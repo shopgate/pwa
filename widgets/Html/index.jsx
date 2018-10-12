@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import variables from 'Styles/variables';
 import parseHTML from '@shopgate/pwa-common/helpers/html/parseHTML';
-import { handleYouTube } from '@shopgate/pwa-common/helpers/html/handleDOM';
+import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import styles from './style';
 import connect from './connector';
 
@@ -51,7 +51,7 @@ class Html extends Component {
    */
   componentDidMount() {
     this.htmlContainer.addEventListener('click', this.handleTap, true);
-    handleYouTube(this.htmlContainer);
+    embeddedMedia.add(this.htmlContainer);
   }
 
   /**
@@ -80,7 +80,7 @@ class Html extends Component {
    * Updates youtube iframes within the HTML widget.
    */
   componentDidUpdate() {
-    handleYouTube(this.htmlContainer);
+    embeddedMedia.add(this.htmlContainer);
   }
 
   /**
@@ -88,6 +88,7 @@ class Html extends Component {
    */
   componentWillUnmount() {
     this.htmlContainer.removeEventListener('click', this.handleTap, true);
+    embeddedMedia.remove(this.htmlContainer);
   }
 
   /**

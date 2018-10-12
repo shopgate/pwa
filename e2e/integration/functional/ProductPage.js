@@ -49,12 +49,14 @@ describe('functional test product page', () => {
       .click();
     cy.get(els.blackColorVariant)
       .should('be.visible')
+      .last()
       .click();
     cy.get(els.variantPickerShoeSize)
       .should('be.visible')
       .click();
     cy.get(els.size5ShoeSizeVariant)
       .should('be.visible')
+      .last()
       .click();
     cy.wait(1000);
     cy.get('[data-test-id="Color"] div')

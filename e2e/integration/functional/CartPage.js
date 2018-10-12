@@ -2,6 +2,7 @@
 /// <reference types="Cypress" />
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
+import { checkForWrongCoupon } from '../../helper/coupon';
 
 describe('functional tests cart page', () => {
   /**
@@ -32,10 +33,7 @@ describe('functional tests cart page', () => {
   it('should check for wrong coupon', () => {
     cy.get(els.couponFieldInput)
       .type('wrongCoupon {enter}');
-    cy.get(els.basicDialogText)
-      .contains('Coupon code "wrongCoupon" is not valid.');
-    cy.get(els.basicDialogOkButton)
-      .click();
+    checkForWrongCoupon();
   });
 
   it('should check for right coupon', () => {
@@ -77,12 +75,14 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.blackColorVariant)
       .should('be.visible')
+      .last()
       .click();
     cy.get(els.variantPickerShoeSize)
       .should('be.visible')
       .click();
     cy.get(els.size5ShoeSizeVariant)
       .should('be.visible')
+      .last()
       .click()
       .wait(2000);
     cy.get(els.addToCartButton)
