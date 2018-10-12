@@ -38,9 +38,9 @@ import { CART_PATH, DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
 export default function cart(subscribe) {
   /**
    * Gets triggered when ever the local cart is out of
-   * sync with the remote cart from the server. It's debounced to reduce emitting.
+   * sync with the remote cart from the server.
    */
-  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$).debounceTime(0);
+  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
 
   /**
    * Gets triggered when the app is started or the cart route is entered.
@@ -58,7 +58,7 @@ export default function cart(subscribe) {
   const cartIdle$ = cartReceived$.merge(
     couponsUpdated$,
     productsUpdated$
-  ).debounceTime(100);
+  );
 
   /**
    * Gets triggered when the app will start.
