@@ -24,7 +24,7 @@ const storeKey = `shopgate-connect_${STATE_VERSION}`;
  */
 function getInitialState() {
   if (!window.localStorage) {
-    return {};
+    return undefined;
   }
 
   const storedState = window.localStorage.getItem(storeKey);
