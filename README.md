@@ -1,7 +1,7 @@
 # Shopgate Connect PWA
 
-[![Build Status](https://travis-ci.org/shopgate/pwa.svg?branch=develop)](https://travis-ci.org/shopgate/pwa)
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=develop)](https://coveralls.io/github/shopgate/pwa?branch=develop)
+[![Build Status](https://travis-ci.org/shopgate/pwa.svg?branch=PWA-327-Exchange-Router)](https://travis-ci.org/shopgate/pwa)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=PWA-327-Exchange-Router)](https://coveralls.io/github/shopgate/pwa?branch=PWA-327-Exchange-Router)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -9,6 +9,7 @@
 ## Setting up new core extensions
 
 To set up a new core extension you need to perform the following steps:
+
 * Add an exception into the `.gitignore` file as it was done with `@shopgate-product-reviews`.
 * Open the file `repos.json` and add the repository to include there as a subtree.
 * Add the new extensions into the `Makefile` as an additional value for the `EXTENSIONS` variable.
