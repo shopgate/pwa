@@ -9,7 +9,7 @@ import {
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
 import { AppBar } from '@shopgate/pwa-ui-material';
-import { DefaultBar } from 'Components/AppBar/presets';
+import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import Logo from 'Components/Logo';
 import widgets from 'Extensions/widgets';
 import styles from './style';
@@ -22,9 +22,10 @@ import connect from './connector';
  */
 function PageContent({ configs, pageId }) {
   const center = (pageId === PAGE_ID_INDEX) ? <Logo /> : <AppBar.Title title={configs.title} />;
+  const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
   return (
     <Fragment>
-      <DefaultBar center={center} />
+      <Bar center={center} />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
         <div className={styles.widgetWrapper}>

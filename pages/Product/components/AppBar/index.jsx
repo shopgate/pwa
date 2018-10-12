@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DefaultBar } from 'Components/AppBar/presets';
+import { BackBar } from 'Components/AppBar/presets';
 import connect from './connector';
 
 /**
@@ -9,7 +9,7 @@ import connect from './connector';
  */
 function ProductAppBar({ title }) {
   return (
-    <DefaultBar title={title} />
+    <BackBar title={title} />
   );
 }
 
