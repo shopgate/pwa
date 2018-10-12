@@ -18,6 +18,7 @@ exports[`<List /> should not render invalid children 1`] = `
       >
         <li
           className="css-1p5q8vq css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-15cnm0c"
@@ -99,6 +100,7 @@ exports[`<List /> should render a child and add styles for list items with image
       >
         <li
           className="css-1p5q8vq css-arcouo css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-15cnm0c"
@@ -173,6 +175,7 @@ exports[`<List /> should render with two children 1`] = `
       >
         <li
           className="css-1p5q8vq css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-15cnm0c"
@@ -231,6 +234,7 @@ exports[`<List /> should render with two children 1`] = `
       >
         <li
           className="css-1p5q8vq css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-15cnm0c"
