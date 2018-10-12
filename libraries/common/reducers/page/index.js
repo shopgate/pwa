@@ -1,6 +1,7 @@
 import {
   REQUEST_PAGE_CONFIG,
   RECEIVE_PAGE_CONFIG,
+  ERROR_PAGE_CONFIG,
 } from '../../constants/ActionTypes';
 
 /**
@@ -39,6 +40,16 @@ export default function pageReducer(state = {}, action) {
           widgets: enrichWidgets(action),
           isFetching: false,
           expires: Date.now(),
+        },
+      };
+    }
+    case ERROR_PAGE_CONFIG: {
+      return {
+        ...state,
+        [action.pageId]: {
+          ...state[action.pageId],
+          isFetching: false,
+          expires: 0,
         },
       };
     }

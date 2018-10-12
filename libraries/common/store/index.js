@@ -28,6 +28,11 @@ function getInitialState() {
   }
 
   const storedState = window.localStorage.getItem(storeKey);
+
+  if (!storedState) {
+    return undefined;
+  }
+
   const normalisedState = storedState.replace(new RegExp('"isFetching":true', 'g'), '"isFetching":false');
   return JSON.parse(normalisedState);
 }
