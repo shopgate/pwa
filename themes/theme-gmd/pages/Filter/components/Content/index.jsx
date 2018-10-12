@@ -15,6 +15,7 @@ import Selector from './components/Selector';
 import ApplyButton from './components/ApplyButton';
 import ResetButton from './components/ResetButton';
 import buildInitialFilters from './helpers/buildInitialFilters';
+import buildUpdatedFilters from './helpers/buildUpdatedFilters';
 import connect from './connector';
 
 /**
@@ -158,27 +159,10 @@ class FilterContent extends PureComponent {
   save = () => {
     const { currentFilters, filters } = this.state;
 
-    // Create a set of active filters by combining state and currentFilters.
-    const activeFilters = {
-      ...currentFilters,
-      ...filters,
-    };
-
-    const newFilters = Object.keys(activeFilters).reduce((result, filterId) => {
-      const filter = activeFilters[filterId];
-
-      if (filter.value.length) {
-        // Only add filters with selected values.
-        return {
-          ...(result === null ? {} : result),
-          [filterId]: filter,
-        };
-      }
-
-      return result;
-    }, null);
-
-    conductor.update(this.props.parentId, { filters: newFilters });
+    conductor.update(
+      this.props.parentId,
+      { filters: buildUpdatedFilters(currentFilters, filters) }
+    );
     setTimeout(conductor.pop, 250);
   }
 

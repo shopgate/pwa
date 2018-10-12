@@ -6,3 +6,7 @@ coverage
 /trustedPipelines/
 /themes/theme-ios11/
 /themes/*/extensions/
+/extensions/*
+!/extensions/@shopgate-product-reviews
+!/extensions/@shopgate-tracking-native
+!/extensions/@shopgate-user-privay
