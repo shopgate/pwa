@@ -14,16 +14,6 @@
     "e2e": "cypress open -P ./e2e",
     "e2e:checkout": "cypress open -P ./e2e/extensions/checkout"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "linters": {
-      "*.{js,jsx}": "yarn run lint"
-    }
-  },
   "dependencies": {
     "@shopgate/pwa-common": "6.0.0-beta.13",
     "@shopgate/pwa-common-commerce": "6.0.0-beta.13",
