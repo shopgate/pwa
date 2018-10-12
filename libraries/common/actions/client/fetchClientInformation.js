@@ -13,19 +13,20 @@ import {
  */
 function fetchClientInformation() {
   return (dispatch) => {
-    dispatch(actions.requestClientInformation());
+    dispatch(requestClientInformation());
 
-  if (!hasSGJavaScriptBridge()) {
-    dispatch(receiveClientInformation(defaultClientInformation));
-    return;
-  }
+    if (!hasSGJavaScriptBridge()) {
+      dispatch(receiveClientInformation(defaultClientInformation));
+      return;
+    }
 
-  getWebStorageEntry({ name: 'clientInformation' })
-    .then(response => dispatch(receiveClientInformation(response.value)))
-    .catch((error) => {
-      logger.error(error);
-      dispatch(errorClientInformation());
-    });
-};
+    getWebStorageEntry({ name: 'clientInformation' })
+      .then(response => dispatch(receiveClientInformation(response.value)))
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorClientInformation());
+      });
+  };
+}
 
 export default fetchClientInformation;
