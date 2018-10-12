@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import styles from './style';
@@ -14,10 +13,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const ProductPrice = ({ currency, defaultPrice, specialPrice }, context) => (
-  <Grid.Item
-    component="div"
-    shrink={0}
-  >
+  <Fragment>
     {!!specialPrice && (
       <Fragment>
         <Portal name={portals.CART_ITEM_PRICE_STRIKED_BEFORE} props={context} />
@@ -42,7 +38,7 @@ const ProductPrice = ({ currency, defaultPrice, specialPrice }, context) => (
       />
     </Portal>
     <Portal name={portals.CART_ITEM_PRICE_AFTER} props={context} />
-  </Grid.Item>
+  </Fragment>
 );
 
 ProductPrice.propTypes = {

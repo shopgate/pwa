@@ -1,22 +1,19 @@
+import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
-import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 
 /**
- * Call the correct action to retrieve products based on which route we are currently on.
- * @param {number} offset The result offset for the pipeline.
+ * @param {string} categoryId The category id to requests products for.
+ * @param {number} offset The offset for the products to request.
  * @return {Function} A redux thunk.
  */
-const getProducts = (offset = 0) => (dispatch, getState) => {
-  const pathname = getHistoryPathname(getState());
+const getProducts = (categoryId, offset) => (dispatch, getState) => {
+  const filters = getActiveFilters(getState());
 
-  if (pathname.startsWith(CATEGORY_PATH)) {
-    dispatch(fetchCategoryProducts(offset));
-  } else if (pathname.startsWith(SEARCH_PATH)) {
-    dispatch(getSearchResults(offset));
-  }
+  dispatch(fetchCategoryProducts({
+    categoryId,
+    offset,
+    filters,
+  }));
 };
 
 export default getProducts;

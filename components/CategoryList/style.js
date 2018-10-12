@@ -1,5 +1,6 @@
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 
 export default css({
-  marginBottom: 20,
-}).toString();
+  background: colors.light,
+});

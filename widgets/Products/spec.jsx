@@ -2,9 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ProductGrid from 'Components/ProductGrid';
 import ProductList from 'Components/ProductList';
-import { Unwrapped as ProductsWidget } from './index';
+import { UnwrappedProductsWidget as ProductsWidget } from './index';
 
-describe.skip('<ProductsWidget />', () => {
+describe('<ProductsWidget />', () => {
+  const getProducts = jest.fn();
   const props = {
     id: 'someid',
     products: [],
@@ -16,7 +17,12 @@ describe.skip('<ProductsWidget />', () => {
       queryParams: 'Blue',
       queryType: 2,
     },
+    getProducts,
   };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('should render the grid only when products are received', () => {
     const wrapper = shallow(<ProductsWidget {...props} />);
@@ -31,6 +37,16 @@ describe.skip('<ProductsWidget />', () => {
     });
 
     expect(wrapper.find(ProductGrid).length).toBe(1);
+    expect(getProducts).toHaveBeenCalledTimes(1);
+    expect(getProducts).toHaveBeenCalledWith(
+      props.settings.queryType,
+      props.settings.queryParams,
+      {
+        limit: props.settings.productLimit,
+        offset: 0,
+      },
+      props.id
+    );
   });
 
   it('should render the products in the list view', () => {
@@ -48,5 +64,15 @@ describe.skip('<ProductsWidget />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(ProductList).length).toBe(1);
+    expect(getProducts).toHaveBeenCalledTimes(1);
+    expect(getProducts).toHaveBeenCalledWith(
+      props.settings.queryType,
+      props.settings.queryParams,
+      {
+        limit: props.settings.productLimit,
+        offset: 0,
+      },
+      props.id
+    );
   });
 });

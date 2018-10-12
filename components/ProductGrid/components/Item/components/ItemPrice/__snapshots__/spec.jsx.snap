@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemPrice /> should not render with display props set 1`] = `""`;
+
+exports[`<ItemPrice /> should render with minimal props 1`] = `
+<Fragment>
+  <Portal
+    name="product-item.price.before"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+  <Portal
+    name="product-item.price"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  >
+    <ProductGridPrice
+      price={Object {}}
+    />
+  </Portal>
+  <Portal
+    name="product-item.price.after"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+</Fragment>
+`;

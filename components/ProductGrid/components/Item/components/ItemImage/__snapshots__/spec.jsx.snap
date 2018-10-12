@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemImage /> should render 1`] = `
+<Fragment>
+  <Portal
+    name="product-item.image.before"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+  <Portal
+    name="product-item.image"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  >
+    <ProductImage
+      alt="FooBar"
+      animating={true}
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      itemProp="image"
+      ratio={null}
+      resolutions={
+        Array [
+          Object {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          Object {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://www.google.com"
+    />
+  </Portal>
+  <Portal
+    name="product-item.image.after"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+</Fragment>
+`;

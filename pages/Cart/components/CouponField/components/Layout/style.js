@@ -5,7 +5,6 @@ import variables from 'Styles/variables';
 const wrapper = css({
   background: colors.light,
   padding: variables.gap.big,
-  paddingTop: variables.gap.bigger,
 }).toString();
 
 const container = css({
@@ -18,7 +17,7 @@ const container = css({
 const label = css({
   position: 'absolute',
   pointerEvents: 'none',
-  bottom: 6,
+  bottom: 2,
   color: colors.shade4,
 }).toString();
 
@@ -46,7 +45,7 @@ const icon = css({
 const underlineWrapper = css({
   position: 'absolute',
   width: '100%',
-  borderBottom: `1px solid ${colors.shade3}`,
+  borderBottom: `1px solid ${colors.shade5}`,
   top: 24,
 }).toString();
 

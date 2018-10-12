@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter: <Selector /> should render with minimum props 1`] = `
+<FilterContentItem>
+  <Accordion
+    renderLabel={[Function]}
+    testId="foo"
+  >
+    <div
+      className={
+        Object {
+          "data-css-bb7tjd": "",
+        }
+      }
+    >
+      <ValueButton
+        id="foo"
+        isActive={false}
+        key="foo"
+        label="fooLabel"
+        onClick={[Function]}
+      />
+      <ValueButton
+        id="bar"
+        isActive={false}
+        key="bar"
+        label="barLabel"
+        onClick={[Function]}
+      />
+    </div>
+  </Accordion>
+</FilterContentItem>
+`;

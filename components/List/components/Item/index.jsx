@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
 import styles from './style';
 
@@ -17,6 +16,7 @@ class Item extends Component {
     isDisabled: PropTypes.bool,
     isSelected: PropTypes.bool,
     link: PropTypes.string,
+    linkState: PropTypes.shape(),
     onClick: PropTypes.func,
     rightComponent: PropTypes.element,
     testId: PropTypes.string,
@@ -28,6 +28,7 @@ class Item extends Component {
     isDisabled: false,
     isSelected: false,
     link: null,
+    linkState: null,
     onClick: null,
     rightComponent: null,
     testId: null,
@@ -50,7 +51,9 @@ class Item extends Component {
    * @returns {JSX}
    */
   renderContent() {
-    const { isDisabled, isSelected, title } = this.props;
+    const {
+      isDisabled, isSelected, title, image, rightComponent,
+    } = this.props;
 
     let gridStyles = styles.grid;
     let titleStyles = styles.title;
@@ -64,49 +67,47 @@ class Item extends Component {
     }
 
     return (
-      <Grid className={gridStyles} component="div">
-        {this.props.image && (
-          <div className={styles.image}>
-            {this.props.image}
-          </div>
-        )}
-        <Grid.Item
-          className={titleStyles}
-          component="div"
-          grow={1}
-        >
-          <I18n.Text string={title} />
-        </Grid.Item>
-        {this.props.rightComponent &&
-          <Grid.Item component="div" grow={1}>
-            {this.props.rightComponent}
+      <div data-test-id={this.props.testId}>
+        <Grid className={gridStyles} component="div">
+          {(image !== null) && (
+            <div className={styles.image}>
+              {image}
+            </div>
+          )}
+          <Grid.Item className={titleStyles} component="div" grow={1}>
+            {title}
           </Grid.Item>
-        }
-      </Grid>
+          {(rightComponent !== null) && (
+            <Grid.Item component="div" grow={1}>
+              {rightComponent}
+            </Grid.Item>
+          )}
+        </Grid>
+      </div>
     );
   }
 
   /**
-   * Renders the component.
    * @returns {JSX}
    */
   render() {
+    const {
+      link, linkState, onClick, className, isDisabled, testId,
+    } = this.props;
+
     /**
      * If this item is disabled, selected or doesn't have a valid
      * link or click handler then wrap the content with other components.
      */
-    if (
-      this.props.isDisabled ||
-      (!this.props.link && !this.props.onClick)
-    ) {
+    if (isDisabled || (!link && !onClick)) {
       return this.renderContent();
     }
 
     // Wrap with a <Link> if the `link` prop is set.
-    if (this.props.link) {
+    if (link) {
       return (
-        <Glow className={this.props.className}>
-          <Link href={this.props.link} onClick={this.props.onClick}>
+        <Glow className={className}>
+          <Link href={link} onClick={onClick} state={linkState}>
             {this.renderContent()}
           </Link>
         </Glow>
@@ -114,8 +115,8 @@ class Item extends Component {
     }
 
     return (
-      <div aria-hidden onClick={this.props.onClick} data-test-id={this.props.testId}>
-        <Glow className={this.props.className}>
+      <div aria-hidden onClick={onClick} data-test-id={testId}>
+        <Glow className={className}>
           {this.renderContent()}
         </Glow>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import shouldUpdate from 'recompose/shouldUpdate';
+import Link from '@shopgate/pwa-common/components/Link';
 import styles from './style';
 
 /**
@@ -16,7 +17,7 @@ const ImageWidget = ({ settings }) => {
   // Wrap a Link around the Image if needed.
   if (settings.link) {
     return (
-      <Link href={settings.link} className={styles.link}>
+      <Link href={settings.link} className={styles.link} data-test-id="link">
         {content}
       </Link>
     );
@@ -33,4 +34,4 @@ ImageWidget.propTypes = {
   }).isRequired,
 };
 
-export default ImageWidget;
+export default shouldUpdate((prev, next) => (!prev.settings && next.settings))(ImageWidget);

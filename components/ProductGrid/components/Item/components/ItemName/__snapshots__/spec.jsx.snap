@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemName /> should not render with display props set 1`] = `""`;
+
+exports[`<ItemName /> should render with minimal props 1`] = `
+<Fragment>
+  <Portal
+    name="product-item.name.before"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+  <Portal
+    name="product-item.name"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  >
+    <div
+      data-test-id="Productname: Foo"
+    >
+      <Ellipsis
+        className=""
+        ellipsis="..."
+        rows={3}
+      >
+        Foo
+      </Ellipsis>
+    </div>
+  </Portal>
+  <Portal
+    name="product-item.name.after"
+    props={
+      Object {
+        "productId": "1234",
+      }
+    }
+  />
+</Fragment>
+`;

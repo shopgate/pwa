@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Picker from 'Components/Picker';
-import PriceDifference from './components/PriceDifference';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_OPTIONS,
+  PRODUCT_OPTIONS_AFTER,
+  PRODUCT_OPTIONS_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import Option from './components/Option';
 import connect from './connector';
-import styles from './style';
-
-const PICKER_CHANGE_DELAY = 300;
 
 /**
  * The Product Options component.
  */
-class Options extends Component {
+class Options extends PureComponent {
   static propTypes = {
-    setProductOption: PropTypes.func.isRequired,
+    storeSelection: PropTypes.func.isRequired,
     currentOptions: PropTypes.shape(),
     options: PropTypes.arrayOf(PropTypes.shape()),
   };
@@ -24,21 +25,14 @@ class Options extends Component {
   };
 
   /**
-   * Triggers setProductOptions when the component is mounted and has options set.
+   * Triggers storeSelections when the component is mounted and has options set.
    */
   componentDidMount() {
-    if (!this.props.setProductOption || !this.props.options) {
+    if (!this.props.storeSelection || !this.props.options) {
       return;
     }
 
-    this.props.options.forEach((option) => {
-      // Only options of type 'select' have a default value. Type 'text' has no default.
-      if (option.type !== 'select') {
-        return;
-      }
-
-      this.props.setProductOption(option.id, option.items[0].value);
-    });
+    this.handleStoreSelection(this.props);
   }
 
   /**
@@ -48,84 +42,58 @@ class Options extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (!this.props.options && nextProps.options) {
-      nextProps.options.forEach((option) => {
-        // Only options of type 'select' have a default value. Type 'text' has no default.
-        if (option.type !== 'select') {
-          return;
-        }
-
-        this.props.setProductOption(option.id, option.items[0].value);
-      });
+      this.handleStoreSelection(nextProps);
     }
   }
 
   /**
-   * Only update when options change.
-   * @param {Object} nextProps The incoming props.
-   * @returns {boolean}
+   * @param {Object} props The component props.
    */
-  shouldComponentUpdate(nextProps) {
-    return this.props.options !== nextProps.options ||
-      this.props.currentOptions !== nextProps.currentOptions;
-  }
+  handleStoreSelection = (props) => {
+    props.options.forEach((option) => {
+      // Only options of type 'select' have a default value. Type 'text' has no default.
+      if (option.type !== 'select') {
+        return;
+      }
 
-  /**
-   * Handles change callbacks from Picker components.
-   * @param {string} id The Picker Id
-   * @param {*} value The Picker value
-   */
-  handlePickerChange = (id, value) => {
-    setTimeout(
-      () => this.props.setProductOption(id, value),
-      PICKER_CHANGE_DELAY
-    );
-  };
+      this.props.storeSelection(option.id, option.items[0].value);
+    });
+  }
 
   /**
    * Renders the component
    * @returns {JSX}
    */
   render() {
-    const { options, currentOptions } = this.props;
-
-    if (options === null) {
-      return null;
-    }
+    const { options, currentOptions, storeSelection } = this.props;
 
     return (
-      <div data-test-id="optionsPicker">
-        {options.map(({
- id, type, label, items,
-}) => {
-          if (type !== 'select') {
-            return null;
-          }
-
-          return (
-            <div data-test-id={label}>
-              <Picker
-                key={id}
-                label={label}
-                items={items.map(item => ({
-                  ...item,
-                  rightComponent: (
-                    <PriceDifference
-                      className={styles.price}
-                      currency={item.currency}
-                      difference={item.price}
-                    />
-                  ),
-                }))}
-                placeholder={
-                  <I18n.Text string="product.pick_an_attribute" params={[label]} />
+      <Fragment>
+        <Portal name={PRODUCT_OPTIONS_BEFORE} />
+        <Portal name={PRODUCT_OPTIONS}>
+          {(options !== null) && (
+            <div data-test-id="optionsPicker">
+              {options.map((option) => {
+                if (option.type !== 'select') {
+                  return null;
                 }
-                value={currentOptions[id]}
-                onChange={value => this.handlePickerChange(id, value)}
-              />
+
+                return (
+                  <Option
+                    key={option.id}
+                    label={option.label}
+                    id={option.id}
+                    items={option.items}
+                    value={currentOptions[option.id]}
+                    onChange={storeSelection}
+                  />
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
+          )}
+        </Portal>
+        <Portal name={PRODUCT_OPTIONS_AFTER} />
+      </Fragment>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Picker from 'Components/Picker';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import Options from './index';
 
 // Mock the redux connect() method instead of providing a fake store.
@@ -33,15 +34,6 @@ jest.mock('./connector', () => (obj) => {
 });
 
 describe('<Options />', () => {
-  const mockRenderOptions = {
-    context: {
-      i18n: () => ({
-        __: () => '',
-        _p: () => '',
-      }),
-    },
-  };
-
   const mockOptions = [{
     id: 'test-id',
     type: 'select',
@@ -71,7 +63,7 @@ describe('<Options />', () => {
     renderedElement = mount(
       (
         <I18n.Provider lang="en" locales={{}}>
-          <Options setProductOption={mockSetProductOption} {...props} />
+          <Options storeSelection={mockSetProductOption} {...props} />
         </I18n.Provider>),
       mockRenderOptions
     );

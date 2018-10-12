@@ -3,9 +3,8 @@ const colors = {
   background: '#f8f8f8',
   light: '#fff',
   dark: '#000',
-  accent: '#00c3e6',
+  accent: '#5ccee3',
   placeholder: '#f2f2f2',
-  dividers: '#cecece',
   primary: '#fa5400',
   darkGray: '#eaeaea',
   shade3: '#9a9a9a',
@@ -17,31 +16,34 @@ const colors = {
   shade9: '#8d8d8d',
   shade10: '#f4f4f4',
   shade11: '#747474',
-  shade12: '#8a8a8f',
+  shade12: '#939393',
   success: '#35cc29',
   warning: '#ff9300',
   error: '#ff0000',
 };
 
-// WARNING: if this is extended, you need to adjust style/variables.js as well.
 module.exports = {
   font: {
-    family: 'system, -apple-system, "SF Pro Display", "Helvetica Neue", "Lucida Grande"',
-    rootSize: 17,
-    lineHeight: 1.43,
+    family: 'Roboto, Arial, sans-serif',
+    rootSize: 16,
+    lineHeight: 1.5,
   },
   colors,
+  // WARNING: if this is extended, you need to adjust style/variables.js as well.
   variables: {
     materialShadow,
-    blur: {
-      backdropFilter: 'blur(10px)',
-    },
     gap: {
+      xsmall: 4,
       small: 8,
       big: 16,
       bigger: 20,
       xbig: 32,
       xxbig: 64,
+    },
+    emptyPage: {
+      icon: 216,
+      titleTopGap: 36,
+      buttonVerticalGap: 24,
     },
     navbar: {
       height: 56,
@@ -60,27 +62,19 @@ module.exports = {
     paymentBar: {
       height: 78,
     },
-    tabBar: {
-      height: 49,
-    },
-    statusBar: {
-      height: 20,
-    },
     buttonBase: {
-      borderRadius: 5,
-      fontWeight: 700,
-      fontSize: 16,
-      padding: '0 0 3px',
-      textAlign: 'center',
+      borderRadius: 2,
+      fontWeight: 500,
+      fontSize: 17,
+      padding: 0,
+      textTransform: 'uppercase',
     },
     discountBadgeBase: {
       borderRadius: 2,
-      fontSize: '0.7rem',
+      fontSize: '0.75rem',
     },
     priceStrikedBase: {
-      color: colors.shade12,
-      lineHeight: 1,
-      fontSize: 12,
+      color: colors.shade3,
     },
   },
 };

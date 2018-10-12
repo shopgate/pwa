@@ -1,27 +1,32 @@
 import { connect } from 'react-redux';
-import setProductOption from '@shopgate/pwa-common-commerce/product/action-creators/setProductOption';
-import {
-  getCurrentProductOptions,
-  getProductOptions,
-} from '@shopgate/pwa-common-commerce/product/selectors/options';
+import isEqual from 'lodash/isEqual';
+import { getProductOptions } from '@shopgate/pwa-common-commerce/product/selectors/options';
 
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props The current component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  currentOptions: getCurrentProductOptions(state),
-  options: getProductOptions(state),
+const mapStateToProps = (state, props) => ({
+  options: getProductOptions(state, props),
 });
 
 /**
- * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
+ * @param {Object} next The next component props.
+ * @param {Object} prev The current component props.
+ * @return {boolean}
  */
-const mapDispatchToProps = dispatch => ({
-  setProductOption: (optionId, valueId) => dispatch(setProductOption(optionId, valueId)),
-});
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.options && next.options) {
+    return false;
+  }
 
-export default connect(mapStateToProps, mapDispatchToProps);
+  if (!isEqual(prev.options, next.options)) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });

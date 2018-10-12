@@ -31,14 +31,14 @@ class Coupon extends Component {
     deleteCoupon: PropTypes.func,
   };
 
-  static defaultProps = {
-    deleteCoupon: () => {},
-  };
-
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
-  }
+  };
+
+  static defaultProps = {
+    deleteCoupon: () => {},
+  };
 
   /**
    * Constructor.
@@ -109,7 +109,7 @@ class Coupon extends Component {
             <div className={styles} ref={(element) => { this.cardElement = element; }}>
               <CardList.Item>
                 {this.props.messages.length > 0 &&
-                <MessageBar messages={this.props.messages} classNames={messageStyles} />}
+                  <MessageBar messages={this.props.messages} classNames={messageStyles} />}
                 <Layout
                   handleDelete={this.transitionOut}
                   coupon={this.props.coupon}

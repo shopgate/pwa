@@ -15,12 +15,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
   }
 >
   <Grid
-    className="css-1pxtb05"
+    className="css-1glzrmu"
     component="ul"
     wrap={true}
   >
     <ul
-      className="css-1pxtb05 css-h7r55a css-u7q1iu"
+      className="css-1glzrmu css-h7r55a css-u7q1iu"
     >
       <GridItem
         className=""
@@ -151,12 +151,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
   }
 >
   <Grid
-    className="css-1pxtb05"
+    className="css-1glzrmu"
     component="ul"
     wrap={true}
   >
     <ul
-      className="css-1pxtb05 css-h7r55a css-u7q1iu"
+      className="css-1glzrmu css-h7r55a css-u7q1iu"
     >
       <GridItem
         className=""
@@ -261,12 +261,12 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
   }
 >
   <Grid
-    className="css-1pxtb05"
+    className="css-1glzrmu"
     component="ul"
     wrap={true}
   >
     <ul
-      className="css-1pxtb05 css-h7r55a css-u7q1iu"
+      className="css-1glzrmu css-h7r55a css-u7q1iu"
     >
       <GridItem
         className=""

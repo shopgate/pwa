@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -28,17 +28,12 @@ const ProductCard = ({
   <Link
     tagName="a"
     href={`${ITEM_PATH}/${bin2hex(product.id)}`}
-    className={styles.container}
     itemProp="item"
     itemScope
     itemType="http://schema.org/Product"
   >
-    <ProductImage
-      itemProp="image"
-      src={product.featuredImageUrl}
-      alt={product.name}
-    />
-    {!!(!hidePrice && product.price && product.price.discount) && (
+    <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+    {!!(!hidePrice && product.price.discount) && (
       <div className={styles.badgeWrapper}>
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
@@ -47,7 +42,6 @@ const ProductCard = ({
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
-    {/* <FavoritesButton className={styles.wishlist} productId={product.id} /> */}
     {(!(hidePrice && hideRating)) && (
       <div className={styles.details}>
         {!hideRating && product.rating && product.rating.average > 0 && (

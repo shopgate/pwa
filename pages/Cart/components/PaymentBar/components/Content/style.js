@@ -2,9 +2,8 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 const container = css({
-  padding: `${variables.gap.small}px`,
+  padding: `${variables.gap.big}px ${variables.gap.small}px`,
   lineHeight: 1.45,
-  flexWrap: 'wrap',
 }).toString();
 
 const column = css({
@@ -23,12 +22,12 @@ const costsColumn = css({
   justifyContent: 'flex-end',
 }).toString();
 
-const checkoutButtonContainer = css({
-  padding: `0 ${variables.gap.big}px 10px ${variables.gap.big}px`,
-}).toString();
+const buttonColumn = costsColumn;
 
 const checkoutButton = css({
-  width: '100%',
+  display: 'flex',
+  justifyContent: 'flex-end',
+  marginTop: 1,
 }).toString();
 
 export default {
@@ -36,6 +35,6 @@ export default {
   column,
   labelColumn,
   costsColumn,
+  buttonColumn,
   checkoutButton,
-  checkoutButtonContainer,
 };

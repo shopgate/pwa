@@ -5,7 +5,7 @@ import variables from 'Styles/variables';
 const wrapper = css({
   display: 'flex',
   flexDirection: 'column',
-  background: colors.light,
+  background: colors.shade8,
   textAlign: 'center',
   height: '100%',
 }).toString();
@@ -20,12 +20,12 @@ const container = css({
 }).toString();
 
 const icon = css({
-  width: 216,
+  width: variables.emptyPage.icon,
 }).toString();
 
 const title = css({
   textAlign: 'center',
-  paddingTop: variables.gap.big * 2.25,
+  paddingTop: variables.emptyPage.titleTopGap,
 }).toString();
 
 const buttonContainer = css({

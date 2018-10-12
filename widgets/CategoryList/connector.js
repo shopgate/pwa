@@ -1,6 +1,6 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
-import { getCurrentCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import { getCategoriesById } from './../selectors';
 
 /**
  * Connects the dispatch function to a calleble function in the props.
@@ -20,7 +20,19 @@ const mapDispatchToProps = dispatch => ({
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  items: getCurrentCategories(state, props),
+  items: getCategoriesById(state, { categoryId: props.settings.categoryNumber }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the categories have arrived.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.items && next.items) return false;
+  if ((prev.items && next.items) && (prev.items.length !== next.items.length)) return false;
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

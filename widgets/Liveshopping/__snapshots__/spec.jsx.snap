@@ -25,6 +25,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     loop={true}
     maxIndicators={null}
     onSlideChange={null}
+    rebuildOnUpdate={false}
     slidesPerView={1}
     snapItems={true}
   >
@@ -34,12 +35,15 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       key="1234"
     >
       <Card
-        className="css-agwt9q"
+        className=""
       >
-        <Link
-          className=""
-          disabled={false}
+        <Connect(Link)
           href="/item/31323334"
+          state={
+            Object {
+              "title": "First product",
+            }
+          }
         >
           <Grid
             className=""
@@ -55,11 +59,6 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               <ProductImage
                 alt="First product"
                 animating={true}
-                classNames={
-                  Object {
-                    "container": "css-mvioy2",
-                  }
-                }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
@@ -85,7 +84,9 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               grow={0}
               shrink={1}
             >
-              <div>
+              <div
+                data-test-id="First product"
+              >
                 <Ellipsis
                   className="css-d6bxso"
                   ellipsis="..."
@@ -106,7 +107,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <PriceStriked
-                    className="css-2cfc5f"
+                    className="css-osh41h"
                     currency="EUR"
                     value={20}
                   />
@@ -118,7 +119,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <Price
-                    className="css-84byly"
+                    className="css-ljd097"
                     currency="EUR"
                     discounted={false}
                     fractions={true}
@@ -130,7 +131,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               </Grid>
             </GridItem>
           </Grid>
-        </Link>
+        </Connect(Link)>
       </Card>
     </div>
     <div
@@ -139,12 +140,15 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       key="1235"
     >
       <Card
-        className="css-agwt9q"
+        className=""
       >
-        <Link
-          className=""
-          disabled={false}
+        <Connect(Link)
           href="/item/31323335"
+          state={
+            Object {
+              "title": "Second product",
+            }
+          }
         >
           <Grid
             className=""
@@ -160,11 +164,6 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               <ProductImage
                 alt="Second product"
                 animating={true}
-                classNames={
-                  Object {
-                    "container": "css-mvioy2",
-                  }
-                }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
@@ -190,7 +189,9 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               grow={0}
               shrink={1}
             >
-              <div>
+              <div
+                data-test-id="Second product"
+              >
                 <Ellipsis
                   className="css-d6bxso"
                   ellipsis="..."
@@ -211,7 +212,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <PriceStriked
-                    className="css-2cfc5f"
+                    className="css-osh41h"
                     currency="EUR"
                     value={20}
                   />
@@ -223,7 +224,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <Price
-                    className="css-84byly"
+                    className="css-ljd097"
                     currency="EUR"
                     discounted={false}
                     fractions={true}
@@ -235,7 +236,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               </Grid>
             </GridItem>
           </Grid>
-        </Link>
+        </Connect(Link)>
       </Card>
     </div>
   </ImageSlider>
@@ -265,6 +266,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     loop={true}
     maxIndicators={null}
     onSlideChange={null}
+    rebuildOnUpdate={false}
     slidesPerView={1}
     snapItems={true}
   >
@@ -274,12 +276,15 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       key="1234"
     >
       <Card
-        className="css-agwt9q"
+        className=""
       >
-        <Link
-          className=""
-          disabled={false}
+        <Connect(Link)
           href="/item/31323334"
+          state={
+            Object {
+              "title": "First product",
+            }
+          }
         >
           <Grid
             className=""
@@ -295,11 +300,6 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
               <ProductImage
                 alt="First product"
                 animating={true}
-                classNames={
-                  Object {
-                    "container": "css-mvioy2",
-                  }
-                }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
@@ -325,7 +325,9 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
               grow={0}
               shrink={1}
             >
-              <div>
+              <div
+                data-test-id="First product"
+              >
                 <Ellipsis
                   className="css-d6bxso"
                   ellipsis="..."
@@ -346,7 +348,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                   shrink={1}
                 >
                   <PriceStriked
-                    className="css-2cfc5f"
+                    className="css-osh41h"
                     currency="EUR"
                     value={20}
                   />
@@ -358,7 +360,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                   shrink={1}
                 >
                   <Price
-                    className="css-84byly"
+                    className="css-ljd097"
                     currency="EUR"
                     discounted={false}
                     fractions={true}
@@ -370,7 +372,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
               </Grid>
             </GridItem>
           </Grid>
-        </Link>
+        </Connect(Link)>
       </Card>
     </div>
   </ImageSlider>
