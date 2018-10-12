@@ -1,3 +1,4 @@
+import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
@@ -39,7 +40,7 @@ export default function category(subscribe) {
     const { errorCode } = action;
     let message = 'modal.body_error';
 
-    if (errorCode === 'ENOTFOUND') {
+    if (errorCode === ENOTFOUND) {
       message = 'category.error.not_found';
     }
 
@@ -52,10 +53,10 @@ export default function category(subscribe) {
     dispatch(historyPop());
   });
 
-  subscribe(categoryFiltersDidUpdate$, ({ dispatch }) => {
+  subscribe(categoryFiltersDidUpdate$, ({ action, dispatch }) => {
     const { params } = getCurrentRoute();
     const categoryId = hex2bin(params.categoryId);
-    const filters = getActiveFilters();
+    const { filters } = action;
 
     dispatch(fetchCategoryProducts({
       categoryId, filters,
