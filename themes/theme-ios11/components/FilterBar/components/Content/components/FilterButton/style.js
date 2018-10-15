@@ -11,6 +11,7 @@ const button = css({
   height: variables.filterbar.height,
   position: 'relative',
   zIndex: 1,
+  overflow: 'hidden',
 }).toString();
 
 const filterButton = css({
