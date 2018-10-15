@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import View from 'Components/View';
-import { DefaultBar } from 'Components/AppBar/presets';
+import { BackBar } from 'Components/AppBar/presets';
 import connect from './connector';
 import EmptyFavorites from './components/EmptyFavorites';
 import FavoritesList from './components/FavoritesList';
@@ -15,7 +15,7 @@ const Favorites = ({ initialLoading, products }) => {
   if (initialLoading) {
     return (
       <View>
-        <DefaultBar title="titles.favorites" />
+        <BackBar title="titles.favorites" />
         <LoadingIndicator />
       </View>
     );
@@ -23,7 +23,7 @@ const Favorites = ({ initialLoading, products }) => {
 
   return (
     <View>
-      <DefaultBar title="titles.favorites" />
+      <BackBar title="titles.favorites" />
       {!products.length && <EmptyFavorites />}
       {(products.length > 0) && <FavoritesList products={products} />}
     </View>

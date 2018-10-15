@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DefaultBar } from 'Components/AppBar/presets';
+import { BackBar } from 'Components/AppBar/presets';
 import Bar from '../Bar';
 import connect from './connector';
 
@@ -10,7 +10,7 @@ import connect from './connector';
  */
 function CategoryAppBar({ hasChildren, hasProducts, title }) {
   return (
-    <DefaultBar
+    <BackBar
       title={title}
       {...(!hasChildren && hasProducts) && { below: <Bar /> }}
     />
