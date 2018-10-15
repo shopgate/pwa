@@ -1,6 +1,5 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
 const sliderContainer = css({
   marginLeft: 'auto',
@@ -62,15 +61,8 @@ const card = css({
   margin: '0px 8px',
 }).toString();
 
-const headline = css({
-  fontSize: 18,
-  margin: `0 0 ${variables.gap.big}px`,
-  textAlign: 'center',
-}).toString();
-
 export default {
   card,
-  headline,
   sliderContainer,
   slider,
   sliderItem,

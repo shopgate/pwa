@@ -7,6 +7,7 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
   className="css-13tch1f"
 >
   <Headline
+    small={true}
     text=""
   />
   <ProductList

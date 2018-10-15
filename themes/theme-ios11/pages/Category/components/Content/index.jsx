@@ -5,6 +5,7 @@ import Empty from '../Empty';
 import CategoryListContent from '../CategoryListContent';
 import connect from './connector';
 import AppBar from '../AppBar';
+import Headline from '../Headline';
 
 /**
  * @param {Object} props.categoryId The category id.
@@ -13,6 +14,7 @@ import AppBar from '../AppBar';
 const CategoryContent = ({ categoryId, hasChildren, hasProducts }) => (
   <Fragment>
     <AppBar hasProducts={hasProducts} hasChildren={hasChildren} />
+    <Headline />
     <CategoryListContent categoryId={categoryId} />
     <ProductsContent categoryId={categoryId} hasProducts={hasProducts} />
     <Empty

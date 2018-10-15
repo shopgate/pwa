@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Slider from '@shopgate/pwa-common/components/Slider';
 import Card from '@shopgate/pwa-ui-shared/Card';
 import ProductCard from 'Components/ProductCard';
+import Headline from 'Components/Headline';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import connect from './connector';
 import styles from './style';
@@ -92,9 +93,7 @@ class ProductSlider extends Component {
   renderHeadline = () => {
     if (this.props.settings.headline) {
       return (
-        <h3 className={styles.headline}>
-          {this.props.settings.headline}
-        </h3>
+        <Headline text={this.props.settings.headline} small />
       );
     }
 

@@ -171,7 +171,7 @@ class ProductsWidget extends Component {
 
     return (
       <div {...isList ? { className: styles.listView } : {}}>
-        <Headline text={headline} />
+        <Headline text={headline} small />
         <ProductComponent
           flags={flags}
           infiniteLoad={false}

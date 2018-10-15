@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CategoryList from 'Components/CategoryList';
 import View from 'Components/View';
 import { BackBar } from 'Components/AppBar/presets';
+import Headline from './components/Headline';
 import connect from './connector';
 
 /**
@@ -24,6 +25,7 @@ class RootCategory extends PureComponent {
     return (
       <View>
         <BackBar title="titles.categories" />
+        <Headline text="titles.categories" />
         <CategoryList categories={this.props.categories} prerender={8} />
       </View>
     );
