@@ -1,4 +1,3 @@
-import persistedReducers from '../../collections/PersistedReducers';
 import {
   REQUEST_CLIENT_INFORMATION,
   RECEIVE_CLIENT_INFORMATION,
