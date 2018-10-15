@@ -104,7 +104,7 @@ const createProductSliderItem = ({
               </div>
               <Grid className={styles.priceGrid}>
                 {priceStriked > 0 ?
-                  <Grid.Item> 
+                  <Grid.Item>
                     <PriceStriked
                       className={styles.priceStriked}
                       value={priceStriked}
