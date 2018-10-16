@@ -1,5 +1,6 @@
 export default {
   navigatorButton: "[data-test-id='Navigator'] [data-test-id='Button']",
+  navigationDrawerBackdrop: "[data-test-id='NavDrawer'] [data-test-id='Backdrop']",
   navigationDrawerLoginButton: "[data-test-id='NavDrawerLoginButton']",
   navigationDrawerEntry: "[data-test-id='NavDrawer'] [data-test-id='Ripple'] span",
   shopLogo: "[data-test-id='Navigator'] img",
