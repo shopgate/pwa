@@ -10,6 +10,7 @@ import Options from '../Options';
 import Description from '../Description';
 import Properties from '../Properties';
 import AppBar from '../AppBar';
+import AddToCartBar from '../AddToCartBar';
 import connect from './connector';
 import { ProductContext } from '../../context';
 
@@ -114,6 +115,11 @@ class ProductContent extends PureComponent {
           <Properties productId={this.state.productId} variantId={this.state.variantId} />
           <Reviews productId={this.state.productId} />
           <TaxDisclaimer />
+          <AddToCartBar
+            productId={id}
+            options={contextValue.options}
+            conditioner={contextValue.conditioner}
+          />
         </ProductContext.Provider>
       </Fragment>
     );
