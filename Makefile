@@ -96,6 +96,9 @@ e2e-ios11:
 e2e-checkout:
 		cd themes/theme-gmd && yarn run e2e:checkout
 
+e2e-user:
+		cd themes/theme-gmd && yarn run e2e:user
+
 
 
 # SETUP-RELEASE ####################################################################################

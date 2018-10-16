@@ -73,7 +73,7 @@ class Backdrop extends Component {
     return (
       <Transition childrenStyles={transition}>
         {this.props.isVisible ?
-          <div aria-hidden className={className} onClick={this.props.onClick} /> : null
+          <div data-test-id="Backdrop" aria-hidden className={className} onClick={this.props.onClick} /> : null
         }
       </Transition>
     );
