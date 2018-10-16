@@ -1,15 +1,16 @@
-import els from '../elements/de';
+import els from '../elements/de'
+import { openNavDrawer, closeNavDrawer } from './navigation'
 
 /**
  * Helper function that log out the user
  */
-export function logOutUser() {
-  cy.visit('');
+export function logOutUser () {
+  cy.visit('')
 
   cy.get(els.navigatorButton)
     .should('be.visible')
-    .click();
-  cy.wait(3000);
+    .click()
+  cy.wait(3000)
 
   cy.get(els.loginWelcomeText).then(($loginWelcomeText) => {
     if ($loginWelcomeText.text().includes('Hallo Dennis')) {
@@ -17,14 +18,48 @@ export function logOutUser() {
         .wait(2000)
         .scrollIntoView()
         .should('be.visible')
-        .click();
+        .click()
       cy.get(els.basicDialogOkButton)
         .should('be.visible')
-        .click();
+        .click()
     } else if ($loginWelcomeText.text().includes('Anmelden')) {
-      cy.visit('');
-      cy.wait(2000);
-      console.log('No User logged in');
+      cy.visit('')
+      cy.wait(2000)
+      cy.log('User is not logged')
     }
-  });
+  })
 }
+
+export function logInUser () {
+  openNavDrawer()
+
+  cy.get(els.loginWelcomeText)
+    .then(loginWelcomeText => {
+      const needLogin = loginWelcomeText.text().includes('Anmelden')
+
+      cy.log(`Use need login: ${JSON.stringify(needLogin)}`)
+      if (!needLogin) {
+        return closeNavDrawer()
+      }
+
+      cy.window().spyAction('OPEN_LINK', () => {
+        loginWelcomeText.click()
+      })
+
+      cy.fixture('userCredentials').then((credentials) => {
+        cy.window().spyAction('RECEIVE_USER', () => {
+          cy.get(els.loginPageEmailInput)
+            .should('be.visible')
+            .clear()
+            .type(credentials.username)
+
+          cy.get(els.loginPagePasswordInput)
+            .should('be.visible')
+            .clear()
+            .type(credentials.password)
+            .type('{enter}')
+        })
+      })
+    })
+}
+

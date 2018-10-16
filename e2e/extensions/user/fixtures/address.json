@@ -1,0 +1,10 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "street1": "Schlossstrasse 10",
+  "street2": "",
+  "zipCode": "35510",
+  "city": "Butzbach",
+  "province": "",
+  "country": "DE"
+}
