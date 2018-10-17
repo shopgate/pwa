@@ -54,8 +54,8 @@ describe('functional test start page', () => {
 
   it('should check for product list grid', () => {
     cy.get(els.productGridWidgetSecondProduct)
-      .scrollIntoView()
       .should('be.visible')
+      .scrollIntoView()
       .click();
     cy.get(els.productWithManyProps4ProductPagName)
       .should('be.visible');
