@@ -5,6 +5,7 @@ exports[`<Sheet /> should open 1`] = `
   animation={Object {}}
   backdrop={true}
   className={null}
+  contentClassName={null}
   duration={300}
   isOpen={true}
   onClose={null}
@@ -115,7 +116,7 @@ exports[`<Sheet /> should open 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l false"
+          className="css-1aon90l"
         >
           <div
             key=".0"
@@ -226,7 +227,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l false"
+      className="css-1aon90l"
     />
   </Drawer>
   <Backdrop
@@ -259,7 +260,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l false"
+      className="css-1aon90l"
     />
   </Drawer>
   <Backdrop
@@ -296,7 +297,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
       title="Test-Title"
     />
     <div
-      className="css-1aon90l false"
+      className="css-1aon90l"
     >
       <div
         key=".0"
@@ -322,6 +323,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   animation={Object {}}
   backdrop={true}
   className={null}
+  contentClassName={null}
   duration={300}
   isOpen={true}
   onClose={
@@ -456,7 +458,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l false"
+          className="css-1aon90l"
         >
           <div
             key=".0"
