@@ -87,6 +87,12 @@ clean:
 
 
 
+clean-git:
+		git remote prune origin
+		git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d
+
+
+
 e2e-gmd:
 		cd themes/theme-gmd && yarn run e2e
 
