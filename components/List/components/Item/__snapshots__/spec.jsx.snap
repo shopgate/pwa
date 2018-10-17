@@ -45,28 +45,32 @@ exports[`<List.Item /> should render with a link 1`] = `
           onClick={[Function]}
           role="link"
         >
-          <Grid
-            className="css-1qcr7hz"
-            component="div"
-            wrap={false}
+          <div
+            data-test-id={null}
           >
-            <div
-              className="css-1qcr7hz css-h7r55a"
+            <Grid
+              className="css-1qcr7hz"
+              component="div"
+              wrap={false}
             >
-              <GridItem
-                className="css-10fxwvh"
-                component="div"
-                grow={1}
-                shrink={1}
+              <div
+                className="css-1qcr7hz css-h7r55a"
               >
-                <div
-                  className="css-10fxwvh css-1gs0ko2"
+                <GridItem
+                  className="css-10fxwvh"
+                  component="div"
+                  grow={1}
+                  shrink={1}
                 >
-                  My Title
-                </div>
-              </GridItem>
-            </div>
-          </Grid>
+                  <div
+                    className="css-10fxwvh css-1gs0ko2"
+                  >
+                    My Title
+                  </div>
+                </GridItem>
+              </div>
+            </Grid>
+          </div>
         </div>
       </Link>
     </div>
@@ -90,42 +94,46 @@ exports[`<List.Item /> should render with a right component 1`] = `
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-1qcr7hz"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-1qcr7hz css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          My Title
-        </div>
-      </GridItem>
-      <GridItem
-        className=""
-        component="div"
-        grow={1}
-        shrink={1}
-      >
-        <div
-          className=" css-1gs0ko2"
+          <div
+            className="css-10fxwvh css-1gs0ko2"
+          >
+            My Title
+          </div>
+        </GridItem>
+        <GridItem
+          className=""
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          <span>
-            I\`m a span.
-          </span>
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+          <div
+            className=" css-1gs0ko2"
+          >
+            <span>
+              I\`m a span.
+            </span>
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -141,28 +149,32 @@ exports[`<List.Item /> should render with a title but no image 1`] = `
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-1qcr7hz"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-1qcr7hz css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          My Title
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+          <div
+            className="css-10fxwvh css-1gs0ko2"
+          >
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -183,36 +195,40 @@ exports[`<List.Item /> should render with an image 1`] = `
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-1qcr7hz"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-1qcr7hz css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
       <div
-        className="css-1mhrjzj"
-      >
-        <img
-          alt="Alternative text"
-          src="url/to/image"
-        />
-      </div>
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+        className="css-1qcr7hz css-h7r55a"
       >
         <div
-          className="css-10fxwvh css-1gs0ko2"
+          className="css-1mhrjzj"
         >
-          My Title
+          <img
+            alt="Alternative text"
+            src="url/to/image"
+          />
         </div>
-      </GridItem>
-    </div>
-  </Grid>
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
+        >
+          <div
+            className="css-10fxwvh css-1gs0ko2"
+          >
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -253,28 +269,32 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
           className="css-1bmd5dz"
           style={Object {}}
         />
-        <Grid
-          className="css-1qcr7hz"
-          component="div"
-          wrap={false}
+        <div
+          data-test-id={null}
         >
-          <div
-            className="css-1qcr7hz css-h7r55a"
+          <Grid
+            className="css-1qcr7hz"
+            component="div"
+            wrap={false}
           >
-            <GridItem
-              className="css-10fxwvh"
-              component="div"
-              grow={1}
-              shrink={1}
+            <div
+              className="css-1qcr7hz css-h7r55a"
             >
-              <div
-                className="css-10fxwvh css-1gs0ko2"
+              <GridItem
+                className="css-10fxwvh"
+                component="div"
+                grow={1}
+                shrink={1}
               >
-                My Title
-              </div>
-            </GridItem>
-          </div>
-        </Grid>
+                <div
+                  className="css-10fxwvh css-1gs0ko2"
+                >
+                  My Title
+                </div>
+              </GridItem>
+            </div>
+          </Grid>
+        </div>
       </div>
     </Glow>
   </div>
@@ -293,28 +313,32 @@ exports[`<List.Item /> should render without a Glow when disabled 1`] = `
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-1qcr7hz"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-1qcr7hz css-h7r55a"
+    <Grid
+      className="css-1qcr7hz"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh css-19uk9mv"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-19uk9mv css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh css-19uk9mv"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          My Title
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+          <div
+            className="css-10fxwvh css-19uk9mv css-1gs0ko2"
+          >
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
 
@@ -330,27 +354,31 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
   testId={null}
   title="My Title"
 >
-  <Grid
-    className="css-1qcr7hz css-14bkd8f"
-    component="div"
-    wrap={false}
+  <div
+    data-test-id={null}
   >
-    <div
-      className="css-1qcr7hz css-14bkd8f css-h7r55a"
+    <Grid
+      className="css-1qcr7hz css-14bkd8f"
+      component="div"
+      wrap={false}
     >
-      <GridItem
-        className="css-10fxwvh"
-        component="div"
-        grow={1}
-        shrink={1}
+      <div
+        className="css-1qcr7hz css-14bkd8f css-h7r55a"
       >
-        <div
-          className="css-10fxwvh css-1gs0ko2"
+        <GridItem
+          className="css-10fxwvh"
+          component="div"
+          grow={1}
+          shrink={1}
         >
-          My Title
-        </div>
-      </GridItem>
-    </div>
-  </Grid>
+          <div
+            className="css-10fxwvh css-1gs0ko2"
+          >
+            My Title
+          </div>
+        </GridItem>
+      </div>
+    </Grid>
+  </div>
 </Item>
 `;
