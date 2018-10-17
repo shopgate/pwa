@@ -24,9 +24,9 @@ const colors = {
 
 module.exports = {
   font: {
-    family: 'Roboto, Arial, sans-serif',
-    rootSize: 16,
-    lineHeight: 1.5,
+    family: 'system, -apple-system, "SF Pro Display", "Helvetica Neue", "Lucida Grande"',
+    rootSize: 17,
+    lineHeight: 1.43,
   },
   colors,
   // WARNING: if this is extended, you need to adjust style/variables.js as well.

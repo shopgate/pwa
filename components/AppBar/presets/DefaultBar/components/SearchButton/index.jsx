@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { UIEvents } from '@shopgate/pwa-core';
-import { AppBar } from '@shopgate/pwa-ui-material';
+import { AppBar } from '@shopgate/pwa-ui-ios';
 import { MagnifierIcon } from '@shopgate/pwa-ui-shared';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 /**
