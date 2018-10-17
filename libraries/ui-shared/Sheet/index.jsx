@@ -22,6 +22,7 @@ class Sheet extends Component {
     }),
     backdrop: PropTypes.bool,
     children: PropTypes.node,
+    className: PropTypes.string,
     duration: PropTypes.number,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
@@ -37,6 +38,7 @@ class Sheet extends Component {
     animation: {},
     backdrop: true,
     children: null,
+    className: null,
     duration: 300,
     isOpen: false,
     onClose: null,
@@ -122,10 +124,15 @@ class Sheet extends Component {
       )
     ) : null;
 
+    const classNames = [styles.container];
+    if (this.props.className) {
+      classNames.push(this.props.className);
+    }
+
     return (
       <section>
         <Drawer
-          className={styles.container}
+          className={classNames.join(' ')}
           isOpen={this.state.isOpen}
           onOpen={this.props.onOpen}
           onClose={this.props.onClose}

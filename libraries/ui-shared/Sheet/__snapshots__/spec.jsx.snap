@@ -4,6 +4,7 @@ exports[`<Sheet /> should open 1`] = `
 <Sheet
   animation={Object {}}
   backdrop={true}
+  className={null}
   duration={300}
   isOpen={true}
   onClose={null}
@@ -320,6 +321,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
 <Sheet
   animation={Object {}}
   backdrop={true}
+  className={null}
   duration={300}
   isOpen={true}
   onClose={
