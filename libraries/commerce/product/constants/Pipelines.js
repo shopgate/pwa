@@ -5,6 +5,7 @@ export const SHOPGATE_CATALOG_GET_PRODUCT_DESCRIPTION = 'shopgate.catalog.getPro
 export const SHOPGATE_CATALOG_GET_PRODUCT_IMAGES = 'shopgate.catalog.getProductImages';
 export const SHOPGATE_CATALOG_GET_PRODUCT_OPTIONS = 'shopgate.catalog.getProductOptions';
 export const SHOPGATE_CATALOG_GET_PRODUCT_PROPERTIES = 'shopgate.catalog.getProductProperties';
+export const SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS = 'shopgate.catalog.getProductRelations';
 export const SHOPGATE_CATALOG_GET_PRODUCTS = 'shopgate.catalog.getProducts';
 export const SHOPGATE_CATALOG_GET_PRODUCT_SHIPPING = 'shopgate.catalog.getProductShipping';
 export const SHOPGATE_CATALOG_GET_PRODUCT_VARIANTS = 'shopgate.catalog.getProductVariants';
