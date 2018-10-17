@@ -1,5 +1,21 @@
 import { css } from 'glamor';
 
+const innerShadow = css({
+  position: 'relative',
+  overflow: 'hidden',
+  ':after': {
+    display: 'block',
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
+    pointerEvents: 'none',
+  },
+}).toString();
+
 const placeholderContainer = css({
   position: 'relative',
   width: '100%',
@@ -33,6 +49,7 @@ const placeholder = css({
 }).toString();
 
 export default {
+  innerShadow,
   placeholderContainer,
   placeholderContent,
   placeholder,
