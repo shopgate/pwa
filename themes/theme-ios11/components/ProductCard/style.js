@@ -1,12 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 
 const container = css({
-  position: 'relative',
-  display: 'block',
-  background: colors.light,
   fontSize: 14,
-  height: '100%',
 }).toString();
 
 const details = css({
@@ -37,8 +32,8 @@ const wishlist = css({
 }).toString();
 
 export default {
-  badgeWrapper,
   container,
+  badgeWrapper,
   details,
   title,
   wishlist,

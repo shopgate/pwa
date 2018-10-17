@@ -26,6 +26,7 @@ const ProductGridPrice = ({ price }) => (
       {(price.msrp > 0 && price.unitPrice !== price.msrp) && (
       <Grid.Item>
         <PriceStriked
+          className={styles.strikedPrice}
           value={price.msrp}
           currency={price.currency}
         />
@@ -34,6 +35,7 @@ const ProductGridPrice = ({ price }) => (
       {(!price.msrp && price.unitPriceStriked > 0) && (
       <Grid.Item>
         <PriceStriked
+          className={styles.strikedPrice}
           value={price.unitPriceStriked}
           currency={price.currency}
         />

@@ -75,5 +75,13 @@ export const themeConfig = {
     priceStrikedBase: {
       color: colors.shade3,
     },
+    productSliderWidget: {
+      borderRadius: 11,
+      boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
+    },
+    liveshoppingWidget: {
+      borderRadius: 11,
+      boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
+    },
   },
 };

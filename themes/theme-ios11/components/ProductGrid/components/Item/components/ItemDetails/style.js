@@ -1,16 +1,8 @@
 import { css } from 'glamor';
 
 export const details = css({
-  lineHeight: 1.35,
+  lineHeight: 1.2,
   ':not(:empty)': {
-    padding: '12px 16px',
+    padding: '12px 0 30px',
   },
-});
-
-export const title = css({
-  fontWeight: '500',
-  lineHeight: 1.15,
-  marginTop: 1,
-  wordBreak: ['keep-all', 'break-word'],
-  hyphens: 'auto',
 });
