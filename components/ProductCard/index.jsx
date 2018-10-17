@@ -26,6 +26,7 @@ const ProductCard = ({
   product, hidePrice, hideRating, hideName, titleRows,
 }) => (
   <Link
+    className={styles.container}
     tagName="a"
     href={`${ITEM_PATH}/${bin2hex(product.id)}`}
     itemProp="item"
