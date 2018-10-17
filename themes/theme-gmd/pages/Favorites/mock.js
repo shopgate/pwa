@@ -9,7 +9,7 @@ const foo = {
     baseProductId: null,
     price: {
       unitPriceStriked: 100,
-      unitPriceWithTax: 101,
+      unitPrice: 101,
       currency: 'EUR',
     },
   },
@@ -26,7 +26,7 @@ const bar = {
     baseProductId: null,
     price: {
       unitPriceStriked: 100,
-      unitPriceWithTax: 101,
+      unitPrice: 101,
       currency: 'EUR',
     },
   },
