@@ -1,9 +1,7 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import Router from '@virtuous/react-conductor/Router';
@@ -36,8 +34,6 @@ import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
 import * as routes from './routes';
-
-const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -72,11 +68,6 @@ const Pages = ({ store }) => (
               <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
               {React.Children.map(routePortals, Component => Component)}
             </Router>
-            {isDev && (
-              <Helmet>
-                <link href={devFontsUrl} rel="stylesheet" />
-              </Helmet>
-            )}
           </Viewport>
         </ToastProvider>
       </ThemeContext.Provider>

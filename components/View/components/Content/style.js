@@ -12,7 +12,7 @@ const content = (isFullscreen = false, keyboardHeight = 0) => css({
   overflow: 'auto',
   overflowScrolling: 'touch',
   WebkitOverflowScrolling: 'touch',
-  width: '100%',
+  width: '100vw',
   position: 'absolute',
   top: 'var(--safe-area-inset-top)',
   paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
