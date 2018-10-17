@@ -100,9 +100,9 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/react-hammerjs@0.5.8":
-  version "0.5.8"
-  resolved "http://registry.npmjs.org/@shopgate/react-hammerjs/-/react-hammerjs-0.5.8.tgz#e5a7eeaad3c1fb73963d881987f52e143a05eb6e"
+"@shopgate/react-hammerjs@0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
 
@@ -6462,12 +6462,6 @@ react-dotdotdot@^1.1.0:
   resolved "https://registry.yarnpkg.com/react-dotdotdot/-/react-dotdotdot-1.2.3.tgz#45bb264153cee73471f55c51c8d1542f4880a34f"
   dependencies:
     object.pick "^1.3.0"
-
-react-hammerjs@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-hammerjs/-/react-hammerjs-1.0.1.tgz#bc1ed9e9ef7da057163fb169ce12917b6d6ca7d8"
-  dependencies:
-    hammerjs "^2.0.8"
 
 react-helmet@^5.1.3:
   version "5.2.0"
