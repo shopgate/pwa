@@ -9,7 +9,8 @@ const outer = css({
 });
 
 const inner = css({
-  background: 'inherit',
+  background: 'rgba(255, 255, 255, 0.8)',
+  backdropFilter: 'blur(20px)',
   display: 'flex',
   position: 'relative',
   zIndex: 1,

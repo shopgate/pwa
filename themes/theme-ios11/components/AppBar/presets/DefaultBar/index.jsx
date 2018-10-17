@@ -1,6 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
+import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { AppBar } from '@shopgate/pwa-ui-ios';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
