@@ -7,12 +7,11 @@
     "undo": "Rück­gän­gig"
   },
   "titles": {
-    "categories": "Alle Kategorien",
+    "categories": "Kategorien",
     "filter": "Filter",
     "cart": "Warenkorb",
     "shipping": "Versand",
     "reviews": "Bewertungen",
-    "browse": "Durchsuchen",
     "favorites": "Merkliste"
   },
   "favorites": {
@@ -35,11 +34,9 @@
       "price_desc": "Höchster Preis zuerst",
       "price_asc": "Niedrigster Preis zuerst"
     },
-    "apply": "Anwenden",
+    "apply": "Fertig",
     "more": "mehr",
-    "clear": "Zurücksetzen",
-    "clear_all": "Alle zurücksetzen",
-    "view_all": "mehr"
+    "reset": "Zurücksetzen"
   },
   "price": {
     "from": "Ab {price}",
@@ -48,16 +45,12 @@
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
     },
-    "msrp": "UVP",
-    "currency": "EUR"
+    "msrp": "UVP"
   },
   "product": {
     "description_heading": "Beschreibung",
     "pick_an_attribute": "{0} auswählen",
-    "tax_disclaimer": "* Alle Preise inkl. MwSt. evtl. zzgl. Versand",
-    "item_added": "{count, plural, =0 {# keine Produkte} =1 {{count} Produkt hinzugefügt} other {{count} Produkte hinzugefügt}}",
-    "add_to_cart": "In den Warenkorb",
-    "go_to_cart": "Warenkorb"
+    "tax_disclaimer": "* Alle Preise inkl. MwSt. evtl. zzgl. Versand"
   },
   "category": {
     "error": {
@@ -70,12 +63,11 @@
     }
   },
   "search": {
-    "label": "Suche",
-    "cancel": "Abbrechen",
     "no_result": {
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
-    }
+    },
+    "placeholder": "Suchen"
   },
   "shipping": {
     "unknown": "zzgl. Versand",
@@ -109,14 +101,14 @@
   },
   "login": {
     "headline": "Willkommen!",
-    "subline": "Bitte melden Sie sich an, um fortzufahren.",
+    "subline": "Bitte melden Sie sich an, um fortzufahren",
     "email": "E-Mail",
     "password": "Passwort",
     "forgot_password": "Passwort vergessen?",
     "forgot_password_popup": "Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.",
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
-    "signup": "Registrieren",
+    "register": "Starten Sie hier.",
     "logout_message": "Sie wurden ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt"
   },
@@ -130,15 +122,16 @@
     "cart": "Warenkorb",
     "shipping": "Versandarten",
     "about": "Impressum",
-    "contact": "Kontakt",
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
     "welcome_message": "Hallo {name}",
     "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
-    "store_information": "Über uns",
-    "more_menu": "Mehr"
+    "menuSubHeader": {
+      "more": "Mehr",
+      "about": "Über uns"
+    }
   },
   "reviews": {
     "rating": "Bewertung",
@@ -157,12 +150,5 @@
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
     "success_message": "Vielen Dank für Ihre Bewertung!"
-  },
-  "tab_bar": {
-    "home": "Home",
-    "browse": "Stöbern",
-    "cart": "Warenkorb",
-    "more": "Mehr",
-    "favorites": "Merkliste"
   }
 }

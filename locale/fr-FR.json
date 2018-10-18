@@ -35,11 +35,9 @@
       "price_desc": "Prix Descendant",
       "price_asc": "Prix Ascendant"
     },
-    "apply": "Appliquer",
+    "apply": "Terminé",
     "more": "Plus",
-    "clear": "Effacer",
-    "clear_all": "Effacer tout",
-    "view_all": "Voir tout"
+    "reset": "Effacer tout"
   },
   "price": {
     "from": "De {price}",
@@ -48,8 +46,7 @@
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "EUR"
+    "msrp": "MSRP"
   },
   "product": {
    "description_heading": "à propos",
@@ -106,7 +103,7 @@
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
     "free_shipping": "Livraison gratuite"
   },
-  "login": {
+   "login": {
     "headline": "Bienvenue",
     "subline": "Se connecter pour continuer",
     "email": "Email",
@@ -115,7 +112,6 @@
     "forgot_password_popup": "Veuillez utiliser le site sur ordinateur pour réinitialiser votre mot de passe.",
     "button": "Se connecter",
     "no_account": "Vous n'êtes pas inscrit?",
-    "signup": "S'enregistrer",
     "register": "Créer un compte ici!",
     "logout_message": "Vous avez été déconnecté",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte"
@@ -137,7 +133,11 @@
     "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
-    "more_menu": "Plus"
+    "more_menu": "Plus",
+    "menuSubHeader": {
+      "more": "Plus",
+      "about": "À propos de nous"
+    }
   },
   "reviews": {
     "rating": "Evaluation",
