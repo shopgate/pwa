@@ -55,7 +55,7 @@ class FilterBar extends Component {
   get style() {
     const { active } = this.state;
     return {
-      background: active ? colors.accent : colors.light,
+      background: active ? colors.accent : 'inherit',
       color: active ? colors.accentContrast : 'inherit',
     };
   }
