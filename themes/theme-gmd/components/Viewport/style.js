@@ -1,4 +1,11 @@
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
+
+css.global('html, body', {
+  background: colors.background,
+});
 
 /**
  * By default the GMD theme doesn't have a tabbar. But it's conceivable that 3rd party developers

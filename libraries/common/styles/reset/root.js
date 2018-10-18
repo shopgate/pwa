@@ -1,14 +1,10 @@
 import { css } from 'glamor';
-import { themeConfig } from '../../helpers/config';
-
-const { colors } = themeConfig;
 
 css.global('*, *:before, *:after', {
   boxSizing: 'border-box',
 });
 
 css.global('html, body', {
-  background: colors.background,
   WebkitTapHighlightColor: 'transparent',
   width: '100%',
   height: '100%',
@@ -27,4 +23,5 @@ css.global('body', {
   overflow: 'auto',
   margin: 0,
   WebkitOverflowScrolling: 'touch',
+  WebkitUserSelect: 'none',
 });

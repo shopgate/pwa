@@ -1,6 +1,8 @@
 import { css } from 'glamor';
 
 const outer = css({
+  backdropFilter: 'blur(30px)',
+  boxShadow: '0 1px 0 0 rgba(0, 0, 0, 0.15)',
   left: 0,
   position: 'sticky',
   top: 0,
@@ -9,8 +11,6 @@ const outer = css({
 });
 
 const inner = css({
-  background: 'rgba(255, 255, 255, 0.8)',
-  backdropFilter: 'blur(20px)',
   display: 'flex',
   position: 'relative',
   zIndex: 1,

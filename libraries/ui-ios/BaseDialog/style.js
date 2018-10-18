@@ -2,7 +2,7 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const outerGap = 40;
-const border = 'rgba(181, 181, 181, 0.7)';
+const border = 'rgb(63,63,63)';
 
 const container = css({
   position: 'relative',
@@ -11,29 +11,24 @@ const container = css({
   flexDirection: 'column',
   width: 270,
   maxHeight: `calc(100vh - ${outerGap * 2}px)`,
-  borderRadius: 13,
-  background: 'rgba(255, 255, 255, 0.9)',
-  backdropFilter: 'blur(4px)',
+  borderRadius: 14,
+  background: 'rgba(255, 255, 255, 0.82)',
+  backdropFilter: 'blur(20px)',
 }).toString();
 
 const content = css({
-  padding: themeConfig.variables.gap.small * 3,
-  paddingBottom: themeConfig.variables.gap.small * 2,
+  padding: '16px',
 }).toString();
 
 const title = css({
-  fontSize: '1.125rem',
   textAlign: 'center',
-  lineHeight: themeConfig.font.lineHeight,
-  fontWeight: 500,
-  paddingBottom: themeConfig.variables.gap.small,
-  marginTop: '-.25em',
+  fontWeight: 600,
 }).toString();
 
 const body = css({
   color: '#000',
   flexGrow: 1,
-  fontSize: '0.875rem',
+  fontSize: '.765rem',
   textAlign: 'center',
   overflow: 'auto',
 }).toString();
@@ -47,8 +42,7 @@ const actions = css({
 const button = css({
   // Increases specifity to allow button customization.
   '&&': {
-    fontSize: '1.06rem',
-    fontWeight: 'normal',
+    fontWeight: 600,
     minWidth: '50%',
     flexGrow: 1,
   },
@@ -67,7 +61,7 @@ const button = css({
 
 const buttonPrimary = css({
   '&&': {
-    fontWeight: 500,
+    fontWeight: 600,
   },
 }).toString();
 

@@ -5,20 +5,18 @@ import variables from 'Styles/variables';
 const button = css({
   color: 'inherit',
   outline: 0,
-  marginLeft: 10,
   display: 'flex',
   alignItems: 'center',
   textOverflow: 'ellipsis',
+  padding: 0,
   justifyContent: 'center',
-  height: variables.filterbar.height,
+  height: 44,
   whiteSpace: 'nowrap',
 }).toString();
 
 const selection = css({
-  fontSize: '0.875rem',
-  fontWeight: '500',
+  fontSize: '0.8823rem',
   lineHeight: 1,
-  paddingTop: 1,
   alignSelf: 'center',
 }).toString();
 
