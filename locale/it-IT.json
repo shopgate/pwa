@@ -1,6 +1,6 @@
 {
   "common": {
-    "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# day {time}} other {# days {time}}}",
+    "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# giorno {time}} other {# giorni {time}}}",
     "load_more": "Carica altro",
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
@@ -12,7 +12,6 @@
     "cart": "Carrello",
     "shipping": "Spedizione",
     "reviews": "Recensioni",
-    "browse": "Sfoglia",
     "favorites": "Favoriti"
   },
   "favorites": {
@@ -49,15 +48,11 @@
       "range": "{from} o altro: {price}"
     },
     "msrp": "SRP",
-    "currency": "Dollari"
   },
   "product": {
     "description_heading": "A riguardo",
     "pick_an_attribute": "Seleziona un {0}",
-    "tax_disclaimer": "* Incl. IVA pi˘ costi di spedizione",
-    "item_added": "{count, plural, =0 {# non ci sono elementi aggiunti} =1 {{count} elemento aggiunto} other {{count} elementi aggiunti}}",
-    "add_to_cart": "Aggiungi al carrello",
-    "go_to_cart": "Vai al carrello"
+    "tax_disclaimer": "* Incl. IVA pi˘ costi di spedizione"
   },
   "category": {
     "error": {
@@ -70,19 +65,18 @@
     }
   },
   "search": {
-    "label": "Cerca",
-    "cancel": "Cancella",
     "no_result": {
       "heading": "Ops!",
-      "body": "La vostra ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    }
+      "body": "La tua ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
+    },
+    "placeholder": "Cerca"
   },
   "shipping": {
     "unknown": "pi˘ spedizione",
     "free": "Spedizione gratuita",
     "free_short": "Gratis",
     "cost": "{price} spedizione"
-   },
+  },
   "liveshopping": {
     "discount_badge": "RISPARMIA {0}%"
   },
@@ -108,60 +102,50 @@
     "free_shipping": "Spedizione Gratuita"
   },
   "login": {
-    "headline": "Benvenuto / a",
+    "headline": "Benvenuto/a",
     "subline": "Accedi per continuare",
     "email": "E-mail",
     "password": "Password",
     "forgot_password": "Password dimenticata?",
-    "forgot_password_popup": "Usare il sito web del desktop per resettare la password prego.",
+    "forgot_password_popup": "Usa il sito web del desktop per resettare la password prego.",
     "button": "Accedi",
     "no_account": "Non hai un account?",
-    "signup": "Registrati",
+    "register": "Creane uno quÏ!",
     "logout_message": "Sei uscito dall'account.",
     "error": "I tuoi nome utente e password non corrispondono ad alcun account"
   },
   "navigation": {
     "login_register": "Accedi / Registrati",
-    "your_account": "Il tuo Account",
     "home": "Pagina iniziale",
     "categories": "Categorie",
+    "favorites": "Favoriti",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
     "shipping": "Modalit‡ di spedizione",
-    "about": "A riguardo",
-    "contact": "Contatta",
-    "payment": "Metodi di Pagamento",
-    "terms": "Termini e Condizioni",
-    "privacy": "Politica della Privacy",
-    "welcome_message": "Benvenuto / a {name}",
-    "return_policy": "Politica di Restituzione",
-    "logout": "Esci",
-    "store_information": "Informazioni del Negozio",
-    "more_menu": "Altro"
+    "about": "Su di noi",
+    "payment": "Modalit‡ di pagamento",
+    "terms": "Termini",
+    "privacy": "Politica sulla privacy",
+    "return_policy": "Politica di restituzione",
+    "welcome_message": "Benvenuto/a {name}",
+    "logout": "Abbandona"
   },
   "reviews": {
     "rating": "valutazione",
     "no_reviews": "Vota prima degli altri questo prodotto:",
     "review_count": "({count} {count, plural, =1 {Recensione} other {Recensioni}})",
-    "button_add": "Aggiungi una recensione",
+    "button_add": "Scrivi una recensione",
     "button_all": "Tutte le {count} Recensioni",
     "author": "da {author}",
     "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}}",
     "review_form_rate": "Vota questo prodotto:",
     "review_form_author": "Il tuo nome",
-    "review_form_title": "Titolo della recensione (opzionale)",
-    "review_form_text": "Recensione del prodotto (opzionale)",
+    "review_form_title": "Titolo della recensione (optional)",
+    "review_form_text": "Recensione del prodotto (optional)",
     "review_form_error_author_empty": "Inserire un nome prego.",
     "review_form_rate_error": "Selezionare le stelle per la valutazione prego.",
     "review_form_error_length": "Massima lunghezza {length} caratteri.",
     "press_to_rate_with_x_stars": "Premere per votare con {rate} {rate, plural, =1 {stella} other {stelle}}.",
     "success_message": "Grazie per la tua recensione!"
-  },
-  "tab_bar": {
-    "home": "Pagina Iniziale",
-    "browse": "Sfoglia",
-    "cart": "Carrello",
-    "more": "Altro",
-    "favorites": "Favoriti"
   }
 }

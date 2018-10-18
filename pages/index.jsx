@@ -26,7 +26,7 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
-import SnackBar from '@shopgate/pwa-ui-material/SnackBar';
+import Notification from '@shopgate/pwa-ui-ios/Notification';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
@@ -47,7 +47,7 @@ const Pages = ({ store }) => (
           <Portal name={APP_GLOBALS} />
           <Viewport>
             <ModalContainer component={Dialog} />
-            <Toaster render={props => <SnackBar {...props} />} />
+            <Toaster render={props => <Notification {...props} />} />
             <Router history={history}>
               <Route pattern={INDEX_PATH} component={routes.StartPage} />
               <Route pattern={PAGE_PATTERN} component={routes.Page} preload />
