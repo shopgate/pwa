@@ -12,7 +12,7 @@ exports[`<Logo /> should render an image 1`] = `
     alt="Shopgate Connect"
     className={
       Object {
-        "data-css-1yo7ngy": "",
+        "data-css-14ktvy6": "",
       }
     }
     src="https://example.com/logo"

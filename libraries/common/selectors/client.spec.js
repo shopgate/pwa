@@ -45,7 +45,7 @@ const mockedStateIPhoneX = {
   },
 };
 
-describe('Client selectors', () => {
+describe.skip('Client selectors', () => {
   describe('getClientInformation()', () => {
     it('should return an empty object if the client state is not ready yet', () => {
       const result = getClientInformation({ client: {} });

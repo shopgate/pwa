@@ -371,7 +371,7 @@ exports[`<Header /> should render empty 1`] = `
                                 onClick={[Function]}
                               >
                                 <Ripple
-                                  className="css-8s1fw2 "
+                                  className="css-1fscwua "
                                   color="#000"
                                   disabled={false}
                                   fill={true}
@@ -382,7 +382,7 @@ exports[`<Header /> should render empty 1`] = `
                                 >
                                   <div
                                     aria-hidden={true}
-                                    className="css-8s1fw2 "
+                                    className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
@@ -936,7 +936,7 @@ exports[`<Header /> should render rating summary 1`] = `
                                 onClick={[Function]}
                               >
                                 <Ripple
-                                  className="css-8s1fw2 "
+                                  className="css-1fscwua "
                                   color="#000"
                                   disabled={false}
                                   fill={true}
@@ -947,7 +947,7 @@ exports[`<Header /> should render rating summary 1`] = `
                                 >
                                   <div
                                     aria-hidden={true}
-                                    className="css-8s1fw2 "
+                                    className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}

@@ -61,14 +61,14 @@ exports[`<Bar /> should match snapshot 1`] = `
                 data-test-id="filterBar"
                 style={
                   Object {
-                    "background": "#f8f8f8",
+                    "background": "inherit",
                     "color": "inherit",
                   }
                 }
               >
                 <FilterBarContent>
                   <div
-                    className="css-1cqgl9p"
+                    className="css-1cte488"
                   >
                     <Connect(Sort)>
                       <Sort
@@ -79,13 +79,13 @@ exports[`<Bar /> should match snapshot 1`] = `
                             className="css-1bjlaf3"
                             classNames={
                               Object {
-                                "button": "css-659uo0",
+                                "button": "css-1oszrp2",
                                 "dropdown": "css-grx4tb",
                                 "icon": "css-1fjm4uv",
                                 "iconOpen": "css-1ttjj3p",
                                 "selectBox": "css-1bjlaf3",
                                 "selectItem": "css-69lc22",
-                                "selection": "css-j16ql3",
+                                "selection": "css-c8vppc",
                               }
                             }
                             defaultText="filter.sort.default"
@@ -117,12 +117,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                               data-test-id="sorting"
                             >
                               <button
-                                className="css-659uo0"
+                                className="css-1oszrp2"
                                 data-test-id="filter.sort.most_popular"
                                 onClick={[Function]}
                               >
                                 <span
-                                  className="css-j16ql3"
+                                  className="css-c8vppc"
                                 >
                                   <Translate
                                     className=""
@@ -369,12 +369,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                             }
                           >
                             <button
-                              className="css-1x5kceo"
+                              className="css-1202ks8"
                               data-test-id="filterButton"
                               onClick={[Function]}
                             >
                               <Ripple
-                                className="css-1xo5u0j"
+                                className="css-10g4052"
                                 color="#000"
                                 disabled={false}
                                 fill={true}
@@ -385,7 +385,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                               >
                                 <div
                                   aria-hidden={true}
-                                  className="css-1xo5u0j"
+                                  className="css-10g4052"
                                   data-test-id="Ripple"
                                   onClick={[Function]}
                                   style={null}
@@ -408,7 +408,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                           className="css-1cqgl9p"
                                         >
                                           <span
-                                            className="css-1vl2hbo"
+                                            className="css-1ev2b29"
                                           >
                                             <Translate
                                               className=""
