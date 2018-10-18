@@ -10,7 +10,7 @@ import AppCommand from '../classes/AppCommand';
 export default (params) => {
   const merged = {
     title: '',
-    imageUrl: '',
+    imageURL: '',
     deepLink: '',
     ...params,
   };
