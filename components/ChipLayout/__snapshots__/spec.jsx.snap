@@ -123,7 +123,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
               onClick={[Function]}
             >
               <Ripple
-                className="css-8s1fw2 "
+                className="css-1fscwua "
                 color="#000"
                 disabled={false}
                 fill={true}
@@ -134,7 +134,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="css-8s1fw2 "
+                  className="css-1fscwua "
                   data-test-id="Ripple"
                   onClick={[Function]}
                   style={null}
@@ -355,7 +355,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               onClick={[Function]}
             >
               <Ripple
-                className="css-8s1fw2 "
+                className="css-1fscwua "
                 color="#000"
                 disabled={false}
                 fill={true}
@@ -366,7 +366,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="css-8s1fw2 "
+                  className="css-1fscwua "
                   data-test-id="Ripple"
                   onClick={[Function]}
                   style={null}
