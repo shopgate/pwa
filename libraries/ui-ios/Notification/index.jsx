@@ -88,7 +88,7 @@ class Notification extends Component {
         in={this.state.visible}
         onEntered={this.handleEntered}
         onExited={this.props.removeToast}
-        timeout={250}
+        timeout={200}
       >
         {state => (
           <div className={styles.wrapper} style={transition[state]}>

@@ -2,12 +2,12 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const wrapper = css({
-  top: 0,
+  top: 'var(--safe-area-inset-top)',
   display: 'flex',
   justifyContent: 'center',
   left: 0,
   position: 'fixed',
-  transition: 'transform .25s cubic-bezier(0, 0, .2, 1)',
+  transition: 'transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   width: '100%',
   willChange: 'transform',
   zIndex: 51,
