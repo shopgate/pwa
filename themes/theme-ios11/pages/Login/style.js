@@ -8,14 +8,13 @@ const container = css({
 }).toString();
 
 const headline = css({
-  fontSize: '2.1875rem',
-  lineHeight: 1,
-  fontWeight: 500,
+  fontSize: '2rem',
+  lineHeight: 1.2,
+  fontWeight: 700,
 }).toString();
 
 const subline = css({
   fontSize: '1.125rem',
-  color: colors.shade6,
   marginBottom: variables.gap.big,
   marginTop: 4,
 }).toString();
