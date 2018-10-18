@@ -4,9 +4,12 @@ import {
   TOGGLE_LOGGED_IN,
   ERROR_LOGIN,
   SUCCESS_LOGOUT,
+  DISABLE_LOGIN,
 } from '../../constants/ActionTypes';
 
 const defaultState = {
+  isFetching: false,
+  disabled: false,
   isLoggedIn: false,
   errors: null,
 };
@@ -19,6 +22,11 @@ const defaultState = {
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case DISABLE_LOGIN:
+      return {
+        ...state,
+        disabled: action.value,
+      };
     case REQUEST_LOGIN:
       return {
         ...state,
