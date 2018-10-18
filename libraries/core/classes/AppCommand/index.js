@@ -1,5 +1,5 @@
 /* global SGJavascriptBridge */
-import { logger, hasSGJavaScriptBridge } from '../../helpers';
+import { logger, hasSGJavaScriptBridge, useBrowserConnector } from '../../helpers';
 import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
 import * as appCommands from '../../constants/AppCommands';
@@ -9,8 +9,6 @@ import {
   GET_PERMISSIONS_COMMAND_NAME,
   REQUEST_PERMISSIONS_COMMAND_NAME,
 } from '../../constants/AppPermissions';
-
-const appConfig = process.env.APP_CONFIG || {};
 
 /**
  * The app command class.
@@ -148,7 +146,7 @@ class AppCommand {
 
     /* istanbul ignore else */
     if (!hasSGJavaScriptBridge()) {
-      if (!appConfig.browserConnector) {
+      if (!useBrowserConnector()) {
         bridge = new DevServerBridge();
       } else {
         bridge = new BrowserConnector();

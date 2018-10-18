@@ -14,6 +14,7 @@ jest.mock('../../helpers', () => ({
     log: () => {},
   },
   hasSGJavaScriptBridge: () => false,
+  useBrowserConnector: () => false,
 }));
 
 const mockedLogGroup = jest.fn();

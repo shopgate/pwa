@@ -42,3 +42,14 @@ export const ajaxUrl = action => (action ? `sgapi:${action}` : '');
 export function hasSGJavaScriptBridge() {
   return (typeof SGJavascriptBridge !== 'undefined');
 }
+
+/**
+ * @return {boolean}
+ */
+export function useBrowserConnector() {
+  if (process.env.NODE_ENV === 'development' && process.env.IP && process.env.PORT) {
+    return true;
+  }
+
+  return false;
+}

@@ -116,6 +116,24 @@ class BrowserConnector {
   }
 
   /**
+   * @param {string} libVersion The library version.
+   * @returns {string}
+   */
+  getRequestBody(libVersion) {
+    if (this.isPipelineRequest) {
+      const { p } = this.command;
+      const { input } = p;
+
+      return JSON.stringify(input);
+    }
+
+    return JSON.stringify({
+      cmds: [this.command],
+      ver: libVersion,
+    });
+  }
+
+  /**
    * Dispatches a single command to the dev server.
    * @param {Object} command The command to dispatch.
    * @param {string} libVersion The lib version for the command.
@@ -129,14 +147,12 @@ class BrowserConnector {
       const URL = this.isPipelineRequest ? this.connectUrl : this.localURL;
       const options = {
         method: this.requestType,
+        credentials: 'include',
         headers: new Headers({
           'Content-Type': 'application/json',
         }),
         ...this.isPOST && {
-          body: JSON.stringify({
-            cmds: [this.command],
-            ver: libVersion,
-          }),
+          body: this.getRequestBody(libVersion),
         },
       };
 
