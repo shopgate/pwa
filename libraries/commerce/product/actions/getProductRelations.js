@@ -7,6 +7,7 @@ import errorProductRelations from '../action-creators/errorProductRelations';
 import { SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS } from '../constants/Pipelines';
 import { generateProductRelationsHash } from '../helpers';
 import { getProductRelationsState } from '../selectors/relations';
+import { PRODUCT_RELATIONS_DEFAULT_LIMIT } from '../constants/';
 
 /**
  * Action starts product relation fetching process.
@@ -17,7 +18,7 @@ import { getProductRelationsState } from '../selectors/relations';
  * @param {number} params.limit Query limit.
  * @returns {Function}
  */
-const getProductRelations = ({ productId, type, limit }) =>
+const getProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAULT_LIMIT }) =>
   (dispatch, getState) => {
     const pipeline = SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS;
     const hash = generateProductRelationsHash({

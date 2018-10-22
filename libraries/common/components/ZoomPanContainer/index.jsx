@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Hammer from 'react-hammerjs';
+import Hammer from '@shopgate/react-hammerjs';
 import clamp from 'lodash/clamp';
 import style from './style';
 
