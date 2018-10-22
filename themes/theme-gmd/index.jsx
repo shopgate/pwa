@@ -12,6 +12,4 @@ import React from 'react';
 import { render } from 'react-dom';
 import Pages from './pages';
 
-console.warn(process.env);
-
 render(<Pages />, document.getElementById('root'));

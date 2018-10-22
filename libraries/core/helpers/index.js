@@ -44,12 +44,17 @@ export function hasSGJavaScriptBridge() {
 }
 
 /**
+ * Checks whether the browser connector should be used.
  * @return {boolean}
  */
 export function useBrowserConnector() {
-  if (process.env.NODE_ENV === 'development' && process.env.IP && process.env.PORT) {
-    return true;
+  if (hasSGJavaScriptBridge()) {
+    return false;
   }
 
-  return false;
+  if (process.env.NODE_ENV === 'development' && process.env.IP && process.env.PORT) {
+    return false;
+  }
+
+  return true;
 }

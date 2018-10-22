@@ -107,6 +107,20 @@ class AppCommand {
   }
 
   /**
+   * Creates a new bridge based on the current environment.
+   * @returns {Object}
+   */
+  static createBridge() {
+    if (useBrowserConnector()) {
+      return new BrowserConnector();
+    } else if (hasSGJavaScriptBridge()) {
+      return SGJavascriptBridge;
+    }
+
+    return new DevServerBridge();
+  }
+
+  /**
    * Dispatches the command to the app.
    * The returned promise will not be rejected for now in error cases to avoid the necessity
    * of refactoring within existing code. But it resolves with FALSE in those cases.
@@ -142,18 +156,8 @@ class AppCommand {
       return false;
     }
 
-    let bridge;
-
-    /* istanbul ignore else */
-    if (!hasSGJavaScriptBridge()) {
-      if (!useBrowserConnector()) {
-        bridge = new DevServerBridge();
-      } else {
-        bridge = new BrowserConnector();
-      }
-    } else {
-      bridge = SGJavascriptBridge;
-    }
+    // Create a new bridge that handles this comamnd.
+    const bridge = AppCommand.createBridge();
 
     try {
       if ('dispatchCommandForVersion' in bridge) {
