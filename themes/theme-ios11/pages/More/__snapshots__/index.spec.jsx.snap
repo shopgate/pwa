@@ -1537,6 +1537,7 @@ exports[`More should render for logged out user 1`] = `
               <Connect(LoggedOut)>
                 <LoggedOut
                   dispatch={[Function]}
+                  isDisabled={false}
                 >
                   <div
                     data-test-id="userMenu"

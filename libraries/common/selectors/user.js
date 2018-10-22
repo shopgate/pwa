@@ -22,7 +22,7 @@ export const getUserData = state => state.user.data;
 export const getLoginData = state => state.user.login;
 
 /**
- * Selects the isFetching state of the login action from the redux store.
+ * Selects the disabled state of the login action from the redux store.
  * @param {Object} state The application state.
  * @return {Object|null}
  */

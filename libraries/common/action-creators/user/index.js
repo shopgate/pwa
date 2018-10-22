@@ -123,7 +123,7 @@ export const toggleLoggedIn = value => ({
 
 /**
  * Creates the dispatched DISABLE_LOGIN action object.
- * @param {bool} value Whether it is enabled or disabled.
+ * @param {boolean} value Whether it is enabled or disabled.
  * @returns {Object}
  */
 export const disableLogin = value => ({

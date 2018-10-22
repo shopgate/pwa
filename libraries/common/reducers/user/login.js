@@ -1,4 +1,5 @@
 import {
+  APP_DID_START,
   REQUEST_LOGIN,
   SUCCESS_LOGIN,
   TOGGLE_LOGGED_IN,
@@ -22,6 +23,11 @@ const defaultState = {
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case APP_DID_START:
+      return {
+        ...state,
+        disabled: false,
+      };
     case DISABLE_LOGIN:
       return {
         ...state,
