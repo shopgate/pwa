@@ -51,7 +51,10 @@
   "product": {
     "description_heading": "Over",
     "pick_an_attribute": "Kies een {0}",
-    "tax_disclaimer": "* Incl. BTW plus verzendkosten"
+    "tax_disclaimer": "* Incl. BTW plus verzendkosten",
+    "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
+    "add_to_cart": "Voeg aan winkelwagen toe",
+    "go_to_cart": "Winkelwagen"
   },
   "category": {
     "error": {
@@ -150,5 +153,12 @@
     "review_form_error_length": "Maximum lengte {length} karakters.",
     "press_to_rate_with_x_stars": "Selecteer om te waarderen met {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Bedankt voor uw beoordeling!"
+  },
+  "tab_bar": {
+    "home": "Home",
+    "browse": "Bladeren",
+    "cart": "Winkelwagen",
+    "more": "Meer",
+    "favorites": "Favorieten"
   }
 }
