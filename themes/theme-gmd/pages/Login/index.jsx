@@ -27,11 +27,13 @@ import styles from './style';
 class Login extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
+    isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
   };
 
   static defaultProps = {
     isLoading: false,
+    isDisabled: false,
   };
   /**
    * Constructor.
@@ -139,7 +141,7 @@ class Login extends Component {
                   <ForgotPassword />
                 </div>
                 <div className={styles.buttonWrapper} data-test-id="LoginButton">
-                  <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
+                  <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading || this.props.isDisabled}>
                     <I18n.Text string="login.button" />
                   </RippleButton>
                 </div>
@@ -150,7 +152,7 @@ class Login extends Component {
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
               <Portal name={PAGE_LOGIN_REGISTER_LINK} >
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
-                <Link href="/register" className={styles.signup}>
+                <Link href="/register" className={styles.signup} disabled={this.props.isLoading || this.props.isDisabled}>
                   <I18n.Text string="login.register" />
                 </Link>
               </Portal>
