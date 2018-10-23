@@ -65,7 +65,7 @@ module.exports = {
     buttonBase: {
       borderRadius: 14,
       fontWeight: 600,
-      fontSize: 20,
+      fontSize: 17,
       padding: '8px 16px',
     },
     discountBadgeBase: {
