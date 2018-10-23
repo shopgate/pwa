@@ -10,6 +10,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
   isOrderable={true}
   noShadow={false}
   onClick={[MockFunction]}
+  onReset={[Function]}
 >
   <button
     className="null css-68omm3 css-nil"
@@ -145,6 +146,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       ],
     }
   }
+  onReset={[Function]}
 >
   <button
     className="null css-68omm3 css-nil"
@@ -250,6 +252,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       ],
     }
   }
+  onReset={[Function]}
 >
   <button
     className="null css-68omm3 css-nil"
