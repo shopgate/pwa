@@ -53,7 +53,7 @@ const createComponent = (mockedState) => {
   return mount(<Provider store={store}><TabBarConnected /></Provider>);
 };
 
-const mockOpen = jest.fn();
+// const mockOpen = jest.fn();
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   hasFavorites: true,
