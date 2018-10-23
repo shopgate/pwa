@@ -100,7 +100,7 @@ class ProductImage extends Component {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={styles.placeholderContainer} >
+        <div className={`${styles.placeholderContainer} ${styles.innerShadow}`} >
           <div className={styles.placeholderContent} data-test-id="placeHolder">
             <Placeholder className={styles.placeholder} />
           </div>
@@ -110,11 +110,14 @@ class ProductImage extends Component {
 
     // Return the actual image.
     return (
-      <Image
-        {...this.props}
-        backgroundColor={colors.light}
-        onError={this.imageLoadingFailed}
-      />
+      <div className={styles.innerShadow}>
+        <Image
+          {...this.props}
+          className={styles.innerShadow}
+          backgroundColor={colors.light}
+          onError={this.imageLoadingFailed}
+        />
+      </div>
     );
   }
 }
