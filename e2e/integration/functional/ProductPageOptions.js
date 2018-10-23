@@ -3,7 +3,7 @@
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
-describe('functional test product page', () => {
+describe('functional test product page options', () => {
   it('should check for options select', () => {
     cy.visit('');
 
@@ -17,6 +17,7 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.redBallColorOption)
+      .last()
       .should('be.visible')
       .click();
     cy.wait(1000);
@@ -24,6 +25,7 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.lowGlowOption)
+      .last()
       .should('be.visible')
       .click();
     cy.get('[data-test-id="Ball color"] span')
