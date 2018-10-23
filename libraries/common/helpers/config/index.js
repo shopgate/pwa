@@ -1,4 +1,3 @@
-import merge from 'lodash/merge';
 import { themeConfig as mock } from './mock';
 /**
  * Provides a default app config as a fallback.
@@ -52,8 +51,6 @@ const defaultComponentsConfig = {
  */
 const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : defaultAppConfig;
 
-const { themeConfig: appThemeConfig } = appConfig;
-
 /**
  * The components.json config from the theme.
  * @typedef {Object}
@@ -64,7 +61,7 @@ export const componentsConfig = { ...defaultComponentsConfig, ...process.env.COM
  * The theme configuration.
  * @typedef {Object}
  */
-export const themeConfig = merge(process.env.NODE_ENV === 'test' ? mock : (process.env.THEME_CONFIG || defaultThemeConfig), appThemeConfig);
+export const themeConfig = process.env.NODE_ENV === 'test' ? mock : (process.env.THEME_CONFIG || defaultThemeConfig);
 
 /**
  * The shop number.

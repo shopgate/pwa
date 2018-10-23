@@ -12,8 +12,7 @@ const card = css({
 }).toString();
 
 const cardInnerBox = css({
-  borderRadius: variables.liveshoppingWidget.borderRadius,
-  boxShadow: variables.liveshoppingWidget.boxShadow,
+  borderRadius: 11,
 }).toString();
 
 const pane = {
