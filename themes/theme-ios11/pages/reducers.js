@@ -17,6 +17,7 @@ import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import router from '@virtuous/redux-conductor/reducer';
 import extensions from 'Extensions/reducers';
 import viewSwitch from 'Components/FilterBar/components/Content/components/ViewSwitch/reducer';
+import tabBar from 'Components/TabBar/reducer';
 
 persistReducers.set([
   'cart',
@@ -41,6 +42,7 @@ const reducers = combineReducers({
   reviews,
   search,
   ui: combineReducers({
+    tabBar,
     viewSwitch,
   }),
   url,

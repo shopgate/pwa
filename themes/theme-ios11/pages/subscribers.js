@@ -33,6 +33,7 @@ import page from 'Pages/Page/subscriptions';
 import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
+import tabBar from 'Components/TabBar/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
@@ -73,6 +74,7 @@ const subscriptions = [
   search,
   reviews,
   writeReview,
+  tabBar,
   // Extensions
   ...extensions,
 ];
