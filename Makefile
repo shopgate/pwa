@@ -109,6 +109,8 @@ release:
 		$(call create-github-releases)
 		$(call finalize-release)
 
+github-releases:
+		$(call create-github-releases)
 
 # Clean the repository before starting a release.
 clean:
@@ -176,6 +178,8 @@ endef
 
 
 # UPDATE-VERSIONS ##################################################################################
+upd-ext-vers:
+		$(call update-versions)
 
 define update-versions
 		$(call update-pwa-versions)
