@@ -1,0 +1,622 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TabBar /> custom props should pass custom props to the tab action 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(TabBar)>
+    <TabBar
+      activeTab="/"
+      cartProductCount={0}
+      dispatch={[Function]}
+      isVisible={false}
+      path="/"
+      visibleTabs={
+        Array [
+          Object {
+            "customProp": "my custom prop",
+            "label": "bar",
+            "type": "foo",
+          },
+        ]
+      }
+    />
+  </Connect(TabBar)>
+</Provider>
+`;
+
+exports[`<TabBar /> should not render when invisible 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(TabBar)>
+    <TabBar
+      activeTab="home"
+      cartProductCount={0}
+      dispatch={[Function]}
+      isVisible={false}
+      path="/"
+      visibleTabs={
+        Array [
+          Object {
+            "label": "tab_bar.home",
+            "type": "home",
+          },
+          Object {
+            "label": "tab_bar.cart",
+            "type": "cart",
+          },
+          Object {
+            "label": "tab_bar.favorites",
+            "type": "favorites",
+          },
+        ]
+      }
+    />
+  </Connect(TabBar)>
+</Provider>
+`;
+
+exports[`<TabBar /> should render when visible 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(TabBar)>
+    <TabBar
+      activeTab="home"
+      cartProductCount={0}
+      dispatch={[Function]}
+      isVisible={true}
+      path="/"
+      visibleTabs={
+        Array [
+          Object {
+            "label": "tab_bar.home",
+            "type": "home",
+          },
+          Object {
+            "label": "tab_bar.cart",
+            "type": "cart",
+          },
+          Object {
+            "label": "tab_bar.favorites",
+            "type": "favorites",
+          },
+        ]
+      }
+    >
+      <KeyboardConsumer>
+        <div
+          data-test-id="tabBar"
+        >
+          <Grid
+            className="css-1evzxa3"
+            component="ul"
+            wrap={false}
+          >
+            <ul
+              className="css-1evzxa3 css-h7r55a"
+            >
+              <Connect(TabBarHomeAction)
+                isHighlighted={true}
+                key="home"
+                label="tab_bar.home"
+                path="/"
+                type="home"
+              >
+                <TabBarHomeAction
+                  historyPush={[Function]}
+                  icon={null}
+                  isHighlighted={true}
+                  label="tab_bar.home"
+                  onClick={null}
+                  path="/"
+                  type="home"
+                >
+                  <Portal
+                    name="tab-bar.home.before"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": true,
+                        "label": "tab_bar.home",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "home",
+                      }
+                    }
+                  />
+                  <Portal
+                    name="tab-bar.home"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": true,
+                        "label": "tab_bar.home",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "home",
+                      }
+                    }
+                  >
+                    <TabBarAction
+                      historyPush={[Function]}
+                      icon={
+                        <Portal
+                          name="tab-bar.home-icon"
+                          props={null}
+                        >
+                          <Home
+                            className="css-1rqxdrd"
+                          />
+                        </Portal>
+                      }
+                      isHighlighted={true}
+                      label="tab_bar.home"
+                      onClick={[Function]}
+                      path="/"
+                      type="home"
+                    >
+                      <Button
+                        className="css-1kz5xrj css-7rfn3t"
+                        disabled={false}
+                        onClick={[Function]}
+                        testId="Button"
+                      >
+                        <button
+                          className="css-1kz5xrj css-7rfn3t css-1rn65c0"
+                          data-test-id="Button"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <Portal
+                            name="tab-bar.home-icon"
+                            props={null}
+                          >
+                            <Home
+                              className="css-1rqxdrd"
+                            >
+                              <Icon
+                                className="css-1rqxdrd"
+                                color={null}
+                                content="
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M63.6,27.6V10.4a1.028,1.028,0,0,0-1.1-1H49.4a1.1,1.1,0,0,0-1.1,1V27.6a1.028,1.028,0,0,0,1.1,1H62.5A1.028,1.028,0,0,0,63.6,27.6ZM62.6,8A2.433,2.433,0,0,1,65,10.4V27.6A2.433,2.433,0,0,1,62.6,30H49.4A2.433,2.433,0,0,1,47,27.6V10.4A2.433,2.433,0,0,1,49.4,8ZM49.8,27H62.3V14.7H49.8Zm.7-14.6H56A.7.7,0,1,0,56,11H50.5a.7.7,0,1,0,0,1.4Z\\"
+    transform=\\"translate(-3112 1705)\\"
+  />
+"
+                                size="inherit"
+                                viewBox="-3065 1713 18 22"
+                              >
+                                <svg
+                                  className="css-yys9hb css-1rqxdrd"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M63.6,27.6V10.4a1.028,1.028,0,0,0-1.1-1H49.4a1.1,1.1,0,0,0-1.1,1V27.6a1.028,1.028,0,0,0,1.1,1H62.5A1.028,1.028,0,0,0,63.6,27.6ZM62.6,8A2.433,2.433,0,0,1,65,10.4V27.6A2.433,2.433,0,0,1,62.6,30H49.4A2.433,2.433,0,0,1,47,27.6V10.4A2.433,2.433,0,0,1,49.4,8ZM49.8,27H62.3V14.7H49.8Zm.7-14.6H56A.7.7,0,1,0,56,11H50.5a.7.7,0,1,0,0,1.4Z\\"
+    transform=\\"translate(-3112 1705)\\"
+  />
+",
+                                    }
+                                  }
+                                  style={
+                                    Object {
+                                      "fill": null,
+                                      "fontSize": "inherit",
+                                    }
+                                  }
+                                  viewBox="-3065 1713 18 22"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                />
+                              </Icon>
+                            </Home>
+                          </Portal>
+                          <div
+                            className="css-1oe88ku"
+                            data-test-id="tab_bar.home"
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="tab_bar.home"
+                            >
+                              <span
+                                className=""
+                              >
+                                tab_bar.home
+                              </span>
+                            </Translate>
+                          </div>
+                        </button>
+                      </Button>
+                    </TabBarAction>
+                  </Portal>
+                  <Portal
+                    name="tab-bar.home.after"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": true,
+                        "label": "tab_bar.home",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "home",
+                      }
+                    }
+                  />
+                </TabBarHomeAction>
+              </Connect(TabBarHomeAction)>
+              <Connect(TabBarCartAction)
+                isHighlighted={false}
+                key="cart"
+                label="tab_bar.cart"
+                path="/"
+                type="cart"
+              >
+                <TabBarCartAction
+                  historyPush={[Function]}
+                  icon={null}
+                  isHighlighted={false}
+                  label="tab_bar.cart"
+                  onClick={null}
+                  path="/"
+                  type="cart"
+                >
+                  <Portal
+                    name="tab-bar.cart.before"
+                    props={
+                      Object {
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": false,
+                        "label": "tab_bar.cart",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "cart",
+                      }
+                    }
+                  />
+                  <Portal
+                    name="tab-bar.cart"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": false,
+                        "label": "tab_bar.cart",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "cart",
+                      }
+                    }
+                  >
+                    <TabBarAction
+                      historyPush={[Function]}
+                      icon={
+                        <Portal
+                          name="tab-bar.cart-icon"
+                          props={null}
+                        >
+                          <CartIcon
+                            className="css-betil4"
+                          />
+                        </Portal>
+                      }
+                      isHighlighted={false}
+                      label="tab_bar.cart"
+                      onClick={[Function]}
+                      path="/"
+                      type="cart"
+                    >
+                      <Button
+                        className="css-1kz5xrj css-1livkh4"
+                        disabled={false}
+                        onClick={[Function]}
+                        testId="Button"
+                      >
+                        <button
+                          className="css-1kz5xrj css-1livkh4 css-1rn65c0"
+                          data-test-id="Button"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <Portal
+                            name="tab-bar.cart-icon"
+                            props={null}
+                          >
+                            <CartIcon
+                              className="css-betil4"
+                            >
+                              <Icon
+                                className="css-betil4"
+                                color={null}
+                                content="
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M26.5,1.98,25.6,6.309H20.7L21.817,1ZM21.413,23.509A1.491,1.491,0,1,0,22.9,22.017a1.491,1.491,0,0,0-1.491,1.491Zm-5.505,0A1.491,1.491,0,1,0,17.4,22.017a1.491,1.491,0,0,0-1.491,1.491ZM19.322,3.167l-3.713.771L16.1,6.3h2.567ZM12.906,5a1.134,1.134,0,0,0-1.053-.735H9.379a1.129,1.129,0,1,0,0,2.258h1.695l3.468,9.027a1.134,1.134,0,0,0,1.053.735h7.837a1.095,1.095,0,1,1,0,2.189H14.987a1.129,1.129,0,1,0,0,2.258h8.451a3.348,3.348,0,0,0,2.339-5.748l2.777-5.008a1.129,1.129,0,0,0-.438-1.536,1.085,1.085,0,0,0-.38-.127H14.174Z\\"
+    transform=\\"translate(-10628.25 6657)\\"
+  />
+"
+                                size="inherit"
+                                viewBox="-10620 6658 20.447 24"
+                              >
+                                <svg
+                                  className="css-yys9hb css-betil4"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M26.5,1.98,25.6,6.309H20.7L21.817,1ZM21.413,23.509A1.491,1.491,0,1,0,22.9,22.017a1.491,1.491,0,0,0-1.491,1.491Zm-5.505,0A1.491,1.491,0,1,0,17.4,22.017a1.491,1.491,0,0,0-1.491,1.491ZM19.322,3.167l-3.713.771L16.1,6.3h2.567ZM12.906,5a1.134,1.134,0,0,0-1.053-.735H9.379a1.129,1.129,0,1,0,0,2.258h1.695l3.468,9.027a1.134,1.134,0,0,0,1.053.735h7.837a1.095,1.095,0,1,1,0,2.189H14.987a1.129,1.129,0,1,0,0,2.258h8.451a3.348,3.348,0,0,0,2.339-5.748l2.777-5.008a1.129,1.129,0,0,0-.438-1.536,1.085,1.085,0,0,0-.38-.127H14.174Z\\"
+    transform=\\"translate(-10628.25 6657)\\"
+  />
+",
+                                    }
+                                  }
+                                  style={
+                                    Object {
+                                      "fill": null,
+                                      "fontSize": "inherit",
+                                    }
+                                  }
+                                  viewBox="-10620 6658 20.447 24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                />
+                              </Icon>
+                            </CartIcon>
+                          </Portal>
+                          <div
+                            className="css-1oe88ku"
+                            data-test-id="tab_bar.cart"
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="tab_bar.cart"
+                            >
+                              <span
+                                className=""
+                              >
+                                tab_bar.cart
+                              </span>
+                            </Translate>
+                          </div>
+                          <Connect(CartItemBadge)>
+                            <CartItemBadge
+                              cartProductCount={0}
+                              dispatch={[Function]}
+                            />
+                          </Connect(CartItemBadge)>
+                        </button>
+                      </Button>
+                    </TabBarAction>
+                  </Portal>
+                  <Portal
+                    name="tab-bar.cart.after"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": false,
+                        "label": "tab_bar.cart",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "cart",
+                      }
+                    }
+                  />
+                </TabBarCartAction>
+              </Connect(TabBarCartAction)>
+              <Connect(TabBarFavoritesAction)
+                isHighlighted={false}
+                key="favorites"
+                label="tab_bar.favorites"
+                path="/"
+                type="favorites"
+              >
+                <TabBarFavoritesAction
+                  historyPush={[Function]}
+                  icon={null}
+                  isHighlighted={false}
+                  label="tab_bar.favorites"
+                  onClick={null}
+                  path="/"
+                  type="favorites"
+                >
+                  <Portal
+                    name="tab-bar.favorites.before"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": false,
+                        "label": "tab_bar.favorites",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "favorites",
+                      }
+                    }
+                  />
+                  <Portal
+                    name="tab-bar.favorites"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": false,
+                        "label": "tab_bar.favorites",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "favorites",
+                      }
+                    }
+                  >
+                    <TabBarAction
+                      historyPush={[Function]}
+                      icon={
+                        <Portal
+                          name="tab-bar.favorites-icon"
+                          props={null}
+                        >
+                          <Heart
+                            className="css-yrjpmv"
+                          />
+                        </Portal>
+                      }
+                      isHighlighted={false}
+                      label="tab_bar.favorites"
+                      onClick={[Function]}
+                      path="/"
+                      type="favorites"
+                    >
+                      <Button
+                        className="css-1kz5xrj css-1livkh4"
+                        disabled={false}
+                        onClick={[Function]}
+                        testId="Button"
+                      >
+                        <button
+                          className="css-1kz5xrj css-1livkh4 css-1rn65c0"
+                          data-test-id="Button"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <Portal
+                            name="tab-bar.favorites-icon"
+                            props={null}
+                          >
+                            <Heart
+                              className="css-yrjpmv"
+                            >
+                              <Icon
+                                className="css-yrjpmv"
+                                color={null}
+                                content="<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>"
+                                size="inherit"
+                                viewBox="0 0 24 24"
+                              >
+                                <svg
+                                  className="css-yys9hb css-yrjpmv"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>",
+                                    }
+                                  }
+                                  style={
+                                    Object {
+                                      "fill": null,
+                                      "fontSize": "inherit",
+                                    }
+                                  }
+                                  viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                />
+                              </Icon>
+                            </Heart>
+                          </Portal>
+                          <div
+                            className="css-1oe88ku"
+                            data-test-id="tab_bar.favorites"
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="tab_bar.favorites"
+                            >
+                              <span
+                                className=""
+                              >
+                                tab_bar.favorites
+                              </span>
+                            </Translate>
+                          </div>
+                          <Connect(FavoritesIconBadge)>
+                            <FavoritesIconBadge
+                              dispatch={[Function]}
+                              favoritesCount={2}
+                            >
+                              <div
+                                className="css-1i6tmkt"
+                              >
+                                2
+                              </div>
+                            </FavoritesIconBadge>
+                          </Connect(FavoritesIconBadge)>
+                        </button>
+                      </Button>
+                    </TabBarAction>
+                  </Portal>
+                  <Portal
+                    name="tab-bar.favorites.after"
+                    props={
+                      Object {
+                        "TabBarAction": [Function],
+                        "children": null,
+                        "historyPush": [Function],
+                        "icon": null,
+                        "isHighlighted": false,
+                        "label": "tab_bar.favorites",
+                        "onClick": null,
+                        "path": "/",
+                        "type": "favorites",
+                      }
+                    }
+                  />
+                </TabBarFavoritesAction>
+              </Connect(TabBarFavoritesAction)>
+            </ul>
+          </Grid>
+        </div>
+      </KeyboardConsumer>
+    </TabBar>
+  </Connect(TabBar)>
+</Provider>
+`;
