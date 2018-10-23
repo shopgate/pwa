@@ -51,6 +51,7 @@ describe('AndroidGMDTest FavoritesPage', () => {
       .should('be.visible')
       .click()
       .wait(6000);
+    cy.reload();
     cy.get(els.favoriteListItem)
       .contains('Product with many Properties - 4 -')
       .should('be.visible');

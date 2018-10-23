@@ -48,6 +48,7 @@ describe('AndroidGMDTest productPage', () => {
     cy.get(els.productWithManufacturerPropManufacturerProp)
       .should('be.visible');
     cy.get(els.productWithManufacturerPropManufacturerPropList)
+      .scrollIntoView()
       .should('be.visible');
   });
 
