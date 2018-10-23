@@ -13,6 +13,11 @@ class AddToCartButton extends PureComponent {
     handleAddToCart: PropTypes.func.isRequired,
     itemCount: PropTypes.number.isRequired,
     openCart: PropTypes.func.isRequired,
+    onReset: PropTypes.func,
+  }
+
+  static defaultProps = {
+    onReset: () => { },
   }
 
   /**
@@ -41,10 +46,16 @@ class AddToCartButton extends PureComponent {
    * Adds a new product to cart or opens the cart if it already has products in it.
    */
   handleClick = () => {
-    const { itemCount, handleAddToCart, openCart } = this.props;
+    const {
+      itemCount, handleAddToCart, openCart, onReset,
+    } = this.props;
 
     if (!itemCount) {
       handleAddToCart();
+      setTimeout(() => {
+        // Take care that the reset happens after the addToCart request was dispatched.
+        onReset();
+      }, 0);
       return;
     }
 

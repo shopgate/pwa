@@ -11,8 +11,8 @@ const container = css({
   outline: 0,
   boxShadow: 'none !important',
   borderRadius: '5px !important',
-  width: '44px !important',
-  height: '44px !important',
+  width: '50px !important',
+  height: '50px !important',
   zIndex: '0 !important',
   color: 'inherit',
   ':active svg': {

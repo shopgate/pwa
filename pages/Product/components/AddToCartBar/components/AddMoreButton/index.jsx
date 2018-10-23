@@ -8,6 +8,7 @@ import styles from './style';
  * @param {Function} handleAddToCart The addToCart handler.
  * @param {boolean} disabled Should the button shown as disabled.
  * @param {boolean} loading Should the button shown as loading.
+ * @param {Function} onReset The reset handler.
  * @return {JSX}
  */
 const AddMoreButton = ({
