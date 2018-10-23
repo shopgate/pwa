@@ -1,14 +1,10 @@
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import {
   TAB_HOME,
-  TAB_BROWSE,
   TAB_CART,
   TAB_FAVORITES,
-  TAB_MORE,
   TAB_NONE,
 } from './constants';
 
