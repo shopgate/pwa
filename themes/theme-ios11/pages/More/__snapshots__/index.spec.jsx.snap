@@ -1534,150 +1534,155 @@ exports[`More should render for logged out user 1`] = `
                 }
               }
             >
-              <LogOut>
-                <div
-                  data-test-id="userMenu"
+              <Connect(LoggedOut)>
+                <LoggedOut
+                  dispatch={[Function]}
+                  isDisabled={false}
                 >
-                  <Grid
-                    className="css-5wxciu"
-                    component="ul"
-                    wrap={false}
+                  <div
+                    data-test-id="userMenu"
                   >
-                    <ul
-                      className="css-5wxciu css-h7r55a"
+                    <Grid
+                      className="css-5wxciu"
+                      component="ul"
+                      wrap={false}
                     >
-                      <GridItem
-                        className="css-yj596"
-                        component="li"
-                        grow={0}
-                        shrink={1}
+                      <ul
+                        className="css-5wxciu css-h7r55a"
                       >
-                        <li
+                        <GridItem
                           className="css-yj596"
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <Button
-                            className="css-6f03lb"
-                            disabled={false}
-                            flat={false}
-                            onClick={null}
-                            testId="UserMenuLogin"
-                            type="primary"
-                            wrapContent={true}
+                          <li
+                            className="css-yj596"
                           >
                             <Button
-                              className="css-cimv5k css-6f03lb"
+                              className="css-6f03lb"
                               disabled={false}
+                              flat={false}
                               onClick={null}
                               testId="UserMenuLogin"
+                              type="primary"
+                              wrapContent={true}
                             >
-                              <button
-                                className="css-cimv5k css-6f03lb css-1rn65c0"
-                                data-test-id="UserMenuLogin"
+                              <Button
+                                className="css-cimv5k css-6f03lb"
                                 disabled={false}
                                 onClick={null}
+                                testId="UserMenuLogin"
                               >
-                                <div
-                                  className="css-8s1fw2"
+                                <button
+                                  className="css-cimv5k css-6f03lb css-1rn65c0"
+                                  data-test-id="UserMenuLogin"
+                                  disabled={false}
+                                  onClick={null}
                                 >
-                                  <Link
-                                    className=""
-                                    disabled={false}
-                                    href="/login"
+                                  <div
+                                    className="css-8s1fw2"
                                   >
-                                    <div
-                                      aria-hidden={true}
-                                      className="css-c6ki83 "
-                                      data-test-id="link: /login"
-                                      onClick={[Function]}
-                                      role="link"
+                                    <Link
+                                      className=""
+                                      disabled={false}
+                                      href="/login"
                                     >
-                                      <Translate
-                                        className=""
-                                        params={Object {}}
-                                        string="login.button"
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-c6ki83 "
+                                        data-test-id="link: /login"
+                                        onClick={[Function]}
+                                        role="link"
                                       >
-                                        <span
+                                        <Translate
                                           className=""
+                                          params={Object {}}
+                                          string="login.button"
                                         >
-                                          login.button
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Link>
-                                </div>
-                              </button>
+                                          <span
+                                            className=""
+                                          >
+                                            login.button
+                                          </span>
+                                        </Translate>
+                                      </div>
+                                    </Link>
+                                  </div>
+                                </button>
+                              </Button>
                             </Button>
-                          </Button>
-                        </li>
-                      </GridItem>
-                      <GridItem
-                        className="css-yj596"
-                        component="li"
-                        grow={0}
-                        shrink={1}
-                      >
-                        <li
+                          </li>
+                        </GridItem>
+                        <GridItem
                           className="css-yj596"
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <Button
-                            className="css-6f03lb"
-                            disabled={false}
-                            flat={false}
-                            onClick={null}
-                            testId="UserMenuRegister"
-                            type="primary"
-                            wrapContent={true}
+                          <li
+                            className="css-yj596"
                           >
                             <Button
-                              className="css-cimv5k css-6f03lb"
+                              className="css-6f03lb"
                               disabled={false}
+                              flat={false}
                               onClick={null}
                               testId="UserMenuRegister"
+                              type="primary"
+                              wrapContent={true}
                             >
-                              <button
-                                className="css-cimv5k css-6f03lb css-1rn65c0"
-                                data-test-id="UserMenuRegister"
+                              <Button
+                                className="css-cimv5k css-6f03lb"
                                 disabled={false}
                                 onClick={null}
+                                testId="UserMenuRegister"
                               >
-                                <div
-                                  className="css-8s1fw2"
+                                <button
+                                  className="css-cimv5k css-6f03lb css-1rn65c0"
+                                  data-test-id="UserMenuRegister"
+                                  disabled={false}
+                                  onClick={null}
                                 >
-                                  <Link
-                                    className=""
-                                    disabled={false}
-                                    href="/register"
+                                  <div
+                                    className="css-8s1fw2"
                                   >
-                                    <div
-                                      aria-hidden={true}
-                                      className="css-c6ki83 "
-                                      data-test-id="link: /register"
-                                      onClick={[Function]}
-                                      role="link"
+                                    <Link
+                                      className=""
+                                      disabled={false}
+                                      href="/register"
                                     >
-                                      <Translate
-                                        className=""
-                                        params={Object {}}
-                                        string="login.signup"
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-c6ki83 "
+                                        data-test-id="link: /register"
+                                        onClick={[Function]}
+                                        role="link"
                                       >
-                                        <span
+                                        <Translate
                                           className=""
+                                          params={Object {}}
+                                          string="login.signup"
                                         >
-                                          login.signup
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Link>
-                                </div>
-                              </button>
+                                          <span
+                                            className=""
+                                          >
+                                            login.signup
+                                          </span>
+                                        </Translate>
+                                      </div>
+                                    </Link>
+                                  </div>
+                                </button>
+                              </Button>
                             </Button>
-                          </Button>
-                        </li>
-                      </GridItem>
-                    </ul>
-                  </Grid>
-                </div>
-              </LogOut>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </div>
+                </LoggedOut>
+              </Connect(LoggedOut)>
             </Portal>
             <Portal
               name="user-menu.container.after"
