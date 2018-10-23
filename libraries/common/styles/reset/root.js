@@ -1,20 +1,17 @@
 import { css } from 'glamor';
-import { themeConfig } from '../../helpers/config';
-
-const { colors } = themeConfig;
 
 css.global('*, *:before, *:after', {
   boxSizing: 'border-box',
 });
 
 css.global('html, body', {
-  overflow: 'hidden',
-  background: colors.background,
   WebkitTapHighlightColor: 'transparent',
-  minHeight: '100%',
+  width: '100%',
+  height: '100%',
 });
 
 css.global('html', {
+  overflow: 'hidden',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
   MsTextSizeAdjust: '100%',
@@ -23,5 +20,8 @@ css.global('html', {
 });
 
 css.global('body', {
+  overflow: 'auto',
   margin: 0,
+  WebkitOverflowScrolling: 'touch',
+  WebkitUserSelect: 'none',
 });

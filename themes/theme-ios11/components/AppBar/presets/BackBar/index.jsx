@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { AppBar } from '@shopgate/pwa-ui-material';
+import { AppBar } from '@shopgate/pwa-ui-ios';
 import { ArrowIcon } from '@shopgate/pwa-ui-shared';
 import DefaultBar from '../DefaultBar';
 import connect from './connector';

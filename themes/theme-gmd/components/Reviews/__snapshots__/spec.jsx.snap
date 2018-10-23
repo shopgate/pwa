@@ -2040,7 +2040,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 onClick={[Function]}
                               >
                                 <Ripple
-                                  className="css-8s1fw2 "
+                                  className="css-1fscwua "
                                   color="#000"
                                   disabled={false}
                                   fill={true}
@@ -2051,7 +2051,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 >
                                   <div
                                     aria-hidden={true}
-                                    className="css-8s1fw2 "
+                                    className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}

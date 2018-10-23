@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import {
   OS_ANDROID,
   OS_IOS,
@@ -97,6 +98,10 @@ export const getPageInsets = createSelector(
   isIos,
   (clientInformation, model, iOS) => {
     if (iOS) {
+      if (!hasSGJavaScriptBridge()) {
+        return PAGE_INSETS_ANDROID;
+      }
+
       if (MODEL_NAMES_IPHONE_X.includes(model)) {
         return PAGE_INSETS_IPHONE_X;
       }

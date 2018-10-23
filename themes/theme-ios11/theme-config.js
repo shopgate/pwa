@@ -3,7 +3,7 @@ const colors = {
   background: '#f8f8f8',
   light: '#fff',
   dark: '#000',
-  accent: '#5ccee3',
+  accent: '#007AFF',
   placeholder: '#f2f2f2',
   primary: '#fa5400',
   darkGray: '#eaeaea',
@@ -24,9 +24,9 @@ const colors = {
 
 module.exports = {
   font: {
-    family: 'Roboto, Arial, sans-serif',
-    rootSize: 16,
-    lineHeight: 1.5,
+    family: 'system, -apple-system, "SF Pro Display", "Helvetica Neue", "Lucida Grande"',
+    rootSize: 17,
+    lineHeight: 1.43,
   },
   colors,
   // WARNING: if this is extended, you need to adjust style/variables.js as well.
@@ -63,11 +63,10 @@ module.exports = {
       height: 78,
     },
     buttonBase: {
-      borderRadius: 2,
-      fontWeight: 500,
+      borderRadius: 14,
+      fontWeight: 600,
       fontSize: 17,
-      padding: 0,
-      textTransform: 'uppercase',
+      padding: '8px 16px',
     },
     discountBadgeBase: {
       borderRadius: 2,

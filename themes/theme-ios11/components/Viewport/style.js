@@ -1,5 +1,9 @@
 import { css } from 'glamor';
 
+css.global('html, body', {
+  background: '#fff',
+});
+
 /**
  * By default the GMD theme doesn't have a tabbar. But it's conceivable that 3rd party developers
  * might want to implement one via an extension. So the code which calculates content bottom

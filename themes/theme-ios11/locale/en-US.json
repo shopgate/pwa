@@ -7,12 +7,11 @@
     "undo": "Undo"
   },
   "titles": {
-    "categories": "All Categories",
+    "categories": "Categories",
     "filter": "Filter",
     "cart": "Cart",
     "shipping": "Shipping",
     "reviews": "Reviews",
-    "browse": "Browse",
     "favorites": "Favorites"
   },
   "favorites": {
@@ -35,11 +34,9 @@
       "price_desc": "Price: High to Low",
       "price_asc": "Price: Low to High"
     },
-    "apply": "Apply",
+    "apply": "Done",
     "more": "more",
-    "clear": "Clear",
-    "clear_all": "Clear all",
-    "view_all": "View all"
+    "reset": "Reset"
   },
   "price": {
     "from": "From {price}",
@@ -48,8 +45,7 @@
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "USD"
+    "msrp": "MSRP"
   },
   "product": {
     "description_heading": "About",
@@ -61,7 +57,7 @@
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "Category not found"
     },
     "no_result": {
@@ -70,12 +66,11 @@
     }
   },
   "search": {
-    "label": "Search",
-    "cancel": "Cancel",
     "no_result": {
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
-    }
+    },
+    "placeholder": "Search"
   },
   "shipping": {
     "unknown": "plus shipping",
@@ -116,7 +111,7 @@
     "forgot_password_popup": "Please use the desktop website to reset your password.",
     "button": "Login",
     "no_account": "Don't have an account?",
-    "signup": "Register",
+    "register": "Create one here!",
     "logout_message": "You have been logged out.",
     "error": "Your username and password don't match any account"
   },
@@ -125,19 +120,21 @@
     "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
+    "favorites": "Favorites",
     "my_orders": "My orders",
     "cart": "Shopping cart",
-    "shipping": "Shipping Methods",
-    "about": "Contact",
-    "contact": "Contact",
-    "payment": "Payment Methods",
-    "terms": "Terms and Conditions",
-    "privacy": "Privacy Policy",
-    "welcome_message": "Welcome {name}",
+    "shipping": "Shipping methods",
+    "about": "Contact us",
+    "payment": "Payment methods",
+    "terms": "Terms",
+    "privacy": "Privacy policy",
+    "welcome_message": "Welcome, {name}",
     "return_policy": "Return policy",
-    "logout": "Logout",
-    "store_information": "Store Information",
-    "more_menu": "More"
+    "logout": "Sign out",
+    "menuSubHeader": {
+      "more": "More",
+      "about": "About us"
+    }
   },
   "reviews": {
     "rating": "Rating",

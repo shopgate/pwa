@@ -20,6 +20,7 @@
     "@shopgate/pwa-core": "6.0.0-beta.13",
     "@shopgate/pwa-tracking": "6.0.0-beta.13",
     "@shopgate/pwa-ui-material": "6.0.0-beta.13",
+    "@shopgate/pwa-ui-ios": "6.0.0-beta.13",
     "@shopgate/pwa-ui-shared": "6.0.0-beta.13",
     "@shopgate/pwa-webcheckout-shopify": "6.0.0-beta.13",
     "@shopgate/tracking-core": "6.0.0-beta.13",

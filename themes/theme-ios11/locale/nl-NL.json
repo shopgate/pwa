@@ -7,12 +7,11 @@
     "undo": "Ongedaan maken"
   },
   "titles": {
-    "categories": "Alle Categorieën",
+    "categories": "Categorieën",
     "filter": "Filter",
     "cart": "Winkelwagen",
     "shipping": "Verzending",
     "reviews": "Reviews",
-    "browse": "Bladeren",
     "favorites": "Favorieten"
   },
   "favorites": {
@@ -35,11 +34,9 @@
       "price_desc": "Prijs: Hoog naar Laag",
       "price_asc": "Prijs: Laag naar Hoog"
     },
-    "apply": "Toepassen",
+    "apply": "Klaar",
     "more": "meer",
-    "clear": "Wissen",
-    "clear_all": "Wis alles",
-    "view_all": "Bekijk alles"
+    "reset": "Wis alles"
   },
   "price": {
     "from": "Vanaf {price}",
@@ -70,12 +67,11 @@
     }
   },
   "search": {
-    "label": "Zoek",
-    "cancel": "Annuleer",
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
-    }
+    },
+    "placeholder": "Zoek"
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -115,7 +111,7 @@
     "forgot_password_popup": "Gebruik alsublieft de desktop website om uw wachtwoord te resetten.",
     "button": "Log in",
     "no_account": "Heeft u geen account?",
-    "signup": "Registreer",
+    "register": "Creëer uw account hier!",
     "logout_message": "U bent uitgelogd.",
     "error": "Uw gebruikersnaam en wachtwoord matchen geen account."
   },
@@ -124,19 +120,21 @@
     "your_account": "Uw Account",
     "home": "Home",
     "categories": "Categorieën",
+    "favorites": "Favorieten",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
     "shipping": "Verzendmethoden",
-    "about": "Over",
-    "contact": "Contact",
+    "about": "Over ons",
     "payment": "Betalingsmethoden",
-    "terms": "Algemene Voorwaarden",
+    "terms": "Voorwaarden",
     "privacy": "Privacybeleid",
     "welcome_message": "Welkom {name}",
     "return_policy": "Retourbeleid",
     "logout": "Log uit",
-    "store_information": "Winkel Informatie",
-    "more_menu": "Meer"
+    "menuSubHeader": {
+      "more": "Meer",
+      "about": "Over ons"
+    }
   },
   "reviews": {
     "rating": "Rating",
@@ -144,7 +142,7 @@
     "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
     "button_add": "Schrijf een beoordeling",
     "button_all": "Alle {count} Beoordelingen",
-    "author": "by {author}",
+    "author": "door {author}",
     "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
     "review_form_rate": "Beoordeel dit product:",
     "review_form_author": "Uw naam",

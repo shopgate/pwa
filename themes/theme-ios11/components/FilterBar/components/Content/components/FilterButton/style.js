@@ -3,12 +3,12 @@ import variables from 'Styles/variables';
 
 const button = css({
   color: 'inherit',
-  fontSize: '1.5rem',
+  fontSize: '1.4rem',
   lineHeight: 1,
   outline: 0,
   padding: 0,
   minWidth: variables.navigator.height,
-  height: variables.filterbar.height,
+  height: 44,
   position: 'relative',
   zIndex: 1,
   overflow: 'hidden',
@@ -24,7 +24,7 @@ const filterButtonLabel = css({
   fontWeight: '500',
   lineHeight: 1,
   paddingTop: 1,
-  paddingRight: variables.gap.small,
+  paddingRight: '.5ch',
 }).toString();
 
 const filterButtonRipple = css({
@@ -33,8 +33,8 @@ const filterButtonRipple = css({
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  margin: '0 6px',
-  padding: '6px 10px',
+  margin: 0,
+  padding: '0 0 0 16px',
 }).toString();
 
 export default {

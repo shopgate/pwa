@@ -2,31 +2,31 @@
 
 exports[`<BasicDialog /> should render with minimal props 1`] = `
 <div
-  className="css-x4sjtj"
+  className="css-e1s1x1"
   data-test-id="basicDialog"
 >
   <div
-    className="css-15zk481"
+    className="css-1y16c93"
   />
   <div
-    className="css-tftgv9"
+    className="css-1rlrgd0"
   />
 </div>
 `;
 
 exports[`<BasicDialog /> should show correct number of buttons 1`] = `
 <div
-  className="css-x4sjtj"
+  className="css-e1s1x1"
   data-test-id="basicDialog"
 >
   <div
-    className="css-15zk481"
+    className="css-1y16c93"
   />
   <div
-    className="css-tftgv9"
+    className="css-1rlrgd0"
   >
     <Button
-      className="css-1r3j2wk "
+      className="css-yc1xgj "
       disabled={false}
       flat={true}
       key="action0"
@@ -42,7 +42,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
       />
     </Button>
     <Button
-      className="css-1r3j2wk "
+      className="css-yc1xgj "
       disabled={false}
       flat={true}
       key="action1"
@@ -58,7 +58,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
       />
     </Button>
     <Button
-      className="css-1r3j2wk "
+      className="css-yc1xgj "
       disabled={false}
       flat={true}
       key="action2"
@@ -79,17 +79,17 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
 
 exports[`<BasicDialog /> should trigger correct actions 1`] = `
 <div
-  className="css-x4sjtj"
+  className="css-e1s1x1"
   data-test-id="basicDialog"
 >
   <div
-    className="css-15zk481"
+    className="css-1y16c93"
   />
   <div
-    className="css-tftgv9"
+    className="css-1rlrgd0"
   >
     <Button
-      className="css-1r3j2wk "
+      className="css-yc1xgj "
       disabled={false}
       flat={true}
       key="action0"
@@ -105,7 +105,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
       />
     </Button>
     <Button
-      className="css-1r3j2wk "
+      className="css-yc1xgj "
       disabled={false}
       flat={true}
       key="action1"
@@ -133,7 +133,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
       />
     </Button>
     <Button
-      className="css-1r3j2wk "
+      className="css-yc1xgj "
       disabled={false}
       flat={true}
       key="action2"
