@@ -15,12 +15,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
   }
 >
   <Grid
-    className="css-1glzrmu"
+    className="css-fpclhg"
     component="ul"
     wrap={true}
   >
     <ul
-      className="css-1glzrmu css-h7r55a css-u7q1iu"
+      className="css-fpclhg css-h7r55a css-u7q1iu"
     >
       <GridItem
         className=""
@@ -69,12 +69,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
           className=""
         >
           <PriceStriked
-            className=""
+            className="css-7hzrhp"
             currency="EUR"
             value={22.95}
           >
             <div
-              className="css-1sagvrb  "
+              className="css-1sagvrb css-7hzrhp "
             >
               <span
                 data-test-id="strikedPrice: 22.95"
@@ -151,12 +151,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
   }
 >
   <Grid
-    className="css-1glzrmu"
+    className="css-fpclhg"
     component="ul"
     wrap={true}
   >
     <ul
-      className="css-1glzrmu css-h7r55a css-u7q1iu"
+      className="css-fpclhg css-h7r55a css-u7q1iu"
     >
       <GridItem
         className=""
@@ -205,12 +205,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
           className=""
         >
           <PriceStriked
-            className=""
+            className="css-7hzrhp"
             currency="EUR"
             value={22.95}
           >
             <div
-              className="css-1sagvrb  "
+              className="css-1sagvrb css-7hzrhp "
             >
               <span
                 data-test-id="strikedPrice: 22.95"
@@ -261,12 +261,12 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
   }
 >
   <Grid
-    className="css-1glzrmu"
+    className="css-fpclhg"
     component="ul"
     wrap={true}
   >
     <ul
-      className="css-1glzrmu css-h7r55a css-u7q1iu"
+      className="css-fpclhg css-h7r55a css-u7q1iu"
     >
       <GridItem
         className=""
