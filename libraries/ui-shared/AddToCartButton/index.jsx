@@ -18,6 +18,7 @@ class AddToCartButton extends Component {
     className: PropTypes.string,
     iconSize: PropTypes.number,
     noShadow: PropTypes.bool,
+    onReset: PropTypes.func,
   };
 
   static defaultProps = {
@@ -25,6 +26,7 @@ class AddToCartButton extends Component {
     className: null,
     iconSize: styles.iconSize,
     noShadow: false,
+    onReset: () => {},
   };
 
   /**
@@ -79,6 +81,8 @@ class AddToCartButton extends Component {
         showCheckmark: null,
       });
     }
+
+    this.props.onReset();
   };
 
   /**
