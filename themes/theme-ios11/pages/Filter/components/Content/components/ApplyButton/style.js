@@ -1,5 +1,14 @@
 import { css } from 'glamor';
 
-export default css({
-  marginTop: 8,
+const wrapper = css({
+  marginTop: 10,
 });
+
+const button = css({
+  padding: '0 !important',
+}).toString();
+
+export default {
+  wrapper,
+  button,
+};

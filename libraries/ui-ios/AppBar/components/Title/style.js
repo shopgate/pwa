@@ -6,8 +6,11 @@ export default css({
   flexGrow: 1,
   lineHeight: '44px',
   overflow: 'hidden',
-  padding: '0 16px',
+  padding: '0 72px',
+  position: 'absolute',
   textAlign: 'center',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
+  width: '100%',
+  zIndex: -1,
 });

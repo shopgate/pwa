@@ -4,12 +4,12 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
 <div
   className={
     Object {
-      "data-css-prcfqy": "",
+      "data-css-1kvk3dd": "",
     }
   }
 >
   <Button
-    className=""
+    className="css-1x58v7w"
     disabled={false}
     flat={true}
     onClick={[MockFunction]}
@@ -30,12 +30,12 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
 <div
   className={
     Object {
-      "data-css-prcfqy": "",
+      "data-css-1kvk3dd": "",
     }
   }
 >
   <Button
-    className=""
+    className="css-1x58v7w"
     disabled={false}
     flat={true}
     onClick={[Function]}
@@ -56,12 +56,12 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
 <div
   className={
     Object {
-      "data-css-prcfqy": "",
+      "data-css-1kvk3dd": "",
     }
   }
 >
   <Button
-    className=""
+    className="css-1x58v7w"
     disabled={true}
     flat={true}
     onClick={[Function]}
