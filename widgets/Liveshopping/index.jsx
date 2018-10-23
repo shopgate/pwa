@@ -61,7 +61,7 @@ const createProductSliderItem = ({
 
   return (
     <div key={id} className={styles.card} data-test-id="liveShoppingWidget">
-      <Card>
+      <Card className={styles.cardInnerBox}>
         <Link
           href={`${ITEM_PATH}/${bin2hex(id)}`}
           state={{
