@@ -151,6 +151,7 @@ class AddToCartBar extends Component {
                   disabled={this.props.disabled}
                   itemCount={added}
                   handleAddToCart={this.handleAddToCart}
+                  onReset={this.resetClicked}
                 />
               </div>
             </div>

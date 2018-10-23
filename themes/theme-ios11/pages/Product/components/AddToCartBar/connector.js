@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
  * Connects the current application state to the component props.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
- * @return {[type]} [description]
+ * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
   disabled: !isProductOrderable(state, props),
