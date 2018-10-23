@@ -187,20 +187,6 @@
         "type": "json",
         "label": "Enable / disable frontend benchmarking tools"
       }
-    },
-    "themeConfig": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": {
-        "font": {},
-        "colors": {},
-        "variables": {}
-      },
-      "params": {
-        "type": "json",
-        "label": "Configure the font, colors and variables of the theme",
-        "required": true
-      }
     }
   }
 }
