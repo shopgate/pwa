@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import { PRODUCT_CTAS, PRODUCT_CTAS_AFTER, PRODUCT_CTAS_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import CartButton from './components/CartButton';
+import {
+  PRODUCT_CTAS,
+  PRODUCT_CTAS_AFTER,
+  PRODUCT_CTAS_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import styles from './style';
 import connect from './connector';
 
@@ -24,7 +27,6 @@ const CTAButtons = ({ isFavorite, productId }) => (
           active={isFavorite}
           productId={productId}
         />
-        <CartButton />
       </div>
     </Portal>
     <Portal name={PRODUCT_CTAS_AFTER} />
