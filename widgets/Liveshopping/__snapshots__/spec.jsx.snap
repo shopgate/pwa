@@ -35,7 +35,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       key="1234"
     >
       <Card
-        className="css-1w6hra9"
+        className="css-agwt9q"
       >
         <Connect(Link)
           href="/item/31323334"
@@ -140,7 +140,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       key="1235"
     >
       <Card
-        className="css-1w6hra9"
+        className="css-agwt9q"
       >
         <Connect(Link)
           href="/item/31323335"
@@ -276,7 +276,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       key="1234"
     >
       <Card
-        className="css-1w6hra9"
+        className="css-agwt9q"
       >
         <Connect(Link)
           href="/item/31323334"

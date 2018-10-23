@@ -61,8 +61,7 @@ const card = css({
   background: '#FFF',
   height: '100%',
   margin: '0px 8px',
-  borderRadius: variables.productSliderWidget.borderRadius,
-  boxShadow: variables.productSliderWidget.boxShadow,
+  borderRadius: 11,
 }).toString();
 
 const headline = css({

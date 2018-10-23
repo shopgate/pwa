@@ -30,7 +30,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -68,7 +68,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -106,7 +106,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -144,7 +144,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -182,7 +182,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -220,7 +220,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -258,7 +258,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -296,7 +296,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -334,7 +334,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -372,7 +372,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -410,7 +410,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -448,7 +448,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -486,7 +486,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -524,7 +524,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -562,7 +562,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -600,7 +600,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -638,7 +638,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -676,7 +676,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -714,7 +714,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -752,7 +752,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -790,7 +790,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -828,7 +828,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -866,7 +866,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -904,7 +904,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -942,7 +942,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -980,7 +980,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1018,7 +1018,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1056,7 +1056,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1094,7 +1094,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1132,7 +1132,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1192,7 +1192,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1230,7 +1230,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1268,7 +1268,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1306,7 +1306,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1344,7 +1344,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1411,7 +1411,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1449,7 +1449,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1487,7 +1487,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1525,7 +1525,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1563,7 +1563,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1623,7 +1623,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1661,7 +1661,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1699,7 +1699,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1737,7 +1737,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
@@ -1775,7 +1775,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
       key="s1234"
     >
       <Card
-        className="css-igfd5x"
+        className="css-11klsgb"
       >
         <ProductCard
           hideName={false}
