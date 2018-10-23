@@ -20,8 +20,8 @@ class FilterApplyButton extends PureComponent {
     const { active, onClick } = this.props;
 
     return (
-      <div className={styles}>
-        <Button flat type="primary" onClick={onClick} disabled={!active} testId="applyFilterButton">
+      <div className={styles.wrapper}>
+        <Button className={styles.button} flat type="primary" onClick={onClick} disabled={!active} testId="applyFilterButton">
           <I18n.Text string="filter.apply" />
         </Button>
       </div>
