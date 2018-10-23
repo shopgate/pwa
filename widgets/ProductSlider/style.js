@@ -1,6 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
 
 const sliderContainer = css({
   marginLeft: 'auto',
@@ -60,6 +61,7 @@ const card = css({
   background: '#FFF',
   height: '100%',
   margin: '0px 8px',
+  borderRadius: 11,
 }).toString();
 
 const headline = css({

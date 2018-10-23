@@ -1,6 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
 
 const cardsWrapper = css({
   padding: '16px 0px 0px',
@@ -8,6 +9,10 @@ const cardsWrapper = css({
 
 const card = css({
   padding: '0px 10px',
+}).toString();
+
+const cardInnerBox = css({
+  borderRadius: 11,
 }).toString();
 
 const pane = {
@@ -82,6 +87,7 @@ const indicator = {
 
 export default {
   card,
+  cardInnerBox,
   discountBadge,
   imagePane,
   infoPane,

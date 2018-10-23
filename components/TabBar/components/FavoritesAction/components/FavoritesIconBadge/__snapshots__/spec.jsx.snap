@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBar favorites action - lifecycle should update when number exceeds maximum 1`] = `
+<FavoritesIconBadge
+  favoritesCount={9999}
+>
+  <div
+    className="css-1i6tmkt"
+  >
+    999+
+  </div>
+</FavoritesIconBadge>
+`;
+
+exports[`TabBar favorites action - lifecycle should update when number is changed 1`] = `
+<FavoritesIconBadge
+  favoritesCount={99}
+>
+  <div
+    className="css-1i6tmkt"
+  >
+    99
+  </div>
+</FavoritesIconBadge>
+`;
+
+exports[`TabBar favorites action should render exact number 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(FavoritesIconBadge)>
+    <FavoritesIconBadge
+      dispatch={[Function]}
+      favoritesCount={1}
+    >
+      <div
+        className="css-1i6tmkt"
+      >
+        1
+      </div>
+    </FavoritesIconBadge>
+  </Connect(FavoritesIconBadge)>
+</Provider>
+`;
