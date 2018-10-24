@@ -36,11 +36,13 @@ class Login extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
+    isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
     redirect: PropTypes.shape(),
   };
 
   static defaultProps = {
+    isDisabled: false,
     isLoading: false,
     redirect: {},
   };
@@ -138,7 +140,7 @@ class Login extends Component {
               <div className={styles.padLine} />
             </Portal>
             <Portal name={PAGE_LOGIN_FORM}>
-              { /* No validate, browsers reject IDN emails! */ }
+              { /* No validate, browsers reject IDN emails! */}
               <form onSubmit={this.handleSubmitForm} noValidate>
                 <TextField
                   type="email"
@@ -162,7 +164,11 @@ class Login extends Component {
                   <ForgotPassword />
                 </div>
                 <div className={styles.buttonWrapper} data-test-id="LoginButton">
-                  <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
+                  <RippleButton
+                    className={styles.button}
+                    type="secondary"
+                    disabled={this.props.isLoading || this.props.isDisabled}
+                  >
                     <I18n.Text string="login.button" />
                   </RippleButton>
                 </div>
@@ -173,7 +179,11 @@ class Login extends Component {
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
               <Portal name={PAGE_LOGIN_REGISTER_LINK} >
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
-                <Link href={REGISTER_PATH} className={styles.signup}>
+                <Link
+                  href={REGISTER_PATH}
+                  className={styles.signup}
+                  disabled={this.props.isLoading || this.props.isDisabled}
+                >
                   <I18n.Text string="login.register" />
                 </Link>
               </Portal>
