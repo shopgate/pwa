@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
+import classNames from 'classnames';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
 import Header from './components/Header';
@@ -23,6 +24,8 @@ class Sheet extends Component {
     }),
     backdrop: PropTypes.bool,
     children: PropTypes.node,
+    className: PropTypes.string,
+    contentClassName: PropTypes.string,
     duration: PropTypes.number,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
@@ -38,6 +41,8 @@ class Sheet extends Component {
     animation: {},
     backdrop: true,
     children: null,
+    className: null,
+    contentClassName: null,
     duration: 300,
     isOpen: false,
     onClose: () => {},
@@ -132,10 +137,21 @@ class Sheet extends Component {
       )
     ));
 
+    const drawerClassNames = classNames(
+      styles.container,
+      { [this.props.className]: this.props.className }
+    );
+
+    const contentClassNames = classNames(
+      styles.content,
+      { [this.props.contentClassName]: this.props.contentClassName },
+      { [styles.shadow]: !this.props.backdrop }
+    );
+
     return (
       <section>
         <Drawer
-          className={styles.container}
+          className={drawerClassNames}
           isOpen={this.state.isOpen}
           onOpen={this.props.onOpen}
           onClose={this.handleClose}
@@ -151,7 +167,7 @@ class Sheet extends Component {
           <div
             ref={this.content}
             onScroll={this.handleScroll}
-            className={`${styles.content} ${!this.props.backdrop && styles.shadow}`}
+            className={contentClassNames}
           >
             {children}
           </div>

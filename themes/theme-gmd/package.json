@@ -12,7 +12,8 @@
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "e2e": "cypress open -P ./e2e",
-    "e2e:checkout": "cypress open -P ./e2e/extensions/checkout"
+    "e2e:checkout": "cypress open -P ./e2e/extensions/checkout",
+    "e2e:user": "cypress open -P ./e2e/extensions/user"
   },
   "dependencies": {
     "@shopgate/pwa-common": "6.0.0-beta.13",

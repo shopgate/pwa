@@ -42,3 +42,19 @@ export const ajaxUrl = action => (action ? `sgapi:${action}` : '');
 export function hasSGJavaScriptBridge() {
   return (typeof SGJavascriptBridge !== 'undefined');
 }
+
+/**
+ * Checks whether the browser connector should be used.
+ * @return {boolean}
+ */
+export function useBrowserConnector() {
+  if (hasSGJavaScriptBridge()) {
+    return false;
+  }
+
+  if (process.env.NODE_ENV === 'development' && process.env.IP && process.env.PORT) {
+    return false;
+  }
+
+  return true;
+}

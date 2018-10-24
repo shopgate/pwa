@@ -4,6 +4,8 @@ exports[`<Sheet /> should open 1`] = `
 <Sheet
   animation={Object {}}
   backdrop={true}
+  className={null}
+  contentClassName={null}
   duration={300}
   isOpen={true}
   onClose={[Function]}
@@ -116,7 +118,7 @@ exports[`<Sheet /> should open 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l false"
+          className="css-1aon90l"
           onScroll={[Function]}
         >
           <div
@@ -128,29 +130,84 @@ exports[`<Sheet /> should open 1`] = `
       </div>
     </Drawer>
     <Backdrop
-      className={Object {}}
+      className=""
       color="#000"
+      duration={200}
       isVisible={true}
       level={4}
       onClick={[Function]}
       opacity={20}
     >
-      <div
-        aria-hidden={true}
-        className={
+      <Transition
+        childrenStyles={
           Object {
-            "data-css-hlk66h": "",
+            "appear": Object {
+              "opacity": 0.2,
+            },
+            "base": Object {
+              "background": "#000",
+              "opacity": 0,
+              "transition": "opacity 200ms ease-out",
+              "zIndex": 4,
+            },
+            "enter": Object {
+              "opacity": 0.2,
+            },
+            "leave": Object {
+              "opacity": 0,
+            },
           }
         }
-        onClick={[Function]}
-        style={
-          Object {
-            "background": "#000",
-            "opacity": 0.2,
-            "zIndex": 4,
-          }
-        }
-      />
+        component="div"
+      >
+        <TransitionHooks
+          component="div"
+        >
+          <div>
+            <TransitionChild
+              childrenAppearStyle={
+                Object {
+                  "opacity": 0.2,
+                }
+              }
+              childrenBaseStyle={
+                Object {
+                  "background": "#000",
+                  "opacity": 0,
+                  "transition": "opacity 200ms ease-out",
+                  "zIndex": 4,
+                }
+              }
+              childrenEnterStyle={
+                Object {
+                  "opacity": 0.2,
+                }
+              }
+              childrenLeaveStyle={
+                Object {
+                  "opacity": 0,
+                }
+              }
+              key=".$.0"
+            >
+              <div
+                aria-hidden={true}
+                className="css-hlk66h "
+                data-test-id="Backdrop"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "background": "#000",
+                    "opacity": 0,
+                    "transition": "opacity 200ms ease-out",
+                    "zIndex": 4,
+                  }
+                }
+              />
+            </TransitionChild>
+          </div>
+        </TransitionHooks>
+      </Transition>
     </Backdrop>
   </section>
 </Sheet>
@@ -174,13 +231,14 @@ exports[`<Sheet /> should render closed without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l false"
+      className="css-1aon90l"
       onScroll={[Function]}
     />
   </Drawer>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={false}
     level={4}
     onClick={[Function]}
@@ -207,13 +265,14 @@ exports[`<Sheet /> should render opened without content 1`] = `
     onOpen={[Function]}
   >
     <div
-      className="css-1aon90l false"
+      className="css-1aon90l"
       onScroll={[Function]}
     />
   </Drawer>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={true}
     level={4}
     onClick={[Function]}
@@ -245,7 +304,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
       title="Test-Title"
     />
     <div
-      className="css-1aon90l false"
+      className="css-1aon90l"
       onScroll={[Function]}
     >
       <div
@@ -256,8 +315,9 @@ exports[`<Sheet /> should render with content and title 1`] = `
     </div>
   </Drawer>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={true}
     level={4}
     onClick={[Function]}
@@ -270,6 +330,8 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
 <Sheet
   animation={Object {}}
   backdrop={true}
+  className={null}
+  contentClassName={null}
   duration={300}
   isOpen={true}
   onClose={
@@ -399,7 +461,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-1aon90l false"
+          className="css-1aon90l"
           onScroll={[Function]}
         >
           <div
@@ -411,13 +473,85 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       </div>
     </Drawer>
     <Backdrop
-      className={Object {}}
+      className=""
       color="#000"
+      duration={200}
       isVisible={false}
       level={4}
       onClick={[Function]}
       opacity={20}
-    />
+    >
+      <Transition
+        childrenStyles={
+          Object {
+            "appear": Object {
+              "opacity": 0.2,
+            },
+            "base": Object {
+              "background": "#000",
+              "opacity": 0,
+              "transition": "opacity 200ms ease-out",
+              "zIndex": 4,
+            },
+            "enter": Object {
+              "opacity": 0.2,
+            },
+            "leave": Object {
+              "opacity": 0,
+            },
+          }
+        }
+        component="div"
+      >
+        <TransitionHooks
+          component="div"
+        >
+          <div>
+            <TransitionChild
+              childrenAppearStyle={
+                Object {
+                  "opacity": 0.2,
+                }
+              }
+              childrenBaseStyle={
+                Object {
+                  "background": "#000",
+                  "opacity": 0,
+                  "transition": "opacity 200ms ease-out",
+                  "zIndex": 4,
+                }
+              }
+              childrenEnterStyle={
+                Object {
+                  "opacity": 0.2,
+                }
+              }
+              childrenLeaveStyle={
+                Object {
+                  "opacity": 0,
+                }
+              }
+              key=".$.0"
+            >
+              <div
+                aria-hidden={true}
+                className="css-hlk66h "
+                data-test-id="Backdrop"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "background": "#000",
+                    "opacity": 0,
+                    "transition": "opacity 200ms ease-out",
+                    "zIndex": 4,
+                  }
+                }
+              />
+            </TransitionChild>
+          </div>
+        </TransitionHooks>
+      </Transition>
+    </Backdrop>
   </section>
 </Sheet>
 `;

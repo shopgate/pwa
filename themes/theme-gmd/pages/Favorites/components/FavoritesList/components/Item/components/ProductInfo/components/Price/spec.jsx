@@ -8,7 +8,7 @@ describe('Favorites price component', () => {
       price: {
         unitPriceStriked: 0,
         currency: 'EUR',
-        unitPriceWithTax: 1,
+        unitPrice: 1,
       },
     };
     it('should return false when price is the same', () => {
@@ -20,7 +20,7 @@ describe('Favorites price component', () => {
       const newProps = {
         price: {
           ...props.price,
-          unitPriceWithTax: 0,
+          unitPrice: 0,
         },
       };
       expect(component.instance().shouldComponentUpdate(newProps)).toBe(true);

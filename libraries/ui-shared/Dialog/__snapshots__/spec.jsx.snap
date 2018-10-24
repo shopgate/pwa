@@ -3,8 +3,9 @@
 exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
 <Modal>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={true}
     level={0}
     onClick={[Function]}
@@ -20,8 +21,9 @@ exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
 exports[`<Dialog /> should render a special dialog 1`] = `
 <Modal>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={true}
     level={0}
     onClick={[Function]}
@@ -45,8 +47,9 @@ exports[`<Dialog /> should render a special dialog 1`] = `
 exports[`<Dialog /> should render variant select dialog 1`] = `
 <Modal>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={true}
     level={0}
     onClick={[Function]}
@@ -67,8 +70,9 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
 exports[`<Dialog /> should render without props 1`] = `
 <Modal>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={true}
     level={0}
     onClick={[Function]}

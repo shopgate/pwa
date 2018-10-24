@@ -1,12 +1,16 @@
 import {
+  APP_DID_START,
   REQUEST_LOGIN,
   SUCCESS_LOGIN,
   TOGGLE_LOGGED_IN,
   ERROR_LOGIN,
   SUCCESS_LOGOUT,
+  DISABLE_LOGIN,
 } from '../../constants/ActionTypes';
 
 const defaultState = {
+  isFetching: false,
+  disabled: false,
   isLoggedIn: false,
   errors: null,
 };
@@ -19,6 +23,16 @@ const defaultState = {
  */
 export default function userLoginReducer(state = defaultState, action) {
   switch (action.type) {
+    case APP_DID_START:
+      return {
+        ...state,
+        disabled: false,
+      };
+    case DISABLE_LOGIN:
+      return {
+        ...state,
+        disabled: action.value,
+      };
     case REQUEST_LOGIN:
       return {
         ...state,

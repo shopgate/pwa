@@ -1,0 +1,6 @@
+{
+    "integrationFolder": "./integration",
+    "fixturesFolder": "../../../../../utils/e2e/fixtures",
+    "pluginsFile": "../../../../../utils/e2e/plugins",
+    "supportFile": "../../../../../utils/e2e/support"
+}
