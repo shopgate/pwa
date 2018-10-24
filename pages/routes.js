@@ -64,3 +64,9 @@ export const WriteReview = Loadable({
   loader: () => import('./WriteReview'),
   loading: () => null,
 });
+
+export const Browse = Loadable({
+  loader: () => import('./Browse'),
+  loading: () => null,
+});
+

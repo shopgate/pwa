@@ -29,6 +29,7 @@ import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { SnackBar } from '@shopgate/pwa-ui-material';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
+import { BROWSE_PATH } from 'Pages/Browse/constants';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
@@ -59,6 +60,7 @@ const Pages = ({ store }) => (
               <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
               <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
               <Route pattern={CART_PATH} component={routes.Cart} />
+              <Route pattern={BROWSE_PATH} component={routes.Browse} preload />
               {
                 appConfig.hasFavorites
                 && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
