@@ -33,6 +33,8 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
           }
         }
         backdrop={false}
+        className={null}
+        contentClassName={null}
         duration={300}
         isOpen={true}
         onClose={[Function]}
@@ -419,6 +421,8 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
           }
         }
         backdrop={false}
+        className={null}
+        contentClassName={null}
         duration={300}
         isOpen={true}
         onClose={[Function]}
@@ -797,6 +801,8 @@ exports[`<PaymentBar /> should not be visible if prop visible is false 1`] = `
           }
         }
         backdrop={false}
+        className={null}
+        contentClassName={null}
         duration={300}
         isOpen={false}
         onClose={[Function]}
@@ -859,6 +865,8 @@ exports[`<PaymentBar /> should render without any props 1`] = `
           }
         }
         backdrop={false}
+        className={null}
+        contentClassName={null}
         duration={300}
         isOpen={true}
         onClose={[Function]}
@@ -1216,6 +1224,8 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
           }
         }
         backdrop={false}
+        className={null}
+        contentClassName={null}
         duration={300}
         isOpen={true}
         onClose={[Function]}
@@ -1587,6 +1597,8 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
           }
         }
         backdrop={false}
+        className={null}
+        contentClassName={null}
         duration={300}
         isOpen={true}
         onClose={[Function]}
