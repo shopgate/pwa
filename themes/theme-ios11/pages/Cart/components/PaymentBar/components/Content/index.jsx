@@ -60,15 +60,12 @@ class PaymentBarContent extends PureComponent {
                 <ShippingCosts />
               </div>
             </Grid.Item>
-
-            <Grid.Item className={styles.buttonColumn} grow={1}>
-              <div className={styles.column}>
-                <div className={styles.checkoutButton}>
-                  <CheckoutButton />
-                </div>
-              </div>
-            </Grid.Item>
           </Grid>
+          <div className={styles.checkoutButtonContainer}>
+            <div className={styles.checkoutButton}>
+              <CheckoutButton />
+            </div>
+          </div>
         </Portal>
         <Portal name={CART_PAYMENT_BAR_AFTER} />
       </div>
