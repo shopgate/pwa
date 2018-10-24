@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { css } from 'glamor';
 import PropTypes from 'prop-types';
+import Transition from 'react-inline-transition-group';
 import style from './style';
 
 /**
@@ -12,11 +12,9 @@ class Backdrop extends Component {
    * @type {Object}
    */
   static propTypes = {
-    className: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.shape(),
-    ]),
+    className: PropTypes.string,
     color: PropTypes.string,
+    duration: PropTypes.number,
     isVisible: PropTypes.bool,
     level: PropTypes.number,
     onClick: PropTypes.func,
@@ -28,8 +26,9 @@ class Backdrop extends Component {
    * @type {Object}
    */
   static defaultProps = {
-    className: {},
+    className: '',
     color: '#000',
+    duration: 200,
     isVisible: false,
     level: 2,
     onClick: () => {},
@@ -46,38 +45,37 @@ class Backdrop extends Component {
   }
 
   /**
-   * @returns {string}
-   */
-  get className() {
-    return css(style, this.props.className);
-  }
-
-  /**
-   * @returns {Object}
-   */
-  get style() {
-    const { color, level, opacity } = this.props;
-
-    return {
-      opacity: (opacity / 100),
-      background: color,
-      zIndex: level,
-    };
-  }
-
-  /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
-    const { isVisible } = this.props;
+    const opacity = (this.props.opacity / 100);
+    const transition = {
+      base: {
+        background: this.props.color,
+        opacity: 0,
+        transition: `opacity ${this.props.duration}ms ease-out`,
+        zIndex: this.props.level,
+      },
+      appear: {
+        opacity,
+      },
+      enter: {
+        opacity,
+      },
+      leave: {
+        opacity: 0,
+      },
+    };
 
-    if (!isVisible) {
-      return null;
-    }
+    const className = `${style} ${this.props.className}`;
 
     return (
-      <div aria-hidden style={this.style} className={this.className} onClick={this.props.onClick} />
+      <Transition childrenStyles={transition}>
+        {this.props.isVisible ?
+          <div data-test-id="Backdrop" aria-hidden className={className} onClick={this.props.onClick} /> : null
+        }
+      </Transition>
     );
   }
 }

@@ -26,7 +26,6 @@ class BrowserConnector {
       appCommands.COMMAND_GET_WEBSTORAGE_ENTRY,
     ];
     this.appConfig = appConfig;
-    this.cookie = null;
   }
 
   /**
@@ -117,20 +116,17 @@ class BrowserConnector {
   }
 
   /**
+   * @param {string} libVersion The library version.
    * @returns {string}
    */
-  get connectBody() {
-    const { p } = this.command || {};
-    const { input } = p;
+  getRequestBody(libVersion) {
+    if (this.isPipelineRequest) {
+      const { p } = this.command;
+      const { input } = p;
 
-    return JSON.stringify(input);
-  }
+      return JSON.stringify(input);
+    }
 
-  /**
-   * @param {string} libVersion The lib version for the command.
-   * @return {string}
-   */
-  getLocalBody(libVersion) {
     return JSON.stringify({
       cmds: [this.command],
       ver: libVersion,
@@ -151,11 +147,12 @@ class BrowserConnector {
       const URL = this.isPipelineRequest ? this.connectUrl : this.localURL;
       const options = {
         method: this.requestType,
+        credentials: 'include',
         headers: new Headers({
           'Content-Type': 'application/json',
         }),
         ...this.isPOST && {
-          body: this.isPipelineRequest ? this.connectBody : this.getLocalBody(libVersion),
+          body: this.getRequestBody(libVersion),
         },
       };
 

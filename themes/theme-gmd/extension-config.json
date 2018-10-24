@@ -150,16 +150,6 @@
         "value": "%(browserApplicationAddress)s"
       }
     },
-    "browserConnector": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": false,
-      "params": {
-        "type": "json",
-        "label": "Use browser connector?",
-        "required": true
-      }
-    },
     "currency": {
       "type": "bigApi",
       "destination": "frontend",

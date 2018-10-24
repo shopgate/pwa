@@ -20,8 +20,9 @@ exports[`NavDrawer should match the snapshot 1`] = `
     <Component />
   </Transition>
   <Backdrop
-    className={Object {}}
+    className=""
     color="#000"
+    duration={200}
     isVisible={false}
     level={4}
     onClick={[Function]}

@@ -143,7 +143,7 @@ exports[`<ProductGallery> page should render 1`] = `
                     <div
                       className="css-70kdmd"
                     >
-                      <Hammer
+                      <MockedComponent
                         direction="DIRECTION_ALL"
                         onDoubleTap={[Function]}
                         onPan={[Function]}
@@ -163,50 +163,52 @@ exports[`<ProductGallery> page should render 1`] = `
                         }
                       >
                         <div>
-                          <div
-                            className="css-1b510lo"
-                          >
+                          <div>
                             <div
-                              className="css-ivsd5g"
+                              className="css-1b510lo"
                             >
                               <div
-                                className="css-1vgjawn"
-                                key="https://img-cdn.shopgate.com/image.jpg"
+                                className="css-ivsd5g"
                               >
-                                <Image
-                                  alt={null}
-                                  animating={true}
-                                  backgroundColor="#f2f2f2"
-                                  className=""
-                                  forcePlaceholder={false}
-                                  highestResolutionLoaded={[Function]}
-                                  onError={null}
-                                  onLoad={null}
-                                  ratio={null}
-                                  resolutions={
-                                    Array [
-                                      Object {
-                                        "height": 440,
-                                        "width": 440,
-                                      },
-                                      Object {
-                                        "height": 2048,
-                                        "width": 2048,
-                                      },
-                                    ]
-                                  }
-                                  src="https://img-cdn.shopgate.com/image.jpg"
-                                  transition={null}
+                                <div
+                                  className="css-1vgjawn"
+                                  key="https://img-cdn.shopgate.com/image.jpg"
                                 >
-                                  <div
-                                    className="css-326p2s "
-                                  />
-                                </Image>
+                                  <Image
+                                    alt={null}
+                                    animating={true}
+                                    backgroundColor="#f2f2f2"
+                                    className=""
+                                    forcePlaceholder={false}
+                                    highestResolutionLoaded={[Function]}
+                                    onError={null}
+                                    onLoad={null}
+                                    ratio={null}
+                                    resolutions={
+                                      Array [
+                                        Object {
+                                          "height": 440,
+                                          "width": 440,
+                                        },
+                                        Object {
+                                          "height": 2048,
+                                          "width": 2048,
+                                        },
+                                      ]
+                                    }
+                                    src="https://img-cdn.shopgate.com/image.jpg"
+                                    transition={null}
+                                  >
+                                    <div
+                                      className="css-326p2s "
+                                    />
+                                  </Image>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </Hammer>
+                      </MockedComponent>
                     </div>
                   </ZoomPanContainer>
                 </ImageSlider>
