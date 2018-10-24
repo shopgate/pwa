@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import login from '@shopgate/pwa-common/actions/user/login';
 import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
+import { isUserLoginDisabled } from '@shopgate/pwa-common/selectors/user';
 
 /**
  * Maps the contents of the state to the component props.
@@ -10,6 +11,7 @@ import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
  */
 const mapStateToProps = state => ({
   isLoading: isViewLoading(state, LOGIN_PATH),
+  isDisabled: isUserLoginDisabled(state),
 });
 
 /**
