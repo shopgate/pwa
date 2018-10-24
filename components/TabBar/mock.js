@@ -1,8 +1,4 @@
 export const mockedStateDefault = {
-  history: {
-    pathname: '/',
-    queryParams: {},
-  },
   cart: {
     items: [],
   },
@@ -20,13 +16,11 @@ export const mockedStateDefault = {
 };
 
 /**
- * @param {string} path The route pathname
  * @param {boolean} [enabled=true] Tells if the tab bar is enabled for the current route.
  * @param {boolean} [visible=true] Tells if the tab bar is currently visible.
  * @returns {Object}
  */
-export const mockedStateRoute = (
-  path,
+export const getMockedState = (
   enabled = true,
   visible = true
 ) => ({
@@ -36,9 +30,5 @@ export const mockedStateRoute = (
       enabled,
       visible,
     },
-  },
-  history: {
-    ...mockedStateDefault.history,
-    pathname: path,
   },
 });
