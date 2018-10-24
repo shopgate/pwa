@@ -1,5 +1,5 @@
 /* global SGJavascriptBridge */
-import { logger, hasSGJavaScriptBridge } from '../../helpers';
+import { logger, hasSGJavaScriptBridge, useBrowserConnector } from '../../helpers';
 import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
 import * as appCommands from '../../constants/AppCommands';
@@ -9,8 +9,6 @@ import {
   GET_PERMISSIONS_COMMAND_NAME,
   REQUEST_PERMISSIONS_COMMAND_NAME,
 } from '../../constants/AppPermissions';
-
-const appConfig = process.env.APP_CONFIG || {};
 
 /**
  * The app command class.
@@ -109,6 +107,20 @@ class AppCommand {
   }
 
   /**
+   * Creates a new bridge based on the current environment.
+   * @returns {Object}
+   */
+  static createBridge() {
+    if (useBrowserConnector()) {
+      return new BrowserConnector();
+    } else if (hasSGJavaScriptBridge()) {
+      return SGJavascriptBridge;
+    }
+
+    return new DevServerBridge();
+  }
+
+  /**
    * Dispatches the command to the app.
    * The returned promise will not be rejected for now in error cases to avoid the necessity
    * of refactoring within existing code. But it resolves with FALSE in those cases.
@@ -144,18 +156,8 @@ class AppCommand {
       return false;
     }
 
-    let bridge;
-
-    /* istanbul ignore else */
-    if (!hasSGJavaScriptBridge()) {
-      if (!appConfig.browserConnector) {
-        bridge = new DevServerBridge();
-      } else {
-        bridge = new BrowserConnector();
-      }
-    } else {
-      bridge = SGJavascriptBridge;
-    }
+    // Create a new bridge that handles this comamnd.
+    const bridge = AppCommand.createBridge();
 
     try {
       if ('dispatchCommandForVersion' in bridge) {

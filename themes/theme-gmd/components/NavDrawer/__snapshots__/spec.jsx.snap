@@ -8945,6 +8945,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <div
                     aria-hidden={true}
                     className="css-hlk66h "
+                    data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
                       Object {
@@ -11404,6 +11405,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <div
                     aria-hidden={true}
                     className="css-hlk66h "
+                    data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
                       Object {
@@ -13201,6 +13203,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <div
                     aria-hidden={true}
                     className="css-hlk66h "
+                    data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
                       Object {

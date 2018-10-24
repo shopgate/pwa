@@ -26,6 +26,7 @@ const userLoggedInState = {
   user: {
     login: {
       isLoggedIn: true,
+      disabled: false,
     },
     data: {
       firstName: 'John',
@@ -39,6 +40,7 @@ const userLoggedOutState = {
   user: {
     login: {
       isLoggedIn: false,
+      disabled: false,
     },
     data: {},
   },
