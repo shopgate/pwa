@@ -10,6 +10,7 @@ import Manufacturer from './components/Manufacturer';
 import PriceStriked from './components/PriceStriked';
 import Shipping from './components/Shipping';
 import Availability from './components/Availability';
+import StockInfo from './components/StockInfo';
 import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
 import Tiers from './components/Tiers';
@@ -81,6 +82,15 @@ const ProductHeader = () => (
                 <Availability />
               </Portal>
               <Portal name={portals.PRODUCT_AVAILABILITY_AFTER} />
+            </div>
+
+            {/* STOCK INFO */}
+            <div className={styles.productInfo}>
+              <Portal name={portals.PRODUCT_STOCK_INFO_BEFORE} />
+              <Portal name={portals.PRODUCT_STOCK_INFO}>
+                <StockInfo />
+              </Portal>
+              <Portal name={portals.PRODUCT_STOCK_INFO_AFTER} />
             </div>
 
           </Portal>
