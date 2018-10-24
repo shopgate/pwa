@@ -25,16 +25,16 @@ RELEASE_NAME = v$(patsubst v%,%, $(strip $(RELEASE_VERSION)))
 BETA = $(findstring beta, $(RELEASE_NAME))
 ifeq ("$(BETA)", "beta")
 	BETA = "true"
+  PRE_RELEASE = true
 else
 	BETA = "false"
+  PRE_RELEASE = false
 endif
 
 # This causes the Github-API to create draft releases only, without creating tags
 DRAFT_RELEASE = true
 
-setup:
-		sgconnect init
-		make clean
+
 
 checkout-develop:
 		git checkout origin/develop
@@ -75,7 +75,8 @@ release:
 		$(call build-library-packages)
 		$(call publish-npm-packages)
 		make publish-to-github
-		#(call finalize-release)
+		$(call create-github-releases)
+		$(call finalize-release)
 
 
 
@@ -85,10 +86,8 @@ clean:
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
 		lerna clean --yes
-		rm -f ./.git/hooks/pre-commit
 		rm -rf ./node_modules/
-		node ./scripts/init-subtrees.js # try to set up new git subtree entries.
-		rm -rf ./.cache-loader/
+		node ./scripts/init-subtrees.js
 		lerna bootstrap
 
 
@@ -294,6 +293,27 @@ endef
 
 
 
+# CREATE-GITHUB-RELEASEES ##########################################################################
+
+define create-github-releases
+		$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),pwa)
+		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-theme-to-repo-name,$(theme))))
+		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-extension-to-repo-name,$(extension))))
+
+endef
+
+define map-theme-to-repo-name
+		$(patsubst @shopgate-%,ext-%,$(1))
+
+endef
+
+define map-extension-to-repo-name
+		$(patsubst ext-tracking-ga-native,tracking-ga-native,$(patsubst @shopgate-%,ext-%,$(1)))
+
+endef
+
+
+
 # define changelog
 # 		@echo "============================================================"
 # 		@echo "| Creating changelog ..."
@@ -307,45 +327,43 @@ endef
 #
 # endef
 
-#
-# define finalize-release
+define finalize-release
 # 		@echo "============================================================"
 # 		@echo "| Finishing release of version $(RELEASE_VERSION)"
 # 		@echo "============================================================"
 # 		@echo " "
 #
 ## 		# Cleanup by removing beta branches via github api
-#
-# 		@echo " "
-# 		@echo "============================================================"
-# 		@echo "| Done releasing!"
-# 		@echo "============================================================"
-# 		@echo " "
-#
-# endef
+		@echo " ";
+		@echo "============================================================";
+		@echo "| Done releasing!";
+		@echo "============================================================";
+		@echo " ";
+
+endef
 
 
 
-# GITHUB API HELPER FUNCTIONS ######################################################################
+####################################################################################################
+# GITHUB API HELPER FUNCTIONS
+####################################################################################################
 
-create-github-release:
-ifeq ($(BETA), "false")
-		curl -X POST --silent --data '{"tag_name": "$(1)","target_commitish": "$(2)","name": "","body": "","draft": $(DRAFT_RELEASE),"prerelease": true}' -H "Content-Type: application/json" -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(3))/releases 2>&1 | grep '^  "id":' | cut -d' ' -f 4 | cut -d',' -f 1
-else
-		curl -X POST --silent --data '{"tag_name": "$(1)","target_commitish": "$(2)","name": "","body": "","draft": $(DRAFT_RELEASE),"prerelease": false}' -H "Content-Type: application/json" -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(3))/releases 2>&1 | grep '^  "id":' | cut -d' ' -f 4 | cut -d',' -f 1
-endif
+define create-github-release
+		curl -X POST --silent --data '{"tag_name": "$(1)","target_commitish": "$(2)","name": "$(1)","body": "","draft": $(DRAFT_RELEASE),"prerelease": $(strip $(PRE_RELEASE))}' -H "Content-Type: application/json" -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(3))/releases 2>&1 | grep '^  "id":' | cut -d' ' -f 4 | cut -d',' -f 1;
+
+endef
 
 # define delete-github-release
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/releases/$(strip $(2)) 2>&1 | cat
+# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/releases/$(strip $(2)) 2>&1 | cat;
 #
 # endef
 #
 # define delete-github-branch
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/heads/$(strip $(2)) 2>&1 | cat
+# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/heads/$(strip $(2)) 2>&1 | cat;
 #
 # endef
 #
 # define delete-github-tag
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/tags/$(strip $(2)) 2>&1 | cat
+# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/tags/$(strip $(2)) 2>&1 | cat;
 #
 # endef
