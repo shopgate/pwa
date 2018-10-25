@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import shouldUpdate from 'recompose/shouldUpdate';
 import NavDrawer from 'Components/NavDrawer';
-import Search from 'Components/Search';
 import TabBar from 'Components/TabBar';
 import styles from './style';
 
@@ -16,7 +15,6 @@ const Viewport = props => (
     <NavDrawer />
     <TabBar />
     {props.children}
-    <Search />
   </main>
 );
 
