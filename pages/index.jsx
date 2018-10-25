@@ -23,6 +23,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
@@ -61,6 +62,7 @@ const Pages = ({ store }) => (
               <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
               <Route pattern={CART_PATH} component={routes.Cart} />
               <Route pattern={BROWSE_PATH} component={routes.Browse} preload />
+              <Route pattern={MORE_PATH} component={routes.More} preload />
               {
                 appConfig.hasFavorites
                 && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
