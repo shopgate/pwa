@@ -72,6 +72,21 @@ export const getUserDisplayName = createSelector(
  * @param {Object} state The global state.
  * @returns {string}
  */
+export const getUserFirstName = createSelector(
+  getUserData,
+  (data) => {
+    if (!data) {
+      return null;
+    }
+
+    return data.firstName;
+  }
+);
+
+/**
+ * @param {Object} state The global state.
+ * @returns {string}
+ */
 export const getUserEmail = createSelector(
   getUserData,
   (data) => {
