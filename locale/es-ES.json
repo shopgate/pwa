@@ -7,19 +7,20 @@
     "undo": "Deshacer"
   },
   "titles": {
-    "categories": "Categorías",
-    "filter": "Filtro",
+    "categories": "Todas las categorías",
+    "filter": "Filtrar",
     "cart": "Carrito",
     "shipping": "Envío",
     "reviews": "Comentarios",
+    "browse": "Buscar",
     "favorites": "Favoritos"
   },
   "favorites": {
     "add": "Agregar a favoritos",
     "continue": "Continuar comprando",
     "empty": "No tiene favoritos",
-    "error_add": "El producto no pudo agregarse a favoritos",
-    "error_remove": "El producto no pudo quitarse de favoritos",
+    "error_add": "El producto no se pudo agregar a favoritos",
+    "error_remove": "El producto no se pudo quitar de favoritos",
     "remove": "Quitar de favoritos",
     "removed": "Quitado de favoritos",
     "modal": {
@@ -29,10 +30,10 @@
   },
   "filter": {
     "sort": {
-      "default": "Ordenado por",
+      "default": "Ordenar por",
       "most_popular": "Más popular",
-      "price_desc": "Precio: Mayor a Menor",
-      "price_asc": "Precio: Menor a Mayor"
+      "price_desc": "Precio: mayor a Menor",
+      "price_asc": "Pricio: Menor a Mayor"
     },
     "apply": "Aplicar",
     "more": "más",
@@ -47,19 +48,20 @@
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "MSRP",
+    "currency": "EUR"
   },
   "product": {
     "description_heading": "Sobre",
-    "pick_an_attribute": "Elija uno {0}",
-    "tax_disclaimer": "* Incluye VAT más costos de envío",
+    "pick_an_attribute": "Elegir un {0}",
+    "tax_disclaimer": "* Incluye VAT más costo de envíos",
     "item_added": "{count, plural, =0 {# no se agregaron artículos} =1 {{count} artículo agregado} other {{count} artículos agregados}}",
     "add_to_cart": "Agregar al carrito",
     "go_to_cart": "Ir al carrito"
   },
   "category": {
     "error": {
-      "title": "Oops!",
+      "title": "Oops",
       "not_found": "No se encontró la categoría"
     },
     "no_result": {
@@ -68,11 +70,12 @@
     }
   },
   "search": {
+    "label": "Buscar",
+    "cancel": "Cancelar",
     "no_result": {
       "heading": "Oops!",
-      "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultados."
-    },
-    "placeholder": "Buscar"
+      "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultado."
+    }
   },
   "shipping": {
     "unknown": "más envío",
@@ -85,10 +88,10 @@
   },
   "modal": {
     "confirm": "Confirmar",
-    "dismiss": "Desechar",
+    "dismiss": "Descartar",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "Ocurrió un error inesperado. Intente nuevamente."
+    "body_error": "Ocurrió un error inesperado. vuelva a intentarlo."
   },
   "cart": {
     "subtotal": "Subtotal",
@@ -102,36 +105,39 @@
     "default_coupon_label": "Cupón",
     "coupon_was_added": "¡El cupón fue agregado al carrito!",
     "coupons_not_supported": "Agregue los cupones y vales de regalo mientras realiza el pago",
-    "free_shipping": "Envío gratuito"
+    "free_shipping": "Envío gratis"
   },
   "login": {
     "headline": "Bienvenido",
-    "subline": "Iniciar sesión para continuar",
+    "subline": "Inicie sesión para continuar",
     "email": "Email",
     "password": "Contraseña",
     "forgot_password": "¿Olvidó su contraseña?",
     "forgot_password_popup": "Utilice el sitio web para restablecer su contraseña.",
     "button": "Iniciar sesión",
-    "no_account": "¿Aún no tiene cuenta?",
-    "register": "¡Crear una ahora!",
+    "no_account": "¿Aún no tiene una cuenta?",
+    "signup": "Registro",
     "logout_message": "Ha sido desconectado.",
     "error": "Su usuario y contraseña no corresponden a ninguna cuenta"
   },
   "navigation": {
     "login_register": "Iniciar sesión / Registro",
+    "your_account": "Su cuenta",
     "home": "Inicio",
     "categories": "Categorías",
-    "favorites": "Favoritos",
     "my_orders": "Mis pedidos",
     "cart": "Carrito de compras",
     "shipping": "Métodos de envío",
-    "about": "Sobre nosotros",
+    "about": "Sobre",
+    "contact": "Contacto",
     "payment": "Métodos de pago",
-    "terms": "Términos",
-    "privacy": "Política de privacidad",
-    "return_policy": "Política de devolución",
+    "terms": "Términos y Condiciones",
+    "privacy": "Política de Privacidad",
     "welcome_message": "Bienvenido {name}",
-    "logout": "Cerrar sesión"
+    "return_policy": "Política de devolución",
+    "logout": "Cerrar sesión",
+    "store_information": "Store Information",
+    "more_menu": "Más"
   },
   "reviews": {
     "rating": "Calificación",
@@ -146,9 +152,9 @@
     "review_form_title": "Título del comentario (opcional)",
     "review_form_text": "Comentario del producto (opcional)",
     "review_form_error_author_empty": "Ingrese un nombre.",
-    "review_form_rate_error": "Seleccione una estrella de calificación.",
-    "review_form_error_length": "Máxima cantidad de {length} caracteres.",
-    "press_to_rate_with_x_stars": "Presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
+    "review_form_rate_error": "Elija una calificación por estrella.",
+    "review_form_error_length": "Máxima cantidad {length} de caracteres.",
+    "press_to_rate_with_x_stars": "presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
     "success_message": "¡Gracias por su comentario!"
   },
   "tab_bar": {
