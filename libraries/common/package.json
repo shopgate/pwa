@@ -51,8 +51,8 @@
     "@shopgate/pwa-core": "6.0.0-beta.13",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
-    "react": "~16.5.0",
-    "react-dom": "~16.5.0",
+    "react": "~16.6.0",
+    "react-dom": "~16.6.0",
     "react-hammerjs": "^1.0.1"
   }
 }
