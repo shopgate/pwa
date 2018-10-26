@@ -1,6 +1,8 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
+RECURSIVE_MAKEFILE_NAME = Makefile
+
 LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 UTILS = eslint-config unit-tests e2e benchmark
@@ -64,11 +66,15 @@ DRAFT_RELEASE = true
 
 
 
+####################################################################################################
+# MAIN MAKEFILE COMMANDS
+####################################################################################################
+
 checkout-develop:
 		git checkout origin/develop;
 		git fetch --all;
 		git pull origin develop;
-		make clean;
+		$(call make, clean)
 
 
 
@@ -84,15 +90,13 @@ add-remotes:
 
 
 sanity-check:
-		@#node ./scripts/check-release-version.js -v="$(RELEASE_VERSION)"
+		npm install --no-package-lock --no-save yargs && \
+			node ./scripts/check-release-version.js -v="$(RELEASE_VERSION)";
 
-		@if [ "$(BRANCH_NAME)" = "" ]; then \
+		@if [[ "$(BRANCH_NAME)" = "" ]]; then \
 			echo "ERROR:  No BRANCH was provided!" && false; \
 		fi;
-		@if [ "$(RC)" == "true" ] && [ "$(BRANCH_NAME)" != "develop" ]; then \
-			echo "ERROR: RC releases can only be created from 'develop' branch!" && false; \
-		fi;
-		@if [ "$(STABLE)" == "true" ] && [ "$(IS_RC_BRANCH_NAME)" != "true" ]; then \
+		@if [[ "$(STABLE)" == "true" ]] && [[ "$(IS_RC_BRANCH_NAME)" != "true" ]]; then \
 			echo "ERROR: STABLE releases can only be created from 'rc' branches" && false; \
 		fi;
 
@@ -105,16 +109,15 @@ release:
 		$(call update-versions)
 		$(call build-npm-packages)
 		$(call publish-npm-packages)
-		make publish-to-github;
+		$(call make, publish-to-github)
 		$(call create-github-releases)
 		$(call finalize-release)
 
-github-releases:
-		$(call create-github-releases)
+
 
 # Clean the repository before starting a release.
 clean:
-		make init;
+		$(call make, init)
 		find . -name "*error.log" -type f -delete;
 		find . -name "*debug.log" -type f -delete;
 		lerna clean --yes;
@@ -139,26 +142,39 @@ e2e-ios11:
 e2e-checkout:
 		cd themes/theme-gmd && yarn run e2e:checkout;
 
+e2e-user:
+		cd themes/theme-gmd && yarn run e2e:user;
 
 
-# SETUP-RELEASE ####################################################################################
+
+####################################################################################################
+# MAKE HELPER WHICH USES THE CORRECT MAKEFILE TO RUN (local or another one predefined by Jenkins)
+####################################################################################################
+
+define make
+	make -f $(strip $(RECURSIVE_MAKEFILE_NAME)) $(strip $(1));
+
+endef
+
+####################################################################################################
+# SETUP-RELEASE
 
 define setup-release
 		# Perform "sanity check" before doing anything else
-		make sanity-check;
+		$(call make, sanity-check)
 
 		@echo "======================================================================"
 		@echo "| Releasing version '$(RELEASE_VERSION)' on branch '$(BRANCH_NAME)'"
 		@echo "======================================================================"
 
 		# Remotes are required to push subtrees later
-		make add-remotes;
+		$(call make, add-remotes)
 
 		# Create a release branch to work with
 		$(call create-pwa-release-branch)
 
 		# Set up dependencies (lerna) and subtrees
-		make clean;
+		$(call make, clean)
 
 endef
 
@@ -177,9 +193,8 @@ endef
 
 
 
-# UPDATE-VERSIONS ##################################################################################
-upd-ext-vers:
-		$(call update-versions)
+####################################################################################################
+# UPDATE-VERSIONS
 
 define update-versions
 		$(call update-pwa-versions)
@@ -233,7 +248,8 @@ endef
 
 
 
-# BUILD-NPM-PACKAGES ##########################################################################
+####################################################################################################
+# BUILD-NPM-PACKAGES
 
 define build-npm-packages
 		@echo "======================================================================"
@@ -253,7 +269,8 @@ endef
 
 
 
-# PUBLISH-NPM-PACKAGES #############################################################################
+####################################################################################################
+# PUBLISH-NPM-PACKAGES
 
 # Publish all library and utils npm packages to npm
 define publish-npm-packages
@@ -292,7 +309,8 @@ endef
 
 
 
-# PUBLISH-TO-GITHUB ################################################################################
+####################################################################################################
+# PUBLISH-TO-GITHUB
 
 # Push everything to github and create releases including tags
 publish-to-github:
@@ -340,10 +358,10 @@ endef
 
 
 
-# CREATE-GITHUB-RELEASEES ##########################################################################
+####################################################################################################
+# CREATE-GITHUB-RELEASEES
 
 define create-github-releases
-		@#(call create-github-release,tag-name,release-branch-name,repo-name)
 		$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),pwa)
 		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-theme-to-repo-name,$(theme))))
 		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-extension-to-repo-name,$(extension))))
@@ -379,7 +397,9 @@ endef
 
 
 
-# GITHUB API HELPER FUNCTIONS ######################################################################
+####################################################################################################
+# GITHUB API HELPER FUNCTIONS
+####################################################################################################
 
 define create-github-release
 		curl -X POST --silent --data '{"tag_name": "$(1)","target_commitish": "$(2)","name": "$(1)","body": "","draft": $(DRAFT_RELEASE),"prerelease": $(strip $(PRE_RELEASE))}' -H "Content-Type: application/json" -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(3))/releases 2>&1 | grep '^  "id":' | cut -d' ' -f 4 | cut -d',' -f 1;
