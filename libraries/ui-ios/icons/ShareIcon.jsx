@@ -1,18 +1,18 @@
 import React from 'react';
 import Icon from '@shopgate/pwa-common/components/Icon';
 
+const content = `
+    <g>
+      <path d="M15.3,6.9c-0.5,0-0.9,0.4-0.9,0.9s0.4,0.9,0.9,0.9h2.1v10.8H6.6V8.7h2.1c0.5,0,0.9-0.4,0.9-0.9S9.2,6.9,8.7,6.9H4.8v14.4 h14.4V6.9H15.3z"/>
+      <path d="M9.9,5.8l1.4-1.4v8.9c0,0.4,0.4,0.8,0.8,0.8c0.4,0,0.8-0.4,0.8-0.8V4.5l1.4,1.4c0.2,0.2,0.4,0.2,0.6,0.2s0.4-0.1,0.6-0.2 c0.3-0.3,0.3-0.8,0-1.1L12,1.5L8.7,4.7C8.4,5,8.4,5.5,8.7,5.8C9,6.1,9.5,6.1,9.9,5.8z"/>
+  </g>
+  `;
+
 /**
  * The Share icon component.
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const ShareIcon = (props) => {
-  const content = '<path fill-rule="evenodd" clip-rule="evenodd" d="M9.26855 4.65566L9.64551 5.05801C9.7373 5.15371 9.88379 5.15566 9.97363 5.06289L13 1.99892V17.0043H14.001V1.87051L17.2529 5.12246C17.3418 5.21377 17.4873 5.21182 17.5781 5.11709L17.9922 4.72158C18.084 4.62685 18.0859 4.47549 17.9961 4.38369L14.2305 0.617089C14.2236 0.565819 14.2002 0.515526 14.1621 0.475487L13.7852 0.0731434C13.6924 -0.0225598 13.5459 -0.0245129 13.457 0.0682606L9.2627 4.31435C9.17285 4.40713 9.17578 4.56045 9.26855 4.65566ZM5 25.5043V8.5043H11V7.5043H4V26.5043H23V7.5043H16V8.5043H22V25.5043H5Z"/>';
-  return (
-    <div>
-      <Icon viewBox="0 0 26 26" content={content} {...props} />
-    </div>
-  );
-};
+const ShareIcon = props => <Icon content={content} {...props} />;
 
 export default ShareIcon;
