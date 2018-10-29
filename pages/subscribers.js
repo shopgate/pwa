@@ -23,7 +23,6 @@ import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkP
 // Theme
 import app from 'Pages/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
-import rootCategory from 'Pages/RootCategory/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import browse from 'Pages/Browse/subscriptions';
@@ -67,7 +66,6 @@ const subscriptions = [
   app,
   viewport,
   browse,
-  rootCategory,
   category,
   coupon,
   addToCartBar,
