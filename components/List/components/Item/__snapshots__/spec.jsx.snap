@@ -66,12 +66,12 @@ exports[`<List.Item /> should render with a right component 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-1qcr7hz"
+      className="css-l3889c"
       component="div"
       wrap={false}
     >
       <div
-        className="css-1qcr7hz css-h7r55a"
+        className="css-l3889c css-h7r55a"
       >
         <GridItem
           className="css-10fxwvh"
@@ -122,12 +122,12 @@ exports[`<List.Item /> should render with a title but no image 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-1qcr7hz"
+      className="css-l3889c"
       component="div"
       wrap={false}
     >
       <div
-        className="css-1qcr7hz css-h7r55a"
+        className="css-l3889c css-h7r55a"
       >
         <GridItem
           className="css-10fxwvh"
@@ -169,12 +169,12 @@ exports[`<List.Item /> should render with an image 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-1qcr7hz"
+      className="css-l3889c"
       component="div"
       wrap={false}
     >
       <div
-        className="css-1qcr7hz css-h7r55a"
+        className="css-l3889c css-h7r55a"
       >
         <div
           className="css-1mhrjzj"
@@ -244,12 +244,12 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
           data-test-id={null}
         >
           <Grid
-            className="css-1qcr7hz"
+            className="css-l3889c"
             component="div"
             wrap={false}
           >
             <div
-              className="css-1qcr7hz css-h7r55a"
+              className="css-l3889c css-h7r55a"
             >
               <GridItem
                 className="css-10fxwvh"
@@ -289,12 +289,12 @@ exports[`<List.Item /> should render without a Glow when disabled 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-1qcr7hz"
+      className="css-l3889c"
       component="div"
       wrap={false}
     >
       <div
-        className="css-1qcr7hz css-h7r55a"
+        className="css-l3889c css-h7r55a"
       >
         <GridItem
           className="css-10fxwvh css-19uk9mv"
@@ -331,12 +331,12 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-1qcr7hz css-7q9yf9"
+      className="css-l3889c css-7q9yf9"
       component="div"
       wrap={false}
     >
       <div
-        className="css-1qcr7hz css-7q9yf9 css-h7r55a"
+        className="css-l3889c css-7q9yf9 css-h7r55a"
       >
         <GridItem
           className="css-10fxwvh"
