@@ -7,7 +7,6 @@ import { historyPush } from '@shopgate/pwa-common/actions/router';
 import SuggestionList from './components/SuggestionList';
 import SearchField from './index';
 
-// Ignore console logs.
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyPush: jest.fn().mockReturnValue({ type: 'FOO' }),
