@@ -23,7 +23,7 @@ const title = css({
 
 const grid = css({
   alignItems: 'center',
-  minHeight: variables.navigator.height,
+  minHeight: 50,
   padding: `${variables.gap.small}px 0`,
   position: 'relative',
   zIndex: 2,

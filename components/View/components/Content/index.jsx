@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@virtuous/react-conductor/Router';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import ViewProvider from '../../../../providers/View';
 import Above from '../Above';
 import Below from '../Below';
@@ -18,6 +19,7 @@ class ViewContent extends Component {
     children: PropTypes.node,
     hasNavigator: PropTypes.bool,
     isFullscreen: PropTypes.bool,
+    noScrollOnKeyboard: PropTypes.bool,
     title: PropTypes.string,
   };
 
@@ -25,6 +27,7 @@ class ViewContent extends Component {
     children: null,
     hasNavigator: true,
     isFullscreen: false,
+    noScrollOnKeyboard: false,
     title: appConfig.shopName,
   };
 
@@ -39,7 +42,7 @@ class ViewContent extends Component {
       keyboardHeight: 0,
     };
 
-    event.addCallback('keyboardWillChange', this.handleKeyboardChange);
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 
   /**
@@ -49,7 +52,8 @@ class ViewContent extends Component {
     return styles.content(
       this.props.hasNavigator,
       this.props.isFullscreen,
-      this.state.keyboardHeight
+      this.state.keyboardHeight,
+      (this.props.noScrollOnKeyboard && this.state.keyboardHeight > 0)
     );
   }
 
