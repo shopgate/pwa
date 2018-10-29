@@ -33,9 +33,27 @@ export const updatePageInsets = (pageInsets) => {
   });
 };
 
-export default css({
+const viewport = css({
+  display: 'flex',
+  flexDirection: 'column',
   minHeight: '100vh',
-  overflowX: 'hidden',
+  overflow: 'hidden',
   position: 'relative',
   width: '100vw',
 });
+
+const content = css({
+  flexGrow: 1,
+  position: 'relative',
+});
+
+const footer = css({
+  flexShrink: 1,
+  position: 'relative',
+});
+
+export default {
+  viewport,
+  content,
+  footer,
+};
