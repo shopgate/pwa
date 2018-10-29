@@ -17,8 +17,6 @@ export const updateHeightCSSProperty = (isVisible) => {
   if (style.getPropertyValue('--tabbar-height') !== value) {
     style.setProperty('--tabbar-height', value);
   }
-
-  console.warn(value);
 };
 
 export default css({
