@@ -48,8 +48,7 @@
       "set": "{from} items: {price}",
       "range": "{from} of meer dan: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "EUR"
+    "msrp": "MSRP"
   },
   "product": {
     "description_heading": "Over",

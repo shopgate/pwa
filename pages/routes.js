@@ -10,11 +10,6 @@ export const Page = Loadable({
   loading: () => null,
 });
 
-export const RootCategory = Loadable({
-  loader: () => import('./RootCategory'),
-  loading: () => null,
-});
-
 export const Category = Loadable({
   loader: () => import('./Category'),
   loading: () => null,

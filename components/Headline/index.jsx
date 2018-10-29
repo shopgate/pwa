@@ -13,7 +13,7 @@ const Headline = ({ tag: Tag, style, text }) => (
 
 Headline.propTypes = {
   style: PropTypes.shape(),
-  tag: PropTypes.oneOf(['h1', 'h2', 'h3']),
+  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4']),
   text: PropTypes.string,
 };
 
