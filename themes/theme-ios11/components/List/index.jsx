@@ -49,14 +49,8 @@ class List extends Component {
           const key = `child-${index}`;
           // Selected state for the child.
           const { isSelected } = child.props;
-          // Whether or not this child is the last.
-          const isLast = (index === children.length - 1);
 
           const classes = [styles.item];
-
-          if (!isLast) {
-            classes.push(styles.itemNotLast);
-          }
 
           if (hasImages) {
             classes.push(styles.itemWithImage);

@@ -2,10 +2,11 @@ import React from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@virtuous/react-conductor/Router/context';
 import View from 'Components/View';
-import colors from 'Styles/colors';
 import Content from './components/Content';
 
 const propsMap = {
+  id: 'id',
+  query: 'state.query',
   visible: 'visible',
 };
 
@@ -14,9 +15,9 @@ const propsMap = {
  * @returns {JSX}
  */
 const Browse = () => (
-  <View background={colors.background}>
+  <View noScrollOnKeyboard>
     <Consume context={RouteContext} props={propsMap}>
-      {({ visible }) => visible && <Content />}
+      {({ visible, id, query }) => visible && <Content query={query} pageId={id} />}
     </Consume>
   </View>
 );

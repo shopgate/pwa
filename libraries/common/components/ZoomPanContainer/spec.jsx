@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import Image from '../../components/Image';
 import ZoomPanContainer from './index';
 
-jest.mock('@shopgate/react-hammerjs/src/Hammer', () => ({ children }) => children);
 /**
  * Test element component.
  * @returns {JSX}

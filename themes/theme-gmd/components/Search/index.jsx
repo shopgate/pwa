@@ -85,7 +85,7 @@ class Search extends Component {
    * @param {Event} event The event.
    */
   fetchResults = (event) => {
-    const { query } = this.state;
+    const query = event.target.value || this.state.query;
     event.preventDefault();
 
     if (query.length === 0) {
