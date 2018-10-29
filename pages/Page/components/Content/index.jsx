@@ -8,7 +8,7 @@ import {
 } from '@shopgate/pwa-common/constants/Portals';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
-import { AppBar } from '@shopgate/pwa-ui-material';
+import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import Logo from 'Components/Logo';
 import widgets from 'Extensions/widgets';
@@ -20,7 +20,7 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
-  const center = (pageId === PAGE_ID_INDEX) ? <Logo /> : <AppBar.Title title={configs.title} />;
+  const center = (pageId === PAGE_ID_INDEX) ? <Logo /> : <AppBar.Title title={configs.title || ''} />;
   const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
   return (
     <Fragment>
