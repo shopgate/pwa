@@ -1,9 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { BurgerIcon } from '@shopgate/pwa-ui-shared';
-import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
 
 /**
@@ -11,11 +8,13 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    below: PropTypes.node,
     title: PropTypes.string,
   };
 
   static defaultProps = {
     title: null,
+    below: null,
   };
 
   static contextTypes = {
@@ -28,13 +27,8 @@ class AppBarDefault extends PureComponent {
   render() {
     const { title } = this.props;
     const { __ } = this.context.i18n();
-    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} />;
     const center = <AppBar.Title title={__(title || '')} />;
-    const right = (
-      <Fragment>
-        <SearchButton />
-      </Fragment>
-    );
+
     const below = (
       <Fragment>
         {this.props.below}
@@ -42,7 +36,7 @@ class AppBarDefault extends PureComponent {
       </Fragment>
     );
 
-    return <AppBar left={left} center={center} right={right} {...this.props} below={below} />;
+    return <AppBar center={center} {...this.props} below={below} />;
   }
 }
 

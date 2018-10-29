@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@virtuous/react-conductor/Router';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import ViewProvider from '../../../../providers/View';
 import Above from '../Above';
 import Below from '../Below';
@@ -39,7 +40,7 @@ class ViewContent extends Component {
       keyboardHeight: 0,
     };
 
-    event.addCallback('keyboardWillChange', this.handleKeyboardChange);
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 
   /**

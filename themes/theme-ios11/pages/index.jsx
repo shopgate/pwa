@@ -10,11 +10,7 @@ import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import App from '@shopgate/pwa-common/App';
 import { INDEX_PATH, LOGIN_PATH, PAGE_PATTERN } from '@shopgate/pwa-common/constants/RoutePaths';
-import {
-  ROOT_CATEGORY_PATTERN,
-  CATEGORY_PATTERN,
-  CATEGORY_FILTER_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
+import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -29,6 +25,7 @@ import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { SnackBar } from '@shopgate/pwa-ui-material';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
+import { BROWSE_PATH } from 'Pages/Browse/constants';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
@@ -51,7 +48,6 @@ const Pages = ({ store }) => (
             <Router history={history}>
               <Route pattern={INDEX_PATH} component={routes.StartPage} />
               <Route pattern={PAGE_PATTERN} component={routes.Page} preload />
-              <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} />
               <Route pattern={CATEGORY_PATTERN} component={routes.Category} preload />
               <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
               <Route pattern={ITEM_PATTERN} component={routes.Product} preload />
@@ -59,6 +55,7 @@ const Pages = ({ store }) => (
               <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
               <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
               <Route pattern={CART_PATH} component={routes.Cart} />
+              <Route pattern={BROWSE_PATH} component={routes.Browse} preload />
               {
                 appConfig.hasFavorites
                 && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
