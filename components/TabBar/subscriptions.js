@@ -8,6 +8,9 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
+import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import {
@@ -16,7 +19,6 @@ import {
 } from './actions';
 
 const blacklist = [
-  CART_PATH,
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
   ITEM_REVIEWS_PATTERN,
@@ -28,17 +30,40 @@ const blacklist = [
 ];
 
 /**
+ * Whether the TabBar should be visible for the cart page.
+ * @param {Object} state The application state
+ * @returns {bool}
+ */
+const shouldCartHaveTabBar = state => getCartItems(state).length === 0;
+
+/**
  * TabBar subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function tabBar(subscribe) {
-  subscribe(routeDidEnter$, ({ dispatch }) => {
+  // When a route enters we update the tabbar visibility.
+  subscribe(routeDidEnter$, ({ dispatch, getState }) => {
     const { pattern } = getCurrentRoute();
+    let enable = false;
 
-    if (blacklist.includes(pattern)) {
-      dispatch(disableTabBar());
-    } else {
-      dispatch(enableTabBar());
+    if (pattern === CART_PATH) {
+      // Enable tabbar for empty cart page.
+      enable = shouldCartHaveTabBar(getState());
+    } else if (!blacklist.includes(pattern)) {
+      // Enable tabbar for those that are not blacklisted.
+      enable = true;
     }
+
+    dispatch(enable ? enableTabBar() : disableTabBar());
+  });
+
+  const cartUpdatedWhileVisible$ = cartReceived$
+    .filter(({ getState }) => getCurrentPathname(getState()));
+
+  // When the cart update we need reevaluate the decision.
+  subscribe(cartUpdatedWhileVisible$, ({ getState, dispatch }) => {
+    dispatch(shouldCartHaveTabBar(getState())
+      ? enableTabBar()
+      : disableTabBar());
   });
 }
