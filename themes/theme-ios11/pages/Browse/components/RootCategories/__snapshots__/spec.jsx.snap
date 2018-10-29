@@ -1,0 +1,691 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RootCategories /> should render category list with root categories from store 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(RootCategories)>
+    <RootCategories
+      categories={
+        Array [
+          Object {
+            "id": "123-123",
+            "name": "foo",
+          },
+          Object {
+            "id": "456-123",
+            "name": "bar",
+          },
+          Object {
+            "id": "789-123",
+            "name": "baz",
+          },
+          Object {
+            "id": "789-456",
+            "name": "qux",
+          },
+        ]
+      }
+      dispatch={[Function]}
+    >
+      <div
+        data-test-id="categoriesList"
+      >
+        <Headline
+          style={
+            Object {
+              "marginLeft": 20,
+              "marginRight": 20,
+              "marginTop": 20,
+            }
+          }
+          tag="h2"
+          text=""
+        />
+        <Portal
+          name="browse.category-list.before"
+          props={
+            Object {
+              "categories": Array [
+                Object {
+                  "id": "123-123",
+                  "name": "foo",
+                },
+                Object {
+                  "id": "456-123",
+                  "name": "bar",
+                },
+                Object {
+                  "id": "789-123",
+                  "name": "baz",
+                },
+                Object {
+                  "id": "789-456",
+                  "name": "qux",
+                },
+              ],
+            }
+          }
+        />
+        <Portal
+          name="browse.category-list"
+          props={
+            Object {
+              "categories": Array [
+                Object {
+                  "id": "123-123",
+                  "name": "foo",
+                },
+                Object {
+                  "id": "456-123",
+                  "name": "bar",
+                },
+                Object {
+                  "id": "789-123",
+                  "name": "baz",
+                },
+                Object {
+                  "id": "789-456",
+                  "name": "qux",
+                },
+              ],
+            }
+          }
+        >
+          <CategoryList
+            categories={
+              Array [
+                Object {
+                  "id": "123-123",
+                  "name": "foo",
+                },
+                Object {
+                  "id": "456-123",
+                  "name": "bar",
+                },
+                Object {
+                  "id": "789-123",
+                  "name": "baz",
+                },
+                Object {
+                  "id": "789-456",
+                  "name": "qux",
+                },
+              ]
+            }
+            prerender={0}
+          >
+            <List
+              className={
+                Object {
+                  "data-css-1tgouoh": "",
+                }
+              }
+              hasImages={false}
+              testId={null}
+            >
+              <List
+                className={
+                  Object {
+                    "data-css-1tgouoh": "",
+                  }
+                }
+              >
+                <ul
+                  className={
+                    Object {
+                      "data-css-1tgouoh": "",
+                    }
+                  }
+                >
+                  <ListItem
+                    className="css-fcrdu9"
+                    isSelected={false}
+                    key="child-0/.$123-123"
+                  >
+                    <li
+                      className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                      data-test-id="listItem"
+                    >
+                      <div
+                        className="css-1wrmg9m"
+                        data-test-id={null}
+                      >
+                        <Portal
+                          key="123-123"
+                          name="category.item"
+                          props={
+                            Object {
+                              "categoryId": "123-123",
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/category/3132332d313233"
+                            linkState={
+                              Object {
+                                "categoryId": "123-123",
+                                "title": "foo",
+                              }
+                            }
+                            onClick={null}
+                            rightComponent={null}
+                            testId="foo"
+                            title="foo"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onClick={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Connect(Link)
+                                  href="/category/3132332d313233"
+                                  onClick={null}
+                                  state={
+                                    Object {
+                                      "categoryId": "123-123",
+                                      "title": "foo",
+                                    }
+                                  }
+                                >
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/category/3132332d313233"
+                                    onClick={null}
+                                    replace={false}
+                                    state={
+                                      Object {
+                                        "categoryId": "123-123",
+                                        "title": "foo",
+                                      }
+                                    }
+                                    tag="div"
+                                  >
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /category/3132332d313233"
+                                      onClick={[Function]}
+                                      role="link"
+                                    >
+                                      <div
+                                        data-test-id="foo"
+                                      >
+                                        <Grid
+                                          className="css-l3889c"
+                                          component="div"
+                                          wrap={false}
+                                        >
+                                          <div
+                                            className="css-l3889c css-h7r55a"
+                                          >
+                                            <GridItem
+                                              className="css-10fxwvh"
+                                              component="div"
+                                              grow={1}
+                                              shrink={1}
+                                            >
+                                              <div
+                                                className="css-10fxwvh css-1gs0ko2"
+                                              >
+                                                foo
+                                              </div>
+                                            </GridItem>
+                                          </div>
+                                        </Grid>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className="css-fcrdu9"
+                    isSelected={false}
+                    key="child-1/.$456-123"
+                  >
+                    <li
+                      className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                      data-test-id="listItem"
+                    >
+                      <div
+                        className="css-1wrmg9m"
+                        data-test-id={null}
+                      >
+                        <Portal
+                          key="456-123"
+                          name="category.item"
+                          props={
+                            Object {
+                              "categoryId": "456-123",
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/category/3435362d313233"
+                            linkState={
+                              Object {
+                                "categoryId": "456-123",
+                                "title": "bar",
+                              }
+                            }
+                            onClick={null}
+                            rightComponent={null}
+                            testId="bar"
+                            title="bar"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onClick={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Connect(Link)
+                                  href="/category/3435362d313233"
+                                  onClick={null}
+                                  state={
+                                    Object {
+                                      "categoryId": "456-123",
+                                      "title": "bar",
+                                    }
+                                  }
+                                >
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/category/3435362d313233"
+                                    onClick={null}
+                                    replace={false}
+                                    state={
+                                      Object {
+                                        "categoryId": "456-123",
+                                        "title": "bar",
+                                      }
+                                    }
+                                    tag="div"
+                                  >
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /category/3435362d313233"
+                                      onClick={[Function]}
+                                      role="link"
+                                    >
+                                      <div
+                                        data-test-id="bar"
+                                      >
+                                        <Grid
+                                          className="css-l3889c"
+                                          component="div"
+                                          wrap={false}
+                                        >
+                                          <div
+                                            className="css-l3889c css-h7r55a"
+                                          >
+                                            <GridItem
+                                              className="css-10fxwvh"
+                                              component="div"
+                                              grow={1}
+                                              shrink={1}
+                                            >
+                                              <div
+                                                className="css-10fxwvh css-1gs0ko2"
+                                              >
+                                                bar
+                                              </div>
+                                            </GridItem>
+                                          </div>
+                                        </Grid>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className="css-fcrdu9"
+                    isSelected={false}
+                    key="child-2/.$789-123"
+                  >
+                    <li
+                      className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                      data-test-id="listItem"
+                    >
+                      <div
+                        className="css-1wrmg9m"
+                        data-test-id={null}
+                      >
+                        <Portal
+                          key="789-123"
+                          name="category.item"
+                          props={
+                            Object {
+                              "categoryId": "789-123",
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/category/3738392d313233"
+                            linkState={
+                              Object {
+                                "categoryId": "789-123",
+                                "title": "baz",
+                              }
+                            }
+                            onClick={null}
+                            rightComponent={null}
+                            testId="baz"
+                            title="baz"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onClick={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Connect(Link)
+                                  href="/category/3738392d313233"
+                                  onClick={null}
+                                  state={
+                                    Object {
+                                      "categoryId": "789-123",
+                                      "title": "baz",
+                                    }
+                                  }
+                                >
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/category/3738392d313233"
+                                    onClick={null}
+                                    replace={false}
+                                    state={
+                                      Object {
+                                        "categoryId": "789-123",
+                                        "title": "baz",
+                                      }
+                                    }
+                                    tag="div"
+                                  >
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /category/3738392d313233"
+                                      onClick={[Function]}
+                                      role="link"
+                                    >
+                                      <div
+                                        data-test-id="baz"
+                                      >
+                                        <Grid
+                                          className="css-l3889c"
+                                          component="div"
+                                          wrap={false}
+                                        >
+                                          <div
+                                            className="css-l3889c css-h7r55a"
+                                          >
+                                            <GridItem
+                                              className="css-10fxwvh"
+                                              component="div"
+                                              grow={1}
+                                              shrink={1}
+                                            >
+                                              <div
+                                                className="css-10fxwvh css-1gs0ko2"
+                                              >
+                                                baz
+                                              </div>
+                                            </GridItem>
+                                          </div>
+                                        </Grid>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                  <ListItem
+                    className="css-fcrdu9"
+                    isSelected={false}
+                    key="child-3/.$789-456"
+                  >
+                    <li
+                      className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                      data-test-id="listItem"
+                    >
+                      <div
+                        className="css-1wrmg9m"
+                        data-test-id={null}
+                      >
+                        <Portal
+                          key="789-456"
+                          name="category.item"
+                          props={
+                            Object {
+                              "categoryId": "789-456",
+                            }
+                          }
+                        >
+                          <Item
+                            className={null}
+                            image={null}
+                            isDisabled={false}
+                            isSelected={false}
+                            link="/category/3738392d343536"
+                            linkState={
+                              Object {
+                                "categoryId": "789-456",
+                                "title": "qux",
+                              }
+                            }
+                            onClick={null}
+                            rightComponent={null}
+                            testId="qux"
+                            title="qux"
+                          >
+                            <Glow
+                              className={null}
+                              color="#f7f7f7"
+                              styles={
+                                Object {
+                                  "container": null,
+                                  "glow": null,
+                                }
+                              }
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-13azwyo"
+                                onClick={[Function]}
+                                style={null}
+                              >
+                                <div
+                                  className="css-1bmd5dz"
+                                  style={Object {}}
+                                />
+                                <Connect(Link)
+                                  href="/category/3738392d343536"
+                                  onClick={null}
+                                  state={
+                                    Object {
+                                      "categoryId": "789-456",
+                                      "title": "qux",
+                                    }
+                                  }
+                                >
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/category/3738392d343536"
+                                    onClick={null}
+                                    replace={false}
+                                    state={
+                                      Object {
+                                        "categoryId": "789-456",
+                                        "title": "qux",
+                                      }
+                                    }
+                                    tag="div"
+                                  >
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /category/3738392d343536"
+                                      onClick={[Function]}
+                                      role="link"
+                                    >
+                                      <div
+                                        data-test-id="qux"
+                                      >
+                                        <Grid
+                                          className="css-l3889c"
+                                          component="div"
+                                          wrap={false}
+                                        >
+                                          <div
+                                            className="css-l3889c css-h7r55a"
+                                          >
+                                            <GridItem
+                                              className="css-10fxwvh"
+                                              component="div"
+                                              grow={1}
+                                              shrink={1}
+                                            >
+                                              <div
+                                                className="css-10fxwvh css-1gs0ko2"
+                                              >
+                                                qux
+                                              </div>
+                                            </GridItem>
+                                          </div>
+                                        </Grid>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </div>
+                            </Glow>
+                          </Item>
+                        </Portal>
+                      </div>
+                    </li>
+                  </ListItem>
+                </ul>
+              </List>
+            </List>
+          </CategoryList>
+        </Portal>
+        <Portal
+          name="browse.category-list.after"
+          props={
+            Object {
+              "categories": Array [
+                Object {
+                  "id": "123-123",
+                  "name": "foo",
+                },
+                Object {
+                  "id": "456-123",
+                  "name": "bar",
+                },
+                Object {
+                  "id": "789-123",
+                  "name": "baz",
+                },
+                Object {
+                  "id": "789-456",
+                  "name": "qux",
+                },
+              ],
+            }
+          }
+        />
+      </div>
+    </RootCategories>
+  </Connect(RootCategories)>
+</Provider>
+`;

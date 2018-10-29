@@ -10,11 +10,7 @@ import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import App from '@shopgate/pwa-common/App';
 import { INDEX_PATH, LOGIN_PATH, PAGE_PATTERN } from '@shopgate/pwa-common/constants/RoutePaths';
-import {
-  ROOT_CATEGORY_PATTERN,
-  CATEGORY_PATTERN,
-  CATEGORY_FILTER_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
+import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -52,7 +48,6 @@ const Pages = ({ store }) => (
             <Router history={history}>
               <Route pattern={INDEX_PATH} component={routes.StartPage} />
               <Route pattern={PAGE_PATTERN} component={routes.Page} preload />
-              <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} />
               <Route pattern={CATEGORY_PATTERN} component={routes.Category} preload />
               <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
               <Route pattern={ITEM_PATTERN} component={routes.Product} preload />
