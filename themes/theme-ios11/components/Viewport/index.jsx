@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import shouldUpdate from 'recompose/shouldUpdate';
-import Search from 'Components/Search';
 import TabBar from 'Components/TabBar';
 import styles from './style';
 
@@ -18,7 +17,6 @@ const Viewport = props => (
     <section className={styles.footer}>
       <TabBar />
     </section>
-    <Search />
   </main>
 );
 

@@ -1,6 +1,6 @@
 {
   "common": {
-    "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# giorno {time}} other {# giorni {time}}}",
+    "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# day {time}} other {# days {time}}}",
     "load_more": "Carica altro",
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
@@ -12,6 +12,7 @@
     "cart": "Carrello",
     "shipping": "Spedizione",
     "reviews": "Recensioni",
+    "browse": "Sfoglia",
     "favorites": "Favoriti"
   },
   "favorites": {
@@ -68,11 +69,12 @@
     }
   },
   "search": {
+    "label": "Cerca",
+    "cancel": "Cancella",
     "no_result": {
       "heading": "Ops!",
-      "body": "La tua ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    },
-    "placeholder": "Cerca"
+      "body": "La vostra ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
+    }
   },
   "shipping": {
     "unknown": "pi˘ spedizione",
@@ -105,46 +107,49 @@
     "free_shipping": "Spedizione Gratuita"
   },
   "login": {
-    "headline": "Benvenuto/a",
+    "headline": "Benvenuto / a",
     "subline": "Accedi per continuare",
     "email": "E-mail",
     "password": "Password",
     "forgot_password": "Password dimenticata?",
-    "forgot_password_popup": "Usa il sito web del desktop per resettare la password prego.",
+    "forgot_password_popup": "Usare il sito web del desktop per resettare la password prego.",
     "button": "Accedi",
     "no_account": "Non hai un account?",
-    "register": "Creane uno quÏ!",
+    "signup": "Registrati",
     "logout_message": "Sei uscito dall'account.",
     "error": "I tuoi nome utente e password non corrispondono ad alcun account"
   },
   "navigation": {
     "login_register": "Accedi / Registrati",
+    "your_account": "Il tuo Account",
     "home": "Pagina iniziale",
     "categories": "Categorie",
-    "favorites": "Favoriti",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
     "shipping": "Modalit‡ di spedizione",
-    "about": "Su di noi",
-    "payment": "Modalit‡ di pagamento",
-    "terms": "Termini",
-    "privacy": "Politica sulla privacy",
-    "return_policy": "Politica di restituzione",
-    "welcome_message": "Benvenuto/a {name}",
-    "logout": "Abbandona"
+    "about": "A riguardo",
+    "contact": "Contatta",
+    "payment": "Metodi di Pagamento",
+    "terms": "Termini e Condizioni",
+    "privacy": "Politica della Privacy",
+    "welcome_message": "Benvenuto / a {name}",
+    "return_policy": "Politica di Restituzione",
+    "logout": "Esci",
+    "store_information": "Informazioni del Negozio",
+    "more_menu": "Altro"
   },
   "reviews": {
     "rating": "valutazione",
     "no_reviews": "Vota prima degli altri questo prodotto:",
     "review_count": "({count} {count, plural, =1 {Recensione} other {Recensioni}})",
-    "button_add": "Scrivi una recensione",
+    "button_add": "Aggiungi una recensione",
     "button_all": "Tutte le {count} Recensioni",
     "author": "da {author}",
     "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}}",
     "review_form_rate": "Vota questo prodotto:",
     "review_form_author": "Il tuo nome",
-    "review_form_title": "Titolo della recensione (optional)",
-    "review_form_text": "Recensione del prodotto (optional)",
+    "review_form_title": "Titolo della recensione (opzionale)",
+    "review_form_text": "Recensione del prodotto (opzionale)",
     "review_form_error_author_empty": "Inserire un nome prego.",
     "review_form_rate_error": "Selezionare le stelle per la valutazione prego.",
     "review_form_error_length": "Massima lunghezza {length} caratteri.",

@@ -8,11 +8,13 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    below: PropTypes.node,
     title: PropTypes.string,
   };
 
   static defaultProps = {
     title: null,
+    below: null,
   };
 
   static contextTypes = {
@@ -26,6 +28,7 @@ class AppBarDefault extends PureComponent {
     const { title } = this.props;
     const { __ } = this.context.i18n();
     const center = <AppBar.Title title={__(title || '')} />;
+
     const below = (
       <Fragment>
         {this.props.below}

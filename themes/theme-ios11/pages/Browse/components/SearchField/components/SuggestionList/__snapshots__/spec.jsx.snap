@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuggestionList /> should render a list of suggestions 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(SuggestionList)
+    bottomHeight={10}
+    onClick={[Function]}
+  >
+    <SuggestionList
+      bottomHeight={10}
+      dispatch={[Function]}
+      onClick={[Function]}
+      suggestions={
+        Array [
+          "foo",
+          "foo bar",
+          "foo bar buz",
+          "foo bar buz quz",
+        ]
+      }
+    >
+      <div
+        className="css-12ngli3 css-90ryaa"
+      >
+        <button
+          className="css-10aealg"
+          data-test-id="searchSuggestion foo"
+          key="foo"
+          onClick={[Function]}
+          value="foo"
+        >
+          foo
+        </button>
+        <button
+          className="css-10aealg"
+          data-test-id="searchSuggestion foo bar"
+          key="foo bar"
+          onClick={[Function]}
+          value="foo bar"
+        >
+          foo bar
+        </button>
+        <button
+          className="css-10aealg"
+          data-test-id="searchSuggestion foo bar buz"
+          key="foo bar buz"
+          onClick={[Function]}
+          value="foo bar buz"
+        >
+          foo bar buz
+        </button>
+        <button
+          className="css-10aealg"
+          data-test-id="searchSuggestion foo bar buz quz"
+          key="foo bar buz quz"
+          onClick={[Function]}
+          value="foo bar buz quz"
+        >
+          foo bar buz quz
+        </button>
+      </div>
+    </SuggestionList>
+  </Connect(SuggestionList)>
+</Provider>
+`;

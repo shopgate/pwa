@@ -7,11 +7,12 @@
     "undo": "Rück­gän­gig"
   },
   "titles": {
-    "categories": "Kategorien",
+    "categories": "Alle Kategorien",
     "filter": "Filter",
     "cart": "Warenkorb",
     "shipping": "Versand",
     "reviews": "Bewertungen",
+    "browse": "Durchsuchen",
     "favorites": "Merkliste"
   },
   "favorites": {
@@ -34,9 +35,11 @@
       "price_desc": "Höchster Preis zuerst",
       "price_asc": "Niedrigster Preis zuerst"
     },
-    "apply": "Fertig",
+    "apply": "Anwenden",
     "more": "mehr",
-    "reset": "Zurücksetzen"
+    "clear": "Zurücksetzen",
+    "clear_all": "Alle zurücksetzen",
+    "view_all": "mehr"
   },
   "price": {
     "from": "Ab {price}",
@@ -66,11 +69,12 @@
     }
   },
   "search": {
+    "label": "Suche",
+    "cancel": "Abbrechen",
     "no_result": {
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
-    },
-    "placeholder": "Suchen"
+    }
   },
   "shipping": {
     "unknown": "zzgl. Versand",
@@ -104,14 +108,14 @@
   },
   "login": {
     "headline": "Willkommen!",
-    "subline": "Bitte melden Sie sich an, um fortzufahren",
+    "subline": "Bitte melden Sie sich an, um fortzufahren.",
     "email": "E-Mail",
     "password": "Passwort",
     "forgot_password": "Passwort vergessen?",
     "forgot_password_popup": "Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.",
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
-    "register": "Starten Sie hier.",
+    "signup": "Registrieren",
     "logout_message": "Sie wurden ausgeloggt.",
     "error": "Nutzername oder Passwort sind nicht korrekt"
   },
@@ -125,16 +129,15 @@
     "cart": "Warenkorb",
     "shipping": "Versandarten",
     "about": "Impressum",
+    "contact": "Kontakt",
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
     "welcome_message": "Hallo {name}",
     "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
-    "menuSubHeader": {
-      "more": "Mehr",
-      "about": "Über uns"
-    }
+    "store_information": "Über uns",
+    "more_menu": "Mehr"
   },
   "reviews": {
     "rating": "Bewertung",
