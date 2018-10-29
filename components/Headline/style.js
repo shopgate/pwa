@@ -2,7 +2,6 @@ import { css } from 'glamor';
 
 export default css({
   margin: '12px 0',
-
   'h1&': {
     fontSize: 34,
   },
