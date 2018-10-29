@@ -8,11 +8,10 @@ import {
 } from '@shopgate/pwa-common/constants/Portals';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
-import { AppBar } from '@shopgate/pwa-ui-material';
+import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import Logo from 'Components/Logo';
 import widgets from 'Extensions/widgets';
-import styles from './style';
 import connect from './connector';
 
 /**
@@ -21,18 +20,16 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
-  const center = (pageId === PAGE_ID_INDEX) ? <Logo /> : <AppBar.Title title={configs.title} />;
+  const center = (pageId === PAGE_ID_INDEX) ? <Logo /> : <AppBar.Title title={configs.title || ''} />;
   const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
   return (
     <Fragment>
       <Bar center={center} />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
-        <div className={styles.widgetWrapper}>
-          {(configs && configs.widgets) && (
-            <Widgets components={widgets} widgets={configs.widgets} />
-          )}
-        </div>
+        {(configs && configs.widgets) && (
+          <Widgets components={widgets} widgets={configs.widgets} />
+        )}
       </Portal>
       <Portal name={PAGE_CONTENT_AFTER} props={{ id: pageId }} />
     </Fragment>

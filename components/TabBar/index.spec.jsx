@@ -6,9 +6,13 @@ import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
+import { BROWSE_PATH } from 'Pages/Browse/constants';
+import { MORE_PATH } from 'Pages/More/constants';
 import {
   TAB_HOME,
+  TAB_BROWSE,
   TAB_CART,
+  TAB_MORE,
   TAB_FAVORITES,
 } from './constants';
 import {
@@ -19,6 +23,8 @@ import {
 const mockedStore = configureStore();
 const activePathsToTabs = {
   [INDEX_PATH]: TAB_HOME,
+  [BROWSE_PATH]: TAB_BROWSE,
+  [MORE_PATH]: TAB_MORE,
   [FAVORITES_PATH]: TAB_FAVORITES,
 };
 
