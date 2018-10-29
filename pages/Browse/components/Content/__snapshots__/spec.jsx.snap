@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Content /> should render 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <BrowseContent
+    pageId="1234"
+    query="foo"
+  >
+    <Connect(BackBar) />
+    <Headline
+      style={
+        Object {
+          "marginLeft": 20,
+          "marginRight": 20,
+        }
+      }
+      tag="h1"
+      text=""
+    />
+    <Connect(SearchField)
+      pageId="1234"
+      query="foo"
+    />
+    <Connect(RootCategories) />
+  </BrowseContent>
+</Provider>
+`;
