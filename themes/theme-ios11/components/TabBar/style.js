@@ -17,10 +17,12 @@ export const updateHeightCSSProperty = (isVisible) => {
   if (style.getPropertyValue('--tabbar-height') !== value) {
     style.setProperty('--tabbar-height', value);
   }
+
+  console.warn(value);
 };
 
 export default css({
-  position: 'fixed',
+  position: 'sticky',
   bottom: 0,
   left: 0,
   right: 0,

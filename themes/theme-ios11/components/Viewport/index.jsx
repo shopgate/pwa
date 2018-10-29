@@ -11,9 +11,13 @@ import styles from './style';
  * @returns {JSX}
  */
 const Viewport = props => (
-  <main className={styles} role="main" itemScope itemProp="http://schema.org/MobileApplication">
-    <TabBar />
-    {props.children}
+  <main className={styles.viewport} role="main" itemScope itemProp="http://schema.org/MobileApplication">
+    <section className={styles.content}>
+      {props.children}
+    </section>
+    <section className={styles.footer}>
+      <TabBar />
+    </section>
     <Search />
   </main>
 );

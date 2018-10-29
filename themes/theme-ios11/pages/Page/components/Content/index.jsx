@@ -12,7 +12,6 @@ import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import Logo from 'Components/Logo';
 import widgets from 'Extensions/widgets';
-import styles from './style';
 import connect from './connector';
 
 /**
@@ -28,11 +27,9 @@ function PageContent({ configs, pageId }) {
       <Bar center={center} />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
-        <div className={styles.widgetWrapper}>
-          {(configs && configs.widgets) && (
-            <Widgets components={widgets} widgets={configs.widgets} />
-          )}
-        </div>
+        {(configs && configs.widgets) && (
+          <Widgets components={widgets} widgets={configs.widgets} />
+        )}
       </Portal>
       <Portal name={PAGE_CONTENT_AFTER} props={{ id: pageId }} />
     </Fragment>
