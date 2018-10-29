@@ -8,16 +8,7 @@ import SuggestionList from './components/SuggestionList';
 import SearchField from './index';
 
 // Ignore console logs.
-jest.mock('@shopgate/pwa-core/helpers', () => {
-  const original = require.requireActual('@shopgate/pwa-core/helpers');
-
-  return {
-    ...original,
-    logger: {
-      log: jest.fn(),
-    },
-  };
-});
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyPush: jest.fn().mockReturnValue({ type: 'FOO' }),
 }));
