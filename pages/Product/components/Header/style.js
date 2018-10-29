@@ -3,10 +3,9 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const content = css({
+  background: colors.light,
   position: 'relative',
-  backgroundColor: colors.light,
   padding: variables.gap.big,
-  borderTop: 'rgba(0, 0, 0, 0.05) 2px solid',
 }).toString();
 
 const price = css({
