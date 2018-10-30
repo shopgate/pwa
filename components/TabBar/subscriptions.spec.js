@@ -1,6 +1,8 @@
 import configureStore from 'redux-mock-store';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import {
   enableTabBar,
   disableTabBar,
@@ -13,7 +15,10 @@ import subscriptions from './subscriptions';
  */
 const createMockedStore = () => configureStore()({});
 
-describe.skip('TabBar subscriptions', () => {
+jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
+jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({ getCartItems: jest.fn() }));
+
+describe('TabBar subscriptions', () => {
   let mockedSubscribe;
 
   beforeAll(() => {
@@ -22,49 +27,66 @@ describe.skip('TabBar subscriptions', () => {
   });
 
   it('should call subscribe as expected', () => {
-    expect(mockedSubscribe).toHaveBeenCalledTimes(1);
+    expect(mockedSubscribe).toHaveBeenCalledTimes(2);
   });
 
-  describe('routeDidEnter$', () => {
-    let stream;
-    let callback;
+  let routeDidEnterStream;
+  let routeDidEnterCallback;
+  let cartUpdateCallback;
 
-    beforeAll(() => {
-      // eslint-disable-next-line prefer-destructuring
-      [stream, callback] = mockedSubscribe.mock.calls[0];
-    });
+  beforeAll(() => {
+    [
+      [routeDidEnterStream, routeDidEnterCallback],
+      [, cartUpdateCallback],
+    ] = mockedSubscribe.mock.calls;
+  });
 
-    it('should be initialized as expected', () => {
-      expect(stream).toEqual(routeDidEnter$);
-      expect(callback).toBeInstanceOf(Function);
-    });
+  it('should be initialized as expected', () => {
+    expect(routeDidEnterStream).toEqual(routeDidEnter$);
+    expect(routeDidEnterCallback).toBeInstanceOf(Function);
+  });
 
-    it('should enable the tabbar on a not blacklisted route', () => {
-      const { dispatch, getActions } = createMockedStore();
-      const pathname = '/somepath';
+  it('should enable the tabbar on a not blacklisted route', () => {
+    const { dispatch, getActions } = createMockedStore();
+    getCurrentRoute.mockReturnValue({ pattern: '/something' });
 
-      callback({
-        dispatch,
-        pathname,
-      });
+    routeDidEnterCallback({ dispatch });
 
-      const actions = getActions();
-      expect(actions).toHaveLength(1);
-      expect(actions[0]).toEqual(enableTabBar());
-    });
+    const actions = getActions();
+    expect(actions).toHaveLength(1);
+    expect(actions[0]).toEqual(enableTabBar());
+  });
 
-    it('should disable the tabbar on a blacklisted route', () => {
-      const { dispatch, getActions } = createMockedStore();
-      const pathname = LOGIN_PATH;
+  it('should disable the tabbar on a blacklisted route', () => {
+    const { dispatch, getActions } = createMockedStore();
+    getCurrentRoute.mockReturnValue({ pattern: LOGIN_PATH });
 
-      callback({
-        dispatch,
-        pathname,
-      });
+    routeDidEnterCallback({ dispatch });
 
-      const actions = getActions();
-      expect(actions).toHaveLength(1);
-      expect(actions[0]).toEqual(disableTabBar());
-    });
+    const actions = getActions();
+    expect(actions).toHaveLength(1);
+    expect(actions[0]).toEqual(disableTabBar());
+  });
+
+  it('should enable tabbar when cart is empty', () => {
+    const { dispatch, getActions } = createMockedStore();
+    getCartItems.mockReturnValue([]);
+
+    cartUpdateCallback({ dispatch, getState: () => ({}) });
+
+    const actions = getActions();
+    expect(actions).toHaveLength(1);
+    expect(actions[0]).toEqual(enableTabBar());
+  });
+
+  it('should disable tabbar when cart is not empty', () => {
+    const { dispatch, getActions } = createMockedStore();
+    getCartItems.mockReturnValue([{ id: '123' }]);
+
+    cartUpdateCallback({ dispatch, getState: () => ({}) });
+
+    const actions = getActions();
+    expect(actions).toHaveLength(1);
+    expect(actions[0]).toEqual(disableTabBar());
   });
 });
