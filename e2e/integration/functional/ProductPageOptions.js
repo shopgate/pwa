@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
@@ -39,7 +37,7 @@ describe('functional test product page options', () => {
       .should('be.visible')
       .click();
     cy.get(els.cartButton += ' div')
-      .contains('1')
+      .contains('1');
   });
 
   it('should clear cart', () => {

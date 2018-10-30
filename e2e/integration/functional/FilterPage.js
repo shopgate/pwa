@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 
 describe('functional test filter page', () => {
@@ -26,7 +24,7 @@ describe('functional test filter page', () => {
     cy.get(els.manufactureFilter1FilterChip)
       .should('be.visible');
     cy.get(els.manufactureFilter1FilterChipRemove)
-      .click()
+      .click();
     cy.get(els.manufactureFilter1FilterChip)
       .should('not.exist');
   });
@@ -59,10 +57,10 @@ describe('functional test filter page', () => {
     cy.get(els.applyFilterButton)
       .should('be.visible')
       .click();
-      cy.get(els.manufactureFilter1FilterChip)
+    cy.get(els.manufactureFilter1FilterChip)
       .should('be.visible');
     cy.get(els.manufactureFilter1FilterChipRemove)
-      .click()
+      .click();
     cy.get(els.manufactureFilter1FilterChip)
       .should('not.exist');
     cy.get(els.accessoriesSizeFilterLChip)

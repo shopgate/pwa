@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 
 describe('AndroidGMDTest FavoritesPage', () => {
@@ -41,7 +39,7 @@ describe('AndroidGMDTest FavoritesPage', () => {
     cy.get(els.favoriteButton)
       .should('be.visible')
       .click();
-    cy.wait(2000)
+    cy.wait(2000);
     cy.visit('');
 
     cy.get(els.navigatorButton)
