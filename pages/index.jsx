@@ -63,7 +63,7 @@ const Pages = () => (
           }
           <Route path={`${SEARCH_PATH}`} component={routes.Search} />
           <Route path={`${LOGIN_PATH}`} component={routes.Login} />
-          <Route path={`${REGISTER_PATH}`} />
+          <Route path={`${REGISTER_PATH}`} component={routes.Register} />
 
           <AuthRoutes to={`${LOGIN_PATH}`}>
             <Route path={`${CHECKOUT_PATH}`} component={routes.Checkout} />

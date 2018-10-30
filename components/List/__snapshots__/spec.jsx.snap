@@ -3,6 +3,7 @@
 exports[`<List /> should not render invalid children 1`] = `
 <List
   hasImages={false}
+  testId={null}
 >
   <List
     className=""
@@ -17,9 +18,11 @@ exports[`<List /> should not render invalid children 1`] = `
       >
         <li
           className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-1ckzvk7"
+            data-test-id={null}
           >
             <Item
               className={null}
@@ -32,28 +35,32 @@ exports[`<List /> should not render invalid children 1`] = `
               testId={null}
               title="List Item"
             >
-              <Grid
-                className="css-1qcr7hz"
-                component="div"
-                wrap={false}
+              <div
+                data-test-id={null}
               >
-                <div
-                  className="css-1qcr7hz css-h7r55a"
+                <Grid
+                  className="css-1qcr7hz"
+                  component="div"
+                  wrap={false}
                 >
-                  <GridItem
-                    className="css-10fxwvh"
-                    component="div"
-                    grow={1}
-                    shrink={1}
+                  <div
+                    className="css-1qcr7hz css-h7r55a"
                   >
-                    <div
-                      className="css-10fxwvh css-1gs0ko2"
+                    <GridItem
+                      className="css-10fxwvh"
+                      component="div"
+                      grow={1}
+                      shrink={1}
                     >
-                      List Item
-                    </div>
-                  </GridItem>
-                </div>
-              </Grid>
+                      <div
+                        className="css-10fxwvh css-1gs0ko2"
+                      >
+                        List Item
+                      </div>
+                    </GridItem>
+                  </div>
+                </Grid>
+              </div>
             </Item>
           </div>
         </li>
@@ -66,12 +73,14 @@ exports[`<List /> should not render invalid children 1`] = `
 exports[`<List /> should not render without children 1`] = `
 <List
   hasImages={false}
+  testId={null}
 />
 `;
 
 exports[`<List /> should render a child and add styles for list items with images 1`] = `
 <List
   hasImages={true}
+  testId={null}
 >
   <List
     className=""
@@ -86,9 +95,11 @@ exports[`<List /> should render a child and add styles for list items with image
       >
         <li
           className="css-1p5q8vq css-1nftllw css-1ym3l2n css-1brrprg css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-1ckzvk7"
+            data-test-id={null}
           >
             <Item
               className={null}
@@ -101,28 +112,32 @@ exports[`<List /> should render a child and add styles for list items with image
               testId={null}
               title="List Item"
             >
-              <Grid
-                className="css-1qcr7hz"
-                component="div"
-                wrap={false}
+              <div
+                data-test-id={null}
               >
-                <div
-                  className="css-1qcr7hz css-h7r55a"
+                <Grid
+                  className="css-1qcr7hz"
+                  component="div"
+                  wrap={false}
                 >
-                  <GridItem
-                    className="css-10fxwvh"
-                    component="div"
-                    grow={1}
-                    shrink={1}
+                  <div
+                    className="css-1qcr7hz css-h7r55a"
                   >
-                    <div
-                      className="css-10fxwvh css-1gs0ko2"
+                    <GridItem
+                      className="css-10fxwvh"
+                      component="div"
+                      grow={1}
+                      shrink={1}
                     >
-                      List Item
-                    </div>
-                  </GridItem>
-                </div>
-              </Grid>
+                      <div
+                        className="css-10fxwvh css-1gs0ko2"
+                      >
+                        List Item
+                      </div>
+                    </GridItem>
+                  </div>
+                </Grid>
+              </div>
             </Item>
           </div>
         </li>
@@ -135,6 +150,7 @@ exports[`<List /> should render a child and add styles for list items with image
 exports[`<List /> should render with two children 1`] = `
 <List
   hasImages={false}
+  testId={null}
 >
   <List
     className=""
@@ -149,9 +165,11 @@ exports[`<List /> should render with two children 1`] = `
       >
         <li
           className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-1ckzvk7"
+            data-test-id={null}
           >
             <Item
               className={null}
@@ -164,28 +182,32 @@ exports[`<List /> should render with two children 1`] = `
               testId={null}
               title="List Item"
             >
-              <Grid
-                className="css-1qcr7hz"
-                component="div"
-                wrap={false}
+              <div
+                data-test-id={null}
               >
-                <div
-                  className="css-1qcr7hz css-h7r55a"
+                <Grid
+                  className="css-1qcr7hz"
+                  component="div"
+                  wrap={false}
                 >
-                  <GridItem
-                    className="css-10fxwvh"
-                    component="div"
-                    grow={1}
-                    shrink={1}
+                  <div
+                    className="css-1qcr7hz css-h7r55a"
                   >
-                    <div
-                      className="css-10fxwvh css-1gs0ko2"
+                    <GridItem
+                      className="css-10fxwvh"
+                      component="div"
+                      grow={1}
+                      shrink={1}
                     >
-                      List Item
-                    </div>
-                  </GridItem>
-                </div>
-              </Grid>
+                      <div
+                        className="css-10fxwvh css-1gs0ko2"
+                      >
+                        List Item
+                      </div>
+                    </GridItem>
+                  </div>
+                </Grid>
+              </div>
             </Item>
           </div>
         </li>
@@ -197,9 +219,11 @@ exports[`<List /> should render with two children 1`] = `
       >
         <li
           className="css-1p5q8vq css-1nftllw css-16gj3o1"
+          data-test-id="listItem"
         >
           <div
             className="css-1ckzvk7"
+            data-test-id={null}
           >
             <Item
               className={null}
@@ -212,28 +236,32 @@ exports[`<List /> should render with two children 1`] = `
               testId={null}
               title="List Item"
             >
-              <Grid
-                className="css-1qcr7hz"
-                component="div"
-                wrap={false}
+              <div
+                data-test-id={null}
               >
-                <div
-                  className="css-1qcr7hz css-h7r55a"
+                <Grid
+                  className="css-1qcr7hz"
+                  component="div"
+                  wrap={false}
                 >
-                  <GridItem
-                    className="css-10fxwvh"
-                    component="div"
-                    grow={1}
-                    shrink={1}
+                  <div
+                    className="css-1qcr7hz css-h7r55a"
                   >
-                    <div
-                      className="css-10fxwvh css-1gs0ko2"
+                    <GridItem
+                      className="css-10fxwvh"
+                      component="div"
+                      grow={1}
+                      shrink={1}
                     >
-                      List Item
-                    </div>
-                  </GridItem>
-                </div>
-              </Grid>
+                      <div
+                        className="css-10fxwvh css-1gs0ko2"
+                      >
+                        List Item
+                      </div>
+                    </GridItem>
+                  </div>
+                </Grid>
+              </div>
             </Item>
           </div>
         </li>

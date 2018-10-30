@@ -116,6 +116,7 @@
   },
   "navigation": {
     "login_register": "Log in / Registreer",
+    "your_account": "Uw Account",
     "home": "Home",
     "categories": "Categorieën",
     "favorites": "Favorieten",
@@ -126,9 +127,13 @@
     "payment": "Betalingsmethoden",
     "terms": "Voorwaarden",
     "privacy": "Privacybeleid",
-    "return_policy": "Retourbeleid",
     "welcome_message": "Welkom {name}",
-    "logout": "Log uit"
+    "return_policy": "Retourbeleid",
+    "logout": "Log uit",
+    "menuSubHeader": {
+      "more": "Meer",
+      "about": "Over ons"
+    }
   },
   "reviews": {
     "rating": "Rating",

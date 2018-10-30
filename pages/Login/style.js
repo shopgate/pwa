@@ -16,8 +16,12 @@ const headline = css({
 const subline = css({
   fontSize: '1.125rem',
   color: colors.shade6,
-  marginBottom: variables.gap.xxbig,
+  marginBottom: variables.gap.big,
   marginTop: 4,
+}).toString();
+
+const padLine = css({
+  marginBottom: variables.gap.xxbig - variables.gap.big,
 }).toString();
 
 const input = css({
@@ -62,4 +66,5 @@ export default {
   button,
   noAccount,
   signup,
+  padLine,
 };

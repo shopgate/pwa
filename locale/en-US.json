@@ -85,7 +85,7 @@
     "dismiss": "Dismiss",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "An unexpected error occured. Please try again."
+    "body_error": "An unexpected error occurred. Please try again."
   },
   "cart": {
     "subtotal": "Subtotal",
@@ -116,19 +116,24 @@
   },
   "navigation": {
     "login_register": "Login / Register",
+    "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
     "favorites": "Favorites",
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "shipping": "Shipping methods",
-    "about": "About us",
+    "about": "Contact us",
     "payment": "Payment methods",
     "terms": "Terms",
     "privacy": "Privacy policy",
-    "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
-    "logout": "Sign out"
+    "return_policy": "Return policy",
+    "logout": "Sign out",
+    "menuSubHeader": {
+      "more": "More",
+      "about": "About us"
+    }
   },
   "reviews": {
     "rating": "Rating",

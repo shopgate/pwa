@@ -46,6 +46,7 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
         >
           <li
             className="css-1p5q8vq css-16gj3o1"
+            data-test-id="listItem"
           >
             <Item
               checked={true}
@@ -142,20 +143,23 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                   >
                                     <Checkbox
                                       checked={true}
+                                      checkedClassName="css-5oj2eb"
+                                      unCheckedClassName="css-1n9afhg"
                                     >
                                       <Checkbox
                                         checked={true}
                                         checkedIcon={
                                           <Checked
-                                            className="css-17u2540"
+                                            className="css-37nc4w css-5oj2eb"
                                           />
                                         }
+                                        disabled={false}
                                         label={null}
                                         labelPosition="left"
                                         onCheck={[Function]}
                                         uncheckedIcon={
                                           <Unchecked
-                                            className="css-1gf5nsk"
+                                            className="css-37nc4w css-1n9afhg"
                                           />
                                         }
                                       >
@@ -163,17 +167,17 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                           onClick={[Function]}
                                         >
                                           <Checked
-                                            className="css-17u2540"
+                                            className="css-37nc4w css-5oj2eb"
                                           >
                                             <Icon
-                                              className="css-17u2540"
+                                              className="css-37nc4w css-5oj2eb"
                                               color={null}
                                               content="<path d=\\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\\"/>"
                                               size="inherit"
                                               viewBox="0 0 24 24"
                                             >
                                               <svg
-                                                className="css-yys9hb css-17u2540"
+                                                className="css-yys9hb css-37nc4w css-5oj2eb"
                                                 dangerouslySetInnerHTML={
                                                   Object {
                                                     "__html": "<path d=\\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\\"/>",
@@ -214,6 +218,7 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
         >
           <li
             className="css-1p5q8vq css-16gj3o1"
+            data-test-id="listItem"
           >
             <Item
               checked={false}
@@ -310,20 +315,23 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                   >
                                     <Checkbox
                                       checked={false}
+                                      checkedClassName="css-5oj2eb"
+                                      unCheckedClassName="css-1n9afhg"
                                     >
                                       <Checkbox
                                         checked={false}
                                         checkedIcon={
                                           <Checked
-                                            className="css-17u2540"
+                                            className="css-37nc4w css-5oj2eb"
                                           />
                                         }
+                                        disabled={false}
                                         label={null}
                                         labelPosition="left"
                                         onCheck={[Function]}
                                         uncheckedIcon={
                                           <Unchecked
-                                            className="css-1gf5nsk"
+                                            className="css-37nc4w css-1n9afhg"
                                           />
                                         }
                                       >
@@ -331,17 +339,17 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                           onClick={[Function]}
                                         >
                                           <Unchecked
-                                            className="css-1gf5nsk"
+                                            className="css-37nc4w css-1n9afhg"
                                           >
                                             <Icon
-                                              className="css-1gf5nsk"
+                                              className="css-37nc4w css-1n9afhg"
                                               color={null}
                                               content="<path d=\\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\\"/>"
                                               size="inherit"
                                               viewBox="0 0 24 24"
                                             >
                                               <svg
-                                                className="css-yys9hb css-1gf5nsk"
+                                                className="css-yys9hb css-37nc4w css-1n9afhg"
                                                 dangerouslySetInnerHTML={
                                                   Object {
                                                     "__html": "<path d=\\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\\"/>",

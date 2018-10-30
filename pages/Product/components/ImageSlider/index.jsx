@@ -92,7 +92,12 @@ class ImageSlider extends Component {
       );
     } else {
       content = (
-        <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
+        <BaseImageSlider
+          loop
+          indicators
+          onSlideChange={this.handleSlideChange}
+          rebuildOnUpdate
+        >
           {images.map(image => (
             <ProductImage key={image} src={image} animating={false} />
           ))}

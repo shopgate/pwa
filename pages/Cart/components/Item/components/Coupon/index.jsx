@@ -71,6 +71,13 @@ class Coupon extends Component {
   }
 
   /**
+   * We need to set the element height explicitly so that we can animate it later.
+   */
+  componentDidUpdate() {
+    this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement)}px`;
+  }
+
+  /**
    * Sets this coupon to be invisible via its state.
    */
   transitionOut = () => {

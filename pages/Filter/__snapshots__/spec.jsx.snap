@@ -413,6 +413,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <Portal
                             name="filter.price-range.before"
@@ -646,6 +647,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <ListItem
                             filter={
@@ -736,6 +738,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <ListItem
                             filter={
@@ -831,6 +834,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <ListItem
                             filter={
@@ -921,6 +925,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <ListItem
                             filter={
@@ -1036,6 +1041,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <ListItem
                             filter={
@@ -1131,6 +1137,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <ListItem
                             filter={
@@ -1221,6 +1228,7 @@ exports[`<Filter> page should render 1`] = `
                       >
                         <li
                           className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                          data-test-id="listItem"
                         >
                           <ListItem
                             filter={

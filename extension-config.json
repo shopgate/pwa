@@ -1,5 +1,5 @@
 {
-  "version": "5.8.0",
+  "version": "5.9.0",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -143,6 +143,13 @@
         "key": "value.frontend"
       }
     },
+    "apiUrl": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(browserApplicationAddress)s"
+      }
+    },
     "currency": {
       "type": "bigApi",
       "destination": "frontend",
@@ -151,6 +158,24 @@
         "service": "shop",
         "path": "/v1/%(shopId)s",
         "key": "currencyId"
+      }
+    },
+    "showGmdMenuSubHeaders": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Show GMD menu headers"
+      }
+    },
+    "benchmark": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Enable / disable frontend benchmarking tools"
       }
     }
   }

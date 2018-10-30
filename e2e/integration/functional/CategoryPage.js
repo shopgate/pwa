@@ -20,6 +20,7 @@ describe('functional tests category page', () => {
   it('check for sorting', () => {
     cy.get(els.allProductCategory)
       .scrollIntoView()
+      .should('be.visible')
       .click();
     cy.get(els.sortingDropDown)
       .click();

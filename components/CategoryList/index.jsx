@@ -28,6 +28,7 @@ const CategoryList = ({ categories }) => {
           <List.Item
             link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
             title={category.name}
+            testId={category.name}
           />
         </Portal>
       ))}

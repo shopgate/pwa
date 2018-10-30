@@ -25,7 +25,7 @@ describe('AndroidGMDTest filter page', () => {
 
   it('should check for filter options', () => {
     cy.get(els.filterListItemManufacturer)
-      .first()
+      .last()
       .click();
     cy.get(els.filterAttributeManufacturer1)
       .should('be.visible')

@@ -72,6 +72,7 @@ class CategoryListWidget extends Component {
                 link={link}
                 key={item.id}
                 title={item.name}
+                testId={item.name}
               />
             );
           })}

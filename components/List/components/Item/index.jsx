@@ -65,25 +65,27 @@ class Item extends Component {
     }
 
     return (
-      <Grid className={gridStyles} component="div">
-        {this.props.image && (
-          <div className={styles.image}>
-            {this.props.image}
-          </div>
-        )}
-        <Grid.Item
-          className={titleStyles}
-          component="div"
-          grow={1}
-        >
-          {title}
-        </Grid.Item>
-        {this.props.rightComponent &&
-          <Grid.Item component="div" grow={1}>
-            {this.props.rightComponent}
+      <div data-test-id={this.props.testId}>
+        <Grid className={gridStyles} component="div">
+          {this.props.image && (
+            <div className={styles.image}>
+              {this.props.image}
+            </div>
+          )}
+          <Grid.Item
+            className={titleStyles}
+            component="div"
+            grow={1}
+          >
+            {title}
           </Grid.Item>
-        }
-      </Grid>
+          {this.props.rightComponent &&
+            <Grid.Item component="div" grow={1}>
+              {this.props.rightComponent}
+            </Grid.Item>
+          }
+        </Grid>
+      </div >
     );
   }
 
