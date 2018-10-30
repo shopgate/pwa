@@ -328,21 +328,12 @@ ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
 		$(call build-changelog)
 		$(call push-subtrees-to-git, master)
-		# git push origin "master";
-		# git checkout origin develop;
-		# git pull;
-		# git merge "releases/$(RELEASE_NAME)";
-		# git push origin develop;
+		git push origin "releases/$(RELEASE_NAME)":master;
+		git checkout develop && git pull && git merge "releases/$(RELEASE_NAME)" && git push origin develop;
 else
 		# PRE-RELEASE (alpha, beta, rc)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
 endif
-
-d0:
-		$(call build-changelog)
-
-d1:
-		$(call push-subtrees-to-git, master)
 
 define build-changelog
 		@echo "======================================================================"
@@ -371,7 +362,7 @@ define push-subtrees-to-git
 endef
 
 define update-subtree-remotes
-		git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3)) 2> /dev/null;
 		git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
 
 endef
@@ -426,16 +417,16 @@ define create-github-release
 
 endef
 
-# define delete-github-release
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/releases/$(strip $(2)) 2>&1 | cat;
-#
-# endef
-#
-# define delete-github-branch
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/heads/$(strip $(2)) 2>&1 | cat;
-#
-# endef
-#
+define delete-github-release
+		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/releases/$(strip $(2)) 2>&1 | cat;
+
+endef
+
+define delete-github-branch
+		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/heads/$(strip $(2)) 2>&1 | cat;
+
+endef
+
 define delete-github-tag
 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/tags/$(strip $(2)) 2>&1 | cat;
 
