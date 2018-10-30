@@ -1,3 +1,4 @@
+import { getWebStorageEntry } from '../commands/webStorage';
 import {
   isValidVersion,
   isVersionAtLeast,
@@ -6,19 +7,23 @@ import {
   isLibVersionAtLeast,
   isLibVersionAtMost,
   isLibVersion,
+  clearVersionCache,
+  defaultClientInformation,
 } from './version';
+
+import { useBrowserConnector } from './index';
 
 let mockedClientInformation = null;
 
 const mockedWebStorageResponse = jest.fn();
 
 jest.mock('../commands/webStorage', () => ({
-  getWebStorageEntry: () => ({
+  getWebStorageEntry: jest.fn().mockImplementation(() => ({
     then(cb) {
       mockedWebStorageResponse();
       cb({ value: mockedClientInformation });
     },
-  }),
+  })),
 }));
 
 const mockedErrorLogger = jest.fn();
@@ -28,6 +33,7 @@ jest.mock('./index', () => ({
       mockedErrorLogger(...args);
     },
   },
+  useBrowserConnector: jest.fn(),
 }));
 
 /**
@@ -36,7 +42,7 @@ jest.mock('./index', () => ({
  * @param {string} libVersion The libVersion.
  * @param {string} appVersion The appVersion.
  */
-const setClientInformation = (platform = 'ios', libVersion = '17.0', appVersion = '10.18') => {
+const setClientInformation = (platform = 'ios', libVersion = '15.0', appVersion = '10.18') => {
   mockedClientInformation = {
     libVersion,
     appVersion,
@@ -50,8 +56,11 @@ const setClientInformation = (platform = 'ios', libVersion = '17.0', appVersion 
 
 describe('Version helper', () => {
   beforeEach(() => {
+    jest.clearAllMocks();
     mockedWebStorageResponse.mockClear();
+    useBrowserConnector.mockReturnValue(false);
     setClientInformation();
+    clearVersionCache();
   });
 
   describe('isValidVersion()', () => {
@@ -216,45 +225,70 @@ describe('Version helper', () => {
 
   describe('isLibVersionAtLeast()', () => {
     it('should return true for a value lower than the lib version', async () => {
-      const result = await isLibVersionAtLeast('16.1.2');
+      const result = await isLibVersionAtLeast('14.1.2');
       expect(result).toBe(true);
+      expect(getWebStorageEntry).toHaveBeenCalledTimes(1);
     });
 
     it('should return false for a value greater than the lib version', async () => {
-      const result = await isLibVersionAtLeast('17.1.2');
+      const result = await isLibVersionAtLeast('15.1.2');
       expect(result).toBe(false);
+      expect(getWebStorageEntry).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('isLibVersionAtMost()', () => {
     it('should return true for a value lower than the lib version', async () => {
-      const result = await isLibVersionAtMost('17.1.2');
+      const result = await isLibVersionAtMost('15.1.2');
       expect(result).toBe(true);
+      expect(getWebStorageEntry).toHaveBeenCalledTimes(1);
     });
 
     it('should return false for a value greater than the lib version', async () => {
-      const result = await isLibVersionAtMost('16.1.2');
+      const result = await isLibVersionAtMost('14.1.2');
       expect(result).toBe(false);
+      expect(getWebStorageEntry).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('isLibVersion()', () => {
     it('should return true for a value which does match the lib version', async () => {
-      const result = await isLibVersion('17.0.0');
+      const result = await isLibVersion('15.0.0');
       expect(result).toBe(true);
+      expect(getWebStorageEntry).toHaveBeenCalledTimes(1);
     });
 
     it('should return false for a value does not match the lib version', async () => {
-      const result = await isLibVersion('16.1.2');
+      const result = await isLibVersion('14.1.2');
       expect(result).toBe(false);
+      expect(getWebStorageEntry).toHaveBeenCalledTimes(1);
+    });
+
+    it('should use the default client information when the browser connector is active', async () => {
+      useBrowserConnector.mockReturnValueOnce(true);
+      const result = await isLibVersion(defaultClientInformation.libVersion);
+      expect(result).toBe(true);
+      expect(getWebStorageEntry).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('clearVersionCache()', () => {
+    it('should work as expected', async () => {
+      clearVersionCache();
+      await isLibVersion('15.0.0');
+      await isLibVersion('15.0.0');
+      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(1);
+      clearVersionCache();
+      await isLibVersion('15.0.0');
+      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(2);
     });
   });
 
   describe('request handling', () => {
     it('should only request once for multiple parallel calls', async () => {
-      isLibVersion('17.0.0');
-      isLibVersion('17.0.0');
-      const result = await isLibVersion('17.0.0');
+      isLibVersion('15.0.0');
+      isLibVersion('15.0.0');
+      const result = await isLibVersion('15.0.0');
       expect(result).toBe(true);
     });
   });
