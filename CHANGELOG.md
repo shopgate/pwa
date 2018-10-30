@@ -1,4 +1,3 @@
-
 # Changelog
 
 ### [4.3.0](https://github.com/shopgate/theme-gmd/compare/v4.2.0...v4.3.0) - February 07, 2018
