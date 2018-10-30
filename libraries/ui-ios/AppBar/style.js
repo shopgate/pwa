@@ -7,14 +7,14 @@ const outer = css({
   top: 0,
   width: '100%',
   zIndex: 2,
-});
+}).toString();
 
 const inner = css({
   display: 'flex',
   justifyContent: 'space-between',
   position: 'relative',
   zIndex: 1,
-});
+}).toString();
 
 export default {
   outer,

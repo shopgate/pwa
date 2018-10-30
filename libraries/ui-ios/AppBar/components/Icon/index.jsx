@@ -25,7 +25,7 @@ class AppBarIcon extends PureComponent {
    */
   render() {
     const {
-      background, badge: Badge, color, icon: Icon, onClick,
+      background, badge: Badge, color, icon: Icon, onClick, ...iconProps
     } = this.props;
 
     return (
@@ -37,7 +37,7 @@ class AppBarIcon extends PureComponent {
           color,
         }}
       >
-        <Icon />
+        <Icon {...iconProps} />
         {Badge && <Badge />}
       </button>
     );
