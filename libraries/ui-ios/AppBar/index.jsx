@@ -21,7 +21,7 @@ class AppBar extends PureComponent {
   }
 
   static defaultProps = {
-    backgroundColor: 'linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0.85) 60%)',
+    backgroundColor: '#fff',
     below: null,
     center: null,
     classes: { inner: '', outer: '' },
