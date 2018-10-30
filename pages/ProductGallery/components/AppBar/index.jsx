@@ -1,0 +1,26 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { DefaultBar } from 'Components/AppBar/presets';
+import { AppBar } from '@shopgate/pwa-ui-ios';
+import { ArrowIcon } from '@shopgate/pwa-ui-shared';
+import styles from './styles';
+import connect from './connector';
+
+/**
+ * The CategoryAppBar component.
+ * @returns {JSX}
+ */
+const GalleryAppBar = ({ goBack }) => (
+  <DefaultBar
+    classes={{ outer: styles.outer }}
+    backgroundColor="rgba(0, 0, 0, 0)"
+    textColor="#fff"
+    left={<AppBar.Icon icon={ArrowIcon} onClick={goBack} shadow />}
+  />
+);
+
+GalleryAppBar.propTypes = {
+  goBack: PropTypes.func.isRequired,
+};
+
+export default connect(GalleryAppBar);
