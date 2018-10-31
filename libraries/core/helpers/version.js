@@ -1,6 +1,7 @@
 import MobileDetect from 'mobile-detect';
 import detector from 'detector';
-import { logger } from './index';
+import { logger, useBrowserConnector } from './index';
+import { getWebStorageEntry } from '../commands/webStorage';
 
 const MODE_AT_MOST = 'at_most';
 const MODE_AT_LEAST = 'at_least';
@@ -8,6 +9,9 @@ const MODE_AT_LEAST = 'at_least';
 export const PLATFORM_ANDROID = 'android';
 export const PLATFORM_IOS = 'ios';
 export const MIN_ANDROID_LIB_VERSION = '13.0';
+
+let versions = null;
+let requesting = false;
 
 const md = new MobileDetect(navigator.userAgent);
 const isAndroid = md.is('AndroidOS');
@@ -24,6 +28,25 @@ export const defaultClientInformation = {
     model: isAndroid ? 'Android' : `iPhone${detector.os.fullVersion}`,
   },
 };
+
+/**
+ * Waits till a passed handler function returns TRUE and resolves.
+ * @param {Function} handler Handler function which checks a condition to resolve.
+ * @return {Promise}
+ */
+const wait = handler => new Promise((resolve) => {
+  /**
+   * Checks the request state.
+   */
+  const check = () => {
+    if (handler() === true) {
+      resolve();
+    } else {
+      setTimeout(check, 20);
+    }
+  };
+  check();
+});
 
 /**
  * Splits a version string into it's segments.
@@ -126,12 +149,74 @@ export const isVersion = (requiredVersion, currentVersion) =>
   (isVersionAtMost(requiredVersion, currentVersion) === true);
 
 /**
+* Fetches versions from the client information webStorage entry.
+* @return {Promise}
+*/
+const getVersionsFromClientInformation = async () => {
+  /**
+   * Checks if currently no request is ongoing.
+   * @return {boolean}
+   */
+  const isIdle = () => requesting === false;
+  if (!isIdle()) {
+    // Wait until the request finished before proceed.
+    await wait(isIdle);
+  }
+  // If a version object is already present, the request can be skipped.
+  if (versions !== null) {
+    return versions;
+  }
+  requesting = true;
+  let clientInformation;
+
+  // Fetch the client information.
+  if (useBrowserConnector()) {
+    clientInformation = { value: { ...defaultClientInformation } };
+  } else {
+    clientInformation = await getWebStorageEntry({ name: 'clientInformation' });
+  }
+
+  // Grab all relevant data from the client information.
+  let { libVersion } = clientInformation.value;
+  const {
+    appVersion,
+    codebaseVersion,
+    device,
+  } = clientInformation.value;
+  /* istanbul ignore next */
+  const { os: { platform = null } = {} } = device || {};
+  /**
+  * Older Android app versions didn't handle the libVersion within the client information like the
+  * iOS apps. Those apps usually send a version 2.0. But since they also support most of the PWA
+  * related commands, the lib version is corrected here to improve handling within the code.
+  */
+  if (platform === PLATFORM_ANDROID && !isVersionAtLeast('9.0', libVersion)) {
+    libVersion = MIN_ANDROID_LIB_VERSION;
+  }
+  // Update the version cache.
+  versions = {
+    libVersion,
+    appVersion,
+    codebaseVersion,
+  };
+  requesting = false;
+  return versions;
+};
+
+/**
+ * Clears the local versions cache
+ */
+export const clearVersionCache = () => {
+  versions = null;
+};
+
+/**
  * Checks if a required version matches at least the current lib version.
  * @param {string} requiredVersion The required version - 17[|17.0|17.0.0].
  * @return {Promise}
  */
-export const isLibVersionAtLeast = (requiredVersion) => {
-  const { libVersion } = defaultClientInformation;
+export const isLibVersionAtLeast = async (requiredVersion) => {
+  const { libVersion } = await getVersionsFromClientInformation();
   return isVersionAtLeast(requiredVersion, libVersion);
 };
 
@@ -140,8 +225,8 @@ export const isLibVersionAtLeast = (requiredVersion) => {
  * @param {string} requiredVersion The required version - 17[|17.0|17.0.0].
  * @return {Promise}
  */
-export const isLibVersionAtMost = (requiredVersion) => {
-  const { libVersion } = defaultClientInformation;
+export const isLibVersionAtMost = async (requiredVersion) => {
+  const { libVersion } = await getVersionsFromClientInformation();
   return isVersionAtMost(requiredVersion, libVersion);
 };
 
@@ -150,8 +235,8 @@ export const isLibVersionAtMost = (requiredVersion) => {
  * @param {string} requiredVersion The required version - 17[|17.0|17.0.0].
  * @return {Promise}
  */
-export const isLibVersion = (requiredVersion) => {
-  const { libVersion } = defaultClientInformation;
+export const isLibVersion = async (requiredVersion) => {
+  const { libVersion } = await getVersionsFromClientInformation();
   return isVersion(requiredVersion, libVersion);
 };
 
@@ -159,7 +244,7 @@ export const isLibVersion = (requiredVersion) => {
  * Returns the current libVersion.
  * @return {Promise}
  */
-export const getLibVersion = () => {
-  const { libVersion } = defaultClientInformation;
+export const getLibVersion = async () => {
+  const { libVersion } = await getVersionsFromClientInformation();
   return libVersion;
 };
