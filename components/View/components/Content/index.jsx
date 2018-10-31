@@ -19,7 +19,6 @@ class ViewContent extends Component {
 
   static propTypes = {
     children: PropTypes.node,
-    hasNavigator: PropTypes.bool,
     isFullscreen: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
     title: PropTypes.string,
@@ -27,7 +26,6 @@ class ViewContent extends Component {
 
   static defaultProps = {
     children: null,
-    hasNavigator: true,
     isFullscreen: false,
     noScrollOnKeyboard: false,
     title: appConfig.shopName,
