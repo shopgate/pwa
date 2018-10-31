@@ -9,9 +9,8 @@ import {
 import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
-import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
-import { cartReceived$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
+import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import {
   enableTabBar,
@@ -56,9 +55,6 @@ export default function tabBar(subscribe) {
 
     dispatch(enable ? enableTabBar() : disableTabBar());
   });
-
-  const cartUpdatedWhileVisible$ = cartReceived$
-    .filter(({ getState }) => getCurrentPathname(getState()));
 
   // When the cart update we need reevaluate the decision.
   subscribe(cartUpdatedWhileVisible$, ({ getState, dispatch }) => {
