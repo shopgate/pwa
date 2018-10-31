@@ -34,10 +34,10 @@ export const getSuggestionsFetchingState = createSelector(
   getSuggestionsState,
   (state, props) => props.searchPhrase,
   (suggestions, phrase) => {
-    if (!phrase || !suggestions[phrase] || suggestions[phrase].isFetching === false) {
+    if (!phrase || !suggestions[phrase]) {
       return false;
     }
 
-    return true;
+    return suggestions[phrase].isFetching;
   }
 );
