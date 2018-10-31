@@ -223,10 +223,9 @@ class InfiniteContainer extends Component {
   }
 
   /**
-   * Resets the state and domScrollContainer.
+   * Resets the state.
    */
   resetComponent() {
-    this.domScrollContainer = null;
     this.setState({
       offset: [0, this.props.limit],
       awaitingItems: true,
