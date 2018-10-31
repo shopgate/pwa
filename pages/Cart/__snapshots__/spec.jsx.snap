@@ -5,6 +5,7 @@ exports[`<Cart> page should match snapshot 1`] = `
   background="#f8f8f8"
   hasNavigator={true}
   isFullscreen={false}
+  noScrollOnKeyboard={false}
 >
   <Consume
     context={
