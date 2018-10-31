@@ -1,5 +1,176 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<SuggestionList /> should not update while suggestions are fetching 1`] = `
+<SuggestionList
+  bottomHeight={10}
+  fetching={false}
+  onClick={[Function]}
+  suggestions={
+    Array [
+      "foo",
+      "foo bar",
+      "foo bar buz",
+      "foo bar buz quz",
+    ]
+  }
+>
+  <div
+    className="css-12ngli3 css-90ryaa"
+  >
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo"
+      key="foo"
+      onClick={[Function]}
+      value="foo"
+    >
+      foo
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar"
+      key="foo bar"
+      onClick={[Function]}
+      value="foo bar"
+    >
+      foo bar
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar buz"
+      key="foo bar buz"
+      onClick={[Function]}
+      value="foo bar buz"
+    >
+      foo bar buz
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar buz quz"
+      key="foo bar buz quz"
+      onClick={[Function]}
+      value="foo bar buz quz"
+    >
+      foo bar buz quz
+    </button>
+  </div>
+</SuggestionList>
+`;
+
+exports[`<SuggestionList /> should not update while suggestions are fetching 2`] = `
+<SuggestionList
+  bottomHeight={10}
+  fetching={true}
+  onClick={[Function]}
+  suggestions={
+    Array [
+      "foo bar buz quz",
+      "foo bar buz",
+      "foo bar",
+      "foo",
+    ]
+  }
+>
+  <div
+    className="css-12ngli3 css-90ryaa"
+  >
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo"
+      key="foo"
+      onClick={[Function]}
+      value="foo"
+    >
+      foo
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar"
+      key="foo bar"
+      onClick={[Function]}
+      value="foo bar"
+    >
+      foo bar
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar buz"
+      key="foo bar buz"
+      onClick={[Function]}
+      value="foo bar buz"
+    >
+      foo bar buz
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar buz quz"
+      key="foo bar buz quz"
+      onClick={[Function]}
+      value="foo bar buz quz"
+    >
+      foo bar buz quz
+    </button>
+  </div>
+</SuggestionList>
+`;
+
+exports[`<SuggestionList /> should not update while suggestions are fetching 3`] = `
+<SuggestionList
+  bottomHeight={10}
+  fetching={false}
+  onClick={[Function]}
+  suggestions={
+    Array [
+      "foo bar buz quz",
+      "foo bar buz",
+      "foo bar",
+      "foo",
+    ]
+  }
+>
+  <div
+    className="css-12ngli3 css-90ryaa"
+  >
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar buz quz"
+      key="foo bar buz quz"
+      onClick={[Function]}
+      value="foo bar buz quz"
+    >
+      foo bar buz quz
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar buz"
+      key="foo bar buz"
+      onClick={[Function]}
+      value="foo bar buz"
+    >
+      foo bar buz
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo bar"
+      key="foo bar"
+      onClick={[Function]}
+      value="foo bar"
+    >
+      foo bar
+    </button>
+    <button
+      className="css-10aealg"
+      data-test-id="searchSuggestion foo"
+      key="foo"
+      onClick={[Function]}
+      value="foo"
+    >
+      foo
+    </button>
+  </div>
+</SuggestionList>
+`;
+
 exports[`<SuggestionList /> should render a list of suggestions 1`] = `
 <Provider
   store={
@@ -19,6 +190,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
     <SuggestionList
       bottomHeight={10}
       dispatch={[Function]}
+      fetching={false}
       onClick={[Function]}
       suggestions={
         Array [
