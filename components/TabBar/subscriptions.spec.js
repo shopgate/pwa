@@ -3,6 +3,7 @@ import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import {
   enableTabBar,
   disableTabBar,
@@ -32,18 +33,21 @@ describe('TabBar subscriptions', () => {
 
   let routeDidEnterStream;
   let routeDidEnterCallback;
+  let cartUpdateStream;
   let cartUpdateCallback;
 
   beforeAll(() => {
     [
       [routeDidEnterStream, routeDidEnterCallback],
-      [, cartUpdateCallback],
+      [cartUpdateStream, cartUpdateCallback],
     ] = mockedSubscribe.mock.calls;
   });
 
   it('should be initialized as expected', () => {
     expect(routeDidEnterStream).toEqual(routeDidEnter$);
     expect(routeDidEnterCallback).toBeInstanceOf(Function);
+    expect(cartUpdateStream).toEqual(cartUpdatedWhileVisible$);
+    expect(cartUpdateCallback).toBeInstanceOf(Function);
   });
 
   it('should enable the tabbar on a not blacklisted route', () => {
