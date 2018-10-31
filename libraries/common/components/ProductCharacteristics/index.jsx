@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
 import connect from './connector';
@@ -12,7 +12,7 @@ import {
 /**
  * The ProductCharacteristics component.
  */
-class ProductCharacteristics extends PureComponent {
+class ProductCharacteristics extends Component {
   static propTypes = {
     conditioner: PropTypes.shape().isRequired,
     render: PropTypes.func.isRequired,
