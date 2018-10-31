@@ -16,6 +16,7 @@ import Price from '../Price';
 import PriceInfo from '../PriceInfo';
 import Tiers from '../Tiers';
 import TaxDisclaimer from '../TaxDisclaimer';
+import StockInfo from '../StockInfo';
 import * as styles from './style';
 
 /**
@@ -37,6 +38,10 @@ const ProductInfo = ({ productId, options }) => (
           <div className={styles.productInfo}>
             <Availability productId={productId} />
           </div>
+          <div className={styles.productInfo}>
+            <StockInfo productId={productId} />
+          </div>
+
         </Grid.Item>
         <Grid.Item component="div" className={styles.priceContainer}>
           <div className={styles.priceInfo}>
