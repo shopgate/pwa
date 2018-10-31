@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { getSuggestions } from '@shopgate/pwa-common-commerce/search/selectors';
+import {
+  getSuggestions,
+  getSuggestionsFetchingState,
+} from '@shopgate/pwa-common-commerce/search/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -9,6 +12,7 @@ import { getSuggestions } from '@shopgate/pwa-common-commerce/search/selectors';
  */
 const mapStateToProps = (state, props) => ({
   suggestions: getSuggestions(state, props),
+  fetching: getSuggestionsFetchingState(state, props),
 });
 
 export default connect(mapStateToProps);

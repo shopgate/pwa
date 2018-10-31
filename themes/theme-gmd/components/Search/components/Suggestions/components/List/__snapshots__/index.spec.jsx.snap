@@ -15,10 +15,18 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   }
 >
   <div
-    className="css-12ngli3 css-90ryaa"
+    className={
+      Object {
+        "data-css-1aemm47": "",
+      }
+    }
   >
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo"
       key="foo"
       onClick={[Function]}
@@ -27,7 +35,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       foo
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar"
       key="foo bar"
       onClick={[Function]}
@@ -36,7 +48,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       foo bar
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar buz"
       key="foo bar buz"
       onClick={[Function]}
@@ -45,7 +61,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       foo bar buz
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar buz quz"
       key="foo bar buz quz"
       onClick={[Function]}
@@ -72,10 +92,18 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   }
 >
   <div
-    className="css-12ngli3 css-90ryaa"
+    className={
+      Object {
+        "data-css-1aemm47": "",
+      }
+    }
   >
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo"
       key="foo"
       onClick={[Function]}
@@ -84,7 +112,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       foo
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar"
       key="foo bar"
       onClick={[Function]}
@@ -93,7 +125,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       foo bar
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar buz"
       key="foo bar buz"
       onClick={[Function]}
@@ -102,7 +138,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       foo bar buz
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar buz quz"
       key="foo bar buz quz"
       onClick={[Function]}
@@ -129,10 +169,18 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   }
 >
   <div
-    className="css-12ngli3 css-90ryaa"
+    className={
+      Object {
+        "data-css-1aemm47": "",
+      }
+    }
   >
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar buz quz"
       key="foo bar buz quz"
       onClick={[Function]}
@@ -141,7 +189,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       foo bar buz quz
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar buz"
       key="foo bar buz"
       onClick={[Function]}
@@ -150,7 +202,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       foo bar buz
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo bar"
       key="foo bar"
       onClick={[Function]}
@@ -159,7 +215,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       foo bar
     </button>
     <button
-      className="css-10aealg"
+      className={
+        Object {
+          "data-css-11m0m3n": "",
+        }
+      }
       data-test-id="searchSuggestion foo"
       key="foo"
       onClick={[Function]}
@@ -202,10 +262,18 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       }
     >
       <div
-        className="css-12ngli3 css-90ryaa"
+        className={
+          Object {
+            "data-css-1aemm47": "",
+          }
+        }
       >
         <button
-          className="css-10aealg"
+          className={
+            Object {
+              "data-css-11m0m3n": "",
+            }
+          }
           data-test-id="searchSuggestion foo"
           key="foo"
           onClick={[Function]}
@@ -214,7 +282,11 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           foo
         </button>
         <button
-          className="css-10aealg"
+          className={
+            Object {
+              "data-css-11m0m3n": "",
+            }
+          }
           data-test-id="searchSuggestion foo bar"
           key="foo bar"
           onClick={[Function]}
@@ -223,7 +295,11 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           foo bar
         </button>
         <button
-          className="css-10aealg"
+          className={
+            Object {
+              "data-css-11m0m3n": "",
+            }
+          }
           data-test-id="searchSuggestion foo bar buz"
           key="foo bar buz"
           onClick={[Function]}
@@ -232,7 +308,11 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           foo bar buz
         </button>
         <button
-          className="css-10aealg"
+          className={
+            Object {
+              "data-css-11m0m3n": "",
+            }
+          }
           data-test-id="searchSuggestion foo bar buz quz"
           key="foo bar buz quz"
           onClick={[Function]}
