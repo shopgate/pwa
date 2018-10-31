@@ -73,13 +73,13 @@ class Search extends Component {
   };
 
   /**
-   * Fetch the search suggestions, debounced by 1 second.
+   * Fetch the search suggestions, debounced to reduce the request amount.
    */
   fetchSuggestions = debounce((query) => {
     if (query.length > SUGGESTIONS_MIN) {
       this.props.fetchSuggestions(query);
     }
-  }, 1000);
+  }, 200, { maxWait: 400 });
 
   /**
    * @param {Event} event The event.
