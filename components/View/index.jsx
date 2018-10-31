@@ -13,9 +13,14 @@ const View = ({
   children,
   hasNavigator,
   isFullscreen,
+  noScrollOnKeyboard,
 }) => (
   <section className={styles} style={{ background }}>
-    <Content hasNavigator={hasNavigator} isFullscreen={isFullscreen}>
+    <Content
+      hasNavigator={hasNavigator}
+      isFullscreen={isFullscreen}
+      noScrollOnKeyboard={noScrollOnKeyboard}
+    >
       {children}
     </Content>
   </section>
@@ -26,6 +31,7 @@ View.propTypes = {
   children: PropTypes.node,
   hasNavigator: PropTypes.bool,
   isFullscreen: PropTypes.bool,
+  noScrollOnKeyboard: PropTypes.bool,
 };
 
 View.defaultProps = {
@@ -33,6 +39,7 @@ View.defaultProps = {
   children: null,
   hasNavigator: true,
   isFullscreen: false,
+  noScrollOnKeyboard: false,
 };
 
 export default View;
