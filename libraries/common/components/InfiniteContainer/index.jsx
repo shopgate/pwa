@@ -118,14 +118,20 @@ class InfiniteContainer extends Component {
    * it tries to find a proper scroll container again.
    */
   componentDidUpdate() {
-    if (!this.domScrollContainer) {
-      this.domScrollContainer = getScrollParent(this.domElement);
+    /*
+     *  When component updates we update the scroll container.
+     *  Note here: getScrollParent won't find the right container when it
+     *  is NOT YET scrollable. It will only find containers that are already
+     *  scrollable.
+     */
+    const oldScrollParent = this.domScrollContainer;
+    this.domScrollContainer = getScrollParent(this.domElement);
 
-      // Make sure that there are still items left to be received/rendered.
-      if (!this.allItemsAreRendered()) {
-        this.bindEvents();
-      }
+    // Rebind scroll container events.
+    if (oldScrollParent) {
+      this.unbindEvents();
     }
+    this.bindEvents();
 
     // Reset isLoading flag.
     this.isLoading = false;
