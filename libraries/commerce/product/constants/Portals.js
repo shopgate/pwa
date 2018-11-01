@@ -18,6 +18,7 @@ const INFO = 'info';
 const MANUFACTURER = 'manufacturer';
 const SHIPPING = 'shipping';
 const AVAILABILITY = 'availability';
+const STOCK_INFO = 'stock-info';
 const PRICE_STRIKED = 'price-striked';
 const PRICE = 'price';
 const PRICE_INFO = 'price-info';
@@ -78,6 +79,11 @@ export const PRODUCT_SHIPPING_AFTER = `${PRODUCT}.${SHIPPING}.${AFTER}`;
 export const PRODUCT_AVAILABILITY_BEFORE = `${PRODUCT}.${AVAILABILITY}.${BEFORE}`;
 export const PRODUCT_AVAILABILITY = `${PRODUCT}.${AVAILABILITY}`;
 export const PRODUCT_AVAILABILITY_AFTER = `${PRODUCT}.${AVAILABILITY}.${AFTER}`;
+
+// STOCK INFO
+export const PRODUCT_STOCK_INFO_BEFORE = `${PRODUCT}.${STOCK_INFO}.${BEFORE}`;
+export const PRODUCT_STOCK_INFO = `${PRODUCT}.${STOCK_INFO}`;
+export const PRODUCT_STOCK_INFO_AFTER = `${PRODUCT}.${STOCK_INFO}.${AFTER}`;
 
 // PRICE STRIKED
 export const PRODUCT_PRICE_STRIKED_BEFORE = `${PRODUCT}.${PRICE_STRIKED}.${BEFORE}`;

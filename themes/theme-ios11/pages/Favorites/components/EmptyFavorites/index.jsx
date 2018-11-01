@@ -2,7 +2,6 @@ import React from 'react';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 import Icon from './components/Icon';
-import ContinueButton from './components/ContinueButton';
 
 /**
  * @return {JSX}
@@ -13,7 +12,6 @@ const EmptyFavorites = () => (
       <Icon />
       <I18n.Text string="favorites.empty" className={styles.title} />
     </div>
-    <ContinueButton />
   </div>
 );
 

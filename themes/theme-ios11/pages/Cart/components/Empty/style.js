@@ -28,20 +28,9 @@ const title = css({
   paddingTop: variables.emptyPage.titleTopGap,
 }).toString();
 
-const buttonContainer = css({
-  flexGrow: '0',
-  padding: `${variables.emptyPage.buttonVerticalGap}px ${variables.gap.big}px`,
-}).toString();
-
-const button = css({
-  width: '100%',
-}).toString();
-
 export default {
   wrapper,
   container,
   icon,
   title,
-  buttonContainer,
-  button,
 };
