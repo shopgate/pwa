@@ -20,10 +20,6 @@ export const updateHeightCSSProperty = (isVisible) => {
 };
 
 export default css({
-  position: 'sticky',
-  bottom: 0,
-  left: 0,
-  right: 0,
   height: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
   paddingBottom: 'var(--safe-area-inset-bottom)',
   zIndex: 10,
