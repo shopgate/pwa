@@ -14,20 +14,20 @@ describe('AddressBook Address details', () => {
     openNavDrawer();
 
     cy.window().spyAction('OPEN_LINK', () => {
-      cy.get(els.userMenuAddressBook).should('be.visible').click()
+      cy.get(els.userMenuAddressBook).should('be.visible').click();
     });
 
     cy.window().spyAction('OPEN_LINK', () => {
-      cy.get(els.addressListAddButton).should('be.visible').click()
+      cy.get(els.addressListAddButton).should('be.visible').click();
     });
 
     cy.get(els.userAddressBookAddPageForm).within(() => {
-      setValue('input[name="address.firstName"]', addressFixtures.firstName)
-      setValue('input[name="address.lastName"]', addressFixtures.lastName)
-      setValue('input[name="address.street1"]', addressFixtures.street1)
-      setValue('input[name="address.zipCode"]', addressFixtures.zipCode)
-      setValue('input[name="address.city"]', addressFixtures.city)
-      selectValue('select[name="address.country"]', addressFixtures.country)
+      setValue('input[name="address.firstName"]', addressFixtures.firstName);
+      setValue('input[name="address.lastName"]', addressFixtures.lastName);
+      setValue('input[name="address.street1"]', addressFixtures.street1);
+      setValue('input[name="address.zipCode"]', addressFixtures.zipCode);
+      setValue('input[name="address.city"]', addressFixtures.city);
+      selectValue('select[name="address.country"]', addressFixtures.country);
     });
 
     cy.window().spyAction('USER_ADDRESSES_RECEIVED', () => {
@@ -41,13 +41,13 @@ describe('AddressBook Address details', () => {
     cy.url()
       .should('include', '/user/addresses');
 
-    cy.get('@userAddressId').then(id => {
+    cy.get('@userAddressId').then((id) => {
       cy.get(els.addressListPageAddress(id)).should('be.visible');
     });
 
     // Delete address
     cy.window().spyAction('UPDATE_HISTORY', () => {
-      cy.get('@userAddressId').then(id => {
+      cy.get('@userAddressId').then((id) => {
         cy.get(els.addressListPageAddress(id)).should('be.visible').click();
       });
     });
@@ -63,9 +63,9 @@ describe('AddressBook Address details', () => {
       });
     }).its('options.message').should('contain', 'address.delete.successMessage');
 
-    cy.url().should('include', '/user/addresses')
-    cy.get('@userAddressId').then(id => {
-      cy.get(els.addressListPageAddress(id)).should('not.exist')
+    cy.url().should('include', '/user/addresses');
+    cy.get('@userAddressId').then((id) => {
+      cy.get(els.addressListPageAddress(id)).should('not.exist');
     });
   });
 });
