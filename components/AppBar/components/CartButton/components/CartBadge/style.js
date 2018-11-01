@@ -5,7 +5,7 @@ import variables from 'Styles/variables';
 export default css({
   position: 'absolute',
   fontSize: '0.7rem',
-  lineHeight: 1.4,
+  lineHeight: 1.5,
   fontWeight: 700,
   background: colors.primary,
   color: colors.primaryContrast,
