@@ -1,11 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import Icon from './components/Icon';
-import connect from './connector';
 import styles from './style';
 
 /**
@@ -13,7 +10,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Empty = ({ goBackHistory }) => (
+const Empty = () => (
   <div className={styles.wrapper}>
     <Portal name={portals.CART_EMPTY_BEFORE} />
     <Portal name={portals.CART_EMPTY}>
@@ -27,16 +24,7 @@ const Empty = ({ goBackHistory }) => (
       </div>
     </Portal>
     <Portal name={portals.CART_EMPTY_AFTER} />
-    <div className={styles.buttonContainer}>
-      <RippleButton onClick={goBackHistory} className={styles.button} type="secondary">
-        <I18n.Text string="cart.continue" />
-      </RippleButton>
-    </div>
   </div>
 );
 
-Empty.propTypes = {
-  goBackHistory: PropTypes.func.isRequired,
-};
-
-export default connect(Empty);
+export default Empty;
