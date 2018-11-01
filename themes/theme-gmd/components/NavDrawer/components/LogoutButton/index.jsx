@@ -16,12 +16,15 @@ const enhance = onlyUpdateForKeys(['loggedIn']);
 /**
  * @returns {JSX}
  */
-const LogoutButton = ({ loggedIn, logout }) => (
-  loggedIn && (
+const LogoutButton = ({ loggedIn, logout }) => {
+  const props = { Item: NavDrawer.Item };
+
+  return (
+    loggedIn && (
     <Fragment>
       <NavDrawer.Divider />
-      <Portal name={NAV_MENU_LOGOUT_BEFORE} />
-      <Portal name={NAV_MENU_LOGOUT}>
+      <Portal name={NAV_MENU_LOGOUT_BEFORE} props={props} />
+      <Portal name={NAV_MENU_LOGOUT} props={props}>
         <NavDrawer.Item
           label="navigation.logout"
           icon={LogoutIcon}
@@ -29,10 +32,11 @@ const LogoutButton = ({ loggedIn, logout }) => (
           testId="navDrawerLogOutButton"
         />
       </Portal>
-      <Portal name={NAV_MENU_LOGOUT_AFTER} />
+      <Portal name={NAV_MENU_LOGOUT_AFTER} props={props} />
     </Fragment>
-  )
-);
+    )
+  );
+};
 
 LogoutButton.propTypes = {
   loggedIn: PropTypes.bool.isRequired,

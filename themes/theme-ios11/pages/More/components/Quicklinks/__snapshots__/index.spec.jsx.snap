@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Quicklinks /> should not render when no quicklinks are there 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Quicklinks)>
+    <Quicklinks
+      dispatch={[Function]}
+      entries={Array []}
+    />
+  </Connect(Quicklinks)>
+</Provider>
+`;
+
+exports[`<Quicklinks /> should render quicklinks 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Quicklinks)>
+    <Quicklinks
+      dispatch={[Function]}
+      entries={
+        Array [
+          Object {
+            "label": "Some Label",
+            "url": "/some/url",
+          },
+          Object {
+            "label": "Another Label",
+            "url": "/another/url",
+          },
+        ]
+      }
+    >
+      <Headline
+        style={
+          Object {
+            "margin": "24px 20px 16px",
+          }
+        }
+        tag="h2"
+        text="navigation.more_menu"
+      >
+        <h2
+          className="css-mb0ki8"
+          style={
+            Object {
+              "margin": "24px 20px 16px",
+            }
+          }
+        >
+          navigation.more_menu
+        </h2>
+      </Headline>
+      <nav
+        className={
+          Object {
+            "data-css-13ch7sr": "",
+          }
+        }
+      >
+        <MoreMenuItem
+          href="/some/url"
+          key="/some/url"
+          label="Some Label"
+          onClick={null}
+        >
+          <Link
+            className="css-1czs3p1"
+            href="/some/url"
+          >
+            <div>
+              <Translate
+                className=""
+                params={Object {}}
+                string="Some Label"
+              >
+                <span
+                  className=""
+                >
+                  Some Label
+                </span>
+              </Translate>
+            </div>
+          </Link>
+        </MoreMenuItem>
+        <MoreMenuItem
+          href="/another/url"
+          key="/another/url"
+          label="Another Label"
+          onClick={null}
+        >
+          <Link
+            className="css-1czs3p1"
+            href="/another/url"
+          >
+            <div>
+              <Translate
+                className=""
+                params={Object {}}
+                string="Another Label"
+              >
+                <span
+                  className=""
+                >
+                  Another Label
+                </span>
+              </Translate>
+            </div>
+          </Link>
+        </MoreMenuItem>
+      </nav>
+    </Quicklinks>
+  </Connect(Quicklinks)>
+</Provider>
+`;
