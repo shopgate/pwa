@@ -63,7 +63,7 @@ module.exports = {
       height: 78,
     },
     buttonBase: {
-      borderRadius: 14,
+      borderRadius: 5,
       fontWeight: 600,
       fontSize: 17,
       padding: '8px 16px',
