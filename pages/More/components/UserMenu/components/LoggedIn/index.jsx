@@ -17,7 +17,9 @@ const LoggedIn = ({ logout }) => {
       <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_BEFORE} props={props} />
       <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT} props={props}>
         <div data-test-id="userMenu">
-          <Headline small text="navigation.your_account" />
+          <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_HEADER} props={props}>
+            <Headline small text="navigation.your_account" />
+          </Portal>
           <List>
             <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
             <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
