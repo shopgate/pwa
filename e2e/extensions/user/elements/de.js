@@ -11,4 +11,4 @@ export default {
   userAddressBookAddPageBottomButton: "[data-test-id='UserAddressBookAddPage'] [data-test-id='Button']",
 
   modal: "[data-test-id='basicDialog']",
-}
+};
