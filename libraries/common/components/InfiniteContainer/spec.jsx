@@ -214,13 +214,11 @@ describe('<InfiniteContainer />', () => {
         awaitingItems: false,
         offset: [10, 10],
       });
-      expect(instance.domScrollContainer).not.toBeNull();
 
       wrapper.setProps({
         requestHash: 'price_desc',
       });
 
-      expect(instance.domScrollContainer).toBeNull();
       expect(wrapper.state()).toEqual({
         offset: [0, 30],
         awaitingItems: true,

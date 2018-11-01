@@ -36,26 +36,5 @@ exports[`<CartEmpty /> should render 1`] = `
     name="cart.empty.after"
     props={null}
   />
-  <div
-    className="css-1dq8tqy"
-  >
-    <RippleButton
-      className="css-63oe3q"
-      disabled={false}
-      flat={false}
-      onClick={[Function]}
-      rippleClassName=""
-      rippleSize={null}
-      testId="Button"
-      type="secondary"
-      wrapContent={true}
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string="cart.continue"
-      />
-    </RippleButton>
-  </div>
 </div>
 `;

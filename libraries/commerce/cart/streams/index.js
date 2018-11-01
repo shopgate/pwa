@@ -6,6 +6,7 @@ import {
   routeDidLeave$,
 } from '@shopgate/pwa-common/streams/router';
 import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import {
   CART_PATH,
 
@@ -132,6 +133,13 @@ export const productsModified$ = main$.filter(({ action }) => (
 export const productsDeleted$ = main$.filter(({ action }) => (
   action.type === DELETE_PRODUCTS_FROM_CART
 ));
+
+/**
+ * Gets triggered when the cart has been updated while the cart route was visible.
+* @type {Observable}
+ */
+export const cartUpdatedWhileVisible$ = cartReceived$
+  .filter(({ getState }) => getCurrentPathname(getState()) === CART_PATH);
 
 /**
  * Gets triggered when the user tried to add a coupon to the cart.
