@@ -34,10 +34,8 @@ const UserMenu = ({
     <Fragment>
       <Portal name={portals.USER_MENU_CONTAINER_BEFORE} props={portalProps} />
       <Portal name={portals.USER_MENU_CONTAINER} props={portalProps}>
-        <div data-test-id="userMenu">
-          { isLoggedIn && <LoggedIn logout={logout} />}
-          { !isLoggedIn && <LoggedOut />}
-        </div>
+        { isLoggedIn && <LoggedIn logout={logout} />}
+        { !isLoggedIn && <LoggedOut />}
       </Portal>
       <Portal name={portals.USER_MENU_CONTAINER_AFTER} props={portalProps} />
     </Fragment>

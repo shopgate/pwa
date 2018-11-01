@@ -1,14 +1,6 @@
 import { connect } from 'react-redux';
-import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import { isUserLoggedIn, getUserData } from '@shopgate/pwa-common/selectors/user';
 import logout from '@shopgate/pwa-common/actions/user/logout';
-import { QUICKLINKS_MENU } from '@shopgate/pwa-common/constants/MenuIDs';
-
-import { makeGetMenuById } from './selectors';
-
-const getMenuById = makeGetMenuById();
-const props = {
-  id: QUICKLINKS_MENU,
-};
 
 /**
  * Maps the contents of the state to the component props.
@@ -16,11 +8,8 @@ const props = {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  user: isUserLoggedIn(state) ? state.user.data : null,
+  user: isUserLoggedIn(state) ? getUserData(state) : null,
   isLoggedIn: isUserLoggedIn(state),
-  entries: {
-    quicklinks: getMenuById(state, props),
-  },
 });
 
 /**
@@ -32,4 +21,4 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(mapStateToProps, mapDispatchToProps);

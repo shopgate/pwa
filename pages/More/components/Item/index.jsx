@@ -1,23 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '@shopgate/pwa-common/components/Link';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
 /**
  * @returns {JSX}
  */
-function MoreMenuItem({ href, children, onClick }) {
+function MoreMenuItem({ href, label, onClick }) {
   if (!href && onClick) {
-    return <button className={styles} onClick={onClick}>{children}</button>;
+    return (
+      <button className={styles} onClick={onClick}>
+        <I18n.Text string={label} />
+      </button>
+    );
   }
 
   return (
-    <Link className={styles} href={href || onClick}>{children}</Link>
+    <Link className={styles} href={href}>
+      <I18n.Text string={label} />
+    </Link>
   );
 }
 
 MoreMenuItem.propTypes = {
-  children: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
   href: PropTypes.string,
   onClick: PropTypes.func,
 };
