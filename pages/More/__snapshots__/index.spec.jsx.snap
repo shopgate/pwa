@@ -1123,46 +1123,55 @@ exports[`More should render for logged in user 1`] = `
                   <div
                     data-test-id="userMenu"
                   >
-                    <Headline
-                      small={true}
-                      text="navigation.your_account"
+                    <Portal
+                      name="nav-menu.my-account.header"
+                      props={
+                        Object {
+                          "Item": [Function],
+                        }
+                      }
                     >
-                      <h2
-                        className="css-gi5f02"
-                        data-test-id="greeting"
+                      <Headline
+                        small={true}
+                        text="navigation.your_account"
                       >
-                        <Ellipsis
-                          className=""
-                          ellipsis="..."
-                          rows={3}
+                        <h2
+                          className="css-gi5f02"
+                          data-test-id="greeting"
                         >
-                          <Dotdotdot
-                            clamp={3}
+                          <Ellipsis
                             className=""
                             ellipsis="..."
-                            tagName="div"
-                            truncationChar="…"
-                            useNativeClamp={true}
+                            rows={3}
                           >
-                            <div
+                            <Dotdotdot
+                              clamp={3}
                               className=""
+                              ellipsis="..."
+                              tagName="div"
+                              truncationChar="…"
+                              useNativeClamp={true}
                             >
-                              <Translate
+                              <div
                                 className=""
-                                params={Object {}}
-                                string="navigation.your_account"
                               >
-                                <span
+                                <Translate
                                   className=""
+                                  params={Object {}}
+                                  string="navigation.your_account"
                                 >
-                                  navigation.your_account
-                                </span>
-                              </Translate>
-                            </div>
-                          </Dotdotdot>
-                        </Ellipsis>
-                      </h2>
-                    </Headline>
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.your_account
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Dotdotdot>
+                          </Ellipsis>
+                        </h2>
+                      </Headline>
+                    </Portal>
                     <List
                       className=""
                       hasImages={false}
