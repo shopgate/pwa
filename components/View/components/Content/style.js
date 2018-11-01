@@ -18,7 +18,7 @@ const content = (isFullscreen = false, keyboardHeight = 0, noScroll = false) => 
     WebkitOverflowScrolling: 'touch',
     width: '100vw',
     position: 'absolute',
-    top: 'var(--safe-area-inset-top)',
+    top: 0,
     paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
     bottom: 0,
     display: 'flex',

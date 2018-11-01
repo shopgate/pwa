@@ -1,13 +1,18 @@
 import React, { Fragment, PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppBar } from '@shopgate/pwa-ui-ios';
+import { RouteContext } from '@virtuous/react-conductor/Router/context';
 import ProgressBar from './components/ProgressBar';
+
+const target = document.getElementById('AppHeader');
 
 /**
  * The AppBarDefault component.
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    visible: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -25,6 +30,10 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    if (!this.props.visible) {
+      return null;
+    }
+
     const { title } = this.props;
     const { __ } = this.context.i18n();
     const center = <AppBar.Title title={__(title || '')} />;
@@ -36,8 +45,15 @@ class AppBarDefault extends PureComponent {
       </Fragment>
     );
 
-    return <AppBar center={center} {...this.props} below={below} />;
+    return ReactDOM.createPortal(
+      <AppBar center={center} {...this.props} below={below} />,
+      target
+    );
   }
 }
 
-export default AppBarDefault;
+export default props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
+  </RouteContext.Consumer>
+);
