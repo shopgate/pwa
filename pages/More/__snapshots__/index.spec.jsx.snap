@@ -1,0 +1,1361 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<More /> should render as expected when the user is logged in 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(More)>
+    <More
+      isLoggedIn={true}
+      logout={[Function]}
+      user={
+        Object {
+          "firstName": "John",
+          "lastName": "Appleseed",
+        }
+      }
+    >
+      <MockedView>
+        <div>
+          <Connect(BackBar)
+            right={null}
+          />
+          <Headline
+            style={
+              Object {
+                "margin": "24px 20px 16px",
+              }
+            }
+            tag="h1"
+            text="navigation.welcome_message"
+          >
+            <h1
+              className="css-mb0ki8"
+              style={
+                Object {
+                  "margin": "24px 20px 16px",
+                }
+              }
+            >
+              navigation.welcome_message
+            </h1>
+          </Headline>
+          <Portal
+            name="nav-menu.content.before"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <Quicklinks>
+            <div />
+          </Quicklinks>
+          <Portal
+            name="nav-menu.store-information.before"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <Portal
+            name="nav-menu.store-information"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          >
+            <Headline
+              style={
+                Object {
+                  "margin": "24px 20px 16px",
+                }
+              }
+              tag="h2"
+              text="navigation.store_information"
+            >
+              <h2
+                className="css-mb0ki8"
+                style={
+                  Object {
+                    "margin": "24px 20px 16px",
+                  }
+                }
+              >
+                navigation.store_information
+              </h2>
+            </Headline>
+            <nav
+              className={
+                Object {
+                  "data-css-13ch7sr": "",
+                }
+              }
+            >
+              <Portal
+                name="nav-menu.shipping.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.shipping"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/shipping"
+                  label="navigation.shipping"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/shipping"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/shipping"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/shipping"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.shipping"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.shipping
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.shipping.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.payment.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.payment"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/payment"
+                  label="navigation.payment"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/payment"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/payment"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/payment"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.payment"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.payment
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.payment.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.terms.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.terms"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/navigation_terms"
+                  label="navigation.terms"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/navigation_terms"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/navigation_terms"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/navigation_terms"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.terms"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.terms
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.terms.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.privacy.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.privacy"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/privacy"
+                  label="navigation.privacy"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/privacy"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/privacy"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/privacy"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.privacy"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.privacy
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.privacy.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.return-policy.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.return-policy.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.imprint.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.imprint"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/imprint"
+                  label="navigation.about"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/imprint"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/imprint"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/imprint"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.about"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.about
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.imprint.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+            </nav>
+          </Portal>
+          <Portal
+            name="nav-menu.store-information.after"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <UserMenu
+            entries={null}
+            isLoggedIn={true}
+            logout={[Function]}
+            user={
+              Object {
+                "firstName": "John",
+                "lastName": "Appleseed",
+              }
+            }
+          >
+            <Portal
+              name="user-menu.container.before"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": true,
+                  "logout": [Function],
+                  "user": Object {
+                    "firstName": "John",
+                    "lastName": "Appleseed",
+                  },
+                }
+              }
+            />
+            <Portal
+              name="user-menu.container"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": true,
+                  "logout": [Function],
+                  "user": Object {
+                    "firstName": "John",
+                    "lastName": "Appleseed",
+                  },
+                }
+              }
+            >
+              <LoggedIn
+                logout={[Function]}
+              >
+                <Portal
+                  name="nav-menu.my-account.before"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                />
+                <Portal
+                  name="nav-menu.my-account"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                >
+                  <div
+                    data-test-id="userMenu"
+                  >
+                    <Headline
+                      small={true}
+                      style={
+                        Object {
+                          "margin": "24px 20px 16px",
+                        }
+                      }
+                      tag="h2"
+                      text="navigation.your_account"
+                    >
+                      <h2
+                        className="css-mb0ki8"
+                        style={
+                          Object {
+                            "margin": "24px 20px 16px",
+                          }
+                        }
+                      >
+                        navigation.your_account
+                      </h2>
+                    </Headline>
+                    <nav
+                      className={
+                        Object {
+                          "data-css-13ch7sr": "",
+                        }
+                      }
+                    >
+                      <Portal
+                        name="nav-menu.logout.before"
+                        props={
+                          Object {
+                            "Item": [Function],
+                          }
+                        }
+                      />
+                      <Portal
+                        name="nav-menu.logout"
+                        props={
+                          Object {
+                            "Item": [Function],
+                          }
+                        }
+                      >
+                        <MoreMenuItem
+                          href={null}
+                          label="navigation.logout"
+                          onClick={[Function]}
+                          testId="logoutButton"
+                        >
+                          <button
+                            className="css-1czs3p1"
+                            onClick={[Function]}
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="navigation.logout"
+                            >
+                              <span
+                                className=""
+                              >
+                                navigation.logout
+                              </span>
+                            </Translate>
+                          </button>
+                        </MoreMenuItem>
+                      </Portal>
+                      <Portal
+                        name="nav-menu.logout.after"
+                        props={
+                          Object {
+                            "Item": [Function],
+                          }
+                        }
+                      />
+                    </nav>
+                  </div>
+                </Portal>
+                <Portal
+                  name="nav-menu.my-account.after"
+                  props={
+                    Object {
+                      "Item": [Function],
+                    }
+                  }
+                />
+              </LoggedIn>
+            </Portal>
+            <Portal
+              name="user-menu.container.after"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": true,
+                  "logout": [Function],
+                  "user": Object {
+                    "firstName": "John",
+                    "lastName": "Appleseed",
+                  },
+                }
+              }
+            />
+          </UserMenu>
+          <Portal
+            name="nav-menu.content.after"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <ClientInformation>
+            <div />
+          </ClientInformation>
+        </div>
+      </MockedView>
+    </More>
+  </Connect(More)>
+</Provider>
+`;
+
+exports[`<More /> should render as expected when the user is not logged in 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(More)>
+    <More
+      isLoggedIn={false}
+      logout={[Function]}
+      user={null}
+    >
+      <MockedView>
+        <div>
+          <Connect(BackBar)
+            right={null}
+          />
+          <Headline
+            style={
+              Object {
+                "margin": "24px 20px 16px",
+              }
+            }
+            tag="h1"
+            text="login.headline"
+          >
+            <h1
+              className="css-mb0ki8"
+              style={
+                Object {
+                  "margin": "24px 20px 16px",
+                }
+              }
+            >
+              login.headline
+            </h1>
+          </Headline>
+          <UserMenu
+            entries={null}
+            isLoggedIn={false}
+            logout={[Function]}
+            user={null}
+          >
+            <Portal
+              name="user-menu.container.before"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": false,
+                  "logout": [Function],
+                  "user": null,
+                }
+              }
+            />
+            <Portal
+              name="user-menu.container"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": false,
+                  "logout": [Function],
+                  "user": null,
+                }
+              }
+            >
+              <Connect(LoggedOut)>
+                <LoggedOut
+                  dispatch={[Function]}
+                  isDisabled={false}
+                >
+                  <div
+                    data-test-id="userMenu"
+                  >
+                    <Grid
+                      className="css-5wxciu"
+                      component="ul"
+                      wrap={false}
+                    >
+                      <ul
+                        className="css-5wxciu css-h7r55a"
+                      >
+                        <GridItem
+                          className="css-yj596"
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className="css-yj596"
+                          >
+                            <Button
+                              className="css-6f03lb"
+                              disabled={false}
+                              flat={false}
+                              onClick={null}
+                              testId="UserMenuLogin"
+                              type="secondary"
+                              wrapContent={true}
+                            >
+                              <Button
+                                className="css-187rja2 css-6f03lb"
+                                disabled={false}
+                                onClick={null}
+                                testId="UserMenuLogin"
+                              >
+                                <button
+                                  className="css-187rja2 css-6f03lb css-1rn65c0"
+                                  data-test-id="UserMenuLogin"
+                                  disabled={false}
+                                  onClick={null}
+                                >
+                                  <div
+                                    className="css-1fscwua"
+                                  >
+                                    <Connect(Link)
+                                      disabled={false}
+                                      href="/login"
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
+                                        href="/login"
+                                        replace={false}
+                                        state={Object {}}
+                                        tag="div"
+                                      >
+                                        <div
+                                          className="css-c6ki83 "
+                                          data-test-id="link: /login"
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <Translate
+                                            className=""
+                                            params={Object {}}
+                                            string="login.button"
+                                          >
+                                            <span
+                                              className=""
+                                            >
+                                              login.button
+                                            </span>
+                                          </Translate>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </button>
+                              </Button>
+                            </Button>
+                          </li>
+                        </GridItem>
+                        <GridItem
+                          className="css-yj596"
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className="css-yj596"
+                          >
+                            <Button
+                              className="css-6f03lb"
+                              disabled={false}
+                              flat={false}
+                              onClick={null}
+                              testId="UserMenuRegister"
+                              type="secondary"
+                              wrapContent={true}
+                            >
+                              <Button
+                                className="css-187rja2 css-6f03lb"
+                                disabled={false}
+                                onClick={null}
+                                testId="UserMenuRegister"
+                              >
+                                <button
+                                  className="css-187rja2 css-6f03lb css-1rn65c0"
+                                  data-test-id="UserMenuRegister"
+                                  disabled={false}
+                                  onClick={null}
+                                >
+                                  <div
+                                    className="css-1fscwua"
+                                  >
+                                    <Connect(Link)
+                                      disabled={false}
+                                      href="/register"
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
+                                        href="/register"
+                                        replace={false}
+                                        state={Object {}}
+                                        tag="div"
+                                      >
+                                        <div
+                                          className="css-c6ki83 "
+                                          data-test-id="link: /register"
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <Translate
+                                            className=""
+                                            params={Object {}}
+                                            string="login.signup"
+                                          >
+                                            <span
+                                              className=""
+                                            >
+                                              login.signup
+                                            </span>
+                                          </Translate>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </button>
+                              </Button>
+                            </Button>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </div>
+                </LoggedOut>
+              </Connect(LoggedOut)>
+            </Portal>
+            <Portal
+              name="user-menu.container.after"
+              props={
+                Object {
+                  "entries": null,
+                  "handleLogout": [Function],
+                  "isLoggedIn": false,
+                  "logout": [Function],
+                  "user": null,
+                }
+              }
+            />
+          </UserMenu>
+          <Portal
+            name="nav-menu.content.before"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <Quicklinks>
+            <div />
+          </Quicklinks>
+          <Portal
+            name="nav-menu.store-information.before"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <Portal
+            name="nav-menu.store-information"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          >
+            <Headline
+              style={
+                Object {
+                  "margin": "24px 20px 16px",
+                }
+              }
+              tag="h2"
+              text="navigation.store_information"
+            >
+              <h2
+                className="css-mb0ki8"
+                style={
+                  Object {
+                    "margin": "24px 20px 16px",
+                  }
+                }
+              >
+                navigation.store_information
+              </h2>
+            </Headline>
+            <nav
+              className={
+                Object {
+                  "data-css-13ch7sr": "",
+                }
+              }
+            >
+              <Portal
+                name="nav-menu.shipping.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.shipping"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/shipping"
+                  label="navigation.shipping"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/shipping"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/shipping"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/shipping"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.shipping"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.shipping
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.shipping.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.payment.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.payment"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/payment"
+                  label="navigation.payment"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/payment"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/payment"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/payment"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.payment"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.payment
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.payment.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.terms.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.terms"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/navigation_terms"
+                  label="navigation.terms"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/navigation_terms"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/navigation_terms"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/navigation_terms"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.terms"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.terms
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.terms.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.privacy.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.privacy"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/privacy"
+                  label="navigation.privacy"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/privacy"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/privacy"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/privacy"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.privacy"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.privacy
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.privacy.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.return-policy.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.return-policy.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.imprint.before"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+              <Portal
+                name="nav-menu.imprint"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              >
+                <MoreMenuItem
+                  href="/page/imprint"
+                  label="navigation.about"
+                  onClick={null}
+                >
+                  <Connect(Link)
+                    className="css-1czs3p1"
+                    href="/page/imprint"
+                  >
+                    <Link
+                      className="css-1czs3p1"
+                      disabled={false}
+                      historyPush={[Function]}
+                      historyReplace={[Function]}
+                      href="/page/imprint"
+                      replace={false}
+                      state={Object {}}
+                      tag="div"
+                    >
+                      <div
+                        className="css-c6ki83 css-1czs3p1"
+                        data-test-id="link: /page/imprint"
+                        onClick={[Function]}
+                        role="link"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="navigation.about"
+                        >
+                          <span
+                            className=""
+                          >
+                            navigation.about
+                          </span>
+                        </Translate>
+                      </div>
+                    </Link>
+                  </Connect(Link)>
+                </MoreMenuItem>
+              </Portal>
+              <Portal
+                name="nav-menu.imprint.after"
+                props={
+                  Object {
+                    "Headline": [Function],
+                    "Item": [Function],
+                  }
+                }
+              />
+            </nav>
+          </Portal>
+          <Portal
+            name="nav-menu.store-information.after"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <Portal
+            name="nav-menu.content.after"
+            props={
+              Object {
+                "Headline": [Function],
+                "Item": [Function],
+              }
+            }
+          />
+          <ClientInformation>
+            <div />
+          </ClientInformation>
+        </div>
+      </MockedView>
+    </More>
+  </Connect(More)>
+</Provider>
+`;
