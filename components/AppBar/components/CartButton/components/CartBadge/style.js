@@ -4,7 +4,7 @@ import variables from 'Styles/variables';
 
 export default css({
   position: 'absolute',
-  fontSize: '0.75rem',
+  fontSize: '0.7rem',
   lineHeight: 1.4,
   fontWeight: 700,
   background: colors.primary,
@@ -15,5 +15,5 @@ export default css({
   paddingLeft: (variables.gap.small / 2),
   paddingRight: (variables.gap.small / 2),
   top: 6,
-  right: 6,
+  right: 4,
 });
