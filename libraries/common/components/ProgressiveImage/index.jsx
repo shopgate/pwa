@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getActualImageSource } from '../../helpers/data';
 import Transition from '../Transition';
 import styles from './style';
 
 /**
- * The image component. It supports lazy and progressive loading of images.
+   * @param {string} src image src
+   * @returns {string} image src, corrected for old image service
+   */
+const getActualImageSrc = (src) => {
+  if (src.startsWith('https://img-cdn.shopgate.com') && !src.includes('?')) {
+    return `${src}?w=440&h=440&fillc=fff`;
+  }
+  return src;
+};
+
+/**
+ * The progressive image component. It supports lazy and progressive loading of images.
  */
-class Image extends Component {
+class ProgressiveImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
@@ -17,15 +27,7 @@ class Image extends Component {
     highestResolutionLoaded: PropTypes.func,
     onError: PropTypes.func,
     onLoad: PropTypes.func,
-    ratio: PropTypes.arrayOf(PropTypes.number),
-    resolutions: PropTypes.arrayOf((
-      PropTypes.shape({
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-        blur: PropTypes.number,
-      })
-    )),
-    src: PropTypes.string,
+    srcset: PropTypes.arrayOf(PropTypes.string),
     transition: PropTypes.shape(),
   };
 
@@ -38,19 +40,7 @@ class Image extends Component {
     highestResolutionLoaded: () => {},
     onError: null,
     onLoad: null,
-    ratio: null,
-    resolutions: [
-      {
-        width: 50,
-        height: 50,
-        blur: 2,
-      },
-      {
-        width: 440,
-        height: 440,
-      },
-    ],
-    src: null,
+    srcset: [],
     transition: null,
   };
 
@@ -60,7 +50,6 @@ class Image extends Component {
    */
   constructor(props) {
     super(props);
-
     /**
      * The initial component state.
      * Preloads all resolutions if already cached will
@@ -68,7 +57,7 @@ class Image extends Component {
      * @type {Object}
      */
     this.state = {
-      loaded: props.resolutions.map((resolution, index) => this.loadImage(this.props.src, index)),
+      loaded: this.props.srcset.map((src, index) => this.loadImage(src, index)),
     };
     this.mounted = false;
   }
@@ -85,22 +74,6 @@ class Image extends Component {
    */
   componentWillUnmount() {
     this.mounted = false;
-  }
-
-  /**
-   * Sets the image ratio based on width and height.
-   * @return {number} The image ratio.
-   */
-  get imageRatio() {
-    if (this.props.ratio) {
-      const [x, y] = this.props.ratio;
-
-      return ((y / x) * 100).toFixed(3);
-    }
-
-    const { width, height } = this.props.resolutions[this.props.resolutions.length - 1];
-
-    return ((height / width) * 100).toFixed(3);
   }
 
   /**
@@ -122,7 +95,7 @@ class Image extends Component {
       }),
     });
 
-    if (resolutionIndex === (this.props.resolutions.length - 1)) {
+    if (resolutionIndex === (this.props.srcset.length - 1)) {
       this.props.highestResolutionLoaded();
     }
   }
@@ -147,7 +120,7 @@ class Image extends Component {
       }
     };
 
-    image.src = src; // GetActualImageSource(src, this.props.resolutions[resolutionIndex]);
+    image.src = getActualImageSrc(src);
 
     return image.complete;
   }
@@ -161,26 +134,17 @@ class Image extends Component {
     let src = null;
 
     if (index > -1) {
-      src = getActualImageSource(this.props.src, this.props.resolutions[index]);
+      src = this.props.srcset[index];
     }
 
     let innerImage = null;
 
     if (src && !this.props.forcePlaceholder) {
-      // Applies a blur effect to every resolution that has the blur flag set to true.
-      const inlineStyles = {};
-
-      if (this.props.resolutions[index].blur) {
-        inlineStyles.filter = `blur(${this.props.resolutions[index].blur}px)`;
-        inlineStyles.width = '100%';
-      }
-
       // Renders the actual image.
       innerImage = (
         <img
           className={styles.image}
-          src={src}
-          style={inlineStyles}
+          src={getActualImageSrc(src)}
           alt={this.props.alt}
           role="presentation"
           data-test-id="image"
@@ -188,7 +152,7 @@ class Image extends Component {
       );
     }
 
-    const containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);
+    const containerStyle = styles.container(this.props.backgroundColor);
 
     if (
       !this.props.animating ||
@@ -212,4 +176,4 @@ class Image extends Component {
   }
 }
 
-export default Image;
+export default ProgressiveImage;

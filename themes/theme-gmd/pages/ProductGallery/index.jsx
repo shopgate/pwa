@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
-import Image from '@shopgate/pwa-common/components/Image';
+import ProgressiveImage from '@shopgate/pwa-common/components/ProgressiveImage';
 import BackButton from './components/BackButton';
 import ZoomPanSlider from './components/ZoomPanSlider';
 import connect from './connector';
@@ -14,15 +14,15 @@ class ProductGallery extends Component {
   static propTypes = {
     disableNavigator: PropTypes.func.isRequired,
     enableNavigator: PropTypes.func.isRequired,
-    getProductImages: PropTypes.func.isRequired,
+    getProductImagesResolutions: PropTypes.func.isRequired,
     params: PropTypes.shape().isRequired,
-    images: PropTypes.arrayOf(PropTypes.string),
+    resolutions: PropTypes.shape(),
     initialSlide: PropTypes.number,
     product: PropTypes.shape(),
   };
 
   static defaultProps = {
-    images: null,
+    resolutions: {},
     initialSlide: 0,
     product: null,
   };
@@ -32,7 +32,7 @@ class ProductGallery extends Component {
    */
   componentDidMount() {
     this.props.disableNavigator();
-    this.props.getProductImages();
+    this.props.getProductImagesResolutions();
   }
 
   /**
@@ -48,19 +48,22 @@ class ProductGallery extends Component {
    */
   render() {
     const title = this.props.product ? this.props.product.name : '';
-    const initialSlide = this.props.params.initialSlide ?
-      parseInt(this.props.params.initialSlide, 10)
+    const initialSlide = this.props.params.initialSlide
+      ? parseInt(this.props.params.initialSlide, 10)
       : 0;
-    const resolutions = [
-      {
-        width: 440,
-        height: 440,
-      },
-      {
-        width: 2048,
-        height: 2048,
-      },
-    ];
+    const rows = [];
+
+    if (this.props.resolutions) {
+      const resolutionStrings = Object.keys(this.props.resolutions.resolutions);
+      resolutionStrings.forEach((resolutionString) => {
+        let counter = 0;
+        this.props.resolutions.resolutions[resolutionString].forEach((image) => {
+          if (!rows[counter]) rows[counter] = [];
+          rows[counter].push(image);
+          counter += 1;
+        });
+      });
+    }
 
     return (
       <View title={title} hasNavigator={false} isFullscreen>
@@ -68,7 +71,7 @@ class ProductGallery extends Component {
           <BackButton />
         </div>
         <div className={styles.container}>
-          {this.props.images && (
+          {rows.length && (
             <ZoomPanSlider
               classNames={styles.sliderStyles}
               className={styles.slider}
@@ -76,10 +79,8 @@ class ProductGallery extends Component {
               indicators
               loop
             >
-              {this.props.images.map(imageSrc => (
-                <div className={styles.slide} key={imageSrc}>
-                  <Image src={imageSrc} resolutions={resolutions} />
-                </div>
+              {rows.map(srcset => (
+                <ProgressiveImage srcset={srcset} key={JSON.stringify(srcset)} />
               ))}
             </ZoomPanSlider>
           )}

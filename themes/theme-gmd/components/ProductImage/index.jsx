@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import Image from '@shopgate/pwa-common/components/Image';
+import ProgressiveImage from '@shopgate/pwa-common/components/ProgressiveImage';
 import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import colors from 'Styles/colors';
 import styles from './style';
@@ -22,12 +22,7 @@ class ProductImage extends Component {
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
-    resolutions: PropTypes.arrayOf(PropTypes.shape({
-      width: PropTypes.number.isRequired,
-      height: PropTypes.number.isRequired,
-      blur: PropTypes.number,
-    })),
-    src: PropTypes.string,
+    srcset: PropTypes.arrayOf(PropTypes.string),
   };
 
   static defaultProps = {
@@ -36,18 +31,7 @@ class ProductImage extends Component {
     forcePlaceholder: false,
     highestResolutionLoaded: () => {},
     ratio: null,
-    resolutions: [
-      {
-        width: 50,
-        height: 50,
-        blur: 2,
-      },
-      {
-        width: 440,
-        height: 440,
-      },
-    ],
-    src: null,
+    srcset: [],
   };
 
   /**
@@ -58,7 +42,7 @@ class ProductImage extends Component {
     super(props);
 
     this.state = {
-      showPlaceholder: props.src === null,
+      showPlaceholder: props.srcset === null || props.srcset.length === 0,
     };
   }
 
@@ -70,7 +54,7 @@ class ProductImage extends Component {
     // Disable the placeholder to give the real image a new chance to load.
     // If we do not have a src property set then just show the placeholder instead.
     this.setState({
-      showPlaceholder: nextProps.src === null,
+      showPlaceholder: nextProps.srcset === null || nextProps.srcset.length === 0,
     });
   }
 
@@ -110,7 +94,7 @@ class ProductImage extends Component {
 
     // Return the actual image.
     return (
-      <Image
+      <ProgressiveImage
         {...this.props}
         backgroundColor={colors.light}
         onError={this.imageLoadingFailed}

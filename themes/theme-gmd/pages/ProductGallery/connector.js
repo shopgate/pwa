@@ -2,9 +2,9 @@ import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import disableNavigator from 'Components/Navigator/actions/disableNavigator';
 import enableNavigator from 'Components/Navigator/actions/enableNavigator';
-import fetchProductImages from '@shopgate/pwa-common-commerce/product/actions/getProductImages';
+import fetchProductImagesResolutions from '@shopgate/pwa-common-commerce/product/actions/getProductImagesResolutions';
 import {
-  getProductImages,
+  getProductImagesResolutions,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
@@ -14,7 +14,7 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  images: getProductImages(state),
+  resolutions: getProductImagesResolutions(state),
   product: getCurrentBaseProduct(state),
 });
 
@@ -27,9 +27,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, props) => ({
   disableNavigator: () => dispatch(disableNavigator()),
   enableNavigator: () => dispatch(enableNavigator()),
-  getProductImages: () => {
+  getProductImagesResolutions: () => {
     const productId = hex2bin(props.params.productId);
-    dispatch(fetchProductImages(productId));
+    dispatch(fetchProductImagesResolutions(productId, ['440x440', '2000x2000']));
   },
 });
 

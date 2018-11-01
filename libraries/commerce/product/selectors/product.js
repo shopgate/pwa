@@ -264,6 +264,43 @@ export const getProductImages = createSelector(
 );
 
 /**
+ * Selects the product images state.
+ * @param {Object} state The current application state.
+ * @return {Object} The product images state.
+ */
+const getProductImagesResolutionsState = state => state.product.imagesResolutionsByProductId;
+
+/**
+ * Retrieves the current product images or the images of the parent product.
+ * If the current product does not have images, we try to select the images from the base product.
+ * @param {Object} state The current application state.
+ * @return {Array|null}
+ */
+export const getProductImagesResolutions = createSelector(
+  getCurrentProductId,
+  getCurrentBaseProductId,
+  getProductImagesResolutionsState,
+  (productId, baseProductId, images) => {
+    let entry = images[productId];
+    const productImages = images[productId];
+
+    /**
+     * Check if there are any images.
+     * If not then default back to the base product's images.
+     */
+    if (!productImages) {
+      entry = images[baseProductId];
+    }
+
+    if (!entry || entry.isFetching || isUndefined(entry.resolutions)) {
+      return null;
+    }
+
+    return entry;
+  }
+);
+
+/**
  * Retrieves the current product rating.
  * @param {Object} state The current application state.
  * @return {Object|null}

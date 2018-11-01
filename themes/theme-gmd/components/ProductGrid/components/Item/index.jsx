@@ -31,7 +31,7 @@ const Item = ({ product, display, isFavorite }) => (
     {/* IMAGE */}
     <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={{ productId: product.id }} />
     <Portal name={portals.PRODUCT_ITEM_IMAGE} props={{ productId: product.id }}>
-      <ProductImage alt={product.name} itemProp="image" src={product.featuredImageUrl} />
+      <ProductImage alt={product.name} itemProp="image" srcset={[product.featuredImageUrl]} />
     </Portal>
     <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
 

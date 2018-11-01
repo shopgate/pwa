@@ -32,7 +32,7 @@ const ProductCard = ({
     itemScope
     itemType="http://schema.org/Product"
   >
-    <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+    <ProductImage itemProp="image" srcset={[product.featuredImageUrl]} alt={product.name} />
     {!!(!hidePrice && product.price.discount) && (
       <div className={styles.badgeWrapper}>
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
