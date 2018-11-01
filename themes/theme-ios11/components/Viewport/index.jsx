@@ -14,9 +14,9 @@ const Viewport = props => (
     <section className={styles.content}>
       {props.children}
     </section>
-    <section className={styles.footer}>
+    <footer className={styles.footer} id="AppFooter">
       <TabBar />
-    </section>
+    </footer>
   </main>
 );
 
