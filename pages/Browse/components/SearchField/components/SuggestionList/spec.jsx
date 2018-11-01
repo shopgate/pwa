@@ -1,13 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { getSuggestions } from '@shopgate/pwa-common-commerce/search/selectors';
-import SuggestionList from './index';
+import SuggestionList, { UnwrappedSuggestionList } from './index';
 
 const store = createMockStore();
 
+let mockedFetchingState;
 jest.mock('@shopgate/pwa-common-commerce/search/selectors', () => ({
   getSuggestions: () => ([
     'foo',
@@ -15,28 +15,59 @@ jest.mock('@shopgate/pwa-common-commerce/search/selectors', () => ({
     'foo bar buz',
     'foo bar buz quz',
   ]),
+  getSuggestionsFetchingState: () => mockedFetchingState,
 }));
 
-const mockContext = {
-  context: {
-    i18n: () => ({ __: () => '' }),
-  },
-  childContextTypes: {
-    i18n: PropTypes.func.isRequired,
-  },
-};
-
 describe('<SuggestionList />', () => {
+  beforeEach(() => {
+    mockedFetchingState = false;
+  });
+
   it('should render a list of suggestions', () => {
     const expectedSuggestions = getSuggestions({});
 
     const wrapper = mount((
       <Provider store={store}>
         <SuggestionList bottomHeight={10} onClick={() => {}} />
-      </Provider>), mockContext);
+      </Provider>
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expectedSuggestions.forEach((suggestion) => {
+      expect(wrapper.exists(`button[value="${suggestion}"]`)).toEqual(true);
+    });
+  });
+
+  it('should not update while suggestions are fetching', () => {
+    const suggestionsOne = getSuggestions();
+    const suggestionsTwo = [...suggestionsOne].reverse();
+
+    const wrapper = mount((
+      <UnwrappedSuggestionList
+        bottomHeight={10}
+        onClick={() => { }}
+        suggestions={suggestionsOne}
+        fetching={false}
+      />
+    ));
+
+    expect(wrapper).toMatchSnapshot();
+
+    suggestionsOne.forEach((suggestion) => {
+      expect(wrapper.exists(`button[value="${suggestion}"]`)).toEqual(true);
+    });
+
+    wrapper.setProps({ fetching: true, suggestions: suggestionsTwo });
+
+    expect(wrapper).toMatchSnapshot();
+    suggestionsOne.forEach((suggestion) => {
+      expect(wrapper.exists(`button[value="${suggestion}"]`)).toEqual(true);
+    });
+
+    wrapper.setProps({ fetching: false });
+
+    expect(wrapper).toMatchSnapshot();
+    suggestionsTwo.forEach((suggestion) => {
       expect(wrapper.exists(`button[value="${suggestion}"]`)).toEqual(true);
     });
   });
@@ -46,7 +77,8 @@ describe('<SuggestionList />', () => {
     const wrapper = mount((
       <Provider store={store}>
         <SuggestionList bottomHeight={10} onClick={onClickMock} />
-      </Provider>), mockContext);
+      </Provider>
+    ));
 
     wrapper.find('button').at(2).simulate('click');
 
