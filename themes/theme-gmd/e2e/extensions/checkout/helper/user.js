@@ -24,11 +24,15 @@ export function logOutUser() {
     } else if ($loginWelcomeText.text().includes('Anmelden')) {
       cy.visit('');
       cy.wait(2000);
+      /* eslint-disable-next-line */
       console.log('No User logged in');
     }
   });
 }
 
+/**
+ * Helper function that log in the user
+ */
 export function logInUser() {
   cy.visit('');
 
@@ -41,17 +45,17 @@ export function logInUser() {
     .should('be.visible')
     .click();
 
-    cy.get('@user').then((user) => {
-      const userC = user;
+  cy.get('@user').then((user) => {
+    const userC = user;
 
-      cy.get(els.loginPageEmailInput)
-        .should('be.visible')
-        .clear()
-        .type(userC.username);
-      cy.get(els.loginPagePasswordInput)
-        .should('be.visible')
-        .clear()
-        .type(userC.password)
-        .type('{enter}');
-    });
+    cy.get(els.loginPageEmailInput)
+      .should('be.visible')
+      .clear()
+      .type(userC.username);
+    cy.get(els.loginPagePasswordInput)
+      .should('be.visible')
+      .clear()
+      .type(userC.password)
+      .type('{enter}');
+  });
 }

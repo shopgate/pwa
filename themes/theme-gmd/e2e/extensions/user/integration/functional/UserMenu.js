@@ -1,15 +1,15 @@
-import { userMenuAddressBook } from './../../elements/de'
-import { openNavDrawer, closeNavDrawer } from '../../../../helper/navigation'
-import { logInUser } from '../../../../helper/user'
+import { userMenuAddressBook } from './../../elements/de';
+import { openNavDrawer, closeNavDrawer } from '../../../../helper/navigation';
+import { logInUser } from '../../../../helper/user';
 
 describe('UserMenu', () => {
   it('AddressBook menu entry should present for logged in user', () => {
-    cy.visit('')
+    cy.visit('');
 
-    logInUser()
+    logInUser();
 
-    openNavDrawer()
-    cy.get(userMenuAddressBook).should('be.visible')
-    closeNavDrawer()
-  })
-})
+    openNavDrawer();
+    cy.get(userMenuAddressBook).should('be.visible');
+    closeNavDrawer();
+  });
+});

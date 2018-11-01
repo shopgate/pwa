@@ -21,6 +21,7 @@ export function clearProductFromCart() {
     cy.get(els.emptyCartPlaceHolderString)
       .should('be.visible');
   } catch (err) {
+    /* eslint-disable-next-line */
     console.log('cart seems to be empty');
   }
 }
