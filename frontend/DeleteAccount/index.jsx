@@ -8,6 +8,10 @@ import connect from './connector';
  * The DeleteAccount component
  */
 class DeleteAccount extends Component {
+  static contextTypes = {
+    i18n: PropTypes.func,
+  }
+
   static propTypes = {
     deleteAccount: PropTypes.func.isRequired,
     isShown: PropTypes.bool,
@@ -28,16 +32,18 @@ class DeleteAccount extends Component {
    * @return {JSX|null}
    */
   render() {
-    const { isShown } = this.props;
+    const { Item, isShown } = this.props;
+    const { __ } = this.context.i18n();
 
     if (!isShown) {
       return null;
     }
 
     return (
-      <NavDrawer.Item
-        icon={SecurityIcon}
+      <Item
+        key="deleteuser"
         label="user.delete_account"
+        icon={SecurityIcon}
         onClick={this.handleDeleteAccount}
       />
     );
