@@ -63,6 +63,7 @@ export function logInUser() {
             .type('{enter}');
         });
       });
+      return true;
     });
 }
 

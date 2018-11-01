@@ -24,6 +24,7 @@ export function logOutUser() {
     } else if ($loginWelcomeText.text().includes('Anmelden')) {
       cy.visit('');
       cy.wait(2000);
+      /* eslint-disable-next-line */
       console.log('No User logged in');
     }
   });
