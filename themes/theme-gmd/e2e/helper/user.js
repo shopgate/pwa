@@ -30,6 +30,9 @@ export function logOutUser() {
   });
 }
 
+/**
+ * Log in user
+ */
 export function logInUser() {
   openNavDrawer();
 
