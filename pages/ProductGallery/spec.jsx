@@ -5,32 +5,24 @@ import configureStore from 'redux-mock-store';
 import { basicProductState } from '@shopgate/pwa-common-commerce/product/mock';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { UnwrappedProductGallery } from './index';
+import Content from './components/Content';
 
 const mockedStore = configureStore();
+
 jest.mock('Components/View');
-jest.mock('@shopgate/react-hammerjs', () => require.requireActual('./mock').MockedComponent);
+jest.mock('./components/Content');
 
 describe('<ProductGallery> page', () => {
-  /**
-   * Creates a connected component.
-   * @param {Object} state The component state.
-   * @param {Object} props The component props.
-   * @return {ReactWrapper}
-   */
-  const createComponent = (state, props) => {
-    const store = mockedStore(state);
-    return mount(
-      <Provider store={store} >
-        <UnwrappedProductGallery {...props} />
-      </Provider>,
-      mockRenderOptions
-    );
-  };
-
-  it('should render', () => {
+  it('should render content and an appbar', () => {
+    const store = mockedStore(basicProductState);
     const id = Object.keys(basicProductState.product.productsById)[0];
-    const component = createComponent(basicProductState, { id });
-    expect(component).toMatchSnapshot();
-    expect(component.find('Image').length).toEqual(1);
+
+    const wrapper = mount((
+      <Provider store={store}>
+        <UnwrappedProductGallery id={id}/>
+      </Provider>), mockRenderOptions);
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Content).length).toEqual(1);
   });
 });

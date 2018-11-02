@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductGalleryContent)
+    initialSlide={3}
+  >
+    <ProductGalleryContent
+      dispatch={[Function]}
+      images={
+        Array [
+          "foo",
+          "bar",
+        ]
+      }
+      initialSlide={3}
+      product={
+        Object {
+          "id": 123,
+        }
+      }
+    >
+      <div
+        className="css-f7yea6"
+      >
+        <Component
+          className="css-sa13d4"
+          classNames={
+            Object {
+              "container": "css-sa13d4",
+              "indicator": "css-vsp2nx",
+            }
+          }
+          indicators={true}
+          initialSlide={3}
+          loop={true}
+        >
+          <div
+            className="css-1vgjawn"
+            key="foo"
+          >
+            <Image
+              alt={null}
+              animating={true}
+              backgroundColor="#f2f2f2"
+              className=""
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              onError={null}
+              onLoad={null}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                  Object {
+                    "height": 2048,
+                    "width": 2048,
+                  },
+                ]
+              }
+              src="foo"
+              transition={null}
+            >
+              <div
+                className="css-326p2s "
+              />
+            </Image>
+          </div>
+          <div
+            className="css-1vgjawn"
+            key="bar"
+          >
+            <Image
+              alt={null}
+              animating={true}
+              backgroundColor="#f2f2f2"
+              className=""
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              onError={null}
+              onLoad={null}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                  Object {
+                    "height": 2048,
+                    "width": 2048,
+                  },
+                ]
+              }
+              src="bar"
+              transition={null}
+            >
+              <div
+                className="css-326p2s "
+              />
+            </Image>
+          </div>
+        </Component>
+      </div>
+    </ProductGalleryContent>
+  </Connect(ProductGalleryContent)>
+</Provider>
+`;
+
+exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductGalleryContent)
+    initialSlide={0}
+  >
+    <ProductGalleryContent
+      dispatch={[Function]}
+      images={
+        Array [
+          "foo",
+          "bar",
+        ]
+      }
+      initialSlide={0}
+      product={
+        Object {
+          "id": 123,
+        }
+      }
+    >
+      <div
+        className="css-f7yea6"
+      >
+        <Component
+          className="css-sa13d4"
+          classNames={
+            Object {
+              "container": "css-sa13d4",
+              "indicator": "css-vsp2nx",
+            }
+          }
+          indicators={true}
+          initialSlide={0}
+          loop={true}
+        >
+          <div
+            className="css-1vgjawn"
+            key="foo"
+          >
+            <Image
+              alt={null}
+              animating={true}
+              backgroundColor="#f2f2f2"
+              className=""
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              onError={null}
+              onLoad={null}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                  Object {
+                    "height": 2048,
+                    "width": 2048,
+                  },
+                ]
+              }
+              src="foo"
+              transition={null}
+            >
+              <div
+                className="css-326p2s "
+              />
+            </Image>
+          </div>
+          <div
+            className="css-1vgjawn"
+            key="bar"
+          >
+            <Image
+              alt={null}
+              animating={true}
+              backgroundColor="#f2f2f2"
+              className=""
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              onError={null}
+              onLoad={null}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                  Object {
+                    "height": 2048,
+                    "width": 2048,
+                  },
+                ]
+              }
+              src="bar"
+              transition={null}
+            >
+              <div
+                className="css-326p2s "
+              />
+            </Image>
+          </div>
+        </Component>
+      </div>
+    </ProductGalleryContent>
+  </Connect(ProductGalleryContent)>
+</Provider>
+`;
