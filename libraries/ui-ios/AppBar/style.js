@@ -2,7 +2,7 @@ import { css } from 'glamor';
 
 const outer = css({
   boxSizing: 'content-box',
-  height: 44,
+  minHeight: 44,
   paddingTop: 'var(--safe-area-inset-top)',
 });
 
