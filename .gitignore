@@ -5,6 +5,7 @@
 .git/
 .vscode/
 .idea/
+jsconfig.json
 
 # Logs
 logs
