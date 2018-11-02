@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@shopgate/pwa-common/components/Slider';
 import Card from '@shopgate/pwa-ui-shared/Card';
+import Headline from 'Components/Headline';
 import ProductCard from 'Components/ProductCard';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import connect from './connector';
@@ -86,19 +87,11 @@ class ProductSlider extends Component {
   }
 
   /**
-   * Renders a headline if we have one.
-   * @returns {JSX}
+   * @returns {string|null}
    */
-  renderHeadline = () => {
-    if (this.props.settings.headline) {
-      return (
-        <h3 className={styles.headline}>
-          {this.props.settings.headline}
-        </h3>
-      );
-    }
-
-    return null;
+  get headline() {
+    const { headline = '' } = this.props.settings;
+    return (headline.length) ? headline : null;
   }
 
   /**
@@ -121,7 +114,7 @@ class ProductSlider extends Component {
     // Finally, build the slider.
     return (
       <div className={styles.slider}>
-        {this.renderHeadline()}
+        {this.headline && <Headline text={settings.headline} />}
         <Slider
           autoPlay={sliderSettings.autostart}
           loop={false}
