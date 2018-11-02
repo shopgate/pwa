@@ -17,12 +17,11 @@ exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
     <GalleryAppBar
       goBack={[Function]}
     >
-      <AppBarDefault
+      <DefaultBar
         backgroundColor="rgba(0, 0, 0, 0)"
-        below={null}
         classes={
           Object {
-            "outer": "css-1y95te3",
+            "outer": "css-9p1uug",
           }
         }
         left={
@@ -35,7 +34,6 @@ exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
           />
         }
         textColor="#fff"
-        title={null}
       />
     </GalleryAppBar>
   </Connect(GalleryAppBar)>
