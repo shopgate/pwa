@@ -41,147 +41,149 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     }
   }
 >
-  <div
-    className="css-1tgouoh"
-    data-test-id="categoryList"
+  <Headline
+    style={null}
+    tag="h2"
+    text="Yay Categories"
   >
-    <h3
-      className="css-twewb4"
+    <h2
+      className="css-18cwfw7"
+      style={null}
     >
       Yay Categories
-    </h3>
+    </h2>
+  </Headline>
+  <List
+    className={null}
+    hasImages={false}
+    testId={null}
+  >
     <List
       className={null}
-      hasImages={false}
-      testId={null}
     >
-      <List
+      <ul
         className={null}
       >
-        <ul
-          className={null}
+        <ListItem
+          className="css-fcrdu9"
+          isSelected={false}
+          key="child-0/.$1"
         >
-          <ListItem
-            className="css-fcrdu9"
-            isSelected={false}
-            key="child-0/.$1"
+          <li
+            className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+            data-test-id="listItem"
           >
-            <li
-              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
-              data-test-id="listItem"
+            <div
+              className="css-1wrmg9m"
+              data-test-id={null}
             >
-              <div
-                className="css-1wrmg9m"
-                data-test-id={null}
+              <Item
+                className={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                key="1"
+                link="/category/31"
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId="Headline"
+                title="Headline"
               >
-                <Item
+                <Glow
                   className={null}
-                  image={null}
-                  isDisabled={false}
-                  isSelected={false}
-                  key="1"
-                  link="/category/31"
-                  linkState={null}
-                  onClick={null}
-                  rightComponent={null}
-                  testId="Headline"
-                  title="Headline"
-                >
-                  <Glow
-                    className={null}
-                    color="#f7f7f7"
-                    styles={
-                      Object {
-                        "container": null,
-                        "glow": null,
-                      }
+                  color="#f7f7f7"
+                  styles={
+                    Object {
+                      "container": null,
+                      "glow": null,
                     }
+                  }
+                >
+                  <div
+                    aria-hidden={true}
+                    className="css-13azwyo"
+                    onClick={[Function]}
+                    style={null}
                   >
                     <div
-                      aria-hidden={true}
-                      className="css-13azwyo"
-                      onClick={[Function]}
-                      style={null}
+                      className="css-1bmd5dz"
+                      style={Object {}}
+                    />
+                    <Link
+                      href="/category/31"
+                      onClick={null}
+                      state={null}
                     >
-                      <div
-                        className="css-1bmd5dz"
-                        style={Object {}}
-                      />
-                      <Link
-                        href="/category/31"
-                        onClick={null}
-                        state={null}
-                      >
-                        <div />
-                      </Link>
-                    </div>
-                  </Glow>
-                </Item>
-              </div>
-            </li>
-          </ListItem>
-          <ListItem
-            className="css-fcrdu9"
-            isSelected={false}
-            key="child-1/.$2"
+                      <div />
+                    </Link>
+                  </div>
+                </Glow>
+              </Item>
+            </div>
+          </li>
+        </ListItem>
+        <ListItem
+          className="css-fcrdu9"
+          isSelected={false}
+          key="child-1/.$2"
+        >
+          <li
+            className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+            data-test-id="listItem"
           >
-            <li
-              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
-              data-test-id="listItem"
+            <div
+              className="css-1wrmg9m"
+              data-test-id={null}
             >
-              <div
-                className="css-1wrmg9m"
-                data-test-id={null}
+              <Item
+                className={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                key="2"
+                link="/category/32"
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId="Headline"
+                title="Headline"
               >
-                <Item
+                <Glow
                   className={null}
-                  image={null}
-                  isDisabled={false}
-                  isSelected={false}
-                  key="2"
-                  link="/category/32"
-                  linkState={null}
-                  onClick={null}
-                  rightComponent={null}
-                  testId="Headline"
-                  title="Headline"
-                >
-                  <Glow
-                    className={null}
-                    color="#f7f7f7"
-                    styles={
-                      Object {
-                        "container": null,
-                        "glow": null,
-                      }
+                  color="#f7f7f7"
+                  styles={
+                    Object {
+                      "container": null,
+                      "glow": null,
                     }
+                  }
+                >
+                  <div
+                    aria-hidden={true}
+                    className="css-13azwyo"
+                    onClick={[Function]}
+                    style={null}
                   >
                     <div
-                      aria-hidden={true}
-                      className="css-13azwyo"
-                      onClick={[Function]}
-                      style={null}
+                      className="css-1bmd5dz"
+                      style={Object {}}
+                    />
+                    <Link
+                      href="/category/32"
+                      onClick={null}
+                      state={null}
                     >
-                      <div
-                        className="css-1bmd5dz"
-                        style={Object {}}
-                      />
-                      <Link
-                        href="/category/32"
-                        onClick={null}
-                        state={null}
-                      >
-                        <div />
-                      </Link>
-                    </div>
-                  </Glow>
-                </Item>
-              </div>
-            </li>
-          </ListItem>
-        </ul>
-      </List>
+                      <div />
+                    </Link>
+                  </div>
+                </Glow>
+              </Item>
+            </div>
+          </li>
+        </ListItem>
+      </ul>
     </List>
-  </div>
+  </List>
 </CategoryListWidget>
 `;
