@@ -83,7 +83,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                             classNames={
                               Object {
                                 "button": "css-1oszrp2",
-                                "dropdown": "css-grx4tb",
+                                "dropdown": "css-1upf7n9",
                                 "icon": "css-1fjm4uv",
                                 "iconOpen": "css-1ttjj3p",
                                 "selectBox": "css-1bjlaf3",
@@ -171,7 +171,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 </div>
                               </button>
                               <Dropdown
-                                className="css-grx4tb"
+                                className="css-1upf7n9"
                                 duration={225}
                                 easing={null}
                                 isOpen={false}
@@ -197,7 +197,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                   }
                                 >
                                   <div
-                                    className="css-rdsogp css-grx4tb"
+                                    className="css-rdsogp css-1upf7n9"
                                     key=".0"
                                   >
                                     <div>
