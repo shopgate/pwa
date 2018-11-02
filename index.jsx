@@ -13,13 +13,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { configureStore } from '@shopgate/pwa-common/store';
 import { appWillStart } from '@shopgate/pwa-common/action-creators/app';
-import smoothscrollPolyfill from '@shopgate/pwa-common/helpers/scrollPolyfill';
 import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchClientInformation';
+import smoothscroll from 'smoothscroll-polyfill';
 import Pages from './pages';
 import reducers from './pages/reducers';
 import subscribers from './pages/subscribers';
 
-smoothscrollPolyfill();
+smoothscroll.polyfill();
 
 const store = configureStore(reducers, subscribers);
 

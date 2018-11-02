@@ -1,5 +1,7 @@
 import React, { Fragment, Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { RouteContext } from '@virtuous/react-conductor/Router/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -22,6 +24,7 @@ class AddToCartBar extends Component {
     conditioner: PropTypes.shape().isRequired,
     options: PropTypes.shape().isRequired,
     productId: PropTypes.string.isRequired,
+    visible: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     disabled: PropTypes.bool,
     loading: PropTypes.bool,
@@ -39,6 +42,7 @@ class AddToCartBar extends Component {
   constructor() {
     super();
 
+    this.target = document.getElementById('AppFooter');
     this.state = {
       clicked: false,
       visible: true,
@@ -121,7 +125,6 @@ class AddToCartBar extends Component {
   }
 
   /**
-   * Renders the component.
    * @return {JSX}
    */
   render() {
@@ -131,12 +134,16 @@ class AddToCartBar extends Component {
 
     const { added } = this.state;
 
-    return (
-      <Fragment>
-        <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
-        <Portal name={PRODUCT_ADD_TO_CART_BAR}>
-          <Fragment>
-            <div className={styles.container} key="bar">
+    if (!this.props.visible) {
+      return null;
+    }
+
+    return ReactDOM.createPortal(
+      (
+        <Fragment>
+          <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
+          <Portal name={PRODUCT_ADD_TO_CART_BAR}>
+            <div className={styles.container}>
               <div className={styles.base}>
                 <div className={styles.statusBar}>
                   <CartItemsCount itemCount={added} />
@@ -155,13 +162,17 @@ class AddToCartBar extends Component {
                 />
               </div>
             </div>
-            <div className={styles.dummy} key="dummy" />
-          </Fragment>
-        </Portal>
-        <Portal name={PRODUCT_ADD_TO_CART_BAR_AFTER} />
-      </Fragment>
+          </Portal>
+          <Portal name={PRODUCT_ADD_TO_CART_BAR_AFTER} />
+        </Fragment>
+      ),
+      this.target
     );
   }
 }
 
-export default connect(AddToCartBar);
+export default connect(props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <AddToCartBar {...props} visible={visible} />}
+  </RouteContext.Consumer>
+));
