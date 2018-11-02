@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { makeGetMenuById } from './selectors';
 import Quicklinks from './index';
 
@@ -30,15 +30,6 @@ jest.mock('./selectors', () => ({
   makeGetMenuById: () => () => mockedQuicklinks,
 }));
 
-const mockContext = {
-  context: {
-    i18n: () => ({ __: text => text }),
-  },
-  childContextTypes: {
-    i18n: PropTypes.func.isRequired,
-  },
-};
-
 describe('<Quicklinks />', () => {
   beforeEach(() => {
     mockedQuicklinks = [
@@ -54,7 +45,7 @@ describe('<Quicklinks />', () => {
     const wrapper = mount((
       <Provider store={store}>
         <Quicklinks />
-      </Provider>), mockContext);
+      </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Quicklinks').isEmptyRender()).toBe(false);
@@ -73,7 +64,7 @@ describe('<Quicklinks />', () => {
     const wrapper = mount((
       <Provider store={store}>
         <Quicklinks />
-      </Provider>), mockContext);
+      </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Quicklinks').isEmptyRender()).toBe(true);
