@@ -15,7 +15,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   }
 >
   <div
-    className="css-12ngli3 css-90ryaa"
+    className="css-1h3yndk css-90ryaa"
   >
     <button
       className="css-10aealg"
@@ -72,7 +72,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   }
 >
   <div
-    className="css-12ngli3 css-90ryaa"
+    className="css-1h3yndk css-90ryaa"
   >
     <button
       className="css-10aealg"
@@ -129,7 +129,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   }
 >
   <div
-    className="css-12ngli3 css-90ryaa"
+    className="css-1h3yndk css-90ryaa"
   >
     <button
       className="css-10aealg"
@@ -202,7 +202,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       }
     >
       <div
-        className="css-12ngli3 css-90ryaa"
+        className="css-1h3yndk css-90ryaa"
       >
         <button
           className="css-10aealg"
