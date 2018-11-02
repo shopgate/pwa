@@ -18,7 +18,7 @@ const list = css({
   position: 'absolute',
   left: 0,
   right: 0,
-  top: 164,
+  top: 120,
   backgroundColor: colors.light,
   overflowY: 'scroll',
   zIndex: 3,

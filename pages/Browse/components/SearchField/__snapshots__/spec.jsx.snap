@@ -275,7 +275,7 @@ exports[`<Content /> should show suggestions when focused 1`] = `
           </div>
         </div>
         <div
-          className="css-wm9qmd"
+          className="css-1su8uh1"
         />
         <Connect(SuggestionList)
           bottomHeight={0}

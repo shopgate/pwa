@@ -47,13 +47,23 @@ const content = css({
   position: 'relative',
 });
 
-const footer = css({
+const header = css({
+  top: 0,
   flexShrink: 1,
   position: 'relative',
+  zIndex: 1,
+});
+
+const footer = css({
+  bottom: 0,
+  flexShrink: 1,
+  position: 'relative',
+  zIndex: 1,
 });
 
 export default {
   viewport,
   content,
+  header,
   footer,
 };

@@ -29,13 +29,13 @@ const iconOpen = css({
 }).toString();
 
 const dropdown = css({
+  background: '#fff',
+  boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
+  left: 0,
   position: 'absolute',
+  top: '100%',
   width: '100%',
   zIndex: 2,
-  top: '100%',
-  left: 0,
-  background: colors.background,
-  boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
 }).toString();
 
 const selectItem = css({
