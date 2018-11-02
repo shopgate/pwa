@@ -75,7 +75,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
               text="navigation.your_account"
             >
               <h2
-                className="css-mb0ki8"
+                className="css-18cwfw7"
                 style={
                   Object {
                     "margin": "24px 20px 16px",

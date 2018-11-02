@@ -59,7 +59,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
         text="navigation.more_menu"
       >
         <h2
-          className="css-mb0ki8"
+          className="css-18cwfw7"
           style={
             Object {
               "margin": "24px 20px 16px",

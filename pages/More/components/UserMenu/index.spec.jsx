@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { isUserLoginDisabled } from '@shopgate/pwa-common/selectors/user';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import UserMenu from './index';
 
 jest.mock('@shopgate/pwa-common/selectors/user', () => ({
@@ -12,22 +12,13 @@ jest.mock('@shopgate/pwa-common/selectors/user', () => ({
 
 const store = createMockStore();
 
-const mockContext = {
-  context: {
-    i18n: () => ({ __: text => text }),
-  },
-  childContextTypes: {
-    i18n: PropTypes.func.isRequired,
-  },
-};
-
 describe('<UserMenu />', () => {
   it('should render as expected when the user is logged in', () => {
     const logoutHandler = jest.fn();
     const wrapper = mount((
       <Provider store={store}>
         <UserMenu isLoggedIn logout={logoutHandler} />
-      </Provider>), mockContext);
+      </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('LoggedIn').exists()).toBe(true);
@@ -41,7 +32,7 @@ describe('<UserMenu />', () => {
     const wrapper = mount((
       <Provider store={store}>
         <UserMenu isLoggedIn={false} logout={() => {}} />
-      </Provider>), mockContext);
+      </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
     const links = wrapper.find('Link');
@@ -57,7 +48,7 @@ describe('<UserMenu />', () => {
     const wrapper = mount((
       <Provider store={store}>
         <UserMenu isLoggedIn={false} logout={() => { }} />
-      </Provider>), mockContext);
+      </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
     const links = wrapper.find('Link');
