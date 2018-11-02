@@ -1,12 +1,9 @@
 import { css } from 'glamor';
 
 const outer = css({
-  backdropFilter: 'blur(30px)',
-  left: 0,
-  position: 'sticky',
-  top: 0,
-  width: '100%',
-  zIndex: 2,
+  boxSizing: 'content-box',
+  minHeight: 44,
+  paddingTop: 'var(--safe-area-inset-top)',
 }).toString();
 
 const inner = css({

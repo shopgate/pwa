@@ -58,7 +58,6 @@ class AppBar extends PureComponent {
       <header
         className={classnames(styles.outer, classes.outer)}
         data-test-id="Navigator"
-        role="banner"
         style={this.style}
       >
         <div className={classnames(styles.inner, classes.inner)}>

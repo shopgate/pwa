@@ -184,7 +184,7 @@ class Login extends Component {
                   className={styles.signup}
                   disabled={this.props.isLoading || this.props.isDisabled}
                 >
-                  <I18n.Text string="login.register" />
+                  <I18n.Text string="login.signup" />
                 </Link>
               </Portal>
               <Portal name={PAGE_LOGIN_REGISTER_LINK_AFTER} />
