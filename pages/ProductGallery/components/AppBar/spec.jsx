@@ -7,7 +7,11 @@ import DefaultBar from 'Components/AppBar/presets/DefaultBar';
 import AppBarIcon from '@shopgate/pwa-ui-ios/AppBar/components/Icon';
 import AppBar from './index';
 
-jest.mock('Components/AppBar/presets/DefaultBar');
+jest.mock('Components/AppBar/presets/DefaultBar', () => {
+  // eslint-disable-next-line require-jsdoc, no-shadow
+  const DefaultBar = () => null;
+  return DefaultBar;
+});
 jest.mock('@shopgate/pwa-ui-ios/AppBar/components/Icon');
 
 const mockedStore = configureStore();
