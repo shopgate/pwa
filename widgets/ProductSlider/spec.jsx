@@ -145,7 +145,7 @@ describe('<ProductSlider />', () => {
     />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('h3').length).toBe(0);
+    expect(wrapper.find('Headline').length).toBe(0);
   });
 
   it('should render the headline', () => {
@@ -157,7 +157,7 @@ describe('<ProductSlider />', () => {
     />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('h3').length).toBe(1);
+    expect(wrapper.find('Headline').length).toBe(1);
   });
 
   it('should limit output to a maximum of 30 products', () => {

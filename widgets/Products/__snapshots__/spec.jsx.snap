@@ -8,7 +8,7 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
 >
   <Headline
     style={null}
-    tag="h3"
+    tag="h2"
     text=""
   />
   <ProductList
