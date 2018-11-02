@@ -70,7 +70,7 @@ const overlay = css({
   position: 'absolute',
   left: 0,
   width: '100%',
-  top: 168,
+  top: 124,
   bottom: 0,
   zIndex: 2,
   overflow: 'hidden',

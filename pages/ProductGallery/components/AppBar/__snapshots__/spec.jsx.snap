@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(GalleryAppBar)>
+    <GalleryAppBar
+      goBack={[Function]}
+    >
+      <DefaultBar
+        backgroundColor="rgba(0, 0, 0, 0)"
+        classes={
+          Object {
+            "outer": "css-9p1uug",
+          }
+        }
+        left={
+          <AppBarIcon
+            background="inherit"
+            badge={null}
+            color="inherit"
+            onClick={[Function]}
+            shadow={true}
+          />
+        }
+        textColor="#fff"
+      />
+    </GalleryAppBar>
+  </Connect(GalleryAppBar)>
+</Provider>
+`;
