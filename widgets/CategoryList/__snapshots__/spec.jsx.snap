@@ -45,11 +45,18 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     className="css-1tgouoh"
     data-test-id="categoryList"
   >
-    <h3
-      className="css-twewb4"
+    <Headline
+      style={null}
+      tag="h2"
+      text="Yay Categories"
     >
-      Yay Categories
-    </h3>
+      <h2
+        className="css-18cwfw7"
+        style={null}
+      >
+        Yay Categories
+      </h2>
+    </Headline>
     <List
       className={null}
       hasImages={false}
