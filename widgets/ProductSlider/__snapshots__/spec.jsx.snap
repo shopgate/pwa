@@ -6,11 +6,11 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
 <div
   className="css-1qazn57"
 >
-  <h3
-    className="css-rsku8h"
-  >
-    Lorem ipsum
-  </h3>
+  <Headline
+    style={null}
+    tag="h2"
+    text="Lorem ipsum"
+  />
   <Connect(Slider)
     autoPlay={false}
     classNames={
@@ -1387,11 +1387,11 @@ exports[`<ProductSlider /> should render the headline 1`] = `
 <div
   className="css-1qazn57"
 >
-  <h3
-    className="css-rsku8h"
-  >
-    Lorem ipsum
-  </h3>
+  <Headline
+    style={null}
+    tag="h2"
+    text="Lorem ipsum"
+  />
   <Connect(Slider)
     autoPlay={false}
     classNames={

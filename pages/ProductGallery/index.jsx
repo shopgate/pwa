@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
 import ProductGalleryContent from './components/Content';
+import ProductGalleryAppBar from './components/AppBar';
 
 /**
  * @param {Object} props The component props.
@@ -11,7 +12,12 @@ import ProductGalleryContent from './components/Content';
  */
 const ProductGallery = ({ id, initialSlide }) => (
   <View>
-    {id && <ProductGalleryContent productId={id} initialSlide={initialSlide} />}
+    {id && (
+      <Fragment>
+        <ProductGalleryAppBar />
+        <ProductGalleryContent productId={id} initialSlide={initialSlide} />
+      </Fragment>
+    )}
   </View>
 );
 
