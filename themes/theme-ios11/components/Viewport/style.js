@@ -48,8 +48,9 @@ const content = css({
 });
 
 const footer = css({
+  bottom: 0,
   flexShrink: 1,
-  position: 'relative',
+  position: 'sticky',
 });
 
 export default {
