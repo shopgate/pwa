@@ -48,7 +48,8 @@
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
     },
-    "msrp": "UVP"
+    "msrp": "UVP",
+    "currency": "EUR"
   },
   "product": {
     "description_heading": "Beschreibung",

@@ -48,7 +48,8 @@
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "MSRP",
+    "currency": "USD"
   },
   "product": {
     "description_heading": "About",
@@ -90,7 +91,7 @@
     "dismiss": "Dismiss",
     "ok": "Ok",
     "title_error": "Oops!",
-    "body_error": "An unexpected error occurred. Please try again."
+    "body_error": "An unexpected error occured. Please try again."
   },
   "cart": {
     "subtotal": "Subtotal",
