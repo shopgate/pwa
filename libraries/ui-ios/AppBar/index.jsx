@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
@@ -13,6 +14,7 @@ class AppBar extends PureComponent {
     backgroundColor: PropTypes.string,
     below: PropTypes.shape(),
     center: PropTypes.shape(),
+    classes: PropTypes.shape(),
     left: PropTypes.shape(),
     right: PropTypes.shape(),
     textColor: PropTypes.string,
@@ -22,6 +24,7 @@ class AppBar extends PureComponent {
     backgroundColor: '#fff',
     below: null,
     center: null,
+    classes: { inner: '', outer: '' },
     left: null,
     right: null,
     textColor: '#000',
@@ -48,22 +51,22 @@ class AppBar extends PureComponent {
    */
   render() {
     const {
-      below, center, left, right,
+      below, center, left, right, classes,
     } = this.props;
 
     return (
-      <section
-        className={styles.outer}
+      <header
+        className={classnames(styles.outer, classes.outer)}
         data-test-id="Navigator"
         style={this.style}
       >
-        <div className={styles.inner}>
+        <div className={classnames(styles.inner, classes.inner)}>
           {left}
           {center}
           {right}
         </div>
         {below}
-      </section>
+      </header>
     );
   }
 }
