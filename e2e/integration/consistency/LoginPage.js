@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 
 describe('IOS11Test login page', () => {
