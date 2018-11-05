@@ -1,14 +1,11 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 import { logOutUser } from '../../helper/user';
 
 describe('AndroidGMDTest reviews page', () => {
   it('should check for review name', () => {
-    cy.visit('');
+    logOutUser();
 
     cy.get(els.allProductCategory)
-      .first()
       .click();
     cy.get(els.productWithManyProps4GridViewName)
       .scrollIntoView()
@@ -58,6 +55,11 @@ describe('AndroidGMDTest reviews page', () => {
 
   it('should check for send review button', () => {
     cy.get(els.writeReviewSendButton)
+      .should('be.visible');
+  });
+
+  it('should check for back button', () => {
+    cy.get(els.backButton)
       .should('be.visible');
     logOutUser();
   });

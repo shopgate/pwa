@@ -1,5 +1,3 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 
 describe('AndroidGMDTest startPage', () => {
@@ -14,26 +12,35 @@ describe('AndroidGMDTest startPage', () => {
     // Check for drawer entries
     cy.get(els.navigationDrawerLoginButton)
       .should('be.visible');
-    cy.get(els.navDrawerStartPage)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Startseite')
       .should('be.visible');
-    cy.get(els.navDrawerCategoriesButton)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Kategorien')
       .should('be.visible');
-    cy.get(els.navDrawerFavoritesButton)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Merkliste')
       .should('be.visible');
-    cy.get(els.navDrawerCartButton)
+    cy.get(els.navigationDrawerEntry)
       .contains('Warenkorb')
       .should('be.visible');
-    cy.get(els.navDrawerShippingButton)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Versandarten')
       .should('be.visible');
-    cy.get(els.navDrawerPaymentButton)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Zahlungsarten')
       .should('be.visible');
-    cy.get(els.navDrawerTermsButton)
+    cy.get(els.navigationDrawerEntry)
+      .contains('AGB')
       .should('be.visible');
-    cy.get(els.navDrawerPrivacyButton)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Datenschutz')
       .should('be.visible');
-    cy.get(els.navDrawerReturnPolicy)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Widerrufsbelehrung')
       .should('be.visible');
-    cy.get(els.navDrawerImprintButton)
+    cy.get(els.navigationDrawerEntry)
+      .contains('Impressum')
       .scrollIntoView()
       .should('be.visible');
   });
@@ -80,6 +87,13 @@ describe('AndroidGMDTest startPage', () => {
   it('should check for Product grid widget', () => {
     // Check for ProductgridWidget and first product
     cy.get(els.productGridWidgetSecondProduct)
+      .scrollIntoView()
+      .should('be.visible');
+  });
+
+  it('should check for product list widget', () => {
+    // Check for product list widget
+    cy.get(els.productListWidgetSecondProduct)
       .scrollIntoView()
       .should('be.visible');
   });

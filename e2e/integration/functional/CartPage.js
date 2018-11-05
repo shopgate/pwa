@@ -1,15 +1,42 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 import { checkForWrongCoupon } from '../../helper/coupon';
 
 describe('functional tests cart page', () => {
-  /**
-   * commented out because a bug from webkit let this test
-   * fail everytime executing them in headless mode
-   * file: CartPage_keep
-   */
+  it.skip('check for increase / decrease quanitity', () => {
+    cy.visit('');
+
+    cy.get(els.allProductCategory)
+      .scrollIntoView()
+      .should('be.visible')
+      .click();
+    cy.get(els.productWithManyProps4GridViewName)
+      .should('be.visible')
+      .click();
+    cy.get(els.addToCartButton)
+      .should('be.visible')
+      .click();
+    cy.get(els.cartButton)
+      .should('be.visible')
+      .click();
+    cy.get(els.quantityPicker)
+      .should('be.visible')
+      .click()
+      .type(2)
+      .wait(100)
+      .focus()
+      .blur();
+    cy.get('[data-test-id="minPrice: 0 price: 398 currency: EUR"]')
+      .should('be.visible');
+    cy.get(els.quantityPicker)
+      .clear()
+      .type(1)
+      .wait(100)
+      .focus()
+      .blur();
+    cy.get('[data-test-id="minPrice: 0 price: 199 currency: EUR"]')
+      .should('be.visible');
+  });
 
   it('should add second product to cart', () => {
     cy.visit('');
@@ -92,32 +119,6 @@ describe('functional tests cart page', () => {
       .should('be.visible')
       .click();
     cy.get(els.productWithChild1ColorBlackSize5CartItem)
-      .should('be.visible');
-  });
-
-  it('should check for product with options', () => {
-    cy.visit('');
-
-    cy.get(els.productWithOptionsCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.simpleProductWithOptionsNameProductGrid)
-      .should('be.visible')
-      .click();
-    cy.get(els.addToCartButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.cartButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.simpleProductWithOptionsCartItemLink)
-      .should('be.visible');
-    cy.get(els.cartItemLi)
-      .contains('Green Ball')
-      .should('be.visible');
-    cy.get(els.cartItemLi)
-      .contains('bright')
       .should('be.visible');
   });
 
