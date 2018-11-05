@@ -1,6 +1,8 @@
+// eslint-disable-next-line spaced-comment
+/// <reference types="Cypress" />
 import els from '../../elements/de';
 
-describe('AndroidGMDTest FavoritesPage', () => {
+describe('AndroidGMDTest FavouritesPage', () => {
   it('it should check for favorites placeholder', () => {
     cy.visit('');
 
@@ -19,19 +21,17 @@ describe('AndroidGMDTest FavoritesPage', () => {
       .should('be.visible');
   });
 
-  it('should check for back button', () => {
-    cy.get(els.backButton)
-      .should('be.visible');
-  });
-
   it('should check for Item', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory)
+    cy.get(els.allProductCategory).first()
       .scrollIntoView()
       .should('be.visible')
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -49,9 +49,8 @@ describe('AndroidGMDTest FavoritesPage', () => {
       .should('be.visible')
       .click()
       .wait(6000);
-    cy.reload();
-    cy.get(els.favoriteListItem)
-      .contains('Product with many Properties - 4 -')
+    cy.get(els.favoriteListItemProductWithManyProbs4)
+      .scrollIntoView()
       .should('be.visible');
     cy.reload();
   });

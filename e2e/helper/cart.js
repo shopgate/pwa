@@ -16,10 +16,11 @@ export function clearProductFromCart() {
       cy.get(els.contextMenuButton)
         .contains('Entfernen')
         .click();
-      cy.wait(500);
+      cy.wait(1000);
     });
     // Check for empty cart
     cy.get(els.emptyCartPlaceHolderString)
+      .scrollIntoView()
       .should('be.visible');
   } catch (err) {
     /* eslint-disable-next-line */

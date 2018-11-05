@@ -11,7 +11,7 @@ describe('e2e functional test favoritePage', () => {
     cy.get(els.simpleProductWithOptionsNameProductGrid)
       .should('be.visible')
       .click();
-    cy.get(els.favoriteButton)
+    cy.get(els.favoriteButtonProductPage)
       .should('be.visible')
       .last()
       .click();
@@ -24,9 +24,16 @@ describe('e2e functional test favoritePage', () => {
     cy.get(els.navDrawerFavoritesButton)
       .should('be.visible')
       .click();
-    cy.get(els.favoriteButton)
+    cy.get(els.favoriteButtonFavList)
       .should('be.visible')
       .last()
-      .click();
+      .click()
+      .wait(4000);
+  });
+
+  it('should check for empty fav list', () => {
+    cy.visit('/favourite_list');
+    cy.get(els.favoritesPageEmptyFavComponent)
+      .should('be.visible');
   });
 });

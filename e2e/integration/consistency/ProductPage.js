@@ -6,7 +6,10 @@ describe('AndroidGMDTest productPage', () => {
     // Naviagte to product
     cy.get(els.allProductCategory)
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .scrollIntoView()
       .click();
 
@@ -44,6 +47,7 @@ describe('AndroidGMDTest productPage', () => {
       .last()
       .click();
     cy.get(els.productWithManufacturerPropManufacturerProp)
+      .scrollIntoView()
       .should('be.visible');
     cy.get(els.productWithManufacturerPropManufacturerPropList)
       .scrollIntoView()
