@@ -65,3 +65,8 @@ export const Browse = Loadable({
   loading: () => null,
 });
 
+export const More = Loadable({
+  loader: () => import('./More'),
+  loading: () => null,
+});
+
