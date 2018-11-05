@@ -1,6 +1,3 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 import { logOutUser, logInUser } from '../../helper/user';
