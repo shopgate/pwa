@@ -35,7 +35,7 @@ const ProductCard = ({
   >
     <ProductImage
       itemProp="image"
-      src={product.featuredImageUrl}
+      srcset={[product.featuredImageUrl]}
       alt={product.name}
     />
     {!!(!hidePrice && product.price && product.price.discount) && (

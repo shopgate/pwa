@@ -282,21 +282,22 @@ export const getProductImagesResolutions = createSelector(
   getProductImagesResolutionsState,
   (productId, baseProductId, images) => {
     let entry = images[productId];
-    const productImages = images[productId];
+
+    const noImages = entry && Object.hasOwnProperty.call(entry, 'resolutions') && Object.keys(entry.resolutions).length === 0;
 
     /**
      * Check if there are any images.
      * If not then default back to the base product's images.
      */
-    if (!productImages) {
+    if (noImages) {
       entry = images[baseProductId];
     }
 
-    if (!entry || entry.isFetching || isUndefined(entry.resolutions)) {
+    if (!entry || entry.isFetching || !entry.resolutions) {
       return null;
     }
 
-    return entry;
+    return entry.resolutions;
   }
 );
 

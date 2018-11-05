@@ -65,7 +65,7 @@ const createProductSliderItem = ({
         <Link href={`${ITEM_PATH}/${bin2hex(id)}`}>
           <Grid>
             <Grid.Item className={styles.imagePane}>
-              <ProductImage src={featuredImageUrl} alt={name} />
+              <ProductImage srcset={[featuredImageUrl]} alt={name} />
             </Grid.Item>
             <Grid.Item className={styles.infoPane}>
               <div data-test-id={name}>
@@ -99,7 +99,7 @@ const createProductSliderItem = ({
               </div>
               <Grid className={styles.priceGrid}>
                 {priceStriked > 0 ?
-                  <Grid.Item> 
+                  <Grid.Item>
                     <PriceStriked
                       className={styles.priceStriked}
                       value={priceStriked}

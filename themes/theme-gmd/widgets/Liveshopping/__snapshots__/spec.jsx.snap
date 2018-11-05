@@ -59,20 +59,11 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
-                resolutions={
+                srcset={
                   Array [
-                    Object {
-                      "blur": 2,
-                      "height": 50,
-                      "width": 50,
-                    },
-                    Object {
-                      "height": 440,
-                      "width": 440,
-                    },
+                    "http://placekitten.com/300/300",
                   ]
                 }
-                src="http://placekitten.com/300/300"
               />
             </GridItem>
             <GridItem
@@ -161,20 +152,11 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
-                resolutions={
+                srcset={
                   Array [
-                    Object {
-                      "blur": 2,
-                      "height": 50,
-                      "width": 50,
-                    },
-                    Object {
-                      "height": 440,
-                      "width": 440,
-                    },
+                    "http://placekitten.com/300/300",
                   ]
                 }
-                src="http://placekitten.com/300/300"
               />
             </GridItem>
             <GridItem
@@ -294,20 +276,11 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
-                resolutions={
+                srcset={
                   Array [
-                    Object {
-                      "blur": 2,
-                      "height": 50,
-                      "width": 50,
-                    },
-                    Object {
-                      "height": 440,
-                      "width": 440,
-                    },
+                    "http://placekitten.com/300/300",
                   ]
                 }
-                src="http://placekitten.com/300/300"
               />
             </GridItem>
             <GridItem

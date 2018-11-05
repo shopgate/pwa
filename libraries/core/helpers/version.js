@@ -15,17 +15,19 @@ let requesting = false;
 
 const md = new MobileDetect(navigator.userAgent);
 const isAndroid = md.is('AndroidOS');
+
+window.md = md;
 export const defaultClientInformation = {
   libVersion: '17.0',
   appVersion: '5.18.0',
   codebaseVersion: '5.18.0',
-  type: (!md.tablet() ? 'phone' : 'tablet'),
+  type: (!md.tablet() && md.mobile() ? 'phone' : 'tablet'),
   device: {
     os: {
       platform: isAndroid ? PLATFORM_ANDROID : PLATFORM_IOS,
-      ver: detector.os.fullVersion,
+      ver: detector.os ? `${detector.os.fullVersion}` : 'unknown',
     },
-    model: isAndroid ? 'Android' : `iPhone${detector.os.fullVersion}`,
+    model: detector.os ? (isAndroid ? `${detector.os.name}${detector.os.fullVersion}` : `iPhone${detector.os.fullVersion}`) : 'unkown',
   },
 };
 

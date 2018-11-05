@@ -12,7 +12,7 @@ import errorProductImagesResolutions from '../action-creators/errorProductImages
  * @param {Array} resolutions format '$widthx$height' i.e. ['440x440']
  * @return {Function} The dispatched action.
  */
-const getProductImagesResolutions = (productId, resolutions) => (dispatch, getState) => {
+const getProductImagesResolutions = (productId, resolutions = ['440x440', '2000x2000']) => (dispatch, getState) => {
   const state = getState();
   const productImages = state.product.imagesResolutionsByProductId[productId];
 
@@ -21,12 +21,10 @@ const getProductImagesResolutions = (productId, resolutions) => (dispatch, getSt
   }
 
   dispatch(requestProductImagesResolutions(productId, resolutions));
-
   new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
     .setInput({ productId, resolutions })
     .dispatch()
-    .then(result =>
-      dispatch(receiveProductImagesResolutions(productId, result.resolutions || {})))
+    .then(result => dispatch(receiveProductImagesResolutions(productId, result.resolutions)))
     .catch((error) => {
       logger.error(error);
       dispatch(errorProductImagesResolutions(productId));

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  getProductImages,
+  getProductImagesResolutions,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import openGallery from '../../actions/openGallery';
@@ -11,7 +11,7 @@ import openGallery from '../../actions/openGallery';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  images: getProductImages(state),
+  resolutions: getProductImagesResolutions(state),
   product: getCurrentBaseProduct(state),
 });
 

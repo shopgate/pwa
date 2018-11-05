@@ -40,7 +40,7 @@ class ImageSlider extends Component {
   handleOpenGallery = () => {
     const { product, resolutions } = this.props;
 
-    if (!product || !resolutions || !resolutions.resolutions || !resolutions.resolutions['440x440']) {
+    if (!product || !resolutions) {
       return;
     }
 
@@ -51,6 +51,18 @@ class ImageSlider extends Component {
     this.currentSlide = currentSlide;
   };
 
+  /**
+   * @param {*} nextProps next props
+   * @param {*} nextState next state
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    const productChanged = !(nextProps.product === this.props.product);
+    const resolutionsReceived = this.props.resolutions === {} && nextProps.resolutions !== {};
+    const resolutionsChanged = (nextProps.resolutions && nextProps.resolutions !== {}) && this.props.resolutions !== nextProps.resolutions;
+    const componentShouldUpdate = productChanged || resolutionsReceived || resolutionsChanged;
+
+    return componentShouldUpdate;
+  }
   /**
    * Callback that is executed when preview image is fully loaded.
    */
@@ -71,23 +83,23 @@ class ImageSlider extends Component {
 
     let content = null;
 
-    if (!product || !resolutions) {
+    const noImage = !resolutions || !product || !product.featuredImageUrl;
+    if (noImage) {
       content = (
         <ProductImage
           highestResolutionLoaded={this.previewLoaded}
-          srcset={product ? [product.featuredImageUrl] : null}
-          forcePlaceholder={!product}
-          resolutions={resolutions}
+          srcset={product ? [product.featuredImageUrl] : [null]}
+          forcePlaceholder={noImage}
         />
       );
     } else {
       const images = [];
 
       if (resolutions) {
-        const resolutionStrings = Object.keys(resolutions.resolutions);
+        const resolutionStrings = Object.keys(resolutions);
         resolutionStrings.forEach((resolutionString) => {
           let counter = 0;
-          resolutions.resolutions[resolutionString].forEach((image) => {
+          resolutions[resolutionString].forEach((image) => {
             if (!images[counter]) images[counter] = [];
             images[counter].push(image);
             counter += 1;

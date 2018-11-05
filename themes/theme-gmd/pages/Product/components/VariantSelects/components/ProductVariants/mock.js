@@ -286,6 +286,9 @@ const mockedState = {
         images: [],
       },
     },
+    imagesResolutionsByProductId: {
+      '440x440': [], '2000x2000': [],
+    },
     shippingByProductId: {
       1013: {
         shipping: {},

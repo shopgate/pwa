@@ -14,13 +14,13 @@ import connect from './connector';
  */
 class ImageSlider extends Component {
   static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string),
+    resolutions: PropTypes.shape(),
     onOpen: PropTypes.func,
     product: PropTypes.shape(),
   };
 
   static defaultProps = {
-    images: null,
+    resolutions: {},
     product: null,
     onOpen: () => {},
   };
@@ -38,9 +38,9 @@ class ImageSlider extends Component {
   }
 
   handleOpenGallery = () => {
-    const { product, images } = this.props;
+    const { product, resolutions } = this.props;
 
-    if (!product || !images || !images.length) {
+    if (!product || !resolutions || !resolutions['440x440'].length) {
       return;
     }
 
@@ -67,27 +67,29 @@ class ImageSlider extends Component {
    * @returns {JSX}
    */
   render() {
-    const { product, images } = this.props;
+    const { product, resolutions } = this.props;
 
-    const resolutions = [
-      {
-        width: 440,
-        height: 440,
-      },
-      {
-        width: 1024,
-        height: 1024,
-      },
-    ];
+    const images = [];
     let content = null;
 
-    if (!product || !images || images.length === 0) {
+    if (resolutions) {
+      const resolutionStrings = Object.keys(resolutions);
+      resolutionStrings.forEach((resolutionString) => {
+        let counter = 0;
+        resolutions[resolutionString].forEach((image) => {
+          if (!images[counter]) images[counter] = [];
+          images[counter].push(image);
+          counter += 1;
+        });
+      });
+    }
+
+    if (!product || !resolutions || resolutions['440x440'].length === 0) {
       content = (
         <ProductImage
           highestResolutionLoaded={this.previewLoaded}
-          src={product ? product.featuredImageUrl : null}
+          srcset={product ? [product.featuredImageUrl] : null}
           forcePlaceholder={!product}
-          resolutions={resolutions}
         />
       );
     } else {
@@ -98,8 +100,8 @@ class ImageSlider extends Component {
           onSlideChange={this.handleSlideChange}
           rebuildOnUpdate
         >
-          {images.map(image => (
-            <ProductImage key={image} src={image} animating={false} />
+          {images.map(srcset => (
+            <ProductImage key={JSON.stringify(srcset)} srcset={srcset} animating={false} />
           ))}
         </BaseImageSlider>
       );

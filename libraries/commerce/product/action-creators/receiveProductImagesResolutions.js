@@ -9,7 +9,7 @@ import { RECEIVE_PRODUCT_IMAGES_RESOLUTIONS } from '../constants';
 const receiveProductImagesResolutions = (productId, resolutions) => ({
   type: RECEIVE_PRODUCT_IMAGES_RESOLUTIONS,
   productId,
-  resolutions
+  resolutions,
 });
 
 export default receiveProductImagesResolutions;

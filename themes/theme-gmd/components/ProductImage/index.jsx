@@ -41,8 +41,10 @@ class ProductImage extends Component {
   constructor(props) {
     super(props);
 
+    const showPlaceholder = !props.srcset || props.srcset.filter(val => val).length === 0;
+
     this.state = {
-      showPlaceholder: props.srcset === null || props.srcset.length === 0,
+      showPlaceholder,
     };
   }
 
@@ -53,8 +55,11 @@ class ProductImage extends Component {
   componentWillReceiveProps(nextProps) {
     // Disable the placeholder to give the real image a new chance to load.
     // If we do not have a src property set then just show the placeholder instead.
+
+    const showPlaceholder = !nextProps.srcset || nextProps.srcset.filter(val => !!val).length === 0;
+
     this.setState({
-      showPlaceholder: nextProps.srcset === null || nextProps.srcset.length === 0,
+      showPlaceholder,
     });
   }
 
@@ -71,10 +76,20 @@ class ProductImage extends Component {
    * Triggered when the image could not be loaded for some reason.
    */
   imageLoadingFailed = () => {
-    this.setState({
-      showPlaceholder: true,
-    });
+    if (this.mounted) {
+      this.setState({
+        showPlaceholder: true,
+      });
+    }
   };
+
+  componentDidMount() {
+    this.mounted = true;
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   /**
    * Renders the component.

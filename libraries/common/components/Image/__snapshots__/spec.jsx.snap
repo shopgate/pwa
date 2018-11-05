@@ -68,7 +68,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
       className="css-d5cgrh"
       data-test-id="image"
       role="presentation"
-      src="foo/bar?w=440&h=440&q=70&zc=resize&fillc=FFFFFF"
+      src="foo/bar"
       style={Object {}}
     />
   </div>

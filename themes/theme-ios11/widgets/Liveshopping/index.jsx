@@ -69,7 +69,7 @@ const createProductSliderItem = ({
                 classNames={{
                   container: styles.updateImageContainer,
                 }}
-                src={featuredImageUrl}
+                srcset={[featuredImageUrl]}
                 alt={name}
               />
             </Grid.Item>

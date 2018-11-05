@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductImage /> should render a placeholder if no src prop is provided 1`] = `
+exports[`<ProductImage /> should render a placeholder if no srcset prop is provided 1`] = `
 <div
   className="css-y5kkpq"
 >
@@ -16,7 +16,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
 `;
 
 exports[`<ProductImage /> should render the image without a placeholder 1`] = `
-<Image
+<ProgressiveImage
   alt={null}
   animating={true}
   backgroundColor="#fff"
@@ -26,20 +26,11 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   onError={[Function]}
   onLoad={null}
   ratio={null}
-  resolutions={
+  srcset={
     Array [
-      Object {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "height": 440,
-        "width": 440,
-      },
+      "http://placehold.it/300x300",
     ]
   }
-  src="http://placehold.it/300x300"
   transition={null}
 />
 `;

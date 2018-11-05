@@ -8,8 +8,8 @@ import styles from './style';
    * @returns {string} image src, corrected for old image service
    */
 const getActualImageSrc = (src) => {
-  if (src.startsWith('https://img-cdn.shopgate.com') && !src.includes('?')) {
-    return `${src}?w=440&h=440&fillc=fff`;
+  if (src && src.startsWith('https://img-cdn.shopgate.com') && !src.includes('?')) {
+    return `${src}?w=440&q=70&h=440&fillc=fff`;
   }
   return src;
 };

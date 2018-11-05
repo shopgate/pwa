@@ -24,7 +24,7 @@ const Layout = (props, context) => (
       <div className={styles.image}>
         <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
         <Portal name={portals.CART_ITEM_IMAGE} props={context}>
-          <ProductImage src={props.product.featuredImageUrl} />
+          <ProductImage srcset={[props.product.featuredImageUrl]} />
         </Portal>
         <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
       </div>

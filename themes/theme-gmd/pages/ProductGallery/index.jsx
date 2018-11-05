@@ -54,10 +54,10 @@ class ProductGallery extends Component {
     const rows = [];
 
     if (this.props.resolutions) {
-      const resolutionStrings = Object.keys(this.props.resolutions.resolutions);
+      const resolutionStrings = Object.keys(this.props.resolutions);
       resolutionStrings.forEach((resolutionString) => {
         let counter = 0;
-        this.props.resolutions.resolutions[resolutionString].forEach((image) => {
+        this.props.resolutions[resolutionString].forEach((image) => {
           if (!rows[counter]) rows[counter] = [];
           rows[counter].push(image);
           counter += 1;
