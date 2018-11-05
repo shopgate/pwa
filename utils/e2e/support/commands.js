@@ -1,3 +1,4 @@
+/* eslint-disable capitalized-comments, no-param-reassign, no-underscore-dangle */
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -34,31 +35,33 @@
       .click()
   }).then(action => ... check action extra params ... )
  */
-Cypress.Commands.add('spyAction', {prevSubject: 'window'}, (window, action, cyCode) => {
+Cypress.Commands.add('spyAction', { prevSubject: 'window' }, (window, action, cyCode) => {
   // Begin to track actions
-  const actions = new Map()
+  const actions = new Map();
   // Set ta falsy by default
-  actions.set(action, false)
+  actions.set(action, false);
 
-  window.console._log = window.console.log
+  window.console._log = window.console.log;
   // Replace by spy function
   window.console.log = (...args) => {
-    window.console._log(...args)
+    window.console._log(...args);
     if (args[2] && args[2].type && action === args[2].type) {
-      actions.set(action, args[2])
+      actions.set(action, args[2]);
     }
-  }
+  };
 
   // Run cy.* commands
-  cyCode()
+  cyCode();
 
   // Catch and return actions
   return cy.wrap(actions)
     .invoke('get', action)
     .should('be.ok')
-    .then(action => {
+    .then((resultAction) => {
       // restore console log
-      window.console.log = window.console._log
-      return action
-    })
-})
+      window.console.log = window.console._log;
+      return resultAction;
+    });
+});
+
+/* eslint-enable capitalized-comments, no-param-reassign, no-underscore-dangle */
