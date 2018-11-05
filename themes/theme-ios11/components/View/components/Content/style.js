@@ -6,7 +6,7 @@ import variables from 'Styles/variables';
  * @param {boolean} isFullscreen Whether remove all offsets,
  *                  so that it's really fullscreen (including the notch).
  * @param {number} keyboardHeight The space that is taken by the keyboard.
- * @param {boolean} noScroll Wheather the view should be scrollable or not.
+ * @param {boolean} noScroll Whether the view should be scrollable or not.
  * @return {string} The content style class.
  */
 const content = (isFullscreen = false, keyboardHeight = 0, noScroll = false) => {
@@ -19,7 +19,7 @@ const content = (isFullscreen = false, keyboardHeight = 0, noScroll = false) => 
     width: '100vw',
     position: 'absolute',
     top: 0,
-    paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
+    paddingBottom: keyboardHeight,
     bottom: 0,
     display: 'flex',
     flexDirection: 'column',

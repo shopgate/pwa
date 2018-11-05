@@ -15,9 +15,10 @@ import styles from './style';
  * The ViewContent component.
  */
 class ViewContent extends Component {
+  static contextType = RouteContext;
+
   static propTypes = {
     children: PropTypes.node,
-    hasNavigator: PropTypes.bool,
     isFullscreen: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
     title: PropTypes.string,
@@ -25,7 +26,6 @@ class ViewContent extends Component {
 
   static defaultProps = {
     children: null,
-    hasNavigator: true,
     isFullscreen: false,
     noScrollOnKeyboard: false,
     title: appConfig.shopName,
@@ -46,11 +46,17 @@ class ViewContent extends Component {
   }
 
   /**
+   * Removes the keyboardWillChange listener.
+   */
+  componentWillUnmount() {
+    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
    * @return {string}
    */
   get contentStyle() {
     return styles.content(
-      this.props.hasNavigator,
       this.props.isFullscreen,
       this.state.keyboardHeight,
       (this.props.noScrollOnKeyboard && this.state.keyboardHeight > 0)
@@ -65,7 +71,7 @@ class ViewContent extends Component {
   handleKeyboardChange = ({ open, overlap }) => {
     const height = (open) ? overlap : 0;
 
-    if (height !== this.state.keyboardHeight) {
+    if (this.context.visible && height !== this.state.keyboardHeight) {
       this.setState({
         keyboardHeight: height,
       });
