@@ -48,7 +48,8 @@
       "set": "{from} elementi: {price}",
       "range": "{from} o altro: {price}"
     },
-    "msrp": "SRP"
+    "msrp": "SRP",
+    "currency": "Dollari"
   },
   "product": {
     "description_heading": "A riguardo",
@@ -81,7 +82,7 @@
     "free": "Spedizione gratuita",
     "free_short": "Gratis",
     "cost": "{price} spedizione"
-  },
+   },
   "liveshopping": {
     "discount_badge": "RISPARMIA {0}%"
   },
