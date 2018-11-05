@@ -1,5 +1,3 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 
 describe('functional test start page', () => {
@@ -11,7 +9,9 @@ describe('functional test start page', () => {
       .click();
     cy.get(els.productWithBasePrice1ProductPageName)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .should('be.visible')
+      .click();
   });
 
   it('check for image widget', () => {
@@ -20,7 +20,9 @@ describe('functional test start page', () => {
       .click();
     cy.get(els.basicProductsCategoryTitle)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .should('be.visible')
+      .click();
   });
 
   it('check for product slider', () => {
@@ -30,27 +32,43 @@ describe('functional test start page', () => {
       .click();
     cy.get(els.productWithLongDesciption4ProductPageName)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .should('be.visible')
+      .click();
   });
 
   it('check for category list', () => {
     cy.wait(1000);
-    cy.get(els.allProductCategory).first()
+    cy.get(els.allProductCategory)
       .scrollIntoView()
       .should('be.visible')
       .click();
     cy.get(els.allProductsCategoryTitle)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .should('be.visible')
+      .click();
   });
 
-  it('should check for product grid grid', () => {
+  it('should check for product list grid', () => {
     cy.get(els.productGridWidgetSecondProduct)
       .should('be.visible')
       .scrollIntoView()
       .click();
     cy.get(els.productWithManyProps4ProductPagName)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .should('be.visible')
+      .click();
+  });
+
+  it('should check for product list', () => {
+    cy.wait(1000);
+    cy.get(els.productListWidgetSecondProduct)
+      .scrollIntoView()
+      .should('be.visible')
+      .click();
+    cy.get(els.productWithManyProps4ProductPagName)
+      .should('be.visible');
   });
 });

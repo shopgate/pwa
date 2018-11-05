@@ -1,5 +1,3 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 
 describe('AndroidGMDTest CategoryPage', () => {
@@ -7,10 +5,14 @@ describe('AndroidGMDTest CategoryPage', () => {
     cy.visit('');
 
     cy.get(els.allProductCategory)
-      .first()
-      .scrollIntoView()
       .click();
+
     cy.get(els.allProductsCategoryTitle)
+      .should('be.visible');
+  });
+
+  it('should check for Back Button', () => {
+    cy.get(els.backButton)
       .should('be.visible');
   });
 
@@ -24,8 +26,20 @@ describe('AndroidGMDTest CategoryPage', () => {
       .should('be.visible');
   });
 
+  it('should check for sorting', () => {
+    cy.get(els.sortingDropDown)
+      .should('be.visible');
+  });
+
+  it('should check for viewSwitch', () => {
+    cy.get(els.viewSwitch)
+      .should('be.visible');
+  });
+
   it('should check for Product in grid view', () => {
+    cy.wait(2000);
     cy.get(els.productWithManyProps4GridViewImage)
+      .last()
       .scrollIntoView()
       .should('be.visible');
     cy.get(els.productWithManyProps4GridViewName)
@@ -33,6 +47,21 @@ describe('AndroidGMDTest CategoryPage', () => {
     cy.get(els.productWithManyProps4GridViewFavButton)
       .should('be.visible');
     cy.get(els.productWithManyProps4GridViewPrice)
+      .should('be.visible');
+  });
+
+  it('should check for product in list view', () => {
+    cy.reload();
+    cy.get(els.viewSwitch)
+      .scrollIntoView()
+      .should('be.visible')
+      .click();
+    cy.get(els.productWithManyProps4ListViewImage)
+      .scrollIntoView()
+      .should('be.visible');
+    cy.get(els.productWithManyProps4ListViewName)
+      .should('be.visible');
+    cy.get(els.productWithManyProps4ListViewPrice)
       .should('be.visible');
   });
 
@@ -50,6 +79,16 @@ describe('AndroidGMDTest CategoryPage', () => {
     cy.get(els.productWithStrikePrice4GridViewDiscountBadge)
       .should('be.visible');
     cy.get(els.productWithStrikePrice4GridViewPrice);
+    // Switch to List view
+    cy.reload();
+    cy.get(els.viewSwitch)
+      .click();
+    cy.get(els.productWithStrikePrice4listViewStrikePrice)
+      .should('be.visible');
+    cy.get(els.productWithStrikePrice4ListViewDiscountBadge)
+      .should('be.visible');
+    cy.get(els.productWithStrikePrice4ListViewPrice)
+      .should('be.visible');
   });
 
   it('should check for rating stars', () => {
@@ -64,6 +103,12 @@ describe('AndroidGMDTest CategoryPage', () => {
     cy.get(els.productWithRating4GridViewRatingStars)
       .last()
       .scrollIntoView()
+      .should('be.visible');
+    // Switch to List View
+    cy.reload();
+    cy.get(els.viewSwitch)
+      .click();
+    cy.get(els.productWithRating4ListViewRatingStars)
       .should('be.visible');
   });
 });
