@@ -1,10 +1,6 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 
-// TODO: refactor when bugs solved
-
-describe('AndroidGMDTest FavouritesPage', () => {
+describe('AndroidGMDTest FavoritesPage', () => {
   it('it should check for favorites placeholder', () => {
     cy.visit('');
 
@@ -23,10 +19,15 @@ describe('AndroidGMDTest FavouritesPage', () => {
       .should('be.visible');
   });
 
+  it('should check for back button', () => {
+    cy.get(els.backButton)
+      .should('be.visible');
+  });
+
   it('should check for Item', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory).first()
+    cy.get(els.allProductCategory)
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -48,6 +49,7 @@ describe('AndroidGMDTest FavouritesPage', () => {
       .should('be.visible')
       .click()
       .wait(6000);
+    cy.reload();
     cy.get(els.favoriteListItem)
       .contains('Product with many Properties - 4 -')
       .should('be.visible');

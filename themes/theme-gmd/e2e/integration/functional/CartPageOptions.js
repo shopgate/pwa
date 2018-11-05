@@ -1,10 +1,8 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 
 describe('functional test cart page options', () => {
   it('should check for product with options', () => {
-    cy.visit('')
+    cy.visit('');
 
     cy.get(els.productWithOptionsCategory)
       .scrollIntoView()

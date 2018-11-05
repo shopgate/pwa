@@ -31,7 +31,7 @@ export function logOutUser() {
 }
 
 /**
- * Helper function that log in the user
+ * Log in user
  */
 export function logInUser() {
   openNavDrawer();
@@ -63,6 +63,7 @@ export function logInUser() {
             .type('{enter}');
         });
       });
+      return true;
     });
 }
 
