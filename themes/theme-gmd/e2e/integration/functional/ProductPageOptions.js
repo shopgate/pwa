@@ -1,7 +1,9 @@
+// / <reference types="Cypress" />
+
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
-describe('functional test product page options', () => {
+describe('functional test product page', () => {
   it('should check for options select', () => {
     cy.visit('');
 
