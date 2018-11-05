@@ -1,3 +1,5 @@
+/* eslint-disable global-require, no-console */
+
 module.exports = (on, config) => {
   let ip;
   let port;
@@ -6,7 +8,7 @@ module.exports = (on, config) => {
     ip = process.env.IP;
     port = process.env.PORT;
   } else {
-    const sdkConfig = require('../../../.sgcloud/frontend.json'); // eslint-disable-line global-require
+    const sdkConfig = require('../../../.sgcloud/frontend.json');
     ip = sdkConfig.ip || '127.0.0.1';
     port = sdkConfig.port || 8080;
   }
@@ -31,3 +33,5 @@ module.exports = (on, config) => {
 
   return newConfig;
 };
+
+/* eslint-enable global-require, no-console */
