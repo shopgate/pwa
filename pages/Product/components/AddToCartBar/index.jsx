@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import { RouteContext } from '@virtuous/react-conductor/Router/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import Consume from '@shopgate/pwa-common/components/Consume';
 import {
   PRODUCT_ADD_TO_CART_BAR,
   PRODUCT_ADD_TO_CART_BAR_AFTER,
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { ViewContext } from 'Components/View/context';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -24,6 +26,7 @@ class AddToCartBar extends Component {
     conditioner: PropTypes.shape().isRequired,
     options: PropTypes.shape().isRequired,
     productId: PropTypes.string.isRequired,
+    setBottom: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     disabled: PropTypes.bool,
@@ -49,11 +52,20 @@ class AddToCartBar extends Component {
       added: 0,
     };
 
+    this.ref = React.createRef();
+
     UIEvents.addListener(constants.SHOW_ADD_TO_CART_BAR, this.handleShow);
     UIEvents.addListener(constants.HIDE_ADD_TO_CART_BAR, this.handleHide);
     UIEvents.addListener(constants.INCREMENT_ACTION_COUNT, this.handleIncrement);
     UIEvents.addListener(constants.DECREMENT_ACTION_COUNT, this.handleDecrement);
     UIEvents.addListener(constants.RESET_ACTION_COUNT, this.handleReset);
+  }
+
+  /**
+   * Update the ViewBottom with the height of the content.
+   */
+  componentDidMount() {
+    this.props.setBottom(this.ref.current.clientHeight);
   }
 
   /**
@@ -65,6 +77,7 @@ class AddToCartBar extends Component {
     UIEvents.removeListener(constants.INCREMENT_ACTION_COUNT, this.handleIncrement);
     UIEvents.removeListener(constants.DECREMENT_ACTION_COUNT, this.handleDecrement);
     UIEvents.removeListener(constants.RESET_ACTION_COUNT, this.handleReset);
+    this.props.setBottom(0);
   }
 
   handleShow = () => {
@@ -143,23 +156,25 @@ class AddToCartBar extends Component {
         <Fragment>
           <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
           <Portal name={PRODUCT_ADD_TO_CART_BAR}>
-            <div className={styles.container}>
-              <div className={styles.base}>
-                <div className={styles.statusBar}>
-                  <CartItemsCount itemCount={added} />
-                  <AddMoreButton
-                    handleAddToCart={this.handleAddToCart}
+            <div className={styles.container} >
+              <div className={styles.innerContainer} ref={this.ref}>
+                <div className={styles.base}>
+                  <div className={styles.statusBar}>
+                    <CartItemsCount itemCount={added} />
+                    <AddMoreButton
+                      handleAddToCart={this.handleAddToCart}
+                      disabled={this.props.disabled}
+                      loading={this.props.loading}
+                      onReset={this.resetClicked}
+                    />
+                  </div>
+                  <AddToCartButton
                     disabled={this.props.disabled}
-                    loading={this.props.loading}
+                    itemCount={added}
+                    handleAddToCart={this.handleAddToCart}
                     onReset={this.resetClicked}
                   />
                 </div>
-                <AddToCartButton
-                  disabled={this.props.disabled}
-                  itemCount={added}
-                  handleAddToCart={this.handleAddToCart}
-                  onReset={this.resetClicked}
-                />
               </div>
             </div>
           </Portal>
@@ -171,8 +186,18 @@ class AddToCartBar extends Component {
   }
 }
 
+const viewMap = {
+  setBottom: 'setBottom',
+};
+
 export default connect(props => (
   <RouteContext.Consumer>
-    {({ visible }) => <AddToCartBar {...props} visible={visible} />}
+    {({ visible }) => (
+      <Consume context={ViewContext} props={viewMap}>
+        {({ setBottom }) => (
+          <AddToCartBar {...props} visible={visible} setBottom={setBottom} />
+        )}
+      </Consume>
+    )}
   </RouteContext.Consumer>
 ));

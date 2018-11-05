@@ -7,8 +7,14 @@ const container = css({
   background: 'rgba(255, 255, 255, 0.9)',
   backdropFilter: 'blur(20px)',
   boxShadow: '0 0 30px rgba(0, 0, 0, 0.1)',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
+  position: 'fixed',
+  bottom: 0,
+  width: '100%',
+});
+
+const innerContainer = css({
   padding: variables.gap.small,
-  paddingBottom: `calc(${variables.gap.small}px + var(--safe-area-inset-bottom))`,
 });
 
 const base = css({
@@ -26,6 +32,7 @@ const statusBar = css({
 
 export default {
   container,
+  innerContainer,
   base,
   statusBar,
 };
