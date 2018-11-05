@@ -11,11 +11,14 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    below: PropTypes.node,
     title: PropTypes.string,
   };
 
   static defaultProps = {
     title: null,
+    below: null,
+
   };
 
   static contextTypes = {
