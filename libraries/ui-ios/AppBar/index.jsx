@@ -55,7 +55,7 @@ class AppBar extends PureComponent {
     } = this.props;
 
     return (
-      <header
+      <section
         className={classnames(styles.outer, classes.outer)}
         data-test-id="Navigator"
         style={this.style}
@@ -66,7 +66,7 @@ class AppBar extends PureComponent {
           {right}
         </div>
         {below}
-      </header>
+      </section>
     );
   }
 }
