@@ -56,6 +56,8 @@ class ImageSlider extends Component {
    * @param {*} nextState next state
    */
   shouldComponentUpdate(nextProps, nextState) {
+    if (this.state !== nextState) return true;
+
     const productChanged = !(nextProps.product === this.props.product);
     const resolutionsReceived = this.props.resolutions === {} && nextProps.resolutions !== {};
     const resolutionsChanged = (nextProps.resolutions && nextProps.resolutions !== {}) && this.props.resolutions !== nextProps.resolutions;

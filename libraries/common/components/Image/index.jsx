@@ -147,7 +147,7 @@ class Image extends Component {
       }
     };
 
-    image.src = src; // GetActualImageSource(src, this.props.resolutions[resolutionIndex]);
+    image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
 
     return image.complete;
   }

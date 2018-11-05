@@ -9,8 +9,6 @@ import getProductImagesResolutions from '@shopgate/pwa-common-commerce/product/a
 import getProductShipping from '@shopgate/pwa-common-commerce/product/actions/getProductShipping';
 import { requestProductData } from '../action-creators';
 
-getProductImagesResolutions;
-
 /**
  * Triggers the fetching of all product data for a certain product ID.
  * @param {string} [selectedVariantId=null] The selected variant's ID.
