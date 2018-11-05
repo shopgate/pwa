@@ -21,8 +21,8 @@ const mockedStore = configureStore();
 
 describe('<ProductGallery.Content> page', () => {
   beforeEach(() => {
-    getProductImages.mockReturnValue(['foo', 'bar'])
-    getCurrentBaseProduct.mockReturnValue({ id: 123 })
+    getProductImages.mockReturnValue(['foo', 'bar']);
+    getCurrentBaseProduct.mockReturnValue({ id: 123 });
   });
 
   it('should render ZoomPanSlider with images', () => {

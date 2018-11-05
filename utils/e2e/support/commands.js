@@ -1,4 +1,4 @@
-/* eslint-disable capitalized-comments, no-param-reassign, no-underscore-dangle */
+/* eslint-disable no-param-reassign, no-underscore-dangle */
 // ***********************************************
 // This example commands.js shows you how to
 // Create various custom commands and overwrite
@@ -64,4 +64,4 @@ Cypress.Commands.add('spyAction', { prevSubject: 'window' }, (window, action, cy
     });
 });
 
-/* eslint-enable capitalized-comments, no-param-reassign, no-underscore-dangle */
+/* eslint-enable no-param-reassign, no-underscore-dangle */
