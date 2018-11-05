@@ -13,6 +13,8 @@ import connect from './connector';
 
 const enhance = onlyUpdateForKeys(['loggedIn']);
 
+const portalProps = { Item: NavDrawer.Item };
+
 /**
  * @returns {JSX}
  */
@@ -20,8 +22,8 @@ const LogoutButton = ({ loggedIn, logout }) => (
   loggedIn && (
     <Fragment>
       <NavDrawer.Divider />
-      <Portal name={NAV_MENU_LOGOUT_BEFORE} />
-      <Portal name={NAV_MENU_LOGOUT}>
+      <Portal name={NAV_MENU_LOGOUT_BEFORE} props={portalProps} />
+      <Portal name={NAV_MENU_LOGOUT} props={portalProps}>
         <NavDrawer.Item
           label="navigation.logout"
           icon={LogoutIcon}
@@ -29,7 +31,7 @@ const LogoutButton = ({ loggedIn, logout }) => (
           testId="navDrawerLogOutButton"
         />
       </Portal>
-      <Portal name={NAV_MENU_LOGOUT_AFTER} />
+      <Portal name={NAV_MENU_LOGOUT_AFTER} props={portalProps} />
     </Fragment>
   )
 );
