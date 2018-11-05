@@ -5,7 +5,7 @@ import variables from 'Styles/variables';
 const button = css({
   position: 'absolute',
   right: 0,
-  top: -1,
+  top: 0,
   display: 'block',
   flexGrow: 1,
   background: colors.cta,

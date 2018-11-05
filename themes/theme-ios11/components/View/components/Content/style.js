@@ -19,7 +19,7 @@ const content = (isFullscreen = false, keyboardHeight = 0, noScroll = false) => 
     width: '100vw',
     position: 'absolute',
     top: 0,
-    paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
+    paddingBottom: `${keyboardHeight}px`,
     bottom: 0,
     display: 'flex',
     flexDirection: 'column',

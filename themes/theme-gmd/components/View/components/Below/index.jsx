@@ -11,7 +11,7 @@ const map = {
  */
 const ViewBelow = () => (
   <Consume context={ViewContext} props={map}>
-    {({ bottom }) => <div aria-hidden style={{ flexShrink: 0, height: `${bottom}px` }} />}
+    {({ bottom }) => <div aria-hidden style={{ flexShrink: 0, height: `calc(${bottom}px + var(--safe-area-inset-bottom))` }} />}
   </Consume>
 );
 
