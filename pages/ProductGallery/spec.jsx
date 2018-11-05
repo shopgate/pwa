@@ -19,7 +19,7 @@ describe('<ProductGallery> page', () => {
 
     const wrapper = mount((
       <Provider store={store}>
-        <UnwrappedProductGallery id={id}/>
+        <UnwrappedProductGallery id={id} />
       </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();

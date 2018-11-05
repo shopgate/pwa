@@ -1,5 +1,3 @@
-// / <reference types="Cypress" />
-
 import els from '../../elements/de';
 
 describe('e2e functional test favoritePage', () => {
@@ -40,8 +38,7 @@ describe('e2e functional test favoritePage', () => {
     cy.get(els.basicDialogOkButton)
       .contains('Abbrechen')
       .should('be.visible')
-      .click()
-      .wait(2000);
+      .click();
     cy.get(els.addToCartButton)
       .click();
     cy.get(els.basicDialogText)

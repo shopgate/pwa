@@ -1,12 +1,10 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 
 describe('AndroidGMDTest productPage', () => {
   it('should check for productImage', () => {
     cy.visit('');
     // Naviagte to product
-    cy.get(els.allProductCategory).first()
+    cy.get(els.allProductCategory)
       .click();
     cy.get(els.productWithManyProps4GridViewName)
       .scrollIntoView()
@@ -48,6 +46,7 @@ describe('AndroidGMDTest productPage', () => {
     cy.get(els.productWithManufacturerPropManufacturerProp)
       .should('be.visible');
     cy.get(els.productWithManufacturerPropManufacturerPropList)
+      .scrollIntoView()
       .should('be.visible');
   });
 
@@ -57,7 +56,7 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for desctiption', () => {
-    cy.get(els.productWithManufactruerPropProductDetailPageDescription)
+    cy.get(els.descriptionText)
       .contains('Product with manufacture prop')
       .should('be.visible');
   });
@@ -122,7 +121,21 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for variants', () => {
-    cy.visit('/item/393639');
+    cy.visit('/category/');
+    cy.get(els.productVariantsCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productsWith2VariantsCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productWithChild1GridView)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.variantsPicker)
+      .should('be.visible');
     cy.get(els.variantPickerColor)
       .should('be.visible');
     cy.get(els.variantPickerShoeSize)

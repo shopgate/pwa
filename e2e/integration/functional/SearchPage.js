@@ -1,5 +1,3 @@
-// eslint-disable-next-line spaced-comment
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 
 describe('function tests search page', () => {
@@ -16,16 +14,17 @@ describe('function tests search page', () => {
       .type('product with many properties -4- {enter}');
     cy.get(els.productWithManyProps4SearchResult)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .click();
     cy.get(els.searchButton)
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
-      .clear()
       .type('product with many properties -3- {enter}');
     cy.get(els.productWithManyProps3SearchResult)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .click();
   });
 
   it('should search again with fitting product', () => {
@@ -36,20 +35,20 @@ describe('function tests search page', () => {
     cy.get(els.searchInput)
       .click()
       .should('be.visible')
-      .clear()
-      .type('product with many properties -4-{enter}');
+      .type('product with many properties -4- {enter}');
     cy.get(els.productWithManyProps4SearchResult)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .click();
     cy.get(els.searchButton)
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
-      .clear()
-      .type('product with many properties -3-{enter}');
+      .type('product with many properties -3- {enter}');
     cy.get(els.productWithManyProps3SearchResult)
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .click();
   });
 
   it('should seach with no fitting products', () => {
@@ -57,12 +56,12 @@ describe('function tests search page', () => {
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
-      .clear()
       .type('kfkfkf {enter}');
     cy.get(els.noResultText)
       .contains('Ihre Suche nach "kfkfkf" liefert keine Ergebnisse.')
       .should('be.visible');
-    cy.go('back');
+    cy.get(els.backButton)
+      .click();
   });
 
   it('should check for suggestions', () => {
@@ -70,7 +69,6 @@ describe('function tests search page', () => {
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
-      .clear()
       .type('product');
     cy.get("[data-test-id='searchSuggestion Product']")
       .should('be.visible');
