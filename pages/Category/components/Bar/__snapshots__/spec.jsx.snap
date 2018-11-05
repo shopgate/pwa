@@ -372,7 +372,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                             }
                           >
                             <button
-                              className="css-1x5kceo"
+                              className="css-1xhkstf"
                               data-test-id="filterButton"
                               onClick={[Function]}
                             >
