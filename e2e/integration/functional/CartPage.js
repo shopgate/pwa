@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
@@ -124,7 +122,7 @@ describe('functional tests cart page', () => {
   });
 
   it('should check for product with options', () => {
-    cy.visit('')
+    cy.visit('');
 
     cy.get(els.productWithOptionsCategory)
       .scrollIntoView()
