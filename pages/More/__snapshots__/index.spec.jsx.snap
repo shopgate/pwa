@@ -537,27 +537,36 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   <div
                     data-test-id="userMenu"
                   >
-                    <Headline
-                      small={true}
-                      style={
+                    <Portal
+                      name="nav-menu.my-account.header"
+                      props={
                         Object {
-                          "margin": "24px 20px 16px",
+                          "Item": [Function],
                         }
                       }
-                      tag="h2"
-                      text="navigation.your_account"
                     >
-                      <h2
-                        className="css-18cwfw7"
+                      <Headline
+                        small={true}
                         style={
                           Object {
                             "margin": "24px 20px 16px",
                           }
                         }
+                        tag="h2"
+                        text="navigation.your_account"
                       >
-                        navigation.your_account
-                      </h2>
-                    </Headline>
+                        <h2
+                          className="css-18cwfw7"
+                          style={
+                            Object {
+                              "margin": "24px 20px 16px",
+                            }
+                          }
+                        >
+                          navigation.your_account
+                        </h2>
+                      </Headline>
+                    </Portal>
                     <nav
                       className={
                         Object {
