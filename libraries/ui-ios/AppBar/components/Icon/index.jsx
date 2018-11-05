@@ -29,7 +29,8 @@ class AppBarIcon extends PureComponent {
     } = this.props;
 
     return (
-      <button
+      <div
+        aria-hidden
         className={styles}
         onClick={onClick}
         style={{
@@ -39,7 +40,7 @@ class AppBarIcon extends PureComponent {
       >
         <Icon {...iconProps} />
         {Badge && <Badge />}
-      </button>
+      </div>
     );
   }
 }
