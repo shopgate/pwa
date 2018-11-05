@@ -23,6 +23,7 @@ describe('e2e functional test favoritePage', () => {
     cy.go('back');
     cy.go('back');
     cy.get(els.navigatorButton)
+      .first()
       .should('be.visible')
       .click()
       .wait(1000);

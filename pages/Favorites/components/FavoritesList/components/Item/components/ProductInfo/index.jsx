@@ -21,7 +21,7 @@ const ProductInfo = ({ product }) => {
     <Fragment>
       <Portal name={portals.FAVORITES_PRODUCT_NAME_BEFORE} props={props} />
       <Portal name={portals.FAVORITES_PRODUCT_NAME} props={props}>
-        <div className={styles.name}>
+        <div className={styles.name} data-test-id={`favoriteListItem: ${product.name}`}>
           <Link
             tagName="a"
             href={`${ITEM_PATH}/${bin2hex(product.baseProductId || product.id)}`}
