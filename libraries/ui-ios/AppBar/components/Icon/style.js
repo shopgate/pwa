@@ -1,6 +1,7 @@
 import { css } from 'glamor';
 
 export default css({
+  alignItems: 'center',
   color: 'inherit',
   display: 'flex',
   flexShrink: 0,
@@ -11,4 +12,5 @@ export default css({
   padding: 0,
   position: 'relative',
   width: 44,
+  zIndex: 1,
 });

@@ -36,9 +36,7 @@
     },
     "apply": "Applica",
     "more": "altro",
-    "clear": "Resetta",
-    "clear_all": "Resetta tutto",
-    "view_all": "Vedi tutto"
+    "reset": "Resetta"
   },
   "price": {
     "from": "Da {price}",
@@ -47,7 +45,7 @@
       "set": "{from} elementi: {price}",
       "range": "{from} o altro: {price}"
     },
-    "msrp": "SRP",
+    "msrp": "SRP"
   },
   "product": {
     "description_heading": "A riguardo",
