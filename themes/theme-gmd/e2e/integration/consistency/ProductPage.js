@@ -138,8 +138,6 @@ describe('AndroidGMDTest productPage', () => {
       .should('be.visible')
       .last()
       .click();
-    cy.get(els.variantsPicker)
-      .should('be.visible');
     cy.get(els.variantPickerColor)
       .should('be.visible');
     cy.get(els.variantPickerShoeSize)
