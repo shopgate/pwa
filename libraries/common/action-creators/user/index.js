@@ -10,6 +10,7 @@ import {
   RECEIVE_USER,
   ERROR_USER,
   TOGGLE_LOGGED_IN,
+  DISABLE_LOGIN,
 } from '../../constants/ActionTypes';
 
 /**
@@ -117,5 +118,15 @@ export const errorUser = error => ({
  */
 export const toggleLoggedIn = value => ({
   type: TOGGLE_LOGGED_IN,
+  value,
+});
+
+/**
+ * Creates the dispatched DISABLE_LOGIN action object.
+ * @param {boolean} value Whether it is enabled or disabled.
+ * @returns {Object}
+ */
+export const disableLogin = value => ({
+  type: DISABLE_LOGIN,
   value,
 });

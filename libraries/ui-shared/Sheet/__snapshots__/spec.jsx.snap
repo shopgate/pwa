@@ -190,6 +190,7 @@ exports[`<Sheet /> should open 1`] = `
               <div
                 aria-hidden={true}
                 className="css-hlk66h "
+                data-test-id="Backdrop"
                 onClick={[Function]}
                 style={
                   Object {
@@ -532,6 +533,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               <div
                 aria-hidden={true}
                 className="css-hlk66h "
+                data-test-id="Backdrop"
                 onClick={[Function]}
                 style={
                   Object {

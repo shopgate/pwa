@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 import { logOutUser } from '../../helper/user';
 
@@ -66,4 +64,3 @@ describe('AndroidGMDTest reviews page', () => {
     logOutUser();
   });
 });
-

@@ -1,3 +1,5 @@
+/* eslint-disable global-require, no-console */
+
 module.exports = (on, config) => {
   let ip;
   let port;
@@ -12,7 +14,6 @@ module.exports = (on, config) => {
   }
 
   console.warn(ip, port);
-  
 
   // Build a new config object.
   const newConfig = Object.assign({}, config, {
@@ -33,3 +34,4 @@ module.exports = (on, config) => {
   return newConfig;
 };
 
+/* eslint-enable global-require, no-console */

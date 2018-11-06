@@ -1,4 +1,4 @@
-import els from '../elements/de'
+import els from '../elements/de';
 
 /**
  * Helper function that clears the Cart

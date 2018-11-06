@@ -1,5 +1,5 @@
 {
-  "version": "5.9.0-beta.10",
+  "version": "5.9.0",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -127,16 +127,6 @@
       "destination": "frontend",
       "params": {
         "value": "%(browserApplicationAddress)s"
-      }
-    },
-    "browserConnector": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": false,
-      "params": {
-        "type": "json",
-        "label": "Use browser connector?",
-        "required": true
       }
     },
     "shopCNAME": {

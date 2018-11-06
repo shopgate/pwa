@@ -1,6 +1,4 @@
-/// <reference types="Cypress" />
-
-import {clearProductFromCart} from '../../helper/cart';
+import { clearProductFromCart } from '../../helper/cart';
 import els from '../../elements/de';
 
 describe('AndroidGMDTest CartPage', () => {

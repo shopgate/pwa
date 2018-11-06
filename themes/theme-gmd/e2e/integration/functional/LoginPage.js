@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import els from '../../elements/de';
 import { logOutUser } from '../../helper/user';
 
@@ -37,7 +35,7 @@ describe('functional tests login page', () => {
         .clear()
         .type(userC.password)
         .type('{enter}');
-      cy.wait(10000);
+      cy.wait(15000);
       cy.get(els.navigatorButton)
         .should('be.visible')
         .click();
