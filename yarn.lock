@@ -207,24 +207,23 @@
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
 
-"@virtuous/conductor-events@1.0.0-beta.41":
-  version "1.0.0-beta.41"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.41.tgz#79d7adc4a129cbb16da84e37be55435918c129ee"
+"@virtuous/conductor-events@1.0.0-beta.43":
+  version "1.0.0-beta.43"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.43.tgz#732ecab941ec1cc8f94a95ad184b6e3821f5edba"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.41"
+    "@virtuous/conductor" "1.0.0-beta.43"
 
-"@virtuous/conductor-helpers@1.0.0-beta.41":
-  version "1.0.0-beta.41"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.41.tgz#345e94eefbd00c56b3b6a19eeebd45333ac0580e"
+"@virtuous/conductor-helpers@1.0.0-beta.43":
+  version "1.0.0-beta.43"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.43.tgz#4f00cecf8623e7d52eeda342575a39a54fee6e02"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.41"
+    "@virtuous/conductor" "1.0.0-beta.43"
 
-"@virtuous/conductor@1.0.0-beta.41":
-  version "1.0.0-beta.41"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.41.tgz#3379b7d7fadc2f73a752ae8b926b1f330b612354"
+"@virtuous/conductor@1.0.0-beta.43":
+  version "1.0.0-beta.43"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.43.tgz#f92ddc5160af233d587e3d81a60fe0d3fdf31270"
   dependencies:
     history "^4.7.2"
-    lodash "^4.17.10"
     path-match "^1.2.4"
     query-string "^6.1.0"
     url-pattern "^1.0.3"
@@ -233,24 +232,25 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.41":
-  version "1.0.0-beta.41"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.41.tgz#979d4dd993e9feef1ec3627fa94b1bdd89e7b359"
+"@virtuous/react-conductor@1.0.0-beta.43":
+  version "1.0.0-beta.43"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.43.tgz#e5b1e8604873e83a4db28874cc8ce87943f67ca7"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.41"
-    "@virtuous/conductor-events" "1.0.0-beta.41"
-    "@virtuous/conductor-helpers" "1.0.0-beta.41"
+    "@virtuous/conductor" "1.0.0-beta.43"
+    "@virtuous/conductor-events" "1.0.0-beta.43"
+    "@virtuous/conductor-helpers" "1.0.0-beta.43"
     gsap "^1.20.4"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.41":
-  version "1.0.0-beta.41"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.41.tgz#59ecbd26dfdb0a0ceb8ed076b04b8f9cc20081f3"
+"@virtuous/redux-conductor@1.0.0-beta.43":
+  version "1.0.0-beta.43"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.43.tgz#8147435fe66114be14f289314e78a983057e8902"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.41"
-    "@virtuous/conductor-events" "1.0.0-beta.41"
-    "@virtuous/conductor-helpers" "1.0.0-beta.41"
+    "@virtuous/conductor" "1.0.0-beta.43"
+    "@virtuous/conductor-events" "1.0.0-beta.43"
+    "@virtuous/conductor-helpers" "1.0.0-beta.43"
+    lodash "^4.17.11"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
   version "1.1.0-beta.7"
@@ -5319,7 +5319,7 @@ lodash@4.17.4:
   version "4.17.4"
   resolved "http://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
