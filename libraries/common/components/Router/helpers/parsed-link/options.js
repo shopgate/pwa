@@ -22,6 +22,7 @@ const legacyPages = [
   'return_policy',
   'privacy',
   'register',
+  'user_lost_password',
   'imprint',
   'shipping',
   'payment',
@@ -136,6 +137,13 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
     case LEGACY_URL_CONNECT_REGISTER:
       this.addLinkAction('legacyLink', {
         url: `/${LEGACY_URL_CONNECT_REGISTER}`,
+        targetTab: 'main',
+        backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
+      });
+      break;
+    case 'user_lost_password':
+      this.addLinkAction('legacyLink', {
+        url: '/user_lost_password',
         targetTab: 'main',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
