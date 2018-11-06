@@ -35,11 +35,9 @@
       "price_desc": "Prix Descendant",
       "price_asc": "Prix Ascendant"
     },
-    "apply": "Appliquer",
+    "apply": "Terminé",
     "more": "Plus",
-    "clear": "Effacer",
-    "clear_all": "Effacer tout",
-    "view_all": "Voir tout"
+    "reset": "Effacer tout"
   },
   "price": {
     "from": "De {price}",
