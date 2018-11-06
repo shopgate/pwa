@@ -35,11 +35,9 @@
       "price_desc": "Price: High to Low",
       "price_asc": "Price: Low to High"
     },
-    "apply": "Apply",
+    "apply": "Done",
     "more": "more",
-    "clear": "Clear",
-    "clear_all": "Clear all",
-    "view_all": "View all"
+    "reset": "Reset"
   },
   "price": {
     "from": "From {price}",
