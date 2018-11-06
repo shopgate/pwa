@@ -11,7 +11,7 @@ import {
  * @param {Object} state The current application state.
  * @return {Object} The collection of product variants.
  */
-const getVariantsState = state => state.product.variantsByProductId;
+export const getVariantsState = state => state.product.variantsByProductId;
 
 /**
  * Gets the id of the currently selected product variant.
