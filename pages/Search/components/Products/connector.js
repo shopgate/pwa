@@ -14,7 +14,10 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = {
-  getProducts: (searchPhrase, offset) => getSearchResults({ searchPhrase, offset }),
+  getProducts: (searchPhrase, offset) => getSearchResults({
+    searchPhrase,
+    offset,
+  }),
 };
 
 /**
