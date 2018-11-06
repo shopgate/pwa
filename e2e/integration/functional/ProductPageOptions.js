@@ -1,5 +1,3 @@
-// / <reference types="Cypress" />
-
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
