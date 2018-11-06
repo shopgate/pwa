@@ -1,6 +1,5 @@
 import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
-import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
@@ -20,7 +19,7 @@ import {
  */
 export default function category(subscribe) {
   subscribe(categoryWillEnter$, ({ dispatch, action }) => {
-    const filters = getActiveFilters();
+    const { filters } = action.route.state;
     const categoryId = hex2bin(action.route.params.categoryId);
 
     dispatch(fetchCategory(categoryId));
