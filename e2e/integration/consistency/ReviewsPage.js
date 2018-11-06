@@ -3,7 +3,7 @@ import { logOutUser } from '../../helper/user';
 
 describe('AndroidGMDTest reviews page', () => {
   it('should check for review name', () => {
-    logOutUser();
+    cy.visit('');
 
     cy.get(els.allProductCategory)
       .click();

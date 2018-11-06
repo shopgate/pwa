@@ -12,7 +12,7 @@ export function logOutUser() {
     .click();
   cy.wait(3000);
 
-  cy.get(els.loginWelcomeText).then(($loginWelcomeText) => {
+  cy.get(els.welcomeText).then(($loginWelcomeText) => {
     if ($loginWelcomeText.text().includes('Hallo Dennis')) {
       cy.get(els.logOutButton)
         .wait(2000)
@@ -31,7 +31,7 @@ export function logOutUser() {
 }
 
 /**
- * Log in user
+ * Helper function that log in the user
  */
 export function logInUser() {
   openNavDrawer();
@@ -66,4 +66,3 @@ export function logInUser() {
       return true;
     });
 }
-
