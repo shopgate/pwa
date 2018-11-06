@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressiveImage /> should render last given loaded image if srcset is given 1`] = `
+<ProgressiveImage
+  alt={null}
+  animating={true}
+  backgroundColor="#f2f2f2"
+  className=""
+  forcePlaceholder={false}
+  highestResolutionLoaded={[Function]}
+  onError={null}
+  onLoad={null}
+  srcset={
+    Array [
+      "someimage",
+      "someotherimage",
+    ]
+  }
+  transition={null}
+>
+  <div
+    className="css-hekcyy "
+  >
+    <img
+      alt={null}
+      className="css-d5cgrh"
+      data-test-id="image"
+      role="presentation"
+      src="someotherimage"
+    />
+  </div>
+</ProgressiveImage>
+`;
+
+exports[`<ProgressiveImage /> should render placeholders if forced to 1`] = `
+<ProgressiveImage
+  alt={null}
+  animating={true}
+  backgroundColor="#f2f2f2"
+  className=""
+  forcePlaceholder={true}
+  highestResolutionLoaded={[Function]}
+  onError={null}
+  onLoad={null}
+  srcset={
+    Array [
+      "foo/bar",
+    ]
+  }
+  transition={null}
+>
+  <div
+    className="css-hekcyy "
+  />
+</ProgressiveImage>
+`;
+
+exports[`<ProgressiveImage /> should render placeholders if src is null 1`] = `
+<ProgressiveImage
+  alt={null}
+  animating={true}
+  backgroundColor="#f2f2f2"
+  className=""
+  forcePlaceholder={false}
+  highestResolutionLoaded={[Function]}
+  onError={null}
+  onLoad={null}
+  srcset={
+    Array [
+      null,
+    ]
+  }
+  transition={null}
+>
+  <div
+    className="css-hekcyy "
+  />
+</ProgressiveImage>
+`;
