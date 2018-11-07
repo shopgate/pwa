@@ -4,7 +4,7 @@ export FORCE_COLOR = true
 RECURSIVE_MAKEFILE_NAME = Makefile
 
 LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
-EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
+EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
 UTILS = eslint-config unit-tests e2e benchmark
 THEMES = theme-gmd theme-ios11
 

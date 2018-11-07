@@ -48,7 +48,8 @@ public/
 pipelines/
 trustedPipelines/
 extensions/
-!extensions/@shopgate-tracking-ga-native
 !extensions/@shopgate-product-reviews
+!extensions/@shopgate-tracking-ga-native
+!extensions/@shopgate-user-privacy
 config/
 .nyc_output
