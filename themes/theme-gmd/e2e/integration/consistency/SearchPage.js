@@ -6,6 +6,7 @@ describe('AndroidGMDTest searchPage', () => {
 
     cy.get(els.searchButton)
       .should('be.visible')
+      .first()
       .click();
     cy.get(els.searchInput)
       .should('be.visible');

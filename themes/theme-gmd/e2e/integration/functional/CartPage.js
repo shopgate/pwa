@@ -41,19 +41,24 @@ describe('functional tests cart page', () => {
   it('should add second product to cart', () => {
     cy.visit('');
     cy.get(els.basicCategory)
+      .last()
       .scrollIntoView()
+      .should('be.visible')
       .click();
     cy.get(els.productsWithLongNamesCat)
       .should('be.visible')
       .last()
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithVeryLongName5Name)
       .last()
       .should('be.visible')
       .click();
     cy.get(els.addToCartButton)
       .click();
-    cy.get(els.cartButton)
+    cy.get(els.cartButtonProductPage)
+      .last()
       .click();
   });
 
@@ -86,6 +91,7 @@ describe('functional tests cart page', () => {
     cy.visit('');
 
     cy.get(els.productVariantsCategory)
+      .last()
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -93,7 +99,10 @@ describe('functional tests cart page', () => {
       .should('be.visible')
       .last()
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithChild1MotherNameProductGrid)
+      .last()
       .should('be.visible')
       .last()
       .click();
@@ -115,7 +124,7 @@ describe('functional tests cart page', () => {
     cy.get(els.addToCartButton)
       .should('be.visible')
       .click();
-    cy.get(els.cartButton)
+    cy.get(els.cartButtonProductPage)
       .should('be.visible')
       .click();
     cy.get(els.productWithChild1ColorBlackSize5CartItem)

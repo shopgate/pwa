@@ -31,7 +31,7 @@ class AppBarDefault extends PureComponent {
   render() {
     const { title } = this.props;
     const { __ } = this.context.i18n();
-    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} />;
+    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />;
     const center = <AppBar.Title title={__(title || '')} />;
     const right = (
       <Fragment>

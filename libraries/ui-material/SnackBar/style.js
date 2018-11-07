@@ -6,7 +6,7 @@ const wrapper = css({
   display: 'flex',
   justifyContent: 'center',
   left: 0,
-  position: 'absolute',
+  position: 'fixed',
   transition: 'transform .25s cubic-bezier(0, 0, .2, 1)',
   width: '100%',
   willChange: 'transform',

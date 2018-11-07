@@ -1788,6 +1788,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
           >
             <svg
               className="css-12jxe4c"
+              data-test-id="loadingIndicator"
               height={32}
               viewBox="25 25 50 50"
               width={32}
