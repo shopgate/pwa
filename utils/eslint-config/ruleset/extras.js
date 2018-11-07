@@ -2,6 +2,7 @@ module.exports = {
   plugins: [
     'eslint-comments',
     'extra-rules',
+    'cypress',
   ],
   rules: {
     'extra-rules/no-commented-out-code': 2,

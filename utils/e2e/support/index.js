@@ -1,3 +1,5 @@
+/* eslint-disable capitalized-comments, no-underscore-dangle */
+
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -15,9 +17,6 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
 
 const istanbul = require('istanbul-lib-coverage');
 
@@ -47,3 +46,5 @@ after(() => {
     cy.exec('nyc report --temp-directory e2e/.nyc_output --reporter=html --reporter=lcov');
   });
 });
+
+/* eslint-enable capitalized-comments, no-underscore-dangle */

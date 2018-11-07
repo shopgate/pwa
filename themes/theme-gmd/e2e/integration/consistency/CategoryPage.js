@@ -1,4 +1,3 @@
-/// <reference types="Cypress" />
 import els from '../../elements/de';
 
 describe('AndroidGMDTest CategoryPage', () => {
@@ -38,7 +37,9 @@ describe('AndroidGMDTest CategoryPage', () => {
   });
 
   it('should check for Product in grid view', () => {
+    cy.wait(2000);
     cy.get(els.productWithManyProps4GridViewImage)
+      .last()
       .scrollIntoView()
       .should('be.visible');
     cy.get(els.productWithManyProps4GridViewName)

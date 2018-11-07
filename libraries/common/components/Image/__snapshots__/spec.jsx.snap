@@ -65,7 +65,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
   >
     <img
       alt={null}
-      className="css-d5cgrh"
+      className="css-f45h63"
       data-test-id="image"
       role="presentation"
       src="foo/bar"

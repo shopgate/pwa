@@ -44,7 +44,7 @@ export default {
   adressFormStreet: "[id='street']",
   adressFormCity: "[id='city']",
   adressFromCountry: "[id='countryCode']",
-  adressFormCountryDEOption: "Germany",
+  adressFormCountryDEOption: 'Germany',
   adressFormZip: "[id='zipCode']",
   adressFormSaveButton: "[data-test-id='AddAddressButton']",
-}
+};
