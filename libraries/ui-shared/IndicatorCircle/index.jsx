@@ -24,6 +24,7 @@ const IndicatorCircle = ({
     width={size}
     height={size}
     xmlns="http://www.w3.org/2000/svg"
+    data-test-id="loadingIndicator"
   >
     <circle
       className={styles.circle(color, strokeWidth, paused)}

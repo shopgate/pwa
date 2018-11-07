@@ -54,10 +54,10 @@ describe('functional test product page', () => {
       .last()
       .click();
     cy.wait(1000);
-    cy.get('[data-test-id="Color"] span')
+    cy.get('[data-test-id="Color"] div')
       .contains('Black')
       .should('be.visible');
-    cy.get('[data-test-id="Shoe size"] span')
+    cy.get('[data-test-id="Shoe size"] div')
       .contains('5')
       .should('be.visible');
     cy.wait(1000);

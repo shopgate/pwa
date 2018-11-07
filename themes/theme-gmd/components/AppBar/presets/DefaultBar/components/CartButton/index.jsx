@@ -42,6 +42,7 @@ class CartButton extends PureComponent {
               color={colors.primaryContrast}
               icon={CartIcon}
               onClick={navigate}
+              testId="CartButton"
             />
           </div>
         )}

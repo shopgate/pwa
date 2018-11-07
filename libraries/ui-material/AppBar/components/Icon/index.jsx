@@ -12,12 +12,14 @@ class AppBarIcon extends PureComponent {
     background: PropTypes.string,
     badge: PropTypes.func,
     color: PropTypes.string,
+    testId: PropTypes.string,
   };
 
   static defaultProps = {
     background: 'inherit',
     badge: null,
     color: 'inherit',
+    testId: null,
   };
 
   /**
@@ -25,7 +27,7 @@ class AppBarIcon extends PureComponent {
    */
   render() {
     const {
-      background, badge: Badge, color, icon: Icon, onClick,
+      background, badge: Badge, color, icon: Icon, onClick, testId,
     } = this.props;
 
     return (
@@ -36,6 +38,7 @@ class AppBarIcon extends PureComponent {
           background,
           color,
         }}
+        data-test-id={testId}
       >
         <Icon />
         {Badge && <Badge />}

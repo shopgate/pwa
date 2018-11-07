@@ -36,6 +36,7 @@ class AppBarField extends PureComponent {
           onChange={onChange}
           placeholder={__('search.placeholder')}
           ref={fieldRef}
+          data-test-id="searchInput"
         />
       </form>
     );

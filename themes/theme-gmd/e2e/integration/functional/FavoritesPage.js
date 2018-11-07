@@ -15,7 +15,7 @@ describe('e2e functional test favoritePage', () => {
       .should('be.visible')
       .last()
       .click();
-    cy.get(els.favoriteButton)
+    cy.get(els.favoriteButtonProductPage)
       .should('be.visible')
       .last()
       .click();
@@ -23,6 +23,7 @@ describe('e2e functional test favoritePage', () => {
     cy.go('back');
     cy.go('back');
     cy.get(els.navigatorButton)
+      .first()
       .should('be.visible')
       .click()
       .wait(1000);
@@ -39,6 +40,7 @@ describe('e2e functional test favoritePage', () => {
       .contains('Abbrechen')
       .should('be.visible')
       .click();
+    cy.wait(3000);
     cy.get(els.addToCartButton)
       .click();
     cy.get(els.basicDialogText)
@@ -55,7 +57,7 @@ describe('e2e functional test favoritePage', () => {
       .should('be.visible');
     cy.reload()
       .wait(3000);
-    cy.get(els.favoriteButton)
+    cy.get(els.favoriteButtonProductPage)
       .click()
       .wait(1000);
   });
