@@ -1,6 +1,4 @@
-import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
-import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { getPageContext } from '../../../../helpers/legacy';
 import { isFunction } from '../../../../helpers/validation';
@@ -39,10 +37,6 @@ const externalLink = (url) => {
       animation: 'none',
     },
   });
-
-  flushTab({
-    targetTab: 'in_app_browser',
-  });
 };
 
 /**
@@ -78,18 +72,6 @@ const legacyLink = (options) => {
 
   if (options.targetTab) {
     showTab({
-      targetTab: options.targetTab,
-    });
-  }
-
-  if (options.flushTab) {
-    flushTab({
-      targetTab: options.flushTab,
-    });
-  }
-
-  if (options.popTabToRoot) {
-    popTabToRoot({
       targetTab: options.targetTab,
     });
   }
