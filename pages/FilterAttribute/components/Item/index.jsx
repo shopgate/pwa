@@ -19,7 +19,7 @@ const Item = ({
 }) => (
   <RippleButton type="plain" onClick={onClick} className={styles.item}>
     <Grid>
-      <Grid.Item grow={1} shrink={1}>
+      <Grid.Item grow={1} shrink={1} className={styles.labelColumn}>
         <div className={styles.label} data-test-id={label}>
           {label}
         </div>
