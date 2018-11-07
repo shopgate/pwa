@@ -16,11 +16,15 @@ describe('AndroidGMDTest CartPage', () => {
     cy.visit('');
     cy.get(els.allProductCategory)
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .click();
     cy.get(els.addToCartButton)
       .click();
     cy.get(els.cartButton)
+      .last()
       .click();
     cy.get(els.cartItem)
       .contains('Product with many Properties - 4 -')
@@ -45,6 +49,7 @@ describe('AndroidGMDTest CartPage', () => {
 
   it('should check for TaxDisclaimer', () => {
     cy.get(els.taxDisclaimerFooter)
+      .last()
       .contains('* Alle Preise inkl. MwSt. evtl. zzgl. Versand')
       .should('be.visible');
   });

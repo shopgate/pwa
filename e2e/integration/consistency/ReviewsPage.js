@@ -3,11 +3,14 @@ import { logOutUser } from '../../helper/user';
 
 describe('AndroidGMDTest reviews page', () => {
   it('should check for review name', () => {
-    logOutUser();
+    cy.visit('');
 
     cy.get(els.allProductCategory)
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -18,6 +21,7 @@ describe('AndroidGMDTest reviews page', () => {
       const userC = user;
 
       cy.get(els.loginPageEmailInput)
+        .scrollIntoView()
         .should('be.visible')
         .type(userC.username);
       cy.get(els.loginPagePasswordInput)

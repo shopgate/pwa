@@ -39,7 +39,7 @@ describe('functional tests login page', () => {
       cy.get(els.navigatorButton)
         .should('be.visible')
         .click();
-      cy.get(els.loginWelcomeText)
+      cy.get(els.welcomeText)
         .should('be.visible')
         .contains('Hallo Dennis');
     });
