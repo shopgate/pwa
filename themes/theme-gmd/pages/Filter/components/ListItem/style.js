@@ -7,6 +7,7 @@ const item = css({
 }).toString();
 
 const gridItem = css({
+  maxWidth: '100%',
   minWidth: '40%',
 }).toString();
 
