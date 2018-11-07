@@ -35,46 +35,40 @@ export const getCurrentRoute = createSelector(
  * @param {Object} state The global state.
  * @returns {Object|null}
  */
-export const getCurrentParams = createSelector(
-  () => getCurrentRouteHelper(),
-  (route) => {
-    if (!route || !route.params) {
-      return null;
-    }
-
-    return route.params;
+export const getCurrentParams = () => {
+  const route = getCurrentRouteHelper();
+  if (!route || !route.params) {
+    return null;
   }
-);
+
+  return route.params;
+};
 
 /**
  * @param {Object} state The global state.
  * @returns {string|null} The current history pathname.
  */
-export const getCurrentPathname = createSelector(
-  () => getCurrentRouteHelper(),
-  (route) => {
-    if (!route || !route.pathname) {
-      return null;
-    }
-
-    return route.pathname;
+export const getCurrentPathname = () => {
+  const route = getCurrentRouteHelper();
+  if (!route || !route.pathname) {
+    return null;
   }
-);
+
+  return route.pathname;
+};
 
 /**
  * @param {Object} state The global state.
  * @returns {Object|null} The current history query.
  */
-export const getCurrentQuery = createSelector(
-  () => getCurrentRouteHelper(),
-  (route) => {
-    if (!route || !route.query) {
-      return null;
-    }
-
-    return route.query;
+export const getCurrentQuery = () => {
+  const route = getCurrentRouteHelper();
+  if (!route || !route.query) {
+    return null;
   }
-);
+
+  return route.query;
+};
 
 /**
  * @param {Object} state The global state.
@@ -95,13 +89,11 @@ export const getCurrentSearchQuery = createSelector(
  * @param {Object} state The global state.
  * @returns {string|null} The current history entry state.
  */
-export const getCurrentState = createSelector(
-  () => getCurrentRouteHelper(),
-  (route) => {
-    if (!route || !route.state) {
-      return null;
-    }
-
-    return route.state;
+export const getCurrentState = () => {
+  const route = getCurrentRouteHelper();
+  if (!route || !route.state) {
+    return null;
   }
-);
+
+  return route.state;
+};

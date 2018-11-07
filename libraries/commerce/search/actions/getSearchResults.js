@@ -1,4 +1,3 @@
-import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { DEFAULT_SORT, ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import getProducts from '../../product/actions/getProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
@@ -16,14 +15,12 @@ const getSearchResults = params => (dispatch) => {
     searchPhrase,
     limit = ITEMS_PER_LOAD,
     sort = DEFAULT_SORT,
+    filters = null,
   } = params;
 
   if (!searchPhrase) {
     return;
   }
-
-  // TODO: Move to function params.
-  const filters = getActiveFilters();
 
   const promise = dispatch(getProducts({
     params: {
