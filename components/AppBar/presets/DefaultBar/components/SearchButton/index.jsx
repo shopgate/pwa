@@ -16,7 +16,7 @@ class SearchButton extends PureComponent {
    */
   render() {
     return (
-      <AppBar.Icon icon={MagnifierIcon} onClick={this.handleOnClick} />
+      <AppBar.Icon icon={MagnifierIcon} onClick={this.handleOnClick} testId="SearchButton" />
     );
   }
 }

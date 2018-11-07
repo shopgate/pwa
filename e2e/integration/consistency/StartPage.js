@@ -12,35 +12,26 @@ describe('AndroidGMDTest startPage', () => {
     // Check for drawer entries
     cy.get(els.navigationDrawerLoginButton)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Startseite')
+    cy.get(els.navDrawerStartPage)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Kategorien')
+    cy.get(els.navDrawerCategoriesButton)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Merkliste')
+    cy.get(els.navDrawerFavoritesButton)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
+    cy.get(els.navDrawerCartButton)
       .contains('Warenkorb')
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Versandarten')
+    cy.get(els.navDrawerShippingButton)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Zahlungsarten')
+    cy.get(els.navDrawerPaymentButton)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('AGB')
+    cy.get(els.navDrawerTermsButton)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Datenschutz')
+    cy.get(els.navDrawerPrivacyButton)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Widerrufsbelehrung')
+    cy.get(els.navDrawerReturnPolicy)
       .should('be.visible');
-    cy.get(els.navigationDrawerEntry)
-      .contains('Impressum')
+    cy.get(els.navDrawerImprintButton)
       .scrollIntoView()
       .should('be.visible');
   });
