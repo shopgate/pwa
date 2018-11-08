@@ -61,6 +61,7 @@ class Search extends Component {
    * @param {Event} event The event.
    */
   reset = () => {
+    this.fieldRef.current.value = '';
     this.setState({ query: '' });
   }
 
