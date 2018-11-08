@@ -1,10 +1,8 @@
 import conductor from '@virtuous/conductor';
 import { ACTION_REPLACE } from '@virtuous/conductor/constants';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
-import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
-import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import authRoutes from '../../collections/AuthRoutes';
@@ -192,10 +190,6 @@ export const openExternalLink = (location, historyAction) => {
     },
   });
 
-  flushTab({
-    targetTab: 'in_app_browser',
-  });
-
   handleAppRedirect(historyAction);
 };
 
@@ -232,18 +226,6 @@ export const handleLegacyLink = (options) => {
 
   if (options.targetTab) {
     showTab({
-      targetTab: options.targetTab,
-    });
-  }
-
-  if (options.flushTab) {
-    flushTab({
-      targetTab: options.flushTab,
-    });
-  }
-
-  if (options.popTabToRoot) {
-    popTabToRoot({
       targetTab: options.targetTab,
     });
   }
@@ -296,7 +278,6 @@ export const openLegacyLink = (location, historyAction) => {
     case LEGACY_LINK_CHECKOUT:
       handleLegacyLink({
         targetTab: 'cart',
-        flushTab: 'cart',
         navigationType: 'checkout',
         location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
