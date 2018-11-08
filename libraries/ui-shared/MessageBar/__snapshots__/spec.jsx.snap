@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<MessageBar
+  classNames={
+    Object {
+      "container": "",
+      "message": "",
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "This is some information",
+      },
+      Object {
+        "message": "This is an error that happened here.",
+        "type": "error",
+      },
+      Object {
+        "message": "This is just a warning. Nothing to freak out about.",
+        "type": "warning",
+      },
+    ]
+  }
+>
+  <div
+    className=" css-1gmese"
+  >
+    <div
+      className=" css-1psau2c"
+      key="info-This is some information"
+    >
+      This is some information
+    </div>
+    <div
+      className=" css-1t4ceri"
+      key="error-This is an error that happened here."
+    >
+      This is an error that happened here.
+    </div>
+    <div
+      className=" css-y06bhm"
+      key="warning-This is just a warning. Nothing to freak out about."
+    >
+      This is just a warning. Nothing to freak out about.
+    </div>
+  </div>
+</MessageBar>
+`;
+
+exports[`<MessageBar /> General rendering should be empty if no messages have been set 1`] = `
+<MessageBar
+  classNames={
+    Object {
+      "container": "",
+      "message": "",
+    }
+  }
+  messages={Array []}
+>
+  <div
+    className=" css-1gmese"
+  />
+</MessageBar>
+`;
+
+exports[`<MessageBar /> General rendering should render a message as info if type is missing 1`] = `
+<MessageBar
+  classNames={
+    Object {
+      "container": "",
+      "message": "",
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "something",
+      },
+    ]
+  }
+>
+  <div
+    className=" css-1gmese"
+  >
+    <div
+      className=" css-1psau2c"
+      key="info-something"
+    >
+      something
+    </div>
+  </div>
+</MessageBar>
+`;
