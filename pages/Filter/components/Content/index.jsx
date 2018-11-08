@@ -99,10 +99,23 @@ class FilterContent extends PureComponent {
     const { filters } = this.props;
 
     const filter = filters.find(entry => entry.id === id);
+    const { value: initialValues } = this.initialFilters[id];
     let stateValue = value;
 
+    /**
+     * When the filter value is set to be the initial value
+     * then we do not consider that a change.
+     */
+    if (initialValues.every((initial, i) => initial === value[i])) {
+      this.remove(id);
+      return;
+    }
+
     if (Array.isArray(filter.values)) {
-      // The value only contains a list of ids. Within the route state id and label is required.
+      /**
+       * The value only contains a list of ids.
+       * Within the route state id and label is required.
+       */
       stateValue = value.map((valueId) => {
         const match = filter.values.find(entry => entry.id === valueId);
 
