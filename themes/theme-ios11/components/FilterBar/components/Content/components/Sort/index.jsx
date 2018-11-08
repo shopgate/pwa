@@ -52,7 +52,7 @@ class Sort extends PureComponent {
       ...route.query,
       sort,
     });
-    const pathname = `${window.location.pathname}${query}`;
+    const pathname = `${route.pathname}${query}`;
 
     this.props.historyReplace({
       pathname,
