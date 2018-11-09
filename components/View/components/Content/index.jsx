@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@virtuous/react-conductor/Router';
+import { router } from '@virtuous/conductor';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import ViewProvider from '../../../../providers/View';
 import Above from '../Above';
@@ -44,12 +45,20 @@ class ViewContent extends Component {
 
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
+  
+  componentDidMount() {
+    this.element.current.scrollTop = this.context.state.scrollTop;
+  }
 
   /**
    * Removes the keyboardWillChange listener.
    */
   componentWillUnmount() {
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+
+    router.update(this.context.id, {
+      scrollTop: this.element.current.scrollTop,
+    }, false);
   }
 
   /**
