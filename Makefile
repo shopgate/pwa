@@ -211,13 +211,13 @@ endef
 # Changes all the version numbers using lerna
 define update-pwa-versions
 		@echo "======================================================================"
-		@echo "| Updating pwa versions to '$(RELEASE_VERSION))'"
+		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
-		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact;
+		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME)) --force-publish --yes --exact;
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
-			then echo "ERROR: Package version mismatch, please theck your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			then echo "ERROR: Package version mismatch, please check your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
 
