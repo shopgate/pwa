@@ -7,7 +7,7 @@ import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import Router from '@virtuous/react-conductor/Router';
-import Route from '@virtuous/react-conductor/Route';
+import Route from '@virtuous/react-conductor/src/Route';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import App from '@shopgate/pwa-common/App';
