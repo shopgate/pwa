@@ -31,6 +31,7 @@ const externalLink = (url) => {
     previewSrc: 'sgapi:page_preview',
     emulateBrowser: true,
     targetTab: 'in_app_browser',
+    animated: false,
     navigationBarParams: {
       type: 'in-app-browser-default',
       popTab: 'in_app_browser',
