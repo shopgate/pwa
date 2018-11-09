@@ -2,7 +2,7 @@ import {
   searchWillEnter$,
   searchDidEnter$,
 } from '@shopgate/pwa-common-commerce/search/streams';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 import { searchFiltersDidUpdate$ } from './streams';
@@ -25,7 +25,7 @@ export default function search(subscribe) {
 
   subscribe(searchFiltersDidUpdate$, ({ action, dispatch }) => {
     const { filters } = action;
-    const { query } = getCurrentRoute();
+    const { query } = router.getCurrentRoute();
     const { s: searchPhrase, sort } = query;
 
     dispatch(getSearchResults({

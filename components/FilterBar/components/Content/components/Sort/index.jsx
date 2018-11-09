@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@virtuous/react-conductor/Router/context';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import {
   SORT_RELEVANCE,
   SORT_PRICE_ASC,
@@ -42,7 +42,7 @@ class Sort extends PureComponent {
    * @param {string} sort The new sort string.
    */
   handleSelection = (sort) => {
-    const route = getCurrentRoute();
+    const route = router.getCurrentRoute();
 
     if (route.query.sort === sort) {
       return;
