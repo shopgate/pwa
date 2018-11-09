@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { RouteContext } from '@virtuous/react-conductor/Router';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import { ProgressBar as BaseProgressBar } from '@shopgate/pwa-ui-shared';
 
 /**

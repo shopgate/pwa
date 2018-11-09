@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@virtuous/react-conductor/Router/context';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { RouteContext } from '@shopgate/pwa-common/context';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import {
   SORT_RELEVANCE,
   SORT_PRICE_ASC,
