@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * The message bar component.
+ * The MessageBar component.
  * @param {Object} props The component props.
  * @param {Array} props.messages The message content.
  * @param {Object} props.classNames Styling.
