@@ -9,12 +9,18 @@ const item = css({
 }).toString();
 
 const baseColumn = {
-  display: 'block',
+  overflow: 'hidden',
   padding: '5px 0px',
+  textOverflow: 'ellipsis',
 };
+
+const labelColumn = css({
+  overflow: 'hidden',
+}).toString();
 
 const label = css({
   ...baseColumn,
+  marginRight: '1em',
 }).toString();
 
 const checkbox = css({
@@ -23,6 +29,7 @@ const checkbox = css({
 
 export default {
   item,
+  labelColumn,
   label,
   checkbox,
 };
