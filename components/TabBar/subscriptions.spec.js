@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import {
