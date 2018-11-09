@@ -1,6 +1,5 @@
-import conductor from '@virtuous/conductor';
 import { ACTION_REPLACE } from '@virtuous/conductor/constants';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
@@ -158,14 +157,14 @@ export const sanitizeLink = (location) => {
  * @param {string} historyAction The history action which was used to navigate.
  */
 export const handleAppRedirect = (historyAction) => {
-  const { pathname } = getCurrentRoute();
+  const { pathname } = router.getCurrentRoute();
 
   if (authRoutes.isProtector(pathname) && historyAction === ACTION_REPLACE) {
     /**
      * A replace action on a protector route indicates that the authentication was successful.
      * So the protector route can be popped from the history stack.
      */
-    conductor.pop();
+    router.pop();
   }
 };
 

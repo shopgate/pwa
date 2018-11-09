@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import conductor from '@virtuous/conductor';
+import { router } from '@virtuous/conductor';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   FILTER_PRICE_RANGE,
@@ -172,11 +172,11 @@ class FilterContent extends PureComponent {
   save = () => {
     const { currentFilters, filters } = this.state;
 
-    conductor.update(
+    router.update(
       this.props.parentId,
       { filters: buildUpdatedFilters(currentFilters, filters) }
     );
-    setTimeout(conductor.pop, 250);
+    setTimeout(router.pop, 250);
   }
 
   /**

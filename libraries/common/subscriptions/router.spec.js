@@ -1,5 +1,4 @@
-import conductor from '@virtuous/conductor';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import {
   ACTION_POP,
   ACTION_PUSH,
@@ -101,10 +100,10 @@ describe('Router subscriptions', () => {
         openExternalLinkSpy,
         openLegacySpy,
         openLegacyLinkSpy,
-        conductor.pop,
-        conductor.push,
-        conductor.reset,
-        conductor.replace,
+        router.pop,
+        router.push,
+        router.reset,
+        router.replace,
       ];
 
       // Split the expected function from the haystack.
@@ -146,12 +145,12 @@ describe('Router subscriptions', () => {
 
     it('should handle the ACTION_POP history action as expected', async () => {
       await callback(createCallbackPayload({ params: { action: ACTION_POP } }));
-      testExpectedCall(conductor.pop);
+      testExpectedCall(router.pop);
     });
 
     it('should handle the ACTION_RESET history action as expected', async () => {
       await callback(createCallbackPayload({ params: { action: ACTION_RESET } }));
-      testExpectedCall(conductor.reset);
+      testExpectedCall(router.reset);
     });
 
     it('should handle the ACTION_PUSH history action as expected', async () => {
@@ -165,7 +164,7 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push, params);
+      testExpectedCall(router.push, params);
     });
 
     it('should handle the ACTION_REPLACE history action as expected', async () => {
@@ -176,7 +175,7 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.replace, params);
+      testExpectedCall(router.replace, params);
     });
 
     it('should remove trailing slashes from pathnames', async () => {
@@ -188,7 +187,7 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push, {
+      testExpectedCall(router.push, {
         ...params,
         pathname: params.pathname.slice(0, -1),
       });
@@ -229,7 +228,7 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
 
-      testExpectedCall(conductor.push, params);
+      testExpectedCall(router.push, params);
     });
 
     it('should redirect to another location correctly', async () => {
@@ -241,8 +240,8 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push);
-      expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
+      testExpectedCall(router.push);
+      expect(router.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
     });
 
     it('should redirect to another location when the redirect handler is a promise', async () => {
@@ -259,8 +258,8 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(conductor.push).toHaveBeenCalledTimes(1);
-      expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
+      expect(router.push).toHaveBeenCalledTimes(1);
+      expect(router.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
       expect(dispatch).toHaveBeenCalledTimes(2);
       expect(setViewLoading).toHaveBeenCalledWith(protectorRoute);
       expect(unsetViewLoading).toHaveBeenCalledWith(protectorRoute);
@@ -281,7 +280,7 @@ describe('Router subscriptions', () => {
       };
 
       await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
-      expect(conductor.push).not.toHaveBeenCalled();
+      expect(router.push).not.toHaveBeenCalled();
       expect(logger.error).toHaveBeenCalledWith(error);
       expect(dispatch).toHaveBeenCalledTimes(2);
       expect(setViewLoading).toHaveBeenCalledWith(protectorRoute);
@@ -297,8 +296,8 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push);
-      expect(conductor.push).toHaveBeenCalledWith('/some_route', params.state, params.silent);
+      testExpectedCall(router.push);
+      expect(router.push).toHaveBeenCalledWith('/some_route', params.state, params.silent);
     });
 
     it('should handle external links like expected', async () => {

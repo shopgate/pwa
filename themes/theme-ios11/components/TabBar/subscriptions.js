@@ -11,7 +11,7 @@ import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/cons
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import {
   enableTabBar,
   disableTabBar,
@@ -42,7 +42,7 @@ const shouldCartHaveTabBar = state => getCartItems(state).length === 0;
 export default function tabBar(subscribe) {
   // When a route enters we update the tabbar visibility.
   subscribe(routeDidEnter$, ({ dispatch, getState }) => {
-    const { pattern } = getCurrentRoute();
+    const { pattern } = router.getCurrentRoute();
     let enable = false;
 
     if (pattern === CART_PATH) {

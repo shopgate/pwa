@@ -1,5 +1,5 @@
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 
 /**
@@ -8,7 +8,7 @@ import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
  * @returns {Function} A redux thunk.
  */
 const changeSortOrder = sort => (dispatch) => {
-  const { query, state } = getCurrentRoute();
+  const { query, state } = router.getCurrentRoute();
   const newQuery = parseObjectToQueryString({
     ...query,
     sort,

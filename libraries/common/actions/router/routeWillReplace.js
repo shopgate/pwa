@@ -1,17 +1,14 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
-import { ACTION_REPLACE } from '@virtuous/conductor/constants';
+import { ACTION_REPLACE } from '@virtuous/conductor';
 import * as actions from '../../action-creators/router';
-import { getCurrentRoute as getCurrentRouteSelector } from '../../selectors/router';
 
 /**
- * @return {Function} The dispatched action.
+ * @param {Route} prev The previous route.
+ * @param {Route} next The next route.
+ * @returns {Function}
  */
-export function routeWillReplace() {
-  return (dispatch, getState) => {
-    const incoming = getCurrentRoute();
-    const outgoing = getCurrentRouteSelector(getState());
-
-    dispatch(actions.routeWillLeave(outgoing, ACTION_REPLACE));
-    dispatch(actions.routeWillEnter(incoming, ACTION_REPLACE));
+export function routeWillReplace(prev, next) {
+  return (dispatch) => {
+    dispatch(actions.routeWillLeave(prev, ACTION_REPLACE));
+    dispatch(actions.routeWillEnter(next, ACTION_REPLACE));
   };
 }

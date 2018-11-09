@@ -1,4 +1,4 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
 /**
@@ -7,7 +7,7 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
  * @return {Object}
  */
 const buildFilterParams = () => {
-  const { params, query } = getCurrentRoute();
+  const { params, query } = router.getCurrentRoute();
 
   return {
     ...params.categoryId && { categoryId: hex2bin(params.categoryId) },

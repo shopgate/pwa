@@ -1,11 +1,10 @@
-import conductor from '@virtuous/conductor';
+import { router } from '@virtuous/conductor';
 import {
   ACTION_POP,
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import { logger } from '@shopgate/pwa-core';
 import { redirects } from '../collections';
@@ -23,18 +22,18 @@ import authRoutes from '../collections/AuthRoutes';
  * Router subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function router(subscribe) {
+export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
     const { action, dispatch, getState } = params;
     const { params: { action: historyAction, silent, state: routeState } } = action;
 
     switch (historyAction) {
       case ACTION_POP: {
-        conductor.pop();
+        router.pop();
         return;
       }
       case ACTION_RESET: {
-        conductor.reset();
+        router.reset();
         return;
       }
       default:
@@ -51,7 +50,7 @@ export default function router(subscribe) {
       return;
     }
 
-    const { pathname: currentPathname } = getCurrentRoute();
+    const { pathname: currentPathname } = router.getCurrentRoute();
 
     // Prevent the current route from being pushed again.
     if (historyAction === ACTION_PUSH && location === currentPathname) {
@@ -85,7 +84,7 @@ export default function router(subscribe) {
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
-        const { pathname, pattern } = getCurrentRoute();
+        const { pathname, pattern } = router.getCurrentRoute();
         ProgressBar.show(pattern);
         dispatch(setViewLoading(pathname));
 
@@ -146,11 +145,21 @@ export default function router(subscribe) {
 
     switch (historyAction) {
       case ACTION_PUSH: {
-        conductor.push(location, routeState, silent);
+        router.push({
+          pathname: location,
+          state: routeState,
+          emitBefore: silent,
+          emitAfter: silent,
+        });
         break;
       }
       case ACTION_REPLACE: {
-        conductor.replace(location, routeState, silent);
+        router.replace({
+          pathname: location,
+          state: routeState,
+          emitBefore: silent,
+          emitAfter: silent,
+        });
         break;
       }
       default:

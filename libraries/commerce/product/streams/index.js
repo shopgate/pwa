@@ -3,7 +3,7 @@ import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { getBaseProduct } from '../selectors/product';
@@ -38,7 +38,7 @@ export const cachedProductReceived$ = main$
 
 export const receivedVisibleProduct$ = productReceived$.merge(cachedProductReceived$)
   .filter(({ action }) => {
-    const route = getCurrentRoute();
+    const route = router.getCurrentRoute();
 
     if (
       typeof action.productData === 'undefined'

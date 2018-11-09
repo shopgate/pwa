@@ -1,4 +1,4 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { RECEIVE_PAGE_CONFIG } from '@shopgate/pwa-common/constants/ActionTypes';
@@ -8,7 +8,7 @@ export const pageWillEnter$ = routeWillEnter$
 
 export const receivedVisiblePageConfig$ = main$
   .filter(({ action }) => {
-    const route = getCurrentRoute();
+    const route = router.getCurrentRoute();
 
     if (action.type !== RECEIVE_PAGE_CONFIG) {
       return false;

@@ -1,4 +1,4 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { router } from '@virtuous/conductor';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
@@ -56,7 +56,7 @@ export default function user(subscribe) {
     registerEvents(['userLoggedIn']);
 
     event.addCallback('userLoggedIn', () => {
-      const { state: { redirect } = {} } = getCurrentRoute();
+      const { state: { redirect } = {} } = router.getCurrentRoute();
       dispatch(successLogin(redirect));
     });
   });
