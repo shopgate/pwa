@@ -108,9 +108,10 @@ const Item = ({ display, product }) => (
       {/* PRICE - STRIKE PRICE - PRICE INFO */}
       {(!display || display.price) && (
         <Fragment>
-          <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
-          <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
+          <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id, location: 'productList'  }} />
+          <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id, location: 'productList'  }}>
             <Grid.Item grow={1} className={styles.priceContainer}>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_INSIDE_BEFORE} props={{ productId: product.id }} />
               <Price
                 className={styles.price}
                 currency={product.price.currency}
@@ -135,12 +136,12 @@ const Item = ({ display, product }) => (
               {product.price.info && (
                 <PriceInfo text={product.price.info} className={styles.priceInfo} />
               )}
+              <Portal name={portals.PRODUCT_ITEM_PRICE_INSIDE_AFTER} props={{ productId: product.id }} />
             </Grid.Item>
           </Portal>
-          <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
+          <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id, location: 'productList'  }} />
         </Fragment>
       )}
-
       <Grid.Item shrink={0} className={styles.favouriteContainer} />
     </Grid>
   </Link>
