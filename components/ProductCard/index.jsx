@@ -55,10 +55,10 @@ const ProductCard = ({
         )}
         {!hidePrice && (
           <Fragment>
-            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
-            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id, location: 'productGrid' }} />
+            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id, location: 'productGrid' }}>
               <ProductGridPrice price={product.price} />
-              <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
+              <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id, location: 'productGrid' }} />
             </Portal>
           </Fragment>
         )}
