@@ -183,6 +183,7 @@ export const openExternalLink = (location, historyAction) => {
     previewSrc: 'sgapi:page_preview',
     emulateBrowser: true,
     targetTab: 'in_app_browser',
+    animated: false,
     navigationBarParams: {
       type: 'in-app-browser-default',
       popTab: 'in_app_browser',
@@ -199,8 +200,6 @@ export const openExternalLink = (location, historyAction) => {
  * @param {string} options.location Link url.
  * @param {string} options.targetTab Target tab where the page should be opened.
  * @param {string} options.navigationType Type of the navigation bar that should be displayed.
- * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
- * @param {string} options.flushTab The tab that should be flushed
  * @param {Function} options.backCallback Function that is executed when hitting the back button.
  * @param {string} options.historyAction The history action which was used to open the link.
  */

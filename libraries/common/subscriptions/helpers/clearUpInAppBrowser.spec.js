@@ -1,4 +1,3 @@
-import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import cleanTab from '@shopgate/pwa-core/commands/cleanTab';
 import clearUpInAppBrowser from './clearUpInAppBrowser';
 
@@ -17,6 +16,6 @@ describe('clearUpInAppBrowser', () => {
 
   it('should call the popTabToRoot command on iOS devices', () => {
     clearUpInAppBrowser(false);
-    expect(popTabToRoot).toHaveBeenCalled();
+    expect(cleanTab).not.toHaveBeenCalled();
   });
 });
