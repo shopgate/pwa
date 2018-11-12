@@ -56,7 +56,7 @@ class ViewContent extends Component {
     const { keyboardHeight } = this.state;
 
     return {
-      overflow: noScrollOnKeyboard ? 'hidden' : 'auto',
+      overflow: (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto',
       paddingBottom: keyboardHeight,
     };
   }
