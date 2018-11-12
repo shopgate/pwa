@@ -123,6 +123,7 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
       this.addLinkAction('legacyLink', {
         targetTab: 'cart',
         navigationType: 'checkout',
+        flushTab: 'cart',
         url: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
