@@ -3,6 +3,8 @@ import createBrowserHistory from 'history/createBrowserHistory';
 
 const match = /^(.*)index.html/.exec(window.location.pathname);
 
+export { default as getCurrentRoute } from '@virtuous/conductor-helpers/getCurrentRoute';
+
 /**
  * Creates the router history.
  */
