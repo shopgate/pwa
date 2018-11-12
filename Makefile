@@ -213,7 +213,7 @@ define update-pwa-versions
 		@echo "======================================================================"
 		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
-		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME)) --force-publish --yes --exact;
+		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME))) --force-publish --yes --exact;
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
