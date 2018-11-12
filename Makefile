@@ -106,6 +106,9 @@ sanity-check:
 
 release:
 		$(call setup-release)
+		$(call update-versions)
+		$(call build-npm-packages)
+		$(call publish-npm-packages)
 		$(call make, publish-to-github)
 		$(call create-github-releases)
 		$(call finalize-release)
@@ -186,9 +189,10 @@ define create-pwa-release-branch
 		@echo "======================================================================"
 		@echo "| Creating release branch out of '$(BRANCH_NAME)' ... "
 		@echo "======================================================================"
+		git checkout "origin/$(BRANCH_NAME)"
 		git fetch --all
 		git pull origin "$(BRANCH_NAME)"
-		git checkout "releases/$(RELEASE_NAME)"
+		git checkout -b "releases/$(RELEASE_NAME)"
 
 endef
 
@@ -315,6 +319,11 @@ endef
 
 # Push everything to github and create releases including tags
 publish-to-github:
+		# Commit local changes to the repository (should be performed while being on a release branch)
+		git add -A && git commit -m "Released $(RELEASE_VERSION)";
+		# Update remotes and push changes into dedicated release branches
+		git fetch --all;
+		git push origin "releases/$(RELEASE_NAME)";
 ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
 		$(call build-changelog)
