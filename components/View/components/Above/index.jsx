@@ -14,7 +14,7 @@ function ViewAbove() {
 
         const styles = {
           flexShrink: 0,
-          height: `calc(${top}px + var(--safe-area-inset-bottom))`,
+          height: `calc(${top}px + var(--safe-area-inset-top))`,
         };
 
         return <div aria-hidden style={styles} />;
