@@ -37,26 +37,23 @@ describe('Tests link actions', () => {
 
   describe('Tests external link', () => {
     it('should open a link in the in app browser', () => {
-      actions.externalLink('http://google.de', () => {
-        resetMocks();
+      resetMocks();
+      actions.externalLink('http://google.de');
 
-        expect(showTab).toHaveBeenCalledTimes(1);
-        expect(showTab).toHaveBeenCalledWith({ targetTab: 'in_app_browser' });
-        expect(openPage).toHaveBeenCalledTimes(1);
-        expect(openPage).toHaveBeenCalledWith({
-          src: 'http://google.de',
-          previewSrc: 'sgapi:page_preview',
-          emulateBrowser: true,
-          targetTab: 'in_app_browser',
-          navigationBarParams: {
-            type: 'in-app-browser-url',
-            popTab: 'in_app_browser',
-            animation: 'none',
-            rightButtonCallback: 'SGAction.showTab({ targetTab: "main" });',
-          },
-        });
-        expect(flushTab).toHaveBeenCalledTimes(1);
-        expect(flushTab).toHaveBeenCalledWith({ targetTab: 'in_app_browser' });
+      expect(showTab).toHaveBeenCalledTimes(1);
+      expect(showTab).toHaveBeenCalledWith({ targetTab: 'in_app_browser', animation: 'slideInFromBottom' });
+      expect(openPage).toHaveBeenCalledTimes(1);
+      expect(openPage).toHaveBeenCalledWith({
+        src: 'http://google.de',
+        previewSrc: 'sgapi:page_preview',
+        emulateBrowser: true,
+        targetTab: 'in_app_browser',
+        animated: false,
+        navigationBarParams: {
+          type: 'in-app-browser-default',
+          popTab: 'in_app_browser',
+          animation: 'none',
+        },
       });
     });
   });
@@ -153,7 +150,6 @@ describe('Tests link actions', () => {
           leftButtonCallback: 'SGAction.popTabToRoot()',
         },
       });
-      expect(popTabToRoot).toHaveBeenCalledTimes(1);
       expect(showTab).toHaveBeenCalledWith({ targetTab: 'cart' });
     });
   });
