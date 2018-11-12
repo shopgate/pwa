@@ -105,11 +105,12 @@ sanity-check:
 
 
 release:
-ifeq ("$(STABLE)","true")
-		$(call create-github-releases,master)
-else
-		$(call create-github-releases,releases/$(RELEASE_NAME))
-endif
+		$(call setup-release)
+		$(call update-versions)
+		$(call build-npm-packages)
+		$(call publish-npm-packages)
+		$(call make, publish-to-github)
+		$(call create-github-releases)
 		$(call finalize-release)
 
 
@@ -188,9 +189,10 @@ define create-pwa-release-branch
 		@echo "======================================================================"
 		@echo "| Creating release branch out of '$(BRANCH_NAME)' ... "
 		@echo "======================================================================"
+		git checkout "origin/$(BRANCH_NAME)"
 		git fetch --all
 		git pull origin "$(BRANCH_NAME)"
-		git checkout "releases/$(RELEASE_NAME)"
+		git checkout -b "releases/$(RELEASE_NAME)"
 
 endef
 
@@ -209,13 +211,13 @@ endef
 # Changes all the version numbers using lerna
 define update-pwa-versions
 		@echo "======================================================================"
-		@echo "| Updating pwa versions to '$(RELEASE_VERSION))'"
+		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
-		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact;
+		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME))) --force-publish --yes --exact;
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
-			then echo "ERROR: Package version mismatch, please theck your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			then echo "ERROR: Package version mismatch, please check your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
 
@@ -317,12 +319,20 @@ endef
 
 # Push everything to github and create releases including tags
 publish-to-github:
+		# Commit local changes to the repository (should be performed while being on a release branch)
+		git add -A && git commit -m "Released $(RELEASE_VERSION)";
+		# Update remotes and push changes into dedicated release branches
+		git fetch --all;
+		git push origin "releases/$(RELEASE_NAME)";
 ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
 		$(call build-changelog)
 		$(call push-subtrees-to-git, master)
 		git push origin "releases/$(RELEASE_NAME)":master;
-		git checkout develop && git pull && git merge "releases/$(RELEASE_NAME)" && git push origin develop;
+		git checkout develop && git pull;
+		git merge "releases/$(RELEASE_NAME)" --no-commit;
+		-git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
+		git push origin develop;
 else
 		# PRE-RELEASE (alpha, beta, rc)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
@@ -366,9 +376,9 @@ endef
 # CREATE-GITHUB-RELEASEES
 
 define create-github-releases
-		$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),pwa)
-		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-theme-to-repo-name,$(theme))))
-		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-extension-to-repo-name,$(extension))))
+		$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),pwa)
+		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-theme-to-repo-name,$(theme))))
+		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-extension-to-repo-name,$(extension))))
 
 endef
 
