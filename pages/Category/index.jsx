@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { RouteContext } from '@virtuous/react-conductor/Router';
+import { RouteContext } from '@virtuous/react-conductor';
 import View from 'Components/View';
 import colors from 'Styles/colors';
 import CategoryContent from './components/Content';
