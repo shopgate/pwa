@@ -105,8 +105,6 @@ sanity-check:
 
 
 release:
-		$(call setup-release)
-		$(call make, publish-to-github)
 		$(call create-github-releases)
 		$(call finalize-release)
 
