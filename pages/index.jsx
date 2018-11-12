@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
-import Router from '@virtuous/react-conductor/Router';
+import Router from '@virtuous/react-conductor';
 import Route from '@virtuous/react-conductor/Route';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
