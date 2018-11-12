@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { getCurrentQuery, getRouterStack } from '@shopgate/pwa-common/selectors/router';
 import { parseObjectToQueryString } from '../helpers/router';
 import { DEFAULT_SORT } from '../constants/DisplayOptions';

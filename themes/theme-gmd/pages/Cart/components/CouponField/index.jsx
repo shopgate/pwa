@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@virtuous/react-conductor/Router';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import connect from './connector';
 import Layout from './components/Layout';

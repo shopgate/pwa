@@ -1,5 +1,5 @@
 import conductor from '@virtuous/conductor';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import {
   ACTION_POP,
   ACTION_PUSH,

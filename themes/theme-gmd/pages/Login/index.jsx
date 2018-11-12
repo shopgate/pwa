@@ -6,7 +6,7 @@ import { REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import View from 'Components/View';
-import { RouteContext } from '@virtuous/react-conductor/Router';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PAGE_LOGIN_BEFORE,

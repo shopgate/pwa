@@ -1,6 +1,5 @@
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
-import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute, parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 
 /**
  * Updates the sort parameter in the history.

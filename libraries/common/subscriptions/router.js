@@ -5,7 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import { logger } from '@shopgate/pwa-core';
 import { redirects } from '../collections';

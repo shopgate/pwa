@@ -1,4 +1,4 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { RECEIVE_PAGE_CONFIG } from '@shopgate/pwa-common/constants/ActionTypes';
