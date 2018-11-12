@@ -1,8 +1,7 @@
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute, parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 
 /**
  * Opens the filter route with the relevant url.
