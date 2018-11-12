@@ -106,7 +106,8 @@ class Characteristic extends PureComponent {
     const classes = classNames(styles.button, { [styles.buttonDisabled]: disabled });
 
     return (
-      <button
+      <div
+        aria-hidden
         className={classes}
         onClick={this.handleButtonClick}
         ref={charRef}
@@ -115,7 +116,7 @@ class Characteristic extends PureComponent {
       >
         {selected && <div className={styles.label}>{label}</div>}
         <div className={styles.selection}>{buttonLabel}</div>
-      </button>
+      </div>
     );
   }
 
