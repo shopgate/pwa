@@ -1,6 +1,6 @@
 import conductor from '@virtuous/conductor';
 import { ACTION_REPLACE } from '@virtuous/conductor/constants';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { logger } from '@shopgate/pwa-core/helpers';

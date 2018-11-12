@@ -1,4 +1,4 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { ACTION_RESET } from '@virtuous/conductor/constants';
 import * as actions from '../../action-creators/router';
 import { getCurrentRoute as getCurrentRouteSelector } from '../../selectors/router';

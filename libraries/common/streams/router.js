@@ -1,4 +1,3 @@
-import { CONDUCTOR_RESET, CONDUCTOR_UPDATE } from '@virtuous/redux-conductor/constants';
 import { main$ } from './main';
 import {
   NAVIGATE,
@@ -46,19 +45,3 @@ export const routeDidChange$ = routeWillEnter$
   .merge(routeDidEnter$)
   .merge(routeWillLeave$)
   .merge(routeDidLeave$);
-
-/**
-* @type {Observable}
-*/
-export const historyDidUpdate$ = routeDidEnter$.merge(routeDidLeave$);
-
-/**
-* @type {Observable}
-*/
-export const historyDidReset$ = main$
-  .filter(({ action }) => action.type === CONDUCTOR_RESET)
-  .zip(routeDidEnter$)
-  .map(([first]) => first);
-
-export const routeDidUpdate$ = main$
-  .filter(({ action }) => action.type === CONDUCTOR_UPDATE);
