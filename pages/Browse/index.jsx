@@ -1,6 +1,6 @@
 import React from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
-import { RouteContext } from '@virtuous/react-conductor/Router/context';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import View from 'Components/View';
 import Content from './components/Content';
 
