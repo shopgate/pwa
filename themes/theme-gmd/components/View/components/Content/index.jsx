@@ -19,16 +19,12 @@ class ViewContent extends Component {
 
   static propTypes = {
     children: PropTypes.node,
-    isFullscreen: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
-    title: PropTypes.string,
   };
 
   static defaultProps = {
     children: null,
-    isFullscreen: false,
     noScrollOnKeyboard: false,
-    title: appConfig.shopName,
   };
 
   /**
@@ -37,7 +33,7 @@ class ViewContent extends Component {
   constructor(props) {
     super(props);
 
-    this.element = React.createRef();
+    this.ref = React.createRef();
     this.state = {
       keyboardHeight: 0,
     };
@@ -53,14 +49,16 @@ class ViewContent extends Component {
   }
 
   /**
-   * @return {string}
+   * @returns {Object}
    */
-  get contentStyle() {
-    return styles.content(
-      this.props.isFullscreen,
-      this.state.keyboardHeight,
-      (this.props.noScrollOnKeyboard && this.state.keyboardHeight > 0)
-    );
+  get style() {
+    const { noScrollOnKeyboard } = this.props;
+    const { keyboardHeight } = this.state;
+
+    return {
+      overflow: (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto',
+      paddingBottom: keyboardHeight,
+    };
   }
 
   /**
@@ -97,7 +95,7 @@ class ViewContent extends Component {
       },
     });
 
-    this.element.current.dispatchEvent(swipeEvent);
+    this.ref.current.dispatchEvent(swipeEvent);
   };
 
   /**
@@ -107,8 +105,8 @@ class ViewContent extends Component {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
         <ViewProvider>
-          <article className={this.contentStyle} ref={this.element}>
-            <Helmet title={this.props.title} />
+          <article className={styles} ref={this.ref} style={this.style}>
+            <Helmet title={appConfig.shopName} />
             <Above />
             {this.props.children}
             <Below />
@@ -119,16 +117,4 @@ class ViewContent extends Component {
   }
 }
 
-/**
- * @param {Object} props The component props.
- * @return {JSX}
- */
-const ViewContentConsumer = props => (
-  <RouteContext.Consumer>
-    {({ state }) => (
-      <ViewContent {...props} title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName} />
-    )}
-  </RouteContext.Consumer>
-);
-
-export default ViewContentConsumer;
+export default ViewContent;
