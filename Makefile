@@ -110,7 +110,11 @@ release:
 		$(call build-npm-packages)
 		$(call publish-npm-packages)
 		$(call make, publish-to-github)
-		$(call create-github-releases)
+ifeq ("$(STABLE)","true")
+		$(call create-github-releases,master)
+else
+		$(call create-github-releases,releases/$(RELEASE_NAME))
+endif
 		$(call finalize-release)
 
 
@@ -376,9 +380,9 @@ endef
 # CREATE-GITHUB-RELEASEES
 
 define create-github-releases
-		$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),pwa)
-		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-theme-to-repo-name,$(theme))))
-		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-extension-to-repo-name,$(extension))))
+		$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),pwa)
+		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-theme-to-repo-name,$(theme))))
+		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-extension-to-repo-name,$(extension))))
 
 endef
 
