@@ -1,6 +1,6 @@
 import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 
 export const searchFiltersDidUpdate$ = filtersDidUpdate$
   .filter(() => {
