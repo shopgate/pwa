@@ -4,7 +4,7 @@ import {
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
-} from '@virtuous/conductor/constants';
+} from '@virtuous/conductor';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
 import setViewLoading from '../actions/view/setViewLoading';

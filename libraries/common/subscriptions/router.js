@@ -4,7 +4,7 @@ import {
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
-} from '@virtuous/conductor/constants';
+} from '@virtuous/conductor';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import { logger } from '@shopgate/pwa-core';
 import { redirects } from '../collections';

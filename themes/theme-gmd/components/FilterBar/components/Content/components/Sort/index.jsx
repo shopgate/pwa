@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@virtuous/react-conductor/Router/context';
+import { RouteContext } from '@virtuous/react-conductor';
 import { router } from '@virtuous/conductor';
 import {
   SORT_RELEVANCE,

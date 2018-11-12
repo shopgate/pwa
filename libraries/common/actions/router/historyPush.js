@@ -1,4 +1,4 @@
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import { ACTION_PUSH } from '@virtuous/conductor';
 import { navigate } from '../../action-creators/router';
 
 /**

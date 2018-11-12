@@ -30,7 +30,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": ["eslint --quiet --ext .js --ext .jsx ."]
+    "*.{js,jsx}": [
+      "eslint --quiet --ext .js --ext .jsx ."
+    ]
   },
   "devDependencies": {
     "coveralls": "^3.0.1",
