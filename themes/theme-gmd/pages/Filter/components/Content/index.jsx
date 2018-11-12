@@ -102,13 +102,20 @@ class FilterContent extends PureComponent {
     const { value: initialValues } = this.initialFilters[id];
     let stateValue = value;
 
+    if (initialValues.length === 0 && value.length === 0) {
+      this.remove(id);
+      return;
+    }
+
     /**
      * When the filter value is set to be the initial value
      * then we do not consider that a change.
      */
-    if (initialValues.every((initial, i) => initial === value[i])) {
-      this.remove(id);
-      return;
+    if (initialValues.length !== 0 && value.length !== 0) {
+      if (initialValues.every((initial, i) => initial === value[i])) {
+        this.remove(id);
+        return;
+      }
     }
 
     if (Array.isArray(filter.values)) {
