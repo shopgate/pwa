@@ -1,10 +1,8 @@
 import conductor from '@virtuous/conductor';
 import { ACTION_REPLACE } from '@virtuous/conductor/constants';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
-import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import authRoutes from '../../collections/AuthRoutes';
@@ -187,15 +185,12 @@ export const openExternalLink = (location, historyAction) => {
     previewSrc: 'sgapi:page_preview',
     emulateBrowser: true,
     targetTab: 'in_app_browser',
+    animated: false,
     navigationBarParams: {
       type: 'in-app-browser-default',
       popTab: 'in_app_browser',
       animation: 'none',
     },
-  });
-
-  flushTab({
-    targetTab: 'in_app_browser',
   });
 
   handleAppRedirect(historyAction);
@@ -207,8 +202,6 @@ export const openExternalLink = (location, historyAction) => {
  * @param {string} options.location Link url.
  * @param {string} options.targetTab Target tab where the page should be opened.
  * @param {string} options.navigationType Type of the navigation bar that should be displayed.
- * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
- * @param {string} options.flushTab The tab that should be flushed
  * @param {Function} options.backCallback Function that is executed when hitting the back button.
  * @param {string} options.historyAction The history action which was used to open the link.
  */
@@ -234,18 +227,6 @@ export const handleLegacyLink = (options) => {
 
   if (options.targetTab) {
     showTab({
-      targetTab: options.targetTab,
-    });
-  }
-
-  if (options.flushTab) {
-    flushTab({
-      targetTab: options.flushTab,
-    });
-  }
-
-  if (options.popTabToRoot) {
-    popTabToRoot({
       targetTab: options.targetTab,
     });
   }
@@ -298,7 +279,6 @@ export const openLegacyLink = (location, historyAction) => {
     case LEGACY_LINK_CHECKOUT:
       handleLegacyLink({
         targetTab: 'cart',
-        flushTab: 'cart',
         navigationType: 'checkout',
         location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
