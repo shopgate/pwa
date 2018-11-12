@@ -26,6 +26,7 @@ import ParsedLink from '../components/Router/helpers/parsed-link';
 import { appError, pipelineError } from '../action-creators/error';
 import { embeddedMedia } from '../collections';
 import { Vimeo, YouTube } from '../collections/media-providers';
+import clearUpInAppBrowser from './helpers/clearUpInAppBrowser';
 
 /**
  * App subscriptions.
@@ -82,11 +83,14 @@ export default function app(subscribe) {
       closeInAppBrowser(isAndroid(getState()));
     });
 
+    event.addCallback('viewDidAppear', () => {
+      clearUpInAppBrowser(isAndroid(getState()));
+    });
+
     /**
      * The following events are sometimes sent by the app, but don't need to be handled right now.
      * To avoid console warnings from the event system, empty handlers are registered here.
      */
-    event.addCallback('viewDidAppear', () => {});
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
