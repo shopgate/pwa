@@ -25,6 +25,7 @@ export const LEGACY_LINK_CHANNEL = '/channel';
 export const LEGACY_LINK_ORDERS = '/orders_legacy';
 export const LEGACY_LINK_CHECKOUT = '/checkout_legacy';
 export const LEGACY_LINK_REGISTER = '/register_legacy';
+export const LEGACY_LINK_REGISTER_GUEST = '/register_legacy_guest';
 export const LEGACY_LINK_CONNECT_REGISTER = '/connect_register';
 
 const protocols = [PROTOCOL_HTTP, PROTOCOL_HTTPS, PROTOCOL_TEL, PROTOCOL_MAILTO];
@@ -46,6 +47,7 @@ const legacyLinks = [
   LEGACY_LINK_ORDERS,
   LEGACY_LINK_CHECKOUT,
   LEGACY_LINK_REGISTER,
+  LEGACY_LINK_REGISTER_GUEST,
   LEGACY_LINK_CONNECT_REGISTER,
 ];
 
@@ -287,6 +289,13 @@ export const openLegacyLink = (location, historyAction) => {
       handleLegacyLink({
         targetTab: 'main',
         location: '/register/default',
+        historyAction,
+      });
+      break;
+    case LEGACY_LINK_REGISTER_GUEST:
+      handleLegacyLink({
+        targetTab: 'main',
+        location: '/register/guest',
         historyAction,
       });
       break;
