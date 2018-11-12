@@ -1,4 +1,4 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { productIsReady$ } from '../streams/product';

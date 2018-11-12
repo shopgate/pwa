@@ -2,7 +2,7 @@ import {
   searchWillEnter$,
   searchDidEnter$,
 } from '@shopgate/pwa-common-commerce/search/streams';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 import { searchFiltersDidUpdate$ } from './streams';

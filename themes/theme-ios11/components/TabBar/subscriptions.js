@@ -11,7 +11,7 @@ import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/cons
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import {
   enableTabBar,
   disableTabBar,

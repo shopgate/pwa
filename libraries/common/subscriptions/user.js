@@ -1,4 +1,4 @@
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
