@@ -52,21 +52,24 @@ class ToastProvider extends Component {
       return;
     }
 
-    // Check if the toast id already is present.
-    const foundId = this.state.toasts.find(({ id }) => toast.id === id);
-
-    if (foundId) {
-      return;
-    }
-
     const { toasts } = this.state;
 
-    toasts.push({
-      id: toast.id,
-      action: toast.action,
-      actionLabel: toast.actionLabel,
-      message: toast.message,
-    });
+    // Check if the toast id already is present.
+    const found = toasts.find(({ id }) => toast.id === id);
+
+    // If found, update the toast with the new data.
+    if (found) {
+      found.action = toast.action;
+      found.actionLabel = toast.actionLabel;
+      found.message = toast.message;
+    } else {
+      toasts.push({
+        id: toast.id,
+        action: toast.action,
+        actionLabel: toast.actionLabel,
+        message: toast.message,
+      });
+    }
 
     this.setState({ toasts });
   }
