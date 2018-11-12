@@ -4,7 +4,7 @@ import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
-import { RouteContext } from '@virtuous/react-conductor/Router';
+import { RouteContext } from '@virtuous/react-conductor';
 import { router } from '@virtuous/conductor';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import ViewProvider from '../../../../providers/View';

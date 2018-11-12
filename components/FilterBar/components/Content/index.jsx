@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { RouteContext } from '@virtuous/react-conductor/Router';
+import { RouteContext } from '@virtuous/react-conductor';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import Sort from './components/Sort';
 import FilterButton from './components/FilterButton';
