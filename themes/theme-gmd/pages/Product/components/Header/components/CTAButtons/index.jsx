@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import styles from './style';
 import connect from './connector';
 
@@ -20,15 +22,19 @@ const CTAButtons = props => (
       className={styles.favButton}
       rippleClassName={styles.ripple}
     />
-    <AddToCartButton
-      isLoading={props.isLoading}
-      isOrderable={props.isOrderable}
-      isDisabled={props.isDisabled}
-      handleAddToCart={props.handleAddToCart}
-      buttonSize={styles.cartButtonSize}
-      iconSize={styles.iconSize}
-      className={styles.cartButton}
-    />
+    <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART_BEFORE} />
+    <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART}>
+      <AddToCartButton
+        isLoading={props.isLoading}
+        isOrderable={props.isOrderable}
+        isDisabled={props.isDisabled}
+        handleAddToCart={props.handleAddToCart}
+        buttonSize={styles.cartButtonSize}
+        iconSize={styles.iconSize}
+        className={styles.cartButton}
+      />
+    </Portal>
+    <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART_AFTER} />
   </div>
 );
 
