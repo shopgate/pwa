@@ -699,19 +699,23 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-1fd9ptn"
+                                        className="css-pyvjn5"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
+                                          className="css-pyvjn5 css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Brand"
                                           >
                                             <div
-                                              className="css-1dqssvt"
+                                              className={
+                                                Object {
+                                                  "data-css-157sszo": "",
+                                                }
+                                              }
                                             >
                                               Brand
                                             </div>
@@ -795,19 +799,23 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-1fd9ptn"
+                                        className="css-pyvjn5"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
+                                          className="css-pyvjn5 css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Color"
                                           >
                                             <div
-                                              className="css-1dqssvt"
+                                              className={
+                                                Object {
+                                                  "data-css-157sszo": "",
+                                                }
+                                              }
                                             >
                                               Color
                                             </div>
@@ -886,19 +894,23 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-1fd9ptn"
+                                        className="css-pyvjn5"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
+                                          className="css-pyvjn5 css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Length"
                                           >
                                             <div
-                                              className="css-1dqssvt"
+                                              className={
+                                                Object {
+                                                  "data-css-157sszo": "",
+                                                }
+                                              }
                                             >
                                               Length
                                             </div>
@@ -1002,19 +1014,23 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-1fd9ptn"
+                                        className="css-pyvjn5"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
+                                          className="css-pyvjn5 css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Size"
                                           >
                                             <div
-                                              className="css-1dqssvt"
+                                              className={
+                                                Object {
+                                                  "data-css-157sszo": "",
+                                                }
+                                              }
                                             >
                                               Size
                                             </div>
@@ -1098,19 +1114,23 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-1fd9ptn"
+                                        className="css-pyvjn5"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
+                                          className="css-pyvjn5 css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Title"
                                           >
                                             <div
-                                              className="css-1dqssvt"
+                                              className={
+                                                Object {
+                                                  "data-css-157sszo": "",
+                                                }
+                                              }
                                             >
                                               Title
                                             </div>
@@ -1189,19 +1209,23 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-1fd9ptn"
+                                        className="css-pyvjn5"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
+                                          className="css-pyvjn5 css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Width"
                                           >
                                             <div
-                                              className="css-1dqssvt"
+                                              className={
+                                                Object {
+                                                  "data-css-157sszo": "",
+                                                }
+                                              }
                                             >
                                               Width
                                             </div>
@@ -1280,19 +1304,23 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-1fd9ptn"
+                                        className="css-pyvjn5"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
+                                          className="css-pyvjn5 css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Category"
                                           >
                                             <div
-                                              className="css-1dqssvt"
+                                              className={
+                                                Object {
+                                                  "data-css-157sszo": "",
+                                                }
+                                              }
                                             >
                                               Category
                                             </div>

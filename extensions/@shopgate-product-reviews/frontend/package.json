@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/product-reviews",
-  "version": "5.9.0",
+  "version": "5.10.0",
   "description": "Shopgate Connect Product Reviews extension.",
   "license": "Apache-2.0",
   "scripts": {
@@ -9,11 +9,11 @@
     "cover": "jest --coverage"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "5.9.0",
-    "@shopgate/pwa-common": "5.9.0",
-    "@shopgate/pwa-common-commerce": "5.9.0",
-    "@shopgate/pwa-core": "5.9.0",
-    "@shopgate/pwa-unit-test": "5.9.0",
+    "@shopgate/eslint-config": "5.10.0",
+    "@shopgate/pwa-common": "5.10.0",
+    "@shopgate/pwa-common-commerce": "5.10.0",
+    "@shopgate/pwa-core": "5.10.0",
+    "@shopgate/pwa-unit-test": "5.10.0",
     "@shopgate/react-hammerjs": "0.5.3",
     "babel-plugin-react-transform": "^3.0.0",
     "coveralls": "^3.0.0",
@@ -21,7 +21,7 @@
     "prop-types": "^15.6.0",
     "react": "~16.3.2",
     "react-dom": "~16.3.2",
-    "react-hot-loader": "4.0.1",
+    "react-hot-loader": "4.3.12",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0"
   },

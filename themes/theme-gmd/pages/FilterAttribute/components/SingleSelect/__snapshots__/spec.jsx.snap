@@ -111,16 +111,16 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
                               className=" css-h7r55a"
                             >
                               <GridItem
-                                className=""
+                                className="css-rdsogp"
                                 component="li"
                                 grow={1}
                                 shrink={1}
                               >
                                 <li
-                                  className=" css-1gs0ko2"
+                                  className="css-rdsogp css-1gs0ko2"
                                 >
                                   <div
-                                    className="css-1entl9t"
+                                    className="css-7abme3"
                                     data-test-id="Foo"
                                   >
                                     Foo
@@ -137,7 +137,7 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
                                   className=" css-1l9a57c"
                                 >
                                   <div
-                                    className="css-1entl9t"
+                                    className="css-f12yvo"
                                   >
                                     <RadioButton
                                       checked={true}
@@ -281,16 +281,16 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
                               className=" css-h7r55a"
                             >
                               <GridItem
-                                className=""
+                                className="css-rdsogp"
                                 component="li"
                                 grow={1}
                                 shrink={1}
                               >
                                 <li
-                                  className=" css-1gs0ko2"
+                                  className="css-rdsogp css-1gs0ko2"
                                 >
                                   <div
-                                    className="css-1entl9t"
+                                    className="css-7abme3"
                                     data-test-id="Boo"
                                   >
                                     Boo
@@ -307,7 +307,7 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
                                   className=" css-1l9a57c"
                                 >
                                   <div
-                                    className="css-1entl9t"
+                                    className="css-f12yvo"
                                   >
                                     <RadioButton
                                       checked={false}
