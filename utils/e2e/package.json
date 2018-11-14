@@ -4,7 +4,6 @@
   "description": "E2E test setup for the Shopgate Connect PWA.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
-  "optionalDependencies": {
-    "cypress": "^2.1.0"
+  "devDependencies": {
   }
 }
