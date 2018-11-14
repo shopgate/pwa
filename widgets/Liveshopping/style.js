@@ -17,10 +17,9 @@ const pane = {
 };
 
 const discountBadge = css({
-  width: 'auto',
-  fontWeight: 400,
+  fontWeight: 500,
   marginBottom: variables.gap.small,
-  borderRadius: 3,
+  width: 'auto',
 }).toString();
 
 const imagePane = css({
@@ -39,21 +38,14 @@ const priceGrid = css({
   alignItems: 'flex-end',
   justifyContent: 'space-between',
   flexWrap: 'wrap',
-  textAlign: 'right',
   marginTop: variables.gap.small,
 }).toString();
 
-const priceBase = css({
-  padding: '0 15px',
-}).toString();
-
 const priceStriked = css({
-  ...priceBase,
   fontSize: '0.875rem',
 }).toString();
 
 const price = css({
-  ...priceBase,
   color: colors.primary,
   fontSize: '1.25rem',
   lineHeight: 1,
