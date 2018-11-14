@@ -102,7 +102,7 @@ class ImageSlider extends PureComponent {
               },
             }}
           >
-            <div data-test-id={`product: ${product.name}`}>{content}</div>
+            <div data-test-id={`product: ${product ? product.name : ''}`}>{content}</div>
           </Hammer>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />
