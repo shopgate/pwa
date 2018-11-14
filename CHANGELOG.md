@@ -1,5 +1,20 @@
 # Changelog
 
+## [v5.10.0](https://github.com/shopgate/pwa/tree/v5.10.0) (2018-11-12)
+:bug: **Fixed bugs:**
+
+- Correct price formatting on product detail page when price is 0 [\#371](https://github.com/shopgate/pwa/pull/371) ([aaron-martin](https://github.com/aaron-martin))
+- Fixed an inAppBrowser issue where previous opened pages got visible again [\#370](https://github.com/shopgate/pwa/pull/370) ([fkloes](https://github.com/fkloes))
+- Corrected a bug where the filters labels can run out of the viewport [\#368](https://github.com/shopgate/pwa/pull/368) ([richardgorman](https://github.com/richardgorman))
+- Updated `react-hot-loader` to prevent issues with newer `react` version. [\#363](https://github.com/shopgate/pwa/pull/363) ([devbucket](https://github.com/devbucket))
+
+:nail_care: **Others:**
+
+- My account menu header portal [\#359](https://github.com/shopgate/pwa/pull/359) ([alexbridge](https://github.com/alexbridge))
+- Added possibility to open legacy `user\_lost\_password` link [\#355](https://github.com/shopgate/pwa/pull/355) ([philipp-heyse](https://github.com/philipp-heyse))
+- Added automatic changelog generation and handling for stable releases. [\#350](https://github.com/shopgate/pwa/pull/350) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
+- fix linting errors for e2e test suite [\#334](https://github.com/shopgate/pwa/pull/334) ([Iv3x](https://github.com/Iv3x))
+
 ## [v5.9.0](https://github.com/shopgate/pwa/tree/v5.9.0) (2018-10-30)
 :rocket: **Enhancements:**
 
