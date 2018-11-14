@@ -10,7 +10,7 @@ import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
-import { ProgressBar } from '@shopgate/pwa-ui-shared';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
@@ -115,12 +115,12 @@ export default function cart(subscribe) {
 
   subscribe(cartBusy$, ({ dispatch }) => {
     dispatch(setViewLoading(CART_PATH));
-    ProgressBar.show(CART_PATH);
+    LoadingProvider.setLoading(CART_PATH);
   });
 
   subscribe(cartIdle$, ({ dispatch }) => {
     dispatch(unsetViewLoading(CART_PATH));
-    ProgressBar.hide(CART_PATH);
+    LoadingProvider.unsetLoading(CART_PATH);
   });
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {

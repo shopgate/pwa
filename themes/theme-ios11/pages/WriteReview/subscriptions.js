@@ -1,5 +1,6 @@
 import { historyPop } from '@shopgate/pwa-common/actions/router';
-import { ITEM_WRITE_REVIEW_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
 import {
@@ -7,7 +8,6 @@ import {
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
@@ -37,16 +37,18 @@ export default function writeReview(subscribe) {
    * Get triggered when a review submit is requested.
    */
   subscribe(requestReviewSubmit$, ({ dispatch }) => {
-    ProgressBar.show(ITEM_WRITE_REVIEW_PATTERN);
-    dispatch(setViewLoading(ITEM_WRITE_REVIEW_PATTERN));
+    const { pathname } = getCurrentRoute();
+    LoadingProvider.setLoading(pathname);
+    dispatch(setViewLoading(pathname));
   });
 
   /**
    * Get triggered when a review submitted got a response.
    */
   subscribe(responseReviewSubmit$, ({ dispatch }) => {
-    ProgressBar.hide(ITEM_WRITE_REVIEW_PATTERN);
-    dispatch(unsetViewLoading(ITEM_WRITE_REVIEW_PATTERN));
+    const { pathname } = getCurrentRoute();
+    LoadingProvider.unsetLoading(pathname);
+    dispatch(unsetViewLoading(pathname));
   });
 
   /**
