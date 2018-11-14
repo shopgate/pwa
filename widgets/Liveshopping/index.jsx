@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -15,6 +14,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import ProductImage from 'Components/ProductImage';
 import connect from './connector';
+import Countdown from './components/Countdown';
 import styles from './style';
 
 /**
@@ -40,8 +40,7 @@ const getLiveshoppingTimeout = (liveshoppings) => {
     return best;
   }, null);
 
-  // Cut milliseconds from the result to make it a unix compatible timestamp.
-  return Math.floor(result / 1000);
+  return result;
 };
 
 /**
@@ -97,7 +96,7 @@ const createProductSliderItem = ({
                 </Ellipsis>
                 {timeout ?
                   <span className={styles.timer}>
-                    <CountdownTimer timeout={timeout} />
+                    <Countdown to={timeout} />
                   </span>
                   : null
                 }
