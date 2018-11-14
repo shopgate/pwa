@@ -155,7 +155,7 @@ e2e-user:
 		cd themes/theme-gmd && yarn run e2e:user;
 
 e2e-install:
-		npm install cypress@3.1.1;
+		npm i --no-save --no-package-lock cypress@3.1.1;
 
 
 
