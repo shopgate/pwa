@@ -39,7 +39,6 @@ class TextElement extends PureComponent {
 
   static defaultProps = {
     value: '',
-    visible: false,
     style: { field: '' },
   };
 

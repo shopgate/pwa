@@ -1,3 +1,4 @@
+import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { getPageContext } from '../../../../helpers/legacy';
@@ -67,12 +68,18 @@ const legacyLink = (options) => {
         leftButtonCallback: options.backCallback ? options.backCallback : '',
       },
     });
-  }
 
-  if (options.targetTab) {
-    showTab({
-      targetTab: options.targetTab,
-    });
+    if (options.targetTab) {
+      showTab({
+        targetTab: options.targetTab,
+      });
+    }
+
+    if (options.flushTab) {
+      flushTab({
+        targetTab: options.flushTab,
+      });
+    }
   }
 };
 
