@@ -2,6 +2,7 @@ import conductor from '@virtuous/conductor';
 import { ACTION_REPLACE } from '@virtuous/conductor/constants';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import openPage from '@shopgate/pwa-core/commands/openPage';
+import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -223,15 +224,21 @@ export const handleLegacyLink = (options) => {
         leftButtonCallback: options.backCallback ? options.backCallback : '',
       },
     });
-  }
 
-  if (options.targetTab) {
-    showTab({
-      targetTab: options.targetTab,
-    });
-  }
+    if (options.targetTab) {
+      showTab({
+        targetTab: options.targetTab,
+      });
+    }
 
-  handleAppRedirect(options.historyAction);
+    if (options.flushTab) {
+      flushTab({
+        targetTab: options.flushTab,
+      });
+    }
+
+    handleAppRedirect(options.historyAction);
+  }
 };
 
 /**
@@ -279,6 +286,7 @@ export const openLegacyLink = (location, historyAction) => {
     case LEGACY_LINK_CHECKOUT:
       handleLegacyLink({
         targetTab: 'cart',
+        flushTab: 'cart',
         navigationType: 'checkout',
         location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
