@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
 import AppBar from './components/AppBar';
+import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';
 import { TOGGLE_SEARCH } from './constants';
 import connect from './connector';
@@ -119,7 +120,7 @@ class Search extends Component {
     }
 
     return (
-      <div className={styles.view}>
+      <div className={styles}>
         <AppBar
           close={this.close}
           reset={this.reset}
@@ -127,6 +128,7 @@ class Search extends Component {
           onEnter={this.fetchResults}
           fieldRef={this.fieldRef}
         />
+        <Backdrop onClick={this.close} />
         {query.length > SUGGESTIONS_MIN && (
           <Suggestions onClick={this.fetchResults} searchPhrase={query} />
         )}
