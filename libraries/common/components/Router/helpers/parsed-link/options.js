@@ -122,8 +122,8 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
     case 'checkout_legacy':
       this.addLinkAction('legacyLink', {
         targetTab: 'cart',
-        flushTab: 'cart',
         navigationType: 'checkout',
+        flushTab: 'cart',
         url: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
