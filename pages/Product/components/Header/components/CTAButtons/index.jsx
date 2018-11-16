@@ -16,12 +16,16 @@ import connect from './connector';
  */
 const CTAButtons = props => (
   <div className={styles.buttons}>
-    <FavoritesButton
-      active={props.isFavorite}
-      productId={props.productId}
-      className={styles.favButton}
-      rippleClassName={styles.ripple}
-    />
+    <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART_BEFORE} />
+    <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART}>
+      <FavoritesButton
+        active={props.isFavorite}
+        productId={props.productId}
+        className={styles.favButton}
+        rippleClassName={styles.ripple}
+      />
+    </Portal>
+    <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART_AFTER} />
     <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART_BEFORE} />
     <Portal name={portals.PRODUCT_CTAS_ADD_TO_CART}>
       <AddToCartButton
