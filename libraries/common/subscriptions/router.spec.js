@@ -6,10 +6,9 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
-import setViewLoading from '../actions/view/setViewLoading';
-import unsetViewLoading from '../actions/view/unsetViewLoading';
 import { historyRedirect } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
@@ -39,8 +38,6 @@ jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
 jest.mock('../actions/router', () => ({
   historyRedirect: jest.fn(),
 }));
-jest.mock('../actions/view/setViewLoading', () => jest.fn());
-jest.mock('../actions/view/unsetViewLoading', () => jest.fn());
 
 describe('Router subscriptions', () => {
   const subscribe = jest.fn();
@@ -62,6 +59,9 @@ describe('Router subscriptions', () => {
   beforeAll(() => {
     jest.spyOn(logger, 'warn').mockImplementation();
     jest.spyOn(logger, 'error').mockImplementation();
+
+    jest.spyOn(LoadingProvider, 'setLoading');
+    jest.spyOn(LoadingProvider, 'unsetLoading');
 
     // Setup a protected route
     authRoutes.set(protectedRoute, protectorRoute);
@@ -261,9 +261,8 @@ describe('Router subscriptions', () => {
       await callback(createCallbackPayload({ params }));
       expect(conductor.push).toHaveBeenCalledTimes(1);
       expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(setViewLoading).toHaveBeenCalledWith(protectorRoute);
-      expect(unsetViewLoading).toHaveBeenCalledWith(protectorRoute);
+      expect(LoadingProvider.setLoading).toHaveBeenCalledWith(protectorRoute);
+      expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
 
     it('should abort navigation when a redirect handler rejects', async () => {
@@ -283,9 +282,8 @@ describe('Router subscriptions', () => {
       await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
       expect(conductor.push).not.toHaveBeenCalled();
       expect(logger.error).toHaveBeenCalledWith(error);
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(setViewLoading).toHaveBeenCalledWith(protectorRoute);
-      expect(unsetViewLoading).toHaveBeenCalledWith(protectorRoute);
+      expect(LoadingProvider.setLoading).toHaveBeenCalledWith(protectorRoute);
+      expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
 
     it('should convert shop links as expected', async () => {

@@ -1,6 +1,4 @@
 import { connect } from 'react-redux';
-import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
@@ -9,7 +7,7 @@ import { getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isActive: getOrderableStatus(state) && !isViewLoading(state, CART_PATH),
+  isOrderable: getOrderableStatus(state),
 });
 
 export default connect(mapStateToProps);

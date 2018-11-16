@@ -13,8 +13,6 @@ import {
   userDidLogout$,
   legacyConnectRegisterDidFail$,
 } from '../streams';
-import setViewLoading from '../actions/view/setViewLoading';
-import unsetViewLoading from '../actions/view/unsetViewLoading';
 import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
 import { LEGACY_URL_CONNECT_REGISTER } from '../constants/Registration';
@@ -29,14 +27,12 @@ export default function user(subscribe) {
    */
   const userNeedsUpdate$ = appDidStart$.merge(userDidLogin$);
 
-  subscribe(userWillLogin$, ({ dispatch }) => {
+  subscribe(userWillLogin$, () => {
     LoadingProvider.setLoading(LOGIN_PATH);
-    dispatch(setViewLoading(LOGIN_PATH));
   });
 
-  subscribe(userLoginResponse$, ({ dispatch }) => {
+  subscribe(userLoginResponse$, () => {
     LoadingProvider.unsetLoading(LOGIN_PATH);
-    dispatch(unsetViewLoading(LOGIN_PATH));
   });
 
   subscribe(userNeedsUpdate$, ({ dispatch }) => {

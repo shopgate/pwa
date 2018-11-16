@@ -6,8 +6,6 @@ import { redirects } from '@shopgate/pwa-common/collections';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { historyReset } from '@shopgate/pwa-common/actions/router';
-import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
-import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
@@ -113,13 +111,11 @@ export default function cart(subscribe) {
     dispatch(fetchCart());
   });
 
-  subscribe(cartBusy$, ({ dispatch }) => {
-    dispatch(setViewLoading(CART_PATH));
+  subscribe(cartBusy$, () => {
     LoadingProvider.setLoading(CART_PATH);
   });
 
-  subscribe(cartIdle$, ({ dispatch }) => {
-    dispatch(unsetViewLoading(CART_PATH));
+  subscribe(cartIdle$, () => {
     LoadingProvider.unsetLoading(CART_PATH);
   });
 

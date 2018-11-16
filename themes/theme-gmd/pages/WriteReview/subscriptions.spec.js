@@ -2,7 +2,6 @@ import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import requestSubmitReview from '@shopgate/pwa-common-commerce/reviews/action-creators/requestSubmitReview';
-import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import subscriber from './subscriptions';
 import reducers from '../reducers';
 
@@ -25,8 +24,6 @@ describe('WriteReview Subscriptions', () => {
 
   it('should subscribe to when reviews were requested', () => {
     store.dispatch(requestSubmitReview({ productId: 123 }));
-
     expect(LoadingProvider.setLoading).toHaveBeenCalledWith(pathname);
-    expect(setViewLoading).toHaveBeenCalledWith(pathname);
   });
 });

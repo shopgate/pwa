@@ -37,11 +37,22 @@ class LoadingProvider extends Component {
     super(props);
 
     this.state = {
+      lastUpdate: Date.now(),
       loading: new Map(),
     };
 
     UIEvents.addListener(this.constructor.SET, this.setLoading);
     UIEvents.addListener(this.constructor.UNSET, this.unsetLoading);
+  }
+
+  /**
+   * Let the component only update when the state changed.
+   * @param {Object} nextProps The next component props.
+   * @param {Object} nextState The next component state.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.lastUpdate !== nextState.lastUpdate;
   }
 
   /**
@@ -79,7 +90,10 @@ class LoadingProvider extends Component {
       loading.set(path, current + 1);
     }
 
-    this.setState({ loading });
+    this.setState({
+      lastUpdate: Date.now(),
+      loading,
+    });
   }
 
   /**
@@ -97,7 +111,10 @@ class LoadingProvider extends Component {
         loading.delete(path);
       }
 
-      this.setState({ loading });
+      this.setState({
+        lastUpdate: Date.now(),
+        loading,
+      });
     }
   }
 

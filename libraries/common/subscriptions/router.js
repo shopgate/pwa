@@ -15,8 +15,6 @@ import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
-import setViewLoading from '../actions/view/setViewLoading';
-import unsetViewLoading from '../actions/view/unsetViewLoading';
 import authRoutes from '../collections/AuthRoutes';
 
 /**
@@ -89,7 +87,6 @@ export default function router(subscribe) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
         const { pathname } = getCurrentRoute();
         LoadingProvider.setLoading(pathname);
-        dispatch(setViewLoading(pathname));
 
         try {
           redirect = await redirect({
@@ -108,7 +105,6 @@ export default function router(subscribe) {
           logger.error(e);
         }
 
-        dispatch(unsetViewLoading(pathname));
         LoadingProvider.unsetLoading(pathname);
 
         if (!redirect) {
