@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
-import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 
 /**
@@ -9,7 +8,7 @@ import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isLoading: isViewLoading(state, getHistoryPathname(state)),
+  pathname: getHistoryPathname(state),
 });
 
 /**
