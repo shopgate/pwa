@@ -17,20 +17,21 @@ const ProductGridPrice = ({ price }) => (
     <Grid className={styles.priceWrapper} wrap>
       <Grid.Item grow={1}>
         <Price
+          currency={price.currency}
+          discounted={!!price.discount}
+          fromPrice={price.tiers.length !== 0}
           unitPrice={price.unitPrice}
           unitPriceMin={price.unitPriceMin}
-          discounted={!!price.discount}
-          currency={price.currency}
         />
       </Grid.Item>
       {(price.msrp > 0 && price.unitPrice !== price.msrp) && (
-      <Grid.Item>
-        <PriceStriked
-          value={price.msrp}
-          currency={price.currency}
-        />
-      </Grid.Item>
-    )}
+        <Grid.Item>
+          <PriceStriked
+            value={price.msrp}
+            currency={price.currency}
+          />
+        </Grid.Item>
+      )}
       {(!price.msrp && price.unitPriceStriked > 0) && (
       <Grid.Item>
         <PriceStriked
