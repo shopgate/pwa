@@ -123,7 +123,6 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                     currency="EUR"
                     discounted={false}
                     fractions={true}
-                    fromPrice={false}
                     taxDisclaimer={false}
                     unitPrice={100}
                     unitPriceMin={0}
@@ -229,7 +228,6 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                     currency="EUR"
                     discounted={false}
                     fractions={true}
-                    fromPrice={false}
                     taxDisclaimer={false}
                     unitPrice={100}
                     unitPriceMin={0}
@@ -366,7 +364,6 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                     currency="EUR"
                     discounted={false}
                     fractions={true}
-                    fromPrice={false}
                     taxDisclaimer={false}
                     unitPrice={100}
                     unitPriceMin={0}
