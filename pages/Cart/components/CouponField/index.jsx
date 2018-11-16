@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@shopgate/pwa-common/context';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import connect from './connector';
 import Layout from './components/Layout';
@@ -156,7 +158,11 @@ class CouponField extends Component {
 export default connect(props => (
   <RouteContext.Consumer>
     {({ visible }) => (
-      <CouponField {...props} visible={visible} />
+      <LoadingContext.Consumer>
+        {({ isLoading }) => (
+          <CouponField {...props} isLoading={isLoading(CART_PATH)} visible={visible} />
+        )}
+      </LoadingContext.Consumer>
     )}
   </RouteContext.Consumer>
 ));
