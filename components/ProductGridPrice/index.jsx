@@ -19,7 +19,6 @@ const ProductGridPrice = ({ price }) => (
         <Price
           currency={price.currency}
           discounted={!!price.discount}
-          fromPrice={price.tiers.length !== 0}
           unitPrice={price.unitPrice}
           unitPriceMin={price.unitPriceMin}
         />
