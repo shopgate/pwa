@@ -157,6 +157,4 @@ class FavoritesButton extends Component {
   }
 }
 
-export { FavoritesButton as UnwrappedFavoritesButton };
-
 export default connect(FavoritesButton);
