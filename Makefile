@@ -337,9 +337,11 @@ ifeq ("$(STABLE)","true")
 		$(call build-changelog)
 		$(call push-subtrees-to-git, master)
 		git push origin "releases/$(RELEASE_NAME)":master;
+		git status;
 		git checkout develop && git pull;
 		git merge "releases/$(RELEASE_NAME)" --no-commit;
-		-git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
+		git status
+		git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
 		git push origin develop;
 else
 		# PRE-RELEASE (alpha, beta, rc)
