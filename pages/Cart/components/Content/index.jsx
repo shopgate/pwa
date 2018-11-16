@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardList from '@shopgate/pwa-ui-shared/CardList';
 import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import { BackBar } from 'Components/AppBar/presets';
@@ -109,4 +111,10 @@ class CartContent extends Component {
   }
 }
 
-export default connect(CartContent);
+export default connect(props => (
+  <LoadingContext.Consumer>
+    {({ isLoading }) => (
+      <CartContent {...props} isLoading={isLoading(CART_PATH)} />
+    )}
+  </LoadingContext.Consumer>
+));

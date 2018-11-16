@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import connect from './connector';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import styles from './style';
 
 /**
@@ -19,4 +20,10 @@ SubTotalLabel.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
 };
 
-export default connect(SubTotalLabel);
+export default () => (
+  <LoadingContext.Consumer>
+    {({ isLoading }) => (
+      <SubTotalLabel isDisabled={isLoading(CART_PATH)} />
+    )}
+  </LoadingContext.Consumer>
+);
