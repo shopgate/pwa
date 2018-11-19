@@ -1,6 +1,5 @@
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
-import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { getPageContext } from '../../../../helpers/legacy';
 import { isFunction } from '../../../../helpers/validation';
@@ -33,15 +32,12 @@ const externalLink = (url) => {
     previewSrc: 'sgapi:page_preview',
     emulateBrowser: true,
     targetTab: 'in_app_browser',
+    animated: false,
     navigationBarParams: {
       type: 'in-app-browser-default',
       popTab: 'in_app_browser',
       animation: 'none',
     },
-  });
-
-  flushTab({
-    targetTab: 'in_app_browser',
   });
 };
 
@@ -51,8 +47,6 @@ const externalLink = (url) => {
  * @param {string} options.url Link url.
  * @param {string} options.targetTab Target tab where the page should be opened.
  * @param {string} options.navigationType Type of the navigation bar that should be displayed.
- * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
- * @param {string} options.flushTab The tab that should be flushed
  * @param {string} options.backCallback
  *   Javascript callback that is executed when hitting the back button.
  */
@@ -74,24 +68,18 @@ const legacyLink = (options) => {
         leftButtonCallback: options.backCallback ? options.backCallback : '',
       },
     });
-  }
 
-  if (options.targetTab) {
-    showTab({
-      targetTab: options.targetTab,
-    });
-  }
+    if (options.targetTab) {
+      showTab({
+        targetTab: options.targetTab,
+      });
+    }
 
-  if (options.flushTab) {
-    flushTab({
-      targetTab: options.flushTab,
-    });
-  }
-
-  if (options.popTabToRoot) {
-    popTabToRoot({
-      targetTab: options.targetTab,
-    });
+    if (options.flushTab) {
+      flushTab({
+        targetTab: options.flushTab,
+      });
+    }
   }
 };
 

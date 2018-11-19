@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RadioGroup from '../../RadioGroup';
 import RadioItem from '../../RadioGroup/components/Item';
-import { ELEMENT_TYPE_RADIO } from './../elementTypes';
 
 /**
  * React component that takes the element and additional data and renders a radio group
