@@ -207,21 +207,24 @@
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
 
-"@virtuous/conductor-events@1.0.0-beta.44":
-  version "1.0.0-beta.44"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.44.tgz#14690750eb8921f1298807fdcb339da8445fb40b"
+"@virtuous/conductor-events@1.0.0-beta.45":
+  version "1.0.0-beta.45"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.45.tgz#7b1abae988f44394169078ff03414d1e07273ee7"
+  integrity sha512-HsEUJtJm93gT8uxhOhcdnY77AYqiNerclzQIAiJrxHGrTjZmynHwlZMfYvGxLZ88GWAr6sQwucC7+KekqYb/Sw==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.44"
+    "@virtuous/conductor" "1.0.0-beta.45"
 
-"@virtuous/conductor-helpers@1.0.0-beta.44":
-  version "1.0.0-beta.44"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.44.tgz#fa6a2bc6d3c1b5b5300ded874e654dd2890da1d0"
+"@virtuous/conductor-helpers@1.0.0-beta.45":
+  version "1.0.0-beta.45"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.45.tgz#f6f3c5457a6f3967c335b2606a86622bcf04c0d4"
+  integrity sha512-xGuu7j/ZgliOVuWOj3xGmlqQ2Q/hGdPNeK1UaOfoZ9mYTOc80iz4QDG1LO8heo5QIrjwdF+cqyfjvXp1YTED8w==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.44"
+    "@virtuous/conductor" "1.0.0-beta.45"
 
-"@virtuous/conductor@1.0.0-beta.44":
-  version "1.0.0-beta.44"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.44.tgz#e8d8cf49d273bfb1e8928bdaf12e9dd40c7d59fa"
+"@virtuous/conductor@1.0.0-beta.45":
+  version "1.0.0-beta.45"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.45.tgz#6bfe6c8b99e0f73853476f4d1ce901a833ce8096"
+  integrity sha512-rPBa+lBuny15EYzhhpRY4/hw2uaG6sc1g9gKbRD3+PEZN3gocml/I975nJgfZQYZt4fZuCh8oylIIG4VkkU+Mw==
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -232,24 +235,25 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.44":
-  version "1.0.0-beta.44"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.44.tgz#a2a20676e7caf9a8bbfc09578d2fecbd21582415"
+"@virtuous/react-conductor@1.0.0-beta.45":
+  version "1.0.0-beta.45"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.45.tgz#23b8dcab6701adc0d225556bc22b47d43181bcde"
+  integrity sha512-Q5gd55JwXBUwrA3vaAEg+MMrg4S1g7WdeyR0/PD2pQq6JZvIahzmv5rv6DNdGKxRotBsOTfBidwbiEzOSiuz+A==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.44"
-    "@virtuous/conductor-events" "1.0.0-beta.44"
-    "@virtuous/conductor-helpers" "1.0.0-beta.44"
-    gsap "^1.20.4"
+    "@virtuous/conductor" "1.0.0-beta.45"
+    "@virtuous/conductor-events" "1.0.0-beta.45"
+    "@virtuous/conductor-helpers" "1.0.0-beta.45"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.44":
-  version "1.0.0-beta.44"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.44.tgz#41b9f6b0ba571ab1c8706d6113a629ea54d70bad"
+"@virtuous/redux-conductor@1.0.0-beta.45":
+  version "1.0.0-beta.45"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.45.tgz#af524167db79488523b61d35ab7f69494ca8821a"
+  integrity sha512-EevF2zY/BRXcIC4fZPbLOgrKWUt5V4lPB9SIIW5B9vjZp1kEQfb5DPhRj3sd6uVMy98xb4hetja7gygLcoblOQ==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.44"
-    "@virtuous/conductor-events" "1.0.0-beta.44"
-    "@virtuous/conductor-helpers" "1.0.0-beta.44"
+    "@virtuous/conductor" "1.0.0-beta.45"
+    "@virtuous/conductor-events" "1.0.0-beta.45"
+    "@virtuous/conductor-helpers" "1.0.0-beta.45"
     lodash "^4.17.11"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
@@ -3682,7 +3686,7 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
-gsap@^1.20.2, gsap@^1.20.4:
+gsap@^1.20.2:
   version "1.20.6"
   resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.6.tgz#0f6829052e94fbfffa92be3265f24b88729c9d1d"
 
