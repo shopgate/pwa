@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const buttonPadding = `0 ${themeConfig.variables.gap.big}px 0`;
+const buttonPadding = `0 ${themeConfig.variables.gap.xsmall}px 0`;
 
 /**
  * Creates the button style.
