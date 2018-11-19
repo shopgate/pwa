@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { mockedState } from './mock';
 import FormButtons from './index';
 
@@ -17,7 +18,9 @@ beforeEach(() => {
  */
 const createComponent = () => mount((
   <Provider store={mockedStore(mockedState)}>
-    <FormButtons />
+    <LoadingProvider>
+      <FormButtons />
+    </LoadingProvider>
   </Provider>
 ));
 
