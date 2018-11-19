@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ImageWidget /> should render the ImageWidget 1`] = `
-<shouldUpdate(ImageWidget)
+<ImageWidget
   settings={
     Object {
       "alt": "Alt text",
@@ -11,29 +11,18 @@ exports[`<ImageWidget /> should render the ImageWidget 1`] = `
     }
   }
 >
-  <ImageWidget
-    settings={
-      Object {
-        "alt": "Alt text",
-        "id": "81452",
-        "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
-        "link": "/category/3339",
-      }
-    }
+  <Link
+    className="css-63oe3q"
+    data-test-id="link"
+    href="/category/3339"
   >
-    <Link
-      className="css-63oe3q"
-      data-test-id="link"
-      href="/category/3339"
-    >
-      <div />
-    </Link>
-  </ImageWidget>
-</shouldUpdate(ImageWidget)>
+    <div />
+  </Link>
+</ImageWidget>
 `;
 
 exports[`<ImageWidget /> should render the ImageWidget without link 1`] = `
-<shouldUpdate(ImageWidget)
+<ImageWidget
   settings={
     Object {
       "alt": "Alt text",
@@ -43,26 +32,15 @@ exports[`<ImageWidget /> should render the ImageWidget without link 1`] = `
     }
   }
 >
-  <ImageWidget
-    settings={
+  <img
+    alt="Alt text"
+    className={
       Object {
-        "alt": "Alt text",
-        "id": "81452",
-        "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
-        "link": "",
+        "data-css-1rozygh": "",
       }
     }
-  >
-    <img
-      alt="Alt text"
-      className={
-        Object {
-          "data-css-1rozygh": "",
-        }
-      }
-      data-test-id="imageWidget: "
-      src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
-    />
-  </ImageWidget>
-</shouldUpdate(ImageWidget)>
+    data-test-id="imageWidget: "
+    src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
+  />
+</ImageWidget>
 `;

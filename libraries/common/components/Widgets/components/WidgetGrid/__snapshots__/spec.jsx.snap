@@ -35,7 +35,11 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
   }
 >
   <div
-    className="css-qxybbl"
+    className={
+      Object {
+        "data-css-jldvt6": "",
+      }
+    }
   >
     <Widget
       component={[Function]}
