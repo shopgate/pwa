@@ -9,8 +9,8 @@ import { hasProductOptions } from '@shopgate/pwa-common-commerce/product/selecto
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  recalculatePrice: hasProductOptions(state, props),
   price: getProductPrice(state, props),
+  showTotalPrice: hasProductOptions(state, props),
 });
 
 /**
