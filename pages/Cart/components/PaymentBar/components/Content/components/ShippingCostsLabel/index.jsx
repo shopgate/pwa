@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import styles from './style';
 import connect from './connector';
 
@@ -25,4 +27,10 @@ ShippingCostsLabel.defaultProps = {
   shipping: null,
 };
 
-export default connect(ShippingCostsLabel);
+export default connect(props => (
+  <LoadingContext.Consumer>
+    {({ isLoading }) => (
+      <ShippingCostsLabel {...props} isDisabled={isLoading(CART_PATH)} />
+    )}
+  </LoadingContext.Consumer>
+));
