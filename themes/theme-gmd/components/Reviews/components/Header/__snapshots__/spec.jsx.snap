@@ -839,17 +839,17 @@ exports[`<Header /> should render rating summary 1`] = `
           <div
             className={
               Object {
-                "data-css-1anve4d": "",
+                "data-css-1matd7j": "",
               }
             }
           >
             <Translate
-              className="css-1nftllw"
+              className=""
               params={Object {}}
               string="reviews.rating"
             >
               <span
-                className="css-1nftllw"
+                className=""
               >
                 reviews.rating
                 <RatingNumber

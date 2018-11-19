@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const buttonPadding = `0 ${themeConfig.variables.gap.xsmall}px 0`;
+const buttonPadding = `0 ${themeConfig.variables.gap.big}px 0`;
 
 /**
  * Creates the button style.
@@ -27,7 +27,7 @@ const contentWrapper = css({
 }).toString();
 
 /**
- * Creates the button styles object.
+ * Creates the button styles object
  * @param {string} textColor The text color.
  * @param {string|null} fillColor The fill color.
  * @return {Object} The styles object.
@@ -41,7 +41,6 @@ const createButtonStyles = (textColor, fillColor) => {
   };
 
   const contentStyle = {
-    padding: buttonPadding,
     color: buttonStyle.color,
   };
 

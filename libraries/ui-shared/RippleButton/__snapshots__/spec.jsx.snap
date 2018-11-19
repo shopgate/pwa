@@ -34,7 +34,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
         onClick={null}
       >
         <div
-          className="css-1bp2gqc"
+          className="css-1fekhao"
         >
           Press me
         </div>

@@ -285,13 +285,13 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                                   </li>
                                 </GridItem>
                                 <GridItem
-                                  className="css-127o4v1"
+                                  className="css-12vg4hn"
                                   component="li"
                                   grow={1}
                                   shrink={1}
                                 >
                                   <li
-                                    className="css-127o4v1 css-1gs0ko2"
+                                    className="css-12vg4hn css-1gs0ko2"
                                   >
                                     <div
                                       className="css-w6053m"
@@ -702,13 +702,13 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                                   </li>
                                 </GridItem>
                                 <GridItem
-                                  className="css-127o4v1"
+                                  className="css-12vg4hn"
                                   component="li"
                                   grow={1}
                                   shrink={1}
                                 >
                                   <li
-                                    className="css-127o4v1 css-1gs0ko2"
+                                    className="css-12vg4hn css-1gs0ko2"
                                   >
                                     <div
                                       className="css-w6053m"
@@ -1163,13 +1163,13 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                                   </li>
                                 </GridItem>
                                 <GridItem
-                                  className="css-127o4v1"
+                                  className="css-12vg4hn"
                                   component="li"
                                   grow={1}
                                   shrink={1}
                                 >
                                   <li
-                                    className="css-127o4v1 css-1gs0ko2"
+                                    className="css-12vg4hn css-1gs0ko2"
                                   >
                                     <div
                                       className="css-w6053m"
@@ -1572,13 +1572,13 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                                   </li>
                                 </GridItem>
                                 <GridItem
-                                  className="css-127o4v1"
+                                  className="css-12vg4hn"
                                   component="li"
                                   grow={1}
                                   shrink={1}
                                 >
                                   <li
-                                    className="css-127o4v1 css-1gs0ko2"
+                                    className="css-12vg4hn css-1gs0ko2"
                                   >
                                     <div
                                       className="css-w6053m"
@@ -1974,13 +1974,13 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                                   </li>
                                 </GridItem>
                                 <GridItem
-                                  className="css-127o4v1"
+                                  className="css-12vg4hn"
                                   component="li"
                                   grow={1}
                                   shrink={1}
                                 >
                                   <li
-                                    className="css-127o4v1 css-1gs0ko2"
+                                    className="css-12vg4hn css-1gs0ko2"
                                   >
                                     <div
                                       className="css-w6053m"

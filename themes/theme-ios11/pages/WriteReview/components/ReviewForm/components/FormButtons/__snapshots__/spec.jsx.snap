@@ -28,7 +28,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             className="css-1v7qljm"
           >
             <button
-              className="css-kevfw8 css-101c97m"
+              className="css-kevfw8 css-1391awe"
               data-test-id="reviewCancelButton"
               onClick={[Function]}
               type="button"
