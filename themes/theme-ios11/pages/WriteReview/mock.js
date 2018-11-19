@@ -143,9 +143,6 @@ export const mockedStateWithoutReview = {
       lastName: 'Doe',
     },
   },
-  view: {
-    isLoading: {},
-  },
   router: {
     routing: false,
     stack: [
