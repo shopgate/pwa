@@ -790,7 +790,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                   onClick={null}
                                 >
                                   <div
-                                    className="css-1fscwua"
+                                    className="css-1jaanzl"
                                   >
                                     <Connect(Link)
                                       disabled={false}
@@ -863,7 +863,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                   onClick={null}
                                 >
                                   <div
-                                    className="css-1fscwua"
+                                    className="css-1jaanzl"
                                   >
                                     <Connect(Link)
                                       disabled={false}
