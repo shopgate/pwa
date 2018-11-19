@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import SubTotal from './components/Content/components/SubTotal';
 import ShippingCosts from './components/Content/components/ShippingCosts';
@@ -65,17 +66,6 @@ jest.mock('./components/Content/components/SubTotal/connector', () => (obj) => {
   return newObj;
 });
 
-jest.mock('./components/Content/components/SubTotalLabel/connector', () => (obj) => {
-  const newObj = obj;
-
-  newObj.defaultProps = {
-    ...newObj.defaultProps,
-    isDisabled: false,
-  };
-
-  return newObj;
-});
-
 describe('<PaymentBar />', () => {
   const testLocales = {
     'shipping.free_short': 'Free',
@@ -91,7 +81,9 @@ describe('<PaymentBar />', () => {
   const renderComponent = (props = {}) => mount(
     <Provider store={mockedStore()}>
       <I18n.Provider lang={langCode} locales={testLocales}>
-        <PaymentBar {...props} currency="USD" />
+        <LoadingProvider>
+          <PaymentBar {...props} currency="USD" />
+        </LoadingProvider>
       </I18n.Provider>
     </Provider>,
     mockRenderOptions
