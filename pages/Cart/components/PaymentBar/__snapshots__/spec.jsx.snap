@@ -336,7 +336,7 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                                                       onClick={null}
                                                     >
                                                       <Ripple
-                                                        className="css-1fscwua "
+                                                        className=""
                                                         color="#000"
                                                         disabled={false}
                                                         fill={true}
@@ -347,7 +347,7 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                                                       >
                                                         <div
                                                           aria-hidden={true}
-                                                          className="css-1fscwua "
+                                                          className=""
                                                           data-test-id="Ripple"
                                                           onClick={[Function]}
                                                           style={null}
@@ -728,7 +728,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                                                       onClick={null}
                                                     >
                                                       <Ripple
-                                                        className="css-1fscwua "
+                                                        className=""
                                                         color="#000"
                                                         disabled={false}
                                                         fill={true}
@@ -739,7 +739,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                                                       >
                                                         <div
                                                           aria-hidden={true}
-                                                          className="css-1fscwua "
+                                                          className=""
                                                           data-test-id="Ripple"
                                                           onClick={[Function]}
                                                           style={null}
@@ -1162,7 +1162,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                                                       onClick={null}
                                                     >
                                                       <Ripple
-                                                        className="css-1fscwua "
+                                                        className=""
                                                         color="#000"
                                                         disabled={false}
                                                         fill={true}
@@ -1173,7 +1173,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                                                       >
                                                         <div
                                                           aria-hidden={true}
-                                                          className="css-1fscwua "
+                                                          className=""
                                                           data-test-id="Ripple"
                                                           onClick={[Function]}
                                                           style={null}
@@ -1546,7 +1546,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                                                       onClick={null}
                                                     >
                                                       <Ripple
-                                                        className="css-1fscwua "
+                                                        className=""
                                                         color="#000"
                                                         disabled={false}
                                                         fill={true}
@@ -1557,7 +1557,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                                                       >
                                                         <div
                                                           aria-hidden={true}
-                                                          className="css-1fscwua "
+                                                          className=""
                                                           data-test-id="Ripple"
                                                           onClick={[Function]}
                                                           style={null}
@@ -1923,7 +1923,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                                                       onClick={null}
                                                     >
                                                       <Ripple
-                                                        className="css-1fscwua "
+                                                        className=""
                                                         color="#000"
                                                         disabled={false}
                                                         fill={true}
@@ -1934,7 +1934,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                                                       >
                                                         <div
                                                           aria-hidden={true}
-                                                          className="css-1fscwua "
+                                                          className=""
                                                           data-test-id="Ripple"
                                                           onClick={[Function]}
                                                           style={null}
