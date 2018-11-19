@@ -72,7 +72,7 @@ exports[`<CheckoutButton /> Checkout is possible should render without any props
                       onClick={null}
                     >
                       <div
-                        className="css-kwqjom"
+                        className="css-1bp2gqc"
                       >
                         <Translate
                           className=""

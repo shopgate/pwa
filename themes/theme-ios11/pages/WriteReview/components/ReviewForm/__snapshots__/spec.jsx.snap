@@ -789,7 +789,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -839,7 +839,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -850,7 +850,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -1673,7 +1673,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -1723,7 +1723,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -1734,7 +1734,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -2822,7 +2822,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -2872,7 +2872,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -2883,7 +2883,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -3912,7 +3912,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -3962,7 +3962,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -3973,7 +3973,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -5002,7 +5002,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -5052,7 +5052,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -5063,7 +5063,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -6097,7 +6097,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -6147,7 +6147,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -6158,7 +6158,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -7187,7 +7187,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -7237,7 +7237,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -7248,7 +7248,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
@@ -8077,7 +8077,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className="css-1v7qljm"
                   >
                     <button
-                      className="css-kevfw8 css-1vphhlq"
+                      className="css-kevfw8 css-101c97m"
                       data-test-id="reviewCancelButton"
                       onClick={[Function]}
                       type="button"
@@ -8127,7 +8127,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                             onClick={null}
                           >
                             <Ripple
-                              className="css-1fscwua "
+                              className=""
                               color="#000"
                               disabled={false}
                               fill={true}
@@ -8138,7 +8138,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-1fscwua "
+                                className=""
                                 data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
