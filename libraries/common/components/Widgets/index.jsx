@@ -5,7 +5,7 @@ import WidgetGrid from './components/WidgetGrid';
 import shouldShowWidget from './helpers/shouldShowWidget';
 
 const WIDGET_GRID_TYPE = '@shopgate/commerce-widgets/widget-grid';
-const GRID_COLUMNS = 12; // One grid row has 12 columns. // TODO is it deprecated since css grid?
+const GRID_COLUMNS = 12; // One grid row has 12 columns. // TODO: is it deprecated since css grid?
 
 /**
  * Creates a grid wrapper for widget(s).
