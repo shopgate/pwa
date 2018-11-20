@@ -267,7 +267,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           onClick={null}
                         >
                           <div
-                            className="css-kwqjom"
+                            className="css-1fekhao"
                           >
                             <Connect(Link)
                               disabled={true}
@@ -340,7 +340,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           onClick={null}
                         >
                           <div
-                            className="css-kwqjom"
+                            className="css-1fekhao"
                           >
                             <Connect(Link)
                               disabled={true}
@@ -493,7 +493,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           onClick={null}
                         >
                           <div
-                            className="css-1fscwua"
+                            className="css-nil"
                           >
                             <Connect(Link)
                               disabled={false}
@@ -566,7 +566,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           onClick={null}
                         >
                           <div
-                            className="css-1fscwua"
+                            className="css-nil"
                           >
                             <Connect(Link)
                               disabled={false}

@@ -27,7 +27,7 @@ const contentWrapper = css({
 }).toString();
 
 /**
- * Creates the button styles object.
+ * Creates the button styles object
  * @param {string} textColor The text color.
  * @param {string|null} fillColor The fill color.
  * @return {Object} The styles object.
@@ -41,7 +41,6 @@ const createButtonStyles = (textColor, fillColor) => {
   };
 
   const contentStyle = {
-    padding: buttonPadding,
     color: buttonStyle.color,
   };
 

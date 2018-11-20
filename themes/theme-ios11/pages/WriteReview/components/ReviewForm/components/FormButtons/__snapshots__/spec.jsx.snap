@@ -28,7 +28,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             className="css-1v7qljm"
           >
             <button
-              className="css-kevfw8 css-1vphhlq"
+              className="css-kevfw8 css-1391awe"
               data-test-id="reviewCancelButton"
               onClick={[Function]}
               type="button"
@@ -78,7 +78,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                     onClick={null}
                   >
                     <Ripple
-                      className="css-1fscwua "
+                      className=""
                       color="#000"
                       disabled={false}
                       fill={true}
@@ -89,7 +89,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                     >
                       <div
                         aria-hidden={true}
-                        className="css-1fscwua "
+                        className=""
                         data-test-id="Ripple"
                         onClick={[Function]}
                         style={null}

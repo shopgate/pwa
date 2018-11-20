@@ -34,7 +34,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
         onClick={null}
       >
         <div
-          className="css-kwqjom"
+          className="css-1fekhao"
         >
           Press me
         </div>
@@ -78,7 +78,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
         onClick={null}
       >
         <Ripple
-          className="css-1fscwua "
+          className=""
           color="#000"
           disabled={false}
           fill={true}
@@ -89,7 +89,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
         >
           <div
             aria-hidden={true}
-            className="css-1fscwua "
+            className=""
             data-test-id="Ripple"
             onClick={[Function]}
             style={null}
@@ -114,7 +114,7 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
   wrapContent={false}
 >
   <Ripple
-    className="css-1fscwua "
+    className=""
     color="#000"
     disabled={false}
     fill={true}
@@ -162,7 +162,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
         onClick={null}
       >
         <Ripple
-          className="css-1fscwua "
+          className=""
           color="#000"
           disabled={false}
           fill={true}
@@ -173,7 +173,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
         >
           <div
             aria-hidden={true}
-            className="css-1fscwua "
+            className=""
             data-test-id="Ripple"
             onClick={[Function]}
             style={null}
@@ -221,7 +221,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
         onClick={null}
       >
         <Ripple
-          className="css-1fscwua "
+          className=""
           color="#000"
           disabled={false}
           fill={true}
@@ -232,7 +232,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
         >
           <div
             aria-hidden={true}
-            className="css-1fscwua "
+            className=""
             data-test-id="Ripple"
             onClick={[Function]}
             style={null}
