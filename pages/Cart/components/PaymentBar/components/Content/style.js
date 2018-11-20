@@ -22,14 +22,7 @@ const costsColumn = css({
   justifyContent: 'flex-end',
 }).toString();
 
-const buttonColumn = css({
-  ' > :first-child': {
-    flexGrow: 1,
-  },
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-}).toString();
+const buttonColumn = costsColumn;
 
 const checkoutButton = css({
   display: 'flex',
