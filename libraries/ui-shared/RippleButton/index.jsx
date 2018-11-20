@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Ripple from '../Ripple';
 import Button from '../Button';
+import style from '../Button/style';
 
 /**
  * The ripple button component is a special derivation of the basic button component
@@ -52,7 +53,7 @@ class RippleButton extends Component {
     }
 
     const rippleProps = {
-      className: `${this.props.rippleClassName}`,
+      className: `${style.contentWrapper} ${this.props.rippleClassName}`,
       fill: true,
       size: this.props.rippleSize,
     };
