@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import colors from 'Styles/colors';
 import Content from './components/Content';
+import ViewProvider from '../../providers/View';
 import styles from './style';
 
 /**
@@ -16,12 +17,14 @@ const View = ({
   noScrollOnKeyboard,
 }) => (
   <section className={styles} style={{ background }}>
-    <Content
-      hasNavigator={hasNavigator}
-      noScrollOnKeyboard={noScrollOnKeyboard}
-    >
-      {children}
-    </Content>
+    <ViewProvider>
+      <Content
+        hasNavigator={hasNavigator}
+        noScrollOnKeyboard={noScrollOnKeyboard}
+      >
+        {children}
+      </Content>
+    </ViewProvider>
   </section>
 );
 
