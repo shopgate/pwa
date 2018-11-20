@@ -18,7 +18,7 @@ export const productReceived$ = main$
  * Gets triggered when VariantId changes.
  * @type {Observable}
  */
-const setVariantId$ = main$.filter(({ action }) => (
+export const setVariantId$ = main$.filter(({ action }) => (
   action.type === SET_PRODUCT_VARIANT_ID &&
   action.productVariantId !== null
 ));
