@@ -8,7 +8,7 @@ exports[`<Button /> should render as a primary button 1`] = `
   testId="Button"
 >
   <div
-    className="css-nil"
+    className="css-1fscwua"
   >
     Press me
   </div>
@@ -23,7 +23,7 @@ exports[`<Button /> should render as a regular button if type is explicitly defi
   testId="Button"
 >
   <div
-    className="css-1391awe"
+    className="css-1vphhlq"
   >
     Press me
   </div>
@@ -38,7 +38,7 @@ exports[`<Button /> should render as a regular button if type is omitted 1`] = `
   testId="Button"
 >
   <div
-    className="css-nil"
+    className="css-1fscwua"
   >
     Press me
   </div>
@@ -53,7 +53,7 @@ exports[`<Button /> should render as a secondary button 1`] = `
   testId="Button"
 >
   <div
-    className="css-nil"
+    className="css-1fscwua"
   >
     Press me
   </div>

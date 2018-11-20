@@ -66,7 +66,7 @@ module.exports = {
       borderRadius: 2,
       fontWeight: 500,
       fontSize: 17,
-      padding: '8px 16px',
+      padding: '8px 0',
       textTransform: 'uppercase',
     },
     discountBadgeBase: {
