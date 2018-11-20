@@ -24,7 +24,7 @@ const ReviewsExcerpt = ({
   >
     <AverageRating productId={productId} average={average} count={count} />
     <div className={styles.reviewsLine}>
-      <I18n.Text string="reviews.rating">
+      <I18n.Text string="reviews.rating" className={styles.averageRatingText}>
         <RatingNumber rating={average} className={styles.averageRatingNumber} />
       </I18n.Text>
       {appConfig.showWriteReview && (
