@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
@@ -9,10 +8,6 @@ import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/const
 import variables from 'Styles/variables';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
-import {
-  cartItemTransitionDuration as duration,
-  getCartItemTransitionStyle as getTransitionStyle,
-} from '../../../../style';
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
@@ -24,9 +19,9 @@ const messageStyles = {
 };
 
 /**
- * The Cart Product component.
+ * The CartProduct component.
  */
-class Product extends Component {
+class CartProduct extends Component {
   static propTypes = {
     currency: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -47,9 +42,9 @@ class Product extends Component {
 
   static defaultProps = {
     isIos: false,
-    deleteProduct: () => {},
-    onToggleFocus: () => {},
-    updateProduct: () => {},
+    deleteProduct: () => { },
+    onToggleFocus: () => { },
+    updateProduct: () => { },
   };
 
   /**
@@ -61,11 +56,11 @@ class Product extends Component {
 
     this.state = {
       editMode: false,
-      visible: true,
     };
   }
 
   /**
+   * // TODO: change this!
    * Expose props to the descendant components to use them for the portals.
    * @return {Object}
    */
@@ -75,13 +70,6 @@ class Product extends Component {
       type: CART_ITEM_TYPE_PRODUCT,
       product: this.props.product,
     };
-  }
-
-  /**
-   * We need to set the element height explicitly so that we can animate it later.
-   */
-  componentDidMount() {
-    this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement) + 4}px`;
   }
 
   /**
@@ -118,15 +106,6 @@ class Product extends Component {
   };
 
   /**
-   * Sets this product to be invisible via its state.
-   */
-  transitionOut = () => {
-    this.setState({
-      visible: false,
-    });
-  };
-
-  /**
    * Deletes the product from the cart.
    */
   deleteProduct = () => {
@@ -142,46 +121,42 @@ class Product extends Component {
   };
 
   /**
-   * Render Function.
    * @returns {jsx}
    */
   render() {
+    const {
+      currency,
+      messages,
+      product,
+      quantity,
+    } = this.props;
+    const { editMode } = this.state;
+
     return (
-      <Transition in={this.state.visible} timeout={duration} onExited={this.deleteProduct}>
-        {state => (
-          <div
-            ref={(element) => { this.transitionElement = element; }}
-            key={this.props.id}
-            style={getTransitionStyle(state)}
-          >
-            <CardListItem>
-              <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
-                {this.props.messages.length > 0 &&
-                  <MessageBar messages={this.props.messages} classNames={messageStyles} />}
-                <Link
-                  tagName="a"
-                  href={`${ITEM_PATH}/${bin2hex(this.props.product.id)}`}
-                  itemProp="item"
-                  itemScope
-                  itemType="http://schema.org/Product"
-                >
-                  <Layout
-                    handleDelete={this.transitionOut}
-                    handleUpdate={this.updateProduct}
-                    toggleEditMode={this.toggleEditMode}
-                    editMode={this.state.editMode}
-                    product={this.props.product}
-                    currency={this.props.currency}
-                    quantity={this.props.quantity}
-                  />
-                </Link>
-              </div>
-            </CardListItem>
-          </div>
+      <CardListItem>
+        {messages.length > 0 && (
+          <MessageBar messages={messages} classNames={messageStyles} />
         )}
-      </Transition>
+        <Link
+          tagName="a"
+          href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+          itemProp="item"
+          itemScope
+          itemType="http://schema.org/Product"
+        >
+          <Layout
+            handleDelete={this.deleteProduct}
+            handleUpdate={this.updateProduct}
+            toggleEditMode={this.toggleEditMode}
+            editMode={editMode}
+            product={product}
+            currency={currency}
+            quantity={quantity}
+          />
+        </Link>
+      </CardListItem>
     );
   }
 }
 
-export default connect(Product);
+export default connect(CartProduct);
