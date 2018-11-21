@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import colors from 'Styles/colors';
 import Content from './components/Content';
 import ViewProvider from '../../providers/View';
+import { ViewContext } from './context';
 import styles from './style';
 
 /**
@@ -18,12 +19,18 @@ const View = ({
 }) => (
   <section className={styles} style={{ background }}>
     <ViewProvider>
-      <Content
-        hasNavigator={hasNavigator}
-        noScrollOnKeyboard={noScrollOnKeyboard}
-      >
-        {children}
-      </Content>
+      <ViewContext.Consumer>
+        {({ setContentRef }) => (
+          <Content
+            hasNavigator={hasNavigator}
+            noScrollOnKeyboard={noScrollOnKeyboard}
+            setContentRef={setContentRef}
+          >
+            {children}
+          </Content>
+          )}
+      </ViewContext.Consumer>
+
     </ViewProvider>
   </section>
 );
