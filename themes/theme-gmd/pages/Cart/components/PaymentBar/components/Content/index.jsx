@@ -27,7 +27,7 @@ class PaymentBarContent extends PureComponent {
    */
   componentDidMount() {
     // TODO: Change this.
-    this.props.setBottom(this.ref.current.clientHeight || 75);
+    this.props.setBottom(this.ref.current.clientHeight || 100);
   }
 
   /**
