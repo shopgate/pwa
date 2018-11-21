@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from '../../Checkbox';
-import { ELEMENT_TYPE_CHECKBOX } from '../elementTypes';
 
 /**
  * Takes an element and renders it, if the type matches
