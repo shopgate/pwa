@@ -27,7 +27,7 @@ import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
 import { isAndroid } from '../selectors/client';
 import {
-  updateNavigationBarNone,
+  prepareLegacyNavigation,
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
@@ -85,7 +85,7 @@ export default function app(subscribe) {
     // Add event callbacks
     event.addCallback('pageContext', pageContext);
     // Handle native/legacy navigation bar
-    event.addCallback('viewWillAppear', updateNavigationBarNone);
+    event.addCallback('viewWillAppear', prepareLegacyNavigation);
     event.addCallback('showPreviousTab', showPreviousTab);
     /**
      * This event is triggered form the desktop shop in the inAppBrowser.

@@ -42,7 +42,7 @@ export default (state = defaultState, action) => {
         items: state.items.map((item) => {
           const { updateData } = action;
           // Search the stored cart item, which shall be updated
-          const match = updateData.find(update => item.id === update.CartItemId);
+          const match = updateData.find(update => item.id === update.cartItemId);
 
           // Apply the updated quantity to the cart item in the store.
           return {
