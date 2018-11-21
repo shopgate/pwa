@@ -752,21 +752,21 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     data-test-id="userMenu"
                   >
                     <Grid
-                      className="css-5wxciu"
+                      className="css-az18cj"
                       component="ul"
                       wrap={false}
                     >
                       <ul
-                        className="css-5wxciu css-h7r55a"
+                        className="css-az18cj css-h7r55a"
                       >
                         <GridItem
-                          className="css-yj596"
+                          className="css-mzzsxh"
                           component="li"
                           grow={0}
                           shrink={1}
                         >
                           <li
-                            className="css-yj596"
+                            className="css-mzzsxh"
                           >
                             <Button
                               className="css-6f03lb"
@@ -833,13 +833,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           </li>
                         </GridItem>
                         <GridItem
-                          className="css-yj596"
+                          className="css-mzzsxh"
                           component="li"
                           grow={0}
                           shrink={1}
                         >
                           <li
-                            className="css-yj596"
+                            className="css-mzzsxh"
                           >
                             <Button
                               className="css-6f03lb"
