@@ -45,6 +45,7 @@ exports[`<Bar /> should match snapshot 1`] = `
               "_currentRenderer2": null,
               "_currentValue": undefined,
               "_currentValue2": undefined,
+              "_threadCount": 0,
             }
           }
           props={
