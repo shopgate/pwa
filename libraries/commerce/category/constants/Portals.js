@@ -18,6 +18,7 @@ const CATEGORIES = 'categories';
 // POSITIONS
 const BEFORE = 'before';
 const AFTER = 'after';
+const INSIDE = 'inside';
 
 export const CATEGORY_LIST = `${CATEGORY}.${LIST}`;
 export const CATEGORY_LIST_BEFORE = `${CATEGORY}.${LIST}.${BEFORE}`;
@@ -50,7 +51,9 @@ export const PRODUCT_ITEM_NAME = `${PRODUCT}-${ITEM}.${NAME}`;
 export const PRODUCT_ITEM_NAME_AFTER = `${PRODUCT}-${ITEM}.${NAME}.${AFTER}`;
 
 export const PRODUCT_ITEM_PRICE_BEFORE = `${PRODUCT}-${ITEM}.${PRICE}.${BEFORE}`;
+export const PRODUCT_ITEM_PRICE_INSIDE_BEFORE = `${PRODUCT}-${ITEM}-${INSIDE}.${PRICE}.${BEFORE}`;
 export const PRODUCT_ITEM_PRICE = `${PRODUCT}-${ITEM}.${PRICE}`;
+export const PRODUCT_ITEM_PRICE_INSIDE_AFTER = `${PRODUCT}-${ITEM}-${INSIDE}.${PRICE}.${AFTER}`;
 export const PRODUCT_ITEM_PRICE_AFTER = `${PRODUCT}-${ITEM}.${PRICE}.${AFTER}`;
 
 export const PRODUCT_ITEM_MANUFACTURER_BEFORE = `${PRODUCT}-${ITEM}.${MANUFACTURER}.${BEFORE}`;
