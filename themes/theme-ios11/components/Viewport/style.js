@@ -45,6 +45,7 @@ const viewport = css({
 const content = css({
   flexGrow: 1,
   position: 'relative',
+  zIndex: 0,
 });
 
 const header = css({
