@@ -8,28 +8,15 @@ import errorUpdateProductsInCart from '../action-creators/errorUpdateProductsInC
 import { messagesHaveErrors } from '../helpers';
 
 /**
- * Converts the update data into the format, which is currently expected by the pipeline.
- * @param {Array} updateData The original data.
- * @return {Array}
- */
-const convertUpdateData = (updateData = []) => updateData.map(({ cartItemId, quantity }) => ({
-  CartItemId: cartItemId,
-  quantity,
-}));
-
-/**
  * Updates a product in the cart.
  * @param {Array} updateData The data for the updateProductsInCart request.
  * @return {Function} A redux thunk.
  */
 const updateProductsInCart = updateData => (dispatch) => {
-  // TODO: Remove, when pipeline accepts the correct format.
-  const convertedData = convertUpdateData(updateData);
-
-  dispatch(updateProducts(convertedData));
+  dispatch(updateProducts(updateData));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS);
-  request.setInput({ CartItem: convertedData })
+  request.setInput({ cartItem: updateData })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
