@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -19,7 +19,7 @@ import styles from './style';
  */
 function PaymentBarContent() {
   return (
-    <Fragment>
+    <div className={styles.wrapper}>
       <Portal name={CART_PAYMENT_BAR_BEFORE} />
       <Portal name={CART_PAYMENT_BAR}>
         <Grid className={styles.container}>
@@ -44,7 +44,7 @@ function PaymentBarContent() {
         </div>
       </Portal>
       <Portal name={CART_PAYMENT_BAR_AFTER} />
-    </Fragment>
+    </div>
   );
 }
 
