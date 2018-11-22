@@ -82,7 +82,7 @@ class CartProduct extends Component {
       /**
        * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
-       * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       * the keyboard appearance some time ticks away, the execution of the scroll code is delayed.
        *
        * This should not happen on iOS devices, since their webviews behave different.
        */
@@ -98,7 +98,10 @@ class CartProduct extends Component {
       }, CART_INPUT_AUTO_SCROLL_DELAY);
     }
 
-    this.props.onToggleFocus(isEnabled);
+    // Give the keyboard some time to slide out after blur, before further actions are taken.
+    setTimeout(() => {
+      this.props.onToggleFocus(isEnabled);
+    }, isEnabled ? 150 : 0);
 
     this.setState({
       editMode: isEnabled,
@@ -134,26 +137,28 @@ class CartProduct extends Component {
 
     return (
       <CardListItem>
-        {messages.length > 0 && (
-          <MessageBar messages={messages} classNames={messageStyles} />
-        )}
-        <Link
-          tagName="a"
-          href={`${ITEM_PATH}/${bin2hex(product.id)}`}
-          itemProp="item"
-          itemScope
-          itemType="http://schema.org/Product"
-        >
-          <Layout
-            handleDelete={this.deleteProduct}
-            handleUpdate={this.updateProduct}
-            toggleEditMode={this.toggleEditMode}
-            editMode={editMode}
-            product={product}
-            currency={currency}
-            quantity={quantity}
-          />
-        </Link>
+        <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
+          {messages.length > 0 && (
+            <MessageBar messages={messages} classNames={messageStyles} />
+          )}
+          <Link
+            tagName="a"
+            href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+            itemProp="item"
+            itemScope
+            itemType="http://schema.org/Product"
+          >
+            <Layout
+              handleDelete={this.deleteProduct}
+              handleUpdate={this.updateProduct}
+              toggleEditMode={this.toggleEditMode}
+              editMode={editMode}
+              product={product}
+              currency={currency}
+              quantity={quantity}
+            />
+          </Link>
+        </div>
       </CardListItem>
     );
   }
