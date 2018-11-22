@@ -2,6 +2,10 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
+const wrapper = css({
+  paddingBottom: 'var(--safe-area-inset-bottom)',
+}).toString();
+
 const container = css({
   background: colors.light,
   boxShadow: '0 -2px 4px rgba(0, 0, 0, 0.1)',
@@ -43,6 +47,7 @@ const checkoutButtonContainer = css({
 }).toString();
 
 export default {
+  wrapper,
   container,
   column,
   labelColumn,
