@@ -12,7 +12,7 @@ import styles from './style';
  */
 const Layout = props => (
   <div className={styles.wrapper}>
-    <form className={styles.container} onSubmit={props.handleAddCoupon} data-test-id="couponField">
+    <form className={styles.container} onSubmit={props.handleAddCoupon} data-test-id="couponField" action=".">
       <label className={styles.label} htmlFor="coupon-code-field" style={props.labelStyle}>
         <I18n.Text string="cart.redeem_coupon" />
       </label>
@@ -23,6 +23,7 @@ const Layout = props => (
         name="coupon-code-field"
         onFocusChange={props.handleFocusChange}
         onChange={props.handleValueChange}
+        setRef={props.setInputRef}
         value={props.value}
       />
 
@@ -51,6 +52,7 @@ Layout.propTypes = {
   isFocused: PropTypes.bool,
   isLoading: PropTypes.bool,
   labelStyle: PropTypes.shape(),
+  setInputRef: PropTypes.func,
   value: PropTypes.string,
 };
 
@@ -63,6 +65,7 @@ Layout.defaultProps = {
   isFocused: false,
   isLoading: false,
   labelStyle: null,
+  setInputRef: () => {},
   value: '',
 };
 
