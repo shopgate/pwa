@@ -27,9 +27,9 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
-import SnackBar from '@shopgate/pwa-ui-material/SnackBar';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
+import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
