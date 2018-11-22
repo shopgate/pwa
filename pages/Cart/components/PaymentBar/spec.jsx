@@ -73,6 +73,12 @@ describe('<PaymentBar />', () => {
 
   const langCode = 'en-US';
 
+  const portal = global.document.createElement('div');
+  portal.setAttribute('id', 'AppFooter');
+
+  const body = global.document.querySelector('body');
+  body.appendChild(portal);
+
   /**
    * Renders the component.
    * @param {Object} props The component props.
