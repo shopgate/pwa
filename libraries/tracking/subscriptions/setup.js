@@ -1,6 +1,8 @@
 import get from 'lodash/get';
 import event from '@shopgate/pwa-core/classes/Event';
 import logGroup from '@shopgate/pwa-core/helpers/logGroup';
+import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
+import { useBrowserConnector } from '@shopgate/pwa-core/helpers';
 import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
@@ -40,9 +42,11 @@ export default function setup(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, async ({ getState }) => {
+    const clientInformationResponse = !useBrowserConnector() ? await getWebStorageEntry({ name: 'clientInformation' }) : defaultClientInformation;
+
     const clientInformation = {
-      type: get(defaultClientInformation, 'value.device.type', TYPE_PHONE),
-      os: get(defaultClientInformation, 'value.device.os.platform', OS_ALL),
+      type: get(clientInformationResponse, 'value.device.type', TYPE_PHONE),
+      os: get(clientInformationResponse, 'value.device.os.platform', OS_ALL),
       state: getState(),
     };
 
