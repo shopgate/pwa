@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Transition from 'react-transition-group/Transition';
+import { Spring } from 'react-spring';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
-import transition from './transition';
 
 const defaultToast = {};
 
@@ -22,31 +21,36 @@ class SnackBar extends Component {
   }
 
   state = {
+    render: false,
     snacks: [],
     visible: false,
   }
 
   /**
-   * Assign the incoming toasts to the internal state.
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    const visible = !!nextProps.toasts.length;
+    const hasToast = !!nextProps.toasts.length;
 
     this.setState({
+      render: hasToast,
       snacks: nextProps.toasts,
-      visible,
+      visible: hasToast,
     });
   }
 
   /**
-   * Only re-render when the visibility of the component should change.
    * @param {Object} nextProps The next component props.
    * @param {Object} nextState The next component state.
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.visible !== nextState.visible;
+    const { render, visible } = this.state;
+
+    return (
+      render !== nextState.render ||
+      visible !== nextState.visible
+    );
   }
 
   /**
@@ -69,6 +73,16 @@ class SnackBar extends Component {
     this.timer = setTimeout(this.hide, 2500);
   }
 
+  handleRest = () => {
+    if (this.state.visible) {
+      this.handleEntered();
+      return;
+    }
+
+    this.props.removeToast();
+    this.setState({ render: false });
+  }
+
   hide = () => {
     this.setState({ visible: false });
   }
@@ -81,17 +95,25 @@ class SnackBar extends Component {
    * @returns {JSX}
    */
   render() {
+    const { render, visible } = this.state;
+
+    if (!render) {
+      return null;
+    }
+
     const { action = null, actionLabel = null, message = null } = this.snack;
 
     return (
-      <Transition
-        in={this.state.visible}
-        onEntered={this.handleEntered}
-        onExited={this.props.removeToast}
-        timeout={250}
+      <Spring
+        from={{ y: 150 }}
+        to={{ y: 0 }}
+        config={{ tension: 200, friction: 18 }}
+        reverse={!visible}
+        force
+        onRest={this.handleRest}
       >
-        {state => (
-          <div className={styles.wrapper} style={transition[state]}>
+        {props => (
+          <div className={styles.wrapper} style={{ transform: `translateY(${props.y}px)` }}>
             <div className={styles.box}>
               <Ellipsis rows={2}>
                 <I18n.Text className={styles.label} string={message || ''} />
@@ -104,8 +126,32 @@ class SnackBar extends Component {
             </div>
           </div>
         )}
-      </Transition>
+      </Spring>
     );
+
+    // return (
+    //   <Transition
+    //     in={this.state.visible}
+    //     onEntered={this.handleEntered}
+    //     onExited={this.props.removeToast}
+    //     timeout={250}
+    //   >
+    //     {state => (
+    //       <div className={styles.wrapper} style={transition[state]}>
+    //         <div className={styles.box}>
+    //           <Ellipsis rows={2}>
+    //             <I18n.Text className={styles.label} string={message || ''} />
+    //           </Ellipsis>
+    //           {(action && actionLabel) && (
+    //             <button className={styles.button} onClick={this.handleAction}>
+    //               <I18n.Text string={actionLabel} />
+    //             </button>
+    //           )}
+    //         </div>
+    //       </div>
+    //     )}
+    //   </Transition>
+    // );
   }
 }
 
