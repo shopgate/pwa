@@ -21,16 +21,15 @@ class SnackBar extends Component {
   }
 
   state = {
-    render: false,
     snacks: [],
-    visible: false,
+    visible: true,
   }
 
   /**
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    const hasToast = !!nextProps.toasts.length;
+    const hasToast = nextProps.toasts.length > 0;
 
     this.setState({
       render: hasToast,
@@ -80,7 +79,6 @@ class SnackBar extends Component {
     }
 
     this.props.removeToast();
-    this.setState({ render: false });
   }
 
   hide = () => {
@@ -95,25 +93,20 @@ class SnackBar extends Component {
    * @returns {JSX}
    */
   render() {
-    const { render, visible } = this.state;
-
-    if (!render) {
-      return null;
-    }
-
+    const { visible } = this.state;
     const { action = null, actionLabel = null, message = null } = this.snack;
 
     return (
       <Spring
-        from={{ y: 150 }}
-        to={{ y: 0 }}
+        from={{ y: 0 }}
+        to={{ y: -100 }}
         config={{ tension: 200, friction: 18 }}
         reverse={!visible}
         force
         onRest={this.handleRest}
       >
         {props => (
-          <div className={styles.wrapper} style={{ transform: `translateY(${props.y}px)` }}>
+          <div className={styles.wrapper} style={{ transform: `translateY(${props.y}%)` }}>
             <div className={styles.box}>
               <Ellipsis rows={2}>
                 <I18n.Text className={styles.label} string={message || ''} />
@@ -128,30 +121,6 @@ class SnackBar extends Component {
         )}
       </Spring>
     );
-
-    // return (
-    //   <Transition
-    //     in={this.state.visible}
-    //     onEntered={this.handleEntered}
-    //     onExited={this.props.removeToast}
-    //     timeout={250}
-    //   >
-    //     {state => (
-    //       <div className={styles.wrapper} style={transition[state]}>
-    //         <div className={styles.box}>
-    //           <Ellipsis rows={2}>
-    //             <I18n.Text className={styles.label} string={message || ''} />
-    //           </Ellipsis>
-    //           {(action && actionLabel) && (
-    //             <button className={styles.button} onClick={this.handleAction}>
-    //               <I18n.Text string={actionLabel} />
-    //             </button>
-    //           )}
-    //         </div>
-    //       </div>
-    //     )}
-    //   </Transition>
-    // );
   }
 }
 
