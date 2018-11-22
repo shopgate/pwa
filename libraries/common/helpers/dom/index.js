@@ -23,23 +23,6 @@ export const isDescendant = (parent, child) => {
 export const getOffset = element => element.getBoundingClientRect();
 
 /**
- * Recursively traverse up the DOM tree to find the next available scroll container.
- * @param {HTMLElement} element The DOM element.
- * @returns {HTMLElement|null} A parent scroll container or null.
- */
-export const getScrollParent = (element) => {
-  if (element === null) {
-    return null;
-  }
-
-  if (element.scrollHeight > element.clientHeight) {
-    return element;
-  }
-
-  return getScrollParent(element.parentNode);
-};
-
-/**
  * Calculate the height of an element including it's y-axis margins.
  * @param {HTMLElement} element The DOM element.
  * @returns {number} The absolute height of the element.
