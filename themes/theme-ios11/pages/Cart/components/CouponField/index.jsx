@@ -64,6 +64,14 @@ class CouponField extends Component {
   }
 
   /**
+   * Sets a reference to the coupon input element.
+   * @param {HTMLElement} input The element.
+   */
+  setInputRef = (input) => {
+    this.inputElement = input;
+  }
+
+  /**
    * Adds a coupon to the cart.
    * @param {Object} event The click event object.
    */
@@ -102,7 +110,7 @@ class CouponField extends Component {
       /**
        * When the user focuses the coupon input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
-       * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       * the keyboard appearance some time ticks away, the execution of the scroll code is delayed.
        *
        * This should not happen on iOS devices, since their webviews behave different.
        */
@@ -116,8 +124,16 @@ class CouponField extends Component {
       }, CART_INPUT_AUTO_SCROLL_DELAY);
     }
 
+    if (!isFocused) {
+      this.inputElement.blur();
+    }
+
     this.setState({ isFocused });
-    this.props.onFocus(isFocused);
+
+    // Give the keyboard some time to slide out after blur, before further actions are taken.
+    setTimeout(() => {
+      this.props.onFocus(isFocused);
+    }, isFocused ? 0 : 150);
   };
 
   reset = () => {
@@ -149,6 +165,7 @@ class CouponField extends Component {
           labelStyle={labelStyle}
           iconStyle={iconStyle}
           value={this.state.value}
+          setInputRef={this.setInputRef}
         />
       </div>
     );
