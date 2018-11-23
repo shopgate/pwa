@@ -20,9 +20,15 @@ class SnackBar extends Component {
     toasts: null,
   }
 
-  state = {
-    snacks: [],
-    visible: true,
+  /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: true,
+    };
   }
 
   /**
@@ -31,11 +37,7 @@ class SnackBar extends Component {
   componentWillReceiveProps(nextProps) {
     const hasToast = nextProps.toasts.length > 0;
 
-    this.setState({
-      render: hasToast,
-      snacks: nextProps.toasts,
-      visible: hasToast,
-    });
+    this.setState({ visible: hasToast });
   }
 
   /**
@@ -44,12 +46,7 @@ class SnackBar extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    const { render, visible } = this.state;
-
-    return (
-      render !== nextState.render ||
-      visible !== nextState.visible
-    );
+    return this.state.visible !== nextState.visible;
   }
 
   /**
@@ -57,14 +54,14 @@ class SnackBar extends Component {
    * @returns {Object}
    */
   get snack() {
-    return this.state.snacks.length ? this.state.snacks[0] : defaultToast;
+    return this.props.toasts.length ? this.props.toasts[0] : defaultToast;
   }
 
   timer = null;
 
   handleAction = () => {
     clearTimeout(this.timer);
-    this.state.snacks[0].action();
+    this.props.toasts[0].action();
     this.hide();
   }
 
@@ -83,10 +80,6 @@ class SnackBar extends Component {
 
   hide = () => {
     this.setState({ visible: false });
-  }
-
-  show = () => {
-    this.setState({ visible: true });
   }
 
   /**
