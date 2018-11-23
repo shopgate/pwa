@@ -19,6 +19,7 @@ export const defaultClientInformation = {
   libVersion: '17.0',
   appVersion: '5.18.0',
   codebaseVersion: '5.18.0',
+  type: (!md.tablet() ? 'phone' : 'tablet'),
   device: {
     type: (!md.tablet() ? 'phone' : 'tablet'),
     os: {
