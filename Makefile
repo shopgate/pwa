@@ -154,6 +154,10 @@ e2e-checkout:
 e2e-user:
 		cd themes/theme-gmd && yarn run e2e:user;
 
+e2e-install:
+		npm i --no-save --no-package-lock cypress@3.1.1;
+
+
 
 
 ####################################################################################################
@@ -328,19 +332,10 @@ publish-to-github:
 		# Update remotes and push changes into dedicated release branches
 		git fetch --all;
 		git push origin "releases/$(RELEASE_NAME)";
-ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
 		$(call build-changelog)
-		$(call push-subtrees-to-git, master)
-		git push origin "releases/$(RELEASE_NAME)":master;
-		git checkout develop && git pull;
-		git merge "releases/$(RELEASE_NAME)" --no-commit;
-		-git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
-		git push origin develop;
-else
 		# PRE-RELEASE (alpha, beta, rc)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
-endif
 
 define build-changelog
 		@echo "======================================================================"
