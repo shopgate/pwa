@@ -42,7 +42,7 @@ export default function setup(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, async ({ getState }) => {
-    const clientInformationResponse = !useBrowserConnector() ? await getWebStorageEntry({ name: 'clientInformation' }) : defaultClientInformation;
+    const clientInformationResponse = !useBrowserConnector() ? await getWebStorageEntry({ name: 'clientInformation' }) : { value: defaultClientInformation};
 
     const clientInformation = {
       type: get(clientInformationResponse, 'value.device.type', TYPE_PHONE),
