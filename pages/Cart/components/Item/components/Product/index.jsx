@@ -101,7 +101,7 @@ class CartProduct extends Component {
     // Give the keyboard some time to slide out after blur, before further actions are taken.
     setTimeout(() => {
       this.props.onToggleFocus(isEnabled);
-    }, isEnabled ? 150 : 0);
+    }, isEnabled ? 300 : 0);
 
     this.setState({
       editMode: isEnabled,

@@ -133,7 +133,7 @@ class CouponField extends Component {
     // Give the keyboard some time to slide out after blur, before further actions are taken.
     setTimeout(() => {
       this.props.onFocus(isFocused);
-    }, isFocused ? 0 : 150);
+    }, isFocused ? 0 : 300);
   };
 
   reset = () => {
