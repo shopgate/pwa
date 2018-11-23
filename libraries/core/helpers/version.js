@@ -21,6 +21,7 @@ export const defaultClientInformation = {
   codebaseVersion: '5.18.0',
   type: (!md.tablet() ? 'phone' : 'tablet'),
   device: {
+    type: (!md.tablet() ? 'phone' : 'tablet'),
     os: {
       platform: isAndroid ? PLATFORM_ANDROID : PLATFORM_IOS,
       ver: detector.os.fullVersion,
