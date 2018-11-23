@@ -1,5 +1,19 @@
 # Changelog
 
+## [v5.10.2](https://github.com/shopgate/pwa/tree/v5.10.2) (2018-11-23)
+## [v5.9.1](https://github.com/shopgate/pwa/tree/v5.9.1) (2018-11-23)
+:rocket: **Enhancements:**
+
+- Added portals and location prop for product-item.price [\#381](https://github.com/shopgate/pwa/pull/381) ([DannyShopgate](https://github.com/DannyShopgate))
+
+:bug: **Fixed bugs:**
+
+- Improve concurrent cart actions, when adding a coupon from deeplink [\#404](https://github.com/shopgate/pwa/pull/404) ([alexbridge](https://github.com/alexbridge))
+
+:nail_care: **Others:**
+
+- Added new portals and exported selectors [\#400](https://github.com/shopgate/pwa/pull/400) ([Carsten89](https://github.com/Carsten89))
+
 ## [v5.10.1](https://github.com/shopgate/pwa/tree/v5.10.1) (2018-11-16)
 :bug: **Fixed bugs:**
 
