@@ -207,21 +207,24 @@
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
 
-"@virtuous/conductor-events@1.0.0-beta.45":
-  version "1.0.0-beta.45"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.45.tgz#7b1abae988f44394169078ff03414d1e07273ee7"
+"@virtuous/conductor-events@1.0.0-beta.46":
+  version "1.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.46.tgz#491b4be5f274fb471611efe5c72611db367bbc63"
+  integrity sha512-zEIzsAibP7aGyFdmLxYxDZ+QkPrjPhURREFplbSW3Bl21OGqfhy9DefO7tXbU7n6JE3h1mXfpjIcmE9opj6HKQ==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.45"
+    "@virtuous/conductor" "1.0.0-beta.46"
 
-"@virtuous/conductor-helpers@1.0.0-beta.45":
-  version "1.0.0-beta.45"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.45.tgz#f6f3c5457a6f3967c335b2606a86622bcf04c0d4"
+"@virtuous/conductor-helpers@1.0.0-beta.46":
+  version "1.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.46.tgz#e013579cb513cabe7b590080bcc6b35ea7f52789"
+  integrity sha512-qNAhQ4PC32y4UB61L/PJE6y/IyN596joedWNK26ROTM3euEERseCo/MXQT67AXH6xs3Aop9p24oMGGn2QOAkSg==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.45"
+    "@virtuous/conductor" "1.0.0-beta.46"
 
-"@virtuous/conductor@1.0.0-beta.45":
-  version "1.0.0-beta.45"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.45.tgz#6bfe6c8b99e0f73853476f4d1ce901a833ce8096"
+"@virtuous/conductor@1.0.0-beta.46":
+  version "1.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.46.tgz#8841a7b571f6030bdae654ffea4452079559f8cd"
+  integrity sha512-WgQ+UfgCl4K9sqz06X1Q0uBxrUJ2Ho9OxRj0UkWiI/G3FdHPRMUSXZzaymHdevlItII+OHkSTZLj0pHM4/vixw==
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -232,23 +235,24 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.45":
-  version "1.0.0-beta.45"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.45.tgz#23b8dcab6701adc0d225556bc22b47d43181bcde"
+"@virtuous/react-conductor@1.0.0-beta.46":
+  version "1.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.46.tgz#18f264efbb2e178315fd4dfc00376e1651888b48"
+  integrity sha512-3ZHgEGRW5sQJ/1DQL7R0JXVFyL81pH2CbAwSb1GX1vJS7P4hVvRyWhqaw/2Wyt2AUDDD4QoyU68iJ/3beexqYQ==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.45"
-    "@virtuous/conductor-events" "1.0.0-beta.45"
-    "@virtuous/conductor-helpers" "1.0.0-beta.45"
-    react-transition-group "^2.2.1"
+    "@virtuous/conductor" "1.0.0-beta.46"
+    "@virtuous/conductor-events" "1.0.0-beta.46"
+    "@virtuous/conductor-helpers" "1.0.0-beta.46"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.45":
-  version "1.0.0-beta.45"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.45.tgz#af524167db79488523b61d35ab7f69494ca8821a"
+"@virtuous/redux-conductor@1.0.0-beta.46":
+  version "1.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.46.tgz#397310907c7fc4f34c3924d37b555eecada077b2"
+  integrity sha512-VcNS9ZD2ISQFSUocmkS6FV/TXW8i1GBtWKf86bl2nit2km9N8M3ZgyBBgZAwuULwtTlO6ifs3rO0yhpN6L8HWg==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.45"
-    "@virtuous/conductor-events" "1.0.0-beta.45"
-    "@virtuous/conductor-helpers" "1.0.0-beta.45"
+    "@virtuous/conductor" "1.0.0-beta.46"
+    "@virtuous/conductor-events" "1.0.0-beta.46"
+    "@virtuous/conductor-helpers" "1.0.0-beta.46"
     lodash "^4.17.11"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
