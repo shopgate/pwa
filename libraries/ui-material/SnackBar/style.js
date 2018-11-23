@@ -2,15 +2,13 @@ import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const wrapper = css({
-  bottom: 0,
+  top: 0,
   display: 'flex',
   justifyContent: 'center',
   left: 0,
   position: 'absolute',
-  transition: 'transform .25s cubic-bezier(0, 0, .2, 1)',
   width: '100%',
-  willChange: 'transform',
-  zIndex: 10,
+  zIndex: 1,
 });
 
 const box = css({

@@ -20,23 +20,24 @@ class SnackBar extends Component {
     toasts: null,
   }
 
-  state = {
-    render: false,
-    snacks: [],
-    visible: false,
+  /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: true,
+    };
   }
 
   /**
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    const hasToast = !!nextProps.toasts.length;
+    const hasToast = nextProps.toasts.length > 0;
 
-    this.setState({
-      render: hasToast,
-      snacks: nextProps.toasts,
-      visible: hasToast,
-    });
+    this.setState({ visible: hasToast });
   }
 
   /**
@@ -45,12 +46,7 @@ class SnackBar extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    const { render, visible } = this.state;
-
-    return (
-      render !== nextState.render ||
-      visible !== nextState.visible
-    );
+    return this.state.visible !== nextState.visible;
   }
 
   /**
@@ -58,14 +54,14 @@ class SnackBar extends Component {
    * @returns {Object}
    */
   get snack() {
-    return this.state.snacks.length ? this.state.snacks[0] : defaultToast;
+    return this.props.toasts.length ? this.props.toasts[0] : defaultToast;
   }
 
   timer = null;
 
   handleAction = () => {
     clearTimeout(this.timer);
-    this.state.snacks[0].action();
+    this.props.toasts[0].action();
     this.hide();
   }
 
@@ -80,40 +76,30 @@ class SnackBar extends Component {
     }
 
     this.props.removeToast();
-    this.setState({ render: false });
   }
 
   hide = () => {
     this.setState({ visible: false });
   }
 
-  show = () => {
-    this.setState({ visible: true });
-  }
-
   /**
    * @returns {JSX}
    */
   render() {
-    const { render, visible } = this.state;
-
-    if (!render) {
-      return null;
-    }
-
+    const { visible } = this.state;
     const { action = null, actionLabel = null, message = null } = this.snack;
 
     return (
       <Spring
-        from={{ y: 150 }}
-        to={{ y: 0 }}
+        from={{ y: 0 }}
+        to={{ y: -100 }}
         config={{ tension: 200, friction: 18 }}
         reverse={!visible}
         force
         onRest={this.handleRest}
       >
         {props => (
-          <div className={styles.wrapper} style={{ transform: `translateY(${props.y}px)` }}>
+          <div className={styles.wrapper} style={{ transform: `translateY(${props.y}%)` }}>
             <div className={styles.box}>
               <Ellipsis rows={2}>
                 <I18n.Text className={styles.label} string={message || ''} />
@@ -128,30 +114,6 @@ class SnackBar extends Component {
         )}
       </Spring>
     );
-
-    // return (
-    //   <Transition
-    //     in={this.state.visible}
-    //     onEntered={this.handleEntered}
-    //     onExited={this.props.removeToast}
-    //     timeout={250}
-    //   >
-    //     {state => (
-    //       <div className={styles.wrapper} style={transition[state]}>
-    //         <div className={styles.box}>
-    //           <Ellipsis rows={2}>
-    //             <I18n.Text className={styles.label} string={message || ''} />
-    //           </Ellipsis>
-    //           {(action && actionLabel) && (
-    //             <button className={styles.button} onClick={this.handleAction}>
-    //               <I18n.Text string={actionLabel} />
-    //             </button>
-    //           )}
-    //         </div>
-    //       </div>
-    //     )}
-    //   </Transition>
-    // );
   }
 }
 
