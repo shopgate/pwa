@@ -42,9 +42,6 @@ class ImageSlider extends PureComponent {
   currentSlide = 0;
 
   handleOpenGallery = () => {
-    // The product gallery is deactivated for now - see PWA-1300
-    return;
-    /* eslint-disable no-unreachable, no-useless-return */
     const { images } = this.props;
 
     if (!images || !images.length) {
@@ -52,7 +49,6 @@ class ImageSlider extends PureComponent {
     }
 
     this.props.navigate(this.currentSlide);
-    /* eslint-enable no-unreachable, no-useless-return */
   };
 
   handleSlideChange = (currentSlide) => {
@@ -82,7 +78,6 @@ class ImageSlider extends PureComponent {
           loop
           indicators
           onSlideChange={this.handleSlideChange}
-          rebuildOnUpdate
         >
           {images.map(image => (
             <ProductImage key={image} src={image} animating={false} resolutions={resolutions} />

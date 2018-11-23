@@ -1,16 +1,13 @@
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const barHeight = 46;
 
 const container = css({
-  background: 'rgba(255, 255, 255, 0.9)',
-  backdropFilter: 'blur(20px)',
+  background: colors.light,
   boxShadow: '0 0 30px rgba(0, 0, 0, 0.1)',
   paddingBottom: 'var(--safe-area-inset-bottom)',
-  position: 'fixed',
-  bottom: 0,
-  width: '100%',
 });
 
 const innerContainer = css({
