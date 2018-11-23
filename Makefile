@@ -110,7 +110,11 @@ release:
 		$(call build-npm-packages)
 		$(call publish-npm-packages)
 		$(call make, publish-to-github)
-		$(call create-github-releases)
+ifeq ("$(STABLE)","true")
+		$(call create-github-releases,master)
+else
+		$(call create-github-releases,releases/$(RELEASE_NAME))
+endif
 		$(call finalize-release)
 
 
@@ -133,6 +137,11 @@ clean-git:
 
 
 
+fix-remote:
+		git merge -s ours --no-commit --allow-unrelated-histories $(REMOTE)/master
+
+
+
 e2e-gmd:
 		cd themes/theme-gmd && yarn run e2e;
 
@@ -144,6 +153,10 @@ e2e-checkout:
 
 e2e-user:
 		cd themes/theme-gmd && yarn run e2e:user;
+
+e2e-install:
+		npm i --no-save --no-package-lock cypress@3.1.1;
+
 
 
 
@@ -206,13 +219,13 @@ endef
 # Changes all the version numbers using lerna
 define update-pwa-versions
 		@echo "======================================================================"
-		@echo "| Updating pwa versions to '$(RELEASE_VERSION))'"
+		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
-		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact;
+		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME))) --force-publish --yes --exact;
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
-			then echo "ERROR: Package version mismatch, please theck your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			then echo "ERROR: Package version mismatch, please check your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
 
@@ -319,29 +332,28 @@ publish-to-github:
 		# Update remotes and push changes into dedicated release branches
 		git fetch --all;
 		git push origin "releases/$(RELEASE_NAME)";
-ifeq ("$(STABLE)","true")
-		# TODO: UNCOMMENT THIS
-		#(call build-changelog) ## TODO: wrong place to call the build-changelog
 		# STABLE RELEASE
-		#(call push-subtrees-to-git, master)
-		# git push origin "master";
-		# git checkout origin develop;
-		# git pull;
-		# git merge "releases/$(RELEASE_NAME)";
-		# git push origin develop;
-else
+		$(call build-changelog)
 		# PRE-RELEASE (alpha, beta, rc)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
-endif
 
 define build-changelog
 		@echo "======================================================================"
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
-
+		# Create a dummy tag for the changelog creation tool
+		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
 		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";
+		# Remove the dummy tag again, so it can be properly created with the changelog file inside
+		git push -d origin "$(RELEASE_NAME)";
+		git tag -d "$(RELEASE_NAME)";
+		git fetch origin;
+		# Push the new changelog to GitHub (into the STABLE release branch)
 		git add "CHANGELOG.md";
-		git commit -m "Created changelog.";
+		git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
+		git push origin "releases/$(RELEASE_NAME)" --tags;
+		# Recreate the tag with the changelog inside and push it to remote (origin)
+		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
 
 endef
 
@@ -352,6 +364,7 @@ define push-subtrees-to-git
 endef
 
 define update-subtree-remotes
+		-git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
 		git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
 
 endef
@@ -362,9 +375,9 @@ endef
 # CREATE-GITHUB-RELEASEES
 
 define create-github-releases
-		$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),pwa)
-		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-theme-to-repo-name,$(theme))))
-		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-extension-to-repo-name,$(extension))))
+		$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),pwa)
+		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-theme-to-repo-name,$(theme))))
+		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-extension-to-repo-name,$(extension))))
 
 endef
 
@@ -406,17 +419,17 @@ define create-github-release
 
 endef
 
-# define delete-github-release
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/releases/$(strip $(2)) 2>&1 | cat;
-#
-# endef
-#
-# define delete-github-branch
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/heads/$(strip $(2)) 2>&1 | cat;
-#
-# endef
-#
-# define delete-github-tag
-# 		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/tags/$(strip $(2)) 2>&1 | cat;
-#
-# endef
+define delete-github-release
+		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/releases/$(strip $(2)) 2>&1 | cat;
+
+endef
+
+define delete-github-branch
+		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/heads/$(strip $(2)) 2>&1 | cat;
+
+endef
+
+define delete-github-tag
+		curl -X DELETE --silent -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(1))/git/refs/tags/$(strip $(2)) 2>&1 | cat;
+
+endef
