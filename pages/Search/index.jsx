@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import View from 'Components/View';
-import { RouteContext } from '@virtuous/react-conductor';
-import colors from 'Styles/colors';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import Content from './components/Content';
 
 const map = {
@@ -31,7 +30,7 @@ class Search extends PureComponent {
    */
   render() {
     return (
-      <View background={colors.background}>
+      <View>
         <Consume context={RouteContext} props={map}>
           {this.consumeRenderer}
         </Consume>

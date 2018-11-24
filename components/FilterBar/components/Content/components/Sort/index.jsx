@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@virtuous/react-conductor';
-import { router } from '@virtuous/conductor';
+import { RouteContext } from '@shopgate/pwa-common/context';
+import { getCurrentRoute, parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import {
   SORT_RELEVANCE,
   SORT_PRICE_ASC,
   SORT_PRICE_DESC,
   DEFAULT_SORT,
 } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import SelectBox from '@shopgate/pwa-common/components/SelectBox';
 import ArrowDropIcon from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import Item from './components/Item';
@@ -42,7 +41,7 @@ class Sort extends PureComponent {
    * @param {string} sort The new sort string.
    */
   handleSelection = (sort) => {
-    const route = router.getCurrentRoute();
+    const route = getCurrentRoute();
 
     if (route.query.sort === sort) {
       return;

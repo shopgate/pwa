@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { isIos } from '@shopgate/pwa-common/selectors/client';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { hasCouponSupport } from '@shopgate/pwa-common-commerce/cart/selectors';
-import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
 
 /**
  * Connects the component with the state.
@@ -11,7 +10,6 @@ import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
  */
 const mapStateToProps = state => ({
   isIos: isIos(state),
-  isLoading: isCurrentViewLoading(state),
   isSupported: hasCouponSupport(state),
 });
 

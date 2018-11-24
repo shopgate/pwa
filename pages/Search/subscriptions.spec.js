@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
-import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 import {

@@ -2,7 +2,7 @@ import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { RouteContext } from '@virtuous/react-conductor';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import ProgressBar from './components/ProgressBar';
 
 const target = document.getElementById('AppHeader');
