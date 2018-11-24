@@ -1,6 +1,10 @@
 import React from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
+<<<<<<< HEAD
 import { RouteContext } from '@virtuous/react-conductor';
+=======
+import { RouteContext } from '@shopgate/pwa-common/context';
+>>>>>>> PWA-327-Exchange-Router
 import { ViewContext } from 'Components/View/context';
 import FilterBar from 'Components/FilterBar';
 

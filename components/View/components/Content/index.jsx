@@ -4,9 +4,8 @@ import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
-import { RouteContext } from '@virtuous/react-conductor';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import ViewProvider from '../../../../providers/View';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -18,17 +17,14 @@ class ViewContent extends Component {
   static contextType = RouteContext;
 
   static propTypes = {
+    setContentRef: PropTypes.func.isRequired,
     children: PropTypes.node,
-    isFullscreen: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
-    title: PropTypes.string,
   };
 
   static defaultProps = {
     children: null,
-    isFullscreen: false,
     noScrollOnKeyboard: false,
-    title: appConfig.shopName,
   };
 
   /**
@@ -37,12 +33,19 @@ class ViewContent extends Component {
   constructor(props) {
     super(props);
 
-    this.element = React.createRef();
+    this.ref = React.createRef();
     this.state = {
       keyboardHeight: 0,
     };
 
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
+   * Updates the content reference within the view provider.
+   */
+  componentDidMount() {
+    this.props.setContentRef(this.ref);
   }
 
   /**
@@ -53,14 +56,16 @@ class ViewContent extends Component {
   }
 
   /**
-   * @return {string}
+   * @returns {Object}
    */
-  get contentStyle() {
-    return styles.content(
-      this.props.isFullscreen,
-      this.state.keyboardHeight,
-      (this.props.noScrollOnKeyboard && this.state.keyboardHeight > 0)
-    );
+  get style() {
+    const { noScrollOnKeyboard } = this.props;
+    const { keyboardHeight } = this.state;
+
+    return {
+      overflow: (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto',
+      paddingBottom: keyboardHeight,
+    };
   }
 
   /**
@@ -97,7 +102,7 @@ class ViewContent extends Component {
       },
     });
 
-    this.element.current.dispatchEvent(swipeEvent);
+    this.ref.current.dispatchEvent(swipeEvent);
   };
 
   /**
@@ -106,29 +111,15 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <ViewProvider>
-          <article className={this.contentStyle} ref={this.element}>
-            <Helmet title={this.props.title} />
-            <Above />
-            {this.props.children}
-            <Below />
-          </article>
-        </ViewProvider>
+        <article className={styles} ref={this.ref} style={this.style}>
+          <Helmet title={appConfig.shopName} />
+          <Above />
+          {this.props.children}
+          <Below />
+        </article>
       </Swipeable>
     );
   }
 }
 
-/**
- * @param {Object} props The component props.
- * @return {JSX}
- */
-const ViewContentConsumer = props => (
-  <RouteContext.Consumer>
-    {({ state }) => (
-      <ViewContent {...props} title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName} />
-    )}
-  </RouteContext.Consumer>
-);
-
-export default ViewContentConsumer;
+export default ViewContent;

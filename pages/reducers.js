@@ -4,7 +4,6 @@ import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
 import page from '@shopgate/pwa-common/reducers/page';
-import view from '@shopgate/pwa-common/reducers/view';
 import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
@@ -47,7 +46,6 @@ const reducers = combineReducers({
   }),
   url,
   user,
-  view,
 });
 
 export default reducers;
