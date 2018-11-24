@@ -23,6 +23,7 @@ const Layout = props => (
         name="coupon-code-field"
         onFocusChange={props.handleFocusChange}
         onChange={props.handleValueChange}
+        setRef={props.setInputRef}
         value={props.value}
       />
 
@@ -51,6 +52,7 @@ Layout.propTypes = {
   isFocused: PropTypes.bool,
   isLoading: PropTypes.bool,
   labelStyle: PropTypes.shape(),
+  setInputRef: PropTypes.func,
   value: PropTypes.string,
 };
 
@@ -63,6 +65,7 @@ Layout.defaultProps = {
   isFocused: false,
   isLoading: false,
   labelStyle: null,
+  setInputRef: () => { },
   value: '',
 };
 

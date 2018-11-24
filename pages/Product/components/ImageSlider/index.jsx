@@ -78,7 +78,6 @@ class ImageSlider extends PureComponent {
           loop
           indicators
           onSlideChange={this.handleSlideChange}
-          rebuildOnUpdate
         >
           {images.map(image => (
             <ProductImage key={image} src={image} animating={false} resolutions={resolutions} />
@@ -102,7 +101,7 @@ class ImageSlider extends PureComponent {
               },
             }}
           >
-            <div data-test-id={`product: ${product.name}`}>{content}</div>
+            <div data-test-id={`product: ${product ? product.name : ''}`}>{content}</div>
           </Hammer>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />

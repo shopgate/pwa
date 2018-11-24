@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import View from 'Components/View';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { RouteContext } from '@virtuous/react-conductor';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import ProductContent from './components/Content';
 
 const props = {

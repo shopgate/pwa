@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Link';
-import { REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
+import { REGISTER_PATH, LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import View from 'Components/View';
-import { RouteContext } from '@virtuous/react-conductor';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PAGE_LOGIN_BEFORE,
@@ -200,11 +201,16 @@ class Login extends Component {
 export default connect(props => (
   <RouteContext.Consumer>
     {({ state, visible }) => (
-      <Login
-        {...props}
-        redirect={state.redirect}
-        visible={visible}
-      />
+      <LoadingContext.Consumer>
+        {({ isLoading }) => (
+          <Login
+            {...props}
+            isLoading={isLoading(LOGIN_PATH)}
+            redirect={state.redirect}
+            visible={visible}
+          />
+        )}
+      </LoadingContext.Consumer>
     )}
   </RouteContext.Consumer>
 ));
