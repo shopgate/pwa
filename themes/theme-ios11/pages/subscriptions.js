@@ -1,4 +1,3 @@
-import { onWillPop } from '@virtuous/conductor';
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
 import redirects from '@shopgate/pwa-common/collections/Redirects';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
@@ -12,7 +11,6 @@ import { LEGACY_URL as REGISTER_LEGACY_PATH } from '@shopgate/pwa-common/constan
 import { LEGACY_URL as CHECKOUT_LEGACY_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
 
 /**
  * App subscriptions.
@@ -27,7 +25,5 @@ export default function app(subscribe) {
     redirects.set(CHECKOUT_PATH, CHECKOUT_LEGACY_PATH);
     redirects.set(REGISTER_PATH, REGISTER_LEGACY_PATH);
     redirects.set(ORDERS_PATH, ORDERS_LEGACY_PATH);
-
-    onWillPop(NavDrawer.close);
   });
 }

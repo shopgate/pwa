@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingProvider should not render the child component when the current path is not loading 1`] = `
+<LoadingProvider>
+  <MockComponent
+    isLoading={[Function]}
+    loading={Map {}}
+    path="/"
+    setLoading={[Function]}
+    unsetLoading={[Function]}
+  />
+</LoadingProvider>
+`;
+
+exports[`LoadingProvider should populate internal methods its children 1`] = `
+<LoadingProvider>
+  <MockComponent
+    isLoading={[Function]}
+    loading={Map {}}
+    path="/"
+    setLoading={[Function]}
+    unsetLoading={[Function]}
+  />
+</LoadingProvider>
+`;
+
+exports[`LoadingProvider should render the child component when the current path is loading 1`] = `
+<LoadingProvider>
+  <MockComponent
+    isLoading={[Function]}
+    loading={Map {}}
+    path="some/path"
+    setLoading={[Function]}
+    unsetLoading={[Function]}
+  />
+</LoadingProvider>
+`;

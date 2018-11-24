@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Link';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
@@ -32,4 +34,10 @@ CheckoutButton.defaultProps = {
   isActive: true,
 };
 
-export default connect(CheckoutButton);
+export default connect(({ isOrderable }) => (
+  <LoadingContext.Consumer>
+    {({ isLoading }) => (
+      <CheckoutButton isActive={isOrderable && !isLoading(CART_PATH)} />
+      )}
+  </LoadingContext.Consumer>
+));

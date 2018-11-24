@@ -36,12 +36,13 @@ import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
 import { isAndroid } from '../selectors/client';
 import {
-  updateNavigationBarNone,
+  prepareLegacyNavigation,
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
 import { embeddedMedia } from '../collections';
 import { Vimeo, YouTube } from '../collections/media-providers';
+import clearUpInAppBrowser from './helpers/clearUpInAppBrowser';
 
 /**
  * App subscriptions.
@@ -93,7 +94,7 @@ export default function app(subscribe) {
     // Add event callbacks
     event.addCallback('pageContext', pageContext);
     // Handle native/legacy navigation bar
-    event.addCallback('viewWillAppear', updateNavigationBarNone);
+    event.addCallback('viewWillAppear', prepareLegacyNavigation);
     event.addCallback('showPreviousTab', showPreviousTab);
     /**
      * This event is triggered form the desktop shop in the inAppBrowser.
@@ -109,11 +110,14 @@ export default function app(subscribe) {
       closeInAppBrowser(isAndroid(getState()));
     });
 
+    event.addCallback('viewDidAppear', () => {
+      clearUpInAppBrowser(isAndroid(getState()));
+    });
+
     /**
      * The following events are sometimes sent by the app, but don't need to be handled right now.
      * To avoid console warnings from the event system, empty handlers are registered here.
      */
-    event.addCallback('viewDidAppear', () => {});
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});

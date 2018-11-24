@@ -1,12 +1,14 @@
 import { css } from 'glamor';
 
 const grid = css({
+  flexWrap: 'wrap',
   padding: '0 15px',
-  marginBottom: 8,
 }).toString();
 
 const gridItem = css({
-  width: '50%',
+  flexGrow: 1,
+  marginBottom: 8,
+  minWidth: '50%',
   padding: '0 5px',
 }).toString();
 

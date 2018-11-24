@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
-import { RouteContext } from '@virtuous/react-conductor';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import PageContent from './components/Content';
 
 /**

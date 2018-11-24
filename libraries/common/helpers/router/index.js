@@ -1,7 +1,11 @@
 import URLSearchParams from 'url-search-params';
 import createBrowserHistory from 'history/createBrowserHistory';
+import { router } from '@virtuous/conductor';
 
 const match = /^(.*)index.html/.exec(window.location.pathname);
+
+const { getCurrentRoute } = router;
+export { getCurrentRoute };
 
 /**
  * Creates the router history.

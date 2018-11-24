@@ -1,9 +1,7 @@
-import { ACTION_REPLACE } from '@virtuous/conductor';
-import { router } from '@virtuous/conductor';
+import { router, ACTION_REPLACE } from '@virtuous/conductor';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
-import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import authRoutes from '../../collections/AuthRoutes';
@@ -26,6 +24,7 @@ export const LEGACY_LINK_CHANNEL = '/channel';
 export const LEGACY_LINK_ORDERS = '/orders_legacy';
 export const LEGACY_LINK_CHECKOUT = '/checkout_legacy';
 export const LEGACY_LINK_REGISTER = '/register_legacy';
+export const LEGACY_LINK_REGISTER_GUEST = '/register_legacy_guest';
 export const LEGACY_LINK_CONNECT_REGISTER = '/connect_register';
 
 const protocols = [PROTOCOL_HTTP, PROTOCOL_HTTPS, PROTOCOL_TEL, PROTOCOL_MAILTO];
@@ -47,6 +46,7 @@ const legacyLinks = [
   LEGACY_LINK_ORDERS,
   LEGACY_LINK_CHECKOUT,
   LEGACY_LINK_REGISTER,
+  LEGACY_LINK_REGISTER_GUEST,
   LEGACY_LINK_CONNECT_REGISTER,
 ];
 
@@ -184,15 +184,12 @@ export const openExternalLink = (location, historyAction) => {
     previewSrc: 'sgapi:page_preview',
     emulateBrowser: true,
     targetTab: 'in_app_browser',
+    animated: false,
     navigationBarParams: {
       type: 'in-app-browser-default',
       popTab: 'in_app_browser',
       animation: 'none',
     },
-  });
-
-  flushTab({
-    targetTab: 'in_app_browser',
   });
 
   handleAppRedirect(historyAction);
@@ -204,8 +201,6 @@ export const openExternalLink = (location, historyAction) => {
  * @param {string} options.location Link url.
  * @param {string} options.targetTab Target tab where the page should be opened.
  * @param {string} options.navigationType Type of the navigation bar that should be displayed.
- * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
- * @param {string} options.flushTab The tab that should be flushed
  * @param {Function} options.backCallback Function that is executed when hitting the back button.
  * @param {string} options.historyAction The history action which was used to open the link.
  */
@@ -227,27 +222,21 @@ export const handleLegacyLink = (options) => {
         leftButtonCallback: options.backCallback ? options.backCallback : '',
       },
     });
-  }
 
-  if (options.targetTab) {
-    showTab({
-      targetTab: options.targetTab,
-    });
-  }
+    if (options.targetTab) {
+      showTab({
+        targetTab: options.targetTab,
+      });
+    }
 
-  if (options.flushTab) {
-    flushTab({
-      targetTab: options.flushTab,
-    });
-  }
+    if (options.flushTab) {
+      flushTab({
+        targetTab: options.flushTab,
+      });
+    }
 
-  if (options.popTabToRoot) {
-    popTabToRoot({
-      targetTab: options.targetTab,
-    });
+    handleAppRedirect(options.historyAction);
   }
-
-  handleAppRedirect(options.historyAction);
 };
 
 /**
@@ -306,6 +295,13 @@ export const openLegacyLink = (location, historyAction) => {
       handleLegacyLink({
         targetTab: 'main',
         location: '/register/default',
+        historyAction,
+      });
+      break;
+    case LEGACY_LINK_REGISTER_GUEST:
+      handleLegacyLink({
+        targetTab: 'main',
+        location: '/register/guest',
         historyAction,
       });
       break;
