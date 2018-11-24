@@ -1,7 +1,5 @@
 import React from 'react';
-import { RouteContext } from '@virtuous/react-conductor';
 import View from 'Components/View';
-import Consume from '@shopgate/pwa-common/components/Consume';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import PageContent from '../Page/components/Content';
 
@@ -10,11 +8,7 @@ import PageContent from '../Page/components/Content';
  */
 const StartPage = () => (
   <View>
-    <Consume context={RouteContext} props={{ open: 'open' }}>
-      {({ open }) => (
-        open && <PageContent pageId={PAGE_ID_INDEX} />
-      )}
-    </Consume>
+    <PageContent pageId={PAGE_ID_INDEX} />
   </View>
 );
 

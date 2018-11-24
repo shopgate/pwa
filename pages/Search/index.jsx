@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import View from 'Components/View';
-import { RouteContext } from '@virtuous/react-conductor';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import colors from 'Styles/colors';
 import Content from './components/Content';
 
