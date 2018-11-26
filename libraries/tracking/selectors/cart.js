@@ -30,7 +30,7 @@ const getProducts = createSelector(
 export const getAddToCartProducts = (state, products) => (
   products
     .map(product => ({
-      product: getProductById(state, product.productId).productData,
+      product: (getProductById(state, product.productId) || {}).productData,
       quantity: product.quantity,
     }))
     .map(formatAddToCartProductData)

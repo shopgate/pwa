@@ -34,13 +34,15 @@ const getProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAUL
 
     dispatch(requestProductRelations({ hash }));
 
-    return new PipelineRequest(pipeline)
+    const request = new PipelineRequest(pipeline)
       .setInput({
         productId,
         type,
         limit,
       })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((payload) => {
         const { relations } = payload;
         if (!Array.isArray(relations)) {
@@ -58,6 +60,8 @@ const getProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAUL
         logger.error(err);
         dispatch(errorProductRelations({ hash }));
       });
+
+    return request;
   };
 
 export default getProductRelations;

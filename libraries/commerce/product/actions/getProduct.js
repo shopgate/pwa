@@ -12,15 +12,24 @@ import { getProductById } from '../selectors/product';
 /**
  * Retrieves a product from the Redux store.
  * @param {string} productId The product ID.
- * @param {boolean} forceFetch Skips shouldFetchData check. Always fetches.
+ * @param {boolean} [forceFetch=false] Skips shouldFetchData check. Always fetches.
+ * @param {boolean} [shouldProcessProductFlags=true] Skips processProductFlags()
  * @return {Function} A redux thunk.
  */
-const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
+const getProduct = (
+  productId,
+  forceFetch = false,
+  shouldProcessProductFlags = true
+) => (dispatch, getState) => {
   const state = getState();
   const product = getProductById(state, productId);
 
   if (!forceFetch && !shouldFetchData(product)) {
     if (product.productData) {
+      if (!shouldProcessProductFlags) {
+        dispatch(receiveProductCached(product.productData));
+        return;
+      }
       dispatch(processProductFlags(product.productData))
         .then(() => {
           dispatch(receiveProductCached(product.productData));
@@ -36,7 +45,10 @@ const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
     .setInput({ productId })
     .dispatch()
     .then((result) => {
-      dispatch(processProductFlags(result));
+      if (shouldProcessProductFlags) {
+        dispatch(processProductFlags(result));
+      }
+
       dispatch(receiveProduct(productId, result));
     })
     .catch((error) => {

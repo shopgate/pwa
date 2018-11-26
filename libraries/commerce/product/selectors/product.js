@@ -231,7 +231,7 @@ export const getProductName = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product images state.
  */
-const getProductImagesState = state => state.product.imagesByProductId;
+export const getProductImagesState = state => state.product.imagesByProductId;
 
 /**
  * Retrieves the current product images or the images of the parent product.

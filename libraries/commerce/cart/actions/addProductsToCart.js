@@ -20,7 +20,7 @@ const addToCart = productsToAdd => (dispatch, getState) => {
   let nextProductPendingCount = getProductPendingCount(state);
 
   const products = productsToAdd.map((product) => {
-    const { productData } = getProductById(state, product.productId);
+    const { productData = {} } = getProductById(state, product.productId) || {};
 
     // Restructure into a productId and a variantId (only productId if not adding a variant)
     const productId = productData.baseProductId || product.productId;

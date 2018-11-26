@@ -1,5 +1,32 @@
 # Changelog
 
+## [v5.10.1](https://github.com/shopgate/pwa/tree/v5.10.1) (2018-11-16)
+:bug: **Fixed bugs:**
+
+- Replaced deprecated FR, LV, FE and GE iso province codes [\#393](https://github.com/shopgate/pwa/pull/393) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
+- Added flushTab option for legacy links within the parsed-link helper [\#387](https://github.com/shopgate/pwa/pull/387) ([fkloes](https://github.com/fkloes))
+
+:nail_care: **Others:**
+
+- Fix eslint errors in the form builder [\#394](https://github.com/shopgate/pwa/pull/394) ([alexbridge](https://github.com/alexbridge))
+- Extend timeout for test stability [\#390](https://github.com/shopgate/pwa/pull/390) ([Iv3x](https://github.com/Iv3x))
+- Added spec files for e2e execution [\#389](https://github.com/shopgate/pwa/pull/389) ([Iv3x](https://github.com/Iv3x))
+
+## [v5.10.0](https://github.com/shopgate/pwa/tree/v5.10.0) (2018-11-12)
+:bug: **Fixed bugs:**
+
+- Correct price formatting on product detail page when price is 0 [\#371](https://github.com/shopgate/pwa/pull/371) ([aaron-martin](https://github.com/aaron-martin))
+- Fixed an inAppBrowser issue where previous opened pages got visible again [\#370](https://github.com/shopgate/pwa/pull/370) ([fkloes](https://github.com/fkloes))
+- Corrected a bug where the filters labels can run out of the viewport [\#368](https://github.com/shopgate/pwa/pull/368) ([richardgorman](https://github.com/richardgorman))
+- Updated `react-hot-loader` to prevent issues with newer `react` version. [\#363](https://github.com/shopgate/pwa/pull/363) ([devbucket](https://github.com/devbucket))
+
+:nail_care: **Others:**
+
+- My account menu header portal [\#359](https://github.com/shopgate/pwa/pull/359) ([alexbridge](https://github.com/alexbridge))
+- Added possibility to open legacy `user\_lost\_password` link [\#355](https://github.com/shopgate/pwa/pull/355) ([philipp-heyse](https://github.com/philipp-heyse))
+- Added automatic changelog generation and handling for stable releases. [\#350](https://github.com/shopgate/pwa/pull/350) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
+- fix linting errors for e2e test suite [\#334](https://github.com/shopgate/pwa/pull/334) ([Iv3x](https://github.com/Iv3x))
+
 ## [v5.9.0](https://github.com/shopgate/pwa/tree/v5.9.0) (2018-10-30)
 :rocket: **Enhancements:**
 

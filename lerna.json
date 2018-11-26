@@ -1,6 +1,6 @@
 {
   "lerna": "2.9.0",
-  "version": "5.9.0",
+  "version": "5.10.1",
   "packages": [
     "extensions/@shopgate-product-reviews/frontend",
     "extensions/@shopgate-tracking-ga-native/frontend",
@@ -11,7 +11,7 @@
   "useWorkspaces": true,
   "npmClient": "yarn",
   "npmClientArgs": [
-    "--no-optional"
+    "--ignore-optional"
   ],
   "changelog": {
     "cacheDir": ".changelog",

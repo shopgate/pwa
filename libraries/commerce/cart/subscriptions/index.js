@@ -61,6 +61,12 @@ export default function cart(subscribe) {
     productsUpdated$
   );
 
+  // Cart is requested on viewWillAppear
+  const cartIdleCouponLinkOpened$ = cartIdle$.zip(couponLinkOpened$).map(([, second]) => second);
+  const cartIdleCouponActionPushNotification$ = cartIdle$
+    .zip(couponActionPushNotification$)
+    .map(([, second]) => second);
+
   /**
    * Gets triggered when the app starts.
    */
@@ -109,14 +115,14 @@ export default function cart(subscribe) {
   /**
    * Gets triggered a coupon link was opened.
    */
-  subscribe(couponLinkOpened$, ({ action, dispatch }) => {
+  subscribe(cartIdleCouponLinkOpened$, ({ action, dispatch }) => {
     dispatch(addCouponsToCart([action.options.queryParams.coupon]));
   });
 
   /**
    * Gets triggered when a push notification containing a coupon link was received.
    */
-  subscribe(couponActionPushNotification$, (options) => {
+  subscribe(cartIdleCouponActionPushNotification$, (options) => {
     const {
       action,
       code,

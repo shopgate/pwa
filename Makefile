@@ -110,7 +110,11 @@ release:
 		$(call build-npm-packages)
 		$(call publish-npm-packages)
 		$(call make, publish-to-github)
-		$(call create-github-releases)
+ifeq ("$(STABLE)","true")
+		$(call create-github-releases,master)
+else
+		$(call create-github-releases,releases/$(RELEASE_NAME))
+endif
 		$(call finalize-release)
 
 
@@ -149,6 +153,10 @@ e2e-checkout:
 
 e2e-user:
 		cd themes/theme-gmd && yarn run e2e:user;
+
+e2e-install:
+		npm i --no-save --no-package-lock cypress@3.1.1;
+
 
 
 
@@ -211,13 +219,13 @@ endef
 # Changes all the version numbers using lerna
 define update-pwa-versions
 		@echo "======================================================================"
-		@echo "| Updating pwa versions to '$(RELEASE_VERSION))'"
+		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
-		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact;
+		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME))) --force-publish --yes --exact;
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
-			then echo "ERROR: Package version mismatch, please theck your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			then echo "ERROR: Package version mismatch, please check your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
 
@@ -329,7 +337,12 @@ ifeq ("$(STABLE)","true")
 		$(call build-changelog)
 		$(call push-subtrees-to-git, master)
 		git push origin "releases/$(RELEASE_NAME)":master;
-		git checkout develop && git pull && git merge "releases/$(RELEASE_NAME)" && git push origin develop;
+		git status;
+		git checkout develop && git pull;
+		git merge "releases/$(RELEASE_NAME)" --no-commit;
+		git status
+		git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
+		git push origin develop;
 else
 		# PRE-RELEASE (alpha, beta, rc)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
@@ -373,9 +386,9 @@ endef
 # CREATE-GITHUB-RELEASEES
 
 define create-github-releases
-		$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),pwa)
-		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-theme-to-repo-name,$(theme))))
-		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),releases/$(RELEASE_NAME),$(call map-extension-to-repo-name,$(extension))))
+		$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),pwa)
+		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-theme-to-repo-name,$(theme))))
+		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-extension-to-repo-name,$(extension))))
 
 endef
 

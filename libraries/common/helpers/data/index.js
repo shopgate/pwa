@@ -35,7 +35,7 @@ export const isExternal = url => (
 );
 
 /**
- * Returns the actual url to the image, by adding url parameters with the dimensions
+ * Returns the actual url to the image, by adding url parameters with the dimensions for img-cdn
  * @param {string} src Source to the image.
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.
@@ -43,7 +43,7 @@ export const isExternal = url => (
  * @returns {string}
  */
 export const getActualImageSource = (src, { width, height }) => {
-  if (src && src.startsWith('https://img-cdn.shopgate.com') && !src.includes('?')) {
+  if (src && src.startsWith('https://img-cdn.shopgate.com')) {
     return `${src}?w=${width}&h=${height}&q=70&zc=resize&fillc=FFFFFF`;
   }
   return src;
