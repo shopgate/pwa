@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
@@ -9,10 +8,6 @@ import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/const
 import variables from 'Styles/variables';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
-import {
-  cartItemTransitionDuration as duration,
-  getCartItemTransitionStyle as getTransitionStyle,
-} from '../../../../style';
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
@@ -24,9 +19,9 @@ const messageStyles = {
 };
 
 /**
- * The Cart Product component.
+ * The CartProduct component.
  */
-class Product extends Component {
+class CartProduct extends Component {
   static propTypes = {
     currency: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -61,11 +56,11 @@ class Product extends Component {
 
     this.state = {
       editMode: false,
-      visible: true,
     };
   }
 
   /**
+   * // TODO: change this!
    * Expose props to the descendant components to use them for the portals.
    * @return {Object}
    */
@@ -78,13 +73,6 @@ class Product extends Component {
   }
 
   /**
-   * We need to set the element height explicitly so that we can animate it later.
-   */
-  componentDidMount() {
-    this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement) + 4}px`;
-  }
-
-  /**
    * Toggles the edit mode of the products. This should be always called,
    * when interaction with the quantity input happens.
    * @param {boolean} [isEnabled=true] Tells if the edit mode is enabled, or disabled.
@@ -94,7 +82,7 @@ class Product extends Component {
       /**
        * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
-       * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       * the keyboard appearance some time ticks away, the execution of the scroll code is delayed.
        *
        * This should not happen on iOS devices, since their webviews behave different.
        */
@@ -110,19 +98,13 @@ class Product extends Component {
       }, CART_INPUT_AUTO_SCROLL_DELAY);
     }
 
-    this.props.onToggleFocus(isEnabled);
+    // Give the keyboard some time to slide out after blur, before further actions are taken.
+    setTimeout(() => {
+      this.props.onToggleFocus(isEnabled);
+    }, isEnabled ? 300 : 0);
 
     this.setState({
       editMode: isEnabled,
-    });
-  };
-
-  /**
-   * Sets this product to be invisible via its state.
-   */
-  transitionOut = () => {
-    this.setState({
-      visible: false,
     });
   };
 
@@ -142,46 +124,44 @@ class Product extends Component {
   };
 
   /**
-   * Render Function.
    * @returns {jsx}
    */
   render() {
+    const {
+      currency,
+      messages,
+      product,
+      quantity,
+    } = this.props;
+    const { editMode } = this.state;
+
     return (
-      <Transition in={this.state.visible} timeout={duration} onExited={this.deleteProduct}>
-        {state => (
-          <div
-            ref={(element) => { this.transitionElement = element; }}
-            key={this.props.id}
-            style={getTransitionStyle(state)}
+      <CardListItem>
+        <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
+          {messages.length > 0 && (
+            <MessageBar messages={messages} classNames={messageStyles} />
+          )}
+          <Link
+            tagName="a"
+            href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+            itemProp="item"
+            itemScope
+            itemType="http://schema.org/Product"
           >
-            <CardListItem>
-              <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
-                {this.props.messages.length > 0 &&
-                  <MessageBar messages={this.props.messages} classNames={messageStyles} />}
-                <Link
-                  tagName="a"
-                  href={`${ITEM_PATH}/${bin2hex(this.props.product.id)}`}
-                  itemProp="item"
-                  itemScope
-                  itemType="http://schema.org/Product"
-                >
-                  <Layout
-                    handleDelete={this.transitionOut}
-                    handleUpdate={this.updateProduct}
-                    toggleEditMode={this.toggleEditMode}
-                    editMode={this.state.editMode}
-                    product={this.props.product}
-                    currency={this.props.currency}
-                    quantity={this.props.quantity}
-                  />
-                </Link>
-              </div>
-            </CardListItem>
-          </div>
-        )}
-      </Transition>
+            <Layout
+              handleDelete={this.deleteProduct}
+              handleUpdate={this.updateProduct}
+              toggleEditMode={this.toggleEditMode}
+              editMode={editMode}
+              product={product}
+              currency={currency}
+              quantity={quantity}
+            />
+          </Link>
+        </div>
+      </CardListItem>
     );
   }
 }
 
-export default connect(Product);
+export default connect(CartProduct);

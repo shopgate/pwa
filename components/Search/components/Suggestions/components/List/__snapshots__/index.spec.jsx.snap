@@ -24,7 +24,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo"
@@ -37,7 +37,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar"
@@ -50,7 +50,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar buz"
@@ -63,7 +63,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar buz quz"
@@ -101,7 +101,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo"
@@ -114,7 +114,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar"
@@ -127,7 +127,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar buz"
@@ -140,7 +140,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar buz quz"
@@ -178,7 +178,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar buz quz"
@@ -191,7 +191,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar buz"
@@ -204,7 +204,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo bar"
@@ -217,7 +217,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     <button
       className={
         Object {
-          "data-css-11m0m3n": "",
+          "data-css-xt0zkn": "",
         }
       }
       data-test-id="searchSuggestion foo"
@@ -271,7 +271,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         <button
           className={
             Object {
-              "data-css-11m0m3n": "",
+              "data-css-xt0zkn": "",
             }
           }
           data-test-id="searchSuggestion foo"
@@ -284,7 +284,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         <button
           className={
             Object {
-              "data-css-11m0m3n": "",
+              "data-css-xt0zkn": "",
             }
           }
           data-test-id="searchSuggestion foo bar"
@@ -297,7 +297,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         <button
           className={
             Object {
-              "data-css-11m0m3n": "",
+              "data-css-xt0zkn": "",
             }
           }
           data-test-id="searchSuggestion foo bar buz"
@@ -310,7 +310,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         <button
           className={
             Object {
-              "data-css-11m0m3n": "",
+              "data-css-xt0zkn": "",
             }
           }
           data-test-id="searchSuggestion foo bar buz quz"
