@@ -43,7 +43,7 @@ describe('AndroidGMDTest CartPage', () => {
 
   it('should check for shipping label', () => {
     cy.get(els.shippingLabel)
-      .contains('zzgl. Versand')
+      .contains('Versand')
       .should('be.visible');
   });
 
