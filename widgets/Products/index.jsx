@@ -66,6 +66,12 @@ class ProductsWidget extends Component {
     ) {
       this.productCount = Math.min(nextProps.products.length, this.totalProductCount);
     }
+    // React to case when widget settings change after component mounted
+    if (JSON.stringify(this.props.settings.queryParams)
+      !== JSON.stringify(nextProps.settings.queryParams)
+      && (!nextProps.products || !nextProps.products.length)) {
+      this.getProducts(nextProps.settings);
+    }
   }
 
   /**
@@ -82,15 +88,16 @@ class ProductsWidget extends Component {
 
   /**
    * Build the params for requesting products and then make the request.
+   * @param {Object} [settings] Widget settings object
    */
-  getProducts = () => {
+  getProducts = (settings) => {
     const { getProducts, id } = this.props;
     const {
       productLimit,
       queryParams,
       queryType,
       sortOrder,
-    } = this.props.settings;
+    } = settings || this.props.settings;
 
     const sort = transformDisplayOptions(sortOrder);
 
