@@ -11,6 +11,7 @@ const title = css({
 const menuContainer = css({
   marginRight: `-${variables.gap.big}px`,
   marginLeft: variables.gap.big,
+  pointerEvents: 'none',
 }).toString();
 
 const menuToggleSize = variables.gap.big * 2;
@@ -22,6 +23,7 @@ const menuToggle = css({
   marginTop: `-${variables.gap.small}px`,
   fontSize: menuToggleFontSize,
   padding: variables.gap.small * 0.5,
+  pointerEvents: 'all',
 }).toString();
 
 export default {
