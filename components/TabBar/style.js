@@ -2,7 +2,6 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 const { style } = document.documentElement;
-const backgroundColor = 'rgba(249, 249, 249, 0.9)';
 
 /**
  * Sets a global css variable that indicates the current height of the TabBar
@@ -22,19 +21,19 @@ export const updateHeightCSSProperty = (isVisible) => {
 export default css({
   height: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
   paddingBottom: 'var(--safe-area-inset-bottom)',
+  position: 'relative',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
   boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1)',
   ':before': {
-    ...variables.blur,
     position: 'absolute',
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
     content: '""',
-    background: backgroundColor,
+    background: '#fafafa',
     zIndex: -1,
   },
 }).toString();

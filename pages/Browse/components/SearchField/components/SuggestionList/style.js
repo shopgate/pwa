@@ -32,8 +32,9 @@ const item = css({
   display: 'flex',
   marginTop: 2,
   outline: 0,
-  padding: '10px 50px',
+  padding: '10px 16px 10px 50px',
   width: '100%',
+  textAlign: 'left',
 }).toString();
 
 export default {
