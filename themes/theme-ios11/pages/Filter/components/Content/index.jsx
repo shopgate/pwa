@@ -191,12 +191,11 @@ class FilterContent extends PureComponent {
    */
   render() {
     const { filters } = this.props;
+    const right = <ApplyButton active={this.hasChanged} onClick={this.save} />;
 
     if (!filters) {
-      return null;
+      return <CloseBar title="titles.filter" right={right} />;
     }
-
-    const right = <ApplyButton active={this.hasChanged} onClick={this.save} />;
 
     return (
       <Fragment>
