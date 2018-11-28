@@ -206,7 +206,7 @@ class FilterContent extends PureComponent {
     }
 
     return (
-      <Fragment>^
+      <Fragment>
         { this.renderCloseBar() }
         {filters.map((filter) => {
           const portalProps = { filter };
