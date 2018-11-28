@@ -132,10 +132,12 @@ class SearchField extends Component {
   /**
    * Handles the form submit event.
    * @param {Object} e The event object.
-   * @param {string} [query] Defaults to query in state.
+   * @param {string} searchQuery Defaults to query in state.
    */
-  handleSubmit = (e, query = this.state.query) => {
+  handleSubmit = (e, searchQuery) => {
     e.preventDefault();
+
+    const query = searchQuery || this.state.query;
     conductor.update(this.props.pageId, { query });
 
     this.setState({ focused: false });
