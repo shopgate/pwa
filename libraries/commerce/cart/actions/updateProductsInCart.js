@@ -16,7 +16,7 @@ const updateProductsInCart = updateData => (dispatch) => {
   dispatch(updateProducts(updateData));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS);
-  request.setInput({ cartItem: updateData })
+  request.setInput({ cartItems: updateData })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
