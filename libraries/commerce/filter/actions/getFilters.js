@@ -32,7 +32,7 @@ const getFilters = () => (dispatch, getState) => {
   }
 
   // We need to process the params to handle edge cases in the pipeline params.
-  const requestParams = processParams(params, null);
+  const requestParams = processParams(params);
 
   if (Object.keys(requestParams).length === 0) {
     logger.error(`Attempt to call ${pipelines.SHOPGATE_CATALOG_GET_FILTERS} pipeline without parameters - aborted`);
