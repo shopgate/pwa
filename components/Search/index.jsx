@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';
@@ -10,6 +11,7 @@ import connect from './connector';
 import styles from './style';
 
 const SUGGESTIONS_MIN = 2;
+const DEFAULT_QUERY = '';
 
 /**
  * The Search component.
@@ -28,7 +30,7 @@ class Search extends Component {
 
     this.fieldRef = React.createRef();
     this.state = {
-      query: '',
+      query: DEFAULT_QUERY,
       visible: false,
     };
 
@@ -36,10 +38,11 @@ class Search extends Component {
   }
 
   /**
-   * When opened, focus the search field.
+   * When opened, focus the search field and set the initial field value.
    */
   componentDidUpdate() {
     if (this.state.visible) {
+      this.fieldRef.current.value = this.state.query;
       this.fieldRef.current.focus();
     }
   }
@@ -54,16 +57,22 @@ class Search extends Component {
   /**
    * @param {boolean} visible The next visible state.
    */
-  toggle = (visible) => {
-    this.setState({ visible });
+  toggle = (visible = true) => {
+    const { query } = getCurrentRoute();
+    const searchQuery = query.s || this.state.query;
+
+    this.setState({
+      query: searchQuery,
+      visible,
+    });
   }
 
   /**
    * @param {Event} event The event.
    */
   reset = () => {
-    this.fieldRef.current.value = '';
-    this.setState({ query: '' });
+    this.fieldRef.current.value = DEFAULT_QUERY;
+    this.setState({ query: DEFAULT_QUERY });
   }
 
   /**
