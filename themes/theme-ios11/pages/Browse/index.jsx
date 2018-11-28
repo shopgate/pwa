@@ -11,7 +11,7 @@ const propsMap = {
 };
 
 /**
- * The Cart component.
+ * The Browse component.
  * @returns {JSX}
  */
 const Browse = () => (

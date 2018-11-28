@@ -4,7 +4,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
 <section
   className={
     Object {
-      "data-css-6vzl24": "",
+      "data-css-rdsogp": "",
     }
   }
   style={
@@ -31,7 +31,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
 <section
   className={
     Object {
-      "data-css-6vzl24": "",
+      "data-css-rdsogp": "",
     }
   }
   style={
