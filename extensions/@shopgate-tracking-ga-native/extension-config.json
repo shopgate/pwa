@@ -1,5 +1,5 @@
 {
-  "version": "5.10.1",
+  "version": "5.11.0-alpha.5",
   "id": "@shopgate/tracking-ga-native",
   "components": [
     {
