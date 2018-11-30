@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockProductId,
@@ -14,9 +15,9 @@ import {
 
 const mockedStore = configureStore();
 
-beforeEach(() => {
-  jest.resetModules();
-});
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: jest.fn(),
+}));
 
 /**
  * Creates component with provided store state.
@@ -32,7 +33,9 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
   /* eslint-enable global-require */
   return mount(
     <Provider store={store}>
-      <ReviewForm submit={() => { }} productId={mockProductId} />
+      <LoadingProvider>
+        <ReviewForm submit={() => { }} productId={mockProductId} />
+      </LoadingProvider>
     </Provider>,
     mockRenderOptions
   );
