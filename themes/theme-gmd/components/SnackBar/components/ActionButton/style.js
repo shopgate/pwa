@@ -1,8 +1,9 @@
 import { css } from 'glamor';
 import color from 'color';
 import colors from 'Styles/colors';
+import { DRAWER_BACKGROUND } from '../../constants';
 
-const textColorContrast = color(colors.accent).contrast(color('black'));
+const textColorContrast = color(colors.accent).contrast(color(DRAWER_BACKGROUND));
 
 export default css({
   color: textColorContrast > 4 ? colors.accent : 'white',
