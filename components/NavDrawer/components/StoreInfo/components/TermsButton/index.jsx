@@ -1,40 +1,40 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  NAV_MENU_IMPRINT,
-  NAV_MENU_IMPRINT_AFTER,
-  NAV_MENU_IMPRINT_BEFORE,
+  NAV_MENU_TERMS,
+  NAV_MENU_TERMS_AFTER,
+  NAV_MENU_TERMS_BEFORE,
 } from '@shopgate/pwa-common/constants/Portals';
 import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
+import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import connect from '../../connector';
+import connect from '../../../../connector';
 
-const LABEL = 'navigation.about';
-const PAYMENT_PATH = `${PAGE_PATH}/imprint`;
+const LABEL = 'navigation.terms';
+const PAYMENT_PATH = `${PAGE_PATH}/terms`;
 
 /**
  * @param {Function} props.navigate The navigate action.
  * @returns {JSX}
  */
-const ImprintButton = ({ navigate }) => (
+const TermsButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_IMPRINT_BEFORE} />
-    <Portal name={NAV_MENU_IMPRINT}>
+    <Portal name={NAV_MENU_TERMS_BEFORE} />
+    <Portal name={NAV_MENU_TERMS}>
       <NavDrawer.Item
         label={LABEL}
-        icon={InfoIcon}
+        icon={DescriptionIcon}
         onClick={navigate(PAYMENT_PATH, LABEL)}
-        testId="navDrawerImprintButton"
+        testId="navDrawerTermsButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_IMPRINT_AFTER} />
+    <Portal name={NAV_MENU_TERMS_AFTER} />
   </Fragment>
 );
 
-ImprintButton.propTypes = {
+TermsButton.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default connect(ImprintButton);
+export default connect(TermsButton);
