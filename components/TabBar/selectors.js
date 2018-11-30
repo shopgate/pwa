@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
@@ -75,39 +74,3 @@ export const isTabBarVisible = createSelector(
     return state.visible;
   }
 );
-
-/**
- * Returns all visible tabs.
- * @note This is prepared to be a state, it could be fetched by a pipeline.
- * @returns {Array}
- */
-export const getVisibleTabs = () => {
-  const config = [
-    {
-      type: TAB_HOME,
-      label: 'tab_bar.home',
-    },
-    {
-      type: TAB_BROWSE,
-      label: 'tab_bar.browse',
-    },
-    {
-      type: TAB_CART,
-      label: 'tab_bar.cart',
-    },
-    {
-      type: TAB_FAVORITES,
-      label: 'tab_bar.favorites',
-    },
-    {
-      type: TAB_MORE,
-      label: 'tab_bar.more',
-    },
-  ];
-
-  if (!appConfig.hasFavorites) {
-    config.splice(3, 1);
-  }
-
-  return config;
-};
