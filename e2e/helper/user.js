@@ -9,23 +9,28 @@ export function logOutUser() {
   cy.get(els.tabBarMore)
     .should('be.visible')
     .click();
+
   cy.wait(3000);
 
-  cy.get(els.loginWelcomeText).then(($loginWelcomeText) => {
-    if ($loginWelcomeText.text().includes('Hallo Dennis')) {
-      cy.get(els.logOutButtonMoreMenu)
-        .wait(2000)
-        .scrollIntoView()
-        .should('be.visible')
-        .click();
-      cy.get(els.basicDialogOkButton)
-        .should('be.visible')
-        .click();
-    } else if ($loginWelcomeText.text().includes('Mein Konto')) {
-      cy.visit('');
-      cy.wait(2000);
-      /* eslint-disable-next-line */
-      console.log('No User logged in');
-    }
-  });
+  cy.window()
+    .its('store')
+    .invoke('getState')
+    .its('user')
+    .its('login')
+    .its('isLoggedIn')
+    .then(($value) => {
+      try {
+        /* eslint-disable-next-line */
+        expect($value).to.be.true;
+
+        cy.get(els.logOutButtonMoreMenu)
+          .should('be.visible')
+          .click();
+        cy.get(els.basicDialogOkButton)
+          .should('be.visible')
+          .click();
+      } catch (err) {
+        console.log(`isLoggedIn returned ${$value}`);
+      }
+    });
 }
