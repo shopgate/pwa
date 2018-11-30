@@ -207,24 +207,24 @@
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
 
-"@virtuous/conductor-events@1.0.0-beta.46":
-  version "1.0.0-beta.46"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.46.tgz#491b4be5f274fb471611efe5c72611db367bbc63"
-  integrity sha512-zEIzsAibP7aGyFdmLxYxDZ+QkPrjPhURREFplbSW3Bl21OGqfhy9DefO7tXbU7n6JE3h1mXfpjIcmE9opj6HKQ==
+"@virtuous/conductor-events@1.0.0", "@virtuous/conductor-events@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0.tgz#3e0229fb3aa0c012f7512bd38bb3128ca857b8af"
+  integrity sha512-i6xjVa8kG6b38VORS++OOSuAPOddK5vMBviPhMIcBRBwrF6u4w0y7fjvJVWwkV3BvS9TmvBiqFpv++krIs10qw==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.46"
+    "@virtuous/conductor" "1.0.0"
 
-"@virtuous/conductor-helpers@1.0.0-beta.46":
-  version "1.0.0-beta.46"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.46.tgz#e013579cb513cabe7b590080bcc6b35ea7f52789"
-  integrity sha512-qNAhQ4PC32y4UB61L/PJE6y/IyN596joedWNK26ROTM3euEERseCo/MXQT67AXH6xs3Aop9p24oMGGn2QOAkSg==
+"@virtuous/conductor-helpers@1.0.0", "@virtuous/conductor-helpers@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0.tgz#253fd35ee2f4ce4cd709a32bf2ff0a89623accb0"
+  integrity sha512-vxW7kns1vBT0u47y00QWPBvGI/XcVrTOF0A6LChsS5JQWKaB9OQalCT0WT31K3cGb/Dub1gKVxmN2umdRqDw+Q==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.46"
+    "@virtuous/conductor" "1.0.0"
 
-"@virtuous/conductor@1.0.0-beta.46":
-  version "1.0.0-beta.46"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.46.tgz#8841a7b571f6030bdae654ffea4452079559f8cd"
-  integrity sha512-WgQ+UfgCl4K9sqz06X1Q0uBxrUJ2Ho9OxRj0UkWiI/G3FdHPRMUSXZzaymHdevlItII+OHkSTZLj0pHM4/vixw==
+"@virtuous/conductor@1.0.0", "@virtuous/conductor@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0.tgz#ae76b1e489e1c4ec8adc84956add6e28a839a137"
+  integrity sha512-g5N1a4ibOBFf7cg2lNMLyxyD2aHMrobp2qQv96YaDaA0RX/udlUeFZs++ptNOeCEX4oy6dB+51usRjCn9lsBIA==
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -235,24 +235,24 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.46":
-  version "1.0.0-beta.46"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.46.tgz#18f264efbb2e178315fd4dfc00376e1651888b48"
-  integrity sha512-3ZHgEGRW5sQJ/1DQL7R0JXVFyL81pH2CbAwSb1GX1vJS7P4hVvRyWhqaw/2Wyt2AUDDD4QoyU68iJ/3beexqYQ==
+"@virtuous/react-conductor@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0.tgz#7677b3bdfd973d7680dec18ba83adccbba2b7729"
+  integrity sha512-2v41gzUlF197MztE45mlduuKbWtSU9kNb47zf4y2uYzQb9BIDj7Niqfy7ns3xiYXC6z4s0k2KlvgNQJRz5/YhA==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.46"
-    "@virtuous/conductor-events" "1.0.0-beta.46"
-    "@virtuous/conductor-helpers" "1.0.0-beta.46"
+    "@virtuous/conductor" "1.0.0"
+    "@virtuous/conductor-events" "1.0.0"
+    "@virtuous/conductor-helpers" "1.0.0"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.46":
-  version "1.0.0-beta.46"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.46.tgz#397310907c7fc4f34c3924d37b555eecada077b2"
-  integrity sha512-VcNS9ZD2ISQFSUocmkS6FV/TXW8i1GBtWKf86bl2nit2km9N8M3ZgyBBgZAwuULwtTlO6ifs3rO0yhpN6L8HWg==
+"@virtuous/redux-conductor@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0.tgz#3157a6444ce97bd45918a42e6bddcdd4fbf5b56e"
+  integrity sha512-AkH+ajPZ9vROYlj6peoTRt2q0mYnpoOkKzGl11oFYPXjve2n45I9ZKMhmdY6RPAPInVKuMG7F7vuj01bY7FFyA==
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.46"
-    "@virtuous/conductor-events" "1.0.0-beta.46"
-    "@virtuous/conductor-helpers" "1.0.0-beta.46"
+    "@virtuous/conductor" "1.0.0"
+    "@virtuous/conductor-events" "1.0.0"
+    "@virtuous/conductor-helpers" "1.0.0"
     lodash "^4.17.11"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
