@@ -2,7 +2,6 @@ import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Event from '@shopgate/pwa-core/classes/Event';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 
 /**
  * Keyboard state consumer.
@@ -11,19 +10,12 @@ class KeyboardConsumer extends PureComponent {
   static propTypes = {
     children: PropTypes.func.isRequired,
   }
-  /**
-   * Initializes the state.
-   * @param {Object} props The components props.
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-      overlap: 0,
-      duration: 0,
-    };
-    registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
-  }
+
+  state = {
+    open: false,
+    overlap: 0,
+    duration: 0,
+  };
 
   /**
    * Listen to keyboard changes as soon as the component mounts.
@@ -47,7 +39,6 @@ class KeyboardConsumer extends PureComponent {
   }
 
   /**
-   * Renders the children if keyboard is not visible.
    * @returns {JSX}
    */
   render() {
