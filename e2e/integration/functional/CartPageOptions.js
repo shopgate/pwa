@@ -16,7 +16,8 @@ describe('functional test cart page options', () => {
     cy.get(els.simpleProductWithOptionsNameProductGrid)
       .last()
       .should('be.visible')
-      .click();
+      .click()
+      .wait(1000);
     cy.get(els.addToCartButton)
       .should('be.visible')
       .click();

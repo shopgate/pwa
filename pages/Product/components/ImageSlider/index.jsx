@@ -78,7 +78,6 @@ class ImageSlider extends PureComponent {
           loop
           indicators
           onSlideChange={this.handleSlideChange}
-          rebuildOnUpdate
         >
           {images.map(image => (
             <ProductImage key={image} src={image} animating={false} resolutions={resolutions} />
