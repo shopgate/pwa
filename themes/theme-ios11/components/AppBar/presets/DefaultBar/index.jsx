@@ -5,8 +5,6 @@ import { AppBar } from '@shopgate/pwa-ui-ios';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import ProgressBar from './components/ProgressBar';
 
-const target = document.getElementById('AppHeader');
-
 /**
  * The AppBarDefault component.
  */
@@ -25,6 +23,8 @@ class AppBarDefault extends PureComponent {
   static contextTypes = {
     i18n: PropTypes.func,
   };
+
+  target = document.getElementById('AppHeader');
 
   /**
    * @returns {JSX}
@@ -47,7 +47,7 @@ class AppBarDefault extends PureComponent {
 
     return ReactDOM.createPortal(
       <AppBar center={center} {...this.props} below={below} />,
-      target
+      this.target
     );
   }
 }

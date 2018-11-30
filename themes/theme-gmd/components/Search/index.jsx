@@ -70,8 +70,9 @@ class Search extends Component {
    * @param {Event} event The event.
    */
   update = (event) => {
-    this.fetchSuggestions(event.target.value);
-    this.setState({ query: event.target.value });
+    const query = event.target.value.trim();
+    this.fetchSuggestions(query);
+    this.setState({ query });
   };
 
   /**
@@ -129,9 +130,7 @@ class Search extends Component {
           fieldRef={this.fieldRef}
         />
         <Backdrop onClick={this.close} />
-        {query.length > SUGGESTIONS_MIN && (
-          <Suggestions onClick={this.fetchResults} searchPhrase={query} />
-        )}
+        <Suggestions onClick={this.fetchResults} searchPhrase={query} />
       </div>
     );
   }
