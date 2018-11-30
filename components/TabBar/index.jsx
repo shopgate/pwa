@@ -5,6 +5,7 @@ import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
 import getTabActionComponentForType from './helpers/getTabActionComponentForType';
 import connect from './connector';
 import styles, { updateHeightCSSProperty } from './style';
+import visibleTabs from './tabs';
 
 /**
  * Renders the action for a given tab configuration.
@@ -36,7 +37,6 @@ const createTabAction = (tab, isHighlighted, path) => {
  */
 const TabBar = ({
   isVisible,
-  visibleTabs,
   activeTab,
   path,
 }) => {
@@ -61,10 +61,6 @@ const TabBar = ({
 
 TabBar.propTypes = {
   path: PropTypes.string.isRequired,
-  visibleTabs: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  })).isRequired,
   activeTab: PropTypes.string,
   isVisible: PropTypes.bool,
 };
