@@ -7,10 +7,10 @@ import buildRequestFilters from './buildRequestFilters';
  * use them together the categoryId field has to be extracted into the filter field.
  * TODO: Remove this function once the pipeline specifications have been adjusted.
  * @param {Object} params The request params.
- * @param {Object} filters The current active filters.
+ * @param {Object} [filters=null] The current active filters.
  * @returns {Object} A set of compatible params.
  */
-const processParams = (params, filters) => {
+const processParams = (params, filters = null) => {
   const processedFilters = processFilters(buildRequestFilters(filters));
 
   let newParams = {
