@@ -1,26 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CheckoutButton /> Checkout is possible should render without any props 1`] = `
-<Connect(Link)
-  disabled={true}
-  href="/checkout"
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
 >
-  <RippleButton
-    className="css-ce5yef"
-    disabled={true}
-    flat={false}
-    onClick={null}
-    rippleClassName=""
-    rippleSize={null}
-    testId="Button"
-    type="regular"
-    wrapContent={true}
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string="cart.checkout"
-    />
-  </RippleButton>
-</Connect(Link)>
+  <LoadingProvider>
+    <Component
+      isOrderable={false}
+    >
+      <CheckoutButton
+        isActive={false}
+      >
+        <Connect(Link)
+          disabled={true}
+          href="/checkout"
+        >
+          <Link
+            className=""
+            disabled={true}
+            historyPush={[Function]}
+            historyReplace={[Function]}
+            href="/checkout"
+            replace={false}
+            state={Object {}}
+            tag="div"
+          >
+            <div
+              className="css-c6ki83 "
+              data-test-id="link: /checkout"
+              onClick={[Function]}
+              role="link"
+            >
+              <RippleButton
+                className="css-ce5yef"
+                disabled={true}
+                flat={false}
+                onClick={null}
+                rippleClassName=""
+                rippleSize={null}
+                testId="Button"
+                type="regular"
+                wrapContent={true}
+              >
+                <Button
+                  className="css-ce5yef"
+                  disabled={true}
+                  flat={false}
+                  onClick={null}
+                  testId="Button"
+                  type="regular"
+                  wrapContent={true}
+                >
+                  <Button
+                    className="css-4q16hk css-ce5yef"
+                    disabled={true}
+                    onClick={null}
+                    testId="Button"
+                  >
+                    <button
+                      className="css-4q16hk css-ce5yef css-1rn65c0"
+                      data-test-id="Button"
+                      disabled={true}
+                      onClick={null}
+                    >
+                      <div
+                        className="css-kwqjom"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="cart.checkout"
+                        >
+                          <span
+                            className=""
+                          >
+                            cart.checkout
+                          </span>
+                        </Translate>
+                      </div>
+                    </button>
+                  </Button>
+                </Button>
+              </RippleButton>
+            </div>
+          </Link>
+        </Connect(Link)>
+      </CheckoutButton>
+    </Component>
+  </LoadingProvider>
+</Provider>
 `;

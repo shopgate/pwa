@@ -1,3 +1,4 @@
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { categoryIsReady$ } from '../streams/category';
 import { searchIsReady$ } from '../streams/search';
 import { productIsReady$ } from '../streams/product';
@@ -14,7 +15,7 @@ const callPageViewTracker = ({ getState }) => {
 
   track(
     'pageview',
-    getTrackingData(state),
+    getTrackingData(state, getCurrentRoute()),
     state
   );
 };

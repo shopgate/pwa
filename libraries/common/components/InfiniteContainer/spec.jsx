@@ -4,6 +4,8 @@ import { shallow, mount } from 'enzyme';
 import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
 import InfiniteContainer from './index';
 
+global.console.error = jest.fn();
+
 describe('<InfiniteContainer />', () => {
   let renderedElement;
   let renderedInstance;
