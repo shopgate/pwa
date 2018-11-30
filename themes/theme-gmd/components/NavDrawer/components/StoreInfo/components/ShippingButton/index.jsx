@@ -9,7 +9,7 @@ import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import LocalShippingIcon from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import connect from '../../connector';
+import connect from '../../../../connector';
 
 const LABEL = 'navigation.shipping';
 const SHIPPING_PATH = `${PAGE_PATH}/shipping`;
