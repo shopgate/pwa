@@ -70,8 +70,9 @@ class Search extends Component {
    * @param {Event} event The event.
    */
   update = (event) => {
-    this.fetchSuggestions(event.target.value);
-    this.setState({ query: event.target.value });
+    const query = event.target.value.trim();
+    this.fetchSuggestions(query);
+    this.setState({ query });
   };
 
   /**
