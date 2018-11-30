@@ -16,6 +16,7 @@ branches:
   only:
   - develop
   - PWA-327-Exchange-Router
+  - /^v\d+.\d+.\d+$/
 notifications:
   email: false
   slack:
