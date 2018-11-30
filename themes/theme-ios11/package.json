@@ -44,7 +44,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "classnames": "^2.2.5",
-    "color": "^2.0.0",
     "css-spring": "git+https://github.com/shopgate/css-spring.git#master",
     "glamor": "^2.20.40",
     "lodash": "^4.17.4",
