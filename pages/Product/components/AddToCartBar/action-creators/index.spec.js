@@ -4,7 +4,7 @@ import {
   resetActionCount,
   showAddToCartBar,
   hideAddToCartBar,
-} from './actions';
+} from '../action-creators';
 
 import {
   INCREMENT_ACTION_COUNT,
@@ -12,7 +12,7 @@ import {
   RESET_ACTION_COUNT,
   SHOW_ADD_TO_CART_BAR,
   HIDE_ADD_TO_CART_BAR,
-} from './constants';
+} from '../constants';
 
 describe('AddToCartBar actions', () => {
   describe('incrementActionCount()', () => {

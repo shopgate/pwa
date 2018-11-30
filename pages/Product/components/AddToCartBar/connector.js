@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
-import addProductToCart from '../../actions/addProductToCart';
+import { addProductToCart } from './actions';
 
 /**
  * Connects the current application state to the component props.
