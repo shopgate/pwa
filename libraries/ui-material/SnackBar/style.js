@@ -1,5 +1,12 @@
 import { css } from 'glamor';
+import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const backgroundColor = '#323232';
+const buttonColor = themeConfig.colors.accent;
+const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
+// Button color can be anything. Fall back to white if accent is too dark.
+const safebuttonColor = buttonColorContrast > 4 ? buttonColor : '#fff';
 
 const wrapper = css({
   top: 0,
@@ -13,7 +20,7 @@ const wrapper = css({
 
 const box = css({
   alignItems: 'center',
-  background: '#323232',
+  background: backgroundColor,
   borderRadius: 3,
   boxShadow: '0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12)',
   color: '#fff',
@@ -35,7 +42,7 @@ const label = css({
 }).toString();
 
 const button = css({
-  color: themeConfig.colors.accent,
+  color: safebuttonColor,
   fontWeight: 500,
   height: 36,
   letterSpacing: 'inherit',
