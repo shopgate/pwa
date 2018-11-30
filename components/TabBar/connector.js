@@ -3,7 +3,6 @@ import { getHistoryLocation } from '@shopgate/pwa-common/selectors/history';
 import {
   getActiveTab,
   isTabBarVisible,
-  getVisibleTabs,
 } from './selectors';
 
 /**
@@ -15,7 +14,6 @@ const mapStateToProps = state => ({
   activeTab: getActiveTab(state),
   isVisible: isTabBarVisible(state),
   path: getHistoryLocation(state),
-  visibleTabs: getVisibleTabs(),
 });
 
 export default connect(mapStateToProps);
