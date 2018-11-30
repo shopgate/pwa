@@ -20,12 +20,14 @@ describe('functional tests category page', () => {
       .scrollIntoView()
       .click();
     cy.get(els.sortingDropDown)
+      .first()
       .click();
     cy.get(els.sortingAscButton)
       .click();
     cy.get(els.prodcutWithStrikePrice3GridPrice)
       .should('be.visible');
     cy.get(els.sortingDropDown)
+      .first()
       .click();
     cy.get(els.sortingDescButton)
       .click();
