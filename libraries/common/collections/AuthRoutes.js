@@ -81,7 +81,7 @@ class AuthRoutes {
         // Check for a match.
         const match = this.matcher(pattern)(locationWithoutParams);
 
-        // Match found, set the proector.
+        // Match found, set the protector.
         if (match) {
           protector = this.routes.get(pattern);
         }
