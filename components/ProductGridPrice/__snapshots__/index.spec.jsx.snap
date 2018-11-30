@@ -36,7 +36,6 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
             currency="EUR"
             discounted={true}
             fractions={true}
-            fromPrice={false}
             taxDisclaimer={false}
             unitPrice={10.95}
             unitPriceMin={10.95}
@@ -45,18 +44,17 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
               className="css-izofhs  css-1ncyhu"
               data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
             >
-              <FormatPrice
+              <Translate
                 className=""
-                currency="EUR"
-                fractions={true}
-                price={10.95}
+                params={Object {}}
+                string="price.from"
               >
                 <span
                   className=""
                 >
-                  10.95
+                  price.from
                 </span>
-              </FormatPrice>
+              </Translate>
             </div>
           </Price>
         </li>
@@ -174,7 +172,6 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
             currency="EUR"
             discounted={true}
             fractions={true}
-            fromPrice={false}
             taxDisclaimer={false}
             unitPrice={10.95}
             unitPriceMin={10.95}
@@ -183,18 +180,17 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
               className="css-izofhs  css-1ncyhu"
               data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
             >
-              <FormatPrice
+              <Translate
                 className=""
-                currency="EUR"
-                fractions={true}
-                price={10.95}
+                params={Object {}}
+                string="price.from"
               >
                 <span
                   className=""
                 >
-                  10.95
+                  price.from
                 </span>
-              </FormatPrice>
+              </Translate>
             </div>
           </Price>
         </li>
@@ -286,7 +282,6 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
             currency="EUR"
             discounted={false}
             fractions={true}
-            fromPrice={false}
             taxDisclaimer={false}
             unitPrice={22.95}
             unitPriceMin={22.95}
@@ -295,18 +290,17 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
               className="css-izofhs "
               data-test-id="minPrice: 22.95 price: 22.95 currency: EUR"
             >
-              <FormatPrice
+              <Translate
                 className=""
-                currency="EUR"
-                fractions={true}
-                price={22.95}
+                params={Object {}}
+                string="price.from"
               >
                 <span
                   className=""
                 >
-                  22.95
+                  price.from
                 </span>
-              </FormatPrice>
+              </Translate>
             </div>
           </Price>
         </li>
