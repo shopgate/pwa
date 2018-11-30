@@ -7,14 +7,14 @@ const outer = css({
   position: 'sticky',
   top: 0,
   width: '100%',
-  zIndex: 2,
+  zIndex: 15,
 });
 
 const inner = css({
   background: 'inherit',
   display: 'flex',
   position: 'relative',
-  zIndex: 1,
+  zIndex: 14,
 });
 
 export default {

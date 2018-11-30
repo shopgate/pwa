@@ -7,4 +7,3 @@ export * from './page';
 export * from './router';
 export * from './url';
 export * from './user';
-export * from './view';

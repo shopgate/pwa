@@ -8,10 +8,7 @@ import * as pipelines from '../constants/Pipelines';
 import requestFilters from '../action-creators/requestFilters';
 import receiveFilters from '../action-creators/receiveFilters';
 import errorFilters from '../action-creators/errorFilters';
-import {
-  getActiveFilters,
-  getFilterResults,
-} from '../selectors';
+import { getFilterResults } from '../selectors';
 import buildFilterParams from './helpers/buildFilterParams';
 import processParams from './helpers/processParams';
 
@@ -21,7 +18,6 @@ import processParams from './helpers/processParams';
  */
 const getFilters = () => (dispatch, getState) => {
   const state = getState();
-  const activeFilters = getActiveFilters(state);
   const params = buildFilterParams();
 
   const hash = generateResultHash({
@@ -36,7 +32,7 @@ const getFilters = () => (dispatch, getState) => {
   }
 
   // We need to process the params to handle edge cases in the pipeline params.
-  const requestParams = processParams(params, activeFilters);
+  const requestParams = processParams(params);
 
   if (Object.keys(requestParams).length === 0) {
     logger.error(`Attempt to call ${pipelines.SHOPGATE_CATALOG_GET_FILTERS} pipeline without parameters - aborted`);

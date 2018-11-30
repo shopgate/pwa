@@ -1,6 +1,4 @@
 import hideMenuBar from '@shopgate/pwa-core/commands/hideMenuBar';
-import hideNavigationBar from '@shopgate/pwa-core/commands/hideNavigationBar';
-import showNavigationBar from '@shopgate/pwa-core/commands/showNavigationBar';
 import broadcastEvent from '@shopgate/pwa-core/commands/broadcastEvent';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 
@@ -17,31 +15,20 @@ let currentPageContext = {};
 export const getPageContext = () => currentPageContext;
 
 /**
- * Hides the legacy navigation views.
+ * Prepares the NavigationBar and the MenuBar of the app legacy part for the PWA.
  */
-export const hideLegacyNavigation = () => {
-  hideMenuBar({ animation: null });
-  hideNavigationBar({ animation: 'none' });
-};
-
-/**
- * Shows the legacy navigation views.
- */
-export const showLegacyNavigation = () => {
-  showNavigationBar({ animation: 'none' });
-};
-
-/**
- * Broadcasts an event to the pwa_navigation_bar webview
- * and updates the navigation bar with type "none".
- * Event parameters are defined accordingly to
- * the specification of the native updateNavigationBar event.
- */
-export const updateNavigationBarNone = () => {
+export const prepareLegacyNavigation = () => {
+  /**
+   * Broadcasts an event to the pwa_navigation_bar webview and updates the navigation bar with
+   * type "none". Event parameters are defined accordingly to the specification of the native
+   * updateNavigationBar event.
+   */
   broadcastEvent({
     event: 'updateNavigationBar',
     parameters: ['', 'none', { type: 'none' }],
   });
+
+  hideMenuBar({ animation: null });
 };
 
 /**

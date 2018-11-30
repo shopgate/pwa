@@ -16,7 +16,7 @@ const deleteProductsFromCart = cartItemIds => (dispatch) => {
   dispatch(deleteProducts(cartItemIds));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_DELETE_PRODUCTS);
-  request.setInput({ CartItemIds: cartItemIds })
+  request.setInput({ cartItemIds })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
