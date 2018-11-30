@@ -49,9 +49,6 @@ const content = css({
   flexGrow: 1,
   position: 'relative',
   zIndex: 0,
-  '& + #AppFooter:empty': {
-    height: 'var(--safe-area-inset-bottom)',
-  },
 });
 
 const header = css({
