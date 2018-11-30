@@ -129,9 +129,7 @@ class Search extends Component {
           fieldRef={this.fieldRef}
         />
         <Backdrop onClick={this.close} />
-        {query.length > SUGGESTIONS_MIN && (
-          <Suggestions onClick={this.fetchResults} searchPhrase={query} />
-        )}
+        <Suggestions onClick={this.fetchResults} searchPhrase={query} />
       </div>
     );
   }
