@@ -84,6 +84,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
               >
                 <h2
                   className="css-18cwfw7"
+                  data-test-id="Headline"
                   style={
                     Object {
                       "margin": "24px 20px 16px",
@@ -125,6 +126,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 >
                   <button
                     className="css-1czs3p1"
+                    data-test-id="logoutButton"
                     onClick={[MockFunction]}
                   >
                     <Translate
