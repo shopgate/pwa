@@ -140,6 +140,8 @@ clean-git:
 fix-remote:
 		git merge -s ours --no-commit --allow-unrelated-histories $(REMOTE)/master
 
+setup-frontend-with-current-ip:
+		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}')",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "cheap-module-eval-source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
 e2e-gmd:
