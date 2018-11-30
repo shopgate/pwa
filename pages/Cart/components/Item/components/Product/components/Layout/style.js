@@ -44,11 +44,11 @@ const disclaimerSpacer = css({
 
 const price = css({
   marginLeft: '1em',
-});
+}).toString();
 
 const properties = css({
   wordBreak: 'break-word',
-});
+}).toString();
 
 export default {
   item,
