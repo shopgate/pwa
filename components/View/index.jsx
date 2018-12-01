@@ -28,7 +28,7 @@ const View = ({
           >
             {children}
           </Content>
-          )}
+        )}
       </ViewContext.Consumer>
     </ViewProvider>
   </section>
