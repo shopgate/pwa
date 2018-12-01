@@ -17,7 +17,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Price = ({ hasVariants, price }) => (
+const Price = ({ showTotalPrice, price }) => (
   <Fragment>
     <Portal name={PRODUCT_PRICE_BEFORE} />
     <Portal name={PRODUCT_PRICE}>
@@ -27,10 +27,9 @@ const Price = ({ hasVariants, price }) => (
             className={styles.price}
             currency={price.currency}
             discounted={!!price.discount}
-            fromPrice={hasVariants}
             taxDisclaimer
-            unitPrice={hasVariants ? price.unitPrice : price.totalPrice}
-            unitPriceMin={price.unitPriceMin}
+            unitPrice={!showTotalPrice ? price.unitPrice : price.totalPrice}
+            unitPriceMin={!showTotalPrice ? price.unitPriceMin : 0}
           />
         )}
       </PlaceholderLabel>
@@ -40,13 +39,13 @@ const Price = ({ hasVariants, price }) => (
 );
 
 Price.propTypes = {
-  hasVariants: PropTypes.bool,
   price: PropTypes.shape(),
+  showTotalPrice: PropTypes.bool,
 };
 
 Price.defaultProps = {
-  hasVariants: false,
   price: null,
+  showTotalPrice: false,
 };
 
 export default connect(pure(Price));
