@@ -31,13 +31,13 @@ const Price = (props) => {
       className={containerClasses}
       data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
     >
-      {props.fromPrice ? (
+      {props.unitPriceMin ? (
         <I18n.Text string="price.from">
           <I18n.Price
             currency={props.currency}
             fractions={props.fractions}
             forKey="price"
-            price={props.unitPrice}
+            price={props.unitPriceMin}
           />
         </I18n.Text>
       ) : (
@@ -60,7 +60,6 @@ Price.propTypes = {
   className: PropTypes.string,
   discounted: PropTypes.bool,
   fractions: PropTypes.bool,
-  fromPrice: PropTypes.bool,
   taxDisclaimer: PropTypes.bool,
   unitPriceMin: PropTypes.number,
 };
@@ -70,7 +69,6 @@ Price.defaultProps = {
   unitPriceMin: 0,
   discounted: false,
   fractions: true,
-  fromPrice: false,
   taxDisclaimer: false,
 };
 
