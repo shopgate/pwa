@@ -2,7 +2,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
-import syncRouter from '@virtuous/redux-conductor';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import benchmarkController from '@shopgate/pwa-benchmark';
 import persistedReducers from '../collections/PersistedReducers';
@@ -67,7 +66,6 @@ export function configureStore(reducers, subscribers) {
   );
 
   initSubscribers(subscribers);
-  syncRouter(store);
 
   return store;
 }

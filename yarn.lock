@@ -263,14 +263,6 @@
     "@virtuous/conductor" "2.0.0-beta.2"
     react-spring "^6.1.4"
 
-"@virtuous/redux-conductor@2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-2.0.0-beta.2.tgz#9c088244c7d46f872c143df4547670e8a1c661b9"
-  integrity sha512-piaJDbnl8WCsDrA4y1sAbCd38LoJ3mAIZnH4RZLkAlPxoocLWg6zqsoJduJfLy9u/g5/piqJhD+rBv2h0CQ6LA==
-  dependencies:
-    "@virtuous/conductor" "2.0.0-beta.2"
-    lodash "^4.17.11"
-
 "@virtuous/redux-persister@1.1.0-beta.7":
   version "1.1.0-beta.7"
   resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.7.tgz#093b0bcdbaa2458b9a49e5a548e241212e0637cf"
@@ -6137,7 +6129,7 @@ lodash@4.17.4:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
   integrity sha1-eCA6TRwyiuHYbcpkYONptX9AVa4=
 
-lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
