@@ -74,6 +74,7 @@ class Selector extends PureComponent {
     return (
       <Toggle
         {...props}
+        key={label}
         label={label}
         selected={<Selected values={values} selected={selected} />}
       />

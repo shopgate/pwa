@@ -192,7 +192,7 @@ class FilterContent extends PureComponent {
    */
   renderCloseBar = () => {
     const right = <ApplyButton active={this.hasChanged} onClick={this.save} />;
-    return <CloseBar title="titles.filter" right={right} />;
+    return <CloseBar title="titles.filter" right={right} key="right" />;
   }
 
   /**

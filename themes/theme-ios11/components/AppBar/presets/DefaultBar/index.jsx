@@ -36,10 +36,10 @@ class AppBarDefault extends PureComponent {
 
     const { title } = this.props;
     const { __ } = this.context.i18n();
-    const center = <AppBar.Title title={__(title || '')} />;
+    const center = <AppBar.Title title={__(title || '')} key="center" />;
 
     const below = (
-      <Fragment>
+      <Fragment key="below">
         {this.props.below}
         <ProgressBar />
       </Fragment>
