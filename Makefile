@@ -61,6 +61,9 @@ else
 	PRE_RELEASE = true
 endif
 
+# Causes a STABLE release not to update master if not set to true
+UPDATE_MASTER = true
+
 # This causes the Github-API to create draft releases only, without creating tags
 DRAFT_RELEASE = true
 
@@ -329,11 +332,13 @@ publish-to-github:
 ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
 		$(call build-changelog)
+endif
+ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
+		# UPDATING MASTER FOR STABLE RELEASE
 		$(call push-subtrees-to-git, master)
 		git push origin "releases/$(RELEASE_NAME)":master;
-		git checkout develop && git pull && git merge "releases/$(RELEASE_NAME)" && git push origin develop;
 else
-		# PRE-RELEASE (alpha, beta, rc)
+		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
 endif
 
