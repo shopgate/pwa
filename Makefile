@@ -25,8 +25,9 @@ else
 	IS_RC_BRANCH_NAME = false
 endif
 
-# Make sure the release name starts with a "v"
+# Make sure the release name starts with a "v" and the release version does not
 RELEASE_NAME = v$(patsubst v%,%,$(strip $(RELEASE_VERSION)))
+RELEASE_VERSION = $(patsubst v%,%,$(strip $(RELEASE_VERSION)))
 
 
 # Set up pre-release state flags to be "true" or "false"
@@ -222,7 +223,7 @@ define update-pwa-versions
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
-			then echo "ERROR: Package version mismatch, please theck your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			then echo "ERROR: Package version mismatch, please check your specified version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
 
