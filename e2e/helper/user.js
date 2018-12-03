@@ -42,10 +42,11 @@ export function logInUser() {
 
       cy.log(`Use need login: ${JSON.stringify(needLogin)}`);
       if (!needLogin) {
-        return closeNavDrawer();
+        closeNavDrawer();
+        return;
       }
 
-      cy.window().spyAction('OPEN_LINK', () => {
+      cy.window().spyAction('ROUTE_DID_ENTER', () => {
         loginWelcomeText.click();
       });
 
@@ -63,6 +64,5 @@ export function logInUser() {
             .type('{enter}');
         });
       });
-      return true;
     });
 }
