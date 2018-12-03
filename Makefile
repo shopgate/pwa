@@ -11,10 +11,9 @@ THEMES = theme-gmd theme-ios11
 GITHUB_AUTH_KEY =
 GITHUB_AUTH_TOKEN =
 
-# deprecated; use RELEASE_VERSION
 REPO_VERSION =
 
-RELEASE_VERSION = $(strip $(REPO_VERSION))
+RELEASE_VERSION = $(patsubst v%,%,$(strip $(REPO_VERSION)))
 
 # Branch name to start the release from; "develop" by default
 BRANCH_NAME = develop
@@ -351,7 +350,7 @@ define build-changelog
 		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
 		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";
 		# Remove the dummy tag again, so it can be properly created with the changelog file inside
-		git push -d origin "$(RELEASE_NAME)";
+		git push -d origin "refs/tags/$(RELEASE_NAME)";
 		git tag -d "$(RELEASE_NAME)";
 		git fetch origin;
 		# Push the new changelog to GitHub (into the STABLE release branch)
@@ -359,7 +358,7 @@ define build-changelog
 		git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
 		git push origin "releases/$(RELEASE_NAME)" --tags;
 		# Recreate the tag with the changelog inside and push it to remote (origin)
-		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
+		git tag "$(RELEASE_NAME)" && git push origin "refs/tags/$(RELEASE_NAME)";
 
 endef
 
