@@ -11,10 +11,9 @@ THEMES = theme-gmd theme-ios11
 GITHUB_AUTH_KEY =
 GITHUB_AUTH_TOKEN =
 
-# deprecated; use RELEASE_VERSION
 REPO_VERSION =
 
-RELEASE_VERSION = $(strip $(REPO_VERSION))
+RELEASE_VERSION = $(patsubst v%,%,$(strip $(REPO_VERSION)))
 
 # Branch name to start the release from; "develop" by default
 BRANCH_NAME = develop
@@ -27,7 +26,6 @@ endif
 
 # Make sure the release name starts with a "v" and the release version does not
 RELEASE_NAME = v$(patsubst v%,%,$(strip $(RELEASE_VERSION)))
-RELEASE_VERSION = $(patsubst v%,%,$(strip $(RELEASE_VERSION)))
 
 
 # Set up pre-release state flags to be "true" or "false"
