@@ -18,21 +18,6 @@ export const getRouterStack = createSelector(
 
 /**
  * @param {Object} state The global state.
- * @returns {string|null} The current history entry.
- */
-export const getCurrentRoute = createSelector(
-  getRouterStack,
-  (stack) => {
-    if (!stack.length) {
-      return null;
-    }
-
-    return stack[stack.length - 1];
-  }
-);
-
-/**
- * @param {Object} state The global state.
  * @returns {Object|null}
  */
 export const getCurrentParams = () => {
