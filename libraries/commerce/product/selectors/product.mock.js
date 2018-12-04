@@ -196,10 +196,7 @@ export const mockedProperty2 = {
 export const mockedPropertiesByProductId = {
   product_1: {
     isFetching: false,
-    properties: [
-      mockedProperty1,
-      mockedProperty2,
-    ],
+    properties: [mockedProperty1, mockedProperty2],
   },
   product_5: {
     isFetching: true,
@@ -224,6 +221,50 @@ export const mockedImagesByProductId = {
   product_2: {
     isFetching: false,
     images: mockedProductImagesVariant,
+  },
+  product_3: {
+    isFetching: false,
+    images: [],
+  },
+  product_5: {
+    isFetching: true,
+  },
+};
+
+export const mockedProductImagesFormatBase = [
+  {
+    width: 440,
+    height: 440,
+    sources: ['https://img-cdn.shopgate.com/a43fac2d'],
+  },
+  {
+    width: 440,
+    height: 440,
+    sources: ['https://img-cdn.shopgate.com/b543f421'],
+  },
+];
+
+export const mockedProductImagesFormatVariant = [
+  {
+    width: 440,
+    height: 440,
+    sources: ['https://img-cdn.shopgate.com/a43fac2d'],
+  },
+  {
+    width: 440,
+    height: 440,
+    sources: ['https://img-cdn.shopgate.com/b543f421'],
+  },
+];
+
+export const mockedProductImagesByProductIdFormats = {
+  product_1: {
+    isFetching: false,
+    images: mockedProductImagesFormatBase,
+  },
+  product_2: {
+    isFetching: false,
+    images: mockedProductImagesFormatVariant,
   },
   product_3: {
     isFetching: false,
@@ -286,6 +327,7 @@ export const mockedState = {
     descriptionsByProductId: mockedDescriptionsByProductId,
     propertiesByProductId: mockedPropertiesByProductId,
     imagesByProductId: mockedImagesByProductId,
+    imagesByProductIdFormats: mockedProductImagesByProductIdFormats,
     variantsByProductId: mockedVariantsByProductId,
     optionsByProductId: {},
   },

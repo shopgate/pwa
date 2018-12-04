@@ -20,8 +20,22 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
       dispatch={[Function]}
       images={
         Array [
-          "foo",
-          "bar",
+          Object {
+            "height": 1024,
+            "sources": Array [
+              "foo1024",
+              "bar1024",
+            ],
+            "width": 1024,
+          },
+          Object {
+            "height": 2048,
+            "sources": Array [
+              "foo2048",
+              "bar2048",
+            ],
+            "width": 2048,
+          },
         ]
       }
       initialSlide={3}
@@ -48,7 +62,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
         >
           <div
             className="css-1vgjawn"
-            key="foo"
+            key="[\\"foo1024\\",\\"foo2048\\"]"
           >
             <Image
               alt={null}
@@ -63,26 +77,33 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               resolutions={
                 Array [
                   Object {
+                    "blur": 2,
+                    "height": 50,
+                    "width": 50,
+                  },
+                  Object {
                     "height": 440,
                     "width": 440,
                   },
-                  Object {
-                    "height": 2048,
-                    "width": 2048,
-                  },
                 ]
               }
-              src="foo"
+              src={null}
+              srcmap={
+                Array [
+                  "foo1024",
+                  "foo2048",
+                ]
+              }
               transition={null}
             >
               <div
-                className="css-326p2s "
+                className="css-hekcyy "
               />
             </Image>
           </div>
           <div
             className="css-1vgjawn"
-            key="bar"
+            key="[\\"bar1024\\",\\"bar2048\\"]"
           >
             <Image
               alt={null}
@@ -97,20 +118,27 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               resolutions={
                 Array [
                   Object {
+                    "blur": 2,
+                    "height": 50,
+                    "width": 50,
+                  },
+                  Object {
                     "height": 440,
                     "width": 440,
                   },
-                  Object {
-                    "height": 2048,
-                    "width": 2048,
-                  },
                 ]
               }
-              src="bar"
+              src={null}
+              srcmap={
+                Array [
+                  "bar1024",
+                  "bar2048",
+                ]
+              }
               transition={null}
             >
               <div
-                className="css-326p2s "
+                className="css-hekcyy "
               />
             </Image>
           </div>
@@ -141,8 +169,22 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
       dispatch={[Function]}
       images={
         Array [
-          "foo",
-          "bar",
+          Object {
+            "height": 1024,
+            "sources": Array [
+              "foo1024",
+              "bar1024",
+            ],
+            "width": 1024,
+          },
+          Object {
+            "height": 2048,
+            "sources": Array [
+              "foo2048",
+              "bar2048",
+            ],
+            "width": 2048,
+          },
         ]
       }
       initialSlide={0}
@@ -169,7 +211,7 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
         >
           <div
             className="css-1vgjawn"
-            key="foo"
+            key="[\\"foo1024\\",\\"foo2048\\"]"
           >
             <Image
               alt={null}
@@ -184,26 +226,33 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
               resolutions={
                 Array [
                   Object {
+                    "blur": 2,
+                    "height": 50,
+                    "width": 50,
+                  },
+                  Object {
                     "height": 440,
                     "width": 440,
                   },
-                  Object {
-                    "height": 2048,
-                    "width": 2048,
-                  },
                 ]
               }
-              src="foo"
+              src={null}
+              srcmap={
+                Array [
+                  "foo1024",
+                  "foo2048",
+                ]
+              }
               transition={null}
             >
               <div
-                className="css-326p2s "
+                className="css-hekcyy "
               />
             </Image>
           </div>
           <div
             className="css-1vgjawn"
-            key="bar"
+            key="[\\"bar1024\\",\\"bar2048\\"]"
           >
             <Image
               alt={null}
@@ -218,20 +267,27 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
               resolutions={
                 Array [
                   Object {
+                    "blur": 2,
+                    "height": 50,
+                    "width": 50,
+                  },
+                  Object {
                     "height": 440,
                     "width": 440,
                   },
-                  Object {
-                    "height": 2048,
-                    "width": 2048,
-                  },
                 ]
               }
-              src="bar"
+              src={null}
+              srcmap={
+                Array [
+                  "bar1024",
+                  "bar2048",
+                ]
+              }
               transition={null}
             >
               <div
-                className="css-326p2s "
+                className="css-hekcyy "
               />
             </Image>
           </div>

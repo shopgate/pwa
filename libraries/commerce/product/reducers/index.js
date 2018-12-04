@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import productsById from './productsById';
 import currentProduct from './currentProduct';
 import imagesByProductId from './imagesByProductId';
+import imagesByProductIdFormats from './imagesByProductIdFormats';
 import descriptionsByProductId from './descriptionsByProductId';
 import propertiesByProductId from './propertiesByProductId';
 import shippingByProductId from './shippingByProductId';
@@ -14,6 +15,7 @@ export default combineReducers({
   currentProduct,
   descriptionsByProductId,
   imagesByProductId,
+  imagesByProductIdFormats,
   optionsByProductId,
   productRelationsByHash,
   productsById,

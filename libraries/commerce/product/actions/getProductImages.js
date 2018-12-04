@@ -9,22 +9,39 @@ import errorProductImages from '../action-creators/errorProductImages';
 /**
  * Maybe requests images for a product from server.
  * @param {string} productId The product ID.
+ * @param {Array} [formats] The requested formats.
  * @return {Function} The dispatched action.
  */
-const getProductImages = productId => (dispatch, getState) => {
+const getProductImages = (productId, formats) => (dispatch, getState) => {
   const state = getState();
-  const productImages = state.product.imagesByProductId[productId];
 
-  if (!shouldFetchData(productImages)) {
+  const productImages = state.product.imagesByProductId[productId];
+  const productImagesFormats = state.product.imagesByProductIdFormats[productId];
+  const needsPlain = (!formats);
+  if (needsPlain && !shouldFetchData(productImages)) {
     return;
   }
 
-  dispatch(requestProductImages(productId));
+  if (formats && !shouldFetchData(productImagesFormats)) {
+    return;
+  }
+
+  let version = 1;
+  const input = { productId };
+  if (formats) {
+    input.formats = formats;
+    version = 2;
+  }
+
+  dispatch(requestProductImages(productId, formats));
 
   new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
-    .setInput({ productId })
+    .setInput(input)
+    .setVersion(version)
     .dispatch()
-    .then(result => dispatch(receiveProductImages(productId, result.images)))
+    .then((result) => {
+      dispatch(receiveProductImages(productId, result));
+    })
     .catch((error) => {
       logger.error(error);
       dispatch(errorProductImages(productId));

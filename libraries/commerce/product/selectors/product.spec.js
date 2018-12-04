@@ -1,10 +1,7 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import upperFirst from 'lodash/upperFirst';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  PROPERTIES_FILTER_BLACKLIST,
-  PROPERTIES_FILTER_WHITELIST,
-} from '../constants/';
+import { PROPERTIES_FILTER_BLACKLIST, PROPERTIES_FILTER_WHITELIST } from '../constants/';
 
 import {
   mockedState as mockedProductState,
@@ -15,6 +12,7 @@ import {
   mockedProperty1,
   mockedProperty2,
   mockedImagesByProductId,
+  mockedProductImagesByFormat,
   mockedProductImagesBase,
   mockedProductImagesVariant,
   mockedVariantsByProductId,
@@ -27,6 +25,7 @@ import {
   getProductDescriptionState,
   getProductPropertiesState,
   getProductImagesState,
+  getProductImagesFormatState,
   getProductVariantsState,
   getProductById,
   getProductId,
@@ -146,6 +145,16 @@ describe('Product selectors', () => {
 
     it('should work as expected', () => {
       expect(getProductImagesState(mockedState)).toEqual(mockedImagesByProductId);
+    });
+  });
+
+  describe('getProductImagesFormatState()', () => {
+    it('should return an empty object if the state is not ready yet', () => {
+      expect(getProductImagesFormatState({})).toEqual({});
+    });
+
+    it('should work as expected', () => {
+      expect(getProductImagesFormatState(mockedState)).toEqual(mockedProductImagesByFormat);
     });
   });
 
@@ -317,8 +326,7 @@ describe('Product selectors', () => {
       });
 
       it('should return the property as expected', () => {
-        expect(getProductCurrency(mockedState, { productId }))
-          .toBe(productData.price.currency);
+        expect(getProductCurrency(mockedState, { productId })).toBe(productData.price.currency);
       });
     });
 
@@ -328,8 +336,7 @@ describe('Product selectors', () => {
       });
 
       it('should return the property as expected', () => {
-        expect(getProductUnitPrice(mockedState, { productId }))
-          .toBe(productData.price.unitPrice);
+        expect(getProductUnitPrice(mockedState, { productId })).toBe(productData.price.unitPrice);
       });
     });
   });
@@ -414,10 +421,7 @@ describe('Product selectors', () => {
 
         const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(2);
-        expect(properties).toEqual([
-          mockedProperty1,
-          mockedProperty2,
-        ]);
+        expect(properties).toEqual([mockedProperty1, mockedProperty2]);
       });
 
       it('should not filter when no config is set', () => {
@@ -425,10 +429,7 @@ describe('Product selectors', () => {
 
         const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(2);
-        expect(properties).toEqual([
-          mockedProperty1,
-          mockedProperty2,
-        ]);
+        expect(properties).toEqual([mockedProperty1, mockedProperty2]);
       });
 
       it('should filter all when whitelist is empty array', () => {
@@ -500,8 +501,8 @@ describe('Product selectors', () => {
     it('should return images for a variant when productId and variantId are passed', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
-      expect(getProductImages(mockedState, { productId, variantId }))
-        .toEqual(mockedProductImagesVariant);
+      // eslint-disable-next-line max-len
+      expect(getProductImages(mockedState, { productId, variantId })).toEqual(mockedProductImagesVariant);
     });
 
     it('should return images for a variant when only the variantId is passed', () => {
@@ -517,8 +518,8 @@ describe('Product selectors', () => {
     it('should return images of the base product when a variant has no images', () => {
       const productId = 'product_1';
       const variantId = 'product_3';
-      expect(getProductImages(mockedState, { productId, variantId }))
-        .toEqual(mockedProductImagesBase);
+      // eslint-disable-next-line max-len
+      expect(getProductImages(mockedState, { productId, variantId })).toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when a variant has no images and only the variantId is passed', () => {
@@ -711,8 +712,7 @@ describe('Product selectors', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       const { productData } = mockedProductsById[productId];
-      expect(getBaseProduct(mockedState, { productId, variantId }))
-        .toEqual(productData);
+      expect(getBaseProduct(mockedState, { productId, variantId })).toEqual(productData);
     });
 
     it('should return the the base product when only a variant is selected', () => {
@@ -812,10 +812,9 @@ describe('Product selectors', () => {
 
     it('should return data when a matching product was found', () => {
       const productId = 'product_1';
-      const {
-        characteristics,
-        availability,
-      } = mockedVariantsByProductId[productId].variants.products[1];
+      const { characteristics, availability } = mockedVariantsByProductId[
+        productId
+      ].variants.products[1];
 
       const props = { productId, characteristics };
       expect(getVariantAvailabilityByCharacteristics(mockedState, props)).toEqual(availability);
