@@ -1568,41 +1568,41 @@ exports[`More should render for logged out user 1`] = `
                           <li
                             className="css-yj596"
                           >
-                            <Button
-                              className="css-6f03lb"
+                            <Link
+                              className=""
                               disabled={false}
-                              flat={false}
-                              onClick={null}
-                              testId="UserMenuLogin"
-                              type="primary"
-                              wrapContent={true}
+                              href="/login"
                             >
-                              <Button
-                                className="css-cimv5k css-6f03lb"
-                                disabled={false}
-                                onClick={null}
-                                testId="UserMenuLogin"
+                              <div
+                                aria-hidden={true}
+                                className="css-c6ki83 "
+                                data-test-id="link: /login"
+                                onClick={[Function]}
+                                role="link"
                               >
-                                <button
-                                  className="css-cimv5k css-6f03lb css-1rn65c0"
-                                  data-test-id="UserMenuLogin"
+                                <Button
+                                  className="css-6f03lb"
                                   disabled={false}
+                                  flat={false}
                                   onClick={null}
+                                  testId="UserMenuLogin"
+                                  type="primary"
+                                  wrapContent={true}
                                 >
-                                  <div
-                                    className="css-8s1fw2"
+                                  <Button
+                                    className="css-cimv5k css-6f03lb"
+                                    disabled={false}
+                                    onClick={null}
+                                    testId="UserMenuLogin"
                                   >
-                                    <Link
-                                      className=""
+                                    <button
+                                      className="css-cimv5k css-6f03lb css-1rn65c0"
+                                      data-test-id="UserMenuLogin"
                                       disabled={false}
-                                      href="/login"
+                                      onClick={null}
                                     >
                                       <div
-                                        aria-hidden={true}
-                                        className="css-c6ki83 "
-                                        data-test-id="link: /login"
-                                        onClick={[Function]}
-                                        role="link"
+                                        className="css-8s1fw2"
                                       >
                                         <Translate
                                           className=""
@@ -1616,11 +1616,11 @@ exports[`More should render for logged out user 1`] = `
                                           </span>
                                         </Translate>
                                       </div>
-                                    </Link>
-                                  </div>
-                                </button>
-                              </Button>
-                            </Button>
+                                    </button>
+                                  </Button>
+                                </Button>
+                              </div>
+                            </Link>
                           </li>
                         </GridItem>
                         <GridItem
@@ -1632,41 +1632,41 @@ exports[`More should render for logged out user 1`] = `
                           <li
                             className="css-yj596"
                           >
-                            <Button
-                              className="css-6f03lb"
+                            <Link
+                              className=""
                               disabled={false}
-                              flat={false}
-                              onClick={null}
-                              testId="UserMenuRegister"
-                              type="primary"
-                              wrapContent={true}
+                              href="/register"
                             >
-                              <Button
-                                className="css-cimv5k css-6f03lb"
-                                disabled={false}
-                                onClick={null}
-                                testId="UserMenuRegister"
+                              <div
+                                aria-hidden={true}
+                                className="css-c6ki83 "
+                                data-test-id="link: /register"
+                                onClick={[Function]}
+                                role="link"
                               >
-                                <button
-                                  className="css-cimv5k css-6f03lb css-1rn65c0"
-                                  data-test-id="UserMenuRegister"
+                                <Button
+                                  className="css-6f03lb"
                                   disabled={false}
+                                  flat={false}
                                   onClick={null}
+                                  testId="UserMenuRegister"
+                                  type="primary"
+                                  wrapContent={true}
                                 >
-                                  <div
-                                    className="css-8s1fw2"
+                                  <Button
+                                    className="css-cimv5k css-6f03lb"
+                                    disabled={false}
+                                    onClick={null}
+                                    testId="UserMenuRegister"
                                   >
-                                    <Link
-                                      className=""
+                                    <button
+                                      className="css-cimv5k css-6f03lb css-1rn65c0"
+                                      data-test-id="UserMenuRegister"
                                       disabled={false}
-                                      href="/register"
+                                      onClick={null}
                                     >
                                       <div
-                                        aria-hidden={true}
-                                        className="css-c6ki83 "
-                                        data-test-id="link: /register"
-                                        onClick={[Function]}
-                                        role="link"
+                                        className="css-8s1fw2"
                                       >
                                         <Translate
                                           className=""
@@ -1680,11 +1680,11 @@ exports[`More should render for logged out user 1`] = `
                                           </span>
                                         </Translate>
                                       </div>
-                                    </Link>
-                                  </div>
-                                </button>
-                              </Button>
-                            </Button>
+                                    </button>
+                                  </Button>
+                                </Button>
+                              </div>
+                            </Link>
                           </li>
                         </GridItem>
                       </ul>
