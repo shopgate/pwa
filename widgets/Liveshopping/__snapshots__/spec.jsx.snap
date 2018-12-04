@@ -76,6 +76,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
               />
             </GridItem>
             <GridItem
@@ -182,6 +183,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
               />
             </GridItem>
             <GridItem
@@ -319,6 +321,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
               />
             </GridItem>
             <GridItem

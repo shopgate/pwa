@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import {
-  getProductImages,
+  getProductImagesByFormats,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { galleryImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
 
 /**
  * Maps the contents of the state to the component props.
@@ -11,7 +12,10 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  images: getProductImages(state, props),
+  images: getProductImagesByFormats(state, {
+    ...props,
+    ...{ formats: galleryImageFormats.getAll() },
+  }),
   product: getCurrentBaseProduct(state, props),
 });
 
@@ -32,4 +36,9 @@ const areStatePropsEqual = (next, prev) => {
   return true;
 };
 
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(
+  mapStateToProps,
+  null,
+  null,
+  { areStatePropsEqual }
+);
