@@ -15,6 +15,8 @@ import styles from './style';
  * The ViewContent component.
  */
 class ViewContent extends Component {
+  static contextType = RouteContext;
+
   static propTypes = {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
