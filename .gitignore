@@ -49,5 +49,5 @@ trustedPipelines/
 extensions/
 !extensions/@shopgate-tracking-ga-native
 !extensions/@shopgate-product-reviews
-config/
+themes/*/config/
 .nyc_output
