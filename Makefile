@@ -26,7 +26,6 @@ endif
 
 # Make sure the release name starts with a "v" and the release version does not
 RELEASE_NAME = v$(patsubst v%,%,$(strip $(RELEASE_VERSION)))
-RELEASE_VERSION = $(patsubst v%,%,$(strip $(RELEASE_VERSION)))
 
 
 # Set up pre-release state flags to be "true" or "false"

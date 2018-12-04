@@ -41,8 +41,8 @@ class AppBarIcon extends PureComponent {
         }}
         data-test-id={testId}
       >
-        <Icon {...iconProps} />
-        {Badge && <Badge />}
+        <Icon key="icon" {...iconProps} />
+        {Badge && <Badge key="badge" />}
       </div>
     );
   }
