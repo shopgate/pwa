@@ -40,7 +40,7 @@ class SearchContent extends Component {
       <Fragment>
         <BackBar
           title={searchPhrase}
-          {...showFilterBar && { below: <Bar /> }}
+          {...showFilterBar && { below: <Bar key="below" /> }}
         />
         <Products searchPhrase={searchPhrase} sortOrder={DEFAULT_SORT} />
         {showNoResults && (
