@@ -11,7 +11,7 @@ import ProductImage from 'Components/ProductImage';
 import BaseImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import connect from './connector';
 
-const resolutions = [
+const fallbackResolutions = [
   {
     width: 440,
     height: 440,
@@ -23,12 +23,31 @@ const resolutions = [
 ];
 
 /**
+ * reformats the images array to group pictures by index, not by format
+ * @param {Array} images array of format images
+ * @returns {Array}
+ */
+const getImagesByIndex = (images) => {
+  const imagesByIndex = [];
+
+  images.forEach((format) => {
+    if (!format.sources || !format.sources.length) return;
+    format.sources.forEach((src, index) => {
+      if (!imagesByIndex[index]) imagesByIndex[index] = [];
+      imagesByIndex[index].push(src);
+    });
+  });
+
+  return imagesByIndex;
+};
+
+/**
  * The product image slider component.
  * @param {number} currentSlide The index of the current visible slide.
  */
 class ImageSlider extends PureComponent {
   static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string),
+    images: PropTypes.arrayOf(PropTypes.shape()),
     navigate: PropTypes.func,
     product: PropTypes.shape(),
   };
@@ -44,7 +63,7 @@ class ImageSlider extends PureComponent {
   handleOpenGallery = () => {
     const { images } = this.props;
 
-    if (!images || !images.length) {
+    if (!images || (Array.isArray(images) && !images.length)) {
       return;
     }
 
@@ -61,29 +80,33 @@ class ImageSlider extends PureComponent {
    */
   render() {
     const { product, images } = this.props;
+    let content;
 
-    let content = null;
+    if (Array.isArray(images)) {
+      const imagesByIndex = getImagesByIndex(images);
 
-    if (!product || !images || images.length === 0) {
+      if (imagesByIndex.length) {
+        content = (
+          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange} rebuildOnUpdate>
+            {imagesByIndex.map(imagesInIndex => (
+              <ProductImage
+                key={JSON.stringify(imagesInIndex)}
+                srcmap={imagesInIndex}
+                animating={false}
+              />
+            ))}
+          </BaseImageSlider>
+        );
+      }
+    }
+
+    if (!content) {
       content = (
         <ProductImage
           src={product ? product.featuredImageUrl : null}
           forcePlaceholder={!product}
-          resolutions={resolutions}
+          resolutions={fallbackResolutions}
         />
-      );
-    } else {
-      content = (
-        <BaseImageSlider
-          loop
-          indicators
-          onSlideChange={this.handleSlideChange}
-          rebuildOnUpdate
-        >
-          {images.map(image => (
-            <ProductImage key={image} src={image} animating={false} resolutions={resolutions} />
-          ))}
-        </BaseImageSlider>
       );
     }
 
@@ -102,7 +125,7 @@ class ImageSlider extends PureComponent {
               },
             }}
           >
-            <div data-test-id={`product: ${product ? product.name : ''}`}>{content}</div>
+            <div>{content}</div>
           </Hammer>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />
