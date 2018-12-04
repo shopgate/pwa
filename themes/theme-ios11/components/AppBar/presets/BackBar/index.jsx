@@ -18,7 +18,7 @@ class BackBar extends PureComponent {
    */
   left = () => {
     const { goBack } = this.props;
-    return <AppBar.Icon icon={ArrowIcon} onClick={goBack} />;
+    return <AppBar.Icon key="left" icon={ArrowIcon} onClick={goBack} />;
   }
 
   /**
