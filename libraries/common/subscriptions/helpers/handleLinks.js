@@ -4,6 +4,7 @@ import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import authRoutes from '../../collections/AuthRoutes';
 
 const SHOPGATE_DOMAIN = 'shopgate.com';
@@ -157,7 +158,7 @@ export const sanitizeLink = (location) => {
  * @param {string} historyAction The history action which was used to navigate.
  */
 export const handleAppRedirect = (historyAction) => {
-  const { pathname } = router.getCurrentRoute();
+  const { pathname } = getCurrentRoute();
 
   if (authRoutes.isProtector(pathname) && historyAction === ACTION_REPLACE) {
     /**

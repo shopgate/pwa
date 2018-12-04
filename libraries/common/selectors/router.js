@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { router } from '@virtuous/conductor';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 
 /**
  * @param {Object} state The global state.
@@ -36,7 +36,7 @@ export const getCurrentRoute = createSelector(
  * @returns {Object|null}
  */
 export const getCurrentParams = () => {
-  const route = router.getCurrentRoute();
+  const route = getCurrentRoute();
 
   if (!route || !route.params) {
     return null;
@@ -50,7 +50,7 @@ export const getCurrentParams = () => {
  * @returns {string|null} The current history pathname.
  */
 export const getCurrentPathname = () => {
-  const route = router.getCurrentRoute();
+  const route = getCurrentRoute();
 
   if (!route || !route.pathname) {
     return null;
@@ -64,7 +64,7 @@ export const getCurrentPathname = () => {
  * @returns {Object|null} The current history query.
  */
 export const getCurrentQuery = () => {
-  const route = router.getCurrentRoute();
+  const route = getCurrentRoute();
 
   if (!route || !route.query) {
     return null;
@@ -93,7 +93,7 @@ export const getCurrentSearchQuery = createSelector(
  * @returns {string|null} The current history entry state.
  */
 export const getCurrentState = () => {
-  const route = router.getCurrentRoute();
+  const route = getCurrentRoute();
 
   if (!route || !route.state) {
     return null;

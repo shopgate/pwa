@@ -1,5 +1,5 @@
-import { router } from '@virtuous/conductor';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 
 /**
  * Creates the filter params.
@@ -7,7 +7,7 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
  * @return {Object}
  */
 const buildFilterParams = () => {
-  const { params, query } = router.getCurrentRoute();
+  const { params, query } = getCurrentRoute();
 
   return {
     ...params.categoryId && { categoryId: hex2bin(params.categoryId) },

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { router } from '@virtuous/conductor';
 import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 
 /**
  * Retrieves the category state from the global state.
@@ -181,7 +181,7 @@ export const getChildCategoriesById = createSelector(
 );
 
 export const getCategoryName = createSelector(
-  () => router.getCurrentRoute(),
+  getCurrentRoute,
   getCurrentCategory,
   (route, category) => {
     if (route.state.title) {

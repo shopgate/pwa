@@ -1,4 +1,4 @@
-import { router } from '@virtuous/conductor';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { PWA_DID_APPEAR } from '../constants';
 
@@ -11,6 +11,6 @@ export const pwaDidAppear$ = main$
     ...params,
     action: {
       ...params.action,
-      route: router.getCurrentRoute(),
+      route: getCurrentRoute(),
     },
   }));

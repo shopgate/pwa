@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { router } from '@virtuous/conductor';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { getCurrentQuery, getRouterStack } from '@shopgate/pwa-common/selectors/router';
 import { parseObjectToQueryString } from '../helpers/router';
 import { DEFAULT_SORT } from '../constants/DisplayOptions';
@@ -56,7 +56,7 @@ export const getSearchPhrase = createSelector(
  * @returns {string}
  */
 export const getHistoryPathname = createSelector(
-  () => router.getCurrentRoute(),
+  getCurrentRoute,
   (route) => {
     if (!route) {
       return null;

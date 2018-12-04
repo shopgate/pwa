@@ -1,5 +1,5 @@
-import { router } from '@virtuous/conductor';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { productIsReady$ } from '../streams/product';
 import { getBaseProductFormatted, getProductFormatted } from '../selectors/product';
@@ -16,7 +16,7 @@ export default function product(subscribe) {
    */
   subscribe(variantDidChange$, ({ getState }) => {
     const state = getState();
-    const { params: { productId } } = router.getCurrentRoute();
+    const { params: { productId } } = getCurrentRoute();
     const props = { productId: hex2bin(productId) };
 
     const trackingData = {
@@ -32,7 +32,7 @@ export default function product(subscribe) {
    */
   subscribe(productIsReady$, ({ getState }) => {
     const state = getState();
-    const { params: { productId } } = router.getCurrentRoute();
+    const { params: { productId } } = getCurrentRoute();
     const props = { productId: hex2bin(productId) };
 
     const trackingData = {

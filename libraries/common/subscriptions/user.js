@@ -1,6 +1,6 @@
-import { router } from '@virtuous/conductor';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { LoadingProvider } from '../providers';
 import getUser from '../actions/user/getUser';
 import { successLogin } from '../action-creators';
@@ -52,7 +52,7 @@ export default function user(subscribe) {
     registerEvents(['userLoggedIn']);
 
     event.addCallback('userLoggedIn', () => {
-      const { state: { redirect } = {} } = router.getCurrentRoute();
+      const { state: { redirect } = {} } = getCurrentRoute();
       dispatch(successLogin(redirect));
     });
   });

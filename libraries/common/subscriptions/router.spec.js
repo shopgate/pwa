@@ -8,6 +8,7 @@ import {
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { historyRedirect } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
@@ -64,7 +65,7 @@ describe('Router subscriptions', () => {
 
     // Setup a protected route
     authRoutes.set(protectedRoute, protectorRoute);
-    router.getCurrentRoute.mockReturnValue({ pathname: protectorRoute });
+    getCurrentRoute.mockReturnValue({ pathname: protectorRoute });
   });
 
   beforeEach(() => {

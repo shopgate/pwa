@@ -6,6 +6,7 @@ import {
   ACTION_RESET,
 } from '@virtuous/conductor';
 import { logger } from '@shopgate/pwa-core';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
@@ -50,7 +51,7 @@ export default function routerSubscriptions(subscribe) {
       return;
     }
 
-    const { pathname: currentPathname } = router.getCurrentRoute();
+    const { pathname: currentPathname } = getCurrentRoute();
 
     // Prevent the current route from being pushed again.
     if (historyAction === ACTION_PUSH && location === currentPathname) {
@@ -84,7 +85,7 @@ export default function routerSubscriptions(subscribe) {
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
-        const { pathname } = router.getCurrentRoute();
+        const { pathname } = getCurrentRoute();
         LoadingProvider.setLoading(pathname);
 
         try {
