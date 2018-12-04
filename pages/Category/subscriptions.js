@@ -1,6 +1,6 @@
 import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
-import { router } from '@virtuous/conductor';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
@@ -53,7 +53,7 @@ export default function category(subscribe) {
   });
 
   subscribe(categoryFiltersDidUpdate$, ({ action, dispatch }) => {
-    const { params } = router.getCurrentRoute();
+    const { params } = getCurrentRoute();
     const categoryId = hex2bin(params.categoryId);
     const { filters } = action;
 
