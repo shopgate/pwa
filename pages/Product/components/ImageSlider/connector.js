@@ -3,9 +3,10 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import {
-  getProductImages,
+  getProductImagesByFormats,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { sliderImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +15,10 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  images: getProductImages(state, props),
+  images: getProductImagesByFormats(state, {
+    ...props,
+    ...{ formats: sliderImageFormats.getAll() },
+  }),
   product: getCurrentBaseProduct(state, props),
 });
 
@@ -49,4 +53,9 @@ const areStatePropsEqual = (next, prev) => {
   return true;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  { areStatePropsEqual }
+);
