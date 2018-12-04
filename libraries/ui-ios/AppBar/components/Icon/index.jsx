@@ -38,8 +38,8 @@ class AppBarIcon extends PureComponent {
           color,
         }}
       >
-        <Icon {...iconProps} />
-        {Badge && <Badge />}
+        <Icon key="icon" {...iconProps} />
+        {Badge && <Badge key="badge" />}
       </div>
     );
   }
