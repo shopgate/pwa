@@ -31,16 +31,16 @@ class AppBarDefault extends PureComponent {
   render() {
     const { title } = this.props;
     const { __ } = this.context.i18n();
-    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />;
-    const center = <AppBar.Title title={__(title || '')} />;
+    const left = <AppBar.Icon key="left" icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />;
+    const center = <AppBar.Title key="center" title={__(title || '')} />;
     const right = (
-      <Fragment>
+      <Fragment key="right">
         <SearchButton />
         <CartButton />
       </Fragment>
     );
     const below = (
-      <Fragment>
+      <Fragment key="below">
         {this.props.below}
         <ProgressBar />
       </Fragment>
