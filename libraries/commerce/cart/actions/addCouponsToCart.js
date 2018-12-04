@@ -19,20 +19,17 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
     .setRetries(0)
     .dispatch()
     .then(({ messages }) => {
-      const requestsPending = request.hasPendingRequests();
-
       if (messages && messagesHaveErrors(messages)) {
-        dispatch(errorAddCouponsToCart(couponIds, messages, requestsPending));
+        dispatch(errorAddCouponsToCart(couponIds, messages));
         reject();
         return;
       }
 
-      dispatch(successAddCouponsToCart(couponIds, requestsPending));
+      dispatch(successAddCouponsToCart(couponIds));
       resolve();
     })
     .catch((error) => {
-      const requestsPending = request.hasPendingRequests();
-      dispatch(errorAddCouponsToCart(couponIds, undefined, requestsPending));
+      dispatch(errorAddCouponsToCart(couponIds));
       logger.error(pipelines.SHOPGATE_CART_ADD_COUPONS, error);
       reject();
     });

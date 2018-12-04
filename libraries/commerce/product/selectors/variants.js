@@ -36,8 +36,9 @@ export const getSelectedVariantMetadata = createSelector(
     // Check if variant data is available in product list
     // istanbul ignore else
     if (variant) {
-      return variant.metadata || null;
+      return variant.metadata;
     }
+
     /**
      * This statement should never be reached since getProductVariants will not return data when the
      * variant product entity can't be found to determine a baseProductId.

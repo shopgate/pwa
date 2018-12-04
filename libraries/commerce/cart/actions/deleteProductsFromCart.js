@@ -20,17 +20,14 @@ const deleteProductsFromCart = cartItemIds => (dispatch) => {
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
-      const requestsPending = request.hasPendingRequests();
-
       if (messages && messagesHaveErrors(messages)) {
-        dispatch(errorDeleteProductsFromCart(cartItemIds, messages, requestsPending));
+        dispatch(errorDeleteProductsFromCart(cartItemIds, messages));
       }
 
-      dispatch(successDeleteProductsFromCart(requestsPending));
+      dispatch(successDeleteProductsFromCart());
     })
     .catch((error) => {
-      const requestsPending = request.hasPendingRequests();
-      dispatch(errorDeleteProductsFromCart(cartItemIds, undefined, requestsPending));
+      dispatch(errorDeleteProductsFromCart(cartItemIds));
       logger.error(pipelines.SHOPGATE_CART_DELETE_PRODUCTS, error);
     });
 };
