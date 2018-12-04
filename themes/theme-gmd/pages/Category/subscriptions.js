@@ -1,6 +1,6 @@
 import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';

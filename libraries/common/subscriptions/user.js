@@ -1,6 +1,6 @@
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { LoadingProvider } from '../providers';
 import getUser from '../actions/user/getUser';
 import { successLogin } from '../action-creators';

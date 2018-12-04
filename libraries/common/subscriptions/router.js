@@ -5,8 +5,8 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor';
-import { logger } from '@shopgate/pwa-core';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { logger } from '@shopgate/pwa-core';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';

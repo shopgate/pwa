@@ -1,5 +1,5 @@
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
 /**
  * Creates the filter params.

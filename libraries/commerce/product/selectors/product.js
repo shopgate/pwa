@@ -185,7 +185,7 @@ export const getProduct = createSelector(
  * @return {string|null}
  */
 export const getProductName = createSelector(
-  getCurrentRoute,
+  () => getCurrentRoute(),
   getProduct,
   (route, product) => {
     if (route.state.title) {
