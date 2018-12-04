@@ -43,7 +43,10 @@ class ProductsWidget extends Component {
    * Request the products when the component mounts.
    */
   componentDidMount() {
-    if (this.props.products.length === 0) {
+    const { products = [], settings } = this.props;
+    // When query is by product ids (queryType 4) some products may already be cached.
+    // This makes products.length an unreliable determinant of the need for getProducts()
+    if (products.length === 0 || settings.queryType === 4) {
       this.getProducts();
     }
   }
@@ -66,6 +69,12 @@ class ProductsWidget extends Component {
     ) {
       this.productCount = Math.min(nextProps.products.length, this.totalProductCount);
     }
+    // React to case when widget settings change after component mounted
+    if (JSON.stringify(this.props.settings.queryParams)
+      !== JSON.stringify(nextProps.settings.queryParams)
+      && (!nextProps.products || !nextProps.products.length)) {
+      this.getProducts(nextProps.settings);
+    }
   }
 
   /**
@@ -82,15 +91,16 @@ class ProductsWidget extends Component {
 
   /**
    * Build the params for requesting products and then make the request.
+   * @param {Object} [settings] Widget settings object
    */
-  getProducts = () => {
+  getProducts = (settings) => {
     const { getProducts, id } = this.props;
     const {
       productLimit,
       queryParams,
       queryType,
       sortOrder,
-    } = this.props.settings;
+    } = settings || this.props.settings;
 
     const sort = transformDisplayOptions(sortOrder);
 
