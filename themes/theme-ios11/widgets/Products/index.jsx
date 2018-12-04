@@ -43,7 +43,10 @@ class ProductsWidget extends Component {
    * Request the products when the component mounts.
    */
   componentDidMount() {
-    if (this.props.products.length === 0) {
+    const { products = [], settings } = this.props;
+    // When query is by product ids (queryType 4) some products may already be cached.
+    // This makes products.length an unreliable determinant of the need for getProducts()
+    if (products.length === 0 || settings.queryType === 4) {
       this.getProducts();
     }
   }
