@@ -16,9 +16,9 @@ class CloseBar extends PureComponent {
   /**
    * @returns {JSX}
    */
-  get left() {
+  left = () => {
     const { goBack } = this.props;
-    return <AppBar.Icon icon={CrossIcon} onClick={goBack} />;
+    return <AppBar.Icon key="left" icon={CrossIcon} onClick={goBack} />;
   }
 
   /**
