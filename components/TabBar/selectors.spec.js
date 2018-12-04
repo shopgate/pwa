@@ -122,22 +122,4 @@ describe('TabBar selectors', () => {
       expect(result).toBe(false);
     });
   });
-
-  describe('getVisibleTabs()', () => {
-    it('should return four tabs when favorites are inactive', () => {
-      mockedHasFavorites = false;
-
-      const result = getVisibleTabs();
-      expect(result).toBeInstanceOf(Array);
-      expect(result).toHaveLength(4);
-    });
-
-    it('should return five tabs when favorites are active', () => {
-      mockedHasFavorites = true;
-
-      const result = getVisibleTabs();
-      expect(result).toBeInstanceOf(Array);
-      expect(result).toHaveLength(5);
-    });
-  });
 });
