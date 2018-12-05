@@ -14,15 +14,9 @@ import errorProductImages from '../action-creators/errorProductImages';
  */
 const getProductImages = (productId, formats) => (dispatch, getState) => {
   const state = getState();
-
   const productImages = state.product.imagesByProductId[productId];
-  const productImagesFormats = state.product.imagesByProductIdFormats[productId];
-  const needsPlain = (!formats);
-  if (needsPlain && !shouldFetchData(productImages)) {
-    return;
-  }
 
-  if (formats && !shouldFetchData(productImagesFormats)) {
+  if (!shouldFetchData(productImages)) {
     return;
   }
 
@@ -40,7 +34,7 @@ const getProductImages = (productId, formats) => (dispatch, getState) => {
     .setVersion(version)
     .dispatch()
     .then((result) => {
-      dispatch(receiveProductImages(productId, result));
+      dispatch(receiveProductImages(productId, result.images));
     })
     .catch((error) => {
       logger.error(error);

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import {
-  getProductImagesByFormats,
+  getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { galleryImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
-
+import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
+import { GALLERY_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
@@ -12,9 +12,9 @@ import { galleryImageFormats } from '@shopgate/pwa-common-commerce/product/colle
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  images: getProductImagesByFormats(state, {
+  images: getProductImages(state, {
     ...props,
-    ...{ formats: galleryImageFormats.getAll() },
+    ...{ formats: productImageFormats.get(GALLERY_SLIDER_IMAGE_COLLECTION_KEY) },
   }),
   product: getCurrentBaseProduct(state, props),
 });

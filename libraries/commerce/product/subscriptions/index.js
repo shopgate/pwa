@@ -1,5 +1,4 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import getProduct from '../actions/getProduct';
 import getProductDescription from '../actions/getProductDescription';
 import getProductProperties from '../actions/getProductProperties';
@@ -7,7 +6,7 @@ import getProductImages from '../actions/getProductImages';
 import getProductShipping from '../actions/getProductShipping';
 import getProductVariants from '../actions/getProductVariants';
 import getProductOptions from '../actions/getProductOptions';
-import { productImageFormats, galleryImageFormats, sliderImageFormats } from '../collections';
+import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
   productReceived$,
@@ -22,30 +21,6 @@ import { getProductRelationsByHash } from '../selectors/relations';
  * @param {Function} subscribe The subscribe function.
  */
 function product(subscribe) {
-  subscribe(appDidStart$, () => {
-    galleryImageFormats.set([
-      {
-        width: 1024,
-        height: 1024,
-      },
-      {
-        width: 2048,
-        height: 2048,
-      },
-    ]);
-
-    sliderImageFormats.set([
-      {
-        width: 440,
-        height: 440,
-      },
-      {
-        width: 1024,
-        height: 1024,
-      },
-    ]);
-  });
-
   const processProduct$ = productReceived$.merge(cachedProductReceived$);
 
   subscribe(productWillEnter$, ({ action, dispatch }) => {
@@ -55,7 +30,7 @@ function product(subscribe) {
     dispatch(getProduct(id));
     dispatch(getProductDescription(id));
     dispatch(getProductProperties(id));
-    dispatch(getProductImages(id, productImageFormats.getAll()));
+    dispatch(getProductImages(id, productImageFormats.getAllUniqueFormats()));
     dispatch(getProductShipping(id));
   });
 

@@ -7,8 +7,6 @@ jest.mock('../actions/getProductsById', () => (...args) => mockedGetProductsById
 describe('Product subscription', () => {
   const subscribe = jest.fn();
   // eslint-disable-next-line no-unused-vars
-  let appDidStart$Subscription;
-  // eslint-disable-next-line no-unused-vars
   let itemRouteDidEnter$Subscription;
   // eslint-disable-next-line no-unused-vars
   let itemRouteDidLeave$Subscription;
@@ -17,7 +15,6 @@ describe('Product subscription', () => {
   it('should subscribe', () => {
     subscription(subscribe);
     [
-      appDidStart$Subscription,
       itemRouteDidEnter$Subscription,
       itemRouteDidLeave$Subscription,
       productRelationsReceived$Subscription,

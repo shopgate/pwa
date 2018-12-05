@@ -70,17 +70,6 @@ export const getProductImagesState = createSelector(
 );
 
 /**
- * Selects the product images formats state.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {Object} The product images state.
- */
-export const getProductImagesFormatState = createSelector(
-  getProductState,
-  state => state.imagesByProductIdFormats || {}
-);
-
-/**
  * Selects the product variants state.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
@@ -541,44 +530,6 @@ export const getProductDescription = createSelector(
 );
 
 /**
- * Retrieves the images for the given product. If the props contain a variantId, and the related
- * product does not have images, the selector tries to pick images from it's base product.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {Array|null}
- * @deprecated use getProductImagesByFormats
- */
-export const getProductImages = createSelector(
-  getProductImagesState,
-  getProductId,
-  getBaseProductId,
-  (images, productId, baseProductId) => {
-    const { images: productImages } = images[productId] || {};
-    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
-
-    // If the product doesn't have images...
-    if (!Array.isArray(productImages) || !productImages.length) {
-      // ...check the base product.
-      if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
-        return null;
-      }
-
-      return baseProductImages;
-    }
-
-    return productImages;
-  }
-);
-
-/**
- * Retrieves the requested formats from props
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @returns {Array}
- */
-export const getImageFormats = (state, props = {}) => props.formats || [];
-
-/**
  * Checks if objects in image formats are equal except for sources prop
  * to match request to response item
  * @param {Object} requested requested format
@@ -600,41 +551,28 @@ const isRequestedFormat = (requested, given) => {
  * product does not have images, the selector tries to pick images from it's base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
- * @returns {Array|null}
+ * @return {Array|null}
  */
-export const getProductImagesByFormats = createSelector(
-  getProductImagesFormatState,
+export const getProductImages = createSelector(
+  getProductImagesState,
   getProductId,
   getBaseProductId,
-  getImageFormats,
+  (state, props = {}) => props.formats || [],
   (images, productId, baseProductId, formats) => {
-    const { images: productImages } = images[productId] || false;
-    const { images: baseProductImages } =
-      (baseProductId !== null && images[baseProductId]) || false;
+    const { images: productImages } = images[productId] || {};
+    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
 
-    let entry = null;
+    let entry = productImages;
     // If the product doesn't have images...
-    if (!productImages || !productImages.images) {
+    if (!Array.isArray(productImages) || !productImages.length) {
       // ...check the base product.
-      if (!baseProductImages || !baseProductImages.images) {
+      if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
         return null;
       }
-      entry = baseProductImages.images;
-    } else {
-      entry = productImages.images;
+      entry = baseProductImages;
     }
 
-    return entry.reduce((prev, formatReturned) => {
-      // eslint-disable-next-line no-restricted-syntax
-      for (const requestedFormat of formats) {
-        if (isRequestedFormat(requestedFormat, formatReturned)) {
-          prev.push(formatReturned);
-          break;
-        }
-      }
-
-      return prev;
-    }, []);
+    return entry.filter(item => formats.find(format => isRequestedFormat(format, item)));
   }
 );
 

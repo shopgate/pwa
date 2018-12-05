@@ -12,7 +12,6 @@ import {
   mockedProperty1,
   mockedProperty2,
   mockedImagesByProductId,
-  mockedProductImagesByFormat,
   mockedProductImagesBase,
   mockedProductImagesVariant,
   mockedVariantsByProductId,
@@ -25,7 +24,6 @@ import {
   getProductDescriptionState,
   getProductPropertiesState,
   getProductImagesState,
-  getProductImagesFormatState,
   getProductVariantsState,
   getProductById,
   getProductId,
@@ -145,16 +143,6 @@ describe('Product selectors', () => {
 
     it('should work as expected', () => {
       expect(getProductImagesState(mockedState)).toEqual(mockedImagesByProductId);
-    });
-  });
-
-  describe('getProductImagesFormatState()', () => {
-    it('should return an empty object if the state is not ready yet', () => {
-      expect(getProductImagesFormatState({})).toEqual({});
-    });
-
-    it('should work as expected', () => {
-      expect(getProductImagesFormatState(mockedState)).toEqual(mockedProductImagesByFormat);
     });
   });
 
@@ -478,6 +466,8 @@ describe('Product selectors', () => {
   });
 
   describe('getProductImages()', () => {
+    const formats = [{ width: 440, height: 440 }, { width: 1024, height: 1024 }];
+
     it('should return null when no data can be selected for the passed productId', () => {
       const productId = 'unavailable';
       expect(getProductImages({}, { productId })).toBeNull();
@@ -495,41 +485,46 @@ describe('Product selectors', () => {
 
     it('should return images when available', () => {
       const productId = 'product_1';
-      expect(getProductImages(mockedState, { productId })).toEqual(mockedProductImagesBase);
+      // eslint-disable-next-line max-len
+      expect(getProductImages(mockedState, { productId, formats })).toEqual(mockedProductImagesBase);
     });
 
     it('should return images for a variant when productId and variantId are passed', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       // eslint-disable-next-line max-len
-      expect(getProductImages(mockedState, { productId, variantId })).toEqual(mockedProductImagesVariant);
+      expect(getProductImages(mockedState, { productId, variantId, formats })).toEqual(mockedProductImagesVariant);
     });
 
     it('should return images for a variant when only the variantId is passed', () => {
       const variantId = 'product_2';
-      expect(getProductImages(mockedState, { variantId })).toEqual(mockedProductImagesVariant);
+      // eslint-disable-next-line max-len
+      expect(getProductImages(mockedState, { variantId, formats })).toEqual(mockedProductImagesVariant);
     });
 
     it('should return images for a variant when the id of a variant is passed as a productId', () => {
       const productId = 'product_2';
-      expect(getProductImages(mockedState, { productId })).toEqual(mockedProductImagesVariant);
+      // eslint-disable-next-line max-len
+      expect(getProductImages(mockedState, { productId, formats })).toEqual(mockedProductImagesVariant);
     });
 
     it('should return images of the base product when a variant has no images', () => {
       const productId = 'product_1';
       const variantId = 'product_3';
       // eslint-disable-next-line max-len
-      expect(getProductImages(mockedState, { productId, variantId })).toEqual(mockedProductImagesBase);
+      expect(getProductImages(mockedState, { productId, variantId, formats })).toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when a variant has no images and only the variantId is passed', () => {
       const variantId = 'product_3';
-      expect(getProductImages(mockedState, { variantId })).toEqual(mockedProductImagesBase);
+      // eslint-disable-next-line max-len
+      expect(getProductImages(mockedState, { variantId, formats })).toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when the id of a variant is passed as a productId', () => {
       const productId = 'product_3';
-      expect(getProductImages(mockedState, { productId })).toEqual(mockedProductImagesBase);
+      // eslint-disable-next-line max-len
+      expect(getProductImages(mockedState, { productId, formats })).toEqual(mockedProductImagesBase);
     });
   });
 

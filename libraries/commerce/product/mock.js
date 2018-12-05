@@ -176,13 +176,6 @@ const basicProductState = {
       913: {
         isFetching: false,
         expires: 99999999999,
-        images: ['https://img-cdn.shopgate.com/image.jpg'],
-      },
-    },
-    imagesByProductIdFormats: {
-      913: {
-        isFetching: false,
-        expires: 99999999999,
         images: [
           {
             width: 440,
@@ -304,18 +297,6 @@ const productWithOneOption = {
       913: {
         isFetching: false,
         expires: 99999999999,
-        images: ['https://img-cdn.shopgate.com/image.jpg'],
-      },
-      1097: {
-        isFetching: false,
-        expires: 99999999999,
-        images: [],
-      },
-    },
-    imagesFormatsByProductId: {
-      913: {
-        isFetching: false,
-        expires: 99999999999,
         images: [
           {
             width: 440,
@@ -337,23 +318,7 @@ const productWithOneOption = {
       1097: {
         isFetching: false,
         expires: 99999999999,
-        images: [
-          {
-            width: 440,
-            height: 440,
-            sources: [],
-          },
-          {
-            width: 1024,
-            height: 1024,
-            sources: [],
-          },
-          {
-            width: 2048,
-            height: 2048,
-            sources: [],
-          },
-        ],
+        images: [],
       },
     },
     currentProduct: {
