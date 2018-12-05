@@ -42,6 +42,14 @@ const disclaimerSpacer = css({
   width: 10,
 }).toString();
 
+const price = css({
+  marginLeft: '1em',
+}).toString();
+
+const properties = css({
+  wordBreak: 'break-word',
+}).toString();
+
 export default {
   item,
   leftColumn,
@@ -50,4 +58,6 @@ export default {
   info,
   disclaimerSpacer,
   priceInfo,
+  price,
+  properties,
 };
