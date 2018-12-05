@@ -3,10 +3,11 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import {
-  getProductImagesByFormats,
+  getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { sliderImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
+import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
+import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
 
 /**
  * Maps the contents of the state to the component props.
@@ -15,9 +16,9 @@ import { sliderImageFormats } from '@shopgate/pwa-common-commerce/product/collec
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  images: getProductImagesByFormats(state, {
+  images: getProductImages(state, {
     ...props,
-    ...{ formats: sliderImageFormats.getAll() },
+    ...{ formats: productImageFormats.get(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY) },
   }),
   product: getCurrentBaseProduct(state, props),
 });
