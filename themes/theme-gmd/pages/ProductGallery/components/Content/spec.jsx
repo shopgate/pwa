@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
-  getProductImagesByFormats,
+  getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import Image from '@shopgate/pwa-common/components/Image';
@@ -12,7 +12,7 @@ import ZoomPanSlider from '../ZoomPanSlider';
 import Content from './index';
 
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
-  getProductImagesByFormats: jest.fn(),
+  getProductImages: jest.fn(),
   getCurrentBaseProduct: jest.fn(),
 }));
 jest.mock('../ZoomPanSlider', () => ({ children }) => children);
@@ -21,7 +21,7 @@ const mockedStore = configureStore();
 
 describe('<ProductGallery.Content> page', () => {
   beforeEach(() => {
-    getProductImagesByFormats.mockReturnValue([
+    getProductImages.mockReturnValue([
       {
         width: 1024,
         height: 1024,
