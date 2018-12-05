@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PRODUCT_IMAGE,
@@ -68,7 +69,7 @@ class ImageSlider extends Component {
     if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) { return true; }
     if (this.props.images.length !== nextProps.images.length) return true;
 
-    return JSON.stringify(this.props.images) !== JSON.stringify(nextProps.images);
+    return isEqual(this.props.images, nextProps.images);
   }
 
   handleOpenGallery = () => {
