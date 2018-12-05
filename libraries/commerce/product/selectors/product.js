@@ -282,22 +282,6 @@ export const getProductFlags = createSelector(
 );
 
 /**
- * Retrieves the metadata for the given product.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getProductMetadata = createSelector(
-  getProduct,
-  (product) => {
-    if (!product) {
-      return null;
-    }
-
-    return product.metadata;
-  }
-);
-
-/**
  * Retrieves the product price object.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
@@ -453,6 +437,38 @@ export const hasBaseProductVariants = createSelector(
     const { flags: { hasVariants = false } = {} } = baseProduct;
 
     return hasVariants;
+  }
+);
+
+/**
+ * Retrieves the metadata for the given product.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductMetadata = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.metadata;
+  }
+);
+
+/**
+ * Retrieves the metadata for the given product.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getBaseProductMetadata = createSelector(
+  getBaseProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.metadata;
   }
 );
 

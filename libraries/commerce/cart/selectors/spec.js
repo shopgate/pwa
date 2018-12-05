@@ -1,5 +1,14 @@
+/* eslint-disable extra-rules/no-single-line-objects */
+import {
+  mockedState as mockedProductState,
+  mockedProductMetadata,
+  mockedVariantProductMetadata,
+  mockedVariantMetadata,
+} from '../../product/selectors/product.mock';
+
 import {
   getFlags,
+  getAddToCartMetadata,
   hasCouponSupport,
 } from './index';
 
@@ -18,6 +27,44 @@ describe('Cart selectors', () => {
 
       const result = getFlags({ cart: { flags } });
       expect(result).toEqual(flags);
+    });
+  });
+
+  describe('getAddToCartMetadata()', () => {
+    let mockedState;
+
+    beforeEach(() => {
+      // Create a deep copy of the state to avoid unintended selector caching.
+      mockedState = JSON.parse(JSON.stringify(mockedProductState));
+    });
+
+    it('should return the metadata of the variant product', () => {
+      const productId = 'product_1';
+      const variantId = 'product_2';
+      const result = getAddToCartMetadata(mockedState, { productId, variantId });
+      expect(result).toEqual(mockedVariantProductMetadata);
+    });
+
+    it('should return the metadata of the base product', () => {
+      const productId = 'product_1';
+      const variantId = 'product_2';
+      delete mockedState.product.productsById[variantId].productData.metadata;
+      const result = getAddToCartMetadata(mockedState, { productId, variantId });
+      expect(result).toEqual(mockedProductMetadata);
+    });
+
+    it('should return the metadata of the variant data assigned to the variant product', () => {
+      const productId = 'product_1';
+      const variantId = 'product_3';
+      const result = getAddToCartMetadata(mockedState, { productId, variantId });
+      expect(result).toEqual(mockedVariantMetadata);
+    });
+
+    it('should return null when no metadata can be determined', () => {
+      const productId = 'product_10';
+      const variantId = 'product_11';
+      const result = getAddToCartMetadata(mockedState, { productId, variantId });
+      expect(result).toBeNull();
     });
   });
 
@@ -43,3 +90,4 @@ describe('Cart selectors', () => {
     });
   });
 });
+/* eslint-enable extra-rules/no-single-line-objects */

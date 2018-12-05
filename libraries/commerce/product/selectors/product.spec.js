@@ -5,6 +5,7 @@ import { PROPERTIES_FILTER_BLACKLIST, PROPERTIES_FILTER_WHITELIST } from '../con
 
 import {
   mockedState as mockedProductState,
+  mockedProductMetadata,
   mockedProductsById,
   mockedShippingByProductId,
   mockedDescriptionsByProductId,
@@ -37,6 +38,7 @@ import {
   getProductAvailability,
   getProductFlags,
   getProductMetadata,
+  getBaseProductMetadata,
   getProductPrice,
   getProductCurrency,
   getProductUnitPrice,
@@ -305,6 +307,16 @@ describe('Product selectors', () => {
         it('should return the property as expected', () => {
           expect(selector(mockedState, { productId })).toEqual(productData[property]);
         });
+      });
+    });
+
+    describe('getBaseProductMetadata()', () => {
+      it('should return null when the product is not available', () => {
+        expect(getBaseProductMetadata({}, { productId })).toBeNull();
+      });
+
+      it('should return the property as expected', () => {
+        expect(getBaseProductMetadata(mockedState, { productId: 'product_2' })).toEqual(mockedProductMetadata);
       });
     });
 
