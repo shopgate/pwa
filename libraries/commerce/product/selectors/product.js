@@ -82,8 +82,8 @@ export const getProductVariantsState = createSelector(
 
 /**
  * Retrieves a product by id from state. Different to getProduct() which returns the product
- * entity data if available, this selector returns the pure state enty for a given productId.
- * So the exires and the isFetching property is processable.
+ * entity data if available, this selector returns the pure state entry for a given productId.
+ * So the expires and the isFetching property is processable.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object|null} The dedicated product.
@@ -546,25 +546,38 @@ export const getProductDescription = createSelector(
 );
 
 /**
- * Checks if objects in image formats are equal except for sources prop
- * to match request to response item
- * @param {Object} requested requested format
- * @param {Object} given returned format
+ * Checks if the resolutions properties of two image format objects are equal.
+ * @param {Object} formatOne The first format object to compare.
+ * @param {Object} formatTwo The second format object to compare.
  * @returns {boolean}
  */
-const isRequestedFormat = (requested, given) => {
-  const props = Object.keys(requested);
-  const { length } = props;
-  for (let i = 0; i < length; i += 1) {
-    const prop = props[i];
-    if (requested[prop] !== given[prop]) return false;
-  }
-  return true;
+const areImageFormatsEqual = (formatOne, formatTwo) => {
+  const { width: widthOne, height: heightOne } = formatOne;
+  const { width: widthTwo, height: heightTwo } = formatTwo;
+  return widthOne === widthTwo && heightOne === heightTwo;
+};
+
+/**
+ * Filters a product images cache entry by formats.
+ * @param {Array} productImages All cached product images of a product.
+ * @param {Array} formats A list of format objects to filter.
+ * @returns {Object}
+ */
+const filterProductImagesByFormats = (productImages, formats) => {
+  const filtered = productImages.filter(item =>
+    formats.find(format => areImageFormatsEqual(format, item)));
+
+  const hasSources = !!filtered[0] && filtered[0].sources.length > 0;
+
+  return {
+    filtered,
+    hasSources,
+  };
 };
 
 /**
  * Retrieves the images for the given product. If the props contain a variantId, and the related
- * product does not have images, the selector tries to pick images from it's base product.
+ * product does not have images, the selector tries to pick images from its base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Array|null}
@@ -576,19 +589,40 @@ export const getProductImages = createSelector(
   (state, props = {}) => props.formats || [],
   (images, productId, baseProductId, formats) => {
     const { images: productImages } = images[productId] || {};
-    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
+    const { images: baseProductImages } =
+      (!!baseProductId && baseProductId !== productId && images[baseProductId]) ||
+      {};
 
-    let entry = productImages;
-    // If the product doesn't have images...
-    if (!Array.isArray(productImages) || !productImages.length) {
-      // ...check the base product.
-      if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
-        return null;
-      }
-      entry = baseProductImages;
+    let filteredProductImages;
+    let filteredBaseProductImages;
+
+    if (Array.isArray(productImages)) {
+      filteredProductImages = filterProductImagesByFormats(productImages, formats);
     }
 
-    return entry.filter(item => formats.find(format => isRequestedFormat(format, item)));
+    if (Array.isArray(baseProductImages)) {
+      filteredBaseProductImages = filterProductImagesByFormats(baseProductImages, formats);
+    }
+
+    // Detect if images are generally available at the moment.
+    if (!filteredProductImages && !filteredBaseProductImages) {
+      return null;
+    }
+
+    if (!filteredBaseProductImages) {
+      // No further decisions are necessary, since no base product was determined.
+      return filteredProductImages.filtered;
+    }
+
+    const { hasSources: productHasSources } = filteredProductImages;
+
+    if (productHasSources) {
+      // The product has own images which can be used as a return value.
+      return filteredProductImages.filtered;
+    }
+
+    // The product doesn't have own images, so the images of the base product are returned.
+    return filteredBaseProductImages.filtered;
   }
 );
 

@@ -46,6 +46,7 @@ function product(subscribe) {
 
     if (baseProductId) {
       dispatch(getProduct(baseProductId));
+      dispatch(getProductImages(baseProductId, productImageFormats.getAllUniqueFormats()));
     }
 
     if (flags.hasVariants) {

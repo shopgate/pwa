@@ -243,6 +243,19 @@ export const mockedProductImagesVariant = [
   },
 ];
 
+export const mockedProductImagesVariantWithoutSources = [
+  {
+    width: 440,
+    height: 440,
+    sources: [],
+  },
+  {
+    width: 1024,
+    height: 1024,
+    sources: [],
+  },
+];
+
 export const mockedImagesByProductId = {
   product_1: {
     isFetching: false,
@@ -254,63 +267,7 @@ export const mockedImagesByProductId = {
   },
   product_3: {
     isFetching: false,
-    images: [],
-  },
-  product_5: {
-    isFetching: true,
-  },
-};
-
-export const mockedProductImagesFormatBase = [
-  {
-    width: 440,
-    height: 440,
-    sources: [
-      'https://img-cdn.shopgate.com/a43fac2dx440',
-      'https://img-cdn.shopgate.com/b543f421x440',
-    ],
-  },
-  {
-    width: 1024,
-    height: 1024,
-    sources: [
-      'https://img-cdn.shopgate.com/a43fac2dx1024',
-      'https://img-cdn.shopgate.com/b543f421x1024',
-    ],
-  },
-];
-
-export const mockedProductImagesFormatVariant = [
-  {
-    width: 440,
-    height: 440,
-    sources: [
-      'https://img-cdn.shopgate.com/variant-a43fac2dx440',
-      'https://img-cdn.shopgate.com/variant-b543f421x440',
-    ],
-  },
-  {
-    width: 1024,
-    height: 1024,
-    sources: [
-      'https://img-cdn.shopgate.com/variant-a43fac2dx1024',
-      'https://img-cdn.shopgate.com/variant-b543f421x1024',
-    ],
-  },
-];
-
-export const mockedProductImagesByProductIdFormats = {
-  product_1: {
-    isFetching: false,
-    images: mockedProductImagesFormatBase,
-  },
-  product_2: {
-    isFetching: false,
-    images: mockedProductImagesFormatVariant,
-  },
-  product_3: {
-    isFetching: false,
-    images: [],
+    images: mockedProductImagesVariantWithoutSources,
   },
   product_5: {
     isFetching: true,
@@ -368,7 +325,7 @@ export const mockedState = {
     shippingByProductId: mockedShippingByProductId,
     descriptionsByProductId: mockedDescriptionsByProductId,
     propertiesByProductId: mockedPropertiesByProductId,
-    imagesByProductId: mockedProductImagesByProductIdFormats,
+    imagesByProductId: mockedImagesByProductId,
     variantsByProductId: mockedVariantsByProductId,
     optionsByProductId: {},
   },
