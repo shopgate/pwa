@@ -51,7 +51,7 @@ const signup = css({
   display: 'inline-block',
   color: colors.primary,
   width: 'auto',
-  margin: '-.35em',
+  margin: '-.35em 0 -.35em -.35em',
   padding: '.35em',
 }).toString();
 
