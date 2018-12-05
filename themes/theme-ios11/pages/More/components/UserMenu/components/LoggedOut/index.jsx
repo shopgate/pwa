@@ -23,7 +23,7 @@ const LoggedOut = ({ isDisabled }) => (
         <Link href={LOGIN_PATH} disabled={isDisabled}>
           <Button type="secondary" className={styles.button} testId="UserMenuLogin" disabled={isDisabled}>
             <I18n.Text string="login.button" />
-            </Button>
+          </Button>
         </Link>
       </Grid.Item>
       <Grid.Item className={styles.gridItem}>
