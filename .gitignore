@@ -51,5 +51,5 @@ extensions/
 !extensions/@shopgate-product-reviews
 !extensions/@shopgate-tracking-ga-native
 !extensions/@shopgate-user-privacy
-config/
+themes/*/config/
 .nyc_output
