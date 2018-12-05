@@ -24,7 +24,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
     props={null}
   >
     <div
-      className="css-1yk42h8"
+      className="css-16vd0g8"
     >
       <div
         className="css-10lhp8m"
@@ -131,7 +131,7 @@ exports[`<ProductDescription /> should render description if data is available 1
     props={null}
   >
     <div
-      className="css-1yk42h8"
+      className="css-16vd0g8"
     >
       <div
         className="css-10lhp8m"

@@ -1,10 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import ViewProvider from '../../providers/View';
 import ProductGrid from '../ProductGrid';
+
+global.console.error = jest.fn();
 
 describe('<ProductGrid />', () => {
   it('should render with the InfineteContainer', () => {
-    const wrapper = shallow(<ProductGrid products={[]} />);
+    const wrapper = mount((
+      <ViewProvider>
+        <ProductGrid products={[]} />
+      </ViewProvider>
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('InfiniteContainer').exists()).toBe(true);
@@ -12,7 +19,11 @@ describe('<ProductGrid />', () => {
   });
 
   it('should render the original layout', () => {
-    const wrapper = shallow(<ProductGrid infiniteLoad={false} products={[]} />);
+    const wrapper = mount((
+      <ViewProvider>
+        <ProductGrid infiniteLoad={false} products={[]} />
+      </ViewProvider>
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('InfiniteContainer').exists()).toBe(false);

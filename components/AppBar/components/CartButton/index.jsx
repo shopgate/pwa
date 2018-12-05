@@ -27,7 +27,7 @@ class CartButton extends PureComponent {
     const { navigate } = this.props;
 
     return (
-      <div className={styles}>
+      <div className={styles} data-test-id="CartButton">
         <AppBar.Icon
           badge={Badge}
           icon={Icon}
