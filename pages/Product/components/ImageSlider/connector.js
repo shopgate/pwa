@@ -18,7 +18,7 @@ import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
 const mapStateToProps = (state, props) => ({
   images: getProductImages(state, {
     ...props,
-    ...{ formats: productImageFormats.get(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY) },
+    formats: productImageFormats.get(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY),
   }),
   product: getCurrentBaseProduct(state, props),
 });
