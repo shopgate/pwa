@@ -5,7 +5,7 @@ import { productsUpdated$, productsAdded$ } from '@shopgate/pwa-common-commerce/
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { routeDidEnter$, routeDidLeave$ } from '@shopgate/pwa-common/streams/router';
 import * as constants from './constants';
-import * as actions from './actions';
+import * as actions from './action-creators';
 
 const itemRouteDidEnter$ = routeDidEnter$
   .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
