@@ -1,18 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductGrid /> should render the original layout 1`] = `<Layout />`;
+exports[`<ProductGrid /> should render the original layout 1`] = `
+<ViewProvider>
+  <ProductGrid
+    flags={null}
+    handleGetProducts={[Function]}
+    infiniteLoad={false}
+    products={Array []}
+    requestHash={null}
+    totalProductCount={null}
+  >
+    <Layout>
+      <Grid
+        className="css-1icypl2"
+        component="ul"
+        data-test-id="productGrid"
+        wrap={true}
+      >
+        <ul
+          className="css-1icypl2 css-h7r55a css-u7q1iu"
+          data-test-id="productGrid"
+        />
+      </Grid>
+    </Layout>
+  </ProductGrid>
+</ViewProvider>
+`;
 
 exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
-<InfiniteContainer
-  initialLimit={6}
-  items={Array []}
-  iterator={[Function]}
-  limit={30}
-  loader={[Function]}
-  loadingIndicator={<LoadingIndicator />}
-  preloadMultiplier={2}
-  requestHash={null}
-  totalItems={null}
-  wrapper={[Function]}
-/>
+<ViewProvider>
+  <ProductGrid
+    flags={null}
+    handleGetProducts={[Function]}
+    infiniteLoad={true}
+    products={Array []}
+    requestHash={null}
+    totalProductCount={null}
+  >
+    <InfiniteContainer
+      initialLimit={6}
+      items={Array []}
+      iterator={[Function]}
+      limit={30}
+      loader={[Function]}
+      loadingIndicator={<LoadingIndicator />}
+      preloadMultiplier={2}
+      requestHash={null}
+      totalItems={null}
+      wrapper={[Function]}
+    >
+      <div>
+        <div>
+          <Grid
+            className="css-1icypl2"
+            component="ul"
+            data-test-id="productGrid"
+            wrap={true}
+          >
+            <ul
+              className="css-1icypl2 css-h7r55a css-u7q1iu"
+              data-test-id="productGrid"
+            />
+          </Grid>
+        </div>
+        <LoadingIndicator>
+          <div
+            className="css-1aid7je"
+          >
+            <IndicatorCircle
+              color="#5ccee3"
+              paused={false}
+              size={32}
+              strokeWidth={3}
+            >
+              <svg
+                className="css-12jxe4c"
+                data-test-id="loadingIndicator"
+                height={32}
+                viewBox="25 25 50 50"
+                width={32}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  className="css-1ei1yr2"
+                  cx="50"
+                  cy="50"
+                  r="20"
+                />
+              </svg>
+            </IndicatorCircle>
+          </div>
+        </LoadingIndicator>
+      </div>
+    </InfiniteContainer>
+  </ProductGrid>
+</ViewProvider>
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import buttonStyles from '@shopgate/pwa-ui-shared/Button/style';
 import styles from './style';
@@ -39,4 +40,10 @@ FormButtons.defaultProps = {
   isLoading: false,
 };
 
-export default connect(FormButtons);
+export default connect(props => (
+  <LoadingContext.Consumer>
+    {({ isLoading }) => (
+      <FormButtons {...props} isLoading={isLoading(props.pathname)} />
+    )}
+  </LoadingContext.Consumer>
+));
