@@ -20,18 +20,15 @@ const deleteCouponsFromCart = couponIds => (dispatch) => {
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
-      const requestsPending = request.hasPendingRequests();
-
       if (messages && messagesHaveErrors(messages)) {
-        dispatch(errorDeleteCouponsFromCart(couponIds, messages, requestsPending));
+        dispatch(errorDeleteCouponsFromCart(couponIds, messages));
         return;
       }
 
-      dispatch(successDeleteCouponsFromCart(requestsPending));
+      dispatch(successDeleteCouponsFromCart());
     })
     .catch((error) => {
-      const requestsPending = request.hasPendingRequests();
-      dispatch(errorDeleteCouponsFromCart(couponIds, undefined, requestsPending));
+      dispatch(errorDeleteCouponsFromCart(couponIds));
       logger.error(pipelines.SHOPGATE_CART_DELETE_COUPONS, error);
     });
 };

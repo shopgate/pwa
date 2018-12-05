@@ -31,9 +31,16 @@ describe('Variants selectors', () => {
   });
 
   describe('getSelectedVariantMetadata()', () => {
-    it('should return null when no variant data is available at all', () => {
+    it('should return undefined when no variant data is available at all but the variant product is there', () => {
       const productId = 'product_1';
       const variantId = 'product_3';
+      delete mockedState.product.variantsByProductId;
+      expect(getSelectedVariantMetadata(mockedState, { productId, variantId })).toBeUndefined();
+    });
+
+    it('should return null when no variant data is available at all an no variant product can be determined', () => {
+      const productId = 'product_1';
+      const variantId = 'product_10';
       delete mockedState.product.variantsByProductId;
       expect(getSelectedVariantMetadata(mockedState, { productId, variantId })).toBeNull();
     });
@@ -50,11 +57,11 @@ describe('Variants selectors', () => {
       expect(getSelectedVariantMetadata(mockedState, { productId, variantId })).toBeNull();
     });
 
-    it('should return null when neither the variant data, nor the variant product contains metadata', () => {
+    it('should return undefined when neither the variant data, nor the variant product contains metadata', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       delete mockedState.product.productsById[variantId].productData.metadata;
-      expect(getSelectedVariantMetadata(mockedState, { productId, variantId })).toBeNull();
+      expect(getSelectedVariantMetadata(mockedState, { productId, variantId })).toBeUndefined();
     });
 
     it('should return null when neither the variant product is not available yet', () => {
