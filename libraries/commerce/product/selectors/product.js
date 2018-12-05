@@ -604,8 +604,7 @@ export const getProductImages = createSelector(
       filteredBaseProductImages = filterProductImagesByFormats(baseProductImages, formats);
     }
 
-    // Detect if images are generally available at the moment.
-    if (!filteredProductImages && !filteredBaseProductImages) {
+    if (!filteredProductImages) {
       return null;
     }
 
