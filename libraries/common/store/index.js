@@ -69,6 +69,10 @@ export function configureStore(reducers, subscribers) {
   initSubscribers(subscribers);
   syncRouter(store);
 
+  if (window.Cypress) {
+    window.store = store;
+  }
+
   return store;
 }
 
