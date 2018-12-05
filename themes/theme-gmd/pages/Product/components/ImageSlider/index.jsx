@@ -66,8 +66,13 @@ class ImageSlider extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) { return true; }
-    if (this.props.images.length !== nextProps.images.length) return true;
+    if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) {
+      return true;
+    }
+
+    if (this.props.images && nextProps.images) {
+      if (this.props.images.length !== nextProps.images.length) return true;
+    }
 
     return isEqual(this.props.images, nextProps.images);
   }
