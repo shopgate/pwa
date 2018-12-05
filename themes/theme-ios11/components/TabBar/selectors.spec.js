@@ -20,10 +20,9 @@ import {
   getActiveTab,
   isTabBarEnabled,
   isTabBarVisible,
-  getVisibleTabs,
 } from './selectors';
 
-let mockedHasFavorites = true;
+const mockedHasFavorites = true;
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
