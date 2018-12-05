@@ -29,9 +29,10 @@ const getImagesByIndex = (images) => {
 const ProductGalleryContent = ({ initialSlide, images }) => {
   let content = null;
   if (images) {
+    let counter = 0
     const imagesByIndex = getImagesByIndex(images);
-    content = imagesByIndex.map(imagesInIndex => (
-      <div className={styles.slide} key={JSON.stringify(imagesInIndex)}>
+    content = imagesByIndex.map((imagesInIndex, index) => (
+      <div className={styles.slide} key={`gallery-${++counter}`}>
         <Image srcmap={imagesInIndex} />
       </div>
     ));
