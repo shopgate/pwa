@@ -16,6 +16,7 @@ describe('functional tests filter page', () => {
       .first()
       .click();
     cy.get(els.filterAttributeManufacturer1)
+      .first()
       .should('be.visible')
       .click();
     cy.get(els.applyFilterButton)
@@ -34,10 +35,11 @@ describe('functional tests filter page', () => {
       .should('be.visible')
       .click();
     cy.get(els.filterListItemManufacturer)
-      .should('be.visible')
       .first()
+      .should('be.visible')
       .click();
     cy.get(els.filterAttributeManufacturer1)
+      .first()
       .should('be.visible')
       .click();
     cy.get(els.applyFilterButton)
@@ -52,6 +54,7 @@ describe('functional tests filter page', () => {
       .should('be.visible')
       .click();
     cy.get(els.filterAttributeAccessoriesSize1)
+      .first()
       .should('be.visible')
       .click();
     cy.get(els.applyFilterButton)
