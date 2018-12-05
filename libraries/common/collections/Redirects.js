@@ -64,7 +64,7 @@ class Redirects {
 
   /**
    * @param {string} from The link to redirect from. Route patterns are also supported.
-   * @param {string|Function|Promise} to The link to redirect to or a handler to create a dynamic link.
+   * @param {string|Function|Promise} to redirect / handle to create a dynamic link.
    * @param {boolean} force Whether or not to forcefully set the redirect.
    */
   set(from = null, to = null, force = false) {
