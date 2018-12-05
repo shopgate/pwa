@@ -38,6 +38,8 @@ class ViewProvider extends Component {
       set: this.set,
       setTop: this.setTop,
       setBottom: this.setBottom,
+      setContentRef: this.setContentRef,
+      getContentRef: this.getContentRef,
     };
   }
 
@@ -54,6 +56,18 @@ class ViewProvider extends Component {
   setBottom = (value) => {
     this.set('bottom', value);
   }
+
+  /**
+   * @param {Object} ref A React reference to the page content wrapper.
+   */
+  setContentRef = (ref) => {
+    this.set('contentRef', ref.current);
+  }
+
+  /**
+   * @return {Object}
+   */
+  getContentRef = () => this.state.contentRef;
 
   /**
    * @param {string} property The state property to set.

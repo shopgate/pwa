@@ -33,6 +33,7 @@ describe('functional tests search page', () => {
       .click();
     cy.get(els.searchFieldInput)
       .should('be.visible')
+      .clear()
       .type('product with many properties -3- {enter}');
     cy.get(els.productWithManyProps3SearchResult)
       .should('be.visible');
@@ -42,9 +43,11 @@ describe('functional tests search page', () => {
 
   it('should search with no fitting products', () => {
     cy.get(els.searchFieldInput)
+      .clear()
       .type('kfkfkf {enter}');
     cy.get(els.noResultText)
-      .contains('Ihre Suche nach "kfkfkf" liefert keine Ergebnisse.')
+      .contains('Ihre Suche nach "kfkfkf " liefert keine Ergebnisse.')
+      .last()
       .should('be.visible');
     cy.get(els.backButton)
       .click();
@@ -53,6 +56,7 @@ describe('functional tests search page', () => {
   it('it should check for suggestions', () => {
     cy.get(els.searchFieldInput)
       .should('be.visible')
+      .clear()
       .type('product');
     cy.get("[data-test-id='searchSuggestion Product']")
       .should('be.visible');

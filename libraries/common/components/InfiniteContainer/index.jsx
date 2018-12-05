@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import isEqual from 'lodash/isEqual';
-import { getScrollParent } from '../../helpers/dom';
 import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
 
 /**
@@ -12,6 +11,7 @@ import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
  */
 class InfiniteContainer extends Component {
   static propTypes = {
+    containerRef: PropTypes.shape().isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     iterator: PropTypes.func.isRequired,
     loader: PropTypes.func.isRequired,
@@ -71,7 +71,7 @@ class InfiniteContainer extends Component {
    * After that it calls for the initial data to load.
    */
   componentDidMount() {
-    this.domScrollContainer = getScrollParent(this.domElement);
+    this.domScrollContainer = this.props.containerRef;
     this.bindEvents();
 
     // Initially request items if none received.
@@ -120,16 +120,13 @@ class InfiniteContainer extends Component {
   componentDidUpdate() {
     /*
      *  When component updates we update the scroll container.
-     *  Note here: getScrollParent won't find the right container when it
-     *  is NOT YET scrollable. It will only find containers that are already
-     *  scrollable.
      */
     const oldScrollParent = this.domScrollContainer;
-    this.domScrollContainer = getScrollParent(this.domElement);
+    this.domScrollContainer = this.props.containerRef;
 
     // Rebind scroll container events.
     if (oldScrollParent) {
-      this.unbindEvents();
+      this.unbindEvents(oldScrollParent);
     }
     this.bindEvents();
 
@@ -155,9 +152,12 @@ class InfiniteContainer extends Component {
 
   /**
    * Removes scroll event listeners from the scroll container.
+   * @param {Node} container A reference to an old scroll container.
    */
-  unbindEvents() {
-    if (this.domScrollContainer) {
+  unbindEvents(container) {
+    if (container) {
+      container.removeEventListener('scroll', this.handleLoadingProxy);
+    } else if (this.domScrollContainer) {
       this.domScrollContainer.removeEventListener('scroll', this.handleLoadingProxy);
     }
   }

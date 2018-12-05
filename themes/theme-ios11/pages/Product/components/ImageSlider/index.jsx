@@ -86,7 +86,7 @@ class ImageSlider extends PureComponent {
 
       if (imagesByIndex.length) {
         content = (
-          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange} rebuildOnUpdate>
+          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
             {imagesByIndex.map(imagesInIndex => (
               <ProductImage
                 key={JSON.stringify(imagesInIndex)}
@@ -124,7 +124,7 @@ class ImageSlider extends PureComponent {
               },
             }}
           >
-            <div>{content}</div>
+            <div data-test-id={`product: ${product ? product.name : ''}`}>{content}</div>
           </Hammer>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />

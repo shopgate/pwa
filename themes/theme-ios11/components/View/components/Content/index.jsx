@@ -6,7 +6,6 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import ViewProvider from '../../../../providers/View';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -15,9 +14,9 @@ import styles from './style';
  * The ViewContent component.
  */
 class ViewContent extends Component {
-  static contextType = RouteContext;
-
   static propTypes = {
+    setContentRef: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
     noScrollOnKeyboard: PropTypes.bool,
   };
@@ -29,16 +28,36 @@ class ViewContent extends Component {
 
   /**
    * @param {Object} props The component props.
+   * @param {Object} state The component state.
+   * @returns {Object}
    */
-  constructor(props) {
-    super(props);
+  static getDerivedStateFromProps(props, state) {
+    if (props.visible || state.keyboardHeight === 0) {
+      return null;
+    }
 
-    this.ref = React.createRef();
-    this.state = {
-      keyboardHeight: 0,
-    };
+    return { keyboardHeight: 0 };
+  }
 
+  state = {
+    keyboardHeight: 0,
+  };
+
+  /**
+   * Updates the content reference within the view provider.
+   */
+  componentDidMount() {
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+    this.props.setContentRef(this.ref);
+  }
+
+  /**
+   * @param {Object} nextprops The next component props.
+   * @param {Object} nextState The next component state.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextprops, nextState) {
+    return this.state.keyboardHeight !== nextState.keyboardHeight;
   }
 
   /**
@@ -61,6 +80,8 @@ class ViewContent extends Component {
     };
   }
 
+  ref = React.createRef();
+
   /**
    * Handles a keyboard change event.
    * @param {boolean} open If the keyboard is now open.
@@ -69,7 +90,7 @@ class ViewContent extends Component {
   handleKeyboardChange = ({ open, overlap }) => {
     const height = (open) ? overlap : 0;
 
-    if (this.context.visible && height !== this.state.keyboardHeight) {
+    if (this.props.visible && height !== this.state.keyboardHeight) {
       this.setState({
         keyboardHeight: height,
       });
@@ -104,17 +125,19 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <ViewProvider>
-          <article className={styles} ref={this.ref} style={this.style}>
-            <Helmet title={appConfig.shopName} />
-            <Above />
-            {this.props.children}
-            <Below />
-          </article>
-        </ViewProvider>
+        <article className={styles} ref={this.ref} style={this.style}>
+          <Helmet title={appConfig.shopName} />
+          <Above />
+          {this.props.children}
+          <Below />
+        </article>
       </Swipeable>
     );
   }
 }
 
-export default ViewContent;
+export default props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <ViewContent {...props} visible={visible} />}
+  </RouteContext.Consumer>
+);
