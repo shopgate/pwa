@@ -83,13 +83,13 @@ class ImageSlider extends PureComponent {
 
     if (Array.isArray(images)) {
       const imagesByIndex = getImagesByIndex(images);
-
+      let counter = 0
       if (imagesByIndex.length) {
         content = (
           <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
-            {imagesByIndex.map(imagesInIndex => (
+            {imagesByIndex.map((imagesInIndex, index) => (
               <ProductImage
-                key={JSON.stringify(imagesInIndex)}
+                key={`${product.id}-${++counter}`}
                 srcmap={imagesInIndex}
                 animating={false}
               />
