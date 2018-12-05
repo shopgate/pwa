@@ -6,7 +6,10 @@ describe('IOS11Test productPage', () => {
     // Naviagte to product
     cy.get(els.allProductCategory)
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .click();
 
     // Check for Image
@@ -32,8 +35,10 @@ describe('IOS11Test productPage', () => {
   it('should check for manufacturer', () => {
     cy.visit('/item/31303637');
     cy.get(els.productWithManufacturerPropManufacturerProp)
-      .should('be.visible');
+      .should('be.visible')
+      .wait(3000);
     cy.get(els.productWithManufacturerPropManufacturerPropList)
+      .scrollIntoView()
       .should('be.visible');
   });
 
@@ -44,6 +49,7 @@ describe('IOS11Test productPage', () => {
 
   it('should check for desctiption', () => {
     cy.get(els.productWithManufactruerPropProductDetailPageDescription)
+      .scrollIntoView()
       .should('be.visible');
   });
 
@@ -97,8 +103,6 @@ describe('IOS11Test productPage', () => {
 
   it('should check for variants', () => {
     cy.visit('/item/393639');
-    cy.get(els.variantsPicker)
-      .should('be.visible');
     cy.get(els.variantPickerColor)
       .should('be.visible');
     cy.get(els.variantPickerShoeSize)
