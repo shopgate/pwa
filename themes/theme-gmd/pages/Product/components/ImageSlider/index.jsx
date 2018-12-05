@@ -74,7 +74,7 @@ class ImageSlider extends Component {
       if (this.props.images.length !== nextProps.images.length) return true;
     }
 
-    return isEqual(this.props.images, nextProps.images);
+    return !isEqual(this.props.images, nextProps.images);
   }
 
   handleOpenGallery = () => {
