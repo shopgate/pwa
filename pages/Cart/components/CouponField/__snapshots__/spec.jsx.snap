@@ -21,6 +21,7 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
         "display": "block",
       }
     }
+    setInputRef={[Function]}
     value=""
   />
 </div>
@@ -45,6 +46,7 @@ exports[`<CouponField /> should render as expected without any props 1`] = `
         "display": "block",
       }
     }
+    setInputRef={[Function]}
     value=""
   />
 </div>
