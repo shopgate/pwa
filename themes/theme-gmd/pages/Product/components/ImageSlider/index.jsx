@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -45,7 +45,7 @@ const getImagesByIndex = (images) => {
  * The product image slider component.
  * @param {number} currentSlide The index of the current visible slide.
  */
-class ImageSlider extends PureComponent {
+class ImageSlider extends Component {
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.shape()),
     navigate: PropTypes.func,
@@ -59,6 +59,17 @@ class ImageSlider extends PureComponent {
   };
 
   currentSlide = 0;
+
+  /**
+   * @param {Object} nextProps the next props
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) { return true; }
+    if (this.props.images.length !== nextProps.images.length) return true;
+
+    return JSON.stringify(this.props.images) !== JSON.stringify(nextProps.images);
+  }
 
   handleOpenGallery = () => {
     const { images } = this.props;
@@ -84,9 +95,9 @@ class ImageSlider extends PureComponent {
 
     if (Array.isArray(images)) {
       const imagesByIndex = getImagesByIndex(images);
-      
+
       if (imagesByIndex.length) {
-        let counter = 0
+        let counter = 0;
         content = (
           <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
             {imagesByIndex.map(imagesInIndex => (

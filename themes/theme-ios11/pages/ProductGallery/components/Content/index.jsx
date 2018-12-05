@@ -29,7 +29,7 @@ const getImagesByIndex = (images) => {
 const ProductGalleryContent = ({ initialSlide, images }) => {
   let content = null;
   if (images) {
-    let counter = 0
+    let counter = 0;
     const imagesByIndex = getImagesByIndex(images);
     content = imagesByIndex.map((imagesInIndex, index) => (
       <div className={styles.slide} key={`gallery-${++counter}`}>
