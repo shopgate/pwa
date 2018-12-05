@@ -26,12 +26,14 @@ describe('IOS11Test filter page', () => {
       .first()
       .click();
     cy.get(els.filterAttributeManufacturer1)
+      .first()
       .should('be.visible')
       .click();
   });
 
   it('should check for clear all button', () => {
     cy.get(els.clearAllButton)
+      .scrollIntoView()
       .should('be.visible');
   });
 

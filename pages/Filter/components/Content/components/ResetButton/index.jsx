@@ -21,7 +21,7 @@ class FilterResetButton extends PureComponent {
 
     return (
       <div className={styles}>
-        <Button flat type="primary" onClick={onClick} disabled={!active}>
+        <Button flat type="primary" onClick={onClick} disabled={!active} testId="clearAllButton">
           <I18n.Text string="filter.reset" />
         </Button>
       </div>

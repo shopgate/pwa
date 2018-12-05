@@ -10,7 +10,7 @@ import connect from './connector';
  */
 function ProductAppBar({ title }) {
   return (
-    <BackBar title={title} right={<CartButton />} />
+    <BackBar title={title} right={<CartButton key="right" />} />
   );
 }
 
