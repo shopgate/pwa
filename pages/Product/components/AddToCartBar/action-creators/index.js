@@ -4,7 +4,7 @@ import {
   RESET_ACTION_COUNT,
   SHOW_ADD_TO_CART_BAR,
   HIDE_ADD_TO_CART_BAR,
-} from './constants';
+} from '../constants';
 
 /**
  * Dispatches the INCREMENT_ACTION_COUNT action.

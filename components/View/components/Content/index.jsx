@@ -14,10 +14,9 @@ import styles from './style';
  * The ViewContent component.
  */
 class ViewContent extends Component {
-  static contextType = RouteContext;
-
   static propTypes = {
     setContentRef: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
     noScrollOnKeyboard: PropTypes.bool,
   };
@@ -29,23 +28,36 @@ class ViewContent extends Component {
 
   /**
    * @param {Object} props The component props.
+   * @param {Object} state The component state.
+   * @returns {Object}
    */
-  constructor(props) {
-    super(props);
+  static getDerivedStateFromProps(props, state) {
+    if (props.visible || state.keyboardHeight === 0) {
+      return null;
+    }
 
-    this.ref = React.createRef();
-    this.state = {
-      keyboardHeight: 0,
-    };
-
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+    return { keyboardHeight: 0 };
   }
+
+  state = {
+    keyboardHeight: 0,
+  };
 
   /**
    * Updates the content reference within the view provider.
    */
   componentDidMount() {
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
     this.props.setContentRef(this.ref);
+  }
+
+  /**
+   * @param {Object} nextprops The next component props.
+   * @param {Object} nextState The next component state.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextprops, nextState) {
+    return this.state.keyboardHeight !== nextState.keyboardHeight;
   }
 
   /**
@@ -68,6 +80,8 @@ class ViewContent extends Component {
     };
   }
 
+  ref = React.createRef();
+
   /**
    * Handles a keyboard change event.
    * @param {boolean} open If the keyboard is now open.
@@ -76,7 +90,7 @@ class ViewContent extends Component {
   handleKeyboardChange = ({ open, overlap }) => {
     const height = (open) ? overlap : 0;
 
-    if (this.context.visible && height !== this.state.keyboardHeight) {
+    if (this.props.visible && height !== this.state.keyboardHeight) {
       this.setState({
         keyboardHeight: height,
       });
@@ -122,4 +136,8 @@ class ViewContent extends Component {
   }
 }
 
-export default ViewContent;
+export default props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <ViewContent {...props} visible={visible} />}
+  </RouteContext.Consumer>
+);
