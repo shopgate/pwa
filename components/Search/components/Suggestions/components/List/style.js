@@ -17,6 +17,7 @@ const item = css({
   outline: 0,
   padding: '0 16px 0 72px',
   width: '100%',
+  textAlign: 'left',
 });
 
 export default {

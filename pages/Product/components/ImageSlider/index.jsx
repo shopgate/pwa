@@ -87,7 +87,7 @@ class ImageSlider extends PureComponent {
 
       if (imagesByIndex.length) {
         content = (
-          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange} rebuildOnUpdate>
+          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
             {imagesByIndex.map(imagesInIndex => (
               <ProductImage
                 key={JSON.stringify(imagesInIndex)}
