@@ -27,7 +27,7 @@ class CloseBar extends PureComponent {
   render() {
     const { goBack, ...rest } = this.props;
     return (
-      <DefaultBar left={this.left} right={null} {...rest} />
+      <DefaultBar left={this.left()} right={null} {...rest} />
     );
   }
 }
