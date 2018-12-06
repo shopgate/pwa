@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';
@@ -118,7 +118,7 @@ class Search extends Component {
       return;
     }
 
-    if (pattern === SEARCH_PATH) {
+    if (pattern === SEARCH_PATTERN) {
       this.props.historyReplace({ pathname: location });
     } else {
       this.props.historyPush({ pathname: location });
