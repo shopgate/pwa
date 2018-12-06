@@ -13,10 +13,10 @@ import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';
 
-const SUGGESTIONS_MIN = 2;
+const SUGGESTIONS_MIN = 1;
 
 /**
- * The search field component.
+ * The SearchField component.
  */
 class SearchField extends Component {
   static propTypes = {
