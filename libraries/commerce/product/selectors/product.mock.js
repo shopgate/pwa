@@ -198,10 +198,7 @@ export const mockedProperty2 = {
 export const mockedPropertiesByProductId = {
   product_1: {
     isFetching: false,
-    properties: [
-      mockedProperty1,
-      mockedProperty2,
-    ],
+    properties: [mockedProperty1, mockedProperty2],
   },
   product_5: {
     isFetching: true,
@@ -209,13 +206,54 @@ export const mockedPropertiesByProductId = {
 };
 
 export const mockedProductImagesBase = [
-  'https://img-cdn.shopgate.com/a43fac2d',
-  'https://img-cdn.shopgate.com/b543f421',
+  {
+    width: 440,
+    height: 440,
+    sources: [
+      'https://img-cdn.shopgate.com/a43fac2dx440',
+      'https://img-cdn.shopgate.com/b543f421x440',
+    ],
+  },
+  {
+    width: 1024,
+    height: 1024,
+    sources: [
+      'https://img-cdn.shopgate.com/a43fac2dx1024',
+      'https://img-cdn.shopgate.com/b543f421x1024',
+    ],
+  },
 ];
 
 export const mockedProductImagesVariant = [
-  'https://img-cdn.shopgate.com/a43fac2d',
-  'https://img-cdn.shopgate.com/b543f421',
+  {
+    width: 440,
+    height: 440,
+    sources: [
+      'https://img-cdn.shopgate.com/variant-a43fac2dx440',
+      'https://img-cdn.shopgate.com/variant-b543f421x440',
+    ],
+  },
+  {
+    width: 1024,
+    height: 1024,
+    sources: [
+      'https://img-cdn.shopgate.com/variant-a43fac2dx1024',
+      'https://img-cdn.shopgate.com/variant-b543f421x1024',
+    ],
+  },
+];
+
+export const mockedProductImagesVariantWithoutSources = [
+  {
+    width: 440,
+    height: 440,
+    sources: [],
+  },
+  {
+    width: 1024,
+    height: 1024,
+    sources: [],
+  },
 ];
 
 export const mockedImagesByProductId = {
@@ -229,7 +267,7 @@ export const mockedImagesByProductId = {
   },
   product_3: {
     isFetching: false,
-    images: [],
+    images: mockedProductImagesVariantWithoutSources,
   },
   product_5: {
     isFetching: true,

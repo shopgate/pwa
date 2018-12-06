@@ -42,13 +42,17 @@ const ProductCard = ({
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
-    {(!(hidePrice && hideRating)) && (
+    {!(hidePrice && hideRating) && (
       <div className={styles.details}>
         {!hideRating && product.rating && product.rating.average > 0 && (
           <RatingStars value={product.rating.average} />
         )}
         {!hideName && (
-          <div itemProp="name" className={styles.title} data-test-id={`Productname: ${product.name}`}>
+          <div
+            itemProp="name"
+            className={styles.title}
+            data-test-id={`Productname: ${product.name}`}
+          >
             <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
           </div>
         )}
