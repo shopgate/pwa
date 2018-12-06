@@ -546,15 +546,19 @@ export const getProductDescription = createSelector(
 );
 
 /**
- * Checks if the resolutions properties of two image format objects are equal.
- * @param {Object} formatOne The first format object to compare.
- * @param {Object} formatTwo The second format object to compare.
+ * Checks if the format properties of a format match an image including a format
+ * @param {Object} item the item including the format to compare
+ * @param {Object} format The  format object to compare.
  * @returns {boolean}
  */
-const areImageFormatsEqual = (formatOne, formatTwo) => {
-  const { width: widthOne, height: heightOne } = formatOne;
-  const { width: widthTwo, height: heightTwo } = formatTwo;
-  return widthOne === widthTwo && heightOne === heightTwo;
+const doesImageMatchFormat = (item, format) => {
+  const props = Object.keys(format);
+  const { length } = props;
+  for (let i = 0; i < length; i += 1) {
+    const prop = props[i];
+    if (format[prop] !== item[prop]) return false;
+  }
+  return true;
 };
 
 /**
@@ -565,7 +569,7 @@ const areImageFormatsEqual = (formatOne, formatTwo) => {
  */
 const filterProductImagesByFormats = (productImages, formats) => {
   const filtered = productImages.filter(item =>
-    formats.find(format => areImageFormatsEqual(format, item)));
+    formats.find(format => doesImageMatchFormat(item, format)));
 
   const hasSources = !!filtered[0] && filtered[0].sources.length > 0;
 

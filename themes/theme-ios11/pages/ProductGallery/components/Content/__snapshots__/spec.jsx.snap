@@ -62,7 +62,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
         >
           <div
             className="css-1vgjawn"
-            key="gallery-1"
+            key="gallery-0"
           >
             <Image
               alt={null}
@@ -103,7 +103,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           </div>
           <div
             className="css-1vgjawn"
-            key="gallery-2"
+            key="gallery-1"
           >
             <Image
               alt={null}
@@ -211,7 +211,7 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
         >
           <div
             className="css-1vgjawn"
-            key="gallery-1"
+            key="gallery-0"
           >
             <Image
               alt={null}
@@ -252,7 +252,7 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
           </div>
           <div
             className="css-1vgjawn"
-            key="gallery-2"
+            key="gallery-1"
           >
             <Image
               alt={null}
