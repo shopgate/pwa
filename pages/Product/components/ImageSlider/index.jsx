@@ -55,19 +55,7 @@ class ImageSlider extends Component {
   static defaultProps = {
     images: null,
     product: null,
-    navigate: () => {},
-  };
-
-  currentSlide = 0;
-
-  handleOpenGallery = () => {
-    const { images } = this.props;
-
-    if (!images || (Array.isArray(images) && !images.length)) {
-      return;
-    }
-
-    this.props.navigate(this.currentSlide);
+    navigate: () => { },
   };
 
   /**
@@ -86,6 +74,18 @@ class ImageSlider extends Component {
     return !isEqual(this.props.images, nextProps.images);
   }
 
+  currentSlide = 0;
+
+  handleOpenGallery = () => {
+    const { images } = this.props;
+
+    if (!images || (Array.isArray(images) && !images.length)) {
+      return;
+    }
+
+    this.props.navigate(this.currentSlide);
+  };
+
   handleSlideChange = (currentSlide) => {
     this.currentSlide = currentSlide;
   };
@@ -98,19 +98,21 @@ class ImageSlider extends Component {
     const { product, images } = this.props;
     let content;
 
-    if (Array.isArray(images)) {
+    if (product && Array.isArray(images)) {
       const imagesByIndex = getImagesByIndex(images);
-      let counter = 0;
+
       if (imagesByIndex.length) {
         content = (
           <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
-            {imagesByIndex.map((imagesInIndex, index) => (
-              <ProductImage
-                key={`${product.id}-${++counter}`}
-                srcmap={imagesInIndex}
-                animating={false}
-              />
-            ))}
+            {imagesByIndex.map((imagesInIndex, index) =>
+              (
+                <ProductImage
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`${product.id}-${index}`}
+                  srcmap={imagesInIndex}
+                  animating={false}
+                />
+              ))}
           </BaseImageSlider>
         );
       }

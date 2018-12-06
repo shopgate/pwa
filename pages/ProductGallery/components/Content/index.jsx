@@ -29,10 +29,10 @@ const getImagesByIndex = (images) => {
 const ProductGalleryContent = ({ initialSlide, images }) => {
   let content = null;
   if (images) {
-    let counter = 0;
     const imagesByIndex = getImagesByIndex(images);
     content = imagesByIndex.map((imagesInIndex, index) => (
-      <div className={styles.slide} key={`gallery-${++counter}`}>
+      // eslint-disable-next-line react/no-array-index-key
+      <div className={styles.slide} key={`gallery-${index}`}>
         <Image srcmap={imagesInIndex} />
       </div>
     ));
