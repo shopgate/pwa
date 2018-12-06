@@ -11,10 +11,10 @@ import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
  */
 class InfiniteContainer extends Component {
   static propTypes = {
-    containerRef: PropTypes.shape().isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     iterator: PropTypes.func.isRequired,
     loader: PropTypes.func.isRequired,
+    containerRef: PropTypes.shape(),
     initialLimit: PropTypes.number,
     limit: PropTypes.number,
     loadingIndicator: PropTypes.node,
@@ -28,6 +28,7 @@ class InfiniteContainer extends Component {
   };
 
   static defaultProps = {
+    containerRef: null,
     initialLimit: 10,
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
@@ -71,7 +72,8 @@ class InfiniteContainer extends Component {
    * After that it calls for the initial data to load.
    */
   componentDidMount() {
-    this.domScrollContainer = this.props.containerRef;
+    const { current } = this.props.containerRef || {};
+    this.domScrollContainer = current;
     this.bindEvents();
 
     // Initially request items if none received.
@@ -108,6 +110,7 @@ class InfiniteContainer extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      !isEqual(this.props.containerRef, nextProps.containerRef) ||
       !isEqual(this.props.items, nextProps.items) ||
       !isEqual(this.state, nextState)
     );
@@ -122,7 +125,8 @@ class InfiniteContainer extends Component {
      *  When component updates we update the scroll container.
      */
     const oldScrollParent = this.domScrollContainer;
-    this.domScrollContainer = this.props.containerRef;
+    const { current } = this.props.containerRef || {};
+    this.domScrollContainer = current;
 
     // Rebind scroll container events.
     if (oldScrollParent) {
