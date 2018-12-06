@@ -13,7 +13,7 @@ function SearchAppBar({
   return (
     <AppBar
       left={<AppBar.Icon icon={ArrowIcon} onClick={close} />}
-      center={<AppBar.Field key={1234} fieldRef={fieldRef} onChange={onInput} onSubmit={onEnter} />}
+      center={<AppBar.Field fieldRef={fieldRef} onChange={onInput} onSubmit={onEnter} />}
       right={<AppBar.Icon icon={CrossIcon} onClick={reset} />}
     />
   );
