@@ -5,7 +5,7 @@ import { WEBCHECKOUT_REGISTER_REDIRECT } from '../constants';
  * @param {string} location of webcheckout register
  * @returns {Object} The dispatched action object
  */
-export const registerRedirect = (location) => ({
+export const registerRedirect = location => ({
   type: WEBCHECKOUT_REGISTER_REDIRECT,
   location,
 });
