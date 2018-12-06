@@ -19,6 +19,7 @@ class ViewProvider extends Component {
     this.state = {
       top: 0,
       bottom: 0,
+      contentRef: null,
     };
   }
 
@@ -61,7 +62,7 @@ class ViewProvider extends Component {
    * @param {Object} ref A React reference to the page content wrapper.
    */
   setContentRef = (ref) => {
-    this.set('contentRef', ref.current);
+    this.set('contentRef', ref);
   }
 
   /**
