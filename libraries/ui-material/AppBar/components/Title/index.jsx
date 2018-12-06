@@ -8,16 +8,25 @@ import styles from './style';
 class AppBarTitle extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+  };
+
+  static defaultProps = {
+    onClick: null,
   };
 
   /**
    * @returns {JSX}
    */
   render() {
-    const { title } = this.props;
+    const { onClick, title } = this.props;
 
     return (
-      <div className={styles} data-test-id={`title: ${title}`}>{title}</div>
+      <div className={styles} data-test-id={`title: ${title}`}>
+        <span aria-hidden onClick={onClick}>
+          {title}
+        </span>
+      </div>
     );
   }
 }
