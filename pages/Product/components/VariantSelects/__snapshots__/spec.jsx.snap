@@ -7,6 +7,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
   <Component>
     <div
       data-test-id="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
+      key="1"
     >
       <Picker
         buttonComponent={[Function]}
@@ -91,7 +92,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
             },
           ]
         }
-        key="1"
         label="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
         onChange={[Function]}
         onClose={[Function]}
@@ -111,6 +111,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
     </div>
     <div
       data-test-id="Size"
+      key="2"
     >
       <Picker
         buttonComponent={[Function]}
@@ -569,7 +570,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
             },
           ]
         }
-        key="2"
         label="Size"
         onChange={[Function]}
         onClose={[Function]}
@@ -589,6 +589,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
     </div>
     <div
       data-test-id="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
+      key="3"
     >
       <Picker
         buttonComponent={[Function]}
@@ -843,7 +844,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
             },
           ]
         }
-        key="3"
         label="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
         onChange={[Function]}
         onClose={[Function]}
