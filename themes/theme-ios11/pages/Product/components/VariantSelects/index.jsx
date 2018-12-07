@@ -247,7 +247,7 @@ class VariantSelects extends Component {
     };
 
     return (
-      <div data-test-id={item.label}>
+      <div data-test-id={item.label} key={item.id}>
         <Picker
           buttonComponent={VariantPickerButton}
           buttonProps={buttonProps}
@@ -259,7 +259,6 @@ class VariantSelects extends Component {
           label={item.label}
           onClose={this.handleOnClose}
           onChange={value => this.handleOnChange(item.id, value)}
-          key={item.id}
           disabled={item.disabled}
           duration={duration}
           ref={(element) => { this.pickers[item.id] = element; }}
