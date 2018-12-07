@@ -212,6 +212,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
               <div>
                 <div
                   data-test-id="Color"
+                  key="1"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -296,7 +297,6 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         },
                       ]
                     }
-                    key="1"
                     label="Color"
                     onChange={[Function]}
                     onClose={[Function]}
@@ -474,6 +474,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                 </div>
                 <div
                   data-test-id="Size"
+                  key="2"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -592,7 +593,6 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         },
                       ]
                     }
-                    key="2"
                     label="Size"
                     onChange={[Function]}
                     onClose={[Function]}
@@ -1030,6 +1030,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
               <div>
                 <div
                   data-test-id="Color"
+                  key="1"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -1114,7 +1115,6 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         },
                       ]
                     }
-                    key="1"
                     label="Color"
                     onChange={[Function]}
                     onClose={[Function]}
@@ -1273,6 +1273,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                 </div>
                 <div
                   data-test-id="Size"
+                  key="2"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -1405,7 +1406,6 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         },
                       ]
                     }
-                    key="2"
                     label="Size"
                     onChange={[Function]}
                     onClose={[Function]}
