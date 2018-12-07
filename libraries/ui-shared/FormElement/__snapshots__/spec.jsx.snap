@@ -72,7 +72,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       translate={true}
     >
       <div
-        className=""
+        className="css-hyvrm8"
       >
         <Translate
           className=""
@@ -156,7 +156,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       translate={true}
     >
       <div
-        className=""
+        className="css-hyvrm8"
       >
         <Translate
           className=""
@@ -244,7 +244,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       translate={true}
     >
       <div
-        className=""
+        className="css-hyvrm8"
       >
         <Translate
           className=""
@@ -329,7 +329,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       translate={true}
     >
       <div
-        className=""
+        className="css-hyvrm8"
       >
         <Translate
           className=""
@@ -413,7 +413,7 @@ exports[`<FormElement /> should show the error message 1`] = `
       translate={true}
     >
       <div
-        className=""
+        className="css-hyvrm8"
       >
         <Translate
           className=""
@@ -510,7 +510,7 @@ exports[`<FormElement /> should show the label 1`] = `
       translate={true}
     >
       <div
-        className=""
+        className="css-hyvrm8"
       >
         <Translate
           className=""
@@ -601,7 +601,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       translate={true}
     >
       <div
-        className=""
+        className="css-hyvrm8"
       >
         <Translate
           className=""
