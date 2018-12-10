@@ -296,195 +296,6 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
         className=""
       >
         <Portal
-          name="foo.foo.before"
-          props={null}
-        />
-        <Portal
-          name="foo.foo"
-          props={null}
-        >
-          <TextElement
-            element={
-              Object {
-                "custom": false,
-                "handleChange": [Function],
-                "id": "foo",
-                "label": "foo",
-                "type": "text",
-                "visible": true,
-              }
-            }
-            errorText=""
-            name="foo.foo"
-            style={
-              Object {
-                "field": "",
-              }
-            }
-            value=""
-            visible={true}
-          >
-            <TextField
-              className=""
-              errorText=""
-              hintText=""
-              isControlled={true}
-              label="foo"
-              multiLine={false}
-              name="foo.foo"
-              onChange={[Function]}
-              onFocusChange={[Function]}
-              onSanitize={[Function]}
-              onValidate={[Function]}
-              password={false}
-              setRef={[Function]}
-              translateErrorText={false}
-              type="text"
-              value=""
-            >
-              <div
-                className="css-e4z0u6 "
-              >
-                <Hint
-                  hintText=""
-                  visible={false}
-                >
-                  <div
-                    className="css-tnfb18 css-1jyyyen"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string=""
-                    />
-                  </div>
-                </Hint>
-                <Label
-                  hasErrorMessage={false}
-                  isFloating={false}
-                  isFocused={false}
-                  label="foo"
-                  name="foo.foo"
-                >
-                  <label
-                    className="css-u7lqu6 css-1fekhao"
-                    htmlFor="foo.foo"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="foo"
-                    >
-                      <span
-                        className=""
-                      >
-                        foo
-                      </span>
-                    </Translate>
-                  </label>
-                </Label>
-                <FormElement
-                  id="foo.foo"
-                  isControlled={true}
-                  multiLine={false}
-                  name="foo.foo"
-                  onChange={[Function]}
-                  onFocusChange={[Function]}
-                  onSanitize={[Function]}
-                  onValidate={[Function]}
-                  password={false}
-                  setRef={[Function]}
-                  type="text"
-                  value=""
-                >
-                  <Component
-                    className="css-keangt"
-                    id="foo.foo"
-                    isControlled={true}
-                    multiLine={false}
-                    name="foo.foo"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    onSanitize={[Function]}
-                    onValidate={[Function]}
-                    password={false}
-                    setRef={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="css-keangt"
-                      disabled={false}
-                      id="foo.foo"
-                      isControlled={true}
-                      multiLine={false}
-                      name="foo.foo"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="css-keangt"
-                        disabled={false}
-                        id="foo.foo"
-                        name="foo.foo"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </Component>
-                </FormElement>
-                <Underline
-                  hasErrorMessage={false}
-                  isFocused={false}
-                >
-                  <div
-                    className="css-ycal4l"
-                  >
-                    <div
-                      className="css-1tpmuef"
-                      style={
-                        Object {
-                          "borderBottomColor": undefined,
-                          "transform": "scale3d(0,1,1)",
-                        }
-                      }
-                    />
-                  </div>
-                </Underline>
-                <ErrorText
-                  className=""
-                  errorText=""
-                  translate={false}
-                  validationError={null}
-                >
-                  <div
-                    className=" css-hmgfge"
-                  />
-                </ErrorText>
-              </div>
-            </TextField>
-          </TextElement>
-        </Portal>
-        <Portal
-          name="foo.foo.after"
-          props={null}
-        />
-        <Portal
           name="foo.bar.before"
           props={null}
         />
@@ -686,6 +497,195 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
           name="foo.bar.after"
           props={null}
         />
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              hintText=""
+              isControlled={true}
+              label="foo"
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onSanitize={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              translateErrorText={false}
+              type="text"
+              value=""
+            >
+              <div
+                className="css-e4z0u6 "
+              >
+                <Hint
+                  hintText=""
+                  visible={false}
+                >
+                  <div
+                    className="css-tnfb18 css-1jyyyen"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string=""
+                    />
+                  </div>
+                </Hint>
+                <Label
+                  hasErrorMessage={false}
+                  isFloating={false}
+                  isFocused={false}
+                  label="foo"
+                  name="foo.foo"
+                >
+                  <label
+                    className="css-u7lqu6 css-1fekhao"
+                    htmlFor="foo.foo"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="foo"
+                    >
+                      <span
+                        className=""
+                      >
+                        foo
+                      </span>
+                    </Translate>
+                  </label>
+                </Label>
+                <FormElement
+                  id="foo.foo"
+                  isControlled={true}
+                  multiLine={false}
+                  name="foo.foo"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  value=""
+                >
+                  <Component
+                    className="css-keangt"
+                    id="foo.foo"
+                    isControlled={true}
+                    multiLine={false}
+                    name="foo.foo"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value=""
+                  >
+                    <SimpleInput
+                      autoComplete={false}
+                      autoCorrect={false}
+                      className="css-keangt"
+                      disabled={false}
+                      id="foo.foo"
+                      isControlled={true}
+                      multiLine={false}
+                      name="foo.foo"
+                      onChange={[Function]}
+                      onFocusChange={[Function]}
+                      onSanitize={[Function]}
+                      onValidate={[Function]}
+                      password={false}
+                      setRef={[Function]}
+                      type="text"
+                      validateOnBlur={true}
+                      value=""
+                    >
+                      <input
+                        autoComplete="off"
+                        autoCorrect="off"
+                        className="css-keangt"
+                        disabled={false}
+                        id="foo.foo"
+                        name="foo.foo"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </SimpleInput>
+                  </Component>
+                </FormElement>
+                <Underline
+                  hasErrorMessage={false}
+                  isFocused={false}
+                >
+                  <div
+                    className="css-ycal4l"
+                  >
+                    <div
+                      className="css-1tpmuef"
+                      style={
+                        Object {
+                          "borderBottomColor": undefined,
+                          "transform": "scale3d(0,1,1)",
+                        }
+                      }
+                    />
+                  </div>
+                </Underline>
+                <ErrorText
+                  className=""
+                  errorText=""
+                  translate={false}
+                  validationError={null}
+                >
+                  <div
+                    className=" css-hmgfge"
+                  />
+                </ErrorText>
+              </div>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
+          props={null}
+        />
       </div>
     </form>
   </Form>
@@ -742,26 +742,39 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
         className=""
       >
         <Portal
-          name="foo.foo.before"
+          name="foo.bar.before"
           props={null}
         />
         <Portal
-          name="foo.foo"
+          name="foo.bar"
           props={null}
         >
           <TextElement
             element={
               Object {
+                "actions": Array [
+                  Object {
+                    "rules": Array [
+                      Object {
+                        "context": "foo",
+                        "data": Array [
+                          "abc",
+                        ],
+                        "type": "notIn",
+                      },
+                    ],
+                    "type": "setVisibility",
+                  },
+                ],
                 "custom": false,
                 "handleChange": [Function],
-                "id": "foo",
-                "label": "foo",
+                "id": "bar",
+                "label": "bar",
                 "type": "text",
-                "visible": true,
               }
             }
             errorText=""
-            name="foo.foo"
+            name="foo.bar"
             style={
               Object {
                 "field": "",
@@ -775,9 +788,9 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
               errorText=""
               hintText=""
               isControlled={true}
-              label="foo"
+              label="bar"
               multiLine={false}
-              name="foo.foo"
+              name="foo.bar"
               onChange={[Function]}
               onFocusChange={[Function]}
               onSanitize={[Function]}
@@ -809,31 +822,31 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   hasErrorMessage={false}
                   isFloating={true}
                   isFocused={false}
-                  label="foo"
-                  name="foo.foo"
+                  label="bar"
+                  name="foo.bar"
                 >
                   <label
                     className="css-u7lqu6 css-16msjt6 css-1fekhao"
-                    htmlFor="foo.foo"
+                    htmlFor="foo.bar"
                   >
                     <Translate
                       className=""
                       params={Object {}}
-                      string="foo"
+                      string="bar"
                     >
                       <span
                         className=""
                       >
-                        foo
+                        bar
                       </span>
                     </Translate>
                   </label>
                 </Label>
                 <FormElement
-                  id="foo.foo"
+                  id="foo.bar"
                   isControlled={true}
                   multiLine={false}
-                  name="foo.foo"
+                  name="foo.bar"
                   onChange={[Function]}
                   onFocusChange={[Function]}
                   onSanitize={[Function]}
@@ -845,10 +858,10 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                 >
                   <Component
                     className="css-keangt"
-                    id="foo.foo"
+                    id="foo.bar"
                     isControlled={true}
                     multiLine={false}
-                    name="foo.foo"
+                    name="foo.bar"
                     onChange={[Function]}
                     onFocusChange={[Function]}
                     onSanitize={[Function]}
@@ -864,10 +877,10 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       autoCorrect={false}
                       className="css-keangt"
                       disabled={false}
-                      id="foo.foo"
+                      id="foo.bar"
                       isControlled={true}
                       multiLine={false}
-                      name="foo.foo"
+                      name="foo.bar"
                       onChange={[Function]}
                       onFocusChange={[Function]}
                       onSanitize={[Function]}
@@ -883,8 +896,8 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                         autoCorrect="off"
                         className="css-keangt"
                         disabled={false}
-                        id="foo.foo"
-                        name="foo.foo"
+                        id="foo.bar"
+                        name="foo.bar"
                         onBlur={[Function]}
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -927,19 +940,196 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
           </TextElement>
         </Portal>
         <Portal
-          name="foo.foo.after"
-          props={null}
-        />
-        <Portal
-          name="foo.bar.before"
-          props={null}
-        />
-        <Portal
-          name="foo.bar"
-          props={null}
-        />
-        <Portal
           name="foo.bar.after"
+          props={null}
+        />
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              hintText=""
+              isControlled={true}
+              label="foo"
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onSanitize={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              translateErrorText={false}
+              type="text"
+              value=""
+            >
+              <div
+                className="css-e4z0u6 "
+              >
+                <Hint
+                  hintText=""
+                  visible={false}
+                >
+                  <div
+                    className="css-tnfb18 css-1jyyyen"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string=""
+                    />
+                  </div>
+                </Hint>
+                <Label
+                  hasErrorMessage={false}
+                  isFloating={false}
+                  isFocused={false}
+                  label="foo"
+                  name="foo.foo"
+                >
+                  <label
+                    className="css-u7lqu6 css-1fekhao"
+                    htmlFor="foo.foo"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="foo"
+                    >
+                      <span
+                        className=""
+                      >
+                        foo
+                      </span>
+                    </Translate>
+                  </label>
+                </Label>
+                <FormElement
+                  id="foo.foo"
+                  isControlled={true}
+                  multiLine={false}
+                  name="foo.foo"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  value=""
+                >
+                  <Component
+                    className="css-keangt"
+                    id="foo.foo"
+                    isControlled={true}
+                    multiLine={false}
+                    name="foo.foo"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value=""
+                  >
+                    <SimpleInput
+                      autoComplete={false}
+                      autoCorrect={false}
+                      className="css-keangt"
+                      disabled={false}
+                      id="foo.foo"
+                      isControlled={true}
+                      multiLine={false}
+                      name="foo.foo"
+                      onChange={[Function]}
+                      onFocusChange={[Function]}
+                      onSanitize={[Function]}
+                      onValidate={[Function]}
+                      password={false}
+                      setRef={[Function]}
+                      type="text"
+                      validateOnBlur={true}
+                      value=""
+                    >
+                      <input
+                        autoComplete="off"
+                        autoCorrect="off"
+                        className="css-keangt"
+                        disabled={false}
+                        id="foo.foo"
+                        name="foo.foo"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </SimpleInput>
+                  </Component>
+                </FormElement>
+                <Underline
+                  hasErrorMessage={false}
+                  isFocused={false}
+                >
+                  <div
+                    className="css-ycal4l"
+                  >
+                    <div
+                      className="css-1tpmuef"
+                      style={
+                        Object {
+                          "borderBottomColor": undefined,
+                          "transform": "scale3d(0,1,1)",
+                        }
+                      }
+                    />
+                  </div>
+                </Underline>
+                <ErrorText
+                  className=""
+                  errorText=""
+                  translate={false}
+                  validationError={null}
+                >
+                  <div
+                    className=" css-hmgfge"
+                  />
+                </ErrorText>
+              </div>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
           props={null}
         />
       </div>
@@ -1063,195 +1253,6 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
       <div
         className=""
       >
-        <Portal
-          name="foo.firstName.before"
-          props={null}
-        />
-        <Portal
-          name="foo.firstName"
-          props={null}
-        >
-          <TextElement
-            element={
-              Object {
-                "custom": false,
-                "handleChange": [Function],
-                "id": "firstName",
-                "label": "foo",
-                "type": "text",
-                "visible": true,
-              }
-            }
-            errorText=""
-            name="foo.firstName"
-            style={
-              Object {
-                "field": "",
-              }
-            }
-            value=""
-            visible={true}
-          >
-            <TextField
-              className=""
-              errorText=""
-              hintText=""
-              isControlled={true}
-              label="foo"
-              multiLine={false}
-              name="foo.firstName"
-              onChange={[Function]}
-              onFocusChange={[Function]}
-              onSanitize={[Function]}
-              onValidate={[Function]}
-              password={false}
-              setRef={[Function]}
-              translateErrorText={false}
-              type="text"
-              value=""
-            >
-              <div
-                className="css-e4z0u6 "
-              >
-                <Hint
-                  hintText=""
-                  visible={false}
-                >
-                  <div
-                    className="css-tnfb18 css-1jyyyen"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string=""
-                    />
-                  </div>
-                </Hint>
-                <Label
-                  hasErrorMessage={false}
-                  isFloating={false}
-                  isFocused={false}
-                  label="foo"
-                  name="foo.firstName"
-                >
-                  <label
-                    className="css-u7lqu6 css-1fekhao"
-                    htmlFor="foo.firstName"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="foo"
-                    >
-                      <span
-                        className=""
-                      >
-                        foo
-                      </span>
-                    </Translate>
-                  </label>
-                </Label>
-                <FormElement
-                  id="foo.firstName"
-                  isControlled={true}
-                  multiLine={false}
-                  name="foo.firstName"
-                  onChange={[Function]}
-                  onFocusChange={[Function]}
-                  onSanitize={[Function]}
-                  onValidate={[Function]}
-                  password={false}
-                  setRef={[Function]}
-                  type="text"
-                  value=""
-                >
-                  <Component
-                    className="css-keangt"
-                    id="foo.firstName"
-                    isControlled={true}
-                    multiLine={false}
-                    name="foo.firstName"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    onSanitize={[Function]}
-                    onValidate={[Function]}
-                    password={false}
-                    setRef={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="css-keangt"
-                      disabled={false}
-                      id="foo.firstName"
-                      isControlled={true}
-                      multiLine={false}
-                      name="foo.firstName"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="css-keangt"
-                        disabled={false}
-                        id="foo.firstName"
-                        name="foo.firstName"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </Component>
-                </FormElement>
-                <Underline
-                  hasErrorMessage={false}
-                  isFocused={false}
-                >
-                  <div
-                    className="css-ycal4l"
-                  >
-                    <div
-                      className="css-1tpmuef"
-                      style={
-                        Object {
-                          "borderBottomColor": undefined,
-                          "transform": "scale3d(0,1,1)",
-                        }
-                      }
-                    />
-                  </div>
-                </Underline>
-                <ErrorText
-                  className=""
-                  errorText=""
-                  translate={false}
-                  validationError={null}
-                >
-                  <div
-                    className=" css-hmgfge"
-                  />
-                </ErrorText>
-              </div>
-            </TextField>
-          </TextElement>
-        </Portal>
-        <Portal
-          name="foo.firstName.after"
-          props={null}
-        />
         <Portal
           name="foo.lastName.before"
           props={null}
@@ -1441,6 +1442,195 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
           name="foo.lastName.after"
           props={null}
         />
+        <Portal
+          name="foo.firstName.before"
+          props={null}
+        />
+        <Portal
+          name="foo.firstName"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "firstName",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.firstName"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              hintText=""
+              isControlled={true}
+              label="foo"
+              multiLine={false}
+              name="foo.firstName"
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onSanitize={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              translateErrorText={false}
+              type="text"
+              value=""
+            >
+              <div
+                className="css-e4z0u6 "
+              >
+                <Hint
+                  hintText=""
+                  visible={false}
+                >
+                  <div
+                    className="css-tnfb18 css-1jyyyen"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string=""
+                    />
+                  </div>
+                </Hint>
+                <Label
+                  hasErrorMessage={false}
+                  isFloating={false}
+                  isFocused={false}
+                  label="foo"
+                  name="foo.firstName"
+                >
+                  <label
+                    className="css-u7lqu6 css-1fekhao"
+                    htmlFor="foo.firstName"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="foo"
+                    >
+                      <span
+                        className=""
+                      >
+                        foo
+                      </span>
+                    </Translate>
+                  </label>
+                </Label>
+                <FormElement
+                  id="foo.firstName"
+                  isControlled={true}
+                  multiLine={false}
+                  name="foo.firstName"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  value=""
+                >
+                  <Component
+                    className="css-keangt"
+                    id="foo.firstName"
+                    isControlled={true}
+                    multiLine={false}
+                    name="foo.firstName"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value=""
+                  >
+                    <SimpleInput
+                      autoComplete={false}
+                      autoCorrect={false}
+                      className="css-keangt"
+                      disabled={false}
+                      id="foo.firstName"
+                      isControlled={true}
+                      multiLine={false}
+                      name="foo.firstName"
+                      onChange={[Function]}
+                      onFocusChange={[Function]}
+                      onSanitize={[Function]}
+                      onValidate={[Function]}
+                      password={false}
+                      setRef={[Function]}
+                      type="text"
+                      validateOnBlur={true}
+                      value=""
+                    >
+                      <input
+                        autoComplete="off"
+                        autoCorrect="off"
+                        className="css-keangt"
+                        disabled={false}
+                        id="foo.firstName"
+                        name="foo.firstName"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </SimpleInput>
+                  </Component>
+                </FormElement>
+                <Underline
+                  hasErrorMessage={false}
+                  isFocused={false}
+                >
+                  <div
+                    className="css-ycal4l"
+                  >
+                    <div
+                      className="css-1tpmuef"
+                      style={
+                        Object {
+                          "borderBottomColor": undefined,
+                          "transform": "scale3d(0,1,1)",
+                        }
+                      }
+                    />
+                  </div>
+                </Underline>
+                <ErrorText
+                  className=""
+                  errorText=""
+                  translate={false}
+                  validationError={null}
+                >
+                  <div
+                    className=" css-hmgfge"
+                  />
+                </ErrorText>
+              </div>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.firstName.after"
+          props={null}
+        />
       </div>
     </form>
   </Form>
@@ -1502,196 +1692,6 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
       <div
         className=""
       >
-        <Portal
-          name="foo.foo.before"
-          props={null}
-        />
-        <Portal
-          name="foo.foo"
-          props={null}
-        >
-          <TextElement
-            element={
-              Object {
-                "custom": false,
-                "default": "default",
-                "handleChange": [Function],
-                "id": "foo",
-                "label": "foo",
-                "type": "text",
-                "visible": true,
-              }
-            }
-            errorText=""
-            name="foo.foo"
-            style={
-              Object {
-                "field": "",
-              }
-            }
-            value="default"
-            visible={true}
-          >
-            <TextField
-              className=""
-              errorText=""
-              hintText=""
-              isControlled={true}
-              label="foo"
-              multiLine={false}
-              name="foo.foo"
-              onChange={[Function]}
-              onFocusChange={[Function]}
-              onSanitize={[Function]}
-              onValidate={[Function]}
-              password={false}
-              setRef={[Function]}
-              translateErrorText={false}
-              type="text"
-              value="default"
-            >
-              <div
-                className="css-e4z0u6 "
-              >
-                <Hint
-                  hintText=""
-                  visible={false}
-                >
-                  <div
-                    className="css-tnfb18 css-1jyyyen"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string=""
-                    />
-                  </div>
-                </Hint>
-                <Label
-                  hasErrorMessage={false}
-                  isFloating={true}
-                  isFocused={false}
-                  label="foo"
-                  name="foo.foo"
-                >
-                  <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
-                    htmlFor="foo.foo"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="foo"
-                    >
-                      <span
-                        className=""
-                      >
-                        foo
-                      </span>
-                    </Translate>
-                  </label>
-                </Label>
-                <FormElement
-                  id="foo.foo"
-                  isControlled={true}
-                  multiLine={false}
-                  name="foo.foo"
-                  onChange={[Function]}
-                  onFocusChange={[Function]}
-                  onSanitize={[Function]}
-                  onValidate={[Function]}
-                  password={false}
-                  setRef={[Function]}
-                  type="text"
-                  value="default"
-                >
-                  <Component
-                    className="css-keangt"
-                    id="foo.foo"
-                    isControlled={true}
-                    multiLine={false}
-                    name="foo.foo"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    onSanitize={[Function]}
-                    onValidate={[Function]}
-                    password={false}
-                    setRef={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value="default"
-                  >
-                    <SimpleInput
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="css-keangt"
-                      disabled={false}
-                      id="foo.foo"
-                      isControlled={true}
-                      multiLine={false}
-                      name="foo.foo"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value="default"
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="css-keangt"
-                        disabled={false}
-                        id="foo.foo"
-                        name="foo.foo"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        type="text"
-                        value="default"
-                      />
-                    </SimpleInput>
-                  </Component>
-                </FormElement>
-                <Underline
-                  hasErrorMessage={false}
-                  isFocused={false}
-                >
-                  <div
-                    className="css-ycal4l"
-                  >
-                    <div
-                      className="css-1tpmuef"
-                      style={
-                        Object {
-                          "borderBottomColor": undefined,
-                          "transform": "scale3d(0,1,1)",
-                        }
-                      }
-                    />
-                  </div>
-                </Underline>
-                <ErrorText
-                  className=""
-                  errorText=""
-                  translate={false}
-                  validationError={null}
-                >
-                  <div
-                    className=" css-hmgfge"
-                  />
-                </ErrorText>
-              </div>
-            </TextField>
-          </TextElement>
-        </Portal>
-        <Portal
-          name="foo.foo.after"
-          props={null}
-        />
         <Portal
           name="foo.bar.before"
           props={null}
@@ -1897,6 +1897,196 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
         </Portal>
         <Portal
           name="foo.bar.after"
+          props={null}
+        />
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "default": "default",
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="default"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              hintText=""
+              isControlled={true}
+              label="foo"
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onSanitize={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              translateErrorText={false}
+              type="text"
+              value="default"
+            >
+              <div
+                className="css-e4z0u6 "
+              >
+                <Hint
+                  hintText=""
+                  visible={false}
+                >
+                  <div
+                    className="css-tnfb18 css-1jyyyen"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string=""
+                    />
+                  </div>
+                </Hint>
+                <Label
+                  hasErrorMessage={false}
+                  isFloating={true}
+                  isFocused={false}
+                  label="foo"
+                  name="foo.foo"
+                >
+                  <label
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    htmlFor="foo.foo"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="foo"
+                    >
+                      <span
+                        className=""
+                      >
+                        foo
+                      </span>
+                    </Translate>
+                  </label>
+                </Label>
+                <FormElement
+                  id="foo.foo"
+                  isControlled={true}
+                  multiLine={false}
+                  name="foo.foo"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  value="default"
+                >
+                  <Component
+                    className="css-keangt"
+                    id="foo.foo"
+                    isControlled={true}
+                    multiLine={false}
+                    name="foo.foo"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value="default"
+                  >
+                    <SimpleInput
+                      autoComplete={false}
+                      autoCorrect={false}
+                      className="css-keangt"
+                      disabled={false}
+                      id="foo.foo"
+                      isControlled={true}
+                      multiLine={false}
+                      name="foo.foo"
+                      onChange={[Function]}
+                      onFocusChange={[Function]}
+                      onSanitize={[Function]}
+                      onValidate={[Function]}
+                      password={false}
+                      setRef={[Function]}
+                      type="text"
+                      validateOnBlur={true}
+                      value="default"
+                    >
+                      <input
+                        autoComplete="off"
+                        autoCorrect="off"
+                        className="css-keangt"
+                        disabled={false}
+                        id="foo.foo"
+                        name="foo.foo"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        type="text"
+                        value="default"
+                      />
+                    </SimpleInput>
+                  </Component>
+                </FormElement>
+                <Underline
+                  hasErrorMessage={false}
+                  isFocused={false}
+                >
+                  <div
+                    className="css-ycal4l"
+                  >
+                    <div
+                      className="css-1tpmuef"
+                      style={
+                        Object {
+                          "borderBottomColor": undefined,
+                          "transform": "scale3d(0,1,1)",
+                        }
+                      }
+                    />
+                  </div>
+                </Underline>
+                <ErrorText
+                  className=""
+                  errorText=""
+                  translate={false}
+                  validationError={null}
+                >
+                  <div
+                    className=" css-hmgfge"
+                  />
+                </ErrorText>
+              </div>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
           props={null}
         />
       </div>
@@ -1961,196 +2151,6 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
         className=""
       >
         <Portal
-          name="foo.foo.before"
-          props={null}
-        />
-        <Portal
-          name="foo.foo"
-          props={null}
-        >
-          <TextElement
-            element={
-              Object {
-                "custom": false,
-                "default": "default",
-                "handleChange": [Function],
-                "id": "foo",
-                "label": "foo",
-                "type": "text",
-                "visible": true,
-              }
-            }
-            errorText=""
-            name="foo.foo"
-            style={
-              Object {
-                "field": "",
-              }
-            }
-            value="abc"
-            visible={true}
-          >
-            <TextField
-              className=""
-              errorText=""
-              hintText=""
-              isControlled={true}
-              label="foo"
-              multiLine={false}
-              name="foo.foo"
-              onChange={[Function]}
-              onFocusChange={[Function]}
-              onSanitize={[Function]}
-              onValidate={[Function]}
-              password={false}
-              setRef={[Function]}
-              translateErrorText={false}
-              type="text"
-              value="abc"
-            >
-              <div
-                className="css-e4z0u6 "
-              >
-                <Hint
-                  hintText=""
-                  visible={false}
-                >
-                  <div
-                    className="css-tnfb18 css-1jyyyen"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string=""
-                    />
-                  </div>
-                </Hint>
-                <Label
-                  hasErrorMessage={false}
-                  isFloating={true}
-                  isFocused={false}
-                  label="foo"
-                  name="foo.foo"
-                >
-                  <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
-                    htmlFor="foo.foo"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="foo"
-                    >
-                      <span
-                        className=""
-                      >
-                        foo
-                      </span>
-                    </Translate>
-                  </label>
-                </Label>
-                <FormElement
-                  id="foo.foo"
-                  isControlled={true}
-                  multiLine={false}
-                  name="foo.foo"
-                  onChange={[Function]}
-                  onFocusChange={[Function]}
-                  onSanitize={[Function]}
-                  onValidate={[Function]}
-                  password={false}
-                  setRef={[Function]}
-                  type="text"
-                  value="abc"
-                >
-                  <Component
-                    className="css-keangt"
-                    id="foo.foo"
-                    isControlled={true}
-                    multiLine={false}
-                    name="foo.foo"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    onSanitize={[Function]}
-                    onValidate={[Function]}
-                    password={false}
-                    setRef={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value="abc"
-                  >
-                    <SimpleInput
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="css-keangt"
-                      disabled={false}
-                      id="foo.foo"
-                      isControlled={true}
-                      multiLine={false}
-                      name="foo.foo"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value="abc"
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="css-keangt"
-                        disabled={false}
-                        id="foo.foo"
-                        name="foo.foo"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        type="text"
-                        value="abc"
-                      />
-                    </SimpleInput>
-                  </Component>
-                </FormElement>
-                <Underline
-                  hasErrorMessage={false}
-                  isFocused={false}
-                >
-                  <div
-                    className="css-ycal4l"
-                  >
-                    <div
-                      className="css-1tpmuef"
-                      style={
-                        Object {
-                          "borderBottomColor": undefined,
-                          "transform": "scale3d(0,1,1)",
-                        }
-                      }
-                    />
-                  </div>
-                </Underline>
-                <ErrorText
-                  className=""
-                  errorText=""
-                  translate={false}
-                  validationError={null}
-                >
-                  <div
-                    className=" css-hmgfge"
-                  />
-                </ErrorText>
-              </div>
-            </TextField>
-          </TextElement>
-        </Portal>
-        <Portal
-          name="foo.foo.after"
-          props={null}
-        />
-        <Portal
           name="foo.bar.before"
           props={null}
         />
@@ -2194,7 +2194,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 "field": "",
               }
             }
-            value="cheat"
+            value="abc"
             visible={true}
           >
             <TextField
@@ -2213,7 +2213,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               setRef={[Function]}
               translateErrorText={false}
               type="text"
-              value="cheat"
+              value="abc"
             >
               <div
                 className="css-e4z0u6 "
@@ -2268,7 +2268,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   password={false}
                   setRef={[Function]}
                   type="text"
-                  value="cheat"
+                  value="abc"
                 >
                   <Component
                     className="css-keangt"
@@ -2284,7 +2284,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     setRef={[Function]}
                     type="text"
                     validateOnBlur={true}
-                    value="cheat"
+                    value="abc"
                   >
                     <SimpleInput
                       autoComplete={false}
@@ -2303,7 +2303,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
-                      value="cheat"
+                      value="abc"
                     >
                       <input
                         autoComplete="off"
@@ -2316,7 +2316,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         onChange={[Function]}
                         onFocus={[Function]}
                         type="text"
-                        value="cheat"
+                        value="abc"
                       />
                     </SimpleInput>
                   </Component>
@@ -2355,6 +2355,196 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
         </Portal>
         <Portal
           name="foo.bar.after"
+          props={null}
+        />
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "default": "default",
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="default"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              hintText=""
+              isControlled={true}
+              label="foo"
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onSanitize={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              translateErrorText={false}
+              type="text"
+              value="default"
+            >
+              <div
+                className="css-e4z0u6 "
+              >
+                <Hint
+                  hintText=""
+                  visible={false}
+                >
+                  <div
+                    className="css-tnfb18 css-1jyyyen"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string=""
+                    />
+                  </div>
+                </Hint>
+                <Label
+                  hasErrorMessage={false}
+                  isFloating={true}
+                  isFocused={false}
+                  label="foo"
+                  name="foo.foo"
+                >
+                  <label
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    htmlFor="foo.foo"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="foo"
+                    >
+                      <span
+                        className=""
+                      >
+                        foo
+                      </span>
+                    </Translate>
+                  </label>
+                </Label>
+                <FormElement
+                  id="foo.foo"
+                  isControlled={true}
+                  multiLine={false}
+                  name="foo.foo"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  setRef={[Function]}
+                  type="text"
+                  value="default"
+                >
+                  <Component
+                    className="css-keangt"
+                    id="foo.foo"
+                    isControlled={true}
+                    multiLine={false}
+                    name="foo.foo"
+                    onChange={[Function]}
+                    onFocusChange={[Function]}
+                    onSanitize={[Function]}
+                    onValidate={[Function]}
+                    password={false}
+                    setRef={[Function]}
+                    type="text"
+                    validateOnBlur={true}
+                    value="default"
+                  >
+                    <SimpleInput
+                      autoComplete={false}
+                      autoCorrect={false}
+                      className="css-keangt"
+                      disabled={false}
+                      id="foo.foo"
+                      isControlled={true}
+                      multiLine={false}
+                      name="foo.foo"
+                      onChange={[Function]}
+                      onFocusChange={[Function]}
+                      onSanitize={[Function]}
+                      onValidate={[Function]}
+                      password={false}
+                      setRef={[Function]}
+                      type="text"
+                      validateOnBlur={true}
+                      value="default"
+                    >
+                      <input
+                        autoComplete="off"
+                        autoCorrect="off"
+                        className="css-keangt"
+                        disabled={false}
+                        id="foo.foo"
+                        name="foo.foo"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        type="text"
+                        value="default"
+                      />
+                    </SimpleInput>
+                  </Component>
+                </FormElement>
+                <Underline
+                  hasErrorMessage={false}
+                  isFocused={false}
+                >
+                  <div
+                    className="css-ycal4l"
+                  >
+                    <div
+                      className="css-1tpmuef"
+                      style={
+                        Object {
+                          "borderBottomColor": undefined,
+                          "transform": "scale3d(0,1,1)",
+                        }
+                      }
+                    />
+                  </div>
+                </Underline>
+                <ErrorText
+                  className=""
+                  errorText=""
+                  translate={false}
+                  validationError={null}
+                >
+                  <div
+                    className=" css-hmgfge"
+                  />
+                </ErrorText>
+              </div>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
           props={null}
         />
       </div>

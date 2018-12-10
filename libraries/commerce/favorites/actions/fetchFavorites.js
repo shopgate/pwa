@@ -19,7 +19,7 @@ import {
  * @returns {Promise|undefined}
  *
  */
-const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
+const fetchFavorites = (ignoreCache = false) => (dispatch, getState) => {
   const data = getState().favorites.products;
   if (!ignoreCache && !shouldFetchData(data)) {
     return new Promise(res => res());
@@ -40,4 +40,4 @@ const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
   return promise;
 };
 
-export default getFavorites;
+export default fetchFavorites;
