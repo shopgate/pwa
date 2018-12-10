@@ -3,7 +3,7 @@ import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
-import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
+import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
@@ -29,7 +29,7 @@ export default function category(subscribe) {
   });
 
   subscribe(categoryDidEnter$, ({ dispatch }) => {
-    dispatch(getFilters());
+    dispatch(fetchFilters());
   });
 
   /**
