@@ -9,11 +9,11 @@ const title = css({
 }).toString();
 
 const menuContainer = css({
-  marginTop: `-${variables.gap.bigger}px`,
+  marginTop: `-${variables.gap.big}px`,
   marginRight: `-${variables.gap.big}px`,
 }).toString();
 
-const menuToggleSize = variables.gap.big * 2.5;
+const menuToggleSize = variables.gap.big * 2;
 const menuToggleFontSize = variables.gap.big * 1.5;
 
 const menuToggleContainer = css({
@@ -26,7 +26,7 @@ const menuToggleButton = css({
   fontSize: menuToggleFontSize,
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-end',
 }).toString();
 
 export default {
