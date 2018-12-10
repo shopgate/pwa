@@ -11,7 +11,7 @@ import errorUserReview from '../action-creators/errorUserReview';
  * @param {string} productId The product ID.
  * @returns {Promise} The dispatched action.
  */
-const getUserReview = productId => (dispatch, getState) => {
+const fetchUserReview = productId => (dispatch, getState) => {
   const data = getState().reviews.userReviewsByProductId[productId];
   if (!shouldFetchData(data)) {
     return new Promise(resolve => resolve());
@@ -33,4 +33,4 @@ const getUserReview = productId => (dispatch, getState) => {
   return request;
 };
 
-export default getUserReview;
+export default fetchUserReview;

@@ -15,7 +15,7 @@ import errorProductReviews from '../action-creators/errorProductReviews';
  * @param {('relevance'|'dateDesc'|'dateAsc'|'rateDesc'|'rateAsc')} [sort=SORT_RELEVANCE] Sorting.
  * @returns {Promise} The dispatched action.
  */
-const getProductReviews = (
+const fetchProductReviews = (
   productId,
   limit = REVIEW_PREVIEW_COUNT,
   sort = SORT_RELEVANCE
@@ -46,5 +46,5 @@ const getProductReviews = (
   return request;
 };
 
-export default getProductReviews;
+export default fetchProductReviews;
 

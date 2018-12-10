@@ -9,7 +9,7 @@ import errorSearchResults from '../action-creators/errorSearchResults';
  * @param {number} params The params for the products to request.
  * @return {Function} The dispatched action.
  */
-const getSearchResults = params => (dispatch) => {
+const fetchSearchResults = params => (dispatch) => {
   const {
     offset = 0,
     searchPhrase,
@@ -55,4 +55,4 @@ const getSearchResults = params => (dispatch) => {
   }
 };
 
-export default getSearchResults;
+export default fetchSearchResults;
