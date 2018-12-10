@@ -4,7 +4,7 @@ import { UPDATE_METADATA } from '../constants';
 /**
  * Changes the metadata of an existing product in the store.
  * @param {string} productId The product ID to change the metadata for.
- * @param {Oject} [metadata=null] The metadata to update.
+ * @param {Object} [metadata=null] The metadata to update.
  * @returns {Function} A redux thunk.
  */
 const updateMetaData = (productId, metadata = null) => (dispatch) => {
