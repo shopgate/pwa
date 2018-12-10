@@ -7,6 +7,11 @@ import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import ContextMenu from '@shopgate/pwa-ui-shared/ContextMenu';
 import styles from './style';
 
+const contextMenuClasses = {
+  button: styles.menuToggleButton,
+  container: styles.menuToggleContainer,
+};
+
 /**
  * The Cart Product Title component.
  * @param {Object} props The component properties.
@@ -18,23 +23,21 @@ const Title = ({ value, handleRemove, toggleEditMode }, context) => (
     <Grid.Item grow={1}>
       <Portal name={portals.CART_ITEM_NAME_BEFORE} props={context} />
       <Portal name={portals.CART_ITEM_NAME} props={context} >
-        <div className={styles.title}>
+        <div className={styles.title} data-test-id={value}>
           {value}
         </div>
       </Portal>
       <Portal name={portals.CART_ITEM_NAME_AFTER} props={context} />
     </Grid.Item>
     <Grid.Item className={styles.menuContainer} shrink={0}>
-      <div className={styles.menuToggle}>
-        <ContextMenu>
-          <ContextMenu.Item onClick={handleRemove}>
-            <I18n.Text string="cart.remove" />
-          </ContextMenu.Item>
-          <ContextMenu.Item onClick={() => toggleEditMode(true)}>
-            <I18n.Text string="cart.edit" />
-          </ContextMenu.Item>
-        </ContextMenu>
-      </div>
+      <ContextMenu classes={contextMenuClasses}>
+        <ContextMenu.Item onClick={handleRemove}>
+          <I18n.Text string="cart.remove" />
+        </ContextMenu.Item>
+        <ContextMenu.Item onClick={() => toggleEditMode(true)}>
+          <I18n.Text string="cart.edit" />
+        </ContextMenu.Item>
+      </ContextMenu>
     </Grid.Item>
   </Grid>
 );
@@ -46,8 +49,8 @@ Title.propTypes = {
 };
 
 Title.defaultProps = {
-  handleRemove: () => {},
-  toggleEditMode: () => {},
+  handleRemove: () => { },
+  toggleEditMode: () => { },
 };
 
 Title.contextTypes = {
