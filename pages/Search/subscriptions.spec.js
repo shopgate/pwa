@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
+import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import {
   searchWillEnter$,
@@ -13,8 +13,8 @@ import subscriptions from './subscriptions';
 jest.mock('@shopgate/pwa-common-commerce/filter/actions/fetchFilters', () =>
   jest.fn().mockReturnValue('fetchFilters'));
 
-jest.mock('@shopgate/pwa-common-commerce/search/actions/getSearchResults', () =>
-  jest.fn().mockReturnValue('getSearchResults'));
+jest.mock('@shopgate/pwa-common-commerce/search/actions/fetchSearchResults', () =>
+  jest.fn().mockReturnValue('fetchSearchResults'));
 
 jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
 
@@ -44,7 +44,7 @@ describe('SearchPage subscriptions', () => {
       expect(callback).toBeInstanceOf(Function);
     });
 
-    it('should dispatch the getSearchResults action', () => {
+    it('should dispatch the fetchSearchResults action', () => {
       const action = {
         route: {
           query: {
@@ -62,8 +62,8 @@ describe('SearchPage subscriptions', () => {
       callback({ dispatch, action });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(getSearchResults());
-      expect(getSearchResults).toHaveBeenCalledWith({
+      expect(dispatch).toHaveBeenCalledWith(fetchSearchResults());
+      expect(fetchSearchResults).toHaveBeenCalledWith({
         filters: action.route.state.filters,
         searchPhrase: action.route.query.s,
         sort: action.route.query.sort,
@@ -84,7 +84,7 @@ describe('SearchPage subscriptions', () => {
       expect(callback).toBeInstanceOf(Function);
     });
 
-    it('should dispatch the getSearchResults action', () => {
+    it('should dispatch the fetchSearchResults action', () => {
       const route = {
         query: {
           s: 'Some search phrase',
@@ -103,8 +103,8 @@ describe('SearchPage subscriptions', () => {
       callback({ dispatch, action });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(getSearchResults());
-      expect(getSearchResults).toHaveBeenCalledWith({
+      expect(dispatch).toHaveBeenCalledWith(fetchSearchResults());
+      expect(fetchSearchResults).toHaveBeenCalledWith({
         filters: action.filters,
         searchPhrase: route.query.s,
         sort: route.query.sort,
