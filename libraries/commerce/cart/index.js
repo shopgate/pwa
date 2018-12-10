@@ -14,5 +14,8 @@ export * from './constants/Portals';
 // HELPERS
 export * from './helpers';
 
+// SELECTORS
+export * from './selectors';
+
 // STREAMS
 export * from './streams';
