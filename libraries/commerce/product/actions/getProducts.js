@@ -43,7 +43,7 @@ const processParams = (params, filters, includeSort = true, includeFilters = tru
  * @param {Object} options.params The params for the getProduct pipeline.
  * @param {string} [options.pipeline='getProducts'] The pipeline to call.
  * @param {boolean} [options.cached=true] If the result will be cached.
- * @param {string} [options.id=null] A unique id for the component that is using this action.
+ * @param {null|string} [options.id=null] A unique id for the component that is using this action.
  * @param {boolean} [options.includeSort=true] Tells if the sort parameters shall be included
  *   into the product hash and the request.
  * @param {boolean} [options.includeFilters=true] Tells if the filter parameters shall be included
@@ -64,9 +64,18 @@ const getProducts = ({
   (dispatch, getState) => {
     const state = getState();
     const { offset, limit, ...hashParams } = params;
+    const { productIds } = params;
 
     const sort = getSortOrder(state);
-    const filters = getActiveFilters(state);
+    let filters;
+
+    /**
+     * Since the specification doesn't allow to call the pipeline with productIds and filters,
+     * we can skip the selector call when the action params include productIds.
+     */
+    if (!productIds) {
+      filters = getActiveFilters(state);
+    }
 
     // We need to process the params to handle edge cases in the pipeline params.
     const requestParams = processParams(params, filters, includeSort, includeFilters);
