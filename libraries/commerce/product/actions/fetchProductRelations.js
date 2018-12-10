@@ -18,7 +18,7 @@ import { PRODUCT_RELATIONS_DEFAULT_LIMIT } from '../constants/';
  * @param {number} params.limit Query limit.
  * @returns {Function}
  */
-const getProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAULT_LIMIT }) =>
+const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAULT_LIMIT }) =>
   (dispatch, getState) => {
     const pipeline = SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS;
     const hash = generateProductRelationsHash({
@@ -60,4 +60,4 @@ const getProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAUL
       });
   };
 
-export default getProductRelations;
+export default fetchProductRelations;

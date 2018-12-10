@@ -11,7 +11,7 @@ import errorProductDescription from '../action-creators/errorProductDescription'
  * @param {string} productId The product ID.
  * @return {Function} The dispatched action.
  */
-const getProductDescription = productId => (dispatch, getState) => {
+const fetchProductDescription = productId => (dispatch, getState) => {
   const state = getState();
   const description = state.product.descriptionsByProductId[productId];
 
@@ -31,4 +31,4 @@ const getProductDescription = productId => (dispatch, getState) => {
     });
 };
 
-export default getProductDescription;
+export default fetchProductDescription;

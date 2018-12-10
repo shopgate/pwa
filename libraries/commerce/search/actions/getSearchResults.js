@@ -1,5 +1,5 @@
 import { DEFAULT_SORT, ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
-import getProducts from '../../product/actions/getProducts';
+import fetchProducts from '../../product/actions/fetchProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
 import receiveSearchResults from '../action-creators/receiveSearchResults';
 import errorSearchResults from '../action-creators/errorSearchResults';
@@ -22,7 +22,7 @@ const getSearchResults = params => (dispatch) => {
     return;
   }
 
-  const promise = dispatch(getProducts({
+  const promise = dispatch(fetchProducts({
     params: {
       searchPhrase,
       offset,
@@ -37,7 +37,8 @@ const getSearchResults = params => (dispatch) => {
   }));
 
   /**
-   * Whenever getProducts is able to deliver product data - either via a request or from the cache -
+   * Whenever fetchProducts is able to deliver product data
+   * - either via a request or from the cache -
    * it returns a promise which will be resolved with the response data.
    */
   if (promise instanceof Promise) {

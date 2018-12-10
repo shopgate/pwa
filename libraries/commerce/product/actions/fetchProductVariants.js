@@ -11,7 +11,7 @@ import errorProductVariants from '../action-creators/errorProductVariants';
  * @param {string} productId The product ID for which the product variants are requested.
  * @return {Function} A Redux Thunk
  */
-const getProductVariants = productId => (dispatch, getState) => {
+const fetchProductVariants = productId => (dispatch, getState) => {
   const state = getState();
   const cachedData = state.product.variantsByProductId[productId];
 
@@ -31,4 +31,4 @@ const getProductVariants = productId => (dispatch, getState) => {
     });
 };
 
-export default getProductVariants;
+export default fetchProductVariants;

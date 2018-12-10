@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/getProductsByQuery';
+import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 import { getProductsResult } from '../selectors';
 
 /**
@@ -21,7 +21,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: (type, value, sort, id) => dispatch(getProductsByQuery(type, value, sort, id)),
+  getProducts: (type, value, sort, id) => dispatch(fetchProductsByQuery(type, value, sort, id)),
 });
 
 /**

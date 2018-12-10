@@ -1,5 +1,5 @@
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import getProducts from './getProducts';
+import fetchProducts from './fetchProducts';
 
 /**
  * Retrieves products by id from the store.
@@ -7,7 +7,7 @@ import getProducts from './getProducts';
  * @param {string} [componentId=null] A unique id for the component that is using this action.
  * @return {Function} A Redux Thunk
  */
-const getProductsById = (productIds, componentId = null) => (dispatch, getState) => {
+const fetchProductsById = (productIds, componentId = null) => (dispatch, getState) => {
   const state = getState();
   const products = state.product.productsById;
 
@@ -19,7 +19,7 @@ const getProductsById = (productIds, componentId = null) => (dispatch, getState)
     return;
   }
 
-  dispatch(getProducts({
+  dispatch(fetchProducts({
     ...componentId && { id: componentId },
     params: {
       productIds: missingIds,
@@ -29,4 +29,4 @@ const getProductsById = (productIds, componentId = null) => (dispatch, getState)
   }));
 };
 
-export default getProductsById;
+export default fetchProductsById;

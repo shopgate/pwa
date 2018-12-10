@@ -1,12 +1,12 @@
 import * as pipelines from '../constants/Pipelines';
-import getProducts from './getProducts';
+import fetchProducts from './fetchProducts';
 
 /**
  * Retrieves the information for the liveshopping products widget.
  * @return {Function} A redux thunk.
  */
-const getLiveshoppingProducts = () => (dispatch) => {
-  dispatch(getProducts({
+const fetchLiveshoppingProducts = () => (dispatch) => {
+  dispatch(fetchProducts({
     pipeline: pipelines.SHOPGATE_CATALOG_GET_LIVESHOPPING_PRODUCTS,
     cached: false,
     includeFilters: false,
@@ -14,4 +14,4 @@ const getLiveshoppingProducts = () => (dispatch) => {
   }));
 };
 
-export default getLiveshoppingProducts;
+export default fetchLiveshoppingProducts;

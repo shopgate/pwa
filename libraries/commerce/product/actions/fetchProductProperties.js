@@ -11,7 +11,7 @@ import errorProductProperties from '../action-creators/errorProductProperties';
  * @param {string} productId The product ID.
  * @return {Function} The dispatched action.
  */
-const getProductProperties = productId => (dispatch, getState) => {
+const fetchProductProperties = productId => (dispatch, getState) => {
   const state = getState();
   const properties = state.product.propertiesByProductId[productId];
 
@@ -31,4 +31,4 @@ const getProductProperties = productId => (dispatch, getState) => {
     });
 };
 
-export default getProductProperties;
+export default fetchProductProperties;

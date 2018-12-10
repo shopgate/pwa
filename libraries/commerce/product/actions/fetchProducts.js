@@ -54,7 +54,7 @@ const processParams = (params, activeFilters, includeSort = true, includeFilters
  *  will be returned.
  * @return {Function} A Redux Thunk
  */
-const getProducts = ({
+const fetchProducts = ({
   params = {},
   filters = null,
   pipeline = pipelines.SHOPGATE_CATALOG_GET_PRODUCTS,
@@ -94,7 +94,10 @@ const getProducts = ({
       const { products } = result;
 
       if (Array.isArray(products)) {
-        // Fire the onBeforeDispatch callback to inform a caller that getProducts will return data.
+        /**
+         * Fire the onBeforeDispatch callback to inform
+         * a caller that fetchProducts will return data.
+         */
         onBeforeDispatch();
         return Promise.resolve(result);
       }
@@ -102,7 +105,7 @@ const getProducts = ({
       return null;
     }
 
-    // Fire the onBeforeDispatch callback to inform a caller that getProducts will return data.
+    // Fire the onBeforeDispatch callback to inform a caller that fetchProducts will return data.
     onBeforeDispatch();
 
     dispatch(requestProducts({
@@ -154,4 +157,4 @@ const getProducts = ({
       });
   };
 
-export default getProducts;
+export default fetchProducts;

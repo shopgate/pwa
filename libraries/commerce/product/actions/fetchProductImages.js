@@ -11,7 +11,7 @@ import errorProductImages from '../action-creators/errorProductImages';
  * @param {string} productId The product ID.
  * @return {Function} The dispatched action.
  */
-const getProductImages = productId => (dispatch, getState) => {
+const fetchProductImages = productId => (dispatch, getState) => {
   const state = getState();
   const productImages = state.product.imagesByProductId[productId];
 
@@ -31,4 +31,4 @@ const getProductImages = productId => (dispatch, getState) => {
     });
 };
 
-export default getProductImages;
+export default fetchProductImages;

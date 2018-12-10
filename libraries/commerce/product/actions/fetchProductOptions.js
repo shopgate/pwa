@@ -11,7 +11,7 @@ import errorProductOptions from '../action-creators/errorProductOptions';
  * @param {string} productId The product ID for which the product options are requested.
  * @return {Function} A Redux Thunk
  */
-const getProductOptions = productId => (dispatch, getState) => {
+const fetchProductOptions = productId => (dispatch, getState) => {
   const state = getState();
   const cachedData = state.product.optionsByProductId[productId];
 
@@ -31,4 +31,4 @@ const getProductOptions = productId => (dispatch, getState) => {
     });
 };
 
-export default getProductOptions;
+export default fetchProductOptions;

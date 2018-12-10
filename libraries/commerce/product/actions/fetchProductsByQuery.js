@@ -1,6 +1,6 @@
-import getHighlightProducts from './getHighlightProducts';
-import getProducts from './getProducts';
-import getProductsById from './getProductsById';
+import fetchHighlightProducts from './fetchHighlightProducts';
+import fetchProducts from './fetchProducts';
+import fetchProductsById from './fetchProductsById';
 
 /**
  * Dispatches other actions based on the query type.
@@ -10,7 +10,7 @@ import getProductsById from './getProductsById';
  * @param {string} [id=null] A unique id for the component that is using this action.
  * @return {Function} A Redux Thunk
  */
-const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) => {
+const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch) => {
   switch (type) {
     // Product highlights
     case 1: {
@@ -18,7 +18,7 @@ const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) 
         ...options,
       };
 
-      dispatch(getHighlightProducts({
+      dispatch(fetchHighlightProducts({
         params,
         ...id && { id },
       }));
@@ -33,7 +33,7 @@ const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) 
         ...options,
       };
 
-      dispatch(getProducts({
+      dispatch(fetchProducts({
         params,
         ...id && { id },
         includeFilters: false,
@@ -43,7 +43,7 @@ const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) 
 
     // Product ID's
     case 4: {
-      dispatch(getProductsById(value, id));
+      dispatch(fetchProductsById(value, id));
       break;
     }
 
@@ -54,7 +54,7 @@ const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) 
         ...options,
       };
 
-      dispatch(getProducts({
+      dispatch(fetchProducts({
         params,
         ...id && { id },
         includeFilters: false,
@@ -65,4 +65,4 @@ const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) 
   }
 };
 
-export default getProductsByQuery;
+export default fetchProductsByQuery;

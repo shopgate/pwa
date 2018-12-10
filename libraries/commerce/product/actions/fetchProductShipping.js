@@ -11,7 +11,7 @@ import errorProductShipping from '../action-creators/errorProductShipping';
  * @param {string} productId The product ID for which the product shipping is requested.
  * @return {Function} A Redux Thunk
  */
-const getProductShipping = productId => (dispatch, getState) => {
+const fetchProductShipping = productId => (dispatch, getState) => {
   const state = getState();
   const shipping = state.product.shippingByProductId[productId];
 
@@ -31,4 +31,4 @@ const getProductShipping = productId => (dispatch, getState) => {
     });
 };
 
-export default getProductShipping;
+export default fetchProductShipping;

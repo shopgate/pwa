@@ -14,7 +14,7 @@ import { getProductById } from '../selectors/product';
  * @param {boolean} forceFetch Skips shouldFetchData check. Always fetches.
  * @return {Function} A redux thunk.
  */
-const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
+const fetchProduct = (productId, forceFetch = false) => (dispatch, getState) => {
   const state = getState();
   const product = getProductById(state, { productId });
 
@@ -40,4 +40,4 @@ const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
     });
 };
 
-export default getProduct;
+export default fetchProduct;
