@@ -64,9 +64,18 @@ const getProducts = ({
   (dispatch, getState) => {
     const state = getState();
     const { offset, limit, ...hashParams } = params;
+    const { productIds } = params;
 
     const sort = getSortOrder(state);
-    const filters = getActiveFilters(state);
+    let filters;
+
+    /**
+     * Since the specification doesn't allow to call the pipeline with productIds and filters,
+     * we can space the selector call when the action params include productIds.
+     */
+    if (!productIds) {
+      filters = getActiveFilters(state);
+    }
 
     // We need to process the params to handle edge cases in the pipeline params.
     const requestParams = processParams(params, filters, includeSort, includeFilters);
