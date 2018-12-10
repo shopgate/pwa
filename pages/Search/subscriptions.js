@@ -4,7 +4,7 @@ import {
 } from '@shopgate/pwa-common-commerce/search/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
-import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
+import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { searchFiltersDidUpdate$ } from './streams';
 
 /**
@@ -36,6 +36,6 @@ export default function search(subscribe) {
   });
 
   subscribe(searchDidEnter$, ({ dispatch }) => {
-    dispatch(getFilters());
+    dispatch(fetchFilters());
   });
 }
