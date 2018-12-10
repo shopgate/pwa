@@ -1,6 +1,7 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
 import Portal from 'react-portal';
+import classNames from 'classnames';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
@@ -11,15 +12,17 @@ import styles from './style';
  * The ContextMenu component.
  */
 class ContextMenu extends Component {
+  static Item = Item;
+
   static propTypes = {
     children: PropTypes.node,
+    classes: PropTypes.shape(),
   };
 
   static defaultProps = {
     children: null,
+    classes: { container: '', button: '' },
   };
-
-  static Item = Item;
 
   /**
    * The Constructor.
@@ -71,16 +74,19 @@ class ContextMenu extends Component {
    * @returns {JSX}
    */
   render() {
-    const { children } = this.props;
+    const { children, classes } = this.props;
     const { active } = this.state;
 
     return (
       <div
         data-test-id="contextMenu"
         ref={(ref) => { this.elementRef = ref; }}
-        className={styles.container}
+        className={classNames(styles.container, classes.container)}
       >
-        <button className={styles.button} onClick={this.handleMenuToggle}>
+        <button
+          className={classNames(styles.button, classes.button)}
+          onClick={this.handleMenuToggle}
+        >
           <MoreVertIcon />
         </button>
         <Portal isOpened={active}>
