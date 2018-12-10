@@ -4,6 +4,7 @@ import {
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCTS,
   ERROR_PRODUCT,
+  UPDATE_METADATA,
 } from '../constants';
 import { RECEIVE_FAVORITES } from '../../favorites/constants';
 import handleProductCollection from './helpers/handleProductCollection';
@@ -47,6 +48,17 @@ export default function productsById(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: false,
+        },
+      };
+    case UPDATE_METADATA:
+      return {
+        ...state,
+        [action.productId]: {
+          ...state[action.productId],
+          metadata: {
+            ...(state[action.productId].metadata || {}),
+            ...(action.metadata || {}),
+          },
         },
       };
     default:
