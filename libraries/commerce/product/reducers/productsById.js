@@ -55,9 +55,12 @@ export default function productsById(state = {}, action) {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          metadata: {
-            ...(state[action.productId].metadata || {}),
-            ...(action.metadata || {}),
+          productData: {
+            ...(state[action.productId] || {}).productData,
+            metadata: {
+              ...(((state[action.productId] || {}).productData).metadata || {}),
+              ...(action.metadata || {}),
+            },
           },
         },
       };
