@@ -60,6 +60,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
       >
         <h2
           className="css-18cwfw7"
+          data-test-id="Headline"
           style={
             Object {
               "margin": "24px 20px 16px",
@@ -81,6 +82,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           key="/some/url"
           label="Some Label"
           onClick={null}
+          testId={null}
         >
           <Link
             className="css-1czs3p1"
@@ -106,6 +108,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           key="/another/url"
           label="Another Label"
           onClick={null}
+          testId={null}
         >
           <Link
             className="css-1czs3p1"
