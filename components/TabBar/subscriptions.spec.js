@@ -16,7 +16,9 @@ import subscriptions from './subscriptions';
  */
 const createMockedStore = () => configureStore()({});
 
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: jest.fn(),
+}));
 jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({ getCartItems: jest.fn() }));
 
 describe('TabBar subscriptions', () => {
