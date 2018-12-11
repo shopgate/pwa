@@ -14,7 +14,10 @@ describe('IOS11Test CartPage', () => {
     cy.visit('');
     cy.get(els.allProductCategory)
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .click();
     cy.get(els.addToCartBarButton)
       .click();
@@ -36,12 +39,14 @@ describe('IOS11Test CartPage', () => {
 
   it('should check for shipping label', () => {
     cy.get(els.shippingLabel)
-      .contains('zzgl. Versand')
-      .should('be.visible');
+      .contains('Versand')
+      .should('be.visible')
+      .wait(3000);
   });
 
   it('should check for TaxDisclaimer', () => {
     cy.get(els.taxDisclaimerFooter)
+      .last()
       .contains('* Alle Preise inkl. MwSt. evtl. zzgl. Versand')
       .should('be.visible');
   });

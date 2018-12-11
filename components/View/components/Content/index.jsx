@@ -56,15 +56,6 @@ class ViewContent extends Component {
   }
 
   /**
-   * @param {Object} nextprops The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextprops, nextState) {
-    return this.state.keyboardHeight !== nextState.keyboardHeight;
-  }
-
-  /**
    * Removes the keyboardWillChange listener.
    */
   componentWillUnmount() {

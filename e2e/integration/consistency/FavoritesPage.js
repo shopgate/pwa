@@ -11,7 +11,7 @@ describe('IOS11Test FavoritesPage', () => {
       .should('be.visible');
   });
 
-  it('should check for continue shopping button', () => {
+  it.skip('should check for continue shopping button', () => {
     cy.get(els.favoritesPageContinueShoppingButton)
       .should('be.visible');
   });
@@ -28,7 +28,10 @@ describe('IOS11Test FavoritesPage', () => {
       .scrollIntoView()
       .should('be.visible')
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .scrollIntoView()
       .should('be.visible')
       .click();
