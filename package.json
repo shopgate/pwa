@@ -17,7 +17,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "lint": "eslint --quiet --ext .js --ext .jsx .",
+    "lint": "eslint --quiet --ext .js --ext .jsx --ignore-pattern '/extensions/*' .",
     "release": "make release",
     "e2e:gmd": "make e2e-gmd",
     "e2e:ios11": "make e2e-ios11",
@@ -30,9 +30,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --quiet --ext .js --ext .jsx ."
-    ]
+    "*.{js,jsx}": ["eslint --quiet --ext .js --ext .jsx --ignore-pattern '/extensions/*' ."]
   },
   "devDependencies": {
     "coveralls": "^3.0.1",

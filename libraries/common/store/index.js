@@ -67,6 +67,10 @@ export function configureStore(reducers, subscribers) {
 
   initSubscribers(subscribers);
 
+  if (window.Cypress) {
+    window.store = store;
+  }
+
   return store;
 }
 
