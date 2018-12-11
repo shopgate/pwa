@@ -126,7 +126,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -324,7 +324,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -464,7 +464,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -545,7 +545,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -685,7 +685,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -825,7 +825,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""

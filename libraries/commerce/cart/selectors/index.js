@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 import sumBy from 'lodash/sumBy';
+import { getBaseProductMetadata } from '../../product/selectors/product';
+import { getSelectedVariantMetadata } from '../../product/selectors/variants';
 import {
   getRawProductOptions,
   hasProductOptions,
@@ -217,6 +219,16 @@ export const getAddToCartOptions = createSelector(
       };
     });
   }
+);
+
+/**
+ * Builds the data for the 'metadata' property of addProductsToCart pipeline request payload.
+ * @returns {Object|null} The data if it was determinable, otherwise NULL.
+ */
+export const getAddToCartMetadata = createSelector(
+  getSelectedVariantMetadata,
+  getBaseProductMetadata,
+  (variantMetadata, baseProductMetadata) => variantMetadata || baseProductMetadata || null
 );
 
 /**

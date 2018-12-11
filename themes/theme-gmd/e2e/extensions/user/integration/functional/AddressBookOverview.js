@@ -11,7 +11,7 @@ describe('AddressBook overview', () => {
   it('shows address list page with add button', () => {
     openNavDrawer();
 
-    cy.window().spyAction('UPDATE_HISTORY', () => {
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.userMenuAddressBook).should('be.visible').click();
     });
 
@@ -20,7 +20,7 @@ describe('AddressBook overview', () => {
   });
 
   it('navigate by address book', () => {
-    cy.window().spyAction('OPEN_LINK', () => {
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.addressListAddButton).should('be.visible').click();
       cy.url().should('include', '/user/address/0');
       cy.get(els.userAddressBookAddPageBottomButton).should('be.disabled');

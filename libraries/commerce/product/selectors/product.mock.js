@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep';
 
-export const mockedVariantProductMetadata = { some: 'product metadata' };
+export const mockedProductMetadata = { some: 'product metadata' };
+export const mockedVariantProductMetadata = { some: 'variant product metadata' };
 export const mockedProductsById = {
   // Base product with variants
   product_1: {
@@ -21,6 +22,7 @@ export const mockedProductsById = {
         minOrderQuantity: 1,
         maxOrderQuantity: 10000,
       },
+      metadata: mockedProductMetadata,
     },
   },
   // Variant product of product_1
@@ -45,7 +47,7 @@ export const mockedProductsById = {
       metadata: mockedVariantProductMetadata,
     },
   },
-  // Variant product of product_1 which is not ordeable
+  // Variant product of product_1 which is not orderable
   product_3: {
     isFetching: false,
     productData: {
