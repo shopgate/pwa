@@ -240,10 +240,10 @@
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
   integrity sha512-7EJYyKTL7tFR8+gDbB6Wwz/arpGa0Mywk1TJbNzKzHtzbwVmY4HR9WqS5VV7dsBUKQmPNr192jHr/VpBluj/hg==
 
-"@virtuous/conductor@2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.0.0-beta.2.tgz#8be8670d75dcc05633c19e612f551865498d1e6b"
-  integrity sha512-4G7H2NQN0nvA5Lfn4664QV4MAC3FKJYpbSV4p87qaL7QHB/N8jX3a93eH1zJVVFUv5eMfBA+evb1oDLLM/UUtw==
+"@virtuous/conductor@2.0.0", "@virtuous/conductor@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.0.0.tgz#b91e43c629b513c226d6cd02f0f86722e592b2ce"
+  integrity sha512-3/lw8IkCyuzHWGukJeoGh6EUpf4Ppl1TVei48Zscfa7joiPkLppQdYmflQOcJqh8/9OSi8rDVqdgPM+IGutWDg==
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -255,12 +255,12 @@
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
   integrity sha512-Pc0qQZhl4Kk06o0AY1Zm5Vfm+f5reSGkoxlNPkmiNvQPVzPed4FHqiNNipQ8vUJF4qMRnQQIwduWd1xH/4hzTg==
 
-"@virtuous/react-conductor@2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.0.0-beta.2.tgz#77a1cbb55d8c59acc18801598ac06b6410985209"
-  integrity sha512-DeiVU0jPYgmoY+lEEOyWpoR6tDWtjQ4CtAmvdgf/xAM6CMzV4a9om7+KQp6quxr/HdF7Z16fMyy2P9oz8LzbMQ==
+"@virtuous/react-conductor@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.0.0.tgz#cfa0b1f42d7c40a8dd0498e63a04b7aaaa80e91c"
+  integrity sha512-MQmjiNzON9UAvqA5jjhLEUguuA3Lzl7+FiXTK82c/0Jvwp8DZabzbJjTU/eHy8EYdiCDftF4OxMrVaYZJAWyUQ==
   dependencies:
-    "@virtuous/conductor" "2.0.0-beta.2"
+    "@virtuous/conductor" "2.0.0"
     react-spring "^6.1.4"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
