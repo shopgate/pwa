@@ -5,6 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
@@ -16,14 +17,21 @@ import { navigate } from '../action-creators';
 import subscriptions from './router';
 
 jest.unmock('@shopgate/pwa-core');
-jest.mock('@virtuous/conductor', () => ({
-  pop: jest.fn(),
-  push: jest.fn(),
-  reset: jest.fn(),
-  replace: jest.fn(),
-}));
-
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
+
+jest.mock('@virtuous/conductor', () => ({
+  ACTION_POP: 'ACTION_POP',
+  ACTION_PUSH: 'ACTION_PUSH',
+  ACTION_REPLACE: 'ACTION_REPLACE',
+  ACTION_RESET: 'ACTION_RESET',
+  router: {
+    pop: jest.fn(),
+    push: jest.fn(),
+    reset: jest.fn(),
+    replace: jest.fn(),
+    getCurrentRoute: jest.fn(),
+  },
+}));
 
 let mockedShopCNAME = null;
 let mockedWebCheckoutConfig = null;
@@ -43,7 +51,6 @@ describe('Router subscriptions', () => {
   const getState = jest.fn().mockReturnValue({});
   const protectedRoute = '/protected';
   const protectorRoute = '/login';
-  const getCurrentRoute = jest.fn();
 
   /**
    * @param {Object} action The action object for the callback payload.
@@ -145,7 +152,7 @@ describe('Router subscriptions', () => {
 
     it('should handle the ACTION_POP history action as expected', async () => {
       await callback(createCallbackPayload({ params: { action: ACTION_POP } }));
-      testExpectedCall(router.pop);
+      expect(router.pop).toHaveBeenCalled();
     });
 
     it('should handle the ACTION_RESET history action as expected', async () => {
@@ -164,7 +171,12 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(router.push, params);
+      expect(router.push).toHaveBeenCalledWith({
+        emitBefore: true,
+        emitAfter: true,
+        pathname: params.pathname,
+        state: params.state,
+      });
     });
 
     it('should handle the ACTION_REPLACE history action as expected', async () => {
@@ -175,7 +187,12 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(router.replace, params);
+      expect(router.replace).toHaveBeenCalledWith({
+        emitBefore: false,
+        emitAfter: false,
+        pathname: '/some_route',
+        state: undefined,
+      });
     });
 
     it('should remove trailing slashes from pathnames', async () => {
@@ -187,9 +204,11 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(router.push, {
-        ...params,
+      expect(router.push).toHaveBeenCalledWith({
+        emitBefore: true,
+        emitAfter: true,
         pathname: params.pathname.slice(0, -1),
+        state: params.state,
       });
     });
 
@@ -228,7 +247,12 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
 
-      testExpectedCall(router.push, params);
+      expect(router.push).toHaveBeenCalledWith({
+        emitBefore: true,
+        emitAfter: true,
+        pathname: params.pathname,
+        state: params.state,
+      });
     });
 
     it('should redirect to another location correctly', async () => {
@@ -240,8 +264,10 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(router.push);
-      expect(router.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_other_route',
+        state: params.state,
+      });
     });
 
     it('should redirect to another location when the redirect handler is a promise', async () => {
@@ -259,8 +285,10 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       expect(router.push).toHaveBeenCalledTimes(1);
-      expect(router.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
-      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_other_route',
+        state: params.state,
+      });
       expect(LoadingProvider.setLoading).toHaveBeenCalledWith(protectorRoute);
       expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
@@ -295,8 +323,10 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(router.push);
-      expect(router.push).toHaveBeenCalledWith('/some_route', params.state, params.silent);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_route',
+        state: params.state,
+      });
     });
 
     it('should handle external links like expected', async () => {
@@ -310,12 +340,13 @@ describe('Router subscriptions', () => {
       expect(openExternalLinkSpy).toHaveBeenCalledWith(params.pathname, params.action);
     });
 
-    it('should handle native links like expected', async () => {
+    it.only('should handle native links like expected', async () => {
       /**
        * Replace the implementation of handler.openNative link temporarily. It reassigns
-       * window.location.href intenrnally, which would cause a jest error.
+       * window.location.href internally, which would cause a jest error.
        */
       openNativeLinkSpy.mockImplementationOnce(() => {});
+
       const params = {
         action: ACTION_PUSH,
         pathname: 'tel:+49123456789',
