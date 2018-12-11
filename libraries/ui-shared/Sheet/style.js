@@ -7,7 +7,7 @@ const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
 const container = css({
   bottom: 0,
   background: themeConfig.colors.light,
-  width: '100%',
+  width: '100vw',
   color: themeConfig.colors.dark,
 }).toString();
 

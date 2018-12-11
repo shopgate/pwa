@@ -4,6 +4,7 @@ import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
+import { router } from '@virtuous/conductor';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import Above from '../Above';
@@ -14,6 +15,8 @@ import styles from './style';
  * The ViewContent component.
  */
 class ViewContent extends Component {
+  static contextType = RouteContext;
+
   static propTypes = {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
@@ -47,6 +50,7 @@ class ViewContent extends Component {
    * Updates the content reference within the view provider.
    */
   componentDidMount() {
+    this.ref.current.scrollTop = this.context.state.scrollTop;
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
     this.props.setContentRef(this.ref);
   }
@@ -55,6 +59,10 @@ class ViewContent extends Component {
    * Removes the keyboardWillChange listener.
    */
   componentWillUnmount() {
+    router.update(this.context.id, {
+      scrollTop: this.ref.current.scrollTop,
+    }, false);
+
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 

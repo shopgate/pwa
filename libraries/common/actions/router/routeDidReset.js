@@ -1,17 +1,14 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import { ACTION_RESET } from '@virtuous/conductor/constants';
+import { ACTION_RESET } from '@virtuous/conductor';
 import * as actions from '../../action-creators/router';
-import { getCurrentRoute as getCurrentRouteSelector } from '../../selectors/router';
 
 /**
- * @return {Function} The dispatched action.
+ * @param {Route} prev The previous route.
+ * @param {Route} next The next route.
+ * @returns {Function}
  */
-export function routeDidReset() {
-  return (dispatch, getState) => {
-    const incoming = getCurrentRoute();
-    const outgoing = getCurrentRouteSelector(getState());
-
-    dispatch(actions.routeDidLeave(outgoing, ACTION_RESET));
-    dispatch(actions.routeDidEnter(incoming, ACTION_RESET));
+export function routeDidReset(prev, next) {
+  return (dispatch) => {
+    dispatch(actions.routeDidLeave(prev, ACTION_RESET));
+    dispatch(actions.routeDidEnter(next, ACTION_RESET));
   };
 }

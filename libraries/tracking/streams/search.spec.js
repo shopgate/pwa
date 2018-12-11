@@ -9,12 +9,14 @@ import { searchIsReady$ } from './search';
 
 let mockedRoutePattern;
 let mockedSearchQuery;
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
-  pattern: mockedRoutePattern,
-  query: {
-    ...(mockedSearchQuery && { s: mockedSearchQuery }),
-  },
-  state: {},
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: () => ({
+    pattern: mockedRoutePattern,
+    query: {
+      ...(mockedSearchQuery && { s: mockedSearchQuery }),
+    },
+    state: {},
+  }),
 }));
 
 /**

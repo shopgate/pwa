@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import conductor from '@virtuous/conductor';
+import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import {
@@ -52,14 +52,14 @@ class FilterChips extends Component {
           [id]: newSelected,
         };
 
-        conductor.update(routeId, { filters: newFilters });
+        router.update(routeId, { filters: newFilters });
         updateFilters(newFilters);
         return;
       }
     }
 
     const newFilters = (Object.keys(rest).length) ? rest : null;
-    conductor.update(routeId, { filters: newFilters });
+    router.update(routeId, { filters: newFilters });
     updateFilters(newFilters);
   }
 

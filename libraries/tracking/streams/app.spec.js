@@ -3,7 +3,11 @@ import { pwaDidAppear } from '../action-creators';
 import { pwaDidAppear$ } from './app';
 
 let mockedPattern;
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedPattern }));
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: () => ({
+    pattern: mockedPattern,
+  }),
+}));
 
 describe('App streams', () => {
   let pwaDidAppearSubscriber;
