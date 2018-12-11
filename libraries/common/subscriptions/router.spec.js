@@ -8,7 +8,6 @@ import {
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { historyRedirect } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
@@ -25,7 +24,6 @@ jest.mock('@virtuous/conductor', () => ({
 }));
 
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
 
 let mockedShopCNAME = null;
 let mockedWebCheckoutConfig = null;
@@ -45,6 +43,7 @@ describe('Router subscriptions', () => {
   const getState = jest.fn().mockReturnValue({});
   const protectedRoute = '/protected';
   const protectorRoute = '/login';
+  const getCurrentRoute = jest.fn();
 
   /**
    * @param {Object} action The action object for the callback payload.
