@@ -19,14 +19,14 @@ const LoggedOut = ({ isDisabled }) => (
   <div data-test-id="userMenu">
     <Grid className={styles.grid}>
       <Grid.Item className={styles.gridItem}>
-        <Link href={LOGIN_PATH}>
+        <Link href={LOGIN_PATH} disabled={isDisabled}>
           <Button className={styles.button} testId="UserMenuLogin" disabled={isDisabled}>
             <I18n.Text string="login.button" />
           </Button>
         </Link>
       </Grid.Item>
       <Grid.Item className={styles.gridItem}>
-        <Link href={REGISTER_PATH}>
+        <Link href={REGISTER_PATH} disabled={isDisabled}>
           <Button className={styles.button} testId="UserMenuRegister" disabled={isDisabled}>
             <I18n.Text string="login.signup" />
           </Button>
