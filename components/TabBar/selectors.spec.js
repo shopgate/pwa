@@ -20,10 +20,9 @@ import {
   getActiveTab,
   isTabBarEnabled,
   isTabBarVisible,
-  getVisibleTabs,
 } from './selectors';
 
-let mockedHasFavorites = true;
+const mockedHasFavorites = true;
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
@@ -124,24 +123,6 @@ describe('TabBar selectors', () => {
       const state = getMockedState(true, false);
       const result = isTabBarVisible(state);
       expect(result).toBe(false);
-    });
-  });
-
-  describe('getVisibleTabs()', () => {
-    it('should return four tabs when favorites are inactive', () => {
-      mockedHasFavorites = false;
-
-      const result = getVisibleTabs();
-      expect(result).toBeInstanceOf(Array);
-      expect(result).toHaveLength(4);
-    });
-
-    it('should return five tabs when favorites are active', () => {
-      mockedHasFavorites = true;
-
-      const result = getVisibleTabs();
-      expect(result).toBeInstanceOf(Array);
-      expect(result).toHaveLength(5);
     });
   });
 });
