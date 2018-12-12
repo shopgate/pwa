@@ -126,11 +126,9 @@ class InfiniteContainer extends Component {
   }
 
   /**
-   * Whenever the component updates and there is no scroll container found yet,
-   * it tries to find a proper scroll container again.
+   * Reset the loading flag.
    */
   componentDidUpdate() {
-    // Reset isLoading flag.
     this.isLoading = false;
   }
 
