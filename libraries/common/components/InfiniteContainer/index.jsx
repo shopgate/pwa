@@ -11,10 +11,10 @@ import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
  */
 class InfiniteContainer extends Component {
   static propTypes = {
-    containerRef: PropTypes.shape().isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     iterator: PropTypes.func.isRequired,
     loader: PropTypes.func.isRequired,
+    containerRef: PropTypes.shape(),
     initialLimit: PropTypes.number,
     limit: PropTypes.number,
     loadingIndicator: PropTypes.node,
@@ -28,6 +28,7 @@ class InfiniteContainer extends Component {
   };
 
   static defaultProps = {
+    containerRef: { current: null },
     initialLimit: 10,
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
@@ -54,11 +55,12 @@ class InfiniteContainer extends Component {
     // A flag to prevent concurrent loading requests.
     this.isLoading = false;
 
-    // Use the initialLimit only if there are already products
-    const currentLimit = props.items.length ? props.initialLimit : props.limit;
+    // Determine the initial offset of items.
+    const { items, limit, initialLimit } = props;
+    const currentOffset = items.length ? initialLimit : limit;
 
     this.state = {
-      offset: [0, currentLimit],
+      offset: [0, currentOffset],
       // A state flag that will be true as long as we await more items.
       // The loading indicator will be shown accordingly.
       awaitingItems: true,
@@ -71,8 +73,11 @@ class InfiniteContainer extends Component {
    * After that it calls for the initial data to load.
    */
   componentDidMount() {
-    this.domScrollContainer = this.props.containerRef;
-    this.bindEvents();
+    const { current } = this.props.containerRef;
+    if (current) {
+      this.domScrollContainer = current;
+      this.bindEvents();
+    }
 
     // Initially request items if none received.
     if (!this.props.items.length) {
@@ -92,6 +97,12 @@ class InfiniteContainer extends Component {
       this.resetComponent();
     }
 
+    const { current } = nextProps.containerRef;
+    if (!this.domScrollContainer && current) {
+      this.domScrollContainer = current;
+      this.bindEvents();
+    }
+
     if (this.receivedTotalItems(nextProps)) {
       // Trigger loading if totalItems are available
       this.handleLoading(true, nextProps);
@@ -108,29 +119,16 @@ class InfiniteContainer extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      !isEqual(this.props.containerRef, nextProps.containerRef) ||
       !isEqual(this.props.items, nextProps.items) ||
       !isEqual(this.state, nextState)
     );
   }
 
   /**
-   * Whenever the component updates and there is no scroll container found yet,
-   * it tries to find a proper scroll container again.
+   * Reset the loading flag.
    */
   componentDidUpdate() {
-    /*
-     *  When component updates we update the scroll container.
-     */
-    const oldScrollParent = this.domScrollContainer;
-    this.domScrollContainer = this.props.containerRef;
-
-    // Rebind scroll container events.
-    if (oldScrollParent) {
-      this.unbindEvents(oldScrollParent);
-    }
-    this.bindEvents();
-
-    // Reset isLoading flag.
     this.isLoading = false;
   }
 
