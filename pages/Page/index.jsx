@@ -10,7 +10,7 @@ import PageContent from './components/Content';
  */
 const Page = ({ id }) => (
   <View>
-    {id && <PageContent pageId={id} />}
+    <PageContent pageId={id} />
   </View>
 );
 
