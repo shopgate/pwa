@@ -28,7 +28,7 @@ class InfiniteContainer extends Component {
   };
 
   static defaultProps = {
-    containerRef: null,
+    containerRef: { current: null },
     initialLimit: 10,
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
@@ -55,11 +55,12 @@ class InfiniteContainer extends Component {
     // A flag to prevent concurrent loading requests.
     this.isLoading = false;
 
-    // Use the initialLimit only if there are already products
-    const currentLimit = props.items.length ? props.initialLimit : props.limit;
+    // Determine the initial offset of items.
+    const { items, limit, initialLimit } = props;
+    const currentOffset = items.length ? initialLimit : limit;
 
     this.state = {
-      offset: [0, currentLimit],
+      offset: [0, currentOffset],
       // A state flag that will be true as long as we await more items.
       // The loading indicator will be shown accordingly.
       awaitingItems: true,
@@ -72,9 +73,11 @@ class InfiniteContainer extends Component {
    * After that it calls for the initial data to load.
    */
   componentDidMount() {
-    const { current } = this.props.containerRef || {};
-    this.domScrollContainer = current;
-    this.bindEvents();
+    const { current } = this.props.containerRef;
+    if (current) {
+      this.domScrollContainer = current;
+      this.bindEvents();
+    }
 
     // Initially request items if none received.
     if (!this.props.items.length) {
@@ -92,6 +95,12 @@ class InfiniteContainer extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.requestHash !== this.props.requestHash) {
       this.resetComponent();
+    }
+
+    const { current } = nextProps.containerRef;
+    if (!this.domScrollContainer && current) {
+      this.domScrollContainer = current;
+      this.bindEvents();
     }
 
     if (this.receivedTotalItems(nextProps)) {
@@ -121,19 +130,6 @@ class InfiniteContainer extends Component {
    * it tries to find a proper scroll container again.
    */
   componentDidUpdate() {
-    /*
-     *  When component updates we update the scroll container.
-     */
-    const oldScrollParent = this.domScrollContainer;
-    const { current } = this.props.containerRef || {};
-    this.domScrollContainer = current;
-
-    // Rebind scroll container events.
-    if (oldScrollParent) {
-      this.unbindEvents(oldScrollParent);
-    }
-    this.bindEvents();
-
     // Reset isLoading flag.
     this.isLoading = false;
   }

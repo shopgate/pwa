@@ -19,15 +19,8 @@ class ViewProvider extends Component {
     this.state = {
       top: 0,
       bottom: 0,
-      contentRef: null,
+      contentRef: { current: null },
     };
-  }
-
-  /**
-   * @returns {boolean}
-   */
-  shouldComponentUpdate() {
-    return true;
   }
 
   /**
