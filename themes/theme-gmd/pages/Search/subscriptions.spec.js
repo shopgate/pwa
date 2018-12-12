@@ -16,7 +16,9 @@ jest.mock('@shopgate/pwa-common-commerce/filter/actions/fetchFilters', () =>
 jest.mock('@shopgate/pwa-common-commerce/search/actions/fetchSearchResults', () =>
   jest.fn().mockReturnValue('fetchSearchResults'));
 
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: jest.fn(),
+}));
 
 describe('SearchPage subscriptions', () => {
   const subscribe = jest.fn();
@@ -92,7 +94,7 @@ describe('SearchPage subscriptions', () => {
         },
       };
 
-      getCurrentRoute.mockReturnValueOnce(route);
+      getCurrentRoute.mockReturnValue(route);
 
       const action = {
         filters: {
