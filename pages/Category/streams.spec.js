@@ -3,7 +3,12 @@ import { CATEGORY_PATH, RECEIVE_CATEGORY } from '@shopgate/pwa-common-commerce/c
 import { categoryWillEnter$, receivedVisibleCategory$ } from './streams';
 
 let mockedParams = {};
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ params: mockedParams }));
+
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: () => ({
+    params: mockedParams,
+  }),
+}));
 
 describe('Category streams', () => {
   describe('categoryWillEnter$', () => {
