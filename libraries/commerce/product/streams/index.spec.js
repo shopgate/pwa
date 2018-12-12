@@ -15,11 +15,14 @@ import {
 
 let mockedRoutePattern;
 let mockedRouteProductId;
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
-  pattern: mockedRoutePattern,
-  params: {
-    productId: mockBin2Hex(mockedRouteProductId),
-  },
+
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: () => ({
+    pattern: mockedRoutePattern,
+    params: {
+      productId: mockBin2Hex(mockedRouteProductId),
+    },
+  }),
 }));
 
 /**

@@ -51,7 +51,7 @@ class Item extends Component {
   };
 
   /**
-   * Get the element height to determin the translate distance
+   * Get the element height to determine the translate distance
    * @param {Object} element Component ref
    */
   saveRef = (element) => {

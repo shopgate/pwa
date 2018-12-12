@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/getProductsByQuery';
+import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 import {
   getProductsResult,
   getProductsFetchingState,
@@ -35,7 +35,7 @@ const mapStateToProps = (state, props) => {
  */
 const mapDispatchToProps = dispatch => ({
   getProducts: (type, value, options, id) => (
-    dispatch(getProductsByQuery(type, value, options, id))
+    dispatch(fetchProductsByQuery(type, value, options, id))
   ),
 });
 

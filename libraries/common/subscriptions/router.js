@@ -1,10 +1,10 @@
-import conductor from '@virtuous/conductor';
 import {
+  router,
   ACTION_POP,
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
-} from '@virtuous/conductor/constants';
+} from '@virtuous/conductor';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { logger } from '@shopgate/pwa-core';
 import { LoadingProvider } from '../providers';
@@ -21,7 +21,7 @@ import authRoutes from '../collections/AuthRoutes';
  * Router subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function router(subscribe) {
+export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
     const {
       action, dispatch, getState,
@@ -30,11 +30,11 @@ export default function router(subscribe) {
 
     switch (historyAction) {
       case ACTION_POP: {
-        conductor.pop();
+        router.pop();
         return;
       }
       case ACTION_RESET: {
-        conductor.reset();
+        router.reset();
         return;
       }
       default:
@@ -144,11 +144,21 @@ export default function router(subscribe) {
 
     switch (historyAction) {
       case ACTION_PUSH: {
-        conductor.push(location, routeState, silent);
+        router.push({
+          pathname: location,
+          state: routeState,
+          emitBefore: silent,
+          emitAfter: silent,
+        });
         break;
       }
       case ACTION_REPLACE: {
-        conductor.replace(location, routeState, silent);
+        router.replace({
+          pathname: location,
+          state: routeState,
+          emitBefore: silent,
+          emitAfter: silent,
+        });
         break;
       }
       default:

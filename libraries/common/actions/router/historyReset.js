@@ -1,4 +1,4 @@
-import { ACTION_RESET } from '@virtuous/conductor/constants';
+import { ACTION_RESET } from '@virtuous/conductor';
 import { navigate } from '../../action-creators/router';
 
 /**

@@ -32,7 +32,11 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 }));
 
 let mockedPathname;
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pathname: mockedPathname }));
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: () => ({
+    pathname: mockedPathname,
+  }),
+}));
 
 describe('TabBar selectors', () => {
   beforeEach(() => {

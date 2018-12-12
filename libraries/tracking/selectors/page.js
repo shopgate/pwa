@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 import { shopNumber } from '@shopgate/pwa-common/helpers/config';
 import {
   getHistoryPathname,
-  getHistoryAction,
   getQueryParamsAsString,
 } from '@shopgate/pwa-common/selectors/history';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
@@ -42,7 +41,6 @@ const getTrackingUrl = createSelector(
  */
 const getPageName = createSelector(
   getHistoryPathname,
-  getHistoryAction,
   pathname => pathname.split('?')[0].split('/')[1]
 );
 

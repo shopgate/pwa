@@ -15,7 +15,7 @@ const Image = ({ product }) => (
   <div className={styles.image}>
     <Link
       tagName="a"
-      href={`${ITEM_PATH}/${bin2hex(product.baseProductId || product.id)}`}
+      href={`${ITEM_PATH}/${bin2hex(product.id)}`}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Product"

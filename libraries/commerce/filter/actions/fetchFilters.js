@@ -16,7 +16,7 @@ import processParams from './helpers/processParams';
  * Retrieves the available filters for a list of products.
  * @returns {Function} A redux thunk
  */
-const getFilters = () => (dispatch, getState) => {
+const fetchFilters = () => (dispatch, getState) => {
   const state = getState();
   const params = buildFilterParams();
 
@@ -50,4 +50,4 @@ const getFilters = () => (dispatch, getState) => {
     });
 };
 
-export default getFilters;
+export default fetchFilters;

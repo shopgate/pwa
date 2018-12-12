@@ -1,21 +1,17 @@
-import getPreviousRoute from '@virtuous/conductor-helpers/getPreviousRoute';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
-import getRouteById from '@virtuous/conductor-helpers/getRouteById';
+import { ACTION_PUSH } from '@virtuous/conductor';
 import * as actions from '../../action-creators/router';
 
 /**
- * @param {string} id A route id.
- * @return {Function} The dispatched action.
+ * @param {Route} prev The previous route.
+ * @param {Route} next The next route.
+ * @returns {Function}
  */
-export function routeDidPush(id) {
+export function routeDidPush(prev, next) {
   return (dispatch) => {
-    const route = getRouteById(id);
-    const prevRoute = getPreviousRoute();
-
-    if (prevRoute) {
-      dispatch(actions.routeDidLeave(prevRoute, ACTION_PUSH));
+    if (prev) {
+      dispatch(actions.routeDidLeave(prev, ACTION_PUSH));
     }
 
-    dispatch(actions.routeDidEnter(route, ACTION_PUSH));
+    dispatch(actions.routeDidEnter(next, ACTION_PUSH));
   };
 }

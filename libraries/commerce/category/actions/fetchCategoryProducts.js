@@ -1,6 +1,6 @@
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
-import getProducts from '../../product/actions/getProducts';
+import fetchProducts from '../../product/actions/fetchProducts';
 
 /**
  * Retrieves category products by a category id.
@@ -19,7 +19,7 @@ const fetchCategoryProducts = ({
   (dispatch) => {
     const sort = getSortOrder({});
 
-    dispatch(getProducts({
+    dispatch(fetchProducts({
       params: {
         categoryId,
         offset,
