@@ -9,13 +9,13 @@ import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import connect from '../../connector';
+import connect from '../../../../connector';
 
 const LABEL = 'navigation.payment';
 const PAYMENT_PATH = `${PAGE_PATH}/payment`;
 
 /**
- * @param {Function} props.navigate The navigate action.
+ * @param {Function} navigate The navigate action.
  * @returns {JSX}
  */
 const PaymentButton = ({ navigate }) => (
