@@ -2,8 +2,8 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import { EUNKNOWN, EACCESS } from '@shopgate/pwa-core/constants/Pipeline';
 import fetchReviews from './fetchReviews';
-import getProductReviews from './getProductReviews';
-import getUserReview from './getUserReview';
+import fetchProductReviews from './fetchProductReviews';
+import fetchUserReview from './fetchUserReview';
 import submitReview from './submitReview';
 import { finalState } from '../selectors/mock';
 import * as pipelines from '../constants/Pipelines';
@@ -75,16 +75,16 @@ describe('Reviews actions', () => {
     });
   });
 
-  describe('getProductReviews', () => {
+  describe('fetchProductReviews', () => {
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
      * @param {function} done Async test case done callback function.
      * @param {Object} state React state.
      */
-    const testGetProductReviews = (variant, done, state) => {
+    const testFetchProductReviews = (variant, done, state) => {
       const mockedDispatch = jest.fn();
-      const promise = getProductReviews('foo', 10, 'invalidSort')(mockedDispatch, () => state);
+      const promise = fetchProductReviews('foo', 10, 'invalidSort')(mockedDispatch, () => state);
       setTimeout(() => {
         promise[variant]((result) => {
           expect(result.mockInstance.name).toBe(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS);
@@ -106,7 +106,7 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetProductReviews('then', done, finalState);
+      testFetchProductReviews('then', done, finalState);
     });
 
     it('should reject and call appropriate actions', (done) => {
@@ -115,20 +115,20 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetProductReviews('catch', done, finalState);
+      testFetchProductReviews('catch', done, finalState);
     });
   });
 
-  describe('getUserReview', () => {
+  describe('fetchUserReview', () => {
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
      * @param {function} done Async test case done callback function.
      * @param {Object} state React state.
      */
-    const testGetUserReview = (variant, done, state) => {
+    const testFetchUserReview = (variant, done, state) => {
       const mockedDispatch = jest.fn();
-      const promise = getUserReview('foo')(mockedDispatch, () => state);
+      const promise = fetchUserReview('foo')(mockedDispatch, () => state);
       setTimeout(() => {
         promise[variant]((result) => {
           expect(result.mockInstance.name).toBe(pipelines.SHOPGATE_USER_GET_REVIEW);
@@ -149,7 +149,7 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetUserReview('then', done, finalState);
+      testFetchUserReview('then', done, finalState);
     });
 
     it('should reject and call appropriate actions', (done) => {
@@ -158,7 +158,7 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetUserReview('catch', done, finalState);
+      testFetchUserReview('catch', done, finalState);
     });
   });
 

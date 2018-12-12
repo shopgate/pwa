@@ -5,7 +5,6 @@ import { AppBar } from '@shopgate/pwa-ui-ios';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import ProgressBar from './components/ProgressBar';
 
-
 /**
  * The AppBarDefault component.
  */

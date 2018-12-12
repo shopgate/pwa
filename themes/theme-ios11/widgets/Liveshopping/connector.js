@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getLiveshoppingProducts from '@shopgate/pwa-common-commerce/product/actions/getLiveshoppingProducts';
+import fetchLiveshoppingProducts from '@shopgate/pwa-common-commerce/product/actions/fetchLiveshoppingProducts';
 import { getProductsResult } from './selectors';
 
 /**
@@ -18,7 +18,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getLiveshoppingProducts: () => dispatch(getLiveshoppingProducts()),
+  getLiveshoppingProducts: () => dispatch(fetchLiveshoppingProducts()),
 });
 
 /**

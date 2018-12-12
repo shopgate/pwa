@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
+import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +14,10 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = {
-  getProducts: (searchPhrase, offset) => getSearchResults({ searchPhrase, offset }),
+  getProducts: (searchPhrase, offset) => fetchSearchResults({
+    searchPhrase,
+    offset,
+  }),
 };
 
 /**
