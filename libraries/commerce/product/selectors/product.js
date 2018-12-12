@@ -287,7 +287,7 @@ export const getProductFlags = createSelector(
  * @param {Object} props The component props.
  * @return {string}
  */
-export const getProductPrice = createSelector(
+export const getProductPriceData = createSelector(
   getProduct,
   (product) => {
     if (!product) {
@@ -306,7 +306,7 @@ export const getProductPrice = createSelector(
  * @return {string|null}
  */
 export const getProductCurrency = createSelector(
-  getProductPrice,
+  getProductPriceData,
   (price) => {
     if (!price) {
       return null;
@@ -324,7 +324,7 @@ export const getProductCurrency = createSelector(
  * @return {number|null}
  */
 export const getProductUnitPrice = createSelector(
-  getProductPrice,
+  getProductPriceData,
   (price) => {
     if (!price) {
       return null;

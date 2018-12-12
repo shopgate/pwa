@@ -2,7 +2,7 @@ import subscription from './index';
 import { productRelationsReceived$ } from '../streams';
 
 const mockedGetProductsById = jest.fn();
-jest.mock('../actions/getProductsById', () => (...args) => mockedGetProductsById(...args));
+jest.mock('../actions/fetchProductsById', () => (...args) => mockedGetProductsById(...args));
 
 describe('Product subscription', () => {
   const subscribe = jest.fn();
@@ -22,7 +22,7 @@ describe('Product subscription', () => {
   });
 
   describe('productRelationsReceived$', () => {
-    it('should dispatch getProductsById when called', () => {
+    it('should dispatch fetchProductsById when called', () => {
       const [stream, callback] = productRelationsReceived$Subscription;
       expect(stream === productRelationsReceived$).toBe(true);
 

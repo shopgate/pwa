@@ -9,7 +9,16 @@ import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorMan
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
-import * as events from '@virtuous/conductor-events';
+import {
+  onWillPush,
+  onDidPush,
+  onWillPop,
+  onDidPop,
+  onWillReplace,
+  onDidReplace,
+  onWillReset,
+  onDidReset,
+} from '@virtuous/conductor';
 import { appError, pipelineError } from '../action-creators';
 import {
   historyPush,
@@ -47,14 +56,14 @@ export default function app(subscribe) {
 
     dispatch(registerLinkEvents(action.location));
 
-    events.onWillPush(id => dispatch(routeWillPush(id)));
-    events.onDidPush(id => dispatch(routeDidPush(id)));
-    events.onWillPop(() => dispatch(routeWillPop()));
-    events.onDidPop(() => dispatch(routeDidPop()));
-    events.onWillReplace(id => dispatch(routeWillReplace(id)));
-    events.onDidReplace(id => dispatch(routeDidReplace(id)));
-    events.onWillReset(id => dispatch(routeWillReset(id)));
-    events.onDidReset(id => dispatch(routeDidReset(id)));
+    onWillPush(({ prev, next }) => dispatch(routeWillPush(prev, next)));
+    onDidPush(({ prev, next }) => dispatch(routeDidPush(prev, next)));
+    onWillPop(({ prev, next }) => dispatch(routeWillPop(prev, next)));
+    onDidPop(({ prev, next }) => dispatch(routeDidPop(prev, next)));
+    onWillReplace(({ prev, next }) => dispatch(routeWillReplace(prev, next)));
+    onDidReplace(({ prev, next }) => dispatch(routeDidReplace(prev, next)));
+    onWillReset(({ prev, next }) => dispatch(routeWillReset(prev, next)));
+    onDidReset(({ prev, next }) => dispatch(routeDidReset(prev, next)));
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([

@@ -111,7 +111,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -236,7 +236,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -343,7 +343,7 @@ exports[`<Select /> should render select with no options 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""

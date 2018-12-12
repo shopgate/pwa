@@ -151,7 +151,7 @@ exports[`<TextField> should focus the input 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -314,7 +314,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -477,7 +477,7 @@ exports[`<TextField> should render a simple text field 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -642,7 +642,7 @@ exports[`<TextField> should render the text field as password 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -805,7 +805,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -970,7 +970,7 @@ exports[`<TextField> should sanitize the input 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -1132,7 +1132,7 @@ exports[`<TextField> should show the error message 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -1307,7 +1307,7 @@ exports[`<TextField> should show the label 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -1476,7 +1476,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -1702,7 +1702,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -1912,7 +1912,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""

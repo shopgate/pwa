@@ -1,6 +1,6 @@
-import getProductVariants from './getProductVariants';
-import getProductOptions from './getProductOptions';
-import getProduct from './getProduct';
+import fetchProductVariants from './fetchProductVariants';
+import fetchProductOptions from './fetchProductOptions';
+import fetchProduct from './fetchProduct';
 import setProductId from '../action-creators/setProductId';
 import setProductVariantId from '../action-creators/setProductVariantId';
 
@@ -18,17 +18,17 @@ const processProductFlags = product => dispatch => new Promise((resolve) => {
 
   // We requested data for a child product. So we have to request also the parent product
   if (baseProductId) {
-    dispatch(getProduct(baseProductId));
+    dispatch(fetchProduct(baseProductId));
     dispatch(setProductId(baseProductId));
     dispatch(setProductVariantId(id));
   }
 
   if (hasVariants) {
-    dispatch(getProductVariants(id));
+    dispatch(fetchProductVariants(id));
   }
 
   if (hasOptions) {
-    dispatch(getProductOptions(id));
+    dispatch(fetchProductOptions(id));
   }
 
   resolve();

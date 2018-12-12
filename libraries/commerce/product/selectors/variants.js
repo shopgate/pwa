@@ -116,4 +116,3 @@ export const hasCurrentProductVariants = hasBaseProductVariants;
 export const isProductChildrenSelected = isVariantSelected;
 export const getVariantsByProductId = getProductVariants;
 export const getCurrentBaseProductVariants = getProductVariants;
-export { getProductVariants } from './product';

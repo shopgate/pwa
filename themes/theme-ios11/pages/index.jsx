@@ -28,6 +28,7 @@ import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
+import AppBar from 'Components/AppBar/presets/BackBar';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
 import * as routes from './routes';
@@ -39,7 +40,7 @@ import * as routes from './routes';
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{ View }}>
+      <ThemeContext.Provider value={{ View, AppBar }}>
         <LoadingProvider>
           <ToastProvider>
             <Portal name={APP_GLOBALS} />

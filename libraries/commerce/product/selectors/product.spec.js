@@ -39,7 +39,7 @@ import {
   getProductFlags,
   getProductMetadata,
   getBaseProductMetadata,
-  getProductPrice,
+  getProductPriceData,
   getProductCurrency,
   getProductUnitPrice,
   getProductShipping,
@@ -292,7 +292,7 @@ describe('Product selectors', () => {
       [getProductStock, 'stock'],
       [getProductAvailability, 'availability'],
       [getProductFlags, 'flags'],
-      [getProductPrice, 'price'],
+      [getProductPriceData, 'price'],
       [getProductMetadata, 'metadata'],
     ];
 

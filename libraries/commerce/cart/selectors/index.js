@@ -57,7 +57,7 @@ export const getCartItems = createSelector(
 export const getCartItemById = createSelector(
   (state, { cartItemId }) => cartItemId,
   getCartItems,
-  (cartItemId, cartItems) => cartItems.find(({ id }) => id === cartItemId)
+  (cartItemId, cartItems) => cartItems.find(({ id }) => id === cartItemId) || null
 );
 
 /**

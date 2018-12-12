@@ -20,7 +20,6 @@ const ProductInfo = ({ product }) => {
   const props = { product };
   const {
     availability,
-    baseProductId,
     characteristics,
     id,
     name,
@@ -34,7 +33,7 @@ const ProductInfo = ({ product }) => {
         <div className={styles.name} data-test-id={`favoriteListItem: ${name}`}>
           <Link
             tagName="a"
-            href={`${ITEM_PATH}/${bin2hex(baseProductId || id)}`}
+            href={`${ITEM_PATH}/${bin2hex(id)}`}
             itemProp="item"
             itemScope
             itemType="http://schema.org/Product"

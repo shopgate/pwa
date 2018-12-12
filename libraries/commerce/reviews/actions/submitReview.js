@@ -8,7 +8,7 @@ import receiveSubmitReview from '../action-creators/receiveSubmitReview';
 import errorSubmitReview from '../action-creators/errorSubmitReview';
 import resetSubmittedReview from '../action-creators/resetSubmittedReview';
 import { getUserReviewForProduct } from '../selectors/index';
-import getProduct from '../../product/actions/getProduct';
+import fetchProduct from '../../product/actions/fetchProduct';
 
 /**
  * Request a user review for a product from server.
@@ -44,7 +44,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
     request
       .then(() => {
         dispatch(receiveSubmitReview(newReview));
-        dispatch(getProduct(newReview.productId, true));
+        dispatch(fetchProduct(newReview.productId, true));
       })
       .catch((error) => {
         logger.error(error);
@@ -63,7 +63,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
   request
     .then(() => {
       dispatch(receiveSubmitReview(newReview));
-      dispatch(getProduct(newReview.productId, true));
+      dispatch(fetchProduct(newReview.productId, true));
     })
     .catch((error) => {
       if (error.code === EEXIST) {

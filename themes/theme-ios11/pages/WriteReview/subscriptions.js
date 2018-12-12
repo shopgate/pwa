@@ -8,7 +8,7 @@ import {
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
+import fetchUserReview from '@shopgate/pwa-common-commerce/reviews/actions/fetchUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import { productRoutesWillEnter$ } from './streams';
@@ -28,7 +28,7 @@ export default function writeReview(subscribe) {
       return;
     }
 
-    dispatch(getUserReview(hex2bin(productId)));
+    dispatch(fetchUserReview(hex2bin(productId)));
   });
 
   /**
