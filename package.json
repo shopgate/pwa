@@ -68,7 +68,6 @@
     "@shopgate/pwa-e2e-test": "6.0.0",
     "@shopgate/pwa-unit-test": "6.0.0",
     "coveralls": "^3.0.0",
-    "cypress": "^2.1.0",
     "eslint": "^4.17.0",
     "eslint-import-resolver-babel-module": "4.0.0",
     "husky": "^1.0.0-rc.13",
