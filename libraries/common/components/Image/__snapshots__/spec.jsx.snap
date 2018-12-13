@@ -25,6 +25,7 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
     ]
   }
   src="foo/bar"
+  srcmap={null}
   transition={null}
 >
   <div
@@ -58,6 +59,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
     ]
   }
   src="foo/bar"
+  srcmap={null}
   transition={null}
 >
   <div
@@ -69,7 +71,11 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
       data-test-id="image"
       role="presentation"
       src="foo/bar"
-      style={Object {}}
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
     />
   </div>
 </Image>
