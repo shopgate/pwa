@@ -39,15 +39,9 @@ class ViewContent extends Component {
       keyboardHeight: 0,
     };
 
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-  }
-
-  /**
-   * Updates the content reference within the view provider.
-   */
-  componentDidMount() {
-    this.ref.current.scrollTop = this.context.state.scrollTop;
     this.props.setContentRef(this.ref);
+
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 
   /**
