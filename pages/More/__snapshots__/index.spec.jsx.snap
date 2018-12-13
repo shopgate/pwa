@@ -264,28 +264,28 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                 }
               >
                 <MoreMenuItem
-                  href="/page/navigation_terms"
+                  href="/page/terms"
                   label="navigation.terms"
                   onClick={null}
                   testId={null}
                 >
                   <Connect(Link)
                     className="css-1czs3p1"
-                    href="/page/navigation_terms"
+                    href="/page/terms"
                   >
                     <Link
                       className="css-1czs3p1"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
-                      href="/page/navigation_terms"
+                      href="/page/terms"
                       replace={false}
                       state={Object {}}
                       tag="div"
                     >
                       <div
                         className="css-c6ki83 css-1czs3p1"
-                        data-test-id="link: /page/navigation_terms"
+                        data-test-id="link: /page/terms"
                         onClick={[Function]}
                         role="link"
                       >
@@ -1149,28 +1149,28 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                 }
               >
                 <MoreMenuItem
-                  href="/page/navigation_terms"
+                  href="/page/terms"
                   label="navigation.terms"
                   onClick={null}
                   testId={null}
                 >
                   <Connect(Link)
                     className="css-1czs3p1"
-                    href="/page/navigation_terms"
+                    href="/page/terms"
                   >
                     <Link
                       className="css-1czs3p1"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
-                      href="/page/navigation_terms"
+                      href="/page/terms"
                       replace={false}
                       state={Object {}}
                       tag="div"
                     >
                       <div
                         className="css-c6ki83 css-1czs3p1"
-                        data-test-id="link: /page/navigation_terms"
+                        data-test-id="link: /page/terms"
                         onClick={[Function]}
                         role="link"
                       >
