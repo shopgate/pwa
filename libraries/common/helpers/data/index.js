@@ -34,7 +34,7 @@ export const isExternal = url =>
   url.includes('http://') || url.includes('https://') || url.includes('//');
 
 /**
- * Returns the actual url to the image, by adding url parameters with the dimensions
+ * Returns the actual url to the image, by adding url parameters with the dimensions for img-cdn
  * @param {string} src Source to the image.
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.

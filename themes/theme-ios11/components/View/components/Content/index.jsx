@@ -31,6 +31,22 @@ class ViewContent extends Component {
 
   /**
    * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.ref = React.createRef();
+    this.state = {
+      keyboardHeight: 0,
+    };
+
+    this.props.setContentRef(this.ref);
+
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
+   * @param {Object} props The component props.
    * @param {Object} state The component state.
    * @returns {Object}
    */
@@ -40,19 +56,6 @@ class ViewContent extends Component {
     }
 
     return { keyboardHeight: 0 };
-  }
-
-  state = {
-    keyboardHeight: 0,
-  };
-
-  /**
-   * Updates the content reference within the view provider.
-   */
-  componentDidMount() {
-    this.ref.current.scrollTop = this.context.state.scrollTop;
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-    this.props.setContentRef(this.ref);
   }
 
   /**
@@ -78,8 +81,6 @@ class ViewContent extends Component {
       paddingBottom: keyboardHeight,
     };
   }
-
-  ref = React.createRef();
 
   /**
    * Handles a keyboard change event.
