@@ -23,6 +23,7 @@ class HttpRequest extends Request {
     this.timeout = 30000;
 
     this.payload = null;
+    this.contentType = null;
 
     this.createSerial(this.url);
     this.createEventCallbackName('httpResponse');
@@ -35,6 +36,16 @@ class HttpRequest extends Request {
    */
   setPayload(payload = {}) {
     this.payload = payload;
+    return this;
+  }
+
+  /**
+   * Sets the contentType for the HttpRequest
+   * @param {string} type The contentType for request
+   * @returns {HttpRequest}
+   */
+  setContentType(type) {
+    this.contentType = type;
     return this;
   }
 
@@ -109,7 +120,7 @@ class HttpRequest extends Request {
 
         let tmp;
 
-        if (typeof value === 'object') {
+        if (typeof value === 'object' && value !== null) {
           tmp = serializeObject(value, key);
         } else {
           tmp = `${window.encodeURIComponent(key)}=${window.encodeURIComponent(value)}`;
@@ -122,10 +133,13 @@ class HttpRequest extends Request {
     };
 
     let body = '';
-
     if (this.payload) {
       if (typeof this.payload === 'object') {
-        body = serializeObject(this.payload);
+        if (this.contentType === 'application/json') {
+          body = JSON.stringify(this.payload);
+        } else {
+          body = serializeObject(this.payload);
+        }
       } else if (typeof this.payload === 'string') {
         body = this.payload;
       }
@@ -152,7 +166,7 @@ class HttpRequest extends Request {
         timeout: this.timeout,
         followRedirects: this.followRedirects,
         body: this.getRequestBody(),
-        contentType: this.getContentType(),
+        contentType: this.contentType ? this.contentType : this.getContentType(),
       };
 
       /**

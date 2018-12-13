@@ -239,3 +239,12 @@ export const hasCouponSupport = createSelector(
   getFlags,
   ({ coupons }) => (typeof coupons === 'boolean' ? coupons : true)
 );
+
+/**
+ * Checks if the cart is fetching
+ * @return {boolean}
+ */
+export const getIsFetching = createSelector(
+  getCart,
+  ({ isFetching }) => isFetching || false
+);

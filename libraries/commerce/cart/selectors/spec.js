@@ -10,6 +10,7 @@ import {
   getFlags,
   getAddToCartMetadata,
   hasCouponSupport,
+  getIsFetching,
 } from './index';
 
 describe('Cart selectors', () => {
@@ -86,6 +87,23 @@ describe('Cart selectors', () => {
 
     it('should return false if the flag is false', () => {
       const result = hasCouponSupport({ cart: { flags: { coupons: false } } });
+      expect(result).toEqual(false);
+    });
+  });
+
+  describe('isFetching()', () => {
+    it('should return true if cart is fetching', () => {
+      const result = getIsFetching({ cart: { isFetching: true } });
+      expect(result).toEqual(true);
+    });
+
+    it('should return false when no store information is given', () => {
+      const result = getIsFetching({ cart: {} });
+      expect(result).toEqual(false);
+    });
+
+    it('should return false if cart is not fetching', () => {
+      const result = getIsFetching({ cart: { isFetching: false } });
       expect(result).toEqual(false);
     });
   });
