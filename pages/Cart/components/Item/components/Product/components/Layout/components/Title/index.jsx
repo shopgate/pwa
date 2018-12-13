@@ -49,8 +49,8 @@ Title.propTypes = {
 };
 
 Title.defaultProps = {
-  handleRemove: () => {},
-  toggleEditMode: () => {},
+  handleRemove: () => { },
+  toggleEditMode: () => { },
 };
 
 Title.contextTypes = {

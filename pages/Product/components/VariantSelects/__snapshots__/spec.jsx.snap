@@ -1,0 +1,866 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VariantSelects /> should render with variants 1`] = `
+<div
+  data-test-id="variantsPicker"
+>
+  <Component>
+    <div
+      data-test-id="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
+      key="1"
+    >
+      <Picker
+        buttonComponent={[Function]}
+        buttonProps={
+          Object {
+            "highlighted": false,
+          }
+        }
+        clickDelay={150}
+        disabled={false}
+        duration={350}
+        isOpen={false}
+        items={
+          Array [
+            Object {
+              "disabled": false,
+              "label": "Pink",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "1",
+            },
+            Object {
+              "disabled": true,
+              "label": "Black",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "2",
+            },
+          ]
+        }
+        label="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
+        onChange={[Function]}
+        onClose={[Function]}
+        placeholder={
+          <Translate
+            className=""
+            params={
+              Array [
+                "Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd",
+              ]
+            }
+            string="product.pick_an_attribute"
+          />
+        }
+        value={null}
+      />
+    </div>
+    <div
+      data-test-id="Size"
+      key="2"
+    >
+      <Picker
+        buttonComponent={[Function]}
+        buttonProps={
+          Object {
+            "highlighted": false,
+          }
+        }
+        clickDelay={150}
+        disabled={false}
+        duration={530}
+        isOpen={false}
+        items={
+          Array [
+            Object {
+              "disabled": false,
+              "label": "S",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "1",
+            },
+            Object {
+              "disabled": false,
+              "label": "M",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "2",
+            },
+            Object {
+              "disabled": true,
+              "label": "asjdaksdlkasdkalsklaeksoas iodialskdajsdjasdjkajdkajsd adshj",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "3",
+            },
+            Object {
+              "disabled": false,
+              "label": "XS",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "4",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "5",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "6",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "7",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "8",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "9",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "10",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "11",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "12",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "13",
+            },
+          ]
+        }
+        label="Size"
+        onChange={[Function]}
+        onClose={[Function]}
+        placeholder={
+          <Translate
+            className=""
+            params={
+              Array [
+                "Size",
+              ]
+            }
+            string="product.pick_an_attribute"
+          />
+        }
+        value="2"
+      />
+    </div>
+    <div
+      data-test-id="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
+      key="3"
+    >
+      <Picker
+        buttonComponent={[Function]}
+        buttonProps={
+          Object {
+            "highlighted": false,
+          }
+        }
+        clickDelay={150}
+        disabled={true}
+        duration={406}
+        isOpen={false}
+        items={
+          Array [
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "7",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "8",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "9",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "10",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "11",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "12",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <React.Fragment>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </React.Fragment>,
+              "value": "13",
+            },
+          ]
+        }
+        label="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
+        onChange={[Function]}
+        onClose={[Function]}
+        placeholder={
+          <Translate
+            className=""
+            params={
+              Array [
+                "FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk",
+              ]
+            }
+            string="product.pick_an_attribute"
+          />
+        }
+        value="Barasdhasjd kasjdkajskdjaksdjaksdjaksjdakjsdkajsd aksjdakjsdkajd kjdkajskdja"
+      />
+    </div>
+  </Component>
+</div>
+`;
