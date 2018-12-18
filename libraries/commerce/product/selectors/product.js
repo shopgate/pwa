@@ -2,11 +2,22 @@ import { createSelector } from 'reselect';
 import isEqual from 'lodash/isEqual';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
+
+/**
+ * Retrieves product id from route.
+ * @returns {string|null} The product id of the current route.
+ */
+export const getProductIdFromRoute = () => {
+  const { params = {} } = getCurrentRoute() || {};
+
+  return params.productId ? hex2bin(params.productId) : null;
+};
 
 /**
  * Retrieves the product state from the store.
@@ -109,21 +120,12 @@ export const getProductById = createSelector(
  * Retrieves the id of the current selected product from the component props. When the props
  * contain a variant id it will return this one instead of the product id.
  * @param {Object} state The current application state.
- * @param {Object} props The component props.
+ * @param {Object} [props] The component props.
  * @return {string|null} The id of the current product.
  */
 export const getProductId = (state, props) => {
-  if (typeof props === 'undefined') {
-    /**
-     * Before PWA 6.0 some product selectors relied on a "currentProduct" state which doesn't exist
-     * anymore. Their successors require a props object which contains a productId or a variantId.
-     * To support debugging an error will be logged, if the props are missing at invocation.
-     */
-    logger.error('getProductId() needs to be called with a props object that includes a productId.');
-  }
-
   if (!props) {
-    return null;
+    return getProductIdFromRoute();
   }
 
   // Since a variantId can have falsy values, we need an "undefined" check here.
