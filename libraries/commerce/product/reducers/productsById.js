@@ -58,7 +58,7 @@ export default function productsById(state = {}, action) {
           productData: {
             ...(state[action.productId] || {}).productData,
             metadata: {
-              ...(((state[action.productId] || {}).productData).metadata || {}),
+              ...(((state[action.productId] || {}).productData || {}).metadata || {}),
               ...(action.metadata || {}),
             },
           },

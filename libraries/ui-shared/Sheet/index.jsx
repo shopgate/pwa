@@ -76,18 +76,6 @@ class Sheet extends Component {
   }
 
   /**
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.isOpen !== nextState.isOpen ||
-      this.state.scrolled !== nextState.scrolled
-    );
-  }
-
-  /**
    * Getter for the animation props of the Sheet.
    * @returns {Object}
    */
