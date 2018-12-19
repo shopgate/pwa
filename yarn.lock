@@ -128,9 +128,10 @@
   version "10.12.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.14.tgz#c03b6380c5c301be0499ecd143b99b76ebe45678"
 
-"@virtuous/conductor@2.0.0", "@virtuous/conductor@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.0.0.tgz#b91e43c629b513c226d6cd02f0f86722e592b2ce"
+"@virtuous/conductor@2.0.1", "@virtuous/conductor@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.0.1.tgz#78cee5c7a22a0c71f8dd452c6be0889656592755"
+  integrity sha512-wrH+ar7kDW8apbuUWyeVn1y8NN6jj8re8P3oHpYILAwE4xEBcz9forhEYg40twFVz982Q7P5QqeXKkKn1Qqwxw==
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -141,11 +142,12 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.0.0.tgz#cfa0b1f42d7c40a8dd0498e63a04b7aaaa80e91c"
+"@virtuous/react-conductor@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.0.1.tgz#374e40e0dabd2e9c6b4f5e903a27eb63f8f41063"
+  integrity sha512-7VUbrpeB4PFGbatv9Bp6lZQ6DBSOL+yWXnAsNlYge7bn4+ZKsW0Jm4YHxf01ZSEaYAFCd0NFgLi23YciQ4yz9A==
   dependencies:
-    "@virtuous/conductor" "2.0.0"
+    "@virtuous/conductor" "2.0.1"
     react-spring "^6.1.4"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
