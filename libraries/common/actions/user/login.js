@@ -3,7 +3,7 @@ import {
   logger,
   EINVALIDCALL,
   ELEGACYSGCONNECT,
-  EUNCOMPLETE,
+  EINCOMPLETELOGIN,
 } from '@shopgate/pwa-core';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import * as actions from '../../action-creators/user';
@@ -26,7 +26,7 @@ export default function login(parameters, redirect, strategy = 'basic') {
       .setErrorBlacklist([
         EINVALIDCALL,
         ELEGACYSGCONNECT,
-        EUNCOMPLETE,
+        EINCOMPLETELOGIN,
       ])
       .setInput({
         strategy,
