@@ -6,6 +6,7 @@ import fetchProductImages from '../actions/fetchProductImages';
 import fetchProductShipping from '../actions/fetchProductShipping';
 import fetchProductVariants from '../actions/fetchProductVariants';
 import fetchProductOptions from '../actions/fetchProductOptions';
+import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
   productReceived$,
@@ -29,7 +30,7 @@ function product(subscribe) {
     dispatch(fetchProduct(id));
     dispatch(fetchProductDescription(id));
     dispatch(fetchProductProperties(id));
-    dispatch(fetchProductImages(id));
+    dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
     dispatch(fetchProductShipping(id));
   });
 
@@ -45,7 +46,7 @@ function product(subscribe) {
 
     if (baseProductId) {
       dispatch(fetchProduct(baseProductId));
-      dispatch(fetchProductImages(baseProductId));
+      dispatch(fetchProductImages(baseProductId, productImageFormats.getAllUniqueFormats()));
     }
 
     if (flags.hasVariants) {

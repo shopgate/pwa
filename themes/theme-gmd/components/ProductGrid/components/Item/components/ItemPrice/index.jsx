@@ -33,7 +33,10 @@ class ItemPrice extends PureComponent {
       return null;
     }
 
-    const props = { productId };
+    const props = {
+      productId,
+      location: 'productGrid',
+    };
 
     return (
       <Fragment>

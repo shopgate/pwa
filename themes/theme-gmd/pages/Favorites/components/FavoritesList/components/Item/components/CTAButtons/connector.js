@@ -23,7 +23,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  addToCart: productData => dispatch(addToCart(productData)),
+  addToCart: productData => dispatch(addToCart([productData])),
   showVariantModal: productId => dispatch(showModal({
     title: null,
     type: MODAL_VARIANT_SELECT,

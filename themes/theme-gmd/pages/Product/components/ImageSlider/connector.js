@@ -2,10 +2,12 @@ import { connect } from 'react-redux';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
 import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +16,10 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  images: getProductImages(state, props),
+  images: getProductImages(state, {
+    ...props,
+    formats: productImageFormats.get(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY),
+  }),
   product: getCurrentBaseProduct(state, props),
 });
 
@@ -49,4 +54,9 @@ const areStatePropsEqual = (next, prev) => {
   return true;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  { areStatePropsEqual }
+);

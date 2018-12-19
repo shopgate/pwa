@@ -34,13 +34,15 @@ const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFA
 
     dispatch(requestProductRelations({ hash }));
 
-    return new PipelineRequest(pipeline)
+    const request = new PipelineRequest(pipeline)
       .setInput({
         productId,
         type,
         limit,
       })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((payload) => {
         const { relations } = payload;
         if (!Array.isArray(relations)) {
@@ -58,6 +60,8 @@ const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFA
         logger.error(err);
         dispatch(errorProductRelations({ hash }));
       });
+
+    return request;
   };
 
 export default fetchProductRelations;

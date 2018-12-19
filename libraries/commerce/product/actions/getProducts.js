@@ -6,7 +6,7 @@ import fetchProducts from './fetchProducts';
  * @param {Object} options.params The params for the getProduct pipeline.
  * @param {string} [options.pipeline='getProducts'] The pipeline to call.
  * @param {boolean} [options.cached=true] If the result will be cached.
- * @param {string} [options.id=null] A unique id for the component that is using this action.
+ * @param {null|string} [options.id=null] A unique id for the component that is using this action.
  * @param {boolean} [options.includeSort=true] Tells if the sort parameters shall be included
  *   into the product hash and the request.
  * @param {boolean} [options.includeFilters=true] Tells if the filter parameters shall be included

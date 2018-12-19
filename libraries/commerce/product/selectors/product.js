@@ -93,8 +93,8 @@ export const getProductVariantsState = createSelector(
 
 /**
  * Retrieves a product by id from state. Different to getProduct() which returns the product
- * entity data if available, this selector returns the pure state enty for a given productId.
- * So the exires and the isFetching property is processable.
+ * entity data if available, this selector returns the pure state entry for a given productId.
+ * So the expires and the isFetching property is processable.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object|null} The dedicated product.
@@ -548,8 +548,42 @@ export const getProductDescription = createSelector(
 );
 
 /**
+ * Checks if the format properties of a format match an image including a format
+ * @param {Object} item the item including the format to compare
+ * @param {Object} format The  format object to compare.
+ * @returns {boolean}
+ */
+const doesImageMatchFormat = (item, format) => {
+  const props = Object.keys(format);
+  const { length } = props;
+  for (let i = 0; i < length; i += 1) {
+    const prop = props[i];
+    if (format[prop] !== item[prop]) return false;
+  }
+  return true;
+};
+
+/**
+ * Filters a product images cache entry by formats.
+ * @param {Array} productImages All cached product images of a product.
+ * @param {Array} formats A list of format objects to filter.
+ * @returns {Object}
+ */
+const filterProductImagesByFormats = (productImages, formats) => {
+  const filtered = productImages.filter(item =>
+    formats.find(format => doesImageMatchFormat(item, format)));
+
+  const hasSources = !!filtered[0] && filtered[0].sources.length > 0;
+
+  return {
+    filtered,
+    hasSources,
+  };
+};
+
+/**
  * Retrieves the images for the given product. If the props contain a variantId, and the related
- * product does not have images, the selector tries to pick images from it's base product.
+ * product does not have images, the selector tries to pick images from its base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Array|null}
@@ -558,21 +592,42 @@ export const getProductImages = createSelector(
   getProductImagesState,
   getProductId,
   getBaseProductId,
-  (images, productId, baseProductId) => {
+  (state, props = {}) => props.formats || [],
+  (images, productId, baseProductId, formats) => {
     const { images: productImages } = images[productId] || {};
-    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
+    const { images: baseProductImages } =
+      (!!baseProductId && baseProductId !== productId && images[baseProductId]) ||
+      {};
 
-    // If the product doesn't have images...
-    if (!Array.isArray(productImages) || !productImages.length) {
-      // ...check the base product.
-      if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
-        return null;
-      }
+    let filteredProductImages;
+    let filteredBaseProductImages;
 
-      return baseProductImages;
+    if (Array.isArray(productImages)) {
+      filteredProductImages = filterProductImagesByFormats(productImages, formats);
     }
 
-    return productImages;
+    if (Array.isArray(baseProductImages)) {
+      filteredBaseProductImages = filterProductImagesByFormats(baseProductImages, formats);
+    }
+
+    if (!filteredProductImages) {
+      return null;
+    }
+
+    if (!filteredBaseProductImages) {
+      // No further decisions are necessary, since no base product was determined.
+      return filteredProductImages.filtered;
+    }
+
+    const { hasSources: productHasSources } = filteredProductImages;
+
+    if (productHasSources) {
+      // The product has own images which can be used as a return value.
+      return filteredProductImages.filtered;
+    }
+
+    // The product doesn't have own images, so the images of the base product are returned.
+    return filteredBaseProductImages.filtered;
   }
 );
 
@@ -659,9 +714,8 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
       return null;
     }
 
-    const found = variants.products.find(product => (
-      isEqual(product.characteristics, characteristics)
-    ));
+    const found = variants.products.find(product =>
+      isEqual(product.characteristics, characteristics));
 
     if (!found) {
       return null;
@@ -687,7 +741,7 @@ export const getResultHash = createSelector(
       return generateResultHash({
         categoryId,
         sort,
-        ...filters && { filters },
+        ...(filters && { filters }),
       });
     }
 
@@ -695,7 +749,7 @@ export const getResultHash = createSelector(
       return generateResultHash({
         searchPhrase,
         sort,
-        ...filters && { filters },
+        ...(filters && { filters }),
       });
     }
 

@@ -8,6 +8,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
     name="product-item.price.before"
     props={
       Object {
+        "location": "productGrid",
         "productId": "1234",
       }
     }
@@ -16,6 +17,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
     name="product-item.price"
     props={
       Object {
+        "location": "productGrid",
         "productId": "1234",
       }
     }
@@ -28,6 +30,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
     name="product-item.price.after"
     props={
       Object {
+        "location": "productGrid",
         "productId": "1234",
       }
     }
