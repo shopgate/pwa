@@ -3,6 +3,7 @@ import {
   REQUEST_PRODUCT_OPTIONS,
   RECEIVE_PRODUCT_OPTIONS,
   ERROR_PRODUCT_OPTIONS,
+  EXPIRE_PRODUCTS_BY_ID,
 } from '../constants';
 import formatOptions from './helpers/formatOptions';
 
@@ -45,6 +46,18 @@ export default function optionsByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
+    case EXPIRE_PRODUCTS_BY_ID: {
+      const options = { ...state };
+      action.productIds.forEach((productId) => {
+        if (options[productId]) {
+          options[productId].expires = 0;
+        }
+      });
+
+      return { ...options };
+    }
+
     default:
       return state;
   }

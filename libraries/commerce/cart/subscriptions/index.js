@@ -1,6 +1,5 @@
 import 'rxjs/add/operator/debounceTime';
 import event from '@shopgate/pwa-core/classes/Event';
-import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
@@ -28,6 +27,7 @@ import {
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH, DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
+import { checkoutSucceeded$ } from '../../checkout/streams';
 
 /**
  * Cart subscriptions.
@@ -86,14 +86,6 @@ export default function cart(subscribe) {
       pipelines.SHOPGATE_CART_DELETE_COUPONS,
     ]);
 
-    // Register for the app event that is triggered when the checkout process is finished
-    registerEvents(['checkoutSuccess']);
-
-    event.addCallback('checkoutSuccess', () => {
-      dispatch(historyReset());
-      dispatch(fetchCart());
-    });
-
     /**
      * Reload the cart everytime the WebView becomes visible.
      * This is needed, for example, when the cart is modified inside the webcheckout and
@@ -149,5 +141,13 @@ export default function cart(subscribe) {
     if (coupon) {
       dispatch(addCouponsToCart([coupon]));
     }
+  });
+
+  /**
+   * Gets triggered, when the checkout was completed
+   */
+  subscribe(checkoutSucceeded$, ({ dispatch }) => {
+    dispatch(historyReset());
+    dispatch(fetchCart());
   });
 }

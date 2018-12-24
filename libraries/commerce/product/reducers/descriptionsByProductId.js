@@ -3,6 +3,7 @@ import {
   REQUEST_PRODUCT_DESCRIPTION,
   RECEIVE_PRODUCT_DESCRIPTION,
   ERROR_PRODUCT_DESCRIPTION,
+  EXPIRE_PRODUCTS_BY_ID,
 } from '../constants';
 
 /**
@@ -40,6 +41,18 @@ export default function descriptionsByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
+    case EXPIRE_PRODUCTS_BY_ID: {
+      const descriptions = { ...state };
+      action.productIds.forEach((productId) => {
+        if (descriptions[productId]) {
+          descriptions[productId].expires = 0;
+        }
+      });
+
+      return { ...descriptions };
+    }
+
     default:
       return state;
   }
