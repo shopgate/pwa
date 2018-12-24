@@ -3,6 +3,7 @@ import {
   REQUEST_PRODUCT_VARIANTS,
   RECEIVE_PRODUCT_VARIANTS,
   ERROR_PRODUCT_VARIANTS,
+  EXPIRE_PRODUCTS_BY_ID,
 } from '../constants';
 
 /**
@@ -40,6 +41,18 @@ export default function variantsByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
+    case EXPIRE_PRODUCTS_BY_ID: {
+      const variants = { ...state };
+      action.productIds.forEach((productId) => {
+        if (variants[productId]) {
+          variants[productId].expires = 0;
+        }
+      });
+
+      return { ...variants };
+    }
+
     default:
       return state;
   }

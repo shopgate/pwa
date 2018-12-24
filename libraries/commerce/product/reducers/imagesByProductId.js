@@ -3,6 +3,7 @@ import {
   REQUEST_PRODUCT_IMAGES,
   RECEIVE_PRODUCT_IMAGES,
   ERROR_PRODUCT_IMAGES,
+  EXPIRE_PRODUCTS_BY_ID,
 } from '../constants';
 
 /**
@@ -38,6 +39,18 @@ export default function imagesByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
+    case EXPIRE_PRODUCTS_BY_ID: {
+      const images = { ...state };
+      action.productIds.forEach((productId) => {
+        if (images[productId]) {
+          images[productId].expires = 0;
+        }
+      });
+
+      return { ...images };
+    }
+
     default:
       return state;
   }

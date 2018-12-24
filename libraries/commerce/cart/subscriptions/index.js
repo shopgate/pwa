@@ -1,6 +1,5 @@
 import 'rxjs/add/operator/debounceTime';
 import event from '@shopgate/pwa-core/classes/Event';
-import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
@@ -31,6 +30,7 @@ import {
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH } from '../constants';
+import { checkoutSucceeded$ } from '../../checkout/streams';
 
 /**
  * Cart subscriptions.
@@ -78,14 +78,6 @@ export default function cart(subscribe) {
       pipelines.SHOPGATE_CART_ADD_COUPONS,
       pipelines.SHOPGATE_CART_DELETE_COUPONS,
     ]);
-
-    // Register for the app event that is triggered when the checkout process is finished
-    registerEvents(['checkoutSuccess']);
-
-    event.addCallback('checkoutSuccess', () => {
-      dispatch(resetHistory());
-      dispatch(fetchCart());
-    });
 
     /**
      * Reload the cart everytime the WebView becomes visible.
@@ -163,5 +155,13 @@ export default function cart(subscribe) {
         }));
       });
     }
+  });
+
+  /**
+   * Gets triggered, when the checkout was completed
+   */
+  subscribe(checkoutSucceeded$, ({ dispatch }) => {
+    dispatch(resetHistory());
+    dispatch(fetchCart());
   });
 }
