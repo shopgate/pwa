@@ -6,7 +6,6 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import ViewProvider from '../../../../providers/View';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -18,6 +17,7 @@ class ViewContent extends Component {
   static contextType = RouteContext;
 
   static propTypes = {
+    setContentRef: PropTypes.func.isRequired,
     children: PropTypes.node,
     noScrollOnKeyboard: PropTypes.bool,
   };
@@ -37,6 +37,8 @@ class ViewContent extends Component {
     this.state = {
       keyboardHeight: 0,
     };
+
+    this.props.setContentRef(this.ref);
 
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
@@ -104,14 +106,12 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <ViewProvider>
-          <article className={styles} ref={this.ref} style={this.style}>
-            <Helmet title={appConfig.shopName} />
-            <Above />
-            {this.props.children}
-            <Below />
-          </article>
-        </ViewProvider>
+        <article className={styles} ref={this.ref} style={this.style}>
+          <Helmet title={appConfig.shopName} />
+          <Above />
+          {this.props.children}
+          <Below />
+        </article>
       </Swipeable>
     );
   }

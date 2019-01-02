@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Backdrop from './components/Backdrop';
 import List from './components/List';
 import styles from './style';
 
@@ -11,7 +10,6 @@ import styles from './style';
  */
 const Suggestions = ({ onClick, searchPhrase }) => (
   <section className={styles}>
-    <Backdrop />
     <List onClick={onClick} searchPhrase={searchPhrase} />
   </section>
 );

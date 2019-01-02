@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { UIEvents } from '@shopgate/pwa-core';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
+import { AppBar } from '@shopgate/pwa-ui-material';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { DefaultBar } from 'Components/AppBar/presets';
+import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from '../Bar';
 import Products from '../Products';
 import connect from './connector';
@@ -28,6 +31,10 @@ class SearchContent extends Component {
     );
   }
 
+  showSearch = () => {
+    UIEvents.emit(TOGGLE_SEARCH);
+  }
+
   /**
    * @return {JSX}
    */
@@ -39,7 +46,7 @@ class SearchContent extends Component {
     return (
       <Fragment>
         <DefaultBar
-          title={searchPhrase}
+          center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
           {...showFilterBar && { below: <Bar /> }}
         />
         <Products searchPhrase={searchPhrase} sortOrder={DEFAULT_SORT} />
