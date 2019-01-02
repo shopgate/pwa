@@ -21,8 +21,8 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click()
       .wait(1000);
-    cy.get(els.cartButton)
-      .should('not.be.visible');
+    cy.get(els.cartBadge)
+      .should('not.exist');
   });
 
   it('should check for variant  select', () => {
@@ -53,10 +53,10 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.wait(1000);
-    cy.get('[data-test-id="Color"] span')
+    cy.get('[data-test-id="Color"] div')
       .contains('Black')
       .should('be.visible');
-    cy.get('[data-test-id="Shoe size"] span')
+    cy.get('[data-test-id="Shoe size"] div')
       .contains('5')
       .should('be.visible');
     cy.wait(1000);
@@ -86,6 +86,7 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.redBallColorOption)
+      .last()
       .should('be.visible')
       .click();
     cy.wait(1000);
@@ -93,6 +94,7 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.lowGlowOption)
+      .last()
       .should('be.visible')
       .click();
     cy.get('[data-test-id="Ball color"] span')

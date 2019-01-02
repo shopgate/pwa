@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
+import { ViewContext } from 'Components/View/context';
 import Iterator from './components/Iterator';
 import Layout from './components/Layout';
 
@@ -35,17 +36,22 @@ const ProductGrid = ({
   }
 
   return (
-    <InfiniteContainer
-      wrapper={Layout}
-      iterator={Iterator}
-      loader={handleGetProducts}
-      items={products}
-      loadingIndicator={<LoadingIndicator />}
-      totalItems={totalProductCount}
-      initialLimit={6}
-      limit={ITEMS_PER_LOAD}
-      requestHash={requestHash}
-    />
+    <ViewContext.Consumer>
+      {({ getContentRef }) => (
+        <InfiniteContainer
+          containerRef={getContentRef()}
+          wrapper={Layout}
+          iterator={Iterator}
+          loader={handleGetProducts}
+          items={products}
+          loadingIndicator={<LoadingIndicator />}
+          totalItems={totalProductCount}
+          initialLimit={6}
+          limit={ITEMS_PER_LOAD}
+          requestHash={requestHash}
+        />
+      )}
+    </ViewContext.Consumer>
   );
 };
 

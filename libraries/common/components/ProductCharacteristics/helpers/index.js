@@ -6,7 +6,9 @@
  * @return {Object}
  */
 export function reduceSelection(characteristics, selection, index) {
-  const currentSelection = selection;
+  const currentSelection = {
+    ...selection,
+  };
 
   /**
    * When the given index is the same as the complete set

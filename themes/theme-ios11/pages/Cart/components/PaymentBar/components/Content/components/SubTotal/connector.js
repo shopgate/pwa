@@ -1,6 +1,4 @@
 import { connect } from 'react-redux';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import {
   getCurrency,
   getSubTotal,
@@ -13,7 +11,6 @@ import {
  */
 const mapStateToProps = state => ({
   currency: getCurrency(state),
-  isDisabled: isViewLoading(state, CART_PATH),
   value: getSubTotal(state),
 });
 

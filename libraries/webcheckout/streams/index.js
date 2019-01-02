@@ -2,6 +2,7 @@ import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   SUCCESS_SHOPIFY_LOGIN,
   ERROR_SHOPIFY_LOGIN,
+  WEBCHECKOUT_REGISTER_REDIRECT,
 } from '../constants';
 
 /**
@@ -25,3 +26,10 @@ export const shopifyLoginFailed$ = main$
 export const shopifyDidRespond$ = (
   shopifyDidLogin$.merge(shopifyLoginFailed$)
 );
+
+/**
+ * Gets triggered before redirect to we registration
+ * @type {Observable}
+ */
+export const webCheckoutRegisterRedirect$ = main$
+  .filter(({ action }) => action.type === WEBCHECKOUT_REGISTER_REDIRECT);

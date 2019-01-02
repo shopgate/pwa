@@ -187,20 +187,27 @@ class FilterContent extends PureComponent {
   }
 
   /**
+   * Renders the CloseBar.
+   * @returns {JSX}
+   */
+  renderCloseBar = () => {
+    const right = <ApplyButton key="right" active={this.hasChanged} onClick={this.save} />;
+    return <CloseBar title="titles.filter" right={right} />;
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
     const { filters } = this.props;
 
     if (!filters) {
-      return null;
+      return this.renderCloseBar();
     }
-
-    const right = <ApplyButton active={this.hasChanged} onClick={this.save} />;
 
     return (
       <Fragment>
-        <CloseBar title="titles.filter" right={right} />
+        { this.renderCloseBar() }
         {filters.map((filter) => {
           const portalProps = { filter };
           const value = this.getFilterValue(filter.id);

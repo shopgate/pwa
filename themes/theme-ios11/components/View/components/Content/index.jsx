@@ -6,7 +6,6 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import ViewProvider from '../../../../providers/View';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -15,9 +14,9 @@ import styles from './style';
  * The ViewContent component.
  */
 class ViewContent extends Component {
-  static contextType = RouteContext;
-
   static propTypes = {
+    setContentRef: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
     noScrollOnKeyboard: PropTypes.bool,
   };
@@ -38,7 +37,22 @@ class ViewContent extends Component {
       keyboardHeight: 0,
     };
 
+    this.props.setContentRef(this.ref);
+
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
+   * @param {Object} props The component props.
+   * @param {Object} state The component state.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (props.visible || state.keyboardHeight === 0) {
+      return null;
+    }
+
+    return { keyboardHeight: 0 };
   }
 
   /**
@@ -69,7 +83,7 @@ class ViewContent extends Component {
   handleKeyboardChange = ({ open, overlap }) => {
     const height = (open) ? overlap : 0;
 
-    if (this.context.visible && height !== this.state.keyboardHeight) {
+    if (this.props.visible && height !== this.state.keyboardHeight) {
       this.setState({
         keyboardHeight: height,
       });
@@ -104,17 +118,19 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <ViewProvider>
-          <article className={styles} ref={this.ref} style={this.style}>
-            <Helmet title={appConfig.shopName} />
-            <Above />
-            {this.props.children}
-            <Below />
-          </article>
-        </ViewProvider>
+        <article className={styles} ref={this.ref} style={this.style}>
+          <Helmet title={appConfig.shopName} />
+          <Above />
+          {this.props.children}
+          <Below />
+        </article>
       </Swipeable>
     );
   }
 }
 
-export default ViewContent;
+export default props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <ViewContent {...props} visible={visible} />}
+  </RouteContext.Consumer>
+);

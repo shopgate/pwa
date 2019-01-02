@@ -36,7 +36,7 @@ class CartButtonBadge extends PureComponent {
     }
 
     return (
-      <div className={styles}>{this.productCount}</div>
+      <div className={styles} data-test-id="badge">{this.productCount}</div>
     );
   }
 }

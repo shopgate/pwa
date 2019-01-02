@@ -11,10 +11,9 @@ THEMES = theme-gmd theme-ios11
 GITHUB_AUTH_KEY =
 GITHUB_AUTH_TOKEN =
 
-# deprecated; use RELEASE_VERSION
 REPO_VERSION =
 
-RELEASE_VERSION = $(strip $(REPO_VERSION))
+RELEASE_VERSION = $(patsubst v%,%,$(strip $(REPO_VERSION)))
 
 # Branch name to start the release from; "develop" by default
 BRANCH_NAME = develop
@@ -25,7 +24,7 @@ else
 	IS_RC_BRANCH_NAME = false
 endif
 
-# Make sure the release name starts with a "v"
+# Make sure the release name starts with a "v" and the release version does not
 RELEASE_NAME = v$(patsubst v%,%,$(strip $(RELEASE_VERSION)))
 
 
@@ -60,6 +59,9 @@ else
 	STABLE = false
 	PRE_RELEASE = true
 endif
+
+# Causes a STABLE release not to update master if not set to true
+UPDATE_MASTER = true
 
 # This causes the Github-API to create draft releases only, without creating tags
 DRAFT_RELEASE = true
@@ -136,6 +138,8 @@ clean-git:
 fix-remote:
 		git merge -s ours --no-commit --allow-unrelated-histories $(REMOTE)/master
 
+setup-frontend-with-current-ip:
+		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}')",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "cheap-module-eval-source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
 e2e-gmd:
@@ -217,7 +221,7 @@ define update-pwa-versions
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
-			then echo "ERROR: Package version mismatch, please theck your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			then echo "ERROR: Package version mismatch, please check your specified version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
 
@@ -327,11 +331,13 @@ publish-to-github:
 ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
 		$(call build-changelog)
+endif
+ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
+		# UPDATING MASTER FOR STABLE RELEASE
 		$(call push-subtrees-to-git, master)
 		git push origin "releases/$(RELEASE_NAME)":master;
-		git checkout develop && git pull && git merge "releases/$(RELEASE_NAME)" && git push origin develop;
 else
-		# PRE-RELEASE (alpha, beta, rc)
+		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
 endif
 
@@ -343,7 +349,7 @@ define build-changelog
 		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
 		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";
 		# Remove the dummy tag again, so it can be properly created with the changelog file inside
-		git push -d origin "$(RELEASE_NAME)";
+		git push -d origin "refs/tags/$(RELEASE_NAME)";
 		git tag -d "$(RELEASE_NAME)";
 		git fetch origin;
 		# Push the new changelog to GitHub (into the STABLE release branch)
@@ -351,7 +357,7 @@ define build-changelog
 		git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
 		git push origin "releases/$(RELEASE_NAME)" --tags;
 		# Recreate the tag with the changelog inside and push it to remote (origin)
-		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
+		git tag "$(RELEASE_NAME)" && git push origin "refs/tags/$(RELEASE_NAME)";
 
 endef
 
