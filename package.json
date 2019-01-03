@@ -9,7 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
+    "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx --ext .json .",
     "release": "make release",
     "e2e:gmd": "make e2e-gmd",
     "e2e:ios11": "make e2e-ios11",
