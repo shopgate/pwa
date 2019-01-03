@@ -57,7 +57,7 @@ class ViewContent extends Component {
 
     return { keyboardHeight: 0 };
   }
-  
+
   /**
    * Restore the scroll position of the page.
    */
@@ -132,7 +132,7 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article key={this.context.pathname} className={styles} ref={this.ref} style={this.style}>
+        <article className={styles} ref={this.ref} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
           {this.props.children}
