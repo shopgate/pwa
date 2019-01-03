@@ -45,6 +45,13 @@ class ViewContent extends Component {
   }
 
   /**
+   * Restore the scroll position of the page.
+   */
+  componentDidMount() {
+    this.ref.current.scrollTop = this.context.state.scrollTop;
+  }
+
+  /**
    * Removes the keyboardWillChange listener.
    */
   componentWillUnmount() {
@@ -111,7 +118,7 @@ class ViewContent extends Component {
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article className={styles} ref={this.ref} style={this.style}>
+        <article key={this.context.pathname} className={styles} ref={this.ref} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
           {this.props.children}
