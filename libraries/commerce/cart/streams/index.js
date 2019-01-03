@@ -67,7 +67,6 @@ export const cartDidLeave$ = routeDidLeave$
   .filter(({ action }) => action.route.pattern === CART_PATH);
 
 /**
- * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
 export const cartRequesting$ = main$.filter(({ action }) => (
@@ -75,7 +74,6 @@ export const cartRequesting$ = main$.filter(({ action }) => (
 ));
 
 /**
- * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
 export const cartReceived$ = main$.filter(({ action }) => (

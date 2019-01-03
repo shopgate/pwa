@@ -9,6 +9,7 @@ export { getCurrentRoute };
 
 /**
  * Creates the router history.
+ * @returns {Object}
  */
 export const history = () => createBrowserHistory({
   basename: match ? match[0] : '',
