@@ -47,7 +47,7 @@
       "set": "{from} elementi: {price}",
       "range": "{from} o altro: {price}"
     },
-    "msrp": "SRP",
+    "msrp": "SRP"
   },
   "product": {
     "description_heading": "A riguardo",
