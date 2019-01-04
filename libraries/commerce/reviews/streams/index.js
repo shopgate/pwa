@@ -1,4 +1,3 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import {
