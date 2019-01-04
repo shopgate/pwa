@@ -53,7 +53,6 @@ export const errorReviewSubmit$ = main$.filter(({ action }) => (
 
 export const shouldFetchReviews$ = main$
   .filter(({ action }) => (
-    (action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED)
-    && getCurrentRoute().pattern.startsWith(ITEM_PATH)
+    action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED
   ))
   .merge(successReviewSubmit$);
