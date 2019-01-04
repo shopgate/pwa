@@ -138,6 +138,16 @@
     query-string "^6.1.0"
     url-pattern "^1.0.3"
 
+"@virtuous/conductor@2.0.5", "@virtuous/conductor@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.0.5.tgz#b27323442c50fea038d2ccca6eda456fd0fd8e2d"
+  integrity sha512-Uz2SLpIQgAnF5AzvvKS1WS/CVvsG1fPWL6FTzPamk2AQ8Rhu0IcpRw2gu02J5WAqxF9gJGDBemK2qFls9E0Pzw==
+  dependencies:
+    history "^4.7.2"
+    path-match "^1.2.4"
+    query-string "^6.1.0"
+    url-pattern "^1.0.3"
+
 "@virtuous/logger@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
@@ -148,6 +158,14 @@
   integrity sha512-7VUbrpeB4PFGbatv9Bp6lZQ6DBSOL+yWXnAsNlYge7bn4+ZKsW0Jm4YHxf01ZSEaYAFCd0NFgLi23YciQ4yz9A==
   dependencies:
     "@virtuous/conductor" "2.0.1"
+    react-spring "^6.1.4"
+
+"@virtuous/react-conductor@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.0.5.tgz#7d22737778078066cfcf5301ab339f5d160d17c2"
+  integrity sha512-+OfHGNYZwHwU61G7wsZuOIAXXis+qKQ8ui73SdT5ua17eMqdEl6YTtsfN+tUgg1TKjoNmZLhVPI4WzF9CIfBpA==
+  dependencies:
+    "@virtuous/conductor" "2.0.5"
     react-spring "^6.1.4"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
