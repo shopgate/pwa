@@ -39,7 +39,7 @@ export default function pageReducer(state = {}, action) {
           title: action.config.title,
           widgets: enrichWidgets(action),
           isFetching: false,
-          expires: Date.now() + 86400000,
+          expires: Date.now() + 86400000, // One day
         },
       };
     }

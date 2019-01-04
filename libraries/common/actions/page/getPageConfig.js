@@ -7,6 +7,7 @@ import { getPageConfigById } from '../../selectors/page';
 /**
  * Retrieves the config for a page.
  * @param {string} pageId The ID of the page to request.
+ * @param {boolean} [force=true] When true, the request will go out without being checked.
  * @return {Function} The dispatched action.
  */
 export default function getPageConfig(pageId, force = false) {
