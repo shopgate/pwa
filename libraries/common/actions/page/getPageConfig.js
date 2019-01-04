@@ -9,12 +9,12 @@ import { getPageConfigById } from '../../selectors/page';
  * @param {string} pageId The ID of the page to request.
  * @return {Function} The dispatched action.
  */
-export default function getPageConfig(pageId) {
+export default function getPageConfig(pageId, force = false) {
   return (dispatch, getState) => {
     const state = getState();
     const pageConfig = getPageConfigById(state, { pageId });
 
-    if (!shouldFetchData(pageConfig)) {
+    if (!force && !shouldFetchData(pageConfig)) {
       return null;
     }
 
