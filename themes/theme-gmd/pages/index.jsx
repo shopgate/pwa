@@ -31,11 +31,10 @@ import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
-import View from 'Components/View';
-import AppBar from 'Components/AppBar/presets/BackBar';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
 import * as routes from './routes';
+import themeApi from './themeApi';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
@@ -46,7 +45,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{ View, AppBar }}>
+      <ThemeContext.Provider value={themeApi}>
         <LoadingProvider>
           <ToastProvider>
             <Portal name={APP_GLOBALS} />
