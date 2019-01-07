@@ -1,4 +1,3 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import {
@@ -53,7 +52,6 @@ export const errorReviewSubmit$ = main$.filter(({ action }) => (
 
 export const shouldFetchReviews$ = main$
   .filter(({ action }) => (
-    (action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED)
-    && getCurrentRoute().pattern.startsWith(ITEM_PATH)
+    action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED
   ))
   .merge(successReviewSubmit$);
