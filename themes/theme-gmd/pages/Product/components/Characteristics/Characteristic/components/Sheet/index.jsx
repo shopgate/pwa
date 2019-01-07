@@ -1,19 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
-import Sheet from '@shopgate/pwa-ui-shared/Sheet';
+import { ThemeContext } from '@shopgate/pwa-common/context';
 import List from 'Components/List';
 import VariantContext from '@shopgate/pwa-common/components/ProductCharacteristics/context';
-import SheetItem from '../SheetItem';
+import Item from '../SheetItem';
 import VariantAvailability from '../VariantAvailability';
 import { ProductContext } from './../../../../../context';
-
-const portals = document.getElementById('portals');
 
 /**
  * The CharacteristicSheet component.
  */
 class CharacteristicSheet extends PureComponent {
+  static contextType = ThemeContext;
+
   static propTypes = {
     charId: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -71,12 +70,13 @@ class CharacteristicSheet extends PureComponent {
     const {
       items, label, onClose, open, selectedValue,
     } = this.props;
+    const { Drawer } = this.context;
 
-    const sheet = (
-      <Sheet title={label} isOpen={open} onClose={onClose}>
+    return (
+      <Drawer title={label} isOpen={open} onClose={onClose}>
         <List>
           {items.map(item => (
-            <SheetItem
+            <Item
               item={item}
               key={item.id}
               onClick={this.handleItemClick}
@@ -85,10 +85,8 @@ class CharacteristicSheet extends PureComponent {
             />
           ))}
         </List>
-      </Sheet>
+      </Drawer>
     );
-
-    return createPortal(sheet, portals);
   }
 }
 
