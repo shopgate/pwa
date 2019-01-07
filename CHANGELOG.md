@@ -1,5 +1,34 @@
 # Changelog
 
+## [v5.10.3](https://github.com/shopgate/pwa/tree/v5.10.3) (2019-01-07)
+:rocket: **Enhancements:**
+
+- Fixed invalid it-IT language file [\#478](https://github.com/shopgate/pwa/pull/478) ([fkloes](https://github.com/fkloes))
+- Modified HttpRequest class in core [\#462](https://github.com/shopgate/pwa/pull/462) ([DannyShopgate](https://github.com/DannyShopgate))
+- Update Spanish translations [\#459](https://github.com/shopgate/pwa/pull/459) ([Bettina-Baumert](https://github.com/Bettina-Baumert))
+- Reset margin of Register links [\#456](https://github.com/shopgate/pwa/pull/456) ([richardgorman](https://github.com/richardgorman))
+- Removed text selection for product descriptions [\#444](https://github.com/shopgate/pwa/pull/444) ([richardgorman](https://github.com/richardgorman))
+
+:bug: **Fixed bugs:**
+
+- Fixed invalid it-IT language file [\#478](https://github.com/shopgate/pwa/pull/478) ([fkloes](https://github.com/fkloes))
+- Fix more products load for product list widget [\#476](https://github.com/shopgate/pwa/pull/476) ([alexbridge](https://github.com/alexbridge))
+- Increased hit area of the cart item context menu [\#467](https://github.com/shopgate/pwa/pull/467) ([fkloes](https://github.com/fkloes))
+- Fixed faulty getProducts call with productIds and filters [\#466](https://github.com/shopgate/pwa/pull/466) ([fkloes](https://github.com/fkloes))
+- Modified HttpRequest class in core [\#462](https://github.com/shopgate/pwa/pull/462) ([DannyShopgate](https://github.com/DannyShopgate))
+- Changed .gitignore to only ignore the theme's config folder. [\#452](https://github.com/shopgate/pwa/pull/452) ([devbucket](https://github.com/devbucket))
+- Moved the link around the buttons on iOS UserMenu [\#448](https://github.com/shopgate/pwa/pull/448) ([richardgorman](https://github.com/richardgorman))
+- Change to getProductsById action that keeps original hash when some requested products are already cached. Make Product widget responsive to settings changes after mounting [\#425](https://github.com/shopgate/pwa/pull/425) ([aaron-martin](https://github.com/aaron-martin))
+
+## [v6.0.0](https://github.com/shopgate/pwa/tree/v6.0.0) (2018-12-04)
+:bug: **Fixed bugs:**
+
+- GMD Snackbar adjusts action color to white when accent color to black contrast is less than 4 [\#437](https://github.com/shopgate/pwa/pull/437) ([sznowicki](https://github.com/sznowicki))
+
+:nail_care: **Others:**
+
+- Fixed structure of defaultClientInformation [\#420](https://github.com/shopgate/pwa/pull/420) ([Carsten89](https://github.com/Carsten89))
+
 ## [v5.10.2](https://github.com/shopgate/pwa/tree/v5.10.2) (2018-11-23)
 ## [v5.9.1](https://github.com/shopgate/pwa/tree/v5.9.1) (2018-11-23)
 :rocket: **Enhancements:**
