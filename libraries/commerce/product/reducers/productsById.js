@@ -50,20 +50,30 @@ export default function productsById(state = {}, action) {
           isFetching: false,
         },
       };
-    case UPDATE_METADATA:
+    case UPDATE_METADATA: {
+      const { productData = {} } = state[action.productId];
+
+      // Merge the given metadata with the existing metadata.
+      const metadata = {
+        ...productData.metadata,
+        ...action.metadata,
+      };
+
+      // Put the metadata back into the productData.
+      const updatedProductData = {
+        ...productData,
+        metadata,
+      };
+
+      // Put the updated product back into the state.
       return {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          productData: {
-            ...(state[action.productId] || {}).productData,
-            metadata: {
-              ...(((state[action.productId] || {}).productData || {}).metadata || {}),
-              ...(action.metadata || {}),
-            },
-          },
+          productData: updatedProductData,
         },
       };
+    }
     default:
       return state;
   }
