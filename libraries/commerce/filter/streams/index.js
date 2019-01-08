@@ -61,11 +61,5 @@ export const filterableRoutesWillLeave$ = routeWillLeave$
     )
   ));
 
-export const attributeWillEnter$ = routeWillEnter$
-  .filter(({ action }) => (
-    action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}/:attribute`
-    || action.route.pattern === `${SEARCH_PATH}${FILTER_PATH}/:attribute`
-  ));
-
 export const filtersDidUpdate$ = main$
   .filter(({ action }) => action.type === UPDATE_FILTERS);

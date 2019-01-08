@@ -8,3 +8,6 @@ export * from './constants/Portals';
 
 // SELECTORS
 export * from './selectors';
+
+// STREAMS
+export * from './streams';

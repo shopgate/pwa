@@ -35,4 +35,6 @@ export const searchWillLeave$ = routeWillLeave$
   .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
 
 export const searchWillUpdate$ = routeWillEnter$
-  .filter(({ action }) => action.historyAction === ACTION_REPLACE);
+  .filter(({ action }) =>
+    action.route.pattern === SEARCH_PATTERN &&
+    action.historyAction === ACTION_REPLACE);

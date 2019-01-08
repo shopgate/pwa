@@ -45,6 +45,13 @@ class ViewContent extends Component {
   }
 
   /**
+   * Restore the scroll position of the page.
+   */
+  componentDidMount() {
+    this.ref.current.scrollTop = this.context.state.scrollTop;
+  }
+
+  /**
    * Removes the keyboardWillChange listener.
    */
   componentWillUnmount() {
