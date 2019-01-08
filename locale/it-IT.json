@@ -17,9 +17,9 @@
   "favorites": {
     "add": "Aggiungi ai favoriti",
     "continue": "Continua ad acquistare",
-    "empty": "Non hai favoriti",
-    "error_add": "Non Ë stato possibile aggiungere il prodotto ai favoriti",
-    "error_remove": "Non Ë stato possibile rimuovere il prodotto dai favoriti",
+    "empty": "Il tuo carrello è vuoto",
+    "error_add": "Non è possibile aggiungere il prodotto ai favoriti",
+    "error_remove": "Non è possibile rimuovere il prodotto dai favoriti",
     "remove": "Rimuovi dai favoriti",
     "removed": "Rimosso dai favoriti",
     "modal": {
@@ -30,7 +30,7 @@
   "filter": {
     "sort": {
       "default": "Raggruppa per",
-      "most_popular": "pi˘ popolare",
+      "most_popular": "I più popolari",
       "price_desc": "Prezzo: Dall'alto in Basso",
       "price_asc": "Prezzo: Dal Basso in Alto"
     },
@@ -52,7 +52,7 @@
   "product": {
     "description_heading": "A riguardo",
     "pick_an_attribute": "Seleziona un {0}",
-    "tax_disclaimer": "* Incl. IVA pi˘ costi di spedizione"
+    "tax_disclaimer": "* Inclusi IVA e spese di spedizione"
   },
   "category": {
     "error": {
@@ -72,7 +72,7 @@
     "placeholder": "Cerca"
   },
   "shipping": {
-    "unknown": "pi˘ spedizione",
+    "unknown": "più spedizione",
     "free": "Spedizione gratuita",
     "free_short": "Gratis",
     "cost": "{price} spedizione"
@@ -85,7 +85,7 @@
     "dismiss": "Scarta",
     "ok": "Ok",
     "title_error": "Ops!",
-    "body_error": "Si Ë verificato un errore inaspettato. Si prega di riprovare."
+    "body_error": "Si è verificato un errore imprevisto. Riprova per favore."
   },
   "cart": {
     "subtotal": "Sotto-totale",
@@ -97,7 +97,7 @@
     "redeem_coupon": "Inserire il codice coupon",
     "coupon_code": "Codice",
     "default_coupon_label": "Coupon",
-    "coupon_was_added": "Il Coupon Ë stato aggiunto al carrello!",
+    "coupon_was_added": "Il coupon è stato aggiunto al carrello!",
     "coupons_not_supported": "Aggiungi i coupon e buoni regalo alla cassa",
     "free_shipping": "Spedizione Gratuita"
   },
@@ -110,7 +110,7 @@
     "forgot_password_popup": "Usa il sito web del desktop per resettare la password prego.",
     "button": "Accedi",
     "no_account": "Non hai un account?",
-    "register": "Creane uno quÏ!",
+    "register": "Crealo qui!",
     "logout_message": "Sei uscito dall'account.",
     "error": "I tuoi nome utente e password non corrispondono ad alcun account"
   },
@@ -121,9 +121,9 @@
     "favorites": "Favoriti",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
-    "shipping": "Modalit‡ di spedizione",
+    "shipping": "Modalità di spedizione",
     "about": "Su di noi",
-    "payment": "Modalit‡ di pagamento",
+    "payment": "Modalità di pagamento",
     "terms": "Termini",
     "privacy": "Politica sulla privacy",
     "return_policy": "Politica di restituzione",
