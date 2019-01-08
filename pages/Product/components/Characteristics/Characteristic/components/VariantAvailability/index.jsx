@@ -26,37 +26,20 @@ class VariantAvailability extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { availability } = this.props;
-    const { state, text } = availability || {};
-    if (!availability) {
+    if (!this.props.availability) {
       return null;
     }
 
+    const { availability } = this.props;
+    const { state, text } = availability;
+
     return (
       <Fragment>
-        <Portal
-          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE}
-          props={{
-            text,
-            state,
-          }}
-        />
-        <Portal
-          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY}
-          props={{
-            text,
-            state,
-          }}
-        >
+        <Portal name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE} props={availability} />
+        <Portal name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY} props={availability}>
           <Availability className={styles} state={state} text={text} />
         </Portal>
-        <Portal
-          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER}
-          props={{
-            text,
-            state,
-          }}
-        />
+        <Portal name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER} props={availability} />
       </Fragment>
     );
   }
