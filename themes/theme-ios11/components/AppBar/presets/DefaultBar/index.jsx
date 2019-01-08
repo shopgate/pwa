@@ -1,8 +1,13 @@
 import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { Portal } from '@shopgate/pwa-common/components';
+import {
+  APP_BAR_CENTER,
+  APP_BAR_CENTER_BEFORE,
+  APP_BAR_CENTER_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { RouteContext } from '@shopgate/pwa-common/context';
 import ProgressBar from './components/ProgressBar';
 
 /**
@@ -30,14 +35,17 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.visible) {
-      return null;
-    }
-
     const { title } = this.props;
     const { __ } = this.context.i18n();
-    const center = <AppBar.Title key="center" title={__(title || '')} />;
-
+    const center = (
+      <Fragment key="center">
+        <Portal name={APP_BAR_CENTER_BEFORE} />
+        <Portal name={APP_BAR_CENTER}>
+          <AppBar.Title title={__(title || '')} />
+        </Portal>
+        <Portal name={APP_BAR_CENTER_AFTER} />
+      </Fragment>
+    );
     const below = (
       <Fragment key="below">
         {this.props.below}
@@ -52,8 +60,4 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-export default props => (
-  <RouteContext.Consumer>
-    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
-  </RouteContext.Consumer>
-);
+export default AppBarDefault;
