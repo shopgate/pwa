@@ -15,16 +15,17 @@ const fetchCategoryProducts = ({
   filters = null,
   offset = 0,
   limit = ITEMS_PER_LOAD,
+  sort,
 }) =>
   (dispatch) => {
-    const sort = getSortOrder({});
+    const sortOrder = sort || getSortOrder({});
 
     dispatch(fetchProducts({
       params: {
         categoryId,
         offset,
         limit,
-        sort,
+        sort: sortOrder,
       },
       filters,
     }));
