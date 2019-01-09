@@ -15,7 +15,6 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
-    visible: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
