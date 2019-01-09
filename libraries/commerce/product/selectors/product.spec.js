@@ -192,7 +192,6 @@ describe('Product selectors', () => {
   describe('getProductId()', () => {
     it('should return null when no props are passed', () => {
       expect(getProductId()).toBeNull();
-      expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when no productId was passed within the props', () => {
@@ -254,7 +253,6 @@ describe('Product selectors', () => {
   describe('getProduct()', () => {
     it('should return null and log an error when no props are passed', () => {
       expect(getProduct(mockedState)).toBeNull();
-      expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when the product is not selectable yet', () => {
@@ -708,7 +706,6 @@ describe('Product selectors', () => {
   describe('getBaseProductId()', () => {
     it('should return null and log an error when no props are passed', () => {
       expect(getBaseProductId(mockedState)).toBeNull();
-      expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return the passed productId when no product is not available for the id', () => {
@@ -742,7 +739,6 @@ describe('Product selectors', () => {
   describe('getBaseProduct()', () => {
     it('should return null and log an error when no props are passed', () => {
       expect(getBaseProduct(mockedState)).toBeNull();
-      expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when the product is not available', () => {
@@ -847,7 +843,6 @@ describe('Product selectors', () => {
   describe('getVariantAvailabilityByCharacteristics()', () => {
     it('should return null and log an error message when no props where passed', () => {
       expect(getVariantAvailabilityByCharacteristics(mockedState)).toBeNull();
-      expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when no variants are available yet', () => {
