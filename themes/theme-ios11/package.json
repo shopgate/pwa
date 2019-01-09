@@ -7,7 +7,7 @@
   "homepage": "https://github.com/shopgate/theme-ios11",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint --quiet --ext .js --ext .jsx .",
+    "lint": "eslint --quiet --ext .js --ext .jsx --ext .json .",
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",

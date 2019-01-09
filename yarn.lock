@@ -131,7 +131,6 @@
 "@virtuous/conductor@2.0.5", "@virtuous/conductor@^2.0.5":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.0.5.tgz#b27323442c50fea038d2ccca6eda456fd0fd8e2d"
-  integrity sha512-Uz2SLpIQgAnF5AzvvKS1WS/CVvsG1fPWL6FTzPamk2AQ8Rhu0IcpRw2gu02J5WAqxF9gJGDBemK2qFls9E0Pzw==
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -145,7 +144,6 @@
 "@virtuous/react-conductor@^2.0.5":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.0.5.tgz#7d22737778078066cfcf5301ab339f5d160d17c2"
-  integrity sha512-+OfHGNYZwHwU61G7wsZuOIAXXis+qKQ8ui73SdT5ua17eMqdEl6YTtsfN+tUgg1TKjoNmZLhVPI4WzF9CIfBpA==
   dependencies:
     "@virtuous/conductor" "2.0.5"
     react-spring "^6.1.4"
@@ -2642,6 +2640,12 @@ eslint-plugin-import@^2.13.0, eslint-plugin-import@^2.8.0:
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
 
+eslint-plugin-json@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-json/-/eslint-plugin-json-1.3.2.tgz#63fb1127b44864f2629b2571d7f10d52d81334ab"
+  dependencies:
+    vscode-json-languageservice "^3.2.1"
+
 eslint-plugin-jsx-a11y@^6.0.3:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.1.2.tgz#69bca4890b36dcf0fe16dd2129d2d88b98f33f88"
@@ -4574,6 +4578,10 @@ json3@3.3.2:
 json5@^0.5.1:
   version "0.5.1"
   resolved "http://registry.npmjs.org/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
+
+jsonc-parser@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-2.0.2.tgz#42fcf56d70852a043fadafde51ddb4a85649978d"
 
 jsonfile@^2.1.0:
   version "2.4.0"
@@ -7524,6 +7532,27 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+vscode-json-languageservice@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/vscode-json-languageservice/-/vscode-json-languageservice-3.2.1.tgz#991d51128ebd81c5525d0578cabfa5b03e3cba2a"
+  dependencies:
+    jsonc-parser "^2.0.2"
+    vscode-languageserver-types "^3.13.0"
+    vscode-nls "^4.0.0"
+    vscode-uri "^1.0.6"
+
+vscode-languageserver-types@^3.13.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/vscode-languageserver-types/-/vscode-languageserver-types-3.14.0.tgz#d3b5952246d30e5241592b6dde8280e03942e743"
+
+vscode-nls@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/vscode-nls/-/vscode-nls-4.0.0.tgz#4001c8a6caba5cedb23a9c5ce1090395c0e44002"
+
+vscode-uri@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.6.tgz#6b8f141b0bbc44ad7b07e94f82f168ac7608ad4d"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
