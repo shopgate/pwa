@@ -4,7 +4,11 @@ exports[`<LiveshoppingWidget /> should not render the widget without any data 1`
 
 exports[`<LiveshoppingWidget /> should render the widget with a slider for multiple products 1`] = `
 <div
-  className="css-9a70pf"
+  className={
+    Object {
+      "data-css-9a70pf": "",
+    }
+  }
 >
   <ImageSlider
     autoPlay={false}
@@ -29,225 +33,25 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     slidesPerView={1}
     snapItems={true}
   >
-    <div
-      className="css-1allyey"
-      data-test-id="liveShoppingWidget"
+    <Connect(LiveshoppingItem)
       key="1234"
-    >
-      <Card
-        className=""
-      >
-        <Connect(Link)
-          href="/item/31323334"
-          state={
-            Object {
-              "title": "First product",
-            }
-          }
-        >
-          <Grid
-            className=""
-            component="ul"
-            wrap={false}
-          >
-            <GridItem
-              className="css-cx3b8y"
-              component="li"
-              grow={0}
-              shrink={1}
-            >
-              <ProductImage
-                alt="First product"
-                animating={true}
-                forcePlaceholder={false}
-                highestResolutionLoaded={[Function]}
-                ratio={null}
-                resolutions={
-                  Array [
-                    Object {
-                      "blur": 2,
-                      "height": 50,
-                      "width": 50,
-                    },
-                    Object {
-                      "height": 440,
-                      "width": 440,
-                    },
-                  ]
-                }
-                src="http://placekitten.com/300/300"
-                srcmap={null}
-              />
-            </GridItem>
-            <GridItem
-              className="css-1dwh8zf"
-              component="li"
-              grow={0}
-              shrink={1}
-            >
-              <div
-                data-test-id="First product"
-              >
-                <Ellipsis
-                  className="css-d6bxso"
-                  ellipsis="..."
-                  rows={2}
-                >
-                  First product
-                </Ellipsis>
-              </div>
-              <Grid
-                className="css-13fwjl7"
-                component="ul"
-                wrap={false}
-              >
-                <GridItem
-                  className=""
-                  component="li"
-                  grow={0}
-                  shrink={1}
-                >
-                  <PriceStriked
-                    className="css-osh41h"
-                    currency="EUR"
-                    value={20}
-                  />
-                </GridItem>
-                <GridItem
-                  className=""
-                  component="li"
-                  grow={0}
-                  shrink={1}
-                >
-                  <Price
-                    className="css-ljd097"
-                    currency="EUR"
-                    discounted={false}
-                    fractions={true}
-                    taxDisclaimer={false}
-                    unitPrice={100}
-                    unitPriceMin={0}
-                  />
-                </GridItem>
-              </Grid>
-            </GridItem>
-          </Grid>
-        </Connect(Link)>
-      </Card>
-    </div>
-    <div
-      className="css-1allyey"
-      data-test-id="liveShoppingWidget"
+      productId="1234"
+    />
+    <Connect(LiveshoppingItem)
       key="1235"
-    >
-      <Card
-        className=""
-      >
-        <Connect(Link)
-          href="/item/31323335"
-          state={
-            Object {
-              "title": "Second product",
-            }
-          }
-        >
-          <Grid
-            className=""
-            component="ul"
-            wrap={false}
-          >
-            <GridItem
-              className="css-cx3b8y"
-              component="li"
-              grow={0}
-              shrink={1}
-            >
-              <ProductImage
-                alt="Second product"
-                animating={true}
-                forcePlaceholder={false}
-                highestResolutionLoaded={[Function]}
-                ratio={null}
-                resolutions={
-                  Array [
-                    Object {
-                      "blur": 2,
-                      "height": 50,
-                      "width": 50,
-                    },
-                    Object {
-                      "height": 440,
-                      "width": 440,
-                    },
-                  ]
-                }
-                src="http://placekitten.com/300/300"
-                srcmap={null}
-              />
-            </GridItem>
-            <GridItem
-              className="css-1dwh8zf"
-              component="li"
-              grow={0}
-              shrink={1}
-            >
-              <div
-                data-test-id="Second product"
-              >
-                <Ellipsis
-                  className="css-d6bxso"
-                  ellipsis="..."
-                  rows={2}
-                >
-                  Second product
-                </Ellipsis>
-              </div>
-              <Grid
-                className="css-13fwjl7"
-                component="ul"
-                wrap={false}
-              >
-                <GridItem
-                  className=""
-                  component="li"
-                  grow={0}
-                  shrink={1}
-                >
-                  <PriceStriked
-                    className="css-osh41h"
-                    currency="EUR"
-                    value={20}
-                  />
-                </GridItem>
-                <GridItem
-                  className=""
-                  component="li"
-                  grow={0}
-                  shrink={1}
-                >
-                  <Price
-                    className="css-ljd097"
-                    currency="EUR"
-                    discounted={false}
-                    fractions={true}
-                    taxDisclaimer={false}
-                    unitPrice={100}
-                    unitPriceMin={0}
-                  />
-                </GridItem>
-              </Grid>
-            </GridItem>
-          </Grid>
-        </Connect(Link)>
-      </Card>
-    </div>
+      productId="1235"
+    />
   </ImageSlider>
 </div>
 `;
 
 exports[`<LiveshoppingWidget /> should render the widget with no slider for one product 1`] = `
 <div
-  className="css-9a70pf"
+  className={
+    Object {
+      "data-css-9a70pf": "",
+    }
+  }
 >
   <ImageSlider
     autoPlay={false}
@@ -272,112 +76,10 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     slidesPerView={1}
     snapItems={true}
   >
-    <div
-      className="css-1allyey"
-      data-test-id="liveShoppingWidget"
+    <Connect(LiveshoppingItem)
       key="1234"
-    >
-      <Card
-        className=""
-      >
-        <Connect(Link)
-          href="/item/31323334"
-          state={
-            Object {
-              "title": "First product",
-            }
-          }
-        >
-          <Grid
-            className=""
-            component="ul"
-            wrap={false}
-          >
-            <GridItem
-              className="css-cx3b8y"
-              component="li"
-              grow={0}
-              shrink={1}
-            >
-              <ProductImage
-                alt="First product"
-                animating={true}
-                forcePlaceholder={false}
-                highestResolutionLoaded={[Function]}
-                ratio={null}
-                resolutions={
-                  Array [
-                    Object {
-                      "blur": 2,
-                      "height": 50,
-                      "width": 50,
-                    },
-                    Object {
-                      "height": 440,
-                      "width": 440,
-                    },
-                  ]
-                }
-                src="http://placekitten.com/300/300"
-                srcmap={null}
-              />
-            </GridItem>
-            <GridItem
-              className="css-1dwh8zf"
-              component="li"
-              grow={0}
-              shrink={1}
-            >
-              <div
-                data-test-id="First product"
-              >
-                <Ellipsis
-                  className="css-d6bxso"
-                  ellipsis="..."
-                  rows={2}
-                >
-                  First product
-                </Ellipsis>
-              </div>
-              <Grid
-                className="css-13fwjl7"
-                component="ul"
-                wrap={false}
-              >
-                <GridItem
-                  className=""
-                  component="li"
-                  grow={0}
-                  shrink={1}
-                >
-                  <PriceStriked
-                    className="css-osh41h"
-                    currency="EUR"
-                    value={20}
-                  />
-                </GridItem>
-                <GridItem
-                  className=""
-                  component="li"
-                  grow={0}
-                  shrink={1}
-                >
-                  <Price
-                    className="css-ljd097"
-                    currency="EUR"
-                    discounted={false}
-                    fractions={true}
-                    taxDisclaimer={false}
-                    unitPrice={100}
-                    unitPriceMin={0}
-                  />
-                </GridItem>
-              </Grid>
-            </GridItem>
-          </Grid>
-        </Connect(Link)>
-      </Card>
-    </div>
+      productId="1234"
+    />
   </ImageSlider>
 </div>
 `;
