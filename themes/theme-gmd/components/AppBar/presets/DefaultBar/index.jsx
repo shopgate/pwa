@@ -13,6 +13,7 @@ import {
   APP_BAR_RIGHT,
   APP_BAR_RIGHT_BEFORE,
   APP_BAR_RIGHT_AFTER,
+  APP_BAR_DEFAULT,
 } from '@shopgate/pwa-common/constants/Portals';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
@@ -78,7 +79,17 @@ class AppBarDefault extends PureComponent {
       </Fragment>
     );
 
-    return <AppBar left={left} center={center} right={right} {...this.props} below={below} />;
+    /**
+     * @param {Object} props The component props.
+     * @returns {JSX}
+     */
+    const Bar = props => <AppBar left={left} center={center} right={right} {...this.props} {...props} below={below} />;
+
+    return (
+      <Portal name={APP_BAR_DEFAULT} props={{ AppBar: Bar }}>
+        <Bar />
+      </Portal>
+    );
   }
 }
 

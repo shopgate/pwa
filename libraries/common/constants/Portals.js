@@ -22,6 +22,10 @@ const STORE_INFORMATION = 'store-information';
 const MY_ACCOUNT = 'my-account';
 const LOGOUT = 'logout';
 const CONTAINER = 'container';
+const DEFAULT = 'default';
+const BACK = 'back';
+const CLOSE = 'close';
+const SIMPLE = 'simple';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -92,6 +96,11 @@ export const NO_RESULTS_CONTENT_AFTER = `${NO_RESULTS}.${CONTENT}.${AFTER}`;
 export const USER_MENU_CONTAINER_BEFORE = `${USER_MENU}.${CONTAINER}.${BEFORE}`;
 export const USER_MENU_CONTAINER = `${USER_MENU}.${CONTAINER}`;
 export const USER_MENU_CONTAINER_AFTER = `${USER_MENU}.${CONTAINER}.${AFTER}`;
+
+export const APP_BAR_DEFAULT = `${APP_BAR}.${DEFAULT}`;
+export const APP_BAR_BACK = `${APP_BAR}.${BACK}`;
+export const APP_BAR_CLOSE = `${APP_BAR}.${CLOSE}`;
+export const APP_BAR_SIMPLE = `${APP_BAR}.${SIMPLE}`;
 
 export const APP_BAR_LEFT = `${APP_BAR}.${LEFT}`;
 export const APP_BAR_LEFT_BEFORE = `${APP_BAR}.${LEFT}.${BEFORE}`;
