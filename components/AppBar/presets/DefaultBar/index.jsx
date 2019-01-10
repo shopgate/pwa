@@ -66,7 +66,7 @@ const AppBarDefault = (props, context) => {
    * @param {Object} barProps The component props.
    * @returns {JSX}
    */
-  const Bar = barProps => <AppBar left={left} center={center} right={right} {...this.props} {...barProps} below={below} />;
+  const Bar = barProps => <AppBar left={left} center={center} right={right} {...props} {...barProps} below={below} />;
 
   return (
     <Portal name={APP_BAR_DEFAULT} props={{ AppBar: Bar }}>
