@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Portal } from '@shopgate/pwa-common/components';
+import { APP_BAR_SIMPLE } from '@shopgate/pwa-common/constants/Portals';
 import DefaultBar from '../DefaultBar';
 
 /**
@@ -17,7 +19,9 @@ class SimpleBar extends PureComponent {
     const { title } = this.props;
 
     return (
-      <DefaultBar title={title} right={null} />
+      <Portal name={APP_BAR_SIMPLE}>
+        <DefaultBar title={title} right={null} />
+      </Portal>
     );
   }
 }
