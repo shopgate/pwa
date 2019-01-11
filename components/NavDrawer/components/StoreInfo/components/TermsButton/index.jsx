@@ -9,10 +9,10 @@ import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import connect from '../../connector';
+import connect from '../../../../connector';
 
 const LABEL = 'navigation.terms';
-const PAYMENT_PATH = `${PAGE_PATH}/terms`;
+const TERMS_PATH = `${PAGE_PATH}/terms`;
 
 /**
  * @param {Function} props.navigate The navigate action.
@@ -25,7 +25,7 @@ const TermsButton = ({ navigate }) => (
       <NavDrawer.Item
         label={LABEL}
         icon={DescriptionIcon}
-        onClick={navigate(PAYMENT_PATH, LABEL)}
+        onClick={navigate(TERMS_PATH, LABEL)}
         testId="navDrawerTermsButton"
       />
     </Portal>

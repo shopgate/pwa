@@ -9,7 +9,7 @@ import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import connect from '../../connector';
+import connect from '../../../../connector';
 
 const LABEL = 'navigation.privacy';
 const PRIVACY_PATH = `${PAGE_PATH}/privacy`;
