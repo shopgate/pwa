@@ -6,6 +6,7 @@ import {
   APP_BAR_CENTER,
   APP_BAR_CENTER_BEFORE,
   APP_BAR_CENTER_AFTER,
+  APP_BAR_DEFAULT,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import ProgressBar from './components/ProgressBar';
@@ -53,7 +54,9 @@ class AppBarDefault extends PureComponent {
     );
 
     return ReactDOM.createPortal(
-      <AppBar center={center} {...this.props} below={below} />,
+      <Portal name={APP_BAR_DEFAULT}>
+        <AppBar center={center} {...this.props} below={below} />
+      </Portal>,
       this.target
     );
   }
