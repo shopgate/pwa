@@ -8,15 +8,15 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
 import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
-import conductor from '@virtuous/conductor';
+import { router } from '@virtuous/conductor';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';
 
-const SUGGESTIONS_MIN = 2;
+const SUGGESTIONS_MIN = 1;
 
 /**
- * The search field component.
+ * The SearchField component.
  */
 class SearchField extends Component {
   static propTypes = {
@@ -139,7 +139,7 @@ class SearchField extends Component {
     e.preventDefault();
 
     const query = searchQuery || this.state.query;
-    conductor.update(this.props.pageId, { query });
+    router.update(this.props.pageId, { query });
 
     this.setState({ focused: false });
     this.input.blur();
