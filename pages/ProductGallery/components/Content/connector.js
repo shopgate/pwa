@@ -3,7 +3,8 @@ import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-
+import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
+import { GALLERY_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
@@ -11,7 +12,10 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  images: getProductImages(state, props),
+  images: getProductImages(state, {
+    ...props,
+    formats: productImageFormats.get(GALLERY_SLIDER_IMAGE_COLLECTION_KEY),
+  }),
   product: getCurrentBaseProduct(state, props),
 });
 
@@ -32,4 +36,9 @@ const areStatePropsEqual = (next, prev) => {
   return true;
 };
 
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(
+  mapStateToProps,
+  null,
+  null,
+  { areStatePropsEqual }
+);

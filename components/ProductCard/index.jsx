@@ -42,22 +42,26 @@ const ProductCard = ({
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
-    {(!(hidePrice && hideRating)) && (
+    {!(hidePrice && hideRating) && (
       <div className={styles.details}>
         {!hideRating && product.rating && product.rating.average > 0 && (
           <RatingStars value={product.rating.average} />
         )}
         {!hideName && (
-          <div itemProp="name" className={styles.title} data-test-id={`Productname: ${product.name}`}>
+          <div
+            itemProp="name"
+            className={styles.title}
+            data-test-id={`Productname: ${product.name}`}
+          >
             <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
           </div>
         )}
         {!hidePrice && (
           <Fragment>
-            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
-            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id, location: 'productCard' }} />
+            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id, location: 'productCard' }}>
               <ProductGridPrice price={product.price} />
-              <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
+              <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id, location: 'productCard' }} />
             </Portal>
           </Fragment>
         )}
