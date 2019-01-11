@@ -5,6 +5,7 @@ import {
   APP_BAR_LEFT,
   APP_BAR_LEFT_BEFORE,
   APP_BAR_LEFT_AFTER,
+  APP_BAR_CLOSE,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { CrossIcon } from '@shopgate/pwa-ui-shared';
@@ -41,7 +42,9 @@ class CloseBar extends PureComponent {
   render() {
     const { goBack, ...rest } = this.props;
     return (
-      <DefaultBar left={this.left()} right={null} {...rest} />
+      <Portal name={APP_BAR_CLOSE}>
+        <DefaultBar left={this.left()} right={null} {...rest} />
+      </Portal>
     );
   }
 }
