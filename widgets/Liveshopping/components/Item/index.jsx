@@ -35,7 +35,9 @@ function LiveshoppingItem({ productId }) {
             return (
               <Link href={url} state={{ title: name }}>
                 <Grid>
-                  <ProductImage className={styles.image} src={featuredImageUrl} alt={name} />
+                  <Grid.Item className={styles.image}>
+                    <ProductImage src={featuredImageUrl} alt={name} />
+                  </Grid.Item>
                   <Grid.Item className={styles.infoPane}>
                     <div data-test-id={name}>
                       {price.discount > 0 &&
