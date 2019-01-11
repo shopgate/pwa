@@ -5,6 +5,7 @@ import {
   APP_BAR_LEFT,
   APP_BAR_LEFT_BEFORE,
   APP_BAR_LEFT_AFTER,
+  APP_BAR_BACK,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { ArrowIcon } from '@shopgate/pwa-ui-shared';
@@ -41,7 +42,9 @@ class BackBar extends PureComponent {
   render() {
     const { goBack, ...rest } = this.props;
     return (
-      <DefaultBar left={this.left()} {...rest} />
+      <Portal name={APP_BAR_BACK}>
+        <DefaultBar left={this.left()} {...rest} />
+      </Portal>
     );
   }
 }

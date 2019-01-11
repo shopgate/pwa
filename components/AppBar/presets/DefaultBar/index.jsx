@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
@@ -21,73 +21,72 @@ import ProgressBar from './components/ProgressBar';
 
 /**
  * The AppBarDefault component.
- * @param {Object} props The component props.
- * @param {Object} context The component context.
- * @returns {JSX}
  */
-const AppBarDefault = (props, context) => {
-  const { __ } = context.i18n();
-  const left = (
-    <Fragment key="left">
-      <Portal name={APP_BAR_LEFT_BEFORE} />
-      <Portal name={APP_BAR_LEFT}>
-        <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />
-      </Portal>
-      <Portal name={APP_BAR_LEFT_AFTER} />
-    </Fragment>
-  );
-  const center = (
-    <Fragment key="center">
-      <Portal name={APP_BAR_CENTER_BEFORE} />
-      <Portal name={APP_BAR_CENTER}>
-        <AppBar.Title title={__(props.title || '')} />
-      </Portal>
-      <Portal name={APP_BAR_CENTER_AFTER} />
-    </Fragment>
-  );
-  const right = (
-    <Fragment key="right">
-      <Portal name={APP_BAR_RIGHT_BEFORE} />
-      <Portal name={APP_BAR_RIGHT}>
-        <SearchButton />
-        <CartButton />
-      </Portal>
-      <Portal name={APP_BAR_RIGHT_AFTER} />
-    </Fragment>
-  );
-  const below = (
-    <Fragment key="below">
-      {props.below}
-      <ProgressBar />
-    </Fragment>
-  );
+class AppBarDefault extends PureComponent {
+  static propTypes = {
+    below: PropTypes.node,
+    title: PropTypes.string,
+  };
+
+  static defaultProps = {
+    title: null,
+    below: null,
+  };
+
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
 
   /**
-   * @param {Object} barProps The component props.
    * @returns {JSX}
    */
-  const Bar = barProps => <AppBar left={left} center={center} right={right} {...props} {...barProps} below={below} />;
+  render() {
+    const { __ } = this.context.i18n();
 
-  return (
-    <Portal name={APP_BAR_DEFAULT} props={{ AppBar: Bar }}>
-      <Bar />
-    </Portal>
-  );
-};
+    const left = (
+      <Fragment key="left">
+        <Portal name={APP_BAR_LEFT_BEFORE} />
+        <Portal name={APP_BAR_LEFT}>
+          <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />
+        </Portal>
+        <Portal name={APP_BAR_LEFT_AFTER} />
+      </Fragment>
+    );
 
-AppBarDefault.propTypes = {
-  below: PropTypes.node,
-  title: PropTypes.string,
-};
+    const center = (
+      <Fragment key="center">
+        <Portal name={APP_BAR_CENTER_BEFORE} />
+        <Portal name={APP_BAR_CENTER}>
+          <AppBar.Title title={__(this.props.title || '')} />
+        </Portal>
+        <Portal name={APP_BAR_CENTER_AFTER} />
+      </Fragment>
+    );
 
-AppBarDefault.defaultProps = {
-  title: null,
-  below: null,
+    const right = (
+      <Fragment key="right">
+        <Portal name={APP_BAR_RIGHT_BEFORE} />
+        <Portal name={APP_BAR_RIGHT}>
+          <SearchButton />
+          <CartButton />
+        </Portal>
+        <Portal name={APP_BAR_RIGHT_AFTER} />
+      </Fragment>
+    );
 
-};
+    const below = (
+      <Fragment key="below">
+        {this.props.below}
+        <ProgressBar />
+      </Fragment>
+    );
 
-AppBarDefault.contextTypes = {
-  i18n: PropTypes.func,
-};
+    return (
+      <Portal name={APP_BAR_DEFAULT}>
+        <AppBar left={left} center={center} right={right} {...this.props} below={below} />
+      </Portal>
+    );
+  }
+}
 
 export default AppBarDefault;
