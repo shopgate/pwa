@@ -5,9 +5,11 @@ exports[`<Item /> should render as a button when no href, but a click handler is
   href={null}
   label="Item Label"
   onClick={[Function]}
+  testId={null}
 >
   <button
     className="css-1czs3p1"
+    data-test-id={null}
     onClick={[Function]}
   >
     <Translate
@@ -30,6 +32,7 @@ exports[`<Item /> should render as a link when an href is passed to the props 1`
   href="/some/link"
   label="Item Label"
   onClick={null}
+  testId={null}
 >
   <Link
     className="css-1czs3p1"

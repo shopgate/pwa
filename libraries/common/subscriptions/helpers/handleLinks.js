@@ -1,11 +1,10 @@
-import conductor from '@virtuous/conductor';
-import { ACTION_REPLACE } from '@virtuous/conductor/constants';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import openPage from '@shopgate/pwa-core/commands/openPage';
+import { router, ACTION_REPLACE } from '@virtuous/conductor';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
+import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import authRoutes from '../../collections/AuthRoutes';
 
 const SHOPGATE_DOMAIN = 'shopgate.com';
@@ -166,7 +165,7 @@ export const handleAppRedirect = (historyAction) => {
      * A replace action on a protector route indicates that the authentication was successful.
      * So the protector route can be popped from the history stack.
      */
-    conductor.pop();
+    router.pop();
   }
 };
 

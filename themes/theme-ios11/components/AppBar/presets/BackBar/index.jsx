@@ -1,5 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Portal } from '@shopgate/pwa-common/components';
+import {
+  APP_BAR_LEFT,
+  APP_BAR_LEFT_BEFORE,
+  APP_BAR_LEFT_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { ArrowIcon } from '@shopgate/pwa-ui-shared';
 import DefaultBar from '../DefaultBar';
@@ -18,7 +24,15 @@ class BackBar extends PureComponent {
    */
   left = () => {
     const { goBack } = this.props;
-    return <AppBar.Icon icon={ArrowIcon} onClick={goBack} />;
+    return (
+      <Fragment key="left">
+        <Portal name={APP_BAR_LEFT_BEFORE} />
+        <Portal name={APP_BAR_LEFT}>
+          <AppBar.Icon icon={ArrowIcon} onClick={goBack} testId="backButton" />
+        </Portal>
+        <Portal name={APP_BAR_LEFT_AFTER} />
+      </Fragment>
+    );
   }
 
   /**

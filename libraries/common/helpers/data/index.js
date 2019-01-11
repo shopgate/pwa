@@ -30,21 +30,23 @@ export const objectWithoutProps = (obj, keys = []) => {
  * @param {string} url The URL to check.
  * @return {boolean}
  */
-export const isExternal = url => (
-  (url.includes('http://') || url.includes('https://') || url.includes('//'))
-);
+export const isExternal = url =>
+  url.includes('http://') || url.includes('https://') || url.includes('//');
 
 /**
- * Returns the actual url to the image, by adding url parameters with the dimensions
+ * Returns the actual url to the image, by adding url parameters with the dimensions for img-cdn
  * @param {string} src Source to the image.
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.
  * @param {number} dimension.height Height in pixels.
  * @returns {string}
  */
-export const getActualImageSource = (src, { width, height }) => (
-  `${src}?w=${width}&h=${height}&q=70&zc=resize&fillc=FFFFFF`
-);
+export const getActualImageSource = (src, { width, height }) => {
+  if (src && src.startsWith('https://img-cdn.shopgate.com') && !src.includes('?')) {
+    return `${src}?w=${width}&h=${height}&q=70&zc=resize&fillc=FFFFFF`;
+  }
+  return src;
+};
 
 /**
  * Finds the index of a property inside an array.
@@ -135,13 +137,15 @@ export const sortObject = (src, comparator = defaultKeySortFn) => {
   }
 
   if (isObject(src)) {
-    return Object
-      .keys(src)
+    return Object.keys(src)
       .sort(comparator)
-      .reduce((obj, key) => ({
-        ...obj,
-        [key]: sortObject(src[key], comparator),
-      }), {});
+      .reduce(
+        (obj, key) => ({
+          ...obj,
+          [key]: sortObject(src[key], comparator),
+        }),
+        {}
+      );
   }
 
   return src;

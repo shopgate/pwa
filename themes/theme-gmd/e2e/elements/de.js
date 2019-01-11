@@ -1,6 +1,6 @@
 export default {
   navigatorButton: "[data-pathname*='/'] [data-test-id='Navigator'] [data-test-id='Button']",
-  navigationDrawerBackdrop: "[data-test-id='NavDrawer'] [data-test-id='Backdrop']",
+  navigationDrawerBackdrop: "[data-test-id='Backdrop']",
   navigationDrawerLoginButton: "[data-test-id='navDrawerLoginButton']",
   navigationDrawerEntry: "[data-test-id='NavDrawer'] [data-test-id='Ripple'] span",
   shopLogo: "[data-test-id='Navigator'] img",
@@ -91,7 +91,7 @@ export default {
   reviewsTitle: "[data-test-id='title: Bewertungen']",
   basicDialogOkButton: "[data-test-id='basicDialog'] [data-test-id='Button']",
   writeReviewName: "[data-test-id='reviewForm'] input[id='author']",
-  loginWelcomeText: "[data-test-id='navDrawerLoginButton'] span",
+  loginWelcomeText: "[data-test-id='NavDrawerLoginButton'] span",
   welcomeText: "[data-test-id='LoginWelcome']",
   navDrawerStartPage: "[data-test-id='navDrawerHomeButton']",
   writeReviewTitle: "[data-test-id='reviewForm'] input[id='title']",

@@ -18,12 +18,15 @@ import { categoryIsReady$ } from './category';
 
 let mockedRoutePattern;
 let mockedCategoryId;
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
-  pattern: mockedRoutePattern,
-  params: {
-    ...(mockedCategoryId && { categoryId: mockedCategoryId }),
-  },
-  state: {},
+
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+  getCurrentRoute: () => ({
+    pattern: mockedRoutePattern,
+    params: {
+      ...(mockedCategoryId && { categoryId: mockedCategoryId }),
+    },
+    state: {},
+  }),
 }));
 
 /**

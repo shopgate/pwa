@@ -93,7 +93,7 @@ class More extends Component {
             {/* TERMS */}
             <Portal name={portals.NAV_MENU_TERMS_BEFORE} props={portalProps} />
             <Portal name={portals.NAV_MENU_TERMS} props={portalProps}>
-              <Item href={`${PAGE_PATH}/navigation_terms`} label="navigation.terms" />
+              <Item href={`${PAGE_PATH}/terms`} label="navigation.terms" />
             </Portal>
             <Portal name={portals.NAV_MENU_TERMS_AFTER} props={portalProps} />
 

@@ -42,7 +42,7 @@ export const EBIGAPI = 'EBIGAPI';
 /**
  * Error that is thrown if login was uncomplete. Used for external identity services.
  */
-export const EUNCOMPLETE = 'EUNCOMPLETE';
+export const EINCOMPLETELOGIN = 'EINCOMPLETELOGIN';
 
 // Validation errors
 export const EVALIDATION = 'EVALIDATION';

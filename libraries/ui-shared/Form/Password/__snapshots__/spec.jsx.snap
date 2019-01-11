@@ -229,7 +229,7 @@ exports[`<Password> should render a password field 1`] = `
           translate={true}
         >
           <div
-            className=""
+            className="css-hyvrm8"
           >
             <Translate
               className=""
@@ -558,7 +558,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           translate={true}
         >
           <div
-            className=""
+            className="css-hyvrm8"
           >
             <Translate
               className=""

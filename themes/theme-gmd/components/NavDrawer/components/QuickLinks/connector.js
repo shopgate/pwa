@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { QUICKLINKS_MENU } from '@shopgate/pwa-common/constants/MenuIDs';
-import { makeGetMenuById } from '../../selectors';
+import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
 
-const getMenuById = makeGetMenuById();
 const props = {
   id: QUICKLINKS_MENU,
 };

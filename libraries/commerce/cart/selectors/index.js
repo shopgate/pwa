@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 import sumBy from 'lodash/sumBy';
+import { getBaseProductMetadata } from '../../product/selectors/product';
+import { getSelectedVariantMetadata } from '../../product/selectors/variants';
 import {
   getRawProductOptions,
   hasProductOptions,
@@ -55,7 +57,7 @@ export const getCartItems = createSelector(
 export const getCartItemById = createSelector(
   (state, { cartItemId }) => cartItemId,
   getCartItems,
-  (cartItemId, cartItems) => cartItems.find(({ id }) => id === cartItemId)
+  (cartItemId, cartItems) => cartItems.find(({ id }) => id === cartItemId) || null
 );
 
 /**
@@ -220,10 +222,29 @@ export const getAddToCartOptions = createSelector(
 );
 
 /**
+ * Builds the data for the 'metadata' property of addProductsToCart pipeline request payload.
+ * @returns {Object|null} The data if it was determinable, otherwise NULL.
+ */
+export const getAddToCartMetadata = createSelector(
+  getSelectedVariantMetadata,
+  getBaseProductMetadata,
+  (variantMetadata, baseProductMetadata) => variantMetadata || baseProductMetadata || null
+);
+
+/**
  * Checks if the cart supports redemption of coupons.
  * @return {boolean}
  */
 export const hasCouponSupport = createSelector(
   getFlags,
   ({ coupons }) => (typeof coupons === 'boolean' ? coupons : true)
+);
+
+/**
+ * Checks if the cart is fetching
+ * @return {boolean}
+ */
+export const getIsFetching = createSelector(
+  getCart,
+  ({ isFetching }) => isFetching || false
 );

@@ -11,4 +11,4 @@ export default css({
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   width: '100%',
-});
+}).toString();

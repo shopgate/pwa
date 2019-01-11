@@ -22,14 +22,14 @@ exports[`<Sheet /> should open 1`] = `
           "out": "css-15ct02m",
         }
       }
-      className="css-h69706"
+      className="css-ruonn8"
       isOpen={true}
       onClose={[Function]}
       onDidClose={[Function]}
       onOpen={[Function]}
     >
       <div
-        className="css-h69706 css-1rg7udn css-32zjx4"
+        className="css-ruonn8 css-1rg7udn css-32zjx4"
         onAnimationEnd={[Function]}
         style={
           Object {
@@ -224,7 +224,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
         "out": "css-15ct02m",
       }
     }
-    className="css-h69706"
+    className="css-ruonn8"
     isOpen={false}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -258,7 +258,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
         "out": "css-15ct02m",
       }
     }
-    className="css-h69706"
+    className="css-ruonn8"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -292,7 +292,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
         "out": "css-15ct02m",
       }
     }
-    className="css-h69706"
+    className="css-ruonn8"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -365,14 +365,14 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           "out": "css-15ct02m",
         }
       }
-      className="css-h69706"
+      className="css-ruonn8"
       isOpen={false}
       onClose={[Function]}
       onDidClose={[Function]}
       onOpen={[Function]}
     >
       <div
-        className="css-h69706 css-1rg7udn css-15ct02m"
+        className="css-ruonn8 css-1rg7udn css-15ct02m"
         onAnimationEnd={[Function]}
         style={
           Object {

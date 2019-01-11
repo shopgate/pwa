@@ -20,7 +20,7 @@ const icon = css({
 const headline = css({
   fontSize: '1.25rem',
   fontWeight: 500,
-  marginTop: 40,
+  marginTop: 30,
 }).toString();
 
 const text = css({

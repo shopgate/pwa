@@ -1,5 +1,5 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { ACTION_PUSH, ACTION_POP } from '@virtuous/conductor/constants';
+import { ACTION_PUSH, ACTION_POP } from '@virtuous/conductor';
 import {
   routeWillEnter$,
   routeDidEnter$,
@@ -59,12 +59,6 @@ export const filterableRoutesWillLeave$ = routeWillLeave$
       action.route.pattern === `${CATEGORY_PATH}/:categoryId`
       || action.route.pattern === SEARCH_PATH
     )
-  ));
-
-export const attributeWillEnter$ = routeWillEnter$
-  .filter(({ action }) => (
-    action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}/:attribute`
-    || action.route.pattern === `${SEARCH_PATH}${FILTER_PATH}/:attribute`
   ));
 
 export const filtersDidUpdate$ = main$

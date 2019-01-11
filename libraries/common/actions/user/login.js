@@ -3,33 +3,34 @@ import {
   logger,
   EINVALIDCALL,
   ELEGACYSGCONNECT,
-  EUNCOMPLETE,
+  EINCOMPLETELOGIN,
 } from '@shopgate/pwa-core';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import * as actions from '../../action-creators/user';
 
 /**
  * Login the current user.
- * @param {Object} credentials The login credentials.
- * @param {string} credentials.login The username to login.
- * @param {string} credentials.password The password to login.
+ * @param {Object} parameters The login credentials.
+ * @param {string} parameters.login The username to login.
+ * @param {string} parameters.password The password to login.
  * @param {string} redirect The location to redirect to when logged in.
+ * @param {string} strategy basic or facebook, amazon, etc
  * @return {Function} A redux thunk.
  */
-export default function login(credentials, redirect) {
+export default function login(parameters, redirect, strategy = 'basic') {
   return (dispatch) => {
-    dispatch(actions.requestLogin(credentials.login, credentials.password));
+    dispatch(actions.requestLogin(parameters.login, parameters.password, strategy));
 
     new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
       .setTrusted()
       .setErrorBlacklist([
         EINVALIDCALL,
         ELEGACYSGCONNECT,
-        EUNCOMPLETE,
+        EINCOMPLETELOGIN,
       ])
       .setInput({
-        strategy: 'basic',
-        parameters: credentials,
+        strategy,
+        parameters,
       })
       .dispatch()
       .then(({ success, messages }) => {

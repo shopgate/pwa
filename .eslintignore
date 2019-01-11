@@ -1,11 +1,9 @@
-localforage.js
 node_modules
 .cache-loader
 coverage
 /pipelines/
 /trustedPipelines/
 /themes/*/extensions/
-/extensions/*
 !/extensions/@shopgate-product-reviews
 !/extensions/@shopgate-tracking-native
-!/extensions/@shopgate-user-privay
+!/extensions/@shopgate-user-privacy

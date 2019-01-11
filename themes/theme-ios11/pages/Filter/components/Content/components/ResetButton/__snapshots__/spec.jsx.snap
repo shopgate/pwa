@@ -13,7 +13,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
     disabled={false}
     flat={true}
     onClick={[MockFunction]}
-    testId="Button"
+    testId="clearAllButton"
     type="primary"
     wrapContent={true}
   >
@@ -39,7 +39,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
     disabled={false}
     flat={true}
     onClick={[Function]}
-    testId="Button"
+    testId="clearAllButton"
     type="primary"
     wrapContent={true}
   >
@@ -65,7 +65,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
     disabled={true}
     flat={true}
     onClick={[Function]}
-    testId="Button"
+    testId="clearAllButton"
     type="primary"
     wrapContent={true}
   >

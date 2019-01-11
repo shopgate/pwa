@@ -17,7 +17,7 @@ class AppBarTitle extends PureComponent {
     const { title } = this.props;
 
     return (
-      <div className={styles}>{title}</div>
+      <div className={styles} data-test-id={`title: ${title}`}>{title}</div>
     );
   }
 }

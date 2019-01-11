@@ -1,6 +1,6 @@
 import favorites from './index';
 
-jest.mock('../actions/getFavorites', () => withCache => withCache);
+jest.mock('../actions/fetchFavorites', () => withCache => withCache);
 
 let mockedHasFavorites = true;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
