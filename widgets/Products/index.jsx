@@ -114,6 +114,13 @@ class ProductsWidget extends Component {
   };
 
   /**
+   * More products click handler
+   */
+  handleClickMore = () => {
+    this.getProducts();
+  };
+
+  /**
    * Determines whether or not we already have all products.
    * @returns {boolean}
    */
@@ -137,7 +144,7 @@ class ProductsWidget extends Component {
     return (
       <ActionButton
         loading={this.props.isFetching}
-        onClick={this.getProducts}
+        onClick={this.handleClickMore}
       >
         <I18n.Text string="common.load_more" />
       </ActionButton>
