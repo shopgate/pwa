@@ -14,30 +14,30 @@ export const getMenuState = state => state.menu;
 export const getMenus = createSelector(
   getMenuState,
   (menuState) => {
-    if (!menuState || !menuState.menuById) {
+    if (!menuState || !menuState.menusById) {
       return null;
     }
 
-    return menuState.menuById;
+    return menuState.menusById;
   }
 );
 
-const defaultValue = {};
+const defaultValue = [];
 
 /**
  * Selects a menu by id.
  * @param {Object} state The global state.
  * @param {Object} props The menu props.
- * @return {Object}
+ * @return {Array}
  */
 export const getMenuById = createSelector(
   getMenus,
   (state, { id }) => id,
   (menus, id) => {
-    if (!menus || !menus[id]) {
+    if (!menus || !menus[id] || !menus[id].entries) {
       return defaultValue;
     }
 
-    return menus[id];
+    return menus[id].entries;
   }
 );
