@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
-import { makeGetMenuById } from './selectors';
 import Quicklinks from './index';
 
 const store = createMockStore();
