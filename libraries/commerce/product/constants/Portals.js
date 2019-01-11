@@ -26,6 +26,7 @@ const PRICE = 'price';
 const PRICE_INFO = 'price-info';
 const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
+const BADGE = 'badge';
 
 // POSITIONS
 const BEFORE = 'before';
@@ -154,3 +155,13 @@ export const PRODUCT_TAX_DISCLAIMER_AFTER = `${PRODUCT}.${TAX_DISCLAIMER}.${AFTE
 export const PRODUCT_ADD_TO_CART_BAR_BEFORE = `${PRODUCT}.${ADD_TO_CART_BAR}.${BEFORE}`;
 export const PRODUCT_ADD_TO_CART_BAR = `${PRODUCT}.${ADD_TO_CART_BAR}`;
 export const PRODUCT_ADD_TO_CART_BAR_AFTER = `${PRODUCT}.${ADD_TO_CART_BAR}.${AFTER}`;
+
+// PRODUCT CARD BADGE
+export const PRODUCT_CARD_BADGE = `${PRODUCT}.${BADGE}`;
+export const PRODUCT_CARD_BADGE_BEFORE = `${PRODUCT}.${BADGE}.${BEFORE}`;
+export const PRODUCT_CARD_BADGE_AFTER = `${PRODUCT}.${BADGE}.${AFTER}`;
+
+// PRODUCT CARD PRICE
+export const PRODUCT_CARD_PRICE = `${PRODUCT}.${BADGE}`;
+export const PRODUCT_CARD_PRICE_BEFORE = `${PRODUCT}.${BADGE}.${BEFORE}`;
+export const PRODUCT_CARD_PRICE_AFTER = `${PRODUCT}.${BADGE}.${AFTER}`;

@@ -19,6 +19,7 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
@@ -34,6 +35,7 @@ class ProductImage extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
+    className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => {},
     ratio: null,
