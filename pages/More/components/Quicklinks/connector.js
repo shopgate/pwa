@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import { QUICKLINKS_MENU } from '@shopgate/pwa-common/constants/MenuIDs';
+import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
 
-import { makeGetMenuById } from './selectors';
-
-const getMenuById = makeGetMenuById();
 const props = {
   id: QUICKLINKS_MENU,
 };
