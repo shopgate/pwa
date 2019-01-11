@@ -1,9 +1,6 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import {
-  getProductState,
-  getPopulatedProductsResult,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductState } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 
@@ -29,15 +26,17 @@ const getResultByHash = createSelector(
 );
 
 /**
- * Retrieves the populated product result.
+ * Selects the liveshopping product ids.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
- * @returns {Object} The product result.
+ * @returns {Array|undefined}
  */
-export const getProductsResult = createSelector(
+export const selectProductIds = createSelector(
   state => state,
   (state, props) => props,
   getResultHash,
   getResultByHash,
-  getPopulatedProductsResult
+  (state, props, hash, result) => (
+    (result && result.products) ? result.products : undefined
+  )
 );

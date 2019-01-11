@@ -22,7 +22,7 @@ const Price = ({ showTotalPrice, price }) => (
     <Portal name={PRODUCT_PRICE_BEFORE} />
     <Portal name={PRODUCT_PRICE}>
       <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
-        {(price && price.unitPrice) && (
+        {(price && typeof price.unitPrice === 'number') && (
           <PriceBase
             className={styles.price}
             currency={price.currency}

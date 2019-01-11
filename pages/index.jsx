@@ -36,7 +36,7 @@ import locale from '../locale';
 import * as routes from './routes';
 import themeApi from '../themeApi';
 
-const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
+const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
