@@ -4,6 +4,7 @@ import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
+import { router } from '@virtuous/conductor';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import Above from '../Above';
@@ -14,6 +15,8 @@ import styles from './style';
  * The ViewContent component.
  */
 class ViewContent extends Component {
+  static contextType = RouteContext;
+
   static propTypes = {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
@@ -28,6 +31,22 @@ class ViewContent extends Component {
 
   /**
    * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.ref = React.createRef();
+    this.state = {
+      keyboardHeight: 0,
+    };
+
+    this.props.setContentRef(this.ref);
+
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
+   * @param {Object} props The component props.
    * @param {Object} state The component state.
    * @returns {Object}
    */
@@ -39,31 +58,21 @@ class ViewContent extends Component {
     return { keyboardHeight: 0 };
   }
 
-  state = {
-    keyboardHeight: 0,
-  };
-
   /**
-   * Updates the content reference within the view provider.
+   * Restore the scroll position of the page.
    */
   componentDidMount() {
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-    this.props.setContentRef(this.ref);
-  }
-
-  /**
-   * @param {Object} nextprops The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextprops, nextState) {
-    return this.state.keyboardHeight !== nextState.keyboardHeight;
+    this.ref.current.scrollTop = this.context.state.scrollTop;
   }
 
   /**
    * Removes the keyboardWillChange listener.
    */
   componentWillUnmount() {
+    router.update(this.context.id, {
+      scrollTop: this.ref.current.scrollTop,
+    }, false);
+
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 
@@ -79,8 +88,6 @@ class ViewContent extends Component {
       paddingBottom: keyboardHeight,
     };
   }
-
-  ref = React.createRef();
 
   /**
    * Handles a keyboard change event.

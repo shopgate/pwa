@@ -2,7 +2,10 @@ import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
-import { getPopulatedProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getPopulatedProductsResult,
+  getProduct,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   getChildCategoriesById,
   getRootCategories,
@@ -96,13 +99,48 @@ const getResultByHash = createSelector(
  * @param {Object} params The query parameters.
  * @returns {Object} The product result.
  */
-export const getProductsResult = createSelector(
+export const getProductsResultWithHash = createSelector(
   state => state,
   (state, props) => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult
 );
+
+/**
+ * @param {Object} state he application state.
+ * @param {int} type Number indicating search type.
+ * @param {Object} params Query parameters.
+ * @param {string} id Id of component.
+ * @return {Object} The product result.
+ */
+export const getProductsResultsWithIds = (state, type, params, id) => {
+  const currentSort = getSortOrder(state);
+  const { value: productIds = [], sort = currentSort } = params || {};
+  const products = productIds.map(productId => getProduct(state, { productId })).filter(Boolean);
+  const hash = getResultHash(state, type, params, id);
+  return {
+    products,
+    totalProductCount: products.length,
+    sort: transformDisplayOptions(sort),
+    hash,
+  };
+};
+
+/**
+ * @param {Object} state he application state.
+ * @param {int} type Number indicating search type.
+ * @param {Object} params Query parameters.
+ * @param {string} id Id of component.
+ * @return {Object} The product result.
+ */
+export const getProductsResult = (state, type, params, id) => {
+  if (type === 4) {
+    return getProductsResultsWithIds(state, type, params, id);
+  }
+
+  return getProductsResultWithHash(state, type, params, id);
+};
 
 /**
  * Retrieves the populated product result.
