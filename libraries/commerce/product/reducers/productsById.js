@@ -4,6 +4,7 @@ import {
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCTS,
   ERROR_PRODUCT,
+  UPDATE_METADATA,
 } from '../constants';
 import { RECEIVE_FAVORITES } from '../../favorites/constants';
 import handleProductCollection from './helpers/handleProductCollection';
@@ -49,6 +50,30 @@ export default function productsById(state = {}, action) {
           isFetching: false,
         },
       };
+    case UPDATE_METADATA: {
+      const { productData = {} } = state[action.productId];
+
+      // Merge the given metadata with the existing metadata.
+      const metadata = {
+        ...productData.metadata,
+        ...action.metadata,
+      };
+
+      // Put the metadata back into the productData.
+      const updatedProductData = {
+        ...productData,
+        metadata,
+      };
+
+      // Put the updated product back into the state.
+      return {
+        ...state,
+        [action.productId]: {
+          ...state[action.productId],
+          productData: updatedProductData,
+        },
+      };
+    }
     default:
       return state;
   }

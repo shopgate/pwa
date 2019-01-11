@@ -70,3 +70,6 @@ export const PRODUCT_RELATIONS_TYPE_UPSELLING = 'upselling';
 export const PRODUCT_RELATIONS_TYPE_BONUS = 'bonus';
 export const PRODUCT_RELATIONS_TYPE_BOUGHT_WITH = 'boughtWith';
 export const PRODUCT_RELATIONS_TYPE_CUSTOM = 'custom';
+
+// PRODUCT METADATA
+export const UPDATE_METADATA = 'UPDATE_METADATA';
