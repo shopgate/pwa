@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
 import ProductGridPrice from 'Components/ProductGridPrice';
 import {
-  PRODUCT_CARD_PRICE,
-  PRODUCT_CARD_PRICE_BEFORE,
-  PRODUCT_CARD_PRICE_AFTER,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+  PRODUCT_ITEM_PRICE,
+  PRODUCT_ITEM_PRICE_BEFORE,
+  PRODUCT_ITEM_PRICE_AFTER,
+} from '@shopgate/pwa-common-commerce/category/constants/Portals';
 
 /**
  * @returns {JSX}
@@ -16,10 +16,10 @@ function ProductCardPrice({ productId, price, style }) {
 
   return (
     <div style={style}>
-      <Portal name={PRODUCT_CARD_PRICE_BEFORE} props={props} />
-      <Portal name={PRODUCT_CARD_PRICE} props={props}>
+      <Portal name={PRODUCT_ITEM_PRICE_BEFORE} props={props} />
+      <Portal name={PRODUCT_ITEM_PRICE} props={props}>
         <ProductGridPrice price={price} />
-        <Portal name={PRODUCT_CARD_PRICE_AFTER} props={props} />
+        <Portal name={PRODUCT_ITEM_PRICE_AFTER} props={props} />
       </Portal>
     </div>
   );
