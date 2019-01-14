@@ -10,6 +10,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import HomeIcon from '@shopgate/pwa-ui-shared/icons/HomeIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from '../../connector';
+import portalProps from '../../portalProps';
 
 const LABEL = 'navigation.home';
 
@@ -19,8 +20,8 @@ const LABEL = 'navigation.home';
  */
 const HomeButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_HOME_BEFORE} />
-    <Portal name={NAV_MENU_HOME}>
+    <Portal name={NAV_MENU_HOME_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_HOME} props={portalProps}>
       <NavDrawer.Item
         label={LABEL}
         icon={HomeIcon}
@@ -28,7 +29,7 @@ const HomeButton = ({ navigate }) => (
         testId="navDrawerHomeButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_HOME_AFTER} />
+    <Portal name={NAV_MENU_HOME_AFTER} props={portalProps} />
   </Fragment>
 );
 

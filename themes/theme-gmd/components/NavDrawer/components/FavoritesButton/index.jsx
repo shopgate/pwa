@@ -11,6 +11,7 @@ import HeartIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import Badge from './components/Badge';
 import connect from '../../connector';
+import portalProps from '../../portalProps';
 
 const LABEL = 'navigation.favorites';
 
@@ -20,8 +21,8 @@ const LABEL = 'navigation.favorites';
  */
 const FavoritesButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_FAVORITES_BEFORE} />
-    <Portal name={NAV_MENU_FAVORITES}>
+    <Portal name={NAV_MENU_FAVORITES_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_FAVORITES} props={portalProps}>
       <NavDrawer.Item
         badge={Badge}
         label={LABEL}
@@ -30,7 +31,7 @@ const FavoritesButton = ({ navigate }) => (
         testId="navDrawerFavoritesButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_FAVORITES_AFTER} />
+    <Portal name={NAV_MENU_FAVORITES_AFTER} props={portalProps} />
   </Fragment>
 );
 
