@@ -5,6 +5,7 @@ import {
   closeInAppBrowser,
   onload,
 } from '@shopgate/pwa-core';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
@@ -84,6 +85,7 @@ export default function app(subscribe) {
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     // Register for custom events
     registerEvents([
+      EVENT_KEYBOARD_WILL_CHANGE,
       'showPreviousTab',
       'closeInAppBrowser',
       // TODO The iOS apps don't emit the event to the webviews without registration till Lib 15.2.
