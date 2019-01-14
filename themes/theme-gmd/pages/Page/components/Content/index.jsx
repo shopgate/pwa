@@ -5,6 +5,9 @@ import {
   PAGE_CONTENT_BEFORE,
   PAGE_CONTENT,
   PAGE_CONTENT_AFTER,
+  APP_BAR_CENTER,
+  APP_BAR_CENTER_BEFORE,
+  APP_BAR_CENTER_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
@@ -21,11 +24,27 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
-  const center = (pageId === PAGE_ID_INDEX) ? (
-    <Logo key="center" />
-  ) : (
-    <AppBar.Title key="center" title={configs.title} />
+  let center = (
+    <Fragment key="center">
+      <Portal name={APP_BAR_CENTER_BEFORE} />
+      <Portal name={APP_BAR_CENTER}>
+        <Logo key="center" />
+      </Portal>
+      <Portal name={APP_BAR_CENTER_AFTER} />
+    </Fragment>
   );
+
+  if (pageId !== PAGE_ID_INDEX) {
+    center = (
+      <Fragment key="center">
+        <Portal name={APP_BAR_CENTER_BEFORE} />
+        <Portal name={APP_BAR_CENTER}>
+          <AppBar.Title key="center" title={configs.title || ''} />
+        </Portal>
+        <Portal name={APP_BAR_CENTER_AFTER} />
+      </Fragment>
+    );
+  }
 
   return (
     <Fragment>
