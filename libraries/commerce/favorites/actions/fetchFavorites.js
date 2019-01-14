@@ -14,10 +14,9 @@ import {
 } from '../action-creators';
 
 /**
- * Get favorites action.
+ * Fetch favorites action.
  * @param {boolean} ignoreCache Ignores cache when true
  * @returns {Promise|undefined}
- *
  */
 const fetchFavorites = (ignoreCache = false) => (dispatch, getState) => {
   const data = getState().favorites.products;
