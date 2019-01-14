@@ -10,6 +10,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import ViewListIcon from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from '../../connector';
+import portalProps from '../../portalProps';
 
 const LABEL = 'navigation.categories';
 
@@ -19,8 +20,8 @@ const LABEL = 'navigation.categories';
  */
 const CategoryButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_CATEGORIES_BEFORE} />
-    <Portal name={NAV_MENU_CATEGORIES}>
+    <Portal name={NAV_MENU_CATEGORIES_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_CATEGORIES} props={portalProps}>
       <NavDrawer.Item
         label={LABEL}
         icon={ViewListIcon}
@@ -28,7 +29,7 @@ const CategoryButton = ({ navigate }) => (
         testId="navDrawerCategoriesButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_CATEGORIES_AFTER} />
+    <Portal name={NAV_MENU_CATEGORIES_AFTER} props={portalProps} />
   </Fragment>
 );
 

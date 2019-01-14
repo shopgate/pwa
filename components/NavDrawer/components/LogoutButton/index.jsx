@@ -10,10 +10,9 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import LogoutIcon from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from './connector';
+import portalProps from '../../portalProps';
 
 const enhance = onlyUpdateForKeys(['loggedIn']);
-
-const portalProps = { Item: NavDrawer.Item };
 
 /**
  * @returns {JSX}
