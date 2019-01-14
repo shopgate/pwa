@@ -11,9 +11,6 @@ import QuickLinks from './components/QuickLinks';
 import StoreInfo from './components/StoreInfo';
 import LogoutButton from './components/LogoutButton';
 
-// TODO: Add submenu header support
-// const { showGmdMenuSubHeaders = false } = appConfig;
-
 /**
  * @returns {JSX}
  */
