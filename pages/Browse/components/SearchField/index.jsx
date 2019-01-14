@@ -102,8 +102,9 @@ class SearchField extends Component {
    * @param {string} value The updated value.
    */
   update = (value) => {
-    this.fetchSuggestions(value);
-    this.setState({ query: value });
+    const query = value.trim();
+    this.fetchSuggestions(query);
+    this.setState({ query });
   };
 
   /**
