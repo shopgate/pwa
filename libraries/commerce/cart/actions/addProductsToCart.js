@@ -24,7 +24,7 @@ const addToCart = data => (dispatch, getState) => {
   const products = data.map((product) => {
     quantity += product.quantity;
 
-    const { productData = {} } = getProduct(state, { productId: product.productId }) || {};
+    const productData = getProduct(state, { productId: product.productId }) || {};
 
     // Restructure into a productId and a variantId (only productId if not adding a variant)
     const productId = productData.baseProductId || product.productId;
