@@ -6,6 +6,12 @@ import {
   APP_BAR_CENTER,
   APP_BAR_CENTER_BEFORE,
   APP_BAR_CENTER_AFTER,
+  APP_BAR_RIGHT,
+  APP_BAR_RIGHT_BEFORE,
+  APP_BAR_RIGHT_AFTER,
+  APP_BAR_BELOW,
+  APP_BAR_BELOW_BEFORE,
+  APP_BAR_BELOW_AFTER,
   APP_BAR_DEFAULT,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
@@ -46,16 +52,27 @@ class AppBarDefault extends PureComponent {
         <Portal name={APP_BAR_CENTER_AFTER} />
       </Fragment>
     );
+    const right = (
+      <Fragment key="right">
+        <Portal name={APP_BAR_RIGHT_BEFORE} />
+        <Portal name={APP_BAR_RIGHT} />
+        <Portal name={APP_BAR_RIGHT_AFTER} />
+      </Fragment>
+    );
     const below = (
       <Fragment key="below">
-        {this.props.below}
-        <ProgressBar />
+        <Portal name={APP_BAR_BELOW_BEFORE} />
+        <Portal name={APP_BAR_BELOW}>
+          {this.props.below}
+          <ProgressBar />
+        </Portal>
+        <Portal name={APP_BAR_BELOW_AFTER} />
       </Fragment>
     );
 
     return ReactDOM.createPortal(
       <Portal name={APP_BAR_DEFAULT}>
-        <AppBar center={center} {...this.props} below={below} />
+        <AppBar center={center} right={right} {...this.props} below={below} />
       </Portal>,
       this.target
     );
