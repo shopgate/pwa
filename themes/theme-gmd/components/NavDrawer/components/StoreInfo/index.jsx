@@ -14,11 +14,7 @@ import TermsButton from './components/TermsButton';
 import PrivacyButton from './components/PrivacyButton';
 import ReturnsButton from './components/ReturnsButton';
 import ImprintButton from './components/ImprintButton';
-
-const portalProps = {
-  Divider: NavDrawer.Divider,
-  Item: NavDrawer.Item,
-};
+import portalProps from '../../portalProps';
 
 /**
  * @returns {JSX}
