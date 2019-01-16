@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
+import Right from './components/Right';
+import Center from './components/Center';
+import Left from './components/Left';
+import Below from './components/Below';
 import styles from './style';
 
 /**
@@ -11,10 +15,10 @@ import styles from './style';
 class AppBar extends PureComponent {
   static propTypes = {
     backgroundColor: PropTypes.string,
-    below: PropTypes.shape(),
-    center: PropTypes.shape(),
-    left: PropTypes.shape(),
-    right: PropTypes.shape(),
+    below: PropTypes.node,
+    center: PropTypes.node,
+    left: PropTypes.node,
+    right: PropTypes.node,
     shadow: PropTypes.bool,
     textColor: PropTypes.string,
   }
@@ -55,18 +59,13 @@ class AppBar extends PureComponent {
     } = this.props;
 
     return (
-      <header
-        className={styles.outer}
-        data-test-id="Navigator"
-        role="banner"
-        style={this.style}
-      >
+      <header className={styles.outer} data-test-id="Navigator" role="banner" style={this.style}>
         <div className={styles.inner}>
-          {left}
-          {center}
-          {right}
+          <Left elements={left} />
+          <Center elements={center} />
+          <Right elements={right} />
         </div>
-        {below}
+        <Below elements={below} />
       </header>
     );
   }

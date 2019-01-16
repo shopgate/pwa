@@ -4,6 +4,10 @@ import classnames from 'classnames';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
+import Right from './components/Right';
+import Center from './components/Center';
+import Left from './components/Left';
+import Below from './components/Below';
 import styles from './style';
 
 /**
@@ -12,11 +16,14 @@ import styles from './style';
 class AppBar extends PureComponent {
   static propTypes = {
     backgroundColor: PropTypes.string,
-    below: PropTypes.shape(),
-    center: PropTypes.shape(),
-    classes: PropTypes.shape(),
-    left: PropTypes.shape(),
-    right: PropTypes.shape(),
+    below: PropTypes.node,
+    center: PropTypes.node,
+    classes: PropTypes.shape({
+      inner: PropTypes.string,
+      outer: PropTypes.string,
+    }),
+    left: PropTypes.node,
+    right: PropTypes.node,
     textColor: PropTypes.string,
   }
 
@@ -24,7 +31,10 @@ class AppBar extends PureComponent {
     backgroundColor: '#fff',
     below: null,
     center: null,
-    classes: { inner: '', outer: '' },
+    classes: {
+      inner: '',
+      outer: '',
+    },
     left: null,
     right: null,
     textColor: '#000',
@@ -53,19 +63,16 @@ class AppBar extends PureComponent {
     const {
       below, center, left, right, classes,
     } = this.props;
+    const sectionClasses = classnames(styles.outer, classes.outer);
 
     return (
-      <section
-        className={classnames(styles.outer, classes.outer)}
-        data-test-id="Navigator"
-        style={this.style}
-      >
+      <section className={sectionClasses} data-test-id="Navigator" style={this.style}>
         <div className={classnames(styles.inner, classes.inner)}>
-          {left}
-          {center}
-          {right}
+          <Left elements={left} />
+          <Center elements={center} />
+          <Right elements={right} />
         </div>
-        {below}
+        <Below elements={below} />
       </section>
     );
   }

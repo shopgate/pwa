@@ -1,29 +1,23 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
 import { APP_BAR_SIMPLE } from '@shopgate/pwa-common/constants/Portals';
 import DefaultBar from '../DefaultBar';
 
 /**
- * The SimpleBar component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class SimpleBar extends PureComponent {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-  };
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { title } = this.props;
-
-    return (
-      <Portal name={APP_BAR_SIMPLE}>
-        <DefaultBar title={title} right={null} />
-      </Portal>
-    );
-  }
+function SimpleBar({ title }) {
+  return (
+    <Portal name={APP_BAR_SIMPLE}>
+      <DefaultBar title={title} right={null} />
+    </Portal>
+  );
 }
+
+SimpleBar.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default SimpleBar;
