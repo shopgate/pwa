@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LiveshoppingDiscount /> should not render the widget without any data 1`] = `
+<LiveshoppingDiscount
+  discount={50}
+  productId="12345"
+>
+  <Portal
+    name="product-item.discount.before"
+    props={
+      Object {
+        "productId": "12345",
+      }
+    }
+  />
+  <Portal
+    name="product-item.discount"
+    props={
+      Object {
+        "productId": "12345",
+      }
+    }
+  >
+    <DiscountBadge
+      className="css-1mk9z3i"
+      discount={50}
+      display="big"
+      text="liveshopping.discount_badge"
+    >
+      <div
+        data-test-id="liveshopping.discount_badge"
+      >
+        <Translate
+          className="css-d38bpv css-1mk9z3i"
+          params={
+            Array [
+              50,
+            ]
+          }
+          string="liveshopping.discount_badge"
+        >
+          <span
+            className="css-d38bpv css-1mk9z3i"
+          >
+            liveshopping.discount_badge
+          </span>
+        </Translate>
+      </div>
+    </DiscountBadge>
+  </Portal>
+  <Portal
+    name="product-item.discount.after"
+    props={
+      Object {
+        "productId": "12345",
+      }
+    }
+  />
+</LiveshoppingDiscount>
+`;
