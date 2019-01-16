@@ -3,22 +3,7 @@ import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import { Portal } from '@shopgate/pwa-common/components';
-import {
-  APP_BAR_LEFT,
-  APP_BAR_LEFT_BEFORE,
-  APP_BAR_LEFT_AFTER,
-  APP_BAR_CENTER,
-  APP_BAR_CENTER_BEFORE,
-  APP_BAR_CENTER_AFTER,
-  APP_BAR_RIGHT,
-  APP_BAR_RIGHT_BEFORE,
-  APP_BAR_RIGHT_AFTER,
-  APP_BAR_BELOW,
-  APP_BAR_BELOW_BEFORE,
-  APP_BAR_BELOW_AFTER,
-  APP_BAR_DEFAULT,
-
-} from '@shopgate/pwa-common/constants/Portals';
+import { APP_BAR_DEFAULT } from '@shopgate/pwa-common/constants/Portals';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
@@ -46,46 +31,20 @@ class AppBarDefault extends PureComponent {
    */
   render() {
     const { __ } = this.context.i18n();
+    const title = __(this.props.title || '');
 
-    const left = (
-      <Fragment key="left">
-        <Portal name={APP_BAR_LEFT_BEFORE} />
-        <Portal name={APP_BAR_LEFT}>
-          <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />
-        </Portal>
-        <Portal name={APP_BAR_LEFT_AFTER} />
-      </Fragment>
-    );
-
-    const center = (
-      <Fragment key="center">
-        <Portal name={APP_BAR_CENTER_BEFORE} />
-        <Portal name={APP_BAR_CENTER}>
-          <AppBar.Title title={__(this.props.title || '')} />
-        </Portal>
-        <Portal name={APP_BAR_CENTER_AFTER} />
-      </Fragment>
-    );
-
+    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />;
+    const center = <AppBar.Title title={title} />;
     const right = (
-      <Fragment key="right">
-        <Portal name={APP_BAR_RIGHT_BEFORE} />
-        <Portal name={APP_BAR_RIGHT}>
-          <SearchButton />
-          <CartButton />
-        </Portal>
-        <Portal name={APP_BAR_RIGHT_AFTER} />
+      <Fragment>
+        <SearchButton />
+        <CartButton />
       </Fragment>
     );
-
     const below = (
-      <Fragment key="below">
-        <Portal name={APP_BAR_BELOW_BEFORE} />
-        <Portal name={APP_BAR_BELOW}>
-          {this.props.below}
-          <ProgressBar />
-        </Portal>
-        <Portal name={APP_BAR_BELOW_AFTER} />
+      <Fragment>
+        {this.props.below}
+        <ProgressBar />
       </Fragment>
     );
 
