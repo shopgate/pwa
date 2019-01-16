@@ -8,10 +8,10 @@ import { checkoutSucceeded$ } from '../streams';
 import { getCartProducts } from '../../cart/selectors';
 
 /**
- * Cart subscriptions.
+ * Checkout subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function cart(subscribe) {
+const checkout = (subscribe) => {
   /**
    * Gets triggered when the app starts.
    */
@@ -31,4 +31,6 @@ export default function cart(subscribe) {
     dispatch(expireProductsById(getCartProducts(getState())
       .map(cartProduct => (cartProduct.product.id))));
   });
-}
+};
+
+export default checkout;
