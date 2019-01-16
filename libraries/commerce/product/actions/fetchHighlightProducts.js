@@ -13,7 +13,7 @@ const fetchHighlightProducts = ({ params, id = null }) => (dispatch) => {
     pipeline: pipelines.SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS,
     params,
     id,
-    includeSort: false,
+    includeSort: true,
     includeFilters: false,
   }));
 };
