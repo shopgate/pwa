@@ -144,7 +144,7 @@ class ImageSlider extends Component {
               },
             }}
           >
-            <div>{content}</div>
+            <div data-test-id={`product: ${product ? product.name : ''}`}>{content}</div>
           </Hammer>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />
