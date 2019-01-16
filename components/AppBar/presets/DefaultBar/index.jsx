@@ -24,7 +24,6 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
-    visible: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -32,7 +31,6 @@ class AppBarDefault extends PureComponent {
   static defaultProps = {
     title: null,
     below: null,
-
   };
 
   static contextTypes = {
@@ -45,10 +43,6 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.visible) {
-      return null;
-    }
-
     const { title } = this.props;
     const { __ } = this.context.i18n();
     const left = (
