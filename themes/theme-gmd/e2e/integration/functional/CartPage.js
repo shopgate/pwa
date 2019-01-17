@@ -1,6 +1,5 @@
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
-import { checkForWrongCoupon } from '../../helper/coupon';
 
 describe('functional tests cart page', () => {
   it.skip('check for increase / decrease quanitity', () => {
@@ -60,31 +59,6 @@ describe('functional tests cart page', () => {
     cy.get(els.cartButtonProductPage)
       .last()
       .click();
-  });
-
-  it('should check for wrong coupon', () => {
-    cy.get(els.couponFieldInput)
-      .type('wrongCoupon {enter}');
-    checkForWrongCoupon();
-  });
-
-  it('should check for right coupon', () => {
-    cy.get(els.couponFieldInput)
-      .clear()
-      .type('test1');
-    cy.get(els.couponSubmitButton)
-      .click();
-    cy.get(els.basicDialogOkButton)
-      .click();
-    cy.get('[data-test-id="subTotal: 84"]')
-      .should('be.visible');
-  });
-
-  it('should delete coupon from cart', () => {
-    cy.get(els.deleteCouponButton)
-      .click();
-    cy.get(els.deleteCouponButton)
-      .should('not.exist');
   });
 
   it('should check for products with variants', () => {
