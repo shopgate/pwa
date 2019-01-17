@@ -112,7 +112,11 @@ release:
 		$(call build-npm-packages)
 		$(call publish-npm-packages)
 		$(call make, publish-to-github)
-		$(call create-github-releases)
+ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
+		$(call create-github-releases,master)
+else
+		$(call create-github-releases,releases/$(RELEASE_NAME))
+endif
 		$(call finalize-release)
 
 
@@ -153,6 +157,10 @@ e2e-checkout:
 
 e2e-user:
 		cd themes/theme-gmd && yarn run e2e:user;
+
+e2e-install:
+		npm i --no-save --no-package-lock cypress@3.1.1;
+
 
 
 
@@ -215,9 +223,9 @@ endef
 # Changes all the version numbers using lerna
 define update-pwa-versions
 		@echo "======================================================================"
-		@echo "| Updating pwa versions to '$(RELEASE_VERSION))'"
+		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
-		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact;
+		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME))) --force-publish --yes --exact;
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
