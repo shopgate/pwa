@@ -208,7 +208,7 @@ class InfiniteContainer extends Component {
     /**
      * When items are cached, the initial limit can be "6".
      * Then, new offset should be limited to the "normal" limit (30).
-     * Otherwise, with cached items, this component would skip the inital number of items
+     * Otherwise, with cached items, this component would skip the initial number of items
      * when the cache is out.
      */
     if (start % this.props.limit) {
@@ -228,6 +228,9 @@ class InfiniteContainer extends Component {
       offset: [0, this.props.limit],
       awaitingItems: true,
     });
+
+    this.unbindEvents();
+    this.bindEvents();
   }
 
   /**
