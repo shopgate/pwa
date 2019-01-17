@@ -337,6 +337,7 @@ ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		$(call push-subtrees-to-git, master)
 		git merge origin/master
 		git push origin "releases/$(RELEASE_NAME)"
+		git push origin "releases/$(RELEASE_NAME)":$(RELEASE_NAME);
 		git push origin "releases/$(RELEASE_NAME)":master;
 else
 		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
