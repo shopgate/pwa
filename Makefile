@@ -112,7 +112,7 @@ release:
 		$(call build-npm-packages)
 		$(call publish-npm-packages)
 		$(call make, publish-to-github)
-ifeq ("$(STABLE)","true")
+ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		$(call create-github-releases,master)
 else
 		$(call create-github-releases,releases/$(RELEASE_NAME))
