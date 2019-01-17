@@ -339,6 +339,12 @@ ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		git push origin "releases/$(RELEASE_NAME)"
 		git push origin "releases/$(RELEASE_NAME)":"refs/heads/$(RELEASE_NAME)";
 		git push origin "releases/$(RELEASE_NAME)":master;
+		git status;
+		git checkout develop && git pull;
+		git merge "releases/$(RELEASE_NAME)" --no-commit;
+		git status
+		git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
+		git push origin develop;
 else
 		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
