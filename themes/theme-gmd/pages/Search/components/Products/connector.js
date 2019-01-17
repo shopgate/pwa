@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
+import getProducts from './actions/getProducts';
 
 /**
  * Maps the contents of the state to the component props.
@@ -13,12 +13,14 @@ const mapStateToProps = (state, props) => ({
   ...getProductsResult(state, props),
 });
 
-const mapDispatchToProps = {
-  getProducts: (searchPhrase, offset) => fetchSearchResults({
-    searchPhrase,
-    offset,
-  }),
-};
+/**
+ * Connects the dispatch function to a callable function in the props.
+ * @param {Function} dispatch The redux dispatch function.
+ * @return {Object} The extended component props.
+ */
+const mapDispatchToProps = dispatch => ({
+  getProducts: (categoryId, sort, offset) => dispatch(getProducts(categoryId, sort, offset)),
+});
 
 /**
  * Check to see if the categories have arrived.

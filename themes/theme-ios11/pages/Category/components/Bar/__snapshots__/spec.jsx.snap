@@ -489,18 +489,48 @@ exports[`<Bar /> should match snapshot 1`] = `
                     }
                   >
                     <Consumer>
-                      <Connect(FilterChips)
-                        filters={null}
-                        routeId=""
+                      <Consume
+                        context={
+                          Object {
+                            "$$typeof": Symbol(react.context),
+                            "Consumer": Object {
+                              "$$typeof": Symbol(react.context),
+                              "_calculateChangedBits": null,
+                              "_context": [Circular],
+                            },
+                            "Provider": Object {
+                              "$$typeof": Symbol(react.provider),
+                              "_context": [Circular],
+                            },
+                            "_calculateChangedBits": null,
+                            "_currentRenderer": null,
+                            "_currentRenderer2": null,
+                            "_currentValue": undefined,
+                            "_currentValue2": undefined,
+                            "_threadCount": 0,
+                          }
+                        }
+                        props={
+                          Object {
+                            "scrollTop": "scrollTop",
+                          }
+                        }
                       >
-                        <FilterChips
-                          currentPathname="/"
+                        <Connect(FilterChips)
                           filters={null}
-                          openFilters={[Function]}
                           routeId=""
-                          updateFilters={[Function]}
-                        />
-                      </Connect(FilterChips)>
+                          scrollTop={null}
+                        >
+                          <FilterChips
+                            currentPathname="/"
+                            filters={null}
+                            openFilters={[Function]}
+                            routeId=""
+                            scrollTop={null}
+                            updateFilters={[Function]}
+                          />
+                        </Connect(FilterChips)>
+                      </Consume>
                     </Consumer>
                   </Consume>
                 </FilterBarContent>
