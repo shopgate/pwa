@@ -834,8 +834,3 @@ export const getCurrentProductStock = getProductStock;
 export const getProductStockInfo = getProductStock;
 export const getProductBasePrice = getProductUnitPrice;
 export const isOrderable = isProductOrderable;
-
-/**
- * Selector mapping for PWA < 6.1.0
- */
-export const getProductPrice = getProductPriceData;
