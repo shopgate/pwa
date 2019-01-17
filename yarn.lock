@@ -133,6 +133,11 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@shopgate/pwa-benchmark@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-benchmark/-/pwa-benchmark-6.0.0.tgz#8afa2da124144fb5fb01466bc20b2e3d02e59fc8"
+  integrity sha512-SygbkiZEn6V23DHGLW0YBg34KecMcLG51jxkT/Y3sOCdwWo6e+Mq9ZC72VxQeIRhbA0de+1EJKrpYeimjcoF2w==
+
 "@shopgate/react-hammerjs@0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
@@ -144,6 +149,30 @@
   version "10.12.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.14.tgz#c03b6380c5c301be0499ecd143b99b76ebe45678"
   integrity sha512-0rVcFRhM93kRGAU88ASCjX9Y3FWDCh+33G5Z5evpKOea4xcpLqDGwmo64+DjgaSezTN5j9KdnUzvxhOw7fNciQ==
+
+"@virtuous/conductor-events@1.0.0", "@virtuous/conductor-events@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0.tgz#3e0229fb3aa0c012f7512bd38bb3128ca857b8af"
+  integrity sha512-i6xjVa8kG6b38VORS++OOSuAPOddK5vMBviPhMIcBRBwrF6u4w0y7fjvJVWwkV3BvS9TmvBiqFpv++krIs10qw==
+  dependencies:
+    "@virtuous/conductor" "1.0.0"
+
+"@virtuous/conductor-helpers@1.0.0", "@virtuous/conductor-helpers@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0.tgz#253fd35ee2f4ce4cd709a32bf2ff0a89623accb0"
+  integrity sha512-vxW7kns1vBT0u47y00QWPBvGI/XcVrTOF0A6LChsS5JQWKaB9OQalCT0WT31K3cGb/Dub1gKVxmN2umdRqDw+Q==
+  dependencies:
+    "@virtuous/conductor" "1.0.0"
+
+"@virtuous/conductor@1.0.0", "@virtuous/conductor@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0.tgz#ae76b1e489e1c4ec8adc84956add6e28a839a137"
+  integrity sha512-g5N1a4ibOBFf7cg2lNMLyxyD2aHMrobp2qQv96YaDaA0RX/udlUeFZs++ptNOeCEX4oy6dB+51usRjCn9lsBIA==
+  dependencies:
+    history "^4.7.2"
+    path-match "^1.2.4"
+    query-string "^6.1.0"
+    url-pattern "^1.0.3"
 
 "@virtuous/conductor@2.0.5", "@virtuous/conductor@^2.0.5":
   version "2.0.5"
@@ -160,6 +189,16 @@
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
   integrity sha512-Pc0qQZhl4Kk06o0AY1Zm5Vfm+f5reSGkoxlNPkmiNvQPVzPed4FHqiNNipQ8vUJF4qMRnQQIwduWd1xH/4hzTg==
 
+"@virtuous/react-conductor@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0.tgz#7677b3bdfd973d7680dec18ba83adccbba2b7729"
+  integrity sha512-2v41gzUlF197MztE45mlduuKbWtSU9kNb47zf4y2uYzQb9BIDj7Niqfy7ns3xiYXC6z4s0k2KlvgNQJRz5/YhA==
+  dependencies:
+    "@virtuous/conductor" "1.0.0"
+    "@virtuous/conductor-events" "1.0.0"
+    "@virtuous/conductor-helpers" "1.0.0"
+    uuid "^3.1.0"
+
 "@virtuous/react-conductor@^2.0.5":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.0.5.tgz#7d22737778078066cfcf5301ab339f5d160d17c2"
@@ -167,6 +206,16 @@
   dependencies:
     "@virtuous/conductor" "2.0.5"
     react-spring "^6.1.4"
+
+"@virtuous/redux-conductor@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0.tgz#3157a6444ce97bd45918a42e6bddcdd4fbf5b56e"
+  integrity sha512-AkH+ajPZ9vROYlj6peoTRt2q0mYnpoOkKzGl11oFYPXjve2n45I9ZKMhmdY6RPAPInVKuMG7F7vuj01bY7FFyA==
+  dependencies:
+    "@virtuous/conductor" "1.0.0"
+    "@virtuous/conductor-events" "1.0.0"
+    "@virtuous/conductor-helpers" "1.0.0"
+    lodash "^4.17.11"
 
 "@virtuous/redux-persister@1.1.0-beta.7":
   version "1.1.0-beta.7"
@@ -5688,7 +5737,7 @@ lodash.throttle@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
-lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -8652,7 +8701,7 @@ uuid@^2.0.1:
   resolved "http://registry.npmjs.org/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
   integrity sha1-Z+LoY3lyFVMN/zGOW/nc6/1Hsho=
 
-uuid@^3.0.1, uuid@^3.3.2:
+uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
