@@ -8,6 +8,7 @@ import connect from './connector';
  */
 class CategoryProducts extends PureComponent {
   static propTypes = {
+    sort: PropTypes.string.isRequired,
     categoryId: PropTypes.string,
     getProducts: PropTypes.func,
     hash: PropTypes.string,
@@ -24,7 +25,11 @@ class CategoryProducts extends PureComponent {
   };
 
   fetchProducts = () => {
-    this.props.getProducts(this.props.categoryId, this.props.products.length);
+    this.props.getProducts(
+      this.props.categoryId,
+      this.props.sort,
+      this.props.products.length
+    );
   }
 
   /**
