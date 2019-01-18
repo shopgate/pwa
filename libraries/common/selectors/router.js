@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 
 /**
  * @param {Object} state The global state.
@@ -17,46 +16,64 @@ export const getRouterStack = createSelector(
 );
 
 /**
+ * @param {Object} state The application state.
+ * @returns {Object|null}
+ */
+export const getCurrentRoute = createSelector(
+  getRouterState,
+  (router) => {
+    if (!router || !router.currentRoute) {
+      return null;
+    }
+
+    return router.currentRoute;
+  }
+);
+
+/**
  * @param {Object} state The global state.
  * @returns {Object|null}
  */
-export const getCurrentParams = () => {
-  const route = getCurrentRoute();
+export const getCurrentParams = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.params) {
+      return null;
+    }
 
-  if (!route || !route.params) {
-    return null;
+    return route.params;
   }
-
-  return route.params;
-};
+);
 
 /**
  * @param {Object} state The global state.
  * @returns {string|null} The current history pathname.
  */
-export const getCurrentPathname = () => {
-  const route = getCurrentRoute();
+export const getCurrentPathname = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.pathname) {
+      return null;
+    }
 
-  if (!route || !route.pathname) {
-    return null;
+    return route.pathname;
   }
-
-  return route.pathname;
-};
+);
 
 /**
  * @param {Object} state The global state.
  * @returns {Object|null} The current history query.
  */
-export const getCurrentQuery = () => {
-  const route = getCurrentRoute();
+export const getCurrentQuery = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.query) {
+      return null;
+    }
 
-  if (!route || !route.query) {
-    return null;
+    return route.query;
   }
-
-  return route.query;
-};
+);
 
 /**
  * @param {Object} state The global state.
@@ -77,12 +94,13 @@ export const getCurrentSearchQuery = createSelector(
  * @param {Object} state The global state.
  * @returns {string|null} The current history entry state.
  */
-export const getCurrentState = () => {
-  const route = getCurrentRoute();
+export const getCurrentState = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.state) {
+      return null;
+    }
 
-  if (!route || !route.state) {
-    return null;
+    return route.state;
   }
-
-  return route.state;
-};
+);
