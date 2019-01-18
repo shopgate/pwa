@@ -15,12 +15,12 @@ const checkout = (subscribe) => {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ dispatch }) => {
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
     // Register for the app event that is triggered when the checkout process is finished
     registerEvents(['checkoutSuccess']);
 
     event.addCallback('checkoutSuccess', () => {
-      dispatch(successCheckout);
+      dispatch(successCheckout(getCartProducts(getState())));
     });
   });
 
