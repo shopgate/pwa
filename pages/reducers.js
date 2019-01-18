@@ -4,6 +4,7 @@ import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
 import page from '@shopgate/pwa-common/reducers/page';
+import router from '@shopgate/pwa-common/reducers/router';
 import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
@@ -25,6 +26,7 @@ persistReducers.set([
 ]);
 
 const reducers = combineReducers({
+  router,
   cart,
   category,
   client,
