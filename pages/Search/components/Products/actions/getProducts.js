@@ -8,7 +8,7 @@ import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fet
  * @return {Function} A redux thunk.
  */
 const getProducts = (searchPhrase, sort, offset) => (dispatch, getState) => {
-  const filters = getActiveFilters(getState(), {});
+  const filters = getActiveFilters(getState());
 
   dispatch(fetchSearchResults({
     searchPhrase,
