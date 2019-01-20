@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReturnPolicy /> should render as expected when the return policy is not supposed to be shown 1`] = `
+<Fragment>
+  <Portal
+    name="nav-menu.return-policy.before"
+    props={
+      Object {
+        "Headline": [Function],
+        "Item": [Function],
+        "Section": [Function],
+      }
+    }
+  />
+  <Portal
+    name="nav-menu.return-policy.after"
+    props={
+      Object {
+        "Headline": [Function],
+        "Item": [Function],
+        "Section": [Function],
+      }
+    }
+  />
+</Fragment>
+`;
+
+exports[`<ReturnPolicy /> should render as expected when the return policy is supposed to be shown 1`] = `
+<Fragment>
+  <Portal
+    name="nav-menu.return-policy.before"
+    props={
+      Object {
+        "Headline": [Function],
+        "Item": [Function],
+        "Section": [Function],
+      }
+    }
+  />
+  <Portal
+    name="nav-menu.return-policy"
+    props={
+      Object {
+        "Headline": [Function],
+        "Item": [Function],
+        "Section": [Function],
+      }
+    }
+  >
+    <MoreMenuItem
+      href="/page/return_policy"
+      label="navigation.return_policy"
+      onClick={null}
+      testId={null}
+    />
+  </Portal>
+  <Portal
+    name="nav-menu.return-policy.after"
+    props={
+      Object {
+        "Headline": [Function],
+        "Item": [Function],
+        "Section": [Function],
+      }
+    }
+  />
+</Fragment>
+`;

@@ -11,8 +11,7 @@ import pageStyles from '../../../../style';
  * @param {Object} context The consumed context.
  * @returns {JSX}
  */
-const LoggedIn = ({ logout }, context) => {
-  const { __ } = context.i18n();
+const LoggedIn = ({ logout }) => {
   const props = { Item };
   return (
     <Fragment>
@@ -20,7 +19,7 @@ const LoggedIn = ({ logout }, context) => {
       <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT} props={props}>
         <div data-test-id="userMenu">
           <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_HEADER} props={props}>
-            <Headline small text={__('navigation.your_account')} style={pageStyles.headline} />
+            <Headline small text="navigation.your_account" style={pageStyles.headline} />
           </Portal>
           <nav className={pageStyles.list}>
             <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
@@ -38,10 +37,6 @@ const LoggedIn = ({ logout }, context) => {
 
 LoggedIn.propTypes = {
   logout: PropTypes.func.isRequired,
-};
-
-LoggedIn.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default LoggedIn;
