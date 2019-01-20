@@ -5,14 +5,13 @@ import {
   NAV_MENU_SHIPPING_AFTER,
   NAV_MENU_SHIPPING_BEFORE,
 } from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import LocalShippingIcon from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { SHIPPING_PATH } from '../../../../constants';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.shipping';
-const SHIPPING_PATH = `${PAGE_PATH}/shipping`;
 
 /**
  * @param {Function} props.navigate The navigate action.

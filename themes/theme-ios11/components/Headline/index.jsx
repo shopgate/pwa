@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
 /**
@@ -8,7 +9,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Headline = ({ tag: Tag, style, text }) => (
-  text.length ? <Tag className={styles} style={style} data-test-id="Headline">{text}</Tag> : null
+  text.length ? <Tag className={styles} style={style} data-test-id="Headline"><I18n.Text string={text} /></Tag> : null
 );
 
 Headline.propTypes = {

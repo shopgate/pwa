@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { onlyUpdateForKeys } from 'recompose';
 import {
@@ -19,8 +19,7 @@ const enhance = onlyUpdateForKeys(['loggedIn']);
  */
 const LogoutButton = ({ loggedIn, logout }) => (
   loggedIn && (
-    <Fragment>
-      <NavDrawer.Divider />
+    <NavDrawer.Section dividerTop>
       <Portal name={NAV_MENU_LOGOUT_BEFORE} props={portalProps} />
       <Portal name={NAV_MENU_LOGOUT} props={portalProps}>
         <NavDrawer.Item
@@ -31,7 +30,7 @@ const LogoutButton = ({ loggedIn, logout }) => (
         />
       </Portal>
       <Portal name={NAV_MENU_LOGOUT_AFTER} props={portalProps} />
-    </Fragment>
+    </NavDrawer.Section>
   )
 );
 
