@@ -5,14 +5,13 @@ import {
   NAV_MENU_PRIVACY_AFTER,
   NAV_MENU_PRIVACY_BEFORE,
 } from '@shopgate/pwa-common/constants/Portals';
-import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { PRIVACY_PATH } from '../../../../constants';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.privacy';
-const PRIVACY_PATH = `${PAGE_PATH}/privacy`;
 
 /**
  * @param {Function} props.navigate The navigate action.
