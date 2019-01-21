@@ -21,11 +21,11 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
-  const center = (pageId === PAGE_ID_INDEX) ? (
-    <Logo key="center" />
-  ) : (
-    <AppBar.Title key="center" title={configs.title} />
-  );
+  let center = <Logo key="center" />;
+
+  if (pageId !== PAGE_ID_INDEX) {
+    center = <AppBar.Title key="center" title={configs.title || ''} />;
+  }
 
   return (
     <Fragment>
