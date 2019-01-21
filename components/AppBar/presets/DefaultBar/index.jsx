@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import { Portal } from '@shopgate/pwa-common/components';
-import { APP_BAR_DEFAULT } from '@shopgate/pwa-common/constants/Portals';
+import {
+  APP_BAR_DEFAULT_BEFORE,
+  APP_BAR_DEFAULT,
+  APP_BAR_DEFAULT_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
@@ -49,9 +53,13 @@ class AppBarDefault extends PureComponent {
     );
 
     return (
-      <Portal name={APP_BAR_DEFAULT}>
-        <AppBar left={left} center={center} right={right} {...this.props} below={below} />
-      </Portal>
+      <Fragment>
+        <Portal name={APP_BAR_DEFAULT_BEFORE} />
+        <Portal name={APP_BAR_DEFAULT}>
+          <AppBar left={left} center={center} right={right} {...this.props} below={below} />
+        </Portal>
+        <Portal name={APP_BAR_DEFAULT_AFTER} />
+      </Fragment>
     );
   }
 }
