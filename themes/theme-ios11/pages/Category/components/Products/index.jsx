@@ -17,14 +17,17 @@ class CategoryProducts extends PureComponent {
 
   static defaultProps = {
     categoryId: null,
-    getProducts() {},
+    getProducts() { },
     hash: null,
     products: null,
     totalProductCount: null,
   };
 
-  fetchProducts = () => {
-    this.props.getProducts(this.props.categoryId, this.props.products.length);
+  /**
+   * @param {number} offset The offset to start with.
+   */
+  fetchProducts = (offset) => {
+    this.props.getProducts(this.props.categoryId, offset || this.props.products.length);
   }
 
   /**

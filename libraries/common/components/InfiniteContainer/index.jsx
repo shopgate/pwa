@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import isEqual from 'lodash/isEqual';
+import { router } from '@virtuous/conductor';
+import { RouteContext } from '../../context';
 import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
 
 /**
@@ -10,6 +12,8 @@ import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
  * (parent) scroll container.
  */
 class InfiniteContainer extends Component {
+  static contextType = RouteContext;
+
   static propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     iterator: PropTypes.func.isRequired,
@@ -41,9 +45,10 @@ class InfiniteContainer extends Component {
   /**
    * The component constructor.
    * @param {Object} props The component props.
+   * @param {Object} context The component context.
    */
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.domElement = null;
     this.domScrollContainer = null;
@@ -60,7 +65,7 @@ class InfiniteContainer extends Component {
     const currentOffset = items.length ? initialLimit : limit;
 
     this.state = {
-      offset: [0, currentOffset],
+      offset: [context.state.offset || 0, currentOffset],
       // A state flag that will be true as long as we await more items.
       // The loading indicator will be shown accordingly.
       awaitingItems: true,
@@ -136,6 +141,9 @@ class InfiniteContainer extends Component {
    * When the component will unmount it unbinds all previously bound event listeners.
    */
   componentWillUnmount() {
+    router.update(this.context.id, {
+      offset: this.state.offset[0],
+    }, false);
     this.unbindEvents();
   }
 

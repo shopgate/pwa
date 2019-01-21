@@ -764,7 +764,7 @@ export const getResultHash = createSelector(
  * @returns {Object} The result.
  */
 export const getResultByHash = createSelector(
-  state => state.product,
+  getProductState,
   getResultHash,
   (productState, hash) => {
     const results = productState.resultsByHash[hash];
