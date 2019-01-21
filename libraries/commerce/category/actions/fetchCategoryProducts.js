@@ -17,8 +17,8 @@ const fetchCategoryProducts = ({
   limit = ITEMS_PER_LOAD,
   sort,
 }) =>
-  (dispatch) => {
-    const sortOrder = sort || getSortOrder({});
+  (dispatch, getState) => {
+    const sortOrder = sort || getSortOrder(getState());
 
     dispatch(fetchProducts({
       params: {

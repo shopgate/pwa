@@ -1,4 +1,5 @@
-import { ROUTE_DID_ENTER } from '../../constants/ActionTypes';
+import cloneDeep from 'lodash/cloneDeep';
+import { ROUTE_WILL_ENTER, ROUTE_DID_UPDATE } from '../../constants/ActionTypes';
 
 const defaultState = {
   currentRoute: null,
@@ -11,11 +12,24 @@ const defaultState = {
  */
 export default function router(state = defaultState, action) {
   switch (action.type) {
-    case ROUTE_DID_ENTER:
+    case ROUTE_WILL_ENTER:
       return {
         ...state,
-        currentRoute: action.route,
+        currentRoute: cloneDeep(action.route),
       };
+    case ROUTE_DID_UPDATE: {
+      const { id: currentId } = state.currentRoute || {};
+      const { id: updatedId } = action.route;
+
+      if (currentId === updatedId) {
+        return {
+          ...state,
+          currentRoute: cloneDeep(action.route),
+        };
+      }
+
+      return state;
+    }
     default:
       return state;
   }

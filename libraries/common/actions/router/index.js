@@ -7,6 +7,7 @@ export * from './routeDidPop';
 export * from './routeDidPush';
 export * from './routeDidReplace';
 export * from './routeDidReset';
+export * from './routeDidUpdate';
 export * from './routeWillPop';
 export * from './routeWillPush';
 export * from './routeWillReplace';
