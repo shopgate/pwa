@@ -2,7 +2,11 @@ import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
-import { APP_BAR_DEFAULT } from '@shopgate/pwa-common/constants/Portals';
+import {
+  APP_BAR_DEFAULT_BEFORE,
+  APP_BAR_DEFAULT,
+  APP_BAR_DEFAULT_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import ProgressBar from './components/ProgressBar';
 
@@ -41,9 +45,13 @@ class AppBarDefault extends PureComponent {
     );
 
     return ReactDOM.createPortal(
-      <Portal name={APP_BAR_DEFAULT}>
-        <AppBar center={center} {...this.props} below={below} />
-      </Portal>,
+      <Fragment>
+        <Portal name={APP_BAR_DEFAULT_BEFORE} />
+        <Portal name={APP_BAR_DEFAULT}>
+          <AppBar center={center} {...this.props} below={below} />
+        </Portal>
+        <Portal name={APP_BAR_DEFAULT_AFTER} />
+      </Fragment>,
       this.target
     );
   }
