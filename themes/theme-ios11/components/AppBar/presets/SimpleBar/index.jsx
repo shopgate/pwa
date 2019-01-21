@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
-import { APP_BAR_SIMPLE } from '@shopgate/pwa-common/constants/Portals';
+import {
+  APP_BAR_SIMPLE_BEFORE,
+  APP_BAR_SIMPLE,
+  APP_BAR_SIMPLE_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import DefaultBar from '../DefaultBar';
 
 /**
@@ -10,9 +14,13 @@ import DefaultBar from '../DefaultBar';
  */
 function SimpleBar({ title }) {
   return (
-    <Portal name={APP_BAR_SIMPLE}>
-      <DefaultBar title={title} right={null} />
-    </Portal>
+    <Fragment>
+      <Portal name={APP_BAR_SIMPLE_BEFORE} />
+      <Portal name={APP_BAR_SIMPLE}>
+        <DefaultBar title={title} right={null} />
+      </Portal>
+      <Portal name={APP_BAR_SIMPLE_AFTER} />
+    </Fragment>
   );
 }
 

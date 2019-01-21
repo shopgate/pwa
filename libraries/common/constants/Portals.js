@@ -99,10 +99,21 @@ export const USER_MENU_CONTAINER_BEFORE = `${USER_MENU}.${CONTAINER}.${BEFORE}`;
 export const USER_MENU_CONTAINER = `${USER_MENU}.${CONTAINER}`;
 export const USER_MENU_CONTAINER_AFTER = `${USER_MENU}.${CONTAINER}.${AFTER}`;
 
+export const APP_BAR_DEFAULT_BEFORE = `${APP_BAR}.${DEFAULT}.${BEFORE}`;
 export const APP_BAR_DEFAULT = `${APP_BAR}.${DEFAULT}`;
+export const APP_BAR_DEFAULT_AFTER = `${APP_BAR}.${DEFAULT}.${AFTER}`;
+
+export const APP_BAR_BACK_BEFORE = `${APP_BAR}.${BACK}.${BEFORE}`;
 export const APP_BAR_BACK = `${APP_BAR}.${BACK}`;
+export const APP_BAR_BACK_AFTER = `${APP_BAR}.${BACK}.${AFTER}`;
+
+export const APP_BAR_CLOSE_BEFORE = `${APP_BAR}.${CLOSE}.${BEFORE}`;
 export const APP_BAR_CLOSE = `${APP_BAR}.${CLOSE}`;
+export const APP_BAR_CLOSE_AFTER = `${APP_BAR}.${CLOSE}.${AFTER}`;
+
+export const APP_BAR_SIMPLE_BEFORE = `${APP_BAR}.${SIMPLE}.${BEFORE}`;
 export const APP_BAR_SIMPLE = `${APP_BAR}.${SIMPLE}`;
+export const APP_BAR_SIMPLE_AFTER = `${APP_BAR}.${SIMPLE}.${AFTER}`;
 
 export const APP_BAR_LEFT = `${APP_BAR}.${LEFT}`;
 export const APP_BAR_LEFT_BEFORE = `${APP_BAR}.${LEFT}.${BEFORE}`;
