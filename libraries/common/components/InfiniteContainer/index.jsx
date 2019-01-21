@@ -63,9 +63,10 @@ class InfiniteContainer extends Component {
     // Determine the initial offset of items.
     const { items, limit, initialLimit } = props;
     const currentOffset = items.length ? initialLimit : limit;
+    const { state: { offset = 0 } = {} } = context || {};
 
     this.state = {
-      offset: [context.state.offset || 0, currentOffset],
+      offset: [offset, currentOffset],
       // A state flag that will be true as long as we await more items.
       // The loading indicator will be shown accordingly.
       awaitingItems: true,
