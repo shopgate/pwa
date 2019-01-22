@@ -25,7 +25,7 @@ NavDrawerSectionWrapper.propTypes = {
 NavDrawerSectionWrapper.defaultProps = {
   children: null,
   dividerBottom: false,
-  dividerTop: false,
+  dividerTop: true,
   title: '',
 };
 

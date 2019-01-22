@@ -10,7 +10,7 @@ import CartButton from './components/CartButton';
  * @return {JSX}
  */
 const MainSection = () => (
-  <NavDrawer.Section>
+  <NavDrawer.Section dividerTop={false}>
     <HomeButton />
     <CategoryButton />
     {appConfig.hasFavorites && <FavoritesButton />}
