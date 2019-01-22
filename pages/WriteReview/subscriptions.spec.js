@@ -1,4 +1,4 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import requestSubmitReview from '@shopgate/pwa-common-commerce/reviews/action-creators/requestSubmitReview';
@@ -7,7 +7,7 @@ import reducers from '../reducers';
 
 const store = createMockStore(reducers, subscriber);
 
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: jest.fn(),
 }));
 

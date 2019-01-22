@@ -14,7 +14,7 @@ jest.mock('@shopgate/pwa-common-commerce/filter/actions/fetchFilters', () =>
 jest.mock('@shopgate/pwa-common-commerce/search/actions/fetchSearchResults', () =>
   jest.fn().mockReturnValue('fetchSearchResults'));
 
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: () => ({
     query: {
       s: 'Some search phrase',
@@ -26,6 +26,7 @@ jest.mock('@shopgate/pwa-common/helpers/router', () => ({
 describe('SearchPage subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn();
+  const getState = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -109,6 +110,7 @@ describe('SearchPage subscriptions', () => {
       callback({
         action,
         dispatch,
+        getState,
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
