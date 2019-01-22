@@ -22,10 +22,36 @@ describe('<NavDrawerSection />', () => {
     expect(wrapper.find(NavDrawerItem).prop('label')).toBe(itemLabel);
   });
 
-  it('should render without a title and dividers', () => {
+  it('should render without a title and one divider at the top', () => {
     const itemLabel = 'Item Label';
     const wrapper = shallow((
       <NavDrawerSection>
+        <NavDrawerItem label={itemLabel} />
+      </NavDrawerSection>
+    ));
+
+    expect(wrapper.find(NavDrawerDivider)).toHaveLength(1);
+    expect(wrapper.find(NavDrawerTitle).prop('text')).toBe('');
+    expect(wrapper.find(NavDrawerItem).prop('label')).toBe(itemLabel);
+  });
+
+  it('should render without a title and one divider at the top', () => {
+    const itemLabel = 'Item Label';
+    const wrapper = shallow((
+      <NavDrawerSection dividerTop={false} dividerBottom>
+        <NavDrawerItem label={itemLabel} />
+      </NavDrawerSection>
+    ));
+
+    expect(wrapper.find(NavDrawerDivider)).toHaveLength(1);
+    expect(wrapper.find(NavDrawerTitle).prop('text')).toBe('');
+    expect(wrapper.find(NavDrawerItem).prop('label')).toBe(itemLabel);
+  });
+
+  it('should render without a title and dividers', () => {
+    const itemLabel = 'Item Label';
+    const wrapper = shallow((
+      <NavDrawerSection dividerTop={false}>
         <NavDrawerItem label={itemLabel} />
       </NavDrawerSection>
     ));

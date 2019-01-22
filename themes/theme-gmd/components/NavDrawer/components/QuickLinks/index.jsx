@@ -9,7 +9,7 @@ import connect from './connector';
  */
 const QuickLinks = ({ links, navigate }) => (
   (links && links.length > 0) && (
-    <NavDrawer.Section dividerTop>
+    <NavDrawer.Section>
       {links.map(link => (
         <NavDrawer.Item
           key={link.url}

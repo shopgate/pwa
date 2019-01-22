@@ -37,7 +37,7 @@ NavDrawerSection.propTypes = {
 NavDrawerSection.defaultProps = {
   children: null,
   dividerBottom: false,
-  dividerTop: false,
+  dividerTop: true,
   title: '',
 };
 
