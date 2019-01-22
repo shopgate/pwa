@@ -22,6 +22,11 @@ const STORE_INFORMATION = 'store-information';
 const MY_ACCOUNT = 'my-account';
 const LOGOUT = 'logout';
 const CONTAINER = 'container';
+const DEFAULT = 'default';
+const BACK = 'back';
+const CLOSE = 'close';
+const SIMPLE = 'simple';
+const CART_BUTTON = 'cart-button';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -29,6 +34,7 @@ export const AFTER = 'after';
 export const LEFT = 'left';
 export const CENTER = 'center';
 export const RIGHT = 'right';
+export const BELOW = 'below';
 
 export const APP_GLOBALS = `${APP}.${GLOBALS}`;
 export const APP_ROUTES = `${APP}.${ROUTES}`;
@@ -93,6 +99,22 @@ export const USER_MENU_CONTAINER_BEFORE = `${USER_MENU}.${CONTAINER}.${BEFORE}`;
 export const USER_MENU_CONTAINER = `${USER_MENU}.${CONTAINER}`;
 export const USER_MENU_CONTAINER_AFTER = `${USER_MENU}.${CONTAINER}.${AFTER}`;
 
+export const APP_BAR_DEFAULT_BEFORE = `${APP_BAR}.${DEFAULT}.${BEFORE}`;
+export const APP_BAR_DEFAULT = `${APP_BAR}.${DEFAULT}`;
+export const APP_BAR_DEFAULT_AFTER = `${APP_BAR}.${DEFAULT}.${AFTER}`;
+
+export const APP_BAR_BACK_BEFORE = `${APP_BAR}.${BACK}.${BEFORE}`;
+export const APP_BAR_BACK = `${APP_BAR}.${BACK}`;
+export const APP_BAR_BACK_AFTER = `${APP_BAR}.${BACK}.${AFTER}`;
+
+export const APP_BAR_CLOSE_BEFORE = `${APP_BAR}.${CLOSE}.${BEFORE}`;
+export const APP_BAR_CLOSE = `${APP_BAR}.${CLOSE}`;
+export const APP_BAR_CLOSE_AFTER = `${APP_BAR}.${CLOSE}.${AFTER}`;
+
+export const APP_BAR_SIMPLE_BEFORE = `${APP_BAR}.${SIMPLE}.${BEFORE}`;
+export const APP_BAR_SIMPLE = `${APP_BAR}.${SIMPLE}`;
+export const APP_BAR_SIMPLE_AFTER = `${APP_BAR}.${SIMPLE}.${AFTER}`;
+
 export const APP_BAR_LEFT = `${APP_BAR}.${LEFT}`;
 export const APP_BAR_LEFT_BEFORE = `${APP_BAR}.${LEFT}.${BEFORE}`;
 export const APP_BAR_LEFT_AFTER = `${APP_BAR}.${LEFT}.${AFTER}`;
@@ -104,3 +126,11 @@ export const APP_BAR_CENTER_AFTER = `${APP_BAR}.${CENTER}.${AFTER}`;
 export const APP_BAR_RIGHT = `${APP_BAR}.${RIGHT}`;
 export const APP_BAR_RIGHT_BEFORE = `${APP_BAR}.${RIGHT}.${BEFORE}`;
 export const APP_BAR_RIGHT_AFTER = `${APP_BAR}.${RIGHT}.${AFTER}`;
+
+export const APP_BAR_BELOW = `${APP_BAR}.${BELOW}`;
+export const APP_BAR_BELOW_BEFORE = `${APP_BAR}.${BELOW}.${BEFORE}`;
+export const APP_BAR_BELOW_AFTER = `${APP_BAR}.${BELOW}.${AFTER}`;
+
+export const APP_BAR_CART_BUTTON = `${APP_BAR}.${CART_BUTTON}`;
+export const APP_BAR_CART_BUTTON_BEFORE = `${APP_BAR}.${CART_BUTTON}.${BEFORE}`;
+export const APP_BAR_CART_BUTTON_AFTER = `${APP_BAR}.${CART_BUTTON}.${AFTER}`;
