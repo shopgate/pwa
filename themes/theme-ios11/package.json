@@ -24,7 +24,7 @@
     "@shopgate/pwa-ui-shared": "6.0.1",
     "@shopgate/pwa-webcheckout-shopify": "6.0.1",
     "@shopgate/tracking-core": "6.0.1",
-    "@virtuous/conductor": "^2.0.5",
+    "@virtuous/conductor": "^2.0.7",
     "@virtuous/react-conductor": "^2.0.5",
     "babel-core": "^6.26.3",
     "babel-plugin-add-module-exports": "^0.2.1",
