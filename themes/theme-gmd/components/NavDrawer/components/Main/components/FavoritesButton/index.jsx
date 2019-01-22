@@ -10,8 +10,8 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import HeartIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import Badge from './components/Badge';
-import connect from '../../connector';
-import portalProps from '../../portalProps';
+import connect from '../../../../connector';
+import portalProps from '../../../../portalProps';
 
 const LABEL = 'navigation.favorites';
 
