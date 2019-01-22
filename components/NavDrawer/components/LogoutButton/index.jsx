@@ -19,7 +19,7 @@ const enhance = onlyUpdateForKeys(['loggedIn']);
  */
 const LogoutButton = ({ loggedIn, logout }) => (
   loggedIn && (
-    <NavDrawer.Section dividerTop>
+    <NavDrawer.Section>
       <Portal name={NAV_MENU_LOGOUT_BEFORE} props={portalProps} />
       <Portal name={NAV_MENU_LOGOUT} props={portalProps}>
         <NavDrawer.Item
