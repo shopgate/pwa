@@ -5,7 +5,7 @@ import { pwaDidAppear } from '../action-creators';
 import { blacklistedPatterns, pagesAreReady$ } from './pages';
 
 let mockedPattern;
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: () => ({
     pattern: mockedPattern,
   }),

@@ -1,5 +1,9 @@
 import cloneDeep from 'lodash/cloneDeep';
 
+export const mockedRouterState = {
+  currentRoute: null,
+};
+
 export const mockedProductMetadata = { some: 'product metadata' };
 export const mockedVariantProductMetadata = { some: 'variant product metadata' };
 export const mockedProductsById = {
@@ -320,6 +324,7 @@ export const mockedVariantsByProductId = {
 };
 
 export const mockedState = {
+  router: mockedRouterState,
   product: {
     productsById: mockedProductsById,
     shippingByProductId: mockedShippingByProductId,

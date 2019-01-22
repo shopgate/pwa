@@ -4,6 +4,7 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
 import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
 import { HISTORY_PUSH_ACTION, HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import router from '@shopgate/pwa-common/reducers/router';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import receiveProduct from '@shopgate/pwa-common-commerce/product/action-creators/receiveProduct';
 import { ITEM_PATTERN, ITEM_REVIEWS_PATTERN } from '../constants';
@@ -13,18 +14,6 @@ import {
   variantDidChange$,
 } from './index';
 
-let mockedRoutePattern;
-let mockedRouteProductId;
-
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
-  getCurrentRoute: () => ({
-    pattern: mockedRoutePattern,
-    params: {
-      productId: mockBin2Hex(mockedRouteProductId),
-    },
-  }),
-}));
-
 /**
  * Wrapper for the routeWillEnter action. It also sets up the mocked current route.
  * @param {string} pattern A route pattern.
@@ -32,24 +21,20 @@ jest.mock('@shopgate/pwa-common/helpers/router', () => ({
  * @param {string} productId A product id.
  * @return {Object}
  */
-const wrappedRouteWillEnter = (pattern, historyAction, productId = '') => {
-  mockedRoutePattern = pattern;
-  mockedRouteProductId = productId;
-
-  return routeWillEnter({
-    pattern,
-  }, historyAction);
-};
+const wrappedRouteWillEnter = (pattern, historyAction, productId = '') => routeWillEnter({
+  pattern,
+  params: {
+    productId: mockBin2Hex(productId),
+  },
+}, historyAction);
 
 describe('Product streams', () => {
   let store;
   let dispatch;
 
   beforeEach(() => {
-    store = createMockStore(combineReducers({ product }));
+    store = createMockStore(combineReducers({ product, router }));
     ({ dispatch } = store);
-    mockedRoutePattern = ITEM_PATTERN;
-    mockedRouteProductId = '';
   });
 
   describe('productReceived$', () => {

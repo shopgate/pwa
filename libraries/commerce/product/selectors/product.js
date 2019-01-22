@@ -14,10 +14,10 @@ import { filterProperties } from '../helpers';
  * @param {Object} state The application state.
  * @returns {string|null} The product id of the current route.
  */
-export const getProductIdFromRoute = getCurrentRoute(
+export const getProductIdFromRoute = createSelector(
   getCurrentRoute,
   (route) => {
-    if (!route.params || !route.params.productId) {
+    if (!route || !route.params || !route.params.productId) {
       return null;
     }
 
@@ -130,8 +130,12 @@ export const getProductById = createSelector(
  * @return {string|null} The id of the current product.
  */
 export const getProductId = (state, props) => {
+  if (!state) {
+    return null;
+  }
+
   if (!props) {
-    return getProductIdFromRoute();
+    return getProductIdFromRoute(state);
   }
 
   // Since a variantId can have falsy values, we need an "undefined" check here.
@@ -196,7 +200,7 @@ export const getProductName = createSelector(
   getCurrentRoute,
   getProduct,
   (route, product) => {
-    if (route.state.title) {
+    if (route && route.state && route.state.title) {
       return route.state.title;
     }
 
