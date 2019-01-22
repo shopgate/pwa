@@ -46,10 +46,10 @@ module.exports = {
       buttonVerticalGap: 24,
     },
     navbar: {
-      height: 56,
+      height: 44,
     },
     navigator: {
-      height: 56,
+      height: 44,
       shadow: materialShadow,
     },
     filterbar: {
