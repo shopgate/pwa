@@ -93,22 +93,34 @@ class InfiniteContainer extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
+    /**
+     * Downstream logic to process the props. It's wrapped into a separate function, since it might
+     * beed to be executed after the state was updated to avoid race conditions.
+     */
+    const finalize = () => {
+      const { current } = nextProps.containerRef;
+      if (!this.domScrollContainer && current) {
+        this.domScrollContainer = current;
+        this.bindEvents();
+      }
+
+      if (this.receivedTotalItems(nextProps)) {
+        // Trigger loading if totalItems are available
+        this.handleLoading(true, nextProps);
+      }
+
+      this.verifyAllDone(nextProps);
+    };
+
     if (nextProps.requestHash !== this.props.requestHash) {
-      this.resetComponent();
+      this.resetComponent(() => {
+        finalize();
+      });
+
+      return;
     }
 
-    const { current } = nextProps.containerRef;
-    if (!this.domScrollContainer && current) {
-      this.domScrollContainer = current;
-      this.bindEvents();
-    }
-
-    if (this.receivedTotalItems(nextProps)) {
-      // Trigger loading if totalItems are available
-      this.handleLoading(true, nextProps);
-    }
-
-    this.verifyAllDone(nextProps);
+    finalize();
   }
 
   /**
@@ -222,15 +234,18 @@ class InfiniteContainer extends Component {
 
   /**
    * Resets the state.
+   * @param {Function} callback A callback which is invoked after the state was updated.
+   *   This is necessary to avoid race conditions with downstream code.
    */
-  resetComponent() {
+  resetComponent(callback) {
     this.setState({
       offset: [0, this.props.limit],
       awaitingItems: true,
+    }, () => {
+      this.unbindEvents();
+      this.bindEvents();
+      callback();
     });
-
-    this.unbindEvents();
-    this.bindEvents();
   }
 
   /**

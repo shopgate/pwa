@@ -2,11 +2,11 @@ import { ACTION_UPDATE } from '@virtuous/conductor';
 import * as actions from '../../action-creators/router';
 
 /**
- * @param {Route} updated The updated route.
+ * @param {Route} route The updated route.
  * @returns {Function}
  */
-export function routeDidUpdate(updated) {
+export function routeDidUpdate(route) {
   return (dispatch) => {
-    dispatch(actions.routeDidUpdate(updated, ACTION_UPDATE));
+    dispatch(actions.routeDidUpdate(route, ACTION_UPDATE));
   };
 }

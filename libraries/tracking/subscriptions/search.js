@@ -12,7 +12,7 @@ export default function search(subscribe) {
     const state = getState();
 
     track('search', {
-      search: getTrackingData(state, getCurrentRoute(getState())),
+      search: getTrackingData(state, getCurrentRoute(state)),
     }, state);
   });
 }

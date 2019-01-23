@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @return {Object}
  */
 export const getRouterState = state => state.router;
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @return {Object}
  */
 export const getRouterStack = createSelector(
@@ -31,7 +31,7 @@ export const getCurrentRoute = createSelector(
 );
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {Object|null}
  */
 export const getCurrentParams = createSelector(
@@ -46,7 +46,7 @@ export const getCurrentParams = createSelector(
 );
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {string|null} The current history pathname.
  */
 export const getCurrentPathname = createSelector(
@@ -61,7 +61,7 @@ export const getCurrentPathname = createSelector(
 );
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {Object|null} The current history query.
  */
 export const getCurrentQuery = createSelector(
@@ -76,7 +76,7 @@ export const getCurrentQuery = createSelector(
 );
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {string|null} The current history search query.
  */
 export const getCurrentSearchQuery = createSelector(
@@ -91,7 +91,7 @@ export const getCurrentSearchQuery = createSelector(
 );
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {string|null} The current history entry state.
  */
 export const getCurrentState = createSelector(
