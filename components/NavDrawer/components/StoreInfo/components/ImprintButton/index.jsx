@@ -5,14 +5,13 @@ import {
   NAV_MENU_IMPRINT_AFTER,
   NAV_MENU_IMPRINT_BEFORE,
 } from '@shopgate/pwa-common/constants/Portals';
-import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { IMPRINT_PATH } from '../../../../constants';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.about';
-const PAYMENT_PATH = `${PAGE_PATH}/imprint`;
 
 /**
  * @param {Function} props.navigate The navigate action.
@@ -25,7 +24,7 @@ const ImprintButton = ({ navigate }) => (
       <NavDrawer.Item
         label={LABEL}
         icon={InfoIcon}
-        onClick={navigate(PAYMENT_PATH, LABEL)}
+        onClick={navigate(IMPRINT_PATH, LABEL)}
         testId="navDrawerImprintButton"
       />
     </Portal>
