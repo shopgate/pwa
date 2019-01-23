@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from './connector';
 
@@ -9,8 +9,7 @@ import connect from './connector';
  */
 const QuickLinks = ({ links, navigate }) => (
   (links && links.length > 0) && (
-    <Fragment>
-      <NavDrawer.Divider />
+    <NavDrawer.Section>
       {links.map(link => (
         <NavDrawer.Item
           key={link.url}
@@ -18,7 +17,7 @@ const QuickLinks = ({ links, navigate }) => (
           onClick={() => navigate(link.url, link.label)}
         />
       ))}
-    </Fragment>
+    </NavDrawer.Section>
   )
 );
 

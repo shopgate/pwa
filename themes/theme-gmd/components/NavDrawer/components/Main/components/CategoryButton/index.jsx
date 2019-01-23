@@ -9,8 +9,8 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import ViewListIcon from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import connect from '../../connector';
-import portalProps from '../../portalProps';
+import connect from '../../../../connector';
+import portalProps from '../../../../portalProps';
 
 const LABEL = 'navigation.categories';
 

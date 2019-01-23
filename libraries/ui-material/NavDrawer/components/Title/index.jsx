@@ -7,14 +7,24 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const NavigatorTitle = ({ title }) => (
-  <div className={styles}>
-    <I18n.Text string={title} />
-  </div>
-);
+const NavDrawerTitle = ({ text }) => {
+  if (!text.length) {
+    return null;
+  }
 
-NavigatorTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  return (
+    <div className={styles}>
+      <I18n.Text string={text} />
+    </div>
+  );
 };
 
-export default NavigatorTitle;
+NavDrawerTitle.propTypes = {
+  text: PropTypes.string,
+};
+
+NavDrawerTitle.defaultProps = {
+  text: '',
+};
+
+export default NavDrawerTitle;
