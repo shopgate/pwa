@@ -49,87 +49,101 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
         ]
       }
     >
-      <Headline
-        style={
-          Object {
-            "margin": "24px 20px 16px",
-          }
-        }
-        tag="h2"
-        text="navigation.more_menu"
+      <Section
+        title="navigation.more_menu"
       >
-        <h2
-          className="css-18cwfw7"
-          data-test-id="Headline"
+        <Headline
           style={
             Object {
               "margin": "24px 20px 16px",
             }
           }
+          tag="h2"
+          text="navigation.more_menu"
         >
-          navigation.more_menu
-        </h2>
-      </Headline>
-      <nav
-        className={
-          Object {
-            "data-css-13ch7sr": "",
+          <h2
+            className="css-18cwfw7"
+            data-test-id="Headline"
+            style={
+              Object {
+                "margin": "24px 20px 16px",
+              }
+            }
+          >
+            <Translate
+              className=""
+              params={Object {}}
+              string="navigation.more_menu"
+            >
+              <span
+                className=""
+              >
+                navigation.more_menu
+              </span>
+            </Translate>
+          </h2>
+        </Headline>
+        <div
+          className={
+            Object {
+              "data-css-13ch7sr": "",
+            }
           }
-        }
-      >
-        <MoreMenuItem
-          href="/some/url"
-          key="/some/url"
-          label="Some Label"
-          onClick={null}
-          testId={null}
         >
-          <Link
-            className="css-1czs3p1"
+          <MoreMenuItem
             href="/some/url"
+            key="/some/url"
+            label="Some Label"
+            onClick={null}
+            testId={null}
           >
-            <div>
-              <Translate
-                className=""
-                params={Object {}}
-                string="Some Label"
-              >
-                <span
+            <Link
+              className="css-1czs3p1"
+              href="/some/url"
+            >
+              <div>
+                <Translate
                   className=""
+                  params={Object {}}
+                  string="Some Label"
                 >
-                  Some Label
-                </span>
-              </Translate>
-            </div>
-          </Link>
-        </MoreMenuItem>
-        <MoreMenuItem
-          href="/another/url"
-          key="/another/url"
-          label="Another Label"
-          onClick={null}
-          testId={null}
-        >
-          <Link
-            className="css-1czs3p1"
+                  <span
+                    className=""
+                  >
+                    Some Label
+                  </span>
+                </Translate>
+              </div>
+            </Link>
+          </MoreMenuItem>
+          <MoreMenuItem
             href="/another/url"
+            key="/another/url"
+            label="Another Label"
+            onClick={null}
+            testId={null}
           >
-            <div>
-              <Translate
-                className=""
-                params={Object {}}
-                string="Another Label"
-              >
-                <span
+            <Link
+              className="css-1czs3p1"
+              href="/another/url"
+            >
+              <div>
+                <Translate
                   className=""
+                  params={Object {}}
+                  string="Another Label"
                 >
-                  Another Label
-                </span>
-              </Translate>
-            </div>
-          </Link>
-        </MoreMenuItem>
-      </nav>
+                  <span
+                    className=""
+                  >
+                    Another Label
+                  </span>
+                </Translate>
+              </div>
+            </Link>
+          </MoreMenuItem>
+        </div>
+      </Section>
     </Quicklinks>
   </Connect(Quicklinks)>
 </Provider>
