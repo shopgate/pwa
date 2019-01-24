@@ -91,6 +91,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           }
         >
           <MoreMenuItem
+            className={null}
             href="/some/url"
             key="/some/url"
             label="Some Label"
@@ -98,7 +99,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             testId={null}
           >
             <Link
-              className="css-1czs3p1"
+              className="css-1hj8a57"
               href="/some/url"
             >
               <div>
@@ -117,6 +118,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             </Link>
           </MoreMenuItem>
           <MoreMenuItem
+            className={null}
             href="/another/url"
             key="/another/url"
             label="Another Label"
@@ -124,7 +126,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             testId={null}
           >
             <Link
-              className="css-1czs3p1"
+              className="css-1hj8a57"
               href="/another/url"
             >
               <div>
