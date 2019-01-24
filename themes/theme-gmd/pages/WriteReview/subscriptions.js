@@ -7,7 +7,7 @@ import {
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchUserReview from '@shopgate/pwa-common-commerce/reviews/actions/fetchUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
@@ -34,16 +34,16 @@ export default function writeReview(subscribe) {
   /**
    * Get triggered when a review submit is requested.
    */
-  subscribe(requestReviewSubmit$, () => {
-    const { pathname } = getCurrentRoute();
+  subscribe(requestReviewSubmit$, ({ getState }) => {
+    const { pathname } = getCurrentRoute(getState());
     LoadingProvider.setLoading(pathname);
   });
 
   /**
    * Get triggered when a review submitted got a response.
    */
-  subscribe(responseReviewSubmit$, () => {
-    const { pathname } = getCurrentRoute();
+  subscribe(responseReviewSubmit$, ({ getState }) => {
+    const { pathname } = getCurrentRoute(getState());
     LoadingProvider.unsetLoading(pathname);
   });
 

@@ -19,7 +19,7 @@ import { categoryIsReady$ } from './category';
 let mockedRoutePattern;
 let mockedCategoryId;
 
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: () => ({
     pattern: mockedRoutePattern,
     params: {
@@ -27,6 +27,10 @@ jest.mock('@shopgate/pwa-common/helpers/router', () => ({
     },
     state: {},
   }),
+  getCurrentQuery: () => ({}),
+  getRouterStack: () => ({}),
+  getCurrentState: () => ({}),
+  getCurrentParams: () => ({}),
 }));
 
 /**

@@ -64,37 +64,6 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
           <div
             data-test-id="userMenu"
           >
-            <Portal
-              name="nav-menu.my-account.header"
-              props={
-                Object {
-                  "Item": [Function],
-                }
-              }
-            >
-              <Headline
-                small={true}
-                style={
-                  Object {
-                    "margin": "24px 20px 16px",
-                  }
-                }
-                tag="h2"
-                text="navigation.your_account"
-              >
-                <h2
-                  className="css-18cwfw7"
-                  data-test-id="Headline"
-                  style={
-                    Object {
-                      "margin": "24px 20px 16px",
-                    }
-                  }
-                >
-                  navigation.your_account
-                </h2>
-              </Headline>
-            </Portal>
             <nav
               className={
                 Object {
@@ -119,13 +88,14 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 }
               >
                 <MoreMenuItem
+                  className="css-1usb1k2"
                   href={null}
                   label="navigation.logout"
                   onClick={[MockFunction]}
                   testId="logoutButton"
                 >
                   <button
-                    className="css-1czs3p1"
+                    className="css-1usb1k2"
                     data-test-id="logoutButton"
                     onClick={[MockFunction]}
                   >

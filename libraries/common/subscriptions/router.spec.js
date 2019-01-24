@@ -5,7 +5,6 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
@@ -46,11 +45,12 @@ jest.mock('../actions/router', () => ({
 }));
 
 describe('Router subscriptions', () => {
-  const subscribe = jest.fn();
-  const dispatch = jest.fn();
-  const getState = jest.fn().mockReturnValue({});
   const protectedRoute = '/protected';
   const protectorRoute = '/login';
+  const mockedRouterState = { router: { currentRoute: { pathname: protectorRoute } } };
+  const subscribe = jest.fn();
+  const dispatch = jest.fn();
+  const getState = jest.fn().mockReturnValue(mockedRouterState);
 
   /**
    * @param {Object} action The action object for the callback payload.
@@ -71,7 +71,6 @@ describe('Router subscriptions', () => {
 
     // Setup a protected route
     authRoutes.set(protectedRoute, protectorRoute);
-    getCurrentRoute.mockReturnValue({ pathname: protectorRoute });
   });
 
   beforeEach(() => {
@@ -161,7 +160,10 @@ describe('Router subscriptions', () => {
     });
 
     it('should handle the ACTION_PUSH history action as expected', async () => {
-      getState.mockReturnValueOnce({ user: { login: { isLoggedIn: true } } });
+      getState.mockReturnValueOnce({
+        ...mockedRouterState,
+        user: { login: { isLoggedIn: true } },
+      });
 
       const params = {
         action: ACTION_PUSH,
@@ -213,7 +215,10 @@ describe('Router subscriptions', () => {
     });
 
     it('should redirect to a protector route when the user is not logged in', async () => {
-      getState.mockReturnValueOnce({ user: { login: { isLoggedIn: false } } });
+      getState.mockReturnValueOnce({
+        ...mockedRouterState,
+        user: { login: { isLoggedIn: false } },
+      });
 
       const params = {
         action: ACTION_PUSH,
@@ -236,7 +241,10 @@ describe('Router subscriptions', () => {
     });
 
     it('should not redirect to a protector route when the user is logged in', async () => {
-      getState.mockReturnValueOnce({ user: { login: { isLoggedIn: true } } });
+      getState.mockReturnValueOnce({
+        ...mockedRouterState,
+        user: { login: { isLoggedIn: true } },
+      });
 
       const params = {
         action: ACTION_PUSH,
@@ -337,10 +345,14 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       testExpectedCall(openExternalLinkSpy);
-      expect(openExternalLinkSpy).toHaveBeenCalledWith(params.pathname, params.action);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState
+      );
     });
 
-    it.only('should handle native links like expected', async () => {
+    it('should handle native links like expected', async () => {
       /**
        * Replace the implementation of handler.openNative link temporarily. It reassigns
        * window.location.href internally, which would cause a jest error.
@@ -365,7 +377,7 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       testExpectedCall(openLegacySpy);
-      expect(openLegacySpy).toHaveBeenCalledWith(params.pathname, params.action);
+      expect(openLegacySpy).toHaveBeenCalledWith(params.pathname, params.action, mockedRouterState);
     });
 
     it('should open a legacy link as expected', async () => {
@@ -376,7 +388,11 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       testExpectedCall(openLegacyLinkSpy);
-      expect(openLegacyLinkSpy).toHaveBeenCalledWith(params.pathname, params.action);
+      expect(openLegacyLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState
+      );
     });
   });
 
