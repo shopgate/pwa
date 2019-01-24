@@ -1,12 +1,8 @@
 import React from 'react';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import Header from './components/Header';
-import HomeButton from './components/HomeButton';
-import CategoryButton from './components/CategoryButton';
-import FavoritesButton from './components/FavoritesButton';
-import CartButton from './components/CartButton';
+import Main from './components/Main';
 import QuickLinks from './components/QuickLinks';
 import StoreInfo from './components/StoreInfo';
 import LogoutButton from './components/LogoutButton';
@@ -17,10 +13,7 @@ import LogoutButton from './components/LogoutButton';
 const NavDrawerContainer = () => (
   <NavDrawer>
     <Header />
-    <HomeButton />
-    <CategoryButton />
-    {appConfig.hasFavorites && <FavoritesButton />}
-    <CartButton />
+    <Main />
     <QuickLinks />
     <StoreInfo />
     <LogoutButton />
