@@ -5,14 +5,13 @@ import {
   NAV_MENU_PAYMENT_AFTER,
   NAV_MENU_PAYMENT_BEFORE,
 } from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { PAYMENT_PATH } from '../../../../constants';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.payment';
-const PAYMENT_PATH = `${PAGE_PATH}/payment`;
 
 /**
  * @param {Function} navigate The navigate action.
