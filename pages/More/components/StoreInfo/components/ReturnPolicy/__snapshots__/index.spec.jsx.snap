@@ -48,6 +48,7 @@ exports[`<ReturnPolicy /> should render as expected when the return policy is su
     }
   >
     <MoreMenuItem
+      className={null}
       href="/page/return_policy"
       label="navigation.return_policy"
       onClick={null}
