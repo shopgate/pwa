@@ -85,13 +85,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
             }
           >
             <MoreMenuItem
+              className={null}
               href="/page/shipping"
               label="navigation.shipping"
               onClick={null}
               testId={null}
             >
               <Link
-                className="css-1czs3p1"
+                className="css-1hj8a57"
                 href="/page/shipping"
               >
                 <div>
@@ -143,13 +144,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
             }
           >
             <MoreMenuItem
+              className={null}
               href="/page/payment"
               label="navigation.payment"
               onClick={null}
               testId={null}
             >
               <Link
-                className="css-1czs3p1"
+                className="css-1hj8a57"
                 href="/page/payment"
               >
                 <div>
@@ -201,13 +203,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
             }
           >
             <MoreMenuItem
+              className={null}
               href="/page/terms"
               label="navigation.terms"
               onClick={null}
               testId={null}
             >
               <Link
-                className="css-1czs3p1"
+                className="css-1hj8a57"
                 href="/page/terms"
               >
                 <div>
@@ -259,13 +262,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
             }
           >
             <MoreMenuItem
+              className={null}
               href="/page/privacy"
               label="navigation.privacy"
               onClick={null}
               testId={null}
             >
               <Link
-                className="css-1czs3p1"
+                className="css-1hj8a57"
                 href="/page/privacy"
               >
                 <div>
@@ -317,13 +321,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
             }
           >
             <MoreMenuItem
+              className={null}
               href="/page/return_policy"
               label="navigation.return_policy"
               onClick={null}
               testId={null}
             >
               <Link
-                className="css-1czs3p1"
+                className="css-1hj8a57"
                 href="/page/return_policy"
               >
                 <div>
@@ -375,13 +380,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
             }
           >
             <MoreMenuItem
+              className={null}
               href="/page/imprint"
               label="navigation.about"
               onClick={null}
               testId={null}
             >
               <Link
-                className="css-1czs3p1"
+                className="css-1hj8a57"
                 href="/page/imprint"
               >
                 <div>
