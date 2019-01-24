@@ -9,8 +9,8 @@ import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import HomeIcon from '@shopgate/pwa-ui-shared/icons/HomeIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import connect from '../../connector';
-import portalProps from '../../portalProps';
+import connect from '../../../../connector';
+import portalProps from '../../../../portalProps';
 
 const LABEL = 'navigation.home';
 
