@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import { getCurrentRoute, parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
+import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import {
   SORT_RELEVANCE,
   SORT_PRICE_ASC,
@@ -35,13 +35,14 @@ const items = [
 class Sort extends PureComponent {
   static propTypes = {
     historyReplace: PropTypes.func.isRequired,
+    route: PropTypes.shape().isRequired,
   }
 
   /**
    * @param {string} sort The new sort string.
    */
   handleSelection = (sort) => {
-    const route = getCurrentRoute();
+    const { route } = this.props;
 
     if (route.query.sort === sort) {
       return;

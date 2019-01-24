@@ -22,11 +22,13 @@ class FilterChips extends Component {
     updateFilters: PropTypes.func.isRequired,
     currentPathname: PropTypes.string,
     filters: PropTypes.shape(),
+    scrollTop: PropTypes.func,
   };
 
   static defaultProps = {
     currentPathname: '',
     filters: null,
+    scrollTop: () => { },
   };
 
   /**
@@ -35,7 +37,9 @@ class FilterChips extends Component {
    * @param {number} value The value to remove (multiselect).
    */
   handleRemove = (id, value) => {
-    const { filters, routeId, updateFilters } = this.props;
+    const {
+      filters, routeId, updateFilters, scrollTop,
+    } = this.props;
     const { [id]: selected, ...rest } = filters;
 
     if (selected.type === FILTER_TYPE_MULTISELECT) {
@@ -54,6 +58,7 @@ class FilterChips extends Component {
 
         router.update(routeId, { filters: newFilters });
         updateFilters(newFilters);
+        scrollTop();
         return;
       }
     }
@@ -61,6 +66,7 @@ class FilterChips extends Component {
     const newFilters = (Object.keys(rest).length) ? rest : null;
     router.update(routeId, { filters: newFilters });
     updateFilters(newFilters);
+    scrollTop();
   }
 
   /**
@@ -85,7 +91,7 @@ class FilterChips extends Component {
            * since it rounds to the full nearest number when fractions are deactivated.
            */
           const [minimum, maximum] = filter.value;
-          const piceMin = Math.floor(minimum / 100);
+          const priceMin = Math.floor(minimum / 100);
           const priceMax = Math.ceil(maximum / 100);
 
           chips.push((
@@ -95,7 +101,7 @@ class FilterChips extends Component {
               onRemove={this.handleRemove}
               onClick={openFilters}
             >
-              <I18n.Price price={piceMin} currency={appConfig.currency} fractions={false} />
+              <I18n.Price price={priceMin} currency={appConfig.currency} fractions={false} />
               &nbsp;&mdash;&nbsp;
               <I18n.Price price={priceMax} currency={appConfig.currency} fractions={false} />
             </Chip>
