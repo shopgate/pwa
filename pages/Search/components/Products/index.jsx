@@ -9,7 +9,9 @@ import connect from './connector';
 class SearchProducts extends PureComponent {
   static propTypes = {
     getProducts: PropTypes.func.isRequired,
+    hash: PropTypes.string.isRequired,
     searchPhrase: PropTypes.string.isRequired,
+    sort: PropTypes.string.isRequired,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
   };
@@ -22,6 +24,7 @@ class SearchProducts extends PureComponent {
   fetchProducts = () => {
     this.props.getProducts(
       this.props.searchPhrase,
+      this.props.sort,
       this.props.products.length
     );
   }
@@ -39,6 +42,7 @@ class SearchProducts extends PureComponent {
         handleGetProducts={this.fetchProducts}
         products={this.props.products}
         totalProductCount={this.props.totalProductCount}
+        requestHash={this.props.hash}
       />
     );
   }
