@@ -39,24 +39,20 @@ const scrollToRating = () => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Rating = ({ rating }) => {
-  if (!appConfig.hasReviews || !rating || !rating.count) {
-    return null;
-  }
-
-  return (
-    <Fragment>
-      <Portal name={PRODUCT_RATING_BEFORE} />
-      <Portal name={PRODUCT_RATING}>
+const Rating = ({ rating }) => (
+  <Fragment>
+    <Portal name={PRODUCT_RATING_BEFORE} />
+    <Portal name={PRODUCT_RATING}>
+      {appConfig.hasReviews && rating && rating.count &&
         <div className={container} onClick={scrollToRating} role="link" aria-hidden>
           <RatingStars value={rating.average} display="big" />
           <RatingCount count={rating.count} prominent />
         </div>
-      </Portal>
-      <Portal name={PRODUCT_RATING_AFTER} />
-    </Fragment>
-  );
-};
+      }
+    </Portal>
+    <Portal name={PRODUCT_RATING_AFTER} />
+  </Fragment>
+);
 
 Rating.propTypes = {
   rating: PropTypes.shape(),

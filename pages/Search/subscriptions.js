@@ -2,7 +2,7 @@ import {
   searchWillEnter$,
   searchDidEnter$,
 } from '@shopgate/pwa-common-commerce/search/streams';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { searchFiltersDidUpdate$ } from './streams';
@@ -23,9 +23,9 @@ export default function search(subscribe) {
     }));
   });
 
-  subscribe(searchFiltersDidUpdate$, ({ action, dispatch }) => {
+  subscribe(searchFiltersDidUpdate$, ({ action, dispatch, getState }) => {
     const { filters } = action;
-    const { query } = getCurrentRoute();
+    const { query } = getCurrentRoute(getState());
     const { s: searchPhrase, sort } = query;
 
     dispatch(fetchSearchResults({

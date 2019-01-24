@@ -1,33 +1,25 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Headline from 'Components/Headline';
-import Item from '../Item';
+import Section from '../Section';
 import connect from './connector';
-import styles from '../../style';
 
 /**
  * The Quicklinks component.
  * @param {Object} props The component props.
  * @param {Array} props.entries The quicklinks.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-function Quicklinks({ entries }, context) {
+function Quicklinks({ entries }) {
   if (!entries || !entries.length) {
     return null;
   }
 
-  const { __ } = context.i18n();
-
   return (
-    <Fragment>
-      <Headline style={styles.headline} text={__('navigation.more_menu')} />
-      <nav className={styles.list}>
-        {entries.map(entry => (
-          <Item href={entry.url} key={entry.url} label={entry.label} />
-        ))}
-      </nav>
-    </Fragment>
+    <Section title="navigation.more_menu">
+      {entries.map(entry => (
+        <Section.Item href={entry.url} key={entry.url} label={entry.label} />
+      ))}
+    </Section>
   );
 }
 
@@ -37,10 +29,6 @@ Quicklinks.propTypes = {
 
 Quicklinks.defaultProps = {
   entries: null,
-};
-
-Quicklinks.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default connect(Quicklinks);
