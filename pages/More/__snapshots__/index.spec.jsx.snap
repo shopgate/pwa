@@ -156,17 +156,18 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/shipping"
                         label="navigation.shipping"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/shipping"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -176,7 +177,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
@@ -230,17 +231,18 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/payment"
                         label="navigation.payment"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/payment"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -250,7 +252,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
@@ -304,17 +306,18 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/terms"
                         label="navigation.terms"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/terms"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -324,7 +327,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
@@ -378,17 +381,18 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/privacy"
                         label="navigation.privacy"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/privacy"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -398,7 +402,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
@@ -474,17 +478,18 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/imprint"
                         label="navigation.about"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/imprint"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -494,7 +499,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"
@@ -603,47 +608,6 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   <div
                     data-test-id="userMenu"
                   >
-                    <Portal
-                      name="nav-menu.my-account.header"
-                      props={
-                        Object {
-                          "Item": [Function],
-                        }
-                      }
-                    >
-                      <Headline
-                        small={true}
-                        style={
-                          Object {
-                            "margin": "24px 20px 16px",
-                          }
-                        }
-                        tag="h2"
-                        text="navigation.your_account"
-                      >
-                        <h2
-                          className="css-18cwfw7"
-                          data-test-id="Headline"
-                          style={
-                            Object {
-                              "margin": "24px 20px 16px",
-                            }
-                          }
-                        >
-                          <Translate
-                            className=""
-                            params={Object {}}
-                            string="navigation.your_account"
-                          >
-                            <span
-                              className=""
-                            >
-                              navigation.your_account
-                            </span>
-                          </Translate>
-                        </h2>
-                      </Headline>
-                    </Portal>
                     <nav
                       className={
                         Object {
@@ -668,13 +632,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         }
                       >
                         <MoreMenuItem
+                          className="css-1usb1k2"
                           href={null}
                           label="navigation.logout"
                           onClick={[Function]}
                           testId="logoutButton"
                         >
                           <button
-                            className="css-1czs3p1"
+                            className="css-1usb1k2"
                             data-test-id="logoutButton"
                             onClick={[Function]}
                           >
@@ -1111,17 +1076,18 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/shipping"
                         label="navigation.shipping"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/shipping"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -1131,7 +1097,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
@@ -1185,17 +1151,18 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/payment"
                         label="navigation.payment"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/payment"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -1205,7 +1172,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
@@ -1259,17 +1226,18 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/terms"
                         label="navigation.terms"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/terms"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -1279,7 +1247,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
@@ -1333,17 +1301,18 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/privacy"
                         label="navigation.privacy"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/privacy"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -1353,7 +1322,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
@@ -1429,17 +1398,18 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       }
                     >
                       <MoreMenuItem
+                        className={null}
                         href="/page/imprint"
                         label="navigation.about"
                         onClick={null}
                         testId={null}
                       >
                         <Connect(Link)
-                          className="css-1czs3p1"
+                          className="css-1hj8a57"
                           href="/page/imprint"
                         >
                           <Link
-                            className="css-1czs3p1"
+                            className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
@@ -1449,7 +1419,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
-                              className="css-c6ki83 css-1czs3p1"
+                              className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"
