@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
@@ -22,6 +21,7 @@ class Search extends Component {
     fetchSuggestions: PropTypes.func.isRequired,
     historyPush: PropTypes.func.isRequired,
     historyReplace: PropTypes.func.isRequired,
+    route: PropTypes.shape().isRequired,
   }
 
   /**
@@ -60,7 +60,7 @@ class Search extends Component {
    * @param {boolean} visible The next visible state.
    */
   toggle = (visible = true) => {
-    const { query } = getCurrentRoute();
+    const { route: { query } } = this.props;
     const searchQuery = query.s || this.state.query;
 
     this.setState({
@@ -113,7 +113,7 @@ class Search extends Component {
     });
 
     const location = `/search?s=${searchQuery}`;
-    const { pattern, query } = getCurrentRoute();
+    const { route: { pattern, query } } = this.props;
 
     if (query.s === searchQuery) {
       return;
