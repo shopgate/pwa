@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import isEqual from 'lodash/isEqual';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
@@ -11,13 +11,19 @@ import { filterProperties } from '../helpers';
 
 /**
  * Retrieves product id from route.
+ * @param {Object} state The application state.
  * @returns {string|null} The product id of the current route.
  */
-export const getProductIdFromRoute = () => {
-  const { params = {} } = getCurrentRoute() || {};
+export const getProductIdFromRoute = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.params || !route.params.productId) {
+      return null;
+    }
 
-  return params.productId ? hex2bin(params.productId) : null;
-};
+    return hex2bin(route.params.productId);
+  }
+);
 
 /**
  * Retrieves the product state from the store.
@@ -124,8 +130,12 @@ export const getProductById = createSelector(
  * @return {string|null} The id of the current product.
  */
 export const getProductId = (state, props) => {
+  if (!state) {
+    return null;
+  }
+
   if (!props) {
-    return getProductIdFromRoute();
+    return getProductIdFromRoute(state);
   }
 
   // Since a variantId can have falsy values, we need an "undefined" check here.
@@ -187,10 +197,10 @@ export const getProduct = createSelector(
  * @return {string|null}
  */
 export const getProductName = createSelector(
-  () => getCurrentRoute(),
+  getCurrentRoute,
   getProduct,
   (route, product) => {
-    if (route.state.title) {
+    if (route && route.state && route.state.title) {
       return route.state.title;
     }
 

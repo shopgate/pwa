@@ -3,7 +3,7 @@ import { pwaDidAppear } from '../action-creators';
 import { pwaDidAppear$ } from './app';
 
 let mockedPattern;
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: () => ({
     pattern: mockedPattern,
   }),
