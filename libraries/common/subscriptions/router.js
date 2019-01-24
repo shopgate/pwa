@@ -5,7 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
@@ -51,7 +51,7 @@ export default function routerSubscriptions(subscribe) {
       return;
     }
 
-    const { pathname: currentPathname } = getCurrentRoute();
+    const { pathname: currentPathname } = getCurrentRoute(state);
 
     // Prevent the current route from being pushed again.
     if (historyAction === ACTION_PUSH && location === currentPathname) {
@@ -85,7 +85,7 @@ export default function routerSubscriptions(subscribe) {
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
-        const { pathname } = getCurrentRoute();
+        const { pathname } = getCurrentRoute(state);
         LoadingProvider.setLoading(pathname);
 
         try {
@@ -124,7 +124,7 @@ export default function routerSubscriptions(subscribe) {
     // If there is one of the known protocols in the url.
     if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) {
-        handler.openExternalLink(location, historyAction);
+        handler.openExternalLink(location, historyAction, state);
       } else if (handler.isNativeLink(location)) {
         handler.openNativeLink(location);
       }
@@ -133,12 +133,12 @@ export default function routerSubscriptions(subscribe) {
     }
 
     if (location && handler.isLegacyPage(location)) {
-      handler.openLegacy(location, historyAction);
+      handler.openLegacy(location, historyAction, state);
       return;
     }
 
     if (location && handler.isLegacyLink(location)) {
-      handler.openLegacyLink(location, historyAction);
+      handler.openLegacyLink(location, historyAction, state);
       return;
     }
 

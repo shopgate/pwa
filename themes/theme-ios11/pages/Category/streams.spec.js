@@ -1,16 +1,19 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
 import { CATEGORY_PATH, RECEIVE_CATEGORY } from '@shopgate/pwa-common-commerce/category/constants';
 import { categoryWillEnter$, receivedVisibleCategory$ } from './streams';
 
 let mockedParams = {};
 
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: () => ({
     params: mockedParams,
   }),
 }));
 
 describe('Category streams', () => {
+  const getState = jest.fn();
+
   describe('categoryWillEnter$', () => {
     it('should return true', () => {
       const patterns = [
@@ -25,7 +28,7 @@ describe('Category streams', () => {
             pattern,
           },
         };
-        const willEnter = categoryWillEnter$.operator.predicate({ action });
+        const willEnter = categoryWillEnter$.operator.predicate({ action, getState });
         expect(willEnter).toBe(true);
       });
     });
@@ -38,7 +41,7 @@ describe('Category streams', () => {
           pattern: CATEGORY_PATH,
         },
       };
-      const willEnter = categoryWillEnter$.operator.predicate({ action });
+      const willEnter = categoryWillEnter$.operator.predicate({ action, getState });
       expect(willEnter).toBe(false);
     });
   });
@@ -52,7 +55,7 @@ describe('Category streams', () => {
         type: RECEIVE_CATEGORY,
         categoryId: 'foo',
       };
-      const receive = receivedVisibleCategory$.operator.predicate({ action });
+      const receive = receivedVisibleCategory$.operator.predicate({ action, getState });
       expect(receive).toBe(true);
     });
 
@@ -63,7 +66,7 @@ describe('Category streams', () => {
           pattern: `${CATEGORY_PATH}/:categoryId`,
         },
       };
-      const receive = receivedVisibleCategory$.operator.predicate({ action });
+      const receive = receivedVisibleCategory$.operator.predicate({ action, getState });
       expect(receive).toBe(false);
     });
 
@@ -71,7 +74,7 @@ describe('Category streams', () => {
       const action = {
         type: RECEIVE_CATEGORY,
       };
-      const receive = receivedVisibleCategory$.operator.predicate({ action });
+      const receive = receivedVisibleCategory$.operator.predicate({ action, getState });
       expect(receive).toBe(false);
     });
 
@@ -84,7 +87,7 @@ describe('Category streams', () => {
         type: RECEIVE_CATEGORY,
         categoryId: '123',
       };
-      const receive = receivedVisibleCategory$.operator.predicate({ action });
+      const receive = receivedVisibleCategory$.operator.predicate({ action, getState });
       expect(receive).toBe(false);
     });
 
@@ -95,8 +98,10 @@ describe('Category streams', () => {
         type: RECEIVE_CATEGORY,
         categoryId: '123',
       };
-      const receive = receivedVisibleCategory$.operator.predicate({ action });
+      const receive = receivedVisibleCategory$.operator.predicate({ action, getState });
       expect(receive).toBe(false);
     });
   });
 });
+
+/* eslint-enable extra-rules/no-single-line-objects */

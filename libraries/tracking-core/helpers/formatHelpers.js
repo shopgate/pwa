@@ -43,7 +43,7 @@ function get(object, path, defaultValue) {
      */
     let result = defaultReturnValue;
 
-    if (currentData.hasOwnProperty(currentPathSegment)) {
+    if (currentData && currentData.hasOwnProperty(currentPathSegment)) {
       if (
         typeof currentData[currentPathSegment] !== 'object' ||
         pathSegments.length === nextPathSegmentIndex

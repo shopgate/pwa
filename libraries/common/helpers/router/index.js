@@ -5,6 +5,9 @@ import { router } from '@virtuous/conductor';
 const match = /^(.*)index.html/.exec(window.location.pathname);
 
 const { getCurrentRoute } = router;
+/**
+ * @deprecated
+ */
 export { getCurrentRoute };
 
 /**
