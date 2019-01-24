@@ -1,5 +1,5 @@
 import { historyPop } from '@shopgate/pwa-common/actions/router';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
@@ -34,16 +34,16 @@ export default function writeReview(subscribe) {
   /**
    * Get triggered when a review submit is requested.
    */
-  subscribe(requestReviewSubmit$, () => {
-    const { pathname } = getCurrentRoute();
+  subscribe(requestReviewSubmit$, ({ getState }) => {
+    const { pathname } = getCurrentRoute(getState());
     LoadingProvider.setLoading(pathname);
   });
 
   /**
    * Get triggered when a review submitted got a response.
    */
-  subscribe(responseReviewSubmit$, () => {
-    const { pathname } = getCurrentRoute();
+  subscribe(responseReviewSubmit$, ({ getState }) => {
+    const { pathname } = getCurrentRoute(getState());
     LoadingProvider.unsetLoading(pathname);
   });
 

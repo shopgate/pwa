@@ -1,15 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
-import { createMockStore } from '@shopgate/pwa-common/store';
+import configureStore from 'redux-mock-store';
 import Bar from './index';
 
-const store = createMockStore();
+const mockedStore = configureStore();
 
 describe('<Bar />', () => {
   it('should match snapshot', () => {
     const wrapper = mount((
-      <Provider store={store}>
+      <Provider store={mockedStore({ router: { currentRoute: {} } })}>
         <Bar />
       </Provider>
     ));
