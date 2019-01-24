@@ -49,13 +49,14 @@ exports[`<Section /> should render with a headline and items 1`] = `
     }
   >
     <MoreMenuItem
+      className={null}
       href="/link/one"
       label="Item One"
       onClick={null}
       testId={null}
     >
       <Link
-        className="css-1czs3p1"
+        className="css-1hj8a57"
         href="/link/one"
       >
         <div>
@@ -74,13 +75,14 @@ exports[`<Section /> should render with a headline and items 1`] = `
       </Link>
     </MoreMenuItem>
     <MoreMenuItem
+      className={null}
       href="/link/two"
       label="Item Two"
       onClick={null}
       testId={null}
     >
       <Link
-        className="css-1czs3p1"
+        className="css-1hj8a57"
         href="/link/two"
       >
         <div>
@@ -123,13 +125,14 @@ exports[`<Section /> should render without a headline but items 1`] = `
     }
   >
     <MoreMenuItem
+      className={null}
       href="/link/one"
       label="Item One"
       onClick={null}
       testId={null}
     >
       <Link
-        className="css-1czs3p1"
+        className="css-1hj8a57"
         href="/link/one"
       >
         <div>
@@ -148,13 +151,14 @@ exports[`<Section /> should render without a headline but items 1`] = `
       </Link>
     </MoreMenuItem>
     <MoreMenuItem
+      className={null}
       href="/link/two"
       label="Item Two"
       onClick={null}
       testId={null}
     >
       <Link
-        className="css-1czs3p1"
+        className="css-1hj8a57"
         href="/link/two"
       >
         <div>
