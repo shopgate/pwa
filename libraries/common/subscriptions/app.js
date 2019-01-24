@@ -18,6 +18,7 @@ import {
   onDidReplace,
   onWillReset,
   onDidReset,
+  onUpdate,
 } from '@virtuous/conductor';
 import { appError, pipelineError } from '../action-creators';
 import {
@@ -30,6 +31,7 @@ import {
   routeDidReplace,
   routeWillReset,
   routeDidReset,
+  routeDidUpdate,
 } from '../actions/router';
 import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
@@ -64,6 +66,7 @@ export default function app(subscribe) {
     onDidReplace(({ prev, next }) => dispatch(routeDidReplace(prev, next)));
     onWillReset(({ prev, next }) => dispatch(routeWillReset(prev, next)));
     onDidReset(({ prev, next }) => dispatch(routeDidReset(prev, next)));
+    onUpdate(updated => dispatch(routeDidUpdate(updated)));
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([

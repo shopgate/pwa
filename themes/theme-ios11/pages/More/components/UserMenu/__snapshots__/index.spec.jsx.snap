@@ -91,7 +91,17 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     }
                   }
                 >
-                  navigation.your_account
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="navigation.your_account"
+                  >
+                    <span
+                      className=""
+                    >
+                      navigation.your_account
+                    </span>
+                  </Translate>
                 </h2>
               </Headline>
             </Portal>

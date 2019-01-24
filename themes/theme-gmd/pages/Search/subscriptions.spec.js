@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import {
@@ -16,13 +16,14 @@ jest.mock('@shopgate/pwa-common-commerce/filter/actions/fetchFilters', () =>
 jest.mock('@shopgate/pwa-common-commerce/search/actions/fetchSearchResults', () =>
   jest.fn().mockReturnValue('fetchSearchResults'));
 
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: jest.fn(),
 }));
 
 describe('SearchPage subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn();
+  const getState = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -61,7 +62,7 @@ describe('SearchPage subscriptions', () => {
         },
       };
 
-      callback({ dispatch, action });
+      callback({ dispatch, action, getState });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(fetchSearchResults());
@@ -102,7 +103,7 @@ describe('SearchPage subscriptions', () => {
         },
       };
 
-      callback({ dispatch, action });
+      callback({ dispatch, action, getState });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(fetchSearchResults());

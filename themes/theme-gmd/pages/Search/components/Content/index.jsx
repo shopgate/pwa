@@ -4,6 +4,7 @@ import { UIEvents } from '@shopgate/pwa-core';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from '../Bar';
@@ -44,20 +45,28 @@ class SearchContent extends Component {
     } = this.props;
 
     return (
-      <Fragment>
-        <DefaultBar
-          center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
-          {...showFilterBar && { below: <Bar /> }}
-        />
-        <Products searchPhrase={searchPhrase} sortOrder={DEFAULT_SORT} />
-        {showNoResults && (
-          <NoResults
-            headlineText="search.no_result.heading"
-            bodyText="search.no_result.body"
-            searchPhrase={searchPhrase}
-          />
-        )}
-      </Fragment>
+      <RouteContext.Consumer>
+        {({ state, query }) => (
+          <Fragment>
+            <DefaultBar
+              center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
+              {...showFilterBar && { below: <Bar /> }}
+            />
+            <Products
+              searchPhrase={searchPhrase}
+              filters={state.filters}
+              sort={query.sort || DEFAULT_SORT}
+            />
+            {showNoResults && (
+              <NoResults
+                headlineText="search.no_result.heading"
+                bodyText="search.no_result.body"
+                searchPhrase={searchPhrase}
+              />
+            )}
+          </Fragment>
+          )}
+      </RouteContext.Consumer>
     );
   }
 }
