@@ -29,7 +29,7 @@ const resultsReceived$ = main$
 export const searchIsReady$ = searchDidEnter$
   .switchMap((data) => {
     const { getState } = data;
-    const query = getCurrentSearchQuery();
+    const query = getCurrentSearchQuery(getState());
 
     // Check if products for the current route are already available within Redux.
     const productsLoaded = getProductsResult(

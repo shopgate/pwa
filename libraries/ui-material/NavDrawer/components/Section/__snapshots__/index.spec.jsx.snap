@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavDrawerSection /> should render with a title and dividers 1`] = `
+<Fragment>
+  <NavDrawerDivider />
+  <NavDrawerTitle
+    text="Section title"
+  />
+  <NavDrawerItem
+    badge={null}
+    icon={null}
+    label="Item Label"
+    onClick={[Function]}
+    style={Object {}}
+    testId={null}
+  />
+  <NavDrawerDivider />
+</Fragment>
+`;

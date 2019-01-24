@@ -24,7 +24,7 @@ export const getFilterResults = createSelector(
 /**
  * Gets filters by a result hash.
  * @param {Object} state The current application state.
- * @param {Object} props The cprops.
+ * @param {Object} props The props.
  * @return {Object}
  */
 export const getFiltersByHash = createSelector(
