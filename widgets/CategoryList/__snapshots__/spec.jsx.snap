@@ -51,7 +51,17 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       data-test-id="Headline"
       style={null}
     >
-      Yay Categories
+      <Translate
+        className=""
+        params={Object {}}
+        string="Yay Categories"
+      >
+        <span
+          className=""
+        >
+          Yay Categories
+        </span>
+      </Translate>
     </h2>
   </Headline>
   <List

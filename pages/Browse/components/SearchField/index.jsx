@@ -138,6 +138,11 @@ class SearchField extends Component {
     e.preventDefault();
 
     const query = searchQuery || this.state.query;
+
+    if (!query) {
+      return;
+    }
+
     router.update(this.props.pageId, { query });
 
     this.setState({ focused: false });
