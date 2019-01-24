@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@shopgate/pwa-common/context';
 import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import {
   SORT_RELEVANCE,
