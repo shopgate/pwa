@@ -1,4 +1,4 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { LoadingProvider } from '../providers';
@@ -48,11 +48,11 @@ export default function user(subscribe) {
     }));
   });
 
-  subscribe(appDidStart$, ({ dispatch }) => {
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
     registerEvents(['userLoggedIn']);
 
     event.addCallback('userLoggedIn', () => {
-      const { state: { redirect } = {} } = getCurrentRoute();
+      const { state: { redirect } = {} } = getCurrentRoute(getState());
       dispatch(successLogin(redirect));
     });
   });

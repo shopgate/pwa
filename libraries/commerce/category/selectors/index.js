@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
+import { getCurrentRoute, getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
 /**
@@ -181,7 +180,7 @@ export const getChildCategoriesById = createSelector(
 );
 
 export const getCategoryName = createSelector(
-  () => getCurrentRoute(),
+  getCurrentRoute,
   getCurrentCategory,
   (route, category) => {
     if (route.state.title) {
