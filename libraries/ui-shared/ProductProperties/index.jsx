@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 
 /**
- * The Cart Product Properties component.
+ * The Product Properties component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Properties = ({ properties }) => (
+const Properties = ({ truncate, properties }) => (
   <ul>
     {properties.map(({ label, value }) => (
       <li key={`${label}-${value}`}>
-        {label}: {value}
+        {truncate &&
+          <Ellipsis rows={truncate}>
+            {label}: {value}
+          </Ellipsis>
+        }
+        {!truncate && `${label}: ${value}`}
       </li>
     ))}
   </ul>
@@ -21,10 +27,13 @@ Properties.propTypes = {
     label: PropTypes.string,
     value: PropTypes.string,
   })),
+  /** Truncate property to show N lines */
+  truncate: PropTypes.number,
 };
 
 Properties.defaultProps = {
   properties: [],
+  truncate: null,
 };
 
 export default Properties;
