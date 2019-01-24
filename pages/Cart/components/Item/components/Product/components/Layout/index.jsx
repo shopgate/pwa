@@ -43,7 +43,7 @@ const Layout = (props, context) => (
       />
       <Grid className={styles.info}>
         <Grid.Item grow={1} className={styles.properties}>
-          <Properties properties={props.product.properties} />
+          <Properties properties={props.product.properties} truncate={2} />
         </Grid.Item>
         <Grid.Item grow={1} className={styles.price}>
           <ProductPrice
