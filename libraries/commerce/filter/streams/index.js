@@ -1,5 +1,5 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { ACTION_PUSH, ACTION_POP } from '@virtuous/conductor';
+import { ACTION_PUSH, ACTION_POP } from '@shopgate/pwa-common/helpers/router';
 import {
   routeWillEnter$,
   routeDidEnter$,

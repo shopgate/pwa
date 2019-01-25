@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { router } from '@virtuous/conductor';
+import { router } from '@shopgate/pwa-common/helpers/router';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   FILTER_PRICE_RANGE,
@@ -207,7 +207,7 @@ class FilterContent extends PureComponent {
 
     return (
       <Fragment>
-        { this.renderCloseBar() }
+        {this.renderCloseBar()}
         {filters.map((filter) => {
           const portalProps = { filter };
           const value = this.getFilterValue(filter.id);

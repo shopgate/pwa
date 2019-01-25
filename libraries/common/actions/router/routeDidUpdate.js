@@ -1,12 +1,13 @@
-import { ACTION_UPDATE } from '@virtuous/conductor';
+import { ACTION_UPDATE, getRouteById } from '@shopgate/pwa-common/helpers/router';
 import * as actions from '../../action-creators/router';
 
 /**
- * @param {Route} route The updated route.
+ * @param {string} id A route ID.
  * @returns {Function}
  */
-export function routeDidUpdate(route) {
+export function routeDidUpdate(id) {
   return (dispatch) => {
+    const route = getRouteById(id);
     dispatch(actions.routeDidUpdate(route, ACTION_UPDATE));
   };
 }

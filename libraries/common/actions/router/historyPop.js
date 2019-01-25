@@ -1,4 +1,4 @@
-import { ACTION_POP } from '@virtuous/conductor';
+import { ACTION_POP } from '@shopgate/pwa-common/helpers/router';
 import { navigate } from '../../action-creators/router';
 
 /**

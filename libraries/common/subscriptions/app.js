@@ -19,7 +19,7 @@ import {
   onWillReset,
   onDidReset,
   onUpdate,
-} from '@virtuous/conductor';
+} from '@shopgate/pwa-common/helpers/router';
 import { appError, pipelineError } from '../action-creators';
 import {
   historyPush,
@@ -58,15 +58,15 @@ export default function app(subscribe) {
 
     dispatch(registerLinkEvents(action.location));
 
-    onWillPush(({ prev, next }) => dispatch(routeWillPush(prev, next)));
-    onDidPush(({ prev, next }) => dispatch(routeDidPush(prev, next)));
-    onWillPop(({ prev, next }) => dispatch(routeWillPop(prev, next)));
-    onDidPop(({ prev, next }) => dispatch(routeDidPop(prev, next)));
-    onWillReplace(({ prev, next }) => dispatch(routeWillReplace(prev, next)));
-    onDidReplace(({ prev, next }) => dispatch(routeDidReplace(prev, next)));
-    onWillReset(({ prev, next }) => dispatch(routeWillReset(prev, next)));
-    onDidReset(({ prev, next }) => dispatch(routeDidReset(prev, next)));
-    onUpdate(updated => dispatch(routeDidUpdate(updated)));
+    onWillPush(id => dispatch(routeWillPush(id)));
+    onDidPush(id => dispatch(routeDidPush(id)));
+    onWillPop(() => dispatch(routeWillPop()));
+    onDidPop(() => dispatch(routeDidPop()));
+    onWillReplace(() => dispatch(routeWillReplace()));
+    onDidReplace(() => dispatch(routeDidReplace()));
+    onWillReset(() => dispatch(routeWillReset()));
+    onDidReset(() => dispatch(routeDidReset()));
+    onUpdate(id => dispatch(routeDidUpdate(id)));
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
@@ -121,9 +121,9 @@ export default function app(subscribe) {
      * The following events are sometimes sent by the app, but don't need to be handled right now.
      * To avoid console warnings from the event system, empty handlers are registered here.
      */
-    event.addCallback('viewWillDisappear', () => {});
-    event.addCallback('viewDidDisappear', () => {});
-    event.addCallback('pageInsetsChanged', () => {});
+    event.addCallback('viewWillDisappear', () => { });
+    event.addCallback('viewDidDisappear', () => { });
+    event.addCallback('pageInsetsChanged', () => { });
 
     /*
      * Onload must be send AFTER app did start.

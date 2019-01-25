@@ -1,4 +1,4 @@
-import { ACTION_PUSH } from '@virtuous/conductor';
+import { ACTION_PUSH } from '@shopgate/pwa-common/helpers/router';
 import { navigate } from '../../action-creators/router';
 
 /**

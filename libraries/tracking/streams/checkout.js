@@ -1,4 +1,4 @@
-import { ACTION_REPLACE, ACTION_PUSH } from '@virtuous/conductor';
+import { ACTION_REPLACE, ACTION_PUSH } from '@shopgate/pwa-common/helpers/router';
 import { navigate$ } from '@shopgate/pwa-common/streams/router';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';

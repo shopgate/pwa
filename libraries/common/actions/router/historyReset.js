@@ -1,4 +1,4 @@
-import { ACTION_RESET } from '@virtuous/conductor';
+import { ACTION_RESET } from '@shopgate/pwa-common/helpers/router';
 import { navigate } from '../../action-creators/router';
 
 /**

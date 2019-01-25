@@ -1,17 +1,19 @@
-import { ACTION_PUSH } from '@virtuous/conductor';
+import { ACTION_PUSH, getRouteById, getPreviousRoute } from '@shopgate/pwa-common/helpers/router';
 import * as actions from '../../action-creators/router';
 
 /**
- * @param {Route} prev The previous route.
- * @param {Route} next The next route.
+ * @param {string} id A route ID.
  * @returns {Function}
  */
-export function routeDidPush(prev, next) {
+export function routeDidPush(id) {
   return (dispatch) => {
-    if (prev) {
-      dispatch(actions.routeDidLeave(prev, ACTION_PUSH));
+    const route = getRouteById(id);
+    const prevRoute = getPreviousRoute();
+
+    if (prevRoute) {
+      dispatch(actions.routeDidLeave(prevRoute, ACTION_PUSH));
     }
 
-    dispatch(actions.routeDidEnter(next, ACTION_PUSH));
+    dispatch(actions.routeDidEnter(route, ACTION_PUSH));
   };
 }

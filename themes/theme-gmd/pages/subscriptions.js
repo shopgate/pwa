@@ -1,4 +1,4 @@
-import { onWillPop } from '@virtuous/conductor';
+import { onWillPop } from '@shopgate/pwa-common/helpers/router';
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
 import redirects from '@shopgate/pwa-common/collections/Redirects';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';

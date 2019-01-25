@@ -1,20 +1,25 @@
 import URLSearchParams from 'url-search-params';
 import createBrowserHistory from 'history/createBrowserHistory';
-import { router } from '@virtuous/conductor';
+import router from '@virtuous/conductor';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import getRouteById from '@virtuous/conductor-helpers/getRouteById';
+import getPreviousRoute from '@virtuous/conductor-helpers/getPreviousRoute';
 
 const match = /^(.*)index.html/.exec(window.location.pathname);
 
-const { getCurrentRoute } = router;
 /**
  * @deprecated
  */
-export { getCurrentRoute };
+export { getCurrentRoute, getRouteById, getPreviousRoute };
+export { router };
+export { ACTION_POP, ACTION_PUSH, ACTION_REPLACE, ACTION_RESET, ACTION_UPDATE } from '@virtuous/conductor/constants';
+export * from '@virtuous/conductor-events';
 
 /**
  * Creates the router history.
  * @returns {Object}
  */
-export const history = () => createBrowserHistory({
+export const history = createBrowserHistory({
   basename: match ? match[0] : '',
 });
 

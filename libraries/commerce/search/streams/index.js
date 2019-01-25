@@ -1,4 +1,4 @@
-import { ACTION_REPLACE } from '@virtuous/conductor';
+import { ACTION_REPLACE } from '@shopgate/pwa-common/helpers/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeDidEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import {

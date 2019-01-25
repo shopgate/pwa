@@ -8,7 +8,7 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
 import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
-import { router } from '@virtuous/conductor';
+import { router } from '@shopgate/pwa-common/helpers/router';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';

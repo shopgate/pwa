@@ -357,7 +357,7 @@ describe('Router subscriptions', () => {
        * Replace the implementation of handler.openNative link temporarily. It reassigns
        * window.location.href internally, which would cause a jest error.
        */
-      openNativeLinkSpy.mockImplementationOnce(() => {});
+      openNativeLinkSpy.mockImplementationOnce(() => { });
 
       const params = {
         action: ACTION_PUSH,

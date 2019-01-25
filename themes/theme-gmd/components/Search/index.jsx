@@ -21,7 +21,11 @@ class Search extends Component {
     fetchSuggestions: PropTypes.func.isRequired,
     historyPush: PropTypes.func.isRequired,
     historyReplace: PropTypes.func.isRequired,
-    route: PropTypes.shape().isRequired,
+    route: PropTypes.shape(),
+  }
+
+  static defaultProps = {
+    route: null,
   }
 
   /**
@@ -60,7 +64,7 @@ class Search extends Component {
    * @param {boolean} visible The next visible state.
    */
   toggle = (visible = true) => {
-    const { route: { query } } = this.props;
+    const { route: { query = {} } = {} } = this.props;
     const searchQuery = query.s || this.state.query;
 
     this.setState({

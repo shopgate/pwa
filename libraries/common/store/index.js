@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
 import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import benchmarkController from '@shopgate/pwa-benchmark';
+import syncRouter from '@virtuous/redux-conductor';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
 import appConfig from '../helpers/config';
@@ -66,6 +67,7 @@ export function configureStore(reducers, subscribers) {
   );
 
   initSubscribers(subscribers);
+  syncRouter(store);
 
   if (window.Cypress) {
     window.store = store;
@@ -80,7 +82,7 @@ export function configureStore(reducers, subscribers) {
  * @param {Array} subscribers Streams subscribers to initialize.
  * @returns {Store}
  */
-export function createMockStore(reducers = () => {}, subscribers = []) {
+export function createMockStore(reducers = () => { }, subscribers = []) {
   const store = createStore(
     reducers,
     undefined,

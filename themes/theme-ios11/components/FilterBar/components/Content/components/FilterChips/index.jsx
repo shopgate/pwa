@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { router } from '@virtuous/conductor';
+import { router } from '@shopgate/pwa-common/helpers/router';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import {

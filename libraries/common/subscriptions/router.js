@@ -4,7 +4,7 @@ import {
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
-} from '@virtuous/conductor';
+} from '@shopgate/pwa-common/helpers/router';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core';
 import { LoadingProvider } from '../providers';
@@ -144,21 +144,11 @@ export default function routerSubscriptions(subscribe) {
 
     switch (historyAction) {
       case ACTION_PUSH: {
-        router.push({
-          pathname: location,
-          state: routeState,
-          emitBefore: silent,
-          emitAfter: silent,
-        });
+        router.push(location, routeState, silent);
         break;
       }
       case ACTION_REPLACE: {
-        router.replace({
-          pathname: location,
-          state: routeState,
-          emitBefore: silent,
-          emitAfter: silent,
-        });
+        router.replace(location, routeState, silent);
         break;
       }
       default:

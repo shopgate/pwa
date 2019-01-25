@@ -1,14 +1,16 @@
-import { ACTION_REPLACE } from '@virtuous/conductor';
+import { ACTION_REPLACE, getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import * as actions from '../../action-creators/router';
+import { getCurrentRoute as getCurrentRouteSelector } from '../../selectors/router';
 
 /**
- * @param {Route} prev The previous route.
- * @param {Route} next The next route.
  * @returns {Function}
  */
-export function routeDidReplace(prev, next) {
-  return (dispatch) => {
-    dispatch(actions.routeDidLeave(prev, ACTION_REPLACE));
-    dispatch(actions.routeDidEnter(next, ACTION_REPLACE));
+export function routeDidReplace() {
+  return (dispatch, getState) => {
+    const incoming = getCurrentRoute();
+    const outgoing = getCurrentRouteSelector(getState());
+
+    dispatch(actions.routeDidLeave(outgoing, ACTION_REPLACE));
+    dispatch(actions.routeDidEnter(incoming, ACTION_REPLACE));
   };
 }

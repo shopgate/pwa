@@ -21,6 +21,10 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
+  if (!pageId) {
+    return null;
+  }
+
   let center = <Logo key="center" />;
 
   if (pageId !== PAGE_ID_INDEX) {
@@ -44,12 +48,13 @@ function PageContent({ configs, pageId }) {
 }
 
 PageContent.propTypes = {
-  pageId: PropTypes.string.isRequired,
   configs: PropTypes.shape(),
+  pageId: PropTypes.string,
 };
 
 PageContent.defaultProps = {
   configs: null,
+  pageId: null,
 };
 
 export default connect(PageContent);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import isEqual from 'lodash/isEqual';
-import { router } from '@virtuous/conductor';
+import { router } from '@shopgate/pwa-common/helpers/router';
 import { RouteContext } from '../../context';
 import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
 

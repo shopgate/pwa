@@ -1,4 +1,4 @@
-import { router, ACTION_REPLACE } from '@virtuous/conductor';
+import { router, ACTION_REPLACE } from '@shopgate/pwa-common/helpers/router';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';

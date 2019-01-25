@@ -1,14 +1,16 @@
-import { ACTION_POP } from '@virtuous/conductor';
+import { ACTION_POP, getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import * as actions from '../../action-creators/router';
+import { getCurrentRoute as getCurrentRouteSelector } from '../../selectors/router';
 
 /**
- * @param {Route} prev The previous route.
- * @param {Route} next The next route.
  * @returns {Function}
  */
-export function routeWillPop(prev, next) {
-  return (dispatch) => {
-    dispatch(actions.routeWillLeave(prev, ACTION_POP));
-    dispatch(actions.routeWillEnter(next, ACTION_POP));
+export function routeWillPop() {
+  return (dispatch, getState) => {
+    const incoming = getCurrentRoute();
+    const outgoing = getCurrentRouteSelector(getState());
+
+    dispatch(actions.routeWillLeave(outgoing, ACTION_POP));
+    dispatch(actions.routeWillEnter(incoming, ACTION_POP));
   };
 }
