@@ -124,6 +124,7 @@ export const getProductId = (state, props) => {
      * To support debugging an error will be logged, if the props are missing at invocation.
      */
     logger.error('getProductId() needs to be called with a props object that includes a productId.');
+    return null;
   }
 
   // Since a variantId can have falsy values, we need an "undefined" check here.
