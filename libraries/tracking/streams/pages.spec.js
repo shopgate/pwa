@@ -5,7 +5,11 @@ import { pwaDidAppear } from '../action-creators';
 import { blacklistedPatterns, pagesAreReady$ } from './pages';
 
 let mockedPattern;
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedPattern }));
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+  getCurrentRoute: () => ({
+    pattern: mockedPattern,
+  }),
+}));
 
 /**
  * A wrapper for the route did enter action creator. Beside returning the action object of the

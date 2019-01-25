@@ -1,12 +1,29 @@
 import { createSelector } from 'reselect';
 import isEqual from 'lodash/isEqual';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
+
+/**
+ * Retrieves product id from route.
+ * @param {Object} state The application state.
+ * @returns {string|null} The product id of the current route.
+ */
+export const getProductIdFromRoute = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.params || !route.params.productId) {
+      return null;
+    }
+
+    return hex2bin(route.params.productId);
+  }
+);
 
 /**
  * Retrieves the product state from the store.
@@ -82,8 +99,8 @@ export const getProductVariantsState = createSelector(
 
 /**
  * Retrieves a product by id from state. Different to getProduct() which returns the product
- * entity data if available, this selector returns the pure state enty for a given productId.
- * So the exires and the isFetching property is processable.
+ * entity data if available, this selector returns the pure state entry for a given productId.
+ * So the expires and the isFetching property is processable.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object|null} The dedicated product.
@@ -105,25 +122,25 @@ export const getProductById = createSelector(
   }
 );
 
+export const getProductDataById = createSelector(
+  getProductById,
+  product => (product ? product.productData : undefined)
+);
+
 /**
  * Retrieves the id of the current selected product from the component props. When the props
  * contain a variant id it will return this one instead of the product id.
  * @param {Object} state The current application state.
- * @param {Object} props The component props.
+ * @param {Object} [props] The component props.
  * @return {string|null} The id of the current product.
  */
 export const getProductId = (state, props) => {
-  if (typeof props === 'undefined') {
-    /**
-     * Before PWA 6.0 some product selectors relied on a "currentProduct" state which doesn't exist
-     * anymore. Their successors require a props object which contains a productId or a variantId.
-     * To support debugging an error will be logged, if the props are missing at invocation.
-     */
-    logger.error('getProductId() needs to be called with a props object that includes a productId.');
+  if (!state) {
+    return null;
   }
 
   if (!props) {
-    return null;
+    return getProductIdFromRoute(state);
   }
 
   // Since a variantId can have falsy values, we need an "undefined" check here.
@@ -185,10 +202,10 @@ export const getProduct = createSelector(
  * @return {string|null}
  */
 export const getProductName = createSelector(
-  () => getCurrentRoute(),
+  getCurrentRoute,
   getProduct,
   (route, product) => {
-    if (route.state.title) {
+    if (route && route.state && route.state.title) {
       return route.state.title;
     }
 
@@ -282,28 +299,12 @@ export const getProductFlags = createSelector(
 );
 
 /**
- * Retrieves the metadata for the given product.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getProductMetadata = createSelector(
-  getProduct,
-  (product) => {
-    if (!product) {
-      return null;
-    }
-
-    return product.metadata;
-  }
-);
-
-/**
  * Retrieves the product price object.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {string}
  */
-export const getProductPrice = createSelector(
+export const getProductPriceData = createSelector(
   getProduct,
   (product) => {
     if (!product) {
@@ -322,7 +323,7 @@ export const getProductPrice = createSelector(
  * @return {string|null}
  */
 export const getProductCurrency = createSelector(
-  getProductPrice,
+  getProductPriceData,
   (price) => {
     if (!price) {
       return null;
@@ -340,7 +341,7 @@ export const getProductCurrency = createSelector(
  * @return {number|null}
  */
 export const getProductUnitPrice = createSelector(
-  getProductPrice,
+  getProductPriceData,
   (price) => {
     if (!price) {
       return null;
@@ -457,6 +458,38 @@ export const hasBaseProductVariants = createSelector(
 );
 
 /**
+ * Retrieves the metadata for the given product.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductMetadata = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.metadata;
+  }
+);
+
+/**
+ * Retrieves the metadata for the given product.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getBaseProductMetadata = createSelector(
+  getBaseProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.metadata;
+  }
+);
+
+/**
  * Retrieves the shipping data for the given product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
@@ -530,8 +563,42 @@ export const getProductDescription = createSelector(
 );
 
 /**
+ * Checks if the format properties of a format match an image including a format
+ * @param {Object} item the item including the format to compare
+ * @param {Object} format The  format object to compare.
+ * @returns {boolean}
+ */
+const doesImageMatchFormat = (item, format) => {
+  const props = Object.keys(format);
+  const { length } = props;
+  for (let i = 0; i < length; i += 1) {
+    const prop = props[i];
+    if (format[prop] !== item[prop]) return false;
+  }
+  return true;
+};
+
+/**
+ * Filters a product images cache entry by formats.
+ * @param {Array} productImages All cached product images of a product.
+ * @param {Array} formats A list of format objects to filter.
+ * @returns {Object}
+ */
+const filterProductImagesByFormats = (productImages, formats) => {
+  const filtered = productImages.filter(item =>
+    formats.find(format => doesImageMatchFormat(item, format)));
+
+  const hasSources = !!filtered[0] && filtered[0].sources.length > 0;
+
+  return {
+    filtered,
+    hasSources,
+  };
+};
+
+/**
  * Retrieves the images for the given product. If the props contain a variantId, and the related
- * product does not have images, the selector tries to pick images from it's base product.
+ * product does not have images, the selector tries to pick images from its base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Array|null}
@@ -540,21 +607,42 @@ export const getProductImages = createSelector(
   getProductImagesState,
   getProductId,
   getBaseProductId,
-  (images, productId, baseProductId) => {
+  (state, props = {}) => props.formats || [],
+  (images, productId, baseProductId, formats) => {
     const { images: productImages } = images[productId] || {};
-    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
+    const { images: baseProductImages } =
+      (!!baseProductId && baseProductId !== productId && images[baseProductId]) ||
+      {};
 
-    // If the product doesn't have images...
-    if (!Array.isArray(productImages) || !productImages.length) {
-      // ...check the base product.
-      if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
-        return null;
-      }
+    let filteredProductImages;
+    let filteredBaseProductImages;
 
-      return baseProductImages;
+    if (Array.isArray(productImages)) {
+      filteredProductImages = filterProductImagesByFormats(productImages, formats);
     }
 
-    return productImages;
+    if (Array.isArray(baseProductImages)) {
+      filteredBaseProductImages = filterProductImagesByFormats(baseProductImages, formats);
+    }
+
+    if (!filteredProductImages) {
+      return null;
+    }
+
+    if (!filteredBaseProductImages) {
+      // No further decisions are necessary, since no base product was determined.
+      return filteredProductImages.filtered;
+    }
+
+    const { hasSources: productHasSources } = filteredProductImages;
+
+    if (productHasSources) {
+      // The product has own images which can be used as a return value.
+      return filteredProductImages.filtered;
+    }
+
+    // The product doesn't have own images, so the images of the base product are returned.
+    return filteredBaseProductImages.filtered;
   }
 );
 
@@ -641,9 +729,8 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
       return null;
     }
 
-    const found = variants.products.find(product => (
-      isEqual(product.characteristics, characteristics)
-    ));
+    const found = variants.products.find(product =>
+      isEqual(product.characteristics, characteristics));
 
     if (!found) {
       return null;
@@ -669,7 +756,7 @@ export const getResultHash = createSelector(
       return generateResultHash({
         categoryId,
         sort,
-        ...filters && { filters },
+        ...(filters && { filters }),
       });
     }
 
@@ -677,7 +764,7 @@ export const getResultHash = createSelector(
       return generateResultHash({
         searchPhrase,
         sort,
-        ...filters && { filters },
+        ...(filters && { filters }),
       });
     }
 

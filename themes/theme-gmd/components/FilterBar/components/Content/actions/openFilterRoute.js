@@ -1,20 +1,21 @@
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { getCurrentRoute, parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 
 /**
  * Opens the filter route with the relevant url.
  * @param {Object} props The component props.
  * @returns {Function} A redux thunk.
  */
-const openFilterRoute = () => (dispatch) => {
+const openFilterRoute = () => (dispatch, getState) => {
   const {
     id,
     params: { categoryId },
     query,
     state,
-  } = getCurrentRoute();
+  } = getCurrentRoute(getState());
 
   const forwardState = {
     filters: state.filters || null,

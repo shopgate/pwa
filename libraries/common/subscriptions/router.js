@@ -1,11 +1,11 @@
-import conductor from '@virtuous/conductor';
 import {
+  router,
   ACTION_POP,
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
-} from '@virtuous/conductor/constants';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+} from '@virtuous/conductor';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
@@ -21,7 +21,7 @@ import authRoutes from '../collections/AuthRoutes';
  * Router subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function router(subscribe) {
+export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
     const {
       action, dispatch, getState,
@@ -30,11 +30,11 @@ export default function router(subscribe) {
 
     switch (historyAction) {
       case ACTION_POP: {
-        conductor.pop();
+        router.pop();
         return;
       }
       case ACTION_RESET: {
-        conductor.reset();
+        router.reset();
         return;
       }
       default:
@@ -51,7 +51,7 @@ export default function router(subscribe) {
       return;
     }
 
-    const { pathname: currentPathname } = getCurrentRoute();
+    const { pathname: currentPathname } = getCurrentRoute(state);
 
     // Prevent the current route from being pushed again.
     if (historyAction === ACTION_PUSH && location === currentPathname) {
@@ -85,7 +85,7 @@ export default function router(subscribe) {
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
-        const { pathname } = getCurrentRoute();
+        const { pathname } = getCurrentRoute(state);
         LoadingProvider.setLoading(pathname);
 
         try {
@@ -124,7 +124,7 @@ export default function router(subscribe) {
     // If there is one of the known protocols in the url.
     if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) {
-        handler.openExternalLink(location, historyAction);
+        handler.openExternalLink(location, historyAction, state);
       } else if (handler.isNativeLink(location)) {
         handler.openNativeLink(location);
       }
@@ -133,22 +133,32 @@ export default function router(subscribe) {
     }
 
     if (location && handler.isLegacyPage(location)) {
-      handler.openLegacy(location, historyAction);
+      handler.openLegacy(location, historyAction, state);
       return;
     }
 
     if (location && handler.isLegacyLink(location)) {
-      handler.openLegacyLink(location, historyAction);
+      handler.openLegacyLink(location, historyAction, state);
       return;
     }
 
     switch (historyAction) {
       case ACTION_PUSH: {
-        conductor.push(location, routeState, silent);
+        router.push({
+          pathname: location,
+          state: routeState,
+          emitBefore: silent,
+          emitAfter: silent,
+        });
         break;
       }
       case ACTION_REPLACE: {
-        conductor.replace(location, routeState, silent);
+        router.replace({
+          pathname: location,
+          state: routeState,
+          emitBefore: silent,
+          emitAfter: silent,
+        });
         break;
       }
       default:

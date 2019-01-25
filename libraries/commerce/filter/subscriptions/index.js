@@ -1,4 +1,4 @@
-import getFilters from '../actions/getFilters';
+import fetchFilters from '../actions/fetchFilters';
 import { filterDidEnter$ } from '../streams';
 
 /**
@@ -7,6 +7,6 @@ import { filterDidEnter$ } from '../streams';
  */
 export default function filters(subscribe) {
   subscribe(filterDidEnter$, ({ dispatch }) => {
-    dispatch(getFilters());
+    dispatch(fetchFilters());
   });
 }

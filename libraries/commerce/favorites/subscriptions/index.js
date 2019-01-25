@@ -4,7 +4,7 @@ import {
   shouldFetchFreshFavorites$,
   favoritesSyncIdle$,
 } from '../streams';
-import getFavorites from '../actions/getFavorites';
+import fetchFavorites from '../actions/fetchFavorites';
 import { FETCH_FAVORITES_THROTTLE } from '../constants';
 
 /**
@@ -16,11 +16,11 @@ export default function favorites(subscribe) {
   }
 
   subscribe(shouldFetchFavorites$, ({ dispatch }) => {
-    dispatch(getFavorites());
+    dispatch(fetchFavorites());
   });
 
   subscribe(shouldFetchFreshFavorites$, ({ dispatch }) => {
-    dispatch(getFavorites(true));
+    dispatch(fetchFavorites(true));
   });
 
   /*
@@ -31,7 +31,7 @@ export default function favorites(subscribe) {
   subscribe(favoritesSyncIdle$, ({ dispatch }) => {
     clearTimeout(fetchThrottle);
     fetchThrottle = setTimeout(() => {
-      dispatch(getFavorites(true));
+      dispatch(fetchFavorites(true));
     }, FETCH_FAVORITES_THROTTLE);
   });
 }

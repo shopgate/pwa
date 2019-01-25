@@ -63,10 +63,11 @@ exports[`<ZoomPanContainer /> applies correct position when panned 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -141,10 +142,11 @@ exports[`<ZoomPanContainer /> applies correct zoom factor when pinched 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -219,10 +221,11 @@ exports[`<ZoomPanContainer /> applies the correct zoom when double tapped 1`] = 
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -373,10 +376,11 @@ exports[`<ZoomPanContainer /> renders with children 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -405,10 +409,11 @@ exports[`<ZoomPanContainer /> renders with children 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -437,10 +442,11 @@ exports[`<ZoomPanContainer /> renders with children 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -469,10 +475,11 @@ exports[`<ZoomPanContainer /> renders with children 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -501,10 +508,11 @@ exports[`<ZoomPanContainer /> renders with children 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>
@@ -579,10 +587,11 @@ exports[`<ZoomPanContainer /> triggers the zoom event 1`] = `
                   ]
                 }
                 src="http://placekitten.com/300/300"
+                srcmap={null}
                 transition={null}
               >
                 <div
-                  className="css-326p2s "
+                  className="css-vfdozt "
                 />
               </Image>
             </TestElement>

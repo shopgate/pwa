@@ -1,5 +1,5 @@
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
-import getFavorites from './getFavorites';
+import fetchFavorites from './fetchFavorites';
 import {
   addFavorites,
   removeFavorites,
@@ -41,7 +41,7 @@ describe('Favorites - actions', () => {
      */
     const testFetch = (variant, done) => {
       const mockedDispatch = jest.fn();
-      const promise = getFavorites()(mockedDispatch, mockedGetState(variant));
+      const promise = fetchFavorites()(mockedDispatch, mockedGetState(variant));
       // Make sure test callback is executed after the internal fetchReviews one.
       setTimeout(() => {
         promise[variant]((result) => {
@@ -77,7 +77,7 @@ describe('Favorites - actions', () => {
 
     it('should not call pipeline when data is cached and valid', (done) => {
       const mockedDispatch = jest.fn();
-      const promise = getFavorites()(mockedDispatch, mockedGetState('then', { validCache: true }));
+      const promise = fetchFavorites()(mockedDispatch, mockedGetState('then', { validCache: true }));
       promise.then((result) => {
         expect(result).toBe(undefined);
         expect(mockedDispatch.mock.calls.length).toBe(0);

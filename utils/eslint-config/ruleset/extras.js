@@ -2,6 +2,7 @@ module.exports = {
   plugins: [
     'eslint-comments',
     'extra-rules',
+    'json',
     'cypress',
   ],
   rules: {

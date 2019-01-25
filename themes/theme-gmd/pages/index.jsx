@@ -31,10 +31,10 @@ import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
-import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
 import * as routes from './routes';
+import themeApi from '../themeApi';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
 
@@ -45,7 +45,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{ View }}>
+      <ThemeContext.Provider value={themeApi}>
         <LoadingProvider>
           <ToastProvider>
             <Portal name={APP_GLOBALS} />
@@ -54,21 +54,21 @@ const Pages = ({ store }) => (
               <Toaster render={props => <SnackBar {...props} />} />
               <Router history={history}>
                 <Route pattern={INDEX_PATH} component={routes.StartPage} />
-                <Route pattern={PAGE_PATTERN} component={routes.Page} preload />
+                <Route pattern={PAGE_PATTERN} component={routes.Page} />
                 <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} />
-                <Route pattern={CATEGORY_PATTERN} component={routes.Category} preload />
+                <Route pattern={CATEGORY_PATTERN} component={routes.Category} />
                 <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                <Route pattern={ITEM_PATTERN} component={routes.Product} preload />
+                <Route pattern={ITEM_PATTERN} component={routes.Product} />
                 <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
                 <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
                 <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
                 <Route pattern={CART_PATH} component={routes.Cart} />
                 {
-                appConfig.hasFavorites
-                && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
-              }
+                  appConfig.hasFavorites
+                  && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
+                }
                 <Route pattern={LOGIN_PATH} component={routes.Login} />
-                <Route pattern={SEARCH_PATTERN} component={routes.Search} preload />
+                <Route pattern={SEARCH_PATTERN} component={routes.Search} />
                 <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
                 {React.Children.map(routePortals, Component => Component)}
               </Router>

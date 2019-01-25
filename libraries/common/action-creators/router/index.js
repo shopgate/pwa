@@ -4,6 +4,7 @@ import {
   ROUTE_DID_ENTER,
   ROUTE_WILL_LEAVE,
   ROUTE_DID_LEAVE,
+  ROUTE_DID_UPDATE,
 } from '../../constants/ActionTypes';
 
 /**
@@ -65,6 +66,18 @@ export const routeWillLeave = (route, historyAction) => ({
  */
 export const routeDidLeave = (route, historyAction) => ({
   type: ROUTE_DID_LEAVE,
+  route,
+  historyAction,
+});
+
+/**
+ * Creates the dispatched ROUTE_DID_UPDATE action object.
+ * @param {Object} route The route object.
+ * @param {string} historyAction The history action.
+ * @return {Object} The dispatched action object.
+ */
+export const routeDidUpdate = (route, historyAction) => ({
+  type: ROUTE_DID_UPDATE,
   route,
   historyAction,
 });

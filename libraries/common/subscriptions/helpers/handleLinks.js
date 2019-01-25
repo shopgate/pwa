@@ -1,11 +1,10 @@
-import conductor from '@virtuous/conductor';
-import { ACTION_REPLACE } from '@virtuous/conductor/constants';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import openPage from '@shopgate/pwa-core/commands/openPage';
+import { router, ACTION_REPLACE } from '@virtuous/conductor';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
+import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import authRoutes from '../../collections/AuthRoutes';
 
 const SHOPGATE_DOMAIN = 'shopgate.com';
@@ -157,16 +156,17 @@ export const sanitizeLink = (location) => {
  * Usually those routes are replaced with the protected route, but at redirects to a legacy app page
  * or the in-app-browser they need to be removed from history.
  * @param {string} historyAction The history action which was used to navigate.
+ * @param {Object} state The application state.
  */
-export const handleAppRedirect = (historyAction) => {
-  const { pathname } = getCurrentRoute();
+export const handleAppRedirect = (historyAction, state) => {
+  const { pathname } = getCurrentRoute(state);
 
   if (authRoutes.isProtector(pathname) && historyAction === ACTION_REPLACE) {
     /**
      * A replace action on a protector route indicates that the authentication was successful.
      * So the protector route can be popped from the history stack.
      */
-    conductor.pop();
+    router.pop();
   }
 };
 
@@ -174,8 +174,9 @@ export const handleAppRedirect = (historyAction) => {
  * Opens a link in the in-app-broweser.
  * @param {string} location The location to open.
  * @param {string} historyAction The history action which was used to open the link.
+ * @param {Object} state The application state.
  */
-export const openExternalLink = (location, historyAction) => {
+export const openExternalLink = (location, historyAction, state) => {
   showTab({
     targetTab: 'in_app_browser',
     animation: 'slideInFromBottom',
@@ -194,7 +195,7 @@ export const openExternalLink = (location, historyAction) => {
     },
   });
 
-  handleAppRedirect(historyAction);
+  handleAppRedirect(historyAction, state);
 };
 
 /**
@@ -205,8 +206,9 @@ export const openExternalLink = (location, historyAction) => {
  * @param {string} options.navigationType Type of the navigation bar that should be displayed.
  * @param {Function} options.backCallback Function that is executed when hitting the back button.
  * @param {string} options.historyAction The history action which was used to open the link.
+ * @param {Object} state The application state.
  */
-export const handleLegacyLink = (options) => {
+export const handleLegacyLink = (options, state) => {
   if (options.location) {
     let src = `sgapi:${options.location.substring(1)}`;
     // `sgapi` links must not end with slash.
@@ -237,7 +239,7 @@ export const handleLegacyLink = (options) => {
       });
     }
 
-    handleAppRedirect(options.historyAction);
+    handleAppRedirect(options.historyAction, state);
   }
 };
 
@@ -245,13 +247,14 @@ export const handleLegacyLink = (options) => {
  * Opens a legacy CMS page.
  * @param {string} location The location to open.
  * @param {string} historyAction The history action which was used to open the link.
+ * @param {Object} state The application state.
  */
-export const openLegacy = (location, historyAction) => {
+export const openLegacy = (location, historyAction, state) => {
   handleLegacyLink({
     targetTab: 'main',
     location,
     historyAction,
-  });
+  }, state);
 };
 
 /**
@@ -266,22 +269,23 @@ export const openNativeLink = (location) => {
  * Opens a legacy links.
  * @param {string} location The location to open.
  * @param {string} historyAction The history action which was used to open the link.
+ * @param {Object} state The application state.
  */
-export const openLegacyLink = (location, historyAction) => {
+export const openLegacyLink = (location, historyAction, state) => {
   const [route] = location.split('?');
 
   switch (route) {
     case LEGACY_LINK_ACCOUNT:
     case LEGACY_LINK_STOREFINDER:
     case LEGACY_LINK_CHANNEL:
-      openLegacy(location, historyAction);
+      openLegacy(location, historyAction, state);
       break;
     case LEGACY_LINK_ORDERS:
       handleLegacyLink({
         targetTab: 'main',
         location: '/orders',
         historyAction,
-      });
+      }, state);
       break;
     case LEGACY_LINK_CHECKOUT:
       handleLegacyLink({
@@ -291,14 +295,14 @@ export const openLegacyLink = (location, historyAction) => {
         location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
         historyAction,
-      });
+      }, state);
       break;
     case LEGACY_LINK_REGISTER:
       handleLegacyLink({
         targetTab: 'main',
         location: '/register/default',
         historyAction,
-      });
+      }, state);
       break;
     case LEGACY_LINK_REGISTER_GUEST:
       handleLegacyLink({
@@ -313,7 +317,7 @@ export const openLegacyLink = (location, historyAction) => {
         targetTab: 'main',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
         historyAction,
-      });
+      }, state);
       break;
     default:
       logger.warn(`openLegacyLink not handled: ${location}`);

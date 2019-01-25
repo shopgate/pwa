@@ -2,10 +2,10 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 export default css({
-  bottom: 0,
+  bottom: 'var(--safe-area-inset-bottom)',
   left: 0,
-  overflowY: 'scroll',
-  position: 'fixed',
+  overflow: 'auto',
+  position: 'absolute',
   right: 0,
   top: `calc(${variables.navigator.height}px + var(--safe-area-inset-top))`,
 });

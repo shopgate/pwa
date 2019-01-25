@@ -1,8 +1,8 @@
-import getFilters from '../actions/getFilters';
+import fetchFilters from '../actions/fetchFilters';
 import { filterDidEnter$ } from '../streams';
 import subscriptions from './index';
 
-jest.mock('../actions/getFilters', () => jest.fn().mockReturnValue('getFilters'));
+jest.mock('../actions/fetchFilters', () => jest.fn().mockReturnValue('fetchFilters'));
 
 describe('Filter subscriptions', () => {
   const subscribe = jest.fn();
@@ -32,10 +32,10 @@ describe('Filter subscriptions', () => {
 
     it('should call get filters when stream emits', () => {
       callback({ dispatch });
-      expect(getFilters).toHaveBeenCalledTimes(1);
-      expect(getFilters).toHaveBeenCalledWith();
+      expect(fetchFilters).toHaveBeenCalledTimes(1);
+      expect(fetchFilters).toHaveBeenCalledWith();
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(getFilters());
+      expect(dispatch).toHaveBeenCalledWith(fetchFilters());
     });
   });
 });

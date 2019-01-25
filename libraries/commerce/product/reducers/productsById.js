@@ -4,6 +4,7 @@ import {
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCTS,
   ERROR_PRODUCT,
+  UPDATE_METADATA,
   EXPIRE_PRODUCTS_BY_ID,
 } from '../constants';
 import { RECEIVE_FAVORITES } from '../../favorites/constants';
@@ -50,6 +51,30 @@ export default function productsById(state = {}, action) {
           isFetching: false,
         },
       };
+    case UPDATE_METADATA: {
+      const { productData = {} } = state[action.productId];
+
+      // Merge the given metadata with the existing metadata.
+      const metadata = {
+        ...productData.metadata,
+        ...action.metadata,
+      };
+
+      // Put the metadata back into the productData.
+      const updatedProductData = {
+        ...productData,
+        metadata,
+      };
+
+      // Put the updated product back into the state.
+      return {
+        ...state,
+        [action.productId]: {
+          ...state[action.productId],
+          productData: updatedProductData,
+        },
+      };
+    }
 
     case EXPIRE_PRODUCTS_BY_ID: {
       const products = { ...state };

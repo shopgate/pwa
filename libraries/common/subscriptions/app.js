@@ -5,11 +5,22 @@ import {
   closeInAppBrowser,
   onload,
 } from '@shopgate/pwa-core';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
-import * as events from '@virtuous/conductor-events';
+import {
+  onWillPush,
+  onDidPush,
+  onWillPop,
+  onDidPop,
+  onWillReplace,
+  onDidReplace,
+  onWillReset,
+  onDidReset,
+  onUpdate,
+} from '@virtuous/conductor';
 import { appError, pipelineError } from '../action-creators';
 import {
   historyPush,
@@ -21,6 +32,7 @@ import {
   routeDidReplace,
   routeWillReset,
   routeDidReset,
+  routeDidUpdate,
 } from '../actions/router';
 import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
@@ -47,14 +59,15 @@ export default function app(subscribe) {
 
     dispatch(registerLinkEvents(action.location));
 
-    events.onWillPush(id => dispatch(routeWillPush(id)));
-    events.onDidPush(id => dispatch(routeDidPush(id)));
-    events.onWillPop(() => dispatch(routeWillPop()));
-    events.onDidPop(() => dispatch(routeDidPop()));
-    events.onWillReplace(id => dispatch(routeWillReplace(id)));
-    events.onDidReplace(id => dispatch(routeDidReplace(id)));
-    events.onWillReset(id => dispatch(routeWillReset(id)));
-    events.onDidReset(id => dispatch(routeDidReset(id)));
+    onWillPush(({ prev, next }) => dispatch(routeWillPush(prev, next)));
+    onDidPush(({ prev, next }) => dispatch(routeDidPush(prev, next)));
+    onWillPop(({ prev, next }) => dispatch(routeWillPop(prev, next)));
+    onDidPop(({ prev, next }) => dispatch(routeDidPop(prev, next)));
+    onWillReplace(({ prev, next }) => dispatch(routeWillReplace(prev, next)));
+    onDidReplace(({ prev, next }) => dispatch(routeDidReplace(prev, next)));
+    onWillReset(({ prev, next }) => dispatch(routeWillReset(prev, next)));
+    onDidReset(({ prev, next }) => dispatch(routeDidReset(prev, next)));
+    onUpdate(updated => dispatch(routeDidUpdate(updated)));
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
@@ -75,6 +88,7 @@ export default function app(subscribe) {
   subscribe(appDidStart$, ({ dispatch, getState }) => {
     // Register for custom events
     registerEvents([
+      EVENT_KEYBOARD_WILL_CHANGE,
       'showPreviousTab',
       'closeInAppBrowser',
       // TODO The iOS apps don't emit the event to the webviews without registration till Lib 15.2.

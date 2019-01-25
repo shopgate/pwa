@@ -20,18 +20,15 @@ const updateProductsInCart = updateData => (dispatch) => {
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
-      const requestsPending = request.hasPendingRequests();
-
       if (messages && messagesHaveErrors(messages)) {
-        dispatch(errorUpdateProductsInCart(updateData, messages, requestsPending));
+        dispatch(errorUpdateProductsInCart(updateData, messages));
         return;
       }
 
-      dispatch(successUpdateProductsInCart(requestsPending));
+      dispatch(successUpdateProductsInCart());
     })
     .catch((error) => {
-      const requestsPending = request.hasPendingRequests();
-      dispatch(errorUpdateProductsInCart(updateData, undefined, requestsPending));
+      dispatch(errorUpdateProductsInCart(updateData));
       logger.error(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS, error);
     });
 };

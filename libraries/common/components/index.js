@@ -1,2 +1,4 @@
-export { default as Route } from '@virtuous/react-conductor/Route';
-export { default as Router } from '@virtuous/react-conductor/Router';
+export { default as Ellipsis } from './Ellipsis';
+export { default as Portal } from './Portal';
+export { Router, Route } from '@virtuous/react-conductor';
+export { default as Slider } from './Slider';

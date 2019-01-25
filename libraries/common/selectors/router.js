@@ -1,14 +1,13 @@
 import { createSelector } from 'reselect';
-import getCurrentRouteHelper from '@virtuous/conductor-helpers/getCurrentRoute';
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @return {Object}
  */
 export const getRouterState = state => state.router;
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @return {Object}
  */
 export const getRouterStack = createSelector(
@@ -17,61 +16,67 @@ export const getRouterStack = createSelector(
 );
 
 /**
- * @param {Object} state The global state.
- * @returns {string|null} The current history entry.
+ * @param {Object} state The application state.
+ * @returns {Object|null}
  */
 export const getCurrentRoute = createSelector(
-  getRouterStack,
-  (stack) => {
-    if (!stack.length) {
+  getRouterState,
+  (router) => {
+    if (!router || !router.currentRoute) {
       return null;
     }
 
-    return stack[stack.length - 1];
+    return router.currentRoute;
   }
 );
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {Object|null}
  */
-export const getCurrentParams = () => {
-  const route = getCurrentRouteHelper();
-  if (!route || !route.params) {
-    return null;
-  }
+export const getCurrentParams = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.params) {
+      return null;
+    }
 
-  return route.params;
-};
+    return route.params;
+  }
+);
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {string|null} The current history pathname.
  */
-export const getCurrentPathname = () => {
-  const route = getCurrentRouteHelper();
-  if (!route || !route.pathname) {
-    return null;
-  }
+export const getCurrentPathname = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.pathname) {
+      return null;
+    }
 
-  return route.pathname;
-};
+    return route.pathname;
+  }
+);
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {Object|null} The current history query.
  */
-export const getCurrentQuery = () => {
-  const route = getCurrentRouteHelper();
-  if (!route || !route.query) {
-    return null;
-  }
+export const getCurrentQuery = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.query) {
+      return null;
+    }
 
-  return route.query;
-};
+    return route.query;
+  }
+);
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {string|null} The current history search query.
  */
 export const getCurrentSearchQuery = createSelector(
@@ -86,14 +91,16 @@ export const getCurrentSearchQuery = createSelector(
 );
 
 /**
- * @param {Object} state The global state.
+ * @param {Object} state The application state.
  * @returns {string|null} The current history entry state.
  */
-export const getCurrentState = () => {
-  const route = getCurrentRouteHelper();
-  if (!route || !route.state) {
-    return null;
-  }
+export const getCurrentState = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.state) {
+      return null;
+    }
 
-  return route.state;
-};
+    return route.state;
+  }
+);

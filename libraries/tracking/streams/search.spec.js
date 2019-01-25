@@ -9,12 +9,19 @@ import { searchIsReady$ } from './search';
 
 let mockedRoutePattern;
 let mockedSearchQuery;
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
-  pattern: mockedRoutePattern,
-  query: {
-    ...(mockedSearchQuery && { s: mockedSearchQuery }),
-  },
-  state: {},
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+  getCurrentRoute: () => ({
+    pattern: mockedRoutePattern,
+    query: {
+      ...(mockedSearchQuery && { s: mockedSearchQuery }),
+    },
+    state: {},
+  }),
+  getCurrentQuery: () => ({}),
+  getRouterStack: () => ({}),
+  getCurrentState: () => ({}),
+  getCurrentParams: () => ({}),
+  getCurrentSearchQuery: () => mockedSearchQuery,
 }));
 
 /**
@@ -41,6 +48,7 @@ describe('Search streams', () => {
   let dispatch;
 
   beforeEach(() => {
+    jest.resetAllMocks();
     jest.clearAllMocks();
 
     mockedRoutePattern = '';
@@ -62,7 +70,7 @@ describe('Search streams', () => {
       });
 
       it('should not emit when search route is active but no search results came in yet', () => {
-        dispatch(routeDidEnterWrapped(SEARCH_PATTERN));
+        dispatch(routeDidEnterWrapped(SEARCH_PATTERN, searchQuery));
         expect(searchIsReadySubscriber).not.toHaveBeenCalled();
       });
 

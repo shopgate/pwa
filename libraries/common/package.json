@@ -16,11 +16,8 @@
   ],
   "dependencies": {
     "@shopgate/pwa-benchmark": "6.0.1",
-    "@virtuous/conductor": "^1.0.0",
-    "@virtuous/conductor-events": "^1.0.0",
-    "@virtuous/conductor-helpers": "^1.0.0",
-    "@virtuous/react-conductor": "^1.0.0",
-    "@virtuous/redux-conductor": "^1.0.0",
+    "@virtuous/conductor": "^2.0.5",
+    "@virtuous/react-conductor": "^2.0.5",
     "@virtuous/redux-persister": "1.1.0-beta.7",
     "classnames": "^2.2.5",
     "crypto-js": "3.1.9-1",

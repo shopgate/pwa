@@ -18,14 +18,13 @@ class Image extends Component {
     onError: PropTypes.func,
     onLoad: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
-    resolutions: PropTypes.arrayOf((
-      PropTypes.shape({
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-        blur: PropTypes.number,
-      })
-    )),
+    resolutions: PropTypes.arrayOf(PropTypes.shape({
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+      blur: PropTypes.number,
+    })),
     src: PropTypes.string,
+    srcmap: PropTypes.arrayOf(PropTypes.string),
     transition: PropTypes.shape(),
   };
 
@@ -51,6 +50,7 @@ class Image extends Component {
       },
     ],
     src: null,
+    srcmap: null,
     transition: null,
   };
 
@@ -60,16 +60,22 @@ class Image extends Component {
    */
   constructor(props) {
     super(props);
-
     /**
      * The initial component state.
      * Preloads all resolutions if already cached will
      * set the state for the resolution to true.
      * @type {Object}
      */
-    this.state = {
-      loaded: props.resolutions.map((resolution, index) => this.loadImage(this.props.src, index)),
-    };
+    if (props.srcmap) {
+      this.state = {
+        loaded: props.srcmap.map((image, index) => this.loadImage(image, index)),
+      };
+    } else {
+      this.state = {
+        loaded: props.resolutions.map((resolution, index) => this.loadImage(this.props.src, index)),
+      };
+    }
+
     this.mounted = false;
   }
 
@@ -122,7 +128,11 @@ class Image extends Component {
       }),
     });
 
-    if (resolutionIndex === (this.props.resolutions.length - 1)) {
+    if (!this.props.srcmap && resolutionIndex === this.props.resolutions.length - 1) {
+      this.props.highestResolutionLoaded();
+    }
+
+    if (this.props.srcmap && resolutionIndex === this.props.srcmap.length - 1) {
       this.props.highestResolutionLoaded();
     }
   }
@@ -146,8 +156,11 @@ class Image extends Component {
         this.props.onError();
       }
     };
-
-    image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
+    if (!this.props.srcmap) {
+      image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
+    } else {
+      image.src = src;
+    }
 
     return image.complete;
   }
@@ -161,18 +174,20 @@ class Image extends Component {
     let src = null;
 
     if (index > -1) {
-      src = getActualImageSource(this.props.src, this.props.resolutions[index]);
+      src = !this.props.srcmap
+        ? getActualImageSource(this.props.src, this.props.resolutions[index])
+        : this.props.srcmap[index];
     }
 
     let innerImage = null;
 
     if (src && !this.props.forcePlaceholder) {
       // Applies a blur effect to every resolution that has the blur flag set to true.
-      const inlineStyles = {};
-
-      if (this.props.resolutions[index].blur) {
+      const inlineStyles = {
+        width: '100%',
+      };
+      if (!this.props.srcmap && this.props.resolutions[index].blur) {
         inlineStyles.filter = `blur(${this.props.resolutions[index].blur}px)`;
-        inlineStyles.width = '100%';
       }
 
       // Renders the actual image.
@@ -188,17 +203,13 @@ class Image extends Component {
       );
     }
 
-    const containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);
+    let containerStyle = styles.container(this.props.backgroundColor, '100%');
+    if (!this.props.srcmap) {
+      containerStyle = styles.container(this.props.backgroundColor, `${this.imageRatio}%`);
+    }
 
-    if (
-      !this.props.animating ||
-      !this.props.transition
-    ) {
-      return (
-        <div className={`${containerStyle} ${this.props.className}`}>
-          {innerImage}
-        </div>
-      );
+    if (!this.props.animating || !this.props.transition) {
+      return <div className={`${containerStyle} ${this.props.className}`}>{innerImage}</div>;
     }
 
     return (

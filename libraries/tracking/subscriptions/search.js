@@ -1,4 +1,4 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { searchIsReady$ } from '../streams/search';
 import getTrackingData from '../selectors/search';
 import { track } from '../helpers/index';
@@ -12,7 +12,7 @@ export default function search(subscribe) {
     const state = getState();
 
     track('search', {
-      search: getTrackingData(state, getCurrentRoute()),
+      search: getTrackingData(state, getCurrentRoute(state)),
     }, state);
   });
 }
