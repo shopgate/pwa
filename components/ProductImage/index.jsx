@@ -19,6 +19,7 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
@@ -28,11 +29,13 @@ class ProductImage extends Component {
       blur: PropTypes.number,
     })),
     src: PropTypes.string,
+    srcmap: PropTypes.arrayOf(PropTypes.string),
   };
 
   static defaultProps = {
     alt: null,
     animating: true,
+    className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => {},
     ratio: null,
@@ -48,6 +51,7 @@ class ProductImage extends Component {
       },
     ],
     src: null,
+    srcmap: null,
   };
 
   /**
@@ -57,8 +61,9 @@ class ProductImage extends Component {
   constructor(props) {
     super(props);
 
+    const showPlaceholder = !props.src && (props.srcmap === null || props.srcmap.length === 0);
     this.state = {
-      showPlaceholder: props.src === null,
+      showPlaceholder,
     };
   }
 
@@ -69,8 +74,9 @@ class ProductImage extends Component {
   componentWillReceiveProps(nextProps) {
     // Disable the placeholder to give the real image a new chance to load.
     // If we do not have a src property set then just show the placeholder instead.
+    const showPlaceholder = !nextProps.src && (!nextProps.srcmap || nextProps.srcmap.length === 0);
     this.setState({
-      showPlaceholder: nextProps.src === null,
+      showPlaceholder,
     });
   }
 
@@ -100,7 +106,7 @@ class ProductImage extends Component {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={styles.placeholderContainer} >
+        <div className={styles.placeholderContainer}>
           <div className={styles.placeholderContent} data-test-id="placeHolder">
             <Placeholder className={styles.placeholder} />
           </div>
@@ -110,11 +116,7 @@ class ProductImage extends Component {
 
     // Return the actual image.
     return (
-      <Image
-        {...this.props}
-        backgroundColor={colors.light}
-        onError={this.imageLoadingFailed}
-      />
+      <Image {...this.props} backgroundColor={colors.light} onError={this.imageLoadingFailed} />
     );
   }
 }

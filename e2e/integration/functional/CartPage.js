@@ -105,17 +105,21 @@ describe('functional tests cart page', () => {
       .last()
       .should('be.visible')
       .last()
-      .click();
+      .click()
+      .wait(2000);
     cy.get(els.variantPickerColor)
       .should('be.visible')
-      .click();
+      .click()
+      .wait(2000);
     cy.get(els.blackColorVariant)
       .should('be.visible')
       .last()
-      .click();
+      .click()
+      .wait(2000);
     cy.get(els.variantPickerShoeSize)
       .should('be.visible')
-      .click();
+      .click()
+      .wait(2000);
     cy.get(els.size5ShoeSizeVariant)
       .should('be.visible')
       .last()
@@ -126,7 +130,8 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.cartButtonProductPage)
       .should('be.visible')
-      .click();
+      .click()
+      .wait(2000);
     cy.get(els.productWithChild1ColorBlackSize5CartItem)
       .should('be.visible');
   });

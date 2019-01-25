@@ -13,11 +13,11 @@ describe('AddressBook Address details', () => {
   it('should add a new address', () => {
     openNavDrawer();
 
-    cy.window().spyAction('OPEN_LINK', () => {
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.userMenuAddressBook).should('be.visible').click();
     });
 
-    cy.window().spyAction('OPEN_LINK', () => {
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.addressListAddButton).should('be.visible').click();
     });
 
@@ -46,7 +46,7 @@ describe('AddressBook Address details', () => {
     });
 
     // Delete address
-    cy.window().spyAction('UPDATE_HISTORY', () => {
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
       cy.get('@userAddressId').then((id) => {
         cy.get(els.addressListPageAddress(id)).should('be.visible').click();
       });
@@ -57,11 +57,11 @@ describe('AddressBook Address details', () => {
         .should('be.visible').click();
     }).its('options.confirm').should('contain', 'address.delete.button');
 
-    cy.window().spyAction('CREATE_TOAST', () => {
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.modal).within(() => {
         cy.contains('Löschen').should('be.visible').click();
       });
-    }).its('options.message').should('contain', 'address.delete.successMessage');
+    });
 
     cy.url().should('include', '/user/addresses');
     cy.get('@userAddressId').then((id) => {

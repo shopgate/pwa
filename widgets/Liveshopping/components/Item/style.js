@@ -2,16 +2,12 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const wrapper = css({
-  padding: '0px 10px',
-});
-
 const pane = {
   width: '50%',
   background: colors.light,
 };
 
-const imagePane = css({
+const image = css({
   ...pane,
 }).toString();
 
@@ -40,11 +36,13 @@ const price = css({
   lineHeight: 1,
 }).toString();
 
-const cardTitle = css({
-  fontWeight: 500,
-  lineHeight: 1.25,
+const card = {
+  margin: '5px 15px 10px',
+};
+
+const title = {
   marginBottom: variables.gap.small * 0.5,
-}).toString();
+};
 
 const timer = css({
   fontSize: '0.875rem',
@@ -54,12 +52,12 @@ const timer = css({
 }).toString();
 
 export default {
-  wrapper,
-  imagePane,
+  image,
   infoPane,
   priceGrid,
   priceStriked,
   price,
-  cardTitle,
+  card,
+  title,
   timer,
 };

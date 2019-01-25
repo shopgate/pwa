@@ -54,9 +54,9 @@ class ProductContent extends PureComponent {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    let productId = (nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId);
+    let productId = nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId;
     let { variantId } = nextProps;
-    const productIdChanged = (this.props.productId !== nextProps.productId);
+    const productIdChanged = this.props.productId !== nextProps.productId;
 
     if (productIdChanged && nextProps.isVariant) {
       if (this.props.baseProductId) {
@@ -86,7 +86,7 @@ class ProductContent extends PureComponent {
         [optionId]: value,
       },
     }));
-  }
+  };
 
   /**
    * @return {JSX}

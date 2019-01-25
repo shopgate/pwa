@@ -1,35 +1,36 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Portal } from '@shopgate/pwa-common/components';
+import {
+  APP_BAR_CLOSE_BEFORE,
+  APP_BAR_CLOSE,
+  APP_BAR_CLOSE_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { CrossIcon } from '@shopgate/pwa-ui-shared';
 import DefaultBar from '../DefaultBar';
 import connect from './connector';
 
 /**
- * The CloseBar component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class CloseBar extends PureComponent {
-  static propTypes = {
-    goBack: PropTypes.func.isRequired,
-  };
+function CloseBar({ goBack, ...props }) {
+  const left = <AppBar.Icon icon={CrossIcon} onClick={goBack} />;
 
-  /**
-   * @returns {JSX}
-   */
-  left = () => {
-    const { goBack } = this.props;
-    return <AppBar.Icon key="left" icon={CrossIcon} onClick={goBack} />;
-  }
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { goBack, ...rest } = this.props;
-    return (
-      <DefaultBar left={this.left()} right={null} {...rest} />
-    );
-  }
+  return (
+    <Fragment>
+      <Portal name={APP_BAR_CLOSE_BEFORE} />
+      <Portal name={APP_BAR_CLOSE}>
+        <DefaultBar left={left} right={null} {...props} />
+      </Portal>
+      <Portal name={APP_BAR_CLOSE_AFTER} />
+    </Fragment>
+  );
 }
+
+CloseBar.propTypes = {
+  goBack: PropTypes.func.isRequired,
+};
 
 export default connect(CloseBar);
