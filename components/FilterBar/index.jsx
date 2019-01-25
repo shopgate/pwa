@@ -41,7 +41,7 @@ class FilterBar extends Component {
   }
 
   /**
-   * @param {Object} nextProps The next set of component props.
+   * @param {Object} nextProps The next props of the component.
    * @param {Object} nextState The next state of the component.
    * @returns {boolean}
    */

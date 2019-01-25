@@ -7,6 +7,9 @@ import {
   PRODUCT_CTAS,
   PRODUCT_CTAS_AFTER,
   PRODUCT_CTAS_BEFORE,
+  PRODUCT_CTAS_FAVORITES,
+  PRODUCT_CTAS_FAVORITES_BEFORE,
+  PRODUCT_CTAS_FAVORITES_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import styles from './style';
 import connect from './connector';
@@ -21,12 +24,16 @@ const CTAButtons = ({ isFavorite, productId }) => (
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
       <div className={styles.buttons} >
-        <FavoritesButton
-          className={styles.favButton}
-          rippleClassName={styles.ripple}
-          active={isFavorite}
-          productId={productId}
-        />
+        <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
+        <Portal name={PRODUCT_CTAS_FAVORITES}>
+          <FavoritesButton
+            className={styles.favButton}
+            rippleClassName={styles.ripple}
+            active={isFavorite}
+            productId={productId}
+          />
+        </Portal>
+        <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
       </div>
     </Portal>
     <Portal name={PRODUCT_CTAS_AFTER} />

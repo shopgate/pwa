@@ -8,7 +8,7 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
 import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
-import conductor from '@virtuous/conductor';
+import { router } from '@virtuous/conductor';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 import styles from './style';
@@ -102,8 +102,9 @@ class SearchField extends Component {
    * @param {string} value The updated value.
    */
   update = (value) => {
-    this.fetchSuggestions(value);
-    this.setState({ query: value });
+    const query = value.trim();
+    this.fetchSuggestions(query);
+    this.setState({ query });
   };
 
   /**
@@ -138,7 +139,12 @@ class SearchField extends Component {
     e.preventDefault();
 
     const query = searchQuery || this.state.query;
-    conductor.update(this.props.pageId, { query });
+
+    if (!query) {
+      return;
+    }
+
+    router.update(this.props.pageId, { query });
 
     this.setState({ focused: false });
     this.input.blur();

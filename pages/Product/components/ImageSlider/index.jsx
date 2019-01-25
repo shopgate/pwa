@@ -1,5 +1,6 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PRODUCT_IMAGE,
@@ -11,7 +12,7 @@ import ProductImage from 'Components/ProductImage';
 import BaseImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import connect from './connector';
 
-const resolutions = [
+const fallbackResolutions = [
   {
     width: 440,
     height: 440,
@@ -23,12 +24,30 @@ const resolutions = [
 ];
 
 /**
+ * @param {Array} images array of format images
+ * @returns {Array} array of indexed images
+ */
+const getImagesByIndex = (images) => {
+  const imagesByIndex = [];
+
+  images.forEach((format) => {
+    if (!format.sources || !format.sources.length) return;
+    format.sources.forEach((src, index) => {
+      if (!imagesByIndex[index]) imagesByIndex[index] = [];
+      imagesByIndex[index].push(src);
+    });
+  });
+
+  return imagesByIndex;
+};
+
+/**
  * The product image slider component.
  * @param {number} currentSlide The index of the current visible slide.
  */
-class ImageSlider extends PureComponent {
+class ImageSlider extends Component {
   static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string),
+    images: PropTypes.arrayOf(PropTypes.shape()),
     navigate: PropTypes.func,
     product: PropTypes.shape(),
   };
@@ -36,15 +55,31 @@ class ImageSlider extends PureComponent {
   static defaultProps = {
     images: null,
     product: null,
-    navigate: () => {},
+    navigate: () => { },
   };
+
+  /**
+   * @param {Object} nextProps the next props
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) {
+      return true;
+    }
+
+    if (this.props.images && nextProps.images) {
+      if (this.props.images.length !== nextProps.images.length) return true;
+    }
+
+    return !isEqual(this.props.images, nextProps.images);
+  }
 
   currentSlide = 0;
 
   handleOpenGallery = () => {
     const { images } = this.props;
 
-    if (!images || !images.length) {
+    if (!images || (Array.isArray(images) && !images.length)) {
       return;
     }
 
@@ -61,28 +96,35 @@ class ImageSlider extends PureComponent {
    */
   render() {
     const { product, images } = this.props;
+    let content;
 
-    let content = null;
+    if (product && Array.isArray(images)) {
+      const imagesByIndex = getImagesByIndex(images);
 
-    if (!product || !images || images.length === 0) {
+      if (imagesByIndex.length) {
+        content = (
+          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
+            {imagesByIndex.map((imagesInIndex, index) =>
+              (
+                <ProductImage
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`${product.id}-${index}`}
+                  srcmap={imagesInIndex}
+                  animating={false}
+                />
+              ))}
+          </BaseImageSlider>
+        );
+      }
+    }
+
+    if (!content) {
       content = (
         <ProductImage
           src={product ? product.featuredImageUrl : null}
           forcePlaceholder={!product}
-          resolutions={resolutions}
+          resolutions={fallbackResolutions}
         />
-      );
-    } else {
-      content = (
-        <BaseImageSlider
-          loop
-          indicators
-          onSlideChange={this.handleSlideChange}
-        >
-          {images.map(image => (
-            <ProductImage key={image} src={image} animating={false} resolutions={resolutions} />
-          ))}
-        </BaseImageSlider>
       );
     }
 
