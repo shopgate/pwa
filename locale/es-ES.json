@@ -9,7 +9,7 @@
   "titles": {
     "categories": "Todas las categorías",
     "filter": "Filtrar",
-    "cart": "Carrito",
+    "cart": "Cesta",
     "shipping": "Envío",
     "reviews": "Comentarios",
     "browse": "Buscar",
@@ -24,7 +24,7 @@
     "remove": "Quitar de favoritos",
     "removed": "Quitado de favoritos",
     "modal": {
-      "message": "Para agregar este producto a su carrito, seleccione las variantes.",
+      "message": "Para añadir este producto a la cesta, por favor, seleccione las variantes.",
       "confirm": "Seleccionar variantes"
     }
   },
@@ -54,8 +54,8 @@
     "pick_an_attribute": "Elegir un {0}",
     "tax_disclaimer": "* Incluye VAT más costo de envíos",
     "item_added": "{count, plural, =0 {# no se agregaron artículos} =1 {{count} artículo agregado} other {{count} artículos agregados}}",
-    "add_to_cart": "Agregar al carrito",
-    "go_to_cart": "Ir al carrito"
+    "add_to_cart": "Añadir a la cesta",
+    "go_to_cart": "Ir a la cesta"
   },
   "category": {
     "error": {
@@ -96,12 +96,12 @@
     "checkout": "Pagar",
     "remove": "Quitar",
     "edit": "Editar",
-    "empty": "Su carrito está vacío",
+    "empty": "Su cesta está vacía",
     "continue": "Continuar comprando",
     "redeem_coupon": "Ingresar código del cupón",
     "coupon_code": "Código",
     "default_coupon_label": "Cupón",
-    "coupon_was_added": "¡El cupón fue agregado al carrito!",
+    "coupon_was_added": "¡El cupón ha sido añadido a su cesta!",
     "coupons_not_supported": "Agregue los cupones y vales de regalo mientras realiza el pago",
     "free_shipping": "Envío gratis"
   },
@@ -124,7 +124,7 @@
     "home": "Inicio",
     "categories": "Categorías",
     "my_orders": "Mis pedidos",
-    "cart": "Carrito de compras",
+    "cart": "Cesta de la compra",
     "shipping": "Métodos de envío",
     "about": "Sobre",
     "contact": "Contacto",
@@ -158,7 +158,7 @@
   "tab_bar": {
     "home": "Inicio",
     "browse": "Buscar",
-    "cart": "Carrito",
+    "cart": "Cesta",
     "more": "Más",
     "favorites": "Favoritos"
   }
