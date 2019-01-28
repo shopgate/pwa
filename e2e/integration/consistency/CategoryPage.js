@@ -28,6 +28,7 @@ describe('IOS11Test CategoryPage', () => {
 
   it('should check for Product in grid view', () => {
     cy.get(els.productWithManyProps4GridViewImage)
+      .scrollIntoView()
       .should('be.visible');
     cy.get(els.productWithManyProps4GridViewName)
       .should('be.visible');
@@ -38,7 +39,14 @@ describe('IOS11Test CategoryPage', () => {
   });
 
   it('should check for strike price', () => {
-    cy.visit('/category/3630');
+    cy.visit('/browse/');
+    cy.get(els.basicCategory)
+      .should('be.visible')
+      .click();
+    cy.get(els.productsWithStrikePriceCategory)
+      .should('be.visible')
+      .last()
+      .click();
     cy.get(els.productWithStrikePrice4GridViewStrikePrice)
       .should('be.visible');
     cy.get(els.productWithStrikePrice4GridViewDiscountBadge)
@@ -47,8 +55,17 @@ describe('IOS11Test CategoryPage', () => {
   });
 
   it('should check for rating stars', () => {
-    cy.visit('/category/3633');
+    cy.visit('/browse/');
+    cy.get(els.basicCategory)
+      .should('be.visible')
+      .click();
+    cy.get(els.productsWithRatingsCategory)
+      .should('be.visible')
+      .last()
+      .click();
     cy.get(els.productWithRating4GridViewRatingStars)
+      .last()
+      .scrollIntoView()
       .should('be.visible');
   });
 });
