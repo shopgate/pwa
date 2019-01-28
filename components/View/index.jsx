@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import colors from 'Styles/colors';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import Content from './components/Content';
 import ViewProvider from '../../providers/View';
 import { ViewContext } from './context';
@@ -17,23 +18,27 @@ const View = ({
   hasNavigator,
   noScrollOnKeyboard,
 }) => (
-  <section className={styles} style={{ background }}>
-    <ViewProvider>
-      <ViewContext.Consumer>
-        {({ setContentRef }) => (
-          <Content
-            hasNavigator={hasNavigator}
-            noScrollOnKeyboard={noScrollOnKeyboard}
-            setContentRef={setContentRef}
-          >
-            {children}
-          </Content>
-          )}
-      </ViewContext.Consumer>
+    <RouteContext.Consumer>
+      {({ visible }) => (
+        <section className={styles} style={{ background, display: visible ? 'block' : 'none' }}>
+          <ViewProvider>
+            <ViewContext.Consumer>
+              {({ setContentRef }) => (
+                <Content
+                  hasNavigator={hasNavigator}
+                  noScrollOnKeyboard={noScrollOnKeyboard}
+                  setContentRef={setContentRef}
+                >
+                  {children}
+                </Content>
+              )}
+            </ViewContext.Consumer>
 
-    </ViewProvider>
-  </section>
-);
+          </ViewProvider>
+        </section>
+      )}
+    </RouteContext.Consumer>
+  );
 
 View.propTypes = {
   background: PropTypes.string,
