@@ -4,7 +4,7 @@ import {
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
-} from '@virtuous/conductor';
+} from '@shopgate/pwa-common/helpers/router';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
@@ -18,7 +18,7 @@ import subscriptions from './router';
 jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
 
-jest.mock('@virtuous/conductor', () => ({
+jest.mock('@shopgate/pwa-common/helpers/router', () => ({
   ACTION_POP: 'ACTION_POP',
   ACTION_PUSH: 'ACTION_PUSH',
   ACTION_REPLACE: 'ACTION_REPLACE',
@@ -173,12 +173,7 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(router.push).toHaveBeenCalledWith({
-        emitBefore: true,
-        emitAfter: true,
-        pathname: params.pathname,
-        state: params.state,
-      });
+      testExpectedCall(router.push, params);
     });
 
     it('should handle the ACTION_REPLACE history action as expected', async () => {
@@ -189,12 +184,7 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(router.replace).toHaveBeenCalledWith({
-        emitBefore: false,
-        emitAfter: false,
-        pathname: '/some_route',
-        state: undefined,
-      });
+      testExpectedCall(router.replace, params);
     });
 
     it('should remove trailing slashes from pathnames', async () => {
@@ -206,11 +196,9 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(router.push).toHaveBeenCalledWith({
-        emitBefore: true,
-        emitAfter: true,
+      testExpectedCall(router.push, {
+        ...params,
         pathname: params.pathname.slice(0, -1),
-        state: params.state,
       });
     });
 
@@ -255,12 +243,7 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
 
-      expect(router.push).toHaveBeenCalledWith({
-        emitBefore: true,
-        emitAfter: true,
-        pathname: params.pathname,
-        state: params.state,
-      });
+      testExpectedCall(router.push, params);
     });
 
     it('should redirect to another location correctly', async () => {
@@ -272,10 +255,7 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(router.push).toHaveBeenCalledWith({
-        pathname: '/some_other_route',
-        state: params.state,
-      });
+      expect(router.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
     });
 
     it('should redirect to another location when the redirect handler is a promise', async () => {
@@ -293,10 +273,7 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       expect(router.push).toHaveBeenCalledTimes(1);
-      expect(router.push).toHaveBeenCalledWith({
-        pathname: '/some_other_route',
-        state: params.state,
-      });
+      expect(router.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
       expect(LoadingProvider.setLoading).toHaveBeenCalledWith(protectorRoute);
       expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
@@ -331,10 +308,8 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(router.push).toHaveBeenCalledWith({
-        pathname: '/some_route',
-        state: params.state,
-      });
+      testExpectedCall(router.push);
+      expect(router.push).toHaveBeenCalledWith('/some_route', params.state, params.silent);
     });
 
     it('should handle external links like expected', async () => {

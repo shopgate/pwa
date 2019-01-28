@@ -2,6 +2,7 @@ import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import {
   APP_BAR_DEFAULT_BEFORE,
   APP_BAR_DEFAULT,
@@ -15,6 +16,7 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    visible: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -34,6 +36,10 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    if (!this.props.visible) {
+      return null;
+    }
+
     const { title } = this.props;
     const { __ } = this.context.i18n();
     const center = <AppBar.Title title={__(title || '')} />;
@@ -57,4 +63,8 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-export default AppBarDefault;
+export default props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
+  </RouteContext.Consumer>
+);
