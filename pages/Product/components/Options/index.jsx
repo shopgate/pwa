@@ -7,6 +7,7 @@ import {
   PRODUCT_OPTIONS_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Option from './components/Option';
+import TextOption from './components/TextOption';
 import connect from './connector';
 
 /**
@@ -74,10 +75,20 @@ class Options extends PureComponent {
           {(options !== null) && (
             <div data-test-id="optionsPicker">
               {options.map((option) => {
-                if (option.type !== 'select') {
-                  return null;
-                }
-
+                if (option.type === 'text') {
+                  return (
+                    <TextOption
+                      key={option.id}
+                      id={option.id}
+                      label={option.label}
+                      value={currentOptions[option.id]}
+                      info={option.info}
+                      onChange={storeSelection}
+                      required={option.required}
+                      price={option.price}
+                    />
+                  );
+                } else if (option.type === 'select') {
                 return (
                   <Option
                     key={option.id}
@@ -88,6 +99,9 @@ class Options extends PureComponent {
                     onChange={storeSelection}
                   />
                 );
+                }
+                // unknown type
+                return null;
               })}
             </div>
           )}
