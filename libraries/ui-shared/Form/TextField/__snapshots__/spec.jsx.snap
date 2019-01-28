@@ -4,6 +4,7 @@ exports[`<TextField> should focus the input 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -28,14 +29,14 @@ exports[`<TextField> should focus the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -52,7 +53,7 @@ exports[`<TextField> should focus the input 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -84,7 +85,7 @@ exports[`<TextField> should focus the input 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
-                onFocusChange={[MockFunction]}
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value=""
@@ -99,7 +100,8 @@ exports[`<TextField> should focus the input 1`] = `
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
-                  onFocusChange={[MockFunction]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -118,6 +120,7 @@ exports[`<TextField> should focus the input 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value=""
                   />
@@ -169,6 +172,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -192,14 +196,14 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -216,7 +220,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -248,6 +252,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value=""
@@ -263,6 +268,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -281,6 +287,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value="foobar"
                   />
@@ -332,6 +339,7 @@ exports[`<TextField> should render a simple text field 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -355,14 +363,14 @@ exports[`<TextField> should render a simple text field 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -379,7 +387,7 @@ exports[`<TextField> should render a simple text field 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -411,6 +419,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value=""
@@ -426,6 +435,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -444,6 +454,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value=""
                   />
@@ -495,6 +506,7 @@ exports[`<TextField> should render the text field as password 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -519,14 +531,14 @@ exports[`<TextField> should render the text field as password 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -543,7 +555,7 @@ exports[`<TextField> should render the text field as password 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -575,6 +587,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 password={true}
                 type="text"
                 validateOnBlur={true}
@@ -591,6 +604,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={true}
@@ -609,6 +623,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="password"
                     value=""
                   />
@@ -660,6 +675,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -683,14 +699,14 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
         visible={false}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
@@ -707,7 +723,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -739,6 +755,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value="FooBar"
@@ -754,6 +771,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -772,6 +790,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value="FooBar"
                   />
@@ -823,6 +842,7 @@ exports[`<TextField> should sanitize the input 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -847,14 +867,14 @@ exports[`<TextField> should sanitize the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -871,7 +891,7 @@ exports[`<TextField> should sanitize the input 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -903,6 +923,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 onSanitize={[Function]}
                 type="text"
                 validateOnBlur={true}
@@ -919,6 +940,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -937,6 +959,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value="FOOBAR"
                   />
@@ -988,6 +1011,7 @@ exports[`<TextField> should show the error message 1`] = `
 <TextField
   className=""
   errorText="This is an error here"
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -1011,14 +1035,14 @@ exports[`<TextField> should show the error message 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -1035,7 +1059,7 @@ exports[`<TextField> should show the error message 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -1067,6 +1091,7 @@ exports[`<TextField> should show the error message 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value=""
@@ -1082,6 +1107,7 @@ exports[`<TextField> should show the error message 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -1100,6 +1126,7 @@ exports[`<TextField> should show the error message 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value=""
                   />
@@ -1156,6 +1183,7 @@ exports[`<TextField> should show the label 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label="This is the label"
   leftElement={null}
   multiLine={false}
@@ -1179,20 +1207,26 @@ exports[`<TextField> should show the label 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
-        placeholder=""
-        visible={false}
+        placeholder="This is the label"
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
             params={Object {}}
-            string=""
-          />
+            string="This is the label"
+          >
+            <span
+              className=""
+            >
+              This is the label
+            </span>
+          </Translate>
         </div>
       </Placeholder>
       <Label
@@ -1203,7 +1237,7 @@ exports[`<TextField> should show the label 1`] = `
         label="This is the label"
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -1241,6 +1275,7 @@ exports[`<TextField> should show the label 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value=""
@@ -1256,6 +1291,7 @@ exports[`<TextField> should show the label 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -1274,6 +1310,7 @@ exports[`<TextField> should show the label 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value=""
                   />
@@ -1325,6 +1362,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -1348,14 +1386,14 @@ exports[`<TextField> should show the placeholder text 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder="This is the placeholder text"
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -1378,7 +1416,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -1410,6 +1448,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value=""
@@ -1425,6 +1464,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -1443,6 +1483,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value=""
                   />
@@ -1494,6 +1535,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -1538,14 +1580,14 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -1562,7 +1604,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -1615,6 +1657,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                     ],
                   }
                 }
+                onFocusChange={[Function]}
                 type="text"
                 validateOnBlur={true}
                 value=""
@@ -1651,6 +1694,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                     }
                   }
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={[Function]}
                   password={false}
@@ -1669,6 +1713,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value="a"
                   />
@@ -1720,6 +1765,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
 <TextField
   className=""
   errorText=""
+  hasUnderline={true}
   label=""
   leftElement={null}
   multiLine={false}
@@ -1759,14 +1805,14 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -1783,7 +1829,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-input"
         >
           <Translate
@@ -1815,6 +1861,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
+                onFocusChange={[Function]}
                 onValidate={
                   [MockFunction] {
                     "calls": Array [
@@ -1846,6 +1893,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   name="test-input"
                   onChange={[Function]}
                   onFocusChange={[Function]}
+                  onKeyPress={[Function]}
                   onSanitize={[Function]}
                   onValidate={
                     [MockFunction] {
@@ -1879,6 +1927,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
+                    onKeyPress={[Function]}
                     type="text"
                     value=""
                   />
