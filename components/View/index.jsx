@@ -8,50 +8,67 @@ import { ViewContext } from './context';
 import styles from './style';
 
 /**
- * The View component.
+ * The View container component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const View = ({
+function ViewContainer({
   background,
   children,
   hasNavigator,
   noScrollOnKeyboard,
-}) => (
-  <RouteContext.Consumer>
-    {({ visible }) => (
-      <section className={styles} style={{ background, display: visible ? 'block' : 'none' }}>
-        <ViewProvider>
-          <ViewContext.Consumer>
-            {({ setContentRef }) => (
-              <Content
-                hasNavigator={hasNavigator}
-                noScrollOnKeyboard={noScrollOnKeyboard}
-                setContentRef={setContentRef}
-              >
-                {children}
-              </Content>
-              )}
-          </ViewContext.Consumer>
+  visible,
+}) {
+  const style = {
+    background,
+    display: visible ? 'block' : 'none',
+  };
 
-        </ViewProvider>
-      </section>
-      )}
-  </RouteContext.Consumer>
-);
+  return (
+    <section className={styles} style={style}>
+      <ViewProvider>
+        <ViewContext.Consumer>
+          {({ setContentRef }) => (
+            <Content
+              hasNavigator={hasNavigator}
+              noScrollOnKeyboard={noScrollOnKeyboard}
+              setContentRef={setContentRef}
+            >
+              {children}
+            </Content>
+          )}
+        </ViewContext.Consumer>
 
-View.propTypes = {
+      </ViewProvider>
+    </section>
+  );
+}
+
+ViewContainer.propTypes = {
+  visible: PropTypes.bool.isRequired,
   background: PropTypes.string,
   children: PropTypes.node,
   hasNavigator: PropTypes.bool,
   noScrollOnKeyboard: PropTypes.bool,
 };
 
-View.defaultProps = {
+ViewContainer.defaultProps = {
   background: colors.light,
   children: null,
   hasNavigator: true,
   noScrollOnKeyboard: false,
 };
 
-export default View;
+/**
+ * @param {Object} props The component props.
+ * @returns {JSX}
+ */
+export default function View(props) {
+  return (
+    <RouteContext.Consumer>
+      {({ visible }) => (
+        <ViewContainer {...props} visible={visible} />
+      )}
+    </RouteContext.Consumer>
+  );
+}
