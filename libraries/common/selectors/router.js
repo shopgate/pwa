@@ -21,12 +21,18 @@ export const getRouterStack = createSelector(
  */
 export const getCurrentRoute = createSelector(
   getRouterState,
-  (router) => {
+  getRouterStack,
+  (state, props = {}) => props.routeId,
+  (router, stack, routeId) => {
     if (!router || !router.currentRoute) {
       return null;
     }
 
-    return router.currentRoute;
+    if (!routeId) {
+      return router.currentRoute;
+    }
+
+    return stack.find(entry => entry.id === routeId);
   }
 );
 

@@ -8,6 +8,7 @@ import {
 
 const defaultState = {
   currentRoute: null,
+  stack: [],
 };
 
 /**
@@ -20,13 +21,13 @@ export default function router(state = defaultState, action) {
     case ROUTE_WILL_LEAVE: {
       return {
         ...state,
-        stack: stack.getAll(),
+        stack: Array.from(stack.getAll().values()),
       };
     }
     case ROUTE_WILL_ENTER:
       return {
         ...state,
-        stack: stack.getAll(),
+        stack: Array.from(stack.getAll().values()),
         currentRoute: cloneDeep(action.route),
       };
     case ROUTE_DID_UPDATE: {
@@ -36,7 +37,7 @@ export default function router(state = defaultState, action) {
       if (currentId === updatedId) {
         return {
           ...state,
-          stack: stack.getAll(),
+          stack: Array.from(stack.getAll().values()),
           currentRoute: cloneDeep(action.route),
         };
       }
