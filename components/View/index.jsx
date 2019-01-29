@@ -19,10 +19,6 @@ function ViewContainer({
   noScrollOnKeyboard,
   visible,
 }) {
-  if (!visible) {
-    return null;
-  }
-
   const style = {
     background,
     display: visible ? 'block' : 'none',
