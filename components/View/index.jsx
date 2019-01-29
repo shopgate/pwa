@@ -8,7 +8,7 @@ import { ViewContext } from './context';
 import styles from './style';
 
 /**
- * The View component.
+ * The View container component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
