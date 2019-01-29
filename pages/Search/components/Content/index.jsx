@@ -46,7 +46,7 @@ class SearchContent extends Component {
 
     return (
       <RouteContext.Consumer>
-        {({ state, query }) => (
+        {({ state, query, id: routeId }) => (
           <Fragment>
             <DefaultBar
               center={<AppBar.Title title={searchPhrase} onClick={this.showSearch} />}
@@ -56,6 +56,7 @@ class SearchContent extends Component {
               searchPhrase={searchPhrase}
               filters={state.filters}
               sort={query.sort || DEFAULT_SORT}
+              routeId={routeId}
             />
             {showNoResults && (
               <NoResults
@@ -65,7 +66,7 @@ class SearchContent extends Component {
               />
             )}
           </Fragment>
-          )}
+        )}
       </RouteContext.Consumer>
     );
   }
