@@ -4,7 +4,6 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import { redirects } from '@shopgate/pwa-common/collections';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { historyReset } from '@shopgate/pwa-common/actions/router';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
@@ -38,7 +37,10 @@ export default function cart(subscribe) {
    * Gets triggered when ever the local cart is out of
    * sync with the remote cart from the server.
    */
-  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
+  const cartNeedsSync$ = userDidUpdate$.merge(
+    remoteCartDidUpdate$,
+    checkoutSucceeded$
+  );
 
   /**
    * Gets triggered when the app is started or the cart route is entered.
@@ -141,13 +143,5 @@ export default function cart(subscribe) {
     if (coupon) {
       dispatch(addCouponsToCart([coupon]));
     }
-  });
-
-  /**
-   * Gets triggered, when the checkout was completed
-   */
-  subscribe(checkoutSucceeded$, ({ dispatch }) => {
-    dispatch(historyReset());
-    dispatch(fetchCart());
   });
 }
