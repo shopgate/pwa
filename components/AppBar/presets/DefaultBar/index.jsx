@@ -8,6 +8,7 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import ProgressBar from './components/ProgressBar';
 
 /**
@@ -15,6 +16,7 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    visible: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -34,6 +36,10 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    if (!this.props.visible) {
+      return null;
+    }
+
     const { title } = this.props;
     const { __ } = this.context.i18n();
     const center = <AppBar.Title title={__(title || '')} />;
@@ -57,4 +63,8 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-export default AppBarDefault;
+export default props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
+  </RouteContext.Consumer>
+);
