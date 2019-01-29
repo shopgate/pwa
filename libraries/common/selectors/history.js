@@ -20,7 +20,7 @@ export const getHistoryState = state => state.history;
  */
 export const getQueryParam = createSelector(
   getCurrentQuery,
-  (state, param) => param,
+  (state, props, param) => param,
   (params, param) => {
     if (!params || !params[param]) {
       return null;
@@ -36,7 +36,7 @@ export const getQueryParam = createSelector(
  * @returns {string} The current sort order.
  */
 export const getSortOrder = createSelector(
-  state => getQueryParam(state, 'sort'),
+  (state, props) => getQueryParam(state, props, 'sort'),
   param => param || DEFAULT_SORT
 );
 
