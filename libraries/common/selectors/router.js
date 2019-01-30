@@ -8,11 +8,11 @@ export const getRouterState = state => state.router;
 
 /**
  * @param {Object} state The application state.
- * @return {Object}
+ * @return {Array}
  */
 export const getRouterStack = createSelector(
   getRouterState,
-  state => state.stack
+  state => (state && state.stack ? state.stack : [])
 );
 
 /**
@@ -21,12 +21,18 @@ export const getRouterStack = createSelector(
  */
 export const getCurrentRoute = createSelector(
   getRouterState,
-  (router) => {
+  getRouterStack,
+  (state, props = {}) => props.routeId,
+  (router, stack, routeId) => {
     if (!router || !router.currentRoute) {
       return null;
     }
 
-    return router.currentRoute;
+    if (!routeId) {
+      return router.currentRoute;
+    }
+
+    return stack.find(entry => entry.id === routeId);
   }
 );
 

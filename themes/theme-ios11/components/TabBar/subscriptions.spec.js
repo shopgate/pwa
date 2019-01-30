@@ -56,7 +56,10 @@ describe('TabBar subscriptions', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCurrentRoute.mockReturnValue({ pattern: '/something' });
 
-    routeDidEnterCallback({ dispatch, getState });
+    routeDidEnterCallback({
+      dispatch,
+      getState,
+    });
 
     const actions = getActions();
     expect(actions).toHaveLength(1);
@@ -67,7 +70,10 @@ describe('TabBar subscriptions', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCurrentRoute.mockReturnValue({ pattern: LOGIN_PATH });
 
-    routeDidEnterCallback({ dispatch, getState });
+    routeDidEnterCallback({
+      dispatch,
+      getState,
+    });
 
     const actions = getActions();
     expect(actions).toHaveLength(1);
@@ -78,7 +84,10 @@ describe('TabBar subscriptions', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCartItems.mockReturnValue([]);
 
-    cartUpdateCallback({ dispatch, getState });
+    cartUpdateCallback({
+      dispatch,
+      getState,
+    });
 
     const actions = getActions();
     expect(actions).toHaveLength(1);
@@ -89,7 +98,10 @@ describe('TabBar subscriptions', () => {
     const { dispatch, getActions, getState } = createMockedStore();
     getCartItems.mockReturnValue([{ id: '123' }]);
 
-    cartUpdateCallback({ dispatch, getState });
+    cartUpdateCallback({
+      dispatch,
+      getState,
+    });
 
     const actions = getActions();
     expect(actions).toHaveLength(1);

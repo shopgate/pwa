@@ -6,6 +6,8 @@ import InfiniteContainer from './index';
 
 global.console.error = jest.fn();
 
+const context = { state: {} };
+
 describe('<InfiniteContainer />', () => {
   let renderedElement;
   let renderedInstance;
@@ -23,7 +25,7 @@ describe('<InfiniteContainer />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = shallow(<InfiniteContainer {...props} />);
+    renderedElement = shallow(<InfiniteContainer {...props} />, { context });
     renderedInstance = renderedElement.instance();
   };
 

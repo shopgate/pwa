@@ -733,7 +733,7 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
 export const getResultHash = createSelector(
   (state, props = {}) => props.categoryId,
   (state, props = {}) => props.searchPhrase,
-  state => getSortOrder(state) || DEFAULT_SORT,
+  (state, props) => getSortOrder(state, props) || DEFAULT_SORT,
   getActiveFilters,
   (categoryId, searchPhrase, sort, filters) => {
     if (categoryId) {
@@ -763,7 +763,7 @@ export const getResultHash = createSelector(
  * @returns {Object} The result.
  */
 export const getResultByHash = createSelector(
-  state => state.product,
+  getProductState,
   getResultHash,
   (productState, hash) => {
     const results = productState.resultsByHash[hash];
@@ -785,7 +785,7 @@ export const getResultByHash = createSelector(
  * @return {Object} The product result.
  */
 export const getPopulatedProductsResult = (state, props, hash, result) => {
-  const sort = getSortOrder(state) || DEFAULT_SORT;
+  const sort = getSortOrder(state, props) || DEFAULT_SORT;
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 
