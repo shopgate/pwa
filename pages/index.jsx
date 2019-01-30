@@ -47,8 +47,8 @@ const Pages = ({ store }) => (
               <ModalContainer component={Dialog} />
               <Toaster render={props => <SnackBar {...props} />} />
               <Router history={history}>
-                <Route pattern={INDEX_PATH} component={routes.StartPage} cache />
-                <Route pattern={PAGE_PATTERN} component={routes.Page} cache />
+                <Route pattern={INDEX_PATH} component={routes.StartPage} />
+                <Route pattern={PAGE_PATTERN} component={routes.Page} />
                 <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                 <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
                 <Route pattern={ITEM_PATTERN} component={routes.Product} />
