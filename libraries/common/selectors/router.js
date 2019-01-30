@@ -8,11 +8,11 @@ export const getRouterState = state => state.router;
 
 /**
  * @param {Object} state The application state.
- * @return {Object}
+ * @return {Array}
  */
 export const getRouterStack = createSelector(
   getRouterState,
-  state => state.stack
+  state => (state && state.stack ? state.stack : [])
 );
 
 /**
