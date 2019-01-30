@@ -55,8 +55,8 @@ const Pages = ({ store }) => (
               <Router history={history}>
                 <Route pattern={INDEX_PATH} component={routes.StartPage} />
                 <Route pattern={PAGE_PATTERN} component={routes.Page} />
-                <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} />
-                <Route pattern={CATEGORY_PATTERN} component={routes.Category} />
+                <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} cache />
+                <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                 <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
                 <Route pattern={ITEM_PATTERN} component={routes.Product} />
                 <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
@@ -68,15 +68,15 @@ const Pages = ({ store }) => (
                   && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
                 }
                 <Route pattern={LOGIN_PATH} component={routes.Login} />
-                <Route pattern={SEARCH_PATTERN} component={routes.Search} />
+                <Route pattern={SEARCH_PATTERN} component={routes.Search} cache />
                 <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
                 {React.Children.map(routePortals, Component => Component)}
               </Router>
               {isDev && (
-              <Helmet>
-                <link href={devFontsUrl} rel="stylesheet" />
-              </Helmet>
-            )}
+                <Helmet>
+                  <link href={devFontsUrl} rel="stylesheet" />
+                </Helmet>
+              )}
             </Viewport>
           </ToastProvider>
         </LoadingProvider>
