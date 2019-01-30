@@ -2,12 +2,12 @@ import { SUCCESS_CHECKOUT } from '../constants';
 
 /**
  * Creates the dispatched SUCCESS_UPDATE_PRODUCTS_IN_CART action object.
- * @param {Object} cartProducts Products that were in the cart before the checkout was done
+ * @param {Object[]} products cart.items of product type
  * @returns {Object} The dispatched action object.
  */
-const successCheckout = cartProducts => ({
+const successCheckout = products => ({
   type: SUCCESS_CHECKOUT,
-  products: cartProducts,
+  products,
 });
 
 export default successCheckout;

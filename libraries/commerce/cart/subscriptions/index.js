@@ -41,7 +41,10 @@ export default function cart(subscribe) {
    * Gets triggered when ever the local cart is out of
    * sync with the remote cart from the server. It's debounced to reduce emitting.
    */
-  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$).debounceTime(0);
+  const cartNeedsSync$ = userDidUpdate$.merge(
+    remoteCartDidUpdate$,
+    checkoutSucceeded$
+  ).debounceTime(0);
 
   /**
    * Gets triggered when the app is started or the cart route is entered.
@@ -155,13 +158,5 @@ export default function cart(subscribe) {
         }));
       });
     }
-  });
-
-  /**
-   * Gets triggered, when the checkout was completed
-   */
-  subscribe(checkoutSucceeded$, ({ dispatch }) => {
-    dispatch(resetHistory());
-    dispatch(fetchCart());
   });
 }

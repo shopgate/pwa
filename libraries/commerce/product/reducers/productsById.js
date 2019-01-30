@@ -4,7 +4,7 @@ import {
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCTS,
   ERROR_PRODUCT,
-  EXPIRE_PRODUCTS_BY_ID,
+  EXPIRE_PRODUCT_BY_ID,
 } from '../constants';
 import { RECEIVE_FAVORITES } from '../../favorites/constants';
 import handleProductCollection from './helpers/handleProductCollection';
@@ -50,18 +50,14 @@ export default function productsById(state = {}, action) {
           isFetching: false,
         },
       };
-
-    case EXPIRE_PRODUCTS_BY_ID: {
-      const products = { ...state };
-      action.productIds.forEach((productId) => {
-        if (products[productId]) {
-          products[productId].expires = 0;
-        }
-      });
-
-      return { ...products };
-    }
-
+    case EXPIRE_PRODUCT_BY_ID:
+      return {
+        ...state,
+        [action.productId]: {
+          ...state[action.productId],
+          expires: 0,
+        },
+      };
     default:
       return state;
   }

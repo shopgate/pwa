@@ -3,7 +3,6 @@ import {
   REQUEST_PRODUCT_PROPERTIES,
   RECEIVE_PRODUCT_PROPERTIES,
   ERROR_PRODUCT_PROPERTIES,
-  EXPIRE_PRODUCTS_BY_ID,
 } from '../constants';
 
 /**
@@ -41,17 +40,6 @@ export default function propertiesByProductId(state = {}, action) {
           isFetching: false,
         },
       };
-
-    case EXPIRE_PRODUCTS_BY_ID: {
-      const properties = { ...state };
-      action.productIds.forEach((productId) => {
-        if (properties[productId]) {
-          properties[productId].expires = 0;
-        }
-      });
-
-      return { ...properties };
-    }
 
     default:
       return state;

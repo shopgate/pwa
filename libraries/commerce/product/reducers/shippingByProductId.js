@@ -3,7 +3,6 @@ import {
   REQUEST_PRODUCT_SHIPPING,
   RECEIVE_PRODUCT_SHIPPING,
   ERROR_PRODUCT_SHIPPING,
-  EXPIRE_PRODUCTS_BY_ID,
 } from '../constants';
 
 /**
@@ -41,17 +40,6 @@ export default function shippingByProductId(state = {}, action) {
           isFetching: false,
         },
       };
-
-    case EXPIRE_PRODUCTS_BY_ID: {
-      const shippings = { ...state };
-      action.productIds.forEach((productId) => {
-        if (shippings[productId]) {
-          shippings[productId].expires = 0;
-        }
-      });
-
-      return { ...shippings };
-    }
 
     default:
       return state;

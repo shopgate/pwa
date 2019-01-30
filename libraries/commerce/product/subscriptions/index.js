@@ -14,6 +14,8 @@ import {
 import { productRelationsReceived$ } from '../streams';
 import getProductsById from '../actions/getProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
+import { checkoutSucceeded$ } from '../../checkout/streams';
+import expireProductById from '../action-creators/expireProductById';
 
 /**
  * Product subscriptions.
@@ -54,6 +56,18 @@ function product(subscribe) {
   subscribe(productRelationsReceived$, ({ dispatch, getState, action }) => {
     const { hash } = action;
     const productIds = getProductRelationsByHash(hash)(getState());
+
+    dispatch(getProductsById(productIds));
+  });
+
+  /**
+   * Expire products after checkout, fetch updated data
+   */
+  subscribe(checkoutSucceeded$, ({ dispatch, action }) => {
+    const { products } = action;
+
+    const productIds = products.map(p => p.product.id);
+    productIds.forEach(id => dispatch(expireProductById(id)));
 
     dispatch(getProductsById(productIds));
   });

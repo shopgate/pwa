@@ -4,6 +4,7 @@ import {
   REQUEST_PRODUCTS,
   RECEIVE_PRODUCTS,
   ERROR_PRODUCTS,
+  EXPIRE_PRODUCT_BY_ID,
 } from '../constants';
 
 /**
@@ -48,6 +49,16 @@ export default function resultsByHash(state = {}, action) {
         },
       };
     }
+
+    case EXPIRE_PRODUCT_BY_ID:
+      return Object.keys(state).reduce((currentState, hash) => {
+        if (currentState[hash].products && currentState[hash].products.includes(action.productId)) {
+          // eslint-disable-next-line no-param-reassign
+          currentState[hash].expires = 0;
+        }
+        return currentState;
+      }, state);
+
     case ERROR_PRODUCTS:
       return {
         ...state,
