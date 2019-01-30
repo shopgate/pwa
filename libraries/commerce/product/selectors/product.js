@@ -2,28 +2,11 @@ import { createSelector } from 'reselect';
 import isEqual from 'lodash/isEqual';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
-
-/**
- * Retrieves product id from route.
- * @param {Object} state The application state.
- * @returns {string|null} The product id of the current route.
- */
-export const getProductIdFromRoute = createSelector(
-  getCurrentRoute,
-  (route) => {
-    if (!route || !route.params || !route.params.productId) {
-      return null;
-    }
-
-    return hex2bin(route.params.productId);
-  }
-);
 
 /**
  * Retrieves the product state from the store.
@@ -134,8 +117,14 @@ export const getProductId = (state, props) => {
     return null;
   }
 
-  if (!props) {
-    return getProductIdFromRoute(state);
+  if (typeof props === 'undefined') {
+    /**
+     * Before PWA 6.0 some product selectors relied on a "currentProduct" state which doesn't exist
+     * anymore. Their successors require a props object which contains a productId or a variantId.
+     * To support debugging an error will be logged, if the props are missing at invocation.
+     */
+    logger.error('getProductId() needs to be called with a props object that includes a productId.');
+    return null;
   }
 
   // Since a variantId can have falsy values, we need an "undefined" check here.
