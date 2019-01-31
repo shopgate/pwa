@@ -40,7 +40,7 @@ describe('functional tests cart page', () => {
       .should('be.visible');
   });
 
-  it('should add sescond product to cart and delete it', () => {
+  it('should add sescond product to cart', () => {
     cy.visit('');
     cy.get(els.basicCategory)
       .last()
@@ -59,34 +59,6 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.cartButton)
       .click();
-  });
-
-  it('should check for wrong coupon', () => {
-    cy.get(els.couponFieldInput)
-      .type('wrongCoupon {enter}');
-    cy.get(els.basicDialogText)
-      .contains('Coupon code "wrongCoupon" is not valid.');
-    cy.get(els.basicDialogOkButton)
-      .click();
-  });
-
-  it('should check for right coupon', () => {
-    cy.get(els.couponFieldInput)
-      .clear()
-      .type('test1');
-    cy.get(els.couponSubmitButton)
-      .click();
-    cy.get(els.basicDialogOkButton)
-      .click();
-    cy.get('[data-test-id="subTotal: 84"]')
-      .should('be.visible');
-  });
-
-  it('should delete coupon from cart', () => {
-    cy.get(els.deleteCouponButton)
-      .click();
-    cy.get(els.deleteCouponButton)
-      .should('not.exist');
   });
 
   it('should check for products with variants', () => {
@@ -124,32 +96,6 @@ describe('functional tests cart page', () => {
       .should('be.visible')
       .click();
     cy.get(els.productWithChild1ColorBlackSize5CartItem)
-      .should('be.visible');
-  });
-
-  it('should check for product with options', () => {
-    cy.visit('');
-
-    cy.get(els.productWithOptionsCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.simpleProductWithOptionsNameProductGrid)
-      .should('be.visible')
-      .click();
-    cy.get(els.addToCartBarButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.cartButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.simpleProductWithOptionsCartItemLink)
-      .should('be.visible');
-    cy.get(els.cartItemLi)
-      .contains('Green Ball')
-      .should('be.visible');
-    cy.get(els.cartItemLi)
-      .contains('bright')
       .should('be.visible');
   });
 

@@ -1,17 +1,12 @@
 /* eslint-disable global-require */
-describe('Functional test for legacy', () => {
+describe('Functional test for shopify', () => {
   require('../../functional/CartPage.js');
-  require('../../consistency/CartPageCoupon.js');
-  require('../../functional/CartPageOptions.js');
   require('../../functional/CategoryPage.js');
   require('../../functional/FavoritesPage.js');
-  require('../../functional/FavoritesPageOptions.js');
   require('../../functional/FilterPage.js');
   require('../../functional/LoginPage.js');
   require('../../functional/ProductPage.js');
-  require('../../functional/ProductPageOptions.js');
   require('../../functional/SearchPage.js');
   require('../../functional/StartPage.js');
 });
 /* eslint-enable global-require */
-

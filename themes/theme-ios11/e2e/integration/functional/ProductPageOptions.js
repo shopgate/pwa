@@ -1,7 +1,7 @@
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
-describe('functional test product page', () => {
+describe('functional test product page options', () => {
   it('should check for options select', () => {
     cy.visit('');
 
@@ -33,10 +33,10 @@ describe('functional test product page', () => {
       .contains('low')
       .should('be.visible');
     cy.wait(1000);
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .should('be.visible')
       .click();
-    cy.get(els.cartButton)
+    cy.get(els.cartButton += ' div')
       .contains('1');
   });
 

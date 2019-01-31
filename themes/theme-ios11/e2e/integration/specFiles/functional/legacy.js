@@ -9,6 +9,7 @@ describe('Functional test for legacy', () => {
   require('../../functional/FilterPage.js');
   require('../../functional/LoginPage.js');
   require('../../functional/ProductPage.js');
+  require('../../functional/MorePage.js');
   require('../../functional/ProductPageOptions.js');
   require('../../functional/SearchPage.js');
   require('../../functional/StartPage.js');

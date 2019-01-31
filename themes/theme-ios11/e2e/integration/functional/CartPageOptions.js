@@ -1,28 +1,21 @@
 import els from '../../elements/de';
-
 import { clearProductFromCart } from '../../helper/cart';
 
-describe('functional test cart page options', () => {
+describe('functional tests cart page', () => {
   it('should check for product with options', () => {
     cy.visit('');
 
     cy.get(els.productWithOptionsCategory)
-      .first()
       .scrollIntoView()
       .should('be.visible')
       .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
     cy.get(els.simpleProductWithOptionsNameProductGrid)
-      .last()
-      .should('be.visible')
-      .click()
-      .wait(1000);
-    cy.get(els.addToCartButton)
       .should('be.visible')
       .click();
-    cy.get(els.cartButtonProductPage)
-      .last()
+    cy.get(els.addToCartBarButton)
+      .should('be.visible')
+      .click();
+    cy.get(els.cartButton)
       .should('be.visible')
       .click();
     cy.get(els.simpleProductWithOptionsCartItemLink)
@@ -35,7 +28,7 @@ describe('functional test cart page options', () => {
       .should('be.visible');
   });
 
-  it('should clear cart', () => {
+  it('should check for delete product from cart', () => {
     clearProductFromCart();
   });
 });
