@@ -13,6 +13,9 @@ export function checkForWrongCoupon() {
       } else if ($basicDialogText.text().includes('The coupon code in not valid. Please check it to ensure that it is correct.')) {
         cy.get(els.basicDialogOkButton)
           .click();
+      } else if ($basicDialogText.text().includes('Der Gutscheincode ist ungültig!')) {
+        cy.get(els.basicDialogOkButton)
+          .click();
       }
     });
 }

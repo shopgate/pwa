@@ -99,23 +99,26 @@ class ProductContent extends PureComponent {
     };
 
     return (
-      <Fragment>
-        <AppBar productId={this.state.productId} />
-        <ProductContext.Provider value={contextValue}>
-          <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
-          <Header />
-          <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
-          <Options
-            productId={id}
-            storeSelection={this.storeOptionSelection}
-            currentOptions={this.state.options}
-          />
-          <Description productId={this.state.productId} variantId={this.state.variantId} />
-          <Properties productId={this.state.productId} variantId={this.state.variantId} />
-          <Reviews productId={this.state.productId} />
-          <TaxDisclaimer />
-        </ProductContext.Provider>
-      </Fragment>
+      <div data-test-id={this.state.productId}>
+        <Fragment>
+          <AppBar productId={this.state.productId} />
+          <ProductContext.Provider value={contextValue}>
+            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
+            <Header />
+            <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
+            <Options
+              productId={id}
+              storeSelection={this.storeOptionSelection}
+              currentOptions={this.state.options}
+            />
+            <Description productId={this.state.productId} variantId={this.state.variantId} />
+            <Properties productId={this.state.productId} variantId={this.state.variantId} />
+            <Reviews productId={this.state.productId} />
+            <TaxDisclaimer />
+          </ProductContext.Provider>
+        </Fragment>
+      </div>
+
     );
   }
 }
