@@ -3,8 +3,6 @@
 exports[`<Cart> page should match snapshot 1`] = `
 <View
   background="#f8f8f8"
-  hasNavigator={true}
-  noScrollOnKeyboard={false}
 >
   <Consume
     context={

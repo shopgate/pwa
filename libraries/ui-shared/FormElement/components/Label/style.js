@@ -22,10 +22,10 @@ const labelError = css({
 }).toString();
 
 /**
- * The styles for the regular label.
+ * Regular label is hidden, because placeholder is visible
  */
 const labelRegular = css({
-  color: themeConfig.colors.shade4,
+  opacity: 0,
 }).toString();
 
 /**
@@ -40,6 +40,7 @@ const labelFocus = css({
  */
 const labelFloating = css({
   transform: 'translate3d(0, -22px, 0) scale3d(0.75, 0.75, 0.75)',
+  opacity: 1,
 }).toString();
 
 /**

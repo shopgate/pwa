@@ -2,6 +2,7 @@ import cloneDeep from 'lodash/cloneDeep';
 
 export const mockedRouterState = {
   currentRoute: null,
+  stack: [],
 };
 
 export const mockedProductMetadata = { some: 'product metadata' };

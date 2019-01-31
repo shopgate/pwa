@@ -8,7 +8,7 @@ class Conditioner {
   /**
    * @param {string} name The name of the registered conditioner.
    * @param {Function} conditioner The registered conditioner.
-   * @return {ActionHandler}
+   * @return {Conditioner}
    */
   addConditioner(name, conditioner) {
     if (typeof conditioner !== 'function') {
@@ -21,7 +21,7 @@ class Conditioner {
 
   /**
    * @param {string} name The name of the registered conditioner.
-   * @return {ActionHandler}
+   * @return {Conditioner}
    */
   removeConditioner(name) {
     if (!this.conditioners.has(name)) {
