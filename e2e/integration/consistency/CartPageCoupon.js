@@ -1,3 +1,4 @@
+import { clearProductFromCart } from '../../helper/cart';
 import els from '../../elements/de';
 
 describe('AndroidGMDTest CartPageCoupons', () => {
@@ -35,5 +36,9 @@ describe('AndroidGMDTest CartPageCoupons', () => {
       .type('test');
     cy.get(els.couponSubmitButton)
       .should('be.visible');
+  });
+
+  it('should clear Cart', () => {
+    clearProductFromCart();
   });
 });
