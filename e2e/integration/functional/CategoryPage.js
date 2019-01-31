@@ -31,6 +31,8 @@ describe('functional tests category page', () => {
       .click();
     cy.get(els.sortingDescButton)
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithLongDesciption4GridPrice)
       .should('be.visible');
   });
