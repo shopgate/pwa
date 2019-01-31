@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 
 /**
- * @param {function} dispatch dispatch
- * @return {{showModal: function}}.
+ * @param {Function} dispatch The redux dispatch function
+ * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
   showModal: options => dispatch(showModal({

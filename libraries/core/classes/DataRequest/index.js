@@ -107,8 +107,8 @@ class DataRequest extends Request {
 
   /**
    * Dispatches the data request.
-   * @param {function} resolve The resolve() callback of the request promise.
-   * @param {function} reject The reject() callback of the request promise.
+   * @param {Function} resolve The resolve() callback of the request promise.
+   * @param {Function} reject The reject() callback of the request promise.
    */
   onDispatch(resolve, reject) {
     // Add the request to the buffer.
