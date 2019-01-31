@@ -75,33 +75,34 @@ class Options extends PureComponent {
           {(options !== null) && (
             <div data-test-id="optionsPicker">
               {options.map((option) => {
-                if (option.type === 'text') {
-                  return (
-                    <TextOption
-                      key={option.id}
-                      id={option.id}
-                      label={option.label}
-                      value={currentOptions[option.id]}
-                      info={option.info}
-                      onChange={storeSelection}
-                      required={option.required}
-                      price={option.price}
-                    />
-                  );
-                } else if (option.type === 'select') {
-                return (
-                  <Option
-                    key={option.id}
-                    label={option.label}
-                    id={option.id}
-                    items={option.items}
-                    value={currentOptions[option.id]}
-                    onChange={storeSelection}
-                  />
-                );
+                switch (option.type) {
+                  case 'text':
+                    return (
+                      <TextOption
+                        key={option.id}
+                        id={option.id}
+                        label={option.label}
+                        value={currentOptions[option.id]}
+                        info={option.info}
+                        onChange={storeSelection}
+                        required={option.required}
+                        price={option.price}
+                      />
+                    );
+                  case 'select':
+                    return (
+                      <Option
+                        key={option.id}
+                        label={option.label}
+                        id={option.id}
+                        items={option.items}
+                        value={currentOptions[option.id]}
+                        onChange={storeSelection}
+                      />
+                    );
+                  default:
+                    return null;
                 }
-                // unknown type
-                return null;
               })}
             </div>
           )}
