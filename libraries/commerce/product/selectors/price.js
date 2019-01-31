@@ -22,19 +22,21 @@ export const getProductPriceAddition = createSelector(
   (state, props = {}) => props.options,
   getRawProductOptions,
   validateSelectorParams(
-    (options, productOptions) => {
-      // Get all item modifiers.
-      const modifiers = Object.keys(options).map((optionId) => {
-        const itemId = options[optionId];
+    (options, productOptions) => Object.keys(options).map((optionId) => {
+      const itemId = options[optionId];
+      const productOption = productOptions.find(item => item.id === optionId);
+
+      if (productOption.type === 'select') {
         const optionItems = productOptions.find(item => item.id === optionId).values;
-        const selectedItem = optionItems.find(item => item.id === itemId);
-
-        return selectedItem.unitPriceModifier;
-      });
-
+        return optionItems.find(item => item.id === itemId).unitPriceModifier;
+      } else if (productOption.type === 'text' && itemId) {
+        return productOption.unitPriceModifier;
+      }
+      return 0;
+    })
       // Sum up all active option item modifiers to calculate the additional price of the product.
-      return modifiers.reduce((a, b) => a + b, 0);
-    },
+      .reduce((a, b) => a + b, 0)
+    ,
     // If product has no options return 0
     0
   )

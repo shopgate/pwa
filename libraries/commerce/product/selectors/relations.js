@@ -12,7 +12,7 @@ export const getProductRelationsState = state => state.product.productRelationsB
 /**
  * Factory of a function that returns selector of product relations state for given hash.
  * @param {string} hash State hash.
- * @returns {function}
+ * @returns {Function}
  */
 export const getProductRelationsByHash = hash => createSelector(
   getProductRelationsState,
@@ -33,7 +33,7 @@ export const getProductRelationsByHash = hash => createSelector(
  * @param {string} params.productId Product id.
  * @param {string} type Relation type (see constants)
  * @param {number} limit Query limit.
- * @returns {function} Selector.
+ * @returns {Function} Selector.
  */
 export const getProductRelations = ({ productId, type, limit }) => (state) => {
   const hash = generateProductRelationsHash({

@@ -17,6 +17,7 @@ class SimpleInput extends Component {
     name: PropTypes.string,
     onChange: PropTypes.func,
     onFocusChange: PropTypes.func,
+    onKeyPress: PropTypes.func,
     onSanitize: PropTypes.func,
     onValidate: PropTypes.func,
     password: PropTypes.bool,
@@ -36,6 +37,7 @@ class SimpleInput extends Component {
     name: null,
     onChange: () => {},
     onFocusChange: () => {},
+    onKeyPress: () => {},
     onSanitize: value => value,
     onValidate: () => true,
     password: false,
@@ -182,7 +184,7 @@ class SimpleInput extends Component {
    * @returns {JSX}
    */
   render() {
-    const { className, password } = this.props;
+    const { className, password, onKeyPress } = this.props;
     const type = password ? 'password' : this.props.type;
     const { value } = this.state;
     const autoComplete = this.props.autoComplete ? 'on' : 'off';
@@ -196,6 +198,7 @@ class SimpleInput extends Component {
         className={className}
         type={type}
         value={value}
+        onKeyPress={onKeyPress}
         onChange={this.handleChange}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}

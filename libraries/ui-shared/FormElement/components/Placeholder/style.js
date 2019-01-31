@@ -20,7 +20,7 @@ const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 const placeholder = css({
   position: 'absolute',
   pointerEvents: 'none',
-  bottom: 24,
+  top: 24,
   color: themeConfig.colors.shade4,
   willChange: 'transform',
   transition: `opacity ${easing}`,
