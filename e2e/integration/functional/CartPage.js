@@ -103,6 +103,7 @@ describe('functional tests cart page', () => {
       .should('be.visible')
       .click();
     cy.get(els.cartButtonProductPage)
+      .last()
       .should('be.visible')
       .click()
       .wait(2000);

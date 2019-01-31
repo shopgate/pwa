@@ -22,6 +22,7 @@ describe('functional test cart page options', () => {
       .should('be.visible')
       .click();
     cy.get(els.cartButtonProductPage)
+      .last()
       .should('be.visible')
       .click();
     cy.get(els.simpleProductWithOptionsCartItemLink)
