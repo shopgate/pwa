@@ -5,7 +5,7 @@ This is the Integration of [Cypress](https://www.cypress.io/) into the Shopgate 
 ## Execution
 from pwa root folder:
 ```sh
-npm run e2e:gmd 
+npm run e2e:gmd
 npm run e2e:ios11
 ```
 
