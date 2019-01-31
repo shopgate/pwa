@@ -1,6 +1,6 @@
 import els from '../../elements/de';
 
-describe('e2e functional test favoritePageOPtions', () => {
+describe('e2e functional test favoritePageOptions', () => {
   it('should add product with options to favlist', () => {
     cy.visit('');
 
@@ -24,6 +24,8 @@ describe('e2e functional test favoritePageOPtions', () => {
       .should('be.visible')
       .last()
       .click();
+    cy.get(els.favoritesPageEmptyFavComponent)
+      .should('be.visible');
   });
   it('should check for empty fav list', () => {
     cy.visit('/favourite_list');
