@@ -46,7 +46,7 @@ const ProductGrid = ({
           items={products}
           loadingIndicator={<LoadingIndicator />}
           totalItems={totalProductCount}
-          initialLimit={6}
+          initialLimit={ITEMS_PER_LOAD}
           limit={ITEMS_PER_LOAD}
           requestHash={requestHash}
         />
