@@ -32,7 +32,7 @@ class ProductsContent extends PureComponent {
 
     return (
       <RouteContext.Consumer>
-        {({ state, query }) => (
+        {({ state, query, id: routeId }) => (
           <Fragment>
             <Portal name={PRODUCT_LIST_BEFORE} props={portalProps} />
             <Portal name={PRODUCT_LIST} props={portalProps}>
@@ -40,6 +40,7 @@ class ProductsContent extends PureComponent {
                 categoryId={categoryId}
                 filters={state.filters}
                 sort={query.sort || DEFAULT_SORT}
+                routeId={routeId}
               />}
             </Portal>
             <Portal name={PRODUCT_LIST_AFTER} props={portalProps} />

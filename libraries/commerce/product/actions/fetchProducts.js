@@ -62,7 +62,7 @@ const fetchProducts = ({
   id = null,
   includeSort = true,
   includeFilters = true,
-  onBeforeDispatch = () => {},
+  onBeforeDispatch = () => { },
 }) =>
   (dispatch, getState) => {
     const state = getState();
