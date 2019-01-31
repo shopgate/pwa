@@ -10,12 +10,10 @@ import OptionInfo from './components/OptionInfo';
 import styles from './style';
 
 /**
- * @param {Object} props The compoent props.
- * @returns {JSX}
+ * The TextOption component
  */
 class TextOption extends PureComponent {
   static propTypes = {
-    /** @type {Conditioner} */
     conditioner: PropTypes.shape().isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -80,6 +78,9 @@ class TextOption extends PureComponent {
     return false;
   }
 
+  /**
+   * @returns {JSX}
+   */
   infoIcon = () => {
     if (!this.props.info) {
       return null;
