@@ -63,6 +63,8 @@ describe('IOS11Test CategoryPage', () => {
       .should('be.visible')
       .last()
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithRating4GridViewRatingStars)
       .last()
       .scrollIntoView()
