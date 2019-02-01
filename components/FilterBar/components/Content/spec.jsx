@@ -6,6 +6,7 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
 import GridIcon from '@shopgate/pwa-ui-shared/icons/GridIcon';
 import ListIcon from '@shopgate/pwa-ui-shared/icons/ListIcon';
+// eslint-disable-next-line import/named
 import { UnwrappedContent as FilterBarContent } from './index';
 
 const activeFilters = {
