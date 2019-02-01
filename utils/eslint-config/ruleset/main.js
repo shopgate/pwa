@@ -27,6 +27,7 @@ module.exports = {
     'import/extensions': ['error', 'never'],
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'import/named': 'error',
     'no-multiple-empty-lines': [2, {
       max: 1,
       maxBOF: 0,

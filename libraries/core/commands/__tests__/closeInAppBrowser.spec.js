@@ -1,9 +1,11 @@
+/* eslint-disable import/named */
 import {
   mockedSetCommandName,
   mockedSetCommandParams,
   mockedBuildCommand,
   mockedDispatch,
 } from '../../classes/AppCommand';
+/* eslint-enable import/named */
 import closeInAppBrowser from '../closeInAppBrowser';
 
 jest.mock('../../classes/AppCommand');

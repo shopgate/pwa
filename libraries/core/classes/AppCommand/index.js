@@ -5,10 +5,12 @@ import logGroup from '../../helpers/logGroup';
 import * as appCommands from '../../constants/AppCommands';
 import BrowserConnector from '../BrowserConnector';
 import DevServerBridge from '../DevServerBridge';
+/* eslint-disable import/named */
 import {
   GET_PERMISSIONS_COMMAND_NAME,
   REQUEST_PERMISSIONS_COMMAND_NAME,
 } from '../../constants/AppPermissions';
+/* eslint-enable import/named */
 
 /**
  * The app command class.
