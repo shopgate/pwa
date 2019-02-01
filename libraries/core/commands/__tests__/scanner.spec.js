@@ -1,5 +1,6 @@
 import { PWA_DEFAULT_TAB } from '../../constants/Command';
 import * as constants from '../../constants/Scanner';
+// eslint-disable-next-line import/named
 import { mockedSetCommandName, mockedDispatch } from '../../classes/AppCommand';
 import * as commands from '../scanner';
 

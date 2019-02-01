@@ -1,9 +1,11 @@
+/* eslint-disable import/named */
 import {
   mockedSetCommandName,
   mockedSetLibVersion,
   mockedDispatch,
   triggerDispatchError,
 } from '../AppCommand';
+/* eslint-enable import/named */
 
 const mockedAddCallback = jest.fn();
 jest.mock('../Event', () => ({
