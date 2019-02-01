@@ -9,6 +9,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { TERMS_PATH } from '../../../../constants';
+import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.terms';
@@ -19,8 +20,8 @@ const LABEL = 'navigation.terms';
  */
 const TermsButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_TERMS_BEFORE} />
-    <Portal name={NAV_MENU_TERMS}>
+    <Portal name={NAV_MENU_TERMS_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_TERMS} props={portalProps}>
       <NavDrawer.Item
         label={LABEL}
         icon={DescriptionIcon}
@@ -28,7 +29,7 @@ const TermsButton = ({ navigate }) => (
         testId="navDrawerTermsButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_TERMS_AFTER} />
+    <Portal name={NAV_MENU_TERMS_AFTER} props={portalProps} />
   </Fragment>
 );
 
