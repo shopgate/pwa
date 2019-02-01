@@ -1,5 +1,6 @@
 import { getAppPermissions, requestAppPermissions } from '../appPermissions';
 import { PERMISSION_ID_LOCATION, PERMISSION_ID_CAMERA } from '../../constants/AppPermissions';
+/* eslint-disable import/named */
 import {
   mockedSetPermissionIds as mockedGetSetter,
   mockedDispatch as mockedGetDispatch,
@@ -12,6 +13,7 @@ import {
   mockedPermissionsResponse as mockedRequestResponse,
   triggerDispatchError as triggerRequestDispatchError,
 } from '../../classes/AppPermissionsRequest/RequestAppPermissionsRequest';
+/* eslint-enable import/named */
 
 jest.mock('../../classes/AppPermissionsRequest/GetAppPermissionsRequest');
 jest.mock('../../classes/AppPermissionsRequest/RequestAppPermissionsRequest');

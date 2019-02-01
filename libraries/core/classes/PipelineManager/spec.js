@@ -1,4 +1,5 @@
 import logGroup from '../../helpers/logGroup';
+// eslint-disable-next-line import/named
 import { mockedDispatch } from '../AppCommand';
 import event from '../Event';
 import { ERROR_HANDLE_SUPPRESS } from '../../constants/ErrorHandleTypes';
