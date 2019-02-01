@@ -608,64 +608,99 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   <div
                     data-test-id="userMenu"
                   >
-                    <nav
-                      className={
-                        Object {
-                          "data-css-13ch7sr": "",
-                        }
-                      }
+                    <Section
+                      title="navigation.your_account"
                     >
-                      <Portal
-                        name="nav-menu.logout.before"
-                        props={
+                      <Headline
+                        style={
                           Object {
-                            "Item": [Function],
+                            "margin": "24px 20px 16px",
                           }
                         }
-                      />
-                      <Portal
-                        name="nav-menu.logout"
-                        props={
+                        tag="h2"
+                        text="navigation.your_account"
+                      >
+                        <h2
+                          className="css-18cwfw7"
+                          data-test-id="Headline"
+                          style={
+                            Object {
+                              "margin": "24px 20px 16px",
+                            }
+                          }
+                        >
+                          <Translate
+                            className=""
+                            params={Object {}}
+                            string="navigation.your_account"
+                          >
+                            <span
+                              className=""
+                            >
+                              navigation.your_account
+                            </span>
+                          </Translate>
+                        </h2>
+                      </Headline>
+                      <div
+                        className={
                           Object {
-                            "Item": [Function],
+                            "data-css-13ch7sr": "",
                           }
                         }
                       >
-                        <MoreMenuItem
-                          className="css-1usb1k2"
-                          href={null}
-                          label="navigation.logout"
-                          onClick={[Function]}
-                          testId="logoutButton"
-                        >
-                          <button
-                            className="css-1usb1k2"
-                            data-test-id="logoutButton"
-                            onClick={[Function]}
-                          >
-                            <Translate
-                              className=""
-                              params={Object {}}
-                              string="navigation.logout"
-                            >
-                              <span
-                                className=""
-                              >
-                                navigation.logout
-                              </span>
-                            </Translate>
-                          </button>
-                        </MoreMenuItem>
-                      </Portal>
-                      <Portal
-                        name="nav-menu.logout.after"
-                        props={
-                          Object {
-                            "Item": [Function],
+                        <Portal
+                          name="nav-menu.logout.before"
+                          props={
+                            Object {
+                              "Item": [Function],
+                            }
                           }
-                        }
-                      />
-                    </nav>
+                        />
+                        <Portal
+                          name="nav-menu.logout"
+                          props={
+                            Object {
+                              "Item": [Function],
+                            }
+                          }
+                        >
+                          <MoreMenuItem
+                            className={null}
+                            href={null}
+                            label="navigation.logout"
+                            onClick={[Function]}
+                            testId="logoutButton"
+                          >
+                            <button
+                              className="css-1hj8a57"
+                              data-test-id="logoutButton"
+                              onClick={[Function]}
+                            >
+                              <Translate
+                                className=""
+                                params={Object {}}
+                                string="navigation.logout"
+                              >
+                                <span
+                                  className=""
+                                >
+                                  navigation.logout
+                                </span>
+                              </Translate>
+                            </button>
+                          </MoreMenuItem>
+                        </Portal>
+                        <Portal
+                          name="nav-menu.logout.after"
+                          props={
+                            Object {
+                              "Item": [Function],
+                            }
+                          }
+                        />
+                      </div>
+                    </Section>
                   </div>
                 </Portal>
                 <Portal

@@ -9,6 +9,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { IMPRINT_PATH } from '../../../../constants';
+import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.about';
@@ -19,8 +20,8 @@ const LABEL = 'navigation.about';
  */
 const ImprintButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_IMPRINT_BEFORE} />
-    <Portal name={NAV_MENU_IMPRINT}>
+    <Portal name={NAV_MENU_IMPRINT_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_IMPRINT} props={portalProps}>
       <NavDrawer.Item
         label={LABEL}
         icon={InfoIcon}
@@ -28,7 +29,7 @@ const ImprintButton = ({ navigate }) => (
         testId="navDrawerImprintButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_IMPRINT_AFTER} />
+    <Portal name={NAV_MENU_IMPRINT_AFTER} props={portalProps} />
   </Fragment>
 );
 
