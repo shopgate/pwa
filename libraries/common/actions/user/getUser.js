@@ -1,4 +1,4 @@
-import { fetchUser } from './fetchUser';
+import fetchUser from './fetchUser';
 
 /**
  * Get the current user

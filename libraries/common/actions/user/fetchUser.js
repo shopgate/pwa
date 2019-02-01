@@ -35,7 +35,7 @@ export default function fetchUser() {
             break;
         }
 
-        dispatch(actions.errorUser());
+        dispatch(actions.errorUser(error));
       });
   };
 }

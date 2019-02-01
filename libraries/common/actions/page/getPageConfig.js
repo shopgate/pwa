@@ -1,4 +1,4 @@
-import { fetchPageConfig } from './fetchPageConfig';
+import fetchPageConfig from './fetchPageConfig';
 
 /**
  * Retrieves the config for a page.
