@@ -1,4 +1,4 @@
-import getPageConfig from '@shopgate/pwa-common/actions/page/getPageConfig';
+import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { pageWillEnter$ } from './streams';
 
 /**
@@ -7,6 +7,6 @@ import { pageWillEnter$ } from './streams';
  */
 export default function page(subscribe) {
   subscribe(pageWillEnter$, ({ action, dispatch }) => {
-    dispatch(getPageConfig(action.route.params.pageId));
+    dispatch(fetchPageConfig(action.route.params.pageId));
   });
 }

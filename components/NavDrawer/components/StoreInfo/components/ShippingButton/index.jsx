@@ -9,6 +9,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import LocalShippingIcon from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { SHIPPING_PATH } from '../../../../constants';
+import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.shipping';
@@ -19,8 +20,8 @@ const LABEL = 'navigation.shipping';
  */
 const ShippingButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_SHIPPING_BEFORE} />
-    <Portal name={NAV_MENU_SHIPPING}>
+    <Portal name={NAV_MENU_SHIPPING_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_SHIPPING} props={portalProps}>
       <NavDrawer.Item
         label={LABEL}
         icon={LocalShippingIcon}
@@ -28,7 +29,7 @@ const ShippingButton = ({ navigate }) => (
         testId="navDrawerShippingButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_SHIPPING_AFTER} />
+    <Portal name={NAV_MENU_SHIPPING_AFTER} props={portalProps} />
   </Fragment>
 );
 
