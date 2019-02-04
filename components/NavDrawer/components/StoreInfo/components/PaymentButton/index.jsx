@@ -9,6 +9,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { PAYMENT_PATH } from '../../../../constants';
+import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.payment';
@@ -19,8 +20,8 @@ const LABEL = 'navigation.payment';
  */
 const PaymentButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_PAYMENT_BEFORE} />
-    <Portal name={NAV_MENU_PAYMENT}>
+    <Portal name={NAV_MENU_PAYMENT_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_PAYMENT} props={portalProps}>
       <NavDrawer.Item
         label={LABEL}
         icon={CreditCardIcon}
@@ -28,7 +29,7 @@ const PaymentButton = ({ navigate }) => (
         testId="navDrawerPaymentButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_PAYMENT_AFTER} />
+    <Portal name={NAV_MENU_PAYMENT_AFTER} props={portalProps} />
   </Fragment>
 );
 
