@@ -22,8 +22,8 @@ describe('<UserMenu />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('LoggedIn').exists()).toBe(true);
-    expect(wrapper.find('nav MoreMenuItem').text()).toBe('navigation.logout');
-    wrapper.find('nav MoreMenuItem').simulate('click');
+    expect(wrapper.find('MoreMenuItem').text()).toBe('navigation.logout');
+    wrapper.find('MoreMenuItem').simulate('click');
     expect(logoutHandler).toHaveBeenCalledTimes(1);
   });
 
