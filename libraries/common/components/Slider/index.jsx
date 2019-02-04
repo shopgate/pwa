@@ -11,38 +11,6 @@ import connect from './connector';
  */
 class Slider extends Component {
   /**
-   * Prevents multi-touch gestures on the slider.
-   * @param {string} type The event type, must be one of the touchXYZ events.
-   * @param {Object} slider The slider instance.
-   */
-  static fixTouchEvents(type, slider) {
-    // Get a reference to the dom element.
-    const domRef = slider.container[0];
-
-    let realHandler = null;
-
-    // Find the real handler attached to the container.
-    if (type === 'touchstart') {
-      realHandler = slider.onTouchStart;
-    } else if (type === 'touchmove') {
-      realHandler = slider.onTouchMove;
-    } else if (type === 'touchend') {
-      realHandler = slider.onTouchEnd;
-    }
-
-    // Remove it ...
-    domRef.removeEventListener(type, realHandler);
-
-    // ... and replace it with our custom wrapper.
-    domRef.addEventListener(type, (event) => {
-      if (event.touches.length <= 1) {
-        // Only fire this event if this is not a multi-touch gesture.
-        realHandler(event);
-      }
-    }, false);
-  }
-
-  /**
    * Retriggers the creation of loop DOM elements once the start/end of the slider has been reached.
    * @param {Object} slider The Slider object.
    */
@@ -245,10 +213,6 @@ class Slider extends Component {
    */
   initSlider = (slider) => {
     this.slider = slider;
-
-    this.constructor.fixTouchEvents('touchstart', slider);
-    this.constructor.fixTouchEvents('touchmove', slider);
-    this.constructor.fixTouchEvents('touchend', slider);
 
     if (this.props.disabled) {
       slider.lockSwipes();

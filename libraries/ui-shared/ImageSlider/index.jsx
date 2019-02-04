@@ -66,6 +66,7 @@ class ImageSlider extends Component {
       <Slider
         {...this.props}
         classNames={styles}
+        rebuildOnUpdate
         maxIndicators={10}
       >
         {imageSliderItems}

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CryptoJs from 'crypto-js';
+import isEqual from 'lodash/isEqual';
+import shouldUpdate from 'recompose/shouldUpdate';
 import Link from '@shopgate/pwa-common/components/Link';
 import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import styles from './style';
@@ -56,6 +58,10 @@ ImageSliderWidget.defaultProps = {
   className: '',
 };
 
-export default ImageSliderWidget;
+export default shouldUpdate((prev, next) => {
+  if (!prev.className && next.className) return true;
+  if (!isEqual(prev.settings, next.settings)) return true;
+  return false;
+})(ImageSliderWidget);
 
 export { ImageSliderWidget as UnwrappedImageSliderWidget };
