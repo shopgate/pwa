@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CryptoJs from 'crypto-js';
 import shouldUpdate from 'recompose/shouldUpdate';
 import Link from '@shopgate/pwa-common/components/Link';
 import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
@@ -18,8 +19,8 @@ const ImageSliderWidget = ({ settings, className }) => (
     interval={settings.delay}
     loop={settings.loop}
   >
-    {settings.images.map((image, index) => {
-      const key = `si${index}`;
+    {settings.images.map((image) => {
+      const key = CryptoJs.MD5(image.image);
 
       if (image.link) {
         return (

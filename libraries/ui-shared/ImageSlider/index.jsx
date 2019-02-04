@@ -53,8 +53,10 @@ class ImageSlider extends Component {
     const imageSliderItems = [];
 
     React.Children.forEach(this.props.children, (child, index) => {
+      const key = child.key ? `${child.key}_${index}` : index;
+
       imageSliderItems.push((
-        <Slider.Item key={index}>
+        <Slider.Item key={key}>
           {child}
         </Slider.Item>
       ));

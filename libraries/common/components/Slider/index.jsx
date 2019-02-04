@@ -279,7 +279,7 @@ class Slider extends Component {
     const hasMultipleChildren = children.length > 1;
 
     const wrappedChildren = this.props.children.map((child, index) => {
-      const key = `s${index}`;
+      const key = child.key ? `${child.key}_${index}` : index;
 
       return (
         <div className={styles.slideWrapper} key={key} data-test-id="Slider">
