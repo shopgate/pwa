@@ -9,6 +9,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { RETURN_POLICY_PATH } from '../../../../constants';
+import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';
 
 const LABEL = 'navigation.return_policy';
@@ -19,8 +20,8 @@ const LABEL = 'navigation.return_policy';
  */
 const ReturnsButton = ({ navigate }) => (
   <Fragment>
-    <Portal name={NAV_MENU_RETURN_POLICY_BEFORE} />
-    <Portal name={NAV_MENU_RETURN_POLICY}>
+    <Portal name={NAV_MENU_RETURN_POLICY_BEFORE} props={portalProps} />
+    <Portal name={NAV_MENU_RETURN_POLICY} props={portalProps}>
       <NavDrawer.Item
         label={LABEL}
         icon={DescriptionIcon}
@@ -28,7 +29,7 @@ const ReturnsButton = ({ navigate }) => (
         testId="navDrawerReturnsButton"
       />
     </Portal>
-    <Portal name={NAV_MENU_RETURN_POLICY_AFTER} />
+    <Portal name={NAV_MENU_RETURN_POLICY_AFTER} props={portalProps} />
   </Fragment>
 );
 
