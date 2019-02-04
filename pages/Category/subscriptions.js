@@ -19,12 +19,14 @@ import {
  */
 export default function category(subscribe) {
   subscribe(categoryWillEnter$, ({ dispatch, action }) => {
-    const { filters } = action.route.state;
+    const { filters, offset = 0 } = action.route.state;
     const categoryId = hex2bin(action.route.params.categoryId);
 
     dispatch(fetchCategory(categoryId));
     dispatch(fetchCategoryProducts({
-      categoryId, filters,
+      categoryId,
+      filters,
+      offset,
     }));
   });
 
@@ -53,12 +55,14 @@ export default function category(subscribe) {
   });
 
   subscribe(categoryFiltersDidUpdate$, ({ action, dispatch, getState }) => {
-    const { params } = getCurrentRoute(getState());
+    const { params, state: { offset = 0 } } = getCurrentRoute(getState());
     const categoryId = hex2bin(params.categoryId);
     const { filters } = action;
 
     dispatch(fetchCategoryProducts({
-      categoryId, filters,
+      categoryId,
+      filters,
+      offset,
     }));
   });
 }
