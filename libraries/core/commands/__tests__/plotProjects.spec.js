@@ -1,4 +1,5 @@
 import { plotProjectsEnable, plotProjectsDisable } from '../plotProjects';
+// eslint-disable-next-line import/named
 import { mockedSetCommandName, mockedSetLibVersion, mockedDispatch } from '../../classes/AppCommand';
 
 jest.mock('../../classes/AppCommand');
