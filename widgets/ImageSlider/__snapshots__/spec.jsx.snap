@@ -145,10 +145,10 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s0"
+                    key=".$cff8d88442d10b88424de77967c68124_0_0"
                   >
                     <SliderItem
-                      key="0"
+                      key="cff8d88442d10b88424de77967c68124_0"
                     >
                       <div
                         className="css-10a4qrv"
@@ -157,7 +157,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://example.com"
-                          key="si0"
+                          key="cff8d88442d10b88424de77967c68124"
                         >
                           <Link
                             className="css-63oe3q"
@@ -194,10 +194,10 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s1"
+                    key=".$77387b0455b43e9c56aaeff7c21c7340_1_1"
                   >
                     <SliderItem
-                      key="1"
+                      key="77387b0455b43e9c56aaeff7c21c7340_1"
                     >
                       <div
                         className="css-10a4qrv"
@@ -206,7 +206,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://other.example.com"
-                          key="si1"
+                          key="77387b0455b43e9c56aaeff7c21c7340"
                         >
                           <Link
                             className="css-63oe3q"
@@ -305,7 +305,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         className="css-63oe3q"
         data-test-id="withLink"
         href="http://example.com"
-        key=".$si0"
+        key=".$cff8d88442d10b88424de77967c68124"
       >
         <Link
           className="css-63oe3q"
@@ -395,7 +395,7 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
           }
         }
         data-test-id="withoutLink"
-        key=".$si0"
+        key=".$cff8d88442d10b88424de77967c68124"
         src="http://placehold.it/350x150"
       />
     </ImageSlider>
@@ -556,10 +556,10 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s0"
+                    key=".$cff8d88442d10b88424de77967c68124_0_0"
                   >
                     <SliderItem
-                      key="0"
+                      key="cff8d88442d10b88424de77967c68124_0"
                     >
                       <div
                         className="css-10a4qrv"
@@ -568,7 +568,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://example.com"
-                          key="si0"
+                          key="cff8d88442d10b88424de77967c68124"
                         >
                           <Link
                             className="css-63oe3q"
@@ -605,10 +605,10 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s1"
+                    key=".$cff8d88442d10b88424de77967c68124_1_1"
                   >
                     <SliderItem
-                      key="1"
+                      key="cff8d88442d10b88424de77967c68124_1"
                     >
                       <div
                         className="css-10a4qrv"
@@ -620,7 +620,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                             }
                           }
                           data-test-id="withoutLink"
-                          key="si1"
+                          key="cff8d88442d10b88424de77967c68124"
                           src="http://placehold.it/350x150"
                         />
                       </div>
@@ -629,10 +629,10 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s2"
+                    key=".$cff8d88442d10b88424de77967c68124_2_2"
                   >
                     <SliderItem
-                      key="2"
+                      key="cff8d88442d10b88424de77967c68124_2"
                     >
                       <div
                         className="css-10a4qrv"
@@ -641,7 +641,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://example.com"
-                          key="si2"
+                          key="cff8d88442d10b88424de77967c68124"
                         >
                           <Link
                             className="css-63oe3q"
@@ -678,10 +678,10 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s3"
+                    key=".$cff8d88442d10b88424de77967c68124_3_3"
                   >
                     <SliderItem
-                      key="3"
+                      key="cff8d88442d10b88424de77967c68124_3"
                     >
                       <div
                         className="css-10a4qrv"
@@ -690,7 +690,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://example.com"
-                          key="si3"
+                          key="cff8d88442d10b88424de77967c68124"
                         >
                           <Link
                             className="css-63oe3q"
@@ -887,10 +887,10 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s0"
+                    key=".$cff8d88442d10b88424de77967c68124_0_0"
                   >
                     <SliderItem
-                      key="0"
+                      key="cff8d88442d10b88424de77967c68124_0"
                     >
                       <div
                         className="css-10a4qrv"
@@ -899,7 +899,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://example.com"
-                          key="si0"
+                          key="cff8d88442d10b88424de77967c68124"
                         >
                           <Link
                             className="css-63oe3q"
@@ -936,10 +936,10 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s1"
+                    key=".$cff8d88442d10b88424de77967c68124_1_1"
                   >
                     <SliderItem
-                      key="1"
+                      key="cff8d88442d10b88424de77967c68124_1"
                     >
                       <div
                         className="css-10a4qrv"
@@ -948,7 +948,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://example.com"
-                          key="si1"
+                          key="cff8d88442d10b88424de77967c68124"
                         >
                           <Link
                             className="css-63oe3q"
@@ -985,10 +985,10 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                   <div
                     className="sg-swiper-slide css-1l9a57c "
                     data-test-id="Slider"
-                    key=".$s2"
+                    key=".$cff8d88442d10b88424de77967c68124_2_2"
                   >
                     <SliderItem
-                      key="2"
+                      key="cff8d88442d10b88424de77967c68124_2"
                     >
                       <div
                         className="css-10a4qrv"
@@ -997,7 +997,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                           className="css-63oe3q"
                           data-test-id="withLink"
                           href="http://example.com"
-                          key="si2"
+                          key="cff8d88442d10b88424de77967c68124"
                         >
                           <Link
                             className="css-63oe3q"
