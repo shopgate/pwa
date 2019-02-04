@@ -96,7 +96,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           loop={false}
           maxIndicators={10}
           onSlideChange={null}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
         >
@@ -126,7 +126,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
             loop={false}
             maxIndicators={10}
             onSlideChange={null}
-            rebuildOnUpdate={false}
+            rebuildOnUpdate={true}
             slidesPerView={1}
             snapItems={true}
           >
@@ -151,7 +151,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                 paginationModifierClass="sg-swiper-pagination-"
                 paginationType="bullets"
                 prevButton={null}
-                rebuildOnUpdate={false}
+                rebuildOnUpdate={true}
                 slideClass="sg-swiper-slide"
                 slidesPerView={1}
                 wrapperClass="swiper-wrapper"
@@ -570,7 +570,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           loop={false}
           maxIndicators={10}
           onSlideChange={null}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
         >
@@ -600,7 +600,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
             loop={false}
             maxIndicators={10}
             onSlideChange={null}
-            rebuildOnUpdate={false}
+            rebuildOnUpdate={true}
             slidesPerView={1}
             snapItems={true}
           >
@@ -625,7 +625,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                 paginationModifierClass="sg-swiper-pagination-"
                 paginationType="bullets"
                 prevButton={null}
-                rebuildOnUpdate={false}
+                rebuildOnUpdate={true}
                 slideClass="sg-swiper-slide"
                 slidesPerView={1}
                 wrapperClass="swiper-wrapper"
@@ -926,7 +926,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           loop={false}
           maxIndicators={10}
           onSlideChange={null}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
         >
@@ -956,7 +956,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
             loop={false}
             maxIndicators={10}
             onSlideChange={null}
-            rebuildOnUpdate={false}
+            rebuildOnUpdate={true}
             slidesPerView={1}
             snapItems={true}
           >
@@ -981,7 +981,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                 paginationModifierClass="sg-swiper-pagination-"
                 paginationType="bullets"
                 prevButton={null}
-                rebuildOnUpdate={false}
+                rebuildOnUpdate={true}
                 slideClass="sg-swiper-slide"
                 slidesPerView={1}
                 wrapperClass="swiper-wrapper"
