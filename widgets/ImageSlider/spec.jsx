@@ -57,6 +57,7 @@ describe('<ImageSliderWidget />', () => {
   });
 
   it('should map the correct image settings to the components', () => {
+    expect.assertions(3);
     const settings = {
       ...testSettings,
       images: [
@@ -68,12 +69,10 @@ describe('<ImageSliderWidget />', () => {
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    const images = wrapper.find('Image');
-    let index = 0;
-    images.forEach((image) => {
+    const images = wrapper.find('div.sg-swiper-slide img');
+    images.forEach((image, index) => {
       const imageProps = image.props();
       const imageSettings = settings.images[index];
-      index += 1;
 
       expect(imageProps.src).toBe(imageSettings.image);
     });
