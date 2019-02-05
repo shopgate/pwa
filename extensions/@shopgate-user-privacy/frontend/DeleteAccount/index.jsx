@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
 import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
 import connect from './connector';
 
@@ -14,6 +13,7 @@ class DeleteAccount extends Component {
 
   static propTypes = {
     deleteAccount: PropTypes.func.isRequired,
+    Item: PropTypes.node.isRequired,
     isShown: PropTypes.bool,
   }
 
@@ -33,7 +33,6 @@ class DeleteAccount extends Component {
    */
   render() {
     const { Item, isShown } = this.props;
-    const { __ } = this.context.i18n();
 
     if (!isShown) {
       return null;

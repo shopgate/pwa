@@ -1,4 +1,5 @@
 import AppPermissionsRequest from './AppPermissionsRequest';
+/* eslint-disable import/named */
 import {
   triggerDispatchError,
   mockedSetCommandName,
@@ -6,6 +7,7 @@ import {
   mockedSetLibVersion,
   mockedDispatch,
 } from '../AppCommand';
+/* eslint-enable import/named */
 
 jest.mock('../AppCommand');
 
