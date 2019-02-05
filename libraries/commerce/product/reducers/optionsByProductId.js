@@ -45,6 +45,7 @@ export default function optionsByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
     default:
       return state;
   }
