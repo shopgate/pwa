@@ -57,7 +57,7 @@ export default function resultsByHash(state = {}, action) {
           currentState[hash].expires = 0;
         }
         return currentState;
-      }, state);
+      }, { ...state });
 
     case ERROR_PRODUCTS:
       return {
