@@ -4,7 +4,8 @@
     "load_more": "Carica altro",
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
-    "undo": "annulla"
+    "undo": "annulla",
+    "required": "Necessaria *"
   },
   "titles": {
     "categories": "Categorie",

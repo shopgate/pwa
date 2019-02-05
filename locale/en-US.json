@@ -4,7 +4,8 @@
     "load_more": "Load more",
     "cancel": "Cancel",
     "submit": "Submit",
-    "undo": "Undo"
+    "undo": "Undo",
+    "required": "Required *"
   },
   "titles": {
     "categories": "All Categories",

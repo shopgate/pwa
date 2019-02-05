@@ -1,5 +1,5 @@
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import getPageConfig from '@shopgate/pwa-common/actions/page/getPageConfig';
+import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { startPageWillEnter$ } from './streams';
 
 let force = true;
@@ -10,7 +10,7 @@ let force = true;
  */
 export default function page(subscribe) {
   subscribe(startPageWillEnter$, ({ dispatch }) => {
-    dispatch(getPageConfig(PAGE_ID_INDEX, force));
+    dispatch(fetchPageConfig(PAGE_ID_INDEX, force));
     force = false;
   });
 }

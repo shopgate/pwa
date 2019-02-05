@@ -39,7 +39,7 @@ class SearchContent extends Component {
 
     return (
       <RouteContext.Consumer>
-        {({ state, query }) => (
+        {({ state, query, id: routeId }) => (
           <Fragment>
             <BackBar
               title={searchPhrase}
@@ -49,6 +49,7 @@ class SearchContent extends Component {
               searchPhrase={searchPhrase}
               filters={state.filters}
               sort={query.sort || DEFAULT_SORT}
+              routeId={routeId}
             />
             {showNoResults && (
               <NoResults
