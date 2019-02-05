@@ -6,6 +6,7 @@ import {
   getCurrentProduct,
   getProductCurrency,
 } from '../selectors/product';
+import { OPTION_TYPE_SELECT, OPTION_TYPE_TEXT } from '../constants';
 
 /**
  * Retrieves the product options state.
@@ -68,13 +69,15 @@ const getOptionItems = createSelector(
       };
     }
 
-    const selectedItem = findProductOptionItem(options, option.id, selected);
+    const {
+      unitPriceModifier: siblingPrice = 0,
+    } = findProductOptionItem(options, option.id, selected);
 
     return {
       label: value.label,
       currency,
       value: value.id,
-      price: (value.unitPriceModifier - selectedItem.unitPriceModifier),
+      price: (value.unitPriceModifier - siblingPrice),
     };
   })
 );
@@ -93,12 +96,14 @@ export const getProductOptions = createSelector(
       id: option.id,
       label: option.label,
       type: option.type,
-      items: getOptionItems(options, option.values, option, currentOptions[option.id], currency),
       value: currentOptions[option.id],
-      info: option.annotation, // text field
-      required: !!option.required, // text field
-      price: {
-        ...option.type === 'text' && {
+      ...option.type === OPTION_TYPE_SELECT && {
+        items: getOptionItems(options, option.values, option, currentOptions[option.id], currency),
+      },
+      ...option.type === OPTION_TYPE_TEXT && {
+        info: option.annotation,
+        required: !!option.required,
+        price: {
           currency,
           price: option.unitPriceModifier,
         },

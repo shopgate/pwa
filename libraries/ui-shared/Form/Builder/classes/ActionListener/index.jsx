@@ -136,8 +136,8 @@ class ActionListener {
    * Action listener creator to check all related rules before calling any further action listeners
    * @param {FormElement} element The element for which the listener should be created for
    * @param {FormFieldAction} action The action to be create a listener for
-   * @param {function} actionListener The action listener to call if the rule applies
-   * @returns {function} Returns a function to modify and return the modified state.
+   * @param {Function} actionListener The action listener to call if the rule applies
+   * @returns {Function} Returns a function to modify and return the modified state.
    */
   createEvaluatedHandler = (element, action, actionListener) => (prevState, nextState) => {
     // Apply rules before accepting any changes
@@ -152,7 +152,7 @@ class ActionListener {
    * Action listener creator to handle "updateCountryChange" action
    * @param {FormElement} provinceEl The element for which the listener should be created for
    * @param {FormFieldAction} action The action to be create a listener for
-   * @returns {function} Returns a function to modify and return the modified state.
+   * @returns {Function} Returns a function to modify and return the modified state.
    */
   createUpdateProvinceElementHandler = (provinceEl, action) => (prevState, nextState) => {
     const countryElementId = action.rules[0].context;
@@ -177,7 +177,7 @@ class ActionListener {
    * Action listener creator to handle "setVisibility" actions
    * @param {FormElement} element The element for which the listener should be created for
    * @param {FormFieldAction} action The action to be create a listener for
-   * @returns {function} Returns a function to modify and return the modified state.
+   * @returns {Function} Returns a function to modify and return the modified state.
    */
   createSetVisibilityHandler = (element, action) => (prevState, nextState) => {
     let newState = {
@@ -212,7 +212,7 @@ class ActionListener {
    * Action listener creator to handle "setValue" actions
    * @param {FormElement} element The element for which the listener should be created for
    * @param {FormFieldAction} action The action to be create a listener for
-   * @returns {function} Returns the modified state.
+   * @returns {Function} Returns the modified state.
    */
   createSetValueHandler = (element, action) => (prevState, nextState) => {
     if (typeof action.params !== 'object' || Array.isArray(action.params)) {
@@ -291,7 +291,7 @@ class ActionListener {
    * Action listener creator to handle "transform" actions
    * @param {FormElement} element The element for which the listener should be created for
    * @param {FormFieldAction} action The action to be create a listener for
-   * @returns {function} Returns a function to modify and return the modified state.
+   * @returns {Function} Returns a function to modify and return the modified state.
    */
   createTransformHandler = (element, action) => (prevState, nextState) => {
     /**
@@ -460,7 +460,7 @@ class ActionListener {
    * Creates a concat function that defines how to concatenate action rule results
    *
    * @param {string} method The method defined by the action
-   * @returns {function}
+   * @returns {Function}
    */
   createConcatMethod = method => (prev, next) => {
     switch (method) {
@@ -476,7 +476,7 @@ class ActionListener {
    * Adds a "action" listener to a given context element
    *
    * @param {string} elementId the element to listen for
-   * @param {function} handler The listener to call when something has changed
+   * @param {Function} handler The listener to call when something has changed
    */
   register = (elementId, handler) => {
     if (!this.actionListeners[elementId]) {
