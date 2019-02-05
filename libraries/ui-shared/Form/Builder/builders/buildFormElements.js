@@ -23,7 +23,7 @@ const noop = () => {};
  * Takes a list of which elements to render based on the respective element type
  *
  * @param {Form} formConfig Configuration of which form fields to render
- * @param {function} elementChangeHandler change handler
+ * @param {Function} elementChangeHandler change handler
  * @return {FormElement[]}
  */
 export default (formConfig, elementChangeHandler = noop) => {

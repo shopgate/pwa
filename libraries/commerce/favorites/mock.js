@@ -62,7 +62,7 @@ const getMockedState = ({ withProducts, validCache = false }) => {
  * @param {'then'|string} variant Variant as in MockedPipelineResponse.
  * @param {boolean} withProducts When true products are returned.
  * @param {boolean} validCache When true, `.expires` flag is > `Date.now()`
- * @returns {function}
+ * @returns {Function}
  */
 const mockedGetState = (variant, { withProducts = false, validCache = false } = {}) => () => {
   if (variant === 'then') {

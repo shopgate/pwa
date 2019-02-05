@@ -18,17 +18,20 @@ class CategoryProducts extends PureComponent {
 
   static defaultProps = {
     categoryId: null,
-    getProducts() {},
+    getProducts() { },
     hash: null,
     products: null,
     totalProductCount: null,
   };
 
-  fetchProducts = () => {
+  /**
+   * @param {number} offset The offset for the fetching.
+   */
+  fetchProducts = (offset) => {
     this.props.getProducts(
       this.props.categoryId,
       this.props.sort,
-      this.props.products.length
+      offset || this.props.products.length
     );
   }
 
