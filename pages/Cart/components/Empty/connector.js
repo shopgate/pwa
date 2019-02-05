@@ -3,7 +3,7 @@ import { historyPop } from '@shopgate/pwa-common/actions/router';
 
 /**
  * Maps action dispatchers to the component props.
- * @param {function} dispatch The store dispatcher.
+ * @param {Function} dispatch The store dispatcher.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
