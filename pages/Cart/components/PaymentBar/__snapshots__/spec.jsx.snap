@@ -679,95 +679,120 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                             <CheckoutButton
                               isActive={true}
                             >
-                              <Connect(Link)
-                                disabled={false}
-                                href="/checkout"
+                              <Portal
+                                name="cart.checkout-button.before"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="cart.checkout-button"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
                               >
-                                <Link
-                                  className=""
+                                <Connect(Link)
                                   disabled={false}
-                                  historyPush={[Function]}
-                                  historyReplace={[Function]}
                                   href="/checkout"
-                                  replace={false}
-                                  state={Object {}}
-                                  tag="div"
                                 >
-                                  <div
-                                    className="css-c6ki83 "
-                                    data-test-id="link: /checkout"
-                                    onClick={[Function]}
-                                    role="link"
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/checkout"
+                                    replace={false}
+                                    state={Object {}}
+                                    tag="div"
                                   >
-                                    <RippleButton
-                                      className="css-1mlc9hd"
-                                      disabled={false}
-                                      flat={false}
-                                      onClick={null}
-                                      rippleClassName=""
-                                      rippleSize={null}
-                                      testId="Button"
-                                      type="regular"
-                                      wrapContent={true}
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /checkout"
+                                      onClick={[Function]}
+                                      role="link"
                                     >
-                                      <Button
+                                      <RippleButton
                                         className="css-1mlc9hd"
                                         disabled={false}
                                         flat={false}
                                         onClick={null}
+                                        rippleClassName=""
+                                        rippleSize={null}
                                         testId="Button"
                                         type="regular"
-                                        wrapContent={false}
+                                        wrapContent={true}
                                       >
                                         <Button
-                                          className="css-kevfw8 css-1mlc9hd"
+                                          className="css-1mlc9hd"
                                           disabled={false}
+                                          flat={false}
                                           onClick={null}
                                           testId="Button"
+                                          type="regular"
+                                          wrapContent={false}
                                         >
-                                          <button
-                                            className="css-kevfw8 css-1mlc9hd css-1rn65c0"
-                                            data-test-id="Button"
+                                          <Button
+                                            className="css-kevfw8 css-1mlc9hd"
                                             disabled={false}
                                             onClick={null}
+                                            testId="Button"
                                           >
-                                            <Ripple
-                                              className="css-1fscwua "
-                                              color="#000"
+                                            <button
+                                              className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                              data-test-id="Button"
                                               disabled={false}
-                                              fill={true}
-                                              onClick={[Function]}
-                                              onComplete={[Function]}
-                                              overflow={false}
-                                              size={null}
+                                              onClick={null}
                                             >
-                                              <div
-                                                aria-hidden={true}
+                                              <Ripple
                                                 className="css-1fscwua "
-                                                data-test-id="Ripple"
+                                                color="#000"
+                                                disabled={false}
+                                                fill={true}
                                                 onClick={[Function]}
-                                                style={null}
+                                                onComplete={[Function]}
+                                                overflow={false}
+                                                size={null}
                                               >
-                                                <Translate
-                                                  className=""
-                                                  params={Object {}}
-                                                  string="cart.checkout"
+                                                <div
+                                                  aria-hidden={true}
+                                                  className="css-1fscwua "
+                                                  data-test-id="Ripple"
+                                                  onClick={[Function]}
+                                                  style={null}
                                                 >
-                                                  <span
+                                                  <Translate
                                                     className=""
+                                                    params={Object {}}
+                                                    string="cart.checkout"
                                                   >
-                                                    cart.checkout
-                                                  </span>
-                                                </Translate>
-                                              </div>
-                                            </Ripple>
-                                          </button>
+                                                    <span
+                                                      className=""
+                                                    >
+                                                      cart.checkout
+                                                    </span>
+                                                  </Translate>
+                                                </div>
+                                              </Ripple>
+                                            </button>
+                                          </Button>
                                         </Button>
-                                      </Button>
-                                    </RippleButton>
-                                  </div>
-                                </Link>
-                              </Connect(Link)>
+                                      </RippleButton>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </Portal>
+                              <Portal
+                                name="cart.checkout-button.after"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
                             </CheckoutButton>
                           </Component>
                         </div>
@@ -1375,95 +1400,120 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                             <CheckoutButton
                               isActive={true}
                             >
-                              <Connect(Link)
-                                disabled={false}
-                                href="/checkout"
+                              <Portal
+                                name="cart.checkout-button.before"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="cart.checkout-button"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
                               >
-                                <Link
-                                  className=""
+                                <Connect(Link)
                                   disabled={false}
-                                  historyPush={[Function]}
-                                  historyReplace={[Function]}
                                   href="/checkout"
-                                  replace={false}
-                                  state={Object {}}
-                                  tag="div"
                                 >
-                                  <div
-                                    className="css-c6ki83 "
-                                    data-test-id="link: /checkout"
-                                    onClick={[Function]}
-                                    role="link"
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/checkout"
+                                    replace={false}
+                                    state={Object {}}
+                                    tag="div"
                                   >
-                                    <RippleButton
-                                      className="css-1mlc9hd"
-                                      disabled={false}
-                                      flat={false}
-                                      onClick={null}
-                                      rippleClassName=""
-                                      rippleSize={null}
-                                      testId="Button"
-                                      type="regular"
-                                      wrapContent={true}
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /checkout"
+                                      onClick={[Function]}
+                                      role="link"
                                     >
-                                      <Button
+                                      <RippleButton
                                         className="css-1mlc9hd"
                                         disabled={false}
                                         flat={false}
                                         onClick={null}
+                                        rippleClassName=""
+                                        rippleSize={null}
                                         testId="Button"
                                         type="regular"
-                                        wrapContent={false}
+                                        wrapContent={true}
                                       >
                                         <Button
-                                          className="css-kevfw8 css-1mlc9hd"
+                                          className="css-1mlc9hd"
                                           disabled={false}
+                                          flat={false}
                                           onClick={null}
                                           testId="Button"
+                                          type="regular"
+                                          wrapContent={false}
                                         >
-                                          <button
-                                            className="css-kevfw8 css-1mlc9hd css-1rn65c0"
-                                            data-test-id="Button"
+                                          <Button
+                                            className="css-kevfw8 css-1mlc9hd"
                                             disabled={false}
                                             onClick={null}
+                                            testId="Button"
                                           >
-                                            <Ripple
-                                              className="css-1fscwua "
-                                              color="#000"
+                                            <button
+                                              className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                              data-test-id="Button"
                                               disabled={false}
-                                              fill={true}
-                                              onClick={[Function]}
-                                              onComplete={[Function]}
-                                              overflow={false}
-                                              size={null}
+                                              onClick={null}
                                             >
-                                              <div
-                                                aria-hidden={true}
+                                              <Ripple
                                                 className="css-1fscwua "
-                                                data-test-id="Ripple"
+                                                color="#000"
+                                                disabled={false}
+                                                fill={true}
                                                 onClick={[Function]}
-                                                style={null}
+                                                onComplete={[Function]}
+                                                overflow={false}
+                                                size={null}
                                               >
-                                                <Translate
-                                                  className=""
-                                                  params={Object {}}
-                                                  string="cart.checkout"
+                                                <div
+                                                  aria-hidden={true}
+                                                  className="css-1fscwua "
+                                                  data-test-id="Ripple"
+                                                  onClick={[Function]}
+                                                  style={null}
                                                 >
-                                                  <span
+                                                  <Translate
                                                     className=""
+                                                    params={Object {}}
+                                                    string="cart.checkout"
                                                   >
-                                                    cart.checkout
-                                                  </span>
-                                                </Translate>
-                                              </div>
-                                            </Ripple>
-                                          </button>
+                                                    <span
+                                                      className=""
+                                                    >
+                                                      cart.checkout
+                                                    </span>
+                                                  </Translate>
+                                                </div>
+                                              </Ripple>
+                                            </button>
+                                          </Button>
                                         </Button>
-                                      </Button>
-                                    </RippleButton>
-                                  </div>
-                                </Link>
-                              </Connect(Link)>
+                                      </RippleButton>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </Portal>
+                              <Portal
+                                name="cart.checkout-button.after"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
                             </CheckoutButton>
                           </Component>
                         </div>
@@ -1819,95 +1869,120 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                             <CheckoutButton
                               isActive={true}
                             >
-                              <Connect(Link)
-                                disabled={false}
-                                href="/checkout"
+                              <Portal
+                                name="cart.checkout-button.before"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="cart.checkout-button"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
                               >
-                                <Link
-                                  className=""
+                                <Connect(Link)
                                   disabled={false}
-                                  historyPush={[Function]}
-                                  historyReplace={[Function]}
                                   href="/checkout"
-                                  replace={false}
-                                  state={Object {}}
-                                  tag="div"
                                 >
-                                  <div
-                                    className="css-c6ki83 "
-                                    data-test-id="link: /checkout"
-                                    onClick={[Function]}
-                                    role="link"
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/checkout"
+                                    replace={false}
+                                    state={Object {}}
+                                    tag="div"
                                   >
-                                    <RippleButton
-                                      className="css-1mlc9hd"
-                                      disabled={false}
-                                      flat={false}
-                                      onClick={null}
-                                      rippleClassName=""
-                                      rippleSize={null}
-                                      testId="Button"
-                                      type="regular"
-                                      wrapContent={true}
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /checkout"
+                                      onClick={[Function]}
+                                      role="link"
                                     >
-                                      <Button
+                                      <RippleButton
                                         className="css-1mlc9hd"
                                         disabled={false}
                                         flat={false}
                                         onClick={null}
+                                        rippleClassName=""
+                                        rippleSize={null}
                                         testId="Button"
                                         type="regular"
-                                        wrapContent={false}
+                                        wrapContent={true}
                                       >
                                         <Button
-                                          className="css-kevfw8 css-1mlc9hd"
+                                          className="css-1mlc9hd"
                                           disabled={false}
+                                          flat={false}
                                           onClick={null}
                                           testId="Button"
+                                          type="regular"
+                                          wrapContent={false}
                                         >
-                                          <button
-                                            className="css-kevfw8 css-1mlc9hd css-1rn65c0"
-                                            data-test-id="Button"
+                                          <Button
+                                            className="css-kevfw8 css-1mlc9hd"
                                             disabled={false}
                                             onClick={null}
+                                            testId="Button"
                                           >
-                                            <Ripple
-                                              className="css-1fscwua "
-                                              color="#000"
+                                            <button
+                                              className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                              data-test-id="Button"
                                               disabled={false}
-                                              fill={true}
-                                              onClick={[Function]}
-                                              onComplete={[Function]}
-                                              overflow={false}
-                                              size={null}
+                                              onClick={null}
                                             >
-                                              <div
-                                                aria-hidden={true}
+                                              <Ripple
                                                 className="css-1fscwua "
-                                                data-test-id="Ripple"
+                                                color="#000"
+                                                disabled={false}
+                                                fill={true}
                                                 onClick={[Function]}
-                                                style={null}
+                                                onComplete={[Function]}
+                                                overflow={false}
+                                                size={null}
                                               >
-                                                <Translate
-                                                  className=""
-                                                  params={Object {}}
-                                                  string="cart.checkout"
+                                                <div
+                                                  aria-hidden={true}
+                                                  className="css-1fscwua "
+                                                  data-test-id="Ripple"
+                                                  onClick={[Function]}
+                                                  style={null}
                                                 >
-                                                  <span
+                                                  <Translate
                                                     className=""
+                                                    params={Object {}}
+                                                    string="cart.checkout"
                                                   >
-                                                    cart.checkout
-                                                  </span>
-                                                </Translate>
-                                              </div>
-                                            </Ripple>
-                                          </button>
+                                                    <span
+                                                      className=""
+                                                    >
+                                                      cart.checkout
+                                                    </span>
+                                                  </Translate>
+                                                </div>
+                                              </Ripple>
+                                            </button>
+                                          </Button>
                                         </Button>
-                                      </Button>
-                                    </RippleButton>
-                                  </div>
-                                </Link>
-                              </Connect(Link)>
+                                      </RippleButton>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </Portal>
+                              <Portal
+                                name="cart.checkout-button.after"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
                             </CheckoutButton>
                           </Component>
                         </div>
@@ -2420,95 +2495,120 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                             <CheckoutButton
                               isActive={true}
                             >
-                              <Connect(Link)
-                                disabled={false}
-                                href="/checkout"
+                              <Portal
+                                name="cart.checkout-button.before"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="cart.checkout-button"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
                               >
-                                <Link
-                                  className=""
+                                <Connect(Link)
                                   disabled={false}
-                                  historyPush={[Function]}
-                                  historyReplace={[Function]}
                                   href="/checkout"
-                                  replace={false}
-                                  state={Object {}}
-                                  tag="div"
                                 >
-                                  <div
-                                    className="css-c6ki83 "
-                                    data-test-id="link: /checkout"
-                                    onClick={[Function]}
-                                    role="link"
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/checkout"
+                                    replace={false}
+                                    state={Object {}}
+                                    tag="div"
                                   >
-                                    <RippleButton
-                                      className="css-1mlc9hd"
-                                      disabled={false}
-                                      flat={false}
-                                      onClick={null}
-                                      rippleClassName=""
-                                      rippleSize={null}
-                                      testId="Button"
-                                      type="regular"
-                                      wrapContent={true}
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /checkout"
+                                      onClick={[Function]}
+                                      role="link"
                                     >
-                                      <Button
+                                      <RippleButton
                                         className="css-1mlc9hd"
                                         disabled={false}
                                         flat={false}
                                         onClick={null}
+                                        rippleClassName=""
+                                        rippleSize={null}
                                         testId="Button"
                                         type="regular"
-                                        wrapContent={false}
+                                        wrapContent={true}
                                       >
                                         <Button
-                                          className="css-kevfw8 css-1mlc9hd"
+                                          className="css-1mlc9hd"
                                           disabled={false}
+                                          flat={false}
                                           onClick={null}
                                           testId="Button"
+                                          type="regular"
+                                          wrapContent={false}
                                         >
-                                          <button
-                                            className="css-kevfw8 css-1mlc9hd css-1rn65c0"
-                                            data-test-id="Button"
+                                          <Button
+                                            className="css-kevfw8 css-1mlc9hd"
                                             disabled={false}
                                             onClick={null}
+                                            testId="Button"
                                           >
-                                            <Ripple
-                                              className="css-1fscwua "
-                                              color="#000"
+                                            <button
+                                              className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                              data-test-id="Button"
                                               disabled={false}
-                                              fill={true}
-                                              onClick={[Function]}
-                                              onComplete={[Function]}
-                                              overflow={false}
-                                              size={null}
+                                              onClick={null}
                                             >
-                                              <div
-                                                aria-hidden={true}
+                                              <Ripple
                                                 className="css-1fscwua "
-                                                data-test-id="Ripple"
+                                                color="#000"
+                                                disabled={false}
+                                                fill={true}
                                                 onClick={[Function]}
-                                                style={null}
+                                                onComplete={[Function]}
+                                                overflow={false}
+                                                size={null}
                                               >
-                                                <Translate
-                                                  className=""
-                                                  params={Object {}}
-                                                  string="cart.checkout"
+                                                <div
+                                                  aria-hidden={true}
+                                                  className="css-1fscwua "
+                                                  data-test-id="Ripple"
+                                                  onClick={[Function]}
+                                                  style={null}
                                                 >
-                                                  <span
+                                                  <Translate
                                                     className=""
+                                                    params={Object {}}
+                                                    string="cart.checkout"
                                                   >
-                                                    cart.checkout
-                                                  </span>
-                                                </Translate>
-                                              </div>
-                                            </Ripple>
-                                          </button>
+                                                    <span
+                                                      className=""
+                                                    >
+                                                      cart.checkout
+                                                    </span>
+                                                  </Translate>
+                                                </div>
+                                              </Ripple>
+                                            </button>
+                                          </Button>
                                         </Button>
-                                      </Button>
-                                    </RippleButton>
-                                  </div>
-                                </Link>
-                              </Connect(Link)>
+                                      </RippleButton>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </Portal>
+                              <Portal
+                                name="cart.checkout-button.after"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
                             </CheckoutButton>
                           </Component>
                         </div>
@@ -2927,95 +3027,120 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                             <CheckoutButton
                               isActive={true}
                             >
-                              <Connect(Link)
-                                disabled={false}
-                                href="/checkout"
+                              <Portal
+                                name="cart.checkout-button.before"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="cart.checkout-button"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
                               >
-                                <Link
-                                  className=""
+                                <Connect(Link)
                                   disabled={false}
-                                  historyPush={[Function]}
-                                  historyReplace={[Function]}
                                   href="/checkout"
-                                  replace={false}
-                                  state={Object {}}
-                                  tag="div"
                                 >
-                                  <div
-                                    className="css-c6ki83 "
-                                    data-test-id="link: /checkout"
-                                    onClick={[Function]}
-                                    role="link"
+                                  <Link
+                                    className=""
+                                    disabled={false}
+                                    historyPush={[Function]}
+                                    historyReplace={[Function]}
+                                    href="/checkout"
+                                    replace={false}
+                                    state={Object {}}
+                                    tag="div"
                                   >
-                                    <RippleButton
-                                      className="css-1mlc9hd"
-                                      disabled={false}
-                                      flat={false}
-                                      onClick={null}
-                                      rippleClassName=""
-                                      rippleSize={null}
-                                      testId="Button"
-                                      type="regular"
-                                      wrapContent={true}
+                                    <div
+                                      className="css-c6ki83 "
+                                      data-test-id="link: /checkout"
+                                      onClick={[Function]}
+                                      role="link"
                                     >
-                                      <Button
+                                      <RippleButton
                                         className="css-1mlc9hd"
                                         disabled={false}
                                         flat={false}
                                         onClick={null}
+                                        rippleClassName=""
+                                        rippleSize={null}
                                         testId="Button"
                                         type="regular"
-                                        wrapContent={false}
+                                        wrapContent={true}
                                       >
                                         <Button
-                                          className="css-kevfw8 css-1mlc9hd"
+                                          className="css-1mlc9hd"
                                           disabled={false}
+                                          flat={false}
                                           onClick={null}
                                           testId="Button"
+                                          type="regular"
+                                          wrapContent={false}
                                         >
-                                          <button
-                                            className="css-kevfw8 css-1mlc9hd css-1rn65c0"
-                                            data-test-id="Button"
+                                          <Button
+                                            className="css-kevfw8 css-1mlc9hd"
                                             disabled={false}
                                             onClick={null}
+                                            testId="Button"
                                           >
-                                            <Ripple
-                                              className="css-1fscwua "
-                                              color="#000"
+                                            <button
+                                              className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                              data-test-id="Button"
                                               disabled={false}
-                                              fill={true}
-                                              onClick={[Function]}
-                                              onComplete={[Function]}
-                                              overflow={false}
-                                              size={null}
+                                              onClick={null}
                                             >
-                                              <div
-                                                aria-hidden={true}
+                                              <Ripple
                                                 className="css-1fscwua "
-                                                data-test-id="Ripple"
+                                                color="#000"
+                                                disabled={false}
+                                                fill={true}
                                                 onClick={[Function]}
-                                                style={null}
+                                                onComplete={[Function]}
+                                                overflow={false}
+                                                size={null}
                                               >
-                                                <Translate
-                                                  className=""
-                                                  params={Object {}}
-                                                  string="cart.checkout"
+                                                <div
+                                                  aria-hidden={true}
+                                                  className="css-1fscwua "
+                                                  data-test-id="Ripple"
+                                                  onClick={[Function]}
+                                                  style={null}
                                                 >
-                                                  <span
+                                                  <Translate
                                                     className=""
+                                                    params={Object {}}
+                                                    string="cart.checkout"
                                                   >
-                                                    cart.checkout
-                                                  </span>
-                                                </Translate>
-                                              </div>
-                                            </Ripple>
-                                          </button>
+                                                    <span
+                                                      className=""
+                                                    >
+                                                      cart.checkout
+                                                    </span>
+                                                  </Translate>
+                                                </div>
+                                              </Ripple>
+                                            </button>
+                                          </Button>
                                         </Button>
-                                      </Button>
-                                    </RippleButton>
-                                  </div>
-                                </Link>
-                              </Connect(Link)>
+                                      </RippleButton>
+                                    </div>
+                                  </Link>
+                                </Connect(Link)>
+                              </Portal>
+                              <Portal
+                                name="cart.checkout-button.after"
+                                props={
+                                  Object {
+                                    "isActive": true,
+                                  }
+                                }
+                              />
                             </CheckoutButton>
                           </Component>
                         </div>
