@@ -17,6 +17,7 @@ import {
 } from './constants';
 import {
   mockedStateDefault,
+  // eslint-disable-next-line import/named
   mockedStateRoute,
 } from './mock';
 
