@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CryptoJs from 'crypto-js';
+import isEqual from 'lodash/isEqual';
 import shouldUpdate from 'recompose/shouldUpdate';
 import Link from '@shopgate/pwa-common/components/Link';
 import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
@@ -18,8 +20,8 @@ const ImageSliderWidget = ({ settings, className }) => (
     interval={settings.delay}
     loop={settings.loop}
   >
-    {settings.images.map((image, index) => {
-      const key = `si${index}`;
+    {settings.images.map((image) => {
+      const key = CryptoJs.MD5(image.image);
 
       if (image.link) {
         return (
@@ -58,7 +60,7 @@ ImageSliderWidget.defaultProps = {
 
 export default shouldUpdate((prev, next) => {
   if (!prev.className && next.className) return true;
-  if (!prev.settings && next.settings) return true;
+  if (!isEqual(prev.settings, next.settings)) return true;
   return false;
 })(ImageSliderWidget);
 
