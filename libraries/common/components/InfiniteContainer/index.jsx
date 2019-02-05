@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import isEqual from 'lodash/isEqual';
+import { router } from '@virtuous/conductor';
+import { RouteContext } from '../../context';
 import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
 
 /**
@@ -10,11 +12,13 @@ import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
  * (parent) scroll container.
  */
 class InfiniteContainer extends Component {
+  static contextType = RouteContext;
+
   static propTypes = {
-    containerRef: PropTypes.shape().isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     iterator: PropTypes.func.isRequired,
     loader: PropTypes.func.isRequired,
+    containerRef: PropTypes.shape(),
     initialLimit: PropTypes.number,
     limit: PropTypes.number,
     loadingIndicator: PropTypes.node,
@@ -28,6 +32,7 @@ class InfiniteContainer extends Component {
   };
 
   static defaultProps = {
+    containerRef: { current: null },
     initialLimit: 10,
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
@@ -40,9 +45,10 @@ class InfiniteContainer extends Component {
   /**
    * The component constructor.
    * @param {Object} props The component props.
+   * @param {Object} context The component context.
    */
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.domElement = null;
     this.domScrollContainer = null;
@@ -54,11 +60,13 @@ class InfiniteContainer extends Component {
     // A flag to prevent concurrent loading requests.
     this.isLoading = false;
 
-    // Use the initialLimit only if there are already products
-    const currentLimit = props.items.length ? props.initialLimit : props.limit;
+    // Determine the initial offset of items.
+    const { items, limit, initialLimit } = props;
+    const currentOffset = items.length ? initialLimit : limit;
+    const { state: { offset = 0 } = {} } = context || {};
 
     this.state = {
-      offset: [0, currentLimit],
+      offset: [offset, currentOffset],
       // A state flag that will be true as long as we await more items.
       // The loading indicator will be shown accordingly.
       awaitingItems: true,
@@ -71,8 +79,11 @@ class InfiniteContainer extends Component {
    * After that it calls for the initial data to load.
    */
   componentDidMount() {
-    this.domScrollContainer = this.props.containerRef;
-    this.bindEvents();
+    const { current } = this.props.containerRef;
+    if (current) {
+      this.domScrollContainer = current;
+      this.bindEvents();
+    }
 
     // Initially request items if none received.
     if (!this.props.items.length) {
@@ -88,16 +99,34 @@ class InfiniteContainer extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
+    /**
+     * Downstream logic to process the props. It's wrapped into a separate function, since it might
+     * beed to be executed after the state was updated to avoid race conditions.
+     */
+    const finalize = () => {
+      const { current } = nextProps.containerRef;
+      if (!this.domScrollContainer && current) {
+        this.domScrollContainer = current;
+        this.bindEvents();
+      }
+
+      if (this.receivedTotalItems(nextProps)) {
+        // Trigger loading if totalItems are available
+        this.handleLoading(true, nextProps);
+      }
+
+      this.verifyAllDone(nextProps);
+    };
+
     if (nextProps.requestHash !== this.props.requestHash) {
-      this.resetComponent();
+      this.resetComponent(() => {
+        finalize();
+      });
+
+      return;
     }
 
-    if (this.receivedTotalItems(nextProps)) {
-      // Trigger loading if totalItems are available
-      this.handleLoading(true, nextProps);
-    }
-
-    this.verifyAllDone(nextProps);
+    finalize();
   }
 
   /**
@@ -108,29 +137,16 @@ class InfiniteContainer extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      !isEqual(this.props.containerRef, nextProps.containerRef) ||
       !isEqual(this.props.items, nextProps.items) ||
       !isEqual(this.state, nextState)
     );
   }
 
   /**
-   * Whenever the component updates and there is no scroll container found yet,
-   * it tries to find a proper scroll container again.
+   * Reset the loading flag.
    */
   componentDidUpdate() {
-    /*
-     *  When component updates we update the scroll container.
-     */
-    const oldScrollParent = this.domScrollContainer;
-    this.domScrollContainer = this.props.containerRef;
-
-    // Rebind scroll container events.
-    if (oldScrollParent) {
-      this.unbindEvents(oldScrollParent);
-    }
-    this.bindEvents();
-
-    // Reset isLoading flag.
     this.isLoading = false;
   }
 
@@ -138,6 +154,9 @@ class InfiniteContainer extends Component {
    * When the component will unmount it unbinds all previously bound event listeners.
    */
   componentWillUnmount() {
+    router.update(this.context.id, {
+      offset: this.state.offset[0],
+    }, false);
     this.unbindEvents();
   }
 
@@ -210,7 +229,7 @@ class InfiniteContainer extends Component {
     /**
      * When items are cached, the initial limit can be "6".
      * Then, new offset should be limited to the "normal" limit (30).
-     * Otherwise, with cached items, this component would skip the inital number of items
+     * Otherwise, with cached items, this component would skip the initial number of items
      * when the cache is out.
      */
     if (start % this.props.limit) {
@@ -224,11 +243,17 @@ class InfiniteContainer extends Component {
 
   /**
    * Resets the state.
+   * @param {Function} callback A callback which is invoked after the state was updated.
+   *   This is necessary to avoid race conditions with downstream code.
    */
-  resetComponent() {
+  resetComponent(callback) {
     this.setState({
       offset: [0, this.props.limit],
       awaitingItems: true,
+    }, () => {
+      this.unbindEvents();
+      this.bindEvents();
+      callback();
     });
   }
 

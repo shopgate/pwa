@@ -1,9 +1,9 @@
 import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
-import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
+import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
@@ -19,17 +19,19 @@ import {
  */
 export default function category(subscribe) {
   subscribe(categoryWillEnter$, ({ dispatch, action }) => {
-    const { filters } = action.route.state;
+    const { filters, offset = 0 } = action.route.state;
     const categoryId = hex2bin(action.route.params.categoryId);
 
     dispatch(fetchCategory(categoryId));
     dispatch(fetchCategoryProducts({
-      categoryId, filters,
+      categoryId,
+      filters,
+      offset,
     }));
   });
 
   subscribe(categoryDidEnter$, ({ dispatch }) => {
-    dispatch(getFilters());
+    dispatch(fetchFilters());
   });
 
   /**
@@ -52,13 +54,15 @@ export default function category(subscribe) {
     dispatch(historyPop());
   });
 
-  subscribe(categoryFiltersDidUpdate$, ({ action, dispatch }) => {
-    const { params } = getCurrentRoute();
+  subscribe(categoryFiltersDidUpdate$, ({ action, dispatch, getState }) => {
+    const { params, state: { offset = 0 } } = getCurrentRoute(getState());
     const categoryId = hex2bin(params.categoryId);
     const { filters } = action;
 
     dispatch(fetchCategoryProducts({
-      categoryId, filters,
+      categoryId,
+      filters,
+      offset,
     }));
   });
 }

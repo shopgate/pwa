@@ -8,6 +8,7 @@ import connect from './connector';
  */
 class CategoryProducts extends PureComponent {
   static propTypes = {
+    sort: PropTypes.string.isRequired,
     categoryId: PropTypes.string,
     getProducts: PropTypes.func,
     hash: PropTypes.string,
@@ -17,14 +18,21 @@ class CategoryProducts extends PureComponent {
 
   static defaultProps = {
     categoryId: null,
-    getProducts() {},
+    getProducts() { },
     hash: null,
     products: null,
     totalProductCount: null,
   };
 
-  fetchProducts = () => {
-    this.props.getProducts(this.props.categoryId, this.props.products.length);
+  /**
+   * @param {number} offset The offset for the fetching.
+   */
+  fetchProducts = (offset) => {
+    this.props.getProducts(
+      this.props.categoryId,
+      this.props.sort,
+      offset || this.props.products.length
+    );
   }
 
   /**

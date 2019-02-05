@@ -31,6 +31,7 @@ exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
             color="inherit"
             onClick={[Function]}
             shadow={true}
+            testId={null}
           />
         }
         textColor="#fff"

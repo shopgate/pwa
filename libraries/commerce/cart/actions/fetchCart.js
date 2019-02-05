@@ -4,12 +4,18 @@ import * as pipelines from '../constants/Pipelines';
 import receiveCart from '../action-creators/receiveCart';
 import requestCart from '../action-creators/requestCart';
 import errorCart from '../action-creators/errorCart';
+import { getIsFetching } from '../selectors/index';
 
 /**
  * Get the current cart of the user.
  * @return {Function} A redux thunk.
  */
-const fetchCart = () => (dispatch) => {
+const fetchCart = () => (dispatch, getState) => {
+  if (getIsFetching(getState())) {
+    // Avoid duplicate calls
+    return;
+  }
+
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_GET_CART);
 
   /**

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavDrawerTitle /> should not render when no text is passed within the props 1`] = `
+<NavDrawerTitle
+  text=""
+/>
+`;
+
+exports[`<NavDrawerTitle /> should render when a text is passed within the props 1`] = `
+<NavDrawerTitle
+  text="Title"
+>
+  <div
+    className={
+      Object {
+        "data-css-o38fs9": "",
+      }
+    }
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="Title"
+    >
+      <span
+        className=""
+      >
+        Title
+      </span>
+    </Translate>
+  </div>
+</NavDrawerTitle>
+`;

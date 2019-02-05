@@ -6,7 +6,10 @@ describe('IOS11Test productPage', () => {
     // Naviagte to product
     cy.get(els.allProductCategory)
       .click();
+    cy.get(els.loadingIndicator)
+      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewName)
+      .last()
       .click();
 
     // Check for Image
@@ -30,10 +33,23 @@ describe('IOS11Test productPage', () => {
   });
 
   it('should check for manufacturer', () => {
-    cy.visit('/item/31303637');
+    cy.visit('/browse/');
+    cy.get(els.basicCategory)
+      .should('be.visible')
+      .click();
+    cy.get(els.productsWithManufacturerPropCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productWithManufacturerPropGridViewItem)
+      .should('be.visible')
+      .last()
+      .click();
     cy.get(els.productWithManufacturerPropManufacturerProp)
-      .should('be.visible');
+      .should('be.visible')
+      .wait(3000);
     cy.get(els.productWithManufacturerPropManufacturerPropList)
+      .scrollIntoView()
       .should('be.visible');
   });
 
@@ -44,6 +60,7 @@ describe('IOS11Test productPage', () => {
 
   it('should check for desctiption', () => {
     cy.get(els.productWithManufactruerPropProductDetailPageDescription)
+      .scrollIntoView()
       .should('be.visible');
   });
 
@@ -64,7 +81,18 @@ describe('IOS11Test productPage', () => {
   });
 
   it('should check for reviewSection', () => {
-    cy.visit('/item/393339');
+    cy.visit('/browse/');
+    cy.get(els.basicCategory)
+      .should('be.visible')
+      .click();
+    cy.get(els.productsWithRatingsCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productWithRating3GridView)
+      .should('be.visible')
+      .last()
+      .click();
     cy.get(els.ReviewSection)
       .scrollIntoView()
       .should('be.visible');
@@ -96,34 +124,38 @@ describe('IOS11Test productPage', () => {
   });
 
   it('should check for variants', () => {
-    cy.visit('/item/393639');
-    cy.get(els.variantsPicker)
-      .should('be.visible');
+    cy.visit('/browse/');
+    cy.get(els.productVariantsCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productsWith2VariantsCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productWithChild1GridView)
+      .should('be.visible')
+      .last()
+      .click();
     cy.get(els.variantPickerColor)
       .should('be.visible');
     cy.get(els.variantPickerShoeSize)
       .should('be.visible');
   });
 
-  it('should check for options', () => {
-    cy.visit('/item/31303937');
-    cy.get(els.optionsPicker)
-      .should('be.visible');
-    cy.get(els.optionPickerGlow)
-      .should('be.visible');
-    cy.get(els.optionPickerBallColor)
-      .should('be.visible');
-  });
-
-  it('should check for base price', () => {
-    cy.visit('/item/393132');
-    cy.get(els.productWithBasePrice1basePrice)
-      .scrollIntoView()
-      .should('be.visible');
-  });
-
   it('should check for strike price', () => {
-    cy.visit('/item/31303634');
+    cy.visit('/browse/');
+    cy.get(els.basicCategory)
+      .should('be.visible')
+      .click();
+    cy.get(els.productsWithStrikePriceCategory)
+      .last()
+      .should('be.visible')
+      .click();
+    cy.get(els.productWithStrikePrice4GridViewItem)
+      .should('be.visible')
+      .last()
+      .click();
     cy.get(els.productWithStrikePrice4StrikePrice)
       .should('be.visible');
   });

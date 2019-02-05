@@ -31,7 +31,7 @@ const createRejectedRequestErrorObject = (queueItem) => {
  * @param {RequestManager} self The request manager instance.
  * @param {Request} request The request.
  * @param {Object} response The response.
- * @param {function} resolve The resolve() callback of the request promise.
+ * @param {Function} resolve The resolve() callback of the request promise.
  */
 const processLastRequest = (self, request, response, resolve) => {
   // Check if this is the most recent request.
@@ -70,7 +70,7 @@ const processLastRequest = (self, request, response, resolve) => {
  * @param {RequestManager} self The request manager instance.
  * @param {Request} request The request.
  * @param {Object} response The response.
- * @param {function} resolve The resolve() callback of the request promise.
+ * @param {Function} resolve The resolve() callback of the request promise.
  */
 const processFirstResponse = (self, request, response, resolve) => {
   if (self.propagationMode === PROPAGATE_REJECT) {
@@ -127,7 +127,7 @@ const processOrderedRequest = (self, request, response) => {
  * Multiple requests are queued and sent sequentially.
  * @param {RequestManager} self The request manager instance.
  * @param {Object} response The response.
- * @param {function} resolve The resolve() callback of the request promise.
+ * @param {Function} resolve The resolve() callback of the request promise.
  */
 const processSequentially = (self, response, resolve) => {
   resolve(response);
@@ -175,8 +175,8 @@ class RequestManager {
   /**
    * Pushes a new request to the queue.
    * @param {Request} request The request.
-   * @param {function} resolve The resolve() callback of the request promise.
-   * @param {function} reject The reject() callback of the request promise.
+   * @param {Function} resolve The resolve() callback of the request promise.
+   * @param {Function} reject The reject() callback of the request promise.
    */
   enqueueRequest(request, resolve, reject) {
     // Get the current timestamp.
@@ -205,8 +205,8 @@ class RequestManager {
   /**
    * Handles a new dispatch.
    * @param {Request} request The request.
-   * @param {function} resolve The resolve() callback of the request promise.
-   * @param {function} reject The reject() callback of the request promise.
+   * @param {Function} resolve The resolve() callback of the request promise.
+   * @param {Function} reject The reject() callback of the request promise.
    */
   handleDispatch(request, resolve, reject) {
     if (this.processingMode !== PROCESS_ANY) {
@@ -233,7 +233,7 @@ class RequestManager {
   /**
    * Handles an error that occurred during the request.
    * @param {Request} request The request this response belongs to.
-   * @param {function} reject The reject() callback of the request promise.
+   * @param {Function} reject The reject() callback of the request promise.
    * @param {Object} [message] The error object.
    */
   handleError(request, reject, message) {
@@ -256,7 +256,7 @@ class RequestManager {
   /**
    * Handles a received response.
    * @param {Request} request The request this response belongs to.
-   * @param {function} resolve The resolve() callback of the request promise.
+   * @param {Function} resolve The resolve() callback of the request promise.
    * @param {Object} response The response.
    */
   handleResponse(request, resolve, response) {

@@ -81,8 +81,8 @@ class CartButton extends Component {
       return;
     }
 
-    this.props.conditioner.check().then((fullfilled) => {
-      if (!fullfilled) {
+    this.props.conditioner.check().then((fulfilled) => {
+      if (!fulfilled) {
         return;
       }
 

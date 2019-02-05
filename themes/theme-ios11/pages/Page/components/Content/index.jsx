@@ -20,8 +20,14 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
-  const center = (pageId === PAGE_ID_INDEX) ? <Logo /> : <AppBar.Title title={configs.title || ''} />;
+  let center = <Logo />;
+
+  if (pageId !== PAGE_ID_INDEX) {
+    center = <AppBar.Title title={configs.title || ''} />;
+  }
+
   const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
+
   return (
     <Fragment>
       <Bar center={center} />

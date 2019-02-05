@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { getCurrentRoute, parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
+import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 import {
   SORT_RELEVANCE,
   SORT_PRICE_ASC,
@@ -35,13 +34,14 @@ const items = [
 class Sort extends PureComponent {
   static propTypes = {
     historyReplace: PropTypes.func.isRequired,
+    route: PropTypes.shape().isRequired,
   }
 
   /**
    * @param {string} sort The new sort string.
    */
   handleSelection = (sort) => {
-    const route = getCurrentRoute();
+    const { route } = this.props;
 
     if (route.query.sort === sort) {
       return;
@@ -63,21 +63,19 @@ class Sort extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const { route } = this.props;
+
     return (
-      <RouteContext.Consumer>
-        {route => (
-          <SelectBox
-            handleSelectionUpdate={this.handleSelection}
-            items={items}
-            initialValue={route.query.sort || DEFAULT_SORT}
-            icon={ArrowDropIcon}
-            item={Item}
-            className={styles.selectBox}
-            classNames={styles}
-            testId="sorting"
-          />
-        )}
-      </RouteContext.Consumer>
+      <SelectBox
+        handleSelectionUpdate={this.handleSelection}
+        items={items}
+        initialValue={route.query.sort || DEFAULT_SORT}
+        icon={ArrowDropIcon}
+        item={Item}
+        className={styles.selectBox}
+        classNames={styles}
+        testId="sorting"
+      />
     );
   }
 }

@@ -1,11 +1,10 @@
-import conductor from '@virtuous/conductor';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import {
+  router,
   ACTION_POP,
   ACTION_PUSH,
   ACTION_REPLACE,
   ACTION_RESET,
-} from '@virtuous/conductor/constants';
+} from '@virtuous/conductor';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
@@ -17,15 +16,21 @@ import { navigate } from '../action-creators';
 import subscriptions from './router';
 
 jest.unmock('@shopgate/pwa-core');
-jest.mock('@virtuous/conductor', () => ({
-  pop: jest.fn(),
-  push: jest.fn(),
-  reset: jest.fn(),
-  replace: jest.fn(),
-}));
-
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
+
+jest.mock('@virtuous/conductor', () => ({
+  ACTION_POP: 'ACTION_POP',
+  ACTION_PUSH: 'ACTION_PUSH',
+  ACTION_REPLACE: 'ACTION_REPLACE',
+  ACTION_RESET: 'ACTION_RESET',
+  router: {
+    pop: jest.fn(),
+    push: jest.fn(),
+    reset: jest.fn(),
+    replace: jest.fn(),
+    getCurrentRoute: jest.fn(),
+  },
+}));
 
 let mockedShopCNAME = null;
 let mockedWebCheckoutConfig = null;
@@ -40,11 +45,12 @@ jest.mock('../actions/router', () => ({
 }));
 
 describe('Router subscriptions', () => {
-  const subscribe = jest.fn();
-  const dispatch = jest.fn();
-  const getState = jest.fn().mockReturnValue({});
   const protectedRoute = '/protected';
   const protectorRoute = '/login';
+  const mockedRouterState = { router: { currentRoute: { pathname: protectorRoute } } };
+  const subscribe = jest.fn();
+  const dispatch = jest.fn();
+  const getState = jest.fn().mockReturnValue(mockedRouterState);
 
   /**
    * @param {Object} action The action object for the callback payload.
@@ -65,7 +71,6 @@ describe('Router subscriptions', () => {
 
     // Setup a protected route
     authRoutes.set(protectedRoute, protectorRoute);
-    getCurrentRoute.mockReturnValue({ pathname: protectorRoute });
   });
 
   beforeEach(() => {
@@ -101,10 +106,10 @@ describe('Router subscriptions', () => {
         openExternalLinkSpy,
         openLegacySpy,
         openLegacyLinkSpy,
-        conductor.pop,
-        conductor.push,
-        conductor.reset,
-        conductor.replace,
+        router.pop,
+        router.push,
+        router.reset,
+        router.replace,
       ];
 
       // Split the expected function from the haystack.
@@ -146,16 +151,19 @@ describe('Router subscriptions', () => {
 
     it('should handle the ACTION_POP history action as expected', async () => {
       await callback(createCallbackPayload({ params: { action: ACTION_POP } }));
-      testExpectedCall(conductor.pop);
+      expect(router.pop).toHaveBeenCalled();
     });
 
     it('should handle the ACTION_RESET history action as expected', async () => {
       await callback(createCallbackPayload({ params: { action: ACTION_RESET } }));
-      testExpectedCall(conductor.reset);
+      testExpectedCall(router.reset);
     });
 
     it('should handle the ACTION_PUSH history action as expected', async () => {
-      getState.mockReturnValueOnce({ user: { login: { isLoggedIn: true } } });
+      getState.mockReturnValueOnce({
+        ...mockedRouterState,
+        user: { login: { isLoggedIn: true } },
+      });
 
       const params = {
         action: ACTION_PUSH,
@@ -165,7 +173,12 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push, params);
+      expect(router.push).toHaveBeenCalledWith({
+        emitBefore: true,
+        emitAfter: true,
+        pathname: params.pathname,
+        state: params.state,
+      });
     });
 
     it('should handle the ACTION_REPLACE history action as expected', async () => {
@@ -176,7 +189,12 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.replace, params);
+      expect(router.replace).toHaveBeenCalledWith({
+        emitBefore: false,
+        emitAfter: false,
+        pathname: '/some_route',
+        state: undefined,
+      });
     });
 
     it('should remove trailing slashes from pathnames', async () => {
@@ -188,14 +206,19 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push, {
-        ...params,
+      expect(router.push).toHaveBeenCalledWith({
+        emitBefore: true,
+        emitAfter: true,
         pathname: params.pathname.slice(0, -1),
+        state: params.state,
       });
     });
 
     it('should redirect to a protector route when the user is not logged in', async () => {
-      getState.mockReturnValueOnce({ user: { login: { isLoggedIn: false } } });
+      getState.mockReturnValueOnce({
+        ...mockedRouterState,
+        user: { login: { isLoggedIn: false } },
+      });
 
       const params = {
         action: ACTION_PUSH,
@@ -218,7 +241,10 @@ describe('Router subscriptions', () => {
     });
 
     it('should not redirect to a protector route when the user is logged in', async () => {
-      getState.mockReturnValueOnce({ user: { login: { isLoggedIn: true } } });
+      getState.mockReturnValueOnce({
+        ...mockedRouterState,
+        user: { login: { isLoggedIn: true } },
+      });
 
       const params = {
         action: ACTION_PUSH,
@@ -229,7 +255,12 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
 
-      testExpectedCall(conductor.push, params);
+      expect(router.push).toHaveBeenCalledWith({
+        emitBefore: true,
+        emitAfter: true,
+        pathname: params.pathname,
+        state: params.state,
+      });
     });
 
     it('should redirect to another location correctly', async () => {
@@ -241,8 +272,10 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push);
-      expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_other_route',
+        state: params.state,
+      });
     });
 
     it('should redirect to another location when the redirect handler is a promise', async () => {
@@ -259,8 +292,11 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(conductor.push).toHaveBeenCalledTimes(1);
-      expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
+      expect(router.push).toHaveBeenCalledTimes(1);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_other_route',
+        state: params.state,
+      });
       expect(LoadingProvider.setLoading).toHaveBeenCalledWith(protectorRoute);
       expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
@@ -280,7 +316,7 @@ describe('Router subscriptions', () => {
       };
 
       await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
-      expect(conductor.push).not.toHaveBeenCalled();
+      expect(router.push).not.toHaveBeenCalled();
       expect(logger.error).toHaveBeenCalledWith(error);
       expect(LoadingProvider.setLoading).toHaveBeenCalledWith(protectorRoute);
       expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
@@ -295,8 +331,10 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      testExpectedCall(conductor.push);
-      expect(conductor.push).toHaveBeenCalledWith('/some_route', params.state, params.silent);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_route',
+        state: params.state,
+      });
     });
 
     it('should handle external links like expected', async () => {
@@ -307,15 +345,20 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       testExpectedCall(openExternalLinkSpy);
-      expect(openExternalLinkSpy).toHaveBeenCalledWith(params.pathname, params.action);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState
+      );
     });
 
     it('should handle native links like expected', async () => {
       /**
        * Replace the implementation of handler.openNative link temporarily. It reassigns
-       * window.location.href intenrnally, which would cause a jest error.
+       * window.location.href internally, which would cause a jest error.
        */
       openNativeLinkSpy.mockImplementationOnce(() => {});
+
       const params = {
         action: ACTION_PUSH,
         pathname: 'tel:+49123456789',
@@ -334,7 +377,7 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       testExpectedCall(openLegacySpy);
-      expect(openLegacySpy).toHaveBeenCalledWith(params.pathname, params.action);
+      expect(openLegacySpy).toHaveBeenCalledWith(params.pathname, params.action, mockedRouterState);
     });
 
     it('should open a legacy link as expected', async () => {
@@ -345,7 +388,11 @@ describe('Router subscriptions', () => {
 
       await callback(createCallbackPayload({ params }));
       testExpectedCall(openLegacyLinkSpy);
-      expect(openLegacyLinkSpy).toHaveBeenCalledWith(params.pathname, params.action);
+      expect(openLegacyLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState
+      );
     });
   });
 

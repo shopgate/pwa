@@ -38,7 +38,12 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
     totalProductCount={null}
   >
     <InfiniteContainer
-      initialLimit={6}
+      containerRef={
+        Object {
+          "current": null,
+        }
+      }
+      initialLimit={30}
       items={Array []}
       iterator={[Function]}
       limit={30}

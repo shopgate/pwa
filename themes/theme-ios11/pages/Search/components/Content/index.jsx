@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import { BackBar } from 'Components/AppBar/presets';
 import Bar from '../Bar';
 import Products from '../Products';
@@ -37,20 +38,29 @@ class SearchContent extends Component {
     } = this.props;
 
     return (
-      <Fragment>
-        <BackBar
-          title={searchPhrase}
-          {...showFilterBar && { below: <Bar /> }}
-        />
-        <Products searchPhrase={searchPhrase} sortOrder={DEFAULT_SORT} />
-        {showNoResults && (
-          <NoResults
-            headlineText="search.no_result.heading"
-            bodyText="search.no_result.body"
-            searchPhrase={searchPhrase}
-          />
+      <RouteContext.Consumer>
+        {({ state, query, id: routeId }) => (
+          <Fragment>
+            <BackBar
+              title={searchPhrase}
+              {...showFilterBar && { below: <Bar key="below" /> }}
+            />
+            <Products
+              searchPhrase={searchPhrase}
+              filters={state.filters}
+              sort={query.sort || DEFAULT_SORT}
+              routeId={routeId}
+            />
+            {showNoResults && (
+              <NoResults
+                headlineText="search.no_result.heading"
+                bodyText="search.no_result.body"
+                searchPhrase={searchPhrase}
+              />
+            )}
+          </Fragment>
         )}
-      </Fragment>
+      </RouteContext.Consumer>
     );
   }
 }

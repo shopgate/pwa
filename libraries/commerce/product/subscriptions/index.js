@@ -1,19 +1,22 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import getProduct from '../actions/getProduct';
-import getProductDescription from '../actions/getProductDescription';
-import getProductProperties from '../actions/getProductProperties';
-import getProductImages from '../actions/getProductImages';
-import getProductShipping from '../actions/getProductShipping';
-import getProductVariants from '../actions/getProductVariants';
-import getProductOptions from '../actions/getProductOptions';
+import fetchProduct from '../actions/fetchProduct';
+import fetchProductDescription from '../actions/fetchProductDescription';
+import fetchProductProperties from '../actions/fetchProductProperties';
+import fetchProductImages from '../actions/fetchProductImages';
+import fetchProductShipping from '../actions/fetchProductShipping';
+import fetchProductVariants from '../actions/fetchProductVariants';
+import fetchProductOptions from '../actions/fetchProductOptions';
+import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
   productReceived$,
   cachedProductReceived$,
   productRelationsReceived$,
 } from '../streams';
-import getProductsById from '../actions/getProductsById';
+import fetchProductsById from '../actions/fetchProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
+import { checkoutSucceeded$ } from '../../checkout/streams';
+import expireProductById from '../action-creators/expireProductById';
 
 /**
  * Product subscriptions.
@@ -26,11 +29,11 @@ function product(subscribe) {
     const { productId } = action.route.params;
     const id = hex2bin(productId);
 
-    dispatch(getProduct(id));
-    dispatch(getProductDescription(id));
-    dispatch(getProductProperties(id));
-    dispatch(getProductImages(id));
-    dispatch(getProductShipping(id));
+    dispatch(fetchProduct(id));
+    dispatch(fetchProductDescription(id));
+    dispatch(fetchProductProperties(id));
+    dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
+    dispatch(fetchProductShipping(id));
   });
 
   subscribe(processProduct$, ({ action, dispatch }) => {
@@ -44,15 +47,16 @@ function product(subscribe) {
     } = action.productData;
 
     if (baseProductId) {
-      dispatch(getProduct(baseProductId));
+      dispatch(fetchProduct(baseProductId));
+      dispatch(fetchProductImages(baseProductId, productImageFormats.getAllUniqueFormats()));
     }
 
     if (flags.hasVariants) {
-      dispatch(getProductVariants(id));
+      dispatch(fetchProductVariants(id));
     }
 
     if (flags.hasOptions) {
-      dispatch(getProductOptions(id));
+      dispatch(fetchProductOptions(id));
     }
   });
 
@@ -60,7 +64,19 @@ function product(subscribe) {
     const { hash } = action;
     const productIds = getProductRelationsByHash(hash)(getState());
 
-    dispatch(getProductsById(productIds));
+    dispatch(fetchProductsById(productIds));
+  });
+
+  /**
+   * Expire products after checkout, fetch updated data
+   */
+  subscribe(checkoutSucceeded$, ({ dispatch, action }) => {
+    const { products } = action;
+
+    const productIds = products.map(p => p.product.id);
+    productIds.forEach(id => dispatch(expireProductById(id)));
+
+    dispatch(fetchProductsById(productIds));
   });
 }
 

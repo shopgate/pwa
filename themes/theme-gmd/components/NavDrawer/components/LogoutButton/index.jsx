@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { onlyUpdateForKeys } from 'recompose';
 import {
@@ -10,18 +10,16 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import LogoutIcon from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from './connector';
+import portalProps from '../../portalProps';
 
 const enhance = onlyUpdateForKeys(['loggedIn']);
-
-const portalProps = { Item: NavDrawer.Item };
 
 /**
  * @returns {JSX}
  */
 const LogoutButton = ({ loggedIn, logout }) => (
   loggedIn && (
-    <Fragment>
-      <NavDrawer.Divider />
+    <NavDrawer.Section>
       <Portal name={NAV_MENU_LOGOUT_BEFORE} props={portalProps} />
       <Portal name={NAV_MENU_LOGOUT} props={portalProps}>
         <NavDrawer.Item
@@ -32,7 +30,7 @@ const LogoutButton = ({ loggedIn, logout }) => (
         />
       </Portal>
       <Portal name={NAV_MENU_LOGOUT_AFTER} props={portalProps} />
-    </Fragment>
+    </NavDrawer.Section>
   )
 );
 

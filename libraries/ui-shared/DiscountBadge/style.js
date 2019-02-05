@@ -28,6 +28,5 @@ export default {
     paddingTop: 7,
     paddingLeft: 5,
     paddingRight: 5,
-    fontSize: '0.875rem',
   }).toString(),
 };

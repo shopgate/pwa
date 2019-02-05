@@ -20,7 +20,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   alt={null}
   animating={true}
   backgroundColor="#fff"
-  className=""
+  className={null}
   forcePlaceholder={false}
   highestResolutionLoaded={[Function]}
   onError={[Function]}
@@ -40,6 +40,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
     ]
   }
   src="http://placehold.it/300x300"
+  srcmap={null}
   transition={null}
 />
 `;

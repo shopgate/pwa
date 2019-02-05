@@ -5,6 +5,8 @@ import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { UIEvents } from '@shopgate/pwa-core';
 import Divider from './components/Divider';
 import Item from './components/Item';
+import Section from './components/Section';
+import Title from './components/Title';
 import { contentStyle, drawerStyle } from './style';
 import transition from './transition';
 
@@ -25,6 +27,8 @@ class NavDrawer extends Component {
 
   static Divider = Divider;
   static Item = Item;
+  static Section = Section
+  static Title = Title;
 
   static propTypes = {
     children: PropTypes.node.isRequired,

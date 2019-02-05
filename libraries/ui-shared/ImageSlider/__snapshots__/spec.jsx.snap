@@ -42,11 +42,16 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
         },
       ]
     }
-    src="foo/bar"
+    src={null}
+    srcmap={
+      Array [
+        "foo/bar",
+      ]
+    }
     transition={null}
   >
     <div
-      className="css-326p2s "
+      className="css-1oue43v "
     />
   </Image>
 </ImageSlider>
@@ -78,7 +83,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
   loop={false}
   maxIndicators={10}
   onSlideChange={null}
-  rebuildOnUpdate={false}
+  rebuildOnUpdate={true}
   slidesPerView={1}
   snapItems={true}
 >
@@ -108,7 +113,12 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
           },
         ]
       }
-      src="foo/bar"
+      src={null}
+      srcmap={
+        Array [
+          "foo/bar",
+        ]
+      }
       transition={null}
     />
   </SliderItem>
@@ -138,7 +148,12 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
           },
         ]
       }
-      src="bar/foo"
+      src={null}
+      srcmap={
+        Array [
+          "bar/foo",
+        ]
+      }
       transition={null}
     />
   </SliderItem>

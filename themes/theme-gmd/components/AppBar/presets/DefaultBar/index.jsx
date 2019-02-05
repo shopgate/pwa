@@ -1,9 +1,13 @@
 import React, { Fragment, PureComponent } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { Portal } from '@shopgate/pwa-common/components';
+import {
+  APP_BAR_DEFAULT_BEFORE,
+  APP_BAR_DEFAULT,
+  APP_BAR_DEFAULT_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
@@ -13,7 +17,6 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
-    visible: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -21,7 +24,6 @@ class AppBarDefault extends PureComponent {
   static defaultProps = {
     title: null,
     below: null,
-
   };
 
   static contextTypes = {
@@ -34,14 +36,11 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.visible) {
-      return null;
-    }
-
-    const { title } = this.props;
     const { __ } = this.context.i18n();
+    const title = __(this.props.title || '');
+
     const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />;
-    const center = <AppBar.Title title={__(title || '')} />;
+    const center = <AppBar.Title title={title} />;
     const right = (
       <Fragment>
         <SearchButton />
@@ -55,15 +54,16 @@ class AppBarDefault extends PureComponent {
       </Fragment>
     );
 
-    return ReactDOM.createPortal(
-      <AppBar left={left} center={center} right={right} {...this.props} below={below} />,
-      this.target
+    return (
+      <Fragment>
+        <Portal name={APP_BAR_DEFAULT_BEFORE} />
+        <Portal name={APP_BAR_DEFAULT}>
+          <AppBar left={left} center={center} right={right} {...this.props} below={below} />
+        </Portal>
+        <Portal name={APP_BAR_DEFAULT_AFTER} />
+      </Fragment>
     );
   }
 }
 
-export default props => (
-  <RouteContext.Consumer>
-    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
-  </RouteContext.Consumer>
-);
+export default AppBarDefault;

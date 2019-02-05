@@ -7,6 +7,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
+import Characteristics from './components/Characteristics';
 import Price from './components/Price';
 import styles from './style';
 
@@ -17,33 +18,42 @@ import styles from './style';
  */
 const ProductInfo = ({ product }) => {
   const props = { product };
+  const {
+    availability,
+    characteristics,
+    id,
+    name,
+    price,
+  } = product;
+
   return (
     <Fragment>
       <Portal name={portals.FAVORITES_PRODUCT_NAME_BEFORE} props={props} />
       <Portal name={portals.FAVORITES_PRODUCT_NAME} props={props}>
-        <div className={styles.name} data-test-id={`favoriteListItem: ${product.name}`}>
+        <div className={styles.name} data-test-id={`favoriteListItem: ${name}`}>
           <Link
             tagName="a"
-            href={`${ITEM_PATH}/${bin2hex(product.baseProductId || product.id)}`}
+            href={`${ITEM_PATH}/${bin2hex(id)}`}
             itemProp="item"
             itemScope
             itemType="http://schema.org/Product"
             state={{
-              title: product.name,
+              title: name,
             }}
           >
-            {product.name}
+            {name}
           </Link>
         </div>
       </Portal>
       <Portal name={portals.FAVORITES_PRODUCT_NAME_AFTER} props={props} />
       <Grid className={styles.detailsRow}>
         <Grid.Item className={styles.propertiesContainer}>
+          {characteristics && <Characteristics characteristics={characteristics} />}
           <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_BEFORE} props={props} />
           <Portal name={portals.FAVORITES_AVAILABILITY_TEXT} props={props}>
             <AvailableText
-              text={product.availability.text}
-              state={product.availability.state}
+              text={availability.text}
+              state={availability.state}
               showWhenAvailable
             />
           </Portal>
@@ -52,7 +62,7 @@ const ProductInfo = ({ product }) => {
         <Grid.Item className={styles.priceContainer}>
           <Portal name={portals.FAVORITES_PRODUCT_PRICE_BEFORE} props={props} />
           <Portal name={portals.FAVORITES_PRODUCT_PRICE} props={props}>
-            <Price price={product.price} />
+            <Price price={price} />
           </Portal>
           <Portal name={portals.FAVORITES_PRODUCT_PRICE_AFTER} props={props} />
         </Grid.Item>

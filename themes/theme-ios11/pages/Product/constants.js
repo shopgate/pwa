@@ -1,9 +1,18 @@
 /**
- * Action Types
+ * key in the product image collection
  */
-export const REQUEST_PRODUCT_DATA = 'REQUEST_PRODUCT_DATA';
+export const PRODUCT_SLIDER_IMAGE_COLLECTION_KEY = 'PRODUCT_SLIDER_IMAGES';
 
 /**
- * Max number of reviews shown.
+ * themes value for the product slider image formats
  */
-export const REVIEW_PREVIEW_COUNT = 2;
+export const PRODUCT_SLIDER_IMAGE_FORMATS = [
+  {
+    width: 440,
+    height: 440,
+  },
+  {
+    width: 1024,
+    height: 1024,
+  },
+];

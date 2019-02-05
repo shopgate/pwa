@@ -1,15 +1,10 @@
 // FEATURES
 const APP = 'app';
+const APP_BAR = 'app-bar';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
-export const NAV_BAR = 'nav-bar';
 const NO_RESULTS = 'no-results';
 const USER_MENU = 'user-menu';
-const NAVIGATOR = 'navigator';
-const NAV_BUTTON = 'nav-button';
-const ICONS = 'icons';
-const CART_BUTTON = 'cart-button';
-const PROGRESS_BAR = 'progress-bar';
 const FORM = 'form';
 
 // CONTENTS
@@ -24,14 +19,24 @@ const TERMS = 'terms';
 const PRIVACY = 'privacy';
 const IMPRINT = 'imprint';
 const STORE_INFORMATION = 'store-information';
+const STORE_INFORMATION_MORE = 'store-information-more';
+const STORE_INFORMATION_ABOUT = 'store-information-about';
 const MY_ACCOUNT = 'my-account';
 const LOGOUT = 'logout';
 const CONTAINER = 'container';
+const DEFAULT = 'default';
+const BACK = 'back';
+const CLOSE = 'close';
+const SIMPLE = 'simple';
+const CART_BUTTON = 'cart-button';
 
 // POSITIONS
 export const BEFORE = 'before';
 export const AFTER = 'after';
+export const LEFT = 'left';
 export const CENTER = 'center';
+export const RIGHT = 'right';
+export const BELOW = 'below';
 
 export const APP_GLOBALS = `${APP}.${GLOBALS}`;
 export const APP_ROUTES = `${APP}.${ROUTES}`;
@@ -79,6 +84,14 @@ export const NAV_MENU_STORE_INFORMATION_BEFORE = `${NAV_MENU}.${STORE_INFORMATIO
 export const NAV_MENU_STORE_INFORMATION = `${NAV_MENU}.${STORE_INFORMATION}`;
 export const NAV_MENU_STORE_INFORMATION_AFTER = `${NAV_MENU}.${STORE_INFORMATION}.${AFTER}`;
 
+export const NAV_MENU_STORE_INFORMATION_MORE_BEFORE = `${NAV_MENU}.${STORE_INFORMATION_MORE}.${BEFORE}`;
+export const NAV_MENU_STORE_INFORMATION_MORE = `${NAV_MENU}.${STORE_INFORMATION_MORE}`;
+export const NAV_MENU_STORE_INFORMATION_MORE_AFTER = `${NAV_MENU}.${STORE_INFORMATION_MORE}.${AFTER}`;
+
+export const NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE = `${NAV_MENU}.${STORE_INFORMATION_ABOUT}.${BEFORE}`;
+export const NAV_MENU_STORE_INFORMATION_ABOUT = `${NAV_MENU}.${STORE_INFORMATION_ABOUT}`;
+export const NAV_MENU_STORE_INFORMATION_ABOUT_AFTER = `${NAV_MENU}.${STORE_INFORMATION_ABOUT}.${AFTER}`;
+
 export const NAV_MENU_MY_ACCOUNT_HEADER = `${NAV_MENU}.${MY_ACCOUNT}.${HEADER}`;
 export const NAV_MENU_MY_ACCOUNT_BEFORE = `${NAV_MENU}.${MY_ACCOUNT}.${BEFORE}`;
 export const NAV_MENU_MY_ACCOUNT = `${NAV_MENU}.${MY_ACCOUNT}`;
@@ -96,29 +109,38 @@ export const USER_MENU_CONTAINER_BEFORE = `${USER_MENU}.${CONTAINER}.${BEFORE}`;
 export const USER_MENU_CONTAINER = `${USER_MENU}.${CONTAINER}`;
 export const USER_MENU_CONTAINER_AFTER = `${USER_MENU}.${CONTAINER}.${AFTER}`;
 
-export const NAV_BAR_BEFORE = `${NAV_BAR}.${BEFORE}`;
-export const NAV_BAR_AFTER = `${NAV_BAR}.${AFTER}`;
+export const APP_BAR_DEFAULT_BEFORE = `${APP_BAR}.${DEFAULT}.${BEFORE}`;
+export const APP_BAR_DEFAULT = `${APP_BAR}.${DEFAULT}`;
+export const APP_BAR_DEFAULT_AFTER = `${APP_BAR}.${DEFAULT}.${AFTER}`;
 
-export const NAV_BAR_NAVIGATOR_BEFORE = `${NAV_BAR}.${NAVIGATOR}.${BEFORE}`;
-export const NAV_BAR_NAVIGATOR = `${NAV_BAR}.${NAVIGATOR}`;
-export const NAV_BAR_NAVIGATOR_AFTER = `${NAV_BAR}.${NAVIGATOR}.${AFTER}`;
+export const APP_BAR_BACK_BEFORE = `${APP_BAR}.${BACK}.${BEFORE}`;
+export const APP_BAR_BACK = `${APP_BAR}.${BACK}`;
+export const APP_BAR_BACK_AFTER = `${APP_BAR}.${BACK}.${AFTER}`;
 
-export const NAV_BAR_NAVIGATOR_NAV_BUTTON_BEFORE = `${NAV_BAR}.${NAVIGATOR}.${NAV_BUTTON}.${BEFORE}`;
-export const NAV_BAR_NAVIGATOR_NAV_BUTTON = `${NAV_BAR}.${NAVIGATOR}.${NAV_BUTTON}`;
-export const NAV_BAR_NAVIGATOR_NAV_BUTTON_AFTER = `${NAV_BAR}.${NAVIGATOR}.${NAV_BUTTON}.${AFTER}`;
+export const APP_BAR_CLOSE_BEFORE = `${APP_BAR}.${CLOSE}.${BEFORE}`;
+export const APP_BAR_CLOSE = `${APP_BAR}.${CLOSE}`;
+export const APP_BAR_CLOSE_AFTER = `${APP_BAR}.${CLOSE}.${AFTER}`;
 
-export const NAV_BAR_NAVIGATOR_CENTER_BEFORE = `${NAV_BAR}.${NAVIGATOR}.${CENTER}.${BEFORE}`;
-export const NAV_BAR_NAVIGATOR_CENTER = `${NAV_BAR}.${NAVIGATOR}.${CENTER}`;
-export const NAV_BAR_NAVIGATOR_CENTER_AFTER = `${NAV_BAR}.${NAVIGATOR}.${CENTER}.${AFTER}`;
+export const APP_BAR_SIMPLE_BEFORE = `${APP_BAR}.${SIMPLE}.${BEFORE}`;
+export const APP_BAR_SIMPLE = `${APP_BAR}.${SIMPLE}`;
+export const APP_BAR_SIMPLE_AFTER = `${APP_BAR}.${SIMPLE}.${AFTER}`;
 
-export const NAV_BAR_NAVIGATOR_ICONS_BEFORE = `${NAV_BAR}.${NAVIGATOR}.${ICONS}.${BEFORE}`;
-export const NAV_BAR_NAVIGATOR_ICONS = `${NAV_BAR}.${NAVIGATOR}.${ICONS}`;
-export const NAV_BAR_NAVIGATOR_ICONS_AFTER = `${NAV_BAR}.${NAVIGATOR}.${ICONS}.${AFTER}`;
+export const APP_BAR_LEFT = `${APP_BAR}.${LEFT}`;
+export const APP_BAR_LEFT_BEFORE = `${APP_BAR}.${LEFT}.${BEFORE}`;
+export const APP_BAR_LEFT_AFTER = `${APP_BAR}.${LEFT}.${AFTER}`;
 
-export const NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_BEFORE = `${NAV_BAR}.${NAVIGATOR}.${ICONS}.${CART_BUTTON}.${BEFORE}`;
-export const NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON = `${NAV_BAR}.${NAVIGATOR}.${ICONS}.${CART_BUTTON}`;
-export const NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_AFTER = `${NAV_BAR}.${NAVIGATOR}.${ICONS}.${CART_BUTTON}.${AFTER}`;
+export const APP_BAR_CENTER = `${APP_BAR}.${CENTER}`;
+export const APP_BAR_CENTER_BEFORE = `${APP_BAR}.${CENTER}.${BEFORE}`;
+export const APP_BAR_CENTER_AFTER = `${APP_BAR}.${CENTER}.${AFTER}`;
 
-export const NAV_BAR_PROGRESS_BAR_BEFORE = `${NAV_BAR}.${PROGRESS_BAR}.${BEFORE}`;
-export const NAV_BAR_PROGRESS_BAR = `${NAV_BAR}.${PROGRESS_BAR}`;
-export const NAV_BAR_PROGRESS_BAR_AFTER = `${NAV_BAR}.${PROGRESS_BAR}.${AFTER}`;
+export const APP_BAR_RIGHT = `${APP_BAR}.${RIGHT}`;
+export const APP_BAR_RIGHT_BEFORE = `${APP_BAR}.${RIGHT}.${BEFORE}`;
+export const APP_BAR_RIGHT_AFTER = `${APP_BAR}.${RIGHT}.${AFTER}`;
+
+export const APP_BAR_BELOW = `${APP_BAR}.${BELOW}`;
+export const APP_BAR_BELOW_BEFORE = `${APP_BAR}.${BELOW}.${BEFORE}`;
+export const APP_BAR_BELOW_AFTER = `${APP_BAR}.${BELOW}.${AFTER}`;
+
+export const APP_BAR_CART_BUTTON = `${APP_BAR}.${CART_BUTTON}`;
+export const APP_BAR_CART_BUTTON_BEFORE = `${APP_BAR}.${CART_BUTTON}.${BEFORE}`;
+export const APP_BAR_CART_BUTTON_AFTER = `${APP_BAR}.${CART_BUTTON}.${AFTER}`;

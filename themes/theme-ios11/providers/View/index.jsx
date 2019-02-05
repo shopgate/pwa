@@ -19,14 +19,8 @@ class ViewProvider extends Component {
     this.state = {
       top: 0,
       bottom: 0,
+      contentRef: { current: null },
     };
-  }
-
-  /**
-   * @returns {boolean}
-   */
-  shouldComponentUpdate() {
-    return true;
   }
 
   /**
@@ -40,6 +34,7 @@ class ViewProvider extends Component {
       setBottom: this.setBottom,
       setContentRef: this.setContentRef,
       getContentRef: this.getContentRef,
+      scrollTop: this.scrollTop,
     };
   }
 
@@ -61,13 +56,24 @@ class ViewProvider extends Component {
    * @param {Object} ref A React reference to the page content wrapper.
    */
   setContentRef = (ref) => {
-    this.set('contentRef', ref.current);
+    this.set('contentRef', ref);
   }
 
   /**
    * @return {Object}
    */
   getContentRef = () => this.state.contentRef;
+
+  /**
+   * Scrolls the content ref to the top.
+   * @param {number} [value=0] A number indicating the new scroll position of the content ref.
+   */
+  scrollTop = (value = 0) => {
+    const { current } = this.state.contentRef;
+    if (current) {
+      current.scrollTop = value;
+    }
+  }
 
   /**
    * @param {string} property The state property to set.

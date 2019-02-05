@@ -40,6 +40,7 @@ export default function shippingByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
     default:
       return state;
   }

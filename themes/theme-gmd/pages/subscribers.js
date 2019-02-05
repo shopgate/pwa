@@ -6,6 +6,7 @@ import commonMenu from '@shopgate/pwa-common/subscriptions/menu';
 import commonRouter from '@shopgate/pwa-common/subscriptions/router';
 // PWA Common Commerce
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
+import commerceCheckout from '@shopgate/pwa-common-commerce/checkout/subscriptions';
 import commerceFavorites from '@shopgate/pwa-common-commerce/favorites/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
@@ -55,6 +56,7 @@ const subscriptions = [
   trackingDeeplinkPush,
   // Common Commerce subscribers.
   commerceCart,
+  commerceCheckout,
   commerceFavorites,
   commerceFilter,
   commerceProduct,

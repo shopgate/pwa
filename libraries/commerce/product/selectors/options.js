@@ -94,7 +94,23 @@ export const getProductOptions = createSelector(
       label: option.label,
       type: option.type,
       items: getOptionItems(options, option.values, option, currentOptions[option.id], currency),
+      value: currentOptions[option.id],
+      info: option.annotation, // text field
+      required: !!option.required, // text field
+      price: {
+        ...option.type === 'text' && {
+          currency,
+          price: option.unitPriceModifier,
+        },
+      },
     }))
+      // Move select type options on top, keep the rest
+      .sort((a, b) => {
+        if (a.type === 'select') {
+          return -1;
+        }
+        return b.type === 'select' ? 1 : 0;
+      })
   ))
 );
 

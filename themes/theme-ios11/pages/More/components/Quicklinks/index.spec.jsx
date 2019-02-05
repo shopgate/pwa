@@ -2,32 +2,26 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { makeGetMenuById } from './selectors';
+import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
 import Quicklinks from './index';
 
 const store = createMockStore();
 
 jest.mock('@shopgate/pwa-common/components/Link', () => {
-  /* eslint-disable react/prop-types */
-  /**
-   * Mocked LinkComponent.
-   * @param {Object} props Component props.
-   * @return {JSX}
-   */
+  /* eslint-disable react/prop-types, require-jsdoc */
   const Link = ({ children }) => (
     <div>
       {children}
     </div>
   );
 
-  /* eslint-enable react/prop-types */
+  /* eslint-enable react/prop-types, require-jsdoc */
   return Link;
 });
 
 let mockedQuicklinks;
-jest.mock('./selectors', () => ({
-  makeGetMenuById: () => () => mockedQuicklinks,
+jest.mock('@shopgate/pwa-common/selectors/menu', () => ({
+  getMenuById: () => mockedQuicklinks,
 }));
 
 describe('<Quicklinks />', () => {
@@ -41,11 +35,11 @@ describe('<Quicklinks />', () => {
   });
 
   it('should render quicklinks', () => {
-    const quicklinks = makeGetMenuById()();
+    const quicklinks = getMenuById();
     const wrapper = mount((
       <Provider store={store}>
         <Quicklinks />
-      </Provider>), mockRenderOptions);
+      </Provider>));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Quicklinks').isEmptyRender()).toBe(false);
@@ -64,7 +58,7 @@ describe('<Quicklinks />', () => {
     const wrapper = mount((
       <Provider store={store}>
         <Quicklinks />
-      </Provider>), mockRenderOptions);
+      </Provider>));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Quicklinks').isEmptyRender()).toBe(true);

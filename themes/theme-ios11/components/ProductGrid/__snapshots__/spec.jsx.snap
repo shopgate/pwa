@@ -12,13 +12,13 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   >
     <Layout>
       <Grid
-        className="css-1glg2tx"
+        className="css-a9oap6"
         component="ul"
         data-test-id="productGrid"
         wrap={true}
       >
         <ul
-          className="css-1glg2tx css-h7r55a css-u7q1iu"
+          className="css-a9oap6 css-h7r55a css-u7q1iu"
           data-test-id="productGrid"
         />
       </Grid>
@@ -38,7 +38,12 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
     totalProductCount={null}
   >
     <InfiniteContainer
-      initialLimit={6}
+      containerRef={
+        Object {
+          "current": null,
+        }
+      }
+      initialLimit={30}
       items={Array []}
       iterator={[Function]}
       limit={30}
@@ -52,13 +57,13 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
       <div>
         <div>
           <Grid
-            className="css-1glg2tx"
+            className="css-a9oap6"
             component="ul"
             data-test-id="productGrid"
             wrap={true}
           >
             <ul
-              className="css-1glg2tx css-h7r55a css-u7q1iu"
+              className="css-a9oap6 css-h7r55a css-u7q1iu"
               data-test-id="productGrid"
             />
           </Grid>

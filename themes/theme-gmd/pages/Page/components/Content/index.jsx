@@ -21,13 +21,18 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
-  const center = (pageId === PAGE_ID_INDEX) ? <Logo /> : <AppBar.Title title={configs.title} />;
+  let center = <Logo key="center" />;
+
+  if (pageId !== PAGE_ID_INDEX) {
+    center = <AppBar.Title key="center" title={configs.title || ''} />;
+  }
+
   return (
     <Fragment>
       <DefaultBar center={center} />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
-        <div className={styles.widgetWrapper}>
+        <div key="widgetWrapper" className={styles.widgetWrapper}>
           {(configs && configs.widgets) && (
             <Widgets components={widgets} widgets={configs.widgets} />
           )}

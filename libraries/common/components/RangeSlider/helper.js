@@ -13,7 +13,7 @@ const easeLinear = (relativeValue, resolution) => {
 /**
  * Generates a linear easing callback.
  * @param {number} resolution The discrete step size.
- * @returns {function} The generated callback.
+ * @returns {Function} The generated callback.
  */
 export const generateLinearEasingCallback = (resolution = 0.1) => (
   relativeValue => easeLinear(relativeValue, resolution)
@@ -32,7 +32,7 @@ const easeExponential = (relativeValue, factor) => (
 /**
  * Generates an exponential easing callback.
  * @param {number} factor The exponential scale factor.
- * @returns {function} The generated callback.
+ * @returns {Function} The generated callback.
  */
 export const generateExponentialEasingCallback = (factor = 2.5) => (
   relativeValue => easeExponential(relativeValue, factor)

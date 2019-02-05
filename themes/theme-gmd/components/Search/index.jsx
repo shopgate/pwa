@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
+import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';
@@ -9,7 +10,8 @@ import { TOGGLE_SEARCH } from './constants';
 import connect from './connector';
 import styles from './style';
 
-const SUGGESTIONS_MIN = 2;
+const DEFAULT_QUERY = '';
+const SUGGESTIONS_MIN = 1;
 
 /**
  * The Search component.
@@ -17,7 +19,9 @@ const SUGGESTIONS_MIN = 2;
 class Search extends Component {
   static propTypes = {
     fetchSuggestions: PropTypes.func.isRequired,
-    navigate: PropTypes.func.isRequired,
+    historyPush: PropTypes.func.isRequired,
+    historyReplace: PropTypes.func.isRequired,
+    route: PropTypes.shape().isRequired,
   }
 
   /**
@@ -28,7 +32,7 @@ class Search extends Component {
 
     this.fieldRef = React.createRef();
     this.state = {
-      query: '',
+      query: DEFAULT_QUERY,
       visible: false,
     };
 
@@ -36,10 +40,11 @@ class Search extends Component {
   }
 
   /**
-   * When opened, focus the search field.
+   * When opened, focus the search field and set the initial field value.
    */
   componentDidUpdate() {
     if (this.state.visible) {
+      this.fieldRef.current.value = this.state.query;
       this.fieldRef.current.focus();
     }
   }
@@ -54,16 +59,22 @@ class Search extends Component {
   /**
    * @param {boolean} visible The next visible state.
    */
-  toggle = (visible) => {
-    this.setState({ visible });
+  toggle = (visible = true) => {
+    const { route: { query } } = this.props;
+    const searchQuery = query.s || this.state.query;
+
+    this.setState({
+      query: searchQuery,
+      visible,
+    });
   }
 
   /**
    * @param {Event} event The event.
    */
   reset = () => {
-    this.fieldRef.current.value = '';
-    this.setState({ query: '' });
+    this.fieldRef.current.value = DEFAULT_QUERY;
+    this.setState({ query: DEFAULT_QUERY });
   }
 
   /**
@@ -88,18 +99,31 @@ class Search extends Component {
    * @param {Event} event The event.
    */
   fetchResults = (event) => {
-    const query = event.target.value || this.state.query;
     event.preventDefault();
 
-    if (query.length === 0) {
+    const searchQuery = (event.target.value || this.state.query).trim();
+
+    if (searchQuery.length === 0) {
       return;
     }
 
     this.setState({
-      query: '',
+      query: DEFAULT_QUERY,
       visible: false,
     });
-    this.props.navigate(`/search?s=${query}`);
+
+    const location = `/search?s=${searchQuery}`;
+    const { route: { pattern, query } } = this.props;
+
+    if (query.s === searchQuery) {
+      return;
+    }
+
+    if (pattern === SEARCH_PATTERN) {
+      this.props.historyReplace({ pathname: location });
+    } else {
+      this.props.historyPush({ pathname: location });
+    }
   }
 
   /**

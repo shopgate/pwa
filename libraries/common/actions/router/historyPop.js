@@ -1,4 +1,4 @@
-import { ACTION_POP } from '@virtuous/conductor/constants';
+import { ACTION_POP } from '@virtuous/conductor';
 import { navigate } from '../../action-creators/router';
 
 /**

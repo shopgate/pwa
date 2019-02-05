@@ -25,10 +25,11 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
     ]
   }
   src="foo/bar"
+  srcmap={null}
   transition={null}
 >
   <div
-    className="css-326p2s "
+    className="css-vfdozt "
   />
 </Image>
 `;
@@ -58,18 +59,23 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
     ]
   }
   src="foo/bar"
+  srcmap={null}
   transition={null}
 >
   <div
-    className="css-326p2s "
+    className="css-vfdozt "
   >
     <img
       alt={null}
       className="css-f45h63"
       data-test-id="image"
       role="presentation"
-      src="foo/bar?w=440&h=440&q=70&zc=resize&fillc=FFFFFF"
-      style={Object {}}
+      src="foo/bar"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
     />
   </div>
 </Image>

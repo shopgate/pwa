@@ -31,14 +31,14 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
         visible={false}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
@@ -55,7 +55,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
           htmlFor="test-name"
         >
           <Translate
@@ -111,7 +111,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -156,14 +156,14 @@ exports[`<Select /> should render select with 2 options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -180,7 +180,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-name"
         >
           <Translate
@@ -236,7 +236,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""
@@ -276,14 +276,14 @@ exports[`<Select /> should render select with no options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv "
+      className="css-1vjh8yv"
     >
       <Placeholder
         placeholder=""
-        visible={false}
+        visible={true}
       >
         <div
-          className="css-oc0mp css-1jyyyen"
+          className="css-rkuo1o"
         >
           <Translate
             className=""
@@ -300,7 +300,7 @@ exports[`<Select /> should render select with no options 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1fekhao"
+          className="css-1nn9zl4 css-1jyyyen"
           htmlFor="test-name"
         >
           <Translate
@@ -343,7 +343,7 @@ exports[`<Select /> should render select with no options 1`] = `
         translate={true}
       >
         <div
-          className=""
+          className="css-hyvrm8"
         >
           <Translate
             className=""

@@ -3,13 +3,14 @@ import {
   resetBrightness,
   getCurrentBrightness,
 } from '../brightness';
-
+/* eslint-disable import/named */
 import {
   mockedSetCommandName,
   mockedSetCommandParams,
   mockedSetLibVersion,
   mockedDispatch,
 } from '../../classes/AppCommand';
+/* eslint-enable import/named */
 
 jest.mock('../../classes/AppCommand');
 

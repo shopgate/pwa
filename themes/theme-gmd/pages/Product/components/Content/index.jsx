@@ -54,9 +54,9 @@ class ProductContent extends PureComponent {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    let productId = (nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId);
+    let productId = nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId;
     let { variantId } = nextProps;
-    const productIdChanged = (this.props.productId !== nextProps.productId);
+    const productIdChanged = this.props.productId !== nextProps.productId;
 
     if (productIdChanged && nextProps.isVariant) {
       if (this.props.baseProductId) {
@@ -86,7 +86,7 @@ class ProductContent extends PureComponent {
         [optionId]: value,
       },
     }));
-  }
+  };
 
   /**
    * @return {JSX}
@@ -99,23 +99,26 @@ class ProductContent extends PureComponent {
     };
 
     return (
-      <Fragment>
-        <AppBar productId={this.state.productId} />
-        <ProductContext.Provider value={contextValue}>
-          <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
-          <Header />
-          <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
-          <Options
-            productId={id}
-            storeSelection={this.storeOptionSelection}
-            currentOptions={this.state.options}
-          />
-          <Description productId={this.state.productId} variantId={this.state.variantId} />
-          <Properties productId={this.state.productId} variantId={this.state.variantId} />
-          <Reviews productId={this.state.productId} />
-          <TaxDisclaimer />
-        </ProductContext.Provider>
-      </Fragment>
+      <div data-test-id={this.state.productId}>
+        <Fragment>
+          <AppBar productId={this.state.productId} />
+          <ProductContext.Provider value={contextValue}>
+            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
+            <Header />
+            <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
+            <Options
+              productId={id}
+              storeSelection={this.storeOptionSelection}
+              currentOptions={this.state.options}
+            />
+            <Description productId={this.state.productId} variantId={this.state.variantId} />
+            <Properties productId={this.state.productId} variantId={this.state.variantId} />
+            <Reviews productId={this.state.productId} />
+            <TaxDisclaimer />
+          </ProductContext.Provider>
+        </Fragment>
+      </div>
+
     );
   }
 }

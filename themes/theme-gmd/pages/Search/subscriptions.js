@@ -2,9 +2,9 @@ import {
   searchWillEnter$,
   searchDidEnter$,
 } from '@shopgate/pwa-common-commerce/search/streams';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
-import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
+import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { searchFiltersDidUpdate$ } from './streams';
 
 /**
@@ -16,19 +16,19 @@ export default function search(subscribe) {
     const { filters } = action.route.state;
     const { s: searchPhrase, sort } = action.route.query;
 
-    dispatch(getSearchResults({
+    dispatch(fetchSearchResults({
       filters,
       searchPhrase,
       sort,
     }));
   });
 
-  subscribe(searchFiltersDidUpdate$, ({ action, dispatch }) => {
+  subscribe(searchFiltersDidUpdate$, ({ action, dispatch, getState }) => {
     const { filters } = action;
-    const { query } = getCurrentRoute();
+    const { query } = getCurrentRoute(getState());
     const { s: searchPhrase, sort } = query;
 
-    dispatch(getSearchResults({
+    dispatch(fetchSearchResults({
       filters,
       searchPhrase,
       sort,
@@ -36,6 +36,6 @@ export default function search(subscribe) {
   });
 
   subscribe(searchDidEnter$, ({ dispatch }) => {
-    dispatch(getFilters());
+    dispatch(fetchFilters());
   });
 }

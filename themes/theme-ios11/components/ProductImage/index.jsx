@@ -28,6 +28,7 @@ class ProductImage extends Component {
       blur: PropTypes.number,
     })),
     src: PropTypes.string,
+    srcmap: PropTypes.arrayOf(PropTypes.string),
   };
 
   static defaultProps = {
@@ -48,6 +49,7 @@ class ProductImage extends Component {
       },
     ],
     src: null,
+    srcmap: null,
   };
 
   /**
@@ -57,8 +59,9 @@ class ProductImage extends Component {
   constructor(props) {
     super(props);
 
+    const showPlaceholder = !props.src && (props.srcmap === null || props.srcmap.length === 0);
     this.state = {
-      showPlaceholder: props.src === null,
+      showPlaceholder,
     };
   }
 
@@ -69,8 +72,9 @@ class ProductImage extends Component {
   componentWillReceiveProps(nextProps) {
     // Disable the placeholder to give the real image a new chance to load.
     // If we do not have a src property set then just show the placeholder instead.
+    const showPlaceholder = !nextProps.src && (!nextProps.srcmap || nextProps.srcmap.length === 0);
     this.setState({
-      showPlaceholder: nextProps.src === null,
+      showPlaceholder,
     });
   }
 
@@ -100,7 +104,7 @@ class ProductImage extends Component {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={`${styles.placeholderContainer} ${styles.innerShadow}`} >
+        <div className={`${styles.placeholderContainer} ${styles.innerShadow}`}>
           <div className={styles.placeholderContent} data-test-id="placeHolder">
             <Placeholder className={styles.placeholder} />
           </div>

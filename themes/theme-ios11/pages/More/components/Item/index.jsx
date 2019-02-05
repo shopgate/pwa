@@ -7,17 +7,19 @@ import styles from './style';
 /**
  * @returns {JSX}
  */
-function MoreMenuItem({ href, label, onClick }) {
+function MoreMenuItem({
+  href, label, onClick, testId, className,
+}) {
   if (!href && onClick) {
     return (
-      <button className={styles} onClick={onClick}>
+      <button className={className || styles} onClick={onClick} data-test-id={testId}>
         <I18n.Text string={label} />
       </button>
     );
   }
 
   return (
-    <Link className={styles} href={href}>
+    <Link className={className || styles} href={href}>
       <I18n.Text string={label} />
     </Link>
   );
@@ -25,13 +27,17 @@ function MoreMenuItem({ href, label, onClick }) {
 
 MoreMenuItem.propTypes = {
   label: PropTypes.string.isRequired,
+  className: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
+  testId: PropTypes.string,
 };
 
 MoreMenuItem.defaultProps = {
+  className: null,
   href: null,
   onClick: null,
+  testId: null,
 };
 
 export default MoreMenuItem;

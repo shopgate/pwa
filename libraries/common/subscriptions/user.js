@@ -1,8 +1,8 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { LoadingProvider } from '../providers';
-import getUser from '../actions/user/getUser';
+import { fetchUser } from '../actions/user';
 import { successLogin } from '../action-creators';
 import { historyPush } from '../actions/router';
 import {
@@ -36,7 +36,7 @@ export default function user(subscribe) {
   });
 
   subscribe(userNeedsUpdate$, ({ dispatch }) => {
-    dispatch(getUser());
+    dispatch(fetchUser());
   });
 
   subscribe(userDidLogout$, ({ dispatch }) => {
@@ -48,11 +48,11 @@ export default function user(subscribe) {
     }));
   });
 
-  subscribe(appDidStart$, ({ dispatch }) => {
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
     registerEvents(['userLoggedIn']);
 
     event.addCallback('userLoggedIn', () => {
-      const { state: { redirect } = {} } = getCurrentRoute();
+      const { state: { redirect } = {} } = getCurrentRoute(getState());
       dispatch(successLogin(redirect));
     });
   });

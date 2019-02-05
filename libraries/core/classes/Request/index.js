@@ -64,8 +64,8 @@ class Request {
 
   /**
    * On timeout log error. Can be overridden by child classes.
-   * @param {function} resolve The resolve() callback of the request promise.
-   * @param {function} reject The reject() callback of the request promise.
+   * @param {Function} resolve The resolve() callback of the request promise.
+   * @param {Function} reject The reject() callback of the request promise.
    */
   onTimeout(resolve, reject) { // eslint-disable-line class-methods-use-this
     logger.error('Request timeout');

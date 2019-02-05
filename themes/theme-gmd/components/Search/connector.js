@@ -1,14 +1,20 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { historyPush, historyReplace } from '@shopgate/pwa-common/actions/router';
+import fetchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
 
 /**
- * @param {Function} dispatch The store dispatcher.
- * @return {Object}
+ * @param {Object} state The application state.
+ * @returns {Object}
  */
-const mapDispatchToProps = dispatch => ({
-  fetchSuggestions: query => dispatch(fetchSearchSuggestions(query)),
-  navigate: pathname => dispatch(historyPush({ pathname })),
+const mapStateToProps = state => ({
+  route: getCurrentRoute(state),
 });
 
-export default connect(null, mapDispatchToProps);
+const mapDispatchToProps = {
+  fetchSuggestions,
+  historyPush,
+  historyReplace,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps);

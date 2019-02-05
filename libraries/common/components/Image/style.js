@@ -6,8 +6,8 @@ import { css } from 'glamor';
  * @returns {string} The compiled class names.
  */
 const container = (background = '#f2f2f2', paddingTop = '100%') => css({
-  position: 'relative',
   background,
+  position: 'relative',
   zIndex: 0,
   ':before': {
     display: 'block',
