@@ -76,8 +76,8 @@ class BenchmarkController {
   /**
    * Sorts measured actions descending.
    * @param {Array} actions Measured actions.
-   * @param {function} getA Getter to get left side.
-   * @param {function} getB Getter to get right side.
+   * @param {Function} getA Getter to get left side.
+   * @param {Function} getB Getter to get right side.
    * @returns {Array}
    */
   sortMeasure = (actions, getA, getB) => actions.sort((a, b) => {
