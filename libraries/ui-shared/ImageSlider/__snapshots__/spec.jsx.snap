@@ -83,7 +83,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
   loop={false}
   maxIndicators={10}
   onSlideChange={null}
-  rebuildOnUpdate={false}
+  rebuildOnUpdate={true}
   slidesPerView={1}
   snapItems={true}
 >

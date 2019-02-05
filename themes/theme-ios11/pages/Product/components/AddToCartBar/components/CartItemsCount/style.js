@@ -2,6 +2,7 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 export const duration = 200;
+export const durationShort = 50;
 
 export const transition = {
   entering: {
