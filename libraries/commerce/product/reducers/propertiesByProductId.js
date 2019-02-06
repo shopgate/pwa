@@ -40,6 +40,7 @@ export default function propertiesByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
     default:
       return state;
   }

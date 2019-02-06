@@ -2,6 +2,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { stack } from '@virtuous/conductor';
 import {
   ROUTE_WILL_ENTER,
+  ROUTE_DID_LEAVE,
   ROUTE_WILL_LEAVE,
   ROUTE_DID_UPDATE,
 } from '../../constants/ActionTypes';
@@ -18,7 +19,8 @@ const defaultState = {
  */
 export default function router(state = defaultState, action) {
   switch (action.type) {
-    case ROUTE_WILL_LEAVE: {
+    case ROUTE_WILL_LEAVE:
+    case ROUTE_DID_LEAVE: {
       return {
         ...state,
         stack: Array.from(stack.getAll().values()),

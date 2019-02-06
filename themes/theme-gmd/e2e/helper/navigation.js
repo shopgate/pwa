@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import { navigatorButton, backButton, navigationDrawerBackdrop } from '../elements/de';
 
 /**
