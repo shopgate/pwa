@@ -5,6 +5,7 @@ const ITEM_LIST = 'item-list';
 const ITEM = 'item';
 const PAYMENT_BAR = 'payment-bar';
 const COUPON_FIELD = 'coupon-field';
+const CHECKOUT_BUTTON = 'checkout-button';
 
 const NAME = 'name';
 const IMAGE = 'image';
@@ -59,3 +60,7 @@ export const CART_PAYMENT_BAR_AFTER = `${CART}.${PAYMENT_BAR}.${AFTER}`;
 export const NAV_MENU_CART_BEFORE = `${NAV_MENU}.${CART}.${BEFORE}`;
 export const NAV_MENU_CART = `${NAV_MENU}.${CART}`;
 export const NAV_MENU_CART_AFTER = `${NAV_MENU}.${CART}.${AFTER}`;
+
+export const CART_CHECKOUT_BUTTON = `${CART}.${CHECKOUT_BUTTON}`;
+export const CART_CHECKOUT_BUTTON_BEFORE = `${CART}.${CHECKOUT_BUTTON}.${BEFORE}`;
+export const CART_CHECKOUT_BUTTON_AFTER = `${CART}.${CHECKOUT_BUTTON}.${AFTER}`;
