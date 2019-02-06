@@ -91,7 +91,7 @@ class Search extends Component {
    */
   fetchSuggestions = debounce((query) => {
     if (query.length > SUGGESTIONS_MIN) {
-      this.props.fetchSuggestions(query);
+      this.props.fetchSuggestions(query.trim());
     }
   }, 200, { maxWait: 400 });
 
