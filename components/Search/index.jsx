@@ -81,7 +81,7 @@ class Search extends Component {
    * @param {Event} event The event.
    */
   update = (event) => {
-    const query = event.target.value.trim();
+    const query = event.target.value;
     this.fetchSuggestions(query);
     this.setState({ query });
   };
