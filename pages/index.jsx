@@ -29,7 +29,7 @@ import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
-import themeApi from './themeApi';
+import themeApi from '../themeApi';
 import * as routes from './routes';
 
 /**
