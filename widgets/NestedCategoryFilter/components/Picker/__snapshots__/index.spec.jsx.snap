@@ -422,7 +422,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             "name": "Category 1-1",
           },
           Object {
-            "childrenCount": 0,
+            "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
             "name": "Category 1-2",
@@ -456,7 +456,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               "name": "Category 1-1",
             },
             Object {
-              "childrenCount": 0,
+              "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
               "name": "Category 1-2",
@@ -661,7 +661,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                 <SheetItem
                                   item={
                                     Object {
-                                      "childrenCount": 0,
+                                      "childrenCount": 1,
                                       "id": "1-2",
                                       "isFetching": false,
                                       "name": "Category 1-2",
@@ -800,7 +800,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           Array [
             "1",
             Object {
-              "childrenCount": 0,
+              "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
               "name": "Category 1-2",
@@ -826,7 +826,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             Array [
               "1",
               Object {
-                "childrenCount": 0,
+                "childrenCount": 1,
                 "id": "1-2",
                 "isFetching": false,
                 "name": "Category 1-2",
@@ -851,7 +851,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             "name": "Category 1-1",
           },
           Object {
-            "childrenCount": 0,
+            "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
             "name": "Category 1-2",
@@ -885,7 +885,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               "name": "Category 1-1",
             },
             Object {
-              "childrenCount": 0,
+              "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
               "name": "Category 1-2",
@@ -1090,7 +1090,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                 <SheetItem
                                   item={
                                     Object {
-                                      "childrenCount": 0,
+                                      "childrenCount": 1,
                                       "id": "1-2",
                                       "isFetching": false,
                                       "name": "Category 1-2",
@@ -1241,7 +1241,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             "name": "Category 1-1",
           },
           Object {
-            "childrenCount": 0,
+            "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
             "name": "Category 1-2",
@@ -1275,7 +1275,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               "name": "Category 1-1",
             },
             Object {
-              "childrenCount": 0,
+              "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
               "name": "Category 1-2",
@@ -1480,7 +1480,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                 <SheetItem
                                   item={
                                     Object {
-                                      "childrenCount": 0,
+                                      "childrenCount": 1,
                                       "id": "1-2",
                                       "isFetching": false,
                                       "name": "Category 1-2",
@@ -1788,7 +1788,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             "name": "Category 1-1",
           },
           Object {
-            "childrenCount": 0,
+            "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
             "name": "Category 1-2",
@@ -1822,7 +1822,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
               "name": "Category 1-1",
             },
             Object {
-              "childrenCount": 0,
+              "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
               "name": "Category 1-2",
@@ -1850,6 +1850,160 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             onClose={[Function]}
             onOpen={[Function]}
             title="Picker Label"
+          >
+            <section>
+              <Drawer
+                alwaysActive={false}
+                animation={
+                  Object {
+                    "duration": 300,
+                    "in": "css-32zjx4",
+                    "out": "css-15ct02m",
+                  }
+                }
+                className="css-ruonn8"
+                isOpen={false}
+                onClose={[Function]}
+                onDidClose={[Function]}
+                onOpen={[Function]}
+              />
+              <Backdrop
+                className=""
+                color="#000"
+                duration={200}
+                isVisible={false}
+                level={4}
+                onClick={[Function]}
+                opacity={20}
+              >
+                <Transition
+                  childrenStyles={
+                    Object {
+                      "appear": Object {
+                        "opacity": 0.2,
+                      },
+                      "base": Object {
+                        "background": "#000",
+                        "opacity": 0,
+                        "transition": "opacity 200ms ease-out",
+                        "zIndex": 4,
+                      },
+                      "enter": Object {
+                        "opacity": 0.2,
+                      },
+                      "leave": Object {
+                        "opacity": 0,
+                      },
+                    }
+                  }
+                  component="div"
+                >
+                  <TransitionHooks
+                    component="div"
+                  >
+                    <div />
+                  </TransitionHooks>
+                </Transition>
+              </Backdrop>
+            </section>
+          </Sheet>
+        </Drawer>
+      </CategorySheet>
+    </CategoryPicker>
+  </Connect(CategoryPicker)>
+</Provider>
+`;
+
+exports[`<NestedCategoryFilterPicker /> should render the picker without a label 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(CategoryPicker)
+    categoryId="1"
+    label=""
+    onSelect={[MockFunction]}
+  >
+    <CategoryPicker
+      categoryId="1"
+      fetchCategory={[Function]}
+      label=""
+      onSelect={[MockFunction]}
+      selectedId={null}
+      subcategories={
+        Array [
+          Object {
+            "childrenCount": 0,
+            "id": "1-1",
+            "isFetching": false,
+            "name": "Category 1-1",
+          },
+          Object {
+            "childrenCount": 1,
+            "id": "1-2",
+            "isFetching": false,
+            "name": "Category 1-2",
+          },
+        ]
+      }
+    >
+      <div
+        aria-hidden={true}
+        className="css-9v2ggq"
+        onClick={[Function]}
+      >
+        <div
+          className="css-1fe6blz"
+        >
+          common.please_choose
+        </div>
+      </div>
+      <CategorySheet
+        items={
+          Array [
+            Object {
+              "childrenCount": 0,
+              "id": "1-1",
+              "isFetching": false,
+              "name": "Category 1-1",
+            },
+            Object {
+              "childrenCount": 1,
+              "id": "1-2",
+              "isFetching": false,
+              "name": "Category 1-2",
+            },
+          ]
+        }
+        label=""
+        onClose={[Function]}
+        onSelect={[Function]}
+        open={false}
+        selectedId={null}
+      >
+        <Drawer
+          isOpen={false}
+          onClose={[Function]}
+          title=""
+        >
+          <Sheet
+            animation={Object {}}
+            backdrop={true}
+            className={null}
+            contentClassName={null}
+            duration={300}
+            isOpen={false}
+            onClose={[Function]}
+            onOpen={[Function]}
+            title=""
           >
             <section>
               <Drawer

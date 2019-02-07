@@ -141,3 +141,5 @@ export default props => (
     )}
   </RouteContext.Consumer>
 );
+
+export { NestedCategoryFilter as UnwrappedNestedCategoryFilter };

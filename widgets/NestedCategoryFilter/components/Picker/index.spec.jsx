@@ -69,6 +69,19 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(getCategory).not.toHaveBeenCalled();
   });
 
+  it('should render the picker without a label', () => {
+    const { label, selection } = styles;
+
+    const wrapper = renderComponent({
+      ...props,
+      label: '',
+    });
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(`div.${label}`).exists()).toBe(false);
+    expect(wrapper.find(`div.${selection}`).text()).toEqual('common.please_choose');
+  });
+
   it('should handle user interaction as expected', () => {
     const wrapper = renderComponent(props);
 
@@ -139,7 +152,7 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(getCategory).toHaveBeenCalledWith(categoryId);
   });
 
-  it('should request root category date when it is not available yet', () => {
+  it('should request root category data when it is not available yet', () => {
     const categoryId = '';
     renderComponent({
       ...props,

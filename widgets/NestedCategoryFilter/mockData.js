@@ -12,6 +12,10 @@ export const childrenByCategoryId = {
     children: ['1-1', '1-2'],
     isFetching: false,
   },
+  '1-2': {
+    children: ['1-2-1'],
+    isFetching: false,
+  },
 };
 
 export const categoriesById = {
@@ -36,6 +40,12 @@ export const categoriesById = {
   '1-2': {
     id: '1-2',
     name: 'Category 1-2',
+    childrenCount: 1,
+    isFetching: false,
+  },
+  '1-2-1': {
+    id: '1-2-1',
+    name: 'Category 1-2-1',
     childrenCount: 0,
     isFetching: false,
   },
