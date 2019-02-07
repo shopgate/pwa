@@ -15,7 +15,7 @@ import TabBarFavoritesAction from '../components/FavoritesAction';
 /**
  * Resolves the tab action component for a given type.
  * @param {string} type The type name of the tab.
- * @return {function|string} The corresponding component or the default tab action component.
+ * @return {Function|string} The corresponding component or the default tab action component.
  */
 const getTabActionComponentForType = (type) => {
   switch (type) {

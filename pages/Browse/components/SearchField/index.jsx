@@ -74,7 +74,7 @@ class SearchField extends Component {
    * Handler for keyboardWillChange event.
    * @param {Object} props Props.
    * @param {number} props.overlap Current overlap.
-   * @type {function}
+   * @type {Function}
    */
   handleKeyboardChange = ({ overlap }) => {
     this.setState({
@@ -102,8 +102,9 @@ class SearchField extends Component {
    * @param {string} value The updated value.
    */
   update = (value) => {
-    this.fetchSuggestions(value);
-    this.setState({ query: value });
+    const query = value.trim();
+    this.fetchSuggestions(query);
+    this.setState({ query });
   };
 
   /**
