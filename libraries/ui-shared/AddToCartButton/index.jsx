@@ -49,7 +49,7 @@ class AddToCartButton extends Component {
    * - Show cart icon again.
    */
   handleClick = () => {
-    // Ignore clicks when checkmark or loading spinner is shown or the button is disabled.
+    // Ignore clicks when check mark or loading spinner is shown or the button is disabled.
     if (this.state.showCheckmark || this.props.isLoading || this.props.isDisabled) {
       return;
     }
