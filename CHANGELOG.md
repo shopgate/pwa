@@ -1,5 +1,6 @@
 # Changelog
 
+## [v6.1.0](https://github.com/shopgate/pwa/tree/v6.1.0) (2019-02-07)
 ## [v6.0.1](https://github.com/shopgate/pwa/tree/v6.0.1) (2019-01-17)
 ## [v5.11.0](https://github.com/shopgate/pwa/tree/v5.11.0) (2019-01-10)
 ## [v5.10.3](https://github.com/shopgate/pwa/tree/v5.10.3) (2019-01-07)
