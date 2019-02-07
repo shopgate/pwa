@@ -3,7 +3,6 @@ import { css } from 'glamor';
 const placeholderContainer = css({
   position: 'relative',
   width: '100%',
-
   ':before': {
     display: 'block',
     content: '""',

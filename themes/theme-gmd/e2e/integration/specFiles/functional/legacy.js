@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 describe('Functional test for legacy', () => {
   require('../../functional/CartPage.js');
+  require('../../consistency/CartPageCoupon.js');
   require('../../functional/CartPageOptions.js');
   require('../../functional/CategoryPage.js');
   require('../../functional/FavoritesPage.js');

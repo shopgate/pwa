@@ -7,6 +7,7 @@ exports[`<Password> should render a password field 1`] = `
   <TextField
     className=""
     errorText=""
+    hasUnderline={true}
     label=""
     leftElement={null}
     multiLine={false}
@@ -46,14 +47,14 @@ exports[`<Password> should render a password field 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv "
+        className="css-1vjh8yv"
       >
         <Placeholder
           placeholder=""
-          visible={false}
+          visible={true}
         >
           <div
-            className="css-oc0mp css-1jyyyen"
+            className="css-rkuo1o"
           >
             <Translate
               className=""
@@ -70,7 +71,7 @@ exports[`<Password> should render a password field 1`] = `
           label=""
         >
           <label
-            className="css-1nn9zl4 css-1fekhao"
+            className="css-1nn9zl4 css-1jyyyen"
             htmlFor="test-input"
           >
             <Translate
@@ -102,6 +103,7 @@ exports[`<Password> should render a password field 1`] = `
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
+                  onFocusChange={[Function]}
                   type="password"
                   validateOnBlur={true}
                   value=""
@@ -117,6 +119,7 @@ exports[`<Password> should render a password field 1`] = `
                     name="test-input"
                     onChange={[Function]}
                     onFocusChange={[Function]}
+                    onKeyPress={[Function]}
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
@@ -135,6 +138,7 @@ exports[`<Password> should render a password field 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
+                      onKeyPress={[Function]}
                       type="password"
                       value=""
                     />
@@ -273,6 +277,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
   <TextField
     className=""
     errorText=""
+    hasUnderline={true}
     label=""
     leftElement={null}
     multiLine={false}
@@ -333,14 +338,14 @@ exports[`<Password> should trigger the onChange callback 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv "
+        className="css-1vjh8yv"
       >
         <Placeholder
           placeholder=""
-          visible={false}
+          visible={true}
         >
           <div
-            className="css-oc0mp css-1jyyyen"
+            className="css-rkuo1o"
           >
             <Translate
               className=""
@@ -357,7 +362,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           label=""
         >
           <label
-            className="css-1nn9zl4 css-1fekhao"
+            className="css-1nn9zl4 css-1jyyyen"
             htmlFor="test-input"
           >
             <Translate
@@ -410,6 +415,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                       ],
                     }
                   }
+                  onFocusChange={[Function]}
                   type="password"
                   validateOnBlur={true}
                   value=""
@@ -446,6 +452,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                       }
                     }
                     onFocusChange={[Function]}
+                    onKeyPress={[Function]}
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
@@ -464,6 +471,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
+                      onKeyPress={[Function]}
                       type="password"
                       value="a"
                     />

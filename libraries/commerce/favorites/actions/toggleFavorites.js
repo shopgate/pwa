@@ -18,7 +18,7 @@ let syncInProgress = false;
 
 /**
  * Sends putFavorites requests. Maintains queue and throttling.
- * @returns {function}
+ * @returns {Function}
  */
 export const requestSync = () => (dispatch, getState) => {
   // Syncing in progress. Will request next one on response.
@@ -67,7 +67,7 @@ const addFavorites = productId => (dispatch) => {
 /**
  * Removes single product from favorites.
  * @param {string} productId Product id.
- * @param {function} dispatch Dispatch function.
+ * @param {Function} dispatch Dispatch function.
  */
 const removeProductFromFavorites = (productId, dispatch) => {
   dispatch(requestRemoveFavorites(productId));

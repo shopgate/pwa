@@ -4,7 +4,8 @@
     "load_more": "Cargar más",
     "cancel": "Cancelar",
     "submit": "Enviar",
-    "undo": "Deshacer"
+    "undo": "Deshacer",
+    "required": "Necesaria *"
   },
   "titles": {
     "categories": "Todas las categorías",

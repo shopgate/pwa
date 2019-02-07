@@ -51,7 +51,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
     transition={null}
   >
     <div
-      className="css-hekcyy "
+      className="css-1oue43v "
     />
   </Image>
 </ImageSlider>

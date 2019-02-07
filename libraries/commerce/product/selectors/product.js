@@ -105,6 +105,11 @@ export const getProductById = createSelector(
   }
 );
 
+export const getProductDataById = createSelector(
+  getProductById,
+  product => (product ? product.productData : undefined)
+);
+
 /**
  * Retrieves the id of the current selected product from the component props. When the props
  * contain a variant id it will return this one instead of the product id.

@@ -38,13 +38,16 @@ describe('IOS11Test FavoritesPage', () => {
     cy.reload();
     cy.get(els.favoriteButton)
       .should('be.visible')
+      .wait(1000)
       .click();
     cy.visit('');
 
     cy.get(els.tabBarFavorites)
       .should('be.visible')
       .click();
-    cy.get(els.productWithManyProps4Link)
+
+    cy.get(els.favoriteListItemProductWithManyProbs4)
+      .scrollIntoView()
       .should('be.visible');
     cy.reload();
   });

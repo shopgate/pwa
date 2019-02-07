@@ -1,6 +1,6 @@
 # E2E Test integration of Cypress for the Shopgate Connect PWA
 
-This is the Integraion of [Cypress](https://www.cypress.io/) into the Shopgate PWA for E2E Testing.
+This is the Integration of [Cypress](https://www.cypress.io/) into the Shopgate PWA for E2E Testing.
 
 ## Execution
 from pwa root folder:
