@@ -5,7 +5,9 @@
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
     "undo": "annulla",
-    "required": "Necessaria *"
+    "required": "Necessaria *",
+    "please_choose": "Inserisci",
+    "show_products": "Show products"
   },
   "titles": {
     "categories": "Categorie",
