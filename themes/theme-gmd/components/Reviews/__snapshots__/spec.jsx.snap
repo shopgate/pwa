@@ -1986,6 +1986,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   href="/item/666f6f/reviews"
                 >
                   <ButtonLink
+                    disabled={false}
+                    flat={true}
                     href="/item/666f6f/reviews"
                     navigate={[Function]}
                     noGap={false}
