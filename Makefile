@@ -348,11 +348,6 @@ ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		git push origin "releases/$(RELEASE_NAME)":"refs/heads/$(RELEASE_NAME)";
 		git push origin "releases/$(RELEASE_NAME)":master;
 		git status;
-		git checkout develop && git pull;
-		git merge "releases/$(RELEASE_NAME)" --no-commit;
-		git status
-		git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
-		git push origin develop;
 else
 		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
@@ -362,6 +357,16 @@ define build-changelog
 		@echo "======================================================================"
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
+		# Update develop branch, first
+		git checkout origin/develop && git checkout -b develop;
+		git merge "releases/$(RELEASE_NAME)" --no-commit;
+		git status;
+		-git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
+		-git push origin develop;
+		git status;
+		git reset --hard;
+		git checkout "releases/$(RELEASE_NAME)";
+		git status;
 		# Create a dummy tag for the changelog creation tool
 		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
 		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";
