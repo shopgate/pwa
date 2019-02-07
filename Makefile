@@ -343,6 +343,7 @@ endif
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		# UPDATING MASTER FOR STABLE RELEASE
 		$(call push-subtrees-to-git, master)
+		git reset --hard;
 		git merge origin/master
 		git push origin "releases/$(RELEASE_NAME)"
 		git push origin "releases/$(RELEASE_NAME)":"refs/heads/$(RELEASE_NAME)";
