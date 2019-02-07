@@ -24,6 +24,8 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
         noGap={true}
       >
         <ButtonLink
+          disabled={false}
+          flat={true}
           href="/item/666f6f/write_review"
           navigate={[Function]}
           noGap={true}
