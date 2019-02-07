@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 describe('Consistency test for legacy', () => {
   require('../../consistency/CartPage.js');
+  require('../../consistency/CartPageCoupon.js');
   require('../../consistency/CategoryPage.js');
   require('../../consistency/FavoritesPage.js');
   require('../../consistency/FilterPage.js');

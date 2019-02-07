@@ -4,7 +4,8 @@
     "load_more": "Laad meer",
     "cancel": "Annuleer",
     "submit": "Zend in",
-    "undo": "Ongedaan maken"
+    "undo": "Ongedaan maken",
+    "required": "Verplicht *"
   },
   "titles": {
     "categories": "Categorieën",

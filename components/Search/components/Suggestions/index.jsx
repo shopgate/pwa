@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
 import List from './components/List';
 import styles from './style';
 
@@ -9,9 +10,13 @@ import styles from './style';
  * @returns {JSX}
  */
 const Suggestions = ({ onClick, searchPhrase }) => (
-  <section className={styles}>
-    <List onClick={onClick} searchPhrase={searchPhrase} />
-  </section>
+  <KeyboardConsumer>
+    {({ overlap }) => (
+      <section className={styles} style={{ paddingBottom: overlap }}>
+        <List onClick={onClick} searchPhrase={searchPhrase} />
+      </section>
+    )}
+  </KeyboardConsumer>
 );
 
 Suggestions.propTypes = {
