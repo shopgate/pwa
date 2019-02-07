@@ -36,7 +36,7 @@ describe('functional test product page', () => {
     cy.get(els.addToCartButton)
       .should('be.visible')
       .click();
-    cy.get(els.cartButton += ' div')
+    cy.get(els.cartButton)
       .contains('1');
   });
 

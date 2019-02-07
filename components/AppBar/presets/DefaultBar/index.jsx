@@ -30,6 +30,8 @@ class AppBarDefault extends PureComponent {
     i18n: PropTypes.func,
   };
 
+  target = document.getElementById('AppHeader');
+
   /**
    * @returns {JSX}
    */
