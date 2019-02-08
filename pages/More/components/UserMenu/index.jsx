@@ -11,7 +11,7 @@ import LoggedOut from './components/LoggedOut';
  *
  * @param {Object} props Props.
  * @param {boolean} props.isLoggedIn User is logged in.
- * @param {function} props.logout Logout function.
+ * @param {Function} props.logout Logout function.
  * @param {Object|null} props.user User info.
  * @param {Object|null} props.entries More menu entries (for extensions).
  * @returns {XML}
