@@ -1,6 +1,9 @@
 import { createSelector } from 'reselect';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
-import { getCurrentQuery, getRouterStack } from '@shopgate/pwa-common/selectors/router';
+import {
+  getCurrentPathname,
+  getCurrentQuery,
+  getRouterStack,
+} from '@shopgate/pwa-common/selectors/router';
 import { parseObjectToQueryString } from '../helpers/router';
 import { DEFAULT_SORT } from '../constants/DisplayOptions';
 
@@ -46,25 +49,17 @@ export const getSortOrder = createSelector(
  * @returns {string|null} The current search phrase.
  */
 export const getSearchPhrase = createSelector(
-  state => getQueryParam(state, 's'),
+  (state, props) => getQueryParam(state, props, 's'),
   param => (param ? param.trim() : null)
 );
 
 /**
  * Gets the current history pathname.
+ * @deprecated
  * @param {Object} state The current application state.
  * @returns {string}
  */
-export const getHistoryPathname = createSelector(
-  getCurrentRoute,
-  (route) => {
-    if (!route) {
-      return null;
-    }
-
-    return route.pathname;
-  }
-);
+export const getHistoryPathname = getCurrentPathname;
 
 /**
  * Gets the length of the current history stack.

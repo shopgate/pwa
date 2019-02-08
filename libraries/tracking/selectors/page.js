@@ -1,9 +1,7 @@
 import { createSelector } from 'reselect';
 import { shopNumber } from '@shopgate/pwa-common/helpers/config';
-import {
-  getHistoryPathname,
-  getQueryParamsAsString,
-} from '@shopgate/pwa-common/selectors/history';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
+
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 
 /**
@@ -29,8 +27,7 @@ const pageNameMap = {
  * @returns {string} The URL.
  */
 const getTrackingUrl = createSelector(
-  getHistoryPathname,
-  getQueryParamsAsString,
+  getCurrentPathname,
   pathname => `${baseUrl}/${shopNumber}${pathname}`
 );
 
@@ -40,7 +37,7 @@ const getTrackingUrl = createSelector(
  * @returns {string} The name.
  */
 const getPageName = createSelector(
-  getHistoryPathname,
+  getCurrentPathname,
   pathname => pathname.split('?')[0].split('/')[1]
 );
 
