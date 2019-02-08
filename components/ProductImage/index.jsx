@@ -72,7 +72,7 @@ class ProductImage extends Component {
   componentWillReceiveProps(nextProps) {
     // Disable the placeholder to give the real image a new chance to load.
     // If we do not have a src property set then just show the placeholder instead.
-    const showPlaceholder = !nextProps.src && (!nextProps.srcset || nextProps.srcmap.length === 0);
+    const showPlaceholder = !nextProps.src && (!nextProps.srcmap || nextProps.srcmap.length === 0);
     this.setState({
       showPlaceholder,
     });
