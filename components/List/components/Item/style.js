@@ -1,15 +1,19 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { IMAGE_SPACE } from '../../style';
+
+const { colors, variables } = themeConfig;
 
 const disabled = css({
   color: colors.shade5,
 }).toString();
 
+const bgColor = colors.darkGray;
+const boxShadowOffset = variables.gap.bigger;
+
 const selected = css({
-  background: colors.shade7,
-  boxShadow: `-16px 0 0 0 ${colors.shade7} !important`,
+  background: bgColor,
+  boxShadow: `-${boxShadowOffset}px 0 0 ${bgColor}, ${boxShadowOffset}px 0 0 ${bgColor} !important`,
 }).toString();
 
 const title = css({

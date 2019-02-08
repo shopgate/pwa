@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Picker from 'Components/Picker';
 import PriceDifference from '../PriceDifference';
-import styles from './style';
 
 /**
  * @param {Object} props The compoent props.
@@ -22,7 +21,7 @@ const Option = ({
       items={items.map(item => ({
         ...item,
         rightComponent: (
-          <PriceDifference className={styles} currency={item.currency} difference={item.price} />
+          <PriceDifference currency={item.currency} difference={item.price} />
         ),
       }))}
       placeholder={<I18n.Text string="product.pick_an_attribute" params={[label]} />}
