@@ -17,12 +17,12 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
     <Connect(Component)>
       <Component
         cancel={[Function]}
-        pathname="/"
+        pathname={null}
       >
         <FormButtons
           cancel={[Function]}
           isLoading={false}
-          pathname="/"
+          pathname={null}
         >
           <div
             className="css-1v7qljm"
