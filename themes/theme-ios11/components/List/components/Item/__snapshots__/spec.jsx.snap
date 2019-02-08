@@ -331,12 +331,12 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-l3889c css-7q9yf9"
+      className="css-l3889c css-dd0fvr"
       component="div"
       wrap={false}
     >
       <div
-        className="css-l3889c css-7q9yf9 css-h7r55a"
+        className="css-l3889c css-dd0fvr css-h7r55a"
       >
         <GridItem
           className="css-10fxwvh"
