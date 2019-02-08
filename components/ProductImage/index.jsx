@@ -19,6 +19,7 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
@@ -34,6 +35,7 @@ class ProductImage extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
+    className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => {},
     ratio: null,
@@ -72,7 +74,7 @@ class ProductImage extends Component {
   componentWillReceiveProps(nextProps) {
     // Disable the placeholder to give the real image a new chance to load.
     // If we do not have a src property set then just show the placeholder instead.
-    const showPlaceholder = !nextProps.src && (!nextProps.srcset || nextProps.srcmap.length === 0);
+    const showPlaceholder = !nextProps.src && (!nextProps.srcmap || nextProps.srcmap.length === 0);
     this.setState({
       showPlaceholder,
     });

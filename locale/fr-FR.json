@@ -4,7 +4,8 @@
     "load_more": "Charger Plus",
     "cancel": "Annuler",
     "submit": "Envoyer",
-    "undo": "Défaire"
+    "undo": "Défaire",
+    "required": "Obligatoires *"
   },
   "titles": {
     "categories": "Catégories",
