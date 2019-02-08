@@ -32,7 +32,7 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
               id="AppFooter"
             >
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -126,7 +126,7 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -220,7 +220,7 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -314,7 +314,7 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -408,7 +408,7 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -514,12 +514,12 @@ exports[`<PaymentBar /> should be visible if prop visible is true 1`] = `
               props={null}
             >
               <Grid
-                className="css-43d1ly"
+                className="css-13d7buk"
                 component="ul"
                 wrap={false}
               >
                 <ul
-                  className="css-43d1ly css-h7r55a"
+                  className="css-13d7buk css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -847,7 +847,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
               id="AppFooter"
             >
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -941,7 +941,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -1035,7 +1035,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -1129,7 +1129,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -1235,12 +1235,12 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
               props={null}
             >
               <Grid
-                className="css-43d1ly"
+                className="css-13d7buk"
                 component="ul"
                 wrap={false}
               >
                 <ul
-                  className="css-43d1ly css-h7r55a"
+                  className="css-13d7buk css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -1598,7 +1598,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
               id="AppFooter"
             >
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -1704,12 +1704,12 @@ exports[`<PaymentBar /> should render without any props 1`] = `
               props={null}
             >
               <Grid
-                className="css-43d1ly"
+                className="css-13d7buk"
                 component="ul"
                 wrap={false}
               >
                 <ul
-                  className="css-43d1ly css-h7r55a"
+                  className="css-13d7buk css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -2036,7 +2036,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
               id="AppFooter"
             >
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -2130,7 +2130,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -2224,7 +2224,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -2330,12 +2330,12 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
               props={null}
             >
               <Grid
-                className="css-43d1ly"
+                className="css-13d7buk"
                 component="ul"
                 wrap={false}
               >
                 <ul
-                  className="css-43d1ly css-h7r55a"
+                  className="css-13d7buk css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -2662,7 +2662,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
               id="AppFooter"
             >
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -2756,7 +2756,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                 </li>
               </ul>
               <ul
-                class="css-43d1ly css-h7r55a"
+                class="css-13d7buk css-h7r55a"
               >
                 <li
                   class="css-1e1nulz css-1gs0ko2"
@@ -2862,12 +2862,12 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
               props={null}
             >
               <Grid
-                className="css-43d1ly"
+                className="css-13d7buk"
                 component="ul"
                 wrap={false}
               >
                 <ul
-                  className="css-43d1ly css-h7r55a"
+                  className="css-13d7buk css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
