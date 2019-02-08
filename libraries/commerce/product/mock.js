@@ -290,6 +290,14 @@ const productWithOneOption = {
               },
             ],
           },
+          {
+            id: '10',
+            type: 'text',
+            label: 'Foo',
+            annotation: 'Bar',
+            required: true,
+            unitPriceModifier: 3,
+          },
         ],
       },
     },
@@ -338,6 +346,7 @@ const productWithSelectedOptions = {
       ...productWithOneOption.product.currentProduct,
       options: {
         1: '1',
+        10: 'Foo bar',
       },
     },
   },

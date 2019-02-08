@@ -1,7 +1,7 @@
 /**
  * Mock for getElementById
- * @param {function} scrollSpy Element.scroll spy function.
- * @returns {function}
+ * @param {Function} scrollSpy Element.scroll spy function.
+ * @returns {Function}
  */
 const getElementById = scrollSpy => () => ({
   offsetTop: 100,

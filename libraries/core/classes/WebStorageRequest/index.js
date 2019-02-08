@@ -34,7 +34,7 @@ class WebStorageRequest extends Request {
 
   /**
    * Dispatches the web storage request.
-   * @param {function} resolve The resolve() callback of the request promise.
+   * @param {Function} resolve The resolve() callback of the request promise.
    */
   onDispatch(resolve) {
     // Add the request to the buffer.

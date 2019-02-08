@@ -52,6 +52,7 @@ module.exports = {
         String: 'string',
         object: 'Object',
         array: 'Array',
+        function: 'Function',
       },
     }],
   },

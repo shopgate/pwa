@@ -37,7 +37,7 @@ describe('Favorites - actions', () => {
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
-     * @param {function} done Async test case done callback function.
+     * @param {Function} done Async test case done callback function.
      */
     const testFetch = (variant, done) => {
       const mockedDispatch = jest.fn();

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
@@ -48,7 +49,7 @@ class FormElement extends Component {
    * @returns {boolean} Whether the hint text is currently visible.
    */
   get isPlaceholderVisible() {
-    return this.isFocused && !this.props.hasValue;
+    return !this.props.isFocused && !this.props.hasValue;
   }
 
   /**
@@ -68,10 +69,10 @@ class FormElement extends Component {
     } = this.props;
 
     return (
-      <div className={`${style.formElement} ${className}`}>
+      <div className={classNames(style.formElement, className)}>
 
         {hasPlaceholder &&
-          <Placeholder visible={this.isPlaceholderVisible} placeholder={placeholder} />
+          <Placeholder visible={this.isPlaceholderVisible} placeholder={placeholder || label} />
         }
 
         <Label

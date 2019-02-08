@@ -97,7 +97,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               transition={null}
             >
               <div
-                className="css-hekcyy "
+                className="css-1oue43v "
               />
             </Image>
           </div>
@@ -138,7 +138,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               transition={null}
             >
               <div
-                className="css-hekcyy "
+                className="css-1oue43v "
               />
             </Image>
           </div>
@@ -246,7 +246,7 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
               transition={null}
             >
               <div
-                className="css-hekcyy "
+                className="css-1oue43v "
               />
             </Image>
           </div>
@@ -287,7 +287,7 @@ exports[`<ProductGallery.Content> page should render ZoomPanSlider with images 1
               transition={null}
             >
               <div
-                className="css-hekcyy "
+                className="css-1oue43v "
               />
             </Image>
           </div>

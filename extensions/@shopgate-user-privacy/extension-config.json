@@ -1,5 +1,5 @@
 {
-  "version": "6.0.1",
+  "version": "6.1.0",
   "id": "@shopgate/user-privacy",
   "configuration": {
     "isActive": {
@@ -32,6 +32,11 @@
       "type": "translations"
     },
     {
+      "id": "es-ES",
+      "path": "frontend/locale/es-ES.json",
+      "type": "translations"
+    },
+    {
       "id": "de-DE",
       "path": "frontend/locale/de-DE.json",
       "type": "translations"
@@ -39,6 +44,11 @@
     {
       "id": "fr-FR",
       "path": "frontend/locale/fr-FR.json",
+      "type": "translations"
+    },
+    {
+      "id": "it-IT",
+      "path": "frontend/locale/it-IT.json",
       "type": "translations"
     },
     {

@@ -43,12 +43,13 @@ describe('Product.Price selectors', () => {
       const props = {
         productId: '1097',
         options: {
-          1: '1',
+          1: '1', // select option
+          10: 'Foo bar', // text option
         },
       };
 
-      expect(getProductPriceAddition(productWithSelectedOptions, props)).toBe(1);
-      expect(getProductTotalPrice(productWithSelectedOptions, props)).toBe(11);
+      expect(getProductPriceAddition(productWithSelectedOptions, props)).toBe(4);
+      expect(getProductTotalPrice(productWithSelectedOptions, props)).toBe(14);
     });
 
     it('should calculate no additional cost for a product with just variants', () => {
@@ -75,6 +76,7 @@ describe('Product.Price selectors', () => {
         productId: '1097',
         options: {
           1: '1',
+          10: 'Foo bar',
         },
       };
 

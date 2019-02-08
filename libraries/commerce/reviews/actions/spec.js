@@ -33,7 +33,7 @@ describe('Reviews actions', () => {
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
-     * @param {function} done Async test case done callback function.
+     * @param {Function} done Async test case done callback function.
      */
     const testFetch = (variant, done) => {
       const mockedDispatch = jest.fn();
@@ -79,7 +79,7 @@ describe('Reviews actions', () => {
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
-     * @param {function} done Async test case done callback function.
+     * @param {Function} done Async test case done callback function.
      * @param {Object} state React state.
      */
     const testFetchProductReviews = (variant, done, state) => {
@@ -123,7 +123,7 @@ describe('Reviews actions', () => {
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
-     * @param {function} done Async test case done callback function.
+     * @param {Function} done Async test case done callback function.
      * @param {Object} state React state.
      */
     const testFetchUserReview = (variant, done, state) => {
@@ -183,7 +183,7 @@ describe('Reviews actions', () => {
      * @param {Object} review Review.
      * @param {boolean} update Update.
      * @param {Object} state React state.
-     * @param {function} done Async test case done callback function.
+     * @param {Function} done Async test case done callback function.
      */
     const testSubmitReview = (variant, review, update, state, done) => {
       const expectedDispatches = variant === 'then' ? 3 : 2;
