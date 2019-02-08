@@ -35,6 +35,19 @@ class CategoryPicker extends PureComponent {
   };
 
   /**
+   * Determines the disabled state for the component.
+   * @param {Object} props The component props.
+   * @return {Object}
+   */
+  static getDerivedStateFromProps(props) {
+    const hasSubcategories = Array.isArray(props.subcategories) && props.subcategories.length > 0;
+
+    return {
+      disabled: !hasSubcategories || props.categoryId === null,
+    };
+  }
+
+  /**
    * Get the category data for the category once the component has mounted.
    */
   componentDidMount() {
@@ -42,15 +55,6 @@ class CategoryPicker extends PureComponent {
     if (categoryId !== null && subcategories === null) {
       fetchCategory(categoryId);
     }
-
-    this.toggleDisabledState(this.props);
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    this.toggleDisabledState(nextProps);
   }
 
   /**
@@ -67,18 +71,6 @@ class CategoryPicker extends PureComponent {
     const subcategory = subcategories.find(val => (val.id === selectedId));
 
     return subcategory.name;
-  }
-
-  /**
-   * Sets the disabled state based on the component props.
-   * @param {Object} props A props object.
-   */
-  toggleDisabledState(props) {
-    const hasSubcategories = Array.isArray(props.subcategories) && props.subcategories.length > 0;
-
-    this.setState({
-      disabled: !hasSubcategories || props.categoryId === null,
-    });
   }
 
   /**
