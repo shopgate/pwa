@@ -317,6 +317,7 @@ exports[`<Header /> should render empty 1`] = `
                   noGap={true}
                 >
                   <ButtonLink
+                    className=""
                     disabled={false}
                     flat={true}
                     href="/item/666f6f/write_review"
@@ -884,6 +885,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   noGap={true}
                 >
                   <ButtonLink
+                    className=""
                     disabled={false}
                     flat={true}
                     href="/item/666f6f/write_review"

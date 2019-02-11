@@ -10,6 +10,7 @@ class ButtonLink extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     href: PropTypes.string.isRequired,
+    className: PropTypes.string,
     disabled: PropTypes.bool,
     flat: PropTypes.bool,
     navigate: PropTypes.func,
@@ -18,6 +19,7 @@ class ButtonLink extends Component {
 
   static defaultProps = {
     disabled: false,
+    className: '',
     navigate: () => {},
     noGap: false,
     flat: true,
@@ -36,10 +38,13 @@ class ButtonLink extends Component {
    * @returns {XML}
    */
   render() {
-    const { disabled, flat, noGap } = this.props;
+    const {
+      children, href, navigate, ...props
+    } = this.props;
+
     return (
-      <ActionButton onClick={this.handleClick} type="secondary" disabled={disabled} flat={flat} noGap={noGap}>
-        {this.props.children}
+      <ActionButton onClick={this.handleClick} type="secondary" {...props}>
+        {children}
       </ActionButton>
     );
   }
