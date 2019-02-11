@@ -45,7 +45,7 @@ class CTAButtons extends Component {
       handleAddToCart: this.handleAddToCart,
       isLoading: false,
       isBaseProduct: this.props.isBaseProduct,
-      isDisabled: !this.props.isOrderable,
+      isDisabled: !this.props.isOrderable && !this.props.hasVariants,
       noShadow: false,
       productId: this.props.productId,
     };
