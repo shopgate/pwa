@@ -25,6 +25,7 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
       productId: mockBin2Hex(mockedRouteProductId),
     },
   }),
+  getCurrentPathname: () => ({}),
   getCurrentQuery: () => ({}),
   getRouterStack: () => ({}),
   getCurrentState: () => ({}),
