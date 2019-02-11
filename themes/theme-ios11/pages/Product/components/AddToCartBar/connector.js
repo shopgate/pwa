@@ -4,6 +4,7 @@ import {
   isProductPageOrderable,
 } from '@shopgate/pwa-common-commerce/product/selectors/page';
 import { isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { hasCurrentProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import { connect } from 'react-redux';
 import {
   selectActionCount,
@@ -13,12 +14,12 @@ import {
 /**
  * Connects the current application state to the component props.
  * @param {Object} state The current application state.
- * @return {[type]} [description]
+ * @return {Object} [description]
  */
 const mapStateToProps = state => ({
   isLoading: isProductPageLoading(state),
   isOrderable: isProductPageOrderable(state),
-  isDisabled: !isProductOrderable(state),
+  isDisabled: !isProductOrderable(state) && !hasCurrentProductVariants(state),
   isVisible: isVisible(state),
   cartProductCount: selectActionCount(state),
 });

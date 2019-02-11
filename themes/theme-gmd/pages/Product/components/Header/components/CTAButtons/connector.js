@@ -9,6 +9,7 @@ import {
   isProductPageLoading,
   isProductPageOrderable,
 } from '@shopgate/pwa-common-commerce/product/selectors/page';
+import { hasCurrentProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 
 /**
  * Maps the contents of the state to the component props.
@@ -20,7 +21,7 @@ const mapStateToProps = state => ({
   productId: getCurrentProductId(state),
   isLoading: isProductPageLoading(state),
   isOrderable: isProductPageOrderable(state),
-  isDisabled: !isProductOrderable(state),
+  isDisabled: !isProductOrderable(state) && !hasCurrentProductVariants(state),
 });
 
 /**
