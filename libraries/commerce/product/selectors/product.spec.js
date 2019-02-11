@@ -704,23 +704,17 @@ describe('Product selectors', () => {
   });
 
   describe('getBaseProductId()', () => {
-    it('should return null and log an error when no props are passed', () => {
+    it('should return null when props are not given', () => {
       expect(getBaseProductId(mockedState)).toBeNull();
     });
 
-    it('should return the passed productId when no product is not available for the id', () => {
-      const productId = 'unavailable';
-      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
+    it('should return null when product is not found in store', () => {
+      const productId = 'unknown';
+      expect(getBaseProductId(mockedState, { productId })).toBeNull();
     });
 
-    it('should return the id of a base product when no variant is selected yet', () => {
-      const productId = 'product_1';
-      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
-    });
-
-    it('should return the id of a base product when no baseProductId prop is set', () => {
+    it('should return the id of a base product when baseProductId is null', () => {
       const productId = 'product_5';
-      delete mockedState.product.productsById[productId].productData.baseProductId;
       expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
@@ -729,7 +723,12 @@ describe('Product selectors', () => {
       expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
-    it('should return the id of a base product when a variant is selected ', () => {
+    it('should return the id of a base product when no variantId is in props', () => {
+      const productId = 'product_1';
+      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
+    });
+
+    it('should return the id of a base product when a variantId is in props', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       expect(getBaseProductId(mockedState, { productId, variantId })).toBe(productId);
