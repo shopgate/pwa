@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { isProductOrderable, hasProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
 import { addProductToCart } from './actions';
 
@@ -10,7 +10,7 @@ import { addProductToCart } from './actions';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  disabled: !isProductOrderable(state, props),
+  disabled: !isProductOrderable(state, props) && !hasProductVariants(state, props),
   loading: isProductPageLoading(state, props),
 });
 
