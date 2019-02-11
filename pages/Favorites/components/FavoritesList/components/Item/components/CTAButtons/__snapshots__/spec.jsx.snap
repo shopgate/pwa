@@ -76,7 +76,6 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             className="css-ipacgg"
             isDisabled={false}
             isLoading={false}
-            isOrderable={false}
             onClick={[Function]}
           >
             <button
