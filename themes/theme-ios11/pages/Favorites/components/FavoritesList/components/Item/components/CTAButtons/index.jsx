@@ -45,7 +45,7 @@ class CTAButtons extends Component {
       handleAddToCart: this.handleAddToCart,
       isLoading: false,
       isBaseProduct: this.props.isBaseProduct,
-      isDisabled: !this.props.isOrderable,
+      isDisabled: !this.props.isOrderable && !this.props.hasVariants,
       noShadow: false,
       productId: this.props.productId,
     };
@@ -92,8 +92,7 @@ class CTAButtons extends Component {
             className={styles.cartButton}
             onClick={this.handleAddToCart}
             isLoading={false}
-            isDisabled={!this.props.isOrderable}
-            isOrderable={!this.props.isBaseProduct && this.props.isOrderable}
+            isDisabled={!this.props.isOrderable && !this.props.hasVariants}
           />
         </Portal>
         <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />
