@@ -31,23 +31,27 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   },
 }));
 
-let mockedPathname;
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
-  getCurrentRoute: () => ({
-    pathname: mockedPathname,
-  }),
-}));
+/**
+ * Creates a mocked router state for the selectors.
+ * @param {string} pathname The pathname for the current route.
+ * @returns {Object}
+ */
+const getMockedRouterState = pathname => ({
+  router: {
+    currentRoute: {
+      pathname,
+    },
+  },
+});
 
 describe('TabBar selectors', () => {
   beforeEach(() => {
-    mockedPathname = '';
     jest.resetModules();
   });
 
   describe('getActiveTab()', () => {
     it('should return TAB_HOME', () => {
-      mockedPathname = INDEX_PATH;
-      const result = getActiveTab({});
+      const result = getActiveTab(getMockedRouterState(INDEX_PATH));
       expect(result).toEqual(TAB_HOME);
     });
 
@@ -55,33 +59,28 @@ describe('TabBar selectors', () => {
       const paths = [BROWSE_PATH, SEARCH_PATH, CATEGORY_PATH];
 
       paths.forEach((pathname) => {
-        mockedPathname = pathname;
-        const result = getActiveTab({});
+        const result = getActiveTab(getMockedRouterState(pathname));
         expect(result).toEqual(TAB_BROWSE);
       });
     });
 
     it('should return TAB_CART', () => {
-      mockedPathname = CART_PATH;
-      const result = getActiveTab({});
+      const result = getActiveTab(getMockedRouterState(CART_PATH));
       expect(result).toEqual(TAB_CART);
     });
 
     it('should return TAB_MORE', () => {
-      mockedPathname = MORE_PATH;
-      const result = getActiveTab({});
+      const result = getActiveTab(getMockedRouterState(MORE_PATH));
       expect(result).toEqual(TAB_MORE);
     });
 
     it('should return TAB_FAVORITES', () => {
-      mockedPathname = FAVORITES_PATH;
-      const result = getActiveTab({});
+      const result = getActiveTab(getMockedRouterState(FAVORITES_PATH));
       expect(result).toEqual(TAB_FAVORITES);
     });
 
     it('should return TAB_NONE', () => {
-      mockedPathname = '/unknown';
-      const result = getActiveTab({});
+      const result = getActiveTab(getMockedRouterState('/unknown'));
       expect(result).toEqual(TAB_NONE);
     });
   });
