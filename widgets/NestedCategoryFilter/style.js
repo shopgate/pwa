@@ -10,6 +10,16 @@ const container = css({
   paddingBottom: variables.gap.big,
 }).toString();
 
+const buttonContainer = css({
+  padding: `0 ${variables.gap.small}px`,
+}).toString();
+
+const button = css({
+  width: '100%',
+}).toString();
+
 export default {
   container,
+  buttonContainer,
+  button,
 };

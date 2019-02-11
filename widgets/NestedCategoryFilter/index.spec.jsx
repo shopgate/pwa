@@ -85,7 +85,7 @@ const checkWrapper = (wrapper, expectedProps, buttonCategoryId = null) => {
 
 describe('<NestedCategoryFilterWidget />', () => {
   it('should render the widget with a persisted state and handle user interaction as expected', () => {
-    expect.assertions(28);
+    expect.assertions(23);
     const persistedState = {
       pickers: [
         { categoryId: '', selectedId: '1' },
@@ -104,12 +104,11 @@ describe('<NestedCategoryFilterWidget />', () => {
     expect(wrapper.find('Headline').prop('text')).toBe(settings.headline);
     expect(wrapper.find('Headline').isEmptyRender()).toBe(false);
 
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(4);
+    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(3);
     checkWrapper(wrapper, [
       { categoryId: '', selectedId: '1' },
       { categoryId: '1', selectedId: '1-2' },
       { categoryId: '1-2', selectedId: '1-2-1' },
-      { categoryId: null, selectedId: undefined },
     ], '1-2-1');
 
     wrapper.find(Picker).at(0).simulate('click');
@@ -117,12 +116,10 @@ describe('<NestedCategoryFilterWidget />', () => {
       .simulate('click');
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(4);
+    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(2);
     checkWrapper(wrapper, [
       { categoryId: '', selectedId: '1' },
       { categoryId: '1', selectedId: null },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
     ]);
 
     wrapper.find(Picker).at(1).simulate('click');
@@ -133,13 +130,11 @@ describe('<NestedCategoryFilterWidget />', () => {
     checkWrapper(wrapper, [
       { categoryId: '', selectedId: '1' },
       { categoryId: '1', selectedId: '1-1' },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
     ], '1-1');
   });
 
   it('should render the widget without a headline and persisted state', () => {
-    expect.assertions(17);
+    expect.assertions(14);
     const wrapper = renderComponent({
       ...props,
       settings: {
@@ -153,11 +148,9 @@ describe('<NestedCategoryFilterWidget />', () => {
     expect(wrapper.find('Headline').prop('text')).toBe('');
     expect(wrapper.find('Headline').isEmptyRender()).toBe(true);
 
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(3);
+    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
     checkWrapper(wrapper, [
       { categoryId: '', selectedId: null },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
     ]);
 
     wrapper.find(Picker).at(0).simulate('click');
@@ -165,15 +158,14 @@ describe('<NestedCategoryFilterWidget />', () => {
       .simulate('click');
 
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
     checkWrapper(wrapper, [
       { categoryId: '', selectedId: '2' },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
     ], '2');
   });
 
   it('should render the widget for a category which is not the root category', () => {
-    expect.assertions(16);
+    expect.assertions(12);
     const wrapper = renderComponent({
       ...props,
       settings: {
@@ -183,11 +175,9 @@ describe('<NestedCategoryFilterWidget />', () => {
     });
 
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
     checkWrapper(wrapper, [
       { categoryId: '1', selectedId: null },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
     ]);
 
     wrapper.find(Picker).at(0).simulate('click');
@@ -195,11 +185,9 @@ describe('<NestedCategoryFilterWidget />', () => {
       .simulate('click');
 
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
     checkWrapper(wrapper, [
       { categoryId: '1', selectedId: '1-1' },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
-      { categoryId: null, selectedId: undefined },
     ], '1-1');
   });
 });
