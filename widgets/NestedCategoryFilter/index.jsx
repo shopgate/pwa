@@ -93,17 +93,15 @@ class NestedCategoryFilter extends PureComponent {
   createPickers() {
     const { settings } = this.props;
     const { pickers } = this.state;
-    const { limit } = settings;
 
     return (
       <div>
-        {Array(parseInt(limit, 10)).fill('').map((entry, index) => {
-          const { categoryId = null, selectedId } = pickers[index] || {};
-          const key = categoryId === null ? `dummy_${index}` : categoryId;
+        {pickers.map((entry, index) => {
+          const { categoryId, selectedId } = entry;
 
           return (
             <CategoryPicker
-              key={key}
+              key={categoryId}
               categoryId={categoryId}
               selectedId={selectedId}
               onSelect={this.handleSelection}
@@ -126,9 +124,11 @@ class NestedCategoryFilter extends PureComponent {
       <div className={styles.container}>
         <Headline text={this.props.settings.headline} />
         { this.createPickers() }
-        <ButtonLink href={`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`} disabled={!buttonCategoryId} flat={false}>
-          <I18n.Text string="common.show_products" />
-        </ButtonLink>
+        <div className={styles.buttonContainer}>
+          <ButtonLink className={styles.button} href={`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`} disabled={!buttonCategoryId} flat={false}>
+            <I18n.Text string="common.show_products" />
+          </ButtonLink>
+        </div>
       </div>
     );
   }
