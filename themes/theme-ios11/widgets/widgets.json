@@ -19,5 +19,8 @@
   },
   "@shopgate/commerce-widgets/liveshopping": {
     "path": "Liveshopping"
+  },
+  "@shopgate/commerce-widgets/dropdown_navigation": {
+    "path": "NestedCategoryFilter"
   }
 }

@@ -5,7 +5,9 @@
     "cancel": "Annuler",
     "submit": "Envoyer",
     "undo": "Défaire",
-    "required": "Obligatoires *"
+    "required": "Obligatoires *",
+    "please_choose": "Veuillez choisir",
+    "show_products": "Show products"
   },
   "titles": {
     "categories": "Catégories",

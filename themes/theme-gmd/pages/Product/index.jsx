@@ -16,7 +16,7 @@ const props = {
  */
 class Product extends PureComponent {
   /**
-   * @param {Object} props The consomer props.
+   * @param {Object} props The consumer props.
    * @returns {JSX}
    */
   consumeRenderer = ({ open, id, isVariant }) => {
