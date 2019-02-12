@@ -18,7 +18,15 @@ class NestedCategoryFilter extends PureComponent {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
-    settings: PropTypes.shape().isRequired,
+    settings: PropTypes.shape({
+      categoryNumber: PropTypes.string.isRequired,
+      limit: PropTypes.string.isRequired,
+      headline: PropTypes.string.isRequired,
+      label_1: PropTypes.string.isRequired,
+      label_2: PropTypes.string.isRequired,
+      label_3: PropTypes.string.isRequired,
+      label_4: PropTypes.string.isRequired,
+    }).isRequired,
     persistedState: PropTypes.shape(),
   }
 
@@ -62,7 +70,7 @@ class NestedCategoryFilter extends PureComponent {
     const { pickers } = this.state;
     const { id: subcategoryId, childrenCount } = subcategory;
 
-    const limitReached = pickers.length === this.props.settings.limit;
+    const limitReached = pickers.length === Number(this.props.settings.limit);
     const appendNewPicker = !!childrenCount && !limitReached;
 
     const selectedIndex = pickers.findIndex(picker => picker.categoryId === categoryId);

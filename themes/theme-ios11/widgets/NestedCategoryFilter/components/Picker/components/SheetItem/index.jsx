@@ -8,7 +8,10 @@ import styles from './style';
  */
 class SheetItem extends PureComponent {
   static propTypes = {
-    item: PropTypes.shape().isRequired,
+    item: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
     onClick: PropTypes.func,
     selected: PropTypes.bool,
   };

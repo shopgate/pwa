@@ -3016,7 +3016,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
         "label_2": "Label Two",
         "label_3": "",
         "label_4": "",
-        "limit": 3,
+        "limit": "3",
       }
     }
   >
@@ -3292,7 +3292,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
         "label_2": "Label Two",
         "label_3": "",
         "label_4": "",
-        "limit": 3,
+        "limit": "3",
       }
     }
   >
