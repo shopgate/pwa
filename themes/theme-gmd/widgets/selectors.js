@@ -160,7 +160,7 @@ export const getProductsFetchingState = createSelector(
  * If no category id is passed, root-categories will be returned.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
- * @type {Array|null} The categories collection.
+ * @returns {Object[]} The categories collection.
  */
 export const getCategoriesById = createSelector(
   getChildCategoriesById,

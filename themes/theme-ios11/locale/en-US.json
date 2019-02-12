@@ -5,7 +5,9 @@
     "cancel": "Cancel",
     "submit": "Submit",
     "undo": "Undo",
-    "required": "Required *"
+    "required": "Required *",
+    "please_choose": "Please choose",
+    "show_products": "Show products"
   },
   "titles": {
     "categories": "All Categories",
