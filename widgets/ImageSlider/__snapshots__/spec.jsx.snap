@@ -119,7 +119,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
             controls={false}
             disabled={false}
             dispatch={[Function]}
-            historyPath="/"
+            historyPath={null}
             indicators={true}
             initialSlide={0}
             interval={7000}
@@ -593,7 +593,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
             controls={false}
             disabled={false}
             dispatch={[Function]}
-            historyPath="/"
+            historyPath={null}
             indicators={true}
             initialSlide={0}
             interval={7000}
@@ -949,7 +949,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
             controls={false}
             disabled={false}
             dispatch={[Function]}
-            historyPath="/"
+            historyPath={null}
             indicators={true}
             initialSlide={0}
             interval={7000}
