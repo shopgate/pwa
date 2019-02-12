@@ -15,7 +15,10 @@ class CategoryPicker extends PureComponent {
     categoryId: PropTypes.string,
     label: PropTypes.string,
     selectedId: PropTypes.string,
-    subcategories: PropTypes.arrayOf(PropTypes.shape()),
+    subcategories: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })),
   }
 
   static defaultProps = {

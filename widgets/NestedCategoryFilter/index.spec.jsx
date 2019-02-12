@@ -140,7 +140,7 @@ describe('<NestedCategoryFilterWidget />', () => {
       settings: {
         ...props.settings,
         headline: '',
-        limit: 3,
+        limit: '3',
       },
     });
 
