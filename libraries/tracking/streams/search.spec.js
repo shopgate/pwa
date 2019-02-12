@@ -17,6 +17,7 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
     },
     state: {},
   }),
+  getCurrentPathname: () => ({}),
   getCurrentQuery: () => ({}),
   getRouterStack: () => ({}),
   getCurrentState: () => ({}),
