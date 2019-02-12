@@ -11,7 +11,10 @@ class CategorySheet extends PureComponent {
   static contextType = ThemeContext;
 
   static propTypes = {
-    items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })).isRequired,
     label: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     onClose: PropTypes.func,
