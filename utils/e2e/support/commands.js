@@ -26,6 +26,10 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 /**
+ * @typedef (Function) Window.spyAction
+ */
+
+/**
  * Spy console log for PWA actions.
  * When action is logged, assign it as cypress resource
  * @example
