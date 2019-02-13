@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
@@ -63,10 +63,11 @@ class AppBar extends PureComponent {
     const {
       below, center, left, right, classes,
     } = this.props;
-    const sectionClasses = classnames(styles.outer, classes.outer);
+    const sectionClasses = classNames(styles.outer, classes.outer);
+
     return (
       <section className={sectionClasses} data-test-id="Navigator" style={this.style}>
-        <div className={classnames(styles.inner, classes.inner)}>
+        <div className={classNames(styles.inner, classes.inner)}>
           <Left elements={left} />
           <Center elements={center} />
           <Right elements={right} />
