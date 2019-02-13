@@ -2,16 +2,20 @@ import { css } from 'glamor';
 
 const outer = css({
   boxSizing: 'content-box',
-  minHeight: 44,
   paddingTop: 'var(--safe-area-inset-top)',
-}).toString();
+  position: 'sticky',
+  left: 0,
+  top: 0,
+  width: '100%',
+  zIndex: 15,
+});
 
 const inner = css({
   display: 'flex',
   justifyContent: 'space-between',
   position: 'relative',
-  zIndex: 1,
-}).toString();
+  zIndex: 14,
+});
 
 export default {
   outer,

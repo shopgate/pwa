@@ -48,13 +48,6 @@ const content = css({
   zIndex: 0,
 });
 
-const header = css({
-  top: 0,
-  flexShrink: 1,
-  position: 'relative',
-  zIndex: 1,
-});
-
 const footer = css({
   bottom: 0,
   flexShrink: 1,
@@ -65,6 +58,5 @@ const footer = css({
 export default {
   viewport,
   content,
-  header,
   footer,
 };
