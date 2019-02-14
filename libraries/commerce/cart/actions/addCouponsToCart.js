@@ -9,7 +9,7 @@ import { messagesHaveErrors } from '../helpers';
 
 /**
  * Adds coupons to the cart.
- * @param {Array} couponIds The IDs of the coupons that shall be added to the cart.
+ * @param {string[]} couponIds The IDs of the coupons that shall be added to the cart.
  * @return {Function} A redux thunk.
  */
 const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) => {

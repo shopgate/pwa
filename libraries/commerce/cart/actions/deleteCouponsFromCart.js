@@ -11,7 +11,7 @@ import { messagesHaveErrors } from '../helpers';
 
 /**
  * Deletes coupons from the cart.
- * @param {Array} couponIds The IDs of the coupons that shall be deleted from the cart.
+ * @param {string[]} couponIds The IDs of the coupons that shall be deleted from the cart.
  * @return {Function} A redux thunk.
  */
 const deleteCouponsFromCart = couponIds => (dispatch) => {

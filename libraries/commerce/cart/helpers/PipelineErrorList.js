@@ -4,8 +4,8 @@ import { ECART } from '../constants/PipelineErrors';
  * @typedef {Object} PipelineError
  * @property {string} code
  * @property {string} message
- * @property {PipelineErrorDetail[]} [errors]
- * @typedef {Object} PipelineErrorDetail
+ * @property {PipelineErrorElement[]} [errors]
+ * @typedef {Object} PipelineErrorElement
  * @property {string} entityId
  * @property {string} code
  * @property {string} message
@@ -14,7 +14,7 @@ import { ECART } from '../constants/PipelineErrors';
  *
  * Creates a proper error object from pipeline error responses for easier error handling.
  * @param {PipelineError} error The error to be sanitize.
- * @return {PipelineErrorDetail[]}
+ * @return {PipelineErrorElement[]}
  */
 export default (error) => {
   const defaultError = {
