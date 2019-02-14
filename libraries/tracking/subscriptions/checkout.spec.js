@@ -30,7 +30,6 @@ describe('Checkout subscriptions', () => {
     });
 
     it('should call the expected commands', () => {
-      const setPWAVisibleStateSpy = jest.spyOn(helpers, 'setPWAVisibleState');
       const trackSpy = jest.spyOn(helpers, 'track');
       /**
        * Mocked getState function.
@@ -45,9 +44,6 @@ describe('Checkout subscriptions', () => {
         { cart: getCart(getState()) },
         getState()
       );
-
-      expect(setPWAVisibleStateSpy).toHaveBeenCalledTimes(1);
-      expect(setPWAVisibleStateSpy).toHaveBeenCalledWith(false);
     });
   });
 });
