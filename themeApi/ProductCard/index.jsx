@@ -22,6 +22,10 @@ function ProductCard({
   render,
   shadow,
   style,
+  hideName,
+  hidePrice,
+  hideRating,
+  titleRows,
 }) {
   if (!product) {
     return null;
@@ -38,6 +42,10 @@ function ProductCard({
       {render({
         product,
         url,
+        hideName,
+        hidePrice,
+        hideRating,
+        titleRows,
       })}
     </section>
   );
@@ -48,10 +56,14 @@ ProductCard.Price = Price;
 ProductCard.Title = Title;
 
 ProductCard.propTypes = {
+  hideName: PropTypes.bool,
+  hidePrice: PropTypes.bool,
+  hideRating: PropTypes.bool,
   product: PropTypes.shape(),
   render: PropTypes.func,
   shadow: PropTypes.bool,
   style: PropTypes.shape(),
+  titleRows: PropTypes.number,
 };
 
 ProductCard.defaultProps = {
@@ -59,6 +71,12 @@ ProductCard.defaultProps = {
   render: Render,
   shadow: true,
   style: {},
+  hideName: false,
+  hidePrice: false,
+  hideRating: false,
+  titleRows: 3,
 };
 
 export default connect(ProductCard);
+
+export { ProductCard as ProductCardUnwrapped };
