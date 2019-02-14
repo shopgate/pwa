@@ -1,7 +1,7 @@
 import get from 'lodash/get';
 import find from 'lodash/find';
 import core from '@shopgate/tracking-core/core/Core';
-import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/pwa-core/helpers';
 
 /**
  * Converts a price to a formatted string.
@@ -164,25 +164,3 @@ export const track = (eventName, data, state) => {
 
   return core;
 };
-
-/**
- * Initialize the visible state. When the PWA runs within a real app, it will be set to TRUE when
- * the app sends the APP_EVENT_VIEW_DID_APPEAR event. Within a browser it needs to be set manually.
- * Otherwise page tracking would be suprpessed.
- */
-let pwaWebviewVisible = !hasSGJavaScriptBridge();
-
-/**
- * Sets the visible state of the PWA webview.
- * It's used to determine, if a legacy page is currently active.
- * @param {boolean} [value=true] Tells if the PWA currently visible.
- */
-export const setPWAVisibleState = (value = true) => {
-  pwaWebviewVisible = value;
-};
-
-/**
- * Checks if the PWA webview is currently visible.
- * @return {boolean}
- */
-export const isPWAVisible = () => pwaWebviewVisible;

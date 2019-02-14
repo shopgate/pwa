@@ -1,7 +1,10 @@
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
-import { setPWAVisibleState } from '../helpers';
-import { pwaDidAppear } from '../action-creators';
+import { appWillStart } from '@shopgate/pwa-common/action-creators/app';
+import {
+  pwaDidAppear,
+  pwaDidDisappear,
+} from '../action-creators';
 import { blacklistedPatterns, pagesAreReady$ } from './pages';
 
 let mockedPattern;
@@ -34,16 +37,16 @@ describe('Page streams', () => {
     mockedPattern = '';
     ({ dispatch } = createMockStore());
 
+    // Simulate app is started
+    dispatch(appWillStart('/'));
+
     pagesAreReadySubscriber = jest.fn();
     pagesAreReady$.subscribe(pagesAreReadySubscriber);
   });
 
   describe('pagesAreReady$', () => {
-    beforeEach(() => {
-      setPWAVisibleState(true);
-    });
-
-    it('should emit when a route is active which is not blacklisted', () => {
+    it('should emit when a route not blacklisted', () => {
+      dispatch(appWillStart('/'));
       dispatch(routeDidEnterWrapped('/somepath'));
       expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(1);
     });
@@ -54,9 +57,15 @@ describe('Page streams', () => {
     });
 
     it('should not emit when a route is active, but the PWA is not visible', () => {
-      setPWAVisibleState(false);
+      // Simulate pwa is disappear
+      dispatch(pwaDidDisappear());
+
       dispatch(routeDidEnterWrapped('/somepath'));
       expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
+
+      // Simulate pwa is appeared again
+      dispatch(pwaDidAppear());
+      expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(1);
     });
   });
 
