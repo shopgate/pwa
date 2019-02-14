@@ -1,5 +1,7 @@
 import { PipelineRequest, PROCESS_SEQUENTIAL, logger } from '@shopgate/pwa-core';
 import * as pipelines from '../constants/Pipelines';
+import PipelineErrorList from '../helpers/PipelineErrorList';
+import { ECART } from '../constants/PipelineErrors';
 import addCoupons from '../action-creators/addCouponsToCart';
 import errorAddCouponsToCart from '../action-creators/errorAddCouponsToCart';
 import successAddCouponsToCart from '../action-creators/successAddCouponsToCart';
@@ -17,6 +19,7 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
   request.setInput({ couponCodes: couponIds })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .setRetries(0)
+    .setErrorBlacklist(ECART)
     .dispatch()
     .then(({ messages }) => {
       if (messages && messagesHaveErrors(messages)) {
@@ -29,7 +32,7 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
       resolve();
     })
     .catch((error) => {
-      dispatch(errorAddCouponsToCart(couponIds));
+      dispatch(errorAddCouponsToCart(couponIds, PipelineErrorList(error)));
       logger.error(pipelines.SHOPGATE_CART_ADD_COUPONS, error);
       reject();
     });

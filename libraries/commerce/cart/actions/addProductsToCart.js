@@ -2,6 +2,8 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
+import PipelineErrorList from '../helpers/PipelineErrorList';
+import { ECART } from '../constants/PipelineErrors';
 import addProductsToCart from '../action-creators/addProductsToCart';
 import successAddProductsToCart from '../action-creators/successAddProductsToCart';
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
@@ -49,6 +51,7 @@ const addToCart = data => (dispatch, getState) => {
   return request.setInput({ products })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .setRetries(0)
+    .setErrorBlacklist(ECART)
     .dispatch()
     .then(({ messages }) => {
       if (messages && messagesHaveErrors(messages)) {
@@ -64,7 +67,7 @@ const addToCart = data => (dispatch, getState) => {
       dispatch(successAddProductsToCart());
     })
     .catch((error) => {
-      dispatch(errorAddProductsToCart(products));
+      dispatch(errorAddProductsToCart(products, PipelineErrorList(error)));
       logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
 };
