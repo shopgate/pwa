@@ -22,6 +22,11 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
     .setErrorBlacklist(ECART)
     .dispatch()
     .then(({ messages }) => {
+      /**
+       * @Deprecated: The property "messages" is not supposed to be part of the pipeline response.
+       * Specification demands errors to be returned as response object with an "error" property.
+       * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
+       */
       if (messages && messagesHaveErrors(messages)) {
         dispatch(errorAddCouponsToCart(couponIds, messages));
         reject();

@@ -56,9 +56,9 @@ const addToCart = data => (dispatch, getState) => {
     .then(({ messages }) => {
       if (messages && messagesHaveErrors(messages)) {
         /**
-         * If the addProductsToCart request fails, the pipeline doesn't respond with an error,
-         * but a messages array within the response payload. So by now we also have to dispatch
-         * the error action here.
+         * @Deprecated: The property "messages" is not supposed to be part of the pipeline response.
+         * Specification demands errors to be returned as response object with an "error" property.
+         * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
          */
         dispatch(errorAddProductsToCart(products, messages));
         return;
