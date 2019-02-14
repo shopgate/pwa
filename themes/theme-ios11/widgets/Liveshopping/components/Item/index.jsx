@@ -43,7 +43,7 @@ function LiveshoppingItem({ productId }) {
                       {price.discount > 0 &&
                         <Discount discount={price.discount} productId={productId} />
                       }
-                      <ProductCard.Title title={name} style={styles.title} />
+                      <ProductCard.Content.Title title={name} style={styles.title} />
                       {timeout &&
                         <CountdownTimer className={styles.timer} timeout={timeout / 1000} />
                       }

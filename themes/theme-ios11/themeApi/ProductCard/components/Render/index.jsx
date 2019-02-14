@@ -56,6 +56,10 @@ function ProductCardRender({
   );
 }
 
+ProductCardRender.Badge = Badge;
+ProductCardRender.Price = Price;
+ProductCardRender.Title = Title;
+
 ProductCardRender.propTypes = {
   product: PropTypes.shape().isRequired,
   url: PropTypes.string.isRequired,
