@@ -36,7 +36,10 @@ const deleteCouponsFromCart = couponIds => (dispatch) => {
       dispatch(successDeleteCouponsFromCart());
     })
     .catch((error) => {
-      dispatch(errorDeleteCouponsFromCart(couponIds, PipelineErrorList(error)));
+      dispatch(errorDeleteCouponsFromCart(
+        couponIds,
+        PipelineErrorList(pipelines.SHOPGATE_CART_DELETE_COUPONS, error)
+      ));
       logger.error(pipelines.SHOPGATE_CART_DELETE_COUPONS, error);
     });
 };

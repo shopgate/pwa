@@ -36,7 +36,10 @@ const updateProductsInCart = updateData => (dispatch) => {
       dispatch(successUpdateProductsInCart());
     })
     .catch((error) => {
-      dispatch(errorUpdateProductsInCart(updateData, PipelineErrorList(error)));
+      dispatch(errorUpdateProductsInCart(
+        updateData,
+        PipelineErrorList(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS, error)
+      ));
       logger.error(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS, error);
     });
 };

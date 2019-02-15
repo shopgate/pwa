@@ -35,7 +35,10 @@ const deleteProductsFromCart = cartItemIds => (dispatch) => {
       dispatch(successDeleteProductsFromCart());
     })
     .catch((error) => {
-      dispatch(errorDeleteProductsFromCart(cartItemIds, PipelineErrorList(error)));
+      dispatch(errorDeleteProductsFromCart(
+        cartItemIds,
+        PipelineErrorList(pipelines.SHOPGATE_CART_DELETE_PRODUCTS, error)
+      ));
       logger.error(pipelines.SHOPGATE_CART_DELETE_PRODUCTS, error);
     });
 };

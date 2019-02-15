@@ -37,7 +37,10 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
       resolve();
     })
     .catch((error) => {
-      dispatch(errorAddCouponsToCart(couponIds, PipelineErrorList(error)));
+      dispatch(errorAddCouponsToCart(
+        couponIds,
+        PipelineErrorList(pipelines.SHOPGATE_CART_ADD_COUPONS, error)
+      ));
       logger.error(pipelines.SHOPGATE_CART_ADD_COUPONS, error);
       reject();
     });

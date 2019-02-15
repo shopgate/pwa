@@ -67,7 +67,10 @@ const addToCart = data => (dispatch, getState) => {
       dispatch(successAddProductsToCart());
     })
     .catch((error) => {
-      dispatch(errorAddProductsToCart(products, PipelineErrorList(error)));
+      dispatch(errorAddProductsToCart(
+        products,
+        PipelineErrorList(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error)
+      ));
       logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
 };

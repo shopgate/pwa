@@ -4,31 +4,34 @@ import { ECART } from '../constants/PipelineErrors';
  * @typedef {Object} PipelineError
  * @property {string} code
  * @property {string} message
+ * @property {string} [pipeline]
  * @property {PipelineErrorElement[]} [errors]
  * @typedef {Object} PipelineErrorElement
  * @property {string} entityId
  * @property {string} code
  * @property {string} message
- * @property {string[]} messageParams
+ * @property {Object} messageParams
  * @property {boolean} translated
  *
  * Creates a proper error object from pipeline error responses for easier error handling.
+ * @param {string} pipelineName The name of the pipeline in which the error occurred.
  * @param {PipelineError} error The error to be sanitize.
  * @return {PipelineErrorElement[]}
  */
-export default (error) => {
-  const defaultError = {
+export default (pipelineName, error) => {
+  const defaultPipelineError = {
     entityId: '',
     code: '',
+    pipeline: pipelineName || '',
     message: '',
-    messageParams: [],
+    messageParams: {},
     translated: true,
   };
 
   // Not all error codes can contain an array of sub-errors with additional errors
   if (error.code !== ECART) {
     return [{
-      ...defaultError,
+      ...defaultPipelineError,
       code: error.code,
       message: error.message,
     }];
@@ -37,7 +40,8 @@ export default (error) => {
   // Ensure all properties actually exist
   const { errors = [] } = error;
   return errors.map(e => ({
-    ...defaultError,
+    ...defaultPipelineError,
     ...e,
+    code: `${error.code} :: ${e.code}`,
   }));
 };
