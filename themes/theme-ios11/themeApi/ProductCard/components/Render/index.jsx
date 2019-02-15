@@ -12,9 +12,20 @@ import style from './style';
  * @param {Object} props The component props.
  * @param {Object} props.product The product data.
  * @param {string} props.url The product route url.
+ * @param {boolean} props.hidePrice Whether the price should be hidden.
+ * @param {boolean} props.hideRating Whether the rating should be hidden.
+ * @param {boolean} props.hideName Whether the name should be hidden.
+ * @param {number} props.titleRows The max number of rows for the product title.
  * @returns {JSX}
  */
-function ProductCardRender({ product, url }) {
+function ProductCardRender({
+  product,
+  url,
+  hideName,
+  hidePrice,
+  hideRating,
+  titleRows,
+}) {
   const {
     featuredImageUrl,
     id,
@@ -26,21 +37,43 @@ function ProductCardRender({ product, url }) {
   return (
     <Link tagName="a" href={url}>
       <ProductImage itemProp="image" src={featuredImageUrl} alt={name} />
-      {(price.discount > 0) && <Badge productId={id} value={-price.discount} />}
-      <div className={style}>
-        {(rating && rating.average > 0) && (
-          <RatingStars value={product.rating.average} />
-        )}
-        <Title title={product.name} />
-        <Price price={product.price} productId={id} />
-      </div>
+      {(!hidePrice && price.discount > 0) && <Badge productId={id} value={-price.discount} />}
+
+      {(!(hidePrice && hideRating)) && (
+        <div className={style}>
+          {(!hideRating && rating && rating.average > 0) && (
+            <RatingStars value={product.rating.average} />
+          )}
+          {!hideName && (
+            <Title title={product.name} rows={titleRows} />
+          )}
+          {!hidePrice && (
+            <Price price={product.price} productId={id} />
+          )}
+        </div>
+      )}
     </Link>
   );
 }
 
+ProductCardRender.Badge = Badge;
+ProductCardRender.Price = Price;
+ProductCardRender.Title = Title;
+
 ProductCardRender.propTypes = {
   product: PropTypes.shape().isRequired,
   url: PropTypes.string.isRequired,
+  hideName: PropTypes.bool,
+  hidePrice: PropTypes.bool,
+  hideRating: PropTypes.bool,
+  titleRows: PropTypes.number,
+};
+
+ProductCardRender.defaultProps = {
+  hideName: false,
+  hidePrice: false,
+  hideRating: false,
+  titleRows: 3,
 };
 
 export default ProductCardRender;
