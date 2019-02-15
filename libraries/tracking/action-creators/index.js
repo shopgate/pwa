@@ -1,4 +1,7 @@
-import { PWA_DID_APPEAR } from '../constants';
+import {
+  PWA_DID_APPEAR,
+  PWA_DID_DISAPPEAR,
+} from '../constants';
 
 /**
  * Creates the dispatched PWA_DID_APPEAR action object.
@@ -6,4 +9,12 @@ import { PWA_DID_APPEAR } from '../constants';
  */
 export const pwaDidAppear = () => ({
   type: PWA_DID_APPEAR,
+});
+
+/**
+ * Creates the dispatched PWA_DID_DISAPPEAR action
+ * @return {Object} The dispatched action object.
+ */
+export const pwaDidDisappear = () => ({
+  type: PWA_DID_DISAPPEAR,
 });
