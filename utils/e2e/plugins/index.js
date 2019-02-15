@@ -7,13 +7,13 @@ module.exports = (on, config) => {
   if (process.env.IP && process.env.PORT) {
     ip = process.env.IP;
     port = process.env.PORT;
-  } else {
+  } else if (!process.env.BC) {
     const sdkConfig = require('../../../.sgcloud/frontend.json');
     ip = sdkConfig.ip || '127.0.0.1';
     port = sdkConfig.port || 8080;
-  }
 
-  console.warn(ip, port);
+    console.warn(ip, port);
+  }
 
   // Build a new config object.
   const newConfig = Object.assign({}, config, {
@@ -30,6 +30,10 @@ module.exports = (on, config) => {
   newConfig.viewportWidth = 411;
   // Set the viewport height.
   newConfig.viewportHeight = 731;
+
+  if (process.env.BC) {
+    newConfig.baseUrl = process.env.BC;
+  }
 
   return newConfig;
 };
