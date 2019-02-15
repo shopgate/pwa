@@ -1,6 +1,10 @@
+import { combineReducers } from 'redux';
+import { ACTION_REPLACE } from '@virtuous/conductor';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
+import user from '@shopgate/pwa-common/reducers/user';
+import { routeDidEnter, navigate } from '@shopgate/pwa-common/action-creators/router';
 import { appWillStart } from '@shopgate/pwa-common/action-creators/app';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   pwaDidAppear,
   pwaDidDisappear,
@@ -35,18 +39,19 @@ describe('Page streams', () => {
     jest.clearAllMocks();
 
     mockedPattern = '';
-    ({ dispatch } = createMockStore());
-
-    // Simulate app is started
-    dispatch(appWillStart('/'));
+    ({ dispatch } = createMockStore(combineReducers({ user })));
 
     pagesAreReadySubscriber = jest.fn();
     pagesAreReady$.subscribe(pagesAreReadySubscriber);
   });
 
   describe('pagesAreReady$', () => {
-    it('should emit when a route not blacklisted', () => {
+    beforeEach(() => {
+      // Simulate app is started
       dispatch(appWillStart('/'));
+    });
+
+    it('should emit when a route not blacklisted', () => {
       dispatch(routeDidEnterWrapped('/somepath'));
       expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(1);
     });
@@ -70,16 +75,39 @@ describe('Page streams', () => {
   });
 
   describe('coming back from legacy pages', () => {
-    it('should emit when pwaDidAppear is dispatched and a not blacklisted route is active', () => {
+    beforeEach(() => {
+      // Simulate app is started
+      dispatch(appWillStart('/'));
+    });
+    it('should emit when PWA is reappear and a not blacklisted route is active', () => {
       dispatch(routeDidEnterWrapped('/somepath'));
+      dispatch(pwaDidDisappear());
       dispatch(pwaDidAppear());
-      expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(1);
+      expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(2);
     });
 
     it('should not emit when pwaDidAppear is dispatched and a blacklisted is active', () => {
       dispatch(routeDidEnterWrapped(blacklistedPatterns[0]));
+      dispatch(pwaDidDisappear());
       dispatch(pwaDidAppear());
       expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('go to checkout', () => {
+    beforeEach(() => {
+      // Simulate app is started
+      dispatch(appWillStart('/'));
+    });
+    it('should not emit events when user goes to checkout', () => {
+      dispatch(routeDidEnterWrapped('/somepath'));
+      dispatch(navigate({
+        action: ACTION_REPLACE,
+        pathname: CHECKOUT_PATH,
+      }));
+      // should not track this path
+      dispatch(routeDidEnterWrapped('/somepath2'));
+      expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(1);
     });
   });
 });
