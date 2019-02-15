@@ -22,8 +22,11 @@ class PipelineErrorDialog extends Component {
   static propTypes = {
     actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     params: PropTypes.shape({
+      entityId: PropTypes.string,
       code: PropTypes.string, // The error code as string.
       message: PropTypes.string.isRequired, // The error message reported by the pipeline.
+      messageParams: PropTypes.shape(), // A list of key/value pairs (paramName: paramValue)
+      translated: PropTypes.bool,
       pipeline: PropTypes.string.isRequired, // The identifier of the pipeline.
       request: PropTypes.shape.isRequired, // The request as sent to the server.
     }).isRequired,
@@ -62,9 +65,7 @@ class PipelineErrorDialog extends Component {
    * @return {JSX} The content component based on the the current state of the dialog.
    */
   get content() {
-    return this.state.devMode
-      ? this.renderDevErrorMessage(this.props.params)
-      : this.renderUserErrorMessage();
+    return this.state.devMode ? this.renderDevErrorMessage() : this.renderUserErrorMessage();
   }
 
   /**
@@ -99,32 +100,65 @@ class PipelineErrorDialog extends Component {
 
   /**
    * Renders the error message in developer mode.
-   * @param {Object} params The message parameters.
    * @returns {JSX}
    */
-  renderDevErrorMessage = params => (
-    <div aria-hidden>
-      <strong>Pipeline:</strong> {params.pipeline}<br />
-      { params.code && (
-        <span>
-          <strong>Code: </strong> {params.code} <br />
-        </span>
-      )}
-      <strong>Message:</strong> {params.message} <br />
-      <p>
-        <strong>Params:</strong><br />
-        {JSON.stringify(params.request, null, ' ')}
-      </p>
-    </div>
-  );
+  renderDevErrorMessage = () => {
+    const { params } = this.props;
+
+    return (
+      <div aria-hidden>
+        <strong>Pipeline:</strong> {params.pipeline}<br />
+        { params.entityId && (
+          <span>
+            <strong>Entity id: </strong> {params.entityId} <br />
+          </span>
+        )}
+        { params.code && (
+          <span>
+            <strong>Code: </strong> {params.code} <br />
+          </span>
+        )}
+        <strong>Message:</strong> {params.message} <br />
+        { params.messageParams && (
+          <p>
+            <strong>Message Params:</strong><br />
+            {JSON.stringify(params.messageParams, null, ' ')}
+          </p>
+        )}
+        { params.translated && (
+          <span>
+            <strong>Message Translated: </strong> {params.translated.toString()} <br />
+          </span>
+        )}
+        <p>
+          <strong>Request Params:</strong><br />
+          {JSON.stringify(params.request, null, ' ')}
+        </p>
+      </div>
+    );
+  }
 
   /**
    * Renders the regular error message in user mode.
    * @returns {JSX}
    */
-  renderUserErrorMessage = () => (
-    <I18n.Text string={this.props.message || 'modal.body_error'} />
-  );
+  renderUserErrorMessage = () => {
+    const { message = '', params = {} } = this.props;
+
+    return (
+      <React.Fragment>
+        {params.translated === true && (
+          message || params.message || 'modal.body_error'
+        )}
+        {params.translated !== true && (
+          <I18n.Text
+            string={message || params.message || 'modal.body_error'}
+            params={params.messageParams || {}}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
 
   /**
    * Renders the error message depending on the current mode.

@@ -7,6 +7,7 @@ import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
@@ -89,9 +90,9 @@ export default function cart(subscribe) {
     ]);
 
     /**
-     * Reload the cart everytime the WebView becomes visible.
-     * This is needed, for example, when the cart is modified inside the webcheckout and
-     * the user closes the inAppBrowser before reaching the success page.
+     * Reload the cart whenever the WebView becomes visible.
+     * This is needed, for example, when the cart is modified from another inAppBrowser tab like a
+     * web-checkout and the user closes the said tab before reaching the success page.
      */
     event.addCallback('viewWillAppear', () => {
       dispatch(fetchCart());
@@ -119,18 +120,25 @@ export default function cart(subscribe) {
   });
 
   subscribe(remoteCartDidUpdate$, ({ dispatch, action }) => {
-    const { errors } = action;
+    /**
+     * @type {PipelineErrorElement[]} errors
+     */
+    const { errors = [] } = action;
 
     if (Array.isArray(errors) && errors.length) {
-      errors.forEach((entry) => {
-        const { message } = entry;
+      // Supports only one error, because none of the pipelines is ever called with multiple items.
+      // Multiple errors would cause the this to overlay multiple modals on top of each other.
+      const { message } = errors[0];
 
-        dispatch(showModal({
-          confirm: null,
-          title: 'modal.title_error',
-          message,
-        }));
-      });
+      dispatch(showModal({
+        confirm: null,
+        title: 'modal.title_error',
+        message,
+        type: MODAL_PIPELINE_ERROR,
+        params: {
+          ...errors[0],
+        },
+      }));
     }
   });
 
