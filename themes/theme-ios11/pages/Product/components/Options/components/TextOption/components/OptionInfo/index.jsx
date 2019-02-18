@@ -17,11 +17,11 @@ const OptionInfo = ({ required, label, price }) => {
   return (
     <Grid className={styles.info}>
       {required &&
-        <Grid.Item grow={0} className={styles.required}>
+        <Grid.Item className={styles.required}>
           <I18n.Text string="common.required" />
         </Grid.Item>
       }
-      {price.price &&
+      {!!price.price &&
         <Grid.Item grow={1} className={styles.price}>
           {`${label}: `}
           <I18n.Price
@@ -36,8 +36,13 @@ const OptionInfo = ({ required, label, price }) => {
 
 OptionInfo.propTypes = {
   label: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+  }).isRequired,
   required: PropTypes.bool.isRequired,
 };
 
 export default memo(OptionInfo);
+
+export { OptionInfo };
