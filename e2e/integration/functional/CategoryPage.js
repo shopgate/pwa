@@ -39,10 +39,7 @@ describe('functional tests category page', () => {
 
   it('check for sorting reset', () => {
     cy.go('back');
-    cy.get(els.allProductCategory).first()
-      .should('be.visible')
-      .click();
-    cy.get("[data-test-id='sorting'] [data-test-id='filter.sort.most_popular']")
+    cy.get(els.shopLogo)
       .should('be.visible');
   });
 });

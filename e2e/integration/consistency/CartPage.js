@@ -1,15 +1,14 @@
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
 import els from '../../elements/de';
 
 describe('AndroidGMDTest CartPage', () => {
+  after(clearProductsFromCart);
+
   it('it should check for empty cart', () => {
     cy.visit('');
-    cy.get(els.navigatorButton)
-      .click();
-    cy.get(els.navDrawerCartButton)
-      .click();
-    cy.get(els.emptyCartPlaceHolderString)
-      .should('be.visible');
+    cy.get(els.navigatorButton).click();
+    cy.get(els.navDrawerCartButton).click();
+    cy.get(els.emptyCartPlaceHolderString).should('be.visible');
   });
 
   it('it should check for product in cart', () => {
@@ -21,11 +20,12 @@ describe('AndroidGMDTest CartPage', () => {
     cy.get(els.productWithManyProps4GridViewName)
       .last()
       .click();
-    cy.get(els.addToCartButton)
-      .click();
-    cy.get(els.cartButton)
-      .last()
-      .click();
+    cy.window().spyAction('RECEIVE_CART', () => {
+      cy.get(els.addToCartButton).click();
+    });
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+      cy.get(els.cartButton).last().click();
+    });
     cy.get(els.cartItem)
       .contains('Product with many Properties - 4 -')
       .should('be.visible');
@@ -52,9 +52,5 @@ describe('AndroidGMDTest CartPage', () => {
       .last()
       .contains('* Alle Preise inkl. MwSt. evtl. zzgl. Versand')
       .should('be.visible');
-  });
-
-  it('should clear Cart', () => {
-    clearProductFromCart();
   });
 });
