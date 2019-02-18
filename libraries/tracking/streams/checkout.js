@@ -3,6 +3,8 @@ import { navigate$ } from '@shopgate/pwa-common/streams/router';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
+const actionsWl = [ACTION_PUSH, ACTION_REPLACE];
+
 export const checkoutDidEnter$ = navigate$
   .filter(({ action, getState }) => {
     if (action.params.pathname !== CHECKOUT_PATH) {
@@ -21,9 +23,5 @@ export const checkoutDidEnter$ = navigate$
      * A checkout route can be pushed when a logged in user opens the checkout. It can also replace
      * the current route when a user is redirected from the login form after a successful login.
      */
-    if ([ACTION_PUSH, ACTION_REPLACE].includes(navigateAction)) {
-      return true;
-    }
-
-    return false;
+    return actionsWl.includes(navigateAction);
   });

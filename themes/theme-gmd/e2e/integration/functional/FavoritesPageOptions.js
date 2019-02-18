@@ -15,8 +15,6 @@ describe('e2e functional test favoritePage', () => {
       .should('be.visible')
       .last()
       .click();
-    cy.go('back');
-    cy.go('back');
     cy.get(els.navigatorButton)
       .should('be.visible')
       .click()
@@ -24,11 +22,13 @@ describe('e2e functional test favoritePage', () => {
     cy.get(els.navDrawerFavoritesButton)
       .should('be.visible')
       .click();
-    cy.get(els.favoriteButtonFavList)
-      .should('be.visible')
-      .last()
-      .click()
-      .wait(4000);
+
+    cy.window().spyAction('RECEIVE_FAVORITES', () => {
+      cy.get(els.favoriteButtonFavList)
+        .should('be.visible')
+        .last()
+        .click();
+    });
   });
 
   it('should check for empty fav list', () => {
