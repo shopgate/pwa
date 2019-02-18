@@ -21,20 +21,16 @@ import { ECART } from '../constants/PipelineErrors';
 export default (pipelineName, error) => {
   const defaultPipelineError = {
     entityId: '',
-    code: '',
+    code: error.code || '',
     pipeline: pipelineName || '',
-    message: '',
+    message: error.message || '',
     messageParams: {},
     translated: true,
   };
 
   // Not all error codes can contain an array of sub-errors with additional errors
   if (error.code !== ECART) {
-    return [{
-      ...defaultPipelineError,
-      code: error.code,
-      message: error.message,
-    }];
+    return [defaultPipelineError];
   }
 
   // Ensure all properties actually exist

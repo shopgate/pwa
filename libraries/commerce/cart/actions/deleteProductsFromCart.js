@@ -2,7 +2,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
-import PipelineErrorList from '../helpers/PipelineErrorList';
+import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
 import deleteProducts from '../action-creators/deleteProductsFromCart';
 import successDeleteProductsFromCart from '../action-creators/successDeleteProductsFromCart';
@@ -37,7 +37,7 @@ const deleteProductsFromCart = cartItemIds => (dispatch) => {
     .catch((error) => {
       dispatch(errorDeleteProductsFromCart(
         cartItemIds,
-        PipelineErrorList(pipelines.SHOPGATE_CART_DELETE_PRODUCTS, error)
+        createPipelineErrorList(pipelines.SHOPGATE_CART_DELETE_PRODUCTS, error)
       ));
       logger.error(pipelines.SHOPGATE_CART_DELETE_PRODUCTS, error);
     });

@@ -24,6 +24,7 @@ import {
   couponsDeleted$,
   routeWithCouponWillEnter$,
   remoteCartDidUpdate$,
+  cartUpdateFailed$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH, DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
@@ -119,7 +120,7 @@ export default function cart(subscribe) {
       .catch(e => e);
   });
 
-  subscribe(remoteCartDidUpdate$, ({ dispatch, action }) => {
+  subscribe(cartUpdateFailed$, ({ dispatch, action }) => {
     /**
      * @type {PipelineErrorElement[]} errors
      */
@@ -131,7 +132,8 @@ export default function cart(subscribe) {
       const { message } = errors[0];
 
       dispatch(showModal({
-        confirm: null,
+        confirm: 'modal.ok',
+        dismiss: null,
         title: 'modal.title_error',
         message,
         type: MODAL_PIPELINE_ERROR,
