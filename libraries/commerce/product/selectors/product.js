@@ -358,6 +358,24 @@ export const hasProductVariants = createSelector(
 );
 
 /**
+ * Determines if a product has variety (variants, options).
+ * This product can not be added to a cart. Selecting of variety should be done on PDP
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const hasProductVariety = createSelector(
+  getProductFlags,
+  (flags) => {
+    if (!flags) {
+      return null;
+    }
+
+    return flags.hasVariants || flags.hasOptions;
+  }
+);
+
+/**
  * Determines if a product is a base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
