@@ -1,7 +1,9 @@
 import els from '../../elements/de';
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
 
 describe('functional test product page', () => {
+  after(clearProductsFromCart);
+
   it('should check for correct error message if no variant are selected', () => {
     cy.visit('');
 
@@ -68,9 +70,5 @@ describe('functional test product page', () => {
     cy.get(els.cartButton += ' div')
       .should('be.visible')
       .contains('1');
-  });
-
-  it('should clear cart', () => {
-    clearProductFromCart();
   });
 });

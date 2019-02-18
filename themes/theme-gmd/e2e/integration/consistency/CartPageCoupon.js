@@ -1,7 +1,9 @@
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
 import els from '../../elements/de';
 
 describe('AndroidGMDTest CartPageCoupons', () => {
+  after(clearProductsFromCart);
+
   it('should add second product to cart', () => {
     cy.visit('');
     cy.get(els.basicCategory)
@@ -36,9 +38,5 @@ describe('AndroidGMDTest CartPageCoupons', () => {
       .type('test');
     cy.get(els.couponSubmitButton)
       .should('be.visible');
-  });
-
-  it('should clear Cart', () => {
-    clearProductFromCart();
   });
 });

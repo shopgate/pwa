@@ -14,8 +14,10 @@ import {
 } from '@shopgate/pwa-common/streams/app';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
 import { APP_EVENT_VIEW_DID_APPEAR, APP_EVENT_VIEW_DID_DISAPPEAR } from '../constants';
-import { pwaDidAppear } from '../action-creators';
-import { setPWAVisibleState } from '../helpers';
+import {
+  pwaDidAppear,
+  pwaDidDisappear,
+} from '../action-creators';
 
 /**
  * Setup tracking subscriptions.
@@ -29,12 +31,11 @@ export default function setup(subscribe) {
     ]);
 
     event.addCallback(APP_EVENT_VIEW_DID_APPEAR, () => {
-      setPWAVisibleState(true);
       dispatch(pwaDidAppear());
     });
 
     event.addCallback(APP_EVENT_VIEW_DID_DISAPPEAR, () => {
-      setPWAVisibleState(false);
+      dispatch(pwaDidDisappear());
     });
   });
 
