@@ -2,7 +2,7 @@ import event from '@shopgate/pwa-core/classes/Event';
 import analyticsSetCustomValues from '@shopgate/pwa-core/commands/analyticsSetCustomValues';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import getCart from '../selectors/cart';
-import { track, formatPurchaseData, setPWAVisibleState } from '../helpers';
+import { track, formatPurchaseData } from '../helpers';
 import { checkoutDidEnter$ } from '../streams/checkout';
 
 /**
@@ -11,8 +11,6 @@ import { checkoutDidEnter$ } from '../streams/checkout';
  */
 export default function checkout(subscribe) {
   subscribe(checkoutDidEnter$, ({ getState }) => {
-    setPWAVisibleState(false);
-
     const state = getState();
 
     track('initiatedCheckout', { cart: getCart(state) }, state);

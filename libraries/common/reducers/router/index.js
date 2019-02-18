@@ -5,6 +5,7 @@ import {
   ROUTE_DID_LEAVE,
   ROUTE_WILL_LEAVE,
   ROUTE_DID_UPDATE,
+  ROUTE_DID_ENTER,
 } from '../../constants/ActionTypes';
 
 const defaultState = {
@@ -27,6 +28,7 @@ export default function router(state = defaultState, action) {
       };
     }
     case ROUTE_WILL_ENTER:
+    case ROUTE_DID_ENTER:
       return {
         ...state,
         stack: Array.from(stack.getAll().values()),
