@@ -34,8 +34,21 @@ const info = css({
   justifyContent: 'space-between',
 }).toString();
 
+const priceColumn = css({
+  alignSelf: 'flex-end',
+}).toString();
+
+const propertyColumn = css({
+  alignSelf: 'flex-start',
+  // When the property column has content, apply a maximum width to the price column.
+  [`:not(:empty) + .${priceColumn}`]: {
+    maxWidth: '40%',
+  },
+}).toString();
+
 const priceInfo = css({
   textAlign: 'right',
+  wordBreak: 'break-word',
 }).toString();
 
 const disclaimerSpacer = css({
@@ -49,5 +62,7 @@ export default {
   content,
   info,
   disclaimerSpacer,
+  propertyColumn,
+  priceColumn,
   priceInfo,
 };

@@ -7,17 +7,23 @@ import Grid from '@shopgate/pwa-common/components/Grid';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Properties = ({ properties }) => (
-  <Grid.Item component="div">
-    <ul>
-      {properties.map(({ label, value }) => (
-        <li key={`${label}-${value}`}>
-          {label}: {value}
-        </li>
-      ))}
-    </ul>
-  </Grid.Item>
-);
+const Properties = ({ properties }) => {
+  if (!properties.length) {
+    return null;
+  }
+
+  return (
+    <Grid.Item component="div">
+      <ul>
+        {properties.map(({ label, value }) => (
+          <li key={`${label}-${value}`}>
+            {label}: {value}
+          </li>
+        ))}
+      </ul>
+    </Grid.Item>
+  );
+};
 
 Properties.propTypes = {
   properties: PropTypes.arrayOf(PropTypes.shape({

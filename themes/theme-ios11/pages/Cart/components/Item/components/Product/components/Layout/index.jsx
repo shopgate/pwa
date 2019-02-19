@@ -42,10 +42,10 @@ const Layout = (props, context) => (
         value={props.product.name}
       />
       <Grid className={styles.info}>
-        <Grid.Item grow={1}>
+        <Grid.Item grow={1} className={styles.propertyColumn}>
           <Properties properties={props.product.properties} />
         </Grid.Item>
-        <Grid.Item grow={1} shrink={0}>
+        <Grid.Item grow={1} shrink={1} className={styles.priceColumn}>
           <ProductPrice
             currency={props.currency}
             defaultPrice={props.product.price.default}
