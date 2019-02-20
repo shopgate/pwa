@@ -103,29 +103,36 @@ class PipelineErrorDialog extends Component {
    * @returns {JSX}
    */
   renderDevErrorMessage = () => {
+    /**
+     * Checks the input to be truthy or zero and enables it to be rendered then.
+     * @param {Object|string|number|boolean} value The value to be checked if it should be rendered.
+     * @returns {boolean}
+     */
+    const checkValue = value => !!value && value !== 0;
     const { params } = this.props;
 
     return (
       <div aria-hidden>
         <strong>Pipeline:</strong> {params.pipeline}<br />
-        { params.entityId && (
+        { checkValue(params.entityId) && (
           <span>
-            <strong>Entity id: </strong> {params.entityId} <br />
+            <strong>Entity id:</strong> {params.entityId} <br />
           </span>
         )}
-        { params.code && (
+        { checkValue(params.code) && (
           <span>
-            <strong>Code: </strong> {params.code} <br />
+            <strong>Code:</strong> {params.code} <br />
           </span>
         )}
         <strong>Message:</strong> {params.message} <br />
-        { params.messageParams && (
+        { checkValue(params.messageParams) && (
           <p>
             <strong>Message Params:</strong><br />
             {JSON.stringify(params.messageParams, null, ' ')}
+
           </p>
         )}
-        { params.translated && (
+        { !!params.translated && (
           <span>
             <strong>Message Translated: </strong> {params.translated.toString()} <br />
           </span>
@@ -147,10 +154,10 @@ class PipelineErrorDialog extends Component {
 
     return (
       <React.Fragment>
-        {params.translated === true && (
-          message || params.message || 'modal.body_error'
+        { !!params.translated && (
+          message || params.message || <I18n.Text string="modal.body_error" />
         )}
-        {params.translated !== true && (
+        { !params.translated && (
           <I18n.Text
             string={message || params.message || 'modal.body_error'}
             params={params.messageParams || {}}
