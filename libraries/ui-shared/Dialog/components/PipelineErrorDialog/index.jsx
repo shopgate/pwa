@@ -108,39 +108,58 @@ class PipelineErrorDialog extends Component {
      * @param {Object|string|number|boolean} value The value to be checked if it should be rendered.
      * @returns {boolean}
      */
-    const checkValue = value => !!value && value !== 0;
+    const checkValue = value => !!value || value === 0 || value === false;
     const { params } = this.props;
 
     return (
       <div aria-hidden>
-        <strong>Pipeline:</strong>{` ${params.pipeline}`}<br />
+        <span>
+          <strong>Pipeline:</strong>
+          <span>{` ${params.pipeline}`}</span>
+          <br />
+        </span>
         { checkValue(params.entityId) && (
           <span>
-            <strong>Entity id:</strong>{` ${params.entityId}`}<br />
+            <strong>Entity id:</strong>
+            <span>{` ${params.entityId}`}</span>
+            <br />
           </span>
         )}
         { checkValue(params.code) && (
           <span>
-            <strong>Code:</strong>{` ${params.code}`}<br />
+            <strong>Code:</strong>
+            <span>{` ${params.code}`}</span>
+            <br />
           </span>
         )}
-        <strong>Message:</strong>{` ${params.message}`}<br />
+        <span>
+          <strong>Message:</strong>
+          <span>{` ${params.message}`}</span>
+          <br />
+        </span>
+        { checkValue(params.translated) && (
+          <span>
+            <strong>Message Translated:</strong>
+            <span>{` ${params.translated.toString()}`}</span>
+            <br />
+          </span>
+        )}
         { checkValue(params.messageParams) && (
           <p>
-            <strong>Message Params:</strong><br />
-            {JSON.stringify(params.messageParams, null, ' ')}
-
+            <strong>Message Params:</strong>
+            <br />
+            <span>{JSON.stringify(params.messageParams, null, ' ')}</span>
+            <br />
           </p>
         )}
-        { !!params.translated && (
-          <span>
-            <strong>Message Translated:</strong>{` ${params.translated.toString()}`}<br />
-          </span>
+        { checkValue(params.request) && (
+          <p>
+            <strong>Request Params:</strong>
+            <br />
+            <span>{JSON.stringify(params.request, null, ' ')}</span>
+            <br />
+          </p>
         )}
-        <p>
-          <strong>Request Params:</strong><br />
-          {JSON.stringify(params.request, null, ' ')}
-        </p>
       </div>
     );
   }
