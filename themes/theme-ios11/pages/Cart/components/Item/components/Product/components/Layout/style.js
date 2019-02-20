@@ -55,7 +55,10 @@ const price = css({
 
 const properties = css({
   alignSelf: 'flex-start',
-  // When the property column has content, apply a maximum width to the price column.
+  /**
+   * When the properties column has content, apply a max width to the price column
+   * to avoid issues with long availability texts.
+   */
   [`:not(:empty) + .${price}`]: {
     maxWidth: '40%',
   },
