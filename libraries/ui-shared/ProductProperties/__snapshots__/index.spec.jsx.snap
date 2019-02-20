@@ -44,3 +44,76 @@ exports[`<ProductProperties /> should render as expected when properties are pas
   </ul>
 </Properties>
 `;
+
+exports[`<ProductProperties /> should use the ellipsis component when the lineClamp prop is passed  1`] = `
+<Properties
+  lineClamp={2}
+  properties={
+    Array [
+      Object {
+        "label": "Label One",
+        "value": "Value One",
+      },
+      Object {
+        "label": "Label Two",
+        "value": "Value Two",
+      },
+    ]
+  }
+>
+  <ul>
+    <li
+      key="Label One-Value One"
+    >
+      <Ellipsis
+        className=""
+        ellipsis="..."
+        rows={2}
+      >
+        <Dotdotdot
+          clamp={2}
+          className=""
+          ellipsis="..."
+          tagName="div"
+          truncationChar="…"
+          useNativeClamp={true}
+        >
+          <div
+            className=""
+          >
+            Label One
+            : 
+            Value One
+          </div>
+        </Dotdotdot>
+      </Ellipsis>
+    </li>
+    <li
+      key="Label Two-Value Two"
+    >
+      <Ellipsis
+        className=""
+        ellipsis="..."
+        rows={2}
+      >
+        <Dotdotdot
+          clamp={2}
+          className=""
+          ellipsis="..."
+          tagName="div"
+          truncationChar="…"
+          useNativeClamp={true}
+        >
+          <div
+            className=""
+          >
+            Label Two
+            : 
+            Value Two
+          </div>
+        </Dotdotdot>
+      </Ellipsis>
+    </li>
+  </ul>
+</Properties>
+`;
