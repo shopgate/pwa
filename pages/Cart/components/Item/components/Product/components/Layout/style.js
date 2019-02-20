@@ -36,6 +36,7 @@ const info = css({
 
 const priceInfo = css({
   textAlign: 'right',
+  wordBreak: 'break-word',
 }).toString();
 
 const disclaimerSpacer = css({
@@ -44,10 +45,19 @@ const disclaimerSpacer = css({
 
 const price = css({
   marginLeft: '1em',
+  alignSelf: 'flex-end',
 }).toString();
 
 const properties = css({
   wordBreak: 'break-word',
+  alignSelf: 'flex-start',
+  /**
+   * When the properties column has content, apply a max width to the price column
+   * to avoid issues with long availability texts.
+   */
+  [`:not(:empty) + .${price}`]: {
+    maxWidth: '40%',
+  },
 }).toString();
 
 export default {
