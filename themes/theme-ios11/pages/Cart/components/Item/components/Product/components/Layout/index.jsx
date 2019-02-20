@@ -5,11 +5,11 @@ import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
 import ProductImage from 'Components/ProductImage';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
-import Properties from './components/Properties';
 import styles from './style';
 
 /**
@@ -42,10 +42,10 @@ const Layout = (props, context) => (
         value={props.product.name}
       />
       <Grid className={styles.info}>
-        <Grid.Item grow={1} className={styles.propertyColumn}>
+        <Grid.Item grow={1} className={styles.properties}>
           <Properties properties={props.product.properties} />
         </Grid.Item>
-        <Grid.Item grow={1} shrink={1} className={styles.priceColumn}>
+        <Grid.Item grow={1} className={styles.price}>
           <ProductPrice
             currency={props.currency}
             defaultPrice={props.product.price.default}
