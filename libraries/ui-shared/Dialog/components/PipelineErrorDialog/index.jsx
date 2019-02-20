@@ -104,7 +104,7 @@ class PipelineErrorDialog extends Component {
    */
   renderDevErrorMessage = () => {
     /**
-     * Checks the input to be truthy or zero and enables it to be rendered then.
+     * Checks the input to be truthy, "0" or "false" and enables it to be rendered then.
      * @param {Object|string|number|boolean} value The value to be checked if it should be rendered.
      * @returns {boolean}
      */
