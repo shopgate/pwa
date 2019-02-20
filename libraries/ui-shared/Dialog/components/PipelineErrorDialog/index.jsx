@@ -113,18 +113,18 @@ class PipelineErrorDialog extends Component {
 
     return (
       <div aria-hidden>
-        <strong>Pipeline:</strong> {params.pipeline}<br />
+        <strong>Pipeline:</strong>{` ${params.pipeline}`}<br />
         { checkValue(params.entityId) && (
           <span>
-            <strong>Entity id:</strong> {params.entityId} <br />
+            <strong>Entity id:</strong>{` ${params.entityId}`}<br />
           </span>
         )}
         { checkValue(params.code) && (
           <span>
-            <strong>Code:</strong> {params.code} <br />
+            <strong>Code:</strong>{` ${params.code}`}<br />
           </span>
         )}
-        <strong>Message:</strong> {params.message} <br />
+        <strong>Message:</strong>{` ${params.message}`}<br />
         { checkValue(params.messageParams) && (
           <p>
             <strong>Message Params:</strong><br />
@@ -134,7 +134,7 @@ class PipelineErrorDialog extends Component {
         )}
         { !!params.translated && (
           <span>
-            <strong>Message Translated: </strong> {params.translated.toString()} <br />
+            <strong>Message Translated:</strong>{` ${params.translated.toString()}`}<br />
           </span>
         )}
         <p>
