@@ -10,12 +10,12 @@
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.4",
     "identity-obj-proxy": "^3.0.0",
-    "jest-enzyme": "^7.0.1",
+    "jest-enzyme": "^6.0.3",
     "react-tap-event-plugin": "^3.0.2"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "6.1.1",
-    "jest": "^24.1.0",
+    "jest": "^23.5.0",
     "react": "~16.6.0",
     "react-dom": "~16.6.0"
   },
