@@ -56,6 +56,7 @@ import {
   hasBaseProductVariants,
   getVariantId,
   getVariantAvailabilityByCharacteristics,
+  hasProductVariety,
 } from './product';
 
 jest.mock('@shopgate/pwa-core/helpers', () => {
@@ -866,6 +867,24 @@ describe('Product selectors', () => {
 
       const props = { productId, characteristics };
       expect(getVariantAvailabilityByCharacteristics(mockedState, props)).toEqual(availability);
+    });
+  });
+
+  describe('hasProductVariety()', () => {
+    it('should return null for missing product data', () => {
+      expect(hasProductVariety(mockedState)).toBeNull();
+      expect(hasProductVariety(mockedState, { productId: 'unknown' })).toBeNull();
+    });
+
+    it('should return false for simple product', () => {
+      expect(hasProductVariety(mockedState, { productId: 'product_5' })).toBeFalsy();
+    });
+    it('should return true for variants', () => {
+      expect(hasProductVariety(mockedState, { productId: 'product_1' })).toBeTruthy();
+    });
+    it('should return true for options', () => {
+      mockedState.product.productsById.product_5.productData.flags.hasOptions = true;
+      expect(hasProductVariety(mockedState, { productId: 'product_1' })).toBeTruthy();
     });
   });
 });
