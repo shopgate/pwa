@@ -68,12 +68,12 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             <Translate
               className=""
               params={Object {}}
-              string="modal.body_error"
+              string="Error message"
             >
               <span
                 className=""
               >
-                modal.body_error
+                Error message
               </span>
             </Translate>
           </div>
