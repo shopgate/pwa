@@ -10,6 +10,10 @@ const button = css({
   width: '100%',
 });
 
+const buttonDisabled = css(button, {
+  color: colors.shade4,
+});
+
 const bgColor = colors.darkGray;
 const boxShadowOffset = variables.gap.bigger;
 
@@ -23,5 +27,6 @@ const buttonSelected = css(button, {
 
 export default {
   button,
+  buttonDisabled,
   buttonSelected,
 };
