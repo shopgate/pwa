@@ -24,9 +24,11 @@ export const productRouteReappeared$ = pwaDidAppear$
 /**
  * Emits when a product page was initially opened.
  */
-export const productWillEnter$ = routeWillEnter$.filter(({ action }) =>
-  action.route.pattern === ITEM_PATTERN &&
-  action.historyAction !== HISTORY_REPLACE_ACTION);
+export const productWillEnter$ = routeWillEnter$
+  .filter(({ action }) => (
+    action.route.pattern === ITEM_PATTERN &&
+    action.historyAction !== HISTORY_REPLACE_ACTION
+  ));
 
 /**
  * Emits when a product page was initially opened and its data is present.
@@ -35,4 +37,3 @@ export const productIsReady$ = productWillEnter$
   // Take care that the stream only emits when underlying streams emit within the correct order.
   .switchMap(() => receivedVisibleProduct$.first())
   .merge(productRouteReappeared$);
-

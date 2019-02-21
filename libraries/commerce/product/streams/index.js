@@ -2,7 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
+import { routeWillEnter$, routeWillLeave$, routeDidUpdate$ } from '@shopgate/pwa-common/streams/router';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
@@ -15,7 +15,7 @@ import {
   RECEIVE_PRODUCT_RELATIONS,
 } from '../constants';
 
-export const productWillEnter$ = routeWillEnter$
+export const productWillEnter$ = routeWillEnter$.merge(routeDidUpdate$)
   .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
 
 export const variantWillUpdate$ = routeWillEnter$.filter(({ action }) =>
