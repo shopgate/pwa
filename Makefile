@@ -156,10 +156,12 @@ e2e-ios11:
 
 # Run GMD legacy tests
 e2e-gmd-legacy:
-	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
+	sgconnect extension attach @shopgate-product-reviews
+	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/consistency/legacy.js,themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
 
 # Run IOS legacy tests
 e2e-ios11-legacy:
+	sgconnect extension attach @shopgate-product-reviews
 	npx cypress run -P ./themes/theme-ios11/e2e -s 'themes/theme-ios11/e2e/integration/specFiles/consistency/legacy.js,themes/theme-ios11/e2e/integration/specFiles/functional/legacy.js'
 
 e2e-checkout:
@@ -169,7 +171,7 @@ e2e-user:
 		cd themes/theme-gmd && yarn run e2e:user;
 
 e2e-install:
-	npm i --no-save --no-package-lock cypress symlink-dir
+	npm i --no-save --no-package-lock cypress symlink-dir wait-on
 	# Symlinking support, plugins, fixtures
 	npx symlink-dir ./utils/e2e/support ./themes/theme-gmd/e2e/cypress/support
 	npx symlink-dir ./utils/e2e/fixtures ./themes/theme-gmd/e2e/cypress/fixtures
