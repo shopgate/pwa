@@ -4,10 +4,12 @@ describe('AndroidGMDTest CategoryPage', () => {
   it('should check title', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory)
-      .first()
-      .scrollIntoView()
-      .click();
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+      cy.get(els.allProductCategory)
+        .first()
+        .scrollIntoView()
+        .click();
+    });
     cy.get(els.allProductsCategoryTitle)
       .should('be.visible');
   });
@@ -23,8 +25,8 @@ describe('AndroidGMDTest CategoryPage', () => {
   });
 
   it('should check for Product in grid view', () => {
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
+    cy.get(els.loadingIndicator).should('not.be.visible');
+
     cy.get(els.productWithManyProps4GridViewImage)
       .last()
       .scrollIntoView()
@@ -38,14 +40,21 @@ describe('AndroidGMDTest CategoryPage', () => {
   });
 
   it('should check for strike price', () => {
-    cy.visit('/category/');
-    cy.get(els.basicCategory)
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWithStrikePriceCategory)
-      .should('be.visible')
-      .last()
-      .click();
+    cy.visit('/category');
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+      cy.get(els.basicCategory)
+        .should('be.visible')
+        .click();
+    });
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+      cy.get(els.productsWithStrikePriceCategory)
+        .should('be.visible')
+        .last()
+        .click();
+    });
+
+    cy.get(els.loadingIndicator).should('not.be.visible');
+
     cy.get(els.productWithStrikePrice4GridViewStrikePrice)
       .should('be.visible');
     cy.get(els.productWithStrikePrice4GridViewDiscountBadge)
@@ -54,16 +63,21 @@ describe('AndroidGMDTest CategoryPage', () => {
   });
 
   it('should check for rating stars', () => {
-    cy.visit('/category/');
-    cy.get(els.basicCategory)
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWithRatingsCategory)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
+    cy.visit('/category');
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+      cy.get(els.basicCategory)
+        .should('be.visible')
+        .click();
+    });
+    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+      cy.get(els.productsWithRatingsCategory)
+        .should('be.visible')
+        .last()
+        .click();
+    });
+
+    cy.get(els.loadingIndicator).should('not.be.visible');
+
     cy.get(els.productWithRating4GridViewRatingStars)
       .last()
       .scrollIntoView()
