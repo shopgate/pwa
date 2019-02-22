@@ -148,10 +148,12 @@ setup-frontend-with-current-ip:
 
 # Open cypress UI for GMD theme
 e2e-gmd:
+	sgconnect extension attach @shopgate-product-reviews
 	cd themes/theme-gmd && yarn run e2e;
 
 # Open cypress UI for IOS theme
 e2e-ios11:
+	sgconnect extension attach @shopgate-product-reviews
 	cd themes/theme-ios11 && yarn run e2e;
 
 # Run GMD legacy tests
