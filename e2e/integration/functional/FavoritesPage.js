@@ -40,7 +40,8 @@ describe('e2e functional test favoritePage', () => {
     cy.get(els.basicDialogOkButton)
       .should('be.visible')
       .contains('Abbrechen')
-      .click();
+      .click()
+      .wait(500);
 
     cy.get(els.addToCartButton)
       .should('be.visible')
