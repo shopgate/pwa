@@ -17,29 +17,29 @@ let composeEnhancers = compose;
  */
 // eslint-disable-next-line no-underscore-dangle
 logger.info('-----------------------------------------------------', 'JSBridge:', hasSGJavaScriptBridge(), 'isDev:', isDev, 'isRemote', isRemote, 'process:', process, 'appConfig:', appConfig, 'redux-devtools:', window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__, '-----------------------------------------------------');
-if (isDev) {
-  if (hasSGJavaScriptBridge()) {
-    const { composeWithDevTools } = require('remote-redux-devtools'); // eslint-disable-line global-require
-    // Use the Remote DevTools if we are inside the app.
-    const reduxDevToolsOptions = {
-      name: `${appConfig.shopName || 'PWA'} App - remote`,
-      realtime: true,
-      hostname: process.env.IP,
-      port: 8008,
-    };
-    composeEnhancers = composeWithDevTools(reduxDevToolsOptions);
-    logger.info(`Attached Redux Remote DevTools to host ${reduxDevToolsOptions.hostname}:`
-      + `${reduxDevToolsOptions.port}. Open Inspector->Redux and select instance `
-      + `"${reduxDevToolsOptions.name}" to inspect redux store.`);
-  } else {
-    const { composeWithDevTools } = require('redux-devtools-extension'); // eslint-disable-line global-require
-    // Use the browser Redux DevTools extension.
-    const reduxDevToolsOptions = { name: `${appConfig.shopName || 'PWA'} App - local` };
-    composeEnhancers = composeWithDevTools(reduxDevToolsOptions);
-    logger.info('Attached Redux DevTools. Open Inspector->Redux and select '
-      + `instance "${reduxDevToolsOptions.name}" to inspect redux store.`);
-  }
+// -- if (isDev) {
+if (hasSGJavaScriptBridge()) {
+  const { composeWithDevTools } = require('remote-redux-devtools'); // eslint-disable-line global-require
+  // Use the Remote DevTools if we are inside the app.
+  const reduxDevToolsOptions = {
+    name: `${appConfig.shopName || 'PWA'} App - remote`,
+    realtime: true,
+    hostname: process.env.IP,
+    port: 8008,
+  };
+  composeEnhancers = composeWithDevTools(reduxDevToolsOptions);
+  logger.info(`Attached Redux Remote DevTools to host ${reduxDevToolsOptions.hostname}:`
+    + `${reduxDevToolsOptions.port}. Open Inspector->Redux and select instance `
+    + `"${reduxDevToolsOptions.name}" to inspect redux store.`);
+} else {
+  const { composeWithDevTools } = require('redux-devtools-extension'); // eslint-disable-line global-require
+  // Use the browser Redux DevTools extension.
+  const reduxDevToolsOptions = { name: `${appConfig.shopName || 'PWA'} App - local` };
+  composeEnhancers = composeWithDevTools(reduxDevToolsOptions);
+  logger.info('Attached Redux DevTools. Open Inspector->Redux and select '
+    + `instance "${reduxDevToolsOptions.name}" to inspect redux store.`);
 }
+// }
 
 /**
  * Configures the redux store with all it's middleware and enhancers.
