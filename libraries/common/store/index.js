@@ -15,21 +15,29 @@ let composeEnhancers = compose;
 /**
  * Used to enable the Redux DevTools Extension in the browser in development mode.
  */
+// eslint-disable-next-line no-underscore-dangle
+logger.info('-----------------------------------------------------', 'JSBridge:', hasSGJavaScriptBridge(), 'isDev:', isDev, 'isRemote', isRemote, 'process:', process, 'appConfig:', appConfig, 'redux-devtools:', window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__, '-----------------------------------------------------');
 if (isDev) {
-  if (hasSGJavaScriptBridge() && isRemote) {
+  if (hasSGJavaScriptBridge()) {
     const { composeWithDevTools } = require('remote-redux-devtools'); // eslint-disable-line global-require
     // Use the Remote DevTools if we are inside the app.
-    composeEnhancers = composeWithDevTools({
-      name: 'Shopgate App',
+    const reduxDevToolsOptions = {
+      name: `${appConfig.shopName || 'PWA'} App - remote`,
       realtime: true,
       hostname: process.env.IP,
       port: 8008,
-    });
-  // eslint-disable-next-line no-underscore-dangle
-  } else if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
-    // Use the browsers DevTools Extension.
-    // eslint-disable-next-line no-underscore-dangle
-    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+    };
+    composeEnhancers = composeWithDevTools(reduxDevToolsOptions);
+    logger.info(`Attached Redux Remote DevTools to host ${reduxDevToolsOptions.hostname}:`
+      + `${reduxDevToolsOptions.port}. Open Inspector->Redux and select instance `
+      + `"${reduxDevToolsOptions.name}" to inspect redux store.`);
+  } else {
+    const { composeWithDevTools } = require('redux-devtools-extension'); // eslint-disable-line global-require
+    // Use the browser Redux DevTools extension.
+    const reduxDevToolsOptions = { name: `${appConfig.shopName || 'PWA'} App - local` };
+    composeEnhancers = composeWithDevTools(reduxDevToolsOptions);
+    logger.info('Attached Redux DevTools. Open Inspector->Redux and select '
+      + `instance "${reduxDevToolsOptions.name}" to inspect redux store.`);
   }
 }
 
