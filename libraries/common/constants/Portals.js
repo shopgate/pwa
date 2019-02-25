@@ -10,7 +10,6 @@ const FORM = 'form';
 // CONTENTS
 const GLOBALS = 'globals';
 const ROUTES = 'routes';
-const HEADER = 'header';
 const CONTENT = 'content';
 const HOME = 'home';
 const LOGIN = 'login';
@@ -57,10 +56,6 @@ export const PAGE_LOGIN_REGISTER_LINK_BEFORE = `${PAGE}.${LOGIN}.${REGISTER_LINK
 export const PAGE_LOGIN_REGISTER_LINK = `${PAGE}.${LOGIN}.${REGISTER_LINK}`;
 export const PAGE_LOGIN_REGISTER_LINK_AFTER = `${PAGE}.${LOGIN}.${REGISTER_LINK}.${AFTER}`;
 
-export const NAV_MENU_HEADER_BEFORE = `${NAV_MENU}.${HEADER}.${BEFORE}`;
-export const NAV_MENU_HEADER = `${NAV_MENU}.${HEADER}`;
-export const NAV_MENU_HEADER_AFTER = `${NAV_MENU}.${HEADER}.${AFTER}`;
-
 export const NAV_MENU_CONTENT_BEFORE = `${NAV_MENU}.${CONTENT}.${BEFORE}`;
 export const NAV_MENU_CONTENT_AFTER = `${NAV_MENU}.${CONTENT}.${AFTER}`;
 
@@ -92,7 +87,6 @@ export const NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE = `${NAV_MENU}.${STORE_INFO
 export const NAV_MENU_STORE_INFORMATION_ABOUT = `${NAV_MENU}.${STORE_INFORMATION_ABOUT}`;
 export const NAV_MENU_STORE_INFORMATION_ABOUT_AFTER = `${NAV_MENU}.${STORE_INFORMATION_ABOUT}.${AFTER}`;
 
-export const NAV_MENU_MY_ACCOUNT_HEADER = `${NAV_MENU}.${MY_ACCOUNT}.${HEADER}`;
 export const NAV_MENU_MY_ACCOUNT_BEFORE = `${NAV_MENU}.${MY_ACCOUNT}.${BEFORE}`;
 export const NAV_MENU_MY_ACCOUNT = `${NAV_MENU}.${MY_ACCOUNT}`;
 export const NAV_MENU_MY_ACCOUNT_AFTER = `${NAV_MENU}.${MY_ACCOUNT}.${AFTER}`;
