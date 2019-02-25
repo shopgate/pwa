@@ -5,7 +5,6 @@ import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$, routeDidUpdate$ } from '@shopgate/pwa-common/streams/router';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { getBaseProduct } from '../selectors/product';
 import {
   ITEM_PATTERN,
@@ -18,9 +17,8 @@ import {
 export const productWillEnter$ = routeWillEnter$.merge(routeDidUpdate$)
   .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
 
-export const variantWillUpdate$ = routeWillEnter$.filter(({ action }) =>
-  action.route.pattern === ITEM_PATTERN &&
-  action.historyAction === HISTORY_REPLACE_ACTION);
+export const variantWillUpdate$ = routeDidUpdate$
+  .filter(({ action }) => action.route.pattern === ITEM_PATTERN);
 
 export const galleryWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === ITEM_GALLERY_PATTERN);
@@ -40,15 +38,16 @@ export const receivedVisibleProduct$ = productReceived$.merge(cachedProductRecei
   .filter(({ action, getState }) => {
     const route = getCurrentRoute(getState());
 
-    if (
-      typeof action.productData === 'undefined'
-      || typeof action.productData.id === 'undefined'
-    ) {
+    if (typeof action.productData === 'undefined' || typeof action.productData.id === 'undefined') {
       return false;
     }
 
-    if (!route.params.productId) {
+    if (!route.params.productId && !route.state.productId) {
       return false;
+    }
+
+    if (route.state.productId) {
+      return action.productData.id === route.state.productId;
     }
 
     return action.productData.id === hex2bin(route.params.productId);
