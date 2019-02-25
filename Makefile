@@ -148,32 +148,27 @@ setup-frontend-with-current-ip:
 
 # Open cypress UI for GMD theme
 e2e-gmd:
-	sgconnect extension attach @shopgate-product-reviews
 	cd themes/theme-gmd && yarn run e2e;
 
 # Open cypress UI for IOS theme
 e2e-ios11:
-	sgconnect extension attach @shopgate-product-reviews
 	cd themes/theme-ios11 && yarn run e2e;
 
 # Run GMD legacy tests
 e2e-gmd-legacy:
-	sgconnect extension attach @shopgate-product-reviews
 	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/consistency/legacy.js,themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
 
 # Run IOS legacy tests
 e2e-ios11-legacy:
-	sgconnect extension attach @shopgate-product-reviews
 	npx cypress run -P ./themes/theme-ios11/e2e -s 'themes/theme-ios11/e2e/integration/specFiles/consistency/legacy.js,themes/theme-ios11/e2e/integration/specFiles/functional/legacy.js'
 
 e2e-checkout:
-		cd themes/theme-gmd && yarn run e2e:checkout;
+	cd themes/theme-gmd && yarn run e2e:checkout;
 
 e2e-user:
-		cd themes/theme-gmd && yarn run e2e:user;
+	cd themes/theme-gmd && yarn run e2e:user;
 
 e2e-install:
-	npm i --no-save --no-package-lock cypress symlink-dir wait-on
 	# Symlinking support, plugins, fixtures
 	npx symlink-dir ./utils/e2e/support ./themes/theme-gmd/e2e/cypress/support
 	npx symlink-dir ./utils/e2e/fixtures ./themes/theme-gmd/e2e/cypress/fixtures
