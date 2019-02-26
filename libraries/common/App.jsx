@@ -31,7 +31,7 @@ class App extends Component {
    */
   render() {
     return (
-      <ErrorBoundary store={this.props.store}>
+      <ErrorBoundary key="error.root" store={this.props.store} isRoot>
         <Provider store={this.props.store}>
           <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
             <div>
