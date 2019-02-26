@@ -17,7 +17,7 @@ export default function product(subscribe) {
   subscribe(variantDidChange$, ({ getState, action }) => {
     const state = getState();
     const { id: productId } = action.productData;
-    const props = { productId: hex2bin(productId) };
+    const props = { productId };
 
     const trackingData = {
       variant: getProductFormatted(state, props),
