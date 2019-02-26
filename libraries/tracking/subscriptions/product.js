@@ -14,9 +14,9 @@ export default function product(subscribe) {
   /**
    * Gets triggered on product variant change/selection.
    */
-  subscribe(variantDidChange$, ({ getState }) => {
+  subscribe(variantDidChange$, ({ getState, action }) => {
     const state = getState();
-    const { params: { productId } } = getCurrentRoute(getState());
+    const { id: productId } = action.productData;
     const props = { productId: hex2bin(productId) };
 
     const trackingData = {
