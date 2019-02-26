@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
 import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
-import { HISTORY_PUSH_ACTION, HISTORY_REPLACE_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import requestProducts from '@shopgate/pwa-common-commerce/product/action-creators/requestProducts';
 import receiveProducts from '@shopgate/pwa-common-commerce/product/action-creators/receiveProducts';
@@ -22,7 +22,10 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: () => ({
     pattern: mockedRoutePattern,
     params: {
-      productId: mockBin2Hex(mockedRouteProductId),
+      productId: mockedRouteProductId,
+    },
+    state: {
+      productId: mockedRouteProductId,
     },
   }),
   getCurrentPathname: () => ({}),
@@ -115,11 +118,6 @@ describe('Product streams', () => {
       expect(productWillEnterSubscriber).toHaveBeenCalledTimes(1);
     });
 
-    it('should not emit when an item page was replaced', () => {
-      dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_REPLACE_ACTION));
-      expect(productWillEnterSubscriber).not.toHaveBeenCalled();
-    });
-
     it('should not emit when an page was pushed which is not the item page', () => {
       dispatch(wrappedRouteWillEnter(ITEM_REVIEWS_PATTERN, HISTORY_PUSH_ACTION));
       expect(productWillEnterSubscriber).not.toHaveBeenCalled();
@@ -135,7 +133,7 @@ describe('Product streams', () => {
     });
 
     it('should emit when a product is ready to be tracked', () => {
-      const productId = 'abc123';
+      const productId = mockBin2Hex('abc123');
       dispatch(wrappedRouteWillEnter(ITEM_PATTERN, HISTORY_PUSH_ACTION, productId));
       dispatch(receiveProduct(productId, { id: productId }));
 
