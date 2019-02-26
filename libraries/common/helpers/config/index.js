@@ -1,4 +1,5 @@
 import { themeConfig as mock } from './mock';
+import pck from './../../package';
 /**
  * Provides a default app config as a fallback.
  * @type {Object}
@@ -22,9 +23,15 @@ const defaultAppConfig = {
   currency: 'USD',
   showGmdMenuSubHeaders: false,
   benchmark: false,
+  sentry: {},
 };
 
 export const themeName = process.env.THEME || 'theme';
+
+/**
+ * @type {string} package version from package.json
+ */
+export const pckVersion = pck.version;
 
 /**
  * Provides a default theme config as a fallback.
@@ -55,7 +62,10 @@ const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : def
  * The components.json config from the theme.
  * @typedef {Object}
  */
-export const componentsConfig = { ...defaultComponentsConfig, ...process.env.COMPONENTS_CONFIG };
+export const componentsConfig = {
+  ...defaultComponentsConfig,
+  ...process.env.COMPONENTS_CONFIG,
+};
 
 /**
  * The theme configuration.
