@@ -8,7 +8,7 @@ import {
   Severity,
 } from '@sentry/browser';
 import {
-  // eslint-disable-next-line import/no-named-default
+// eslint-disable-next-line import/no-named-default
   default as appConfig,
   themeName,
   pckVersion,
@@ -28,8 +28,18 @@ import { appError$ } from '../streams/error';
  * @param {Function} subscribe The subscribe function.
  */
 export default (subscribe) => {
-  const { enabled, level, sampleRate } = appConfig.sentry;
+  // This subscription is always active despite sentry activation
+  subscribe(appError$, ({ dispatch }) => {
+    // Show modal to user
+    dispatch(showModal({
+      confirm: null,
+      message: 'modal.body_error',
+      title: 'modal.title_error',
+    }));
+    dispatch(historyPop());
+  });
 
+  const { enabled, level, sampleRate } = appConfig.sentry;
   // Is not enabled
   if (!enabled) {
     return;
@@ -94,22 +104,12 @@ export default (subscribe) => {
   });
 
   // Add some stack trace and log to sentry
-  subscribe(appError$, ({ dispatch, action }) => {
+  subscribe(appError$, ({ action }) => {
     withScope((scope) => {
       if (action.error.stack) {
         scope.setExtra('stack', action.error.stack);
       }
       captureException(action.error);
     });
-
-    // Show modal to user
-    dispatch(showModal({
-      confirm: null,
-      message: 'modal.body_error',
-      title: 'modal.title_error',
-    }));
-
-    // Go back 1
-    dispatch(historyPop());
   });
 };
