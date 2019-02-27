@@ -133,6 +133,52 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@sentry/browser@^4.6.3":
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-4.6.3.tgz#e683c46c34937d997923be7270b8f071d6957cc6"
+  dependencies:
+    "@sentry/core" "4.6.3"
+    "@sentry/types" "4.5.3"
+    "@sentry/utils" "4.6.3"
+    tslib "^1.9.3"
+
+"@sentry/core@4.6.3":
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-4.6.3.tgz#5c120dea76d0b19757296e9c244f8c3939de744e"
+  dependencies:
+    "@sentry/hub" "4.6.3"
+    "@sentry/minimal" "4.6.3"
+    "@sentry/types" "4.5.3"
+    "@sentry/utils" "4.6.3"
+    tslib "^1.9.3"
+
+"@sentry/hub@4.6.3":
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-4.6.3.tgz#522c4fa5ac1434dcfbaa326ab279b81d595ec739"
+  dependencies:
+    "@sentry/types" "4.5.3"
+    "@sentry/utils" "4.6.3"
+    tslib "^1.9.3"
+
+"@sentry/minimal@4.6.3":
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-4.6.3.tgz#5ff78eefaa15cda6508b181d4f4e757ec1385828"
+  dependencies:
+    "@sentry/hub" "4.6.3"
+    "@sentry/types" "4.5.3"
+    tslib "^1.9.3"
+
+"@sentry/types@4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-4.5.3.tgz#3350dce2b7f9b936a8c327891c12e3aef7bd8852"
+
+"@sentry/utils@4.6.3":
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-4.6.3.tgz#0dc4748ef4ead089ceb2c4a3670339df8be71679"
+  dependencies:
+    "@sentry/types" "4.5.3"
+    tslib "^1.9.3"
+
 "@shopgate/react-hammerjs@0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
