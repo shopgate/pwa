@@ -1,5 +1,5 @@
 import errorManager, { emitter } from './';
-import { DEFAULT_CONTEXT } from './../../constants/ErrorManager';
+import { DEFAULT_CONTEXT } from '../../constants/ErrorManager';
 
 describe('ErrorManager', () => {
   beforeEach(() => {
