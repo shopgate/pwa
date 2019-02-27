@@ -7,6 +7,8 @@ import {
   addBreadcrumb,
   Severity,
 } from '@sentry/browser';
+import { emitter } from '@shopgate/pwa-core';
+import { SOURCE_TRACKING } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
 // eslint-disable-next-line import/no-named-default
   default as appConfig,
@@ -71,6 +73,15 @@ export default (subscribe) => {
         captureException(error);
       };
     }
+
+    emitter.addListener(SOURCE_TRACKING, (error) => {
+      withScope((scope) => {
+        if (error.context) {
+          scope.setExtra('trackerName', error.context);
+        }
+        captureException(error);
+      });
+    });
   });
 
   subscribe(userDidUpdate$, ({ getState }) => {

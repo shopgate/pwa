@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import { DEFAULT_CONTEXT, SOURCE_PIPELINE } from './constants';
+import { DEFAULT_CONTEXT, SOURCE_PIPELINE } from './../../constants/ErrorManager';
 
 export const emitter = new EventEmitter();
 
