@@ -318,16 +318,16 @@ define build-publish-npm-package
 endef
 
 define build-npm-package
-		@echo "> Building './$(strip $(1)/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
-		BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1)/$(strip $(2))/ --out-dir ./$(strip $(1)/$(strip $(2))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-		cp ./$(strip $(1)/$(strip $(2))/package.json ./$(strip $(1)/$(strip $(2))/dist/;
-		cp ./$(strip $(1)/$(strip $(2))/README.md ./$(strip $(1)/$(strip $(2))/dist/;
-		cp ./$(strip $(1)/$(strip $(2))/LICENSE.md ./$(strip $(1)/$(strip $(2))/dist/;
+		@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
+		BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+		cp ./$(strip $(1))/$(strip $(2))/package.json ./$(strip $(1))/$(strip $(2))/dist/;
+		cp ./$(strip $(1))/$(strip $(2))/README.md ./$(strip $(1))/$(strip $(2))/dist/;
+		cp ./$(strip $(1))/$(strip $(2))/LICENSE.md ./$(strip $(1))/$(strip $(2))/dist/;
 
 endef
 
 define publish-npm-package
-		@echo "> Publishing './$(strip $(1)/$(strip $(2))' npm package"
+		@echo "> Publishing './$(strip $(1))/$(strip $(2))' npm package"
 		@if [ "$(STABLE)" != "true" ]; \
 			then npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public --tag beta; \
 			else npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public; \
@@ -336,8 +336,8 @@ define publish-npm-package
 endef
 
 define clean-npm-package
-		@echo "> Cleaning './$(strip $(1)/$(strip $(2))/dist' npm package"
-		rm -rf -f ./$(strip $(1)/$(strip $(2))/dist;
+		@echo "> Cleaning './$(strip $(1))/$(strip $(2))/dist' npm package"
+		rm -rf -f ./$(strip $(1))/$(strip $(2))/dist;
 
 endef
 
