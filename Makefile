@@ -1,18 +1,37 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
-RECURSIVE_MAKEFILE_NAME = Makefile
-
+####################################################################################################
+# NOTICE:
+# -------
+# If LIBRARIES, EXTENSIONS or UTILS is extended and the npm packacke should not be prefixed with
+# "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
 LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
-UTILS = eslint-config unit-tests e2e benchmark
+TRANSPILED_UTILS = benchmark
+UTILS = eslint-config unit-tests e2e
 THEMES = theme-gmd theme-ios11
+
+# Adds "@shopgate/pwa-" in front of all package names except "@shopgate/eslint-config" and "@shopgate/tracking-core".
+# Optionally takes a version number as second parameter.
+# Example: echo $(call get-package-name,common-core)
+define get-npm-package-name
+$(patsubst %@,%, $(patsubst %,%@$(strip $(2)),$(patsubst %,@shopgate/%,$(patsubst pwa-eslint-config,eslint-config,$(patsubst pwa-tracking-core,tracking-core,$(patsubst pwa-pwa-%,pwa-%,$(patsubst %,pwa-%,$(strip $(1)))))))))
+
+
+endef
+####################################################################################################
+
+# This is required, so the Jenkins can change branches without changing the makefile
+RECURSIVE_MAKEFILE_NAME = Makefile
 
 GITHUB_AUTH_KEY =
 GITHUB_AUTH_TOKEN =
 
+# This is basically a feature version
 REPO_VERSION =
 
+# Required for versioning and npm (without the "v" prefix)
 RELEASE_VERSION = $(patsubst v%,%,$(strip $(REPO_VERSION)))
 
 # Branch name to start the release from; "develop" by default
@@ -24,7 +43,7 @@ else
 	IS_RC_BRANCH_NAME = false
 endif
 
-# Make sure the release name starts with a "v" and the release version does not
+# Make sure the release name starts with a "v"
 RELEASE_NAME = v$(patsubst v%,%,$(strip $(RELEASE_VERSION)))
 
 
@@ -109,8 +128,7 @@ sanity-check:
 release:
 		$(call setup-release)
 		$(call update-versions)
-		$(call build-npm-packages)
-		$(call publish-npm-packages)
+		$(call release-npm-packages)
 		$(call make, publish-to-github)
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		$(call create-github-releases,master)
@@ -280,61 +298,46 @@ endef
 
 
 ####################################################################################################
-# BUILD-NPM-PACKAGES
+# RELEASE-NPM-PACKAGES
 
-define build-npm-packages
+define release-npm-packages
 		@echo "======================================================================"
-		@echo "| Building library npm packages"
+		@echo "| Releasing library and util npm packages"
 		@echo "======================================================================"
-		$(foreach library, $(LIBRARIES), $(call build-library, $(library)))
+		$(foreach library, $(LIBRARIES), $(call build-publish-npm-package, libraries, $(library)))
+		$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call build-publish-npm-package, utils, $(transpiled_util)))
+		@# No build for packages in the UTILS list - publish without transpilation
+		$(foreach util, $(UTILS), $(call publish-npm-package, utils, $(util)))
 
 endef
 
-define build-library
-		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-		cp ./libraries/$(strip $(1))/package.json ./libraries/$(strip $(1))/dist/;
-		cp ./libraries/$(strip $(1))/README.md ./libraries/$(strip $(1))/dist/;
-		cp ./libraries/$(strip $(1))/LICENSE.md ./libraries/$(strip $(1))/dist/;
+define build-publish-npm-package
+		$(call build-npm-package, $(strip $(1)), $(strip $(2)))
+		$(call publish-npm-package, $(strip $(1)), $(strip $(2)), dist)
+		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))
+endef
+
+define build-npm-package
+		@echo "> Building './$(strip $(1)/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
+		BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1)/$(strip $(2))/ --out-dir ./$(strip $(1)/$(strip $(2))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+		cp ./$(strip $(1)/$(strip $(2))/package.json ./$(strip $(1)/$(strip $(2))/dist/;
+		cp ./$(strip $(1)/$(strip $(2))/README.md ./$(strip $(1)/$(strip $(2))/dist/;
+		cp ./$(strip $(1)/$(strip $(2))/LICENSE.md ./$(strip $(1)/$(strip $(2))/dist/;
 
 endef
 
-
-
-####################################################################################################
-# PUBLISH-NPM-PACKAGES
-
-# Publish all library and utils npm packages to npm
-define publish-npm-packages
-		$(foreach package, $(LIBRARIES), $(call npm-release-libraries, $(package)))
-		$(foreach package, $(UTILS), $(call npm-release-utils, $(package)))
-		$(call clean-library-packages)
-
-endef
-
-define npm-release-libraries
+define publish-npm-package
+		@echo "> Publishing './$(strip $(1)/$(strip $(2))' npm package"
 		@if [ "$(STABLE)" != "true" ]; \
-			then npm publish ./libraries/$(strip $(1))/dist/ --access public --tag beta; \
-			else npm publish ./libraries/$(strip $(1))/dist/ --access public; \
+			then npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public --tag beta; \
+			else npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public; \
 		fi;
 
 endef
 
-define npm-release-utils
-		@if [ "$(STABLE)" != "true" ]; \
-			then npm publish ./utils/$(strip $(1))/ --access public --tag beta; \
-			else npm publish ./utils/$(strip $(1))/ --access public; \
-		fi;
-
-endef
-
-# Clean the builds.
-define clean-library-packages
-		$(foreach package, $(LIBRARIES), $(call clean-library-package, $(package)))
-
-endef
-
-define clean-library-package
-		rm -rf -f ./libraries/$(strip $(1))/dist;
+define clean-npm-package
+		@echo "> Cleaning './$(strip $(1)/$(strip $(2))/dist' npm package"
+		rm -rf -f ./$(strip $(1)/$(strip $(2))/dist;
 
 endef
 
@@ -352,7 +355,7 @@ publish-to-github:
 		git push origin "releases/$(RELEASE_NAME)";
 ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
-		$(call build-changelog)
+		@# $ (call build-changelog)
 endif
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		# UPDATING MASTER FOR STABLE RELEASE
