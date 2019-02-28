@@ -675,15 +675,15 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                       </ul>
                     </Grid>
                   </ProductGridPrice>
-                  <Portal
-                    name="product-item.price.after"
-                    props={
-                      Object {
-                        "productId": "PR0DUCTID",
-                      }
-                    }
-                  />
                 </Portal>
+                <Portal
+                  name="product-item.price.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
               </div>
             </ProductCardPrice>
           </div>
@@ -1089,15 +1089,15 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                       </ul>
                     </Grid>
                   </ProductGridPrice>
-                  <Portal
-                    name="product-item.price.after"
-                    props={
-                      Object {
-                        "productId": "PR0DUCTID",
-                      }
-                    }
-                  />
                 </Portal>
+                <Portal
+                  name="product-item.price.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
               </div>
             </ProductCardPrice>
           </div>
@@ -1849,15 +1849,15 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                       </ul>
                     </Grid>
                   </ProductGridPrice>
-                  <Portal
-                    name="product-item.price.after"
-                    props={
-                      Object {
-                        "productId": "PR0DUCTID",
-                      }
-                    }
-                  />
                 </Portal>
+                <Portal
+                  name="product-item.price.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
               </div>
             </ProductCardPrice>
           </div>
@@ -2609,15 +2609,15 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                       </ul>
                     </Grid>
                   </ProductGridPrice>
-                  <Portal
-                    name="product-item.price.after"
-                    props={
-                      Object {
-                        "productId": "PR0DUCTID",
-                      }
-                    }
-                  />
                 </Portal>
+                <Portal
+                  name="product-item.price.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
               </div>
             </ProductCardPrice>
           </div>
@@ -3333,15 +3333,15 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                       </ul>
                     </Grid>
                   </ProductGridPrice>
-                  <Portal
-                    name="product-item.price.after"
-                    props={
-                      Object {
-                        "productId": "PR0DUCTID",
-                      }
-                    }
-                  />
                 </Portal>
+                <Portal
+                  name="product-item.price.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
               </div>
             </ProductCardPrice>
           </div>
@@ -4266,15 +4266,15 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                       </ul>
                     </Grid>
                   </ProductGridPrice>
-                  <Portal
-                    name="product-item.price.after"
-                    props={
-                      Object {
-                        "productId": "PR0DUCTID",
-                      }
-                    }
-                  />
                 </Portal>
+                <Portal
+                  name="product-item.price.after"
+                  props={
+                    Object {
+                      "productId": "PR0DUCTID",
+                    }
+                  }
+                />
               </div>
             </ProductCardPrice>
           </div>
