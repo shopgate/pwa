@@ -19,8 +19,8 @@ function ProductCardPrice({ productId, price, style }) {
       <Portal name={PRODUCT_ITEM_PRICE_BEFORE} props={props} />
       <Portal name={PRODUCT_ITEM_PRICE} props={props}>
         <ProductGridPrice price={price} />
-        <Portal name={PRODUCT_ITEM_PRICE_AFTER} props={props} />
       </Portal>
+      <Portal name={PRODUCT_ITEM_PRICE_AFTER} props={props} />
     </div>
   );
 }
