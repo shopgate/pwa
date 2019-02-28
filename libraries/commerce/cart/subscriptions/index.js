@@ -90,6 +90,14 @@ export default function cart(subscribe) {
       pipelines.SHOPGATE_CART_DELETE_COUPONS,
     ]);
 
+    // Push (deeplink) with coupon concurrent to get cart on app start
+    pipelineDependencies.set(pipelines.SHOPGATE_CART_ADD_COUPONS, [
+      pipelines.SHOPGATE_CART_GET_CART,
+    ]);
+    pipelineDependencies.set(pipelines.SHOPGATE_CART_DELETE_COUPONS, [
+      pipelines.SHOPGATE_CART_GET_CART,
+    ]);
+
     /**
      * Reload the cart whenever the WebView becomes visible.
      * This is needed, for example, when the cart is modified from another inAppBrowser tab like a
