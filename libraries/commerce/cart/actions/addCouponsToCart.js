@@ -6,6 +6,7 @@ import addCoupons from '../action-creators/addCouponsToCart';
 import errorAddCouponsToCart from '../action-creators/errorAddCouponsToCart';
 import successAddCouponsToCart from '../action-creators/successAddCouponsToCart';
 import { messagesHaveErrors } from '../helpers';
+import { MESSAGE_TYPE_ERROR } from '../constants';
 
 /**
  * Adds coupons to the cart. Returns a Promise because a component waits for this action to finish.
@@ -28,7 +29,22 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
        * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
        */
       if (messages && messagesHaveErrors(messages)) {
-        dispatch(errorAddCouponsToCart(couponIds, messages));
+        // Simulate a pipeline response error with a proper ECART error.
+        const errors = messages.filter(msg => msg.type === MESSAGE_TYPE_ERROR).map(msg => ({
+          ...msg,
+          pipeline: request.name,
+          handled: false,
+        }));
+        const error = {
+          ...errors[0],
+          code: ECART,
+          message: '', // Irrelevant in this case
+          errors,
+        };
+        dispatch(errorAddCouponsToCart(
+          couponIds,
+          createPipelineErrorList(pipelines.SHOPGATE_CART_ADD_COUPONS, error)
+        ));
         reject();
         return;
       }
