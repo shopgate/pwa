@@ -129,7 +129,12 @@ export default function cart(subscribe) {
     if (Array.isArray(errors) && errors.length) {
       // Supports only one error, because none of the pipelines is ever called with multiple items.
       // Multiple errors would cause the this to overlay multiple modals on top of each other.
-      const { message } = errors[0];
+      const { message, handled } = errors[0];
+
+      // Some errors are already handled automatically before
+      if (handled) {
+        return;
+      }
 
       dispatch(showModal({
         confirm: 'modal.ok',

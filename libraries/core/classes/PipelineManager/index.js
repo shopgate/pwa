@@ -214,19 +214,14 @@ class PipelineManager {
       err.errors = errors;
     }
 
-    request.reject(err);
+    let handleError = request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT;
 
-    // Stop if this error code was set to be suppressed.
-    if (this.suppressedErrors.includes(code)) {
-      return;
+    // Don't handle generally suppressed or via pipeline request blacklisted errors
+    if (this.suppressedErrors.includes(code) || request.errorBlacklist.includes(code)) {
+      handleError = false;
     }
 
-    // Stop if this PipelineRequest was configured to ignore this specific error code.
-    if (request.errorBlacklist.includes(code)) {
-      return;
-    }
-
-    if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
+    if (handleError) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
         context: pipelineName,
@@ -237,6 +232,9 @@ class PipelineManager {
         message,
       });
     }
+
+    err.handled = handleError;
+    request.reject(err);
   }
 
   /**

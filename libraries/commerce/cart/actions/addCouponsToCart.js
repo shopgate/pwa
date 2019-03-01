@@ -8,7 +8,7 @@ import successAddCouponsToCart from '../action-creators/successAddCouponsToCart'
 import { messagesHaveErrors } from '../helpers';
 
 /**
- * Adds coupons to the cart.
+ * Adds coupons to the cart. Returns a Promise because a component waits for this action to finish.
  * @param {string[]} couponIds The IDs of the coupons that shall be added to the cart.
  * @return {Function} A redux thunk.
  */
