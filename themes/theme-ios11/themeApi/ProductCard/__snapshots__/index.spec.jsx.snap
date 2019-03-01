@@ -807,15 +807,15 @@ exports[`<ProductCard /> should render as expected 1`] = `
                             </ul>
                           </Grid>
                         </ProductGridPrice>
-                        <Portal
-                          name="product-item.price.after"
-                          props={
-                            Object {
-                              "productId": "PR0DUCTID",
-                            }
-                          }
-                        />
                       </Portal>
+                      <Portal
+                        name="product-item.price.after"
+                        props={
+                          Object {
+                            "productId": "PR0DUCTID",
+                          }
+                        }
+                      />
                     </div>
                   </ProductCardPrice>
                 </div>

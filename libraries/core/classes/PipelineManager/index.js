@@ -3,7 +3,7 @@ import event from '../Event';
 import errorManager from '../ErrorManager';
 import pipelineDependencies from '../PipelineDependencies';
 import pipelineSequence from '../PipelineSequence';
-import * as errorSources from '../ErrorManager/constants';
+import * as errorSources from '../../constants/ErrorManager';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
 import { ETIMEOUT } from '../../constants/Pipeline';
