@@ -30,11 +30,7 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
        */
       if (messages && messagesHaveErrors(messages)) {
         // Simulate a pipeline response error with a proper ECART error.
-        const errors = messages.filter(msg => msg.type === MESSAGE_TYPE_ERROR).map(msg => ({
-          ...msg,
-          pipeline: request.name,
-          handled: false,
-        }));
+        const errors = messages.filter(msg => msg.type === MESSAGE_TYPE_ERROR);
         const error = {
           ...errors[0],
           code: ECART,
