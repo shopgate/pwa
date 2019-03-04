@@ -10,7 +10,7 @@ export default function onload() {
     return;
   }
 
-  const command = new AppCommand();
+  const command = new AppCommand(true, false);
 
   command
     .setCommandName('onload')
