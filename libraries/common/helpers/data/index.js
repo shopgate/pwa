@@ -1,4 +1,13 @@
 import { isObject } from '../validation';
+import {
+  QR_CODE_TYPE_HOMEPAGE,
+  QR_CODE_TYPE_PRODUCT,
+  QR_CODE_TYPE_PRODUCT_WITH_COUPON,
+  QR_CODE_TYPE_COUPON,
+  QR_CODE_TYPE_CATEGORY,
+  QR_CODE_TYPE_SEARCH,
+  QR_CODE_TYPE_PAGE,
+} from '../../constants/QRCodeTypes';
 
 /**
  * Remove the first element of the array.
@@ -186,4 +195,82 @@ export const validateSelectorParams = (selector, defaultResult = null) => (...pa
   }
 
   return selector(...params);
+};
+
+/**
+ * Parses Shopgate QR Codes. It extracts the relevant data from the code,
+ * and generates a deeplink which can be used to open pages.
+ * @param {string} code The string from the QR Code.
+ * @returns {Object|null} The parsed data and the generated link when the code was parsable
+ * Shopgate QR Code. NULL when parsing failed.
+ */
+export const parseShopgateQrCode = (code) => {
+  let parsed;
+
+  try {
+    parsed = new URL(code);
+  } catch (e) {
+    return null;
+  }
+
+  if (parsed.host !== '2d.is') {
+    return null;
+  }
+
+  let link = '';
+  let data = {};
+
+  const [, type, paramOne, paramTwo, paramThree] = parsed.pathname.split('/');
+  const decodedParamTwo = decodeURIComponent(decodeURIComponent(paramTwo));
+
+  switch (type) {
+    case QR_CODE_TYPE_HOMEPAGE:
+      link = '/';
+      break;
+    case QR_CODE_TYPE_PRODUCT:
+      link = `/item/${bin2hex(decodedParamTwo)}`;
+      data = {
+        productId: decodedParamTwo,
+      };
+      break;
+    case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
+      link = `/item/${bin2hex(decodedParamTwo)}?coupon=${paramThree}`;
+      data = {
+        productId: decodedParamTwo,
+        couponCode: paramThree,
+      };
+      break;
+    case QR_CODE_TYPE_COUPON:
+      link = `/cart_add_coupon/${paramOne}`;
+      data = {
+        couponCode: paramOne,
+      };
+      break;
+    case QR_CODE_TYPE_CATEGORY:
+      link = `/category/${bin2hex(decodedParamTwo)}`;
+      data = {
+        categoryId: decodedParamTwo,
+      };
+      break;
+    case QR_CODE_TYPE_SEARCH:
+      link = `/search?s=${decodedParamTwo}`;
+      data = {
+        searchPhrase: decodedParamTwo,
+      };
+      break;
+    case QR_CODE_TYPE_PAGE:
+      link = `/page/${decodedParamTwo}`;
+      data = {
+        pageId: decodedParamTwo,
+      };
+      break;
+    default:
+      break;
+  }
+
+  return {
+    type,
+    link,
+    data,
+  };
 };

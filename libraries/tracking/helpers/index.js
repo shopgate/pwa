@@ -1,7 +1,18 @@
 import get from 'lodash/get';
 import find from 'lodash/find';
-import core from '@shopgate/tracking-core/core/Core';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { parseShopgateQrCode } from '@shopgate/pwa-common/helpers/data';
+import {
+  QR_CODE_TYPE_HOMEPAGE,
+  QR_CODE_TYPE_PRODUCT,
+  QR_CODE_TYPE_PRODUCT_WITH_COUPON,
+  QR_CODE_TYPE_COUPON,
+  QR_CODE_TYPE_CATEGORY,
+  QR_CODE_TYPE_SEARCH,
+  QR_CODE_TYPE_PAGE,
+} from '@shopgate/pwa-common/constants/QRCodeTypes';
+import core from '@shopgate/tracking-core/core/Core';
+import { SCANNER_TYPE_QR, SCANNER_FORMAT_QR_CODE } from '../constants';
 
 /**
  * Converts a price to a formatted string.
@@ -144,6 +155,74 @@ export const formatPurchaseData = (passedOrder) => {
 };
 
 /**
+ * Creates data for the scanner tracking events.
+ * @param {Object} params Foobar
+ * @return {Object}
+ */
+export const createScannerEventData = ({
+  event, type, payload, url, userInteraction,
+}) => {
+  let eventLabel = [];
+
+  if (type === SCANNER_TYPE_QR && payload) {
+    const { format, code } = payload;
+
+    eventLabel = [format];
+
+    if (format === SCANNER_FORMAT_QR_CODE) {
+      const parsedCode = parseShopgateQrCode(code);
+
+      if (parsedCode) {
+        const { type: qrType, link, data } = parsedCode;
+
+        switch (qrType) {
+          case QR_CODE_TYPE_HOMEPAGE:
+            eventLabel.push('main');
+            break;
+          case QR_CODE_TYPE_PRODUCT:
+            eventLabel.push('item_number');
+            eventLabel.push(data.productId);
+            break;
+          case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
+            eventLabel.push('coupon_code');
+            eventLabel.push(data.couponCode);
+            break;
+          case QR_CODE_TYPE_COUPON:
+            eventLabel.push('coupon');
+            break;
+          case QR_CODE_TYPE_CATEGORY:
+            eventLabel.push('categoryNumber');
+            eventLabel.push(data.categoryId);
+            break;
+          case QR_CODE_TYPE_SEARCH:
+          case QR_CODE_TYPE_PAGE:
+            eventLabel.push(link);
+            break;
+          default:
+            break;
+        }
+      }
+    } else {
+      if (code) {
+        eventLabel.push(code);
+      }
+
+      if (url) {
+        eventLabel.push(url);
+      }
+    }
+  }
+
+  eventLabel = eventLabel.join(' - ');
+
+  return {
+    eventAction: event,
+    ...eventLabel && { eventLabel },
+    ...(typeof userInteraction === 'boolean') && { userInteraction },
+  };
+};
+
+/**
  * Helper to pass the redux state to the tracking core
  * @param {string} eventName The name of the event.
  * @param {Object} data The tracking data of the event.
@@ -157,6 +236,7 @@ export const track = (eventName, data, state) => {
   }
 
   try {
+    console.warn(eventName, core.track[eventName]);
     core.track[eventName](data, undefined, undefined, state);
   } catch (e) {
     logger.error(e);
