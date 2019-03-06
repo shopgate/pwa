@@ -84,7 +84,7 @@
     "cost": "{price} Versand"
   },
   "liveshopping": {
-    "discount_badge": "SAVE {0}%"
+    "discount_badge": "{0}% SPAREN"
   },
   "modal": {
     "confirm": "Bestätigen",
