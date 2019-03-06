@@ -236,7 +236,6 @@ export const track = (eventName, data, state) => {
   }
 
   try {
-    console.warn(eventName, core.track[eventName]);
     core.track[eventName](data, undefined, undefined, state);
   } catch (e) {
     logger.error(e);
