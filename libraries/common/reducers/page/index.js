@@ -2,6 +2,7 @@ import {
   REQUEST_PAGE_CONFIG,
   RECEIVE_PAGE_CONFIG,
   ERROR_PAGE_CONFIG,
+  APP_WILL_START,
 } from '../../constants/ActionTypes';
 
 /**
@@ -53,6 +54,14 @@ export default function pageReducer(state = {}, action) {
         },
       };
     }
+    case APP_WILL_START: {
+      return Object.keys(state).reduce((newState, pageId) => {
+        // eslint-disable-next-line no-param-reassign
+        newState[pageId].expires = 0;
+        return newState;
+      }, { ...state });
+    }
+
     default:
       return state;
   }

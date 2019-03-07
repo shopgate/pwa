@@ -168,3 +168,15 @@ export const remoteCartDidUpdate$ = main$.filter(({ action }) => (
   action.type === SUCCESS_DELETE_COUPONS_FROM_CART ||
   action.type === ERROR_DELETE_COUPONS_FROM_CART
 ));
+
+/**
+ * Gets triggered whenever any cart update request fails.
+ * @type {Observable}
+ */
+export const cartUpdateFailed$ = main$.filter(({ action }) => (
+  action.type === ERROR_ADD_PRODUCTS_TO_CART ||
+  action.type === ERROR_UPDATE_PRODUCTS_IN_CART ||
+  action.type === ERROR_DELETE_PRODUCTS_FROM_CART ||
+  action.type === ERROR_ADD_COUPONS_TO_CART ||
+  action.type === ERROR_DELETE_COUPONS_FROM_CART
+));

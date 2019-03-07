@@ -177,6 +177,19 @@
         "type": "json",
         "label": "Enable / disable frontend benchmarking tools"
       }
+    },
+    "sentry": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "enabled": false,
+        "level": "warning",
+        "sampleRate": 1.0
+      },
+      "params": {
+        "type": "json",
+        "label": "Use sentry.io for error (debug, info) logging"
+      }
     }
   }
 }

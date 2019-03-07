@@ -9,6 +9,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       "data-css-9a70pf": "",
     }
   }
+  data-test-id="liveShoppingWidget"
 >
   <ImageSlider
     autoPlay={false}
@@ -52,6 +53,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       "data-css-9a70pf": "",
     }
   }
+  data-test-id="liveShoppingWidget"
 >
   <ImageSlider
     autoPlay={false}

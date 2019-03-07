@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 import logGroup from '../../helpers/logGroup';
 // eslint-disable-next-line import/named
 import { mockedDispatch } from '../AppCommand';
@@ -484,14 +485,12 @@ describe('PipelineManager', () => {
         pipelineManager.add(entry);
       });
 
-      /* eslint-disable extra-rules/no-single-line-objects */
       const tests = [
         { index: 1, length: 4 },
         { index: 0, length: 2 },
         { index: 3, length: 2 },
         { index: 2, length: 0 },
       ];
-      /* eslint-enable extra-rules/no-single-line-objects */
 
       tests.forEach(({ index, length }) => {
         // Set the finished flag at the requested index.
@@ -720,3 +719,4 @@ describe('PipelineManager', () => {
     });
   });
 });
+/* eslint-enable extra-rules/no-single-line-objects */

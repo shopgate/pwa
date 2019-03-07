@@ -1,12 +1,12 @@
 import {
   errorManager,
   EINVALIDCREDENTIALS,
-  SHOPGATE_USER_LOGIN_USER,
 } from '@shopgate/pwa-core';
+import { SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-common/constants/Pipelines';
 import { appWillStart$ } from '@shopgate/pwa-common/streams';
 
 /**
- * Login subscriptions.
+ * Theme subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function login(subscribe) {
