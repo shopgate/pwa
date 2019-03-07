@@ -42,7 +42,7 @@ const Layout = ({ coupon, currency, handleDelete }, context) => (
     <Grid.Item className={`${styles.content} ${styles.contentLast}`} grow={1} shrink={0}>
       <Delete handleDelete={handleDelete} />
       <CouponFreeShipping freeShipping={coupon.freeShipping} />
-      { (coupon.savedPrice && coupon.savedPrice.value > 0) &&
+      {(coupon.savedPrice && coupon.savedPrice.value > 0) &&
         <Fragment>
           <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={context} />
           <Portal name={portals.CART_ITEM_PRICE} props={context}>
@@ -50,7 +50,7 @@ const Layout = ({ coupon, currency, handleDelete }, context) => (
           </Portal>
           <Portal name={portals.CART_ITEM_PRICE_AFTER} props={context} />
         </Fragment>
-      }
+        }
     </Grid.Item>
   </Grid>
 );

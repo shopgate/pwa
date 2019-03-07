@@ -1,13 +1,12 @@
 import els from '../../elements/de';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('AndroidGMDTest productPage', () => {
   it('should check for productImage', () => {
     cy.visit('');
-    // Naviagte to product
-    cy.get(els.allProductCategory)
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
+
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.productWithManyProps4GridViewName)
       .last()
       .scrollIntoView()
@@ -34,14 +33,12 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for manufacturer', () => {
-    cy.visit('/category/');
-    cy.get(els.basicCategory)
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWithManufacturerPropCategory)
-      .should('be.visible')
-      .last()
-      .click();
+    cy.visit('/category');
+
+    navigateCategoryBySelector(els.basicCategory);
+
+    navigateCategoryBySelector(els.productsWithManufacturerPropCategory);
+
     cy.get(els.productWithManufacturerPropGridViewItem)
       .should('be.visible')
       .last()
@@ -82,14 +79,12 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for reviewSection', () => {
-    cy.visit('/category/');
-    cy.get(els.basicCategory)
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWithRatingsCategory)
-      .should('be.visible')
-      .last()
-      .click();
+    cy.visit('/category');
+
+    navigateCategoryBySelector(els.basicCategory);
+
+    navigateCategoryBySelector(els.productsWithRatingsCategory);
+
     cy.get(els.productWithRating3GridView)
       .should('be.visible')
       .last()
@@ -125,15 +120,12 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for variants', () => {
-    cy.visit('/category/');
-    cy.get(els.productVariantsCategory)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.productsWith2VariantsCategory)
-      .should('be.visible')
-      .last()
-      .click();
+    cy.visit('/category');
+
+    navigateCategoryBySelector(els.productVariantsCategory);
+
+    navigateCategoryBySelector(els.productsWith2VariantsCategory);
+
     cy.get(els.productWithChild1GridView)
       .should('be.visible')
       .last()
@@ -145,14 +137,12 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for strike price', () => {
-    cy.visit('/category/');
-    cy.get(els.basicCategory)
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWithStrikePriceCategory)
-      .last()
-      .should('be.visible')
-      .click();
+    cy.visit('/category');
+
+    navigateCategoryBySelector(els.basicCategory);
+
+    navigateCategoryBySelector(els.productsWithStrikePriceCategory);
+
     cy.get(els.productWithStrikePrice4GridViewItem)
       .should('be.visible')
       .last()
