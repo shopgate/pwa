@@ -21,14 +21,14 @@ describe('ScannerEventListener', () => {
     it('should initialize the name correctly if none was set', () => {
       const l = new ScannerEventListener();
 
-      expect(l.name).toStrictEqual('unnamed');
+      expect(l.name).toBe('unnamed');
     });
 
     it('should initialize the type and scope correctly if none were set', () => {
       const l = new ScannerEventListener();
 
-      expect(l.scope).toStrictEqual(null);
-      expect(l.type).toStrictEqual(null);
+      expect(l.scope).toBe(null);
+      expect(l.type).toBe(null);
     });
 
     it('should store the name, scope and type correctly if they were set', () => {
@@ -36,21 +36,15 @@ describe('ScannerEventListener', () => {
       const type = 'testType';
       const l = new ScannerEventListener(name, scope, type);
 
-      expect(l.name).toStrictEqual(name);
-      expect(l.scope).toStrictEqual(scope);
-      expect(l.type).toStrictEqual(type);
+      expect(l.name).toBe(name);
+      expect(l.scope).toBe(scope);
+      expect(l.type).toBe(type);
     });
 
     it('should not have a default handler after new instance creation', () => {
       const l = new ScannerEventListener();
 
-      expect(l.handler).toStrictEqual(null);
-    });
-
-    it('should not reset on handler errors after new instance creation', () => {
-      const l = new ScannerEventListener();
-
-      expect(l.resetOnError).toStrictEqual(false);
+      expect(l.handler).toBe(null);
     });
   });
 
@@ -74,7 +68,7 @@ describe('ScannerEventListener', () => {
     it('should return the current listener instance after setting the handler', () => {
       const l = new ScannerEventListener();
 
-      expect(l.setHandler(jest.fn())).toStrictEqual(l);
+      expect(l.setHandler(jest.fn())).toBe(l);
     });
 
     it('should set the handler correctly', () => {
@@ -82,30 +76,6 @@ describe('ScannerEventListener', () => {
       const l = new ScannerEventListener().setHandler(customHandler);
 
       expect(l.handler).toBe(customHandler);
-    });
-  });
-
-  describe('setResetOnError(value) / getResetOnError()', () => {
-    it('should set and get the value correctly', () => {
-      const first = true;
-      const second = false;
-      const l1 = new ScannerEventListener().setResetOnError(first);
-      const l2 = new ScannerEventListener().setResetOnError(second);
-
-      expect(l1.getResetOnError()).toStrictEqual(first);
-      expect(l2.getResetOnError()).toStrictEqual(second);
-    });
-
-    it('should return the current listener instance after setting the value', () => {
-      const l = new ScannerEventListener();
-
-      expect(l.setResetOnError(true)).toStrictEqual(l);
-    });
-
-    it('should enforce the value to be boolean on set', () => {
-      const l = new ScannerEventListener().setResetOnError('non-boolean-value');
-
-      expect(typeof l.resetOnError).toStrictEqual('boolean');
     });
   });
 
@@ -132,9 +102,17 @@ describe('ScannerEventListener', () => {
       code: 'code',
     };
 
-    it('should output a warning if no handlers are attached', () => {
+    it('should print a warning if no handlers are attached', async () => {
       const l = new ScannerEventListener();
-      l.notify(null);
+      await l.notify(null);
+
+      expect(logger.warn).toHaveBeenCalledTimes(1);
+    });
+
+    it('should print a warning if the custom handler returns a value', async () => {
+      const customHandler = jest.fn(() => 'Some return-value');
+      const l = new ScannerEventListener(name).setHandler(customHandler);
+      await l.notify(new ScannerEvent('scope', 'type', mockPayload));
 
       expect(logger.warn).toHaveBeenCalledTimes(1);
     });

@@ -14,12 +14,20 @@ class ScannerEventListener {
     this.name = name || 'unnamed';
     this.scope = scope || null;
     this.type = type || null;
-    this.resetOnError = false;
     this.handler = null;
   }
 
   /**
-   * @param {Function} handler An asynchronous function which is called when a scan is done.
+   * Callback for an instance of an event listener. It is expected to return no value on success.
+   * Throw an Error() to force the scanner to restart.
+   *
+   * @callback ScannerEventListener~Handler
+   * @param {ScannerEvent} event The event which is emitted, when something was scanned.
+   * @returns {undefined|null}
+   * @throws {Error}
+   */
+  /**
+   * @param {Handler} handler The function which is called when a scan is done.
    * @returns {ScannerEventListener}
    */
   setHandler = (handler) => {
@@ -30,20 +38,6 @@ class ScannerEventListener {
     this.handler = handler;
     return this;
   }
-
-  /**
-   * @param {boolean} resetOnError Set to true to reset the scanner, when the handler fails.
-   * @returns {ScannerEventListener}
-   */
-  setResetOnError = (resetOnError) => {
-    this.resetOnError = !!resetOnError;
-    return this;
-  }
-
-  /**
-   * @returns {boolean} Returns true to if the scanner should be reset, when the handler fails.
-   */
-  getResetOnError = () => this.resetOnError;
 
   /**
    * Attach the current event listener to the app scanner.
@@ -71,7 +65,15 @@ class ScannerEventListener {
     }
 
     // Call the listener which was previously registered
-    await this.handler(event);
+    const handlerResult = await this.handler(event);
+
+    // Don't expect anything else than undefined or null
+    if (handlerResult !== undefined && handlerResult !== null) {
+      logger.warn(
+        `Expected the ScannerEventListener::Handler "${this.name}" to return no value,`,
+        `but it returned "${handlerResult}"`
+      );
+    }
   }
 }
 

@@ -10,8 +10,8 @@ describe('ScannerEvent', () => {
     };
     const e = new ScannerEvent(scope, type, payload);
 
-    expect(e.getScope()).toStrictEqual(scope);
-    expect(e.getType()).toStrictEqual(type);
-    expect(e.getPayload()).toStrictEqual(payload);
+    expect(e.getScope()).toBe(scope);
+    expect(e.getType()).toBe(type);
+    expect(e.getPayload()).toBe(payload);
   });
 });

@@ -45,3 +45,21 @@ export const SCANNER_TYPE_CARD = 'cardRecognition';
  * @type {string}
  */
 export const SCANNER_TYPE_IMAGE = 'imageCapturing';
+
+/**
+ * The scope name for the default image scanner.
+ * @type {string}
+ */
+export const SCANNER_SCOPE_DEFAULT_IMAGE = 'defaultImageScanner';
+
+/**
+ * The scope name for the default barcode scanner.
+ * @type {string}
+ */
+export const SCANNER_SCOPE_DEFAULT_BARCODE = 'defaultBarcodeScanner';
+
+/**
+ * The scope name for the default card scanner.
+ * @type {string}
+ */
+export const SCANNER_SCOPE_DEFAULT_CARD = 'defaultCardScanner';
