@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
 
 const disabled = css({
   color: `${colors.shade4} !important`,
@@ -14,6 +16,7 @@ const shippingInfo = css({
   ...shippingInfoBase,
   display: 'flex',
   flexDirection: 'row',
+  paddingRight: variables.gap.small,
 }).toString();
 
 export default {
