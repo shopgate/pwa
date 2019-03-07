@@ -8,7 +8,7 @@ import ProductContent from './components/Content';
 const props = {
   open: 'open',
   id: 'params.productId',
-  isVariant: 'state.isVariant',
+  state: 'state',
 };
 
 /**
@@ -19,12 +19,14 @@ class Product extends PureComponent {
    * @param {Object} props The consumer props.
    * @returns {JSX}
    */
-  consumeRenderer = ({ open, id, isVariant }) => {
+  consumeRenderer = ({ open, id, state }) => {
     if (!open) {
       return null;
     }
 
-    return <ProductContent productId={hex2bin(id) || null} isVariant={isVariant || false} />;
+    const productId = state.productId || hex2bin(id);
+
+    return <ProductContent productId={productId || null} isVariant={!!state.productId} />;
   }
 
   /**
