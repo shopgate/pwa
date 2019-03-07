@@ -14,7 +14,7 @@ export const SCANNER_ANIMATION_FOREGROUND_RIGHT = 'foregroundRight';
  * The scanner webview slides in from the bottom screen edge.
  * @type {string}
  */
-export const SCANNER_ANIMATION_FOREGROUND_BOTTON = 'foregroundBottom';
+export const SCANNER_ANIMATION_FOREGROUND_BOTTOM = 'foregroundBottom';
 
 /**
  * The scanner mode option for an active scanner functionality.

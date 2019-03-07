@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 import AppCommand from '../classes/AppCommand';
 import { PWA_DEFAULT_TAB } from '../constants/Command';
 import {
-  SCANNER_ANIMATION_FOREGROUND_BOTTON,
+  SCANNER_ANIMATION_FOREGROUND_BOTTOM,
   SCANNER_TYPE_BARCODE,
   SCANNER_TYPE_CARD,
   SCANNER_TYPE_IMAGE,
@@ -30,7 +30,7 @@ import {
 export function openScanner(params) {
   const defaults = {
     src: 'sgapi:scanner',
-    animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
+    animation: SCANNER_ANIMATION_FOREGROUND_BOTTOM,
     modes: {
       [SCANNER_TYPE_BARCODE]: SCANNER_MODE_OFF,
       [SCANNER_TYPE_IMAGE]: SCANNER_MODE_OFF,
@@ -70,7 +70,7 @@ export function openScanner(params) {
  */
 export function closeScanner(params) {
   const defaults = {
-    animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
+    animation: SCANNER_ANIMATION_FOREGROUND_BOTTOM,
   };
 
   const merged = merge(defaults, params);
