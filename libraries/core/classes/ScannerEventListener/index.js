@@ -1,5 +1,7 @@
 import { logger } from '../../helpers';
-import AppScanner from '../Scanner';
+
+// TODO: Add this back in, as soon as the Scanner implementation is available
+// . import AppScanner from '../Scanner';
 
 /**
  * Allows anyone to listen for scan results based on scope, type or both.
@@ -43,7 +45,8 @@ class ScannerEventListener {
    * Attach the current event listener to the app scanner.
    */
   attach = () => {
-    AppScanner.addListener(this);
+    // TODO: Add this back in, as soon as the Scanner implementation is available
+    // . AppScanner.addListener(this);
   }
 
   /**
