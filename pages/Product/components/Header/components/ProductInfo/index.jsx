@@ -7,6 +7,8 @@ import {
   PRODUCT_INFO,
   PRODUCT_INFO_AFTER,
   PRODUCT_INFO_BEFORE,
+  PRODUCT_INFO_ROW1,
+  PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Manufacturer from '../Manufacturer';
 import Shipping from '../Shipping';
@@ -29,32 +31,36 @@ const ProductInfo = ({ productId, options }) => (
     <Portal name={PRODUCT_INFO}>
       <Grid component="div">
         <Grid.Item component="div" grow={1}>
-          <div className={styles.productInfo}>
-            <Manufacturer productId={productId} />
-          </div>
-          <div className={styles.productInfo}>
-            <Shipping productId={productId} />
-          </div>
-          <div className={styles.productInfo}>
-            <Availability productId={productId} />
-          </div>
-          <div className={styles.productInfo}>
-            <StockInfo productId={productId} />
-          </div>
+          <Portal name={PRODUCT_INFO_ROW1}>
+            <div className={styles.productInfo}>
+              <Manufacturer productId={productId} />
+            </div>
+            <div className={styles.productInfo}>
+              <Shipping productId={productId} />
+            </div>
+            <div className={styles.productInfo}>
+              <Availability productId={productId} />
+            </div>
+            <div className={styles.productInfo}>
+              <StockInfo productId={productId} />
+            </div>
+          </Portal>
         </Grid.Item>
         <Grid.Item component="div" className={styles.priceContainer}>
-          <div className={styles.priceInfo}>
-            <PriceStriked productId={productId} options={options} />
-          </div>
-          <div className={styles.priceInfo}>
-            <Price productId={productId} options={options} />
-          </div>
-          <div className={styles.priceInfo}>
-            <PriceInfo productId={productId} options={options} />
-          </div>
-          <div className={styles.priceInfo}>
-            <Tiers productId={productId} options={options} />
-          </div>
+          <Portal name={PRODUCT_INFO_ROW2}>
+            <div className={styles.priceInfo}>
+              <PriceStriked productId={productId} options={options} />
+            </div>
+            <div className={styles.priceInfo}>
+              <Price productId={productId} options={options} />
+            </div>
+            <div className={styles.priceInfo}>
+              <PriceInfo productId={productId} options={options} />
+            </div>
+            <div className={styles.priceInfo}>
+              <Tiers productId={productId} options={options} />
+            </div>
+          </Portal>
         </Grid.Item>
         <TaxDisclaimer />
       </Grid>
