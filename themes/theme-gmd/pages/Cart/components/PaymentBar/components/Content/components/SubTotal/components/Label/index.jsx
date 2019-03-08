@@ -11,7 +11,7 @@ import styles from './style';
  * @return {JSX}
  */
 const SubTotalLabel = ({ isDisabled }) => (
-  <div className={`${isDisabled ? styles : ''}`}>
+  <div className={`${styles.subTotalBase} ${isDisabled ? styles.disabled : ''}`}>
     <I18n.Text string="cart.subtotal" />:
   </div>
 );
@@ -20,10 +20,10 @@ SubTotalLabel.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
 };
 
-export default props => (
+export default () => (
   <LoadingContext.Consumer>
     {({ isLoading }) => (
-      <SubTotalLabel {...props} isDisabled={isLoading(CART_PATH)} />
+      <SubTotalLabel isDisabled={isLoading(CART_PATH)} />
     )}
   </LoadingContext.Consumer>
 );
