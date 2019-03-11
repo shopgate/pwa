@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -39,7 +39,7 @@ const createTabAction = (tab, isHighlighted, path) => {
 /**
  * The TabBar component
  */
-class TabBar extends Component {
+class TabBar extends PureComponent {
   static show = () => {
     UIEvents.emit(SHOW_TAB_BAR);
   }
