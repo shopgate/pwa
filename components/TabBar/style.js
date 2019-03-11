@@ -5,7 +5,7 @@ const { style } = document.documentElement;
 
 /**
  * Sets a global css variable that indicates the current height of the TabBar
- * @param {boolean} isVisible The current visiblity state
+ * @param {boolean} isVisible The current visibility state
  */
 export const updateHeightCSSProperty = (isVisible) => {
   const value = `${isVisible ? variables.tabBar.height : 0}px`;
