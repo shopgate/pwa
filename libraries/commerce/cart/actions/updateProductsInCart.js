@@ -2,6 +2,8 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
+import createPipelineErrorList from '../helpers/createPipelineErrorList';
+import { ECART } from '../constants/PipelineErrors';
 import updateProducts from '../action-creators/updateProductsInCart';
 import successUpdateProductsInCart from '../action-creators/successUpdateProductsInCart';
 import errorUpdateProductsInCart from '../action-creators/errorUpdateProductsInCart';
@@ -18,8 +20,14 @@ const updateProductsInCart = updateData => (dispatch) => {
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS);
   request.setInput({ cartItems: updateData })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
+    .setErrorBlacklist(ECART)
     .dispatch()
     .then(({ messages }) => {
+      /**
+       * @Deprecated: The property "messages" is not supposed to be part of the pipeline response.
+       * Specification demands errors to be returned as response object with an "error" property.
+       * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
+       */
       if (messages && messagesHaveErrors(messages)) {
         dispatch(errorUpdateProductsInCart(updateData, messages));
         return;
@@ -28,7 +36,10 @@ const updateProductsInCart = updateData => (dispatch) => {
       dispatch(successUpdateProductsInCart());
     })
     .catch((error) => {
-      dispatch(errorUpdateProductsInCart(updateData));
+      dispatch(errorUpdateProductsInCart(
+        updateData,
+        createPipelineErrorList(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS, error)
+      ));
       logger.error(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS, error);
     });
 };

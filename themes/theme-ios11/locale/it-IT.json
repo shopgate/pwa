@@ -1,11 +1,13 @@
 {
   "common": {
-    "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# day {time}} other {# days {time}}}",
+    "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# giorno {time}} other {# giorni {time}}}",
     "load_more": "Carica altro",
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
     "undo": "annulla",
-    "required": "Necessaria *"
+    "required": "Necessaria *",
+    "please_choose": "Inserisci",
+    "show_products": "Mostra i prodotti"
   },
   "titles": {
     "categories": "Categorie",

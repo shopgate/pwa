@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
+import { router } from '@shopgate/pwa-common/helpers/router';
 import isEqual from 'lodash/isEqual';
-import { historyReplace } from '@shopgate/pwa-common/actions/router';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { getProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -16,16 +14,13 @@ const mapStateToProps = (state, props) => ({
 });
 
 /**
- * @param {Function} dispatch  The redux dispatch function.
  * @return {Object}
  */
-const mapDispatchToProps = dispatch => ({
-  navigate: (productId, isVariant) => dispatch(historyReplace({
-    pathname: `${ITEM_PATH}/${bin2hex(productId)}`,
-    state: {
-      isVariant,
-    },
-  })),
+const mapDispatchToProps = () => ({
+  navigate: (productId) => {
+    const route = router.getCurrentRoute();
+    router.update(route.id, { productId });
+  },
 });
 
 /**

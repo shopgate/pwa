@@ -5,7 +5,9 @@
     "cancel": "Abbrechen",
     "submit": "Abschicken",
     "undo": "Rück­gän­gig",
-    "required": "Erforderlich *"
+    "required": "Erforderlich *",
+    "please_choose": "Bitte wählen",
+    "show_products": "Produkte anzeigen"
   },
   "titles": {
     "categories": "Kategorien",
@@ -77,7 +79,7 @@
     "cost": "{price} Versand"
   },
   "liveshopping": {
-    "discount_badge": "SAVE {0}%"
+    "discount_badge": "{0}% SPAREN"
   },
   "modal": {
     "confirm": "Bestätigen",

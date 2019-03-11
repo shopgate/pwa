@@ -3,6 +3,8 @@ import event from '@shopgate/pwa-core/classes/Event';
 import logGroup from '@shopgate/pwa-core/helpers/logGroup';
 import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
 import { useBrowserConnector } from '@shopgate/pwa-core/helpers';
+import errorManager from '@shopgate/pwa-core/classes/ErrorManager';
+import { SOURCE_TRACKING, CODE_TRACKING } from '@shopgate/pwa-core/constants/ErrorManager';
 import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
@@ -14,8 +16,10 @@ import {
 } from '@shopgate/pwa-common/streams/app';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
 import { APP_EVENT_VIEW_DID_APPEAR, APP_EVENT_VIEW_DID_DISAPPEAR } from '../constants';
-import { pwaDidAppear } from '../action-creators';
-import { setPWAVisibleState } from '../helpers';
+import {
+  pwaDidAppear,
+  pwaDidDisappear,
+} from '../action-creators';
 
 /**
  * Setup tracking subscriptions.
@@ -29,12 +33,11 @@ export default function setup(subscribe) {
     ]);
 
     event.addCallback(APP_EVENT_VIEW_DID_APPEAR, () => {
-      setPWAVisibleState(true);
       dispatch(pwaDidAppear());
     });
 
     event.addCallback(APP_EVENT_VIEW_DID_DISAPPEAR, () => {
-      setPWAVisibleState(false);
+      dispatch(pwaDidDisappear());
     });
   });
 
@@ -74,6 +77,11 @@ export default function setup(subscribe) {
       logGroup('Tracking %c: Could not setup plugins', {
         error,
       }, '#ED0422');
+
+      error.code = CODE_TRACKING;
+      error.source = SOURCE_TRACKING;
+      error.context = 'trackingPlugins';
+      errorManager.queue(error);
     }
 
     core.registerFinished();

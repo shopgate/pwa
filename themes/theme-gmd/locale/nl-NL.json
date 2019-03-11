@@ -5,7 +5,9 @@
     "cancel": "Annuleer",
     "submit": "Zend in",
     "undo": "Ongedaan maken",
-    "required": "Verplicht *"
+    "required": "Verplicht *",
+    "please_choose": "Kies",
+    "show_products": "Toon producten"
   },
   "titles": {
     "categories": "Categorieën",

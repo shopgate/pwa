@@ -1,8 +1,8 @@
 import {
   errorManager,
   EINVALIDCREDENTIALS,
-  SHOPGATE_USER_LOGIN_USER,
 } from '@shopgate/pwa-core';
+import { SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-common/constants/Pipelines';
 import { appWillStart$ } from '@shopgate/pwa-common/streams';
 
 /**

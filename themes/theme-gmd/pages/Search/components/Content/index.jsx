@@ -29,6 +29,7 @@ class SearchContent extends Component {
     return (
       (this.props.showNoResults !== nextProps.showNoResults)
       || (this.props.showFilterBar !== nextProps.showFilterBar)
+      || (this.props.searchPhrase !== nextProps.searchPhrase)
     );
   }
 

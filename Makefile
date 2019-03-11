@@ -1,18 +1,37 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
-RECURSIVE_MAKEFILE_NAME = Makefile
-
+####################################################################################################
+# NOTICE:
+# -------
+# If LIBRARIES, EXTENSIONS or UTILS is extended and the npm packacke should not be prefixed with
+# "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
 LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
-UTILS = eslint-config unit-tests e2e benchmark
+TRANSPILED_UTILS = benchmark
+UTILS = eslint-config unit-tests e2e
 THEMES = theme-gmd theme-ios11
+
+# Adds "@shopgate/pwa-" in front of all package names except "@shopgate/eslint-config" and "@shopgate/tracking-core".
+# Optionally takes a version number as second parameter.
+# Example: echo $(call get-package-name,common-core)
+define get-npm-package-name
+$(patsubst %@,%, $(patsubst %,%@$(strip $(2)),$(patsubst %,@shopgate/%,$(patsubst pwa-eslint-config,eslint-config,$(patsubst pwa-tracking-core,tracking-core,$(patsubst pwa-pwa-%,pwa-%,$(patsubst %,pwa-%,$(strip $(1)))))))))
+
+
+endef
+####################################################################################################
+
+# This is required, so the Jenkins can change branches without changing the makefile
+RECURSIVE_MAKEFILE_NAME = Makefile
 
 GITHUB_AUTH_KEY =
 GITHUB_AUTH_TOKEN =
 
+# This is basically a feature version
 REPO_VERSION =
 
+# Required for versioning and npm (without the "v" prefix)
 RELEASE_VERSION = $(patsubst v%,%,$(strip $(REPO_VERSION)))
 
 # Branch name to start the release from; "develop" by default
@@ -24,7 +43,7 @@ else
 	IS_RC_BRANCH_NAME = false
 endif
 
-# Make sure the release name starts with a "v" and the release version does not
+# Make sure the release name starts with a "v"
 RELEASE_NAME = v$(patsubst v%,%,$(strip $(RELEASE_VERSION)))
 
 
@@ -109,8 +128,7 @@ sanity-check:
 release:
 		$(call setup-release)
 		$(call update-versions)
-		$(call build-npm-packages)
-		$(call publish-npm-packages)
+		$(call release-npm-packages)
 		$(call make, publish-to-github)
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		$(call create-github-releases,master)
@@ -146,23 +164,36 @@ setup-frontend-with-current-ip:
 		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}')",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "cheap-module-eval-source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
+# Open cypress UI for GMD theme
 e2e-gmd:
-		cd themes/theme-gmd && yarn run e2e;
+	cd themes/theme-gmd && yarn run e2e;
 
+# Open cypress UI for IOS theme
 e2e-ios11:
-		cd themes/theme-ios11 && yarn run e2e;
+	cd themes/theme-ios11 && yarn run e2e;
+
+# Run GMD legacy tests
+e2e-gmd-legacy:
+	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/consistency/legacy.js,themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
+
+# Run IOS legacy tests
+e2e-ios11-legacy:
+	npx cypress run -P ./themes/theme-ios11/e2e -s 'themes/theme-ios11/e2e/integration/specFiles/consistency/legacy.js,themes/theme-ios11/e2e/integration/specFiles/functional/legacy.js'
 
 e2e-checkout:
-		cd themes/theme-gmd && yarn run e2e:checkout;
+	cd themes/theme-gmd && yarn run e2e:checkout;
 
 e2e-user:
-		cd themes/theme-gmd && yarn run e2e:user;
+	cd themes/theme-gmd && yarn run e2e:user;
 
 e2e-install:
-		npm i --no-save --no-package-lock cypress@3.1.1;
-
-
-
+	# Symlinking support, plugins, fixtures
+	npx symlink-dir ./utils/e2e/support ./themes/theme-gmd/e2e/cypress/support
+	npx symlink-dir ./utils/e2e/fixtures ./themes/theme-gmd/e2e/cypress/fixtures
+	npx symlink-dir ./utils/e2e/plugins ./themes/theme-gmd/e2e/cypress/plugins
+	npx symlink-dir ./utils/e2e/support ./themes/theme-ios11/e2e/cypress/support
+	npx symlink-dir ./utils/e2e/fixtures ./themes/theme-ios11/e2e/cypress/fixtures
+	npx symlink-dir ./utils/e2e/plugins ./themes/theme-ios11/e2e/cypress/plugins
 
 ####################################################################################################
 # MAKE HELPER WHICH USES THE CORRECT MAKEFILE TO RUN (local or another one predefined by Jenkins)
@@ -266,61 +297,46 @@ endef
 
 
 ####################################################################################################
-# BUILD-NPM-PACKAGES
+# RELEASE-NPM-PACKAGES
 
-define build-npm-packages
+define release-npm-packages
 		@echo "======================================================================"
-		@echo "| Building library npm packages"
+		@echo "| Releasing library and util npm packages"
 		@echo "======================================================================"
-		$(foreach library, $(LIBRARIES), $(call build-library, $(library)))
+		$(foreach library, $(LIBRARIES), $(call build-publish-npm-package, libraries, $(library)))
+		$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call build-publish-npm-package, utils, $(transpiled_util)))
+		@# No build for packages in the UTILS list - publish without transpilation
+		$(foreach util, $(UTILS), $(call publish-npm-package, utils, $(util)))
 
 endef
 
-define build-library
-		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-		cp ./libraries/$(strip $(1))/package.json ./libraries/$(strip $(1))/dist/;
-		cp ./libraries/$(strip $(1))/README.md ./libraries/$(strip $(1))/dist/;
-		cp ./libraries/$(strip $(1))/LICENSE.md ./libraries/$(strip $(1))/dist/;
+define build-publish-npm-package
+		$(call build-npm-package, $(strip $(1)), $(strip $(2)))
+		$(call publish-npm-package, $(strip $(1)), $(strip $(2)), dist)
+		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))
+endef
+
+define build-npm-package
+		@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
+		BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+		cp ./$(strip $(1))/$(strip $(2))/package.json ./$(strip $(1))/$(strip $(2))/dist/;
+		cp ./$(strip $(1))/$(strip $(2))/README.md ./$(strip $(1))/$(strip $(2))/dist/;
+		cp ./$(strip $(1))/$(strip $(2))/LICENSE.md ./$(strip $(1))/$(strip $(2))/dist/;
 
 endef
 
-
-
-####################################################################################################
-# PUBLISH-NPM-PACKAGES
-
-# Publish all library and utils npm packages to npm
-define publish-npm-packages
-		$(foreach package, $(LIBRARIES), $(call npm-release-libraries, $(package)))
-		$(foreach package, $(UTILS), $(call npm-release-utils, $(package)))
-		$(call clean-library-packages)
-
-endef
-
-define npm-release-libraries
+define publish-npm-package
+		@echo "> Publishing './$(strip $(1))/$(strip $(2))' npm package"
 		@if [ "$(STABLE)" != "true" ]; \
-			then npm publish ./libraries/$(strip $(1))/dist/ --access public --tag beta; \
-			else npm publish ./libraries/$(strip $(1))/dist/ --access public; \
+			then npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public --tag beta; \
+			else npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public; \
 		fi;
 
 endef
 
-define npm-release-utils
-		@if [ "$(STABLE)" != "true" ]; \
-			then npm publish ./utils/$(strip $(1))/ --access public --tag beta; \
-			else npm publish ./utils/$(strip $(1))/ --access public; \
-		fi;
-
-endef
-
-# Clean the builds.
-define clean-library-packages
-		$(foreach package, $(LIBRARIES), $(call clean-library-package, $(package)))
-
-endef
-
-define clean-library-package
-		rm -rf -f ./libraries/$(strip $(1))/dist;
+define clean-npm-package
+		@echo "> Cleaning './$(strip $(1))/$(strip $(2))/dist' npm package"
+		rm -rf -f ./$(strip $(1))/$(strip $(2))/dist;
 
 endef
 
@@ -338,21 +354,17 @@ publish-to-github:
 		git push origin "releases/$(RELEASE_NAME)";
 ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
-		$(call build-changelog)
+		@# $ (call build-changelog)
 endif
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		# UPDATING MASTER FOR STABLE RELEASE
 		$(call push-subtrees-to-git, master)
+		git reset --hard;
 		git merge origin/master
 		git push origin "releases/$(RELEASE_NAME)"
 		git push origin "releases/$(RELEASE_NAME)":"refs/heads/$(RELEASE_NAME)";
 		git push origin "releases/$(RELEASE_NAME)":master;
 		git status;
-		git checkout develop && git pull;
-		git merge "releases/$(RELEASE_NAME)" --no-commit;
-		git status
-		git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
-		git push origin develop;
 else
 		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
@@ -362,6 +374,16 @@ define build-changelog
 		@echo "======================================================================"
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
+		# Update develop branch, first
+		git checkout origin/develop && git checkout -b develop;
+		git merge "releases/$(RELEASE_NAME)" --no-commit;
+		git status;
+		-git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
+		-git push origin develop;
+		git status;
+		git reset --hard;
+		git checkout "releases/$(RELEASE_NAME)";
+		git status;
 		# Create a dummy tag for the changelog creation tool
 		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
 		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";

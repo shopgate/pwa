@@ -524,7 +524,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                           scrollTop={null}
                         >
                           <FilterChips
-                            currentPathname="/"
+                            currentPathname={null}
                             filters={null}
                             openFilters={[Function]}
                             routeId=""

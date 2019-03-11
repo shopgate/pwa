@@ -102,7 +102,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
                     "currency": "USD",
                     "price": 10,
                     "rightComponent": <PriceDifference
-                      className="css-fxshz5"
+                      className=""
                       currency="USD"
                       difference={10}
                     />,
@@ -111,7 +111,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
                     "currency": "USD",
                     "price": 10,
                     "rightComponent": <PriceDifference
-                      className="css-fxshz5"
+                      className=""
                       currency="USD"
                       difference={10}
                     />,
@@ -147,7 +147,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
                       "currency": "USD",
                       "price": 10,
                       "rightComponent": <PriceDifference
-                        className="css-fxshz5"
+                        className=""
                         currency="USD"
                         difference={10}
                       />,
@@ -156,7 +156,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
                       "currency": "USD",
                       "price": 10,
                       "rightComponent": <PriceDifference
-                        className="css-fxshz5"
+                        className=""
                         currency="USD"
                         difference={10}
                       />,

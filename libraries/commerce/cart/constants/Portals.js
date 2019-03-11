@@ -4,7 +4,11 @@ const NAV_MENU = 'nav-menu';
 const ITEM_LIST = 'item-list';
 const ITEM = 'item';
 const PAYMENT_BAR = 'payment-bar';
+const TOTALS = 'totals';
+const SUB_TOTAL = 'sub-total';
+const SHIPPING = 'shipping';
 const COUPON_FIELD = 'coupon-field';
+const CHECKOUT_BUTTON = 'checkout-button';
 
 const NAME = 'name';
 const IMAGE = 'image';
@@ -56,6 +60,22 @@ export const CART_PAYMENT_BAR_BEFORE = `${CART}.${PAYMENT_BAR}.${BEFORE}`;
 export const CART_PAYMENT_BAR = `${CART}.${PAYMENT_BAR}`;
 export const CART_PAYMENT_BAR_AFTER = `${CART}.${PAYMENT_BAR}.${AFTER}`;
 
+export const CART_PAYMENT_BAR_TOTALS_BEFORE = `${CART}.${PAYMENT_BAR}.${TOTALS}.${BEFORE}`;
+export const CART_PAYMENT_BAR_TOTALS = `${CART}.${PAYMENT_BAR}.${TOTALS}`;
+export const CART_PAYMENT_BAR_TOTALS_AFTER = `${CART}.${PAYMENT_BAR}.${TOTALS}.${AFTER}`;
+
+export const CART_PAYMENT_BAR_TOTALS_SUB_TOTAL_BEFORE = `${CART}.${PAYMENT_BAR}.${TOTALS}.${SUB_TOTAL}.${BEFORE}`;
+export const CART_PAYMENT_BAR_TOTALS_SUB_TOTAL = `${CART}.${PAYMENT_BAR}.${TOTALS}.${SUB_TOTAL}`;
+export const CART_PAYMENT_BAR_TOTALS_SUB_TOTAL_AFTER = `${CART}.${PAYMENT_BAR}.${TOTALS}.${SUB_TOTAL}.${AFTER}`;
+
+export const CART_PAYMENT_BAR_TOTALS_SHIPPING_BEFORE = `${CART}.${PAYMENT_BAR}.${TOTALS}.${SHIPPING}.${BEFORE}`;
+export const CART_PAYMENT_BAR_TOTALS_SHIPPING = `${CART}.${PAYMENT_BAR}.${TOTALS}.${SHIPPING}`;
+export const CART_PAYMENT_BAR_TOTALS_SHIPPING_AFTER = `${CART}.${PAYMENT_BAR}.${TOTALS}.${SHIPPING}.${AFTER}`;
+
 export const NAV_MENU_CART_BEFORE = `${NAV_MENU}.${CART}.${BEFORE}`;
 export const NAV_MENU_CART = `${NAV_MENU}.${CART}`;
 export const NAV_MENU_CART_AFTER = `${NAV_MENU}.${CART}.${AFTER}`;
+
+export const CART_CHECKOUT_BUTTON = `${CART}.${CHECKOUT_BUTTON}`;
+export const CART_CHECKOUT_BUTTON_BEFORE = `${CART}.${CHECKOUT_BUTTON}.${BEFORE}`;
+export const CART_CHECKOUT_BUTTON_AFTER = `${CART}.${CHECKOUT_BUTTON}.${AFTER}`;

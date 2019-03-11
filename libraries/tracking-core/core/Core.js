@@ -1,4 +1,6 @@
 import { logger } from '@shopgate/pwa-core/helpers';
+import errorManager from '@shopgate/pwa-core/classes/ErrorManager';
+import { SOURCE_TRACKING, CODE_TRACKING } from '@shopgate/pwa-core/constants/ErrorManager';
 import { optOut, isOptOut } from '../helpers/optOut';
 import trackingEvents, {
   REMOVE_TRACKER,
@@ -225,7 +227,17 @@ class Core {
         // Pass the unifiedBlacklist to the plugin if the plugin is the unified one
         params[2] = blacklist;
       }
-      entry.callback.apply(this, params);
+      try {
+        entry.callback.apply(this, params);
+      } catch (err) {
+        logger.error(`'SgTrackingCore': Error in plugin [${entry.trackerName}]`, err);
+
+        err.code = CODE_TRACKING;
+        err.source = SOURCE_TRACKING;
+        err.context = entry.trackerName;
+
+        errorManager.queue(err);
+      }
     });
   }
 

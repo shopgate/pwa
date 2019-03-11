@@ -1,8 +1,10 @@
 import els from '../../elements/de';
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
 import { checkForWrongCoupon } from '../../helper/coupon';
 
 describe('functional tests cart page', () => {
+  after(clearProductsFromCart);
+
   it('should add second product to cart', () => {
     cy.visit('');
     cy.get(els.basicCategory)
@@ -50,9 +52,5 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.deleteCouponButton)
       .should('not.exist');
-  });
-
-  it('should check for delete product from cart', () => {
-    clearProductFromCart();
   });
 });

@@ -27,7 +27,8 @@ function product(subscribe) {
 
   subscribe(productWillEnter$, ({ action, dispatch }) => {
     const { productId } = action.route.params;
-    const id = hex2bin(productId);
+    const { productId: variantId } = action.route.state;
+    const id = variantId || hex2bin(productId);
 
     dispatch(fetchProduct(id));
     dispatch(fetchProductDescription(id));

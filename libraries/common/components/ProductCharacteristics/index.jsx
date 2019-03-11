@@ -157,7 +157,7 @@ class ProductCharacteristics extends Component {
     }
 
     setTimeout(() => {
-      this.props.navigate(products[0].id, true);
+      this.props.navigate(products[0].id);
     }, finishTimeout);
   }
 

@@ -56,6 +56,7 @@ import {
   hasBaseProductVariants,
   getVariantId,
   getVariantAvailabilityByCharacteristics,
+  hasProductVariety,
 } from './product';
 
 jest.mock('@shopgate/pwa-core/helpers', () => {
@@ -704,23 +705,17 @@ describe('Product selectors', () => {
   });
 
   describe('getBaseProductId()', () => {
-    it('should return null and log an error when no props are passed', () => {
+    it('should return null when props are not given', () => {
       expect(getBaseProductId(mockedState)).toBeNull();
     });
 
-    it('should return the passed productId when no product is not available for the id', () => {
-      const productId = 'unavailable';
-      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
+    it('should return null when product is not found in store', () => {
+      const productId = 'unknown';
+      expect(getBaseProductId(mockedState, { productId })).toBeNull();
     });
 
-    it('should return the id of a base product when no variant is selected yet', () => {
-      const productId = 'product_1';
-      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
-    });
-
-    it('should return the id of a base product when no baseProductId prop is set', () => {
+    it('should return the id of a base product when baseProductId is null', () => {
       const productId = 'product_5';
-      delete mockedState.product.productsById[productId].productData.baseProductId;
       expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
@@ -729,7 +724,12 @@ describe('Product selectors', () => {
       expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
-    it('should return the id of a base product when a variant is selected ', () => {
+    it('should return the id of a base product when no variantId is in props', () => {
+      const productId = 'product_1';
+      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
+    });
+
+    it('should return the id of a base product when a variantId is in props', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       expect(getBaseProductId(mockedState, { productId, variantId })).toBe(productId);
@@ -867,6 +867,24 @@ describe('Product selectors', () => {
 
       const props = { productId, characteristics };
       expect(getVariantAvailabilityByCharacteristics(mockedState, props)).toEqual(availability);
+    });
+  });
+
+  describe('hasProductVariety()', () => {
+    it('should return null for missing product data', () => {
+      expect(hasProductVariety(mockedState)).toBeNull();
+      expect(hasProductVariety(mockedState, { productId: 'unknown' })).toBeNull();
+    });
+
+    it('should return false for simple product', () => {
+      expect(hasProductVariety(mockedState, { productId: 'product_5' })).toBeFalsy();
+    });
+    it('should return true for variants', () => {
+      expect(hasProductVariety(mockedState, { productId: 'product_1' })).toBeTruthy();
+    });
+    it('should return true for options', () => {
+      mockedState.product.productsById.product_5.productData.flags.hasOptions = true;
+      expect(hasProductVariety(mockedState, { productId: 'product_1' })).toBeTruthy();
     });
   });
 });

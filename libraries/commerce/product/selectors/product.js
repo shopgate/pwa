@@ -358,6 +358,24 @@ export const hasProductVariants = createSelector(
 );
 
 /**
+ * Determines if a product has variety (variants, options).
+ * This product can not be added to a cart. Selecting of variety should be done on PDP
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const hasProductVariety = createSelector(
+  getProductFlags,
+  (flags) => {
+    if (!flags) {
+      return null;
+    }
+
+    return flags.hasVariants || flags.hasOptions;
+  }
+);
+
+/**
  * Determines if a product is a base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
@@ -389,22 +407,14 @@ export const isBaseProduct = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProduct,
-  (state, props = {}) => props,
-  (product, props) => {
-    if (product) {
-      // First try to determine a baseProductId via a selected product.
-      const { baseProductId = null } = product;
-
-      if (baseProductId !== null) {
-        return baseProductId;
-      }
-
-      return product.id;
+  (product) => {
+    if (!product) {
+      return null;
     }
+    // First try to determine a baseProductId for a selected product
+    const { baseProductId = null } = product;
 
-    const { productId } = props;
-    // Use the productId from the props as fallback.
-    return typeof productId !== 'undefined' ? productId : null;
+    return baseProductId || product.id;
   }
 );
 

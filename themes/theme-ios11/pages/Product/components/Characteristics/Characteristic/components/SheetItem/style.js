@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
 
 const button = css({
   outline: 0,
@@ -12,9 +14,12 @@ const buttonDisabled = css(button, {
   color: colors.shade4,
 });
 
+const bgColor = colors.darkGray;
+const boxShadowOffset = variables.gap.bigger;
+
 const buttonSelected = css(button, {
-  background: colors.darkGray,
-  boxShadow: `-16px 0 0 ${colors.darkGray}`,
+  background: bgColor,
+  boxShadow: `-${boxShadowOffset}px 0 0 ${bgColor}, ${boxShadowOffset}px 0 0 ${bgColor}`,
   margin: '-1px 0',
   paddingTop: 17,
   paddingBottom: 17,

@@ -30,13 +30,25 @@ class AppBarDefault extends PureComponent {
     i18n: PropTypes.func,
   };
 
-  target = document.getElementById('AppHeader');
+  state = {
+    target: document.getElementById('AppHeader'),
+  }
+
+  /**
+   * Sets the target if it hasn't been set before.
+   */
+  componentDidMount() {
+    if (!this.state.target) {
+      const target = document.getElementById('AppHeader');
+      this.setState({ target: target || null }); // eslint-disable-line react/no-did-mount-set-state
+    }
+  }
 
   /**
    * @returns {JSX}
    */
   render() {
-    if (!this.props.visible) {
+    if (!this.props.visible || !this.state.target) {
       return null;
     }
 
@@ -58,7 +70,7 @@ class AppBarDefault extends PureComponent {
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,
-      this.target
+      this.state.target
     );
   }
 }
