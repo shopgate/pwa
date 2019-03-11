@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
-import getTabActionComponentForType from './helpers/getTabActionComponentForType';
+import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
+import {
+  TAB_BAR,
+  TAB_BAR_BEFORE,
+  TAB_BAR_AFTER,
+  SHOW_TAB_BAR,
+  HIDE_TAB_BAR,
+} from './constants';
 import connect from './connector';
 import styles, { updateHeightCSSProperty } from './style';
 import visibleTabs from './tabs';
@@ -28,46 +37,97 @@ const createTabAction = (tab, isHighlighted, path) => {
 };
 
 /**
- * Renders the tab bar component.
- * @param {Object} props The component properties.
- * @param {boolean} props.isVisible Whether the tab bar is visible.
- * @param {Array} props.visibleTabs The visible tabs.
- * @param {string|null} props.activeTab The currently active tab name.
- * @returns {JSX}
+ * The TabBar component
  */
-const TabBar = ({
-  isVisible,
-  activeTab,
-  path,
-}) => {
-  updateHeightCSSProperty(isVisible);
-
-  if (!isVisible) {
-    return null;
+class TabBar extends Component {
+  static show = () => {
+    UIEvents.emit(SHOW_TAB_BAR);
   }
 
-  return (
-    <KeyboardConsumer>
-      {({ open }) => !open && (
-        <div data-test-id="tabBar">
-          <Grid className={styles}>
-            {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-          </Grid>
-        </div>
-      )}
-    </KeyboardConsumer>
-  );
-};
+  static hide = () => {
+    UIEvents.emit(HIDE_TAB_BAR);
+  }
 
-TabBar.propTypes = {
-  path: PropTypes.string.isRequired,
-  activeTab: PropTypes.string,
-  isVisible: PropTypes.bool,
-};
+  static propTypes = {
+    path: PropTypes.string.isRequired,
+    activeTab: PropTypes.string,
+    isVisible: PropTypes.bool,
+  };
 
-TabBar.defaultProps = {
-  activeTab: null,
-  isVisible: true,
-};
+  static defaultProps = {
+    activeTab: null,
+    isVisible: true,
+  };
+
+  state = { isVisible: this.props.isVisible };
+
+  /** Did mount hook */
+  componentDidMount() {
+    UIEvents.addListener(SHOW_TAB_BAR, this.show);
+    UIEvents.addListener(HIDE_TAB_BAR, this.hide);
+    updateHeightCSSProperty(this.props.isVisible);
+  }
+
+  /**
+   * @param {Object} nextProps next props
+   */
+  componentWillReceiveProps({ isVisible }) {
+    if (this.state.isVisible !== isVisible) {
+      this.setState({ isVisible });
+    }
+  }
+
+  /** Will unmount hook */
+  componentWillUnmount() {
+    UIEvents.removeListener(SHOW_TAB_BAR, this.show);
+    UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
+  }
+
+  show = () => {
+    this.setState({
+      isVisible: true,
+    });
+  }
+
+  hide = () => {
+    this.setState({
+      isVisible: false,
+    });
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { activeTab, path } = this.props;
+    const { isVisible } = this.state;
+    if (!isVisible) {
+      return null;
+    }
+
+    const props = {
+      isVisible,
+      activeTab,
+      path,
+    };
+
+    return (
+      <KeyboardConsumer>
+        {({ open }) => !open && (
+          <div data-test-id="tabBar">
+            <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
+            {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
+            <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
+              <Grid className={styles}>
+                {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+              </Grid>
+            </Portal>
+            <Portal name={TAB_BAR_AFTER} props={{ ...props }} />
+          </div>
+        )}
+      </KeyboardConsumer>
+    );
+  }
+}
 
 export default connect(TabBar);
