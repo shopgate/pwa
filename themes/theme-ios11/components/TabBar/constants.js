@@ -1,4 +1,4 @@
-const TAB_BAR = 'tab-bar';
+import { BEFORE, AFTER } from '@shopgate/pwa-common/constants/Portals';
 
 export const TAB_HOME = 'home';
 export const TAB_BROWSE = 'browse';
@@ -13,8 +13,9 @@ const CART_ICON = `${TAB_CART}-icon`;
 const MORE_ICON = `${TAB_MORE}-icon`;
 const FAVORITES_ICON = `${TAB_FAVORITES}-icon`;
 
-const BEFORE = 'before';
-const AFTER = 'after';
+export const TAB_BAR = 'tab-bar';
+export const TAB_BAR_BEFORE = `${TAB_BAR}.${BEFORE}`;
+export const TAB_BAR_AFTER = `${TAB_BAR}.${AFTER}`;
 
 export const TAB_BAR_HOME_BEFORE = `${TAB_BAR}.${TAB_HOME}.${BEFORE}`;
 export const TAB_BAR_HOME = `${TAB_BAR}.${TAB_HOME}`;
