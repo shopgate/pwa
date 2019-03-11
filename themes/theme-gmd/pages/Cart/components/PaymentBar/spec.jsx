@@ -3,10 +3,10 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import SubTotal from './components/Content/components/SubTotal';
-import ShippingCosts from './components/Content/components/ShippingCosts';
+import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import SubTotalAmount from './components/Content/components/SubTotal/components/Amount';
+import ShippingCostsAmount from './components/Content/components/ShippingCosts/components/Amount';
 import Content from './components/Content';
 import PaymentBar from './index';
 
@@ -28,7 +28,7 @@ jest.mock('./components/Content/components/CheckoutButton/connector', () => (obj
   return newObj;
 });
 
-jest.mock('./components/Content/components/ShippingCosts/connector', () => (obj) => {
+jest.mock('./components/Content/components/ShippingCosts/components/Amount/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -41,7 +41,7 @@ jest.mock('./components/Content/components/ShippingCosts/connector', () => (obj)
   return newObj;
 });
 
-jest.mock('./components/Content/components/ShippingCostsLabel/connector', () => (obj) => {
+jest.mock('./components/Content/components/ShippingCosts/components/Label/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -53,7 +53,7 @@ jest.mock('./components/Content/components/ShippingCostsLabel/connector', () => 
   return obj;
 });
 
-jest.mock('./components/Content/components/SubTotal/connector', () => (obj) => {
+jest.mock('./components/Content/components/SubTotal/components/Amount/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -105,7 +105,7 @@ describe('<PaymentBar />', () => {
     const component = wrapper.find(Content);
 
     expect(wrapper).toMatchSnapshot();
-    expect(component.find(SubTotal).text()).toEqual('$4.99');
+    expect(component.find(SubTotalAmount).text()).toEqual('$4.99');
   });
 
   it('should show formatted shipping costs', () => {
@@ -113,7 +113,7 @@ describe('<PaymentBar />', () => {
     const component = wrapper.find(Content);
 
     expect(wrapper).toMatchSnapshot();
-    expect(component.find(ShippingCosts).text()).toEqual('$2.99');
+    expect(component.find(ShippingCostsAmount).text()).toEqual('$2.99');
   });
 
   it('should disable the component, if the isDisabled prop is true', () => {
