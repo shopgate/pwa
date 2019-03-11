@@ -22,7 +22,7 @@ describe('ScannerEventHandler', () => {
     eventHandler.eventListeners.clear();
   });
 
-  describe('.constructor()', () => {
+  describe('constructor()', () => {
     it('should not have any listeners after initialization', () => {
       expect(eventHandler.eventListeners.size).toBe(0);
     });

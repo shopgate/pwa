@@ -1,7 +1,6 @@
 import ScannerEventListener from './index';
 import ScannerEvent from '../ScannerEvent';
-// TODO: Add this back in, as soon as the Scanner implementation is available
-// . import AppScanner from '../Scanner';
+import AppScanner from '../Scanner';
 import { logger } from '../../helpers';
 
 jest.mock('../../helpers', () => ({
@@ -18,7 +17,7 @@ describe('ScannerEventListener', () => {
     jest.clearAllMocks();
   });
 
-  describe('.constructor()', () => {
+  describe('constructor()', () => {
     it('should initialize the name correctly if none was set', () => {
       const l = new ScannerEventListener();
 
@@ -56,8 +55,8 @@ describe('ScannerEventListener', () => {
       const invalidHandlerErrorMessage = 'The ScannerEventListener handler must be a function!';
       new ScannerEventListener().setHandler(invalidHandler);
 
-      expect(logger.error).toHaveBeenCalledTimes(1);
-      expect(logger.error).toHaveBeenLastCalledWith(new Error(invalidHandlerErrorMessage));
+      expect(logger.error).toBeCalledTimes(1);
+      expect(logger.error).toBeCalledWith(new Error(invalidHandlerErrorMessage));
     });
 
     it('should not output an "invalid handler" error for a valid handler', () => {
@@ -80,23 +79,22 @@ describe('ScannerEventListener', () => {
     });
   });
 
-  // TODO: Add this back in, as soon as the Scanner implementation is available
-  // . describe('attach()', () => {
-  // .   // Make sure to restore scanner object functionality after each test
-  // .   const { addListener } = AppScanner;
-  // .   afterEach(() => {
-  // .     AppScanner.addListener = addListener;
-  // .   });
-  // .
-  // .   it('should attach the new listener to the global Scanner object', () => {
-  // .     AppScanner.addListener = jest.fn();
-  // .     const l = new ScannerEventListener();
-  // .     l.attach();
-  // .
-  // .     expect(AppScanner.addListener).toHaveBeenCalledTimes(1);
-  // .     expect(AppScanner.addListener).toHaveBeenCalledWith(l);
-  // .   });
-  // . });
+  describe('attach()', () => {
+    // Make sure to restore scanner object functionality after each test
+    const { addListener } = AppScanner;
+    afterEach(() => {
+      AppScanner.addListener = addListener;
+    });
+
+    it('should attach the new listener to the global Scanner object', () => {
+      AppScanner.addListener = jest.fn();
+      const l = new ScannerEventListener();
+      l.attach();
+
+      expect(AppScanner.addListener).toBeCalledTimes(1);
+      expect(AppScanner.addListener).toBeCalledWith(l);
+    });
+  });
 
   describe('notify(event)', () => {
     const mockPayload = {
@@ -108,7 +106,7 @@ describe('ScannerEventListener', () => {
       const l = new ScannerEventListener();
       await l.notify(null);
 
-      expect(logger.warn).toHaveBeenCalledTimes(1);
+      expect(logger.warn).toBeCalledTimes(1);
     });
 
     it('should print a warning if the custom handler returns a value', async () => {
@@ -116,7 +114,7 @@ describe('ScannerEventListener', () => {
       const l = new ScannerEventListener(name).setHandler(customHandler);
       await l.notify(new ScannerEvent('scope', 'type', mockPayload));
 
-      expect(logger.warn).toHaveBeenCalledTimes(1);
+      expect(logger.warn).toBeCalledTimes(1);
     });
 
     it('should call the handler on every event for "global" listeners', async () => {
@@ -153,7 +151,7 @@ describe('ScannerEventListener', () => {
       await l.notify(new ScannerEvent(listenScope, anyType, mockPayload));
       await l.notify(new ScannerEvent(differentScope, anyType, mockPayload));
 
-      expect(customHandler).toHaveBeenCalledTimes(1);
+      expect(customHandler).toBeCalledTimes(1);
     });
 
     it('should call the handler for specific event types only', async () => {
@@ -165,7 +163,7 @@ describe('ScannerEventListener', () => {
       await l.notify(new ScannerEvent(anyScope, listenType, mockPayload));
       await l.notify(new ScannerEvent(anyScope, differentType, mockPayload));
 
-      expect(customHandler).toHaveBeenCalledTimes(1);
+      expect(customHandler).toBeCalledTimes(1);
     });
 
     it('should call the handler for specific event scope/type combinations only', async () => {
@@ -180,7 +178,7 @@ describe('ScannerEventListener', () => {
       await l.notify(new ScannerEvent(differentScope, listenType, mockPayload));
       await l.notify(new ScannerEvent(differentScope, differentType, mockPayload));
 
-      expect(customHandler).toHaveBeenCalledTimes(1);
+      expect(customHandler).toBeCalledTimes(1);
     });
 
     it('should forward the handler error to the caller', async () => {

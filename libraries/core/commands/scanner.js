@@ -69,7 +69,7 @@ export function openScanner(params) {
  * @param {Object} params The command parameters.
  * @param {string} [params.animation] The exit animation for the webview.
  */
-export function closeScanner(params) {
+export function closeScanner(params = {}) {
   const defaults = {
     animation: SCANNER_ANIMATION_FOREGROUND_BOTTOM,
   };
