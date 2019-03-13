@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Slider, { UnwrappedSlider } from '@shopgate/pwa-common/components/Slider';
-import defaultStyles from './style';
+import { Swiper } from '@shopgate/pwa-common/components';
 
 /**
  * ImageSlider component that uses the Slider for swiping functionality
  */
 class ImageSlider extends Component {
-  static propTypes = {
-    ...UnwrappedSlider.propTypes,
-    classNames: PropTypes.shape(),
-  };
+  static propTypes = Swiper.propTypes;
 
-  static defaultProps = {
-    ...UnwrappedSlider.defaultProps,
-    classNames: {},
-  };
+  static defaultProps = Swiper.defaultProps;
 
   /**
    * This component should only render if children change
@@ -43,12 +35,6 @@ class ImageSlider extends Component {
       return React.Children.toArray(this.props.children).pop();
     }
 
-    // Extend default styles if wanted
-    const styles = {
-      ...defaultStyles,
-      ...this.props.classNames,
-    };
-
     // Create a Slider.Item for each image
     const imageSliderItems = [];
 
@@ -56,21 +42,21 @@ class ImageSlider extends Component {
       const key = child.key ? `${child.key}_${index}` : index;
 
       imageSliderItems.push((
-        <Slider.Item key={key}>
+        <Swiper.Item key={key}>
           {child}
-        </Slider.Item>
+        </Swiper.Item>
       ));
     });
 
     return (
-      <Slider
+      <Swiper
         {...this.props}
-        classNames={styles}
+        classNames={this.props.classNames}
         rebuildOnUpdate
         maxIndicators={10}
       >
         {imageSliderItems}
-      </Slider>
+      </Swiper>
     );
   }
 }

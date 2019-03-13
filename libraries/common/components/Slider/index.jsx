@@ -1,10 +1,13 @@
 import 'swiper/dist/css/swiper.min.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Swiper from 'react-id-swiper';
+// import Swiper from 'react-id-swiper';
+import Swiper from '../Swiper';
 import SliderItem from './components/Item';
 import styles from './style';
 import connect from './connector';
+
+export default Swiper;
 
 /**
  * The basic slider component.
@@ -293,6 +296,6 @@ class Slider extends Component {
   }
 }
 
-export { Slider as UnwrappedSlider };
-
-export default connect(Slider);
+// export { Slider as UnwrappedSlider };
+//
+// export default connect(Slider);
