@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CryptoJs from 'crypto-js';
-import isEqual from 'lodash/isEqual';
-import shouldUpdate from 'recompose/shouldUpdate';
 import Link from '@shopgate/pwa-common/components/Link';
-import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
-import styles from './style';
+import { Swiper } from '@shopgate/pwa-common/components';
+import { image as imgStyle, link as linkStyle } from './style';
 
 /**
  * Core image slider widget.
@@ -13,27 +10,33 @@ import styles from './style';
  * @returns {JSX}
  */
 const ImageSliderWidget = ({ settings, className }) => (
-  <ImageSlider
-    className={[className, styles.wrapper].join(' ')}
+  <Swiper
+    className={className}
     autoPlay={settings.autostart}
     indicators={settings.pagination}
     interval={settings.delay}
     loop={settings.loop}
   >
-    {settings.images.map((image) => {
-      const key = CryptoJs.MD5(image.image);
+    {settings.images.map(({ image, alt, link }) => {
+      const img = <img src={image} alt={alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
 
-      if (image.link) {
+      if (link) {
         return (
-          <Link key={key} href={image.link} className={styles.link} data-test-id="withLink">
-            <img src={image.image} alt={image.alt} className={styles.image} data-test-id={`link : ${settings.link}`} />
-          </Link>
+          <Swiper.Item key={image}>
+            <Link href={link} className={linkStyle} data-test-id="withLink">
+              {img}
+            </Link>
+          </Swiper.Item>
         );
       }
 
-      return <img key={key} src={image.image} alt={image.alt} className={styles.image} data-test-id="withoutLink" />;
+      return (
+        <Swiper.Item key={image}>
+          {img}
+        </Swiper.Item>
+      );
     })}
-  </ImageSlider>
+  </Swiper>
 );
 
 ImageSliderWidget.propTypes = {
@@ -55,13 +58,7 @@ ImageSliderWidget.propTypes = {
 };
 
 ImageSliderWidget.defaultProps = {
-  className: '',
+  className: null,
 };
 
-export default shouldUpdate((prev, next) => {
-  if (!prev.className && next.className) return true;
-  if (!isEqual(prev.settings, next.settings)) return true;
-  return false;
-})(ImageSliderWidget);
-
-export { ImageSliderWidget as UnwrappedImageSliderWidget };
+export default ImageSliderWidget;

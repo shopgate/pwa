@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Slider from '@shopgate/pwa-common/components/Slider';
+import { Swiper } from '@shopgate/pwa-common/components';
 import Card from '@shopgate/pwa-ui-shared/Card';
 import ProductCard from 'Components/ProductCard';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
@@ -8,35 +8,9 @@ import connect from './connector';
 import styles from './style';
 
 /**
- * Creates an item for a single product.
- * @param {Object} product The product data.
- * @param {boolean} settings.showName Show the product name?
- * @param {boolean} settings.showPrice Show the product price?
- * @param {boolean} settings.showReviews Show the product reviews?
- * @return {JSX} The rendered product card.
- */
-const createSliderItem = (product, { showName, showPrice, showReviews }) => {
-  const key = `s${product.id}`;
-
-  return (
-    <Slider.Item key={key} className={styles.sliderItem}>
-      <Card className={styles.card}>
-        <ProductCard
-          product={product}
-          hideName={!showName}
-          hidePrice={!showPrice}
-          hideRating={!showReviews}
-          titleRows={2}
-        />
-      </Card>
-    </Slider.Item>
-  );
-};
-
-/**
  * The core product slider widget.
  */
-class ProductSlider extends Component {
+class ProductSlider extends PureComponent {
   static propTypes = {
     getProducts: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
@@ -106,15 +80,12 @@ class ProductSlider extends Component {
    * @return {JSX}
    */
   render() {
-    const { settings } = this.props;
-    const { sliderSettings } = settings;
+    const { settings, products } = this.props;
+    const {
+      sliderSettings, showName, showPrice, showReviews,
+    } = settings;
 
-    // Create the slides for each product, only displays the first 30 products.
-    const items = this.props.products.slice(0, 30).map((
-      product => createSliderItem(product, settings)
-    ));
-
-    if (!items.length) {
+    if (!products.length) {
       return null;
     }
 
@@ -122,7 +93,7 @@ class ProductSlider extends Component {
     return (
       <div className={styles.slider}>
         {this.renderHeadline()}
-        <Slider
+        <Swiper
           autoPlay={sliderSettings.autostart}
           loop={false}
           indicators={false}
@@ -132,8 +103,20 @@ class ProductSlider extends Component {
           slidesPerView={2.3}
           classNames={{ container: styles.sliderContainer }}
         >
-          {items}
-        </Slider>
+          {products.slice(0, 30).map(product => (
+            <Swiper.Item key={product.id} className={styles.sliderItem}>
+              <Card className={styles.card}>
+                <ProductCard
+                  product={product}
+                  hideName={!showName}
+                  hidePrice={!showPrice}
+                  hideRating={!showReviews}
+                  titleRows={2}
+                />
+              </Card>
+            </Swiper.Item>
+          ))}
+        </Swiper>
       </div>
     );
   }
