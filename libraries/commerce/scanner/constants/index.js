@@ -1,0 +1,1 @@
+export const SCANNER_SUCCESS = 'SCANNER_SUCCESS';
