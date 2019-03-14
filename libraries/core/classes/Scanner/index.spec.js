@@ -7,6 +7,7 @@ import {
   SCANNER_MODE_ON,
   SCANNER_TYPE_BARCODE,
   SCANNER_TYPE_IMAGE,
+  SCANNER_ANIMATION_NONE,
 } from '../../constants/Scanner';
 
 import ScannerEventHandler from '../ScannerEventHandler';
@@ -110,42 +111,56 @@ describe('Scanner', () => {
   });
 
   describe('open()', () => {
-    it('should throw an error if the app lib version is too low', async () => {
-      const err = new Error('Failed to open scanner: App lib version must be at least equal to  or higher than 21.0.');
+    it('should not open and print an error if the app lib version is too low', async () => {
+      const err = new Error('Failed to open scanner: App lib version must be at least equal to or higher than 21.0.');
       mockedIsLibVersionAtLeast = jest.fn(() => false);
 
-      await expect(scannerInstance.open(scope)).rejects.toThrow(err);
+      await expect(scannerInstance.open(scope)).resolves.toBeUndefined();
       expect(mockedIsLibVersionAtLeast).toBeCalledWith('21.0');
+      expect(logger.error).toBeCalledTimes(1);
+      expect(logger.error).toBeCalledWith(err);
+      expect(scannerInstance.isOpened()).toBeFalsy();
     });
 
-    it('should throw an error when the requested scope is empty', async () => {
+    it('should not open and print an error when the requested scope is empty', async () => {
       const err = new Error('Failed to open scanner: Scope can not be empty.');
 
-      await expect(scannerInstance.open(null)).rejects.toThrow(err);
+      await expect(scannerInstance.open(null)).resolves.toBeUndefined();
+      expect(logger.error).toBeCalledTimes(1);
+      expect(logger.error).toBeCalledWith(err);
+      expect(scannerInstance.isOpened()).toBeFalsy();
     });
 
-    it('should throw an error when the requested scanner type is unsupported', async () => {
+    it('should print an error instead of opening when the requested scanner type is unsupported', async () => {
       const dummy = 'DUMMY_TYPE';
       const err = new Error(`Failed to open scanner: ${dummy} is a not supported scanner type.`);
 
-      await expect(scannerInstance.open(scope, dummy)).rejects.toThrow(err);
+      await expect(scannerInstance.open(scope, dummy)).resolves.toBeUndefined();
+      expect(logger.error).toBeCalledTimes(1);
+      expect(logger.error).toBeCalledWith(err);
+      expect(scannerInstance.isOpened()).toBeFalsy();
     });
 
-    it('should throw an error, when already opened', async () => {
-      const err = new Error(`Failed to open scanner: An instance with scope "${scope}"` +
-        ' is already running.');
+    it('should print an error and stay opened when already opened', async () => {
+      const err = new Error(`Failed to open scanner: An instance with scope "${scope}" is already running.`);
       // Simulate opened state.
       scannerInstance.opened = true;
       scannerInstance.scope = scope;
 
-      await expect(scannerInstance.open(scope)).rejects.toThrow(err);
+      await expect(scannerInstance.open(scope)).resolves.toBeUndefined();
+      expect(logger.error).toBeCalledTimes(1);
+      expect(logger.error).toBeCalledWith(err);
+      expect(scannerInstance.isOpened()).toBeTruthy();
     });
 
-    it('should throw an error when an invalid close handler is set', async () => {
+    it('should not open when an invalid close handler is set', async () => {
       const err = new Error('Failed to open scanner: Close handler must be a function.');
 
       // Pass an object instead of a callback to trigger the error
-      await expect(scannerInstance.open(scope, type, {})).rejects.toThrow(err);
+      await expect(scannerInstance.open(scope, type, {})).resolves.toBeUndefined();
+      expect(logger.error).toBeCalledTimes(1);
+      expect(logger.error).toBeCalledWith(err);
+      expect(scannerInstance.isOpened()).toBeFalsy();
     });
 
     it('should register the app event callback', async () => {
@@ -172,6 +187,7 @@ describe('Scanner', () => {
         modes: {
           [type]: SCANNER_MODE_ON,
         },
+        animation: SCANNER_ANIMATION_NONE,
       });
     });
 
