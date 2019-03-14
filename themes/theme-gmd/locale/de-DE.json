@@ -15,7 +15,8 @@
     "cart": "Warenkorb",
     "shipping": "Versand",
     "reviews": "Bewertungen",
-    "favorites": "Merkliste"
+    "favorites": "Merkliste",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -123,6 +124,7 @@
     "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
+    "scanner": "Scanner",
     "shipping": "Versandarten",
     "about": "Impressum",
     "payment": "Zahlungsarten",

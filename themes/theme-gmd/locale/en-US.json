@@ -15,7 +15,8 @@
     "cart": "Cart",
     "shipping": "Shipping",
     "reviews": "Reviews",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Add to favorites",
@@ -123,6 +124,7 @@
     "favorites": "Favorites",
     "my_orders": "My orders",
     "cart": "Shopping cart",
+    "scanner": "Scanner",
     "shipping": "Shipping methods",
     "about": "Contact us",
     "payment": "Payment methods",

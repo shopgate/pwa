@@ -19,6 +19,8 @@ import {
 } from '../../commands/scanner';
 
 export const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
+export const APP_EVENT_SCANNER_DID_APPEAR = 'scannerDidAppear';
+export const APP_EVENT_SCANNER_DID_DISAPPEAR = 'scannerDidDisappear';
 
 export const SCANNER_MIN_APP_LIB_VERSION = '21.0';
 
@@ -135,6 +137,7 @@ export class Scanner {
       modes: {
         [type]: SCANNER_MODE_ON,
       },
+      animation: '',
     });
 
     // Initialize internal states

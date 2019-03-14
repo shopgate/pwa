@@ -43,5 +43,6 @@ export default {
   warning: '#ff9300',
   cta: '#fa5400',
   ctaContrast: '#fff',
+  transparent: 'transparent',
   ...colors,
 };
