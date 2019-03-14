@@ -14,7 +14,7 @@ import { scanSuccessBarCode$ } from '../streams';
  * Scanner subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function search(subscribe) {
+export default (subscribe) => {
   // Register global listener to convert to stream
   subscribe(appDidStart$, ({ dispatch }) => {
     Scanner.addListener(new ScannerEventListener('Scanner listener')
@@ -31,14 +31,14 @@ export default function search(subscribe) {
   subscribe(scanSuccessBarCodeDefault$, ({ dispatch, action }) => {
     const { payload } = action;
 
-    dispatch(fetchProductsByQuery(2, payload))
+    return /* jest */ dispatch(fetchProductsByQuery(2, payload))
       .then(({ totalProductCount, products }) => {
         if (!totalProductCount) {
           dispatch(showModal({
             confirm: null,
             title: 'category.no_result.heading',
             message: 'category.no_result.body',
-          }));
+          })).then(() => Scanner.start()); // Continue scanning
         } else if (Number(totalProductCount) === 1) {
           dispatch(historyPush({
             pathname: getProductRoute(products[0].id),
@@ -50,4 +50,4 @@ export default function search(subscribe) {
         }
       });
   });
-}
+};
