@@ -17,6 +17,12 @@ export const SCANNER_ANIMATION_FOREGROUND_RIGHT = 'foregroundRight';
 export const SCANNER_ANIMATION_FOREGROUND_BOTTOM = 'foregroundBottom';
 
 /**
+ * The scanner webview just appears without animation.
+ * @type {string}
+ */
+export const SCANNER_ANIMATION_NONE = '';
+
+/**
  * The scanner mode option for an active scanner functionality.
  * @type {string}
  */
@@ -47,19 +53,7 @@ export const SCANNER_TYPE_CARD = 'cardRecognition';
 export const SCANNER_TYPE_IMAGE = 'imageCapturing';
 
 /**
- * The scope name for the default image scanner.
+ * The scope name for the default.
  * @type {string}
  */
-export const SCANNER_SCOPE_DEFAULT_IMAGE = 'defaultImageScanner';
-
-/**
- * The scope name for the default barcode scanner.
- * @type {string}
- */
-export const SCANNER_SCOPE_DEFAULT_BARCODE = 'defaultBarcodeScanner';
-
-/**
- * The scope name for the default card scanner.
- * @type {string}
- */
-export const SCANNER_SCOPE_DEFAULT_CARD = 'defaultCardScanner';
+export const SCANNER_SCOPE_DEFAULT = 'defaultScanner';
