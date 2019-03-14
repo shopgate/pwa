@@ -64,3 +64,8 @@ export const WriteReview = Loadable({
   loader: () => import('./WriteReview'),
   loading: () => null,
 });
+
+export const Scanner = Loadable({
+  loader: () => import('./Scanner'),
+  loading: () => null,
+});
