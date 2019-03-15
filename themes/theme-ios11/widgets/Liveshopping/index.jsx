@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
+import { Swiper } from '@shopgate/pwa-common/components';
 import Item from './components/Item';
 import connect from './connector';
 import styles from './style';
-
-const sliderStyle = {
-  indicator: {
-    bullets: styles.indicators,
-  },
-};
 
 /**
  * The LiveshoppingWidget component.
@@ -34,9 +28,13 @@ export class LiveshoppingWidget extends Component {
 
     return (
       <div className={styles.wrapper}>
-        <ImageSlider indicators loop classNames={sliderStyle}>
-          {products.map(id => <Item key={id} productId={id} />)}
-        </ImageSlider>
+        <Swiper indicators loop={products.length > 1}>
+          {products.map(id => (
+            <Swiper.Item key={id} >
+              <Item productId={id} />
+            </Swiper.Item>
+          ))}
+        </Swiper>
       </div>
     );
   }

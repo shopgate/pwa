@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import { Swiper } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
   PRODUCT_IMAGE_AFTER,
@@ -9,7 +10,6 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Hammer from 'react-hammerjs';
 import ProductImage from 'Components/ProductImage';
-import BaseImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import connect from './connector';
 
 const fallbackResolutions = [
@@ -103,17 +103,13 @@ class ImageSlider extends Component {
 
       if (imagesByIndex.length) {
         content = (
-          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
-            {imagesByIndex.map((imagesInIndex, index) =>
-              (
-                <ProductImage
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={`${product.id}-${index}`}
-                  srcmap={imagesInIndex}
-                  animating={false}
-                />
-              ))}
-          </BaseImageSlider>
+          <Swiper loop indicators onSlideChange={this.handleSlideChange}>
+            {imagesByIndex.map(imagesInIndex => (
+              <Swiper.Item key={`${product.id}-${imagesInIndex}`}>
+                <ProductImage srcmap={imagesInIndex} animating={false} />
+              </Swiper.Item>
+            ))}
+          </Swiper>
         );
       }
     }

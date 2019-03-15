@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Image from '@shopgate/pwa-common/components/Image';
-import Slider from '@shopgate/pwa-common/components/Slider';
+import { Swiper } from '@shopgate/pwa-common/components';
 import ImageSlider from './index';
 
 describe('<ImageSlider />', () => {
@@ -12,23 +12,23 @@ describe('<ImageSlider />', () => {
     </ImageSlider>);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Slider.Item).exists()).toBe(false);
+    expect(wrapper.find(Swiper.Item).exists()).toBe(false);
   });
 
-  it('should wrap each image into a Slider.Item', () => {
+  it('should wrap each image into a Swiper.Item', () => {
     const wrapper = shallow(<ImageSlider>
       <Image srcmap={['foo/bar']} />
       <Image srcmap={['bar/foo']} />
     </ImageSlider>);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Slider.Item).length).toBe(2);
+    expect(wrapper.find(Swiper.Item).length).toBe(2);
     expect(wrapper
-      .find(Slider.Item)
+      .find(Swiper.Item)
       .at(0)
       .find(Image).length).toBe(1);
     expect(wrapper
-      .find(Slider.Item)
+      .find(Swiper.Item)
       .at(1)
       .find(Image).length).toBe(1);
   });

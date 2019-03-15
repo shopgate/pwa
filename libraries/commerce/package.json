@@ -24,8 +24,8 @@
     "@shopgate/pwa-unit-test": "6.2.0",
     "@shopgate/tracking-core": "6.2.0",
     "lodash": "^4.17.4",
-    "react": "~16.6.0",
-    "react-dom": "~16.6.0",
+    "react": "~16.8.4",
+    "react-dom": "~16.8.4",
     "react-hammerjs": "^1.0.1"
   }
 }

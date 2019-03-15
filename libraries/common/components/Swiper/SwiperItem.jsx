@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { item } from './styles';
+import { item } from './SwiperItem.styles';
 
 /**
  * The basic swiper item component.
@@ -10,7 +10,7 @@ import { item } from './styles';
  */
 function SwiperItem({ children, className }) {
   return (
-    <div className={classNames(item, className)}>
+    <div className={classNames(item, className)} data-test-id="Slider">
       {children}
     </div>
   );
