@@ -53,7 +53,20 @@ export const SCANNER_TYPE_CARD = 'cardRecognition';
 export const SCANNER_TYPE_IMAGE = 'imageCapturing';
 
 /**
- * The scope name for the default.
+ * Default scope for all scanner formats.
  * @type {string}
  */
-export const SCANNER_SCOPE_DEFAULT = 'defaultScanner';
+export const SCANNER_SCOPE_DEFAULT = 'SCANNER_SCOPE_DEFAULT';
+
+export const SCANNER_FORMATS_BARCODE = [
+  'UPC_E',
+  'CODE_39',
+  'EAN_13',
+  'EAN_8',
+  'CODE_93',
+  'CODE_128',
+  'PDF_417',
+  'ITF',
+];
+
+export const SCANNER_FORMATS_QR_CODE = ['QR_CODE'];
