@@ -41,7 +41,7 @@ class ScannerView extends PureComponent {
         <RouteContext.Consumer>
           {({ params: { scope = SCANNER_SCOPE_DEFAULT, type = SCANNER_TYPE_BARCODE } = {} }) => (
             <Fragment>
-              <BackBar title="titles.scanner" />
+              <BackBar title="titles.scanner" right={null} />
               <ScannerContainer
                 scope={scope}
                 type={type}
