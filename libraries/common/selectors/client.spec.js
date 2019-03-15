@@ -17,6 +17,11 @@ import {
   PAGE_INSETS_IPHONE_X,
 } from '../constants/Device';
 
+let mockedHasSGJavaScriptBridge;
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  hasSGJavaScriptBridge: (...args) => mockedHasSGJavaScriptBridge(...args),
+}));
+
 const mockedStateAndroid = {
   client: {
     isFetching: false,
@@ -45,7 +50,7 @@ const mockedStateIPhoneX = {
   },
 };
 
-describe.skip('Client selectors', () => {
+describe('Client selectors', () => {
   describe('getClientInformation()', () => {
     it('should return an empty object if the client state is not ready yet', () => {
       const result = getClientInformation({ client: {} });
@@ -147,12 +152,22 @@ describe.skip('Client selectors', () => {
   });
 
   describe('getPageInsets()', () => {
+    beforeEach(() => {
+      mockedHasSGJavaScriptBridge = jest.fn(() => true);
+    });
+
     it('should return the Android insets if the client state is not ready yet', () => {
       const result = getPageInsets({ client: {} });
       expect(result).toEqual(PAGE_INSETS_ANDROID);
     });
 
-    it('should return the Android insets on Andoid devices', () => {
+    it('should return the Android insets on Android devices', () => {
+      const result = getPageInsets({ ...mockedStateAndroid });
+      expect(result).toEqual(PAGE_INSETS_ANDROID);
+    });
+
+    it('should return the Android insets when no SGJavaScriptBridge is available', () => {
+      mockedHasSGJavaScriptBridge = jest.fn(() => false);
       const result = getPageInsets({ ...mockedStateAndroid });
       expect(result).toEqual(PAGE_INSETS_ANDROID);
     });
