@@ -39,7 +39,7 @@ class ScannerView extends PureComponent {
     return (
       <View background={colors.transparent}>
         <RouteContext.Consumer>
-          {({ params: { scope = SCANNER_SCOPE_DEFAULT, type = SCANNER_TYPE_BARCODE } = {} }) => (
+          {({ query: { scope = SCANNER_SCOPE_DEFAULT, type = SCANNER_TYPE_BARCODE } = {} }) => (
             <Fragment>
               <BackBar title="titles.scanner" right={null} />
               <ScannerContainer

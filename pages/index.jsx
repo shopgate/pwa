@@ -13,7 +13,7 @@ import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
   LOGIN_PATH,
-  SCANNER_PATTERN,
+  SCANNER_PATH,
   PAGE_PATTERN,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
@@ -68,7 +68,7 @@ const Pages = ({ store }) => (
                 <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
                 <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
                 <Route pattern={CART_PATH} component={routes.Cart} />
-                <Route pattern={SCANNER_PATTERN} component={routes.Scanner} />
+                <Route pattern={SCANNER_PATH} component={routes.Scanner} />
                 {
                   appConfig.hasFavorites
                   && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
