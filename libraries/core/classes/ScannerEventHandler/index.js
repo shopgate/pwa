@@ -20,23 +20,17 @@ export default class ScannerEventHandler {
    * @param {ScannerEventListener} eventListener The event listener to detach from the handler.
    * @returns {boolean} Returns true if the event listener was detached successfully.
    */
-  detach = (eventListener) => {
-    if (!this.eventListeners.has(eventListener)) {
-      return false;
-    }
-    this.eventListeners.delete(eventListener);
-    return true;
-  }
+  detach = eventListener => this.eventListeners.delete(eventListener);
 
   /**
    * @param {ScannerEvent} event The event which has been emitted by the scanner.
    * @returns {Promise<undefined>}
    * @throws {Error}
    */
-  notifyAllListeners = async (event) => {
+  notifyAllListeners = (event) => {
     const notifyResults = [];
 
-    this.eventListeners.forEach(async (listener) => {
+    this.eventListeners.forEach((listener) => {
       notifyResults.push(listener.notify(event));
     });
 

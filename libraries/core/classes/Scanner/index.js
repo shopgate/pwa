@@ -9,6 +9,7 @@ import {
   SCANNER_MODE_ON,
   SCANNER_TYPE_BARCODE,
   SCANNER_TYPE_IMAGE,
+  SCANNER_ANIMATION_NONE,
 } from '../../constants/Scanner';
 
 import {
@@ -65,7 +66,7 @@ export class Scanner {
   /**
    * Callback for the close handler for the scanner. The scanner stops scanning and notifies
    * the close handler when it's done. The close handler can either shut down the Scanner instance
-   * by calling it's close() method or restart it to continue scanning.
+   * by calling its close() method or restart it to continue scanning.
    *
    * @callback Scanner~CloseHandler
    * @param {Scanner} scannerInstance The instance of the scanner which requested closing.
@@ -74,13 +75,19 @@ export class Scanner {
   /**
    * Starts the app scanner. It will instantly start the scanning process for type
    * "barcodeRecognition". The image scanner requires user interaction to scan.
-   * @param {string} scope The initially activated scanner type.
+   * @param {string} scope The initially activated scanner scope.
    * @param {ScannerType|string} type The initially activated scanner type.
    * @param {CloseHandler|null} [closeHandler] This handler is called when the Scanner is closed.
    * @param {string|null} [source] Tells the app which overlay to use, null for "current".
-   * @throws {Error}
+   * @param {string|null} [animation] Tells the app what type of animation to apply when opening.
    */
-  open = async (scope, type = SCANNER_TYPE_BARCODE, closeHandler = null, source = null) => {
+  open = async (
+    scope,
+    type = SCANNER_TYPE_BARCODE,
+    closeHandler = null,
+    source = null,
+    animation = null
+  ) => {
     const errMsgPrefix = 'Failed to open scanner:';
 
     // A minimum app lib version is required, which is defined above.
@@ -88,42 +95,39 @@ export class Scanner {
     try {
       libVersionResult = await isLibVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION);
     } catch (err) {
-      logger.error(`${errMsgPrefix} Could not fetch app lib version.` +
-        ` Instead received error: ${err.message}`);
-      throw err;
+      logger.error(`${errMsgPrefix} Could not fetch app lib version. Instead received error:`, err);
+      return;
     }
     if (!libVersionResult) {
-      const err = new Error(`${errMsgPrefix} App lib version must be at least equal to ` +
-        ` or higher than ${SCANNER_MIN_APP_LIB_VERSION}.`);
-      logger.error(err.message);
-      throw err;
+      const err = new Error(`${errMsgPrefix} App lib version must be at least equal to or higher than ${SCANNER_MIN_APP_LIB_VERSION}.`);
+      logger.error(err);
+      return;
     }
 
     // Make sure the scope was properly set
     if (!scope || scope === '') {
       const err = new Error(`${errMsgPrefix} Scope can not be empty.`);
-      logger.error(err.message);
-      throw err;
+      logger.error(err);
+      return;
     }
 
     if (!this.supportedTypes.includes(type)) {
       const err = new Error(`${errMsgPrefix} ${type} is a not supported scanner type.`);
-      logger.error(err.message);
-      throw err;
+      logger.error(err);
+      return;
     }
 
     // Only one instance can be running at the same time.
     if (this.opened) {
-      const err = new Error(`${errMsgPrefix} An instance with scope "${this.scope}"` +
-        ' is already running.');
-      logger.error(err.message);
-      throw err;
+      const err = new Error(`${errMsgPrefix} An instance with scope "${this.scope}" is already running.`);
+      logger.error(err);
+      return;
     }
 
     if (closeHandler !== null && typeof closeHandler !== 'function') {
       const err = new Error(`${errMsgPrefix} Close handler must be a function.`);
-      logger.error(err.message);
-      throw err;
+      logger.error(err);
+      return;
     }
 
     // Add a listener to the scannerDidScan app event to process scanned data.
@@ -135,6 +139,7 @@ export class Scanner {
       modes: {
         [type]: SCANNER_MODE_ON,
       },
+      animation: animation || SCANNER_ANIMATION_NONE,
     });
 
     // Initialize internal states
@@ -215,6 +220,27 @@ export class Scanner {
 
     return this.flashlightEnabled;
   }
+
+  /**
+   * Because opening the scanner can fail silently, this is a way to check if it was
+   * opened properly.
+   * @returns {boolean}
+   */
+  isOpened = () => this.opened;
+
+  /**
+   * Some scanner types don't start and all of them stop running after a successful scan.
+   * This method allows checking if a scan is currently in progress.
+   * @returns {boolean}
+   */
+  isRunning = () => this.running;
+
+  /**
+   * Helps checking the current state of the flashlight. This might not be reliable as the
+   * flashlight is turned off without notice, when the app is pushed into the background.
+   * @returns {boolean}
+   */
+  isFlashlightEnabled = () => this.flashlightEnabled;
 
   /**
    * The internal handler for the "scannerDidScan" app event.
