@@ -14,7 +14,13 @@ export const SCANNER_ANIMATION_FOREGROUND_RIGHT = 'foregroundRight';
  * The scanner webview slides in from the bottom screen edge.
  * @type {string}
  */
-export const SCANNER_ANIMATION_FOREGROUND_BOTTON = 'foregroundBottom';
+export const SCANNER_ANIMATION_FOREGROUND_BOTTOM = 'foregroundBottom';
+
+/**
+ * The scanner webview just appears without animation.
+ * @type {string}
+ */
+export const SCANNER_ANIMATION_NONE = '';
 
 /**
  * The scanner mode option for an active scanner functionality.
@@ -45,3 +51,9 @@ export const SCANNER_TYPE_CARD = 'cardRecognition';
  * @type {string}
  */
 export const SCANNER_TYPE_IMAGE = 'imageCapturing';
+
+/**
+ * The scope name for the default.
+ * @type {string}
+ */
+export const SCANNER_SCOPE_DEFAULT = 'defaultScanner';
