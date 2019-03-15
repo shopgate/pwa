@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
 import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/classes/Scanner';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   OS_ANDROID,
   OS_IOS,
@@ -39,7 +40,7 @@ export const hasScannerSupport = createSelector(
   getClientInformation,
   (clientInformation) => {
     const libVersion = clientInformation.libVersion || '1.0';
-    return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, libVersion);
+    return isVersionAtLeast(SCANNER_MIN_APP_LIB_VERSION, libVersion) && !appConfig.hasNoScanner;
   }
 );
 

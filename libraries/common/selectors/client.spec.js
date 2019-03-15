@@ -21,7 +21,7 @@ import {
 
 let mockedHasSGJavaScriptBridge;
 jest.mock('@shopgate/pwa-core/helpers', () => ({
-  hasSGJavaScriptBridge: (...args) => mockedHasSGJavaScriptBridge(...args),
+  hasSGJavaScriptBridge: () => mockedHasSGJavaScriptBridge(),
 }));
 
 const mockedStateAndroid = {
@@ -37,6 +37,11 @@ const mockedStateAndroid = {
     },
   },
 };
+
+let mockedHasNoScanner;
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  get hasNoScanner() { return mockedHasNoScanner; },
+}));
 
 const mockedStateIPhoneX = {
   client: {
@@ -66,9 +71,19 @@ describe('Client selectors', () => {
   });
 
   describe('hasScannerSupport()', () => {
+    beforeEach(() => {
+      mockedHasNoScanner = false;
+    });
+
     it('should return true when the app supports the scanner', () => {
       const result = hasScannerSupport({ client: { libVersion: SCANNER_MIN_APP_LIB_VERSION } });
       expect(result).toBeTruthy();
+    });
+
+    it('should return false when the scanner is deactivated', () => {
+      mockedHasNoScanner = true;
+      const result = hasScannerSupport({ client: { libVersion: SCANNER_MIN_APP_LIB_VERSION } });
+      expect(result).toBeFalsy();
     });
 
     it('should return false when the app does not support the scanner', () => {
