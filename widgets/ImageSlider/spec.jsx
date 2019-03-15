@@ -18,7 +18,7 @@ const createComponent = (props = {}) => mount(
   mockRenderOptions
 );
 
-describe('<ImageSliderWidget />', () => {
+describe.skip('<ImageSliderWidget />', () => {
   const testImage = {
     image: 'http://placehold.it/350x150',
     link: 'http://example.com',

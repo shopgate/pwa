@@ -59,216 +59,242 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
         className=" css-1u3tffh"
         classNames={Object {}}
         controls={false}
-        disabled={false}
-        historyPath=""
         indicators={true}
         initialSlide={0}
         interval={7000}
         loop={false}
         maxIndicators={null}
-        onSlideChange={null}
+        onSlideChange={[Function]}
         rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
-        <Connect(Slider)
+        <Swiper
           autoPlay={false}
           className=" css-1u3tffh"
-          classNames={
-            Object {
-              "activeIndicator": "css-so6ht",
-              "container": "css-nil",
-              "inactiveIndicator": "css-1hipsfp",
-              "indicator": Object {
-                "bullets": "css-dwzljy",
-                "fraction": "css-eyy1lx",
-              },
-              "slide": "css-nil",
-              "slider": "css-1i764wo",
-            }
-          }
+          classNames={Object {}}
           controls={false}
-          disabled={false}
-          historyPath=""
           indicators={true}
           initialSlide={0}
           interval={7000}
           loop={false}
           maxIndicators={10}
-          onSlideChange={null}
+          onSlideChange={[Function]}
           rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
         >
-          <Slider
-            autoPlay={false}
-            className=" css-1u3tffh"
-            classNames={
-              Object {
-                "activeIndicator": "css-so6ht",
-                "container": "css-nil",
-                "inactiveIndicator": "css-1hipsfp",
-                "indicator": Object {
-                  "bullets": "css-dwzljy",
-                  "fraction": "css-eyy1lx",
-                },
-                "slide": "css-nil",
-                "slider": "css-1i764wo",
-              }
-            }
-            controls={false}
-            disabled={false}
-            dispatch={[Function]}
-            historyPath={null}
-            indicators={true}
-            initialSlide={0}
-            interval={7000}
-            loop={false}
-            maxIndicators={10}
-            onSlideChange={null}
-            rebuildOnUpdate={true}
-            slidesPerView={1}
-            snapItems={true}
+          <div
+            className="css-1hlki0z  css-1u3tffh"
           >
-            <div
-              className="css-1hlki0z  css-1u3tffh"
+            <ReactIdSwiper
+              ContainerEl="div"
+              WrapperEl="div"
+              autoplay={false}
+              containerClass="css-rdsogp"
+              freeMode={false}
+              getSwiper={[Function]}
+              initialSlide={0}
+              loop={false}
+              modules={
+                Array [
+                  Object {
+                    "create": [Function],
+                    "name": "pagination",
+                    "on": Object {
+                      "activeIndexChange": [Function],
+                      "click": [Function],
+                      "destroy": [Function],
+                      "init": [Function],
+                      "slidesLengthChange": [Function],
+                      "snapGridLengthChange": [Function],
+                      "snapIndexChange": [Function],
+                    },
+                    "params": Object {
+                      "pagination": Object {
+                        "bulletActiveClass": "swiper-pagination-bullet-active",
+                        "bulletClass": "swiper-pagination-bullet",
+                        "bulletElement": "span",
+                        "clickable": false,
+                        "clickableClass": "swiper-pagination-clickable",
+                        "currentClass": "swiper-pagination-current",
+                        "dynamicBullets": false,
+                        "dynamicMainBullets": 1,
+                        "el": null,
+                        "formatFractionCurrent": [Function],
+                        "formatFractionTotal": [Function],
+                        "hiddenClass": "swiper-pagination-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-pagination-lock",
+                        "modifierClass": "swiper-pagination-",
+                        "progressbarFillClass": "swiper-pagination-progressbar-fill",
+                        "progressbarOpposite": false,
+                        "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
+                        "renderBullet": null,
+                        "renderCustom": null,
+                        "renderFraction": null,
+                        "renderProgressbar": null,
+                        "totalClass": "swiper-pagination-total",
+                        "type": "bullets",
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "navigation",
+                    "on": Object {
+                      "click": [Function],
+                      "destroy": [Function],
+                      "fromEdge": [Function],
+                      "init": [Function],
+                      "toEdge": [Function],
+                    },
+                    "params": Object {
+                      "navigation": Object {
+                        "disabledClass": "swiper-button-disabled",
+                        "hiddenClass": "swiper-button-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-button-lock",
+                        "nextEl": null,
+                        "prevEl": null,
+                      },
+                    },
+                  },
+                ]
+              }
+              navigation={
+                Object {
+                  "nextEl": null,
+                  "prevEl": null,
+                }
+              }
+              on={
+                Object {
+                  "slideChange": [Function],
+                }
+              }
+              pagination={
+                Object {
+                  "bulletActiveClass": "css-hpsgy2",
+                  "bulletClass": "css-cvsmqf",
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                }
+              }
+              rebuildOnUpdate={true}
+              renderNextButton={[Function]}
+              renderPagination={[Function]}
+              renderParallax={[Function]}
+              renderPrevButton={[Function]}
+              renderScrollbar={[Function]}
+              slideClass="swiper-slide"
+              slidesPerView={1}
+              wrapperClass="swiper-wrapper"
             >
-              <ReactIdSwiper
-                autoplay={null}
-                bulletActiveClass="css-so6ht"
-                bulletClass="css-1hipsfp"
-                containerClass="sg-swiper-container css-rdsogp css-nil"
-                freeMode={false}
-                initialSlide={0}
-                loop={false}
-                nextButton={null}
-                onInit={[Function]}
-                onSlideChangeEnd={[Function]}
-                onTouchStart={[Function]}
-                onTransitionEnd={[Function]}
-                onTransitionStart={[Function]}
-                pagination=".css-dwzljy"
-                paginationModifierClass="sg-swiper-pagination-"
-                paginationType="bullets"
-                prevButton={null}
-                rebuildOnUpdate={true}
-                slideClass="sg-swiper-slide"
-                slidesPerView={1}
-                wrapperClass="swiper-wrapper"
+              <div
+                className="css-rdsogp"
               >
                 <div
-                  className="sg-swiper-container css-rdsogp css-nil"
+                  className="swiper-wrapper"
                 >
-                  <div
-                    className="swiper-wrapper"
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_0"
                   >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_0_0"
                     >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_0"
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://example.com"
+                        key="cff8d88442d10b88424de77967c68124"
                       >
-                        <div
-                          className="css-10a4qrv"
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
                         >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://example.com"
-                            key="cff8d88442d10b88424de77967c68124"
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://example.com"
+                            onClick={[Function]}
+                            role="link"
                           >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/350x150"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
+                              }
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/350x150"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
                     </div>
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$77387b0455b43e9c56aaeff7c21c7340_1"
+                  >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$77387b0455b43e9c56aaeff7c21c7340_1_1"
                     >
-                      <SliderItem
-                        key="77387b0455b43e9c56aaeff7c21c7340_1"
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://other.example.com"
+                        key="77387b0455b43e9c56aaeff7c21c7340"
                       >
-                        <div
-                          className="css-10a4qrv"
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://other.example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
                         >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://other.example.com"
-                            key="77387b0455b43e9c56aaeff7c21c7340"
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://other.example.com"
+                            onClick={[Function]}
+                            role="link"
                           >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://other.example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://other.example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/10x10"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
+                              }
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/10x10"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
                     </div>
-                  </div>
-                  <div
-                    className="css-dwzljy "
-                  />
+                  </SwiperItem>
                 </div>
-              </ReactIdSwiper>
-            </div>
-          </Slider>
-        </Connect(Slider)>
+                <div
+                  className="swiper-pagination"
+                />
+              </div>
+            </ReactIdSwiper>
+          </div>
+        </Swiper>
       </ImageSlider>
     </ImageSliderWidget>
   </shouldUpdate(ImageSliderWidget)>
@@ -326,14 +352,12 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         className=" css-1u3tffh"
         classNames={Object {}}
         controls={false}
-        disabled={false}
-        historyPath=""
         indicators={true}
         initialSlide={0}
         interval={7000}
         loop={false}
         maxIndicators={null}
-        onSlideChange={null}
+        onSlideChange={[Function]}
         rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
@@ -430,14 +454,12 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
         className=" css-1u3tffh"
         classNames={Object {}}
         controls={false}
-        disabled={false}
-        historyPath=""
         indicators={true}
         initialSlide={0}
         interval={7000}
         loop={false}
         maxIndicators={null}
-        onSlideChange={null}
+        onSlideChange={[Function]}
         rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
@@ -533,289 +555,307 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
         className=" css-1u3tffh"
         classNames={Object {}}
         controls={false}
-        disabled={false}
-        historyPath=""
         indicators={true}
         initialSlide={0}
         interval={7000}
         loop={false}
         maxIndicators={null}
-        onSlideChange={null}
+        onSlideChange={[Function]}
         rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
-        <Connect(Slider)
+        <Swiper
           autoPlay={false}
           className=" css-1u3tffh"
-          classNames={
-            Object {
-              "activeIndicator": "css-so6ht",
-              "container": "css-nil",
-              "inactiveIndicator": "css-1hipsfp",
-              "indicator": Object {
-                "bullets": "css-dwzljy",
-                "fraction": "css-eyy1lx",
-              },
-              "slide": "css-nil",
-              "slider": "css-1i764wo",
-            }
-          }
+          classNames={Object {}}
           controls={false}
-          disabled={false}
-          historyPath=""
           indicators={true}
           initialSlide={0}
           interval={7000}
           loop={false}
           maxIndicators={10}
-          onSlideChange={null}
+          onSlideChange={[Function]}
           rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
         >
-          <Slider
-            autoPlay={false}
-            className=" css-1u3tffh"
-            classNames={
-              Object {
-                "activeIndicator": "css-so6ht",
-                "container": "css-nil",
-                "inactiveIndicator": "css-1hipsfp",
-                "indicator": Object {
-                  "bullets": "css-dwzljy",
-                  "fraction": "css-eyy1lx",
-                },
-                "slide": "css-nil",
-                "slider": "css-1i764wo",
-              }
-            }
-            controls={false}
-            disabled={false}
-            dispatch={[Function]}
-            historyPath={null}
-            indicators={true}
-            initialSlide={0}
-            interval={7000}
-            loop={false}
-            maxIndicators={10}
-            onSlideChange={null}
-            rebuildOnUpdate={true}
-            slidesPerView={1}
-            snapItems={true}
+          <div
+            className="css-1hlki0z  css-1u3tffh"
           >
-            <div
-              className="css-1hlki0z  css-1u3tffh"
+            <ReactIdSwiper
+              ContainerEl="div"
+              WrapperEl="div"
+              autoplay={false}
+              containerClass="css-rdsogp"
+              freeMode={false}
+              getSwiper={[Function]}
+              initialSlide={0}
+              loop={false}
+              modules={
+                Array [
+                  Object {
+                    "create": [Function],
+                    "name": "pagination",
+                    "on": Object {
+                      "activeIndexChange": [Function],
+                      "click": [Function],
+                      "destroy": [Function],
+                      "init": [Function],
+                      "slidesLengthChange": [Function],
+                      "snapGridLengthChange": [Function],
+                      "snapIndexChange": [Function],
+                    },
+                    "params": Object {
+                      "pagination": Object {
+                        "bulletActiveClass": "swiper-pagination-bullet-active",
+                        "bulletClass": "swiper-pagination-bullet",
+                        "bulletElement": "span",
+                        "clickable": false,
+                        "clickableClass": "swiper-pagination-clickable",
+                        "currentClass": "swiper-pagination-current",
+                        "dynamicBullets": false,
+                        "dynamicMainBullets": 1,
+                        "el": null,
+                        "formatFractionCurrent": [Function],
+                        "formatFractionTotal": [Function],
+                        "hiddenClass": "swiper-pagination-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-pagination-lock",
+                        "modifierClass": "swiper-pagination-",
+                        "progressbarFillClass": "swiper-pagination-progressbar-fill",
+                        "progressbarOpposite": false,
+                        "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
+                        "renderBullet": null,
+                        "renderCustom": null,
+                        "renderFraction": null,
+                        "renderProgressbar": null,
+                        "totalClass": "swiper-pagination-total",
+                        "type": "bullets",
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "navigation",
+                    "on": Object {
+                      "click": [Function],
+                      "destroy": [Function],
+                      "fromEdge": [Function],
+                      "init": [Function],
+                      "toEdge": [Function],
+                    },
+                    "params": Object {
+                      "navigation": Object {
+                        "disabledClass": "swiper-button-disabled",
+                        "hiddenClass": "swiper-button-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-button-lock",
+                        "nextEl": null,
+                        "prevEl": null,
+                      },
+                    },
+                  },
+                ]
+              }
+              navigation={
+                Object {
+                  "nextEl": null,
+                  "prevEl": null,
+                }
+              }
+              on={
+                Object {
+                  "slideChange": [Function],
+                }
+              }
+              pagination={
+                Object {
+                  "bulletActiveClass": "css-hpsgy2",
+                  "bulletClass": "css-cvsmqf",
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                }
+              }
+              rebuildOnUpdate={true}
+              renderNextButton={[Function]}
+              renderPagination={[Function]}
+              renderParallax={[Function]}
+              renderPrevButton={[Function]}
+              renderScrollbar={[Function]}
+              slideClass="swiper-slide"
+              slidesPerView={1}
+              wrapperClass="swiper-wrapper"
             >
-              <ReactIdSwiper
-                autoplay={null}
-                bulletActiveClass="css-so6ht"
-                bulletClass="css-1hipsfp"
-                containerClass="sg-swiper-container css-rdsogp css-nil"
-                freeMode={false}
-                initialSlide={0}
-                loop={false}
-                nextButton={null}
-                onInit={[Function]}
-                onSlideChangeEnd={[Function]}
-                onTouchStart={[Function]}
-                onTransitionEnd={[Function]}
-                onTransitionStart={[Function]}
-                pagination=".css-dwzljy"
-                paginationModifierClass="sg-swiper-pagination-"
-                paginationType="bullets"
-                prevButton={null}
-                rebuildOnUpdate={true}
-                slideClass="sg-swiper-slide"
-                slidesPerView={1}
-                wrapperClass="swiper-wrapper"
+              <div
+                className="css-rdsogp"
               >
                 <div
-                  className="sg-swiper-container css-rdsogp css-nil"
+                  className="swiper-wrapper"
                 >
-                  <div
-                    className="swiper-wrapper"
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_0"
                   >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_0_0"
                     >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_0"
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://example.com"
+                        key="cff8d88442d10b88424de77967c68124"
                       >
-                        <div
-                          className="css-10a4qrv"
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
                         >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://example.com"
-                            key="cff8d88442d10b88424de77967c68124"
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://example.com"
+                            onClick={[Function]}
+                            role="link"
                           >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/350x150"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
-                    </div>
-                    <div
-                      className="sg-swiper-slide css-1l9a57c "
-                      data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_1_1"
-                    >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_1"
-                      >
-                        <div
-                          className="css-10a4qrv"
-                        >
-                          <img
-                            className={
-                              Object {
-                                "data-css-1rozygh": "",
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
                               }
-                            }
-                            data-test-id="withoutLink"
-                            key="cff8d88442d10b88424de77967c68124"
-                            src="http://placehold.it/350x150"
-                          />
-                        </div>
-                      </SliderItem>
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/350x150"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
                     </div>
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_1"
+                  >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_2_2"
                     >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_2"
-                      >
-                        <div
-                          className="css-10a4qrv"
-                        >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://example.com"
-                            key="cff8d88442d10b88424de77967c68124"
-                          >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/350x150"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
+                      <img
+                        className={
+                          Object {
+                            "data-css-1rozygh": "",
+                          }
+                        }
+                        data-test-id="withoutLink"
+                        key="cff8d88442d10b88424de77967c68124"
+                        src="http://placehold.it/350x150"
+                      />
                     </div>
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_2"
+                  >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_3_3"
                     >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_3"
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://example.com"
+                        key="cff8d88442d10b88424de77967c68124"
                       >
-                        <div
-                          className="css-10a4qrv"
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
                         >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://example.com"
-                            key="cff8d88442d10b88424de77967c68124"
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://example.com"
+                            onClick={[Function]}
+                            role="link"
                           >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/350x150"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
+                              }
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/350x150"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
                     </div>
-                  </div>
-                  <div
-                    className="css-dwzljy "
-                  />
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_3"
+                  >
+                    <div
+                      className="swiper-slide"
+                      data-test-id="Slider"
+                    >
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://example.com"
+                        key="cff8d88442d10b88424de77967c68124"
+                      >
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
+                        >
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://example.com"
+                            onClick={[Function]}
+                            role="link"
+                          >
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
+                              }
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/350x150"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
+                    </div>
+                  </SwiperItem>
                 </div>
-              </ReactIdSwiper>
-            </div>
-          </Slider>
-        </Connect(Slider)>
+                <div
+                  className="swiper-pagination"
+                />
+              </div>
+            </ReactIdSwiper>
+          </div>
+        </Swiper>
       </ImageSlider>
     </ImageSliderWidget>
   </shouldUpdate(ImageSliderWidget)>
@@ -889,265 +929,287 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
         className=" css-1u3tffh"
         classNames={Object {}}
         controls={false}
-        disabled={false}
-        historyPath=""
         indicators={true}
         initialSlide={0}
         interval={7000}
         loop={false}
         maxIndicators={null}
-        onSlideChange={null}
+        onSlideChange={[Function]}
         rebuildOnUpdate={false}
         slidesPerView={1}
         snapItems={true}
       >
-        <Connect(Slider)
+        <Swiper
           autoPlay={false}
           className=" css-1u3tffh"
-          classNames={
-            Object {
-              "activeIndicator": "css-so6ht",
-              "container": "css-nil",
-              "inactiveIndicator": "css-1hipsfp",
-              "indicator": Object {
-                "bullets": "css-dwzljy",
-                "fraction": "css-eyy1lx",
-              },
-              "slide": "css-nil",
-              "slider": "css-1i764wo",
-            }
-          }
+          classNames={Object {}}
           controls={false}
-          disabled={false}
-          historyPath=""
           indicators={true}
           initialSlide={0}
           interval={7000}
           loop={false}
           maxIndicators={10}
-          onSlideChange={null}
+          onSlideChange={[Function]}
           rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
         >
-          <Slider
-            autoPlay={false}
-            className=" css-1u3tffh"
-            classNames={
-              Object {
-                "activeIndicator": "css-so6ht",
-                "container": "css-nil",
-                "inactiveIndicator": "css-1hipsfp",
-                "indicator": Object {
-                  "bullets": "css-dwzljy",
-                  "fraction": "css-eyy1lx",
-                },
-                "slide": "css-nil",
-                "slider": "css-1i764wo",
-              }
-            }
-            controls={false}
-            disabled={false}
-            dispatch={[Function]}
-            historyPath={null}
-            indicators={true}
-            initialSlide={0}
-            interval={7000}
-            loop={false}
-            maxIndicators={10}
-            onSlideChange={null}
-            rebuildOnUpdate={true}
-            slidesPerView={1}
-            snapItems={true}
+          <div
+            className="css-1hlki0z  css-1u3tffh"
           >
-            <div
-              className="css-1hlki0z  css-1u3tffh"
+            <ReactIdSwiper
+              ContainerEl="div"
+              WrapperEl="div"
+              autoplay={false}
+              containerClass="css-rdsogp"
+              freeMode={false}
+              getSwiper={[Function]}
+              initialSlide={0}
+              loop={false}
+              modules={
+                Array [
+                  Object {
+                    "create": [Function],
+                    "name": "pagination",
+                    "on": Object {
+                      "activeIndexChange": [Function],
+                      "click": [Function],
+                      "destroy": [Function],
+                      "init": [Function],
+                      "slidesLengthChange": [Function],
+                      "snapGridLengthChange": [Function],
+                      "snapIndexChange": [Function],
+                    },
+                    "params": Object {
+                      "pagination": Object {
+                        "bulletActiveClass": "swiper-pagination-bullet-active",
+                        "bulletClass": "swiper-pagination-bullet",
+                        "bulletElement": "span",
+                        "clickable": false,
+                        "clickableClass": "swiper-pagination-clickable",
+                        "currentClass": "swiper-pagination-current",
+                        "dynamicBullets": false,
+                        "dynamicMainBullets": 1,
+                        "el": null,
+                        "formatFractionCurrent": [Function],
+                        "formatFractionTotal": [Function],
+                        "hiddenClass": "swiper-pagination-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-pagination-lock",
+                        "modifierClass": "swiper-pagination-",
+                        "progressbarFillClass": "swiper-pagination-progressbar-fill",
+                        "progressbarOpposite": false,
+                        "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
+                        "renderBullet": null,
+                        "renderCustom": null,
+                        "renderFraction": null,
+                        "renderProgressbar": null,
+                        "totalClass": "swiper-pagination-total",
+                        "type": "bullets",
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "navigation",
+                    "on": Object {
+                      "click": [Function],
+                      "destroy": [Function],
+                      "fromEdge": [Function],
+                      "init": [Function],
+                      "toEdge": [Function],
+                    },
+                    "params": Object {
+                      "navigation": Object {
+                        "disabledClass": "swiper-button-disabled",
+                        "hiddenClass": "swiper-button-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-button-lock",
+                        "nextEl": null,
+                        "prevEl": null,
+                      },
+                    },
+                  },
+                ]
+              }
+              navigation={
+                Object {
+                  "nextEl": null,
+                  "prevEl": null,
+                }
+              }
+              on={
+                Object {
+                  "slideChange": [Function],
+                }
+              }
+              pagination={
+                Object {
+                  "bulletActiveClass": "css-hpsgy2",
+                  "bulletClass": "css-cvsmqf",
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                }
+              }
+              rebuildOnUpdate={true}
+              renderNextButton={[Function]}
+              renderPagination={[Function]}
+              renderParallax={[Function]}
+              renderPrevButton={[Function]}
+              renderScrollbar={[Function]}
+              slideClass="swiper-slide"
+              slidesPerView={1}
+              wrapperClass="swiper-wrapper"
             >
-              <ReactIdSwiper
-                autoplay={null}
-                bulletActiveClass="css-so6ht"
-                bulletClass="css-1hipsfp"
-                containerClass="sg-swiper-container css-rdsogp css-nil"
-                freeMode={false}
-                initialSlide={0}
-                loop={false}
-                nextButton={null}
-                onInit={[Function]}
-                onSlideChangeEnd={[Function]}
-                onTouchStart={[Function]}
-                onTransitionEnd={[Function]}
-                onTransitionStart={[Function]}
-                pagination=".css-dwzljy"
-                paginationModifierClass="sg-swiper-pagination-"
-                paginationType="bullets"
-                prevButton={null}
-                rebuildOnUpdate={true}
-                slideClass="sg-swiper-slide"
-                slidesPerView={1}
-                wrapperClass="swiper-wrapper"
+              <div
+                className="css-rdsogp"
               >
                 <div
-                  className="sg-swiper-container css-rdsogp css-nil"
+                  className="swiper-wrapper"
                 >
-                  <div
-                    className="swiper-wrapper"
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_0"
                   >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_0_0"
                     >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_0"
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://example.com"
+                        key="cff8d88442d10b88424de77967c68124"
                       >
-                        <div
-                          className="css-10a4qrv"
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
                         >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://example.com"
-                            key="cff8d88442d10b88424de77967c68124"
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://example.com"
+                            onClick={[Function]}
+                            role="link"
                           >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/350x150"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
+                              }
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/350x150"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
                     </div>
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_1"
+                  >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_1_1"
                     >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_1"
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://example.com"
+                        key="cff8d88442d10b88424de77967c68124"
                       >
-                        <div
-                          className="css-10a4qrv"
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
                         >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://example.com"
-                            key="cff8d88442d10b88424de77967c68124"
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://example.com"
+                            onClick={[Function]}
+                            role="link"
                           >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/350x150"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
+                              }
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/350x150"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
                     </div>
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$cff8d88442d10b88424de77967c68124_2"
+                  >
                     <div
-                      className="sg-swiper-slide css-1l9a57c "
+                      className="swiper-slide"
                       data-test-id="Slider"
-                      key=".$cff8d88442d10b88424de77967c68124_2_2"
                     >
-                      <SliderItem
-                        key="cff8d88442d10b88424de77967c68124_2"
+                      <Connect(Link)
+                        className="css-63oe3q"
+                        data-test-id="withLink"
+                        href="http://example.com"
+                        key="cff8d88442d10b88424de77967c68124"
                       >
-                        <div
-                          className="css-10a4qrv"
+                        <Link
+                          className="css-63oe3q"
+                          data-test-id="withLink"
+                          disabled={false}
+                          historyPush={[Function]}
+                          historyReplace={[Function]}
+                          href="http://example.com"
+                          replace={false}
+                          state={Object {}}
+                          tag="div"
                         >
-                          <Connect(Link)
-                            className="css-63oe3q"
-                            data-test-id="withLink"
-                            href="http://example.com"
-                            key="cff8d88442d10b88424de77967c68124"
+                          <div
+                            className="css-c6ki83 css-63oe3q"
+                            data-test-id="link: http://example.com"
+                            onClick={[Function]}
+                            role="link"
                           >
-                            <Link
-                              className="css-63oe3q"
-                              data-test-id="withLink"
-                              disabled={false}
-                              historyPush={[Function]}
-                              historyReplace={[Function]}
-                              href="http://example.com"
-                              replace={false}
-                              state={Object {}}
-                              tag="div"
-                            >
-                              <div
-                                className="css-c6ki83 css-63oe3q"
-                                data-test-id="link: http://example.com"
-                                onClick={[Function]}
-                                role="link"
-                              >
-                                <img
-                                  className={
-                                    Object {
-                                      "data-css-1rozygh": "",
-                                    }
-                                  }
-                                  data-test-id="link : undefined"
-                                  src="http://placehold.it/350x150"
-                                />
-                              </div>
-                            </Link>
-                          </Connect(Link)>
-                        </div>
-                      </SliderItem>
+                            <img
+                              className={
+                                Object {
+                                  "data-css-1rozygh": "",
+                                }
+                              }
+                              data-test-id="link : undefined"
+                              src="http://placehold.it/350x150"
+                            />
+                          </div>
+                        </Link>
+                      </Connect(Link)>
                     </div>
-                  </div>
-                  <div
-                    className="css-dwzljy "
-                  />
+                  </SwiperItem>
                 </div>
-              </ReactIdSwiper>
-            </div>
-          </Slider>
-        </Connect(Slider)>
+                <div
+                  className="swiper-pagination"
+                />
+              </div>
+            </ReactIdSwiper>
+          </div>
+        </Swiper>
       </ImageSlider>
     </ImageSliderWidget>
   </shouldUpdate(ImageSliderWidget)>
