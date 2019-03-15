@@ -3,17 +3,15 @@
 exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
 <ImageSlider
   autoPlay={false}
-  className=""
+  className={null}
   classNames={Object {}}
   controls={false}
-  disabled={false}
-  historyPath=""
   indicators={false}
   initialSlide={0}
   interval={3000}
   loop={false}
   maxIndicators={null}
-  onSlideChange={null}
+  onSlideChange={[Function]}
   rebuildOnUpdate={false}
   slidesPerView={1}
   snapItems={true}
@@ -57,37 +55,24 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
 </ImageSlider>
 `;
 
-exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
-<Connect(Slider)
+exports[`<ImageSlider /> should wrap each image into a Swiper.Item 1`] = `
+<Swiper
   autoPlay={false}
-  className=""
-  classNames={
-    Object {
-      "activeIndicator": "css-so6ht",
-      "container": "css-nil",
-      "inactiveIndicator": "css-1hipsfp",
-      "indicator": Object {
-        "bullets": "css-dwzljy",
-        "fraction": "css-eyy1lx",
-      },
-      "slide": "css-nil",
-      "slider": "css-1i764wo",
-    }
-  }
+  className={null}
+  classNames={Object {}}
   controls={false}
-  disabled={false}
-  historyPath=""
   indicators={false}
   initialSlide={0}
   interval={3000}
   loop={false}
   maxIndicators={10}
-  onSlideChange={null}
+  onSlideChange={[Function]}
   rebuildOnUpdate={true}
   slidesPerView={1}
   snapItems={true}
 >
-  <SliderItem
+  <SwiperItem
+    className={null}
     key="0"
   >
     <Image
@@ -121,8 +106,9 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
       }
       transition={null}
     />
-  </SliderItem>
-  <SliderItem
+  </SwiperItem>
+  <SwiperItem
+    className={null}
     key="1"
   >
     <Image
@@ -156,6 +142,6 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
       }
       transition={null}
     />
-  </SliderItem>
-</Connect(Slider)>
+  </SwiperItem>
+</Swiper>
 `;

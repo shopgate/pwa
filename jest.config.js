@@ -20,7 +20,7 @@ module.exports = {
     '/themes/*/e2e/',
   ],
   transformIgnorePatterns: [
-    '/node_modules/',
+    '/node_modules/(?![swiper|dom7].*/)',
     '/themes/*/extensions/',
     '/themes/*/e2e/',
   ],

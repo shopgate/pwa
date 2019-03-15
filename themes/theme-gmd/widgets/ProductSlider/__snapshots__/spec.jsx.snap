@@ -11,8 +11,9 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
   >
     Lorem ipsum
   </h3>
-  <Connect(Slider)
+  <Swiper
     autoPlay={false}
+    className={null}
     classNames={
       Object {
         "container": "css-y5yof0",
@@ -20,14 +21,18 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     }
     controls={false}
     indicators={false}
+    initialSlide={0}
     interval={1000}
     loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
   >
-    <SliderItem
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -62,10 +67,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -100,10 +105,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -138,10 +143,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -176,10 +181,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -214,10 +219,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -252,10 +257,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -290,10 +295,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -328,10 +333,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -366,10 +371,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -404,10 +409,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -442,10 +447,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -480,10 +485,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -518,10 +523,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -556,10 +561,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -594,10 +599,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -632,10 +637,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -670,10 +675,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -708,10 +713,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -746,10 +751,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -784,10 +789,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -822,10 +827,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -860,10 +865,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -898,10 +903,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -936,10 +941,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -974,10 +979,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1012,10 +1017,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1050,10 +1055,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1088,10 +1093,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1126,10 +1131,10 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1164,8 +1169,8 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-  </Connect(Slider)>
+    </SwiperItem>
+  </Swiper>
 </div>
 `;
 
@@ -1173,8 +1178,9 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
 <div
   className="css-1qazn57"
 >
-  <Connect(Slider)
+  <Swiper
     autoPlay={false}
+    className={null}
     classNames={
       Object {
         "container": "css-y5yof0",
@@ -1182,14 +1188,18 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     }
     controls={false}
     indicators={false}
+    initialSlide={0}
     interval={1000}
     loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
   >
-    <SliderItem
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1224,10 +1234,10 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1262,10 +1272,10 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1300,10 +1310,10 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1338,10 +1348,10 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1376,8 +1386,8 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-  </Connect(Slider)>
+    </SwiperItem>
+  </Swiper>
 </div>
 `;
 
@@ -1392,8 +1402,9 @@ exports[`<ProductSlider /> should render the headline 1`] = `
   >
     Lorem ipsum
   </h3>
-  <Connect(Slider)
+  <Swiper
     autoPlay={false}
+    className={null}
     classNames={
       Object {
         "container": "css-y5yof0",
@@ -1401,14 +1412,18 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     }
     controls={false}
     indicators={false}
+    initialSlide={0}
     interval={1000}
     loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
   >
-    <SliderItem
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1443,10 +1458,10 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1481,10 +1496,10 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1519,10 +1534,10 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1557,10 +1572,10 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1595,8 +1610,8 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-  </Connect(Slider)>
+    </SwiperItem>
+  </Swiper>
 </div>
 `;
 
@@ -1604,8 +1619,9 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
 <div
   className="css-1qazn57"
 >
-  <Connect(Slider)
+  <Swiper
     autoPlay={false}
+    className={null}
     classNames={
       Object {
         "container": "css-y5yof0",
@@ -1613,14 +1629,18 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     }
     controls={false}
     indicators={false}
+    initialSlide={0}
     interval={1000}
     loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
   >
-    <SliderItem
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1655,10 +1675,10 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1693,10 +1713,10 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1731,10 +1751,10 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1769,10 +1789,10 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-    <SliderItem
+    </SwiperItem>
+    <SwiperItem
       className="css-j85wo1"
-      key="s1234"
+      key="1234"
     >
       <Card
         className="css-6r0d5j"
@@ -1807,7 +1827,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           titleRows={2}
         />
       </Card>
-    </SliderItem>
-  </Connect(Slider)>
+    </SwiperItem>
+  </Swiper>
 </div>
 `;
