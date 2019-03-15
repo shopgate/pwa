@@ -1,14 +1,14 @@
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import ScannerEventListener from '@shopgate/pwa-core/classes/ScannerEventListener';
 import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
-import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
-import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
-import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 import { scannerFinished } from '../action-creators';
-import { scannerFinishedBarCode$ } from '../streams';
+import handleBarCode from '../actions/handleBarCode';
+import handleQrCode from '../actions/handleQrCode';
+import {
+  scannerFinishedBarCode$,
+  scannerFinishedQrCode$,
+} from '../streams';
 
 /**
  * Scanner subscriptions.
@@ -24,30 +24,22 @@ export default (subscribe) => {
   });
 
   // Default scope stream
-  const scanSuccessBarCodeDefault$ = scannerFinishedBarCode$
+  const scannerFinishedBarCodeDefault$ = scannerFinishedBarCode$
     .filter(({ action }) => action.scope === SCANNER_SCOPE_DEFAULT);
 
-  // Default scope handler
-  subscribe(scanSuccessBarCodeDefault$, ({ dispatch, action }) => {
+  // Default scope bar code handler
+  subscribe(scannerFinishedBarCodeDefault$, ({ dispatch, action }) => {
     const { payload } = action;
+    dispatch(handleBarCode(payload));
+  });
 
-    return /* jest */ dispatch(fetchProductsByQuery(2, payload))
-      .then(({ totalProductCount, products }) => {
-        if (!totalProductCount) {
-          dispatch(showModal({
-            confirm: null,
-            title: 'category.no_result.heading',
-            message: 'category.no_result.body',
-          })).then(() => Scanner.start()); // Continue scanning
-        } else if (Number(totalProductCount) === 1) {
-          dispatch(historyPush({
-            pathname: getProductRoute(products[0].id),
-          }));
-        } else {
-          dispatch(historyPush({
-            pathname: getSearchRoute(payload),
-          }));
-        }
-      });
+  // Default scope qr code stream
+  const scannerFinishedQrCodeDefault$ = scannerFinishedQrCode$
+    .filter(({ action }) => action.scope === SCANNER_SCOPE_DEFAULT);
+
+  // Default scope qr code handler
+  subscribe(scannerFinishedQrCodeDefault$, ({ dispatch, action }) => {
+    const { payload } = action;
+    dispatch(handleQrCode(payload));
   });
 };
