@@ -1,5 +1,7 @@
+import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/classes/Scanner';
 import {
   getClientInformation,
+  hasScannerSupport,
   getDeviceInformation,
   getPlatform,
   getDeviceModel,
@@ -60,6 +62,23 @@ describe('Client selectors', () => {
     it('should return the expected state', () => {
       const result = getClientInformation({ ...mockedStateAndroid });
       expect(result).toEqual(mockedStateAndroid.client);
+    });
+  });
+
+  describe('hasScannerSupport()', () => {
+    it('should return true when the app supports the scanner', () => {
+      const result = hasScannerSupport({ client: { libVersion: SCANNER_MIN_APP_LIB_VERSION } });
+      expect(result).toBeTruthy();
+    });
+
+    it('should return false when the app does not support the scanner', () => {
+      const result = hasScannerSupport({ client: { libVersion: '17.0' } });
+      expect(result).toBeFalsy();
+    });
+
+    it('should return false when the app lib version is unknown', () => {
+      const result = hasScannerSupport({ client: {} });
+      expect(result).toBeFalsy();
     });
   });
 
