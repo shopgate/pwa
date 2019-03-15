@@ -6,9 +6,9 @@ import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
-import { getProductRoute } from '../../product/helpers';
-import { getSearchRoute } from '../../search/helpers';
-import { scanSuccess } from '../action-creators';
+import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
+import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
+import { scannerFinished } from '../action-creators';
 import subscriptions from './index';
 
 jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
@@ -22,10 +22,13 @@ jest.mock('@shopgate/pwa-common/streams/app', () => ({
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyPush: jest.fn(),
 }));
-jest.mock('@shopgate/pwa-common/actions/modal/showModal');
+jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => ({
+  __esModule: true,
+  default: jest.fn(options => Promise.resolve(options)),
+}));
 jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery');
 jest.mock('../action-creators', () => ({
-  scanSuccess: jest.fn(),
+  scannerFinished: jest.fn(),
 }));
 
 describe('scanner subscriptions', () => {
@@ -57,15 +60,20 @@ describe('scanner subscriptions', () => {
     ] = subscribe.mock.calls;
   });
 
-  it('should initialize subscriptions', () => {
+  it('should init 2 subscriptions', () => {
     expect(subscribe).toHaveBeenCalledTimes(2);
+  });
 
+  it('should init appDidStart subscription', () => {
     expect(appDidStartStream$).toEqual(appDidStart$);
     expect(appDidStartCallback).toBeInstanceOf(Function);
+  });
+
+  it('should init scanFinishedBarCode subscription', () => {
     expect(scanSuccessBarCodeCallback).toBeInstanceOf(Function);
   });
 
-  it('should register handler and dispatch mapped action', () => {
+  it('should dispatch mapped ScannerEvent action', () => {
     appDidStartCallback({ dispatch });
 
     expect(Scanner.addListener).toHaveBeenCalledTimes(1);
@@ -74,14 +82,13 @@ describe('scanner subscriptions', () => {
 
     listenerActual.handler(mockedEvent);
     // Expect event to be mapped to stream
-    expect(scanSuccess).toBeCalledWith(SCANNER_SCOPE_DEFAULT, 'EAN_13', '0000000000000');
+    expect(scannerFinished).toBeCalledWith(SCANNER_SCOPE_DEFAULT, 'EAN_13', '0000000000000');
   });
 
   it('should show modal when products not found', async () => {
-    fetchProductsByQuery.mockReturnValue(Promise.resolve({
+    fetchProductsByQuery.mockResolvedValue({
       totalProductCount: 0,
-    }));
-    showModal.mockImplementation(options => Promise.resolve(options));
+    });
 
     await scanSuccessBarCodeCallback({ dispatch, action: { payload: '000' } });
     expect(fetchProductsByQuery).toHaveBeenCalledWith(2, '000');
@@ -94,10 +101,10 @@ describe('scanner subscriptions', () => {
   });
 
   it('should navigate to PDP when 1 product is found', async () => {
-    fetchProductsByQuery.mockReturnValue(Promise.resolve({
+    fetchProductsByQuery.mockResolvedValue({
       totalProductCount: 1,
       products: [{ id: '100' }],
-    }));
+    });
 
     await scanSuccessBarCodeCallback({ dispatch, action: { payload: '000' } });
     expect(historyPush).toHaveBeenCalledWith({

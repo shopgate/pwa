@@ -4,11 +4,11 @@ import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
-import { getProductRoute } from '../../product/helpers';
-import { getSearchRoute } from '../../search/helpers';
-import fetchProductsByQuery from '../../product/actions/fetchProductsByQuery';
-import { scanSuccess } from '../action-creators';
-import { scanSuccessBarCode$ } from '../streams';
+import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
+import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
+import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
+import { scannerFinished } from '../action-creators';
+import { scannerFinishedBarCode$ } from '../streams';
 
 /**
  * Scanner subscriptions.
@@ -19,15 +19,15 @@ export default (subscribe) => {
   subscribe(appDidStart$, ({ dispatch }) => {
     Scanner.addListener(new ScannerEventListener('Scanner listener')
       .setHandler(({ scope, payload: { format, code: payload } = {} }) => {
-        dispatch(scanSuccess(scope, format, payload));
+        dispatch(scannerFinished(scope, format, payload));
       }));
   });
 
-  // Default scope
-  const scanSuccessBarCodeDefault$ = scanSuccessBarCode$
+  // Default scope stream
+  const scanSuccessBarCodeDefault$ = scannerFinishedBarCode$
     .filter(({ action }) => action.scope === SCANNER_SCOPE_DEFAULT);
 
-  // Handle default scope
+  // Default scope handler
   subscribe(scanSuccessBarCodeDefault$, ({ dispatch, action }) => {
     const { payload } = action;
 
