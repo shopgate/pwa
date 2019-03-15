@@ -1,120 +1,146 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ZoomPanSlider /> renders with children 1`] = `
-<ImageSlider
+<Swiper
   autoPlay={false}
-  className=""
+  className={null}
   classNames={Object {}}
   controls={false}
   disabled={false}
-  historyPath=""
   indicators={false}
   initialSlide={0}
   interval={3000}
   loop={false}
   maxIndicators={null}
-  onSlideChange={null}
+  onSlideChange={[Function]}
   rebuildOnUpdate={false}
   slidesPerView={1}
   snapItems={true}
 >
-  <ZoomPanContainer
-    key="0/.0"
-    maxZoom={4}
-    minZoom={1}
-    onZoom={[Function]}
-    smoothness={500}
-    zoomBounce={0.3}
-    zoomOnTap={2}
+  <SwiperItem
+    className={null}
+    key="zoompanchild-0/.0"
   >
-    <TestElement />
-  </ZoomPanContainer>
-  <ZoomPanContainer
-    key="1/.1"
-    maxZoom={4}
-    minZoom={1}
-    onZoom={[Function]}
-    smoothness={500}
-    zoomBounce={0.3}
-    zoomOnTap={2}
+    <ZoomPanContainer
+      maxZoom={4}
+      minZoom={1}
+      onZoom={[Function]}
+      smoothness={500}
+      zoomBounce={0.3}
+      zoomOnTap={2}
+    >
+      <TestElement />
+    </ZoomPanContainer>
+  </SwiperItem>
+  <SwiperItem
+    className={null}
+    key="zoompanchild-1/.1"
   >
-    <TestElement />
-  </ZoomPanContainer>
-  <ZoomPanContainer
-    key="2/.2"
-    maxZoom={4}
-    minZoom={1}
-    onZoom={[Function]}
-    smoothness={500}
-    zoomBounce={0.3}
-    zoomOnTap={2}
+    <ZoomPanContainer
+      maxZoom={4}
+      minZoom={1}
+      onZoom={[Function]}
+      smoothness={500}
+      zoomBounce={0.3}
+      zoomOnTap={2}
+    >
+      <TestElement />
+    </ZoomPanContainer>
+  </SwiperItem>
+  <SwiperItem
+    className={null}
+    key="zoompanchild-2/.2"
   >
-    <TestElement />
-  </ZoomPanContainer>
-  <ZoomPanContainer
-    key="3/.3"
-    maxZoom={4}
-    minZoom={1}
-    onZoom={[Function]}
-    smoothness={500}
-    zoomBounce={0.3}
-    zoomOnTap={2}
+    <ZoomPanContainer
+      maxZoom={4}
+      minZoom={1}
+      onZoom={[Function]}
+      smoothness={500}
+      zoomBounce={0.3}
+      zoomOnTap={2}
+    >
+      <TestElement />
+    </ZoomPanContainer>
+  </SwiperItem>
+  <SwiperItem
+    className={null}
+    key="zoompanchild-3/.3"
   >
-    <TestElement />
-  </ZoomPanContainer>
-  <ZoomPanContainer
-    key="4/.4"
-    maxZoom={4}
-    minZoom={1}
-    onZoom={[Function]}
-    smoothness={500}
-    zoomBounce={0.3}
-    zoomOnTap={2}
+    <ZoomPanContainer
+      maxZoom={4}
+      minZoom={1}
+      onZoom={[Function]}
+      smoothness={500}
+      zoomBounce={0.3}
+      zoomOnTap={2}
+    >
+      <TestElement />
+    </ZoomPanContainer>
+  </SwiperItem>
+  <SwiperItem
+    className={null}
+    key="zoompanchild-4/.4"
   >
-    <TestElement />
-  </ZoomPanContainer>
-</ImageSlider>
+    <ZoomPanContainer
+      maxZoom={4}
+      minZoom={1}
+      onZoom={[Function]}
+      smoothness={500}
+      zoomBounce={0.3}
+      zoomOnTap={2}
+    >
+      <TestElement />
+    </ZoomPanContainer>
+  </SwiperItem>
+</Swiper>
 `;
 
 exports[`<ZoomPanSlider /> wraps children in zoom containers 1`] = `
-<ImageSlider
+<Swiper
   autoPlay={false}
-  className=""
+  className={null}
   classNames={Object {}}
   controls={false}
   disabled={false}
-  historyPath=""
   indicators={false}
   initialSlide={0}
   interval={3000}
   loop={false}
   maxIndicators={null}
-  onSlideChange={null}
+  onSlideChange={[Function]}
   rebuildOnUpdate={false}
   slidesPerView={1}
   snapItems={true}
 >
-  <ZoomPanContainer
-    key="0/.0"
-    maxZoom={4}
-    minZoom={1}
-    onZoom={[Function]}
-    smoothness={500}
-    zoomBounce={0.3}
-    zoomOnTap={2}
+  <SwiperItem
+    className={null}
+    key="zoompanchild-0/.0"
   >
-    <TestElement />
-  </ZoomPanContainer>
-  <ZoomPanContainer
-    key="1/.1"
-    maxZoom={4}
-    minZoom={1}
-    onZoom={[Function]}
-    smoothness={500}
-    zoomBounce={0.3}
-    zoomOnTap={2}
+    <ZoomPanContainer
+      maxZoom={4}
+      minZoom={1}
+      onZoom={[Function]}
+      smoothness={500}
+      zoomBounce={0.3}
+      zoomOnTap={2}
+    >
+      <TestElement />
+    </ZoomPanContainer>
+  </SwiperItem>
+  <SwiperItem
+    className={null}
+    key="zoompanchild-1/.1"
   >
-    <TestElement />
-  </ZoomPanContainer>
-</ImageSlider>
+    <ZoomPanContainer
+      maxZoom={4}
+      minZoom={1}
+      onZoom={[Function]}
+      smoothness={500}
+      zoomBounce={0.3}
+      zoomOnTap={2}
+    >
+      <TestElement />
+    </ZoomPanContainer>
+  </SwiperItem>
+</Swiper>
 `;

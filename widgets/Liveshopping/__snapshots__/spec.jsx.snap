@@ -10,38 +10,38 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     }
   }
 >
-  <ImageSlider
+  <Swiper
     autoPlay={false}
-    className=""
-    classNames={
-      Object {
-        "indicator": Object {
-          "bullets": "css-1yv2jt6",
-        },
-      }
-    }
+    className={null}
+    classNames={Object {}}
     controls={false}
-    disabled={false}
-    historyPath=""
     indicators={true}
     initialSlide={0}
     interval={3000}
     loop={true}
     maxIndicators={null}
-    onSlideChange={null}
+    onSlideChange={[Function]}
     rebuildOnUpdate={false}
     slidesPerView={1}
     snapItems={true}
   >
-    <LiveshoppingItem
+    <SwiperItem
+      className={null}
       key="1234"
-      productId="1234"
-    />
-    <LiveshoppingItem
+    >
+      <LiveshoppingItem
+        productId="1234"
+      />
+    </SwiperItem>
+    <SwiperItem
+      className={null}
       key="1235"
-      productId="1235"
-    />
-  </ImageSlider>
+    >
+      <LiveshoppingItem
+        productId="1235"
+      />
+    </SwiperItem>
+  </Swiper>
 </div>
 `;
 
@@ -53,33 +53,29 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     }
   }
 >
-  <ImageSlider
+  <Swiper
     autoPlay={false}
-    className=""
-    classNames={
-      Object {
-        "indicator": Object {
-          "bullets": "css-1yv2jt6",
-        },
-      }
-    }
+    className={null}
+    classNames={Object {}}
     controls={false}
-    disabled={false}
-    historyPath=""
     indicators={true}
     initialSlide={0}
     interval={3000}
-    loop={true}
+    loop={false}
     maxIndicators={null}
-    onSlideChange={null}
+    onSlideChange={[Function]}
     rebuildOnUpdate={false}
     slidesPerView={1}
     snapItems={true}
   >
-    <LiveshoppingItem
+    <SwiperItem
+      className={null}
       key="1234"
-      productId="1234"
-    />
-  </ImageSlider>
+    >
+      <LiveshoppingItem
+        productId="1234"
+      />
+    </SwiperItem>
+  </Swiper>
 </div>
 `;
