@@ -1,19 +1,15 @@
 import React, { PureComponent } from 'react';
 import ZoomPanContainer from '@shopgate/pwa-common/components/ZoomPanContainer';
 import { objectWithoutProps } from '@shopgate/pwa-common/helpers/data';
-import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
+import { Swiper } from '@shopgate/pwa-common/components';
 
 /**
  * A slider that is capable of zooming and panning its children.
  */
 class ZoomPanSlider extends PureComponent {
-  static propTypes = {
-    ...ImageSlider.propTypes,
-  };
+  static propTypes = Swiper.propTypes;
 
-  static defaultProps = {
-    ...ImageSlider.defaultProps,
-  };
+  static defaultProps = Swiper.defaultProps;
 
   /**
    * @param {Object} props The component props.
@@ -52,15 +48,19 @@ class ZoomPanSlider extends PureComponent {
    * @return {JSX}
    */
   render() {
+    /* eslint-disable react/no-array-index-key */
     return (
-      <ImageSlider {...this.sliderProps}>
+      <Swiper {...this.sliderProps}>
         {React.Children.map(this.props.children, (child, index) => (
-          <ZoomPanContainer key={index} onZoom={this.handleZoom}>
-            {child}
-          </ZoomPanContainer>
+          <Swiper.Item key={`zoompanchild-${index}`}>
+            <ZoomPanContainer onZoom={this.handleZoom}>
+              {child}
+            </ZoomPanContainer>
+          </Swiper.Item>
         ))}
-      </ImageSlider>
+      </Swiper>
     );
+    /* eslint-enable react/no-array-index-key */
   }
 }
 
