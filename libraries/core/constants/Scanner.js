@@ -56,4 +56,4 @@ export const SCANNER_TYPE_IMAGE = 'imageCapturing';
  * The scope name for the default.
  * @type {string}
  */
-export const SCANNER_SCOPE_DEFAULT = 'defaultScanner';
+export const SCANNER_SCOPE_DEFAULT = 'default';
