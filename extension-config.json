@@ -181,6 +181,17 @@
         "type": "json",
         "label": "Use sentry.io for error (debug, info) logging"
       }
+    },
+    "hasNoScanner": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/has_no_scanner?parsed=true",
+        "key": "value"
+      }
     }
   }
 }
