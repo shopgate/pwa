@@ -8,19 +8,11 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import ScannerContainer from '@shopgate/pwa-ui-shared/ScannerContainer';
 import ScannerOverlay from '@shopgate/pwa-ui-shared/ScannerOverlay';
 import View from 'Components/View';
-import { DefaultBar } from 'Components/AppBar/presets';
+import { BackBar } from 'Components/AppBar/presets';
 import colors from 'Styles/colors';
 
 const bodyElement = window.document.getElementsByTagName('body')[0];
 const htmlElement = bodyElement.parentElement;
-
-/**
- * // TODO SCANNER: Implement correct top bar
- * @returns {JSX}
- */
-const TopBar = () => (
-  <DefaultBar title="titles.scanner" />
-);
 
 /**
  * The scanner page component.
@@ -49,7 +41,7 @@ class ScannerView extends PureComponent {
         <RouteContext.Consumer>
           {({ params: { scope = SCANNER_SCOPE_DEFAULT, type = SCANNER_TYPE_BARCODE } = {} }) => (
             <Fragment>
-              <TopBar />
+              <BackBar title="titles.scanner" />
               <ScannerContainer
                 scope={scope}
                 type={type}
