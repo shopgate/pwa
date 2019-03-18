@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
 import {
-  getCurrentProduct,
+  getProduct,
   getProductUnitPrice,
   hasBaseProductVariants,
   isVariantSelected,
@@ -105,7 +105,7 @@ export const isFullPriceAvailable = createSelector(
  * @returns {Object} The extended product data.
  */
 export const getCalculatedProduct = createSelector(
-  getCurrentProduct,
+  getProduct,
   getProductTotalPrice,
   getProductPriceAddition,
   validateSelectorParams((product, totalPrice, addition) => ({
