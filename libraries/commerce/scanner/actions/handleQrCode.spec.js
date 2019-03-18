@@ -88,9 +88,10 @@ describe('handleBarCode', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_PRODUCT, link: '/item/SG1', data: { productId: 'SG1' } });
     });
 
-    it('fetch product is called with productId', () => {
-      handleQrCode()(dispatch, getState);
-      expect(fetchProductsById).toHaveBeenCalledWith('SG1');
+    it('fetch product and getState is called with productId', async () => {
+      await handleQrCode()(dispatch, getState);
+      expect(fetchProductsById).toHaveBeenCalledWith(['SG1']);
+      expect(getState).toHaveBeenCalledTimes(1);
     });
 
     it('should show modal, when product not found', async () => {
@@ -118,9 +119,10 @@ describe('handleBarCode', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_CATEGORY, link: '/category/SG2', data: { categoryId: 'SG2' } });
     });
 
-    it('fetch category is called with categoryId', async () => {
+    it('fetch category and getState is called with categoryId', async () => {
       await handleQrCode()(dispatch, getState);
       expect(fetchCategory).toHaveBeenCalledWith('SG2');
+      expect(getState).toHaveBeenCalledTimes(1);
     });
 
     it('should show modal, when category not found', async () => {
@@ -148,9 +150,10 @@ describe('handleBarCode', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_PAGE, link: '/page/SG3', data: { pageId: 'SG3' } });
     });
 
-    it('fetch page is called with pageId', async () => {
+    it('fetch page and getState is called with pageId', async () => {
       await handleQrCode()(dispatch, getState);
       expect(fetchPageConfig).toHaveBeenCalledWith('SG3');
+      expect(getState).toHaveBeenCalledTimes(1);
     });
 
     it('should show modal, when page not found', async () => {

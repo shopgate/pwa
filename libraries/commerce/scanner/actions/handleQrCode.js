@@ -38,7 +38,7 @@ export default payload => async (dispatch, getState) => {
     case QR_CODE_TYPE_PRODUCT:
     case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
       // Force to fetch missing products
-      await dispatch(fetchProductsById(data.productId));
+      await dispatch(fetchProductsById([data.productId]));
 
       // Check from a store
       if (!getProductById(getState(), data)) {
@@ -57,7 +57,7 @@ export default payload => async (dispatch, getState) => {
     case QR_CODE_TYPE_CATEGORY:
       await dispatch(fetchCategory(data.categoryId));
 
-      if (!getCategoryById(data)) {
+      if (!getCategoryById(getState(), data)) {
         await dispatch(showModal({
           confirm: null,
           title: 'category.no_result.heading',

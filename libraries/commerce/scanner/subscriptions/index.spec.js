@@ -95,10 +95,10 @@ describe('scanner subscriptions', () => {
     });
 
     it('should call qr code handler with qr code payload', async () => {
-      scanFinishedQrCodeCallback({ dispatch, action: { payload: 'https://img.2d.is/7/30289' } });
+      scanFinishedQrCodeCallback({ dispatch, action: { payload: 'https://2d.is/7/30289' } });
 
       expect(handleQrCode).toHaveBeenCalledTimes(1);
-      expect(handleQrCode).toHaveBeenCalledWith('https://img.2d.is/7/30289');
+      expect(handleQrCode).toHaveBeenCalledWith('https://2d.is/7/30289');
     });
   });
 });
