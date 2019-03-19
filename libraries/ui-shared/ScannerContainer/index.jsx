@@ -15,12 +15,10 @@ class ScannerContainer extends PureComponent {
     scope: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     children: PropTypes.node,
-    onError: PropTypes.func,
   }
 
   static defaultProps = {
     children: null,
-    onError: () => {},
   }
 
   /**
@@ -32,12 +30,8 @@ class ScannerContainer extends PureComponent {
       return;
     }
 
-    try {
-      await AppScanner.open(this.props.scope, this.props.type);
-      this.props.scannerDidOpen();
-    } catch (error) {
-      this.props.onError(error);
-    }
+    await AppScanner.open(this.props.scope, this.props.type);
+    this.props.scannerDidOpen();
   }
 
   /**

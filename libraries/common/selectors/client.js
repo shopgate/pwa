@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
-import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/classes/Scanner';
+import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
 import {
   OS_ANDROID,
   OS_IOS,

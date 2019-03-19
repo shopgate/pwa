@@ -10,6 +10,7 @@ import {
   SCANNER_TYPE_BARCODE,
   SCANNER_TYPE_IMAGE,
   SCANNER_ANIMATION_NONE,
+  SCANNER_MIN_APP_LIB_VERSION,
 } from '../../constants/Scanner';
 
 import {
@@ -22,8 +23,6 @@ import {
 export const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
 export const APP_EVENT_SCANNER_DID_APPEAR = 'scannerDidAppear';
 export const APP_EVENT_SCANNER_DID_DISAPPEAR = 'scannerDidDisappear';
-
-export const SCANNER_MIN_APP_LIB_VERSION = '21.0';
 
 /**
  * Represents the app scanner.

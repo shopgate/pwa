@@ -59,6 +59,7 @@ export function openScanner(params) {
   merged = merge(merged, eventParams);
 
   const command = new AppCommand();
+
   command
     .setCommandName('openScanner')
     .dispatch(merged);

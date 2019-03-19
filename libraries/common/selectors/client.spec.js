@@ -1,4 +1,4 @@
-import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/classes/Scanner';
+import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
 import {
   getClientInformation,
   hasScannerSupport,

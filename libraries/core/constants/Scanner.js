@@ -70,3 +70,5 @@ export const SCANNER_FORMATS_BARCODE = [
 ];
 
 export const SCANNER_FORMATS_QR_CODE = ['QR_CODE'];
+
+export const SCANNER_MIN_APP_LIB_VERSION = '21.0';
