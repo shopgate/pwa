@@ -8,7 +8,12 @@ import { Route, Router } from '@shopgate/pwa-common/components';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import { ToastProvider, LoadingProvider } from '@shopgate/pwa-common/providers';
 import App from '@shopgate/pwa-common/App';
-import { INDEX_PATH, LOGIN_PATH, PAGE_PATTERN } from '@shopgate/pwa-common/constants/RoutePaths';
+import {
+  INDEX_PATH,
+  LOGIN_PATH,
+  PAGE_PATTERN,
+  SCANNER_PATH,
+} from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import {
   ITEM_PATTERN,
@@ -65,6 +70,7 @@ const Pages = ({ store }) => (
                 <Route pattern={LOGIN_PATH} component={routes.Login} />
                 <Route pattern={SEARCH_PATTERN} component={routes.Search} cache />
                 <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
+                <Route pattern={SCANNER_PATH} component={routes.Scanner} />
                 {React.Children.map(routePortals, Component => Component)}
               </Router>
             </Viewport>

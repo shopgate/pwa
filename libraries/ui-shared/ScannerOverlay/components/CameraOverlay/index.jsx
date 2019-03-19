@@ -1,14 +1,13 @@
-import React, { Fragment } from 'react';
-
-// TODO SCANNER: style the scanner overlay + add corner icons
+import React from 'react';
+import styles from './style';
 
 /**
  * @returns {JSX}
  */
 const CameraOverlay = () => (
-  <Fragment>
-    <div>- CAMERA OVERLAY -</div>
-  </Fragment>
+  <div className={styles}>
+    <div />
+  </div>
 );
 
 export default CameraOverlay;

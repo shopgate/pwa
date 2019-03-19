@@ -4,8 +4,6 @@ import AppScanner from '@shopgate/pwa-core/classes/Scanner';
 import CameraOverlay from './components/CameraOverlay';
 import ScannerBar from './components/ScannerBar';
 
-// TODO SCANNER: get all new locales translated
-
 /**
  * The scanner overlay component.
  */
@@ -24,6 +22,7 @@ class ScannerOverlay extends PureComponent {
    */
   constructor(props) {
     super(props);
+
     this.state = {
       flashlight: props.flashlight,
     };

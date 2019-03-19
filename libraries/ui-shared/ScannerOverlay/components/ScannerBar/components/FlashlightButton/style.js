@@ -1,16 +1,19 @@
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-// TODO SCANNER: style the flashlight button
 const button = css({
-  alignItems: 'flex-start',
+  alignItems: 'center',
   color: 'inherit',
   display: 'flex',
-  fontWeight: 500,
+  flexShrink: 0,
+  fontSize: 24,
+  height: 44,
+  justifyContent: 'center',
   outline: 0,
-  padding: '16px 0',
+  padding: 0,
   position: 'relative',
-  width: '100%',
-  paddingTop: 'calc(16px + var(--safe-area-inset-top))',
+  width: 44,
+  zIndex: 1,
 }).toString();
 
 const iconWrapper = css({
@@ -19,8 +22,7 @@ const iconWrapper = css({
 
 const icon = css({
   boxSizing: 'content-box',
-  color: 'blue',
-  padding: '0 32px 0 16px',
+  color: themeConfig.colors.accent,
 }).toString();
 
 export default {

@@ -12,8 +12,8 @@ import {
 import { scannerPath } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
-import scannerConnect from '@shopgate/pwa-ui-shared/ScannerContainer/connector';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
+import connect from './connector';
 import navDrawerConnect from '../../../../connector';
 import portalProps from '../../../../portalProps';
 
@@ -47,4 +47,4 @@ ScannerButton.propTypes = {
 };
 
 // Combine two different connectors to reuse the existing functionality.
-export default scannerConnect(navDrawerConnect(ScannerButton));
+export default connect(navDrawerConnect(ScannerButton));

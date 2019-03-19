@@ -1,27 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import FlashlightButton from './components/FlashlightButton';
-
-// TODO SCANNER: add locales for the scanner bar into locale files (for all locale files)
-// TODO SCANNER: style the scanner bar
+import styles from './style';
 
 /**
  * @param {boolean} flashlightState The on/off state of the flashlight.
  * @param {Function} onToggleFlashlight The toggle event triggered by the user.
  * @returns {JSX}
- * @constructor
  */
 const ScannerBar = ({ flashlightState, onToggleFlashlight }) => (
-  <div>
-    <div>
+  <Grid className={styles.container}>
+    <Grid.Item className={styles.column}>
       <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
-    </div>
-    <div>
-      <I18n.Text string="scannerOverlay.scannerBar.instructions" />
-    </div>
-  </div>
+    </Grid.Item>
+    <Grid.Item className={styles.column}>
+      <I18n.Text string="scanner.instructions" />
+    </Grid.Item>
+  </Grid>
 );
+
 ScannerBar.propTypes = {
   flashlightState: PropTypes.bool.isRequired,
   onToggleFlashlight: PropTypes.func.isRequired,

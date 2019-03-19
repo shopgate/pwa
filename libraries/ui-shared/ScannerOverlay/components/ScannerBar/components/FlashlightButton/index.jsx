@@ -11,33 +11,23 @@ import styles from './style';
 const FlashlightButton = ({
   flashlightState,
   onToggle,
-  style,
-  testId,
 }) => (
   <button
     className={styles.button}
-    data-test-id={testId}
     onClick={onToggle}
     role="link"
-    style={style}
   >
-    <div className={styles.iconWrapper}>
-      {flashlightState && <FlashOnIcon className={styles.icon} size={24} />}
-      {!flashlightState && <FlashOffIcon className={styles.icon} size={24} />}
-    </div>
+    { flashlightState ? (
+      <FlashOnIcon className={styles.icon} />
+    ) : (
+      <FlashOffIcon className={styles.icon} />
+    )}
   </button>
 );
 
 FlashlightButton.propTypes = {
   flashlightState: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
-  style: PropTypes.shape(),
-  testId: PropTypes.string,
-};
-
-FlashlightButton.defaultProps = {
-  style: {},
-  testId: null,
 };
 
 export default FlashlightButton;
