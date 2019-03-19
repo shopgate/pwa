@@ -148,5 +148,8 @@
     "review_form_error_length": "Massima lunghezza {length} caratteri.",
     "press_to_rate_with_x_stars": "Premere per votare con {rate} {rate, plural, =1 {stella} other {stelle}}.",
     "success_message": "Grazie per la tua recensione!"
+  },
+  "scanner": {
+    "instructions": "Per favore mantieni il codice a barre o il codice QR nel centro. La lettura è effettuata automaticamente."
   }
 }

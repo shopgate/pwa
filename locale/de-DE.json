@@ -155,5 +155,8 @@
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
     "success_message": "Vielen Dank für Ihre Bewertung!"
+  },
+  "scanner": {
+    "instructions": "Bitte halten Sie den Barcode oder QR-Code in die Mitte. Die Erkennung erfolgt automatisch."
   }
 }
