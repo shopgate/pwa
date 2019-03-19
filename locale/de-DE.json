@@ -16,7 +16,8 @@
     "shipping": "Versand",
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
-    "favorites": "Merkliste"
+    "favorites": "Merkliste",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -129,6 +130,7 @@
     "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
+    "scanner": "Scanner",
     "shipping": "Versandarten",
     "about": "Impressum",
     "contact": "Kontakt",
@@ -165,5 +167,8 @@
     "cart": "Warenkorb",
     "more": "Mehr",
     "favorites": "Merkliste"
+  },
+  "scanner": {
+    "instructions": "Bitte halten Sie den Barcode oder QR-Code in die Mitte. Die Erkennung erfolgt automatisch."
   }
 }

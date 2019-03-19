@@ -16,7 +16,8 @@
     "shipping": "Shipping",
     "reviews": "Reviews",
     "browse": "Browse",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Add to favorites",
@@ -164,5 +165,8 @@
     "cart": "Cart",
     "more": "More",
     "favorites": "Favorites"
+  },
+  "scanner": {
+    "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically."
   }
 }
