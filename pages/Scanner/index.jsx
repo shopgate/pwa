@@ -1,5 +1,4 @@
 import React, { Fragment, PureComponent } from 'react';
-import { logger } from '@shopgate/pwa-core/helpers';
 import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
@@ -9,27 +8,30 @@ import ScannerContainer from '@shopgate/pwa-ui-shared/ScannerContainer';
 import ScannerOverlay from '@shopgate/pwa-ui-shared/ScannerOverlay';
 import View from 'Components/View';
 import { BackBar } from 'Components/AppBar/presets';
-import colors from 'Styles/colors';
 
-const bodyElement = window.document.getElementsByTagName('body')[0];
-const htmlElement = bodyElement.parentElement;
+const backgroundColor = 'transparent';
 
 /**
  * The scanner page component.
  */
 class ScannerView extends PureComponent {
+  /**
+   * @param {string} color The new background color.
+   */
+  updateBackground = (color) => {
+    document.querySelectorAll('html, body').forEach((el) => {
+      el.style.setProperty('background-color', color);
+    });
+  }
+
   removeBackground = () => {
     // Make background transparent, so the scanner becomes visible.
-    logger.log('ScannerView::componentDidMount: Setting background transparent');
-    htmlElement.style.setProperty('background-color', colors.transparent);
-    bodyElement.style.setProperty('background-color', colors.transparent);
+    this.updateBackground(backgroundColor);
   }
 
   resetBackground = () => {
     // Remove background transparency because the scanner is not visible anymore.
-    logger.log('ScannerView::handleScannerDidDisappear: Removing transparency from background');
-    htmlElement.style.removeProperty('background-color');
-    bodyElement.style.removeProperty('background-color');
+    this.updateBackground();
   }
 
   /**
@@ -37,7 +39,7 @@ class ScannerView extends PureComponent {
    */
   render() {
     return (
-      <View background={colors.transparent}>
+      <View background={backgroundColor}>
         <RouteContext.Consumer>
           {({ query: { scope = SCANNER_SCOPE_DEFAULT, type = SCANNER_TYPE_BARCODE } = {} }) => (
             <Fragment>
@@ -45,8 +47,8 @@ class ScannerView extends PureComponent {
               <ScannerContainer
                 scope={scope}
                 type={type}
-                removeBackground={this.removeBackground}
-                resetBackground={this.resetBackground}
+                scannerDidOpen={this.removeBackground}
+                scannerDidClose={this.resetBackground}
               >
                 <ScannerOverlay />
               </ScannerContainer>
