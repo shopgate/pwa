@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import productsById from './productsById';
-import currentProduct from './currentProduct';
 import imagesByProductId from './imagesByProductId';
 import descriptionsByProductId from './descriptionsByProductId';
 import propertiesByProductId from './propertiesByProductId';
@@ -11,7 +10,6 @@ import resultsByHash from './resultsByHash';
 import productRelationsByHash from './productRelationsByHash';
 
 export default combineReducers({
-  currentProduct,
   descriptionsByProductId,
   imagesByProductId,
   optionsByProductId,
