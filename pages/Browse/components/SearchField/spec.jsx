@@ -15,6 +15,11 @@ import styles from './style';
 import SearchField from './index';
 
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
+jest.mock('@virtuous/conductor', () => ({
+  router: {
+    update: jest.fn(),
+  },
+}));
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyPush: jest.fn().mockReturnValue({ type: 'FOO' }),
 }));
@@ -125,3 +130,8 @@ describe('<Content />', () => {
     });
   });
 });
+
+process.on('unhandledRejection', (err) => {
+  console.log(err);
+});
+
