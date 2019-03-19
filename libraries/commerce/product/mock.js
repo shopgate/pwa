@@ -189,6 +189,13 @@ const basicProductState = {
         ],
       },
     },
+    optionsByProductId: {
+      913: {
+        isFetching: false,
+        expires: 1497429213141,
+        options: [],
+      },
+    },
   },
 };
 
@@ -252,6 +259,11 @@ const productWithOneOption = {
       },
     },
     optionsByProductId: {
+      913: {
+        isFetching: false,
+        expires: 1497429213141,
+        options: [],
+      },
       1097: {
         isFetching: false,
         expires: 1497429213141,
