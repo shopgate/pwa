@@ -29,6 +29,10 @@ const input = css({
   WebkitAppearance: 'none',
 }).toString();
 
+const inputWithScannerIcon = css({
+  paddingRight: 36,
+}).toString();
+
 const label = css({
   alignItems: 'center',
   color: '#8a8a8f',
@@ -65,6 +69,14 @@ const icon = css({
   fontSize: '1.235rem',
 }).toString();
 
+const scannerIcon = css({
+  padding: '4px 6px 4px 4px',
+  color: '#8a8a8f',
+  fontSize: '1.7rem',
+  position: 'absolute',
+  right: 0,
+}).toString();
+
 const overlay = css({
   background: 'rgba(0,0,0, 0.4)',
   position: 'absolute',
@@ -81,10 +93,12 @@ export default {
   container,
   inputWrapper,
   input,
+  inputWithScannerIcon,
   label,
   labelHidden,
   hidden,
   button,
   icon,
+  scannerIcon,
   overlay,
 };

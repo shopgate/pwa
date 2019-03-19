@@ -164,5 +164,8 @@
     "cart": "Carrello",
     "more": "Altro",
     "favorites": "Favoriti"
+  },
+  "scanner": {
+    "instructions": "Per favore mantieni il codice a barre o il codice QR nel centro. La lettura è effettuata automaticamente."
   }
 }

@@ -1,4 +1,4 @@
-import { LOGIN_PATH, CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { LOGIN_PATH, CHECKOUT_PATH, SCANNER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import {
   ITEM_PATTERN,
@@ -29,6 +29,7 @@ const blacklist = [
   SEARCH_FILTER_PATTERN,
   LOGIN_PATH,
   CHECKOUT_PATH,
+  SCANNER_PATH,
 ];
 
 /**

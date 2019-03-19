@@ -164,5 +164,8 @@
     "cart": "Panier",
     "more": "Plus",
     "favorites": "Favorits"
+  },
+  "scanner": {
+    "instructions": "S'il vous plaît gardez le code à barres ou un code QR dans le centre. La détection est effectuée automatiquement."
   }
 }
