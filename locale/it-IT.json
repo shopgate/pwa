@@ -148,5 +148,12 @@
     "review_form_error_length": "Massima lunghezza {length} caratteri.",
     "press_to_rate_with_x_stars": "Premere per votare con {rate} {rate, plural, =1 {stella} other {stelle}}.",
     "success_message": "Grazie per la tua recensione!"
+  },
+  "scanner": {
+    "noResult": {
+      "header": "Oops!",
+      "qrCode": "We couldn't find a result for this QR code",
+      "barCode": "Product not found"
+    }
   }
 }
