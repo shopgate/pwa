@@ -50,7 +50,7 @@ describe('handleQrCode', () => {
   const modalContent = {
     dismiss: null,
     confirm: 'modal.ok',
-    title: 'scanner.noResult.heading',
+    title: 'modal.title_error',
     message: 'scanner.noResult.qrCode',
   };
 

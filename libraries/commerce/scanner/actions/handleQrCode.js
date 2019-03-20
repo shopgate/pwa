@@ -32,7 +32,7 @@ export default payload => async (dispatch, getState) => {
     dispatch(showModal({
       dismiss: null,
       confirm: 'modal.ok',
-      title: 'scanner.noResult.heading',
+      title: 'modal.title_error',
       message: 'scanner.noResult.qrCode',
     })).then(Scanner.start); // Continue scanning after modal dismiss
   };

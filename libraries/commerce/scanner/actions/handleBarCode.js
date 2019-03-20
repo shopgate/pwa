@@ -20,7 +20,7 @@ export default payload => async (dispatch) => {
     dispatch(showModal({
       dismiss: null,
       confirm: 'modal.ok',
-      title: 'scanner.noResult.heading',
+      title: 'modal.title_error',
       message: 'scanner.noResult.barCode',
     })).then(Scanner.start); // Continue scanning
   } else if (Number(totalProductCount) === 1) {
