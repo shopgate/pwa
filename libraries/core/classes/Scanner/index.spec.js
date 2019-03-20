@@ -7,6 +7,7 @@ import {
   closeScanner,
   startScanner,
   setFlashlightMode,
+  stopScanner,
 } from '../../commands/scanner';
 import {
   SCANNER_MODE_ON,
@@ -210,6 +211,7 @@ describe('Scanner', () => {
       scannerInstance.start();
 
       expect(logger.error).toBeCalledTimes(1);
+      expect(startScanner).not.toBeCalled();
     });
 
     it('should not do anything if the Scanner is not opened', () => {
@@ -223,6 +225,42 @@ describe('Scanner', () => {
       scannerInstance.start();
 
       expect(startScanner).not.toBeCalled();
+    });
+
+    it('should dispatch the startScanner command when the Scanner is not already running', async () => {
+      await scannerInstance.open('scope');
+      scannerInstance.running = false;
+      scannerInstance.start();
+
+      expect(startScanner).toBeCalled();
+    });
+  });
+
+  describe('stop()', () => {
+    it('should print an error message if start is called without opening first', () => {
+      scannerInstance.stop();
+
+      expect(logger.error).toBeCalledTimes(1);
+      expect(stopScanner).not.toBeCalled();
+    });
+
+    it('should not do anything if the Scanner is not opened', () => {
+      scannerInstance.stop();
+
+      expect(stopScanner).not.toBeCalled();
+    });
+
+    it('should not do anything when the Scanner is not running', () => {
+      scannerInstance.stop();
+
+      expect(stopScanner).not.toBeCalled();
+    });
+
+    it('should dispatch the stopScanner command when the Scanner is running', async () => {
+      await scannerInstance.open('scope');
+      scannerInstance.stop();
+
+      expect(stopScanner).toBeCalled();
     });
   });
 
@@ -403,9 +441,11 @@ describe('Scanner', () => {
     });
 
     it('should not be running after a successful scan if not restarted', async () => {
+      const stopSpy = jest.spyOn(scannerInstance, 'stop');
       await scannerInstance.handleScan(payload);
 
       expect(scannerInstance.running).toBeFalsy();
+      expect(stopSpy).toBeCalled();
     });
 
     it("should not close the Scanner on it's own", async () => {

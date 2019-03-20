@@ -16,6 +16,7 @@ import {
 import {
   openScanner as openAppScanner,
   startScanner as startAppScanner,
+  stopScanner as stopAppScanner,
   closeScanner as closeAppScanner,
   setFlashlightMode as setAppScannerFlashlightMode,
 } from '../../commands/scanner';
@@ -163,11 +164,26 @@ export class Scanner {
       logger.error(new Error("Can't start Scanner: Scanner is not opened."));
       return;
     }
-
     // Start only if not already running.
     if (!this.running) {
       this.running = true;
       startAppScanner();
+    }
+  }
+
+  /**
+   * Stops the scanner if it is opened and running.
+   */
+  stop = () => {
+    if (!this.opened) {
+      logger.error(new Error("Can't start Scanner: Scanner is not opened."));
+      return;
+    }
+
+    // Stop only if is running at the moment.
+    if (this.isRunning) {
+      this.running = false;
+      stopAppScanner();
     }
   }
 
@@ -249,7 +265,7 @@ export class Scanner {
    * @param {ScannerEventPayload} payload The payload of the scanner event for the scanned result.
    */
   handleScan = async (payload) => {
-    this.running = false;
+    this.stop();
 
     try {
       // Ignore return values from handlers.
