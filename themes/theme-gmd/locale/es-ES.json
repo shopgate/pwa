@@ -148,5 +148,11 @@
     "review_form_error_length": "Máxima cantidad de {length} caracteres.",
     "press_to_rate_with_x_stars": "Presione para calificar con {rate} {rate, plural, =1 {estrella} other {estrellas}}.",
     "success_message": "¡Gracias por su comentario!"
+  },
+  "scanner": {
+    "noResult": {
+      "qrCode": "We couldn't find a result for this QR code",
+      "barCode": "Product not found"
+    }
   }
 }

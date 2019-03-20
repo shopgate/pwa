@@ -153,5 +153,11 @@
     "review_form_error_length": "Maximum lengte {length} karakters.",
     "press_to_rate_with_x_stars": "Selecteer om te waarderen met {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Bedankt voor uw beoordeling!"
+  },
+  "scanner": {
+    "noResult": {
+      "qrCode": "We couldn't find a result for this QR code",
+      "barCode": "Product not found"
+    }
   }
 }

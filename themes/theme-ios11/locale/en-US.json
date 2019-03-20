@@ -164,5 +164,11 @@
     "cart": "Cart",
     "more": "More",
     "favorites": "Favorites"
+  },
+  "scanner": {
+    "noResult": {
+      "qrCode": "We couldn't find a result for this QR code",
+      "barCode": "Product not found"
+    }
   }
 }
