@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { historyReplace, historyPop } from '@shopgate/pwa-common/actions/router';
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
@@ -17,11 +17,9 @@ import {
 import { parse2dsQrCode } from '../helpers';
 import handleQrCode from './handleQrCode';
 
-jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
-  start: jest.fn(),
-}));
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
-  historyPush: jest.fn(),
+  historyReplace: jest.fn(),
+  historyPop: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-common/actions/page', () => ({
   fetchPageConfig: jest.fn().mockResolvedValue(null),
@@ -44,9 +42,17 @@ jest.mock('../helpers', () => ({
   parse2dsQrCode: jest.fn(),
 }));
 
-describe('handleBarCode', () => {
+describe('handleQrCode', () => {
   const dispatch = jest.fn(action => action);
   const getState = jest.fn();
+  const scannerStart = jest.spyOn(Scanner, 'start').mockImplementation(() => {});
+
+  const modalContent = {
+    dismiss: null,
+    confirm: 'modal.ok',
+    title: 'scanner.noResult.heading',
+    message: 'scanner.noResult.qrCode',
+  };
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -61,7 +67,7 @@ describe('handleBarCode', () => {
     it('should navigate to homepage', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_HOMEPAGE, link: '/' });
       handleQrCode()(dispatch);
-      expect(historyPush).toHaveBeenCalledWith({
+      expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/',
       });
     });
@@ -69,7 +75,7 @@ describe('handleBarCode', () => {
     it('should navigate to search', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_SEARCH, link: '/search?term' });
       handleQrCode()(dispatch);
-      expect(historyPush).toHaveBeenCalledWith({
+      expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/search?term',
       });
     });
@@ -77,7 +83,7 @@ describe('handleBarCode', () => {
     it('should navigate to add coupon page', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_COUPON, link: '/add_coupon/code' });
       handleQrCode()(dispatch);
-      expect(historyPush).toHaveBeenCalledWith({
+      expect(historyPop).toHaveBeenCalledWith({
         pathname: '/add_coupon/code',
       });
     });
@@ -98,17 +104,13 @@ describe('handleBarCode', () => {
       getProductById.mockReturnValue(null);
       // Handle
       await handleQrCode()(dispatch, getState);
-      expect(showModal).toHaveBeenCalledWith({
-        confirm: null,
-        title: 'category.no_result.heading',
-        message: 'category.no_result.body',
-      });
-      expect(Scanner.start).toHaveBeenCalledTimes(1);
+      expect(showModal).toHaveBeenCalledWith(modalContent);
+      expect(scannerStart).toHaveBeenCalledTimes(1);
     });
     it('should navigate to PDP when product exists', async () => {
       getProductById.mockReturnValue(true);
       await handleQrCode()(dispatch, getState);
-      expect(historyPush).toHaveBeenCalledWith({
+      expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/item/SG1',
       });
     });
@@ -129,17 +131,13 @@ describe('handleBarCode', () => {
       getCategoryById.mockReturnValue(null);
       // Handle
       await handleQrCode()(dispatch, getState);
-      expect(showModal).toHaveBeenCalledWith({
-        confirm: null,
-        title: 'category.no_result.heading',
-        message: 'category.no_result.body',
-      });
-      expect(Scanner.start).toHaveBeenCalledTimes(1);
+      expect(showModal).toHaveBeenCalledWith(modalContent);
+      expect(scannerStart).toHaveBeenCalledTimes(1);
     });
     it('should navigate to PLP when category exists', async () => {
       getCategoryById.mockReturnValue(true);
       await handleQrCode()(dispatch, getState);
-      expect(historyPush).toHaveBeenCalledWith({
+      expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/category/SG2',
       });
     });
@@ -160,17 +158,13 @@ describe('handleBarCode', () => {
       getPageConfigById.mockReturnValue(null);
       // Handle
       await handleQrCode()(dispatch, getState);
-      expect(showModal).toHaveBeenCalledWith({
-        confirm: null,
-        title: 'category.no_result.heading',
-        message: 'category.no_result.body',
-      });
-      expect(Scanner.start).toHaveBeenCalledTimes(1);
+      expect(showModal).toHaveBeenCalledWith(modalContent);
+      expect(scannerStart).toHaveBeenCalledTimes(1);
     });
     it('should navigate to CMS when page exists', async () => {
       getPageConfigById.mockReturnValue(true);
       await handleQrCode()(dispatch, getState);
-      expect(historyPush).toHaveBeenCalledWith({
+      expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/page/SG3',
       });
     });

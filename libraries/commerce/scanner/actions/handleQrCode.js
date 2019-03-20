@@ -1,5 +1,5 @@
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { historyPop, historyReplace } from '@shopgate/pwa-common/actions/router';
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
@@ -27,11 +27,25 @@ export default payload => async (dispatch, getState) => {
     return;
   }
 
+  /** Show modal and continue scanning */
+  const notFound = () => {
+    dispatch(showModal({
+      dismiss: null,
+      confirm: 'modal.ok',
+      title: 'scanner.noResult.heading',
+      message: 'scanner.noResult.qrCode',
+    })).then(Scanner.start); // Continue scanning after modal dismiss
+  };
+
   switch (type) {
     case QR_CODE_TYPE_HOMEPAGE:
     case QR_CODE_TYPE_SEARCH:
+      dispatch(historyReplace({
+        pathname: link,
+      }));
+      break;
     case QR_CODE_TYPE_COUPON:
-      dispatch(historyPush({
+      dispatch(historyPop({
         pathname: link,
       }));
       break;
@@ -42,14 +56,9 @@ export default payload => async (dispatch, getState) => {
 
       // Check from a store
       if (!getProductById(getState(), data)) {
-        await dispatch(showModal({
-          confirm: null,
-          title: 'category.no_result.heading',
-          message: 'category.no_result.body',
-        }));
-        Scanner.start(); // Continue scanning after modal dismiss
+        notFound();
       } else {
-        dispatch(historyPush({
+        dispatch(historyReplace({
           pathname: link,
         }));
       }
@@ -58,14 +67,9 @@ export default payload => async (dispatch, getState) => {
       await dispatch(fetchCategory(data.categoryId));
 
       if (!getCategoryById(getState(), data)) {
-        await dispatch(showModal({
-          confirm: null,
-          title: 'category.no_result.heading',
-          message: 'category.no_result.body',
-        }));
-        Scanner.start();
+        notFound();
       } else {
-        dispatch(historyPush({
+        dispatch(historyReplace({
           pathname: link,
         }));
       }
@@ -75,14 +79,9 @@ export default payload => async (dispatch, getState) => {
       await dispatch(fetchPageConfig(data.pageId));
 
       if (!getPageConfigById(getState(), data)) {
-        await dispatch(showModal({
-          confirm: null,
-          title: 'category.no_result.heading',
-          message: 'category.no_result.body',
-        }));
-        Scanner.start(); // Continue scanning after modal dismiss
+        notFound();
       } else {
-        dispatch(historyPush({
+        dispatch(historyReplace({
           pathname: link,
         }));
       }

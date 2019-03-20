@@ -1,16 +1,13 @@
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
 import handleBarCode from './handleBarCode';
 
-jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
-  start: jest.fn(),
-}));
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
-  historyPush: jest.fn(),
+  historyReplace: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => (
   jest.fn(options => Promise.resolve(options))
@@ -19,6 +16,14 @@ jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery');
 
 describe('handleBarCode', () => {
   const dispatch = jest.fn(action => action);
+  const scannerStart = jest.spyOn(Scanner, 'start').mockImplementation(() => {});
+
+  const modalContent = {
+    dismiss: null,
+    confirm: 'modal.ok',
+    title: 'scanner.noResult.heading',
+    message: 'scanner.noResult.barCode',
+  };
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -31,12 +36,8 @@ describe('handleBarCode', () => {
 
     await handleBarCode('111111')(dispatch);
     expect(fetchProductsByQuery).toHaveBeenCalledWith(2, '111111');
-    expect(showModal).toHaveBeenCalledWith({
-      confirm: null,
-      title: 'category.no_result.heading',
-      message: 'category.no_result.body',
-    });
-    expect(Scanner.start).toHaveBeenCalledTimes(1);
+    expect(showModal).toHaveBeenCalledWith(modalContent);
+    expect(scannerStart).toHaveBeenCalledTimes(1);
   });
 
   it('should navigate to PDP when 1 product is found', async () => {
@@ -47,7 +48,7 @@ describe('handleBarCode', () => {
 
     await handleBarCode('222222')(dispatch);
     expect(fetchProductsByQuery).toHaveBeenCalledWith(2, '222222');
-    expect(historyPush).toHaveBeenCalledWith({
+    expect(historyReplace).toHaveBeenCalledWith({
       pathname: getProductRoute('222222'),
     });
   });
@@ -59,7 +60,7 @@ describe('handleBarCode', () => {
 
     await handleBarCode('333333')(dispatch);
     expect(fetchProductsByQuery).toHaveBeenCalledWith(2, '333333');
-    expect(historyPush).toHaveBeenCalledWith({
+    expect(historyReplace).toHaveBeenCalledWith({
       pathname: getSearchRoute('333333'),
     });
   });

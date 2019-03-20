@@ -1,6 +1,6 @@
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
@@ -18,16 +18,17 @@ export default payload => async (dispatch) => {
 
   if (!totalProductCount) {
     dispatch(showModal({
-      confirm: null,
-      title: 'category.no_result.heading',
-      message: 'category.no_result.body',
-    })).then(() => Scanner.start()); // Continue scanning
+      dismiss: null,
+      confirm: 'modal.ok',
+      title: 'scanner.noResult.heading',
+      message: 'scanner.noResult.barCode',
+    })).then(Scanner.start); // Continue scanning
   } else if (Number(totalProductCount) === 1) {
-    dispatch(historyPush({
+    dispatch(historyReplace({
       pathname: getProductRoute(products[0].id),
     }));
   } else {
-    dispatch(historyPush({
+    dispatch(historyReplace({
       pathname: getSearchRoute(payload),
     }));
   }

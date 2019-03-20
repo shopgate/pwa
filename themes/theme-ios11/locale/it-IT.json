@@ -164,5 +164,12 @@
     "cart": "Carrello",
     "more": "Altro",
     "favorites": "Favoriti"
+  },
+  "scanner": {
+    "noResult": {
+      "header": "Oops!",
+      "qrCode": "We couldn't find a result for this QR code",
+      "barCode": "Product not found"
+    }
   }
 }
