@@ -4,13 +4,13 @@ import {
   captureException,
   captureMessage,
   withScope,
-  addBreadcrumb,
-  Severity,
+  Severity as SentrySeverity,
 } from '@sentry/browser';
 import { emitter } from '@shopgate/pwa-core';
-import { SOURCE_TRACKING } from '@shopgate/pwa-core/constants/ErrorManager';
+import logGroup from '@shopgate/pwa-core/helpers/logGroup';
+import { SOURCE_TRACKING, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
-// eslint-disable-next-line import/no-named-default
+  // eslint-disable-next-line import/no-named-default
   default as appConfig,
   themeName,
   pckVersion,
@@ -20,10 +20,10 @@ import { historyPop } from '../actions/router';
 import showModal from '../actions/modal/showModal';
 import { getUserData } from '../selectors/user';
 import { userDidUpdate$ } from '../streams/user';
-import { routeDidEnter$ } from '../streams/router';
 import { clientInformationDidUpdate$ } from '../streams/client';
 import { appWillStart$, appDidStart$ } from '../streams/app';
 import { appError$ } from '../streams/error';
+import { getRouterStack } from '../selectors/router';
 
 /**
  * App errors subscriptions.
@@ -47,7 +47,22 @@ export default (subscribe) => {
     return;
   }
 
-  subscribe(appWillStart$, () => {
+  const severityMap = {
+    [Severity.Fatal]: SentrySeverity.Fatal,
+    [Severity.Error]: SentrySeverity.Error,
+    [Severity.Critical]: SentrySeverity.Critical,
+    [Severity.Warning]: SentrySeverity.Warning,
+    [Severity.Info]: SentrySeverity.Info,
+    [Severity.Debug]: SentrySeverity.Debug,
+  };
+
+  let trackedSeverities = Object.getOwnPropertySymbols(severityMap).map(s => severityMap[s]);
+  const minSeverityIndex = trackedSeverities.indexOf(level);
+  if (minSeverityIndex > -1) {
+    trackedSeverities = trackedSeverities.slice(0, minSeverityIndex + 1);
+  }
+
+  subscribe(appWillStart$, ({ getState }) => {
     init({
       dsn: 'https://1a444b262ac6405594ab33fb0102b377@sentry.io/1398210',
       environment: env,
@@ -55,6 +70,20 @@ export default (subscribe) => {
       release: pckVersion,
       attachStacktrace: true,
       sampleRate,
+      beforeSend(event) {
+        if (event.level && !trackedSeverities.includes(event.level)) {
+          logGroup(`SEVERITY IS SKIPPED %c: ${event.level}`, { event }, '#786c45');
+          return null;
+        }
+        // eslint-disable-next-line no-param-reassign
+        event.extra = {
+          ...event.extra || {},
+          routerStack: getRouterStack(getState()).slice(-5),
+        };
+
+        logGroup(`SEVERITY IS LOGGED %c: ${event.level}`, { event }, '#069215');
+        return event;
+      },
     });
 
     configureScope((scope) => {
@@ -63,9 +92,6 @@ export default (subscribe) => {
       scope.setTag('pwaVersion', pckVersion);
       scope.setTag('theme', themeName);
       scope.setTag('language', appConfig.language);
-
-      // Min log level
-      scope.setLevel(Severity.fromString(level));
     });
 
     if (window) {
@@ -103,14 +129,9 @@ export default (subscribe) => {
 
   // Add app start event for debugging
   subscribe(appDidStart$, () => {
-    captureMessage('App did start', Severity.Debug);
-  });
-
-  // Add breadcrumbs to sentry
-  subscribe(routeDidEnter$, ({ action }) => {
-    const { pattern } = action.route;
-    addBreadcrumb({
-      category: pattern,
+    withScope((scope) => {
+      scope.setLevel(SentrySeverity.Debug);
+      captureMessage('App did start');
     });
   });
 
