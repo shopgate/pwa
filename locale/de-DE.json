@@ -90,7 +90,7 @@
   },
   "cart": {
     "subtotal": "Zwischensumme",
-    "total": "Summe",
+    "total": "Summe Warenkorb",
     "checkout": "Zur Kasse",
     "remove": "Entfernen",
     "edit": "Bearbeiten",

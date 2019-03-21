@@ -90,6 +90,7 @@
   },
   "cart": {
     "subtotal": "Sotto-totale",
+    "total": "Totale del carrello",
     "checkout": "Cassa",
     "remove": "Rimuovi",
     "edit": "Modifica",
