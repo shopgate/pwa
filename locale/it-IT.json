@@ -150,6 +150,10 @@
     "success_message": "Grazie per la tua recensione!"
   },
   "scanner": {
-    "instructions": "Per favore mantieni il codice a barre o il codice QR nel centro. La lettura è effettuata automaticamente."
+    "instructions": "Per favore mantieni il codice a barre o il codice QR nel centro. La lettura è effettuata automaticamente.",
+    "noResult": {
+      "qrCode": "We couldn't find a result for this QR code",
+      "barCode": "Product not found"
+    }
   }
 }
