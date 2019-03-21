@@ -8,6 +8,7 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
 import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
+import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
 import { router } from '@virtuous/conductor';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
@@ -21,13 +22,16 @@ const SUGGESTIONS_MIN = 1;
 class SearchField extends Component {
   static propTypes = {
     fetchSuggestions: PropTypes.func.isRequired,
+    openScanner: PropTypes.func.isRequired,
     pageId: PropTypes.string.isRequired,
     submitSearch: PropTypes.func.isRequired,
+    hasScannerSupport: PropTypes.bool,
     name: PropTypes.string,
     query: PropTypes.string,
   };
 
   static defaultProps = {
+    hasScannerSupport: true,
     name: 'search',
     query: '',
   };
@@ -186,18 +190,39 @@ class SearchField extends Component {
    * Renders the input field.
    * @return {JSX}
    */
-  renderInputField = () => (
-    <Input
-      autoComplete={false}
-      className={styles.input}
-      onFocusChange={this.handleFocusChange}
-      onChange={this.update}
-      onSubmit={this.handleSubmit}
-      value={this.state.query}
-      setRef={this.setInputRef}
-      type="search"
-    />
-  );
+  renderInputField = () => {
+    const classes = classNames(styles.input, {
+      [styles.inputWithScannerIcon]: this.props.hasScannerSupport && !this.state.focused,
+    });
+    return (
+      <Input
+        autoComplete={false}
+        className={classes}
+        onFocusChange={this.handleFocusChange}
+        onChange={this.update}
+        onSubmit={this.handleSubmit}
+        value={this.state.query}
+        setRef={this.setInputRef}
+        type="search"
+      />
+    );
+  }
+
+  /**
+   * Renders the scanner icon
+   * @returns {JSX}
+   */
+  renderScannerIcon = () => {
+    if (!this.props.hasScannerSupport || this.state.focused) {
+      return null;
+    }
+
+    return (
+      <button className={styles.scannerIcon} onClick={this.props.openScanner}>
+        <BarcodeScannerIcon />
+      </button>
+    );
+  }
 
   /**
    * Renders the text field.
@@ -213,6 +238,7 @@ class SearchField extends Component {
             <form onSubmit={this.handleSubmit} action=".">
               {this.renderLabelElement()}
               {this.renderInputField()}
+              {this.renderScannerIcon()}
             </form>
           </div>
           <div>

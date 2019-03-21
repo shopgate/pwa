@@ -8,10 +8,14 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { appWillStart$ } from '@shopgate/pwa-common/streams';
+import { configuration } from '@shopgate/pwa-common/collections';
+import { TAB_BAR_PATTERNS_BLACK_LIST } from '@shopgate/pwa-common/constants/Configuration';
 import {
   enableTabBar,
   disableTabBar,
@@ -26,6 +30,7 @@ const blacklist = [
   SEARCH_FILTER_PATTERN,
   LOGIN_PATH,
   CHECKOUT_PATH,
+  SCANNER_PATH,
 ];
 
 /**
@@ -40,6 +45,11 @@ const shouldCartHaveTabBar = state => getCartItems(state).length === 0;
  * @param {Function} subscribe The subscribe function.
  */
 export default function tabBar(subscribe) {
+  subscribe(appWillStart$, () => {
+    // Set a blacklist where tab bar is hidden
+    configuration.set(TAB_BAR_PATTERNS_BLACK_LIST, blacklist);
+  });
+
   // When a route enters we update the tabbar visibility.
   subscribe(routeDidEnter$, ({ dispatch, getState }) => {
     const { pattern } = getCurrentRoute(getState());
@@ -48,7 +58,7 @@ export default function tabBar(subscribe) {
     if (pattern === CART_PATH) {
       // Enable tabbar for empty cart page.
       enable = shouldCartHaveTabBar(getState());
-    } else if (!blacklist.includes(pattern)) {
+    } else if (!configuration.get(TAB_BAR_PATTERNS_BLACK_LIST).includes(pattern)) {
       // Enable tabbar for those that are not blacklisted.
       enable = true;
     }

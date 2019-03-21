@@ -1,6 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
 
 const wrapper = css({
   paddingBottom: 'var(--safe-area-inset-bottom)',
@@ -13,26 +14,9 @@ const container = css({
   lineHeight: 1.45,
   flexWrap: 'wrap',
   position: 'relative',
+  flexDirection: 'column',
   zIndex: 2,
 }).toString();
-
-const column = css({
-  padding: `0 ${variables.gap.small}px`,
-}).toString();
-
-const labelColumn = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-}).toString();
-
-const costsColumn = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-}).toString();
-
-const buttonColumn = costsColumn;
 
 const checkoutButton = css({
   display: 'flex',
@@ -41,7 +25,7 @@ const checkoutButton = css({
 
 const checkoutButtonContainer = css({
   background: colors.light,
-  padding: `0 ${variables.gap.big}px 10px ${variables.gap.big}px`,
+  padding: `0 ${variables.gap.small}px 10px ${variables.gap.small}px`,
   position: 'relative',
   zIndex: 2,
 }).toString();
@@ -49,10 +33,6 @@ const checkoutButtonContainer = css({
 export default {
   wrapper,
   container,
-  column,
-  labelColumn,
-  costsColumn,
-  buttonColumn,
   checkoutButton,
   checkoutButtonContainer,
 };

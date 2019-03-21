@@ -2,6 +2,8 @@ import configureStore from 'redux-mock-store';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { configuration } from '@shopgate/pwa-common/collections';
+import { TAB_BAR_PATTERNS_BLACK_LIST } from '@shopgate/pwa-common/constants/Configuration';
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import {
@@ -30,9 +32,12 @@ describe('TabBar subscriptions', () => {
   });
 
   it('should call subscribe as expected', () => {
-    expect(mockedSubscribe).toHaveBeenCalledTimes(2);
+    expect(mockedSubscribe).toHaveBeenCalledTimes(3);
   });
 
+  // eslint-disable-next-line no-unused-vars
+  let appWillStartStream;
+  let appWillStartCallback;
   let routeDidEnterStream;
   let routeDidEnterCallback;
   let cartUpdateStream;
@@ -40,9 +45,16 @@ describe('TabBar subscriptions', () => {
 
   beforeAll(() => {
     [
+      [appWillStartStream, appWillStartCallback],
       [routeDidEnterStream, routeDidEnterCallback],
       [cartUpdateStream, cartUpdateCallback],
     ] = mockedSubscribe.mock.calls;
+  });
+
+  it('should set configuration tab bar blacklist on app start', () => {
+    appWillStartCallback();
+    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toBeInstanceOf(Array);
+    expect(configuration.get(TAB_BAR_PATTERNS_BLACK_LIST)).toHaveLength(9);
   });
 
   it('should be initialized as expected', () => {
