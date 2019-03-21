@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
 import { Pagination, Navigation } from 'swiper/dist/js/swiper.esm';
-import SwiperItem from './SwiperItem';
-import { container, innerContainer, bullet, bulletActive } from './Swiper.styles';
+import SwiperItem from './components/SwiperItem';
+import { container, innerContainer, bullet, bulletActive } from './styles';
 
 /**
  * The basic swiper component.

@@ -7151,7 +7151,7 @@ react-hot-loader@4.8.0:
     shallowequal "^1.0.2"
     source-map "^0.7.3"
 
-react-id-swiper@2.1.0:
+react-id-swiper@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-id-swiper/-/react-id-swiper-2.1.0.tgz#bc0ab46ee0e204b0252880a6a2bb5545803a359d"
   integrity sha512-+bkjRINGs9ixeVGp/ftS6gPNwxhmtXCugu/aP8Ud2hhJnRi/hAUq31eyuSX4Eq9bBrtU/nbyNxUiTT/OJtssrQ==
@@ -8381,7 +8381,7 @@ supports-color@^5.3.0:
   dependencies:
     has-flag "^3.0.0"
 
-swiper@^4.5.0:
+swiper@~4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/swiper/-/swiper-4.5.0.tgz#4d870bec4f5abe2fb259325849dd2641c9243c0d"
   integrity sha512-jRCd/CGet9kaHwthHdd/sL/YU8CI157PWLyItnIcn/o/jP4haVky3zTF6f9F3JDpmQIw7jdWihISiYx0/oTHsg==

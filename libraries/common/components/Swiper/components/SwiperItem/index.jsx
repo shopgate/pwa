@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { item } from './SwiperItem.styles';
+import { item } from './styles';
 
 /**
  * The basic swiper item component.

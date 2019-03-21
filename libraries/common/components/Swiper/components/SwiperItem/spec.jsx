@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SwiperItem from './SwiperItem';
+import SwiperItem from './';
 
 describe('<SwiperItem />', () => {
   it('should not render without children', () => {
