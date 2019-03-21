@@ -470,5 +470,13 @@ describe('Scanner', () => {
       // The Promise should resolve to "undefined" rather than throw an error (mute errors).
       await expect(scannerInstance.handleScan(payload)).resolves.toBeUndefined();
     });
+
+    it('should ignore duplicated call in handling stage', async () => {
+      await scannerInstance.handleScan(payload);
+      await scannerInstance.handleScan(payload);
+      await scannerInstance.handleScan(payload);
+
+      expect(stopScanner).toHaveBeenCalledTimes(1);
+    });
   });
 });

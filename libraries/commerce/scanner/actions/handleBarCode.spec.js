@@ -10,7 +10,7 @@ jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyReplace: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => (
-  jest.fn(options => Promise.resolve(options))
+  jest.fn().mockResolvedValue(true)
 ));
 jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery');
 

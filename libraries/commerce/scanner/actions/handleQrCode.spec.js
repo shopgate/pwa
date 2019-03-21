@@ -29,7 +29,7 @@ jest.mock('@shopgate/pwa-common/selectors/page', () => ({
   getPageConfigById: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => (
-  jest.fn(options => Promise.resolve(options))
+  jest.fn().mockResolvedValue(true)
 ));
 jest.mock('@shopgate/pwa-common-commerce/product', () => ({
   fetchProductsById: jest.fn().mockResolvedValue(null),
@@ -62,6 +62,22 @@ describe('handleQrCode', () => {
   it('parse2dsQrCode is called with given qr code', () => {
     handleQrCode('qr.code.from.scanner')(dispatch);
     expect(parse2dsQrCode).toHaveBeenCalledWith('qr.code.from.scanner');
+  });
+
+  describe('unknown link handling', () => {
+    it('should show modal and restart scanner when type is undefined', async () => {
+      parse2dsQrCode.mockReturnValue(null);
+      await handleQrCode()(dispatch);
+      expect(showModal).toHaveBeenCalledTimes(1);
+      expect(scannerStart).toHaveBeenCalledTimes(1);
+    });
+
+    it('should show modal and restart scanner  when type is unknown', async () => {
+      parse2dsQrCode.mockReturnValue({ type: 'unknown' });
+      await handleQrCode()(dispatch);
+      expect(showModal).toHaveBeenCalledTimes(1);
+      expect(scannerStart).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('simple link handling', () => {

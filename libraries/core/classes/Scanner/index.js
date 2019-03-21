@@ -33,20 +33,27 @@ export class Scanner {
   constructor() {
     this.supportedTypes = [SCANNER_TYPE_BARCODE, SCANNER_TYPE_IMAGE];
 
+    this.eventHandler = new ScannerEventHandler();
+
+    // Register app scan event to listen for.
+    registerEvents([APP_EVENT_SCANNER_DID_SCAN]);
+
+    this.reset();
+  }
+
+  /**
+   * Reset Scanner state
+   */
+  reset = () => {
     this.scope = null;
     this.type = null;
 
     this.opened = false;
     this.running = false;
-
-    this.closeHandler = null;
-
+    this.handling = false;
     this.flashlightEnabled = false;
 
-    this.eventHandler = new ScannerEventHandler();
-
-    // Register app scan event to listen for.
-    registerEvents([APP_EVENT_SCANNER_DID_SCAN]);
+    this.closeHandler = null;
   }
 
   /**
@@ -162,6 +169,9 @@ export class Scanner {
       logger.error(new Error("Can't start Scanner: Scanner is not opened."));
       return;
     }
+
+    this.handling = false;
+
     // Start only if not already running.
     if (!this.running) {
       this.running = true;
@@ -202,14 +212,7 @@ export class Scanner {
 
     closeAppScanner();
 
-    // Cleanup internal states
-    this.scope = null;
-    this.type = null;
-
-    this.opened = false;
-    this.running = false;
-
-    this.closeHandler = null;
+    this.reset();
   }
 
   /**
@@ -263,6 +266,12 @@ export class Scanner {
    * @param {ScannerEventPayload} payload The payload of the scanner event for the scanned result.
    */
   handleScan = async (payload) => {
+    if (this.handling) {
+      logger.warn('Scan result ignored in handling stage', payload);
+      return;
+    }
+    this.handling = true;
+
     this.stop();
 
     try {
