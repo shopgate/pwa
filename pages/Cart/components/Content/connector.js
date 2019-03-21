@@ -11,4 +11,4 @@ const mapStateToProps = state => ({
   messages: getCartMessages(state),
 });
 
-export default connect(mapStateToProps, null, null, { withRef: true });
+export default connect(mapStateToProps);
