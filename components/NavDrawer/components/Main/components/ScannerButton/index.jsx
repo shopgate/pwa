@@ -9,8 +9,8 @@ import {
   NAV_MENU_SCANNER_AFTER,
   NAV_MENU_SCANNER_BEFORE,
 } from '@shopgate/pwa-common/constants/Portals';
-import { scannerPath } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from './connector';
@@ -32,7 +32,7 @@ const ScannerButton = ({ hasScannerSupport, navigate }) => (
         <NavDrawer.Item
           label={LABEL}
           icon={BarcodeScannerIcon}
-          onClick={navigate(scannerPath(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE), LABEL)}
+          onClick={navigate(getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE), LABEL)}
           testId="navDrawerScannerButton"
         />
       }

@@ -4,7 +4,7 @@ import {
   SCANNER_TYPE_BARCODE,
 } from '@shopgate/pwa-core/constants/Scanner';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import ScannerContainer from '@shopgate/pwa-ui-shared/ScannerContainer';
+import ScannerContainer from '@shopgate/pwa-common/components/ScannerContainer';
 import ScannerOverlay from '@shopgate/pwa-ui-shared/ScannerOverlay';
 import View from 'Components/View';
 import { BackBar } from 'Components/AppBar/presets';

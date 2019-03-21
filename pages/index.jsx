@@ -13,7 +13,6 @@ import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
   LOGIN_PATH,
-  SCANNER_PATH,
   PAGE_PATTERN,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
@@ -27,6 +26,7 @@ import {
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
+import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
