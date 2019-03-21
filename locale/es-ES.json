@@ -90,6 +90,7 @@
   },
   "cart": {
     "subtotal": "Subtotal",
+    "total": "Total de la cesta",
     "checkout": "Pagar",
     "remove": "Quitar",
     "edit": "Editar",
