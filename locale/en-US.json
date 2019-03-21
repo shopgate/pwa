@@ -90,7 +90,7 @@
   },
   "cart": {
     "subtotal": "Subtotal",
-    "total": "Total",
+    "total": "Cart total",
     "checkout": "Checkout",
     "remove": "Remove",
     "edit": "Edit",
