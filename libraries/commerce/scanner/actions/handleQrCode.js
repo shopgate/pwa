@@ -45,9 +45,10 @@ export default payload => async (dispatch, getState) => {
       }));
       break;
     case QR_CODE_TYPE_COUPON:
-      dispatch(historyPop({
+      dispatch(historyReplace({
         pathname: link,
       }));
+      dispatch(historyPop());
       break;
     case QR_CODE_TYPE_PRODUCT:
     case QR_CODE_TYPE_PRODUCT_WITH_COUPON:

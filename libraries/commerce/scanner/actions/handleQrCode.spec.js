@@ -17,6 +17,7 @@ import {
 import { parse2dsQrCode } from '../helpers';
 import handleQrCode from './handleQrCode';
 
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyReplace: jest.fn(),
   historyPop: jest.fn(),
@@ -83,9 +84,10 @@ describe('handleQrCode', () => {
     it('should navigate to add coupon page', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_COUPON, link: '/add_coupon/code' });
       handleQrCode()(dispatch);
-      expect(historyPop).toHaveBeenCalledWith({
+      expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/add_coupon/code',
       });
+      expect(historyPop).toHaveBeenCalledWith();
     });
   });
 
