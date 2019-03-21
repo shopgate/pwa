@@ -7,17 +7,17 @@ import receiveCart from '@shopgate/pwa-common-commerce/cart/action-creators/rece
 import reducers from 'Pages/reducers';
 import Label from './components/Label';
 import Amount from './components/Amount';
-import Tax from './';
+import Discounts from './';
 
 const store = createMockStore(reducers);
 const context = { isLoading: () => false };
 
-describe('<Tax />', () => {
-  it('renders no tax information when the cart is not fetched', () => {
+describe('<Discounts />', () => {
+  it('renders no discounts when the cart is not fetched', () => {
     const wrapper = mount((
       <Provider store={store}>
         <LoadingContext.Provider value={context}>
-          <Tax />
+          <Discounts />
         </LoadingContext.Provider>
       </Provider>
     ));
@@ -26,13 +26,13 @@ describe('<Tax />', () => {
     wrapper.unmount();
   });
 
-  it('renders tax information according to the cart data', () => {
+  it('renders discounts according to the cart data', () => {
     store.dispatch(receiveCart({
       totals: [
         {
-          label: 'incl. 19% VAT',
-          amount: 19,
-          type: 'tax',
+          label: 'Coupon',
+          amount: 5,
+          type: 'discount',
         },
       ],
       currency: 'EUR',
@@ -40,12 +40,12 @@ describe('<Tax />', () => {
     const wrapper = mount((
       <Provider store={store}>
         <LoadingContext.Provider value={context}>
-          <Tax />
+          <Discounts />
         </LoadingContext.Provider>
       </Provider>
     ));
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find(Label).html()).toEqual('<div class="css-z3fwy2 " data-test-id="taxLabel"><span>incl. 19% VAT</span><span>:</span></div>');
-    expect(wrapper.find(Amount).html()).toEqual('<div class="css-13f0gfi "><span class="">19</span></div>');
+    expect(wrapper.find(Label).html()).toEqual('<div class="css-z3fwy2 " data-test-id="discountLabel"><span>Coupon</span><span>:</span></div>');
+    expect(wrapper.find(Amount).html()).toEqual('<div class="css-13f0gfi "><span>-</span><span class="">5</span></div>');
   });
 });

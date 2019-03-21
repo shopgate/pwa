@@ -4,15 +4,18 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors, variables } = themeConfig;
 
 const disabled = css({
-  color: `${colors.shade4}`,
+  color: `${colors.shade4} !important`,
 }).toString();
 
-const subTotalBase = css({
+const label = css({
   fontSize: '0.875rem',
+  color: colors.shade9,
+  display: 'flex',
+  flexDirection: 'row',
   paddingRight: variables.gap.small,
 }).toString();
 
 export default {
   disabled,
-  subTotalBase,
+  label,
 };

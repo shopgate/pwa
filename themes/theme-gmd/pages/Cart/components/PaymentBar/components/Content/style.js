@@ -12,7 +12,7 @@ const wrapper = css({
 }).toString();
 
 const container = css({
-  padding: `${variables.gap.big}px`,
+  padding: variables.gap.big,
   lineHeight: 1.45,
   flexGrow: 1,
   flexShrink: 0,

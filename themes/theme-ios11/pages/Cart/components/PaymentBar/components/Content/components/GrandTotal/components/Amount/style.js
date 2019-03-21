@@ -1,18 +1,17 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
 const disabled = css({
-  color: `${colors.shade4}`,
+  color: `${colors.shade4} !important`,
 }).toString();
 
-const subTotalBase = css({
-  fontSize: '0.875rem',
-  paddingRight: variables.gap.small,
+const totalValue = css({
+  textAlign: 'right',
 }).toString();
 
 export default {
   disabled,
-  subTotalBase,
+  totalValue,
 };

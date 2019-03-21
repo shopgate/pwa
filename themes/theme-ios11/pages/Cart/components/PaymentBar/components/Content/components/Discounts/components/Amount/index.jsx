@@ -12,7 +12,8 @@ import styles from './style';
  * @return {JSX}
  */
 const DiscountAmount = ({ currency, isDisabled, value }) => (
-  <div className={`${styles.taxValue} ${isDisabled ? styles.disabled : ''}`}>
+  <div className={`${styles.discountsValue} ${isDisabled ? styles.disabled : ''}`}>
+    <span>-</span>
     <I18n.Price price={value} currency={currency} />
   </div>
 );
