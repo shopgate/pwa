@@ -15,7 +15,8 @@
     "cart": "Carrello",
     "shipping": "Spedizione",
     "reviews": "Recensioni",
-    "favorites": "Favoriti"
+    "favorites": "Favoriti",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Aggiungi ai favoriti",
@@ -122,6 +123,7 @@
     "favorites": "Favoriti",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
+    "scanner": "Scanner",
     "shipping": "Modalità di spedizione",
     "about": "Su di noi",
     "payment": "Modalità di pagamento",

@@ -16,9 +16,9 @@ const backgroundColor = 'transparent';
  */
 class ScannerView extends PureComponent {
   /**
-   * @param {string} color The new background color.
+   * @param {string} [color=''] The new background color.
    */
-  updateBackground = (color) => {
+  updateBackground = (color = '') => {
     document.querySelectorAll('html, body').forEach((el) => {
       el.style.setProperty('background-color', color);
     });
