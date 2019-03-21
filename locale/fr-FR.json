@@ -16,7 +16,8 @@
     "shipping": "Livraison",
     "reviews": "Commentaires",
     "browse": "Naviger",
-    "favorites": "Favorits"
+    "favorites": "Favorits",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
@@ -127,6 +128,7 @@
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
+    "scanner": "Scanner",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",
