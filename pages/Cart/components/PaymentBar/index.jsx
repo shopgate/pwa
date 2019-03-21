@@ -6,14 +6,18 @@ import Content from './components/Content';
 /**
  * The PaymentBar component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @returns {React.Node}
  */
-const PaymentBar = ({ visible }) => (
-  visible && createPortal(
+const PaymentBar = ({ visible }) => {
+  if (!visible) {
+    return null;
+  }
+
+  return createPortal(
     <Content />,
     document.getElementById('AppFooter')
-  )
-);
+  );
+};
 
 PaymentBar.propTypes = {
   visible: PropTypes.bool,
