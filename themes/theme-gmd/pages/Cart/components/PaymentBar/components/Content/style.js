@@ -4,17 +4,22 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors, variables } = themeConfig;
 
 const wrapper = css({
+  display: 'flex',
+  flexFlow: 'row nowrap',
   paddingBottom: 'var(--safe-area-inset-bottom)',
+  background: colors.light,
+  boxShadow: '0 -2px 4px rgba(0, 0, 0, 0.1)',
 }).toString();
 
 const container = css({
-  background: colors.light,
-  boxShadow: '0 -2px 4px rgba(0, 0, 0, 0.1)',
   padding: `${variables.gap.big}px`,
   lineHeight: 1.45,
+  flexGrow: 1,
+  flexShrink: 0,
   flexWrap: 'wrap',
   position: 'relative',
   flexDirection: 'column',
+  minWidth: 'auto',
   zIndex: 2,
 }).toString();
 
@@ -25,8 +30,12 @@ const checkoutButton = css({
 
 const checkoutButtonContainer = css({
   background: colors.light,
-  padding: `0 ${variables.gap.big}px 10px ${variables.gap.big}px`,
+  display: 'flex',
+  alignItems: 'center',
+  padding: variables.gap.big,
   position: 'relative',
+  flexGrow: 0,
+  flexShrink: 1,
   zIndex: 2,
 }).toString();
 
