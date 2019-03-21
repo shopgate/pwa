@@ -158,7 +158,7 @@ class AppCommand {
       return false;
     }
 
-    // Create a new bridge that handles this comamnd.
+    // Create a new bridge that handles this command.
     const bridge = AppCommand.createBridge();
 
     try {

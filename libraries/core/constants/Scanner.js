@@ -56,7 +56,7 @@ export const SCANNER_TYPE_IMAGE = 'imageCapturing';
  * Default scope for all scanner formats.
  * @type {string}
  */
-export const SCANNER_SCOPE_DEFAULT = 'SCANNER_SCOPE_DEFAULT';
+export const SCANNER_SCOPE_DEFAULT = 'default';
 
 export const SCANNER_FORMATS_BARCODE = [
   'UPC_E',
@@ -70,3 +70,5 @@ export const SCANNER_FORMATS_BARCODE = [
 ];
 
 export const SCANNER_FORMATS_QR_CODE = ['QR_CODE'];
+
+export const SCANNER_MIN_APP_LIB_VERSION = '21.0';

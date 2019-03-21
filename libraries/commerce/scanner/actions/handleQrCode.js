@@ -23,9 +23,6 @@ import { parse2dsQrCode } from '../helpers';
  */
 export default payload => async (dispatch, getState) => {
   const { type, link, data } = parse2dsQrCode(payload) || {};
-  if (!type) {
-    return;
-  }
 
   /** Show modal and continue scanning */
   const notFound = () => {
@@ -34,7 +31,7 @@ export default payload => async (dispatch, getState) => {
       confirm: 'modal.ok',
       title: 'modal.title_error',
       message: 'scanner.noResult.qrCode',
-    })).then(Scanner.start); // Continue scanning after modal dismiss
+    })).then(confirmed => confirmed && Scanner.start());
   };
 
   switch (type) {
@@ -45,9 +42,10 @@ export default payload => async (dispatch, getState) => {
       }));
       break;
     case QR_CODE_TYPE_COUPON:
-      dispatch(historyPop({
+      dispatch(historyReplace({
         pathname: link,
       }));
+      dispatch(historyPop());
       break;
     case QR_CODE_TYPE_PRODUCT:
     case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
@@ -86,7 +84,8 @@ export default payload => async (dispatch, getState) => {
         }));
       }
       break;
-    default:
+    default: notFound();
   }
+  return null;
 };
 

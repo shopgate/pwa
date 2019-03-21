@@ -16,7 +16,8 @@
     "shipping": "Envío",
     "reviews": "Comentarios",
     "browse": "Buscar",
-    "favorites": "Favoritos"
+    "favorites": "Favoritos",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Agregar a favoritos",
@@ -166,6 +167,7 @@
     "favorites": "Favoritos"
   },
   "scanner": {
+    "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
     "noResult": {
       "qrCode": "We couldn't find a result for this QR code",
       "barCode": "Product not found"

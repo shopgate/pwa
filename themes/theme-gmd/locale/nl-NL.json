@@ -15,7 +15,8 @@
     "cart": "Winkelwagen",
     "shipping": "Verzending",
     "reviews": "Reviews",
-    "favorites": "Favorieten"
+    "favorites": "Favorieten",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
@@ -123,6 +124,7 @@
     "favorites": "Favorieten",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
+    "scanner": "Scanner",
     "shipping": "Verzendmethoden",
     "about": "Over ons",
     "payment": "Betalingsmethoden",
@@ -155,6 +157,7 @@
     "success_message": "Bedankt voor uw beoordeling!"
   },
   "scanner": {
+    "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
     "noResult": {
       "qrCode": "We couldn't find a result for this QR code",
       "barCode": "Product not found"

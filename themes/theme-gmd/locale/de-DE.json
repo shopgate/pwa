@@ -15,7 +15,8 @@
     "cart": "Warenkorb",
     "shipping": "Versand",
     "reviews": "Bewertungen",
-    "favorites": "Merkliste"
+    "favorites": "Merkliste",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -123,6 +124,7 @@
     "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
+    "scanner": "Scanner",
     "shipping": "Versandarten",
     "about": "Impressum",
     "payment": "Zahlungsarten",
@@ -155,6 +157,7 @@
     "success_message": "Vielen Dank für Ihre Bewertung!"
   },
   "scanner": {
+    "instructions": "Bitte halten Sie den Barcode oder QR-Code in die Mitte. Die Erkennung erfolgt automatisch.",
     "noResult": {
       "qrCode": "We couldn't find a result for this QR code",
       "barCode": "Product not found"

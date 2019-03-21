@@ -22,7 +22,7 @@ export default payload => async (dispatch) => {
       confirm: 'modal.ok',
       title: 'modal.title_error',
       message: 'scanner.noResult.barCode',
-    })).then(Scanner.start); // Continue scanning
+    })).then(confirmed => confirmed && Scanner.start());
   } else if (Number(totalProductCount) === 1) {
     dispatch(historyReplace({
       pathname: getProductRoute(products[0].id),

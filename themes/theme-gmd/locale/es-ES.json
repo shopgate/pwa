@@ -15,7 +15,8 @@
     "cart": "Cesta",
     "shipping": "Envío",
     "reviews": "Comentarios",
-    "favorites": "Favoritos"
+    "favorites": "Favoritos",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Agregar a favoritos",
@@ -122,6 +123,7 @@
     "favorites": "Favoritos",
     "my_orders": "Mis pedidos",
     "cart": "Cesta de la compra",
+    "scanner": "Scanner",
     "shipping": "Métodos de envío",
     "about": "Sobre nosotros",
     "payment": "Métodos de pago",
@@ -150,6 +152,7 @@
     "success_message": "¡Gracias por su comentario!"
   },
   "scanner": {
+    "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
     "noResult": {
       "qrCode": "We couldn't find a result for this QR code",
       "barCode": "Product not found"

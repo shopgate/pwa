@@ -17,6 +17,7 @@ import {
 import { parse2dsQrCode } from '../helpers';
 import handleQrCode from './handleQrCode';
 
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyReplace: jest.fn(),
   historyPop: jest.fn(),
@@ -28,7 +29,7 @@ jest.mock('@shopgate/pwa-common/selectors/page', () => ({
   getPageConfigById: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => (
-  jest.fn(options => Promise.resolve(options))
+  jest.fn().mockResolvedValue(true)
 ));
 jest.mock('@shopgate/pwa-common-commerce/product', () => ({
   fetchProductsById: jest.fn().mockResolvedValue(null),
@@ -63,6 +64,22 @@ describe('handleQrCode', () => {
     expect(parse2dsQrCode).toHaveBeenCalledWith('qr.code.from.scanner');
   });
 
+  describe('unknown link handling', () => {
+    it('should show modal and restart scanner when type is undefined', async () => {
+      parse2dsQrCode.mockReturnValue(null);
+      await handleQrCode()(dispatch);
+      expect(showModal).toHaveBeenCalledTimes(1);
+      expect(scannerStart).toHaveBeenCalledTimes(1);
+    });
+
+    it('should show modal and restart scanner  when type is unknown', async () => {
+      parse2dsQrCode.mockReturnValue({ type: 'unknown' });
+      await handleQrCode()(dispatch);
+      expect(showModal).toHaveBeenCalledTimes(1);
+      expect(scannerStart).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('simple link handling', () => {
     it('should navigate to homepage', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_HOMEPAGE, link: '/' });
@@ -83,9 +100,10 @@ describe('handleQrCode', () => {
     it('should navigate to add coupon page', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_COUPON, link: '/add_coupon/code' });
       handleQrCode()(dispatch);
-      expect(historyPop).toHaveBeenCalledWith({
+      expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/add_coupon/code',
       });
+      expect(historyPop).toHaveBeenCalledWith();
     });
   });
 

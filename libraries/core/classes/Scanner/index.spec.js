@@ -1,15 +1,21 @@
 import { logger } from '../../helpers';
-import { Scanner, APP_EVENT_SCANNER_DID_SCAN } from './index';
+import { Scanner } from './index';
 import appEvent from '../Event';
 import registerEvents from '../../commands/registerEvents';
-
+import {
+  openScanner,
+  closeScanner,
+  startScanner,
+  setFlashlightMode,
+  stopScanner,
+} from '../../commands/scanner';
 import {
   SCANNER_MODE_ON,
   SCANNER_TYPE_BARCODE,
   SCANNER_TYPE_IMAGE,
   SCANNER_ANIMATION_NONE,
 } from '../../constants/Scanner';
-
+import { APP_EVENT_SCANNER_DID_SCAN } from '../../constants/AppEvents';
 import ScannerEventHandler from '../ScannerEventHandler';
 import ScannerEventListener from '../ScannerEventListener';
 import ScannerEvent from '../ScannerEvent';
@@ -28,18 +34,7 @@ jest.mock('../../helpers/version', () => ({
 
 jest.mock('../Event');
 jest.mock('../../commands/registerEvents', () => jest.fn());
-
-const mockedOpenScannerCmd = jest.fn();
-const mockedCloseScannerCmd = jest.fn();
-const mockedStartScannerCmd = jest.fn();
-const mockedSetFlashlightModeCmd = jest.fn();
-
-jest.mock('../../commands/scanner', () => ({
-  openScanner: (...args) => mockedOpenScannerCmd(...args),
-  closeScanner: (...args) => mockedCloseScannerCmd(...args),
-  startScanner: (...args) => mockedStartScannerCmd(...args),
-  setFlashlightMode: (...args) => mockedSetFlashlightModeCmd(...args),
-}));
+jest.mock('../../commands/scanner');
 
 const mockedEventHandler = new ScannerEventHandler();
 mockedEventHandler.attach = jest.fn();
@@ -176,13 +171,13 @@ describe('Scanner', () => {
     it('should open the scanner', async () => {
       await scannerInstance.open(scope);
 
-      expect(mockedOpenScannerCmd).toBeCalledTimes(1);
+      expect(openScanner).toBeCalledTimes(1);
     });
 
     it('should provide correct parameters to the open scanner app command', async () => {
       await scannerInstance.open(scope);
 
-      expect(mockedOpenScannerCmd).toBeCalledWith({
+      expect(openScanner).toBeCalledWith({
         src: '',
         modes: {
           [type]: SCANNER_MODE_ON,
@@ -217,19 +212,56 @@ describe('Scanner', () => {
       scannerInstance.start();
 
       expect(logger.error).toBeCalledTimes(1);
+      expect(startScanner).not.toBeCalled();
     });
 
     it('should not do anything if the Scanner is not opened', () => {
       scannerInstance.start();
 
-      expect(mockedStartScannerCmd).not.toBeCalled();
+      expect(startScanner).not.toBeCalled();
     });
 
     it('should not do anything when the Scanner is already running', async () => {
       await scannerInstance.open('scope');
       scannerInstance.start();
 
-      expect(mockedStartScannerCmd).not.toBeCalled();
+      expect(startScanner).not.toBeCalled();
+    });
+
+    it('should dispatch the startScanner command when the Scanner is not already running', async () => {
+      await scannerInstance.open('scope');
+      scannerInstance.running = false;
+      scannerInstance.start();
+
+      expect(startScanner).toBeCalled();
+    });
+  });
+
+  describe('stop()', () => {
+    it('should print an error message if start is called without opening first', () => {
+      scannerInstance.stop();
+
+      expect(logger.error).toBeCalledTimes(1);
+      expect(stopScanner).not.toBeCalled();
+    });
+
+    it('should not do anything if the Scanner is not opened', () => {
+      scannerInstance.stop();
+
+      expect(stopScanner).not.toBeCalled();
+    });
+
+    it('should not do anything when the Scanner is not running', () => {
+      scannerInstance.stop();
+
+      expect(stopScanner).not.toBeCalled();
+    });
+
+    it('should dispatch the stopScanner command when the Scanner is running', async () => {
+      await scannerInstance.open('scope');
+      scannerInstance.stop();
+
+      expect(stopScanner).toBeCalled();
     });
   });
 
@@ -268,7 +300,7 @@ describe('Scanner', () => {
     it('should close the app scanner', () => {
       scannerInstance.close();
 
-      expect(mockedCloseScannerCmd).toBeCalled();
+      expect(closeScanner).toBeCalled();
     });
 
     it('should reset the internal object state correctly', () => {
@@ -330,21 +362,21 @@ describe('Scanner', () => {
 
       // Call the app command no matter what state it is (to allow resolving state inconsistencies)
       scannerInstance.toggleFlashlight(false);
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(1);
+      expect(setFlashlightMode).toBeCalledTimes(1);
       scannerInstance.toggleFlashlight(true);
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(2);
+      expect(setFlashlightMode).toBeCalledTimes(2);
       scannerInstance.toggleFlashlight(true);
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(3);
+      expect(setFlashlightMode).toBeCalledTimes(3);
       scannerInstance.toggleFlashlight(false);
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(4);
+      expect(setFlashlightMode).toBeCalledTimes(4);
       scannerInstance.toggleFlashlight(false);
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(5);
+      expect(setFlashlightMode).toBeCalledTimes(5);
       scannerInstance.toggleFlashlight();
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(6);
+      expect(setFlashlightMode).toBeCalledTimes(6);
       scannerInstance.toggleFlashlight();
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(7);
+      expect(setFlashlightMode).toBeCalledTimes(7);
       scannerInstance.toggleFlashlight();
-      expect(mockedSetFlashlightModeCmd).toBeCalledTimes(8);
+      expect(setFlashlightMode).toBeCalledTimes(8);
     });
 
     it('should call the app command correctly', () => {
@@ -353,19 +385,19 @@ describe('Scanner', () => {
 
       // Toggle "on".
       scannerInstance.toggleFlashlight();
-      expect(mockedSetFlashlightModeCmd).toBeCalledWith(true);
+      expect(setFlashlightMode).toBeCalledWith(true);
 
       // Toggle "off".
       scannerInstance.toggleFlashlight();
-      expect(mockedSetFlashlightModeCmd).toBeCalledWith(false);
+      expect(setFlashlightMode).toBeCalledWith(false);
 
       // Switch "off".
       scannerInstance.toggleFlashlight(false);
-      expect(mockedSetFlashlightModeCmd).toBeCalledWith(false);
+      expect(setFlashlightMode).toBeCalledWith(false);
 
       // Switch "on".
       scannerInstance.toggleFlashlight(true);
-      expect(mockedSetFlashlightModeCmd).toBeCalledWith(true);
+      expect(setFlashlightMode).toBeCalledWith(true);
     });
   });
 
@@ -410,9 +442,11 @@ describe('Scanner', () => {
     });
 
     it('should not be running after a successful scan if not restarted', async () => {
+      const stopSpy = jest.spyOn(scannerInstance, 'stop');
       await scannerInstance.handleScan(payload);
 
       expect(scannerInstance.running).toBeFalsy();
+      expect(stopSpy).toBeCalled();
     });
 
     it("should not close the Scanner on it's own", async () => {
@@ -435,6 +469,14 @@ describe('Scanner', () => {
 
       // The Promise should resolve to "undefined" rather than throw an error (mute errors).
       await expect(scannerInstance.handleScan(payload)).resolves.toBeUndefined();
+    });
+
+    it('should ignore duplicated call in handling stage', async () => {
+      await scannerInstance.handleScan(payload);
+      await scannerInstance.handleScan(payload);
+      await scannerInstance.handleScan(payload);
+
+      expect(stopScanner).toHaveBeenCalledTimes(1);
     });
   });
 });

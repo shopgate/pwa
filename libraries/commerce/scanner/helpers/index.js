@@ -10,6 +10,7 @@ import {
   QR_CODE_TYPE_SEARCH,
   QR_CODE_TYPE_PAGE,
   QR_CODE_HOST_2DS,
+  SCANNER_PATH,
 } from '../constants';
 
 /**
@@ -119,3 +120,10 @@ export const parse2dsQrCode = (code) => {
     data,
   };
 };
+
+/**
+ * @param {string} scope The scanner scope to use for the scanner page
+ * @param {string} type The scanner type to use on the scanner page
+ * @returns {string}
+ */
+export const getScannerRoute = (scope, type) => `${SCANNER_PATH}?scope=${scope}&type=${type}`;

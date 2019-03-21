@@ -16,7 +16,8 @@
     "shipping": "Livraison",
     "reviews": "Commentaires",
     "browse": "Naviger",
-    "favorites": "Favorits"
+    "favorites": "Favorits",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
@@ -127,6 +128,7 @@
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
+    "scanner": "Scanner",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",
@@ -168,6 +170,7 @@
     "favorites": "Favorits"
   },
   "scanner": {
+    "instructions": "S'il vous plaît gardez le code à barres ou un code QR dans le centre. La détection est effectuée automatiquement.",
     "noResult": {
       "qrCode": "We couldn't find a result for this QR code",
       "barCode": "Product not found"

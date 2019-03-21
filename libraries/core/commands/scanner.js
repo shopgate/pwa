@@ -59,6 +59,7 @@ export function openScanner(params) {
   merged = merge(merged, eventParams);
 
   const command = new AppCommand();
+
   command
     .setCommandName('openScanner')
     .dispatch(merged);
@@ -97,9 +98,9 @@ export function startScanner() {
  * Sends a stopScanner command to the app.
  * It deactivates the content recognition of the scanner.
  */
-export function stopScanner() {
+export async function stopScanner() {
   const command = new AppCommand();
-  command
+  await command
     .setCommandName('stopScanner')
     .dispatch();
 }
