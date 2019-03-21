@@ -16,7 +16,8 @@
     "shipping": "Livraison",
     "reviews": "Commentaires",
     "browse": "Naviger",
-    "favorites": "Favorits"
+    "favorites": "Favorits",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
