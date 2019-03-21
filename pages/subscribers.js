@@ -13,6 +13,7 @@ import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
 import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
+import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
@@ -66,6 +67,7 @@ const subscriptions = [
   commerceProduct,
   commerceReviews,
   commerceSearch,
+  commerceScanner,
   // Theme subscribers.
   app,
   viewport,
