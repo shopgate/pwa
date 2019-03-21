@@ -15,7 +15,8 @@
     "cart": "Winkelwagen",
     "shipping": "Verzending",
     "reviews": "Reviews",
-    "favorites": "Favorieten"
+    "favorites": "Favorieten",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
@@ -123,6 +124,7 @@
     "favorites": "Favorieten",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
+    "scanner": "Scanner",
     "shipping": "Verzendmethoden",
     "about": "Over ons",
     "payment": "Betalingsmethoden",
