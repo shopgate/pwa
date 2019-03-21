@@ -12,7 +12,6 @@ import {
   INDEX_PATH,
   LOGIN_PATH,
   PAGE_PATTERN,
-  SCANNER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import {
@@ -25,6 +24,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
