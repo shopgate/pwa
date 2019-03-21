@@ -20,7 +20,7 @@ describe('scanner commands', () => {
           [constants.SCANNER_TYPE_CARD]: constants.SCANNER_MODE_OFF,
           [constants.SCANNER_TYPE_IMAGE]: constants.SCANNER_MODE_OFF,
         },
-        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTON,
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTOM,
         eventParams: {
           scannerData: {
             modes: {
@@ -49,7 +49,7 @@ describe('scanner commands', () => {
           [constants.SCANNER_TYPE_IMAGE]: constants.SCANNER_MODE_ON,
           [constants.SCANNER_TYPE_CARD]: constants.SCANNER_MODE_OFF,
         },
-        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTON,
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTOM,
         eventParams: {
           scannerData: {
             modes: {
@@ -76,7 +76,7 @@ describe('scanner commands', () => {
   describe('closeScanner()', () => {
     it('should work as expected', () => {
       const expected = {
-        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTON,
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTOM,
       };
 
       commands.closeScanner();

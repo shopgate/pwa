@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 import AppCommand from '../classes/AppCommand';
 import { PWA_DEFAULT_TAB } from '../constants/Command';
 import {
-  SCANNER_ANIMATION_FOREGROUND_BOTTON,
+  SCANNER_ANIMATION_FOREGROUND_BOTTOM,
   SCANNER_TYPE_BARCODE,
   SCANNER_TYPE_CARD,
   SCANNER_TYPE_IMAGE,
@@ -12,10 +12,11 @@ import {
 
 /**
  * Data definition the scanner modes parameters. Possible values are "on" or "off".
+ * @typedef {string} ScannerType
  * @typedef {Object} ScannerModes
- * @property {string} barcodeRecognition Shall the scanner try to recognize barcodes.
- * @property {string} imageCapturing Shall the scanner try to capture images.
- * @property {string} cardRecognition Shall the scanner try to recognize credit cards.
+ * @property {ScannerType} barcodeRecognition Shall the scanner try to recognize barcodes.
+ * @property {ScannerType} imageCapturing Shall the scanner try to capture images.
+ * @property {ScannerType} cardRecognition Shall the scanner try to recognize credit cards.
  */
 
 /**
@@ -30,7 +31,7 @@ import {
 export function openScanner(params) {
   const defaults = {
     src: 'sgapi:scanner',
-    animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
+    animation: SCANNER_ANIMATION_FOREGROUND_BOTTOM,
     modes: {
       [SCANNER_TYPE_BARCODE]: SCANNER_MODE_OFF,
       [SCANNER_TYPE_IMAGE]: SCANNER_MODE_OFF,
@@ -58,6 +59,7 @@ export function openScanner(params) {
   merged = merge(merged, eventParams);
 
   const command = new AppCommand();
+
   command
     .setCommandName('openScanner')
     .dispatch(merged);
@@ -68,9 +70,9 @@ export function openScanner(params) {
  * @param {Object} params The command parameters.
  * @param {string} [params.animation] The exit animation for the webview.
  */
-export function closeScanner(params) {
+export function closeScanner(params = {}) {
   const defaults = {
-    animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
+    animation: SCANNER_ANIMATION_FOREGROUND_BOTTOM,
   };
 
   const merged = merge(defaults, params);
@@ -96,9 +98,22 @@ export function startScanner() {
  * Sends a stopScanner command to the app.
  * It deactivates the content recognition of the scanner.
  */
-export function stopScanner() {
+export async function stopScanner() {
   const command = new AppCommand();
-  command
+  await command
     .setCommandName('stopScanner')
     .dispatch();
+}
+
+/**
+ * Sends a setFlashlightMode command to the app.
+ * @param {boolean} enable Enables or disables the flashlight of the camera.
+ */
+export function setFlashlightMode(enable) {
+  const command = new AppCommand();
+  command
+    .setCommandName('setFlashlightMode')
+    .dispatch({
+      mode: enable ? SCANNER_MODE_ON : SCANNER_MODE_OFF,
+    });
 }

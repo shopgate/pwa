@@ -19,7 +19,8 @@ const fetchProductsById = (productIds, componentId = null) => (dispatch, getStat
     return;
   }
 
-  dispatch(fetchProducts({
+  // eslint-disable-next-line consistent-return
+  return dispatch(fetchProducts({
     ...componentId && { id: componentId },
     params: {
       productIds: missingIds,

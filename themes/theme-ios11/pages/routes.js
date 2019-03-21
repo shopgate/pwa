@@ -69,3 +69,8 @@ export const More = Loadable({
   loader: () => import('./More'),
   loading: () => null,
 });
+
+export const Scanner = Loadable({
+  loader: () => import('./Scanner'),
+  loading: () => null,
+});
