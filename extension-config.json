@@ -64,6 +64,42 @@
         "key": "value"
       }
     },
+    "shippingShowLegacy": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_hide_shipping_text_for_logged_out_users?parsed=true",
+        "key": "value"
+      }
+    },
+    "shippingUnavailableLegacy": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_shipping_text_for_logged_out_users?parsed=true",
+        "key": "value"
+      }
+    },
+    "shipping": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "show": null,
+        "freeShipping": null,
+        "unavailable": null,
+        "hint": null
+      },
+      "params": {
+        "type": "json",
+        "label": "Configure the display of shipping information."
+      }
+    },
     "language": {
       "type": "bigApi",
       "destination": "frontend",
