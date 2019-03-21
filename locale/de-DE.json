@@ -16,7 +16,8 @@
     "shipping": "Versand",
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
-    "favorites": "Merkliste"
+    "favorites": "Merkliste",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -85,7 +86,7 @@
     "cost": "{price} Versand"
   },
   "liveshopping": {
-    "discount_badge": "SAVE {0}%"
+    "discount_badge": "{0}% SPAREN"
   },
   "modal": {
     "confirm": "Bestätigen",
@@ -165,5 +166,12 @@
     "cart": "Warenkorb",
     "more": "Mehr",
     "favorites": "Merkliste"
+  },
+  "scanner": {
+    "instructions": "Bitte halten Sie den Barcode oder QR-Code in die Mitte. Die Erkennung erfolgt automatisch.",
+    "noResult": {
+      "qrCode": "We couldn't find a result for this QR code",
+      "barCode": "Product not found"
+    }
   }
 }
