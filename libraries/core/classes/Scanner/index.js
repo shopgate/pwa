@@ -5,6 +5,8 @@ import ScannerEventHandler from '../ScannerEventHandler';
 import appEvent from '../Event';
 import registerEvents from '../../commands/registerEvents';
 
+import { APP_EVENT_SCANNER_DID_SCAN } from '../../constants/AppEvents';
+
 import {
   SCANNER_MODE_ON,
   SCANNER_TYPE_BARCODE,
@@ -20,10 +22,6 @@ import {
   closeScanner as closeAppScanner,
   setFlashlightMode as setAppScannerFlashlightMode,
 } from '../../commands/scanner';
-
-export const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
-export const APP_EVENT_SCANNER_DID_APPEAR = 'scannerDidAppear';
-export const APP_EVENT_SCANNER_DID_DISAPPEAR = 'scannerDidDisappear';
 
 /**
  * Represents the app scanner.

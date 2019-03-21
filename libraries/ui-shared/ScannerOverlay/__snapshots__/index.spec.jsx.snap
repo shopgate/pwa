@@ -41,36 +41,56 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                 onClick={[Function]}
                 role="link"
               >
-                <FlashOff
-                  className="css-k6n0ls"
-                >
-                  <Icon
-                    className="css-k6n0ls"
-                    color={null}
-                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>"
-                    height="24"
-                    size="inherit"
-                    viewBox="0 0 24 24"
-                    width="24"
-                  >
-                    <svg
-                      className="css-yys9hb css-k6n0ls"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "inherit",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                <ToggleIcon
+                  offIcon={
+                    <FlashOff
+                      className="css-k6n0ls"
                     />
-                  </Icon>
-                </FlashOff>
+                  }
+                  on={false}
+                  onIcon={
+                    <FlashOn
+                      className="css-k6n0ls"
+                    />
+                  }
+                  toggleHandler={[Function]}
+                >
+                  <div
+                    aria-hidden={true}
+                    onClick={[Function]}
+                  >
+                    <FlashOff
+                      className="css-k6n0ls"
+                    >
+                      <Icon
+                        className="css-k6n0ls"
+                        color={null}
+                        content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>"
+                        height="24"
+                        size="inherit"
+                        viewBox="0 0 24 24"
+                        width="24"
+                      >
+                        <svg
+                          className="css-yys9hb css-k6n0ls"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>",
+                            }
+                          }
+                          style={
+                            Object {
+                              "fill": null,
+                              "fontSize": "inherit",
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </FlashOff>
+                  </div>
+                </ToggleIcon>
               </button>
             </FlashlightButton>
           </li>

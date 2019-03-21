@@ -1,4 +1,4 @@
-import { LOGIN_PATH, CHECKOUT_PATH, SCANNER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { LOGIN_PATH, CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import {
   ITEM_PATTERN,
@@ -8,6 +8,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';

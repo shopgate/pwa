@@ -1,5 +1,5 @@
 import { logger } from '../../helpers';
-import { Scanner, APP_EVENT_SCANNER_DID_SCAN } from './index';
+import { Scanner } from './index';
 import appEvent from '../Event';
 import registerEvents from '../../commands/registerEvents';
 import {
@@ -15,6 +15,7 @@ import {
   SCANNER_TYPE_IMAGE,
   SCANNER_ANIMATION_NONE,
 } from '../../constants/Scanner';
+import { APP_EVENT_SCANNER_DID_SCAN } from '../../constants/AppEvents';
 import ScannerEventHandler from '../ScannerEventHandler';
 import ScannerEventListener from '../ScannerEventListener';
 import ScannerEvent from '../ScannerEvent';

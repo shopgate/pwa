@@ -1,3 +1,5 @@
 export const SCANNER_STARTED = 'SCANNER_STARTED';
 export const SCANNER_CANCELLED = 'SCANNER_CANCELLED';
 export const SCANNER_FINISHED = 'SCANNER_FINISHED';
+
+export const SCANNER_PATH = '/scanner';

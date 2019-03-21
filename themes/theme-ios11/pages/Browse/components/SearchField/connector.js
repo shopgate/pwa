@@ -3,10 +3,10 @@ import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
 } from '@shopgate/pwa-core/constants/Scanner';
-import { scannerPath } from '@shopgate/pwa-common/constants/RoutePaths';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
+import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 
@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
     pathname: `${SEARCH_PATH}?s=${encodeURIComponent(query)}`,
   })),
   openScanner: () => dispatch(historyPush({
-    pathname: scannerPath(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE),
+    pathname: getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE),
     title: 'navigation.scanner',
   })),
 });

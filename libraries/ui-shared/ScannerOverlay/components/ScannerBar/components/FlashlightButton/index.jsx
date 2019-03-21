@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ToggleIcon from '@shopgate/pwa-ui-shared/ToggleIcon';
 import FlashOnIcon from '@shopgate/pwa-ui-shared/icons/FlashOnIcon';
 import FlashOffIcon from '@shopgate/pwa-ui-shared/icons/FlashOffIcon';
 import styles from './style';
@@ -17,11 +18,11 @@ const FlashlightButton = ({
     onClick={onToggle}
     role="link"
   >
-    { flashlightState ? (
-      <FlashOnIcon className={styles.icon} />
-    ) : (
-      <FlashOffIcon className={styles.icon} />
-    )}
+    <ToggleIcon
+      on={flashlightState}
+      onIcon={<FlashOnIcon className={styles.icon} />}
+      offIcon={<FlashOffIcon className={styles.icon} />}
+    />
   </button>
 );
 
