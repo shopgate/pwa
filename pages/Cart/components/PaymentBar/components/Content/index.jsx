@@ -11,7 +11,10 @@ import {
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import totalsPortalProps from './totalsPortalProps';
 import ShippingCosts from './components/ShippingCosts';
+import Discounts from './components/Discounts';
+import Tax from './components/Tax';
 import SubTotal from './components/SubTotal';
+import GrandTotal from './components/GrandTotal';
 import CheckoutButton from './components/CheckoutButton';
 import styles from './style';
 
@@ -28,7 +31,10 @@ function PaymentBarContent() {
           <Portal name={CART_PAYMENT_BAR_TOTALS_BEFORE} props={totalsPortalProps} />
           <Portal name={CART_PAYMENT_BAR_TOTALS} props={totalsPortalProps}>
             <SubTotal />
+            <Discounts />
             <ShippingCosts />
+            <Tax />
+            <GrandTotal />
           </Portal>
           <Portal name={CART_PAYMENT_BAR_TOTALS_AFTER} props={totalsPortalProps} />
         </Grid>

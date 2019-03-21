@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Discounts /> renders discounts according to the cart data 1`] = `"<div class=\\"css-1fubgbz\\"><div class=\\"css-z3fwy2 \\" data-test-id=\\"discountLabel\\"><span>Coupon</span><span>:</span></div><div class=\\"css-13f0gfi \\"><span>-</span><span class=\\"\\">5</span></div></div>"`;
+
+exports[`<Discounts /> renders no discounts when the cart is not fetched 1`] = `null`;

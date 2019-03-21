@@ -7,12 +7,11 @@ const disabled = css({
   color: `${colors.shade4}`,
 }).toString();
 
-const subTotalBase = css({
-  fontSize: '0.875rem',
+const totalBase = css({
   paddingRight: variables.gap.small,
 }).toString();
 
 export default {
   disabled,
-  subTotalBase,
+  totalBase,
 };
