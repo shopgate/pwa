@@ -7,9 +7,9 @@ import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
 } from '@shopgate/pwa-core/constants/Scanner';
-import { scannerPath } from '@shopgate/pwa-common/constants/RoutePaths';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
+import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import SuggestionList from './components/SuggestionList';
 import styles from './style';
 import SearchField from './index';
@@ -111,7 +111,7 @@ describe('<Content />', () => {
   it('should submit search', () => {
     const wrapper = createWrapper();
 
-    // Change serach and submit.
+    // Change search and submit.
     wrapper.find('input').simulate('change', { target: { value: 'foo bar' } });
     wrapper.find('form').simulate('submit');
     wrapper.update();
@@ -125,13 +125,8 @@ describe('<Content />', () => {
     const wrapper = createWrapper();
     wrapper.find(`button.${styles.scannerIcon}`).simulate('click');
     expect(historyPush).toHaveBeenCalledWith({
-      pathname: scannerPath(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE),
+      pathname: getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE),
       title: 'navigation.scanner',
     });
   });
 });
-
-process.on('unhandledRejection', (err) => {
-  console.log(err);
-});
-
