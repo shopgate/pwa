@@ -46,6 +46,6 @@ describe('<Tax />', () => {
     ));
     expect(wrapper.html()).toMatchSnapshot();
     expect(wrapper.find(Label).html()).toEqual('<div class="css-z3fwy2 " data-test-id="taxLabel"><span>incl. 19% VAT</span><span>:</span></div>');
-    expect(wrapper.find(Amount).html()).toEqual('<div class="css-13f0gfi "><span>-</span><span class="">19</span></div>');
+    expect(wrapper.find(Amount).html()).toEqual('<div class="css-13f0gfi "><span class="">19</span></div>');
   });
 });
