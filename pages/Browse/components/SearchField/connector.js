@@ -10,13 +10,16 @@ import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 
+const { hasNoScanner, scanner: { showSearchFieldIcon } = {} } = appConfig;
+const showScannerIcon = !hasNoScanner && showSearchFieldIcon;
+
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  hasScannerSupport: !appConfig.hasNoScanner && hasScannerSupport(state),
+  showScannerIcon: showScannerIcon && hasScannerSupport(state),
 });
 
 /**
