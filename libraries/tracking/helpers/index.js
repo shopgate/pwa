@@ -232,7 +232,6 @@ export const createScannerEventData = ({
  * @return {Core|boolean}
  */
 export const track = (eventName, data, state) => {
-  console.warn(eventName, data);
   if (typeof core.track[eventName] !== 'function') {
     logger.warn('Unknown tracking event:', eventName);
     return false;
