@@ -21,10 +21,11 @@ const ShippingCosts = ({ currency, isDisabled, value }) => {
 
   return (
     <CartContext.Consumer>
-      {({ shipping: { freeShipping } }) => (
+      {({ shipping: { freeShipping, hint } }) => (
         <div className={`${styles.shippingInfoValue} ${isDisabled ? styles.disabled : ''}`}>
           {!value && <I18n.Text string={freeShipping || 'shipping.free_short'} />}
           {!!value && <I18n.Price price={value} currency={currency} />}
+          {!!hint && <span>{` (${hint})`}</span>}
         </div>
       )}
     </CartContext.Consumer>
