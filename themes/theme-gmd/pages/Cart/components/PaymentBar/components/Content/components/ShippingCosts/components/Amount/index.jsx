@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import CartContext from 'Pages/Cart/context';
 import connect from './connector';
 import styles from './style';
 
@@ -19,10 +20,14 @@ const ShippingCosts = ({ currency, isDisabled, value }) => {
   }
 
   return (
-    <div className={`${styles.shippingInfoValue} ${isDisabled ? styles.disabled : ''}`}>
-      {!value && <I18n.Text string="shipping.free_short" />}
-      {!!value && <I18n.Price price={value} currency={currency} />}
-    </div>
+    <CartContext.Consumer>
+      {({ shipping: { freeShipping } }) => (
+        <div className={`${styles.shippingInfoValue} ${isDisabled ? styles.disabled : ''}`}>
+          {!value && <I18n.Text string={freeShipping || 'shipping.free_short'} />}
+          {!!value && <I18n.Price price={value} currency={currency} />}
+        </div>
+      )}
+    </CartContext.Consumer>
   );
 };
 
