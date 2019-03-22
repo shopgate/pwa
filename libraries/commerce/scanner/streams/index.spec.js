@@ -4,20 +4,33 @@ import {
   SCANNER_FORMATS_BARCODE,
   SCANNER_FORMATS_QR_CODE,
 } from '@shopgate/pwa-core/constants/Scanner';
+import { ROUTE_DID_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
+  scannerDidEnter$,
   scannerStarted$,
   scannerCancelled$,
   scannerFinished$,
   scannerFinishedBarCode$,
   scannerFinishedQrCode$,
 } from './index';
-import { SCANNER_CANCELLED, SCANNER_FINISHED, SCANNER_STARTED } from '../constants';
+import {
+  SCANNER_CANCELLED,
+  SCANNER_FINISHED,
+  SCANNER_STARTED,
+  SCANNER_PATH,
+} from '../constants';
 
 describe('scanner streams', () => {
   let subscriber;
 
   beforeEach(() => {
     subscriber = jest.fn();
+  });
+
+  it('should call subscriber when the scanner page was opened', () => {
+    scannerDidEnter$.subscribe(subscriber);
+    mainSubject.next({ action: { type: ROUTE_DID_ENTER, route: { pathname: SCANNER_PATH } } });
+    expect(subscriber).toHaveBeenCalledTimes(1);
   });
 
   it('should call subscriber on scanner start event', () => {

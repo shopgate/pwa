@@ -1,7 +1,10 @@
 import get from 'lodash/get';
 import find from 'lodash/find';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { parseShopgateQrCode } from '@shopgate/pwa-common/helpers/data';
+import {
+  SCANNER_FORMATS_BARCODE,
+  SCANNER_FORMATS_QR_CODE,
+} from '@shopgate/pwa-core/constants/Scanner';
 import {
   QR_CODE_TYPE_HOMEPAGE,
   QR_CODE_TYPE_PRODUCT,
@@ -10,9 +13,9 @@ import {
   QR_CODE_TYPE_CATEGORY,
   QR_CODE_TYPE_SEARCH,
   QR_CODE_TYPE_PAGE,
-} from '@shopgate/pwa-common/constants/QRCodeTypes';
+} from '@shopgate/pwa-common-commerce/scanner/constants';
+import { parse2dsQrCode } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import core from '@shopgate/tracking-core/core/Core';
-import { SCANNER_TYPE_QR, SCANNER_FORMAT_QR_CODE } from '../constants';
 
 /**
  * Converts a price to a formatted string.
@@ -160,55 +163,54 @@ export const formatPurchaseData = (passedOrder) => {
  * @return {Object}
  */
 export const createScannerEventData = ({
-  event, type, payload, url, userInteraction,
+  event, format, payload, userInteraction,
 }) => {
   let eventLabel = [];
 
-  if (type === SCANNER_TYPE_QR && payload) {
-    const { format, code } = payload;
-
+  if (payload) {
     eventLabel = [format];
 
-    if (format === SCANNER_FORMAT_QR_CODE) {
-      const parsedCode = parseShopgateQrCode(code);
+    if (SCANNER_FORMATS_QR_CODE.includes(format)) {
+      const parsedPayload = parse2dsQrCode(payload);
 
-      if (parsedCode) {
-        const { type: qrType, link, data } = parsedCode;
+      if (parsedPayload) {
+        const { type, data } = parsedPayload;
 
-        switch (qrType) {
+        switch (type) {
           case QR_CODE_TYPE_HOMEPAGE:
             eventLabel.push('main');
             break;
           case QR_CODE_TYPE_PRODUCT:
-            eventLabel.push('item_number');
+            eventLabel.push('product');
             eventLabel.push(data.productId);
             break;
           case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
-            eventLabel.push('coupon_code');
-            eventLabel.push(data.couponCode);
+            eventLabel.push('productcoupon');
+            eventLabel.push(`${data.productId}_${data.couponCode}`);
             break;
           case QR_CODE_TYPE_COUPON:
             eventLabel.push('coupon');
+            eventLabel.push(data.couponCode);
             break;
           case QR_CODE_TYPE_CATEGORY:
-            eventLabel.push('categoryNumber');
+            eventLabel.push('category');
             eventLabel.push(data.categoryId);
             break;
           case QR_CODE_TYPE_SEARCH:
+            eventLabel.push('search');
+            eventLabel.push(data.searchPhrase);
+            break;
           case QR_CODE_TYPE_PAGE:
-            eventLabel.push(link);
+            eventLabel.push('page');
+            eventLabel.push(data.pageId);
             break;
           default:
             break;
         }
       }
-    } else {
-      if (code) {
-        eventLabel.push(code);
-      }
-
-      if (url) {
-        eventLabel.push(url);
+    } else if (SCANNER_FORMATS_BARCODE.includes(format)) {
+      if (payload) {
+        eventLabel.push(payload);
       }
     }
   }
@@ -230,6 +232,7 @@ export const createScannerEventData = ({
  * @return {Core|boolean}
  */
 export const track = (eventName, data, state) => {
+  console.warn(eventName, data);
   if (typeof core.track[eventName] !== 'function') {
     logger.warn('Unknown tracking event:', eventName);
     return false;
