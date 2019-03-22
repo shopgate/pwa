@@ -1,5 +1,9 @@
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { HISTORY_PUSH_ACTION, HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import {
+  HISTORY_PUSH_ACTION,
+  HISTORY_POP_ACTION,
+  HISTORY_REPLACE_ACTION,
+} from '@shopgate/pwa-common/constants/ActionTypes';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
 import receiveCart from '@shopgate/pwa-common-commerce/cart/action-creators/receiveCart';
@@ -30,6 +34,16 @@ describe('Cart streams', () => {
           coupon: '10PERCENTOFF',
         },
       }, HISTORY_PUSH_ACTION));
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
+    });
+
+    it('should emit when a route will enter that has a coupon in its query', () => {
+      dispatch(routeWillEnter({
+        query: {
+          coupon: '10PERCENTOFF',
+        },
+      }, HISTORY_REPLACE_ACTION));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });

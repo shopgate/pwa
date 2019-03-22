@@ -5,7 +5,10 @@ import {
   routeWillLeave$,
   routeDidLeave$,
 } from '@shopgate/pwa-common/streams/router';
-import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import {
+  HISTORY_PUSH_ACTION,
+  HISTORY_REPLACE_ACTION,
+} from '@shopgate/pwa-common/constants/ActionTypes';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import {
   CART_PATH,
@@ -40,7 +43,10 @@ import {
  */
 export const routeWithCouponWillEnter$ = routeWillEnter$
   .filter(({ action }) =>
-    action.historyAction === HISTORY_PUSH_ACTION && action.route.query.coupon);
+    [
+      HISTORY_PUSH_ACTION,
+      HISTORY_REPLACE_ACTION,
+    ].includes(action.historyAction) && action.route.query.coupon);
 
 /**
  * @type {Observable}
