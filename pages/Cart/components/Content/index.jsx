@@ -4,6 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { getShippingConfig } from '@shopgate/pwa-common-commerce/cart';
 import CardList from '@shopgate/pwa-ui-shared/CardList';
 import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import { BackBar } from 'Components/AppBar/presets';
@@ -14,6 +15,11 @@ import Footer from '../Footer';
 import PaymentBar from '../PaymentBar';
 import connect from './connector';
 import styles from './style';
+import CartContext from '../../context';
+
+const contextValue = {
+  shipping: getShippingConfig(),
+};
 
 /**
  * The cart content container component.
@@ -62,7 +68,7 @@ class CartContentContainer extends Component {
     const hasMessages = (messages.length > 0);
 
     return (
-      <Fragment>
+      <CartContext.Provider value={contextValue}>
         <BackBar title="titles.cart" />
         {(hasItems || hasMessages) && (
           <Fragment>
@@ -94,7 +100,7 @@ class CartContentContainer extends Component {
           </Fragment>
         )}
         {(!isLoading && !hasItems) && <Empty />}
-      </Fragment>
+      </CartContext.Provider>
     );
   }
 }
