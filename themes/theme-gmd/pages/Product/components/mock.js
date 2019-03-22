@@ -5,7 +5,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/mock';
 import { getReviewsStateForId } from '@shopgate/pwa-common-commerce/reviews/mock';
 
-const { productId } = bpState.product.currentProduct;
+const { productId } = 913;
 
 const product = {
   ...bpState.product,
