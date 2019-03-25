@@ -7,15 +7,13 @@ import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import Image from '@shopgate/pwa-common/components/Image';
-import ZoomPanSlider from '../ZoomPanSlider';
+import { Image, Swiper } from '@shopgate/pwa-common/components';
 import Content from './index';
 
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProductImages: jest.fn(),
   getCurrentBaseProduct: jest.fn(),
 }));
-jest.mock('../ZoomPanSlider', () => ({ children }) => children);
 
 const mockedStore = configureStore();
 
@@ -36,7 +34,7 @@ describe('<ProductGallery.Content> page', () => {
     getCurrentBaseProduct.mockReturnValue({ id: 123 });
   });
 
-  it('should render ZoomPanSlider with images', () => {
+  it('should render Swiper with images', () => {
     const store = mockedStore();
 
     const wrapper = mount(
@@ -47,7 +45,7 @@ describe('<ProductGallery.Content> page', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ZoomPanSlider).length).toEqual(1);
+    expect(wrapper.find(Swiper).length).toEqual(1);
     expect(wrapper.find(Image).length).toEqual(2);
     expect(wrapper
       .find(Image)
@@ -70,6 +68,6 @@ describe('<ProductGallery.Content> page', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ZoomPanSlider).prop('initialSlide')).toEqual(3);
+    expect(wrapper.find(Swiper).prop('initialSlide')).toEqual(3);
   });
 });

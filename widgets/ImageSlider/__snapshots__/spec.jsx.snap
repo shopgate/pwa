@@ -39,6 +39,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
       className={null}
       classNames={Object {}}
       controls={false}
+      disabled={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
@@ -48,6 +49,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
       rebuildOnUpdate={false}
       slidesPerView={1}
       snapItems={true}
+      zoom={false}
     >
       <div
         className="css-1hlki0z"
@@ -55,6 +57,8 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
         <ReactIdSwiper
           ContainerEl="div"
           WrapperEl="div"
+          allowSlideNext={true}
+          allowSlidePrev={true}
           autoplay={false}
           containerClass="css-rdsogp"
           freeMode={false}
@@ -125,6 +129,48 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                   },
                 },
               },
+              Object {
+                "create": [Function],
+                "name": "autoplay",
+                "on": Object {
+                  "beforeTransitionStart": [Function],
+                  "destroy": [Function],
+                  "init": [Function],
+                  "sliderFirstMove": [Function],
+                },
+                "params": Object {
+                  "autoplay": Object {
+                    "delay": 3000,
+                    "disableOnInteraction": true,
+                    "enabled": false,
+                    "reverseDirection": false,
+                    "stopOnLastSlide": false,
+                    "waitForTransition": true,
+                  },
+                },
+              },
+              Object {
+                "create": [Function],
+                "name": "zoom",
+                "on": Object {
+                  "destroy": [Function],
+                  "doubleTap": [Function],
+                  "init": [Function],
+                  "touchEnd": [Function],
+                  "touchStart": [Function],
+                  "transitionEnd": [Function],
+                },
+                "params": Object {
+                  "zoom": Object {
+                    "containerClass": "swiper-zoom-container",
+                    "enabled": false,
+                    "maxRatio": 3,
+                    "minRatio": 1,
+                    "toggle": true,
+                    "zoomedSlideClass": "swiper-slide-zoomed",
+                  },
+                },
+              },
             ]
           }
           navigation={
@@ -155,6 +201,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           slideClass="swiper-slide"
           slidesPerView={1}
           wrapperClass="swiper-wrapper"
+          zoom={false}
         >
           <div
             className="css-rdsogp"
@@ -420,6 +467,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       className={null}
       classNames={Object {}}
       controls={false}
+      disabled={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
@@ -429,6 +477,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       rebuildOnUpdate={false}
       slidesPerView={1}
       snapItems={true}
+      zoom={false}
     >
       <div
         className="css-1hlki0z"
@@ -436,6 +485,8 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
         <ReactIdSwiper
           ContainerEl="div"
           WrapperEl="div"
+          allowSlideNext={true}
+          allowSlidePrev={true}
           autoplay={false}
           containerClass="css-rdsogp"
           freeMode={false}
@@ -506,6 +557,48 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                   },
                 },
               },
+              Object {
+                "create": [Function],
+                "name": "autoplay",
+                "on": Object {
+                  "beforeTransitionStart": [Function],
+                  "destroy": [Function],
+                  "init": [Function],
+                  "sliderFirstMove": [Function],
+                },
+                "params": Object {
+                  "autoplay": Object {
+                    "delay": 3000,
+                    "disableOnInteraction": true,
+                    "enabled": false,
+                    "reverseDirection": false,
+                    "stopOnLastSlide": false,
+                    "waitForTransition": true,
+                  },
+                },
+              },
+              Object {
+                "create": [Function],
+                "name": "zoom",
+                "on": Object {
+                  "destroy": [Function],
+                  "doubleTap": [Function],
+                  "init": [Function],
+                  "touchEnd": [Function],
+                  "touchStart": [Function],
+                  "transitionEnd": [Function],
+                },
+                "params": Object {
+                  "zoom": Object {
+                    "containerClass": "swiper-zoom-container",
+                    "enabled": false,
+                    "maxRatio": 3,
+                    "minRatio": 1,
+                    "toggle": true,
+                    "zoomedSlideClass": "swiper-slide-zoomed",
+                  },
+                },
+              },
             ]
           }
           navigation={
@@ -536,6 +629,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           slideClass="swiper-slide"
           slidesPerView={1}
           wrapperClass="swiper-wrapper"
+          zoom={false}
         >
           <div
             className="css-rdsogp"
@@ -657,6 +751,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
       className={null}
       classNames={Object {}}
       controls={false}
+      disabled={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
@@ -666,6 +761,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
       rebuildOnUpdate={false}
       slidesPerView={1}
       snapItems={true}
+      zoom={false}
     >
       <div
         className="css-1hlki0z"
@@ -673,6 +769,8 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
         <ReactIdSwiper
           ContainerEl="div"
           WrapperEl="div"
+          allowSlideNext={true}
+          allowSlidePrev={true}
           autoplay={false}
           containerClass="css-rdsogp"
           freeMode={false}
@@ -743,6 +841,48 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                   },
                 },
               },
+              Object {
+                "create": [Function],
+                "name": "autoplay",
+                "on": Object {
+                  "beforeTransitionStart": [Function],
+                  "destroy": [Function],
+                  "init": [Function],
+                  "sliderFirstMove": [Function],
+                },
+                "params": Object {
+                  "autoplay": Object {
+                    "delay": 3000,
+                    "disableOnInteraction": true,
+                    "enabled": false,
+                    "reverseDirection": false,
+                    "stopOnLastSlide": false,
+                    "waitForTransition": true,
+                  },
+                },
+              },
+              Object {
+                "create": [Function],
+                "name": "zoom",
+                "on": Object {
+                  "destroy": [Function],
+                  "doubleTap": [Function],
+                  "init": [Function],
+                  "touchEnd": [Function],
+                  "touchStart": [Function],
+                  "transitionEnd": [Function],
+                },
+                "params": Object {
+                  "zoom": Object {
+                    "containerClass": "swiper-zoom-container",
+                    "enabled": false,
+                    "maxRatio": 3,
+                    "minRatio": 1,
+                    "toggle": true,
+                    "zoomedSlideClass": "swiper-slide-zoomed",
+                  },
+                },
+              },
             ]
           }
           navigation={
@@ -773,6 +913,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           slideClass="swiper-slide"
           slidesPerView={1}
           wrapperClass="swiper-wrapper"
+          zoom={false}
         >
           <div
             className="css-rdsogp"
