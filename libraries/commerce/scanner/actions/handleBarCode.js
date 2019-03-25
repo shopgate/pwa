@@ -16,11 +16,10 @@ import errorHandleScanner from '../action-creators/errorHandleScanner';
  */
 export default ({ scope, format, payload }) => async (dispatch) => {
   const {
-    totalProductCount,
-    products,
+    products = [],
   } = await dispatch(fetchProductsByQuery(2, payload));
 
-  if (!totalProductCount) {
+  if (!products.length) {
     dispatch(errorHandleScanner(scope, format, payload));
     dispatch(showModal({
       dismiss: null,
@@ -28,10 +27,13 @@ export default ({ scope, format, payload }) => async (dispatch) => {
       title: 'modal.title_error',
       message: 'scanner.noResult.barCode',
     })).then(confirmed => confirmed && Scanner.start());
-  } else if (Number(totalProductCount) === 1) {
+  } else if (products.length === 1) {
     dispatch(successHandleScanner(scope, format, payload));
+
+    const [first] = products;
+    const productId = typeof first === 'string' ? first : first.id;
     dispatch(historyReplace({
-      pathname: getProductRoute(products[0].id),
+      pathname: getProductRoute(productId),
     }));
   } else {
     dispatch(successHandleScanner(scope, format, payload));

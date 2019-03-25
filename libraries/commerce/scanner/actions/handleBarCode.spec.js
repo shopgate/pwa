@@ -39,7 +39,7 @@ describe('handleBarCode', () => {
 
   it('should show modal when products not found', async () => {
     fetchProductsByQuery.mockResolvedValue({
-      totalProductCount: 0,
+      products: [],
     });
 
     const payload = '111111';
@@ -57,6 +57,7 @@ describe('handleBarCode', () => {
     fetchProductsByQuery.mockResolvedValue({
       totalProductCount: 1,
       products: [{ id: payload }],
+      products: [{ id: '222222' }],
     });
 
     await handleBarCode({ scope, format, payload })(dispatch);
@@ -67,10 +68,22 @@ describe('handleBarCode', () => {
     });
   });
 
+  it('should navigate to PDP when 1 hashed product is found', async () => {
+    fetchProductsByQuery.mockResolvedValue({
+      products: ['222222'],
+    });
+
+    await handleBarCode('222222')(dispatch);
+    expect(fetchProductsByQuery).toHaveBeenCalledWith(2, '222222');
+    expect(historyReplace).toHaveBeenCalledWith({
+      pathname: getProductRoute('222222'),
+    });
+  });
+
   it('should navigate to search when more products are found', async () => {
     const payload = '333333';
     fetchProductsByQuery.mockReturnValue(Promise.resolve({
-      totalProductCount: 2,
+      products: ['111', '222'],
     }));
 
     await handleBarCode({ scope, format, payload })(dispatch);
