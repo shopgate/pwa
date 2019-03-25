@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
-import { Pagination, Navigation, Autoplay } from 'swiper/dist/js/swiper.esm';
+import { Pagination, Navigation, Autoplay, Zoom } from 'swiper/dist/js/swiper.esm';
 import SwiperItem from './components/SwiperItem';
 import { container, innerContainer, bullet, bulletActive } from './styles';
 
@@ -28,6 +28,8 @@ function Swiper(props) {
     loop,
     snapItems,
     onSlideChange,
+    zoom,
+    disabled,
   } = props;
 
   const [swiper, setSwiper] = useState(null);
@@ -42,11 +44,6 @@ function Swiper(props) {
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const el = (indicators && children.length > 1) ? '.swiper-pagination' : null;
-  const modules = [Pagination, Navigation];
-
-  if (autoPlay === true) {
-    modules.push(Autoplay);
-  }
 
   let navigation;
 
@@ -62,7 +59,7 @@ function Swiper(props) {
   }
 
   const params = {
-    modules, // Need to add Pagination, Navigation, Autoplay modules
+    modules: [Pagination, Navigation, Autoplay, Zoom],
     containerClass: cls(innerContainer, classNames.container),
     autoplay: autoPlay ? {
       delay: interval,
@@ -83,6 +80,9 @@ function Swiper(props) {
     on: {
       slideChange: () => onSlideChange(swiper ? swiper.realIndex : 0),
     },
+    zoom,
+    allowSlidePrev: !disabled,
+    allowSlideNext: !disabled,
   };
 
   return (
@@ -122,6 +122,7 @@ Swiper.propTypes = {
     PropTypes.bool,
     PropTypes.shape(),
   ]),
+  disabled: PropTypes.bool,
   indicators: PropTypes.bool,
   initialSlide: PropTypes.number,
   interval: PropTypes.number,
@@ -134,6 +135,10 @@ Swiper.propTypes = {
     PropTypes.string,
   ]),
   snapItems: PropTypes.bool,
+  zoom: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape(),
+  ]),
 };
 
 Swiper.defaultProps = {
@@ -150,6 +155,8 @@ Swiper.defaultProps = {
   rebuildOnUpdate: false,
   slidesPerView: 1,
   snapItems: true,
+  zoom: false,
+  disabled: false,
 };
 
 export default Swiper;

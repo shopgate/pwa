@@ -179,13 +179,6 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
-"@shopgate/react-hammerjs@0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
-  integrity sha512-6HFz4cUnolzJFlLmFG/O1MGCkHfIQ93kPM8KOCa8e7lUjDbJT2izhNyhCoychdhUa2d5FP6IsVCY8SXhOx/rIA==
-  dependencies:
-    hammerjs "^2.0.8"
-
 "@types/node@*":
   version "11.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"

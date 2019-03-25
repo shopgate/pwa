@@ -25,7 +25,6 @@
     "@shopgate/tracking-core": "6.3.0",
     "lodash": "^4.17.4",
     "react": "~16.8.4",
-    "react-dom": "~16.8.4",
-    "react-hammerjs": "^1.0.1"
+    "react-dom": "~16.8.4"
   }
 }
