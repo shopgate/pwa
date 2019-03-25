@@ -24,7 +24,6 @@
     "@shopgate/pwa-common-commerce": "6.3.0",
     "@shopgate/pwa-core": "6.3.0",
     "@shopgate/pwa-unit-test": "6.3.0",
-    "@shopgate/react-hammerjs": "0.5.3",
     "babel-plugin-react-transform": "^3.0.0",
     "coveralls": "^3.0.0",
     "eslint": "^4.17.0",
