@@ -15,6 +15,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     className={null}
     classNames={Object {}}
     controls={false}
+    disabled={false}
     indicators={true}
     initialSlide={0}
     interval={3000}
@@ -24,6 +25,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     rebuildOnUpdate={false}
     slidesPerView={1}
     snapItems={true}
+    zoom={false}
   >
     <SwiperItem
       className={null}

@@ -6,6 +6,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
   className={null}
   classNames={Object {}}
   controls={false}
+  disabled={false}
   indicators={false}
   initialSlide={0}
   interval={3000}
@@ -15,6 +16,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
   rebuildOnUpdate={false}
   slidesPerView={1}
   snapItems={true}
+  zoom={false}
 >
   <Image
     alt={null}
@@ -61,6 +63,7 @@ exports[`<ImageSlider /> should wrap each image into a Swiper.Item 1`] = `
   className={null}
   classNames={Object {}}
   controls={false}
+  disabled={false}
   indicators={false}
   initialSlide={0}
   interval={3000}
@@ -70,6 +73,7 @@ exports[`<ImageSlider /> should wrap each image into a Swiper.Item 1`] = `
   rebuildOnUpdate={true}
   slidesPerView={1}
   snapItems={true}
+  zoom={false}
 >
   <SwiperItem
     className={null}
