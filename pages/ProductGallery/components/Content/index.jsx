@@ -1,12 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Image from '@shopgate/pwa-common/components/Image';
-import ZoomPanSlider from '../ZoomPanSlider';
+import { Swiper, Image } from '@shopgate/pwa-common/components';
 import styles from './style';
 import connect from './connector';
 
 /**
- * @param {Array} images array of images formats
+ * @param {Array} images array of format images
  * @returns {Array} array of indexed images
  */
 const getImagesByIndex = (images) => {
@@ -23,35 +22,42 @@ const getImagesByIndex = (images) => {
   return imagesByIndex;
 };
 
+const zoom = {
+  maxRatio: 3,
+  minRation: 1,
+};
+
 /**
+ * The Product Gallery content component.
+ * @param {Object} props The component props.
  * @return {JSX}
  */
 const ProductGalleryContent = ({ initialSlide, images }) => {
-  let content = null;
-  if (images) {
-    const imagesByIndex = getImagesByIndex(images);
-    content = imagesByIndex.map((imagesInIndex, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <div className={styles.slide} key={`gallery-${index}`}>
-        <Image srcmap={imagesInIndex} />
-      </div>
-    ));
+  if (!Array.isArray(images) || images.length === 0) {
+    return <div className={styles.container} />;
   }
 
+  const imagesByIndex = getImagesByIndex(images);
+
   return (
-    <Fragment>
-      <div className={styles.container}>
-        <ZoomPanSlider
-          classNames={styles.sliderStyles}
-          className={styles.slider}
-          initialSlide={initialSlide}
-          indicators
-          loop
-        >
-          {images ? content : <div />}
-        </ZoomPanSlider>
-      </div>
-    </Fragment>
+    <div className={styles.container}>
+      <Swiper
+        classNames={styles.sliderStyles}
+        className={styles.slider}
+        initialSlide={initialSlide}
+        indicators
+        loop
+        zoom={zoom}
+      >
+        {imagesByIndex.map(imagesInIndex => (
+          <Swiper.Item key={imagesInIndex[0]}>
+            <div className="swiper-zoom-container">
+              <Image srcmap={imagesInIndex} className={styles.slide} animating={false} />
+            </div>
+          </Swiper.Item>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

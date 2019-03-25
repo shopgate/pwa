@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { Swiper } from '@shopgate/pwa-common/components';
+import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import Hammer from 'react-hammerjs';
+} from '@shopgate/pwa-common-commerce/product';
 import ProductImage from 'Components/ProductImage';
 import connect from './connector';
 
@@ -17,15 +15,12 @@ const fallbackResolutions = [
     width: 440,
     height: 440,
   },
-  {
-    width: 1024,
-    height: 1024,
-  },
 ];
 
 /**
+ * reformats the images array to group pictures by index, not by format
  * @param {Array} images array of format images
- * @returns {Array} array of indexed images
+ * @returns {Array}
  */
 const getImagesByIndex = (images) => {
   const imagesByIndex = [];
@@ -98,7 +93,7 @@ class ImageSlider extends Component {
     const { product, images } = this.props;
     let content;
 
-    if (product && Array.isArray(images)) {
+    if (product && Array.isArray(images) && images.length > 1) {
       const imagesByIndex = getImagesByIndex(images);
 
       if (imagesByIndex.length) {
@@ -128,19 +123,15 @@ class ImageSlider extends Component {
       <Fragment>
         <Portal name={PRODUCT_IMAGE_BEFORE} />
         <Portal name={PRODUCT_IMAGE}>
-          <Hammer
-            onPinchStart={this.handleOpenGallery}
-            onTap={this.handleOpenGallery}
-            direction="DIRECTION_ALL"
-            options={{
-              touchAction: 'pan-x pan-y',
-              recognizers: {
-                pinch: { enable: true },
-              },
-            }}
+          <div
+            data-test-id={`product: ${product ? product.name : ''}`}
+            onClick={this.handleOpenGallery}
+            onKeyDown={this.handleOpenGallery}
+            role="button"
+            tabIndex="0"
           >
-            <div data-test-id={`product: ${product ? product.name : ''}`}>{content}</div>
-          </Hammer>
+            {content}
+          </div>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />
       </Fragment>
