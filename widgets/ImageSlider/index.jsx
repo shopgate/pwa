@@ -9,35 +9,59 @@ import { image as imgStyle, link as linkStyle } from './style';
  * @param {Object} props The widget properties
  * @returns {JSX}
  */
-const ImageSliderWidget = ({ settings, className }) => (
-  <Swiper
-    className={className}
-    autoPlay={settings.autostart}
-    indicators={settings.pagination}
-    interval={settings.delay}
-    loop={settings.loop}
-  >
-    {settings.images.map(({ image, alt, link }) => {
-      const img = <img src={image} alt={alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
+const ImageSliderWidget = ({ settings, className }) => {
+  // If only one image, don't show a swiper.
+  if (settings.images.length === 1) {
+    const image = settings.images[0];
+    const img = <img src={image.image} alt={image.alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
 
-      if (link) {
+    if (image.link) {
+      return (
+        <div className={className}>
+          <Link href={image.link} className={linkStyle} data-test-id="withLink">
+            {img}
+          </Link>
+        </div>
+      );
+    }
+    return (
+      <div className={className}>
+        {img}
+      </div>
+    );
+  }
+
+  // Show swiper for more than one image.
+  return (
+    <Swiper
+      className={className}
+      autoPlay={settings.autostart}
+      indicators={settings.pagination}
+      interval={settings.delay}
+      loop={settings.loop}
+    >
+      {settings.images.map(({ image, alt, link }) => {
+        const img = <img src={image} alt={alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
+
+        if (link) {
+          return (
+            <Swiper.Item key={image}>
+              <Link href={link} className={linkStyle} data-test-id="withLink">
+                {img}
+              </Link>
+            </Swiper.Item>
+          );
+        }
+
         return (
           <Swiper.Item key={image}>
-            <Link href={link} className={linkStyle} data-test-id="withLink">
-              {img}
-            </Link>
+            {img}
           </Swiper.Item>
         );
-      }
-
-      return (
-        <Swiper.Item key={image}>
-          {img}
-        </Swiper.Item>
-      );
-    })}
-  </Swiper>
-);
+      })}
+    </Swiper>
+  );
+};
 
 ImageSliderWidget.propTypes = {
   // The settings as received by the pipeline request
