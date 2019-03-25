@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
-import { Pagination, Navigation } from 'swiper/dist/js/swiper.esm';
+import { Pagination, Navigation, Autoplay } from 'swiper/dist/js/swiper.esm';
 import SwiperItem from './components/SwiperItem';
 import { container, innerContainer, bullet, bulletActive } from './styles';
 
@@ -42,23 +42,38 @@ function Swiper(props) {
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const el = (indicators && children.length > 1) ? '.swiper-pagination' : null;
+  const modules = [Pagination, Navigation];
+
+  if (autoPlay === true) {
+    modules.push(Autoplay);
+  }
+
+  let navigation;
+
+  if (typeof controls === 'boolean' && controls === false) {
+    navigation = {
+      nextEl: null,
+      prevEl: null,
+    };
+  }
+
+  if (typeof controls === 'object') {
+    navigation = controls;
+  }
 
   const params = {
-    modules: [Pagination, Navigation], // Need to add Pagination, Navigation modules
+    modules, // Need to add Pagination, Navigation, Autoplay modules
     containerClass: cls(innerContainer, classNames.container),
     autoplay: autoPlay ? {
       delay: interval,
     } : false,
     initialSlide,
-    navigation: !controls ? {
-      nextEl: null,
-      prevEl: null,
-    } : undefined,
+    navigation,
     pagination: {
       el,
       type: paginationType,
-      bulletClass: bullet,
-      bulletActiveClass: bulletActive,
+      bulletClass: classNames.bulletClass || bullet,
+      bulletActiveClass: classNames.bulletActiveClass || bulletActive,
     },
     loop,
     rebuildOnUpdate,
@@ -94,8 +109,19 @@ Swiper.propTypes = {
       PropTypes.string,
       PropTypes.shape(),
     ]),
+    bulletClass: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
+    bulletActiveClass: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
   }),
-  controls: PropTypes.bool,
+  controls: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape(),
+  ]),
   indicators: PropTypes.bool,
   initialSlide: PropTypes.number,
   interval: PropTypes.number,

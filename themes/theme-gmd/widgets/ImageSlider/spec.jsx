@@ -18,7 +18,7 @@ const createComponent = (props = {}) => mount(
   mockRenderOptions
 );
 
-describe.skip('<ImageSliderWidget />', () => {
+describe('<ImageSliderWidget />', () => {
   const testImage = {
     image: 'http://placehold.it/350x150',
     link: 'http://example.com',
@@ -49,7 +49,7 @@ describe.skip('<ImageSliderWidget />', () => {
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SliderItem').length).toBe(settings.images.length);
+    expect(wrapper.find('SwiperItem').length).toBe(settings.images.length);
 
     const images = wrapper.find('img');
     expect(images.length).toBe(settings.images.length);
@@ -68,7 +68,7 @@ describe.skip('<ImageSliderWidget />', () => {
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    const images = wrapper.find('div.sg-swiper-slide img');
+    const images = wrapper.find('div.swiper-slide img');
     images.forEach((image, index) => {
       const imageProps = image.props();
       const imageSettings = settings.images[index];
@@ -88,7 +88,7 @@ describe.skip('<ImageSliderWidget />', () => {
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SliderItem').length).toBe(0);
+    expect(wrapper.find('SwiperItem').length).toBe(0);
     expect(wrapper.find('img').length).toBe(1);
   });
 
@@ -114,7 +114,6 @@ describe.skip('<ImageSliderWidget />', () => {
     const settings = {
       ...testSettings,
       images: [
-        testImage,
         {
           // Add an image without a link
           ...testImage,

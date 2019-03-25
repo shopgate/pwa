@@ -99,14 +99,14 @@ class ImageSlider extends Component {
     const { product, images } = this.props;
     let content;
 
-    if (product && Array.isArray(images)) {
+    if (product && Array.isArray(images) && images.length > 1) {
       const imagesByIndex = getImagesByIndex(images);
 
       if (imagesByIndex.length) {
         content = (
           <Swiper loop indicators onSlideChange={this.handleSlideChange}>
             {imagesByIndex.map(imagesInIndex => (
-              <Swiper.Item key={`${product.id}-${imagesInIndex}`}>
+              <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
                 <ProductImage srcmap={imagesInIndex} animating={false} />
               </Swiper.Item>
             ))}
