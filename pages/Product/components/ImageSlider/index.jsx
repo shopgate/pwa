@@ -105,7 +105,7 @@ class ImageSlider extends Component {
         content = (
           <Swiper loop indicators onSlideChange={this.handleSlideChange}>
             {imagesByIndex.map(imagesInIndex => (
-              <Swiper.Item key={`${product.id}-${imagesInIndex}`}>
+              <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
                 <ProductImage srcmap={imagesInIndex} animating={false} />
               </Swiper.Item>
             ))}

@@ -52,30 +52,11 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       "data-css-9a70pf": "",
     }
   }
+  data-test-id="liveShoppingWidget"
 >
-  <Swiper
-    autoPlay={false}
-    className={null}
-    classNames={Object {}}
-    controls={false}
-    indicators={true}
-    initialSlide={0}
-    interval={3000}
-    loop={false}
-    maxIndicators={null}
-    onSlideChange={[Function]}
-    rebuildOnUpdate={false}
-    slidesPerView={1}
-    snapItems={true}
-  >
-    <SwiperItem
-      className={null}
-      key="1234"
-    >
-      <LiveshoppingItem
-        productId="1234"
-      />
-    </SwiperItem>
-  </Swiper>
+  <LiveshoppingItem
+    key="1234"
+    productId="1234"
+  />
 </div>
 `;

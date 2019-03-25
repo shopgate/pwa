@@ -26,6 +26,16 @@ export class LiveshoppingWidget extends Component {
       return null;
     }
 
+    if (products.length === 1) {
+      return (
+        <div className={styles.wrapper} data-test-id="liveShoppingWidget">
+          {products.map(id => (
+            <Item key={id} productId={id} />
+          ))}
+        </div>
+      );
+    }
+
     return (
       <div className={styles.wrapper}>
         <Swiper indicators loop={products.length > 1}>
