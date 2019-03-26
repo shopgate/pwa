@@ -98,7 +98,12 @@ class ImageSlider extends Component {
 
       if (imagesByIndex.length) {
         content = (
-          <Swiper loop indicators onSlideChange={this.handleSlideChange}>
+          <Swiper
+            loop={images.length > 1}
+            indicators
+            onSlideChange={this.handleSlideChange}
+            disabled={images.length === 1}
+          >
             {imagesByIndex.map(imagesInIndex => (
               <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
                 <ProductImage srcmap={imagesInIndex} animating={false} />
