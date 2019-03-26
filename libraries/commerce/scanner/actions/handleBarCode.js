@@ -12,20 +12,21 @@ import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
  */
 export default payload => async (dispatch) => {
   const {
-    totalProductCount,
-    products,
+    products = [],
   } = await dispatch(fetchProductsByQuery(2, payload));
 
-  if (!totalProductCount) {
+  if (!products.length) {
     dispatch(showModal({
       dismiss: null,
       confirm: 'modal.ok',
       title: 'modal.title_error',
       message: 'scanner.noResult.barCode',
     })).then(confirmed => confirmed && Scanner.start());
-  } else if (Number(totalProductCount) === 1) {
+  } else if (products.length === 1) {
+    const [first] = products;
+    const productId = typeof first === 'string' ? first : first.id;
     dispatch(historyReplace({
-      pathname: getProductRoute(products[0].id),
+      pathname: getProductRoute(productId),
     }));
   } else {
     dispatch(historyReplace({
