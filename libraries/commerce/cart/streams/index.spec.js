@@ -1,9 +1,5 @@
 import { createMockStore } from '@shopgate/pwa-common/store';
-import {
-  HISTORY_PUSH_ACTION,
-  HISTORY_POP_ACTION,
-  HISTORY_REPLACE_ACTION,
-} from '@shopgate/pwa-common/constants/ActionTypes';
+import { ACTION_PUSH, ACTION_POP, ACTION_REPLACE } from '@virtuous/conductor';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
 import receiveCart from '@shopgate/pwa-common-commerce/cart/action-creators/receiveCart';
@@ -33,7 +29,7 @@ describe('Cart streams', () => {
         query: {
           coupon: '10PERCENTOFF',
         },
-      }, HISTORY_PUSH_ACTION));
+      }, ACTION_PUSH));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
@@ -43,7 +39,7 @@ describe('Cart streams', () => {
         query: {
           coupon: '10PERCENTOFF',
         },
-      }, HISTORY_REPLACE_ACTION));
+      }, ACTION_REPLACE));
 
       expect(subscriber).toHaveBeenCalledTimes(1);
     });
@@ -51,17 +47,17 @@ describe('Cart streams', () => {
     it('should not emit when a route will enter without a coupon in its query', () => {
       dispatch(routeWillEnter({
         query: {},
-      }, HISTORY_PUSH_ACTION));
+      }, ACTION_PUSH));
 
       expect(subscriber).not.toHaveBeenCalled();
     });
 
-    it('should not emit when a route will enter by a HISTORY_POP history action', () => {
+    it('should not emit when a route will enter by a ACTION_POP history action', () => {
       dispatch(routeWillEnter({
         query: {
           coupon: '10PERCENTOFF',
         },
-      }, HISTORY_POP_ACTION));
+      }, ACTION_POP));
 
       expect(subscriber).not.toHaveBeenCalled();
     });
