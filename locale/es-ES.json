@@ -154,7 +154,7 @@
   "scanner": {
     "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
     "noResult": {
-      "qrCode": "We couldn't find a result for this QR code",
+      "qrCode": "No pudimos encontrar un resultado para este código QR.",
       "barCode": "Product not found"
     }
   }
