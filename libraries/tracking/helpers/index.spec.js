@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import core from '@shopgate/tracking-core/core/Core';
-import { createScannerEventData } from './index';
+import { createScannerEventData, buildScannerUtmUrl } from './index';
 
 const scannerEvents = core.getScannerEvents();
 
@@ -123,6 +123,72 @@ describe('Tracking helpers', () => {
       expect(result).toEqual({
         eventAction: defaultEvent,
         eventLabel: `${format} - ${payload}`,
+      });
+    });
+  });
+
+  describe('createScannerUtmData', () => {
+    const referer = '/';
+
+    describe('default Utms', () => {
+      it('should create default utm data for barcode', () => {
+        const result = buildScannerUtmUrl({
+          scannerRoute: { location: '/scanner' },
+          format: 'EAN_13',
+          payload: '123456789',
+          referer,
+        });
+        expect(result).toEqual('/scanner?utm_source=shopgate&utm_medium=barcode_scanner&utm_campaign=30177BarcodeScan&utm_term=123456789&utm_content=%2F');
+      });
+      it('should create default utm data for cms page qrcode', () => {
+        const result = buildScannerUtmUrl({
+          scannerRoute: { location: '/scanner' },
+          format: 'QR_CODE',
+          payload: 'http://2d.is/1/30186/cmsPage?s=31',
+          referer,
+        });
+        expect(result).toEqual('/scanner?utm_source=shopgate&utm_medium=qrcode_scanner&utm_campaign=30177QRScan&utm_content=%2F');
+      });
+      it('should create search utm data for search term qrcode', () => {
+        const result = buildScannerUtmUrl({
+          scannerRoute: { location: '/scanner' },
+          format: 'QR_CODE',
+          payload: 'http://2d.is/b/30186/searchPhrase?s=29',
+          referer,
+        });
+        expect(result).toEqual('/scanner?utm_source=shopgate&utm_medium=qrcode_scanner&utm_campaign=30177QRScan&utm_term=searchPhrase&utm_content=%2F');
+      });
+    });
+
+    describe('custom Utms', () => {
+      const location = '/scanner?utm_medium=MED1&utm_campaign=CMP1';
+
+      it('should create custom utm data for barcode', () => {
+        const result = buildScannerUtmUrl({
+          scannerRoute: { location },
+          format: 'EAN_13',
+          payload: '123456789',
+          referer,
+        });
+        expect(result).toEqual(`${location}&utm_source=shopgate&utm_term=123456789&utm_content=%2F`);
+      });
+      it('should create custom utm data for cms page qrcode', () => {
+        const result = buildScannerUtmUrl({
+          scannerRoute: { location },
+          format: 'QR_CODE',
+          payload: 'http://2d.is/1/30186/cmsPage?s=31',
+          referer,
+        });
+        expect(result).toEqual(`${location}&utm_source=shopgate&utm_content=%2F`);
+      });
+      it('should create custom utm data for search term qrcode', () => {
+        const result = buildScannerUtmUrl({
+          scannerRoute: { location },
+          format: 'QR_CODE',
+          payload: 'http://2d.is/b/30186/searchPhrase?s=29',
+          referer,
+        });
+        expect(result).toEqual(`${location}&utm_source=shopgate&utm_term=searchPhrase&utm_content=%2F`);
       });
     });
   });

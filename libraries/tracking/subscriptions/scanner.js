@@ -1,6 +1,7 @@
 import core from '@shopgate/tracking-core/core/Core';
+import { routeDidLeave$ } from '@shopgate/pwa-common/streams';
 import { scanActivated$, scanFail$, scanSuccess$ } from '../streams/scanner';
-import { createScannerEventData, track } from '../helpers';
+import { buildScannerUtmUrl, createScannerEventData, track } from '../helpers';
 
 /**
  * Scanner tracking subscriptions.
@@ -34,5 +35,35 @@ export default function scanner(subscribe) {
       format,
       payload,
     }), getState());
+  });
+
+  const afterScan$ = scanActivated$
+    .withLatestFrom(routeDidLeave$)
+    .switchMap(
+      () => scanSuccess$.first(),
+      ([activatedAction, refererAction], successAction) => ({
+        activatedAction,
+        refererAction,
+        successAction,
+        getState: activatedAction.getState,
+      })
+    );
+
+  subscribe(afterScan$, ({
+    activatedAction, refererAction, successAction, getState,
+  }) => {
+    const { action: { route: scannerRoute } = {} } = activatedAction;
+    const { action: { route: { location: referer } = {} } } = refererAction;
+    const { action: { format, payload } } = successAction;
+
+    // eslint-disable-next-line extra-rules/no-single-line-objects
+    const urlWithUtm = buildScannerUtmUrl({
+      scannerRoute, format, payload, referer,
+    });
+
+    track('setCampaignWithUrl', {
+      url: urlWithUtm,
+      type: 'scanner',
+    }, getState());
   });
 }

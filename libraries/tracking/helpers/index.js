@@ -16,6 +16,7 @@ import {
 } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { parse2dsQrCode } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import core from '@shopgate/tracking-core/core/Core';
+import { shopNumber } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * Converts a price to a formatted string.
@@ -222,6 +223,54 @@ export const createScannerEventData = ({
     ...eventLabel && { eventLabel },
     ...(typeof userInteraction === 'boolean') && { userInteraction },
   };
+};
+
+/**
+ * Creates data for the scanner utm url.
+ * @param {Object} params params
+ * @return {Object}
+ */
+export const buildScannerUtmUrl = ({
+  scannerRoute, format, payload, referer,
+}) => {
+  const source = 'shopgate';
+  let medium = 'scanner';
+  let campaign = `${shopNumber}Scanner`;
+  let term = '';
+
+  if (SCANNER_FORMATS_BARCODE.includes(format)) {
+    medium = 'barcode_scanner';
+    campaign = `${shopNumber}BarcodeScan`;
+    term = payload;
+  } else if (SCANNER_FORMATS_QR_CODE.includes(format)) {
+    medium = 'qrcode_scanner';
+    campaign = `${shopNumber}QRScan`;
+
+    const { type, data } = parse2dsQrCode(payload);
+    if (type === QR_CODE_TYPE_SEARCH) {
+      term = data.searchPhrase;
+    }
+  }
+
+  const { location } = scannerRoute;
+
+  const newPath = new URL(`scanner://${location}`);
+
+  const utms = {
+    utm_source: source,
+    utm_medium: medium,
+    utm_campaign: campaign,
+    utm_term: term,
+    utm_content: referer,
+  };
+
+  Object.keys(utms).forEach((utm) => {
+    if (!newPath.searchParams.has(utm) && utms[utm]) {
+      newPath.searchParams.set(utm, utms[utm]);
+    }
+  });
+
+  return `${newPath.pathname}${newPath.search}`;
 };
 
 /**
