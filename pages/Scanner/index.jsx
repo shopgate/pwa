@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
@@ -42,17 +42,15 @@ class ScannerView extends PureComponent {
       <View background={backgroundColor}>
         <RouteContext.Consumer>
           {({ query: { scope = SCANNER_SCOPE_DEFAULT, type = SCANNER_TYPE_BARCODE } = {} }) => (
-            <Fragment>
+            <ScannerContainer
+              scope={scope}
+              type={type}
+              scannerDidOpen={this.removeBackground}
+              scannerDidClose={this.resetBackground}
+            >
               <BackBar title="titles.scanner" right={null} />
-              <ScannerContainer
-                scope={scope}
-                type={type}
-                scannerDidOpen={this.removeBackground}
-                scannerDidClose={this.resetBackground}
-              >
-                <ScannerOverlay />
-              </ScannerContainer>
-            </Fragment>
+              <ScannerOverlay />
+            </ScannerContainer>
           )}
         </RouteContext.Consumer>
       </View>
