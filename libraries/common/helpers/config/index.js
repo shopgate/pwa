@@ -25,6 +25,7 @@ const defaultAppConfig = {
   showGmdMenuSubHeaders: false,
   benchmark: false,
   sentry: {},
+  scanner: {},
 };
 
 export const themeName = process.env.THEME || 'theme';
