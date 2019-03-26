@@ -201,6 +201,17 @@
         "path": "/v1/shop/%(shopId)s/has_no_scanner?parsed=true",
         "key": "value"
       }
+    },
+    "scanner": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "showSearchFieldIcon": true
+      },
+      "params": {
+        "type": "json",
+        "label": "Scanner settings: icon on/off, etc"
+      }
     }
   }
 }
