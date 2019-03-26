@@ -1,3 +1,4 @@
+import { ACTION_PUSH, ACTION_REPLACE } from '@virtuous/conductor';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   routeWillEnter$,
@@ -5,10 +6,6 @@ import {
   routeWillLeave$,
   routeDidLeave$,
 } from '@shopgate/pwa-common/streams/router';
-import {
-  HISTORY_PUSH_ACTION,
-  HISTORY_REPLACE_ACTION,
-} from '@shopgate/pwa-common/constants/ActionTypes';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import {
   CART_PATH,
@@ -44,8 +41,8 @@ import {
 export const routeWithCouponWillEnter$ = routeWillEnter$
   .filter(({ action }) =>
     [
-      HISTORY_PUSH_ACTION,
-      HISTORY_REPLACE_ACTION,
+      ACTION_PUSH,
+      ACTION_REPLACE,
     ].includes(action.historyAction) && action.route.query.coupon);
 
 /**
