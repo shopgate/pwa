@@ -169,7 +169,7 @@
   "scanner": {
     "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
     "noResult": {
-      "qrCode": "We couldn't find a result for this QR code",
+      "qrCode": "We couldn't find a result for this QR code.",
       "barCode": "Product not found"
     }
   }
