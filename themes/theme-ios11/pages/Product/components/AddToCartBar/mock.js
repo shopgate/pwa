@@ -33,9 +33,6 @@ const mockedStateBase = {
 export const mockedStateSimpleProduct = {
   ...mockedStateBase,
   product: {
-    currentProduct: {
-      productId: 'product_1',
-    },
     productsById: {
       product_1: {
         isFetching: false,
@@ -76,9 +73,6 @@ export const mockedStateSimpleProductNotReady = {
 export const mockedStateVariants = {
   ...mockedStateBase,
   product: {
-    currentProduct: {
-      productId: 'product_1',
-    },
     productsById: {
       product_1: {
         isFetching: false,
@@ -112,10 +106,6 @@ export const mockedStateVariantsReady = {
   ...{
     product: {
       ...mockedStateVariants.product,
-      currentProduct: {
-        ...mockedStateVariants.product.currentProduct,
-        productVariantId: 'product_2',
-      },
       variantsByProductId: variantsByProductId(false),
       optionsByProductId: {
         product_1: null,

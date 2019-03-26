@@ -103,12 +103,6 @@ const initialState = {
     optionsByProductId: {},
     resultsByHash: {},
     imagesByProductId: {},
-    currentProduct: {
-      productId: null,
-      productVariantId: null,
-      quantity: null,
-      options: {},
-    },
   },
 };
 
@@ -195,11 +189,12 @@ const basicProductState = {
         ],
       },
     },
-    currentProduct: {
-      productId: '913',
-      productVariantId: null,
-      quantity: 1,
-      options: {},
+    optionsByProductId: {
+      913: {
+        isFetching: false,
+        expires: 1497429213141,
+        options: [],
+      },
     },
   },
 };
@@ -264,6 +259,11 @@ const productWithOneOption = {
       },
     },
     optionsByProductId: {
+      913: {
+        isFetching: false,
+        expires: 1497429213141,
+        options: [],
+      },
       1097: {
         isFetching: false,
         expires: 1497429213141,
@@ -329,12 +329,6 @@ const productWithOneOption = {
         images: [],
       },
     },
-    currentProduct: {
-      productId: '1097',
-      productVariantId: null,
-      quantity: 1,
-      options: {},
-    },
   },
 };
 
@@ -342,13 +336,6 @@ const productWithSelectedOptions = {
   ...productWithOneOption,
   product: {
     ...productWithOneOption.product,
-    currentProduct: {
-      ...productWithOneOption.product.currentProduct,
-      options: {
-        1: '1',
-        10: 'Foo bar',
-      },
-    },
   },
 };
 
@@ -451,12 +438,6 @@ const productWithVariants = {
         },
       },
     },
-    currentProduct: {
-      productId: 'dif01',
-      productVariantId: null,
-      quantity: 1,
-      options: {},
-    },
   },
 };
 
@@ -518,10 +499,6 @@ const productWithSelectedVariant = {
           },
         },
       },
-    },
-    currentProduct: {
-      ...productWithVariants.currentProduct,
-      productVariantId: 'dif01-exp',
     },
   },
 };
@@ -1028,12 +1005,6 @@ const productWithVariantsAndOptions = {
           },
         ],
       },
-    },
-    currentProduct: {
-      productId: 'SG74',
-      productVariantId: null,
-      quantity: 1,
-      options: {},
     },
   },
 };

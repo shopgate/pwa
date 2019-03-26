@@ -112,7 +112,7 @@ class Search extends Component {
       visible: false,
     });
 
-    const location = `/search?s=${searchQuery}`;
+    const location = `/search?s=${encodeURIComponent(searchQuery)}`;
     const { route: { pattern, query } } = this.props;
 
     if (query.s === searchQuery) {
