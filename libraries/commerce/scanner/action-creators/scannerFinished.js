@@ -7,9 +7,11 @@ import { SCANNER_FINISHED } from '../constants';
  * @param {Object} payload scan result
  * @returns {Object}
  */
-export const scannerFinished = (scope, format, payload) => ({
+const scannerFinished = (scope, format, payload) => ({
   type: SCANNER_FINISHED,
   scope,
   format,
   payload,
 });
+
+export default scannerFinished;
