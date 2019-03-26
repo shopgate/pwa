@@ -1,7 +1,22 @@
 import get from 'lodash/get';
 import find from 'lodash/find';
-import core from '@shopgate/tracking-core/core/Core';
 import { logger } from '@shopgate/pwa-core/helpers';
+import {
+  SCANNER_FORMATS_BARCODE,
+  SCANNER_FORMATS_QR_CODE,
+} from '@shopgate/pwa-core/constants/Scanner';
+import {
+  QR_CODE_TYPE_HOMEPAGE,
+  QR_CODE_TYPE_PRODUCT,
+  QR_CODE_TYPE_PRODUCT_WITH_COUPON,
+  QR_CODE_TYPE_COUPON,
+  QR_CODE_TYPE_CATEGORY,
+  QR_CODE_TYPE_SEARCH,
+  QR_CODE_TYPE_PAGE,
+} from '@shopgate/pwa-common-commerce/scanner/constants';
+import { parse2dsQrCode } from '@shopgate/pwa-common-commerce/scanner/helpers';
+import core from '@shopgate/tracking-core/core/Core';
+import { shopNumber } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * Converts a price to a formatted string.
@@ -141,6 +156,121 @@ export const formatPurchaseData = (passedOrder) => {
       },
     },
   };
+};
+
+/**
+ * Creates data for the scanner tracking events.
+ * @param {Object} params params
+ * @return {Object}
+ */
+export const createScannerEventData = ({
+  event, format, payload, userInteraction,
+}) => {
+  let eventLabel = [];
+
+  if (payload) {
+    eventLabel = [format];
+
+    if (SCANNER_FORMATS_QR_CODE.includes(format)) {
+      const parsedPayload = parse2dsQrCode(payload);
+
+      if (parsedPayload) {
+        const { type, data } = parsedPayload;
+
+        switch (type) {
+          case QR_CODE_TYPE_HOMEPAGE:
+            eventLabel.push('main');
+            break;
+          case QR_CODE_TYPE_PRODUCT:
+            eventLabel.push('product');
+            eventLabel.push(data.productId);
+            break;
+          case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
+            eventLabel.push('productcoupon');
+            eventLabel.push(`${data.productId}_${data.couponCode}`);
+            break;
+          case QR_CODE_TYPE_COUPON:
+            eventLabel.push('coupon');
+            eventLabel.push(data.couponCode);
+            break;
+          case QR_CODE_TYPE_CATEGORY:
+            eventLabel.push('category');
+            eventLabel.push(data.categoryId);
+            break;
+          case QR_CODE_TYPE_SEARCH:
+            eventLabel.push('search');
+            eventLabel.push(data.searchPhrase);
+            break;
+          case QR_CODE_TYPE_PAGE:
+            eventLabel.push('page');
+            eventLabel.push(data.pageId);
+            break;
+          default:
+            break;
+        }
+      }
+    } else if (SCANNER_FORMATS_BARCODE.includes(format)) {
+      if (payload) {
+        eventLabel.push(payload);
+      }
+    }
+  }
+
+  eventLabel = eventLabel.join(' - ');
+
+  return {
+    eventAction: event,
+    ...eventLabel && { eventLabel },
+    ...(typeof userInteraction === 'boolean') && { userInteraction },
+  };
+};
+
+/**
+ * Creates data for the scanner utm url.
+ * @param {Object} params params
+ * @return {Object}
+ */
+export const buildScannerUtmUrl = ({
+  scannerRoute, format, payload, referer,
+}) => {
+  const source = 'shopgate';
+  let medium = 'scanner';
+  let campaign = `${shopNumber}Scanner`;
+  let term = '';
+
+  if (SCANNER_FORMATS_BARCODE.includes(format)) {
+    medium = 'barcode_scanner';
+    campaign = `${shopNumber}BarcodeScan`;
+    term = payload;
+  } else if (SCANNER_FORMATS_QR_CODE.includes(format)) {
+    medium = 'qrcode_scanner';
+    campaign = `${shopNumber}QRScan`;
+
+    const { type, data } = parse2dsQrCode(payload);
+    if (type === QR_CODE_TYPE_SEARCH) {
+      term = data.searchPhrase;
+    }
+  }
+
+  const { location } = scannerRoute;
+
+  const newPath = new URL(`scanner://${location}`);
+
+  const utms = {
+    utm_source: source,
+    utm_medium: medium,
+    utm_campaign: campaign,
+    utm_term: term,
+    utm_content: referer,
+  };
+
+  Object.keys(utms).forEach((utm) => {
+    if (!newPath.searchParams.has(utm) && utms[utm]) {
+      newPath.searchParams.set(utm, utms[utm]);
+    }
+  });
+
+  return `${newPath.pathname}${newPath.search}`;
 };
 
 /**

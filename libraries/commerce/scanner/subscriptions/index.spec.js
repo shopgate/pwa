@@ -3,7 +3,7 @@ import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import ScannerEvent from '@shopgate/pwa-core/classes/ScannerEvent';
 import { SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE } from '@shopgate/pwa-core/constants/Scanner';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
-import { scannerFinished } from '../action-creators';
+import scannerFinished from '../action-creators/scannerFinished';
 import handleBarCode from '../actions/handleBarCode';
 import handleQrCode from '../actions/handleQrCode';
 import subscriptions from './index';
@@ -14,9 +14,7 @@ jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
 jest.mock('@shopgate/pwa-common/streams/app', () => ({
   appDidStart$: jest.fn(),
 }));
-jest.mock('../action-creators', () => ({
-  scannerFinished: jest.fn(),
-}));
+jest.mock('../action-creators/scannerFinished', () => jest.fn());
 jest.mock('../actions/handleBarCode');
 jest.mock('../actions/handleQrCode');
 
@@ -82,10 +80,14 @@ describe('scanner subscriptions', () => {
     });
 
     it('should call bar code handler with bar code payload', async () => {
-      scanFinishedBarCodeCallback({ dispatch, action: { payload: '123456' } });
+      const scope = SCANNER_SCOPE_DEFAULT;
+      const format = 'EAN_13';
+      const payload = '123456';
+
+      scanFinishedBarCodeCallback({ dispatch, action: { scope, format, payload } });
 
       expect(handleBarCode).toHaveBeenCalledTimes(1);
-      expect(handleBarCode).toHaveBeenCalledWith('123456');
+      expect(handleBarCode).toHaveBeenCalledWith({ scope, format, payload });
     });
   });
 
@@ -95,10 +97,13 @@ describe('scanner subscriptions', () => {
     });
 
     it('should call qr code handler with qr code payload', async () => {
-      scanFinishedQrCodeCallback({ dispatch, action: { payload: 'https://2d.is/7/30289' } });
+      const scope = SCANNER_SCOPE_DEFAULT;
+      const format = 'QR_CODE';
+      const payload = 'https://2d.is/7/30289';
+      scanFinishedQrCodeCallback({ dispatch, action: { scope, format, payload } });
 
       expect(handleQrCode).toHaveBeenCalledTimes(1);
-      expect(handleQrCode).toHaveBeenCalledWith('https://2d.is/7/30289');
+      expect(handleQrCode).toHaveBeenCalledWith({ scope, format, payload });
     });
   });
 });

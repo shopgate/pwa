@@ -5,6 +5,8 @@ import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
 import { fetchCategory, getCategoryById } from '@shopgate/pwa-common-commerce/category';
+import successHandleScanner from '../action-creators/successHandleScanner';
+import errorHandleScanner from '../action-creators/errorHandleScanner';
 import {
   QR_CODE_TYPE_CATEGORY,
   QR_CODE_TYPE_COUPON,
@@ -18,14 +20,17 @@ import { parse2dsQrCode } from '../helpers';
 
 /**
  * Handle qr code
- * @param {string} [payload=''] qr code payload
+ * @param {string} scope Scanner scope.
+ * @param {string} format Format of the scanned code.
+ * @param {string} payload Barcode payload.
  * @return {Function} A redux thunk.
  */
-export default payload => async (dispatch, getState) => {
+export default ({ scope, format, payload }) => async (dispatch, getState) => {
   const { type, link, data } = parse2dsQrCode(payload) || {};
 
   /** Show modal and continue scanning */
   const notFound = () => {
+    dispatch(errorHandleScanner(scope, format, payload));
     dispatch(showModal({
       dismiss: null,
       confirm: 'modal.ok',
@@ -37,11 +42,13 @@ export default payload => async (dispatch, getState) => {
   switch (type) {
     case QR_CODE_TYPE_HOMEPAGE:
     case QR_CODE_TYPE_SEARCH:
+      dispatch(successHandleScanner(scope, format, payload));
       dispatch(historyReplace({
         pathname: link,
       }));
       break;
     case QR_CODE_TYPE_COUPON:
+      dispatch(successHandleScanner(scope, format, payload));
       dispatch(historyReplace({
         pathname: link,
       }));
@@ -56,6 +63,7 @@ export default payload => async (dispatch, getState) => {
       if (!getProductById(getState(), data)) {
         notFound();
       } else {
+        dispatch(successHandleScanner(scope, format, payload));
         dispatch(historyReplace({
           pathname: link,
         }));
@@ -67,6 +75,7 @@ export default payload => async (dispatch, getState) => {
       if (!getCategoryById(getState(), data)) {
         notFound();
       } else {
+        dispatch(successHandleScanner(scope, format, payload));
         dispatch(historyReplace({
           pathname: link,
         }));
@@ -79,6 +88,7 @@ export default payload => async (dispatch, getState) => {
       if (!getPageConfigById(getState(), data)) {
         notFound();
       } else {
+        dispatch(successHandleScanner(scope, format, payload));
         dispatch(historyReplace({
           pathname: link,
         }));
