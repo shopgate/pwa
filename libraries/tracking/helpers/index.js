@@ -159,7 +159,7 @@ export const formatPurchaseData = (passedOrder) => {
 
 /**
  * Creates data for the scanner tracking events.
- * @param {Object} params Foobar
+ * @param {Object} params params
  * @return {Object}
  */
 export const createScannerEventData = ({

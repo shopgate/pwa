@@ -8,7 +8,9 @@ const { createScannerEventData } = helpers;
 const scannerEvents = core.getScannerEvents();
 
 describe('Scanner subscriptions', () => {
+  const mockedState = {};
   const subscribe = jest.fn();
+  const getState = jest.fn().mockReturnValue(mockedState);
   const trackSpy = jest.spyOn(helpers, 'track');
 
   const format = 'QR_CODE';
@@ -36,12 +38,12 @@ describe('Scanner subscriptions', () => {
     });
 
     it('should call the track function', () => {
-      callback({ action: { format } });
+      callback({ action: { format }, getState });
       expect(trackSpy).toHaveBeenCalledWith('qrScanner', createScannerEventData({
         event: scannerEvents.SCAN_ACTIVATED,
         userInteraction: false,
         format,
-      }));
+      }), mockedState);
     });
   });
 
@@ -58,12 +60,12 @@ describe('Scanner subscriptions', () => {
     });
 
     it('should call the track function', () => {
-      callback({ action: { format, payload } });
+      callback({ action: { format, payload }, getState });
       expect(trackSpy).toHaveBeenCalledWith('qrScanner', createScannerEventData({
         event: scannerEvents.SCAN_SUCCESS,
         format,
         payload,
-      }));
+      }), mockedState);
     });
   });
 
@@ -80,12 +82,12 @@ describe('Scanner subscriptions', () => {
     });
 
     it('should call the track function', () => {
-      callback({ action: { format, payload } });
+      callback({ action: { format, payload }, getState });
       expect(trackSpy).toHaveBeenCalledWith('qrScanner', createScannerEventData({
         event: scannerEvents.SCAN_FAIL,
         format,
         payload,
-      }));
+      }), mockedState);
     });
   });
 });
