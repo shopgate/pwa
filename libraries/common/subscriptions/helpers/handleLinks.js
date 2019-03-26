@@ -171,7 +171,7 @@ export const handleAppRedirect = (historyAction, state) => {
 };
 
 /**
- * Opens a link in the in-app-broweser.
+ * Opens a link in the in-app-browser.
  * @param {string} location The location to open.
  * @param {string} historyAction The history action which was used to open the link.
  * @param {Object} state The application state.

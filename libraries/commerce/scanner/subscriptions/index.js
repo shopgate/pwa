@@ -2,7 +2,7 @@ import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import ScannerEventListener from '@shopgate/pwa-core/classes/ScannerEventListener';
 import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
 import { appDidStart$ } from '@shopgate/pwa-common/streams';
-import { scannerFinished } from '../action-creators';
+import scannerFinished from '../action-creators/scannerFinished';
 import handleBarCode from '../actions/handleBarCode';
 import handleQrCode from '../actions/handleQrCode';
 import {
@@ -29,8 +29,12 @@ export default (subscribe) => {
 
   // Default scope bar code handler
   subscribe(scannerFinishedBarCodeDefault$, ({ dispatch, action }) => {
-    const { payload } = action;
-    dispatch(handleBarCode(payload));
+    const { scope, format, payload } = action;
+    dispatch(handleBarCode({
+      scope,
+      format,
+      payload,
+    }));
   });
 
   // Default scope qr code stream
@@ -39,7 +43,11 @@ export default (subscribe) => {
 
   // Default scope qr code handler
   subscribe(scannerFinishedQrCodeDefault$, ({ dispatch, action }) => {
-    const { payload } = action;
-    dispatch(handleQrCode(payload));
+    const { scope, format, payload } = action;
+    dispatch(handleQrCode({
+      scope,
+      format,
+      payload,
+    }));
   });
 };

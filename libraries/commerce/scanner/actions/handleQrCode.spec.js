@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
+import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
 import { historyReplace, historyPop } from '@shopgate/pwa-common/actions/router';
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
@@ -14,6 +15,8 @@ import {
   QR_CODE_TYPE_SEARCH,
   QR_CODE_TYPE_PAGE,
 } from '../constants';
+import successHandleScanner from '../action-creators/successHandleScanner';
+import errorHandleScanner from '../action-creators/errorHandleScanner';
 import { parse2dsQrCode } from '../helpers';
 import handleQrCode from './handleQrCode';
 
@@ -43,6 +46,10 @@ jest.mock('../helpers', () => ({
   parse2dsQrCode: jest.fn(),
 }));
 
+const scope = SCANNER_SCOPE_DEFAULT;
+const format = 'QR_CODE';
+const payload = 'qr.code.from.scanner';
+
 describe('handleQrCode', () => {
   const dispatch = jest.fn(action => action);
   const getState = jest.fn();
@@ -60,50 +67,55 @@ describe('handleQrCode', () => {
   });
 
   it('parse2dsQrCode is called with given qr code', () => {
-    handleQrCode('qr.code.from.scanner')(dispatch);
-    expect(parse2dsQrCode).toHaveBeenCalledWith('qr.code.from.scanner');
+    handleQrCode({ scope, format, payload })(dispatch);
+    expect(parse2dsQrCode).toHaveBeenCalledWith(payload);
   });
 
   describe('unknown link handling', () => {
     it('should show modal and restart scanner when type is undefined', async () => {
       parse2dsQrCode.mockReturnValue(null);
-      await handleQrCode()(dispatch);
+      await handleQrCode({ scope, format, payload })(dispatch);
       expect(showModal).toHaveBeenCalledTimes(1);
       expect(scannerStart).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
     });
 
     it('should show modal and restart scanner  when type is unknown', async () => {
       parse2dsQrCode.mockReturnValue({ type: 'unknown' });
-      await handleQrCode()(dispatch);
+      await handleQrCode({ scope, format, payload })(dispatch);
       expect(showModal).toHaveBeenCalledTimes(1);
       expect(scannerStart).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
     });
   });
 
   describe('simple link handling', () => {
     it('should navigate to homepage', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_HOMEPAGE, link: '/' });
-      handleQrCode()(dispatch);
+      handleQrCode({ scope, format, payload })(dispatch);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/',
       });
+      expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
     });
 
     it('should navigate to search', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_SEARCH, link: '/search?term' });
-      handleQrCode()(dispatch);
+      handleQrCode({ scope, format, payload })(dispatch);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/search?term',
       });
+      expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
     });
 
     it('should navigate to add coupon page', () => {
       parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_COUPON, link: '/add_coupon/code' });
-      handleQrCode()(dispatch);
+      handleQrCode({ scope, format, payload })(dispatch);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/add_coupon/code',
       });
       expect(historyPop).toHaveBeenCalledWith();
+      expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
     });
   });
 
@@ -113,7 +125,7 @@ describe('handleQrCode', () => {
     });
 
     it('fetch product and getState is called with productId', async () => {
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(fetchProductsById).toHaveBeenCalledWith(['SG1']);
       expect(getState).toHaveBeenCalledTimes(1);
     });
@@ -121,16 +133,19 @@ describe('handleQrCode', () => {
     it('should show modal, when product not found', async () => {
       getProductById.mockReturnValue(null);
       // Handle
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(showModal).toHaveBeenCalledWith(modalContent);
       expect(scannerStart).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
     });
+
     it('should navigate to PDP when product exists', async () => {
       getProductById.mockReturnValue(true);
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/item/SG1',
       });
+      expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
     });
   });
 
@@ -140,7 +155,7 @@ describe('handleQrCode', () => {
     });
 
     it('fetch category and getState is called with categoryId', async () => {
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(fetchCategory).toHaveBeenCalledWith('SG2');
       expect(getState).toHaveBeenCalledTimes(1);
     });
@@ -148,16 +163,18 @@ describe('handleQrCode', () => {
     it('should show modal, when category not found', async () => {
       getCategoryById.mockReturnValue(null);
       // Handle
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(showModal).toHaveBeenCalledWith(modalContent);
       expect(scannerStart).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
     });
     it('should navigate to PLP when category exists', async () => {
       getCategoryById.mockReturnValue(true);
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/category/SG2',
       });
+      expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
     });
   });
 
@@ -167,7 +184,7 @@ describe('handleQrCode', () => {
     });
 
     it('fetch page and getState is called with pageId', async () => {
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(fetchPageConfig).toHaveBeenCalledWith('SG3');
       expect(getState).toHaveBeenCalledTimes(1);
     });
@@ -175,16 +192,19 @@ describe('handleQrCode', () => {
     it('should show modal, when page not found', async () => {
       getPageConfigById.mockReturnValue(null);
       // Handle
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(showModal).toHaveBeenCalledWith(modalContent);
       expect(scannerStart).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
     });
+
     it('should navigate to CMS when page exists', async () => {
       getPageConfigById.mockReturnValue(true);
-      await handleQrCode()(dispatch, getState);
+      await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/page/SG3',
       });
+      expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
     });
   });
 });
