@@ -46,7 +46,8 @@ const ProductGalleryContent = ({ initialSlide, images }) => {
         className={styles.slider}
         initialSlide={initialSlide}
         indicators
-        loop
+        loop={images.length > 1}
+        disabled={images.length === 1}
         zoom={zoom}
       >
         {imagesByIndex.map(imagesInIndex => (
