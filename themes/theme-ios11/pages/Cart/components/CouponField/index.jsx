@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
@@ -15,7 +15,7 @@ const defaultState = {
 /**
  * The CouponField component.
  */
-class CouponField extends Component {
+class CouponField extends PureComponent {
   static propTypes = {
     visible: PropTypes.bool.isRequired,
     addCoupon: PropTypes.func,
