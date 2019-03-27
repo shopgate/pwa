@@ -24,9 +24,9 @@ const defaultAppConfig = {
   showGmdMenuSubHeaders: false,
   benchmark: false,
   sentry: {},
-  shippingShowLegacy: null,
-  shippingUnavailableLegacy: null,
-  shipping: {},
+  shippingHideAnonymousLegacy: null,
+  shipingTextAnonymousLegacy: null,
+  cart: {},
 };
 
 export const themeName = process.env.THEME || 'theme';

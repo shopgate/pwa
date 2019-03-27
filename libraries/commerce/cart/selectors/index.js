@@ -138,101 +138,65 @@ export const getCurrency = createSelector(
 );
 
 /**
- * Selects the sub total value the total amounts stack.
+ * Selects the sub total.
  * @param {Object} state The current application state.
  * @return {string}
  */
 export const getSubTotal = createSelector(
   getTotals,
   (totals) => {
-    if (!totals || totals.lengths === 0) {
-      return 0;
-    }
-
-    const index = totals.findIndex(total => total.type === CART_TOTALS_TYPE_SUB);
-    const { amount = 0 } = totals[index];
-
+    const { amount = 0 } = totals.find(total => total.type === CART_TOTALS_TYPE_SUB) || {};
     return amount;
   }
 );
 
 /**
- * Selects the grand total value the total amounts stack.
+ * Selects the grand total.
  * @param {Object} state The current application state.
- * @return {string}
+ * @returns {number}
  */
 export const getGrandTotal = createSelector(
   getTotals,
   (totals) => {
-    if (!totals || totals.lengths === 0) {
-      return 0;
-    }
-
-    const index = totals.findIndex(total => total.type === CART_TOTALS_TYPE_GRAND);
-    const { amount = 0 } = totals[index];
-
+    const { amount = 0 } = totals.find(total => total.type === CART_TOTALS_TYPE_GRAND) || {};
     return amount;
   }
 );
 
 /**
- * Selects the summed up shipping costs of the cart.
- * @type {number}
+ * Selects the shipping costs.
+ * @returns {number}
  */
 export const getShippingCosts = createSelector(
   getTotals,
   (totals) => {
-    if (!totals || totals.lengths === 0) {
-      return null;
-    }
-
-    const index = totals.findIndex(total => total.type === CART_TOTALS_TYPE_SHIPPING);
-    const { amount = 0 } = totals[index];
-
-    return (index === -1) ? null : amount;
+    const { amount = null } = totals.find(total => total.type === CART_TOTALS_TYPE_SHIPPING) || {};
+    return amount;
   }
 );
 
 /**
  * Selects the tax value of the cart.
- * @type {Object|null}
+ * @returns {Object}
  */
 export const getTax = createSelector(
   getTotals,
   (totals) => {
-    if (!totals || totals.lengths === 0) {
-      return null;
-    }
-
-    const index = totals.findIndex(total => total.type === CART_TOTALS_TYPE_TAX);
-
-    if (index === -1) {
-      return null;
-    }
-
-    return totals[index];
+    const tax = totals.find(total => total.type === CART_TOTALS_TYPE_TAX);
+    return tax || null;
   }
 );
 
 /**
  * Selects applied discounts from the total amounts stack.
  * @param {Object} state The current application state.
- * @return {Array|null}
+ * @return {Object[]|null}
  */
 export const getDiscounts = createSelector(
   getTotals,
   (totals) => {
-    if (!totals || totals.lengths === 0) {
-      return null;
-    }
-
     const discounts = totals.filter(total => total.type === CART_TOTALS_TYPE_DISCOUNT);
-
-    if (discounts.length === 0) {
-      return null;
-    }
-
-    return discounts;
+    return discounts.length ? discounts : null;
   }
 );
 
