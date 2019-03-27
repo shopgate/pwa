@@ -15,6 +15,24 @@ const getCategoriesState = createSelector(
 );
 
 /**
+ * Retrieves a category by id from state.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null} The category.
+ */
+export const getCategoryById = createSelector(
+  getCategoriesState,
+  (state, props) => props.categoryId,
+  (categoriesState, categoryId) => {
+    if (!categoriesState || !categoriesState[categoryId]) {
+      return null;
+    }
+
+    return categoriesState[categoryId];
+  }
+);
+
+/**
  * Retrieves the full category children collection from the state.
  * @param {Object} state The application state.
  * @returns {Object} The category children collection.

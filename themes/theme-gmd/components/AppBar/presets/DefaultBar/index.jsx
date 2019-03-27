@@ -1,8 +1,10 @@
 import React, { Fragment, PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import { Portal } from '@shopgate/pwa-common/components';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import {
   APP_BAR_DEFAULT_BEFORE,
   APP_BAR_DEFAULT,
@@ -17,6 +19,7 @@ import ProgressBar from './components/ProgressBar';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    visible: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -30,12 +33,28 @@ class AppBarDefault extends PureComponent {
     i18n: PropTypes.func,
   };
 
-  target = document.getElementById('AppHeader');
+  state = {
+    target: document.getElementById('AppHeader'),
+  }
+
+  /**
+   * Sets the target if it hasn't been set before.
+   */
+  componentDidMount() {
+    if (!this.state.target) {
+      const target = document.getElementById('AppHeader');
+      this.setState({ target: target || null }); // eslint-disable-line react/no-did-mount-set-state
+    }
+  }
 
   /**
    * @returns {JSX}
    */
   render() {
+    if (!this.props.visible || !this.state.target) {
+      return null;
+    }
+
     const { __ } = this.context.i18n();
     const title = __(this.props.title || '');
 
@@ -54,16 +73,22 @@ class AppBarDefault extends PureComponent {
       </Fragment>
     );
 
-    return (
+    return ReactDOM.createPortal(
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
           <AppBar left={left} center={center} right={right} {...this.props} below={below} />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
-      </Fragment>
+      </Fragment>,
+      this.state.target
     );
   }
 }
 
-export default AppBarDefault;
+export default props => (
+  <RouteContext.Consumer>
+    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
+  </RouteContext.Consumer>
+);
+

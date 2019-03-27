@@ -18,12 +18,14 @@ const defaultAppConfig = {
   publicPath: 'https://example.com/public',
   shopName: 'Shopgate Connect',
   webCheckoutShopify: null,
+  hasNoScanner: false,
   apiUrl: 'https://shop_30177.dev.connect.shopgate.com/',
   shopCNAME: null,
   currency: 'USD',
   showGmdMenuSubHeaders: false,
   benchmark: false,
   sentry: {},
+  scanner: {},
 };
 
 export const themeName = process.env.THEME || 'theme';

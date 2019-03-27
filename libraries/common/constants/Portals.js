@@ -13,6 +13,7 @@ const ROUTES = 'routes';
 const CONTENT = 'content';
 const HOME = 'home';
 const LOGIN = 'login';
+const SCANNER = 'scanner';
 const REGISTER_LINK = 'register-link';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
@@ -62,6 +63,10 @@ export const NAV_MENU_CONTENT_AFTER = `${NAV_MENU}.${CONTENT}.${AFTER}`;
 export const NAV_MENU_HOME_BEFORE = `${NAV_MENU}.${HOME}.${BEFORE}`;
 export const NAV_MENU_HOME = `${NAV_MENU}.${HOME}`;
 export const NAV_MENU_HOME_AFTER = `${NAV_MENU}.${HOME}.${AFTER}`;
+
+export const NAV_MENU_SCANNER_BEFORE = `${NAV_MENU}.${SCANNER}.${BEFORE}`;
+export const NAV_MENU_SCANNER = `${NAV_MENU}.${SCANNER}`;
+export const NAV_MENU_SCANNER_AFTER = `${NAV_MENU}.${SCANNER}.${AFTER}`;
 
 export const NAV_MENU_TERMS_BEFORE = `${NAV_MENU}.${TERMS}.${BEFORE}`;
 export const NAV_MENU_TERMS = `${NAV_MENU}.${TERMS}`;
