@@ -6,7 +6,7 @@ import Content from './components/Content';
 /**
  * The PaymentBar component.
  * @param {Object} props The component props.
- * @returns {React.Node}
+ * @returns {JSX}
  */
 const PaymentBar = ({ visible }) => {
   if (!visible) {
