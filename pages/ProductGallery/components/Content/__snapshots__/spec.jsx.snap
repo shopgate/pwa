@@ -249,42 +249,11 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <Image
-                          alt={null}
-                          animating={false}
-                          backgroundColor="#f2f2f2"
+                        <img
+                          alt="foo2048"
                           className="css-4kgshc"
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src={null}
-                          srcmap={
-                            Array [
-                              "foo1024",
-                              "foo2048",
-                            ]
-                          }
-                          transition={null}
-                        >
-                          <div
-                            className="css-1oue43v css-4kgshc"
-                          />
-                        </Image>
+                          src="foo2048"
+                        />
                       </div>
                     </div>
                   </SwiperItem>
@@ -299,42 +268,11 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <Image
-                          alt={null}
-                          animating={false}
-                          backgroundColor="#f2f2f2"
+                        <img
+                          alt="bar2048"
                           className="css-4kgshc"
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src={null}
-                          srcmap={
-                            Array [
-                              "bar1024",
-                              "bar2048",
-                            ]
-                          }
-                          transition={null}
-                        >
-                          <div
-                            className="css-1oue43v css-4kgshc"
-                          />
-                        </Image>
+                          src="bar2048"
+                        />
                       </div>
                     </div>
                   </SwiperItem>
@@ -601,42 +539,11 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <Image
-                          alt={null}
-                          animating={false}
-                          backgroundColor="#f2f2f2"
+                        <img
+                          alt="foo2048"
                           className="css-4kgshc"
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src={null}
-                          srcmap={
-                            Array [
-                              "foo1024",
-                              "foo2048",
-                            ]
-                          }
-                          transition={null}
-                        >
-                          <div
-                            className="css-1oue43v css-4kgshc"
-                          />
-                        </Image>
+                          src="foo2048"
+                        />
                       </div>
                     </div>
                   </SwiperItem>
@@ -651,42 +558,11 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                       <div
                         className="swiper-zoom-container"
                       >
-                        <Image
-                          alt={null}
-                          animating={false}
-                          backgroundColor="#f2f2f2"
+                        <img
+                          alt="bar2048"
                           className="css-4kgshc"
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          onError={null}
-                          onLoad={null}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src={null}
-                          srcmap={
-                            Array [
-                              "bar1024",
-                              "bar2048",
-                            ]
-                          }
-                          transition={null}
-                        >
-                          <div
-                            className="css-1oue43v css-4kgshc"
-                          />
-                        </Image>
+                          src="bar2048"
+                        />
                       </div>
                     </div>
                   </SwiperItem>
