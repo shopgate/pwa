@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
@@ -18,7 +18,7 @@ import styles from './style';
 /**
  * The cart content container component.
  */
-class CartContentContainer extends Component {
+class CartContentContainer extends PureComponent {
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
     cartItems: PropTypes.arrayOf(PropTypes.shape()),

@@ -5,17 +5,17 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import styles from './style';
 
 /**
- * The DiscountLabel component.
+ * The TaxLabel component.
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const DiscountLabel = ({ isDisabled, label }) => (
+const TaxLabel = ({ isDisabled, label }) => (
   <div className={`${styles.label} ${isDisabled ? styles.disabled : ''}`} data-test-id="taxLabel">
     <span>{label}</span><span>:</span>
   </div>
 );
 
-DiscountLabel.propTypes = {
+TaxLabel.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
 };
@@ -23,7 +23,7 @@ DiscountLabel.propTypes = {
 export default props => (
   <LoadingContext.Consumer>
     {({ isLoading }) => (
-      <DiscountLabel {...props} isDisabled={isLoading(CART_PATH)} />
+      <TaxLabel {...props} isDisabled={isLoading(CART_PATH)} />
     )}
   </LoadingContext.Consumer>
 );
