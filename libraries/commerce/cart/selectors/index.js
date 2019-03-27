@@ -159,7 +159,7 @@ export const getSubTotal = createSelector(
 /**
  * Selects the grand total value the total amounts stack.
  * @param {Object} state The current application state.
- * @return {string}
+ * @returns {number}
  */
 export const getGrandTotal = createSelector(
   getTotals,
@@ -177,7 +177,7 @@ export const getGrandTotal = createSelector(
 
 /**
  * Selects the summed up shipping costs of the cart.
- * @type {number}
+ * @returns {number}
  */
 export const getShippingCosts = createSelector(
   getTotals,
@@ -195,7 +195,7 @@ export const getShippingCosts = createSelector(
 
 /**
  * Selects the tax value of the cart.
- * @type {Object|null}
+ * @returns {Object}
  */
 export const getTax = createSelector(
   getTotals,
@@ -217,7 +217,7 @@ export const getTax = createSelector(
 /**
  * Selects applied discounts from the total amounts stack.
  * @param {Object} state The current application state.
- * @return {Array|null}
+ * @return {Object[]|null}
  */
 export const getDiscounts = createSelector(
   getTotals,
