@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { SCANNER_BAR } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
 import FlashlightButton from './components/FlashlightButton';
 import styles from './style';
 
@@ -11,14 +13,16 @@ import styles from './style';
  * @returns {JSX}
  */
 const ScannerBar = ({ flashlightState, onToggleFlashlight }) => (
-  <Grid className={styles.container}>
-    <Grid.Item className={styles.column}>
-      <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
-    </Grid.Item>
-    <Grid.Item className={styles.column}>
-      <I18n.Text string="scanner.instructions" />
-    </Grid.Item>
-  </Grid>
+  <SurroundPortals portalName={SCANNER_BAR}>
+    <Grid className={styles.container}>
+      <Grid.Item className={styles.column}>
+        <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
+      </Grid.Item>
+      <Grid.Item className={styles.column}>
+        <I18n.Text string="scanner.instructions" />
+      </Grid.Item>
+    </Grid>
+  </SurroundPortals>
 );
 
 ScannerBar.propTypes = {

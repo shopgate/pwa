@@ -5,120 +5,174 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
   flashlight={false}
 >
   <CameraOverlay>
-    <div
-      className="css-64y2bs"
+    <SurroundPortals
+      portalName="scanner.camera"
+      portalProps={null}
     >
-      <div />
-    </div>
+      <Portal
+        name="scanner.camera.before"
+        props={null}
+      />
+      <Portal
+        name="scanner.camera"
+        props={null}
+      >
+        <div
+          className="css-64y2bs"
+        >
+          <div />
+        </div>
+      </Portal>
+      <Portal
+        name="scanner.camera.after"
+        props={null}
+      />
+    </SurroundPortals>
   </CameraOverlay>
   <ScannerBar
     flashlightState={false}
     onToggleFlashlight={[Function]}
   >
-    <Grid
-      className="css-689tgs"
-      component="ul"
-      wrap={false}
+    <SurroundPortals
+      portalName="scanner.bar"
+      portalProps={null}
     >
-      <ul
-        className="css-689tgs css-h7r55a"
+      <Portal
+        name="scanner.bar.before"
+        props={null}
+      />
+      <Portal
+        name="scanner.bar"
+        props={null}
       >
-        <GridItem
-          className="css-1uot7vp"
-          component="li"
-          grow={0}
-          shrink={1}
+        <Grid
+          className="css-689tgs"
+          component="ul"
+          wrap={false}
         >
-          <li
-            className="css-1uot7vp"
+          <ul
+            className="css-689tgs css-h7r55a"
           >
-            <FlashlightButton
-              flashlightState={false}
-              onToggle={[Function]}
+            <GridItem
+              className="css-1uot7vp"
+              component="li"
+              grow={0}
+              shrink={1}
             >
-              <button
-                className="css-1yh9ja6"
-                onClick={[Function]}
-                role="link"
+              <li
+                className="css-1uot7vp"
               >
-                <ToggleIcon
-                  offIcon={
-                    <FlashOff
-                      className="css-k6n0ls"
-                    />
-                  }
-                  on={false}
-                  onIcon={
-                    <FlashOn
-                      className="css-k6n0ls"
-                    />
-                  }
-                  toggleHandler={[Function]}
+                <FlashlightButton
+                  flashlightState={false}
+                  onToggle={[Function]}
                 >
-                  <div
-                    aria-hidden={true}
-                    onClick={[Function]}
+                  <SurroundPortals
+                    portalName="scanner.flash"
+                    portalProps={null}
                   >
-                    <FlashOff
-                      className="css-k6n0ls"
+                    <Portal
+                      name="scanner.flash.before"
+                      props={null}
+                    />
+                    <Portal
+                      name="scanner.flash"
+                      props={null}
                     >
-                      <Icon
-                        className="css-k6n0ls"
-                        color={null}
-                        content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>"
-                        height="24"
-                        size="inherit"
-                        viewBox="0 0 24 24"
-                        width="24"
+                      <button
+                        className="css-1yh9ja6"
+                        onClick={[Function]}
+                        role="link"
                       >
-                        <svg
-                          className="css-yys9hb css-k6n0ls"
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>",
-                            }
+                        <ToggleIcon
+                          offIcon={
+                            <FlashOff
+                              className="css-k6n0ls"
+                            />
                           }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "inherit",
-                            }
+                          on={false}
+                          onIcon={
+                            <FlashOn
+                              className="css-k6n0ls"
+                            />
                           }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </FlashOff>
-                  </div>
-                </ToggleIcon>
-              </button>
-            </FlashlightButton>
-          </li>
-        </GridItem>
-        <GridItem
-          className="css-1uot7vp"
-          component="li"
-          grow={0}
-          shrink={1}
-        >
-          <li
-            className="css-1uot7vp"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              string="scanner.instructions"
+                          toggleHandler={[Function]}
+                        >
+                          <div
+                            aria-hidden={true}
+                            onClick={[Function]}
+                          >
+                            <FlashOff
+                              className="css-k6n0ls"
+                            >
+                              <Icon
+                                className="css-k6n0ls"
+                                color={null}
+                                content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>"
+                                height="24"
+                                size="inherit"
+                                viewBox="0 0 24 24"
+                                width="24"
+                              >
+                                <svg
+                                  className="css-yys9hb css-k6n0ls"
+                                  dangerouslySetInnerHTML={
+                                    Object {
+                                      "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z\\"/>",
+                                    }
+                                  }
+                                  style={
+                                    Object {
+                                      "fill": null,
+                                      "fontSize": "inherit",
+                                    }
+                                  }
+                                  viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                />
+                              </Icon>
+                            </FlashOff>
+                          </div>
+                        </ToggleIcon>
+                      </button>
+                    </Portal>
+                    <Portal
+                      name="scanner.flash.after"
+                      props={null}
+                    />
+                  </SurroundPortals>
+                </FlashlightButton>
+              </li>
+            </GridItem>
+            <GridItem
+              className="css-1uot7vp"
+              component="li"
+              grow={0}
+              shrink={1}
             >
-              <span
-                className=""
+              <li
+                className="css-1uot7vp"
               >
-                scanner.instructions
-              </span>
-            </Translate>
-          </li>
-        </GridItem>
-      </ul>
-    </Grid>
+                <Translate
+                  className=""
+                  params={Object {}}
+                  string="scanner.instructions"
+                >
+                  <span
+                    className=""
+                  >
+                    scanner.instructions
+                  </span>
+                </Translate>
+              </li>
+            </GridItem>
+          </ul>
+        </Grid>
+      </Portal>
+      <Portal
+        name="scanner.bar.after"
+        props={null}
+      />
+    </SurroundPortals>
   </ScannerBar>
 </ScannerOverlay>
 `;

@@ -165,10 +165,10 @@
     "favorites": "Favorieten"
   },
   "scanner": {
-    "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
+    "instructions": "Bewaar de streepjescode of QR-code in het midden. De detectie wordt automatisch uitgevoerd.",
     "noResult": {
       "qrCode": "Er werd geen resultaat voor uw QR code gevonden.",
-      "barCode": "Product not found"
+      "barCode": "Geen producten gevonden."
     }
   }
 }

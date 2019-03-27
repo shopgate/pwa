@@ -168,10 +168,10 @@
     "favorites": "Merkliste"
   },
   "scanner": {
-    "instructions": "Bitte halten Sie den Barcode oder QR-Code in die Mitte. Die Erkennung erfolgt automatisch.",
+    "instructions": "Bitte positionieren Sie den Barcode oder QR-Code in der Mitte. Die Erkennung erfolgt automatisch.",
     "noResult": {
       "qrCode": "Wir konnten für diesen QR-Code kein Ergebnis finden.",
-      "barCode": "Product not found"
+      "barCode": "Produkt nicht gefunden."
     }
   }
 }

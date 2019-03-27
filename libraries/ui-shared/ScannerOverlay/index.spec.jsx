@@ -30,9 +30,10 @@ describe('<ScannerOverlay />', () => {
     await AppScanner.open(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE);
 
     const wrapper = mount(<ScannerOverlay />);
-    const button = wrapper.find(FlashlightButton);
+    const button = wrapper.find(FlashlightButton).find('ToggleIcon');
 
     button.simulate('click');
+
     expect(wrapper.state('flashlight')).toBe(true);
     expect(toggleFlashlightSpy).toHaveBeenCalledTimes(1);
 
