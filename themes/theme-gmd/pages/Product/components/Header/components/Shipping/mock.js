@@ -1,8 +1,5 @@
 export const mockedStoreWithShippingPrice = {
   product: {
-    currentProduct: {
-      productId: 'fakeId',
-    },
     shippingByProductId: {
       fakeId: {
         shipping: {

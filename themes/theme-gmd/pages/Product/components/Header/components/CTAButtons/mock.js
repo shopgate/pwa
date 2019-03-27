@@ -1,8 +1,5 @@
 export const mockedState = {
   product: {
-    currentProduct: {
-      productId: 'product_1',
-    },
     productsById: {
       product_1: {
         isFetching: false,
@@ -45,10 +42,6 @@ export const mockedState = {
 
 export const mockedVariantState = {
   product: {
-    currentProduct: {
-      productId: 'product_1',
-      productVariantId: 'product_2',
-    },
     productsById: {
       product_1: {
         isFetching: false,

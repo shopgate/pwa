@@ -6,7 +6,7 @@ import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import benchmarkController from '@shopgate/pwa-benchmark';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
-import appConfig from '../helpers/config';
+import appConfig, { themeName, shopNumber } from '../helpers/config';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -15,7 +15,7 @@ import logger from './middelwares/logger';
  * @type {string}
  */
 const STATE_VERSION = 'v1';
-const storeKey = `shopgate-connect_${STATE_VERSION}`;
+const storeKey = `shopgate-connect_${shopNumber}-${themeName}_${STATE_VERSION}`;
 
 /**
  * Returns a normalised initialState from the localstorage.
