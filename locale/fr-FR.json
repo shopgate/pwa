@@ -170,7 +170,7 @@
     "instructions": "S'il vous plaît gardez le code à barres ou un code QR dans le centre. La détection est effectuée automatiquement.",
     "noResult": {
       "qrCode": "Nous n'avons pas trouvé de résultat pour ce code QR.",
-      "barCode": "Product not found"
+      "barCode": "Aucun produit trouvé."
     }
   }
 }
