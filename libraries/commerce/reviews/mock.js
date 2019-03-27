@@ -132,7 +132,6 @@ const mockedStateWithTwoReviews = (() => {
  */
 const mockedStateWithoutReview = {
   product: {
-    currentProduct: mockedProduct,
     productsById: {
       [mockProductId]: {
         productData: mockedProduct,
@@ -151,11 +150,10 @@ const mockedStateWithoutReview = {
 };
 /**
  * Mocked state without data.
- * @type {{product: {currentProduct: {}, productsById: {}}}}
+ * @type {{product: {productsById: {}}}}
  */
 const mockedStateProductEmpty = {
   product: {
-    currentProduct: {},
     productsById: {},
   },
 };

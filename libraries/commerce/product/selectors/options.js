@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
 import {
+  getProduct,
   getProductId,
   getProductState,
-  getCurrentProduct,
   getProductCurrency,
 } from '../selectors/product';
 import { OPTION_TYPE_SELECT, OPTION_TYPE_TEXT } from '../constants';
@@ -125,7 +125,7 @@ export const getProductOptions = createSelector(
  * @returns {boolean}
  */
 export const hasProductOptions = createSelector(
-  getCurrentProduct,
+  getProduct,
   (product) => {
     if (!product) {
       return false;

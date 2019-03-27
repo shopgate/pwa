@@ -48,8 +48,4 @@ export const routeDidUpdate$ = main$
  * @type {Observable}
  * @deprecated use routeDidEnter$
  */
-export const routeDidChange$ = routeWillEnter$
-  .merge(routeDidEnter$)
-  .merge(routeWillLeave$)
-  .merge(routeDidLeave$)
-  .merge(routeDidUpdate$);
+export const routeDidChange$ = routeDidEnter$;
