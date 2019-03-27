@@ -36,7 +36,6 @@ export const mockReview = id => ({
  */
 export const mockedStateWithAll = {
   product: {
-    currentProduct: mockedProduct,
     productsById: {
       foo: {
         productData: mockedProductWithRating,
@@ -82,7 +81,6 @@ export const mockedStateWithTwoReviews = (() => {
  */
 export const mockedStateWithoutReview = {
   product: {
-    currentProduct: mockedProduct,
     productsById: {
       foo: {
         productData: mockedProduct,
@@ -96,11 +94,10 @@ export const mockedStateWithoutReview = {
 };
 /**
  * Mocked state without data.
- * @type {{product: {currentProduct: {}, productsById: {}}}}
+ * @type {{product: {productsById: {}}}}
  */
 export const mockedStateProductEmpty = {
   product: {
-    currentProduct: {},
     productsById: {},
   },
 };
