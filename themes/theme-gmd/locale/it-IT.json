@@ -155,7 +155,7 @@
     "instructions": "Per favore mantieni il codice a barre o il codice QR nel centro. La lettura è effettuata automaticamente.",
     "noResult": {
       "qrCode": "Non siamo riusciti a trovare alcun risultato per questo codice QR.",
-      "barCode": "Product not found"
+      "barCode": "Nessun prodotto trovato."
     }
   }
 }
