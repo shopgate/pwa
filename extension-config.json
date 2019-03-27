@@ -217,6 +217,17 @@
         "type": "json",
         "label": "Use sentry.io for error (debug, info) logging"
       }
+    },
+    "cart": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "showTotal": true
+      },
+      "params": {
+        "type": "json",
+        "label": "Configure the display of cart information."
+      }
     }
   }
 }
