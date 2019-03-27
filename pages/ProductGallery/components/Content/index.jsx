@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Swiper, Image } from '@shopgate/pwa-common/components';
+import { Swiper } from '@shopgate/pwa-common/components';
 import styles from './style';
 import connect from './connector';
 
@@ -53,7 +53,11 @@ const ProductGalleryContent = ({ initialSlide, images }) => {
         {imagesByIndex.map(imagesInIndex => (
           <Swiper.Item key={imagesInIndex[0]}>
             <div className="swiper-zoom-container">
-              <Image srcmap={imagesInIndex} className={styles.slide} animating={false} />
+              <img
+                src={imagesInIndex[imagesInIndex.length - 1]}
+                alt={imagesInIndex[imagesInIndex.length - 1]}
+                className={styles.slide}
+              />
             </div>
           </Swiper.Item>
         ))}
