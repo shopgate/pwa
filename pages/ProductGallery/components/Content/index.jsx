@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Image from '@shopgate/pwa-common/components/Image';
-import ZoomPanSlider from '../ZoomPanSlider';
+import { Swiper } from '@shopgate/pwa-common/components';
 import styles from './style';
 import connect from './connector';
 
@@ -23,36 +22,48 @@ const getImagesByIndex = (images) => {
   return imagesByIndex;
 };
 
+const zoom = {
+  enabled: true,
+  maxRatio: 3,
+  minRation: 1,
+};
+
 /**
+ * The Product Gallery content component.
+ * @param {Object} props The component props.
  * @return {JSX}
  */
 const ProductGalleryContent = ({ initialSlide, images }) => {
-  let content = null;
-
-  if (images) {
-    const imagesByIndex = getImagesByIndex(images);
-    content = imagesByIndex.map((imagesInIndex, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <div className={styles.slide} key={`gallery-${index}`}>
-        <Image srcmap={imagesInIndex} />
-      </div>
-    ));
+  if (!Array.isArray(images) || images.length === 0) {
+    return <div className={styles.container} />;
   }
 
+  const imagesByIndex = getImagesByIndex(images);
+
   return (
-    <Fragment>
-      <div className={styles.container}>
-        <ZoomPanSlider
-          classNames={styles.sliderStyles}
-          className={styles.slider}
-          initialSlide={initialSlide}
-          indicators
-          loop
-        >
-          {images ? content : <div />}
-        </ZoomPanSlider>
-      </div>
-    </Fragment>
+    <div className={styles.container}>
+      <Swiper
+        classNames={styles.sliderStyles}
+        className={styles.slider}
+        initialSlide={initialSlide}
+        indicators
+        loop={imagesByIndex.length > 1}
+        disabled={imagesByIndex.length === 1}
+        zoom={zoom}
+      >
+        {imagesByIndex.map(imagesInIndex => (
+          <Swiper.Item key={imagesInIndex[0]}>
+            <div className="swiper-zoom-container">
+              <img
+                src={imagesInIndex[imagesInIndex.length - 1]}
+                alt={imagesInIndex[imagesInIndex.length - 1]}
+                className={styles.slide}
+              />
+            </div>
+          </Swiper.Item>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

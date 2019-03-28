@@ -5,6 +5,7 @@ import HomeButton from './components/HomeButton';
 import CategoryButton from './components/CategoryButton';
 import FavoritesButton from './components/FavoritesButton';
 import CartButton from './components/CartButton';
+import ScannerButton from './components/ScannerButton';
 
 /**
  * @return {JSX}
@@ -15,6 +16,7 @@ const MainSection = () => (
     <CategoryButton />
     {appConfig.hasFavorites && <FavoritesButton />}
     <CartButton />
+    <ScannerButton />
   </NavDrawer.Section>
 );
 
