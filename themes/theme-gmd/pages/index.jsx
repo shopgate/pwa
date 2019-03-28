@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
@@ -10,7 +10,11 @@ import { Route, Router } from '@shopgate/pwa-common/components';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import { ToastProvider, LoadingProvider } from '@shopgate/pwa-common/providers';
 import App from '@shopgate/pwa-common/App';
-import { INDEX_PATH, LOGIN_PATH, PAGE_PATTERN } from '@shopgate/pwa-common/constants/RoutePaths';
+import {
+  INDEX_PATH,
+  LOGIN_PATH,
+  PAGE_PATTERN,
+} from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
@@ -22,6 +26,7 @@ import {
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
+import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
@@ -63,6 +68,7 @@ const Pages = ({ store }) => (
                 <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
                 <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
                 <Route pattern={CART_PATH} component={routes.Cart} />
+                <Route pattern={SCANNER_PATH} component={routes.Scanner} />
                 {
                   appConfig.hasFavorites
                   && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
@@ -89,4 +95,4 @@ Pages.propTypes = {
   store: PropTypes.shape().isRequired,
 };
 
-export default hot(module)(Pages);
+export default hot(Pages);

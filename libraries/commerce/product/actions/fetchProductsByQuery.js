@@ -4,7 +4,7 @@ import fetchProductsById from './fetchProductsById';
 
 /**
  * Dispatches other actions based on the query type.
- * @param {string} type The query type.
+ * @param {number|string} type The query type.
  * @param {string} value The value to use with the query.
  * @param {Object} options Any additional options for requesting products.
  * @param {string} [id=null] A unique id for the component that is using this action.
@@ -33,12 +33,11 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
         ...options,
       };
 
-      dispatch(fetchProducts({
+      return dispatch(fetchProducts({
         params,
         ...id && { id },
         includeFilters: false,
       }));
-      break;
     }
 
     // Product ID's
@@ -54,15 +53,15 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
         ...options,
       };
 
-      dispatch(fetchProducts({
+      return dispatch(fetchProducts({
         params,
         ...id && { id },
         includeFilters: false,
       }));
-      break;
     }
     default:
   }
+  return null;
 };
 
 export default fetchProductsByQuery;

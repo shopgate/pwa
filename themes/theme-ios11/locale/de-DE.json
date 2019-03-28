@@ -16,7 +16,8 @@
     "shipping": "Versand",
     "reviews": "Bewertungen",
     "browse": "Durchsuchen",
-    "favorites": "Merkliste"
+    "favorites": "Merkliste",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
@@ -166,5 +167,12 @@
     "cart": "Warenkorb",
     "more": "Mehr",
     "favorites": "Merkliste"
+  },
+  "scanner": {
+    "instructions": "Bitte positionieren Sie den Barcode oder QR-Code in der Mitte. Die Erkennung erfolgt automatisch.",
+    "noResult": {
+      "qrCode": "Wir konnten für diesen QR-Code kein Ergebnis finden.",
+      "barCode": "Produkt nicht gefunden."
+    }
   }
 }

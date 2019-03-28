@@ -1,6 +1,8 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import {
+  ITEM_PATH,
   PROPERTIES_FILTER_BLACKLIST,
   PROPERTIES_FILTER_WHITELIST,
   PRODUCT_RELATIONS_DEFAULT_LIMIT,
@@ -54,4 +56,11 @@ export const generateProductRelationsHash = ({
   type,
   limit,
 }, false, false);
+
+/**
+ * Generate product route for navigation.
+ * @param {string} id Product Id.
+ * @returns {string}
+ */
+export const getProductRoute = id => `${ITEM_PATH}/${bin2hex(id)}`;
 

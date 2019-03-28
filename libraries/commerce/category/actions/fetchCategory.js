@@ -27,13 +27,13 @@ const fetchCategory = categoryId => (dispatch, getState) => {
       dispatch(fetchCategoryChildren(categoryId));
     }
 
-    return;
+    return Promise.resolve(category);
   }
 
   // No data at all. So we have the fetch the category with children included
   dispatch(requestCategory(categoryId));
 
-  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_CATEGORY)
+  return new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_CATEGORY)
     .setInput({
       categoryId,
       includeChildren: true,

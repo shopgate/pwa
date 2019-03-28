@@ -8,6 +8,7 @@ export * from './constants/Pipelines';
 
 // HELPERS
 export { default as removeHighlightingPlaceholers } from './helpers/removeHighlightingPlaceholders';
+export * from './helpers';
 
 // SELECTORS
 export * from './selectors';

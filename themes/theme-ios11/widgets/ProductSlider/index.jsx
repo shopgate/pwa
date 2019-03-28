@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Slider from '@shopgate/pwa-common/components/Slider';
+import { Swiper } from '@shopgate/pwa-common/components';
 import Card from '@shopgate/pwa-ui-shared/Card';
 import Headline from 'Components/Headline';
 import ProductCard from 'Components/ProductCard';
@@ -20,7 +20,7 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
   const key = `s${product.id}`;
 
   return (
-    <Slider.Item key={key} className={styles.sliderItem}>
+    <Swiper.Item key={key} className={styles.sliderItem}>
       <Card className={styles.card}>
         <ProductCard
           product={product}
@@ -30,7 +30,7 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
           titleRows={2}
         />
       </Card>
-    </Slider.Item>
+    </Swiper.Item>
   );
 };
 
@@ -115,18 +115,18 @@ class ProductSlider extends Component {
     return (
       <div className={styles.slider}>
         {this.headline && <Headline text={settings.headline} />}
-        <Slider
+        <Swiper
           autoPlay={sliderSettings.autostart}
           loop={false}
           indicators={false}
           controls={false}
           interval={Number.parseInt(sliderSettings.delay, 10)}
-          snapItems={false}
+          snapItems
           slidesPerView={2.3}
           classNames={{ container: styles.sliderContainer }}
         >
           {items}
-        </Slider>
+        </Swiper>
       </div>
     );
   }
