@@ -1,27 +1,40 @@
-import appConfig from '@shopgate/pwa-common/helpers/config';
-
 /**
- * Retrieves the shipping config based on the legacy configuration and the new Engage config.
- * @returns {Object} The merged shipping configuration.
+ * Check if shipping line should be shown
+ * @param {Object} cartConfig shippingConfig
+ * @param {boolean} isUserLoggedIn isUserLoggedIn
+ * @param {Object} shippingCost shippingCost
+ * @returns {Object|null}
  */
-export function getShippingConfig() {
-  const {
-    shippingHideLegacy = null, shippingUnavailableLegacy = null, shipping,
-  } = appConfig;
-  const {
-    show, freeShipping, unavailable, hint,
-  } = shipping;
+export function getShippingLine(cartConfig, isUserLoggedIn, shippingCost) {
+  const config = cartConfig;
+  if (config.hideShipping) {
+    return null;
+  }
 
-  // It is using the NMA config over the legacy config.
-  const showShipping = (typeof show !== 'undefined') ? show : shippingHideLegacy;
-  const freeShippingText = (typeof freeShipping !== 'undefined') ? freeShipping : false;
-  const shippingUnavailbaleText = (typeof unavailable !== 'undefined') ? unavailable : shippingUnavailableLegacy;
-  const shippingHint = (typeof hint !== 'undefined') ? hint : false;
+  if (!isUserLoggedIn) {
+    if (config.hideAnonymous) {
+      return null;
+    }
+    if (config.textForAnonymousUsers) {
+      return { label: config.textForAnonymousUsers };
+    }
+  }
+  // Continue
+  if (shippingCost === null) {
+    if (config.textForNoShipping) {
+      return { label: config.textForNoShipping };
+    }
+    return null;
+  }
 
-  return {
-    show: showShipping,
-    freeShipping: freeShippingText,
-    unavailable: shippingUnavailbaleText,
-    hint: shippingHint,
-  };
+  if (shippingCost === 0) {
+    if (config.hideFreeShipping) {
+      return null;
+    }
+    if (config.textForFreeShipping) {
+      return { label: config.textForFreeShipping };
+    }
+    return { label: shippingCost.label || 'titles.shipping', amount: 'shipping.free_short' };
+  }
+  return { label: shippingCost.label || 'titles.shipping', amount: shippingCost.amount };
 }
