@@ -12,10 +12,6 @@ script:
   - sgcloud-webpack --theme=theme-ios11 --indexOnly
   - yarn run cover --maxWorkers=4 --ci
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-branches:
-  only:
-  - develop
-  - /^v\d+.(\d+.\d+|X)$/
 notifications:
   email: false
   slack:
