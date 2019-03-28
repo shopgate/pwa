@@ -11,7 +11,7 @@
   "devDependencies": {
     "@shopgate/pwa-common": "6.3.1",
     "@shopgate/pwa-common-commerce": "6.3.1",
-    "react": "~16.6.0"
+    "react": "~16.8.4"
   },
   "peerDependencies": {
     "react": "16"

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SwiperItem /> should add custom className 1`] = `
+<div
+  className="test"
+  data-test-id="Slider"
+>
+  <div />
+</div>
+`;
+
+exports[`<SwiperItem /> should not render without children 1`] = `
+<div
+  className=""
+  data-test-id="Slider"
+>
+  <div />
+</div>
+`;

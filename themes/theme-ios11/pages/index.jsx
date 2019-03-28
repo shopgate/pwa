@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -85,4 +85,4 @@ Pages.propTypes = {
   store: PropTypes.shape().isRequired,
 };
 
-export default hot(module)(Pages);
+export default hot(Pages);
