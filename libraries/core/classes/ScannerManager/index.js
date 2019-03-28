@@ -31,8 +31,9 @@ let eventsRegistered = false;
 
 /**
  * The ScannerManager class. It's intendend to simplify the processes that are necessary to
- * programmatically interact with the scanner feature of the app. It provides the possiblity to
+ * programmatically interact with the scanner feature of the app. It provides the possibility to
  * register a handler callback to process the scanned content.
+ * @deprecated This is a legacy implementation. Use Scanner instead.
  */
 class ScannerManager {
   /**
