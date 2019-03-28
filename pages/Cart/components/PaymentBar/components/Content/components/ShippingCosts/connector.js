@@ -7,7 +7,7 @@ import { getShippingCosts } from '@shopgate/pwa-common-commerce/cart/selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  shipping: getShippingCosts(state),
+  shippingCost: getShippingCosts(state),
 });
 
 export default connect(mapStateToProps);
