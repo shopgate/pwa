@@ -15,7 +15,8 @@
     "cart": "Carrello",
     "shipping": "Spedizione",
     "reviews": "Recensioni",
-    "favorites": "Favoriti"
+    "favorites": "Favoriti",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Aggiungi ai favoriti",
@@ -123,6 +124,7 @@
     "favorites": "Favoriti",
     "my_orders": "I miei ordini",
     "cart": "Carrello spesa",
+    "scanner": "Scanner",
     "shipping": "Modalità di spedizione",
     "about": "Su di noi",
     "payment": "Modalità di pagamento",
@@ -149,5 +151,12 @@
     "review_form_error_length": "Massima lunghezza {length} caratteri.",
     "press_to_rate_with_x_stars": "Premere per votare con {rate} {rate, plural, =1 {stella} other {stelle}}.",
     "success_message": "Grazie per la tua recensione!"
+  },
+  "scanner": {
+    "instructions": "Per favore mantieni il codice a barre o il codice QR nel centro. La lettura è effettuata automaticamente.",
+    "noResult": {
+      "qrCode": "Non siamo riusciti a trovare alcun risultato per questo codice QR.",
+      "barCode": "Nessun prodotto trovato."
+    }
   }
 }
