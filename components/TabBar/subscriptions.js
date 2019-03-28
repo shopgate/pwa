@@ -8,6 +8,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
@@ -29,6 +30,7 @@ const blacklist = [
   SEARCH_FILTER_PATTERN,
   LOGIN_PATH,
   CHECKOUT_PATH,
+  SCANNER_PATH,
 ];
 
 /**

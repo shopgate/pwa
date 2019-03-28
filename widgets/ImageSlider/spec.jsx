@@ -42,15 +42,14 @@ describe('<ImageSliderWidget />', () => {
       ...testSettings,
       images: [
         testImage,
-        testImage,
-        testImage,
+        testImage2,
       ],
     };
 
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SliderItem').length).toBe(settings.images.length);
+    expect(wrapper.find('SwiperItem').length).toBe(settings.images.length);
 
     const images = wrapper.find('img');
     expect(images.length).toBe(settings.images.length);
@@ -69,7 +68,7 @@ describe('<ImageSliderWidget />', () => {
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    const images = wrapper.find('div.sg-swiper-slide img');
+    const images = wrapper.find('div.swiper-slide img');
     images.forEach((image, index) => {
       const imageProps = image.props();
       const imageSettings = settings.images[index];
@@ -89,7 +88,7 @@ describe('<ImageSliderWidget />', () => {
     const wrapper = createComponent({ settings });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SliderItem').length).toBe(0);
+    expect(wrapper.find('SwiperItem').length).toBe(0);
     expect(wrapper.find('img').length).toBe(1);
   });
 
@@ -115,14 +114,12 @@ describe('<ImageSliderWidget />', () => {
     const settings = {
       ...testSettings,
       images: [
-        testImage,
         {
           // Add an image without a link
           ...testImage,
           link: null,
         },
-        testImage,
-        testImage,
+        testImage2,
       ],
     };
 
