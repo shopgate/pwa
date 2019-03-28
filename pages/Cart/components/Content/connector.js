@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { getCartItems, getCartMessages } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
@@ -7,6 +8,7 @@ import { getCartItems, getCartMessages } from '@shopgate/pwa-common-commerce/car
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
+  isUserLoggedIn: isUserLoggedIn(state),
   cartItems: getCartItems(state),
   messages: getCartMessages(state),
 });
