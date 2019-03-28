@@ -15,7 +15,8 @@
     "cart": "Winkelwagen",
     "shipping": "Verzending",
     "reviews": "Reviews",
-    "favorites": "Favorieten"
+    "favorites": "Favorieten",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
@@ -123,6 +124,7 @@
     "favorites": "Favorieten",
     "my_orders": "Mijn bestellingen",
     "cart": "Winkelwagen",
+    "scanner": "Scanner",
     "shipping": "Verzendmethoden",
     "about": "Over ons",
     "payment": "Betalingsmethoden",
@@ -153,5 +155,12 @@
     "review_form_error_length": "Maximum lengte {length} karakters.",
     "press_to_rate_with_x_stars": "Selecteer om te waarderen met {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Bedankt voor uw beoordeling!"
+  },
+  "scanner": {
+    "instructions": "Bewaar de streepjescode of QR-code in het midden. De detectie wordt automatisch uitgevoerd.",
+    "noResult": {
+      "qrCode": "Er werd geen resultaat voor uw QR code gevonden.",
+      "barCode": "Geen producten gevonden."
+    }
   }
 }
