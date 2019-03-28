@@ -24,6 +24,7 @@ const defaultAppConfig = {
   showGmdMenuSubHeaders: false,
   benchmark: false,
   sentry: {},
+  cart: {},
 };
 
 export const themeName = process.env.THEME || 'theme';

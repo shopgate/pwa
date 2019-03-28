@@ -8,6 +8,7 @@ const disabled = css({
 }).toString();
 
 const subTotalBase = css({
+  fontSize: '0.875rem',
   paddingRight: variables.gap.small,
 }).toString();
 

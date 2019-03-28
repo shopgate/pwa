@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GrandTotal /> should render without issues 1`] = `
+<Fragment>
+  <Portal
+    name="cart.payment-bar.totals.grand-total.before"
+    props={
+      Object {
+        "TotalRow": [Function],
+      }
+    }
+  />
+  <Portal
+    name="cart.payment-bar.totals.grand-total"
+    props={
+      Object {
+        "TotalRow": [Function],
+      }
+    }
+  >
+    <TotalRow>
+      <_default />
+      <Connect(Component) />
+    </TotalRow>
+  </Portal>
+  <Portal
+    name="cart.payment-bar.totals.grand-total.after"
+    props={
+      Object {
+        "TotalRow": [Function],
+      }
+    }
+  />
+</Fragment>
+`;

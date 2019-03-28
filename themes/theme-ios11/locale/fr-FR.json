@@ -96,6 +96,7 @@
   },
   "cart": {
     "subtotal": "Sous-total",
+    "total": "Panier Total",
     "checkout": "Paiement",
     "remove": "Retirer",
     "edit": "Modifier",
