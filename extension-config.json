@@ -1,5 +1,5 @@
 {
-  "version": "6.3.0",
+  "version": "6.3.1",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -227,6 +227,28 @@
       "params": {
         "type": "json",
         "label": "Configure the display of cart information."
+      }
+    },
+    "hasNoScanner": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/has_no_scanner?parsed=true",
+        "key": "value"
+      }
+    },
+    "scanner": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "showSearchFieldIcon": true
+      },
+      "params": {
+        "type": "json",
+        "label": "Scanner settings: icon on/off, etc"
       }
     }
   }
