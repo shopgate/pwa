@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -8,14 +9,21 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const Label = ({
-  isDisabled, label, showSeparator, type,
-}) => (
-  <div className={`${styles.label} ${isDisabled ? styles.disabled : ''}`} data-test-id={`${type}Label`}>
-    <I18n.Text string={label} />
-    {showSeparator && ':'}
-  </div>
-);
+const Label = (props) => {
+  const {
+    isDisabled, label, showSeparator, type,
+  } = props;
+
+  return (
+    <div
+      className={classNames(styles.amount, { [styles.disabled]: isDisabled })}
+      data-test-id={`${type}Label`}
+    >
+      <I18n.Text string={label} />
+      {showSeparator && ':'}
+    </div>
+  );
+};
 
 Label.propTypes = {
   isDisabled: PropTypes.bool.isRequired,

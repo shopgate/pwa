@@ -34,7 +34,14 @@ export function getShippingLine(cartConfig, isUserLoggedIn, shippingCost) {
     if (config.textForFreeShipping) {
       return { label: config.textForFreeShipping };
     }
-    return { label: shippingCost.label || 'titles.shipping', amount: 'shipping.free_short' };
+    return {
+      label: shippingCost.label || 'titles.shipping',
+      amount: 'shipping.free_short',
+    };
   }
-  return { label: shippingCost.label || 'titles.shipping', amount: shippingCost.amount };
+
+  return {
+    label: shippingCost.label || 'titles.shipping',
+    amount: shippingCost.amount,
+  };
 }
