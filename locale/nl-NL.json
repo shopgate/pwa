@@ -16,7 +16,8 @@
     "shipping": "Verzending",
     "reviews": "Reviews",
     "browse": "Bladeren",
-    "favorites": "Favorieten"
+    "favorites": "Favorieten",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
@@ -162,5 +163,12 @@
     "cart": "Winkelwagen",
     "more": "Meer",
     "favorites": "Favorieten"
+  },
+  "scanner": {
+    "instructions": "Bewaar de streepjescode of QR-code in het midden. De detectie wordt automatisch uitgevoerd.",
+    "noResult": {
+      "qrCode": "Er werd geen resultaat voor uw QR code gevonden.",
+      "barCode": "Geen producten gevonden."
+    }
   }
 }
