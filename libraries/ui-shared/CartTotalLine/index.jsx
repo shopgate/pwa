@@ -9,25 +9,32 @@ import styles from './style';
 /**
  * @returns {JSX}
  */
-const CartTotalLine = ({ children, type, isDisabled }) => (
-  <div
-    className={classNames(styles.line, {
-    [styles.disabled]: isDisabled,
-    [styles[type] || styles.base]: true,
-  })}
-    data-test-id={`${type}CartTotal`}
-  >
-    {children}
-  </div>
-);
+const CartTotalLine = ({ children, type, isDisabled }) => {
+  if (!children) {
+    return null;
+  }
+
+  return (
+    <div
+      className={classNames(styles.line, {
+        [styles.disabled]: isDisabled,
+        [styles[type] || styles.base]: true,
+      })}
+      data-test-id={`${type}CartTotal`}
+    >
+      {children}
+    </div>
+  );
+};
 
 CartTotalLine.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   isDisabled: PropTypes.bool,
   type: PropTypes.string,
 };
 
 CartTotalLine.defaultProps = {
+  children: null,
   isDisabled: false,
   type: null,
 };

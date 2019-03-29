@@ -8,12 +8,18 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const Label = ({ label, showSeparator }) => (
-  <div className={styles.label}>
-    <I18n.Text string={label} />
-    {showSeparator && ':'}
-  </div>
-);
+const Label = ({ label, showSeparator }) => {
+  if (label === null) {
+    return null;
+  }
+
+  return (
+    <div className={styles.label}>
+      <I18n.Text string={label} />
+      {showSeparator && ':'}
+    </div>
+  );
+};
 
 Label.propTypes = {
   label: PropTypes.string.isRequired,
