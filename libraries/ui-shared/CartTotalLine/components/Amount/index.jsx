@@ -22,15 +22,16 @@ const Amount = ({ amount, currency }) => {
 };
 
 Amount.propTypes = {
-  currency: PropTypes.string.isRequired,
   amount: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),
+  currency: PropTypes.string,
 };
 
 Amount.defaultProps = {
   amount: null,
+  currency: null,
 };
 
 export default Amount;
