@@ -97,6 +97,7 @@
   },
   "cart": {
     "subtotal": "Subtotal",
+    "total": "Cart total",
     "checkout": "Checkout",
     "remove": "Remove",
     "edit": "Edit",

@@ -84,7 +84,7 @@
     "free": "Spedizione gratuita",
     "free_short": "Gratis",
     "cost": "{price} spedizione"
-   },
+  },
   "liveshopping": {
     "discount_badge": "RISPARMIA {0}%"
   },
@@ -97,6 +97,7 @@
   },
   "cart": {
     "subtotal": "Sotto-totale",
+    "total": "Totale del carrello",
     "checkout": "Cassa",
     "remove": "Rimuovi",
     "edit": "Modifica",
