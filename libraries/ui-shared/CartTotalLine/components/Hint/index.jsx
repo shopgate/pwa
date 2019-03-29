@@ -9,13 +9,19 @@ import styles from './style';
  * @return {JSX|null}
  */
 const Hint = ({ hint }) => (
-  <div className={styles.hint}>
-    <I18n.Text string={hint} />
-  </div>
+  hint && (
+    <div className={styles.hint}>
+      <I18n.Text string={hint} />
+    </div>
+  )
 );
 
 Hint.propTypes = {
-  hint: PropTypes.string.isRequired,
+  hint: PropTypes.string,
+};
+
+Hint.defaultProps = {
+  hint: null,
 };
 
 export default Hint;

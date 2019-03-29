@@ -8,20 +8,23 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const Label = ({ label, showSeparator }) => (
+const Label = ({ label, showSeparator, labelParams }) => (
   <div className={styles.label}>
-    <I18n.Text string={label} />
-    {showSeparator && ':'}
+    {label && <I18n.Text string={label} params={labelParams} />}
+    {label && showSeparator && ':'}
   </div>
 );
 
 Label.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  labelParams: PropTypes.shape(),
   showSeparator: PropTypes.bool,
 };
 
 Label.defaultProps = {
+  label: null,
   showSeparator: true,
+  labelParams: {},
 };
 
 export default Label;
