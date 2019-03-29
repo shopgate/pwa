@@ -13,10 +13,12 @@ const Tax = ({ taxData }) => {
   if (!taxData) {
     return null;
   }
+
   return (
     <CartContext.Consumer>
       {({ currency, isLoading, config }) => {
         const taxLine = getTaxLine(config, taxData);
+
         if (!taxLine) {
           return null;
         }
@@ -25,7 +27,7 @@ const Tax = ({ taxData }) => {
           <CartTotalLine isDisabled={isLoading} type="tax">
             <CartTotalLine.Label label={taxLine.label} />
             <CartTotalLine.Amount amount={taxLine.amount} currency={currency} />
-            {taxLine.hint && <CartTotalLine.Hint hint={taxLine.hint} />}
+            <CartTotalLine.Hint hint={taxLine.hint} />
           </CartTotalLine>
         );
       }}
