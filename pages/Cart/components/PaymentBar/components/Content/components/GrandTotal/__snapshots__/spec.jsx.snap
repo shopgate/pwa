@@ -16,6 +16,7 @@ exports[`<GrandTotal /> should render without issues 1`] = `
     >
       <Label
         label="cart.total"
+        labelParams={Object {}}
         showSeparator={true}
       />
       <Amount
