@@ -92,6 +92,7 @@
   "cart": {
     "subtotal": "Subtotal",
     "total": "Cart total",
+    "discounts": "Discounts ({label})",
     "checkout": "Checkout",
     "remove": "Remove",
     "edit": "Edit",

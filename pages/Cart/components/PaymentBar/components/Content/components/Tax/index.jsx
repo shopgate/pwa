@@ -25,7 +25,7 @@ const Tax = ({ taxData }) => {
           <CartTotalLine isDisabled={isLoading} type="tax">
             <CartTotalLine.Label label={taxLine.label} />
             <CartTotalLine.Amount amount={taxLine.amount} currency={currency} />
-            {taxLine.hint && <CartTotalLine.Hint hint={taxLine.hint} />}
+            <CartTotalLine.Hint hint={taxLine.hint} />
           </CartTotalLine>
         );
       }}
