@@ -6,7 +6,7 @@ import Content from './components/Content';
 /**
  * The PaymentBar component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @returns {JSX}
  */
 const PaymentBar = ({ visible }) => (
   visible && createPortal(

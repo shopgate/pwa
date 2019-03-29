@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GrandTotal /> should render without issues 1`] = `
+exports[`<SubTotal> should render line 1`] = `
 <Fragment>
   <Portal
-    name="cart.payment-bar.totals.grand-total.before"
+    name="cart.payment-bar.totals.sub-total.before"
     props={null}
   />
   <Portal
-    name="cart.payment-bar.totals.grand-total"
+    name="cart.payment-bar.totals.sub-total"
     props={null}
   >
     <CartTotalLine
       isDisabled={false}
-      type="grandTotal"
+      type="subTotal"
     >
       <Label
-        label="cart.total"
+        label="cart.subtotal"
         showSeparator={true}
       />
       <Amount
@@ -25,7 +25,7 @@ exports[`<GrandTotal /> should render without issues 1`] = `
     </CartTotalLine>
   </Portal>
   <Portal
-    name="cart.payment-bar.totals.grand-total.after"
+    name="cart.payment-bar.totals.sub-total.after"
     props={null}
   />
 </Fragment>
