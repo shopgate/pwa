@@ -17,8 +17,8 @@ import connect from './connector';
 const ShippingCosts = ({ shippingCost }) => (
   <CartContext.Consumer>
     {({
-       currency, isLoading, isUserLoggedIn, config,
-      }) => {
+      currency, isLoading, isUserLoggedIn, config,
+    }) => {
       const shippingLine = getShippingLine(config, isUserLoggedIn, shippingCost);
 
       return (
@@ -31,13 +31,11 @@ const ShippingCosts = ({ shippingCost }) => (
                   label={shippingLine.label}
                   showSeparator={!!shippingLine.amount}
                 />
-                {shippingLine.amount &&
-                  <CartTotalLine.Amount
-                    amount={shippingLine.amount}
-                    currency={currency}
-                  />
-                }
-                {shippingLine.hint && <CartTotalLine.Hint hint={shippingLine.hint} />}
+                <CartTotalLine.Amount
+                  amount={shippingLine.amount}
+                  currency={currency}
+                />
+                <CartTotalLine.Hint hint={shippingLine.hint} />
               </CartTotalLine>
             )}
           </Portal>
