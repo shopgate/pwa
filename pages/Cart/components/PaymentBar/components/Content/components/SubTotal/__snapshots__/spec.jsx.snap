@@ -16,6 +16,7 @@ exports[`<SubTotal> should render line 1`] = `
     >
       <Label
         label="cart.subtotal"
+        labelParams={Object {}}
         showSeparator={true}
       />
       <Amount
