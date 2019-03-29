@@ -13,10 +13,12 @@ const Tax = ({ taxData }) => {
   if (!taxData) {
     return null;
   }
+
   return (
     <CartContext.Consumer>
       {({ currency, isLoading, config }) => {
         const taxLine = getTaxLine(config, taxData);
+
         if (!taxLine) {
           return null;
         }
