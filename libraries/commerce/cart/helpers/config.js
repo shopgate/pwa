@@ -8,10 +8,11 @@ export function getCartConfig() {
   const {
     cartShippingHideAnonymousLegacy = null,
     cartShippingTextAnonymousLegacy = null,
+    cartTaxText = null,
     cart = {},
   } = appConfig;
 
-  const { shipping = {} } = cart;
+  const { shipping = {}, tax = {} } = cart;
 
   let hideAnonymous;
   let textForAnonymousUsers;
@@ -24,12 +25,23 @@ export function getCartConfig() {
     textForAnonymousUsers = cartShippingTextAnonymousLegacy;
   }
 
+  let text;
+  ({ text = null } = tax);
+
+  if (text === null) {
+    text = cartTaxText;
+  }
+
   return {
     ...cart,
     shipping: {
       ...shipping,
       hideAnonymous,
       textForAnonymousUsers,
+    },
+    tax: {
+      ...tax,
+      text,
     },
   };
 }

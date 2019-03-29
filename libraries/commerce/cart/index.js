@@ -15,6 +15,7 @@ export * from './constants/Portals';
 export * from './helpers';
 export * from './helpers/config';
 export * from './helpers/shipping';
+export * from './helpers/tax';
 
 // SELECTORS
 export * from './selectors';
