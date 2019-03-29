@@ -39,6 +39,9 @@ exports[`<ShippingCosts> should render shipping line 1`] = `
         amount={10}
         currency="EUR"
       />
+      <Hint
+        hint={null}
+      />
     </CartTotalLine>
   </Portal>
   <Portal
