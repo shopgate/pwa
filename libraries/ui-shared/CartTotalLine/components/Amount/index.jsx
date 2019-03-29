@@ -8,19 +8,29 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Amount = ({ amount, currency }) => (
-  <div className={styles.amount}>
-    {typeof amount === 'string' && <I18n.Text string={amount} />}
-    {typeof amount === 'number' && <I18n.Price price={amount} currency={currency} />}
-  </div>
-);
+const Amount = ({ amount, currency }) => {
+  if (amount === null) {
+    return null;
+  }
+
+  return (
+    <div className={styles.amount}>
+      {typeof amount === 'string' && <I18n.Text string={amount} />}
+      {typeof amount === 'number' && <I18n.Price price={amount} currency={currency} />}
+    </div>
+  );
+};
 
 Amount.propTypes = {
+  currency: PropTypes.string.isRequired,
   amount: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-  ]).isRequired,
-  currency: PropTypes.string.isRequired,
+  ]),
+};
+
+Amount.defaultProps = {
+  amount: null,
 };
 
 export default Amount;
