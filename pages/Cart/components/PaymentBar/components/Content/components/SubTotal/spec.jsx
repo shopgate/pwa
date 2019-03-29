@@ -1,19 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GrandTotal from './';
+import SubTotal from './';
 
 jest.mock('Pages/Cart/context', () => ({
   Consumer: jest.fn(({ children }) => children({
-    config: { hideTotal: false },
     currency: 'EUR',
-    isLoading: false,
   })),
 }));
 jest.mock('./connector', () => cmp => cmp);
 
-describe('<GrandTotal />', () => {
-  it('should render without issues', () => {
-    const wrapper = shallow(<GrandTotal amount={10} />).dive();
+describe('<SubTotal>', () => {
+  it('should render line', () => {
+    const wrapper = shallow(<SubTotal amount={10} />).dive();
     expect(wrapper).toMatchSnapshot();
   });
 });
