@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
-import {
-  getCurrency,
-  getGrandTotal,
-} from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getGrandTotal } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -10,8 +7,7 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  currency: getCurrency(state),
-  value: getGrandTotal(state),
+  amount: getGrandTotal(state),
 });
 
 export default connect(mapStateToProps);

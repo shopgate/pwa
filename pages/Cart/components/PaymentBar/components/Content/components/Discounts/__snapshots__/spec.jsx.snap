@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Discounts /> renders discounts according to the cart data 1`] = `"<div class=\\"css-1fubgbz\\"><div class=\\"css-z3fwy2 \\" data-test-id=\\"discountLabel\\"><span>Coupon</span><span>:</span></div><div class=\\"css-13f0gfi \\"><span>-</span><span class=\\"\\">5</span></div></div>"`;
-
-exports[`<Discounts /> renders no discounts when the cart is not fetched 1`] = `null`;
+exports[`My test should render and match snapshot 1`] = `
+<Fragment>
+  <Portal
+    name="cart.payment-bar.totals.discounts.before"
+    props={null}
+  />
+  <Portal
+    name="cart.payment-bar.totals.discounts"
+    props={null}
+  >
+    <CartTotalLine
+      isDisabled={false}
+      key="discount-Coupon"
+      type="discount"
+    >
+      <Label
+        label="Coupon"
+        showSeparator={true}
+      />
+      <Amount
+        amount={-10}
+        currency="EUR"
+      />
+    </CartTotalLine>
+    <CartTotalLine
+      isDisabled={false}
+      key="discount-Loyalty"
+      type="discount"
+    >
+      <Label
+        label="Loyalty"
+        showSeparator={true}
+      />
+      <Amount
+        amount={-2}
+        currency="EUR"
+      />
+    </CartTotalLine>
+  </Portal>
+  <Portal
+    name="cart.payment-bar.totals.discounts.after"
+    props={null}
+  />
+</Fragment>
+`;

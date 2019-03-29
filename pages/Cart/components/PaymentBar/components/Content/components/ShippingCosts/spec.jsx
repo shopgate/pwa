@@ -1,51 +1,36 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
-import { mount } from 'enzyme';
-import TotalRow from '../TotalRow';
+import { shallow } from 'enzyme';
+import { getShippingLine } from '@shopgate/pwa-common-commerce/cart';
 import ShippingCosts from './';
 
-let mockedContext = {
-  showShipping: true,
-  shippingConfig: {
-    hideFreeShipping: false,
-    hideAnonymous: false,
-  },
-  isUserLoggedIn: true,
-};
-jest.mock('./components/Label');
-jest.mock('./components/Amount');
+jest.mock('@shopgate/pwa-common-commerce/cart', () => {
+  const original = require.requireActual('@shopgate/pwa-common-commerce/cart');
+  return {
+    ...original, // Pass down all the exported objects
+    getShippingLine: jest.fn(),
+  };
+});
 jest.mock('Pages/Cart/context', () => ({
-  Consumer: jest.fn(({ children }) => children(mockedContext)),
+  Consumer: jest.fn(({ children }) => children({
+    currency: 'EUR',
+  })),
 }));
+jest.mock('./connector', () => cmp => cmp);
 
 describe('<ShippingCosts>', () => {
-  describe('should render shipping costs', () => {
-    it('should render by config', () => {
-      expect(mount(<ShippingCosts />).find(TotalRow).length).toBe(1);
+  it('should render shipping line', () => {
+    getShippingLine.mockReturnValue({
+      label: 'My label',
+      amount: 10,
     });
-    it('should render for logged in user', () => {
-      mockedContext = {
-        ...mockedContext,
-        shippingConfig: { hideAnonymous: true },
-        isUserLoggedIn: true,
-      };
-      expect(mount(<ShippingCosts />).find(TotalRow).length).toBe(1);
-    });
+    const wrapper = shallow(<ShippingCosts shippingCost={{ amount: 10, label: 'Label' }} />).dive();
+    expect(wrapper).toMatchSnapshot();
   });
-  describe('should not render shipping costs', () => {
-    it('should not render by config', () => {
-      mockedContext = {
-        ...mockedContext,
-        showShipping: false,
-      };
-      expect(mount(<ShippingCosts />).find(TotalRow).length).toBe(0);
-    });
-    it('should not render for anonymous', () => {
-      mockedContext = {
-        ...mockedContext,
-        shippingConfig: { hideAnonymous: true },
-        isUserLoggedIn: false,
-      };
-      expect(mount(<ShippingCosts />).find(TotalRow).length).toBe(0);
-    });
+  it('should not render shipping line', () => {
+    getShippingLine.mockReturnValue(null);
+    const wrapper = shallow(<ShippingCosts shippingCost={{ amount: 10, label: 'Label' }} />).dive();
+    expect(wrapper).toMatchSnapshot();
   });
 });
+/* eslint-enable extra-rules/no-single-line-objects */

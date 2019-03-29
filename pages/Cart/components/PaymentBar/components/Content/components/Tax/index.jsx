@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TotalRow from '../TotalRow';
-import Label from './components/Label';
-import Amount from './components/Amount';
+import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
+import CartContext from 'Pages/Cart/context';
 import connect from './connector';
 
 /**
  * The Tax component.
- * @returns {React.Node}
+ * @returns {JSX}
  */
 const Tax = ({ taxData }) => {
   if (!taxData) {
@@ -15,12 +14,15 @@ const Tax = ({ taxData }) => {
   }
 
   const { label, amount } = taxData;
-
   return (
-    <TotalRow key={`${label}-${amount}`}>
-      <Label label={label} />
-      <Amount value={amount} />
-    </TotalRow>
+    <CartContext.Consumer>
+      {({ currency, isLoading }) => (
+        <CartTotalLine isDisabled={isLoading} type="tax">
+          <CartTotalLine.Label label={label} />
+          <CartTotalLine.Amount amount={amount} currency={currency} />
+        </CartTotalLine>
+      )}
+    </CartContext.Consumer>
   );
 };
 
