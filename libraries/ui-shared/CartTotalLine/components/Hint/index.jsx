@@ -8,13 +8,17 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const Hint = ({ hint }) => (
-  hint && (
+const Hint = ({ hint }) => {
+  if (hint === null) {
+    return null;
+  }
+
+  return (
     <div className={styles.hint}>
       <I18n.Text string={hint} />
     </div>
-  )
-);
+  );
+};
 
 Hint.propTypes = {
   hint: PropTypes.string,
