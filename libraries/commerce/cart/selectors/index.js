@@ -165,14 +165,11 @@ export const getGrandTotal = createSelector(
 
 /**
  * Selects the shipping costs.
- * @returns {number}
+ * @returns {Object}
  */
 export const getShippingCosts = createSelector(
   getTotals,
-  (totals) => {
-    const { amount = null } = totals.find(total => total.type === CART_TOTALS_TYPE_SHIPPING) || {};
-    return amount;
-  }
+  totals => totals.find(total => total.type === CART_TOTALS_TYPE_SHIPPING) || null
 );
 
 /**
@@ -181,10 +178,7 @@ export const getShippingCosts = createSelector(
  */
 export const getTax = createSelector(
   getTotals,
-  (totals) => {
-    const tax = totals.find(total => total.type === CART_TOTALS_TYPE_TAX);
-    return tax || null;
-  }
+  totals => totals.find(total => total.type === CART_TOTALS_TYPE_TAX) || null
 );
 
 /**

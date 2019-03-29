@@ -5,43 +5,54 @@
  * @param {Object} shippingCost shippingCost
  * @returns {Object|null}
  */
-export function getShippingLine(cartConfig, isUserLoggedIn, shippingCost) {
-  const config = cartConfig;
-  if (config.hideShipping) {
+export function getShippingLine(cartConfig, isUserLoggedIn = false, shippingCost = null) {
+  if (shippingCost === null) {
     return null;
   }
 
+  if (cartConfig.hideShipping) {
+    return null;
+  }
+
+  const shippingConfig = cartConfig.shipping;
+
   if (!isUserLoggedIn) {
-    if (config.hideAnonymous) {
+    if (shippingConfig.hideAnonymous) {
       return null;
     }
-    if (config.textForAnonymousUsers) {
-      return { label: config.textForAnonymousUsers };
+    if (shippingConfig.textForAnonymousUsers) {
+      return { label: shippingConfig.textForAnonymousUsers };
     }
   }
   // Continue
-  if (shippingCost === null) {
-    if (config.textForNoShipping) {
-      return { label: config.textForNoShipping };
+  if (shippingCost.amount === null) {
+    if (shippingConfig.textForNoShipping) {
+      return { label: shippingConfig.textForNoShipping };
     }
     return null;
   }
 
-  if (shippingCost === 0) {
-    if (config.hideFreeShipping) {
+  if (shippingCost.amount === 0) {
+    if (shippingConfig.hideFreeShipping) {
       return null;
     }
-    if (config.textForFreeShipping) {
-      return { label: config.textForFreeShipping };
+    if (shippingConfig.textForFreeShipping) {
+      return {
+        label: shippingCost.label || 'titles.shipping',
+        amount: shippingConfig.textForFreeShipping,
+        ...shippingConfig.hint && { hint: shippingConfig.hint },
+      };
     }
     return {
       label: shippingCost.label || 'titles.shipping',
       amount: 'shipping.free_short',
+      ...shippingConfig.hint && { hint: shippingConfig.hint },
     };
   }
 
   return {
     label: shippingCost.label || 'titles.shipping',
     amount: shippingCost.amount,
+    ...shippingConfig.hint && { hint: shippingConfig.hint },
   };
 }

@@ -1,25 +1,13 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
-
-const disabled = css({
-  color: `${colors.shade4} !important`,
-}).toString();
-
-const base = {
-  fontSize: '0.875rem',
-  color: colors.shade9,
-};
+const { variables } = themeConfig;
 
 const label = css({
-  ...base,
-  display: 'flex',
-  flexDirection: 'row',
+  flexGrow: 1,
   paddingRight: variables.gap.small,
 }).toString();
 
 export default {
-  disabled,
   label,
 };

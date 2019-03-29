@@ -1,18 +1,12 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
+const { variables } = themeConfig;
 
-const disabled = css({
-  color: `${colors.shade4} !important`,
+const hint = css({
+  paddingLeft: variables.gap.small,
 }).toString();
 
-const hint = {
-  fontSize: '0.875rem',
-  color: colors.shade9,
-};
-
 export default {
-  disabled,
   hint,
 };
