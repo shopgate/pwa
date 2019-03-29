@@ -15,14 +15,14 @@
   },
   "changelog": {
     "cacheDir": ".changelog",
-    "nextVersion": "Unreleased",
     "labels": {
       "enhancement": ":rocket: Enhancement",
       "bug": ":bug: Bug Fix",
       "feature": ":rocket: New Feature",
       "breaking": ":boom: Breaking Change",
       "polish": ":nail_care: Polish",
-      "internal": ":house: Internal"
+      "internal": ":house: Internal",
+      "docs": ":memo: Documentation"
     }
   },
   "scripts": {
