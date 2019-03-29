@@ -27,7 +27,10 @@ const Discounts = ({ discounts }) => {
           <Portal name={CART_PAYMENT_BAR_TOTALS_DISCOUNTS}>
             {discounts.map(({ label, amount }) => (
               <CartTotalLine key={`discount-${label}`} type="discount" isDisabled={isLoading}>
-                <CartTotalLine.Label label={label} />
+                <CartTotalLine.Label
+                  label="cart.discounts"
+                  labelParams={{ label }}
+                />
                 <CartTotalLine.Amount amount={-amount} currency={currency} />
               </CartTotalLine>
             ))}
