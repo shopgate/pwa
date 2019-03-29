@@ -204,19 +204,35 @@
         "key": "value"
       }
     },
+    "cartTaxText": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_cart_tax_settings?parsed=true",
+        "key": "value.text"
+      }
+    },
     "cart": {
       "type": "admin",
       "destination": "frontend",
       "default": {
         "hideTotal": false,
         "hideShipping": false,
+        "hideTax": false,
         "shipping": {
           "hideFreeShipping": false,
           "hideAnonymous": null,
-          "textForAnonymousUsers": "Anonym",
-          "textForFreeShipping": "Freeee",
+          "textForAnonymousUsers": null,
+          "textForFreeShipping": null,
           "textForNoShipping": null,
-          "hint": "Hint"
+          "hint": null
+        },
+        "tax": {
+          "text": null,
+          "hint": null
         }
       },
       "params": {
