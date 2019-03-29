@@ -1,6 +1,7 @@
 // FEATURES
 const APP = 'app';
 const APP_BAR = 'app-bar';
+const VIEW = 'view';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
 const NO_RESULTS = 'no-results';
@@ -40,6 +41,10 @@ export const BELOW = 'below';
 
 export const APP_GLOBALS = `${APP}.${GLOBALS}`;
 export const APP_ROUTES = `${APP}.${ROUTES}`;
+
+export const VIEW_CONTENT_BEFORE = `${VIEW}.${CONTENT}.${BEFORE}`;
+export const VIEW_CONTENT = `${VIEW}.${CONTENT}`;
+export const VIEW_CONTENT_AFTER = `${VIEW}.${CONTENT}.${AFTER}`;
 
 export const PAGE_CONTENT_BEFORE = `${PAGE}.${CONTENT}.${BEFORE}`;
 export const PAGE_CONTENT = `${PAGE}.${CONTENT}`;
