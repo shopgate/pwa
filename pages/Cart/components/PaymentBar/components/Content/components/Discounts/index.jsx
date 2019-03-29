@@ -5,16 +5,14 @@ import {
   CART_PAYMENT_BAR_TOTALS_DISCOUNTS,
   CART_PAYMENT_BAR_TOTALS_DISCOUNTS_BEFORE,
   CART_PAYMENT_BAR_TOTALS_DISCOUNTS_AFTER,
-} from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import portalProps from '../../totalsPortalProps';
-import TotalRow from '../TotalRow';
-import Label from './components/Label';
-import Amount from './components/Amount';
+} from '@shopgate/pwa-common-commerce/cart';
+import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
+import CartContext from 'Pages/Cart/context';
 import connect from './connector';
 
 /**
  * The Discounts component.
- * @returns {React.Node}
+ * @returns {JSX}
  */
 const Discounts = ({ discounts }) => {
   if (!discounts) {
@@ -22,18 +20,22 @@ const Discounts = ({ discounts }) => {
   }
 
   return (
-    <Fragment>
-      <Portal name={CART_PAYMENT_BAR_TOTALS_DISCOUNTS_BEFORE} props={portalProps} />
-      <Portal name={CART_PAYMENT_BAR_TOTALS_DISCOUNTS} props={portalProps}>
-        {discounts.map(({ label, amount }) => (
-          <TotalRow key={`${label}-${amount}`}>
-            <Label label={label} />
-            <Amount value={amount} />
-          </TotalRow>
-        ))}
-      </Portal>
-      <Portal name={CART_PAYMENT_BAR_TOTALS_DISCOUNTS_AFTER} props={portalProps} />
-    </Fragment>
+    <CartContext.Consumer>
+      {({ currency, isLoading }) => (
+        <Fragment>
+          <Portal name={CART_PAYMENT_BAR_TOTALS_DISCOUNTS_BEFORE} />
+          <Portal name={CART_PAYMENT_BAR_TOTALS_DISCOUNTS}>
+            {discounts.map(({ label, amount }) => (
+              <CartTotalLine key={`discount-${label}`} type="discount" isDisabled={isLoading}>
+                <CartTotalLine.Label label={label} />
+                <CartTotalLine.Amount amount={-amount} currency={currency} />
+              </CartTotalLine>
+            ))}
+          </Portal>
+          <Portal name={CART_PAYMENT_BAR_TOTALS_DISCOUNTS_AFTER} />
+        </Fragment>
+      )}
+    </CartContext.Consumer>
   );
 };
 

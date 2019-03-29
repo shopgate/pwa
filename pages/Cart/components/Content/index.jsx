@@ -24,6 +24,7 @@ const config = getCartConfig();
  */
 class CartContentContainer extends PureComponent {
   static propTypes = {
+    currency: PropTypes.string.isRequired,
     isLoading: PropTypes.bool.isRequired,
     isUserLoggedIn: PropTypes.bool.isRequired,
     cartItems: PropTypes.arrayOf(PropTypes.shape()),
@@ -62,7 +63,7 @@ class CartContentContainer extends PureComponent {
    */
   render() {
     const {
-      cartItems, isLoading, messages, isUserLoggedIn,
+      cartItems, isLoading, messages, isUserLoggedIn, currency,
     } = this.props;
     const { isPaymentBarVisible } = this.state;
     const hasItems = (cartItems.length > 0);
@@ -70,8 +71,10 @@ class CartContentContainer extends PureComponent {
 
     return (
       <CartContext.Provider value={{
+        currency,
         config,
         isUserLoggedIn,
+        isLoading,
       }}
       >
         <SimpleBar title="titles.cart" />

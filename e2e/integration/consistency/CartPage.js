@@ -38,7 +38,8 @@ describe('AndroidGMDTest CartPage', () => {
 
   it('should check for correct sub total', () => {
     cy.get(els.productWithManyProps4CartSubTotal)
-      .should('be.visible');
+      .should('be.visible')
+      .contains('199');
   });
 
   it('should check for shipping label', () => {

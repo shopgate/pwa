@@ -7,9 +7,8 @@ import {
   CART_PAYMENT_BAR_TOTALS_SHIPPING_AFTER,
   getShippingLine,
 } from '@shopgate/pwa-common-commerce/cart';
+import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import CartContext from 'Pages/Cart/context';
-import portalProps from '../../totalsPortalProps';
-import TotalRow from '../TotalRow';
 import connect from './connector';
 
 /**
@@ -17,21 +16,32 @@ import connect from './connector';
  */
 const ShippingCosts = ({ shippingCost }) => (
   <CartContext.Consumer>
-    {({ isUserLoggedIn, config }) => {
+    {({
+       currency, isLoading, isUserLoggedIn, config,
+      }) => {
       const shippingLine = getShippingLine(config, isUserLoggedIn, shippingCost);
 
       return (
         <Fragment>
-          <Portal name={CART_PAYMENT_BAR_TOTALS_SHIPPING_BEFORE} props={portalProps} />
-          <Portal name={CART_PAYMENT_BAR_TOTALS_SHIPPING} props={portalProps}>
+          <Portal name={CART_PAYMENT_BAR_TOTALS_SHIPPING_BEFORE} />
+          <Portal name={CART_PAYMENT_BAR_TOTALS_SHIPPING}>
             {shippingLine && (
-              <TotalRow>
-                <TotalRow.Label label={shippingLine.label} hasAmount={!!shippingLine.amount} />
-                <TotalRow.Amount />
-              </TotalRow>
+              <CartTotalLine isDisabled={isLoading} type="shipping">
+                <CartTotalLine.Label
+                  label={shippingLine.label}
+                  showSeparator={!!shippingLine.amount}
+                />
+                {shippingLine.amount &&
+                  <CartTotalLine.Amount
+                    amount={shippingLine.amount}
+                    currency={currency}
+                  />
+                }
+                {shippingLine.hint && <CartTotalLine.Hint hint={shippingLine.hint} />}
+              </CartTotalLine>
             )}
           </Portal>
-          <Portal name={CART_PAYMENT_BAR_TOTALS_SHIPPING_AFTER} props={portalProps} />
+          <Portal name={CART_PAYMENT_BAR_TOTALS_SHIPPING_AFTER} />
         </Fragment>
       );
     }}
@@ -39,7 +49,10 @@ const ShippingCosts = ({ shippingCost }) => (
 );
 
 ShippingCosts.propTypes = {
-  shippingCost: PropTypes.number.isRequired,
+  shippingCost: PropTypes.shape({
+    label: PropTypes.string,
+    amount: PropTypes.number,
+  }).isRequired,
 };
 
 export default connect(ShippingCosts);
