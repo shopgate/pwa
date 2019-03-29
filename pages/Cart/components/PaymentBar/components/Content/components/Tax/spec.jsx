@@ -5,6 +5,13 @@ import Tax from './';
 jest.mock('Pages/Cart/context', () => ({
   Consumer: jest.fn(({ children }) => children({
     currency: 'EUR',
+    config: {
+      hideTax: false,
+      tax: {
+        text: null,
+        hint: null,
+      },
+    },
   })),
 }));
 jest.mock('./connector', () => cmp => cmp);
