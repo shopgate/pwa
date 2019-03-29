@@ -13,6 +13,8 @@ export * from './constants/Portals';
 
 // HELPERS
 export * from './helpers';
+export * from './helpers/config';
+export * from './helpers/shipping';
 
 // SELECTORS
 export * from './selectors';

@@ -182,11 +182,42 @@
         "label": "Use sentry.io for error (debug, info) logging"
       }
     },
+    "cartShippingHideAnonymousLegacy": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_hide_shipping_text_for_logged_out_users?parsed=true",
+        "key": "value"
+      }
+    },
+    "cartShippingTextAnonymousLegacy": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_shipping_text_for_logged_out_users?parsed=true",
+        "key": "value"
+      }
+    },
     "cart": {
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "showTotal": true
+        "hideTotal": false,
+        "hideShipping": false,
+        "shipping": {
+          "hideFreeShipping": false,
+          "hideAnonymous": null,
+          "textForAnonymousUsers": "Anonym",
+          "textForFreeShipping": "Freeee",
+          "textForNoShipping": null,
+          "hint": "Hint"
+        }
       },
       "params": {
         "type": "json",

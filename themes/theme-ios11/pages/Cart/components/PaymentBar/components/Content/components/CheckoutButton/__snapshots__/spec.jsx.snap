@@ -1,125 +1,105 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckoutButton /> Checkout is possible should render without any props 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
+exports[`<CheckoutButton /> should render disabled button 1`] = `
+<Fragment>
+  <Portal
+    name="cart.checkout-button.before"
+    props={
+      Object {
+        "isActive": false,
+      }
     }
-  }
->
-  <LoadingProvider>
-    <Component
-      isOrderable={false}
+  />
+  <Portal
+    name="cart.checkout-button"
+    props={
+      Object {
+        "isActive": false,
+      }
+    }
+  >
+    <Connect(Link)
+      disabled={true}
+      href="/checkout"
     >
-      <CheckoutButton
-        isActive={false}
+      <RippleButton
+        className="css-ce5yef"
+        disabled={true}
+        flat={false}
+        onClick={null}
+        rippleClassName=""
+        rippleSize={null}
+        testId="Button"
+        type="regular"
+        wrapContent={true}
       >
-        <Portal
-          name="cart.checkout-button.before"
-          props={
-            Object {
-              "isActive": false,
-            }
-          }
+        <Translate
+          className=""
+          params={Object {}}
+          string="cart.checkout"
         />
-        <Portal
-          name="cart.checkout-button"
-          props={
-            Object {
-              "isActive": false,
-            }
-          }
-        >
-          <Connect(Link)
-            disabled={true}
-            href="/checkout"
-          >
-            <Link
-              className=""
-              disabled={true}
-              historyPush={[Function]}
-              historyReplace={[Function]}
-              href="/checkout"
-              replace={false}
-              state={Object {}}
-              tag="div"
-            >
-              <div
-                className="css-c6ki83 "
-                data-test-id="link: /checkout"
-                onClick={[Function]}
-                role="link"
-              >
-                <RippleButton
-                  className="css-ce5yef"
-                  disabled={true}
-                  flat={false}
-                  onClick={null}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="regular"
-                  wrapContent={true}
-                >
-                  <Button
-                    className="css-ce5yef"
-                    disabled={true}
-                    flat={false}
-                    onClick={null}
-                    testId="Button"
-                    type="regular"
-                    wrapContent={true}
-                  >
-                    <Button
-                      className="css-4q16hk css-ce5yef"
-                      disabled={true}
-                      onClick={null}
-                      testId="Button"
-                    >
-                      <button
-                        className="css-4q16hk css-ce5yef css-1rn65c0"
-                        data-test-id="Button"
-                        disabled={true}
-                        onClick={null}
-                      >
-                        <div
-                          className="css-kwqjom"
-                        >
-                          <Translate
-                            className=""
-                            params={Object {}}
-                            string="cart.checkout"
-                          >
-                            <span
-                              className=""
-                            >
-                              cart.checkout
-                            </span>
-                          </Translate>
-                        </div>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </Link>
-          </Connect(Link)>
-        </Portal>
-        <Portal
-          name="cart.checkout-button.after"
-          props={
-            Object {
-              "isActive": false,
-            }
-          }
+      </RippleButton>
+    </Connect(Link)>
+  </Portal>
+  <Portal
+    name="cart.checkout-button.after"
+    props={
+      Object {
+        "isActive": false,
+      }
+    }
+  />
+</Fragment>
+`;
+
+exports[`<CheckoutButton /> should render enabled button 1`] = `
+<Fragment>
+  <Portal
+    name="cart.checkout-button.before"
+    props={
+      Object {
+        "isActive": true,
+      }
+    }
+  />
+  <Portal
+    name="cart.checkout-button"
+    props={
+      Object {
+        "isActive": true,
+      }
+    }
+  >
+    <Connect(Link)
+      disabled={false}
+      href="/checkout"
+    >
+      <RippleButton
+        className="css-1mlc9hd"
+        disabled={false}
+        flat={false}
+        onClick={null}
+        rippleClassName=""
+        rippleSize={null}
+        testId="Button"
+        type="regular"
+        wrapContent={true}
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="cart.checkout"
         />
-      </CheckoutButton>
-    </Component>
-  </LoadingProvider>
-</Provider>
+      </RippleButton>
+    </Connect(Link)>
+  </Portal>
+  <Portal
+    name="cart.checkout-button.after"
+    props={
+      Object {
+        "isActive": true,
+      }
+    }
+  />
+</Fragment>
 `;
