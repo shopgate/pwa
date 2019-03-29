@@ -16,7 +16,12 @@ exports[`My test should render and match snapshot 1`] = `
       type="discount"
     >
       <Label
-        label="Coupon"
+        label="cart.discounts"
+        labelParams={
+          Object {
+            "label": "Coupon",
+          }
+        }
         showSeparator={true}
       />
       <Amount
@@ -30,7 +35,12 @@ exports[`My test should render and match snapshot 1`] = `
       type="discount"
     >
       <Label
-        label="Loyalty"
+        label="cart.discounts"
+        labelParams={
+          Object {
+            "label": "Loyalty",
+          }
+        }
         showSeparator={true}
       />
       <Amount
