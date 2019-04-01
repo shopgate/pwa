@@ -32,7 +32,6 @@ function Swiper(props) {
     disabled,
   } = props;
 
-  /** @type {Swiper} swiper An instance of the Swiper. */
   const [swiper, setSwiper] = useState(null);
 
   useEffect(() => {
