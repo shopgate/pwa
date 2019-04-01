@@ -5,7 +5,6 @@ import { navigatorButton, backButton, navigationDrawerBackdrop } from '../elemen
  * Open the navDrawer
  */
 export function openNavDrawer() {
-  cy.reload();
   cy.get(navigatorButton)
     .should('be.visible')
     .click();
