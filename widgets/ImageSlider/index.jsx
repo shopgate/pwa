@@ -41,12 +41,12 @@ const ImageSliderWidget = ({ settings, className }) => {
       loop={settings.loop}
     >
       {settings.images.map(({ image, alt, link }) => {
-        const img = <img src={image} alt={alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
+        const img = <img src={image} alt={alt} className={imgStyle} data-test-id={`link: ${link}`} />;
 
         if (link) {
           return (
             <Swiper.Item key={image}>
-              <Link href={link} className={linkStyle} data-test-id="withLink">
+              <Link href={link} className={linkStyle}>
                 {img}
               </Link>
             </Swiper.Item>
