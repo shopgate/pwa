@@ -105,7 +105,7 @@ export const couponActionPushNotification$ = openedLink$
   })
   .map(input => ({
     ...input,
-    code: input.action.options.url.split('/').filter(Boolean)[1],
+    code: input.action.options.url.split('/').filter(Boolean)[1].split('?')[0],
   }));
 
 /**
