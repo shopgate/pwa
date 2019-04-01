@@ -3,6 +3,8 @@
 ## [v6.4.0](https://github.com/shopgate/theme-gmd/compare/v6.3.1...v6.4.0) (2019-04-05)
 
 #### :rocket: Enhancement
+* [#589](https://github.com/shopgate/pwa/pull/589) The cart now display correct and consistent data in the totals. ([@devbucket](https://github.com/devbucket))
+* [#588](https://github.com/shopgate/pwa/pull/588) Add portals wrapping the View Content ([@alexbridge](https://github.com/alexbridge))
 * [#577](https://github.com/shopgate/pwa/pull/577) Implementation of the Barcode Scanner UI ([@fkloes](https://github.com/fkloes))
 * [#573](https://github.com/shopgate/pwa/pull/573) Show QR Code Scan results ([@alexbridge](https://github.com/alexbridge))
 * [#574](https://github.com/shopgate/pwa/pull/574) Unused selectors for UI and toast messages have been removed. ([@devbucket](https://github.com/devbucket))
@@ -12,12 +14,17 @@
 * [#564](https://github.com/shopgate/pwa/pull/564) Restructured PaymentBar and added Portals around cart totals ([@fkloes](https://github.com/fkloes))
 
 #### :bug: Bug Fix
+* [#593](https://github.com/shopgate/pwa/pull/593) Fixed swiper open link actions ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#590](https://github.com/shopgate/pwa/pull/590) Patch for e2e tests for new slider implementation ([@alexbridge](https://github.com/alexbridge))
 * [#571](https://github.com/shopgate/pwa/pull/571) Refactored the Sliders to use the new react-id-swiper version ([@devbucket](https://github.com/devbucket))
 * [#576](https://github.com/shopgate/pwa/pull/576) Sentry.io level / severity is not send correctly ([@alexbridge](https://github.com/alexbridge))
 * [#575](https://github.com/shopgate/pwa/pull/575) The routeDidChange$ stream is now an alias of routeDidEnter$ since it is already deprecated. ([@devbucket](https://github.com/devbucket))
 * [#569](https://github.com/shopgate/pwa/pull/569) Fix navigation with special characters in search query ([@alexbridge](https://github.com/alexbridge))
 * [#567](https://github.com/shopgate/pwa/pull/567) Add shop number back to localstorage key of redux store ([@alexbridge](https://github.com/alexbridge))
 * [#562](https://github.com/shopgate/pwa/pull/562) Liveshopping widget localization to german ([@alexbridge](https://github.com/alexbridge))
+
+#### :nail_care: Polish
+* [#586](https://github.com/shopgate/pwa/pull/586) Added changelog starting from PWA version 6.0.0 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
 
 
 ## [v6.3.1](https://github.com/shopgate/theme-gmd/compare/v6.3.0...v6.3.1) (2019-03-20)

@@ -38,6 +38,22 @@ function Swiper(props) {
     if (swiper !== null) {
       swiper.update();
       swiper.on('slideChange', () => onSlideChange(swiper.realIndex));
+      swiper.on('transitionEnd', () => {
+        // In loop mode the Swiper duplicates elements, which are not in the virtual DOM
+        if (loop) {
+          // Skip duplicated elements
+          if (swiper.activeIndex < 1) {
+            swiper.slideToLoop(children.length - 1, 0);
+          } else if (swiper.activeIndex > children.length) {
+            swiper.slideToLoop(0, 0);
+          }
+        }
+      });
+      swiper.on('beforeDestroy', () => {
+        swiper.off('slideChange');
+        swiper.off('transitionEnd');
+        swiper.off('beforeDestroy');
+      });
     }
   }, [swiper]);
 
