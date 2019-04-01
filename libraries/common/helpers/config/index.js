@@ -25,6 +25,9 @@ const defaultAppConfig = {
   showGmdMenuSubHeaders: false,
   benchmark: false,
   sentry: {},
+  cartShippingHideAnonymousLegacy: null,
+  cartShippingTextAnonymousLegacy: null,
+  cart: {},
   scanner: {},
 };
 

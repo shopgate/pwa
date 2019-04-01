@@ -92,6 +92,8 @@
   },
   "cart": {
     "subtotal": "Subtotaal",
+    "total": "Totaal winkelwagen",
+    "discounts": "Discounts ({label})",
     "checkout": "Afrekenen",
     "remove": "Verwijderen",
     "edit": "Wijzig",

@@ -1,13 +1,16 @@
 import els from '../../elements/de';
+import { openNavDrawer, closeNavDrawer } from '../../helper/navigation';
 
 describe('AndroidGMDTest startPage', () => {
+  afterEach(() => {
+    cy.get(els.shopLogo).scrollIntoView();
+  });
+
   it('should check Navigation Drawer', () => {
     // Open page
     cy.visit('');
 
-    // Click on Navigation button
-    cy.get(els.navigatorButton)
-      .click();
+    openNavDrawer();
 
     // Check for drawer entries
     cy.get(els.navigationDrawerLoginButton)
@@ -34,13 +37,10 @@ describe('AndroidGMDTest startPage', () => {
     cy.get(els.navDrawerImprintButton)
       .scrollIntoView()
       .should('be.visible');
+    closeNavDrawer();
   });
 
   it('should check for shop logo', () => {
-    // Open page
-    cy.visit('');
-    cy.wait(500);
-
     // Check for logo
     cy.get(els.shopLogo)
       .should('be.visible');

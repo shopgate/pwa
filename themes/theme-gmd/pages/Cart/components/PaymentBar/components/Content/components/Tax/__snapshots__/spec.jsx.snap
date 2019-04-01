@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tax /> should render and match snapshot 1`] = `
+<CartTotalLine
+  isDisabled={false}
+  type="tax"
+>
+  <Label
+    label="Tax"
+    labelParams={Object {}}
+    showSeparator={true}
+  />
+  <Amount
+    amount={10}
+    currency="EUR"
+  />
+  <Hint
+    hint={null}
+  />
+</CartTotalLine>
+`;
