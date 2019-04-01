@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
+import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
-import { router } from '@virtuous/conductor';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';
@@ -121,7 +123,9 @@ class ViewContent extends Component {
         <article className={styles} ref={this.ref} style={this.style}>
           <Helmet title={appConfig.shopName} />
           <Above />
-          {this.props.children}
+          <SurroundPortals portalName={VIEW_CONTENT}>
+            {this.props.children}
+          </SurroundPortals>
           <Below />
         </article>
       </Swipeable>

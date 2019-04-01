@@ -15,7 +15,8 @@
     "cart": "Cart",
     "shipping": "Shipping",
     "reviews": "Reviews",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Add to favorites",
@@ -90,6 +91,8 @@
   },
   "cart": {
     "subtotal": "Subtotal",
+    "total": "Cart total",
+    "discounts": "Discounts ({label})",
     "checkout": "Checkout",
     "remove": "Remove",
     "edit": "Edit",
@@ -123,6 +126,7 @@
     "favorites": "Favorites",
     "my_orders": "My orders",
     "cart": "Shopping cart",
+    "scanner": "Scanner",
     "shipping": "Shipping methods",
     "about": "Contact us",
     "payment": "Payment methods",
@@ -153,5 +157,12 @@
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Thanks for your review!"
+  },
+  "scanner": {
+    "instructions": "Please keep the barcode or QR code in the center. The detection is performed automatically.",
+    "noResult": {
+      "qrCode": "We couldn't find a result for this QR code.",
+      "barCode": "Product not found."
+    }
   }
 }
