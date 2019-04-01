@@ -2,11 +2,13 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { JSDOM } from 'jsdom';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import { configureStore } from '@shopgate/pwa-common/store';
 import reducers from 'Pages/reducers';
 import HtmlWidget from './index';
+
+const { variables } = themeConfig;
 
 const store = configureStore(reducers, []);
 

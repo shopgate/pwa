@@ -1,5 +1,6 @@
-import { themeConfig as mock } from './mock';
 import pck from './../../package';
+import { getThemeConfig } from './theme';
+
 /**
  * Provides a default app config as a fallback.
  * @type {Object}
@@ -24,6 +25,7 @@ const defaultAppConfig = {
   showGmdMenuSubHeaders: false,
   benchmark: false,
   sentry: {},
+  theme: {},
 };
 
 export const themeName = process.env.THEME || 'theme';
@@ -32,16 +34,6 @@ export const themeName = process.env.THEME || 'theme';
  * @type {string} package version from package.json
  */
 export const pckVersion = pck.version;
-
-/**
- * Provides a default theme config as a fallback.
- * @type {Object}
- */
-const defaultThemeConfig = {
-  font: {},
-  colors: {},
-  variables: {},
-};
 
 /**
  * Provides a default components config as a fallback.
@@ -71,7 +63,7 @@ export const componentsConfig = {
  * The theme configuration.
  * @typedef {Object}
  */
-export const themeConfig = process.env.NODE_ENV === 'test' ? mock : (process.env.THEME_CONFIG || defaultThemeConfig);
+export const themeConfig = getThemeConfig(appConfig);
 
 /**
  * The shop number.

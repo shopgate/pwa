@@ -5,13 +5,15 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../../../constants';
+
+const { variables } = themeConfig;
 
 const messageStyles = {
   container: styles.messagesContainer,
@@ -42,9 +44,9 @@ class CartProduct extends Component {
 
   static defaultProps = {
     isIos: false,
-    deleteProduct: () => {},
-    onToggleFocus: () => {},
-    updateProduct: () => {},
+    deleteProduct: () => { },
+    onToggleFocus: () => { },
+    updateProduct: () => { },
   };
 
   /**

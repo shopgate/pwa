@@ -9,11 +9,13 @@ import {
   APP_BAR_CART_BUTTON_BEFORE,
   APP_BAR_CART_BUTTON_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Badge from '../CartBadge';
 import connect from './connector';
 import styles from './style';
 import transition from './transition';
+
+const { colors } = themeConfig;
 
 /**
  * The CartButton component.
