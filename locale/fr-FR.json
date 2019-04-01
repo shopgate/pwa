@@ -16,7 +16,8 @@
     "shipping": "Livraison",
     "reviews": "Commentaires",
     "browse": "Naviger",
-    "favorites": "Favorits"
+    "favorites": "Favorits",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
@@ -52,7 +53,7 @@
     "msrp": "MSRP"
   },
   "product": {
-   "description_heading": "à propos",
+    "description_heading": "à propos",
     "pick_an_attribute": "Choisir un {0}",
     "tax_disclaimer": "* Incl. TVA et frais de livraison",
     "item_added": "{count, plural, =0 {# aucun article ajouté} =1 {{count} article ajouté} other {{count} articles ajoutés}}",
@@ -95,6 +96,8 @@
   },
   "cart": {
     "subtotal": "Sous-total",
+    "total": "Panier Total",
+    "discounts": "Discounts ({label})",
     "checkout": "Paiement",
     "remove": "Retirer",
     "edit": "Modifier",
@@ -106,7 +109,7 @@
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
     "free_shipping": "Livraison gratuite"
   },
-   "login": {
+  "login": {
     "headline": "Bienvenue",
     "subline": "Se connecter pour continuer",
     "email": "Email",
@@ -127,6 +130,7 @@
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
+    "scanner": "Scanner",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",
@@ -166,5 +170,12 @@
     "cart": "Panier",
     "more": "Plus",
     "favorites": "Favorits"
+  },
+  "scanner": {
+    "instructions": "S'il vous plaît gardez le code à barres ou un code QR dans le centre. La détection est effectuée automatiquement.",
+    "noResult": {
+      "qrCode": "Nous n'avons pas trouvé de résultat pour ce code QR.",
+      "barCode": "Aucun produit trouvé."
+    }
   }
 }

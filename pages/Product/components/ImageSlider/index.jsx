@@ -1,25 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import Hammer from 'react-hammerjs';
+} from '@shopgate/pwa-common-commerce/product';
 import ProductImage from 'Components/ProductImage';
-import BaseImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import connect from './connector';
 
 const fallbackResolutions = [
   {
     width: 440,
     height: 440,
-  },
-  {
-    width: 1024,
-    height: 1024,
   },
 ];
 
@@ -99,22 +93,23 @@ class ImageSlider extends Component {
     const { product, images } = this.props;
     let content;
 
-    if (product && Array.isArray(images)) {
+    if (product && Array.isArray(images) && images.length > 1) {
       const imagesByIndex = getImagesByIndex(images);
 
       if (imagesByIndex.length) {
         content = (
-          <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
-            {imagesByIndex.map((imagesInIndex, index) =>
-              (
-                <ProductImage
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={`${product.id}-${index}`}
-                  srcmap={imagesInIndex}
-                  animating={false}
-                />
-              ))}
-          </BaseImageSlider>
+          <Swiper
+            loop={imagesByIndex.length > 1}
+            indicators
+            onSlideChange={this.handleSlideChange}
+            disabled={imagesByIndex.length === 1}
+          >
+            {imagesByIndex.map(imagesInIndex => (
+              <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
+                <ProductImage srcmap={imagesInIndex} animating={false} />
+              </Swiper.Item>
+            ))}
+          </Swiper>
         );
       }
     }
@@ -133,19 +128,15 @@ class ImageSlider extends Component {
       <Fragment>
         <Portal name={PRODUCT_IMAGE_BEFORE} />
         <Portal name={PRODUCT_IMAGE}>
-          <Hammer
-            onPinchStart={this.handleOpenGallery}
-            onTap={this.handleOpenGallery}
-            direction="DIRECTION_ALL"
-            options={{
-              touchAction: 'pan-x pan-y',
-              recognizers: {
-                pinch: { enable: true },
-              },
-            }}
+          <div
+            data-test-id={`product: ${product ? product.name : ''}`}
+            onClick={this.handleOpenGallery}
+            onKeyDown={this.handleOpenGallery}
+            role="button"
+            tabIndex="0"
           >
-            <div data-test-id={`product: ${product ? product.name : ''}`}>{content}</div>
-          </Hammer>
+            {content}
+          </div>
         </Portal>
         <Portal name={PRODUCT_IMAGE_AFTER} />
       </Fragment>
