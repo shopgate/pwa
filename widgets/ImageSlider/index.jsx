@@ -1,40 +1,67 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CryptoJs from 'crypto-js';
-import isEqual from 'lodash/isEqual';
-import shouldUpdate from 'recompose/shouldUpdate';
 import Link from '@shopgate/pwa-common/components/Link';
-import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
-import styles from './style';
+import { Swiper } from '@shopgate/pwa-common/components';
+import { image as imgStyle, link as linkStyle } from './style';
 
 /**
  * Core image slider widget.
  * @param {Object} props The widget properties
  * @returns {JSX}
  */
-const ImageSliderWidget = ({ settings, className }) => (
-  <ImageSlider
-    className={[className, styles.wrapper].join(' ')}
-    autoPlay={settings.autostart}
-    indicators={settings.pagination}
-    interval={settings.delay}
-    loop={settings.loop}
-  >
-    {settings.images.map((image) => {
-      const key = CryptoJs.MD5(image.image);
+const ImageSliderWidget = ({ settings, className }) => {
+  // If only one image, don't show a swiper.
+  if (settings.images.length === 1) {
+    const image = settings.images[0];
+    const img = <img src={image.image} alt={image.alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
 
-      if (image.link) {
-        return (
-          <Link key={key} href={image.link} className={styles.link} data-test-id="withLink">
-            <img src={image.image} alt={image.alt} className={styles.image} data-test-id={`link : ${settings.link}`} />
+    if (image.link) {
+      return (
+        <div className={className}>
+          <Link href={image.link} className={linkStyle} data-test-id="withLink">
+            {img}
           </Link>
-        );
-      }
+        </div>
+      );
+    }
+    return (
+      <div className={className}>
+        {img}
+      </div>
+    );
+  }
 
-      return <img key={key} src={image.image} alt={image.alt} className={styles.image} data-test-id="withoutLink" />;
-    })}
-  </ImageSlider>
-);
+  // Show swiper for more than one image.
+  return (
+    <Swiper
+      className={className}
+      autoPlay={settings.autostart}
+      indicators={settings.pagination}
+      interval={settings.delay}
+      loop={settings.loop}
+    >
+      {settings.images.map(({ image, alt, link }) => {
+        const img = <img src={image} alt={alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
+
+        if (link) {
+          return (
+            <Swiper.Item key={image}>
+              <Link href={link} className={linkStyle} data-test-id="withLink">
+                {img}
+              </Link>
+            </Swiper.Item>
+          );
+        }
+
+        return (
+          <Swiper.Item key={image}>
+            {img}
+          </Swiper.Item>
+        );
+      })}
+    </Swiper>
+  );
+};
 
 ImageSliderWidget.propTypes = {
   // The settings as received by the pipeline request
@@ -58,10 +85,4 @@ ImageSliderWidget.defaultProps = {
   className: '',
 };
 
-export default shouldUpdate((prev, next) => {
-  if (!prev.className && next.className) return true;
-  if (!isEqual(prev.settings, next.settings)) return true;
-  return false;
-})(ImageSliderWidget);
-
-export { ImageSliderWidget as UnwrappedImageSliderWidget };
+export default ImageSliderWidget;
