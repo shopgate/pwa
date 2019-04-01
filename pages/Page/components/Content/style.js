@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
 
 const container = css({
   paddingTop: 60,

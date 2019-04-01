@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
 
 export default css({
   bottom: 'var(--safe-area-inset-bottom)',
