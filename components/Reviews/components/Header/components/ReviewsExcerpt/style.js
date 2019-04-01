@@ -1,6 +1,7 @@
 import { css } from 'glamor';
-import variables from 'Styles/variables';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
 
 export const container = css({
   fontWeight: 500,
