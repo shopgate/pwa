@@ -219,12 +219,10 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                 >
                   <Connect(Link)
                     className="css-63oe3q"
-                    data-test-id="withLink"
                     href="http://example.com"
                   >
                     <Link
                       className="css-63oe3q"
-                      data-test-id="withLink"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
@@ -245,7 +243,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                               "data-css-1rozygh": "",
                             }
                           }
-                          data-test-id="link : undefined"
+                          data-test-id="link: http://example.com"
                           src="http://placehold.it/350x150"
                         />
                       </div>
@@ -263,12 +261,10 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                 >
                   <Connect(Link)
                     className="css-63oe3q"
-                    data-test-id="withLink"
                     href="http://other.example.com"
                   >
                     <Link
                       className="css-63oe3q"
-                      data-test-id="withLink"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
@@ -289,7 +285,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                               "data-css-1rozygh": "",
                             }
                           }
-                          data-test-id="link : undefined"
+                          data-test-id="link: http://other.example.com"
                           src="http://placehold.it/10x10"
                         />
                       </div>
@@ -651,7 +647,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                         "data-css-1rozygh": "",
                       }
                     }
-                    data-test-id="link : undefined"
+                    data-test-id="link: null"
                     src="http://placehold.it/350x150"
                   />
                 </div>
@@ -666,12 +662,10 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                 >
                   <Connect(Link)
                     className="css-63oe3q"
-                    data-test-id="withLink"
                     href="http://other.example.com"
                   >
                     <Link
                       className="css-63oe3q"
-                      data-test-id="withLink"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
@@ -692,7 +686,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                               "data-css-1rozygh": "",
                             }
                           }
-                          data-test-id="link : undefined"
+                          data-test-id="link: http://other.example.com"
                           src="http://placehold.it/10x10"
                         />
                       </div>
@@ -931,12 +925,10 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                 >
                   <Connect(Link)
                     className="css-63oe3q"
-                    data-test-id="withLink"
                     href="http://example.com"
                   >
                     <Link
                       className="css-63oe3q"
-                      data-test-id="withLink"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
@@ -957,7 +949,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                               "data-css-1rozygh": "",
                             }
                           }
-                          data-test-id="link : undefined"
+                          data-test-id="link: http://example.com"
                           src="http://placehold.it/350x150"
                         />
                       </div>
@@ -975,12 +967,10 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                 >
                   <Connect(Link)
                     className="css-63oe3q"
-                    data-test-id="withLink"
                     href="http://other.example.com"
                   >
                     <Link
                       className="css-63oe3q"
-                      data-test-id="withLink"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
@@ -1001,7 +991,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                               "data-css-1rozygh": "",
                             }
                           }
-                          data-test-id="link : undefined"
+                          data-test-id="link: http://other.example.com"
                           src="http://placehold.it/10x10"
                         />
                       </div>
