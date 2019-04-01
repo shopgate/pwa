@@ -8,7 +8,7 @@ export const ORDERS_PATH = '/orders';
 export const PAGE_PATTERN = `${PAGE_PATH}/:pageId`;
 
 /**
- * Our current existing Deeplinks and Pushs use '/index' for the homepage
+ * Our current existing Deeplinks and Push Messages use '/index' for the homepage
  * @type {string}
  */
 export const INDEX_PATH_DEEPLINK = '/index';

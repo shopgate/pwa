@@ -1,5 +1,7 @@
+import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
 import {
   getClientInformation,
+  hasScannerSupport,
   getDeviceInformation,
   getPlatform,
   getDeviceModel,
@@ -16,6 +18,14 @@ import {
   PAGE_INSETS_IOS,
   PAGE_INSETS_IPHONE_X,
 } from '../constants/Device';
+
+let mockedHasSGJavaScriptBridge;
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  hasSGJavaScriptBridge: () => mockedHasSGJavaScriptBridge(),
+  logger: {
+    error: jest.fn(),
+  },
+}));
 
 const mockedStateAndroid = {
   client: {
@@ -45,7 +55,7 @@ const mockedStateIPhoneX = {
   },
 };
 
-describe.skip('Client selectors', () => {
+describe('Client selectors', () => {
   describe('getClientInformation()', () => {
     it('should return an empty object if the client state is not ready yet', () => {
       const result = getClientInformation({ client: {} });
@@ -55,6 +65,23 @@ describe.skip('Client selectors', () => {
     it('should return the expected state', () => {
       const result = getClientInformation({ ...mockedStateAndroid });
       expect(result).toEqual(mockedStateAndroid.client);
+    });
+  });
+
+  describe('hasScannerSupport()', () => {
+    it('should return true when the app supports the scanner', () => {
+      const result = hasScannerSupport({ client: { libVersion: SCANNER_MIN_APP_LIB_VERSION } });
+      expect(result).toBeTruthy();
+    });
+
+    it('should return false when the app does not support the scanner', () => {
+      const result = hasScannerSupport({ client: { libVersion: '17.0' } });
+      expect(result).toBeFalsy();
+    });
+
+    it('should return false when the app lib version is unknown', () => {
+      const result = hasScannerSupport({ client: {} });
+      expect(result).toBeFalsy();
     });
   });
 
@@ -147,12 +174,22 @@ describe.skip('Client selectors', () => {
   });
 
   describe('getPageInsets()', () => {
+    beforeEach(() => {
+      mockedHasSGJavaScriptBridge = jest.fn(() => true);
+    });
+
     it('should return the Android insets if the client state is not ready yet', () => {
       const result = getPageInsets({ client: {} });
       expect(result).toEqual(PAGE_INSETS_ANDROID);
     });
 
-    it('should return the Android insets on Andoid devices', () => {
+    it('should return the Android insets on Android devices', () => {
+      const result = getPageInsets({ ...mockedStateAndroid });
+      expect(result).toEqual(PAGE_INSETS_ANDROID);
+    });
+
+    it('should return the Android insets when no SGJavaScriptBridge is available', () => {
+      mockedHasSGJavaScriptBridge = jest.fn(() => false);
       const result = getPageInsets({ ...mockedStateAndroid });
       expect(result).toEqual(PAGE_INSETS_ANDROID);
     });

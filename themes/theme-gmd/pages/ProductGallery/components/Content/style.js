@@ -26,7 +26,6 @@ const slider = css({
 const slide = css({
   position: 'relative',
   width: '100%',
-  height: '100%',
 }).toString();
 
 const sliderStyles = {

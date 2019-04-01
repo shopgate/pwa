@@ -1,47 +1,30 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
+import { shallow } from 'enzyme';
 import Link from '@shopgate/pwa-common/components/Link';
-import { LoadingProvider } from '@shopgate/pwa-common/providers';
-import { createMockStore } from '@shopgate/pwa-common/store';
 import CheckoutButton from './index';
 
-const store = createMockStore();
-
-// Mock the history connector
-jest.mock('./connector', () => (obj) => {
-  const newObj = obj;
-
-  newObj.defaultProps = {
-    ...newObj.defaultProps,
-    isOrderable: false,
-  };
-
-  return newObj;
-});
+jest.mock('Pages/Cart/context', () => ({
+  Consumer: jest.fn(({ children }) => children({
+    isLoading: false,
+  })),
+}));
+jest.mock('./connector', () => cmp => cmp);
 
 describe('<CheckoutButton />', () => {
-  jest.useFakeTimers();
+  it('should render disabled button', () => {
+    const wrapper = shallow(<CheckoutButton isOrderable={false} />).dive();
+    const childLink = wrapper.find(Link);
 
-  let wrapper;
-  let childLink;
+    expect(wrapper).toMatchSnapshot();
+    expect(childLink.props().disabled).toBe(true);
+    expect(wrapper.find('Translate').props().string).toBe('cart.checkout');
+  });
 
-  describe('Checkout is possible', () => {
-    beforeEach(() => {
-      wrapper = mount((
-        <Provider store={store}>
-          <LoadingProvider>
-            <CheckoutButton />
-          </LoadingProvider>
-        </Provider>
-      ));
-      childLink = wrapper.find(Link);
-    });
+  it('should render enabled button', () => {
+    const wrapper = shallow(<CheckoutButton isOrderable />).dive();
+    const childLink = wrapper.find(Link);
 
-    it('should render without any props', () => {
-      expect(wrapper).toMatchSnapshot();
-      expect(childLink.props().disabled).toBe(true);
-      expect(wrapper.text()).toBe('cart.checkout');
-    });
+    expect(wrapper).toMatchSnapshot();
+    expect(childLink.props().disabled).toBe(false);
   });
 });

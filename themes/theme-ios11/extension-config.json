@@ -229,6 +229,86 @@
           }
         }
       }
+    },
+    "cartShippingHideAnonymousLegacy": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_hide_shipping_text_for_logged_out_users?parsed=true",
+        "key": "value"
+      }
+    },
+    "cartShippingTextAnonymousLegacy": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_shipping_text_for_logged_out_users?parsed=true",
+        "key": "value"
+      }
+    },
+    "cartTaxText": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_cart_tax_settings?parsed=true",
+        "key": "value.text"
+      }
+    },
+    "cart": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "hideTotal": false,
+        "hideShipping": false,
+        "hideTax": false,
+        "shipping": {
+          "hideFreeShipping": false,
+          "hideAnonymous": null,
+          "textForAnonymousUsers": null,
+          "textForFreeShipping": null,
+          "textForNoShipping": null,
+          "hint": null
+        },
+        "tax": {
+          "text": null,
+          "hint": null
+        }
+      },
+      "params": {
+        "type": "json",
+        "label": "Configure the display of cart information."
+      }
+    },
+    "hasNoScanner": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/has_no_scanner?parsed=true",
+        "key": "value"
+      }
+    },
+    "scanner": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "showSearchFieldIcon": true
+      },
+      "params": {
+        "type": "json",
+        "label": "Scanner settings: icon on/off, etc"
+      }
     }
   }
 }

@@ -18,7 +18,7 @@
     "@shopgate/pwa-ui-shared": "6.3.1",
     "eslint": "^4.17.0",
     "prop-types": "^15.6.0",
-    "react": "~16.3.2",
+    "react": "~16.8.4",
     "react-redux": "^5.0.5"
   }
 }

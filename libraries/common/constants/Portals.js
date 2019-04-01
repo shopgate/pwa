@@ -1,6 +1,7 @@
 // FEATURES
 const APP = 'app';
 const APP_BAR = 'app-bar';
+const VIEW = 'view';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
 const NO_RESULTS = 'no-results';
@@ -13,6 +14,7 @@ const ROUTES = 'routes';
 const CONTENT = 'content';
 const HOME = 'home';
 const LOGIN = 'login';
+const SCANNER = 'scanner';
 const REGISTER_LINK = 'register-link';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
@@ -40,6 +42,10 @@ export const BELOW = 'below';
 export const APP_GLOBALS = `${APP}.${GLOBALS}`;
 export const APP_ROUTES = `${APP}.${ROUTES}`;
 
+export const VIEW_CONTENT_BEFORE = `${VIEW}.${CONTENT}.${BEFORE}`;
+export const VIEW_CONTENT = `${VIEW}.${CONTENT}`;
+export const VIEW_CONTENT_AFTER = `${VIEW}.${CONTENT}.${AFTER}`;
+
 export const PAGE_CONTENT_BEFORE = `${PAGE}.${CONTENT}.${BEFORE}`;
 export const PAGE_CONTENT = `${PAGE}.${CONTENT}`;
 export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
@@ -62,6 +68,10 @@ export const NAV_MENU_CONTENT_AFTER = `${NAV_MENU}.${CONTENT}.${AFTER}`;
 export const NAV_MENU_HOME_BEFORE = `${NAV_MENU}.${HOME}.${BEFORE}`;
 export const NAV_MENU_HOME = `${NAV_MENU}.${HOME}`;
 export const NAV_MENU_HOME_AFTER = `${NAV_MENU}.${HOME}.${AFTER}`;
+
+export const NAV_MENU_SCANNER_BEFORE = `${NAV_MENU}.${SCANNER}.${BEFORE}`;
+export const NAV_MENU_SCANNER = `${NAV_MENU}.${SCANNER}`;
+export const NAV_MENU_SCANNER_AFTER = `${NAV_MENU}.${SCANNER}.${AFTER}`;
 
 export const NAV_MENU_TERMS_BEFORE = `${NAV_MENU}.${TERMS}.${BEFORE}`;
 export const NAV_MENU_TERMS = `${NAV_MENU}.${TERMS}`;

@@ -11,7 +11,17 @@ import {
   getAddToCartMetadata,
   hasCouponSupport,
   getIsFetching,
+  getSubTotal,
+  getDiscounts,
+  getTax,
+  getGrandTotal,
 } from './index';
+import {
+  CART_TOTALS_TYPE_DISCOUNT,
+  CART_TOTALS_TYPE_GRAND,
+  CART_TOTALS_TYPE_SUB,
+  CART_TOTALS_TYPE_TAX,
+} from '../constants';
 
 describe('Cart selectors', () => {
   describe('getFlags()', () => {
@@ -105,6 +115,36 @@ describe('Cart selectors', () => {
     it('should return false if cart is not fetching', () => {
       const result = getIsFetching({ cart: { isFetching: false } });
       expect(result).toEqual(false);
+    });
+  });
+
+  describe('getTotals', () => {
+    const mockedState = {
+      cart: {
+        totals: [
+          { type: CART_TOTALS_TYPE_SUB, amount: 100 },
+          { type: CART_TOTALS_TYPE_DISCOUNT, amount: 5 },
+          { type: CART_TOTALS_TYPE_DISCOUNT, amount: 2 },
+          { type: CART_TOTALS_TYPE_TAX, label: 'inkl. 26%  MwSt.', amount: 5 },
+          { type: CART_TOTALS_TYPE_GRAND, amount: 105 },
+        ],
+      },
+    };
+
+    it('should return subtotal', () => {
+      expect(getSubTotal(mockedState)).toEqual(100);
+    });
+    it('should return discount', () => {
+      expect(getDiscounts(mockedState)).toEqual([
+        mockedState.cart.totals[1],
+        mockedState.cart.totals[2],
+      ]);
+    });
+    it('should return tax', () => {
+      expect(getTax(mockedState)).toEqual(mockedState.cart.totals[3]);
+    });
+    it('should return grand total', () => {
+      expect(getGrandTotal(mockedState)).toEqual(105);
     });
   });
 });

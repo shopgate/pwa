@@ -4,7 +4,10 @@ export const DEEPLINK_CART_ADD_COUPON_PATTERN = '/cart_add_coupon/:couponId';
 export const CART_ITEM_TYPE_COUPON = 'coupon';
 export const CART_ITEM_TYPE_PRODUCT = 'product';
 export const CART_TOTALS_TYPE_SUB = 'subTotal';
+export const CART_TOTALS_TYPE_GRAND = 'grandTotal';
+export const CART_TOTALS_TYPE_DISCOUNT = 'discount';
 export const CART_TOTALS_TYPE_SHIPPING = 'shipping';
+export const CART_TOTALS_TYPE_TAX = 'tax';
 export const COUPON_TYPE_FIXED = 'fixed';
 export const COUPON_TYPE_PERCENTAGE = 'percentage';
 
