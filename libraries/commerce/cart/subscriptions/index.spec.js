@@ -46,7 +46,7 @@ describe('Cart subscriptions', () => {
       const coupon = '10PERCENTOFF';
       const action = {
         params: {
-          pathname: `/cart_add_coupon/${coupon}`,
+          pathname: `/cart_add_coupon/${coupon}?get=parameter`,
         },
       };
 
