@@ -1,3 +1,5 @@
+/** @module category */
+
 // ACTIONS
 export { default as fetchCategory } from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 export { default as fetchCategoryChildren } from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryChildren';

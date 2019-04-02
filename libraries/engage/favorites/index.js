@@ -1,3 +1,5 @@
+/** @module favorites */
+
 // ACTIONS
 export { default as fetchFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/fetchFavorites';
 export { requestSync as toggleFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';

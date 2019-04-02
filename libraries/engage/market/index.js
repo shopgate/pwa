@@ -1,3 +1,5 @@
+/** @module market */
+
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/market/constants/index';
 export * from '@shopgate/pwa-common-commerce/market/constants/Portals';

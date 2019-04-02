@@ -1,3 +1,5 @@
+/** @module app */
+
 import { APP_DID_START, APP_WILL_START, WILL_REGISTER_LINK_EVENTS, DID_REGISTER_LINK_EVENTS } from '@shopgate/pwa-common/constants/ActionTypes';
 
 // CONSTANTS

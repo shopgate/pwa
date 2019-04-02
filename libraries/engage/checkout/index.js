@@ -1,3 +1,5 @@
+/** @module checkout */
+
 // ACTIONS
 export { default as fetchCheckoutUrl } from '@shopgate/pwa-common-commerce/checkout/actions/fetchCheckoutUrl';
 

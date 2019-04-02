@@ -1,3 +1,5 @@
+/** @module product */
+
 // ACTIONS
 export { default as changeSortOrder } from '@shopgate/pwa-common-commerce/product/actions/changeSortOrder';
 export { default as fetchHighlightProducts } from '@shopgate/pwa-common-commerce/product/actions/fetchHighlightProducts';

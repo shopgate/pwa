@@ -1,3 +1,5 @@
+/** @module cart */
+
 // ACTIONS
 export { default as addCouponsToCart } from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 export { default as addProductsToCart } from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
