@@ -1,7 +1,8 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { IMAGE_SPACE } from '../../style';
+
+const { colors, variables } = themeConfig;
 
 const disabled = css({
   color: colors.shade5,
