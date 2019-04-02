@@ -1,4 +1,7 @@
 import { css } from 'glamor';
+import { themeConfig } from '../../helpers/config';
+
+const { font } = themeConfig;
 
 css.global('*, *:before, *:after', {
   boxSizing: 'border-box',
@@ -20,8 +23,13 @@ css.global('html', {
 });
 
 css.global('body', {
+  font: `${font.rootSize}px/${font.lineHeight} ${font.family}`,
   overflow: 'auto',
   margin: 0,
   WebkitOverflowScrolling: 'touch',
   WebkitUserSelect: 'none',
+});
+
+css.global('[data-pattern]', {
+  height: '100% !important',
 });
