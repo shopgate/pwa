@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FloatingActionButton } from '@shopgate/pwa-ui-material';
 import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Icon from './components/Icon';
 import connect from './connector';
 import inject from './injector';
 import styles from './style';
+
+const { colors } = themeConfig;
 
 /**
  * The CartButton component.

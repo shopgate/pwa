@@ -2,7 +2,7 @@
 
 exports[`<OptionInfo /> should render price element 1`] = `
 <Grid
-  className="css-k4qf09"
+  className="css-jy6f7q"
   component="ul"
   wrap={false}
 >
@@ -25,7 +25,7 @@ exports[`<OptionInfo /> should render price element 1`] = `
 
 exports[`<OptionInfo /> should render required element 1`] = `
 <Grid
-  className="css-k4qf09"
+  className="css-jy6f7q"
   component="ul"
   wrap={false}
 >

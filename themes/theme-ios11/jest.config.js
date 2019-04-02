@@ -9,7 +9,6 @@ module.exports = {
     '^Config(.*)$': '<rootDir>/config',
     '^Extensions(.*)$': '<rootDir>/extensions',
     '^Pages(.*)$': '<rootDir>/pages',
-    '^Styles(.*)$': '<rootDir>/styles',
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   testPathIgnorePatterns: [

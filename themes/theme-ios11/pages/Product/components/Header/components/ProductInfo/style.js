@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
 
 export const productInfo = css({
   marginTop: `${variables.gap.small / 2}px`,
