@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
 import styles from './style';
+
+const { colors } = themeConfig;
 
 /**
  * The FilterBar component.

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
+
+const { variables } = themeConfig;
 
 /**
  * The height of one row.
@@ -34,7 +36,7 @@ class ChipLayout extends Component {
 
   static defaultProps = {
     children: null,
-    handleMoreButton: () => {},
+    handleMoreButton: () => { },
     invertMoreButton: false,
     maxRows: 2,
     moreLabel: 'more',
