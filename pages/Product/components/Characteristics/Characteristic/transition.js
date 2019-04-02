@@ -1,4 +1,6 @@
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
 
 export default {
   entering: {

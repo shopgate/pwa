@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import Content from './components/Content';
 import ViewProvider from '../../providers/View';
 import { ViewContext } from './context';
 import styles from './style';
+
+const { colors } = themeConfig;
 
 /**
  * The View container component.

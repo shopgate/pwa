@@ -19,8 +19,7 @@
           "Components": "./components",
           "Config": "./config",
           "Extensions": "./extensions",
-          "Pages": "./pages",
-          "Styles": "./styles"
+          "Pages": "./pages"
         }
       }
     ]
