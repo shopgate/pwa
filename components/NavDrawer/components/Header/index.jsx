@@ -4,9 +4,11 @@ import { onlyUpdateForKeys } from 'recompose';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
+
+const { colors } = themeConfig;
 
 const enhance = onlyUpdateForKeys(['email']);
 

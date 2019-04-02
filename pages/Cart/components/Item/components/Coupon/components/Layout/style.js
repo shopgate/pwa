@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
 
 const item = css({
   fontSize: '0.875rem',
