@@ -32,6 +32,33 @@ Install with `yarn`:
 yarn add @shopgate/engage
 ```
 
+## Contents
+
+| Module                     | Description                                            |
+| -------------------------- | ------------------------------------------------------ |
+| [app](./app)               | The web application basics                             |
+| [cart](./cart)             | Shopping cart                                          |
+| [category](./category)     | Category                                               |
+| [checkout](./checkout)     | Checkout                                               |
+| [client](./client)         | The web application client (browser)                   |
+| [components](./components) | The [React.js](https://reactjs.org) components         |
+| [core](./core)             | The core elements                                      |
+| [favorites](./favorites)   | Favorites / Wishlist                                   |
+| [filter](./filter)         | Filter (on the category page)                          |
+| [market](./market)         | Market                                                 |
+| [menu](./menu)             | Menu                                                   |
+| [modal](./modal)           | Modal                                                  |
+| [orders](./orders)         | Orders                                                 |
+| [page](./page)             | CMS Page                                               |
+| [product](./product)       | Product                                                |
+| [reviews](./reviews)       | Reviews (Product Reviews)                              |
+| [router](./router)         | The application router                                 |
+| [scanner](./scanner)       | Scanner (AdScanner, BarcodeScanner, CreditCardScanner) |
+| [search](./search)         | Search                                                 |
+| [store](./store)           | The application store                                  |
+| [url](./url)               | URL                                                    |
+| [user](./user)             | User                                                   |
+
 ## Documentation
 
 Check out our [documentation website](https://developer.shopgate.com/guides)!
