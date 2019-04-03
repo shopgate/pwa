@@ -2,6 +2,7 @@ import { router, ACTION_REPLACE } from '@virtuous/conductor';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
+import { openPageExtern } from '@shopgate/pwa-core';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -196,6 +197,16 @@ export const openExternalLink = (location, historyAction, state) => {
   });
 
   handleAppRedirect(historyAction, state);
+};
+
+/**
+ * Opens external url with openPageExternal command.
+ * @param {string} location The location to open.
+ */
+export const openExternalUrl = (location) => {
+  openPageExtern({
+    src: location,
+  });
 };
 
 /**
