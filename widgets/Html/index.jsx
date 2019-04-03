@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import parseHTML from '@shopgate/pwa-common/helpers/html/parseHTML';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import styles from './style';
 import connect from './connector';
+
+const { variables } = themeConfig;
 
 /**
  * The custom HTML widget.
