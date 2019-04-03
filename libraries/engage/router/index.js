@@ -1,18 +1,31 @@
 /** @module router */
+import {
+  getCurrentRoute as getCurrentRouteHelper,
+  router,
+  history,
+  parseQueryStringToObject,
+  parseObjectToQueryString,
+} from '@shopgate/pwa-common/helpers/router';
 
 // ACTIONS
-export { default as historyPop } from '@shopgate/pwa-common/actions/router/historyPop';
-export { default as historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
-export { default as historyRedirect } from '@shopgate/pwa-common/actions/router/historyRedirect';
-export { default as historyReplace } from '@shopgate/pwa-common/actions/router/historyReplace';
-export { default as historyReset } from '@shopgate/pwa-common/actions/router/historyReset';
+export * from '@shopgate/pwa-common/actions/router/historyPop';
+export * from '@shopgate/pwa-common/actions/router/historyPush';
+export * from '@shopgate/pwa-common/actions/router/historyRedirect';
+export * from '@shopgate/pwa-common/actions/router/historyReplace';
+export * from '@shopgate/pwa-common/actions/router/historyReset';
 
 // COLLECTIONS
 export { default as authRoutes } from '@shopgate/pwa-common/collections/AuthRoutes';
 export { default as redirects } from '@shopgate/pwa-common/collections/Redirects';
 
 // HELPERS
-export * from '@shopgate/pwa-common/helpers/router';
+export {
+  getCurrentRouteHelper,
+  router,
+  history,
+  parseQueryStringToObject,
+  parseObjectToQueryString,
+};
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/router';
