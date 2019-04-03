@@ -103,14 +103,14 @@ export const getProductOptions = createSelector(
       ...option.type === OPTION_TYPE_TEXT && {
         info: option.annotation,
         required: !!option.required,
-        price: {
-          currency,
-          price: option.unitPriceModifier,
-        },
+        price: option.unitPriceModifier,
       },
     }))
       // Move select type options on top, keep the rest
       .sort((a, b) => {
+        if (a.type === b.type) {
+          return 0;
+        }
         if (a.type === 'select') {
           return -1;
         }

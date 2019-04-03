@@ -1,12 +1,13 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
+import debounce from 'lodash/debounce';
 import TextField from '@shopgate/pwa-ui-shared/Form/TextField';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import withShowModal from '@shopgate/pwa-common/helpers/modal/withShowModal';
 import transition from './../../../Characteristics/Characteristic/transition';
 import { ProductContext } from '../../../../context';
-import OptionInfo from './components/OptionInfo';
+import OptionInformation from './components/OptionInfo';
 import styles from './style';
 
 /**
@@ -18,10 +19,7 @@ class TextOption extends PureComponent {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    price: PropTypes.shape({
-      currency: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-    }).isRequired,
+    price: PropTypes.number.isRequired,
     required: PropTypes.bool.isRequired,
     showModal: PropTypes.func.isRequired,
     info: PropTypes.string,
@@ -111,6 +109,15 @@ class TextOption extends PureComponent {
   }
 
   /**
+   * @param {string} val value.
+   */
+  handleChange = (val) => {
+    this.props.onChange(this.props.id, val, this.props.price);
+  }
+
+  handleDebounced = debounce(this.handleChange, 300)
+
+  /**
    * @return {JSX}
    */
   render() {
@@ -118,7 +125,6 @@ class TextOption extends PureComponent {
       id,
       label,
       value,
-      onChange,
       required,
       price,
     } = this.props;
@@ -133,7 +139,7 @@ class TextOption extends PureComponent {
                   setRef={this.setRef}
                   name={`text_${id}`}
                   value={value}
-                  onChange={val => onChange(id, val)}
+                  onChange={this.handleDebounced}
                   onKeyPress={this.handleKeyPress}
                   placeholder={label}
                   label={label}
@@ -143,7 +149,7 @@ class TextOption extends PureComponent {
                   className={styles.element}
                 />
               </div>
-              <OptionInfo label={label} required={required} price={price} />
+              <OptionInformation label={label} required={required} price={price} />
             </Fragment>
           )}
         </Transition>

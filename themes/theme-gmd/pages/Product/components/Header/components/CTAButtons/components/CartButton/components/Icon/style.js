@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
 
 const container = css({
   transition: 'transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1)',

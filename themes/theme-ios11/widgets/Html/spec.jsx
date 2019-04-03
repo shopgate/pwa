@@ -2,11 +2,13 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { JSDOM } from 'jsdom';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import { configureStore } from '@shopgate/pwa-common/store';
 import reducers from 'Pages/reducers';
 import HtmlWidget from './index';
+
+const { variables } = themeConfig;
 
 const store = configureStore(reducers, []);
 
@@ -161,7 +163,7 @@ describe.skip('<HtmlWidget />', () => {
       aTag.closest = () => aTag;
       const event = {
         target: aTag,
-        preventDefault: () => {},
+        preventDefault: () => { },
       };
 
       wrapper.instance().handleTap(event);
@@ -192,7 +194,7 @@ describe.skip('<HtmlWidget />', () => {
       spanTag.closest = () => aTag;
       const event = {
         target: spanTag,
-        preventDefault: () => {},
+        preventDefault: () => { },
       };
 
       wrapper.find('HtmlWidget').instance().handleTap(event);
