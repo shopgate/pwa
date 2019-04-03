@@ -25,7 +25,7 @@ exports[`<ValueButton /> should handle click event 1`] = `
 
 exports[`<ValueButton /> should render as active 1`] = `
 <button
-  className="css-3luoaw"
+  className="css-1h48rjj"
   data-test-id="someid"
   onClick={[Function]}
   value="someid"
