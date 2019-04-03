@@ -78,6 +78,6 @@ export default () => dispatch => new Promise(async (resolve) => {
     // Open the settings (protected by a timeout, so that the modal closes before the app is left).
     setTimeout(() => {
       openAppSettings();
-    }, 100);
+    }, 0);
   }
 });
