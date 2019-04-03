@@ -124,6 +124,12 @@ export default function routerSubscriptions(subscribe) {
     // If there is one of the known protocols in the url.
     if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) {
+        const { target } = routeState || {};
+        if (target === '_blank') {
+          // Deeplinks to social apps: fb, whatsapp, etc. Treat as native links
+          handler.openExternalUrl(location);
+          return;
+        }
         handler.openExternalLink(location, historyAction, state);
       } else if (handler.isNativeLink(location)) {
         handler.openNativeLink(location);
