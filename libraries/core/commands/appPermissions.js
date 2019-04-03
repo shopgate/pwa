@@ -3,7 +3,7 @@ import RequestAppPermissionsRequest from '../classes/AppPermissionsRequest/Reque
 
 /**
  * Gathers the current permissions from the operating system.
- * @param {Array} [permissionIds=[]] The desired permission ids. If kept empty all will be retured.
+ * @param {Array} [permissionIds=[]] The desired permission ids. If kept empty all will be returned.
  * @return {Promise<Array>}
  */
 export const getAppPermissions = (permissionIds = []) =>
@@ -13,7 +13,7 @@ export const getAppPermissions = (permissionIds = []) =>
 
 /**
  * Requests additional permissions from the operating system.
- * @param {Array} permissions The desired permissions. If kept empty all will be retured.
+ * @param {Array} permissions The desired permissions. If kept empty all will be returned.
  * @return {Promise<Array>}
  */
 export const requestAppPermissions = permissions =>

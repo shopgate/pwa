@@ -170,6 +170,10 @@
     "noResult": {
       "qrCode": "Er werd geen resultaat voor uw QR code gevonden.",
       "barCode": "Geen producten gevonden."
+    },
+    "camera_access_denied": {
+      "message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
+      "settings_button": "Ga naar instellingen"
     }
   }
 }
