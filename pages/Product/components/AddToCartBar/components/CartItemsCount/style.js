@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
 
 export const duration = 200;
 export const durationShort = 50;

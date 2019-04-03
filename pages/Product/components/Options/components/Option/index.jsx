@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Picker from 'Components/Picker';
+import { ProductContext } from '../../../../context';
 import PriceDifference from '../PriceDifference';
 
 /**
@@ -15,20 +16,24 @@ const Option = ({
   value,
   onChange,
 }) => (
-  <div key={id} data-test-id={label}>
-    <Picker
-      label={label}
-      items={items.map(item => ({
-        ...item,
-        rightComponent: (
-          <PriceDifference currency={item.currency} difference={item.price} />
-        ),
-      }))}
-      placeholder={<I18n.Text string="product.pick_an_attribute" params={[label]} />}
-      value={value}
-      onChange={val => onChange(id, val)}
-    />
-  </div>
+  <ProductContext.Consumer>
+    {({ currency }) => (
+      <div key={id} data-test-id={label}>
+        <Picker
+          label={label}
+          items={items.map(item => ({
+            ...item,
+            rightComponent: (
+              <PriceDifference currency={currency} difference={item.price} />
+            ),
+          }))}
+          placeholder={<I18n.Text string="product.pick_an_attribute" params={[label]} />}
+          value={value}
+          onChange={val => onChange(id, val, items.find(item => item.value === val).price)}
+        />
+      </div>
+    )}
+  </ProductContext.Consumer>
 );
 
 Option.propTypes = {

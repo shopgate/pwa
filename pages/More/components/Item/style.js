@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
 
 // place a thick shadow at the top of the first child and a thin shadow otherwise
 export default css({
