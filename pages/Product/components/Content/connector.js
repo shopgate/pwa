@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import {
   getBaseProductId,
   getVariantId,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
+  getProductCurrency,
+} from '@shopgate/pwa-common-commerce/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 
 /**
@@ -14,11 +15,11 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
 const mapStateToProps = (state, props) => ({
   baseProductId: getBaseProductId(state, props),
   variantId: getVariantId(state, props),
+  currency: getProductCurrency(state, props),
 });
 
 /**
  * @param {Function} dispatch The redux dispatch function.
- * @param {Function} props The component props.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({

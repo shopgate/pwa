@@ -6,8 +6,6 @@
  * -------------------------------------------------------------------------
  */
 import '@shopgate/pwa-common/styles/reset';
-import 'Styles/fonts';
-import 'Styles/routes';
 import 'Extensions/portals';
 import React from 'react';
 import { render } from 'react-dom';
