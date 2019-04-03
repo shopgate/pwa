@@ -3,6 +3,8 @@
  * @module index
  */
 
+export { default as App } from '@shopgate/pwa-common/App';
+
 // COMMON
 export { default as Backdrop } from '@shopgate/pwa-common/components/Backdrop';
 export { default as BaseButton } from '@shopgate/pwa-common/components/Button';

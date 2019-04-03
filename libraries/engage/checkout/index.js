@@ -1,4 +1,5 @@
 /** @module checkout */
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
 // ACTIONS
 export { default as fetchCheckoutUrl } from '@shopgate/pwa-common-commerce/checkout/actions/fetchCheckoutUrl';
@@ -6,6 +7,7 @@ export { default as fetchCheckoutUrl } from '@shopgate/pwa-common-commerce/check
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/checkout/constants/index';
 export * from '@shopgate/pwa-common-commerce/checkout/constants/Pipelines';
+export { CHECKOUT_PATH };
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/checkout/selectors';

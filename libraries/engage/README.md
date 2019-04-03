@@ -34,30 +34,34 @@ yarn add @shopgate/engage
 
 ## Contents
 
-| Module                     | Description                                            |
-| -------------------------- | ------------------------------------------------------ |
-| [app](./app)               | The web application basics                             |
-| [cart](./cart)             | Shopping cart                                          |
-| [category](./category)     | Category                                               |
-| [checkout](./checkout)     | Checkout                                               |
-| [client](./client)         | The web application client (browser)                   |
-| [components](./components) | The [React.js](https://reactjs.org) components         |
-| [core](./core)             | The core elements                                      |
-| [favorites](./favorites)   | Favorites / Wishlist                                   |
-| [filter](./filter)         | Filter (on the category page)                          |
-| [market](./market)         | Market                                                 |
-| [menu](./menu)             | Menu                                                   |
-| [modal](./modal)           | Modal                                                  |
-| [orders](./orders)         | Orders                                                 |
-| [page](./page)             | CMS Page                                               |
-| [product](./product)       | Product                                                |
-| [reviews](./reviews)       | Reviews (Product Reviews)                              |
-| [router](./router)         | The application router                                 |
-| [scanner](./scanner)       | Scanner (AdScanner, BarcodeScanner, CreditCardScanner) |
-| [search](./search)         | Search                                                 |
-| [store](./store)           | The application store                                  |
-| [url](./url)               | URL                                                    |
-| [user](./user)             | User                                                   |
+* `/cart` - Shopping Cart
+* `/category` - Category
+* `/checkout` - Checkout
+* **`/components`** - [React.js](https://reactjs.org) components
+* `/core`
+  * Classes
+  * AppCommands
+  * Emitters
+  * App *(pwa app)*
+  * Client
+  * Providers
+  * Collections
+  * Contexts
+  * Router
+  * Redux Store
+  * URL *(registration, etc.)*
+  * Menu *(navigation)*
+  * Modal
+* `/favorites` - Favorites / Wishlist
+* `/filter` - Filter (Search Result / Product List)
+* `/market` - Shop Market
+* `/orders` - Customer Orders
+* `/page` - CMS Pages
+* `/product` - Product
+* `/reviews` - Product Reviews
+* `/scanner` - AdScanner, BarcodeScanner, CreditCardScanner
+* `/search` - Product Search
+* `/user` - User
 
 ## Documentation
 
