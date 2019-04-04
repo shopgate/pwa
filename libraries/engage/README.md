@@ -16,31 +16,67 @@
 
 </div>
 
+## Installation
+
+Shopgate's ENGAGE is available as an [npm package](https://www.npmjs.com/package/@@shopgate/engage).
+
+Install with `npm`:
+
+```sh
+npm install @shopgate/engage
+```
+
+Install with `yarn`:
+
+```sh
+yarn add @shopgate/engage
+```
+
+## Contents
+
+* `/cart` - Shopping Cart
+* `/category` - Category
+* `/checkout` - Checkout
+* **`/components`** - [React.js](https://reactjs.org) components
+* `/core`
+  * Classes
+  * AppCommands
+  * Emitters
+  * App *(pwa app)*
+  * Client
+  * Providers
+  * Collections
+  * Contexts
+  * Router
+  * Redux Store
+  * URL *(registration, etc.)*
+  * Menu *(navigation)*
+  * Modal
+* `/favorites` - Favorites / Wishlist
+* `/filter` - Filter (Search Result / Product List)
+* `/market` - Shop Market
+* `/orders` - Customer Orders
+* `/page` - CMS Pages
+* `/product` - Product
+* `/reviews` - Product Reviews
+* `/scanner` - AdScanner, BarcodeScanner, CreditCardScanner
+* `/search` - Product Search
+* `/user` - User
+
 ## Documentation
 
 Check out our [documentation website](https://developer.shopgate.com/guides)!
-
-## Setting up new core extensions
-
-To set up a new core extension you need to perform the following steps:
-
-* Add an exception into the `.gitignore` file as it was done with `@shopgate-product-reviews`.
-* Open the file `repos.json` and add the repository to include there as a subtree.
-* Add the new extensions into the `Makefile` as an additional value for the `EXTENSIONS` variable.
-  * If it's not an extension, then use the apropriate variable in the `Makefile`.
-* Open the monorepo's `lerna.json` file and add your extension as an additional entry in `packages`
-* Add the same entry additionally into `workspaces` in the `package.json` file
 
 ## About Shopgate
 
 Shopgate is the leading mobile commerce platform.
 
 Shopgate offers everything online retailers need to be successful in mobile. Our leading
-software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize
-native apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
+software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize native
+apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
 
 ## License
 
-Shopgate's ENGAGE is available under the Apache License, Version 2.0.
+Shopgate's ENGAGE library is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.

@@ -8,6 +8,7 @@ import setProductVariantId from '../action-creators/setProductVariantId';
  * Processes the flags of a product and requests additional data if necessary.
  * @param {Object} product A single product.
  * @returns {Function} A redux thunk.
+ * @deprecated
  */
 const processProductFlags = product => dispatch => new Promise((resolve) => {
   const { id, flags = {}, baseProductId } = product;
