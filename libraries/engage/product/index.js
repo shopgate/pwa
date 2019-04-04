@@ -15,7 +15,9 @@ export { default as fetchProductsById } from '@shopgate/pwa-common-commerce/prod
 export { default as fetchProductsByQuery } from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 export { default as fetchProductShipping } from '@shopgate/pwa-common-commerce/product/actions/fetchProductShipping';
 export { default as fetchProductVariants } from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
-export { default as processProductFlags } from '@shopgate/pwa-common-commerce/product/actions/processProductFlags';
+
+// COLLECTIONS
+export { default as productImageFormats } from '@shopgate/pwa-common-commerce/product/collections/ProductImageFormats';
 
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/product/constants/index';

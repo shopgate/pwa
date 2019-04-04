@@ -11,3 +11,6 @@ export { CHECKOUT_PATH };
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/checkout/selectors';
+
+// STREAMS
+export * from '@shopgate/pwa-common-commerce/checkout/streams';

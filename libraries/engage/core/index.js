@@ -37,6 +37,7 @@ export { default as hideMenuBar } from '@shopgate/pwa-core/commands/hideMenuBar'
 export { default as hideNavigationBar } from '@shopgate/pwa-core/commands/hideNavigationBar';
 export { default as hideSplashScreen } from '@shopgate/pwa-core/commands/hideSplashScreen';
 export { default as onload } from '@shopgate/pwa-core/commands/onload';
+export { default as openAppSettings } from '@shopgate/pwa-core/commands/openAppSettings';
 export { default as openPage } from '@shopgate/pwa-core/commands/openPage';
 export { default as openPageExtern } from '@shopgate/pwa-core/commands/openPageExtern';
 export {
