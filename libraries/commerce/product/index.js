@@ -13,7 +13,9 @@ export { default as fetchProductsById } from './actions/fetchProductsById';
 export { default as fetchProductsByQuery } from './actions/fetchProductsByQuery';
 export { default as fetchProductShipping } from './actions/fetchProductShipping';
 export { default as fetchProductVariants } from './actions/fetchProductVariants';
-export { default as processProductFlags } from './actions/processProductFlags';
+
+// COLLECTIONS
+export { default as productImageFormats } from './collections/ProductImageFormats';
 
 // CONSTANTS
 export * from './constants/index';
