@@ -15,14 +15,14 @@
   },
   "changelog": {
     "cacheDir": ".changelog",
-    "nextVersion": "Unreleased",
     "labels": {
       "enhancement": ":rocket: Enhancement",
       "bug": ":bug: Bug Fix",
       "feature": ":rocket: New Feature",
       "breaking": ":boom: Breaking Change",
       "polish": ":nail_care: Polish",
-      "internal": ":house: Internal"
+      "internal": ":house: Internal",
+      "docs": ":memo: Documentation"
     }
   },
   "scripts": {
@@ -85,6 +85,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "compare-versions": "^3.4.0",
     "react-hot-loader": "4.8.0",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0"

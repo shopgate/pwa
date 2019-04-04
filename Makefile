@@ -354,7 +354,7 @@ publish-to-github:
 		git push origin "releases/$(RELEASE_NAME)";
 ifeq ("$(STABLE)","true")
 		# STABLE RELEASE
-		@# $ (call build-changelog)
+		$(call build-changelog)
 endif
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		# UPDATING MASTER FOR STABLE RELEASE
@@ -374,29 +374,15 @@ define build-changelog
 		@echo "======================================================================"
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
-		# Update develop branch, first
-		git checkout origin/develop && git checkout -b develop;
-		git merge "releases/$(RELEASE_NAME)" --no-commit;
-		git status;
-		-git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
-		-git push origin develop;
-		git status;
-		git reset --hard;
-		git checkout "releases/$(RELEASE_NAME)";
-		git status;
-		# Create a dummy tag for the changelog creation tool
-		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
-		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";
-		# Remove the dummy tag again, so it can be properly created with the changelog file inside
-		git push -d origin "refs/tags/$(RELEASE_NAME)";
-		git tag -d "$(RELEASE_NAME)";
-		git fetch origin;
+		touch CHANGELOG.md;
+		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --next="$(RELEASE_VERSION)" > CHANGELOG_NEW.md;
+		mv CHANGELOG_NEW.md CHANGELOG.md;
+		$(foreach theme, $(THEMES), cp CHANGELOG.md themes/$(theme)/CHANGELOG.md;)
 		# Push the new changelog to GitHub (into the STABLE release branch)
-		git add "CHANGELOG.md";
-		git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
-		git push origin "releases/$(RELEASE_NAME)" --tags;
-		# Recreate the tag with the changelog inside and push it to remote (origin)
-		git tag "$(RELEASE_NAME)" && git push origin "refs/tags/$(RELEASE_NAME)";
+		git add CHANGELOG.md;
+		$(foreach theme, $(THEMES), git add themes/$(theme)/CHANGELOG.md;)
+		-git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
+		-git push origin "releases/$(RELEASE_NAME)" --tags;
 
 endef
 
