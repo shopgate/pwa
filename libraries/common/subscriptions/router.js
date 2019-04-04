@@ -124,7 +124,7 @@ export default function routerSubscriptions(subscribe) {
     // If there is one of the known protocols in the url.
     if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) {
-        handler.openExternalLink(location, historyAction, state);
+        handler.openExternalLink(location, historyAction, state, routeState);
       } else if (handler.isNativeLink(location)) {
         handler.openNativeLink(location);
       }
