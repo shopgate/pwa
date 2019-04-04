@@ -25,6 +25,7 @@ export { default as hideMenuBar } from './commands/hideMenuBar';
 export { default as hideNavigationBar } from './commands/hideNavigationBar';
 export { default as hideSplashScreen } from './commands/hideSplashScreen';
 export { default as onload } from './commands/onload';
+export { default as openAppSettings } from './commands/openAppSettings';
 export { default as openPage } from './commands/openPage';
 export { default as openPageExtern } from './commands/openPageExtern';
 export {
