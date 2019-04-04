@@ -348,7 +348,8 @@ describe('Router subscriptions', () => {
       expect(openExternalLinkSpy).toHaveBeenCalledWith(
         params.pathname,
         params.action,
-        mockedRouterState
+        mockedRouterState,
+        undefined
       );
     });
 
