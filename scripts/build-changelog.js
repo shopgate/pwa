@@ -1,4 +1,63 @@
 #!/usr/bin/env node
+
+/* *************************************************************************************************
+ * GENERAL INFORMATION:
+ *
+ * This script takes the last "stable" tag and creates a changelog from pull requests that were
+ * done since the said tag up to the current HEAD. The param "release-name" is only used to create
+ * a title for the latest entries.
+ *
+ * It uses the already existing "CHANGELOG.md" file and only extends it by adding the latest
+ * entry on top. To properly work, the CHANGELOG.md file needs to at least contain the string
+ * "# Changelog" ending with a line feed or otherwise it won't know where to add the new entry.
+ * The original "CHANGELOG.md" file must be placed in the monorepo root directory.
+ *
+ * -------------------------------------------------------------------------------------------------
+ * USAGE:
+ *
+ * This script is supposed to be called within the 'Makefile'.
+ *
+ * To use this script you need to provide a github api token via env variable "GITHUB_AUTH".
+ *
+ * It can also be called like this (from monorepo root directory):
+ * $     GITHUB_AUTH=123abc ./scripts/build-changelog.js --release-name=vX.Y.Z > CHANGELOG.md.tmp
+ * $     && mv CHANGELOG.md.tmp CHANGELOG.md;
+ *
+ * -------------------------------------------------------------------------------------------------
+ * GOTCHAS:
+ *
+ * Make sure not to route the stdout output of the script directly to "CHANGELOG.md" because it
+ * would clear the file first and then there is nothing that can be done (resulting in a blank
+ * "CHANGELOG.md" file).
+ * Instead: Route the output to a temporary file and then overwrite the original later.
+ *
+ * -------------------------------------------------------------------------------------------------
+ * SKIPPING TAGS:
+ *
+ * It is not a good idea to skip releases, or otherwise entries will be assigned to wrong tags.
+ * If a tag is skipped then all the pull requests which are supposed to be part of the skipped
+ * changelog entry, will be instead put into the next (latest) entry. That also means the release
+ * order does matter! Changing the order of releases will cause duplicate change entries and also
+ * a wrong order of the release version entries.
+ * Latest releases (by date, not version) are always on top.
+ *
+ * Skipped tag example:
+ * - Given that the feature branches "v6.4.0" and "v6.5.0" exist
+ * - PR1 and PR2 => v6.4.0
+ * - PR3 => v6.5.0
+ * - v6.4.0 and v6.5.0 tags don't exist, yet
+ * - Build the changelog (with release-name v6.5.0)
+ *
+ * Resulting output (not literally):
+ *   v6.5.0: PR1, PR2 and PR3
+ *
+ * Why this output?
+ * - The tag v6.4.0 was never released, so everything will be directly put under
+ *   the v6.5.0 entry instead.
+ * - This is keeps changelog generation simple and saves resources, because it can do most of
+ *   its work locally.
+ ************************************************************************************************ */
+
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const { argv } = require('yargs');
@@ -7,6 +66,9 @@ const compareVersions = require('compare-versions');
 const { Changelog: LernaChangelog } = require('lerna-changelog');
 const lernaConfiguration = require('lerna-changelog/lib/configuration');
 const logger = require('./logger');
+
+// argv param name that should show up as the changelog version title
+const releaseNameParam = 'release-name';
 
 /**
  * Parses a version into its components without prerelease information.
@@ -33,8 +95,8 @@ function parseVersion(v) {
   };
 }
 
-if (!argv.next || argv.next.length === 0) {
-  const err = new Error('Required param "next" for next version was not specified!');
+if (!argv[releaseNameParam] || argv[releaseNameParam] === 0) {
+  const err = new Error(`Required param "${releaseNameParam}" was not specified!`);
   logger.error(err);
   throw err;
 }
@@ -101,7 +163,7 @@ async function run() {
     // Find last release: Get tags, filter out wrong tags and pre-releases, then take last one.
     const { stdout } = await exec("git tag | grep 'v' | grep -Ev '-' | tail -1");
     const prevVersion = stdout.trim();
-    const nextVersion = parseVersion(argv.next);
+    const nextVersion = parseVersion(argv[releaseNameParam]);
     const nextVersionString = `v${nextVersion.major}.${nextVersion.sub}.${nextVersion.minor}`;
 
     // Read previous changelog to extend it (remove ending line feeds -> added back in later)
@@ -114,7 +176,7 @@ async function run() {
       nextVersionString
     }](https://github.com/shopgate/theme-gmd/compare/${prevVersion}...${nextVersionString})`;
 
-    // Skip creating if the "nextVersion" is already filled out.
+    // Skip creation if the "nextVersion" title is already present.
     if (changelogContent.includes(config.nextVersion)) {
       // Output the already existing data when already is there already.
       logger.log(changelogContent);
@@ -123,9 +185,10 @@ async function run() {
 
     const changelog = new Changelog(config);
 
+    // The "release-name" param is not supposed to be used here. Instead use "HEAD".
     const latestChanges = await changelog.createMarkdown({
       tagFrom: prevVersion,
-      tagTo: nextVersionString,
+      tagTo: 'HEAD', // Latest commit of the current branch, which is usually the release branch.
     });
 
     // Add changes to the top of the main changelog
