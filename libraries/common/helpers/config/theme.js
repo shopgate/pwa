@@ -15,16 +15,21 @@ const defaultConfig = {
  * @param {Object} appConfig The app config.
  * @returns {Object}
  */
-export function getThemeConfig({ theme: { styles: { globals = {} } = {} } = {} } = {}) {
+export function getThemeConfig(appConfig) {
   if (process.env.NODE_ENV === 'test') {
     return themeConfig;
   }
+
+  const { colors = {}, theme: { styles: { globals = {} } = {} } = {} } = appConfig;
 
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
   return {
     font: globals.font,
-    colors: globals.colors,
+    colors: {
+      ...globals.colors,
+      ...colors,
+    },
     variables: {
       ...(oldTheme.variables || {}),
       materialShadow: globals.variables.baseShadow,
