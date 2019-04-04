@@ -351,11 +351,8 @@ publish-to-github:
 		git add -A && git commit -m "Released $(RELEASE_VERSION)";
 		# Update remotes and push changes into dedicated release branches
 		git fetch --all;
-		git push origin "releases/$(RELEASE_NAME)";
-ifeq ("$(STABLE)","true")
-		# STABLE RELEASE
 		$(call build-changelog)
-endif
+		git push origin "releases/$(RELEASE_NAME)";
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		# UPDATING MASTER FOR STABLE RELEASE
 		$(call push-subtrees-to-git, master)
@@ -375,14 +372,13 @@ define build-changelog
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
 		touch CHANGELOG.md;
-		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --next="$(RELEASE_VERSION)" > CHANGELOG_NEW.md;
+		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --release-name="$(RELEASE_VERSION)" > CHANGELOG_NEW.md;
 		mv CHANGELOG_NEW.md CHANGELOG.md;
 		$(foreach theme, $(THEMES), cp CHANGELOG.md themes/$(theme)/CHANGELOG.md;)
 		# Push the new changelog to GitHub (into the STABLE release branch)
 		git add CHANGELOG.md;
 		$(foreach theme, $(THEMES), git add themes/$(theme)/CHANGELOG.md;)
 		-git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
-		-git push origin "releases/$(RELEASE_NAME)" --tags;
 
 endef
 
