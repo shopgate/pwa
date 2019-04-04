@@ -348,7 +348,27 @@ describe('Router subscriptions', () => {
       expect(openExternalLinkSpy).toHaveBeenCalledWith(
         params.pathname,
         params.action,
-        mockedRouterState
+        mockedRouterState,
+        undefined
+      );
+    });
+
+    it('should handle external urls with target=_blank as expected', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: 'https://m.me/facebookID',
+        state: {
+          target: '_blank',
+        },
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(openExternalLinkSpy).toBeCalledTimes(1);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState,
+        params.state
       );
     });
 
