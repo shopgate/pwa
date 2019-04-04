@@ -164,6 +164,8 @@ async function run() {
     const { stdout } = await exec("git tag | grep 'v' | grep -Ev '-' | tail -1");
     const prevVersion = stdout.trim();
     const nextVersion = parseVersion(argv[releaseNameParam]);
+
+    // Normalize the given "release-name" for the tile (strip out pre-release information).
     const nextVersionString = `v${nextVersion.major}.${nextVersion.sub}.${nextVersion.minor}`;
 
     // Read previous changelog to extend it (remove ending line feeds -> added back in later)
