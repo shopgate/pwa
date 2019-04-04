@@ -1,10 +1,24 @@
-# Shopgate's ENGAGE Application
+<p align="center">
+  <a href="https://www.shopgate.com/en/solutions/engage-mobile-app/" rel="noopener" target="_blank">
+    <img width="250" src="https://d2ytbdjodkazy3.cloudfront.net/wp-content/uploads/2019/01/Logo_engage.svg.gzip" alt="Shopgate Logo">
+  </a>
+</p>
+
+<h1 align="center">Shopgate's ENGAGE</h1>
+
+<div align="center">
 
 [![Build Status](https://travis-ci.org/shopgate/pwa.svg?branch=v6.X)](https://travis-ci.org/shopgate/pwa)
 [![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=v6.X)](https://coveralls.io/github/shopgate/pwa?branch=v6.X)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+</div>
+
+## Documentation
+
+Check out our [documentation website](https://developer.shopgate.com/guides)!
 
 ## Setting up new core extensions
 

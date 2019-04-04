@@ -7,3 +7,6 @@ export * from './constants/Pipelines';
 
 // SELECTORS
 export * from './selectors';
+
+// STREAMS
+export * from './streams';

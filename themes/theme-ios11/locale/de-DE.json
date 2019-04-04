@@ -173,6 +173,10 @@
     "noResult": {
       "qrCode": "Wir konnten für diesen QR-Code kein Ergebnis finden.",
       "barCode": "Produkt nicht gefunden."
+    },
+    "camera_access_denied": {
+      "message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
+      "settings_button": "Zu den Einstellungen"
     }
   }
 }

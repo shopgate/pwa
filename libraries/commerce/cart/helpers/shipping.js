@@ -6,10 +6,6 @@
  * @returns {Object|null}
  */
 export function getShippingLine(cartConfig, isUserLoggedIn = false, shippingCost = null) {
-  if (shippingCost === null) {
-    return null;
-  }
-
   if (cartConfig.hideShipping) {
     return null;
   }
@@ -24,7 +20,11 @@ export function getShippingLine(cartConfig, isUserLoggedIn = false, shippingCost
       return { label: shippingConfig.textForAnonymousUsers };
     }
   }
-  // Continue
+
+  if (shippingCost === null) {
+    return null;
+  }
+
   if (shippingCost.amount === null) {
     if (shippingConfig.textForNoShipping) {
       return { label: shippingConfig.textForNoShipping };

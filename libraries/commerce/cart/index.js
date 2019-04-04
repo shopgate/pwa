@@ -8,12 +8,14 @@ export { default as updateProductsInCart } from './actions/updateProductsInCart'
 
 // CONSTANTS
 export * from './constants/index';
+export * from './constants/PipelineErrors';
 export * from './constants/Pipelines';
 export * from './constants/Portals';
 
 // HELPERS
 export * from './helpers';
 export * from './helpers/config';
+export { default as createPipelineErrorList } from './helpers/createPipelineErrorList';
 export * from './helpers/shipping';
 export * from './helpers/tax';
 
