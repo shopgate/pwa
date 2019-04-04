@@ -133,7 +133,7 @@ describe('grantCameraPermissions', () => {
 
     // Flush the promise queue, so that the code inside of promise from the action is executed.
     flushPromises().then(() => {
-      event.call([APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND]);
+      event.call(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND);
       jest.runAllTimers();
     });
   });
@@ -156,7 +156,7 @@ describe('grantCameraPermissions', () => {
 
     // Flush the promise queue, so that the code inside of promise from the action is executed.
     flushPromises().then(() => {
-      event.call([APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND]);
+      event.call(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND);
       jest.runAllTimers();
     });
   });
