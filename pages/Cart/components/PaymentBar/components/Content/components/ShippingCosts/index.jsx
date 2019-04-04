@@ -50,7 +50,11 @@ ShippingCosts.propTypes = {
   shippingCost: PropTypes.shape({
     label: PropTypes.string,
     amount: PropTypes.number,
-  }).isRequired,
+  }),
+};
+
+ShippingCosts.defaultProps = {
+  shippingCost: null,
 };
 
 export default connect(ShippingCosts);

@@ -172,6 +172,10 @@
     "noResult": {
       "qrCode": "Nous n'avons pas trouvé de résultat pour ce code QR.",
       "barCode": "Aucun produit trouvé."
+    },
+    "camera_access_denied": {
+      "message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
+      "settings_button": "Aller dans paramètres"
     }
   }
 }
