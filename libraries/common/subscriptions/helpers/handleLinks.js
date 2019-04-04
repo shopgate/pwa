@@ -2,6 +2,7 @@ import { router, ACTION_REPLACE } from '@virtuous/conductor';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
+import { openPageExtern } from '@shopgate/pwa-core';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -175,8 +176,18 @@ export const handleAppRedirect = (historyAction, state) => {
  * @param {string} location The location to open.
  * @param {string} historyAction The history action which was used to open the link.
  * @param {Object} state The application state.
+ * @param {Object} locationState state params for location
  */
-export const openExternalLink = (location, historyAction, state) => {
+export const openExternalLink = (location, historyAction, state, locationState = {}) => {
+  const { target } = locationState;
+  if (target === '_blank') {
+    // Deeplinks to social apps: fb, whatsapp, etc. Treat as native links
+    openPageExtern({
+      src: location,
+    });
+    return;
+  }
+
   showTab({
     targetTab: 'in_app_browser',
     animation: 'slideInFromBottom',
