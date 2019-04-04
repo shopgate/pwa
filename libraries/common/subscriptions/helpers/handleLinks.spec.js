@@ -1,4 +1,10 @@
-import { isShopLink, sanitizeLink } from './handleLinks';
+import { openPageExtern, openPage } from '@shopgate/pwa-core';
+import { isShopLink, sanitizeLink, openExternalLink } from './handleLinks';
+
+jest.mock('@shopgate/pwa-core', () => ({
+  openPageExtern: jest.fn(),
+  openPage: jest.fn(),
+}));
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   shopCNAME: 'm.example.com',
@@ -60,6 +66,21 @@ describe('handleLinks helpers', () => {
         expect(sanitizeLink(input)).toBe(output);
       }
     );
+  });
+
+  describe('openExternalLink', () => {
+    it('should call openPageExtern', () => {
+      const location = 'http://m.me/shopgate';
+      openExternalLink(
+        location,
+        'ACTION',
+        {},
+        { target: '_blank' }
+      );
+      expect(openPageExtern).toBeCalledTimes(1);
+      expect(openPageExtern).toBeCalledWith({ src: location });
+      expect(openPage).not.toBeCalled();
+    });
   });
 });
 

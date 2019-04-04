@@ -86,7 +86,6 @@ describe('Router subscriptions', () => {
 
   describe('navigate$', () => {
     const openExternalLinkSpy = jest.spyOn(handler, 'openExternalLink');
-    const openExternalUrlSpy = jest.spyOn(handler, 'openExternalUrl');
     const openNativeLinkSpy = jest.spyOn(handler, 'openNativeLink');
     const openLegacySpy = jest.spyOn(handler, 'openLegacy');
     const openLegacyLinkSpy = jest.spyOn(handler, 'openLegacyLink');
@@ -363,8 +362,13 @@ describe('Router subscriptions', () => {
       };
 
       await callback(createCallbackPayload({ params }));
-      expect(openExternalUrlSpy).toBeCalledTimes(1);
-      expect(openExternalUrlSpy).toHaveBeenCalledWith(params.pathname);
+      expect(openExternalLinkSpy).toBeCalledTimes(1);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState,
+        params.state
+      );
     });
 
     it('should handle native links like expected', async () => {
