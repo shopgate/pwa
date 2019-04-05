@@ -2,10 +2,6 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import { logger } from '@shopgate/pwa-core/helpers';
 import {
-  SCANNER_FORMATS_BARCODE,
-  SCANNER_FORMATS_QR_CODE,
-} from '@shopgate/pwa-core/constants/Scanner';
-import {
   QR_CODE_TYPE_HOMEPAGE,
   QR_CODE_TYPE_PRODUCT,
   QR_CODE_TYPE_PRODUCT_WITH_COUPON,
@@ -13,6 +9,8 @@ import {
   QR_CODE_TYPE_CATEGORY,
   QR_CODE_TYPE_SEARCH,
   QR_CODE_TYPE_PAGE,
+  SCANNER_FORMATS_BARCODE,
+  SCANNER_FORMATS_QR_CODE,
 } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { parse2dsQrCode } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import core from '@shopgate/tracking-core/core/Core';

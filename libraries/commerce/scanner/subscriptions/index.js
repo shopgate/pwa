@@ -5,10 +5,14 @@ import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import scannerFinished from '../action-creators/scannerFinished';
 import handleBarCode from '../actions/handleBarCode';
 import handleQrCode from '../actions/handleQrCode';
+import { SCANNER_FORMATS_BARCODE, SCANNER_FORMATS_QR_CODE } from '../constants';
 import {
   scannerFinishedBarCode$,
   scannerFinishedQrCode$,
 } from '../streams';
+
+// Scanner payload formats which are handled by the subscriptions.
+export const handledFormats = [...SCANNER_FORMATS_BARCODE, ...SCANNER_FORMATS_QR_CODE];
 
 /**
  * Scanner subscriptions.
@@ -17,7 +21,7 @@ import {
 export default (subscribe) => {
   // Register global listener to convert to stream
   subscribe(appDidStart$, ({ dispatch }) => {
-    Scanner.addListener(new ScannerEventListener('Scanner listener')
+    Scanner.addListener(new ScannerEventListener('Scanner listener', null, null, handledFormats)
       .setHandler(({ scope, payload: { format, code: payload } = {} }) => {
         dispatch(scannerFinished(scope, format, payload));
       }));

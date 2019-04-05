@@ -2,6 +2,7 @@ import ScannerEventHandler from './index';
 import ScannerEventListener from '../ScannerEventListener';
 import ScannerEvent from '../ScannerEvent';
 
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
 // Prevent console output of the logger
 jest.mock('../../helpers', () => ({
   logger: {
@@ -77,6 +78,32 @@ describe('ScannerEventHandler', () => {
       const l = new ScannerEventListener();
 
       expect(eventHandler.detach(l)).toBe(false);
+    });
+  });
+
+  describe('hasListenersForEvent(format)', () => {
+    it('should return true when listeners are registered for a passed format', () => {
+      const format = 'format';
+      const otherFormat = 'otherFormat';
+      eventHandler.attach(new ScannerEventListener(null, 'scope', 'type', [format])
+        .setHandler(() => { }));
+      eventHandler.attach(new ScannerEventListener(null, null, null, [otherFormat])
+        .setHandler(() => { }));
+
+      const event = new ScannerEvent('scope', 'type', { format });
+      const result = eventHandler.hasListenersForEvent(event);
+      expect(result).toBe(true);
+    });
+
+    it('should return false when no listeners are registered for a passed format', () => {
+      const format = 'format';
+      const otherFormat = 'otherFormat';
+      eventHandler.attach(new ScannerEventListener(null, 'scope', 'type', [format])
+        .setHandler(() => { }));
+
+      const event = new ScannerEvent('scope', 'type', { format: otherFormat });
+      const result = eventHandler.hasListenersForEvent(event);
+      expect(result).toBe(false);
     });
   });
 
