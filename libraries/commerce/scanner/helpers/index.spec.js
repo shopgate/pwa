@@ -55,11 +55,11 @@ describe('scanner helpers', () => {
       });
 
       it('should parse add product with coupon link', () => {
-        const result = parse2dsQrCode(`http://${QR_CODE_HOST_2DS}/9/30186/345%252F34%2523/TEST-CODE?s=26`);
+        const result = parse2dsQrCode(`http://${QR_CODE_HOST_2DS}/9/30186/345%252F34%2523/TEST%252FCODE%2523?s=26`);
         expect(result).toEqual({
-          link: '/cart_add_product/345%2F34%23/TEST-CODE',
+          link: '/cart_add_product/345%2F34%23/TEST%2FCODE%23',
           type: QR_CODE_TYPE_PRODUCT_WITH_COUPON,
-          data: { productId: '345/34#', couponCode: 'TEST-CODE' },
+          data: { productId: '345/34#', couponCode: 'TEST/CODE#' },
         });
       });
 

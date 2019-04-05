@@ -31,13 +31,14 @@ const typeParsers = {
 
   [QR_CODE_TYPE_PRODUCT_WITH_COUPON]: (url) => {
     const [,,, paramTwo, paramThree] = url.pathname.split('/');
-    const decodedParamTwo = decodeURIComponent(paramTwo);
+    const decodedParamTwo = decodeURIComponent(decodeURIComponent(paramTwo));
+    const decodedParamThree = decodeURIComponent(decodeURIComponent(paramThree));
 
     return {
-      link: `/cart_add_product/${decodedParamTwo}/${paramThree}`,
+      link: `/cart_add_product/${encodeURIComponent(decodedParamTwo)}/${encodeURIComponent(decodedParamThree)}`,
       data: {
-        productId: decodeURIComponent(decodedParamTwo),
-        couponCode: paramThree,
+        productId: decodedParamTwo,
+        couponCode: decodedParamThree,
       },
     };
   },
