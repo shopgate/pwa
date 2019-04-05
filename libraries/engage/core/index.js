@@ -62,7 +62,6 @@ export * from '@shopgate/pwa-core/constants/AppPermissions';
 export * from '@shopgate/pwa-core/constants/ErrorHandleTypes';
 export * from '@shopgate/pwa-core/constants/Pipeline';
 export * from '@shopgate/pwa-core/constants/ProcessTypes';
-export * from '@shopgate/pwa-core/constants/Scanner';
 
 // Common Constants
 export * from '@shopgate/pwa-common/constants/ActionTypes';
@@ -80,6 +79,28 @@ export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
 export * from '@shopgate/pwa-core/helpers';
 export { default as logGroup } from '@shopgate/pwa-core/helpers/logGroup';
 export * from '@shopgate/pwa-core/helpers/version';
+export * from '@shopgate/pwa-common/helpers/data';
+export * from '@shopgate/pwa-common/helpers/dom';
+export * from '@shopgate/pwa-common/helpers/environment';
+export { default as decodeHTML } from '@shopgate/pwa-common/helpers/html/decodeHTML';
+export * from '@shopgate/pwa-common/helpers/html/handleDOM';
+export { default as parseHTML } from '@shopgate/pwa-common/helpers/html/parseHTML';
+export { default as getTranslator } from '@shopgate/pwa-common/helpers/i18n/getTranslator';
+export { default as getPriceFormatter } from '@shopgate/pwa-common/helpers/i18n/getPriceFormatter';
+export { default as getDateFormatter } from '@shopgate/pwa-common/helpers/i18n/getDateFormatter';
+export { default as getTimeFormatter } from '@shopgate/pwa-common/helpers/i18n/getTimeFormatter';
+export { default as getNumberFormatter } from '@shopgate/pwa-common/helpers/i18n/getNumberFormatter';
+export * from '@shopgate/pwa-common/helpers/legacy';
+export { default as portalCollection } from '@shopgate/pwa-common/helpers/portals/portalCollection';
+export { default as routePortals } from '@shopgate/pwa-common/helpers/portals/routePortals';
+export * from '@shopgate/pwa-common/helpers/redux';
+export * from '@shopgate/pwa-common/helpers/style';
+export * from '@shopgate/pwa-common/helpers/tracking';
+export * from '@shopgate/pwa-common/helpers/validation';
+
+// STREAMS
+export * from '@shopgate/pwa-common/streams/main';
+export * from '@shopgate/pwa-common/streams/error';
 
 // --------------- APP --------------- //
 
@@ -148,6 +169,7 @@ export {
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/router';
+export * from '@shopgate/pwa-common/selectors/history';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/router';

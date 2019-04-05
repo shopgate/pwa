@@ -8,6 +8,7 @@ export { default as handleQrCode } from '@shopgate/pwa-common-commerce/scanner/a
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/scanner/constants';
 export * from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
+export * from '@shopgate/pwa-core/constants/Scanner';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/scanner/helpers';
