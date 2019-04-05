@@ -1,7 +1,10 @@
 import { redirects } from '@shopgate/pwa-common/collections';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
 import addCouponsToCart from '../actions/addCouponsToCart';
-import { DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
+import {
+  DEEPLINK_CART_ADD_COUPON_PATTERN,
+  DEEPLINK_CART_ADD_PRODUCT_PATTERN,
+} from '../constants';
 import { routeWithCouponWillEnter$ } from '../streams';
 import subscription from './index';
 
@@ -34,11 +37,11 @@ describe('Cart subscriptions', () => {
     it('should setup a redirect handler for cart_add_coupon deeplinks', () => {
       callback();
 
-      expect(redirectsSetSpy).toHaveBeenCalledTimes(1);
-      expect(redirectsSetSpy).toHaveBeenCalledWith(
-        DEEPLINK_CART_ADD_COUPON_PATTERN,
-        expect.any(Function)
-      );
+      expect(redirectsSetSpy).toHaveBeenCalledTimes(2);
+      expect(redirectsSetSpy.mock.calls).toEqual([
+        [DEEPLINK_CART_ADD_COUPON_PATTERN, expect.any(Function)],
+        [DEEPLINK_CART_ADD_PRODUCT_PATTERN, expect.any(Function)],
+      ]);
     });
 
     it('should dispatch the addCouponsToCart action when a cart_add_coupon deeplink was opened', () => {

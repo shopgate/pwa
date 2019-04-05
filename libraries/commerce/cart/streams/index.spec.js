@@ -1,10 +1,14 @@
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { ACTION_PUSH, ACTION_POP, ACTION_REPLACE } from '@virtuous/conductor';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
+import { routeWillEnter, navigate } from '@shopgate/pwa-common/action-creators/router';
 import receiveCart from '@shopgate/pwa-common-commerce/cart/action-creators/receiveCart';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
-import { routeWithCouponWillEnter$, cartUpdatedWhileVisible$ } from './index';
+import {
+  routeWithCouponWillEnter$,
+  cartUpdatedWhileVisible$,
+  routeAddProductNavigate$,
+} from './index';
 
 jest.mock('@shopgate/pwa-common/selectors/router', () => ({ getCurrentPathname: jest.fn() }));
 
@@ -83,6 +87,30 @@ describe('Cart streams', () => {
       dispatch(receiveCart({}));
 
       expect(subscriber).toHaveBeenCalled();
+    });
+  });
+
+  describe('routeAddProductNavigate$', () => {
+    let subscriber;
+    beforeEach(() => {
+      subscriber = jest.fn();
+      routeAddProductNavigate$.subscribe(subscriber);
+    });
+
+    it('should not emit when navigate does not map pattern', () => {
+      dispatch(navigate({ pathname: '/some_path' }));
+      expect(subscriber).not.toHaveBeenCalled();
+    });
+
+    it('should emit and map event correctly', () => {
+      dispatch(navigate({ pathname: '/cart_add_product/345%2F34%23/TEST-CODE' }));
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      expect(subscriber).toHaveBeenCalledWith(expect.objectContaining({
+        action: expect.objectContaining({
+          productId: '345/34#',
+          couponCode: 'TEST-CODE',
+        }),
+      }));
     });
   });
 });
