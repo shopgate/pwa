@@ -8,6 +8,29 @@ import { getUrl } from './url';
 export const getUserState = state => state.user;
 
 /**
+ * Gets user.login from the redux store.
+ * @param {Object} state The application state.
+ * @return {Object|null}
+ */
+export const getLoginData = createSelector(
+  getUserState,
+  (user) => {
+    if (!user || !user.login) {
+      return null;
+    }
+
+    return user.login;
+  }
+);
+
+/**
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ * @deprecated
+ */
+export const getUserLogin = getLoginData;
+
+/**
  * @param {Object} state The current application state.
  * @return {Object}
  */
@@ -23,27 +46,12 @@ export const getUserData = createSelector(
 );
 
 /**
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getUserLogin = createSelector(
-  getUserState,
-  (userState) => {
-    if (!userState) {
-      return null;
-    }
-
-    return userState.login;
-  }
-);
-
-/**
  * Selects the isLoggedIn state from the user.
  * @param {Object} state The global state.
  * @return {boolean}
  */
 export const isUserLoggedIn = createSelector(
-  getUserLogin,
+  getLoginData,
   (login) => {
     if (!login) {
       return false;
@@ -99,18 +107,20 @@ export const getUserEmail = createSelector(
 );
 
 /**
- * Gets user.login from the redux store.
- * @param {Object} state The application state.
- * @return {Object|null}
- */
-export const getLoginData = state => state.user.login;
-
-/**
  * Selects the disabled state of the login action from the redux store.
  * @param {Object} state The application state.
  * @return {Object|null}
  */
-export const isUserLoginDisabled = state => getLoginData(state).disabled;
+export const isUserLoginDisabled = createSelector(
+  getLoginData,
+  (login) => {
+    if (!login) {
+      return false;
+    }
+
+    return login.disabled;
+  }
+);
 
 /**
  * Gets the register url.
