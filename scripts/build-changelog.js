@@ -123,7 +123,7 @@ class Changelog extends LernaChangelog {
    */
   toCommitInfos(commits) {
     // Filter ot prerelease tags from commits
-    const ci = LernaChangelog.prototype.toCommitInfos.call(this, commits);
+    const ci = super.toCommitInfos(commits);
     return ci.map(commit => ({
       ...commit,
       tags: commit.tags ? commit.tags.filter(tag => !tag.includes('-')) : undefined,
@@ -137,8 +137,8 @@ class Changelog extends LernaChangelog {
    * @return {Promise<Object[]>}
    */
   async listReleases(from, to) {
+    const releases = await super.listReleases(from, to);
     const min = parseVersion(from);
-    const releases = await LernaChangelog.prototype.listReleases.call(this, from, to);
     return releases.filter((release) => {
       // Always treat unreleased as "higher"
       if (release.name === '___unreleased___') {
