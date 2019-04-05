@@ -162,14 +162,6 @@ export const getVariantProductId = (state, props) => {
 };
 
 /**
- * Checks if currently a variant is selected within the props.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @returns {boolean}
- */
-export const isVariantSelected = (state, props) => !!getVariantProductId(state, props);
-
-/**
  * Retrieves the product data for the passed productId from the store.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
@@ -662,24 +654,6 @@ export const getProductVariants = createSelector(
     }
 
     return entry.variants;
-  }
-);
-
-/**
- * Retrieves a product for the selected variant id from the store.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @returns {Object|null} The selected variant or null if none is selected
- */
-export const getSelectedVariant = createSelector(
-  getProduct,
-  isVariantSelected,
-  (product, selected) => {
-    if (!product || !selected) {
-      return null;
-    }
-
-    return product;
   }
 );
 
