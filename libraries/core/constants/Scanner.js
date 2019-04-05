@@ -58,17 +58,4 @@ export const SCANNER_TYPE_IMAGE = 'imageCapturing';
  */
 export const SCANNER_SCOPE_DEFAULT = 'default';
 
-export const SCANNER_FORMATS_BARCODE = [
-  'UPC_E',
-  'CODE_39',
-  'EAN_13',
-  'EAN_8',
-  'CODE_93',
-  'CODE_128',
-  'PDF_417',
-  'ITF',
-];
-
-export const SCANNER_FORMATS_QR_CODE = ['QR_CODE'];
-
 export const SCANNER_MIN_APP_LIB_VERSION = '21.0';

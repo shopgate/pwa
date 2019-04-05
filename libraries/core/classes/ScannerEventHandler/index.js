@@ -24,6 +24,13 @@ export default class ScannerEventHandler {
 
   /**
    * @param {ScannerEvent} event The event which has been emitted by the scanner.
+   * @returns {boolean}
+   */
+  hasListenersForEvent = event =>
+    Array.from(this.eventListeners).some(listener => listener.canHandleEvent(event));
+
+  /**
+   * @param {ScannerEvent} event The event which has been emitted by the scanner.
    * @returns {Promise<undefined>}
    * @throws {Error}
    */
