@@ -273,6 +273,7 @@ export class Scanner {
     );
 
     if (!this.eventHandler.hasListenersForEvent(event)) {
+      logger.warn('No scanner listeners', payload);
       return;
     }
 
