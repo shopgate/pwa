@@ -252,7 +252,7 @@ export const buildScannerUtmUrl = ({
 
   const { location } = scannerRoute;
 
-  const newPath = new URL(`scanner://${location}`);
+  const newPath = new URL(location, 'http://scanner.com');
 
   const utms = {
     utm_source: source,
