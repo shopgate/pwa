@@ -9,11 +9,13 @@ class ScannerEventListener {
    * @param {string|null} name A name for the listener object to refer to.
    * @param {string|null} scope The scanner scope to listen for.
    * @param {string|null} type THe type of scanner events to listen for.
+   * @param {Array} formats The formats which can be processed by the listener.
    */
-  constructor(name = null, scope = null, type = null) {
+  constructor(name = null, scope = null, type = null, formats = []) {
     this.name = name || 'unnamed';
     this.scope = scope || null;
     this.type = type || null;
+    this.formats = formats || [];
     this.handler = null;
   }
 
@@ -40,6 +42,34 @@ class ScannerEventListener {
   }
 
   /**
+   * Checks if the event fits to the handler.
+   * @param {ScannerEvent} event The scanner event which was emitted.
+   * @returns {boolean}
+   */
+  canHandleEvent = (event) => {
+    if (!this.handler) {
+      logger.warn(`No event handler defined for eventListener "${this.name}"`);
+      return false;
+    }
+
+    if (this.type && this.type !== event.getType()) {
+      return false;
+    }
+
+    if (this.scope && this.scope !== event.getScope()) {
+      return false;
+    }
+
+    const { format } = event.getPayload() || {};
+
+    if (this.formats.length && !this.formats.includes(format)) {
+      return false;
+    }
+
+    return true;
+  };
+
+  /**
    * Attach the current event listener to the app scanner.
    */
   attach = () => {
@@ -51,16 +81,7 @@ class ScannerEventListener {
    * @param {ScannerEvent} event The scanner event which was emitted.
    */
   notify = async (event) => {
-    if (!this.handler) {
-      logger.warn(`No event handler defined for eventListener "${this.name}"`);
-      return;
-    }
-
-    // Skip handling if the events scope or type don't fit to the handler
-    if (this.type && this.type !== event.type) {
-      return;
-    }
-    if (this.scope && this.scope !== event.scope) {
+    if (!this.canHandleEvent(event)) {
       return;
     }
 
