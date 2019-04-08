@@ -208,3 +208,9 @@ export { default as withShowModal } from '@shopgate/pwa-common/helpers/modal/wit
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/modal';
+
+// --------------- HOOKS --------------- //
+
+export { useCustomRoute } from './hooks/useCustomRoute';
+
+// --------------- HOCs --------------- //
