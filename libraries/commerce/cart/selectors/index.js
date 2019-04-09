@@ -167,9 +167,24 @@ export const getGrandTotal = createSelector(
  * Selects the shipping costs.
  * @returns {Object}
  */
-export const getShippingCosts = createSelector(
+export const getShippingCost = createSelector(
   getTotals,
   totals => totals.find(total => total.type === CART_TOTALS_TYPE_SHIPPING) || null
+);
+
+/**
+ * Selects the summed up shipping costs of the cart.
+ * @returns {number}
+ */
+export const getShippingCosts = createSelector(
+  getShippingCost,
+  (shippingCost) => {
+    if (!shippingCost) {
+      return null;
+    }
+    const { amount = 0 } = shippingCost;
+    return amount;
+  }
 );
 
 /**
