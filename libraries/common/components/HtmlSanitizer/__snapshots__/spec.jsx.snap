@@ -40,6 +40,8 @@ exports[`<HtmlSanitizer /> strips out images with relative paths 1`] = `
       
   <div>
     
+       
+    
         
     <a
       href="foo"
@@ -59,6 +61,7 @@ exports[`<HtmlSanitizer /> strips out images with relative paths 1`] = `
 exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
 <HtmlSanitizer
   decode={true}
+  processStyles={false}
   settings={Object {}}
 >
   <div
