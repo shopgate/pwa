@@ -214,3 +214,5 @@ export * from '@shopgate/pwa-common/selectors/modal';
 export { useCustomRoute } from './hooks/useCustomRoute';
 
 // --------------- HOCs --------------- //
+
+export { withCustomRoute } from './hocs/withCustomRoute';

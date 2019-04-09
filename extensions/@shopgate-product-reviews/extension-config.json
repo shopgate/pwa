@@ -7,6 +7,12 @@
       "path": "frontend/RatingStars/index.jsx",
       "target": "product-item.name.before",
       "type": "portals"
+    },
+    {
+      "id": "CustomRoute1",
+      "path": "frontend/UsingHOC/index.jsx",
+      "target": "app.routes",
+      "type": "portals"
     }
   ],
   "configuration": {}
