@@ -15,7 +15,8 @@ const videos = [
  * @return {Object}
  */
 const createContainer = (srcs) => {
-  const html = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  const iframes = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  const html = `<div>${iframes}</div>`;
   return new JSDOM(html).window.document;
 };
 
@@ -24,6 +25,8 @@ describe('YouTube media provider', () => {
 
   beforeEach(() => {
     instance = new YouTube();
+    // TODO Implement tests for the method when a solution for the insertBefore issue was found.
+    instance.responsify = jest.fn();
   });
 
   describe('.constructor()', () => {
@@ -47,6 +50,8 @@ describe('YouTube media provider', () => {
       expect(instance.containers.size).toBe(2);
       expect(instance.containers.get(containerOne)).toEqual(iframesOne);
       expect(instance.containers.get(containerTwo)).toEqual(iframesTwo);
+      expect(instance.responsify).toHaveBeenCalledWith(iframesOne[0]);
+      expect(instance.responsify).toHaveBeenCalledWith(iframesTwo[0]);
     });
 
     it('should add a container with different types of YouTube videos', () => {
@@ -97,7 +102,7 @@ describe('YouTube media provider', () => {
   });
 
   describe('.stop()', () => {
-    it('should stop the videos within mutiple containers', () => {
+    it('should stop the videos within multiple containers', () => {
       const postMessageMock = jest.fn();
       const containerOne = createContainer([videos[0]]);
       const containerTwo = createContainer([videos[1], videos[2]]);
