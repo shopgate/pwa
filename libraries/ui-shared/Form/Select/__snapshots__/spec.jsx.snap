@@ -74,7 +74,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         </label>
       </Label>
       <select
-        className="css-x8w2oy"
+        className="css-zao20y"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -211,7 +211,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         </label>
       </Label>
       <select
-        className="css-x8w2oy"
+        className="css-zao20y"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -343,7 +343,7 @@ exports[`<Select /> should render select with no options 1`] = `
         </label>
       </Label>
       <select
-        className="css-x8w2oy"
+        className="css-zao20y"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
