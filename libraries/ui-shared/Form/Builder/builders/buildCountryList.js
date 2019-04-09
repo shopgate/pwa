@@ -24,10 +24,16 @@ export default (countryElement, optional = null) => {
   } else {
     countryKeys = Object.keys(iso3166);
   }
-  const countryList = countryKeys.reduce((reducer, countryCode) => ({
-    ...reducer,
-    [countryCode]: iso3166[countryCode].name,
-  }), {});
+  const countryList = countryKeys.reduce((reducer, countryCode) => {
+    if (!iso3166[countryCode]) {
+      logger.error(`Error: unknown country code [${countryCode}]`);
+      return reducer;
+    }
+    return ({
+      ...reducer,
+      [countryCode]: iso3166[countryCode].name,
+    });
+  }, {});
 
   // Add a "no selection" element
   if (countryElement.required) {
