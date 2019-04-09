@@ -159,6 +159,7 @@ exports[`<ProductDescription /> should render description if data is available 1
         >
           <HtmlSanitizer
             decode={false}
+            processStyles={false}
             settings={
               Object {
                 "handleClick": [Function],
