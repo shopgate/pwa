@@ -2,11 +2,11 @@ import React from 'react';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 
 /**
- * Injects the Product Context information into the desired component.
+ * Injects the current Product Context information into the desired component.
  * @param {Function} WrappedComponent The react component to wrap.
  * @returns {JSX}
  */
-export function withProduct(WrappedComponent) {
+export function withCurrentProduct(WrappedComponent) {
   return props => (
     <ThemeContext.Consumer>
       {({ contexts: { ProductContext } }) => (

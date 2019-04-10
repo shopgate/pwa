@@ -216,10 +216,10 @@ export * from '@shopgate/pwa-common/selectors/modal';
 
 export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
-export { useProduct } from './hooks/useProduct';
+export { useCurrentProduct } from './hooks/useCurrentProduct';
 
 // --------------- HOCs --------------- //
 
 export { withTheme } from './hocs/withTheme';
 export { withRoute } from './hocs/withRoute';
-export { withProduct } from './hocs/withProduct';
+export { withCurrentProduct } from './hocs/withCurrentProduct';
