@@ -9,6 +9,7 @@ import parseHTML from '../../helpers/html/parseHTML';
 class HtmlSanitizer extends Component {
   static propTypes = {
     children: PropTypes.string,
+    className: PropTypes.string,
     decode: PropTypes.bool,
     processStyles: PropTypes.bool,
     settings: PropTypes.shape(),
@@ -16,6 +17,7 @@ class HtmlSanitizer extends Component {
 
   static defaultProps = {
     children: '',
+    className: null,
     decode: false,
     processStyles: false,
     settings: {},
@@ -103,6 +105,7 @@ class HtmlSanitizer extends Component {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={innerHTML}
         ref={this.htmlContainer}
+        className={this.props.className}
       />
     );
   }
