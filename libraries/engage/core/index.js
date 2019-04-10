@@ -11,7 +11,8 @@ import { INDEX_PATH, INDEX_PATH_DEEPLINK } from '@shopgate/pwa-common/constants/
 // --------------- CORE --------------- //
 
 // Classes
-export { default as AppCommand } from '@shopgate/pwa-core/classes/AppCommand';
+// TODO: Contains circular dependency!
+// export { default as AppCommand } from '@shopgate/pwa-core/classes/AppCommand';
 export { default as GetAppPermissionsRequest } from '@shopgate/pwa-core/classes/AppPermissionsRequest/GetAppPermissionsRequest';
 export { default as RequestAppPermissionsRequest } from '@shopgate/pwa-core/classes/AppPermissionsRequest/RequestAppPermissionsRequest';
 export { default as BrightnessRequest } from '@shopgate/pwa-core/classes/BrightnessRequest';
@@ -54,7 +55,8 @@ export { default as setScrollingEnabled } from '@shopgate/pwa-core/commands/setS
 export { default as showNavigationBar } from '@shopgate/pwa-core/commands/showNavigationBar';
 export { default as showTab } from '@shopgate/pwa-core/commands/showTab';
 export * from '@shopgate/pwa-core/commands/unifiedTracking';
-export * from '@shopgate/pwa-core/commands/webStorage';
+// TODO: Contains circular dependency!
+// export * from '@shopgate/pwa-core/commands/webStorage';
 
 // Constants
 export * from '@shopgate/pwa-core/constants/AppEvents';
@@ -143,7 +145,7 @@ export { default as YouTube } from '@shopgate/pwa-common/collections/media-provi
 
 // --------------- CONTEXTS --------------- //
 
-export { RouterContext, RouteContext, AppContext, App, ThemeContext, Theme } from '@shopgate/pwa-common/context';
+// export { RouteContext, ThemeContext } from '@shopgate/pwa-common/context';
 
 // --------------- PROVIDERS --------------- //
 
@@ -155,11 +157,11 @@ export { default as ToastContext } from '@shopgate/pwa-common/providers/toast/co
 // --------------- ROUTER --------------- //
 
 // ACTIONS
-export * from '@shopgate/pwa-common/actions/router/historyPop';
-export * from '@shopgate/pwa-common/actions/router/historyPush';
-export * from '@shopgate/pwa-common/actions/router/historyRedirect';
-export * from '@shopgate/pwa-common/actions/router/historyReplace';
-export * from '@shopgate/pwa-common/actions/router/historyReset';
+export { historyPop } from '@shopgate/pwa-common/actions/router/historyPop';
+export { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
+export { historyRedirect } from '@shopgate/pwa-common/actions/router/historyRedirect';
+export { historyReplace } from '@shopgate/pwa-common/actions/router/historyReplace';
+export { historyReset } from '@shopgate/pwa-common/actions/router/historyReset';
 
 // HELPERS
 export {
