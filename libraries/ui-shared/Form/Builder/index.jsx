@@ -112,6 +112,17 @@ class Builder extends Component {
     const countryElement = this.formElements.find(el => el.type === ELEMENT_TYPE_COUNTRY);
     if (countryElement) {
       this.countryList = buildCountryList(countryElement, emptySelectOption);
+      const provinceElement = this.formElements.find(el => el.type === ELEMENT_TYPE_PROVINCE);
+      if (provinceElement
+        && provinceElement.required
+        && !!formDefaults[countryElement.id]
+        && !formDefaults[provinceElement.id]) {
+        // Set default for province field for given country
+        const [first] = Object.values(buildProvinceList(formDefaults[countryElement.id]));
+        if (first) {
+          this.state.formData[provinceElement.id] = first;
+        }
+      }
     }
 
     // Final form initialization, by triggering actionListeners and enable rendering for elements
