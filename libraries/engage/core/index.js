@@ -91,8 +91,11 @@ export { default as getDateFormatter } from '@shopgate/pwa-common/helpers/i18n/g
 export { default as getTimeFormatter } from '@shopgate/pwa-common/helpers/i18n/getTimeFormatter';
 export { default as getNumberFormatter } from '@shopgate/pwa-common/helpers/i18n/getNumberFormatter';
 export * from '@shopgate/pwa-common/helpers/legacy';
+// TODO: Can only be exported once the theme uses it. causes issues with the custom routes feature.
+/*
 export { default as portalCollection } from '@shopgate/pwa-common/helpers/portals/portalCollection';
 export { default as routePortals } from '@shopgate/pwa-common/helpers/portals/routePortals';
+*/
 export * from '@shopgate/pwa-common/helpers/redux';
 export * from '@shopgate/pwa-common/helpers/style';
 export * from '@shopgate/pwa-common/helpers/tracking';
@@ -140,7 +143,7 @@ export { default as YouTube } from '@shopgate/pwa-common/collections/media-provi
 
 // --------------- CONTEXTS --------------- //
 
-export * from '@shopgate/pwa-common/context';
+export { RouterContext, RouteContext, AppContext, App, ThemeContext, Theme } from '@shopgate/pwa-common/context';
 
 // --------------- PROVIDERS --------------- //
 
@@ -211,8 +214,12 @@ export * from '@shopgate/pwa-common/selectors/modal';
 
 // --------------- HOOKS --------------- //
 
-export { useCustomRoute } from './hooks/useCustomRoute';
+export { useRoute } from './hooks/useRoute';
+export { useTheme } from './hooks/useTheme';
+export { useProduct } from './hooks/useProduct';
 
 // --------------- HOCs --------------- //
 
-export { withCustomRoute } from './hocs/withCustomRoute';
+export { withTheme } from './hocs/withTheme';
+export { withRoute } from './hocs/withRoute';
+export { withProduct } from './hocs/withProduct';
