@@ -158,6 +158,7 @@ exports[`<ProductDescription /> should render description if data is available 1
           data-test-id="description"
         >
           <HtmlSanitizer
+            className={null}
             decode={false}
             processStyles={false}
             settings={
@@ -168,6 +169,7 @@ exports[`<ProductDescription /> should render description if data is available 1
             }
           >
             <div
+              className={null}
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "<h1>foo</h1>",
