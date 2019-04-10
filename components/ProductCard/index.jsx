@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
@@ -6,6 +7,7 @@ import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import MapPriceHint from '@shopgate/pwa-ui-shared/MapPriceHint';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import ProductImage from 'Components/ProductImage';
@@ -53,6 +55,7 @@ const ProductCard = ({
             <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
           </div>
         )}
+        <MapPriceHint productId={product.id} location="slider" />
         {!hidePrice && (
           <Fragment>
             <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id, location: 'productCard' }} />
@@ -76,3 +79,4 @@ ProductCard.propTypes = {
 };
 
 export default ProductCard;
+/* eslint-enable extra-rules/no-single-line-objects */
