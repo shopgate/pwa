@@ -12,7 +12,7 @@ class VimeoMediaProvider extends MediaProvider {
     this.playerReady = false;
     this.deferred = [];
 
-    this.checkPlayer();
+    this.initPlayer();
   }
 
   /**
@@ -20,7 +20,7 @@ class VimeoMediaProvider extends MediaProvider {
    * If not, it injects it into the DOM and adds deferred containers.
    * @private
    */
-  checkPlayer() {
+  initPlayer() {
     if (typeof window.Vimeo !== 'undefined') {
       this.playerReady = true;
       return;

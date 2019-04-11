@@ -67,10 +67,4 @@ describe('MediaProvider', () => {
       expect(instance.containers.size).toBe(0);
     });
   });
-
-  describe.skip('.responsify()', () => {
-    it('should optimize a container to be responsive', () => {
-      // TODO: Implement the test when a solution for the insertBefore issue was found.
-    });
-  });
 });

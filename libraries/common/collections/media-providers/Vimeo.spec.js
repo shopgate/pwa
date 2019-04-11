@@ -49,7 +49,6 @@ describe('Vimeo media provider', () => {
 
     document.getElementsByTagName('html')[0].innerHTML = '';
     instance = new Vimeo();
-    // TODO Implement tests for the method when a solution for the insertBefore issue was found.
     instance.responsify = jest.fn();
 
     playerScript = document.querySelector('script[src*="vimeo.com"]');
@@ -69,7 +68,7 @@ describe('Vimeo media provider', () => {
     });
   });
 
-  describe('.checkPlayer()', () => {
+  describe('.initPlayer()', () => {
     it('should not inject the player script when it is already loaded', () => {
       expect(instance.playerReady).toBe(true);
       expect(playerScript).toBeNull();

@@ -25,7 +25,6 @@ describe('YouTube media provider', () => {
 
   beforeEach(() => {
     instance = new YouTube();
-    // TODO Implement tests for the method when a solution for the insertBefore issue was found.
     instance.responsify = jest.fn();
   });
 
