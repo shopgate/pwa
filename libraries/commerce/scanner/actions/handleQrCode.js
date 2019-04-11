@@ -55,8 +55,20 @@ export default ({ scope, format, payload }) => async (dispatch, getState) => {
       dispatch(historyPop());
       break;
     case QR_CODE_TYPE_PRODUCT:
-    case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
       // Force to fetch missing products
+      await dispatch(fetchProductsById([data.productId]));
+
+      // Check from a store
+      if (!getProductById(getState(), data)) {
+        notFound();
+      } else {
+        dispatch(successHandleScanner(scope, format, payload));
+        dispatch(historyReplace({
+          pathname: link,
+        }));
+      }
+      break;
+    case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
       await dispatch(fetchProductsById([data.productId]));
 
       // Check from a store
