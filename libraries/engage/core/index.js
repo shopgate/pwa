@@ -145,7 +145,7 @@ export { default as YouTube } from '@shopgate/pwa-common/collections/media-provi
 
 // --------------- CONTEXTS --------------- //
 
-// export { RouteContext, ThemeContext } from '@shopgate/pwa-common/context';
+export * from '@shopgate/pwa-common/context';
 
 // --------------- PROVIDERS --------------- //
 

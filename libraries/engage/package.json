@@ -21,5 +21,8 @@
     "@shopgate/pwa-ui-ios": "6.3.2",
     "@shopgate/pwa-ui-material": "6.3.2",
     "@shopgate/pwa-ui-shared": "6.3.2"
+  },
+  "devDependencies": {
+    "react": "~16.8.4"
   }
 }
