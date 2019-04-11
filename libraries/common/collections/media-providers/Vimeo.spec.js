@@ -49,6 +49,8 @@ describe('Vimeo media provider', () => {
 
     document.getElementsByTagName('html')[0].innerHTML = '';
     instance = new Vimeo();
+    instance.responsify = jest.fn();
+
     playerScript = document.querySelector('script[src*="vimeo.com"]');
   };
 
@@ -66,7 +68,7 @@ describe('Vimeo media provider', () => {
     });
   });
 
-  describe('.checkPlayer()', () => {
+  describe('.initPlayer()', () => {
     it('should not inject the player script when it is already loaded', () => {
       expect(instance.playerReady).toBe(true);
       expect(playerScript).toBeNull();
@@ -91,6 +93,8 @@ describe('Vimeo media provider', () => {
     it('should add multiple containers as expected', () => {
       const containerOne = createContainer([videos[0]]);
       const containerTwo = createContainer([videos[1]]);
+      const iframesOne = containerOne.querySelectorAll('iframe');
+      const iframesTwo = containerTwo.querySelectorAll('iframe');
 
       instance.add(containerOne);
       instance.add(containerTwo);
@@ -99,6 +103,8 @@ describe('Vimeo media provider', () => {
       expect(instance.containers.size).toBe(2);
       expect(instance.containers.get(containerOne)).toEqual([expect.any(window.Vimeo.Player)]);
       expect(instance.containers.get(containerTwo)).toEqual([expect.any(window.Vimeo.Player)]);
+      expect(instance.responsify).toHaveBeenCalledWith(iframesOne[0]);
+      expect(instance.responsify).toHaveBeenCalledWith(iframesTwo[0]);
     });
 
     it('should defer addition of a container if the player is not ready', () => {
