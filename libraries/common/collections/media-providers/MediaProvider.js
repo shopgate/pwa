@@ -20,8 +20,8 @@ class MediaProvider {
    */
   responsify(container) {
     // Remove fixed dimensions from the container.
-    container.setAttribute('height', '');
-    container.setAttribute('width', '');
+    container.removeAttribute('height');
+    container.removeAttribute('width');
 
     // Create the wrapper and apply styling.
     const wrapper = document.createElement('div');

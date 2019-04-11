@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediaProvider .responsify() should responsify a dom container 1`] = `
+<body>
+  <div
+    class="css-2gg043"
+  >
+    <iframe />
+  </div>
+</body>
+`;

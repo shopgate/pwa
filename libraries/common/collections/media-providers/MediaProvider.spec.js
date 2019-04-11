@@ -1,6 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { logger } from '@shopgate/pwa-core/helpers';
 import MediaProvider from './MediaProvider';
+import styles from './style';
 
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   logger: {
@@ -65,6 +66,22 @@ describe('MediaProvider', () => {
       instance.remove(containerOne);
 
       expect(instance.containers.size).toBe(0);
+    });
+  });
+
+  describe('.responsify()', () => {
+    it('should responsify a dom container', () => {
+      const dom = document.createElement('body');
+      dom.innerHTML = '<iframe width="560" height="315" />';
+      const container = dom.querySelectorAll('iframe')[0];
+
+      const instance = new MediaProvider();
+      instance.responsify(container);
+
+      expect(dom).toMatchSnapshot();
+      expect(container.getAttribute('height')).toBeNull();
+      expect(container.getAttribute('width')).toBeNull();
+      expect(container.closest('div').className).toBe(styles);
     });
   });
 });
