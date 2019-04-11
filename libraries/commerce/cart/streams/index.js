@@ -5,6 +5,7 @@ import {
   routeDidEnter$,
   routeWillLeave$,
   routeDidLeave$,
+  navigate$,
 } from '@shopgate/pwa-common/streams/router';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import {
@@ -33,6 +34,8 @@ import {
   DELETE_COUPONS_FROM_CART,
   ERROR_DELETE_COUPONS_FROM_CART,
   SUCCESS_DELETE_COUPONS_FROM_CART,
+
+  DEEPLINK_CART_ADD_PRODUCT_PATTERN,
 } from '../constants';
 
 /**
@@ -183,3 +186,24 @@ export const cartUpdateFailed$ = main$.filter(({ action }) => (
   action.type === ERROR_ADD_COUPONS_TO_CART ||
   action.type === ERROR_DELETE_COUPONS_FROM_CART
 ));
+
+/**
+ * Gets triggered when /cart_add_product/123/COUPON route is navigated
+ * @type {Observable}
+ */
+export const routeAddProductNavigate$ = navigate$
+  .filter(({ action: { params: { pathname = '' } = {} } }) => (
+    pathname.includes(DEEPLINK_CART_ADD_PRODUCT_PATTERN.split('/')[1])
+  ))
+  .map((params) => {
+    const [, , productId, couponCode] = params.action.params.pathname.split('/');
+    return {
+      ...params,
+      action: {
+        ...params.action,
+        productId: decodeURIComponent(productId),
+        couponCode: decodeURIComponent(couponCode),
+      },
+    };
+  });
+

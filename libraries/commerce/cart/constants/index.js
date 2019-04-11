@@ -1,4 +1,5 @@
 export const CART_PATH = '/cart';
+export const DEEPLINK_CART_ADD_PRODUCT_PATTERN = '/cart_add_product/:productId/:couponId';
 export const DEEPLINK_CART_ADD_COUPON_PATTERN = '/cart_add_coupon/:couponId';
 
 export const CART_ITEM_TYPE_COUPON = 'coupon';
