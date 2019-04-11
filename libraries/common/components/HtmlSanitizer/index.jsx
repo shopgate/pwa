@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import parseHTML from '../../helpers/html/parseHTML';
 
 /**
@@ -8,13 +9,17 @@ import parseHTML from '../../helpers/html/parseHTML';
 class HtmlSanitizer extends Component {
   static propTypes = {
     children: PropTypes.string,
+    className: PropTypes.string,
     decode: PropTypes.bool,
+    processStyles: PropTypes.bool,
     settings: PropTypes.shape(),
   };
 
   static defaultProps = {
     children: '',
+    className: null,
     decode: false,
+    processStyles: false,
     settings: {},
   };
 
@@ -31,8 +36,8 @@ class HtmlSanitizer extends Component {
    * Registers the event handler for when the user taps inside the html content.
    */
   componentDidMount() {
-    this.htmlContainer.current.addEventListener('touchstart', this.handleTap, true);
     this.htmlContainer.current.addEventListener('click', this.handleTap, true);
+    embeddedMedia.add(this.htmlContainer.current);
   }
 
   /**
@@ -45,24 +50,39 @@ class HtmlSanitizer extends Component {
   }
 
   /**
-   * Removes the event handler.
+   * Updates embedded media within the html container.
    */
-  componentWillUnmount() {
-    this.htmlContainer.current.removeEventListener('touchstart', this.handleTap, true);
-    this.htmlContainer.current.removeEventListener('click', this.handleTap, true);
+  componentDidUpdate() {
+    embeddedMedia.add(this.htmlContainer.current);
   }
 
   /**
-   * If the user tapped a link element, prevent the default behaviour.
+   * Removes the event handler.
+   */
+  componentWillUnmount() {
+    this.htmlContainer.current.removeEventListener('click', this.handleTap, true);
+    embeddedMedia.remove(this.htmlContainer.current);
+  }
+
+  /**
+   * If the user tapped a link element, prevent the default behavior.
    * @param {Object} event The touchstart event.
    */
   handleTap = (event) => {
-    const aTag = event.target.closest('a');
+    const linkTag = event.target.closest('a');
 
-    if (aTag && aTag.attributes.href) {
-      event.preventDefault();
-      const href = aTag.attributes.href.value;
-      this.props.settings.handleClick(href);
+    if (linkTag) {
+      const {
+        attributes: {
+          href: { value: href = '' } = {},
+          target: { value: target = '' } = {},
+        } = {},
+      } = linkTag;
+
+      if (href) {
+        event.preventDefault();
+        this.props.settings.handleClick(href, target);
+      }
     }
   };
 
@@ -75,12 +95,18 @@ class HtmlSanitizer extends Component {
       __html: parseHTML(
         this.props.children,
         this.props.decode,
-        this.props.settings
+        this.props.settings,
+        this.props.processStyles
       ),
     };
 
     return (
-      <div dangerouslySetInnerHTML={innerHTML} ref={this.htmlContainer} />
+      <div
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={innerHTML}
+        ref={this.htmlContainer}
+        className={this.props.className}
+      />
     );
   }
 }

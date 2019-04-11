@@ -1,31 +1,28 @@
-/* eslint-disable extra-rules/potential-point-free */
 import URLSearchParams from 'url-search-params';
+import MediaProvider from './MediaProvider';
 
 /**
  * The YouTube media provider class.
  */
-class YouTubeMediaProvider {
-  /**
-   * Constructor.
-   */
-  constructor() {
-    this.containers = new Map();
-  }
-
+class YouTubeMediaProvider extends MediaProvider {
   /**
    * Add a DOM container with embedded videos.
+   * @override
    * @param {NodeList} container A DOM container.
+   * @returns {YouTubeMediaProvider}
    */
   add(container) {
     const iframes = container
       .querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"]');
 
     if (!iframes.length) {
-      return;
+      return this;
     }
 
     // Update the video urls to enable stopping videos via the event API.
     iframes.forEach((iframe, index) => {
+      this.responsify(iframe);
+
       const { src } = iframe;
 
       const [url, query] = src.split('?');
@@ -40,18 +37,14 @@ class YouTubeMediaProvider {
     });
 
     this.containers.set(container, iframes);
-  }
 
-  /**
-   * Remove a DOM container.
-   * @param {NodeList} container A DOM container.
-   */
-  remove(container) {
-    this.containers.delete(container);
+    return this;
   }
 
   /**
    * Stops all playing videos within the DOM containers.
+   * @override
+   * @returns {YouTubeMediaProvider}
    */
   stop() {
     this.containers.forEach((iframes) => {
@@ -61,9 +54,9 @@ class YouTubeMediaProvider {
         }
       });
     });
+
+    return this;
   }
 }
-
-/* eslint-enable extra-rules/potential-point-free */
 
 export default YouTubeMediaProvider;
