@@ -266,21 +266,29 @@ export class Scanner {
    * @param {ScannerEventPayload} payload The payload of the scanner event for the scanned result.
    */
   handleScan = async (payload) => {
+    const event = new ScannerEvent(
+      this.scope,
+      this.type,
+      payload
+    );
+
+    if (!this.eventHandler.hasListenersForEvent(event)) {
+      logger.warn('No scanner listeners', payload);
+      return;
+    }
+
     if (this.handling) {
       logger.warn('Scan result ignored in handling stage', payload);
       return;
     }
+
     this.handling = true;
 
     this.stop();
 
     try {
       // Ignore return values from handlers.
-      await this.eventHandler.notifyAllListeners(new ScannerEvent(
-        this.scope,
-        this.type,
-        payload
-      ));
+      await this.eventHandler.notifyAllListeners(event);
 
       // Notify the close handler that the Scanner is done doing his work.
       if (this.closeHandler) {

@@ -16,3 +16,16 @@ export const QR_CODE_TYPE_SEARCH = 'b';
 export const QR_CODE_TYPE_PAGE = '1';
 
 export const QR_CODE_HOST_2DS = '2d.is';
+
+export const SCANNER_FORMATS_BARCODE = [
+  'UPC_E',
+  'CODE_39',
+  'EAN_13',
+  'EAN_8',
+  'CODE_93',
+  'CODE_128',
+  'PDF_417',
+  'ITF',
+];
+
+export const SCANNER_FORMATS_QR_CODE = ['QR_CODE'];

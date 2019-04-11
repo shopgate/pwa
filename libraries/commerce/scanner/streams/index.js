@@ -1,15 +1,12 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import {
-  SCANNER_FORMATS_BARCODE,
-  SCANNER_FORMATS_QR_CODE,
-} from '@shopgate/pwa-core/constants/Scanner';
-
-import {
   SCANNER_STARTED,
   SCANNER_CANCELLED,
   SCANNER_FINISHED,
   SCANNER_PATH,
+  SCANNER_FORMATS_BARCODE,
+  SCANNER_FORMATS_QR_CODE,
 } from '../constants';
 
 /** @type {Observable} */

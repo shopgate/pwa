@@ -1,4 +1,6 @@
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import event from '@shopgate/pwa-core/classes/Event';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import { redirects } from '@shopgate/pwa-common/collections';
@@ -8,8 +10,12 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
+import { getProductById, getProductRoute, hasProductVariety } from '@shopgate/pwa-common-commerce/product';
+import { historyReplace, historyPop } from '@shopgate/pwa-common/actions/router';
+import { checkoutSucceeded$ } from '@shopgate/pwa-common-commerce/checkout';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
+import addProductsToCart from '../actions/addProductsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
   cartDidEnter$,
@@ -25,10 +31,15 @@ import {
   routeWithCouponWillEnter$,
   remoteCartDidUpdate$,
   cartUpdateFailed$,
+  routeAddProductNavigate$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
-import { CART_PATH, DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
-import { checkoutSucceeded$ } from '../../checkout/streams';
+import {
+  CART_PATH,
+  DEEPLINK_CART_ADD_COUPON_PATTERN,
+  DEEPLINK_CART_ADD_PRODUCT_PATTERN,
+  CART_ITEM_TYPE_PRODUCT,
+} from '../constants';
 
 /**
  * Cart subscriptions.
@@ -76,6 +87,8 @@ export default function cart(subscribe) {
 
       return null;
     });
+    // This will be handled in 2 deferred subscriptions
+    redirects.set(DEEPLINK_CART_ADD_PRODUCT_PATTERN, () => null);
   });
 
   /**
@@ -92,9 +105,11 @@ export default function cart(subscribe) {
 
     // Push (deeplink) with coupon concurrent to get cart on app start
     pipelineDependencies.set(pipelines.SHOPGATE_CART_ADD_COUPONS, [
+      pipelines.SHOPGATE_CART_ADD_PRODUCTS,
       pipelines.SHOPGATE_CART_GET_CART,
     ]);
     pipelineDependencies.set(pipelines.SHOPGATE_CART_DELETE_COUPONS, [
+      pipelines.SHOPGATE_CART_ADD_PRODUCTS,
       pipelines.SHOPGATE_CART_GET_CART,
     ]);
 
@@ -165,6 +180,57 @@ export default function cart(subscribe) {
 
     if (coupon) {
       dispatch(addCouponsToCart([coupon]));
+    }
+  });
+
+  /**
+   * Deeplink to add product to cart, eg /cart_add_product/123
+   */
+  subscribe(routeAddProductNavigate$, ({ dispatch, action, getState }) => {
+    // NO product or variety
+    if (!getProductById(getState(), action)
+      || hasProductVariety(getState(), action)) {
+      // Redirect to item page to select options/variant
+      dispatch(historyReplace({
+        pathname: getProductRoute(action.productId),
+      }));
+    } else {
+      dispatch(addProductsToCart([{
+        productId: action.productId,
+        quantity: 1,
+      }]));
+      dispatch(historyPop());
+    }
+  });
+
+  /**
+   * Deffer coupon adding to a cart, until we have at least 1 product
+   */
+  const addCouponDeferred$ = routeAddProductNavigate$
+    // Only if coupon is given
+    .filter(({ action: { couponCode = '' } }) => !!couponCode)
+    .withLatestFrom(cartReceived$)
+    .switchMap(
+      ([navigate, cartReceived]) => {
+        if (cartReceived.action.cart.cartItems.find(i => i.type === CART_ITEM_TYPE_PRODUCT)) {
+        // We have items in cart, add coupon immediately
+          return Observable.of(navigate);
+        }
+        // Wait until first product in cart to add a coupon
+        return cartReceived$.filter(cartReceivedNext => (
+          cartReceivedNext.action.cart.cartItems.find(i => i.type === CART_ITEM_TYPE_PRODUCT)
+        )).first();
+      },
+      ([navigate]) => navigate
+    );
+
+  /**
+   * Deeplink to add product and coupon to cart, eg /cart_add_product/123/COUPON
+   */
+  subscribe(addCouponDeferred$, async ({ dispatch, action }) => {
+    const { couponCode } = action;
+    if (couponCode) {
+      dispatch(addCouponsToCart([couponCode]));
     }
   });
 }

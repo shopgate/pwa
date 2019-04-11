@@ -407,14 +407,17 @@ describe('Scanner', () => {
       code: 'code',
     };
     const closeHandlerMock = jest.fn();
+    let hasListenersForEventMock;
 
     beforeEach(async () => {
       await scannerInstance.open(scope, type, closeHandlerMock);
+      hasListenersForEventMock = jest.spyOn(scannerInstance.eventHandler, 'hasListenersForEvent').mockReturnValue(true);
     });
 
     it('should forward a ScannerEvent to the event handler', async () => {
       let result = null;
       const mockedNotifyAllListeners = jest.fn((e) => { result = e; });
+
       scannerInstance.eventHandler.notifyAllListeners = mockedNotifyAllListeners;
       await scannerInstance.handleScan(payload);
 
@@ -439,6 +442,13 @@ describe('Scanner', () => {
 
       expect(scannerInstance.opened).toBeTruthy();
       expect(scannerInstance.start).toBeCalledTimes(1);
+    });
+
+    it('should not run when no suitable event listener was registered', async () => {
+      hasListenersForEventMock.mockReturnValueOnce(false);
+      const result = await scannerInstance.handleScan(payload);
+      expect(result).toBeUndefined();
+      expect(scannerInstance.handling).toBeFalsy();
     });
 
     it('should not be running after a successful scan if not restarted', async () => {
