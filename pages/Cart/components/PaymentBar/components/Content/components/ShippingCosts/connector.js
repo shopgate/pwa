@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getShippingCosts } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getShippingCost } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -7,7 +7,7 @@ import { getShippingCosts } from '@shopgate/pwa-common-commerce/cart/selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  shippingCost: getShippingCosts(state),
+  shippingCost: getShippingCost(state),
 });
 
 export default connect(mapStateToProps);
