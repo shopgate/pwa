@@ -1,9 +1,5 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { mainSubject } from '@shopgate/pwa-common/store/middelwares/streams';
-import {
-  SCANNER_FORMATS_BARCODE,
-  SCANNER_FORMATS_QR_CODE,
-} from '@shopgate/pwa-core/constants/Scanner';
 import { ROUTE_DID_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   scannerDidEnter$,
@@ -18,6 +14,8 @@ import {
   SCANNER_FINISHED,
   SCANNER_STARTED,
   SCANNER_PATH,
+  SCANNER_FORMATS_BARCODE,
+  SCANNER_FORMATS_QR_CODE,
 } from '../constants';
 
 describe('scanner streams', () => {

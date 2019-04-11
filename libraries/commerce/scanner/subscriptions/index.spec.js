@@ -6,7 +6,7 @@ import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import scannerFinished from '../action-creators/scannerFinished';
 import handleBarCode from '../actions/handleBarCode';
 import handleQrCode from '../actions/handleQrCode';
-import subscriptions from './index';
+import subscriptions, { handledFormats } from './index';
 
 jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
   addListener: jest.fn(),
@@ -22,11 +22,14 @@ describe('scanner subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn();
 
-  // Event from scanner
-  const mockedEvent = new ScannerEvent(
+  /**
+   * @param {string} [format='EAN_13'] The event format.
+   * @returns {ScannerEvent}
+   */
+  const createMockedEvent = (format = 'EAN_13') => new ScannerEvent(
     SCANNER_SCOPE_DEFAULT,
     SCANNER_TYPE_BARCODE,
-    { format: 'EAN_13', code: '0000000000000' }
+    { format, code: '0000000000000' }
   );
 
   let appDidStartStream$;
@@ -61,16 +64,36 @@ describe('scanner subscriptions', () => {
       expect(appDidStartCallback).toBeInstanceOf(Function);
     });
 
-    it('should dispatch mapped ScannerEvent action', () => {
+    it('should dispatch mapped ScannerEvent action', async () => {
       appDidStartCallback({ dispatch });
 
       expect(Scanner.addListener).toHaveBeenCalledTimes(1);
       const [[listenerActual]] = Scanner.addListener.mock.calls;
       expect(listenerActual.handler).toBeInstanceOf(Function);
 
-      listenerActual.handler(mockedEvent);
+      await listenerActual.notify(createMockedEvent());
       // Expect event to be mapped to stream
       expect(scannerFinished).toBeCalledWith(SCANNER_SCOPE_DEFAULT, 'EAN_13', '0000000000000');
+    });
+
+    it('should dispatch mapped ScannerEvent action for every supported format', async () => {
+      appDidStartCallback({ dispatch });
+      const [[listenerActual]] = Scanner.addListener.mock.calls;
+
+      const events = handledFormats
+        .map(format => listenerActual.handler(createMockedEvent(format)));
+
+      await Promise.all(events);
+
+      expect(scannerFinished).toHaveBeenCalledTimes(handledFormats.length);
+    });
+
+    it('should not dispatch mapped ScannerEvent action for an unsupported format', async () => {
+      appDidStartCallback({ dispatch });
+      const [[listenerActual]] = Scanner.addListener.mock.calls;
+      await listenerActual.notify(createMockedEvent('unknown'));
+
+      expect(scannerFinished).not.toHaveBeenCalled();
     });
   });
 
