@@ -1,4 +1,5 @@
 import { appConfig } from '@shopgate/engage';
+import { isBetween } from '@shopgate/pwa-common/helpers/date';
 
 const {
   productPrices: {
@@ -51,10 +52,6 @@ export const showHint = (productPrice) => {
     return false;
   }
 
-  const now = new Date();
-  if (now < start || now > end) {
-    return false;
-  }
-  return true;
+  return isBetween(new Date(), start, end);
 };
 

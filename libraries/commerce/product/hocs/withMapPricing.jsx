@@ -1,24 +1,25 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import TimeBoundary from '@shopgate/pwa-common/components/TimeBoundary';
+import { LOCATION_CATEGORY, LOCATION_GRID, LOCATION_PRODUCT } from '../constants';
 import {
   isVisiblePLP,
   isVisiblePDP,
   isVisibleSlider,
-} from '@shopgate/pwa-common-commerce/product/helpers/mapPrice';
+} from '../helpers/mapPrice';
 
 const locationVisibility = {
-  plp: isVisiblePLP,
-  pdp: isVisiblePDP,
-  slider: isVisibleSlider,
+  [LOCATION_CATEGORY]: isVisiblePLP,
+  [LOCATION_PRODUCT]: isVisiblePDP,
+  [LOCATION_GRID]: isVisibleSlider,
 };
 
 /**
- * @param {Function} PriceComponent price component with product price shape
+ * @param {Function|React.Component} PriceComponent price component with product price shape
  * @param {string} location os price component
- * @return {Object}
+ * @returns {Function}
  */
-const withMapPricing = (PriceComponent, location = 'plp') => (props) => {
+const withMapPricing = (PriceComponent, location = LOCATION_CATEGORY) => (props) => {
   if (!locationVisibility[location]) {
     return <PriceComponent {...props} />;
   }

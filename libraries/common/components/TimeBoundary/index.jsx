@@ -1,4 +1,3 @@
-// eslint-disable extra-rules/potential-point-free
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
@@ -13,7 +12,7 @@ import { minute$ } from '../../streams/interval';
  *      end={new Date('2019-04-10T12:01:00.000Z')}
  *     >
  *       {({ before, between, after }) => (
-           {between && <div>Content in between</div>}
+           {between && <div>Content is inside time boundary</div>}
         )}
  *     </TimeBoundary>
  */
@@ -81,7 +80,7 @@ class TimeBoundary extends Component {
   }
 
   /**
-   * @return {JSX}
+   * @returns {JSX}
    */
   render() {
     return (
@@ -93,4 +92,3 @@ class TimeBoundary extends Component {
 }
 
 export default TimeBoundary;
-// eslint-enable extra-rules/potential-point-free

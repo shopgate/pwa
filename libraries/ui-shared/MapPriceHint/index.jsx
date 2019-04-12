@@ -6,7 +6,12 @@ import {
   I18n,
   TimeBoundary,
 } from '@shopgate/engage/components';
-import { PRODUCT_MAP_PRICE } from '@shopgate/engage/product';
+import {
+  LOCATION_CATEGORY,
+  LOCATION_GRID,
+  LOCATION_PRODUCT,
+  PRODUCT_MAP_PRICE,
+} from '@shopgate/engage/product';
 import {
   isHintVisiblePLP,
   isHintVisiblePDP,
@@ -18,9 +23,9 @@ import connect from './connector';
 import styles from './style';
 
 const locationVisibility = {
-  plp: isHintVisiblePLP,
-  pdp: isHintVisiblePDP,
-  slider: isHintVisibleSlider,
+  [LOCATION_CATEGORY]: isHintVisiblePLP,
+  [LOCATION_PRODUCT]: isHintVisiblePDP,
+  [LOCATION_GRID]: isHintVisibleSlider,
 };
 
 /**

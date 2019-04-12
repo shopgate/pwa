@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import withMapPricing from './withMapPricing';
+import { LOCATION_CATEGORY } from '../constants';
 
 /**
- * @param {Function} PriceComponent price component with product price shape
+ * @param {Function|React.Component} PriceComponent price component with product price shape
  * @param {string} location of price component
- * @return {Object}
+ * @returns {Function}
  */
-const withPriceCalculation = (PriceComponent, location = 'plp') => (props) => {
+const withPriceCalculation = (PriceComponent, location = LOCATION_CATEGORY) => (props) => {
   // price is null
   if (!props.price) {
     return <PriceComponent {...props} />;
