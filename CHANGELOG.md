@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.3.2](https://github.com/shopgate/theme-gmd/compare/v6.3.1...v6.3.2) (2019-05-05)
+
+#### :bug: Bug Fix
+* [#604](https://github.com/shopgate/pwa/pull/604) Open social media app deeplinks natively ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.3.1](https://github.com/shopgate/theme-gmd/compare/v6.3.0...v6.3.1) (2019-03-20)
 
 #### :bug: Bug Fix
