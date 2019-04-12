@@ -15,6 +15,7 @@
     "e2e:checkout": "cypress open -P ./e2e/extensions/checkout"
   },
   "dependencies": {
+    "@shopgate/engage": "6.3.2",
     "@shopgate/pwa-common": "6.3.2",
     "@shopgate/pwa-common-commerce": "6.3.2",
     "@shopgate/pwa-core": "6.3.2",
