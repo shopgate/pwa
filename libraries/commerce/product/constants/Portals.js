@@ -24,6 +24,7 @@ const STOCK_INFO = 'stock-info';
 const PRICE_STRIKED = 'price-striked';
 const PRICE = 'price';
 const PRICE_INFO = 'price-info';
+const MAP_PRICE = 'map-price';
 const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
 
@@ -154,3 +155,9 @@ export const PRODUCT_TAX_DISCLAIMER_AFTER = `${PRODUCT}.${TAX_DISCLAIMER}.${AFTE
 export const PRODUCT_ADD_TO_CART_BAR_BEFORE = `${PRODUCT}.${ADD_TO_CART_BAR}.${BEFORE}`;
 export const PRODUCT_ADD_TO_CART_BAR = `${PRODUCT}.${ADD_TO_CART_BAR}`;
 export const PRODUCT_ADD_TO_CART_BAR_AFTER = `${PRODUCT}.${ADD_TO_CART_BAR}.${AFTER}`;
+
+// MAP PRICE
+export const PRODUCT_MAP_PRICE_BEFORE = `${PRODUCT}.${MAP_PRICE}.${BEFORE}`;
+export const PRODUCT_MAP_PRICE = `${PRODUCT}.${MAP_PRICE}`;
+export const PRODUCT_MAP_PRICE_AFTER = `${PRODUCT}.${MAP_PRICE}.${AFTER}`;
+
