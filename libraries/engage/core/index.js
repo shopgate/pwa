@@ -11,7 +11,8 @@ import { INDEX_PATH, INDEX_PATH_DEEPLINK } from '@shopgate/pwa-common/constants/
 // --------------- CORE --------------- //
 
 // Classes
-export { default as AppCommand } from '@shopgate/pwa-core/classes/AppCommand';
+// TODO: Contains circular dependency!
+// export { default as AppCommand } from '@shopgate/pwa-core/classes/AppCommand';
 export { default as GetAppPermissionsRequest } from '@shopgate/pwa-core/classes/AppPermissionsRequest/GetAppPermissionsRequest';
 export { default as RequestAppPermissionsRequest } from '@shopgate/pwa-core/classes/AppPermissionsRequest/RequestAppPermissionsRequest';
 export { default as BrightnessRequest } from '@shopgate/pwa-core/classes/BrightnessRequest';
@@ -54,7 +55,8 @@ export { default as setScrollingEnabled } from '@shopgate/pwa-core/commands/setS
 export { default as showNavigationBar } from '@shopgate/pwa-core/commands/showNavigationBar';
 export { default as showTab } from '@shopgate/pwa-core/commands/showTab';
 export * from '@shopgate/pwa-core/commands/unifiedTracking';
-export * from '@shopgate/pwa-core/commands/webStorage';
+// TODO: Contains circular dependency!
+// export * from '@shopgate/pwa-core/commands/webStorage';
 
 // Constants
 export * from '@shopgate/pwa-core/constants/AppEvents';
@@ -91,8 +93,11 @@ export { default as getDateFormatter } from '@shopgate/pwa-common/helpers/i18n/g
 export { default as getTimeFormatter } from '@shopgate/pwa-common/helpers/i18n/getTimeFormatter';
 export { default as getNumberFormatter } from '@shopgate/pwa-common/helpers/i18n/getNumberFormatter';
 export * from '@shopgate/pwa-common/helpers/legacy';
+// TODO: Can only be exported once the theme uses it. causes issues with the custom routes feature.
+/*
 export { default as portalCollection } from '@shopgate/pwa-common/helpers/portals/portalCollection';
 export { default as routePortals } from '@shopgate/pwa-common/helpers/portals/routePortals';
+*/
 export * from '@shopgate/pwa-common/helpers/redux';
 export * from '@shopgate/pwa-common/helpers/style';
 export * from '@shopgate/pwa-common/helpers/tracking';
@@ -152,11 +157,11 @@ export { default as ToastContext } from '@shopgate/pwa-common/providers/toast/co
 // --------------- ROUTER --------------- //
 
 // ACTIONS
-export * from '@shopgate/pwa-common/actions/router/historyPop';
-export * from '@shopgate/pwa-common/actions/router/historyPush';
-export * from '@shopgate/pwa-common/actions/router/historyRedirect';
-export * from '@shopgate/pwa-common/actions/router/historyReplace';
-export * from '@shopgate/pwa-common/actions/router/historyReset';
+export { historyPop } from '@shopgate/pwa-common/actions/router/historyPop';
+export { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
+export { historyRedirect } from '@shopgate/pwa-common/actions/router/historyRedirect';
+export { historyReplace } from '@shopgate/pwa-common/actions/router/historyReplace';
+export { historyReset } from '@shopgate/pwa-common/actions/router/historyReset';
 
 // HELPERS
 export {
@@ -208,3 +213,15 @@ export { default as withShowModal } from '@shopgate/pwa-common/helpers/modal/wit
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/modal';
+
+// --------------- HOOKS --------------- //
+
+export { useRoute } from './hooks/useRoute';
+export { useTheme } from './hooks/useTheme';
+export { useCurrentProduct } from './hooks/useCurrentProduct';
+
+// --------------- HOCs --------------- //
+
+export { withTheme } from './hocs/withTheme';
+export { withRoute } from './hocs/withRoute';
+export { withCurrentProduct } from './hocs/withCurrentProduct';
