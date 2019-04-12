@@ -131,7 +131,7 @@ export const isShopLink = (location) => {
 
 /**
  * Sanitizes a link.
- * @param {string} location The location to sanitzie.
+ * @param {string} location The location to sanitize.
  * @return {string}
  */
 export const sanitizeLink = (location) => {
@@ -283,7 +283,8 @@ export const openNativeLink = (location) => {
  * @param {Object} state The application state.
  */
 export const openLegacyLink = (location, historyAction, state) => {
-  const [route] = location.split('?');
+  // Remove route parameters and query parameters to get the pure route of the legacy link.
+  const route = `/${location.split(/[?/]/)[1]}`;
 
   switch (route) {
     case LEGACY_LINK_ACCOUNT:
