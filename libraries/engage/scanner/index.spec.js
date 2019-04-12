@@ -1,5 +1,7 @@
 import * as scanner from '.';
 
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
+
 describe('engage > scanner', () => {
   it('should have exports', () => {
     expect(typeof scanner).toEqual('object');
