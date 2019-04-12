@@ -44,11 +44,12 @@ export default function app(subscribe) {
     redirects.set(ORDERS_PATH, ORDERS_LEGACY_PATH);
 
     // Protect the scanner path with a camera permissions check.
-    redirects.set(SCANNER_PATH, () => new Promise((resolve) => {
+    redirects.set(SCANNER_PATH, ({ action }) => new Promise((resolve) => {
+      const { params: { pathname } } = action;
       LoadingProvider.unsetLoading(getCurrentPathname(getState()));
       dispatch(grantCameraPermissions())
         .then((granted) => {
-          resolve(granted ? SCANNER_PATH : null);
+          resolve(granted ? pathname : null);
         });
     }));
 
