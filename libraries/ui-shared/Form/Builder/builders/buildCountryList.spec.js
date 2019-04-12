@@ -36,6 +36,6 @@ describe('buildCountryList', () => {
     const expected = {
       DE: 'Germany',
     };
-    expect(buildCountryList({ countries: ['DE', 'ME'] })).toEqual(expected);
+    expect(buildCountryList({ countries: ['DE', 'XX'] })).toEqual(expected);
   });
 });
