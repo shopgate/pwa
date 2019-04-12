@@ -1,18 +1,18 @@
 # Changelog
 
-## [v6.3.2](https://github.com/shopgate/theme-gmd/compare/v6.3.1...v6.3.2) (2019-05-05)
+## [v6.3.2](https://github.com/shopgate/pwa/compare/v6.3.1...v6.3.2) (2019-05-05)
 
 #### :bug: Bug Fix
 * [#604](https://github.com/shopgate/pwa/pull/604) Open social media app deeplinks natively ([@alexbridge](https://github.com/alexbridge))
 
 
-## [v6.3.1](https://github.com/shopgate/theme-gmd/compare/v6.3.0...v6.3.1) (2019-03-20)
+## [v6.3.1](https://github.com/shopgate/pwa/compare/v6.3.0...v6.3.1) (2019-03-20)
 
 #### :bug: Bug Fix
 * [#578](https://github.com/shopgate/pwa/pull/578) Sentry.io level / severity is not send correctly for PWA 6.3.1 ([@alexbridge](https://github.com/alexbridge))
 
 
-## [v6.3.0](https://github.com/shopgate/theme-gmd/compare/v6.2.1...v6.3.0) (2019-03-18)
+## [v6.3.0](https://github.com/shopgate/pwa/compare/v6.2.1...v6.3.0) (2019-03-18)
 
 #### :rocket: Enhancement
 * [#555](https://github.com/shopgate/pwa/pull/555) Improve error behaviour for tracking core plugin calls ([@alexbridge](https://github.com/alexbridge))
@@ -33,14 +33,14 @@
 * [#543](https://github.com/shopgate/pwa/pull/543) Fix for text hint below text input options with zero rendered price ([@alexbridge](https://github.com/alexbridge))
 
 
-## [v6.2.1](https://github.com/shopgate/theme-gmd/compare/v6.2.0...v6.2.1) (2019-03-07)
+## [v6.2.1](https://github.com/shopgate/pwa/compare/v6.2.0...v6.2.1) (2019-03-07)
 
 #### :bug: Bug Fix
 * [#553](https://github.com/shopgate/pwa/pull/553) Fixed locales in theme-gmd and theme-ios11 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
 * [#552](https://github.com/shopgate/pwa/pull/552) The pwa-benchmark npm package is now published in transpiled state. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
 
 
-## [v6.2.0](https://github.com/shopgate/theme-gmd/compare/v6.1.1...v6.2.0) (2019-02-27)
+## [v6.2.0](https://github.com/shopgate/pwa/compare/v6.1.1...v6.2.0) (2019-02-27)
 
 #### :rocket: Enhancement
 * [#536](https://github.com/shopgate/pwa/pull/536) Check issues of Browser Connector with Cypress Tests ([@alexbridge](https://github.com/alexbridge))
@@ -66,14 +66,14 @@
 * [#522](https://github.com/shopgate/pwa/pull/522) Fix White page on selecting certain input option (select option) ([@alexbridge](https://github.com/alexbridge))
 
 
-## [v6.1.1](https://github.com/shopgate/theme-gmd/compare/v6.1.0...v6.1.1) (2019-02-13)
+## [v6.1.1](https://github.com/shopgate/pwa/compare/v6.1.0...v6.1.1) (2019-02-13)
 
 #### :bug: Bug Fix
 * [#532](https://github.com/shopgate/pwa/pull/532) Fixed wrong tracking events ([@fkloes](https://github.com/fkloes))
 * [#531](https://github.com/shopgate/pwa/pull/531) Fixed a bug where the router throws an error when running a theme in standalone. ([@devbucket](https://github.com/devbucket))
 
 
-## [v6.1.0](https://github.com/shopgate/theme-gmd/compare/v6.0.1...v6.1.0) (2019-02-07)
+## [v6.1.0](https://github.com/shopgate/pwa/compare/v6.0.1...v6.1.0) (2019-02-07)
 
 #### :rocket: Enhancement
 * [#524](https://github.com/shopgate/pwa/pull/524) Added portals to the PaymentBar component. ([@DannyShopgate](https://github.com/DannyShopgate))
@@ -136,7 +136,7 @@
 * [#425](https://github.com/shopgate/pwa/pull/425) Change to getProductsById action that keeps original hash when some requested products are already cached. Make Product widget responsive to settings changes after mounting ([@aaron-martin](https://github.com/aaron-martin))
 
 
-## [v6.0.1](https://github.com/shopgate/theme-gmd/compare/v6.0.0...v6.0.1) (2019-01-17)
+## [v6.0.1](https://github.com/shopgate/pwa/compare/v6.0.0...v6.0.1) (2019-01-17)
 
 #### :rocket: Enhancement
 * [#432](https://github.com/shopgate/pwa/pull/432) Remove unnecessary redirects ([@alexbridge](https://github.com/alexbridge))
@@ -169,7 +169,7 @@
 * [#429](https://github.com/shopgate/pwa/pull/429) Changed the ViewContent to receive the visible flag as a prop ([@richardgorman](https://github.com/richardgorman))
 
 
-## [v6.0.0](https://github.com/shopgate/theme-gmd/compare/v5.11.0...v6.0.0) (2018-12-04)
+## [v6.0.0](https://github.com/shopgate/pwa/compare/v5.11.0...v6.0.0) (2018-12-04)
 
 #### :rocket: Enhancement
 * [#421](https://github.com/shopgate/pwa/pull/421) Add webcheckout register redirect action  ([@alexbridge](https://github.com/alexbridge))
