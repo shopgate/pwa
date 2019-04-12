@@ -5,6 +5,8 @@ export { default as grantCameraPermissions } from '@shopgate/pwa-common-commerce
 export { default as handleBarCode } from '@shopgate/pwa-common-commerce/scanner/actions/handleBarCode';
 export { default as handleQrCode } from '@shopgate/pwa-common-commerce/scanner/actions/handleQrCode';
 
+export { default as scanner } from '@shopgate/pwa-core/classes/Scanner';
+
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/scanner/constants';
 export * from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
