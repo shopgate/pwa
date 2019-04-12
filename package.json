@@ -16,6 +16,7 @@
     "e2e:user": "cypress open -P ./e2e/extensions/user"
   },
   "dependencies": {
+    "@shopgate/engage": "6.3.2",
     "@shopgate/pwa-common": "6.3.2",
     "@shopgate/pwa-common-commerce": "6.3.2",
     "@shopgate/pwa-core": "6.3.2",
