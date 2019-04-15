@@ -1,3 +1,4 @@
+import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
 import {
   CATEGORY_LIFETIME,
   REQUEST_CATEGORY,
@@ -44,6 +45,12 @@ const childrenByCategoryId = (state = {}, action) => {
     }
     case ERROR_CATEGORY:
     case ERROR_CATEGORY_CHILDREN:
+      if (action.errorCode === ENOTFOUND) {
+        // Remove the temporary entry from the state when noting was found for the categoryId.
+        const { [action.categoryId]: tmp, ...rest } = state;
+        return rest;
+      }
+
       return {
         ...state,
         [action.categoryId]: {
