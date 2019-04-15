@@ -1,96 +1,45 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
-import { historyReplace } from '@shopgate/pwa-common/actions/router';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
-import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
-import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
 import successHandleScanner from '../action-creators/successHandleScanner';
-import errorHandleScanner from '../action-creators/errorHandleScanner';
 import handleBarCode from './handleBarCode';
+import handleSearch from './handleSearch';
+import handleNoResults from './handleNoResults';
 
-jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('@shopgate/pwa-common/actions/router', () => ({
-  historyReplace: jest.fn(),
-}));
-jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => (
-  jest.fn().mockResolvedValue(true)
-));
-jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery');
+jest.mock('./handleSearch');
+jest.mock('./handleNoResults');
 
 const scope = SCANNER_SCOPE_DEFAULT;
 const format = 'EAN_13';
+const payload = '123456';
 
 describe('handleBarCode', () => {
   const dispatch = jest.fn(action => action);
-  const scannerStart = jest.spyOn(Scanner, 'start').mockImplementation(() => {});
-
-  const modalContent = {
-    dismiss: null,
-    confirm: 'modal.ok',
-    title: 'modal.title_error',
-    message: 'scanner.noResult.barCode',
-  };
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should show modal when products not found', async () => {
-    fetchProductsByQuery.mockResolvedValue({
-      products: [],
-    });
+  it('should use the product search', async () => {
+    const event = { scope, format, payload };
 
-    const payload = '111111';
-
-    await handleBarCode({ scope, format, payload })(dispatch);
-    expect(fetchProductsByQuery).toHaveBeenCalledWith(2, payload);
-    expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
-    expect(showModal).toHaveBeenCalledWith(modalContent);
-    expect(scannerStart).toHaveBeenCalledTimes(1);
+    await handleBarCode(event)(dispatch);
+    expect(handleSearch).toHaveBeenCalledWith(payload);
   });
 
-  it('should navigate to PDP when 1 product is found', async () => {
-    const payload = '222222';
-    fetchProductsByQuery.mockResolvedValue({
-      products: [{ id: payload }],
-    });
+  it("should trigger handling of no results when the search didn't find anything", async () => {
+    const event = { scope, format, payload };
+    handleSearch.mockResolvedValue(false);
 
-    await handleBarCode({ scope, format, payload })(dispatch);
-    expect(fetchProductsByQuery).toHaveBeenCalledWith(2, payload);
+    await handleBarCode(event)(dispatch);
+    expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.barCode'));
+  });
+
+  it('should inform with a success event if the search handler did its job', async () => {
+    const event = { scope, format, payload };
+    handleSearch.mockResolvedValue(true);
+
+    await handleBarCode(event)(dispatch);
     expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
-    expect(historyReplace).toHaveBeenCalledWith({
-      pathname: getProductRoute(payload),
-    });
-  });
-
-  it('should navigate to PDP when 1 hashed product is found', async () => {
-    const payload = '222222';
-    fetchProductsByQuery.mockResolvedValue({
-      products: ['222222'],
-    });
-
-    await handleBarCode({ scope, format, payload })(dispatch);
-    expect(fetchProductsByQuery).toHaveBeenCalledWith(2, '222222');
-    expect(historyReplace).toHaveBeenCalledWith({
-      pathname: getProductRoute('222222'),
-    });
-  });
-
-  it('should navigate to search when more products are found', async () => {
-    const payload = '333333';
-    fetchProductsByQuery.mockReturnValue(Promise.resolve({
-      products: ['111', '222'],
-    }));
-
-    await handleBarCode({ scope, format, payload })(dispatch);
-    expect(fetchProductsByQuery).toHaveBeenCalledWith(2, payload);
-    expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
-    expect(historyReplace).toHaveBeenCalledWith({
-      pathname: getSearchRoute(payload),
-    });
   });
 });
-
 /* eslint-enable extra-rules/no-single-line-objects */
