@@ -20,6 +20,10 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
+  if (!configs) {
+    return null;
+  }
+
   let center = <Logo />;
 
   if (pageId !== PAGE_ID_INDEX) {
