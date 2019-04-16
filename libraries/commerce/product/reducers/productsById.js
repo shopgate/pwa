@@ -47,7 +47,7 @@ export default function productsById(state = {}, action) {
     case ERROR_PRODUCT:
       if (action.errorCode === ENOTFOUND) {
         // Remove the temporary entry from the state when noting was found for the productId.
-        const { [action.productId]: tmp, ...rest } = state;
+        const { [action.productId]: ignore, ...rest } = state;
         return rest;
       }
 

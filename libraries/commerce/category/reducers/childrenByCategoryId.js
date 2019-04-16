@@ -47,7 +47,7 @@ const childrenByCategoryId = (state = {}, action) => {
     case ERROR_CATEGORY_CHILDREN:
       if (action.errorCode === ENOTFOUND) {
         // Remove the temporary entry from the state when noting was found for the categoryId.
-        const { [action.categoryId]: tmp, ...rest } = state;
+        const { [action.categoryId]: ignore, ...rest } = state;
         return rest;
       }
 

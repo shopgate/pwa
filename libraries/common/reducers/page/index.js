@@ -48,7 +48,7 @@ export default function pageReducer(state = {}, action) {
     case ERROR_PAGE_CONFIG: {
       if (action.errorCode === ENOTFOUND) {
         // Remove the temporary page entry from the state when noting was found for the pageId.
-        const { [action.pageId]: tmp, ...rest } = state;
+        const { [action.pageId]: ignore, ...rest } = state;
         return rest;
       }
 

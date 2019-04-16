@@ -28,7 +28,7 @@ const categoriesById = (state = {}, action) => {
       };
 
     case RECEIVE_CATEGORY: {
-      const { children, ...categoryData } = action.categoryData;
+      const { children: ignore, ...categoryData } = action.categoryData;
 
       return {
         ...state,
@@ -57,7 +57,7 @@ const categoriesById = (state = {}, action) => {
     case ERROR_CATEGORY:
       if (action.errorCode === ENOTFOUND) {
         // Remove the temporary entry from the state when noting was found for the categoryId.
-        const { [action.categoryId]: tmp, ...rest } = state;
+        const { [action.categoryId]: ignore, ...rest } = state;
         return rest;
       }
 
