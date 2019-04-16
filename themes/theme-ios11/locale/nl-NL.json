@@ -97,6 +97,7 @@
   "cart": {
     "subtotal": "Subtotaal",
     "total": "Totaal winkelwagen",
+    "discounts": "Kortingen ({label})",
     "checkout": "Afrekenen",
     "remove": "Verwijderen",
     "edit": "Wijzig",
