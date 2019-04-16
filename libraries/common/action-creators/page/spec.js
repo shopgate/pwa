@@ -36,11 +36,14 @@ describe('Action Creators: page', () => {
 
   describe('errorPageConfig()', () => {
     it('should work as expected', () => {
+      const errorCode = 'error';
       const expected = {
         type: ERROR_PAGE_CONFIG,
+        errorCode,
         pageId,
       };
-      expect(errorPageConfig(pageId)).toEqual(expected);
+
+      expect(errorPageConfig(pageId, errorCode)).toEqual(expected);
     });
   });
 });

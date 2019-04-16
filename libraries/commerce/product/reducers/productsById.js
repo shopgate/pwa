@@ -1,3 +1,4 @@
+import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
 import {
   PRODUCT_LIFETIME,
   REQUEST_PRODUCT,
@@ -44,6 +45,12 @@ export default function productsById(state = {}, action) {
         },
       };
     case ERROR_PRODUCT:
+      if (action.errorCode === ENOTFOUND) {
+        // Remove the temporary entry from the state when noting was found for the productId.
+        const { [action.productId]: ignore, ...rest } = state;
+        return rest;
+      }
+
       return {
         ...state,
         [action.productId]: {
