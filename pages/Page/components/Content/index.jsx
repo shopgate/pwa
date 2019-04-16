@@ -21,6 +21,10 @@ import connect from './connector';
  * @return {JSX}
  */
 function PageContent({ configs, pageId }) {
+  if (!configs) {
+    return null;
+  }
+
   let center = <Logo key="center" />;
 
   if (pageId !== PAGE_ID_INDEX) {
