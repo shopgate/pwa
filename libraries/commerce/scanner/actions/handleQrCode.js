@@ -1,12 +1,9 @@
-import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import { historyPop, historyReplace } from '@shopgate/pwa-common/actions/router';
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
 import { fetchCategory, getCategoryById } from '@shopgate/pwa-common-commerce/category';
 import successHandleScanner from '../action-creators/successHandleScanner';
-import errorHandleScanner from '../action-creators/errorHandleScanner';
 import {
   QR_CODE_TYPE_CATEGORY,
   QR_CODE_TYPE_COUPON,
@@ -17,35 +14,42 @@ import {
   QR_CODE_TYPE_SEARCH,
 } from '../constants';
 import { parse2dsQrCode } from '../helpers';
+import handleSearch from './handleSearch';
+import handleNoResults from './handleNoResults';
 
 /**
  * Handle qr code
- * @param {string} scope Scanner scope.
- * @param {string} format Format of the scanned code.
- * @param {string} payload Barcode payload.
+ * @param {string} event.scope Scanner scope.
+ * @param {string} event.format Format of the scanned code.
+ * @param {string} event.payload Barcode payload.
  * @return {Function} A redux thunk.
  */
 export default ({ scope, format, payload }) => async (dispatch, getState) => {
   const { type, link, data } = parse2dsQrCode(payload) || {};
 
-  /** Show modal and continue scanning */
-  const notFound = () => {
-    dispatch(errorHandleScanner(scope, format, payload));
-    dispatch(showModal({
-      dismiss: null,
-      confirm: 'modal.ok',
-      title: 'modal.title_error',
-      message: 'scanner.noResult.qrCode',
-    })).then(confirmed => confirmed && Scanner.start());
-  };
+  /**
+   * Helper function to handle no scan results
+   * @return {Function}
+   */
+  const notFound = () => dispatch(handleNoResults({
+    scope,
+    format,
+    payload,
+  }, 'scanner.noResult.qrCode'));
 
   switch (type) {
     case QR_CODE_TYPE_HOMEPAGE:
-    case QR_CODE_TYPE_SEARCH:
       dispatch(successHandleScanner(scope, format, payload));
       dispatch(historyReplace({
         pathname: link,
       }));
+      break;
+    case QR_CODE_TYPE_SEARCH:
+      if (await dispatch(handleSearch(data.searchPhrase || ''))) {
+        dispatch(successHandleScanner(scope, format, payload));
+      } else {
+        notFound();
+      }
       break;
     case QR_CODE_TYPE_COUPON:
       dispatch(successHandleScanner(scope, format, payload));

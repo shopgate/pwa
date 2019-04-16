@@ -1,10 +1,8 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
 import { historyReplace, historyPop } from '@shopgate/pwa-common/actions/router';
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
 import { fetchCategory, getCategoryById } from '@shopgate/pwa-common-commerce/category';
 import {
@@ -16,11 +14,11 @@ import {
   QR_CODE_TYPE_PAGE,
 } from '../constants';
 import successHandleScanner from '../action-creators/successHandleScanner';
-import errorHandleScanner from '../action-creators/errorHandleScanner';
 import { parse2dsQrCode } from '../helpers';
 import handleQrCode from './handleQrCode';
+import handleSearch from './handleSearch';
+import handleNoResults from './handleNoResults';
 
-jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyReplace: jest.fn(),
   historyPop: jest.fn(),
@@ -31,9 +29,7 @@ jest.mock('@shopgate/pwa-common/actions/page', () => ({
 jest.mock('@shopgate/pwa-common/selectors/page', () => ({
   getPageConfigById: jest.fn(),
 }));
-jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => (
-  jest.fn().mockResolvedValue(true)
-));
+
 jest.mock('@shopgate/pwa-common-commerce/product', () => ({
   fetchProductsById: jest.fn().mockResolvedValue(null),
   getProductById: jest.fn(),
@@ -46,6 +42,9 @@ jest.mock('../helpers', () => ({
   parse2dsQrCode: jest.fn(),
 }));
 
+jest.mock('./handleSearch');
+jest.mock('./handleNoResults');
+
 const scope = SCANNER_SCOPE_DEFAULT;
 const format = 'QR_CODE';
 const payload = 'qr.code.from.scanner';
@@ -53,14 +52,6 @@ const payload = 'qr.code.from.scanner';
 describe('handleQrCode', () => {
   const dispatch = jest.fn(action => action);
   const getState = jest.fn();
-  const scannerStart = jest.spyOn(Scanner, 'start').mockImplementation(() => {});
-
-  const modalContent = {
-    dismiss: null,
-    confirm: 'modal.ok',
-    title: 'modal.title_error',
-    message: 'scanner.noResult.qrCode',
-  };
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -72,20 +63,18 @@ describe('handleQrCode', () => {
   });
 
   describe('unknown link handling', () => {
-    it('should show modal and restart scanner when type is undefined', async () => {
+    it('should trigger "no result" handling when type is undefined', async () => {
       parse2dsQrCode.mockReturnValue(null);
-      await handleQrCode({ scope, format, payload })(dispatch);
-      expect(showModal).toHaveBeenCalledTimes(1);
-      expect(scannerStart).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
-    it('should show modal and restart scanner  when type is unknown', async () => {
+    it('should trigger "no result" handling when type is unknown', async () => {
       parse2dsQrCode.mockReturnValue({ type: 'unknown' });
-      await handleQrCode({ scope, format, payload })(dispatch);
-      expect(showModal).toHaveBeenCalledTimes(1);
-      expect(scannerStart).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
   });
 
@@ -99,13 +88,51 @@ describe('handleQrCode', () => {
       expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
     });
 
-    it('should navigate to search', () => {
-      parse2dsQrCode.mockReturnValue({ type: QR_CODE_TYPE_SEARCH, link: '/search?term' });
-      handleQrCode({ scope, format, payload })(dispatch);
-      expect(historyReplace).toHaveBeenCalledWith({
-        pathname: '/search?term',
+    it('should pass the correct phrase to the search', async () => {
+      const data = {
+        searchPhrase: 'Food',
+      };
+      parse2dsQrCode.mockReturnValue({
+        type: QR_CODE_TYPE_SEARCH,
+        link: '/search?Food',
+        data,
       });
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith(handleSearch(data.searchPhrase));
+    });
+
+    it('should perform a search and handle it accordingly when something was found', async () => {
+      const data = {
+        searchPhrase: 'Food',
+      };
+      parse2dsQrCode.mockReturnValue({
+        type: QR_CODE_TYPE_SEARCH,
+        link: '/search?Food',
+        data,
+      });
+      handleSearch.mockResolvedValue(true);
+
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith(handleSearch(data.searchPhrase));
       expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
+    });
+
+    it('should trigger "no result" handling if the search would not find any products', async () => {
+      const data = {
+        searchPhrase: 'FoodWithExtra',
+      };
+      parse2dsQrCode.mockReturnValue({
+        type: QR_CODE_TYPE_SEARCH,
+        link: '/search?FoodWithExtra',
+        data,
+      });
+      handleSearch.mockResolvedValue(false);
+
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
     it('should navigate to add coupon page', () => {
@@ -130,13 +157,11 @@ describe('handleQrCode', () => {
       expect(getState).toHaveBeenCalledTimes(1);
     });
 
-    it('should show modal, when product not found', async () => {
+    it('should trigger "no result" handling when the product is not found', async () => {
       getProductById.mockReturnValue(null);
-      // Handle
-      await handleQrCode({ scope, format, payload })(dispatch, getState);
-      expect(showModal).toHaveBeenCalledWith(modalContent);
-      expect(scannerStart).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
     it('should navigate to PDP when product exists', async () => {
@@ -160,14 +185,13 @@ describe('handleQrCode', () => {
       expect(getState).toHaveBeenCalledTimes(1);
     });
 
-    it('should show modal, when category not found', async () => {
+    it('should trigger "no result" handling when the category is not found', async () => {
       getCategoryById.mockReturnValue(null);
-      // Handle
-      await handleQrCode({ scope, format, payload })(dispatch, getState);
-      expect(showModal).toHaveBeenCalledWith(modalContent);
-      expect(scannerStart).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
+
     it('should navigate to PLP when category exists', async () => {
       getCategoryById.mockReturnValue(true);
       await handleQrCode({ scope, format, payload })(dispatch, getState);
@@ -189,13 +213,11 @@ describe('handleQrCode', () => {
       expect(getState).toHaveBeenCalledTimes(1);
     });
 
-    it('should show modal, when page not found', async () => {
+    it('should trigger "no result" handling when no page not found', async () => {
       getPageConfigById.mockReturnValue(null);
-      // Handle
-      await handleQrCode({ scope, format, payload })(dispatch, getState);
-      expect(showModal).toHaveBeenCalledWith(modalContent);
-      expect(scannerStart).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(errorHandleScanner(scope, format, payload));
+      const event = { scope, format, payload };
+      await handleQrCode(event)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
     it('should navigate to CMS when page exists', async () => {
