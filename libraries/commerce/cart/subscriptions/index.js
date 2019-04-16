@@ -82,7 +82,7 @@ export default function cart(subscribe) {
       const [, , coupon] = action.params.pathname.split('/');
 
       if (coupon) {
-        dispatch(addCouponsToCart([coupon]));
+        dispatch(addCouponsToCart([coupon.split('?')[0]]));
       }
 
       return null;
