@@ -29,9 +29,11 @@ export const receivePageConfig = (pageId, config) => ({
 /**
  * Creates the dispatched ERROR_PAGE_CONFIG action object.
  * @param {Object} pageId The page id.
+ * @param {string} errorCode The error code.
  * @returns {Object} The dispatched action object.
  */
-export const errorPageConfig = pageId => ({
+export const errorPageConfig = (pageId, errorCode) => ({
   type: ERROR_PAGE_CONFIG,
   pageId,
+  errorCode,
 });
