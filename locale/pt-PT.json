@@ -15,7 +15,8 @@
     "cart": "Carrinho",
     "shipping": "Envio",
     "reviews": "Avaliações",
-    "favorites": "Favoritos"
+    "favorites": "Favoritos",
+    "scanner": "Scanner"
   },
   "favorites": {
     "add": "Adicionar aos favoritos",
@@ -100,7 +101,9 @@
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
-    "free_shipping": "Envio Grátis"
+    "free_shipping": "Envio Grátis",
+    "total": "Total do carrinho",
+    "discounts": "Descontos ({label})"
   },
   "login": {
     "headline": "Bem vindo",
@@ -122,6 +125,7 @@
     "categories": "Categorias",
     "favorites": "Favoritos",
     "my_orders": "Meus Pedidos",
+    "scanner": "Scanner",
     "cart": "Carrinho de Compras",
     "shipping": "Métodos de Envio",
     "about": "Entre em Contato Conosco",
@@ -153,5 +157,16 @@
     "review_form_error_length": "Tamanho máximo de {length} caracteres.",
     "press_to_rate_with_x_stars": "Pressione para avaliar com {rate} {rate, plural, =1 {estrela} other {estrelas}}.",
     "success_message": "Obrigado pela sua avaliação!"
+  },
+  "scanner": {
+    "instructions": "Por favor mantenha o código de barras ou código QR no centro. A deteção é realizada automaticamente.",
+    "noResult": {
+      "qrCode": "Não foi possível encontrar resultados para este código QR.",
+      "barCode": "Produto não encontrado."
+    },
+    "camera_access_denied": {
+      "message": "Esta funcionalidade requer acesso à sua câmara. Por favor autorize o acesso nas configurações.",
+      "settings_button": "Ir para configurações"
+    }
   }
 }
