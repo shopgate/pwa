@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ToggleIcon from '@shopgate/pwa-ui-shared/ToggleIcon';
-import FlashOnIcon from '@shopgate/pwa-ui-shared/icons/FlashOnIcon';
+import FlashEnabledIcon from '@shopgate/pwa-ui-shared/icons/FlashEnabledIcon';
 import FlashDisabledIcon from '@shopgate/pwa-ui-shared/icons/FlashDisabledIcon';
 import { SCANNER_FLASH } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
@@ -23,7 +23,7 @@ const FlashlightButton = ({
     >
       <ToggleIcon
         on={flashlightState}
-        onIcon={<FlashOnIcon className={styles.icon} />}
+        onIcon={<FlashEnabledIcon className={styles.icon} />}
         offIcon={<FlashDisabledIcon className={styles.icon} />}
       />
     </button>
