@@ -1,54 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-<MessageBar
-  classNames={
-    Object {
-      "container": "",
-      "message": "",
-    }
-  }
-  messages={
-    Array [
-      Object {
-        "message": "This is some information",
-      },
-      Object {
-        "message": "This is an error that happened here.",
-        "type": "error",
-      },
-      Object {
-        "message": "This is just a warning. Nothing to freak out about.",
-        "type": "warning",
-      },
-    ]
-  }
->
-  <div
-    className=" css-1gmese"
-  >
-    <div
-      className=" css-1psau2c"
-      key="info-This is some information"
-    >
-      This is some information
-    </div>
-    <div
-      className=" css-1t4ceri"
-      key="error-This is an error that happened here."
-    >
-      This is an error that happened here.
-    </div>
-    <div
-      className=" css-y06bhm"
-      key="warning-This is just a warning. Nothing to freak out about."
-    >
-      This is just a warning. Nothing to freak out about.
-    </div>
-  </div>
-</MessageBar>
-`;
-
 exports[`<MessageBar /> General rendering should be empty if no messages have been set 1`] = `
 <MessageBar
   classNames={
@@ -89,6 +40,145 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
       key="info-something"
     >
       something
+    </div>
+  </div>
+</MessageBar>
+`;
+
+exports[`<MessageBar /> Multiple messages rendering should render messages without frontend translation 1`] = `
+<MessageBar
+  classNames={
+    Object {
+      "container": "",
+      "message": "",
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "This is some information",
+        "type": "info",
+      },
+      Object {
+        "message": "This is an error that happened here.",
+        "type": "error",
+      },
+      Object {
+        "message": "This is just a warning. Nothing to freak out about.",
+        "type": "warning",
+      },
+      Object {
+        "message": "Normal pre-translated message.",
+        "translated": null,
+      },
+      Object {
+        "message": "Normal pre-translated message.",
+        "translated": true,
+      },
+    ]
+  }
+>
+  <div
+    className=" css-1gmese"
+  >
+    <div
+      className=" css-1psau2c"
+      key="info-This is some information"
+    >
+      This is some information
+    </div>
+    <div
+      className=" css-1t4ceri"
+      key="error-This is an error that happened here."
+    >
+      This is an error that happened here.
+    </div>
+    <div
+      className=" css-y06bhm"
+      key="warning-This is just a warning. Nothing to freak out about."
+    >
+      This is just a warning. Nothing to freak out about.
+    </div>
+    <div
+      className=" css-1psau2c"
+      key="info-Normal pre-translated message."
+    >
+      Normal pre-translated message.
+    </div>
+    <div
+      className=" css-1psau2c"
+      key="info-Normal pre-translated message."
+    >
+      Normal pre-translated message.
+    </div>
+  </div>
+</MessageBar>
+`;
+
+exports[`<MessageBar /> Multiple messages rendering should translate and render all given messages 1`] = `
+<MessageBar
+  classNames={
+    Object {
+      "container": "",
+      "message": "",
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "some.translation.string",
+        "translated": false,
+      },
+      Object {
+        "message": "Message with messageParams",
+        "messageParams": Object {
+          "myCustomParam1": "-> TEST-VALUE #1 <-",
+          "myCustomParam2": "-> TEST-VALUE #2 <-",
+        },
+        "translated": false,
+      },
+    ]
+  }
+>
+  <div
+    className=" css-1gmese"
+  >
+    <div
+      className=" css-1psau2c"
+      key="info-some.translation.string"
+    >
+      <Translate
+        className=""
+        params={null}
+        string="some.translation.string"
+      >
+        <span
+          className=""
+        >
+          some.translation.string
+        </span>
+      </Translate>
+    </div>
+    <div
+      className=" css-1psau2c"
+      key="info-Message with messageParams"
+    >
+      <Translate
+        className=""
+        params={
+          Object {
+            "myCustomParam1": "-> TEST-VALUE #1 <-",
+            "myCustomParam2": "-> TEST-VALUE #2 <-",
+          }
+        }
+        string="Message with messageParams"
+      >
+        <span
+          className=""
+        >
+          Message with messageParams
+        </span>
+      </Translate>
     </div>
   </div>
 </MessageBar>
