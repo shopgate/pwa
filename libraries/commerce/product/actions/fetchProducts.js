@@ -148,7 +148,9 @@ const fetchProducts = ({
       })
       .catch((error) => {
         logger.error(error);
+
         dispatch(errorProducts({
+          errorCode: error.code,
           hash,
           requestParams,
         }));

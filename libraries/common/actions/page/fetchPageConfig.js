@@ -26,7 +26,7 @@ export default function fetchPageConfig(pageId) {
       .then(result => dispatch(actions.receivePageConfig(pageId, result)))
       .catch((error) => {
         logger.error(error);
-        dispatch(actions.errorPageConfig(pageId));
+        dispatch(actions.errorPageConfig(pageId, error.code));
       });
   };
 }

@@ -1,12 +1,50 @@
 # Changelog
 
-## [v6.3.1](https://github.com/shopgate/theme-gmd/compare/v6.3.0...v6.3.1) (2019-03-20)
+## [v6.4.0](https://github.com/shopgate/theme-gmd/compare/v6.3.2...v6.4.0) (2019-04-10)
+
+#### :rocket: Enhancement
+* [#606](https://github.com/shopgate/pwa/pull/606) Extended the scanner event listeners to register for specific payload formats ([@fkloes](https://github.com/fkloes))
+* [#601](https://github.com/shopgate/pwa/pull/601) Automated changelog creation ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#589](https://github.com/shopgate/pwa/pull/589) The cart now display correct and consistent data in the totals. ([@devbucket](https://github.com/devbucket))
+* [#588](https://github.com/shopgate/pwa/pull/588) Add portals wrapping the View Content ([@alexbridge](https://github.com/alexbridge))
+* [#577](https://github.com/shopgate/pwa/pull/577) Implementation of the Barcode Scanner UI ([@fkloes](https://github.com/fkloes))
+* [#573](https://github.com/shopgate/pwa/pull/573) Show QR Code Scan results ([@alexbridge](https://github.com/alexbridge))
+* [#574](https://github.com/shopgate/pwa/pull/574) Unused selectors for UI and toast messages have been removed. ([@devbucket](https://github.com/devbucket))
+* [#572](https://github.com/shopgate/pwa/pull/572) The unused currentProduct reducer is removed from the default redux store. ([@devbucket](https://github.com/devbucket))
+* [#570](https://github.com/shopgate/pwa/pull/570) Show Barcode Scan results (basic) ([@alexbridge](https://github.com/alexbridge))
+* [#565](https://github.com/shopgate/pwa/pull/565) Add possibility to hide and replace the TabBar for the iOS theme ([@alexbridge](https://github.com/alexbridge))
+* [#564](https://github.com/shopgate/pwa/pull/564) Restructured PaymentBar and added Portals around cart totals ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#614](https://github.com/shopgate/pwa/pull/614) Keep shipping costs selector ([@alexbridge](https://github.com/alexbridge))
+* [#606](https://github.com/shopgate/pwa/pull/606) Extended the scanner event listeners to register for specific payload formats ([@fkloes](https://github.com/fkloes))
+* [#603](https://github.com/shopgate/pwa/pull/603) Add coupon + product to cart when QR code is scanned ([@alexbridge](https://github.com/alexbridge))
+* [#593](https://github.com/shopgate/pwa/pull/593) Fixed swiper open link actions ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#590](https://github.com/shopgate/pwa/pull/590) Patch for e2e tests for new slider implementation ([@alexbridge](https://github.com/alexbridge))
+* [#571](https://github.com/shopgate/pwa/pull/571) Refactored the Sliders to use the new react-id-swiper version ([@devbucket](https://github.com/devbucket))
+* [#576](https://github.com/shopgate/pwa/pull/576) Sentry.io level / severity is not send correctly ([@alexbridge](https://github.com/alexbridge))
+* [#575](https://github.com/shopgate/pwa/pull/575) The routeDidChange$ stream is now an alias of routeDidEnter$ since it is already deprecated. ([@devbucket](https://github.com/devbucket))
+* [#569](https://github.com/shopgate/pwa/pull/569) Fix navigation with special characters in search query ([@alexbridge](https://github.com/alexbridge))
+* [#567](https://github.com/shopgate/pwa/pull/567) Add shop number back to localstorage key of redux store ([@alexbridge](https://github.com/alexbridge))
+* [#562](https://github.com/shopgate/pwa/pull/562) Liveshopping widget localization to german ([@alexbridge](https://github.com/alexbridge))
+
+#### :nail_care: Polish
+* [#586](https://github.com/shopgate/pwa/pull/586) Added changelog starting from PWA version 6.0.0 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
+## [v6.3.2](https://github.com/shopgate/pwa/compare/v6.3.1...v6.3.2) (2019-05-05)
+
+#### :bug: Bug Fix
+* [#604](https://github.com/shopgate/pwa/pull/604) Open social media app deeplinks natively ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.3.1](https://github.com/shopgate/pwa/compare/v6.3.0...v6.3.1) (2019-03-20)
 
 #### :bug: Bug Fix
 * [#578](https://github.com/shopgate/pwa/pull/578) Sentry.io level / severity is not send correctly for PWA 6.3.1 ([@alexbridge](https://github.com/alexbridge))
 
 
-## [v6.3.0](https://github.com/shopgate/theme-gmd/compare/v6.2.1...v6.3.0) (2019-03-18)
+## [v6.3.0](https://github.com/shopgate/pwa/compare/v6.2.1...v6.3.0) (2019-03-18)
 
 #### :rocket: Enhancement
 * [#555](https://github.com/shopgate/pwa/pull/555) Improve error behaviour for tracking core plugin calls ([@alexbridge](https://github.com/alexbridge))
@@ -27,14 +65,14 @@
 * [#543](https://github.com/shopgate/pwa/pull/543) Fix for text hint below text input options with zero rendered price ([@alexbridge](https://github.com/alexbridge))
 
 
-## [v6.2.1](https://github.com/shopgate/theme-gmd/compare/v6.2.0...v6.2.1) (2019-03-07)
+## [v6.2.1](https://github.com/shopgate/pwa/compare/v6.2.0...v6.2.1) (2019-03-07)
 
 #### :bug: Bug Fix
 * [#553](https://github.com/shopgate/pwa/pull/553) Fixed locales in theme-gmd and theme-ios11 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
 * [#552](https://github.com/shopgate/pwa/pull/552) The pwa-benchmark npm package is now published in transpiled state. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
 
 
-## [v6.2.0](https://github.com/shopgate/theme-gmd/compare/v6.1.1...v6.2.0) (2019-02-27)
+## [v6.2.0](https://github.com/shopgate/pwa/compare/v6.1.1...v6.2.0) (2019-02-27)
 
 #### :rocket: Enhancement
 * [#536](https://github.com/shopgate/pwa/pull/536) Check issues of Browser Connector with Cypress Tests ([@alexbridge](https://github.com/alexbridge))
@@ -60,14 +98,14 @@
 * [#522](https://github.com/shopgate/pwa/pull/522) Fix White page on selecting certain input option (select option) ([@alexbridge](https://github.com/alexbridge))
 
 
-## [v6.1.1](https://github.com/shopgate/theme-gmd/compare/v6.1.0...v6.1.1) (2019-02-13)
+## [v6.1.1](https://github.com/shopgate/pwa/compare/v6.1.0...v6.1.1) (2019-02-13)
 
 #### :bug: Bug Fix
 * [#532](https://github.com/shopgate/pwa/pull/532) Fixed wrong tracking events ([@fkloes](https://github.com/fkloes))
 * [#531](https://github.com/shopgate/pwa/pull/531) Fixed a bug where the router throws an error when running a theme in standalone. ([@devbucket](https://github.com/devbucket))
 
 
-## [v6.1.0](https://github.com/shopgate/theme-gmd/compare/v6.0.1...v6.1.0) (2019-02-07)
+## [v6.1.0](https://github.com/shopgate/pwa/compare/v6.0.1...v6.1.0) (2019-02-07)
 
 #### :rocket: Enhancement
 * [#524](https://github.com/shopgate/pwa/pull/524) Added portals to the PaymentBar component. ([@DannyShopgate](https://github.com/DannyShopgate))
@@ -130,7 +168,7 @@
 * [#425](https://github.com/shopgate/pwa/pull/425) Change to getProductsById action that keeps original hash when some requested products are already cached. Make Product widget responsive to settings changes after mounting ([@aaron-martin](https://github.com/aaron-martin))
 
 
-## [v6.0.1](https://github.com/shopgate/theme-gmd/compare/v6.0.0...v6.0.1) (2019-01-17)
+## [v6.0.1](https://github.com/shopgate/pwa/compare/v6.0.0...v6.0.1) (2019-01-17)
 
 #### :rocket: Enhancement
 * [#432](https://github.com/shopgate/pwa/pull/432) Remove unnecessary redirects ([@alexbridge](https://github.com/alexbridge))
@@ -163,7 +201,7 @@
 * [#429](https://github.com/shopgate/pwa/pull/429) Changed the ViewContent to receive the visible flag as a prop ([@richardgorman](https://github.com/richardgorman))
 
 
-## [v6.0.0](https://github.com/shopgate/theme-gmd/compare/v5.11.0...v6.0.0) (2018-12-04)
+## [v6.0.0](https://github.com/shopgate/pwa/compare/v5.11.0...v6.0.0) (2018-12-04)
 
 #### :rocket: Enhancement
 * [#421](https://github.com/shopgate/pwa/pull/421) Add webcheckout register redirect action  ([@alexbridge](https://github.com/alexbridge))
