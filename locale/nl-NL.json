@@ -25,6 +25,7 @@
     "empty": "U heeft geen favorieten",
     "error_add": "Product kon niet aan favorieten worden toegevoegd",
     "error_remove": "Product kon niet van favorieten verwijderd worden",
+    "error_limit": "U hebt het aantal producten dat in de favorieten toegestaan zijn, overschreden.",
     "remove": "Verwijder van favorieten",
     "removed": "Verwijderd van favorieten",
     "modal": {

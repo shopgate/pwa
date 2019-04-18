@@ -25,6 +25,7 @@
     "empty": "No tiene favoritos",
     "error_add": "El producto no se pudo agregar a favoritos",
     "error_remove": "El producto no se pudo quitar de favoritos",
+    "error_limit": "Has superado la cantidad de productos permitidos en favoritos.",
     "remove": "Quitar de favoritos",
     "removed": "Quitado de favoritos",
     "modal": {
