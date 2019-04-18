@@ -16,7 +16,7 @@ exports[`<Content /> should render 1`] = `
     pageId="1234"
     query="foo"
   >
-    <Connect(BackBar) />
+    <ConnectFunction />
     <Headline
       style={
         Object {
@@ -27,11 +27,11 @@ exports[`<Content /> should render 1`] = `
       tag="h1"
       text=""
     />
-    <Connect(SearchField)
+    <ConnectFunction
       pageId="1234"
       query="foo"
     />
-    <Connect(RootCategories) />
+    <ConnectFunction />
   </BrowseContent>
 </Provider>
 `;

@@ -12,12 +12,12 @@ exports[`<Quicklinks /> should not render when no quicklinks are there 1`] = `
     }
   }
 >
-  <Connect(Quicklinks)>
+  <ConnectFunction>
     <Quicklinks
       dispatch={[Function]}
       entries={Array []}
     />
-  </Connect(Quicklinks)>
+  </ConnectFunction>
 </Provider>
 `;
 
@@ -33,7 +33,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
     }
   }
 >
-  <Connect(Quicklinks)>
+  <ConnectFunction>
     <Quicklinks
       dispatch={[Function]}
       entries={
@@ -147,6 +147,6 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
         </div>
       </Section>
     </Quicklinks>
-  </Connect(Quicklinks)>
+  </ConnectFunction>
 </Provider>
 `;

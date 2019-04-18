@@ -13,7 +13,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
     }
   }
 >
-  <Connect(CTAButtons)
+  <ConnectFunction
     productId="product_1"
   >
     <CTAButtons
@@ -31,7 +31,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       <div
         className="css-wbu9yb"
       >
-        <Connect(FavoritesButton)
+        <ConnectFunction
           active={null}
           onRippleComplete={[Function]}
           once={false}
@@ -53,7 +53,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             removeWithRelatives={false}
             rippleClassName=""
           />
-        </Connect(FavoritesButton)>
+        </ConnectFunction>
         <Portal
           name="favorites.add-to-cart.before"
           props={null}
@@ -89,6 +89,6 @@ exports[`<CTAButtons /> should render buttons 1`] = `
         />
       </div>
     </CTAButtons>
-  </Connect(CTAButtons)>
+  </ConnectFunction>
 </Provider>
 `;
