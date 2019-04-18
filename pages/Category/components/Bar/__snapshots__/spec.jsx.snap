@@ -75,7 +75,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                   <div
                     className="css-1cte488"
                   >
-                    <Connect(Sort)>
+                    <ConnectFunction>
                       <Sort
                         historyReplace={[Function]}
                         route={Object {}}
@@ -353,10 +353,10 @@ exports[`<Bar /> should match snapshot 1`] = `
                           </SelectBox>
                         </Consumer>
                       </Sort>
-                    </Connect(Sort)>
+                    </ConnectFunction>
                     <_default>
                       <Consumer>
-                        <Connect(Component)
+                        <ConnectFunction
                           categoryId="1234"
                           navigate={[Function]}
                           query={
@@ -473,7 +473,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                               </Ripple>
                             </button>
                           </Component>
-                        </Connect(Component)>
+                        </ConnectFunction>
                       </Consumer>
                     </_default>
                   </div>
@@ -518,7 +518,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                           }
                         }
                       >
-                        <Connect(FilterChips)
+                        <ConnectFunction
                           filters={null}
                           routeId=""
                           scrollTop={null}
@@ -531,7 +531,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                             scrollTop={null}
                             updateFilters={[Function]}
                           />
-                        </Connect(FilterChips)>
+                        </ConnectFunction>
                       </Consume>
                     </Consumer>
                   </Consume>
