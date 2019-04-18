@@ -1,5 +1,37 @@
 # Changelog
 
+## [v6.5.0](https://github.com/shopgate/theme-gmd/compare/v6.4.0...v6.5.0) (2019-04-18)
+
+#### :rocket: Enhancement
+* [#622](https://github.com/shopgate/pwa/pull/622) Implemented translation system for cart and cart item messages. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#627](https://github.com/shopgate/pwa/pull/627) Replaced scanner flash icon for disabled flashlight to make it more clear what it does ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#624](https://github.com/shopgate/pwa/pull/624) Added support for Portuguese language. ([@devbucket](https://github.com/devbucket))
+* [#617](https://github.com/shopgate/pwa/pull/617) Added Minimum Advertising Pricing (MAP) support in Engage ([@alexbridge](https://github.com/alexbridge))
+* [#616](https://github.com/shopgate/pwa/pull/616) Add theme, router and current product, React Hooks and HOC to easily access the appropriate data ([@devbucket](https://github.com/devbucket))
+* [#615](https://github.com/shopgate/pwa/pull/615) Improved rendering of videos within product descriptions and the HTML widget ([@fkloes](https://github.com/fkloes))
+* [#598](https://github.com/shopgate/pwa/pull/598) Introduced @shopgate/engage package to start new API ([@devbucket](https://github.com/devbucket))
+* [#597](https://github.com/shopgate/pwa/pull/597) Added a camera permission check before the scanner route is opened ([@fkloes](https://github.com/fkloes))
+* [#595](https://github.com/shopgate/pwa/pull/595) Added possibility to implement custom UI for product options ([@alexbridge](https://github.com/alexbridge))
+* [#594](https://github.com/shopgate/pwa/pull/594) The theme's color variables and global font variables are now configurable via the New Merchant Admin ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#625](https://github.com/shopgate/pwa/pull/625) Fixed an issue with scanning QR Code links that lead to non existent pages ([@fkloes](https://github.com/fkloes))
+* [#623](https://github.com/shopgate/pwa/pull/623) Fixed the Scanner to directly open the found item, when the search result only contains one item ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#621](https://github.com/shopgate/pwa/pull/621) Fixed broken handling of channel urls ([@fkloes](https://github.com/fkloes))
+* [#618](https://github.com/shopgate/pwa/pull/618) Add missing country ME ([@alexbridge](https://github.com/alexbridge))
+* [#612](https://github.com/shopgate/pwa/pull/612) Ignore unknown country in form builder country field ([@alexbridge](https://github.com/alexbridge))
+* [#610](https://github.com/shopgate/pwa/pull/610) Avoid screen overflow for select form element ([@alexbridge](https://github.com/alexbridge))
+* [#607](https://github.com/shopgate/pwa/pull/607) Added missing french translation for search placeholder ([@devbucket](https://github.com/devbucket))
+* [#600](https://github.com/shopgate/pwa/pull/600) Fallback to null when no shipping is given ([@alexbridge](https://github.com/alexbridge))
+* [#599](https://github.com/shopgate/pwa/pull/599) Fix for customizing theme colors ([@alexbridge](https://github.com/alexbridge))
+* [#596](https://github.com/shopgate/pwa/pull/596) Open social media app deeplinks natively ([@alexbridge](https://github.com/alexbridge))
+* [#591](https://github.com/shopgate/pwa/pull/591) Fixed an issue with GET parameters inside of coupon deeplinks ([@fkloes](https://github.com/fkloes))
+
+#### :nail_care: Polish
+* [#609](https://github.com/shopgate/pwa/pull/609) Removed duplicate getUserLogin selector ([@devbucket](https://github.com/devbucket))
+* [#602](https://github.com/shopgate/pwa/pull/602) Small refactoring of the changelog builder script ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
 ## [v6.4.0](https://github.com/shopgate/theme-gmd/compare/v6.3.2...v6.4.0) (2019-04-10)
 
 #### :rocket: Enhancement
