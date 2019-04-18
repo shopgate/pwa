@@ -131,8 +131,8 @@ export { default as CreditCardIcon } from '@shopgate/pwa-ui-shared/icons/CreditC
 export { default as CrossIcon } from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 export { default as DescriptionIcon } from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 export { default as FilterIcon } from '@shopgate/pwa-ui-shared/icons/FilterIcon';
-export { default as FlashOffIcon } from '@shopgate/pwa-ui-shared/icons/FlashOffIcon';
-export { default as FlashOnIcon } from '@shopgate/pwa-ui-shared/icons/FlashOnIcon';
+export { default as FlashEnabledIcon } from '@shopgate/pwa-ui-shared/icons/FlashEnabledIcon';
+export { default as FlashDisabledIcon } from '@shopgate/pwa-ui-shared/icons/FlashDisabledIcon';
 export { default as GridIcon } from '@shopgate/pwa-ui-shared/icons/GridIcon';
 export { default as HeartIcon } from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 export { default as HeartOutlineIcon } from '@shopgate/pwa-ui-shared/icons/HeartOutlineIcon';
