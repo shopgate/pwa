@@ -25,6 +25,7 @@
     "empty": "Sie haben noch keine Artikel in der Merkliste",
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
+    "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten.",
     "remove": "Von der Merkliste löschen",
     "removed": "Von Merkliste entfernt",
     "modal": {
