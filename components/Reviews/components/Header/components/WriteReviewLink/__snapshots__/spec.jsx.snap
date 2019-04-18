@@ -19,7 +19,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
     <div
       data-test-id="writeReview"
     >
-      <Connect(ButtonLink)
+      <ConnectFunction
         href="/item/666f6f/write_review"
         noGap={true}
       >
@@ -117,7 +117,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
             </div>
           </ActionButton>
         </ButtonLink>
-      </Connect(ButtonLink)>
+      </ConnectFunction>
     </div>
   </WriteReviewLink>
 </Provider>

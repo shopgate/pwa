@@ -13,7 +13,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
     }
   }
 >
-  <Connect(ProductGalleryContent)
+  <ConnectFunction
     initialSlide={3}
   >
     <ProductGalleryContent
@@ -288,7 +288,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
         </Swiper>
       </div>
     </ProductGalleryContent>
-  </Connect(ProductGalleryContent)>
+  </ConnectFunction>
 </Provider>
 `;
 
@@ -305,7 +305,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
     }
   }
 >
-  <Connect(ProductGalleryContent)
+  <ConnectFunction
     initialSlide={0}
   >
     <ProductGalleryContent
@@ -580,6 +580,6 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
         </Swiper>
       </div>
     </ProductGalleryContent>
-  </Connect(ProductGalleryContent)>
+  </ConnectFunction>
 </Provider>
 `;
