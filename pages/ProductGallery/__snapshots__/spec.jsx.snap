@@ -19,7 +19,7 @@ exports[`<ProductGallery> page should render content and an appbar 1`] = `
   >
     <MockedView>
       <div>
-        <Connect(ProductGalleryContent)
+        <ConnectFunction
           initialSlide={0}
           productId="913"
         />

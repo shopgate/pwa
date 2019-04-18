@@ -13,7 +13,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
     }
   }
 >
-  <Connect(pure(Rating))
+  <ConnectFunction
     productId="foo"
   >
     <pure(Rating)
@@ -393,6 +393,6 @@ exports[`Rating (product header) Rendering should render rating when data is ava
         />
       </Rating>
     </pure(Rating)>
-  </Connect(pure(Rating))>
+  </ConnectFunction>
 </Provider>
 `;
