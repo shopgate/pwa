@@ -227,7 +227,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
         }
       }
     >
-      <Connect(LoggedOut)>
+      <ConnectFunction>
         <LoggedOut
           dispatch={[Function]}
           isDisabled={true}
@@ -252,7 +252,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <ConnectFunction
                       disabled={true}
                       href="/login"
                     >
@@ -313,7 +313,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           </Button>
                         </div>
                       </Link>
-                    </Connect(Link)>
+                    </ConnectFunction>
                   </li>
                 </GridItem>
                 <GridItem
@@ -325,7 +325,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <ConnectFunction
                       disabled={true}
                       href="/register"
                     >
@@ -386,14 +386,14 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           </Button>
                         </div>
                       </Link>
-                    </Connect(Link)>
+                    </ConnectFunction>
                   </li>
                 </GridItem>
               </ul>
             </Grid>
           </div>
         </LoggedOut>
-      </Connect(LoggedOut)>
+      </ConnectFunction>
     </Portal>
     <Portal
       name="user-menu.container.after"
@@ -453,7 +453,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
         }
       }
     >
-      <Connect(LoggedOut)>
+      <ConnectFunction>
         <LoggedOut
           dispatch={[Function]}
           isDisabled={false}
@@ -478,7 +478,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <ConnectFunction
                       disabled={false}
                       href="/login"
                     >
@@ -539,7 +539,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           </Button>
                         </div>
                       </Link>
-                    </Connect(Link)>
+                    </ConnectFunction>
                   </li>
                 </GridItem>
                 <GridItem
@@ -551,7 +551,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   <li
                     className="css-mzzsxh"
                   >
-                    <Connect(Link)
+                    <ConnectFunction
                       disabled={false}
                       href="/register"
                     >
@@ -612,14 +612,14 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           </Button>
                         </div>
                       </Link>
-                    </Connect(Link)>
+                    </ConnectFunction>
                   </li>
                 </GridItem>
               </ul>
             </Grid>
           </div>
         </LoggedOut>
-      </Connect(LoggedOut)>
+      </ConnectFunction>
     </Portal>
     <Portal
       name="user-menu.container.after"

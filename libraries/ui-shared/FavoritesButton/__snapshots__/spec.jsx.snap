@@ -13,7 +13,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
     }
   }
 >
-  <Connect(FavoritesButton)
+  <ConnectFunction
     active={false}
   >
     <FavoritesButton
@@ -81,7 +81,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
         </Ripple>
       </button>
     </FavoritesButton>
-  </Connect(FavoritesButton)>
+  </ConnectFunction>
 </Provider>
 `;
 
@@ -98,7 +98,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
     }
   }
 >
-  <Connect(FavoritesButton)
+  <ConnectFunction
     active={true}
   >
     <FavoritesButton
@@ -166,6 +166,6 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
         </Ripple>
       </button>
     </FavoritesButton>
-  </Connect(FavoritesButton)>
+  </ConnectFunction>
 </Provider>
 `;

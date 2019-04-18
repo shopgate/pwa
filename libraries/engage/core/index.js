@@ -172,6 +172,8 @@ export {
   parseObjectToQueryString,
 };
 
+export { push, pop, replace, reset } from './router/helpers';
+
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/router';
 export * from '@shopgate/pwa-common/selectors/history';
@@ -219,9 +221,11 @@ export * from '@shopgate/pwa-common/selectors/modal';
 export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
 export { useCurrentProduct } from './hooks/useCurrentProduct';
+export { useNavigation } from './hooks/useNavigation';
 
 // --------------- HOCs --------------- //
 
 export { withTheme } from './hocs/withTheme';
 export { withRoute } from './hocs/withRoute';
 export { withCurrentProduct } from './hocs/withCurrentProduct';
+export { withNavigation } from './hocs/withNavigation';

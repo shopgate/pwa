@@ -13,7 +13,7 @@ exports[`<ProductCard /> should not render when no product could be found 1`] = 
     }
   }
 >
-  <Connect(ProductCard)>
+  <ConnectFunction>
     <ProductCard
       dispatch={[Function]}
       product={null}
@@ -21,7 +21,7 @@ exports[`<ProductCard /> should not render when no product could be found 1`] = 
       shadow={true}
       style={Object {}}
     />
-  </Connect(ProductCard)>
+  </ConnectFunction>
 </Provider>
 `;
 
@@ -38,7 +38,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
     }
   }
 >
-  <Connect(ProductCard)
+  <ConnectFunction
     productId="PR0DUCTID"
   >
     <ProductCard
@@ -106,7 +106,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
           titleRows={3}
           url="/item/505230445543544944"
         >
-          <Connect(Link)
+          <ConnectFunction
             href="/item/505230445543544944"
             tagName="a"
           >
@@ -834,11 +834,11 @@ exports[`<ProductCard /> should render as expected 1`] = `
                 </div>
               </div>
             </Link>
-          </Connect(Link)>
+          </ConnectFunction>
         </ProductCardRender>
       </section>
     </ProductCard>
-  </Connect(ProductCard)>
+  </ConnectFunction>
 </Provider>
 `;
 
@@ -855,7 +855,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
     }
   }
 >
-  <Connect(ProductCard)
+  <ConnectFunction
     productId="PR0DUCTID"
     render={[Function]}
   >
@@ -903,6 +903,6 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
         </div>
       </section>
     </ProductCard>
-  </Connect(ProductCard)>
+  </ConnectFunction>
 </Provider>
 `;

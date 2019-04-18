@@ -1,4 +1,4 @@
-const jestConfig = require('./utils/unit-tests/jest.config');
+const jestConfig = require('@shopgate/pwa-unit-test/jest.config');
 
 module.exports = {
   ...jestConfig,
@@ -20,7 +20,7 @@ module.exports = {
     '/themes/*/e2e/',
   ],
   transformIgnorePatterns: [
-    '/node_modules/(?![swiper|dom7].*/)',
+    'node_modules/(?!(swiper|dom7)/)',
     '/themes/*/extensions/',
     '/themes/*/e2e/',
   ],

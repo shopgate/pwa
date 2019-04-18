@@ -12,7 +12,7 @@ exports[`<Content /> Check search field should render with initial search query 
     }
   }
 >
-  <Connect(SearchField)
+  <ConnectFunction
     pageId="1234"
     query="foo"
   >
@@ -184,7 +184,7 @@ exports[`<Content /> Check search field should render with initial search query 
         </div>
       </div>
     </SearchField>
-  </Connect(SearchField)>
+  </ConnectFunction>
 </Provider>
 `;
 
@@ -200,7 +200,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
     }
   }
 >
-  <Connect(SearchField)
+  <ConnectFunction
     pageId="1234"
     query="foo"
   >
@@ -329,13 +329,13 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
         <div
           className="css-1su8uh1"
         />
-        <Connect(SuggestionList)
+        <ConnectFunction
           bottomHeight={0}
           onClick={[Function]}
           searchPhrase="foo"
         />
       </div>
     </SearchField>
-  </Connect(SearchField)>
+  </ConnectFunction>
 </Provider>
 `;

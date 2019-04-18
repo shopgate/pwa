@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pages: <RootCategory /> should render 1`] = `
+exports[`<NavigationHandler /> should render as expected 1`] = `
 <ContextProvider
   value={
     Object {
@@ -33,6 +33,10 @@ exports[`Pages: <RootCategory /> should render 1`] = `
     }
   }
 >
-  <ConnectFunction />
+  <ConnectFunction>
+    <div>
+      Some content
+    </div>
+  </ConnectFunction>
 </ContextProvider>
 `;

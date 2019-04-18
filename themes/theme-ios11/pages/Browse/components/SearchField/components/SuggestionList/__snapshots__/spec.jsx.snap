@@ -183,7 +183,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
     }
   }
 >
-  <Connect(SuggestionList)
+  <ConnectFunction
     bottomHeight={10}
     onClick={[Function]}
   >
@@ -242,6 +242,6 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         </button>
       </div>
     </SuggestionList>
-  </Connect(SuggestionList)>
+  </ConnectFunction>
 </Provider>
 `;

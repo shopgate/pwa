@@ -12,7 +12,7 @@ exports[`<CategoryListContent /> should render 1`] = `
     }
   }
 >
-  <Connect(CategoryListContent)
+  <ConnectFunction
     categoryId="1234"
   >
     <CategoryListContent
@@ -47,6 +47,6 @@ exports[`<CategoryListContent /> should render 1`] = `
         }
       />
     </CategoryListContent>
-  </Connect(CategoryListContent)>
+  </ConnectFunction>
 </Provider>
 `;
