@@ -14,7 +14,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
   }
 >
   <LoadingProvider>
-    <ConnectFunction>
+    <Connect(Component)>
       <Component
         cancel={[Function]}
         pathname={null}
@@ -114,7 +114,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
           </div>
         </FormButtons>
       </Component>
-    </ConnectFunction>
+    </Connect(Component)>
   </LoadingProvider>
 </Provider>
 `;
