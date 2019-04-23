@@ -54,7 +54,7 @@ class Footer extends Component {
   /**
    * Retrieves the background color for the footer inset.
    * @param {NodeList} elements The DOM elements to inspect.
-   * @returns {string}
+   * @returns {string|null}
    */
   getInsetBackgroundColor(elements) {
     /**
@@ -81,13 +81,13 @@ class Footer extends Component {
 
       // Nothing happened within this loop - proceed with the next one.
       return result;
-    }, '');
+    }, null);
 
     if (color === 'rgba(0, 0, 0, 0)' || color === 'transparent') {
       return null;
     }
 
-    return color;
+    return color || null;
   }
 
   /**
@@ -108,7 +108,7 @@ class Footer extends Component {
   hasVisibleContent() {
     if (this.ref.current) {
       const elements = this.ref.current.parentElement
-        .querySelectorAll(`footer > *:not(${APP_FOOTER_ID}), ${APP_FOOTER_ID} > *`);
+        .querySelectorAll(`footer > *:not(#${APP_FOOTER_ID}), #${APP_FOOTER_ID} > *`);
 
       return Array
         .from(elements)
