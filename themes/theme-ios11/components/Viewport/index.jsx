@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import shouldUpdate from 'recompose/shouldUpdate';
+import Footer from '@shopgate/pwa-ui-shared/Footer';
 import TabBar from 'Components/TabBar';
 import styles from './style';
 
@@ -15,9 +16,9 @@ const Viewport = props => (
     <section className={styles.content}>
       {props.children}
     </section>
-    <footer className={styles.footer} id="AppFooter">
+    <Footer>
       <TabBar />
-    </footer>
+    </Footer>
   </main>
 );
 

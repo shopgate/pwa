@@ -35,3 +35,19 @@ export const getAbsoluteHeight = (element) => {
   // Add the margins to the element's height and return it.
   return Math.ceil(element.offsetHeight + margins);
 };
+
+/**
+ * Retrieves a style of an element.
+ * @param {HTMLElement} element The DOM element.
+ * @param {string} property The style property in camel case
+ * @returns {string}
+ */
+export const getStyle = (element, property) => {
+  if (window.getComputedStyle) {
+    // getPropertyValue expects the property in kebab case.
+    return window.getComputedStyle(element, null)
+      .getPropertyValue(property.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
+  }
+
+  return element.style[property];
+};

@@ -5,7 +5,7 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import Content from './components/Content';
 import ViewProvider from '../../providers/View';
 import { ViewContext } from './context';
-import styles from './style';
+import styles, { setBackgroundColor } from './style';
 
 const { colors } = themeConfig;
 
@@ -21,8 +21,11 @@ function ViewContainer({
   noScrollOnKeyboard,
   visible,
 }) {
+  if (visible) {
+    setBackgroundColor(background);
+  }
+
   const style = {
-    background,
     display: visible ? 'block' : 'none',
   };
 
