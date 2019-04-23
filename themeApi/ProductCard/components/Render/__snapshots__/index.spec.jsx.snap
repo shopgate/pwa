@@ -40,7 +40,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
     titleRows={3}
     url="/some/url"
   >
-    <ConnectFunction
+    <Connect(Link)
       href="/some/url"
       tagName="a"
     >
@@ -702,7 +702,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
           </div>
         </div>
       </Link>
-    </ConnectFunction>
+    </Connect(Link)>
   </ProductCardRender>
 </Provider>
 `;
@@ -747,7 +747,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
     titleRows={3}
     url="/some/url"
   >
-    <ConnectFunction
+    <Connect(Link)
       href="/some/url"
       tagName="a"
     >
@@ -1129,7 +1129,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
           </div>
         </div>
       </Link>
-    </ConnectFunction>
+    </Connect(Link)>
   </ProductCardRender>
 </Provider>
 `;
@@ -1174,7 +1174,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <ConnectFunction
+    <Connect(Link)
       href="/some/url"
       tagName="a"
     >
@@ -1902,7 +1902,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
           </div>
         </div>
       </Link>
-    </ConnectFunction>
+    </Connect(Link)>
   </ProductCardRender>
 </Provider>
 `;
@@ -1947,7 +1947,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
     titleRows={1}
     url="/some/url"
   >
-    <ConnectFunction
+    <Connect(Link)
       href="/some/url"
       tagName="a"
     >
@@ -2675,7 +2675,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
           </div>
         </div>
       </Link>
-    </ConnectFunction>
+    </Connect(Link)>
   </ProductCardRender>
 </Provider>
 `;
@@ -2720,7 +2720,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <ConnectFunction
+    <Connect(Link)
       href="/some/url"
       tagName="a"
     >
@@ -3412,7 +3412,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
           </div>
         </div>
       </Link>
-    </ConnectFunction>
+    </Connect(Link)>
   </ProductCardRender>
 </Provider>
 `;
@@ -3457,7 +3457,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <ConnectFunction
+    <Connect(Link)
       href="/some/url"
       tagName="a"
     >
@@ -3932,7 +3932,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
           </div>
         </div>
       </Link>
-    </ConnectFunction>
+    </Connect(Link)>
   </ProductCardRender>
 </Provider>
 `;
@@ -3977,7 +3977,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
     titleRows={3}
     url="/some/url"
   >
-    <ConnectFunction
+    <Connect(Link)
       href="/some/url"
       tagName="a"
     >
@@ -4359,7 +4359,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
           </div>
         </div>
       </Link>
-    </ConnectFunction>
+    </Connect(Link)>
   </ProductCardRender>
 </Provider>
 `;

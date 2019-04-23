@@ -18,7 +18,7 @@ exports[`<CheckoutButton /> should render disabled button 1`] = `
       }
     }
   >
-    <ConnectFunction
+    <Connect(Link)
       disabled={true}
       href="/checkout"
     >
@@ -39,7 +39,7 @@ exports[`<CheckoutButton /> should render disabled button 1`] = `
           string="cart.checkout"
         />
       </RippleButton>
-    </ConnectFunction>
+    </Connect(Link)>
   </Portal>
   <Portal
     name="cart.checkout-button.after"
@@ -70,7 +70,7 @@ exports[`<CheckoutButton /> should render enabled button 1`] = `
       }
     }
   >
-    <ConnectFunction
+    <Connect(Link)
       disabled={false}
       href="/checkout"
     >
@@ -91,7 +91,7 @@ exports[`<CheckoutButton /> should render enabled button 1`] = `
           string="cart.checkout"
         />
       </RippleButton>
-    </ConnectFunction>
+    </Connect(Link)>
   </Portal>
   <Portal
     name="cart.checkout-button.after"
