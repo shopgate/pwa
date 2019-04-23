@@ -12,7 +12,7 @@ exports[`<RootCategories /> should render category list with root categories fro
     }
   }
 >
-  <ConnectFunction>
+  <Connect(RootCategories)>
     <RootCategories
       categories={
         Array [
@@ -205,7 +205,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   className="css-1bmd5dz"
                                   style={Object {}}
                                 />
-                                <ConnectFunction
+                                <Connect(Link)
                                   href="/category/3132332d313233"
                                   onClick={null}
                                   state={
@@ -265,7 +265,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       </div>
                                     </div>
                                   </Link>
-                                </ConnectFunction>
+                                </Connect(Link)>
                               </div>
                             </Glow>
                           </Item>
@@ -332,7 +332,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   className="css-1bmd5dz"
                                   style={Object {}}
                                 />
-                                <ConnectFunction
+                                <Connect(Link)
                                   href="/category/3435362d313233"
                                   onClick={null}
                                   state={
@@ -392,7 +392,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       </div>
                                     </div>
                                   </Link>
-                                </ConnectFunction>
+                                </Connect(Link)>
                               </div>
                             </Glow>
                           </Item>
@@ -459,7 +459,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   className="css-1bmd5dz"
                                   style={Object {}}
                                 />
-                                <ConnectFunction
+                                <Connect(Link)
                                   href="/category/3738392d313233"
                                   onClick={null}
                                   state={
@@ -519,7 +519,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       </div>
                                     </div>
                                   </Link>
-                                </ConnectFunction>
+                                </Connect(Link)>
                               </div>
                             </Glow>
                           </Item>
@@ -586,7 +586,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   className="css-1bmd5dz"
                                   style={Object {}}
                                 />
-                                <ConnectFunction
+                                <Connect(Link)
                                   href="/category/3738392d343536"
                                   onClick={null}
                                   state={
@@ -646,7 +646,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       </div>
                                     </div>
                                   </Link>
-                                </ConnectFunction>
+                                </Connect(Link)>
                               </div>
                             </Glow>
                           </Item>
@@ -686,6 +686,6 @@ exports[`<RootCategories /> should render category list with root categories fro
         />
       </div>
     </RootCategories>
-  </ConnectFunction>
+  </Connect(RootCategories)>
 </Provider>
 `;

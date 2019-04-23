@@ -13,7 +13,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
     }
   }
 >
-  <ConnectFunction
+  <Connect(Html)
     settings={
       Object {
         "defaultPadding": false,
@@ -55,7 +55,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
         </HtmlSanitizer>
       </div>
     </Html>
-  </ConnectFunction>
+  </Connect(Html)>
 </Provider>
 `;
 
@@ -72,7 +72,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
     }
   }
 >
-  <ConnectFunction
+  <Connect(Html)
     settings={
       Object {
         "defaultPadding": true,
@@ -118,6 +118,6 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
         </HtmlSanitizer>
       </div>
     </Html>
-  </ConnectFunction>
+  </Connect(Html)>
 </Provider>
 `;

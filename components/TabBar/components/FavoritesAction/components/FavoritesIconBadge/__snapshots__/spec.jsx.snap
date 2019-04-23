@@ -37,7 +37,7 @@ exports[`TabBar favorites action should render exact number 1`] = `
     }
   }
 >
-  <ConnectFunction>
+  <Connect(FavoritesIconBadge)>
     <FavoritesIconBadge
       dispatch={[Function]}
       favoritesCount={1}
@@ -48,6 +48,6 @@ exports[`TabBar favorites action should render exact number 1`] = `
         1
       </div>
     </FavoritesIconBadge>
-  </ConnectFunction>
+  </Connect(FavoritesIconBadge)>
 </Provider>
 `;
