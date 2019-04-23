@@ -41,7 +41,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         </h3>
       </Headline>
       <div>
-        <ConnectFunction
+        <Connect(CategoryPicker)
           categoryId="1"
           key="1"
           label="Label One"
@@ -185,12 +185,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               </Drawer>
             </CategorySheet>
           </CategoryPicker>
-        </ConnectFunction>
+        </Connect(CategoryPicker)>
       </div>
       <div
         className="css-k4qf09"
       >
-        <ConnectFunction
+        <Connect(ButtonLink)
           className="css-63oe3q"
           disabled={true}
           flat={false}
@@ -275,7 +275,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               </div>
             </ActionButton>
           </ButtonLink>
-        </ConnectFunction>
+        </Connect(ButtonLink)>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -868,7 +868,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         </h3>
       </Headline>
       <div>
-        <ConnectFunction
+        <Connect(CategoryPicker)
           categoryId=""
           key=""
           label="Label One"
@@ -1012,8 +1012,8 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               </Drawer>
             </CategorySheet>
           </CategoryPicker>
-        </ConnectFunction>
-        <ConnectFunction
+        </Connect(CategoryPicker)>
+        <Connect(CategoryPicker)
           categoryId="1"
           key="1"
           label="Label Two"
@@ -1157,8 +1157,8 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               </Drawer>
             </CategorySheet>
           </CategoryPicker>
-        </ConnectFunction>
-        <ConnectFunction
+        </Connect(CategoryPicker)>
+        <Connect(CategoryPicker)
           categoryId="1-2"
           key="1-2"
           label=""
@@ -1285,12 +1285,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               </Drawer>
             </CategorySheet>
           </CategoryPicker>
-        </ConnectFunction>
+        </Connect(CategoryPicker)>
       </div>
       <div
         className="css-k4qf09"
       >
-        <ConnectFunction
+        <Connect(ButtonLink)
           className="css-63oe3q"
           disabled={false}
           flat={false}
@@ -1390,7 +1390,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               </div>
             </ActionButton>
           </ButtonLink>
-        </ConnectFunction>
+        </Connect(ButtonLink)>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -3027,7 +3027,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
         text=""
       />
       <div>
-        <ConnectFunction
+        <Connect(CategoryPicker)
           categoryId=""
           key=""
           label="Label One"
@@ -3171,12 +3171,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               </Drawer>
             </CategorySheet>
           </CategoryPicker>
-        </ConnectFunction>
+        </Connect(CategoryPicker)>
       </div>
       <div
         className="css-k4qf09"
       >
-        <ConnectFunction
+        <Connect(ButtonLink)
           className="css-63oe3q"
           disabled={true}
           flat={false}
@@ -3261,7 +3261,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               </div>
             </ActionButton>
           </ButtonLink>
-        </ConnectFunction>
+        </Connect(ButtonLink)>
       </div>
     </div>
   </NestedCategoryFilter>

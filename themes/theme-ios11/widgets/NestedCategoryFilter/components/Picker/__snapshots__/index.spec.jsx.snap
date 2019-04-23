@@ -13,7 +13,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
     }
   }
 >
-  <ConnectFunction
+  <Connect(CategoryPicker)
     categoryId=""
     label="Picker Label"
     onSelect={[MockFunction]}
@@ -77,11 +77,11 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
         label="Picker Label"
         onClose={[Function]}
         onSelect={[Function]}
-        open={false}
+        open={true}
         selectedId={null}
       >
         <Drawer
-          isOpen={false}
+          isOpen={true}
           onClose={[Function]}
           title="Picker Label"
         >
@@ -91,7 +91,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             className={null}
             contentClassName={null}
             duration={300}
-            isOpen={false}
+            isOpen={true}
             onClose={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -107,16 +107,204 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                   }
                 }
                 className="css-ruonn8"
-                isOpen={false}
+                isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
                 onOpen={[Function]}
-              />
+              >
+                <div
+                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  onAnimationEnd={[Function]}
+                  style={
+                    Object {
+                      "animationDuration": "300ms",
+                    }
+                  }
+                >
+                  <Header
+                    onToggleClose={[Function]}
+                    shadow={false}
+                    title="Picker Label"
+                  >
+                    <Grid
+                      className="css-1hncgty"
+                      component="div"
+                      wrap={false}
+                    >
+                      <div
+                        className="css-1hncgty css-h7r55a"
+                      >
+                        <button
+                          className="css-b3dcfs"
+                          onClick={[Function]}
+                        >
+                          <Ripple
+                            className="css-ugy6xl"
+                            color="#000"
+                            disabled={false}
+                            fill={false}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="css-ugy6xl"
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Cross
+                                size={24}
+                              >
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                  size={24}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": 24,
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </Cross>
+                            </div>
+                          </Ripple>
+                        </button>
+                        <GridItem
+                          className="css-1mjy0de"
+                          component="div"
+                          grow={1}
+                          shrink={1}
+                        >
+                          <div
+                            className="css-1mjy0de css-1gs0ko2"
+                          >
+                            Picker Label
+                          </div>
+                        </GridItem>
+                      </div>
+                    </Grid>
+                  </Header>
+                  <div
+                    className="css-1aon90l"
+                    onScroll={[Function]}
+                  >
+                    <List
+                      className={null}
+                      hasImages={false}
+                      key=".0"
+                      onClose={[Function]}
+                      testId={null}
+                    >
+                      <List
+                        className={null}
+                      >
+                        <ul
+                          className={null}
+                        >
+                          <ListItem
+                            className="css-fcrdu9"
+                            isSelected={false}
+                            key="child-0/.$1"
+                          >
+                            <li
+                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              data-test-id="listItem"
+                            >
+                              <div
+                                className="css-1wrmg9m"
+                                data-test-id={null}
+                              >
+                                <SheetItem
+                                  item={
+                                    Object {
+                                      "childrenCount": 2,
+                                      "id": "1",
+                                      "isFetching": false,
+                                      "name": "Category 1",
+                                    }
+                                  }
+                                  key="1"
+                                  onClick={[Function]}
+                                  selected={false}
+                                >
+                                  <button
+                                    className="css-1k50yg4"
+                                    key="1"
+                                    onClick={[Function]}
+                                    value="1"
+                                  >
+                                    Category 1
+                                  </button>
+                                </SheetItem>
+                              </div>
+                            </li>
+                          </ListItem>
+                          <ListItem
+                            className="css-fcrdu9"
+                            isSelected={false}
+                            key="child-1/.$2"
+                          >
+                            <li
+                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              data-test-id="listItem"
+                            >
+                              <div
+                                className="css-1wrmg9m"
+                                data-test-id={null}
+                              >
+                                <SheetItem
+                                  item={
+                                    Object {
+                                      "childrenCount": 0,
+                                      "id": "2",
+                                      "isFetching": false,
+                                      "name": "Category 2",
+                                    }
+                                  }
+                                  key="2"
+                                  onClick={[Function]}
+                                  selected={false}
+                                >
+                                  <button
+                                    className="css-1k50yg4"
+                                    key="2"
+                                    onClick={[Function]}
+                                    value="2"
+                                  >
+                                    Category 2
+                                  </button>
+                                </SheetItem>
+                              </div>
+                            </li>
+                          </ListItem>
+                        </ul>
+                      </List>
+                    </List>
+                  </div>
+                </div>
+              </Drawer>
               <Backdrop
                 className=""
                 color="#000"
                 duration={200}
-                isVisible={false}
+                isVisible={true}
                 level={4}
                 onClick={[Function]}
                 opacity={20}
@@ -146,7 +334,49 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                   <TransitionHooks
                     component="div"
                   >
-                    <div />
+                    <div>
+                      <TransitionChild
+                        childrenAppearStyle={
+                          Object {
+                            "opacity": 0.2,
+                          }
+                        }
+                        childrenBaseStyle={
+                          Object {
+                            "background": "#000",
+                            "opacity": 0,
+                            "transition": "opacity 200ms ease-out",
+                            "zIndex": 4,
+                          }
+                        }
+                        childrenEnterStyle={
+                          Object {
+                            "opacity": 0.2,
+                          }
+                        }
+                        childrenLeaveStyle={
+                          Object {
+                            "opacity": 0,
+                          }
+                        }
+                        key=".$.0"
+                      >
+                        <div
+                          aria-hidden={true}
+                          className="css-hlk66h "
+                          data-test-id="Backdrop"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "background": "#000",
+                              "opacity": 0,
+                              "transition": "opacity 200ms ease-out",
+                              "zIndex": 4,
+                            }
+                          }
+                        />
+                      </TransitionChild>
+                    </div>
                   </TransitionHooks>
                 </Transition>
               </Backdrop>
@@ -155,7 +385,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
         </Drawer>
       </CategorySheet>
     </CategoryPicker>
-  </ConnectFunction>
+  </Connect(CategoryPicker)>
 </Provider>
 `;
 
@@ -172,7 +402,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
     }
   }
 >
-  <ConnectFunction
+  <Connect(CategoryPicker)
     categoryId="1"
     label="Picker Label"
     onSelect={[MockFunction]}
@@ -236,11 +466,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         label="Picker Label"
         onClose={[Function]}
         onSelect={[Function]}
-        open={false}
+        open={true}
         selectedId={null}
       >
         <Drawer
-          isOpen={false}
+          isOpen={true}
           onClose={[Function]}
           title="Picker Label"
         >
@@ -250,7 +480,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             className={null}
             contentClassName={null}
             duration={300}
-            isOpen={false}
+            isOpen={true}
             onClose={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -266,16 +496,204 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   }
                 }
                 className="css-ruonn8"
-                isOpen={false}
+                isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
                 onOpen={[Function]}
-              />
+              >
+                <div
+                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  onAnimationEnd={[Function]}
+                  style={
+                    Object {
+                      "animationDuration": "300ms",
+                    }
+                  }
+                >
+                  <Header
+                    onToggleClose={[Function]}
+                    shadow={false}
+                    title="Picker Label"
+                  >
+                    <Grid
+                      className="css-1hncgty"
+                      component="div"
+                      wrap={false}
+                    >
+                      <div
+                        className="css-1hncgty css-h7r55a"
+                      >
+                        <button
+                          className="css-b3dcfs"
+                          onClick={[Function]}
+                        >
+                          <Ripple
+                            className="css-ugy6xl"
+                            color="#000"
+                            disabled={false}
+                            fill={false}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="css-ugy6xl"
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Cross
+                                size={24}
+                              >
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                  size={24}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": 24,
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </Cross>
+                            </div>
+                          </Ripple>
+                        </button>
+                        <GridItem
+                          className="css-1mjy0de"
+                          component="div"
+                          grow={1}
+                          shrink={1}
+                        >
+                          <div
+                            className="css-1mjy0de css-1gs0ko2"
+                          >
+                            Picker Label
+                          </div>
+                        </GridItem>
+                      </div>
+                    </Grid>
+                  </Header>
+                  <div
+                    className="css-1aon90l"
+                    onScroll={[Function]}
+                  >
+                    <List
+                      className={null}
+                      hasImages={false}
+                      key=".0"
+                      onClose={[Function]}
+                      testId={null}
+                    >
+                      <List
+                        className={null}
+                      >
+                        <ul
+                          className={null}
+                        >
+                          <ListItem
+                            className="css-fcrdu9"
+                            isSelected={false}
+                            key="child-0/.$1-1"
+                          >
+                            <li
+                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              data-test-id="listItem"
+                            >
+                              <div
+                                className="css-1wrmg9m"
+                                data-test-id={null}
+                              >
+                                <SheetItem
+                                  item={
+                                    Object {
+                                      "childrenCount": 0,
+                                      "id": "1-1",
+                                      "isFetching": false,
+                                      "name": "Category 1-1",
+                                    }
+                                  }
+                                  key="1-1"
+                                  onClick={[Function]}
+                                  selected={false}
+                                >
+                                  <button
+                                    className="css-1k50yg4"
+                                    key="1-1"
+                                    onClick={[Function]}
+                                    value="1-1"
+                                  >
+                                    Category 1-1
+                                  </button>
+                                </SheetItem>
+                              </div>
+                            </li>
+                          </ListItem>
+                          <ListItem
+                            className="css-fcrdu9"
+                            isSelected={false}
+                            key="child-1/.$1-2"
+                          >
+                            <li
+                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              data-test-id="listItem"
+                            >
+                              <div
+                                className="css-1wrmg9m"
+                                data-test-id={null}
+                              >
+                                <SheetItem
+                                  item={
+                                    Object {
+                                      "childrenCount": 1,
+                                      "id": "1-2",
+                                      "isFetching": false,
+                                      "name": "Category 1-2",
+                                    }
+                                  }
+                                  key="1-2"
+                                  onClick={[Function]}
+                                  selected={false}
+                                >
+                                  <button
+                                    className="css-1k50yg4"
+                                    key="1-2"
+                                    onClick={[Function]}
+                                    value="1-2"
+                                  >
+                                    Category 1-2
+                                  </button>
+                                </SheetItem>
+                              </div>
+                            </li>
+                          </ListItem>
+                        </ul>
+                      </List>
+                    </List>
+                  </div>
+                </div>
+              </Drawer>
               <Backdrop
                 className=""
                 color="#000"
                 duration={200}
-                isVisible={false}
+                isVisible={true}
                 level={4}
                 onClick={[Function]}
                 opacity={20}
@@ -305,7 +723,49 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   <TransitionHooks
                     component="div"
                   >
-                    <div />
+                    <div>
+                      <TransitionChild
+                        childrenAppearStyle={
+                          Object {
+                            "opacity": 0.2,
+                          }
+                        }
+                        childrenBaseStyle={
+                          Object {
+                            "background": "#000",
+                            "opacity": 0,
+                            "transition": "opacity 200ms ease-out",
+                            "zIndex": 4,
+                          }
+                        }
+                        childrenEnterStyle={
+                          Object {
+                            "opacity": 0.2,
+                          }
+                        }
+                        childrenLeaveStyle={
+                          Object {
+                            "opacity": 0,
+                          }
+                        }
+                        key=".$.0"
+                      >
+                        <div
+                          aria-hidden={true}
+                          className="css-hlk66h "
+                          data-test-id="Backdrop"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "background": "#000",
+                              "opacity": 0,
+                              "transition": "opacity 200ms ease-out",
+                              "zIndex": 4,
+                            }
+                          }
+                        />
+                      </TransitionChild>
+                    </div>
                   </TransitionHooks>
                 </Transition>
               </Backdrop>
@@ -314,7 +774,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         </Drawer>
       </CategorySheet>
     </CategoryPicker>
-  </ConnectFunction>
+  </Connect(CategoryPicker)>
 </Provider>
 `;
 
@@ -760,7 +1220,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
     }
   }
 >
-  <ConnectFunction
+  <Connect(CategoryPicker)
     categoryId="1"
     label="Picker Label"
     onSelect={[MockFunction]}
@@ -825,11 +1285,11 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
         label="Picker Label"
         onClose={[Function]}
         onSelect={[Function]}
-        open={false}
+        open={true}
         selectedId="1-1"
       >
         <Drawer
-          isOpen={false}
+          isOpen={true}
           onClose={[Function]}
           title="Picker Label"
         >
@@ -839,7 +1299,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             className={null}
             contentClassName={null}
             duration={300}
-            isOpen={false}
+            isOpen={true}
             onClose={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -855,16 +1315,204 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                   }
                 }
                 className="css-ruonn8"
-                isOpen={false}
+                isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
                 onOpen={[Function]}
-              />
+              >
+                <div
+                  className="css-ruonn8 css-1rg7udn css-32zjx4"
+                  onAnimationEnd={[Function]}
+                  style={
+                    Object {
+                      "animationDuration": "300ms",
+                    }
+                  }
+                >
+                  <Header
+                    onToggleClose={[Function]}
+                    shadow={false}
+                    title="Picker Label"
+                  >
+                    <Grid
+                      className="css-1hncgty"
+                      component="div"
+                      wrap={false}
+                    >
+                      <div
+                        className="css-1hncgty css-h7r55a"
+                      >
+                        <button
+                          className="css-b3dcfs"
+                          onClick={[Function]}
+                        >
+                          <Ripple
+                            className="css-ugy6xl"
+                            color="#000"
+                            disabled={false}
+                            fill={false}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="css-ugy6xl"
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Cross
+                                size={24}
+                              >
+                                <Icon
+                                  className=""
+                                  color={null}
+                                  content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                  size={24}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <svg
+                                    className="css-yys9hb "
+                                    dangerouslySetInnerHTML={
+                                      Object {
+                                        "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                      }
+                                    }
+                                    style={
+                                      Object {
+                                        "fill": null,
+                                        "fontSize": 24,
+                                      }
+                                    }
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  />
+                                </Icon>
+                              </Cross>
+                            </div>
+                          </Ripple>
+                        </button>
+                        <GridItem
+                          className="css-1mjy0de"
+                          component="div"
+                          grow={1}
+                          shrink={1}
+                        >
+                          <div
+                            className="css-1mjy0de css-1gs0ko2"
+                          >
+                            Picker Label
+                          </div>
+                        </GridItem>
+                      </div>
+                    </Grid>
+                  </Header>
+                  <div
+                    className="css-1aon90l"
+                    onScroll={[Function]}
+                  >
+                    <List
+                      className={null}
+                      hasImages={false}
+                      key=".0"
+                      onClose={[Function]}
+                      testId={null}
+                    >
+                      <List
+                        className={null}
+                      >
+                        <ul
+                          className={null}
+                        >
+                          <ListItem
+                            className="css-fcrdu9"
+                            isSelected={false}
+                            key="child-0/.$1-1"
+                          >
+                            <li
+                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              data-test-id="listItem"
+                            >
+                              <div
+                                className="css-1wrmg9m"
+                                data-test-id={null}
+                              >
+                                <SheetItem
+                                  item={
+                                    Object {
+                                      "childrenCount": 0,
+                                      "id": "1-1",
+                                      "isFetching": false,
+                                      "name": "Category 1-1",
+                                    }
+                                  }
+                                  key="1-1"
+                                  onClick={[Function]}
+                                  selected={true}
+                                >
+                                  <button
+                                    className="css-18zobq6"
+                                    key="1-1"
+                                    onClick={[Function]}
+                                    value="1-1"
+                                  >
+                                    Category 1-1
+                                  </button>
+                                </SheetItem>
+                              </div>
+                            </li>
+                          </ListItem>
+                          <ListItem
+                            className="css-fcrdu9"
+                            isSelected={false}
+                            key="child-1/.$1-2"
+                          >
+                            <li
+                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              data-test-id="listItem"
+                            >
+                              <div
+                                className="css-1wrmg9m"
+                                data-test-id={null}
+                              >
+                                <SheetItem
+                                  item={
+                                    Object {
+                                      "childrenCount": 1,
+                                      "id": "1-2",
+                                      "isFetching": false,
+                                      "name": "Category 1-2",
+                                    }
+                                  }
+                                  key="1-2"
+                                  onClick={[Function]}
+                                  selected={false}
+                                >
+                                  <button
+                                    className="css-1k50yg4"
+                                    key="1-2"
+                                    onClick={[Function]}
+                                    value="1-2"
+                                  >
+                                    Category 1-2
+                                  </button>
+                                </SheetItem>
+                              </div>
+                            </li>
+                          </ListItem>
+                        </ul>
+                      </List>
+                    </List>
+                  </div>
+                </div>
+              </Drawer>
               <Backdrop
                 className=""
                 color="#000"
                 duration={200}
-                isVisible={false}
+                isVisible={true}
                 level={4}
                 onClick={[Function]}
                 opacity={20}
@@ -894,7 +1542,49 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                   <TransitionHooks
                     component="div"
                   >
-                    <div />
+                    <div>
+                      <TransitionChild
+                        childrenAppearStyle={
+                          Object {
+                            "opacity": 0.2,
+                          }
+                        }
+                        childrenBaseStyle={
+                          Object {
+                            "background": "#000",
+                            "opacity": 0,
+                            "transition": "opacity 200ms ease-out",
+                            "zIndex": 4,
+                          }
+                        }
+                        childrenEnterStyle={
+                          Object {
+                            "opacity": 0.2,
+                          }
+                        }
+                        childrenLeaveStyle={
+                          Object {
+                            "opacity": 0,
+                          }
+                        }
+                        key=".$.0"
+                      >
+                        <div
+                          aria-hidden={true}
+                          className="css-hlk66h "
+                          data-test-id="Backdrop"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "background": "#000",
+                              "opacity": 0,
+                              "transition": "opacity 200ms ease-out",
+                              "zIndex": 4,
+                            }
+                          }
+                        />
+                      </TransitionChild>
+                    </div>
                   </TransitionHooks>
                 </Transition>
               </Backdrop>
@@ -903,7 +1593,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
         </Drawer>
       </CategorySheet>
     </CategoryPicker>
-  </ConnectFunction>
+  </Connect(CategoryPicker)>
 </Provider>
 `;
 
@@ -920,7 +1610,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
     }
   }
 >
-  <ConnectFunction
+  <Connect(CategoryPicker)
     label="Picker Label"
     onSelect={[MockFunction]}
   >
@@ -1061,7 +1751,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
         </Drawer>
       </CategorySheet>
     </CategoryPicker>
-  </ConnectFunction>
+  </Connect(CategoryPicker)>
 </Provider>
 `;
 
@@ -1078,7 +1768,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
     }
   }
 >
-  <ConnectFunction
+  <Connect(CategoryPicker)
     categoryId="1"
     label="Picker Label"
     onSelect={[MockFunction]}
@@ -1220,7 +1910,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
         </Drawer>
       </CategorySheet>
     </CategoryPicker>
-  </ConnectFunction>
+  </Connect(CategoryPicker)>
 </Provider>
 `;
 
@@ -1237,7 +1927,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
     }
   }
 >
-  <ConnectFunction
+  <Connect(CategoryPicker)
     categoryId="1"
     label=""
     onSelect={[MockFunction]}
@@ -1374,6 +2064,6 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
         </Drawer>
       </CategorySheet>
     </CategoryPicker>
-  </ConnectFunction>
+  </Connect(CategoryPicker)>
 </Provider>
 `;

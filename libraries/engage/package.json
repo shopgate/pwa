@@ -25,7 +25,6 @@
   "devDependencies": {
     "prop-types": "^15.6.0",
     "react": "~16.8.4",
-    "react-redux": "^7.0.2",
     "redux": "^4.0.1"
   }
 }

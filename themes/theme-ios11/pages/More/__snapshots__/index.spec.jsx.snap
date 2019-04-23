@@ -12,7 +12,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
     }
   }
 >
-  <ConnectFunction>
+  <Connect(More)>
     <More
       isLoggedIn={true}
       logout={[Function]}
@@ -25,7 +25,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
     >
       <MockedView>
         <div>
-          <ConnectFunction
+          <Connect(BackBar)
             right={null}
           />
           <Headline
@@ -162,7 +162,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/shipping"
                         >
@@ -195,7 +195,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -237,7 +237,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/payment"
                         >
@@ -270,7 +270,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -312,7 +312,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/terms"
                         >
@@ -345,7 +345,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -387,7 +387,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/privacy"
                         >
@@ -420,7 +420,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -484,7 +484,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/imprint"
                         >
@@ -517,7 +517,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -745,7 +745,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
         </div>
       </MockedView>
     </More>
-  </ConnectFunction>
+  </Connect(More)>
 </Provider>
 `;
 
@@ -761,7 +761,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
     }
   }
 >
-  <ConnectFunction>
+  <Connect(More)>
     <More
       isLoggedIn={false}
       logout={[Function]}
@@ -769,7 +769,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
     >
       <MockedView>
         <div>
-          <ConnectFunction
+          <Connect(BackBar)
             right={null}
           />
           <Headline
@@ -833,7 +833,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                 }
               }
             >
-              <ConnectFunction>
+              <Connect(LoggedOut)>
                 <LoggedOut
                   dispatch={[Function]}
                   isDisabled={false}
@@ -858,7 +858,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           <li
                             className="css-mzzsxh"
                           >
-                            <ConnectFunction
+                            <Connect(Link)
                               disabled={false}
                               href="/login"
                             >
@@ -919,7 +919,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                   </Button>
                                 </div>
                               </Link>
-                            </ConnectFunction>
+                            </Connect(Link)>
                           </li>
                         </GridItem>
                         <GridItem
@@ -931,7 +931,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           <li
                             className="css-mzzsxh"
                           >
-                            <ConnectFunction
+                            <Connect(Link)
                               disabled={false}
                               href="/register"
                             >
@@ -992,14 +992,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                   </Button>
                                 </div>
                               </Link>
-                            </ConnectFunction>
+                            </Connect(Link)>
                           </li>
                         </GridItem>
                       </ul>
                     </Grid>
                   </div>
                 </LoggedOut>
-              </ConnectFunction>
+              </Connect(LoggedOut)>
             </Portal>
             <Portal
               name="user-menu.container.after"
@@ -1117,7 +1117,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/shipping"
                         >
@@ -1150,7 +1150,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1192,7 +1192,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/payment"
                         >
@@ -1225,7 +1225,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1267,7 +1267,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/terms"
                         >
@@ -1300,7 +1300,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1342,7 +1342,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/privacy"
                         >
@@ -1375,7 +1375,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1439,7 +1439,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         onClick={null}
                         testId={null}
                       >
-                        <ConnectFunction
+                        <Connect(Link)
                           className="css-1hj8a57"
                           href="/page/imprint"
                         >
@@ -1472,7 +1472,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               </Translate>
                             </div>
                           </Link>
-                        </ConnectFunction>
+                        </Connect(Link)>
                       </MoreMenuItem>
                     </Portal>
                     <Portal
@@ -1516,6 +1516,6 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
         </div>
       </MockedView>
     </More>
-  </ConnectFunction>
+  </Connect(More)>
 </Provider>
 `;

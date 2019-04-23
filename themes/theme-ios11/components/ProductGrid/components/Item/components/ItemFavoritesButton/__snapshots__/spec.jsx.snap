@@ -1,80 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ItemFavoritesButton /> should not render when its not a favorite 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        },
-        "unsubscribe": [Function],
-      },
-    }
-  }
->
-  <ConnectFunction
-    productId="1234"
-  />
-</ContextProvider>
+<Connect(ItemFavoritesButton)
+  productId="1234"
+/>
 `;
 
 exports[`<ItemFavoritesButton /> should render if its a favorite 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        },
-        "unsubscribe": [Function],
-      },
-    }
-  }
->
-  <ConnectFunction
-    isFavorite={true}
-    productId="1234"
-  />
-</ContextProvider>
+<Connect(ItemFavoritesButton)
+  isFavorite={true}
+  productId="1234"
+/>
 `;

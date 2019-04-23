@@ -13,7 +13,7 @@ exports[`<Header /> should render empty 1`] = `
     }
   }
 >
-  <ConnectFunction
+  <Connect(Header)
     productId="foo"
     rating={
       Object {
@@ -48,7 +48,7 @@ exports[`<Header /> should render empty 1`] = `
             count={0}
             productId="foo"
           >
-            <ConnectFunction
+            <Connect(Link)
               className="css-1us3hnd"
               data-test-id="ratedStarsAverage"
               disabled={false}
@@ -286,7 +286,7 @@ exports[`<Header /> should render empty 1`] = `
                   />
                 </div>
               </Link>
-            </ConnectFunction>
+            </Connect(Link)>
           </AverageRating>
           <div
             className={
@@ -312,7 +312,7 @@ exports[`<Header /> should render empty 1`] = `
               <div
                 data-test-id="writeReview"
               >
-                <ConnectFunction
+                <Connect(ButtonLink)
                   href="/item/666f6f/write_review"
                   noGap={true}
                 >
@@ -410,14 +410,14 @@ exports[`<Header /> should render empty 1`] = `
                       </div>
                     </ActionButton>
                   </ButtonLink>
-                </ConnectFunction>
+                </Connect(ButtonLink)>
               </div>
             </WriteReviewLink>
           </div>
         </div>
       </NoReviews>
     </Header>
-  </ConnectFunction>
+  </Connect(Header)>
 </Provider>
 `;
 
@@ -434,7 +434,7 @@ exports[`<Header /> should render rating summary 1`] = `
     }
   }
 >
-  <ConnectFunction
+  <Connect(Header)
     productId="foo"
     rating={
       Object {
@@ -469,7 +469,7 @@ exports[`<Header /> should render rating summary 1`] = `
             count={4}
             productId="foo"
           >
-            <ConnectFunction
+            <Connect(Link)
               className="css-1us3hnd"
               data-test-id="ratedStarsAverage"
               disabled={false}
@@ -837,7 +837,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   </RatingCount>
                 </div>
               </Link>
-            </ConnectFunction>
+            </Connect(Link)>
           </AverageRating>
           <div
             className={
@@ -880,7 +880,7 @@ exports[`<Header /> should render rating summary 1`] = `
               <div
                 data-test-id="writeReview"
               >
-                <ConnectFunction
+                <Connect(ButtonLink)
                   href="/item/666f6f/write_review"
                   noGap={true}
                 >
@@ -978,13 +978,13 @@ exports[`<Header /> should render rating summary 1`] = `
                       </div>
                     </ActionButton>
                   </ButtonLink>
-                </ConnectFunction>
+                </Connect(ButtonLink)>
               </div>
             </WriteReviewLink>
           </div>
         </div>
       </ReviewsExcerpt>
     </Header>
-  </ConnectFunction>
+  </Connect(Header)>
 </Provider>
 `;

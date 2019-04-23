@@ -217,7 +217,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                   className="swiper-slide"
                   data-test-id="Slider"
                 >
-                  <ConnectFunction
+                  <Connect(Link)
                     className="css-63oe3q"
                     data-test-id="withLink"
                     href="http://example.com"
@@ -250,7 +250,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                         />
                       </div>
                     </Link>
-                  </ConnectFunction>
+                  </Connect(Link)>
                 </div>
               </SwiperItem>
               <SwiperItem
@@ -261,7 +261,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                   className="swiper-slide"
                   data-test-id="Slider"
                 >
-                  <ConnectFunction
+                  <Connect(Link)
                     className="css-63oe3q"
                     data-test-id="withLink"
                     href="http://other.example.com"
@@ -294,7 +294,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                         />
                       </div>
                     </Link>
-                  </ConnectFunction>
+                  </Connect(Link)>
                 </div>
               </SwiperItem>
             </div>
@@ -342,7 +342,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
     <div
       className=""
     >
-      <ConnectFunction
+      <Connect(Link)
         className="css-63oe3q"
         data-test-id="withLink"
         href="http://example.com"
@@ -375,7 +375,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
             />
           </div>
         </Link>
-      </ConnectFunction>
+      </Connect(Link)>
     </div>
   </ImageSliderWidget>
 </Provider>
@@ -664,7 +664,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                   className="swiper-slide"
                   data-test-id="Slider"
                 >
-                  <ConnectFunction
+                  <Connect(Link)
                     className="css-63oe3q"
                     data-test-id="withLink"
                     href="http://other.example.com"
@@ -697,7 +697,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                         />
                       </div>
                     </Link>
-                  </ConnectFunction>
+                  </Connect(Link)>
                 </div>
               </SwiperItem>
             </div>
@@ -929,7 +929,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                   className="swiper-slide"
                   data-test-id="Slider"
                 >
-                  <ConnectFunction
+                  <Connect(Link)
                     className="css-63oe3q"
                     data-test-id="withLink"
                     href="http://example.com"
@@ -962,7 +962,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                         />
                       </div>
                     </Link>
-                  </ConnectFunction>
+                  </Connect(Link)>
                 </div>
               </SwiperItem>
               <SwiperItem
@@ -973,7 +973,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                   className="swiper-slide"
                   data-test-id="Slider"
                 >
-                  <ConnectFunction
+                  <Connect(Link)
                     className="css-63oe3q"
                     data-test-id="withLink"
                     href="http://other.example.com"
@@ -1006,7 +1006,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                         />
                       </div>
                     </Link>
-                  </ConnectFunction>
+                  </Connect(Link)>
                 </div>
               </SwiperItem>
             </div>
