@@ -1,4 +1,4 @@
-import { push, pop, replace, reset } from '../router/helpers';
+import { push, pop, replace, reset, update } from '../router/helpers';
 
 /**
  * Provides functions for navigation.
@@ -10,5 +10,6 @@ export function useNavigation() {
     pop,
     replace,
     reset,
+    update,
   };
 }

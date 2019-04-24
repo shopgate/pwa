@@ -1,5 +1,5 @@
 import React from 'react';
-import { push, pop, replace, reset } from '../router/helpers';
+import { push, pop, replace, reset, update } from '../router/helpers';
 
 /**
  * Injects navigation functions into the desired component.
@@ -10,10 +10,11 @@ export function withNavigation(WrappedComponent) {
   return props => (
     <WrappedComponent
       {...props}
-      push={push}
-      pop={pop}
-      replace={replace}
-      reset={reset}
+      historyPush={push}
+      historyPop={pop}
+      historyReplace={replace}
+      historyReset={reset}
+      historyUpdate={update}
     />
   );
 }

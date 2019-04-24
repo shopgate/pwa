@@ -6,9 +6,9 @@ module.exports = {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   collectCoverageFrom: [
-    'extensions/*/frontend/**/*.js',
-    'libraries/*/**/*.js',
-    'themes/*/**/*.js',
+    'extensions/*/frontend/**/*.{js,jsx}',
+    'libraries/*/**/*.{js,jsx}',
+    'themes/*/**/*.{js,jsx}',
     '!*/**/.eslintrc.js',
     '!*/**/jest.config.js',
     '!themes/*/extensions/**/*.js',

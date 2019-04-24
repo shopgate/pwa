@@ -39,19 +39,21 @@ yarn add @shopgate/engage
 * `/checkout` - Checkout
 * **`/components`** - [React.js](https://reactjs.org) components
 * `/core`
-  * Classes
-  * AppCommands
-  * Emitters
   * App *(pwa app)*
+  * AppCommands
+  * Classes
   * Client
-  * Providers
   * Collections
   * Contexts
-  * Router
-  * Redux Store
-  * URL *(registration, etc.)*
+  * Emitters
+  * HOCs
+  * Hooks *(React Hooks)*
   * Menu *(navigation)*
   * Modal
+  * Providers
+  * Redux Store
+  * Router
+  * URL *(registration, etc.)*
 * `/favorites` - Favorites / Wishlist
 * `/filter` - Filter (Search Result / Product List)
 * `/market` - Shop Market

@@ -1,4 +1,5 @@
 import { UIEvents } from '@shopgate/pwa-core';
+import { router } from '@virtuous/conductor';
 
 export const NAVIGATION_PUSH = 'navigation.push';
 export const NAVIGATION_POP = 'navigation.pop';
@@ -34,4 +35,13 @@ export function replace(params) {
  */
 export function reset() {
   UIEvents.emit(NAVIGATION_RESET);
+}
+
+/**
+ * Performs the UPDATE navigation action.
+ * @param {Object} state The meta state to add to a existing route.
+ * @param {string} [routeId] The ID of the route to update.
+ */
+export function update(state, routeId = router.getCurrentRoute().id) {
+  router.update(routeId, state);
 }
