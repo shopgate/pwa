@@ -99,7 +99,11 @@ class SnackBar extends Component {
         onRest={this.handleRest}
       >
         {props => (
-          <div className={styles.wrapper} style={{ transform: `translateY(${props.y}%)` }}>
+          <div
+            className={styles.wrapper}
+            style={{ transform: `translateY(${props.y}%)` }}
+            data-footer-inset-update-ignore="true"
+          >
             <div className={styles.box}>
               <Ellipsis rows={2}>
                 <I18n.Text className={styles.label} string={message || ''} />
