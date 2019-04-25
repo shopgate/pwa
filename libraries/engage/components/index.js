@@ -161,3 +161,5 @@ export { default as UncheckedIcon } from '@shopgate/pwa-ui-shared/icons/Unchecke
 export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
+
+export { default as NavigationHandler } from './NavigationHandler';
