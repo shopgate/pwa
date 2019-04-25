@@ -26,15 +26,11 @@ export default function fetchUser() {
         return user;
       })
       .catch((error) => {
-        switch (error.code) {
-          case EACCESS:
-            dispatch(actions.toggleLoggedIn(false));
-            break;
-          default:
-            logger.error(error);
-            break;
+        if (error.code !== EACCESS) {
+          logger.error(error);
         }
 
+        dispatch(actions.toggleLoggedIn(false));
         dispatch(actions.errorUser(error));
       });
   };
