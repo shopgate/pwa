@@ -98,7 +98,8 @@
   "cart": {
     "subtotal": "Sotto-totale",
     "total": "Totale del carrello",
-    "discounts": "Sconti ({label})",
+    "discount": "Sconto",
+    "discount_with_label": "Sconto ({label})",
     "checkout": "Cassa",
     "remove": "Rimuovi",
     "edit": "Modifica",
