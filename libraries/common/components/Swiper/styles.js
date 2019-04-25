@@ -7,6 +7,12 @@ export const container = css({
 
 export const innerContainer = css({
   overflow: 'hidden',
+  ' .swiper-wrapper': {
+    alignItems: 'stretch',
+  },
+  ' .swiper-slide': {
+    height: 'auto',
+  },
 }).toString();
 
 export const wrapper = css({
