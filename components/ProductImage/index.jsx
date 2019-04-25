@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Image from '@shopgate/pwa-common/components/Image';
 import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
+
+const { colors } = themeConfig;
 
 /**
  * The product image component.
@@ -37,7 +39,7 @@ class ProductImage extends Component {
     animating: true,
     className: null,
     forcePlaceholder: false,
-    highestResolutionLoaded: () => {},
+    highestResolutionLoaded: () => { },
     ratio: null,
     resolutions: [
       {

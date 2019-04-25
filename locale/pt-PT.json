@@ -1,0 +1,173 @@
+{
+  "common": {
+    "countdown": "{days, plural, =0 {Apenas {time} left} =1 {# dia {time}} other {# dias {time}}}",
+    "load_more": "Carregar mais",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "undo": "Desfazer",
+    "required": "Necessário *",
+    "please_choose": "Por favor escolha",
+    "show_products": "Mostrar produtos"
+  },
+  "titles": {
+    "categories": "Categorias",
+    "filter": "Filtro",
+    "cart": "Carrinho",
+    "shipping": "Envio",
+    "reviews": "Avaliações",
+    "favorites": "Favoritos",
+    "scanner": "Scanner"
+  },
+  "favorites": {
+    "add": "Adicionar aos favoritos",
+    "continue": "Continuar comprando",
+    "empty": "Você não tem nenhum favorito",
+    "error_add": "O produto não pode ser adicionado aos favoritos",
+    "error_remove": "O produto não pode ser adicionado aos favoritos",
+    "error_limit": "Você excedeu o número de produtos permitidos nos favoritos.",
+    "remove": "Remover de favoritos",
+    "removed": "Removido dos favoritos",
+    "modal": {
+      "message": "Para adicionar este produto ao seu carrinho, por favor selecione as variantes.",
+      "confirm": "Selecionar variantes"
+    }
+  },
+  "filter": {
+    "sort": {
+      "default": "Ordenar por",
+      "most_popular": "Mais populares",
+      "price_desc": "Preço: Mais alto para mais baixo",
+      "price_asc": "Preço: Mais baixo para mais alto"
+    },
+    "apply": "Feito",
+    "more": "mais",
+    "reset": "Reiniciar"
+  },
+  "price": {
+    "from": "De {price}",
+    "range": "Preço de {fromPrice} até {toPrice}",
+    "tier": {
+      "set": "{from} itens: {price}",
+      "range": "{from} ou mais: {price}"
+    },
+    "msrp": "MSRP"
+  },
+  "product": {
+    "description_heading": "Sobre",
+    "pick_an_attribute": "Escolher {0}",
+    "tax_disclaimer": "* Incl. IVA mais custos de envio"
+  },
+  "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Categoria não encontrada."
+    },
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Não foram encontrados produtos."
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Sua pesquisa \"{searchPhrase}\" tem 0 resultados."
+    },
+    "placeholder": "Pesquisar"
+  },
+  "shipping": {
+    "unknown": "mais o custo de envio",
+    "free": "Entrega grátis",
+    "free_short": "Grátis",
+    "cost": "{price} envio"
+  },
+  "liveshopping": {
+    "discount_badge": "GUARDAR {0}%"
+  },
+  "modal": {
+    "confirm": "Confirmar",
+    "dismiss": "Descartar",
+    "ok": "Ok",
+    "title_error": "Oops!",
+    "body_error": "Ocorreu um erro inesperado. Por favor, tente novamente."
+  },
+  "cart": {
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remover",
+    "edit": "Editar",
+    "empty": "Seu carrinho está vazio",
+    "continue": "Continuar comprando",
+    "redeem_coupon": "Inserir código de cupom",
+    "coupon_code": "Código",
+    "default_coupon_label": "Cupom",
+    "coupon_was_added": "O cupom foi adicionado ao carrinho!",
+    "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
+    "free_shipping": "Envio Grátis",
+    "total": "Total do carrinho",
+    "discounts": "Descontos ({label})"
+  },
+  "login": {
+    "headline": "Bem vindo",
+    "subline": "Inicie a sessão para continuar",
+    "email": "E-mail",
+    "password": "Senha",
+    "forgot_password": "Esqueceu sua senha?",
+    "forgot_password_popup": "Por favor, use o site do desktop para redefinir sua senha.",
+    "button": "Login",
+    "no_account": "Você não tem uma conta?",
+    "register": "Registrar",
+    "logout_message": "Você foi desconectado.",
+    "error": "Seu nome de usuário e senha não correspondem a nenhuma conta"
+  },
+  "navigation": {
+    "login_register": "Entrar / Registrar",
+    "your_account": "Sua Conta",
+    "home": "Início",
+    "categories": "Categorias",
+    "favorites": "Favoritos",
+    "my_orders": "Meus Pedidos",
+    "scanner": "Scanner",
+    "cart": "Carrinho de Compras",
+    "shipping": "Métodos de Envio",
+    "about": "Entre em Contato Conosco",
+    "payment": "Métodos de Pagamento",
+    "terms": "Termos e Condições",
+    "privacy": "Política de Privacidade",
+    "welcome_message": "Bem vindo {name}",
+    "return_policy": "Política de Devoluções",
+    "logout": "Sair",
+    "menuSubHeader": {
+      "more": "Mais",
+      "about": "Sobre nós"
+    }
+  },
+  "reviews": {
+    "rating": "Avaliação",
+    "no_reviews": "Seja o primeiro a avaliar este produto:",
+    "review_count": "({count} {count, plural, =1 {Avaliação} other {Avaliações}})",
+    "button_add": "Escreva uma avaliação",
+    "button_all": "Todas as {count} avaliações",
+    "author": "pelo {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {estrela} other {estrelas}}",
+    "review_form_rate": "Avalie este produto:",
+    "review_form_author": "Seu Nome",
+    "review_form_title": "Título da avaliação (opcional)",
+    "review_form_text": "Avaliação do produto (opcional)",
+    "review_form_error_author_empty": "Por favor, insira um nome.",
+    "review_form_rate_error": "Por favor selecione uma qualificação com as estrelas.",
+    "review_form_error_length": "Tamanho máximo de {length} caracteres.",
+    "press_to_rate_with_x_stars": "Pressione para avaliar com {rate} {rate, plural, =1 {estrela} other {estrelas}}.",
+    "success_message": "Obrigado pela sua avaliação!"
+  },
+  "scanner": {
+    "instructions": "Por favor mantenha o código de barras ou código QR no centro. A deteção é realizada automaticamente.",
+    "noResult": {
+      "qrCode": "Não foi possível encontrar resultados para este código QR.",
+      "barCode": "Produto não encontrado."
+    },
+    "camera_access_denied": {
+      "message": "Esta funcionalidade requer acesso à sua câmara. Por favor autorize o acesso nas configurações.",
+      "settings_button": "Ir para configurações"
+    }
+  }
+}
