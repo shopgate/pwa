@@ -5,6 +5,7 @@ import {
   EFAVORITE,
   EUNKNOWN,
   EBIGAPI,
+  ELIMIT,
 } from '@shopgate/pwa-core/constants/Pipeline';
 import * as pipelines from '../constants/Pipelines';
 import {
@@ -21,12 +22,12 @@ import {
 const fetchFavorites = (ignoreCache = false) => (dispatch, getState) => {
   const data = getState().favorites.products;
   if (!ignoreCache && !shouldFetchData(data)) {
-    return new Promise(res => res());
+    return Promise.resolve();
   }
   const timestamp = Date.now();
   dispatch(requestFavorites());
   const promise = new PipelineRequest(pipelines.SHOPGATE_USER_GET_FAVORITES)
-    .setErrorBlacklist([EFAVORITE, EUNKNOWN, EBIGAPI])
+    .setErrorBlacklist([EFAVORITE, EUNKNOWN, EBIGAPI, ELIMIT])
     .dispatch();
   promise
     .then((result) => {
