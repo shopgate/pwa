@@ -98,7 +98,8 @@
   "cart": {
     "subtotal": "Sous-total",
     "total": "Panier Total",
-    "discounts": "Remises ({label})",
+    "discount": "Remise",
+    "discount_with_label": "Remise ({label})",
     "checkout": "Paiement",
     "remove": "Retirer",
     "edit": "Modifier",

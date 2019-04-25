@@ -17,7 +17,7 @@ describe('My test', () => {
         amount: 10,
       },
       {
-        label: 'Loyalty',
+        label: '',
         amount: 2,
       },
     ];

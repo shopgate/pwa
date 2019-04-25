@@ -92,7 +92,8 @@
   "cart": {
     "subtotal": "Subtotal",
     "total": "Total de la cesta",
-    "discounts": "Descuentos ({label})",
+    "discount": "Descuento",
+    "discount_with_label": "Descuento ({label})",
     "checkout": "Pagar",
     "remove": "Quitar",
     "edit": "Editar",
