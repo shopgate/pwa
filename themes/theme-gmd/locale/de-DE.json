@@ -92,7 +92,8 @@
   "cart": {
     "subtotal": "Zwischensumme",
     "total": "Summe Warenkorb",
-    "discounts": "Rabatte ({label})",
+    "discount": "Rabatt",
+    "discount_with_label": "Rabatt ({label})",
     "checkout": "Zur Kasse",
     "remove": "Entfernen",
     "edit": "Bearbeiten",
