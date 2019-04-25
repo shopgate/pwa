@@ -70,11 +70,12 @@ describe('<NavigationHandler />', () => {
   });
 
   it('should register the navigation event listener', () => {
+    const props = wrapper.find('NavigationHandler').props();
     expect(UIEvents.addListener.mock.calls.length).toBe(4);
-    expect(UIEvents.addListener.mock.calls[0][0]).toEqual(NAVIGATION_PUSH, wrapper.find('NavigationHandler').props().push);
-    expect(UIEvents.addListener.mock.calls[1][0]).toEqual(NAVIGATION_POP, wrapper.find('NavigationHandler').props().pop);
-    expect(UIEvents.addListener.mock.calls[2][0]).toEqual(NAVIGATION_REPLACE, wrapper.find('NavigationHandler').props().replace);
-    expect(UIEvents.addListener.mock.calls[3][0]).toEqual(NAVIGATION_RESET, wrapper.find('NavigationHandler').props().reset);
+    expect(UIEvents.addListener.mock.calls[0][0]).toEqual(NAVIGATION_PUSH, props.push);
+    expect(UIEvents.addListener.mock.calls[1][0]).toEqual(NAVIGATION_POP, props.pop);
+    expect(UIEvents.addListener.mock.calls[2][0]).toEqual(NAVIGATION_REPLACE, props.replace);
+    expect(UIEvents.addListener.mock.calls[3][0]).toEqual(NAVIGATION_RESET, props.reset);
     UIEvents.addListener.mockClear();
   });
 
