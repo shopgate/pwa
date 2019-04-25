@@ -12,6 +12,11 @@ import FlashlightButton from './components/ScannerBar/components/FlashlightButto
 import ScannerOverlay from './index';
 
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
+jest.mock('react-dom', () => ({
+  createPortal: element => (
+    <div id="portal-content">{element}</div>
+  ),
+}));
 
 defaultClientInformation.libVersion = SCANNER_MIN_APP_LIB_VERSION;
 
