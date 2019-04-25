@@ -1,4 +1,12 @@
 import { css } from 'glamor';
+import { updatePageBackgroundColor } from 'Components/Viewport/style';
+
+/**
+ * @param {string} color The new page background color.
+ */
+export const setBackgroundColor = (color) => {
+  updatePageBackgroundColor(color);
+};
 
 export default css({
   position: 'absolute',
