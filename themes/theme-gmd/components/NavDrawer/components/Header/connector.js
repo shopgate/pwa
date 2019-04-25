@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
+  isUserLoggedIn,
   getUserEmail,
   getUserDisplayName,
 } from '@shopgate/pwa-common/selectors/user';
@@ -12,6 +13,7 @@ import {
  * @return {Object}
  */
 const mapStateToProps = state => ({
+  isLoggedIn: isUserLoggedIn(state),
   email: getUserEmail(state),
   name: getUserDisplayName(state),
 });

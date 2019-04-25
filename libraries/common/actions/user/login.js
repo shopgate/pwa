@@ -46,8 +46,8 @@ export default function login(parameters, redirect, strategy = 'basic') {
         if (code === EINVALIDCALL) {
           /**
            * This code is thrown when the login request failed, because the user was already logged
-           * in. In that situation the success action can also dispatch to trigger the neccesary
-           * processes which have to happen after a successful login.
+           * in. In that situation the success action can also dispatch to trigger the necessary
+           * processes which has to happen after a successful login.
            */
           dispatch(actions.successLogin(redirect));
         } else if (code === ELEGACYSGCONNECT) {
