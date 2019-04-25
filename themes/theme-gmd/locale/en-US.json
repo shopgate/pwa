@@ -24,6 +24,7 @@
     "empty": "You don't have any favorites",
     "error_add": "Product could not be added to favorites",
     "error_remove": "Product could not be removed from favorites",
+    "error_limit": "You have exceeded the number of products allowed in the favorites.",
     "remove": "Remove from favorites",
     "removed": "Removed from favorites",
     "modal": {

@@ -31,6 +31,7 @@ const defaultAppConfig = {
   cartShippingTextAnonymousLegacy: null,
   cart: {},
   scanner: {},
+  favorites: {},
 };
 
 export const themeName = process.env.THEME || 'theme';

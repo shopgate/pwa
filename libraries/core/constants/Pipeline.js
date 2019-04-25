@@ -49,3 +49,5 @@ export const EINCOMPLETELOGIN = 'EINCOMPLETELOGIN';
 // Validation errors
 export const EVALIDATION = 'EVALIDATION';
 
+// Limits or quotas
+export const ELIMIT = 'ELIMIT';

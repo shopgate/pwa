@@ -92,7 +92,7 @@ describe('Favorites - actions', () => {
       mockedResolver = (mockInstance, resolve) => {
         resolve();
       };
-      addFavorites('product')(mockedDispatch);
+      addFavorites('product')(mockedDispatch, mockedGetState);
       expect(mockedDispatch.mock.calls.length).toBe(2);
       mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
       expect(mockedDispatch.mock.calls.length).toBe(3);
