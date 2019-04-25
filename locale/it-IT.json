@@ -25,6 +25,7 @@
     "empty": "Non hai favoriti",
     "error_add": "Non è possibile aggiungere il prodotto ai favoriti",
     "error_remove": "Non è possibile rimuovere il prodotto dai favoriti",
+    "error_limit": "Hai superato il numero di prodotti consentiti nei preferiti.",
     "remove": "Rimuovi dai favoriti",
     "removed": "Rimosso dai favoriti",
     "modal": {
@@ -98,6 +99,7 @@
   "cart": {
     "subtotal": "Sotto-totale",
     "total": "Totale del carrello",
+    "discounts": "Sconti ({label})",
     "checkout": "Cassa",
     "remove": "Rimuovi",
     "edit": "Modifica",
@@ -172,6 +174,10 @@
     "noResult": {
       "qrCode": "Non siamo riusciti a trovare alcun risultato per questo codice QR.",
       "barCode": "Nessun prodotto trovato."
+    },
+    "camera_access_denied": {
+      "message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
+      "settings_button": "Vai alle impostazioni"
     }
   }
 }

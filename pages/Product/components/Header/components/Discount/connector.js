@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
-import { getProductPrice } from '@shopgate/pwa-common-commerce/product/selectors/price';
+import { getProductPriceData } from '@shopgate/pwa-common-commerce/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,7 +8,7 @@ import { getProductPrice } from '@shopgate/pwa-common-commerce/product/selectors
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  price: getProductPrice(state),
+  price: getProductPriceData(state),
 });
 
 /**

@@ -25,6 +25,7 @@
     "empty": "Sie haben noch keine Artikel in der Merkliste",
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
+    "error_limit": "Die zulässige Anzahl von Produkten auf der Merkliste wurde überschritten.",
     "remove": "Von der Merkliste löschen",
     "removed": "Von Merkliste entfernt",
     "modal": {
@@ -98,6 +99,7 @@
   "cart": {
     "subtotal": "Zwischensumme",
     "total": "Summe Warenkorb",
+    "discounts": "Rabatte ({label})",
     "checkout": "Zur Kasse",
     "remove": "Entfernen",
     "edit": "Bearbeiten",
@@ -173,6 +175,10 @@
     "noResult": {
       "qrCode": "Wir konnten für diesen QR-Code kein Ergebnis finden.",
       "barCode": "Produkt nicht gefunden."
+    },
+    "camera_access_denied": {
+      "message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
+      "settings_button": "Zu den Einstellungen"
     }
   }
 }
