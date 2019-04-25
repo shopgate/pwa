@@ -1,6 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables, colors } = themeConfig;
 
 export const IMAGE_SPACE = 72;
 

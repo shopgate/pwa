@@ -1,6 +1,7 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
 
 const wrapper = css({
   padding: `${variables.gap.big * 0.75}px ${variables.gap.big}px`,

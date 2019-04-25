@@ -25,6 +25,7 @@
     "empty": "Vous n'avez rien dans vos favorits",
     "error_add": "Le produit n'a pas pu être ajouté aux favorits",
     "error_remove": "Le produit n'a pas pu être retiré des favorits",
+    "error_limit": "Vous avez dépassé le nombre de produits autorisés dans les favoris.",
     "remove": "Retirer des favorits",
     "removed": "Retivé des favorits",
     "modal": {
@@ -76,7 +77,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
-    }
+    },
+    "placeholder": "Recherche"
   },
   "shipping": {
     "unknown": "avec frais de livraison",
@@ -97,7 +99,7 @@
   "cart": {
     "subtotal": "Sous-total",
     "total": "Panier Total",
-    "discounts": "Discounts ({label})",
+    "discounts": "Remises ({label})",
     "checkout": "Paiement",
     "remove": "Retirer",
     "edit": "Modifier",
@@ -176,6 +178,10 @@
     "noResult": {
       "qrCode": "Nous n'avons pas trouvé de résultat pour ce code QR.",
       "barCode": "Aucun produit trouvé."
+    },
+    "camera_access_denied": {
+      "message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
+      "settings_button": "Aller dans paramètres"
     }
   }
 }

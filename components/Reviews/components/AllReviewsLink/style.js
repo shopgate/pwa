@@ -1,5 +1,8 @@
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
+
 /**
  * Styles for a link parent container.
  * @type {string}
