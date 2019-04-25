@@ -70,7 +70,7 @@ const addFavorites = productId => (dispatch, getState) => {
   dispatch(requestAddFavorites(productId));
 
   const count = getFavoritesCount(getState());
-  if (count >= limit) {
+  if (count > limit) {
     const error = new Error('Limit exceeded');
     error.code = ELIMIT;
     dispatch(errorFavorites(productId, error));

@@ -37,12 +37,17 @@ const products = (state = {
         outOfSync: true,
       };
     case REQUEST_REMOVE_FAVORITES:
-      return {
+      return !action.silent ? { // A silent remove is used when adding an item to the list fails.
         ...state,
         isFetching: true, // Prevents fetch on enter.
         ids: state.ids.filter(id => id !== action.productId),
         lastChange: Date.now(),
         outOfSync: true,
+      } : {
+        ...state,
+        isFetching: false, // Silent remove only recovers from wrong states.
+        ids: state.ids.filter(id => id !== action.productId),
+        outOfSync: false,
       };
     case REQUEST_SYNC_FAVORITES:
       return {
