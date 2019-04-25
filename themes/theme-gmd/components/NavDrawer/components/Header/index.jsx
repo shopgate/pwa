@@ -10,15 +10,17 @@ import styles from './style';
 
 const { colors } = themeConfig;
 
-const enhance = onlyUpdateForKeys(['email']);
+const enhance = onlyUpdateForKeys(['email', 'isLoggedIn']);
 
 /**
  * The NavDrawerHeader component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const NavDrawerHeader = ({ email, name, openLogin }) => {
-  if (!email) {
+const NavDrawerHeader = ({
+  isLoggedIn, email, name, openLogin,
+}) => {
+  if (!isLoggedIn) {
     return (
       <NavDrawer.Item
         icon={props => <AccountBoxIcon color={colors.light} {...props} />}
@@ -46,6 +48,7 @@ const NavDrawerHeader = ({ email, name, openLogin }) => {
 };
 
 NavDrawerHeader.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
   openLogin: PropTypes.func.isRequired,
   email: PropTypes.string,
   name: PropTypes.string,
