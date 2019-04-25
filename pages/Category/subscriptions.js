@@ -5,12 +5,12 @@ import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchC
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import {
   categoryWillEnter$,
   categoryDidEnter$,
   categoryFiltersDidUpdate$,
+  errorVisibleCategory$,
 } from './streams';
 
 /**
@@ -37,7 +37,7 @@ export default function category(subscribe) {
   /**
    * Gets triggered on pipeline category error.
    */
-  subscribe(categoryError$, ({ action, dispatch }) => {
+  subscribe(errorVisibleCategory$, ({ action, dispatch }) => {
     const { errorCode } = action;
     let message = 'modal.body_error';
 
