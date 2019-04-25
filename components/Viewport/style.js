@@ -1,15 +1,16 @@
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
+const defaultBackgroundColor = colors.light;
+const { style } = document.documentElement;
 
 css.global('html, body', {
-  background: '#fff',
+  background: 'var(--page-background-color)',
 });
 
-/**
- * By default the GMD theme doesn't have a tabbar. But it's conceivable that 3rd party developers
- * might want to implement one via an extension. So the code which calculates content bottom
- * paddings for example is prepared to deal with it. For now the value is initialized with 0.
- */
 css.global('html', {
+  '--page-background-color': defaultBackgroundColor,
   '--tabbar-height': '0px',
 });
 
@@ -31,6 +32,16 @@ export const updatePageInsets = (pageInsets) => {
     '--safe-area-inset-top': `${safeAreaInsetTop}px`,
     '--safe-area-inset-bottom': `${safeAreaInsetBottom}px`,
   });
+};
+
+/**
+ * Updates the page background color.
+ * @param {string} color The new background color.
+ */
+export const updatePageBackgroundColor = (color = defaultBackgroundColor) => {
+  if (style.getPropertyValue('--page-background-color') !== color) {
+    style.setProperty('--page-background-color', color);
+  }
 };
 
 const viewport = css({
@@ -55,16 +66,8 @@ const header = css({
   zIndex: 1,
 });
 
-const footer = css({
-  bottom: 0,
-  flexShrink: 1,
-  position: 'relative',
-  zIndex: 1,
-});
-
 export default {
   viewport,
   content,
   header,
-  footer,
 };
