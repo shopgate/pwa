@@ -1,5 +1,7 @@
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
 
 const { style } = document.documentElement;
 
@@ -19,13 +21,13 @@ export const updateHeightCSSProperty = (isVisible) => {
 };
 
 export default css({
-  height: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
-  paddingBottom: 'var(--safe-area-inset-bottom)',
+  height: 'var(--tabbar-height)',
   position: 'relative',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
-  boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1)',
+  boxShadow: '0 -1px 0 0 rgba(0, 0, 0, 0.1)',
+  background: '#fafafa',
   ':before': {
     position: 'absolute',
     top: 0,
@@ -33,7 +35,6 @@ export default css({
     left: 0,
     right: 0,
     content: '""',
-    background: '#fafafa',
     zIndex: -1,
   },
 }).toString();

@@ -24,6 +24,7 @@
     "empty": "You don't have any favorites",
     "error_add": "Product could not be added to favorites",
     "error_remove": "Product could not be removed from favorites",
+    "error_limit": "You have exceeded the number of products allowed in the favorites.",
     "remove": "Remove from favorites",
     "removed": "Removed from favorites",
     "modal": {
@@ -163,6 +164,10 @@
     "noResult": {
       "qrCode": "We couldn't find a result for this QR code.",
       "barCode": "Product not found."
+    },
+    "camera_access_denied": {
+      "message": "This feature requires access to your camera. Please allow access in the settings.",
+      "settings_button": "Go to settings"
     }
   }
 }

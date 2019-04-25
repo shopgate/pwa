@@ -165,7 +165,7 @@ export const getGrandTotal = createSelector(
 
 /**
  * Selects the shipping costs.
- * @returns {Object}
+ * @returns {Object|null}
  */
 export const getShippingCost = createSelector(
   getTotals,

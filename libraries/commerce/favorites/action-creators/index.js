@@ -8,15 +8,28 @@ import {
   RECEIVE_SYNC_FAVORITES,
   ERROR_SYNC_FAVORITES,
   IDLE_SYNC_FAVORITES,
+  ERROR_FAVORITES,
 } from '../constants';
 
 /**
  * Error on fetch favorites action.
- * @param {Object} error Error.
+ * @param {Error} error Error.
  * @returns {Object}
  */
 export const errorFetchFavorites = error => ({
   type: ERROR_FETCH_FAVORITES,
+  error,
+});
+
+/**
+ * Error on favorites action.
+ * @param {string} productId Product identifier.
+ * @param {Error} error Error.
+ * @returns {Object}
+ */
+export const errorFavorites = (productId, error) => ({
+  type: ERROR_FAVORITES,
+  productId,
   error,
 });
 
@@ -33,11 +46,13 @@ export const requestAddFavorites = productId => ({
 /**
  * Request remove favorites action.
  * @param {string} productId Product identifier.
+ * @param {boolean} silent silent
  * @returns {Object}
  */
-export const requestRemoveFavorites = productId => ({
+export const requestRemoveFavorites = (productId, silent = false) => ({
   type: REQUEST_REMOVE_FAVORITES,
   productId,
+  silent,
 });
 
 /**

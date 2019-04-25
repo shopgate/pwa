@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import View from 'Components/View';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
+
+const { colors } = themeConfig;
 
 const map = {
   searchPhrase: 'query.s',

@@ -19,6 +19,7 @@ import { ProductContext } from '../../context';
 class ProductContent extends PureComponent {
   static propTypes = {
     baseProductId: PropTypes.string,
+    currency: PropTypes.string,
     isVariant: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
@@ -26,6 +27,7 @@ class ProductContent extends PureComponent {
 
   static defaultProps = {
     baseProductId: null,
+    currency: null,
     isVariant: false,
     productId: null,
     variantId: null,
@@ -42,7 +44,9 @@ class ProductContent extends PureComponent {
     };
 
     this.state = {
+      currency: props.currency,
       options: {},
+      optionsPrices: {},
       productId: props.variantId ? props.baseProductId : props.productId,
       variantId: props.variantId ? props.variantId : null,
     };
@@ -71,6 +75,7 @@ class ProductContent extends PureComponent {
     this.setState({
       productId,
       variantId,
+      currency: nextProps.currency,
     });
   }
 
@@ -78,12 +83,17 @@ class ProductContent extends PureComponent {
    * Stores the selected options in local state.
    * @param {string} optionId The ID of the option.
    * @param {string} value The option value.
+   * @param {number} [price=0] The option value.
    */
-  storeOptionSelection = (optionId, value) => {
+  setOption = (optionId, value, price = 0) => {
     this.setState(prevState => ({
       options: {
         ...prevState.options,
         [optionId]: value,
+      },
+      optionsPrices: {
+        ...prevState.optionsPrices,
+        [optionId]: !!value && price,
       },
     }));
   };
@@ -92,10 +102,10 @@ class ProductContent extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const id = this.state.variantId || this.state.productId;
     const contextValue = {
       ...this.state,
       ...this.baseContextValue,
+      setOption: this.setOption,
     };
 
     return (
@@ -106,11 +116,7 @@ class ProductContent extends PureComponent {
             <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
             <Header />
             <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
-            <Options
-              productId={id}
-              storeSelection={this.storeOptionSelection}
-              currentOptions={this.state.options}
-            />
+            <Options />
             <Description productId={this.state.productId} variantId={this.state.variantId} />
             <Properties productId={this.state.productId} variantId={this.state.variantId} />
             <Reviews productId={this.state.productId} />

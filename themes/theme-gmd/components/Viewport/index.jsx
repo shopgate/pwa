@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import shouldUpdate from 'recompose/shouldUpdate';
+import Footer from '@shopgate/pwa-ui-shared/Footer';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
 import styles from './style';
@@ -17,7 +18,7 @@ const Viewport = props => (
     <section className={styles.content}>
       {props.children}
     </section>
-    <footer className={styles.footer} id="AppFooter" />
+    <Footer />
     <Search />
   </main>
 );

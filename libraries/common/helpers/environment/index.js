@@ -10,5 +10,5 @@ module.exports = {
   isDev: (env === ENV_KEY_DEVELOPMENT || env === ENV_KEY_TEST),
   isProd: (env === ENV_KEY_PRODUCTION),
   isStaging: (env === ENV_KEY_STAGING),
-  isRemote: process.env.REMOTE,
+  isRemote: !!process.env.REMOTE,
 };

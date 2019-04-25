@@ -9,4 +9,3 @@ export const App = AppContext.Consumer;
 
 export const ThemeContext = React.createContext();
 export const Theme = ThemeContext.Consumer;
-

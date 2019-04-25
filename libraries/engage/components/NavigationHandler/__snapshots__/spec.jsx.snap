@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationHandler /> should render as expected 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(NavigationHandler)>
+    <NavigationHandler
+      pop={[Function]}
+      push={[Function]}
+      replace={[Function]}
+      reset={[Function]}
+    >
+      <div>
+        Some content
+      </div>
+    </NavigationHandler>
+  </Connect(NavigationHandler)>
+</Provider>
+`;

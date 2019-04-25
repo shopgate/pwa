@@ -1,4 +1,4 @@
-const jestConfig = require('./utils/unit-tests/jest.config');
+const jestConfig = require('@shopgate/pwa-unit-test/jest.config');
 
 module.exports = {
   ...jestConfig,
@@ -6,9 +6,9 @@ module.exports = {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   collectCoverageFrom: [
-    'extensions/*/frontend/**/*.js',
-    'libraries/*/**/*.js',
-    'themes/*/**/*.js',
+    'extensions/*/frontend/**/*.{js,jsx}',
+    'libraries/*/**/*.{js,jsx}',
+    'themes/*/**/*.{js,jsx}',
     '!*/**/.eslintrc.js',
     '!*/**/jest.config.js',
     '!themes/*/extensions/**/*.js',
@@ -20,7 +20,7 @@ module.exports = {
     '/themes/*/e2e/',
   ],
   transformIgnorePatterns: [
-    '/node_modules/(?![swiper|dom7].*/)',
+    'node_modules/(?!(swiper|dom7)/)',
     '/themes/*/extensions/',
     '/themes/*/e2e/',
   ],

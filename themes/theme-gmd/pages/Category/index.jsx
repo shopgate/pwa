@@ -3,8 +3,10 @@ import Consume from '@shopgate/pwa-common/components/Consume';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import View from 'Components/View';
-import colors from 'Styles/colors';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CategoryContent from './components/Content';
+
+const { colors } = themeConfig;
 
 const map = {
   id: 'params.categoryId',

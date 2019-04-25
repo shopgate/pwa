@@ -1,10 +1,14 @@
+import { ELIMIT } from '@shopgate/pwa-core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import {
   shouldFetchFavorites$,
   shouldFetchFreshFavorites$,
   favoritesSyncIdle$,
+  favoritesError$,
 } from '../streams';
 import fetchFavorites from '../actions/fetchFavorites';
+import { requestRemoveFavorites } from '../action-creators';
 import { FETCH_FAVORITES_THROTTLE } from '../constants';
 
 /**
@@ -15,23 +19,38 @@ export default function favorites(subscribe) {
     return;
   }
 
+  /** App start / favorites route enter */
   subscribe(shouldFetchFavorites$, ({ dispatch }) => {
     dispatch(fetchFavorites());
   });
 
+  /** User login / logout */
   subscribe(shouldFetchFreshFavorites$, ({ dispatch }) => {
     dispatch(fetchFavorites(true));
   });
 
-  /*
-   * Request after 5 seconds since last sync request to make sure
-   * backend did actually save it.
+  /**
+   * Request after N seconds since last sync request to make sure
+   * backend did actually save it
    */
-  let fetchThrottle;
-  subscribe(favoritesSyncIdle$, ({ dispatch }) => {
-    clearTimeout(fetchThrottle);
-    fetchThrottle = setTimeout(() => {
-      dispatch(fetchFavorites(true));
-    }, FETCH_FAVORITES_THROTTLE);
+  const refreshFavorites$ = favoritesSyncIdle$.debounceTime(FETCH_FAVORITES_THROTTLE);
+  subscribe(refreshFavorites$, ({ dispatch }) => {
+    dispatch(fetchFavorites(true));
+  });
+
+  const errorQuotaFavorites$ = favoritesError$.filter(({ action }) => (
+    action.error && action.error.code === ELIMIT
+  ));
+  subscribe(errorQuotaFavorites$, ({ dispatch, action }) => {
+    dispatch(showModal({
+      confirm: null,
+      dismiss: 'modal.ok',
+      title: 'modal.title_error',
+      message: 'favorites.error_limit',
+    })).then(() => {
+      if (action.productId) {
+        dispatch(requestRemoveFavorites(action.productId, true));
+      }
+    });
   });
 }

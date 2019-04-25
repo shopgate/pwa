@@ -6,7 +6,7 @@ export FORCE_COLOR = true
 # -------
 # If LIBRARIES, EXTENSIONS or UTILS is extended and the npm packacke should not be prefixed with
 # "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
-LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
+LIBRARIES = engage commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
 TRANSPILED_UTILS = benchmark
 UTILS = eslint-config unit-tests e2e
@@ -161,7 +161,7 @@ fix-remote:
 		git merge -s ours --no-commit --allow-unrelated-histories $(REMOTE)/master
 
 setup-frontend-with-current-ip:
-		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}' | head -1)",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "cheap-module-eval-source-map"\n}\n' > ./.sgcloud/frontend.json;
+		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}' | head -1)",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
 # Open cypress UI for GMD theme

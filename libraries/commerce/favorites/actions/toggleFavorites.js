@@ -1,4 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { ELIMIT } from '@shopgate/pwa-core';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import * as pipelines from '../constants/Pipelines';
 import {
   requestAddFavorites,
@@ -7,11 +9,15 @@ import {
   receiveSyncFavorites,
   errorSyncFavorites,
   idleSyncFavorites,
+  errorFavorites,
 } from '../action-creators';
 import {
   getProductRelativesOnFavorites,
   getFavoritesProductsIds,
+  getFavoritesCount,
 } from '../selectors/';
+
+const { favorites: { limit = 100 } = {} } = appConfig;
 
 let syncPendingCount = 0;
 let syncInProgress = false;
@@ -35,20 +41,21 @@ export const requestSync = () => (dispatch, getState) => {
   // Whatever was added before is being synced now.
   syncPendingCount = 0;
   syncInProgress = true;
+
   const state = getState();
   dispatch(requestSyncFavorites());
+
   new PipelineRequest(pipelines.SHOPGATE_USER_PUT_FAVORITES)
     .setInput({ productIds: getFavoritesProductsIds(state) })
     .setRetries(0)
     .dispatch()
     .then(() => {
       dispatch(receiveSyncFavorites());
-      syncInProgress = false;
-      // Calling self to check is something maybe changed since last sync request.
-      dispatch(requestSync());
     })
     .catch(() => {
       dispatch(errorSyncFavorites());
+    })
+    .then(() => {
       syncInProgress = false;
       dispatch(requestSync());
     });
@@ -59,8 +66,17 @@ export const requestSync = () => (dispatch, getState) => {
  * @param {string} productId Product identifier.
  * @returns {Promise} PipelineRequest dispatch.
  */
-const addFavorites = productId => (dispatch) => {
+const addFavorites = productId => (dispatch, getState) => {
   dispatch(requestAddFavorites(productId));
+
+  const count = getFavoritesCount(getState());
+  if (count > limit) {
+    const error = new Error('Limit exceeded');
+    error.code = ELIMIT;
+    dispatch(errorFavorites(productId, error));
+    return;
+  }
+
   syncPendingCount += 1;
   dispatch(requestSync());
 };
