@@ -25,6 +25,7 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
+import { NavigationHandler } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
@@ -43,41 +44,43 @@ import * as routes from './routes';
  */
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
-    <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={themeApi}>
-        <LoadingProvider>
-          <ToastProvider>
-            <Portal name={APP_GLOBALS} />
-            <Viewport>
-              <ModalContainer component={Dialog} />
-              <Toaster render={props => <SnackBar {...props} />} />
-              <Router history={history}>
-                <Route pattern={INDEX_PATH} component={routes.StartPage} />
-                <Route pattern={PAGE_PATTERN} component={routes.Page} />
-                <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
-                <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                <Route pattern={ITEM_PATTERN} component={routes.Product} />
-                <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
-                <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
-                <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
-                <Route pattern={CART_PATH} component={routes.Cart} />
-                <Route pattern={BROWSE_PATH} component={routes.Browse} />
-                <Route pattern={MORE_PATH} component={routes.More} />
-                {
-                  appConfig.hasFavorites
-                  && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
-                }
-                <Route pattern={LOGIN_PATH} component={routes.Login} />
-                <Route pattern={SEARCH_PATTERN} component={routes.Search} cache />
-                <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
-                <Route pattern={SCANNER_PATH} component={routes.Scanner} />
-                {React.Children.map(routePortals, Component => Component)}
-              </Router>
-            </Viewport>
-          </ToastProvider>
-        </LoadingProvider>
-      </ThemeContext.Provider>
-    </AppContext.Provider>
+    <NavigationHandler>
+      <AppContext.Provider value={{ ...appConfig }}>
+        <ThemeContext.Provider value={themeApi}>
+          <LoadingProvider>
+            <ToastProvider>
+              <Portal name={APP_GLOBALS} />
+              <Viewport>
+                <ModalContainer component={Dialog} />
+                <Toaster render={props => <SnackBar {...props} />} />
+                <Router history={history}>
+                  <Route pattern={INDEX_PATH} component={routes.StartPage} />
+                  <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                  <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
+                  <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                  <Route pattern={ITEM_PATTERN} component={routes.Product} />
+                  <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
+                  <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
+                  <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
+                  <Route pattern={CART_PATH} component={routes.Cart} />
+                  <Route pattern={BROWSE_PATH} component={routes.Browse} />
+                  <Route pattern={MORE_PATH} component={routes.More} />
+                  {
+                    appConfig.hasFavorites
+                    && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
+                  }
+                  <Route pattern={LOGIN_PATH} component={routes.Login} />
+                  <Route pattern={SEARCH_PATTERN} component={routes.Search} cache />
+                  <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
+                  <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                  {React.Children.map(routePortals, Component => Component)}
+                </Router>
+              </Viewport>
+            </ToastProvider>
+          </LoadingProvider>
+        </ThemeContext.Provider>
+      </AppContext.Provider>
+    </NavigationHandler>
   </App>
 );
 
