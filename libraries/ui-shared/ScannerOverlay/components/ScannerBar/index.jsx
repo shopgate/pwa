@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -12,17 +13,20 @@ import styles from './style';
  * @param {Function} onToggleFlashlight The toggle event triggered by the user.
  * @returns {JSX}
  */
-const ScannerBar = ({ flashlightState, onToggleFlashlight }) => (
-  <SurroundPortals portalName={SCANNER_BAR}>
-    <Grid className={styles.container}>
-      <Grid.Item className={styles.column}>
-        <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
-      </Grid.Item>
-      <Grid.Item className={styles.column}>
-        <I18n.Text string="scanner.instructions" />
-      </Grid.Item>
-    </Grid>
-  </SurroundPortals>
+const ScannerBar = ({ flashlightState, onToggleFlashlight }) => createPortal(
+  (
+    <SurroundPortals portalName={SCANNER_BAR}>
+      <Grid className={styles.container}>
+        <Grid.Item className={styles.column}>
+          <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
+        </Grid.Item>
+        <Grid.Item className={styles.column}>
+          <I18n.Text string="scanner.instructions" />
+        </Grid.Item>
+      </Grid>
+    </SurroundPortals>
+  ),
+  document.getElementById('AppFooter')
 );
 
 ScannerBar.propTypes = {

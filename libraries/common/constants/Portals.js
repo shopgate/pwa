@@ -11,6 +11,7 @@ const FORM = 'form';
 // CONTENTS
 const GLOBALS = 'globals';
 const ROUTES = 'routes';
+const FOOTER = 'footer';
 const CONTENT = 'content';
 const HOME = 'home';
 const LOGIN = 'login';
@@ -41,6 +42,9 @@ export const BELOW = 'below';
 
 export const APP_GLOBALS = `${APP}.${GLOBALS}`;
 export const APP_ROUTES = `${APP}.${ROUTES}`;
+
+export const APP_FOOTER_CONTENT_BEFORE = `${APP}.${FOOTER}.${CONTENT}.${BEFORE}`;
+export const APP_FOOTER_CONTENT_AFTER = `${APP}.${FOOTER}.${CONTENT}.${AFTER}`;
 
 export const VIEW_CONTENT_BEFORE = `${VIEW}.${CONTENT}.${BEFORE}`;
 export const VIEW_CONTENT = `${VIEW}.${CONTENT}`;

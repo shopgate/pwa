@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -114,16 +114,16 @@ class TabBar extends PureComponent {
     return (
       <KeyboardConsumer>
         {({ open }) => !open && (
-          <div data-test-id="tabBar">
-            <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
-            {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
-            <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-              <Grid className={styles}>
-                {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-              </Grid>
-            </Portal>
-            <Portal name={TAB_BAR_AFTER} props={{ ...props }} />
-          </div>
+        <Fragment>
+          <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
+          {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
+          <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
+            <Grid className={styles} data-test-id="tabBar">
+              {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+            </Grid>
+          </Portal>
+          <Portal name={TAB_BAR_AFTER} props={{ ...props }} />
+        </Fragment>
         )}
       </KeyboardConsumer>
     );
