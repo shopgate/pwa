@@ -114,7 +114,7 @@
   "login": {
     "headline": "Welkom",
     "subline": "Log in om door te gaan",
-    "email": "E-mail adres",
+    "email": "E-mail",
     "password": "Wachtwoord",
     "forgot_password": "Wachtwoord vergeten?",
     "forgot_password_popup": "Gebruik alsublieft de desktop website om uw wachtwoord te resetten.",
