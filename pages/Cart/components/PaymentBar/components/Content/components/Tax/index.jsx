@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
-import { getTaxLine } from '@shopgate/pwa-common-commerce/cart';
+import { Portal } from '@shopgate/pwa-common/components';
+import {
+  CART_PAYMENT_BAR_TOTALS_TAX,
+  CART_PAYMENT_BAR_TOTALS_TAX_BEFORE,
+  CART_PAYMENT_BAR_TOTALS_TAX_AFTER,
+  getTaxLine,
+} from '@shopgate/pwa-common-commerce/cart';
 import CartContext from 'Pages/Cart/context';
 import connect from './connector';
 
@@ -24,11 +30,17 @@ const Tax = ({ taxData }) => {
         }
 
         return (
-          <CartTotalLine isDisabled={isLoading} type="tax">
-            <CartTotalLine.Label label={taxLine.label} />
-            <CartTotalLine.Amount amount={taxLine.amount} currency={currency} />
-            <CartTotalLine.Hint hint={taxLine.hint} />
-          </CartTotalLine>
+          <Fragment>
+            <Portal name={CART_PAYMENT_BAR_TOTALS_TAX_BEFORE} />
+            <Portal name={CART_PAYMENT_BAR_TOTALS_TAX}>
+              <CartTotalLine isDisabled={isLoading} type="tax">
+                <CartTotalLine.Label label={taxLine.label} />
+                <CartTotalLine.Amount amount={taxLine.amount} currency={currency} />
+                <CartTotalLine.Hint hint={taxLine.hint} />
+              </CartTotalLine>
+            </Portal>
+            <Portal name={CART_PAYMENT_BAR_TOTALS_TAX_AFTER} />
+          </Fragment>
         );
       }}
     </CartContext.Consumer>
