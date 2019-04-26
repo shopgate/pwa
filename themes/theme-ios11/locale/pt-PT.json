@@ -109,8 +109,9 @@
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
     "free_shipping": "Envio Grátis",
-    "discounts": "Descontos ({label})",
-    "total": "Total do carrinho"
+    "total": "Total do carrinho",
+    "discount": "Desconto",
+    "discount_with_label": "Desconto ({label})"
   },
   "login": {
     "headline": "Bem vindo",

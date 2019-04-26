@@ -12,11 +12,11 @@ exports[`My test should render and match snapshot 1`] = `
   >
     <CartTotalLine
       isDisabled={false}
-      key="discount-Coupon"
+      key="discount-Coupon-10"
       type="discount"
     >
       <Label
-        label="cart.discounts"
+        label="cart.discount_with_label"
         labelParams={
           Object {
             "label": "Coupon",
@@ -31,14 +31,14 @@ exports[`My test should render and match snapshot 1`] = `
     </CartTotalLine>
     <CartTotalLine
       isDisabled={false}
-      key="discount-Loyalty"
+      key="discount--2"
       type="discount"
     >
       <Label
-        label="cart.discounts"
+        label="cart.discount"
         labelParams={
           Object {
-            "label": "Loyalty",
+            "label": "",
           }
         }
         showSeparator={true}
