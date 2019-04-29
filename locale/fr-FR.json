@@ -115,7 +115,7 @@
   "login": {
     "headline": "Bienvenue",
     "subline": "Se connecter pour continuer",
-    "email": "Email",
+    "email": "E-mail",
     "password": "Mot de passe",
     "forgot_password": "Mot de passe oublié?",
     "forgot_password_popup": "Veuillez utiliser le site sur ordinateur pour réinitialiser votre mot de passe.",
