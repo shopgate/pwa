@@ -9,6 +9,7 @@ const SUB_TOTAL = 'sub-total';
 const GRAND_TOTAL = 'grand-total';
 const SHIPPING = 'shipping';
 const DISCOUNTS = 'discounts';
+const TAX = 'tax';
 const COUPON_FIELD = 'coupon-field';
 const CHECKOUT_BUTTON = 'checkout-button';
 
@@ -81,6 +82,10 @@ export const CART_PAYMENT_BAR_TOTALS_SHIPPING_AFTER = `${CART}.${PAYMENT_BAR}.${
 export const CART_PAYMENT_BAR_TOTALS_DISCOUNTS_BEFORE = `${CART}.${PAYMENT_BAR}.${TOTALS}.${DISCOUNTS}.${BEFORE}`;
 export const CART_PAYMENT_BAR_TOTALS_DISCOUNTS = `${CART}.${PAYMENT_BAR}.${TOTALS}.${DISCOUNTS}`;
 export const CART_PAYMENT_BAR_TOTALS_DISCOUNTS_AFTER = `${CART}.${PAYMENT_BAR}.${TOTALS}.${DISCOUNTS}.${AFTER}`;
+
+export const CART_PAYMENT_BAR_TOTALS_TAX_BEFORE = `${CART}.${PAYMENT_BAR}.${TOTALS}.${TAX}.${BEFORE}`;
+export const CART_PAYMENT_BAR_TOTALS_TAX = `${CART}.${PAYMENT_BAR}.${TOTALS}.${TAX}`;
+export const CART_PAYMENT_BAR_TOTALS_TAX_AFTER = `${CART}.${PAYMENT_BAR}.${TOTALS}.${TAX}.${AFTER}`;
 
 export const NAV_MENU_CART_BEFORE = `${NAV_MENU}.${CART}.${BEFORE}`;
 export const NAV_MENU_CART = `${NAV_MENU}.${CART}`;
