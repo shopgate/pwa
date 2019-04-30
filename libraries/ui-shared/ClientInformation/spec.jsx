@@ -15,7 +15,16 @@ describe('<ClientInformation />', () => {
     const wrapper = shallow(<ClientInformation {...mockData} codebaseVersion={null} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.get(0)).toBe(null);
+    expect(wrapper.isEmptyRender()).toBe(true);
+  });
+
+  it('should re-render when data comes available', () => {
+    const wrapper = shallow(<ClientInformation {...mockData} codebaseVersion={null} />);
+
+    expect(wrapper.isEmptyRender()).toBe(true);
+    wrapper.setProps({ codebaseVersion: mockData.codebaseVersion });
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.isEmptyRender()).toBe(false);
   });
 
   describe('App and lib version, and device ID', () => {
