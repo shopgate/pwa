@@ -1,3 +1,4 @@
+import { SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE } from '@shopgate/pwa-core/constants/Scanner';
 import { getCategoryRoute } from '@shopgate/pwa-common-commerce/category';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search';
@@ -123,8 +124,10 @@ export const parse2dsQrCode = (code) => {
 };
 
 /**
- * @param {string} scope The scanner scope to use for the scanner page
- * @param {string} type The scanner type to use on the scanner page
+ * Create a link to the scanner route.
+ * @param {string} [scope=SCANNER_SCOPE_DEFAULT] The scanner scope to use for the scanner page
+ * @param {string} [type=SCANNER_TYPE_BARCODE] The scanner type to use on the scanner page
  * @returns {string}
  */
-export const getScannerRoute = (scope, type) => `${SCANNER_PATH}?scope=${scope}&type=${type}`;
+export const getScannerRoute = (scope = SCANNER_SCOPE_DEFAULT, type = SCANNER_TYPE_BARCODE) =>
+  `${SCANNER_PATH}?scope=${scope}&type=${type}`;

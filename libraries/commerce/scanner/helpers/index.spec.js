@@ -1,4 +1,9 @@
 /* eslint-disable extra-rules/no-single-line-objects */
+import {
+  SCANNER_SCOPE_DEFAULT,
+  SCANNER_TYPE_BARCODE,
+  SCANNER_TYPE_IMAGE,
+} from '@shopgate/pwa-core/constants/Scanner';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search';
 import { getCategoryRoute } from '@shopgate/pwa-common-commerce/category';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product';
@@ -11,8 +16,9 @@ import {
   QR_CODE_TYPE_SEARCH,
   QR_CODE_TYPE_PAGE,
   QR_CODE_HOST_2DS,
+  SCANNER_PATH,
 } from '../constants';
-import { is2dsQrCode, parse2dsQrCode } from './index';
+import { is2dsQrCode, parse2dsQrCode, getScannerRoute } from './index';
 
 describe('scanner helpers', () => {
   describe('is2dsQrCode', () => {
@@ -98,6 +104,26 @@ describe('scanner helpers', () => {
           data: { pageId: 'cms-page' },
         });
       });
+    });
+  });
+
+  describe('getScannerRoute', () => {
+    it('should create a route without passing parameters', () => {
+      const route = getScannerRoute();
+      const expected = `${SCANNER_PATH}?scope=${SCANNER_SCOPE_DEFAULT}&type=${SCANNER_TYPE_BARCODE}`;
+      expect(route).toBe(expected);
+    });
+
+    it('should create a route when a value is passed for the scope parameter', () => {
+      const route = getScannerRoute('custom');
+      const expected = `${SCANNER_PATH}?scope=custom&type=${SCANNER_TYPE_BARCODE}`;
+      expect(route).toBe(expected);
+    });
+
+    it('should create a route when a values are passed for both parameters', () => {
+      const route = getScannerRoute('custom', SCANNER_TYPE_IMAGE);
+      const expected = `${SCANNER_PATH}?scope=custom&type=${SCANNER_TYPE_IMAGE}`;
+      expect(route).toBe(expected);
     });
   });
 });

@@ -1,5 +1,8 @@
 /** @module scanner */
 
+// ACTION-CREATORS
+export { default as startScanner } from '@shopgate/pwa-common-commerce/scanner//action-creators/startScanner';
+
 // ACTIONS
 export { default as grantCameraPermissions } from '@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions';
 export { default as handleBarCode } from '@shopgate/pwa-common-commerce/scanner/actions/handleBarCode';
