@@ -55,7 +55,7 @@
   "product": {
     "description_heading": "Beschreibung",
     "pick_an_attribute": "{0} auswählen",
-    "tax_disclaimer": "* Alle Preise inkl. MwSt. evtl. zzgl. Versand"
+    "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten"
   },
   "category": {
     "error": {
