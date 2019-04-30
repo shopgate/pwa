@@ -51,7 +51,7 @@ describe('AndroidGMDTest CartPage', () => {
   it('should check for TaxDisclaimer', () => {
     cy.get(els.taxDisclaimerFooter)
       .last()
-      .contains('* Alle Preise inkl. MwSt. evtl. zzgl. Versand')
+      .contains('* Inkl. MwSt. evtl. zzgl. Versandkosten')
       .should('be.visible');
   });
 });
