@@ -9,20 +9,24 @@ import BasicDialog from '../BasicDialog';
  * @param {Object} props The component properties.
  * @returns {JSX} The rendered component.
  */
-const TextMessageDialog = ({ actions, message, title }) => (
+const TextMessageDialog = ({
+  actions, message, title, params,
+}) => (
   <BasicDialog title={title} actions={actions}>
-    <I18n.Text string={message} />
+    <I18n.Text string={message} params={params} />
   </BasicDialog>
 );
 
 TextMessageDialog.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   message: PropTypes.string.isRequired,
+  params: I18n.Text.propTypes.params,
   title: PropTypes.string,
 };
 
 TextMessageDialog.defaultProps = {
   title: null,
+  params: I18n.Text.defaultProps.params,
 };
 
 export default TextMessageDialog;

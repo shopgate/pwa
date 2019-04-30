@@ -1,4 +1,6 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 import fetchProduct from '../actions/fetchProduct';
 import fetchProductDescription from '../actions/fetchProductDescription';
 import fetchProductProperties from '../actions/fetchProductProperties';
@@ -12,6 +14,8 @@ import {
   productReceived$,
   cachedProductReceived$,
   productRelationsReceived$,
+  receivedVisibleProduct$,
+  visibleProductNotFound$,
 } from '../streams';
 import fetchProductsById from '../actions/fetchProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
@@ -59,6 +63,28 @@ function product(subscribe) {
     if (flags.hasOptions) {
       dispatch(fetchProductOptions(id));
     }
+  });
+
+  const receivedVisibleProductDebounced$ = receivedVisibleProduct$.debounceTime(500);
+  /** Refresh product data after getting cache version for PDP */
+  subscribe(receivedVisibleProductDebounced$, ({ action, dispatch }) => {
+    const { id } = action.productData;
+    dispatch(fetchProduct(id, true));
+  });
+
+  /** Visible product is no more available */
+  subscribe(visibleProductNotFound$, ({ action, dispatch }) => {
+    dispatch(showModal({
+      confirm: null,
+      dismiss: 'modal.ok',
+      title: 'modal.title_error',
+      message: 'product.no_more_found',
+      params: {
+        name: action.productData.name,
+      },
+    }));
+    dispatch(historyPop());
+    dispatch(expireProductById(action.productData.id));
   });
 
   subscribe(productRelationsReceived$, ({ dispatch, getState, action }) => {

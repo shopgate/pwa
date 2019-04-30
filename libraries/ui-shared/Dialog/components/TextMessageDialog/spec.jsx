@@ -20,6 +20,18 @@ describe('<TextMessageDialog />', () => {
     expect(wrapper.html()).toMatch(title);
   });
 
+  it('should render with title, message and messageParams', () => {
+    const wrapper = shallow((
+      <TextMessageDialog
+        title={title}
+        message="Message with {name}"
+        params={{ name: 'Placeholder' }}
+        actions={[]}
+      />
+    ));
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('should render the actions', () => {
     const actions = [{
       label: 'fooAction',

@@ -1,6 +1,7 @@
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { ENOTFOUND } from '@shopgate/pwa-core';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$, routeDidUpdate$ } from '@shopgate/pwa-common/streams/router';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -12,6 +13,7 @@ import {
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCT_CACHED,
   RECEIVE_PRODUCT_RELATIONS,
+  ERROR_PRODUCT,
 } from '../constants';
 
 export const productWillEnter$ = routeWillEnter$.merge(routeDidUpdate$)
@@ -29,6 +31,14 @@ export const galleryWillLeave$ = routeWillLeave$
 export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
   .distinctUntilChanged();
+
+/** Dispatched when ERROR_PRODUCT received */
+export const errorProduct$ = main$.filter(({ action }) => action.type === ERROR_PRODUCT);
+
+/** Dispatched when ERROR_PRODUCT ENOTFOUND received */
+export const errorProductNotFound$ = errorProduct$.filter((
+  ({ action }) => action.errorCode === ENOTFOUND
+));
 
 export const cachedProductReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT_CACHED)
@@ -52,6 +62,14 @@ export const receivedVisibleProduct$ = productReceived$.merge(cachedProductRecei
 
     return action.productData.id === hex2bin(route.params.productId);
   });
+
+/** Dispatched when ERROR_PRODUCT ENOTFOUND of visible product is received */
+export const visibleProductNotFound$ = errorProductNotFound$
+  .withLatestFrom(receivedVisibleProduct$)
+  .filter(([errorAction, productAction]) => (
+    errorAction.action.productId === productAction.action.productData.id
+  ))
+  .map(([, productAction]) => productAction);
 
 export const variantDidChange$ = variantWillUpdate$
   // Take care that the stream only emits when underlying streams emit within the correct order.
