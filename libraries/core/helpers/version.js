@@ -1,6 +1,6 @@
 import MobileDetect from 'mobile-detect';
 import detector from 'detector';
-import { logger, useBrowserConnector } from './index';
+import { logger, hasSGJavaScriptBridge } from './index';
 import { getWebStorageEntry } from '../commands/webStorage';
 
 const MODE_AT_MOST = 'at_most';
@@ -24,7 +24,7 @@ if (fullVersion) {
 }
 
 export const defaultClientInformation = {
-  libVersion: '17.0',
+  libVersion: '21.0',
   appVersion: '5.18.0',
   codebaseVersion: '5.18.0',
   type: (!md.tablet() ? 'phone' : 'tablet'),
@@ -179,7 +179,7 @@ const getVersionsFromClientInformation = async () => {
   let clientInformation;
 
   // Fetch the client information.
-  if (useBrowserConnector()) {
+  if (!hasSGJavaScriptBridge()) {
     clientInformation = { value: { ...defaultClientInformation } };
   } else {
     clientInformation = await getWebStorageEntry({ name: 'clientInformation' });

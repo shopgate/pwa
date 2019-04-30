@@ -30,7 +30,7 @@ class GetAppPermissionsRequest extends AppPermissionsRequest {
    * @return {boolean}
    */
   validateCommandParams() {
-    // Empty commmand params are ok for this commmand.
+    // Empty command params are ok for this command.
     if (this.commandParams === null) {
       return true;
     }
