@@ -2,8 +2,9 @@ import Request from '../Request';
 import AppCommand from '../AppCommand';
 import event from '../Event';
 import requestBuffer from '../RequestBuffer';
-import { logger } from '../../helpers';
+import { logger, hasSGJavaScriptBridge } from '../../helpers';
 import logGroup from '../../helpers/logGroup';
+import { STATUS_GRANTED } from '../../constants/AppPermissions';
 
 /**
  * The AppPermissionsRequest class is be base class for app permission related request.
@@ -121,6 +122,31 @@ class AppPermissionsRequest extends Request {
     }
 
     logGroup(`AppPermissionsRequest %c${requestType}`, this.commandParams, '#adab00');
+  }
+
+  /**
+   * Dispatches the request.
+   * @return {Promise} A promise that is fulfilled when a response is received for this request.
+   */
+  dispatch() {
+    if (!hasSGJavaScriptBridge()) {
+      // Mock the response in browser environments, so that the permissions are always granted.
+      let { permissionIds } = this.commandParams;
+      const { permissions } = this.commandParams;
+
+      if (permissions) {
+        permissionIds = permissions.map(permission => permission.permissionId);
+      }
+
+      const result = permissionIds.map(permissionId => ({
+        permissionId,
+        status: STATUS_GRANTED,
+      }));
+
+      return Promise.resolve(result);
+    }
+
+    return super.dispatch();
   }
 }
 

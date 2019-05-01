@@ -8,6 +8,7 @@ import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
 import redirects from '@shopgate/pwa-common/collections/Redirects';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
+import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
 import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
 import {
@@ -44,12 +45,21 @@ export default function app(subscribe) {
 
     // Protect the scanner path with a camera permissions check.
     redirects.set(SCANNER_PATH, ({ action }) => new Promise((resolve) => {
-      const { params: { pathname } } = action;
       LoadingProvider.unsetLoading(getCurrentPathname(getState()));
+      const hasSupport = hasScannerSupport(getState());
+
+      if (!hasSupport) {
+        return resolve(null);
+      }
+
+      const { params: { pathname } } = action;
+
       dispatch(grantCameraPermissions())
         .then((granted) => {
           resolve(granted ? pathname : null);
         });
+
+      return true;
     }));
 
     productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, PRODUCT_SLIDER_IMAGE_FORMATS);

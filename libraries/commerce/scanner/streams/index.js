@@ -1,6 +1,7 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import {
+  START_SCANNER,
   SCANNER_STARTED,
   SCANNER_CANCELLED,
   SCANNER_FINISHED,
@@ -12,6 +13,9 @@ import {
 /** @type {Observable} */
 export const scannerDidEnter$ = routeDidEnter$
   .filter(({ action }) => action.route.pathname === SCANNER_PATH);
+
+export const startScanner$ = main$
+  .filter(({ action }) => action.type === START_SCANNER);
 
 /** @type {Observable} */
 export const scannerStarted$ = main$

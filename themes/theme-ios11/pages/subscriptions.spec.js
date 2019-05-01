@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 
+import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
@@ -21,16 +22,21 @@ jest.mock('@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions'
 
 const currentPath = '/some/path';
 
+const mockState = {
+  router: {
+    currentRoute: {
+      pathname: currentPath,
+    },
+  },
+  client: {
+    libVersion: SCANNER_MIN_APP_LIB_VERSION,
+  },
+};
+
 describe('Pages Subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn().mockImplementation(input => input);
-  const getState = jest.fn().mockReturnValue({
-    router: {
-      currentRoute: {
-        pathname: currentPath,
-      },
-    },
-  });
+  const getState = jest.fn().mockReturnValue(mockState);
 
   let setRedirectsSpy;
   let unsetLoadingSpy;
@@ -97,6 +103,23 @@ describe('Pages Subscriptions', () => {
         expect(unsetLoadingSpy).toHaveBeenCalledWith(currentPath);
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(grantCameraPermissions());
+      });
+
+      it('should not redirect to the scanner page, when the app has no scanner support', async () => {
+        const state = {
+          ...mockState,
+          client: {
+            libVersion: '10.0',
+          },
+        };
+
+        getState.mockReturnValueOnce(state);
+        getState.mockReturnValueOnce(state);
+
+        await expect(scannerHandler({ action })).resolves.toBe(null);
+        expect(unsetLoadingSpy).toHaveBeenCalledTimes(1);
+        expect(unsetLoadingSpy).toHaveBeenCalledWith(currentPath);
+        expect(dispatch).not.toHaveBeenCalled();
       });
     });
   });

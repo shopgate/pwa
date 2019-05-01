@@ -20,7 +20,7 @@ class AppCommand {
    * @param {boolean} log Whether the command will be logged.
    * @param {boolean} checkLibVersion Whether the lib version will be checked before dispatch.
    */
-  constructor(log = true, checkLibVersion = true) {
+  constructor(log = true, checkLibVersion = hasSGJavaScriptBridge()) {
     this.log = log;
     this.checkLibVersion = checkLibVersion;
     this.name = '';

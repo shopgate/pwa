@@ -49,7 +49,10 @@ class ClientInformation extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.isDeviceIdVisible !== nextState.isDeviceIdVisible;
+    return (
+      this.props.codebaseVersion !== nextProps.codebaseVersion ||
+      this.state.isDeviceIdVisible !== nextState.isDeviceIdVisible
+    );
   }
 
   /**

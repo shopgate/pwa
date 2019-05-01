@@ -1,3 +1,5 @@
+import { hasSGJavaScriptBridge } from '../../helpers';
+import { defaultClientInformation } from '../../helpers/version';
 import AppCommand from './index';
 
 // Mocks for the logger.
@@ -13,7 +15,7 @@ jest.mock('../../helpers', () => ({
     },
     log: () => {},
   },
-  hasSGJavaScriptBridge: () => false,
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(false),
   useBrowserConnector: () => false,
 }));
 
@@ -37,7 +39,7 @@ jest.mock('../../commands/webStorage', () => ({
   }),
 }));
 
-const defaultLibVersion = '17.0';
+const defaultLibVersion = defaultClientInformation.libVersion;
 
 /**
  * Updates the mocked client information.
@@ -58,19 +60,27 @@ describe('AppCommand', () => {
     mockedLoggerWarn.mockClear();
     mockedLogGroup.mockClear();
     mockedBridgeDispatch.mockClear();
-    instance = new AppCommand();
+    instance = new AppCommand(true, true);
   });
 
   describe('.constructor()', () => {
     it('should construct as expected without parameters', () => {
+      instance = new AppCommand();
+      expect(instance.log).toBe(true);
+      expect(instance.checkLibVersion).toBe(false);
+    });
+
+    it('should construct as expected when the SGJavaScriptBridge was detected', () => {
+      hasSGJavaScriptBridge.mockReturnValueOnce(true);
+      instance = new AppCommand();
       expect(instance.log).toBe(true);
       expect(instance.checkLibVersion).toBe(true);
     });
 
     it('should construct as expected when log parameter is false', () => {
-      instance = new AppCommand(false, false);
+      instance = new AppCommand(false, true);
       expect(instance.log).toBe(false);
-      expect(instance.checkLibVersion).toBe(false);
+      expect(instance.checkLibVersion).toBe(true);
     });
   });
 
@@ -235,8 +245,9 @@ describe('AppCommand', () => {
     });
 
     it('should not dispatch when the command is not supported by the app', async () => {
+      const libVersion = (Number.parseFloat(defaultLibVersion) + 1).toFixed(1);
       instance.setCommandName('sendPipelineRequest');
-      instance.setLibVersion('18.0');
+      instance.setLibVersion(libVersion);
       const result = await instance.dispatch();
       expect(result).toBe(false);
       expect(mockedBridgeDispatch).toHaveBeenCalledTimes(0);
@@ -245,7 +256,7 @@ describe('AppCommand', () => {
     });
 
     it('should dispatch when the command is not supported by the app but the check is off', async () => {
-      const libVersion = '18.0';
+      const libVersion = (Number.parseFloat(defaultLibVersion) + 1).toFixed(1);
       instance = new AppCommand(true, false);
       instance.setCommandName('sendPipelineRequest');
       instance.setLibVersion(libVersion);

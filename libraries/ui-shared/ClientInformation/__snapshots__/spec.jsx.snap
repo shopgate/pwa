@@ -75,3 +75,31 @@ exports[`<ClientInformation /> App and lib version, and device ID should show th
 `;
 
 exports[`<ClientInformation /> should not render if no data is available 1`] = `""`;
+
+exports[`<ClientInformation /> should re-render when data comes available 1`] = `
+<div
+  className={
+    Object {
+      "data-css-1y4o210": "",
+    }
+  }
+  onTouchStart={[Function]}
+>
+  <p
+    className={
+      Object {
+        "data-css-l9h00q": "",
+      }
+    }
+  >
+    App Version: 
+    1.2.3
+     (
+    7.8.9
+    )
+    <br />
+    Lib Version: 
+    4.5.6
+  </p>
+</div>
+`;

@@ -7,6 +7,7 @@ import handleBarCode from '../actions/handleBarCode';
 import handleQrCode from '../actions/handleQrCode';
 import { SCANNER_FORMATS_BARCODE, SCANNER_FORMATS_QR_CODE } from '../constants';
 import {
+  startScanner$,
   scannerFinishedBarCode$,
   scannerFinishedQrCode$,
 } from '../streams';
@@ -25,6 +26,10 @@ export default (subscribe) => {
       .setHandler(({ scope, payload: { format, code: payload } = {} }) => {
         dispatch(scannerFinished(scope, format, payload));
       }));
+  });
+
+  subscribe(startScanner$, () => {
+    Scanner.start();
   });
 
   // Default scope stream
