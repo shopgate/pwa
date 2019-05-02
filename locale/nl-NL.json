@@ -56,7 +56,7 @@
   "product": {
     "description_heading": "Over",
     "pick_an_attribute": "Kies een {0}",
-    "tax_disclaimer": "* Incl. BTW plus verzendkosten",
+    "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
     "no_more_found": "The item \"{name}\" is no longer available."
   },
   "category": {

@@ -55,7 +55,7 @@
   "product": {
     "description_heading": "About",
     "pick_an_attribute": "Pick a {0}",
-    "tax_disclaimer": "* Incl. VAT plus shipping costs",
+    "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "no_more_found": "The item \"{name}\" is no longer available."
   },
   "category": {
