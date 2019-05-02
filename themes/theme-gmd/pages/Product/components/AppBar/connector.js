@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductName } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductLongName } from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,7 +8,7 @@ import { getProductName } from '@shopgate/pwa-common-commerce/product/selectors/
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  title: getProductName(state, props),
+  title: getProductLongName(state, props),
 });
 
 export default connect(mapStateToProps);

@@ -185,20 +185,67 @@ export const getProduct = createSelector(
 );
 
 /**
+ * Retrieves the product name from the current route.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductRouteName = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.state || !route.state.title) {
+      return null;
+    }
+
+    return route.state.title;
+  }
+);
+
+/**
  * Retrieves the product name.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {string|null}
  */
 export const getProductName = createSelector(
-  getCurrentRoute,
+  getProductRouteName,
   getProduct,
-  (route, product) => {
-    if (route && route.state && route.state.title) {
-      return route.state.title;
+  (routeName, product) => {
+    if (routeName) {
+      return routeName;
     }
 
-    return product ? product.name : null;
+    if (!product) {
+      return null;
+    }
+
+    return product.name;
+  }
+);
+
+/**
+ * Retrieves the product long name.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductLongName = createSelector(
+  getProductRouteName,
+  getProduct,
+  (routeName, product) => {
+    if (routeName) {
+      return routeName;
+    }
+
+    if (!product) {
+      return null;
+    }
+
+    if (!product.longName) {
+      return product.name;
+    }
+
+    return product.longName;
   }
 );
 
