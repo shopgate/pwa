@@ -56,7 +56,7 @@
     "description_heading": "A riguardo",
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
-    "no_more_found": "The item \"{name}\" is no longer available."
+    "no_more_found": "L'articolo: \"{name}\" non è più disponibile."
   },
   "category": {
     "error": {
