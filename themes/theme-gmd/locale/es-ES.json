@@ -55,7 +55,8 @@
   "product": {
     "description_heading": "Sobre",
     "pick_an_attribute": "Elija uno {0}",
-    "tax_disclaimer": "* Incl. IVA más gastos de envío si procede"
+    "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
+    "no_more_found": "El artículo: \"{name}\" ya no está disponible."
   },
   "category": {
     "error": {

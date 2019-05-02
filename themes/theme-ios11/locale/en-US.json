@@ -60,7 +60,8 @@
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
     "add_to_cart": "Add to cart",
-    "go_to_cart": "Go to cart"
+    "go_to_cart": "Go to cart",
+    "no_more_found": "The item \"{name}\" is no longer available."
   },
   "category": {
     "error": {

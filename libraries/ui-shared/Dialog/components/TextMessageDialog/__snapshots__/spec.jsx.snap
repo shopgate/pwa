@@ -45,3 +45,20 @@ exports[`<TextMessageDialog /> should render with title and message 1`] = `
   />
 </BasicDialog>
 `;
+
+exports[`<TextMessageDialog /> should render with title, message and messageParams 1`] = `
+<BasicDialog
+  actions={Array []}
+  title="This is the title."
+>
+  <Translate
+    className=""
+    params={
+      Object {
+        "name": "Placeholder",
+      }
+    }
+    string="Message with {name}"
+  />
+</BasicDialog>
+`;

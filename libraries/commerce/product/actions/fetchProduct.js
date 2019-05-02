@@ -26,7 +26,7 @@ const fetchProduct = (productId, forceFetch = false) => (dispatch, getState) => 
     return;
   }
 
-  dispatch(requestProduct(productId));
+  dispatch(requestProduct(productId, forceFetch));
 
   new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT)
     .setInput({ productId })
@@ -36,7 +36,7 @@ const fetchProduct = (productId, forceFetch = false) => (dispatch, getState) => 
     })
     .catch((error) => {
       logger.error(error);
-      dispatch(errorProduct(productId));
+      dispatch(errorProduct(productId, error.code));
     });
 };
 

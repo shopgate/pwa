@@ -81,6 +81,7 @@ exports[`<Dialog /> should render without props 1`] = `
   <TextMessageDialog
     actions={Array []}
     message="msg"
+    params={Object {}}
     title={null}
   />
 </Modal>

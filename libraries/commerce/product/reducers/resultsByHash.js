@@ -1,10 +1,12 @@
 import uniq from 'lodash/uniq';
+import { ENOTFOUND } from '@shopgate/pwa-core';
 import {
   PRODUCT_LIFETIME,
   REQUEST_PRODUCTS,
   RECEIVE_PRODUCTS,
   ERROR_PRODUCTS,
   EXPIRE_PRODUCT_BY_ID,
+  ERROR_PRODUCT,
 } from '../constants';
 
 /**
@@ -49,6 +51,23 @@ export default function resultsByHash(state = {}, action) {
         },
       };
     }
+
+    /* Remove not found product from hash results */
+    case ERROR_PRODUCT:
+      if (action.errorCode === ENOTFOUND) {
+        return Object.keys(state).reduce((currentState, hash) => {
+          if (currentState[hash].products
+            && currentState[hash].products.includes(action.productId)
+          ) {
+            // eslint-disable-next-line no-param-reassign
+            currentState[hash].products = currentState[hash].products.filter((
+              pId => pId !== action.productId
+            ));
+          }
+          return currentState;
+        }, { ...state });
+      }
+      return state;
 
     case EXPIRE_PRODUCT_BY_ID:
       return Object.keys(state).reduce((currentState, hash) => {
