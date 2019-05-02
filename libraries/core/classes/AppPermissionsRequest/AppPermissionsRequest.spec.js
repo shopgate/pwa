@@ -1,3 +1,10 @@
+import { hasSGJavaScriptBridge } from '../../helpers';
+import {
+  PERMISSION_ID_CAMERA,
+  PERMISSION_ID_LOCATION,
+  STATUS_GRANTED,
+} from '../../constants/AppPermissions';
+import Request from '../Request';
 import AppPermissionsRequest from './AppPermissionsRequest';
 /* eslint-disable import/named */
 import {
@@ -42,6 +49,7 @@ jest.mock('../../helpers', () => ({
       mockedLoggerError(...args);
     },
   },
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
 }));
 
 const mockedLogGroup = jest.fn();
@@ -49,6 +57,8 @@ const mockedLogGroup = jest.fn();
 jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
   mockedLogGroup(...args);
 });
+
+const parentDispatchSpy = jest.spyOn(Request.prototype, 'dispatch');
 
 const commandName = 'appCommand';
 const eventName = 'appEvent';
@@ -213,6 +223,48 @@ describe('AppPermissionsRequest', () => {
           expect(mockedLogGroup).toHaveBeenCalledTimes(0);
           done();
         });
+    });
+  });
+
+  describe('.dispatch()', () => {
+    /* eslint-disable extra-rules/no-single-line-objects */
+    const expected = [
+      { permissionId: PERMISSION_ID_CAMERA, status: STATUS_GRANTED },
+      { permissionId: PERMISSION_ID_LOCATION, status: STATUS_GRANTED },
+    ];
+    /* eslint-enable extra-rules/no-single-line-objects */
+
+    it('should call the parent dispatch when a SGJavaScriptBridge is present', () => {
+      instance.validateCommandParams = () => true;
+
+      instance.dispatch();
+      expect(parentDispatchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should mock the response for a getAppPermissions request when no SGJavaScriptBridge is present', async () => {
+      hasSGJavaScriptBridge.mockReturnValueOnce(false);
+      const params = { permissionIds: [PERMISSION_ID_CAMERA, PERMISSION_ID_LOCATION] };
+      instance.setCommandParams(params);
+
+      const response = await instance.dispatch();
+      expect(response).toEqual(expected);
+      expect(parentDispatchSpy).not.toHaveBeenCalled();
+    });
+
+    it('should mock the response for a requestAppPermissions request when no SGJavaScriptBridge is present', async () => {
+      hasSGJavaScriptBridge.mockReturnValueOnce(false);
+      const params = {
+        permissions: [{
+          permissionId: PERMISSION_ID_CAMERA,
+        }, {
+          permissionId: PERMISSION_ID_LOCATION,
+        }],
+      };
+      instance.setCommandParams(params);
+
+      const response = await instance.dispatch();
+      expect(response).toEqual(expected);
+      expect(parentDispatchSpy).not.toHaveBeenCalled();
     });
   });
 });

@@ -10,15 +10,17 @@ import connect from './connector';
 class ScannerContainer extends PureComponent {
   static propTypes = {
     hasScannerSupport: PropTypes.bool.isRequired,
-    scannerDidClose: PropTypes.func.isRequired,
-    scannerDidOpen: PropTypes.func.isRequired,
     scope: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     children: PropTypes.node,
+    scannerDidClose: PropTypes.func,
+    scannerDidOpen: PropTypes.func,
   }
 
   static defaultProps = {
     children: null,
+    scannerDidClose: () => {},
+    scannerDidOpen: () => {},
   }
 
   /**

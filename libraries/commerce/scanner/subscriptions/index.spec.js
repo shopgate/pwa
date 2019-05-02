@@ -6,10 +6,12 @@ import { appDidStart$ } from '@shopgate/pwa-common/streams';
 import scannerFinished from '../action-creators/scannerFinished';
 import handleBarCode from '../actions/handleBarCode';
 import handleQrCode from '../actions/handleQrCode';
+import { startScanner$ } from '../streams';
 import subscriptions, { handledFormats } from './index';
 
 jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
   addListener: jest.fn(),
+  start: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-common/streams/app', () => ({
   appDidStart$: jest.fn(),
@@ -34,6 +36,8 @@ describe('scanner subscriptions', () => {
 
   let appDidStartStream$;
   let appDidStartCallback;
+  let startScannerStream$;
+  let startScannerCallback;
   // eslint-disable-next-line no-unused-vars
   let scanFinishedBarCodeStream$;
   let scanFinishedBarCodeCallback;
@@ -49,13 +53,14 @@ describe('scanner subscriptions', () => {
     subscriptions(subscribe);
     [
       [appDidStartStream$, appDidStartCallback],
+      [startScannerStream$, startScannerCallback],
       [scanFinishedBarCodeStream$, scanFinishedBarCodeCallback],
       [scanFinishedQrCodeStream$, scanFinishedQrCodeCallback],
     ] = subscribe.mock.calls;
   });
 
-  it('should init 3 subscriptions', () => {
-    expect(subscribe).toHaveBeenCalledTimes(3);
+  it('should init 4 subscriptions', () => {
+    expect(subscribe).toHaveBeenCalledTimes(4);
   });
 
   describe('appDidStart subscription', () => {
@@ -94,6 +99,18 @@ describe('scanner subscriptions', () => {
       await listenerActual.notify(createMockedEvent('unknown'));
 
       expect(scannerFinished).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('scannerStart subscription', () => {
+    it('should init scannerStart subscription', () => {
+      expect(startScannerStream$).toEqual(startScanner$);
+      expect(startScannerCallback).toBeInstanceOf(Function);
+    });
+
+    it('should call the start method of the scanner instance', () => {
+      startScannerCallback();
+      expect(Scanner.start).toHaveBeenCalledTimes(1);
     });
   });
 

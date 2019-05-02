@@ -3,6 +3,7 @@ import { mainSubject } from '@shopgate/pwa-common/store/middelwares/streams';
 import { ROUTE_DID_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   scannerDidEnter$,
+  startScanner$,
   scannerStarted$,
   scannerCancelled$,
   scannerFinished$,
@@ -10,6 +11,7 @@ import {
   scannerFinishedQrCode$,
 } from './index';
 import {
+  START_SCANNER,
   SCANNER_CANCELLED,
   SCANNER_FINISHED,
   SCANNER_STARTED,
@@ -28,6 +30,12 @@ describe('scanner streams', () => {
   it('should call subscriber when the scanner page was opened', () => {
     scannerDidEnter$.subscribe(subscriber);
     mainSubject.next({ action: { type: ROUTE_DID_ENTER, route: { pathname: SCANNER_PATH } } });
+    expect(subscriber).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call subscriber on start scanner event', () => {
+    startScanner$.subscribe(subscriber);
+    mainSubject.next({ action: { type: START_SCANNER } });
     expect(subscriber).toHaveBeenCalledTimes(1);
   });
 

@@ -11,7 +11,7 @@ import {
   defaultClientInformation,
 } from './version';
 
-import { useBrowserConnector } from './index';
+import { hasSGJavaScriptBridge } from './index';
 
 let mockedClientInformation = null;
 
@@ -33,7 +33,7 @@ jest.mock('./index', () => ({
       mockedErrorLogger(...args);
     },
   },
-  useBrowserConnector: jest.fn(),
+  hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
 }));
 
 /**
@@ -58,7 +58,6 @@ describe('Version helper', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockedWebStorageResponse.mockClear();
-    useBrowserConnector.mockReturnValue(false);
     setClientInformation();
     clearVersionCache();
   });
@@ -264,8 +263,8 @@ describe('Version helper', () => {
       expect(getWebStorageEntry).toHaveBeenCalledTimes(1);
     });
 
-    it('should use the default client information when the browser connector is active', async () => {
-      useBrowserConnector.mockReturnValueOnce(true);
+    it('should use the default client information when no SGJavaScriptBridge is available', async () => {
+      hasSGJavaScriptBridge.mockReturnValueOnce(false);
       const result = await isLibVersion(defaultClientInformation.libVersion);
       expect(result).toBe(true);
       expect(getWebStorageEntry).not.toHaveBeenCalled();
