@@ -84,7 +84,7 @@ exports[`More should render for logged in user 1`] = `
                       ellipsis="..."
                       tagName="div"
                       truncationChar="…"
-                      useNativeClamp={true}
+                      useNativeClamp={false}
                     >
                       <div
                         className=""
@@ -172,7 +172,7 @@ exports[`More should render for logged in user 1`] = `
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
-                    useNativeClamp={true}
+                    useNativeClamp={false}
                   >
                     <div
                       className=""
@@ -1150,7 +1150,7 @@ exports[`More should render for logged in user 1`] = `
                               ellipsis="..."
                               tagName="div"
                               truncationChar="…"
-                              useNativeClamp={true}
+                              useNativeClamp={false}
                             >
                               <div
                                 className=""
@@ -1473,7 +1473,7 @@ exports[`More should render for logged out user 1`] = `
                       ellipsis="..."
                       tagName="div"
                       truncationChar="…"
-                      useNativeClamp={true}
+                      useNativeClamp={false}
                     >
                       <div
                         className=""
@@ -1757,7 +1757,7 @@ exports[`More should render for logged out user 1`] = `
                     ellipsis="..."
                     tagName="div"
                     truncationChar="…"
-                    useNativeClamp={true}
+                    useNativeClamp={false}
                   >
                     <div
                       className=""

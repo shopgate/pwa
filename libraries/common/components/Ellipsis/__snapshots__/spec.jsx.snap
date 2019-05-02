@@ -7,7 +7,7 @@ exports[`<Ellipsis /> should render 1`] = `
   ellipsis="..."
   tagName="div"
   truncationChar="…"
-  useNativeClamp={true}
+  useNativeClamp={false}
 >
   Some very long text that should be cut off by this ellipsis component.
 </Dotdotdot>

@@ -38,7 +38,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
               ellipsis="..."
               tagName="div"
               truncationChar="…"
-              useNativeClamp={true}
+              useNativeClamp={false}
             >
               <div
                 className=""
@@ -129,7 +129,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
               ellipsis="..."
               tagName="div"
               truncationChar="…"
-              useNativeClamp={true}
+              useNativeClamp={false}
             >
               <div
                 className=""
