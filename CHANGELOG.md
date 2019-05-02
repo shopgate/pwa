@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.4.1](https://github.com/shopgate/pwa/compare/v6.4.0...v6.4.1) (2019-04-24)
+
+#### :bug: Bug Fix
+* [#626](https://github.com/shopgate/pwa/pull/626) Fixed an issue with GET parameters inside of coupon deeplinks ([@fkloes](https://github.com/fkloes))
+
 ## [v6.4.0](https://github.com/shopgate/pwa/compare/v6.3.2...v6.4.0) (2019-04-10)
 
 #### :rocket: Enhancement
