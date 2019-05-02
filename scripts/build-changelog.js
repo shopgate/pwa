@@ -232,6 +232,12 @@ async function run() {
         '# Changelog\n',
         `# Changelog\n\n${latestChanges.trim()}\n`
       );
+      if (tagTo !== 'HEAD') {
+        newChangelog = newChangelog.replace(
+          `## ${tagTo} `,
+          `## ${config.nextVersion} `
+        );
+      }
     }
 
     // Print the output for the bash/makefile to read
