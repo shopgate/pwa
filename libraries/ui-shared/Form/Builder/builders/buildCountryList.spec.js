@@ -31,4 +31,11 @@ describe('buildCountryList', () => {
     };
     expect(buildCountryList(countryElement, { '': '' })).toEqual(expected);
   });
+
+  it('should ignore unknown countries', () => {
+    const expected = {
+      DE: 'Germany',
+    };
+    expect(buildCountryList({ countries: ['DE', 'XX'] })).toEqual(expected);
+  });
 });

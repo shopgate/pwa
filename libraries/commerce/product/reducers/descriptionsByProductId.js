@@ -40,6 +40,7 @@ export default function descriptionsByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
     default:
       return state;
   }

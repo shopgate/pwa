@@ -38,6 +38,7 @@ export default function imagesByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
     default:
       return state;
   }

@@ -20,6 +20,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       active={null}
       addToCart={[Function]}
       favoritesOnce={false}
+      hasVariants={false}
       isBaseProduct={true}
       isOrderable={true}
       onRippleComplete={[Function]}

@@ -493,3 +493,21 @@ export const isBaseProduct = createSelector(
     );
   }
 );
+
+/**
+ * Indicates whether a product has variants
+ * @param {Object} state The current application state.
+ * @param {string} productId A product id.
+ * @return {boolean|null}
+ */
+export const hasProductVariants = createSelector(
+  getProductById,
+  (product) => {
+    if (!product.productData || product.isFetching) {
+      return null;
+    }
+
+    const { productData: { flags: { hasVariants } = {} } } = product;
+    return hasVariants;
+  }
+);
