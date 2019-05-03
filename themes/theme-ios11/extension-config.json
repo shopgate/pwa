@@ -209,6 +209,7 @@
               "cta": "#fa5400",
               "ctaContrast": "#fff",
               "darkGray": "#eaeaea",
+              "focus": "#fa5400",
               "shade3": "#9a9a9a",
               "shade4": "#b5b5b5",
               "shade5": "#ccc",

@@ -29,6 +29,11 @@ export function getThemeConfig(appConfig) {
     colors: {
       ...globals.colors,
       ...colors,
+      /**
+       * The SDK creates some colors dynamically and populates them via the THEME_CONFIG.
+       * To avoid breaking changes, those colors also needs to be added for now.
+       */
+      ...oldTheme.colors,
     },
     variables: {
       ...(oldTheme.variables || {}),
