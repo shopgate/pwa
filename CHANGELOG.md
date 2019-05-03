@@ -1,12 +1,11 @@
 # Changelog
 
+## [v6.4.1](https://github.com/shopgate/pwa/compare/v6.4.0...v6.4.1) (2019-04-24)
 
+#### :bug: Bug Fix
+* [#626](https://github.com/shopgate/pwa/pull/626) Fixed an issue with GET parameters inside of coupon deeplinks ([@fkloes](https://github.com/fkloes))
 
-
-
-
-
-## [v6.4.0](https://github.com/shopgate/theme-gmd/compare/v6.3.2...v6.4.0) (2019-04-10)
+## [v6.4.0](https://github.com/shopgate/pwa/compare/v6.3.2...v6.4.0) (2019-04-10)
 
 #### :rocket: Enhancement
 * [#606](https://github.com/shopgate/pwa/pull/606) Extended the scanner event listeners to register for specific payload formats ([@fkloes](https://github.com/fkloes))
@@ -207,10 +206,10 @@
 * [#429](https://github.com/shopgate/pwa/pull/429) Changed the ViewContent to receive the visible flag as a prop ([@richardgorman](https://github.com/richardgorman))
 
 
-## [v6.0.0](https://github.com/shopgate/pwa/compare/v5.11.0...v6.0.0) (2018-12-04)
+## [v6.0.0](https://github.com/shopgate/pwa/tree/v6.0.0) (2018-12-04)
 
 #### :rocket: Enhancement
-* [#421](https://github.com/shopgate/pwa/pull/421) Add webcheckout register redirect action  ([@alexbridge](https://github.com/alexbridge))
+* [#421](https://github.com/shopgate/pwa/pull/421) Add webcheckout register redirect action ([@alexbridge](https://github.com/alexbridge))
 * [#422](https://github.com/shopgate/pwa/pull/422) Toast messages are hidden ([@richardgorman](https://github.com/richardgorman))
 * [#417](https://github.com/shopgate/pwa/pull/417) Normalise SnackBar usage ([@richardgorman](https://github.com/richardgorman))
 * [#414](https://github.com/shopgate/pwa/pull/414) Correct add to cart bar styles ([@richardgorman](https://github.com/richardgorman))
@@ -349,3 +348,9 @@
 * [#244](https://github.com/shopgate/pwa/pull/244) PWA-875: Implement dynamic redirects ([@fkloes](https://github.com/fkloes))
 * [#230](https://github.com/shopgate/pwa/pull/230) PWA-813: Improved product related selectors ([@fkloes](https://github.com/fkloes))
 * [#207](https://github.com/shopgate/pwa/pull/207) PWA-683 fix favorites route ([@richardgorman](https://github.com/richardgorman))
+
+
+## [Changelog for versions before v6.0.0](https://github.com/shopgate/pwa/blob/v5.X/CHANGELOG.md)
+
+
+## [Changelog for versions before v5.0.0](https://github.com/shopgate/theme-gmd/blob/v4.3.0/CHANGELOG.md)

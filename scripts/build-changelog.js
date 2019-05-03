@@ -18,9 +18,16 @@
  * This script is supposed to be called within the 'Makefile'.
  *
  * To use this script you need to provide a github api token via env variable "GITHUB_AUTH".
+ * An optional "tagFrom" option can be set to release minor and patch versions for
+ * previous major versions.
+ * An optional "tagTo" option can be set to filter results up to the given tag name,
+ * which must exist!
+ * The optional appendPreviousChangelog=true (or false) defines if a full changelog is generated
+ * or not.
  *
  * It can also be called like this (from monorepo root directory):
- * $     GITHUB_AUTH=123abc ./scripts/build-changelog.js --release-name=vX.Y.Z > CHANGELOG.md.tmp
+ * $     GITHUB_AUTH=123abc ./scripts/build-changelog.js --release-name=vX.Y.Z \
+ * $         [--tagFrom=vX] [--tagTo=vX.Y.Z] --appendPreviousChangelog=true > CHANGELOG.md.tmp
  * $     && mv CHANGELOG.md.tmp CHANGELOG.md;
  *
  * -------------------------------------------------------------------------------------------------
@@ -70,6 +77,15 @@ const logger = require('./logger');
 // argv param name that should show up as the changelog version title
 const releaseNameParam = 'release-name';
 
+// filter the "prev" version list by a given version number without 'v' (or part of it)
+let tagFrom = 'v'; // this can be a fully fixed tag name like "v5.11.0"
+
+// upper version boundary up to which the changelog should
+let tagTo = 'HEAD'; // Defaults to the latest commit of the current branch (usually release branch).
+
+// option to avoid appending of the previous log
+let appendPreviousChangelog = true;
+
 /**
  * Parses a version into its components without prerelease information.
  * @param {string} v The version to be parsed
@@ -99,6 +115,18 @@ if (!argv[releaseNameParam] || argv[releaseNameParam] === 0) {
   const err = new Error(`Required param "${releaseNameParam}" was not specified!`);
   logger.error(err);
   throw err;
+}
+
+if (argv.tagFrom && argv.tagFrom !== 0) {
+  ({ tagFrom } = argv);
+}
+
+if (argv.tagTo && argv.tagTo !== 0) {
+  ({ tagTo } = argv);
+}
+
+if (argv.appendPreviousChangelog === 'false') {
+  appendPreviousChangelog = false;
 }
 
 /**
@@ -161,8 +189,9 @@ class Changelog extends LernaChangelog {
 async function run() {
   try {
     // Find last release: Get tags, filter out wrong tags and pre-releases, then take last one.
-    const { stdout } = await exec("git tag | grep 'v' | grep -Ev '-' | tail -1");
-    const prevVersion = stdout.trim();
+    const { stdout } = // get last filtered tag, sorted by version numbers in ascending order
+      await exec(`git tag | grep '${tagFrom}' | grep -Ev '-' | sort -V | tail -1`);
+    const prevTag = stdout.trim();
     const nextVersion = parseVersion(argv[releaseNameParam]);
 
     // Normalize the given "release-name" for the tile (strip out pre-release information).
@@ -176,7 +205,7 @@ async function run() {
     // This causes the "Unreleased" title to be replaced by a version that links to a github diff.
     config.nextVersion = `[${
       nextVersionString
-    }](https://github.com/shopgate/theme-gmd/compare/${prevVersion}...${nextVersionString})`;
+    }](https://github.com/shopgate/pwa/compare/${prevTag}...${nextVersionString})`;
 
     // Skip creation if the "nextVersion" title is already present.
     if (changelogContent.includes(config.nextVersion)) {
@@ -189,15 +218,27 @@ async function run() {
 
     // The "release-name" param is not supposed to be used here. Instead use "HEAD".
     const latestChanges = await changelog.createMarkdown({
-      tagFrom: prevVersion,
-      tagTo: 'HEAD', // Latest commit of the current branch, which is usually the release branch.
+      tagFrom: prevTag,
+      tagTo,
     });
 
     // Add changes to the top of the main changelog
-    const newChangelog = changelogContent.replace(
-      '# Changelog\n',
-      `# Changelog\n\n${latestChanges.trim()}\n\n`
-    );
+    let newChangelog = '# Changelog\n';
+    if (appendPreviousChangelog) {
+      newChangelog = changelogContent;
+    }
+    if (latestChanges.trim().length > 0) {
+      newChangelog = newChangelog.replace(
+        '# Changelog\n',
+        `# Changelog\n\n${latestChanges.trim()}\n`
+      );
+      if (tagTo !== 'HEAD') {
+        newChangelog = newChangelog.replace(
+          `## ${tagTo} `,
+          `## ${config.nextVersion} `
+        );
+      }
+    }
 
     // Print the output for the bash/makefile to read
     logger.log(newChangelog);
