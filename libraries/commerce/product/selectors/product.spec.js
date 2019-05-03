@@ -32,6 +32,7 @@ import {
   isVariantSelected,
   getProduct,
   getProductName,
+  getProductLongName,
   getProductRating,
   getProductManufacturer,
   getProductStock,
@@ -306,6 +307,25 @@ describe('Product selectors', () => {
         it('should return the property as expected', () => {
           expect(selector(mockedState, { productId })).toEqual(productData[property]);
         });
+      });
+    });
+
+    describe('getProductLongName()', () => {
+      it('should return the property as expected', () => {
+        const id = 'product_5';
+        const mockProductData = mockedProductsById[id].productData;
+        expect(getProductLongName(mockedState, { productId: id }))
+          .toEqual(mockProductData.longName);
+      });
+
+      it('should return the short name if long is not available', () => {
+        const id = 'product_7';
+        const mockProductData = mockedProductsById[id].productData;
+        expect(getProductLongName(mockedState, { productId: id })).toEqual(mockProductData.name);
+      });
+
+      it('should return null if no data is available', () => {
+        expect(getProductLongName(mockedState, { productId: 'product_4' })).toEqual(null);
       });
     });
 
