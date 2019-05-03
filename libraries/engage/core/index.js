@@ -223,6 +223,8 @@ export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
 export { useCurrentProduct } from './hooks/useCurrentProduct';
 export { useNavigation } from './hooks/useNavigation';
+export { useConfig } from './hooks/useConfig';
+export { usePageConfig } from './hooks/usePageConfig';
 
 // --------------- HOCs --------------- //
 
@@ -230,3 +232,7 @@ export { withTheme } from './hocs/withTheme';
 export { withRoute } from './hocs/withRoute';
 export { withCurrentProduct } from './hocs/withCurrentProduct';
 export { withNavigation } from './hocs/withNavigation';
+
+// --------------- CONFIG --------------- //
+export { ConfigParser } from './config/ConfigParser';
+export { ConfigContext } from './config/ConfigContext';

@@ -2,7 +2,8 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { ConfigContext, ConfigParser } from '@shopgate/engage/core';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
@@ -43,6 +44,7 @@ import * as routes from './routes';
 import themeApi from '../themeApi';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
+const themeConfigParse = new ConfigParser(themeConfig).parse();
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -50,47 +52,49 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  */
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
-    <NavigationHandler>
-      <AppContext.Provider value={{ ...appConfig }}>
-        <ThemeContext.Provider value={themeApi}>
-          <LoadingProvider>
-            <ToastProvider>
-              <Portal name={APP_GLOBALS} />
-              <Viewport>
-                <ModalContainer component={Dialog} />
-                <Toaster render={props => <SnackBar {...props} />} />
-                <Router history={history}>
-                  <Route pattern={INDEX_PATH} component={routes.StartPage} />
-                  <Route pattern={PAGE_PATTERN} component={routes.Page} />
-                  <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} cache />
-                  <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
-                  <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                  <Route pattern={ITEM_PATTERN} component={routes.Product} />
-                  <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
-                  <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
-                  <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
-                  <Route pattern={CART_PATH} component={routes.Cart} />
-                  <Route pattern={SCANNER_PATH} component={routes.Scanner} />
-                  {
-                    appConfig.hasFavorites
-                    && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
-                  }
-                  <Route pattern={LOGIN_PATH} component={routes.Login} />
-                  <Route pattern={SEARCH_PATTERN} component={routes.Search} cache />
-                  <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
-                  {React.Children.map(routePortals, Component => Component)}
-                </Router>
-                {isDev && (
-                  <Helmet>
-                    <link href={devFontsUrl} rel="stylesheet" />
-                  </Helmet>
-                )}
-              </Viewport>
-            </ToastProvider>
-          </LoadingProvider>
-        </ThemeContext.Provider>
-      </AppContext.Provider>
-    </NavigationHandler>
+    <ConfigContext.Provider value={themeConfigParse}>
+      <NavigationHandler>
+        <AppContext.Provider value={{ ...appConfig }}>
+          <ThemeContext.Provider value={themeApi}>
+            <LoadingProvider>
+              <ToastProvider>
+                <Portal name={APP_GLOBALS} />
+                <Viewport>
+                  <ModalContainer component={Dialog} />
+                  <Toaster render={props => <SnackBar {...props} />} />
+                  <Router history={history}>
+                    <Route pattern={INDEX_PATH} component={routes.StartPage} />
+                    <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                    <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} cache />
+                    <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
+                    <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
+                    <Route pattern={ITEM_PATTERN} component={routes.Product} />
+                    <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
+                    <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
+                    <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
+                    <Route pattern={CART_PATH} component={routes.Cart} />
+                    <Route pattern={SCANNER_PATH} component={routes.Scanner} />
+                    {
+                      appConfig.hasFavorites
+                      && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
+                    }
+                    <Route pattern={LOGIN_PATH} component={routes.Login} />
+                    <Route pattern={SEARCH_PATTERN} component={routes.Search} cache />
+                    <Route pattern={SEARCH_FILTER_PATTERN} component={routes.Filter} />
+                    {React.Children.map(routePortals, Component => Component)}
+                  </Router>
+                  {isDev && (
+                    <Helmet>
+                      <link href={devFontsUrl} rel="stylesheet" />
+                    </Helmet>
+                  )}
+                </Viewport>
+              </ToastProvider>
+            </LoadingProvider>
+          </ThemeContext.Provider>
+        </AppContext.Provider>
+      </NavigationHandler>
+    </ConfigContext.Provider>
   </App >
 );
 
