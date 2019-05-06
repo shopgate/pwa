@@ -13,6 +13,8 @@ import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
 import CartItemsCount from './components/CartItemsCount';
+import QuantityPicker from './components/QuantityPicker';
+import { ProductContext } from '../../context';
 import connect from './connector';
 import styles from './style';
 
@@ -20,6 +22,7 @@ import styles from './style';
  * The AddToCartBar component.
  */
 class AddToCartBar extends Component {
+  static contextType = ProductContext;
   static propTypes = {
     conditioner: PropTypes.shape().isRequired,
     options: PropTypes.shape().isRequired,
@@ -77,15 +80,21 @@ class AddToCartBar extends Component {
     this.setState({ visible: false });
   }
 
-  handleIncrement = () => {
+  /**
+   * @param {number} count count
+   */
+  handleIncrement = (count) => {
     this.setState(prevState => ({
-      added: (prevState.added + 1),
+      added: (prevState.added + count),
     }));
   }
 
-  handleDecrement = () => {
+  /**
+   * @param {number} count count
+   */
+  handleDecrement = (count) => {
     this.setState(prevState => ({
-      added: (prevState.added > 0 ? prevState.added - 1 : 0),
+      added: (prevState.added > 0 ? prevState.added - count : 0),
     }));
   }
 
@@ -117,8 +126,10 @@ class AddToCartBar extends Component {
       this.props.addToCart({
         productId: this.props.productId,
         options: this.props.options,
-        quantity: 1,
+        quantity: this.context.quantity,
       });
+
+      setTimeout(this.resetClicked, 250);
     });
   }
 
@@ -163,6 +174,7 @@ class AddToCartBar extends Component {
                     handleAddToCart={this.handleAddToCart}
                     onReset={this.resetClicked}
                   />
+                  <QuantityPicker />
                 </div>
               </div>
             </div>

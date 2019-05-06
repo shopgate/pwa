@@ -8,18 +8,22 @@ import {
 
 /**
  * Dispatches the INCREMENT_ACTION_COUNT action.
+ * @param {number} count count
  * @return {Object}
  */
-export const incrementActionCount = () => ({
+export const incrementActionCount = count => ({
   type: INCREMENT_ACTION_COUNT,
+  count,
 });
 
 /**
  * Dispatches the DECREMENT_ACTION_COUNT action.
+ * @param {number} count count
  * @return {Object}
  */
-export const decrementActionCount = () => ({
+export const decrementActionCount = count => ({
   type: DECREMENT_ACTION_COUNT,
+  count,
 });
 
 /**
