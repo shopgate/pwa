@@ -56,7 +56,8 @@
     "description_heading": "Beschreibung",
     "pick_an_attribute": "{0} auswählen",
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
-    "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar."
+    "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
+    "quantity": "Menge"
   },
   "category": {
     "error": {
