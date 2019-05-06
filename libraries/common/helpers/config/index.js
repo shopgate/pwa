@@ -32,6 +32,10 @@ const defaultAppConfig = {
   cart: {},
   scanner: {},
   favorites: {},
+  product: {
+    minOrderQuantity: 1,
+    maxOrderQuantity: 1,
+  },
 };
 
 export const themeName = process.env.THEME || 'theme';

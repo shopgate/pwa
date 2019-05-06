@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FloatingActionButton } from '@shopgate/pwa-ui-material';
 import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { ProductContext } from '../../../../../../context';
 import Icon from './components/Icon';
 import connect from './connector';
 import inject from './injector';
@@ -14,6 +15,7 @@ const { colors } = themeConfig;
  * The CartButton component.
  */
 class CartButton extends Component {
+  static contextType = ProductContext;
   static propTypes = {
     addToCart: PropTypes.func.isRequired,
     conditioner: PropTypes.shape().isRequired,
@@ -93,7 +95,7 @@ class CartButton extends Component {
       this.props.addToCart({
         productId: this.props.productId,
         options: this.props.options,
-        quantity: 1,
+        quantity: this.context.quantity,
       });
     });
   }

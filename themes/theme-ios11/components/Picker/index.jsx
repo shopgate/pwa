@@ -16,6 +16,8 @@ class Picker extends Component {
     buttonComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     buttonProps: PropTypes.shape(),
     clickDelay: PropTypes.number,
+    hasButton: PropTypes.bool,
+    sheetProps: PropTypes.shape(),
   };
 
   static defaultProps = {
@@ -26,6 +28,8 @@ class Picker extends Component {
      * to let animations complete first.
      */
     clickDelay: 150,
+    hasButton: true,
+    sheetProps: {},
   };
 
   /**
@@ -36,7 +40,15 @@ class Picker extends Component {
     super(props);
 
     this.domElement = null;
-    this.modalComponent = modalProps => <Sheet {...modalProps} title={this.props.label} />;
+    this.modalComponent = sheetProps => (
+      <Sheet
+        {...{
+          ...this.props.sheetProps,
+          ...sheetProps,
+        }}
+        title={this.props.label}
+      />
+    );
     this.listComponent = ({
       items, onSelect, selectedIndex, onClose,
     }) => (
@@ -66,10 +78,11 @@ class Picker extends Component {
    * @returns {JSX}
    */
   render() {
+    const { hasButton, sheetProps: ignore, ...restProps } = this.props;
     return (
       <BasePicker
-        {...this.props}
-        className={styles}
+        {...restProps}
+        className={hasButton ? styles : ''}
         modalComponent={this.modalComponent}
         buttonProps={this.props.buttonProps}
         buttonComponent={this.props.buttonComponent || Button}
