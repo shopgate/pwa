@@ -14,7 +14,7 @@ import {
   productReceived$,
   cachedProductReceived$,
   productRelationsReceived$,
-  receivedVisibleProduct$,
+  receivedVisibleCachedProduct$,
   visibleProductNotFound$,
 } from '../streams';
 import fetchProductsById from '../actions/fetchProductsById';
@@ -65,9 +65,9 @@ function product(subscribe) {
     }
   });
 
-  const receivedVisibleProductDebounced$ = receivedVisibleProduct$.debounceTime(500);
+  const receivedVisibleCachedProductDebounced$ = receivedVisibleCachedProduct$.debounceTime(500);
   /** Refresh product data after getting cache version for PDP */
-  subscribe(receivedVisibleProductDebounced$, ({ action, dispatch }) => {
+  subscribe(receivedVisibleCachedProductDebounced$, ({ action, dispatch }) => {
     const { id } = action.productData;
     dispatch(fetchProduct(id, true));
   });

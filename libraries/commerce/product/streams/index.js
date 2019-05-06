@@ -63,6 +63,9 @@ export const receivedVisibleProduct$ = productReceived$.merge(cachedProductRecei
     return action.productData.id === hex2bin(route.params.productId);
   });
 
+export const receivedVisibleCachedProduct$ = receivedVisibleProduct$
+  .filter(({ action }) => action.type === RECEIVE_PRODUCT_CACHED);
+
 /** Dispatched when ERROR_PRODUCT ENOTFOUND of visible product is received */
 export const visibleProductNotFound$ = errorProductNotFound$
   .withLatestFrom(receivedVisibleProduct$)
