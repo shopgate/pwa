@@ -19,7 +19,7 @@ import viewSwitch from 'Components/FilterBar/components/Content/components/ViewS
 
 persistReducers.set([
   'cart',
-  'client',
+  'client.info',
   'page',
   'url',
   'user',
