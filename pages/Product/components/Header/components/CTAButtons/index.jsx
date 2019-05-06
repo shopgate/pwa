@@ -15,6 +15,7 @@ import {
   PRODUCT_CTAS_ADD_TO_CART_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import CartButton from './components/CartButton';
+import QuantityPicker from './components/QuantityPicker';
 import styles from './style';
 import connect from './connector';
 
@@ -41,6 +42,7 @@ const CTAButtons = ({ isFavorite, productId }) => (
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_BEFORE} />
         <Portal name={PRODUCT_CTAS_ADD_TO_CART}>
           <CartButton />
+          <QuantityPicker />
         </Portal>
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_AFTER} />
       </div>
