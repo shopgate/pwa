@@ -1,5 +1,13 @@
 # Changelog
 
+## [v5.11.1](https://github.com/shopgate/pwa/compare/...v5.11.1) (2019-05-07)
+
+#### :rocket: Enhancement
+* [#644](https://github.com/shopgate/pwa/pull/644) Added automatic changelog creation for PWA v5.X and modified Makefile for stable releases ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :nail_care: Polish
+* [#640](https://github.com/shopgate/pwa/pull/640) Update tax and shipping disclaimers translations ([@alexbridge](https://github.com/alexbridge))
+
 ## [v5.11.0](https://github.com/shopgate/pwa/compare/v5.10.3...v5.11.0) (2019-01-10)
 
 #### :bug: Bug Fix
