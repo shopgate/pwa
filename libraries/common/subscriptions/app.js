@@ -34,6 +34,7 @@ import {
   routeDidReset,
   routeDidUpdate,
 } from '../actions/router';
+import { receiveClientConnectivity } from '../action-creators/client';
 import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
@@ -94,6 +95,7 @@ export default function app(subscribe) {
       // TODO The iOS apps don't emit the event to the webviews without registration till Lib 15.2.
       // This needs to be removed, when IOS-1886 is done and the the iOS apps are updated.
       'httpResponse',
+      'connectivityDidChange',
     ]);
 
     // Add event callbacks
@@ -117,6 +119,10 @@ export default function app(subscribe) {
 
     event.addCallback('viewDidAppear', () => {
       clearUpInAppBrowser(isAndroid(getState()));
+    });
+
+    event.addCallback('connectivityDidChange', (data) => {
+      dispatch(receiveClientConnectivity(data));
     });
 
     /**
