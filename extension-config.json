@@ -190,6 +190,7 @@
         "label": "The theme configuration for Engage GMD theme."
       },
       "default": {
+        "settings": {},
         "typography": {
           "family": "system, -apple-system, \"SF Pro Display\", \"Helvetica Neue\", \"Lucida Grande\"",
           "rootSize": 17,
@@ -223,7 +224,10 @@
         },
         "variables": {
           "baseShadow": "rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px"
-        }
+        },
+        "shadows": {},
+        "assets": {},
+        "pages": []
       }
     },
     "cartShippingHideAnonymousLegacy": {
