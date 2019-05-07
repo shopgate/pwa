@@ -90,6 +90,7 @@ export const mockedProductsById = {
         hasVariants: false,
       },
       name: 'Fancy Product',
+      longName: 'Fancy Long Product Name',
       manufacturer: 'ACME',
       price: {
         currency: 'EUR',
@@ -126,6 +127,12 @@ export const mockedProductsById = {
       metadata: {
         some: 'metadata',
       },
+    },
+  },
+  product_7: {
+    isFetching: false,
+    productData: {
+      name: 'Short product name',
     },
   },
   // Taken from the original getKnownRelatives() selector test for variants.
