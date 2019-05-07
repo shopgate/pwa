@@ -8,11 +8,13 @@
 #### :nail_care: Polish
 * [#640](https://github.com/shopgate/pwa/pull/640) Update tax and shipping disclaimers translations ([@alexbridge](https://github.com/alexbridge))
 
+
 ## [v5.11.0](https://github.com/shopgate/pwa/compare/v5.10.3...v5.11.0) (2019-01-10)
 
 #### :bug: Bug Fix
 * [#467](https://github.com/shopgate/pwa/pull/467) Increased hit area of the cart item context menu ([@fkloes](https://github.com/fkloes))
 * [#437](https://github.com/shopgate/pwa/pull/437) GMD Snackbar adjusts action color to white when accent color to black contrast is less than 4 ([@sznowicki](https://github.com/sznowicki))
+
 
 ## [v5.10.3](https://github.com/shopgate/pwa/compare/v5.10.2...v5.10.3) (2019-01-07)
 
