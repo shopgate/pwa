@@ -14,6 +14,12 @@ import {
   RECEIVE_PRODUCT_CACHED,
   RECEIVE_PRODUCT_RELATIONS,
   ERROR_PRODUCT,
+  ERROR_PRODUCT_DESCRIPTION,
+  ERROR_PRODUCT_IMAGES,
+  ERROR_PRODUCT_VARIANTS,
+  ERROR_PRODUCT_PROPERTIES,
+  ERROR_PRODUCT_OPTIONS,
+  ERROR_PRODUCT_SHIPPING,
 } from '../constants';
 
 export const productWillEnter$ = routeWillEnter$.merge(routeDidUpdate$)
@@ -35,8 +41,25 @@ export const productReceived$ = main$
 /** Dispatched when ERROR_PRODUCT received */
 export const errorProduct$ = main$.filter(({ action }) => action.type === ERROR_PRODUCT);
 
+/** Dispatched when ERROR_PRODUCT_* (resources) is received */
+export const errorProductResources$ = main$.filter((
+  ({ action }) => [
+    ERROR_PRODUCT_DESCRIPTION,
+    ERROR_PRODUCT_IMAGES,
+    ERROR_PRODUCT_VARIANTS,
+    ERROR_PRODUCT_PROPERTIES,
+    ERROR_PRODUCT_OPTIONS,
+    ERROR_PRODUCT_SHIPPING,
+  ].includes(action.type)
+));
+
 /** Dispatched when ERROR_PRODUCT ENOTFOUND received */
 export const errorProductNotFound$ = errorProduct$.filter((
+  ({ action }) => action.errorCode === ENOTFOUND
+));
+
+/** Dispatched when ERROR_PRODUCT_* ENOTFOUND received */
+export const errorProductResourcesNotFound$ = errorProductResources$.filter((
   ({ action }) => action.errorCode === ENOTFOUND
 ));
 
@@ -62,9 +85,6 @@ export const receivedVisibleProduct$ = productReceived$.merge(cachedProductRecei
 
     return action.productData.id === hex2bin(route.params.productId);
   });
-
-export const receivedVisibleCachedProduct$ = receivedVisibleProduct$
-  .filter(({ action }) => action.type === RECEIVE_PRODUCT_CACHED);
 
 /** Dispatched when ERROR_PRODUCT ENOTFOUND of visible product is received */
 export const visibleProductNotFound$ = errorProductNotFound$
