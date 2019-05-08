@@ -27,7 +27,7 @@ const fetchProductProperties = productId => (dispatch, getState) => {
     .then(result => dispatch(receiveProductProperties(productId, result.properties)))
     .catch((error) => {
       logger.error(error);
-      dispatch(errorProductProperties(productId));
+      dispatch(errorProductProperties(productId, error.code));
     });
 };
 
