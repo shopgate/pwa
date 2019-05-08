@@ -128,6 +128,9 @@ export * from '@shopgate/pwa-common/store';
 // ACTIONS
 export { default as fetchClientInformation } from '@shopgate/pwa-common/actions/client/fetchClientInformation';
 
+// CONSTANTS
+export * from '@shopgate/pwa-common/constants/client';
+
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/client';
 

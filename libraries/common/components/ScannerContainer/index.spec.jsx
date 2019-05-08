@@ -35,7 +35,9 @@ const createWrapper = (libVersion = SCANNER_MIN_APP_LIB_VERSION) => {
 
   const store = configureStore()({
     client: {
-      libVersion,
+      info: {
+        libVersion,
+      },
     },
   });
 

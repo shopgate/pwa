@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import isEqual from 'lodash/isEqual';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { getCurrentState } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
@@ -191,14 +191,44 @@ export const getProduct = createSelector(
  * @return {string|null}
  */
 export const getProductName = createSelector(
-  getCurrentRoute,
+  getCurrentState,
   getProduct,
-  (route, product) => {
-    if (route && route.state && route.state.title) {
-      return route.state.title;
+  (routeState, product) => {
+    if (!product) {
+      if (!routeState || !routeState.title) {
+        return null;
+      }
+
+      return routeState.title;
     }
 
-    return product ? product.name : null;
+    return product.name;
+  }
+);
+
+/**
+ * Retrieves the product long name.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductLongName = createSelector(
+  getCurrentState,
+  getProduct,
+  (routeState, product) => {
+    if (!product) {
+      if (!routeState || !routeState.title) {
+        return null;
+      }
+
+      return routeState.title;
+    }
+
+    if (!product.longName) {
+      return product.name;
+    }
+
+    return product.longName;
   }
 );
 
