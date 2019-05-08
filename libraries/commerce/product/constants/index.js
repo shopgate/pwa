@@ -39,6 +39,10 @@ export const ERROR_PRODUCT_SHIPPING = 'ERROR_PRODUCT_SHIPPING';
 export const REQUEST_PRODUCT_IMAGES = 'REQUEST_PRODUCT_IMAGES';
 export const RECEIVE_PRODUCT_IMAGES = 'RECEIVE_PRODUCT_IMAGES';
 export const ERROR_PRODUCT_IMAGES = 'ERROR_PRODUCT_IMAGES';
+// PRODUCT MEDIA
+export const REQUEST_PRODUCT_MEDIA = 'REQUEST_PRODUCT_MEDIA';
+export const RECEIVE_PRODUCT_MEDIA = 'RECEIVE_PRODUCT_MEDIA';
+export const ERROR_PRODUCT_MEDIA = 'ERROR_PRODUCT_MEDIA';
 // CURRENT PRODUCT
 export const RESET_CURRENT_PRODUCT = 'RESET_CURRENT_PRODUCT';
 
@@ -79,3 +83,7 @@ export const UPDATE_METADATA = 'UPDATE_METADATA';
 export const LOCATION_CATEGORY = 'plp'; // category, product list
 export const LOCATION_PRODUCT = 'pdp'; // product page
 export const LOCATION_GRID = 'grid'; // other grids, sliders
+
+// MEDIA TYPES
+export const MEDIA_TYPE_IMAGE = 'image';
+export const MEDIA_TYPE_VIDEO = 'video';
