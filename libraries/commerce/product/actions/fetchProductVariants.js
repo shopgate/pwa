@@ -27,7 +27,7 @@ const fetchProductVariants = productId => (dispatch, getState) => {
     .then(result => dispatch(receiveProductVariants(productId, result)))
     .catch((error) => {
       logger.error(error);
-      dispatch(errorProductVariants(productId));
+      dispatch(errorProductVariants(productId, error.code));
     });
 };
 
