@@ -34,7 +34,7 @@ class Image extends Component {
       <ProductImage
         src={media.url}
         alt={media.altText}
-        resolutions={PRODUCT_SLIDER_IMAGE_FORMATS[0]}
+        resolutions={[PRODUCT_SLIDER_IMAGE_FORMATS[0]]}
       />
     );
   }
