@@ -38,7 +38,7 @@ const fetchProductImages = (productId, formats) => (dispatch, getState) => {
     })
     .catch((error) => {
       logger.error(error);
-      dispatch(errorProductImages(productId));
+      dispatch(errorProductImages(productId, error.code));
     });
 };
 
