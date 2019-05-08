@@ -20,7 +20,7 @@ import tabBar from 'Components/TabBar/reducer';
 
 persistReducers.set([
   'cart',
-  'client',
+  'client.info',
   'page',
   'url',
   'user',
