@@ -179,11 +179,6 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
               "prevEl": null,
             }
           }
-          on={
-            Object {
-              "slideChange": [Function],
-            }
-          }
           pagination={
             Object {
               "bulletActiveClass": "css-hpsgy2",
@@ -603,11 +598,6 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
               "prevEl": null,
             }
           }
-          on={
-            Object {
-              "slideChange": [Function],
-            }
-          }
           pagination={
             Object {
               "bulletActiveClass": "css-hpsgy2",
@@ -883,11 +873,6 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
             Object {
               "nextEl": null,
               "prevEl": null,
-            }
-          }
-          on={
-            Object {
-              "slideChange": [Function],
             }
           }
           pagination={
