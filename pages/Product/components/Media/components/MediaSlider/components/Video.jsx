@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import VideoPlayer from '@shopgate/engage/components/VideoPlayer';
+import IntersectionVisibility from '@shopgate/pwa-common/components/IntersectionVisibility';
 
 /**
  * The product media video slide component.
@@ -28,9 +30,17 @@ class Video extends Component {
   render() {
     const { media } = this.props;
 
-    /** @TODO */
     return (
-      <div>@TODO {JSON.stringify(media)}</div>
+      <IntersectionVisibility>
+        {({ ratio }) => (
+          <VideoPlayer
+            url={media.url}
+            playing={ratio > 0.7}
+            width='100%'
+            height='100%'
+          />
+        )}
+      </IntersectionVisibility>
     );
   }
 }
