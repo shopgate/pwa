@@ -203,11 +203,6 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                   "prevEl": null,
                 }
               }
-              on={
-                Object {
-                  "slideChange": [Function],
-                }
-              }
               pagination={
                 Object {
                   "bulletActiveClass": "css-hpsgy2",
@@ -491,11 +486,6 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                 Object {
                   "nextEl": null,
                   "prevEl": null,
-                }
-              }
-              on={
-                Object {
-                  "slideChange": [Function],
                 }
               }
               pagination={
