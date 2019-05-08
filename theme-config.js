@@ -1,4 +1,22 @@
+const appConfig = require('./config/app.json');
+
+const { theme: { styles: { globals: { colors } = {} } = {} } = {} } = appConfig;
+const {
+  light, dark, primary, accent,
+} = colors;
+
+/**
+ * Currently the SDK uses the theme-config to autogenerate some dynamic color properties like
+ * primaryContrast or accentContrast. To avoid breaking of this system, the required colors
+ * are taken from the app-config and injected here.
+ */
 module.exports = {
+  colors: {
+    primary,
+    accent,
+    light,
+    dark,
+  },
   variables: {
     gap: {
       xsmall: 4,
