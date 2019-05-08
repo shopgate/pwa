@@ -71,7 +71,7 @@ function product(subscribe) {
   /** Refresh product data after getting cache version for PDP */
   subscribe(receivedVisibleProductDebounced$, ({ action, dispatch }) => {
     const { id } = action.productData;
-    dispatch(fetchProduct(id, true));
+    //dispatch(fetchProduct(id, true));
   });
 
   /** Visible product is no more available */
