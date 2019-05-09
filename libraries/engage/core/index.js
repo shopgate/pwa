@@ -228,6 +228,7 @@ export { useCurrentProduct } from './hooks/useCurrentProduct';
 export { useNavigation } from './hooks/useNavigation';
 export { useConfig } from './hooks/useConfig';
 export { usePageConfig } from './hooks/usePageConfig';
+export { usePageSettings } from './hooks/usePageSettings';
 export { useSettings } from './hooks/useSettings';
 export { useColors } from './hooks/useColors';
 export { useAssets } from './hooks/useAssets';
