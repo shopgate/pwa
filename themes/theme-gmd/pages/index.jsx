@@ -44,7 +44,7 @@ import * as routes from './routes';
 import themeApi from '../themeApi';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
-const themeConfigParse = new ConfigParser(themeConfig).parse();
+const themeConfigParsed = new ConfigParser(themeConfig).parse();
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -52,7 +52,7 @@ const themeConfigParse = new ConfigParser(themeConfig).parse();
  */
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
-    <ConfigContext.Provider value={themeConfigParse}>
+    <ConfigContext.Provider value={themeConfigParsed}>
       <NavigationHandler>
         <AppContext.Provider value={{ ...appConfig }}>
           <ThemeContext.Provider value={themeApi}>
@@ -95,7 +95,7 @@ const Pages = ({ store }) => (
         </AppContext.Provider>
       </NavigationHandler>
     </ConfigContext.Provider>
-  </App >
+  </App>
 );
 
 Pages.propTypes = {
