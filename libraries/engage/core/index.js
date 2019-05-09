@@ -232,6 +232,9 @@ export { usePageSettings } from './hooks/usePageSettings';
 export { useSettings } from './hooks/useSettings';
 export { useColors } from './hooks/useColors';
 export { useAssets } from './hooks/useAssets';
+export { useWidgetConfig } from './hooks/useWidgetConfig';
+export { useWidgetSettings } from './hooks/useWidgetSettings';
+export { useWidgetStyles } from './hooks/useWidgetStyles';
 
 // --------------- HOCs --------------- //
 
@@ -243,3 +246,4 @@ export { withNavigation } from './hocs/withNavigation';
 // --------------- CONFIG --------------- //
 export { ConfigParser } from './config/ConfigParser';
 export { ConfigContext } from './config/ConfigContext';
+export { isBeta } from './config/isBeta';
