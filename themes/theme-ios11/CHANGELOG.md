@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.4.2](https://github.com/shopgate/theme-gmd/compare/v6.4.1...v6.4.2) (2019-05-09)
+
+#### :bug: Bug Fix
+* [#652](https://github.com/shopgate/pwa/pull/652) Fixed broken handling of channel urls ([@fkloes](https://github.com/fkloes))
+* [#654](https://github.com/shopgate/pwa/pull/654) Fixed an issue where product sliders widgets didn't update on state updates ([@fkloes](https://github.com/fkloes))
+* [#651](https://github.com/shopgate/pwa/pull/651) Sliders now render correctly when the slides are updated ([@fkloes](https://github.com/fkloes))
+
+
 
 
 
