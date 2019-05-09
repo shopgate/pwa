@@ -6,7 +6,7 @@ jest.mock('react', () => ({
 }));
 
 describe('engage > core > hooks', () => {
-  describe('useSettings()', () => {
+  describe('useTheme()', () => {
     it('should return an empty if no theme context is defined.', () => {
       useContext.mockReturnValueOnce({ contexts: {} });
       const theme = useTheme();

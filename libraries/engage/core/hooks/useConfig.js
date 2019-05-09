@@ -6,5 +6,5 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
  */
 export function useConfig() {
   const { theme: { pages, ...config } = {} } = appConfig;
-  return config;
+  return config || {};
 }
