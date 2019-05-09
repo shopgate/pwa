@@ -191,6 +191,15 @@
         "label": "Use sentry.io for error (debug, info) logging"
       }
     },
+    "beta": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Enable / disable Catalog 2.0 features"
+      }
+    },
     "theme": {
       "type": "admin",
       "destination": "frontend",
