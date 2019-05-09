@@ -1,23 +1,33 @@
 import { useContext } from 'react';
 import { logger } from '@shopgate/pwa-core';
+import defaultsDeep from 'lodash/defaultsDeep';
 import { ConfigContext } from '../config/ConfigContext';
 import { useRoute } from './useRoute';
+import { useSettings } from './useSettings';
 
 /**
  * Retrieves the configuration for the current page.
  * @returns {Object}
  */
 export function usePageConfig() {
-  const { pattern } = useRoute();
+  const route = useRoute();
   const { pages } = useContext(ConfigContext);
-  const page = pages.find(element => element.pattern === pattern);
+  const globalSettings = useSettings();
+  const page = pages.find(element => element.pattern === route.pattern);
 
   if (!page) {
-    logger.error(`A page config could not be found for: ${pattern}`);
+    logger.error(`A page config could not be found for: ${route.pattern}`);
     return {};
   }
 
-  const { name, id, ...config } = page;
+  const {
+    name, id, pattern, ...config
+  } = page;
 
-  return config;
+  const settings = defaultsDeep(config.settings, globalSettings);
+
+  return {
+    ...config,
+    settings,
+  };
 }
