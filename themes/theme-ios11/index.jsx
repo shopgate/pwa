@@ -13,9 +13,9 @@ import { configureStore } from '@shopgate/pwa-common/store';
 import { appWillStart } from '@shopgate/pwa-common/action-creators/app';
 import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchClientInformation';
 import smoothscroll from 'smoothscroll-polyfill';
-import Pages from './pages';
 import reducers from './pages/reducers';
 import subscribers from './pages/subscribers';
+import Pages from './pages';
 
 smoothscroll.polyfill();
 
