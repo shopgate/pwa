@@ -39,7 +39,7 @@ import locale from '../locale';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 
-const themeConfigParse = new ConfigParser(themeConfig).parse();
+const themeConfigParsed = new ConfigParser(themeConfig).parse();
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -47,7 +47,7 @@ const themeConfigParse = new ConfigParser(themeConfig).parse();
  */
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
-    <ConfigContext.Provider value={themeConfigParse}>
+    <ConfigContext.Provider value={themeConfigParsed}>
       <NavigationHandler>
         <AppContext.Provider value={{ ...appConfig }}>
           <ThemeContext.Provider value={themeApi}>
