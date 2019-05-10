@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import 'intersection-observer';
 
-const thresholds = [0, 0.25, 0.5, 0.75, 1.0];
+const thresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
 
 /**
  * The IntersectionVisibility component.
  * @example
  *    <IntersectionVisibility>
- *       {({ visible, ratio }) => (
-           <Video autoPlay={visible} />}
+ *       {({ visible, ratio, setRef }) => (
+           <Video autoPlay={visible && ratio > 0.8} ref={setRef} />}
         )}
  *     </IntersectionVisibility>
  */
@@ -35,7 +35,9 @@ class IntersectionVisibility extends Component {
     this.io = new IntersectionObserver(this.handleIntersectionEvent, {
       threshold: this.props.thresholds,
     });
-    this.io.observe(this.node);
+    if (this.node) {
+      this.io.observe(this.node);
+    }
   }
 
   /**
@@ -51,7 +53,13 @@ class IntersectionVisibility extends Component {
    * @param {Object} ref ref
    */
   setRef = (ref) => {
+    if (!ref) {
+      return;
+    }
     this.node = ref;
+    if (this.io) {
+      this.io.observe(this.node);
+    }
   }
 
   /**
@@ -69,9 +77,14 @@ class IntersectionVisibility extends Component {
    */
   render() {
     return (
-      <div ref={this.setRef}>
-        {this.props.children(this.state)}
-      </div>
+      <Fragment>
+        {
+          this.props.children({
+            ...this.state,
+            setRef: this.setRef,
+          })
+        }
+      </Fragment>
     );
   }
 }

@@ -35,6 +35,7 @@ import {
   routeDidUpdate,
 } from '../actions/router';
 import { receiveClientConnectivity } from '../action-creators/client';
+import { viewVisibilityChange } from '../action-creators/app';
 import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
@@ -132,6 +133,12 @@ export default function app(subscribe) {
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
+
+    /** @returns {*} */
+    const viewVisibility = () => dispatch(viewVisibilityChange(false));
+
+    event.addCallback('routeDidChange', viewVisibility);
+    event.addCallback('viewDidDisappear', viewVisibility);
 
     /*
      * Onload must be send AFTER app did start.
