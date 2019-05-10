@@ -544,7 +544,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                     }
                   }
                 >
-                  <Component
+                  <ProductGridPrice
                     price={
                       Object {
                         "currency": "EUR",
@@ -555,52 +555,77 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                       }
                     }
                   >
-                    <ProductGridPrice
-                      price={
-                        Object {
-                          "currency": "EUR",
-                          "discount": 0,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        }
-                      }
+                    <Grid
+                      className="css-1glzrmu"
+                      component="ul"
+                      wrap={true}
                     >
-                      <Grid
-                        className="css-1glzrmu"
-                        component="ul"
-                        wrap={true}
+                      <ul
+                        className="css-1glzrmu css-h7r55a css-u7q1iu"
                       >
-                        <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={1}
+                          shrink={1}
                         >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
+                          <li
+                            className=" css-1gs0ko2"
                           >
-                            <li
-                              className=" css-1gs0ko2"
+                            <Price
+                              className=""
+                              currency="EUR"
+                              discounted={false}
+                              fractions={true}
+                              taxDisclaimer={false}
+                              unitPrice={5}
+                              unitPriceMin={0}
                             >
-                              <Price
-                                className=""
-                                currency="EUR"
-                                discounted={false}
-                                fractions={true}
-                                taxDisclaimer={false}
-                                unitPrice={5}
-                                unitPriceMin={0}
+                              <div
+                                className="css-izofhs "
+                                data-test-id="minPrice: 0 price: 5 currency: EUR"
                               >
-                                <div
-                                  className="css-izofhs "
-                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                <FormatPrice
+                                  className=""
+                                  currency="EUR"
+                                  fractions={true}
+                                  price={5}
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    p
+                                  </span>
+                                </FormatPrice>
+                              </div>
+                            </Price>
+                          </li>
+                        </GridItem>
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className=""
+                          >
+                            <PriceStriked
+                              className=""
+                              currency="EUR"
+                              value={10}
+                            >
+                              <div
+                                className="css-1sagvrb  "
+                              >
+                                <span
+                                  data-test-id="strikedPrice: 10"
                                 >
                                   <FormatPrice
                                     className=""
                                     currency="EUR"
                                     fractions={true}
-                                    price={5}
+                                    price={10}
                                   >
                                     <span
                                       className=""
@@ -608,86 +633,49 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                       p
                                     </span>
                                   </FormatPrice>
-                                </div>
-                              </Price>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <PriceStriked
-                                className=""
-                                currency="EUR"
-                                value={10}
-                              >
-                                <div
-                                  className="css-1sagvrb  "
-                                >
-                                  <span
-                                    data-test-id="strikedPrice: 10"
-                                  >
-                                    <FormatPrice
-                                      className=""
-                                      currency="EUR"
-                                      fractions={true}
-                                      price={10}
-                                    >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
-                                    </FormatPrice>
-                                  </span>
-                                </div>
-                              </PriceStriked>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                      <Grid
-                        className=""
-                        component="ul"
-                        wrap={false}
+                                </span>
+                              </div>
+                            </PriceStriked>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                    <Grid
+                      className=""
+                      component="ul"
+                      wrap={false}
+                    >
+                      <ul
+                        className=" css-h7r55a"
                       >
-                        <ul
-                          className=" css-h7r55a"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <GridItem
+                          <li
                             className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
                           >
-                            <li
-                              className=""
+                            <PriceInfo
+                              className="css-1gftye4"
+                              text="Price Info"
                             >
-                              <PriceInfo
-                                className="css-1gftye4"
-                                text="Price Info"
-                              >
-                                <div
-                                  className="css-1kqiarg css-1gftye4"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "Price Info",
-                                    }
+                              <div
+                                className="css-1kqiarg css-1gftye4"
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "Price Info",
                                   }
-                                  data-test-id="priceInfo: Price Info"
-                                />
-                              </PriceInfo>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </ProductGridPrice>
-                  </Component>
+                                }
+                                data-test-id="priceInfo: Price Info"
+                              />
+                            </PriceInfo>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </ProductGridPrice>
                 </Portal>
                 <Portal
                   name="product-item.price.after"
@@ -971,7 +959,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                     }
                   }
                 >
-                  <Component
+                  <ProductGridPrice
                     price={
                       Object {
                         "currency": "EUR",
@@ -982,52 +970,77 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                       }
                     }
                   >
-                    <ProductGridPrice
-                      price={
-                        Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        }
-                      }
+                    <Grid
+                      className="css-1glzrmu"
+                      component="ul"
+                      wrap={true}
                     >
-                      <Grid
-                        className="css-1glzrmu"
-                        component="ul"
-                        wrap={true}
+                      <ul
+                        className="css-1glzrmu css-h7r55a css-u7q1iu"
                       >
-                        <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={1}
+                          shrink={1}
                         >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
+                          <li
+                            className=" css-1gs0ko2"
                           >
-                            <li
-                              className=" css-1gs0ko2"
+                            <Price
+                              className=""
+                              currency="EUR"
+                              discounted={true}
+                              fractions={true}
+                              taxDisclaimer={false}
+                              unitPrice={5}
+                              unitPriceMin={0}
                             >
-                              <Price
-                                className=""
-                                currency="EUR"
-                                discounted={true}
-                                fractions={true}
-                                taxDisclaimer={false}
-                                unitPrice={5}
-                                unitPriceMin={0}
+                              <div
+                                className="css-izofhs  css-1ncyhu"
+                                data-test-id="minPrice: 0 price: 5 currency: EUR"
                               >
-                                <div
-                                  className="css-izofhs  css-1ncyhu"
-                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                <FormatPrice
+                                  className=""
+                                  currency="EUR"
+                                  fractions={true}
+                                  price={5}
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    p
+                                  </span>
+                                </FormatPrice>
+                              </div>
+                            </Price>
+                          </li>
+                        </GridItem>
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className=""
+                          >
+                            <PriceStriked
+                              className=""
+                              currency="EUR"
+                              value={10}
+                            >
+                              <div
+                                className="css-1sagvrb  "
+                              >
+                                <span
+                                  data-test-id="strikedPrice: 10"
                                 >
                                   <FormatPrice
                                     className=""
                                     currency="EUR"
                                     fractions={true}
-                                    price={5}
+                                    price={10}
                                   >
                                     <span
                                       className=""
@@ -1035,86 +1048,49 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                       p
                                     </span>
                                   </FormatPrice>
-                                </div>
-                              </Price>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <PriceStriked
-                                className=""
-                                currency="EUR"
-                                value={10}
-                              >
-                                <div
-                                  className="css-1sagvrb  "
-                                >
-                                  <span
-                                    data-test-id="strikedPrice: 10"
-                                  >
-                                    <FormatPrice
-                                      className=""
-                                      currency="EUR"
-                                      fractions={true}
-                                      price={10}
-                                    >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
-                                    </FormatPrice>
-                                  </span>
-                                </div>
-                              </PriceStriked>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                      <Grid
-                        className=""
-                        component="ul"
-                        wrap={false}
+                                </span>
+                              </div>
+                            </PriceStriked>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                    <Grid
+                      className=""
+                      component="ul"
+                      wrap={false}
+                    >
+                      <ul
+                        className=" css-h7r55a"
                       >
-                        <ul
-                          className=" css-h7r55a"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <GridItem
+                          <li
                             className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
                           >
-                            <li
-                              className=""
+                            <PriceInfo
+                              className="css-1gftye4"
+                              text="Price Info"
                             >
-                              <PriceInfo
-                                className="css-1gftye4"
-                                text="Price Info"
-                              >
-                                <div
-                                  className="css-1kqiarg css-1gftye4"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "Price Info",
-                                    }
+                              <div
+                                className="css-1kqiarg css-1gftye4"
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "Price Info",
                                   }
-                                  data-test-id="priceInfo: Price Info"
-                                />
-                              </PriceInfo>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </ProductGridPrice>
-                  </Component>
+                                }
+                                data-test-id="priceInfo: Price Info"
+                              />
+                            </PriceInfo>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </ProductGridPrice>
                 </Portal>
                 <Portal
                   name="product-item.price.after"
@@ -1744,7 +1720,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                     }
                   }
                 >
-                  <Component
+                  <ProductGridPrice
                     price={
                       Object {
                         "currency": "EUR",
@@ -1755,52 +1731,77 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                       }
                     }
                   >
-                    <ProductGridPrice
-                      price={
-                        Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        }
-                      }
+                    <Grid
+                      className="css-1glzrmu"
+                      component="ul"
+                      wrap={true}
                     >
-                      <Grid
-                        className="css-1glzrmu"
-                        component="ul"
-                        wrap={true}
+                      <ul
+                        className="css-1glzrmu css-h7r55a css-u7q1iu"
                       >
-                        <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={1}
+                          shrink={1}
                         >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
+                          <li
+                            className=" css-1gs0ko2"
                           >
-                            <li
-                              className=" css-1gs0ko2"
+                            <Price
+                              className=""
+                              currency="EUR"
+                              discounted={true}
+                              fractions={true}
+                              taxDisclaimer={false}
+                              unitPrice={5}
+                              unitPriceMin={0}
                             >
-                              <Price
-                                className=""
-                                currency="EUR"
-                                discounted={true}
-                                fractions={true}
-                                taxDisclaimer={false}
-                                unitPrice={5}
-                                unitPriceMin={0}
+                              <div
+                                className="css-izofhs  css-1ncyhu"
+                                data-test-id="minPrice: 0 price: 5 currency: EUR"
                               >
-                                <div
-                                  className="css-izofhs  css-1ncyhu"
-                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                <FormatPrice
+                                  className=""
+                                  currency="EUR"
+                                  fractions={true}
+                                  price={5}
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    p
+                                  </span>
+                                </FormatPrice>
+                              </div>
+                            </Price>
+                          </li>
+                        </GridItem>
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className=""
+                          >
+                            <PriceStriked
+                              className=""
+                              currency="EUR"
+                              value={10}
+                            >
+                              <div
+                                className="css-1sagvrb  "
+                              >
+                                <span
+                                  data-test-id="strikedPrice: 10"
                                 >
                                   <FormatPrice
                                     className=""
                                     currency="EUR"
                                     fractions={true}
-                                    price={5}
+                                    price={10}
                                   >
                                     <span
                                       className=""
@@ -1808,86 +1809,49 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                       p
                                     </span>
                                   </FormatPrice>
-                                </div>
-                              </Price>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <PriceStriked
-                                className=""
-                                currency="EUR"
-                                value={10}
-                              >
-                                <div
-                                  className="css-1sagvrb  "
-                                >
-                                  <span
-                                    data-test-id="strikedPrice: 10"
-                                  >
-                                    <FormatPrice
-                                      className=""
-                                      currency="EUR"
-                                      fractions={true}
-                                      price={10}
-                                    >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
-                                    </FormatPrice>
-                                  </span>
-                                </div>
-                              </PriceStriked>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                      <Grid
-                        className=""
-                        component="ul"
-                        wrap={false}
+                                </span>
+                              </div>
+                            </PriceStriked>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                    <Grid
+                      className=""
+                      component="ul"
+                      wrap={false}
+                    >
+                      <ul
+                        className=" css-h7r55a"
                       >
-                        <ul
-                          className=" css-h7r55a"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <GridItem
+                          <li
                             className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
                           >
-                            <li
-                              className=""
+                            <PriceInfo
+                              className="css-1gftye4"
+                              text="Price Info"
                             >
-                              <PriceInfo
-                                className="css-1gftye4"
-                                text="Price Info"
-                              >
-                                <div
-                                  className="css-1kqiarg css-1gftye4"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "Price Info",
-                                    }
+                              <div
+                                className="css-1kqiarg css-1gftye4"
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "Price Info",
                                   }
-                                  data-test-id="priceInfo: Price Info"
-                                />
-                              </PriceInfo>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </ProductGridPrice>
-                  </Component>
+                                }
+                                data-test-id="priceInfo: Price Info"
+                              />
+                            </PriceInfo>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </ProductGridPrice>
                 </Portal>
                 <Portal
                   name="product-item.price.after"
@@ -2517,7 +2481,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                     }
                   }
                 >
-                  <Component
+                  <ProductGridPrice
                     price={
                       Object {
                         "currency": "EUR",
@@ -2528,52 +2492,77 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                       }
                     }
                   >
-                    <ProductGridPrice
-                      price={
-                        Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        }
-                      }
+                    <Grid
+                      className="css-1glzrmu"
+                      component="ul"
+                      wrap={true}
                     >
-                      <Grid
-                        className="css-1glzrmu"
-                        component="ul"
-                        wrap={true}
+                      <ul
+                        className="css-1glzrmu css-h7r55a css-u7q1iu"
                       >
-                        <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={1}
+                          shrink={1}
                         >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
+                          <li
+                            className=" css-1gs0ko2"
                           >
-                            <li
-                              className=" css-1gs0ko2"
+                            <Price
+                              className=""
+                              currency="EUR"
+                              discounted={true}
+                              fractions={true}
+                              taxDisclaimer={false}
+                              unitPrice={5}
+                              unitPriceMin={0}
                             >
-                              <Price
-                                className=""
-                                currency="EUR"
-                                discounted={true}
-                                fractions={true}
-                                taxDisclaimer={false}
-                                unitPrice={5}
-                                unitPriceMin={0}
+                              <div
+                                className="css-izofhs  css-1ncyhu"
+                                data-test-id="minPrice: 0 price: 5 currency: EUR"
                               >
-                                <div
-                                  className="css-izofhs  css-1ncyhu"
-                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                <FormatPrice
+                                  className=""
+                                  currency="EUR"
+                                  fractions={true}
+                                  price={5}
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    p
+                                  </span>
+                                </FormatPrice>
+                              </div>
+                            </Price>
+                          </li>
+                        </GridItem>
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className=""
+                          >
+                            <PriceStriked
+                              className=""
+                              currency="EUR"
+                              value={10}
+                            >
+                              <div
+                                className="css-1sagvrb  "
+                              >
+                                <span
+                                  data-test-id="strikedPrice: 10"
                                 >
                                   <FormatPrice
                                     className=""
                                     currency="EUR"
                                     fractions={true}
-                                    price={5}
+                                    price={10}
                                   >
                                     <span
                                       className=""
@@ -2581,86 +2570,49 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                       p
                                     </span>
                                   </FormatPrice>
-                                </div>
-                              </Price>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <PriceStriked
-                                className=""
-                                currency="EUR"
-                                value={10}
-                              >
-                                <div
-                                  className="css-1sagvrb  "
-                                >
-                                  <span
-                                    data-test-id="strikedPrice: 10"
-                                  >
-                                    <FormatPrice
-                                      className=""
-                                      currency="EUR"
-                                      fractions={true}
-                                      price={10}
-                                    >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
-                                    </FormatPrice>
-                                  </span>
-                                </div>
-                              </PriceStriked>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                      <Grid
-                        className=""
-                        component="ul"
-                        wrap={false}
+                                </span>
+                              </div>
+                            </PriceStriked>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                    <Grid
+                      className=""
+                      component="ul"
+                      wrap={false}
+                    >
+                      <ul
+                        className=" css-h7r55a"
                       >
-                        <ul
-                          className=" css-h7r55a"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <GridItem
+                          <li
                             className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
                           >
-                            <li
-                              className=""
+                            <PriceInfo
+                              className="css-1gftye4"
+                              text="Price Info"
                             >
-                              <PriceInfo
-                                className="css-1gftye4"
-                                text="Price Info"
-                              >
-                                <div
-                                  className="css-1kqiarg css-1gftye4"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "Price Info",
-                                    }
+                              <div
+                                className="css-1kqiarg css-1gftye4"
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "Price Info",
                                   }
-                                  data-test-id="priceInfo: Price Info"
-                                />
-                              </PriceInfo>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </ProductGridPrice>
-                  </Component>
+                                }
+                                data-test-id="priceInfo: Price Info"
+                              />
+                            </PriceInfo>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </ProductGridPrice>
                 </Portal>
                 <Portal
                   name="product-item.price.after"
@@ -3254,7 +3206,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                     }
                   }
                 >
-                  <Component
+                  <ProductGridPrice
                     price={
                       Object {
                         "currency": "EUR",
@@ -3265,52 +3217,77 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                       }
                     }
                   >
-                    <ProductGridPrice
-                      price={
-                        Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        }
-                      }
+                    <Grid
+                      className="css-1glzrmu"
+                      component="ul"
+                      wrap={true}
                     >
-                      <Grid
-                        className="css-1glzrmu"
-                        component="ul"
-                        wrap={true}
+                      <ul
+                        className="css-1glzrmu css-h7r55a css-u7q1iu"
                       >
-                        <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={1}
+                          shrink={1}
                         >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
+                          <li
+                            className=" css-1gs0ko2"
                           >
-                            <li
-                              className=" css-1gs0ko2"
+                            <Price
+                              className=""
+                              currency="EUR"
+                              discounted={true}
+                              fractions={true}
+                              taxDisclaimer={false}
+                              unitPrice={5}
+                              unitPriceMin={0}
                             >
-                              <Price
-                                className=""
-                                currency="EUR"
-                                discounted={true}
-                                fractions={true}
-                                taxDisclaimer={false}
-                                unitPrice={5}
-                                unitPriceMin={0}
+                              <div
+                                className="css-izofhs  css-1ncyhu"
+                                data-test-id="minPrice: 0 price: 5 currency: EUR"
                               >
-                                <div
-                                  className="css-izofhs  css-1ncyhu"
-                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                <FormatPrice
+                                  className=""
+                                  currency="EUR"
+                                  fractions={true}
+                                  price={5}
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    p
+                                  </span>
+                                </FormatPrice>
+                              </div>
+                            </Price>
+                          </li>
+                        </GridItem>
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className=""
+                          >
+                            <PriceStriked
+                              className=""
+                              currency="EUR"
+                              value={10}
+                            >
+                              <div
+                                className="css-1sagvrb  "
+                              >
+                                <span
+                                  data-test-id="strikedPrice: 10"
                                 >
                                   <FormatPrice
                                     className=""
                                     currency="EUR"
                                     fractions={true}
-                                    price={5}
+                                    price={10}
                                   >
                                     <span
                                       className=""
@@ -3318,86 +3295,49 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                       p
                                     </span>
                                   </FormatPrice>
-                                </div>
-                              </Price>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <PriceStriked
-                                className=""
-                                currency="EUR"
-                                value={10}
-                              >
-                                <div
-                                  className="css-1sagvrb  "
-                                >
-                                  <span
-                                    data-test-id="strikedPrice: 10"
-                                  >
-                                    <FormatPrice
-                                      className=""
-                                      currency="EUR"
-                                      fractions={true}
-                                      price={10}
-                                    >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
-                                    </FormatPrice>
-                                  </span>
-                                </div>
-                              </PriceStriked>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                      <Grid
-                        className=""
-                        component="ul"
-                        wrap={false}
+                                </span>
+                              </div>
+                            </PriceStriked>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                    <Grid
+                      className=""
+                      component="ul"
+                      wrap={false}
+                    >
+                      <ul
+                        className=" css-h7r55a"
                       >
-                        <ul
-                          className=" css-h7r55a"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <GridItem
+                          <li
                             className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
                           >
-                            <li
-                              className=""
+                            <PriceInfo
+                              className="css-1gftye4"
+                              text="Price Info"
                             >
-                              <PriceInfo
-                                className="css-1gftye4"
-                                text="Price Info"
-                              >
-                                <div
-                                  className="css-1kqiarg css-1gftye4"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "Price Info",
-                                    }
+                              <div
+                                className="css-1kqiarg css-1gftye4"
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "Price Info",
                                   }
-                                  data-test-id="priceInfo: Price Info"
-                                />
-                              </PriceInfo>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </ProductGridPrice>
-                  </Component>
+                                }
+                                data-test-id="priceInfo: Price Info"
+                              />
+                            </PriceInfo>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </ProductGridPrice>
                 </Portal>
                 <Portal
                   name="product-item.price.after"
@@ -4201,7 +4141,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                     }
                   }
                 >
-                  <Component
+                  <ProductGridPrice
                     price={
                       Object {
                         "currency": "EUR",
@@ -4212,52 +4152,77 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                       }
                     }
                   >
-                    <ProductGridPrice
-                      price={
-                        Object {
-                          "currency": "EUR",
-                          "discount": 50,
-                          "info": "Price Info",
-                          "unitPrice": 5,
-                          "unitPriceStriked": 10,
-                        }
-                      }
+                    <Grid
+                      className="css-1glzrmu"
+                      component="ul"
+                      wrap={true}
                     >
-                      <Grid
-                        className="css-1glzrmu"
-                        component="ul"
-                        wrap={true}
+                      <ul
+                        className="css-1glzrmu css-h7r55a css-u7q1iu"
                       >
-                        <ul
-                          className="css-1glzrmu css-h7r55a css-u7q1iu"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={1}
+                          shrink={1}
                         >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
+                          <li
+                            className=" css-1gs0ko2"
                           >
-                            <li
-                              className=" css-1gs0ko2"
+                            <Price
+                              className=""
+                              currency="EUR"
+                              discounted={true}
+                              fractions={true}
+                              taxDisclaimer={false}
+                              unitPrice={5}
+                              unitPriceMin={0}
                             >
-                              <Price
-                                className=""
-                                currency="EUR"
-                                discounted={true}
-                                fractions={true}
-                                taxDisclaimer={false}
-                                unitPrice={5}
-                                unitPriceMin={0}
+                              <div
+                                className="css-izofhs  css-1ncyhu"
+                                data-test-id="minPrice: 0 price: 5 currency: EUR"
                               >
-                                <div
-                                  className="css-izofhs  css-1ncyhu"
-                                  data-test-id="minPrice: 0 price: 5 currency: EUR"
+                                <FormatPrice
+                                  className=""
+                                  currency="EUR"
+                                  fractions={true}
+                                  price={5}
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    p
+                                  </span>
+                                </FormatPrice>
+                              </div>
+                            </Price>
+                          </li>
+                        </GridItem>
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
+                        >
+                          <li
+                            className=""
+                          >
+                            <PriceStriked
+                              className=""
+                              currency="EUR"
+                              value={10}
+                            >
+                              <div
+                                className="css-1sagvrb  "
+                              >
+                                <span
+                                  data-test-id="strikedPrice: 10"
                                 >
                                   <FormatPrice
                                     className=""
                                     currency="EUR"
                                     fractions={true}
-                                    price={5}
+                                    price={10}
                                   >
                                     <span
                                       className=""
@@ -4265,86 +4230,49 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                       p
                                     </span>
                                   </FormatPrice>
-                                </div>
-                              </Price>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <PriceStriked
-                                className=""
-                                currency="EUR"
-                                value={10}
-                              >
-                                <div
-                                  className="css-1sagvrb  "
-                                >
-                                  <span
-                                    data-test-id="strikedPrice: 10"
-                                  >
-                                    <FormatPrice
-                                      className=""
-                                      currency="EUR"
-                                      fractions={true}
-                                      price={10}
-                                    >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
-                                    </FormatPrice>
-                                  </span>
-                                </div>
-                              </PriceStriked>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                      <Grid
-                        className=""
-                        component="ul"
-                        wrap={false}
+                                </span>
+                              </div>
+                            </PriceStriked>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                    <Grid
+                      className=""
+                      component="ul"
+                      wrap={false}
+                    >
+                      <ul
+                        className=" css-h7r55a"
                       >
-                        <ul
-                          className=" css-h7r55a"
+                        <GridItem
+                          className=""
+                          component="li"
+                          grow={0}
+                          shrink={1}
                         >
-                          <GridItem
+                          <li
                             className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
                           >
-                            <li
-                              className=""
+                            <PriceInfo
+                              className="css-1gftye4"
+                              text="Price Info"
                             >
-                              <PriceInfo
-                                className="css-1gftye4"
-                                text="Price Info"
-                              >
-                                <div
-                                  className="css-1kqiarg css-1gftye4"
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "Price Info",
-                                    }
+                              <div
+                                className="css-1kqiarg css-1gftye4"
+                                dangerouslySetInnerHTML={
+                                  Object {
+                                    "__html": "Price Info",
                                   }
-                                  data-test-id="priceInfo: Price Info"
-                                />
-                              </PriceInfo>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </ProductGridPrice>
-                  </Component>
+                                }
+                                data-test-id="priceInfo: Price Info"
+                              />
+                            </PriceInfo>
+                          </li>
+                        </GridItem>
+                      </ul>
+                    </Grid>
+                  </ProductGridPrice>
                 </Portal>
                 <Portal
                   name="product-item.price.after"

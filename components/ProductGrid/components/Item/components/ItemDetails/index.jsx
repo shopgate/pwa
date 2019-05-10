@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import MapPriceHint from '@shopgate/pwa-ui-shared/MapPriceHint';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';
@@ -37,7 +36,6 @@ class ItemDetails extends PureComponent {
     return (
       <div className={styles.details}>
         <ItemName display={display} productId={productId} name={name} />
-        <MapPriceHint productId={productId} location="plp" />
         <ItemPrice display={display} productId={productId} price={price} />
       </div>
     );
