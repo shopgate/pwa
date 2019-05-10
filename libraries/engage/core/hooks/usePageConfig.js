@@ -16,7 +16,7 @@ export function usePageConfig() {
   const page = pages.find(element => element.pattern === route.pattern);
 
   if (!page) {
-    logger.error(`A page config could not be found for: ${route.pattern}`);
+    logger.error(`No page config found for page pattern "${route.pattern}"`);
     return {};
   }
 

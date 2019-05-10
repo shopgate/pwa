@@ -7,26 +7,45 @@ import { usePageSettings } from './usePageSettings';
 import { useSettings } from './useSettings';
 
 /**
- * Retrieves the configuration for a specific widget by its ID.
- * @param {string} widgetId The ID of the widget to look for.
+ * Retrieves the widget-configuration for a specific widget by its ID and an optional index.
+ * If no index is given it will return the first found widget-configuration by widgetId.
+ *
+ * @param {string} widgetId The id of the widget to look for, which must exist in the config.
+ * @param {number|undefined} [index] The optional index of the widget.
  * @returns {Object}
  */
-export function useWidgetConfig(widgetId) {
+export function useWidgetConfig(widgetId, index) {
   const { pattern } = useRoute();
   const { pages } = useContext(ConfigContext);
   const { [widgetId]: pageSettings = {} } = usePageSettings();
   const { [widgetId]: globalSettings = {} } = useSettings();
   const page = pages.find(element => element.pattern === pattern);
 
-  if (!page || !page.widgets) {
-    logger.error(`A page config could not be found for: ${pattern}`);
+  if (!page) {
+    logger.error(`No page config found for page pattern "${pattern}"`);
     return {};
   }
 
-  const widget = page.widgets.find(element => element.id === widgetId);
+  if (!page.widgets) {
+    logger.error(`The page config for page pattern "${pattern}" does not contain any widgets`);
+    return {};
+  }
+
+  const widget = page.widgets.find((element, i) => {
+    if (index === undefined) {
+      return element.id === widgetId;
+    }
+
+    return element.id === widgetId && i === index;
+  });
 
   if (!widget) {
-    logger.error(`A widget config could not be found for: ${widgetId}`);
+    if (index === undefined) {
+      logger.error(`A widget config could not be found for widget "${widgetId}"`);
+    } else {
+      logger.error(`A widget config could not be found for widget "${widgetId}" at index ${index}`);
+    }
+
     return {};
   }
 
