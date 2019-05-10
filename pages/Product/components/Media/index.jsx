@@ -14,10 +14,10 @@ const MediaSlider = lazy(() => import('./components/MediaSlider'));
 const Media = ({ hasMedia }) => (
   <ProductContext.Consumer>
     {({ productId, variantId }) => (
-      <Suspense fallback={<div>Loading ... </div>}>
+      <Suspense fallback={<div />}>
         {
           hasMedia
-          ? <MediaSlider productId={productId} />
+          ? <MediaSlider productId={variantId || productId} />
           : <ImageSlider productId={productId} variantId={variantId} />
         }
       </Suspense>

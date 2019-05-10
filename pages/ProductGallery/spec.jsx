@@ -1,28 +1,23 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { basicProductState } from '@shopgate/pwa-common-commerce/product/mock';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { UnwrappedProductGallery } from './index';
-import Content from './components/Content';
+import { shallow } from 'enzyme';
+import ProductGallery from './index';
 
-const mockedStore = configureStore();
-
-jest.mock('Components/View');
-jest.mock('./components/Content');
+jest.mock('@shopgate/pwa-common/context', () => ({
+  RouteContext: {
+    Consumer: jest.fn(({ children }) => children({
+      params: {
+        productId: '53473130',
+        slide: 2,
+      },
+    })),
+  },
+}));
 
 describe('<ProductGallery> page', () => {
   it('should render content and an appbar', () => {
-    const store = mockedStore(basicProductState);
-    const id = Object.keys(basicProductState.product.productsById)[0];
-
-    const wrapper = mount((
-      <Provider store={store}>
-        <UnwrappedProductGallery id={id} />
-      </Provider>), mockRenderOptions);
-
+    const wrapper = shallow((
+      <ProductGallery />
+    )).dive().dive();
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Content).length).toEqual(1);
   });
 });

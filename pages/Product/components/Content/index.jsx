@@ -113,7 +113,7 @@ class ProductContent extends PureComponent {
         <Fragment>
           <AppBar productId={this.state.productId} />
           <ProductContext.Provider value={contextValue}>
-            <Media productId={this.state.productId} />
+            <Media productId={this.state.variantId || this.state.productId} />
             <Header />
             <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
             <Options />
