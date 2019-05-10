@@ -244,6 +244,5 @@ export { withCurrentProduct } from './hocs/withCurrentProduct';
 export { withNavigation } from './hocs/withNavigation';
 
 // --------------- CONFIG --------------- //
-export { ConfigParser } from './config/ConfigParser';
-export { ConfigContext } from './config/ConfigContext';
+export { ThemeConfigResolver } from './config/ThemeConfigResolver';
 export { isBeta } from './config/isBeta';

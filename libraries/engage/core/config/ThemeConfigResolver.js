@@ -1,12 +1,13 @@
 /* eslint-disable class-methods-use-this */
 import get from 'lodash/get';
+import appConfig, { writeToConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
- * Parses a JSON object and replaces placeholders with values from the object.
+ * Parses a JSON object and resolves placeholders with values from the object.
  */
-export class ConfigParser {
+export class ThemeConfigResolver {
   /**
-   * @param {Object} config The configuration to parse.
+   * @param {Object} config The configuration to resolve references for.
    * @param {string} [delimiter='$.'] What the replaceable starts with.
    * @constructor
    */
@@ -16,15 +17,27 @@ export class ConfigParser {
   }
 
   /**
-   * Parses the JSON configuration.
+   * Resolves the JSON configuration.
    * @returns {Object}
    */
-  parse() {
+  resolve() {
     if (!this.configIsFilled()) {
       return this.config;
     }
 
     return this.processObject(this.config);
+  }
+
+  /**
+   * Takes the current theme config and resolves all page- and widget-setting refs
+   */
+  resolveAll() {
+    this.config = appConfig.theme;
+    const resolvedThemeConfig = this.resolve();
+
+    // Special case where pages should be omitted because the resolver replaces them
+    this.config.pages = [];
+    writeToConfig({ theme: resolvedThemeConfig });
   }
 
   /**
