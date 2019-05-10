@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductPropertiesDefault /> should not render if no data is available 1`] = `
+<ProductPropertiesDefaultContainer
+  dispatch={[Function]}
+  properties={null}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+/>
+`;
+
+exports[`<ProductPropertiesDefault /> should render table with properties 1`] = `
+<Connect(ProductPropertiesDefaultContainer)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductPropertiesDefaultContainer
+    dispatch={[Function]}
+    properties={
+      Array [
+        Object {
+          "label": "test1",
+          "value": "123",
+        },
+        Object {
+          "label": "test2",
+          "value": "456",
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <SurroundPortals
+      portalName="product.properties"
+      portalProps={null}
+    >
+      <Portal
+        name="product.properties.before"
+        props={null}
+      />
+      <Portal
+        name="product.properties"
+        props={null}
+      >
+        <div
+          className={
+            Object {
+              "data-css-1x8awm9": "",
+            }
+          }
+        >
+          <table>
+            <tbody>
+              <ProductPropertiesRows
+                properties={
+                  Array [
+                    Object {
+                      "label": "test1",
+                      "value": "123",
+                    },
+                    Object {
+                      "label": "test2",
+                      "value": "456",
+                    },
+                  ]
+                }
+              >
+                <tr
+                  key="test1123"
+                >
+                  <td
+                    className={
+                      Object {
+                        "data-css-fl9ufm": "",
+                      }
+                    }
+                  >
+                    test1
+                  </td>
+                  <td
+                    className={
+                      Object {
+                        "data-css-fl9ufm": "",
+                      }
+                    }
+                    data-test-id="property: 123"
+                  >
+                    123
+                  </td>
+                </tr>
+                <tr
+                  key="test2456"
+                >
+                  <td
+                    className={
+                      Object {
+                        "data-css-fl9ufm": "",
+                      }
+                    }
+                  >
+                    test2
+                  </td>
+                  <td
+                    className={
+                      Object {
+                        "data-css-fl9ufm": "",
+                      }
+                    }
+                    data-test-id="property: 456"
+                  >
+                    456
+                  </td>
+                </tr>
+              </ProductPropertiesRows>
+            </tbody>
+          </table>
+        </div>
+      </Portal>
+      <Portal
+        name="product.properties.after"
+        props={null}
+      />
+    </SurroundPortals>
+  </ProductPropertiesDefaultContainer>
+</Connect(ProductPropertiesDefaultContainer)>
+`;

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductPropertiesRows /> should not render if properties are empty 1`] = `null`;
+
+exports[`<ProductPropertiesRows /> should render the properties as table rows 1`] = `
+Array [
+  <tr
+    key="test1123"
+  >
+    <td
+      className={
+        Object {
+          "data-css-fl9ufm": "",
+        }
+      }
+    >
+      test1
+    </td>
+    <td
+      className={
+        Object {
+          "data-css-fl9ufm": "",
+        }
+      }
+      data-test-id="property: 123"
+    >
+      123
+    </td>
+  </tr>,
+  <tr
+    key="test2456"
+  >
+    <td
+      className={
+        Object {
+          "data-css-fl9ufm": "",
+        }
+      }
+    >
+      test2
+    </td>
+    <td
+      className={
+        Object {
+          "data-css-fl9ufm": "",
+        }
+      }
+      data-test-id="property: 456"
+    >
+      456
+    </td>
+  </tr>,
+]
+`;
