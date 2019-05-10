@@ -11,11 +11,11 @@ const defaultConfig = {
 };
 
 /**
- * Builds the theme config.
+ * Builds and returns a new theme config object.
  * @param {Object} appConfig The app config.
  * @returns {Object}
  */
-export function getThemeConfig(appConfig) {
+export function buildThemeConfig(appConfig) {
   if (process.env.NODE_ENV === 'test') {
     return themeConfig;
   }

@@ -1,14 +1,16 @@
 import defaultsDeep from 'lodash/defaultsDeep';
-import appConfig, { themeName } from '@shopgate/pwa-common/helpers/config';
+import { themeName, writeToConfig } from '@shopgate/pwa-common/helpers/config';
+import configCommon from './config-common';
 import configGmd from './config-gmd';
 import configIos from './config-ios';
 
-appConfig.beta = true;
-
+let config = configCommon;
 if (themeName.includes('ios')) {
-  appConfig.theme = defaultsDeep(configIos, (appConfig.theme || {}));
+  config = defaultsDeep(configIos, config);
 } else {
-  appConfig.theme = defaultsDeep(configGmd, (appConfig.theme || {}));
+  config = defaultsDeep(configGmd, config);
 }
+
+writeToConfig(config);
 
 export default () => null;
