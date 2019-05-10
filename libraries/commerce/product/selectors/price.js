@@ -2,10 +2,10 @@ import { createSelector } from 'reselect';
 import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
 import {
   getProduct,
-  getProductPriceData,
   getProductUnitPrice,
   hasBaseProductVariants,
   isVariantSelected,
+
 } from './product';
 import {
   getRawProductOptions,
@@ -131,20 +131,5 @@ export const getProductPrice = createSelector(
     }
 
     return product.price;
-  }
-);
-
-/**
- * Return product price.mapPricing.
- * @param {Object} state The current application state.
- * @returns {boolean}
- */
-export const getProductMapPrice = createSelector(
-  getProductPriceData,
-  (price) => {
-    if (!price) {
-      return null;
-    }
-    return price.mapPricing || null;
   }
 );
