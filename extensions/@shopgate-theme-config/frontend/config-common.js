@@ -44,6 +44,10 @@ export default {
             name: 'ShopgateProductMediaSlider',
             id: '@shopgate/engage/product/MediaSlider',
           },
+          {
+            name: 'ShopgateProductProperties',
+            id: '@shopgate/engage/product/ProductProperties',
+          },
         ],
       },
     ],
