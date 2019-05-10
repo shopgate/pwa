@@ -1,7 +1,6 @@
-import { useContext } from 'react';
 import { logger } from '@shopgate/pwa-core';
 import defaultsDeep from 'lodash/defaultsDeep';
-import { ConfigContext } from '../config/ConfigContext';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
 import { useSettings } from './useSettings';
 
@@ -11,12 +10,12 @@ import { useSettings } from './useSettings';
  */
 export function usePageConfig() {
   const route = useRoute();
-  const { pages } = useContext(ConfigContext);
+  const { pages } = themeConfig;
   const globalSettings = useSettings();
   const page = pages.find(element => element.pattern === route.pattern);
 
   if (!page) {
-    logger.error(`A page config could not be found for: ${route.pattern}`);
+    logger.error(`No page config found for page pattern "${route.pattern}"`);
     return {};
   }
 

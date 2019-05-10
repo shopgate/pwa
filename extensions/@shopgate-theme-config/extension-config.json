@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "id": "@shopgate/theme-config",
+  "components": [
+    {
+      "id": "theme-config",
+      "type": "subscribers",
+      "path": "frontend/index.js"
+    }
+  ],
+  "configuration": {}
+}
