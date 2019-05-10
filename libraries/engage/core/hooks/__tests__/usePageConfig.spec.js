@@ -1,12 +1,29 @@
-import { useContext } from 'react';
+import { useRoute } from '../useRoute';
 import { usePageConfig } from '../usePageConfig';
 import { useSettings } from '../useSettings';
 
-const PATTERN = '/test';
-
 jest.mock('react', () => ({
-  useContext: jest.fn(),
   createContext: jest.fn(),
+}));
+
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  themeConfig: {
+    pages: [
+      {
+        pattern: '/test1',
+      },
+      {
+        pattern: '/test2',
+      },
+      {
+        pattern: '/test3',
+        settings: {
+          foo: 'fuzz',
+          test: true,
+        },
+      },
+    ],
+  },
 }));
 
 jest.mock('../useRoute', () => ({
@@ -19,19 +36,19 @@ jest.mock('../useSettings', () => ({
 
 describe('engage > core > hooks', () => {
   describe('usePageConfig()', () => {
+    beforeEach(() => {
+      jest.resetModules();
+    });
+
     it('should return an empty object if no settings', () => {
-      useContext.mockReturnValueOnce({
-        pages: [{ pattern: PATTERN }],
-      });
+      useRoute.mockReturnValueOnce({ pattern: '/test1' });
       useSettings.mockReturnValueOnce({});
       const config = usePageConfig();
       expect(config).toEqual({ settings: {} });
     });
 
     it('should return an object having global settings only', () => {
-      useContext.mockReturnValueOnce({
-        pages: [{ pattern: PATTERN }],
-      });
+      useRoute.mockReturnValueOnce({ pattern: '/test2' });
       useSettings.mockReturnValueOnce({
         foo: 'bar',
       });
@@ -40,15 +57,7 @@ describe('engage > core > hooks', () => {
     });
 
     it('should override page and global by widget settings', () => {
-      useContext.mockReturnValueOnce({
-        pages: [{
-          pattern: PATTERN,
-          settings: {
-            foo: 'fuzz',
-            test: true,
-          },
-        }],
-      });
+      useRoute.mockReturnValueOnce({ pattern: '/test3' });
       useSettings.mockReturnValueOnce({
         foo: 'bar',
       });
