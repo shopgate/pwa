@@ -1,13 +1,7 @@
 import { connect } from 'react-redux';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { getProductMedia, ITEM_PATH, MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '@shopgate/engage/product';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
-import {
-  getCurrentBaseProduct,
-  getProductMedia,
-  MEDIA_TYPE_IMAGE,
-  MEDIA_TYPE_VIDEO,
-} from '@shopgate/engage/product';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 
 /**
  * Maps the contents of the state to the component props.
@@ -20,15 +14,14 @@ const mapStateToProps = (state, props) => ({
     ...props,
     types: [MEDIA_TYPE_VIDEO, MEDIA_TYPE_IMAGE],
   }),
-  product: getCurrentBaseProduct(state, props),
 });
 
 /**
- * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
- * @param {Object} props The component props.
- * @return {Object} The extended component props.
- */
+* Connects the dispatch function to a callable function in the props.
+* @param {Function} dispatch The redux dispatch function.
+* @param {Object} props The component props.
+* @return {Object} The extended component props.
+*/
 const mapDispatchToProps = (dispatch, props) => ({
   navigate: currentSlide =>
     dispatch(historyPush({

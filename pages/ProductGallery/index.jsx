@@ -9,27 +9,27 @@ import ProductGalleryContent from './components/Content';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ProductGallery = ({ id, initialSlide }) => (
+const ProductGallery = ({ productId, initialSlide }) => (
   <View>
-    {id && <ProductGalleryContent productId={id} initialSlide={initialSlide} />}
+    {!!productId && <ProductGalleryContent productId={productId} initialSlide={initialSlide} />}
   </View>
 );
 
 ProductGallery.propTypes = {
-  id: PropTypes.string,
   initialSlide: PropTypes.number,
+  productId: PropTypes.string,
 };
 
 ProductGallery.defaultProps = {
-  id: null,
   initialSlide: 0,
+  productId: null,
 };
 
 export default () => (
   <RouteContext.Consumer>
     {({ params }) => (
       <ProductGallery
-        id={hex2bin(params.productId) || null}
+        productId={hex2bin(params.productId) || null}
         initialSlide={parseInt(params.slide, 10) || 0}
       />
     )}

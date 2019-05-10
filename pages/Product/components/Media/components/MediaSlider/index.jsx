@@ -1,21 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import { Swiper, Portal } from '@shopgate/pwa-common/components';
+import { SurroundPortals, Swiper } from '@shopgate/engage/components';
 import {
   PRODUCT_IMAGE,
-  PRODUCT_IMAGE_AFTER,
-  PRODUCT_IMAGE_BEFORE,
   MEDIA_TYPE_IMAGE,
   MEDIA_TYPE_VIDEO,
 } from '@shopgate/pwa-common-commerce/product';
-import Image from './components/Image';
-import Video from './components/Video';
+import MediaImage from './components/MediaImage';
+import MediaVideo from './components/MediaVideo';
 import connect from './connector';
 
 const typeRenders = {
-  [MEDIA_TYPE_IMAGE]: Image,
-  [MEDIA_TYPE_VIDEO]: Video,
+  [MEDIA_TYPE_IMAGE]: MediaImage,
+  [MEDIA_TYPE_VIDEO]: MediaVideo,
 };
 
 /**
@@ -24,6 +22,7 @@ const typeRenders = {
  */
 class MediaSlider extends Component {
   static propTypes = {
+    navigate: PropTypes.func.isRequired,
     media: PropTypes.arrayOf(PropTypes.shape({
       type: PropTypes.string,
       code: PropTypes.string,
@@ -31,14 +30,10 @@ class MediaSlider extends Component {
       subTitle: PropTypes.string,
       url: PropTypes.string,
     })),
-    navigate: PropTypes.func,
-    product: PropTypes.shape(),
   };
 
   static defaultProps = {
     media: null,
-    product: null,
-    navigate: () => { },
   };
 
   /**
@@ -46,10 +41,6 @@ class MediaSlider extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.product !== nextProps.product || this.props.navigate !== nextProps.navigate) {
-      return true;
-    }
-
     if (this.props.media && nextProps.media) {
       if (this.props.media.length !== nextProps.media.length) return true;
     }
@@ -59,7 +50,7 @@ class MediaSlider extends Component {
 
   currentSlide = 0;
 
-  handleOpenGallery = () => {
+  handleSlideClick = () => {
     const { media = [] } = this.props;
     if (!media.length) {
       return;
@@ -77,37 +68,26 @@ class MediaSlider extends Component {
    * @returns {JSX}
    */
   render() {
-    const { product, media = [] } = this.props;
+    const { media = [] } = this.props;
 
     return (
       <Fragment>
-        <Portal name={PRODUCT_IMAGE_BEFORE} />
-        <Portal name={PRODUCT_IMAGE}>
-          <div
-            data-test-id={`product: ${product ? product.name : ''}`}
-            onClick={this.handleOpenGallery}
-            onKeyDown={this.handleOpenGallery}
-            role="button"
-            tabIndex="0"
-          >
-            <Swiper
-              loop={media.length > 1}
-              indicators
-              onSlideChange={this.handleSlideChange}
-              disabled={media.length === 1}
-            >
-              {media.map((singleMedia) => {
-                const Type = typeRenders[singleMedia.type];
-                return (
-                  <Swiper.Item key={`${product.id}-${singleMedia.type}-${singleMedia.url}`}>
-                    <Type media={singleMedia} />
-                  </Swiper.Item>
-                );
-              })}
-            </Swiper>
-          </div>
-        </Portal>
-        <Portal name={PRODUCT_IMAGE_AFTER} />
+        <SurroundPortals portalName={PRODUCT_IMAGE} />
+        <Swiper
+          loop={media.length > 1}
+          indicators
+          onSlideChange={this.handleSlideChange}
+          disabled={media.length === 1}
+        >
+          {media.map((singleMedia) => {
+            const Type = typeRenders[singleMedia.type];
+            return (
+              <Swiper.Item key={Object.values(singleMedia).join('_')}>
+                <Type media={singleMedia} onClick={this.handleSlideClick} />
+              </Swiper.Item>
+            );
+          })}
+        </Swiper>
       </Fragment>
     );
   }

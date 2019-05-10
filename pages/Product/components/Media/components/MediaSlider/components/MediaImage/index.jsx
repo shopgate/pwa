@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import ProductImage from 'Components/ProductImage';
-import { PRODUCT_SLIDER_IMAGE_FORMATS } from './../../../../../constants';
+import { PRODUCT_SLIDER_IMAGE_FORMATS } from './../../../../../../constants';
+import styles from '../style';
 
 /**
  * The product media video slide component.
  */
-class Image extends Component {
+class MediaImage extends Component {
   static propTypes = {
     media: PropTypes.shape({
       altText: PropTypes.string,
       url: PropTypes.string,
     }).isRequired,
+    onClick: PropTypes.func.isRequired,
   };
 
   /**
@@ -23,6 +25,10 @@ class Image extends Component {
     return !isEqual(this.props.media, nextProps.media);
   }
 
+  handleClick = () => {
+    this.props.onClick();
+  }
+
   /**
    * Renders the product media slider component.
    * @returns {JSX}
@@ -31,13 +37,21 @@ class Image extends Component {
     const { media } = this.props;
 
     return (
-      <ProductImage
-        src={media.url}
-        alt={media.altText}
-        resolutions={[PRODUCT_SLIDER_IMAGE_FORMATS[0]]}
-      />
+      <div
+        onClick={this.handleClick}
+        onKeyDown={this.handleClick}
+        role="button"
+        tabIndex="0"
+        className={styles.full}
+      >
+        <ProductImage
+          src={media.url}
+          alt={media.altText}
+          resolutions={[PRODUCT_SLIDER_IMAGE_FORMATS[0]]}
+        />
+      </div>
     );
   }
 }
 
-export default Image;
+export default MediaImage;
