@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import { ITEM_PATH, LOCATION_GRID } from '@shopgate/engage/product';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import MapPriceHint from '@shopgate/pwa-ui-shared/MapPriceHint';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import ProductImage from 'Components/ProductImage';
 import ProductGridPrice from 'Components/ProductGridPrice';
 import styles from './style';
-
-const location = 'productCard';
 
 /**
  * The ProductCard component.
@@ -56,32 +53,13 @@ const ProductCard = ({
             <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
           </div>
         )}
-        <MapPriceHint productId={product.id} location={LOCATION_GRID} />
         {!hidePrice && (
           <Fragment>
-            <Portal
-              name={portals.PRODUCT_ITEM_PRICE_BEFORE}
-              props={{
-                productId: product.id,
-                location,
-              }}
-            />
-            <Portal
-              name={portals.PRODUCT_ITEM_PRICE}
-              props={{
-                productId: product.id,
-                location,
-              }}
-            >
+            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id, location: 'productCard' }} />
+            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id, location: 'productCard' }}>
               <ProductGridPrice price={product.price} />
             </Portal>
-            <Portal
-              name={portals.PRODUCT_ITEM_PRICE_AFTER}
-              props={{
-                productId: product.id,
-                location,
-              }}
-            />
+            <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id, location: 'productCard' }} />
           </Fragment>
         )}
       </div>
