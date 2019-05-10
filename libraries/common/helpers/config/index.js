@@ -1,5 +1,6 @@
 import pck from './../../package';
-import { getThemeConfig } from './theme';
+import { buildThemeConfig } from './theme';
+import { assignObjectDeep } from '../data';
 
 /**
  * Provides a default app config as a fallback.
@@ -34,8 +35,6 @@ const defaultAppConfig = {
   favorites: {},
 };
 
-export const themeName = process.env.THEME || 'theme';
-
 /**
  * @type {string} package version from package.json
  */
@@ -51,12 +50,6 @@ const defaultComponentsConfig = {
 };
 
 /**
- * The app.json config from the theme.
- * @typedef {Object}
- */
-const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : defaultAppConfig;
-
-/**
  * The components.json config from the theme.
  * @typedef {Object}
  */
@@ -66,10 +59,31 @@ export const componentsConfig = {
 };
 
 /**
- * The theme configuration.
+ * The app.json config from the theme which will automatically be resolved.
+ * Be careful when changing existing properties on the fly, reassignments should never be done!
  * @typedef {Object}
  */
-export const themeConfig = getThemeConfig(appConfig);
+const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : defaultAppConfig;
+
+/**
+ * The theme name.
+ * @typedef {string}
+ */
+export const themeName = process.env.THEME || 'theme';
+
+/**
+ * The resolved theme configuration.
+ * @typedef {Object}
+ */
+export const themeConfig = buildThemeConfig(appConfig);
+
+/**
+ * Takes an object with app config values and safely injects it into the current app config.
+ * @param {Object} newConfig Contains new config fields to inject into the existing destination.
+ */
+export function writeToConfig(newConfig) {
+  assignObjectDeep(appConfig, newConfig);
+}
 
 /**
  * The shop number.
