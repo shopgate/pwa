@@ -9,7 +9,6 @@ import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
 import Description from '../Description';
-// import Properties from '../Properties';
 import AppBar from '../AppBar';
 import connect from './connector';
 import { ProductContext } from '../../context';
