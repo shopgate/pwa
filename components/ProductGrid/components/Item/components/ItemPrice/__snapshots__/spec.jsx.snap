@@ -22,7 +22,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
       }
     }
   >
-    <Component
+    <ProductGridPrice
       price={Object {}}
     />
   </Portal>
