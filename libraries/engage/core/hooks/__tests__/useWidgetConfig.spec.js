@@ -31,6 +31,13 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
           settings: {
             test: 'fuzz',
           },
+        },
+        {
+          // Same widget id as before, but index is "1" this time and has different settings
+          id: '@shopgate/test/TestWidget',
+          settings: {
+            test: 'not fuzz',
+          },
         }],
       },
     ],
@@ -87,7 +94,7 @@ describe('engage > core > hooks', () => {
       expect(config).toEqual({ settings: { test: 'bar' } });
     });
 
-    it('should override page and global by widget settings', () => {
+    it('should override page and global by settings of the first matching widget without index', () => {
       useRoute.mockReturnValueOnce({ pattern: '/test4' });
       usePageSettings.mockReturnValueOnce({
         [WIDGET_ID]: {
@@ -101,6 +108,22 @@ describe('engage > core > hooks', () => {
       });
       const config = useWidgetConfig(WIDGET_ID);
       expect(config).toEqual({ settings: { test: 'fuzz' } });
+    });
+
+    it('should override page and global by widget settings at index 1', () => {
+      useRoute.mockReturnValueOnce({ pattern: '/test4' });
+      usePageSettings.mockReturnValueOnce({
+        [WIDGET_ID]: {
+          test: 'bar',
+        },
+      });
+      useSettings.mockReturnValueOnce({
+        [WIDGET_ID]: {
+          test: 'foo',
+        },
+      });
+      const config = useWidgetConfig(WIDGET_ID, 1);
+      expect(config).toEqual({ settings: { test: 'not fuzz' } });
     });
   });
 });
