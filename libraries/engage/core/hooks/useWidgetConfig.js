@@ -1,7 +1,6 @@
-import { useContext } from 'react';
 import { logger } from '@shopgate/pwa-core';
 import defaultsDeep from 'lodash/defaultsDeep';
-import { ConfigContext } from '../config/ConfigContext';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
 import { usePageSettings } from './usePageSettings';
 import { useSettings } from './useSettings';
@@ -13,7 +12,7 @@ import { useSettings } from './useSettings';
  */
 export function useWidgetConfig(widgetId) {
   const { pattern } = useRoute();
-  const { pages } = useContext(ConfigContext);
+  const { pages } = themeConfig;
   const { [widgetId]: pageSettings = {} } = usePageSettings();
   const { [widgetId]: globalSettings = {} } = useSettings();
   const page = pages.find(element => element.pattern === pattern);
