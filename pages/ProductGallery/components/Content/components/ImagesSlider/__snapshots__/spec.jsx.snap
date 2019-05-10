@@ -13,10 +13,10 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
     }
   }
 >
-  <Connect(ProductGalleryContent)
+  <Connect(ProductGalleryImages)
     initialSlide={3}
   >
-    <ProductGalleryContent
+    <ProductGalleryImages
       dispatch={[Function]}
       images={
         Array [
@@ -70,6 +70,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           snapItems={true}
           zoom={
             Object {
+              "enabled": true,
               "maxRatio": 3,
               "minRation": 1,
             }
@@ -227,6 +228,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               wrapperClass="swiper-wrapper"
               zoom={
                 Object {
+                  "enabled": true,
                   "maxRatio": 3,
                   "minRation": 1,
                 }
@@ -285,8 +287,8 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           </div>
         </Swiper>
       </div>
-    </ProductGalleryContent>
-  </Connect(ProductGalleryContent)>
+    </ProductGalleryImages>
+  </Connect(ProductGalleryImages)>
 </Provider>
 `;
 
@@ -303,10 +305,10 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
     }
   }
 >
-  <Connect(ProductGalleryContent)
+  <Connect(ProductGalleryImages)
     initialSlide={0}
   >
-    <ProductGalleryContent
+    <ProductGalleryImages
       dispatch={[Function]}
       images={
         Array [
@@ -360,6 +362,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           snapItems={true}
           zoom={
             Object {
+              "enabled": true,
               "maxRatio": 3,
               "minRation": 1,
             }
@@ -517,6 +520,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               wrapperClass="swiper-wrapper"
               zoom={
                 Object {
+                  "enabled": true,
                   "maxRatio": 3,
                   "minRation": 1,
                 }
@@ -575,7 +579,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           </div>
         </Swiper>
       </div>
-    </ProductGalleryContent>
-  </Connect(ProductGalleryContent)>
+    </ProductGalleryImages>
+  </Connect(ProductGalleryImages)>
 </Provider>
 `;

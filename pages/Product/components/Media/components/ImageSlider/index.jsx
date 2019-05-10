@@ -39,6 +39,7 @@ const getImagesByIndex = (images) => {
 /**
  * The product image slider component.
  * @param {number} currentSlide The index of the current visible slide.
+ * @deprecated since catalog 2.0
  */
 class ImageSlider extends Component {
   static propTypes = {
