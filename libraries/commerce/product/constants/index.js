@@ -74,3 +74,8 @@ export const PRODUCT_RELATIONS_TYPE_CUSTOM = 'custom';
 
 // PRODUCT METADATA
 export const UPDATE_METADATA = 'UPDATE_METADATA';
+
+// COMPONENT LOCATIONS (price, title, etc)
+export const LOCATION_CATEGORY = 'plp'; // category, product list
+export const LOCATION_PRODUCT = 'pdp'; // product page
+export const LOCATION_GRID = 'grid'; // other grids, sliders
