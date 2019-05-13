@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PRODUCT_PRICE_STRIKED,
   PRODUCT_PRICE_STRIKED_AFTER,
   PRODUCT_PRICE_STRIKED_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { LOCATION_PRODUCT } from '@shopgate/engage/product';
-import withPriceCalculation from '@shopgate/pwa-common-commerce/product/hocs/withPriceCalculation';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import StrikePrice from '@shopgate/pwa-ui-shared/PriceStriked';
@@ -51,4 +50,4 @@ PriceStriked.defaultProps = {
   price: null,
 };
 
-export default connect(withPriceCalculation(PriceStriked, LOCATION_PRODUCT));
+export default connect(pure(PriceStriked));
