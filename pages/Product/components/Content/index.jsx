@@ -119,7 +119,7 @@ class ProductContent extends PureComponent {
           <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
           <Options />
           <Description productId={this.state.productId} variantId={this.state.variantId} />
-          <ProductProperties />
+          <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
           <Reviews productId={this.state.productId} />
           <TaxDisclaimer />
           <AddToCartBar
