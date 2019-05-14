@@ -8,3 +8,4 @@ coverage
 !/extensions/@shopgate-product-reviews
 !/extensions/@shopgate-tracking-native
 !/extensions/@shopgate-user-privacy
+!/extensions/@shopgate-theme-config

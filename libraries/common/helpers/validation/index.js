@@ -1,4 +1,13 @@
 /**
+ * Tests if the prop is an array-object.
+ * @param {*} prop The property to test.
+ * @return {boolean}
+ */
+export const isArray = prop => (
+  (typeof prop === 'object') && (prop !== null) && (prop.constructor === Array)
+);
+
+/**
  * Tests if the prop is an object.
  * @param {*} prop The property to test.
  * @return {boolean}

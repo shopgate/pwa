@@ -12,11 +12,31 @@ import {
 } from '../constants/Device';
 
 /**
- * Returns client state (state.client)
+ * Returns the client state (state.client)
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getClientInformation = state => state.client;
+export const getClientState = state => state.client;
+
+/**
+ * Returns the client info state (state.client.info)
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getClientInformation = createSelector(
+  getClientState,
+  state => state.info
+);
+
+/**
+ * Returns the client connectivity state (state.client.connectivity)
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+export const getClientConnectivity = createSelector(
+  getClientState,
+  state => state.connectivity
+);
 
 /**
  * Returns the device information.
@@ -133,4 +153,34 @@ export const considerNativeInset = createSelector(
   isIos,
   getOSVersion,
   (ios, ver) => ios && ver && ver.indexOf('10.') === 0
+);
+
+/**
+ * Checks if the client is connected.
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const getIsConnected = createSelector(
+  getClientConnectivity,
+  connectivity => connectivity.connected
+);
+
+/**
+ * Determines the network type of the client connection e.g. LTE or UMTS.
+ * @param {Object} state The application state.
+ * @returns {string}
+ */
+export const getClientConnectivityNetwork = createSelector(
+  getClientConnectivity,
+  connectivity => connectivity.network
+);
+
+/**
+ * Determines the type of the client connection e.g. WIFI or 4G.
+ * @param {Object} state The application state.
+ * @returns {string}
+ */
+export const getClientConnectivityType = createSelector(
+  getClientConnectivity,
+  connectivity => connectivity.type
 );

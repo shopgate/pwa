@@ -5,6 +5,7 @@
     "extensions/@shopgate-product-reviews/frontend",
     "extensions/@shopgate-tracking-ga-native/frontend",
     "extensions/@shopgate-user-privacy/frontend",
+    "extensions/@shopgate-theme-config/frontend",
     "libraries/*",
     "themes/*",
     "utils/*"

@@ -128,6 +128,9 @@ export * from '@shopgate/pwa-common/store';
 // ACTIONS
 export { default as fetchClientInformation } from '@shopgate/pwa-common/actions/client/fetchClientInformation';
 
+// CONSTANTS
+export * from '@shopgate/pwa-common/constants/client';
+
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/client';
 
@@ -223,6 +226,15 @@ export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
 export { useCurrentProduct } from './hooks/useCurrentProduct';
 export { useNavigation } from './hooks/useNavigation';
+export { useConfig } from './hooks/useConfig';
+export { usePageConfig } from './hooks/usePageConfig';
+export { usePageSettings } from './hooks/usePageSettings';
+export { useSettings } from './hooks/useSettings';
+export { useColors } from './hooks/useColors';
+export { useAssets } from './hooks/useAssets';
+export { useWidgetConfig } from './hooks/useWidgetConfig';
+export { useWidgetSettings } from './hooks/useWidgetSettings';
+export { useWidgetStyles } from './hooks/useWidgetStyles';
 
 // --------------- HOCs --------------- //
 
@@ -230,3 +242,7 @@ export { withTheme } from './hocs/withTheme';
 export { withRoute } from './hocs/withRoute';
 export { withCurrentProduct } from './hocs/withCurrentProduct';
 export { withNavigation } from './hocs/withNavigation';
+
+// --------------- CONFIG --------------- //
+export { ThemeConfigResolver } from './config/ThemeConfigResolver';
+export { isBeta } from './config/isBeta';

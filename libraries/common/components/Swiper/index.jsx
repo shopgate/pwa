@@ -34,28 +34,63 @@ function Swiper(props) {
 
   const [swiper, setSwiper] = useState(null);
 
+  /**
+   * Updates the swiper instance reference.
+   * @param {Object} instance A Swiper instance.
+   */
+  const updateSwiper = (instance) => {
+    // Only update the instance, when it differs from the current one.
+    if (instance !== null && instance !== swiper) {
+      setSwiper(instance);
+    }
+  };
+
+  /**
+   * Removes all event listeners from the swiper instance.
+   */
+  const removeEventListeners = () => {
+    if (swiper !== null) {
+      swiper.off('slideChange');
+      swiper.off('transitionEnd');
+      swiper.off('beforeDestroy');
+    }
+  };
+
   useEffect(() => {
     if (swiper !== null) {
+      removeEventListeners();
+
+      if (loop) {
+        // Recreate the loop on prop updates to avoid duplicated slides from the last slide set.
+        swiper.loopCreate();
+      }
+
       swiper.update();
       swiper.on('slideChange', () => onSlideChange(swiper.realIndex));
       swiper.on('transitionEnd', () => {
         // In loop mode the Swiper duplicates elements, which are not in the virtual DOM
         if (loop) {
+          const autoplayRunning = swiper.autoplay.running;
+          const previousIndex = swiper.activeIndex;
+
           // Skip duplicated elements
           if (swiper.activeIndex < 1) {
             swiper.slideToLoop(children.length - 1, 0);
           } else if (swiper.activeIndex > children.length) {
             swiper.slideToLoop(0, 0);
           }
+
+          if (autoplayRunning && swiper.activeIndex !== previousIndex) {
+            // Restart the autoplay when it was active before the auto slide.
+            swiper.autoplay.start();
+          }
         }
       });
-      swiper.on('beforeDestroy', () => {
-        swiper.off('slideChange');
-        swiper.off('transitionEnd');
-        swiper.off('beforeDestroy');
-      });
+      swiper.on('beforeDestroy', () => removeEventListeners());
     }
-  }, [swiper]);
+
+    return () => removeEventListeners();
+  }, [swiper, children]);
 
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
@@ -92,10 +127,7 @@ function Swiper(props) {
     rebuildOnUpdate,
     slidesPerView,
     freeMode: !snapItems,
-    getSwiper: setSwiper,
-    on: {
-      slideChange: () => onSlideChange(swiper ? swiper.realIndex : 0),
-    },
+    getSwiper: updateSwiper,
     zoom,
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
