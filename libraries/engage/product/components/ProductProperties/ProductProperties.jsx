@@ -1,19 +1,34 @@
 import React from 'react';
-import { isBeta, useCurrentProduct } from '../../../core';
-import { ProductPropertiesDefault } from './ProductPropertiesDefault';
+import PropTypes from 'prop-types';
+import { isBeta } from '../../../core';
+import { ProductPropertiesSimple } from './ProductPropertiesSimple';
+import { ProductPropertiesGrouped } from './ProductPropertiesGrouped';
+import connect from './ProductProperties.connector';
 
 /**
  * The product properties.
  * @returns {JSX}
  */
-export function ProductProperties() {
-  const productProps = useCurrentProduct();
+function ProductPropertiesContainer({ properties }) {
+  if (!properties) {
+    return null;
+  }
 
-  if (!isBeta()) {
-    return <ProductPropertiesDefault {...productProps} />;
+  if (!isBeta()) { // TODO: Can be removed once the beta phase (product) is over!
+    return <ProductPropertiesSimple properties={properties} />;
   }
 
   return (
-    <div>New Properties</div>
+    <ProductPropertiesGrouped properties={properties} />
   );
 }
+
+ProductPropertiesContainer.propTypes = {
+  properties: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+ProductPropertiesContainer.defaultProps = {
+  properties: null,
+};
+
+export const ProductProperties = connect(ProductPropertiesContainer);

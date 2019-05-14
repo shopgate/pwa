@@ -2,6 +2,7 @@ import { css } from 'glamor';
 
 export const content = css({
   overflow: 'hidden',
+  willChange: 'height',
 });
 
 export const contentInner = css({

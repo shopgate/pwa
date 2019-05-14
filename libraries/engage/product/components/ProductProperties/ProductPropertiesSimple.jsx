@@ -4,13 +4,12 @@ import { SurroundPortals } from '@shopgate/pwa-common/components';
 import { PRODUCT_PROPERTIES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { ProductPropertiesRows } from './ProductPropertiesRows';
 import { container } from './ProductProperties.style';
-import connect from './ProductPropertiesDefault.connector';
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function ProductPropertiesDefaultContainer({ properties }) {
+export function ProductPropertiesSimple({ properties }) {
   return (
     <SurroundPortals portalName={PRODUCT_PROPERTIES}>
       {(properties !== null && properties.length !== 0) && (
@@ -26,12 +25,10 @@ function ProductPropertiesDefaultContainer({ properties }) {
   );
 }
 
-ProductPropertiesDefaultContainer.propTypes = {
+ProductPropertiesSimple.propTypes = {
   properties: PropTypes.arrayOf(PropTypes.shape()),
 };
 
-ProductPropertiesDefaultContainer.defaultProps = {
+ProductPropertiesSimple.defaultProps = {
   properties: null,
 };
-
-export const ProductPropertiesDefault = connect(ProductPropertiesDefaultContainer);

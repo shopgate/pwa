@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductPropertiesRowGrouped /> should render two rows of properties 1`] = `
+Array [
+  <ProductPropertiesRow
+    key="undefined-undefined"
+  />,
+  <ProductPropertiesRow
+    key="undefined-undefined"
+  />,
+]
+`;

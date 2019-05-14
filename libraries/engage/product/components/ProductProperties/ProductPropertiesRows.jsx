@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { tableCell } from './ProductProperties.style';
+import { ProductPropertiesRowUngrouped } from './ProductPropertiesRowUngrouped';
+import { ProductPropertiesSubGroups } from './ProductPropertiesSubGroups';
 
 /**
  * @param {Object} props The component props.
  * @return {JSX}
  */
 export function ProductPropertiesRows({ properties }) {
-  return properties.map(({ label, value }) => (
-    <tr key={`${label}${value}`}>
-      <td className={tableCell}>{label}</td>
-      <td className={tableCell} data-test-id={`property: ${value}`}>{value}</td>
-    </tr>
-  ));
+  return (
+    <React.Fragment>
+      <ProductPropertiesRowUngrouped properties={properties} />
+      <ProductPropertiesSubGroups properties={properties} />
+    </React.Fragment>
+  );
 }
 
 ProductPropertiesRows.propTypes = {

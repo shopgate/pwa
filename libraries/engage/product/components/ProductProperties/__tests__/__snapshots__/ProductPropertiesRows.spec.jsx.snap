@@ -1,54 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductPropertiesRows /> should not render if properties are empty 1`] = `null`;
+exports[`<ProductPropertiesRows /> should not render if properties are empty 1`] = `
+<Fragment>
+  <ProductPropertiesRowUngrouped
+    properties={Array []}
+  />
+  <ProductPropertiesSubGroups
+    properties={Array []}
+  />
+</Fragment>
+`;
 
-exports[`<ProductPropertiesRows /> should render the properties as table rows 1`] = `
-Array [
-  <tr
-    key="test1123"
-  >
-    <td
-      className={
+exports[`<ProductPropertiesRows /> should render grouped and ungrouped properties 1`] = `
+<Fragment>
+  <ProductPropertiesRowUngrouped
+    properties={
+      Array [
         Object {
-          "data-css-fl9ufm": "",
-        }
-      }
-    >
-      test1
-    </td>
-    <td
-      className={
+          "label": "test1",
+          "value": "123",
+        },
         Object {
-          "data-css-fl9ufm": "",
-        }
-      }
-      data-test-id="property: 123"
-    >
-      123
-    </td>
-  </tr>,
-  <tr
-    key="test2456"
-  >
-    <td
-      className={
+          "label": "test2",
+          "value": "456",
+        },
         Object {
-          "data-css-fl9ufm": "",
-        }
-      }
-    >
-      test2
-    </td>
-    <td
-      className={
+          "label": "test3",
+          "subDisplayGroup": "TestGroup",
+          "value": "789",
+        },
+      ]
+    }
+  />
+  <ProductPropertiesSubGroups
+    properties={
+      Array [
         Object {
-          "data-css-fl9ufm": "",
-        }
-      }
-      data-test-id="property: 456"
-    >
-      456
-    </td>
-  </tr>,
-]
+          "label": "test1",
+          "value": "123",
+        },
+        Object {
+          "label": "test2",
+          "value": "456",
+        },
+        Object {
+          "label": "test3",
+          "subDisplayGroup": "TestGroup",
+          "value": "789",
+        },
+      ]
+    }
+  />
+</Fragment>
 `;

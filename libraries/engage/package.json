@@ -23,9 +23,11 @@
     "@shopgate/pwa-ui-shared": "6.4.1",
     "@virtuous/conductor": "^2.3.0",
     "lodash": "^4.17.11",
-    "react-spring": "^8.0.20"
+    "react-spring": "^8.0.20",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
+    "jest-mock-console": "^0.4.2",
     "prop-types": "^15.6.0",
     "react": "~16.8.4",
     "redux": "^4.0.1",

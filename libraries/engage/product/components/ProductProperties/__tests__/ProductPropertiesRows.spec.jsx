@@ -11,6 +11,11 @@ const properties = [
     label: 'test2',
     value: '456',
   },
+  {
+    label: 'test3',
+    value: '789',
+    subDisplayGroup: 'TestGroup',
+  },
 ];
 
 describe('<ProductPropertiesRows />', () => {
@@ -20,13 +25,10 @@ describe('<ProductPropertiesRows />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render the properties as table rows', () => {
+  it('should render grouped and ungrouped properties', () => {
     const wrapper = shallow(<ProductPropertiesRows properties={properties} />);
-    expect(wrapper.find('tr').length).toEqual(2);
-    expect(wrapper.find('tr').at(0).childAt(0).text()).toEqual('test1');
-    expect(wrapper.find('tr').at(0).childAt(1).text()).toEqual('123');
-    expect(wrapper.find('tr').at(1).childAt(0).text()).toEqual('test2');
-    expect(wrapper.find('tr').at(1).childAt(1).text()).toEqual('456');
+    expect(wrapper.find('ProductPropertiesRowUngrouped').length).toEqual(1);
+    expect(wrapper.find('ProductPropertiesSubGroups').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 });
