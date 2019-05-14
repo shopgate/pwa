@@ -29,7 +29,9 @@ const mockState = {
     },
   },
   client: {
-    libVersion: SCANNER_MIN_APP_LIB_VERSION,
+    info: {
+      libVersion: SCANNER_MIN_APP_LIB_VERSION,
+    },
   },
 };
 
@@ -109,7 +111,9 @@ describe('Pages Subscriptions', () => {
         const state = {
           ...mockState,
           client: {
-            libVersion: '10.0',
+            info: {
+              libVersion: '10.0',
+            },
           },
         };
 
