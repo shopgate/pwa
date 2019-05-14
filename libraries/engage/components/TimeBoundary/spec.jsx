@@ -1,8 +1,8 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
 import { mount } from 'enzyme';
+import { second$ } from '@shopgate/pwa-common/streams/interval';
 import TimeBoundary from './index';
-import { minute$ } from '../../streams/interval';
 
 describe('<TimeBoundary>', () => {
   const nowMs = new Date().getTime();
@@ -14,7 +14,7 @@ describe('<TimeBoundary>', () => {
     subscription = {
       unsubscribe: jest.fn(),
     };
-    subscribeSpy = jest.spyOn(minute$, 'subscribe').mockReturnValue(subscription);
+    subscribeSpy = jest.spyOn(second$, 'subscribe').mockReturnValue(subscription);
     children = jest.fn();
   });
 

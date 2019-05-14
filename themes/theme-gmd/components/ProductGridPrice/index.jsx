@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { LOCATION_CATEGORY } from '@shopgate/engage/product';
-import withPriceCalculation from '@shopgate/pwa-common-commerce/product/hocs/withPriceCalculation';
+import { withPriceCalculation } from '@shopgate/engage/product';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
@@ -56,4 +55,4 @@ ProductGridPrice.propTypes = {
   price: PropTypes.shape().isRequired,
 };
 
-export default withPriceCalculation(ProductGridPrice, LOCATION_CATEGORY);
+export default withPriceCalculation(ProductGridPrice);

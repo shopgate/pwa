@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 
 /**
- * Gets triggered every minute.
+ * Gets triggered every second.
  * @type {Observable}
  */
-export const minute$ = Observable.interval(60000);
+export const second$ = Observable.interval(1000);

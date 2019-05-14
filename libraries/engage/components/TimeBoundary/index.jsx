@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
-import { isBefore, isAfter, isBetween } from '../../helpers/date';
-import { minute$ } from '../../streams/interval';
+import { isBefore, isAfter, isBetween } from '@shopgate/pwa-common/helpers/date';
+import { second$ } from '@shopgate/pwa-common/streams/interval';
 
 /**
  * The TimeBoundary component.
@@ -40,7 +40,7 @@ class TimeBoundary extends Component {
    * @inheritDoc
    */
   componentDidMount() {
-    this.intervalSubscription = minute$.subscribe(this.checkBoundary);
+    this.intervalSubscription = second$.subscribe(this.checkBoundary);
     this.checkBoundary();
   }
 
