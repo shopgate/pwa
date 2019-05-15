@@ -121,7 +121,7 @@ class ProductSlider extends Component {
           indicators={false}
           controls={false}
           interval={Number.parseInt(sliderSettings.delay, 10)}
-          snapItems
+          snapItems={false}
           slidesPerView={2.3}
           classNames={{ container: styles.sliderContainer }}
         >
