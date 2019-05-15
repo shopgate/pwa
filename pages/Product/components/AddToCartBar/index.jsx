@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { isBeta } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -174,7 +175,7 @@ class AddToCartBar extends Component {
                     handleAddToCart={this.handleAddToCart}
                     onReset={this.resetClicked}
                   />
-                  <QuantityPicker />
+                  {isBeta() && <QuantityPicker productId={this.props.productId} />}
                 </div>
               </div>
             </div>
