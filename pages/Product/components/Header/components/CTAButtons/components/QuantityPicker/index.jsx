@@ -1,22 +1,16 @@
-import React, { Fragment } from 'react';
-import { hasQuantityPicker } from '@shopgate/engage/product';
+import React from 'react';
+import { QuantityPicker, withProductStock } from '@shopgate/engage/product';
 import { ProductContext } from '../../../../../../context';
-import ProductQuantityPicker from './components/ProductQuantityPicker';
 
-/**
- * The QuantityPicker component.
- * @returns {JSX}
- */
-const QuantityPicker = () => (
-  <Fragment>
-    {hasQuantityPicker() &&
-      <ProductContext.Consumer>
-        {({ productId, variantId }) => (
-          <ProductQuantityPicker productId={variantId || productId} />
-        )}
-      </ProductContext.Consumer>
-    }
-  </Fragment>
-);
+export default withProductStock(props => (
+  <ProductContext.Consumer>
+    {({ conditioner, setQuantity }) => (
+      <QuantityPicker
+        conditioner={conditioner}
+        setQuantity={setQuantity}
+        {...props}
+      />
+    )}
+  </ProductContext.Consumer>
 
-export default QuantityPicker;
+));
