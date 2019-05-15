@@ -1,8 +1,11 @@
+import { useWidgetSettings } from '../../core';
 import withMapPricing from './withMapPricing';
 
-jest.mock('@shopgate/pwa-common/components/TimeBoundary');
-jest.mock('@shopgate/pwa-common-commerce/product/helpers/mapPrice', () => ({
-  isVisiblePLP: true,
+jest.mock('@shopgate/engage/components', () => ({
+  TimeBoundary: jest.fn(),
+}));
+jest.mock('../../core', () => ({
+  useWidgetSettings: jest.fn(),
 }));
 
 describe('withMapPricing', () => {
@@ -18,19 +21,26 @@ describe('withMapPricing', () => {
   let mockComponent;
   beforeEach(() => {
     mockComponent = jest.fn();
+    jest.resetAllMocks();
   });
 
   describe('should keep origin price', () => {
+    it('should return origin when settings is off', () => {
+      useWidgetSettings.mockReturnValue({ show: false });
+      expect(withMapPricing(mockComponent)({}).props).toEqual({});
+    });
+
     it('should return empty props', () => {
-      const component = withMapPricing(mockComponent)({});
-      expect(component.props).toEqual({});
+      useWidgetSettings.mockReturnValue({ show: true });
+      expect(withMapPricing(mockComponent)({}).props).toEqual({});
     });
 
     it('should return original price', () => {
-      const component = withMapPricing(mockComponent)({ price });
-      expect(component.props).toEqual({ price });
+      useWidgetSettings.mockReturnValue({ show: true });
+      expect(withMapPricing(mockComponent)({ price }).props).toEqual({ price });
     });
     it('should return origin with lesser mapPrice', () => {
+      useWidgetSettings.mockReturnValue({ show: true });
       const component = withMapPricing(mockComponent)({
         price: {
           ...price,
@@ -52,6 +62,7 @@ describe('withMapPricing', () => {
     });
 
     it('should not mutate when mapPrice out of time boundary', () => {
+      useWidgetSettings.mockReturnValue({ show: true });
       const component = withMapPricing(mockComponent)({
         price: {
           ...price,
@@ -73,6 +84,7 @@ describe('withMapPricing', () => {
 
   describe('should mutate', () => {
     it('should mutate strike price', () => {
+      useWidgetSettings.mockReturnValue({ show: true });
       const component = withMapPricing(mockComponent)({
         price: {
           ...price,

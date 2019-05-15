@@ -37,3 +37,9 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
+
+// COMPONENTS
+export { default as MapPriceHint } from './components/MapPriceHint';
+
+// HOCs
+export { default as withPriceCalculation } from './hocs/withPriceCalculation';

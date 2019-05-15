@@ -1,6 +1,9 @@
 import withPriceCalculation from './withPriceCalculation';
 import withMapPricing from './withMapPricing';
 
+jest.mock('../../core', () => ({
+  isBeta: jest.fn().mockReturnValue(true),
+}));
 jest.mock('./withMapPricing');
 
 describe('withPriceCalculation', () => {
