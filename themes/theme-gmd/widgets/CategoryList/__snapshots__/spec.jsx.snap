@@ -50,7 +50,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     >
       Yay Categories
     </h3>
-    <List
+    <SheetList
       className={null}
       hasImages={false}
       testId={null}
@@ -181,7 +181,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           </ListItem>
         </ul>
       </List>
-    </List>
+    </SheetList>
   </div>
 </CategoryListWidget>
 `;

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import BaseList from '@shopgate/pwa-common/components/List';
-import BaseListItem from '@shopgate/pwa-common/components/List/components/Item';
+import { List } from '../';
 import Item from './components/Item';
 import styles from './style';
 
 /**
- * The list component.
+ * The SheetList component.
+ * Styled sheet for List component
  */
-class List extends Component {
+class SheetList extends Component {
   static Item = Item;
 
   static propTypes = {
@@ -40,7 +40,7 @@ class List extends Component {
     }
 
     return (
-      <BaseList className={className}>
+      <List className={className}>
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) {
             return null;
@@ -49,15 +49,21 @@ class List extends Component {
           const key = `child-${index}`;
           // Selected state for the child.
           const { isSelected } = child.props;
+          // Whether or not this child is the last.
+          const isLast = (index === children.length - 1);
 
           const classes = [styles.item];
+
+          if (!isLast) {
+            classes.push(styles.itemNotLast);
+          }
 
           if (hasImages) {
             classes.push(styles.itemWithImage);
           }
 
           return (
-            <BaseListItem
+            <List.Item
               className={classNames(classes)}
               isSelected={isSelected}
               key={key}
@@ -65,12 +71,12 @@ class List extends Component {
               <div className={styles.innerContainer} data-test-id={testId}>
                 {child}
               </div>
-            </BaseListItem>
+            </List.Item>
           );
         })}
-      </BaseList>
+      </List>
     );
   }
 }
 
-export default List;
+export default SheetList;

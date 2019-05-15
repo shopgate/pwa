@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
-import List from '../../index';
+import Item from './index';
 
 jest.mock('@shopgate/pwa-common/components/Link', () => {
   /**
@@ -12,11 +12,11 @@ jest.mock('@shopgate/pwa-common/components/Link', () => {
   return Link;
 });
 
-describe('<List.Item />', () => {
+describe('<SheetList.Item />', () => {
   const title = 'My Title';
 
   it('should render with a title but no image', () => {
-    const wrapper = mount(<List.Item title={title} />);
+    const wrapper = mount(<Item title={title} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('img').exists()).toBeFalsy();
@@ -25,7 +25,7 @@ describe('<List.Item />', () => {
   it('should render with an image', () => {
     const image = <img src="url/to/image" alt="Alternative text" />;
 
-    const wrapper = mount(<List.Item title={title} image={image} />);
+    const wrapper = mount(<Item title={title} image={image} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('img').exists()).toBeTruthy();
@@ -34,7 +34,7 @@ describe('<List.Item />', () => {
   it('should render with a right component', () => {
     const rightComponent = <span>I`m a span.</span>;
 
-    const wrapper = mount(<List.Item
+    const wrapper = mount(<Item
       title={title}
       rightComponent={rightComponent}
     />);
@@ -44,21 +44,21 @@ describe('<List.Item />', () => {
   });
 
   it('should render without a Glow when selected', () => {
-    const wrapper = mount(<List.Item title={title} isSelected />);
+    const wrapper = mount(<Item title={title} isSelected />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Glow).exists()).toBeFalsy();
   });
 
   it('should render without a Glow when disabled', () => {
-    const wrapper = mount(<List.Item title={title} isDisabled />);
+    const wrapper = mount(<Item title={title} isDisabled />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Glow).exists()).toBeFalsy();
   });
 
   it('should render with a link', () => {
-    const wrapper = mount(<List.Item title={title} link="url/to/somewhere" />);
+    const wrapper = mount(<Item title={title} link="url/to/somewhere" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Link').exists()).toBeTruthy();
@@ -76,7 +76,7 @@ describe('<List.Item />', () => {
       spy();
     };
 
-    const wrapper = mount(<List.Item title={title} onClick={clickHandler} />);
+    const wrapper = mount(<Item title={title} onClick={clickHandler} />);
 
     wrapper.simulate('click');
 
@@ -85,7 +85,7 @@ describe('<List.Item />', () => {
   });
 
   it('should update the component when the isDisabled prop changed', () => {
-    const wrapper = mount(<List.Item title={title} isDisabled />);
+    const wrapper = mount(<Item title={title} isDisabled />);
     const props = wrapper.props();
     const updated = wrapper.instance().shouldComponentUpdate({
       ...props,
@@ -96,7 +96,7 @@ describe('<List.Item />', () => {
   });
 
   it('should update the component when the isSelected prop changed', () => {
-    const wrapper = mount(<List.Item title={title} isSelected />);
+    const wrapper = mount(<Item title={title} isSelected />);
     const props = wrapper.props();
     const updated = wrapper.instance().shouldComponentUpdate({
       ...props,

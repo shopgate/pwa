@@ -33,10 +33,6 @@ const defaultAppConfig = {
   cart: {},
   scanner: {},
   favorites: {},
-  product: {
-    minOrderQuantity: 1,
-    maxOrderQuantity: 1,
-  },
 };
 
 /**

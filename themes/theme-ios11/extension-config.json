@@ -311,18 +311,6 @@
         "label": "Scanner settings: icon on/off, etc"
       }
     },
-    "product": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": {
-        "minOrderQuantity": 1,
-        "maxOrderQuantity": 50
-      },
-      "params": {
-        "type": "json",
-        "label": "Product settings: min/max order qtys, etc"
-      }
-    },
     "productPrices": {
       "type": "admin",
       "destination": "frontend",

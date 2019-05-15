@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Image from '@shopgate/pwa-common/components/Image';
+import { SheetList } from '@shopgate/engage/components';
 import Headline from 'Components/Headline';
-import List from 'Components/List';
 import isEqual from 'lodash/isEqual';
 import connect from './connector';
 
@@ -56,7 +56,7 @@ class CategoryListWidget extends Component {
     return (
       <Fragment>
         {(settings.headline) && <Headline text={settings.headline} />}
-        <List hasImages={settings.showImages}>
+        <SheetList hasImages={settings.showImages}>
           {items.map((item) => {
             // We have to decode the link before using it.
             const link = `/category/${bin2hex(item.id)}`;
@@ -67,7 +67,7 @@ class CategoryListWidget extends Component {
               ) : null;
 
             return (
-              <List.Item
+              <SheetList.Item
                 image={Avatar}
                 link={link}
                 key={item.id}
@@ -76,7 +76,7 @@ class CategoryListWidget extends Component {
               />
             );
           })}
-        </List>
+        </SheetList>
       </Fragment>
     );
   }

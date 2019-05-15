@@ -26,7 +26,6 @@ export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';
-export * from '@shopgate/pwa-common-commerce/product/helpers/config';
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/product/selectors/options';
@@ -38,3 +37,9 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
+
+// HOCS
+export { default as withProductStock } from './hocs/withProductStock';
+
+// COMPONENTS
+export { default as QuantityPicker } from './components/QuantityPicker';
