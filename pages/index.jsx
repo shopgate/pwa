@@ -2,6 +2,7 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { ThemeConfigResolver } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { history } from '@shopgate/pwa-common/helpers/router';
@@ -44,6 +45,8 @@ import themeApi from '../themeApi';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900';
 
+new ThemeConfigResolver().resolveAll();
+
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
@@ -51,7 +54,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
     <NavigationHandler>
-      <AppContext.Provider value={{ ...appConfig }}>
+      <AppContext.Provider value={appConfig}>
         <ThemeContext.Provider value={themeApi}>
           <LoadingProvider>
             <ToastProvider>
@@ -91,7 +94,7 @@ const Pages = ({ store }) => (
         </ThemeContext.Provider>
       </AppContext.Provider>
     </NavigationHandler>
-  </App >
+  </App>
 );
 
 Pages.propTypes = {
