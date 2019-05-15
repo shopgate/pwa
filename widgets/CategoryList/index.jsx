@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Image from '@shopgate/pwa-common/components/Image';
-import List from 'Components/List';
+import { SheetList } from '@shopgate/engage/components';
 import isEqual from 'lodash/isEqual';
 import connect from './connector';
 import styles from './style';
@@ -56,7 +56,7 @@ class CategoryListWidget extends Component {
     return (
       <div className={styles.container} data-test-id="categoryList">
         {(settings.headline) ? <h3 className={styles.headline}>{settings.headline}</h3> : null}
-        <List hasImages={settings.showImages}>
+        <SheetList hasImages={settings.showImages}>
           {items.map((item) => {
             // We have to decode the link before using it.
             const link = `/category/${bin2hex(item.id)}`;
@@ -67,7 +67,7 @@ class CategoryListWidget extends Component {
               ) : null;
 
             return (
-              <List.Item
+              <SheetList.Item
                 image={Avatar}
                 link={link}
                 key={item.id}
@@ -76,7 +76,7 @@ class CategoryListWidget extends Component {
               />
             );
           })}
-        </List>
+        </SheetList>
       </div>
     );
   }

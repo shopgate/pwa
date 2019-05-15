@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
+import { isBeta } from '@shopgate/engage/core';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -42,7 +43,7 @@ const CTAButtons = ({ isFavorite, productId }) => (
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_BEFORE} />
         <Portal name={PRODUCT_CTAS_ADD_TO_CART}>
           <CartButton />
-          <QuantityPicker />
+          {isBeta() && <QuantityPicker productId={productId} />}
         </Portal>
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_AFTER} />
       </div>
