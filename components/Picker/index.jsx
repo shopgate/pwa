@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BasePicker from '@shopgate/pwa-common/components/Picker';
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
-import List from 'Components/List';
+import { SheetList } from '@shopgate/engage/components';
 import Button from './components/Button';
 import styles from './style';
 
@@ -52,9 +52,9 @@ class Picker extends Component {
     this.listComponent = ({
       items, onSelect, selectedIndex, onClose,
     }) => (
-      <List>
+      <SheetList>
         {items.map((item, index) => (
-          <List.Item
+          <SheetList.Item
             key={item.value}
             title={item.label}
             onClick={() => {
@@ -69,7 +69,7 @@ class Picker extends Component {
             testId={item.label}
           />
         ))}
-      </List>
+      </SheetList>
     );
   }
 
