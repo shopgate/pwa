@@ -16,6 +16,7 @@ import {
   cachedProductReceived$,
   productRelationsReceived$,
   receivedVisibleProduct$,
+  errorProductResourcesNotFound$,
   visibleProductNotFound$,
 } from '../streams';
 import fetchProductsById from '../actions/fetchProductsById';
@@ -67,11 +68,13 @@ function product(subscribe) {
     }
   });
 
-  const receivedVisibleProductDebounced$ = receivedVisibleProduct$.debounceTime(500);
-  /** Refresh product data after getting cache version for PDP */
-  subscribe(receivedVisibleProductDebounced$, ({ action, dispatch }) => {
-    const { id } = action.productData;
-    //dispatch(fetchProduct(id, true));
+  const errorProductResourcesNotFoundFirst$ = receivedVisibleProduct$
+    .switchMap(() => errorProductResourcesNotFound$.first());
+
+  /** Refresh product data after some of resources has ENOTFOUND code */
+  subscribe(errorProductResourcesNotFoundFirst$, ({ action, dispatch }) => {
+    const { productId } = action;
+    dispatch(fetchProduct(productId, true));
   });
 
   /** Visible product is no more available */

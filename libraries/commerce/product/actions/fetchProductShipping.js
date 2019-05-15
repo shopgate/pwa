@@ -27,7 +27,7 @@ const fetchProductShipping = productId => (dispatch, getState) => {
     .then(result => dispatch(receiveProductShipping(productId, result.shipping)))
     .catch((error) => {
       logger.error(error);
-      dispatch(errorProductShipping(productId));
+      dispatch(errorProductShipping(productId, error.code));
     });
 };
 

@@ -27,7 +27,7 @@ const fetchProductOptions = productId => (dispatch, getState) => {
     .then(result => dispatch(receiveProductOptions(productId, result.options)))
     .catch((error) => {
       logger.error(error);
-      dispatch(errorProductOptions(productId));
+      dispatch(errorProductOptions(productId, error.code));
     });
 };
 

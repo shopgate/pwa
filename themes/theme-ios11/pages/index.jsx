@@ -1,6 +1,7 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeConfigResolver } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
@@ -38,6 +39,8 @@ import locale from '../locale';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 
+new ThemeConfigResolver().resolveAll();
+
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
@@ -45,7 +48,7 @@ import * as routes from './routes';
 const Pages = ({ store }) => (
   <App locale={locale} store={store}>
     <NavigationHandler>
-      <AppContext.Provider value={{ ...appConfig }}>
+      <AppContext.Provider value={appConfig}>
         <ThemeContext.Provider value={themeApi}>
           <LoadingProvider>
             <ToastProvider>

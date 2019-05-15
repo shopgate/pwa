@@ -11,28 +11,34 @@ const defaultConfig = {
 };
 
 /**
- * Builds the theme config.
+ * Builds and returns a new theme config object.
  * @param {Object} appConfig The app config.
  * @returns {Object}
  */
-export function getThemeConfig(appConfig) {
+export function buildThemeConfig(appConfig) {
   if (process.env.NODE_ENV === 'test') {
     return themeConfig;
   }
 
-  const { colors = {}, theme: { styles: { globals = {} } = {} } = {} } = appConfig;
+  const { colors = {}, theme = {} } = appConfig;
 
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
   return {
-    font: globals.font,
+    ...theme,
+    font: theme.typography,
     colors: {
-      ...globals.colors,
+      ...theme.colors,
       ...colors,
+      /**
+       * The SDK creates some colors dynamically and populates them via the THEME_CONFIG.
+       * To avoid breaking changes, those colors also needs to be added for now.
+       */
+      ...oldTheme.colors,
     },
     variables: {
       ...(oldTheme.variables || {}),
-      materialShadow: globals.variables.baseShadow,
+      materialShadow: theme.variables.baseShadow,
     },
   };
 }
