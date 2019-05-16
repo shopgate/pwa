@@ -29,11 +29,11 @@ const hideAddToCartBar$ = main$
  * @param {Function} subscribe The subscribe function.
  */
 export default function addToCartBar(subscribe) {
-  subscribe(incrementActionCount$, ({ events }) => {
-    events.emit(constants.INCREMENT_ACTION_COUNT);
+  subscribe(incrementActionCount$, ({ events, action }) => {
+    events.emit(constants.INCREMENT_ACTION_COUNT, action.count);
   });
-  subscribe(decrementActionCount$, ({ events }) => {
-    events.emit(constants.DECREMENT_ACTION_COUNT);
+  subscribe(decrementActionCount$, ({ events, action }) => {
+    events.emit(constants.DECREMENT_ACTION_COUNT, action.count);
   });
   subscribe(resetActionCount$, ({ events }) => {
     events.emit(constants.RESET_ACTION_COUNT);
@@ -57,11 +57,23 @@ export default function addToCartBar(subscribe) {
     dispatch(actions.resetActionCount());
   });
 
-  subscribe(productsAdded$, ({ dispatch }) => {
-    dispatch(actions.incrementActionCount());
+  subscribe(productsAdded$, ({ dispatch, action }) => {
+    const { products = [] } = action;
+    const count = products.reduce((quantity, product) => {
+      // eslint-disable-next-line no-param-reassign
+      quantity += Number(product.quantity);
+      return quantity;
+    }, 0);
+    dispatch(actions.incrementActionCount(count));
   });
 
-  subscribe(productNotAdded$, ({ dispatch }) => {
-    dispatch(actions.decrementActionCount());
+  subscribe(productNotAdded$, ({ dispatch, action }) => {
+    const { products = [] } = action;
+    const count = products.reduce((quantity, product) => {
+      // eslint-disable-next-line no-param-reassign
+      quantity += Number(product.quantity);
+      return quantity;
+    }, 0);
+    dispatch(actions.decrementActionCount(count));
   });
 }

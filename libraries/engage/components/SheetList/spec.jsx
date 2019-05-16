@@ -1,52 +1,52 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import BaseListItem from '@shopgate/pwa-common/components/List/components/Item';
-import List from './index';
+import SheetList from './index';
 import styles from './style';
 
-describe('<List />', () => {
+describe('<SheetList />', () => {
   it('should render with two children', () => {
     const wrapper = mount((
-      <List>
-        <List.Item title="List Item" />
-        <List.Item title="List Item" />
-      </List>
+      <SheetList>
+        <SheetList.Item title="List Item" />
+        <SheetList.Item title="List Item" />
+      </SheetList>
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(List.Item).length).toEqual(2);
+    expect(wrapper.find(SheetList.Item).length).toEqual(2);
   });
 
   it('should render a child and add styles for list items with images', () => {
     const wrapper = mount((
-      <List hasImages>
-        <List.Item title="List Item" />
-      </List>
+      <SheetList hasImages>
+        <SheetList.Item title="List Item" />
+      </SheetList>
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(List.Item).length).toEqual(1);
+    expect(wrapper.find(SheetList.Item).length).toEqual(1);
     expect(wrapper.find(BaseListItem).first().hasClass(styles.itemWithImage)).toBeTruthy();
   });
 
   it('should not render without children', () => {
     const wrapper = mount((
-      <List />
+      <SheetList />
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(List).html()).toBe(null);
+    expect(wrapper.find(SheetList).html()).toBe(null);
   });
 
   it('should not render invalid children', () => {
     const wrapper = mount((
-      <List>
-        <List.Item title="List Item" />
+      <SheetList>
+        <SheetList.Item title="List Item" />
         xxx
-      </List>
+      </SheetList>
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(List.Item).length).toEqual(1);
+    expect(wrapper.find(SheetList.Item).length).toEqual(1);
   });
 });

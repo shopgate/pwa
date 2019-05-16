@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List /> should not render invalid children 1`] = `
-<List
+exports[`<SheetList /> should not render invalid children 1`] = `
+<SheetList
   className={null}
   hasImages={false}
   testId={null}
@@ -49,13 +49,13 @@ exports[`<List /> should not render invalid children 1`] = `
                     className="css-1qcr7hz css-h7r55a"
                   >
                     <GridItem
-                      className="css-10fxwvh"
+                      className="css-rx1nvy"
                       component="div"
                       grow={1}
                       shrink={1}
                     >
                       <div
-                        className="css-10fxwvh css-1gs0ko2"
+                        className="css-rx1nvy css-1gs0ko2"
                       >
                         List Item
                       </div>
@@ -69,19 +69,19 @@ exports[`<List /> should not render invalid children 1`] = `
       </ListItem>
     </ul>
   </List>
-</List>
+</SheetList>
 `;
 
-exports[`<List /> should not render without children 1`] = `
-<List
+exports[`<SheetList /> should not render without children 1`] = `
+<SheetList
   className={null}
   hasImages={false}
   testId={null}
 />
 `;
 
-exports[`<List /> should render a child and add styles for list items with images 1`] = `
-<List
+exports[`<SheetList /> should render a child and add styles for list items with images 1`] = `
+<SheetList
   className={null}
   hasImages={true}
   testId={null}
@@ -129,13 +129,13 @@ exports[`<List /> should render a child and add styles for list items with image
                     className="css-1qcr7hz css-h7r55a"
                   >
                     <GridItem
-                      className="css-10fxwvh"
+                      className="css-rx1nvy"
                       component="div"
                       grow={1}
                       shrink={1}
                     >
                       <div
-                        className="css-10fxwvh css-1gs0ko2"
+                        className="css-rx1nvy css-1gs0ko2"
                       >
                         List Item
                       </div>
@@ -149,11 +149,11 @@ exports[`<List /> should render a child and add styles for list items with image
       </ListItem>
     </ul>
   </List>
-</List>
+</SheetList>
 `;
 
-exports[`<List /> should render with two children 1`] = `
-<List
+exports[`<SheetList /> should render with two children 1`] = `
+<SheetList
   className={null}
   hasImages={false}
   testId={null}
@@ -201,13 +201,13 @@ exports[`<List /> should render with two children 1`] = `
                     className="css-1qcr7hz css-h7r55a"
                   >
                     <GridItem
-                      className="css-10fxwvh"
+                      className="css-rx1nvy"
                       component="div"
                       grow={1}
                       shrink={1}
                     >
                       <div
-                        className="css-10fxwvh css-1gs0ko2"
+                        className="css-rx1nvy css-1gs0ko2"
                       >
                         List Item
                       </div>
@@ -256,13 +256,13 @@ exports[`<List /> should render with two children 1`] = `
                     className="css-1qcr7hz css-h7r55a"
                   >
                     <GridItem
-                      className="css-10fxwvh"
+                      className="css-rx1nvy"
                       component="div"
                       grow={1}
                       shrink={1}
                     >
                       <div
-                        className="css-10fxwvh css-1gs0ko2"
+                        className="css-rx1nvy css-1gs0ko2"
                       >
                         List Item
                       </div>
@@ -276,5 +276,5 @@ exports[`<List /> should render with two children 1`] = `
       </ListItem>
     </ul>
   </List>
-</List>
+</SheetList>
 `;
