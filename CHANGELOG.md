@@ -1,6 +1,6 @@
 # Changelog
 
-## [v6.4.2](https://github.com/shopgate/pwa/compare/...v6.4.2) (2019-05-16)
+## [v6.4.2](https://github.com/shopgate/pwa/compare/v6.4.1...v6.4.2) (2019-05-16)
 
 #### :bug: Bug Fix
 * [#652](https://github.com/shopgate/pwa/pull/652) Fixed broken handling of channel urls ([@fkloes](https://github.com/fkloes))
