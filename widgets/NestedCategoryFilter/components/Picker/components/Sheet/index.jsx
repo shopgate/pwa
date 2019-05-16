@@ -1,15 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext } from '@shopgate/pwa-common/context';
-import List from 'Components/List';
+import { SheetDrawer, SheetList } from '@shopgate/engage/components';
 import Item from '../SheetItem';
 
 /**
  * The CategorySheet component.
  */
 class CategorySheet extends PureComponent {
-  static contextType = ThemeContext;
-
   static propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -42,14 +39,13 @@ class CategorySheet extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { Drawer } = this.context;
     const {
       items, label, onClose, open, selectedId,
     } = this.props;
 
     return (
-      <Drawer title={label} isOpen={open} onClose={onClose}>
-        <List>
+      <SheetDrawer title={label} isOpen={open} onClose={onClose}>
+        <SheetList>
           {items.map(item => (
             <Item
               item={item}
@@ -58,8 +54,8 @@ class CategorySheet extends PureComponent {
               selected={item.id === selectedId}
             />
           ))}
-        </List>
-      </Drawer>
+        </SheetList>
+      </SheetDrawer>
     );
   }
 }
