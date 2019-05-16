@@ -24,8 +24,29 @@ export default {
           showHints: null,
         },
       },
+      '@shopgate/engage/product/MapPrice': {
+        show: true,
+        showHint: true,
+        hint: null,
+      },
     },
     pages: [
+      {
+        pattern: '/category/:categoryId',
+        name: 'Product List Page',
+        settings: {},
+        widgets: [
+          {
+            name: 'ShopgateProductMapPrice',
+            id: '@shopgate/engage/product/MapPrice',
+            settings: {
+              show: true,
+              showHint: true,
+              hint: null,
+            },
+          },
+        ],
+      },
       {
         pattern: '/item/:productId',
         name: 'Product Detail Page',
@@ -43,6 +64,20 @@ export default {
           {
             name: 'ShopgateProductMediaSlider',
             id: '@shopgate/engage/product/MediaSlider',
+          },
+          {
+            name: 'ShopgateProductMapPrice',
+            id: '@shopgate/engage/product/MapPrice',
+            settings: {
+              show: true,
+              showHint: true,
+              hint: null,
+            },
+            styles: {
+              hint: {
+                fontSize: '1rem',
+              },
+            },
           },
           {
             name: 'ShopgateProductQuantityPicker',
