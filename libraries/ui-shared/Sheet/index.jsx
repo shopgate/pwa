@@ -30,7 +30,7 @@ class Sheet extends Component {
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
-    title: PropTypes.string,
+    title: Header.propTypes.title,
   };
 
   /**

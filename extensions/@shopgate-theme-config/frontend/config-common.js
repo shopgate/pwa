@@ -39,11 +39,6 @@ export default {
           {
             name: 'ShopgateProductMapPrice',
             id: '@shopgate/engage/product/MapPrice',
-            settings: {
-              show: true,
-              showHint: true,
-              hint: null,
-            },
           },
         ],
       },
@@ -72,14 +67,23 @@ export default {
           {
             name: 'ShopgateProductMapPrice',
             id: '@shopgate/engage/product/MapPrice',
-            settings: {
-              show: true,
-              showHint: true,
-              hint: null,
-            },
             styles: {
               hint: {
                 fontSize: '1rem',
+              },
+            },
+          },
+          {
+            name: 'ShopgateProductQuantityPicker',
+            id: '@shopgate/engage/product/QuantityPicker',
+            settings: {
+              minOrderQuantity: 1,
+              maxOrderQuantity: 50,
+            },
+            styles: {
+              sheet: {
+                maxHeight: '50vh',
+                minHeight: '50vh',
               },
             },
           },

@@ -5,7 +5,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { Placeholder } from '@shopgate/pwa-ui-shared';
 import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import List from 'Components/List';
+import { SheetList } from '@shopgate/engage/components';
 import styles from './style';
 
 /**
@@ -22,20 +22,20 @@ const CategoryList = ({ categories, prerender }) => {
     }
 
     return (
-      <List className={styles}>
+      <SheetList className={styles}>
         {[...Array(prerender)].map((val, index) => {
           const key = `placeholder-${index}`;
           return <Placeholder height={20} key={key} left={0} top={18} width={220} />;
         })}
-      </List>
+      </SheetList>
     );
   }
 
   return (
-    <List className={styles}>
+    <SheetList className={styles}>
       {categories.map(category => (
         <Portal key={category.id} name={CATEGORY_ITEM} props={{ categoryId: category.id }}>
-          <List.Item
+          <SheetList.Item
             link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
             title={category.name}
             linkState={{
@@ -46,7 +46,7 @@ const CategoryList = ({ categories, prerender }) => {
           />
         </Portal>
       ))}
-    </List>
+    </SheetList>
   );
 };
 

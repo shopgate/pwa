@@ -15,7 +15,7 @@ const selected = css({
 
 const title = css({
   width: '100%',
-  marginTop: 2,
+  marginTop: variables.gap.xsmall,
   paddingRight: 16,
   hyphens: 'auto',
   overflowWrap: 'break-word',
@@ -24,7 +24,7 @@ const title = css({
 
 const grid = css({
   alignItems: 'center',
-  minHeight: variables.navigator.height,
+  minHeight: 56,
   padding: `${variables.gap.small}px 0`,
   position: 'relative',
   zIndex: 2,

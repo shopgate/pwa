@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import List from 'Components/List';
+import { SheetList } from '@shopgate/engage/components';
 import { Unwrapped as CategoryListWidget } from './index';
 
 jest.mock('@shopgate/pwa-common/components/Link', () => {
@@ -26,7 +26,7 @@ describe('<CategoryListWidget />', () => {
 
     const wrapper = mount(<CategoryListWidget {...props} />);
 
-    expect(wrapper.find(List.Item).length).toBe(0);
+    expect(wrapper.find(SheetList.Item).length).toBe(0);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -54,7 +54,7 @@ describe('<CategoryListWidget />', () => {
 
     const wrapper = mount(<CategoryListWidget {...props} />);
 
-    expect(wrapper.find(List.Item).length).toBe(2);
+    expect(wrapper.find(SheetList.Item).length).toBe(2);
     expect(wrapper).toMatchSnapshot();
   });
 });
