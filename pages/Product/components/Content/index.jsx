@@ -77,6 +77,7 @@ class ProductContent extends PureComponent {
       productId,
       variantId,
       currency: nextProps.currency,
+      quantity: 1,
     });
   }
 
@@ -100,6 +101,14 @@ class ProductContent extends PureComponent {
   };
 
   /**
+   * Stores the selected quantity. Call provided cb
+   * @param {number} quantity product quantity.
+   * @param {Function} cb when context is updated
+   */
+  setQuantity = (quantity, cb = null) => {
+    this.setState({ quantity }, cb);
+  };
+  /**
    * @return {JSX}
    */
   render() {
@@ -108,6 +117,8 @@ class ProductContent extends PureComponent {
       ...this.state,
       ...this.baseContextValue,
       setOption: this.setOption,
+      quantity: this.state.quantity,
+      setQuantity: this.setQuantity,
     };
 
     return (

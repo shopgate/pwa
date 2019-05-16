@@ -15,15 +15,10 @@ import styles from './style';
 jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
 
-jest.mock('Components/Drawer', () => {
-  /**
-   * Mocked DrawerComponent.
-   * @param {Object} props Component props.
-   * @return {JSX}
-   */
-  const Drawer = props => <MockSheet {...props} />;
-  return Drawer;
-});
+jest.mock('@shopgate/engage/components', () => ({
+  ...jest.requireActual('@shopgate/engage/components'),
+  SheetDrawer: props => <MockSheet {...props} />,
+}));
 
 jest.mock('@shopgate/pwa-common-commerce/category/actions/getCategory', () => jest.fn(() => () => {}));
 

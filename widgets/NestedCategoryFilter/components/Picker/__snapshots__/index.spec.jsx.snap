@@ -80,7 +80,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
         open={true}
         selectedId={null}
       >
-        <Drawer
+        <SheetDrawer
           isOpen={true}
           onClose={[Function]}
           title="Picker Label"
@@ -205,7 +205,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     className="css-1aon90l"
                     onScroll={[Function]}
                   >
-                    <List
+                    <SheetList
                       className={null}
                       hasImages={false}
                       key=".0"
@@ -219,16 +219,16 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           className={null}
                         >
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw css-1ym3l2n"
                             isSelected={false}
                             key="child-0/.$1"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -257,16 +257,16 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw"
                             isSelected={false}
                             key="child-1/.$2"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -296,7 +296,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           </ListItem>
                         </ul>
                       </List>
-                    </List>
+                    </SheetList>
                   </div>
                 </div>
               </Drawer>
@@ -382,7 +382,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               </Backdrop>
             </section>
           </Sheet>
-        </Drawer>
+        </SheetDrawer>
       </CategorySheet>
     </CategoryPicker>
   </Connect(CategoryPicker)>
@@ -469,7 +469,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         open={true}
         selectedId={null}
       >
-        <Drawer
+        <SheetDrawer
           isOpen={true}
           onClose={[Function]}
           title="Picker Label"
@@ -594,7 +594,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     className="css-1aon90l"
                     onScroll={[Function]}
                   >
-                    <List
+                    <SheetList
                       className={null}
                       hasImages={false}
                       key=".0"
@@ -608,16 +608,16 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           className={null}
                         >
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw css-1ym3l2n"
                             isSelected={false}
                             key="child-0/.$1-1"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -646,16 +646,16 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw"
                             isSelected={false}
                             key="child-1/.$1-2"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -685,7 +685,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           </ListItem>
                         </ul>
                       </List>
-                    </List>
+                    </SheetList>
                   </div>
                 </div>
               </Drawer>
@@ -771,7 +771,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               </Backdrop>
             </section>
           </Sheet>
-        </Drawer>
+        </SheetDrawer>
       </CategorySheet>
     </CategoryPicker>
   </Connect(CategoryPicker)>
@@ -898,7 +898,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         open={false}
         selectedId={null}
       >
-        <Drawer
+        <SheetDrawer
           isOpen={false}
           onClose={[Function]}
           title="Picker Label"
@@ -1023,7 +1023,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     className="css-1aon90l"
                     onScroll={[Function]}
                   >
-                    <List
+                    <SheetList
                       className={null}
                       hasImages={false}
                       key=".0"
@@ -1037,16 +1037,16 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           className={null}
                         >
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw css-1ym3l2n"
                             isSelected={false}
                             key="child-0/.$1-1"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -1075,16 +1075,16 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw"
                             isSelected={false}
                             key="child-1/.$1-2"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -1114,7 +1114,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           </ListItem>
                         </ul>
                       </List>
-                    </List>
+                    </SheetList>
                   </div>
                 </div>
               </Drawer>
@@ -1200,7 +1200,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               </Backdrop>
             </section>
           </Sheet>
-        </Drawer>
+        </SheetDrawer>
       </CategorySheet>
     </CategoryPicker>
   </Connect(CategoryPicker)>
@@ -1288,7 +1288,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
         open={true}
         selectedId="1-1"
       >
-        <Drawer
+        <SheetDrawer
           isOpen={true}
           onClose={[Function]}
           title="Picker Label"
@@ -1413,7 +1413,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     className="css-1aon90l"
                     onScroll={[Function]}
                   >
-                    <List
+                    <SheetList
                       className={null}
                       hasImages={false}
                       key=".0"
@@ -1427,16 +1427,16 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           className={null}
                         >
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw css-1ym3l2n"
                             isSelected={false}
                             key="child-0/.$1-1"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -1465,16 +1465,16 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-fcrdu9"
+                            className="css-1nftllw"
                             isSelected={false}
                             key="child-1/.$1-2"
                           >
                             <li
-                              className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
                               data-test-id="listItem"
                             >
                               <div
-                                className="css-1wrmg9m"
+                                className="css-1ckzvk7"
                                 data-test-id={null}
                               >
                                 <SheetItem
@@ -1504,7 +1504,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           </ListItem>
                         </ul>
                       </List>
-                    </List>
+                    </SheetList>
                   </div>
                 </div>
               </Drawer>
@@ -1590,7 +1590,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               </Backdrop>
             </section>
           </Sheet>
-        </Drawer>
+        </SheetDrawer>
       </CategorySheet>
     </CategoryPicker>
   </Connect(CategoryPicker)>
@@ -1676,7 +1676,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
         open={false}
         selectedId={null}
       >
-        <Drawer
+        <SheetDrawer
           isOpen={false}
           onClose={[Function]}
           title="Picker Label"
@@ -1748,7 +1748,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
               </Backdrop>
             </section>
           </Sheet>
-        </Drawer>
+        </SheetDrawer>
       </CategorySheet>
     </CategoryPicker>
   </Connect(CategoryPicker)>
@@ -1835,7 +1835,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
         open={false}
         selectedId={null}
       >
-        <Drawer
+        <SheetDrawer
           isOpen={false}
           onClose={[Function]}
           title="Picker Label"
@@ -1907,7 +1907,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
               </Backdrop>
             </section>
           </Sheet>
-        </Drawer>
+        </SheetDrawer>
       </CategorySheet>
     </CategoryPicker>
   </Connect(CategoryPicker)>
@@ -1989,7 +1989,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
         open={false}
         selectedId={null}
       >
-        <Drawer
+        <SheetDrawer
           isOpen={false}
           onClose={[Function]}
           title=""
@@ -2061,7 +2061,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
               </Backdrop>
             </section>
           </Sheet>
-        </Drawer>
+        </SheetDrawer>
       </CategorySheet>
     </CategoryPicker>
   </Connect(CategoryPicker)>

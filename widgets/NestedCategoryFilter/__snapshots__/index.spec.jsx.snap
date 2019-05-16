@@ -124,7 +124,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               open={false}
               selectedId={null}
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label One"
@@ -196,7 +196,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -420,7 +420,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               open={false}
               selectedId="1-1"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label One"
@@ -545,7 +545,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           className="css-1aon90l"
                           onScroll={[Function]}
                         >
-                          <List
+                          <SheetList
                             className={null}
                             hasImages={false}
                             key=".0"
@@ -559,16 +559,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw css-1ym3l2n"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -597,16 +597,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -636,7 +636,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 </ListItem>
                               </ul>
                             </List>
-                          </List>
+                          </SheetList>
                         </div>
                       </div>
                     </Drawer>
@@ -722,7 +722,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -979,7 +979,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               open={false}
               selectedId="1"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label One"
@@ -1051,7 +1051,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -1124,7 +1124,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               open={false}
               selectedId="1-2"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label Two"
@@ -1196,7 +1196,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -1252,7 +1252,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               open={false}
               selectedId="1-2-1"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title=""
@@ -1324,7 +1324,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -1581,7 +1581,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               open={false}
               selectedId="1"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label One"
@@ -1706,7 +1706,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           className="css-1aon90l"
                           onScroll={[Function]}
                         >
-                          <List
+                          <SheetList
                             className={null}
                             hasImages={false}
                             key=".0"
@@ -1720,16 +1720,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw css-1ym3l2n"
                                   isSelected={false}
                                   key="child-0/.$1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -1758,16 +1758,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw"
                                   isSelected={false}
                                   key="child-1/.$2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -1797,7 +1797,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 </ListItem>
                               </ul>
                             </List>
-                          </List>
+                          </SheetList>
                         </div>
                       </div>
                     </Drawer>
@@ -1883,7 +1883,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -1956,7 +1956,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               open={false}
               selectedId={null}
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label Two"
@@ -2028,7 +2028,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -2270,7 +2270,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               open={false}
               selectedId="1"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label One"
@@ -2395,7 +2395,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           className="css-1aon90l"
                           onScroll={[Function]}
                         >
-                          <List
+                          <SheetList
                             className={null}
                             hasImages={false}
                             key=".0"
@@ -2409,16 +2409,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw css-1ym3l2n"
                                   isSelected={false}
                                   key="child-0/.$1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -2447,16 +2447,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw"
                                   isSelected={false}
                                   key="child-1/.$2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -2486,7 +2486,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 </ListItem>
                               </ul>
                             </List>
-                          </List>
+                          </SheetList>
                         </div>
                       </div>
                     </Drawer>
@@ -2572,7 +2572,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -2645,7 +2645,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               open={false}
               selectedId="1-1"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label Two"
@@ -2770,7 +2770,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           className="css-1aon90l"
                           onScroll={[Function]}
                         >
-                          <List
+                          <SheetList
                             className={null}
                             hasImages={false}
                             key=".0"
@@ -2784,16 +2784,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw css-1ym3l2n"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -2822,16 +2822,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -2861,7 +2861,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 </ListItem>
                               </ul>
                             </List>
-                          </List>
+                          </SheetList>
                         </div>
                       </div>
                     </Drawer>
@@ -2947,7 +2947,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -3168,7 +3168,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               open={false}
               selectedId={null}
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label One"
@@ -3240,7 +3240,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
@@ -3446,7 +3446,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               open={false}
               selectedId="2"
             >
-              <Drawer
+              <SheetDrawer
                 isOpen={false}
                 onClose={[Function]}
                 title="Label One"
@@ -3571,7 +3571,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           className="css-1aon90l"
                           onScroll={[Function]}
                         >
-                          <List
+                          <SheetList
                             className={null}
                             hasImages={false}
                             key=".0"
@@ -3585,16 +3585,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw css-1ym3l2n"
                                   isSelected={false}
                                   key="child-0/.$1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -3623,16 +3623,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-fcrdu9"
+                                  className="css-1nftllw"
                                   isSelected={false}
                                   key="child-1/.$2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
-                                      className="css-1wrmg9m"
+                                      className="css-1ckzvk7"
                                       data-test-id={null}
                                     >
                                       <SheetItem
@@ -3662,7 +3662,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 </ListItem>
                               </ul>
                             </List>
-                          </List>
+                          </SheetList>
                         </div>
                       </div>
                     </Drawer>
@@ -3748,7 +3748,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     </Backdrop>
                   </section>
                 </Sheet>
-              </Drawer>
+              </SheetDrawer>
             </CategorySheet>
           </CategoryPicker>
         </Connect(CategoryPicker)>
