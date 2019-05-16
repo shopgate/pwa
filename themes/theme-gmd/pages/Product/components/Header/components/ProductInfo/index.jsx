@@ -10,7 +10,7 @@ import {
   PRODUCT_INFO_ROW1,
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import MapPriceHint from '@shopgate/pwa-ui-shared/MapPriceHint';
+import { MapPriceHint } from '@shopgate/engage/product';
 import Manufacturer from '../Manufacturer';
 import Shipping from '../Shipping';
 import Availability from '../Availability';
@@ -34,7 +34,7 @@ const ProductInfo = ({ productId, options }) => (
         <Grid.Item component="div" grow={1}>
           <Portal name={PRODUCT_INFO_ROW1}>
             <div className={styles.productInfo}>
-              <MapPriceHint productId={productId} location="pdp" />
+              <MapPriceHint productId={productId} />
             </div>
             <div className={styles.productInfo}>
               <Manufacturer productId={productId} />

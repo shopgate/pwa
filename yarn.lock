@@ -186,12 +186,61 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
+"@shopgate/pwa-benchmark@6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-benchmark/-/pwa-benchmark-6.4.1.tgz#06579690fe7543bce0636be6ec706b9492bb7fcf"
+  integrity sha512-SX0gpyOpIKLPnHwMgUC0BiHzMYkSaNz5SoSY90xBMMDba0Rx6wfBykROAhAQzOANIl5qbnGjiWchttrkyoen2Q==
+
+"@shopgate/pwa-common@6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-6.4.1.tgz#722dccae5977203d82424a16448ead91ee52d1da"
+  integrity sha512-g1oUhP8Wod8bxKWsf0Sb+Tp/Tjsf82xFmWG++y3Dyz/LTD4fUiyBYHefKY5kn/bEV64s9Kx+vwYFJhAQkCbLBg==
+  dependencies:
+    "@sentry/browser" "^4.6.3"
+    "@shopgate/pwa-benchmark" "6.4.1"
+    "@virtuous/conductor" "~2.1.1"
+    "@virtuous/react-conductor" "~2.1.1"
+    "@virtuous/redux-persister" "1.1.0-beta.7"
+    classnames "^2.2.5"
+    crypto-js "3.1.9-1"
+    glamor "^2.20.40"
+    gsap "^1.20.2"
+    history "^4.7.2"
+    intl-messageformat "^2.1.0"
+    jsdom "11.1.0"
+    mobile-detect "^1.4.3"
+    path-match "^1.2.4"
+    react-dotdotdot "^1.1.0"
+    react-id-swiper "~2.1.0"
+    react-inline-transition-group "^2.1.7"
+    react-portal "^3.1.0"
+    react-redux "^5.0.6"
+    recompose "^0.26.0"
+    redux "^3.7.2"
+    redux-devtools-extension "^2.13.2"
+    redux-logger "^3.0.6"
+    redux-thunk "^2.2.0"
+    reselect "^3.0.1"
+    rxjs "^5.4.3"
+    swiper "~4.5.0"
+    url-search-params "^0.10.0"
+
 "@types/node@*":
   version "11.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
   integrity sha512-Zl8dGvAcEmadgs1tmSPcvwzO1YRsz38bVJQvH1RvRqSR9/5n61Q1ktcDL0ht3FXWR+ZpVmXVwN1LuH4Ax23NsA==
 
-"@virtuous/conductor@2.3.0", "@virtuous/conductor@^2.3.0":
+"@virtuous/conductor@2.1.3", "@virtuous/conductor@~2.1.1":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.1.3.tgz#bc65ea79851945a152a69f93cb33df806ffedd9c"
+  integrity sha512-U4ll9CnHtFG4sY45X3EO9b4a92jgzCowY55toHcU1PPN2OWgTU6WzDFt0QvAm/ATmoSjGVum26sINYRJxhgzyw==
+  dependencies:
+    history "^4.7.2"
+    path-match "^1.2.4"
+    query-string "^6.1.0"
+    url-pattern "^1.0.3"
+
+"@virtuous/conductor@2.3.0", "@virtuous/conductor@~2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-2.3.0.tgz#f91e51a35864ddb66526d1c16416b14f8200ba32"
   integrity sha512-DwLCumYiOtE2+JK8vXErh3XsGu6SezbfttJ3fP8NIcnfkqpgDxWizKbKgh17b6Z3j6e9mbJzWigihuN93WVeKg==
@@ -206,7 +255,15 @@
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
   integrity sha512-Pc0qQZhl4Kk06o0AY1Zm5Vfm+f5reSGkoxlNPkmiNvQPVzPed4FHqiNNipQ8vUJF4qMRnQQIwduWd1xH/4hzTg==
 
-"@virtuous/react-conductor@^2.3.0":
+"@virtuous/react-conductor@~2.1.1":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.1.3.tgz#c1a890a1274df4600d91d149e1fc327ecdf4b1a2"
+  integrity sha512-0hYZofjD7qagASitQ5s4fPIh87xKdddBf1P8GTzylyJAX/BCc2NGfiCWQ6j1gnxPIGtZbYIlxawHQ8txJS3SLA==
+  dependencies:
+    "@virtuous/conductor" "2.1.3"
+    react-spring "^6.1.4"
+
+"@virtuous/react-conductor@~2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-2.3.0.tgz#3aa9e10f4a9b0d082d6b931c57312bd523e3a9a4"
   integrity sha512-YoCcNcLQWKcZWrIuefugUzOfboyCvc1NiG3tLt2kpk3/w48BzUdOG/Iuipp59n/6ha2PcjZuRhQS+UiS1hSrxQ==
@@ -5696,6 +5753,11 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
+lodash-es@^4.2.1:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.11.tgz#145ab4a7ac5c5e52a3531fb4f310255a152b4be0"
+  integrity sha512-DHb1ub+rMjjrxqlB3H56/6MXtm1lSksDp2rA2cNWjG8mlDUYFhUj3Di2Zn5IwSU87xLv8tNIQ7sSwE/YOX/D/Q==
+
 lodash._baseassign@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz#8c38a099500f215ad09e59f1722fd0c52bfe0a4e"
@@ -7221,7 +7283,7 @@ react-id-swiper@~2.1.0:
   dependencies:
     object-assign "^4.1.1"
 
-react-inline-transition-group@^2.2.1:
+react-inline-transition-group@^2.1.7, react-inline-transition-group@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-inline-transition-group/-/react-inline-transition-group-2.2.1.tgz#afc18ba2a66a00f370a1d95e57413178435e2d28"
   integrity sha512-5sa1sKSVcYl6M4rS6vd2HO2RDNszpEUkH2Gx0Dk3WOOgbEkiRwYFU2PtB/2gZpVfMTNtAsXhdUf7/cUM0yZ56A==
@@ -7528,6 +7590,16 @@ redux-thunk@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
+
+redux@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
+  integrity sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==
+  dependencies:
+    lodash "^4.2.1"
+    lodash-es "^4.2.1"
+    loose-envify "^1.1.0"
+    symbol-observable "^1.0.3"
 
 redux@^4.0.1:
   version "4.0.1"
@@ -8478,7 +8550,7 @@ symbol-observable@1.0.1:
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.0.1.tgz#8340fc4702c3122df5d22288f88283f513d3fdd4"
   integrity sha1-g0D8RwLDEi310iKI+IKD9RPT/dQ=
 
-symbol-observable@^1.0.4, symbol-observable@^1.1.0, symbol-observable@^1.2.0:
+symbol-observable@^1.0.3, symbol-observable@^1.0.4, symbol-observable@^1.1.0, symbol-observable@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
