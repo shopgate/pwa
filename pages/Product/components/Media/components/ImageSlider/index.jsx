@@ -7,7 +7,7 @@ import {
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/product';
-import ProductImage from 'Components/ProductImage';
+import { ProductImage } from '@shopgate/engage/product';
 import connect from './connector';
 
 const fallbackResolutions = [
