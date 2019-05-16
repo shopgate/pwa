@@ -8,8 +8,30 @@ import {
 export default {
   beta: true,
   theme: {
-    settings: {},
+    settings: {
+      '@shopgate/engage/product/MapPrice': {
+        show: true,
+        showHint: true,
+        hint: null,
+      },
+    },
     pages: [
+      {
+        pattern: '/category/:categoryId',
+        name: 'Product List Page',
+        settings: {},
+        widgets: [
+          {
+            name: 'ShopgateProductMapPrice',
+            id: '@shopgate/engage/product/MapPrice',
+            settings: {
+              show: true,
+              showHint: true,
+              hint: null,
+            },
+          },
+        ],
+      },
       {
         pattern: '/item/:productId',
         name: 'Product Detail Page',
@@ -31,6 +53,20 @@ export default {
                 loop: false,
                 showRelated: null,
                 showHints: null,
+              },
+            },
+          },
+          {
+            name: 'ShopgateProductMapPrice',
+            id: '@shopgate/engage/product/MapPrice',
+            settings: {
+              show: true,
+              showHint: true,
+              hint: null,
+            },
+            styles: {
+              hint: {
+                fontSize: '1rem',
               },
             },
           },

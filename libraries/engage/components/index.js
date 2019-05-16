@@ -11,7 +11,6 @@ export { default as BaseButton } from '@shopgate/pwa-common/components/Button';
 export { default as BaseCheckbox } from '@shopgate/pwa-common/components/Checkbox';
 export { default as Consume } from '@shopgate/pwa-common/components/Consume';
 export { default as CountdownTimer } from '@shopgate/pwa-common/components/CountdownTimer';
-export { default as TimeBoundary } from '@shopgate/pwa-common/components/TimeBoundary';
 export { default as Drawer } from '@shopgate/pwa-common/components/Drawer';
 export { default as Dropdown } from '@shopgate/pwa-common/components/Dropdown';
 export { default as Ellipsis } from '@shopgate/pwa-common/components/Ellipsis';
@@ -163,5 +162,6 @@ export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/Visibil
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 
 export { default as NavigationHandler } from './NavigationHandler';
+export { default as TimeBoundary } from './TimeBoundary';
 export { default as IntersectionVisibility } from './IntersectionVisibility';
 export { default as VideoPlayer } from './VideoPlayer';
