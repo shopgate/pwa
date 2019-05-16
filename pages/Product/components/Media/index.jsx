@@ -1,10 +1,9 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { MediaSlider } from '@shopgate/engage/product';
 import { ProductContext } from '../../context';
+import ImageSlider from './components/ImageSlider';
 import connect from './connector';
-
-const ImageSlider = lazy(() => import('./components/ImageSlider'));
-const MediaSlider = lazy(() => import('./components/MediaSlider'));
 
 /**
  * The product media component.
@@ -14,13 +13,13 @@ const MediaSlider = lazy(() => import('./components/MediaSlider'));
 const Media = ({ hasMedia }) => (
   <ProductContext.Consumer>
     {({ productId, variantId }) => (
-      <Suspense fallback={<div />}>
+      <Fragment>
         {
           hasMedia
           ? <MediaSlider productId={variantId || productId} />
           : <ImageSlider productId={productId} variantId={variantId} />
         }
-      </Suspense>
+      </Fragment>
     )}
   </ProductContext.Consumer>
 );
