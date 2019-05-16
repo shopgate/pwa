@@ -40,6 +40,9 @@ export * from '@shopgate/pwa-common-commerce/product/streams';
 
 // COMPONENTS
 export { default as MapPriceHint } from './components/MapPriceHint';
+export { default as QuantityPicker } from './components/QuantityPicker';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
+export { default as withProductStock } from './hocs/withProductStock';
+

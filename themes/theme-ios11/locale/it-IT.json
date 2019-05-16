@@ -61,7 +61,8 @@
     "item_added": "{count, plural, =0 {# non ci sono elementi aggiunti} =1 {{count} elemento aggiunto} other {{count} elementi aggiunti}}",
     "add_to_cart": "Aggiungi al carrello",
     "go_to_cart": "Vai al carrello",
-    "no_more_found": "L'articolo: \"{name}\" non è più disponibile."
+    "no_more_found": "L'articolo: \"{name}\" non è più disponibile.",
+    "quantity": "Quantità"
   },
   "category": {
     "error": {

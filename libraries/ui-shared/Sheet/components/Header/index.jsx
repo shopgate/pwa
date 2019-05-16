@@ -11,7 +11,10 @@ import styles from './style';
  */
 class Header extends Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element, // ex.: I18n.Text
+    ]).isRequired,
     onToggleClose: PropTypes.func,
     shadow: PropTypes.bool,
   };

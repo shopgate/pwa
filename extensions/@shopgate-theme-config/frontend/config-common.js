@@ -69,6 +69,20 @@ export default {
               },
             },
           },
+          {
+            name: 'ShopgateProductQuantityPicker',
+            id: '@shopgate/engage/product/QuantityPicker',
+            settings: {
+              minOrderQuantity: 1,
+              maxOrderQuantity: 50,
+            },
+            styles: {
+              sheet: {
+                maxHeight: '50vh',
+                minHeight: '50vh',
+              },
+            },
+          },
         ],
       },
     ],

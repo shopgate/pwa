@@ -163,3 +163,5 @@ export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/Visi
 
 export { default as NavigationHandler } from './NavigationHandler';
 export { default as TimeBoundary } from './TimeBoundary';
+export { default as SheetDrawer } from './SheetDrawer';
+export { default as SheetList } from './SheetList';
