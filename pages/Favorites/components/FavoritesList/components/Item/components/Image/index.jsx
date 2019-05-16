@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Link from '@shopgate/pwa-common/components/Link';
-import ProductImage from 'Components/ProductImage';
+import { ProductImage } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import styles from './style';
 
