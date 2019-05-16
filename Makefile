@@ -79,7 +79,7 @@ else
 	PRE_RELEASE = true
 endif
 
-# Causes a STABLE release not to update master if not set to true
+# Causes a STABLE release not to update master if not set to false
 UPDATE_MASTER = true
 
 # This causes the Github-API to create draft releases only, without creating tags
@@ -363,7 +363,7 @@ ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		git push origin "releases/$(RELEASE_NAME)":master;
 		git status;
 else
-		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
+		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branch)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
 endif
 
@@ -372,7 +372,7 @@ define build-changelog
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
 		touch CHANGELOG.md;
-		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --release-name="$(RELEASE_VERSION)" > CHANGELOG_NEW.md;
+		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --release-name="$(RELEASE_VERSION)" --tagTo=HEAD --appendPreviousChangelog=true > CHANGELOG_NEW.md;
 		mv CHANGELOG_NEW.md CHANGELOG.md;
 		$(foreach theme, $(THEMES), cp CHANGELOG.md themes/$(theme)/CHANGELOG.md;)
 		# Push the new changelog to GitHub (into the STABLE release branch)
