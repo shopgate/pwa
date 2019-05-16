@@ -230,7 +230,7 @@ async function run() {
     if (latestChanges.trim().length > 0) {
       newChangelog = newChangelog.replace(
         '# Changelog\n',
-        `# Changelog\n\n${latestChanges.trim()}\n`
+        `# Changelog\n\n${latestChanges.trim()}\n\n`
       );
       if (tagTo !== 'HEAD') {
         newChangelog = newChangelog.replace(
