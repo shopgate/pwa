@@ -1,5 +1,5 @@
 {
-  "version": "6.4.1",
+  "version": "6.4.2",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -318,26 +318,6 @@
       "params": {
         "type": "json",
         "label": "Scanner settings: icon on/off, etc"
-      }
-    },
-    "productPrices": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": {
-        "mapPrice": {
-          "showPLP": true,
-          "showSlider": true,
-          "showPDP": true,
-          "showCart": true,
-          "showHintPLP": true,
-          "showHintSlider": true,
-          "showHintPDP": true,
-          "hint": "Map price Hint text"
-        }
-      },
-      "params": {
-        "type": "json",
-        "label": "Configure the display of product prices."
       }
     },
     "favorites": {
