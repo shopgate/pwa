@@ -1,9 +1,18 @@
 # Changelog
 
+## [v6.4.2](https://github.com/shopgate/pwa/compare/v6.4.1...v6.4.2) (2019-05-16)
+
+#### :bug: Bug Fix
+* [#652](https://github.com/shopgate/pwa/pull/652) Fixed broken handling of channel urls ([@fkloes](https://github.com/fkloes))
+* [#654](https://github.com/shopgate/pwa/pull/654) Fixed an issue where product sliders widgets didn't update on state updates ([@fkloes](https://github.com/fkloes))
+* [#651](https://github.com/shopgate/pwa/pull/651) Sliders now render correctly when the slides are updated ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.4.1](https://github.com/shopgate/pwa/compare/v6.4.0...v6.4.1) (2019-04-24)
 
 #### :bug: Bug Fix
 * [#626](https://github.com/shopgate/pwa/pull/626) Fixed an issue with GET parameters inside of coupon deeplinks ([@fkloes](https://github.com/fkloes))
+
 
 ## [v6.4.0](https://github.com/shopgate/pwa/compare/v6.3.2...v6.4.0) (2019-04-10)
 
