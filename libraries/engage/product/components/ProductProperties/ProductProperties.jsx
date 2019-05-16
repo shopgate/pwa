@@ -18,6 +18,10 @@ function ProductPropertiesContainer({ properties }) {
     return <ProductPropertiesSimple properties={properties} />;
   }
 
+  /*
+    This feature is currently in BETA testing.
+    It should only be used for approved BETA Client Projects
+  */
   return (
     <ProductPropertiesGrouped properties={properties} />
   );
