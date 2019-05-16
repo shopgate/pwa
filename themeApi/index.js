@@ -1,5 +1,5 @@
+import { SheetDrawer as Drawer } from '@shopgate/engage/components';
 import AppBar from 'Components/AppBar/presets/BackBar';
-import Drawer from 'Components/Drawer';
 import ProductSlider from 'Components/ProductSlider';
 import ProductGrid from 'Components/ProductGrid';
 import View from 'Components/View';

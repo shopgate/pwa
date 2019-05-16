@@ -64,7 +64,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       </Translate>
     </h2>
   </Headline>
-  <List
+  <SheetList
     className={null}
     hasImages={false}
     testId={null}
@@ -76,16 +76,16 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         className={null}
       >
         <ListItem
-          className="css-fcrdu9"
+          className="css-1nftllw css-1ym3l2n"
           isSelected={false}
           key="child-0/.$1"
         >
           <li
-            className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+            className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
             data-test-id="listItem"
           >
             <div
-              className="css-1wrmg9m"
+              className="css-1ckzvk7"
               data-test-id={null}
             >
               <Item
@@ -135,16 +135,16 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           </li>
         </ListItem>
         <ListItem
-          className="css-fcrdu9"
+          className="css-1nftllw"
           isSelected={false}
           key="child-1/.$2"
         >
           <li
-            className="css-1p5q8vq css-fcrdu9 css-16gj3o1"
+            className="css-1p5q8vq css-1nftllw css-16gj3o1"
             data-test-id="listItem"
           >
             <div
-              className="css-1wrmg9m"
+              className="css-1ckzvk7"
               data-test-id={null}
             >
               <Item
@@ -195,6 +195,6 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         </ListItem>
       </ul>
     </List>
-  </List>
+  </SheetList>
 </CategoryListWidget>
 `;

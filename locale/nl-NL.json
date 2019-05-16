@@ -60,7 +60,8 @@
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
     "add_to_cart": "Voeg aan winkelwagen toe",
     "go_to_cart": "Winkelwagen",
-    "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar."
+    "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
+    "quantity": "Aantal"
   },
   "category": {
     "error": {

@@ -5,7 +5,9 @@ exports[`<Picker /> should render the picker 1`] = `
   buttonComponent={null}
   buttonProps={Object {}}
   clickDelay={150}
+  hasButton={true}
   label="Picker label"
+  sheetProps={Object {}}
 >
   <Picker
     buttonComponent={[Function]}

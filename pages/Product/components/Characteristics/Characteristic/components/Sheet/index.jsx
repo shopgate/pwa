@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext } from '@shopgate/pwa-common/context';
-import List from 'Components/List';
+import { SheetDrawer, SheetList } from '@shopgate/engage/components';
 import VariantContext from '@shopgate/pwa-common/components/ProductCharacteristics/context';
 import Item from '../SheetItem';
 import VariantAvailability from '../VariantAvailability';
@@ -11,8 +10,6 @@ import { ProductContext } from './../../../../../context';
  * The CharacteristicSheet component.
  */
 class CharacteristicSheet extends PureComponent {
-  static contextType = ThemeContext;
-
   static propTypes = {
     charId: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -70,11 +67,10 @@ class CharacteristicSheet extends PureComponent {
     const {
       items, label, onClose, open, selectedValue,
     } = this.props;
-    const { Drawer } = this.context;
 
     return (
-      <Drawer title={label} isOpen={open} onClose={onClose}>
-        <List>
+      <SheetDrawer title={label} isOpen={open} onClose={onClose}>
+        <SheetList>
           {items.map(item => (
             <Item
               item={item}
@@ -84,8 +80,8 @@ class CharacteristicSheet extends PureComponent {
               selected={item.id === selectedValue}
             />
           ))}
-        </List>
-      </Drawer>
+        </SheetList>
+      </SheetDrawer>
     );
   }
 }
