@@ -39,11 +39,6 @@ export default {
           {
             name: 'ShopgateProductMapPrice',
             id: '@shopgate/engage/product/MapPrice',
-            settings: {
-              show: true,
-              showHint: true,
-              hint: null,
-            },
           },
         ],
       },
@@ -68,11 +63,6 @@ export default {
           {
             name: 'ShopgateProductMapPrice',
             id: '@shopgate/engage/product/MapPrice',
-            settings: {
-              show: true,
-              showHint: true,
-              hint: null,
-            },
             styles: {
               hint: {
                 fontSize: '1rem',
