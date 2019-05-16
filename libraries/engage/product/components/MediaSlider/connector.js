@@ -12,7 +12,7 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 const mapStateToProps = (state, props) => ({
   media: getProductMedia(state, {
     ...props,
-    types: [MEDIA_TYPE_VIDEO, MEDIA_TYPE_IMAGE],
+    types: props.types || [MEDIA_TYPE_VIDEO, MEDIA_TYPE_IMAGE],
   }),
 });
 

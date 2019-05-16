@@ -5,7 +5,7 @@ import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
 import { Pagination, Navigation, Autoplay, Zoom } from 'swiper/dist/js/swiper.esm';
 import SwiperItem from './components/SwiperItem';
-import { container, innerContainer, bullet, bulletActive } from './styles';
+import { container, innerContainer, bullet, bulletActive, buttonNext, buttonPrev } from './styles';
 
 /**
  * The basic swiper component.
@@ -102,6 +102,13 @@ function Swiper(props) {
     navigation = {
       nextEl: null,
       prevEl: null,
+    };
+  }
+  if (typeof controls === 'boolean' && controls === true) {
+    navigation = {
+      // Important to use dot notation (swiper internally use it as selector)
+      nextEl: `.swiper-button-next.${buttonNext}`,
+      prevEl: `.swiper-button-prev.${buttonPrev}`,
     };
   }
 

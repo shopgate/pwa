@@ -38,3 +38,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/media';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
+
+// COMPONENTS
+export { default as ProductImage } from './components/ProductImage';
+export { default as MediaSlider } from './components/MediaSlider';

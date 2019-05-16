@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import Image from '@shopgate/pwa-common/components/Image';
-import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
+import classnames from 'classnames';
+import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { Image, PlaceholderIcon } from '../../../components';
 import styles from './style';
 
-const { colors } = themeConfig;
+const { colors, shadows: { productImageInnerShadow } = {} } = themeConfig;
+
+let imageInnerShadow = null;
+if (productImageInnerShadow) {
+  imageInnerShadow = css(productImageInnerShadow);
+}
 
 /**
  * The product image component.
@@ -21,6 +27,7 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
@@ -36,8 +43,9 @@ class ProductImage extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
+    className: null,
     forcePlaceholder: false,
-    highestResolutionLoaded: () => {},
+    highestResolutionLoaded: () => { },
     ratio: null,
     resolutions: [
       {
@@ -106,24 +114,34 @@ class ProductImage extends Component {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={`${styles.placeholderContainer} ${styles.innerShadow}`}>
+        <div className={classnames(styles.placeholderContainer, imageInnerShadow)}>
           <div className={styles.placeholderContent} data-test-id="placeHolder">
-            <Placeholder className={styles.placeholder} />
+            <PlaceholderIcon className={styles.placeholder} />
           </div>
+        </div>
+      );
+    }
+
+    if (imageInnerShadow) {
+      return (
+        <div className={imageInnerShadow}>
+          <Image
+            {...this.props}
+            className={imageInnerShadow}
+            backgroundColor={colors.light}
+            onError={this.imageLoadingFailed}
+          />
         </div>
       );
     }
 
     // Return the actual image.
     return (
-      <div className={styles.innerShadow}>
-        <Image
-          {...this.props}
-          className={styles.innerShadow}
-          backgroundColor={colors.light}
-          onError={this.imageLoadingFailed}
-        />
-      </div>
+      <Image
+        {...this.props}
+        backgroundColor={colors.light}
+        onError={this.imageLoadingFailed}
+      />
     );
   }
 }

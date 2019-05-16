@@ -42,8 +42,7 @@
     "reselect": "^3.0.1",
     "rxjs": "^5.4.3",
     "swiper": "~4.5.0",
-    "url-search-params": "^0.10.0",
-    "intersection-observer": "^0.6.0"
+    "url-search-params": "^0.10.0"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "6.4.1",

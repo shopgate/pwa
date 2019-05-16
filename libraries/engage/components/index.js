@@ -163,4 +163,5 @@ export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/Visibil
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 
 export { default as NavigationHandler } from './NavigationHandler';
+export { default as IntersectionVisibility } from './IntersectionVisibility';
 export { default as VideoPlayer } from './VideoPlayer';

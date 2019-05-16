@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { getClientConnectivityType } from '@shopgate/engage/core';
-import config from './config';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,7 +7,7 @@ import config from './config';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  autoPlay: config.autoPlay[getClientConnectivityType(state)] || false,
+  connectivityType: getClientConnectivityType(state),
 });
 
 export default connect(mapStateToProps);

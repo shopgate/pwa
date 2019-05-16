@@ -3,6 +3,7 @@ const PRODUCT = 'product';
 
 // CONTENTS
 const IMAGE = 'image';
+const MEDIA = 'media';
 const HEADER = 'header';
 const VARIANT_SELECT = 'variant-select';
 const PICKER = 'picker';
@@ -40,6 +41,11 @@ const ROW2 = 'row2';
 export const PRODUCT_IMAGE_BEFORE = `${PRODUCT}.${IMAGE}.${BEFORE}`;
 export const PRODUCT_IMAGE = `${PRODUCT}.${IMAGE}`;
 export const PRODUCT_IMAGE_AFTER = `${PRODUCT}.${IMAGE}.${AFTER}`;
+
+// MEDIA
+export const PRODUCT_MEDIA_BEFORE = `${PRODUCT}.${MEDIA}.${BEFORE}`;
+export const PRODUCT_MEDIA = `${PRODUCT}.${MEDIA}`;
+export const PRODUCT_MEDIA_AFTER = `${PRODUCT}.${MEDIA}.${AFTER}`;
 
 // HEADER
 export const PRODUCT_HEADER_BEFORE = `${PRODUCT}.${HEADER}.${BEFORE}`;

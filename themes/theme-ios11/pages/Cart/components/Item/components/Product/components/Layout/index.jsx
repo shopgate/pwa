@@ -4,7 +4,7 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
-import ProductImage from 'Components/ProductImage';
+import { ProductImage } from '@shopgate/engage/product';
 import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
 import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import QuantityPicker from './components/QuantityPicker';

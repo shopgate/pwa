@@ -36,7 +36,23 @@ export default {
     variables: {
       baseShadow: 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px',
     },
-    shadows: {},
+    shadows: {
+      productImageInnerShadow: {
+        position: 'relative',
+        overflow: 'hidden',
+        ':after': {
+          display: 'block',
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
+          pointerEvents: 'none',
+        },
+      },
+    },
     assets: {},
     pages: [],
   },
