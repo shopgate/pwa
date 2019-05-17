@@ -96,6 +96,7 @@ class VideoPlayer extends PureComponent {
   render() {
     return (
       <ReactPlayer
+        playsinline
         {...this.props}
         playing={this.getPlayingState()}
         onReady={this.handleReady}
