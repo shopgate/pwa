@@ -84,6 +84,7 @@ exports[`<Content /> Check search field should render with initial search query 
                 value="foo"
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
                   className="css-1yoassp css-1qnjb83"
@@ -272,6 +273,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                 value="foo"
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
                   className="css-1yoassp"
