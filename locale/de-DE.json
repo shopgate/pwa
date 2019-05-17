@@ -62,7 +62,9 @@
     "add_to_cart": "In den Warenkorb",
     "go_to_cart": "Warenkorb",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
-    "quantity": "Menge"
+    "quantity": "Menge",
+    "minOrderQuantity": "Mindestbestellmenge: {quantity}",
+    "maxOrderQuantity": "Maximale Bestellmenge: {quantity}"
   },
   "category": {
     "error": {
