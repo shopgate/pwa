@@ -61,7 +61,9 @@
     "add_to_cart": "Voeg aan winkelwagen toe",
     "go_to_cart": "Winkelwagen",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
-    "quantity": "Aantal"
+    "quantity": "Aantal",
+    "minOrderQuantity": "Minimale bestelhoeveelheid: {quantity}",
+    "maxOrderQuantity": "Maximale bestelhoeveelheid: {quantity}"
   },
   "category": {
     "error": {

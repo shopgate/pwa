@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import { ITEM_PATH, MapPriceHint } from '@shopgate/engage/product';
+import { ITEM_PATH, MapPriceHint, OrderQuantityHint } from '@shopgate/engage/product';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
@@ -55,7 +55,14 @@ const ProductCard = ({
             <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
           </div>
         )}
+
+        {/* This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects */}
         <MapPriceHint productId={product.id} />
+
+        {/* This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects */}
+        <OrderQuantityHint productId={product.id} />
         {!hidePrice && (
           <Fragment>
             <Portal

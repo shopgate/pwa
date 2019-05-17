@@ -25,6 +25,7 @@ const PRICE_STRIKED = 'price-striked';
 const PRICE = 'price';
 const PRICE_INFO = 'price-info';
 const MAP_PRICE = 'map-price';
+const ORDER_QUANTITY = 'order-quantity';
 const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
 
@@ -161,3 +162,7 @@ export const PRODUCT_MAP_PRICE_BEFORE = `${PRODUCT}.${MAP_PRICE}.${BEFORE}`;
 export const PRODUCT_MAP_PRICE = `${PRODUCT}.${MAP_PRICE}`;
 export const PRODUCT_MAP_PRICE_AFTER = `${PRODUCT}.${MAP_PRICE}.${AFTER}`;
 
+// ORDER QUANTITY HINT
+export const PRODUCT_ORDER_QUANTITY_BEFORE = `${PRODUCT}.${ORDER_QUANTITY}.${BEFORE}`;
+export const PRODUCT_ORDER_QUANTITY = `${PRODUCT}.${ORDER_QUANTITY}`;
+export const PRODUCT_ORDER_QUANTITY_AFTER = `${PRODUCT}.${ORDER_QUANTITY}.${AFTER}`;
