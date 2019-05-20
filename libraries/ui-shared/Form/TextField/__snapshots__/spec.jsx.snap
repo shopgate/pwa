@@ -2,6 +2,7 @@
 
 exports[`<TextField> should focus the input 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -72,16 +73,17 @@ exports[`<TextField> should focus the input 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -91,9 +93,10 @@ exports[`<TextField> should focus the input 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -113,7 +116,7 @@ exports[`<TextField> should focus the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -170,6 +173,7 @@ exports[`<TextField> should focus the input 1`] = `
 
 exports[`<TextField> should receive the correct value while typing 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -239,16 +243,17 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -258,9 +263,10 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -280,7 +286,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -337,6 +343,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
 
 exports[`<TextField> should render a simple text field 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -406,16 +413,17 @@ exports[`<TextField> should render a simple text field 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -425,9 +433,10 @@ exports[`<TextField> should render a simple text field 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -447,7 +456,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -504,6 +513,7 @@ exports[`<TextField> should render a simple text field 1`] = `
 
 exports[`<TextField> should render the text field as password 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -574,16 +584,17 @@ exports[`<TextField> should render the text field as password 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -594,9 +605,10 @@ exports[`<TextField> should render the text field as password 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -616,7 +628,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -673,6 +685,7 @@ exports[`<TextField> should render the text field as password 1`] = `
 
 exports[`<TextField> should render the text field with a default value 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -742,16 +755,17 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -761,9 +775,10 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                 value="FooBar"
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -783,7 +798,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -840,6 +855,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
 
 exports[`<TextField> should sanitize the input 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -910,16 +926,17 @@ exports[`<TextField> should sanitize the input 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -930,9 +947,10 @@ exports[`<TextField> should sanitize the input 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -952,7 +970,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1009,6 +1027,7 @@ exports[`<TextField> should sanitize the input 1`] = `
 
 exports[`<TextField> should show the error message 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText="This is an error here"
   hasUnderline={true}
@@ -1078,16 +1097,17 @@ exports[`<TextField> should show the error message 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1097,9 +1117,10 @@ exports[`<TextField> should show the error message 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -1119,7 +1140,7 @@ exports[`<TextField> should show the error message 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1181,6 +1202,7 @@ exports[`<TextField> should show the error message 1`] = `
 
 exports[`<TextField> should show the label 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -1262,16 +1284,17 @@ exports[`<TextField> should show the label 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1281,9 +1304,10 @@ exports[`<TextField> should show the label 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -1303,7 +1327,7 @@ exports[`<TextField> should show the label 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1360,6 +1384,7 @@ exports[`<TextField> should show the label 1`] = `
 
 exports[`<TextField> should show the placeholder text 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -1435,16 +1460,17 @@ exports[`<TextField> should show the placeholder text 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1454,9 +1480,10 @@ exports[`<TextField> should show the placeholder text 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -1476,7 +1503,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1533,6 +1560,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
 
 exports[`<TextField> should trigger the onChange callback 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -1623,16 +1651,17 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={
@@ -1663,9 +1692,10 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -1706,7 +1736,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1763,6 +1793,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
 
 exports[`<TextField> should trigger the validation callback 1`] = `
 <TextField
+  attributes={null}
   className=""
   errorText=""
   hasUnderline={true}
@@ -1848,16 +1879,17 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           className=" css-h7r55a"
         >
           <GridItem
-            className=""
+            className="css-1kppfx4"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className=" css-1gs0ko2"
+              className="css-1kppfx4 css-1gs0ko2"
             >
               <Component
-                className="css-xtw4m3"
+                attributes={null}
+                className="css-keangt"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1883,9 +1915,10 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                 value=""
               >
                 <SimpleInput
+                  attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-xtw4m3"
+                  className="css-keangt"
                   disabled={false}
                   id={null}
                   isControlled={false}
@@ -1920,7 +1953,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     name="test-input"

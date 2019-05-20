@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Input from './index';
 
 describe('<Input />', () => {
@@ -102,5 +102,20 @@ describe('<Input />', () => {
     expect(wrapper.find('MultiLineInput').instance().value).toEqual('');
     wrapper.setProps({ value: multiLineValue });
     expect(wrapper.find('textarea').getDOMNode().innerHTML).toEqual(multiLineValue);
+  });
+
+  it('should render additional html attributes', () => {
+    const wrapper = shallow((
+      <Input
+        type="date"
+        attributes={{
+          min: '1970-01-01',
+          max: '2010-01-01',
+        }}
+      />
+    )).dive();
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.prop('min')).toEqual('1970-01-01');
+    expect(wrapper.prop('max')).toEqual('2010-01-01');
   });
 });

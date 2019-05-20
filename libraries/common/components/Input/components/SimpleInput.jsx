@@ -8,9 +8,14 @@ import PropTypes from 'prop-types';
  */
 class SimpleInput extends Component {
   static propTypes = {
+    /** Additional html attributes by input type */
+    attributes: PropTypes.shape(),
     autoComplete: PropTypes.bool,
     autoCorrect: PropTypes.bool,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
     disabled: PropTypes.bool,
     id: PropTypes.string,
     isControlled: PropTypes.bool,
@@ -28,6 +33,7 @@ class SimpleInput extends Component {
   };
 
   static defaultProps = {
+    attributes: null,
     autoComplete: false,
     autoCorrect: false,
     className: '',
@@ -184,7 +190,12 @@ class SimpleInput extends Component {
    * @returns {JSX}
    */
   render() {
-    const { className, password, onKeyPress } = this.props;
+    const {
+      attributes,
+      className,
+      password,
+      onKeyPress,
+    } = this.props;
     const type = password ? 'password' : this.props.type;
     const { value } = this.state;
     const autoComplete = this.props.autoComplete ? 'on' : 'off';
@@ -205,6 +216,7 @@ class SimpleInput extends Component {
         disabled={this.props.disabled}
         autoCorrect={autoCorrect}
         autoComplete={autoComplete}
+        {...attributes}
       />
     );
   }
