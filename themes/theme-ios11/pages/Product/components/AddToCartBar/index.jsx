@@ -175,6 +175,8 @@ class AddToCartBar extends Component {
                     handleAddToCart={this.handleAddToCart}
                     onReset={this.resetClicked}
                   />
+                  {/* This feature is currently in BETA testing.
+                  It should only be used for approved BETA Client Projects */}
                   {isBeta() && <QuantityPicker productId={this.props.productId} />}
                 </div>
               </div>
