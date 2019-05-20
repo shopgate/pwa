@@ -14,6 +14,8 @@ const Media = ({ hasMedia }) => (
   <ProductContext.Consumer>
     {({ productId, variantId }) => (
       <Fragment>
+        {/* MediaSlider feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects */}
         {
           hasMedia
           ? <MediaSlider productId={variantId || productId} />
