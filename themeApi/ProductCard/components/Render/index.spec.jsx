@@ -36,7 +36,7 @@ describe('<ProductCardRender />', () => {
   it('should render as expected', () => {
     const wrapper = renderComponent();
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Portal').length).toBe(6);
+    expect(wrapper.find('Portal').length).toBe(9);
     expect(wrapper.find('Link').prop('href')).toEqual(defaultProps.url);
     expect(wrapper.find('ProductCardBadge').exists()).toBe(true);
     expect(wrapper.find('ProductCardBadge').text()).toEqual(`-${mockProduct.price.discount}%`);
