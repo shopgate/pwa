@@ -66,7 +66,7 @@ class SnackBar extends Component {
   }
 
   handleEntered = () => {
-    this.timer = setTimeout(this.hide, 2500);
+    this.timer = setTimeout(this.hide, this.props.toasts[0].duration || 2500);
   }
 
   handleRest = () => {
@@ -87,7 +87,14 @@ class SnackBar extends Component {
    */
   render() {
     const { visible } = this.state;
-    const { action = null, actionLabel = null, message = null } = this.snack;
+    const {
+      action = null, actionLabel = null, message = null, messageParams = {},
+    } = this.snack;
+
+    // Action exits without actionLabel. Handle the whole box
+    const boxProps = {
+      ...(action && !actionLabel) && { onClick: this.handleAction },
+    };
 
     return (
       <Spring
@@ -104,9 +111,9 @@ class SnackBar extends Component {
             style={{ transform: `translateY(${props.y}%)` }}
             data-footer-inset-update-ignore="true"
           >
-            <div className={styles.box}>
+            <div className={styles.box} {...boxProps}>
               <Ellipsis rows={2}>
-                <I18n.Text className={styles.label} string={message || ''} />
+                <I18n.Text className={styles.label} string={message || ''} params={messageParams} />
               </Ellipsis>
               {(action && actionLabel) && (
                 <button className={styles.button} onClick={this.handleAction}>

@@ -1,6 +1,8 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
+import { historyPop, historyPush } from '@shopgate/pwa-common/actions/router';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { getSearchRoute } from '@shopgate/pwa-common-commerce/search';
 import fetchProduct from '../actions/fetchProduct';
 import fetchProductDescription from '../actions/fetchProductDescription';
 import fetchProductProperties from '../actions/fetchProductProperties';
@@ -17,11 +19,14 @@ import {
   receivedVisibleProduct$,
   errorProductResourcesNotFound$,
   visibleProductNotFound$,
+  productNotAvailable$,
 } from '../streams';
 import fetchProductsById from '../actions/fetchProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
 import { checkoutSucceeded$ } from '../../checkout/streams';
 import expireProductById from '../action-creators/expireProductById';
+import { NOT_AVAILABLE_EFFECTIVITY_DATES } from '../constants';
+import { getProductName } from '../selectors/product';
 
 /**
  * Product subscriptions.
@@ -107,6 +112,29 @@ function product(subscribe) {
     productIds.forEach(id => dispatch(expireProductById(id)));
 
     dispatch(fetchProductsById(productIds));
+  });
+
+  const productNotAvailableEffDates$ = productNotAvailable$
+    .filter(({ action }) => action.reason === NOT_AVAILABLE_EFFECTIVITY_DATES);
+
+  /** Show toast with search action */
+  subscribe(productNotAvailableEffDates$, ({
+    action, getState, dispatch, events,
+  }) => {
+    const { productId } = action;
+    dispatch(expireProductById(productId));
+    dispatch(historyPop());
+    const name = getProductName(getState(), { productId });
+    events.emit(ToastProvider.ADD, {
+      id: 'product.available.not_search_similar',
+      message: 'product.available.not_search_similar',
+      messageParams: {
+        name,
+      },
+      action: () => dispatch(historyPush({
+        pathname: getSearchRoute(name),
+      })),
+    });
   });
 }
 

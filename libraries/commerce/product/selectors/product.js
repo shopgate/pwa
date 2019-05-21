@@ -862,6 +862,27 @@ export const getProductsResult = createSelector(
 );
 
 /**
+ * Return product effectivity dates
+ * @param {Object} state The current application state.
+ * @returns {Object}
+ */
+export const getProductEffectivityDates = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+    const { startDate, endDate } = product;
+    return startDate || endDate
+      ? {
+        startDate,
+        endDate,
+      }
+      : null;
+  }
+);
+
+/**
  * Selector mappings for PWA < 6.0
  * @deprecated
  */

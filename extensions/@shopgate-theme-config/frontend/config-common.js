@@ -29,6 +29,19 @@ export default {
         showHint: true,
         hint: null,
       },
+      '@shopgate/engage/product/EffectivityDates': {
+        showStartDate: {
+          _comment: 'always|daysBefore|never|',
+          strategy: 'always',
+          daysBefore: null,
+        },
+        showEndDate: {
+          _comment: 'always|never|daysBefore',
+          strategy: 'always',
+          daysBefore: null,
+        },
+        accessExpired: false,
+      },
     },
     pages: [
       {
@@ -82,6 +95,10 @@ export default {
                 minHeight: '50vh',
               },
             },
+          },
+          {
+            name: 'ShopgateProductEffectivityDates',
+            id: '@shopgate/engage/product/EffectivityDates',
           },
         ],
       },

@@ -20,6 +20,7 @@ import {
   ERROR_PRODUCT_PROPERTIES,
   ERROR_PRODUCT_OPTIONS,
   ERROR_PRODUCT_SHIPPING,
+  PRODUCT_NOT_AVAILABLE,
 } from '../constants';
 
 export const productWillEnter$ = routeWillEnter$.merge(routeDidUpdate$)
@@ -117,3 +118,6 @@ export const variantDidChange$ = variantWillUpdate$
 
 export const productRelationsReceived$ =
   main$.filter(({ action }) => action.type === RECEIVE_PRODUCT_RELATIONS);
+
+export const productNotAvailable$ =
+  main$.filter(({ action }) => action.type === PRODUCT_NOT_AVAILABLE);

@@ -10,7 +10,7 @@ import {
   PRODUCT_INFO_ROW1,
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { MapPriceHint } from '@shopgate/engage/product';
+import { MapPriceHint, EffectivityDates } from '@shopgate/engage/product';
 import Manufacturer from '../Manufacturer';
 import Shipping from '../Shipping';
 import Availability from '../Availability';
@@ -43,7 +43,11 @@ const ProductInfo = ({ productId, options }) => (
               <Shipping productId={productId} />
             </div>
             <div className={styles.productInfo}>
-              <Availability productId={productId} />
+              {/* This feature is currently in BETA testing.
+                It should only be used for approved BETA Client Projects */}
+              <EffectivityDates productId={productId}>
+                <Availability productId={productId} />
+              </EffectivityDates>
             </div>
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
