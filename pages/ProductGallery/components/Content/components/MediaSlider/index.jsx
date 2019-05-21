@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Swiper } from '@shopgate/pwa-common/components';
+import { Swiper } from '@shopgate/engage/components';
 import { GALLERY_SLIDER_ZOOM } from './../../../../constants';
 import styles from './style';
 import connect from './connector';
