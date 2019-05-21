@@ -5,7 +5,9 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
 import expireProductById from '../action-creators/expireProductById';
 import subscription from './index';
-import { productRelationsReceived$, visibleProductNotFound$ } from '../streams';
+import fetchProductImages from '../actions/fetchProductImages';
+import { galleryWillEnter$, productRelationsReceived$, visibleProductNotFound$ } from '../streams';
+import { productImageFormats } from '../collections';
 import { ERROR_PRODUCT, RECEIVE_PRODUCT_CACHED } from '../constants';
 
 const mockedGetProductsById = jest.fn();
@@ -15,6 +17,7 @@ jest.mock('@shopgate/pwa-common/actions/router', () => ({
 }));
 jest.mock('../actions/fetchProductsById', () => (...args) => mockedGetProductsById(...args));
 jest.mock('../action-creators/expireProductById', () => jest.fn());
+jest.mock('../actions/fetchProductImages', () => jest.fn());
 
 describe('Product subscription', () => {
   const subscribe = jest.fn();
@@ -26,13 +29,42 @@ describe('Product subscription', () => {
   });
 
   it('should subscribe', () => {
-    expect(subscribe).toHaveBeenCalledTimes(6);
+    expect(subscribe).toHaveBeenCalledTimes(7);
+  });
+
+  describe('galleryWillEnter$', () => {
+    let galleryWillEnter$Subscription;
+    beforeAll(() => {
+      ([, galleryWillEnter$Subscription] = subscribe.mock.calls);
+    });
+
+    it('should dispatch fetchProductImages when called', () => {
+      const formats = [{ height: 1024, width: 1024 }];
+      productImageFormats.set('GROUP', formats);
+      const [stream, callback] = galleryWillEnter$Subscription;
+      expect(stream === galleryWillEnter$).toBe(true);
+
+      const action = {
+        route: {
+          params: {
+            productId: '31333337',
+          },
+        },
+      };
+
+      callback({
+        dispatch,
+        action,
+      });
+
+      expect(fetchProductImages).toHaveBeenCalledWith('1337', formats);
+    });
   });
 
   describe('productRelationsReceived$', () => {
     let productRelationsReceived$Subscription;
     beforeAll(() => {
-      ([,,,, productRelationsReceived$Subscription] = subscribe.mock.calls);
+      ([, , , , , productRelationsReceived$Subscription] = subscribe.mock.calls);
     });
 
     it('should dispatch fetchProductsById when called', () => {
@@ -66,7 +98,7 @@ describe('Product subscription', () => {
     let visibleProductNotFound$Subscription;
 
     beforeAll(() => {
-      ([,,, visibleProductNotFound$Subscription] = subscribe.mock.calls);
+      ([, , , , visibleProductNotFound$Subscription] = subscribe.mock.calls);
     });
 
     it('should call subscription on correct stream', () => {
