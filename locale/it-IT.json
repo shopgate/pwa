@@ -57,7 +57,13 @@
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
     "no_more_found": "L'articolo: \"{name}\" non è più disponibile.",
-    "quantity": "Quantità"
+    "quantity": "Quantità",
+    "available": {
+      "at": "Disponibile il {startDate, date, DD} {startDate, date, MMM} alle ore {startDate, time, short}",
+      "until": "Disponibile fino a {endDate, date, DD} {endDate, date, MMM} alle ore {endDate, time, short}",
+      "not": "Momentaneamente non disponibile",
+      "not_search_similar": "{name} non disponibile. Cercare prodotti simili?"
+    }
   },
   "category": {
     "error": {
@@ -166,6 +172,16 @@
     "camera_access_denied": {
       "message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
       "settings_button": "Vai alle impostazioni"
+    }
+  },
+  "formats": {
+    "date" : {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
     }
   }
 }
