@@ -12,20 +12,6 @@ export const updateInsetBackgroundColor = (color) => {
   }
 };
 
-/**
- * Checks if a bottom inset is set.
- * @returns {boolean}
- */
-export const hasInset = () => {
-  const value = getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-bottom');
-
-  if (value) {
-    return value.replace('px', '') > 0;
-  }
-
-  return false;
-};
-
 export const footer = css({
   bottom: 0,
   flexShrink: 1,
