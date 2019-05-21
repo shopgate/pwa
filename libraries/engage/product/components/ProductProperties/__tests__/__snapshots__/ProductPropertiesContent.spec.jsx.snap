@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductPropertiesContent /> should not render if no props are passed 1`] = `""`;
+
+exports[`<ProductPropertiesContent /> should render grouped properties 1`] = `
+<div
+  className={
+    Object {
+      "data-css-y50mcd": "",
+    }
+  }
+>
+  <ProductPropertiesGrouped
+    groups={
+      Array [
+        "Group 1",
+        "Group 2",
+      ]
+    }
+    properties={
+      Array [
+        Object {
+          "displayGroup": "Group 1",
+          "label": "Test 1",
+          "name": "test1",
+        },
+        Object {
+          "displayGroup": "Group 1",
+          "label": "Test 2",
+          "name": "test2",
+        },
+        Object {
+          "displayGroup": "Group 2",
+          "label": "Test 3",
+          "name": "test3",
+        },
+        Object {
+          "displayGroup": "Group 2",
+          "label": "Test 4",
+          "name": "test4",
+        },
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`<ProductPropertiesContent /> should render simple rows if not in beta 1`] = `
+<ProductPropertiesWrapper>
+  <ProductPropertiesRows
+    properties={
+      Array [
+        Object {
+          "displayGroup": "Group 1",
+          "label": "Test 1",
+          "name": "test1",
+        },
+        Object {
+          "displayGroup": "Group 1",
+          "label": "Test 2",
+          "name": "test2",
+        },
+        Object {
+          "displayGroup": "Group 2",
+          "label": "Test 3",
+          "name": "test3",
+        },
+        Object {
+          "displayGroup": "Group 2",
+          "label": "Test 4",
+          "name": "test4",
+        },
+      ]
+    }
+  />
+</ProductPropertiesWrapper>
+`;
+
+exports[`<ProductPropertiesContent /> should render simple rows of no groups could be found 1`] = `
+<ProductPropertiesWrapper>
+  <ProductPropertiesRows
+    properties={
+      Array [
+        Object {
+          "label": "Test 1",
+          "name": "test1",
+        },
+      ]
+    }
+  />
+</ProductPropertiesWrapper>
+`;

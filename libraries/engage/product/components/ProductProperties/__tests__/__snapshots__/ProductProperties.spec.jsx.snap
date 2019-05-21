@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductProperties /> should not render if no properties where passed 1`] = `
+<Connect(ProductProperties)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductProperties
+    dispatch={[Function]}
+    properties={null}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <SurroundPortals
+      portalName="product.properties"
+      portalProps={
+        Object {
+          "properties": null,
+        }
+      }
+    >
+      <Portal
+        name="product.properties.before"
+        props={
+          Object {
+            "properties": null,
+          }
+        }
+      />
+      <Portal
+        name="product.properties"
+        props={
+          Object {
+            "properties": null,
+          }
+        }
+      >
+        <ProductPropertiesContent
+          properties={null}
+        />
+      </Portal>
+      <Portal
+        name="product.properties.after"
+        props={
+          Object {
+            "properties": null,
+          }
+        }
+      />
+    </SurroundPortals>
+  </ProductProperties>
+</Connect(ProductProperties)>
+`;
+
+exports[`<ProductProperties /> should render if properties are passed 1`] = `
+<Connect(ProductProperties)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductProperties
+    dispatch={[Function]}
+    properties={
+      Array [
+        Object {
+          "displayGroup": "test",
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <SurroundPortals
+      portalName="product.properties"
+      portalProps={
+        Object {
+          "properties": Array [
+            Object {
+              "displayGroup": "test",
+            },
+          ],
+        }
+      }
+    >
+      <Portal
+        name="product.properties.before"
+        props={
+          Object {
+            "properties": Array [
+              Object {
+                "displayGroup": "test",
+              },
+            ],
+          }
+        }
+      />
+      <Portal
+        name="product.properties"
+        props={
+          Object {
+            "properties": Array [
+              Object {
+                "displayGroup": "test",
+              },
+            ],
+          }
+        }
+      >
+        <ProductPropertiesContent
+          properties={
+            Array [
+              Object {
+                "displayGroup": "test",
+              },
+            ]
+          }
+        >
+          <ProductPropertiesWrapper>
+            <div
+              className="css-1x8awm9"
+            >
+              <table>
+                <tbody>
+                  <ProductPropertiesRows
+                    properties={
+                      Array [
+                        Object {
+                          "displayGroup": "test",
+                        },
+                      ]
+                    }
+                  >
+                    <ProductPropertiesRow
+                      key="undefined-undefined"
+                    >
+                      <tr
+                        key="undefinedundefined"
+                      >
+                        <td
+                          className={
+                            Object {
+                              "data-css-fl9ufm": "",
+                            }
+                          }
+                        />
+                        <td
+                          className={
+                            Object {
+                              "data-css-fl9ufm": "",
+                            }
+                          }
+                          data-test-id="property: undefined"
+                        />
+                      </tr>
+                    </ProductPropertiesRow>
+                  </ProductPropertiesRows>
+                </tbody>
+              </table>
+            </div>
+          </ProductPropertiesWrapper>
+        </ProductPropertiesContent>
+      </Portal>
+      <Portal
+        name="product.properties.after"
+        props={
+          Object {
+            "properties": Array [
+              Object {
+                "displayGroup": "test",
+              },
+            ],
+          }
+        }
+      />
+    </SurroundPortals>
+  </ProductProperties>
+</Connect(ProductProperties)>
+`;

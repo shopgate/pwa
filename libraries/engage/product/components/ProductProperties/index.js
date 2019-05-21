@@ -1,1 +1,0 @@
-export { ProductProperties } from './ProductProperties';

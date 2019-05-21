@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useSpring, animated } from 'react-spring';
 import * as styles from './style';
 
 /**
@@ -11,22 +10,16 @@ import * as styles from './style';
 function AccordionContent({ children, open }) {
   const ref = useRef(null);
   const height = (ref.current === null) ? 'auto' : ref.current.clientHeight;
-  const [style, set] = useSpring(() => ({
+  const style = {
     height: !open ? 0 : height,
-    config: { duration: 150 },
-  }));
-
-  // Change the styles when the 'open' flag changes.
-  useEffect(() => {
-    set({ height: !open ? 0 : height });
-  }, [open]);
+  };
 
   return (
-    <animated.div className={styles.content} style={style}>
+    <div className={styles.content} style={style}>
       <div ref={ref} className={styles.contentInner}>
         {children}
       </div>
-    </animated.div>
+    </div>
   );
 }
 

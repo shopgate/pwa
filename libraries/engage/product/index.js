@@ -39,7 +39,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
 export * from '@shopgate/pwa-common-commerce/product/streams';
 
 // COMPONENTS
-export { ProductProperties } from './components/ProductProperties';
+export { default as ProductProperties } from './components/ProductProperties/ProductProperties';
 export { default as MapPriceHint } from './components/MapPriceHint';
 export { default as QuantityPicker } from './components/QuantityPicker';
 

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductPropertiesLists /> should only render simple rows 1`] = `
+<Fragment>
+  <ProductPropertiesRows
+    properties={
+      Array [
+        Object {
+          "label": "Test 1",
+          "name": "test1",
+        },
+        Object {
+          "label": "Test 2",
+          "name": "test2",
+        },
+      ]
+    }
+  />
+</Fragment>
+`;

@@ -1,55 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductPropertiesRows /> should not render if properties are empty 1`] = `
-<Fragment>
-  <ProductPropertiesRowUngrouped
-    properties={Array []}
-  />
-  <ProductPropertiesSubGroups
-    properties={Array []}
-  />
-</Fragment>
-`;
-
-exports[`<ProductPropertiesRows /> should render grouped and ungrouped properties 1`] = `
-<Fragment>
-  <ProductPropertiesRowUngrouped
-    properties={
-      Array [
-        Object {
-          "label": "test1",
-          "value": "123",
-        },
-        Object {
-          "label": "test2",
-          "value": "456",
-        },
-        Object {
-          "label": "test3",
-          "subDisplayGroup": "TestGroup",
-          "value": "789",
-        },
-      ]
-    }
-  />
-  <ProductPropertiesSubGroups
-    properties={
-      Array [
-        Object {
-          "label": "test1",
-          "value": "123",
-        },
-        Object {
-          "label": "test2",
-          "value": "456",
-        },
-        Object {
-          "label": "test3",
-          "subDisplayGroup": "TestGroup",
-          "value": "789",
-        },
-      ]
-    }
-  />
-</Fragment>
+exports[`<ProductPropertiesRows /> should render three rows of properties 1`] = `
+Array [
+  <ProductPropertiesRow
+    key="test1-123"
+    label="test1"
+    value="123"
+  />,
+  <ProductPropertiesRow
+    key="test2-456"
+    label="test2"
+    value="456"
+  />,
+  <ProductPropertiesRow
+    key="test3-789"
+    label="test3"
+    value="789"
+  />,
+]
 `;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductPropertiesRowGroup } from '../ProductPropertiesRowGroup';
+import ProductPropertiesGroup from '../ProductPropertiesGroup';
 
-describe('<ProductPropertiesRowGroup />', () => {
+describe('<ProductPropertiesGroup />', () => {
   it('should render a group title row', () => {
-    const wrapper = shallow(<ProductPropertiesRowGroup group="Test" />);
+    const wrapper = shallow(<ProductPropertiesGroup group="Test" />);
     expect(wrapper.find('tr').length).toEqual(1);
     expect(wrapper.find('td').length).toEqual(1);
     expect(wrapper.find('td').text()).toEqual('Test');

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductPropertiesRowGroup /> should render a group title row 1`] = `
+exports[`<ProductPropertiesGroup /> should render a group title row 1`] = `
 <tr>
   <td
     className={

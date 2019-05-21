@@ -1,21 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ProductPropertiesRowUngrouped } from './ProductPropertiesRowUngrouped';
-import { ProductPropertiesSubGroups } from './ProductPropertiesSubGroups';
+import ProductPropertiesRow from './ProductPropertiesRow';
 
 /**
+ * Renders rows of product properties.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @returns {JSX.Element}
  */
-export function ProductPropertiesRows({ properties }) {
-  return (
-    <React.Fragment>
-      <ProductPropertiesRowUngrouped properties={properties} />
-      <ProductPropertiesSubGroups properties={properties} />
-    </React.Fragment>
-  );
-}
+const ProductPropertiesRows = ({ properties }) => properties
+  .map(({ value, label }) => (
+    <ProductPropertiesRow key={`${label}-${value}`} label={label} value={value} />
+  ));
 
 ProductPropertiesRows.propTypes = {
   properties: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
+
+export default React.memo(ProductPropertiesRows);

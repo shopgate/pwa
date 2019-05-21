@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductPropertiesRows } from '../ProductPropertiesRows';
+import ProductPropertiesRows from '../ProductPropertiesRows';
 
 const properties = [
   {
@@ -14,21 +14,13 @@ const properties = [
   {
     label: 'test3',
     value: '789',
-    subDisplayGroup: 'TestGroup',
   },
 ];
 
 describe('<ProductPropertiesRows />', () => {
-  it('should not render if properties are empty', () => {
-    const wrapper = shallow(<ProductPropertiesRows properties={[]} />);
-    expect(wrapper.instance()).toEqual(null);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should render grouped and ungrouped properties', () => {
+  it('should render three rows of properties', () => {
     const wrapper = shallow(<ProductPropertiesRows properties={properties} />);
-    expect(wrapper.find('ProductPropertiesRowUngrouped').length).toEqual(1);
-    expect(wrapper.find('ProductPropertiesSubGroups').length).toEqual(1);
+    expect(wrapper.find('ProductPropertiesRow').length).toEqual(3);
     expect(wrapper).toMatchSnapshot();
   });
 });

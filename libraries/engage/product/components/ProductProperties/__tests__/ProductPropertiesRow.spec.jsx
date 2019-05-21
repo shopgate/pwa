@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductPropertiesRow } from '../ProductPropertiesRow';
+import ProductPropertiesRow from '../ProductPropertiesRow';
 
 describe('<ProductPropertiesRow />', () => {
   it('should render as expected', () => {
