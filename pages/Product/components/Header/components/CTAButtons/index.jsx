@@ -43,7 +43,9 @@ const CTAButtons = ({ isFavorite, productId }) => (
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_BEFORE} />
         <Portal name={PRODUCT_CTAS_ADD_TO_CART}>
           <CartButton />
-          {isBeta() && <QuantityPicker productId={productId} />}
+          {/* This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects */}
+          {isBeta() && <QuantityPicker productId={productId} /> }
         </Portal>
         <Portal name={PRODUCT_CTAS_ADD_TO_CART_AFTER} />
       </div>
