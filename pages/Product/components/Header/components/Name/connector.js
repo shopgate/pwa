@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductLongName } from '@shopgate/engage/product';
+import { getProductName, getProductLongName } from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,7 +8,8 @@ import { getProductLongName } from '@shopgate/engage/product';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  name: getProductLongName(state, props),
+  name: getProductName(state, props),
+  longName: getProductLongName(state, props),
 });
 
 /**
@@ -18,6 +19,9 @@ const mapStateToProps = (state, props) => ({
  */
 const areStatePropsEqual = (next, prev) => {
   if (!prev.name && next.name) {
+    return false;
+  }
+  if (!prev.longName && next.longName) {
     return false;
   }
 
