@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { themeName } from '@shopgate/pwa-common/helpers/config';
 
 const placeholderContainer = css({
   position: 'relative',
@@ -30,8 +31,25 @@ const placeholder = css({
   color: 'rgba(0, 0, 0, .05)',
 }).toString();
 
+const innerShadow = themeName.includes('ios') ? css({
+  position: 'relative',
+  overflow: 'hidden',
+  ':after': {
+    display: 'block',
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
+    pointerEvents: 'none',
+  },
+}).toString() : null;
+
 export default {
   placeholderContainer,
   placeholderContent,
   placeholder,
+  innerShadow,
 };

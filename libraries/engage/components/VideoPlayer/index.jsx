@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import ReactPlayer from 'react-player';
-import { viewVisibilityChange$ } from '@shopgate/pwa-common/streams/app';
+import { UIEvents } from '@shopgate/pwa-core';
+import { UI_VISIBILITY_CHANGE } from '@shopgate/pwa-common/constants/ui';
 
 /**
  * Video player component
@@ -21,7 +22,7 @@ class VideoPlayer extends PureComponent {
    * @inheritDoc
    */
   componentDidMount() {
-    this.viewSubscription = viewVisibilityChange$.subscribe(this.viewVisibilityChange);
+    UIEvents.addListener(UI_VISIBILITY_CHANGE, this.handleVisibilityChange);
   }
 
   /**
@@ -39,9 +40,7 @@ class VideoPlayer extends PureComponent {
    * @inheritDoc
    */
   componentWillUnmount() {
-    if (this.viewSubscription) {
-      this.viewSubscription.unsubscribe();
-    }
+    UIEvents.removeListener(UI_VISIBILITY_CHANGE, this.handleVisibilityChange);
   }
 
   /** @returns {boolean} */

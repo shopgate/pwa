@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'intersection-observer';
 
@@ -76,16 +76,10 @@ class IntersectionVisibility extends Component {
    * @returns {JSX.Element}
    */
   render() {
-    return (
-      <Fragment>
-        {
-          this.props.children({
-            ...this.state,
-            setRef: this.setRef,
-          })
-        }
-      </Fragment>
-    );
+    return this.props.children({
+      ...this.state,
+      setRef: this.setRef,
+    });
   }
 }
 

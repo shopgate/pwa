@@ -5,7 +5,6 @@ import {
   DID_REGISTER_LINK_EVENTS,
   OPEN_DEEP_LINK,
   OPEN_PUSH_NOTIFICATION,
-  VIEW_VISIBILITY_CHANGE,
 } from '../../constants/ActionTypes';
 
 /**
@@ -64,15 +63,4 @@ export const openPushNotification = (notificationId, link = '') => ({
   type: OPEN_PUSH_NOTIFICATION,
   notificationId,
   link,
-});
-
-/**
- * Creates the dispatched VIEW_VISIBILITY_CHANGE action object.
- * on route change, view disappera
- * @param {boolean} visible visible
- * @return {Object}
- */
-export const viewVisibilityChange = (visible = false) => ({
-  type: VIEW_VISIBILITY_CHANGE,
-  visible,
 });

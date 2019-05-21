@@ -21,6 +21,7 @@ import {
   onDidReset,
   onUpdate,
 } from '@virtuous/conductor';
+import { UI_VISIBILITY_CHANGE } from '../constants/ui';
 import { appError, pipelineError } from '../action-creators';
 import {
   historyPush,
@@ -35,7 +36,6 @@ import {
   routeDidUpdate,
 } from '../actions/router';
 import { receiveClientConnectivity } from '../action-creators/client';
-import { viewVisibilityChange } from '../action-creators/app';
 import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
@@ -87,7 +87,7 @@ export default function app(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ dispatch, getState }) => {
+  subscribe(appDidStart$, ({ dispatch, getState, events }) => {
     // Register for custom events
     registerEvents([
       EVENT_KEYBOARD_WILL_CHANGE,
@@ -135,7 +135,7 @@ export default function app(subscribe) {
     event.addCallback('pageInsetsChanged', () => {});
 
     /** @returns {*} */
-    const viewVisibility = () => dispatch(viewVisibilityChange(false));
+    const viewVisibility = () => events.emit(UI_VISIBILITY_CHANGE);
 
     event.addCallback('routeDidChange', viewVisibility);
     event.addCallback('viewDidDisappear', viewVisibility);

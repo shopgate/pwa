@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Image, PlaceholderIcon } from '../../../components';
 import styles from './style';
 
-const { colors, shadows: { productImageInnerShadow } = {} } = themeConfig;
-
-let imageInnerShadow = null;
-if (productImageInnerShadow) {
-  imageInnerShadow = css(productImageInnerShadow);
-}
+const { colors } = themeConfig;
 
 /**
  * The product image component.
@@ -114,7 +108,7 @@ class ProductImage extends Component {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={classnames(styles.placeholderContainer, imageInnerShadow)}>
+        <div className={classnames(styles.placeholderContainer, styles.innerShadow)}>
           <div className={styles.placeholderContent} data-test-id="placeHolder">
             <PlaceholderIcon className={styles.placeholder} />
           </div>
@@ -122,12 +116,12 @@ class ProductImage extends Component {
       );
     }
 
-    if (imageInnerShadow) {
+    if (styles.innerShadow) {
       return (
-        <div className={imageInnerShadow}>
+        <div className={styles.innerShadow}>
           <Image
             {...this.props}
-            className={imageInnerShadow}
+            className={styles.innerShadow}
             backgroundColor={colors.light}
             onError={this.imageLoadingFailed}
           />
