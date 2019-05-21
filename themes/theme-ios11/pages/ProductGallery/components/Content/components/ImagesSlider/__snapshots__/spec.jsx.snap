@@ -1,0 +1,575 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductGalleryImages)
+    initialSlide={3}
+  >
+    <ProductGalleryImages
+      dispatch={[Function]}
+      images={
+        Array [
+          Object {
+            "height": 1024,
+            "sources": Array [
+              "foo1024",
+              "bar1024",
+            ],
+            "width": 1024,
+          },
+          Object {
+            "height": 2048,
+            "sources": Array [
+              "foo2048",
+              "bar2048",
+            ],
+            "width": 2048,
+          },
+        ]
+      }
+      initialSlide={3}
+      product={
+        Object {
+          "id": 123,
+        }
+      }
+    >
+      <div
+        className="css-f7yea6"
+      >
+        <Swiper
+          autoPlay={false}
+          className="css-sa13d4"
+          classNames={
+            Object {
+              "container": "css-sa13d4",
+              "indicator": "css-vsp2nx",
+            }
+          }
+          controls={false}
+          disabled={false}
+          indicators={true}
+          initialSlide={3}
+          interval={3000}
+          loop={true}
+          maxIndicators={null}
+          onSlideChange={[Function]}
+          rebuildOnUpdate={false}
+          slidesPerView={1}
+          snapItems={true}
+          zoom={
+            Object {
+              "enabled": true,
+              "maxRatio": 3,
+              "minRation": 1,
+            }
+          }
+        >
+          <div
+            className="css-1hlki0z css-sa13d4"
+          >
+            <ReactIdSwiper
+              ContainerEl="div"
+              WrapperEl="div"
+              allowSlideNext={true}
+              allowSlidePrev={true}
+              autoplay={false}
+              containerClass="css-1n5i2c5 css-sa13d4"
+              freeMode={false}
+              getSwiper={[Function]}
+              initialSlide={3}
+              loop={true}
+              modules={
+                Array [
+                  Object {
+                    "create": [Function],
+                    "name": "pagination",
+                    "on": Object {
+                      "activeIndexChange": [Function],
+                      "click": [Function],
+                      "destroy": [Function],
+                      "init": [Function],
+                      "slidesLengthChange": [Function],
+                      "snapGridLengthChange": [Function],
+                      "snapIndexChange": [Function],
+                    },
+                    "params": Object {
+                      "pagination": Object {
+                        "bulletActiveClass": "swiper-pagination-bullet-active",
+                        "bulletClass": "swiper-pagination-bullet",
+                        "bulletElement": "span",
+                        "clickable": false,
+                        "clickableClass": "swiper-pagination-clickable",
+                        "currentClass": "swiper-pagination-current",
+                        "dynamicBullets": false,
+                        "dynamicMainBullets": 1,
+                        "el": null,
+                        "formatFractionCurrent": [Function],
+                        "formatFractionTotal": [Function],
+                        "hiddenClass": "swiper-pagination-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-pagination-lock",
+                        "modifierClass": "swiper-pagination-",
+                        "progressbarFillClass": "swiper-pagination-progressbar-fill",
+                        "progressbarOpposite": false,
+                        "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
+                        "renderBullet": null,
+                        "renderCustom": null,
+                        "renderFraction": null,
+                        "renderProgressbar": null,
+                        "totalClass": "swiper-pagination-total",
+                        "type": "bullets",
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "navigation",
+                    "on": Object {
+                      "click": [Function],
+                      "destroy": [Function],
+                      "fromEdge": [Function],
+                      "init": [Function],
+                      "toEdge": [Function],
+                    },
+                    "params": Object {
+                      "navigation": Object {
+                        "disabledClass": "swiper-button-disabled",
+                        "hiddenClass": "swiper-button-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-button-lock",
+                        "nextEl": null,
+                        "prevEl": null,
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "autoplay",
+                    "on": Object {
+                      "beforeTransitionStart": [Function],
+                      "destroy": [Function],
+                      "init": [Function],
+                      "sliderFirstMove": [Function],
+                    },
+                    "params": Object {
+                      "autoplay": Object {
+                        "delay": 3000,
+                        "disableOnInteraction": true,
+                        "enabled": false,
+                        "reverseDirection": false,
+                        "stopOnLastSlide": false,
+                        "waitForTransition": true,
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "zoom",
+                    "on": Object {
+                      "destroy": [Function],
+                      "doubleTap": [Function],
+                      "init": [Function],
+                      "touchEnd": [Function],
+                      "touchStart": [Function],
+                      "transitionEnd": [Function],
+                    },
+                    "params": Object {
+                      "zoom": Object {
+                        "containerClass": "swiper-zoom-container",
+                        "enabled": false,
+                        "maxRatio": 3,
+                        "minRatio": 1,
+                        "toggle": true,
+                        "zoomedSlideClass": "swiper-slide-zoomed",
+                      },
+                    },
+                  },
+                ]
+              }
+              navigation={
+                Object {
+                  "nextEl": null,
+                  "prevEl": null,
+                }
+              }
+              pagination={
+                Object {
+                  "bulletActiveClass": "css-hpsgy2",
+                  "bulletClass": "css-cvsmqf",
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                }
+              }
+              rebuildOnUpdate={false}
+              renderNextButton={[Function]}
+              renderPagination={[Function]}
+              renderParallax={[Function]}
+              renderPrevButton={[Function]}
+              renderScrollbar={[Function]}
+              slideClass="swiper-slide"
+              slidesPerView={1}
+              wrapperClass="swiper-wrapper"
+              zoom={
+                Object {
+                  "enabled": true,
+                  "maxRatio": 3,
+                  "minRation": 1,
+                }
+              }
+            >
+              <div
+                className="css-1n5i2c5 css-sa13d4"
+              >
+                <div
+                  className="swiper-wrapper"
+                >
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$foo1024"
+                  >
+                    <div
+                      className="swiper-slide"
+                      data-test-id="Slider"
+                    >
+                      <div
+                        className="swiper-zoom-container"
+                      >
+                        <img
+                          alt="foo2048"
+                          className="css-4kgshc"
+                          src="foo2048"
+                        />
+                      </div>
+                    </div>
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$bar1024"
+                  >
+                    <div
+                      className="swiper-slide"
+                      data-test-id="Slider"
+                    >
+                      <div
+                        className="swiper-zoom-container"
+                      >
+                        <img
+                          alt="bar2048"
+                          className="css-4kgshc"
+                          src="bar2048"
+                        />
+                      </div>
+                    </div>
+                  </SwiperItem>
+                </div>
+                <div
+                  className="swiper-pagination"
+                />
+              </div>
+            </ReactIdSwiper>
+          </div>
+        </Swiper>
+      </div>
+    </ProductGalleryImages>
+  </Connect(ProductGalleryImages)>
+</Provider>
+`;
+
+exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProductGalleryImages)
+    initialSlide={0}
+  >
+    <ProductGalleryImages
+      dispatch={[Function]}
+      images={
+        Array [
+          Object {
+            "height": 1024,
+            "sources": Array [
+              "foo1024",
+              "bar1024",
+            ],
+            "width": 1024,
+          },
+          Object {
+            "height": 2048,
+            "sources": Array [
+              "foo2048",
+              "bar2048",
+            ],
+            "width": 2048,
+          },
+        ]
+      }
+      initialSlide={0}
+      product={
+        Object {
+          "id": 123,
+        }
+      }
+    >
+      <div
+        className="css-f7yea6"
+      >
+        <Swiper
+          autoPlay={false}
+          className="css-sa13d4"
+          classNames={
+            Object {
+              "container": "css-sa13d4",
+              "indicator": "css-vsp2nx",
+            }
+          }
+          controls={false}
+          disabled={false}
+          indicators={true}
+          initialSlide={0}
+          interval={3000}
+          loop={true}
+          maxIndicators={null}
+          onSlideChange={[Function]}
+          rebuildOnUpdate={false}
+          slidesPerView={1}
+          snapItems={true}
+          zoom={
+            Object {
+              "enabled": true,
+              "maxRatio": 3,
+              "minRation": 1,
+            }
+          }
+        >
+          <div
+            className="css-1hlki0z css-sa13d4"
+          >
+            <ReactIdSwiper
+              ContainerEl="div"
+              WrapperEl="div"
+              allowSlideNext={true}
+              allowSlidePrev={true}
+              autoplay={false}
+              containerClass="css-1n5i2c5 css-sa13d4"
+              freeMode={false}
+              getSwiper={[Function]}
+              initialSlide={0}
+              loop={true}
+              modules={
+                Array [
+                  Object {
+                    "create": [Function],
+                    "name": "pagination",
+                    "on": Object {
+                      "activeIndexChange": [Function],
+                      "click": [Function],
+                      "destroy": [Function],
+                      "init": [Function],
+                      "slidesLengthChange": [Function],
+                      "snapGridLengthChange": [Function],
+                      "snapIndexChange": [Function],
+                    },
+                    "params": Object {
+                      "pagination": Object {
+                        "bulletActiveClass": "swiper-pagination-bullet-active",
+                        "bulletClass": "swiper-pagination-bullet",
+                        "bulletElement": "span",
+                        "clickable": false,
+                        "clickableClass": "swiper-pagination-clickable",
+                        "currentClass": "swiper-pagination-current",
+                        "dynamicBullets": false,
+                        "dynamicMainBullets": 1,
+                        "el": null,
+                        "formatFractionCurrent": [Function],
+                        "formatFractionTotal": [Function],
+                        "hiddenClass": "swiper-pagination-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-pagination-lock",
+                        "modifierClass": "swiper-pagination-",
+                        "progressbarFillClass": "swiper-pagination-progressbar-fill",
+                        "progressbarOpposite": false,
+                        "progressbarOppositeClass": "swiper-pagination-progressbar-opposite",
+                        "renderBullet": null,
+                        "renderCustom": null,
+                        "renderFraction": null,
+                        "renderProgressbar": null,
+                        "totalClass": "swiper-pagination-total",
+                        "type": "bullets",
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "navigation",
+                    "on": Object {
+                      "click": [Function],
+                      "destroy": [Function],
+                      "fromEdge": [Function],
+                      "init": [Function],
+                      "toEdge": [Function],
+                    },
+                    "params": Object {
+                      "navigation": Object {
+                        "disabledClass": "swiper-button-disabled",
+                        "hiddenClass": "swiper-button-hidden",
+                        "hideOnClick": false,
+                        "lockClass": "swiper-button-lock",
+                        "nextEl": null,
+                        "prevEl": null,
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "autoplay",
+                    "on": Object {
+                      "beforeTransitionStart": [Function],
+                      "destroy": [Function],
+                      "init": [Function],
+                      "sliderFirstMove": [Function],
+                    },
+                    "params": Object {
+                      "autoplay": Object {
+                        "delay": 3000,
+                        "disableOnInteraction": true,
+                        "enabled": false,
+                        "reverseDirection": false,
+                        "stopOnLastSlide": false,
+                        "waitForTransition": true,
+                      },
+                    },
+                  },
+                  Object {
+                    "create": [Function],
+                    "name": "zoom",
+                    "on": Object {
+                      "destroy": [Function],
+                      "doubleTap": [Function],
+                      "init": [Function],
+                      "touchEnd": [Function],
+                      "touchStart": [Function],
+                      "transitionEnd": [Function],
+                    },
+                    "params": Object {
+                      "zoom": Object {
+                        "containerClass": "swiper-zoom-container",
+                        "enabled": false,
+                        "maxRatio": 3,
+                        "minRatio": 1,
+                        "toggle": true,
+                        "zoomedSlideClass": "swiper-slide-zoomed",
+                      },
+                    },
+                  },
+                ]
+              }
+              navigation={
+                Object {
+                  "nextEl": null,
+                  "prevEl": null,
+                }
+              }
+              pagination={
+                Object {
+                  "bulletActiveClass": "css-hpsgy2",
+                  "bulletClass": "css-cvsmqf",
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                }
+              }
+              rebuildOnUpdate={false}
+              renderNextButton={[Function]}
+              renderPagination={[Function]}
+              renderParallax={[Function]}
+              renderPrevButton={[Function]}
+              renderScrollbar={[Function]}
+              slideClass="swiper-slide"
+              slidesPerView={1}
+              wrapperClass="swiper-wrapper"
+              zoom={
+                Object {
+                  "enabled": true,
+                  "maxRatio": 3,
+                  "minRation": 1,
+                }
+              }
+            >
+              <div
+                className="css-1n5i2c5 css-sa13d4"
+              >
+                <div
+                  className="swiper-wrapper"
+                >
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$foo1024"
+                  >
+                    <div
+                      className="swiper-slide"
+                      data-test-id="Slider"
+                    >
+                      <div
+                        className="swiper-zoom-container"
+                      >
+                        <img
+                          alt="foo2048"
+                          className="css-4kgshc"
+                          src="foo2048"
+                        />
+                      </div>
+                    </div>
+                  </SwiperItem>
+                  <SwiperItem
+                    className="swiper-slide"
+                    key=".$bar1024"
+                  >
+                    <div
+                      className="swiper-slide"
+                      data-test-id="Slider"
+                    >
+                      <div
+                        className="swiper-zoom-container"
+                      >
+                        <img
+                          alt="bar2048"
+                          className="css-4kgshc"
+                          src="bar2048"
+                        />
+                      </div>
+                    </div>
+                  </SwiperItem>
+                </div>
+                <div
+                  className="swiper-pagination"
+                />
+              </div>
+            </ReactIdSwiper>
+          </div>
+        </Swiper>
+      </div>
+    </ProductGalleryImages>
+  </Connect(ProductGalleryImages)>
+</Provider>
+`;
