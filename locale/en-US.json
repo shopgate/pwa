@@ -62,7 +62,13 @@
     "add_to_cart": "Add to cart",
     "go_to_cart": "Go to cart",
     "no_more_found": "The item \"{name}\" is no longer available.",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "available": {
+      "at": "Available {startDate, date, MMM} {startDate, date, DD} at {startDate, time, short}",
+      "until": "Available until {endDate, date, MMM} {endDate, date, DD} at {startDate, time, short}",
+      "not": "Currently not available",
+      "not_search_similar": "{name} not available. Search for similar products?"
+    }
   },
   "category": {
     "error": {
@@ -181,6 +187,16 @@
     "camera_access_denied": {
       "message": "This feature requires access to your camera. Please allow access in the settings.",
       "settings_button": "Go to settings"
+    }
+  },
+  "formats": {
+    "date" : {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
     }
   }
 }

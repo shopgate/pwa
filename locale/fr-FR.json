@@ -62,7 +62,13 @@
     "add_to_cart": "Ajouter au panier",
     "go_to_cart": "Aller au panier",
     "no_more_found": "L'article: \"{name}\" n'est plus disponible.",
-    "quantity": "Quantité"
+    "quantity": "Quantité",
+    "available": {
+      "at": "Disponible le {startDate, date, DD} {startDate, date, MMM} à {startDate, time, short}",
+      "until": "Disponible jusqu'au {endDate, date, DD} {endDate, date, MMM} à {endDate, time, short}",
+      "not": "Indisponible pour le moment",
+      "not_search_similar": "{name} indisponible. Rechercher des produits similaires?"
+    }
   },
   "category": {
     "error": {
@@ -181,6 +187,16 @@
     "camera_access_denied": {
       "message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
       "settings_button": "Aller dans paramètres"
+    }
+  },
+  "formats": {
+    "date" : {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
     }
   }
 }
