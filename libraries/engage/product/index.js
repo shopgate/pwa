@@ -34,6 +34,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/price';
 export * from '@shopgate/pwa-common-commerce/product/selectors/product';
 export * from '@shopgate/pwa-common-commerce/product/selectors/relations';
 export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
+export * from '@shopgate/pwa-common-commerce/product/selectors/media';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
@@ -41,6 +42,8 @@ export * from '@shopgate/pwa-common-commerce/product/streams';
 // COMPONENTS
 export { default as ProductProperties } from './components/ProductProperties/ProductProperties';
 export { default as MapPriceHint } from './components/MapPriceHint';
+export { default as ProductImage } from './components/ProductImage';
+export { default as MediaSlider } from './components/MediaSlider';
 export { default as QuantityPicker } from './components/QuantityPicker';
 
 // HOCs

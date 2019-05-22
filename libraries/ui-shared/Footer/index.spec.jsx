@@ -1,9 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import {
-  hasInset,
-  updateInsetBackgroundColor,
-} from './style';
+import { updateInsetBackgroundColor } from './style';
 import Footer from './index';
 
 const mutationConstructorSpy = jest.fn();
@@ -22,7 +19,6 @@ jest.mock('./style', () => {
   const actual = require.requireActual('./style');
   return {
     ...actual,
-    hasInset: jest.fn().mockReturnValue(true),
     updateInsetBackgroundColor: jest.fn(),
   };
 });
@@ -179,14 +175,6 @@ describe('<Footer />', () => {
   });
 
   describe('.performInsetBackgroundUpdate()', () => {
-    it('should do nothing when no inset is set', () => {
-      const wrapper = createComponent();
-      updateInsetBackgroundColor.mockClear();
-      hasInset.mockReturnValueOnce(false);
-      wrapper.instance().performInsetBackgroundUpdate();
-      expect(updateInsetBackgroundColor).not.toHaveBeenCalled();
-    });
-
     it('should do nothing when the ref is empty', () => {
       const wrapper = createComponent();
       wrapper.instance().ref.current = null;

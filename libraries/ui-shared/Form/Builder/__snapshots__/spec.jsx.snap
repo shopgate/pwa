@@ -170,6 +170,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     value="default"
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -416,6 +417,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     value=""
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -620,6 +622,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     value=""
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -866,6 +869,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     value="abc"
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -1190,6 +1194,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     value=""
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -1381,6 +1386,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     value=""
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -1634,6 +1640,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     value="default"
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -1843,6 +1850,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     value="default"
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -2096,6 +2104,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     value="abc"
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"
@@ -2305,6 +2314,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     value="cheat"
                   >
                     <SimpleInput
+                      attributes={null}
                       autoComplete={false}
                       autoCorrect={false}
                       className="css-keangt"

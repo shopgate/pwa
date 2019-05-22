@@ -4,7 +4,7 @@ import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { ProductProperties } from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
-import ImageSlider from '../ImageSlider';
+import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
@@ -126,7 +126,7 @@ class ProductContent extends PureComponent {
         <Fragment>
           <AppBar productId={this.state.productId} />
           <ProductContext.Provider value={contextValue}>
-            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
+            <Media productId={this.state.variantId || this.state.productId} />
             <Header />
             <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
             <Options />
