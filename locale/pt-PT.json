@@ -58,8 +58,8 @@
     "tax_disclaimer": "* Incl. IVA mais custos de envio, se aplicável",
     "no_more_found": "O item: \"{name}\" não está mais disponível.",
     "quantity": "Quantidade",
-    "minOrderQuantity": "Quantidade mínima do pedido:{quantity}",
-    "maxOrderQuantity": "Quantidade máxima do pedido:{quantity}"
+    "minOrderQuantity": "Quantidade mín. do pedido:{quantity}",
+    "maxOrderQuantity": "Quantidade máx. do pedido:{quantity}"
   },
   "category": {
     "error": {
