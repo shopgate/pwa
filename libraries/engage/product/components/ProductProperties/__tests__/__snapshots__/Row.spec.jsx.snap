@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Row /> should render as expected 1`] = `
+<tr
+  key="TestLabelTestValue"
+>
+  <td
+    className={
+      Object {
+        "data-css-fl9ufm": "",
+      }
+    }
+  >
+    TestLabel
+  </td>
+  <td
+    className={
+      Object {
+        "data-css-fl9ufm": "",
+      }
+    }
+    data-test-id="property: TestValue"
+  >
+    TestValue
+  </td>
+</tr>
+`;

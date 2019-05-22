@@ -6,20 +6,22 @@ describe('<AccordionContent />', () => {
   it('should render as closed', () => {
     const wrapper = shallow((
       <AccordionContent>
-        <div>Some Child</div>
+        <div id="test">Some Child</div>
       </AccordionContent>
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('#test').text()).toEqual('Some Child');
+    expect(wrapper.prop('style').height.value).toEqual(0);
   });
 
   it('should render as open', () => {
     const wrapper = shallow((
       <AccordionContent open>
-        <div>Some Child</div>
+        <div id="test">Some Child</div>
       </AccordionContent>
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('#test').text()).toEqual('Some Child');
+    expect(wrapper.prop('style').height.value).toEqual('auto');
   });
 });
