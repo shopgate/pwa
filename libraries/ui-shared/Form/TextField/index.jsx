@@ -16,7 +16,11 @@ const noop = () => {};
 class TextField extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    className: PropTypes.string,
+    attributes: PropTypes.shape(),
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
     errorText: PropTypes.node,
     hasUnderline: PropTypes.bool,
     label: PropTypes.node,
@@ -34,6 +38,7 @@ class TextField extends Component {
   };
 
   static defaultProps = {
+    attributes: null,
     className: '',
     errorText: '',
     hasUnderline: true,
@@ -92,7 +97,7 @@ class TextField extends Component {
       >
         <Grid>
           {leftElement && <Grid.Item grow={0} className={style.element}>{leftElement}</Grid.Item>}
-          <Grid.Item grow={1}>
+          <Grid.Item grow={1} className={style.container}>
             <Input
               {...props}
               onFocusChange={this.handleFocusChange}
