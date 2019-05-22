@@ -6,6 +6,12 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
+jest.mock('@shopgate/engage/product', () => ({
+  withPriceCalculation: Component => props => <Component {...props} />,
+  MapPriceHint: () => null,
+  OrderQuantityHint: () => null,
+}));
+
 const defaultProps = {
   url: '/some/url',
   productId: mockProductId,

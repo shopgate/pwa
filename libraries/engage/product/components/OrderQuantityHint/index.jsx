@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
-import { isBeta } from '@shopgate/engage/core';
+import { isBeta, useWidgetSettings } from '@shopgate/engage/core';
 import { PRODUCT_ORDER_QUANTITY } from '@shopgate/engage/product';
 import withProductStock from '../../hocs/withProductStock';
 import { hint } from './style';
@@ -15,9 +15,11 @@ const OrderQuantityHint = ({ stock }) => {
     return null;
   }
 
+  const settings = useWidgetSettings('@shopgate/engage/product/OrderQuantityHint');
+
   return (
     <SurroundPortals portalName={PRODUCT_ORDER_QUANTITY} portalProps={{ stock }}>
-      {stock && !!stock.minOrderQuantity &&
+      {settings.show && stock && !!stock.minOrderQuantity &&
         <div className={hint}>
           <I18n.Text
             string="product.minOrderQuantity"
@@ -25,7 +27,7 @@ const OrderQuantityHint = ({ stock }) => {
           />
         </div>
         }
-      {stock && !!stock.maxOrderQuantity &&
+      {settings.show && stock && !!stock.maxOrderQuantity &&
         <div className={hint}>
           <I18n.Text
             string="product.maxOrderQuantity"

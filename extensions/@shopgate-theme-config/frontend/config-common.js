@@ -29,6 +29,9 @@ export default {
         showHint: true,
         hint: null,
       },
+      '@shopgate/engage/product/OrderQuantityHint': {
+        show: true,
+      },
     },
     pages: [
       {
@@ -39,6 +42,10 @@ export default {
           {
             name: 'ShopgateProductMapPrice',
             id: '@shopgate/engage/product/MapPrice',
+          },
+          {
+            name: 'ShopgateProductOrderQuantityHint',
+            id: '@shopgate/engage/product/OrderQuantityHint',
           },
         ],
       },
@@ -82,6 +89,10 @@ export default {
                 minHeight: '50vh',
               },
             },
+          },
+          {
+            name: 'ShopgateProductOrderQuantityHint',
+            id: '@shopgate/engage/product/OrderQuantityHint',
           },
         ],
       },
