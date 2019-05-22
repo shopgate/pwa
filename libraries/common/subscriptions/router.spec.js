@@ -37,6 +37,7 @@ let mockedWebCheckoutConfig = null;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get shopCNAME() { return mockedShopCNAME; },
   get webCheckoutShopify() { return mockedWebCheckoutConfig; },
+  themeConfig: {},
 }));
 
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());

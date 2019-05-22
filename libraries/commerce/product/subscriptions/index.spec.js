@@ -26,7 +26,7 @@ describe('Product subscription', () => {
   });
 
   it('should subscribe', () => {
-    expect(subscribe).toHaveBeenCalledTimes(6);
+    expect(subscribe).toHaveBeenCalledTimes(7);
   });
 
   describe('productRelationsReceived$', () => {

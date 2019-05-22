@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
-import { themeConfig } from '../../helpers/config';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ToastContext from './context';
 
 const { variables: { toast: { duration = 5000 } = {} } = {} } = themeConfig;
