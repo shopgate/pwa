@@ -59,8 +59,8 @@
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
-    "minOrderQuantity": "Minimale bestelhoeveelheid: {quantity}",
-    "maxOrderQuantity": "Maximale bestelhoeveelheid: {quantity}"
+    "minOrderQuantity": "Minimale bestelhoeveelheid:{quantity}",
+    "maxOrderQuantity": "Maximale bestelhoeveelheid:{quantity}"
   },
   "category": {
     "error": {
