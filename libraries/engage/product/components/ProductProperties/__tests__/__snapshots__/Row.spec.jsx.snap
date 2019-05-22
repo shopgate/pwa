@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductPropertiesRow /> should render as expected 1`] = `
+exports[`<Row /> should render as expected 1`] = `
 <tr
   key="TestLabelTestValue"
 >

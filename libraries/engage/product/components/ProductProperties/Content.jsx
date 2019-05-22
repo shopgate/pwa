@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '../../../core';
 import { getGroupsFromProperties } from './helpers/getGroupsFromProperties';
-import ProductPropertiesGrouped from './ProductPropertiesGrouped';
-import ProductPropertiesWrapper from './ProductPropertiesWrapper';
-import ProductPropertiesRows from './ProductPropertiesRows';
-import { groupsContainer } from './ProductProperties.style';
+import GroupedProperties from './GroupedProperties';
+import Wrapper from './Wrapper';
+import Rows from './Rows';
+import { groupsContainer } from './style';
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductPropertiesContent = ({ properties }) => {
+const Content = ({ properties }) => {
   if (!properties) {
     return null;
   }
@@ -21,9 +21,9 @@ const ProductPropertiesContent = ({ properties }) => {
   // Display the simple properties if no groups exist or if not in beta mode.
   if (!isBeta() || !groups || groups.length === 0) {
     return (
-      <ProductPropertiesWrapper>
-        <ProductPropertiesRows properties={properties} />
-      </ProductPropertiesWrapper>
+      <Wrapper>
+        <Rows properties={properties} />
+      </Wrapper>
     );
   }
 
@@ -33,17 +33,17 @@ const ProductPropertiesContent = ({ properties }) => {
   */
   return (
     <div className={groupsContainer}>
-      <ProductPropertiesGrouped properties={properties} groups={groups} />
+      <GroupedProperties properties={properties} groups={groups} />
     </div>
   );
 };
 
-ProductPropertiesContent.propTypes = {
+Content.propTypes = {
   properties: PropTypes.arrayOf(PropTypes.shape()),
 };
 
-ProductPropertiesContent.defaultProps = {
+Content.defaultProps = {
   properties: null,
 };
 
-export default ProductPropertiesContent;
+export default Content;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductPropertiesGrouped from '../ProductPropertiesGrouped';
+import GroupedProperties from '../GroupedProperties';
 
 const properties = [
   {
@@ -27,13 +27,13 @@ const properties = [
 
 const groups = ['Group 1', 'Group 2'];
 
-describe('<ProductPropertiesGrouped />', () => {
+describe('<GroupedProperties />', () => {
   it('should render as expected', () => {
-    const wrapper = shallow(<ProductPropertiesGrouped properties={properties} groups={groups} />);
+    const wrapper = shallow(<GroupedProperties properties={properties} groups={groups} />);
     expect(wrapper.find('Accordion').length).toEqual(2);
-    expect(wrapper.find('ProductPropertiesWrapper').length).toEqual(2);
-    expect(wrapper.find('ProductPropertiesWrapper').at(0).prop('dense')).toEqual(true);
-    expect(wrapper.find('ProductPropertiesLists').length).toEqual(2);
+    expect(wrapper.find('Wrapper').length).toEqual(2);
+    expect(wrapper.find('Wrapper').at(0).prop('dense')).toEqual(true);
+    expect(wrapper.find('Lists').length).toEqual(2);
     expect(wrapper).toMatchSnapshot();
   });
 });

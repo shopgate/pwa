@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductPropertiesContent /> should not render if no props are passed 1`] = `""`;
+exports[`<Content /> should not render if no props are passed 1`] = `""`;
 
-exports[`<ProductPropertiesContent /> should render grouped properties 1`] = `
+exports[`<Content /> should render grouped properties 1`] = `
 <div
   className={
     Object {
@@ -10,7 +10,7 @@ exports[`<ProductPropertiesContent /> should render grouped properties 1`] = `
     }
   }
 >
-  <ProductPropertiesGrouped
+  <GroupedProperties
     groups={
       Array [
         "Group 1",
@@ -45,9 +45,9 @@ exports[`<ProductPropertiesContent /> should render grouped properties 1`] = `
 </div>
 `;
 
-exports[`<ProductPropertiesContent /> should render simple rows if not in beta 1`] = `
-<ProductPropertiesWrapper>
-  <ProductPropertiesRows
+exports[`<Content /> should render simple rows if not in beta 1`] = `
+<Wrapper>
+  <Rows
     properties={
       Array [
         Object {
@@ -73,12 +73,12 @@ exports[`<ProductPropertiesContent /> should render simple rows if not in beta 1
       ]
     }
   />
-</ProductPropertiesWrapper>
+</Wrapper>
 `;
 
-exports[`<ProductPropertiesContent /> should render simple rows of no groups could be found 1`] = `
-<ProductPropertiesWrapper>
-  <ProductPropertiesRows
+exports[`<Content /> should render simple rows of no groups could be found 1`] = `
+<Wrapper>
+  <Rows
     properties={
       Array [
         Object {
@@ -88,5 +88,5 @@ exports[`<ProductPropertiesContent /> should render simple rows of no groups cou
       ]
     }
   />
-</ProductPropertiesWrapper>
+</Wrapper>
 `;

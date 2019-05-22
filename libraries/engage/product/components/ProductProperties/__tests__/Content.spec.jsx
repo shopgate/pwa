@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { isBeta } from '../../../../core';
-import ProductPropertiesContent from '../ProductPropertiesContent';
+import Content from '../Content';
 
 jest.mock('../../../../core', () => ({
   isBeta: jest.fn(),
@@ -37,34 +37,34 @@ const propertiesSimple = [
   },
 ];
 
-describe('<ProductPropertiesContent />', () => {
+describe('<Content />', () => {
   it('should not render if no props are passed', () => {
-    const wrapper = shallow(<ProductPropertiesContent />);
+    const wrapper = shallow(<Content />);
     expect(wrapper.instance()).toEqual(null);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render simple rows if not in beta', () => {
     isBeta.mockReturnValueOnce(false);
-    const wrapper = shallow(<ProductPropertiesContent properties={properties} />);
-    expect(wrapper.find('ProductPropertiesWrapper').length).toEqual(1);
-    expect(wrapper.find('ProductPropertiesRows').length).toEqual(1);
+    const wrapper = shallow(<Content properties={properties} />);
+    expect(wrapper.find('Wrapper').length).toEqual(1);
+    expect(wrapper.find('Rows').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render simple rows of no groups could be found', () => {
     isBeta.mockReturnValueOnce(true);
-    const wrapper = shallow(<ProductPropertiesContent properties={propertiesSimple} />);
-    expect(wrapper.find('ProductPropertiesWrapper').length).toEqual(1);
-    expect(wrapper.find('ProductPropertiesRows').length).toEqual(1);
+    const wrapper = shallow(<Content properties={propertiesSimple} />);
+    expect(wrapper.find('Wrapper').length).toEqual(1);
+    expect(wrapper.find('Rows').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render grouped properties', () => {
     isBeta.mockReturnValueOnce(true);
-    const wrapper = shallow(<ProductPropertiesContent properties={properties} />);
-    expect(wrapper.find('ProductPropertiesGrouped').length).toEqual(1);
-    expect(wrapper.find('ProductPropertiesGrouped').prop('groups')).toEqual(['Group 1', 'Group 2']);
+    const wrapper = shallow(<Content properties={properties} />);
+    expect(wrapper.find('GroupedProperties').length).toEqual(1);
+    expect(wrapper.find('GroupedProperties').prop('groups')).toEqual(['Group 1', 'Group 2']);
     expect(wrapper).toMatchSnapshot();
   });
 });

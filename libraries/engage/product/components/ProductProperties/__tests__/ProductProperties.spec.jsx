@@ -37,7 +37,7 @@ describe('<ProductProperties />', () => {
   it('should render if properties are passed', () => {
     makeGetProductProperties.mockReturnValueOnce(() => properties);
     const wrapper = mount(<ProductProperties key="2" store={store} />);
-    expect(wrapper.find('ProductPropertiesContent').length).toEqual(1);
+    expect(wrapper.find('Content').length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 });

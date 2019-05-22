@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cxs from 'classnames';
-import { container, containerDense } from './ProductProperties.style';
+import { container, containerDense } from './style';
 
 /**
  * Renders the general properties wrapper table.
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const ProductPropertiesWrapper = ({ children, dense }) => (
+const Wrapper = ({ children, dense }) => (
   <div
     className={cxs({
       [container]: !dense,
@@ -23,13 +23,13 @@ const ProductPropertiesWrapper = ({ children, dense }) => (
   </div>
 );
 
-ProductPropertiesWrapper.propTypes = {
+Wrapper.propTypes = {
   children: PropTypes.node.isRequired,
   dense: PropTypes.bool,
 };
 
-ProductPropertiesWrapper.defaultProps = {
+Wrapper.defaultProps = {
   dense: false,
 };
 
-export default React.memo(ProductPropertiesWrapper);
+export default React.memo(Wrapper);

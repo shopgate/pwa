@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductPropertiesGrouped /> should render as expected 1`] = `
+exports[`<GroupedProperties /> should render as expected 1`] = `
 Array [
   <div
     className={
@@ -14,10 +14,10 @@ Array [
       renderLabel={[Function]}
       testId="product-properties-group-Group 1"
     >
-      <ProductPropertiesWrapper
+      <Wrapper
         dense={true}
       >
-        <ProductPropertiesLists
+        <Lists
           properties={
             Array [
               Object {
@@ -33,7 +33,7 @@ Array [
             ]
           }
         />
-      </ProductPropertiesWrapper>
+      </Wrapper>
     </Accordion>
   </div>,
   <div
@@ -48,10 +48,10 @@ Array [
       renderLabel={[Function]}
       testId="product-properties-group-Group 2"
     >
-      <ProductPropertiesWrapper
+      <Wrapper
         dense={true}
       >
-        <ProductPropertiesLists
+        <Lists
           properties={
             Array [
               Object {
@@ -67,7 +67,7 @@ Array [
             ]
           }
         />
-      </ProductPropertiesWrapper>
+      </Wrapper>
     </Accordion>
   </div>,
 ]

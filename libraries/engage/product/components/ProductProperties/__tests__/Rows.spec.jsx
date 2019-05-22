@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductPropertiesRows from '../ProductPropertiesRows';
+import Rows from '../Rows';
 
 const properties = [
   {
@@ -17,10 +17,10 @@ const properties = [
   },
 ];
 
-describe('<ProductPropertiesRows />', () => {
+describe('<Rows />', () => {
   it('should render three rows of properties', () => {
-    const wrapper = shallow(<ProductPropertiesRows properties={properties} />);
-    expect(wrapper.find('ProductPropertiesRow').length).toEqual(3);
+    const wrapper = shallow(<Rows properties={properties} />);
+    expect(wrapper.find('Row').length).toEqual(3);
     expect(wrapper).toMatchSnapshot();
   });
 });
