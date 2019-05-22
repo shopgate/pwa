@@ -1,6 +1,6 @@
 const appConfig = require('./config/app.json');
 
-const { theme: { styles: { globals: { colors } = {} } = {} } = {} } = appConfig;
+const { theme: { colors } = {} } = appConfig;
 const {
   light, dark, primary, accent,
 } = colors;
