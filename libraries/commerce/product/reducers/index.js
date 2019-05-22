@@ -8,6 +8,7 @@ import variantsByProductId from './variantsByProductId';
 import optionsByProductId from './optionsByProductId';
 import resultsByHash from './resultsByHash';
 import productRelationsByHash from './productRelationsByHash';
+import mediaByProductId from './mediaByProductId';
 
 export default combineReducers({
   descriptionsByProductId,
@@ -19,4 +20,5 @@ export default combineReducers({
   resultsByHash,
   shippingByProductId,
   variantsByProductId,
+  mediaByProductId,
 });

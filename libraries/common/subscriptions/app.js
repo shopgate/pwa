@@ -21,6 +21,7 @@ import {
   onDidReset,
   onUpdate,
 } from '@virtuous/conductor';
+import { UI_VISIBILITY_CHANGE } from '../constants/ui';
 import { appError, pipelineError } from '../action-creators';
 import {
   historyPush,
@@ -86,7 +87,7 @@ export default function app(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ dispatch, getState }) => {
+  subscribe(appDidStart$, ({ dispatch, getState, events }) => {
     // Register for custom events
     registerEvents([
       EVENT_KEYBOARD_WILL_CHANGE,
@@ -132,6 +133,12 @@ export default function app(subscribe) {
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
+
+    /** @returns {*} */
+    const viewVisibility = () => events.emit(UI_VISIBILITY_CHANGE);
+
+    event.addCallback('routeDidChange', viewVisibility);
+    event.addCallback('viewDidDisappear', viewVisibility);
 
     /*
      * Onload must be send AFTER app did start.
