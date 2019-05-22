@@ -85,6 +85,7 @@ exports[`<TextField /> should focus the input 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -244,6 +245,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -403,6 +405,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -562,6 +565,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -721,6 +725,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         value="FooBar"
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -880,6 +885,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1044,6 +1050,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1203,6 +1210,7 @@ exports[`<TextField /> should show the error message 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1373,6 +1381,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1538,6 +1547,7 @@ exports[`<TextField /> should show the label 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1718,6 +1728,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1891,6 +1902,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         value=""
       >
         <SimpleInput
+          attributes={null}
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
