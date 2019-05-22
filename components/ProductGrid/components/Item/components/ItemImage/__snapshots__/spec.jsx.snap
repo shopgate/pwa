@@ -21,6 +21,7 @@ exports[`<ItemImage /> should render 1`] = `
     <ProductImage
       alt="FooBar"
       animating={true}
+      className={null}
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
       itemProp="image"

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MapPriceHint, OrderQuantityHint } from '@shopgate/engage/product';
+import { MapPriceHint, OrderQuantityHint, ProductImage } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
-import ProductImage from 'Components/ProductImage';
 import Badge from '../Badge';
 import Price from '../Price';
 import Title from '../Title';

@@ -16,3 +16,8 @@ export const GALLERY_SLIDER_IMAGE_FORMATS = [
     height: 2048,
   },
 ];
+export const GALLERY_SLIDER_ZOOM = {
+  enabled: true,
+  maxRatio: 3,
+  minRation: 1,
+};
