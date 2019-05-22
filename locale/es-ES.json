@@ -63,8 +63,8 @@
     "go_to_cart": "Ir a la cesta",
     "no_more_found": "El artículo: \"{name}\" ya no está disponible.",
     "quantity": "Cantidad",
-    "minOrderQuantity": "Cantidad mínima del pedido:{quantity}",
-    "maxOrderQuantity": "Cantidad máxima del pedido:{quantity}"
+    "minOrderQuantity": "Cantidad mín. del pedido:{quantity}",
+    "maxOrderQuantity": "Cantidad máx. del pedido:{quantity}"
   },
   "category": {
     "error": {
