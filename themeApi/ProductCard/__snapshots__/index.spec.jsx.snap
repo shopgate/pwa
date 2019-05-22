@@ -163,7 +163,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                       props={null}
                     >
                       <div
-                        className="css-y5kkpq"
+                        className="css-y5kkpq css-3hjqnz"
                       >
                         <div
                           className="css-1vq3byi"
