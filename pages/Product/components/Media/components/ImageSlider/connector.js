@@ -7,7 +7,7 @@ import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../constants';
+import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../../../constants';
 
 /**
  * Maps the contents of the state to the component props.
