@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import { ITEM_PATH, MapPriceHint, OrderQuantityHint } from '@shopgate/engage/product';
+import { ITEM_PATH, MapPriceHint, ProductImage, OrderQuantityHint } from '@shopgate/engage/product';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
-import ProductImage from 'Components/ProductImage';
 import ProductGridPrice from 'Components/ProductGridPrice';
 import styles from './style';
 
@@ -63,6 +62,7 @@ const ProductCard = ({
         {/* This feature is currently in BETA testing.
           It should only be used for approved BETA Client Projects */}
         <OrderQuantityHint productId={product.id} />
+
         {!hidePrice && (
           <Fragment>
             <Portal

@@ -7,9 +7,12 @@ import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { Swiper } from '@shopgate/pwa-common/components';
+import { Swiper as MockSwiper } from '@shopgate/pwa-common/components';
 import Content from './index';
 
+jest.mock('@shopgate/engage/components', () => ({
+  Swiper: MockSwiper,
+}));
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProductImages: jest.fn(),
   getCurrentBaseProduct: jest.fn(),
@@ -45,7 +48,7 @@ describe('<ProductGallery.Content> page', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Swiper).length).toEqual(1);
+    expect(wrapper.find(MockSwiper).length).toEqual(1);
     expect(wrapper.find('img').length).toEqual(2);
     expect(wrapper
       .find('img')
@@ -68,6 +71,6 @@ describe('<ProductGallery.Content> page', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Swiper).prop('initialSlide')).toEqual(3);
+    expect(wrapper.find(MockSwiper).prop('initialSlide')).toEqual(3);
   });
 });

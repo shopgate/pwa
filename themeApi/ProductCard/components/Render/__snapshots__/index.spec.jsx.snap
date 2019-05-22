@@ -64,6 +64,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
           <ProductImage
             alt="Product Name"
             animating={true}
+            className={null}
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
             itemProp="image"
@@ -85,7 +86,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
             srcmap={null}
           >
             <div
-              className="css-y5kkpq css-3hjqnz"
+              className="css-y5kkpq"
             >
               <div
                 className="css-1vq3byi"
@@ -776,6 +777,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
           <ProductImage
             alt="Product Name"
             animating={true}
+            className={null}
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
             itemProp="image"
@@ -797,7 +799,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
             srcmap={null}
           >
             <div
-              className="css-y5kkpq css-3hjqnz"
+              className="css-y5kkpq"
             >
               <div
                 className="css-1vq3byi"
@@ -1208,6 +1210,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
           <ProductImage
             alt="Product Name"
             animating={true}
+            className={null}
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
             itemProp="image"
@@ -1229,7 +1232,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
             srcmap={null}
           >
             <div
-              className="css-y5kkpq css-3hjqnz"
+              className="css-y5kkpq"
             >
               <div
                 className="css-1vq3byi"
@@ -1986,6 +1989,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
           <ProductImage
             alt="Product Name"
             animating={true}
+            className={null}
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
             itemProp="image"
@@ -2007,7 +2011,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
             srcmap={null}
           >
             <div
-              className="css-y5kkpq css-3hjqnz"
+              className="css-y5kkpq"
             >
               <div
                 className="css-1vq3byi"
@@ -2764,6 +2768,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
           <ProductImage
             alt="Product Name"
             animating={true}
+            className={null}
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
             itemProp="image"
@@ -2785,7 +2790,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
             srcmap={null}
           >
             <div
-              className="css-y5kkpq css-3hjqnz"
+              className="css-y5kkpq"
             >
               <div
                 className="css-1vq3byi"
@@ -3506,6 +3511,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
           <ProductImage
             alt="Product Name"
             animating={true}
+            className={null}
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
             itemProp="image"
@@ -3527,7 +3533,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
             srcmap={null}
           >
             <div
-              className="css-y5kkpq css-3hjqnz"
+              className="css-y5kkpq"
             >
               <div
                 className="css-1vq3byi"
@@ -4031,6 +4037,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
           <ProductImage
             alt="Product Name"
             animating={true}
+            className={null}
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
             itemProp="image"
@@ -4052,7 +4059,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
             srcmap={null}
           >
             <div
-              className="css-y5kkpq css-3hjqnz"
+              className="css-y5kkpq"
             >
               <div
                 className="css-1vq3byi"
