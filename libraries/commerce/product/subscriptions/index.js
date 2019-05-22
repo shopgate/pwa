@@ -11,6 +11,7 @@ import fetchProductOptions from '../actions/fetchProductOptions';
 import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
+  galleryWillEnter$,
   productReceived$,
   cachedProductReceived$,
   productRelationsReceived$,
@@ -40,6 +41,11 @@ function product(subscribe) {
     dispatch(fetchProductProperties(id));
     dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
     dispatch(fetchProductShipping(id));
+  });
+
+  subscribe(galleryWillEnter$, ({ action, dispatch }) => {
+    const { productId } = action.route.params;
+    dispatch(fetchProductImages(hex2bin(productId), productImageFormats.getAllUniqueFormats()));
   });
 
   subscribe(processProduct$, ({ action, dispatch }) => {

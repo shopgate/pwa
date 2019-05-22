@@ -15,6 +15,15 @@ export const innerContainer = css({
   },
 }).toString();
 
+/**
+ * Prevents a visible shrink animation of swiped out slides which where in a zoomed state before.
+ */
+export const zoomFix = css({
+  ' .swiper-slide': {
+    overflow: 'hidden',
+  },
+}).toString();
+
 export const wrapper = css({
   flexShrink: 0,
 });
