@@ -20,14 +20,22 @@ export function getThemeConfig(appConfig) {
     return themeConfig;
   }
 
-  const { colors = {}, theme: { styles: { globals = {} } = {} } = {} } = appConfig;
+  const { colors = {}, theme = {} } = appConfig;
+
+  // Force cta colors
+  if (!colors.cta && colors.primary) {
+    colors.cta = colors.primary;
+  }
+  if (!colors.ctaContrast && colors.primaryContrast) {
+    colors.ctaContrast = colors.primaryContrast;
+  }
 
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
   return {
-    font: globals.font,
+    font: theme.font,
     colors: {
-      ...globals.colors,
+      ...theme.colors,
       ...colors,
       /**
        * The SDK creates some colors dynamically and populates them via the THEME_CONFIG.
@@ -37,7 +45,7 @@ export function getThemeConfig(appConfig) {
     },
     variables: {
       ...(oldTheme.variables || {}),
-      materialShadow: globals.variables.baseShadow,
+      materialShadow: theme.variables.baseShadow,
     },
   };
 }
