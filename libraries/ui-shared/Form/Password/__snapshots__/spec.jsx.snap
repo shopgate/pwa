@@ -5,6 +5,7 @@ exports[`<Password> should render a password field 1`] = `
   name="test-input"
 >
   <TextField
+    attributes={null}
     className=""
     errorText=""
     hasUnderline={true}
@@ -90,16 +91,17 @@ exports[`<Password> should render a password field 1`] = `
             className=" css-h7r55a"
           >
             <GridItem
-              className=""
+              className="css-1kppfx4"
               component="li"
               grow={1}
               shrink={1}
             >
               <li
-                className=" css-1gs0ko2"
+                className="css-1kppfx4 css-1gs0ko2"
               >
                 <Component
-                  className="css-xtw4m3"
+                  attributes={null}
+                  className="css-keangt"
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -109,9 +111,10 @@ exports[`<Password> should render a password field 1`] = `
                   value=""
                 >
                   <SimpleInput
+                    attributes={null}
                     autoComplete={false}
                     autoCorrect={false}
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     isControlled={false}
@@ -131,7 +134,7 @@ exports[`<Password> should render a password field 1`] = `
                     <input
                       autoComplete="off"
                       autoCorrect="off"
-                      className="css-xtw4m3"
+                      className="css-keangt"
                       disabled={false}
                       id={null}
                       name="test-input"
@@ -275,6 +278,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
   }
 >
   <TextField
+    attributes={null}
     className=""
     errorText=""
     hasUnderline={true}
@@ -381,16 +385,17 @@ exports[`<Password> should trigger the onChange callback 1`] = `
             className=" css-h7r55a"
           >
             <GridItem
-              className=""
+              className="css-1kppfx4"
               component="li"
               grow={1}
               shrink={1}
             >
               <li
-                className=" css-1gs0ko2"
+                className="css-1kppfx4 css-1gs0ko2"
               >
                 <Component
-                  className="css-xtw4m3"
+                  attributes={null}
+                  className="css-keangt"
                   multiLine={false}
                   name="test-input"
                   onChange={
@@ -421,9 +426,10 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                   value=""
                 >
                   <SimpleInput
+                    attributes={null}
                     autoComplete={false}
                     autoCorrect={false}
-                    className="css-xtw4m3"
+                    className="css-keangt"
                     disabled={false}
                     id={null}
                     isControlled={false}
@@ -464,7 +470,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                     <input
                       autoComplete="off"
                       autoCorrect="off"
-                      className="css-xtw4m3"
+                      className="css-keangt"
                       disabled={false}
                       id={null}
                       name="test-input"

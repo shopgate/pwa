@@ -22,7 +22,9 @@
     "@shopgate/pwa-ui-material": "6.4.2",
     "@shopgate/pwa-ui-shared": "6.4.2",
     "@virtuous/conductor": "~2.3.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "intersection-observer": "^0.6.0",
+    "react-player": "^1.11.0"
   },
   "devDependencies": {
     "prop-types": "^15.6.0",

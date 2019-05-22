@@ -4,6 +4,28 @@ import { css } from 'glamor';
 const bluredDateSelector = 'input[type="date"]:in-range:not(:focus)';
 
 /**
+ * The styles for the container element.
+ */
+const container = css({
+  // Fixes layout issue with webkit. Height is 0 in some webkit browsers.
+  '& input[type="date"]': {
+    minHeight: '1.3rem',
+    appearance: 'none',
+    paddingLeft: 0,
+    marginLeft: 0,
+  },
+  // Removes placeholder texts on chrome when input is not focused.
+  [`& ${bluredDateSelector}::-webkit-datetime-edit-year-field, ` +
+    `${bluredDateSelector}::-webkit-datetime-edit-month-field, ` +
+    `${bluredDateSelector}::-webkit-datetime-edit-day-field, ` +
+    `${bluredDateSelector}::-webkit-datetime-edit-text`
+  ]: {
+    padding: 0,
+    color: 'transparent',
+  },
+}).toString();
+
+/**
  * The styles for the input field.
  */
 const input = css({
@@ -14,18 +36,6 @@ const input = css({
   outline: 0,
   fontSize: 16,
   lineHeight: '19px',
-  // Fixes layout issue with webkit. Height is 0 in some webkit browsers.
-  '& input[type="date"]': {
-    minHeight: '1.3rem',
-  },
-  // Removes placeholder texts on chrome when input is not focused.
-  [`& ${bluredDateSelector}::-webkit-datetime-edit-year-field, ` +
-    `${bluredDateSelector}::-webkit-datetime-edit-month-field, ` +
-    `${bluredDateSelector}::-webkit-datetime-edit-day-field, ` +
-    `${bluredDateSelector}::-webkit-datetime-edit-text`
-  ]: {
-    color: 'transparent',
-  },
 }).toString();
 
 /**
@@ -49,6 +59,7 @@ const element = css({
 }).toString();
 
 export default {
+  container,
   input,
   multiLine,
   element,

@@ -10,6 +10,7 @@ import fetchProductImages from '../actions/fetchProductImages';
 import fetchProductShipping from '../actions/fetchProductShipping';
 import fetchProductVariants from '../actions/fetchProductVariants';
 import fetchProductOptions from '../actions/fetchProductOptions';
+import fetchProductMedia from '../actions/fetchProductMedia';
 import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
@@ -45,6 +46,7 @@ function product(subscribe) {
     dispatch(fetchProductProperties(id));
     dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
     dispatch(fetchProductShipping(id));
+    dispatch(fetchProductMedia(id));
   });
 
   subscribe(processProduct$, ({ action, dispatch }) => {
