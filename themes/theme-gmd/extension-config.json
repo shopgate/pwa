@@ -1,5 +1,5 @@
 {
-  "version": "6.4.2",
+  "version": "6.5.0-rc.4",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
