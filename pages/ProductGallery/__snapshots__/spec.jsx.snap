@@ -1,31 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProductGallery> page should render content and an appbar 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <ProductGallery
-    id="913"
-    initialSlide={0}
-  >
-    <MockedView>
-      <div>
-        <Connect(GalleryAppBar) />
-        <Connect(ProductGalleryContent)
-          initialSlide={0}
-          productId="913"
-        />
-      </div>
-    </MockedView>
-  </ProductGallery>
-</Provider>
+<View>
+  <Connect(GalleryAppBar) />
+  <Connect(Content)
+    initialSlide={2}
+    productId="SG10"
+  />
+</View>
 `;

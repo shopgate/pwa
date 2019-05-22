@@ -10,32 +10,32 @@ import ProductGalleryAppBar from './components/AppBar';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ProductGallery = ({ id, initialSlide }) => (
+const ProductGallery = ({ productId, initialSlide }) => (
   <View>
-    {id && (
+    {!!productId && (
       <Fragment>
         <ProductGalleryAppBar />
-        <ProductGalleryContent productId={id} initialSlide={initialSlide} />
+        <ProductGalleryContent productId={productId} initialSlide={initialSlide} />
       </Fragment>
     )}
   </View>
 );
 
 ProductGallery.propTypes = {
-  id: PropTypes.string,
   initialSlide: PropTypes.number,
+  productId: PropTypes.string,
 };
 
 ProductGallery.defaultProps = {
-  id: null,
   initialSlide: 0,
+  productId: null,
 };
 
 export default () => (
   <RouteContext.Consumer>
     {({ params }) => (
       <ProductGallery
-        id={hex2bin(params.productId) || null}
+        productId={hex2bin(params.productId) || null}
         initialSlide={parseInt(params.slide, 10) || 0}
       />
     )}
