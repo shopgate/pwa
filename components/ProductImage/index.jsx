@@ -106,7 +106,7 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
-    const addInnerShadow = appConfig.productImageShadow;
+    const addInnerShadow = !appConfig.hideProductImageShadow;
 
     if (this.state.showPlaceholder) {
       const wrapperClasses = classNames(styles.placeholderContainer, {
