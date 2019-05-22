@@ -8,7 +8,6 @@ import {
 import { getStyle } from '@shopgate/pwa-common/helpers/dom';
 import {
   footer,
-  hasInset,
   withInset,
   updateInsetBackgroundColor,
 } from './style';
@@ -94,7 +93,7 @@ class Footer extends Component {
    * Performs an update of the inset background color.
    */
   performInsetBackgroundUpdate() {
-    if (hasInset() && this.ref.current) {
+    if (this.ref.current) {
       this.ref.current.classList.toggle(withInset, this.hasVisibleContent());
 
       updateInsetBackgroundColor(this.getInsetBackgroundColor(this.ref.current.children));
