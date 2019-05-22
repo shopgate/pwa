@@ -130,6 +130,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                 <ProductImage
                   alt="Product Name"
                   animating={true}
+                  className={null}
                   forcePlaceholder={false}
                   highestResolutionLoaded={[Function]}
                   itemProp="image"
@@ -151,7 +152,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                   srcmap={null}
                 >
                   <div
-                    className="css-y5kkpq css-3hjqnz"
+                    className="css-y5kkpq"
                   >
                     <div
                       className="css-1vq3byi"
