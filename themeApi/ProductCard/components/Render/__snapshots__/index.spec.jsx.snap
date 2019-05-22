@@ -511,6 +511,12 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                 </Ellipsis>
               </div>
             </ProductCardTitle>
+            <MapPriceHint
+              productId="PR0DUCTID"
+            />
+            <OrderQuantityHint
+              productId="PR0DUCTID"
+            />
             <ProductCardPrice
               price={
                 Object {
@@ -937,6 +943,12 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                 </Ellipsis>
               </div>
             </ProductCardTitle>
+            <MapPriceHint
+              productId="PR0DUCTID"
+            />
+            <OrderQuantityHint
+              productId="PR0DUCTID"
+            />
             <ProductCardPrice
               price={
                 Object {
@@ -1709,6 +1721,12 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 </Ellipsis>
               </div>
             </ProductCardTitle>
+            <MapPriceHint
+              productId="PR0DUCTID"
+            />
+            <OrderQuantityHint
+              productId="PR0DUCTID"
+            />
             <ProductCardPrice
               price={
                 Object {
@@ -2481,6 +2499,12 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 </Ellipsis>
               </div>
             </ProductCardTitle>
+            <MapPriceHint
+              productId="PR0DUCTID"
+            />
+            <OrderQuantityHint
+              productId="PR0DUCTID"
+            />
             <ProductCardPrice
               price={
                 Object {
@@ -3217,6 +3241,12 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 </div>
               </div>
             </RatingStars>
+            <MapPriceHint
+              productId="PR0DUCTID"
+            />
+            <OrderQuantityHint
+              productId="PR0DUCTID"
+            />
             <ProductCardPrice
               price={
                 Object {
@@ -3923,6 +3953,12 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                 </Ellipsis>
               </div>
             </ProductCardTitle>
+            <MapPriceHint
+              productId="PR0DUCTID"
+            />
+            <OrderQuantityHint
+              productId="PR0DUCTID"
+            />
           </div>
         </div>
       </Link>
@@ -4162,6 +4198,12 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                 </Ellipsis>
               </div>
             </ProductCardTitle>
+            <MapPriceHint
+              productId="PR0DUCTID"
+            />
+            <OrderQuantityHint
+              productId="PR0DUCTID"
+            />
             <ProductCardPrice
               price={
                 Object {
