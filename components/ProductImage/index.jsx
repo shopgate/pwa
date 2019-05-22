@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import classNames from 'classnames';
 import Image from '@shopgate/pwa-common/components/Image';
 import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { PORTAL_PRODUCT_IMAGE } from '@shopgate/engage/components/constants';
 import styles from './style';
 
 const { colors } = themeConfig;
@@ -103,27 +106,38 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
+    const addInnerShadow = appConfig.productImageShadow;
+
     if (this.state.showPlaceholder) {
+      const wrapperClasses = classNames(styles.placeholderContainer, {
+        [styles.innerShadow]: addInnerShadow,
+      });
+
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={`${styles.placeholderContainer} ${styles.innerShadow}`}>
-          <div className={styles.placeholderContent} data-test-id="placeHolder">
-            <Placeholder className={styles.placeholder} />
+        <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
+          <div className={wrapperClasses}>
+            <div className={styles.placeholderContent} data-test-id="placeHolder">
+              <Placeholder className={styles.placeholder} />
+            </div>
           </div>
-        </div>
+        </SurroundPortals>
       );
     }
 
     // Return the actual image.
     return (
-      <div className={styles.innerShadow}>
-        <Image
-          {...this.props}
-          className={styles.innerShadow}
-          backgroundColor={colors.light}
-          onError={this.imageLoadingFailed}
-        />
-      </div>
+      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
+        <div className={addInnerShadow ? styles.innerShadow : ''}>
+          <Image
+            {...this.props}
+            className={addInnerShadow ? styles.innerShadow : ''}
+            backgroundColor={colors.light}
+            onError={this.imageLoadingFailed}
+          />
+        </div>
+      </SurroundPortals>
+
     );
   }
 }
