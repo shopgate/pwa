@@ -58,8 +58,8 @@
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "no_more_found": "The item \"{name}\" is no longer available.",
     "quantity": "Quantity",
-    "minOrderQuantity": "Minimum order quantity: {quantity}",
-    "maxOrderQuantity": "Maximum order quantity: {quantity}"
+    "minOrderQuantity": "Minimum order quantity:{quantity}",
+    "maxOrderQuantity": "Maximum order quantity:{quantity}"
   },
   "category": {
     "error": {
