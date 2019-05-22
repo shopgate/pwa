@@ -22,6 +22,14 @@ export function getThemeConfig(appConfig) {
 
   const { colors = {}, theme: { styles: { globals = {} } = {} } = {} } = appConfig;
 
+  // Force cta colors
+  if (!colors.cta && colors.primary) {
+    colors.cta = colors.primary;
+  }
+  if (!colors.ctaContrast && colors.primaryContrast) {
+    colors.ctaContrast = colors.primaryContrast;
+  }
+
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
   return {
