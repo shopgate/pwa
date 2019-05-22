@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MapPriceHint, OrderQuantityHint } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import ProductImage from 'Components/ProductImage';
@@ -47,6 +48,15 @@ function ProductCardRender({
           {!hideName && (
             <Title title={product.name} rows={titleRows} />
           )}
+
+          {/* This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects */}
+          <MapPriceHint productId={product.id} />
+
+          {/* This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects */}
+          <OrderQuantityHint productId={product.id} />
+
           {!hidePrice && (
             <Price price={product.price} productId={id} />
           )}
