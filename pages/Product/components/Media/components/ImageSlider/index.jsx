@@ -7,7 +7,7 @@ import {
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/product';
-import ProductImage from 'Components/ProductImage';
+import { ProductImage } from '@shopgate/engage/product';
 import connect from './connector';
 
 const fallbackResolutions = [
@@ -39,6 +39,7 @@ const getImagesByIndex = (images) => {
 /**
  * The product image slider component.
  * @param {number} currentSlide The index of the current visible slide.
+ * @deprecated since catalog 2.0
  */
 class ImageSlider extends Component {
   static propTypes = {
