@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
-import ProductImage from 'Components/ProductImage';
+import { ProductImage } from '@shopgate/engage/product';
 import Badge from '../Badge';
 import Price from '../Price';
 import Title from '../Title';
