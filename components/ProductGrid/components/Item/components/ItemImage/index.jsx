@@ -6,7 +6,7 @@ import {
   PRODUCT_ITEM_IMAGE_AFTER,
   PRODUCT_ITEM_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import ProductImage from 'Components/ProductImage';
+import { ProductImage } from '@shopgate/engage/product';
 
 /**
  * The item image component.
