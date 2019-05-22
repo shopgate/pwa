@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Image from '@shopgate/pwa-common/components/Image';
 import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { PORTAL_PRODUCT_IMAGE } from '@shopgate/engage/components/constants';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
 
@@ -108,17 +110,21 @@ class ProductImage extends Component {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={styles.placeholderContainer}>
-          <div className={styles.placeholderContent} data-test-id="placeHolder">
-            <Placeholder className={styles.placeholder} />
+        <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
+          <div className={styles.placeholderContainer}>
+            <div className={styles.placeholderContent} data-test-id="placeHolder">
+              <Placeholder className={styles.placeholder} />
+            </div>
           </div>
-        </div>
+        </SurroundPortals>
       );
     }
 
     // Return the actual image.
     return (
-      <Image {...this.props} backgroundColor={colors.light} onError={this.imageLoadingFailed} />
+      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
+        <Image {...this.props} backgroundColor={colors.light} onError={this.imageLoadingFailed} />
+      </SurroundPortals>
     );
   }
 }
