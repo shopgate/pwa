@@ -97,7 +97,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                 props={null}
               >
                 <div
-                  className="css-y5kkpq"
+                  className="css-y5kkpq css-3hjqnz"
                 >
                   <div
                     className="css-1vq3byi"
@@ -809,7 +809,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                 props={null}
               >
                 <div
-                  className="css-y5kkpq"
+                  className="css-y5kkpq css-3hjqnz"
                 >
                   <div
                     className="css-1vq3byi"
@@ -1241,7 +1241,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 props={null}
               >
                 <div
-                  className="css-y5kkpq"
+                  className="css-y5kkpq css-3hjqnz"
                 >
                   <div
                     className="css-1vq3byi"
@@ -2019,7 +2019,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 props={null}
               >
                 <div
-                  className="css-y5kkpq"
+                  className="css-y5kkpq css-3hjqnz"
                 >
                   <div
                     className="css-1vq3byi"
@@ -2797,7 +2797,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 props={null}
               >
                 <div
-                  className="css-y5kkpq"
+                  className="css-y5kkpq css-3hjqnz"
                 >
                   <div
                     className="css-1vq3byi"
@@ -3539,7 +3539,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                 props={null}
               >
                 <div
-                  className="css-y5kkpq"
+                  className="css-y5kkpq css-3hjqnz"
                 >
                   <div
                     className="css-1vq3byi"
@@ -4076,7 +4076,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                 props={null}
               >
                 <div
-                  className="css-y5kkpq"
+                  className="css-y5kkpq css-3hjqnz"
                 >
                   <div
                     className="css-1vq3byi"

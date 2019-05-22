@@ -5,9 +5,9 @@ import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import styles from './style';
 import ProductImage from './index';
 
-let mockProductImageShadow;
+let mockHideProductImageShadow;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get productImageShadow() { return mockProductImageShadow; },
+  get hideProductImageShadow() { return mockHideProductImageShadow; },
   themeConfig: {
     colors: {
       light: '#fff',
@@ -18,7 +18,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 describe('<ProductImage />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockProductImageShadow = true;
+    mockHideProductImageShadow = false;
   });
 
   it('should render a placeholder if no src prop is provided', () => {
@@ -40,7 +40,7 @@ describe('<ProductImage />', () => {
   });
 
   it('should not apply an inner shadow to the placeholder if turned off via the app config', () => {
-    mockProductImageShadow = false;
+    mockHideProductImageShadow = true;
     const wrapper = shallow(<ProductImage />);
 
     expect(wrapper).toMatchSnapshot();
@@ -48,7 +48,7 @@ describe('<ProductImage />', () => {
   });
 
   it('should not apply an inner shadow to the image if turned off via the app config', () => {
-    mockProductImageShadow = false;
+    mockHideProductImageShadow = true;
     const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />);
 
     expect(wrapper).toMatchSnapshot();

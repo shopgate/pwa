@@ -322,10 +322,10 @@
         "label": "Favorites settings: limits, etc"
       }
     },
-    "productImageShadow": {
+    "hideProductImageShadow": {
       "type": "admin",
       "destination": "frontend",
-      "default": true,
+      "default": false,
       "params": {
         "type": "json",
         "label": "Toggle inner shadows of product images"
