@@ -1,50 +1,119 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductImage /> should render a placeholder if no src prop is provided 1`] = `
-<div
-  className="css-y5kkpq css-3hjqnz"
+exports[`<ProductImage /> should not apply an inner shadow to the image if turned off via the app config 1`] = `
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={null}
 >
   <div
-    className="css-1vq3byi"
-    data-test-id="placeHolder"
+    className=""
   >
-    <Placeholder
-      className="css-19rc2oq"
+    <Image
+      alt={null}
+      animating={true}
+      backgroundColor="#fff"
+      className=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      onError={[Function]}
+      onLoad={null}
+      ratio={null}
+      resolutions={
+        Array [
+          Object {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          Object {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://placehold.it/300x300"
+      srcmap={null}
+      transition={null}
     />
   </div>
-</div>
+</SurroundPortals>
+`;
+
+exports[`<ProductImage /> should not apply an inner shadow to the placeholder if turned off via the app config 1`] = `
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={null}
+>
+  <div
+    className="css-y5kkpq"
+  >
+    <div
+      className="css-1vq3byi"
+      data-test-id="placeHolder"
+    >
+      <Placeholder
+        className="css-19rc2oq"
+      />
+    </div>
+  </div>
+</SurroundPortals>
+`;
+
+exports[`<ProductImage /> should render a placeholder if no src prop is provided 1`] = `
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={null}
+>
+  <div
+    className="css-y5kkpq css-3hjqnz"
+  >
+    <div
+      className="css-1vq3byi"
+      data-test-id="placeHolder"
+    >
+      <Placeholder
+        className="css-19rc2oq"
+      />
+    </div>
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should render the image without a placeholder 1`] = `
-<div
-  className="css-3hjqnz"
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={null}
 >
-  <Image
-    alt={null}
-    animating={true}
-    backgroundColor="#fff"
+  <div
     className="css-3hjqnz"
-    forcePlaceholder={false}
-    highestResolutionLoaded={[Function]}
-    onError={[Function]}
-    onLoad={null}
-    ratio={null}
-    resolutions={
-      Array [
-        Object {
-          "blur": 2,
-          "height": 50,
-          "width": 50,
-        },
-        Object {
-          "height": 440,
-          "width": 440,
-        },
-      ]
-    }
-    src="http://placehold.it/300x300"
-    srcmap={null}
-    transition={null}
-  />
-</div>
+  >
+    <Image
+      alt={null}
+      animating={true}
+      backgroundColor="#fff"
+      className="css-3hjqnz"
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      onError={[Function]}
+      onLoad={null}
+      ratio={null}
+      resolutions={
+        Array [
+          Object {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          Object {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://placehold.it/300x300"
+      srcmap={null}
+      transition={null}
+    />
+  </div>
+</SurroundPortals>
 `;
