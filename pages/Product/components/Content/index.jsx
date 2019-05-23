@@ -2,13 +2,13 @@ import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import { ProductProperties } from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
 import Description from '../Description';
-import Properties from '../Properties';
 import AppBar from '../AppBar';
 import AddToCartBar from '../AddToCartBar';
 import connect from './connector';
@@ -130,7 +130,7 @@ class ProductContent extends PureComponent {
           <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
           <Options />
           <Description productId={this.state.productId} variantId={this.state.variantId} />
-          <Properties productId={this.state.productId} variantId={this.state.variantId} />
+          <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
           <Reviews productId={this.state.productId} />
           <TaxDisclaimer />
           <AddToCartBar
