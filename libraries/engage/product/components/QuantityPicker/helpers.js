@@ -1,19 +1,30 @@
 import { useWidgetSettings } from '../../../core';
 
 /**
- * @param {Object} productStock product.stock object
+ * @param {Object} [productStock={}] product.stock object
  * @returns {Object}
  */
-export const getQuantityRange = (productStock) => {
+export const getQuantityRange = (productStock = {}) => {
   const settings = useWidgetSettings('@shopgate/engage/product/QuantityPicker');
 
+  let min = settings.minOrderQuantity;
+  if (productStock.minOrderQuantity > 0) {
+    min = productStock.minOrderQuantity;
+  }
+
+  let max = settings.maxOrderQuantity;
+  if (productStock.maxOrderQuantity > 0) {
+    max = Math.min(
+      Math.max(min, settings.maxOrderQuantity),
+      productStock.maxOrderQuantity
+    );
+  }
+  // Normalize min if max is finally less then min
+  min = Math.min(min, max);
+
   return {
-    min: productStock.minOrderQuantity > 0
-      ? Math.min(settings.minOrderQuantity, productStock.minOrderQuantity)
-      : settings.minOrderQuantity,
-    max: productStock.maxOrderQuantity > 0
-      ? Math.min(settings.maxOrderQuantity, productStock.maxOrderQuantity)
-      : settings.maxOrderQuantity,
+    min,
+    max,
   };
 };
 

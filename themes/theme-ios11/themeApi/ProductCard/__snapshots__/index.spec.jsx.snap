@@ -644,6 +644,32 @@ exports[`<ProductCard /> should render as expected 1`] = `
                       </Ellipsis>
                     </div>
                   </ProductCardTitle>
+                  <Connect(MapPriceHint)
+                    productId="PR0DUCTID"
+                  >
+                    <MapPriceHint
+                      dispatch={[Function]}
+                      price={
+                        Object {
+                          "currency": "EUR",
+                          "discount": 50,
+                          "info": "Price Info",
+                          "unitPrice": 5,
+                          "unitPriceStriked": 10,
+                        }
+                      }
+                      productId="PR0DUCTID"
+                    />
+                  </Connect(MapPriceHint)>
+                  <Connect(OrderQuantityHint)
+                    productId="PR0DUCTID"
+                  >
+                    <OrderQuantityHint
+                      dispatch={[Function]}
+                      productId="PR0DUCTID"
+                      stock={null}
+                    />
+                  </Connect(OrderQuantityHint)>
                   <ProductCardPrice
                     price={
                       Object {

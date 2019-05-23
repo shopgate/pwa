@@ -11,7 +11,7 @@ describe('<AccordionContent />', () => {
     ));
 
     expect(wrapper.find('#test').text()).toEqual('Some Child');
-    expect(wrapper.prop('style').height.value).toEqual(0);
+    expect(wrapper.prop('style').height).toEqual(0);
   });
 
   it('should render as open', () => {
@@ -22,6 +22,6 @@ describe('<AccordionContent />', () => {
     ));
 
     expect(wrapper.find('#test').text()).toEqual('Some Child');
-    expect(wrapper.prop('style').height.value).toEqual('auto');
+    expect(wrapper.prop('style').height).toEqual('auto');
   });
 });

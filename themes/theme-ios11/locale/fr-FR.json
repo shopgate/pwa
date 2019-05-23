@@ -63,6 +63,8 @@
     "go_to_cart": "Aller au panier",
     "no_more_found": "L'article: \"{name}\" n'est plus disponible.",
     "quantity": "Quantité",
+    "minOrderQuantity": "Quantité min. par commande:{quantity}",
+    "maxOrderQuantity": "Quantité max. par commande:{quantity}",
     "available": {
       "at": "Disponible le {startDate, date, DD} {startDate, date, MMM} à {startDate, time, short}",
       "until": "Disponible jusqu'au {endDate, date, DD} {endDate, date, MMM} à {endDate, time, short}",
