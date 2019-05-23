@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
 import {
-  getProductEffectivityDates,
+  makeGetProductEffectivityDates,
   productNotAvailable,
   NOT_AVAILABLE_EFFECTIVITY_DATES,
 } from '@shopgate/engage/product';
 
 /**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @param {Object} props.productId product.
- * @return {Object} The extended component props.
+ * Create exclusive component selector.
+ * @returns {Function}
  */
-const mapStateToProps = (state, props) => ({
-  dates: getProductEffectivityDates(state, props),
-});
+function makeMapStateToProps() {
+  const getProductEffectivityDates = makeGetProductEffectivityDates();
+
+  return (state, props) => ({
+    dates: getProductEffectivityDates(state, props),
+  });
+}
 
 /**
  * Maps the contents of the state to the component props.
@@ -29,4 +30,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   )),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(makeMapStateToProps, mapDispatchToProps);

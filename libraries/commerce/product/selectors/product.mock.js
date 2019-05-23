@@ -127,12 +127,6 @@ export const mockedProductsById = {
       metadata: {
         some: 'metadata',
       },
-      startDate: '2019-04-01T10:00:00.000Z',
-      endDate: '2019-04-10T10:00:00.000Z',
-      expectEffectivityDates: {
-        startDate: '2019-04-01T10:00:00.000Z',
-        endDate: '2019-04-10T10:00:00.000Z',
-      },
     },
   },
   product_7: {

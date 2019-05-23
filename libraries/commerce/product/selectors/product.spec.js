@@ -58,7 +58,6 @@ import {
   getVariantId,
   getVariantAvailabilityByCharacteristics,
   hasProductVariety,
-  getProductEffectivityDates,
 } from './product';
 
 jest.mock('@shopgate/pwa-core/helpers', () => {
@@ -295,7 +294,6 @@ describe('Product selectors', () => {
       [getProductFlags, 'flags'],
       [getProductPriceData, 'price'],
       [getProductMetadata, 'metadata'],
-      [getProductEffectivityDates, 'expectEffectivityDates'],
     ];
 
     tests.forEach((test) => {
