@@ -58,6 +58,8 @@
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
     "no_more_found": "El artículo: \"{name}\" ya no está disponible.",
     "quantity": "Cantidad",
+    "minOrderQuantity": "Cantidad mín. del pedido:{quantity}",
+    "maxOrderQuantity": "Cantidad máx. del pedido:{quantity}",
     "available": {
       "at": "Disponible {startDate, date, DD} {startDate, date, MMM} a las {startDate, time, short}",
       "until": "Disponible hasta {endDate, date, DD} {endDate, date, MMM} a las {endDate, time, short}",
