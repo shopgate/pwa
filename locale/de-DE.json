@@ -58,6 +58,8 @@
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
     "quantity": "Menge",
+    "minOrderQuantity": "Min. Bestellmenge:{quantity}",
+    "maxOrderQuantity": "Max. Bestellmenge:{quantity}",
     "available": {
       "at": "Verfügbar am {startDate, date, DD} {startDate, date, MMM} um {startDate, time, short} Uhr",
       "until": "Verfügbar bis {endDate, date, DD} {endDate, date, MMM} um {endDate, time, short} Uhr",
