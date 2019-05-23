@@ -62,6 +62,8 @@
     "go_to_cart": "Winkelwagen",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
+    "minOrderQuantity": "Min. bestelhoeveelheid:{quantity}",
+    "maxOrderQuantity": "Max. bestelhoeveelheid:{quantity}",
     "available": {
       "at": "Beschikbaar op {startDate, date, DD} {startDate, date, MMM} om {startDate, time, short}",
       "until": "Beschikbaar tot {endDate, date, DD} {endDate, date, MMM} om {endDate, time, short}",
