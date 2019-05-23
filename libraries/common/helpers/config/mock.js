@@ -47,6 +47,9 @@ export const themeConfig = {
     navbar: {
       height: 56,
     },
+    toast: {
+      duration: 5000,
+    },
     navigator: {
       height: 56,
       shadow: materialShadow,

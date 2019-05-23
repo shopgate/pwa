@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import {
   getProductPropertiesState,
   getProductId,
+  getProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { filterProperties } from './helpers';
 
@@ -21,6 +22,28 @@ export function makeGetProductProperties() {
       }
 
       return filterProperties(entry.properties);
+    }
+  );
+}
+
+/**
+ * Creates the selector to get a product's effectivity dates.
+ * @returns {Function}
+ */
+export function makeGetProductEffectivityDates() {
+  return createSelector(
+    getProduct,
+    (product) => {
+      if (!product) {
+        return null;
+      }
+      const { startDate, endDate } = product;
+      return startDate || endDate
+        ? {
+          startDate,
+          endDate,
+        }
+        : null;
     }
   );
 }

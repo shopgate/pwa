@@ -34,6 +34,9 @@ module.exports = {
     navbar: {
       height: 56,
     },
+    toast: {
+      duration: 5000,
+    },
     navigator: {
       height: 56,
       shadow: 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px',

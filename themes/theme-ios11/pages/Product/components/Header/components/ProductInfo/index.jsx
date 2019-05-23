@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import { MapPriceHint, OrderQuantityHint } from '@shopgate/engage/product';
+import { MapPriceHint, OrderQuantityHint, EffectivityDates } from '@shopgate/engage/product';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -50,7 +50,11 @@ const ProductInfo = ({ productId, options }) => (
               <OrderQuantityHint productId={productId} />
             </div>
             <div className={styles.productInfo}>
-              <Availability productId={productId} />
+              {/* This feature is currently in BETA testing.
+                It should only be used for approved BETA Client Projects */}
+              <EffectivityDates productId={productId}>
+                <Availability productId={productId} />
+              </EffectivityDates>
             </div>
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />

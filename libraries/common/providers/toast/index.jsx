@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ToastContext from './context';
+
+const { variables: { toast: { duration = 5000 } = {} } = {} } = themeConfig;
 
 /**
  * The ToastProvider component
@@ -62,12 +65,16 @@ class ToastProvider extends Component {
       found.action = toast.action;
       found.actionLabel = toast.actionLabel;
       found.message = toast.message;
+      found.messageParams = toast.messageParams;
+      found.duration = toast.duration || duration;
     } else {
       toasts.push({
         id: toast.id,
         action: toast.action,
         actionLabel: toast.actionLabel,
         message: toast.message,
+        messageParams: toast.messageParams,
+        duration: toast.duration || duration,
       });
     }
 

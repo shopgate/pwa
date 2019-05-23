@@ -64,7 +64,13 @@
     "no_more_found": "O item: \"{name}\" não está mais disponível.",
     "quantity": "Quantidade",
     "minOrderQuantity": "Quantidade mín. do pedido:{quantity}",
-    "maxOrderQuantity": "Quantidade máx. do pedido:{quantity}"
+    "maxOrderQuantity": "Quantidade máx. do pedido:{quantity}",
+    "available": {
+      "at": "Disponível {startDate, date, DD} {startDate, date, MMM} às {startDate, time, short}",
+      "until": "Disponível até {endDate, date, DD} {endDate, date, MMM} às {endDate, time, short}",
+      "not": "Atualmente indisponível",
+      "not_search_similar": "{name} indisponível. Procurar produtos similares?"
+    }
   },
   "category": {
     "error": {
@@ -183,6 +189,16 @@
     "camera_access_denied": {
       "message": "Esta funcionalidade requer acesso à sua câmara. Por favor autorize o acesso nas configurações.",
       "settings_button": "Ir para configurações"
+    }
+  },
+  "formats": {
+    "date" : {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
     }
   }
 }

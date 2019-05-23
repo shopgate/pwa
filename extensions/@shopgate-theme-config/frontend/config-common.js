@@ -17,6 +17,17 @@ export default {
       '@shopgate/engage/product/OrderQuantityHint': {
         show: true,
       },
+      '@shopgate/engage/product/EffectivityDates': {
+        showStartDate: {
+          strategy: 'always',
+          daysBefore: null,
+        },
+        showEndDate: {
+          strategy: 'always',
+          daysBefore: null,
+        },
+        accessExpired: false,
+      },
     },
     pages: [
       {
@@ -88,6 +99,10 @@ export default {
           {
             name: 'ShopgateProductOrderQuantityHint',
             id: '@shopgate/engage/product/OrderQuantityHint',
+          },
+          {
+            name: 'ShopgateProductEffectivityDates',
+            id: '@shopgate/engage/product/EffectivityDates',
           },
         ],
       },

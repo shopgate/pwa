@@ -60,7 +60,13 @@
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
     "minOrderQuantity": "Min. bestelhoeveelheid:{quantity}",
-    "maxOrderQuantity": "Max. bestelhoeveelheid:{quantity}"
+    "maxOrderQuantity": "Max. bestelhoeveelheid:{quantity}",
+    "available": {
+      "at": "Beschikbaar op {startDate, date, DD} {startDate, date, MMM} om {startDate, time, short}",
+      "until": "Beschikbaar tot {endDate, date, DD} {endDate, date, MMM} om {endDate, time, short}",
+      "not": "Op dit moment niet beschikbaar",
+      "not_search_similar": "{name} is niet beschikbaar. Zoeken naar vergelijkbare producten?"
+    }
   },
   "category": {
     "error": {
@@ -173,6 +179,16 @@
     "camera_access_denied": {
       "message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
       "settings_button": "Ga naar instellingen"
+    }
+  },
+  "formats": {
+    "date" : {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
     }
   }
 }

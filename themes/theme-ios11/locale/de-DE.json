@@ -64,7 +64,13 @@
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
     "quantity": "Menge",
     "minOrderQuantity": "Min. Bestellmenge:{quantity}",
-    "maxOrderQuantity": "Max. Bestellmenge:{quantity}"
+    "maxOrderQuantity": "Max. Bestellmenge:{quantity}",
+    "available": {
+      "at": "Verfügbar am {startDate, date, DD} {startDate, date, MMM} um {startDate, time, short} Uhr",
+      "until": "Verfügbar bis {endDate, date, DD} {endDate, date, MMM} um {endDate, time, short} Uhr",
+      "not": "Derzeit nicht verfügbar",
+      "not_search_similar": "{name} nicht verfügbar. Nach ähnlichen Produkten suchen?"
+    }
   },
   "category": {
     "error": {
@@ -184,6 +190,16 @@
     "camera_access_denied": {
       "message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "settings_button": "Zu den Einstellungen"
+    }
+  },
+  "formats": {
+    "date" : {
+      "DD": {
+        "day": "2-digit"
+      },
+      "MMM": {
+        "month": "short"
+      }
     }
   }
 }

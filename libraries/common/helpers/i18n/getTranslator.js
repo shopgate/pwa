@@ -29,7 +29,8 @@ const getMessageFromCache = (locales, langCode, key) => {
 
   messageCache[hash] = new IntlMessageFormat(
     message,
-    langCode
+    langCode,
+    getPath(locales, 'formats')
   );
 
   return messageCache[hash];

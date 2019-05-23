@@ -1,5 +1,8 @@
 /** @module product */
 
+// ACTION-CREATORS
+export { default as productNotAvailable } from '@shopgate/pwa-common-commerce/product/action-creators/productNotAvailable';
+
 // ACTIONS
 export { default as changeSortOrder } from '@shopgate/pwa-common-commerce/product/actions/changeSortOrder';
 export { default as fetchHighlightProducts } from '@shopgate/pwa-common-commerce/product/actions/fetchHighlightProducts';
@@ -35,6 +38,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/product';
 export * from '@shopgate/pwa-common-commerce/product/selectors/relations';
 export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
 export * from '@shopgate/pwa-common-commerce/product/selectors/media';
+export * from './selectors/product';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
@@ -46,8 +50,8 @@ export { default as OrderQuantityHint } from './components/OrderQuantityHint';
 export { default as ProductImage } from './components/ProductImage';
 export { default as MediaSlider } from './components/MediaSlider';
 export { default as QuantityPicker } from './components/QuantityPicker';
+export { default as EffectivityDates } from './components/EffectivityDates';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
 export { default as withProductStock } from './hocs/withProductStock';
-

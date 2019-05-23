@@ -2,7 +2,7 @@
 import { ENOTFOUND } from '@shopgate/pwa-core';
 import { mainSubject } from '@shopgate/pwa-common/store/middelwares/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
+import { historyPop } from '@shopgate/engage/core';
 import expireProductById from '../action-creators/expireProductById';
 import subscription from './index';
 import { productRelationsReceived$, visibleProductNotFound$ } from '../streams';
@@ -10,7 +10,7 @@ import { ERROR_PRODUCT, RECEIVE_PRODUCT_CACHED } from '../constants';
 
 const mockedGetProductsById = jest.fn();
 jest.mock('@shopgate/pwa-common/actions/modal/showModal', () => jest.fn());
-jest.mock('@shopgate/pwa-common/actions/router', () => ({
+jest.mock('@shopgate/engage/core', () => ({
   historyPop: jest.fn(),
 }));
 jest.mock('../actions/fetchProductsById', () => (...args) => mockedGetProductsById(...args));
@@ -26,7 +26,7 @@ describe('Product subscription', () => {
   });
 
   it('should subscribe', () => {
-    expect(subscribe).toHaveBeenCalledTimes(6);
+    expect(subscribe).toHaveBeenCalledTimes(7);
   });
 
   describe('productRelationsReceived$', () => {
