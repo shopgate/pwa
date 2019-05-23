@@ -63,6 +63,10 @@ export default {
             },
           },
           {
+            name: 'ShopgateProductProperties',
+            id: '@shopgate/engage/product/ProductProperties',
+          },
+          {
             name: 'ShopgateProductMapPrice',
             id: '@shopgate/engage/product/MapPrice',
             styles: {

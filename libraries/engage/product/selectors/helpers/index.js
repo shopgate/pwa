@@ -1,0 +1,1 @@
+export { filterProperties } from './filterProperties';

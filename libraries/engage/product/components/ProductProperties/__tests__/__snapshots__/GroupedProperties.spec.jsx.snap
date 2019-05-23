@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GroupedProperties /> should render as expected 1`] = `
+Array [
+  <div
+    className={
+      Object {
+        "data-css-fz7184": "",
+      }
+    }
+    key="Group 1"
+  >
+    <Accordion
+      renderLabel={[Function]}
+      testId="product-properties-group-Group 1"
+    >
+      <Wrapper
+        dense={true}
+      >
+        <Lists
+          properties={
+            Array [
+              Object {
+                "displayGroup": "Group 1",
+                "label": "Test 1",
+                "name": "test1",
+              },
+              Object {
+                "displayGroup": "Group 1",
+                "label": "Test 2",
+                "name": "test2",
+              },
+            ]
+          }
+        />
+      </Wrapper>
+    </Accordion>
+  </div>,
+  <div
+    className={
+      Object {
+        "data-css-fz7184": "",
+      }
+    }
+    key="Group 2"
+  >
+    <Accordion
+      renderLabel={[Function]}
+      testId="product-properties-group-Group 2"
+    >
+      <Wrapper
+        dense={true}
+      >
+        <Lists
+          properties={
+            Array [
+              Object {
+                "displayGroup": "Group 2",
+                "label": "Test 3",
+                "name": "test3",
+              },
+              Object {
+                "displayGroup": "Group 2",
+                "label": "Test 4",
+                "name": "test4",
+              },
+            ]
+          }
+        />
+      </Wrapper>
+    </Accordion>
+  </div>,
+]
+`;
