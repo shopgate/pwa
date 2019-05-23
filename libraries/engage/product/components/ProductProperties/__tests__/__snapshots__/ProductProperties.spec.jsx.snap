@@ -72,7 +72,7 @@ exports[`<ProductProperties /> should not render if no properties where passed 1
           }
         }
       >
-        <ProductPropertiesContent
+        <Content
           properties={null}
         />
       </Portal>
@@ -179,7 +179,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
           }
         }
       >
-        <ProductPropertiesContent
+        <Content
           properties={
             Array [
               Object {
@@ -188,13 +188,13 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
             ]
           }
         >
-          <ProductPropertiesWrapper>
+          <Wrapper>
             <div
               className="css-1x8awm9"
             >
               <table>
                 <tbody>
-                  <ProductPropertiesRows
+                  <Rows
                     properties={
                       Array [
                         Object {
@@ -203,7 +203,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                       ]
                     }
                   >
-                    <ProductPropertiesRow
+                    <Row
                       key="undefined-undefined"
                     >
                       <tr
@@ -225,13 +225,13 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                           data-test-id="property: undefined"
                         />
                       </tr>
-                    </ProductPropertiesRow>
-                  </ProductPropertiesRows>
+                    </Row>
+                  </Rows>
                 </tbody>
               </table>
             </div>
-          </ProductPropertiesWrapper>
-        </ProductPropertiesContent>
+          </Wrapper>
+        </Content>
       </Portal>
       <Portal
         name="product.properties.after"
