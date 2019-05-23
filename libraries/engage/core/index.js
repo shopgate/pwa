@@ -185,6 +185,7 @@ export * from '@shopgate/pwa-common/streams/router';
 // --------------- URL --------------- //
 
 // ACTIONS
+export { resetApp } from '@shopgate/pwa-common/action-creators/app';
 export * from '@shopgate/pwa-common/action-creators/url';
 
 // SELECTORS
