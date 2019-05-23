@@ -1,4 +1,3 @@
-import { logger } from '@shopgate/pwa-core';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
@@ -15,7 +14,6 @@ export function usePageConfig() {
   const page = pages.find(element => element.pattern === route.pattern);
 
   if (!page) {
-    logger.error(`No page config found for page pattern "${route.pattern}"`);
     return {};
   }
 

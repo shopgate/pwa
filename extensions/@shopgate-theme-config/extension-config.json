@@ -27,6 +27,15 @@
       ],
       "input": [{"key": "products"}],
       "output": [{"key": "products"}]
+    },
+    {
+      "path": "extension/mockMinMaxOrder.js",
+      "hooks": [
+        "shopgate.catalog.getProducts.v1:after",
+        "shopgate.catalog.getHighlightProducts.v1:after"
+      ],
+      "input": [{"key": "products"}],
+      "output": [{"key": "products"}]
     }
   ]
 }

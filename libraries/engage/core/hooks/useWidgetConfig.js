@@ -1,4 +1,3 @@
-import { logger } from '@shopgate/pwa-core';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
@@ -21,16 +20,10 @@ export function useWidgetConfig(widgetId, index) {
   const page = pages.find(element => element.pattern === pattern);
 
   if (!page) {
-    logger.error(`No page config found for page pattern "${pattern}"`);
-    return {};
+    return { settings: globalSettings };
   }
 
-  if (!page.widgets) {
-    logger.error(`The page config for page pattern "${pattern}" does not contain any widgets`);
-    return {};
-  }
-
-  const widget = page.widgets.find((element, i) => {
+  const widget = [].concat(page.widgets).find((element, i) => {
     if (index === undefined) {
       return element.id === widgetId;
     }
@@ -39,18 +32,12 @@ export function useWidgetConfig(widgetId, index) {
   });
 
   if (!widget) {
-    if (index === undefined) {
-      logger.error(`A widget config could not be found for widget "${widgetId}"`);
-    } else {
-      logger.error(`A widget config could not be found for widget "${widgetId}" at index ${index}`);
-    }
-
-    return {};
+    return { settings: defaultsDeep(pageSettings, globalSettings) };
   }
 
   const { name, id, ...config } = widget;
 
-  const settings = defaultsDeep(defaultsDeep(config.settings, pageSettings), globalSettings);
+  const settings = defaultsDeep(config.settings, pageSettings, globalSettings);
 
   return {
     ...config,

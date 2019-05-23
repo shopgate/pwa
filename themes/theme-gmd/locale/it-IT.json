@@ -57,7 +57,9 @@
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
     "no_more_found": "L'articolo: \"{name}\" non è più disponibile.",
-    "quantity": "Quantità"
+    "quantity": "Quantità",
+    "minOrderQuantity": "Quantità min. d'ordine:{quantity}",
+    "maxOrderQuantity": "Quantità max. d'ordine:{quantity}"
   },
   "category": {
     "error": {

@@ -92,7 +92,7 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
           <SheetList.Item
             title={item}
             key={item}
-            onClick={() => handleSelectQuantity(item)}
+            onClick={() => handleSelectQuantity(parseInt(item, 10))}
           />
           ))}
       </SheetList>

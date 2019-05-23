@@ -62,7 +62,9 @@
     "add_to_cart": "Ajouter au panier",
     "go_to_cart": "Aller au panier",
     "no_more_found": "L'article: \"{name}\" n'est plus disponible.",
-    "quantity": "Quantité"
+    "quantity": "Quantité",
+    "minOrderQuantity": "Quantité min. par commande:{quantity}",
+    "maxOrderQuantity": "Quantité max. par commande:{quantity}"
   },
   "category": {
     "error": {
