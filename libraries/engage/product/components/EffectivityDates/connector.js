@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
-import { getProductEffectivityDates } from '@shopgate/pwa-common-commerce/product';
-import productNotAvailable from '@shopgate/pwa-common-commerce/product/action-creators/productNotAvailable';
-import { NOT_AVAILABLE_EFFECTIVITY_DATES } from '@shopgate/pwa-common-commerce/product/constants';
+import {
+  getProductEffectivityDates,
+  productNotAvailable,
+  NOT_AVAILABLE_EFFECTIVITY_DATES,
+} from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.

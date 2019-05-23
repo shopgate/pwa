@@ -1,5 +1,8 @@
 /** @module product */
 
+// ACTION-CREATORS
+export { default as productNotAvailable } from '@shopgate/pwa-common-commerce/product/action-creators/productNotAvailable';
+
 // ACTIONS
 export { default as changeSortOrder } from '@shopgate/pwa-common-commerce/product/actions/changeSortOrder';
 export { default as fetchHighlightProducts } from '@shopgate/pwa-common-commerce/product/actions/fetchHighlightProducts';

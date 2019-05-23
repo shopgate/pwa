@@ -1,4 +1,4 @@
-import { isBefore, isAfter } from '@shopgate/pwa-common/helpers/date';
+import { isBefore, isAfter } from '@shopgate/engage/core';
 
 /**
  * Decide if startDate hint should be shown

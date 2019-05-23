@@ -21,37 +21,20 @@ const EffectivityDates = ({ dates, children, productNotAvailable }) => {
   const endDate = new Date(dates.endDate);
 
   return (
-    <TimeBoundary
-      start={startDate}
-      end={endDate}
-    >
+    <TimeBoundary start={startDate} end={endDate}>
       {({ before, between, after }) => {
-        // Before
         if (before) {
           return showStartDateHint(settings, startDate)
-            ? <I18n.Text
-              string="product.available.at"
-              params={{
-                startDate,
-              }}
-              className={hint}
-            />
+            ? <I18n.Text string="product.available.at" params={{ startDate }} className={hint} />
             : children;
         }
 
-        // Between
         if (between) {
           return (
             <Fragment>
               {children}
               {showEndDateHint(settings, endDate) &&
-                <I18n.Text
-                  string="product.available.until"
-                  params={{
-                  endDate,
-                }}
-                  className={hint}
-                />
+                <I18n.Text string="product.available.until" params={{ endDate }} className={hint} />
               }
             </Fragment>
           );
