@@ -2,10 +2,10 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { SCANNER_BAR } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
 import FlashlightButton from './components/FlashlightButton';
+import ScannerInstructions from './components/ScannerInstructions';
 import styles from './style';
 
 /**
@@ -21,7 +21,7 @@ const ScannerBar = ({ flashlightState, onToggleFlashlight }) => createPortal(
           <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
         </Grid.Item>
         <Grid.Item className={styles.column}>
-          <I18n.Text string="scanner.instructions" />
+          <ScannerInstructions />
         </Grid.Item>
       </Grid>
     </SurroundPortals>
