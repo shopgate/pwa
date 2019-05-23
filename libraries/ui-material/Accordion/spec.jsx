@@ -4,7 +4,8 @@ import Accordion from './index';
 
 jest.unmock('@shopgate/pwa-ui-shared');
 
-console.error = jest.fn();
+const logger = console;
+logger.error = jest.fn();
 
 describe('<Accordion />', () => {
   beforeEach(() => {
@@ -18,20 +19,17 @@ describe('<Accordion />', () => {
       </Accordion>
     ));
 
-    expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('AccordionContent').exists()).toBe(true);
-    expect(console.error).toHaveBeenCalledTimes(0);
+    expect(logger.error).toHaveBeenCalledTimes(0);
   });
 
   it('should not render without a renderLabel prop', () => {
-    const wrapper = mount(<Accordion />);
-    expect(wrapper).toMatchSnapshot();
-    expect(console.error).toHaveBeenCalledTimes(2);
+    mount(<Accordion />);
+    expect(logger.error).toHaveBeenCalledTimes(2);
   });
 
   it('should not render without children', () => {
-    const wrapper = mount(<Accordion renderLabel={() => {}} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(console.error).toHaveBeenCalledTimes(0);
+    mount(<Accordion renderLabel={() => { }} />);
+    expect(logger.error).toHaveBeenCalledTimes(0);
   });
 });

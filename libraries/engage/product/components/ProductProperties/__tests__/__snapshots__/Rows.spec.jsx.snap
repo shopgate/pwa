@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Rows /> should render three rows of properties 1`] = `
+Array [
+  <Row
+    key="test1-123"
+    label="test1"
+    value="123"
+  />,
+  <Row
+    key="test2-456"
+    label="test2"
+    value="456"
+  />,
+  <Row
+    key="test3-789"
+    label="test3"
+    value="789"
+  />,
+]
+`;

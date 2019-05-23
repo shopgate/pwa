@@ -1,41 +1,35 @@
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import * as styles from './style';
 
 /**
  * The accordion content component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class AccordionContent extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    open: PropTypes.bool,
-  }
+function AccordionContent({ children, open }) {
+  const ref = useRef(null);
+  const height = (ref.current === null) ? 'auto' : ref.current.clientHeight;
+  const style = {
+    height: !open ? 0 : height,
+  };
 
-  static defaultProps = {
-    open: false,
-  }
-
-  ref = React.createRef();
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { open, children } = this.props;
-
-    return (
-      <section
-        className={styles.content}
-        style={{
-          height: (open && this.ref.current) ? this.ref.current.clientHeight : 0,
-        }}
-      >
-        <div ref={this.ref} className={styles.contentInner}>
-          {children}
-        </div>
-      </section>
-    );
-  }
+  return (
+    <div className={styles.content} style={style}>
+      <div ref={ref} className={styles.contentInner}>
+        {children}
+      </div>
+    </div>
+  );
 }
+
+AccordionContent.propTypes = {
+  children: PropTypes.node.isRequired,
+  open: PropTypes.bool,
+};
+
+AccordionContent.defaultProps = {
+  open: false,
+};
 
 export default AccordionContent;

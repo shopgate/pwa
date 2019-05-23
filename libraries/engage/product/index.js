@@ -40,6 +40,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/media';
 export * from '@shopgate/pwa-common-commerce/product/streams';
 
 // COMPONENTS
+export { default as ProductProperties } from './components/ProductProperties/ProductProperties';
 export { default as MapPriceHint } from './components/MapPriceHint';
 export { default as OrderQuantityHint } from './components/OrderQuantityHint';
 export { default as ProductImage } from './components/ProductImage';
