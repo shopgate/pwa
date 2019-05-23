@@ -1,14 +1,14 @@
 import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Portal } from '@shopgate/pwa-common/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   APP_BAR_DEFAULT_BEFORE,
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
-import { AppBar } from '@shopgate/pwa-ui-ios';
-import { RouteContext } from '@shopgate/pwa-common/context';
+} from '@shopgate/engage/core';
+import { AppBarIOS } from '@shopgate/pwa-ui-ios';
+import { RouteContext } from '@shopgate/engage/core';
 import ProgressBar from './components/ProgressBar';
 
 /**

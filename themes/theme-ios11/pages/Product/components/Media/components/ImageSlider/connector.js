@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
+import { bin2hex } from '@shopgate/engage/core';
+import { ITEM_PATH } from '@shopgate/engage/product';
+import { historyPush } from '@shopgate/engage/core';
+import { productImageFormats } from '@shopgate/engage/product';
 import {
   getProductImages,
   getCurrentBaseProduct,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
+} from '@shopgate/engage/product';
 import { PRODUCT_SLIDER_IMAGE_COLLECTION_KEY } from '../../../../constants';
 
 /**

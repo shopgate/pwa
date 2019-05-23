@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
-} from '@shopgate/pwa-core/constants/Scanner';
-import {
   NAV_MENU_SCANNER,
   NAV_MENU_SCANNER_AFTER,
   NAV_MENU_SCANNER_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
-import BarcodeScannerIcon from '@shopgate/pwa-ui-shared/icons/BarcodeScannerIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/core';
+import { Portal, NavDrawer, BarcodeScannerIcon } from '@shopgate/engage/components';
+import { getScannerRoute } from '@shopgate/engage/scanner';
 import connect from './connector';
 import navDrawerConnect from '../../../../connector';
 import portalProps from '../../../../portalProps';

@@ -4,11 +4,9 @@ import {
   NAV_MENU_FAVORITES,
   NAV_MENU_FAVORITES_AFTER,
   NAV_MENU_FAVORITES_BEFORE,
-} from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import HeartIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+  FAVORITES_PATH,
+} from '@shopgate/engage/favorites';
+import { Portal, NavDrawer, HeartIcon } from '@shopgate/engage/components';
 import Badge from './components/Badge';
 import connect from '../../../../connector';
 import portalProps from '../../../../portalProps';

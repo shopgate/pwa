@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
+import { Portal } from '@shopgate/engage/components';
+import { showReturnPolicy } from '@shopgate/engage/market';
 import {
   NAV_MENU_STORE_INFORMATION,
   NAV_MENU_STORE_INFORMATION_AFTER,
@@ -11,7 +11,7 @@ import {
   NAV_MENU_STORE_INFORMATION_ABOUT,
   NAV_MENU_STORE_INFORMATION_ABOUT_AFTER,
   NAV_MENU_STORE_INFORMATION_ABOUT_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import NavDrawerSection from '../Section';
 import ShippingButton from './components/ShippingButton';
 import PaymentButton from './components/PaymentButton';

@@ -1,9 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { UIEvents } from '@shopgate/pwa-core';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
+import { UIEvents } from '@shopgate/engage/core';
+import { Grid } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
+import { KeyboardConsumer } from '@shopgate/engage/components';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,

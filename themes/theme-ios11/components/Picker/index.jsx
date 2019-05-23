@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import BasePicker from '@shopgate/pwa-common/components/Picker';
-import Sheet from '@shopgate/pwa-ui-shared/Sheet';
+import { Picker } from '@shopgate/engage/components';
+import { Sheet } from '@shopgate/engage/components';
 import { SheetList } from '@shopgate/engage/components';
 import Button from './components/Button';
 import styles from './style';
@@ -52,25 +52,25 @@ class Picker extends Component {
     this.listComponent = ({
       items, onSelect, selectedIndex, onClose,
     }) => (
-      <SheetList>
-        {items.map((item, index) => (
-          <SheetList.Item
-            key={item.value}
-            title={item.label}
-            onClick={() => {
-              setTimeout(() => {
-                onSelect(item.value);
-                onClose();
-              }, this.props.clickDelay);
-            }}
-            isDisabled={item.disabled}
-            isSelected={index === selectedIndex}
-            rightComponent={item.rightComponent}
-            testId={item.label}
-          />
-        ))}
-      </SheetList>
-    );
+        <SheetList>
+          {items.map((item, index) => (
+            <SheetList.Item
+              key={item.value}
+              title={item.label}
+              onClick={() => {
+                setTimeout(() => {
+                  onSelect(item.value);
+                  onClose();
+                }, this.props.clickDelay);
+              }}
+              isDisabled={item.disabled}
+              isSelected={index === selectedIndex}
+              rightComponent={item.rightComponent}
+              testId={item.label}
+            />
+          ))}
+        </SheetList>
+      );
   }
 
   /**

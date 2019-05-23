@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { UIEvents } from '@shopgate/pwa-core';
-import NoResults from '@shopgate/pwa-ui-shared/NoResults';
-import { AppBar } from '@shopgate/pwa-ui-material';
-import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { UIEvents, DEFAULT_SORT, RouteContext } from '@shopgate/engage/core';
+import {
+  NoResults,
+  AppBarAndroid as AppBar,
+} from '@shopgate/engage/components';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from '../Bar';

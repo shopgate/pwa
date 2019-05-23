@@ -4,11 +4,9 @@ import {
   NAV_MENU_HOME,
   NAV_MENU_HOME_AFTER,
   NAV_MENU_HOME_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import HomeIcon from '@shopgate/pwa-ui-shared/icons/HomeIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+  INDEX_PATH,
+} from '@shopgate/engage/core';
+import { Portal, NavDrawer, HomeIcon } from '@shopgate/engage/components';
 import connect from '../../../../connector';
 import portalProps from '../../../../portalProps';
 

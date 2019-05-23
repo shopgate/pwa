@@ -1,9 +1,13 @@
-import { main$ } from '@shopgate/pwa-common/streams/main';
-import { routeWillEnter$, routeDidEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
-import { CATEGORY_PATH, RECEIVE_CATEGORY, ERROR_CATEGORY } from '@shopgate/pwa-common-commerce/category/constants';
-import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { main$ } from '@shopgate/engage/core';
+import {
+  routeWillEnter$,
+  routeDidEnter$,
+  routeWillLeave$,
+  getCurrentRoute,
+  hex2bin,
+} from '@shopgate/engage/core';
+import { CATEGORY_PATH, RECEIVE_CATEGORY, ERROR_CATEGORY } from '@shopgate/engage/category';
+import { filtersDidUpdate$ } from '@shopgate/engage/filter';
 
 export const categoryWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId`);

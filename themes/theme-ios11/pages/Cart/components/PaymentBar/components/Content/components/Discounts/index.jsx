@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from '@shopgate/pwa-common/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   CART_PAYMENT_BAR_TOTALS_DISCOUNTS,
   CART_PAYMENT_BAR_TOTALS_DISCOUNTS_BEFORE,
   CART_PAYMENT_BAR_TOTALS_DISCOUNTS_AFTER,
-} from '@shopgate/pwa-common-commerce/cart';
-import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
+} from '@shopgate/engage/cart';
+import { CartTotalLine } from '@shopgate/engage/components';
 import CartContext from 'Pages/Cart/context';
 import connect from './connector';
 

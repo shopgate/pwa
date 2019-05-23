@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common/constants/Portals';
-import NoResults from '@shopgate/pwa-ui-shared/NoResults';
+import { Portal } from '@shopgate/engage/components';
+import * as portals from '@shopgate/engage/core';
+import { NoResults } from '@shopgate/engage/components';
 import connect from './connector';
 
 /**

@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
+import { RouteContext } from '@shopgate/engage/core';
+import { parseObjectToQueryString } from '@shopgate/engage/core';
 import {
   SORT_RELEVANCE,
   SORT_PRICE_ASC,
   SORT_PRICE_DESC,
   DEFAULT_SORT,
-} from '@shopgate/pwa-common/constants/DisplayOptions';
+} from '@shopgate/engage/core';
 import SelectBox from '@shopgate/pwa-common/components/SelectBox';
 import ArrowDropIcon from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import Item from './components/Item';

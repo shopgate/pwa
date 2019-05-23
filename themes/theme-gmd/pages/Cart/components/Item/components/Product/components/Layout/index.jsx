@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
+import { Portal, Grid, Properties, PriceInfo } from '@shopgate/engage/components';
+import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { ProductImage } from '@shopgate/engage/product';
-import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import {
+  CART_ITEM_IMAGE_BEFORE,
+  CART_ITEM_IMAGE,
+  CART_ITEM_IMAGE_AFTER,
+} from '@shopgate/engage/cart';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
@@ -22,11 +23,11 @@ const Layout = (props, context) => (
   <Grid className={styles.item}>
     <Grid.Item className={styles.leftColumn}>
       <div className={styles.image}>
-        <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
-        <Portal name={portals.CART_ITEM_IMAGE} props={context}>
+        <Portal name={CART_ITEM_IMAGE_BEFORE} props={context} />
+        <Portal name={CART_ITEM_IMAGE} props={context}>
           <ProductImage src={props.product.featuredImageUrl} />
         </Portal>
-        <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
+        <Portal name={CART_ITEM_IMAGE_AFTER} props={context} />
       </div>
       <QuantityPicker
         quantity={props.quantity}
@@ -80,9 +81,9 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  handleDelete: () => {},
-  handleUpdate: () => {},
-  toggleEditMode: () => {},
+  handleDelete: () => { },
+  handleUpdate: () => { },
+  toggleEditMode: () => { },
 };
 
 Layout.contextTypes = {

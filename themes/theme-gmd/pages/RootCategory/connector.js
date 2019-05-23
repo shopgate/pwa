@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import { getRootCategories } from '@shopgate/engage/category';
 
 /**
  * Maps the contents of the state to the component props.

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Ripple from '@shopgate/pwa-ui-shared/Ripple';
-import FilterIcon from '@shopgate/pwa-ui-shared/icons/FilterIcon';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { Grid } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
+import { Ripple } from '@shopgate/engage/components';
+import { FilterIcon } from '@shopgate/engage/components';
+import { RouteContext } from '@shopgate/engage/core';
 import connect from './connector';
 import styles from './style';
 

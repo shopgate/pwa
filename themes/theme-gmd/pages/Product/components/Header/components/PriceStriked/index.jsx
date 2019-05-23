@@ -1,15 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal, I18n, PlaceholderLabel, PriceStriked as StrikePrice } from '@shopgate/engage/components';
 import {
   PRODUCT_PRICE_STRIKED,
   PRODUCT_PRICE_STRIKED_AFTER,
   PRODUCT_PRICE_STRIKED_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { withPriceCalculation } from '@shopgate/engage/product';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import StrikePrice from '@shopgate/pwa-ui-shared/PriceStriked';
+  withPriceCalculation,
+} from '@shopgate/engage/product';
 import connect from './connector';
 import styles from './style';
 

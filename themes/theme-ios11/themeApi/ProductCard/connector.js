@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductDataById } from '@shopgate/engage/product';
 
 /**
  * @param {Function} state The Redux state.

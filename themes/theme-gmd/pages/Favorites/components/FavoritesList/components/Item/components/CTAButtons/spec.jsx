@@ -3,9 +3,9 @@ import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { CREATE_MODAL } from '@shopgate/pwa-common/constants/ActionTypes';
+import { CREATE_MODAL } from '@shopgate/engage/core';
 import { MockedAddToCartButton } from '@shopgate/pwa-ui-shared/AddToCartButton/mock';
-import { ADD_PRODUCTS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
+import { ADD_PRODUCTS_TO_CART } from '@shopgate/engage/cart';
 import { mockedState } from 'Pages/Product/components/Header/components/CTAButtons/mock';
 
 const mockedButton = MockedAddToCartButton;

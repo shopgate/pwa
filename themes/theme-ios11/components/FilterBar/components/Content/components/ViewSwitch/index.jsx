@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Ripple from '@shopgate/pwa-ui-shared/Ripple';
+import { Ripple } from '@shopgate/engage/components';
 import GridIcon from '@shopgate/pwa-ui-shared/icons/GridIcon';
-import ListIcon from '@shopgate/pwa-ui-shared/icons/ListIcon';
+import { ListIcon } from '@shopgate/engage/components';
 import connect from './connector';
 import { GRID_VIEW, LIST_VIEW } from './constants';
 import styles from './style';

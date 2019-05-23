@@ -1,6 +1,6 @@
 import { addFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
-import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { ToastProvider } from '@shopgate/engage/core';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**

@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { historyPush, historyReplace } from '@shopgate/pwa-common/actions/router';
+import { getCurrentRoute, historyPush, historyReplace } from '@shopgate/engage/core';
 import fetchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
 
 /**

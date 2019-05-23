@@ -6,14 +6,14 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import {
   getProductImages,
   getCurrentBaseProduct,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { Swiper as MockSwiper } from '@shopgate/pwa-common/components';
+} from '@shopgate/engage/product';
+import { Swiper as MockSwiper } from '@shopgate/engage/components';
 import Content from './index';
 
 jest.mock('@shopgate/engage/components', () => ({
   Swiper: MockSwiper,
 }));
-jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
+jest.mock('@shopgate/engage/product', () => ({
   getProductImages: jest.fn(),
   getCurrentBaseProduct: jest.fn(),
 }));

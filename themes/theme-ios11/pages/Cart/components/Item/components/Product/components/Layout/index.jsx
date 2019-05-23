@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
+import { Grid } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
+import * as portals from '@shopgate/engage/cart';
+import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { ProductImage } from '@shopgate/engage/product';
-import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import { Properties } from '@shopgate/engage/components';
+import { PriceInfo } from '@shopgate/engage/components';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
@@ -80,9 +80,9 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  handleDelete: () => {},
-  handleUpdate: () => {},
-  toggleEditMode: () => {},
+  handleDelete: () => { },
+  handleUpdate: () => { },
+  toggleEditMode: () => { },
 };
 
 Layout.contextTypes = {

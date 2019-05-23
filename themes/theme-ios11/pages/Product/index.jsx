@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import View from 'Components/View';
-import Consume from '@shopgate/pwa-common/components/Consume';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { Consume } from '@shopgate/engage/components';
+import { hex2bin } from '@shopgate/engage/core';
+import { RouteContext } from '@shopgate/engage/core';
 import ProductContent from './components/Content';
 
 const props = {

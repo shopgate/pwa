@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal, PlaceholderLabel, PriceInfo as PriceInfoBase } from '@shopgate/engage/components';
 import {
   PRODUCT_PRICE_INFO,
   PRODUCT_PRICE_INFO_AFTER,
   PRODUCT_PRICE_INFO_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import PriceInfoBase from '@shopgate/pwa-ui-shared/PriceInfo';
+} from '@shopgate/engage/product';
 import connect from './connector';
 import styles from './style';
 

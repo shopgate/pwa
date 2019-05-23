@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Swiper } from '@shopgate/pwa-common/components';
+import { Swiper } from '@shopgate/engage/components';
 import Item from './components/Item';
 import connect from './connector';
 import styles from './style';

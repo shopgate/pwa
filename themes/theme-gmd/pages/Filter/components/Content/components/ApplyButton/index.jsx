@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Button from '@shopgate/pwa-ui-shared/Button';
+import { I18n, Button } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

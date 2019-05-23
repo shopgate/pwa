@@ -1,14 +1,12 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import { AppBar } from '@shopgate/pwa-ui-material';
-import { CartIcon } from '@shopgate/pwa-ui-shared';
-import { Portal } from '@shopgate/pwa-common/components';
+import { Portal, AppBarAndroid as AppBar, CartIcon } from '@shopgate/engage/components';
 import {
   APP_BAR_CART_BUTTON,
   APP_BAR_CART_BUTTON_BEFORE,
   APP_BAR_CART_BUTTON_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Badge from '../CartBadge';
 import connect from './connector';

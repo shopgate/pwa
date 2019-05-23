@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
+import { RatingStars } from '@shopgate/engage/components';
 import RatingCount from 'Components/Reviews/components/RatingCount';
-import Link from '@shopgate/pwa-common/components/Link';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { Link } from '@shopgate/engage/components';
+import { ITEM_PATH } from '@shopgate/engage/product';
+import { bin2hex } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { container } from './style';
 

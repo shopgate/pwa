@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductShipping } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductShipping } from '@shopgate/engage/product';
 
 /**
  * @param {Object} state The current application state.

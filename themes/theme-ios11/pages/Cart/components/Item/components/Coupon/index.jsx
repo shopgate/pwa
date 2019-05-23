@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart/constants';
-import CardList from '@shopgate/pwa-ui-shared/CardList';
-import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
+import { getAbsoluteHeight } from '@shopgate/engage/core';
+import { CART_ITEM_TYPE_COUPON } from '@shopgate/engage/cart';
+import { CardList } from '@shopgate/engage/components';
+import { MessageBar } from '@shopgate/engage/components';
 import styles from './style';
 import cartStyles from '../../style';
 import {

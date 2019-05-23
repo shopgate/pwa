@@ -1,12 +1,12 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM_FAVORITES_BUTTON,
   PRODUCT_ITEM_FAVORITES_BUTTON_AFTER,
   PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
+} from '@shopgate/engage/category';
+import { FavoritesButton } from '@shopgate/engage/components';
 import connect from './connector';
 import styles from './style';
 

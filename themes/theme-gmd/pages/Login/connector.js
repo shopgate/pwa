@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import login from '@shopgate/pwa-common/actions/user/login';
-import { isUserLoginDisabled } from '@shopgate/pwa-common/selectors/user';
+import { login, isUserLoginDisabled } from '@shopgate/engage/user';
 
 /**
  * Maps the contents of the state to the component props.

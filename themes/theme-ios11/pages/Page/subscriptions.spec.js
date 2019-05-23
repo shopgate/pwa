@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import {
   SET_VIEW_TITLE,
   REQUEST_PAGE_CONFIG,
-} from '@shopgate/pwa-common/constants/ActionTypes';
-import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
+} from '@shopgate/engage/core';
+import { mockedPipelineRequestFactory } from '@shopgate/engage/core/classes/PipelineRequest/mock';
 import {
   pageWillEnter$,
   receivedVisiblePageConfig$,
@@ -20,8 +20,8 @@ const mockedStore = configureStore([thunk]);
 
 const mockedResolver = jest.fn();
 
-jest.unmock('@shopgate/pwa-core');
-jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
+jest.unmock('@shopgate/engage/core');
+jest.mock('@shopgate/engage/core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
   mockedResolver(mockInstance, resolve, reject);
 }));
 

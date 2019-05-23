@@ -1,11 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_PROPERTIES,
   PRODUCT_PROPERTIES_AFTER,
   PRODUCT_PROPERTIES_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product';
 import styles from './style';
 import PropertyRows from './components/PropertyRows';
 import connect from './connector';

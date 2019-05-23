@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import NoResults from '@shopgate/pwa-ui-shared/NoResults';
-import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { NoResults } from '@shopgate/engage/components';
+import { DEFAULT_SORT } from '@shopgate/engage/core';
+import { RouteContext } from '@shopgate/engage/core';
 import { BackBar } from 'Components/AppBar/presets';
 import Bar from '../Bar';
 import Products from '../Products';

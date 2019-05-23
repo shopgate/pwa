@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
-import { getVariantAvailabilityByCharacteristics } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getVariantAvailabilityByCharacteristics } from '@shopgate/engage/product';
 
 /**
  * @param {Object} state The application state.

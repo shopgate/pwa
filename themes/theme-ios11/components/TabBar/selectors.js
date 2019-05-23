@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+import { getHistoryPathname } from '@shopgate/engage/core';
+import { INDEX_PATH } from '@shopgate/engage/core';
+import { CART_PATH } from '@shopgate/engage/cart';
+import { FAVORITES_PATH } from '@shopgate/engage/favorites';
+import { CATEGORY_PATH } from '@shopgate/engage/category';
+import { SEARCH_PATH } from '@shopgate/engage/search';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import {

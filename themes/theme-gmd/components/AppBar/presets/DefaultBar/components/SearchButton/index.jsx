@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { UIEvents } from '@shopgate/pwa-core';
-import { AppBar } from '@shopgate/pwa-ui-material';
-import { MagnifierIcon } from '@shopgate/pwa-ui-shared';
+import { UIEvents } from '@shopgate/engage/core';
+import { AppBarAndroid as AppBar, MagnifierIcon } from '@shopgate/engage/components';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
+
 /**
  * The SearchButton component.
  */

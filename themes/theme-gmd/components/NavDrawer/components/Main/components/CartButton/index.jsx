@@ -4,11 +4,9 @@ import {
   NAV_MENU_CART,
   NAV_MENU_CART_AFTER,
   NAV_MENU_CART_BEFORE,
-} from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+  CART_PATH,
+} from '@shopgate/engage/cart';
+import { Portal, NavDrawer, ShoppingCartIcon } from '@shopgate/engage/components';
 import connect from '../../../../connector';
 import Badge from './components/Badge';
 import portalProps from '../../../../portalProps';

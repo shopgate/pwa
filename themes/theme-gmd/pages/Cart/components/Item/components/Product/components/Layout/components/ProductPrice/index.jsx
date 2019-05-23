@@ -1,9 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import Price from '@shopgate/pwa-ui-shared/Price';
-import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
+import { Portal, Price, PriceStriked } from '@shopgate/engage/components';
+import {
+  CART_ITEM_PRICE_STRIKED_BEFORE,
+  CART_ITEM_PRICE_STRIKED,
+  CART_ITEM_PRICE_STRIKED_AFTER,
+  CART_ITEM_PRICE_BEFORE,
+  CART_ITEM_PRICE,
+  CART_ITEM_PRICE_AFTER,
+} from '@shopgate/engage/cart';
 import styles from './style';
 
 /**
@@ -20,19 +25,19 @@ const ProductPrice = ({ currency, defaultPrice, specialPrice }, context) => {
     <Fragment>
       {hasStrikePrice && (
         <Fragment>
-          <Portal name={portals.CART_ITEM_PRICE_STRIKED_BEFORE} props={context} />
-          <Portal name={portals.CART_ITEM_PRICE_STRIKED} props={context}>
+          <Portal name={CART_ITEM_PRICE_STRIKED_BEFORE} props={context} />
+          <Portal name={CART_ITEM_PRICE_STRIKED} props={context}>
             <PriceStriked
               className={styles.priceStriked}
               value={defaultPrice}
               currency={currency}
             />
           </Portal>
-          <Portal name={portals.CART_ITEM_PRICE_STRIKED_AFTER} props={context} />
+          <Portal name={CART_ITEM_PRICE_STRIKED_AFTER} props={context} />
         </Fragment>
       )}
-      <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={context} />
-      <Portal name={portals.CART_ITEM_PRICE} props={context}>
+      <Portal name={CART_ITEM_PRICE_BEFORE} props={context} />
+      <Portal name={CART_ITEM_PRICE} props={context}>
         <Price
           className={styles.price}
           currency={currency}
@@ -41,7 +46,7 @@ const ProductPrice = ({ currency, defaultPrice, specialPrice }, context) => {
           unitPrice={price}
         />
       </Portal>
-      <Portal name={portals.CART_ITEM_PRICE_AFTER} props={context} />
+      <Portal name={CART_ITEM_PRICE_AFTER} props={context} />
     </Fragment>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ArrowIcon, CrossIcon } from '@shopgate/pwa-ui-shared';
-import { AppBar } from '@shopgate/pwa-ui-material';
+import { ArrowIcon, CrossIcon, AppBarAndroid as AppBar } from '@shopgate/engage/components';
 
 /**
  * @param {Object} props The component props.

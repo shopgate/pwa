@@ -71,6 +71,7 @@ export { default as ContextMenu } from '@shopgate/pwa-ui-shared/ContextMenu';
 export { default as Dialog } from '@shopgate/pwa-ui-shared/Dialog';
 export { default as DiscountBadge } from '@shopgate/pwa-ui-shared/DiscountBadge';
 export { default as FavoritesButton } from '@shopgate/pwa-ui-shared/FavoritesButton';
+export { default as Footer } from '@shopgate/pwa-ui-shared/Footer';
 export { default as Form } from '@shopgate/pwa-ui-shared/Form';
 export { default as Builder } from '@shopgate/pwa-ui-shared/Form/Builder';
 export { default as Checkbox } from '@shopgate/pwa-ui-shared/Form/Checkbox';

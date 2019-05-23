@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import {
   hasProductVariants,
   isProductOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
+  isProductPageLoading,
+} from '@shopgate/engage/product';
 import { addProductToCart } from './actions';
 
 /**

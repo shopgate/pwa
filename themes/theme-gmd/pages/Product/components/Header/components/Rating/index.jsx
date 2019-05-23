@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal, RatingStars } from '@shopgate/engage/components';
 import {
   PRODUCT_RATING,
   PRODUCT_RATING_AFTER,
   PRODUCT_RATING_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
 import connect from './connector';

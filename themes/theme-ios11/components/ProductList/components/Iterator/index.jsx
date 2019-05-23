@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '@shopgate/pwa-common/components/List';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { List } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
+import * as portals from '@shopgate/engage/category';
 import Item from '../Item';
 import styles from './style';
 

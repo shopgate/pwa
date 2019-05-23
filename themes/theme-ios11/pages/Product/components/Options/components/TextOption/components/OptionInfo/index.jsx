@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { Grid } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
 import { ProductContext } from '../../../../../../context';
 import styles from './style';
 

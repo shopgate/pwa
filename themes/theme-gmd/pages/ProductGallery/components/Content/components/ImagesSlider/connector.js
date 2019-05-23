@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import {
   getProductImages,
   getCurrentBaseProduct,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
+  productImageFormats,
+} from '@shopgate/engage/product';
 import { GALLERY_SLIDER_IMAGE_COLLECTION_KEY } from '../../../../constants';
 /**
  * Maps the contents of the state to the component props.

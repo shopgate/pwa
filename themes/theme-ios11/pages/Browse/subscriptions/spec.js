@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { REQUEST_ROOT_CATEGORIES } from '@shopgate/pwa-common-commerce/category/constants';
-import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
+import { REQUEST_ROOT_CATEGORIES } from '@shopgate/engage/category';
+import { mockedPipelineRequestFactory } from '@shopgate/engage/core/classes/PipelineRequest/mock';
 import {
   routerState,
   categoryRouteMock,
@@ -15,7 +15,7 @@ import subscribe from './';
 const mockedStore = configureStore([thunk]);
 
 const mockedResolver = jest.fn();
-jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
+jest.mock('@shopgate/engage/core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
   mockedResolver(mockInstance, resolve, reject);
 }));
 

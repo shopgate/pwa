@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import { getRootCategories } from '@shopgate/engage/category';
 import CategoryList from 'Components/CategoryList';
 import RootCategories from './index';
 
 const store = createMockStore();
 
-jest.mock('@shopgate/pwa-common-commerce/category/selectors', () => ({
+jest.mock('@shopgate/engage/category', () => ({
   getRootCategories: () => ([
     { id: '123-123', name: 'foo' },
     { id: '456-123', name: 'bar' },

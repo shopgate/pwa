@@ -1,12 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Availability from '@shopgate/pwa-ui-shared/Availability';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Availability } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE,
   PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY,
   PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product';
 import connect from './connector';
 import styles from './style';
 

@@ -1,4 +1,4 @@
-import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { PAGE_PATH } from '@shopgate/engage/page';
 
 export const QUICKLINKS_MENU = 'quicklinks';
 export const IMPRINT_PATH = `${PAGE_PATH}/imprint`;

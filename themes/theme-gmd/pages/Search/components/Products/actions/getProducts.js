@@ -1,5 +1,5 @@
-import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
-import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
+import { getActiveFilters } from '@shopgate/engage/filter';
+import { fetchSearchResults } from '@shopgate/engage/search';
 
 /**
  * @param {string} searchPhrase The search phrase to requests products for.

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { CART_PATH } from '@shopgate/engage/cart';
+import { historyPush } from '@shopgate/engage/core';
 
 /**
  * Connects the dispatch function to a callable function in the props.

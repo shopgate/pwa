@@ -1,5 +1,5 @@
 import React from 'react';
-import { Conditioner } from '@shopgate/pwa-core';
+import { Conditioner } from '@shopgate/engage/core';
 
 export const defaultContext = {
   productId: null,

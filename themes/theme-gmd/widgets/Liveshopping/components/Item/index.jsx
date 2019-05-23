@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Theme } from '@shopgate/pwa-common/context';
+import { Theme } from '@shopgate/engage/core';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
-import Link from '@shopgate/pwa-common/components/Link';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import { Link } from '@shopgate/engage/components';
+import { Grid } from '@shopgate/engage/components';
 import { ProductImage } from '@shopgate/engage/product';
 import Discount from '../Discount';
 import Price from '../Price';

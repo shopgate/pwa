@@ -2,11 +2,11 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { isUserLoginDisabled } from '@shopgate/pwa-common/selectors/user';
+import { isUserLoginDisabled } from '@shopgate/engage/user';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import UserMenu from './index';
 
-jest.mock('@shopgate/pwa-common/selectors/user', () => ({
+jest.mock('@shopgate/engage/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),
 }));
 

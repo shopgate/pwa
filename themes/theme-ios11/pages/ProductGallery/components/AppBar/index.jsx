@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DefaultBar } from 'Components/AppBar/presets';
-import { AppBar } from '@shopgate/pwa-ui-ios';
-import { ArrowIcon } from '@shopgate/pwa-ui-shared';
+import { AppBarIOS } from '@shopgate/pwa-ui-ios';
+import { ArrowIcon } from '@shopgate/engage/components';
 import styles from './styles';
 import connect from './connector';
 

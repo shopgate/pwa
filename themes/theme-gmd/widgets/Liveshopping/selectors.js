@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { getProductState } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductState } from '@shopgate/engage/product';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
-import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { DEFAULT_SORT } from '@shopgate/engage/core';
 
 /**
  * Retrieves the result hash.

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   NAV_MENU_CONTENT_BEFORE,
   NAV_MENU_CONTENT_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
-import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
+} from '@shopgate/engage/core';
+import { ClientInformation } from '@shopgate/engage/components';
 import View from 'Components/View';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';

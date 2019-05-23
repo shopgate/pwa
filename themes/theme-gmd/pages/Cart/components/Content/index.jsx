@@ -1,12 +1,17 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import { getCartConfig } from '@shopgate/pwa-common-commerce/cart';
-import CardList from '@shopgate/pwa-ui-shared/CardList';
-import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
+import { LoadingContext } from '@shopgate/engage/core';
+import {
+  CART_PATH,
+  CART_ITEM_LIST_BEFORE,
+  CART_ITEM_LIST,
+  CART_ITEM_LIST_AFTER,
+  CART_COUPON_FIELD_BEFORE,
+  CART_COUPON_FIELD,
+  CART_COUPON_FIELD_AFTER,
+  getCartConfig,
+} from '@shopgate/engage/cart';
+import { Portal, CardList, MessageBar } from '@shopgate/engage/components';
 import { SimpleBar } from 'Components/AppBar/presets';
 import Item from '../Item';
 import CouponField from '../CouponField';
@@ -83,8 +88,8 @@ class CartContentContainer extends PureComponent {
             {hasMessages && <MessageBar messages={messages} />}
             {hasItems && (
               <Fragment>
-                <Portal name={portals.CART_ITEM_LIST_BEFORE} />
-                <Portal name={portals.CART_ITEM_LIST}>
+                <Portal name={CART_ITEM_LIST_BEFORE} />
+                <Portal name={CART_ITEM_LIST}>
                   <CardList className={styles}>
                     {cartItems.map(cartItem => (
                       <Item
@@ -93,14 +98,14 @@ class CartContentContainer extends PureComponent {
                         onFocus={this.togglePaymentBar}
                       />
                     ))}
-                    <Portal name={portals.CART_COUPON_FIELD_BEFORE} />
-                    <Portal name={portals.CART_COUPON_FIELD} >
+                    <Portal name={CART_COUPON_FIELD_BEFORE} />
+                    <Portal name={CART_COUPON_FIELD} >
                       <CouponField onFocus={this.togglePaymentBar} />
                     </Portal>
-                    <Portal name={portals.CART_COUPON_FIELD_AFTER} />
+                    <Portal name={CART_COUPON_FIELD_AFTER} />
                   </CardList>
                 </Portal>
-                <Portal name={portals.CART_ITEM_LIST_AFTER} />
+                <Portal name={CART_ITEM_LIST_AFTER} />
                 <PaymentBar visible={isPaymentBarVisible} />
               </Fragment>
             )}

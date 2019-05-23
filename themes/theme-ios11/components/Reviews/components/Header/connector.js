@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getBaseProductId, getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getBaseProductId, getProductRating } from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.

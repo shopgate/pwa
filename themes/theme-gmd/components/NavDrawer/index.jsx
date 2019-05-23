@@ -1,6 +1,5 @@
 import React from 'react';
-import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { NavDrawer, ClientInformation } from '@shopgate/engage/components';
 import Header from './components/Header';
 import Main from './components/Main';
 import QuickLinks from './components/QuickLinks';

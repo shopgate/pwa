@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import {
   FILTER_TYPE_SINGLE_SELECT,
   FILTER_TYPE_MULTISELECT,
-} from '@shopgate/pwa-common-commerce/filter/constants';
+} from '@shopgate/engage/filter';
 import { themeConfig as mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 
 const mockedStoreDefault = {

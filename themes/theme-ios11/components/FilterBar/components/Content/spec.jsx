@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { mount, shallow } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
+import { FILTER_TYPE_MULTISELECT } from '@shopgate/engage/filter';
 import GridIcon from '@shopgate/pwa-ui-shared/icons/GridIcon';
-import ListIcon from '@shopgate/pwa-ui-shared/icons/ListIcon';
+import { ListIcon } from '@shopgate/engage/components';
 // eslint-disable-next-line import/named
 import { UnwrappedContent as FilterBarContent } from './index';
 

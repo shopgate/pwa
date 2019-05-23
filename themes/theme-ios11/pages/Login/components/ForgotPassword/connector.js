@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { showModal } from '@shopgate/engage/core';
 
 /**
  * Connects the dispatch function to a callable function in the props.

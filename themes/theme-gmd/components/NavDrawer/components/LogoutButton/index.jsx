@@ -5,10 +5,9 @@ import {
   NAV_MENU_LOGOUT,
   NAV_MENU_LOGOUT_AFTER,
   NAV_MENU_LOGOUT_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
+} from '@shopgate/engage/core';
+import { Portal, NavDrawer } from '@shopgate/engage/components';
 import LogoutIcon from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from './connector';
 import portalProps from '../../portalProps';
 

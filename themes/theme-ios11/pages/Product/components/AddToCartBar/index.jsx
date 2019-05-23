@@ -2,14 +2,14 @@ import React, { Fragment, Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { RouteContext } from '@shopgate/engage/core';
+import UIEvents from '@shopgate/engage/core/emitters/ui';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_ADD_TO_CART_BAR,
   PRODUCT_ADD_TO_CART_BAR_AFTER,
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';

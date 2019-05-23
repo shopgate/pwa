@@ -1,4 +1,4 @@
-import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
+import { fetchPageConfig } from '@shopgate/engage/page';
 import { pageWillEnter$ } from './streams';
 
 /**

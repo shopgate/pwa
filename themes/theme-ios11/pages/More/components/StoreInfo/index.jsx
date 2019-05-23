@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   NAV_MENU_STORE_INFORMATION_BEFORE,
   NAV_MENU_STORE_INFORMATION,
   NAV_MENU_STORE_INFORMATION_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import portalProps from '../../portalProps';
 import Section from '../Section';
 import Shipping from './components/Shipping';

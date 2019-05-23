@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { getCurrentProductStock } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { AVAILABILITY_STATE_OK } from '@shopgate/pwa-common-commerce/product/constants';
+import { getCurrentProductStock } from '@shopgate/engage/product';
+import { AVAILABILITY_STATE_OK } from '@shopgate/engage/product';
 
 /**
  * @param {Object} state The current application state.

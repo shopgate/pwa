@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { I18n, Portal, RippleButton } from '@shopgate/engage/components';
+import {
+  CART_EMPTY_BEFORE,
+  CART_EMPTY,
+  CART_EMPTY_AFTER,
+} from '@shopgate/engage/cart';
 import Icon from './components/Icon';
 import connect from './connector';
 import styles from './style';
@@ -15,8 +17,8 @@ import styles from './style';
  */
 const Empty = ({ goBackHistory }) => (
   <div className={styles.wrapper}>
-    <Portal name={portals.CART_EMPTY_BEFORE} />
-    <Portal name={portals.CART_EMPTY}>
+    <Portal name={CART_EMPTY_BEFORE} />
+    <Portal name={CART_EMPTY}>
       <div className={styles.container}>
         <div className={styles.icon}>
           <Icon />
@@ -26,7 +28,7 @@ const Empty = ({ goBackHistory }) => (
         </div>
       </div>
     </Portal>
-    <Portal name={portals.CART_EMPTY_AFTER} />
+    <Portal name={CART_EMPTY_AFTER} />
     <div className={styles.buttonContainer}>
       <RippleButton onClick={goBackHistory} className={styles.button} type="secondary">
         <I18n.Text string="cart.continue" />

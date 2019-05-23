@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getHistoryPathname } from '@shopgate/engage/core';
 import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
 import openFilterRoute from '../../actions/openFilterRoute';
 

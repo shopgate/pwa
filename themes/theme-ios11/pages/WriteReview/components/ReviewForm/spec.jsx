@@ -2,9 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
-import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import { LoadingProvider } from '@shopgate/engage/core';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
+import { getCurrentRoute } from '@shopgate/engage/core';
 import {
   mockProductId,
   mockedStateWithoutReview,
@@ -16,7 +16,7 @@ import {
 
 const mockedStore = configureStore();
 
-jest.mock('@shopgate/pwa-common/helpers/router', () => ({
+jest.mock('@shopgate/engage/core', () => ({
   getCurrentRoute: jest.fn(),
 }));
 

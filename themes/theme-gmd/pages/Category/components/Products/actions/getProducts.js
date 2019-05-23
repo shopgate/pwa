@@ -1,5 +1,5 @@
-import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
-import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
+import { getActiveFilters } from '@shopgate/engage/filter';
+import { fetchCategoryProducts } from '@shopgate/engage/category';
 
 /**
  * @param {string} categoryId The category id to requests products for.

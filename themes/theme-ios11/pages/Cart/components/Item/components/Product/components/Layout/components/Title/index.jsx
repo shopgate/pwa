@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import ContextMenu from '@shopgate/pwa-ui-shared/ContextMenu';
+import { Grid } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
+import * as portals from '@shopgate/engage/cart';
+import { ContextMenu } from '@shopgate/engage/components';
 import styles from './style';
 
 const contextMenuClasses = {

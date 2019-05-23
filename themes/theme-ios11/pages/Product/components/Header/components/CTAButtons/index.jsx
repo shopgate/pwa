@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { FavoritesButton } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_CTAS,
   PRODUCT_CTAS_AFTER,
@@ -10,7 +10,7 @@ import {
   PRODUCT_CTAS_FAVORITES,
   PRODUCT_CTAS_FAVORITES_BEFORE,
   PRODUCT_CTAS_FAVORITES_AFTER,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product';
 import styles from './style';
 import connect from './connector';
 

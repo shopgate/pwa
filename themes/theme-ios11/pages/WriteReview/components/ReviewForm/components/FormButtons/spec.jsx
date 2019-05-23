@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
-import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import { LoadingProvider } from '@shopgate/engage/core';
 import { mockedState } from './mock';
 import FormButtons from './index';
 

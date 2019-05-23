@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductAvailability } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductAvailability } from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.

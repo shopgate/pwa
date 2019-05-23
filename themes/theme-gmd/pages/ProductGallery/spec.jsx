@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ProductGallery from './index';
 
-jest.mock('@shopgate/pwa-common/context', () => ({
+jest.mock('@shopgate/engage/core', () => ({
   RouteContext: {
     Consumer: jest.fn(({ children }) => children({
       params: {

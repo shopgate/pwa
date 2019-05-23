@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+import { addProductsToCart } from '@shopgate/engage/cart';
 import { addProductToCart } from './index';
 
 jest.mock('@shopgate/pwa-common-commerce/cart/actions/addProductsToCart', () =>

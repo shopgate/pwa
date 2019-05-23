@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
+import { HtmlSanitizer } from '@shopgate/engage/components';
 import styles from './style';
 import connect from './connector';
 

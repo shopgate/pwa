@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import { TaxDisclaimer } from '@shopgate/engage/components';
 import CouponsHint from './components/CouponsHint';
 import connect from './connector';
 

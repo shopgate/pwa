@@ -1,6 +1,6 @@
 import React from 'react';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Grid } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   CART_PAYMENT_BAR,
   CART_PAYMENT_BAR_BEFORE,
@@ -8,7 +8,7 @@ import {
   CART_PAYMENT_BAR_TOTALS,
   CART_PAYMENT_BAR_TOTALS_BEFORE,
   CART_PAYMENT_BAR_TOTALS_AFTER,
-} from '@shopgate/pwa-common-commerce/cart';
+} from '@shopgate/engage/cart';
 import ShippingCosts from './components/ShippingCosts';
 import Discounts from './components/Discounts';
 import Tax from './components/Tax';

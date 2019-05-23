@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import debounce from 'lodash/debounce';
 import TextField from '@shopgate/pwa-ui-shared/Form/TextField';
-import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
+import { InfoIcon } from '@shopgate/engage/components';
 import withShowModal from '@shopgate/pwa-common/helpers/modal/withShowModal';
 import transition from './../../../Characteristics/Characteristic/transition';
 import { ProductContext } from '../../../../context';

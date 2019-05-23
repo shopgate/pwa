@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PAGE_CONTENT_BEFORE,
   PAGE_CONTENT,
   PAGE_CONTENT_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import Widgets from '@shopgate/pwa-common/components/Widgets';
-import { AppBar } from '@shopgate/pwa-ui-ios';
+} from '@shopgate/engage/core';
+import { PAGE_ID_INDEX } from '@shopgate/engage/page';
+import { Widgets } from '@shopgate/engage/components';
+import { AppBarIOS } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import Logo from 'Components/Logo';
 import widgets from 'Extensions/widgets';

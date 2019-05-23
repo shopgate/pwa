@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { historyPush } from '@shopgate/engage/core';
 import {
   isUserLoggedIn,
   getUserEmail,
   getUserDisplayName,
-} from '@shopgate/pwa-common/selectors/user';
+  LOGIN_PATH,
+} from '@shopgate/engage/user';
 
 /**
  * Maps the contents of the state to the component props.

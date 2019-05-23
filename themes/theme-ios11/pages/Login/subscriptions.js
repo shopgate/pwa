@@ -1,9 +1,9 @@
 import {
   errorManager,
   EINVALIDCREDENTIALS,
-} from '@shopgate/pwa-core';
-import { SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-common/constants/Pipelines';
-import { appWillStart$ } from '@shopgate/pwa-common/streams';
+} from '@shopgate/engage/core';
+import { SHOPGATE_USER_LOGIN_USER } from '@shopgate/engage/core';
+import { appWillStart$ } from '@shopgate/engage/core';
 
 /**
  * Login subscriptions.

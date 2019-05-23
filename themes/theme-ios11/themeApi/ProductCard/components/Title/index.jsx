@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Ellipsis } from '@shopgate/pwa-common/components';
+import { Ellipsis } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

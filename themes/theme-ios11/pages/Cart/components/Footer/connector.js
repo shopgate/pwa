@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
-import { hasCouponSupport, getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { showTaxDisclaimer } from '@shopgate/engage/market';
+import { hasCouponSupport, getCartItems } from '@shopgate/engage/cart';
 
 /**
  * Connects the component with the state.

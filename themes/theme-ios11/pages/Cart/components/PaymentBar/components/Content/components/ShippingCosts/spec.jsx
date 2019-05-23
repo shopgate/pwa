@@ -1,11 +1,11 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getShippingLine } from '@shopgate/pwa-common-commerce/cart';
+import { getShippingLine } from '@shopgate/engage/cart';
 import ShippingCosts from './';
 
-jest.mock('@shopgate/pwa-common-commerce/cart', () => {
-  const original = require.requireActual('@shopgate/pwa-common-commerce/cart');
+jest.mock( '@shopgate/engage/cart';, () => {
+  const original = require.requireActual( '@shopgate/engage/cart';);
   return {
     ...original, // Pass down all the exported objects
     getShippingLine: jest.fn(),

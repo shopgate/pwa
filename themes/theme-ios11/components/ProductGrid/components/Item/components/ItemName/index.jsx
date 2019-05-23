@@ -1,12 +1,12 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM_NAME,
   PRODUCT_ITEM_NAME_AFTER,
   PRODUCT_ITEM_NAME_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
+} from '@shopgate/engage/category';
+import { Ellipsis } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

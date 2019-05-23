@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import deleteCouponsFromCart from '@shopgate/pwa-common-commerce/cart/actions/deleteCouponsFromCart';
-import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { deleteCouponsFromCart, getCurrency } from '@shopgate/engage/cart';
 
 /**
  * Maps the contents of the state to the component props.

@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Link';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { I18n } from '@shopgate/engage/components';
+import { Link } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   CART_CHECKOUT_BUTTON,
   CART_CHECKOUT_BUTTON_AFTER,
   CART_CHECKOUT_BUTTON_BEFORE,
-} from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+} from '@shopgate/engage/cart';
+import { RippleButton } from '@shopgate/engage/components';
+import { CHECKOUT_PATH } from '@shopgate/engage/checkout';
 import CartContext from 'Pages/Cart/context';
 import connect from './connector';
 import styles from './style';

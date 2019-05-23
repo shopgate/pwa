@@ -1,8 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common/constants/Portals';
-import NoResults from '@shopgate/pwa-ui-shared/NoResults';
+import { Portal, NoResults } from '@shopgate/engage/components';
+import {
+  NO_RESULTS_CONTENT_BEFORE,
+  NO_RESULTS_CONTENT,
+  NO_RESULTS_CONTENT_AFTER,
+} from '@shopgate/engage/core';
 import connect from './connector';
 
 /**
@@ -17,11 +20,11 @@ const Empty = ({ isVisible, ...props }) => {
 
   return (
     <Fragment>
-      <Portal name={portals.NO_RESULTS_CONTENT_BEFORE} />
-      <Portal name={portals.NO_RESULTS_CONTENT}>
+      <Portal name={NO_RESULTS_CONTENT_BEFORE} />
+      <Portal name={NO_RESULTS_CONTENT}>
         <NoResults {...props} />
       </Portal>
-      <Portal name={portals.NO_RESULTS_CONTENT_AFTER} />
+      <Portal name={NO_RESULTS_CONTENT_AFTER} />
     </Fragment>
   );
 };

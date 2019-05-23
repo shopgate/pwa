@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Ripple from '@shopgate/pwa-ui-shared/Ripple';
+import { Ripple } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

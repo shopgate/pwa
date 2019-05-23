@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import { Portal } from '@shopgate/engage/components';
+import * as portals from '@shopgate/engage/cart';
+import { Grid } from '@shopgate/engage/components';
 import Icon from './components/Icon';
 import CouponPrice from './components/CouponPrice';
 import CouponFreeShipping from './components/CouponFreeShipping';

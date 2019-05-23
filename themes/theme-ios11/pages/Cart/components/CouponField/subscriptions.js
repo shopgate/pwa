@@ -1,6 +1,6 @@
-import { SUCCESS_ADD_COUPONS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
-import { couponsUpdated$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { SUCCESS_ADD_COUPONS_TO_CART } from '@shopgate/engage/cart';
+import { couponsUpdated$ } from '@shopgate/engage/cart';
+import { showModal } from '@shopgate/engage/core';
 
 /**
  * Coupons subscription.

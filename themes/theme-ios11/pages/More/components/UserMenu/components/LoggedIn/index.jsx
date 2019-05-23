@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
+import { Portal } from '@shopgate/engage/components';
+import * as commonPortals from '@shopgate/engage/core';
 import Section from '../../../Section';
 import Item from '../../../Item';
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { historyReplace } from '@shopgate/pwa-common/actions/router';
+import { getCurrentRoute } from '@shopgate/engage/core';
+import { historyReplace } from '@shopgate/engage/core';
 
 /**
  * @param {Object} state The application state.

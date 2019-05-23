@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
-import { hasActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
-import { getResultByHash } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { hasActiveFilters } from '@shopgate/engage/filter';
+import { getResultByHash } from '@shopgate/engage/product';
 
 export const showNoResults = createSelector(
   getResultByHash,

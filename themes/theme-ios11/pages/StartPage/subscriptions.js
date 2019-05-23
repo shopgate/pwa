@@ -1,5 +1,5 @@
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
+import { PAGE_ID_INDEX } from '@shopgate/engage/page';
+import { fetchPageConfig } from '@shopgate/engage/page';
 import { startPageWillEnter$ } from './streams';
 
 /**

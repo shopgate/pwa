@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FloatingActionButton } from '@shopgate/pwa-ui-material';
-import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
+import { FloatingActionButton, IndicatorCircle } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { ProductContext } from '../../../../../../context';
 import Icon from './components/Icon';

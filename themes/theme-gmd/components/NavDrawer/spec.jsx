@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Backdrop from '@shopgate/pwa-common/components/Backdrop';
+import { Backdrop } from '@shopgate/engage/components';
 import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 // eslint-disable-next-line import/named
 import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';

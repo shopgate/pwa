@@ -4,11 +4,13 @@ import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import event from '@shopgate/pwa-core/classes/Event';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
-import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
+import {
+  event,
+  RouteContext,
+  EVENT_KEYBOARD_WILL_CHANGE,
+  VIEW_CONTENT,
+} from '@shopgate/engage/core';
+import { SurroundPortals } from '@shopgate/engage/components';
 import Above from '../Above';
 import Below from '../Below';
 import styles from './style';

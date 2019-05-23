@@ -1,15 +1,18 @@
 import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
-import { BurgerIcon } from '@shopgate/pwa-ui-shared';
-import { Portal } from '@shopgate/pwa-common/components';
-import { RouteContext } from '@shopgate/pwa-common/context';
 import {
+  AppBarAndroid as AppBar,
+  NavDrawer,
+  BurgerIcon,
+  Portal,
+} from '@shopgate/engage/components';
+import {
+  RouteContext,
   APP_BAR_DEFAULT_BEFORE,
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';

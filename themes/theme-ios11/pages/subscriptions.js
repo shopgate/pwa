@@ -3,22 +3,22 @@ import {
   registerEvents,
   ETIMEOUT,
   APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
-} from '@shopgate/pwa-core';
+} from '@shopgate/engage/core';
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
 import redirects from '@shopgate/pwa-common/collections/Redirects';
-import { LoadingProvider } from '@shopgate/pwa-common/providers';
-import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
-import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
-import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
-import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
+import { LoadingProvider } from '@shopgate/engage/core';
+import { getCurrentPathname } from '@shopgate/engage/core';
+import { hasScannerSupport } from '@shopgate/engage/core';
+import { productImageFormats } from '@shopgate/engage/product';
+import { appWillStart$ } from '@shopgate/engage/core';
 import {
   CHECKOUT_PATH,
   LOGIN_PATH,
   ORDERS_PATH,
-} from '@shopgate/pwa-common/constants/RoutePaths';
+} from '@shopgate/engage/checkout';
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
+import { ITEM_PATH } from '@shopgate/engage/product';
+import { SCANNER_PATH } from '@shopgate/engage/scanner';
 import grantCameraPermissions from '@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions';
 import {
   PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,

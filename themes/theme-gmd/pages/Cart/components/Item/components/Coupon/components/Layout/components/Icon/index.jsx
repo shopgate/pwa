@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '@shopgate/pwa-common/components/Icon';
+import { Icon } from '@shopgate/engage/components';
 
 const content = `
   <defs>

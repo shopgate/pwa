@@ -1,5 +1,5 @@
-import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { ROUTE_WILL_ENTER } from '@shopgate/engage/core';
+import { CATEGORY_PATH } from '@shopgate/engage/category';
 import { rootCategoryWillEnter$ } from './';
 
 describe('RootCategory streams', () => {

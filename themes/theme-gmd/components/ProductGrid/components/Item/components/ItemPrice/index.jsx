@@ -1,12 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal, ProductGridPrice } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM_PRICE,
   PRODUCT_ITEM_PRICE_AFTER,
   PRODUCT_ITEM_PRICE_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import ProductGridPrice from 'Components/ProductGridPrice';
+} from '@shopgate/engage/category';
 
 /**
  * The item price component.

@@ -1,7 +1,7 @@
 import React from 'react';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { ProgressBar } from '@shopgate/pwa-ui-shared';
+import { RouteContext } from '@shopgate/engage/core';
+import { LoadingContext } from '@shopgate/engage/core';
+import { ProgressBar } from '@shopgate/engage/components';
 
 export default () => (
   <RouteContext.Consumer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+import { PlaceholderLabel } from '@shopgate/engage/components';
+import { DiscountBadge } from '@shopgate/engage/components';
 import connect from './connector';
 import styles from './style';
 

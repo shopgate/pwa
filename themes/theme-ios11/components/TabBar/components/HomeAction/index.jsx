@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { Portal } from '@shopgate/engage/components';
+import { INDEX_PATH } from '@shopgate/engage/core';
 import HomeIcon from '@shopgate/pwa-ui-ios/icons/HomeIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';

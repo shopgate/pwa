@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Swiper } from '@shopgate/pwa-common/components';
+import { Swiper } from '@shopgate/engage/components';
 import Card from '@shopgate/pwa-ui-shared/Card';
 import Headline from 'Components/Headline';
 import ProductCard from 'Components/ProductCard';

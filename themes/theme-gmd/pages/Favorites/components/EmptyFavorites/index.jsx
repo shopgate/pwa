@@ -1,5 +1,5 @@
 import React from 'react';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import styles from './style';
 import Icon from './components/Icon';
 import ContinueButton from './components/ContinueButton';

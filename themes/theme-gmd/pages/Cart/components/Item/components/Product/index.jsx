@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Link from '@shopgate/pwa-common/components/Link';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
-import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
+import { getAbsoluteHeight, bin2hex } from '@shopgate/engage/core';
+import { Link, MessageBar, CardListItem } from '@shopgate/engage/components';
+import { ITEM_PATH } from '@shopgate/engage/product';
+import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/engage/cart';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';

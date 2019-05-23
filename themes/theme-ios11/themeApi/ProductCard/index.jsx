@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { bin2hex } from '@shopgate/engage/core';
+import { ITEM_PATH } from '@shopgate/engage/product';
 import Render from './components/Render';
 import connect from './connector';
 import styles from './style';

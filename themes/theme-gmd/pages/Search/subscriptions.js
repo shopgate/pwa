@@ -1,10 +1,10 @@
 import {
   searchWillEnter$,
   searchDidEnter$,
-} from '@shopgate/pwa-common-commerce/search/streams';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
-import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
+  fetchSearchResults,
+} from '@shopgate/engage/search';
+import { getCurrentRoute } from '@shopgate/engage/core';
+import { fetchFilters } from '@shopgate/engage/filter';
 import { searchFiltersDidUpdate$ } from './streams';
 
 /**

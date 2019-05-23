@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
-import { getProductOptions } from '@shopgate/pwa-common-commerce/product/selectors/options';
+import { getProductOptions } from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.

@@ -3,34 +3,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeConfigResolver } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { history } from '@shopgate/pwa-common/helpers/router';
+import { history } from '@shopgate/engage/core';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
-import { Route, Router } from '@shopgate/pwa-common/components';
+import { Route, Router } from '@shopgate/engage/components';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
-import { ToastProvider, LoadingProvider } from '@shopgate/pwa-common/providers';
+import { ToastProvider, LoadingProvider } from '@shopgate/engage/core';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
   LOGIN_PATH,
   PAGE_PATTERN,
-} from '@shopgate/pwa-common/constants/RoutePaths';
-import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+} from '@shopgate/engage/checkout';
+import { CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN } from '@shopgate/engage/category';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
-} from '@shopgate/pwa-common-commerce/product/constants';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+} from '@shopgate/engage/product';
+import { CART_PATH } from '@shopgate/engage/cart';
+import { FAVORITES_PATH } from '@shopgate/engage/favorites';
 import { MORE_PATH } from 'Pages/More/constants';
-import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
-import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
+import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/engage/search';
+import { SCANNER_PATH } from '@shopgate/engage/scanner';
 import { NavigationHandler } from '@shopgate/engage/components';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
-import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
-import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
+import { AppContext, ThemeContext } from '@shopgate/engage/core';
+import { APP_GLOBALS } from '@shopgate/engage/core';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { I18n, RippleButton } from '@shopgate/engage/components';
+import { LoadingContext } from '@shopgate/engage/core';
 import buttonStyles from '@shopgate/pwa-ui-shared/Button/style';
 import styles from './style';
 import connect from './connector';

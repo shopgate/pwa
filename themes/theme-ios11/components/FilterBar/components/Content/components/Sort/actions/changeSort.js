@@ -1,5 +1,5 @@
-import changeSortOrder from '@shopgate/pwa-common-commerce/product/actions/changeSortOrder';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import { changeSortOrder } from '@shopgate/engage/product';
+import { getSortOrder } from '@shopgate/engage/core';
 
 /**
  * Changes the sort order of the products.

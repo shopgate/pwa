@@ -1,11 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM_IMAGE,
   PRODUCT_ITEM_IMAGE_AFTER,
   PRODUCT_ITEM_IMAGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+} from '@shopgate/engage/category';
 import { ProductImage } from '@shopgate/engage/product';
 
 /**

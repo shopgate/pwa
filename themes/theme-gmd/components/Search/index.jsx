@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { UIEvents } from '@shopgate/pwa-core';
-import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { UIEvents } from '@shopgate/engage/core';
+import { SEARCH_PATTERN } from '@shopgate/engage/search';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';

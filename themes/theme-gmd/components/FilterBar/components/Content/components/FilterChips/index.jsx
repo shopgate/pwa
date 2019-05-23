@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import {
   FILTER_TYPE_RANGE,
   FILTER_TYPE_MULTISELECT,
-} from '@shopgate/pwa-common-commerce/filter/constants';
-import Chip from '@shopgate/pwa-ui-shared/Chip';
+} from '@shopgate/engage/filter';
+import { I18n, Chip } from '@shopgate/engage/components';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
 import styles from './style';

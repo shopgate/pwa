@@ -1,4 +1,4 @@
-import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
+import { routeWillEnter$ } from '@shopgate/engage/core';
 import { BROWSE_PATH } from '../constants';
 
 /**

@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import ButtonLink from '@shopgate/pwa-ui-shared/ButtonLink';
+import { RouteContext } from '@shopgate/engage/core';
+import { I18n } from '@shopgate/engage/components';
+import { bin2hex } from '@shopgate/engage/core';
+import { CATEGORY_PATH } from '@shopgate/engage/category';
+import { ButtonLink } from '@shopgate/engage/components';
 import Headline from 'Components/Headline';
 import CategoryPicker from './components/Picker';
 import styles from './style';

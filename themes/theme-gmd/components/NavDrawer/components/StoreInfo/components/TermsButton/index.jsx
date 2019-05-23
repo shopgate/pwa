@@ -4,10 +4,8 @@ import {
   NAV_MENU_TERMS,
   NAV_MENU_TERMS_AFTER,
   NAV_MENU_TERMS_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/core';
+import { Portal, NavDrawer, DescriptionIcon } from '@shopgate/engage/components';
 import { TERMS_PATH } from '../../../../constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';

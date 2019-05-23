@@ -1,6 +1,6 @@
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { getPageInsets } from '@shopgate/pwa-common/selectors/client';
-import { clientInformationDidUpdate$ } from '@shopgate/pwa-common/streams/client';
+import { appDidStart$ } from '@shopgate/engage/core';
+import { getPageInsets } from '@shopgate/engage/core';
+import { clientInformationDidUpdate$ } from '@shopgate/engage/core';
 import { updatePageInsets } from './style';
 /**
  * App subscriptions.

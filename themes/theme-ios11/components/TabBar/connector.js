@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getHistoryLocation } from '@shopgate/pwa-common/selectors/history';
+import { getHistoryLocation } from '@shopgate/engage/core';
 import {
   getActiveTab,
   isTabBarVisible,

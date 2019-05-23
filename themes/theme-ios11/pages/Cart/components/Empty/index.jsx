@@ -1,7 +1,7 @@
 import React from 'react';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { I18n } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
+import * as portals from '@shopgate/engage/cart';
 import Icon from './components/Icon';
 import styles from './style';
 

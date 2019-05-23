@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import { Grid } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

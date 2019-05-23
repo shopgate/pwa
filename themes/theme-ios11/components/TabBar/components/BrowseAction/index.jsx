@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import BrowseIcon from '@shopgate/pwa-ui-shared/icons/BrowseIcon';
 import * as portals from '../../constants';

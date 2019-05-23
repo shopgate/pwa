@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
-import event from '@shopgate/pwa-core/classes/Event';
-import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
-import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import { event } from '@shopgate/engage/core';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/engage/core';
+import registerEvents from '@shopgate/engage/core/commands/registerEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   SCANNER_ICON_BEFORE,
   SCANNER_ICON,

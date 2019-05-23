@@ -6,20 +6,20 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
-} from '@shopgate/pwa-core/constants/Scanner';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
-import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
+} from '@shopgate/engage/core/constants/Scanner';
+import { historyPush } from '@shopgate/engage/core';
+import { hasScannerSupport } from '@shopgate/engage/core';
+import { getScannerRoute } from '@shopgate/engage/scanner';
 import SuggestionList from './components/SuggestionList';
 import styles from './style';
 
-jest.mock('@shopgate/pwa-core/classes/AppCommand');
+jest.mock('@shopgate/engage/core/classes/AppCommand');
 jest.mock('@virtuous/conductor', () => ({
   router: {
     update: jest.fn(),
   },
 }));
-jest.mock('@shopgate/pwa-common/actions/router', () => ({
+jest.mock('@shopgate/engage/core', () => ({
   historyPush: jest.fn().mockReturnValue({ type: 'FOO' }),
 }));
 jest.mock('./components/SuggestionList');

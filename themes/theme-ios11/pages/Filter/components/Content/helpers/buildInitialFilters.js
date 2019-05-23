@@ -1,4 +1,4 @@
-import { FILTER_TYPE_RANGE } from '@shopgate/pwa-common-commerce/filter/constants';
+import { FILTER_TYPE_RANGE } from '@shopgate/engage/filter';
 
 /**
  * @param {Object} filters The available filters.

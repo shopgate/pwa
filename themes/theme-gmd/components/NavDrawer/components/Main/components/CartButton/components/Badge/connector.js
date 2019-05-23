@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getCartProductCount } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getCartProductCount } from '@shopgate/engage/cart';
 
 /**
  * Maps the contents of the state to the component props.

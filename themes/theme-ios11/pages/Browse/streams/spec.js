@@ -1,4 +1,4 @@
-import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
+import { ROUTE_WILL_ENTER } from '@shopgate/engage/core';
 import { BROWSE_PATH } from '../constants';
 import { browsePageWillEnter$ } from './';
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { historyPush } from '@shopgate/engage/core';
 
 /**
  * Connects the dispatch function to a callable function in the props.

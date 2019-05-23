@@ -1,4 +1,4 @@
-import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
+import { routeWillEnter$ } from '@shopgate/engage/core';
 
 export const productRoutesWillEnter$ = routeWillEnter$
   .filter(({ action }) => (

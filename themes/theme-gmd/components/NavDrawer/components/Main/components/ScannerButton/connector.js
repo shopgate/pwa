@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
+import { hasScannerSupport } from '@shopgate/engage/core';
 
 /**
  * Maps the contents of the state to the component props.

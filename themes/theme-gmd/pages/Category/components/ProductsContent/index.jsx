@@ -1,13 +1,12 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { Portal } from '@shopgate/engage/components';
+import { RouteContext, DEFAULT_SORT } from '@shopgate/engage/core';
 import {
   PRODUCT_LIST,
   PRODUCT_LIST_AFTER,
   PRODUCT_LIST_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+} from '@shopgate/engage/category';
 import Products from '../Products';
 
 /**

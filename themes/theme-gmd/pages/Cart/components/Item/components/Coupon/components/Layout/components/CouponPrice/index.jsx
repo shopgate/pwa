@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {
   COUPON_TYPE_FIXED,
   COUPON_TYPE_PERCENTAGE,
-} from '@shopgate/pwa-common-commerce/cart/constants';
-import Price from '@shopgate/pwa-ui-shared/Price';
+} from '@shopgate/engage/cart';
+import { Price } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

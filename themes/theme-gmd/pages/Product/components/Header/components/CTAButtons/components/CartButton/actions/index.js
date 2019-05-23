@@ -1,5 +1,4 @@
-import { getAddToCartOptions } from '@shopgate/pwa-common-commerce/cart/selectors';
-import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+import { addProductsToCart, getAddToCartOptions } from '@shopgate/engage/cart';
 
 /**
  * Adds a product to the cart.

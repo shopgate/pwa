@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Price from '@shopgate/pwa-ui-shared/Price';
+import { Price } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

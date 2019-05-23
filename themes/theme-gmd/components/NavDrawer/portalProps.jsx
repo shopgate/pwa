@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { NavDrawer } from '@shopgate/engage/components';
 import NavDrawerSectionWrapper from './components/Section';
 
 /**

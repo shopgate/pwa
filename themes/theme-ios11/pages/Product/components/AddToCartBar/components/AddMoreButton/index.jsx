@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
+import { AddToCartButton } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

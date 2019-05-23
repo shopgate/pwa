@@ -1,9 +1,9 @@
-import { main$ } from '@shopgate/pwa-common/streams/main';
-import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
-import { ERROR_ADD_PRODUCTS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
+import { main$ } from '@shopgate/engage/core';
+import { ITEM_PATTERN } from '@shopgate/engage/product';
+import { ERROR_ADD_PRODUCTS_TO_CART } from '@shopgate/engage/cart';
 import { productsUpdated$, productsAdded$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
-import { routeDidEnter$, routeDidLeave$ } from '@shopgate/pwa-common/streams/router';
+import { routeDidEnter$, routeDidLeave$ } from '@shopgate/engage/core';
 import * as constants from './constants';
 import * as actions from './action-creators';
 

@@ -1,12 +1,12 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 
-import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
+import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/engage/core/constants/Scanner';
 import { redirects } from '@shopgate/pwa-common/collections';
-import { LoadingProvider } from '@shopgate/pwa-common/providers';
-import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
-import { ORDERS_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { LoadingProvider } from '@shopgate/engage/core';
+import { appWillStart$ } from '@shopgate/engage/core';
+import { ORDERS_PATH } from '@shopgate/engage/checkout';
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
-import { SCANNER_TYPE_BARCODE, SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core';
+import { SCANNER_TYPE_BARCODE, SCANNER_SCOPE_DEFAULT } from '@shopgate/engage/core';
 import {
   grantCameraPermissions,
   getScannerRoute,
@@ -15,8 +15,8 @@ import {
 
 import subscriptions from './subscriptions';
 
-jest.unmock('@shopgate/pwa-core');
-jest.mock('@shopgate/pwa-core/classes/AppCommand');
+jest.unmock('@shopgate/engage/core');
+jest.mock('@shopgate/engage/core/classes/AppCommand');
 jest.mock('@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions', () =>
   jest.fn().mockResolvedValue(true));
 

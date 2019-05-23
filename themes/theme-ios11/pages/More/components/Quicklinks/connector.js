@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { QUICKLINKS_MENU } from '@shopgate/pwa-common/constants/MenuIDs';
-import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
+import { QUICKLINKS_MENU } from '@shopgate/engage/core';
+import { getMenuById } from'@shopgate/engage/core';
 
 const props = {
   id: QUICKLINKS_MENU,

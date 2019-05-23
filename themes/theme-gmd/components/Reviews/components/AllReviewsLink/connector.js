@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductReviewCount } from '@shopgate/pwa-common-commerce/reviews/selectors';
+import { getProductReviewCount } from '@shopgate/engage/reviews';
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Chip from '@shopgate/pwa-ui-shared/Chip';
+import { Chip } from '@shopgate/engage/components';
 import ChipsLayout from './index';
 
 /**

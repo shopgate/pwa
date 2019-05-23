@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { hex2bin, RouteContext } from '@shopgate/engage/core';
 import View from 'Components/View';
 import ProductGalleryContent from './components/Content';
 

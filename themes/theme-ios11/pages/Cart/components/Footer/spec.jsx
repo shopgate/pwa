@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import { TaxDisclaimer } from '@shopgate/engage/components';
 import Footer from './index';
 import CouponsHint from './components/CouponsHint';
 

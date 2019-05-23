@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { isRelativeProductOnList } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { isRelativeProductOnList } from '@shopgate/engage/favorites';
 
 /**
  * @param {Object} state The current application state.

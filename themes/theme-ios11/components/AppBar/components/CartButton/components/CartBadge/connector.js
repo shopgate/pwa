@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { historyPush } from '@shopgate/engage/core';
+import { getCartProductDisplayCount } from '@shopgate/engage/cart';
+import { CART_PATH } from '@shopgate/engage/cart';
 
 /**
  * Maps the contents of the state to the component props.

@@ -1,7 +1,7 @@
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
-import { main$ } from '@shopgate/pwa-common/streams/main';
-import { RECEIVE_PAGE_CONFIG } from '@shopgate/pwa-common/constants/ActionTypes';
+import { getCurrentRoute } from '@shopgate/engage/core';
+import { routeWillEnter$ } from '@shopgate/engage/core';
+import { main$ } from '@shopgate/engage/core';
+import { RECEIVE_PAGE_CONFIG } from '@shopgate/engage/core';
 
 export const pageWillEnter$ = routeWillEnter$
   .filter(({ action }) => !!action.route.params.pageId);

@@ -1,6 +1,6 @@
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { hex2bin } from '@shopgate/engage/core';
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
-import { reviewsWillEnter$ } from '@shopgate/pwa-common-commerce/reviews/streams';
+import { reviewsWillEnter$ } from '@shopgate/engage/reviews';
 import { REVIEW_ITEMS_PER_PAGE } from './constants';
 
 /**

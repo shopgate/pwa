@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
+  CATEGORY_PATH,
   NAV_MENU_CATEGORIES,
   NAV_MENU_CATEGORIES_AFTER,
   NAV_MENU_CATEGORIES_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import ViewListIcon from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/category';
+import { Portal, NavDrawer, ViewListIcon } from '@shopgate/engage/components';
 import connect from '../../../../connector';
 import portalProps from '../../../../portalProps';
 

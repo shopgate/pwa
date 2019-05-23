@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { getUserDisplayName } from '@shopgate/pwa-common/selectors/user';
-import submitReview from '@shopgate/pwa-common-commerce/reviews/actions/submitReview';
+import { getUserDisplayName } from '@shopgate/engage/user';
 import {
   getUserReviewForProduct,
   getUserReviewFirstFetchState,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
+  submitReview,
+} from '@shopgate/engage/reviews';
 
 /**
  * Maps the contents of the state to the component props.

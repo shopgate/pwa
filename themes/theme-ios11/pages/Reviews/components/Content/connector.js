@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
-import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { getProductReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
+import { getProductRating } from '@shopgate/engage/product';
+import { getProductReviews } from '@shopgate/engage/reviews';
 
 /**
  * Maps the contents of the state to the component props.

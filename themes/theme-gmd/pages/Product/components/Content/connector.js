@@ -3,8 +3,8 @@ import {
   getBaseProductId,
   getVariantId,
   getProductCurrency,
-} from '@shopgate/pwa-common-commerce/product';
-import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+} from '@shopgate/engage/product';
+import { addProductsToCart } from '@shopgate/engage/cart';
 
 /**
  * Maps the contents of the state to the component props.

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { isIos } from '@shopgate/pwa-common/selectors/client';
-import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
-import { hasCouponSupport } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { isIos } from '@shopgate/engage/core';
+import { addCouponsToCart } from '@shopgate/engage/cart';
+import { hasCouponSupport } from '@shopgate/engage/cart';
 
 /**
  * Connects the component with the state.

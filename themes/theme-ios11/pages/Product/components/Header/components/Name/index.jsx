@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
 import { isBeta } from '@shopgate/engage/core';
-import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { PRODUCT_NAME, PRODUCT_NAME_AFTER, PRODUCT_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { PlaceholderLabel } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
+import { PRODUCT_NAME, PRODUCT_NAME_AFTER, PRODUCT_NAME_BEFORE } from '@shopgate/engage/product';
 import connect from './connector';
 import styles from './style';
 

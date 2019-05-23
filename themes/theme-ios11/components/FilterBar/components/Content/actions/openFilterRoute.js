@@ -1,8 +1,8 @@
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
+import { historyPush } from '@shopgate/engage/core';
+import { CATEGORY_PATH } from '@shopgate/engage/category';
+import { SEARCH_PATH } from '@shopgate/engage/search';
+import { getCurrentRoute } from '@shopgate/engage/core';
+import { parseObjectToQueryString } from '@shopgate/engage/core';
 
 /**
  * Opens the filter route with the relevant url.

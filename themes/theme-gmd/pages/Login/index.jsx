@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Link';
-import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { REGISTER_PATH, LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import TextField from '@shopgate/pwa-ui-shared/TextField';
-import View from 'Components/View';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal, I18n, Link, RippleButton, TextField } from '@shopgate/engage/components';
 import {
+  LoadingContext,
+  RouteContext,
   PAGE_LOGIN_BEFORE,
   PAGE_LOGIN,
   PAGE_LOGIN_AFTER,
@@ -19,7 +13,9 @@ import {
   PAGE_LOGIN_FORM_BEFORE,
   PAGE_LOGIN_FORM,
   PAGE_LOGIN_FORM_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
+import { REGISTER_PATH, LOGIN_PATH } from '@shopgate/engage/checkout';
+import View from 'Components/View';
 import { CloseBar } from 'Components/AppBar/presets';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';

@@ -1,10 +1,10 @@
-import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
-import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
-import fetchFilters from '@shopgate/pwa-common-commerce/filter/actions/fetchFilters';
+import { SORT_RELEVANCE } from '@shopgate/engage/core';
+import { fetchSearchResults } from '@shopgate/engage/search';
+import { fetchFilters } from '@shopgate/engage/filter';
 import {
   searchWillEnter$,
   searchDidEnter$,
-} from '@shopgate/pwa-common-commerce/search/streams';
+} from '@shopgate/engage/search';
 import { searchFiltersDidUpdate$ } from './streams';
 import subscriptions from './subscriptions';
 
@@ -14,7 +14,7 @@ jest.mock('@shopgate/pwa-common-commerce/filter/actions/fetchFilters', () =>
 jest.mock('@shopgate/pwa-common-commerce/search/actions/fetchSearchResults', () =>
   jest.fn().mockReturnValue('fetchSearchResults'));
 
-jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+jest.mock('@shopgate/engage/core', () => ({
   getCurrentRoute: () => ({
     query: {
       s: 'Some search phrase',

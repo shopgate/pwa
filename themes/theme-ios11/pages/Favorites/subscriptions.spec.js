@@ -1,6 +1,6 @@
-import { UIEvents } from '@shopgate/pwa-core';
+import { UIEvents } from '@shopgate/engage/core';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { REQUEST_REMOVE_FAVORITES } from '@shopgate/pwa-common-commerce/favorites/constants';
+import { REQUEST_REMOVE_FAVORITES } from '@shopgate/engage/favorites';
 import subscriber from './subscriptions';
 
 const store = createMockStore(() => {}, subscriber);

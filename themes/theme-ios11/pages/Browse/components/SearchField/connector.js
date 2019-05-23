@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import {
   SCANNER_SCOPE_DEFAULT,
   SCANNER_TYPE_BARCODE,
-} from '@shopgate/pwa-core/constants/Scanner';
+} from '@shopgate/engage/core/constants/Scanner';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
-import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
+import { historyPush } from '@shopgate/engage/core';
+import { hasScannerSupport } from '@shopgate/engage/core';
+import { getScannerRoute } from '@shopgate/engage/scanner';
 import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+import { SEARCH_PATH } from '@shopgate/engage/search';
 
 const { hasNoScanner, scanner: { showSearchFieldIcon } = {} } = appConfig;
 const showScannerIcon = !hasNoScanner && showSearchFieldIcon;

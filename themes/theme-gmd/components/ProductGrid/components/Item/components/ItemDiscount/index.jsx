@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal, DiscountBadge } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_DISCOUNT_AFTER,
   PRODUCT_ITEM_DISCOUNT_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+} from '@shopgate/engage/category';
 import styles from './style';
 
 /**

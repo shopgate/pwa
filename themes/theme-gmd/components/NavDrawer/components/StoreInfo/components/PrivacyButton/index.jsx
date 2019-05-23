@@ -4,10 +4,8 @@ import {
   NAV_MENU_PRIVACY,
   NAV_MENU_PRIVACY_AFTER,
   NAV_MENU_PRIVACY_BEFORE,
-} from '@shopgate/pwa-common/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/core';
+import { Portal, NavDrawer, SecurityIcon } from '@shopgate/engage/components';
 import { PRIVACY_PATH } from '../../../../constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';

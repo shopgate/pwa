@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
-import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
+import { CartPlusIcon, TickIcon } from '@shopgate/engage/components';
 import styles from './style';
 import transition from './transition';
 

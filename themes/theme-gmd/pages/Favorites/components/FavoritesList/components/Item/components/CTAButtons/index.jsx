@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
-import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
-import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
+import { Portal, FavoritesButton, AddToCartButton } from '@shopgate/engage/components';
+import {
+  FAVORITES_ADD_TO_CART_BEFORE,
+  FAVORITES_ADD_TO_CART,
+  FAVORITES_ADD_TO_CART_AFTER,
+} from '@shopgate/engage/favorites';
 import styles from './style';
 import connect from './connector';
 
@@ -83,9 +85,9 @@ class CTAButtons extends Component {
           once={this.props.favoritesOnce}
           readOnlyOnFetch
         />
-        <Portal name={portals.FAVORITES_ADD_TO_CART_BEFORE} />
+        <Portal name={FAVORITES_ADD_TO_CART_BEFORE} />
         <Portal
-          name={portals.FAVORITES_ADD_TO_CART}
+          name={FAVORITES_ADD_TO_CART}
           props={this.portalProps}
         >
           <AddToCartButton
@@ -95,7 +97,7 @@ class CTAButtons extends Component {
             isDisabled={!this.props.isOrderable && !this.props.hasVariety}
           />
         </Portal>
-        <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />
+        <Portal name={FAVORITES_ADD_TO_CART_AFTER} />
       </div>
     );
   }

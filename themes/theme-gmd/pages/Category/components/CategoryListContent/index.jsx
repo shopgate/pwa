@@ -1,11 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   CATEGORY_LIST,
   CATEGORY_LIST_AFTER,
   CATEGORY_LIST_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+} from '@shopgate/engage/category';
 import CategoryList from 'Components/CategoryList';
 import connect from './connector';
 

@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Grid, Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM,
   PRODUCT_ITEM_AFTER,
   PRODUCT_ITEM_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+} from '@shopgate/engage/category';
 import Item from '../Item';
 import styles from './style';
 /**

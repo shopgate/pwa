@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { QUICKLINKS_MENU } from '@shopgate/pwa-common/constants/MenuIDs';
-import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
+import { historyPush, getMenuById, QUICKLINKS_MENU } from '@shopgate/engage/core';
 
 const props = {
   id: QUICKLINKS_MENU,

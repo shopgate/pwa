@@ -1,14 +1,23 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Link from '@shopgate/pwa-common/components/Link';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
+import { bin2hex } from '@shopgate/engage/core';
+import {
+  Link,
+  Ellipsis,
+  Portal,
+  RatingStars,
+  DiscountBadge,
+  ProductGridPrice,
+} from '@shopgate/engage/components';
 import { ITEM_PATH, MapPriceHint, ProductImage } from '@shopgate/engage/product';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
-import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
-import ProductGridPrice from 'Components/ProductGridPrice';
+import {
+  PRODUCT_ITEM_DISCOUNT_BEFORE,
+  PRODUCT_ITEM_DISCOUNT,
+  PRODUCT_ITEM_DISCOUNT_AFTER,
+  PRODUCT_ITEM_PRICE_BEFORE,
+  PRODUCT_ITEM_PRICE,
+  PRODUCT_ITEM_PRICE_AFTER,
+} from '@shopgate/engage/category';
 import styles from './style';
 
 const location = 'productCard';
@@ -36,11 +45,11 @@ const ProductCard = ({
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
     {!!(!hidePrice && product.price.discount) && (
       <div className={styles.badgeWrapper}>
-        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
-        <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
+        <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
+        <Portal name={PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
           <DiscountBadge text={`-${product.price.discount}%`} />
         </Portal>
-        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
+        <Portal name={PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
     {!(hidePrice && hideRating) && (
@@ -63,14 +72,14 @@ const ProductCard = ({
         {!hidePrice && (
           <Fragment>
             <Portal
-              name={portals.PRODUCT_ITEM_PRICE_BEFORE}
+              name={PRODUCT_ITEM_PRICE_BEFORE}
               props={{
                 productId: product.id,
                 location,
               }}
             />
             <Portal
-              name={portals.PRODUCT_ITEM_PRICE}
+              name={PRODUCT_ITEM_PRICE}
               props={{
                 productId: product.id,
                 location,
@@ -79,7 +88,7 @@ const ProductCard = ({
               <ProductGridPrice price={product.price} />
             </Portal>
             <Portal
-              name={portals.PRODUCT_ITEM_PRICE_AFTER}
+              name={PRODUCT_ITEM_PRICE_AFTER}
               props={{
                 productId: product.id,
                 location,

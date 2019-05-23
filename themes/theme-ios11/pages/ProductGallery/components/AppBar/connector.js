@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
+import { historyPop } from '@shopgate/engage/core';
 
 /**
  * @param {Function} dispatch The store dispatch method.

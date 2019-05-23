@@ -2,13 +2,13 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { router } from '@virtuous/conductor';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   FILTER_PRICE_RANGE,
   FILTER_PRICE_RANGE_AFTER,
   FILTER_PRICE_RANGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/filter/constants/Portals';
-import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
+} from '@shopgate/engage/filter';
+import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/engage/filter';
 import { CloseBar } from 'Components/AppBar/presets';
 import PriceSlider from './components/PriceSlider';
 import Selector from './components/Selector';

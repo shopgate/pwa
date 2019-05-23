@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import login from '@shopgate/pwa-common/actions/user/login';
+import { login } from '@shopgate/engage/user';
 
 /**
  * Connects the dispatch function to a callable function in the props.

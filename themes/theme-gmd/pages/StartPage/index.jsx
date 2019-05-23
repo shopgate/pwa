@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import View from 'Components/View';
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
+import { PAGE_ID_INDEX } from '@shopgate/engage/page';
 import PageContent from '../Page/components/Content';
 
 let windowLoaded = false;

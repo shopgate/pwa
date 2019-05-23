@@ -2,8 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
 import { isBeta } from '@shopgate/engage/core';
-import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { FavoritesButton, Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_CTAS,
   PRODUCT_CTAS_AFTER,
@@ -14,7 +13,7 @@ import {
   PRODUCT_CTAS_ADD_TO_CART,
   PRODUCT_CTAS_ADD_TO_CART_BEFORE,
   PRODUCT_CTAS_ADD_TO_CART_AFTER,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product';
 import CartButton from './components/CartButton';
 import QuantityPicker from './components/QuantityPicker';
 import styles from './style';

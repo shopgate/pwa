@@ -1,5 +1,5 @@
-import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { routeWillEnter$ } from '@shopgate/engage/core';
+import { CATEGORY_PATH } from '@shopgate/engage/category';
 
 /**
  * @type {Observable}

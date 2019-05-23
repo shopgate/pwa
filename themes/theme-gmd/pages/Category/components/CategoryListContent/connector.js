@@ -4,7 +4,7 @@ import {
   getChildCategoriesById,
   getCurrentCategoryChildCount,
   hasChildren,
-} from '@shopgate/pwa-common-commerce/category/selectors';
+} from '@shopgate/engage/category';
 
 /**
  * Maps the contents of the state to the component props.

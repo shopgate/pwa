@@ -1,7 +1,6 @@
 import React from 'react';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { ProgressBar } from '@shopgate/pwa-ui-shared';
+import { RouteContext, LoadingContext } from '@shopgate/engage/core';
+import { ProgressBar } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

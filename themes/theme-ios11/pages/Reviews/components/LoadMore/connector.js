@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentBaseProductId } from '@shopgate/engage/product';
 
 import {
   getReviewsTotalCount,
   getCurrentReviewCount,
   getReviewsFetchingState,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
+} from '@shopgate/engage/reviews';
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
 
 /**

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { getSuggestions } from '@shopgate/pwa-common-commerce/search/selectors';
+import { getSuggestions } from '@shopgate/engage/search';
 import SuggestionList, { UnwrappedSuggestionList } from './index';
 
 const store = createMockStore();

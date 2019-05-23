@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { RouteContext, LoadingContext, getAbsoluteHeight } from '@shopgate/engage/core';
+import { CART_PATH } from '@shopgate/engage/cart';
 import connect from './connector';
 import Layout from './components/Layout';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';

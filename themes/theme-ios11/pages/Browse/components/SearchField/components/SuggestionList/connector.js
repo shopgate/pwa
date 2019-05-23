@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   getSuggestions,
   getSuggestionsFetchingState,
-} from '@shopgate/pwa-common-commerce/search/selectors';
+} from '@shopgate/engage/search';
 
 /**
  * Maps the contents of the state to the component props.

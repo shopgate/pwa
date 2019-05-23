@@ -1,4 +1,4 @@
-import fetchRootCategories from '@shopgate/pwa-common-commerce/category/actions/fetchRootCategories';
+import { fetchRootCategories } from '@shopgate/engage/category';
 import { browsePageWillEnter$ } from '../streams';
 
 /**

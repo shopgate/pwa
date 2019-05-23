@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import Link from '@shopgate/pwa-common/components/Link';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
+import { Link } from '@shopgate/engage/components';
+import { bin2hex } from '@shopgate/engage/core';
+import { ITEM_PATH } from '@shopgate/engage/product';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';

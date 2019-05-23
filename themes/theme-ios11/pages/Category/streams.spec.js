@@ -1,10 +1,10 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
-import { CATEGORY_PATH, RECEIVE_CATEGORY, ERROR_CATEGORY } from '@shopgate/pwa-common-commerce/category/constants';
+import { ROUTE_WILL_ENTER } from '@shopgate/engage/core';
+import { CATEGORY_PATH, RECEIVE_CATEGORY, ERROR_CATEGORY } from '@shopgate/engage/category';
 import { categoryWillEnter$, receivedVisibleCategory$, errorVisibleCategory$ } from './streams';
 
 let mockedParams = {};
-jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+jest.mock('@shopgate/engage/core', () => ({
   getCurrentRoute: () => ({
     params: mockedParams,
   }),

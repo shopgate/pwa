@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import { Portal } from '@shopgate/engage/components';
+import { FAVORITES_PATH } from '@shopgate/engage/favorites';
 import FavoritesIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import * as portals from '../../constants';
 import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disable-line import/no-named-as-default

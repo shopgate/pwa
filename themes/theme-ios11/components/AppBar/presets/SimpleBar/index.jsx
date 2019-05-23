@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from '@shopgate/pwa-common/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   APP_BAR_SIMPLE_BEFORE,
   APP_BAR_SIMPLE,
   APP_BAR_SIMPLE_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core';
 import DefaultBar from '../DefaultBar';
 
 /**

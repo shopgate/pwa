@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import Link from '@shopgate/pwa-common/components/Link';
-import { ProductImage } from '@shopgate/engage/product';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { ITEM_PATH, ProductImage } from '@shopgate/engage/product';
+import { Link } from '@shopgate/engage/components';
+import { bin2hex } from '@shopgate/engage/core';
 import styles from './style';
 
 /**

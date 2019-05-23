@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import { getSortOrder } from '@shopgate/engage/core';
 import {
   getPopulatedProductsResult,
   getProduct,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
+} from '@shopgate/engage/product';
 import {
   getChildCategoriesById,
   getRootCategories,
-} from '@shopgate/pwa-common-commerce/category/selectors';
+} from '@shopgate/engage/category';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 
 /**

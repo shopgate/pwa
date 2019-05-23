@@ -1,6 +1,6 @@
 import React from 'react';
-import { PRODUCT_OPTIONS } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { PRODUCT_OPTIONS } from '@shopgate/engage/product';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { ProductContext } from '../../context';
 import Content from './components/Content';
 import Option from './components/Option';

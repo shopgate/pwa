@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
-import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
-import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
+import { ITEMS_PER_LOAD } from '@shopgate/engage/core';
+import { InfiniteContainer, LoadingIndicator } from '@shopgate/engage/components';
 import { ViewContext } from 'Components/View/context';
 import Iterator from './components/Iterator';
 import Layout from './components/Layout';

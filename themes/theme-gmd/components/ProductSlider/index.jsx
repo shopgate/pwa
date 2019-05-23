@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Slider } from '@shopgate/pwa-common/components';
-import { Theme } from '@shopgate/pwa-common/context';
+import { Slider } from '@shopgate/engage/components';
+import { Theme } from '@shopgate/engage/core';
 import styles from './style';
 
 /**

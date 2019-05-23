@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import addToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { isBaseProduct, isProductOrderable, hasProductVariety } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { addToCart } from '@shopgate/engage/cart';
+import { isBaseProduct, isProductOrderable, hasProductVariety } from '@shopgate/engage/product';
+import { showModal } from '@shopgate/engage/core';
 import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
 
 /**

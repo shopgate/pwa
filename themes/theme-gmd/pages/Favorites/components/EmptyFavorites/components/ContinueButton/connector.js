@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
+import { historyPop } from '@shopgate/engage/core';
 
 /**
  * Maps action dispatchers to the component props.

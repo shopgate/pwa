@@ -1,6 +1,6 @@
-import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { filtersDidUpdate$ } from '@shopgate/engage/filter';
+import { SEARCH_PATH } from '@shopgate/engage/search';
+import { getCurrentRoute } from '@shopgate/engage/core';
 
 export const searchFiltersDidUpdate$ = filtersDidUpdate$
   .filter(({ getState }) => {

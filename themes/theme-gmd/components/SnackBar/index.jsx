@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { SnackBar } from '@shopgate/pwa-ui-material';
+import { SnackBar } from '@shopgate/engage/components';
 
 /**
  * The SnackBarContainer component.

@@ -1,6 +1,6 @@
 import React from 'react';
-import Consume from '@shopgate/pwa-common/components/Consume';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { Consume } from '@shopgate/engage/components';
+import { RouteContext } from '@shopgate/engage/core';
 import { ViewContext } from 'Components/View/context';
 import FilterBar from 'Components/FilterBar';
 

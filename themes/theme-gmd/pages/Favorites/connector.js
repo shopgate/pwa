@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   getFavorites,
   isInitialLoading,
-} from '@shopgate/pwa-common-commerce/favorites/selectors';
+} from '@shopgate/engage/favorites';
 
 /**
  * Maps state to props.

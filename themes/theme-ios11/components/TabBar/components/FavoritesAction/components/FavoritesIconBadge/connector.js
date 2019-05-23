@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getFavoritesCount } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getFavoritesCount } from '@shopgate/engage/favorites';
 
 /**
  * Maps the contents of the state to the component props.

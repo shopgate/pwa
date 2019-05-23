@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import { Swiper, Portal } from '@shopgate/pwa-common/components';
+import { Swiper, Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_IMAGE,
   PRODUCT_IMAGE_AFTER,
   PRODUCT_IMAGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/product';
-import { ProductImage } from '@shopgate/engage/product';
+  ProductImage,
+} from '@shopgate/engage/product';
 import connect from './connector';
 
 const fallbackResolutions = [

@@ -1,15 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   CART_ITEM_TYPE_PRODUCT,
   CART_ITEM_TYPE_COUPON,
-} from '@shopgate/pwa-common-commerce/cart/constants';
-import {
   CART_ITEM,
   CART_ITEM_BEFORE,
   CART_ITEM_AFTER,
-} from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+} from '@shopgate/engage/cart';
 import Product from './components/Product';
 import Coupon from './components/Coupon';
 
@@ -48,7 +46,7 @@ const CartItem = ({ item, onFocus }) => {
             coupon={item.coupon}
             messages={item.messages}
           />
-        )}
+          )}
       </Portal>
       <Portal name={CART_ITEM_AFTER} props={props} />
     </Fragment>

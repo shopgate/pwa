@@ -6,13 +6,13 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import {
   isUserLoggedIn,
   getUserData,
-} from '@shopgate/pwa-common/selectors/user';
+} from '@shopgate/engage/user';
 import More from './index';
 
 jest.mock('Components/View');
 jest.mock('Components/AppBar/presets');
 
-jest.mock('@shopgate/pwa-common/selectors/user', () => ({
+jest.mock('@shopgate/engage/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),
   isUserLoggedIn: jest.fn().mockReturnValue(false),
   getUserData: jest.fn().mockReturnValue({}),

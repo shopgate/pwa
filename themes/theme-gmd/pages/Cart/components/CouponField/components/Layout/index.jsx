@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '@shopgate/pwa-common/components/Input';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { Input, I18n } from '@shopgate/engage/components';
 import CouponFieldIcon from './components/CouponFieldIcon';
 import styles from './style';
 
@@ -57,9 +56,9 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  handleAddCoupon: () => {},
-  handleFocusChange: () => {},
-  handleValueChange: () => {},
+  handleAddCoupon: () => { },
+  handleFocusChange: () => { },
+  handleValueChange: () => { },
   iconStyle: null,
   isButtonDisabled: false,
   isFocused: false,

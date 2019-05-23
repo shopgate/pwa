@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Link from '@shopgate/pwa-common/components/Link';
+import { Link } from '@shopgate/engage/components';
 import CheckoutButton from './index';
 
 jest.mock('Pages/Cart/context', () => ({

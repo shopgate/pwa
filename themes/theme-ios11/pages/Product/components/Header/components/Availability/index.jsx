@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_AVAILABILITY,
   PRODUCT_AVAILABILITY_AFTER,
   PRODUCT_AVAILABILITY_BEFORE,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import AvailableText from '@shopgate/pwa-ui-shared/Availability';
+} from '@shopgate/engage/product';
+import { PlaceholderLabel } from '@shopgate/engage/components';
+import { AvailableText } from '@shopgate/engage/components';
 import connect from './connector';
 import styles from './style';
 

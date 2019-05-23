@@ -2,8 +2,8 @@ import { createSelector } from 'reselect';
 import {
   getCategoryProductCount,
   getCurrentCategoryChildCount,
-} from '@shopgate/pwa-common-commerce/category/selectors';
-import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+} from '@shopgate/engage/category';
+import { getProductsResult } from '@shopgate/engage/product';
 
 /**
  * Determines whether or not a category has any content,

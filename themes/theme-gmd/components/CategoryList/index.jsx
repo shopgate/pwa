@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { Placeholder } from '@shopgate/pwa-ui-shared';
-import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { SheetList } from '@shopgate/engage/components';
+import { bin2hex } from '@shopgate/engage/core';
+import { CATEGORY_PATH, CATEGORY_ITEM } from '@shopgate/engage/category';
+import { Portal, Placeholder, SheetList } from '@shopgate/engage/components';
 import styles from './style';
 
 /**

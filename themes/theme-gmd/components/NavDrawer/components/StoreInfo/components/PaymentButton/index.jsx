@@ -4,10 +4,8 @@ import {
   NAV_MENU_PAYMENT,
   NAV_MENU_PAYMENT_AFTER,
   NAV_MENU_PAYMENT_BEFORE,
-} from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/market';
+import { Portal, CreditCardIcon, NavDrawer } from '@shopgate/engage/components';
 import { PAYMENT_PATH } from '../../../../constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';

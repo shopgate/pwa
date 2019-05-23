@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from '@shopgate/pwa-common/components';
+import { Portal } from '@shopgate/engage/components';
 import {
   APP_BAR_BACK_BEFORE,
   APP_BAR_BACK,
   APP_BAR_BACK_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
-import { AppBar } from '@shopgate/pwa-ui-ios';
-import { ArrowIcon } from '@shopgate/pwa-ui-shared';
+} from '@shopgate/engage/core';
+import { AppBarIOS } from '@shopgate/pwa-ui-ios';
+import { ArrowIcon } from '@shopgate/engage/components';
 import DefaultBar from '../DefaultBar';
 import connect from './connector';
 

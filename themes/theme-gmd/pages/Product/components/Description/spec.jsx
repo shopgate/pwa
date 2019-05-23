@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import PlaceholderParagraph from '@shopgate/pwa-ui-shared/PlaceholderParagraph';
+import { PlaceholderParagraph } from '@shopgate/engage/components';
 import ProductDescription from './index';
 
 jest.mock('./connector', () => obj => obj);

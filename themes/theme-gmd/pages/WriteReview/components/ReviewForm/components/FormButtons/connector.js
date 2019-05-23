@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { historyPop, getHistoryPathname } from '@shopgate/engage/core';
 
 /**
  * Maps the contents of the state to the component props.

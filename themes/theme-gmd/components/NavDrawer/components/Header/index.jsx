@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { onlyUpdateForKeys } from 'recompose';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
-import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
+import { I18n, NavDrawer, AccountBoxIcon } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';

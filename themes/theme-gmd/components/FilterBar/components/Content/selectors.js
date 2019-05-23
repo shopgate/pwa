@@ -2,9 +2,9 @@ import { createSelector } from 'reselect';
 import {
   getCategoryProductCount,
   getCurrentCategoryChildCount,
-} from '@shopgate/pwa-common-commerce/category/selectors';
-import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { hasActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
+} from '@shopgate/engage/category';
+import { getProductsResult } from '@shopgate/engage/product';
+import { hasActiveFilters } from '@shopgate/engage/filter';
 
 /**
   * Checks if the filter bar is shown within a category page

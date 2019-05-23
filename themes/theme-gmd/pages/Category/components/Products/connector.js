@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductsResult } from '@shopgate/engage/product';
 import getProducts from './actions/getProducts';
 
 /**

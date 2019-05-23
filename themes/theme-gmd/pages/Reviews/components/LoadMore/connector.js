@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentBaseProductId } from '@shopgate/engage/product';
 
 import {
   getReviewsTotalCount,
   getCurrentReviewCount,
   getReviewsFetchingState,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
-import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
+  fetchReviews,
+} from '@shopgate/engage/reviews';
 
 /**
  * Maps the contents of the state to the component props.

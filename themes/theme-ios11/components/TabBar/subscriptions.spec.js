@@ -1,10 +1,10 @@
 import configureStore from 'redux-mock-store';
-import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { LOGIN_PATH } from '@shopgate/engage/user';
+import { routeDidEnter$ } from '@shopgate/engage/core';
+import { getCurrentRoute } from '@shopgate/engage/core';
 import { configuration } from '@shopgate/pwa-common/collections';
 import { TAB_BAR_PATTERNS_BLACK_LIST } from '@shopgate/pwa-common/constants/Configuration';
-import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getCartItems } from '@shopgate/engage/cart';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import {
   enableTabBar,
@@ -18,10 +18,10 @@ import subscriptions from './subscriptions';
  */
 const createMockedStore = () => configureStore()({});
 
-jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+jest.mock('@shopgate/engage/core', () => ({
   getCurrentRoute: jest.fn(),
 }));
-jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({ getCartItems: jest.fn() }));
+jest.mock('@shopgate/engage/cart', () => ({ getCartItems: jest.fn() }));
 
 describe('TabBar subscriptions', () => {
   let mockedSubscribe;

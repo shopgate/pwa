@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@shopgate/pwa-ui-shared/TextField';
-import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
+import { TextField, LoadingIndicator } from '@shopgate/engage/components';
 import RatingScale from './components/RatingScale';
 import FormButtons from './components/FormButtons';
 import {

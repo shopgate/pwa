@@ -1,16 +1,18 @@
-import { historyPop } from '@shopgate/pwa-common/actions/router';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import {
+  historyPop,
+  hex2bin,
+  LoadingProvider,
+  ToastProvider,
+  getCurrentRoute,
+} from '@shopgate/engage/core';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
-import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import {
   requestReviewSubmit$,
   responseReviewSubmit$,
   successReviewSubmit$,
-} from '@shopgate/pwa-common-commerce/reviews/streams';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import fetchUserReview from '@shopgate/pwa-common-commerce/reviews/actions/fetchUserReview';
-import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
-import ToastProvider from '@shopgate/pwa-common/providers/toast';
+  fetchUserReview,
+  flushUserReview,
+} from '@shopgate/engage/reviews';
 import { productRoutesWillEnter$ } from './streams';
 
 /**

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '@shopgate/pwa-common/components/List';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { Portal, List } from '@shopgate/engage/components';
+import {
+  PRODUCT_ITEM_BEFORE,
+  PRODUCT_ITEM,
+  PRODUCT_ITEM_AFTER,
+} from '@shopgate/engage/category';
 import Item from '../Item';
 import styles from './style';
 
@@ -19,11 +22,11 @@ const Iterator = props => (
     itemType="http://schema.org/ListItem"
     className={styles.item}
   >
-    <Portal name={portals.PRODUCT_ITEM_BEFORE} props={{ productId: props.id }} />
-    <Portal name={portals.PRODUCT_ITEM} props={{ productId: props.id }}>
+    <Portal name={PRODUCT_ITEM_BEFORE} props={{ productId: props.id }} />
+    <Portal name={PRODUCT_ITEM} props={{ productId: props.id }}>
       <Item product={props} display={props.display} />
     </Portal>
-    <Portal name={portals.PRODUCT_ITEM_AFTER} props={{ productId: props.id }} />
+    <Portal name={PRODUCT_ITEM_AFTER} props={{ productId: props.id }} />
   </List.Item>
 );
 

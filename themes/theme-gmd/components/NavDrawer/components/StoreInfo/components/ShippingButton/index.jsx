@@ -4,10 +4,8 @@ import {
   NAV_MENU_SHIPPING,
   NAV_MENU_SHIPPING_AFTER,
   NAV_MENU_SHIPPING_BEFORE,
-} from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import LocalShippingIcon from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
-import { NavDrawer } from '@shopgate/pwa-ui-material';
+} from '@shopgate/engage/market';
+import { Portal, NavDrawer, LocalShippingIcon } from '@shopgate/engage/components';
 import { SHIPPING_PATH } from '../../../../constants';
 import portalProps from '../../../../portalProps';
 import connect from '../../../../connector';

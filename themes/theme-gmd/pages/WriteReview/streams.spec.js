@@ -1,9 +1,9 @@
-import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
+import { ROUTE_WILL_ENTER } from '@shopgate/engage/core';
 import {
   ITEM_PATTERN,
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
-} from '@shopgate/pwa-common-commerce/product/constants';
+} from '@shopgate/engage/product';
 import { productRoutesWillEnter$, reviewsRouteWillEnter$ } from './streams';
 
 describe('WriteReviews streams', () => {

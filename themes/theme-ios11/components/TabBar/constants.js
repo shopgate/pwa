@@ -1,4 +1,4 @@
-import { BEFORE, AFTER } from '@shopgate/pwa-common/constants/Portals';
+import { BEFORE, AFTER } from '@shopgate/engage/core';
 
 export const TAB_HOME = 'home';
 export const TAB_BROWSE = 'browse';

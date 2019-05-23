@@ -4,18 +4,18 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { ThemeContext } from '@shopgate/pwa-common/context';
+import { ThemeContext } from '@shopgate/engage/core';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
+import { bin2hex } from '@shopgate/engage/core';
+import { CATEGORY_PATH } from '@shopgate/engage/category';
+import { Sheet as MockSheet } from '@shopgate/engage/components';
 import themeApi from '../../themeApi';
 import { mockedState } from './mockData';
 import Picker from './components/Picker';
 import { UnwrappedNestedCategoryFilter as Widget } from './index';
 
-jest.unmock('@shopgate/pwa-common/context');
-jest.unmock('@shopgate/pwa-ui-shared');
+jest.unmock('@shopgate/engage/core');
+jest.unmock(''@shopgate/engage/components';);
 
 jest.mock('@shopgate/engage/components', () => ({
   ...jest.requireActual('@shopgate/engage/components'),
