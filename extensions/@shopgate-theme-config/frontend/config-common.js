@@ -43,6 +43,10 @@ export default {
             name: 'ShopgateProductOrderQuantityHint',
             id: '@shopgate/engage/product/OrderQuantityHint',
           },
+          {
+            name: 'ShopgateProductSwatches',
+            id: '@shopgate/engage/product/Swatches',
+          },
         ],
       },
       {
