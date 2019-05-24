@@ -1,3 +1,4 @@
+import { isBeta } from '@shopgate/engage/core';
 import { ENOTFOUND } from '@shopgate/pwa-core/constants/Pipeline';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
@@ -27,6 +28,7 @@ export default function category(subscribe) {
       categoryId,
       filters,
       offset,
+      characteristics: isBeta(),
     }));
   });
 
