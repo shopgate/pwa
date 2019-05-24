@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { isBeta } from '@shopgate/engage/core/config/isBeta';
 import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
 
@@ -28,10 +29,13 @@ class CategoryProducts extends PureComponent {
    * @param {number} offset The offset for the fetching.
    */
   fetchProducts = (offset) => {
+    const includeCharacteristics = isBeta();
+
     this.props.getProducts(
       this.props.categoryId,
       this.props.sort,
-      offset || this.props.products.length
+      offset || this.props.products.length,
+      includeCharacteristics
     );
   }
 
