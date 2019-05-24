@@ -8,6 +8,7 @@ const HEADER = 'header';
 const VARIANT_SELECT = 'variant-select';
 const PICKER = 'picker';
 const OPTIONS = 'options';
+const SWATCHES = 'swatches';
 const DESCRIPTION = 'description';
 const PROPERTIES = 'properties';
 const REVIEWS = 'reviews';
@@ -137,6 +138,11 @@ export const PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER = `${PRODUCT}.${VA
 export const PRODUCT_OPTIONS_BEFORE = `${PRODUCT}.${OPTIONS}.${BEFORE}`;
 export const PRODUCT_OPTIONS = `${PRODUCT}.${OPTIONS}`;
 export const PRODUCT_OPTIONS_AFTER = `${PRODUCT}.${OPTIONS}.${AFTER}`;
+
+// SWATCHES
+export const PRODUCT_SWATCHES_BEFORE = `${PRODUCT}.${SWATCHES}.${BEFORE}`;
+export const PRODUCT_SWATCHES = `${PRODUCT}.${SWATCHES}`;
+export const PRODUCT_SWATCHES_AFTER = `${PRODUCT}.${SWATCHES}.${AFTER}`;
 
 // DESCRIPTION
 export const PRODUCT_DESCRIPTION_BEFORE = `${PRODUCT}.${DESCRIPTION}.${BEFORE}`;
