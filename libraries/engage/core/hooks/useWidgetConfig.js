@@ -2,7 +2,6 @@ import defaultsDeep from 'lodash/defaultsDeep';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
 import { usePageSettings } from './usePageSettings';
-import { useSettings } from './useSettings';
 
 /**
  * Retrieves the widget-configuration for a specific widget by its ID and an optional index.
@@ -15,14 +14,18 @@ import { useSettings } from './useSettings';
 export function useWidgetConfig(widgetId, index) {
   const { pattern } = useRoute();
   const { pages } = themeConfig;
-  const { [widgetId]: pageSettings = {} } = usePageSettings();
-  const { [widgetId]: globalSettings = {} } = useSettings();
-  const page = pages.find(element => element.pattern === pattern);
 
+  // Get widget based page and global settings for the given widget id
+  const { [widgetId]: pageSettings = {} } = usePageSettings(widgetId);
+
+  // Get page where the widget is expected to be placed in, if at all
+  const page = [].concat(pages).find(element => element.pattern === pattern);
   if (!page) {
-    return { settings: globalSettings };
+    // Page settings always fall back to widget based global settings for the given widgetId
+    return { settings: pageSettings };
   }
 
+  // Get the widget on the found page if it is configured there
   const widget = [].concat(page.widgets).find((element, i) => {
     if (index === undefined) {
       return element.id === widgetId;
@@ -32,15 +35,15 @@ export function useWidgetConfig(widgetId, index) {
   });
 
   if (!widget) {
-    return { settings: defaultsDeep(pageSettings, globalSettings) };
+    // Fall back to page and global settings, because the widget has no own config
+    return { settings: pageSettings };
   }
 
   const { name, id, ...config } = widget;
 
-  const settings = defaultsDeep(config.settings, pageSettings, globalSettings);
-
+  // Fill up global and page settings with local widget settings
   return {
     ...config,
-    settings,
+    settings: defaultsDeep(config.settings, pageSettings),
   };
 }
