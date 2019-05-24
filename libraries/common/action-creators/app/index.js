@@ -1,6 +1,7 @@
 import {
   APP_WILL_START,
   APP_DID_START,
+  RESET_APP,
   WILL_REGISTER_LINK_EVENTS,
   DID_REGISTER_LINK_EVENTS,
   OPEN_DEEP_LINK,
@@ -25,6 +26,16 @@ export const appWillStart = location => ({
 export const appDidStart = location => ({
   type: APP_DID_START,
   location,
+});
+
+/**
+ * Creates the dispatched RESET_APP action object.
+ * @param {string[]} [reducers=undefined] The list of reducers to reset.
+ * @return {Object} The dispatched action object.
+ */
+export const resetApp = reducers => ({
+  type: RESET_APP,
+  reducers,
 });
 
 /**
