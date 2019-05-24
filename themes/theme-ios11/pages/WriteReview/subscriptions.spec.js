@@ -7,6 +7,15 @@ import reducers from '../reducers';
 
 const store = createMockStore(reducers, subscriber);
 
+jest.mock('@shopgate/engage/core', () => ({
+  persistedReducers: {
+    set: jest.fn(),
+  },
+  configuration: {
+    set: jest.fn(),
+  },
+}));
+
 jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: jest.fn(),
 }));
