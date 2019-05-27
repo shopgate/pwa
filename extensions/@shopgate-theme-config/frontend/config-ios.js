@@ -1,6 +1,10 @@
 export default {
   theme: {
-    settings: {},
+    settings: {
+      '@shopgate/engage/product/ProductImage': {
+        showInnerShadow: true,
+      },
+    },
     typography: {
       family: 'system, -apple-system, "SF Pro Display", "Helvetica Neue", "Lucida Grande"',
       rootSize: 17,
