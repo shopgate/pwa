@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { Image, PlaceholderIcon } from '../../../components';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import Image from '@shopgate/pwa-common/components/Image';
+import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
+import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
+
 import styles from './style';
 
 const { colors } = themeConfig;
@@ -32,6 +37,7 @@ class ProductImage extends Component {
     })),
     src: PropTypes.string,
     srcmap: PropTypes.arrayOf(PropTypes.string),
+    widgetSettings: PropTypes.shape(),
   };
 
   static defaultProps = {
@@ -54,6 +60,7 @@ class ProductImage extends Component {
     ],
     src: null,
     srcmap: null,
+    widgetSettings: {},
   };
 
   /**
@@ -105,39 +112,44 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
+    let { showInnerShadow } = this.props.widgetSettings;
+
+    if (typeof showInnerShadow === 'undefined') {
+      showInnerShadow = !appConfig.hideProductImageShadow;
+    }
+
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
-        <div className={classnames(styles.placeholderContainer, styles.innerShadow)}>
-          <div className={styles.placeholderContent} data-test-id="placeHolder">
-            <PlaceholderIcon className={styles.placeholder} />
+        <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
+          <div className={classnames(styles.placeholderContainer, {
+            [styles.innerShadow]: showInnerShadow,
+          })}
+          >
+            <div className={styles.placeholderContent} data-test-id="placeHolder">
+              <PlaceholderIcon className={styles.placeholder} />
+            </div>
           </div>
-        </div>
-      );
-    }
-
-    if (styles.innerShadow) {
-      return (
-        <div className={styles.innerShadow}>
-          <Image
-            {...this.props}
-            className={styles.innerShadow}
-            backgroundColor={colors.light}
-            onError={this.imageLoadingFailed}
-          />
-        </div>
+        </SurroundPortals>
       );
     }
 
     // Return the actual image.
     return (
-      <Image
-        {...this.props}
-        backgroundColor={colors.light}
-        onError={this.imageLoadingFailed}
-      />
+      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
+        <div className={showInnerShadow ? styles.innerShadow : ''}>
+          <Image
+            {...this.props}
+            className={showInnerShadow ? styles.innerShadow : ''}
+            backgroundColor={colors.light}
+            onError={this.imageLoadingFailed}
+          />
+        </div>
+      </SurroundPortals>
     );
   }
 }
 
-export default ProductImage;
+export { ProductImage as UnwrappedProductImage };
+
+export default withWidgetSettings(ProductImage, '@shopgate/engage/product/ProductImage');

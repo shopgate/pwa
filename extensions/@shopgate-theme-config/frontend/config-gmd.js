@@ -1,6 +1,10 @@
 export default {
   theme: {
-    settings: {},
+    settings: {
+      '@shopgate/engage/product/ProductImage': {
+        showInnerShadow: false,
+      },
+    },
     typography: {
       family: 'Roboto, Arial, sans-serif',
       rootSize: 16,
