@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > hocs > withWidgetSettings should merge add the widget settings to a wrapped component 1`] = `
+<Component
+  widgetSettings={
+    Object {
+      "some": "setting",
+    }
+  }
+/>
+`;

@@ -18,29 +18,10 @@ exports[`<ItemImage /> should render 1`] = `
       }
     }
   >
-    <ProductImage
+    <Component
       alt="FooBar"
-      animating={true}
-      className={null}
-      forcePlaceholder={false}
-      highestResolutionLoaded={[Function]}
       itemProp="image"
-      ratio={null}
-      resolutions={
-        Array [
-          Object {
-            "blur": 2,
-            "height": 50,
-            "width": 50,
-          },
-          Object {
-            "height": 440,
-            "width": 440,
-          },
-        ]
-      }
       src="http://www.google.com"
-      srcmap={null}
     />
   </Portal>
   <Portal

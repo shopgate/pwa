@@ -8,6 +8,8 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import { mockProductId, mockProduct } from './mock';
 import ProductCard, { ProductCardUnwrapped } from './index';
 
+jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
+
 /**
  * Creates a state for a mocked store.
  * @param {Object} product A product.
