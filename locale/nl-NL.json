@@ -132,11 +132,11 @@
     "scanner": "Scanner",
     "shipping": "Verzendmethoden",
     "about": "Over ons",
-    "payment": "Betalingsmethoden",
+    "payment": "Uw betalingswens",
     "terms": "Voorwaarden",
     "privacy": "Privacybeleid",
     "welcome_message": "Welkom {name}",
-    "return_policy": "Retourbeleid",
+    "return_policy": "Herroepingsrecht",
     "logout": "Log uit",
     "menuSubHeader": {
       "more": "Meer",
