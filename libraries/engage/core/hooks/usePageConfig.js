@@ -35,10 +35,13 @@ export function usePageConfig(widgetId = '') {
   } = page;
 
   if (widgetId) {
-    // Merge inherited widget based settings from global and page scope
+    // Merge inherited widget based settings from global and page scope and add to page config
     return {
       ...config,
-      settings: defaultsDeep(config.settings, globalSettings),
+      settings: defaultsDeep(
+        config.settings && config.settings[widgetId] ? config.settings[widgetId] : {},
+        globalSettings
+      ),
     };
   }
 
