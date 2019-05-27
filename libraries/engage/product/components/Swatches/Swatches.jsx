@@ -1,27 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import defaultsDeep from 'lodash/defaultsDeep';
+import { css } from 'glamor';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { useWidgetConfig } from '../../../core';
-import Swatch from './Swatch';
-import Element from './Element';
+import { useConfig, useWidgetConfig } from '../../../core';
+import Swatch from '../Swatch';
 import connect from './connector';
+
+const { typography = {} } = useConfig();
 
 const widgetDefaults = {
   settings: {
-    visible: true,
+    maxCount: 10,
   },
   styles: {
-    swatches: {
-      fontWeight: '500',
-      lineHeight: 1.15,
-      marginTop: 1,
-      wordBreak: ['keep-all', 'break-word'],
-    },
-    swatch: {
-    },
-    element: {
+    container: {
+      lineHeight: typography.lineHeight,
     },
   },
 };
@@ -29,11 +24,11 @@ const widgetDefaults = {
 const widgetId = '@shopgate/engage/product/Swatches';
 
 /**
- * Renders product swatches.
+ * Renders only product swatches from a list of characteristics.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Swatches = ({ productId, swatches, widgetPath }) => {
+const Swatches = ({ productId, characteristics, widgetPath }) => {
   const { settings = {}, styles = {} } = useWidgetConfig(widgetId, widgetPath);
 
   // override default settings with configured widget settings
@@ -42,27 +37,16 @@ const Swatches = ({ productId, swatches, widgetPath }) => {
 
   const testId = `productSwatches.${productId}`;
   return (
-    <SurroundPortals portalName={PRODUCT_SWATCHES} portalProps={{ swatches }}>
-      { widgetSettings.visible && (
-        <div data-test-id={testId} className={widgetStyles.toString()}>
-          {/* <pre>Settings:<br />{JSON.stringify(widgetSettings)}</pre>
-              <pre>Styles:  <br />{JSON.stringify(widgetStyles)}</pre>
-              <pre>Swatches:<br />{JSON.stringify(swatches)}</pre> */}
-          {swatches.map(swatch => (
-            <Swatch
-              key={`${productId}.${swatch.id}`}
-              testId={`${testId}.swatch.${swatch.id}`}
-              style={widgetStyles.swatch}
-            >
-              {swatch.values.map(value => (
-                <Element
-                  key={`${productId}.${swatch.id}.${value.id}`}
-                  testId={`${testId}.swatch.${swatch.id}.element.${value.id}`}
-                  style={widgetStyles.element}
-                  field={value.swatch}
-                />
-              ))}
-            </Swatch>
+    <SurroundPortals portalName={PRODUCT_SWATCHES} portalProps={{ characteristics }}>
+      { widgetSettings.maxCount > 0 && (
+        <div data-test-id={testId} className={css(widgetStyles.container).toString()}>
+          {characteristics.filter(c => c.swatch === true).map((swatch, i) => (
+            <Fragment key={`${productId}.${swatch.id}`}>
+              {widgetSettings.maxCount > i && <Swatch
+                testId={`${testId}.swatch.${swatch.id}`}
+                swatch={swatch}
+              />}
+            </Fragment>
           ))}
         </div>
       )}
@@ -71,17 +55,8 @@ const Swatches = ({ productId, swatches, widgetPath }) => {
 };
 
 Swatches.propTypes = {
+  characteristics: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   productId: PropTypes.string.isRequired,
-  swatches: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    swatch: PropTypes.bool,
-    values: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string,
-      label: PropTypes.string.isRequired,
-      swatch: PropTypes.shape().isRequired,
-    })).isRequired,
-  })).isRequired,
   widgetPath: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

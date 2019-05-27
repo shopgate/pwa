@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { makeGetProductSwatches } from '../../selectors/swatches';
+import { makeGetProductCharacteristics } from '../../selectors/product';
 
 /**
  * @return {Function}
  */
 function makeMapStateToProps() {
-  const getProductSwatches = makeGetProductSwatches();
+  const getProductCharacteristics = makeGetProductCharacteristics();
 
   return (state, props) => ({
-    swatches: getProductSwatches(state, props),
+    characteristics: getProductCharacteristics(state, props),
   });
 }
 

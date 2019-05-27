@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import isBeta from '@shopgate/engage/core';
+import { isBeta } from '@shopgate/engage/core';
 import { MapPriceHint, OrderQuantityHint, Swatches } from '@shopgate/engage/product';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';

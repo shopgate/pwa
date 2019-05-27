@@ -44,8 +44,61 @@ export default {
             id: '@shopgate/engage/product/OrderQuantityHint',
           },
           {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
+            settings: {
+              selectionSettings: {
+                selected: {
+                  boxShadow: undefined,
+                },
+                unselected: {
+                  boxShadow: undefined,
+                },
+              },
+              elementWidth: '0.8rem',
+              elementHeight: '0.8rem',
+            },
+            styles: {
+              swatch: {
+                marginBottom: '0.2rem',
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
+                alignContent: 'flex-start',
+              },
+              element: {
+                flexGrow: 0,
+                flexShrink: 0,
+                flexBasis: 'auto',
+                alignSelf: 'auto',
+                marginRight: '0.2rem',
+                marginBottom: '0.2rem',
+                pointerEvents: 'none',
+                padding: '1px',
+                borderRadius: '50%',
+              },
+              colorField: {
+                borderRadius: '50%',
+              },
+              textureField: {
+                borderRadius: '50%',
+                backgroundSize: 'cover',
+              },
+            },
+          },
+          {
             name: 'ShopgateProductSwatches',
             id: '@shopgate/engage/product/Swatches',
+            settings: {
+              maxCount: 10,
+            },
+            styles: {
+              container: {
+                lineHeight: undefined,
+              },
+            },
           },
         ],
       },
