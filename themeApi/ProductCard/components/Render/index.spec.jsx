@@ -7,6 +7,8 @@ import MockProductImage from '@shopgate/engage/product/components/ProductImage';
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
+jest.mock('@shopgate/engage/core/hocs/withWidgetSettings');
+
 jest.mock('@shopgate/engage/product', () => ({
   withPriceCalculation: Component => props => <Component {...props} />,
   MapPriceHint: () => null,
@@ -44,7 +46,7 @@ describe('<ProductCardRender />', () => {
   it('should render as expected', () => {
     const wrapper = renderComponent();
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Portal').length).toBe(6);
+    expect(wrapper.find('Portal').length).toBe(9);
     expect(wrapper.find('Link').prop('href')).toEqual(defaultProps.url);
     expect(wrapper.find('ProductCardBadge').exists()).toBe(true);
     expect(wrapper.find('ProductCardBadge').text()).toEqual(`-${mockProduct.price.discount}%`);
