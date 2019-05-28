@@ -199,7 +199,7 @@
         "label": "The theme configuration for Engage GMD theme."
       },
       "default": {
-        "font": {
+        "typography": {
           "family": "Roboto, Arial, sans-serif",
           "rootSize": 16,
           "lineHeight": 1.5
