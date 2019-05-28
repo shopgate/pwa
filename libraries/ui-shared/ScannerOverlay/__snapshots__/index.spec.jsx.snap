@@ -155,17 +155,37 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                 <li
                   className="css-1uot7vp"
                 >
-                  <Translate
-                    className=""
-                    params={Object {}}
-                    string="scanner.instructions"
-                  >
-                    <span
-                      className=""
+                  <ScannerInstructions>
+                    <SurroundPortals
+                      portalName="scanner.instructions"
+                      portalProps={null}
                     >
-                      scanner.instructions
-                    </span>
-                  </Translate>
+                      <Portal
+                        name="scanner.instructions.before"
+                        props={null}
+                      />
+                      <Portal
+                        name="scanner.instructions"
+                        props={null}
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="scanner.instructions"
+                        >
+                          <span
+                            className=""
+                          >
+                            scanner.instructions
+                          </span>
+                        </Translate>
+                      </Portal>
+                      <Portal
+                        name="scanner.instructions.after"
+                        props={null}
+                      />
+                    </SurroundPortals>
+                  </ScannerInstructions>
                 </li>
               </GridItem>
             </ul>

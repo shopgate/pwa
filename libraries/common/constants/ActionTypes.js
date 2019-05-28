@@ -17,6 +17,7 @@ export const APP_DID_START = 'APP_DID_START';
 export const APP_WILL_START = 'APP_WILL_START';
 export const WILL_REGISTER_LINK_EVENTS = 'WILL_REGISTER_LINK_EVENTS';
 export const DID_REGISTER_LINK_EVENTS = 'DID_REGISTER_LINK_EVENTS';
+export const RESET_APP = 'RESET_APP';
 
 /**
  * ------- MENU -------

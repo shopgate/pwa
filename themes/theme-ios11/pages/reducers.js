@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
-import persistReducers from '@shopgate/pwa-common/collections/PersistedReducers';
+import {
+  persistedReducers,
+  configuration,
+  RESET_APP_REDUCERS,
+} from '@shopgate/engage/core';
 import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
@@ -18,12 +22,22 @@ import extensions from 'Extensions/reducers';
 import viewSwitch from 'Components/FilterBar/components/Content/components/ViewSwitch/reducer';
 import tabBar from 'Components/TabBar/reducer';
 
-persistReducers.set([
+persistedReducers.set([
   'cart',
   'client.info',
   'page',
   'url',
   'user',
+]);
+
+configuration.set(RESET_APP_REDUCERS, [
+  'cart',
+  'category',
+  'product',
+  'favorites',
+  'filter',
+  'reviews',
+  'search',
 ]);
 
 const reducers = combineReducers({
