@@ -55,8 +55,8 @@ export default {
                   boxShadow: undefined,
                 },
               },
-              elementWidth: '0.8rem',
-              elementHeight: '0.8rem',
+              elementWidth: '1em',
+              elementHeight: '1em',
             },
             styles: {
               swatch: {
@@ -96,6 +96,7 @@ export default {
             },
             styles: {
               container: {
+                marginTop: 8,
                 lineHeight: undefined,
               },
             },
