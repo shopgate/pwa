@@ -190,7 +190,7 @@
         "label": "The theme configuration for Engage GMD theme."
       },
       "default": {
-        "font": {
+        "typography": {
           "family": "system, -apple-system, \"SF Pro Display\", \"Helvetica Neue\", \"Lucida Grande\"",
           "rootSize": 17,
           "lineHeight": 1.43
