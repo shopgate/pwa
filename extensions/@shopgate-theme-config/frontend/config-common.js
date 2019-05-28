@@ -47,20 +47,20 @@ export default {
             name: 'ShopgateProductSwatch',
             id: '@shopgate/engage/product/Swatch',
             settings: {
-              selectionSettings: {
+              selectionStyles: {
                 selected: {
-                  boxShadow: undefined,
+                  borderColor: undefined,
                 },
                 unselected: {
-                  boxShadow: undefined,
+                  borderColor: undefined,
                 },
               },
-              elementWidth: '1em',
-              elementHeight: '1em',
+              elementWidth: '1.0rem',
+              elementHeight: '1.0rem',
             },
             styles: {
               swatch: {
-                marginBottom: '0.2rem',
+                marginBottom: '0.3rem',
                 display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
@@ -76,15 +76,10 @@ export default {
                 marginRight: '0.2rem',
                 marginBottom: '0.2rem',
                 pointerEvents: 'none',
-                padding: '1px',
-                borderRadius: '50%',
-              },
-              colorField: {
-                borderRadius: '50%',
-              },
-              textureField: {
                 borderRadius: '50%',
                 backgroundSize: 'cover',
+                borderWidth: '1px',
+                borderStyle: 'solid',
               },
             },
           },
@@ -96,7 +91,7 @@ export default {
             },
             styles: {
               container: {
-                marginTop: 8,
+                marginTop: '0.4rem',
                 lineHeight: undefined,
               },
             },

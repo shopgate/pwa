@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 
@@ -11,74 +11,61 @@ const Element = ({
   testId,
   field,
   style,
-  colorFieldStyle,
-  textureFieldStyle,
-  selectionSettings,
+  selectionStyles,
   selected,
 }) => {
-  const { ...selectionSetting } = selectionSettings[selected];
+  const { ...stylesBySelection } = selectionStyles[selected];
+  const commonClassName = `${
+    typeof style === 'object'
+      ? css(style).toString()
+      : style
+  } ${
+    css(stylesBySelection).toString()
+  }`;
+
   return (
-    <li
-      data-test-id={testId}
-      className={css({
-        ...style,
-        // Disable overriding switch configurations, configure instead of styling!
-        ...selectionSetting,
-      })}
-    >
+    <Fragment>
       { field.imageUrl && !field.color && (
-        <div
-          className={css({
-            height: '100%',
-            width: '100%',
-            ...textureFieldStyle,
-            // Fix background image to always show a texture
-            backgroundImage: `url(${field.imageUrl})`,
-          })}
+        <li
+          data-test-id={testId}
+          // Fix background image to always show a texture
+          className={
+            `${commonClassName} ${css({ backgroundImage: `url(${field.imageUrl})` })}`
+          }
         />
       ) }
       { !field.imageUrl && field.color && (
-        <div
-          className={css({
-            height: '100%',
-            width: '100%',
-            ...colorFieldStyle,
-            // Fix color field background color to the selected value
-            backgroundColor: field.color,
-          })}
+        <li
+          data-test-id={testId}
+          // Fix color field background color to the selected value
+          className={
+            `${commonClassName} ${css({ backgroundColor: field.color })}`
+          }
         />
       ) }
-    </li>
+    </Fragment>
   );
 };
 
-const selectionSetting = PropTypes.shape({
-  boxShadow: PropTypes.string,
+const selectionStyle = PropTypes.shape({
+  borderColor: PropTypes.string,
 });
 
 Element.propTypes = {
-  colorFieldStyle: PropTypes.oneOfType([
-    PropTypes.shape(),
-    PropTypes.string,
-  ]).isRequired,
   // Contains only imageUrl or color, never both
   field: PropTypes.shape({
     imageUrl: PropTypes.string,
     color: PropTypes.string,
   }).isRequired,
-  selectionSettings: PropTypes.shape({
-    selected: selectionSetting,
-    unselected: selectionSetting,
+  selectionStyles: PropTypes.shape({
+    selected: selectionStyle,
+    unselected: selectionStyle,
   }).isRequired,
   style: PropTypes.oneOfType([
     PropTypes.shape(),
     PropTypes.string,
   ]).isRequired,
   testId: PropTypes.string.isRequired,
-  textureFieldStyle: PropTypes.oneOfType([
-    PropTypes.shape(),
-    PropTypes.string,
-  ]).isRequired,
   selected: PropTypes.string,
 };
 

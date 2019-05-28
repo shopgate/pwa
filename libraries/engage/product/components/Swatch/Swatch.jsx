@@ -11,20 +11,20 @@ const { colors = {} } = useConfig();
 
 const widgetDefaults = {
   settings: {
-    selectionSettings: {
+    selectionStyles: {
       selected: {
-        boxShadow: `inset 0 0 0 1px ${colors.accent}`,
+        borderColor: colors.accent,
       },
       unselected: {
-        boxShadow: `inset 0 0 0 1px ${colors.shade4}`,
+        borderColor: colors.shade4,
       },
     },
-    elementWidth: '0.8rem',
-    elementHeight: '0.8rem',
+    elementWidth: '1.5rem',
+    elementHeight: '1.5rem',
   },
   styles: {
     swatch: {
-      marginBottom: '0.2rem',
+      marginBottom: '0.4rem',
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
@@ -37,18 +37,13 @@ const widgetDefaults = {
       flexShrink: 0,
       flexBasis: 'auto',
       alignSelf: 'auto',
-      marginRight: '0.2rem',
-      marginBottom: '0.2rem',
+      marginRight: '0.3rem',
+      marginBottom: '0.3rem',
       pointerEvents: 'none',
-      padding: '1px',
-      borderRadius: '50%',
-    },
-    colorField: {
-      borderRadius: '50%',
-    },
-    textureField: {
       borderRadius: '50%',
       backgroundSize: 'cover',
+      borderWidth: '1px',
+      borderStyle: 'solid',
     },
   },
 };
@@ -84,10 +79,8 @@ const Swatch = ({ testId, swatch, widgetPath }) => {
               maxHeight: widgetSettings.elementHeight,
               ...widgetStyles.element,
             }}
-            colorFieldStyle={widgetStyles.colorField}
-            textureFieldStyle={widgetStyles.textureField}
             field={value.swatch}
-            selectionSettings={widgetSettings.selectionSettings}
+            selectionStyles={widgetSettings.selectionStyles}
           />
         ))}
       </ul>
