@@ -1,5 +1,65 @@
 # Changelog
 
+## [v6.6.0](https://github.com/shopgate/pwa/compare/...v6.6.0) (2019-05-28)
+
+#### :rocket: Enhancement
+* [#675](https://github.com/shopgate/pwa/pull/675) Updated dutch translations ([@fkloes](https://github.com/fkloes))
+* [#673](https://github.com/shopgate/pwa/pull/673) Action is added to clear redux entries (product, categories, etc) ([@alexbridge](https://github.com/alexbridge))
+* [#672](https://github.com/shopgate/pwa/pull/672) Add portal for scanner instructions on scanner bar ([@alexbridge](https://github.com/alexbridge))
+* [#668](https://github.com/shopgate/pwa/pull/668) Support product effectivity dates on Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#663](https://github.com/shopgate/pwa/pull/663) Add hint for minimum / maximum order quantity ([@alexbridge](https://github.com/alexbridge))
+* [#657](https://github.com/shopgate/pwa/pull/657) Added support for grouped Product Properties ([@devbucket](https://github.com/devbucket))
+* [#660](https://github.com/shopgate/pwa/pull/660) Added support for videos on the Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#650](https://github.com/shopgate/pwa/pull/650) Min/Max order quantities are supported on the Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#653](https://github.com/shopgate/pwa/pull/653) Added hooks to access the theme config ([@devbucket](https://github.com/devbucket))
+* [#649](https://github.com/shopgate/pwa/pull/649) Added client connectivity information to Redux ([@fkloes](https://github.com/fkloes))
+* [#642](https://github.com/shopgate/pwa/pull/642) Added support for long product names ([@devbucket](https://github.com/devbucket))
+* [#647](https://github.com/shopgate/pwa/pull/647) Added configuration hooks to access global and page configuration. ([@devbucket](https://github.com/devbucket))
+* [#641](https://github.com/shopgate/pwa/pull/641) Improved extensibility of the scanner ([@fkloes](https://github.com/fkloes))
+* [#637](https://github.com/shopgate/pwa/pull/637) Added Portals around the Tax Component within the PaymentBar ([@fkloes](https://github.com/fkloes))
+* [#634](https://github.com/shopgate/pwa/pull/634) The ProductGrid component is now part of the Theme API ([@devbucket](https://github.com/devbucket))
+* [#630](https://github.com/shopgate/pwa/pull/630) Navigation functions can be injected via React Hooks and HOCs. ([@devbucket](https://github.com/devbucket))
+* [#631](https://github.com/shopgate/pwa/pull/631) Added extensibility of the app footer ([@fkloes](https://github.com/fkloes))
+* [#622](https://github.com/shopgate/pwa/pull/622) Implemented translation system for cart and cart item messages. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#627](https://github.com/shopgate/pwa/pull/627) Replaced scanner flash icon for disabled flashlight to make it more clear what it does ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#624](https://github.com/shopgate/pwa/pull/624) Added support for Portuguese language. ([@devbucket](https://github.com/devbucket))
+* [#616](https://github.com/shopgate/pwa/pull/616) Add theme, router and current product, React Hooks and HOC to easily access the appropriate data ([@devbucket](https://github.com/devbucket))
+* [#615](https://github.com/shopgate/pwa/pull/615) Improved rendering of videos within product descriptions and the HTML widget ([@fkloes](https://github.com/fkloes))
+* [#598](https://github.com/shopgate/pwa/pull/598) Introduced @shopgate/engage package to start new API ([@devbucket](https://github.com/devbucket))
+* [#597](https://github.com/shopgate/pwa/pull/597) Added a camera permission check before the scanner route is opened ([@fkloes](https://github.com/fkloes))
+* [#595](https://github.com/shopgate/pwa/pull/595) Added possibility to implement custom UI for product options ([@alexbridge](https://github.com/alexbridge))
+* [#594](https://github.com/shopgate/pwa/pull/594) The theme's color variables and global font variables are now configurable via the New Merchant Admin ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#676](https://github.com/shopgate/pwa/pull/676) Fixed NavDrawer Header update when user name was updated ([@fkloes](https://github.com/fkloes))
+* [#677](https://github.com/shopgate/pwa/pull/677) Fixed wrapping "goto cart" button label within the iOS theme in pt-PT ([@fkloes](https://github.com/fkloes))
+* [#665](https://github.com/shopgate/pwa/pull/665) Fixed a slider issue with swiping through zoomed slides ([@fkloes](https://github.com/fkloes))
+* [#662](https://github.com/shopgate/pwa/pull/662) Fix date type field for ui-shared/Form package ([@alexbridge](https://github.com/alexbridge))
+* [#646](https://github.com/shopgate/pwa/pull/646) Fixed missing focus and contrast colors ([@fkloes](https://github.com/fkloes))
+* [#638](https://github.com/shopgate/pwa/pull/638) Remove product data, when product is no more available ([@alexbridge](https://github.com/alexbridge))
+* [#636](https://github.com/shopgate/pwa/pull/636) Corrected login.email translations for locales nl-NL and fr-FR. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#635](https://github.com/shopgate/pwa/pull/635) Corrected the cart total discount label from plural to singular ([@fkloes](https://github.com/fkloes))
+* [#633](https://github.com/shopgate/pwa/pull/633) The Swiper items now have equal heights ([@devbucket](https://github.com/devbucket))
+* [#629](https://github.com/shopgate/pwa/pull/629) Introduced a configuration to limit favorite list item count ([@alexbridge](https://github.com/alexbridge))
+* [#632](https://github.com/shopgate/pwa/pull/632) Fixed inconsistent UI logged in state when a getUser request failed ([@fkloes](https://github.com/fkloes))
+* [#628](https://github.com/shopgate/pwa/pull/628) Added rxjs operator `mergeMap` to the main stream ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#625](https://github.com/shopgate/pwa/pull/625) Fixed an issue with scanning QR Code links that lead to non existent pages ([@fkloes](https://github.com/fkloes))
+* [#623](https://github.com/shopgate/pwa/pull/623) Fixed the Scanner to directly open the found item, when the search result only contains one item ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#621](https://github.com/shopgate/pwa/pull/621) Fixed broken handling of channel urls ([@fkloes](https://github.com/fkloes))
+* [#618](https://github.com/shopgate/pwa/pull/618) Add missing country ME ([@alexbridge](https://github.com/alexbridge))
+* [#612](https://github.com/shopgate/pwa/pull/612) Ignore unknown country in form builder country field ([@alexbridge](https://github.com/alexbridge))
+* [#610](https://github.com/shopgate/pwa/pull/610) Avoid screen overflow for select form element ([@alexbridge](https://github.com/alexbridge))
+* [#607](https://github.com/shopgate/pwa/pull/607) Added missing french translation for search placeholder ([@devbucket](https://github.com/devbucket))
+* [#600](https://github.com/shopgate/pwa/pull/600) Fallback to null when no shipping is given ([@alexbridge](https://github.com/alexbridge))
+* [#599](https://github.com/shopgate/pwa/pull/599) Fix for customizing theme colors ([@alexbridge](https://github.com/alexbridge))
+* [#596](https://github.com/shopgate/pwa/pull/596) Open social media app deeplinks natively ([@alexbridge](https://github.com/alexbridge))
+* [#591](https://github.com/shopgate/pwa/pull/591) Fixed an issue with GET parameters inside of coupon deeplinks ([@fkloes](https://github.com/fkloes))
+
+#### :nail_care: Polish
+* [#639](https://github.com/shopgate/pwa/pull/639) Update tax and shipping disclaimers translations ([@alexbridge](https://github.com/alexbridge))
+* [#609](https://github.com/shopgate/pwa/pull/609) Removed duplicate getUserLogin selector ([@devbucket](https://github.com/devbucket))
+
+
 ## [v6.4.2](https://github.com/shopgate/pwa/compare/v6.4.1...v6.4.2) (2019-05-16)
 
 #### :bug: Bug Fix
