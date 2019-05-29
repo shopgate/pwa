@@ -30,7 +30,7 @@ const widgetId = '@shopgate/engage/product/Swatches';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export const Swatches = connect(({ productId, characteristics, widgetPath }) => {
+const SwatchesUnwrapped = ({ productId, characteristics, widgetPath }) => {
   if (!isBeta()) {
     return null;
   }
@@ -69,9 +69,9 @@ export const Swatches = connect(({ productId, characteristics, widgetPath }) => 
       )}
     </SurroundPortals>
   );
-});
+};
 
-Swatches.propTypes = {
+SwatchesUnwrapped.propTypes = {
   productId: PropTypes.string.isRequired,
   characteristics: PropTypes.arrayOf(PropTypes.shape()),
   widgetPath: PropTypes.oneOfType([
@@ -80,7 +80,11 @@ Swatches.propTypes = {
   ]),
 };
 
-Swatches.defaultProps = {
+SwatchesUnwrapped.defaultProps = {
   characteristics: null,
   widgetPath: undefined,
 };
+
+SwatchesUnwrapped.displayName = 'Swatches';
+
+export const Swatches = connect(SwatchesUnwrapped);
