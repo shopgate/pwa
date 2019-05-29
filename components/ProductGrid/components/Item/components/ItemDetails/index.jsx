@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
 import { MapPriceHint, OrderQuantityHint, Swatches } from '@shopgate/engage/product';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
@@ -41,7 +40,8 @@ class ItemDetails extends PureComponent {
           This feature is currently in BETA testing.
           It should only be used for approved BETA Client Projects
         */}
-        { isBeta() && <Swatches productId={productId} /> }
+        <Swatches productId={productId} />
+
         <ItemName display={display} productId={productId} name={name} />
 
         {/*
