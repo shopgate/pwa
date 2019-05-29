@@ -61,6 +61,11 @@ const Swatch = ({ testId, swatch, widgetPath }) => {
     return null;
   }
 
+  // Don't render if no data is set
+  if (!swatch) {
+    return null;
+  }
+
   const { settings = {}, styles = {} } = useWidgetConfig(widgetId, widgetPath);
 
   // override default settings with configured widget settings
@@ -77,10 +82,10 @@ const Swatch = ({ testId, swatch, widgetPath }) => {
     height: widgetSettings.itemHeight,
     maxHeight: widgetSettings.itemHeight,
     ...widgetStyles.item,
-  });
-  const selectionClassNames = widgetSettings.selectionStyles.keys().reduce((classes, key) => ({
-    ...classes,
-    [key]: css(widgetSettings.selectionStyles[key]),
+  }).toString();
+  const selectionClassNames = Object.keys(widgetSettings.selectionStyles).reduce((result, key) => ({
+    ...result,
+    [key]: css(widgetSettings.selectionStyles[key]).toString(),
   }), {});
 
   return (
@@ -91,18 +96,14 @@ const Swatch = ({ testId, swatch, widgetPath }) => {
             { !value.swatch.imageUrl && value.swatch.color && (
               <SwatchColor
                 testId={`${testId}.item.${value.id}`}
-                className={
-                  `${itemClassName.toString()} ${selectionClassNames.unselected.toString()}`
-                }
-                color={value.swatch}
+                className={`${itemClassName} ${selectionClassNames.unselected}`}
+                color={value.swatch.color}
               />
             ) }
             { value.swatch.imageUrl && !value.swatch.color && (
               <SwatchTexture
                 testId={`${testId}.item.${value.id}`}
-                className={
-                  `${itemClassName.toString()} ${selectionClassNames.unselected.toString()}`
-                }
+                className={`${itemClassName} ${selectionClassNames.unselected}`}
                 imageUrl={value.swatch.imageUrl}
               />
             ) }
@@ -114,6 +115,7 @@ const Swatch = ({ testId, swatch, widgetPath }) => {
 };
 
 Swatch.propTypes = {
+  testId: PropTypes.string.isRequired,
   swatch: PropTypes.shape({
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -127,8 +129,7 @@ Swatch.propTypes = {
         color: PropTypes.string,
       }).isRequired,
     })).isRequired,
-  }).isRequired,
-  testId: PropTypes.string.isRequired,
+  }),
   widgetPath: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -136,6 +137,7 @@ Swatch.propTypes = {
 };
 
 Swatch.defaultProps = {
+  swatch: null,
   widgetPath: undefined,
 };
 

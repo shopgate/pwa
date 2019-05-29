@@ -33,6 +33,10 @@ const Swatches = ({ productId, characteristics, widgetPath }) => {
     return null;
   }
 
+  if (!characteristics) {
+    return null;
+  }
+
   const { settings = {}, styles = {} } = useWidgetConfig(widgetId, widgetPath);
 
   // override default settings with configured widget settings
@@ -59,8 +63,8 @@ const Swatches = ({ productId, characteristics, widgetPath }) => {
 };
 
 Swatches.propTypes = {
-  characteristics: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   productId: PropTypes.string.isRequired,
+  characteristics: PropTypes.arrayOf(PropTypes.shape()),
   widgetPath: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -68,6 +72,7 @@ Swatches.propTypes = {
 };
 
 Swatches.defaultProps = {
+  characteristics: null,
   widgetPath: undefined,
 };
 
