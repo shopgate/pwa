@@ -5,7 +5,7 @@ import { themeConfig } from './mock';
  * @type {Object}
  */
 const defaultConfig = {
-  font: {},
+  typography: {},
   colors: {},
   variables: {},
 };
@@ -22,11 +22,19 @@ export function buildThemeConfig(appConfig) {
 
   const { colors = {}, theme = {} } = appConfig;
 
+  // Force cta colors
+  if (!colors.cta && colors.primary) {
+    colors.cta = colors.primary;
+  }
+  if (!colors.ctaContrast && colors.primaryContrast) {
+    colors.ctaContrast = colors.primaryContrast;
+  }
+
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
   return {
     ...theme,
-    font: theme.typography,
+    typography: theme.typography,
     colors: {
       ...theme.colors,
       ...colors,

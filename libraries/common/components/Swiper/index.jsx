@@ -5,7 +5,7 @@ import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
 import { Pagination, Navigation, Autoplay, Zoom } from 'swiper/dist/js/swiper.esm';
 import SwiperItem from './components/SwiperItem';
-import { container, innerContainer, bullet, bulletActive, buttonNext, buttonPrev } from './styles';
+import { container, innerContainer, zoomFix, bullet, bulletActive, buttonNext, buttonPrev } from './styles';
 
 /**
  * The basic swiper component.
@@ -42,55 +42,40 @@ function Swiper(props) {
     // Only update the instance, when it differs from the current one.
     if (instance !== null && instance !== swiper) {
       setSwiper(instance);
-    }
-  };
 
-  /**
-   * Removes all event listeners from the swiper instance.
-   */
-  const removeEventListeners = () => {
-    if (swiper !== null) {
-      swiper.off('slideChange');
-      swiper.off('transitionEnd');
-      swiper.off('beforeDestroy');
+      instance.on('slideChange', () => onSlideChange(instance.realIndex));
+      instance.on('transitionEnd', () => {
+        // In loop mode the Swiper duplicates elements, which are not in the virtual DOM
+        if (loop) {
+          const autoplayRunning = instance.autoplay.running;
+          const previousIndex = instance.activeIndex;
+
+          // Skip duplicated elements
+          if (instance.activeIndex < 1) {
+            instance.slideToLoop(children.length - 1, 0);
+          } else if (instance.activeIndex > children.length) {
+            instance.slideToLoop(0, 0);
+          }
+
+          if (autoplayRunning && instance.activeIndex !== previousIndex) {
+            // Restart the autoplay when it was active before the auto slide.
+            instance.autoplay.start();
+          }
+        }
+      });
     }
   };
 
   useEffect(() => {
     if (swiper !== null) {
-      removeEventListeners();
-
       if (loop) {
         // Recreate the loop on prop updates to avoid duplicated slides from the last slide set.
         swiper.loopCreate();
       }
 
       swiper.update();
-      swiper.on('slideChange', () => onSlideChange(swiper.realIndex));
-      swiper.on('transitionEnd', () => {
-        // In loop mode the Swiper duplicates elements, which are not in the virtual DOM
-        if (loop) {
-          const autoplayRunning = swiper.autoplay.running;
-          const previousIndex = swiper.activeIndex;
-
-          // Skip duplicated elements
-          if (swiper.activeIndex < 1) {
-            swiper.slideToLoop(children.length - 1, 0);
-          } else if (swiper.activeIndex > children.length) {
-            swiper.slideToLoop(0, 0);
-          }
-
-          if (autoplayRunning && swiper.activeIndex !== previousIndex) {
-            // Restart the autoplay when it was active before the auto slide.
-            swiper.autoplay.start();
-          }
-        }
-      });
-      swiper.on('beforeDestroy', () => removeEventListeners());
     }
-
-    return () => removeEventListeners();
-  }, [swiper, children]);
+  }, [children]);
 
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
@@ -118,7 +103,7 @@ function Swiper(props) {
 
   const params = {
     modules: [Pagination, Navigation, Autoplay, Zoom],
-    containerClass: cls(innerContainer, classNames.container),
+    containerClass: cls(innerContainer, classNames.container, { [zoomFix]: zoom }),
     autoplay: autoPlay ? {
       delay: interval,
     } : false,

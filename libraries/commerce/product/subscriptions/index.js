@@ -14,6 +14,7 @@ import fetchProductMedia from '../actions/fetchProductMedia';
 import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
+  galleryWillEnter$,
   productReceived$,
   cachedProductReceived$,
   productRelationsReceived$,
@@ -47,6 +48,11 @@ function product(subscribe) {
     dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
     dispatch(fetchProductShipping(id));
     dispatch(fetchProductMedia(id));
+  });
+
+  subscribe(galleryWillEnter$, ({ action, dispatch }) => {
+    const { productId } = action.route.params;
+    dispatch(fetchProductImages(hex2bin(productId), productImageFormats.getAllUniqueFormats()));
   });
 
   subscribe(processProduct$, ({ action, dispatch }) => {

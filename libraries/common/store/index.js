@@ -7,6 +7,7 @@ import benchmarkController from '@shopgate/pwa-benchmark';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
 import appConfig, { themeName, shopNumber } from '../helpers/config';
+import makeRootReducer from '../reducers';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -49,7 +50,7 @@ export function configureStore(reducers, subscribers) {
   }
 
   const store = createStore(
-    reducers,
+    makeRootReducer(reducers),
     getInitialState(),
     composeWithDevTools(
       applyMiddleware(...[
