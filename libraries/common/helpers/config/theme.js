@@ -5,7 +5,7 @@ import { themeConfig } from './mock';
  * @type {Object}
  */
 const defaultConfig = {
-  font: {},
+  typography: {},
   colors: {},
   variables: {},
 };
@@ -33,7 +33,7 @@ export function getThemeConfig(appConfig) {
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
   return {
-    font: theme.font,
+    typography: theme.typography,
     colors: {
       ...theme.colors,
       ...colors,
