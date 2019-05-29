@@ -4,7 +4,7 @@ import defaultsDeep from 'lodash/defaultsDeep';
 import { css } from 'glamor';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { useConfig, useWidgetConfig } from '../../../core';
+import { isBeta, useConfig, useWidgetConfig } from '../../../core';
 import Swatch from '../Swatch';
 import connect from './connector';
 
@@ -29,6 +29,10 @@ const widgetId = '@shopgate/engage/product/Swatches';
  * @returns {JSX}
  */
 const Swatches = ({ productId, characteristics, widgetPath }) => {
+  if (!isBeta()) {
+    return null;
+  }
+
   const { settings = {}, styles = {} } = useWidgetConfig(widgetId, widgetPath);
 
   // override default settings with configured widget settings

@@ -28,6 +28,9 @@ export default {
         },
         accessExpired: false,
       },
+      '@shopgate/engage/product/Swatches': {
+        maxCount: 10,
+      },
     },
     pages: [
       {
@@ -55,8 +58,8 @@ export default {
                   borderColor: undefined,
                 },
               },
-              elementWidth: '1.0rem',
-              elementHeight: '1.0rem',
+              itemWidth: '1.0rem',
+              itemHeight: '1.0rem',
             },
             styles: {
               swatch: {
@@ -68,7 +71,7 @@ export default {
                 alignItems: 'flex-start',
                 alignContent: 'flex-start',
               },
-              element: {
+              item: {
                 flexGrow: 0,
                 flexShrink: 0,
                 flexBasis: 'auto',
@@ -86,9 +89,7 @@ export default {
           {
             name: 'ShopgateProductSwatches',
             id: '@shopgate/engage/product/Swatches',
-            settings: {
-              maxCount: 10,
-            },
+            settings: {},
             styles: {
               container: {
                 marginTop: '0.4rem',

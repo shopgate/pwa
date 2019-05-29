@@ -56,6 +56,6 @@ export function makeGetProductEffectivityDates() {
 export function makeGetProductCharacteristics() {
   return createSelector(
     getProductDataById,
-    product => (!product.characteristics ? [] : product.characteristics)
+    product => ((!product || !product.characteristics) ? null : product.characteristics)
   );
 }

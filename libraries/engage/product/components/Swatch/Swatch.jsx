@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { css } from 'glamor';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { useConfig, useWidgetConfig } from '../../../core';
-import Element from './Element';
+import { isBeta, useConfig, useWidgetConfig } from '../../../core';
+import SwatchColor from './SwatchColor';
+import SwatchTexture from './SwatchTexture';
 
 const { colors = {} } = useConfig();
 
@@ -19,8 +20,8 @@ const widgetDefaults = {
         borderColor: colors.shade4,
       },
     },
-    elementWidth: '1.5rem',
-    elementHeight: '1.5rem',
+    itemWidth: '1.5rem',
+    itemHeight: '1.5rem',
   },
   styles: {
     swatch: {
@@ -32,7 +33,7 @@ const widgetDefaults = {
       alignItems: 'flex-start',
       alignContent: 'flex-start',
     },
-    element: {
+    item: {
       flexGrow: 0,
       flexShrink: 0,
       flexBasis: 'auto',
@@ -56,32 +57,56 @@ const widgetId = '@shopgate/engage/product/Swatch';
  * @returns {JSX}
  */
 const Swatch = ({ testId, swatch, widgetPath }) => {
+  if (!isBeta()) {
+    return null;
+  }
+
   const { settings = {}, styles = {} } = useWidgetConfig(widgetId, widgetPath);
 
   // override default settings with configured widget settings
   const widgetSettings = defaultsDeep(settings, widgetDefaults.settings);
   const widgetStyles = defaultsDeep(styles, widgetDefaults.styles);
 
+  // Pre-compute class names
+  const itemClassName = css({
+    // Take settings to fill all sizes (overridable)
+    minWidth: widgetSettings.itemWidth,
+    width: widgetSettings.itemWidth,
+    maxWidth: widgetSettings.itemWidth,
+    minHeight: widgetSettings.itemHeight,
+    height: widgetSettings.itemHeight,
+    maxHeight: widgetSettings.itemHeight,
+    ...widgetStyles.item,
+  });
+  const selectionClassNames = widgetSettings.selectionStyles.keys().reduce((classes, key) => ({
+    ...classes,
+    [key]: css(widgetSettings.selectionStyles[key]),
+  }), {});
+
   return (
     <SurroundPortals portalName={PRODUCT_SWATCH} portalProps={{ swatch }}>
       <ul data-test-id={testId} className={css(widgetStyles.swatch).toString()}>
         {swatch.values.map(value => (
-          <Element
-            key={value.id}
-            testId={`${testId}.element.${value.id}`}
-            style={{
-              // Take settings to fill all sizes (overridable)
-              minWidth: widgetSettings.elementWidth,
-              width: widgetSettings.elementWidth,
-              maxWidth: widgetSettings.elementWidth,
-              minHeight: widgetSettings.elementHeight,
-              height: widgetSettings.elementHeight,
-              maxHeight: widgetSettings.elementHeight,
-              ...widgetStyles.element,
-            }}
-            field={value.swatch}
-            selectionStyles={widgetSettings.selectionStyles}
-          />
+          <Fragment key={value.id}>
+            { !value.swatch.imageUrl && value.swatch.color && (
+              <SwatchColor
+                testId={`${testId}.item.${value.id}`}
+                className={
+                  `${itemClassName.toString()} ${selectionClassNames.unselected.toString()}`
+                }
+                color={value.swatch}
+              />
+            ) }
+            { value.swatch.imageUrl && !value.swatch.color && (
+              <SwatchTexture
+                testId={`${testId}.item.${value.id}`}
+                className={
+                  `${itemClassName.toString()} ${selectionClassNames.unselected.toString()}`
+                }
+                imageUrl={value.swatch.imageUrl}
+              />
+            ) }
+          </Fragment>
         ))}
       </ul>
     </SurroundPortals>
@@ -96,7 +121,11 @@ Swatch.propTypes = {
     values: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string,
       label: PropTypes.string.isRequired,
-      swatch: PropTypes.shape().isRequired,
+      swatch: PropTypes.shape({
+        // Contains only imageUrl or color, never both
+        imageUrl: PropTypes.string,
+        color: PropTypes.string,
+      }).isRequired,
     })).isRequired,
   }).isRequired,
   testId: PropTypes.string.isRequired,
