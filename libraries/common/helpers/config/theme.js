@@ -5,7 +5,7 @@ import { themeConfig } from './mock';
  * @type {Object}
  */
 const defaultConfig = {
-  font: {},
+  typography: {},
   colors: {},
   variables: {},
 };
