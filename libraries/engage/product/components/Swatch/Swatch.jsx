@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import defaultsDeep from 'lodash/defaultsDeep';
+import isEqual from 'lodash/isEqual';
 import { css } from 'glamor';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
 import { isBeta, useConfig, useWidgetConfig } from '../../../core';
-import SwatchColor from './SwatchColor';
-import SwatchTexture from './SwatchTexture';
+import { SwatchColor } from './SwatchColor';
+import { SwatchTexture } from './SwatchTexture';
 
 const { colors = {} } = useConfig();
 
@@ -56,7 +57,12 @@ const widgetId = '@shopgate/engage/product/Swatch';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Swatch = ({ testId, swatch, widgetPath }) => {
+export const Swatch = memo(({
+  testId,
+  maxItemCount,
+  swatch,
+  widgetPath,
+}) => {
   if (!isBeta()) {
     return null;
   }
@@ -91,31 +97,36 @@ const Swatch = ({ testId, swatch, widgetPath }) => {
   return (
     <SurroundPortals portalName={PRODUCT_SWATCH} portalProps={{ swatch }}>
       <ul data-test-id={testId} className={css(widgetStyles.swatch).toString()}>
-        {swatch.values.map(value => (
+        {swatch.values.map((value, i) => (
           <Fragment key={value.id}>
-            { !value.swatch.imageUrl && value.swatch.color && (
-              <SwatchColor
-                testId={`${testId}.item.${value.id}`}
-                className={`${itemClassName} ${selectionClassNames.unselected}`}
-                color={value.swatch.color}
-              />
-            ) }
-            { value.swatch.imageUrl && !value.swatch.color && (
-              <SwatchTexture
-                testId={`${testId}.item.${value.id}`}
-                className={`${itemClassName} ${selectionClassNames.unselected}`}
-                imageUrl={value.swatch.imageUrl}
-              />
+            { maxItemCount !== null && maxItemCount > i && (
+              <Fragment>
+                { !value.swatch.imageUrl && value.swatch.color && (
+                  <SwatchColor
+                    testId={`${testId}.item.${value.id}`}
+                    className={`${itemClassName} ${selectionClassNames.unselected}`}
+                    color={value.swatch.color}
+                  />
+                ) }
+                { value.swatch.imageUrl && !value.swatch.color && (
+                  <SwatchTexture
+                    testId={`${testId}.item.${value.id}`}
+                    className={`${itemClassName} ${selectionClassNames.unselected}`}
+                    imageUrl={value.swatch.imageUrl}
+                  />
+                ) }
+              </Fragment>
             ) }
           </Fragment>
         ))}
       </ul>
     </SurroundPortals>
   );
-};
+}, isEqual);
 
 Swatch.propTypes = {
   testId: PropTypes.string.isRequired,
+  maxItemCount: PropTypes.number,
   swatch: PropTypes.shape({
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -137,8 +148,7 @@ Swatch.propTypes = {
 };
 
 Swatch.defaultProps = {
+  maxItemCount: null,
   swatch: null,
   widgetPath: undefined,
 };
-
-export default Swatch;

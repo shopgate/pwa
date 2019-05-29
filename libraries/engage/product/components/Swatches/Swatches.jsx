@@ -1,21 +1,23 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { css } from 'glamor';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
 import { isBeta, useConfig, useWidgetConfig } from '../../../core';
-import Swatch from '../Swatch';
+import { Swatch } from '../Swatch';
 import connect from './connector';
 
 const { typography = {} } = useConfig();
 
 const widgetDefaults = {
   settings: {
-    maxCount: 10,
+    // Filters out all swatches which are not in the list, no filter = [] => show all
+    maxItemCount: 10,
+    filter: [],
   },
   styles: {
-    container: {
+    swatches: {
       lineHeight: typography.lineHeight,
     },
   },
@@ -28,7 +30,7 @@ const widgetId = '@shopgate/engage/product/Swatches';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Swatches = ({ productId, characteristics, widgetPath }) => {
+export const Swatches = connect(({ productId, characteristics, widgetPath }) => {
   if (!isBeta()) {
     return null;
   }
@@ -46,21 +48,28 @@ const Swatches = ({ productId, characteristics, widgetPath }) => {
   const testId = `productSwatches.${productId}`;
   return (
     <SurroundPortals portalName={PRODUCT_SWATCHES} portalProps={{ characteristics }}>
-      { widgetSettings.maxCount > 0 && (
-        <div data-test-id={testId} className={css(widgetStyles.container).toString()}>
-          {characteristics.filter(c => c.swatch === true).map((swatch, i) => (
-            <Fragment key={`${productId}.${swatch.id}`}>
-              {widgetSettings.maxCount > i && <Swatch
-                testId={`${testId}.swatch.${swatch.id}`}
-                swatch={swatch}
-              />}
-            </Fragment>
+      { widgetSettings.maxItemCount > 0 && (
+        <div data-test-id={testId} className={css(widgetStyles.swatches).toString()}>
+          {characteristics.filter(c => c.swatch === true).filter((c) => {
+            if (widgetSettings.filter.length <= 0) {
+              return true;
+            }
+
+            // Check if current id is whitelisted by settings
+            return !!widgetSettings.filter.find(id => id === c.id);
+          }).map(swatch => (
+            <Swatch
+              key={`${productId}.${swatch.id}`}
+              testId={`${testId}.swatch.${swatch.id}`}
+              swatch={swatch}
+              maxItemCount={widgetSettings.maxItemCount}
+            />
           ))}
         </div>
       )}
     </SurroundPortals>
   );
-};
+});
 
 Swatches.propTypes = {
   productId: PropTypes.string.isRequired,
@@ -75,5 +84,3 @@ Swatches.defaultProps = {
   characteristics: null,
   widgetPath: undefined,
 };
-
-export default connect(Swatches);

@@ -1,1 +1,1 @@
-export default from './Swatches';
+export { Swatches } from './Swatches';

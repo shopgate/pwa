@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const SwatchTexture = ({
+export const SwatchTexture = memo(({
   testId,
   imageUrl,
   className,
@@ -17,7 +17,7 @@ const SwatchTexture = ({
     className={className}
     style={{ backgroundImage: `url(${imageUrl})` }}
   />
-);
+));
 
 SwatchTexture.propTypes = {
   className: PropTypes.oneOfType([
@@ -29,5 +29,3 @@ SwatchTexture.propTypes = {
 };
 
 SwatchTexture.defaultProps = {};
-
-export default memo(SwatchTexture);

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const SwatchColor = ({
+export const SwatchColor = memo(({
   testId,
   color,
   className,
@@ -17,7 +17,7 @@ const SwatchColor = ({
     className={className}
     style={{ backgroundColor: color }}
   />
-);
+));
 
 SwatchColor.propTypes = {
   className: PropTypes.oneOfType([
@@ -29,5 +29,3 @@ SwatchColor.propTypes = {
 };
 
 SwatchColor.defaultProps = {};
-
-export default memo(SwatchColor);
