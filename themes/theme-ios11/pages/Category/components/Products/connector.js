@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { isBeta } from '@shopgate/engage/core';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import getProducts from './actions/getProducts';
 
@@ -9,7 +10,10 @@ import getProducts from './actions/getProducts';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  ...getProductsResult(state, props),
+  ...getProductsResult(state, {
+    ...props,
+    characteristics: isBeta(),
+  }),
 });
 
 /**
@@ -18,7 +22,8 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: (categoryId, sort, offset) => dispatch(getProducts(categoryId, sort, offset)),
+  getProducts: (categoryId, sort, offset, characteristics) =>
+    dispatch(getProducts(categoryId, sort, offset, characteristics)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

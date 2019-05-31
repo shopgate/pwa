@@ -28,6 +28,10 @@ export default {
         },
         accessExpired: false,
       },
+      '@shopgate/engage/product/Swatches': {
+        maxItemCount: 10,
+        filter: [],
+      },
     },
     pages: [
       {
@@ -42,6 +46,41 @@ export default {
           {
             name: 'ShopgateProductOrderQuantityHint',
             id: '@shopgate/engage/product/OrderQuantityHint',
+          },
+          {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
+            settings: {
+              selectionStyles: {
+                selected: {
+                  borderColor: undefined,
+                },
+                unselected: {
+                  borderColor: undefined,
+                },
+              },
+              itemWidth: '0.8rem',
+              itemHeight: '0.8rem',
+            },
+            styles: {
+              swatch: {
+                marginBottom: '0.3rem',
+              },
+              item: {
+                marginRight: '0.2rem',
+                marginBottom: '0.2rem',
+              },
+            },
+          },
+          {
+            name: 'ShopgateProductSwatches',
+            id: '@shopgate/engage/product/Swatches',
+            settings: {},
+            styles: {
+              swatches: {
+                marginTop: '0.4rem',
+              },
+            },
           },
         ],
       },

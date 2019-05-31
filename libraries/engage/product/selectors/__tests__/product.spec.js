@@ -2,13 +2,19 @@ import {
   getProductPropertiesState,
   getProductId,
   getProduct,
+  getProductDataById,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { makeGetProductProperties, makeGetProductEffectivityDates } from '../product';
+import {
+  makeGetProductProperties,
+  makeGetProductEffectivityDates,
+  makeGetProductCharacteristics,
+} from '../product';
 
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProduct: jest.fn(),
   getProductPropertiesState: jest.fn(),
   getProductId: jest.fn(),
+  getProductDataById: jest.fn(),
 }));
 
 const mockState = {
@@ -19,8 +25,16 @@ const mockState = {
     }],
     startDate: '2019-04-01T10:00:00.000Z',
     endDate: '2019-04-10T10:00:00.000Z',
+    characteristics: [{
+      id: '01-color',
+      label: 'Color',
+      // more properties available but of no interest for tests
+    }],
   },
-  456: { properties: null },
+  456: {
+    properties: null,
+    characteristics: null,
+  },
 };
 
 /**
@@ -84,6 +98,34 @@ describe('engage > product > selectors', () => {
         startDate: '2019-04-01T10:00:00.000Z',
         endDate: '2019-04-10T10:00:00.000Z',
       });
+    });
+  });
+
+  describe('getProductCharacteristics()', () => {
+    let getProductCharacteristics;
+    beforeEach(() => {
+      getProductCharacteristics = wrapMemoizedSelector(makeGetProductCharacteristics());
+    });
+
+    it('should return null if a product state can not be found', () => {
+      getProductDataById.mockReturnValueOnce(null);
+      const result = getProductCharacteristics(mockState, { productId: '012' });
+      expect(result).toEqual(null);
+    });
+
+    it('should return null of no characteristics are available for the product', () => {
+      getProductDataById.mockReturnValueOnce(mockState[456]);
+      const result = getProductCharacteristics(mockState, { productId: '456' });
+      expect(result).toEqual(null);
+    });
+
+    it('should return all characteristics if available for the product', () => {
+      getProductDataById.mockReturnValueOnce(mockState[123]);
+      const result = getProductCharacteristics(mockState, { productId: '123' });
+      expect(result).toEqual([{
+        id: '01-color',
+        label: 'Color',
+      }]);
     });
   });
 });
