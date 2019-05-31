@@ -1,5 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
+import classNames from 'classnames';
+import { item, itemTexture } from './style';
 
 /**
  * The swatch-element component.
@@ -7,25 +10,32 @@ import PropTypes from 'prop-types';
  * @returns {JSX}
  */
 export const SwatchTexture = memo(({
-  testId,
-  imageUrl,
-  className,
+  testId, imageUrl, className, onClick, valueId,
 }) => (
   <li
+    data-value-id={valueId}
     data-test-id={testId}
-    // Fix background image to always show a texture
-    className={className}
+    aria-hidden
+    onClick={onClick}
+    className={classNames(item, itemTexture, className)}
     style={{ backgroundImage: `url(${imageUrl})` }}
   />
 ));
 
 SwatchTexture.propTypes = {
+  imageUrl: PropTypes.string.isRequired,
+  testId: PropTypes.string.isRequired,
+  valueId: PropTypes.string.isRequired,
   className: PropTypes.oneOfType([
     PropTypes.shape(),
     PropTypes.string,
-  ]).isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  testId: PropTypes.string.isRequired,
+  ]),
+  onClick: PropTypes.func,
+};
+
+SwatchTexture.defaultProps = {
+  className: null,
+  onClick: noop,
 };
 
 SwatchTexture.defaultProps = {};

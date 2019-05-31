@@ -1,54 +1,15 @@
-import React, { Fragment, memo } from 'react';
+import React, { Fragment, memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import defaultsDeep from 'lodash/defaultsDeep';
 import isEqual from 'lodash/isEqual';
+import noop from 'lodash/noop';
+import classNames from 'classnames';
 import { css } from 'glamor';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { isBeta, useConfig, useWidgetConfig } from '../../../core';
+import { isBeta, useWidgetConfig } from '../../../core';
 import { SwatchColor } from './SwatchColor';
 import { SwatchTexture } from './SwatchTexture';
-
-const { colors = {} } = useConfig();
-
-const widgetDefaults = {
-  settings: {
-    selectionStyles: {
-      selected: {
-        borderColor: colors.accent,
-      },
-      unselected: {
-        borderColor: colors.shade4,
-      },
-    },
-    itemWidth: '1.5rem',
-    itemHeight: '1.5rem',
-  },
-  styles: {
-    swatch: {
-      marginBottom: '0.4rem',
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-      alignContent: 'flex-start',
-    },
-    item: {
-      flexGrow: 0,
-      flexShrink: 0,
-      flexBasis: 'auto',
-      alignSelf: 'auto',
-      marginRight: '0.3rem',
-      marginBottom: '0.3rem',
-      pointerEvents: 'none',
-      borderRadius: '50%',
-      backgroundSize: 'cover',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-    },
-  },
-};
+import { swatchGrid, itemSelected } from './style';
 
 const widgetId = '@shopgate/engage/product/Swatch';
 
@@ -58,10 +19,7 @@ const widgetId = '@shopgate/engage/product/Swatch';
  * @returns {JSX}
  */
 export const Swatch = memo(({
-  testId,
-  maxItemCount,
-  swatch,
-  widgetPath,
+  testId, maxItemCount, swatch, widgetPath, onClick,
 }) => {
   if (!isBeta()) {
     return null;
@@ -72,47 +30,54 @@ export const Swatch = memo(({
     return null;
   }
 
-  const { settings = {}, styles = {} } = useWidgetConfig(widgetId, widgetPath);
+  const { styles } = useWidgetConfig(widgetId, widgetPath);
 
-  // override default settings with configured widget settings
-  const widgetSettings = defaultsDeep(settings, widgetDefaults.settings);
-  const widgetStyles = defaultsDeep(styles, widgetDefaults.styles);
+  const swatchClass = styles && styles.swatch ? css(styles.swatch).toString() : null;
+  const itemClass = styles && styles.item ? css(styles.item).toString() : null;
+  const selectedClass = styles && styles.itemSelected ? css(styles.itemSelected).toString() : null;
 
-  // Pre-compute class names
-  const itemClassName = css({
-    // Take settings to fill all sizes (overridable)
-    minWidth: widgetSettings.itemWidth,
-    width: widgetSettings.itemWidth,
-    maxWidth: widgetSettings.itemWidth,
-    minHeight: widgetSettings.itemHeight,
-    height: widgetSettings.itemHeight,
-    maxHeight: widgetSettings.itemHeight,
-    ...widgetStyles.item,
-  }).toString();
-  const selectionClassNames = Object.keys(widgetSettings.selectionStyles).reduce((result, key) => ({
-    ...result,
-    [key]: css(widgetSettings.selectionStyles[key]).toString(),
-  }), {});
+  /** Click handler */
+  const handleClick = useCallback((event) => {
+    const { target: { dataset = {} } } = event || {};
+    onClick(dataset.valueId);
+  });
 
   return (
     <SurroundPortals portalName={PRODUCT_SWATCH} portalProps={{ swatch }}>
-      <ul data-test-id={testId} className={css(widgetStyles.swatch).toString()}>
+      <ul
+        data-test-id={testId}
+        className={classNames(swatchGrid, {
+          [swatchClass]: !!swatchClass,
+        })}
+      >
         {swatch.values.map((value, i) => (
           <Fragment key={value.id}>
-            { maxItemCount !== null && maxItemCount > i && (
+            { (maxItemCount === null || maxItemCount > i) && (
               <Fragment>
-                { !value.swatch.imageUrl && value.swatch.color && (
+                {value.swatch.color && (
                   <SwatchColor
+                    valueId={value.id}
                     testId={`${testId}.item.${value.id}`}
-                    className={`${itemClassName} ${selectionClassNames.unselected}`}
                     color={value.swatch.color}
+                    onClick={handleClick}
+                    className={classNames({
+                      [itemClass]: !!itemClass,
+                      [itemSelected]: !!value.selected && !selectedClass,
+                      [selectedClass]: !!value.selected && selectedClass,
+                    })}
                   />
                 ) }
-                { value.swatch.imageUrl && !value.swatch.color && (
+                {value.swatch.imageUrl && (
                   <SwatchTexture
+                    valueId={value.id}
                     testId={`${testId}.item.${value.id}`}
-                    className={`${itemClassName} ${selectionClassNames.unselected}`}
                     imageUrl={value.swatch.imageUrl}
+                    onClick={handleClick}
+                    className={classNames({
+                      [itemClass]: !!itemClass,
+                      [itemSelected]: !!value.selected && !selectedClass,
+                      [selectedClass]: !!value.selected && selectedClass,
+                    })}
                   />
                 ) }
               </Fragment>
@@ -127,10 +92,10 @@ export const Swatch = memo(({
 Swatch.propTypes = {
   testId: PropTypes.string.isRequired,
   maxItemCount: PropTypes.number,
+  onClick: PropTypes.func,
   swatch: PropTypes.shape({
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    swatch: PropTypes.bool,
     values: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string,
       label: PropTypes.string.isRequired,
@@ -151,4 +116,5 @@ Swatch.defaultProps = {
   maxItemCount: null,
   swatch: null,
   widgetPath: undefined,
+  onClick: noop,
 };

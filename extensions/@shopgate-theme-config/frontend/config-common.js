@@ -50,37 +50,14 @@ export default {
           {
             name: 'ShopgateProductSwatch',
             id: '@shopgate/engage/product/Swatch',
-            settings: {
-              selectionStyles: {
-                selected: {
-                  borderColor: undefined,
-                },
-                unselected: {
-                  borderColor: undefined,
-                },
-              },
-              itemWidth: '0.8rem',
-              itemHeight: '0.8rem',
-            },
             styles: {
-              swatch: {
-                marginBottom: '0.3rem',
-              },
-              item: {
-                marginRight: '0.2rem',
-                marginBottom: '0.2rem',
-              },
+              swatch: undefined,
+              item: undefined,
             },
           },
           {
             name: 'ShopgateProductSwatches',
             id: '@shopgate/engage/product/Swatches',
-            settings: {},
-            styles: {
-              swatches: {
-                marginTop: '0.4rem',
-              },
-            },
           },
         ],
       },
@@ -142,6 +119,25 @@ export default {
           {
             name: 'ShopgateProductEffectivityDates',
             id: '@shopgate/engage/product/EffectivityDates',
+          },
+          {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
+            styles: {
+              swatch: {
+                gridTemplateColumns: 'repeat(auto-fill, minmax(48px, 1fr))',
+                gridGap: '12px 8px',
+              },
+              item: {
+                width: '48px',
+                height: '48px',
+                minWidth: '48px',
+                maxWidth: '48px',
+                minHeight: '48px',
+                maxHeight: '48px',
+              },
+              itemSelected: undefined,
+            },
           },
         ],
       },

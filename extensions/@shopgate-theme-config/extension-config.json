@@ -54,6 +54,12 @@
       ],
       "input": [{"key": "products"}],
       "output": [{"key": "products"}]
+    },
+    {
+      "path": "extension/mockSwatchesVariants.js",
+      "hooks": ["shopgate.catalog.getProductVariants.v1:after"],
+      "input": [{"key": "characteristics"}],
+      "output": [{"key": "characteristics"}]
     }
   ]
 }
