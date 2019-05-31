@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 import Sheet from './components/Sheet';
 import styles from './style';
-import transition from './transition';
+import transition from '../transition';
 
 /**
  * A single characteristic.
