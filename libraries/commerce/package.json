@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common-commerce",
-  "version": "6.1.1",
+  "version": "6.1.3",
   "description": "Commerce library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -19,10 +19,10 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "6.1.1",
-    "@shopgate/pwa-core": "6.1.1",
-    "@shopgate/pwa-unit-test": "6.1.1",
-    "@shopgate/tracking-core": "6.1.1",
+    "@shopgate/pwa-common": "6.1.3",
+    "@shopgate/pwa-core": "6.1.3",
+    "@shopgate/pwa-unit-test": "6.1.3",
+    "@shopgate/tracking-core": "6.1.3",
     "lodash": "^4.17.4",
     "react": "~16.6.0",
     "react-dom": "~16.6.0",
