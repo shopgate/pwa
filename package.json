@@ -9,6 +9,22 @@
     "themes/*",
     "utils/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shopgate/pwa.git"
+  },
+  "changelog": {
+    "cacheDir": ".changelog",
+    "labels": {
+      "enhancement": ":rocket: Enhancement",
+      "bug": ":bug: Bug Fix",
+      "feature": ":rocket: New Feature",
+      "breaking": ":boom: Breaking Change",
+      "polish": ":nail_care: Polish",
+      "internal": ":house: Internal",
+      "docs": ":memo: Documentation"
+    }
+  },
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
     "add-remotes": "node ./scripts/add-remotes.js",
@@ -48,7 +64,7 @@
     "eslint-plugin-standard": "^3.1.0",
     "husky": "^1.0.0-rc.13",
     "lerna": "^2.9.0",
-    "lerna-changelog": "^0.7.0",
+    "lerna-changelog": "^0.8.2",
     "lint-staged": "^7.2.2",
     "uver": "^1.1.0",
     "yargs": "^11.0.0"
@@ -68,6 +84,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "compare-versions": "^3.4.0",
     "react-hot-loader": "4.3.12",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0"
