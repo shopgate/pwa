@@ -1,6 +1,6 @@
 import { css } from 'glamor';
 
 export default css({
-  height: 6,
+  height: 24,
   width: 26,
 }).toString();
