@@ -1,6 +1,6 @@
 # Changelog
 
-## [v6.5.0](https://github.com/shopgate/pwa/compare/...v6.5.0) (2019-06-03)
+## [v6.5.0](https://github.com/shopgate/pwa/compare/v6.4.3...v6.5.0) (2019-06-03)
 
 #### :rocket: Enhancement
 * [#641](https://github.com/shopgate/pwa/pull/641) Improved extensibility of the scanner ([@fkloes](https://github.com/fkloes))
