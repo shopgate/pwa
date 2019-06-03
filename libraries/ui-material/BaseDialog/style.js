@@ -20,7 +20,7 @@ const content = css({
 
 const title = css({
   fontSize: '1.25em',
-  lineHeight: themeConfig.font.lineHeight,
+  lineHeight: themeConfig.typography.lineHeight,
   fontWeight: 500,
   paddingBottom: themeConfig.variables.gap.small,
   marginTop: '-.25em',

@@ -5,7 +5,7 @@ import { themeConfig } from './mock';
  * @type {Object}
  */
 const defaultConfig = {
-  font: {},
+  typography: {},
   colors: {},
   variables: {},
 };
@@ -34,7 +34,7 @@ export function buildThemeConfig(appConfig) {
 
   return {
     ...theme,
-    font: theme.typography,
+    typography: theme.typography,
     colors: {
       ...theme.colors,
       ...colors,
