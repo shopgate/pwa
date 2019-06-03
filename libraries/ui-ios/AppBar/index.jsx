@@ -64,8 +64,14 @@ class AppBar extends PureComponent {
       below, center, left, right, classes,
     } = this.props;
     const sectionClasses = classnames(styles.outer, classes.outer);
+
     return (
-      <section className={sectionClasses} data-test-id="Navigator" style={this.style}>
+      <section
+        className={sectionClasses}
+        data-test-id="Navigator"
+        style={this.style}
+        aria-hidden
+      >
         <div className={classnames(styles.inner, classes.inner)}>
           <Left elements={left} />
           <Center elements={center} />
