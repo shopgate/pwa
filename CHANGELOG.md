@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.4.3](https://github.com/shopgate/pwa/compare/v6.4.2...v6.4.3) (2019-05-16)
+
+#### :bug: Bug Fix
+* Changed vimeo video player script to be loaded asynchronously. ([@devbucket](https://github.com/devbucket))
+
+
 ## [v6.4.2](https://github.com/shopgate/pwa/compare/v6.4.1...v6.4.2) (2019-05-16)
 
 #### :bug: Bug Fix
