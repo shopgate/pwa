@@ -88,11 +88,12 @@ export const receivedVisibleProduct$ = productReceived$.merge(cachedProductRecei
 
 /** Dispatched when ERROR_PRODUCT ENOTFOUND of visible product is received */
 export const visibleProductNotFound$ = errorProductNotFound$
-  .withLatestFrom(receivedVisibleProduct$)
-  .filter(([errorAction, productAction]) => (
-    errorAction.action.productId === productAction.action.productData.id
+  .withLatestFrom(routeWillEnter$)
+  .filter(([errorAction, routeAction]) => (
+    routeAction.action.route.pattern === ITEM_PATTERN
+      && errorAction.action.productId === hex2bin(routeAction.action.route.params.productId)
   ))
-  .map(([, productAction]) => productAction);
+  .map(([errorAction]) => errorAction);
 
 export const variantDidChange$ = variantWillUpdate$
   // Take care that the stream only emits when underlying streams emit within the correct order.
