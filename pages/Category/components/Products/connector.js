@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { buildFetchCategoryProductsParams } from '@shopgate/engage/product';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import getProducts from './actions/getProducts';
 
@@ -9,7 +10,10 @@ import getProducts from './actions/getProducts';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  ...getProductsResult(state, props),
+  ...getProductsResult(state, {
+    ...props,
+    ...{ params: buildFetchCategoryProductsParams().params },
+  }),
 });
 
 /**
