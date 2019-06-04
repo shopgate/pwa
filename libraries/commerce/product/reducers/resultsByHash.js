@@ -69,14 +69,23 @@ export default function resultsByHash(state = {}, action) {
       }
       return state;
 
-    case EXPIRE_PRODUCT_BY_ID:
+    case EXPIRE_PRODUCT_BY_ID: {
+      const productIds = [].concat(action.productId);
       return Object.keys(state).reduce((currentState, hash) => {
-        if (currentState[hash].products && currentState[hash].products.includes(action.productId)) {
+        if (currentState[hash].products
+          && productIds.some(id => currentState[hash].products.includes(id))) {
           // eslint-disable-next-line no-param-reassign
           currentState[hash].expires = 0;
+
+          if (action.complete) {
+            // eslint-disable-next-line no-param-reassign
+            currentState[hash].products = currentState[hash].products
+              .filter(id => !productIds.includes(id));
+          }
         }
         return currentState;
       }, { ...state });
+    }
 
     case ERROR_PRODUCTS:
       return {

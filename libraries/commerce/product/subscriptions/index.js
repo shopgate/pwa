@@ -1,6 +1,6 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { historyPop, historyPush } from '@shopgate/engage/core';
+import { getSettings, historyPop, historyPush, routeWillEnter$, routeWillLeave$ } from '@shopgate/engage/core';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search';
 import fetchProduct from '../actions/fetchProduct';
@@ -27,7 +27,7 @@ import fetchProductsById from '../actions/fetchProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
 import { checkoutSucceeded$ } from '../../checkout/streams';
 import expireProductById from '../action-creators/expireProductById';
-import { NOT_AVAILABLE_EFFECTIVITY_DATES } from '../constants';
+import { ITEM_PATTERN, NOT_AVAILABLE_EFFECTIVITY_DATES } from '../constants';
 import { getProductName } from '../selectors/product';
 
 /**
@@ -125,24 +125,44 @@ function product(subscribe) {
   const productNotAvailableEffDates$ = productNotAvailable$
     .filter(({ action }) => action.reason === NOT_AVAILABLE_EFFECTIVITY_DATES);
 
-  /** Show toast with search action */
-  subscribe(productNotAvailableEffDates$, ({
+  /** PDP expired effectivity dates */
+  const productNotAvailableEffDatesPDP$ = productNotAvailableEffDates$
+    .withLatestFrom(routeWillEnter$)
+    .filter(([notAvailable, willEnter]) => (
+      willEnter.action.route.pattern === ITEM_PATTERN
+      && notAvailable.action.productId === willEnter.action.route.state.productId
+    )).map(([notAvailable]) => notAvailable);
+
+  subscribe(productNotAvailableEffDatesPDP$, ({
     action, getState, dispatch, events,
   }) => {
-    const { productId } = action;
-    dispatch(expireProductById(productId));
-    dispatch(historyPop());
-    const name = getProductName(getState(), { productId });
-    events.emit(ToastProvider.ADD, {
-      id: 'product.available.not_search_similar',
-      message: 'product.available.not_search_similar',
-      messageParams: {
-        name,
-      },
-      action: () => dispatch(historyPush({
-        pathname: getSearchRoute(name),
-      })),
-    });
+    const { accessExpired } = getSettings('@shopgate/engage/product/EffectivityDates') || {};
+    if (accessExpired === false) {
+      const { productId } = action;
+      dispatch(historyPop());
+      const name = getProductName(getState(), { productId });
+      events.emit(ToastProvider.ADD, {
+        id: 'product.available.not_search_similar',
+        message: 'product.available.not_search_similar',
+        messageParams: {
+          name,
+        },
+        action: () => dispatch(historyPush({
+          pathname: getSearchRoute(name),
+        })),
+      });
+    }
+  });
+
+  /** Expired effectivity dates products after PLP leave */
+  const productNotAvailableEffDatesPLP$ = productNotAvailableEffDates$
+    .buffer(routeWillLeave$)
+    .filter(buffered => buffered.length);
+
+  subscribe(productNotAvailableEffDatesPLP$, (buffered) => {
+    const [{ dispatch }] = buffered;
+    const productIds = buffered.map(params => params.action.productId);
+    dispatch(expireProductById(productIds, true));
   });
 }
 

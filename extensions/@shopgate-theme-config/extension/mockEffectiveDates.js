@@ -6,12 +6,22 @@
  */
 module.exports = async (context, { products = [] }) => ({
   products: products.map((product) => {
-    // eslint-disable-next-line no-param-reassign
-    product.startDate = new Date(new Date().getTime() + 10000).toISOString();
-    // eslint-disable-next-line no-param-reassign
-    product.endDate = new Date(new Date().getTime() + 20000).toISOString();
-    // eslint-disable-next-line no-param-reassign
-    product.stock.info = 'Available in 2-3 days';
-    return product;
+    if (Math.floor(Math.random() * 10) > 3) {
+      return product;
+    }
+
+    return {
+      ...product,
+      ...{
+        startDate: new Date(new Date().getTime() + 10000).toISOString(),
+        endDate: new Date(new Date().getTime() + 20000).toISOString(),
+        stock: {
+          ...product.stock,
+          ...{
+            info: 'Available in 2-3 days',
+          },
+        },
+      },
+    };
   }),
 });
