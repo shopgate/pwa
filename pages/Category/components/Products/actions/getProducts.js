@@ -1,3 +1,4 @@
+import { buildFetchCategoryProductsParams } from '@shopgate/engage/product';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 
@@ -15,6 +16,7 @@ const getProducts = (categoryId, sort, offset) => (dispatch, getState) => {
     sort,
     offset,
     filters,
+    ...buildFetchCategoryProductsParams(),
   }));
 };
 
