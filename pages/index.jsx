@@ -22,6 +22,7 @@ import {
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
@@ -61,7 +62,11 @@ const Pages = ({ store }) => (
                   <Route pattern={PAGE_PATTERN} component={routes.Page} />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                  <Route pattern={ITEM_PATTERN} component={routes.Product} />
+                  <Route
+                    pattern={ITEM_PATTERN}
+                    component={routes.Product}
+                    transform={transformItemRoute}
+                  />
                   <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
                   <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
                   <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
