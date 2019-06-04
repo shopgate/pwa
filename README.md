@@ -13,6 +13,7 @@
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshopgate%2Fpwa.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshopgate%2Fpwa?ref=badge_shield)
 
 </div>
 
@@ -44,3 +45,6 @@ native apps and mobile websites for the iPhone, iPad, Android smartphones and ta
 Shopgate's ENGAGE is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshopgate%2Fpwa.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshopgate%2Fpwa?ref=badge_large)
