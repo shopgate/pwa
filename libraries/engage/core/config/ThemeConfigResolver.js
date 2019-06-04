@@ -105,11 +105,23 @@ export class ThemeConfigResolver {
    * @returns {string}
    */
   processString(input) {
-    if (!input.startsWith(this.delimiter)) {
-      return input;
+    // Replace all variable references in the given string if any exist
+    let value = input;
+    const preRegex = new RegExp(`.*${
+      // escape delimiter
+      this.delimiter.replace('$', '\\$').replace('.', '\\.')
+    }`, 'g');
+    const postRegex = new RegExp(/[^a-zA-Z0-9_$.].*$/, 'g');
+    while (value.includes(this.delimiter)) {
+      // Get next reference
+      const path = value.replace(preRegex, '').replace(postRegex, '');
+
+      // replace reference (including its delimiter) with the actual value
+      value = value.replace(`${this.delimiter}${path}`, get(this.config, path));
     }
 
-    return get(this.config, input.replace(this.delimiter, ''));
+    console.log('replaced:', input, value);
+    return value;
   }
 
   /**
