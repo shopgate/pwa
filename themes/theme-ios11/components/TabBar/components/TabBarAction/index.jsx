@@ -25,7 +25,8 @@ const TabBarAction = (props) => {
       <Button
         className={className}
         onClick={props.onClick}
-        aria-hidden={props.hidden}
+        aria-selected={!props['aria-hidden'] && props.isHighlighted}
+        aria-hidden={props['aria-hidden']}
         tabIndex={props.tabIndex}
         role="tab"
       >
@@ -40,7 +41,7 @@ const TabBarAction = (props) => {
 };
 
 TabBarAction.propTypes = {
-  hidden: PropTypes.bool.isRequired,
+  'aria-hidden': PropTypes.bool.isRequired,
   label: PropTypes.node.isRequired,
   tabIndex: PropTypes.number.isRequired,
   children: PropTypes.node,

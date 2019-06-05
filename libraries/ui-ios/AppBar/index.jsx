@@ -70,7 +70,6 @@ class AppBar extends PureComponent {
         className={sectionClasses}
         data-test-id="Navigator"
         style={this.style}
-        aria-hidden
       >
         <div className={classnames(styles.inner, classes.inner)}>
           <Left elements={left} />

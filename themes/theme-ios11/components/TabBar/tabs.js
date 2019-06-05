@@ -11,31 +11,31 @@ const tabs = [
   {
     type: TAB_HOME,
     label: 'tab_bar.home',
-    hidden: true,
+    'aria-hidden': true,
     tabIndex: -1,
   },
   {
     type: TAB_BROWSE,
     label: 'tab_bar.browse',
-    hidden: false,
+    'aria-hidden': false,
     tabIndex: 0,
   },
   {
     type: TAB_CART,
     label: 'tab_bar.cart',
-    hidden: true,
+    'aria-hidden': true,
     tabIndex: -1,
   },
   {
     type: TAB_FAVORITES,
     label: 'tab_bar.favorites',
-    hidden: true,
+    'aria-hidden': true,
     tabIndex: -1,
   },
   {
     type: TAB_MORE,
     label: 'tab_bar.more',
-    hidden: true,
+    'aria-hidden': true,
     tabIndex: -1,
   },
 ];
