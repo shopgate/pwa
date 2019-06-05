@@ -8,7 +8,26 @@
       "path": "frontend/index.js"
     }
   ],
-  "configuration": {},
+  "configuration": {
+    "themeConfig": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "settings": {},
+        "typography": {},
+        "colors": {},
+        "variables": {},
+        "shadows": {},
+        "assets": {},
+        "pages": []
+      },
+      "params": {
+        "type": "json",
+        "label": "Theme Config",
+        "required": true
+      }
+    }
+  },
   "steps": [
     {
       "path": "extension/mockMapPrice.js",

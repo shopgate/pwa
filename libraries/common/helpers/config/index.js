@@ -82,11 +82,50 @@ assignObjectDeep(themeConfig, appConfig.theme);
 appConfig.theme = themeConfig;
 
 /**
+ * A comparator for array items as they occur on different levels within the default app config.
+ * It identifies items uniquely to avoid duplicates when merging configs.
+ * Items identified as equal are merged together by the caller. Non-equals are added to the result.
+ *
+ * @type {ArrayItemComparator} Callback implementation for "assignObjectDeep"
+ * @param {string} path Allows identification of the current elements to be compared
+ * @param {*} prev Item that already exists in the config.
+ * @param {*} next Item to be compared against.
+ * @returns {boolean}
+ */
+export const appConfigArrayItemComparator = (path, prev, next) => {
+  // Replaces object paths with array indices to a structure with easy comparisons
+  // E.g. converts "prop.subprop.15.arrayitem.3" to "prop.subprop.N.arrayitem.N"
+  const simplePath = path.replace(/\.[0-9]+/g, '.N');
+
+  // Simple types
+  if (typeof prev !== 'object') {
+    return prev === next;
+  }
+
+  // Identity of pages is defined by the page pattern
+  if (simplePath === 'theme.pages.N') {
+    return prev.pattern === next.pattern;
+  }
+
+  // Identity of widgets is defined by the widget id
+  if (simplePath === 'theme.pages.N.widgets.N') {
+    return prev.id === next.id;
+  }
+
+  // Assume everything else to be of different values (including sub-arrays)
+  // => Arrays within arrays not defined in the default config => never equal.
+  // => Custom defined array items must be handled using the given arrayComparator!
+  return false;
+};
+
+/**
  * Takes an object with app config values and safely injects it into the current app config.
  * @param {Object} newConfig Contains new config fields to inject into the existing destination.
+ * @param {ArrayItemComparator|null} [arrayComparator] Defines how to compare array items.
  */
-export function writeToConfig(newConfig) {
-  assignObjectDeep(appConfig, newConfig, true, false);
+export function writeToConfig(newConfig, arrayComparator = null) {
+  const comparator = arrayComparator || appConfigArrayItemComparator;
+  assignObjectDeep(appConfig, newConfig, true, comparator);
 }
 
 /**
