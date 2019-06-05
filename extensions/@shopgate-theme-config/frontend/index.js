@@ -3,7 +3,7 @@ import { themeName, writeToConfig } from '@shopgate/pwa-common/helpers/config';
 import configCommon from './config-common';
 import configGmd from './config-gmd';
 import configIos from './config-ios';
-import { themeConfig as nmaThemeConfig } from './config';
+import nmaConfig from './config';
 
 let config = configCommon;
 if (themeName.includes('ios')) {
@@ -12,9 +12,9 @@ if (themeName.includes('ios')) {
   config = defaultsDeep(configGmd, config);
 }
 
-// Apply NMA config
-config = defaultsDeep({ theme: nmaThemeConfig }, config);
-
 writeToConfig(config);
+
+// Apply NMA config (second write, because it safely merges pages and their subsequent widget list)
+writeToConfig({ theme: nmaConfig.theme });
 
 export default () => null;
