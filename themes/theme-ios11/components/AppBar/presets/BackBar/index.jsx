@@ -13,10 +13,12 @@ import connect from './connector';
 
 /**
  * @param {Object} props The component props.
+ * @param {Object} context The component context.
  * @returns {JSX}
  */
-function BackBar({ goBack, ...props }) {
-  const left = <AppBar.Icon icon={ArrowIcon} onClick={goBack} testId="backButton" />;
+function BackBar({ goBack, ...props }, context) {
+  const { __ } = context.i18n();
+  const left = <AppBar.Icon icon={ArrowIcon} onClick={goBack} ariaLabel={__('common.back')} testId="backButton" />;
 
   return (
     <Fragment>
@@ -31,6 +33,10 @@ function BackBar({ goBack, ...props }) {
 
 BackBar.propTypes = {
   goBack: PropTypes.func.isRequired,
+};
+
+BackBar.contextTypes = {
+  i18n: PropTypes.func,
 };
 
 export default connect(BackBar);

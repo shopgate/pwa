@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RatingStars /> should render as expected for 3.4 stars 1`] = `
+<span
+  aria-label="reviews.rating_stars"
+/>
+`;

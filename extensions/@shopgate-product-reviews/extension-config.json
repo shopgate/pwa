@@ -3,9 +3,15 @@
   "id": "@shopgate/product-reviews",
   "components": [
     {
-      "id": "RatingSatrs",
+      "id": "RatingStars",
       "path": "frontend/RatingStars/index.jsx",
       "target": "product-item.name.before",
+      "type": "portals"
+    },
+    {
+      "id": "RatingStarsAria",
+      "path": "frontend/RatingStarsAria/index.jsx",
+      "target": "product-item.name.after",
       "type": "portals"
     }
   ],

@@ -6,6 +6,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
   portalProps={null}
 >
   <div
+    aria-hidden={true}
     className="css-3hjqnz"
   >
     <Image
@@ -70,6 +71,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   portalProps={null}
 >
   <div
+    aria-hidden={true}
     className=""
   >
     <Image
@@ -205,6 +207,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   portalProps={null}
 >
   <div
+    aria-hidden={true}
     className="css-3hjqnz"
   >
     <Image

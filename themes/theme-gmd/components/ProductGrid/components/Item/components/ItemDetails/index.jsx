@@ -35,7 +35,7 @@ class ItemDetails extends PureComponent {
     }
 
     return (
-      <div className={styles.details}>
+      <div className={styles.details} tabIndex={-1} role="button">
         <ItemName display={display} productId={productId} name={name} />
 
         {/* This feature is currently in BETA testing.

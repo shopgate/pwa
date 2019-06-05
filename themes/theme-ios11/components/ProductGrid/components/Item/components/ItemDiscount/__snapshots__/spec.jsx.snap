@@ -2,6 +2,7 @@
 
 exports[`<ItemDiscount /> should render with discount 1`] = `
 <div
+  aria-hidden={true}
   className={
     Object {
       "data-css-1mq4e16": "",

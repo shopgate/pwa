@@ -154,7 +154,7 @@
     "button_add": "Escriba un comentario",
     "button_all": "Todos los {count} Comentarios",
     "author": "por {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}}",
+    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}} de {maxRate}",
     "review_form_rate": "Calificar este producto:",
     "review_form_author": "Su Nombre",
     "review_form_title": "Título del comentario (opcional)",
