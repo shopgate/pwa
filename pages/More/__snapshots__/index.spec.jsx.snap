@@ -167,16 +167,19 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/shipping"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/shipping"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
@@ -242,16 +245,19 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/payment"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/payment"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
@@ -317,16 +323,19 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/terms"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/terms"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
@@ -392,16 +401,19 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/privacy"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/privacy"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
@@ -489,16 +501,19 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/imprint"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/imprint"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
@@ -863,16 +878,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/login"
                             >
                               <Link
+                                ariaLabel={null}
                                 className=""
                                 disabled={false}
                                 historyPush={[Function]}
                                 historyReplace={[Function]}
                                 href="/login"
                                 replace={false}
+                                role="link"
                                 state={Object {}}
                                 tag="div"
                               >
                                 <div
+                                  aria-label={null}
                                   className="css-c6ki83 "
                                   data-test-id="link: /login"
                                   onClick={[Function]}
@@ -936,16 +954,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/register"
                             >
                               <Link
+                                ariaLabel={null}
                                 className=""
                                 disabled={false}
                                 historyPush={[Function]}
                                 historyReplace={[Function]}
                                 href="/register"
                                 replace={false}
+                                role="link"
                                 state={Object {}}
                                 tag="div"
                               >
                                 <div
+                                  aria-label={null}
                                   className="css-c6ki83 "
                                   data-test-id="link: /register"
                                   onClick={[Function]}
@@ -1122,16 +1143,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/shipping"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/shipping"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
@@ -1197,16 +1221,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/payment"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/payment"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
@@ -1272,16 +1299,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/terms"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/terms"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
@@ -1347,16 +1377,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/privacy"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/privacy"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
@@ -1444,16 +1477,19 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/imprint"
                         >
                           <Link
+                            ariaLabel={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/imprint"
                             replace={false}
+                            role="link"
                             state={Object {}}
                             tag="div"
                           >
                             <div
+                              aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}

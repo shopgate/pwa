@@ -257,16 +257,19 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
+                        ariaLabel={null}
                         className=""
                         disabled={true}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/login"
                         replace={false}
+                        role="link"
                         state={Object {}}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /login"
                           onClick={[Function]}
@@ -330,16 +333,19 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
+                        ariaLabel={null}
                         className=""
                         disabled={true}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/register"
                         replace={false}
+                        role="link"
                         state={Object {}}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /register"
                           onClick={[Function]}
@@ -483,16 +489,19 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
+                        ariaLabel={null}
                         className=""
                         disabled={false}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/login"
                         replace={false}
+                        role="link"
                         state={Object {}}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /login"
                           onClick={[Function]}
@@ -556,16 +565,19 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
+                        ariaLabel={null}
                         className=""
                         disabled={false}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/register"
                         replace={false}
+                        role="link"
                         state={Object {}}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /register"
                           onClick={[Function]}
