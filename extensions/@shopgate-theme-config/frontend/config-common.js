@@ -50,37 +50,14 @@ export default {
           {
             name: 'ShopgateProductSwatch',
             id: '@shopgate/engage/product/Swatch',
-            settings: {
-              selectionStyles: {
-                selected: {
-                  borderColor: undefined,
-                },
-                unselected: {
-                  borderColor: undefined,
-                },
-              },
-              itemWidth: '0.8rem',
-              itemHeight: '0.8rem',
-            },
             styles: {
-              swatch: {
-                marginBottom: '0.3rem',
-              },
-              item: {
-                marginRight: '0.2rem',
-                marginBottom: '0.2rem',
-              },
+              swatch: undefined,
+              item: undefined,
             },
           },
           {
             name: 'ShopgateProductSwatches',
             id: '@shopgate/engage/product/Swatches',
-            settings: {},
-            styles: {
-              swatches: {
-                marginTop: '0.4rem',
-              },
-            },
           },
         ],
       },
@@ -143,8 +120,31 @@ export default {
             name: 'ShopgateProductEffectivityDates',
             id: '@shopgate/engage/product/EffectivityDates',
           },
+          {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
+            styles: {
+              swatch: {
+                gridTemplateColumns: 'repeat(auto-fill, minmax($.variables.swatchItemSize, 1fr))',
+                gridGap: '12px 8px',
+              },
+              item: {
+                width: '$.variables.swatchItemSize',
+                minWidth: '$.variables.swatchItemSize',
+                maxWidth: '$.variables.swatchItemSize',
+                height: '$.variables.swatchItemSize',
+                minHeight: '$.variables.swatchItemSize',
+                maxHeight: '$.variables.swatchItemSize',
+                borderWidth: '2px',
+              },
+              itemSelected: undefined,
+            },
+          },
         ],
       },
     ],
+    variables: {
+      swatchItemSize: '48px',
+    },
   },
 };

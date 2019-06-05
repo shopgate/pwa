@@ -77,12 +77,16 @@ export const themeName = process.env.THEME || 'theme';
  */
 export const themeConfig = buildThemeConfig(appConfig);
 
+// Fix references
+assignObjectDeep(themeConfig, appConfig.theme);
+appConfig.theme = themeConfig;
+
 /**
  * Takes an object with app config values and safely injects it into the current app config.
  * @param {Object} newConfig Contains new config fields to inject into the existing destination.
  */
 export function writeToConfig(newConfig) {
-  assignObjectDeep(appConfig, newConfig);
+  assignObjectDeep(appConfig, newConfig, true, false);
 }
 
 /**

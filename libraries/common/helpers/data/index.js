@@ -198,12 +198,13 @@ export const validateSelectorParams = (selector, defaultResult = null) => (...pa
 
 /**
  * Takes a destination object and a source and merges the source object into the destination.
- * Differing properties will
+ * Differing properties will replaced. References are kept where possible.
  * @param {Object} destination Object to mutate
  * @param {Object} source Object which contains the properties to assign to the destination
  * @param {boolean} [warn] Enables log output on mismatching types. Defaults to 'true'.
+ * @param {boolean} [mergeArrays] Enables or disables array merging. Defaults to 'true'.
  */
-export function assignObjectDeep(destination, source, warn = true) {
+export function assignObjectDeep(destination, source, warn = true, mergeArrays = true) {
   // Avoids eslint warning on param mutation, which is necessary
   const dest = destination;
   const src = source;
@@ -230,11 +231,15 @@ export function assignObjectDeep(destination, source, warn = true) {
 
     // Both structures are objects but one or both can be an array
     if (isArray(prop) && isArray(dest[key])) {
-      // Merge arrays
+      // Merge or replace array contents
+      if (!mergeArrays) {
+        // Fast truncate without removing references
+        dest[key].length = 0;
+      }
       prop.forEach((element) => { dest[key].push(element); });
     } else if (!isArray(prop) && !isArray(dest[key])) {
       // Merge objects
-      assignObjectDeep(dest[key], prop);
+      assignObjectDeep(dest[key], prop, warn, mergeArrays);
     } else {
       // Object types differ, print a warning
       if (warn) {
