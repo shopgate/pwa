@@ -33,11 +33,7 @@ export class ThemeConfigResolver {
    */
   resolveAll() {
     this.config = appConfig.theme;
-    const resolvedThemeConfig = this.resolve();
-
-    // Special case where pages should be omitted because the resolver replaces them
-    this.config.pages = [];
-    writeToConfig({ theme: resolvedThemeConfig });
+    writeToConfig({ theme: this.resolve() });
   }
 
   /**
@@ -108,8 +104,8 @@ export class ThemeConfigResolver {
     // Replace all variable references in the given string if any exist
     let value = input;
     const preRegex = new RegExp(`.*${
-      // escape delimiter
-      this.delimiter.replace('$', '\\$').replace('.', '\\.')
+      // Escape delimiter to use within another reg exp.
+      this.delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     }`, 'g');
     const postRegex = new RegExp(/[^a-zA-Z0-9_$.].*$/, 'g');
     while (value.includes(this.delimiter)) {
@@ -120,7 +116,6 @@ export class ThemeConfigResolver {
       value = value.replace(`${this.delimiter}${path}`, get(this.config, path));
     }
 
-    console.log('replaced:', input, value);
     return value;
   }
 
