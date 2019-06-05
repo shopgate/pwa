@@ -7,7 +7,8 @@
     "undo": "Rück­gän­gig",
     "required": "Erforderlich *",
     "please_choose": "Bitte wählen",
-    "show_products": "Produkte anzeigen"
+    "show_products": "Produkte anzeigen",
+    "back": "Zurück"
   },
   "titles": {
     "categories": "Alle Kategorien",
@@ -52,7 +53,9 @@
       "range": "{from} oder mehr: {price}"
     },
     "msrp": "UVP",
-    "currency": "EUR"
+    "currency": "EUR",
+    "label": "Preis {price}.",
+    "label_old_price": "Alter Preis {price}."
   },
   "product": {
     "description_heading": "Beschreibung",
@@ -163,7 +166,7 @@
     "button_add": "Produkt bewerten",
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}",
+    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}} von {maxRate}.",
     "review_form_rate": "Bewerten Sie dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
