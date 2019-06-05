@@ -10,7 +10,8 @@ const sets = ['colors', 'images'];
  */
 module.exports = async (context, { characteristics = [] }) => ({
   characteristics: characteristics.map((characteristic) => {
-    if (!characteristic.label.toLowerCase().includes('color')) {
+    if (!characteristic.label.toLowerCase().includes('color')
+      && !characteristic.label.toLowerCase().includes('type')) {
       return characteristic;
     }
 
