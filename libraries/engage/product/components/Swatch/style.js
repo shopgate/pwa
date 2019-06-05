@@ -28,5 +28,5 @@ export const itemTexture = css({
 }).toString();
 
 export const itemSelected = css({
-  borderColor: colors.dark,
+  borderColor: colors.accent,
 }).toString();

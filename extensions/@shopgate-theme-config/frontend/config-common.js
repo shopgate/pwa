@@ -125,16 +125,17 @@ export default {
             id: '@shopgate/engage/product/Swatch',
             styles: {
               swatch: {
-                gridTemplateColumns: 'repeat(auto-fill, minmax(48px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fill, minmax($.variables.swatchItemSize, 1fr))',
                 gridGap: '12px 8px',
               },
               item: {
-                width: '48px',
-                height: '48px',
-                minWidth: '48px',
-                maxWidth: '48px',
-                minHeight: '48px',
-                maxHeight: '48px',
+                width: '$.variables.swatchItemSize',
+                minWidth: '$.variables.swatchItemSize',
+                maxWidth: '$.variables.swatchItemSize',
+                height: '$.variables.swatchItemSize',
+                minHeight: '$.variables.swatchItemSize',
+                maxHeight: '$.variables.swatchItemSize',
+                borderWidth: '2px',
               },
               itemSelected: undefined,
             },
@@ -142,5 +143,8 @@ export default {
         ],
       },
     ],
+    variables: {
+      swatchItemSize: '48px',
+    },
   },
 };
