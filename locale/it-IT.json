@@ -154,7 +154,7 @@
     "button_add": "Scrivi una recensione",
     "button_all": "Tutte le {count} Recensioni",
     "author": "da {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}}",
+    "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}} su {maxRate}",
     "review_form_rate": "Vota questo prodotto:",
     "review_form_author": "Il tuo nome",
     "review_form_title": "Titolo della recensione (optional)",

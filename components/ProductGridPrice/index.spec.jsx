@@ -1,6 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import ProductGridPrice from './index';
+
+const mockRenderOptions = {
+  context: {
+    i18n: () => ({
+      __: input => input,
+      _p: input => input,
+    }),
+  },
+  childContextTypes: {
+    i18n: PropTypes.func,
+  },
+};
 
 const mockPrice = {
   currency: 'EUR',
@@ -34,7 +47,7 @@ const mockPriceMsrp = {
 
 describe('<ProductGridPrice />', () => {
   it('should render without discounts', () => {
-    const component = mount(<ProductGridPrice price={mockPrice} />);
+    const component = mount(<ProductGridPrice price={mockPrice} />, mockRenderOptions);
     const price = component.find('Price');
     const priceStriked = component.find('PriceStriked');
     const priceInfo = component.find('PriceInfo');
@@ -54,7 +67,7 @@ describe('<ProductGridPrice />', () => {
   });
 
   it('should render with strike price', () => {
-    const component = mount(<ProductGridPrice price={mockPriceStriked} />);
+    const component = mount(<ProductGridPrice price={mockPriceStriked} />, mockRenderOptions);
     const price = component.find('Price');
     const priceStriked = component.find('PriceStriked');
     const priceInfo = component.find('PriceInfo');
@@ -74,7 +87,7 @@ describe('<ProductGridPrice />', () => {
   });
 
   it('should render with msrp', () => {
-    const component = mount(<ProductGridPrice price={mockPriceMsrp} />);
+    const component = mount(<ProductGridPrice price={mockPriceMsrp} />, mockRenderOptions);
     const price = component.find('Price');
     const priceStriked = component.find('PriceStriked');
     const priceInfo = component.find('PriceInfo');
