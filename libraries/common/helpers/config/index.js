@@ -78,8 +78,7 @@ export const themeName = process.env.THEME || 'theme';
  */
 export const themeConfig = buildThemeConfig(appConfig);
 
-// Fix references
-assignObjectDeep(themeConfig, appConfig.theme);
+// Fix theme config reference
 appConfig.theme = themeConfig;
 
 /**

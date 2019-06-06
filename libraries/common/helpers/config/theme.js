@@ -1,4 +1,5 @@
-import { themeConfig } from './mock';
+import { themeConfig as mockConfig } from './mock';
+import { assignObjectDeep } from '../data';
 
 /**
  * Provides a default theme config as a fallback.
@@ -17,7 +18,7 @@ const defaultConfig = {
  */
 export function buildThemeConfig(appConfig) {
   if (process.env.NODE_ENV === 'test') {
-    return themeConfig;
+    return mockConfig;
   }
 
   const { colors = {}, theme = {} } = appConfig;
@@ -32,11 +33,9 @@ export function buildThemeConfig(appConfig) {
 
   const oldTheme = process.env.THEME_CONFIG || defaultConfig;
 
-  return {
-    ...theme,
-    typography: theme.typography,
+  const themeConfig = { ...theme };
+  assignObjectDeep(themeConfig, {
     colors: {
-      ...theme.colors,
       ...colors,
       /**
        * The SDK creates some colors dynamically and populates them via the THEME_CONFIG.
@@ -48,5 +47,7 @@ export function buildThemeConfig(appConfig) {
       ...(oldTheme.variables || {}),
       materialShadow: theme.variables.baseShadow,
     },
-  };
+  });
+
+  return themeConfig;
 }
