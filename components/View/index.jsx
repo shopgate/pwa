@@ -20,6 +20,7 @@ function ViewContainer({
   hasNavigator,
   noScrollOnKeyboard,
   visible,
+  'aria-hidden': ariaHidden,
 }) {
   if (visible) {
     setBackgroundColor(background);
@@ -30,7 +31,7 @@ function ViewContainer({
   };
 
   return (
-    <section className={styles} style={style}>
+    <section className={styles} style={style} aria-hidden={ariaHidden}>
       <ViewProvider>
         <ViewContext.Consumer>
           {({ setContentRef }) => (
@@ -51,6 +52,7 @@ function ViewContainer({
 
 ViewContainer.propTypes = {
   visible: PropTypes.bool.isRequired,
+  'aria-hidden': PropTypes.bool,
   background: PropTypes.string,
   children: PropTypes.node,
   hasNavigator: PropTypes.bool,
@@ -58,6 +60,7 @@ ViewContainer.propTypes = {
 };
 
 ViewContainer.defaultProps = {
+  'aria-hidden': true,
   background: colors.light,
   children: null,
   hasNavigator: true,
