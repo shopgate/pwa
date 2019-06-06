@@ -1,4 +1,4 @@
-module.exports = async () => {
+module.exports = async (context) => {
   if (!context.config.enableMocks) {
     return { media: [] };
   }
