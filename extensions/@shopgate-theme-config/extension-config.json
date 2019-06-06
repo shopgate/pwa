@@ -44,6 +44,16 @@
         "label": "GMD Theme Config",
         "required": true
       }
+    },
+    "enableMocks": {
+      "type": "admin",
+      "destination": "backend",
+      "default": true,
+      "params": {
+        "type": "json",
+        "label": "Enables or disables mock data",
+        "required": false
+      }
     }
   },
   "steps": [
