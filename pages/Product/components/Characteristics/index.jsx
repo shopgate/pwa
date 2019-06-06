@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { isBeta } from '@shopgate/engage/core';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PRODUCT_VARIANT_SELECT,
@@ -9,6 +10,7 @@ import {
 import ProductCharacteristics from '@shopgate/pwa-common/components/ProductCharacteristics';
 import { ProductContext } from './../../context';
 import Characteristic from './Characteristic';
+import Swatch from './Swatch';
 
 /**
  * The Characteristics component.
@@ -43,12 +45,16 @@ class Characteristics extends PureComponent {
   }
 
   /**
+   * @see ProductCharacteristics.render
    * @param {Object} props The renderer props.
    * @returns {JSX}
    */
-  renderer = props => (
-    <Characteristic {...props} />
-  );
+  renderer = (props) => {
+    if (isBeta() && !!props.swatch) {
+      return <Swatch {...props} />;
+    }
+    return <Characteristic {...props} />;
+  };
 
   /**
    * @returns {JSX}

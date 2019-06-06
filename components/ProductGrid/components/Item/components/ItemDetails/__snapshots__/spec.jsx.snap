@@ -10,6 +10,9 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     }
   }
 >
+  <Connect(Swatches)
+    productId="1234"
+  />
   <ItemName
     display={null}
     name="Foo"
