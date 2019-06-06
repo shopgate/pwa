@@ -28,7 +28,7 @@ const calcAngle = (element) => {
 /**
  * The price striked component
  * @param {Object} props The component props
- * @param {number} props.value The sriked price of the product
+ * @param {number} props.value The striked price of the product
  * @param {string} props.currency The currency of the price
  * @param {string} [props.className] CSS classes
  * @return {JSX}
@@ -42,6 +42,10 @@ class PriceStriked extends Component {
 
   static defaultProps = {
     className: '',
+  };
+
+  static contextTypes = {
+    i18n: PropTypes.func,
   };
 
   /**
@@ -84,11 +88,16 @@ class PriceStriked extends Component {
    * @returns {JSX}
    */
   render() {
+    const { __, _p } = this.context.i18n();
     const angleStyle = this.angle ? styles.getAngleStyle(this.angle) : '';
 
     return (
       <div className={`${styles.basic} ${this.props.className} ${angleStyle}`}>
-        <span ref={(ref) => { this.element = ref; }} data-test-id={`strikedPrice: ${this.props.value}`}>
+        <span
+          ref={(ref) => { this.element = ref; }}
+          data-test-id={`strikedPrice: ${this.props.value}`}
+          aria-label={__('price.label_old_price', { price: _p(this.props.value, this.props.currency, true) })}
+        >
           <I18n.Price price={this.props.value} currency={this.props.currency} />
         </span>
       </div>

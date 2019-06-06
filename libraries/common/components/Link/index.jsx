@@ -14,17 +14,21 @@ class Link extends Component {
     historyPush: PropTypes.func.isRequired,
     historyReplace: PropTypes.func.isRequired,
     href: PropTypes.string.isRequired,
+    ariaLabel: PropTypes.string,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     replace: PropTypes.bool,
+    role: PropTypes.string,
     state: PropTypes.shape(),
     tag: PropTypes.string,
   };
 
   static defaultProps = {
+    ariaLabel: null,
     className: '',
     disabled: false,
     replace: false,
+    role: 'link',
     tag: 'div',
     state: {},
   };
@@ -54,15 +58,18 @@ class Link extends Component {
    * @returns {JSX}
    */
   render() {
-    const { tag: Tag } = this.props;
+    const {
+      tag: Tag, className, href, children, role, ariaLabel,
+    } = this.props;
     return (
       <Tag
-        className={`${styles} ${this.props.className}`}
+        className={`${styles} ${className}`}
         onClick={this.handleOpenLink}
-        role="link"
-        data-test-id={`link: ${this.props.href}`}
+        role={role}
+        data-test-id={`link: ${href}`}
+        aria-label={ariaLabel}
       >
-        {this.props.children}
+        {children}
       </Tag>
     );
   }

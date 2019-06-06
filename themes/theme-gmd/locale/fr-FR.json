@@ -166,7 +166,7 @@
     "button_add": "Ecrire un commentaire",
     "button_all": "Tous les {count} commantaires",
     "author": "par {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
+    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} sur {maxRate}",
     "review_form_rate": "Evaluer ce produit:",
     "review_form_author": "Votre nom",
     "review_form_title": "Titre du commentaire (optional)",

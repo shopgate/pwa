@@ -159,7 +159,7 @@
     "button_add": "Schrijf een beoordeling",
     "button_all": "Alle {count} Beoordelingen",
     "author": "door {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
+    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} uit {maxRate}",
     "review_form_rate": "Beoordeel dit product:",
     "review_form_author": "Uw naam",
     "review_form_title": "Review titel (optioneel)",

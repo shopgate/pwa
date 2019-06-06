@@ -115,7 +115,13 @@ class Item extends Component {
     }
 
     return (
-      <div aria-hidden onClick={onClick} data-test-id={testId}>
+      <div
+        role="link"
+        tabIndex="0"
+        onKeyPress={() => { }}
+        onClick={onClick}
+        data-test-id={testId}
+      >
         <Glow className={className}>
           {this.renderContent()}
         </Glow>

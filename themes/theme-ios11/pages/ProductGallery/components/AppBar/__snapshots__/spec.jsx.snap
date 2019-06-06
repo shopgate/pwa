@@ -26,6 +26,7 @@ exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
         }
         left={
           <AppBarIcon
+            ariaLabel={null}
             background="inherit"
             badge={null}
             color="inherit"

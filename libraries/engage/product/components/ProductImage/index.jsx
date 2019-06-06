@@ -137,7 +137,7 @@ class ProductImage extends Component {
     // Return the actual image.
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <div className={showInnerShadow ? styles.innerShadow : ''}>
+        <div className={showInnerShadow ? styles.innerShadow : ''} aria-hidden>
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}

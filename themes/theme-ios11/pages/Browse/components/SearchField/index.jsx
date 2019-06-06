@@ -244,7 +244,7 @@ class SearchField extends Component {
     const { focused } = this.state;
 
     return (
-      <div data-test-id="SearchField">
+      <div data-test-id="SearchField" aria-hidden>
         <div className={styles.container}>
           <div className={styles.inputWrapper}>
             <form onSubmit={this.handleSubmit} action=".">
