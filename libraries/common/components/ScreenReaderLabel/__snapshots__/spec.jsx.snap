@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScreenReaderLabel /> should not render if no label is passed 1`] = `""`;
+
+exports[`<ScreenReaderLabel /> should render a plain string 1`] = `
+<ScreenReaderLabel
+  label="Test Label"
+>
+  <span
+    className={
+      Object {
+        "data-css-wkx5jf": "",
+      }
+    }
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="Test Label"
+    >
+      <span
+        className=""
+      >
+        Test Label
+      </span>
+    </Translate>
+  </span>
+</ScreenReaderLabel>
+`;
+
+exports[`<ScreenReaderLabel /> should render a tranlation string 1`] = `
+<I18nProvider
+  lang="en-US"
+  locales={
+    Object {
+      "common": Object {
+        "menu": "Menu",
+      },
+    }
+  }
+>
+  <ScreenReaderLabel
+    label="common.menu"
+  >
+    <span
+      className={
+        Object {
+          "data-css-wkx5jf": "",
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string="common.menu"
+      >
+        <span
+          className=""
+        >
+          Menu
+        </span>
+      </Translate>
+    </span>
+  </ScreenReaderLabel>
+</I18nProvider>
+`;

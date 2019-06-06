@@ -14,7 +14,7 @@ import styles from './style';
 const Viewport = props => (
   <main className={styles.viewport} role="main" itemScope itemProp="http://schema.org/MobileApplication">
     <NavDrawer />
-    <header className={styles.header} id="AppHeader" />
+    <div className={styles.header} id="AppHeader" />
     <section className={styles.content}>
       {props.children}
     </section>

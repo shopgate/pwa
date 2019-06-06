@@ -11,6 +11,7 @@ exports[`<NavDrawerTitle /> should render when a text is passed within the props
   text="Title"
 >
   <div
+    aria-hidden={true}
     className={
       Object {
         "data-css-o38fs9": "",

@@ -1,5 +1,6 @@
 {
   "common": {
+    "menu": "Menú",
     "countdown": "{days, plural, =0 {Sólo {time} queda} =1 {# día {time}} other {# días {time}}}",
     "load_more": "Cargar más",
     "cancel": "Cancelar",
@@ -177,7 +178,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },

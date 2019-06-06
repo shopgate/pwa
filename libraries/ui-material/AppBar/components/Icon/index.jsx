@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { ScreenReaderLabel } from '@shopgate/pwa-common/components';
 import styles from './style';
 
 /**
@@ -13,6 +14,7 @@ class AppBarIcon extends PureComponent {
     background: PropTypes.string,
     badge: PropTypes.func,
     color: PropTypes.string,
+    srLabel: PropTypes.string,
     testId: PropTypes.string,
   };
 
@@ -22,6 +24,7 @@ class AppBarIcon extends PureComponent {
     badge: null,
     color: 'inherit',
     testId: null,
+    srLabel: null,
   };
 
   /**
@@ -29,7 +32,7 @@ class AppBarIcon extends PureComponent {
    */
   render() {
     const {
-      background, badge: Badge, color, icon: Icon, onClick, testId, ariaHidden,
+      background, badge: Badge, color, icon: Icon, onClick, testId, ariaHidden, srLabel,
     } = this.props;
 
     return (
@@ -43,6 +46,7 @@ class AppBarIcon extends PureComponent {
         data-test-id={testId}
         aria-hidden={ariaHidden}
       >
+        {srLabel && <ScreenReaderLabel label={srLabel} />}
         <Icon />
         {Badge && <Badge />}
       </button>

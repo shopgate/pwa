@@ -3,6 +3,7 @@ export { Router } from '@virtuous/react-conductor';
 export { default as Image } from './Image';
 export { default as Route } from './Route';
 export { default as Portal } from './Portal';
+export { default as ScreenReaderLabel } from './ScreenReaderLabel';
 export { default as Slider } from './Slider';
 export { default as Swiper } from './Swiper';
 export { default as SurroundPortals } from './SurroundPortals';

@@ -86,15 +86,16 @@ class NavDrawer extends Component {
           timeout={300}
         >
           {state => (
-            <section
+            <div
               className={drawerStyle}
               data-test-id="NavDrawer"
               style={transition[state]}
+              role="presentation"
             >
               <nav className={contentStyle} ref={this.contentRef}>
                 {this.props.children}
               </nav>
-            </section>
+            </div>
           )}
         </Transition>
         <Backdrop

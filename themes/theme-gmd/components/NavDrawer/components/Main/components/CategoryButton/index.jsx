@@ -23,6 +23,7 @@ const CategoryButton = ({ navigate }) => (
     <Portal name={NAV_MENU_CATEGORIES_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_CATEGORIES} props={portalProps}>
       <NavDrawer.Item
+        aria-hidden={false}
         label={LABEL}
         icon={ViewListIcon}
         onClick={navigate(CATEGORY_PATH, LABEL)}

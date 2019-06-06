@@ -7,6 +7,7 @@ exports[`<NavDrawerSection /> should render with a title and dividers 1`] = `
     text="Section title"
   />
   <NavDrawerItem
+    aria-hidden={true}
     badge={null}
     icon={null}
     label="Item Label"

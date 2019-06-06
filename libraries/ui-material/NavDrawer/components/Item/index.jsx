@@ -10,6 +10,7 @@ import styles from './style';
 class NavDrawerItem extends Component {
   static propTypes = {
     label: PropTypes.string.isRequired,
+    'aria-hidden': PropTypes.bool,
     badge: PropTypes.func,
     icon: PropTypes.func,
     onClick: PropTypes.func,
@@ -18,9 +19,10 @@ class NavDrawerItem extends Component {
   };
 
   static defaultProps = {
+    'aria-hidden': true,
     badge: null,
     icon: null,
-    onClick: () => {},
+    onClick: () => { },
     style: {},
     testId: null,
   };
@@ -54,6 +56,7 @@ class NavDrawerItem extends Component {
       label,
       style,
       testId,
+      'aria-hidden': ariaHidden,
     } = this.props;
 
     return (
@@ -63,8 +66,10 @@ class NavDrawerItem extends Component {
         onClick={this.handleClick}
         role="link"
         style={style}
+        aria-hidden={ariaHidden}
+        tabIndex={ariaHidden ? -1 : 0}
       >
-        <div className={styles.iconWrapper}>
+        <div className={styles.iconWrapper} aria-hidden>
           {Icon && <Icon className={styles.icon} size={24} />}
         </div>
         <I18n.Text className={styles.label} string={label} />

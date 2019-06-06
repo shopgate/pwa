@@ -13,7 +13,7 @@ const NavDrawerTitle = ({ text }) => {
   }
 
   return (
-    <div className={styles}>
+    <div className={styles} aria-hidden>
       <I18n.Text string={text} />
     </div>
   );

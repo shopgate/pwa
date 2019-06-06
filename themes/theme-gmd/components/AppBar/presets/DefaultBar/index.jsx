@@ -58,7 +58,7 @@ class AppBarDefault extends PureComponent {
     const { __ } = this.context.i18n();
     const title = __(this.props.title || '');
 
-    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />;
+    const left = <AppBar.Icon icon={BurgerIcon} srLabel="common.menu" onClick={NavDrawer.open} testId="Button" />;
     const center = <AppBar.Title title={title} />;
     const right = (
       <Fragment>
@@ -91,4 +91,3 @@ export default props => (
     {({ visible }) => <AppBarDefault {...props} visible={visible} />}
   </RouteContext.Consumer>
 );
-
