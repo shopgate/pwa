@@ -26,10 +26,15 @@ class Button extends Component {
    * @returns {Object}
    */
   get buttonProps() {
+    const {
+      children, testId, className, disabled, onClick, ...props
+    } = this.props;
+
     const buttonProps = {
-      className: `${this.props.className} ${style}`,
-      disabled: this.props.disabled,
-      onClick: this.props.disabled ? null : this.props.onClick,
+      className: `${className} ${style}`,
+      disabled,
+      onClick: disabled ? null : onClick,
+      ...props,
     };
 
     return buttonProps;

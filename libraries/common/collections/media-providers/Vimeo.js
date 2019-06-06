@@ -28,6 +28,7 @@ class VimeoMediaProvider extends MediaProvider {
 
     const script = document.createElement('script');
     script.src = 'https://player.vimeo.com/api/player.js';
+    script.async = true;
 
     script.onload = () => {
       this.playerReady = true;

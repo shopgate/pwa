@@ -8,6 +8,7 @@ import fetchProducts from '../../product/actions/fetchProducts';
  * @param {number} offset The offset for the products to request.
  * @param {number} limit The number of products to request.
  * @param {string} sort The sort order of the products.
+ * @param {boolean} characteristics Include characteristics.
  * @return {Function} The dispatched action.
  */
 const fetchCategoryProducts = ({
@@ -16,6 +17,7 @@ const fetchCategoryProducts = ({
   offset = 0,
   limit = ITEMS_PER_LOAD,
   sort,
+  characteristics = false,
 }) =>
   (dispatch, getState) => {
     const sortOrder = sort || getSortOrder(getState());
@@ -26,6 +28,7 @@ const fetchCategoryProducts = ({
         offset,
         limit,
         sort: sortOrder,
+        characteristics,
       },
       filters,
     }));

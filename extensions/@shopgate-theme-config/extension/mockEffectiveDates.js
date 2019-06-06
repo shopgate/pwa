@@ -9,7 +9,7 @@ module.exports = async (context, { products = [] }) => ({
     // eslint-disable-next-line no-param-reassign
     product.startDate = new Date(new Date().getTime() + 10000).toISOString();
     // eslint-disable-next-line no-param-reassign
-    product.endDate = new Date(new Date().getTime() + 20000).toISOString();
+    product.endDate = new Date(new Date().getTime() + 120000).toISOString();
     // eslint-disable-next-line no-param-reassign
     product.stock.info = 'Available in 2-3 days';
     return product;
