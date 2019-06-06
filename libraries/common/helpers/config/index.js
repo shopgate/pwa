@@ -1,6 +1,7 @@
 import pck from './../../package';
 import { buildThemeConfig } from './theme';
 import { assignObjectDeep } from '../data';
+import { isObject } from '../validation';
 
 /**
  * Provides a default app config as a fallback.
@@ -98,17 +99,17 @@ export const appConfigArrayItemComparator = (path, prev, next) => {
   const simplePath = path.replace(/\.[0-9]+/g, '.N');
 
   // Simple types
-  if (typeof prev !== 'object') {
+  if (!isObject(prev) || !isObject(next)) {
     return prev === next;
   }
 
   // Identity of pages is defined by the page pattern
-  if (simplePath === 'theme.pages.N') {
+  if (simplePath === '$.theme.pages.N') {
     return prev.pattern === next.pattern;
   }
 
   // Identity of widgets is defined by the widget id
-  if (simplePath === 'theme.pages.N.widgets.N') {
+  if (simplePath === '$.theme.pages.N.widgets.N') {
     return prev.id === next.id;
   }
 
@@ -125,7 +126,7 @@ export const appConfigArrayItemComparator = (path, prev, next) => {
  */
 export function writeToConfig(newConfig, arrayComparator = null) {
   const comparator = arrayComparator || appConfigArrayItemComparator;
-  assignObjectDeep(appConfig, newConfig, true, comparator);
+  assignObjectDeep(appConfig, newConfig, true, comparator, '$');
 }
 
 /**

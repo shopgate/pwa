@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.1-alpha.2",
   "id": "@shopgate/theme-config",
   "components": [
     {
@@ -9,7 +9,7 @@
     }
   ],
   "configuration": {
-    "theme": {
+    "themeIos": {
       "type": "admin",
       "destination": "frontend",
       "default": {
@@ -23,7 +23,25 @@
       },
       "params": {
         "type": "json",
-        "label": "Theme Config",
+        "label": "IOS Theme Config",
+        "required": true
+      }
+    },
+    "themeGmd": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "settings": {},
+        "typography": {},
+        "colors": {},
+        "variables": {},
+        "shadows": {},
+        "assets": {},
+        "pages": []
+      },
+      "params": {
+        "type": "json",
+        "label": "GMD Theme Config",
         "required": true
       }
     }

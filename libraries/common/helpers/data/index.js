@@ -225,9 +225,8 @@ export function assignObjectDeep(
   const dest = destination;
   const src = source;
 
-  // Reassign is needed here because the destination param must be mutated insteatd of.
-  if (!isObject(dest) || Array.isArray(dest) || !isObject(src) || Array.isArray(src)) {
-    logger.error('Operands for "assignObjectDeep" must be objects');
+  // Don't do anything when types are scalar (can occur in recursion)
+  if (typeof dest !== 'object' || typeof src !== 'object') {
     return;
   }
 
@@ -258,6 +257,7 @@ export function assignObjectDeep(
 
         // Merge into existing if found or add to array otherwise
         if (existing !== undefined) {
+          // Scalar types can't be merged and will be ignored when an equal exists
           assignObjectDeep(existing, element, warn, arrayComparator, itemPath);
         } else {
           dest[key].push(element);
