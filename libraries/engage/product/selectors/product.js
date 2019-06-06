@@ -3,6 +3,7 @@ import {
   getProductPropertiesState,
   getProductId,
   getProduct,
+  getProductDataById,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { filterProperties } from './helpers';
 
@@ -45,5 +46,16 @@ export function makeGetProductEffectivityDates() {
         }
         : null;
     }
+  );
+}
+
+/**
+ * Creates a selector to return product characteristics.
+ * @returns {Function}
+ */
+export function makeGetProductCharacteristics() {
+  return createSelector(
+    getProductDataById,
+    product => ((!product || !product.characteristics) ? null : product.characteristics)
   );
 }

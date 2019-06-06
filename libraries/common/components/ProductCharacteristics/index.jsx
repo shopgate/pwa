@@ -15,16 +15,15 @@ import {
 class ProductCharacteristics extends Component {
   static propTypes = {
     conditioner: PropTypes.shape().isRequired,
+    navigate: PropTypes.func.isRequired,
     render: PropTypes.func.isRequired,
     finishTimeout: PropTypes.number,
-    navigate: PropTypes.func,
     variantId: PropTypes.string,
     variants: PropTypes.shape(),
   }
 
   static defaultProps = {
     finishTimeout: 0,
-    navigate() {},
     variantId: null,
     variants: null,
   }
@@ -186,14 +185,16 @@ class ProductCharacteristics extends Component {
    * @param {string} charId The current characteristic ID.
    * @param {Array} values The characteristic values.
    * @param {number} charIndex The characteristic index.
+   * @param {string|null} selectedValue selectedValue
    * @return {Array}
    */
-  buildValues = (selections, charId, values, charIndex) => {
+  buildValues = (selections, charId, values, charIndex, selectedValue) => {
     // If this is the first characteristic then all values are selectable.
     if (charIndex === 0) {
       return values.map(value => ({
         ...value,
         selectable: true,
+        selected: selectedValue === value.id,
       }));
     }
 
@@ -220,6 +221,7 @@ class ProductCharacteristics extends Component {
       return ({
         ...value,
         selectable,
+        selected: selectedValue === value.id,
       });
     });
   }
@@ -240,7 +242,7 @@ class ProductCharacteristics extends Component {
         {variants.characteristics.map((char, index) => {
           const disabled = !isCharacteristicEnabled(characteristics, index);
           const selected = getSelectedValue(char.id, characteristics);
-          const values = this.buildValues(characteristics, char.id, char.values, index);
+          const values = this.buildValues(characteristics, char.id, char.values, index, selected);
 
           return (
             this.props.render({
@@ -250,6 +252,7 @@ class ProductCharacteristics extends Component {
               id: char.id,
               key: char.id,
               label: char.label,
+              swatch: !!char.swatch, // BETA
               select: this.handleSelection,
               selected,
               values,
