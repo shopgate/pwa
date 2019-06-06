@@ -197,25 +197,42 @@ export const validateSelectorParams = (selector, defaultResult = null) => (...pa
 };
 
 /**
+ * @callback ArrayItemComparator
+ * @param {string} path
+ * @param {*} prev
+ * @param {*} next
+ * @param {number} prevIndex
+ * @param {number} nextIndex
+ * @returns {boolean}
+ */
+/**
  * Takes a destination object and a source and merges the source object into the destination.
  * Differing properties will replaced. References are kept where possible.
  * @param {Object} destination Object to mutate
  * @param {Object} source Object which contains the properties to assign to the destination
  * @param {boolean} [warn] Enables log output on mismatching types. Defaults to 'true'.
- * @param {boolean} [mergeArrays] Enables or disables array merging. Defaults to 'true'.
+ * @param {ArrayItemComparator|null} [arrayComparator] Defines how to compare array items.
+ * @param {string} [path] Path that specifies the position of a given merge within the object tree.
  */
-export function assignObjectDeep(destination, source, warn = true, mergeArrays = true) {
+export function assignObjectDeep(
+  destination,
+  source,
+  warn = true,
+  arrayComparator = null,
+  path = ''
+) {
   // Avoids eslint warning on param mutation, which is necessary
   const dest = destination;
   const src = source;
 
-  // Reassign is needed here because the destination param must be mutated insteatd of.
-  if (!isObject(dest) || Array.isArray(dest) || !isObject(src) || Array.isArray(src)) {
-    logger.error('Operands for "assignObjectDeep" must be objects');
+  // Don't do anything when types are scalar (can occur in recursion)
+  if (typeof dest !== 'object' || typeof src !== 'object') {
     return;
   }
 
   Object.keys(src).forEach((key) => {
+    const keyPath = `${path}.${key}`.replace(/^\./, '');
+
     const prop = src[key];
     if (!isObjectOrArray(dest[key]) || !isObjectOrArray(prop)) {
       // output a warning if only one of both is an object (undefined dest is fine -> no warning)
@@ -231,15 +248,24 @@ export function assignObjectDeep(destination, source, warn = true, mergeArrays =
 
     // Both structures are objects but one or both can be an array
     if (isArray(prop) && isArray(dest[key])) {
-      // Merge or replace array contents
-      if (!mergeArrays) {
-        // Fast truncate without removing references
-        dest[key].length = 0;
-      }
-      prop.forEach((element) => { dest[key].push(element); });
+      // Try to keep reference of as many array items as possible
+      prop.forEach((element, destIndex) => {
+        const itemPath = `${keyPath}.${destIndex}`;
+        // Check if a maching array item exists for merging
+        const existing = dest[key].find((prev, prevIndex) =>
+          arrayComparator(itemPath, prev, element, prevIndex, destIndex));
+
+        // Merge into existing if found or add to array otherwise
+        if (existing !== undefined) {
+          // Scalar types can't be merged and will be ignored when an equal exists
+          assignObjectDeep(existing, element, warn, arrayComparator, itemPath);
+        } else {
+          dest[key].push(element);
+        }
+      });
     } else if (!isArray(prop) && !isArray(dest[key])) {
       // Merge objects
-      assignObjectDeep(dest[key], prop, warn, mergeArrays);
+      assignObjectDeep(dest[key], prop, warn, arrayComparator, keyPath);
     } else {
       // Object types differ, print a warning
       if (warn) {

@@ -5,6 +5,10 @@
  * @returns {Promise<{products: Object[]}>}
  */
 module.exports = async (context, { products = [] }) => {
+  if (!context.config.enableMocks) {
+    return { products };
+  }
+
   if (!products.length || products.length === 1) {
     return { products };
   }
