@@ -14,7 +14,7 @@ module.exports = async (context, { products = [] }) => ({
       ...product,
       ...{
         startDate: new Date(new Date().getTime() + 10000).toISOString(),
-        endDate: new Date(new Date().getTime() + 20000).toISOString(),
+        endDate: new Date(new Date().getTime() + 120000).toISOString(),
         stock: {
           ...product.stock,
           ...{

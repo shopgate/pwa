@@ -15,7 +15,7 @@ const propsMap = {
  * @returns {JSX}
  */
 const Browse = () => (
-  <View noScrollOnKeyboard>
+  <View noScrollOnKeyboard aria-hidden={false}>
     <Consume context={RouteContext} props={propsMap}>
       {({ visible, id, query }) => visible && <Content query={query} pageId={id} />}
     </Consume>
