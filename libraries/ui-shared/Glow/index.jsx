@@ -67,10 +67,10 @@ class Glow extends Component {
     if (this.state.hover) {
       innerInlineStyles.background = this.props.color;
     }
-
+    /* eslint-disable jsx-a11y/no-static-element-interactions,
+    jsx-a11y/click-events-have-key-events */
     return (
       <div
-        aria-hidden
         className={classNames(styles.container, this.props.className)}
         onClick={this.handleTouchTap}
         style={this.props.styles.container}
@@ -79,6 +79,8 @@ class Glow extends Component {
         {this.props.children}
       </div>
     );
+    /* eslint-enable jsx-a11y/no-static-element-interactions,
+    jsx-a11y/click-events-have-key-events */
   }
 }
 

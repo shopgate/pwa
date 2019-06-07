@@ -52,7 +52,9 @@
       "range": "{from} o más: {price}"
     },
     "msrp": "MSRP",
-    "currency": "EUR"
+    "currency": "EUR",
+    "label": "Price {price}.",
+    "label_old_price": "Old price {price}."
   },
   "product": {
     "description_heading": "Sobre",
@@ -162,7 +164,7 @@
     "button_add": "Escriba un comentario",
     "button_all": "Todos los {count} Comentarios",
     "author": "por {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}}",
+    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}} de {maxRate}",
     "review_form_rate": "Calificar este producto:",
     "review_form_author": "Su Nombre",
     "review_form_title": "Título del comentario (opcional)",

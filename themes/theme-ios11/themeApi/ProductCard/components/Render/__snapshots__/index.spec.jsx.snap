@@ -45,17 +45,20 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
       tagName="a"
     >
       <Link
+        ariaLabel={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
@@ -628,6 +631,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 unitPriceMin={0}
                               >
                                 <div
+                                  aria-label="price.label"
                                   className="css-izofhs "
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
@@ -665,6 +669,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                   className="css-1sagvrb css-7hzrhp "
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -787,17 +792,20 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
       tagName="a"
     >
       <Link
+        ariaLabel={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
@@ -1090,6 +1098,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                 unitPriceMin={0}
                               >
                                 <div
+                                  aria-label="price.label"
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
@@ -1127,6 +1136,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                   className="css-1sagvrb css-7hzrhp "
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -1249,17 +1259,20 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
       tagName="a"
     >
       <Link
+        ariaLabel={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
@@ -1898,6 +1911,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
+                                  aria-label="price.label"
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
@@ -1935,6 +1949,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                   className="css-1sagvrb css-7hzrhp "
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -2057,17 +2072,20 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
       tagName="a"
     >
       <Link
+        ariaLabel={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
@@ -2706,6 +2724,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                 unitPriceMin={0}
                               >
                                 <div
+                                  aria-label="price.label"
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
@@ -2743,6 +2762,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                   className="css-1sagvrb css-7hzrhp "
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -2865,17 +2885,20 @@ exports[`<ProductCardRender /> should render without name 1`] = `
       tagName="a"
     >
       <Link
+        ariaLabel={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
@@ -3478,6 +3501,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
+                                  aria-label="price.label"
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
@@ -3515,6 +3539,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                   className="css-1sagvrb css-7hzrhp "
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -3637,17 +3662,20 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
       tagName="a"
     >
       <Link
+        ariaLabel={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
@@ -4192,17 +4220,20 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
       tagName="a"
     >
       <Link
+        ariaLabel={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
@@ -4495,6 +4526,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
+                                  aria-label="price.label"
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
@@ -4532,6 +4564,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                   className="css-1sagvrb css-7hzrhp "
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice

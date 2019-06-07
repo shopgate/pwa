@@ -34,7 +34,7 @@ class FilterBar extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    // Chcek if newly set filters came in.
+    // Check if newly set filters came in.
     const hasFilters = nextProps.filters !== null && Object.keys(nextProps.filters).length > 0;
 
     this.setState({
@@ -67,7 +67,7 @@ class FilterBar extends Component {
    */
   render() {
     return (
-      <section className={styles.container}>
+      <section className={styles.container} aria-hidden>
         <div
           className={styles}
           data-test-id="filterBar"

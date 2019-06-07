@@ -12,7 +12,6 @@ exports[`<Glow /> should render with a smile 1`] = `
   }
 >
   <div
-    aria-hidden={true}
     className="css-13azwyo"
     onClick={[Function]}
     style={null}

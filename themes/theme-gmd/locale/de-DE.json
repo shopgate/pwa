@@ -50,7 +50,9 @@
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
     },
-    "msrp": "UVP"
+    "msrp": "UVP",
+    "label": "Preis {price}.",
+    "label_old_price": "Alter Preis {price}."
   },
   "product": {
     "description_heading": "Beschreibung",
@@ -159,7 +161,7 @@
     "button_add": "Produkt bewerten",
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}",
+    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}} von {maxRate}.",
     "review_form_rate": "Bewerten Sie dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
