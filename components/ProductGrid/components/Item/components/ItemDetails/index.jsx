@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { MapPriceHint, OrderQuantityHint, EffectivityDates } from '@shopgate/engage/product';
+import { MapPriceHint, OrderQuantityHint, EffectivityDates, Swatches } from '@shopgate/engage/product';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';
@@ -35,15 +35,25 @@ class ItemDetails extends PureComponent {
     }
 
     return (
-      <div className={styles.details}>
+      <div className={styles.details} tabIndex={-1} role="button">
+        {/*
+          This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects
+        */}
+        <Swatches productId={productId} />
+
         <ItemName display={display} productId={productId} name={name} />
 
-        {/* This feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects */}
+        {/*
+          This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects
+        */}
         <MapPriceHint productId={productId} />
 
-        {/* This feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects */}
+        {/*
+          This feature is currently in BETA testing.
+          It should only be used for approved BETA Client Projects
+        */}
         <OrderQuantityHint productId={productId} />
 
         {/* This feature is currently in BETA testing.
