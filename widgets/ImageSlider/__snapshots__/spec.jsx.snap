@@ -217,16 +217,19 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://example.com"
                   >
                     <Link
+                      ariaLabel={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
@@ -259,16 +262,19 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://other.example.com"
                   >
                     <Link
+                      ariaLabel={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://other.example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
@@ -339,6 +345,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         href="http://example.com"
       >
         <Link
+          ariaLabel={null}
           className="css-63oe3q"
           data-test-id="withLink"
           disabled={false}
@@ -346,10 +353,12 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           historyReplace={[Function]}
           href="http://example.com"
           replace={false}
+          role="link"
           state={Object {}}
           tag="div"
         >
           <div
+            aria-label={null}
             className="css-c6ki83 css-63oe3q"
             data-test-id="link: http://example.com"
             onClick={[Function]}
@@ -655,16 +664,19 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                     href="http://other.example.com"
                   >
                     <Link
+                      ariaLabel={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://other.example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
@@ -913,16 +925,19 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://example.com"
                   >
                     <Link
+                      ariaLabel={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
@@ -955,16 +970,19 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://other.example.com"
                   >
                     <Link
+                      ariaLabel={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://other.example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
