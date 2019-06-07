@@ -59,6 +59,7 @@ exports[`<Header /> should render empty 1`] = `
               tagName="a"
             >
               <Link
+                ariaLabel={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
                 disabled={false}
@@ -69,11 +70,13 @@ exports[`<Header /> should render empty 1`] = `
                 itemScope={true}
                 itemType="http://schema.org/Review"
                 replace={false}
+                role="link"
                 state={Object {}}
                 tag="div"
                 tagName="a"
               >
                 <div
+                  aria-label={null}
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
@@ -480,6 +483,7 @@ exports[`<Header /> should render rating summary 1`] = `
               tagName="a"
             >
               <Link
+                ariaLabel={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
                 disabled={false}
@@ -490,11 +494,13 @@ exports[`<Header /> should render rating summary 1`] = `
                 itemScope={true}
                 itemType="http://schema.org/Review"
                 replace={false}
+                role="link"
                 state={Object {}}
                 tag="div"
                 tagName="a"
               >
                 <div
+                  aria-label={null}
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}

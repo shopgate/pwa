@@ -8,7 +8,7 @@ import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import styles from './style';
 
 /**
- * The ProdcuctGridPrice component is supposed to be used to display prices at product grids. It
+ * The ProductGridPrice component is supposed to be used to display prices at product grids. It
  * renders a row with the current price and a strike price when present. As same as the price info.
  * @param {Object} price The price object of a product entity.
  * @return {JSX}
@@ -41,13 +41,13 @@ const ProductGridPrice = ({ price }) => (
       </Grid.Item>
     )}
     </Grid>
-    <Grid>
-      {price.info && (
-      <Grid.Item>
-        <PriceInfo className={styles.basicPrice} text={price.info} />
-      </Grid.Item>
+    {price.info && (
+      <Grid>
+        <Grid.Item>
+          <PriceInfo className={styles.basicPrice} text={price.info} />
+        </Grid.Item>
+      </Grid>
     )}
-    </Grid>
   </Fragment>
 );
 
