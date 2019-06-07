@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "id": "@shopgate/theme-config",
   "components": [
     {
@@ -8,7 +8,54 @@
       "path": "frontend/index.js"
     }
   ],
-  "configuration": {},
+  "configuration": {
+    "themeIos": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "settings": {},
+        "typography": {},
+        "colors": {},
+        "variables": {},
+        "shadows": {},
+        "assets": {},
+        "pages": []
+      },
+      "params": {
+        "type": "json",
+        "label": "IOS Theme Config",
+        "required": true
+      }
+    },
+    "themeGmd": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "settings": {},
+        "typography": {},
+        "colors": {},
+        "variables": {},
+        "shadows": {},
+        "assets": {},
+        "pages": []
+      },
+      "params": {
+        "type": "json",
+        "label": "GMD Theme Config",
+        "required": true
+      }
+    },
+    "enableMocks": {
+      "type": "admin",
+      "destination": "backend",
+      "default": true,
+      "params": {
+        "type": "json",
+        "label": "Enables or disables mock data",
+        "required": false
+      }
+    }
+  },
   "steps": [
     {
       "path": "extension/mockCatalog2Data.js",
@@ -17,6 +64,21 @@
         {"key": "showScheduled", "optional": true, "addPipelineInput": true},
         {"key": "products"}],
       "output": [{"key": "products"}]
+    },
+    {
+      "path": "extension/mockSwatches.js",
+      "hooks": [
+        "shopgate.catalog.getProducts.v1:after",
+        "shopgate.catalog.getHighlightProducts.v1:after"
+      ],
+      "input": [{"key": "products"}],
+      "output": [{"key": "products"}]
+    },
+    {
+      "path": "extension/mockSwatchesVariants.js",
+      "hooks": ["shopgate.catalog.getProductVariants.v1:after"],
+      "input": [{"key": "characteristics"}],
+      "output": [{"key": "characteristics"}]
     }
   ]
 }

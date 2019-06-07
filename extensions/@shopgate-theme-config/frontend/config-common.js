@@ -31,6 +31,10 @@ export default {
           showLabels: 'always',
         },
       },
+      '@shopgate/engage/product/Swatches': {
+        maxItemCount: 10,
+        filter: [],
+      },
     },
     pages: [
       {
@@ -45,6 +49,18 @@ export default {
           {
             name: 'ShopgateProductOrderQuantityHint',
             id: '@shopgate/engage/product/OrderQuantityHint',
+          },
+          {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
+            styles: {
+              swatch: undefined,
+              item: undefined,
+            },
+          },
+          {
+            name: 'ShopgateProductSwatches',
+            id: '@shopgate/engage/product/Swatches',
           },
         ],
       },
@@ -112,8 +128,31 @@ export default {
               },
             },
           },
+          {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
+            styles: {
+              swatch: {
+                gridTemplateColumns: 'repeat(auto-fill, minmax($.variables.swatchItemSize, 1fr))',
+                gridGap: '12px 8px',
+              },
+              item: {
+                width: '$.variables.swatchItemSize',
+                minWidth: '$.variables.swatchItemSize',
+                maxWidth: '$.variables.swatchItemSize',
+                height: '$.variables.swatchItemSize',
+                minHeight: '$.variables.swatchItemSize',
+                maxHeight: '$.variables.swatchItemSize',
+                borderWidth: '2px',
+              },
+              itemSelected: undefined,
+            },
+          },
         ],
       },
     ],
+    variables: {
+      swatchItemSize: '48px',
+    },
   },
 };

@@ -4,7 +4,7 @@ import times from 'lodash/times';
 import StarIcon from '../StarIcon';
 import StarHalfIcon from '../StarHalfIcon';
 import styles from './style';
-import { RATING_SCALE_DIVISOR } from './constants';
+import { RATING_SCALE_DIVISOR, NUMBER_OF_STARS } from '../../../constants';
 
 /**
  * The available style keys for the rating stars.
@@ -51,16 +51,6 @@ class Stars extends Component {
   }
 
   /**
-   * Returns textual version of stars for screen readers.
-   * @param {number} stars Number of stars.
-   * @returns {string}
-   */
-  getTextualFinal(stars) {
-    const { __ } = this.context.i18n();
-    return __('reviews.rating_stars', { rate: stars });
-  }
-
-  /**
    * Returns text for call to a
    * @param {number} stars Number of stars.
    * @returns {string}
@@ -90,7 +80,6 @@ class Stars extends Component {
       value,
       isSelectable,
     } = this.props;
-    const numStars = 5;
     const ratedStars = value / RATING_SCALE_DIVISOR;
     const numFullStars = Math.floor(ratedStars);
     const numHalfStars = Math.ceil(ratedStars - numFullStars);
@@ -101,7 +90,7 @@ class Stars extends Component {
     const iconClassName = [styles.iconStyles[this.props.display].iconStyle, styles.icon].join(' ');
 
     const emptyStars = [
-      ...times(numStars, (i) => {
+      ...times(NUMBER_OF_STARS, (i) => {
         const pos = i + 1;
         const starProps = {
           className: iconClassName,
@@ -126,7 +115,7 @@ class Stars extends Component {
         const pos = i + 1;
         const starProps = {
           className: iconClassName,
-          key: numStars + pos,
+          key: NUMBER_OF_STARS + pos,
           ...(isSelectable) && {
             'aria-hidden': true, // Aria hidden since it's basically a duplicate for a screen reader.
             role: 'button',
@@ -148,7 +137,11 @@ class Stars extends Component {
     ];
 
     return (
-      <div className={className} aria-label={this.getTextualFinal(ratedStars)} data-test-id={`ratedStars: ${ratedStars}`}>
+      <div
+        className={className}
+        data-test-id={`ratedStars: ${ratedStars}`}
+        aria-hidden
+      >
         <div className={styles.emptyStars}>
           {emptyStars}
         </div>

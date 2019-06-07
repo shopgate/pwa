@@ -12,14 +12,25 @@ import styles from './style';
  * @param {number} props.unitPrice The price of the product
  * @param {number} props.unitPriceMin The minimum price of possible child products
  * @param {boolean} props.discounted Tells if the pice is discounted
+ * @param {Object} context The component context.
  * @return {JSX}
  */
-const Price = (props) => {
+const Price = (props, context) => {
   const containerClasses = [
     styles.container,
     props.className,
     ...props.discounted && [styles.discounted],
   ].join(' ');
+
+  const { __, _p } = context.i18n();
+
+  let ariaPrice;
+
+  if (props.unitPriceMin) {
+    ariaPrice = __('price.from', { price: _p(props.unitPriceMin, props.currency, props.fractions) });
+  } else {
+    ariaPrice = _p(props.unitPrice, props.currency, props.fractions);
+  }
 
   /**
    * A unitPriceMin > 0 means, that the product has child products with different prices.
@@ -30,6 +41,7 @@ const Price = (props) => {
     <div
       className={containerClasses}
       data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
+      aria-label={__('price.label', { price: ariaPrice })}
     >
       {props.unitPriceMin ? (
         <I18n.Text string="price.from">

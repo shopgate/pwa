@@ -17,6 +17,7 @@ export const buildFetchCategoryProductsParams = () => {
 
   return {
     params: {
+      characteristics: true,
       ...scheduled.params,
     },
     ...scheduled.cachedTime && { cachedTime: scheduled.cachedTime },
@@ -27,4 +28,4 @@ export const buildFetchCategoryProductsParams = () => {
  * Build params to fetch search products. Same as category for now
  * @returns {undefined|{params: Object}}
  */
-export const buildFetchSearchResultsParams = () => buildFetchCategoryProductsParams();
+export const buildFetchSearchResultsParams = buildFetchCategoryProductsParams;

@@ -13,7 +13,7 @@ import getProducts from './actions/getProducts';
 const mapStateToProps = (state, props) => ({
   ...getProductsResult(state, {
     ...props,
-    ...{ params: buildFetchSearchResultsParams().params },
+    params: buildFetchSearchResultsParams().params,
   }),
 });
 

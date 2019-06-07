@@ -1,3 +1,5 @@
+/* eslint-disable extra-rules/no-single-line-objects */
+import { ELEMENT_TYPE_SELECT } from '../elementTypes';
 import buildFormDefaults from './buildFormDefaults';
 
 const formElement = {
@@ -30,7 +32,6 @@ describe('buildFormDefaults', () => {
     const expected = {
       field: 'foo',
     };
-    // eslint-disable-next-line extra-rules/no-single-line-objects
     const el = { ...formElement, custom: true };
     expect(buildFormDefaults([el], defaults)).toEqual(expected);
   });
@@ -39,10 +40,29 @@ describe('buildFormDefaults', () => {
     const expected = {
       field: 'baz',
     };
-    // eslint-disable-next-line extra-rules/no-single-line-objects
     const el = { ...formElement, custom: true };
-    // eslint-disable-next-line extra-rules/no-single-line-objects
     const def = { ...defaults, customAttributes: { field: 'baz' } };
     expect(buildFormDefaults([el], def)).toEqual(expected);
   });
+
+  describe('ELEMENT_TYPE_SELECT', () => {
+    const options = { mr: 'Mr.', mrs: 'Mrs.' };
+
+    it('should set default value', () => {
+      const el = { ...formElement, type: ELEMENT_TYPE_SELECT, options };
+      expect(buildFormDefaults([el])).toEqual({
+        field: 'foo',
+      });
+    });
+    it('should set first option', () => {
+      const el = {
+        ...formElement, type: ELEMENT_TYPE_SELECT, options, default: null,
+      };
+      expect(buildFormDefaults([el])).toEqual({
+        field: 'mr',
+      });
+    });
+  });
 });
+/* eslint-enable extra-rules/no-single-line-objects */
+

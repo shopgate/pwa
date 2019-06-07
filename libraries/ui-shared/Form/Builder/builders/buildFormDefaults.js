@@ -1,4 +1,4 @@
-import { ELEMENT_TYPE_CHECKBOX } from '../elementTypes';
+import { ELEMENT_TYPE_CHECKBOX, ELEMENT_TYPE_SELECT } from '../elementTypes';
 
 /**
  * Prepare state of formData for form builder
@@ -12,6 +12,10 @@ export default (formElements = [], defaults = {}) => {
   // Take only those defaults from props, that are actually represented by an element
   formElements.forEach((element) => {
     let defaultState = element.type === ELEMENT_TYPE_CHECKBOX ? false : '';
+
+    if (element.type === ELEMENT_TYPE_SELECT && !element.default) {
+      ([defaultState] = Object.keys(element.options));
+    }
 
     // Use default from element config as a base
     if (element.default !== undefined && element.default !== null) {

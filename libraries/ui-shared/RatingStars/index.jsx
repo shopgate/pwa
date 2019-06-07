@@ -10,6 +10,7 @@ import { RATING_SCALE_DIVISOR } from './constants';
  * The available style keys for the rating stars.
  */
 const availableStyles = styles.iconStyles;
+const numStars = 5;
 
 /**
  * The rating stars component.
@@ -57,7 +58,10 @@ class RatingStars extends Component {
    */
   getTextualFinal(stars) {
     const { __ } = this.context.i18n();
-    return __('reviews.rating_stars', { rate: stars });
+    return __('reviews.rating_stars', {
+      rate: stars,
+      maxRate: numStars,
+    });
   }
 
   /**
@@ -87,7 +91,6 @@ class RatingStars extends Component {
    */
   render() {
     const { value, isSelectable } = this.props;
-    const numStars = 5;
     const ratedStars = value / RATING_SCALE_DIVISOR;
     const numFullStars = Math.floor(ratedStars);
     const numHalfStars = Math.ceil(ratedStars - numFullStars);

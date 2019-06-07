@@ -24,7 +24,6 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
     }
   >
     <div
-      aria-hidden={true}
       className="css-13azwyo"
       onClick={[Function]}
       style={null}
@@ -216,9 +215,11 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
   title="My Title"
 >
   <div
-    aria-hidden={true}
     data-test-id={null}
     onClick={[Function]}
+    onKeyPress={[Function]}
+    role="link"
+    tabIndex="0"
   >
     <Glow
       className={null}
@@ -231,7 +232,6 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
       }
     >
       <div
-        aria-hidden={true}
         className="css-13azwyo"
         onClick={[Function]}
         style={null}

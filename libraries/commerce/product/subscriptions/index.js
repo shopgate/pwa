@@ -47,6 +47,10 @@ function product(subscribe) {
     dispatch(fetchProductProperties(id));
     dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
     dispatch(fetchProductShipping(id));
+    /**
+     * This feature is currently in BETA testing.
+     * It should only be used for approved BETA Client Projects
+     */
     dispatch(fetchProductMedia(id));
   });
 
@@ -88,19 +92,25 @@ function product(subscribe) {
     dispatch(fetchProduct(productId, true));
   });
 
+  const productNotFound$ = visibleProductNotFound$.withLatestFrom((
+    receivedVisibleProduct$.startWith({ action: { productData: {} } })
+  ));
   /** Visible product is no more available */
-  subscribe(visibleProductNotFound$, ({ action, dispatch }) => {
+  subscribe(productNotFound$, ([{ action, dispatch }, { action: { productData } }]) => {
+    const { productId } = action;
+    const name = productData.id === productId ? productData.name : productId;
+
     dispatch(showModal({
       confirm: null,
       dismiss: 'modal.ok',
       title: 'modal.title_error',
       message: 'product.no_more_found',
       params: {
-        name: action.productData.name,
+        name,
       },
     }));
     dispatch(historyPop());
-    dispatch(expireProductById(action.productData.id));
+    dispatch(expireProductById(productId));
   });
 
   subscribe(productRelationsReceived$, ({ dispatch, getState, action }) => {

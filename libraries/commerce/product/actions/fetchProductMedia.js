@@ -1,3 +1,4 @@
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
@@ -12,6 +13,10 @@ import errorProductMedia from '../action-creators/errorProductMedia';
  * @return {Function} A Redux Thunk
  */
 const fetchProductMedia = productId => (dispatch, getState) => {
+  if (!appConfig.beta) {
+    return;
+  }
+
   const state = getState();
   const cachedData = state.product.mediaByProductId[productId];
 

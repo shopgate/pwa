@@ -111,17 +111,20 @@ exports[`<ProductCard /> should render as expected 1`] = `
             tagName="a"
           >
             <Link
+              ariaLabel={null}
               className=""
               disabled={false}
               historyPush={[Function]}
               historyReplace={[Function]}
               href="/item/505230445543544944"
               replace={false}
+              role="link"
               state={Object {}}
               tag="div"
               tagName="a"
             >
               <div
+                aria-label={null}
                 className="css-c6ki83 "
                 data-test-id="link: /item/505230445543544944"
                 onClick={[Function]}
@@ -780,6 +783,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                       unitPriceMin={0}
                                     >
                                       <div
+                                        aria-label="price.label"
                                         className="css-izofhs  css-1ncyhu"
                                         data-test-id="minPrice: 0 price: 5 currency: EUR"
                                       >
@@ -817,6 +821,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                         className="css-1sagvrb css-7hzrhp "
                                       >
                                         <span
+                                          aria-label="price.label_old_price"
                                           data-test-id="strikedPrice: 10"
                                         >
                                           <FormatPrice

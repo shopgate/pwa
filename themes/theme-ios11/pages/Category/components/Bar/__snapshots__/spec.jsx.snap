@@ -60,7 +60,9 @@ exports[`<Bar /> should match snapshot 1`] = `
             filters={null}
             viewRef={null}
           >
-            <section>
+            <section
+              aria-hidden={true}
+            >
               <div
                 className="css-gpg0x2"
                 data-test-id="filterBar"

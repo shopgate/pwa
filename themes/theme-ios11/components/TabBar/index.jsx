@@ -114,16 +114,16 @@ class TabBar extends PureComponent {
     return (
       <KeyboardConsumer>
         {({ open }) => !open && (
-        <Fragment>
-          <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
-          {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
-          <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-            <Grid className={styles} data-test-id="tabBar">
-              {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-            </Grid>
-          </Portal>
-          <Portal name={TAB_BAR_AFTER} props={{ ...props }} />
-        </Fragment>
+          <Fragment>
+            <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
+            {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
+            <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
+              <Grid className={styles} data-test-id="tabBar" role="tablist">
+                {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+              </Grid>
+            </Portal>
+            <Portal name={TAB_BAR_AFTER} props={{ ...props }} />
+          </Fragment>
         )}
       </KeyboardConsumer>
     );
