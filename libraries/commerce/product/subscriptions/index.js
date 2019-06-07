@@ -47,6 +47,10 @@ function product(subscribe) {
     dispatch(fetchProductProperties(id));
     dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
     dispatch(fetchProductShipping(id));
+    /**
+     * This feature is currently in BETA testing.
+     * It should only be used for approved BETA Client Projects
+     */
     dispatch(fetchProductMedia(id));
   });
 
