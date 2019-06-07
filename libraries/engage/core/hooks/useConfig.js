@@ -1,10 +1,9 @@
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { getConfig } from '../config/getConfig';
 
 /**
  * Provides the global theme configuration.
  * @returns {Object}
  */
 export function useConfig() {
-  const { theme: { pages, ...config } = {} } = appConfig;
-  return config || {};
+  return getConfig();
 }

@@ -1,68 +1,71 @@
-import { isBefore, isAfter } from '@shopgate/engage/core';
+import { isAfter, isBefore } from '@shopgate/engage/core';
+
+const ALWAYS = 'always';
+const DAYS_BEFORE = 'daysBefore';
+const NEVER = 'always';
 
 /**
  * Decide if startDate hint should be shown
- * @param {Object} settings settings
  * @param {Date} startDate product.startDate
+ * @param {Object} [settings=null] settings
  * @returns {boolean}
  */
-export const showStartDateHint = (settings, startDate) => {
+export const showStartDateHint = (startDate, settings = null) => {
   if (!startDate || !startDate.getDate()) {
     return false;
   }
 
   const {
-    showStartDate: {
-      strategy = 'always', // 'always|daysBefore|never',
+    startDate: {
+      showProducts = ALWAYS, // 'always|daysBefore|never',
       daysBefore = 0,
     } = {},
   } = settings || {};
 
-  switch (strategy) {
-    case 'always':
+  switch (showProducts) {
+    case ALWAYS:
       return isBefore(Date.now(), startDate);
 
-    case 'daysBefore': {
+    case DAYS_BEFORE: {
       const now = Date.now();
       return isBefore(now, startDate)
       && isAfter(startDate, now.setDate(now.getDate() - daysBefore));
     }
 
     default:
-    case 'never':
+    case NEVER:
       return false;
   }
 };
 
 /**
  * Decide if endDate hint should be shown
- * @param {Object} settings settings
  * @param {Date} endDate product.endDate
+ * @param {Object} [settings=null] settings default global settings
  * @returns {boolean}
  */
-export const showEndDateHint = (settings, endDate) => {
+export const showEndDateHint = (endDate, settings) => {
   if (!endDate || !endDate.getDate()) {
     return false;
   }
 
   const {
-    showEndDate: {
-      strategy = 'always', // 'always|daysBefore|never',
+    endDate: {
+      showProducts = ALWAYS, // 'always|daysBefore|never',
       daysBefore = 0,
     } = {},
   } = settings || {};
 
-  switch (strategy) {
-    case 'always':
+  switch (showProducts) {
+    case ALWAYS:
       return true;
 
-    case 'daysBefore': {
+    case DAYS_BEFORE: {
       return isAfter(Date.now(), endDate.setDate(endDate.getDate() - daysBefore));
     }
 
     default:
-    case 'never':
+    case NEVER:
       return false;
   }
 };
-

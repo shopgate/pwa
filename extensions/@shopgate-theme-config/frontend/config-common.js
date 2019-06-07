@@ -18,12 +18,12 @@ export default {
         show: true,
       },
       '@shopgate/engage/product/EffectivityDates': {
-        showStartDate: {
-          strategy: 'always',
+        startDate: {
+          showProducts: 'always',
           daysBefore: null,
         },
-        showEndDate: {
-          strategy: 'always',
+        endDate: {
+          showProducts: 'always',
           daysBefore: null,
         },
         accessExpired: false,
@@ -119,6 +119,11 @@ export default {
           {
             name: 'ShopgateProductEffectivityDates',
             id: '@shopgate/engage/product/EffectivityDates',
+            styles: {
+              hint: {
+                fontSize: '0.875rem',
+              },
+            },
           },
           {
             name: 'ShopgateProductSwatch',

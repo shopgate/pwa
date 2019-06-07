@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta, useWidgetSettings } from '@shopgate/engage/core';
+import classNames from 'classnames';
+import { css } from 'glamor';
+import { isBeta, useWidgetSettings, useWidgetStyles } from '@shopgate/engage/core';
 import { I18n, TimeBoundary } from '@shopgate/engage/components';
 import { showStartDateHint, showEndDateHint } from './helpers';
 import { hint } from './style';
@@ -10,22 +12,28 @@ import connect from './connector';
  * The Product Effectivity Dates component.
  * @return {JSX}
  */
-const EffectivityDates = ({ dates, children, productNotAvailable }) => {
+const EffectivityDates = ({
+  dates, children, productNotAvailable,
+}) => {
   if (!isBeta() || !dates) {
     return children;
   }
 
   const settings = useWidgetSettings('@shopgate/engage/product/EffectivityDates');
+  const styles = useWidgetStyles('@shopgate/engage/product/EffectivityDates');
 
   const startDate = new Date(dates.startDate);
   const endDate = new Date(dates.endDate);
+
+  const hintAddClass = styles && styles.hint ? css(styles.hint).toString() : null;
+  const hintClass = classNames(hint, hintAddClass);
 
   return (
     <TimeBoundary start={startDate} end={endDate}>
       {({ before, between, after }) => {
         if (before) {
-          return showStartDateHint(settings, startDate)
-            ? <I18n.Text string="product.available.at" params={{ startDate }} className={hint} />
+          return showStartDateHint(startDate, settings)
+            ? <I18n.Text string="product.available.at" params={{ startDate }} className={hintClass} />
             : children;
         }
 
@@ -33,20 +41,18 @@ const EffectivityDates = ({ dates, children, productNotAvailable }) => {
           return (
             <Fragment>
               {children}
-              {showEndDateHint(settings, endDate) &&
-                <I18n.Text string="product.available.until" params={{ endDate }} className={hint} />
+              {showEndDateHint(endDate, settings) &&
+                <I18n.Text string="product.available.until" params={{ endDate }} className={hintClass} />
               }
             </Fragment>
           );
         }
 
         if (after) {
-          if (!settings.accessExpired) {
-            productNotAvailable();
-          }
+          productNotAvailable();
 
-          return showEndDateHint(settings, endDate)
-            ? <I18n.Text string="product.available.not" className={hint} />
+          return showEndDateHint(endDate, settings)
+            ? <I18n.Text string="product.available.not" className={hintClass} />
             : children;
         }
         return children;
