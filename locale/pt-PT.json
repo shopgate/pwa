@@ -52,7 +52,9 @@
       "range": "{from} ou mais: {price}"
     },
     "msrp": "MSRP",
-    "currency": "EUR"
+    "currency": "EUR",
+    "label": "Price {price}.",
+    "label_old_price": "Old price {price}."
   },
   "product": {
     "description_heading": "Sobre",
@@ -162,7 +164,7 @@
     "button_add": "Escreva uma avaliação",
     "button_all": "Todas as{count} avaliações",
     "author": "pelo {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {estrela} other {estrelas}}",
+    "rating_stars": "{rate} {rate, plural, =1 {estrela} other {estrelas}} de {maxRate}",
     "review_form_rate": "Avalie este produto:",
     "review_form_author": "Seu Nome",
     "review_form_title": "Título da avaliação (opcional)",
