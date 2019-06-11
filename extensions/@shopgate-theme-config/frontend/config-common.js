@@ -150,6 +150,22 @@ export default {
           },
         ],
       },
+      {
+        pattern: '/item/:productId/gallery/:slide',
+        name: 'Product Gallery Page',
+        settings: {},
+        widgets: [
+          {
+            name: 'ShopgateProductGallery',
+            id: '@shopgate/engage/product/Gallery',
+            settings: {
+              zoom: {
+                maxRatio: 4,
+              },
+            },
+          },
+        ],
+      },
     ],
     variables: {
       swatchItemSize: '48px',
