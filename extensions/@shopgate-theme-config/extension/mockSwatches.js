@@ -9,7 +9,7 @@ const sets = ['colors', 'images'];
  * @returns {Promise<{products: Object[]}>}
  */
 module.exports = async (context, { products = [] }) => {
-  if (!context.config.enableMocks) {
+  if (!context.config.mocks.enabled) {
     return { products };
   }
 
