@@ -16,6 +16,8 @@ const fetchSearchResults = params => (dispatch) => {
     limit = ITEMS_PER_LOAD,
     sort = DEFAULT_SORT,
     filters = null,
+    params: searchParams = null,
+    cachedTime = null,
   } = params;
 
   if (!searchPhrase) {
@@ -23,11 +25,13 @@ const fetchSearchResults = params => (dispatch) => {
   }
 
   const promise = dispatch(fetchProducts({
+    cachedTime,
     params: {
       searchPhrase,
       offset,
       limit,
       sort,
+      ...searchParams,
     },
     filters,
     onBeforeDispatch: () => {

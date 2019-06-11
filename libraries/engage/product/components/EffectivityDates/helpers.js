@@ -1,8 +1,32 @@
-import { isAfter, isBefore } from '@shopgate/engage/core';
+import { getThemeSettings, isBeta, isAfter, isBefore, addDuration } from '@shopgate/engage/core';
+import { ALWAYS, NEVER } from './constants';
 
-const ALWAYS = 'always';
-const DAYS_BEFORE = 'daysBefore';
-const NEVER = 'always';
+/**
+ * Biuld params to fetch category products
+ * @returns {Object|{showScheduled: string}}
+ */
+export const buildShowScheduledParams = () => {
+  if (!isBeta()) {
+    return {};
+  }
+
+  let cachedTime = null;
+  let { effectivityDates: { showScheduled } } = getThemeSettings('product');
+
+  if (showScheduled === ALWAYS) {
+    showScheduled = 'P1Y';
+  } else if (showScheduled === NEVER) {
+    showScheduled = 'PT0S';
+    cachedTime = 60000; // 1 minute min effective precision
+  }
+
+  return {
+    cachedTime,
+    params: {
+      showScheduled,
+    },
+  };
+};
 
 /**
  * Decide if startDate hint should be shown
@@ -10,32 +34,33 @@ const NEVER = 'always';
  * @param {Object} [settings=null] settings
  * @returns {boolean}
  */
-export const showStartDateHint = (startDate, settings = null) => {
+export const showScheduledLabel = (startDate, settings = null) => {
   if (!startDate || !startDate.getDate()) {
     return false;
   }
 
+  const now = new Date();
+  if (isBefore(startDate, now)) {
+    return false;
+  }
+
   const {
-    startDate: {
-      showProducts = ALWAYS, // 'always|daysBefore|never',
-      daysBefore = 0,
+    scheduledProducts: {
+      showLabels = ALWAYS, // 'always|P2D|never',
     } = {},
   } = settings || {};
 
-  switch (showProducts) {
-    case ALWAYS:
-      return isBefore(Date.now(), startDate);
-
-    case DAYS_BEFORE: {
-      const now = Date.now();
-      return isBefore(now, startDate)
-      && isAfter(startDate, now.setDate(now.getDate() - daysBefore));
-    }
-
-    default:
-    case NEVER:
-      return false;
+  if (showLabels === NEVER) {
+    return false;
   }
+  if (showLabels === ALWAYS) {
+    return true;
+  }
+
+  const cloned = new Date(startDate.getTime());
+  addDuration(cloned, `-${showLabels}`);
+
+  return isAfter(now, cloned);
 };
 
 /**
@@ -44,28 +69,27 @@ export const showStartDateHint = (startDate, settings = null) => {
  * @param {Object} [settings=null] settings default global settings
  * @returns {boolean}
  */
-export const showEndDateHint = (endDate, settings) => {
+export const showExpiringLabel = (endDate, settings) => {
   if (!endDate || !endDate.getDate()) {
     return false;
   }
 
   const {
-    endDate: {
-      showProducts = ALWAYS, // 'always|daysBefore|never',
-      daysBefore = 0,
+    expiringProducts: {
+      showLabels = ALWAYS, // 'always|P2D|never',
     } = {},
   } = settings || {};
 
-  switch (showProducts) {
-    case ALWAYS:
-      return true;
-
-    case DAYS_BEFORE: {
-      return isAfter(Date.now(), endDate.setDate(endDate.getDate() - daysBefore));
-    }
-
-    default:
-    case NEVER:
-      return false;
+  if (showLabels === NEVER) {
+    return false;
   }
+  if (showLabels === ALWAYS) {
+    return true;
+  }
+
+  const now = new Date();
+  const cloned = new Date(endDate.getTime());
+  addDuration(cloned, `-${showLabels}`);
+
+  return isAfter(now, cloned);
 };

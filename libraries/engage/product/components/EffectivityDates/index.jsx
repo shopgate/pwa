@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { css } from 'glamor';
 import { isBeta, useWidgetSettings, useWidgetStyles } from '@shopgate/engage/core';
 import { I18n, TimeBoundary } from '@shopgate/engage/components';
-import { showStartDateHint, showEndDateHint } from './helpers';
+import { showExpiringLabel, showScheduledLabel } from './helpers';
 import { hint } from './style';
 import connect from './connector';
 
@@ -32,7 +32,7 @@ const EffectivityDates = ({
     <TimeBoundary start={startDate} end={endDate}>
       {({ before, between, after }) => {
         if (before) {
-          return showStartDateHint(startDate, settings)
+          return showScheduledLabel(startDate, settings)
             ? <I18n.Text string="product.available.at" params={{ startDate }} className={hintClass} />
             : children;
         }
@@ -41,7 +41,7 @@ const EffectivityDates = ({
           return (
             <Fragment>
               {children}
-              {showEndDateHint(endDate, settings) &&
+              {showExpiringLabel(endDate, settings) &&
                 <I18n.Text string="product.available.until" params={{ endDate }} className={hintClass} />
               }
             </Fragment>
@@ -51,7 +51,7 @@ const EffectivityDates = ({
         if (after) {
           productNotAvailable();
 
-          return showEndDateHint(endDate, settings)
+          return showExpiringLabel(endDate, settings)
             ? <I18n.Text string="product.available.not" className={hintClass} />
             : children;
         }

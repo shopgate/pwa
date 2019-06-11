@@ -1,4 +1,4 @@
-import { isBeta, redirects, getSettings, isAfter } from '@shopgate/engage/core';
+import { isBeta, redirects, getThemeSettings, isAfter } from '@shopgate/engage/core';
 import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { makeGetProductEffectivityDates } from '../selectors/product';
 
@@ -12,7 +12,7 @@ export const enableRedirectHandler = () => {
   }
 
   /** Effectivity dates */
-  const { accessExpired = true } = getSettings('@shopgate/engage/product/EffectivityDates') || {};
+  const { effectivityDates: { accessExpired } } = getThemeSettings('product');
   if (accessExpired) {
     return;
   }
@@ -26,7 +26,7 @@ export const enableRedirectHandler = () => {
     if (effectivityDates) {
       // Forbid redirect if endDate is expired
       if (effectivityDates.endDate
-        && isAfter(Date.now(), new Date(effectivityDates.endDate))) {
+        && isAfter(new Date(), new Date(effectivityDates.endDate))) {
         return null;
       }
     }

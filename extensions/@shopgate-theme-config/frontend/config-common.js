@@ -9,6 +9,12 @@ export default {
   beta: true,
   theme: {
     settings: {
+      product: {
+        effectivityDates: {
+          showScheduled: 'never',
+          accessExpired: false,
+        },
+      },
       '@shopgate/engage/product/MapPrice': {
         show: true,
         showHint: true,
@@ -18,15 +24,12 @@ export default {
         show: true,
       },
       '@shopgate/engage/product/EffectivityDates': {
-        startDate: {
-          showProducts: 'always',
-          daysBefore: null,
+        scheduledProducts: {
+          showLabels: 'always',
         },
-        endDate: {
-          showProducts: 'always',
-          daysBefore: null,
+        expiringProducts: {
+          showLabels: 'always',
         },
-        accessExpired: false,
       },
       '@shopgate/engage/product/Swatches': {
         maxItemCount: 10,

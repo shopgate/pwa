@@ -1,9 +1,9 @@
-import { getConfig } from '../config/getConfig';
+import { getThemeConfig } from '../config/getThemeConfig';
 
 /**
  * Provides the global theme configuration.
  * @returns {Object}
  */
 export function useConfig() {
-  return getConfig();
+  return getThemeConfig();
 }

@@ -47,7 +47,7 @@ export default function resultsByHash(state = {}, action) {
           products: stateProducts,
           totalResultCount: typeof action.totalResultCount !== 'undefined' ? action.totalResultCount : null,
           isFetching: false,
-          expires: action.cached ? (Date.now() + PRODUCT_LIFETIME) : 0,
+          expires: action.cached ? (Date.now() + action.cachedTime || PRODUCT_LIFETIME) : 0,
         },
       };
     }
@@ -60,9 +60,12 @@ export default function resultsByHash(state = {}, action) {
             && currentState[hash].products.includes(action.productId)
           ) {
             // eslint-disable-next-line no-param-reassign
-            currentState[hash].products = currentState[hash].products.filter((
-              pId => pId !== action.productId
-            ));
+            currentState[hash] = {
+              ...currentState[hash],
+              products: currentState[hash].products.filter((
+                pId => pId !== action.productId
+              )),
+            };
           }
           return currentState;
         }, { ...state });
@@ -71,17 +74,19 @@ export default function resultsByHash(state = {}, action) {
 
     case EXPIRE_PRODUCT_BY_ID: {
       const productIds = [].concat(action.productId);
+
       return Object.keys(state).reduce((currentState, hash) => {
         if (currentState[hash].products
           && productIds.some(id => currentState[hash].products.includes(id))) {
           // eslint-disable-next-line no-param-reassign
-          currentState[hash].expires = 0;
-
-          if (action.complete) {
-            // eslint-disable-next-line no-param-reassign
-            currentState[hash].products = currentState[hash].products
-              .filter(id => !productIds.includes(id));
-          }
+          currentState[hash] = {
+            ...currentState[hash],
+            expires: 0,
+            ...action.complete && {
+              products: currentState[hash].products
+                .filter(id => !productIds.includes(id)),
+            },
+          };
         }
         return currentState;
       }, { ...state });

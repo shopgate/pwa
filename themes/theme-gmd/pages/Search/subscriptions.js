@@ -1,3 +1,4 @@
+import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
 import {
   searchWillEnter$,
   searchDidEnter$,
@@ -20,6 +21,7 @@ export default function search(subscribe) {
       filters,
       searchPhrase,
       sort,
+      ...buildFetchSearchResultsParams(),
     }));
   });
 
@@ -32,6 +34,7 @@ export default function search(subscribe) {
       filters,
       searchPhrase,
       sort,
+      ...buildFetchSearchResultsParams(),
     }));
   });
 

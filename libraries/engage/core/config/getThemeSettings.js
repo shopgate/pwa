@@ -1,11 +1,11 @@
-import { getConfig } from './getConfig';
+import { getThemeConfig } from './getThemeConfig';
 
 /**
  * Retrieves the global theme settings.
  * @param {string|null} [key=null] settings key
  * @returns {Object}
  */
-export function getSettings(key = null) {
-  const { settings } = getConfig();
+export function getThemeSettings(key = null) {
+  const { settings = {} } = getThemeConfig();
   return key ? settings[key] : settings;
 }
