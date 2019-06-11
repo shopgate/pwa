@@ -58,39 +58,11 @@
   },
   "steps": [
     {
-      "path": "extension/mockMapPrice.js",
-      "hooks": [
-        "shopgate.catalog.getProducts.v1:after",
-        "shopgate.catalog.getHighlightProducts.v1:after"
-      ],
-      "input": [{"key": "products"}],
-      "output": [{"key": "products"}]
-    },
-    {
-      "path": "extension/mockNotFoundProduct.js",
-      "hooks": [
-        "shopgate.catalog.getProducts.v1:after",
-        "shopgate.catalog.getHighlightProducts.v1:after"
-      ],
-      "input": [{"key": "products"}],
-      "output": [{"key": "products"}]
-    },
-    {
-      "path": "extension/mockMinMaxOrder.js",
-      "hooks": [
-        "shopgate.catalog.getProducts.v1:after",
-        "shopgate.catalog.getHighlightProducts.v1:after"
-      ],
-      "input": [{"key": "products"}],
-      "output": [{"key": "products"}]
-    },
-    {
-      "path": "extension/mockEffectiveDates.js",
-      "hooks": [
-        "shopgate.catalog.getProducts.v1:after",
-        "shopgate.catalog.getHighlightProducts.v1:after"
-      ],
-      "input": [{"key": "products"}],
+      "path": "extension/mockCatalog2Data.js",
+      "hooks": ["shopgate.catalog.getProducts.v1:after"],
+      "input": [
+        {"key": "showScheduled", "optional": true, "addPipelineInput": true},
+        {"key": "products"}],
       "output": [{"key": "products"}]
     },
     {

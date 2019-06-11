@@ -1,3 +1,4 @@
+import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import fetchSearchResults from '@shopgate/pwa-common-commerce/search/actions/fetchSearchResults';
 
@@ -15,6 +16,7 @@ const getProducts = (searchPhrase, sort, offset) => (dispatch, getState) => {
     offset,
     filters,
     sort,
+    ...buildFetchSearchResultsParams(),
   }));
 };
 

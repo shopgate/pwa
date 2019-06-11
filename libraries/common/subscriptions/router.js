@@ -5,6 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor';
+import Route from '@virtuous/conductor/Route';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { logger } from '@shopgate/pwa-core';
 import { LoadingProvider } from '../providers';
@@ -88,6 +89,15 @@ export default function routerSubscriptions(subscribe) {
         const { pathname } = getCurrentRoute(state);
         LoadingProvider.setLoading(pathname);
 
+        const pattern = router.findPattern(location.split('?')[0]);
+        const { transform } = router.patterns[pattern] || {};
+        const route = new Route({
+          pathname: location,
+          pattern,
+          routeState,
+          transform,
+        });
+
         try {
           redirect = await redirect({
             ...params,
@@ -98,6 +108,7 @@ export default function routerSubscriptions(subscribe) {
                 // Merge the sanitized location into the redirect handler payload.
                 pathname: location,
               },
+              route,
             },
           });
         } catch (e) {

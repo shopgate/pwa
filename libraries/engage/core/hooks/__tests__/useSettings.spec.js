@@ -1,24 +1,22 @@
-import { useConfig } from '../useConfig';
+import { getThemeSettings } from '../../config/getThemeSettings';
 import { useSettings } from '../useSettings';
 
-jest.mock('../useConfig', () => ({
-  useConfig: jest.fn(),
+jest.mock('../../config/getThemeSettings', () => ({
+  getThemeSettings: jest.fn(),
 }));
 
 describe('engage > core > hooks', () => {
   describe('useSettings()', () => {
     it('should return an empty object if no settings', () => {
-      useConfig.mockReturnValueOnce({});
+      getThemeSettings.mockReturnValueOnce({});
       const settings = useSettings();
       expect(settings).toEqual({});
     });
 
     it('should return an object containing language and currency.', () => {
-      useConfig.mockReturnValueOnce({
-        settings: {
-          currency: 'USD',
-          language: 'en-US',
-        },
+      getThemeSettings.mockReturnValueOnce({
+        currency: 'USD',
+        language: 'en-US',
       });
       const settings = useSettings();
       expect(settings).toEqual({
