@@ -214,6 +214,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo css-hgkz41"
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -659,6 +660,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo css-hgkz41"
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -1104,6 +1106,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo css-hgkz41"
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -1549,6 +1552,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo css-hgkz41"
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -2053,7 +2057,6 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -2209,6 +2212,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo css-hgkz41"
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -2654,6 +2658,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo css-hgkz41"
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"

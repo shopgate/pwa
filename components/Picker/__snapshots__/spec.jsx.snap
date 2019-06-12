@@ -9,51 +9,65 @@ exports[`<Picker /> should render the picker 1`] = `
   label="Picker label"
   sheetProps={Object {}}
 >
-  <Picker
+  <ForwardRef(withForwardedRef(Picker))
     buttonComponent={[Function]}
     buttonProps={Object {}}
     className="css-murgv5"
     clickDelay={150}
-    disabled={false}
-    duration={300}
-    isOpen={false}
-    items={Array []}
     label="Picker label"
     listComponent={[Function]}
     modalComponent={[Function]}
-    onChange={[Function]}
-    onClose={[Function]}
-    onSelect={[Function]}
-    placeholder="Pick ..."
-    value={null}
   >
-    <div
+    <Picker
+      buttonComponent={[Function]}
+      buttonProps={Object {}}
       className="css-murgv5"
+      clickDelay={150}
+      disabled={false}
+      duration={300}
+      forwardedRef={[Function]}
+      isOpen={false}
+      items={Array []}
+      label="Picker label"
+      listComponent={[Function]}
+      modalComponent={[Function]}
+      onChange={[Function]}
+      onClose={[Function]}
+      onSelect={[Function]}
+      placeholder="Pick ..."
+      value={null}
     >
-      <Button
-        disabled={false}
-        label="Pick ..."
-        openList={[Function]}
-        value=""
+      <div
+        aria-haspopup={true}
+        className="css-murgv5"
+        role="button"
+        tabIndex={0}
       >
-        <button
-          className="css-164ggb6"
-          onClick={[Function]}
+        <Button
+          disabled={false}
+          label="Pick ..."
+          openList={[Function]}
+          value=""
         >
-          <span
-            className="css-1358lbd"
+          <button
+            className="css-164ggb6"
+            onClick={[Function]}
           >
-            Pick ...
-          </span>
-        </button>
-      </Button>
-      <Portal
-        isOpened={true}
-        onClose={[Function]}
-        onOpen={[Function]}
-        onUpdate={[Function]}
-      />
-    </div>
-  </Picker>
+            <span
+              className="css-1358lbd"
+            >
+              Pick ...
+            </span>
+          </button>
+        </Button>
+        <Portal
+          isOpened={true}
+          onClose={[Function]}
+          onOpen={[Function]}
+          onUpdate={[Function]}
+        />
+      </div>
+    </Picker>
+  </ForwardRef(withForwardedRef(Picker))>
 </Picker>
 `;

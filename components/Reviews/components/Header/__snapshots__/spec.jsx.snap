@@ -93,6 +93,7 @@ exports[`<Header /> should render empty 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 0"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -387,7 +388,6 @@ exports[`<Header /> should render empty 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -517,6 +517,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 2.5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -958,7 +959,6 @@ exports[`<Header /> should render rating summary 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
