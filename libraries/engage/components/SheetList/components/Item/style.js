@@ -4,6 +4,10 @@ import { IMAGE_SPACE } from '../../style';
 
 const { colors, variables } = themeConfig;
 
+const resetOutline = css({
+  outline: 0,
+});
+
 const disabled = css({
   color: colors.shade5,
 }).toString();
@@ -38,6 +42,7 @@ const image = css({
 }).toString();
 
 export default {
+  resetOutline,
   disabled,
   selected,
   title,

@@ -49,6 +49,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
         className="css-f7yea6"
       >
         <Swiper
+          aria-hidden={null}
           autoPlay={false}
           className="css-sa13d4"
           classNames={
@@ -77,6 +78,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           }
         >
           <div
+            aria-hidden={null}
             className="css-1hlki0z css-sa13d4"
           >
             <ReactIdSwiper
@@ -336,6 +338,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
         className="css-f7yea6"
       >
         <Swiper
+          aria-hidden={null}
           autoPlay={false}
           className="css-sa13d4"
           classNames={
@@ -364,6 +367,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           }
         >
           <div
+            aria-hidden={null}
             className="css-1hlki0z css-sa13d4"
           >
             <ReactIdSwiper

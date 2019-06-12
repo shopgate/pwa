@@ -11,6 +11,7 @@ exports[`<SheetList /> should not render invalid children 1`] = `
   >
     <ul
       className={null}
+      role="listbox"
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n"
@@ -25,45 +26,58 @@ exports[`<SheetList /> should not render invalid children 1`] = `
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <Item
-              className={null}
-              image={null}
-              isDisabled={false}
-              isSelected={false}
-              link={null}
-              linkState={null}
-              onClick={null}
-              rightComponent={null}
-              testId={null}
+            <ForwardRef(withForwardedRef(Item))
               title="List Item"
             >
-              <div
-                data-test-id={null}
+              <Item
+                className={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                link={null}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
+                title="List Item"
               >
-                <Grid
-                  className="css-1qcr7hz"
-                  component="div"
-                  wrap={false}
+                <div
+                  aria-selected={false}
+                  className={
+                    Object {
+                      "data-css-3l3fu5": "",
+                    }
+                  }
+                  data-test-id={null}
+                  role="option button"
+                  tabIndex={0}
                 >
-                  <div
-                    className="css-1qcr7hz css-h7r55a"
+                  <Grid
+                    className="css-1qcr7hz"
+                    component="div"
+                    wrap={false}
                   >
-                    <GridItem
-                      className="css-rx1nvy"
-                      component="div"
-                      grow={1}
-                      shrink={1}
+                    <div
+                      className="css-1qcr7hz css-h7r55a"
                     >
-                      <div
-                        className="css-rx1nvy css-1gs0ko2"
+                      <GridItem
+                        className="css-rx1nvy"
+                        component="div"
+                        grow={1}
+                        shrink={1}
                       >
-                        List Item
-                      </div>
-                    </GridItem>
-                  </div>
-                </Grid>
-              </div>
-            </Item>
+                        <div
+                          className="css-rx1nvy css-1gs0ko2"
+                        >
+                          List Item
+                        </div>
+                      </GridItem>
+                    </div>
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(withForwardedRef(Item))>
           </div>
         </li>
       </ListItem>
@@ -91,6 +105,7 @@ exports[`<SheetList /> should render a child and add styles for list items with 
   >
     <ul
       className={null}
+      role="listbox"
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n css-1brrprg"
@@ -105,45 +120,58 @@ exports[`<SheetList /> should render a child and add styles for list items with 
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <Item
-              className={null}
-              image={null}
-              isDisabled={false}
-              isSelected={false}
-              link={null}
-              linkState={null}
-              onClick={null}
-              rightComponent={null}
-              testId={null}
+            <ForwardRef(withForwardedRef(Item))
               title="List Item"
             >
-              <div
-                data-test-id={null}
+              <Item
+                className={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                link={null}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
+                title="List Item"
               >
-                <Grid
-                  className="css-1qcr7hz"
-                  component="div"
-                  wrap={false}
+                <div
+                  aria-selected={false}
+                  className={
+                    Object {
+                      "data-css-3l3fu5": "",
+                    }
+                  }
+                  data-test-id={null}
+                  role="option button"
+                  tabIndex={0}
                 >
-                  <div
-                    className="css-1qcr7hz css-h7r55a"
+                  <Grid
+                    className="css-1qcr7hz"
+                    component="div"
+                    wrap={false}
                   >
-                    <GridItem
-                      className="css-rx1nvy"
-                      component="div"
-                      grow={1}
-                      shrink={1}
+                    <div
+                      className="css-1qcr7hz css-h7r55a"
                     >
-                      <div
-                        className="css-rx1nvy css-1gs0ko2"
+                      <GridItem
+                        className="css-rx1nvy"
+                        component="div"
+                        grow={1}
+                        shrink={1}
                       >
-                        List Item
-                      </div>
-                    </GridItem>
-                  </div>
-                </Grid>
-              </div>
-            </Item>
+                        <div
+                          className="css-rx1nvy css-1gs0ko2"
+                        >
+                          List Item
+                        </div>
+                      </GridItem>
+                    </div>
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(withForwardedRef(Item))>
           </div>
         </li>
       </ListItem>
@@ -163,6 +191,7 @@ exports[`<SheetList /> should render with two children 1`] = `
   >
     <ul
       className={null}
+      role="listbox"
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n"
@@ -177,45 +206,58 @@ exports[`<SheetList /> should render with two children 1`] = `
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <Item
-              className={null}
-              image={null}
-              isDisabled={false}
-              isSelected={false}
-              link={null}
-              linkState={null}
-              onClick={null}
-              rightComponent={null}
-              testId={null}
+            <ForwardRef(withForwardedRef(Item))
               title="List Item"
             >
-              <div
-                data-test-id={null}
+              <Item
+                className={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                link={null}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
+                title="List Item"
               >
-                <Grid
-                  className="css-1qcr7hz"
-                  component="div"
-                  wrap={false}
+                <div
+                  aria-selected={false}
+                  className={
+                    Object {
+                      "data-css-3l3fu5": "",
+                    }
+                  }
+                  data-test-id={null}
+                  role="option button"
+                  tabIndex={0}
                 >
-                  <div
-                    className="css-1qcr7hz css-h7r55a"
+                  <Grid
+                    className="css-1qcr7hz"
+                    component="div"
+                    wrap={false}
                   >
-                    <GridItem
-                      className="css-rx1nvy"
-                      component="div"
-                      grow={1}
-                      shrink={1}
+                    <div
+                      className="css-1qcr7hz css-h7r55a"
                     >
-                      <div
-                        className="css-rx1nvy css-1gs0ko2"
+                      <GridItem
+                        className="css-rx1nvy"
+                        component="div"
+                        grow={1}
+                        shrink={1}
                       >
-                        List Item
-                      </div>
-                    </GridItem>
-                  </div>
-                </Grid>
-              </div>
-            </Item>
+                        <div
+                          className="css-rx1nvy css-1gs0ko2"
+                        >
+                          List Item
+                        </div>
+                      </GridItem>
+                    </div>
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(withForwardedRef(Item))>
           </div>
         </li>
       </ListItem>
@@ -232,45 +274,58 @@ exports[`<SheetList /> should render with two children 1`] = `
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <Item
-              className={null}
-              image={null}
-              isDisabled={false}
-              isSelected={false}
-              link={null}
-              linkState={null}
-              onClick={null}
-              rightComponent={null}
-              testId={null}
+            <ForwardRef(withForwardedRef(Item))
               title="List Item"
             >
-              <div
-                data-test-id={null}
+              <Item
+                className={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                link={null}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
+                title="List Item"
               >
-                <Grid
-                  className="css-1qcr7hz"
-                  component="div"
-                  wrap={false}
+                <div
+                  aria-selected={false}
+                  className={
+                    Object {
+                      "data-css-3l3fu5": "",
+                    }
+                  }
+                  data-test-id={null}
+                  role="option button"
+                  tabIndex={0}
                 >
-                  <div
-                    className="css-1qcr7hz css-h7r55a"
+                  <Grid
+                    className="css-1qcr7hz"
+                    component="div"
+                    wrap={false}
                   >
-                    <GridItem
-                      className="css-rx1nvy"
-                      component="div"
-                      grow={1}
-                      shrink={1}
+                    <div
+                      className="css-1qcr7hz css-h7r55a"
                     >
-                      <div
-                        className="css-rx1nvy css-1gs0ko2"
+                      <GridItem
+                        className="css-rx1nvy"
+                        component="div"
+                        grow={1}
+                        shrink={1}
                       >
-                        List Item
-                      </div>
-                    </GridItem>
-                  </div>
-                </Grid>
-              </div>
-            </Item>
+                        <div
+                          className="css-rx1nvy css-1gs0ko2"
+                        >
+                          List Item
+                        </div>
+                      </GridItem>
+                    </div>
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(withForwardedRef(Item))>
           </div>
         </li>
       </ListItem>

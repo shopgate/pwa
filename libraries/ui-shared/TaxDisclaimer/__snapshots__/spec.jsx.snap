@@ -28,6 +28,7 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
     props={null}
   >
     <div
+      aria-hidden={true}
       data-test-id="taxDisclaimer"
     >
       <Translate

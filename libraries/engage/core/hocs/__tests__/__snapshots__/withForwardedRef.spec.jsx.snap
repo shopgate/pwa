@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withForwardedRef should render 1`] = `
+<Comp
+  className="foo"
+  forwardedRef={
+    Object {
+      "current": null,
+    }
+  }
+>
+  Testing 123
+</Comp>
+`;
+
+exports[`withForwardedRef should render with a custom displayName 1`] = `
+<FooBar
+  className="foo"
+  forwardedRef={
+    Object {
+      "current": null,
+    }
+  }
+>
+  Testing 123
+</FooBar>
+`;

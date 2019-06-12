@@ -35,7 +35,7 @@ const Translate = ({
 
   try {
     const { __ } = context.i18n();
-    // First replace every occurence of a translation key with a separator.
+    // First replace every occurrence of a translation key with a separator.
     const separator = '__%S%__';
     const childrenArray = React.Children.toArray(children);
 

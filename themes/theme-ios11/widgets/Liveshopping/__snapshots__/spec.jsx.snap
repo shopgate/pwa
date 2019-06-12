@@ -11,6 +11,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
   }
 >
   <Swiper
+    aria-hidden={null}
     autoPlay={false}
     className={null}
     classNames={Object {}}

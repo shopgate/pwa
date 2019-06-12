@@ -146,9 +146,14 @@ class RatingStars extends Component {
         </div>
       )),
     ];
-
+    /* eslint-disable jsx-a11y/aria-role */
     return (
-      <div className={className} aria-label={this.getTextualFinal(ratedStars)} data-test-id={`ratedStars: ${ratedStars}`}>
+      <div
+        role="text"
+        className={className}
+        aria-label={this.getTextualFinal(ratedStars)}
+        data-test-id={`ratedStars: ${ratedStars}`}
+      >
         <div className={styles.emptyStars}>
           {emptyStars}
         </div>
@@ -157,6 +162,7 @@ class RatingStars extends Component {
         </div>
       </div>
     );
+  /* eslint-enable jsx-a11y/aria-role */
   }
 }
 

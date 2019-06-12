@@ -26,6 +26,7 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
@@ -43,6 +44,7 @@ class ProductImage extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
+    'aria-hidden': null,
     className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => { },
@@ -122,9 +124,11 @@ class ProductImage extends Component {
       // Image is not present or could not be loaded, show a placeholder.
       return (
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
-          <div className={classnames(styles.placeholderContainer, {
+          <div
+            className={classnames(styles.placeholderContainer, {
             [styles.innerShadow]: showInnerShadow,
           })}
+            aria-hidden={this.props['aria-hidden']}
           >
             <div className={styles.placeholderContent} data-test-id="placeHolder">
               <PlaceholderIcon className={styles.placeholder} />
@@ -137,7 +141,10 @@ class ProductImage extends Component {
     // Return the actual image.
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <div className={showInnerShadow ? styles.innerShadow : ''} aria-hidden>
+        <div
+          className={showInnerShadow ? styles.innerShadow : ''}
+          aria-hidden={this.props['aria-hidden']}
+        >
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}

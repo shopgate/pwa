@@ -41,34 +41,11 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
     <div
       className="css-ipvvc7"
     >
-      <pure(Tier)
+      <span
         key="1_10_99.99"
-        price={
-          Object {
-            "currency": "USD",
-            "tiers": Array [
-              Object {
-                "from": 1,
-                "to": 10,
-                "unitPrice": 99.99,
-              },
-              Object {
-                "from": 11,
-                "to": 9999,
-                "unitPrice": 80,
-              },
-            ],
-          }
-        }
-        tier={
-          Object {
-            "from": 1,
-            "to": 10,
-            "unitPrice": 99.99,
-          }
-        }
+        role="text"
       >
-        <Tier
+        <pure(Tier)
           price={
             Object {
               "currency": "USD",
@@ -94,52 +71,56 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
             }
           }
         >
-          <Translate
-            className="css-z8ikop"
-            key="1"
-            params={
+          <Tier
+            price={
               Object {
-                "from": 1,
+                "currency": "USD",
+                "tiers": Array [
+                  Object {
+                    "from": 1,
+                    "to": 10,
+                    "unitPrice": 99.99,
+                  },
+                  Object {
+                    "from": 11,
+                    "to": 9999,
+                    "unitPrice": 80,
+                  },
+                ],
               }
             }
-            string="price.tier.range"
-          >
-            <span
-              className="css-z8ikop"
-            >
-              price.tier.range
-            </span>
-          </Translate>
-        </Tier>
-      </pure(Tier)>
-      <pure(Tier)
-        key="11_9999_80"
-        price={
-          Object {
-            "currency": "USD",
-            "tiers": Array [
+            tier={
               Object {
                 "from": 1,
                 "to": 10,
                 "unitPrice": 99.99,
-              },
-              Object {
-                "from": 11,
-                "to": 9999,
-                "unitPrice": 80,
-              },
-            ],
-          }
-        }
-        tier={
-          Object {
-            "from": 11,
-            "to": 9999,
-            "unitPrice": 80,
-          }
-        }
+              }
+            }
+          >
+            <Translate
+              className="css-z8ikop"
+              key="1"
+              params={
+                Object {
+                  "from": 1,
+                }
+              }
+              string="price.tier.range"
+            >
+              <span
+                className="css-z8ikop"
+              >
+                price.tier.range
+              </span>
+            </Translate>
+          </Tier>
+        </pure(Tier)>
+      </span>
+      <span
+        key="11_9999_80"
+        role="text"
       >
-        <Tier
+        <pure(Tier)
           price={
             Object {
               "currency": "USD",
@@ -165,24 +146,51 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
             }
           }
         >
-          <Translate
-            className="css-z8ikop"
-            key="11"
-            params={
+          <Tier
+            price={
               Object {
-                "from": 11,
+                "currency": "USD",
+                "tiers": Array [
+                  Object {
+                    "from": 1,
+                    "to": 10,
+                    "unitPrice": 99.99,
+                  },
+                  Object {
+                    "from": 11,
+                    "to": 9999,
+                    "unitPrice": 80,
+                  },
+                ],
               }
             }
-            string="price.tier.range"
+            tier={
+              Object {
+                "from": 11,
+                "to": 9999,
+                "unitPrice": 80,
+              }
+            }
           >
-            <span
+            <Translate
               className="css-z8ikop"
+              key="11"
+              params={
+                Object {
+                  "from": 11,
+                }
+              }
+              string="price.tier.range"
             >
-              price.tier.range
-            </span>
-          </Translate>
-        </Tier>
-      </pure(Tier)>
+              <span
+                className="css-z8ikop"
+              >
+                price.tier.range
+              </span>
+            </Translate>
+          </Tier>
+        </pure(Tier)>
+      </span>
     </div>
   </Portal>
   <Portal

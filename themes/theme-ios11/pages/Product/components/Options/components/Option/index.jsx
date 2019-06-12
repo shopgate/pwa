@@ -6,7 +6,7 @@ import { ProductContext } from '../../../../context';
 import PriceDifference from '../PriceDifference';
 
 /**
- * @param {Object} props The compoent props.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Option = ({

@@ -19,7 +19,7 @@ const typeRenders = {
  * The product media slider component.
  * @returns {JSX}
  */
-const MediaSlider = ({ navigate, media }) => {
+const MediaSlider = ({ navigate, media, 'aria-hidden': ariaHidden }) => {
   let currentSlide = 0;
 
   /**
@@ -48,6 +48,7 @@ const MediaSlider = ({ navigate, media }) => {
         onSlideChange={setCurrentSlide}
         disabled={media.length === 1}
         controls={hasVideo}
+        aria-hidden={ariaHidden}
       >
         {media.map((singleMedia) => {
             const Type = typeRenders[singleMedia.type];
@@ -64,6 +65,7 @@ const MediaSlider = ({ navigate, media }) => {
 
 MediaSlider.propTypes = {
   navigate: PropTypes.func.isRequired,
+  'aria-hidden': PropTypes.bool,
   media: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.string,
     code: PropTypes.string,
@@ -74,6 +76,7 @@ MediaSlider.propTypes = {
 };
 
 MediaSlider.defaultProps = {
+  'aria-hidden': null,
   media: null,
 };
 

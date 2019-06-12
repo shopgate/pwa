@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import BasePicker from '@shopgate/pwa-common/components/Picker';
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import { SheetList } from '@shopgate/engage/components';
 import Button from './components/Button';
-import styles from './style';
+import { picker, withButton } from './style';
 
 /**
  * The template version of the Picker component.
@@ -39,7 +40,6 @@ class Picker extends Component {
   constructor(props) {
     super(props);
 
-    this.domElement = null;
     this.modalComponent = sheetProps => (
       <Sheet
         {...{
@@ -47,8 +47,13 @@ class Picker extends Component {
           ...sheetProps,
         }}
         title={this.props.label}
+        onDidOpen={this.onDidOpen}
       />
     );
+
+    this.pickerRef = React.createRef();
+    this.firstSelectableItemRef = React.createRef();
+
     this.listComponent = ({
       items, onSelect, selectedIndex, onClose,
     }) => (
@@ -67,11 +72,30 @@ class Picker extends Component {
             isSelected={index === selectedIndex}
             rightComponent={item.rightComponent}
             testId={item.label}
+            ref={index === selectedIndex ? this.firstSelectableItemRef : null}
           />
-        ))}
+          ))}
       </SheetList>
     );
   }
+
+  /**
+   * Focuses the picker button for screen readers.
+   */
+  onDidOpen = () => {
+    if (this.firstSelectableItemRef.current) {
+      this.firstSelectableItemRef.current.focus();
+    }
+  }
+
+  /**
+   * Focuses the first selectable item for screen readers.
+   */
+  onClose = () => {
+    if (this.pickerRef.current) {
+      this.pickerRef.current.focus();
+    }
+  };
 
   /**
    * Render
@@ -79,15 +103,20 @@ class Picker extends Component {
    */
   render() {
     const { hasButton, sheetProps: ignore, ...restProps } = this.props;
+    const classes = classNames(picker, {
+      [withButton]: hasButton,
+    });
+
     return (
       <BasePicker
         {...restProps}
-        className={hasButton ? styles : ''}
+        className={classes}
         modalComponent={this.modalComponent}
         buttonProps={this.props.buttonProps}
         buttonComponent={this.props.buttonComponent || Button}
         listComponent={this.listComponent}
-        ref={(element) => { this.domElement = element ? element.domElement : null; }}
+        onSelect={this.onClose}
+        ref={this.pickerRef}
       />
     );
   }

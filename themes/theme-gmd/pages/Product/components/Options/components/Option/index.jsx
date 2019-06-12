@@ -7,7 +7,7 @@ import PriceDifference from '../PriceDifference';
 import styles from './style';
 
 /**
- * @param {Object} props The compoent props.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Option = ({

@@ -26,10 +26,15 @@ class Description extends PureComponent {
     navigate: () => { },
   };
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   /**
    * @returns {JSX}
    */
   render() {
+    const { __ } = this.context.i18n();
     const { html, navigate } = this.props;
 
     return (
@@ -37,8 +42,8 @@ class Description extends PureComponent {
         <Portal name={PRODUCT_DESCRIPTION_BEFORE} />
         <Portal name={PRODUCT_DESCRIPTION}>
           {(html !== '') && (
-            <div className={styles.container}>
-              <div className={styles.title}>
+            <section className={styles.container} aria-label={__('product.sections.description')}>
+              <div role="heading" className={styles.title}>
                 <I18n.Text string="product.description_heading" />
               </div>
               <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
@@ -53,7 +58,7 @@ class Description extends PureComponent {
                   </HtmlSanitizer>
                 </div>
               </PlaceholderParagraph>
-            </div>
+            </section>
           )}
         </Portal>
         <Portal name={PRODUCT_DESCRIPTION_AFTER} />

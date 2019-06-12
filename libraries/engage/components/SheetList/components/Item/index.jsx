@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withForwardedRef } from '@shopgate/engage/core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
@@ -12,6 +14,7 @@ class Item extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     className: PropTypes.string,
+    forwardedRef: PropTypes.shape(),
     image: PropTypes.element,
     isDisabled: PropTypes.bool,
     isSelected: PropTypes.bool,
@@ -24,6 +27,7 @@ class Item extends Component {
 
   static defaultProps = {
     className: null,
+    forwardedRef: null,
     image: null,
     isDisabled: false,
     isSelected: false,
@@ -48,11 +52,12 @@ class Item extends Component {
 
   /**
    * Renders the bulk of the content.
+   * @param {Object} [additionalProps] Additional props for the rendered content.
    * @returns {JSX}
    */
-  renderContent() {
+  renderContent(additionalProps = {}) {
     const {
-      isDisabled, isSelected, title, image, rightComponent,
+      isDisabled, isSelected, title, image, rightComponent, forwardedRef,
     } = this.props;
 
     let gridStyles = styles.grid;
@@ -66,8 +71,10 @@ class Item extends Component {
       titleStyles += ` ${styles.disabled}`;
     }
 
+    const ref = !Object.keys((additionalProps)).length ? forwardedRef : null;
+
     return (
-      <div data-test-id={this.props.testId}>
+      <div {...additionalProps} ref={ref}>
         <Grid className={gridStyles} component="div">
           {(image !== null) && (
             <div className={styles.image}>
@@ -92,42 +99,55 @@ class Item extends Component {
    */
   render() {
     const {
-      link, linkState, onClick, className, isDisabled, testId,
+      link, linkState, onClick, className, isDisabled, testId, forwardedRef, isSelected,
     } = this.props;
+
+    const additionalProps = {
+      role: 'option button',
+      tabIndex: 0,
+      className: styles.resetOutline,
+      'aria-selected': isSelected,
+      'data-test-id': testId,
+    };
 
     /**
      * If this item is disabled, selected or doesn't have a valid
      * link or click handler then wrap the content with other components.
      */
     if (isDisabled || (!link && !onClick)) {
-      return this.renderContent();
+      return this.renderContent(additionalProps);
     }
 
     // Wrap with a <Link> if the `link` prop is set.
     if (link) {
       return (
-        <Glow className={className}>
+        <Glow
+          {...additionalProps}
+          ref={forwardedRef}
+          className={classNames(className, additionalProps.className)}
+        >
           <Link href={link} onClick={onClick} state={linkState}>
             {this.renderContent()}
           </Link>
         </Glow>
       );
     }
-
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
     return (
       <div
-        role="link"
-        tabIndex="0"
         onKeyPress={() => { }}
         onClick={onClick}
         data-test-id={testId}
+        ref={forwardedRef}
+        {...additionalProps}
       >
         <Glow className={className}>
           {this.renderContent()}
         </Glow>
       </div>
     );
+  /* eslint-enable jsx-a11y/no-static-element-interactions */
   }
 }
 
-export default Item;
+export default withForwardedRef(Item);

@@ -1,357 +1,473 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SheetList.Item /> should render with a link 1`] = `
-<Item
-  className={null}
-  image={null}
-  isDisabled={false}
-  isSelected={false}
+<ForwardRef(withForwardedRef(Item))
   link="url/to/somewhere"
-  linkState={null}
-  onClick={null}
-  rightComponent={null}
-  testId={null}
   title="My Title"
 >
-  <Glow
+  <Item
     className={null}
-    color="#f7f7f7"
-    styles={
-      Object {
-        "container": null,
-        "glow": null,
-      }
-    }
+    forwardedRef={null}
+    image={null}
+    isDisabled={false}
+    isSelected={false}
+    link="url/to/somewhere"
+    linkState={null}
+    onClick={null}
+    rightComponent={null}
+    testId={null}
+    title="My Title"
   >
-    <div
-      className="css-13azwyo"
-      onClick={[Function]}
-      style={null}
+    <ForwardRef(withForwardedRef(Glow))
+      aria-selected={false}
+      className=""
+      data-test-id={null}
+      role="option button"
+      tabIndex={0}
     >
-      <div
-        className="css-1bmd5dz"
-        style={Object {}}
-      />
-      <Link
-        href="url/to/somewhere"
-        onClick={null}
-        state={null}
+      <Glow
+        aria-selected={false}
+        className=""
+        color="#f7f7f7"
+        data-test-id={null}
+        forwardedRef={null}
+        role="option button"
+        styles={
+          Object {
+            "container": null,
+            "glow": null,
+          }
+        }
+        tabIndex={0}
       >
-        <div />
-      </Link>
-    </div>
-  </Glow>
-</Item>
+        <div
+          aria-selected={false}
+          className="css-13azwyo"
+          data-test-id={null}
+          onClick={[Function]}
+          role="option button"
+          style={null}
+          tabIndex={0}
+        >
+          <div
+            className="css-1bmd5dz"
+            style={Object {}}
+          />
+          <Link
+            href="url/to/somewhere"
+            onClick={null}
+            state={null}
+          >
+            <div />
+          </Link>
+        </div>
+      </Glow>
+    </ForwardRef(withForwardedRef(Glow))>
+  </Item>
+</ForwardRef(withForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with a right component 1`] = `
-<Item
-  className={null}
-  image={null}
-  isDisabled={false}
-  isSelected={false}
-  link={null}
-  linkState={null}
-  onClick={null}
+<ForwardRef(withForwardedRef(Item))
   rightComponent={
     <span>
       I\`m a span.
     </span>
   }
-  testId={null}
   title="My Title"
 >
-  <div
-    data-test-id={null}
+  <Item
+    className={null}
+    forwardedRef={null}
+    image={null}
+    isDisabled={false}
+    isSelected={false}
+    link={null}
+    linkState={null}
+    onClick={null}
+    rightComponent={
+      <span>
+        I\`m a span.
+      </span>
+    }
+    testId={null}
+    title="My Title"
   >
-    <Grid
-      className="css-1qcr7hz"
-      component="div"
-      wrap={false}
+    <div
+      aria-selected={false}
+      className={
+        Object {
+          "data-css-3l3fu5": "",
+        }
+      }
+      data-test-id={null}
+      role="option button"
+      tabIndex={0}
     >
-      <div
-        className="css-1qcr7hz css-h7r55a"
+      <Grid
+        className="css-1qcr7hz"
+        component="div"
+        wrap={false}
       >
-        <GridItem
-          className="css-rx1nvy"
-          component="div"
-          grow={1}
-          shrink={1}
+        <div
+          className="css-1qcr7hz css-h7r55a"
         >
-          <div
-            className="css-rx1nvy css-1gs0ko2"
+          <GridItem
+            className="css-rx1nvy"
+            component="div"
+            grow={1}
+            shrink={1}
           >
-            My Title
-          </div>
-        </GridItem>
-        <GridItem
-          className=""
-          component="div"
-          grow={1}
-          shrink={1}
-        >
-          <div
-            className=" css-1gs0ko2"
+            <div
+              className="css-rx1nvy css-1gs0ko2"
+            >
+              My Title
+            </div>
+          </GridItem>
+          <GridItem
+            className=""
+            component="div"
+            grow={1}
+            shrink={1}
           >
-            <span>
-              I\`m a span.
-            </span>
-          </div>
-        </GridItem>
-      </div>
-    </Grid>
-  </div>
-</Item>
+            <div
+              className=" css-1gs0ko2"
+            >
+              <span>
+                I\`m a span.
+              </span>
+            </div>
+          </GridItem>
+        </div>
+      </Grid>
+    </div>
+  </Item>
+</ForwardRef(withForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with a title but no image 1`] = `
-<Item
-  className={null}
-  image={null}
-  isDisabled={false}
-  isSelected={false}
-  link={null}
-  linkState={null}
-  onClick={null}
-  rightComponent={null}
-  testId={null}
+<ForwardRef(withForwardedRef(Item))
   title="My Title"
 >
-  <div
-    data-test-id={null}
+  <Item
+    className={null}
+    forwardedRef={null}
+    image={null}
+    isDisabled={false}
+    isSelected={false}
+    link={null}
+    linkState={null}
+    onClick={null}
+    rightComponent={null}
+    testId={null}
+    title="My Title"
   >
-    <Grid
-      className="css-1qcr7hz"
-      component="div"
-      wrap={false}
+    <div
+      aria-selected={false}
+      className={
+        Object {
+          "data-css-3l3fu5": "",
+        }
+      }
+      data-test-id={null}
+      role="option button"
+      tabIndex={0}
     >
-      <div
-        className="css-1qcr7hz css-h7r55a"
+      <Grid
+        className="css-1qcr7hz"
+        component="div"
+        wrap={false}
       >
-        <GridItem
-          className="css-rx1nvy"
-          component="div"
-          grow={1}
-          shrink={1}
+        <div
+          className="css-1qcr7hz css-h7r55a"
         >
-          <div
-            className="css-rx1nvy css-1gs0ko2"
+          <GridItem
+            className="css-rx1nvy"
+            component="div"
+            grow={1}
+            shrink={1}
           >
-            My Title
-          </div>
-        </GridItem>
-      </div>
-    </Grid>
-  </div>
-</Item>
+            <div
+              className="css-rx1nvy css-1gs0ko2"
+            >
+              My Title
+            </div>
+          </GridItem>
+        </div>
+      </Grid>
+    </div>
+  </Item>
+</ForwardRef(withForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with an image 1`] = `
-<Item
-  className={null}
+<ForwardRef(withForwardedRef(Item))
   image={
     <img
       alt="Alternative text"
       src="url/to/image"
     />
   }
-  isDisabled={false}
-  isSelected={false}
-  link={null}
-  linkState={null}
-  onClick={null}
-  rightComponent={null}
-  testId={null}
   title="My Title"
 >
-  <div
-    data-test-id={null}
+  <Item
+    className={null}
+    forwardedRef={null}
+    image={
+      <img
+        alt="Alternative text"
+        src="url/to/image"
+      />
+    }
+    isDisabled={false}
+    isSelected={false}
+    link={null}
+    linkState={null}
+    onClick={null}
+    rightComponent={null}
+    testId={null}
+    title="My Title"
   >
-    <Grid
-      className="css-1qcr7hz"
-      component="div"
-      wrap={false}
+    <div
+      aria-selected={false}
+      className={
+        Object {
+          "data-css-3l3fu5": "",
+        }
+      }
+      data-test-id={null}
+      role="option button"
+      tabIndex={0}
     >
-      <div
-        className="css-1qcr7hz css-h7r55a"
+      <Grid
+        className="css-1qcr7hz"
+        component="div"
+        wrap={false}
       >
         <div
-          className="css-1mhrjzj"
-        >
-          <img
-            alt="Alternative text"
-            src="url/to/image"
-          />
-        </div>
-        <GridItem
-          className="css-rx1nvy"
-          component="div"
-          grow={1}
-          shrink={1}
+          className="css-1qcr7hz css-h7r55a"
         >
           <div
-            className="css-rx1nvy css-1gs0ko2"
+            className="css-1mhrjzj"
           >
-            My Title
+            <img
+              alt="Alternative text"
+              src="url/to/image"
+            />
           </div>
-        </GridItem>
-      </div>
-    </Grid>
-  </div>
-</Item>
+          <GridItem
+            className="css-rx1nvy"
+            component="div"
+            grow={1}
+            shrink={1}
+          >
+            <div
+              className="css-rx1nvy css-1gs0ko2"
+            >
+              My Title
+            </div>
+          </GridItem>
+        </div>
+      </Grid>
+    </div>
+  </Item>
+</ForwardRef(withForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with an onClick element 1`] = `
-<Item
-  className={null}
-  image={null}
-  isDisabled={false}
-  isSelected={false}
-  link={null}
-  linkState={null}
+<ForwardRef(withForwardedRef(Item))
   onClick={[Function]}
-  rightComponent={null}
-  testId={null}
   title="My Title"
 >
-  <div
-    data-test-id={null}
+  <Item
+    className={null}
+    forwardedRef={null}
+    image={null}
+    isDisabled={false}
+    isSelected={false}
+    link={null}
+    linkState={null}
     onClick={[Function]}
-    onKeyPress={[Function]}
-    role="link"
-    tabIndex="0"
+    rightComponent={null}
+    testId={null}
+    title="My Title"
   >
-    <Glow
-      className={null}
-      color="#f7f7f7"
-      styles={
+    <div
+      aria-selected={false}
+      className={
         Object {
-          "container": null,
-          "glow": null,
+          "data-css-3l3fu5": "",
         }
       }
+      data-test-id={null}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="option button"
+      tabIndex={0}
     >
-      <div
-        className="css-13azwyo"
-        onClick={[Function]}
-        style={null}
+      <ForwardRef(withForwardedRef(Glow))
+        className={null}
       >
-        <div
-          className="css-1bmd5dz"
-          style={Object {}}
-        />
-        <div
-          data-test-id={null}
+        <Glow
+          className={null}
+          color="#f7f7f7"
+          forwardedRef={null}
+          styles={
+            Object {
+              "container": null,
+              "glow": null,
+            }
+          }
         >
-          <Grid
-            className="css-1qcr7hz"
-            component="div"
-            wrap={false}
+          <div
+            className="css-13azwyo"
+            onClick={[Function]}
+            style={null}
           >
             <div
-              className="css-1qcr7hz css-h7r55a"
-            >
-              <GridItem
-                className="css-rx1nvy"
+              className="css-1bmd5dz"
+              style={Object {}}
+            />
+            <div>
+              <Grid
+                className="css-1qcr7hz"
                 component="div"
-                grow={1}
-                shrink={1}
+                wrap={false}
               >
                 <div
-                  className="css-rx1nvy css-1gs0ko2"
+                  className="css-1qcr7hz css-h7r55a"
                 >
-                  My Title
+                  <GridItem
+                    className="css-rx1nvy"
+                    component="div"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <div
+                      className="css-rx1nvy css-1gs0ko2"
+                    >
+                      My Title
+                    </div>
+                  </GridItem>
                 </div>
-              </GridItem>
+              </Grid>
             </div>
-          </Grid>
-        </div>
-      </div>
-    </Glow>
-  </div>
-</Item>
+          </div>
+        </Glow>
+      </ForwardRef(withForwardedRef(Glow))>
+    </div>
+  </Item>
+</ForwardRef(withForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
-<Item
-  className={null}
-  image={null}
+<ForwardRef(withForwardedRef(Item))
   isDisabled={true}
-  isSelected={false}
-  link={null}
-  linkState={null}
-  onClick={null}
-  rightComponent={null}
-  testId={null}
   title="My Title"
 >
-  <div
-    data-test-id={null}
+  <Item
+    className={null}
+    forwardedRef={null}
+    image={null}
+    isDisabled={true}
+    isSelected={false}
+    link={null}
+    linkState={null}
+    onClick={null}
+    rightComponent={null}
+    testId={null}
+    title="My Title"
   >
-    <Grid
-      className="css-1qcr7hz"
-      component="div"
-      wrap={false}
+    <div
+      aria-selected={false}
+      className={
+        Object {
+          "data-css-3l3fu5": "",
+        }
+      }
+      data-test-id={null}
+      role="option button"
+      tabIndex={0}
     >
-      <div
-        className="css-1qcr7hz css-h7r55a"
+      <Grid
+        className="css-1qcr7hz"
+        component="div"
+        wrap={false}
       >
-        <GridItem
-          className="css-rx1nvy css-19uk9mv"
-          component="div"
-          grow={1}
-          shrink={1}
+        <div
+          className="css-1qcr7hz css-h7r55a"
         >
-          <div
-            className="css-rx1nvy css-19uk9mv css-1gs0ko2"
+          <GridItem
+            className="css-rx1nvy css-19uk9mv"
+            component="div"
+            grow={1}
+            shrink={1}
           >
-            My Title
-          </div>
-        </GridItem>
-      </div>
-    </Grid>
-  </div>
-</Item>
+            <div
+              className="css-rx1nvy css-19uk9mv css-1gs0ko2"
+            >
+              My Title
+            </div>
+          </GridItem>
+        </div>
+      </Grid>
+    </div>
+  </Item>
+</ForwardRef(withForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
-<Item
-  className={null}
-  image={null}
-  isDisabled={false}
+<ForwardRef(withForwardedRef(Item))
   isSelected={true}
-  link={null}
-  linkState={null}
-  onClick={null}
-  rightComponent={null}
-  testId={null}
   title="My Title"
 >
-  <div
-    data-test-id={null}
+  <Item
+    className={null}
+    forwardedRef={null}
+    image={null}
+    isDisabled={false}
+    isSelected={true}
+    link={null}
+    linkState={null}
+    onClick={null}
+    rightComponent={null}
+    testId={null}
+    title="My Title"
   >
-    <Grid
-      className="css-1qcr7hz css-7q9yf9"
-      component="div"
-      wrap={false}
+    <div
+      aria-selected={true}
+      className={
+        Object {
+          "data-css-3l3fu5": "",
+        }
+      }
+      data-test-id={null}
+      role="option button"
+      tabIndex={0}
     >
-      <div
-        className="css-1qcr7hz css-7q9yf9 css-h7r55a"
+      <Grid
+        className="css-1qcr7hz css-7q9yf9"
+        component="div"
+        wrap={false}
       >
-        <GridItem
-          className="css-rx1nvy"
-          component="div"
-          grow={1}
-          shrink={1}
+        <div
+          className="css-1qcr7hz css-7q9yf9 css-h7r55a"
         >
-          <div
-            className="css-rx1nvy css-1gs0ko2"
+          <GridItem
+            className="css-rx1nvy"
+            component="div"
+            grow={1}
+            shrink={1}
           >
-            My Title
-          </div>
-        </GridItem>
-      </div>
-    </Grid>
-  </div>
-</Item>
+            <div
+              className="css-rx1nvy css-1gs0ko2"
+            >
+              My Title
+            </div>
+          </GridItem>
+        </div>
+      </Grid>
+    </div>
+  </Item>
+</ForwardRef(withForwardedRef(Item))>
 `;

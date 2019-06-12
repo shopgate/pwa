@@ -231,7 +231,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                               size={null}
                                             >
                                               <div
-                                                aria-hidden={true}
                                                 className="css-m6e8uq"
                                                 data-test-id="Ripple"
                                                 onClick={[Function]}
@@ -278,7 +277,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                               size={null}
                                             >
                                               <div
-                                                aria-hidden={true}
                                                 className="css-m6e8uq"
                                                 data-test-id="Ripple"
                                                 onClick={[Function]}
@@ -325,7 +323,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                               size={null}
                                             >
                                               <div
-                                                aria-hidden={true}
                                                 className="css-m6e8uq"
                                                 data-test-id="Ripple"
                                                 onClick={[Function]}
@@ -392,7 +389,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 size={null}
                               >
                                 <div
-                                  aria-hidden={true}
                                   className="css-10g4052"
                                   data-test-id="Ripple"
                                   onClick={[Function]}

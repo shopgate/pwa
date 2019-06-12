@@ -14,6 +14,7 @@ class FavoritesButton extends Component {
   static propTypes = {
     active: PropTypes.bool,
     addFavorites: PropTypes.func,
+    'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
     noShadow: PropTypes.bool,
     // When true, button would react on click only once.
@@ -37,6 +38,7 @@ class FavoritesButton extends Component {
   static defaultProps = {
     active: false,
     addFavorites: () => {},
+    'aria-hidden': null,
     className: '',
     noShadow: false,
     once: false,
@@ -142,6 +144,7 @@ class FavoritesButton extends Component {
     return (
       <button
         aria-label={this.getLabel()}
+        aria-hidden={this.props['aria-hidden']}
         className={`${className} ${this.props.className}`}
         onClick={this.handleClick}
         data-test-id="favoriteButton"

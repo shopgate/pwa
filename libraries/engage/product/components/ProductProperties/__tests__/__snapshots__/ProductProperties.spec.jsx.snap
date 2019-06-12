@@ -192,7 +192,10 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
             <div
               className="css-1x8awm9"
             >
-              <table>
+              <table
+                aria-label="product.sections.properties"
+                role="region"
+              >
                 <tbody>
                   <Rows
                     properties={

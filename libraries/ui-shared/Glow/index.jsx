@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { withForwardedRef } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
 
@@ -12,6 +13,7 @@ class Glow extends Component {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     color: PropTypes.string,
+    forwardedRef: PropTypes.shape(),
     styles: PropTypes.shape({
       container: PropTypes.shape(),
       glow: PropTypes.shape(),
@@ -21,6 +23,7 @@ class Glow extends Component {
   static defaultProps = {
     color: themeConfig.colors.shade8,
     className: null,
+    forwardedRef: null,
     styles: {
       container: null,
       glow: null,
@@ -60,23 +63,29 @@ class Glow extends Component {
    * @returns {JSX}
    */
   render() {
+    const {
+      children, styles: propStyles, forwardedRef, className, color, ...rest
+    } = this.props;
+
     const innerInlineStyles = {
-      ...this.props.styles.glow,
+      ...propStyles.glow,
     };
 
     if (this.state.hover) {
-      innerInlineStyles.background = this.props.color;
+      innerInlineStyles.background = color;
     }
     /* eslint-disable jsx-a11y/no-static-element-interactions,
     jsx-a11y/click-events-have-key-events */
     return (
       <div
-        className={classNames(styles.container, this.props.className)}
+        {...rest}
+        className={classNames(styles.container, className)}
         onClick={this.handleTouchTap}
-        style={this.props.styles.container}
+        style={propStyles.container}
+        ref={forwardedRef}
       >
         <div className={styles.glow} style={innerInlineStyles} />
-        {this.props.children}
+        {children}
       </div>
     );
     /* eslint-enable jsx-a11y/no-static-element-interactions,
@@ -84,4 +93,4 @@ class Glow extends Component {
   }
 }
 
-export default Glow;
+export default withForwardedRef(Glow);

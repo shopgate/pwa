@@ -88,7 +88,6 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
           size={null}
         >
           <div
-            aria-hidden={true}
             className="css-1fscwua "
             data-test-id="Ripple"
             onClick={[Function]}
@@ -172,7 +171,6 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
           size={null}
         >
           <div
-            aria-hidden={true}
             className="css-1fscwua "
             data-test-id="Ripple"
             onClick={[Function]}
@@ -231,7 +229,6 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
           size={null}
         >
           <div
-            aria-hidden={true}
             className="css-1fscwua "
             data-test-id="Ripple"
             onClick={[Function]}

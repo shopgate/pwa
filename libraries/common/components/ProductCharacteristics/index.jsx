@@ -60,7 +60,7 @@ class ProductCharacteristics extends Component {
   }
 
   /**
-   * Sets the refs to the charactersistics selects.
+   * Sets the refs to the characteristics selects.
    * @param {Object} props The props to check against.
    */
   setRefs = (props) => {

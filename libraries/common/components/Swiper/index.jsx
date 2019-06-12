@@ -30,6 +30,7 @@ function Swiper(props) {
     onSlideChange,
     zoom,
     disabled,
+    'aria-hidden': ariaHidden,
   } = props;
 
   const [swiper, setSwiper] = useState(null);
@@ -126,7 +127,7 @@ function Swiper(props) {
   };
 
   return (
-    <div className={cls(container, className)}>
+    <div className={cls(container, className)} aria-hidden={ariaHidden}>
       <IDSwiper {...params}>
         {children}
       </IDSwiper>
@@ -138,6 +139,7 @@ Swiper.Item = SwiperItem;
 
 Swiper.propTypes = {
   children: PropTypes.node.isRequired,
+  'aria-hidden': PropTypes.bool,
   autoPlay: PropTypes.bool,
   className: PropTypes.string,
   classNames: PropTypes.shape({
@@ -182,6 +184,7 @@ Swiper.propTypes = {
 };
 
 Swiper.defaultProps = {
+  'aria-hidden': null,
   autoPlay: false,
   className: null,
   classNames: {},

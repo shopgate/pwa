@@ -45,1489 +45,1499 @@ exports[`<List /> should render list with reviews 1`] = `
     ]
   }
 >
-  <div
-    className="css-1yhq1gr"
-    data-test-id="reviewTitle: "
-    key="a"
-  >
-    <Title
-      title=""
+  <ul>
+    <li
+      className="css-1yhq1gr"
+      data-test-id="reviewTitle: "
+      key="a"
     >
-      <div
-        className="css-1rmdcnr"
-      />
-    </Title>
-    <Rating
-      rate={100}
-    >
-      <div
-        className="css-15pwoui"
+      <Title
+        title=""
       >
-        <RatingStars
-          className="css-hgkz41"
-          display="small"
-          isSelectable={false}
-          onSelection={[Function]}
-          value={100}
-        >
-          <div
-            aria-label="reviews.rating_stars"
-            className="css-13azwyo css-hgkz41"
-            data-test-id="ratedStars: 5"
-          >
-            <div
-              className="css-4s85e9"
-            >
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="1"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="2"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="3"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="4"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="5"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-            </div>
-            <div
-              className="css-16y9zin"
-            >
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="6"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="7"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="8"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="9"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="10"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-            </div>
-          </div>
-        </RatingStars>
-      </div>
-    </Rating>
-    <Text
-      review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-    >
-      <div
-        className="css-vkqu2k"
-      >
-        "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-      </div>
-    </Text>
-    <Info
-      review={
-        Object {
-          "author": "",
-          "date": "2017-09-06T12:38:51.000Z",
-          "id": "a",
-          "rate": 100,
-          "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-          "title": "",
-        }
-      }
-    >
-      <div
-        className="css-1dhkxb0"
-      >
-        <ReviewDate
-          date="2017-09-06T12:38:51.000Z"
-        >
-          <FormatDate
-            format="long"
-            timestamp={1504701531000}
-          >
-            <span>
-              d
-            </span>
-          </FormatDate>
-        </ReviewDate>
-         
-        <Author
-          author=""
+        <div
+          className="css-1rmdcnr"
         />
-      </div>
-    </Info>
-  </div>
-  <div
-    className="css-1yhq1gr"
-    data-test-id="reviewTitle: Test review 2 "
-    key="b"
-  >
-    <Title
-      title="Test review 2 "
-    >
-      <div
-        className="css-1rmdcnr"
+      </Title>
+      <Rating
+        rate={100}
       >
-        Test review 2 
-      </div>
-    </Title>
-    <Rating
-      rate={40}
-    >
-      <div
-        className="css-15pwoui"
-      >
-        <RatingStars
-          className="css-hgkz41"
-          display="small"
-          isSelectable={false}
-          onSelection={[Function]}
-          value={40}
+        <div
+          className="css-15pwoui"
         >
-          <div
-            aria-label="reviews.rating_stars"
-            className="css-13azwyo css-hgkz41"
-            data-test-id="ratedStars: 2"
+          <RatingStars
+            className="css-hgkz41"
+            display="small"
+            isSelectable={false}
+            onSelection={[Function]}
+            value={100}
           >
             <div
-              className="css-4s85e9"
+              aria-label="reviews.rating_stars"
+              className="css-13azwyo css-hgkz41"
+              data-test-id="ratedStars: 5"
+              role="text"
             >
               <div
-                className="css-kdb68h css-q4owmg"
-                key="1"
+                className="css-4s85e9"
               >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="1"
                 >
-                  <Icon
+                  <Star
                     className=""
                     color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
                     size="1em"
                     viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
                       viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="2"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="3"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="4"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="5"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
               </div>
               <div
-                className="css-kdb68h css-q4owmg"
-                key="2"
+                className="css-16y9zin"
               >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="6"
                 >
-                  <Icon
+                  <Star
                     className=""
                     color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
                     size="1em"
                     viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
                       viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="3"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="7"
                 >
-                  <Icon
+                  <Star
                     className=""
                     color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
                     size="1em"
                     viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
                       viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="4"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="8"
                 >
-                  <Icon
+                  <Star
                     className=""
                     color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
                     size="1em"
                     viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
                       viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="5"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="9"
                 >
-                  <Icon
+                  <Star
                     className=""
                     color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
                     size="1em"
                     viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
                       viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="10"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
               </div>
             </div>
-            <div
-              className="css-16y9zin"
-            >
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="6"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="7"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-            </div>
-          </div>
-        </RatingStars>
-      </div>
-    </Rating>
-    <Text
-      review="Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
-    >
-      <div
-        className="css-vkqu2k"
+          </RatingStars>
+        </div>
+      </Rating>
+      <Text
+        review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
       >
-        "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
-      </div>
-    </Text>
-    <Info
-      review={
-        Object {
-          "author": "username123",
-          "date": "2017-09-06T12:37:40.000Z",
-          "id": "b",
-          "rate": 40,
-          "review": "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.",
-          "title": "Test review 2 ",
+        <div
+          className="css-vkqu2k"
+        >
+          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+        </div>
+      </Text>
+      <Info
+        review={
+          Object {
+            "author": "",
+            "date": "2017-09-06T12:38:51.000Z",
+            "id": "a",
+            "rate": 100,
+            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+            "title": "",
+          }
         }
-      }
-    >
-      <div
-        className="css-1dhkxb0"
       >
-        <ReviewDate
-          date="2017-09-06T12:37:40.000Z"
+        <div
+          className="css-1dhkxb0"
+          role="text"
         >
-          <FormatDate
-            format="long"
-            timestamp={1504701460000}
+          <ReviewDate
+            date="2017-09-06T12:38:51.000Z"
           >
-            <span>
-              d
-            </span>
-          </FormatDate>
-        </ReviewDate>
-         
-        <Author
-          author="username123"
+            <FormatDate
+              format="long"
+              timestamp={1504701531000}
+            >
+              <span>
+                d
+              </span>
+            </FormatDate>
+          </ReviewDate>
+           
+          <Author
+            author=""
+          />
+        </div>
+      </Info>
+    </li>
+    <li
+      className="css-1yhq1gr"
+      data-test-id="reviewTitle: Test review 2 "
+      key="b"
+    >
+      <Title
+        title="Test review 2 "
+      >
+        <div
+          className="css-1rmdcnr"
         >
-          <Translate
-            className=""
-            params={
-              Object {
-                "author": "username123",
-              }
-            }
-            string="reviews.author"
+          Test review 2 
+        </div>
+      </Title>
+      <Rating
+        rate={40}
+      >
+        <div
+          className="css-15pwoui"
+        >
+          <RatingStars
+            className="css-hgkz41"
+            display="small"
+            isSelectable={false}
+            onSelection={[Function]}
+            value={40}
           >
-            <span
+            <div
+              aria-label="reviews.rating_stars"
+              className="css-13azwyo css-hgkz41"
+              data-test-id="ratedStars: 2"
+              role="text"
+            >
+              <div
+                className="css-4s85e9"
+              >
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="1"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="2"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="3"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="4"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="5"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+              </div>
+              <div
+                className="css-16y9zin"
+              >
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="6"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="7"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+              </div>
+            </div>
+          </RatingStars>
+        </div>
+      </Rating>
+      <Text
+        review="Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
+      >
+        <div
+          className="css-vkqu2k"
+        >
+          "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
+        </div>
+      </Text>
+      <Info
+        review={
+          Object {
+            "author": "username123",
+            "date": "2017-09-06T12:37:40.000Z",
+            "id": "b",
+            "rate": 40,
+            "review": "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.",
+            "title": "Test review 2 ",
+          }
+        }
+      >
+        <div
+          className="css-1dhkxb0"
+          role="text"
+        >
+          <ReviewDate
+            date="2017-09-06T12:37:40.000Z"
+          >
+            <FormatDate
+              format="long"
+              timestamp={1504701460000}
+            >
+              <span>
+                d
+              </span>
+            </FormatDate>
+          </ReviewDate>
+           
+          <Author
+            author="username123"
+          >
+            <Translate
               className=""
-            >
-              reviews.author
-            </span>
-          </Translate>
-        </Author>
-      </div>
-    </Info>
-  </div>
-  <div
-    className="css-1yhq1gr"
-    data-test-id="reviewTitle: "
-    key="c"
-  >
-    <Title
-      title=""
-    >
-      <div
-        className="css-1rmdcnr"
-      />
-    </Title>
-    <Rating
-      rate={60}
-    >
-      <div
-        className="css-15pwoui"
-      >
-        <RatingStars
-          className="css-hgkz41"
-          display="small"
-          isSelectable={false}
-          onSelection={[Function]}
-          value={60}
-        >
-          <div
-            aria-label="reviews.rating_stars"
-            className="css-13azwyo css-hgkz41"
-            data-test-id="ratedStars: 3"
-          >
-            <div
-              className="css-4s85e9"
-            >
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="1"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="2"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="3"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="4"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="5"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-            </div>
-            <div
-              className="css-16y9zin"
-            >
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="6"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="7"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="8"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-            </div>
-          </div>
-        </RatingStars>
-      </div>
-    </Rating>
-    <Text
-      review="Test review"
-    >
-      <div
-        className="css-vkqu2k"
-      >
-        "Test review"
-      </div>
-    </Text>
-    <Info
-      review={
-        Object {
-          "author": "Carina Hoffmann",
-          "date": "2017-09-06T12:30:23.000Z",
-          "id": "c",
-          "rate": 60,
-          "review": "Test review",
-          "title": "",
-        }
-      }
-    >
-      <div
-        className="css-1dhkxb0"
-      >
-        <ReviewDate
-          date="2017-09-06T12:30:23.000Z"
-        >
-          <FormatDate
-            format="long"
-            timestamp={1504701023000}
-          >
-            <span>
-              d
-            </span>
-          </FormatDate>
-        </ReviewDate>
-         
-        <Author
-          author="Carina Hoffmann"
-        >
-          <Translate
-            className=""
-            params={
-              Object {
-                "author": "Carina Hoffmann",
+              params={
+                Object {
+                  "author": "username123",
+                }
               }
-            }
-            string="reviews.author"
-          >
-            <span
-              className=""
+              string="reviews.author"
             >
-              reviews.author
-            </span>
-          </Translate>
-        </Author>
-      </div>
-    </Info>
-  </div>
-  <div
-    className="css-1yhq1gr"
-    data-test-id="reviewTitle: "
-    key="d"
-  >
-    <Title
-      title=""
+              <span
+                className=""
+              >
+                reviews.author
+              </span>
+            </Translate>
+          </Author>
+        </div>
+      </Info>
+    </li>
+    <li
+      className="css-1yhq1gr"
+      data-test-id="reviewTitle: "
+      key="c"
     >
-      <div
-        className="css-1rmdcnr"
-      />
-    </Title>
-    <Rating
-      rate={20}
-    >
-      <div
-        className="css-15pwoui"
+      <Title
+        title=""
       >
-        <RatingStars
-          className="css-hgkz41"
-          display="small"
-          isSelectable={false}
-          onSelection={[Function]}
-          value={20}
-        >
-          <div
-            aria-label="reviews.rating_stars"
-            className="css-13azwyo css-hgkz41"
-            data-test-id="ratedStars: 1"
-          >
-            <div
-              className="css-4s85e9"
-            >
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="1"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="2"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="3"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="4"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="5"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-            </div>
-            <div
-              className="css-16y9zin"
-            >
-              <div
-                className="css-kdb68h css-q4owmg"
-                key="6"
-              >
-                <Star
-                  className=""
-                  color={null}
-                  size="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <Icon
-                    className=""
-                    color={null}
-                    content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                    size="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <svg
-                      className="css-yys9hb "
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                        }
-                      }
-                      style={
-                        Object {
-                          "fill": null,
-                          "fontSize": "1em",
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Star>
-              </div>
-            </div>
-          </div>
-        </RatingStars>
-      </div>
-    </Rating>
-    <Text
-      review=""
-    />
-    <Info
-      review={
-        Object {
-          "author": "",
-          "date": "2017-09-06T12:30:23.000Z",
-          "id": "d",
-          "rate": 20,
-          "review": "",
-          "title": "",
-        }
-      }
-    >
-      <div
-        className="css-1dhkxb0"
-      >
-        <ReviewDate
-          date="2017-09-06T12:30:23.000Z"
-        >
-          <FormatDate
-            format="long"
-            timestamp={1504701023000}
-          >
-            <span>
-              d
-            </span>
-          </FormatDate>
-        </ReviewDate>
-         
-        <Author
-          author=""
+        <div
+          className="css-1rmdcnr"
         />
-      </div>
-    </Info>
-  </div>
+      </Title>
+      <Rating
+        rate={60}
+      >
+        <div
+          className="css-15pwoui"
+        >
+          <RatingStars
+            className="css-hgkz41"
+            display="small"
+            isSelectable={false}
+            onSelection={[Function]}
+            value={60}
+          >
+            <div
+              aria-label="reviews.rating_stars"
+              className="css-13azwyo css-hgkz41"
+              data-test-id="ratedStars: 3"
+              role="text"
+            >
+              <div
+                className="css-4s85e9"
+              >
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="1"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="2"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="3"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="4"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="5"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+              </div>
+              <div
+                className="css-16y9zin"
+              >
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="6"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="7"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="8"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+              </div>
+            </div>
+          </RatingStars>
+        </div>
+      </Rating>
+      <Text
+        review="Test review"
+      >
+        <div
+          className="css-vkqu2k"
+        >
+          "Test review"
+        </div>
+      </Text>
+      <Info
+        review={
+          Object {
+            "author": "Carina Hoffmann",
+            "date": "2017-09-06T12:30:23.000Z",
+            "id": "c",
+            "rate": 60,
+            "review": "Test review",
+            "title": "",
+          }
+        }
+      >
+        <div
+          className="css-1dhkxb0"
+          role="text"
+        >
+          <ReviewDate
+            date="2017-09-06T12:30:23.000Z"
+          >
+            <FormatDate
+              format="long"
+              timestamp={1504701023000}
+            >
+              <span>
+                d
+              </span>
+            </FormatDate>
+          </ReviewDate>
+           
+          <Author
+            author="Carina Hoffmann"
+          >
+            <Translate
+              className=""
+              params={
+                Object {
+                  "author": "Carina Hoffmann",
+                }
+              }
+              string="reviews.author"
+            >
+              <span
+                className=""
+              >
+                reviews.author
+              </span>
+            </Translate>
+          </Author>
+        </div>
+      </Info>
+    </li>
+    <li
+      className="css-1yhq1gr"
+      data-test-id="reviewTitle: "
+      key="d"
+    >
+      <Title
+        title=""
+      >
+        <div
+          className="css-1rmdcnr"
+        />
+      </Title>
+      <Rating
+        rate={20}
+      >
+        <div
+          className="css-15pwoui"
+        >
+          <RatingStars
+            className="css-hgkz41"
+            display="small"
+            isSelectable={false}
+            onSelection={[Function]}
+            value={20}
+          >
+            <div
+              aria-label="reviews.rating_stars"
+              className="css-13azwyo css-hgkz41"
+              data-test-id="ratedStars: 1"
+              role="text"
+            >
+              <div
+                className="css-4s85e9"
+              >
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="1"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="2"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="3"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="4"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="5"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+              </div>
+              <div
+                className="css-16y9zin"
+              >
+                <div
+                  className="css-kdb68h css-q4owmg"
+                  key="6"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "1em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+              </div>
+            </div>
+          </RatingStars>
+        </div>
+      </Rating>
+      <Text
+        review=""
+      />
+      <Info
+        review={
+          Object {
+            "author": "",
+            "date": "2017-09-06T12:30:23.000Z",
+            "id": "d",
+            "rate": 20,
+            "review": "",
+            "title": "",
+          }
+        }
+      >
+        <div
+          className="css-1dhkxb0"
+          role="text"
+        >
+          <ReviewDate
+            date="2017-09-06T12:30:23.000Z"
+          >
+            <FormatDate
+              format="long"
+              timestamp={1504701023000}
+            >
+              <span>
+                d
+              </span>
+            </FormatDate>
+          </ReviewDate>
+           
+          <Author
+            author=""
+          />
+        </div>
+      </Info>
+    </li>
+  </ul>
 </List>
 `;

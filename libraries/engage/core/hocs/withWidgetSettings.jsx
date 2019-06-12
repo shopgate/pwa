@@ -8,7 +8,7 @@ import { useWidgetSettings } from '../hooks/useWidgetSettings';
  * @param {Function} WrappedComponent The react component to wrap.
  * @param {string} widgetId The id of the widget to look for, which must exist in the config.
  * @param {number|undefined} [index] The optional index of the widget.
- * @returns {Object}
+ * @returns {JSX}
  */
 export function withWidgetSettings(WrappedComponent, widgetId, index) {
   return (props) => {
