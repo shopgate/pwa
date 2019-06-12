@@ -20,6 +20,7 @@ exports[`<ItemImage /> should render 1`] = `
   >
     <Component
       alt="FooBar"
+      aria-hidden={true}
       itemProp="image"
       src="http://www.google.com"
     />

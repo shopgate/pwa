@@ -34,6 +34,10 @@ class ProductContent extends PureComponent {
     variantId: null,
   };
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  }
+
   /**
    * @param {Object} props The component props.
    */
@@ -112,6 +116,7 @@ class ProductContent extends PureComponent {
    * @return {JSX}
    */
   render() {
+    const { __ } = this.context.i18n();
     const id = this.state.variantId || this.state.productId;
     const contextValue = {
       ...this.state,
@@ -125,10 +130,12 @@ class ProductContent extends PureComponent {
       <Fragment>
         <AppBar productId={this.state.productId} />
         <ProductContext.Provider value={contextValue}>
-          <Media productId={this.state.variantId || this.state.productId} />
+          <Media productId={this.state.variantId || this.state.productId} aria-hidden />
           <Header />
-          <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
-          <Options />
+          <section aria-label={__('product.sections.options')}>
+            <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
+            <Options />
+          </section>
           <Description productId={this.state.productId} variantId={this.state.variantId} />
           <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
           <Reviews productId={this.state.productId} />

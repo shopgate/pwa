@@ -31,6 +31,17 @@ class CharacteristicSheet extends PureComponent {
   };
 
   /**
+   * Focuses the first selectable item for screen readers.
+   */
+  onDidOpen = () => {
+    if (this.firstSelectableItemRef.current) {
+      this.firstSelectableItemRef.current.focus();
+    }
+  };
+
+  firstSelectableItemRef = React.createRef();
+
+  /**
    * @param {Object} event The event object.
    */
   handleItemClick = (event) => {
@@ -68,16 +79,25 @@ class CharacteristicSheet extends PureComponent {
       items, label, onClose, open, selectedValue,
     } = this.props;
 
+    let selectedIndex;
+
+    if (selectedValue) {
+      selectedIndex = items.findIndex(item => item.id === selectedValue);
+    } else {
+      selectedIndex = items.findIndex(item => item.selectable);
+    }
+
     return (
-      <SheetDrawer title={label} isOpen={open} onClose={onClose}>
+      <SheetDrawer title={label} isOpen={open} onClose={onClose} onDidOpen={this.onDidOpen} >
         <SheetList>
-          {items.map(item => (
+          {items.map((item, index) => (
             <Item
               item={item}
               key={item.id}
               onClick={this.handleItemClick}
               rightComponent={() => this.renderAvailability(item.id)}
               selected={item.id === selectedValue}
+              ref={index === selectedIndex ? this.firstSelectableItemRef : null}
             />
           ))}
         </SheetList>

@@ -145,6 +145,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                       "data-css-1tgouoh": "",
                     }
                   }
+                  role="listbox"
                 >
                   <ListItem
                     className="css-1nftllw css-1ym3l2n"
@@ -168,11 +169,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                             }
                           }
                         >
-                          <Item
-                            className={null}
-                            image={null}
-                            isDisabled={false}
-                            isSelected={false}
+                          <ForwardRef(withForwardedRef(Item))
                             link="/category/3132332d313233"
                             linkState={
                               Object {
@@ -180,97 +177,129 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 "title": "foo",
                               }
                             }
-                            onClick={null}
-                            rightComponent={null}
                             testId="foo"
                             title="foo"
                           >
-                            <Glow
+                            <Item
                               className={null}
-                              color="#f7f7f7"
-                              styles={
+                              forwardedRef={null}
+                              image={null}
+                              isDisabled={false}
+                              isSelected={false}
+                              link="/category/3132332d313233"
+                              linkState={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "categoryId": "123-123",
+                                  "title": "foo",
                                 }
                               }
+                              onClick={null}
+                              rightComponent={null}
+                              testId="foo"
+                              title="foo"
                             >
-                              <div
-                                className="css-13azwyo"
-                                onClick={[Function]}
-                                style={null}
+                              <ForwardRef(withForwardedRef(Glow))
+                                aria-selected={false}
+                                className=""
+                                data-test-id="foo"
+                                role="option button"
+                                tabIndex={0}
                               >
-                                <div
-                                  className="css-1bmd5dz"
-                                  style={Object {}}
-                                />
-                                <Connect(Link)
-                                  href="/category/3132332d313233"
-                                  onClick={null}
-                                  state={
+                                <Glow
+                                  aria-selected={false}
+                                  className=""
+                                  color="#f7f7f7"
+                                  data-test-id="foo"
+                                  forwardedRef={null}
+                                  role="option button"
+                                  styles={
                                     Object {
-                                      "categoryId": "123-123",
-                                      "title": "foo",
+                                      "container": null,
+                                      "glow": null,
                                     }
                                   }
+                                  tabIndex={0}
                                 >
-                                  <Link
-                                    ariaLabel={null}
-                                    className=""
-                                    disabled={false}
-                                    historyPush={[Function]}
-                                    historyReplace={[Function]}
-                                    href="/category/3132332d313233"
-                                    onClick={null}
-                                    replace={false}
-                                    role="link"
-                                    state={
-                                      Object {
-                                        "categoryId": "123-123",
-                                        "title": "foo",
-                                      }
-                                    }
-                                    tag="div"
+                                  <div
+                                    aria-selected={false}
+                                    className="css-13azwyo"
+                                    data-test-id="foo"
+                                    onClick={[Function]}
+                                    role="option button"
+                                    style={null}
+                                    tabIndex={0}
                                   >
                                     <div
-                                      aria-label={null}
-                                      className="css-c6ki83 "
-                                      data-test-id="link: /category/3132332d313233"
-                                      onClick={[Function]}
-                                      role="link"
+                                      className="css-1bmd5dz"
+                                      style={Object {}}
+                                    />
+                                    <Connect(Link)
+                                      href="/category/3132332d313233"
+                                      onClick={null}
+                                      state={
+                                        Object {
+                                          "categoryId": "123-123",
+                                          "title": "foo",
+                                        }
+                                      }
                                     >
-                                      <div
-                                        data-test-id="foo"
+                                      <Link
+                                        ariaLabel={null}
+                                        className=""
+                                        disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
+                                        href="/category/3132332d313233"
+                                        onClick={null}
+                                        replace={false}
+                                        role="link"
+                                        state={
+                                          Object {
+                                            "categoryId": "123-123",
+                                            "title": "foo",
+                                          }
+                                        }
+                                        tag="div"
                                       >
-                                        <Grid
-                                          className="css-1qcr7hz"
-                                          component="div"
-                                          wrap={false}
+                                        <div
+                                          aria-label={null}
+                                          className="css-c6ki83 "
+                                          data-test-id="link: /category/3132332d313233"
+                                          onClick={[Function]}
+                                          role="link"
                                         >
-                                          <div
-                                            className="css-1qcr7hz css-h7r55a"
-                                          >
-                                            <GridItem
-                                              className="css-rx1nvy"
+                                          <div>
+                                            <Grid
+                                              className="css-1qcr7hz"
                                               component="div"
-                                              grow={1}
-                                              shrink={1}
+                                              wrap={false}
                                             >
                                               <div
-                                                className="css-rx1nvy css-1gs0ko2"
+                                                className="css-1qcr7hz css-h7r55a"
                                               >
-                                                foo
+                                                <GridItem
+                                                  className="css-rx1nvy"
+                                                  component="div"
+                                                  grow={1}
+                                                  shrink={1}
+                                                >
+                                                  <div
+                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  >
+                                                    foo
+                                                  </div>
+                                                </GridItem>
                                               </div>
-                                            </GridItem>
+                                            </Grid>
                                           </div>
-                                        </Grid>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </Connect(Link)>
-                              </div>
-                            </Glow>
-                          </Item>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </Glow>
+                              </ForwardRef(withForwardedRef(Glow))>
+                            </Item>
+                          </ForwardRef(withForwardedRef(Item))>
                         </Portal>
                       </div>
                     </li>
@@ -297,11 +326,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                             }
                           }
                         >
-                          <Item
-                            className={null}
-                            image={null}
-                            isDisabled={false}
-                            isSelected={false}
+                          <ForwardRef(withForwardedRef(Item))
                             link="/category/3435362d313233"
                             linkState={
                               Object {
@@ -309,97 +334,129 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 "title": "bar",
                               }
                             }
-                            onClick={null}
-                            rightComponent={null}
                             testId="bar"
                             title="bar"
                           >
-                            <Glow
+                            <Item
                               className={null}
-                              color="#f7f7f7"
-                              styles={
+                              forwardedRef={null}
+                              image={null}
+                              isDisabled={false}
+                              isSelected={false}
+                              link="/category/3435362d313233"
+                              linkState={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "categoryId": "456-123",
+                                  "title": "bar",
                                 }
                               }
+                              onClick={null}
+                              rightComponent={null}
+                              testId="bar"
+                              title="bar"
                             >
-                              <div
-                                className="css-13azwyo"
-                                onClick={[Function]}
-                                style={null}
+                              <ForwardRef(withForwardedRef(Glow))
+                                aria-selected={false}
+                                className=""
+                                data-test-id="bar"
+                                role="option button"
+                                tabIndex={0}
                               >
-                                <div
-                                  className="css-1bmd5dz"
-                                  style={Object {}}
-                                />
-                                <Connect(Link)
-                                  href="/category/3435362d313233"
-                                  onClick={null}
-                                  state={
+                                <Glow
+                                  aria-selected={false}
+                                  className=""
+                                  color="#f7f7f7"
+                                  data-test-id="bar"
+                                  forwardedRef={null}
+                                  role="option button"
+                                  styles={
                                     Object {
-                                      "categoryId": "456-123",
-                                      "title": "bar",
+                                      "container": null,
+                                      "glow": null,
                                     }
                                   }
+                                  tabIndex={0}
                                 >
-                                  <Link
-                                    ariaLabel={null}
-                                    className=""
-                                    disabled={false}
-                                    historyPush={[Function]}
-                                    historyReplace={[Function]}
-                                    href="/category/3435362d313233"
-                                    onClick={null}
-                                    replace={false}
-                                    role="link"
-                                    state={
-                                      Object {
-                                        "categoryId": "456-123",
-                                        "title": "bar",
-                                      }
-                                    }
-                                    tag="div"
+                                  <div
+                                    aria-selected={false}
+                                    className="css-13azwyo"
+                                    data-test-id="bar"
+                                    onClick={[Function]}
+                                    role="option button"
+                                    style={null}
+                                    tabIndex={0}
                                   >
                                     <div
-                                      aria-label={null}
-                                      className="css-c6ki83 "
-                                      data-test-id="link: /category/3435362d313233"
-                                      onClick={[Function]}
-                                      role="link"
+                                      className="css-1bmd5dz"
+                                      style={Object {}}
+                                    />
+                                    <Connect(Link)
+                                      href="/category/3435362d313233"
+                                      onClick={null}
+                                      state={
+                                        Object {
+                                          "categoryId": "456-123",
+                                          "title": "bar",
+                                        }
+                                      }
                                     >
-                                      <div
-                                        data-test-id="bar"
+                                      <Link
+                                        ariaLabel={null}
+                                        className=""
+                                        disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
+                                        href="/category/3435362d313233"
+                                        onClick={null}
+                                        replace={false}
+                                        role="link"
+                                        state={
+                                          Object {
+                                            "categoryId": "456-123",
+                                            "title": "bar",
+                                          }
+                                        }
+                                        tag="div"
                                       >
-                                        <Grid
-                                          className="css-1qcr7hz"
-                                          component="div"
-                                          wrap={false}
+                                        <div
+                                          aria-label={null}
+                                          className="css-c6ki83 "
+                                          data-test-id="link: /category/3435362d313233"
+                                          onClick={[Function]}
+                                          role="link"
                                         >
-                                          <div
-                                            className="css-1qcr7hz css-h7r55a"
-                                          >
-                                            <GridItem
-                                              className="css-rx1nvy"
+                                          <div>
+                                            <Grid
+                                              className="css-1qcr7hz"
                                               component="div"
-                                              grow={1}
-                                              shrink={1}
+                                              wrap={false}
                                             >
                                               <div
-                                                className="css-rx1nvy css-1gs0ko2"
+                                                className="css-1qcr7hz css-h7r55a"
                                               >
-                                                bar
+                                                <GridItem
+                                                  className="css-rx1nvy"
+                                                  component="div"
+                                                  grow={1}
+                                                  shrink={1}
+                                                >
+                                                  <div
+                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  >
+                                                    bar
+                                                  </div>
+                                                </GridItem>
                                               </div>
-                                            </GridItem>
+                                            </Grid>
                                           </div>
-                                        </Grid>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </Connect(Link)>
-                              </div>
-                            </Glow>
-                          </Item>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </Glow>
+                              </ForwardRef(withForwardedRef(Glow))>
+                            </Item>
+                          </ForwardRef(withForwardedRef(Item))>
                         </Portal>
                       </div>
                     </li>
@@ -426,11 +483,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                             }
                           }
                         >
-                          <Item
-                            className={null}
-                            image={null}
-                            isDisabled={false}
-                            isSelected={false}
+                          <ForwardRef(withForwardedRef(Item))
                             link="/category/3738392d313233"
                             linkState={
                               Object {
@@ -438,97 +491,129 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 "title": "baz",
                               }
                             }
-                            onClick={null}
-                            rightComponent={null}
                             testId="baz"
                             title="baz"
                           >
-                            <Glow
+                            <Item
                               className={null}
-                              color="#f7f7f7"
-                              styles={
+                              forwardedRef={null}
+                              image={null}
+                              isDisabled={false}
+                              isSelected={false}
+                              link="/category/3738392d313233"
+                              linkState={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "categoryId": "789-123",
+                                  "title": "baz",
                                 }
                               }
+                              onClick={null}
+                              rightComponent={null}
+                              testId="baz"
+                              title="baz"
                             >
-                              <div
-                                className="css-13azwyo"
-                                onClick={[Function]}
-                                style={null}
+                              <ForwardRef(withForwardedRef(Glow))
+                                aria-selected={false}
+                                className=""
+                                data-test-id="baz"
+                                role="option button"
+                                tabIndex={0}
                               >
-                                <div
-                                  className="css-1bmd5dz"
-                                  style={Object {}}
-                                />
-                                <Connect(Link)
-                                  href="/category/3738392d313233"
-                                  onClick={null}
-                                  state={
+                                <Glow
+                                  aria-selected={false}
+                                  className=""
+                                  color="#f7f7f7"
+                                  data-test-id="baz"
+                                  forwardedRef={null}
+                                  role="option button"
+                                  styles={
                                     Object {
-                                      "categoryId": "789-123",
-                                      "title": "baz",
+                                      "container": null,
+                                      "glow": null,
                                     }
                                   }
+                                  tabIndex={0}
                                 >
-                                  <Link
-                                    ariaLabel={null}
-                                    className=""
-                                    disabled={false}
-                                    historyPush={[Function]}
-                                    historyReplace={[Function]}
-                                    href="/category/3738392d313233"
-                                    onClick={null}
-                                    replace={false}
-                                    role="link"
-                                    state={
-                                      Object {
-                                        "categoryId": "789-123",
-                                        "title": "baz",
-                                      }
-                                    }
-                                    tag="div"
+                                  <div
+                                    aria-selected={false}
+                                    className="css-13azwyo"
+                                    data-test-id="baz"
+                                    onClick={[Function]}
+                                    role="option button"
+                                    style={null}
+                                    tabIndex={0}
                                   >
                                     <div
-                                      aria-label={null}
-                                      className="css-c6ki83 "
-                                      data-test-id="link: /category/3738392d313233"
-                                      onClick={[Function]}
-                                      role="link"
+                                      className="css-1bmd5dz"
+                                      style={Object {}}
+                                    />
+                                    <Connect(Link)
+                                      href="/category/3738392d313233"
+                                      onClick={null}
+                                      state={
+                                        Object {
+                                          "categoryId": "789-123",
+                                          "title": "baz",
+                                        }
+                                      }
                                     >
-                                      <div
-                                        data-test-id="baz"
+                                      <Link
+                                        ariaLabel={null}
+                                        className=""
+                                        disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
+                                        href="/category/3738392d313233"
+                                        onClick={null}
+                                        replace={false}
+                                        role="link"
+                                        state={
+                                          Object {
+                                            "categoryId": "789-123",
+                                            "title": "baz",
+                                          }
+                                        }
+                                        tag="div"
                                       >
-                                        <Grid
-                                          className="css-1qcr7hz"
-                                          component="div"
-                                          wrap={false}
+                                        <div
+                                          aria-label={null}
+                                          className="css-c6ki83 "
+                                          data-test-id="link: /category/3738392d313233"
+                                          onClick={[Function]}
+                                          role="link"
                                         >
-                                          <div
-                                            className="css-1qcr7hz css-h7r55a"
-                                          >
-                                            <GridItem
-                                              className="css-rx1nvy"
+                                          <div>
+                                            <Grid
+                                              className="css-1qcr7hz"
                                               component="div"
-                                              grow={1}
-                                              shrink={1}
+                                              wrap={false}
                                             >
                                               <div
-                                                className="css-rx1nvy css-1gs0ko2"
+                                                className="css-1qcr7hz css-h7r55a"
                                               >
-                                                baz
+                                                <GridItem
+                                                  className="css-rx1nvy"
+                                                  component="div"
+                                                  grow={1}
+                                                  shrink={1}
+                                                >
+                                                  <div
+                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  >
+                                                    baz
+                                                  </div>
+                                                </GridItem>
                                               </div>
-                                            </GridItem>
+                                            </Grid>
                                           </div>
-                                        </Grid>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </Connect(Link)>
-                              </div>
-                            </Glow>
-                          </Item>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </Glow>
+                              </ForwardRef(withForwardedRef(Glow))>
+                            </Item>
+                          </ForwardRef(withForwardedRef(Item))>
                         </Portal>
                       </div>
                     </li>
@@ -555,11 +640,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                             }
                           }
                         >
-                          <Item
-                            className={null}
-                            image={null}
-                            isDisabled={false}
-                            isSelected={false}
+                          <ForwardRef(withForwardedRef(Item))
                             link="/category/3738392d343536"
                             linkState={
                               Object {
@@ -567,97 +648,129 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 "title": "qux",
                               }
                             }
-                            onClick={null}
-                            rightComponent={null}
                             testId="qux"
                             title="qux"
                           >
-                            <Glow
+                            <Item
                               className={null}
-                              color="#f7f7f7"
-                              styles={
+                              forwardedRef={null}
+                              image={null}
+                              isDisabled={false}
+                              isSelected={false}
+                              link="/category/3738392d343536"
+                              linkState={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "categoryId": "789-456",
+                                  "title": "qux",
                                 }
                               }
+                              onClick={null}
+                              rightComponent={null}
+                              testId="qux"
+                              title="qux"
                             >
-                              <div
-                                className="css-13azwyo"
-                                onClick={[Function]}
-                                style={null}
+                              <ForwardRef(withForwardedRef(Glow))
+                                aria-selected={false}
+                                className=""
+                                data-test-id="qux"
+                                role="option button"
+                                tabIndex={0}
                               >
-                                <div
-                                  className="css-1bmd5dz"
-                                  style={Object {}}
-                                />
-                                <Connect(Link)
-                                  href="/category/3738392d343536"
-                                  onClick={null}
-                                  state={
+                                <Glow
+                                  aria-selected={false}
+                                  className=""
+                                  color="#f7f7f7"
+                                  data-test-id="qux"
+                                  forwardedRef={null}
+                                  role="option button"
+                                  styles={
                                     Object {
-                                      "categoryId": "789-456",
-                                      "title": "qux",
+                                      "container": null,
+                                      "glow": null,
                                     }
                                   }
+                                  tabIndex={0}
                                 >
-                                  <Link
-                                    ariaLabel={null}
-                                    className=""
-                                    disabled={false}
-                                    historyPush={[Function]}
-                                    historyReplace={[Function]}
-                                    href="/category/3738392d343536"
-                                    onClick={null}
-                                    replace={false}
-                                    role="link"
-                                    state={
-                                      Object {
-                                        "categoryId": "789-456",
-                                        "title": "qux",
-                                      }
-                                    }
-                                    tag="div"
+                                  <div
+                                    aria-selected={false}
+                                    className="css-13azwyo"
+                                    data-test-id="qux"
+                                    onClick={[Function]}
+                                    role="option button"
+                                    style={null}
+                                    tabIndex={0}
                                   >
                                     <div
-                                      aria-label={null}
-                                      className="css-c6ki83 "
-                                      data-test-id="link: /category/3738392d343536"
-                                      onClick={[Function]}
-                                      role="link"
+                                      className="css-1bmd5dz"
+                                      style={Object {}}
+                                    />
+                                    <Connect(Link)
+                                      href="/category/3738392d343536"
+                                      onClick={null}
+                                      state={
+                                        Object {
+                                          "categoryId": "789-456",
+                                          "title": "qux",
+                                        }
+                                      }
                                     >
-                                      <div
-                                        data-test-id="qux"
+                                      <Link
+                                        ariaLabel={null}
+                                        className=""
+                                        disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
+                                        href="/category/3738392d343536"
+                                        onClick={null}
+                                        replace={false}
+                                        role="link"
+                                        state={
+                                          Object {
+                                            "categoryId": "789-456",
+                                            "title": "qux",
+                                          }
+                                        }
+                                        tag="div"
                                       >
-                                        <Grid
-                                          className="css-1qcr7hz"
-                                          component="div"
-                                          wrap={false}
+                                        <div
+                                          aria-label={null}
+                                          className="css-c6ki83 "
+                                          data-test-id="link: /category/3738392d343536"
+                                          onClick={[Function]}
+                                          role="link"
                                         >
-                                          <div
-                                            className="css-1qcr7hz css-h7r55a"
-                                          >
-                                            <GridItem
-                                              className="css-rx1nvy"
+                                          <div>
+                                            <Grid
+                                              className="css-1qcr7hz"
                                               component="div"
-                                              grow={1}
-                                              shrink={1}
+                                              wrap={false}
                                             >
                                               <div
-                                                className="css-rx1nvy css-1gs0ko2"
+                                                className="css-1qcr7hz css-h7r55a"
                                               >
-                                                qux
+                                                <GridItem
+                                                  className="css-rx1nvy"
+                                                  component="div"
+                                                  grow={1}
+                                                  shrink={1}
+                                                >
+                                                  <div
+                                                    className="css-rx1nvy css-1gs0ko2"
+                                                  >
+                                                    qux
+                                                  </div>
+                                                </GridItem>
                                               </div>
-                                            </GridItem>
+                                            </Grid>
                                           </div>
-                                        </Grid>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </Connect(Link)>
-                              </div>
-                            </Glow>
-                          </Item>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </Glow>
+                              </ForwardRef(withForwardedRef(Glow))>
+                            </Item>
+                          </ForwardRef(withForwardedRef(Item))>
                         </Portal>
                       </div>
                     </li>

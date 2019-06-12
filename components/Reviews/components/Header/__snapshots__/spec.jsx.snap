@@ -56,6 +56,7 @@ exports[`<Header /> should render empty 1`] = `
               itemProp="item"
               itemScope={true}
               itemType="http://schema.org/Review"
+              role="text"
               tagName="a"
             >
               <Link
@@ -70,7 +71,7 @@ exports[`<Header /> should render empty 1`] = `
                 itemScope={true}
                 itemType="http://schema.org/Review"
                 replace={false}
-                role="link"
+                role="text"
                 state={Object {}}
                 tag="div"
                 tagName="a"
@@ -80,7 +81,7 @@ exports[`<Header /> should render empty 1`] = `
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
-                  role="link"
+                  role="text"
                 >
                   <RatingStars
                     className=""
@@ -93,6 +94,7 @@ exports[`<Header /> should render empty 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 0"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -313,6 +315,7 @@ exports[`<Header /> should render empty 1`] = `
               productId="foo"
             >
               <div
+                aria-hidden={true}
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)
@@ -387,7 +390,6 @@ exports[`<Header /> should render empty 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -480,6 +482,7 @@ exports[`<Header /> should render rating summary 1`] = `
               itemProp="item"
               itemScope={true}
               itemType="http://schema.org/Review"
+              role="text"
               tagName="a"
             >
               <Link
@@ -494,7 +497,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 itemScope={true}
                 itemType="http://schema.org/Review"
                 replace={false}
-                role="link"
+                role="text"
                 state={Object {}}
                 tag="div"
                 tagName="a"
@@ -504,7 +507,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
-                  role="link"
+                  role="text"
                 >
                   <RatingStars
                     className=""
@@ -517,6 +520,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 2.5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -851,6 +855,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 "data-css-1anve4d": "",
               }
             }
+            role="text"
           >
             <Translate
               className="css-1nftllw"
@@ -884,6 +889,7 @@ exports[`<Header /> should render rating summary 1`] = `
               productId="foo"
             >
               <div
+                aria-hidden={true}
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)
@@ -958,7 +964,6 @@ exports[`<Header /> should render rating summary 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}

@@ -23,11 +23,13 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
     name="product.description"
     props={null}
   >
-    <div
+    <section
+      aria-label="product.sections.description"
       className="css-16vd0g8"
     >
       <div
         className="css-10lhp8m"
+        role="heading"
       >
         <Translate
           className=""
@@ -98,7 +100,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
           </PlaceholderLabel>
         </div>
       </PlaceholderParagraph>
-    </div>
+    </section>
   </Portal>
   <Portal
     name="product.description.after"
@@ -130,11 +132,13 @@ exports[`<ProductDescription /> should render description if data is available 1
     name="product.description"
     props={null}
   >
-    <div
+    <section
+      aria-label="product.sections.description"
       className="css-16vd0g8"
     >
       <div
         className="css-10lhp8m"
+        role="heading"
       >
         <Translate
           className=""
@@ -179,7 +183,7 @@ exports[`<ProductDescription /> should render description if data is available 1
           </HtmlSanitizer>
         </div>
       </PlaceholderParagraph>
-    </div>
+    </section>
   </Portal>
   <Portal
     name="product.description.after"
