@@ -74,6 +74,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     >
       <ul
         className={null}
+        role="listbox"
       >
         <ListItem
           className="css-1nftllw css-1ym3l2n"
@@ -88,48 +89,73 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               className="css-1ckzvk7"
               data-test-id={null}
             >
-              <Item
-                className={null}
+              <ForwardRef(withForwardedRef(Item))
                 image={null}
-                isDisabled={false}
-                isSelected={false}
                 key="1"
                 link="/category/31"
-                linkState={null}
-                onClick={null}
-                rightComponent={null}
                 testId="Headline"
                 title="Headline"
               >
-                <Glow
+                <Item
                   className={null}
-                  color="#f7f7f7"
-                  styles={
-                    Object {
-                      "container": null,
-                      "glow": null,
-                    }
-                  }
+                  forwardedRef={null}
+                  image={null}
+                  isDisabled={false}
+                  isSelected={false}
+                  link="/category/31"
+                  linkState={null}
+                  onClick={null}
+                  rightComponent={null}
+                  testId="Headline"
+                  title="Headline"
                 >
-                  <div
-                    className="css-13azwyo"
-                    onClick={[Function]}
-                    style={null}
+                  <ForwardRef(withForwardedRef(Glow))
+                    aria-selected={false}
+                    className=""
+                    data-test-id="Headline"
+                    role="option button"
+                    tabIndex={0}
                   >
-                    <div
-                      className="css-1bmd5dz"
-                      style={Object {}}
-                    />
-                    <Link
-                      href="/category/31"
-                      onClick={null}
-                      state={null}
+                    <Glow
+                      aria-selected={false}
+                      className=""
+                      color="#f7f7f7"
+                      data-test-id="Headline"
+                      forwardedRef={null}
+                      role="option button"
+                      styles={
+                        Object {
+                          "container": null,
+                          "glow": null,
+                        }
+                      }
+                      tabIndex={0}
                     >
-                      <div />
-                    </Link>
-                  </div>
-                </Glow>
-              </Item>
+                      <div
+                        aria-selected={false}
+                        className="css-13azwyo"
+                        data-test-id="Headline"
+                        onClick={[Function]}
+                        role="option button"
+                        style={null}
+                        tabIndex={0}
+                      >
+                        <div
+                          className="css-1bmd5dz"
+                          style={Object {}}
+                        />
+                        <Link
+                          href="/category/31"
+                          onClick={null}
+                          state={null}
+                        >
+                          <div />
+                        </Link>
+                      </div>
+                    </Glow>
+                  </ForwardRef(withForwardedRef(Glow))>
+                </Item>
+              </ForwardRef(withForwardedRef(Item))>
             </div>
           </li>
         </ListItem>
@@ -146,48 +172,73 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               className="css-1ckzvk7"
               data-test-id={null}
             >
-              <Item
-                className={null}
+              <ForwardRef(withForwardedRef(Item))
                 image={null}
-                isDisabled={false}
-                isSelected={false}
                 key="2"
                 link="/category/32"
-                linkState={null}
-                onClick={null}
-                rightComponent={null}
                 testId="Headline"
                 title="Headline"
               >
-                <Glow
+                <Item
                   className={null}
-                  color="#f7f7f7"
-                  styles={
-                    Object {
-                      "container": null,
-                      "glow": null,
-                    }
-                  }
+                  forwardedRef={null}
+                  image={null}
+                  isDisabled={false}
+                  isSelected={false}
+                  link="/category/32"
+                  linkState={null}
+                  onClick={null}
+                  rightComponent={null}
+                  testId="Headline"
+                  title="Headline"
                 >
-                  <div
-                    className="css-13azwyo"
-                    onClick={[Function]}
-                    style={null}
+                  <ForwardRef(withForwardedRef(Glow))
+                    aria-selected={false}
+                    className=""
+                    data-test-id="Headline"
+                    role="option button"
+                    tabIndex={0}
                   >
-                    <div
-                      className="css-1bmd5dz"
-                      style={Object {}}
-                    />
-                    <Link
-                      href="/category/32"
-                      onClick={null}
-                      state={null}
+                    <Glow
+                      aria-selected={false}
+                      className=""
+                      color="#f7f7f7"
+                      data-test-id="Headline"
+                      forwardedRef={null}
+                      role="option button"
+                      styles={
+                        Object {
+                          "container": null,
+                          "glow": null,
+                        }
+                      }
+                      tabIndex={0}
                     >
-                      <div />
-                    </Link>
-                  </div>
-                </Glow>
-              </Item>
+                      <div
+                        aria-selected={false}
+                        className="css-13azwyo"
+                        data-test-id="Headline"
+                        onClick={[Function]}
+                        role="option button"
+                        style={null}
+                        tabIndex={0}
+                      >
+                        <div
+                          className="css-1bmd5dz"
+                          style={Object {}}
+                        />
+                        <Link
+                          href="/category/32"
+                          onClick={null}
+                          state={null}
+                        >
+                          <div />
+                        </Link>
+                      </div>
+                    </Glow>
+                  </ForwardRef(withForwardedRef(Glow))>
+                </Item>
+              </ForwardRef(withForwardedRef(Item))>
             </div>
           </li>
         </ListItem>

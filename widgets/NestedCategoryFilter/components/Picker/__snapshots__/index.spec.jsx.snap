@@ -93,6 +93,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             duration={300}
             isOpen={true}
             onClose={[Function]}
+            onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
           >
@@ -110,6 +111,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
+                onDidOpen={[Function]}
                 onOpen={[Function]}
               >
                 <div
@@ -135,6 +137,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                         className="css-1hncgty css-h7r55a"
                       >
                         <button
+                          aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
                         >
@@ -149,7 +152,6 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             size={null}
                           >
                             <div
-                              aria-hidden={true}
                               className="css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
@@ -190,10 +192,12 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           className="css-1mjy0de"
                           component="div"
                           grow={1}
+                          role="heading"
                           shrink={1}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
                             Picker Label
                           </div>
@@ -217,6 +221,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       >
                         <ul
                           className={null}
+                          role="listbox"
                         >
                           <ListItem
                             className="css-1nftllw css-1ym3l2n"
@@ -482,6 +487,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             duration={300}
             isOpen={true}
             onClose={[Function]}
+            onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
           >
@@ -499,6 +505,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
+                onDidOpen={[Function]}
                 onOpen={[Function]}
               >
                 <div
@@ -524,6 +531,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         className="css-1hncgty css-h7r55a"
                       >
                         <button
+                          aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
                         >
@@ -538,7 +546,6 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             size={null}
                           >
                             <div
-                              aria-hidden={true}
                               className="css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
@@ -579,10 +586,12 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           className="css-1mjy0de"
                           component="div"
                           grow={1}
+                          role="heading"
                           shrink={1}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
                             Picker Label
                           </div>
@@ -606,6 +615,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <ul
                           className={null}
+                          role="listbox"
                         >
                           <ListItem
                             className="css-1nftllw css-1ym3l2n"
@@ -911,6 +921,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
           >
@@ -928,6 +939,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
+                onDidOpen={[Function]}
                 onOpen={[Function]}
               >
                 <div
@@ -953,6 +965,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         className="css-1hncgty css-h7r55a"
                       >
                         <button
+                          aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
                         >
@@ -967,7 +980,6 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             size={null}
                           >
                             <div
-                              aria-hidden={true}
                               className="css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
@@ -1008,10 +1020,12 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           className="css-1mjy0de"
                           component="div"
                           grow={1}
+                          role="heading"
                           shrink={1}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
                             Picker Label
                           </div>
@@ -1035,6 +1049,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <ul
                           className={null}
+                          role="listbox"
                         >
                           <ListItem
                             className="css-1nftllw css-1ym3l2n"
@@ -1301,6 +1316,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             duration={300}
             isOpen={true}
             onClose={[Function]}
+            onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
           >
@@ -1318,6 +1334,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
+                onDidOpen={[Function]}
                 onOpen={[Function]}
               >
                 <div
@@ -1343,6 +1360,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         className="css-1hncgty css-h7r55a"
                       >
                         <button
+                          aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
                         >
@@ -1357,7 +1375,6 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             size={null}
                           >
                             <div
-                              aria-hidden={true}
                               className="css-ugy6xl"
                               data-test-id="Ripple"
                               onClick={[Function]}
@@ -1398,10 +1415,12 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           className="css-1mjy0de"
                           component="div"
                           grow={1}
+                          role="heading"
                           shrink={1}
                         >
                           <div
                             className="css-1mjy0de css-1gs0ko2"
+                            role="heading"
                           >
                             Picker Label
                           </div>
@@ -1425,6 +1444,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       >
                         <ul
                           className={null}
+                          role="listbox"
                         >
                           <ListItem
                             className="css-1nftllw css-1ym3l2n"
@@ -1689,6 +1709,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
           >
@@ -1706,6 +1727,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
+                onDidOpen={[Function]}
                 onOpen={[Function]}
               />
               <Backdrop
@@ -1848,6 +1870,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
           >
@@ -1865,6 +1888,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
+                onDidOpen={[Function]}
                 onOpen={[Function]}
               />
               <Backdrop
@@ -2002,6 +2026,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidOpen={[Function]}
             onOpen={[Function]}
             title=""
           >
@@ -2019,6 +2044,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
+                onDidOpen={[Function]}
                 onOpen={[Function]}
               />
               <Backdrop

@@ -133,7 +133,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                 size={null}
               >
                 <div
-                  aria-hidden={true}
                   className="css-1fscwua "
                   data-test-id="Ripple"
                   onClick={[Function]}
@@ -365,7 +364,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                 size={null}
               >
                 <div
-                  aria-hidden={true}
                   className="css-1fscwua "
                   data-test-id="Ripple"
                   onClick={[Function]}

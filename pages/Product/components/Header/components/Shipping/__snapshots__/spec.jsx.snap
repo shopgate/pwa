@@ -56,6 +56,7 @@ exports[`Shipping label should render free shipping 1`] = `
             >
               <div
                 className="css-117ocmm css-1ixzglu"
+                role="text"
               >
                 <Translate
                   className=""
@@ -138,6 +139,7 @@ exports[`Shipping label should render shipping price 1`] = `
             >
               <div
                 className="css-117ocmm css-1ixzglu"
+                role="text"
               >
                 <Translate
                   className=""

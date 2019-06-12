@@ -18,7 +18,6 @@ const AverageRating = ({ average, count, productId }) => {
   if (!productId) {
     return null;
   }
-
   return (
     <Link
       data-test-id="ratedStarsAverage"
@@ -29,6 +28,8 @@ const AverageRating = ({ average, count, productId }) => {
       itemProp="item"
       itemScope
       itemType="http://schema.org/Review"
+      // eslint-disable-next-line jsx-a11y/aria-role
+      role="text"
     >
       <RatingStars value={average} display="large" />
       <RatingCount count={count} />

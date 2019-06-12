@@ -137,6 +137,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
                 >
@@ -154,6 +155,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     />
                     <Backdrop
@@ -433,6 +435,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
                 >
@@ -450,6 +453,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     >
                       <div
@@ -475,6 +479,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               className="css-1hncgty css-h7r55a"
                             >
                               <button
+                                aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
                               >
@@ -489,7 +494,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -530,10 +534,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 className="css-1mjy0de"
                                 component="div"
                                 grow={1}
+                                role="heading"
                                 shrink={1}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
+                                  role="heading"
                                 >
                                   Label One
                                 </div>
@@ -557,6 +563,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             >
                               <ul
                                 className={null}
+                                role="listbox"
                               >
                                 <ListItem
                                   className="css-1nftllw css-1ym3l2n"
@@ -804,7 +811,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           size={null}
                         >
                           <div
-                            aria-hidden={true}
                             className="css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
@@ -992,6 +998,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
                 >
@@ -1009,6 +1016,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     />
                     <Backdrop
@@ -1137,6 +1145,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label Two"
                 >
@@ -1154,6 +1163,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     />
                     <Backdrop
@@ -1265,6 +1275,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title=""
                 >
@@ -1282,6 +1293,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     />
                     <Backdrop
@@ -1406,7 +1418,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           size={null}
                         >
                           <div
-                            aria-hidden={true}
                             className="css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
@@ -1594,6 +1605,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
                 >
@@ -1611,6 +1623,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     >
                       <div
@@ -1636,6 +1649,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               className="css-1hncgty css-h7r55a"
                             >
                               <button
+                                aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
                               >
@@ -1650,7 +1664,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -1691,10 +1704,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className="css-1mjy0de"
                                 component="div"
                                 grow={1}
+                                role="heading"
                                 shrink={1}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
+                                  role="heading"
                                 >
                                   Label One
                                 </div>
@@ -1718,6 +1733,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <ul
                                 className={null}
+                                role="listbox"
                               >
                                 <ListItem
                                   className="css-1nftllw css-1ym3l2n"
@@ -1969,6 +1985,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label Two"
                 >
@@ -1986,6 +2003,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     />
                     <Backdrop
@@ -2283,6 +2301,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
                 >
@@ -2300,6 +2319,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     >
                       <div
@@ -2325,6 +2345,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               className="css-1hncgty css-h7r55a"
                             >
                               <button
+                                aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
                               >
@@ -2339,7 +2360,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -2380,10 +2400,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className="css-1mjy0de"
                                 component="div"
                                 grow={1}
+                                role="heading"
                                 shrink={1}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
+                                  role="heading"
                                 >
                                   Label One
                                 </div>
@@ -2407,6 +2429,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <ul
                                 className={null}
+                                role="listbox"
                               >
                                 <ListItem
                                   className="css-1nftllw css-1ym3l2n"
@@ -2658,6 +2681,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label Two"
                 >
@@ -2675,6 +2699,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     >
                       <div
@@ -2700,6 +2725,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               className="css-1hncgty css-h7r55a"
                             >
                               <button
+                                aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
                               >
@@ -2714,7 +2740,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -2755,10 +2780,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className="css-1mjy0de"
                                 component="div"
                                 grow={1}
+                                role="heading"
                                 shrink={1}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
+                                  role="heading"
                                 >
                                   Label Two
                                 </div>
@@ -2782,6 +2809,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <ul
                                 className={null}
+                                role="listbox"
                               >
                                 <ListItem
                                   className="css-1nftllw css-1ym3l2n"
@@ -3029,7 +3057,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           size={null}
                         >
                           <div
-                            aria-hidden={true}
                             className="css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
@@ -3181,6 +3208,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
                 >
@@ -3198,6 +3226,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     />
                     <Backdrop
@@ -3459,6 +3488,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
                 >
@@ -3476,6 +3506,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
+                      onDidOpen={[Function]}
                       onOpen={[Function]}
                     >
                       <div
@@ -3501,6 +3532,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               className="css-1hncgty css-h7r55a"
                             >
                               <button
+                                aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
                               >
@@ -3515,7 +3547,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-ugy6xl"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -3556,10 +3587,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 className="css-1mjy0de"
                                 component="div"
                                 grow={1}
+                                role="heading"
                                 shrink={1}
                               >
                                 <div
                                   className="css-1mjy0de css-1gs0ko2"
+                                  role="heading"
                                 >
                                   Label One
                                 </div>
@@ -3583,6 +3616,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             >
                               <ul
                                 className={null}
+                                role="listbox"
                               >
                                 <ListItem
                                   className="css-1nftllw css-1ym3l2n"
@@ -3830,7 +3864,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           size={null}
                         >
                           <div
-                            aria-hidden={true}
                             className="css-1fscwua "
                             data-test-id="Ripple"
                             onClick={[Function]}
