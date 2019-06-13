@@ -66,7 +66,7 @@ const getOptionItems = createSelector(
         currency,
         value: value.id,
         // Price modifier and difference are equal, when nothing is selected.
-        priceModifier: value.unitPriceModifier,
+        price: value.unitPriceModifier,
         priceDifference: value.unitPriceModifier,
       };
     }
@@ -80,7 +80,7 @@ const getOptionItems = createSelector(
       currency,
       value: value.id,
       // Price which affects the unit price.
-      priceModifier: value.unitPriceModifier,
+      price: value.unitPriceModifier,
       // Difference to the currently selected sibling.
       priceDifference: (value.unitPriceModifier - siblingPrice),
     };
