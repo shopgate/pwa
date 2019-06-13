@@ -24,12 +24,15 @@ const Option = ({
           items={items.map(item => ({
             ...item,
             rightComponent: (
-              <PriceDifference currency={currency} difference={item.price} />
+              <PriceDifference
+                currency={currency}
+                difference={item.priceDifference}
+              />
             ),
           }))}
           placeholder={<I18n.Text string="product.pick_an_attribute" params={[label]} />}
           value={value}
-          onChange={val => onChange(id, val, items.find(item => item.value === val).price)}
+          onChange={val => onChange(id, val, items.find(item => item.value === val).priceModifier)}
         />
       </div>
     )}
