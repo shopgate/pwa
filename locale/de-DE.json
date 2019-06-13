@@ -7,7 +7,9 @@
     "undo": "Rück­gän­gig",
     "required": "Erforderlich *",
     "please_choose": "Bitte wählen",
-    "show_products": "Produkte anzeigen"
+    "show_products": "Produkte anzeigen",
+    "back": "Zurück",
+    "close": "Schließen"
   },
   "titles": {
     "categories": "Kategorien",
@@ -67,6 +69,13 @@
       "until": "Verfügbar bis {endDate, date, DD} {endDate, date, MMM} um {endDate, time, short} Uhr",
       "not": "Derzeit nicht verfügbar",
       "not_search_similar": "{name} nicht verfügbar. Nach ähnlichen Produkten suchen?"
+    },
+    "sections": {
+      "information": "Product Information",
+      "options": "Choose Options",
+      "description": "Description",
+      "properties": "Properties",
+      "ratings": "Ratings"
     }
   },
   "category": {

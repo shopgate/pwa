@@ -7,7 +7,9 @@
     "undo": "Ongedaan maken",
     "required": "Verplicht *",
     "please_choose": "Kies",
-    "show_products": "Toon producten"
+    "show_products": "Toon producten",
+    "back": "Back",
+    "close": "Close"
   },
   "titles": {
     "categories": "Categorieën",
@@ -66,6 +68,13 @@
       "until": "Beschikbaar tot {endDate, date, DD} {endDate, date, MMM} om {endDate, time, short}",
       "not": "Op dit moment niet beschikbaar",
       "not_search_similar": "{name} is niet beschikbaar. Zoeken naar vergelijkbare producten?"
+    },
+    "sections": {
+      "information": "Product Information",
+      "options": "Choose Options",
+      "description": "Description",
+      "properties": "Properties",
+      "ratings": "Ratings"
     }
   },
   "category": {
