@@ -35,6 +35,14 @@ export default {
         maxItemCount: 10,
         filter: [],
       },
+      '@shopgate/engage/product/RelationsSlider': {
+        type: 'upselling', // upselling, crossSelling, bonus, boughtWith, custom.
+        position: 'header', // header, description.
+        headline: null,
+        showPrice: true,
+        showName: true,
+        nameLines: 2,
+      },
     },
     pages: [
       {
