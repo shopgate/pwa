@@ -6,7 +6,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
 <div
   className={
     Object {
-      "data-css-shwloj": "",
+      "data-css-t5ln4b": "",
     }
   }
   role="button"

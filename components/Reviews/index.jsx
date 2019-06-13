@@ -17,27 +17,23 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @param {Object} props.rating Rating of the product.
  * @param {Array} props.reviews Reviews which should be shown in the product page.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-const Reviews = ({ productId, reviews }, context) => {
-  const { __ } = context.i18n();
-  return (
-    <Fragment>
-      <Portal name={PRODUCT_REVIEWS_BEFORE} />
-      <Portal name={PRODUCT_REVIEWS}>
-        {appConfig.hasReviews && (
-          <section className={styles.container} data-test-id="reviewSection" aria-label={__('product.sections.ratings')}>
-            <Header productId={productId} />
-            <List productId={productId} reviews={reviews} />
-            <AllReviewsLink productId={productId} />
-          </section>
-        )}
-      </Portal>
-      <Portal name={PRODUCT_REVIEWS_AFTER} />
-    </Fragment>
-  );
-};
+const Reviews = ({ productId, reviews }) => (
+  <Fragment>
+    <Portal name={PRODUCT_REVIEWS_BEFORE} />
+    <Portal name={PRODUCT_REVIEWS}>
+      {appConfig.hasReviews && (
+        <div className={styles.container} data-test-id="reviewSection">
+          <Header productId={productId} />
+          <List productId={productId} reviews={reviews} />
+          <AllReviewsLink productId={productId} />
+        </div>
+      )}
+    </Portal>
+    <Portal name={PRODUCT_REVIEWS_AFTER} />
+  </Fragment>
+);
 
 Reviews.propTypes = {
   productId: PropTypes.string,
@@ -47,10 +43,6 @@ Reviews.propTypes = {
 Reviews.defaultProps = {
   productId: null,
   reviews: null,
-};
-
-Reviews.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default connect(Reviews);

@@ -176,6 +176,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -184,6 +185,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -254,6 +256,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -262,6 +265,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -332,6 +336,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -340,6 +345,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -410,6 +416,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -418,6 +425,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -510,6 +518,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -518,6 +527,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -887,6 +897,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 replace={false}
                                 role="link"
                                 state={Object {}}
+                                tabIndex={null}
                                 tag="div"
                               >
                                 <div
@@ -895,6 +906,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                   data-test-id="link: /login"
                                   onClick={[Function]}
                                   role="link"
+                                  tabIndex={null}
                                 >
                                   <Button
                                     className="css-6f03lb"
@@ -963,6 +975,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 replace={false}
                                 role="link"
                                 state={Object {}}
+                                tabIndex={null}
                                 tag="div"
                               >
                                 <div
@@ -971,6 +984,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                   data-test-id="link: /register"
                                   onClick={[Function]}
                                   role="link"
+                                  tabIndex={null}
                                 >
                                   <Button
                                     className="css-6f03lb"
@@ -1152,6 +1166,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -1160,6 +1175,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               data-test-id="link: /page/shipping"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -1230,6 +1246,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -1238,6 +1255,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               data-test-id="link: /page/payment"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -1308,6 +1326,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -1316,6 +1335,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               data-test-id="link: /page/terms"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -1386,6 +1406,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -1394,6 +1415,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               data-test-id="link: /page/privacy"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""
@@ -1486,6 +1508,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             replace={false}
                             role="link"
                             state={Object {}}
+                            tabIndex={null}
                             tag="div"
                           >
                             <div
@@ -1494,6 +1517,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               data-test-id="link: /page/imprint"
                               onClick={[Function]}
                               role="link"
+                              tabIndex={null}
                             >
                               <Translate
                                 className=""

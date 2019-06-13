@@ -145,12 +145,12 @@ exports[`<RootCategories /> should render category list with root categories fro
                       "data-css-1tgouoh": "",
                     }
                   }
-                  role="listbox"
                 >
                   <ListItem
                     className="css-1nftllw css-1ym3l2n"
                     isSelected={false}
                     key="child-0/.$123-123"
+                    tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
@@ -199,35 +199,23 @@ exports[`<RootCategories /> should render category list with root categories fro
                               title="foo"
                             >
                               <ForwardRef(withForwardedRef(Glow))
-                                aria-selected={false}
-                                className=""
-                                data-test-id="foo"
-                                role="option button"
-                                tabIndex={0}
+                                className={null}
                               >
                                 <Glow
-                                  aria-selected={false}
-                                  className=""
+                                  className={null}
                                   color="#f7f7f7"
-                                  data-test-id="foo"
                                   forwardedRef={null}
-                                  role="option button"
                                   styles={
                                     Object {
                                       "container": null,
                                       "glow": null,
                                     }
                                   }
-                                  tabIndex={0}
                                 >
                                   <div
-                                    aria-selected={false}
                                     className="css-13azwyo"
-                                    data-test-id="foo"
                                     onClick={[Function]}
-                                    role="option button"
                                     style={null}
-                                    tabIndex={0}
                                   >
                                     <div
                                       className="css-1bmd5dz"
@@ -242,6 +230,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           "title": "foo",
                                         }
                                       }
+                                      tabIndex={0}
                                     >
                                       <Link
                                         ariaLabel={null}
@@ -259,6 +248,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             "title": "foo",
                                           }
                                         }
+                                        tabIndex={0}
                                         tag="div"
                                       >
                                         <div
@@ -267,8 +257,11 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           data-test-id="link: /category/3132332d313233"
                                           onClick={[Function]}
                                           role="link"
+                                          tabIndex={0}
                                         >
-                                          <div>
+                                          <div
+                                            data-test-id="foo"
+                                          >
                                             <Grid
                                               className="css-1qcr7hz"
                                               component="div"
@@ -308,6 +301,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     className="css-1nftllw css-1ym3l2n"
                     isSelected={false}
                     key="child-1/.$456-123"
+                    tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
@@ -356,35 +350,23 @@ exports[`<RootCategories /> should render category list with root categories fro
                               title="bar"
                             >
                               <ForwardRef(withForwardedRef(Glow))
-                                aria-selected={false}
-                                className=""
-                                data-test-id="bar"
-                                role="option button"
-                                tabIndex={0}
+                                className={null}
                               >
                                 <Glow
-                                  aria-selected={false}
-                                  className=""
+                                  className={null}
                                   color="#f7f7f7"
-                                  data-test-id="bar"
                                   forwardedRef={null}
-                                  role="option button"
                                   styles={
                                     Object {
                                       "container": null,
                                       "glow": null,
                                     }
                                   }
-                                  tabIndex={0}
                                 >
                                   <div
-                                    aria-selected={false}
                                     className="css-13azwyo"
-                                    data-test-id="bar"
                                     onClick={[Function]}
-                                    role="option button"
                                     style={null}
-                                    tabIndex={0}
                                   >
                                     <div
                                       className="css-1bmd5dz"
@@ -399,6 +381,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           "title": "bar",
                                         }
                                       }
+                                      tabIndex={0}
                                     >
                                       <Link
                                         ariaLabel={null}
@@ -416,6 +399,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             "title": "bar",
                                           }
                                         }
+                                        tabIndex={0}
                                         tag="div"
                                       >
                                         <div
@@ -424,8 +408,11 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           data-test-id="link: /category/3435362d313233"
                                           onClick={[Function]}
                                           role="link"
+                                          tabIndex={0}
                                         >
-                                          <div>
+                                          <div
+                                            data-test-id="bar"
+                                          >
                                             <Grid
                                               className="css-1qcr7hz"
                                               component="div"
@@ -465,6 +452,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     className="css-1nftllw css-1ym3l2n"
                     isSelected={false}
                     key="child-2/.$789-123"
+                    tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
@@ -513,35 +501,23 @@ exports[`<RootCategories /> should render category list with root categories fro
                               title="baz"
                             >
                               <ForwardRef(withForwardedRef(Glow))
-                                aria-selected={false}
-                                className=""
-                                data-test-id="baz"
-                                role="option button"
-                                tabIndex={0}
+                                className={null}
                               >
                                 <Glow
-                                  aria-selected={false}
-                                  className=""
+                                  className={null}
                                   color="#f7f7f7"
-                                  data-test-id="baz"
                                   forwardedRef={null}
-                                  role="option button"
                                   styles={
                                     Object {
                                       "container": null,
                                       "glow": null,
                                     }
                                   }
-                                  tabIndex={0}
                                 >
                                   <div
-                                    aria-selected={false}
                                     className="css-13azwyo"
-                                    data-test-id="baz"
                                     onClick={[Function]}
-                                    role="option button"
                                     style={null}
-                                    tabIndex={0}
                                   >
                                     <div
                                       className="css-1bmd5dz"
@@ -556,6 +532,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           "title": "baz",
                                         }
                                       }
+                                      tabIndex={0}
                                     >
                                       <Link
                                         ariaLabel={null}
@@ -573,6 +550,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             "title": "baz",
                                           }
                                         }
+                                        tabIndex={0}
                                         tag="div"
                                       >
                                         <div
@@ -581,8 +559,11 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           data-test-id="link: /category/3738392d313233"
                                           onClick={[Function]}
                                           role="link"
+                                          tabIndex={0}
                                         >
-                                          <div>
+                                          <div
+                                            data-test-id="baz"
+                                          >
                                             <Grid
                                               className="css-1qcr7hz"
                                               component="div"
@@ -622,6 +603,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     className="css-1nftllw"
                     isSelected={false}
                     key="child-3/.$789-456"
+                    tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-16gj3o1"
@@ -670,35 +652,23 @@ exports[`<RootCategories /> should render category list with root categories fro
                               title="qux"
                             >
                               <ForwardRef(withForwardedRef(Glow))
-                                aria-selected={false}
-                                className=""
-                                data-test-id="qux"
-                                role="option button"
-                                tabIndex={0}
+                                className={null}
                               >
                                 <Glow
-                                  aria-selected={false}
-                                  className=""
+                                  className={null}
                                   color="#f7f7f7"
-                                  data-test-id="qux"
                                   forwardedRef={null}
-                                  role="option button"
                                   styles={
                                     Object {
                                       "container": null,
                                       "glow": null,
                                     }
                                   }
-                                  tabIndex={0}
                                 >
                                   <div
-                                    aria-selected={false}
                                     className="css-13azwyo"
-                                    data-test-id="qux"
                                     onClick={[Function]}
-                                    role="option button"
                                     style={null}
-                                    tabIndex={0}
                                   >
                                     <div
                                       className="css-1bmd5dz"
@@ -713,6 +683,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           "title": "qux",
                                         }
                                       }
+                                      tabIndex={0}
                                     >
                                       <Link
                                         ariaLabel={null}
@@ -730,6 +701,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                             "title": "qux",
                                           }
                                         }
+                                        tabIndex={0}
                                         tag="div"
                                       >
                                         <div
@@ -738,8 +710,11 @@ exports[`<RootCategories /> should render category list with root categories fro
                                           data-test-id="link: /category/3738392d343536"
                                           onClick={[Function]}
                                           role="link"
+                                          tabIndex={0}
                                         >
-                                          <div>
+                                          <div
+                                            data-test-id="qux"
+                                          >
                                             <Grid
                                               className="css-1qcr7hz"
                                               component="div"
