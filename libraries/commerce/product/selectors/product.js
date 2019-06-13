@@ -778,16 +778,16 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
 export const getResultHash = createSelector(
   (state, props = {}) => props.categoryId,
   (state, props = {}) => props.searchPhrase,
-  (state, props = {}) => props.characteristics,
+  (state, props = {}) => props.params,
   (state, props) => getSortOrder(state, props) || DEFAULT_SORT,
   getActiveFilters,
-  (categoryId, searchPhrase, characteristics, sort, filters) => {
+  (categoryId, searchPhrase, params, sort, filters) => {
     if (categoryId) {
       return generateResultHash({
         categoryId,
         sort,
         ...(filters && { filters }),
-        characteristics,
+        ...params,
       });
     }
 
@@ -795,6 +795,7 @@ export const getResultHash = createSelector(
       return generateResultHash({
         searchPhrase,
         sort,
+        ...params,
         ...(filters && { filters }),
       });
     }

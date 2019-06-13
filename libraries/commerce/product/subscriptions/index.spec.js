@@ -28,7 +28,7 @@ describe('Product subscription', () => {
   });
 
   it('should subscribe', () => {
-    expect(subscribe).toHaveBeenCalledTimes(8);
+    expect(subscribe).toHaveBeenCalledTimes(9);
   });
 
   describe('galleryWillEnter$', () => {

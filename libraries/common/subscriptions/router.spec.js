@@ -29,6 +29,8 @@ jest.mock('@virtuous/conductor', () => ({
     reset: jest.fn(),
     replace: jest.fn(),
     getCurrentRoute: jest.fn(),
+    findPattern: jest.fn(),
+    patterns: {},
   },
 }));
 

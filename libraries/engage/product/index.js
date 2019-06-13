@@ -29,6 +29,8 @@ export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';
+export * from './helpers/index';
+export * from './helpers/redirects';
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/product/selectors/options';

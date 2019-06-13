@@ -5,10 +5,13 @@ import fetchProducts from '../../product/actions/fetchProducts';
 /**
  * Retrieves category products by a category id.
  * @param {string} categoryId The category id to requests products for.
+ * @param {Object} [filters=null] The filters.
  * @param {number} offset The offset for the products to request.
  * @param {number} limit The number of products to request.
  * @param {string} sort The sort order of the products.
- * @param {boolean} characteristics Include characteristics.
+ * @param {boolean} [cached=true] The cache strategy.
+ * @param {null|number} [cachedTime=null] The cache TTL.
+ * @param {Object} params additional params.
  * @return {Function} The dispatched action.
  */
 const fetchCategoryProducts = ({
@@ -17,18 +20,22 @@ const fetchCategoryProducts = ({
   offset = 0,
   limit = ITEMS_PER_LOAD,
   sort,
-  characteristics = false,
+  cached = true,
+  cachedTime = null,
+  params,
 }) =>
   (dispatch, getState) => {
     const sortOrder = sort || getSortOrder(getState());
 
     dispatch(fetchProducts({
+      cached,
+      cachedTime,
       params: {
         categoryId,
         offset,
         limit,
         sort: sortOrder,
-        characteristics,
+        ...params,
       },
       filters,
     }));
