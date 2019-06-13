@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/tracking-core",
-  "version": "6.5.0",
+  "version": "6.5.1-rc.2",
   "description": "Tracking core library for the Shopgate Connect PWA.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
@@ -16,8 +16,8 @@
     "connect"
   ],
   "devDependencies": {
-    "@shopgate/eslint-config": "6.5.0",
-    "@shopgate/pwa-core": "6.5.0",
+    "@shopgate/eslint-config": "6.5.1-rc.2",
+    "@shopgate/pwa-core": "6.5.1-rc.2",
     "chai": "^3.5.0",
     "jest": "^23.6.0",
     "jsdom": "9.8.3",
