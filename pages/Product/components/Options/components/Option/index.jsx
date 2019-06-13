@@ -25,7 +25,11 @@ const Option = ({
           items={items.map(item => ({
             ...item,
             rightComponent: (
-              <PriceDifference className={styles} currency={currency} difference={item.price} />
+              <PriceDifference
+                className={styles}
+                currency={currency}
+                difference={item.priceDifference}
+              />
             ),
           }))}
           placeholder={<I18n.Text string="product.pick_an_attribute" params={[label]} />}
