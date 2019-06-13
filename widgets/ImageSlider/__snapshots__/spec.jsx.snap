@@ -228,6 +228,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       replace={false}
                       role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
@@ -236,6 +237,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -273,6 +275,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       replace={false}
                       role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
@@ -281,6 +284,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -357,6 +361,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           replace={false}
           role="link"
           state={Object {}}
+          tabIndex={null}
           tag="div"
         >
           <div
@@ -365,6 +370,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
             data-test-id="link: http://example.com"
             onClick={[Function]}
             role="link"
+            tabIndex={null}
           >
             <img
               className={
@@ -677,6 +683,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       replace={false}
                       role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
@@ -685,6 +692,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -940,6 +948,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       replace={false}
                       role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
@@ -948,6 +957,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -985,6 +995,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       replace={false}
                       role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
@@ -993,6 +1004,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
