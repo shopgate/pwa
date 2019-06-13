@@ -60,12 +60,12 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       >
         <ul
           className={null}
-          role="listbox"
         >
           <ListItem
             className="css-1nftllw css-1ym3l2n"
             isSelected={false}
             key="child-0/.$1"
+            tabIndex={0}
           >
             <li
               className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
@@ -96,35 +96,23 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     title="Headline"
                   >
                     <ForwardRef(withForwardedRef(Glow))
-                      aria-selected={false}
-                      className=""
-                      data-test-id="Headline"
-                      role="option button"
-                      tabIndex={0}
+                      className={null}
                     >
                       <Glow
-                        aria-selected={false}
-                        className=""
+                        className={null}
                         color="#f7f7f7"
-                        data-test-id="Headline"
                         forwardedRef={null}
-                        role="option button"
                         styles={
                           Object {
                             "container": null,
                             "glow": null,
                           }
                         }
-                        tabIndex={0}
                       >
                         <div
-                          aria-selected={false}
                           className="css-13azwyo"
-                          data-test-id="Headline"
                           onClick={[Function]}
-                          role="option button"
                           style={null}
-                          tabIndex={0}
                         >
                           <div
                             className="css-1bmd5dz"
@@ -134,6 +122,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                             href="/category/31"
                             onClick={null}
                             state={null}
+                            tabIndex={0}
                           >
                             <div />
                           </Link>
@@ -149,6 +138,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             className="css-1nftllw"
             isSelected={false}
             key="child-1/.$2"
+            tabIndex={0}
           >
             <li
               className="css-1p5q8vq css-1nftllw css-16gj3o1"
@@ -179,35 +169,23 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     title="Headline"
                   >
                     <ForwardRef(withForwardedRef(Glow))
-                      aria-selected={false}
-                      className=""
-                      data-test-id="Headline"
-                      role="option button"
-                      tabIndex={0}
+                      className={null}
                     >
                       <Glow
-                        aria-selected={false}
-                        className=""
+                        className={null}
                         color="#f7f7f7"
-                        data-test-id="Headline"
                         forwardedRef={null}
-                        role="option button"
                         styles={
                           Object {
                             "container": null,
                             "glow": null,
                           }
                         }
-                        tabIndex={0}
                       >
                         <div
-                          aria-selected={false}
                           className="css-13azwyo"
-                          data-test-id="Headline"
                           onClick={[Function]}
-                          role="option button"
                           style={null}
-                          tabIndex={0}
                         >
                           <div
                             className="css-1bmd5dz"
@@ -217,6 +195,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                             href="/category/32"
                             onClick={null}
                             state={null}
+                            tabIndex={0}
                           >
                             <div />
                           </Link>

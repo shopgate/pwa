@@ -54,6 +54,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
         replace={false}
         role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
@@ -63,6 +64,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -809,6 +811,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
         replace={false}
         role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
@@ -818,6 +821,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -1283,6 +1287,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
         replace={false}
         role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
@@ -1292,6 +1297,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -2104,6 +2110,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
         replace={false}
         role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
@@ -2113,6 +2120,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -2925,6 +2933,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
         replace={false}
         role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
@@ -2934,6 +2943,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -3710,6 +3720,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
         replace={false}
         role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
@@ -3719,6 +3730,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -4271,6 +4283,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
         replace={false}
         role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
@@ -4280,6 +4293,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
