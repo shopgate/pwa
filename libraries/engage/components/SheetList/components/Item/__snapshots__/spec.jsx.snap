@@ -19,35 +19,23 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
     title="My Title"
   >
     <ForwardRef(withForwardedRef(Glow))
-      aria-selected={false}
-      className=""
-      data-test-id={null}
-      role="option button"
-      tabIndex={0}
+      className={null}
     >
       <Glow
-        aria-selected={false}
-        className=""
+        className={null}
         color="#f7f7f7"
-        data-test-id={null}
         forwardedRef={null}
-        role="option button"
         styles={
           Object {
             "container": null,
             "glow": null,
           }
         }
-        tabIndex={0}
       >
         <div
-          aria-selected={false}
           className="css-13azwyo"
-          data-test-id={null}
           onClick={[Function]}
-          role="option button"
           style={null}
-          tabIndex={0}
         >
           <div
             className="css-1bmd5dz"
@@ -57,6 +45,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
             href="url/to/somewhere"
             onClick={null}
             state={null}
+            tabIndex={0}
           >
             <div />
           </Link>
@@ -94,15 +83,7 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
     title="My Title"
   >
     <div
-      aria-selected={false}
-      className={
-        Object {
-          "data-css-3l3fu5": "",
-        }
-      }
       data-test-id={null}
-      role="option button"
-      tabIndex={0}
     >
       <Grid
         className="css-1qcr7hz"
@@ -163,15 +144,7 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
     title="My Title"
   >
     <div
-      aria-selected={false}
-      className={
-        Object {
-          "data-css-3l3fu5": "",
-        }
-      }
       data-test-id={null}
-      role="option button"
-      tabIndex={0}
     >
       <Grid
         className="css-1qcr7hz"
@@ -229,15 +202,7 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
     title="My Title"
   >
     <div
-      aria-selected={false}
-      className={
-        Object {
-          "data-css-3l3fu5": "",
-        }
-      }
       data-test-id={null}
-      role="option button"
-      tabIndex={0}
     >
       <Grid
         className="css-1qcr7hz"
@@ -294,15 +259,10 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
   >
     <div
       aria-selected={false}
-      className={
-        Object {
-          "data-css-3l3fu5": "",
-        }
-      }
       data-test-id={null}
       onClick={[Function]}
       onKeyPress={[Function]}
-      role="option button"
+      role="option"
       tabIndex={0}
     >
       <ForwardRef(withForwardedRef(Glow))
@@ -328,7 +288,9 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
               className="css-1bmd5dz"
               style={Object {}}
             />
-            <div>
+            <div
+              data-test-id={null}
+            >
               <Grid
                 className="css-1qcr7hz"
                 component="div"
@@ -379,15 +341,7 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
     title="My Title"
   >
     <div
-      aria-selected={false}
-      className={
-        Object {
-          "data-css-3l3fu5": "",
-        }
-      }
       data-test-id={null}
-      role="option button"
-      tabIndex={0}
     >
       <Grid
         className="css-1qcr7hz"
@@ -435,15 +389,7 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
     title="My Title"
   >
     <div
-      aria-selected={true}
-      className={
-        Object {
-          "data-css-3l3fu5": "",
-        }
-      }
       data-test-id={null}
-      role="option button"
-      tabIndex={0}
     >
       <Grid
         className="css-1qcr7hz css-7q9yf9"

@@ -2,22 +2,15 @@
 
 exports[`<Section /> should render hidden when no children rendered 1`] = `
 <Section
+  className={null}
   title="my.headline"
   titleParams={Object {}}
 >
   <section
-    className={
-      Object {
-        "data-css-gyrv08": "",
-      }
-    }
+    className="css-gyrv08"
   >
     <h1
-      className={
-        Object {
-          "data-css-1krt3b8": "",
-        }
-      }
+      className="css-1krt3b8"
     >
       <Translate
         params={Object {}}
@@ -32,6 +25,7 @@ exports[`<Section /> should render hidden when no children rendered 1`] = `
 
 exports[`<Section /> should render visible 1`] = `
 <Section
+  className={null}
   title="my.headline"
   titleParams={
     Object {
@@ -40,14 +34,10 @@ exports[`<Section /> should render visible 1`] = `
   }
 >
   <section
-    className={null}
+    className=""
   >
     <h1
-      className={
-        Object {
-          "data-css-1krt3b8": "",
-        }
-      }
+      className="css-1krt3b8"
     >
       <Translate
         params={

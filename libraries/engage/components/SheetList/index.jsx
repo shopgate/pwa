@@ -67,6 +67,7 @@ class SheetList extends Component {
               className={classNames(classes)}
               isSelected={isSelected}
               key={key}
+              tabIndex={0}
             >
               <div className={styles.innerContainer} data-test-id={testId}>
                 {child}

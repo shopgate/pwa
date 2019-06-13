@@ -120,6 +120,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
               replace={false}
               role="link"
               state={Object {}}
+              tabIndex={null}
               tag="div"
               tagName="a"
             >
@@ -129,6 +130,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                 data-test-id="link: /item/505230445543544944"
                 onClick={[Function]}
                 role="link"
+                tabIndex={null}
               >
                 <Component
                   alt="Product Name"

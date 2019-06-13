@@ -8,7 +8,7 @@ import ListItem from './components/Item';
  * @returns {JSX}
  */
 const List = ({ children, className }) => (
-  <ul className={className} role="listbox">{children}</ul>
+  <ul className={className}>{children}</ul>
 );
 
 List.Item = ListItem;

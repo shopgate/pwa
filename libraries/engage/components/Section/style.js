@@ -2,7 +2,7 @@ import { css } from 'glamor';
 
 export const hidden = css({
   display: 'none',
-});
+}).toString();
 
 export const headline = css({
   clip: 'rect(1px, 1px, 1px, 1px)',
@@ -14,4 +14,4 @@ export const headline = css({
   whiteSpace: 'nowrap',
   width: '1px',
   zIndex: -1000,
-});
+}).toString();

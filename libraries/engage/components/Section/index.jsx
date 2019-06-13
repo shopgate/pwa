@@ -1,5 +1,6 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { I18n } from '../';
 import { headline, hidden } from './style';
 
@@ -27,11 +28,14 @@ const hasChildNodes = (ref) => {
  * renders a headline on top which is only visible for screen readers and describes the section.
  * Internally a MutationObserver maintains the visibility based on the presence of rendered content.
  * @param {string} title The section title - can be a translation placeholder.
- * @param {Object} titleParams Additional parameters for the title  translation placeholder.
- * @param {NodeList} children Component children.
+ * @param {Object} [titleParams={}] Additional parameters for the title  translation placeholder.
+ * @param {Object} [className=null] A class name for the section.
+ * @param {NodeList} [children=null] Component children.
  * @returns {JSX}
  */
-const Section = ({ title, titleParams, children }) => {
+const Section = ({
+  title, titleParams, children, className, ...rest
+}) => {
   const contentRef = useRef(null);
   const [hasContent, setHasContent] = useState(false);
 
@@ -48,8 +52,12 @@ const Section = ({ title, titleParams, children }) => {
     };
   }, [contentRef]);
 
+  const classes = classNames(className, {
+    [hidden]: !hasContent,
+  });
+
   return (
-    <section ref={contentRef} className={hasContent ? null : hidden}>
+    <section {...rest} ref={contentRef} className={classes}>
       <h1 className={headline}>
         <I18n.Text string={title} params={titleParams} />
       </h1>
@@ -61,11 +69,13 @@ const Section = ({ title, titleParams, children }) => {
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
+  className: PropTypes.string,
   titleParams: PropTypes.shape(),
 };
 
 Section.defaultProps = {
   children: null,
+  className: null,
   titleParams: {},
 };
 

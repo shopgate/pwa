@@ -11,12 +11,12 @@ exports[`<SheetList /> should not render invalid children 1`] = `
   >
     <ul
       className={null}
-      role="listbox"
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n"
         isSelected={false}
         key="child-0/.0"
+        tabIndex={0}
       >
         <li
           className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
@@ -43,15 +43,7 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                 title="List Item"
               >
                 <div
-                  aria-selected={false}
-                  className={
-                    Object {
-                      "data-css-3l3fu5": "",
-                    }
-                  }
                   data-test-id={null}
-                  role="option button"
-                  tabIndex={0}
                 >
                   <Grid
                     className="css-1qcr7hz"
@@ -105,12 +97,12 @@ exports[`<SheetList /> should render a child and add styles for list items with 
   >
     <ul
       className={null}
-      role="listbox"
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n css-1brrprg"
         isSelected={false}
         key="child-0/.0"
+        tabIndex={0}
       >
         <li
           className="css-1p5q8vq css-1nftllw css-1ym3l2n css-1brrprg css-16gj3o1"
@@ -137,15 +129,7 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                 title="List Item"
               >
                 <div
-                  aria-selected={false}
-                  className={
-                    Object {
-                      "data-css-3l3fu5": "",
-                    }
-                  }
                   data-test-id={null}
-                  role="option button"
-                  tabIndex={0}
                 >
                   <Grid
                     className="css-1qcr7hz"
@@ -191,12 +175,12 @@ exports[`<SheetList /> should render with two children 1`] = `
   >
     <ul
       className={null}
-      role="listbox"
     >
       <ListItem
         className="css-1nftllw css-1ym3l2n"
         isSelected={false}
         key="child-0/.0"
+        tabIndex={0}
       >
         <li
           className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
@@ -223,15 +207,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                 title="List Item"
               >
                 <div
-                  aria-selected={false}
-                  className={
-                    Object {
-                      "data-css-3l3fu5": "",
-                    }
-                  }
                   data-test-id={null}
-                  role="option button"
-                  tabIndex={0}
                 >
                   <Grid
                     className="css-1qcr7hz"
@@ -265,6 +241,7 @@ exports[`<SheetList /> should render with two children 1`] = `
         className="css-1nftllw"
         isSelected={false}
         key="child-1/.1"
+        tabIndex={0}
       >
         <li
           className="css-1p5q8vq css-1nftllw css-16gj3o1"
@@ -291,15 +268,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                 title="List Item"
               >
                 <div
-                  aria-selected={false}
-                  className={
-                    Object {
-                      "data-css-3l3fu5": "",
-                    }
-                  }
                   data-test-id={null}
-                  role="option button"
-                  tabIndex={0}
                 >
                   <Grid
                     className="css-1qcr7hz"

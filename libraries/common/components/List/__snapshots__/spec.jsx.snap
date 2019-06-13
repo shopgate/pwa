@@ -3,7 +3,6 @@
 exports[`<List /> renders with children 1`] = `
 <ul
   className=""
-  role="listbox"
 >
   <ListItem
     className={null}
@@ -26,6 +25,5 @@ exports[`<List /> renders with children 1`] = `
 exports[`<List /> renders without children 1`] = `
 <ul
   className=""
-  role="listbox"
 />
 `;
