@@ -46,4 +46,9 @@ describe('<BasicDialog />', () => {
     expect(props.actions[1].action).toBeCalled();
     expect(props.actions[2].action).not.toBeCalled();
   });
+
+  it('should render with node as a title', () => {
+    const wrapper = shallow(<BasicDialog title={<strong>My Title</strong>} />);
+    expect(wrapper.find('strong').text()).toEqual('My Title');
+  });
 });
