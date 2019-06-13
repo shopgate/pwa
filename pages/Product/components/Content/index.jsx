@@ -127,14 +127,22 @@ class ProductContent extends PureComponent {
         <AppBar productId={this.state.productId} />
         <ProductContext.Provider value={contextValue}>
           <Media productId={this.state.variantId || this.state.productId} aria-hidden />
-          <Header />
+          <Section title="product.sections.information">
+            <Header />
+          </Section>
           <Section title="product.sections.options">
             <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
             <Options />
           </Section>
-          <Description productId={this.state.productId} variantId={this.state.variantId} />
-          <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
-          <Reviews productId={this.state.productId} />
+          <Section title="product.sections.description">
+            <Description productId={this.state.productId} variantId={this.state.variantId} />
+          </Section>
+          <Section title="product.sections.properties">
+            <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
+          </Section>
+          <Section title="product.sections.ratings">
+            <Reviews productId={this.state.productId} />
+          </Section>
           <TaxDisclaimer />
           <AddToCartBar
             productId={id}

@@ -266,6 +266,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -274,6 +275,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -342,6 +344,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -350,6 +353,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -498,6 +502,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -506,6 +511,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -574,6 +580,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -582,6 +589,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"

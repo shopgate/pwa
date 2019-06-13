@@ -137,8 +137,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
         name="product.reviews"
         props={null}
       >
-        <section
-          aria-label="product.sections.ratings"
+        <div
           className="css-1ej66kr"
           data-test-id="reviewSection"
         >
@@ -2099,7 +2098,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               </div>
             </AllReviewsLink>
           </Connect(AllReviewsLink)>
-        </section>
+        </div>
       </Portal>
       <Portal
         name="product.reviews.after"
@@ -2158,8 +2157,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
         name="product.reviews"
         props={null}
       >
-        <section
-          aria-label="product.sections.ratings"
+        <div
           className="css-1ej66kr"
           data-test-id="reviewSection"
         >
@@ -3097,7 +3095,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               productId="foo"
             />
           </Connect(AllReviewsLink)>
-        </section>
+        </div>
       </Portal>
       <Portal
         name="product.reviews.after"
@@ -3137,8 +3135,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
         name="product.reviews"
         props={null}
       >
-        <section
-          aria-label="product.sections.ratings"
+        <div
           className="css-1ej66kr"
           data-test-id="reviewSection"
         >
@@ -3160,7 +3157,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
               productId="foo"
             />
           </Connect(AllReviewsLink)>
-        </section>
+        </div>
       </Portal>
       <Portal
         name="product.reviews.after"

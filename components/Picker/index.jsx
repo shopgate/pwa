@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import BasePicker from '@shopgate/pwa-common/components/Picker';
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import { SheetList } from '@shopgate/engage/components';
 import Button from './components/Button';
-import { picker, withButton } from './style';
+import styles from './style';
 
 /**
  * The template version of the Picker component.
@@ -103,14 +102,11 @@ class Picker extends Component {
    */
   render() {
     const { hasButton, sheetProps: ignore, ...restProps } = this.props;
-    const classes = classNames(picker, {
-      [withButton]: hasButton,
-    });
 
     return (
       <BasePicker
         {...restProps}
-        className={classes}
+        className={hasButton ? styles : ''}
         modalComponent={this.modalComponent}
         buttonProps={this.props.buttonProps}
         buttonComponent={this.props.buttonComponent || Button}

@@ -73,6 +73,7 @@ exports[`<Header /> should render empty 1`] = `
                 replace={false}
                 role="text"
                 state={Object {}}
+                tabIndex={null}
                 tag="div"
                 tagName="a"
               >
@@ -82,6 +83,7 @@ exports[`<Header /> should render empty 1`] = `
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
                   role="text"
+                  tabIndex={null}
                 >
                   <RatingStars
                     className=""
@@ -499,6 +501,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 replace={false}
                 role="text"
                 state={Object {}}
+                tabIndex={null}
                 tag="div"
                 tagName="a"
               >
@@ -508,6 +511,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
                   role="text"
+                  tabIndex={null}
                 >
                   <RatingStars
                     className=""
