@@ -9,7 +9,7 @@ const sets = ['colors', 'images'];
  * @returns {Promise<{characteristics: Object[]}>}
  */
 module.exports = async (context, { characteristics = [] }) => {
-  if (!context.config.enableMocks) {
+  if (!context.config.mocks.enabled) {
     return { characteristics };
   }
 
