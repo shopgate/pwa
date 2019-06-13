@@ -32,7 +32,7 @@ const Option = ({
           }))}
           placeholder={<I18n.Text string="product.pick_an_attribute" params={[label]} />}
           value={value}
-          onChange={val => onChange(id, val, items.find(item => item.value === val).priceModifier)}
+          onChange={val => onChange(id, val, items.find(item => item.value === val).price)}
         />
       </div>
     )}
