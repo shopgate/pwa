@@ -72,14 +72,14 @@ VariantSelectModal.propTypes = {
   message: PropTypes.string.isRequired,
   navigate: PropTypes.func.isRequired,
   params: PropTypes.shape(),
-  title: PropTypes.string,
+  title: BasicDialog.propTypes.title,
 };
 
 VariantSelectModal.defaultProps = {
   params: {
     productId: null,
   },
-  title: null,
+  title: BasicDialog.defaultProps.title,
 };
 
 export default connect(VariantSelectModal);

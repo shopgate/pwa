@@ -45,10 +45,12 @@
         "required": true
       }
     },
-    "enableMocks": {
+    "mocks": {
       "type": "admin",
       "destination": "backend",
-      "default": true,
+      "default": {
+        "enabled": false
+      },
       "params": {
         "type": "json",
         "label": "Enables or disables mock data",
