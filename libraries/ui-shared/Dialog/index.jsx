@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from '@shopgate/pwa-common/components/Modal';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import {
   DIALOG_TEXT_MESSAGE,
   MODAL_VARIANT_SELECT,
@@ -13,6 +14,12 @@ import PipelineErrorDialog from './components/PipelineErrorDialog';
 import TextMessageDialog from './components/TextMessageDialog';
 import BasicDialog from './components/BasicDialog';
 import VariantSelectModal from './components/VariantSelectModal';
+
+const dialogTypes = {
+  [DIALOG_TEXT_MESSAGE]: TextMessageDialog,
+  [MODAL_PIPELINE_ERROR]: PipelineErrorDialog,
+  [MODAL_VARIANT_SELECT]: VariantSelectModal,
+};
 
 /**
  * The main component for rendering dialogs.
@@ -25,7 +32,7 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
   // Assemble the actions.
   const actions = [];
   const {
-    confirm, dismiss, title, params, message, type,
+    confirm, dismiss, title, titleParams, message, params, type,
   } = modal;
 
   // Push dismiss action first so the button is rendered first
@@ -53,41 +60,32 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
     dialogType = DIALOG_TEXT_MESSAGE;
   }
 
-  switch (dialogType) {
-    case MODAL_PIPELINE_ERROR:
-      return (
-        <Modal>
-          <Backdrop isVisible level={0} />
-          <PipelineErrorDialog actions={actions} title={title} params={params} message={message} />
-        </Modal>
-      );
-    case DIALOG_TEXT_MESSAGE:
-      return (
-        <Modal>
-          <Backdrop isVisible level={0} />
-          <TextMessageDialog actions={actions} title={title} params={params} message={message} />
-        </Modal>
-      );
-    case MODAL_VARIANT_SELECT:
-      return (
-        <Modal>
-          <Backdrop isVisible level={0} />
-          <VariantSelectModal actions={actions} title={title} params={params} message={message} />
-        </Modal>
-      );
-    default:
-      return (
-        <Modal>
-          <Backdrop isVisible level={0} />
-          <BasicDialog actions={actions} title={title} params={params} />
-        </Modal>
-      );
+  let dialogTitle = title;
+  if (titleParams) {
+    dialogTitle = <I18n.Text string={title} params={titleParams} />;
   }
+
+  const dialogProps = {
+    actions,
+    title: dialogTitle,
+    params,
+    message: message || undefined,
+  };
+
+  const DialogComponent = dialogTypes[dialogType] || BasicDialog;
+
+  return (
+    <Modal>
+      <Backdrop isVisible level={0} />
+      <DialogComponent {...dialogProps} />
+    </Modal>
+  );
 };
 
 Dialog.propTypes = {
   modal: PropTypes.shape({
-    title: PropTypes.string,
+    title: BasicDialog.propTypes.title,
+    titleParams: PropTypes.shape(),
     confirm: PropTypes.string,
     dismiss: PropTypes.string,
     message: PropTypes.string,

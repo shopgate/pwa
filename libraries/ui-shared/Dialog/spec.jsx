@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, ReactWrapper } from 'enzyme';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import { MODAL_VARIANT_SELECT } from './constants';
 import Dialog from './index';
@@ -64,5 +64,19 @@ describe('<Dialog />', () => {
 
     expect(wrapper.find('DefaultDialog').length).toBe(0);
     expect(wrapper.find('VariantSelectModal').length).toBe(1);
+  });
+
+  it('should convert title into translatable element', () => {
+    const title = 'translate.me';
+    const titleParams = {
+      foo: 'bar',
+    };
+
+    // eslint-disable-next-line extra-rules/no-single-line-objects
+    const wrapper = shallow(<Dialog modal={{ title, titleParams }} />);
+    const i18n = new ReactWrapper(wrapper.find('BasicDialog').prop('title'));
+
+    expect(i18n.prop('string')).toEqual(title);
+    expect(i18n.prop('params')).toEqual(titleParams);
   });
 });
