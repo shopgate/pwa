@@ -1,23 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useWidgetConfig, useCurrentProduct } from '../../../core';
-
-export const WIDGET_ID = '@shopgate/engage/product/RelationsSlider';
+import { useWidgetSettings, useCurrentProduct } from '../../../core';
+import RelationsSliderContent from './RelationsSliderContent';
+import { WIDGET_ID } from './constants';
 
 /**
- *
+ * Renders the relations slider in the desired position on the Product Detail Page.
+ * @param {string} desiredPosition The position the relations slider needs to render.
+ * @returns {JSX}
  */
-const RelationsSlider = () => {
-  const { type } = useWidgetConfig(WIDGET_ID);
+export const RelationsSlider = ({ desiredPosition }) => {
+  const { type, position } = useWidgetSettings(WIDGET_ID);
   const { productId } = useCurrentProduct();
 
-  if (!type) {
+  if (!type || position !== desiredPosition) {
     return null;
   }
+
+  return <RelationsSliderContent productId={productId} type={type} />;
 };
 
 RelationsSlider.propTypes = {
-
+  desiredPosition: PropTypes.oneOf(['header', 'description']),
 };
 
-export default RelationsSlider;
+RelationsSlider.defaultProps = {
+  desiredPosition: 'header',
+};

@@ -1,1 +1,1 @@
-export { default } from './RelationsSlider';
+export { RelationsSlider } from './RelationsSlider';

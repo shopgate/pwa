@@ -38,10 +38,14 @@ export default {
       '@shopgate/engage/product/RelationsSlider': {
         type: 'upselling', // upselling, crossSelling, bonus, boughtWith, custom.
         position: 'header', // header, description.
-        headline: null,
-        showPrice: true,
-        showName: true,
-        nameLines: 2,
+        headline: 'Wird oft zusammen gekauft',
+        titleRows: 2,
+        hidePrice: false,
+        hideStrikePrice: false,
+        hideBasePrice: false,
+        hideRating: false,
+        showProductProperties: false,
+        showAvailabilityText: true,
       },
     },
     pages: [
@@ -155,6 +159,10 @@ export default {
               },
               itemSelected: undefined,
             },
+          },
+          {
+            name: 'RelationsSlider',
+            id: '@shopgate/engage/product/RelationsSlider',
           },
         ],
       },
