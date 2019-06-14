@@ -23,7 +23,7 @@ describe('i18n', () => {
     expect(i18n.text('test.string', { bar: 'testProperty' })).toBe('Test string: testProperty');
     expect(i18n.price(1000, 'USD', 2)).toBe('$1,000.00');
     expect(i18n.date(new Date(0).getDate())).toBe('Jan 1, 1970');
-    expect(i18n.time(new Date(0).getDate())).toBe('1:00:00 AM');
+    expect(i18n.time(new Date(0).getDate()).match(/PM|AM/).length).toBe(1);
     expect(i18n.number(1000, 2)).toBe('1,000.00');
   });
 });
