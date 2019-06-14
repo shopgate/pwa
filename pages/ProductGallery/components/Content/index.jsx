@@ -1,9 +1,8 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import MediaSlider from './components/MediaSlider';
+import ImageSlider from './components/ImagesSlider';
 import connect from './connector';
-
-const ImageSlider = lazy(() => import('./components/ImagesSlider'));
-const MediaSlider = lazy(() => import('./components/MediaSlider'));
 
 /**
  * The product media component.
@@ -13,13 +12,13 @@ const MediaSlider = lazy(() => import('./components/MediaSlider'));
  * @returns {JSX}
  */
 const Content = ({ hasMedia, productId, initialSlide }) => (
-  <Suspense fallback={<div />}>
+  <Fragment>
     {
       hasMedia
       ? <MediaSlider productId={productId} initialSlide={initialSlide} />
       : <ImageSlider productId={productId} initialSlide={initialSlide} />
     }
-  </Suspense>
+  </Fragment>
 );
 
 Content.propTypes = {
