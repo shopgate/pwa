@@ -97,12 +97,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
             className=""
           >
             <PriceStriked
-              className=""
+              className="css-nil"
               currency="EUR"
               value={22.95}
             >
               <div
-                className="css-1sagvrb  "
+                className="css-1sagvrb css-nil "
               >
                 <span
                   aria-label="price.label_old_price"
@@ -263,12 +263,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
             className=""
           >
             <PriceStriked
-              className=""
+              className="css-nil"
               currency="EUR"
               value={22.95}
             >
               <div
-                className="css-1sagvrb  "
+                className="css-1sagvrb css-nil "
               >
                 <span
                   aria-label="price.label_old_price"
