@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import MockProductImage from '@shopgate/engage/product/components/ProductImage';
+import MockProductGridPrice from '@shopgate/engage/product/components/ProductGridPrice';
 import { mockProductId, mockProduct } from '../../mock';
 import ProductCardRender from './index';
 
@@ -14,6 +15,7 @@ jest.mock('@shopgate/engage/product', () => ({
   MapPriceHint: () => null,
   OrderQuantityHint: () => null,
   ProductImage: MockProductImage,
+  ProductGridPrice: MockProductGridPrice,
 }));
 
 const defaultProps = {
