@@ -2,7 +2,7 @@ import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-import { ProductProperties } from '@shopgate/engage/product';
+import { ProductProperties, RelationsSlider } from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
@@ -127,9 +127,11 @@ class ProductContent extends PureComponent {
         <ProductContext.Provider value={contextValue}>
           <Media productId={this.state.variantId || this.state.productId} />
           <Header />
+          <RelationsSlider desiredPosition="header" />
           <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
           <Options />
           <Description productId={this.state.productId} variantId={this.state.variantId} />
+          <RelationsSlider desiredPosition="description" />
           <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
           <Reviews productId={this.state.productId} />
           <TaxDisclaimer />
