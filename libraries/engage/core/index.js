@@ -251,3 +251,6 @@ export { ThemeConfigResolver } from './config/ThemeConfigResolver';
 export { isBeta } from './config/isBeta';
 export { getThemeConfig } from './config/getThemeConfig';
 export { getThemeSettings } from './config/getThemeSettings';
+
+// -------------- HELPERS -------------- //
+export { i18n } from './helpers/i18n';
