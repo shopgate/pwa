@@ -18,7 +18,7 @@ import connect from './connector';
  */
 function BackBar({ goBack, ...props }, context) {
   const { __ } = context.i18n();
-  const left = <AppBar.Icon icon={ArrowIcon} onClick={goBack} ariaLabel={__('common.back')} testId="backButton" />;
+  const left = <AppBar.Icon icon={ArrowIcon} onClick={goBack} aria-label={__('common.back')} testId="backButton" />;
 
   return (
     <Fragment>
