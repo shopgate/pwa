@@ -59,7 +59,7 @@ exports[`<Header /> should render empty 1`] = `
               tagName="a"
             >
               <Link
-                ariaLabel={null}
+                aria-label={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
                 disabled={false}
@@ -483,7 +483,7 @@ exports[`<Header /> should render rating summary 1`] = `
               tagName="a"
             >
               <Link
-                ariaLabel={null}
+                aria-label={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
                 disabled={false}

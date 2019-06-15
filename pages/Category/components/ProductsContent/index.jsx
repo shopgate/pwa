@@ -8,6 +8,7 @@ import {
   PRODUCT_LIST_AFTER,
   PRODUCT_LIST_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { Section } from '@shopgate/engage/a11y';
 import Products from '../Products';
 
 /**
@@ -36,12 +37,16 @@ class ProductsContent extends PureComponent {
           <Fragment>
             <Portal name={PRODUCT_LIST_BEFORE} props={portalProps} />
             <Portal name={PRODUCT_LIST} props={portalProps}>
-              {hasProducts && <Products
-                categoryId={categoryId}
-                filters={state.filters}
-                sort={query.sort || DEFAULT_SORT}
-                routeId={routeId}
-              />}
+              {hasProducts && (
+                <Section title="category.sections.products">
+                  <Products
+                    categoryId={categoryId}
+                    filters={state.filters}
+                    sort={query.sort || DEFAULT_SORT}
+                    routeId={routeId}
+                  />
+                </Section>
+              )}
             </Portal>
             <Portal name={PRODUCT_LIST_AFTER} props={portalProps} />
           </Fragment>
