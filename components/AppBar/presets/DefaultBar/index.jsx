@@ -8,22 +8,24 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { withRoute } from '@shopgate/engage/core';
 import ProgressBar from './components/ProgressBar';
+import connect from './connector';
 
 /**
  * The AppBarDefault component.
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
-    visible: PropTypes.bool.isRequired,
+    route: PropTypes.shape().isRequired,
+    setFocus: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
 
   static defaultProps = {
-    title: null,
     below: null,
+    title: null,
   };
 
   static contextTypes = {
@@ -38,9 +40,20 @@ class AppBarDefault extends PureComponent {
    * Sets the target if it hasn't been set before.
    */
   componentDidMount() {
-    if (!this.state.target) {
-      const target = document.getElementById('AppHeader');
+    let { target } = this.state;
+
+    if (!target) {
+      target = document.getElementById('AppHeader');
       this.setState({ target: target || null }); // eslint-disable-line react/no-did-mount-set-state
+    }
+
+    if (this.props.setFocus) {
+      // Set the focus to the first focusable element for screen readers.
+      const focusable = target.querySelector('button, [tabindex]:not([tabindex="-1"])');
+
+      if (focusable) {
+        focusable.focus();
+      }
     }
   }
 
@@ -48,13 +61,12 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.visible || !this.state.target) {
+    if (!this.props.route.visible || !this.state.target) {
       return null;
     }
 
-    const { title } = this.props;
     const { __ } = this.context.i18n();
-    const center = <AppBar.Title title={__(title || '')} />;
+    const center = <AppBar.Title title={__(this.props.title || '')} />;
     const below = (
       <Fragment key="below">
         {this.props.below}
@@ -75,8 +87,4 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-export default props => (
-  <RouteContext.Consumer>
-    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
-  </RouteContext.Consumer>
-);
+export default withRoute(connect(AppBarDefault), { prop: 'route' });
