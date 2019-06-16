@@ -19,7 +19,7 @@ export const GALLERY_SLIDER_IMAGE_FORMATS = [
 
 export const GALLERY_SLIDER_ZOOM = {
   enabled: true,
-  maxRatio: 3,
+  maxRatio: 4,
   minRation: 1,
 };
 

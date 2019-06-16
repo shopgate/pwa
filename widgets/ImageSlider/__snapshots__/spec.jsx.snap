@@ -219,7 +219,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://example.com"
                   >
                     <Link
-                      ariaLabel={null}
+                      aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
@@ -266,7 +266,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://other.example.com"
                   >
                     <Link
-                      ariaLabel={null}
+                      aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
@@ -351,7 +351,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         href="http://example.com"
       >
         <Link
-          ariaLabel={null}
+          aria-label={null}
           className="css-63oe3q"
           data-test-id="withLink"
           disabled={false}
@@ -674,7 +674,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                     href="http://other.example.com"
                   >
                     <Link
-                      ariaLabel={null}
+                      aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
@@ -939,7 +939,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://example.com"
                   >
                     <Link
-                      ariaLabel={null}
+                      aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}
@@ -986,7 +986,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://other.example.com"
                   >
                     <Link
-                      ariaLabel={null}
+                      aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
                       historyPush={[Function]}

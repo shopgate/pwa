@@ -26,6 +26,9 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
   <Connect(OrderQuantityHint)
     productId="1234"
   />
+  <Connect(EffectivityDates)
+    productId="1234"
+  />
   <ItemPrice
     display={null}
     price={Object {}}
