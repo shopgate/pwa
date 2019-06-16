@@ -4,22 +4,24 @@ import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import { Portal } from '@shopgate/pwa-common/components';
-import { RouteContext } from '@shopgate/pwa-common/context';
 import {
   APP_BAR_DEFAULT_BEFORE,
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
+import { withRoute } from '@shopgate/engage/core';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
+import connect from './connector';
 
 /**
  * The AppBarDefault component.
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
-    visible: PropTypes.bool.isRequired,
+    route: PropTypes.shape().isRequired,
+    setFocus: PropTypes.bool.isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -41,9 +43,20 @@ class AppBarDefault extends PureComponent {
    * Sets the target if it hasn't been set before.
    */
   componentDidMount() {
-    if (!this.state.target) {
-      const target = document.getElementById('AppHeader');
+    let { target } = this.state;
+
+    if (!target) {
+      target = document.getElementById('AppHeader');
       this.setState({ target: target || null }); // eslint-disable-line react/no-did-mount-set-state
+    }
+
+    if (this.props.setFocus) {
+      // Set the focus to the first focusable element for screen readers.
+      const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+
+      if (focusable) {
+        focusable.focus();
+      }
     }
   }
 
@@ -51,14 +64,14 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.visible || !this.state.target) {
+    if (!this.props.route.visible || !this.state.target) {
       return null;
     }
 
     const { __ } = this.context.i18n();
     const title = __(this.props.title || '');
 
-    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" />;
+    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
     const center = <AppBar.Title title={title} />;
     const right = (
       <Fragment>
@@ -85,10 +98,4 @@ class AppBarDefault extends PureComponent {
     );
   }
 }
-
-export default props => (
-  <RouteContext.Consumer>
-    {({ visible }) => <AppBarDefault {...props} visible={visible} />}
-  </RouteContext.Consumer>
-);
-
+export default withRoute(connect(AppBarDefault), { prop: 'route' });

@@ -11,7 +11,7 @@ import LogoutButton from './components/LogoutButton';
  * @returns {JSX}
  */
 const NavDrawerContainer = () => (
-  <NavDrawer>
+  <NavDrawer aria-hidden>
     <Header />
     <Main />
     <QuickLinks />
