@@ -44,7 +44,6 @@ function ViewContainer({
             </Content>
           )}
         </ViewContext.Consumer>
-
       </ViewProvider>
     </section>
   );
