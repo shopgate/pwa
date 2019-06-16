@@ -1,6 +1,7 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import kebabCase from 'lodash/kebabCase';
 import { I18n } from '../../../components';
 import { headline, hidden } from './style';
 
@@ -43,6 +44,8 @@ const Section = ({
     setHasContent(hasChildNodes(contentRef));
   }));
 
+  const id = useMemo(() => kebabCase(title), [title]);
+
   useEffect(() => {
     setHasContent(hasChildNodes(contentRef));
     observer.observe(contentRef.current, { childList: true });
@@ -57,8 +60,8 @@ const Section = ({
   });
 
   return (
-    <section {...rest} ref={contentRef} className={classes}>
-      <h1 className={headline}>
+    <section {...rest} ref={contentRef} className={classes} aria-labelledby={id}>
+      <h1 id={id} className={headline}>
         <I18n.Text string={title} params={titleParams} />
       </h1>
       {children}

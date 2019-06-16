@@ -6,6 +6,7 @@ import {
   CATEGORY_LIST_AFTER,
   CATEGORY_LIST_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { Section } from '@shopgate/engage/a11y';
 import CategoryList from 'Components/CategoryList';
 import connect from './connector';
 
@@ -39,7 +40,9 @@ class CategoryListContent extends PureComponent {
         <Portal name={CATEGORY_LIST_BEFORE} props={{ categoryId }} />
         <Portal name={CATEGORY_LIST} props={{ categoryId }}>
           {hasChildren && (
-            <CategoryList categories={categories} prerender={childrenCount} />
+            <Section title="category.sections.categories">
+              <CategoryList categories={categories} prerender={childrenCount} />
+            </Section>
           )}
         </Portal>
         <Portal name={CATEGORY_LIST_AFTER} props={{ categoryId }} />
