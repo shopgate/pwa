@@ -110,3 +110,19 @@ export const getCurrentState = createSelector(
     return route.state;
   }
 );
+
+/**
+ * Determines, if a router state entry is the last entry in the stack.
+ * @param {string} id The id of the entry.
+ * @returns {Function}
+ */
+export function makeIsLastStackEntry() {
+  return createSelector(
+    (state, props = {}) => props.routeId,
+    getRouterStack,
+    (routeId, stack) => {
+      const index = stack.findIndex(entry => entry.id === routeId);
+      return index === stack.length - 1;
+    }
+  );
+}

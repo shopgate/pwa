@@ -22,6 +22,8 @@
     "@shopgate/pwa-ui-material": "6.5.0",
     "@shopgate/pwa-ui-shared": "6.5.0",
     "@virtuous/conductor": "~2.3.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
+    "babel-plugin-transform-es3-property-literals": "^6.8.0",
     "lodash": "^4.17.11",
     "intersection-observer": "^0.6.0",
     "react-player": "^1.11.0"

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > hocs > withNavigation should inject a single property with the navigation into the component 1`] = `
+<WithNavigation(MockComponent)
+  someProp={true}
+>
+  <MockComponent
+    navigation={
+      Object {
+        "historyPop": [Function],
+        "historyPush": [Function],
+        "historyReplace": [Function],
+        "historyReset": [Function],
+        "historyUpdate": [Function],
+      }
+    }
+    someProp={true}
+  />
+</WithNavigation(MockComponent)>
+`;
+
+exports[`engage > core > hocs > withNavigation should inject the navigation properties into the component 1`] = `
+<WithNavigation(MockComponent)
+  someProp={true}
+>
+  <MockComponent
+    historyPop={[Function]}
+    historyPush={[Function]}
+    historyReplace={[Function]}
+    historyReset={[Function]}
+    historyUpdate={[Function]}
+    someProp={true}
+  />
+</WithNavigation(MockComponent)>
+`;

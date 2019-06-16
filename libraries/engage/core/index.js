@@ -250,3 +250,5 @@ export { withWidgetSettings } from './hocs/withWidgetSettings';
 // --------------- CONFIG --------------- //
 export { ThemeConfigResolver } from './config/ThemeConfigResolver';
 export { isBeta } from './config/isBeta';
+export { getThemeConfig } from './config/getThemeConfig';
+export { getThemeSettings } from './config/getThemeSettings';

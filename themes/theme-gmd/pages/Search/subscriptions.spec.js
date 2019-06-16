@@ -20,6 +20,10 @@ jest.mock('@shopgate/pwa-common/selectors/router', () => ({
   getCurrentRoute: jest.fn(),
 }));
 
+jest.mock('@shopgate/engage/product', () => ({
+  buildFetchSearchResultsParams: jest.fn(),
+}));
+
 describe('SearchPage subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn();

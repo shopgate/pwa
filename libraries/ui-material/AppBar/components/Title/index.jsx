@@ -22,16 +22,16 @@ class AppBarTitle extends PureComponent {
     const { onClick, title } = this.props;
 
     /* eslint-disable jsx-a11y/no-static-element-interactions,
-    jsx-a11y/click-events-have-key-events */
+    jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
     return (
-      <div className={styles} role="heading" data-test-id={`title: ${title}`}>
+      <div className={styles} role="heading" data-test-id={`title: ${title}`} tabIndex={0}>
         <span onClick={onClick}>
           {title}
         </span>
       </div>
     );
     /* eslint-enable jsx-a11y/no-static-element-interactions,
-    jsx-a11y/click-events-have-key-events */
+    jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
   }
 }
 

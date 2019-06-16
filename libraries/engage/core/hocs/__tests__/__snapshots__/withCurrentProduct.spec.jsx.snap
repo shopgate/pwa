@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > hocs > withCurrentProduct should inject a single property with the context into the component 1`] = `
+<WithCurrentProduct(MockComponent)
+  someProp={true}
+>
+  <Consumer>
+    <Consumer>
+      <MockComponent
+        product={
+          Object {
+            "id": "123",
+            "name": "acme",
+            "price": Object {
+              "currency": "EUR",
+              "unitPrice": 22.95,
+              "unitPriceStriked": 25.95,
+            },
+          }
+        }
+        someProp={true}
+      />
+    </Consumer>
+  </Consumer>
+</WithCurrentProduct(MockComponent)>
+`;
+
+exports[`engage > core > hocs > withCurrentProduct should inject the context properties into the component 1`] = `
+<WithCurrentProduct(MockComponent)
+  someProp={true}
+>
+  <Consumer>
+    <Consumer>
+      <MockComponent
+        id="123"
+        name="acme"
+        price={
+          Object {
+            "currency": "EUR",
+            "unitPrice": 22.95,
+            "unitPriceStriked": 25.95,
+          }
+        }
+        someProp={true}
+      />
+    </Consumer>
+  </Consumer>
+</WithCurrentProduct(MockComponent)>
+`;

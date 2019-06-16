@@ -1,6 +1,6 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { bin2hex, hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
   ITEM_PATH,
   PROPERTIES_FILTER_BLACKLIST,
@@ -63,4 +63,23 @@ export const generateProductRelationsHash = ({
  * @returns {string}
  */
 export const getProductRoute = id => `${ITEM_PATH}/${bin2hex(id)}`;
+
+/**
+ * Transform product route.
+ * @param {Object} route item route to transform.
+ * @returns {Object}
+ */
+export const transformRoute = (route) => {
+  if (!route.params.productId || route.state.productId) {
+    return route;
+  }
+
+  return {
+    ...route,
+    state: {
+      ...route.state,
+      productId: hex2bin(route.params.productId),
+    },
+  };
+};
 

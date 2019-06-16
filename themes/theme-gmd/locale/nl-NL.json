@@ -85,6 +85,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Geen producten gevonden."
+    },
+    "sections": {
+      "categories": "Categorieën",
+      "products": "Producten"
     }
   },
   "search": {

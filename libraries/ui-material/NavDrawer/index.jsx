@@ -32,6 +32,11 @@ class NavDrawer extends Component {
 
   static propTypes = {
     children: PropTypes.node.isRequired,
+    'aria-hidden': PropTypes.bool,
+  }
+
+  static defaultProps = {
+    'aria-hidden': false,
   }
 
   /**
@@ -90,6 +95,7 @@ class NavDrawer extends Component {
               className={drawerStyle}
               data-test-id="NavDrawer"
               style={transition[state]}
+              aria-hidden={this.props['aria-hidden']}
             >
               <nav className={contentStyle} ref={this.contentRef}>
                 {this.props.children}

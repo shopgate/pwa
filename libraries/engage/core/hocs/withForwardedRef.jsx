@@ -4,19 +4,26 @@ import React, { forwardRef } from 'react';
  * Provides a wrapper for components that utilize forwarded refs. It accepts a ref via props,
  * and passes it down as a prop called forwardedRef.
  * @param {Function} WrappedComponent The react component to wrap.
+ * @param {Object} [options={}] Options for the HOC.
+ * @param {string} [options.prop='forwardedRef'] The prop for the forwarded ref.
  * @returns {JSX}
  */
-export function withForwardedRef(WrappedComponent) {
+export function withForwardedRef(WrappedComponent, options = {}) {
   /**
    * The actual HOC.
    * @param {Object} props The component props.
    * @param {Object} ref The forwarded ref.
    * @returns {JSX}
    */
-  const handle = (props, ref) => <WrappedComponent {...props} forwardedRef={ref} />;
+  const WithForwardedRef = (props, ref) => {
+    const injected = {
+      [options.prop || 'forwardedRef']: ref,
+    };
+    return <WrappedComponent {...props} {...injected} />;
+  };
 
-  const name = WrappedComponent.displayName || WrappedComponent.name;
-  handle.displayName = `withForwardedRef(${name})`;
+  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  WithForwardedRef.displayName = `WithForwardedRef(${displayName})`;
 
-  return forwardRef(handle);
+  return forwardRef(WithForwardedRef);
 }

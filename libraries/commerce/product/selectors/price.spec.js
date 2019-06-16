@@ -135,10 +135,14 @@ describe('Product.Price selectors', () => {
       // Product options are now available.
       expect(getRawProductOptions(state, props).length).toBe(1);
 
-      // Peak into the calculated relative additional prices.
+      // Peak into the calculated relative additional price differences.
+      // Price modifiers stay constant, because they're absolute.
+      // Price modifier and difference is equal when nothing is selected, yet
       const availableOptions = getProductOptions(state, props);
       expect(availableOptions[0].items[0].price).toBe(5);
+      expect(availableOptions[0].items[0].priceDifference).toBe(5);
       expect(availableOptions[0].items[1].price).toBe(4);
+      expect(availableOptions[0].items[1].priceDifference).toBe(4);
     });
 
     it('Step 3: Select the option', () => {
@@ -157,10 +161,14 @@ describe('Product.Price selectors', () => {
       expect(getProductPriceAddition(state, props)).toBe(5);
       expect(getProductTotalPrice(state, props)).toBe(15.52);
 
-      // Peak into the calculated relative additional prices.
+      // Peak into the calculated relative additional price differences.
+      // Price modifiers stay constant, because they're absolute.
+      // Price modifiers stay constant, because they're absolute.
       const availableOptions = getProductOptions(state, props);
-      expect(availableOptions[0].items[0].price).toBe(0);
-      expect(availableOptions[0].items[1].price).toBe(-1);
+      expect(availableOptions[0].items[0].price).toBe(5);
+      expect(availableOptions[0].items[0].priceDifference).toBe(0);
+      expect(availableOptions[0].items[1].price).toBe(4);
+      expect(availableOptions[0].items[1].priceDifference).toBe(-1);
       expect(isFullPriceAvailable(state, props)).toBe(true);
     });
 

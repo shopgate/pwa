@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withForwardedRef should render 1`] = `
-<Comp
+exports[`engage > core > hocs > withForwardedRef should inject the ref with a custom prop name 1`] = `
+<MockComponent
   className="foo"
-  forwardedRef={
+  custom={
     Object {
       "current": null,
     }
   }
 >
   Testing 123
-</Comp>
+</MockComponent>
 `;
 
-exports[`withForwardedRef should render with a custom displayName 1`] = `
-<FooBar
+exports[`engage > core > hocs > withForwardedRef should render 1`] = `
+<MockComponent
   className="foo"
   forwardedRef={
     Object {
@@ -23,5 +23,5 @@ exports[`withForwardedRef should render with a custom displayName 1`] = `
   }
 >
   Testing 123
-</FooBar>
+</MockComponent>
 `;

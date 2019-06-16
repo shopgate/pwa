@@ -45,7 +45,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
       tagName="a"
     >
       <Link
-        ariaLabel={null}
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
@@ -802,7 +802,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
       tagName="a"
     >
       <Link
-        ariaLabel={null}
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
@@ -1278,7 +1278,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
       tagName="a"
     >
       <Link
-        ariaLabel={null}
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
@@ -2101,7 +2101,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
       tagName="a"
     >
       <Link
-        ariaLabel={null}
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
@@ -2924,7 +2924,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
       tagName="a"
     >
       <Link
-        ariaLabel={null}
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
@@ -3711,7 +3711,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
       tagName="a"
     >
       <Link
-        ariaLabel={null}
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
@@ -4274,7 +4274,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
       tagName="a"
     >
       <Link
-        ariaLabel={null}
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}

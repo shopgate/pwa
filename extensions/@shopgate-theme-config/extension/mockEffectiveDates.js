@@ -1,17 +1,16 @@
 /**
  * Returns default configuration if request failed.
- * @param {SDKContext} context context
- * @param {Object} input input
- * @returns {Promise<{products: Object[]}>}
+ * @param {Object} products products
+ * @returns {Object[]}
  */
-module.exports = async (context, { products = [] }) => ({
-  products: products.map((product) => {
-    // eslint-disable-next-line no-param-reassign
-    product.startDate = new Date(new Date().getTime() + 10000).toISOString();
-    // eslint-disable-next-line no-param-reassign
-    product.endDate = new Date(new Date().getTime() + 120000).toISOString();
-    // eslint-disable-next-line no-param-reassign
-    product.stock.info = 'Available in 2-3 days';
-    return product;
-  }),
-});
+module.exports = products => products.map((product, i) => ({
+  ...product,
+  ...(i % 5 === 0) && {
+    startDate: new Date(new Date().getTime() + 10000).toISOString(),
+    endDate: new Date(new Date().getTime() + 20000).toISOString(),
+    stock: {
+      ...product.stock,
+      info: 'Available in 2-3 days',
+    },
+  },
+}));
