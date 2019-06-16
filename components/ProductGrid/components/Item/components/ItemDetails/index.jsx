@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { MapPriceHint, OrderQuantityHint, Swatches } from '@shopgate/engage/product';
+import { MapPriceHint, OrderQuantityHint, EffectivityDates, Swatches } from '@shopgate/engage/product';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';
@@ -55,6 +55,10 @@ class ItemDetails extends PureComponent {
           It should only be used for approved BETA Client Projects
         */}
         <OrderQuantityHint productId={productId} />
+
+        {/* This feature is currently in BETA testing.
+        It should only be used for approved BETA Client Projects */}
+        <EffectivityDates productId={productId} />
 
         <ItemPrice display={display} productId={productId} price={price} />
       </div>
