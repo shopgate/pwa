@@ -167,7 +167,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/shipping"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -247,7 +247,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/payment"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -327,7 +327,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/terms"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -407,7 +407,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/privacy"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -509,7 +509,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/imprint"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -888,7 +888,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/login"
                             >
                               <Link
-                                ariaLabel={null}
+                                aria-label={null}
                                 className=""
                                 disabled={false}
                                 historyPush={[Function]}
@@ -966,7 +966,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/register"
                             >
                               <Link
-                                ariaLabel={null}
+                                aria-label={null}
                                 className=""
                                 disabled={false}
                                 historyPush={[Function]}
@@ -1157,7 +1157,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/shipping"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -1237,7 +1237,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/payment"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -1317,7 +1317,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/terms"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -1397,7 +1397,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/privacy"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
@@ -1499,7 +1499,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/imprint"
                         >
                           <Link
-                            ariaLabel={null}
+                            aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
                             historyPush={[Function]}
