@@ -8,7 +8,7 @@
     "required": "Verplicht *",
     "please_choose": "Kies",
     "show_products": "Toon producten",
-    "back": "Back",
+    "back": "Terug",
     "close": "Close"
   },
   "titles": {
@@ -90,6 +90,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Geen producten gevonden."
+    },
+    "sections": {
+      "categories": "Categorieën",
+      "products": "Producten"
     }
   },
   "search": {

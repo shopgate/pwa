@@ -111,7 +111,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
             tagName="a"
           >
             <Link
-              ariaLabel={null}
+              aria-label={null}
               className=""
               disabled={false}
               historyPush={[Function]}

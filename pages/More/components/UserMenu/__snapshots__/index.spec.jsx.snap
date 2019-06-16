@@ -257,7 +257,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
-                        ariaLabel={null}
+                        aria-label={null}
                         className=""
                         disabled={true}
                         historyPush={[Function]}
@@ -335,7 +335,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
-                        ariaLabel={null}
+                        aria-label={null}
                         className=""
                         disabled={true}
                         historyPush={[Function]}
@@ -493,7 +493,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
-                        ariaLabel={null}
+                        aria-label={null}
                         className=""
                         disabled={false}
                         historyPush={[Function]}
@@ -571,7 +571,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
-                        ariaLabel={null}
+                        aria-label={null}
                         className=""
                         disabled={false}
                         historyPush={[Function]}

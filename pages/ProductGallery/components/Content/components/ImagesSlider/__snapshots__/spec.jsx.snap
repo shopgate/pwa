@@ -72,7 +72,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           zoom={
             Object {
               "enabled": true,
-              "maxRatio": 3,
+              "maxRatio": 4,
               "minRation": 1,
             }
           }
@@ -226,7 +226,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               zoom={
                 Object {
                   "enabled": true,
-                  "maxRatio": 3,
+                  "maxRatio": 4,
                   "minRation": 1,
                 }
               }
@@ -361,7 +361,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           zoom={
             Object {
               "enabled": true,
-              "maxRatio": 3,
+              "maxRatio": 4,
               "minRation": 1,
             }
           }
@@ -515,7 +515,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               zoom={
                 Object {
                   "enabled": true,
-                  "maxRatio": 3,
+                  "maxRatio": 4,
                   "minRation": 1,
                 }
               }

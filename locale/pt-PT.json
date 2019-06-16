@@ -8,7 +8,7 @@
     "required": "Necessário *",
     "please_choose": "Por favor escolha",
     "show_products": "Mostrar produtos",
-    "back": "Back",
+    "back": "Voltar",
     "close": "Close"
   },
   "titles": {
@@ -91,6 +91,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Não foram encontrados produtos."
+    },
+    "sections": {
+      "categories": "Categorias",
+      "products": "Produtos"
     }
   },
   "search": {

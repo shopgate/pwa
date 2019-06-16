@@ -71,7 +71,7 @@
     "maxOrderQuantity": "Max. order quantity:{quantity}",
     "available": {
       "at": "Available {startDate, date, MMM} {startDate, date, DD} at {startDate, time, short}",
-      "until": "Available until {endDate, date, MMM} {endDate, date, DD} at {startDate, time, short}",
+      "until": "Available until {endDate, date, MMM} {endDate, date, DD} at {endDate, time, short}",
       "not": "Currently not available",
       "not_search_similar": "{name} not available. Search for similar products?"
     },
@@ -91,6 +91,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "No products found."
+    },
+    "sections": {
+      "categories": "Categories",
+      "products": "Products"
     }
   },
   "search": {
