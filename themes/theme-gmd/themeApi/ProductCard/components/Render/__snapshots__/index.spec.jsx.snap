@@ -670,12 +670,12 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                               className=""
                             >
                               <PriceStriked
-                                className=""
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb  "
+                                  className="css-1sagvrb css-nil "
                                   role="text"
                                 >
                                   <span
@@ -1146,12 +1146,12 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                               className=""
                             >
                               <PriceStriked
-                                className=""
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb  "
+                                  className="css-1sagvrb css-nil "
                                   role="text"
                                 >
                                   <span
@@ -1969,12 +1969,12 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                               className=""
                             >
                               <PriceStriked
-                                className=""
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb  "
+                                  className="css-1sagvrb css-nil "
                                   role="text"
                                 >
                                   <span
@@ -2792,12 +2792,12 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                               className=""
                             >
                               <PriceStriked
-                                className=""
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb  "
+                                  className="css-1sagvrb css-nil "
                                   role="text"
                                 >
                                   <span
@@ -3579,12 +3579,12 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                               className=""
                             >
                               <PriceStriked
-                                className=""
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb  "
+                                  className="css-1sagvrb css-nil "
                                   role="text"
                                 >
                                   <span
@@ -4618,12 +4618,12 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                               className=""
                             >
                               <PriceStriked
-                                className=""
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb  "
+                                  className="css-1sagvrb css-nil "
                                   role="text"
                                 >
                                   <span

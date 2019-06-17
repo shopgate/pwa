@@ -81,6 +81,12 @@
       "hooks": ["shopgate.catalog.getProductVariants.v1:after"],
       "input": [{"key": "characteristics"}],
       "output": [{"key": "characteristics"}]
+    },
+    {
+      "path": "extension/mockProductRelations.js",
+      "hooks": ["shopgate.catalog.getProductRelations.v1:after"],
+      "input": [{"key": "relations"}],
+      "output": [{"key": "relations"}]
     }
   ]
 }
