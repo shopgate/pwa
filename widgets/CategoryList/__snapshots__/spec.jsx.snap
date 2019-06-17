@@ -89,7 +89,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               className="css-1ckzvk7"
               data-test-id={null}
             >
-              <ForwardRef(withForwardedRef(Item))
+              <ForwardRef(WithForwardedRef(Item))
                 image={null}
                 key="1"
                 link="/category/31"
@@ -109,7 +109,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   testId="Headline"
                   title="Headline"
                 >
-                  <ForwardRef(withForwardedRef(Glow))
+                  <ForwardRef(WithForwardedRef(Glow))
                     className={null}
                   >
                     <Glow
@@ -142,9 +142,9 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         </Link>
                       </div>
                     </Glow>
-                  </ForwardRef(withForwardedRef(Glow))>
+                  </ForwardRef(WithForwardedRef(Glow))>
                 </Item>
-              </ForwardRef(withForwardedRef(Item))>
+              </ForwardRef(WithForwardedRef(Item))>
             </div>
           </li>
         </ListItem>
@@ -162,7 +162,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               className="css-1ckzvk7"
               data-test-id={null}
             >
-              <ForwardRef(withForwardedRef(Item))
+              <ForwardRef(WithForwardedRef(Item))
                 image={null}
                 key="2"
                 link="/category/32"
@@ -182,7 +182,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   testId="Headline"
                   title="Headline"
                 >
-                  <ForwardRef(withForwardedRef(Glow))
+                  <ForwardRef(WithForwardedRef(Glow))
                     className={null}
                   >
                     <Glow
@@ -215,9 +215,9 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         </Link>
                       </div>
                     </Glow>
-                  </ForwardRef(withForwardedRef(Glow))>
+                  </ForwardRef(WithForwardedRef(Glow))>
                 </Item>
-              </ForwardRef(withForwardedRef(Item))>
+              </ForwardRef(WithForwardedRef(Item))>
             </div>
           </li>
         </ListItem>
