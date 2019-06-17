@@ -12,7 +12,7 @@ import * as styles from './style';
 const NoReviews = ({ productId }) => (
   <div className={styles.container}>
     <AverageRating productId={productId} />
-    <div className={styles.noReviews}>
+    <div className={styles.noReviews} aria-hidden>
       {appConfig.showWriteReview && (
         <Fragment>
           <I18n.Text string="reviews.no_reviews" />

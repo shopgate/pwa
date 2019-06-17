@@ -26,7 +26,7 @@ exports[`<SheetList /> should not render invalid children 1`] = `
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <ForwardRef(withForwardedRef(Item))
+            <ForwardRef(WithForwardedRef(Item))
               title="List Item"
             >
               <Item
@@ -69,7 +69,7 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                   </Grid>
                 </div>
               </Item>
-            </ForwardRef(withForwardedRef(Item))>
+            </ForwardRef(WithForwardedRef(Item))>
           </div>
         </li>
       </ListItem>
@@ -112,7 +112,7 @@ exports[`<SheetList /> should render a child and add styles for list items with 
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <ForwardRef(withForwardedRef(Item))
+            <ForwardRef(WithForwardedRef(Item))
               title="List Item"
             >
               <Item
@@ -155,7 +155,7 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                   </Grid>
                 </div>
               </Item>
-            </ForwardRef(withForwardedRef(Item))>
+            </ForwardRef(WithForwardedRef(Item))>
           </div>
         </li>
       </ListItem>
@@ -190,7 +190,7 @@ exports[`<SheetList /> should render with two children 1`] = `
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <ForwardRef(withForwardedRef(Item))
+            <ForwardRef(WithForwardedRef(Item))
               title="List Item"
             >
               <Item
@@ -233,7 +233,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                   </Grid>
                 </div>
               </Item>
-            </ForwardRef(withForwardedRef(Item))>
+            </ForwardRef(WithForwardedRef(Item))>
           </div>
         </li>
       </ListItem>
@@ -251,7 +251,7 @@ exports[`<SheetList /> should render with two children 1`] = `
             className="css-1ckzvk7"
             data-test-id={null}
           >
-            <ForwardRef(withForwardedRef(Item))
+            <ForwardRef(WithForwardedRef(Item))
               title="List Item"
             >
               <Item
@@ -294,7 +294,7 @@ exports[`<SheetList /> should render with two children 1`] = `
                   </Grid>
                 </div>
               </Item>
-            </ForwardRef(withForwardedRef(Item))>
+            </ForwardRef(WithForwardedRef(Item))>
           </div>
         </li>
       </ListItem>

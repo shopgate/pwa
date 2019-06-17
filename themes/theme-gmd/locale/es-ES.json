@@ -58,6 +58,9 @@
     "description_heading": "Sobre",
     "pick_an_attribute": "Elija uno {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
+    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "pick_option_first": "Please pick an option first. {option}",
+    "add_to_cart": "Añadir a la cesta",
     "no_more_found": "El artículo: \"{name}\" ya no está disponible.",
     "quantity": "Cantidad",
     "minOrderQuantity": "Cantidad mín. del pedido:{quantity}",
@@ -73,7 +76,8 @@
       "options": "Choose Options",
       "description": "Description",
       "properties": "Properties",
-      "ratings": "Ratings"
+      "ratings": "Ratings",
+      "purchase": "Purchase Item"
     }
   },
   "category": {

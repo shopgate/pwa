@@ -1,10 +1,6 @@
 import { css } from 'glamor';
 
-export const hidden = css({
-  display: 'none',
-}).toString();
-
-export const headline = css({
+export default css({
   clip: 'rect(1px, 1px, 1px, 1px)',
   height: '1px',
   margin: 0,
@@ -14,4 +10,4 @@ export const headline = css({
   whiteSpace: 'nowrap',
   width: '1px',
   zIndex: -1000,
-}).toString();
+});

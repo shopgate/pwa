@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LiveMessage /> should render a polite simple message 1`] = `
+<div
+  aria-live="polite"
+  className={
+    Object {
+      "data-css-1krt3b8": "",
+    }
+  }
+  role="log"
+>
+  <Translate
+    params={null}
+    string="My Message"
+  />
+</div>
+`;
+
+exports[`<LiveMessage /> should render an assertive message with params  1`] = `
+<div
+  aria-live="assertive"
+  className={
+    Object {
+      "data-css-1krt3b8": "",
+    }
+  }
+  role="log"
+>
+  <Translate
+    params={
+      Object {
+        "my": "param",
+      }
+    }
+    string="My Message"
+  />
+</div>
+`;

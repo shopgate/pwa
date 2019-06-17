@@ -9,7 +9,7 @@ exports[`<Picker /> should render the picker 1`] = `
   label="Picker label"
   sheetProps={Object {}}
 >
-  <ForwardRef(withForwardedRef(Picker))
+  <ForwardRef(WithForwardedRef(Picker))
     buttonComponent={[Function]}
     buttonProps={Object {}}
     className="css-murgv5"
@@ -89,6 +89,6 @@ exports[`<Picker /> should render the picker 1`] = `
         />
       </div>
     </Picker>
-  </ForwardRef(withForwardedRef(Picker))>
+  </ForwardRef(WithForwardedRef(Picker))>
 </Picker>
 `;

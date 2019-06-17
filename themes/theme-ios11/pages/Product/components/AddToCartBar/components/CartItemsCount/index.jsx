@@ -81,7 +81,7 @@ class CartItemsCount extends Component {
         }}
       >
         {state => (
-          <div className={styles.container} style={transition[state]}>
+          <div className={styles.container} style={transition[state]} aria-hidden>
             <div className={styles.check}>
               <CheckIcon />
             </div>

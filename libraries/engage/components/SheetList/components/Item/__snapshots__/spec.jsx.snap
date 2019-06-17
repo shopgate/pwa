@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SheetList.Item /> should render with a link 1`] = `
-<ForwardRef(withForwardedRef(Item))
+<ForwardRef(WithForwardedRef(Item))
   link="url/to/somewhere"
   title="My Title"
 >
@@ -18,7 +18,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
     testId={null}
     title="My Title"
   >
-    <ForwardRef(withForwardedRef(Glow))
+    <ForwardRef(WithForwardedRef(Glow))
       className={null}
     >
       <Glow
@@ -51,13 +51,13 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
           </Link>
         </div>
       </Glow>
-    </ForwardRef(withForwardedRef(Glow))>
+    </ForwardRef(WithForwardedRef(Glow))>
   </Item>
-</ForwardRef(withForwardedRef(Item))>
+</ForwardRef(WithForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with a right component 1`] = `
-<ForwardRef(withForwardedRef(Item))
+<ForwardRef(WithForwardedRef(Item))
   rightComponent={
     <span>
       I\`m a span.
@@ -123,11 +123,11 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
       </Grid>
     </div>
   </Item>
-</ForwardRef(withForwardedRef(Item))>
+</ForwardRef(WithForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with a title but no image 1`] = `
-<ForwardRef(withForwardedRef(Item))
+<ForwardRef(WithForwardedRef(Item))
   title="My Title"
 >
   <Item
@@ -170,11 +170,11 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
       </Grid>
     </div>
   </Item>
-</ForwardRef(withForwardedRef(Item))>
+</ForwardRef(WithForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with an image 1`] = `
-<ForwardRef(withForwardedRef(Item))
+<ForwardRef(WithForwardedRef(Item))
   image={
     <img
       alt="Alternative text"
@@ -236,11 +236,11 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
       </Grid>
     </div>
   </Item>
-</ForwardRef(withForwardedRef(Item))>
+</ForwardRef(WithForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render with an onClick element 1`] = `
-<ForwardRef(withForwardedRef(Item))
+<ForwardRef(WithForwardedRef(Item))
   onClick={[Function]}
   title="My Title"
 >
@@ -265,7 +265,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
       role="option"
       tabIndex={0}
     >
-      <ForwardRef(withForwardedRef(Glow))
+      <ForwardRef(WithForwardedRef(Glow))
         className={null}
       >
         <Glow
@@ -316,14 +316,14 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
             </div>
           </div>
         </Glow>
-      </ForwardRef(withForwardedRef(Glow))>
+      </ForwardRef(WithForwardedRef(Glow))>
     </div>
   </Item>
-</ForwardRef(withForwardedRef(Item))>
+</ForwardRef(WithForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
-<ForwardRef(withForwardedRef(Item))
+<ForwardRef(WithForwardedRef(Item))
   isDisabled={true}
   title="My Title"
 >
@@ -367,11 +367,11 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
       </Grid>
     </div>
   </Item>
-</ForwardRef(withForwardedRef(Item))>
+</ForwardRef(WithForwardedRef(Item))>
 `;
 
 exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
-<ForwardRef(withForwardedRef(Item))
+<ForwardRef(WithForwardedRef(Item))
   isSelected={true}
   title="My Title"
 >
@@ -415,5 +415,5 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
       </Grid>
     </div>
   </Item>
-</ForwardRef(withForwardedRef(Item))>
+</ForwardRef(WithForwardedRef(Item))>
 `;

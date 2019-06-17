@@ -59,6 +59,9 @@
     "description_heading": "Over",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
+    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "pick_option_first": "Please pick an option first. {option}",
+    "add_to_cart": "Voeg aan winkelwagen toe",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
     "minOrderQuantity": "Min. bestelhoeveelheid:{quantity}",
@@ -74,7 +77,8 @@
       "options": "Choose Options",
       "description": "Description",
       "properties": "Properties",
-      "ratings": "Ratings"
+      "ratings": "Ratings",
+      "purchase": "Purchase Item"
     }
   },
   "category": {
