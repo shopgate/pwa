@@ -1,4 +1,4 @@
-import { UIEvents } from '@shopgate/pwa-core';
+import { UIEvents } from '../../../core';
 import { EVENT_LIVE_MESSAGE, LIVE_MESSAGE_TYPE_POLITE } from './constants';
 
 /**
@@ -7,7 +7,9 @@ import { EVENT_LIVE_MESSAGE, LIVE_MESSAGE_TYPE_POLITE } from './constants';
  * @param {Object} options Additional options.
  * @param {string} options.type Type of the message
  * @param {Object} options.params Message params for an i18n placeholder message.
- * @param {string} options.id Id of the LiveMessage component which sets the message.
+ * @param {string} options.id Id of the LiveMessenger component which sets the message.
+ * @param {boolean} options.force If set to TRUE the LiveMessenger component will read the text,
+ * even if the same was broadcasted before.
  */
 export function broadcastLiveMessage(message, options = {}) {
   const defaults = {
@@ -17,12 +19,17 @@ export function broadcastLiveMessage(message, options = {}) {
     force: false,
   };
 
+  if (!message) {
+    return;
+  }
+
   const params = {
     ...defaults,
     ...options,
   };
 
   if (params.force) {
+    // Clear the text first, so that the message will be read in any case.
     UIEvents.emit(EVENT_LIVE_MESSAGE, '', params);
 
     setTimeout(() => {
