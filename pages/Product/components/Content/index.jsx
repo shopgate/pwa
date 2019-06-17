@@ -127,10 +127,18 @@ class ProductContent extends PureComponent {
         <ProductContext.Provider value={contextValue}>
           <Media productId={this.state.variantId || this.state.productId} />
           <Header />
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
           <RelationsSlider desiredPosition="header" />
           <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
           <Options />
           <Description productId={this.state.productId} variantId={this.state.variantId} />
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
           <RelationsSlider desiredPosition="description" />
           <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
           <Reviews productId={this.state.productId} />
