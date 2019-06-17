@@ -60,6 +60,8 @@
     "pick_an_attribute": "Choisir un {0}",
     "tax_disclaimer": "* Inclus TVA plus frais de livraison éventuels",
     "item_added": "{count, plural, =0 {# aucun article ajouté} =1 {{count} article ajouté} other {{count} articles ajoutés}}",
+    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "pick_option_first": "Please pick an option first. {option}",
     "add_to_cart": "Ajouter au panier",
     "go_to_cart": "Aller au panier",
     "no_more_found": "L'article: \"{name}\" n'est plus disponible.",
@@ -77,7 +79,8 @@
       "options": "Choose Options",
       "description": "Description",
       "properties": "Properties",
-      "ratings": "Ratings"
+      "ratings": "Ratings",
+      "purchase": "Purchase Item"
     }
   },
   "category": {

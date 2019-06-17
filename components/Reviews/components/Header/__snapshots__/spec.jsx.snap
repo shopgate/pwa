@@ -295,6 +295,7 @@ exports[`<Header /> should render empty 1`] = `
             </Connect(Link)>
           </AverageRating>
           <div
+            aria-hidden={true}
             className={
               Object {
                 "data-css-108dizf": "",
