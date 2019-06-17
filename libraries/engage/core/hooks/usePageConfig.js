@@ -1,7 +1,7 @@
 import defaultsDeep from 'lodash/defaultsDeep';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
-import { useSettings } from './useSettings';
+import { getThemeSettings } from '../config/getThemeSettings';
 
 /**
  * Retrieves the configuration for the current page.
@@ -10,7 +10,7 @@ import { useSettings } from './useSettings';
 export function usePageConfig() {
   const route = useRoute();
   const { pages } = themeConfig;
-  const globalSettings = useSettings();
+  const globalSettings = getThemeSettings();
   const page = pages.find(element => element.pattern === route.pattern);
 
   if (!page) {
