@@ -39,8 +39,8 @@ export function withNavigation(WrappedComponent, options = {}) {
    */
   const WithNavigation = props => (
     <WrappedComponent
-      {...props}
       {...getInjectedProps(options.prop)}
+      {...props}
     />
   );
 

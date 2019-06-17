@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Button from '@shopgate/pwa-ui-shared/Button';
-import BasicDialog from './';
+import BasicDialog from './index';
 
 describe('<BasicDialog />', () => {
   const props = {
@@ -43,5 +43,10 @@ describe('<BasicDialog />', () => {
     expect(props.actions[0].action).not.toBeCalled();
     expect(props.actions[1].action).toBeCalled();
     expect(props.actions[2].action).not.toBeCalled();
+  });
+
+  it('should render with node as a title', () => {
+    const wrapper = shallow(<BasicDialog title={<strong>My Title</strong>} />);
+    expect(wrapper.find('strong').text()).toEqual('My Title');
   });
 });

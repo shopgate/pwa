@@ -7,12 +7,11 @@ import styles from './style';
 
 /**
  * This component renders a basic dialog in Google Material Design.
- * @param {Object} props The component properties.
- * @param {Object} props.children The component children to render in the dialog.
- * @param {Array} props.actions The dialog actions.
- * @param {string} props.actions.label The label of the action.
- * @param {Function} props.actions.action The callback to invoke when the action is triggered.
- * @param {string} props.title The title of the dialog.
+ * @param {Object} children The component children to render in the dialog.
+ * @param {Object[]} actions The dialog actions.
+ * @param {string} actions.label The label of the action.
+ * @param {Function} actions.action The callback to invoke when the action is triggered.
+ * @param {string|ReactElement} title The title of the dialog.
  * @return {JSX} The rendered dialog.
  */
 const BasicDialog = ({ children, actions, title }) => (
@@ -21,7 +20,11 @@ const BasicDialog = ({ children, actions, title }) => (
       {title && ( // Render the title if required.
         <div className={styles.title}>
           <Ellipsis rows={3}>
-            <I18n.Text string={title} />
+            {
+              typeof title === 'string'
+              ? <I18n.Text string={title} />
+              : title
+            }
           </Ellipsis>
         </div>
       )}
@@ -53,7 +56,10 @@ BasicDialog.propTypes = {
     action: PropTypes.func.isRequired,
   })),
   children: PropTypes.node,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 };
 
 BasicDialog.defaultProps = {
