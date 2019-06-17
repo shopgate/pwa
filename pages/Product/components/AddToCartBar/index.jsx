@@ -10,6 +10,7 @@ import {
   PRODUCT_ADD_TO_CART_BAR_AFTER,
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -54,6 +55,7 @@ class AddToCartBar extends Component {
     };
 
     this.ref = React.createRef();
+    this.moreButtonRef = React.createRef();
 
     UIEvents.addListener(constants.SHOW_ADD_TO_CART_BAR, this.handleShow);
     UIEvents.addListener(constants.HIDE_ADD_TO_CART_BAR, this.handleHide);
@@ -130,6 +132,15 @@ class AddToCartBar extends Component {
         quantity: this.context.quantity,
       });
 
+      broadcastLiveMessage('product.adding_item', {
+        params: { count: this.context.quantity },
+        force: true,
+      });
+
+      if (this.moreButtonRef.current) {
+        this.moreButtonRef.current.focus();
+      }
+
       setTimeout(this.resetClicked, 250);
     });
   }
@@ -157,30 +168,34 @@ class AddToCartBar extends Component {
         <Fragment>
           <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
           <Portal name={PRODUCT_ADD_TO_CART_BAR}>
-            <div className={styles.container} >
-              <div className={styles.innerContainer} ref={this.ref}>
-                <div className={styles.base}>
-                  <div className={styles.statusBar}>
-                    <CartItemsCount itemCount={added} />
-                    <AddMoreButton
-                      handleAddToCart={this.handleAddToCart}
+            <Section title="product.sections.purchase">
+              <div className={styles.container} >
+                <div className={styles.innerContainer} ref={this.ref}>
+                  <div className={styles.base}>
+                    <div className={styles.statusBar}>
+                      <CartItemsCount itemCount={added} />
+                      <AddMoreButton
+                        handleAddToCart={this.handleAddToCart}
+                        disabled={this.props.disabled}
+                        loading={this.props.loading}
+                        onReset={this.resetClicked}
+                        visible={added > 0}
+                        ref={this.moreButtonRef}
+                      />
+                    </div>
+                    <AddToCartButton
                       disabled={this.props.disabled}
-                      loading={this.props.loading}
+                      itemCount={added}
+                      handleAddToCart={this.handleAddToCart}
                       onReset={this.resetClicked}
                     />
+                    {/* This feature is currently in BETA testing.
+                    It should only be used for approved BETA Client Projects */}
+                    {isBeta() && <QuantityPicker productId={this.props.productId} />}
                   </div>
-                  <AddToCartButton
-                    disabled={this.props.disabled}
-                    itemCount={added}
-                    handleAddToCart={this.handleAddToCart}
-                    onReset={this.resetClicked}
-                  />
-                  {/* This feature is currently in BETA testing.
-                  It should only be used for approved BETA Client Projects */}
-                  {isBeta() && <QuantityPicker productId={this.props.productId} />}
                 </div>
               </div>
-            </div>
+            </Section>
           </Portal>
           <Portal name={PRODUCT_ADD_TO_CART_BAR_AFTER} />
         </Fragment>

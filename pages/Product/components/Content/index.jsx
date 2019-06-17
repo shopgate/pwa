@@ -2,7 +2,7 @@ import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-import { Section } from '@shopgate/engage/components';
+import { Section } from '@shopgate/engage/a11y';
 import { ProductProperties } from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
