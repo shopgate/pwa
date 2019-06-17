@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
-import ProductGridPrice from 'Components/ProductGridPrice';
+import { ProductGridPrice } from '@shopgate/engage/product';
 import {
   PRODUCT_ITEM_PRICE,
   PRODUCT_ITEM_PRICE_BEFORE,
