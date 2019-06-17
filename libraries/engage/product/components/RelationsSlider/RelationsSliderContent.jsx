@@ -29,11 +29,14 @@ const RelationsSliderContent = ({ products, getRelations }) => {
 
   return (
     <Fragment>
-      {headline && <h3 className={styles.headline}>{headline}</h3>}
-      <Swiper slidesPerView={2.25}>
+      {!!headline && <h3 className={styles.headline}>{headline}</h3>}
+      <Swiper
+        slidesPerView={2.25}
+        classNames={{ container: styles.sliderContainer }}
+      >
         {products.map(product => (
           <Swiper.Item key={product.id}>
-            <Card>
+            <Card className={styles.card}>
               <ProductCard
                 product={product}
                 hidePrice={hidePrice}

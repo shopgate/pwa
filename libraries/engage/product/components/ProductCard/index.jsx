@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { bin2hex } from '@shopgate/engage/core';
 import { Link, Ellipsis, Portal, RatingStars, DiscountBadge } from '@shopgate/engage/components';
-import { ITEM_PATH, MapPriceHint, ProductImage, OrderQuantityHint } from '@shopgate/engage/product';
+import { getProductRoute, MapPriceHint, ProductImage, OrderQuantityHint } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
 import ProductGridPrice from '../ProductGridPrice';
 import styles from './style';
@@ -27,7 +26,7 @@ function ProductCard(props) {
   return (
     <Link
       tagName="a"
-      href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+      href={getProductRoute(product.id)}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Product"
@@ -57,12 +56,16 @@ function ProductCard(props) {
             </div>
           )}
 
-          {/* This feature is currently in BETA testing.
-        It should only be used for approved BETA Client Projects */}
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
           <MapPriceHint productId={product.id} />
 
-          {/* This feature is currently in BETA testing.
-        It should only be used for approved BETA Client Projects */}
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
           <OrderQuantityHint productId={product.id} />
 
           {!hidePrice && (
