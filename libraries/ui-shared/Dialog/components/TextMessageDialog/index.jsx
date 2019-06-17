@@ -21,11 +21,11 @@ TextMessageDialog.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   message: PropTypes.string.isRequired,
   params: I18n.Text.propTypes.params,
-  title: PropTypes.string,
+  title: BasicDialog.propTypes.title,
 };
 
 TextMessageDialog.defaultProps = {
-  title: null,
+  title: BasicDialog.defaultProps.title,
   params: I18n.Text.defaultProps.params,
 };
 
