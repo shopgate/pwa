@@ -60,6 +60,9 @@
     "description_heading": "About",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
+    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "pick_option_first": "Please pick an option first. {option}",
+    "add_to_cart": "Add to cart",
     "no_more_found": "The item \"{name}\" is no longer available.",
     "quantity": "Quantity",
     "minOrderQuantity": "Min. order quantity:{quantity}",
@@ -75,7 +78,8 @@
       "options": "Choose Options",
       "description": "Description",
       "properties": "Properties",
-      "ratings": "Ratings"
+      "ratings": "Ratings",
+      "purchase": "Purchase Item"
     }
   },
   "category": {

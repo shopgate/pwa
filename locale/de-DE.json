@@ -60,6 +60,9 @@
     "description_heading": "Beschreibung",
     "pick_an_attribute": "{0} auswählen",
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
+    "adding_item": "{count, plural, =1 {{count} Produkt wird hinzugefügt} other {{count} Produkte werden hinzugefügt}}",
+    "pick_option_first": "Bitte wählen Sie zuerst eine Option. {option}",
+    "add_to_cart": "In den Warenkorb",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
     "quantity": "Menge",
     "minOrderQuantity": "Min. Bestellmenge:{quantity}",
@@ -71,11 +74,12 @@
       "not_search_similar": "{name} nicht verfügbar. Nach ähnlichen Produkten suchen?"
     },
     "sections": {
-      "information": "Product Information",
-      "options": "Choose Options",
-      "description": "Description",
-      "properties": "Properties",
-      "ratings": "Ratings"
+      "information": "Produkt Informationen",
+      "options": "Optionen wählen",
+      "description": "Beschreibung",
+      "properties": "Eingeschaften",
+      "ratings": "Bewertungen",
+      "purchase": "Produkt kaufen"
     }
   },
   "category": {
