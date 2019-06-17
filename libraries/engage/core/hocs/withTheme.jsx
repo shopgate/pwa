@@ -33,7 +33,7 @@ export function withTheme(WrappedComponent, options = {}) {
   const WithTheme = props => (
     <ThemeContext.Consumer>
       {({ contexts, ...themeContext }) => ( // The contexts are left out in favor of other HOCs.
-        <WrappedComponent {...props} {...getInjectedProps(themeContext, options.prop)} />
+        <WrappedComponent {...getInjectedProps(themeContext, options.prop)} {...props} />
       )}
     </ThemeContext.Consumer>
   );

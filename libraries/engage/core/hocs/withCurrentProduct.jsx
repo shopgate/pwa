@@ -35,7 +35,7 @@ export function withCurrentProduct(WrappedComponent, options = {}) {
       {({ contexts: { ProductContext } }) => (
         <ProductContext.Consumer>
           {productProps =>
-            <WrappedComponent {...props} {...getInjectedProps(productProps, options.prop)} />}
+            <WrappedComponent {...getInjectedProps(productProps, options.prop)} {...props} />}
         </ProductContext.Consumer>
       )}
     </ThemeContext.Consumer>

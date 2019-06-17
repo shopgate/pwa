@@ -33,7 +33,7 @@ export function withRoute(WrappedComponent, options = {}) {
   const WithRoute = props => (
     <RouteContext.Consumer>
       {routeContext => (
-        <WrappedComponent {...props} {...getInjectedProps(routeContext, options.prop)} />
+        <WrappedComponent {...getInjectedProps(routeContext, options.prop)} {...props} />
       )}
     </RouteContext.Consumer>
   );
