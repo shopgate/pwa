@@ -1,4 +1,5 @@
 export { default as AccordionContainer } from './AccordionContainer';
+export { default as Card } from './Card';
 export { default as ArrowIcon } from './icons/ArrowIcon';
 export { default as BurgerIcon } from './icons/BurgerIcon';
 export { default as CartIcon } from './icons/CartIcon';

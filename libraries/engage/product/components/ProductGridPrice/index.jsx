@@ -1,10 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import { withPriceCalculation } from '@shopgate/engage/product';
-import Price from '@shopgate/pwa-ui-shared/Price';
-import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import { Grid, Price, PriceStriked, PriceInfo } from '@shopgate/engage/components';
+import withPriceCalculation from '../../hocs/withPriceCalculation';
 import styles from './style';
 
 /**
@@ -27,19 +24,21 @@ const ProductGridPrice = ({ price }) => (
       {(price.msrp > 0 && price.unitPrice !== price.msrp) && (
         <Grid.Item>
           <PriceStriked
+            className={styles.strikedPrice}
             value={price.msrp}
             currency={price.currency}
           />
         </Grid.Item>
       )}
       {(!price.msrp && price.unitPriceStriked > 0) && (
-      <Grid.Item>
-        <PriceStriked
-          value={price.unitPriceStriked}
-          currency={price.currency}
-        />
-      </Grid.Item>
-    )}
+        <Grid.Item>
+          <PriceStriked
+            className={styles.strikedPrice}
+            value={price.unitPriceStriked}
+            currency={price.currency}
+          />
+        </Grid.Item>
+      )}
     </Grid>
     {price.info && (
       <Grid>
