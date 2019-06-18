@@ -50,6 +50,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
     hidden={true}
     id="some-id"
   >
+    common.required
     Some Text
   </div>
 </ul>
