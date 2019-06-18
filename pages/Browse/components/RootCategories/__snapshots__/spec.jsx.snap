@@ -138,6 +138,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                     "data-css-1tgouoh": "",
                   }
                 }
+                role="listbox"
               >
                 <ul
                   className={
@@ -145,16 +146,19 @@ exports[`<RootCategories /> should render category list with root categories fro
                       "data-css-1tgouoh": "",
                     }
                   }
+                  role="listbox"
                 >
                   <ListItem
                     className="css-1nftllw css-1ym3l2n"
                     isSelected={false}
                     key="child-0/.$123-123"
+                    role={null}
                     tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                       data-test-id="listItem"
+                      role={null}
                     >
                       <div
                         className="css-1ckzvk7"
@@ -301,11 +305,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                     className="css-1nftllw css-1ym3l2n"
                     isSelected={false}
                     key="child-1/.$456-123"
+                    role={null}
                     tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                       data-test-id="listItem"
+                      role={null}
                     >
                       <div
                         className="css-1ckzvk7"
@@ -452,11 +458,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                     className="css-1nftllw css-1ym3l2n"
                     isSelected={false}
                     key="child-2/.$789-123"
+                    role={null}
                     tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                       data-test-id="listItem"
+                      role={null}
                     >
                       <div
                         className="css-1ckzvk7"
@@ -603,11 +611,13 @@ exports[`<RootCategories /> should render category list with root categories fro
                     className="css-1nftllw"
                     isSelected={false}
                     key="child-3/.$789-456"
+                    role={null}
                     tabIndex={0}
                   >
                     <li
                       className="css-1p5q8vq css-1nftllw css-16gj3o1"
                       data-test-id="listItem"
+                      role={null}
                     >
                       <div
                         className="css-1ckzvk7"
