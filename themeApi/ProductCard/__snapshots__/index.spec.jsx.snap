@@ -813,12 +813,12 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                     className=""
                                   >
                                     <PriceStriked
-                                      className=""
+                                      className="css-nil"
                                       currency="EUR"
                                       value={10}
                                     >
                                       <div
-                                        className="css-1sagvrb  "
+                                        className="css-1sagvrb css-nil "
                                       >
                                         <span
                                           aria-label="price.label_old_price"
