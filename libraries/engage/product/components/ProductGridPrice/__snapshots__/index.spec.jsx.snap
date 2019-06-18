@@ -28,12 +28,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
     }
   >
     <Grid
-      className="css-fpclhg"
+      className="css-1glzrmu"
       component="ul"
       wrap={true}
     >
       <ul
-        className="css-fpclhg css-h7r55a css-u7q1iu"
+        className="css-1glzrmu css-h7r55a css-u7q1iu"
       >
         <GridItem
           className=""
@@ -97,12 +97,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
             className=""
           >
             <PriceStriked
-              className="css-7hzrhp"
+              className="css-nil"
               currency="EUR"
               value={22.95}
             >
               <div
-                className="css-1sagvrb css-7hzrhp "
+                className="css-1sagvrb css-nil "
               >
                 <span
                   aria-label="price.label_old_price"
@@ -194,12 +194,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
     }
   >
     <Grid
-      className="css-fpclhg"
+      className="css-1glzrmu"
       component="ul"
       wrap={true}
     >
       <ul
-        className="css-fpclhg css-h7r55a css-u7q1iu"
+        className="css-1glzrmu css-h7r55a css-u7q1iu"
       >
         <GridItem
           className=""
@@ -263,12 +263,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
             className=""
           >
             <PriceStriked
-              className="css-7hzrhp"
+              className="css-nil"
               currency="EUR"
               value={22.95}
             >
               <div
-                className="css-1sagvrb css-7hzrhp "
+                className="css-1sagvrb css-nil "
               >
                 <span
                   aria-label="price.label_old_price"
@@ -325,12 +325,12 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
     }
   >
     <Grid
-      className="css-fpclhg"
+      className="css-1glzrmu"
       component="ul"
       wrap={true}
     >
       <ul
-        className="css-fpclhg css-h7r55a css-u7q1iu"
+        className="css-1glzrmu css-h7r55a css-u7q1iu"
       >
         <GridItem
           className=""

@@ -26,7 +26,13 @@ const productRelationsByHash = (state = {}, action) => {
       return {
         ...state,
         [action.hash]: {
-          productIds: action.payload.relations.map(el => el.productId),
+          productIds: action.payload.relations.map((product) => {
+            if (product.productId) {
+              return product.productId;
+            }
+
+            return product.id;
+          }),
           isFetching: false,
           expires: Date.now() + PRODUCT_LIFETIME,
         },

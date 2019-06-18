@@ -1,9 +1,14 @@
 import { css } from 'glamor';
+import { themeName } from '@shopgate/pwa-common/helpers/config';
 
-const priceWrapper = css({
+const isIOS = themeName.includes('ios');
+
+const priceWrapper = css(isIOS ? {
   lineHeight: 1.75,
   marginTop: 2,
   alignItems: 'center',
+} : {
+  lineHeight: 1.75,
 }).toString();
 
 const basicPrice = css({
@@ -11,9 +16,9 @@ const basicPrice = css({
   marginTop: -1,
 }).toString();
 
-const strikedPrice = css({
+const strikedPrice = css(isIOS ? {
   fontSize: '0.75rem',
-}).toString();
+} : {}).toString();
 
 export default {
   basicPrice,
