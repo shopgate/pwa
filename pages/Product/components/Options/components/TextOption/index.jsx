@@ -72,7 +72,7 @@ class TextOption extends PureComponent {
       return true;
     }
 
-    broadcastLiveMessage('product.fill_out_required_input_first');
+    broadcastLiveMessage('product.fill_out_required_input_first', { force: true });
     this.ref.scrollIntoView({ behavior: 'smooth' });
     this.setState({ highlight: true });
     return false;
@@ -151,7 +151,6 @@ class TextOption extends PureComponent {
                   hasUnderline={false}
                   className={styles.element}
                   attributes={{
-                    'aria-required': required,
                     'aria-describedby': optionInfoId,
                   }}
                 />

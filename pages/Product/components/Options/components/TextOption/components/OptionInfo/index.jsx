@@ -18,11 +18,17 @@ const OptionInfo = ({
     return null;
   }
 
+  const { __, _p } = context.i18n();
+
   let ariaPrice = '';
+  let ariaRequired = '';
 
   if (price) {
-    const { __, _p } = context.i18n();
     ariaPrice = __('price.label', { price: _p(price, currency, 2).replace('-', '\u2212') });
+  }
+
+  if (required) {
+    ariaRequired = __('common.required');
   }
 
   return (
@@ -42,6 +48,7 @@ const OptionInfo = ({
         </Grid.Item>
       }
       <div hidden id={optionInfoId}>
+        { ariaRequired }
         { ariaPrice }
         { info }
       </div>
