@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import kebabCase from 'lodash/kebabCase';
 import { I18n } from '../../../components';
-import { headline, hidden } from './style';
+import { hidden } from './style';
 
 /**
-* Checks the section ref has suitable child nodes.
-* @param {Object} ref A React ref.
-* @returns {bool}
+ * Checks the section ref has suitable child nodes.
+ * @param {Object} ref A React ref.
+ * @param {string} headlineId The ID of the section headline.
+ * @returns {bool}
 */
-const hasChildNodes = (ref) => {
+const hasChildNodes = (ref, headlineId) => {
   if (!ref.current) {
     return false;
   }
@@ -18,36 +19,35 @@ const hasChildNodes = (ref) => {
   // Determine all child nodes except the headline.
   const childNodes = [].filter.call(
     ref.current.childNodes,
-    el => !el.classList.contains(headline.toString())
+    el => el.getAttribute('id') !== headlineId
   );
 
   return childNodes.length > 0;
 };
 
 /**
-* The Section component is supposed to be used to structure the content to improve a11y. It
-* renders a headline on top which is only visible for screen readers and describes the section.
-* Internally a MutationObserver maintains the visibility based on the presence of rendered content.
-* @param {string} title The section title - can be a translation placeholder.
-* @param {Object} [titleParams={}] Additional parameters for the title  translation placeholder.
-* @param {Object} [className=null] A class name for the section.
-* @param {NodeList} [children=null] Component children.
-* @returns {JSX}
-*/
+ * The Section component is supposed to be used to structure the content to improve a11y. It
+ * renders a headline on top which is only visible for screen readers and describes the section.
+ * Internally a MutationObserver maintains the visibility based on the presence of rendered content.
+ * @param {string} title The section title - can be a translation placeholder.
+ * @param {Object} [titleParams={}] Additional parameters for the title  translation placeholder.
+ * @param {Object} [className=null] A class name for the section.
+ * @param {NodeList} [children=null] Component children.
+ * @returns {JSX}
+ */
 const Section = ({
   title, titleParams, children, className, ...rest
 }) => {
   const contentRef = useRef(null);
   const [hasContent, setHasContent] = useState(false);
-
-  const observer = useMemo(() => new MutationObserver(() => {
-    setHasContent(hasChildNodes(contentRef));
-  }));
-
   const id = useMemo(() => kebabCase(title), [title]);
 
+  const observer = useMemo(() => new MutationObserver(() => {
+    setHasContent(hasChildNodes(contentRef, id));
+  }));
+
   useEffect(() => {
-    setHasContent(hasChildNodes(contentRef));
+    setHasContent(hasChildNodes(contentRef, id));
     observer.observe(contentRef.current, { childList: true });
 
     return () => {
@@ -61,7 +61,7 @@ const Section = ({
 
   return (
     <section {...rest} ref={contentRef} className={classes} aria-labelledby={id}>
-      <h1 id={id} className={hidden}>
+      <h1 id={id} hidden>
         <I18n.Text string={title} params={titleParams} />
       </h1>
       {children}
