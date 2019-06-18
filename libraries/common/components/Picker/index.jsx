@@ -122,7 +122,7 @@ class Picker extends Component {
       });
     }
 
-    if (nextProps.isOpen !== this.state.isOpen) {
+    if (this.props.isOpen !== nextProps.isOpen && nextProps.isOpen !== this.state.isOpen) {
       this.setState({
         isOpen: nextProps.isOpen,
       });

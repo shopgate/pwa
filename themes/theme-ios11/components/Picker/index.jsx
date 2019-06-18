@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BasePicker from '@shopgate/pwa-common/components/Picker';
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import { SheetList } from '@shopgate/engage/components';
+import { ViewContext } from 'Components/View/context';
 import Button from './components/Button';
 import styles from './style';
 
@@ -13,6 +14,7 @@ import styles from './style';
 class Picker extends Component {
   static propTypes = {
     label: PropTypes.string.isRequired,
+    setViewAriaHidden: PropTypes.func.isRequired,
     buttonComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     buttonProps: PropTypes.shape(),
     clickDelay: PropTypes.number,
@@ -82,6 +84,7 @@ class Picker extends Component {
    * Focuses the picker button for screen readers.
    */
   onDidOpen = () => {
+    this.props.setViewAriaHidden(true);
     if (this.firstSelectableItemRef.current) {
       this.firstSelectableItemRef.current.focus();
     }
@@ -91,6 +94,7 @@ class Picker extends Component {
    * Focuses the first selectable item for screen readers.
    */
   onClose = () => {
+    this.props.setViewAriaHidden(false);
     if (this.pickerRef.current) {
       this.pickerRef.current.focus();
     }
@@ -101,7 +105,9 @@ class Picker extends Component {
    * @returns {JSX}
    */
   render() {
-    const { hasButton, sheetProps: ignore, ...restProps } = this.props;
+    const {
+      hasButton, sheetProps: ignore, setViewAriaHidden, ...restProps
+    } = this.props;
 
     return (
       <BasePicker
@@ -111,11 +117,18 @@ class Picker extends Component {
         buttonProps={this.props.buttonProps}
         buttonComponent={this.props.buttonComponent || Button}
         listComponent={this.listComponent}
-        onSelect={this.onClose}
+        onClose={this.onClose}
         ref={this.pickerRef}
       />
     );
   }
 }
 
-export default Picker;
+export default props => (
+  <ViewContext.Consumer>
+    {({ setAriaHidden }) => (
+      <Picker {...props} setViewAriaHidden={setAriaHidden} />
+    )}
+  </ViewContext.Consumer>
+);
+
