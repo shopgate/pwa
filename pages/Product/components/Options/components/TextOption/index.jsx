@@ -5,6 +5,7 @@ import debounce from 'lodash/debounce';
 import TextField from '@shopgate/pwa-ui-shared/Form/TextField';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import withShowModal from '@shopgate/pwa-common/helpers/modal/withShowModal';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import transition from './../../../Characteristics/transition';
 import { ProductContext } from '../../../../context';
 import OptionInformation from './components/OptionInfo';
@@ -71,6 +72,7 @@ class TextOption extends PureComponent {
       return true;
     }
 
+    broadcastLiveMessage('product.fill_out_required_input_first');
     this.ref.scrollIntoView({ behavior: 'smooth' });
     this.setState({ highlight: true });
     return false;
@@ -127,8 +129,9 @@ class TextOption extends PureComponent {
       value,
       required,
       price,
+      info,
     } = this.props;
-
+    const optionInfoId = id;
     return (
       <div className={styles.row}>
         <Transition in={this.state.highlight} timeout={700} onEntered={this.removeHighlight}>
@@ -147,9 +150,19 @@ class TextOption extends PureComponent {
                   data-test-id={label}
                   hasUnderline={false}
                   className={styles.element}
+                  attributes={{
+                    'aria-required': required,
+                    'aria-describedby': optionInfoId,
+                  }}
                 />
               </div>
-              <OptionInformation label={label} required={required} price={price} />
+              <OptionInformation
+                label={label}
+                required={required}
+                price={price}
+                info={info}
+                optionInfoId={optionInfoId}
+              />
             </Fragment>
           )}
         </Transition>
