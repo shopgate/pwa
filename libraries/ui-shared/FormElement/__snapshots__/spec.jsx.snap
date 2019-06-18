@@ -17,10 +17,12 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
     className="css-1vjh8yv"
   >
     <Placeholder
+      aria-hidden={true}
       placeholder=""
       visible={false}
     >
       <div
+        aria-hidden={true}
         className="css-rkuo1o css-1jyyyen"
       >
         <Translate
@@ -102,10 +104,12 @@ exports[`<FormElement /> should render a focused form element 1`] = `
     className="css-1vjh8yv"
   >
     <Placeholder
+      aria-hidden={true}
       placeholder=""
       visible={false}
     >
       <div
+        aria-hidden={true}
         className="css-rkuo1o css-1jyyyen"
       >
         <Translate
@@ -186,10 +190,12 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
     className="css-1vjh8yv"
   >
     <Placeholder
+      aria-hidden={true}
       placeholder=""
       visible={true}
     >
       <div
+        aria-hidden={true}
         className="css-rkuo1o"
       >
         <Translate
@@ -274,10 +280,12 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
     className="css-1vjh8yv"
   >
     <Placeholder
+      aria-hidden={true}
       placeholder=""
       visible={true}
     >
       <div
+        aria-hidden={true}
         className="css-rkuo1o"
       >
         <Translate
@@ -359,10 +367,12 @@ exports[`<FormElement /> should show the error message 1`] = `
     className="css-1vjh8yv"
   >
     <Placeholder
+      aria-hidden={true}
       placeholder=""
       visible={true}
     >
       <div
+        aria-hidden={true}
         className="css-rkuo1o"
       >
         <Translate
@@ -449,10 +459,12 @@ exports[`<FormElement /> should show the label 1`] = `
     className="css-1vjh8yv"
   >
     <Placeholder
+      aria-hidden={true}
       placeholder="The label"
       visible={true}
     >
       <div
+        aria-hidden={true}
         className="css-rkuo1o"
       >
         <Translate
@@ -546,10 +558,12 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
     className="css-1vjh8yv"
   >
     <Placeholder
+      aria-hidden={true}
       placeholder="The placeholder"
       visible={true}
     >
       <div
+        aria-hidden={true}
         className="css-rkuo1o"
       >
         <Translate

@@ -51,10 +51,12 @@ exports[`<Password> should render a password field 1`] = `
         className="css-1vjh8yv"
       >
         <Placeholder
+          aria-hidden={true}
           placeholder=""
           visible={true}
         >
           <div
+            aria-hidden={true}
             className="css-rkuo1o"
           >
             <Translate
@@ -345,10 +347,12 @@ exports[`<Password> should trigger the onChange callback 1`] = `
         className="css-1vjh8yv"
       >
         <Placeholder
+          aria-hidden={true}
           placeholder=""
           visible={true}
         >
           <div
+            aria-hidden={true}
             className="css-rkuo1o"
           >
             <Translate

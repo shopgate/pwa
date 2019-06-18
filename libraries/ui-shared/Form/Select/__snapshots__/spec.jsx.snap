@@ -34,10 +34,12 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
@@ -159,10 +161,12 @@ exports[`<Select /> should render select with 2 options 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={true}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o"
         >
           <Translate
@@ -279,10 +283,12 @@ exports[`<Select /> should render select with no options 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={true}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o"
         >
           <Translate

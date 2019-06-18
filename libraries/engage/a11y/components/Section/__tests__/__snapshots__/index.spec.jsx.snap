@@ -11,7 +11,7 @@ exports[`<Section /> should render hidden when no children rendered 1`] = `
     className="css-gyrv08"
   >
     <h1
-      className="css-1krt3b8"
+      className="css-gyrv08"
       id="my-headline"
     >
       <Translate
@@ -40,7 +40,7 @@ exports[`<Section /> should render visible 1`] = `
     className=""
   >
     <h1
-      className="css-1krt3b8"
+      className="css-gyrv08"
       id="my-headline"
     >
       <Translate

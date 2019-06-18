@@ -27,10 +27,12 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
@@ -167,10 +169,12 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
@@ -365,10 +369,12 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
@@ -505,10 +511,12 @@ exports[`<RadioGroup /> should render empty group 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
@@ -586,10 +594,12 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
@@ -726,10 +736,12 @@ exports[`<RadioGroup /> should use default value 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate

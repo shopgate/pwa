@@ -61,7 +61,7 @@ const Section = ({
 
   return (
     <section {...rest} ref={contentRef} className={classes} aria-labelledby={id}>
-      <h1 id={id} className={headline}>
+      <h1 id={id} className={hidden}>
         <I18n.Text string={title} params={titleParams} />
       </h1>
       {children}
