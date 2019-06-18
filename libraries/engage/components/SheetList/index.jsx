@@ -40,7 +40,7 @@ class SheetList extends Component {
     }
 
     return (
-      <List className={className}>
+      <List className={className} role="listbox">
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) {
             return null;
