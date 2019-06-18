@@ -109,6 +109,12 @@
       "hooks": ["shopgate.catalog.getProductVariants.v1:after"],
       "input": [{"key": "characteristics"}],
       "output": [{"key": "characteristics"}]
+    },
+    {
+      "path": "extension/mockProductMedia.js",
+      "hooks": ["shopgate.catalog.getProductMedia.v1:after"],
+      "input": [{"key": "media"}],
+      "output": [{"key": "media"}]
     }
   ]
 }

@@ -4,6 +4,9 @@ export default {
       '@shopgate/engage/product/ProductImage': {
         showInnerShadow: true,
       },
+      '@shopgate/engage/product/FeaturedImage': {
+        showInnerShadow: true,
+      },
     },
     typography: {
       family: 'system, -apple-system, "SF Pro Display", "Helvetica Neue", "Lucida Grande"',

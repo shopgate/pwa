@@ -4,6 +4,9 @@ export default {
       '@shopgate/engage/product/ProductImage': {
         showInnerShadow: false,
       },
+      '@shopgate/engage/product/FeaturedImage': {
+        showInnerShadow: false,
+      },
     },
     typography: {
       family: 'Roboto, Arial, sans-serif',
