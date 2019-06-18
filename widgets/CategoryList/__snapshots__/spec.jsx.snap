@@ -57,19 +57,23 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     >
       <List
         className={null}
+        role="listbox"
       >
         <ul
           className={null}
+          role="listbox"
         >
           <ListItem
             className="css-1nftllw css-1ym3l2n"
             isSelected={false}
             key="child-0/.$1"
+            role={null}
             tabIndex={0}
           >
             <li
               className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
               data-test-id="listItem"
+              role={null}
             >
               <div
                 className="css-1ckzvk7"
@@ -138,11 +142,13 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             className="css-1nftllw"
             isSelected={false}
             key="child-1/.$2"
+            role={null}
             tabIndex={0}
           >
             <li
               className="css-1p5q8vq css-1nftllw css-16gj3o1"
               data-test-id="listItem"
+              role={null}
             >
               <div
                 className="css-1ckzvk7"
