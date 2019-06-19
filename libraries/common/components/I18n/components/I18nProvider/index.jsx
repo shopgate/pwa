@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  getTranslator,
-  getPriceFormatter,
-  getDateFormatter,
-  getTimeFormatter,
-  getNumberFormatter,
-} from '../../../../helpers/i18n';
+import { i18n } from '@shopgate/engage/core';
+import { logger } from '@shopgate/pwa-core/helpers';
 
 /**
  * A React component that provides child components with i18n features.
@@ -14,8 +9,6 @@ import {
  */
 export default class I18nProvider extends Component {
   static propTypes = {
-    lang: PropTypes.string.isRequired,
-    locales: PropTypes.shape().isRequired,
     children: PropTypes.node,
   };
 
@@ -27,6 +20,17 @@ export default class I18nProvider extends Component {
     children: null,
   };
 
+  /**
+   * @inheritDoc
+   */
+  constructor(props) {
+    super(props);
+    // eslint-disable-next-line react/prop-types
+    if (this.props.lang || this.props.locales) {
+      logger.warn(`===== I18nProvider deprecated =====\nI18nProvider and it's related components (@shopgate/pwa-common/component/I18n) or context types are deprecated and will be removed in @shopgate/engage v7.0.0.\nPlease use @shopgate/engage/core/helpers/i18n.\n===================================
+      `);
+    }
+  }
   /**
    * Provides context for child components.
    * @returns {Object}
@@ -41,17 +45,13 @@ export default class I18nProvider extends Component {
    * Gets a shortcut to i18n functionality with preset language.
    * @returns {Object}
    */
-  getI18nInstance = () => {
-    const { locales, lang } = this.props;
-
-    return {
-      __: getTranslator(locales, lang),
-      _p: getPriceFormatter(lang),
-      _d: getDateFormatter(lang),
-      _t: getTimeFormatter(lang),
-      _n: getNumberFormatter(lang),
-    };
-  };
+  getI18nInstance = () => ({
+    __: i18n.text,
+    _p: i18n.price,
+    _d: i18n.date,
+    _t: i18n.time,
+    _n: i18n.number,
+  });
 
   /**
    * Renders the component.
