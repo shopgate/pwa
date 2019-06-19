@@ -42,12 +42,15 @@ const I18n = () => {
       this.date = getDateFormatter(lang);
       this.time = getTimeFormatter(lang);
       this.number = getNumberFormatter(lang);
+      // If component decides to act accordingly this information should be exposed.
+      this.ready = true;
     },
     text: notReadyCb,
     price: notReadyCb,
     date: notReadyCb,
     time: notReadyCb,
     number: notReadyCb,
+    ready: false,
   };
 };
 

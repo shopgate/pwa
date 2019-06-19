@@ -1,26 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { i18n } from '@shopgate/engage/core';
 /**
  * Formats a number.
  * @param {Object} props The component props.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-const FormatNumber = (props, context) => (
+const FormatNumber = props => (
   <span className={props.className}>
-    {FormatNumber.format(props, context)}
+    {FormatNumber.format(props)}
   </span>
 );
 
-FormatNumber.format = (props, context) => {
-  if (!context.i18n) {
+FormatNumber.format = (props) => {
+  if (!i18n.ready) {
     return props.number;
   }
-
-  const { _n } = context.i18n();
-
-  return _n(props.number, props.fractions);
+  return i18n.number(props.number, props.fractions);
 };
 
 FormatNumber.propTypes = {
@@ -32,10 +28,6 @@ FormatNumber.propTypes = {
 FormatNumber.defaultProps = {
   className: '',
   fractions: 0,
-};
-
-FormatNumber.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default FormatNumber;

@@ -1,26 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { i18n } from '@shopgate/engage/core';
 
 /**
  * Formats a date.
  * @param {Object} props The component props.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-const FormatDate = (props, context) => (
+const FormatDate = props => (
   <span>
-    {FormatDate.format(props, context)}
+    {FormatDate.format(props)}
   </span>
 );
 
-FormatDate.format = (props, context) => {
-  if (!context.i18n) {
+FormatDate.format = (props) => {
+  if (!i18n.ready) {
     return props.timestamp;
   }
 
-  const { _d } = context.i18n();
-
-  return _d(props.timestamp, props.format);
+  return i18n.date(props.timestamp, props.format);
 };
 
 FormatDate.propTypes = {
@@ -30,10 +28,6 @@ FormatDate.propTypes = {
 
 FormatDate.defaultProps = {
   format: 'medium',
-};
-
-FormatDate.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default FormatDate;
