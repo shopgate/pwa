@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > hocs > withRoute should inject a single property with the context into the component 1`] = `
+<WithRoute(MockComponent)
+  someProp={true}
+>
+  <Consumer>
+    <MockComponent
+      route={
+        Object {
+          "id": "32d55",
+          "pathname": "/",
+          "pattern": "/",
+          "state": Object {},
+        }
+      }
+      someProp={true}
+    />
+  </Consumer>
+</WithRoute(MockComponent)>
+`;
+
+exports[`engage > core > hocs > withRoute should inject the context properties into the component 1`] = `
+<WithRoute(MockComponent)
+  someProp={true}
+>
+  <Consumer>
+    <MockComponent
+      id="32d55"
+      pathname="/"
+      pattern="/"
+      someProp={true}
+      state={Object {}}
+    />
+  </Consumer>
+</WithRoute(MockComponent)>
+`;

@@ -75,6 +75,10 @@
     "no_result": {
       "heading": "Ops!",
       "body": "Nessun prodotto trovato."
+    },
+    "sections": {
+      "categories": "Categorie",
+      "products": "Prodotti"
     }
   },
   "search": {
