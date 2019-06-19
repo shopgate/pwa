@@ -55,6 +55,9 @@ export { default as QuantityPicker } from './components/QuantityPicker';
 export { default as EffectivityDates } from './components/EffectivityDates';
 export { Swatch } from './components/Swatch';
 export { Swatches } from './components/Swatches';
+export { RelationsSlider } from './components/RelationsSlider';
+export { default as ProductCard } from './components/ProductCard';
+export { default as ProductGridPrice } from './components/ProductGridPrice';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';

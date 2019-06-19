@@ -1,9 +1,12 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig, themeName } from '@shopgate/pwa-common/helpers/config';
 
+const isIOS = themeName.includes('ios');
 const { colors } = themeConfig;
 
-const container = css({
+const container = css(isIOS ? {
+  fontSize: 14,
+} : {
   position: 'relative',
   display: 'block',
   background: colors.light,
