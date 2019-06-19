@@ -9,7 +9,8 @@ import styles from './style';
  * @returns {JSX}
  */
 const Label = ({ className, price, currency }) => (
-  <div className={`${className} ${styles.text}`}>
+  // eslint-disable-next-line jsx-a11y/aria-role
+  <div role="text" className={`${className} ${styles.text}`}>
     {price > 0 ? (
       <I18n.Text string="shipping.cost">
         <I18n.Price forKey="price" price={price} currency={currency} />
