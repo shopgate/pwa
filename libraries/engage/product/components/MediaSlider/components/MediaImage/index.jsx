@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FeaturedImage } from '../../../FeaturedMedia';
+import { MediaImage as Image } from '../../../Media';
 import { full } from '../../style';
 
 /**
@@ -15,7 +15,7 @@ const MediaImage = ({ media, onClick }) => (
     tabIndex="0"
     className={full}
   >
-    <FeaturedImage url={media.url} altText={media.altText} hideImageShadow />
+    <Image url={media.url} altText={media.altText} />
   </div>
 );
 
@@ -26,5 +26,7 @@ MediaImage.propTypes = {
   }).isRequired,
   onClick: PropTypes.func.isRequired,
 };
+
+MediaImage.displayName = 'MediaSliderImage';
 
 export default MediaImage;

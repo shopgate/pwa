@@ -22,7 +22,7 @@ const defaultParams = {
  * @param {Object} [params=undefined] params
  * @returns {string}
  */
-export const buildFeaturedImageUrl = (url, params) => {
+export const buildMediaImageUrl = (url, params) => {
   const parsedUrl = new URL(url);
 
   const isAndroid = configuration.get(APP_PLATFORM) === OS_ANDROID;
