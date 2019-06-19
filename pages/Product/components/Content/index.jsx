@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { Section } from '@shopgate/engage/a11y';
-import { ProductProperties } from '@shopgate/engage/product';
+import { ProductProperties, RelationsSlider } from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
@@ -130,6 +130,11 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.information">
             <Header />
           </Section>
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          <RelationsSlider desiredPosition="header" />
           <Section title="product.sections.options">
             <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
             <Options />
@@ -137,8 +142,16 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.description">
             <Description productId={this.state.productId} variantId={this.state.variantId} />
           </Section>
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          <RelationsSlider desiredPosition="description" />
           <Section title="product.sections.properties">
-            <ProductProperties productId={this.state.productId} variantId={this.state.variantId} />
+            <ProductProperties
+              productId={this.state.productId}
+              variantId={this.state.variantId}
+            />
           </Section>
           <Section title="product.sections.ratings">
             <Reviews productId={this.state.productId} />

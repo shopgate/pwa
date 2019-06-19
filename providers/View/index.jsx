@@ -33,8 +33,8 @@ class ViewProvider extends Component {
       set: this.set,
       setTop: this.setTop,
       setBottom: this.setBottom,
-      setContentRef: this.setContentRef,
       setAriaHidden: this.setAriaHidden,
+      setContentRef: this.setContentRef,
       getContentRef: this.getContentRef,
       scrollTop: this.scrollTop,
     };

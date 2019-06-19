@@ -4,6 +4,7 @@ import styles from './style';
 
 /**
  * The Picker Button component.
+ * @param {Object} props The component props.
  * @return {JSX}
  */
 const Button = ({

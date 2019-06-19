@@ -23,6 +23,7 @@ exports[`<Picker /> should render the picker 1`] = `
         listComponent={[Function]}
         modalComponent={[Function]}
         onClose={[Function]}
+        setViewAriaHidden={[Function]}
       >
         <Picker
           buttonComponent={[Function]}
@@ -61,6 +62,7 @@ exports[`<Picker /> should render the picker 1`] = `
           onClose={[Function]}
           onSelect={[Function]}
           placeholder="Pick ..."
+          setViewAriaHidden={[Function]}
           value={null}
         >
           <div

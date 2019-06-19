@@ -838,10 +838,12 @@ exports[`<List /> should render list with reviews 1`] = `
                   "author": "username123",
                 }
               }
+              role={null}
               string="reviews.author"
             >
               <span
                 className=""
+                role={null}
               >
                 reviews.author
               </span>
@@ -1229,10 +1231,12 @@ exports[`<List /> should render list with reviews 1`] = `
                   "author": "Carina Hoffmann",
                 }
               }
+              role={null}
               string="reviews.author"
             >
               <span
                 className=""
+                role={null}
               >
                 reviews.author
               </span>
