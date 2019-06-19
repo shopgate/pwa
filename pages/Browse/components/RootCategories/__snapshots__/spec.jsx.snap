@@ -215,7 +215,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <Link
-                                    ariaLabel={null}
+                                    aria-label={null}
                                     className=""
                                     disabled={false}
                                     historyPush={[Function]}
@@ -344,7 +344,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <Link
-                                    ariaLabel={null}
+                                    aria-label={null}
                                     className=""
                                     disabled={false}
                                     historyPush={[Function]}
@@ -473,7 +473,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <Link
-                                    ariaLabel={null}
+                                    aria-label={null}
                                     className=""
                                     disabled={false}
                                     historyPush={[Function]}
@@ -602,7 +602,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                   }
                                 >
                                   <Link
-                                    ariaLabel={null}
+                                    aria-label={null}
                                     className=""
                                     disabled={false}
                                     historyPush={[Function]}
