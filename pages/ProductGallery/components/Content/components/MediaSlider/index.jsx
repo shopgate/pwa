@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Swiper } from '@shopgate/engage/components';
-import { buildFeaturedImageUrl } from '@shopgate/engage/product';
+import { buildMediaImageUrl } from '@shopgate/engage/product';
 import { GALLERY_SLIDER_ZOOM, GALLERY_SLIDER_IMAGE_FORMATS } from './../../../../constants';
 import styles from './style';
 import connect from './connector';
@@ -31,7 +31,7 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
           <Swiper.Item key={singleMedia.url}>
             <div className="swiper-zoom-container">
               <img
-                src={buildFeaturedImageUrl(singleMedia.url, GALLERY_SLIDER_IMAGE_FORMATS[1])}
+                src={buildMediaImageUrl(singleMedia.url, GALLERY_SLIDER_IMAGE_FORMATS[1])}
                 alt={singleMedia.altText}
                 className={styles.slide}
               />
