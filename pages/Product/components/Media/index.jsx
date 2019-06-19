@@ -10,7 +10,7 @@ import connect from './connector';
  * @param {boolean} hasMedia hasMedia
  * @returns {JSX}
  */
-const Media = ({ hasMedia }) => (
+const Media = ({ hasMedia, 'aria-hidden': ariaHidden }) => (
   <ProductContext.Consumer>
     {({ productId, variantId }) => (
       <Fragment>
@@ -18,8 +18,8 @@ const Media = ({ hasMedia }) => (
             It should only be used for approved BETA Client Projects */}
         {
           hasMedia
-          ? <MediaSlider productId={variantId || productId} />
-          : <ImageSlider productId={productId} variantId={variantId} />
+            ? <MediaSlider productId={variantId || productId} aria-hidden={ariaHidden} />
+            : <ImageSlider productId={productId} variantId={variantId} aria-hidden={ariaHidden} />
         }
       </Fragment>
     )}
@@ -27,10 +27,12 @@ const Media = ({ hasMedia }) => (
 );
 
 Media.propTypes = {
+  'aria-hidden': PropTypes.bool,
   hasMedia: PropTypes.bool,
 };
 
 Media.defaultProps = {
+  'aria-hidden': null,
   hasMedia: false,
 };
 

@@ -20,6 +20,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
     <Translate
       className=""
       params={Object {}}
+      role={null}
       string="filter.reset"
     />
   </Button>
@@ -46,6 +47,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
     <Translate
       className=""
       params={Object {}}
+      role={null}
       string="filter.reset"
     />
   </Button>
@@ -72,6 +74,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
     <Translate
       className=""
       params={Object {}}
+      role={null}
       string="filter.reset"
     />
   </Button>

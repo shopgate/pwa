@@ -28,14 +28,18 @@ class List extends PureComponent {
       return null;
     }
 
-    return reviews.map(review => (
-      <div key={review.id} className={styles} data-test-id={`reviewTitle: ${review.title}`}>
-        <Title title={review.title} />
-        <Rating rate={review.rate} />
-        <Text review={review.review} />
-        <Info review={review} />
-      </div>
-    ));
+    return (
+      <ul>
+        {reviews.map(review => (
+          <li key={review.id} className={styles} data-test-id={`reviewTitle: ${review.title}`}>
+            <Title title={review.title} />
+            <Rating rate={review.rate} />
+            <Text review={review.review} />
+            <Info review={review} />
+          </li>
+        ))}
+      </ul>
+    );
   }
 }
 

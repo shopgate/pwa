@@ -377,10 +377,12 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                     "prominent": true,
                   }
                 }
+                role={null}
                 string="reviews.review_count"
               >
                 <span
                   className="css-a7xi3l css-oixusm"
+                  role={null}
                 >
                   reviews.review_count
                 </span>

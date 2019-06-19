@@ -1,73 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Picker /> should render the picker 1`] = `
-<Picker
-  buttonComponent={null}
-  buttonProps={Object {}}
-  clickDelay={150}
-  hasButton={true}
+<_default
   label="Picker label"
-  sheetProps={Object {}}
 >
-  <ForwardRef(WithForwardedRef(Picker))
-    buttonComponent={[Function]}
-    buttonProps={Object {}}
-    className="css-murgv5"
-    clickDelay={150}
-    label="Picker label"
-    listComponent={[Function]}
-    modalComponent={[Function]}
-  >
+  <Consumer>
     <Picker
-      buttonComponent={[Function]}
+      buttonComponent={null}
       buttonProps={Object {}}
-      className="css-murgv5"
       clickDelay={150}
-      disabled={false}
-      duration={300}
-      forwardedRef={[Function]}
-      isOpen={false}
-      items={Array []}
+      hasButton={true}
       label="Picker label"
-      listComponent={[Function]}
-      modalComponent={[Function]}
-      onChange={[Function]}
-      onClose={[Function]}
-      onSelect={[Function]}
-      placeholder="Pick ..."
-      value={null}
+      setViewAriaHidden={[Function]}
+      sheetProps={Object {}}
     >
-      <div
-        aria-haspopup={true}
+      <ForwardRef(WithForwardedRef(Picker))
+        buttonComponent={[Function]}
+        buttonProps={Object {}}
         className="css-murgv5"
-        role="button"
-        tabIndex={0}
+        clickDelay={150}
+        label="Picker label"
+        listComponent={[Function]}
+        modalComponent={[Function]}
+        onClose={[Function]}
+        setViewAriaHidden={[Function]}
       >
-        <Button
+        <Picker
+          buttonComponent={[Function]}
+          buttonProps={Object {}}
+          className="css-murgv5"
+          clickDelay={150}
           disabled={false}
-          label="Pick ..."
-          openList={[Function]}
-          value=""
-        >
-          <button
-            className="css-164ggb6"
-            onClick={[Function]}
-          >
-            <span
-              className="css-1358lbd"
-            >
-              Pick ...
-            </span>
-          </button>
-        </Button>
-        <Portal
-          isOpened={true}
+          duration={300}
+          forwardedRef={
+            Object {
+              "current": <div
+                aria-haspopup="true"
+                class="css-murgv5"
+                role="button"
+                tabindex="0"
+              >
+                <button
+                  class="css-164ggb6"
+                >
+                  <span
+                    class="css-1358lbd"
+                  >
+                    Pick ...
+                  </span>
+                  
+                </button>
+              </div>,
+            }
+          }
+          isOpen={false}
+          items={Array []}
+          label="Picker label"
+          listComponent={[Function]}
+          modalComponent={[Function]}
+          onChange={[Function]}
           onClose={[Function]}
-          onOpen={[Function]}
-          onUpdate={[Function]}
-        />
-      </div>
+          onSelect={[Function]}
+          placeholder="Pick ..."
+          setViewAriaHidden={[Function]}
+          value={null}
+        >
+          <div
+            aria-haspopup={true}
+            className="css-murgv5"
+            role="button"
+            tabIndex={0}
+          >
+            <Button
+              disabled={false}
+              label="Pick ..."
+              openList={[Function]}
+              value=""
+            >
+              <button
+                className="css-164ggb6"
+                onClick={[Function]}
+              >
+                <span
+                  className="css-1358lbd"
+                >
+                  Pick ...
+                </span>
+              </button>
+            </Button>
+            <Portal
+              isOpened={true}
+              onClose={[Function]}
+              onOpen={[Function]}
+              onUpdate={[Function]}
+            />
+          </div>
+        </Picker>
+      </ForwardRef(WithForwardedRef(Picker))>
     </Picker>
-  </ForwardRef(WithForwardedRef(Picker))>
-</Picker>
+  </Consumer>
+</_default>
 `;
