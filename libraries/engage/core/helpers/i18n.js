@@ -27,7 +27,7 @@ const I18n = () => {
    * when the module is used without initialization.
    */
   const notReadyCb = () => {
-    throw new Error('i18n is not yet ready');
+    logger.error('i18n is not yet ready. Please postpone translations until App is bootstrapped.');
   };
 
   return {
