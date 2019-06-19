@@ -331,12 +331,12 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-1qcr7hz css-7q9yf9"
+      className="css-1qcr7hz"
       component="div"
       wrap={false}
     >
       <div
-        className="css-1qcr7hz css-7q9yf9 css-h7r55a"
+        className="css-1qcr7hz css-h7r55a"
       >
         <GridItem
           className="css-rx1nvy"
