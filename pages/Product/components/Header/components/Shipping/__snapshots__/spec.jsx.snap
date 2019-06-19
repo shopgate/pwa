@@ -61,10 +61,12 @@ exports[`Shipping label should render free shipping 1`] = `
                 <Translate
                   className=""
                   params={Object {}}
+                  role={null}
                   string="shipping.free"
                 >
                   <span
                     className=""
+                    role={null}
                   >
                     shipping.free
                   </span>
@@ -144,10 +146,12 @@ exports[`Shipping label should render shipping price 1`] = `
                 <Translate
                   className=""
                   params={Object {}}
+                  role={null}
                   string="shipping.cost"
                 >
                   <span
                     className=""
+                    role={null}
                   >
                     shipping.cost
                     <FormatPrice

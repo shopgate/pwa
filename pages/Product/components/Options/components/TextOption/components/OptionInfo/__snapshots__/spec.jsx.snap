@@ -43,6 +43,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
     <Translate
       className=""
       params={Object {}}
+      role={null}
       string="common.required"
     />
   </GridItem>

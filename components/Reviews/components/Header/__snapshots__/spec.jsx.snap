@@ -305,10 +305,12 @@ exports[`<Header /> should render empty 1`] = `
             <Translate
               className=""
               params={Object {}}
+              role={null}
               string="reviews.no_reviews"
             >
               <span
                 className=""
+                role={null}
               >
                 reviews.no_reviews
               </span>
@@ -400,10 +402,12 @@ exports[`<Header /> should render empty 1`] = `
                                     <Translate
                                       className=""
                                       params={Object {}}
+                                      role={null}
                                       string="reviews.button_add"
                                     >
                                       <span
                                         className=""
+                                        role={null}
                                       >
                                         reviews.button_add
                                       </span>
@@ -840,10 +844,12 @@ exports[`<Header /> should render rating summary 1`] = `
                           "prominent": false,
                         }
                       }
+                      role={null}
                       string="reviews.review_count"
                     >
                       <span
                         className="css-a7xi3l"
+                        role={null}
                       >
                         reviews.review_count
                       </span>
@@ -864,10 +870,12 @@ exports[`<Header /> should render rating summary 1`] = `
             <Translate
               className="css-1nftllw"
               params={Object {}}
+              role={null}
               string="reviews.rating"
             >
               <span
                 className="css-1nftllw"
+                role={null}
               >
                 reviews.rating
                 <RatingNumber
@@ -976,10 +984,12 @@ exports[`<Header /> should render rating summary 1`] = `
                                     <Translate
                                       className=""
                                       params={Object {}}
+                                      role={null}
                                       string="reviews.button_add"
                                     >
                                       <span
                                         className=""
+                                        role={null}
                                       >
                                         reviews.button_add
                                       </span>
