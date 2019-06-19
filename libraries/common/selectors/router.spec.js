@@ -36,9 +36,9 @@ describe('Router selectors', () => {
       expect(result).toBe(false);
     });
 
-    it('should return FALSE when there is not route for the passed routeId', () => {
+    it('should return FALSE when the stack is empty', () => {
       const isLastStackEntry = makeIsLastStackEntry();
-      const result = isLastStackEntry(mockState, { routeId: 'xyz' });
+      const result = isLastStackEntry({ router: { stack: [] } }, { routeId: 'xyz' });
       expect(result).toBe(false);
     });
   });
