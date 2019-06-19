@@ -28,6 +28,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -46,6 +47,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -79,6 +81,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -115,6 +118,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -133,6 +137,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -165,6 +170,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -201,6 +207,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -219,6 +226,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -255,6 +263,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -291,6 +300,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -309,6 +319,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -342,6 +353,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -378,6 +390,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -396,6 +409,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -428,10 +442,12 @@ exports[`<FormElement /> should show the error message 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="The error text"
         >
           <span
             className=""
+            role={null}
           >
             The error text
           </span>
@@ -470,10 +486,12 @@ exports[`<FormElement /> should show the label 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="The label"
         >
           <span
             className=""
+            role={null}
           >
             The label
           </span>
@@ -494,10 +512,12 @@ exports[`<FormElement /> should show the label 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="The label"
         >
           <span
             className=""
+            role={null}
           >
             The label
           </span>
@@ -533,6 +553,7 @@ exports[`<FormElement /> should show the label 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -569,10 +590,12 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="The placeholder"
         >
           <span
             className=""
+            role={null}
           >
             The placeholder
           </span>
@@ -593,6 +616,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -626,6 +650,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>

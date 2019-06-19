@@ -64,10 +64,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="price.from"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       price.from
                       <FormatPrice
@@ -235,10 +237,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="price.from"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       price.from
                       <FormatPrice
@@ -371,10 +375,12 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="price.from"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       price.from
                       <FormatPrice

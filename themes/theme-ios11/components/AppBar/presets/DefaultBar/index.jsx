@@ -81,7 +81,12 @@ class AppBarDefault extends PureComponent {
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
-          <AppBar center={center} {...this.props} below={below} aria-hidden={this.props['aria-hidden']} />
+          <AppBar
+            center={center}
+            {...this.props}
+            below={below}
+            aria-hidden={this.props['aria-hidden']}
+          />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,

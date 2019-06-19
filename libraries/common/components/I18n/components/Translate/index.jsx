@@ -21,13 +21,14 @@ const Translate = ({
   children,
   params,
   className,
+  role,
 }, context) => {
   if (typeof string !== 'string' || string.length === 0) {
     return string;
   }
 
   if (!context.i18n) {
-    return <span className={className}>{string}</span>;
+    return <span className={className} role={role}>{string}</span>;
   }
 
   // When the input string is malformed, rather return the original string then raising an error.
@@ -58,7 +59,7 @@ const Translate = ({
   }
 
   return (
-    <span className={className}>{formatted}</span>
+    <span className={className} role={role}>{formatted}</span>
   );
 };
 
@@ -70,12 +71,14 @@ Translate.propTypes = {
     PropTypes.shape(),
     PropTypes.array,
   ]),
+  role: PropTypes.string,
 };
 
 Translate.defaultProps = {
   children: null,
   className: '',
   params: {},
+  role: null,
 };
 
 Translate.contextTypes = {

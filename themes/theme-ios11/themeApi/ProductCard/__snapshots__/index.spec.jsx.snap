@@ -270,10 +270,12 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                 null,
                               ]
                             }
+                            role={null}
                             string="-50%"
                           >
                             <span
                               className="css-pzju2o "
+                              role={null}
                             >
                               -50%
                             </span>

@@ -106,7 +106,7 @@ class Picker extends Component {
    */
   render() {
     const {
-      hasButton, sheetProps: ignore, setViewAriaHidden, ...restProps
+      hasButton, sheetProps: ignore, ...restProps
     } = this.props;
 
     return (

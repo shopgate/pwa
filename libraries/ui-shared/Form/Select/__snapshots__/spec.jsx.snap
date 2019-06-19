@@ -45,6 +45,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -63,6 +64,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -118,6 +120,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -172,6 +175,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -190,6 +194,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -245,6 +250,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -294,6 +300,7 @@ exports[`<Select /> should render select with no options 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -312,6 +319,7 @@ exports[`<Select /> should render select with no options 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -354,6 +362,7 @@ exports[`<Select /> should render select with no options 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>

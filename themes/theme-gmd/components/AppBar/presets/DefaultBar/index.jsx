@@ -10,6 +10,7 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { withRoute } from '@shopgate/engage/core';
+import { ViewContext } from 'Components/View/context';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
@@ -22,11 +23,13 @@ class AppBarDefault extends PureComponent {
   static propTypes = {
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
     title: PropTypes.string,
   };
 
   static defaultProps = {
+    'aria-hidden': null,
     title: null,
     below: null,
   };
@@ -90,7 +93,14 @@ class AppBarDefault extends PureComponent {
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
-          <AppBar left={left} center={center} right={right} {...this.props} below={below} />
+          <AppBar
+            left={left}
+            center={center}
+            right={right}
+            {...this.props}
+            below={below}
+            aria-hidden={this.props['aria-hidden']}
+          />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,
@@ -98,4 +108,18 @@ class AppBarDefault extends PureComponent {
     );
   }
 }
-export default withRoute(connect(AppBarDefault), { prop: 'route' });
+
+/**
+ * The AppBarDefaultWithContext component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
+ */
+const AppBarDefaultWithContext = props => (
+  <ViewContext.Consumer>
+    {({ ariaHidden }) => (
+      <AppBarDefault {...props} aria-hidden={ariaHidden} />
+    )}
+  </ViewContext.Consumer>
+);
+
+export default withRoute(connect(AppBarDefaultWithContext), { prop: 'route' });

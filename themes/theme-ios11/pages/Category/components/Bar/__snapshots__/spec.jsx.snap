@@ -135,10 +135,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="filter.sort.most_popular"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       filter.sort.most_popular
                                     </span>
@@ -239,10 +241,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                                 <Translate
                                                   className=""
                                                   params={Object {}}
+                                                  role={null}
                                                   string="filter.sort.most_popular"
                                                 >
                                                   <span
                                                     className=""
+                                                    role={null}
                                                   >
                                                     filter.sort.most_popular
                                                   </span>
@@ -285,10 +289,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                                 <Translate
                                                   className=""
                                                   params={Object {}}
+                                                  role={null}
                                                   string="filter.sort.price_desc"
                                                 >
                                                   <span
                                                     className=""
+                                                    role={null}
                                                   >
                                                     filter.sort.price_desc
                                                   </span>
@@ -331,10 +337,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                                 <Translate
                                                   className=""
                                                   params={Object {}}
+                                                  role={null}
                                                   string="filter.sort.price_asc"
                                                 >
                                                   <span
                                                     className=""
+                                                    role={null}
                                                   >
                                                     filter.sort.price_asc
                                                   </span>
@@ -417,10 +425,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                             <Translate
                                               className=""
                                               params={Object {}}
+                                              role={null}
                                               string="titles.filter"
                                             >
                                               <span
                                                 className=""
+                                                role={null}
                                               >
                                                 titles.filter
                                               </span>

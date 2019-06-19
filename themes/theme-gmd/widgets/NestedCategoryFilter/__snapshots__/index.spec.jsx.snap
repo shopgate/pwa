@@ -261,10 +261,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           <Translate
                             className=""
                             params={Object {}}
+                            role={null}
                             string="common.show_products"
                           >
                             <span
                               className=""
+                              role={null}
                             >
                               common.show_products
                             </span>
@@ -798,10 +800,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             <Translate
                               className=""
                               params={Object {}}
+                              role={null}
                               string="common.show_products"
                             >
                               <span
                                 className=""
+                                role={null}
                               >
                                 common.show_products
                               </span>
@@ -1391,10 +1395,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             <Translate
                               className=""
                               params={Object {}}
+                              role={null}
                               string="common.show_products"
                             >
                               <span
                                 className=""
+                                role={null}
                               >
                                 common.show_products
                               </span>
@@ -2081,10 +2087,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           <Translate
                             className=""
                             params={Object {}}
+                            role={null}
                             string="common.show_products"
                           >
                             <span
                               className=""
+                              role={null}
                             >
                               common.show_products
                             </span>
@@ -3023,10 +3031,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             <Translate
                               className=""
                               params={Object {}}
+                              role={null}
                               string="common.show_products"
                             >
                               <span
                                 className=""
+                                role={null}
                               >
                                 common.show_products
                               </span>
@@ -3302,10 +3312,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           <Translate
                             className=""
                             params={Object {}}
+                            role={null}
                             string="common.show_products"
                           >
                             <span
                               className=""
+                              role={null}
                             >
                               common.show_products
                             </span>
@@ -3833,10 +3845,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             <Translate
                               className=""
                               params={Object {}}
+                              role={null}
                               string="common.show_products"
                             >
                               <span
                                 className=""
+                                role={null}
                               >
                                 common.show_products
                               </span>

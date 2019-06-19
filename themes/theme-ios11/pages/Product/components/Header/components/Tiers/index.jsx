@@ -21,19 +21,17 @@ const Tiers = ({ price }) => {
     return null;
   }
 
-  /* eslint-disable jsx-a11y/aria-role */
   return (
     <Fragment>
       <Portal name={PRODUCT_TIERS_BEFORE} />
       <Portal name={PRODUCT_TIERS}>
         <div className={styles.wrapper}>
-          {price.tiers.map(tier => <span role="text" key={`${Object.values(tier).join('_')}`}><Tier tier={tier} price={price} /></span>)}
+          {price.tiers.map(tier => <Tier tier={tier} price={price} key={`${Object.values(tier).join('_')}`} />)}
         </div>
       </Portal>
       <Portal name={PRODUCT_TIERS_AFTER} />
     </Fragment>
   );
-  /* eslint-enable jsx-a11y/aria-role */
 };
 
 Tiers.propTypes = {

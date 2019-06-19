@@ -2077,10 +2077,12 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                           "productId": "foo",
                                         }
                                       }
+                                      role={null}
                                       string="reviews.button_all"
                                     >
                                       <span
                                         className=""
+                                        role={null}
                                       >
                                         reviews.button_all
                                       </span>

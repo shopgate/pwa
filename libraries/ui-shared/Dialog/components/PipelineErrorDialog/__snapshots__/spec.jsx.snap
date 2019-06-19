@@ -46,10 +46,12 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                 <Translate
                   className=""
                   params={Object {}}
+                  role={null}
                   string="modal.title_error"
                 >
                   <span
                     className=""
+                    role={null}
                   >
                     modal.title_error
                   </span>
@@ -68,10 +70,12 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             <Translate
               className=""
               params={Object {}}
+              role={null}
               string="Error message"
             >
               <span
                 className=""
+                role={null}
               >
                 Error message
               </span>
@@ -137,10 +141,12 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                 <Translate
                   className=""
                   params={Object {}}
+                  role={null}
                   string="modal.title_error"
                 >
                   <span
                     className=""
+                    role={null}
                   >
                     modal.title_error
                   </span>
@@ -159,10 +165,12 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             <Translate
               className=""
               params={Object {}}
+              role={null}
               string="Custom message"
             >
               <span
                 className=""
+                role={null}
               >
                 Custom message
               </span>
