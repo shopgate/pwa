@@ -27,7 +27,7 @@ export default class I18nProvider extends Component {
     super(props);
     // eslint-disable-next-line react/prop-types
     if (this.props.lang || this.props.locales) {
-      logger.warn(`===== I18nProvider deprecated =====\nI18nProvider and it's related components (@shopgate/pwa-common/component/I18n) or context types are deprecated and will be removed in @shopgate/engage v7.0.0.\nPlease use @shopgate/engage/core/helpers/i18n.\n===================================
+      logger.warn(`===== I18nProvider deprecated =====\nI18nProvider and it's related components (@shopgate/pwa-common/component/I18n) or context types are deprecated and will be removed in @shopgate/engage v7.0.0.\nPlease use { i18n } from @shopgate/engage/core.\n===================================
       `);
     }
   }
