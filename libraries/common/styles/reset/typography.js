@@ -7,7 +7,7 @@ css.global('a', {
   WebkitTextDecorationSkip: 'objects',
 });
 
-css.global('a:hover, a:focus, a:active', {
+css.global('a:hover, a:focus, a:active, [tabindex]', {
   outline: 0,
 });
 

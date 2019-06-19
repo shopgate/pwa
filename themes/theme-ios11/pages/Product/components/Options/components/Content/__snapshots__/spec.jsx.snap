@@ -11,10 +11,12 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
         Object {
           "currency": "USD",
           "price": 10,
+          "priceDifference": 0,
         },
         Object {
           "currency": "USD",
           "price": 10,
+          "priceDifference": 0,
         },
       ]
     }

@@ -24,10 +24,12 @@ jest.mock('./connector', () => (obj) => {
       {
         currency: 'USD',
         price: 10,
+        priceDifference: 0,
       },
       {
         currency: 'USD',
         price: 10,
+        priceDifference: 0,
       },
     ],
   }];
@@ -49,10 +51,12 @@ describe('<Options />', () => {
       {
         currency: 'USD',
         price: 10,
+        priceDifference: 0,
       },
       {
         currency: 'USD',
         price: 10,
+        priceDifference: 0,
       },
     ],
   }];
