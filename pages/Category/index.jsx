@@ -34,7 +34,7 @@ class Category extends PureComponent {
    */
   render() {
     return (
-      <View background={colors.background}>
+      <View background={colors.background} aria-hidden={false}>
         <Consume context={RouteContext} props={map}>
           {this.consumeRenderer}
         </Consume>

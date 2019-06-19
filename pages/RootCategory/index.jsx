@@ -22,7 +22,7 @@ class RootCategory extends PureComponent {
    */
   render() {
     return (
-      <View>
+      <View aria-hidden={false}>
         <DefaultBar title="titles.categories" />
         <CategoryList categories={this.props.categories} prerender={8} />
       </View>
