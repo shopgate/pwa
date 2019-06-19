@@ -40,7 +40,6 @@ import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import locale from '../locale';
 import * as routes from './routes';
 import themeApi from '../themeApi';
 
@@ -53,7 +52,7 @@ new ThemeConfigResolver().resolveAll();
  * @returns {JSX}
  */
 const Pages = ({ store }) => (
-  <App locale={locale} store={store}>
+  <App store={store}>
     <NavigationHandler>
       <AppContext.Provider value={appConfig}>
         <ThemeContext.Provider value={themeApi}>
