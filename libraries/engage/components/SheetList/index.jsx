@@ -54,7 +54,9 @@ class SheetList extends Component {
 
           const classes = [styles.item];
 
-          if (!isLast) {
+          if (isSelected) {
+            classes.push(styles.itemSelected);
+          } else if (!isLast) {
             classes.push(styles.itemNotLast);
           }
 

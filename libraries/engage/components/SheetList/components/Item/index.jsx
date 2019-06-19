@@ -52,15 +52,11 @@ class Item extends Component {
    */
   renderContent() {
     const {
-      isDisabled, isSelected, title, image, rightComponent,
+      isDisabled, title, image, rightComponent,
     } = this.props;
 
-    let gridStyles = styles.grid;
+    const gridStyles = styles.grid;
     let titleStyles = styles.title;
-
-    if (isSelected) {
-      gridStyles += ` ${styles.selected}`;
-    }
 
     if (isDisabled) {
       titleStyles += ` ${styles.disabled}`;
