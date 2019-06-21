@@ -36,10 +36,6 @@ describe('<FormatTime />', () => {
       </I18n.Provider>
     ));
 
-    it('should match snapshot', () => {
-      expect(renderedElement).toMatchSnapshot();
-    });
-
     it('should render formatted time', () => {
       const text = renderedElement.find('.only-time').text();
       expect(text).toBe(formattedTime);
