@@ -1,10 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FormatNumber> should format 0.1 into 0.10 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={Object {}}
+exports[`<FormatNumber> i18n not ready should return same number and className when i18n is not ready 1`] = `
+<FormatNumber
+  className="some-class"
+  fractions={2}
+  number={1}
 >
+  <span
+    className="some-class"
+  >
+    1.00
+  </span>
+</FormatNumber>
+`;
+
+exports[`<FormatNumber> i18n ready should format 0.1 into 0.10 1`] = `
+<I18nProvider>
   <div>
     <FormatNumber
       className=""
@@ -21,11 +32,8 @@ exports[`<FormatNumber> should format 0.1 into 0.10 1`] = `
 </I18nProvider>
 `;
 
-exports[`<FormatNumber> should format 1 into 1 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={Object {}}
->
+exports[`<FormatNumber> i18n ready should format 1 into 1 1`] = `
+<I18nProvider>
   <div>
     <FormatNumber
       className=""
@@ -42,11 +50,8 @@ exports[`<FormatNumber> should format 1 into 1 1`] = `
 </I18nProvider>
 `;
 
-exports[`<FormatNumber> should format 1 into 1.00 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={Object {}}
->
+exports[`<FormatNumber> i18n ready should format 1 into 1.00 1`] = `
+<I18nProvider>
   <div>
     <FormatNumber
       className=""
@@ -63,11 +68,8 @@ exports[`<FormatNumber> should format 1 into 1.00 1`] = `
 </I18nProvider>
 `;
 
-exports[`<FormatNumber> should format 1 into 1.000 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={Object {}}
->
+exports[`<FormatNumber> i18n ready should format 1 into 1.000 1`] = `
+<I18nProvider>
   <div>
     <FormatNumber
       className=""
@@ -82,18 +84,4 @@ exports[`<FormatNumber> should format 1 into 1.000 1`] = `
     </FormatNumber>
   </div>
 </I18nProvider>
-`;
-
-exports[`<FormatNumber> should return same number and className when no context is available 1`] = `
-<FormatNumber
-  className="some-class"
-  fractions={2}
-  number={1}
->
-  <span
-    className="some-class"
-  >
-    1
-  </span>
-</FormatNumber>
 `;

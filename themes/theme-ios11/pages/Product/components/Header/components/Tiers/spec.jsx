@@ -3,6 +3,12 @@ import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import { TiersUnconnected as Tiers } from './index';
 
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
+  i18n: {
+    text: input => input,
+  },
+}));
+
 describe('<Tiers />', () => {
   const store = configureStore()({});
 

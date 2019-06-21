@@ -1,34 +1,29 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 
+jest.unmock('@shopgate/engage/core/helpers/i18n');
+
 describe('<Translate />', () => {
-  let renderedElement;
-  const testLocales = {
+  const locales = {
     greeting: 'Hello {name}',
   };
 
-  /**
-   * Renders the component.
-   * @param {Object} props The component props.
-   */
-  const renderComponent = (props) => {
-    renderedElement = mount((
-      <I18n.Provider {...props}>
-        <I18n.Text string="greeting" params={{ name: 'Test' }} />
-      </I18n.Provider>
-    ));
-  };
-
-  beforeEach(() => {
-    renderComponent({
-      lang: 'en-US',
-      locales: testLocales,
-    });
+  i18n.init({
+    locales,
+    lang: 'en-US',
   });
 
   describe('Given the component was mounted to the DOM', () => {
+    let renderedElement;
+
     it('should match snapshot', () => {
+      renderedElement = mount((
+        <I18n.Provider>
+          <I18n.Text string="greeting" params={{ name: 'Test' }} />
+        </I18n.Provider>
+      ));
       expect(renderedElement).toMatchSnapshot();
     });
 
