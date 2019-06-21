@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
@@ -12,6 +11,13 @@ import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
 import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import SuggestionList from './components/SuggestionList';
 import styles from './style';
+
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
+  i18n: {
+    text: () => '',
+    ready: true,
+  },
+}));
 
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@virtuous/conductor', () => ({
@@ -45,15 +51,6 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 
 const store = createMockStore();
 
-const mockContext = {
-  context: {
-    i18n: () => ({ __: () => '' }),
-  },
-  childContextTypes: {
-    i18n: PropTypes.func.isRequired,
-  },
-};
-
 /**
  * @return {JSX}
  */
@@ -64,7 +61,7 @@ const createWrapper = () => {
   return mount((
     <Provider store={store}>
       <SearchField pageId="1234" query="foo" />
-    </Provider>), mockContext);
+    </Provider>));
 };
 
 describe('<Content />', () => {
