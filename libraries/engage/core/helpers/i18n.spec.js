@@ -1,5 +1,7 @@
 import { i18n } from './i18n';
 
+jest.unmock('./i18n');
+
 const mockedWarn = jest.fn();
 const mockedError = jest.fn();
 jest.mock('@shopgate/pwa-core/helpers', () => ({
