@@ -36,7 +36,6 @@ import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import locale from '../locale';
 import themeApi from '../themeApi';
 import * as routes from './routes';
 
@@ -47,7 +46,7 @@ new ThemeConfigResolver().resolveAll();
  * @returns {JSX}
  */
 const Pages = ({ store }) => (
-  <App locale={locale} store={store}>
+  <App store={store}>
     <NavigationHandler>
       <AppContext.Provider value={appConfig}>
         <ThemeContext.Provider value={themeApi}>
