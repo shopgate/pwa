@@ -1,6 +1,6 @@
 import { useWidgetConfig } from '../useWidgetConfig';
 import { usePageSettings } from '../usePageSettings';
-import { useSettings } from '../useSettings';
+import { getThemeSettings } from '../../config/getThemeSettings';
 import { useRoute } from '../useRoute';
 
 const WIDGET_ID = '@shopgate/test/TestWidget';
@@ -52,8 +52,8 @@ jest.mock('../usePageSettings', () => ({
   usePageSettings: jest.fn(),
 }));
 
-jest.mock('../useSettings', () => ({
-  useSettings: jest.fn(),
+jest.mock('../../config/getThemeSettings', () => ({
+  getThemeSettings: jest.fn(),
 }));
 
 describe('engage > core > hooks', () => {
@@ -61,7 +61,7 @@ describe('engage > core > hooks', () => {
     it('should return an empty object if no settings', () => {
       useRoute.mockReturnValueOnce({ pattern: '/test1' });
       usePageSettings.mockReturnValueOnce({});
-      useSettings.mockReturnValueOnce({});
+      getThemeSettings.mockReturnValueOnce({});
       const config = useWidgetConfig('@shopgate/test/TestWidget');
       expect(config).toEqual({ settings: {} });
     });
@@ -69,7 +69,7 @@ describe('engage > core > hooks', () => {
     it('should return an object having global settings only', () => {
       useRoute.mockReturnValueOnce({ pattern: '/test2' });
       usePageSettings.mockReturnValueOnce({});
-      useSettings.mockReturnValueOnce({
+      getThemeSettings.mockReturnValueOnce({
         [WIDGET_ID]: {
           test: 'foo',
         },
@@ -85,7 +85,7 @@ describe('engage > core > hooks', () => {
           test: 'bar',
         },
       });
-      useSettings.mockReturnValueOnce({
+      getThemeSettings.mockReturnValueOnce({
         '@shopgate/test/TestWidget': {
           test: 'foo',
         },
@@ -101,7 +101,7 @@ describe('engage > core > hooks', () => {
           test: 'bar',
         },
       });
-      useSettings.mockReturnValueOnce({
+      getThemeSettings.mockReturnValueOnce({
         [WIDGET_ID]: {
           test: 'foo',
         },
@@ -117,7 +117,7 @@ describe('engage > core > hooks', () => {
           test: 'bar',
         },
       });
-      useSettings.mockReturnValueOnce({
+      getThemeSettings.mockReturnValueOnce({
         [WIDGET_ID]: {
           test: 'foo',
         },

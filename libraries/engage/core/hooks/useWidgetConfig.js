@@ -2,7 +2,7 @@ import defaultsDeep from 'lodash/defaultsDeep';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
 import { usePageSettings } from './usePageSettings';
-import { useSettings } from './useSettings';
+import { getThemeSettings } from '../config/getThemeSettings';
 
 /**
  * Retrieves the widget-configuration for a specific widget by its ID and an optional index.
@@ -16,7 +16,7 @@ export function useWidgetConfig(widgetId, index) {
   const { pattern } = useRoute();
   const { pages } = themeConfig;
   const { [widgetId]: pageSettings = {} } = usePageSettings();
-  const { [widgetId]: globalSettings = {} } = useSettings();
+  const { [widgetId]: globalSettings = {} } = getThemeSettings();
   const page = pages.find(element => element.pattern === pattern);
 
   if (!page) {

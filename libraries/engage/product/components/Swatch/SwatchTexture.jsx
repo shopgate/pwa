@@ -9,7 +9,7 @@ import { item, itemTexture } from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export const SwatchTexture = memo(({
+const SwatchTextureUnwrapped = ({
   testId, imageUrl, className, onClick, valueId,
 }) => (
   <li
@@ -20,9 +20,9 @@ export const SwatchTexture = memo(({
     className={classNames(item, itemTexture, className)}
     style={{ backgroundImage: `url(${imageUrl})` }}
   />
-));
+);
 
-SwatchTexture.propTypes = {
+SwatchTextureUnwrapped.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   testId: PropTypes.string.isRequired,
   valueId: PropTypes.string.isRequired,
@@ -33,9 +33,13 @@ SwatchTexture.propTypes = {
   onClick: PropTypes.func,
 };
 
-SwatchTexture.defaultProps = {
+SwatchTextureUnwrapped.defaultProps = {
   className: null,
   onClick: noop,
 };
 
-SwatchTexture.defaultProps = {};
+SwatchTextureUnwrapped.displayName = 'SwatchTexture';
+
+export const SwatchTexture = memo(SwatchTextureUnwrapped);
+
+SwatchTexture.displayName = `Memo(${SwatchTextureUnwrapped.displayName})`;
