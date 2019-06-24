@@ -55,6 +55,11 @@
       "id": "nl-NL",
       "path": "frontend/locale/nl-NL.json",
       "type": "translations"
+    },
+    {
+      "id": "pt-PT",
+      "path": "frontend/locale/pt-PT.json",
+      "type": "translations"
     }
   ]
 }
