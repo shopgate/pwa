@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
+import { isBeta } from '@shopgate/engage/core';
+import { getProductRoute, FeaturedMedia } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
@@ -18,16 +18,24 @@ import styles from './style';
 const Item = ({ product, display }) => (
   <Link
     tagName="a"
-    href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+    href={getProductRoute(product.id)}
     className={styles}
     state={{ title: product.name }}
     tabIndex={-1}
   >
-    <ItemImage
-      productId={product.id}
-      name={product.name}
-      imageUrl={product.featuredImageUrl}
-    />
+    {isBeta() && product.featuredMedia
+      ? <FeaturedMedia
+        type={product.featuredMedia.type}
+        url={product.featuredMedia.url}
+        altText={product.featuredMedia.altText}
+      />
+      : <ItemImage
+        productId={product.id}
+        name={product.name}
+        imageUrl={product.featuredImageUrl}
+      />
+    }
+
     <ItemDiscount
       productId={product.id}
       discount={product.price.discount || null}

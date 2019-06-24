@@ -31,6 +31,7 @@ export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
 export * from '@shopgate/pwa-common-commerce/product/helpers';
 export * from './helpers/index';
 export * from './helpers/redirects';
+export * from './components/Media/helpers';
 
 // SELECTORS
 export * from '@shopgate/pwa-common-commerce/product/selectors/options';
@@ -53,6 +54,7 @@ export { default as ProductImage } from './components/ProductImage';
 export { default as MediaSlider } from './components/MediaSlider';
 export { default as QuantityPicker } from './components/QuantityPicker';
 export { default as EffectivityDates } from './components/EffectivityDates';
+export { FeaturedMedia } from './components/Media';
 export { Swatch } from './components/Swatch';
 export { Swatches } from './components/Swatches';
 export { RelationsSlider } from './components/RelationsSlider';

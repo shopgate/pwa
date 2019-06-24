@@ -87,6 +87,12 @@
       "hooks": ["shopgate.catalog.getProductRelations.v1:after"],
       "input": [{"key": "relations"}],
       "output": [{"key": "relations"}]
+    },
+    {
+      "path": "extension/mockProductMedia.js",
+      "hooks": ["shopgate.catalog.getProductMedia.v1:after"],
+      "input": [{"key": "media"}],
+      "output": [{"key": "media"}]
     }
   ]
 }
