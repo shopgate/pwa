@@ -1,5 +1,23 @@
 # Changelog
 
+## [v6.5.1](https://github.com/shopgate/pwa/compare/v6.5.0...v6.5.1) (2019-06-13)
+
+#### :rocket: Enhancement
+* [#679](https://github.com/shopgate/pwa/pull/679) Added portuguese translations to the privacy extension ([@fkloes](https://github.com/fkloes))
+* [#675](https://github.com/shopgate/pwa/pull/675) Updated dutch translations ([@fkloes](https://github.com/fkloes))
+* [#673](https://github.com/shopgate/pwa/pull/673) Action is added to clear redux entries (product, categories, etc) ([@alexbridge](https://github.com/alexbridge))
+* [#672](https://github.com/shopgate/pwa/pull/672) Add portal for scanner instructions on scanner bar ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#696](https://github.com/shopgate/pwa/pull/696) Fixed incorrect price display on the product detail page when options are involved. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#682](https://github.com/shopgate/pwa/pull/682) Support empty defaults for elements of type select in Form Builder with required flag ([@alexbridge](https://github.com/alexbridge))
+* [#681](https://github.com/shopgate/pwa/pull/681) Handle not found product on Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#676](https://github.com/shopgate/pwa/pull/676) Fixed NavDrawer Header update when user name was updated ([@fkloes](https://github.com/fkloes))
+* [#677](https://github.com/shopgate/pwa/pull/677) Fixed wrapping "goto cart" button label within the iOS theme in pt-PT ([@fkloes](https://github.com/fkloes))
+* [#665](https://github.com/shopgate/pwa/pull/665) Fixed a slider issue with swiping through zoomed slides ([@fkloes](https://github.com/fkloes))
+* [#662](https://github.com/shopgate/pwa/pull/662) Fix date type field for ui-shared/Form package ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.5.0](https://github.com/shopgate/pwa/compare/v6.4.3...v6.5.0) (2019-06-03)
 
 #### :rocket: Enhancement
