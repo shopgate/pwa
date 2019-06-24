@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MapPriceHint, OrderQuantityHint, ProductImage } from '@shopgate/engage/product';
+import { isBeta } from '@shopgate/engage/core';
+import { FeaturedMedia, MapPriceHint, OrderQuantityHint, ProductImage } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import Badge from '../Badge';
@@ -28,6 +29,7 @@ function ProductCardRender({
 }) {
   const {
     featuredImageUrl,
+    featuredMedia,
     id,
     name,
     price,
@@ -36,7 +38,16 @@ function ProductCardRender({
 
   return (
     <Link tagName="a" href={url}>
-      <ProductImage itemProp="image" src={featuredImageUrl} alt={name} />
+
+      {isBeta() && featuredMedia
+        ? <FeaturedMedia
+          type={featuredMedia.type}
+          url={featuredMedia.url}
+          altText={featuredMedia.altText}
+        />
+        : <ProductImage itemProp="image" src={featuredImageUrl} alt={name} />
+      }
+
       {(!hidePrice && price.discount > 0) && <Badge productId={id} value={-price.discount} />}
 
       {(!(hidePrice && hideRating)) && (

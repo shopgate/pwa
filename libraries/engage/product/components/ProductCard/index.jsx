@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { isBeta } from '@shopgate/engage/core';
 import { Link, Ellipsis, Portal, RatingStars, DiscountBadge } from '@shopgate/engage/components';
-import { getProductRoute, MapPriceHint, ProductImage, OrderQuantityHint } from '@shopgate/engage/product';
+import { getProductRoute, MapPriceHint, ProductImage, OrderQuantityHint, FeaturedMedia } from '@shopgate/engage/product';
 import * as portals from '@shopgate/pwa-common-commerce/category';
 import ProductGridPrice from '../ProductGridPrice';
 import styles from './style';
@@ -31,7 +32,14 @@ function ProductCard(props) {
       itemScope
       itemType="http://schema.org/Product"
     >
-      <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+      {isBeta() && product.featuredMedia
+        ? <FeaturedMedia
+          type={product.featuredMedia.type}
+          url={product.featuredMedia.url}
+          altText={product.featuredMedia.altText}
+        />
+        : <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+      }
       {!!(!hidePrice && product.price.discount) && (
         <div className={styles.badgeWrapper}>
           <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />

@@ -1,6 +1,6 @@
 import { useRoute } from '../useRoute';
 import { usePageConfig } from '../usePageConfig';
-import { useSettings } from '../useSettings';
+import { getThemeSettings } from '../../config/getThemeSettings';
 
 jest.mock('react', () => ({
   createContext: jest.fn(),
@@ -30,8 +30,8 @@ jest.mock('../useRoute', () => ({
   useRoute: jest.fn(() => ({ pattern: '/test' })),
 }));
 
-jest.mock('../useSettings', () => ({
-  useSettings: jest.fn(),
+jest.mock('../../config/getThemeSettings', () => ({
+  getThemeSettings: jest.fn(),
 }));
 
 describe('engage > core > hooks', () => {
@@ -42,14 +42,14 @@ describe('engage > core > hooks', () => {
 
     it('should return an empty object if no settings', () => {
       useRoute.mockReturnValueOnce({ pattern: '/test1' });
-      useSettings.mockReturnValueOnce({});
+      getThemeSettings.mockReturnValueOnce({});
       const config = usePageConfig();
       expect(config).toEqual({ settings: {} });
     });
 
     it('should return an object having global settings only', () => {
       useRoute.mockReturnValueOnce({ pattern: '/test2' });
-      useSettings.mockReturnValueOnce({
+      getThemeSettings.mockReturnValueOnce({
         foo: 'bar',
       });
       const config = usePageConfig();
@@ -58,7 +58,7 @@ describe('engage > core > hooks', () => {
 
     it('should override page and global by widget settings', () => {
       useRoute.mockReturnValueOnce({ pattern: '/test3' });
-      useSettings.mockReturnValueOnce({
+      getThemeSettings.mockReturnValueOnce({
         foo: 'bar',
       });
       const config = usePageConfig();

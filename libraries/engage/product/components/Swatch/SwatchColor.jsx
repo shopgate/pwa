@@ -9,7 +9,7 @@ import { item } from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export const SwatchColor = memo(({
+const SwatchColorUnwrapped = ({
   testId, color, className, onClick, valueId,
 }) => (
   <li
@@ -20,9 +20,9 @@ export const SwatchColor = memo(({
     className={classNames(item, className)}
     style={{ backgroundColor: color }}
   />
-));
+);
 
-SwatchColor.propTypes = {
+SwatchColorUnwrapped.propTypes = {
   color: PropTypes.string.isRequired,
   testId: PropTypes.string.isRequired,
   valueId: PropTypes.string.isRequired,
@@ -33,9 +33,13 @@ SwatchColor.propTypes = {
   onClick: PropTypes.func,
 };
 
-SwatchColor.defaultProps = {
+SwatchColorUnwrapped.defaultProps = {
   className: null,
   onClick: noop,
 };
 
-SwatchColor.defaultProps = {};
+SwatchColorUnwrapped.displayName = 'SwatchColor';
+
+export const SwatchColor = memo(SwatchColorUnwrapped);
+
+SwatchColor.displayName = `Memo(${SwatchColorUnwrapped.displayName})`;

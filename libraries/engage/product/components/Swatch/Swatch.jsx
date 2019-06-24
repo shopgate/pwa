@@ -18,7 +18,7 @@ const widgetId = '@shopgate/engage/product/Swatch';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export const Swatch = memo(({
+const SwatchUnwrapped = ({
   testId, maxItemCount, swatch, widgetPath, onClick,
 }) => {
   if (!isBeta()) {
@@ -87,9 +87,9 @@ export const Swatch = memo(({
       </ul>
     </SurroundPortals>
   );
-}, isEqual);
+};
 
-Swatch.propTypes = {
+SwatchUnwrapped.propTypes = {
   testId: PropTypes.string.isRequired,
   maxItemCount: PropTypes.number,
   onClick: PropTypes.func,
@@ -112,9 +112,15 @@ Swatch.propTypes = {
   ]),
 };
 
-Swatch.defaultProps = {
+SwatchUnwrapped.defaultProps = {
   maxItemCount: null,
   swatch: null,
   widgetPath: undefined,
   onClick: noop,
 };
+
+SwatchUnwrapped.displayName = 'Swatch';
+
+export const Swatch = memo(SwatchUnwrapped, isEqual);
+
+Swatch.displayName = `Memo(${SwatchUnwrapped.displayName})`;
