@@ -1,20 +1,18 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { isBeta } from '@shopgate/engage/core';
 import MediaSlider from './components/MediaSlider';
 import ImageSlider from './components/ImagesSlider';
-import connect from './connector';
 
 /**
  * The product media component.
- * @param {boolean} hasMedia hasMedia
  * @param {string} productId productId
  * @param {number} initialSlide initialSlide
  * @returns {JSX}
  */
-const Content = ({ hasMedia, productId, initialSlide }) => (
+const Content = ({ productId, initialSlide }) => (
   <Fragment>
-    {
-      hasMedia
+    {isBeta()
       ? <MediaSlider productId={productId} initialSlide={initialSlide} />
       : <ImageSlider productId={productId} initialSlide={initialSlide} />
     }
@@ -22,9 +20,8 @@ const Content = ({ hasMedia, productId, initialSlide }) => (
 );
 
 Content.propTypes = {
-  hasMedia: PropTypes.bool.isRequired,
   initialSlide: PropTypes.number.isRequired,
   productId: PropTypes.string.isRequired,
 };
 
-export default connect(Content);
+export default Content;
