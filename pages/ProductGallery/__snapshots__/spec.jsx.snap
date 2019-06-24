@@ -3,7 +3,7 @@
 exports[`<ProductGallery> page should render content and an appbar 1`] = `
 <View>
   <Connect(GalleryAppBar) />
-  <Connect(Content)
+  <Content
     initialSlide={2}
     productId="SG10"
   />
