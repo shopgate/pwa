@@ -249,3 +249,6 @@ export { getThemeConfig } from './config/getThemeConfig';
 export { getThemeSettings } from './config/getThemeSettings';
 export { getThemeColors } from './config/getThemeColors';
 export { getThemeAssets } from './config/getThemeAssets';
+
+// -------------- HELPERS -------------- //
+export { i18n } from './helpers/i18n';

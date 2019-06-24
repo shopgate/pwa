@@ -1,24 +1,28 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 
+jest.unmock('@shopgate/engage/core/helpers/i18n');
+
 describe('<FormatTime />', () => {
-  let renderedElement;
-  const testLocales = {
+  const locales = {
     greeting: 'Hello {time}',
   };
   const timestamp = new Date('Dec 25, 1999 04:25:45').getTime();
   const formattedTime = '4:25:45 AM';
   const format = 'medium';
-  const langCode = 'en-US';
+  const lang = 'en-US';
 
-  /**
-   * Renders the component.
-   * @param {Object} props The component props.
-   */
-  const renderComponent = (props) => {
-    renderedElement = mount((
-      <I18n.Provider {...props}>
+  i18n.init({
+    locales,
+    lang,
+  });
+
+  describe('Given the component was mounted to the DOM', () => {
+    // TODO: Handle snapshot test.
+    const renderedElement = mount((
+      <I18n.Provider>
         <div>
           <span className="only-time">
             <I18n.Time timestamp={timestamp} format={format} />
@@ -31,17 +35,6 @@ describe('<FormatTime />', () => {
         </div>
       </I18n.Provider>
     ));
-  };
-
-  beforeEach(() => {
-    renderComponent({
-      lang: langCode,
-      locales: testLocales,
-    });
-  });
-
-  describe('Given the component was mounted to the DOM', () => {
-    // TODO: Handle snapshot test.
 
     it('should render formatted time', () => {
       const text = renderedElement.find('.only-time').text();
