@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { isBeta } from '@shopgate/engage/core';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import { ITEM_PATH, MapPriceHint, ProductImage, OrderQuantityHint } from '@shopgate/engage/product';
+import { ITEM_PATH, MapPriceHint, ProductImage, OrderQuantityHint, FeaturedMedia } from '@shopgate/engage/product';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
@@ -34,7 +35,16 @@ const ProductCard = ({
     itemScope
     itemType="http://schema.org/Product"
   >
-    <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+
+    {isBeta() && product.featuredMedia
+      ? <FeaturedMedia
+        type={product.featuredMedia.type}
+        url={product.featuredMedia.url}
+        altText={product.featuredMedia.altText}
+      />
+      : <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+    }
+
     {!!(!hidePrice && product.price.discount) && (
       <div className={styles.badgeWrapper}>
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
