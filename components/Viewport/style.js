@@ -27,9 +27,15 @@ export const updatePageInsets = (pageInsets) => {
     safeAreaInsetBottom,
   } = pageInsets;
 
+  /**
+   * Try to use environment variables for the insets. On Android those variables are not available,
+   * on iOS devices without notch their value is 0px. To cover these different environments,
+   * the usage of the max() function implements a fallback mechanism, which is based on the values
+   * from the device constants.
+   */
   css.global(':root', {
-    '--safe-area-inset-top': `${safeAreaInsetTop}px`,
-    '--safe-area-inset-bottom': `${safeAreaInsetBottom}px`,
+    '--safe-area-inset-top': `max(${safeAreaInsetTop}px, env(safe-area-inset-top))`,
+    '--safe-area-inset-bottom': `max(${safeAreaInsetBottom}px, env(safe-area-inset-bottom))`,
   });
 };
 
