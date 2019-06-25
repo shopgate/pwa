@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
@@ -55,26 +56,24 @@ class Item extends Component {
       isDisabled, isSelected, title, image, rightComponent,
     } = this.props;
 
-    let gridStyles = styles.grid;
-    let titleStyles = styles.title;
-
-    if (isSelected) {
-      gridStyles += ` ${styles.selected}`;
-    }
-
-    if (isDisabled) {
-      titleStyles += ` ${styles.disabled}`;
-    }
+    const gridStyles = {
+      [styles.grid]: true,
+      [styles.selected]: isSelected,
+    };
+    const titleStyles = {
+      [styles.title]: true,
+      [styles.disabled]: isDisabled,
+    };
 
     return (
       <div data-test-id={this.props.testId}>
-        <Grid className={gridStyles} component="div">
+        <Grid className={classNames(gridStyles)} component="div">
           {(image !== null) && (
             <div className={styles.image}>
               {image}
             </div>
           )}
-          <Grid.Item className={titleStyles} component="div" grow={1}>
+          <Grid.Item className={classNames(titleStyles)} component="div" grow={1}>
             {title}
           </Grid.Item>
           {(rightComponent !== null) && (
@@ -106,7 +105,7 @@ class Item extends Component {
     // Wrap with a <Link> if the `link` prop is set.
     if (link) {
       return (
-        <Glow className={className}>
+        <Glow className={className} styles={{ hover: styles.glowHover }}>
           <Link href={link} onClick={onClick} state={linkState}>
             {this.renderContent()}
           </Link>
@@ -116,7 +115,7 @@ class Item extends Component {
 
     return (
       <div aria-hidden onClick={onClick} data-test-id={testId}>
-        <Glow className={className}>
+        <Glow className={className} styles={{ hover: styles.glowHover }}>
           {this.renderContent()}
         </Glow>
       </div>
