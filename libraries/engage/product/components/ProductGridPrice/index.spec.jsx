@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import ProductGridPrice from './index';
 
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
+  i18n: {
+    text: input => input,
+    price: input => input,
+    ready: true,
+  },
+}));
+
 const mockRenderOptions = {
   context: {
     i18n: () => ({

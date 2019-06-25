@@ -9,6 +9,7 @@ import {
 import MediaImage from './components/MediaImage';
 import MediaVideo from './components/MediaVideo';
 import connect from './connector';
+import { container } from './style';
 
 const typeRenders = {
   [MEDIA_TYPE_IMAGE]: MediaImage,
@@ -37,29 +38,30 @@ const MediaSlider = ({ navigate, media, 'aria-hidden': ariaHidden }) => {
     navigate(currentSlide);
   };
 
-    // Slider with video, show navigation
-  const hasVideo = media.some(m => m.type === MEDIA_TYPE_VIDEO);
-
   return (
-    <SurroundPortals portalName={PRODUCT_MEDIA}>
-      <Swiper
-        loop={media.length > 1}
-        indicators
-        onSlideChange={setCurrentSlide}
-        disabled={media.length === 1}
-        controls={hasVideo}
-        aria-hidden={ariaHidden}
-      >
-        {media.map((singleMedia) => {
-            const Type = typeRenders[singleMedia.type];
-            return (
-              <Swiper.Item key={Object.values(singleMedia).join('_')}>
-                <Type media={singleMedia} onClick={handleSlideClick} />
-              </Swiper.Item>
-            );
-          })}
-      </Swiper>
-    </SurroundPortals>
+    <div className={container}>
+      <SurroundPortals portalName={PRODUCT_MEDIA}>
+        {media &&
+          <Swiper
+            loop={media.length > 1}
+            indicators
+            onSlideChange={setCurrentSlide}
+            disabled={media.length === 1}
+            controls={media.some(m => m.type === MEDIA_TYPE_VIDEO)}
+            aria-hidden={ariaHidden}
+          >
+            {media.map((singleMedia) => {
+              const Type = typeRenders[singleMedia.type];
+              return (
+                <Swiper.Item key={Object.values(singleMedia).join('_')}>
+                  <Type media={singleMedia} onClick={handleSlideClick} />
+                </Swiper.Item>
+              );
+            })}
+          </Swiper>
+        }
+      </SurroundPortals>
+    </div>
   );
 };
 

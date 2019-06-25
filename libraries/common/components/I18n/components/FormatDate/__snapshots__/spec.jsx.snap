@@ -1,14 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FormatDate /> Given the component was mounted to the DOM should match snapshot 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
-    Object {
-      "greeting": "Hello {date}",
-    }
-  }
->
+<I18nProvider>
   <div>
     <span
       className="only-date"

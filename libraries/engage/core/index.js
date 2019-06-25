@@ -228,12 +228,8 @@ export { useRoute } from './hooks/useRoute';
 export { useTheme } from './hooks/useTheme';
 export { useCurrentProduct } from './hooks/useCurrentProduct';
 export { useNavigation } from './hooks/useNavigation';
-export { useConfig } from './hooks/useConfig';
 export { usePageConfig } from './hooks/usePageConfig';
 export { usePageSettings } from './hooks/usePageSettings';
-export { useSettings } from './hooks/useSettings';
-export { useColors } from './hooks/useColors';
-export { useAssets } from './hooks/useAssets';
 export { useWidgetConfig } from './hooks/useWidgetConfig';
 export { useWidgetSettings } from './hooks/useWidgetSettings';
 export { useWidgetStyles } from './hooks/useWidgetStyles';
@@ -252,3 +248,8 @@ export { ThemeConfigResolver } from './config/ThemeConfigResolver';
 export { isBeta } from './config/isBeta';
 export { getThemeConfig } from './config/getThemeConfig';
 export { getThemeSettings } from './config/getThemeSettings';
+export { getThemeColors } from './config/getThemeColors';
+export { getThemeAssets } from './config/getThemeAssets';
+
+// -------------- HELPERS -------------- //
+export { i18n } from './helpers/i18n';

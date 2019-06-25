@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { logger } from '@shopgate/pwa-core';
-
+import { i18n } from '@shopgate/engage/core';
 /**
  * Returns a translation and replaces placeholder with children output.
  * It is possible to either pass JSX components or plain strings as replacement for
@@ -13,7 +13,6 @@ import { logger } from '@shopgate/pwa-core';
  * @param {Array} props.children Children to use as placeholders. Must be one of the components
  *                               provided by I18n.
  * @param {string} props.className Additional classes to append to the translated wrapper element.
- * @param {Object} context The component context.
  * @returns {JSX} The translated string as JSX component.
  */
 const Translate = ({
@@ -22,12 +21,12 @@ const Translate = ({
   params,
   className,
   role,
-}, context) => {
+}) => {
   if (typeof string !== 'string' || string.length === 0) {
     return string;
   }
 
-  if (!context.i18n) {
+  if (!i18n.ready) {
     return <span className={className} role={role}>{string}</span>;
   }
 
@@ -35,7 +34,6 @@ const Translate = ({
   let formatted = string;
 
   try {
-    const { __ } = context.i18n();
     // First replace every occurrence of a translation key with a separator.
     const separator = '__%S%__';
     const childrenArray = React.Children.toArray(children);
@@ -46,7 +44,7 @@ const Translate = ({
     } : obj), { ...params });
 
     // Split the tokenized string at the separators.
-    const stringParts = __(string, values).split(separator);
+    const stringParts = i18n.text(string, values).split(separator);
 
     // Create a new array containing the separated chunks of the text and merge the substitutions.
     formatted = stringParts.reduce((result, text, index) => [
@@ -79,10 +77,6 @@ Translate.defaultProps = {
   className: '',
   params: {},
   role: null,
-};
-
-Translate.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default Translate;

@@ -1,37 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { i18n as i18nHelper } from '@shopgate/engage/core';
 import I18nProvider from './index';
 
+jest.unmock('@shopgate/engage/core/helpers/i18n');
+
 describe('<I18nProvider />', () => {
-  let renderedElement;
-  let renderedInstance;
-  const testLocales = {
-    en: {
-      greeting: 'Hello {name}',
-    },
-    de: {
-      greeting: 'Guten Tag {name}',
-    },
+  const locales = {
+    greeting: 'Guten Tag {name}',
   };
+  const lang = 'de-DE';
 
-  /**
-   * Renders the component.
-   * @param {Object} props The component props.
-   */
-  const renderComponent = (props) => {
-    renderedElement = shallow(<I18nProvider {...props} />);
-    renderedInstance = renderedElement.instance();
-  };
-
-  beforeEach(() => {
-    renderComponent({
-      lang: 'en_US',
-      locales: testLocales.en,
-    });
+  i18nHelper.init({
+    locales,
+    lang,
   });
 
   describe('Given the component was mounted to the DOM', () => {
+    let renderedElement;
+    let renderedInstance;
     it('should match snapshot', () => {
+      renderedElement = shallow(<I18nProvider />);
+      renderedInstance = renderedElement.instance();
       expect(renderedElement).toMatchSnapshot();
     });
 
@@ -43,22 +33,7 @@ describe('<I18nProvider />', () => {
     it('should translate when calling an instance method', () => {
       const { __ } = renderedInstance.getI18nInstance();
       const translated = __('greeting', { name: 'Test' });
-      expect(translated).toBe('Hello Test');
-    });
-
-    describe('Given the lang prop changes', () => {
-      beforeEach(() => {
-        renderedElement.setProps({
-          lang: 'de_DE',
-          locales: testLocales.de,
-        });
-      });
-
-      it('should translate according to changed language', () => {
-        const { __ } = renderedInstance.getI18nInstance();
-        const translated = __('greeting', { name: 'Test' });
-        expect(translated).toBe('Guten Tag Test');
-      });
+      expect(translated).toBe('Guten Tag Test');
     });
   });
 });

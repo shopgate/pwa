@@ -1,26 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { i18n } from '@shopgate/engage/core';
 /**
  * Formats a price.
  * @param {Object} props The component props.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-const FormatPrice = (props, context) => (
+const FormatPrice = props => (
   <span className={props.className}>
-    {FormatPrice.format(props, context)}
+    {FormatPrice.format(props)}
   </span>
 );
 
-FormatPrice.format = (props, context) => {
-  if (!context.i18n) {
+FormatPrice.format = (props) => {
+  if (!i18n.ready) {
     return props.price;
   }
 
-  const { _p } = context.i18n();
-
-  return _p(props.price, props.currency, props.fractions);
+  return i18n.price(props.price, props.currency, props.fractions);
 };
 
 FormatPrice.propTypes = {
@@ -33,10 +30,6 @@ FormatPrice.propTypes = {
 FormatPrice.defaultProps = {
   className: '',
   fractions: true,
-};
-
-FormatPrice.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default FormatPrice;

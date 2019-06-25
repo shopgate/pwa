@@ -36,16 +36,17 @@ import {
   routeDidUpdate,
 } from '../actions/router';
 import { receiveClientConnectivity } from '../action-creators/client';
-import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
+import { appDidStart$, appWillStart$, clientInformationDidUpdate$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
-import { isAndroid } from '../selectors/client';
+import { APP_PLATFORM } from '../constants/Configuration';
+import { getPlatform, isAndroid } from '../selectors/client';
 import {
   prepareLegacyNavigation,
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
-import { embeddedMedia } from '../collections';
+import { embeddedMedia, configuration } from '../collections';
 import { Vimeo, YouTube } from '../collections/media-providers';
 import clearUpInAppBrowser from './helpers/clearUpInAppBrowser';
 
@@ -167,5 +168,11 @@ export default function app(subscribe) {
         code,
       },
     }));
+  });
+
+  // Add platform to runtime config
+  subscribe(clientInformationDidUpdate$, ({ getState }) => {
+    const platform = getPlatform(getState());
+    configuration.set(APP_PLATFORM, platform);
   });
 }
