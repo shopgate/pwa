@@ -8,6 +8,11 @@ const disabled = css({
   color: colors.shade5,
 }).toString();
 
+const selected = css({
+  background: colors.shade7,
+  boxShadow: `-16px 0 0 0 ${colors.shade7} !important`,
+}).toString();
+
 const title = css({
   width: '100%',
   marginTop: variables.gap.xsmall,
@@ -32,9 +37,15 @@ const image = css({
   width: 40,
 }).toString();
 
+const glowHover = {
+  boxShadow: `-${variables.gap.bigger}px 0 0 ${colors.shade8}, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
+};
+
 export default {
   disabled,
+  selected,
   title,
   grid,
   image,
+  glowHover,
 };

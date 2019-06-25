@@ -18,8 +18,9 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
     color="#f7f7f7"
     styles={
       Object {
-        "container": null,
-        "glow": null,
+        "hover": Object {
+          "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+        },
       }
     }
   >
@@ -27,7 +28,6 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       aria-hidden={true}
       className="css-13azwyo"
       onClick={[Function]}
-      style={null}
     >
       <div
         className="css-1bmd5dz"
@@ -225,8 +225,9 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
       color="#f7f7f7"
       styles={
         Object {
-          "container": null,
-          "glow": null,
+          "hover": Object {
+            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+          },
         }
       }
     >
@@ -234,7 +235,6 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         aria-hidden={true}
         className="css-13azwyo"
         onClick={[Function]}
-        style={null}
       >
         <div
           className="css-1bmd5dz"
@@ -331,12 +331,12 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
     data-test-id={null}
   >
     <Grid
-      className="css-1qcr7hz"
+      className="css-1qcr7hz css-7q9yf9"
       component="div"
       wrap={false}
     >
       <div
-        className="css-1qcr7hz css-h7r55a"
+        className="css-1qcr7hz css-7q9yf9 css-h7r55a"
       >
         <GridItem
           className="css-rx1nvy"

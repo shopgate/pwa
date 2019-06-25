@@ -10,14 +10,16 @@ const item = css({
 }).toString();
 
 const itemNotLast = css({
-  boxShadow: `0 1px 0 0 ${colors.darkGray}`,
-  marginBottom: 1,
+  '&:not(:last-child)': {
+    boxShadow: `0 1px 0 0 ${colors.darkGray}`,
+    marginBottom: 1,
+  },
 }).toString();
 
 const itemSelected = css({
   background: colors.shade7,
   boxShadow: `-${variables.gap.bigger}px 0 0 ${colors.shade7}, ${variables.gap.bigger}px 0 0 ${colors.shade7}`,
-  marginBottom: 1,
+  marginTop: -1,
 }).toString();
 
 const itemWithImage = css({
