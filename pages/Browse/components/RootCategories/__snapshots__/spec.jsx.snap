@@ -147,12 +147,12 @@ exports[`<RootCategories /> should render category list with root categories fro
                   }
                 >
                   <ListItem
-                    className="css-10041rq css-1ym3l2n"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-0/.$123-123"
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-1ym3l2n css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                     >
                       <div
@@ -190,8 +190,9 @@ exports[`<RootCategories /> should render category list with root categories fro
                               color="#f7f7f7"
                               styles={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "hover": Object {
+                                    "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                  },
                                 }
                               }
                             >
@@ -199,7 +200,6 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 aria-hidden={true}
                                 className="css-13azwyo"
                                 onClick={[Function]}
-                                style={null}
                               >
                                 <div
                                   className="css-1bmd5dz"
@@ -274,12 +274,12 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-10041rq css-1ym3l2n"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-1/.$456-123"
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-1ym3l2n css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                     >
                       <div
@@ -317,8 +317,9 @@ exports[`<RootCategories /> should render category list with root categories fro
                               color="#f7f7f7"
                               styles={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "hover": Object {
+                                    "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                  },
                                 }
                               }
                             >
@@ -326,7 +327,6 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 aria-hidden={true}
                                 className="css-13azwyo"
                                 onClick={[Function]}
-                                style={null}
                               >
                                 <div
                                   className="css-1bmd5dz"
@@ -401,12 +401,12 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-10041rq css-1ym3l2n"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-2/.$789-123"
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-1ym3l2n css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                     >
                       <div
@@ -444,8 +444,9 @@ exports[`<RootCategories /> should render category list with root categories fro
                               color="#f7f7f7"
                               styles={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "hover": Object {
+                                    "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                  },
                                 }
                               }
                             >
@@ -453,7 +454,6 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 aria-hidden={true}
                                 className="css-13azwyo"
                                 onClick={[Function]}
-                                style={null}
                               >
                                 <div
                                   className="css-1bmd5dz"
@@ -528,12 +528,12 @@ exports[`<RootCategories /> should render category list with root categories fro
                     </li>
                   </ListItem>
                   <ListItem
-                    className="css-10041rq"
+                    className="css-10041rq css-171mywc"
                     isSelected={false}
                     key="child-3/.$789-456"
                   >
                     <li
-                      className="css-1p5q8vq css-10041rq css-16gj3o1"
+                      className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                       data-test-id="listItem"
                     >
                       <div
@@ -571,8 +571,9 @@ exports[`<RootCategories /> should render category list with root categories fro
                               color="#f7f7f7"
                               styles={
                                 Object {
-                                  "container": null,
-                                  "glow": null,
+                                  "hover": Object {
+                                    "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                                  },
                                 }
                               }
                             >
@@ -580,7 +581,6 @@ exports[`<RootCategories /> should render category list with root categories fro
                                 aria-hidden={true}
                                 className="css-13azwyo"
                                 onClick={[Function]}
-                                style={null}
                               >
                                 <div
                                   className="css-1bmd5dz"
