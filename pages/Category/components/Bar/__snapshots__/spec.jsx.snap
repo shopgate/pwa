@@ -69,7 +69,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                 style={
                   Object {
                     "background": "#f8f8f8",
-                    "color": "inherit",
+                    "color": "#000",
                   }
                 }
               >

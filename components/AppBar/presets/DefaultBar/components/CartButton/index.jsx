@@ -10,6 +10,7 @@ import {
   APP_BAR_CART_BUTTON_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { withWidgetSettings } from '@shopgate/engage/core';
 import Badge from '../CartBadge';
 import connect from './connector';
 import styles from './style';
@@ -24,6 +25,7 @@ class CartButton extends PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
     navigate: PropTypes.func.isRequired,
+    widgetSettings: PropTypes.shape().isRequired,
   };
 
   /**
@@ -32,6 +34,18 @@ class CartButton extends PureComponent {
   get badge() {
     const { count } = this.props;
     return () => <Badge count={count} />;
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  get style() {
+    const { buttonCartColor, buttonCartBackground } = this.props.widgetSettings;
+
+    return {
+      background: buttonCartBackground || colors.primary,
+      color: buttonCartColor || colors.primaryContrast,
+    };
   }
 
   /**
@@ -48,9 +62,8 @@ class CartButton extends PureComponent {
             <Portal name={APP_BAR_CART_BUTTON} >
               <div className={styles} style={transition[state]} aria-hidden>
                 <AppBar.Icon
-                  background={colors.primary}
+                  {...this.style}
                   badge={this.badge}
-                  color={colors.primaryContrast}
                   icon={CartIcon}
                   onClick={navigate}
                   testId="CartButton"
@@ -65,4 +78,4 @@ class CartButton extends PureComponent {
   }
 }
 
-export default connect(CartButton);
+export default withWidgetSettings(connect(CartButton), '@shopgate/engage/components/AppBar');
