@@ -241,6 +241,7 @@ export { withRoute } from './hocs/withRoute';
 export { withCurrentProduct } from './hocs/withCurrentProduct';
 export { withNavigation } from './hocs/withNavigation';
 export { withWidgetSettings } from './hocs/withWidgetSettings';
+export { withWidgetStyles } from './hocs/withWidgetStyles';
 
 // --------------- CONFIG --------------- //
 export { ThemeConfigResolver } from './config/ThemeConfigResolver';
