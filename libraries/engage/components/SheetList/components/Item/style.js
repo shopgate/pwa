@@ -37,10 +37,15 @@ const image = css({
   width: 40,
 }).toString();
 
+const glowHover = {
+  boxShadow: `-${variables.gap.bigger}px 0 0 ${colors.shade8}, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
+};
+
 export default {
   disabled,
   selected,
   title,
   grid,
   image,
+  glowHover,
 };

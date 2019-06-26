@@ -39,6 +39,11 @@ class SheetList extends Component {
       return null;
     }
 
+    const itemClasses = {
+      [styles.item]: true,
+      [styles.itemWithImage]: hasImages,
+    };
+
     return (
       <List className={className} role="listbox">
         {React.Children.map(children, (child, index) => {
@@ -49,22 +54,15 @@ class SheetList extends Component {
           const key = `child-${index}`;
           // Selected state for the child.
           const { isSelected } = child.props;
-          // Whether or not this child is the last.
-          const isLast = (index === children.length - 1);
 
-          const classes = [styles.item];
-
-          if (!isLast) {
-            classes.push(styles.itemNotLast);
-          }
-
-          if (hasImages) {
-            classes.push(styles.itemWithImage);
-          }
+          const childClasses = {
+            [styles.itemSelected]: isSelected,
+            [styles.itemNotLast]: !isSelected,
+          };
 
           return (
             <List.Item
-              className={classNames(classes)}
+              className={classNames(itemClasses, childClasses)}
               isSelected={isSelected}
               key={key}
               tabIndex={0}

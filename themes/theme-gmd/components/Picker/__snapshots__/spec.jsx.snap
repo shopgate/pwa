@@ -17,7 +17,7 @@ exports[`<Picker /> should render the picker 1`] = `
       <ForwardRef(WithForwardedRef(Picker))
         buttonComponent={[Function]}
         buttonProps={Object {}}
-        className="css-murgv5"
+        className="css-kdzjuz"
         clickDelay={150}
         label="Picker label"
         listComponent={[Function]}
@@ -28,7 +28,7 @@ exports[`<Picker /> should render the picker 1`] = `
         <Picker
           buttonComponent={[Function]}
           buttonProps={Object {}}
-          className="css-murgv5"
+          className="css-kdzjuz"
           clickDelay={150}
           disabled={false}
           duration={300}
@@ -36,7 +36,7 @@ exports[`<Picker /> should render the picker 1`] = `
             Object {
               "current": <div
                 aria-haspopup="true"
-                class="css-murgv5"
+                class="css-kdzjuz"
                 role="button"
                 tabindex="0"
               >
@@ -67,7 +67,7 @@ exports[`<Picker /> should render the picker 1`] = `
         >
           <div
             aria-haspopup={true}
-            className="css-murgv5"
+            className="css-kdzjuz"
             role="button"
             tabIndex={0}
           >

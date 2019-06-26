@@ -20,6 +20,13 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
   >
     <ForwardRef(WithForwardedRef(Glow))
       className={null}
+      styles={
+        Object {
+          "hover": Object {
+            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+          },
+        }
+      }
     >
       <Glow
         className={null}
@@ -27,15 +34,15 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         forwardedRef={null}
         styles={
           Object {
-            "container": null,
-            "glow": null,
+            "hover": Object {
+              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+            },
           }
         }
       >
         <div
           className="css-13azwyo"
           onClick={[Function]}
-          style={null}
         >
           <div
             className="css-1bmd5dz"
@@ -267,6 +274,13 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
     >
       <ForwardRef(WithForwardedRef(Glow))
         className={null}
+        styles={
+          Object {
+            "hover": Object {
+              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+            },
+          }
+        }
       >
         <Glow
           className={null}
@@ -274,15 +288,15 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           forwardedRef={null}
           styles={
             Object {
-              "container": null,
-              "glow": null,
+              "hover": Object {
+                "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+              },
             }
           }
         >
           <div
             className="css-13azwyo"
             onClick={[Function]}
-            style={null}
           >
             <div
               className="css-1bmd5dz"

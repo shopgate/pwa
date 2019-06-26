@@ -10,6 +10,7 @@ exports[`<Glow /> should render with a smile 1`] = `
       Object {
         "container": null,
         "glow": null,
+        "hover": null,
       }
     }
   >

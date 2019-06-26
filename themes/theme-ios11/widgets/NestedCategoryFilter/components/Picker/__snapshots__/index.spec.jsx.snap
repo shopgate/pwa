@@ -225,14 +225,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           role="listbox"
                         >
                           <ListItem
-                            className="css-1nftllw css-1ym3l2n"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-0/.$1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -266,14 +266,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-1nftllw"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-1/.$2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -626,14 +626,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           role="listbox"
                         >
                           <ListItem
-                            className="css-1nftllw css-1ym3l2n"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-0/.$1-1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -667,14 +667,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-1nftllw"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-1/.$1-2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1067,14 +1067,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           role="listbox"
                         >
                           <ListItem
-                            className="css-1nftllw css-1ym3l2n"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-0/.$1-1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1108,14 +1108,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-1nftllw"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-1/.$1-2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1469,14 +1469,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           role="listbox"
                         >
                           <ListItem
-                            className="css-1nftllw css-1ym3l2n"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-0/.$1-1"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
@@ -1510,14 +1510,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             </li>
                           </ListItem>
                           <ListItem
-                            className="css-1nftllw"
+                            className="css-10041rq css-171mywc"
                             isSelected={false}
                             key="child-1/.$1-2"
                             role={null}
                             tabIndex={0}
                           >
                             <li
-                              className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                              className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                               data-test-id="listItem"
                               role={null}
                             >
