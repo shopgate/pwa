@@ -44,19 +44,19 @@ describe('withMapPricing', () => {
       const component = withMapPricing(mockComponent)({
         price: {
           ...price,
-          mapPricing: {
+          mapPricing: [{
             ...mapPricing,
             price: 90,
-          },
+          }],
         },
       });
       expect(component.props).toEqual({
         price: {
           ...price,
-          mapPricing: {
+          mapPricing: [{
             ...mapPricing,
             price: 90,
-          },
+          }],
         },
       });
     });
@@ -66,7 +66,7 @@ describe('withMapPricing', () => {
       const component = withMapPricing(mockComponent)({
         price: {
           ...price,
-          mapPricing,
+          mapPricing: [{ ...mapPricing }],
         },
       });
       expect(component.props.children).toBeInstanceOf(Function);
@@ -76,7 +76,7 @@ describe('withMapPricing', () => {
       expect(children.props).toEqual({
         price: {
           ...price,
-          mapPricing,
+          mapPricing: [{ ...mapPricing }],
         },
       });
     });
@@ -88,7 +88,7 @@ describe('withMapPricing', () => {
       const component = withMapPricing(mockComponent)({
         price: {
           ...price,
-          mapPricing,
+          mapPricing: [{ ...mapPricing }],
         },
       });
       expect(component.props.children).toBeInstanceOf(Function);
@@ -99,7 +99,7 @@ describe('withMapPricing', () => {
         price: {
           ...price,
           unitPriceStriked: 120, // mutated
-          mapPricing,
+          mapPricing: [{ ...mapPricing }],
         },
       });
     });

@@ -40,6 +40,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/relations';
 export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
 export * from '@shopgate/pwa-common-commerce/product/selectors/media';
 export * from './selectors/product';
+export * from './selectors/price';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/product/streams';
