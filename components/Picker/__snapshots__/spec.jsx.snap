@@ -12,7 +12,7 @@ exports[`<Picker /> should render the picker 1`] = `
   <Picker
     buttonComponent={[Function]}
     buttonProps={Object {}}
-    className="css-murgv5"
+    className="css-kdzjuz"
     clickDelay={150}
     disabled={false}
     duration={300}
@@ -28,7 +28,7 @@ exports[`<Picker /> should render the picker 1`] = `
     value={null}
   >
     <div
-      className="css-murgv5"
+      className="css-kdzjuz"
     >
       <Button
         disabled={false}
