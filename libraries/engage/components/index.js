@@ -45,7 +45,7 @@ export { default as Widgets } from '@shopgate/pwa-common/components/Widgets';
 
 // iOS
 export { default as AppBarIOS } from '@shopgate/pwa-ui-ios/AppBar';
-export { default as BaseDialogIOS } from '@shopgate/pwa-ui-ios/AppBar';
+export { default as BaseDialogIOS } from '@shopgate/pwa-ui-ios/BaseDialog';
 
 // ANDROID
 export { default as Accordion } from '@shopgate/pwa-ui-material/Accordion';

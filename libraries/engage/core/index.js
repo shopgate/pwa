@@ -252,3 +252,4 @@ export { getThemeAssets } from './config/getThemeAssets';
 
 // -------------- HELPERS -------------- //
 export { i18n } from './helpers/i18n';
+export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
