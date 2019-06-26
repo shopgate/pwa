@@ -4,6 +4,7 @@ import { AppBarAndroid } from '@shopgate/engage/components';
 import { withWidgetSettings } from '@shopgate/engage/core';
 
 /**
+ * A wrapper component for the AppBarIcon which injects the icon color from the widget settings.
  * @param {Object} props The component props.
  * @returns {JSX}
  */

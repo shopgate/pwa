@@ -20,7 +20,7 @@ class FilterApplyButton extends PureComponent {
    */
   render() {
     const { active, onClick, widgetSettings } = this.props;
-    console.warn(widgetSettings);
+
     const { buttonTextColor, buttonTextColorDisabled } = widgetSettings;
     const buttonColor = active ? buttonTextColor : buttonTextColorDisabled;
     return (
