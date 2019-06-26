@@ -16,7 +16,7 @@ const buttonDisabled = css(button, {
 
 const buttonSelected = css(button, {
   background: colors.darkGray,
-  boxShadow: `-16px 0 0 ${colors.darkGray}`,
+  boxShadow: `-16px 0 0 ${colors.darkGray}, 16px 0 0 ${colors.darkGray}`,
   margin: '-1px 0',
   paddingTop: 17,
   paddingBottom: 17,
