@@ -9,7 +9,8 @@ import {
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { withRoute } from '@shopgate/engage/core';
+import { withRoute, withWidgetSettings } from '@shopgate/engage/core';
+import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
@@ -22,6 +23,7 @@ class AppBarDefault extends PureComponent {
   static propTypes = {
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    widgetSettings: PropTypes.shape().isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -61,6 +63,17 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
+   * @returns {Object}
+   */
+  get buttonStyle() {
+    const { buttonColor } = this.props.widgetSettings;
+
+    return {
+      color: buttonColor || 'inherit',
+    };
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
@@ -71,14 +84,18 @@ class AppBarDefault extends PureComponent {
     const { __ } = this.context.i18n();
     const title = __(this.props.title || '');
 
-    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
+    const { background, color, buttonColor } = this.props.widgetSettings;
+    const iconColor = buttonColor || 'inherit';
+
+    const left = <AppBar.Icon color={iconColor} icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
     const center = <AppBar.Title title={title} />;
     const right = (
       <Fragment>
-        <SearchButton />
+        <SearchButton color={iconColor} />
         <CartButton />
       </Fragment>
     );
+
     const below = (
       <Fragment>
         {this.props.below}
@@ -90,7 +107,15 @@ class AppBarDefault extends PureComponent {
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
-          <AppBar left={left} center={center} right={right} {...this.props} below={below} />
+          <AppBar
+            backgroundColor={background}
+            textColor={color}
+            left={left}
+            center={center}
+            right={right}
+            {...this.props}
+            below={below}
+          />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,
@@ -98,4 +123,7 @@ class AppBarDefault extends PureComponent {
     );
   }
 }
-export default withRoute(connect(AppBarDefault), { prop: 'route' });
+
+export const Icon = AppBarIcon;
+
+export default withWidgetSettings(withRoute(connect(AppBarDefault), { prop: 'route' }), '@shopgate/engage/components/AppBar');
