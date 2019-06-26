@@ -63,17 +63,6 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
-   * @returns {Object}
-   */
-  get buttonStyle() {
-    const { buttonColor } = this.props.widgetSettings;
-
-    return {
-      color: buttonColor || 'inherit',
-    };
-  }
-
-  /**
    * @returns {JSX}
    */
   render() {
@@ -84,14 +73,13 @@ class AppBarDefault extends PureComponent {
     const { __ } = this.context.i18n();
     const title = __(this.props.title || '');
 
-    const { background, color, buttonColor } = this.props.widgetSettings;
-    const iconColor = buttonColor || 'inherit';
+    const { background, color } = this.props.widgetSettings;
 
-    const left = <AppBar.Icon color={iconColor} icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
+    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
     const center = <AppBar.Title title={title} />;
     const right = (
       <Fragment>
-        <SearchButton color={iconColor} />
+        <SearchButton />
         <CartButton />
       </Fragment>
     );
@@ -124,6 +112,7 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-export const Icon = AppBarIcon;
+const WrappedComponent = withWidgetSettings(withRoute(connect(AppBarDefault), { prop: 'route' }), '@shopgate/engage/components/AppBar');
+WrappedComponent.Icon = AppBarIcon;
 
-export default withWidgetSettings(withRoute(connect(AppBarDefault), { prop: 'route' }), '@shopgate/engage/components/AppBar');
+export default WrappedComponent;

@@ -12,14 +12,19 @@ export const updateLegacyNavigationBar = (options = {}) => {
     ...options.background && { background: options.background },
     ...options.buttonColor && { buttonColor: options.buttonColor },
     ...options.buttonColorDisabled && { buttonColorDisabled: options.buttonColorDisabled },
+    ...options.statusBarBackground && { statusBarBackground: options.statusBarBackground },
   };
+
+  if (!styles.statusBarBackground && styles.background) {
+    styles.statusBarBackground = styles.background;
+  }
 
   let statusBarStyle;
 
   if (options.statusBarStyle) {
     ({ statusBarStyle } = options);
-  } else if (options.background) {
-    statusBarStyle = Color(options.background).isDark() ? 'light' : 'dark';
+  } else if (styles.statusBarBackground) {
+    statusBarStyle = Color(styles.statusBarBackground).isDark() ? 'light' : 'dark';
   }
 
   broadcastEvent({

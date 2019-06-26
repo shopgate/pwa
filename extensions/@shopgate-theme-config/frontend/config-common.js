@@ -48,13 +48,13 @@ export default {
         showAvailabilityText: true,
       },
       '@shopgate/engage/components/AppBar': {
-        background: 'yellow',
-        color: 'green',
-        buttonColor: 'red',
+        background: '#fff',
+        color: '#000',
+        buttonColor: '#000',
         buttonCartBackground: '$.colors.primary',
         buttonCartColor: '$.colors.primaryContrast',
-        buttonTextColor: 'purple',
-        buttonTextColorDisabled: 'gray',
+        buttonTextColor: '$.colors.accent',
+        buttonTextColorDisabled: '$.colors.shade4',
       },
     },
     pages: [
@@ -82,6 +82,19 @@ export default {
           {
             name: 'ShopgateProductSwatches',
             id: '@shopgate/engage/product/Swatches',
+          },
+          {
+            name: 'ShopgateAppBar',
+            id: '@shopgate/engage/components/AppBar',
+            settings: {
+              background: 'yellow',
+              color: 'green',
+              buttonColor: 'red',
+              buttonCartBackground: 'aqua',
+              buttonCartColor: 'indigo',
+              buttonTextColor: 'purple',
+              buttonTextColorDisabled: 'gray',
+            },
           },
         ],
       },

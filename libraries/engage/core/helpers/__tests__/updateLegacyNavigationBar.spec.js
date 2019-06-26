@@ -31,6 +31,7 @@ describe('updateLegacyNavigationBar()', () => {
         targetTab: 'main',
         styles: {
           ...options,
+          statusBarBackground: options.background,
         },
         statusBarStyle: 'dark',
       }],
@@ -48,8 +49,26 @@ describe('updateLegacyNavigationBar()', () => {
         targetTab: 'main',
         styles: {
           ...options,
+          statusBarBackground: options.background,
         },
         statusBarStyle: 'light',
+      }],
+    });
+  });
+
+  it('should broadcast when called with a status bar background', () => {
+    const options = {
+      statusBarBackground: '#fff',
+    };
+    updateLegacyNavigationBar(options);
+    expect(broadcastEvent).toHaveBeenCalledWith({
+      event: 'updateNavigationBarStyle',
+      parameters: [{
+        targetTab: 'main',
+        styles: {
+          ...options,
+        },
+        statusBarStyle: 'dark',
       }],
     });
   });

@@ -33,7 +33,7 @@ class CartButton extends PureComponent {
    */
   get badge() {
     const { count } = this.props;
-    return () => <Badge count={count} />;
+    return () => <Badge style={this.style.badge} count={count} />;
   }
 
   /**
@@ -43,8 +43,14 @@ class CartButton extends PureComponent {
     const { buttonCartColor, buttonCartBackground } = this.props.widgetSettings;
 
     return {
-      background: buttonCartBackground || colors.primary,
-      color: buttonCartColor || colors.primaryContrast,
+      icon: {
+        background: buttonCartBackground || colors.primary,
+        color: buttonCartColor || colors.primaryContrast,
+      },
+      badge: {
+        background: buttonCartColor || colors.primaryContrast,
+        color: buttonCartBackground || colors.primary,
+      },
     };
   }
 
@@ -62,7 +68,7 @@ class CartButton extends PureComponent {
             <Portal name={APP_BAR_CART_BUTTON} >
               <div className={styles} style={transition[state]} aria-hidden>
                 <AppBar.Icon
-                  {...this.style}
+                  {...this.style.icon}
                   badge={this.badge}
                   icon={CartIcon}
                   onClick={navigate}
