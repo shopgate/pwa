@@ -40,7 +40,12 @@ class CartButton extends PureComponent {
    * @returns {JSX}
    */
   get style() {
-    const { buttonCartColor, buttonCartBackground } = this.props.widgetSettings;
+    const {
+      buttonCartBackground,
+      buttonCartColor,
+      buttonCartBadgeBackground,
+      buttonCartBadgeColor,
+    } = this.props.widgetSettings;
 
     return {
       icon: {
@@ -48,8 +53,8 @@ class CartButton extends PureComponent {
         color: buttonCartColor || colors.primaryContrast,
       },
       badge: {
-        background: buttonCartColor || colors.primaryContrast,
-        color: buttonCartBackground || colors.primary,
+        background: buttonCartBadgeBackground,
+        color: buttonCartBadgeColor,
       },
     };
   }
