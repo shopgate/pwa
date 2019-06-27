@@ -47,15 +47,6 @@ export default {
         showProductProperties: false,
         showAvailabilityText: true,
       },
-      '@shopgate/engage/components/AppBar': {
-        background: '#fff',
-        color: '#000',
-        buttonColor: '#000',
-        buttonCartBackground: '$.colors.primary',
-        buttonCartColor: '$.colors.primaryContrast',
-        buttonTextColor: '$.colors.accent',
-        buttonTextColorDisabled: '$.colors.shade4',
-      },
     },
     pages: [
       {
@@ -90,7 +81,7 @@ export default {
               background: 'yellow',
               color: 'green',
               buttonColor: 'red',
-              buttonCartBackground: 'aqua',
+              buttonCartBackground: 'red',
               buttonCartColor: 'indigo',
               buttonTextColor: 'purple',
               buttonTextColorDisabled: 'gray',

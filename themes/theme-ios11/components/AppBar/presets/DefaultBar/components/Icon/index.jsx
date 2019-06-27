@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBarAndroid as AppBar } from '@shopgate/engage/components';
+import { AppBarIOS as AppBar } from '@shopgate/engage/components';
 import { withWidgetSettings } from '@shopgate/engage/core';
 
 /**
