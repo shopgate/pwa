@@ -23,6 +23,7 @@ class AppBarDefault extends PureComponent {
   static propTypes = {
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    updateStatusBar: PropTypes.func.isRequired,
     widgetSettings: PropTypes.shape().isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
@@ -63,6 +64,16 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
+   * Syncs the colors of the app status bar with the colors of the AppBar when the bar came visible.
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    if (prevProps.route.visible !== this.props.route.visible && this.props.route.visible === true) {
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
@@ -74,6 +85,8 @@ class AppBarDefault extends PureComponent {
     const title = __(this.props.title || '');
 
     const { background, color } = this.props.widgetSettings;
+
+    this.props.updateStatusBar(this.props.widgetSettings);
 
     const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
     const center = <AppBar.Title title={title} />;
