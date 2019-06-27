@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBarAndroid } from '@shopgate/engage/components';
+import { AppBarAndroid as AppBar } from '@shopgate/engage/components';
 import { withWidgetSettings } from '@shopgate/engage/core';
 
 /**
@@ -11,7 +11,7 @@ import { withWidgetSettings } from '@shopgate/engage/core';
 const AppBarIcon = ({ widgetSettings, ...rest }) => {
   const { buttonColor } = widgetSettings;
   return (
-    <AppBarAndroid.Icon color={buttonColor || 'inherit'} {...rest} />
+    <AppBar.Icon color={buttonColor || 'inherit'} {...rest} />
   );
 };
 
