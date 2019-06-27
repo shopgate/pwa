@@ -15,6 +15,7 @@ class Glow extends Component {
     styles: PropTypes.shape({
       container: PropTypes.shape(),
       glow: PropTypes.shape(),
+      hover: PropTypes.shape(),
     }),
   };
 
@@ -24,6 +25,7 @@ class Glow extends Component {
     styles: {
       container: null,
       glow: null,
+      hover: null,
     },
   };
 
@@ -60,12 +62,17 @@ class Glow extends Component {
    * @returns {JSX}
    */
   render() {
-    const innerInlineStyles = {
-      ...this.props.styles.glow,
-    };
-
+    let innerInlineStyles;
     if (this.state.hover) {
-      innerInlineStyles.background = this.props.color;
+      innerInlineStyles = {
+        ...this.props.styles.glow,
+        ...this.props.styles.hover,
+        background: this.props.color,
+      };
+    } else {
+      innerInlineStyles = {
+        ...this.props.styles.glow,
+      };
     }
     /* eslint-disable jsx-a11y/no-static-element-interactions,
     jsx-a11y/click-events-have-key-events */

@@ -10,7 +10,7 @@ const row = css({
 const wrapper = css({
   backgroundColor: colors.shade8,
   padding: `${variables.gap.small}px ${variables.gap.big}px`,
-  minHeight: 60,
+  minHeight: 56,
 }).toString();
 
 const element = css({
