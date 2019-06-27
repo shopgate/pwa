@@ -8,7 +8,8 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { withRoute } from '@shopgate/engage/core';
+import { withRoute, withWidgetSettings } from '@shopgate/engage/core';
+import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
 
@@ -19,6 +20,7 @@ class AppBarDefault extends PureComponent {
   static propTypes = {
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    widgetSettings: PropTypes.shape().isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -65,6 +67,8 @@ class AppBarDefault extends PureComponent {
       return null;
     }
 
+    const { background, color } = this.props.widgetSettings;
+
     const { __ } = this.context.i18n();
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const below = (
@@ -78,7 +82,13 @@ class AppBarDefault extends PureComponent {
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
-          <AppBar center={center} {...this.props} below={below} />
+          <AppBar
+            backgroundColor={background}
+            textColor={color}
+            center={center}
+            {...this.props}
+            below={below}
+          />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,
@@ -87,4 +97,7 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-export default withRoute(connect(AppBarDefault), { prop: 'route' });
+const WrappedComponent = withWidgetSettings(withRoute(connect(AppBarDefault), { prop: 'route' }), '@shopgate/engage/components/AppBar');
+WrappedComponent.Icon = AppBarIcon;
+
+export default WrappedComponent;

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
-import connect from './connector';
 import styles from './style';
 
 /**
@@ -10,7 +9,12 @@ import styles from './style';
 class CartButtonBadge extends PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
+    style: PropTypes.shape(),
   };
+
+  static defaultProps = {
+    style: null,
+  }
 
   /**
    * @returns {string}
@@ -36,9 +40,9 @@ class CartButtonBadge extends PureComponent {
     }
 
     return (
-      <div className={styles} data-test-id="badge">{this.productCount}</div>
+      <div style={this.props.style} className={styles} data-test-id="badge">{this.productCount}</div>
     );
   }
 }
 
-export default connect(CartButtonBadge);
+export default CartButtonBadge;
