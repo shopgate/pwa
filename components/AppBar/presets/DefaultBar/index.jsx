@@ -19,6 +19,7 @@ import connect from './connector';
 class AppBarDefault extends PureComponent {
   static propTypes = {
     app: PropTypes.shape().isRequired,
+    resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
@@ -66,17 +67,30 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
-   * Syncs the colors of the app status bar with the colors of the AppBar when the bar came visible.
+   * Syncs the colors of the device status bar with the colors of the AppBar when it came visible.
    * @param {Object} prevProps The previous component props.
    */
   componentDidUpdate(prevProps) {
+    if (!this.props.route.visible) {
+      // Only visible app bars trigger color syncing.
+      return;
+    }
+
     const routeDidEnter =
       prevProps.route.visible === false && this.props.route.visible === true;
-    const pwaDidEnter =
+    const engageDidEnter =
       prevProps.app.isForeground === false && this.props.app.isForeground === true;
+    const engageWillLeave =
+      prevProps.app.isForeground === true && this.props.app.isForeground === false;
 
-    if (routeDidEnter || pwaDidEnter) {
+    if (routeDidEnter || engageDidEnter) {
+      // Sync the colors of the app bar when the route with the bar came visible.
       this.props.updateStatusBar(this.props.widgetSettings);
+    }
+
+    if (engageWillLeave) {
+      // Reset the status bar when Engage goes into the background.
+      this.props.resetStatusBar();
     }
   }
 
@@ -89,7 +103,6 @@ class AppBarDefault extends PureComponent {
     }
 
     const { background, color } = this.props.widgetSettings;
-
     const { __ } = this.context.i18n();
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const below = (
@@ -118,7 +131,11 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-const WrappedComponent = withApp(withWidgetSettings(withRoute(connect(AppBarDefault), { prop: 'route' }), '@shopgate/engage/components/AppBar'));
+const WrappedComponent = withApp(withWidgetSettings(
+  withRoute(connect(AppBarDefault), { prop: 'route' }),
+  '@shopgate/engage/components/AppBar'
+));
+
 WrappedComponent.Icon = AppBarIcon;
 
 export default WrappedComponent;
