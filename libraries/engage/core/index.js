@@ -116,6 +116,7 @@ export { default as handleDeepLink } from '@shopgate/pwa-common/actions/app/hand
 export { default as handleLink } from '@shopgate/pwa-common/actions/app/handleLink';
 export { default as handlePushNotification } from '@shopgate/pwa-common/actions/app/handlePushNotification';
 export { default as registerLinkEvents } from '@shopgate/pwa-common/actions/app/registerLinkEvents';
+export { default as updateStatusBarBackground } from './actions/updateStatusBarBackground';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/app';

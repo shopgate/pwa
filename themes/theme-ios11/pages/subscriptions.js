@@ -9,8 +9,7 @@ import redirects from '@shopgate/pwa-common/collections/Redirects';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { hasScannerSupport } from '@shopgate/pwa-common/selectors/client';
-import { appWillStart$, pwaDidDisappear$ } from '@shopgate/pwa-common/streams/app';
-import { updateLegacyNavigationBar } from '@shopgate/engage/core';
+import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
 import {
   CHECKOUT_PATH,
   LOGIN_PATH,
@@ -76,10 +75,5 @@ export default function app(subscribe) {
      * It should only be used for approved BETA Client Projects
      */
     enableRedirectHandler();
-  });
-
-  subscribe(pwaDidDisappear$, () => {
-    // Reset the styling of the status bar when a legacy page opened.
-    updateLegacyNavigationBar();
   });
 }

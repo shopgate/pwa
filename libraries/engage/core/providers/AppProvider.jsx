@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
-  APP_EVENT_VIEW_DID_APPEAR,
-  APP_EVENT_VIEW_DID_DISAPPEAR,
+  APP_EVENT_VIEW_WILL_APPEAR,
+  APP_EVENT_VIEW_WILL_DISAPPEAR,
 } from '@shopgate/pwa-core/constants/AppEvents';
-import { event } from '../index';
+import event from '@shopgate/pwa-core/classes/Event';
 import AppContext from '../contexts/AppContext';
 
 /**
@@ -26,16 +26,16 @@ class AppProvider extends Component {
       isForeground: true,
     };
 
-    event.addCallback(APP_EVENT_VIEW_DID_APPEAR, this.setForeground);
-    event.addCallback(APP_EVENT_VIEW_DID_DISAPPEAR, this.setBackground);
+    event.addCallback(APP_EVENT_VIEW_WILL_APPEAR, this.setForeground);
+    event.addCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, this.setBackground);
   }
 
   /**
    * Removes the event listeners when the component unmounts.
    */
   componentWillUnmount() {
-    event.removeCallback(APP_EVENT_VIEW_DID_APPEAR, this.setForeground);
-    event.removeCallback(APP_EVENT_VIEW_DID_DISAPPEAR, this.setBackground);
+    event.removeCallback(APP_EVENT_VIEW_WILL_APPEAR, this.setForeground);
+    event.removeCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, this.setBackground);
   }
 
   /**

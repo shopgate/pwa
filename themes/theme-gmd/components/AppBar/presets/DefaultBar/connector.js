@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { makeIsLastStackEntry, updateLegacyNavigationBar } from '@shopgate/engage/core';
+import { makeIsLastStackEntry, updateStatusBarBackground } from '@shopgate/engage/core';
 
 /**
  * Create exclusive component selector.
@@ -13,17 +13,16 @@ function makeMapStateToProps() {
 }
 
 /**
+ * @param {Function} dispatch The redux dispatch function.
  * @returns {Object}
  */
-function mapDispatchToProps() {
-  return {
-    updateStatusBar: ({ color, background }) => {
-      updateLegacyNavigationBar({
-        color,
-        background,
-      });
-    },
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  updateStatusBar: ({ background }) => {
+    dispatch(updateStatusBarBackground(background));
+  },
+  resetStatusBar: () => {
+    dispatch(updateStatusBarBackground());
+  },
+});
 
 export default connect(makeMapStateToProps, mapDispatchToProps);
