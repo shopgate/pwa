@@ -5,7 +5,11 @@ import {
   closeInAppBrowser,
   onload,
 } from '@shopgate/pwa-core';
-import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
+import {
+  EVENT_KEYBOARD_WILL_CHANGE,
+  APP_EVENT_VIEW_DID_APPEAR,
+  APP_EVENT_VIEW_DID_DISAPPEAR,
+} from '@shopgate/pwa-core/constants/AppEvents';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/constants/ErrorManager';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
@@ -22,7 +26,7 @@ import {
   onUpdate,
 } from '@virtuous/conductor';
 import { UI_VISIBILITY_CHANGE } from '../constants/ui';
-import { appError, pipelineError } from '../action-creators';
+import { appError, pipelineError, pwaDidAppear, pwaDidDisappear } from '../action-creators';
 import {
   historyPush,
   routeWillPush,
@@ -60,6 +64,11 @@ export default function app(subscribe) {
     embeddedMedia.addProvider(new Vimeo());
     embeddedMedia.addProvider(new YouTube());
 
+    registerEvents([
+      APP_EVENT_VIEW_DID_APPEAR,
+      APP_EVENT_VIEW_DID_DISAPPEAR,
+    ]);
+
     dispatch(registerLinkEvents(action.location));
 
     onWillPush(({ prev, next }) => dispatch(routeWillPush(prev, next)));
@@ -83,6 +92,14 @@ export default function app(subscribe) {
     // Map the error events into the Observable streams.
     errorEmitter.addListener(SOURCE_APP, error => dispatch(appError(error)));
     errorEmitter.addListener(SOURCE_PIPELINE, error => dispatch(pipelineError(error)));
+
+    event.addCallback(APP_EVENT_VIEW_DID_APPEAR, () => {
+      dispatch(pwaDidAppear());
+    });
+
+    event.addCallback(APP_EVENT_VIEW_DID_DISAPPEAR, () => {
+      dispatch(pwaDidDisappear());
+    });
   });
 
   /**

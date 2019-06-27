@@ -61,7 +61,7 @@ export default {
     assets: {},
     pages: [
       {
-        pattern: '/item/:productId',
+        pattern: '/more',
         name: 'Product Detail Page',
         settings: {},
         widgets: [

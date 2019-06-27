@@ -1,6 +1,8 @@
 import {
   APP_WILL_START,
   APP_DID_START,
+  PWA_DID_APPEAR,
+  PWA_DID_DISAPPEAR,
   WILL_REGISTER_LINK_EVENTS,
   DID_REGISTER_LINK_EVENTS,
   OPEN_DEEP_LINK,
@@ -9,6 +11,8 @@ import {
 import {
   appWillStart,
   appDidStart,
+  pwaDidAppear,
+  pwaDidDisappear,
   willRegisterLinkEvents,
   didRegisterLinkEvents,
   openDeepLink,
@@ -32,6 +36,20 @@ describe('Action Creators: app', () => {
     it('should work as expected', () => {
       const expected = { type: APP_DID_START };
       expect(appDidStart()).toEqual(expected);
+    });
+  });
+
+  describe('pwaDidAppear()', () => {
+    it('should work as expected', () => {
+      const expected = { type: PWA_DID_APPEAR };
+      expect(pwaDidAppear()).toEqual(expected);
+    });
+  });
+
+  describe('pwaDidDisappear()', () => {
+    it('should work as expected', () => {
+      const expected = { type: PWA_DID_DISAPPEAR };
+      expect(pwaDidDisappear()).toEqual(expected);
     });
   });
 

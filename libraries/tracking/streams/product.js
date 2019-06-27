@@ -1,12 +1,12 @@
 import 'rxjs/add/operator/switchMap';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
+import { pwaDidAppear$ } from '@shopgate/pwa-common/streams/app';
 import { receivedVisibleProduct$ } from '@shopgate/pwa-common-commerce/product/streams';
 import {
   RECEIVE_PRODUCTS,
   ITEM_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
-import { pwaDidAppear$ } from './app';
 
 /**
  * Emits when product results has been received.

@@ -19,6 +19,9 @@ export const WILL_REGISTER_LINK_EVENTS = 'WILL_REGISTER_LINK_EVENTS';
 export const DID_REGISTER_LINK_EVENTS = 'DID_REGISTER_LINK_EVENTS';
 export const RESET_APP = 'RESET_APP';
 
+export const PWA_DID_APPEAR = 'PWA_DID_APPEAR';
+export const PWA_DID_DISAPPEAR = 'PWA_DID_DISAPPEAR';
+
 /**
  * ------- MENU -------
  */
