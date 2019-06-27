@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { makeIsLastStackEntry } from '@shopgate/engage/core';
+import { makeIsLastStackEntry, updateLegacyNavigationBar } from '@shopgate/engage/core';
 
 /**
  * Create exclusive component selector.
@@ -12,4 +12,19 @@ function makeMapStateToProps() {
   });
 }
 
-export default connect(makeMapStateToProps);
+/**
+ * @returns {Object}
+ */
+function mapDispatchToProps() {
+  return {
+    updateStatusBar: ({ color, background, buttonColor }) => {
+      updateLegacyNavigationBar({
+        color,
+        background,
+        buttonColor,
+      });
+    },
+  };
+}
+
+export default connect(makeMapStateToProps, mapDispatchToProps);

@@ -8,7 +8,7 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { withRoute, withWidgetSettings } from '@shopgate/engage/core';
+import { withRoute, withWidgetSettings, withApp } from '@shopgate/engage/core';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
@@ -18,8 +18,10 @@ import connect from './connector';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    app: PropTypes.shape().isRequired,
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    updateStatusBar: PropTypes.func.isRequired,
     widgetSettings: PropTypes.shape().isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
@@ -56,6 +58,25 @@ class AppBarDefault extends PureComponent {
       if (focusable) {
         focusable.focus();
       }
+    }
+
+    if (this.props.route.visible) {
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
+  }
+
+  /**
+   * Syncs the colors of the app status bar with the colors of the AppBar when the bar came visible.
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    const routeDidEnter =
+      prevProps.route.visible === false && this.props.route.visible === true;
+    const pwaDidEnter =
+      prevProps.app.isForeground === false && this.props.app.isForeground === true;
+
+    if (routeDidEnter || pwaDidEnter) {
+      this.props.updateStatusBar(this.props.widgetSettings);
     }
   }
 
@@ -97,7 +118,7 @@ class AppBarDefault extends PureComponent {
   }
 }
 
-const WrappedComponent = withWidgetSettings(withRoute(connect(AppBarDefault), { prop: 'route' }), '@shopgate/engage/components/AppBar');
+const WrappedComponent = withApp(withWidgetSettings(withRoute(connect(AppBarDefault), { prop: 'route' }), '@shopgate/engage/components/AppBar'));
 WrappedComponent.Icon = AppBarIcon;
 
 export default WrappedComponent;
