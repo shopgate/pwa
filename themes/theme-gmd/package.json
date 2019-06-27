@@ -16,6 +16,7 @@
     "e2e:user": "cypress open -P ./e2e/extensions/user"
   },
   "dependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
     "@shopgate/engage": "6.5.2",
     "@shopgate/pwa-common": "6.5.2",
     "@shopgate/pwa-common-commerce": "6.5.2",
