@@ -531,12 +531,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-1nftllw css-1ym3l2n"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -557,7 +557,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1er14hn"
+                                          className="css-18zobq6"
                                           key="1-1"
                                           onClick={[Function]}
                                           value="1-1"
@@ -569,12 +569,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-1nftllw"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -1664,12 +1664,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-1nftllw css-1ym3l2n"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -1690,7 +1690,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1er14hn"
+                                          className="css-18zobq6"
                                           key="1"
                                           onClick={[Function]}
                                           value="1"
@@ -1702,12 +1702,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-1nftllw"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -2339,12 +2339,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-1nftllw css-1ym3l2n"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -2365,7 +2365,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1er14hn"
+                                          className="css-18zobq6"
                                           key="1"
                                           onClick={[Function]}
                                           value="1"
@@ -2377,12 +2377,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-1nftllw"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -2714,12 +2714,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-1nftllw css-1ym3l2n"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -2740,7 +2740,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1er14hn"
+                                          className="css-18zobq6"
                                           key="1-1"
                                           onClick={[Function]}
                                           value="1-1"
@@ -2752,12 +2752,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-1nftllw"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -3511,12 +3511,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 className={null}
                               >
                                 <ListItem
-                                  className="css-1nftllw css-1ym3l2n"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-0/.$1"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -3549,12 +3549,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-1nftllw"
+                                  className="css-10041rq css-171mywc"
                                   isSelected={false}
                                   key="child-1/.$2"
                                 >
                                   <li
-                                    className="css-1p5q8vq css-1nftllw css-16gj3o1"
+                                    className="css-1p5q8vq css-10041rq css-171mywc css-16gj3o1"
                                     data-test-id="listItem"
                                   >
                                     <div
@@ -3575,7 +3575,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1er14hn"
+                                          className="css-18zobq6"
                                           key="2"
                                           onClick={[Function]}
                                           value="2"
