@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { makeGetProductPriceData, makeGetProductMapPrice } from '../..';
+import { makeGetProductPriceData, makeGetProductMapPrice } from '../../selectors/price';
 
 /**
  * @return {Function}

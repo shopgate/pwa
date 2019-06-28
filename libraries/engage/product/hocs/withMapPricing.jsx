@@ -21,6 +21,9 @@ const withMapPricing = PriceComponent => (props) => {
 
   // Same logic as in selector
   const mapPrice = [].concat(props.price.mapPricing)[0];
+  if (!mapPrice) {
+    return <PriceComponent {...props} />;
+  }
 
   // Show original when map is equal or less
   if (props.price.unitPrice >= mapPrice.price) {
