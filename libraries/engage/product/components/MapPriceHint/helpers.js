@@ -3,10 +3,13 @@ import { isBetween } from '@shopgate/pwa-common/helpers/date';
 /**
  * Decide is map price hint should be shown for exact product
  * @param {Object} productPrice product.price object
+ * @param {Object} mapPrice product.price.mapPricing
  * @returns {boolean}
  */
-export const showHint = (productPrice) => {
-  const { unitPrice = 0, mapPricing: { price = 0, startDate, endDate } = {} } = productPrice || {};
+export const showHint = (productPrice, mapPrice) => {
+  const { unitPrice = 0 } = productPrice || {};
+  const { price = 0, startDate, endDate } = mapPrice || {};
+
   // MAP price is active and higher than the actual price
   if (!price || price <= unitPrice) {
     return false;
