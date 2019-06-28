@@ -15,7 +15,6 @@ import styles from './style';
 const Viewport = props => (
   <main className={styles.viewport} role="main" itemScope itemProp="http://schema.org/MobileApplication">
     <LiveMessenger />
-    <Navigation entries={a11yNavEntries} />
     <header className={styles.header} id="AppHeader" />
     <section className={styles.content}>
       {props.children}
@@ -23,6 +22,7 @@ const Viewport = props => (
     <Footer>
       <TabBar />
     </Footer>
+    <Navigation entries={a11yNavEntries} />
   </main>
 );
 
