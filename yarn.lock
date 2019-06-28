@@ -126,6 +126,16 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@hot-loader/react-dom@^16.8.6":
+  version "16.8.6"
+  resolved "https://registry.yarnpkg.com/@hot-loader/react-dom/-/react-dom-16.8.6.tgz#7923ba27db1563a7cc48d4e0b2879a140df461ea"
+  integrity sha512-+JHIYh33FVglJYZAUtRjfT5qZoT2mueJGNzU5weS2CVw26BgbxGKSujlJhO85BaRbg8sqNWyW1hYBILgK3ZCgA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.13.6"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -178,6 +188,45 @@
   dependencies:
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
+
+"@shopgate/pwa-benchmark@6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-benchmark/-/pwa-benchmark-6.5.0.tgz#5ec402d41ec85631000952b477fb676e094b000b"
+  integrity sha512-HaGqsLV5BWkyxk+06YeDcNlBBVzCgXhjUMJr7cLMMcIrZ1CnWM5+3K1JZ73QJnPBg4245uiTaY2p5YFz1N43CQ==
+
+"@shopgate/pwa-common@6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-6.5.0.tgz#3553ca3f93e0b48123873c38e6cc781f7567a9ae"
+  integrity sha512-h+K3N7nU2KLIQEfdXI5pIYYVMQZNjsWoUgSrjm5JlmfUgeQjy3ctyNNfjPRQ3EdHZhfV0RfgCsbna4qQvu7M3g==
+  dependencies:
+    "@sentry/browser" "^4.6.3"
+    "@shopgate/pwa-benchmark" "6.5.0"
+    "@virtuous/conductor" "~2.3.0"
+    "@virtuous/react-conductor" "~2.3.0"
+    "@virtuous/redux-persister" "1.1.0-beta.7"
+    classnames "^2.2.5"
+    crypto-js "3.1.9-1"
+    glamor "^2.20.40"
+    gsap "^1.20.2"
+    history "^4.7.2"
+    intl-messageformat "^2.1.0"
+    jsdom "11.1.0"
+    mobile-detect "^1.4.3"
+    path-match "^1.2.4"
+    react-dotdotdot "^1.1.0"
+    react-id-swiper "~2.1.0"
+    react-inline-transition-group "^2.2.1"
+    react-portal "^3.1.0"
+    react-redux "^5.0.6"
+    recompose "^0.26.0"
+    redux "^4.0.1"
+    redux-devtools-extension "^2.13.2"
+    redux-logger "^3.0.6"
+    redux-thunk "^2.2.0"
+    reselect "^3.0.1"
+    rxjs "^5.4.3"
+    swiper "~4.5.0"
+    url-search-params "^0.10.0"
 
 "@types/node@*":
   version "11.9.4"
@@ -7921,6 +7970,14 @@ scheduler@^0.13.4:
   version "0.13.4"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.4.tgz#8fef05e7a3580c76c0364d2df5e550e4c9140298"
   integrity sha512-cvSOlRPxOHs5dAhP9yiS/6IDmVAVxmk33f0CtTJRkmUWcb1Us+t7b1wqdzoC0REw2muC9V5f1L/w5R5uKGaepA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.13.6:
+  version "0.13.6"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.6.tgz#466a4ec332467b31a91b9bf74e5347072e4cd889"
+  integrity sha512-IWnObHt413ucAYKsD9J1QShUKkbKLQQHdxRyw73sw4FN26iWr3DY/H34xGPe4nmL1DwXyWmSWmMrA9TfQbE/XQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
