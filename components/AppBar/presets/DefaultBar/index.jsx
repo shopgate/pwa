@@ -98,6 +98,22 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
+   * Maintains the status bar based on the visibility of the global SearchComponent.
+   * @param {bool} visible The current state.
+   */
+  toggleSearch = (visible) => {
+    if (!this.props.route.visible) {
+      return;
+    }
+
+    if (visible) {
+      this.props.resetStatusBar();
+    } else {
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
@@ -111,7 +127,7 @@ class AppBarDefault extends PureComponent {
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const right = (
       <Fragment>
-        <SearchButton />
+        <SearchButton onToggle={this.toggleSearch} />
         <CartButton />
       </Fragment>
     );
