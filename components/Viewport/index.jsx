@@ -17,13 +17,13 @@ const Viewport = props => (
   <main className={styles.viewport} role="main" itemScope itemProp="http://schema.org/MobileApplication">
     <LiveMessenger />
     <NavDrawer />
-    <Navigation entries={a11yNavEntries} />
     <header className={styles.header} id="AppHeader" />
     <section className={styles.content}>
       {props.children}
     </section>
     <Footer />
     <Search />
+    <Navigation entries={a11yNavEntries} />
   </main>
 );
 
