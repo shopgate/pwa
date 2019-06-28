@@ -1,25 +1,29 @@
-import defaultsDeep from 'lodash/defaultsDeep';
-import { themeName, writeToConfig } from '@shopgate/pwa-common/helpers/config';
+import { assignObjectDeep } from '@shopgate/pwa-common/helpers/data';
+import {
+  themeName,
+  writeToConfig,
+  appConfigArrayItemComparator,
+} from '@shopgate/pwa-common/helpers/config';
 import configCommon from './config-common';
 import configGmd from './config-gmd';
 import configIos from './config-ios';
 import nmaConfig from './config';
 
-let config = configCommon;
+// Write predefined configs, first: Deep merge with page and widget array item identity check.
+const config = configCommon;
 if (themeName.includes('ios')) {
-  config = defaultsDeep(configIos, config);
+  assignObjectDeep(config, configIos, true, appConfigArrayItemComparator, '$');
 } else {
-  config = defaultsDeep(configGmd, config);
+  assignObjectDeep(config, configGmd, true, appConfigArrayItemComparator, '$');
+}
+
+// Apply NMA config by theme: Deep merge with page and widget array item identity check.
+if (themeName.includes('ios')) {
+  assignObjectDeep(config, { theme: nmaConfig.themeIos }, true, appConfigArrayItemComparator, '$');
+} else {
+  assignObjectDeep(config, { theme: nmaConfig.themeGmd }, true, appConfigArrayItemComparator, '$');
 }
 
 writeToConfig(config);
-
-// Apply NMA config theme dependend
-// -> Second write, because it safely merges pages and their subsequent widget list
-if (themeName.includes('ios')) {
-  writeToConfig({ theme: nmaConfig.themeIos });
-} else {
-  writeToConfig({ theme: nmaConfig.themeGmd });
-}
 
 export default () => null;

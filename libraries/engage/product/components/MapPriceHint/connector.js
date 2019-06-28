@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
-import { getProductPriceData } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { makeGetProductPriceData, makeGetProductMapPrice } from '../../selectors/price';
 
 /**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @param {Object} props.productId product.
- * @return {Object} The extended component props.
+ * @return {Function}
  */
-const mapStateToProps = (state, props) => ({
-  price: getProductPriceData(state, props),
-});
+function makeMapStateToProps() {
+  const getProductPriceData = makeGetProductPriceData();
+  const getProductMapPrice = makeGetProductMapPrice();
 
-export default connect(mapStateToProps);
+  return (state, props) => ({
+    price: getProductPriceData(state, props),
+    mapPrice: getProductMapPrice(state, props),
+  });
+}
+
+export default connect(makeMapStateToProps);

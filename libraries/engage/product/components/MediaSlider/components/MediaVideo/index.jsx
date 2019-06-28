@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { IntersectionVisibility, VideoPlayer } from '../../../../../components';
 import { useWidgetSettings } from '../../../../../core';
 import connect from './connector';
-import { full } from '../../style';
+import { videoWrapper, videoResponsive, video } from '../../style';
 
 /**
  * The media video component.
@@ -17,16 +17,19 @@ const MediaVideo = ({ connectivityType, media }) => {
   return (
     <IntersectionVisibility>
       {({ visible, ratio, setRef }) => (
-        <div ref={setRef} className={full}>
-          <VideoPlayer
-            url={media.url}
-            playing={autoPlay && visible && ratio > 0.8}
-            width="100%"
-            height="100%"
-            controls={settings.videos.controls}
-            muted={settings.videos.muted}
-            loop={settings.videos.loop}
-          />
+        <div ref={setRef} className={videoWrapper}>
+          <div className={videoResponsive}>
+            <VideoPlayer
+              url={media.url}
+              playing={autoPlay && visible && ratio > 0.8}
+              width="100%"
+              height="100%"
+              controls={settings.videos.controls}
+              muted={settings.videos.muted}
+              loop={settings.videos.loop}
+              className={video}
+            />
+          </div>
         </div>
       )}
     </IntersectionVisibility>

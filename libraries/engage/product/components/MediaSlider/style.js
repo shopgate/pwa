@@ -5,11 +5,31 @@ export const full = css({
   height: '100%',
 });
 
+export const videoWrapper = css({
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'black',
+  paddingTop: '22%',
+});
+
+export const videoResponsive = css({
+  position: 'relative',
+  overflow: 'hidden',
+  paddingTop: '56.25%',
+});
+
+export const video = css({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+});
+
 export const container = css({
-  ...full,
   position: 'relative',
   top: 0,
   bottom: 0,
   left: 0,
   right: 0,
-}).toString();
+});
