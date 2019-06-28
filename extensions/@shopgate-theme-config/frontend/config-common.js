@@ -6,7 +6,7 @@ import {
 } from '@shopgate/pwa-common/constants/client';
 
 export default {
-  beta: false,
+  beta: true,
   theme: {
     settings: {
       product: {
@@ -73,19 +73,6 @@ export default {
           {
             name: 'ShopgateProductSwatches',
             id: '@shopgate/engage/product/Swatches',
-          },
-          {
-            name: 'ShopgateAppBar',
-            id: '@shopgate/engage/components/AppBar',
-            settings: {
-              background: 'yellow',
-              color: 'green',
-              buttonColor: 'red',
-              buttonCartBackground: 'red',
-              buttonCartColor: 'indigo',
-              buttonTextColor: 'purple',
-              buttonTextColorDisabled: 'gray',
-            },
           },
         ],
       },

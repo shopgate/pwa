@@ -23,19 +23,19 @@ class AppProvider extends Component {
     super(props);
 
     this.state = {
-      isForeground: true,
+      isVisible: true,
     };
 
-    event.addCallback(APP_EVENT_VIEW_WILL_APPEAR, this.setForeground);
-    event.addCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, this.setBackground);
+    event.addCallback(APP_EVENT_VIEW_WILL_APPEAR, this.setVisible);
+    event.addCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, this.setHidden);
   }
 
   /**
    * Removes the event listeners when the component unmounts.
    */
   componentWillUnmount() {
-    event.removeCallback(APP_EVENT_VIEW_WILL_APPEAR, this.setForeground);
-    event.removeCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, this.setBackground);
+    event.removeCallback(APP_EVENT_VIEW_WILL_APPEAR, this.setVisible);
+    event.removeCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, this.setHidden);
   }
 
   /**
@@ -45,32 +45,33 @@ class AppProvider extends Component {
   get provided() {
     return {
       appConfig,
-      isForeground: this.state.isForeground,
-      setIsForeground: this.setIsForeground,
+      isVisible: this.state.isVisible,
+      setIsVisible: this.setIsVisible,
     };
   }
 
   /**
-   * Sets the isForeground state to TRUE.
+   * Sets the isVisible state to TRUE.
    */
-  setForeground = () => {
-    this.setIsForeground(true);
+  setVisible = () => {
+    this.setIsVisible(true);
   }
 
   /**
-   * Sets the isForeground state to TRUE.
+   * Sets the isVisible state to TRUE.
    */
-  setBackground = () => {
-    this.setIsForeground(false);
+  setHidden = () => {
+    this.setIsVisible(false);
   }
 
   /**
-   * Sets the isForeground state.
+   * Sets the isVisible state. It indicates if Engage is visible,
+   * or another WebView is presented to the user.
    * @param {boolean} value The new value
    */
-  setIsForeground(value) {
+  setIsVisible(value) {
     this.setState({
-      isForeground: value,
+      isVisible: value,
     });
   }
 

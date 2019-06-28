@@ -7,8 +7,8 @@ exports[`engage > core > providers > AppProvider should initialize as expected 1
       "appConfig": Object {
         "some": "prop",
       },
-      "isForeground": true,
-      "setIsForeground": [Function],
+      "isVisible": true,
+      "setIsVisible": [Function],
     }
   }
 >

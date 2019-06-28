@@ -38,21 +38,21 @@ describe('engage > core > providers > AppProvider', () => {
     expect(wrapper.find(MockComponent).length).toEqual(1);
     expect(wrapper.prop('value')).toEqual({
       appConfig,
-      isForeground: true,
-      setIsForeground: instance.setIsForeground,
+      isVisible: true,
+      setIsVisible: instance.setIsVisible,
     });
     expect(event.addCallback).toHaveBeenCalledTimes(2);
     expect(event.addCallback).toHaveBeenCalledWith(
       APP_EVENT_VIEW_WILL_APPEAR,
-      instance.setForeground
+      instance.setVisible
     );
     expect(event.addCallback).toHaveBeenCalledWith(
       APP_EVENT_VIEW_WILL_DISAPPEAR,
-      instance.setBackground
+      instance.setHidden
     );
   });
 
-  it('should handle calls of setIsForeground() as expected', () => {
+  it('should handle calls of setIsVisible() as expected', () => {
     const wrapper = shallow((
       <AppProvider>
         <MockComponent />
@@ -60,16 +60,16 @@ describe('engage > core > providers > AppProvider', () => {
     ));
 
     const instance = wrapper.instance();
-    let { isForeground } = wrapper.prop('value');
-    expect(isForeground).toBe(true);
+    let { isVisible } = wrapper.prop('value');
+    expect(isVisible).toBe(true);
 
-    instance.setIsForeground(false);
-    ({ isForeground } = wrapper.prop('value'));
-    expect(isForeground).toBe(false);
+    instance.setIsVisible(false);
+    ({ isVisible } = wrapper.prop('value'));
+    expect(isVisible).toBe(false);
 
-    instance.setIsForeground(true);
-    ({ isForeground } = wrapper.prop('value'));
-    expect(isForeground).toBe(true);
+    instance.setIsVisible(true);
+    ({ isVisible } = wrapper.prop('value'));
+    expect(isVisible).toBe(true);
   });
 
   it('should handle event calls as expected', () => {
@@ -79,17 +79,17 @@ describe('engage > core > providers > AppProvider', () => {
       </AppProvider>
     ));
 
-    const [[, setForeground], [, setBackground]] = event.addCallback.mock.calls;
-    let { isForeground } = wrapper.prop('value');
-    expect(isForeground).toBe(true);
+    const [[, setVisible], [, setHidden]] = event.addCallback.mock.calls;
+    let { isVisible } = wrapper.prop('value');
+    expect(isVisible).toBe(true);
 
-    setBackground();
-    ({ isForeground } = wrapper.prop('value'));
-    expect(isForeground).toBe(false);
+    setHidden();
+    ({ isVisible } = wrapper.prop('value'));
+    expect(isVisible).toBe(false);
 
-    setForeground();
-    ({ isForeground } = wrapper.prop('value'));
-    expect(isForeground).toBe(true);
+    setVisible();
+    ({ isVisible } = wrapper.prop('value'));
+    expect(isVisible).toBe(true);
   });
 
   it('should remove the event listeners on unmount', () => {
@@ -105,11 +105,11 @@ describe('engage > core > providers > AppProvider', () => {
     expect(event.removeCallback).toHaveBeenCalledTimes(2);
     expect(event.removeCallback).toHaveBeenCalledWith(
       APP_EVENT_VIEW_WILL_APPEAR,
-      instance.setForeground
+      instance.setVisible
     );
     expect(event.removeCallback).toHaveBeenCalledWith(
       APP_EVENT_VIEW_WILL_DISAPPEAR,
-      instance.setBackground
+      instance.setHidden
     );
   });
 });

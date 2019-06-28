@@ -7,17 +7,6 @@ export default {
       '@shopgate/engage/product/FeaturedImage': {
         showInnerShadow: false,
       },
-      '@shopgate/engage/components/AppBar': {
-        background: '#fff',
-        color: '#000',
-        buttonColor: 'inherit',
-        buttonCartColor: '$.colors.primaryContrast',
-        buttonCartBackground: '$.colors.primary',
-        buttonCartBadgeColor: '$.colors.primary',
-        buttonCartBadgeBackground: '$.colors.primaryContrast',
-        buttonTextColor: '$.colors.accent',
-        buttonTextColorDisabled: '$.colors.shade4',
-      },
     },
     typography: {
       family: 'Roboto, Arial, sans-serif',

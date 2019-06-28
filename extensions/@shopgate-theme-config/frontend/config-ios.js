@@ -7,17 +7,6 @@ export default {
       '@shopgate/engage/product/FeaturedImage': {
         showInnerShadow: true,
       },
-      '@shopgate/engage/components/AppBar': {
-        background: '#fff',
-        color: '#000',
-        buttonColor: 'inherit',
-        buttonCartColor: 'inherit',
-        buttonCartBackground: 'inherit',
-        buttonCartBadgeColor: '$.colors.primaryContrast',
-        buttonCartBadgeBackground: '$.colors.primary',
-        buttonTextColor: '$.colors.accent',
-        buttonTextColorDisabled: '$.colors.shade4',
-      },
     },
     typography: {
       family: 'system, -apple-system, "SF Pro Display", "Helvetica Neue", "Lucida Grande"',
@@ -59,28 +48,6 @@ export default {
     },
     shadows: {},
     assets: {},
-    pages: [
-      {
-        pattern: '/more',
-        name: 'Product Detail Page',
-        settings: {},
-        widgets: [
-          {
-            name: 'ShopgateAppBar',
-            id: '@shopgate/engage/components/AppBar',
-            settings: {
-              background: 'yellow',
-              color: 'green',
-              buttonColor: 'red',
-              buttonCartColor: 'indigo',
-              buttonTextColor: 'purple',
-              buttonTextColorDisabled: 'gray',
-              buttonCartBadgeColor: 'pink',
-              buttonCartBadgeBackground: 'aqua',
-            },
-          },
-        ],
-      },
-    ],
+    pages: [],
   },
 };
