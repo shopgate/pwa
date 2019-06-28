@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '../../../core';
 import LiveMessage from '../LiveMessage';
@@ -24,7 +24,7 @@ const LiveMessenger = ({ id }) => {
     message: '', params: null,
   });
 
-  const handleMessage = useMemo(() => (message, options) => {
+  const handleMessage = useCallback((message, options) => {
     const { type = LIVE_MESSAGE_TYPE_POLITE, id: instanceId = null, params = null } = options;
 
     if (id !== instanceId) {
