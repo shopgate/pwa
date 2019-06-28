@@ -4,11 +4,10 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { ProductContext } from '../../context';
 import Content from './components/Content';
 import Option from './components/Option';
-import PriceDifference from './components/PriceDifference';
 import TextOption from './components/TextOption';
 
 // Export for theme api
-export { TextOption, Option as SelectOption, PriceDifference };
+export { TextOption, Option as SelectOption };
 
 /**
  * The Product Options component.
