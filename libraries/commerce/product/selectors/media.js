@@ -29,7 +29,7 @@ export const getProductMedia = createSelector(
     if (!productMedia || productMedia.isFetching) {
       return null;
     }
-    if (!types) {
+    if (!types || !productMedia.media) {
       return productMedia.media;
     }
     return productMedia.media.filter(media => types.includes(media.type));
