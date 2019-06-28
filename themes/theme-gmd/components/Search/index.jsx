@@ -50,6 +50,13 @@ class Search extends Component {
   }
 
   /**
+   * Removes the TOGGLE_SEARCH event listener on unmount.
+   */
+  componentWillUnmount() {
+    UIEvents.off(TOGGLE_SEARCH, this.toggle);
+  }
+
+  /**
    * Close the search.
    */
   close = () => {
@@ -137,7 +144,6 @@ class Search extends Component {
    */
   handleClick = (event) => {
     event.preventDefault();
-    console.warn(event);
     UIEvents.emit(TOGGLE_SEARCH, false);
   }
 
