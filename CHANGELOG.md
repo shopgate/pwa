@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.5.2](https://github.com/shopgate/pwa/compare/v6.5.1...v6.5.2) (2019-06-24)
+
+#### :bug: Bug Fix
+* [#708](https://github.com/shopgate/pwa/pull/708) Portuguese pt-PT locale for user privacy labels ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.5.1](https://github.com/shopgate/pwa/compare/v6.5.0...v6.5.1) (2019-06-13)
 
 #### :rocket: Enhancement
