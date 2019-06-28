@@ -1,5 +1,12 @@
 # Changelog
 
+## [v6.5.3](https://github.com/shopgate/pwa/compare/...v6.5.3) (2019-06-28)
+
+#### :bug: Bug Fix
+* [#714](https://github.com/shopgate/pwa/pull/714) Applied react-hot-loader patch to the themes ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#713](https://github.com/shopgate/pwa/pull/713) Changed shopify-webcheckout url logic to accept a full domain over the alias for the web-login. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
 ## [v6.5.2](https://github.com/shopgate/pwa/compare/v6.5.1...v6.5.2) (2019-06-24)
 
 #### :bug: Bug Fix
