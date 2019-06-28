@@ -79,9 +79,9 @@ class AppBarDefault extends PureComponent {
     const routeDidEnter =
       prevProps.route.visible === false && this.props.route.visible === true;
     const engageDidEnter =
-      prevProps.app.isForeground === false && this.props.app.isForeground === true;
+      prevProps.app.isVisible === false && this.props.app.isVisible === true;
     const engageWillLeave =
-      prevProps.app.isForeground === true && this.props.app.isForeground === false;
+      prevProps.app.isVisible === true && this.props.app.isVisible === false;
 
     if (routeDidEnter || engageDidEnter) {
       // Sync the colors of the app bar when the route with the bar came visible.
