@@ -37,6 +37,7 @@ exports[`<Header /> should render empty 1`] = `
         productId="foo"
       >
         <div
+          aria-hidden={true}
           className={
             Object {
               "data-css-1ppx0ok": "",
@@ -296,7 +297,6 @@ exports[`<Header /> should render empty 1`] = `
             </Connect(Link)>
           </AverageRating>
           <div
-            aria-hidden={true}
             className={
               Object {
                 "data-css-108dizf": "",
