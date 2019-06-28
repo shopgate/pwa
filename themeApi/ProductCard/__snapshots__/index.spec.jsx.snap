@@ -681,6 +681,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                   >
                     <MapPriceHint
                       dispatch={[Function]}
+                      mapPrice={null}
                       price={
                         Object {
                           "currency": "EUR",
