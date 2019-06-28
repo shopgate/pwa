@@ -10,7 +10,6 @@ import {
   getProductPriceAddition,
   getProductTotalPrice,
   isFullPriceAvailable,
-  getProductMapPrice,
 } from './price';
 import {
   basicProductState,
@@ -191,25 +190,6 @@ describe('Product.Price selectors', () => {
 
       // Product options are still available.
       expect(getRawProductOptions(state, props).length).toBe(1);
-    });
-  });
-
-  describe('getProductMapPrice', () => {
-    it('Should return null for not found product', () => {
-      const price = getProductMapPrice(basicProductState, { productId: 100 });
-      expect(price).toBeNull();
-    });
-    it('Should return null for map price', () => {
-      const price = getProductMapPrice(basicProductState, { productId: 914 });
-      expect(price).toBeNull();
-    });
-    it('Should return map price', () => {
-      const price = getProductMapPrice(basicProductState, { productId: 913 });
-      expect(price).toEqual({
-        startDate: '2019-04-01T10:00:00.000Z',
-        endDate: '2019-04-10T10:00:00.000Z',
-        price: 10,
-      });
     });
   });
 });

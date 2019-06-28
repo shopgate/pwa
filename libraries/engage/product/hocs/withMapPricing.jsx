@@ -19,15 +19,21 @@ const withMapPricing = PriceComponent => (props) => {
     return <PriceComponent {...props} />;
   }
 
+  // Same logic as in selector
+  const mapPrice = [].concat(props.price.mapPricing)[0];
+  if (!mapPrice) {
+    return <PriceComponent {...props} />;
+  }
+
   // Show original when map is equal or less
-  if (props.price.unitPrice >= props.price.mapPricing.price) {
+  if (props.price.unitPrice >= mapPrice.price) {
     return <PriceComponent {...props} />;
   }
 
   return (
     <TimeBoundary
-      start={new Date(props.price.mapPricing.startDate)}
-      end={new Date(props.price.mapPricing.endDate)}
+      start={new Date(mapPrice.startDate)}
+      end={new Date(mapPrice.endDate)}
     >
       {({ between }) => {
         if (!between) {
@@ -38,7 +44,7 @@ const withMapPricing = PriceComponent => (props) => {
             {...props}
             price={{
               ...props.price,
-              unitPriceStriked: props.price.mapPricing.price,
+              unitPriceStriked: mapPrice.price,
             }}
           />
         );

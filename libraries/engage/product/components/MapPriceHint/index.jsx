@@ -20,7 +20,7 @@ const defaultStyle = css({
  * The Product Map Price Hint component.
  * @return {JSX}
  */
-const MapPriceHint = ({ price }) => {
+const MapPriceHint = ({ price, mapPrice }) => {
   if (!isBeta()) {
     return null;
   }
@@ -34,10 +34,10 @@ const MapPriceHint = ({ price }) => {
 
   return (
     <SurroundPortals portalName={PRODUCT_MAP_PRICE}>
-      {showHint(price) &&
+      {showHint(price, mapPrice) &&
         <TimeBoundary
-          start={new Date(price.mapPricing.startDate)}
-          end={new Date(price.mapPricing.endDate)}
+          start={new Date(mapPrice.startDate)}
+          end={new Date(mapPrice.endDate)}
         >
           {({ between }) => (
             between &&
@@ -53,10 +53,12 @@ const MapPriceHint = ({ price }) => {
 };
 
 MapPriceHint.propTypes = {
+  mapPrice: PropTypes.shape(),
   price: PropTypes.shape(),
 };
 
 MapPriceHint.defaultProps = {
+  mapPrice: null,
   price: null,
 };
 
