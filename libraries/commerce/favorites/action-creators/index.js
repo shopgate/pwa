@@ -4,10 +4,6 @@ import {
   REQUEST_FAVORITES,
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  REQUEST_SYNC_FAVORITES,
-  RECEIVE_SYNC_FAVORITES,
-  ERROR_SYNC_FAVORITES,
-  IDLE_SYNC_FAVORITES,
   ERROR_FAVORITES,
 } from '../constants';
 
@@ -73,32 +69,4 @@ export const receiveFavorites = (products, requestTimestamp) => ({
  */
 export const requestFavorites = () => ({
   type: REQUEST_FAVORITES,
-});
-/**
- * Request sync action.
- * @returns {Object}
- */
-export const requestSyncFavorites = () => ({
-  type: REQUEST_SYNC_FAVORITES,
-});
-/**
- * Receive sync action.
- * @returns {Object}
- */
-export const receiveSyncFavorites = () => ({
-  type: RECEIVE_SYNC_FAVORITES,
-});
-/**
- * Error sync action.
- * @returns {Object}
- */
-export const errorSyncFavorites = () => ({
-  type: ERROR_SYNC_FAVORITES,
-});
-/**
- * Idle sync action.
- * @returns {Object}
- */
-export const idleSyncFavorites = () => ({
-  type: IDLE_SYNC_FAVORITES,
 });

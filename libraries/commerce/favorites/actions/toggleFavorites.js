@@ -5,61 +5,14 @@ import * as pipelines from '../constants/Pipelines';
 import {
   requestAddFavorites,
   requestRemoveFavorites,
-  requestSyncFavorites,
-  receiveSyncFavorites,
-  errorSyncFavorites,
-  idleSyncFavorites,
   errorFavorites,
 } from '../action-creators';
 import {
   getProductRelativesOnFavorites,
-  getFavoritesProductsIds,
   getFavoritesCount,
 } from '../selectors/';
 
 const { favorites: { limit = 100 } = {} } = appConfig;
-
-let syncPendingCount = 0;
-let syncInProgress = false;
-
-/**
- * Sends putFavorites requests. Maintains queue and throttling.
- * @returns {Function}
- */
-export const requestSync = () => (dispatch, getState) => {
-  // Syncing in progress. Will request next one on response.
-  if (syncInProgress) {
-    return;
-  }
-  // Nothing to sync. Dispatching idle to trigger stream.
-  if (!syncPendingCount) {
-    dispatch(idleSyncFavorites());
-    return;
-  }
-
-  // Reset pending count since we always send entire list.
-  // Whatever was added before is being synced now.
-  syncPendingCount = 0;
-  syncInProgress = true;
-
-  const state = getState();
-  dispatch(requestSyncFavorites());
-
-  new PipelineRequest(pipelines.SHOPGATE_USER_PUT_FAVORITES)
-    .setInput({ productIds: getFavoritesProductsIds(state) })
-    .setRetries(0)
-    .dispatch()
-    .then(() => {
-      dispatch(receiveSyncFavorites());
-    })
-    .catch(() => {
-      dispatch(errorSyncFavorites());
-    })
-    .then(() => {
-      syncInProgress = false;
-      dispatch(requestSync());
-    });
-};
 
 /**
  * Add favorites action.
@@ -67,8 +20,6 @@ export const requestSync = () => (dispatch, getState) => {
  * @returns {Promise} PipelineRequest dispatch.
  */
 const addFavorites = productId => (dispatch, getState) => {
-  dispatch(requestAddFavorites(productId));
-
   const count = getFavoritesCount(getState());
   if (count > limit) {
     const error = new Error('Limit exceeded');
@@ -77,8 +28,16 @@ const addFavorites = productId => (dispatch, getState) => {
     return;
   }
 
-  syncPendingCount += 1;
-  dispatch(requestSync());
+  new PipelineRequest(pipelines.SHOPGATE_USER_ADD_FAVORITES)
+    .setInput({ productId })
+    .setRetries(0)
+    .dispatch()
+    .then(() => {
+      dispatch(requestAddFavorites(productId));
+    })
+    .catch((error) => {
+      dispatch(errorFavorites(productId, error));
+    });
 };
 /**
  * Removes single product from favorites.
@@ -86,9 +45,16 @@ const addFavorites = productId => (dispatch, getState) => {
  * @param {Function} dispatch Dispatch function.
  */
 const removeProductFromFavorites = (productId, dispatch) => {
-  dispatch(requestRemoveFavorites(productId));
-  syncPendingCount += 1;
-  dispatch(requestSync());
+  new PipelineRequest(pipelines.SHOPGATE_USER_DELETE_FAVORITES)
+    .setInput({ productId })
+    .setRetries(0)
+    .dispatch()
+    .then(() => {
+      dispatch(requestRemoveFavorites(productId));
+    })
+    .catch((error) => {
+      dispatch(errorFavorites(productId, error));
+    });
 };
 
 /**
