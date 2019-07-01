@@ -1,5 +1,32 @@
 # Changelog
 
+## [v6.6.0](https://github.com/shopgate/pwa/compare/...v6.6.0) (2019-07-01)
+
+#### :rocket: Enhancement
+* [#704](https://github.com/shopgate/pwa/pull/704) Support featured media for product list and product details page ([@alexbridge](https://github.com/alexbridge))
+* [#701](https://github.com/shopgate/pwa/pull/701) Added functionality to access theme config entries in an easy fashion ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#684](https://github.com/shopgate/pwa/pull/684) Support Swatches on Product Details Page ([@alexbridge](https://github.com/alexbridge))
+* [#678](https://github.com/shopgate/pwa/pull/678) Added configurable swatches to the product list page ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#668](https://github.com/shopgate/pwa/pull/668) Support product effectivity dates on Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#663](https://github.com/shopgate/pwa/pull/663) Add hint for minimum / maximum order quantity ([@alexbridge](https://github.com/alexbridge))
+* [#657](https://github.com/shopgate/pwa/pull/657) Added support for grouped Product Properties ([@devbucket](https://github.com/devbucket))
+* [#660](https://github.com/shopgate/pwa/pull/660) Added support for videos on the Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#650](https://github.com/shopgate/pwa/pull/650) Min/Max order quantities are supported on the Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#653](https://github.com/shopgate/pwa/pull/653) Added hooks to access the theme config ([@devbucket](https://github.com/devbucket))
+* [#649](https://github.com/shopgate/pwa/pull/649) Added client connectivity information to Redux ([@fkloes](https://github.com/fkloes))
+* [#642](https://github.com/shopgate/pwa/pull/642) Added support for long product names ([@devbucket](https://github.com/devbucket))
+* [#647](https://github.com/shopgate/pwa/pull/647) Added configuration hooks to access global and page configuration. ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#706](https://github.com/shopgate/pwa/pull/706) SheetList item correct styling ([@alexbridge](https://github.com/alexbridge))
+* [#691](https://github.com/shopgate/pwa/pull/691) Prevent getProductMedia pipeline from being called in none beta environment. ([@devbucket](https://github.com/devbucket))
+* [#690](https://github.com/shopgate/pwa/pull/690) Fixed an issue with missing dependencies for the react-player module. ([@devbucket](https://github.com/devbucket))
+* [#688](https://github.com/shopgate/pwa/pull/688) Fixed secure config writer to correctly merge arrays ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :nail_care: Polish
+* [#703](https://github.com/shopgate/pwa/pull/703) Polished the `Swatch` components to make them show up properly in the React DOM. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
 ## [v6.5.3](https://github.com/shopgate/pwa/compare/v6.5.2...v6.5.3) (2019-06-28)
 
 #### :bug: Bug Fix
