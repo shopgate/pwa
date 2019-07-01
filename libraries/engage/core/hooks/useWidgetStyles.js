@@ -1,7 +1,9 @@
 import { useWidgetConfig } from './useWidgetConfig';
 
 /**
- * Retrieves the styles for a specific widget by its id. Returns an empty object when none exist.
+ * Retrieves the styles for a specific widget by its id. Returns an empty object when no styles
+ * exist.
+ *
  * @param {string} widgetId The ID of the widget to look for.
  * @param {number|undefined} [index=0] The optional index of the widget.
  * @returns {Object}

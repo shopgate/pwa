@@ -1,5 +1,5 @@
 import defaultsDeep from 'lodash/defaultsDeep';
-import { getThemeConfig } from './getThemeConfig';
+import { getThemeSettings } from './getThemeSettings';
 import { getPageConfig } from './getPageConfig';
 
 /**
@@ -14,12 +14,12 @@ import { getPageConfig } from './getPageConfig';
  * @returns {Object}
  */
 export function getPageSettings(pagePattern, key = null) {
-  const { settings: globalThemeSettings = {} } = getThemeConfig();
+  const inheritedThemeSettings = getThemeSettings(key);
   const { settings: localPageSettings = {} } = getPageConfig(pagePattern);
 
   // When providing a key, it automatically inherits settings from the global scope
   if (key) {
-    return defaultsDeep(localPageSettings[key] || {}, globalThemeSettings[key] || {});
+    return defaultsDeep(localPageSettings[key] || {}, inheritedThemeSettings[key] || {});
   }
 
   // Return local (pure) page settings when no key is set
