@@ -189,18 +189,18 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
-"@shopgate/pwa-benchmark@6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-benchmark/-/pwa-benchmark-6.5.0.tgz#5ec402d41ec85631000952b477fb676e094b000b"
-  integrity sha512-HaGqsLV5BWkyxk+06YeDcNlBBVzCgXhjUMJr7cLMMcIrZ1CnWM5+3K1JZ73QJnPBg4245uiTaY2p5YFz1N43CQ==
+"@shopgate/pwa-benchmark@6.6.0-rc.4":
+  version "6.6.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-benchmark/-/pwa-benchmark-6.6.0-rc.4.tgz#6b959637d91a17c600901ec158394e0a9ed253df"
+  integrity sha512-9fk3433otPriFsJSnXlfoayNA88SgkkhIxJrY/h5oGMF8VJv68Ro+nW33pdDEsNqOlkpPDRPX+fs1NsCBwy14w==
 
-"@shopgate/pwa-common@6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-6.5.0.tgz#3553ca3f93e0b48123873c38e6cc781f7567a9ae"
-  integrity sha512-h+K3N7nU2KLIQEfdXI5pIYYVMQZNjsWoUgSrjm5JlmfUgeQjy3ctyNNfjPRQ3EdHZhfV0RfgCsbna4qQvu7M3g==
+"@shopgate/pwa-common@6.6.0-rc.4":
+  version "6.6.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-6.6.0-rc.4.tgz#93b8df91986c3605264bd5549a01e183b7aab341"
+  integrity sha512-1k+zOT6F8zgvI/akMsJqHJEm8/bvA5Xj6OoFTDVAGFtIC08xiJKA4ZJnig0M6WURJw5dMNOO7amMnb5w/3NTuQ==
   dependencies:
     "@sentry/browser" "^4.6.3"
-    "@shopgate/pwa-benchmark" "6.5.0"
+    "@shopgate/pwa-benchmark" "6.6.0-rc.4"
     "@virtuous/conductor" "~2.3.0"
     "@virtuous/react-conductor" "~2.3.0"
     "@virtuous/redux-persister" "1.1.0-beta.7"
