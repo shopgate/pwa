@@ -17,6 +17,7 @@ import {
   didRegisterLinkEvents,
   openDeepLink,
   openPushNotification,
+  openUniversalLink,
 } from './index';
 
 const dataMock = { some: 'data' };
@@ -98,5 +99,17 @@ describe('Action Creators: app', () => {
       };
       expect(openPushNotification(notificationId)).toEqual(expected);
     });
+  });
+  describe('openUniversalLink()', () => {
+    const expected = {
+      type: 'OPEN_UNIVERSAL_LINK',
+      payload: {
+        link: 'https://example.com/',
+        wasOpenedFromSearchIndex: true,
+        linkSerial: 1003,
+      },
+    };
+
+    expect(openUniversalLink(expected.payload)).toEqual(expected);
   });
 });
