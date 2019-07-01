@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { makeIsLastStackEntry } from '@shopgate/engage/core';
+import { makeIsLastStackEntry, updateStatusBarBackground } from '@shopgate/engage/core';
 
 /**
  * Create exclusive component selector.
@@ -12,4 +12,17 @@ function makeMapStateToProps() {
   });
 }
 
-export default connect(makeMapStateToProps);
+/**
+ * @param {Function} dispatch The redux dispatch function.
+ * @returns {Object}
+ */
+const mapDispatchToProps = dispatch => ({
+  updateStatusBar: ({ background }) => {
+    dispatch(updateStatusBarBackground(background));
+  },
+  resetStatusBar: () => {
+    dispatch(updateStatusBarBackground());
+  },
+});
+
+export default connect(makeMapStateToProps, mapDispatchToProps);
