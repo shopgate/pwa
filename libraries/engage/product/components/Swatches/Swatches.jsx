@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { isBeta, useWidgetConfig } from '../../../core';
+import { isBeta, useWidgetSettings } from '../../../core';
 import { Swatch } from '../Swatch';
 import { swatches } from './style';
 import connect from './connector';
@@ -30,7 +30,7 @@ const SwatchesUnwrapped = ({ productId, characteristics, widgetPath }) => {
     return null;
   }
 
-  const { settings = {} } = useWidgetConfig(widgetId, widgetPath);
+  const settings = useWidgetSettings(widgetId, widgetPath);
 
   // override default settings with configured widget settings
   const widgetSettings = defaultsDeep(settings, widgetDefaultSettings);
