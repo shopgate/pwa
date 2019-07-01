@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > hocs > withApp should inject a property called "app" into the component 1`] = `
+<WithApp(MockComponent)
+  someProp={true}
+>
+  <Consumer>
+    <MockComponent
+      app={
+        Object {
+          "some": "prop",
+        }
+      }
+      someProp={true}
+    />
+  </Consumer>
+</WithApp(MockComponent)>
+`;

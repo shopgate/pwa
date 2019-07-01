@@ -8,7 +8,7 @@ import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   pwaDidAppear,
   pwaDidDisappear,
-} from '../action-creators';
+} from '@shopgate/pwa-common/action-creators';
 import { blacklistedPatterns, pagesAreReady$ } from './pages';
 
 let mockedPattern;

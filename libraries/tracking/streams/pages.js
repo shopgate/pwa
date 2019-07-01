@@ -1,6 +1,10 @@
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
-import { APP_WILL_START } from '@shopgate/pwa-common/constants/ActionTypes';
+import {
+  appWillStart$,
+  pwaDidAppear$,
+  pwaDidDisappear$,
+} from '@shopgate/pwa-common/streams/app';
+import { APP_WILL_START, PWA_DID_APPEAR } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   SEARCH_PATH,
   SEARCH_FILTER_PATTERN,
@@ -17,12 +21,7 @@ import {
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { PWA_DID_APPEAR } from '../constants';
-import {
-  pwaDidAppear$,
-  pwaDidDisappear$,
-  pwaVisibility$,
-} from './app';
+import { pwaVisibility$ } from './app';
 import { checkoutDidEnter$ } from './checkout';
 
 /**

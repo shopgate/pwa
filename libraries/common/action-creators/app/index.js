@@ -1,6 +1,8 @@
 import {
   APP_WILL_START,
   APP_DID_START,
+  PWA_DID_APPEAR,
+  PWA_DID_DISAPPEAR,
   RESET_APP,
   WILL_REGISTER_LINK_EVENTS,
   DID_REGISTER_LINK_EVENTS,
@@ -36,6 +38,22 @@ export const appDidStart = location => ({
 export const resetApp = reducers => ({
   type: RESET_APP,
   reducers,
+});
+
+/**
+ * Creates the dispatched PWA_DID_APPEAR action object.
+ * @return {Object} The dispatched action object.
+ */
+export const pwaDidAppear = () => ({
+  type: PWA_DID_APPEAR,
+});
+
+/**
+ * Creates the dispatched PWA_DID_DISAPPEAR action
+ * @return {Object} The dispatched action object.
+ */
+export const pwaDidDisappear = () => ({
+  type: PWA_DID_DISAPPEAR,
 });
 
 /**

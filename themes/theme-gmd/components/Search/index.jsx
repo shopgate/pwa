@@ -6,7 +6,7 @@ import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';
-import { TOGGLE_SEARCH } from './constants';
+import { TOGGLE_SEARCH, SEARCH_CLOSED } from './constants';
 import connect from './connector';
 import styles from './style';
 
@@ -50,6 +50,13 @@ class Search extends Component {
   }
 
   /**
+   * Removes the TOGGLE_SEARCH event listener on unmount.
+   */
+  componentWillUnmount() {
+    UIEvents.off(TOGGLE_SEARCH, this.toggle);
+  }
+
+  /**
    * Close the search.
    */
   close = () => {
@@ -63,10 +70,16 @@ class Search extends Component {
     const { route: { query } } = this.props;
     const searchQuery = query.s || this.state.query;
 
+    const wasVisible = this.state.visible;
+
     this.setState({
       query: searchQuery,
       visible,
     });
+
+    if (wasVisible && !visible) {
+      UIEvents.emit(SEARCH_CLOSED);
+    }
   }
 
   /**
