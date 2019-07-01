@@ -9,7 +9,8 @@ import {
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { withRoute } from '@shopgate/engage/core';
+import { withRoute, withWidgetSettings, withApp } from '@shopgate/engage/core';
+import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
@@ -20,8 +21,12 @@ import connect from './connector';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    app: PropTypes.shape().isRequired,
+    resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    updateStatusBar: PropTypes.func.isRequired,
+    widgetSettings: PropTypes.shape().isRequired,
     below: PropTypes.node,
     title: PropTypes.string,
   };
@@ -58,6 +63,54 @@ class AppBarDefault extends PureComponent {
         focusable.focus();
       }
     }
+
+    if (this.props.route.visible) {
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
+  }
+
+  /**
+   * Syncs the colors of the device status bar with the colors of the AppBar when it came visible.
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    if (!this.props.route.visible) {
+      // Only visible app bars trigger color syncing.
+      return;
+    }
+
+    const routeDidEnter =
+      prevProps.route.visible === false && this.props.route.visible === true;
+    const engageDidEnter =
+      prevProps.app.isVisible === false && this.props.app.isVisible === true;
+    const engageWillLeave =
+      prevProps.app.isVisible === true && this.props.app.isVisible === false;
+
+    if (routeDidEnter || engageDidEnter) {
+      // Sync the colors of the app bar when the route with the bar came visible.
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
+
+    if (engageWillLeave) {
+      // Reset the status bar when Engage goes into the background.
+      this.props.resetStatusBar();
+    }
+  }
+
+  /**
+   * Maintains the status bar based on the visibility of the global SearchComponent.
+   * @param {bool} visible The current state.
+   */
+  toggleSearch = (visible) => {
+    if (!this.props.route.visible) {
+      return;
+    }
+
+    if (visible) {
+      this.props.resetStatusBar();
+    } else {
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
   }
 
   /**
@@ -68,17 +121,17 @@ class AppBarDefault extends PureComponent {
       return null;
     }
 
+    const { background, color } = this.props.widgetSettings;
     const { __ } = this.context.i18n();
-    const title = __(this.props.title || '');
-
-    const left = <AppBar.Icon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
-    const center = <AppBar.Title title={title} />;
+    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
+    const center = <AppBar.Title title={__(this.props.title || '')} />;
     const right = (
       <Fragment>
-        <SearchButton />
+        <SearchButton onToggle={this.toggleSearch} />
         <CartButton />
       </Fragment>
     );
+
     const below = (
       <Fragment>
         {this.props.below}
@@ -90,7 +143,15 @@ class AppBarDefault extends PureComponent {
       <Fragment>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
-          <AppBar left={left} center={center} right={right} {...this.props} below={below} />
+          <AppBar
+            backgroundColor={background}
+            textColor={color}
+            left={left}
+            center={center}
+            right={right}
+            {...this.props}
+            below={below}
+          />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
       </Fragment>,
@@ -98,4 +159,12 @@ class AppBarDefault extends PureComponent {
     );
   }
 }
-export default withRoute(connect(AppBarDefault), { prop: 'route' });
+
+const WrappedComponent = withApp(withWidgetSettings(
+  withRoute(connect(AppBarDefault), { prop: 'route' }),
+  '@shopgate/engage/components/AppBar'
+));
+
+WrappedComponent.Icon = AppBarIcon;
+
+export default WrappedComponent;

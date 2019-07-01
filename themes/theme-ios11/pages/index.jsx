@@ -1,7 +1,7 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeConfigResolver } from '@shopgate/engage/core';
+import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
@@ -30,7 +30,7 @@ import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { NavigationHandler } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
-import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
+import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import SnackBar from 'Components/SnackBar';
@@ -48,7 +48,7 @@ new ThemeConfigResolver().resolveAll();
 const Pages = ({ store }) => (
   <App store={store}>
     <NavigationHandler>
-      <AppContext.Provider value={appConfig}>
+      <AppProvider>
         <ThemeContext.Provider value={themeApi}>
           <LoadingProvider>
             <ToastProvider>
@@ -86,7 +86,7 @@ const Pages = ({ store }) => (
             </ToastProvider>
           </LoadingProvider>
         </ThemeContext.Provider>
-      </AppContext.Provider>
+      </AppProvider>
     </NavigationHandler>
   </App>
 );

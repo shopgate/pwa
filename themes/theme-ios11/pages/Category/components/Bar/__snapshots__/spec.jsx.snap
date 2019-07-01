@@ -68,8 +68,8 @@ exports[`<Bar /> should match snapshot 1`] = `
                 data-test-id="filterBar"
                 style={
                   Object {
-                    "background": "inherit",
-                    "color": "inherit",
+                    "background": "#fff",
+                    "color": "#000",
                   }
                 }
               >

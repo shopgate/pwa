@@ -24,8 +24,9 @@
     "@virtuous/conductor": "~2.3.0",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
-    "lodash": "^4.17.11",
+    "color": "^3.1.2",
     "intersection-observer": "^0.6.0",
+    "lodash": "^4.17.11",
     "react-player": "^1.11.0"
   },
   "devDependencies": {

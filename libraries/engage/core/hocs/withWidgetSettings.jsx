@@ -11,9 +11,18 @@ import { useWidgetSettings } from '../hooks/useWidgetSettings';
  * @returns {Object}
  */
 export function withWidgetSettings(WrappedComponent, widgetId, index) {
-  return (props) => {
+  /**
+   * The actual HOC.
+   * @param {Object} props The component props.
+   * @returns {JSX}
+   */
+  const WithWidgetSettings = (props) => {
     const settings = useWidgetSettings(widgetId, index);
-
     return (<WrappedComponent widgetSettings={settings} {...props} />);
   };
+
+  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  WithWidgetSettings.displayName = `WithWidgetSettings(${displayName})`;
+
+  return WithWidgetSettings;
 }

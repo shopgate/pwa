@@ -9,7 +9,12 @@ import styles from './style';
 class CartButtonBadge extends PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
+    style: PropTypes.shape(),
   };
+
+  static defaultProps = {
+    style: null,
+  }
 
   /**
    * @returns {string}
@@ -31,7 +36,7 @@ class CartButtonBadge extends PureComponent {
    */
   render() {
     return (
-      <div className={styles}>{this.productCount}</div>
+      <div style={this.props.style} className={styles}>{this.productCount}</div>
     );
   }
 }

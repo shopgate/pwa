@@ -1,6 +1,6 @@
-import { i18n } from './i18n';
+import { i18n } from '../i18n';
 
-jest.unmock('./i18n');
+jest.unmock('../i18n');
 
 const mockedWarn = jest.fn();
 const mockedError = jest.fn();

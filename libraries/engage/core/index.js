@@ -116,6 +116,7 @@ export { default as handleDeepLink } from '@shopgate/pwa-common/actions/app/hand
 export { default as handleLink } from '@shopgate/pwa-common/actions/app/handleLink';
 export { default as handlePushNotification } from '@shopgate/pwa-common/actions/app/handlePushNotification';
 export { default as registerLinkEvents } from '@shopgate/pwa-common/actions/app/registerLinkEvents';
+export { default as updateStatusBarBackground } from './actions/updateStatusBarBackground';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/app';
@@ -151,6 +152,7 @@ export { default as YouTube } from '@shopgate/pwa-common/collections/media-provi
 // --------------- CONTEXTS --------------- //
 
 export * from '@shopgate/pwa-common/context';
+export { default as AppContext } from './contexts/AppContext';
 
 // --------------- PROVIDERS --------------- //
 
@@ -158,6 +160,7 @@ export { default as LoadingProvider } from '@shopgate/pwa-common/providers/loadi
 export { default as LoadingContext } from '@shopgate/pwa-common/providers/loading/context';
 export { default as ToastProvider } from '@shopgate/pwa-common/providers/toast';
 export { default as ToastContext } from '@shopgate/pwa-common/providers/toast/context';
+export { default as AppProvider } from './providers/AppProvider';
 
 // --------------- ROUTER --------------- //
 
@@ -241,6 +244,8 @@ export { withRoute } from './hocs/withRoute';
 export { withCurrentProduct } from './hocs/withCurrentProduct';
 export { withNavigation } from './hocs/withNavigation';
 export { withWidgetSettings } from './hocs/withWidgetSettings';
+export { withWidgetStyles } from './hocs/withWidgetStyles';
+export { withApp } from './hocs/withApp';
 
 // --------------- CONFIG --------------- //
 export { ThemeConfigResolver } from './config/ThemeConfigResolver';
@@ -252,3 +257,4 @@ export { getThemeAssets } from './config/getThemeAssets';
 
 // -------------- HELPERS -------------- //
 export { i18n } from './helpers/i18n';
+export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';

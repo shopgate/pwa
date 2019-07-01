@@ -3,6 +3,7 @@ import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
+import { pwaDidAppear$ } from '@shopgate/pwa-common/streams/app';
 import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
@@ -11,7 +12,6 @@ import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selecto
 import { receivedRootCategories$ } from '@shopgate/pwa-common-commerce/category/streams';
 import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
 import { productsReceived$ } from './product';
-import { pwaDidAppear$ } from './app';
 
 /**
  * Emits when the root category was entered.

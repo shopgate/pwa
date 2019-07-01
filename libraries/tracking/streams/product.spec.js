@@ -8,7 +8,7 @@ import requestProducts from '@shopgate/pwa-common-commerce/product/action-creato
 import receiveProducts from '@shopgate/pwa-common-commerce/product/action-creators/receiveProducts';
 import receiveProduct from '@shopgate/pwa-common-commerce/product/action-creators/receiveProduct';
 import { ITEM_PATTERN, ITEM_REVIEWS_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
-import { pwaDidAppear } from '../action-creators';
+import { pwaDidAppear } from '@shopgate/pwa-common/action-creators';
 import {
   productsReceived$,
   productRouteReappeared$,
