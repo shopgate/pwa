@@ -54,35 +54,41 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
               unitPriceMin={10.95}
             >
               <div
-                aria-label="price.label"
                 className="css-izofhs  css-1ncyhu"
                 data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
               >
-                <Translate
-                  className=""
-                  params={Object {}}
-                  string="price.from"
+                <span
+                  aria-label="price.label"
+                  role="text"
                 >
-                  <span
+                  <Translate
                     className=""
+                    params={Object {}}
+                    role={null}
+                    string="price.from"
                   >
-                    price.from
-                    <FormatPrice
+                    <span
                       className=""
-                      currency="EUR"
-                      forKey="price"
-                      fractions={true}
-                      key=".0"
-                      price={10.95}
+                      role={null}
                     >
-                      <span
+                      price.from
+                      <FormatPrice
                         className=""
+                        currency="EUR"
+                        forKey="price"
+                        fractions={true}
+                        key=".0"
+                        price={10.95}
                       >
-                        10.95
-                      </span>
-                    </FormatPrice>
-                  </span>
-                </Translate>
+                        <span
+                          className=""
+                        >
+                          10.95
+                        </span>
+                      </FormatPrice>
+                    </span>
+                  </Translate>
+                </span>
               </div>
             </Price>
           </li>
@@ -103,6 +109,7 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
             >
               <div
                 className="css-1sagvrb css-nil "
+                role="text"
               >
                 <span
                   aria-label="price.label_old_price"
@@ -220,35 +227,41 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
               unitPriceMin={10.95}
             >
               <div
-                aria-label="price.label"
                 className="css-izofhs  css-1ncyhu"
                 data-test-id="minPrice: 10.95 price: 10.95 currency: EUR"
               >
-                <Translate
-                  className=""
-                  params={Object {}}
-                  string="price.from"
+                <span
+                  aria-label="price.label"
+                  role="text"
                 >
-                  <span
+                  <Translate
                     className=""
+                    params={Object {}}
+                    role={null}
+                    string="price.from"
                   >
-                    price.from
-                    <FormatPrice
+                    <span
                       className=""
-                      currency="EUR"
-                      forKey="price"
-                      fractions={true}
-                      key=".0"
-                      price={10.95}
+                      role={null}
                     >
-                      <span
+                      price.from
+                      <FormatPrice
                         className=""
+                        currency="EUR"
+                        forKey="price"
+                        fractions={true}
+                        key=".0"
+                        price={10.95}
                       >
-                        10.95
-                      </span>
-                    </FormatPrice>
-                  </span>
-                </Translate>
+                        <span
+                          className=""
+                        >
+                          10.95
+                        </span>
+                      </FormatPrice>
+                    </span>
+                  </Translate>
+                </span>
               </div>
             </Price>
           </li>
@@ -269,6 +282,7 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
             >
               <div
                 className="css-1sagvrb css-nil "
+                role="text"
               >
                 <span
                   aria-label="price.label_old_price"
@@ -351,35 +365,41 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
               unitPriceMin={22.95}
             >
               <div
-                aria-label="price.label"
                 className="css-izofhs "
                 data-test-id="minPrice: 22.95 price: 22.95 currency: EUR"
               >
-                <Translate
-                  className=""
-                  params={Object {}}
-                  string="price.from"
+                <span
+                  aria-label="price.label"
+                  role="text"
                 >
-                  <span
+                  <Translate
                     className=""
+                    params={Object {}}
+                    role={null}
+                    string="price.from"
                   >
-                    price.from
-                    <FormatPrice
+                    <span
                       className=""
-                      currency="EUR"
-                      forKey="price"
-                      fractions={true}
-                      key=".0"
-                      price={22.95}
+                      role={null}
                     >
-                      <span
+                      price.from
+                      <FormatPrice
                         className=""
+                        currency="EUR"
+                        forKey="price"
+                        fractions={true}
+                        key=".0"
+                        price={22.95}
                       >
-                        22.95
-                      </span>
-                    </FormatPrice>
-                  </span>
-                </Translate>
+                        <span
+                          className=""
+                        >
+                          22.95
+                        </span>
+                      </FormatPrice>
+                    </span>
+                  </Translate>
+                </span>
               </div>
             </Price>
           </li>

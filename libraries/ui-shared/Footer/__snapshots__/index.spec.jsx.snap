@@ -2,7 +2,7 @@
 
 exports[`<Footer /> should render the component 1`] = `
 <Footer>
-  <footer
+  <div
     className={
       Object {
         "data-css-185pr9l": "",
@@ -27,6 +27,6 @@ exports[`<Footer /> should render the component 1`] = `
     <Portal
       name="app.footer.content.after"
     />
-  </footer>
+  </div>
 </Footer>
 `;

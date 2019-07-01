@@ -9,10 +9,12 @@ exports[`<Translate /> Given the component was mounted to the DOM should match s
         "name": "Test",
       }
     }
+    role={null}
     string="greeting"
   >
     <span
       className=""
+      role={null}
     >
       Hello Test
     </span>

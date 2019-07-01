@@ -5,6 +5,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   aria-label="reviews.rating_stars"
   className="css-13azwyo "
   data-test-id="ratedStars: 0"
+  role="text"
 >
   <div
     className="css-4s85e9"
@@ -76,6 +77,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   aria-label="reviews.rating_stars"
   className="css-13azwyo "
   data-test-id="ratedStars: 2.5"
+  role="text"
 >
   <div
     className="css-4s85e9"
@@ -181,6 +183,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   aria-label="reviews.rating_stars"
   className="css-13azwyo "
   data-test-id="ratedStars: 5"
+  role="text"
 >
   <div
     className="css-4s85e9"
@@ -308,6 +311,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   aria-label="reviews.rating_stars"
   className="css-13azwyo "
   data-test-id="ratedStars: 5"
+  role="text"
 >
   <div
     className="css-4s85e9"
@@ -465,6 +469,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   aria-label="reviews.rating_stars"
   className="css-13azwyo "
   data-test-id="ratedStars: 3.5"
+  role="text"
 >
   <div
     className="css-4s85e9"

@@ -3,10 +3,13 @@ import { mount, shallow } from 'enzyme';
 import Drawer from './index';
 
 describe('<Drawer />', () => {
-  let mockOpen;
+  const onOpen = jest.fn();
+  const onClose = jest.fn();
+  const onDidOpen = jest.fn();
+  const onDidClose = jest.fn();
 
   beforeEach(() => {
-    mockOpen = jest.fn();
+    jest.clearAllMocks();
   });
 
   it('should render', () => {
@@ -16,21 +19,21 @@ describe('<Drawer />', () => {
   });
 
   it('should execute callback when drawer is opened', () => {
-    const wrapper = mount(<Drawer onOpen={mockOpen} />);
+    const wrapper = mount(<Drawer onOpen={onOpen} />);
     wrapper.setProps({
       isOpen: true,
     });
 
-    expect(mockOpen).toBeCalled();
+    expect(onOpen).toBeCalled();
   });
 
   it('should execute callback when drawer is closed', () => {
-    const wrapper = mount(<Drawer isOpen onClose={mockOpen} />);
+    const wrapper = mount(<Drawer isOpen onClose={onClose} />);
     wrapper.setProps({
       isOpen: false,
     });
 
-    expect(mockOpen).toBeCalled();
+    expect(onClose).toBeCalled();
   });
 
   it('should add custom classes', () => {
@@ -40,13 +43,29 @@ describe('<Drawer />', () => {
     expect(wrapper.hasClass('custom-class-name')).toEqual(true);
   });
 
+  it('should execute callback when drawer open animation did end', () => {
+    const wrapper = mount(<Drawer className="custom-class-name" isOpen={false} onOpen={onOpen} onDidOpen={onDidOpen} />);
+    expect(wrapper).toMatchSnapshot();
+    wrapper.setProps({
+      isOpen: true,
+    });
+
+    expect(onOpen).toBeCalled();
+    expect(onDidOpen).not.toBeCalled();
+    wrapper.simulate('animationEnd');
+    expect(onDidOpen).toBeCalled();
+  });
+
   it('should execute callback when drawer close animation did end', () => {
-    const wrapper = mount(<Drawer className="custom-class-name" isOpen onDidClose={mockOpen} />);
+    const wrapper = mount(<Drawer className="custom-class-name" isOpen onClose={onClose} onDidClose={onDidClose} />);
     expect(wrapper).toMatchSnapshot();
     wrapper.setProps({
       isOpen: false,
     });
+
+    expect(onClose).toBeCalled();
+    expect(onDidClose).not.toBeCalled();
     wrapper.simulate('animationEnd');
-    expect(mockOpen).toBeCalled();
+    expect(onDidClose).toBeCalled();
   });
 });

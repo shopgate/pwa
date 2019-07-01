@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Portal from 'react-portal';
+import { withForwardedRef } from '@shopgate/engage/core';
 import PickerModal from './components/Modal';
 import PickerButton from './components/Button';
 import PickerList from './components/List';
@@ -52,6 +53,7 @@ class Picker extends Component {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     duration: PropTypes.number,
+    forwardedRef: PropTypes.shape(),
     isOpen: PropTypes.bool,
     items: PropTypes.arrayOf((
       PropTypes.oneOfType([
@@ -78,6 +80,7 @@ class Picker extends Component {
     buttonProps: {},
     duration: 300,
     disabled: false,
+    forwardedRef: null,
     label: '',
     listComponent: PickerList,
     modalComponent: PickerModal,
@@ -98,7 +101,6 @@ class Picker extends Component {
   constructor(props) {
     super(props);
 
-    this.domElement = null;
     this.state = {
       selectedIndex: findItemIndexByValue(props.items, props.value),
       isOpen: props.isOpen,
@@ -120,7 +122,7 @@ class Picker extends Component {
       });
     }
 
-    if (nextProps.isOpen !== this.state.isOpen) {
+    if (this.props.isOpen !== nextProps.isOpen && nextProps.isOpen !== this.state.isOpen) {
       this.setState({
         isOpen: nextProps.isOpen,
       });
@@ -217,7 +219,13 @@ class Picker extends Component {
     };
 
     return (
-      <div className={this.props.className} ref={(element) => { this.domElement = element; }}>
+      <div
+        role="button"
+        className={this.props.className}
+        ref={this.props.forwardedRef}
+        tabIndex={0}
+        aria-haspopup
+      >
         {React.createElement(this.props.buttonComponent, buttonProps)}
 
         <Portal
@@ -235,4 +243,4 @@ class Picker extends Component {
   }
 }
 
-export default Picker;
+export default withForwardedRef(Picker);

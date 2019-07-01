@@ -12,6 +12,12 @@ jest.mock('../../../../context', () => ({
   },
 }));
 
+jest.mock('Components/View/context', () => ({
+  ViewContext: {
+    Consumer: ({ children }) => children({ setAriaHidden: () => { } }),
+  },
+}));
+
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => (obj) => {
   const newObj = obj;

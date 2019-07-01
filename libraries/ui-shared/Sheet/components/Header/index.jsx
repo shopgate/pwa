@@ -28,6 +28,10 @@ class Header extends Component {
     shadow: false,
   };
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   /**
    * @param {Object} nextProps Next Props
    * @returns {boolean}
@@ -49,14 +53,16 @@ class Header extends Component {
       { [styles.shadow]: this.props.shadow }
     );
 
+    const { __ } = this.context.i18n();
+
     return (
       <Grid className={classes} component="div" wrap={false}>
-        <button className={styles.closeButton} onClick={this.props.onToggleClose}>
+        <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')}>
           <Ripple className={styles.closeIcon}>
             <CrossIcon size={24} />
           </Ripple>
         </button>
-        <Grid.Item className={styles.title} component="div" grow={1}>
+        <Grid.Item className={styles.title} component="div" grow={1} role="heading">
           {this.props.title}
         </Grid.Item>
       </Grid>

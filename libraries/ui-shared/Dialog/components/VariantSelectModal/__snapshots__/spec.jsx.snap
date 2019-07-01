@@ -19,6 +19,7 @@ exports[`<VariantSelectModal /> should render the actions 1`] = `
   <Translate
     className=""
     params={Object {}}
+    role={null}
     string="This is the message."
   />
 </BasicDialog>
@@ -32,6 +33,7 @@ exports[`<VariantSelectModal /> should render with minimal props 1`] = `
   <Translate
     className=""
     params={Object {}}
+    role={null}
     string="This is the message."
   />
 </BasicDialog>

@@ -72,7 +72,11 @@ class FormElement extends Component {
       <div className={classNames(style.formElement, className)}>
 
         {hasPlaceholder &&
-          <Placeholder visible={this.isPlaceholderVisible} placeholder={placeholder || label} />
+          <Placeholder
+            visible={this.isPlaceholderVisible}
+            placeholder={placeholder || label}
+            aria-hidden
+          />
         }
 
         <Label

@@ -14,6 +14,7 @@ exports[`<Drawer /> should add custom classes 1`] = `
   isOpen={true}
   onClose={[Function]}
   onDidClose={[Function]}
+  onDidOpen={[Function]}
   onOpen={[Function]}
 >
   <div
@@ -36,8 +37,9 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
   }
   className="custom-class-name"
   isOpen={true}
-  onClose={[Function]}
+  onClose={[MockFunction]}
   onDidClose={[MockFunction]}
+  onDidOpen={[Function]}
   onOpen={[Function]}
 >
   <div
@@ -46,6 +48,25 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
     style={Object {}}
   />
 </Drawer>
+`;
+
+exports[`<Drawer /> should execute callback when drawer open animation did end 1`] = `
+<Drawer
+  alwaysActive={false}
+  animation={
+    Object {
+      "duration": null,
+      "in": "",
+      "out": "",
+    }
+  }
+  className="custom-class-name"
+  isOpen={false}
+  onClose={[Function]}
+  onDidClose={[Function]}
+  onDidOpen={[MockFunction]}
+  onOpen={[MockFunction]}
+/>
 `;
 
 exports[`<Drawer /> should render 1`] = `""`;

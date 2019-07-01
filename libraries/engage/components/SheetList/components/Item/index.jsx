@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { withForwardedRef } from '@shopgate/engage/core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
@@ -13,6 +14,7 @@ class Item extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     className: PropTypes.string,
+    forwardedRef: PropTypes.shape(),
     image: PropTypes.element,
     isDisabled: PropTypes.bool,
     isSelected: PropTypes.bool,
@@ -25,6 +27,7 @@ class Item extends Component {
 
   static defaultProps = {
     className: null,
+    forwardedRef: null,
     image: null,
     isDisabled: false,
     isSelected: false,
@@ -49,11 +52,12 @@ class Item extends Component {
 
   /**
    * Renders the bulk of the content.
+   * @param {boolean} [isNested=true] Tells if the content is rendered nested.
    * @returns {JSX}
    */
-  renderContent() {
+  renderContent(isNested = true) {
     const {
-      isDisabled, isSelected, title, image, rightComponent,
+      isDisabled, isSelected, title, image, rightComponent, forwardedRef,
     } = this.props;
 
     const gridStyles = {
@@ -65,8 +69,10 @@ class Item extends Component {
       [styles.disabled]: isDisabled,
     };
 
+    const ref = isNested ? null : forwardedRef;
+
     return (
-      <div data-test-id={this.props.testId}>
+      <div data-test-id={this.props.testId} ref={ref}>
         <Grid className={classNames(gridStyles)} component="div">
           {(image !== null) && (
             <div className={styles.image}>
@@ -91,7 +97,7 @@ class Item extends Component {
    */
   render() {
     const {
-      link, linkState, onClick, className, isDisabled, testId,
+      link, linkState, onClick, className, isDisabled, testId, forwardedRef, isSelected,
     } = this.props;
 
     /**
@@ -99,14 +105,18 @@ class Item extends Component {
      * link or click handler then wrap the content with other components.
      */
     if (isDisabled || (!link && !onClick)) {
-      return this.renderContent();
+      return this.renderContent(false);
     }
 
     // Wrap with a <Link> if the `link` prop is set.
     if (link) {
       return (
-        <Glow className={className} styles={{ hover: styles.glowHover }}>
-          <Link href={link} onClick={onClick} state={linkState}>
+        <Glow
+          ref={forwardedRef}
+          className={className}
+          styles={{ hover: styles.glowHover }}
+        >
+          <Link href={link} onClick={onClick} state={linkState} tabIndex={0}>
             {this.renderContent()}
           </Link>
         </Glow>
@@ -115,11 +125,13 @@ class Item extends Component {
 
     return (
       <div
-        role="link"
-        tabIndex="0"
         onKeyPress={() => { }}
         onClick={onClick}
         data-test-id={testId}
+        ref={forwardedRef}
+        tabIndex={0}
+        role="option"
+        aria-selected={isSelected}
       >
         <Glow className={className} styles={{ hover: styles.glowHover }}>
           {this.renderContent()}
@@ -129,4 +141,4 @@ class Item extends Component {
   }
 }
 
-export default Item;
+export default withForwardedRef(Item);

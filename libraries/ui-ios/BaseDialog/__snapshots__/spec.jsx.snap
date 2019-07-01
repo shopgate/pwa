@@ -38,6 +38,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
       <Translate
         className="css-auznqr"
         params={Object {}}
+        role={null}
         string="action0"
       />
     </Button>
@@ -54,6 +55,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
       <Translate
         className="css-auznqr"
         params={Object {}}
+        role={null}
         string="action1"
       />
     </Button>
@@ -70,6 +72,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
       <Translate
         className="css-auznqr"
         params={Object {}}
+        role={null}
         string="action2"
       />
     </Button>
@@ -101,6 +104,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
       <Translate
         className="css-auznqr"
         params={Object {}}
+        role={null}
         string="action0"
       />
     </Button>
@@ -129,6 +133,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
       <Translate
         className="css-auznqr"
         params={Object {}}
+        role={null}
         string="action1"
       />
     </Button>
@@ -145,6 +150,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
       <Translate
         className="css-auznqr"
         params={Object {}}
+        role={null}
         string="action2"
       />
     </Button>

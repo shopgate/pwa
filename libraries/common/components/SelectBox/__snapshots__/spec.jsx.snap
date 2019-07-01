@@ -40,10 +40,12 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="filter.sort.default"
         >
           <span
             className=""
+            role={null}
           >
             filter.sort.default
           </span>
@@ -108,10 +110,12 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #1"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #1
                       </span>
@@ -138,10 +142,12 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #2"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #2
                       </span>
@@ -168,10 +174,12 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #3"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #3
                       </span>
@@ -228,10 +236,12 @@ exports[`<SelectBox> should render with a default text 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="Foo"
         >
           <span
             className=""
+            role={null}
           >
             Foo
           </span>
@@ -296,10 +306,12 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #1"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #1
                       </span>
@@ -326,10 +338,12 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #2"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #2
                       </span>
@@ -356,10 +370,12 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #3"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #3
                       </span>
@@ -416,10 +432,12 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="My item #2"
         >
           <span
             className=""
+            role={null}
           >
             My item #2
           </span>
@@ -484,10 +502,12 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #1"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #1
                       </span>
@@ -514,10 +534,12 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #2"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #2
                       </span>
@@ -544,10 +566,12 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="My item #3"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         My item #3
                       </span>

@@ -3,21 +3,25 @@
 exports[`<List /> renders with children 1`] = `
 <ul
   className=""
+  role={null}
 >
   <ListItem
     className={null}
     isSelected={false}
     key="0"
+    role={null}
   />
   <ListItem
     className={null}
     isSelected={false}
     key="1"
+    role={null}
   />
   <ListItem
     className={null}
     isSelected={false}
     key="2"
+    role={null}
   />
 </ul>
 `;
@@ -25,5 +29,6 @@ exports[`<List /> renders with children 1`] = `
 exports[`<List /> renders without children 1`] = `
 <ul
   className=""
+  role={null}
 />
 `;

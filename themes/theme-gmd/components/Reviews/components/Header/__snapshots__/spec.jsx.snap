@@ -37,6 +37,7 @@ exports[`<Header /> should render empty 1`] = `
         productId="foo"
       >
         <div
+          aria-hidden={true}
           className={
             Object {
               "data-css-1ppx0ok": "",
@@ -56,6 +57,7 @@ exports[`<Header /> should render empty 1`] = `
               itemProp="item"
               itemScope={true}
               itemType="http://schema.org/Review"
+              role="text"
               tagName="a"
             >
               <Link
@@ -70,8 +72,9 @@ exports[`<Header /> should render empty 1`] = `
                 itemScope={true}
                 itemType="http://schema.org/Review"
                 replace={false}
-                role="link"
+                role="text"
                 state={Object {}}
+                tabIndex={null}
                 tag="div"
                 tagName="a"
               >
@@ -80,7 +83,8 @@ exports[`<Header /> should render empty 1`] = `
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
-                  role="link"
+                  role="text"
+                  tabIndex={null}
                 >
                   <RatingStars
                     className=""
@@ -93,6 +97,7 @@ exports[`<Header /> should render empty 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 0"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -301,10 +306,12 @@ exports[`<Header /> should render empty 1`] = `
             <Translate
               className=""
               params={Object {}}
+              role={null}
               string="reviews.no_reviews"
             >
               <span
                 className=""
+                role={null}
               >
                 reviews.no_reviews
               </span>
@@ -313,6 +320,7 @@ exports[`<Header /> should render empty 1`] = `
               productId="foo"
             >
               <div
+                aria-hidden={true}
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)
@@ -387,7 +395,6 @@ exports[`<Header /> should render empty 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -396,10 +403,12 @@ exports[`<Header /> should render empty 1`] = `
                                     <Translate
                                       className=""
                                       params={Object {}}
+                                      role={null}
                                       string="reviews.button_add"
                                     >
                                       <span
                                         className=""
+                                        role={null}
                                       >
                                         reviews.button_add
                                       </span>
@@ -480,6 +489,7 @@ exports[`<Header /> should render rating summary 1`] = `
               itemProp="item"
               itemScope={true}
               itemType="http://schema.org/Review"
+              role="text"
               tagName="a"
             >
               <Link
@@ -494,8 +504,9 @@ exports[`<Header /> should render rating summary 1`] = `
                 itemScope={true}
                 itemType="http://schema.org/Review"
                 replace={false}
-                role="link"
+                role="text"
                 state={Object {}}
+                tabIndex={null}
                 tag="div"
                 tagName="a"
               >
@@ -504,7 +515,8 @@ exports[`<Header /> should render rating summary 1`] = `
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
-                  role="link"
+                  role="text"
+                  tabIndex={null}
                 >
                   <RatingStars
                     className=""
@@ -517,6 +529,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 2.5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -832,10 +845,12 @@ exports[`<Header /> should render rating summary 1`] = `
                           "prominent": false,
                         }
                       }
+                      role={null}
                       string="reviews.review_count"
                     >
                       <span
                         className="css-a7xi3l"
+                        role={null}
                       >
                         reviews.review_count
                       </span>
@@ -851,14 +866,17 @@ exports[`<Header /> should render rating summary 1`] = `
                 "data-css-1anve4d": "",
               }
             }
+            role="text"
           >
             <Translate
               className="css-1nftllw"
               params={Object {}}
+              role={null}
               string="reviews.rating"
             >
               <span
                 className="css-1nftllw"
+                role={null}
               >
                 reviews.rating
                 <RatingNumber
@@ -884,6 +902,7 @@ exports[`<Header /> should render rating summary 1`] = `
               productId="foo"
             >
               <div
+                aria-hidden={true}
                 data-test-id="writeReview"
               >
                 <Connect(ButtonLink)
@@ -958,7 +977,6 @@ exports[`<Header /> should render rating summary 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    aria-hidden={true}
                                     className="css-1fscwua "
                                     data-test-id="Ripple"
                                     onClick={[Function]}
@@ -967,10 +985,12 @@ exports[`<Header /> should render rating summary 1`] = `
                                     <Translate
                                       className=""
                                       params={Object {}}
+                                      role={null}
                                       string="reviews.button_add"
                                     >
                                       <span
                                         className=""
+                                        role={null}
                                       >
                                         reviews.button_add
                                       </span>

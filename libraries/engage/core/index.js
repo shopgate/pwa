@@ -242,6 +242,7 @@ export { useWidgetStyles } from './hooks/useWidgetStyles';
 export { withTheme } from './hocs/withTheme';
 export { withRoute } from './hocs/withRoute';
 export { withCurrentProduct } from './hocs/withCurrentProduct';
+export { withForwardedRef } from './hocs/withForwardedRef';
 export { withNavigation } from './hocs/withNavigation';
 export { withWidgetSettings } from './hocs/withWidgetSettings';
 export { withWidgetStyles } from './hocs/withWidgetStyles';

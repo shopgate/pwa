@@ -10,6 +10,7 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { withRoute, withWidgetSettings, withApp } from '@shopgate/engage/core';
+import { ViewContext } from 'Components/View/context';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
@@ -27,11 +28,13 @@ class AppBarDefault extends PureComponent {
     setFocus: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
     widgetSettings: PropTypes.shape().isRequired,
+    'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
     title: PropTypes.string,
   };
 
   static defaultProps = {
+    'aria-hidden': null,
     title: null,
     below: null,
   };
@@ -151,6 +154,7 @@ class AppBarDefault extends PureComponent {
             right={right}
             {...this.props}
             below={below}
+            aria-hidden={this.props['aria-hidden']}
           />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
@@ -160,8 +164,21 @@ class AppBarDefault extends PureComponent {
   }
 }
 
+/**
+ * The AppBarDefaultWithContext component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
+ */
+const AppBarDefaultWithContext = props => (
+  <ViewContext.Consumer>
+    {({ ariaHidden }) => (
+      <AppBarDefault {...props} aria-hidden={ariaHidden} />
+    )}
+  </ViewContext.Consumer>
+);
+
 const WrappedComponent = withApp(withWidgetSettings(
-  withRoute(connect(AppBarDefault), { prop: 'route' }),
+  withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }),
   '@shopgate/engage/components/AppBar'
 ));
 

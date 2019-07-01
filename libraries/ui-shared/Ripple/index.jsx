@@ -243,9 +243,10 @@ class Ripple extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    /* eslint-disable jsx-a11y/click-events-have-key-events,
+    jsx-a11y/no-static-element-interactions */
     return (
       <div
-        aria-hidden
         className={this.props.className}
         data-test-id="Ripple"
         onClick={this.handleClick}
@@ -255,6 +256,8 @@ class Ripple extends PureComponent {
         {this.props.children}
       </div>
     );
+    /* eslint-enable jsx-a11y/click-events-have-key-events,
+    jsx-a11y/no-static-element-interactions */
   }
 }
 
