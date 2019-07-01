@@ -8,8 +8,9 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { withRoute } from '@shopgate/engage/core';
+import { withRoute, withWidgetSettings, withApp } from '@shopgate/engage/core';
 import { ViewContext } from 'Components/View/context';
+import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
 
@@ -18,8 +19,12 @@ import connect from './connector';
  */
 class AppBarDefault extends PureComponent {
   static propTypes = {
+    app: PropTypes.shape().isRequired,
+    resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    updateStatusBar: PropTypes.func.isRequired,
+    widgetSettings: PropTypes.shape().isRequired,
     'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
     title: PropTypes.string,
@@ -58,6 +63,38 @@ class AppBarDefault extends PureComponent {
         focusable.focus();
       }
     }
+
+    if (this.props.route.visible) {
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
+  }
+
+  /**
+   * Syncs the colors of the device status bar with the colors of the AppBar when it came visible.
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    if (!this.props.route.visible) {
+      // Only visible app bars trigger color syncing.
+      return;
+    }
+
+    const routeDidEnter =
+      prevProps.route.visible === false && this.props.route.visible === true;
+    const engageDidEnter =
+      prevProps.app.isVisible === false && this.props.app.isVisible === true;
+    const engageWillLeave =
+      prevProps.app.isVisible === true && this.props.app.isVisible === false;
+
+    if (routeDidEnter || engageDidEnter) {
+      // Sync the colors of the app bar when the route with the bar came visible.
+      this.props.updateStatusBar(this.props.widgetSettings);
+    }
+
+    if (engageWillLeave) {
+      // Reset the status bar when Engage goes into the background.
+      this.props.resetStatusBar();
+    }
   }
 
   /**
@@ -68,6 +105,7 @@ class AppBarDefault extends PureComponent {
       return null;
     }
 
+    const { background, color } = this.props.widgetSettings;
     const { __ } = this.context.i18n();
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const below = (
@@ -82,6 +120,8 @@ class AppBarDefault extends PureComponent {
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
           <AppBar
+            backgroundColor={background}
+            textColor={color}
             center={center}
             {...this.props}
             below={below}
@@ -108,4 +148,11 @@ const AppBarDefaultWithContext = props => (
   </ViewContext.Consumer>
 );
 
-export default withRoute(connect(AppBarDefaultWithContext), { prop: 'route' });
+const WrappedComponent = withApp(withWidgetSettings(
+  withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }),
+  '@shopgate/engage/components/AppBar'
+));
+
+WrappedComponent.Icon = AppBarIcon;
+
+export default WrappedComponent;
