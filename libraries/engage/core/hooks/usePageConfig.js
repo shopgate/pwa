@@ -1,30 +1,12 @@
-import defaultsDeep from 'lodash/defaultsDeep';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from './useRoute';
-import { getThemeSettings } from '../config/getThemeSettings';
+import { getPageConfig } from '../config/getPageConfig';
 
 /**
- * Retrieves the configuration for the current page.
+ * Retrieves the configuration for the current page. The returned page config is pure and the page
+ * settings are not inherited!
  * @returns {Object}
  */
 export function usePageConfig() {
-  const route = useRoute();
-  const { pages } = themeConfig;
-  const globalSettings = getThemeSettings();
-  const page = pages.find(element => element.pattern === route.pattern);
-
-  if (!page) {
-    return {};
-  }
-
-  const {
-    name, id, pattern, ...config
-  } = page;
-
-  const settings = defaultsDeep(config.settings, globalSettings);
-
-  return {
-    ...config,
-    settings,
-  };
+  const { pattern: pagePattern } = useRoute();
+  return getPageConfig(pagePattern);
 }
