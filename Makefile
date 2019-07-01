@@ -85,6 +85,7 @@ UPDATE_MASTER = true
 # This causes the Github-API to create draft releases only, without creating tags
 DRAFT_RELEASE = true
 
+SKIP_RC = false
 
 
 ####################################################################################################
@@ -118,7 +119,9 @@ sanity-check:
 			echo "ERROR:  No BRANCH was provided!" && false; \
 		fi;
 		@if [[ "$(STABLE)" == "true" ]] && [[ "$(IS_RC_BRANCH_NAME)" != "true" ]]; then \
-			echo "ERROR: STABLE releases can only be created from 'rc' branches" && false; \
+			if [[ "$(SKIP_RC)" != "true" ]]; then \
+				echo "ERROR: STABLE releases can only be created from 'rc' branches, unless it's skipped by setting!" && false; \
+			fi; \
 		fi;
 
 		@echo "Sanity check OK!"
