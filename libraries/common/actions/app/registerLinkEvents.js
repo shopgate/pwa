@@ -2,6 +2,7 @@ import { event, registerEvents } from '@shopgate/pwa-core';
 import { willRegisterLinkEvents, didRegisterLinkEvents } from '../../action-creators/app';
 import handlePushNotification from './handlePushNotification';
 import handleDeepLink from './handleDeepLink';
+import handleUniversalLink from './handleUniversalLink';
 
 /**
  * Registers all link events.
@@ -14,6 +15,7 @@ export default function registerLinkEvents() {
     registerEvents([
       'openPushNotification',
       'openDeepLink',
+      'openUniversalLink',
     ]);
 
     event.addCallback('openPushNotification', payload => (
@@ -22,6 +24,10 @@ export default function registerLinkEvents() {
 
     event.addCallback('openDeepLink', payload => (
       dispatch(handleDeepLink(payload))
+    ));
+
+    event.addCallback('openUniversalLink', payload => (
+      dispatch(handleUniversalLink(payload))
     ));
 
     dispatch(didRegisterLinkEvents());

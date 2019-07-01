@@ -37,4 +37,19 @@ describe('handleLink()', () => {
     expect(historyPush).toHaveBeenCalledTimes(1);
     expect(historyPush).toHaveBeenCalledWith({ pathname: link });
   });
+
+  it('should dispatch historyPush for universal link', () => {
+    const link = '/page/test';
+    const universalLink = 'https://example.com/page/test';
+    handleLink({ link: universalLink })(dispatch);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(historyPush).toHaveBeenCalledTimes(1);
+    expect(historyPush).toHaveBeenCalledWith({ pathname: link });
+  });
+
+  it('should dispatch historyReset() when the link is an universal link to the index page', () => {
+    handleLink({ link: 'https://example.com/' })(dispatch);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(historyReset).toHaveBeenCalledTimes(1);
+  });
 });

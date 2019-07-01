@@ -1,3 +1,4 @@
+import { logger } from '@shopgate/pwa-core/helpers';
 import { historyPush, historyReset } from '../../actions/router';
 import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
 
@@ -7,16 +8,26 @@ import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
  */
 export default function handleLink(payload) {
   return (dispatch) => {
-    let { link = null } = payload;
+    const { link = null } = payload;
 
     if (!link) {
       return;
     }
 
-    // Remove the deeplink protocol from the link.
-    link = link.replace(/^(.*:)(\/\/)?/, '/');
+    let pathname;
+    if (typeof link === 'string' && link.startsWith('http')) {
+      // Link is common URL schema.
+      try {
+        ({ pathname } = new URL(link));
+      } catch (linkParseError) {
+        logger.error(`Could not parse link ${link}`, linkParseError);
+      }
+    } else {
+      // Remove the deeplink protocol from the link.
+      pathname = link.replace(/^(.*:)(\/\/)?/, '/');
+    }
 
-    if (link.startsWith(INDEX_PATH_DEEPLINK)) {
+    if (!pathname || pathname === '/' || pathname.startsWith(INDEX_PATH_DEEPLINK)) {
       /**
        * Special treatment for the index page. To avoid multiple index pages within the history,
        * the parsed link helper will only emit the openLink events for the link to inform the
@@ -27,7 +38,7 @@ export default function handleLink(payload) {
     }
 
     dispatch(historyPush({
-      pathname: link,
+      pathname,
     }));
   };
 }
