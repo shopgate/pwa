@@ -1,5 +1,6 @@
 import MediaProvider from './MediaProvider';
 
+const SDK = 'https://player.vimeo.com/api/player.js';
 /**
  * The Vimeo media provider class.
  */
@@ -9,47 +10,44 @@ class VimeoMediaProvider extends MediaProvider {
    */
   constructor() {
     super();
-    this.playerReady = false;
+    // Need to check Vimeo.Player presence later
+    this.sdkReady = false;
+    this.sdkUrl = SDK;
     this.deferred = [];
-
-    this.initPlayer();
   }
 
   /**
-   * Checks if the Video player script is already available.
-   * If not, it injects it into the DOM and adds deferred containers.
-   * @private
+   * @inheritDoc
    */
-  initPlayer() {
-    if (typeof window.Vimeo !== 'undefined') {
-      this.playerReady = true;
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://player.vimeo.com/api/player.js';
-    script.async = true;
-
-    script.onload = () => {
-      this.playerReady = true;
+  onSdkLoaded() {
+    this.sdkReady = true;
+    if (this.deferred.length) {
       this.deferred.forEach((container) => {
         this.add(container);
       });
-
       this.deferred = [];
-    };
+    }
+  }
 
-    document.querySelector('head').appendChild(script);
+  /**
+   * Check if SDK loaded externally
+   * @returns {boolean}
+   */
+  checkSdk() {
+    if (!this.sdkReady && typeof window.Vimeo !== 'undefined') {
+      this.sdkReady = true;
+    }
+    return this.sdkReady;
   }
 
   /**
    * Add a DOM container with embedded videos.
    * @override
-   * @param {NodeList} container A DOM container.
+   * @param {ParentNode} container A DOM container.
    * @returns {VimeoMediaProvider}
    */
   add(container) {
-    if (!this.playerReady) {
+    if (!this.checkSdk()) {
       this.deferred.push(container);
       return this;
     }

@@ -33,7 +33,7 @@ class EmbeddedMedia {
 
   /**
    * Add a DOM container with embedded media.
-   * @param {NodeList} container A DOM container.
+   * @param {ParentNode} container A DOM container.
    */
   add(container) {
     this.providers.forEach((provider) => {
@@ -44,7 +44,7 @@ class EmbeddedMedia {
   /**
    * Remove a DOM container. Should be called whenever a component which hosts a DOM container with
    * embedded media is unmounted.
-   * @param {NodeList} container A DOM container.
+   * @param {ParentNode} container A DOM container.
    */
   remove(container) {
     this.providers.forEach((provider) => {
@@ -59,6 +59,20 @@ class EmbeddedMedia {
     this.providers.forEach((provider) => {
       provider.stop();
     });
+  }
+
+  /**
+   * Check if we have media providers with not-ready SDK
+   * @returns {boolean}
+   */
+  hasNotReady() {
+    let hasNotReady = false;
+    this.providers.forEach((provider) => {
+      if (!provider.sdkReady) {
+        hasNotReady = true;
+      }
+    });
+    return hasNotReady;
   }
 }
 

@@ -10,12 +10,21 @@ class MediaProvider {
    */
   constructor() {
     this.containers = new Map();
+    this.sdkReady = true;
+    this.sdkUrl = null;
+  }
+
+  /**
+   * Callback when SDK is loaded
+   */
+  onSdkLoaded() {
+    logger.error('MediaProvider.onSdkLoaded() needs to be implemented within an inheriting class');
+    this.sdkReady = true;
   }
 
   /**
    * Optimizes video container to make it responsive.
-   * @param {NodeList} container A DOM container.
-   * @private
+   * @param {Element} container A DOM container.
    * @returns {MediaProvider}
    */
   responsify(container) {

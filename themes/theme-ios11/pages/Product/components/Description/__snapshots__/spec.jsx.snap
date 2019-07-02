@@ -167,15 +167,18 @@ exports[`<ProductDescription /> should render description if data is available 1
                 "html": "<h1>foo</h1>",
               }
             }
+            wrapper={[Function]}
           >
-            <div
-              className={null}
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<h1>foo</h1>",
+            <EmbeddedMedia>
+              <div
+                className={null}
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<h1>foo</h1>",
+                  }
                 }
-              }
-            />
+              />
+            </EmbeddedMedia>
           </HtmlSanitizer>
         </div>
       </PlaceholderParagraph>

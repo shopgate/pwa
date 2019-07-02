@@ -18,7 +18,6 @@ const createContainer = (srcs) => {
 
 describe('Vimeo media provider', () => {
   let instance;
-  let playerScript;
   const pauseMock = jest.fn();
 
   /**
@@ -50,8 +49,6 @@ describe('Vimeo media provider', () => {
     document.getElementsByTagName('html')[0].innerHTML = '';
     instance = new Vimeo();
     instance.responsify = jest.fn();
-
-    playerScript = document.querySelector('script[src*="vimeo.com"]');
   };
 
   beforeEach(() => {
@@ -63,29 +60,8 @@ describe('Vimeo media provider', () => {
     it('should construct as expected', () => {
       createInstance(false);
       expect(instance.containers).toBeInstanceOf(Map);
-      expect(instance.playerReady).toBe(false);
+      expect(instance.sdkReady).toBe(false);
       expect(instance.deferred).toEqual([]);
-    });
-  });
-
-  describe('.initPlayer()', () => {
-    it('should not inject the player script when it is already loaded', () => {
-      expect(instance.playerReady).toBe(true);
-      expect(playerScript).toBeNull();
-    });
-
-    it('should inject the player script when it is not loaded yet and add deferred containers', () => {
-      createInstance(false);
-      instance.add(createContainer(videos));
-
-      expect(instance.deferred).toHaveLength(1);
-      expect(instance.playerReady).toBe(false);
-
-      updatePlayer();
-      playerScript.onload();
-
-      expect(instance.deferred).toHaveLength(0);
-      expect(instance.playerReady).toBe(true);
     });
   });
 
@@ -156,6 +132,27 @@ describe('Vimeo media provider', () => {
       instance.stop();
 
       expect(pauseMock).toHaveBeenCalledTimes(3);
+    });
+  });
+
+  describe('.onSdkLoaded()', () => {
+    it('should mark as sdkReady', () => {
+      instance.onSdkLoaded();
+      expect(instance.sdkReady).toBe(true);
+    });
+
+    it('should run deferred containers on sdk ready', () => {
+      instance.deferred = ['container 1', 'container 2'];
+
+      jest.spyOn(instance, 'add').mockReturnValue(true);
+
+      instance.onSdkLoaded();
+
+      expect(instance.add).toHaveBeenCalledTimes(2);
+      expect(instance.add).nthCalledWith(1, 'container 1');
+      expect(instance.add).nthCalledWith(2, 'container 2');
+
+      expect(instance.deferred).toHaveLength(0);
     });
   });
 });
