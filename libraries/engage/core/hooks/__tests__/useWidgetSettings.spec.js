@@ -1,28 +1,35 @@
 import { useWidgetSettings } from '../useWidgetSettings';
-import { useWidgetConfig } from '../useWidgetConfig';
+import { useRoute } from '../useRoute';
+import { getWidgetSettings } from '../../config/getWidgetSettings';
 
-jest.mock('../useWidgetConfig', () => ({
-  useWidgetConfig: jest.fn(),
+jest.mock('../useRoute', () => ({
+  useRoute: jest.fn(),
+}));
+
+jest.mock('../../config/getWidgetSettings', () => ({
+  getWidgetSettings: jest.fn(),
 }));
 
 describe('engage > core > hooks', () => {
   describe('useWidgetSettings()', () => {
-    it('should return an empty object if no settings', () => {
-      useWidgetConfig.mockReturnValueOnce({});
-      const settings = useWidgetSettings();
-      expect(settings).toEqual({});
+    beforeEach(() => {
+      jest.resetAllMocks();
     });
 
-    it('should return an object containing language and currency.', () => {
-      useWidgetConfig.mockReturnValueOnce({
-        settings: {
-          showPrice: true,
-        },
-      });
-      const settings = useWidgetSettings();
-      expect(settings).toEqual({
-        showPrice: true,
-      });
+    it('should pass down its given params and the page pattern to the lower level helper functions.', () => {
+      useRoute.mockReturnValue({ pattern: '/test' });
+      useWidgetSettings('widgetId', 3);
+      expect(getWidgetSettings).toBeCalledWith('/test', 'widgetId', 3);
+      expect(getWidgetSettings).toBeCalledTimes(1);
+      expect(useRoute).toBeCalledTimes(1);
+    });
+
+    it('should return what it got from the helper function without messing with references.', () => {
+      useRoute.mockReturnValue({ pattern: '/test' });
+      const testWidgetSettings = { custom: 'setting' };
+      getWidgetSettings.mockReturnValue(testWidgetSettings);
+      const result = useWidgetSettings('widgetId', 3);
+      expect(result === testWidgetSettings).toBeTruthy();
     });
   });
 });
