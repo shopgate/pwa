@@ -10,6 +10,18 @@ class MediaProvider {
    */
   constructor() {
     this.containers = new Map();
+    this.isPending = false;
+    this.remoteScriptUrl = null;
+  }
+
+  /**
+   * Callback for when Provider script is loaded
+   * @callback
+   * @abstract
+   */
+  /* eslint-disable-next-line class-methods-use-this, require-jsdoc */
+  onScriptLoaded() {
+    logger.error('MediaProvider.onScriptLoaded() needs to be implemented within an inheriting class');
   }
 
   /**
