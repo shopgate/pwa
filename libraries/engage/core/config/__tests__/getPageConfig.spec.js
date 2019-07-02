@@ -23,13 +23,13 @@ describe('engage > core > config', () => {
       getThemeConfig.mockReturnValueOnce({
         pages: [{
           pattern: '/some/other/page',
-          name: 'OtherPage',
+          name: 'Other Page',
         }, {
           pattern: requestedPagePattern,
           name: 'Correct page',
         }, {
           pattern: '/yet/another/page',
-          name: 'YetAnotherPage',
+          name: 'Yet Another Page',
         }],
       });
       expect(getPageConfig(requestedPagePattern)).toEqual({
