@@ -23,6 +23,10 @@ jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (c
   /* eslint-enable class-methods-use-this */
 }));
 
+jest.mock('@shopgate/pwa-common/components/EmbeddedMedia', () => (
+  ({ children }) => children
+));
+
 describe('<HtmlWidget />', () => {
   describe('Basic rendering', () => {
     const settings = {
@@ -42,9 +46,9 @@ describe('<HtmlWidget />', () => {
 
     it('should render the HtmlWidget', () => {
       const wrapper = mount(<HtmlWidget settings={settings} />);
-
       expect(wrapper.render()).toMatchSnapshot();
-      expect(wrapper.childAt(0).prop('style')).toEqual({});
+
+      expect(wrapper.find('div').prop('style')).toEqual({});
       expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(1);
       expect(embeddedMediaAddSpy).toHaveBeenCalledWith(wrapper.instance().htmlContainer);
     });
@@ -57,7 +61,7 @@ describe('<HtmlWidget />', () => {
       />);
 
       expect(wrapper.render()).toMatchSnapshot();
-      expect(wrapper.childAt(0).prop('style').padding).toBe(variables.gap.big);
+      expect(wrapper.find('div').prop('style').padding).toBe(variables.gap.big);
     });
 
     it('should re-render when html updates', () => {
@@ -178,9 +182,5 @@ describe('<HtmlWidget />', () => {
 
       expect(mockConstructor).toHaveBeenCalledTimes(1);
     });
-  });
-
-  describe('Embedded media', () => {
-
   });
 });
