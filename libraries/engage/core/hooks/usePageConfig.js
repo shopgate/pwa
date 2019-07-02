@@ -2,8 +2,8 @@ import { useRoute } from './useRoute';
 import { getPageConfig } from '../config/getPageConfig';
 
 /**
- * Retrieves the configuration for the current page. The returned page config is pure properties
- * are not inherited!
+ * Retrieves the pure configuration for the current page.
+ * See documentation of `getPageConfig` for further details.
  *
  * @returns {Object}
  */

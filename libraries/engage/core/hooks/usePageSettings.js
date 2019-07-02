@@ -2,8 +2,8 @@ import { useRoute } from './useRoute';
 import { getPageSettings } from '../config/getPageSettings';
 
 /**
- * Retrieves the settings for the current page. If a key is given, values are inherited from the
- * upper config hierarchy, scoped by the given key.
+ * Retrieves the settings for the current page.
+ * See documentation of `getPageSettings` for further details.
  *
  * @param {string} [key=null] Optional key to read and inherit from theme settings
  * @returns {Object}
