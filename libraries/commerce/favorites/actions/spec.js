@@ -1,3 +1,5 @@
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import fetchFavorites from './fetchFavorites';
 import {
@@ -11,8 +13,12 @@ import {
 import {
   RECEIVE_FAVORITES,
   REQUEST_FAVORITES,
+  REQUEST_ADD_FAVORITES,
+  RECEIVE_ADD_FAVORITES,
+  REQUEST_REMOVE_FAVORITES,
+  RECEIVE_REMOVE_FAVORITES,
   ERROR_FETCH_FAVORITES,
-  RECEIVE_SYNC_FAVORITES, IDLE_SYNC_FAVORITES, ERROR_SYNC_FAVORITES,
+  ERROR_FAVORITES,
 } from '../constants';
 import * as pipelines from '../constants/Pipelines';
 
@@ -31,6 +37,9 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
     error: jest.fn(),
   },
 }));
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 describe('Favorites - actions', () => {
   describe(pipelines.SHOPGATE_USER_GET_FAVORITES, () => {
@@ -86,76 +95,138 @@ describe('Favorites - actions', () => {
     });
   });
 
-  describe(pipelines.SHOPGATE_USER_PUT_FAVORITES, () => {
-    const mockedDispatch = jest.fn();
+  describe(pipelines.SHOPGATE_USER_ADD_FAVORITES, () => {
+    const productId = 'product';
     it('should add', (done) => {
+      const expectedActions = [
+        {
+          type: REQUEST_ADD_FAVORITES,
+          productId,
+        },
+        {
+          type: RECEIVE_ADD_FAVORITES,
+          productId,
+        },
+      ];
       mockedResolver = (mockInstance, resolve) => {
         resolve();
       };
-      addFavorites('product')(mockedDispatch, mockedGetState);
-      expect(mockedDispatch.mock.calls.length).toBe(2);
-      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
-      expect(mockedDispatch.mock.calls.length).toBe(3);
+      const store = mockStore({});
+      store.dispatch(addFavorites(productId));
       setTimeout(() => {
-        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(RECEIVE_SYNC_FAVORITES);
+        expect(store.getActions()).toEqual(expectedActions);
+        done();
+      }, 0);
+    });
+
+    it('should handel add error', (done) => {
+      const mockError = new Error('mock error');
+      const expectedActions = [
+        {
+          type: REQUEST_ADD_FAVORITES,
+          productId,
+        },
+        {
+          type: ERROR_FAVORITES,
+          productId,
+          error: mockError,
+        },
+      ];
+      mockedResolver = (mockInstance, resolve, reject) => {
+        reject(mockError);
+      };
+      const store = mockStore({});
+      store.dispatch(addFavorites(productId));
+      setTimeout(() => {
+        expect(store.getActions()).toEqual(expectedActions);
         done();
       }, 0);
     });
   });
 
-  describe('removeFavorites', () => {
+  describe(pipelines.SHOPGATE_USER_DELETE_FAVORITES, () => {
     it('should remove', (done) => {
-      const mockedDispatch = jest.fn();
+      const productId = 'product';
+      const expectedActions = [
+        {
+          type: REQUEST_REMOVE_FAVORITES,
+          productId,
+          silent: false,
+        },
+        {
+          type: RECEIVE_REMOVE_FAVORITES,
+          productId,
+        },
+      ];
       mockedResolver = (mockInstance, resolve) => {
         resolve();
       };
-      removeFavorites('product')(mockedDispatch);
-      expect(mockedDispatch.mock.calls.length).toBe(2);
-      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
-      expect(mockedDispatch.mock.calls.length).toBe(3);
+      const store = mockStore({});
+      store.dispatch(removeFavorites(productId));
       setTimeout(() => {
-        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(RECEIVE_SYNC_FAVORITES);
+        expect(store.getActions()).toEqual(expectedActions);
         done();
       }, 0);
     });
 
     it('should remove with relatives', (done) => {
-      const mockedDispatch = jest.fn();
+      const relativeProductId = 'SG117';
+      const productId = 'SG118';
+      const expectedActions = [
+        {
+          type: REQUEST_REMOVE_FAVORITES,
+          productId: relativeProductId,
+          silent: false,
+        },
+        {
+          type: REQUEST_REMOVE_FAVORITES,
+          productId,
+          silent: false,
+        },
+        {
+          type: RECEIVE_REMOVE_FAVORITES,
+          productId: relativeProductId,
+        },
+        {
+          type: RECEIVE_REMOVE_FAVORITES,
+          productId,
+        },
+      ];
       mockedResolver = (mockInstance, resolve) => {
         resolve();
       };
-      removeFavorites('SG118', true)(mockedDispatch, mockedGetState('then', {
+      const store = mockStore(mockedGetState('then', {
         withProducts: true,
       }));
-      expect(mockedDispatch.mock.calls.length).toBe(4);
-      // Dispathing request sync twice to see if second one would be ignored (by counting others).
-      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
-      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
-      expect(mockedDispatch.mock.calls.length).toBe(5);
+      store.dispatch(removeFavorites(productId, true));
       setTimeout(() => {
-        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(RECEIVE_SYNC_FAVORITES);
-        // Last call should be requestSync dispatch again.
-        expect(typeof mockedDispatch.mock.calls.slice(-1)[0][0]).toBe('function');
-        // Now, last call should be IDLE.
-        mockedDispatch.mock.calls.slice(-1)[0][0](mockedDispatch);
-        expect(mockedDispatch.mock.calls.slice(-1)[0][0].type).toBe(IDLE_SYNC_FAVORITES);
+        expect(store.getActions()).toEqual(expectedActions);
         done();
       }, 0);
     });
-  });
 
-  describe('requestSync', () => {
-    it('should handle error', (done) => {
-      const mockedDispatch = jest.fn();
+    it('should handel remove error', (done) => {
+      const mockError = new Error('mock error');
+      const productId = 'product';
+      const expectedActions = [
+        {
+          type: REQUEST_REMOVE_FAVORITES,
+          productId,
+          silent: false,
+        },
+        {
+          type: ERROR_FAVORITES,
+          productId,
+          error: mockError,
+        },
+      ];
       mockedResolver = (mockInstance, resolve, reject) => {
-        reject();
+        reject(mockError);
       };
-      removeFavorites('SG117', true)(mockedDispatch, mockedGetState('then', {
-        withProducts: true,
-      }));
-      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
+      const store = mockStore({});
+      store.dispatch(removeFavorites(productId));
       setTimeout(() => {
-        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(ERROR_SYNC_FAVORITES);
+        expect(store.getActions()).toEqual(expectedActions);
         done();
       }, 0);
     });

@@ -4,7 +4,9 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import * as pipelines from '../constants/Pipelines';
 import {
   requestAddFavorites,
+  receiveAddFavorites,
   requestRemoveFavorites,
+  receiveRemoveFavorites,
   errorFavorites,
 } from '../action-creators';
 import {
@@ -20,6 +22,7 @@ const { favorites: { limit = 100 } = {} } = appConfig;
  * @returns {Promise} PipelineRequest dispatch.
  */
 const addFavorites = productId => (dispatch, getState) => {
+  dispatch(requestAddFavorites(productId));
   const count = getFavoritesCount(getState());
   if (count > limit) {
     const error = new Error('Limit exceeded');
@@ -33,7 +36,7 @@ const addFavorites = productId => (dispatch, getState) => {
     .setRetries(0)
     .dispatch()
     .then(() => {
-      dispatch(requestAddFavorites(productId));
+      dispatch(receiveAddFavorites(productId));
     })
     .catch((error) => {
       dispatch(errorFavorites(productId, error));
@@ -45,12 +48,13 @@ const addFavorites = productId => (dispatch, getState) => {
  * @param {Function} dispatch Dispatch function.
  */
 const removeProductFromFavorites = (productId, dispatch) => {
+  dispatch(requestRemoveFavorites(productId));
   new PipelineRequest(pipelines.SHOPGATE_USER_DELETE_FAVORITES)
     .setInput({ productId })
     .setRetries(0)
     .dispatch()
     .then(() => {
-      dispatch(requestRemoveFavorites(productId));
+      dispatch(receiveRemoveFavorites(productId));
     })
     .catch((error) => {
       dispatch(errorFavorites(productId, error));
