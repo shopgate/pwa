@@ -12,11 +12,11 @@ import { getPageConfig } from '../config/getPageConfig';
  * @param {number|undefined} [index=0] The optional index of the widget.
  * @returns {Object}
  */
-export function getWidgetConfig(pagePattern, widgetId, index) {
+export function getWidgetConfig(pagePattern, widgetId, index = 0) {
   const { widgets = [] } = getPageConfig(pagePattern, widgetId);
 
   const widgetConfig = [].concat(widgets).find((element, i) => {
-    if (index === undefined) {
+    if (!index) {
       return element.id === widgetId;
     }
 
