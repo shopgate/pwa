@@ -4,7 +4,7 @@ const mockAppConfig = {
   beta: true,
 };
 
-// Mock the config object
+// Mock the config object using class getters
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get beta() { return mockAppConfig.beta; },
   get theme() { return mockAppConfig.theme; },
