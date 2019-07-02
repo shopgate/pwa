@@ -43,6 +43,18 @@ describe('engage > core > config', () => {
       });
     });
 
+    it('should return the same config then an index of zero was given as if it was undefined.', () => {
+      getPageConfig.mockReturnValue({
+        widgets: [{
+          id: widgetId,
+          name: 'Correct Widget Id And First Found',
+        }],
+      });
+      const firstResult = getWidgetConfig(pagePattern, widgetId, 0);
+      expect(firstResult).toEqual(getWidgetConfig(pagePattern, widgetId, undefined));
+      jest.resetAllMocks();
+    });
+
     it('should only return the correct widget, which matches the given widgetId and given index.', () => {
       getPageConfig.mockReturnValueOnce({
         widgets: [{
