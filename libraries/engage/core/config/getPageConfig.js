@@ -8,7 +8,7 @@ import { getThemeConfig } from './getThemeConfig';
  * @returns {Object}
  */
 export function getPageConfig(pagePattern) {
-  const { pages } = getThemeConfig();
+  const { pages = [] } = getThemeConfig();
   const config = pages.find(element => element.pattern === pagePattern);
 
   if (!config) {
