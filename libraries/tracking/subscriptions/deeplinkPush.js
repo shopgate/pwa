@@ -2,6 +2,7 @@ import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   OPEN_DEEP_LINK,
   OPEN_PUSH_NOTIFICATION,
+  OPEN_UNIVERSAL_LINK,
 } from '@shopgate/pwa-common/constants/ActionTypes';
 import { track } from '../helpers/index';
 
@@ -16,6 +17,12 @@ const deeplinkOpened$ = main$
  */
 const pushOpened$ = main$
   .filter(({ action }) => action.type === OPEN_PUSH_NOTIFICATION);
+
+/**
+ * Emits when a universal link was opened.
+ */
+const universalLinkOpened$ = main$
+  .filter(({ action }) => action.type === OPEN_UNIVERSAL_LINK);
 
 /**
  * Deeplink and push message tracking subscriptions.
@@ -57,6 +64,25 @@ export default function deeplinkPush(subscribe) {
       url: action.link,
       notificationId,
       type: 'push_message',
+    }, state);
+  });
+
+  /**
+   * Gets triggered when a universal link was opened.
+   */
+  subscribe(universalLinkOpened$, ({ getState, action }) => {
+    const state = getState();
+    const { link = '', wasOpenedFromSearchIndex } = action.payload;
+    const eventLabel = wasOpenedFromSearchIndex ? 'os_search' : 'n/a';
+
+    track('openUniversalLink', {
+      eventAction: link,
+      eventLabel,
+    }, state);
+
+    track('setCampaignWithUrl', {
+      url: link,
+      type: 'universal_link',
     }, state);
   });
 }
