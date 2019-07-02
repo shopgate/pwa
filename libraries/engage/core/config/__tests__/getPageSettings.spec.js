@@ -13,7 +13,7 @@ jest.mock('../getPageConfig', () => ({
 const requestedPagePattern = '/requested/page';
 
 describe('engage > core > config', () => {
-  describe('getPageConfig()', () => {
+  describe('getPageSettings()', () => {
     beforeEach(() => {
       jest.resetAllMocks();
     });

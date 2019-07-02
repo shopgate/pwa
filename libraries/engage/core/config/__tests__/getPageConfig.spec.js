@@ -8,7 +8,7 @@ jest.mock('../getThemeConfig', () => ({
 const requestedPagePattern = '/requested/page';
 
 describe('engage > core > config', () => {
-  describe('getThemeConfig()', () => {
+  describe('getPageConfig()', () => {
     it('should return an empty object if no pages are defined in the theme config.', () => {
       getThemeConfig.mockReturnValueOnce({});
       expect(getPageConfig(requestedPagePattern)).toEqual({});
