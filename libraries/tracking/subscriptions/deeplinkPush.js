@@ -18,6 +18,9 @@ const deeplinkOpened$ = main$
 const pushOpened$ = main$
   .filter(({ action }) => action.type === OPEN_PUSH_NOTIFICATION);
 
+/**
+ * Emits when a universal link was opened.
+ */
 const universalLinkOpened$ = main$
   .filter(({ action }) => action.type === OPEN_UNIVERSAL_LINK);
 
@@ -64,6 +67,9 @@ export default function deeplinkPush(subscribe) {
     }, state);
   });
 
+  /**
+   * Gets triggered when a universal link was opened.
+   */
   subscribe(universalLinkOpened$, ({ getState, action }) => {
     const state = getState();
     const { link = '', wasOpenedFromSearchIndex } = action.payload;

@@ -11,14 +11,17 @@ import {
  */
 export default function handleLink(payload) {
   return (dispatch) => {
-    const { link = null } = payload;
+    let { link } = payload;
 
     if (!link) {
       return;
     }
 
+    // cast to string
+    link = String(link);
+
     let pathname;
-    if (typeof link === 'string' && link.startsWith('http')) {
+    if (link.startsWith('http')) {
       // Link is common URL schema.
       try {
         ({ pathname } = new URL(link));
