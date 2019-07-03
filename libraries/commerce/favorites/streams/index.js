@@ -8,9 +8,8 @@ import {
 import {
   FAVORITES_PATH,
   REQUEST_ADD_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
+  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
   RECEIVE_FAVORITES,
   ERROR_FETCH_FAVORITES,
   ERROR_FAVORITES,
@@ -44,5 +43,15 @@ export const favoritesWillRemoveItem$ = main$
   .filter(({ action }) => action.type === REQUEST_REMOVE_FAVORITES && !action.silent);
 
 export const favoritesSyncIdle$ = main$.filter(({ action }) => (
-  action.type === RECEIVE_ADD_FAVORITES || action.type === RECEIVE_REMOVE_FAVORITES
+  action.type === RECEIVE_ADD_REMOVE_FAVORITES_SYNC
 ));
+
+export const addRemoveFavorites$ = main$.filter(({ action }) => (
+  action.type === REQUEST_ADD_FAVORITES || action.type === REQUEST_REMOVE_FAVORITES
+));
+
+export const clearAddRemoveFavoritesBuffer$ = addRemoveFavorites$.debounceTime(2000).delay(2000);
+
+export const addRemoveBufferedFavorites$ = addRemoveFavorites$
+  .buffer(clearAddRemoveFavoritesBuffer$);
+

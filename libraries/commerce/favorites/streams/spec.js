@@ -8,11 +8,10 @@ import {
 import {
   ERROR_FAVORITES,
   ERROR_FETCH_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
   RECEIVE_FAVORITES,
+  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
 } from '../constants';
 
 describe('Favorites streams', () => {
@@ -55,8 +54,7 @@ describe('Favorites streams', () => {
 
   describe('favoritesSyncIdle$', () => {
     const actionName = [
-      RECEIVE_ADD_FAVORITES,
-      RECEIVE_REMOVE_FAVORITES,
+      RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
     ];
 
     actionName.forEach((type) => {

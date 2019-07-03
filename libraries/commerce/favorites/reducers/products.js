@@ -4,11 +4,10 @@ import {
   FAVORITES_LIFETIME,
   RECEIVE_FAVORITES,
   REQUEST_ADD_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
-  REQUEST_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
-  ERROR_FAVORITES,
+  REQUEST_FAVORITES,
+  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+  ERROR_ADD_REMOVE_FAVORITES_SYNC,
 } from '../constants';
 
 /**
@@ -48,16 +47,16 @@ const products = (state = {
         ids: state.ids.filter(id => id !== action.productId),
         outOfSync: false,
       };
-    case RECEIVE_ADD_FAVORITES:
-    case RECEIVE_REMOVE_FAVORITES:
+    case RECEIVE_ADD_REMOVE_FAVORITES_SYNC:
       return {
         ...state,
         isFetching: false,
         outOfSync: false,
       };
-    case ERROR_FAVORITES:
+    case ERROR_ADD_REMOVE_FAVORITES_SYNC:
       return {
         ...state,
+        isFetching: false,
         lastChange: 0, // Reset both to fetch ASAP
         outOfSync: false,
       };

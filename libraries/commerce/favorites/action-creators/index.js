@@ -7,6 +7,9 @@ import {
   REQUEST_REMOVE_FAVORITES,
   RECEIVE_REMOVE_FAVORITES,
   ERROR_FAVORITES,
+  REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+  ERROR_ADD_REMOVE_FAVORITES_SYNC,
 } from '../constants';
 
 /**
@@ -71,6 +74,44 @@ export const requestRemoveFavorites = (productId, silent = false) => ({
 export const receiveRemoveFavorites = productId => ({
   type: RECEIVE_REMOVE_FAVORITES,
   productId,
+});
+
+/**
+ * Request add remove favorites sync
+ * @param {[string]} productIdsToAdd Array of product identifiers
+ * @param {[string]} productIdsToRemove Array of product identifiers
+ * @return {Object}
+ */
+export const requestAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
+  type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+  productIdsToAdd,
+  productIdsToRemove,
+});
+
+/**
+ * Receive add remove favorites sync
+ * @param {[string]} productIdsToAdd Array of product identifiers
+ * @param {[string]} productIdsToRemove Array of product identifiers
+ * @return {Object}
+ */
+export const receiveAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
+  type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+  productIdsToAdd,
+  productIdsToRemove,
+});
+
+/**
+ * Error add remove favorites sync
+ * @param {[string]} productIdsToAdd Array of product identifiers
+ * @param {[string]} productIdsToRemove Array of product identifiers
+ * @param {Object} error Error object
+ * @return {Object}
+ */
+export const errorAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove, error) => ({
+  type: ERROR_ADD_REMOVE_FAVORITES_SYNC,
+  productIdsToAdd,
+  productIdsToRemove,
+  error,
 });
 
 /**

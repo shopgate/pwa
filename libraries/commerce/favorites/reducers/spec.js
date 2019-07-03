@@ -2,11 +2,10 @@ import {
   RECEIVE_FAVORITES,
   REQUEST_FAVORITES,
   ERROR_FETCH_FAVORITES,
-  ERROR_FAVORITES,
   REQUEST_ADD_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
+  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+  ERROR_ADD_REMOVE_FAVORITES_SYNC,
 } from '../constants';
 import reducers from './index';
 import { mockedList } from '../mock';
@@ -81,9 +80,9 @@ describe('Favorites - reducers', () => {
       expect(state.products.ids).toContain(productId);
     });
 
-    it('should react on RECEIVE_ADD_FAVORITES ', () => {
+    it(`should react on ${RECEIVE_ADD_REMOVE_FAVORITES_SYNC} `, () => {
       state = reducers(state, {
-        type: RECEIVE_ADD_FAVORITES,
+        type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
         productId,
       });
       expect(state.products.isFetching).toBe(false);
@@ -124,19 +123,9 @@ describe('Favorites - reducers', () => {
       expect(state.products.ids).not.toContain(productId);
     });
 
-    it('should react on RECEIVE_REMOVE_FAVORITES ', () => {
+    it(`should react on ${ERROR_ADD_REMOVE_FAVORITES_SYNC} `, () => {
       state = reducers(state, {
-        type: RECEIVE_REMOVE_FAVORITES,
-        productId,
-      });
-      expect(state.products.isFetching).toBe(false);
-      expect(state.products.outOfSync).toBe(false);
-      expect(typeof state).toBe('object');
-    });
-
-    it('should react on ERROR_FAVORITES ', () => {
-      state = reducers(state, {
-        type: ERROR_FAVORITES,
+        type: ERROR_ADD_REMOVE_FAVORITES_SYNC,
         productId,
         error: new Error('mock error'),
       });

@@ -6,8 +6,10 @@ import {
   shouldFetchFreshFavorites$,
   favoritesSyncIdle$,
   favoritesError$,
+  addRemoveBufferedFavorites$,
 } from '../streams';
 import fetchFavorites from '../actions/fetchFavorites';
+import { syncAddRemoveFavorites } from '../actions/toggleFavorites';
 import { requestRemoveFavorites } from '../action-creators';
 import { FETCH_FAVORITES_THROTTLE } from '../constants';
 
@@ -52,5 +54,27 @@ export default function favorites(subscribe) {
         dispatch(requestRemoveFavorites(action.productId, true));
       }
     });
+  });
+
+  subscribe(addRemoveBufferedFavorites$, (bufferedParams) => {
+    if (!(Array.isArray(bufferedParams) && bufferedParams.length > 0)) {
+      return;
+    }
+
+    const paramWithDispatch = bufferedParams.find(param => (
+      typeof param === 'object' && param.hasOwnProperty('dispatch')
+    ));
+
+    if (!paramWithDispatch) {
+      return;
+    }
+    const { dispatch } = paramWithDispatch;
+    const bufferedActions = bufferedParams
+      .filter(param => (
+        typeof param === 'object' && param.hasOwnProperty('action')
+      ))
+      .map(param => param.action);
+
+    dispatch(syncAddRemoveFavorites(bufferedActions));
   });
 }
