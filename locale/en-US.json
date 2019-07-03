@@ -67,6 +67,9 @@
       "until": "Available until {endDate, date, MMM} {endDate, date, DD} at {endDate, time, short}",
       "not": "Currently not available",
       "not_search_similar": "{name} not available. Search for similar products?"
+    },
+    "relations": {
+      "showMore": "Show All"
     }
   },
   "category": {
@@ -188,7 +191,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
