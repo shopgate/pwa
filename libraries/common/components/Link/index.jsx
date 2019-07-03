@@ -20,6 +20,7 @@ class Link extends Component {
     replace: PropTypes.bool,
     role: PropTypes.string,
     state: PropTypes.shape(),
+    tabIndex: PropTypes.number,
     tag: PropTypes.string,
   };
 
@@ -30,6 +31,7 @@ class Link extends Component {
     replace: false,
     role: 'link',
     tag: 'div',
+    tabIndex: null,
     state: {},
   };
 
@@ -59,7 +61,7 @@ class Link extends Component {
    */
   render() {
     const {
-      tag: Tag, className, href, children, role, 'aria-label': ariaLabel,
+      tag: Tag, className, href, children, role, 'aria-label': ariaLabel, tabIndex,
     } = this.props;
     return (
       <Tag
@@ -68,6 +70,7 @@ class Link extends Component {
         role={role}
         data-test-id={`link: ${href}`}
         aria-label={ariaLabel}
+        tabIndex={tabIndex}
       >
         {children}
       </Tag>

@@ -25,10 +25,12 @@ exports[`<FormatPrice /> Given the component was mounted to the DOM should match
       <Translate
         className=""
         params={Object {}}
+        role={null}
         string="greeting"
       >
         <span
           className=""
+          role={null}
         >
           Hello 
           <FormatPrice

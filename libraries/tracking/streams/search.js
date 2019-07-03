@@ -9,7 +9,7 @@ import { getCurrentSearchQuery } from '@shopgate/pwa-common/selectors/router';
 import { searchDidEnter$ } from '@shopgate/pwa-common-commerce/search/streams';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { pwaDidAppear$ } from './app';
+import { pwaDidAppear$ } from '@shopgate/pwa-common/streams/app';
 
 /**
  * Emits when the search route comes active again after a legacy page was active.

@@ -29,6 +29,7 @@ class Sheet extends Component {
     duration: PropTypes.number,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
+    onDidOpen: PropTypes.func,
     onOpen: PropTypes.func,
     title: Header.propTypes.title,
   };
@@ -46,6 +47,7 @@ class Sheet extends Component {
     duration: 300,
     isOpen: false,
     onClose: () => {},
+    onDidOpen: () => {},
     onOpen: () => {},
     title: '',
   };
@@ -141,6 +143,7 @@ class Sheet extends Component {
         <Drawer
           className={drawerClassNames}
           isOpen={this.state.isOpen}
+          onDidOpen={this.props.onDidOpen}
           onOpen={this.props.onOpen}
           onClose={this.handleClose}
           animation={this.animationProps}

@@ -45,7 +45,7 @@ class SheetList extends Component {
     };
 
     return (
-      <List className={className}>
+      <List className={className} role="listbox">
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) {
             return null;
@@ -65,6 +65,7 @@ class SheetList extends Component {
               className={classNames(itemClasses, childClasses)}
               isSelected={isSelected}
               key={key}
+              tabIndex={0}
             >
               <div className={styles.innerContainer} data-test-id={testId}>
                 {child}

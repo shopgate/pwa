@@ -107,7 +107,7 @@ class Footer extends Component {
   hasVisibleContent() {
     if (this.ref.current) {
       const elements = this.ref.current.parentElement
-        .querySelectorAll(`footer > *:not(#${APP_FOOTER_ID}), #${APP_FOOTER_ID} > *`);
+        .querySelectorAll(`div.${footer.toString()} > *:not(#${APP_FOOTER_ID}), #${APP_FOOTER_ID} > *`);
 
       return Array
         .from(elements)
@@ -125,13 +125,13 @@ class Footer extends Component {
    */
   render() {
     return (
-      <footer className={footer} ref={this.ref} >
+      <div className={footer} ref={this.ref} >
         <Portal name={APP_FOOTER_CONTENT_BEFORE} />
         <div id={APP_FOOTER_ID}>
           {this.props.children}
         </div>
         <Portal name={APP_FOOTER_CONTENT_AFTER} />
-      </footer>
+      </div>
     );
   }
 }

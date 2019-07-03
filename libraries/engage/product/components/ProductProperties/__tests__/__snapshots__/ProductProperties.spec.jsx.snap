@@ -193,6 +193,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
               className="css-1x8awm9"
             >
               <table>
+                <thead />
                 <tbody>
                   <Rows
                     properties={

@@ -11,6 +11,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
         null,
       ]
     }
+    role={null}
     string="foo"
   />
 </div>
@@ -27,6 +28,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
         20,
       ]
     }
+    role={null}
     string="SAVE {0}%"
   />
 </div>

@@ -1,11 +1,14 @@
 import {
   APP_WILL_START,
   APP_DID_START,
+  PWA_DID_APPEAR,
+  PWA_DID_DISAPPEAR,
   RESET_APP,
   WILL_REGISTER_LINK_EVENTS,
   DID_REGISTER_LINK_EVENTS,
   OPEN_DEEP_LINK,
   OPEN_PUSH_NOTIFICATION,
+  OPEN_UNIVERSAL_LINK,
 } from '../../constants/ActionTypes';
 
 /**
@@ -36,6 +39,22 @@ export const appDidStart = location => ({
 export const resetApp = reducers => ({
   type: RESET_APP,
   reducers,
+});
+
+/**
+ * Creates the dispatched PWA_DID_APPEAR action object.
+ * @return {Object} The dispatched action object.
+ */
+export const pwaDidAppear = () => ({
+  type: PWA_DID_APPEAR,
+});
+
+/**
+ * Creates the dispatched PWA_DID_DISAPPEAR action
+ * @return {Object} The dispatched action object.
+ */
+export const pwaDidDisappear = () => ({
+  type: PWA_DID_DISAPPEAR,
 });
 
 /**
@@ -74,4 +93,14 @@ export const openPushNotification = (notificationId, link = '') => ({
   type: OPEN_PUSH_NOTIFICATION,
   notificationId,
   link,
+});
+
+/**
+ * Creates the dispatched OPEN_UNIVERSAL_LINK action object.
+ * @param {Object} payload The payload of the universal link.
+ * @return {Object} The dispatched action object.
+ */
+export const openUniversalLink = payload => ({
+  type: OPEN_UNIVERSAL_LINK,
+  payload,
 });

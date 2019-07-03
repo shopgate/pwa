@@ -16,10 +16,12 @@ exports[`<Item /> should render as a button when no href, but a click handler is
     <Translate
       className=""
       params={Object {}}
+      role={null}
       string="Item Label"
     >
       <span
         className=""
+        role={null}
       >
         Item Label
       </span>
@@ -44,10 +46,12 @@ exports[`<Item /> should render as a link when an href is passed to the props 1`
       <Translate
         className=""
         params={Object {}}
+        role={null}
         string="Item Label"
       >
         <span
           className=""
+          role={null}
         >
           Item Label
         </span>

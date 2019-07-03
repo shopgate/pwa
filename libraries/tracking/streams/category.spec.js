@@ -13,7 +13,7 @@ import {
   ROOT_CATEGORY_PATTERN,
   CATEGORY_PATTERN,
 } from '@shopgate/pwa-common-commerce/category/constants';
-import { pwaDidAppear } from '../action-creators';
+import { pwaDidAppear } from '@shopgate/pwa-common/action-creators';
 import { categoryIsReady$ } from './category';
 
 let mockedRoutePattern;

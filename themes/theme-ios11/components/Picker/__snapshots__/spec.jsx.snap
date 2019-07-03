@@ -1,59 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Picker /> should render the picker 1`] = `
-<Picker
-  buttonComponent={null}
-  buttonProps={Object {}}
-  clickDelay={150}
-  hasButton={true}
+<_default
   label="Picker label"
-  sheetProps={Object {}}
 >
-  <Picker
-    buttonComponent={[Function]}
-    buttonProps={Object {}}
-    className="css-kdzjuz"
-    clickDelay={150}
-    disabled={false}
-    duration={300}
-    isOpen={false}
-    items={Array []}
-    label="Picker label"
-    listComponent={[Function]}
-    modalComponent={[Function]}
-    onChange={[Function]}
-    onClose={[Function]}
-    onSelect={[Function]}
-    placeholder="Pick ..."
-    value={null}
-  >
-    <div
-      className="css-kdzjuz"
+  <Consumer>
+    <Picker
+      buttonComponent={null}
+      buttonProps={Object {}}
+      clickDelay={150}
+      hasButton={true}
+      label="Picker label"
+      setViewAriaHidden={[Function]}
+      sheetProps={Object {}}
     >
-      <Button
-        disabled={false}
-        label="Pick ..."
-        openList={[Function]}
-        value=""
-      >
-        <button
-          className="css-164ggb6"
-          onClick={[Function]}
-        >
-          <span
-            className="css-1358lbd"
-          >
-            Pick ...
-          </span>
-        </button>
-      </Button>
-      <Portal
-        isOpened={true}
+      <ForwardRef(WithForwardedRef(Picker))
+        buttonComponent={[Function]}
+        buttonProps={Object {}}
+        className="css-kdzjuz"
+        clickDelay={150}
+        label="Picker label"
+        listComponent={[Function]}
+        modalComponent={[Function]}
         onClose={[Function]}
-        onOpen={[Function]}
-        onUpdate={[Function]}
-      />
-    </div>
-  </Picker>
-</Picker>
+        setViewAriaHidden={[Function]}
+      >
+        <Picker
+          buttonComponent={[Function]}
+          buttonProps={Object {}}
+          className="css-kdzjuz"
+          clickDelay={150}
+          disabled={false}
+          duration={300}
+          forwardedRef={
+            Object {
+              "current": <div
+                aria-haspopup="true"
+                class="css-kdzjuz"
+                role="button"
+                tabindex="0"
+              >
+                <button
+                  class="css-164ggb6"
+                >
+                  <span
+                    class="css-1358lbd"
+                  >
+                    Pick ...
+                  </span>
+                  
+                </button>
+              </div>,
+            }
+          }
+          isOpen={false}
+          items={Array []}
+          label="Picker label"
+          listComponent={[Function]}
+          modalComponent={[Function]}
+          onChange={[Function]}
+          onClose={[Function]}
+          onSelect={[Function]}
+          placeholder="Pick ..."
+          setViewAriaHidden={[Function]}
+          value={null}
+        >
+          <div
+            aria-haspopup={true}
+            className="css-kdzjuz"
+            role="button"
+            tabIndex={0}
+          >
+            <Button
+              disabled={false}
+              label="Pick ..."
+              openList={[Function]}
+              value=""
+            >
+              <button
+                className="css-164ggb6"
+                onClick={[Function]}
+              >
+                <span
+                  className="css-1358lbd"
+                >
+                  Pick ...
+                </span>
+              </button>
+            </Button>
+            <Portal
+              isOpened={true}
+              onClose={[Function]}
+              onOpen={[Function]}
+              onUpdate={[Function]}
+            />
+          </div>
+        </Picker>
+      </ForwardRef(WithForwardedRef(Picker))>
+    </Picker>
+  </Consumer>
+</_default>
 `;

@@ -20,6 +20,7 @@ class ViewProvider extends Component {
       top: 0,
       bottom: 0,
       contentRef: { current: null },
+      ariaHidden: false,
     };
   }
 
@@ -32,6 +33,7 @@ class ViewProvider extends Component {
       set: this.set,
       setTop: this.setTop,
       setBottom: this.setBottom,
+      setAriaHidden: this.setAriaHidden,
       setContentRef: this.setContentRef,
       getContentRef: this.getContentRef,
       scrollTop: this.scrollTop,
@@ -50,6 +52,13 @@ class ViewProvider extends Component {
    */
   setBottom = (value) => {
     this.set('bottom', value);
+  }
+
+  /**
+   * @param {boolean} value The new aria hidden value;
+   */
+  setAriaHidden = (value) => {
+    this.set('ariaHidden', value);
   }
 
   /**

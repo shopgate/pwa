@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
+import EmbeddedMedia from '../EmbeddedMedia';
 import parseHTML from '../../helpers/html/parseHTML';
 
 /**
@@ -13,6 +14,7 @@ class HtmlSanitizer extends Component {
     decode: PropTypes.bool,
     processStyles: PropTypes.bool,
     settings: PropTypes.shape(),
+    wrapper: PropTypes.func,
   };
 
   static defaultProps = {
@@ -21,6 +23,7 @@ class HtmlSanitizer extends Component {
     decode: false,
     processStyles: false,
     settings: {},
+    wrapper: EmbeddedMedia,
   };
 
   /**
@@ -100,13 +103,17 @@ class HtmlSanitizer extends Component {
       ),
     };
 
+    const { wrapper: Wrapper } = this.props;
+
     return (
-      <div
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={innerHTML}
-        ref={this.htmlContainer}
-        className={this.props.className}
-      />
+      <Wrapper>
+        <div
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={innerHTML}
+          ref={this.htmlContainer}
+          className={this.props.className}
+        />
+      </Wrapper>
     );
   }
 }

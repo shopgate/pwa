@@ -1,5 +1,5 @@
 {
-  "version": "6.5.2",
+  "version": "6.5.3",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -190,7 +190,19 @@
         "label": "The theme configuration for Engage GMD theme."
       },
       "default": {
-        "settings": {},
+        "settings": {
+          "@shopgate/engage/components/AppBar": {
+            "background": "#fff",
+            "color": "#000",
+            "buttonColor": "inherit",
+            "buttonCartColor": "inherit",
+            "buttonCartBackground": "inherit",
+            "buttonCartBadgeColor": "$.colors.primaryContrast",
+            "buttonCartBadgeBackground": "$.colors.primary",
+            "buttonTextColor": "$.colors.accent",
+            "buttonTextColorDisabled": "$.colors.shade4"
+          }
+        },
         "typography": {
           "family": "system, -apple-system, \"SF Pro Display\", \"Helvetica Neue\", \"Lucida Grande\"",
           "rootSize": 17,

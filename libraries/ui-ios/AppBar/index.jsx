@@ -15,6 +15,7 @@ import styles from './style';
  */
 class AppBar extends PureComponent {
   static propTypes = {
+    'aria-hidden': PropTypes.bool,
     backgroundColor: PropTypes.string,
     below: PropTypes.node,
     center: PropTypes.node,
@@ -28,6 +29,7 @@ class AppBar extends PureComponent {
   }
 
   static defaultProps = {
+    'aria-hidden': null,
     backgroundColor: '#fff',
     below: null,
     center: null,
@@ -61,7 +63,7 @@ class AppBar extends PureComponent {
    */
   render() {
     const {
-      below, center, left, right, classes,
+      below, center, left, right, classes, 'aria-hidden': ariaHidden,
     } = this.props;
     const sectionClasses = classnames(styles.outer, classes.outer);
 
@@ -70,6 +72,7 @@ class AppBar extends PureComponent {
         className={sectionClasses}
         data-test-id="Navigator"
         style={this.style}
+        aria-hidden={ariaHidden}
       >
         <div className={classnames(styles.inner, classes.inner)}>
           <Left elements={left} />

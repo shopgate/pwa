@@ -5,7 +5,13 @@ import {
   closeInAppBrowser,
   onload,
 } from '@shopgate/pwa-core';
-import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
+import {
+  EVENT_KEYBOARD_WILL_CHANGE,
+  APP_EVENT_VIEW_WILL_APPEAR,
+  APP_EVENT_VIEW_DID_APPEAR,
+  APP_EVENT_VIEW_WILL_DISAPPEAR,
+  APP_EVENT_VIEW_DID_DISAPPEAR,
+} from '@shopgate/pwa-core/constants/AppEvents';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/constants/ErrorManager';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
@@ -22,7 +28,7 @@ import {
   onUpdate,
 } from '@virtuous/conductor';
 import { UI_VISIBILITY_CHANGE } from '../constants/ui';
-import { appError, pipelineError } from '../action-creators';
+import { appError, pipelineError, pwaDidAppear, pwaDidDisappear } from '../action-creators';
 import {
   historyPush,
   routeWillPush,
@@ -56,7 +62,9 @@ import clearUpInAppBrowser from './helpers/clearUpInAppBrowser';
  */
 export default function app(subscribe) {
   // Gets triggered before the app starts.
-  subscribe(appWillStart$, ({ dispatch, action }) => {
+  subscribe(appWillStart$, ({
+    dispatch, action, getState, events,
+  }) => {
     embeddedMedia.addProvider(new Vimeo());
     embeddedMedia.addProvider(new YouTube());
 
@@ -83,12 +91,27 @@ export default function app(subscribe) {
     // Map the error events into the Observable streams.
     errorEmitter.addListener(SOURCE_APP, error => dispatch(appError(error)));
     errorEmitter.addListener(SOURCE_PIPELINE, error => dispatch(pipelineError(error)));
+
+    /** @returns {*} */
+    const viewVisibility = () => events.emit(UI_VISIBILITY_CHANGE);
+
+    event.addCallback('routeDidChange', viewVisibility);
+
+    event.addCallback(APP_EVENT_VIEW_DID_DISAPPEAR, () => {
+      dispatch(pwaDidDisappear());
+      viewVisibility();
+    });
+
+    event.addCallback(APP_EVENT_VIEW_DID_APPEAR, () => {
+      dispatch(pwaDidAppear());
+      clearUpInAppBrowser(isAndroid(getState()));
+    });
   });
 
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ dispatch, getState, events }) => {
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
     // Register for custom events
     registerEvents([
       EVENT_KEYBOARD_WILL_CHANGE,
@@ -103,7 +126,7 @@ export default function app(subscribe) {
     // Add event callbacks
     event.addCallback('pageContext', pageContext);
     // Handle native/legacy navigation bar
-    event.addCallback('viewWillAppear', prepareLegacyNavigation);
+    event.addCallback(APP_EVENT_VIEW_WILL_APPEAR, prepareLegacyNavigation);
     event.addCallback('showPreviousTab', showPreviousTab);
     /**
      * This event is triggered form the desktop shop in the inAppBrowser.
@@ -119,10 +142,6 @@ export default function app(subscribe) {
       closeInAppBrowser(isAndroid(getState()));
     });
 
-    event.addCallback('viewDidAppear', () => {
-      clearUpInAppBrowser(isAndroid(getState()));
-    });
-
     event.addCallback('connectivityDidChange', (data) => {
       dispatch(receiveClientConnectivity(data));
     });
@@ -131,15 +150,8 @@ export default function app(subscribe) {
      * The following events are sometimes sent by the app, but don't need to be handled right now.
      * To avoid console warnings from the event system, empty handlers are registered here.
      */
-    event.addCallback('viewWillDisappear', () => {});
-    event.addCallback('viewDidDisappear', () => {});
+    event.addCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, () => {});
     event.addCallback('pageInsetsChanged', () => {});
-
-    /** @returns {*} */
-    const viewVisibility = () => events.emit(UI_VISIBILITY_CHANGE);
-
-    event.addCallback('routeDidChange', viewVisibility);
-    event.addCallback('viewDidDisappear', viewVisibility);
 
     /*
      * Onload must be send AFTER app did start.

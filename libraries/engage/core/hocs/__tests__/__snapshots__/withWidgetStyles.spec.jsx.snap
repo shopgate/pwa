@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > hocs > withWidgetStyles should merge add the widget settings to a wrapped component 1`] = `
+<WithWidgetStyles(MockComponent)>
+  <MockComponent
+    widgetStyles={
+      Object {
+        "some": "style",
+      }
+    }
+  />
+</WithWidgetStyles(MockComponent)>
+`;

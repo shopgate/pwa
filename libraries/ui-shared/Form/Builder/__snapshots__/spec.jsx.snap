@@ -111,6 +111,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -129,10 +130,12 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="foo"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         foo
                       </span>
@@ -358,6 +361,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -376,10 +380,12 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="foo"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         foo
                       </span>
@@ -563,6 +569,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -581,10 +588,12 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="bar"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         bar
                       </span>
@@ -810,6 +819,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -828,10 +838,12 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="foo"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         foo
                       </span>
@@ -1135,6 +1147,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1153,10 +1166,12 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="foo"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         foo
                       </span>
@@ -1327,6 +1342,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1345,10 +1361,12 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="bar"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         bar
                       </span>
@@ -1581,6 +1599,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1599,10 +1618,12 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="foo"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         foo
                       </span>
@@ -1791,6 +1812,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1809,10 +1831,12 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="bar"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         bar
                       </span>
@@ -2045,6 +2069,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2063,10 +2088,12 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="foo"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         foo
                       </span>
@@ -2255,6 +2282,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2273,10 +2301,12 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="bar"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         bar
                       </span>

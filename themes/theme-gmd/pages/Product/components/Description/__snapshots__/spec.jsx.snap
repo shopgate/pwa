@@ -27,15 +27,19 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
       className="css-16vd0g8"
     >
       <div
+        aria-hidden={true}
         className="css-10lhp8m"
+        role="heading"
       >
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="product.description_heading"
         >
           <span
             className=""
+            role={null}
           >
             product.description_heading
           </span>
@@ -134,15 +138,19 @@ exports[`<ProductDescription /> should render description if data is available 1
       className="css-16vd0g8"
     >
       <div
+        aria-hidden={true}
         className="css-10lhp8m"
+        role="heading"
       >
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="product.description_heading"
         >
           <span
             className=""
+            role={null}
           >
             product.description_heading
           </span>
@@ -167,15 +175,18 @@ exports[`<ProductDescription /> should render description if data is available 1
                 "html": "<h1>foo</h1>",
               }
             }
+            wrapper={[Function]}
           >
-            <div
-              className={null}
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<h1>foo</h1>",
+            <EmbeddedMedia>
+              <div
+                className={null}
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<h1>foo</h1>",
+                  }
                 }
-              }
-            />
+              />
+            </EmbeddedMedia>
           </HtmlSanitizer>
         </div>
       </PlaceholderParagraph>

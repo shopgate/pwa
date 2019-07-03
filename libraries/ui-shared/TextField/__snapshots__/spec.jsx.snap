@@ -32,6 +32,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -50,6 +51,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -152,6 +154,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -192,6 +195,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -210,6 +214,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -312,6 +317,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -352,6 +358,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -370,6 +377,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -472,6 +480,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -512,6 +521,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -530,6 +540,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -632,6 +643,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -672,6 +684,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -690,6 +703,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -792,6 +806,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -832,6 +847,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -850,6 +866,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -951,10 +968,12 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="Custom validation error"
         >
           <span
             className=""
+            role={null}
           >
             Custom validation error
           </span>
@@ -997,6 +1016,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1015,6 +1035,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -1117,6 +1138,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1157,6 +1179,7 @@ exports[`<TextField /> should show the error message 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1175,6 +1198,7 @@ exports[`<TextField /> should show the error message 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -1276,10 +1300,12 @@ exports[`<TextField /> should show the error message 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="This is an error here"
         >
           <span
             className=""
+            role={null}
           >
             This is an error here
           </span>
@@ -1322,10 +1348,12 @@ exports[`<TextField /> should show the hint text 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="This is the hint text"
         >
           <span
             className=""
+            role={null}
           >
             This is the hint text
           </span>
@@ -1346,6 +1374,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -1448,6 +1477,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1488,6 +1518,7 @@ exports[`<TextField /> should show the label 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1506,10 +1537,12 @@ exports[`<TextField /> should show the label 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="This is the label"
         >
           <span
             className=""
+            role={null}
           >
             This is the label
           </span>
@@ -1614,6 +1647,7 @@ exports[`<TextField /> should show the label 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1675,6 +1709,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1693,6 +1728,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -1795,6 +1831,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1849,6 +1886,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>
@@ -1867,6 +1905,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </label>
@@ -1969,6 +2008,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string=""
         />
       </div>

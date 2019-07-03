@@ -16,6 +16,7 @@ const Wrapper = ({ children, dense }) => (
     })}
   >
     <table>
+      <thead />
       <tbody>
         {children}
       </tbody>

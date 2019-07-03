@@ -15,6 +15,7 @@ exports[`<TextMessageDialog /> should render the actions 1`] = `
   <Translate
     className=""
     params={Object {}}
+    role={null}
     string="This is the message."
   />
 </BasicDialog>
@@ -28,6 +29,7 @@ exports[`<TextMessageDialog /> should render with minimal props 1`] = `
   <Translate
     className=""
     params={Object {}}
+    role={null}
     string="This is the message."
   />
 </BasicDialog>
@@ -41,6 +43,7 @@ exports[`<TextMessageDialog /> should render with title and message 1`] = `
   <Translate
     className=""
     params={Object {}}
+    role={null}
     string="This is the message."
   />
 </BasicDialog>
@@ -58,6 +61,7 @@ exports[`<TextMessageDialog /> should render with title, message and messagePara
         "name": "Placeholder",
       }
     }
+    role={null}
     string="Message with {name}"
   />
 </BasicDialog>

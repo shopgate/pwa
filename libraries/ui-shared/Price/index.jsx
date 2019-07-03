@@ -32,6 +32,10 @@ const Price = (props, context) => {
     ariaPrice = _p(props.unitPrice, props.currency, props.fractions);
   }
 
+  ariaPrice = ariaPrice.replace('-', '\u2212');
+
+  /* eslint-disable jsx-a11y/aria-role */
+
   /**
    * A unitPriceMin > 0 means, that the product has child products with different prices.
    * The unitPriceMin contains the lowest of these prices and will be
@@ -41,29 +45,31 @@ const Price = (props, context) => {
     <div
       className={containerClasses}
       data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
-      aria-label={__('price.label', { price: ariaPrice })}
     >
-      {props.unitPriceMin ? (
-        <I18n.Text string="price.from">
+      <span role="text" aria-label={__('price.label', { price: ariaPrice })}>
+        {props.unitPriceMin ? (
+          <I18n.Text string="price.from">
+            <I18n.Price
+              currency={props.currency}
+              fractions={props.fractions}
+              forKey="price"
+              price={props.unitPriceMin}
+            />
+          </I18n.Text>
+        ) : (
           <I18n.Price
             currency={props.currency}
             fractions={props.fractions}
-            forKey="price"
-            price={props.unitPriceMin}
+            price={props.unitPrice}
           />
-        </I18n.Text>
-      ) : (
-        <I18n.Price
-          currency={props.currency}
-          fractions={props.fractions}
-          price={props.unitPrice}
-        />
-      )}
+        )}
+      </span>
       {props.taxDisclaimer && showTaxDisclaimer ? (
-        <div className={styles.disclaimer}>*</div>
+        <div role="text" className={styles.disclaimer} aria-label={__('product.tax_disclaimer')}>*</div>
       ) : null}
     </div>
   );
+  /* eslint-enable jsx-a11y/aria-role */
 };
 
 Price.propTypes = {

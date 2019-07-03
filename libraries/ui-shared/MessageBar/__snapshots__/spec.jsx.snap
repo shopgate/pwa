@@ -150,10 +150,12 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       <Translate
         className=""
         params={null}
+        role={null}
         string="some.translation.string"
       >
         <span
           className=""
+          role={null}
         >
           some.translation.string
         </span>
@@ -171,10 +173,12 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
             "myCustomParam2": "-> TEST-VALUE #2 <-",
           }
         }
+        role={null}
         string="Message with messageParams"
       >
         <span
           className=""
+          role={null}
         >
           Message with messageParams
         </span>
