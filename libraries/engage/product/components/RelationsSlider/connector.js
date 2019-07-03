@@ -6,11 +6,11 @@ import { fetchProductRelations, getRelatedProducts } from '@shopgate/pwa-common-
  * @param {Object} props The component props.
  * @returns {Object}
  */
-const mapStateToProps = (state, { productId, type }) => ({
+const mapStateToProps = (state, { productId, type, limit = 10 }) => ({
   products: getRelatedProducts({
     productId,
     type,
-    limit: 100,
+    limit,
   })(state),
 });
 
@@ -19,11 +19,11 @@ const mapStateToProps = (state, { productId, type }) => ({
  * @param {Object} props The component props.
  * @returns {Object}
  */
-const mapDispatchToProps = (dispatch, { productId, type }) => ({
+const mapDispatchToProps = (dispatch, { productId, type, limit = 10 }) => ({
   getRelations: () => dispatch(fetchProductRelations({
     productId,
     type,
-    limit: 100,
+    limit,
   })),
 });
 

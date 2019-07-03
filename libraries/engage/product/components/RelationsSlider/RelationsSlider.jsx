@@ -9,7 +9,7 @@ import { WIDGET_ID } from './constants';
  * @param {string} desiredPosition The position the relations slider needs to render.
  * @returns {JSX}
  */
-export const RelationsSlider = ({ desiredPosition }) => {
+const RelationsSlider = ({ desiredPosition }) => {
   const { type, position } = useWidgetSettings(WIDGET_ID);
   const { productId } = useCurrentProduct();
 
@@ -27,3 +27,5 @@ RelationsSlider.propTypes = {
 RelationsSlider.defaultProps = {
   desiredPosition: 'header',
 };
+
+export default RelationsSlider;

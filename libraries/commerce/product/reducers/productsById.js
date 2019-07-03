@@ -7,6 +7,7 @@ import {
   ERROR_PRODUCT,
   UPDATE_METADATA,
   EXPIRE_PRODUCT_BY_ID,
+  RECEIVE_PRODUCT_RELATIONS,
 } from '../constants';
 import { RECEIVE_FAVORITES } from '../../favorites/constants';
 import handleProductCollection from './helpers/handleProductCollection';
@@ -24,6 +25,11 @@ export default function productsById(state = {}, action) {
       return {
         ...state,
         ...handleProductCollection(action.products),
+      };
+    case RECEIVE_PRODUCT_RELATIONS:
+      return {
+        ...state,
+        ...handleProductCollection(action.payload.relations),
       };
     case REQUEST_PRODUCT:
       return {

@@ -1,8 +1,9 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, Card } from '@shopgate/engage/components';
 import ProductCard from '../ProductCard';
-import { useWidgetSettings } from '../../../core';
+import RelationsSheet from './RelationsSheet';
+import { useWidgetSettings, useCurrentProduct } from '../../../core';
 import connect from './connector';
 import { WIDGET_ID } from './constants';
 import * as styles from './style';
@@ -11,13 +12,16 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const RelationsSliderContent = ({ products, getRelations }) => {
+const RelationsSliderContent = memo(connect(({ products, getRelations }) => {
   const {
     headline,
     hidePrice,
     hideRating,
     titleRows,
+    showMoreButton,
+    type,
   } = useWidgetSettings(WIDGET_ID);
+  const { productId } = useCurrentProduct();
 
   useEffect(() => {
     getRelations();
@@ -28,8 +32,9 @@ const RelationsSliderContent = ({ products, getRelations }) => {
   }
 
   return (
-    <Fragment>
+    <div className={styles.container}>
       {!!headline && <h3 className={styles.headline}>{headline}</h3>}
+      {!!showMoreButton && <RelationsSheet limit={100} productId={productId} type={type} />}
       <Swiper
         slidesPerView={2.25}
         classNames={{ container: styles.sliderContainer }}
@@ -48,9 +53,9 @@ const RelationsSliderContent = ({ products, getRelations }) => {
           </Swiper.Item>
         ))}
       </Swiper>
-    </Fragment>
+    </div>
   );
-};
+}));
 
 RelationsSliderContent.propTypes = {
   getRelations: PropTypes.func.isRequired,
@@ -61,4 +66,4 @@ RelationsSliderContent.defaultProps = {
   products: [],
 };
 
-export default connect(RelationsSliderContent);
+export default RelationsSliderContent;
