@@ -21,7 +21,6 @@ const Item = ({ product, display }) => (
     href={getProductRoute(product.id)}
     className={styles}
     state={{ title: product.name }}
-    tabIndex={-1}
   >
     {isBeta() && product.featuredMedia
       ? <FeaturedMedia

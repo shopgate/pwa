@@ -10,7 +10,8 @@ import Author from './components/Author';
  * @returns {JSX}
  */
 const Info = ({ review }) => (
-  <div className={styles}>
+  // eslint-disable-next-line jsx-a11y/aria-role
+  <div className={styles} role="text">
     <ReviewDate date={review.date} /> <Author author={review.author} />
   </div>
 );
