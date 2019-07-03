@@ -6,7 +6,6 @@ import {
   APP_BAR_BACK,
   APP_BAR_BACK_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { AppBar } from '@shopgate/pwa-ui-ios';
 import { ArrowIcon } from '@shopgate/pwa-ui-shared';
 import DefaultBar from '../DefaultBar';
 import connect from './connector';
@@ -18,7 +17,7 @@ import connect from './connector';
  */
 function BackBar({ goBack, ...props }, context) {
   const { __ } = context.i18n();
-  const left = <AppBar.Icon icon={ArrowIcon} onClick={goBack} aria-label={__('common.back')} testId="backButton" />;
+  const left = <DefaultBar.Icon icon={ArrowIcon} onClick={goBack} aria-label={__('common.back')} testId="backButton" />;
 
   return (
     <Fragment>

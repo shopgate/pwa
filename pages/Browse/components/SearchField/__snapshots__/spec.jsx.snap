@@ -175,10 +175,12 @@ exports[`<Content /> Check search field should render with initial search query 
               <Translate
                 className=""
                 params={Object {}}
+                role={null}
                 string="search.cancel"
               >
                 <span
                   className=""
+                  role={null}
                 />
               </Translate>
             </button>
@@ -321,10 +323,12 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
               <Translate
                 className=""
                 params={Object {}}
+                role={null}
                 string="search.cancel"
               >
                 <span
                   className=""
+                  role={null}
                 />
               </Translate>
             </button>
