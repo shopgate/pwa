@@ -73,6 +73,9 @@
       "until": "Disponível até {endDate, date, DD} {endDate, date, MMM} às {endDate, time, short}",
       "not": "Atualmente indisponível",
       "not_search_similar": "{name} indisponível. Procurar produtos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar tudo"
     }
   },
   "category": {

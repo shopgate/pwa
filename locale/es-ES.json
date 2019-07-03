@@ -73,6 +73,9 @@
       "until": "Disponible hasta {endDate, date, DD} {endDate, date, MMM} a las {endDate, time, short}",
       "not": "Indisponible por el momento",
       "not_search_similar": "{name} indisponible. ¿Buscar productos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar todo"
     }
   },
   "category": {
@@ -199,7 +202,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
