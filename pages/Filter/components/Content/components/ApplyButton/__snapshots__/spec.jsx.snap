@@ -17,11 +17,20 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
     type="primary"
     wrapContent={true}
   >
-    <Translate
-      className=""
-      params={Object {}}
-      string="filter.apply"
-    />
+    <span
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        role={null}
+        string="filter.apply"
+      />
+    </span>
   </Button>
 </div>
 `;
@@ -43,11 +52,20 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
     type="primary"
     wrapContent={true}
   >
-    <Translate
-      className=""
-      params={Object {}}
-      string="filter.apply"
-    />
+    <span
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        role={null}
+        string="filter.apply"
+      />
+    </span>
   </Button>
 </div>
 `;
@@ -69,11 +87,20 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
     type="primary"
     wrapContent={true}
   >
-    <Translate
-      className=""
-      params={Object {}}
-      string="filter.apply"
-    />
+    <span
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        role={null}
+        string="filter.apply"
+      />
+    </span>
   </Button>
 </div>
 `;
