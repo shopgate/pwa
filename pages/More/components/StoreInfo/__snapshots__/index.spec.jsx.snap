@@ -46,10 +46,12 @@ exports[`<StoreInfo /> should render as expected 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string="navigation.store_information"
           >
             <span
               className=""
+              role={null}
             >
               navigation.store_information
             </span>
@@ -99,10 +101,12 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.shipping"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.shipping
                     </span>
@@ -158,10 +162,12 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.payment"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.payment
                     </span>
@@ -217,10 +223,12 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.terms"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.terms
                     </span>
@@ -276,10 +284,12 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.privacy"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.privacy
                     </span>
@@ -335,10 +345,12 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.return_policy"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.return_policy
                     </span>
@@ -394,10 +406,12 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.about"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.about
                     </span>

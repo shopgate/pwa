@@ -42,6 +42,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           <FavoritesButton
             active={null}
             addFavorites={[Function]}
+            aria-hidden={null}
             className=""
             noShadow={false}
             onRippleComplete={[Function]}

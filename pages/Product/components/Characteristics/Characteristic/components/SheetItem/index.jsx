@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withForwardedRef } from '@shopgate/engage/core';
 import styles from './style';
 
 /**
@@ -8,12 +9,14 @@ import styles from './style';
 class SheetItem extends PureComponent {
   static propTypes = {
     item: PropTypes.shape().isRequired,
+    forwardedRef: PropTypes.shape(),
     onClick: PropTypes.func,
     rightComponent: PropTypes.func,
     selected: PropTypes.bool,
   };
 
   static defaultProps = {
+    forwardedRef: null,
     onClick() { },
     rightComponent: null,
     selected: false,
@@ -41,12 +44,16 @@ class SheetItem extends PureComponent {
    * @returns {Object}
    */
   buildProps = () => {
-    const { item, onClick } = this.props;
+    const {
+      item, onClick, forwardedRef,
+    } = this.props;
 
     return {
       className: this.getStyle(item.selectable),
       key: item.id,
+      ref: forwardedRef,
       value: item.id,
+      'aria-hidden': !item.selectable,
       ...item.selectable && { onClick },
     };
   };
@@ -55,10 +62,10 @@ class SheetItem extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { item, rightComponent: Right } = this.props;
+    const { item, rightComponent: Right, selected } = this.props;
 
     return (
-      <button {...this.buildProps()} data-test-id={item.label}>
+      <button {...this.buildProps()} data-test-id={item.label} aria-selected={selected} role="option">
         {item.label}
         {item.selectable && <Right />}
       </button>
@@ -66,4 +73,4 @@ class SheetItem extends PureComponent {
   }
 }
 
-export default SheetItem;
+export default withForwardedRef(SheetItem);
