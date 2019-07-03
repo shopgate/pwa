@@ -122,7 +122,7 @@ export function makeIsLastStackEntry() {
     getRouterStack,
     (routeId, stack) => {
       const index = stack.findIndex(entry => entry.id === routeId);
-      return index === stack.length - 1;
+      return index >= 0 && index === stack.length - 1;
     }
   );
 }

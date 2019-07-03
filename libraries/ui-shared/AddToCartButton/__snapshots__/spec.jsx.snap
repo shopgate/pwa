@@ -1,139 +1,147 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AddToCartButton /> should render in loading state and should not be clickable 1`] = `
-<AddToCartButton
-  buttonSize={40}
-  className={null}
-  iconSize={20}
+<ForwardRef(WithForwardedRef(AddToCartButton))
   isDisabled={false}
   isLoading={true}
   isOrderable={true}
-  noShadow={false}
   onClick={[MockFunction]}
-  onReset={[Function]}
 >
-  <button
-    className="null css-68omm3 css-nil"
-    data-test-id="addToCartButton"
-    onClick={[Function]}
+  <AddToCartButton
+    aria-hidden={false}
+    aria-label={null}
+    buttonSize={40}
+    className={null}
+    forwardedRef={null}
+    iconSize={20}
+    isDisabled={false}
+    isLoading={true}
+    isOrderable={true}
+    noShadow={false}
+    onClick={[MockFunction]}
+    onReset={[Function]}
   >
-    <div
-      className="css-rukjns css-1gleer"
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
+    <button
+      aria-hidden={false}
+      aria-label={null}
+      className="null css-68omm3 css-nil"
+      data-test-id="addToCartButton"
+      onClick={[Function]}
     >
-      <IndicatorCircle
-        color="#5ccee3"
-        paused={false}
-        size={32}
-        strokeWidth={5}
+      <div
+        className="css-rukjns css-1gleer"
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
       >
-        <svg
-          className="css-12jxe4c"
-          data-test-id="loadingIndicator"
-          height={32}
-          viewBox="25 25 50 50"
-          width={32}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            className="css-1e1be6z"
-            cx="50"
-            cy="50"
-            r="20"
-          />
-        </svg>
-      </IndicatorCircle>
-    </div>
-    <div
-      className="css-rukjns"
-      style={
-        Object {
-          "opacity": 0,
-          "transform": "translate3d(0, 300%, 0)",
-        }
-      }
-    >
-      <Tick>
-        <Icon
-          className=""
-          color={null}
-          content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
+        <IndicatorCircle
+          color="#5ccee3"
+          paused={false}
+          size={32}
+          strokeWidth={5}
         >
           <svg
-            className="css-yys9hb "
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
-              }
-            }
-            style={
-              Object {
-                "fill": null,
-                "fontSize": "inherit",
-              }
-            }
-            viewBox="0 0 24 24"
+            className="css-12jxe4c"
+            data-test-id="loadingIndicator"
+            height={32}
+            viewBox="25 25 50 50"
+            width={32}
             xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </Tick>
-    </div>
-    <div
-      className="css-rukjns"
-      onAnimationEnd={[Function]}
-      style={
-        Object {
-          "opacity": 0,
-          "transform": "translate3d(0, -50%, 0)",
+          >
+            <circle
+              className="css-1e1be6z"
+              cx="50"
+              cy="50"
+              r="20"
+            />
+          </svg>
+        </IndicatorCircle>
+      </div>
+      <div
+        className="css-rukjns"
+        style={
+          Object {
+            "opacity": 0,
+            "transform": "translate3d(0, 300%, 0)",
+          }
         }
-      }
-    >
-      <CartPlus>
-        <Icon
-          className=""
-          color={null}
-          content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
-        >
-          <svg
-            className="css-yys9hb "
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
-              }
-            }
-            style={
-              Object {
-                "fill": null,
-                "fontSize": "inherit",
-              }
-            }
+      >
+        <Tick>
+          <Icon
+            className=""
+            color={null}
+            content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
+            size="inherit"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </CartPlus>
-    </div>
-  </button>
-</AddToCartButton>
+          >
+            <svg
+              className="css-yys9hb "
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </Tick>
+      </div>
+      <div
+        className="css-rukjns"
+        onAnimationEnd={[Function]}
+        style={
+          Object {
+            "opacity": 0,
+            "transform": "translate3d(0, -50%, 0)",
+          }
+        }
+      >
+        <CartPlus>
+          <Icon
+            className=""
+            color={null}
+            content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
+            size="inherit"
+            viewBox="0 0 24 24"
+          >
+            <svg
+              className="css-yys9hb "
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </CartPlus>
+      </div>
+    </button>
+  </AddToCartButton>
+</ForwardRef(WithForwardedRef(AddToCartButton))>
 `;
 
 exports[`<AddToCartButton /> should render with cart icon and should be clickable 1`] = `
-<AddToCartButton
-  buttonSize={40}
-  className={null}
-  iconSize={20}
+<ForwardRef(WithForwardedRef(AddToCartButton))
   isDisabled={false}
   isLoading={false}
   isOrderable={true}
-  noShadow={false}
   onClick={
     [MockFunction] {
       "calls": Array [
@@ -147,99 +155,123 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       ],
     }
   }
-  onReset={[Function]}
 >
-  <button
-    className="null css-68omm3 css-nil"
-    data-test-id="addToCartButton"
-    onClick={[Function]}
+  <AddToCartButton
+    aria-hidden={false}
+    aria-label={null}
+    buttonSize={40}
+    className={null}
+    forwardedRef={null}
+    iconSize={20}
+    isDisabled={false}
+    isLoading={false}
+    isOrderable={true}
+    noShadow={false}
+    onClick={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+        ],
+      }
+    }
+    onReset={[Function]}
   >
-    <div
-      className="css-rukjns"
-      style={
-        Object {
-          "opacity": 1,
-          "transform": "translate3d(0, 300%, 0)",
-        }
-      }
+    <button
+      aria-hidden={false}
+      aria-label={null}
+      className="null css-68omm3 css-nil"
+      data-test-id="addToCartButton"
+      onClick={[Function]}
     >
-      <Tick>
-        <Icon
-          className=""
-          color={null}
-          content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
-        >
-          <svg
-            className="css-yys9hb "
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
-              }
-            }
-            style={
-              Object {
-                "fill": null,
-                "fontSize": "inherit",
-              }
-            }
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </Tick>
-    </div>
-    <div
-      className="css-rukjns"
-      onAnimationEnd={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "transform": "translate3d(0, -50%, 0)",
+      <div
+        className="css-rukjns"
+        style={
+          Object {
+            "opacity": 1,
+            "transform": "translate3d(0, 300%, 0)",
+          }
         }
-      }
-    >
-      <CartPlus>
-        <Icon
-          className=""
-          color={null}
-          content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
-        >
-          <svg
-            className="css-yys9hb "
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
-              }
-            }
-            style={
-              Object {
-                "fill": null,
-                "fontSize": "inherit",
-              }
-            }
+      >
+        <Tick>
+          <Icon
+            className=""
+            color={null}
+            content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
+            size="inherit"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </CartPlus>
-    </div>
-  </button>
-</AddToCartButton>
+          >
+            <svg
+              className="css-yys9hb "
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </Tick>
+      </div>
+      <div
+        className="css-rukjns"
+        onAnimationEnd={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+            "transform": "translate3d(0, -50%, 0)",
+          }
+        }
+      >
+        <CartPlus>
+          <Icon
+            className=""
+            color={null}
+            content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
+            size="inherit"
+            viewBox="0 0 24 24"
+          >
+            <svg
+              className="css-yys9hb "
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </CartPlus>
+      </div>
+    </button>
+  </AddToCartButton>
+</ForwardRef(WithForwardedRef(AddToCartButton))>
 `;
 
 exports[`<AddToCartButton /> should render with checkmark icon and should not be clickable the second time 1`] = `
-<AddToCartButton
-  buttonSize={40}
-  className={null}
-  iconSize={20}
+<ForwardRef(WithForwardedRef(AddToCartButton))
   isDisabled={false}
   isLoading={false}
   isOrderable={true}
-  noShadow={false}
   onClick={
     [MockFunction] {
       "calls": Array [
@@ -253,86 +285,114 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       ],
     }
   }
-  onReset={[Function]}
 >
-  <button
-    className="null css-68omm3 css-nil"
-    data-test-id="addToCartButton"
-    onClick={[Function]}
+  <AddToCartButton
+    aria-hidden={false}
+    aria-label={null}
+    buttonSize={40}
+    className={null}
+    forwardedRef={null}
+    iconSize={20}
+    isDisabled={false}
+    isLoading={false}
+    isOrderable={true}
+    noShadow={false}
+    onClick={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+        ],
+      }
+    }
+    onReset={[Function]}
   >
-    <div
-      className="css-rukjns css-1tg5aiu"
-      style={
-        Object {
-          "opacity": 1,
-          "transform": "translate3d(0, -50%, 0)",
-        }
-      }
+    <button
+      aria-hidden={false}
+      aria-label={null}
+      className="null css-68omm3 css-nil"
+      data-test-id="addToCartButton"
+      onClick={[Function]}
     >
-      <Tick>
-        <Icon
-          className=""
-          color={null}
-          content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
-        >
-          <svg
-            className="css-yys9hb "
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
-              }
-            }
-            style={
-              Object {
-                "fill": null,
-                "fontSize": "inherit",
-              }
-            }
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </Tick>
-    </div>
-    <div
-      className="css-rukjns css-1kfuvpr"
-      onAnimationEnd={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "transform": "translate3d(0, -300%, 0)",
+      <div
+        className="css-rukjns css-1tg5aiu"
+        style={
+          Object {
+            "opacity": 1,
+            "transform": "translate3d(0, -50%, 0)",
+          }
         }
-      }
-    >
-      <CartPlus>
-        <Icon
-          className=""
-          color={null}
-          content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
-        >
-          <svg
-            className="css-yys9hb "
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
-              }
-            }
-            style={
-              Object {
-                "fill": null,
-                "fontSize": "inherit",
-              }
-            }
+      >
+        <Tick>
+          <Icon
+            className=""
+            color={null}
+            content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
+            size="inherit"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </CartPlus>
-    </div>
-  </button>
-</AddToCartButton>
+          >
+            <svg
+              className="css-yys9hb "
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </Tick>
+      </div>
+      <div
+        className="css-rukjns css-1kfuvpr"
+        onAnimationEnd={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+            "transform": "translate3d(0, -300%, 0)",
+          }
+        }
+      >
+        <CartPlus>
+          <Icon
+            className=""
+            color={null}
+            content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
+            size="inherit"
+            viewBox="0 0 24 24"
+          >
+            <svg
+              className="css-yys9hb "
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </CartPlus>
+      </div>
+    </button>
+  </AddToCartButton>
+</ForwardRef(WithForwardedRef(AddToCartButton))>
 `;

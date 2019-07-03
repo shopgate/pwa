@@ -6,7 +6,7 @@ import Picker from 'Components/Picker';
 import { ProductContext } from '../../../../context';
 
 /**
- * @param {Object} props The compoent props.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Option = ({

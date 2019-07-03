@@ -28,11 +28,13 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
     props={null}
   >
     <div
+      aria-hidden={true}
       data-test-id="taxDisclaimer"
     >
       <Translate
         className="css-fazkyv"
         params={Object {}}
+        role={null}
         string="product.tax_disclaimer"
       />
     </div>

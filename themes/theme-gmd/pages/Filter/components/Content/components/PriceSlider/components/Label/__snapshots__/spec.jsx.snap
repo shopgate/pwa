@@ -4,6 +4,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
 <Translate
   className=""
   params={Object {}}
+  role={null}
   string="price.range"
 >
   <Placeholder

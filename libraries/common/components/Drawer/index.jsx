@@ -23,6 +23,7 @@ class Drawer extends Component {
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
     onDidClose: PropTypes.func,
+    onDidOpen: PropTypes.func,
     onOpen: PropTypes.func,
   };
 
@@ -38,6 +39,7 @@ class Drawer extends Component {
     onOpen: () => {},
     onClose: () => {},
     onDidClose: () => {},
+    onDidOpen: () => {},
     animation: {
       duration: null,
       in: '',
@@ -81,6 +83,8 @@ class Drawer extends Component {
     this.setState({ active: this.props.isOpen });
     if (!this.props.isOpen) {
       this.props.onDidClose();
+    } else {
+      this.props.onDidOpen();
     }
   };
 

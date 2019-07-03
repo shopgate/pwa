@@ -9,6 +9,7 @@ exports[`<Sheet /> should open 1`] = `
   duration={300}
   isOpen={true}
   onClose={[Function]}
+  onDidOpen={[Function]}
   onOpen={[Function]}
   title="Test-Title"
 >
@@ -26,6 +27,7 @@ exports[`<Sheet /> should open 1`] = `
       isOpen={true}
       onClose={[Function]}
       onDidClose={[Function]}
+      onDidOpen={[Function]}
       onOpen={[Function]}
     >
       <div
@@ -51,6 +53,7 @@ exports[`<Sheet /> should open 1`] = `
               className="css-1hncgty css-h7r55a"
             >
               <button
+                aria-label="common.close"
                 className="css-b3dcfs"
                 onClick={[Function]}
               >
@@ -65,7 +68,6 @@ exports[`<Sheet /> should open 1`] = `
                   size={null}
                 >
                   <div
-                    aria-hidden={true}
                     className="css-ugy6xl"
                     data-test-id="Ripple"
                     onClick={[Function]}
@@ -106,10 +108,12 @@ exports[`<Sheet /> should open 1`] = `
                 className="css-1mjy0de"
                 component="div"
                 grow={1}
+                role="heading"
                 shrink={1}
               >
                 <div
                   className="css-1mjy0de css-1gs0ko2"
+                  role="heading"
                 >
                   Test-Title
                 </div>
@@ -228,6 +232,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
     isOpen={false}
     onClose={[Function]}
     onDidClose={[Function]}
+    onDidOpen={[Function]}
     onOpen={[Function]}
   >
     <div
@@ -262,6 +267,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
+    onDidOpen={[Function]}
     onOpen={[Function]}
   >
     <div
@@ -296,6 +302,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
+    onDidOpen={[Function]}
     onOpen={[Function]}
   >
     <Header
@@ -352,6 +359,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       ],
     }
   }
+  onDidOpen={[Function]}
   onOpen={[Function]}
   title="Test-Title"
 >
@@ -369,6 +377,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       isOpen={false}
       onClose={[Function]}
       onDidClose={[Function]}
+      onDidOpen={[Function]}
       onOpen={[Function]}
     >
       <div
@@ -394,6 +403,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               className="css-1hncgty css-h7r55a"
             >
               <button
+                aria-label="common.close"
                 className="css-b3dcfs"
                 onClick={[Function]}
               >
@@ -408,7 +418,6 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   size={null}
                 >
                   <div
-                    aria-hidden={true}
                     className="css-ugy6xl"
                     data-test-id="Ripple"
                     onClick={[Function]}
@@ -449,10 +458,12 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 className="css-1mjy0de"
                 component="div"
                 grow={1}
+                role="heading"
                 shrink={1}
               >
                 <div
                   className="css-1mjy0de css-1gs0ko2"
+                  role="heading"
                 >
                   Test-Title
                 </div>

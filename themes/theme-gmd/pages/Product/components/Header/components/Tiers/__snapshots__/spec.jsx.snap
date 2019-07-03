@@ -102,10 +102,12 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
                 "from": 1,
               }
             }
+            role="text"
             string="price.tier.range"
           >
             <span
               className="css-z8ikop"
+              role="text"
             >
               price.tier.range
             </span>
@@ -173,10 +175,12 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
                 "from": 11,
               }
             }
+            role="text"
             string="price.tier.range"
           >
             <span
               className="css-z8ikop"
+              role="text"
             >
               price.tier.range
             </span>

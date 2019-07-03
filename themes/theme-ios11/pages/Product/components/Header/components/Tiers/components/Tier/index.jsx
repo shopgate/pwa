@@ -18,7 +18,8 @@ const Tier = ({ tier, price }) => {
   const params = { from: tier.from };
 
   return (
-    <I18n.Text string={i18nKey} params={params} key={tier.from} className={styles.tier}>
+    // eslint-disable-next-line jsx-a11y/aria-role
+    <I18n.Text string={i18nKey} params={params} key={tier.from} className={styles.tier} role="text">
       <I18n.Price forKey="price" price={tier.unitPrice} currency={price.currency} className={styles.price} />
     </I18n.Text>
   );

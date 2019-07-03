@@ -88,10 +88,12 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.your_account"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.your_account
                     </span>
@@ -136,10 +138,12 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="navigation.logout"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           navigation.logout
                         </span>
@@ -266,6 +270,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -274,6 +279,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -302,10 +308,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.button"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.button
                                     </span>
@@ -342,6 +350,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -350,6 +359,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -378,10 +388,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.signup"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.signup
                                     </span>
@@ -498,6 +510,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -506,6 +519,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -534,10 +548,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.button"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.button
                                     </span>
@@ -574,6 +590,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         replace={false}
                         role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
@@ -582,6 +599,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -610,10 +628,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.signup"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.signup
                                     </span>

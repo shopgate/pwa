@@ -20,20 +20,21 @@ const Translate = ({
   children,
   params,
   className,
+  role,
 }) => {
   if (typeof string !== 'string' || string.length === 0) {
     return string;
   }
 
   if (!i18n.ready) {
-    return <span className={className}>{string}</span>;
+    return <span className={className} role={role}>{string}</span>;
   }
 
   // When the input string is malformed, rather return the original string then raising an error.
   let formatted = string;
 
   try {
-    // First replace every occurence of a translation key with a separator.
+    // First replace every occurrence of a translation key with a separator.
     const separator = '__%S%__';
     const childrenArray = React.Children.toArray(children);
 
@@ -56,7 +57,7 @@ const Translate = ({
   }
 
   return (
-    <span className={className}>{formatted}</span>
+    <span className={className} role={role}>{formatted}</span>
   );
 };
 
@@ -68,12 +69,14 @@ Translate.propTypes = {
     PropTypes.shape(),
     PropTypes.array,
   ]),
+  role: PropTypes.string,
 };
 
 Translate.defaultProps = {
   children: null,
   className: '',
   params: {},
+  role: null,
 };
 
 export default Translate;

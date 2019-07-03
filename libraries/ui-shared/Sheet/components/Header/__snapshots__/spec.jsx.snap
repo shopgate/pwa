@@ -7,6 +7,7 @@ exports[`<Header /> should render with correct title 1`] = `
   wrap={false}
 >
   <button
+    aria-label="common.close"
     className="css-b3dcfs"
     onClick={[Function]}
   >
@@ -29,6 +30,7 @@ exports[`<Header /> should render with correct title 1`] = `
     className="css-1mjy0de"
     component="div"
     grow={1}
+    role="heading"
     shrink={1}
   >
     My Title

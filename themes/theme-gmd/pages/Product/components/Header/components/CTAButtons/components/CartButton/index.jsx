@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { FloatingActionButton } from '@shopgate/pwa-ui-material';
 import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { I18n } from '@shopgate/engage/components';
 import { ProductContext } from '../../../../../../context';
 import Icon from './components/Icon';
 import connect from './connector';
 import inject from './injector';
-import styles from './style';
+import { button, hidden } from './style';
 
 const { colors } = themeConfig;
 
@@ -97,6 +99,11 @@ class CartButton extends Component {
         options: this.props.options,
         quantity: this.context.quantity,
       });
+
+      broadcastLiveMessage('product.adding_item', {
+        params: { count: this.context.quantity },
+        force: true,
+      });
     });
   }
 
@@ -114,10 +121,11 @@ class CartButton extends Component {
     return (
       <FloatingActionButton
         background={this.color}
-        className={styles}
+        className={button}
         onClick={this.handleClick}
         testId="addToCartButton"
       >
+        <I18n.Text string="product.add_to_cart" className={hidden} />
         {this.icon}
       </FloatingActionButton>
     );

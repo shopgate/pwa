@@ -113,6 +113,7 @@ export * from '@shopgate/pwa-common/streams/error';
 
 // ACTIONS
 export { default as handleDeepLink } from '@shopgate/pwa-common/actions/app/handleDeepLink';
+export { default as handleUniversalLink } from '@shopgate/pwa-common/actions/app/handleUniversalLink';
 export { default as handleLink } from '@shopgate/pwa-common/actions/app/handleLink';
 export { default as handlePushNotification } from '@shopgate/pwa-common/actions/app/handlePushNotification';
 export { default as registerLinkEvents } from '@shopgate/pwa-common/actions/app/registerLinkEvents';
@@ -242,6 +243,7 @@ export { useWidgetStyles } from './hooks/useWidgetStyles';
 export { withTheme } from './hocs/withTheme';
 export { withRoute } from './hocs/withRoute';
 export { withCurrentProduct } from './hocs/withCurrentProduct';
+export { withForwardedRef } from './hocs/withForwardedRef';
 export { withNavigation } from './hocs/withNavigation';
 export { withWidgetSettings } from './hocs/withWidgetSettings';
 export { withWidgetStyles } from './hocs/withWidgetStyles';

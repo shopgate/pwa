@@ -34,7 +34,7 @@ class Product extends PureComponent {
    */
   render() {
     return (
-      <View>
+      <View aria-hidden={false}>
         <Consume context={RouteContext} props={props}>
           {this.consumeRenderer}
         </Consume>

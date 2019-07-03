@@ -27,7 +27,7 @@ describe('<Picker />', () => {
    */
   const renderComponent = (props) => {
     renderedElement = mount(<Picker {...props} />);
-    renderedInstance = renderedElement.instance();
+    renderedInstance = renderedElement.find('Picker').instance();
   };
 
   beforeEach(() => {

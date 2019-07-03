@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { withForwardedRef } from '@shopgate/engage/core';
 import CartPlusIcon from '../icons/CartPlusIcon';
 import TickIcon from '../icons/TickIcon';
 import IndicatorCircle from '../IndicatorCircle';
@@ -14,16 +15,22 @@ class AddToCartButton extends Component {
     isDisabled: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
+    'aria-hidden': PropTypes.bool,
+    'aria-label': PropTypes.string,
     buttonSize: PropTypes.number,
     className: PropTypes.string,
+    forwardedRef: PropTypes.shape(),
     iconSize: PropTypes.number,
     noShadow: PropTypes.bool,
     onReset: PropTypes.func,
   };
 
   static defaultProps = {
+    'aria-hidden': false,
+    'aria-label': null,
     buttonSize: styles.buttonSize,
     className: null,
+    forwardedRef: null,
     iconSize: styles.iconSize,
     noShadow: false,
     onReset: () => {},
@@ -169,6 +176,9 @@ class AddToCartButton extends Component {
         data-test-id="addToCartButton"
         className={`${this.props.className} ${className} ${buttonStyle}`}
         onClick={this.handleClick}
+        aria-hidden={this.props['aria-hidden']}
+        aria-label={this.props['aria-label']}
+        ref={this.props.forwardedRef}
       >
         {
           /**
@@ -201,4 +211,4 @@ class AddToCartButton extends Component {
   }
 }
 
-export default AddToCartButton;
+export default withForwardedRef(AddToCartButton);
