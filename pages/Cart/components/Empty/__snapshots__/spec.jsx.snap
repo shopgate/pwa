@@ -27,6 +27,7 @@ exports[`<CartEmpty /> should render 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="cart.empty"
         />
       </div>
@@ -53,6 +54,7 @@ exports[`<CartEmpty /> should render 1`] = `
       <Translate
         className=""
         params={Object {}}
+        role={null}
         string="cart.continue"
       />
     </RippleButton>

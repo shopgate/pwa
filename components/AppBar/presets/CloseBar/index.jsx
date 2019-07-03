@@ -6,7 +6,6 @@ import {
   APP_BAR_CLOSE,
   APP_BAR_CLOSE_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { AppBar } from '@shopgate/pwa-ui-material';
 import { CrossIcon } from '@shopgate/pwa-ui-shared';
 import DefaultBar from '../DefaultBar';
 import connect from './connector';
@@ -16,7 +15,7 @@ import connect from './connector';
  * @returns {JSX}
  */
 function CloseBar({ goBack, ...props }) {
-  const left = <AppBar.Icon icon={CrossIcon} onClick={goBack} />;
+  const left = <DefaultBar.Icon icon={CrossIcon} onClick={goBack} />;
 
   return (
     <Fragment>
