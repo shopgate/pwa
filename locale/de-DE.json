@@ -67,6 +67,9 @@
       "until": "Verfügbar bis {endDate, date, DD} {endDate, date, MMM} um {endDate, time, short} Uhr",
       "not": "Derzeit nicht verfügbar",
       "not_search_similar": "{name} nicht verfügbar. Nach ähnlichen Produkten suchen?"
+    },
+    "relations": {
+      "showMore": "Mehr"
     }
   },
   "category": {
@@ -188,7 +191,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
