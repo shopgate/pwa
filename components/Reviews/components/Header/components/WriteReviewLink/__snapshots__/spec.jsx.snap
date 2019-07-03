@@ -17,6 +17,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
     productId="foo"
   >
     <div
+      aria-hidden={true}
       data-test-id="writeReview"
     >
       <Connect(ButtonLink)
@@ -91,7 +92,6 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                         size={null}
                       >
                         <div
-                          aria-hidden={true}
                           className="css-1fscwua "
                           data-test-id="Ripple"
                           onClick={[Function]}
@@ -100,10 +100,12 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                           <Translate
                             className=""
                             params={Object {}}
+                            role={null}
                             string="reviews.button_add"
                           >
                             <span
                               className=""
+                              role={null}
                             >
                               reviews.button_add
                             </span>

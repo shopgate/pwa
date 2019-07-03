@@ -34,7 +34,7 @@ class ItemImage extends PureComponent {
       <Fragment>
         <Portal name={PRODUCT_ITEM_IMAGE_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_IMAGE} props={props}>
-          <ProductImage alt={name} itemProp="image" src={imageUrl} />
+          <ProductImage alt={name} itemProp="image" src={imageUrl} aria-hidden />
         </Portal>
         <Portal name={PRODUCT_ITEM_IMAGE_AFTER} props={props} />
       </Fragment>

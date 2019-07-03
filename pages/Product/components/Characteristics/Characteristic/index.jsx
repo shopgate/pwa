@@ -85,6 +85,9 @@ class Characteristic extends PureComponent {
 
   closeSheet = () => {
     this.setState({ sheet: false });
+    if (this.props.charRef && this.props.charRef.current) {
+      this.props.charRef.current.focus();
+    }
   }
 
   removeHighlight = () => {
@@ -107,9 +110,13 @@ class Characteristic extends PureComponent {
 
     return (
       <div
-        aria-hidden
+        role="button"
+        aria-disabled={disabled}
+        aria-haspopup={!disabled}
+        tabIndex={0}
         className={classes}
         onClick={this.handleButtonClick}
+        onKeyDown={() => { }}
         ref={charRef}
         style={transition[state]}
         data-test-id={label}

@@ -7,7 +7,9 @@
     "undo": "Undo",
     "required": "Required *",
     "please_choose": "Please choose",
-    "show_products": "Show products"
+    "show_products": "Show products",
+    "back": "Back",
+    "close": "Close"
   },
   "titles": {
     "categories": "Categories",
@@ -58,6 +60,10 @@
     "description_heading": "About",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
+    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "pick_option_first": "Pick an option first. {option}",
+    "fill_out_required_input_first": "Fill out the required inputs first.",
+    "add_to_cart": "Add to cart",
     "no_more_found": "The item \"{name}\" is no longer available.",
     "quantity": "Quantity",
     "minOrderQuantity": "Min. order quantity:{quantity}",
@@ -67,6 +73,14 @@
       "until": "Available until {endDate, date, MMM} {endDate, date, DD} at {endDate, time, short}",
       "not": "Currently not available",
       "not_search_similar": "{name} not available. Search for similar products?"
+    },
+    "sections": {
+      "information": "Product Information",
+      "options": "Choose Options",
+      "description": "Description",
+      "properties": "Properties",
+      "ratings": "Ratings",
+      "purchase": "Purchase Item"
     }
   },
   "category": {
