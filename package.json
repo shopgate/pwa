@@ -40,7 +40,9 @@
     "e2e:ios11": "make e2e-ios11",
     "e2e:checkout": "make e2e-checkout",
     "start-cloud": "sgconnect backend start & sgconnect frontend start",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -92,6 +94,8 @@
     "compare-versions": "^3.4.0",
     "react-hot-loader": "4.8.0",
     "react-transform-catch-errors": "^1.0.2",
-    "redbox-react": "^1.5.0"
-  }
+    "redbox-react": "^1.5.0",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
