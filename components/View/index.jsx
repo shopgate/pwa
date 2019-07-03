@@ -31,10 +31,10 @@ function ViewContainer({
   };
 
   return (
-    <section className={styles} style={style} aria-hidden={ariaHidden}>
-      <ViewProvider>
-        <ViewContext.Consumer>
-          {({ setContentRef }) => (
+    <ViewProvider>
+      <ViewContext.Consumer>
+        {({ setContentRef, ariaHidden: ariaHiddenContext }) => (
+          <section className={styles} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
             <Content
               hasNavigator={hasNavigator}
               noScrollOnKeyboard={noScrollOnKeyboard}
@@ -42,10 +42,11 @@ function ViewContainer({
             >
               {children}
             </Content>
-          )}
-        </ViewContext.Consumer>
-      </ViewProvider>
-    </section>
+          </section>
+        )}
+      </ViewContext.Consumer>
+    </ViewProvider>
+
   );
 }
 

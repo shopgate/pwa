@@ -54,7 +54,7 @@ describe('<List />', () => {
     list.setProps({ reviews });
 
     expect(list).toMatchSnapshot();
-    expect(list.find('List > div').exists()).toBe(true);
+    expect(list.find('List > ul').exists()).toBe(true);
 
     list.find('Review').forEach((node, i) => {
       const ratingNode = node.find('Rating');
