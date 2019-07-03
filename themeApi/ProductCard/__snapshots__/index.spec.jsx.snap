@@ -120,6 +120,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
               replace={false}
               role="link"
               state={Object {}}
+              tabIndex={null}
               tag="div"
               tagName="a"
             >
@@ -129,6 +130,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                 data-test-id="link: /item/505230445543544944"
                 onClick={[Function]}
                 role="link"
+                tabIndex={null}
               >
                 <Component
                   alt="Product Name"
@@ -138,6 +140,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                   <ProductImage
                     alt="Product Name"
                     animating={true}
+                    aria-hidden={null}
                     className={null}
                     forcePlaceholder={false}
                     highestResolutionLoaded={[Function]}
@@ -177,6 +180,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                         props={null}
                       >
                         <div
+                          aria-hidden={null}
                           className="css-y5kkpq css-3hjqnz"
                         >
                           <div
@@ -266,10 +270,12 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                 null,
                               ]
                             }
+                            role={null}
                             string="-50%"
                           >
                             <span
                               className="css-pzju2o "
+                              role={null}
                             >
                               -50%
                             </span>
@@ -305,6 +311,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 4"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -784,22 +791,26 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                       unitPriceMin={0}
                                     >
                                       <div
-                                        aria-label="price.label"
                                         className="css-izofhs  css-1ncyhu"
                                         data-test-id="minPrice: 0 price: 5 currency: EUR"
                                       >
-                                        <FormatPrice
-                                          className=""
-                                          currency="EUR"
-                                          fractions={true}
-                                          price={5}
+                                        <span
+                                          aria-label="price.label"
+                                          role="text"
                                         >
-                                          <span
+                                          <FormatPrice
                                             className=""
+                                            currency="EUR"
+                                            fractions={true}
+                                            price={5}
                                           >
-                                            p
-                                          </span>
-                                        </FormatPrice>
+                                            <span
+                                              className=""
+                                            >
+                                              p
+                                            </span>
+                                          </FormatPrice>
+                                        </span>
                                       </div>
                                     </Price>
                                   </li>
@@ -820,6 +831,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                     >
                                       <div
                                         className="css-1sagvrb css-nil "
+                                        role="text"
                                       >
                                         <span
                                           aria-label="price.label_old_price"

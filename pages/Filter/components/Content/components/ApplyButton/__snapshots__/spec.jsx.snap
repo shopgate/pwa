@@ -27,6 +27,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
       <Translate
         className=""
         params={Object {}}
+        role={null}
         string="filter.apply"
       />
     </span>
@@ -61,6 +62,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
       <Translate
         className=""
         params={Object {}}
+        role={null}
         string="filter.apply"
       />
     </span>
@@ -95,6 +97,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
       <Translate
         className=""
         params={Object {}}
+        role={null}
         string="filter.apply"
       />
     </span>

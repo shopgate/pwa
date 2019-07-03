@@ -43,12 +43,14 @@ const getImagesByIndex = (images) => {
  */
 class ImageSlider extends Component {
   static propTypes = {
+    'aria-hidden': PropTypes.bool,
     images: PropTypes.arrayOf(PropTypes.shape()),
     navigate: PropTypes.func,
     product: PropTypes.shape(),
   };
 
   static defaultProps = {
+    'aria-hidden': null,
     images: null,
     product: null,
     navigate: () => { },
@@ -91,7 +93,7 @@ class ImageSlider extends Component {
    * @returns {JSX}
    */
   render() {
-    const { product, images } = this.props;
+    const { product, images, 'aria-hidden': ariaHidden } = this.props;
     let content;
 
     if (product && Array.isArray(images) && images.length > 1) {
@@ -135,6 +137,7 @@ class ImageSlider extends Component {
             onKeyDown={this.handleOpenGallery}
             role="button"
             tabIndex="0"
+            aria-hidden={ariaHidden}
           >
             {content}
           </div>

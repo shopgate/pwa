@@ -43,10 +43,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -70,6 +72,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 0"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -287,6 +290,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string=""
                       />
                     </div>
@@ -326,6 +330,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -344,10 +349,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -452,6 +459,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -490,6 +498,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -508,10 +517,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -616,6 +627,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -654,6 +666,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -672,10 +685,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -777,6 +792,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -805,10 +821,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -857,7 +875,6 @@ exports[`<ReviewForm /> should render empty 1`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -866,10 +883,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
@@ -935,10 +954,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -962,6 +983,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 0"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -1179,6 +1201,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string=""
                       />
                     </div>
@@ -1218,6 +1241,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1236,10 +1260,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -1344,6 +1370,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1382,6 +1409,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1400,10 +1428,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -1508,6 +1538,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1546,6 +1577,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1564,10 +1596,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -1669,6 +1703,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -1697,10 +1732,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -1749,7 +1786,6 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -1758,10 +1794,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
@@ -1896,10 +1934,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -1923,6 +1963,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -2336,6 +2377,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string=""
                       />
                     </div>
@@ -2375,6 +2417,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2393,10 +2436,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -2501,6 +2546,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2539,6 +2585,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2557,10 +2604,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -2665,6 +2714,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2703,6 +2753,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2721,10 +2772,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -2826,6 +2879,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -2854,10 +2908,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -2906,7 +2962,6 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -2915,10 +2970,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
@@ -2994,10 +3051,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -3021,6 +3080,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -3434,6 +3494,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string=""
                       />
                     </div>
@@ -3473,6 +3534,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -3491,10 +3553,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -3599,6 +3663,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -3637,6 +3702,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -3655,10 +3721,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -3763,6 +3831,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -3801,6 +3870,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -3819,10 +3889,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -3924,6 +3996,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -3952,10 +4025,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -4004,7 +4079,6 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -4013,10 +4087,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
@@ -4092,10 +4168,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -4119,6 +4197,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -4532,6 +4611,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string=""
                       />
                     </div>
@@ -4571,6 +4651,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -4589,10 +4670,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -4697,6 +4780,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -4735,6 +4819,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -4753,10 +4838,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -4861,6 +4948,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -4899,6 +4987,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -4917,10 +5006,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -5022,6 +5113,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -5050,10 +5142,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -5102,7 +5196,6 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -5111,10 +5204,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
@@ -5190,10 +5285,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -5217,6 +5314,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -5630,6 +5728,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string=""
                       />
                     </div>
@@ -5669,6 +5768,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -5687,10 +5787,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -5795,6 +5897,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -5833,6 +5936,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -5851,10 +5955,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -5959,6 +6065,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -5997,6 +6104,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -6015,10 +6123,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -6119,10 +6229,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_error_length"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_error_length
                       </span>
@@ -6153,10 +6265,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -6205,7 +6319,6 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -6214,10 +6327,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
@@ -6293,10 +6408,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -6320,6 +6437,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 5"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -6733,6 +6851,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string=""
                       />
                     </div>
@@ -6772,6 +6891,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -6790,10 +6910,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -6898,6 +7020,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -6936,6 +7059,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -6954,10 +7078,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -7062,6 +7188,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -7100,6 +7227,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -7118,10 +7246,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -7223,6 +7353,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -7251,10 +7382,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -7303,7 +7436,6 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -7312,10 +7444,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
@@ -7381,10 +7515,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 <Translate
                   className="css-mfy564"
                   params={Object {}}
+                  role={null}
                   string="reviews.review_form_rate"
                 >
                   <span
                     className="css-mfy564"
+                    role={null}
                   >
                     reviews.review_form_rate
                   </span>
@@ -7408,6 +7544,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       aria-label="reviews.rating_stars"
                       className="css-13azwyo "
                       data-test-id="ratedStars: 0"
+                      role="text"
                     >
                       <div
                         className="css-4s85e9"
@@ -7625,10 +7762,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="reviews.review_form_rate_error"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           reviews.review_form_rate_error
                         </span>
@@ -7670,6 +7809,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -7688,10 +7828,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_author"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_author
                       </span>
@@ -7796,6 +7938,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -7834,6 +7977,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -7852,10 +7996,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_title"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_title
                       </span>
@@ -7960,6 +8106,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -7998,6 +8145,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -8016,10 +8164,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string="reviews.review_form_text"
                     >
                       <span
                         className=""
+                        role={null}
                       >
                         reviews.review_form_text
                       </span>
@@ -8121,6 +8271,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
+                      role={null}
                       string=""
                     />
                   </div>
@@ -8149,10 +8300,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="common.cancel"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           common.cancel
                         </span>
@@ -8201,7 +8354,6 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               size={null}
                             >
                               <div
-                                aria-hidden={true}
                                 className="css-1fscwua "
                                 data-test-id="Ripple"
                                 onClick={[Function]}
@@ -8210,10 +8362,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="common.submit"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     common.submit
                                   </span>
