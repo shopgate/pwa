@@ -60,7 +60,7 @@ describe('Vimeo media provider', () => {
     it('should construct as expected', () => {
       createInstance(false);
       expect(instance.containers).toBeInstanceOf(Map);
-      expect(instance.sdkReady).toBe(false);
+      expect(instance.isPending).toBe(true);
       expect(instance.deferred).toEqual([]);
     });
   });
@@ -135,18 +135,18 @@ describe('Vimeo media provider', () => {
     });
   });
 
-  describe('.onSdkLoaded()', () => {
-    it('should mark as sdkReady', () => {
-      instance.onSdkLoaded();
-      expect(instance.sdkReady).toBe(true);
+  describe('.onScriptLoaded()', () => {
+    it('should mark as ready (not pending)', () => {
+      instance.onScriptLoaded();
+      expect(instance.isPending).toBe(false);
     });
 
-    it('should run deferred containers on sdk ready', () => {
+    it('should run deferred containers on script ready', () => {
       instance.deferred = ['container 1', 'container 2'];
 
       jest.spyOn(instance, 'add').mockReturnValue(true);
 
-      instance.onSdkLoaded();
+      instance.onScriptLoaded();
 
       expect(instance.add).toHaveBeenCalledTimes(2);
       expect(instance.add).nthCalledWith(1, 'container 1');

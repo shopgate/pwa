@@ -8,31 +8,32 @@ import { embeddedMedia } from '@shopgate/pwa-common/collections';
  * @returns {JSX}
  */
 const EmbeddedMedia = ({ children }) => {
-  if (!embeddedMedia.hasNotReady()) {
+  if (!embeddedMedia.getHasPendingProviders()) {
     return children;
   }
 
-  const providers = [...embeddedMedia.providers].filter(p => !p.sdkReady);
+  // Get all pending providers
+  const pendingProviders = [...embeddedMedia.providers].filter(p => p.isPending);
 
   /**
-   * Inject onLoad cb to script tag
-   * @param {Element[]} scriptTags script tags
-   * @param {MediaProvider} provider provider
+   * Inject onLoad cb to script tags
+   * @param {Element[]} scriptTags script tags to listen for
+   * @param {MediaProvider} provider Provider
    */
-  const handleProviderScript = ({ scriptTags }) => {
+  const updateProviderScripts = ({ scriptTags }) => {
     if (scriptTags) {
       scriptTags.forEach((scriptTag) => {
-        const provider = providers.find(p => p.sdkUrl === scriptTag.getAttribute('src'));
+        const provider = pendingProviders.find(p => p.remoteScriptUrl === scriptTag.getAttribute('src'));
         // eslint-disable-next-line no-param-reassign
         scriptTag.onload = () => {
-          provider.onSdkLoaded();
+          provider.onScriptLoaded();
         };
       });
     }
   };
 
-  const scripts = providers.map(provider => ({
-    src: provider.sdkUrl,
+  const scripts = pendingProviders.map(provider => ({
+    src: provider.remoteScriptUrl,
     type: 'text/javascript',
   }));
 
@@ -42,7 +43,7 @@ const EmbeddedMedia = ({ children }) => {
         script={scripts}
         // Helmet doesn't support `onload` in script objects so we have to hack in our own
         onChangeClientState={
-          (newState, addedTags) => handleProviderScript(addedTags)
+          (newState, addedTags) => updateProviderScripts(addedTags)
         }
       />
       {children}

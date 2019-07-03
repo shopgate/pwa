@@ -65,14 +65,14 @@ class EmbeddedMedia {
    * Check if we have media providers with not-ready SDK
    * @returns {boolean}
    */
-  hasNotReady() {
-    let hasNotReady = false;
+  getHasPendingProviders() {
+    let hasPendingProviders = false;
     this.providers.forEach((provider) => {
-      if (!provider.sdkReady) {
-        hasNotReady = true;
+      if (provider.isPending) {
+        hasPendingProviders = true;
       }
     });
-    return hasNotReady;
+    return hasPendingProviders;
   }
 }
 

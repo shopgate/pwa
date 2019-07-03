@@ -10,16 +10,18 @@ class MediaProvider {
    */
   constructor() {
     this.containers = new Map();
-    this.sdkReady = true;
-    this.sdkUrl = null;
+    this.isPending = false;
+    this.remoteScriptUrl = null;
   }
 
   /**
-   * Callback when SDK is loaded
+   * Callback for when Provider script is loaded
+   * @callback
+   * @abstract
    */
-  onSdkLoaded() {
-    logger.error('MediaProvider.onSdkLoaded() needs to be implemented within an inheriting class');
-    this.sdkReady = true;
+  /* eslint-disable-next-line class-methods-use-this, require-jsdoc */
+  onScriptLoaded() {
+    logger.error('MediaProvider.onScriptLoaded() needs to be implemented within an inheriting class');
   }
 
   /**

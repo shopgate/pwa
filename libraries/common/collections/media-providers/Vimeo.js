@@ -1,6 +1,6 @@
 import MediaProvider from './MediaProvider';
 
-const SDK = 'https://player.vimeo.com/api/player.js';
+const scriptUrl = 'https://player.vimeo.com/api/player.js';
 /**
  * The Vimeo media provider class.
  */
@@ -11,16 +11,16 @@ class VimeoMediaProvider extends MediaProvider {
   constructor() {
     super();
     // Need to check Vimeo.Player presence later
-    this.sdkReady = false;
-    this.sdkUrl = SDK;
+    this.isPending = true;
+    this.remoteScriptUrl = scriptUrl;
     this.deferred = [];
   }
 
   /**
    * @inheritDoc
    */
-  onSdkLoaded() {
-    this.sdkReady = true;
+  onScriptLoaded() {
+    this.isPending = false;
     if (this.deferred.length) {
       this.deferred.forEach((container) => {
         this.add(container);
@@ -30,14 +30,14 @@ class VimeoMediaProvider extends MediaProvider {
   }
 
   /**
-   * Check if SDK loaded externally
+   * Check if the Provider script to be loaded externally is finished loading
    * @returns {boolean}
    */
-  checkSdk() {
-    if (!this.sdkReady && typeof window.Vimeo !== 'undefined') {
-      this.sdkReady = true;
+  checkScriptLoadingStatus() {
+    if (this.isPending && typeof window.Vimeo !== 'undefined') {
+      this.isPending = false;
     }
-    return this.sdkReady;
+    return !this.isPending;
   }
 
   /**
@@ -47,7 +47,7 @@ class VimeoMediaProvider extends MediaProvider {
    * @returns {VimeoMediaProvider}
    */
   add(container) {
-    if (!this.checkSdk()) {
+    if (!this.checkScriptLoadingStatus()) {
       this.deferred.push(container);
       return this;
     }

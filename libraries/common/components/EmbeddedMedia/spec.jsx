@@ -5,14 +5,14 @@ import EmbeddedMedia from './index';
 
 jest.mock('@shopgate/pwa-common/collections', () => ({
   embeddedMedia: {
-    hasNotReady: jest.fn(),
+    getHasPendingProviders: jest.fn(),
     providers: new Set([{
-      sdkReady: true,
-      sdkUrl: 'http://foo.bar',
+      isPending: false,
+      remoteScriptUrl: 'http://foo.bar',
     }, {
-      sdkReady: false,
-      sdkUrl: 'http://bar.foo',
-      onSdkLoaded: jest.fn(),
+      isPending: true,
+      remoteScriptUrl: 'http://bar.foo',
+      onScriptLoaded: jest.fn(),
     }]),
   },
 }));
@@ -23,7 +23,7 @@ describe('<EmbeddedMedia />', () => {
   });
 
   it('should return children', () => {
-    embeddedMedia.hasNotReady.mockReturnValueOnce(false);
+    embeddedMedia.getHasPendingProviders.mockReturnValueOnce(false);
 
     const wrapper = shallow((
       <EmbeddedMedia>
@@ -35,7 +35,7 @@ describe('<EmbeddedMedia />', () => {
   });
 
   it('should render Helmet with a script', () => {
-    embeddedMedia.hasNotReady.mockReturnValueOnce(true);
+    embeddedMedia.getHasPendingProviders.mockReturnValueOnce(true);
     const wrapper = shallow((
       <EmbeddedMedia>
         <div>Content with embedded media (youtube, vimeo, etc)</div>
@@ -64,6 +64,6 @@ describe('<EmbeddedMedia />', () => {
     scriptTags[0].onload();
 
     const [, secondProvider] = embeddedMedia.providers;
-    expect(secondProvider.onSdkLoaded).toHaveBeenCalledTimes(1);
+    expect(secondProvider.onScriptLoaded).toHaveBeenCalledTimes(1);
   });
 });
