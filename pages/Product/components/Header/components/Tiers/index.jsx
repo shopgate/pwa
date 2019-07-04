@@ -42,5 +42,4 @@ Tiers.defaultProps = {
   price: null,
 };
 
-export { Tiers as TiersUnconnected };
 export default connect(pure(Tiers));
