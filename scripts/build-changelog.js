@@ -190,7 +190,7 @@ async function run() {
   try {
     // Find last release: Get tags, filter out wrong tags and pre-releases, then take last one.
     const { stdout } = // get last filtered tag, sorted by version numbers in ascending order
-      await exec(`git tag | grep '${tagFrom}' | grep -Ev '-' | sort -V | tail -1`);
+      await exec(`git tag | grep '${tagFrom}' | grep -Ev '-' | tail -1`);
     const prevTag = stdout.trim();
     const nextVersion = parseVersion(argv[releaseNameParam]);
 
@@ -232,6 +232,12 @@ async function run() {
         '# Changelog\n',
         `# Changelog\n\n${latestChanges.trim()}\n`
       );
+      if (tagTo !== 'HEAD') {
+        newChangelog = newChangelog.replace(
+          `## ${tagTo} `,
+          `## ${config.nextVersion} `
+        );
+      }
     }
 
     // Print the output for the bash/makefile to read
