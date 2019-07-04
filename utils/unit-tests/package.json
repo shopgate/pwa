@@ -10,7 +10,8 @@
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.4",
     "identity-obj-proxy": "^3.0.0",
-    "jest-enzyme": "^6.1.2"
+    "jest-enzyme": "^6.1.2",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "6.5.3",
@@ -22,5 +23,10 @@
     "jest": "^23.6.0",
     "react": "~16.8.4",
     "react-dom": "~16.8.4"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
