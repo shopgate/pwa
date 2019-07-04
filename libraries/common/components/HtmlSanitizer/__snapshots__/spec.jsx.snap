@@ -64,14 +64,17 @@ exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
   decode={true}
   processStyles={false}
   settings={Object {}}
+  wrapper={[Function]}
 >
-  <div
-    className={null}
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "  <p>Foo Bar</p> ",
+  <Component>
+    <div
+      className={null}
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "  <p>Foo Bar</p> ",
+        }
       }
-    }
-  />
+    />
+  </Component>
 </HtmlSanitizer>
 `;
