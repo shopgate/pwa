@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import variables from 'Styles/variables';
 import parseHTML from '@shopgate/pwa-common/helpers/html/parseHTML';
+import EmbeddedMedia from '@shopgate/pwa-common/components/EmbeddedMedia';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import styles from './style';
 import connect from './connector';
@@ -121,16 +122,18 @@ class Html extends Component {
    */
   render() {
     return (
-      <div
-        className={styles}
-        dangerouslySetInnerHTML={{ __html: this.state.html }}
-        ref={(element) => {
-          this.htmlContainer = element;
-        }}
-        style={{
-          ...(this.props.settings.defaultPadding && { padding: variables.gap.big }),
-        }}
-      />
+      <EmbeddedMedia>
+        <div
+          className={styles}
+          dangerouslySetInnerHTML={{ __html: this.state.html }}
+          ref={(element) => {
+            this.htmlContainer = element;
+          }}
+          style={{
+            ...(this.props.settings.defaultPadding && { padding: variables.gap.big }),
+          }}
+        />
+      </EmbeddedMedia>
     );
   }
 }
