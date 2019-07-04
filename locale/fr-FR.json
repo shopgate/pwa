@@ -8,8 +8,8 @@
     "required": "Obligatoires *",
     "please_choose": "Veuillez choisir",
     "show_products": "Présentation produits",
-    "back": "Back",
-    "close": "Close"
+    "back": "Retour",
+    "close": "Fermer"
   },
   "titles": {
     "categories": "Catégories",
@@ -17,7 +17,6 @@
     "cart": "Panier",
     "shipping": "Livraison",
     "reviews": "Commentaires",
-    "browse": "Naviger",
     "favorites": "Favorits",
     "scanner": "Scanner"
   },
@@ -53,18 +52,18 @@
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "MSRP",
+    "label": "Prix {price}.",
+    "label_old_price": "Ancien prix {price}."
   },
   "product": {
     "description_heading": "à propos",
     "pick_an_attribute": "Choisir un {0}",
     "tax_disclaimer": "* Inclus TVA plus frais de livraison éventuels",
-    "item_added": "{count, plural, =0 {# aucun article ajouté} =1 {{count} article ajouté} other {{count} articles ajoutés}}",
     "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
     "pick_option_first": "Pick an option first. {option}",
     "fill_out_required_input_first": "Fill out the required inputs first.",
     "add_to_cart": "Ajouter au panier",
-    "go_to_cart": "Aller au panier",
     "no_more_found": "L'article: \"{name}\" n'est plus disponible.",
     "quantity": "Quantité",
     "minOrderQuantity": "Quantité min. par commande:{quantity}",
@@ -99,8 +98,6 @@
     }
   },
   "search": {
-    "label": "Recherche",
-    "cancel": "Annuler",
     "no_result": {
       "heading": "Oops!",
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
@@ -137,6 +134,7 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
+    "coupons_not_supported": "Échangez des coupons et des cartes-cadeaux à l'étape suivante",
     "free_shipping": "Livraison gratuite"
   },
   "login": {
@@ -169,8 +167,6 @@
     "welcome_message": "Bienvenue {name}",
     "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
-    "store_information": "Informations sur le magasin",
-    "more_menu": "Plus",
     "menuSubHeader": {
       "more": "Plus",
       "about": "À propos de nous"
@@ -179,7 +175,7 @@
   "reviews": {
     "rating": "Evaluation",
     "no_reviews": "Soyez le premier à évaluer ce produit:",
-    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
+    "review_count": "({count} {count, plural, =1 {Commentaire} other {Commantaires}})",
     "button_add": "Ecrire un commentaire",
     "button_all": "Tous les {count} commantaires",
     "author": "par {author}",
@@ -193,13 +189,6 @@
     "review_form_error_length": "Longeure caractère maximale {length}.",
     "press_to_rate_with_x_stars": "Appuyez pour noter avec{rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Merci pour votre commentaire!"
-  },
-  "tab_bar": {
-    "home": "Accueil",
-    "browse": "Naviger",
-    "cart": "Panier",
-    "more": "Plus",
-    "favorites": "Favorits"
   },
   "scanner": {
     "instructions": "S'il vous plaît gardez le code à barres ou un code QR dans le centre. La détection est effectuée automatiquement.",
