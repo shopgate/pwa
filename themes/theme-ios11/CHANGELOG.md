@@ -1,5 +1,11 @@
 # Changelog
 
+## [v5.11.2](https://github.com/shopgate/pwa/compare/v5.11.1...v5.11.2) (2019-07-04)
+
+#### :bug: Bug Fix
+* [#740](https://github.com/shopgate/pwa/pull/740) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#731](https://github.com/shopgate/pwa/pull/731) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+
 ## [v5.11.1](https://github.com/shopgate/pwa/compare/...v5.11.1) (2019-05-07)
 
 #### :rocket: Enhancement
