@@ -125,6 +125,11 @@ if (argv.tagTo && argv.tagTo !== 0) {
   ({ tagTo } = argv);
 }
 
+if (tagTo.toUpperCase() !== 'HEAD' && tagTo.toUpperCase().startsWith('v')
+    && argv.tagFrom && argv.tagFrom !== 0 && tagFrom === 'v') {
+  tagFrom = tagTo.substr(0, 3);
+}
+
 if (argv.appendPreviousChangelog === 'false') {
   appendPreviousChangelog = false;
 }
@@ -190,7 +195,7 @@ async function run() {
   try {
     // Find last release: Get tags, filter out wrong tags and pre-releases, then take last one.
     const { stdout } = // get last filtered tag, sorted by version numbers in ascending order
-      await exec(`git tag | grep '${tagFrom}' | grep -Ev '-' | tail -1`);
+      await exec(`git tag | grep '${tagFrom}' | grep -Ev '-' | sort -bt. -k1,1 -k2,2n -k3,3n -k4,4n -k5,5n | tail -1`);
     const prevTag = stdout.trim();
     const nextVersion = parseVersion(argv[releaseNameParam]);
 
