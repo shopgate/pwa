@@ -1,6 +1,29 @@
 {
   "name": "@shopgate/pwa",
   "private": true,
+  "workspaces": [
+    "extensions/@shopgate-product-reviews/frontend",
+    "extensions/@shopgate-tracking-ga-native/frontend",
+    "libraries/*",
+    "themes/*",
+    "utils/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shopgate/pwa.git"
+  },
+  "changelog": {
+    "cacheDir": ".changelog",
+    "labels": {
+      "enhancement": ":rocket: Enhancement",
+      "bug": ":bug: Bug Fix",
+      "feature": ":rocket: New Feature",
+      "breaking": ":boom: Breaking Change",
+      "polish": ":nail_care: Polish",
+      "internal": ":house: Internal",
+      "docs": ":memo: Documentation"
+    }
+  },
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
     "add-remotes": "node ./scripts/add-remotes.js",
@@ -9,20 +32,13 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
+    "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .json .",
     "release": "make release",
     "e2e:gmd": "make e2e-gmd",
     "e2e:ios11": "make e2e-ios11",
     "e2e:checkout": "make e2e-checkout",
     "start-cloud": "sgconnect backend start & sgconnect frontend start"
   },
-  "workspaces": [
-    "extensions/@shopgate-product-reviews/frontend",
-    "extensions/@shopgate-tracking-ga-native/frontend",
-    "libraries/*",
-    "themes/*",
-    "utils/*"
-  ],
   "devDependencies": {
     "@sourceallies/coveralls-merge": "^1.0.0",
     "coveralls": "^3.0.1",
@@ -34,7 +50,7 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "lerna": "^2.9.0",
-    "lerna-changelog": "^0.7.0",
+    "lerna-changelog": "^0.8.2",
     "uver": "^1.1.0",
     "yargs": "^11.0.0"
   },
@@ -51,6 +67,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "compare-versions": "^3.4.0",
     "react-hot-loader": "4.3.12",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0"

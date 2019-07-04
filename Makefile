@@ -1,20 +1,38 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
-RECURSIVE_MAKEFILE_NAME = Makefile
-
+####################################################################################################
+# NOTICE:
+# -------
+# If LIBRARIES, EXTENSIONS or UTILS is extended and the npm packacke should not be prefixed with
+# "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
 LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
-UTILS = eslint-config unit-tests e2e benchmark
+TRANSPILED_UTILS = benchmark
+UTILS = eslint-config unit-tests e2e
 THEMES = theme-gmd theme-ios11
+
+# Adds "@shopgate/pwa-" in front of all package names except "@shopgate/eslint-config" and "@shopgate/tracking-core".
+# Optionally takes a version number as second parameter.
+# Example: echo $(call get-package-name,common-core)
+define get-npm-package-name
+$(patsubst %@,%, $(patsubst %,%@$(strip $(2)),$(patsubst %,@shopgate/%,$(patsubst pwa-eslint-config,eslint-config,$(patsubst pwa-tracking-core,tracking-core,$(patsubst pwa-pwa-%,pwa-%,$(patsubst %,pwa-%,$(strip $(1)))))))))
+
+
+endef
+####################################################################################################
+
+# This is required, so the Jenkins can change branches without changing the makefile
+RECURSIVE_MAKEFILE_NAME = Makefile
 
 GITHUB_AUTH_KEY =
 GITHUB_AUTH_TOKEN =
 
-# deprecated; use RELEASE_VERSION
+# This is basically a feature version
 REPO_VERSION =
 
-RELEASE_VERSION = $(strip $(REPO_VERSION))
+# Required for versioning and npm (without the "v" prefix)
+RELEASE_VERSION = $(patsubst v%,%,$(strip $(REPO_VERSION)))
 
 # Branch name to start the release from; "develop" by default
 BRANCH_NAME = develop
@@ -107,8 +125,7 @@ sanity-check:
 release:
 		$(call setup-release)
 		$(call update-versions)
-		$(call build-npm-packages)
-		$(call publish-npm-packages)
+		$(call release-npm-packages)
 		$(call make, publish-to-github)
 		$(call create-github-releases,releases/$(RELEASE_NAME))
 		$(call finalize-release)
@@ -136,13 +153,25 @@ clean-git:
 fix-remote:
 		git merge -s ours --no-commit --allow-unrelated-histories $(REMOTE)/master
 
+setup-frontend-with-current-ip:
+		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}' | head -1)",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
+# Open cypress UI for GMD theme
 e2e-gmd:
 		cd themes/theme-gmd && yarn run e2e;
 
+# Open cypress UI for IOS theme
 e2e-ios11:
 		cd themes/theme-ios11 && yarn run e2e;
+
+# Run GMD legacy tests
+e2e-gmd-legacy:
+	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/consistency/legacy.js,themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
+
+# Run IOS legacy tests
+e2e-ios11-legacy:
+	npx cypress run -P ./themes/theme-ios11/e2e -s 'themes/theme-ios11/e2e/integration/specFiles/consistency/legacy.js,themes/theme-ios11/e2e/integration/specFiles/functional/legacy.js'
 
 e2e-checkout:
 		cd themes/theme-gmd && yarn run e2e:checkout;
@@ -221,7 +250,7 @@ define update-pwa-versions
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
-			then echo "ERROR: Package version mismatch, please check your given version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
+			then echo "ERROR: Package version mismatch, please check your specified version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
 
@@ -258,61 +287,46 @@ endef
 
 
 ####################################################################################################
-# BUILD-NPM-PACKAGES
+# RELEASE-NPM-PACKAGES
 
-define build-npm-packages
+define release-npm-packages
 		@echo "======================================================================"
-		@echo "| Building library npm packages"
+		@echo "| Releasing library and util npm packages"
 		@echo "======================================================================"
-		$(foreach library, $(LIBRARIES), $(call build-library, $(library)))
+		$(foreach library, $(LIBRARIES), $(call build-publish-npm-package, libraries, $(library)))
+		$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call build-publish-npm-package, utils, $(transpiled_util)))
+		@# No build for packages in the UTILS list - publish without transpilation
+		$(foreach util, $(UTILS), $(call publish-npm-package, utils, $(util)))
 
 endef
 
-define build-library
-		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-		cp ./libraries/$(strip $(1))/package.json ./libraries/$(strip $(1))/dist/;
-		cp ./libraries/$(strip $(1))/README.md ./libraries/$(strip $(1))/dist/;
-		cp ./libraries/$(strip $(1))/LICENSE.md ./libraries/$(strip $(1))/dist/;
+define build-publish-npm-package
+		$(call build-npm-package, $(strip $(1)), $(strip $(2)))
+		$(call publish-npm-package, $(strip $(1)), $(strip $(2)), dist)
+		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))
+endef
+
+define build-npm-package
+		@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
+		BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+		cp ./$(strip $(1))/$(strip $(2))/package.json ./$(strip $(1))/$(strip $(2))/dist/;
+		cp ./$(strip $(1))/$(strip $(2))/README.md ./$(strip $(1))/$(strip $(2))/dist/;
+		cp ./$(strip $(1))/$(strip $(2))/LICENSE.md ./$(strip $(1))/$(strip $(2))/dist/;
 
 endef
 
-
-
-####################################################################################################
-# PUBLISH-NPM-PACKAGES
-
-# Publish all library and utils npm packages to npm
-define publish-npm-packages
-		$(foreach package, $(LIBRARIES), $(call npm-release-libraries, $(package)))
-		$(foreach package, $(UTILS), $(call npm-release-utils, $(package)))
-		$(call clean-library-packages)
-
-endef
-
-define npm-release-libraries
+define publish-npm-package
+		@echo "> Publishing './$(strip $(1))/$(strip $(2))' npm package"
 		@if [ "$(STABLE)" != "true" ]; \
-			then npm publish ./libraries/$(strip $(1))/dist/ --access public --tag beta; \
-			else npm publish ./libraries/$(strip $(1))/dist/ --access public; \
+			then npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public --tag beta; \
+			else npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public; \
 		fi;
 
 endef
 
-define npm-release-utils
-		@if [ "$(STABLE)" != "true" ]; \
-			then npm publish ./utils/$(strip $(1))/ --access public --tag beta; \
-			else npm publish ./utils/$(strip $(1))/ --access public; \
-		fi;
-
-endef
-
-# Clean the builds.
-define clean-library-packages
-		$(foreach package, $(LIBRARIES), $(call clean-library-package, $(package)))
-
-endef
-
-define clean-library-package
-		rm -rf -f ./libraries/$(strip $(1))/dist;
+define clean-npm-package
+		@echo "> Cleaning './$(strip $(1))/$(strip $(2))/dist' npm package"
+		rm -rf -f ./$(strip $(1))/$(strip $(2))/dist;
 
 endef
 
@@ -327,29 +341,27 @@ publish-to-github:
 		git add -A && git commit -m "Released $(RELEASE_VERSION)";
 		# Update remotes and push changes into dedicated release branches
 		git fetch --all;
-		git push origin "releases/$(RELEASE_NAME)";
-		# STABLE RELEASE
 		$(call build-changelog)
-		# PRE-RELEASE (alpha, beta, rc)
+		git push origin "releases/$(RELEASE_NAME)";
+		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branch)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
+ifeq ("$(STABLE)","true")
+		# Pushing to v5.X branch might fail, but we don't want the job to fail in this case!
+		-git push origin "releases/$(RELEASE_NAME)":v5.X;
+endif
 
 define build-changelog
 		@echo "======================================================================"
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
-		# Create a dummy tag for the changelog creation tool
-		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
-		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";
-		# Remove the dummy tag again, so it can be properly created with the changelog file inside
-		git push -d origin "$(RELEASE_NAME)";
-		git tag -d "$(RELEASE_NAME)";
-		git fetch origin;
+		touch CHANGELOG.md;
+		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --release-name="$(RELEASE_VERSION)" --tagFrom=v5 --tagTo=HEAD --appendPreviousChangelog=true > CHANGELOG_NEW.md;
+		mv CHANGELOG_NEW.md CHANGELOG.md;
+		$(foreach theme, $(THEMES), cp CHANGELOG.md themes/$(theme)/CHANGELOG.md;)
 		# Push the new changelog to GitHub (into the STABLE release branch)
-		git add "CHANGELOG.md";
-		git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
-		git push origin "releases/$(RELEASE_NAME)" --tags;
-		# Recreate the tag with the changelog inside and push it to remote (origin)
-		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
+		git add CHANGELOG.md;
+		$(foreach theme, $(THEMES), git add themes/$(theme)/CHANGELOG.md;)
+		-git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
 
 endef
 
