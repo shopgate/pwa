@@ -9,15 +9,17 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 1`] =
     }
   }
 >
-  <div
-    className="css-7v4dr8"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<h1>Hello World!</h1>",
+  <Component>
+    <div
+      className="css-7v4dr8"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h1>Hello World!</h1>",
+        }
       }
-    }
-    style={Object {}}
-  />
+      style={Object {}}
+    />
+  </Component>
 </Html>
 `;
 
@@ -30,15 +32,17 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 2`] =
     }
   }
 >
-  <div
-    className="css-7v4dr8"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<h1>Hello User!</h1>",
+  <Component>
+    <div
+      className="css-7v4dr8"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h1>Hello User!</h1>",
+        }
       }
-    }
-    style={Object {}}
-  />
+      style={Object {}}
+    />
+  </Component>
 </Html>
 `;
 
@@ -51,19 +55,21 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 3`] =
     }
   }
 >
-  <div
-    className="css-7v4dr8"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<h1>Hello World!</h1>",
+  <Component>
+    <div
+      className="css-7v4dr8"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<h1>Hello World!</h1>",
+        }
       }
-    }
-    style={
-      Object {
-        "padding": 16,
+      style={
+        Object {
+          "padding": 16,
+        }
       }
-    }
-  />
+    />
+  </Component>
 </Html>
 `;
 
@@ -97,14 +103,16 @@ exports[`<HtmlWidget /> strips out the script tags 1`] = `
     }
   }
 >
-  <div
-    className="css-7v4dr8"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "  <p>Foo Bar</p> ",
+  <Component>
+    <div
+      className="css-7v4dr8"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "  <p>Foo Bar</p> ",
+        }
       }
-    }
-    style={Object {}}
-  />
+      style={Object {}}
+    />
+  </Component>
 </Html>
 `;
