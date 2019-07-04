@@ -4,7 +4,9 @@
   "description": "Provides the theme configurations for Catalog 2.0",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@shopgate/pwa-common": "6.6.0-rc.4",
     "lodash": "^4.17.4"
+  },
+  "peerDependencies": {
+    "@shopgate/pwa-common": "6.6.0-rc.4"
   }
 }
