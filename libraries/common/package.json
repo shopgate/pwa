@@ -42,7 +42,8 @@
     "reselect": "^3.0.1",
     "rxjs": "^5.4.3",
     "swiper": "~4.5.0",
-    "url-search-params": "^0.10.0"
+    "url-search-params": "^0.10.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "6.5.3",
@@ -52,5 +53,10 @@
     "prop-types": "^15.6.0",
     "react": "~16.8.4",
     "react-dom": "~16.8.4"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
