@@ -9,7 +9,7 @@
     "please_choose": "Kies",
     "show_products": "Toon producten",
     "back": "Terug",
-    "close": "Close"
+    "close": "Sluiten"
   },
   "titles": {
     "categories": "Alle Categorieën",
@@ -54,8 +54,8 @@
       "range": "{from} of meer dan: {price}"
     },
     "msrp": "MSRP",
-    "label": "Price {price}.",
-    "label_old_price": "Old price {price}."
+    "label": "Prijs {price}.",
+    "label_old_price": "Oude prijs {price}."
   },
   "product": {
     "description_heading": "Over",
@@ -106,7 +106,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
-    }
+    },
+    "placeholder": "Zoek"
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -138,7 +139,8 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
-    "coupons_not_supported": "Voeg coupons en cadeaubonnen toe tijdens het afprekenproces."
+    "coupons_not_supported": "Voeg coupons en cadeaubonnen toe tijdens het afprekenproces.",
+    "free_shipping": "Gratis verzending"
   },
   "login": {
     "headline": "Welkom",
@@ -175,10 +177,10 @@
   "reviews": {
     "rating": "Rating",
     "no_reviews": "Wees de eerste die dit product beoordeelt:",
-    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
+    "review_count": "({count} {count, plural, =1 {Beoordeling} other {Beoordelingen}})",
     "button_add": "Schrijf een beoordeling",
     "button_all": "Alle {count} Beoordelingen",
-    "author": "by {author}",
+    "author": "door {author}",
     "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} uit {maxRate}",
     "review_form_rate": "Beoordeel dit product:",
     "review_form_author": "Uw naam",

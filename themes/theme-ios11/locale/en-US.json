@@ -54,7 +54,6 @@
       "range": "{from} or more: {price}"
     },
     "msrp": "MSRP",
-    "currency": "USD",
     "label": "Price {price}.",
     "label_old_price": "Old price {price}."
   },
@@ -107,7 +106,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
-    }
+    },
+    "placeholder": "Search"
   },
   "shipping": {
     "unknown": "plus shipping",

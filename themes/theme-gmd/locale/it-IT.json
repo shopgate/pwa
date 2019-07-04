@@ -8,8 +8,8 @@
     "required": "Necessaria *",
     "please_choose": "Inserisci",
     "show_products": "Mostra i prodotti",
-    "back": "Back",
-    "close": "Close"
+    "back": "Indietro",
+    "close": "Chiudi"
   },
   "titles": {
     "categories": "Categorie",
@@ -52,7 +52,9 @@
       "set": "{from} elementi: {price}",
       "range": "{from} o altro: {price}"
     },
-    "msrp": "SRP"
+    "msrp": "SRP",
+    "label": "Prezzo {price}.",
+    "label_old_price": "Vecchio prezzo {price}."
   },
   "product": {
     "description_heading": "A riguardo",
@@ -150,6 +152,7 @@
   },
   "navigation": {
     "login_register": "Accedi / Registrati",
+    "your_account": "Il mio account",
     "home": "Pagina iniziale",
     "categories": "Categorie",
     "favorites": "Favoriti",
@@ -161,9 +164,13 @@
     "payment": "Modalità di pagamento",
     "terms": "Termini",
     "privacy": "Politica sulla privacy",
-    "return_policy": "Politica di restituzione",
     "welcome_message": "Benvenuto/a {name}",
-    "logout": "Abbandona"
+    "return_policy": "Politica di restituzione",
+    "logout": "Abbandona",
+    "menuSubHeader": {
+      "more": "Altro",
+      "about": "Su di noi"
+    }
   },
   "reviews": {
     "rating": "valutazione",
