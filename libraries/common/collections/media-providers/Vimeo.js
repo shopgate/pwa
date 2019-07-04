@@ -1,5 +1,7 @@
 /* eslint-disable extra-rules/potential-point-free */
 
+const scriptUrl = 'https://player.vimeo.com/api/player.js';
+
 /**
  * The Vimeo media provider class.
  */
@@ -9,36 +11,35 @@ class VimeoMediaProvider {
    */
   constructor() {
     this.containers = new Map();
-    this.playerReady = false;
+    this.isPending = true;
+    this.remoteScriptUrl = scriptUrl;
     this.deferred = [];
-
-    this.checkPlayer();
   }
 
   /**
    * Checks if the Video player script is already available.
-   * If not, it injects it into the DOM and adds defferred containers.
+   * If not, it injects it into the DOM and adds deferred containers.
+   * @private
    */
-  checkPlayer() {
-    if (typeof window.Vimeo !== 'undefined') {
-      this.playerReady = true;
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://player.vimeo.com/api/player.js';
-    script.async = true;
-
-    script.onload = () => {
-      this.playerReady = true;
+  onScriptLoaded() {
+    this.isPending = false;
+    if (this.deferred.length) {
       this.deferred.forEach((container) => {
         this.add(container);
       });
-
       this.deferred = [];
-    };
+    }
+  }
 
-    document.querySelector('head').appendChild(script);
+  /**
+   * Check if the Provider script to be loaded externally is finished loading
+   * @returns {boolean}
+   */
+  checkScriptLoadingStatus() {
+    if (this.isPending && typeof window.Vimeo !== 'undefined') {
+      this.isPending = false;
+    }
+    return !this.isPending;
   }
 
   /**
@@ -46,7 +47,7 @@ class VimeoMediaProvider {
    * @param {NodeList} container A DOM container.
    */
   add(container) {
-    if (!this.playerReady) {
+    if (!this.checkScriptLoadingStatus()) {
       this.deferred.push(container);
       return;
     }
