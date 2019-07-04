@@ -1,5 +1,71 @@
 # Changelog
 
+## [v5.11.2](https://github.com/shopgate/pwa/compare/v5.9.1...v5.11.2) (2019-07-04)
+
+#### :bug: Bug Fix
+* [#740](https://github.com/shopgate/pwa/pull/740) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#731](https://github.com/shopgate/pwa/pull/731) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+
+
+## v5.11.1 (2019-05-07)
+
+#### :rocket: Enhancement
+* [#644](https://github.com/shopgate/pwa/pull/644) Added automatic changelog creation for PWA v5.X and modified Makefile for stable releases ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :nail_care: Polish
+* [#640](https://github.com/shopgate/pwa/pull/640) Update tax and shipping disclaimers translations ([@alexbridge](https://github.com/alexbridge))
+
+
+## v5.10.3 (2019-01-07)
+
+#### :rocket: Enhancement
+* [#478](https://github.com/shopgate/pwa/pull/478) Fixed invalid it-IT language file ([@fkloes](https://github.com/fkloes))
+* [#459](https://github.com/shopgate/pwa/pull/459) Update Spanish translations ([@Bettina-Baumert](https://github.com/Bettina-Baumert))
+* [#462](https://github.com/shopgate/pwa/pull/462) Modified HttpRequest class in core ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#456](https://github.com/shopgate/pwa/pull/456) Reset margin of Register links ([@richardgorman](https://github.com/richardgorman))
+* [#444](https://github.com/shopgate/pwa/pull/444) Removed text selection for product descriptions ([@richardgorman](https://github.com/richardgorman))
+
+#### :bug: Bug Fix
+* [#477](https://github.com/shopgate/pwa/pull/477) Fixed invalid it-IT translation file ([@fkloes](https://github.com/fkloes))
+* [#478](https://github.com/shopgate/pwa/pull/478) Fixed invalid it-IT language file ([@fkloes](https://github.com/fkloes))
+* [#476](https://github.com/shopgate/pwa/pull/476) Fix more products load for product list widget ([@alexbridge](https://github.com/alexbridge))
+* [#467](https://github.com/shopgate/pwa/pull/467) Increased hit area of the cart item context menu ([@fkloes](https://github.com/fkloes))
+* [#466](https://github.com/shopgate/pwa/pull/466) Fixed faulty getProducts call with productIds and filters ([@fkloes](https://github.com/fkloes))
+* [#462](https://github.com/shopgate/pwa/pull/462) Modified HttpRequest class in core ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#452](https://github.com/shopgate/pwa/pull/452) Changed .gitignore to only ignore the theme's config folder. ([@devbucket](https://github.com/devbucket))
+* [#448](https://github.com/shopgate/pwa/pull/448) Moved the link around the buttons on iOS UserMenu ([@richardgorman](https://github.com/richardgorman))
+* [#425](https://github.com/shopgate/pwa/pull/425) Change to getProductsById action that keeps original hash when some requested products are already cached. Make Product widget responsive to settings changes after mounting ([@aaron-martin](https://github.com/aaron-martin))
+* [#437](https://github.com/shopgate/pwa/pull/437) GMD Snackbar adjusts action color to white when accent color to black contrast is less than 4 ([@sznowicki](https://github.com/sznowicki))
+
+
+## v5.10.2 (2018-11-23)
+
+#### :rocket: Enhancement
+* [#381](https://github.com/shopgate/pwa/pull/381) Added portals and location prop for product-item.price ([@DannyShopgate](https://github.com/DannyShopgate))
+
+#### :bug: Bug Fix
+* [#404](https://github.com/shopgate/pwa/pull/404) Improve concurrent cart actions, when adding a coupon from deeplink ([@alexbridge](https://github.com/alexbridge))
+
+
+## v5.10.1 (2018-11-16)
+
+#### :bug: Bug Fix
+* [#387](https://github.com/shopgate/pwa/pull/387) Added flushTab option for legacy links within the parsed-link helper ([@fkloes](https://github.com/fkloes))
+* [#393](https://github.com/shopgate/pwa/pull/393) Replaced deprecated FR, LV, FE and GE iso province codes ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#386](https://github.com/shopgate/pwa/pull/386) Re-added hiding of the legacy menu bar on app start ([@fkloes](https://github.com/fkloes))
+
+
+## v5.10.0 (2018-11-12)
+
+#### :rocket: Enhancement
+* [#332](https://github.com/shopgate/pwa/pull/332) Implemented iOS and Android Share icons and Native Share App Command ([@DannyShopgate](https://github.com/DannyShopgate))
+
+#### :bug: Bug Fix
+* [#370](https://github.com/shopgate/pwa/pull/370) Fixed an inAppBrowser issue where previous opened pages got visible again ([@fkloes](https://github.com/fkloes))
+* [#371](https://github.com/shopgate/pwa/pull/371) Correct price formatting on product detail page when price is 0 ([@aaron-martin](https://github.com/aaron-martin))
+* [#368](https://github.com/shopgate/pwa/pull/368) Corrected a bug where the filters labels can run out of the viewport ([@richardgorman](https://github.com/richardgorman))
+* [#363](https://github.com/shopgate/pwa/pull/363) Updated `react-hot-loader` to prevent issues with newer `react` version. ([@devbucket](https://github.com/devbucket))
+
 ## [v5.11.1](https://github.com/shopgate/pwa/compare/...v5.11.1) (2019-05-07)
 
 #### :rocket: Enhancement
