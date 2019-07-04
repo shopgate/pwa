@@ -1,5 +1,45 @@
 # Changelog
 
+## [v6.7.0](https://github.com/shopgate/pwa/compare/...v6.7.0) (2019-07-04)
+
+#### :rocket: Enhancement
+* [#717](https://github.com/shopgate/pwa/pull/717) Added support for Universal Links ([@sznowicki](https://github.com/sznowicki))
+* [#707](https://github.com/shopgate/pwa/pull/707) Improved accessibility of product pages ([@fkloes](https://github.com/fkloes))
+* [#715](https://github.com/shopgate/pwa/pull/715) Enabled color configuration for the AppHeader ([@fkloes](https://github.com/fkloes))
+* [#709](https://github.com/shopgate/pwa/pull/709) Improved safe area insets ([@fkloes](https://github.com/fkloes))
+* [#700](https://github.com/shopgate/pwa/pull/700) Introduced a global translation helper ([@sznowicki](https://github.com/sznowicki))
+* [#702](https://github.com/shopgate/pwa/pull/702) Improved general navigation for screen readers  ([@fkloes](https://github.com/fkloes))
+* [#704](https://github.com/shopgate/pwa/pull/704) Support featured media for product list and product details page ([@alexbridge](https://github.com/alexbridge))
+* [#701](https://github.com/shopgate/pwa/pull/701) Added functionality to access theme config entries in an easy fashion ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#699](https://github.com/shopgate/pwa/pull/699) A PDP can now show related products in a slider ([@devbucket](https://github.com/devbucket))
+* [#698](https://github.com/shopgate/pwa/pull/698) Make modal window title translatable with parameters ([@alexbridge](https://github.com/alexbridge))
+* [#695](https://github.com/shopgate/pwa/pull/695) Configuration added to configure zoom ratio for product gallery ([@alexbridge](https://github.com/alexbridge))
+* [#693](https://github.com/shopgate/pwa/pull/693) Support effectivity dates on Product List Page ([@alexbridge](https://github.com/alexbridge))
+* [#687](https://github.com/shopgate/pwa/pull/687) Optimized the category and browse page for screen readers ([@fkloes](https://github.com/fkloes))
+* [#683](https://github.com/shopgate/pwa/pull/683) Added accessibility tree to the TabBar in iOS. ([@devbucket](https://github.com/devbucket))
+* [#684](https://github.com/shopgate/pwa/pull/684) Support Swatches on Product Details Page ([@alexbridge](https://github.com/alexbridge))
+* [#678](https://github.com/shopgate/pwa/pull/678) Added configurable swatches to the product list page ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#668](https://github.com/shopgate/pwa/pull/668) Support product effectivity dates on Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#663](https://github.com/shopgate/pwa/pull/663) Add hint for minimum / maximum order quantity ([@alexbridge](https://github.com/alexbridge))
+* [#657](https://github.com/shopgate/pwa/pull/657) Added support for grouped Product Properties ([@devbucket](https://github.com/devbucket))
+* [#660](https://github.com/shopgate/pwa/pull/660) Added support for videos on the Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#650](https://github.com/shopgate/pwa/pull/650) Min/Max order quantities are supported on the Product Detail Page ([@alexbridge](https://github.com/alexbridge))
+* [#653](https://github.com/shopgate/pwa/pull/653) Added hooks to access the theme config ([@devbucket](https://github.com/devbucket))
+* [#649](https://github.com/shopgate/pwa/pull/649) Added client connectivity information to Redux ([@fkloes](https://github.com/fkloes))
+* [#642](https://github.com/shopgate/pwa/pull/642) Added support for long product names ([@devbucket](https://github.com/devbucket))
+* [#647](https://github.com/shopgate/pwa/pull/647) Added configuration hooks to access global and page configuration. ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#719](https://github.com/shopgate/pwa/pull/719) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+* [#706](https://github.com/shopgate/pwa/pull/706) SheetList item correct styling ([@alexbridge](https://github.com/alexbridge))
+* [#691](https://github.com/shopgate/pwa/pull/691) Prevent getProductMedia pipeline from being called in none beta environment. ([@devbucket](https://github.com/devbucket))
+* [#690](https://github.com/shopgate/pwa/pull/690) Fixed an issue with missing dependencies for the react-player module. ([@devbucket](https://github.com/devbucket))
+* [#688](https://github.com/shopgate/pwa/pull/688) Fixed secure config writer to correctly merge arrays ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :nail_care: Polish
+* [#703](https://github.com/shopgate/pwa/pull/703) Polished the `Swatch` components to make them show up properly in the React DOM. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
 ## [v6.5.3](https://github.com/shopgate/pwa/compare/v6.5.2...v6.5.3) (2019-06-28)
 
 #### :bug: Bug Fix
