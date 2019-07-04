@@ -12,7 +12,9 @@
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "e2e": "cypress open -P ./e2e",
-    "e2e:checkout": "cypress open -P ./e2e/extensions/checkout"
+    "e2e:checkout": "cypress open -P ./e2e/extensions/checkout",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
@@ -64,7 +66,8 @@
     "redux": "^4.0.1",
     "redux-mock-store": "^1.3.0",
     "reselect": "^3.0.1",
-    "smoothscroll-polyfill": "^0.4.3"
+    "smoothscroll-polyfill": "^0.4.3",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "6.5.3",
@@ -79,5 +82,6 @@
     "nyc": "^11.8.0",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0"
-  }
+  },
+  "snyk": true
 }
