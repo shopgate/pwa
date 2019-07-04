@@ -1,5 +1,34 @@
 # Changelog
 
+## [v5.10.4](https://github.com/shopgate/pwa/compare/v5.9.1...v5.10.4) (2019-07-04)
+
+#### :bug: Bug Fix
+* [#740](https://github.com/shopgate/pwa/pull/740) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#731](https://github.com/shopgate/pwa/pull/731) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+
+
+## v5.10.3 (2019-01-07)
+
+#### :bug: Bug Fix
+* [#477](https://github.com/shopgate/pwa/pull/477) Fixed invalid it-IT translation file ([@fkloes](https://github.com/fkloes))
+
+
+## v5.10.1 (2018-11-16)
+
+#### :bug: Bug Fix
+* [#386](https://github.com/shopgate/pwa/pull/386) Re-added hiding of the legacy menu bar on app start ([@fkloes](https://github.com/fkloes))
+
+
+## v5.10.0 (2018-11-12)
+
+#### :rocket: Enhancement
+* [#332](https://github.com/shopgate/pwa/pull/332) Implemented iOS and Android Share icons and Native Share App Command ([@DannyShopgate](https://github.com/DannyShopgate))
+
+#### :bug: Bug Fix
+* [#371](https://github.com/shopgate/pwa/pull/371) Correct price formatting on product detail page when price is 0 ([@aaron-martin](https://github.com/aaron-martin))
+* [#368](https://github.com/shopgate/pwa/pull/368) Corrected a bug where the filters labels can run out of the viewport ([@richardgorman](https://github.com/richardgorman))
+* [#363](https://github.com/shopgate/pwa/pull/363) Updated `react-hot-loader` to prevent issues with newer `react` version. ([@devbucket](https://github.com/devbucket))
+
 ## [v5.10.3](https://github.com/shopgate/pwa/compare/v5.10.2...v5.10.3) (2019-01-07)
 
 #### :rocket: Enhancement
