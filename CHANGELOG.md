@@ -1,21 +1,11 @@
 # Changelog
 
-## [v5.10.4](https://github.com/shopgate/pwa/compare/v5.9.1...v5.10.4) (2019-07-04)
+## [v5.10.4](https://github.com/shopgate/pwa/compare/v5.10.3...v5.10.4) (2019-07-04)
 
 #### :bug: Bug Fix
 * [#740](https://github.com/shopgate/pwa/pull/740) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
 * [#731](https://github.com/shopgate/pwa/pull/731) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
 
-
-## v5.10.0 (2018-11-12)
-
-#### :rocket: Enhancement
-* [#332](https://github.com/shopgate/pwa/pull/332) Implemented iOS and Android Share icons and Native Share App Command ([@DannyShopgate](https://github.com/DannyShopgate))
-
-#### :bug: Bug Fix
-* [#371](https://github.com/shopgate/pwa/pull/371) Correct price formatting on product detail page when price is 0 ([@aaron-martin](https://github.com/aaron-martin))
-* [#368](https://github.com/shopgate/pwa/pull/368) Corrected a bug where the filters labels can run out of the viewport ([@richardgorman](https://github.com/richardgorman))
-* [#363](https://github.com/shopgate/pwa/pull/363) Updated `react-hot-loader` to prevent issues with newer `react` version. ([@devbucket](https://github.com/devbucket))
 
 ## [v5.10.3](https://github.com/shopgate/pwa/compare/v5.10.2...v5.10.3) (2019-01-07)
 
@@ -56,6 +46,21 @@
 
 #### :rocket: Enhancement
 * [#332](https://github.com/shopgate/pwa/pull/332) Implemented iOS and Android Share icons and Native Share App Command ([@DannyShopgate](https://github.com/DannyShopgate))
+
+#### :bug: Bug Fix
+* [#371](https://github.com/shopgate/pwa/pull/371) Correct price formatting on product detail page when price is 0 ([@aaron-martin](https://github.com/aaron-martin))
+* [#370](https://github.com/shopgate/pwa/pull/370) Fixed an inAppBrowser issue where previous opened pages got visible again ([fkloes](https://github.com/fkloes))
+* [#368](https://github.com/shopgate/pwa/pull/368) Corrected a bug where the filters labels can run out of the viewport ([@richardgorman](https://github.com/richardgorman))
+* [#363](https://github.com/shopgate/pwa/pull/363) Updated `react-hot-loader` to prevent issues with newer `react` version. ([@devbucket](https://github.com/devbucket))
+
+#### :nail_care: Polish
+* [#359](https://github.com/shopgate/pwa/pull/359) My account menu header portal ([alexbridge](https://github.com/alexbridge))
+* [#355](https://github.com/shopgate/pwa/pull/355) Added possibility to open legacy `user\_lost\_password` link ([philipp-heyse](https://github.com/philipp-heyse))
+* [#350](https://github.com/shopgate/pwa/pull/350) Added automatic changelog generation and handling for stable releases. ([SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#334](https://github.com/shopgate/pwa/pull/334) fix linting errors for e2e test suite ([Iv3x](https://github.com/Iv3x))
+
+
+## [v5.10.0](https://github.com/shopgate/pwa/compare/v5.9.1...v5.10.0) (2018-11-12)
 
 #### :bug: Bug Fix
 * [#371](https://github.com/shopgate/pwa/pull/371) Correct price formatting on product detail page when price is 0 ([aaron-martin](https://github.com/aaron-martin))
