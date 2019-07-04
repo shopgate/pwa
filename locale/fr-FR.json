@@ -9,7 +9,7 @@
     "please_choose": "Veuillez choisir",
     "show_products": "Présentation produits",
     "back": "Retour",
-    "close": "Close"
+    "close": "Fermer"
   },
   "titles": {
     "categories": "Catégories",
@@ -54,9 +54,8 @@
       "range": "{from} ou plus: {price}"
     },
     "msrp": "MSRP",
-    "currency": "EUR",
-    "label": "Price {price}.",
-    "label_old_price": "Old price {price}."
+    "label": "Prix {price}.",
+    "label_old_price": "Ancien prix {price}."
   },
   "product": {
     "description_heading": "à propos",
@@ -107,7 +106,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
-    }
+    },
+    "placeholder": "Recherche"
   },
   "shipping": {
     "unknown": "avec frais de livraison",
@@ -139,6 +139,7 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
+    "coupons_not_supported": "Échangez des coupons et des cartes-cadeaux à l'étape suivante",
     "free_shipping": "Livraison gratuite"
   },
   "login": {
@@ -177,7 +178,7 @@
   "reviews": {
     "rating": "Evaluation",
     "no_reviews": "Soyez le premier à évaluer ce produit:",
-    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
+    "review_count": "({count} {count, plural, =1 {Commentaire} other {Commantaires}})",
     "button_add": "Ecrire un commentaire",
     "button_all": "Tous les {count} commantaires",
     "author": "par {author}",

@@ -54,7 +54,6 @@
       "range": "{from} oder mehr: {price}"
     },
     "msrp": "UVP",
-    "currency": "EUR",
     "label": "Preis {price}.",
     "label_old_price": "Alter Preis {price}."
   },
@@ -107,7 +106,8 @@
     "no_result": {
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
-    }
+    },
+    "placeholder": "Suchen"
   },
   "shipping": {
     "unknown": "zzgl. Versand",
