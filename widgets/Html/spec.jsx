@@ -10,6 +10,10 @@ import HtmlWidget from './index';
 
 const store = configureStore(reducers, []);
 
+jest.mock('@shopgate/pwa-common/components/EmbeddedMedia', () => (
+  ({ children }) => children
+));
+
 describe.skip('<HtmlWidget />', () => {
   const navigate = jest.fn();
 
