@@ -54,9 +54,8 @@
       "range": "{from} ou mais: {price}"
     },
     "msrp": "MSRP",
-    "currency": "EUR",
-    "label": "Price {price}.",
-    "label_old_price": "Old price {price}."
+    "label": "Preço {price}.",
+    "label_old_price": "Preço antigo {price}."
   },
   "product": {
     "description_heading": "Sobre",
@@ -107,7 +106,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Sua pesquisa \"{searchPhrase}\" tem 0 resultados."
-    }
+    },
+    "placeholder": "Pesquisar"
   },
   "shipping": {
     "unknown": "mais o custo de envio",
@@ -127,7 +127,10 @@
   },
   "cart": {
     "subtotal": "Subtotal",
-    "checkout": "Checkout",
+    "total": "Total do carrinho",
+    "discount": "Desconto",
+    "discount_with_label": "Desconto ({label})",
+    "checkout": "Finalizar compra agora",
     "remove": "Remover",
     "edit": "Editar",
     "empty": "Seu carrinho está vazio",
@@ -137,10 +140,7 @@
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
-    "free_shipping": "Envio Grátis",
-    "total": "Total do carrinho",
-    "discount": "Desconto",
-    "discount_with_label": "Desconto ({label})"
+    "free_shipping": "Envio Grátis"
   },
   "login": {
     "headline": "Bem vindo",

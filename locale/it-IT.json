@@ -9,7 +9,7 @@
     "please_choose": "Inserisci",
     "show_products": "Mostra i prodotti",
     "back": "Indietro",
-    "close": "Close"
+    "close": "Chiudi"
   },
   "titles": {
     "categories": "Categorie",
@@ -54,9 +54,8 @@
       "range": "{from} o altro: {price}"
     },
     "msrp": "SRP",
-    "currency": "Dollari",
-    "label": "Price {price}.",
-    "label_old_price": "Old price {price}."
+    "label": "Prezzo {price}.",
+    "label_old_price": "Vecchio prezzo {price}."
   },
   "product": {
     "description_heading": "A riguardo",
@@ -107,7 +106,8 @@
     "no_result": {
       "heading": "Ops!",
       "body": "La vostra ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    }
+    },
+    "placeholder": "Cerca"
   },
   "shipping": {
     "unknown": "più spedizione",
