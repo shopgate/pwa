@@ -8,12 +8,7 @@ import Dotdotdot from 'react-dotdotdot';
  * @returns {JSX}
  */
 const Ellipsis = props => (
-  <Dotdotdot
-    clamp={props.rows}
-    ellipsis={props.ellipsis}
-    className={props.className}
-    useNativeClamp
-  >
+  <Dotdotdot clamp={props.rows} ellipsis={props.ellipsis} className={props.className}>
     {props.children}
   </Dotdotdot>
 );
