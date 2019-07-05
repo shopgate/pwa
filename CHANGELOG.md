@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.1.4](https://github.com/shopgate/pwa/compare/v6.1.3...v6.1.4) (2019-07-05)
+
+#### :bug: Bug Fix
+* [#750](https://github.com/shopgate/pwa/pull/750) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#741](https://github.com/shopgate/pwa/pull/741) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#729](https://github.com/shopgate/pwa/pull/729) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+
+## [v6.1.3](https://github.com/shopgate/pwa/compare/v6.1.2...v6.1.3) (2019-06-02)
+
 ## [v6.1.2](https://github.com/shopgate/pwa/compare/v6.1.1...v6.1.2) (2019-06-02)
 
 #### :bug: Bug Fix
