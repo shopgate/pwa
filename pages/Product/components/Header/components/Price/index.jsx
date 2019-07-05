@@ -33,7 +33,7 @@ const getTotalPrice = (price, additions) => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Price = ({ price }) => (
+const Price = ({ price, hasProductVariants }) => (
   <Fragment>
     <Portal name={PRODUCT_PRICE_BEFORE} />
     <Portal name={PRODUCT_PRICE} props={{ price }}>
@@ -47,7 +47,7 @@ const Price = ({ price }) => (
                 discounted={!!price.discount}
                 taxDisclaimer
                 unitPrice={getTotalPrice(price.unitPrice, optionsPrices)}
-                unitPriceMin={!optionsPrices ? price.unitPriceMin : 0}
+                unitPriceMin={hasProductVariants ? price.unitPriceMin : 0}
               />
             )}
           </PlaceholderLabel>
@@ -59,10 +59,12 @@ const Price = ({ price }) => (
 );
 
 Price.propTypes = {
+  hasProductVariants: PropTypes.bool,
   price: PropTypes.shape(),
 };
 
 Price.defaultProps = {
+  hasProductVariants: false,
   price: null,
 };
 
