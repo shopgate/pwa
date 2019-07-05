@@ -3,9 +3,8 @@ import {
   REQUEST_FAVORITES,
   ERROR_FETCH_FAVORITES,
   REQUEST_ADD_FAVORITES,
-  REQUEST_REMOVE_FAVORITES,
-  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
-  ERROR_ADD_REMOVE_FAVORITES_SYNC,
+  REQUEST_REMOVE_FAVORITES, REQUEST_SYNC_FAVORITES, RECEIVE_SYNC_FAVORITES, IDLE_SYNC_FAVORITES,
+  ERROR_SYNC_FAVORITES,
 } from '../constants';
 import reducers from './index';
 import { mockedList } from '../mock';
@@ -80,16 +79,6 @@ describe('Favorites - reducers', () => {
       expect(state.products.ids).toContain(productId);
     });
 
-    it(`should react on ${RECEIVE_ADD_REMOVE_FAVORITES_SYNC} `, () => {
-      state = reducers(state, {
-        type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
-        productId,
-      });
-      expect(state.products.isFetching).toBe(false);
-      expect(state.products.outOfSync).toBe(false);
-      expect(typeof state).toBe('object');
-    });
-
     it('should not change current state on RECEIVE_FAVORITES when client is out of sync', () => {
       state = reducers(state, {
         type: RECEIVE_FAVORITES,
@@ -123,15 +112,38 @@ describe('Favorites - reducers', () => {
       expect(state.products.ids).not.toContain(productId);
     });
 
-    it(`should react on ${ERROR_ADD_REMOVE_FAVORITES_SYNC} `, () => {
+    it('should react on REQUEST_SYNC_FAVORITES', () => {
       state = reducers(state, {
-        type: ERROR_ADD_REMOVE_FAVORITES_SYNC,
-        productId,
-        error: new Error('mock error'),
+        type: REQUEST_SYNC_FAVORITES,
       });
-      expect(state.products.isFetching).toBe(false);
-      expect(state.products.outOfSync).toBe(false);
       expect(typeof state).toBe('object');
+      expect(state.products.outOfSync).toBe(true);
+      expect(state.products.ids).not.toContain(productId);
+    });
+
+    it('should react on RECEIVE_SYNC_FAVORITES', () => {
+      state = reducers(state, {
+        type: RECEIVE_SYNC_FAVORITES,
+      });
+      expect(typeof state).toBe('object');
+      expect(state.products.outOfSync).toBe(true);
+    });
+
+    it('should react on IDLE_SYNC_FAVORITES', () => {
+      state = reducers(state, {
+        type: IDLE_SYNC_FAVORITES,
+      });
+      expect(typeof state).toBe('object');
+      expect(state.products.outOfSync).toBe(false);
+    });
+
+    it('should react on ERROR_SYNC_FAVORITES', () => {
+      state = reducers(state, {
+        type: ERROR_SYNC_FAVORITES,
+      });
+      expect(typeof state).toBe('object');
+      expect(state.products.lastChange).toBe(0);
+      expect(state.products.outOfSync).toBe(false);
     });
   });
 });

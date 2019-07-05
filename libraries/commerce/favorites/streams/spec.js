@@ -6,12 +6,13 @@ import {
 } from './index';
 
 import {
-  ERROR_FAVORITES,
+  ERROR_SYNC_FAVORITES,
   ERROR_FETCH_FAVORITES,
+  IDLE_SYNC_FAVORITES,
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
   RECEIVE_FAVORITES,
-  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+  RECEIVE_SYNC_FAVORITES,
 } from '../constants';
 
 describe('Favorites streams', () => {
@@ -20,7 +21,8 @@ describe('Favorites streams', () => {
       REQUEST_ADD_FAVORITES,
       REQUEST_REMOVE_FAVORITES,
       RECEIVE_FAVORITES,
-      ERROR_FAVORITES,
+      RECEIVE_SYNC_FAVORITES,
+      ERROR_SYNC_FAVORITES,
       ERROR_FETCH_FAVORITES,
     ];
 
@@ -37,7 +39,7 @@ describe('Favorites streams', () => {
 
   describe('favoritesError$', () => {
     const actionNames = [
-      ERROR_FAVORITES,
+      ERROR_SYNC_FAVORITES,
       ERROR_FETCH_FAVORITES,
     ];
 
@@ -53,17 +55,11 @@ describe('Favorites streams', () => {
   });
 
   describe('favoritesSyncIdle$', () => {
-    const actionName = [
-      RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
-    ];
-
-    actionName.forEach((type) => {
-      it(`should return true for ${type}`, () => {
-        expect(favoritesSyncIdle$
-          .operator
-          .predicate({ action: { type } }))
-          .toBe(true);
-      });
+    it(`should return true for ${IDLE_SYNC_FAVORITES}`, () => {
+      expect(favoritesSyncIdle$
+        .operator
+        .predicate({ action: { type: IDLE_SYNC_FAVORITES } }))
+        .toBe(true);
     });
 
     it('should return for other types', () => {

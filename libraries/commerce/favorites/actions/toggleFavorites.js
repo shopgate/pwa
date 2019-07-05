@@ -9,6 +9,7 @@ import {
   receiveAddRemoveFavoritesSync,
   errorAddRemoveFavoritesSync,
   errorFavorites,
+  idleSyncFavorites,
 } from '../action-creators';
 import {
   getProductRelativesOnFavorites,
@@ -93,7 +94,7 @@ const syncAddRemoveFavorites = bufferedActions => (dispatch) => {
   dispatch(requestAddRemoveFavoritesSync(productIdsToAdd, productIdsToRemove));
   if (productIdsToAdd.length < 1 && productIdsToRemove.length < 1) {
     // since there are no product to add or remove bale out
-    dispatch(receiveAddRemoveFavoritesSync(productIdsToAdd, productIdsToRemove));
+    dispatch(idleSyncFavorites());
     return;
   }
 

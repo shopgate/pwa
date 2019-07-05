@@ -5,9 +5,10 @@ import {
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
   ERROR_FAVORITES,
-  REQUEST_ADD_REMOVE_FAVORITES_SYNC,
-  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
-  ERROR_ADD_REMOVE_FAVORITES_SYNC,
+  REQUEST_SYNC_FAVORITES,
+  RECEIVE_SYNC_FAVORITES,
+  ERROR_SYNC_FAVORITES,
+  IDLE_SYNC_FAVORITES,
 } from '../constants';
 
 /**
@@ -61,7 +62,7 @@ export const requestRemoveFavorites = (productId, silent = false) => ({
  * @return {Object}
  */
 export const requestAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
-  type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+  type: REQUEST_SYNC_FAVORITES,
   productIdsToAdd,
   productIdsToRemove,
 });
@@ -73,7 +74,7 @@ export const requestAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemov
  * @return {Object}
  */
 export const receiveAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
-  type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+  type: RECEIVE_SYNC_FAVORITES,
   productIdsToAdd,
   productIdsToRemove,
 });
@@ -86,10 +87,18 @@ export const receiveAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemov
  * @return {Object}
  */
 export const errorAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove, error) => ({
-  type: ERROR_ADD_REMOVE_FAVORITES_SYNC,
+  type: ERROR_SYNC_FAVORITES,
   productIdsToAdd,
   productIdsToRemove,
   error,
+});
+
+/**
+ * Idle sync action.
+ * @returns {Object}
+ */
+export const idleSyncFavorites = () => ({
+  type: IDLE_SYNC_FAVORITES,
 });
 
 /**

@@ -1,13 +1,15 @@
 import { uniq } from 'lodash';
 import {
   ERROR_FETCH_FAVORITES,
+  ERROR_SYNC_FAVORITES,
   FAVORITES_LIFETIME,
   RECEIVE_FAVORITES,
+  RECEIVE_SYNC_FAVORITES,
   REQUEST_ADD_FAVORITES,
-  REQUEST_REMOVE_FAVORITES,
   REQUEST_FAVORITES,
-  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
-  ERROR_ADD_REMOVE_FAVORITES_SYNC,
+  REQUEST_REMOVE_FAVORITES,
+  REQUEST_SYNC_FAVORITES,
+  IDLE_SYNC_FAVORITES,
 } from '../constants';
 
 /**
@@ -47,16 +49,26 @@ const products = (state = {
         ids: state.ids.filter(id => id !== action.productId),
         outOfSync: false,
       };
-    case RECEIVE_ADD_REMOVE_FAVORITES_SYNC:
+    case REQUEST_SYNC_FAVORITES:
       return {
         ...state,
-        isFetching: false,
+        isFetching: true,
+        lastChange: Date.now(),
+        outOfSync: true,
+      };
+    case RECEIVE_SYNC_FAVORITES:
+      return {
+        ...state,
+        lastChange: Date.now(),
+      };
+    case IDLE_SYNC_FAVORITES:
+      return {
+        ...state,
         outOfSync: false,
       };
-    case ERROR_ADD_REMOVE_FAVORITES_SYNC:
+    case ERROR_SYNC_FAVORITES:
       return {
         ...state,
-        isFetching: false,
         lastChange: 0, // Reset both to fetch ASAP
         outOfSync: false,
       };

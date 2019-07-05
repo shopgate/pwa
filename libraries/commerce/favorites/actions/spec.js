@@ -16,10 +16,11 @@ import {
   REQUEST_FAVORITES,
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  REQUEST_ADD_REMOVE_FAVORITES_SYNC,
-  RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+  RECEIVE_SYNC_FAVORITES,
+  REQUEST_SYNC_FAVORITES,
   ERROR_FETCH_FAVORITES,
-  ERROR_ADD_REMOVE_FAVORITES_SYNC,
+  ERROR_SYNC_FAVORITES,
+  IDLE_SYNC_FAVORITES,
 } from '../constants';
 import * as pipelines from '../constants/Pipelines';
 
@@ -168,12 +169,12 @@ describe('Favorites - actions', () => {
         .map(id => requestAddFavorites(id));
       const expectedActions = [
         {
-          type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+          type: REQUEST_SYNC_FAVORITES,
           productIdsToAdd: [...productIds],
           productIdsToRemove: [],
         },
         {
-          type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+          type: RECEIVE_SYNC_FAVORITES,
           productIdsToAdd: [...productIds],
           productIdsToRemove: [],
         },
@@ -185,7 +186,7 @@ describe('Favorites - actions', () => {
       const store = mockStore({});
       store.dispatch(syncAddRemoveFavorites(mockBufferedActions));
       setTimeout(() => {
-        expect(mockResolveDetector.mock.calls.length === productIds.length);
+        expect(mockResolveDetector.mock.calls.length).toEqual(productIds.length);
         expect(store.getActions()).toEqual(expectedActions);
         done();
       }, 0);
@@ -197,12 +198,12 @@ describe('Favorites - actions', () => {
         .map(id => requestAddFavorites(id));
       const expectedActions = [
         {
-          type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+          type: REQUEST_SYNC_FAVORITES,
           productIdsToAdd: [...productIds],
           productIdsToRemove: [],
         },
         {
-          type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+          type: RECEIVE_SYNC_FAVORITES,
           productIdsToAdd: [...productIds],
           productIdsToRemove: [],
         },
@@ -228,14 +229,12 @@ describe('Favorites - actions', () => {
       ];
       const expectedActions = [
         {
-          type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+          type: REQUEST_SYNC_FAVORITES,
           productIdsToAdd: [],
           productIdsToRemove: [],
         },
         {
-          type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
-          productIdsToAdd: [],
-          productIdsToRemove: [],
+          type: IDLE_SYNC_FAVORITES,
         },
       ];
       const mockResolveDetector = jest.fn();
@@ -261,12 +260,12 @@ describe('Favorites - actions', () => {
       ];
       const expectedActions = [
         {
-          type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+          type: REQUEST_SYNC_FAVORITES,
           productIdsToAdd: [...productIdsToAdd],
           productIdsToRemove: [...productIdsToRemove],
         },
         {
-          type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+          type: RECEIVE_SYNC_FAVORITES,
           productIdsToAdd: [...productIdsToAdd],
           productIdsToRemove: [...productIdsToRemove],
         },
@@ -294,12 +293,12 @@ describe('Favorites - actions', () => {
       ];
       const expectedActions = [
         {
-          type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+          type: REQUEST_SYNC_FAVORITES,
           productIdsToAdd: ['1'],
           productIdsToRemove: [],
         },
         {
-          type: RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
+          type: RECEIVE_SYNC_FAVORITES,
           productIdsToAdd: ['1'],
           productIdsToRemove: [],
         },
@@ -324,12 +323,12 @@ describe('Favorites - actions', () => {
       const mockError = new Error('mock error');
       const expectedActions = [
         {
-          type: REQUEST_ADD_REMOVE_FAVORITES_SYNC,
+          type: REQUEST_SYNC_FAVORITES,
           productIdsToAdd: [...productIds],
           productIdsToRemove: [],
         },
         {
-          type: ERROR_ADD_REMOVE_FAVORITES_SYNC,
+          type: ERROR_SYNC_FAVORITES,
           productIdsToAdd: [...productIds],
           productIdsToRemove: [],
           error: mockError,
