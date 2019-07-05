@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/tracking-ga-native",
-  "version": "6.5.3",
+  "version": "6.5.4-rc.2",
   "description": "Shopgate Connect Google Analytics native tracker extension.",
   "main": "frontend/index.js",
   "repository": "shopgate/tracking-ga-native",
@@ -23,12 +23,12 @@
     }
   },
   "dependencies": {
-    "@shopgate/tracking-core": "6.5.3"
+    "@shopgate/tracking-core": "6.5.4-rc.2"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "6.5.3",
-    "@shopgate/pwa-common": "6.5.3",
-    "@shopgate/pwa-core": "6.5.3",
+    "@shopgate/eslint-config": "6.5.4-rc.2",
+    "@shopgate/pwa-common": "6.5.4-rc.2",
+    "@shopgate/pwa-core": "6.5.4-rc.2",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",

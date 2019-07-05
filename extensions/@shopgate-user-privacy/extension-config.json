@@ -1,5 +1,5 @@
 {
-  "version": "6.5.3",
+  "version": "6.5.4-rc.2",
   "id": "@shopgate/user-privacy",
   "configuration": {
     "isActive": {
