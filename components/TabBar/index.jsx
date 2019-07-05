@@ -67,7 +67,6 @@ TabBar.propTypes = {
 
 TabBar.defaultProps = {
   activeTab: null,
-  cartProductCount: 0,
   isVisible: true,
 };
 
