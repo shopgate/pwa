@@ -1,6 +1,6 @@
 {
   "lerna": "2.9.0",
-  "version": "5.11.1",
+  "version": "5.11.2-rc.5",
   "packages": [
     "extensions/@shopgate-product-reviews/frontend",
     "extensions/@shopgate-tracking-ga-native/frontend",
