@@ -1,5 +1,5 @@
 {
-  "version": "6.2.1",
+  "version": "6.3.3",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -167,6 +167,19 @@
       "params": {
         "type": "json",
         "label": "Enable / disable frontend benchmarking tools"
+      }
+    },
+    "sentry": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "enabled": false,
+        "level": "warning",
+        "sampleRate": 1.0
+      },
+      "params": {
+        "type": "json",
+        "label": "Use sentry.io for error (debug, info) logging"
       }
     }
   }

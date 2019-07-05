@@ -187,7 +187,6 @@ e2e-user:
 	cd themes/theme-gmd && yarn run e2e:user;
 
 e2e-install:
-	npm i --no-save --no-package-lock cypress symlink-dir
 	# Symlinking support, plugins, fixtures
 	npx symlink-dir ./utils/e2e/support ./themes/theme-gmd/e2e/cypress/support
 	npx symlink-dir ./utils/e2e/fixtures ./themes/theme-gmd/e2e/cypress/fixtures

@@ -33,7 +33,7 @@ export class LiveshoppingWidget extends Component {
     }
 
     return (
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} data-test-id="liveShoppingWidget">
         <ImageSlider indicators loop classNames={sliderStyle}>
           {products.map(id => <Item key={id} productId={id} />)}
         </ImageSlider>

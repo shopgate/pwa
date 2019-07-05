@@ -1,5 +1,9 @@
 import EventEmitter from 'events';
-import { DEFAULT_CONTEXT, SOURCE_PIPELINE } from './constants';
+import {
+  DEFAULT_CONTEXT,
+  SOURCE_PIPELINE,
+  DEFAULT_SEVERITY,
+} from '../../constants/ErrorManager';
 
 export const emitter = new EventEmitter();
 
@@ -93,6 +97,7 @@ class ErrorManager {
       message,
       source,
       meta,
+      severity = DEFAULT_SEVERITY,
     } = error;
 
     const id = `${source}-${context}-${code}`;
@@ -107,6 +112,7 @@ class ErrorManager {
         message,
       },
       source,
+      severity,
     });
 
     if (!this.timer) {

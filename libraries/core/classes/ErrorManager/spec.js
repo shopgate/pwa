@@ -1,5 +1,5 @@
 import errorManager, { emitter } from './';
-import { DEFAULT_CONTEXT } from './constants';
+import { DEFAULT_CONTEXT, DEFAULT_SEVERITY } from '../../constants/ErrorManager';
 
 describe('ErrorManager', () => {
   beforeEach(() => {
@@ -258,6 +258,7 @@ describe('ErrorManager', () => {
       meta: {
         message,
       },
+      severity: DEFAULT_SEVERITY,
     });
   });
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import { RouteContext, RouterContext } from '@virtuous/react-conductor';
+import ErrorBoundary from '../ErrorBoundary';
 
 /**
  * The Route component.
@@ -66,9 +67,11 @@ class Route extends React.Component {
       context.visible = route.id === this.currentRoute.id;
 
       return (
-        <RouteContext.Provider key={route.id} value={context}>
-          <Component />
-        </RouteContext.Provider>
+        <ErrorBoundary key={`error.${route.id}`}>
+          <RouteContext.Provider key={route.id} value={context}>
+            <Component />
+          </RouteContext.Provider>
+        </ErrorBoundary>
       );
     });
   }

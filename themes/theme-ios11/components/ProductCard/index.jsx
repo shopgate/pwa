@@ -58,8 +58,8 @@ const ProductCard = ({
             <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id, location: 'productCard' }} />
             <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id, location: 'productCard' }}>
               <ProductGridPrice price={product.price} />
-              <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id, location: 'productCard' }} />
             </Portal>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id, location: 'productCard' }} />
           </Fragment>
         )}
       </div>

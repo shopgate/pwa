@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import IndicatorCircle from '..//IndicatorCircle';
+import IndicatorCircle from '../IndicatorCircle';
 import RippleButton from '../RippleButton';
 import styles from './style';
 

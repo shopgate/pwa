@@ -37,6 +37,8 @@ export const TYPE_TRUSTED = 'trusted';
 
 // Errors from favorites pipeline
 export const EFAVORITE = 'EFAVORITE';
+
+// General bigapi errors that can occur during multiple pipelines, accessing bigapi data
 export const EBIGAPI = 'EBIGAPI';
 
 /**

@@ -22,8 +22,11 @@ class PipelineErrorDialog extends Component {
   static propTypes = {
     actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     params: PropTypes.shape({
+      entityId: PropTypes.string,
       code: PropTypes.string, // The error code as string.
       message: PropTypes.string.isRequired, // The error message reported by the pipeline.
+      messageParams: PropTypes.shape(), // A list of key/value pairs (paramName: paramValue)
+      translated: PropTypes.bool,
       pipeline: PropTypes.string.isRequired, // The identifier of the pipeline.
       request: PropTypes.shape.isRequired, // The request as sent to the server.
     }).isRequired,
@@ -62,9 +65,7 @@ class PipelineErrorDialog extends Component {
    * @return {JSX} The content component based on the the current state of the dialog.
    */
   get content() {
-    return this.state.devMode
-      ? this.renderDevErrorMessage(this.props.params)
-      : this.renderUserErrorMessage();
+    return this.state.devMode ? this.renderDevErrorMessage() : this.renderUserErrorMessage();
   }
 
   /**
@@ -99,32 +100,91 @@ class PipelineErrorDialog extends Component {
 
   /**
    * Renders the error message in developer mode.
-   * @param {Object} params The message parameters.
    * @returns {JSX}
    */
-  renderDevErrorMessage = params => (
-    <div aria-hidden>
-      <strong>Pipeline:</strong> {params.pipeline}<br />
-      { params.code && (
+  renderDevErrorMessage = () => {
+    /**
+     * Checks the input to be truthy, "0" or "false" and enables it to be rendered then.
+     * @param {Object|string|number|boolean} value The value to be checked if it should be rendered.
+     * @returns {boolean}
+     */
+    const checkValue = value => !!value || value === 0 || value === false;
+    const { params } = this.props;
+
+    return (
+      <div aria-hidden>
         <span>
-          <strong>Code: </strong> {params.code} <br />
+          <strong>Pipeline:</strong>
+          <span>{` ${params.pipeline}`}</span>
+          <br />
         </span>
-      )}
-      <strong>Message:</strong> {params.message} <br />
-      <p>
-        <strong>Params:</strong><br />
-        {JSON.stringify(params.request, null, ' ')}
-      </p>
-    </div>
-  );
+        { checkValue(params.entityId) && (
+          <span>
+            <strong>Entity id:</strong>
+            <span>{` ${params.entityId}`}</span>
+            <br />
+          </span>
+        )}
+        { checkValue(params.code) && (
+          <span>
+            <strong>Code:</strong>
+            <span>{` ${params.code}`}</span>
+            <br />
+          </span>
+        )}
+        <span>
+          <strong>Message:</strong>
+          <span>{` ${params.message}`}</span>
+          <br />
+        </span>
+        { checkValue(params.translated) && (
+          <span>
+            <strong>Message Translated:</strong>
+            <span>{` ${params.translated.toString()}`}</span>
+            <br />
+          </span>
+        )}
+        { checkValue(params.messageParams) && (
+          <p>
+            <strong>Message Params:</strong>
+            <br />
+            <span>{JSON.stringify(params.messageParams, null, ' ')}</span>
+            <br />
+          </p>
+        )}
+        { checkValue(params.request) && (
+          <p>
+            <strong>Request Params:</strong>
+            <br />
+            <span>{JSON.stringify(params.request, null, ' ')}</span>
+            <br />
+          </p>
+        )}
+      </div>
+    );
+  }
 
   /**
    * Renders the regular error message in user mode.
    * @returns {JSX}
    */
-  renderUserErrorMessage = () => (
-    <I18n.Text string={this.props.message || 'modal.body_error'} />
-  );
+  renderUserErrorMessage = () => {
+    const { message = '', params = {} } = this.props;
+
+    return (
+      <React.Fragment>
+        { !!params.translated && (
+          message || params.message || <I18n.Text string="modal.body_error" />
+        )}
+        { !params.translated && (
+          <I18n.Text
+            string={message || params.message || 'modal.body_error'}
+            params={params.messageParams || {}}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
 
   /**
    * Renders the error message depending on the current mode.

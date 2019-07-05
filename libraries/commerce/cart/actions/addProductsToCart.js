@@ -2,6 +2,8 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
+import createPipelineErrorList from '../helpers/createPipelineErrorList';
+import { ECART } from '../constants/PipelineErrors';
 import addProductsToCart from '../action-creators/addProductsToCart';
 import successAddProductsToCart from '../action-creators/successAddProductsToCart';
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
@@ -49,13 +51,14 @@ const addToCart = data => (dispatch, getState) => {
   return request.setInput({ products })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .setRetries(0)
+    .setErrorBlacklist(ECART)
     .dispatch()
     .then(({ messages }) => {
       if (messages && messagesHaveErrors(messages)) {
         /**
-         * If the addProductsToCart request fails, the pipeline doesn't respond with an error,
-         * but a messages array within the response payload. So by now we also have to dispatch
-         * the error action here.
+         * @Deprecated: The property "messages" is not supposed to be part of the pipeline response.
+         * Specification demands errors to be returned as response object with an "error" property.
+         * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
          */
         dispatch(errorAddProductsToCart(products, messages));
         return;
@@ -64,7 +67,10 @@ const addToCart = data => (dispatch, getState) => {
       dispatch(successAddProductsToCart());
     })
     .catch((error) => {
-      dispatch(errorAddProductsToCart(products));
+      dispatch(errorAddProductsToCart(
+        products,
+        createPipelineErrorList(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error)
+      ));
       logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
 };

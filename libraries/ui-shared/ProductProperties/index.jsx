@@ -7,20 +7,26 @@ import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Properties = ({ lineClamp, properties }) => (
-  <ul>
-    {properties.map(({ label, value }) => (
-      <li key={`${label}-${value}`}>
-        {lineClamp &&
-          <Ellipsis rows={lineClamp}>
-            {label}: {value}
-          </Ellipsis>
-        }
-        {!lineClamp && `${label}: ${value}`}
-      </li>
-    ))}
-  </ul>
-);
+const Properties = ({ lineClamp, properties }) => {
+  if (!properties.length) {
+    return null;
+  }
+
+  return (
+    <ul>
+      {properties.map(({ label, value }) => (
+        <li key={`${label}-${value}`}>
+          {lineClamp &&
+            <Ellipsis rows={lineClamp}>
+              {label}: {value}
+            </Ellipsis>
+          }
+          {!lineClamp && `${label}: ${value}`}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 Properties.propTypes = {
   /** Truncate property value at a specific number of lines */

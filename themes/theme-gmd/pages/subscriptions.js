@@ -1,4 +1,5 @@
 import { onWillPop } from '@virtuous/conductor';
+import { errorManager, ETIMEOUT } from '@shopgate/pwa-core';
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
 import redirects from '@shopgate/pwa-common/collections/Redirects';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
@@ -36,5 +37,11 @@ export default function app(subscribe) {
     productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, GALLERY_SLIDER_IMAGE_FORMATS);
 
     onWillPop(NavDrawer.close);
+
+    // Hide technical details from the user (will be visible in the dev view)
+    errorManager.setMessage({
+      code: ETIMEOUT, // Should also be done for EUNKNOWN and EINTERNAL in the future.
+      message: 'modal.body_error',
+    });
   });
 }

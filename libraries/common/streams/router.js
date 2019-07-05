@@ -5,6 +5,7 @@ import {
   ROUTE_DID_ENTER,
   ROUTE_WILL_LEAVE,
   ROUTE_DID_LEAVE,
+  ROUTE_DID_UPDATE,
 } from '../constants/ActionTypes';
 
 /**
@@ -39,9 +40,16 @@ export const routeDidLeave$ = main$
 
 /**
  * @type {Observable}
+ */
+export const routeDidUpdate$ = main$
+  .filter(({ action }) => action.type === ROUTE_DID_UPDATE);
+
+/**
+ * @type {Observable}
  * @deprecated use routeDidEnter$
  */
 export const routeDidChange$ = routeWillEnter$
   .merge(routeDidEnter$)
   .merge(routeWillLeave$)
-  .merge(routeDidLeave$);
+  .merge(routeDidLeave$)
+  .merge(routeDidUpdate$);

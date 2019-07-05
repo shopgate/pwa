@@ -3,7 +3,7 @@ import event from '../Event';
 import errorManager from '../ErrorManager';
 import pipelineDependencies from '../PipelineDependencies';
 import pipelineSequence from '../PipelineSequence';
-import * as errorSources from '../ErrorManager/constants';
+import * as errorSources from '../../constants/ErrorManager';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
 import { ETIMEOUT } from '../../constants/Pipeline';
@@ -59,6 +59,7 @@ class PipelineManager {
       timer: null,
     });
 
+    // Try to dispatch immediately (can be blocked by dependency)
     return this.dispatch(request.serial);
   }
 
@@ -72,14 +73,17 @@ class PipelineManager {
       const entry = this.requests.get(serial);
       const { name } = entry.request;
 
+      // Create and subscribe a pipeline response handler (+ store in the request for later access)
       this.createRequestCallback(serial, resolve, reject);
 
+      // Pipeline execution can be moved to later, based on the "pipeline dependency" setup.
       if (this.hasRunningDependencies(name)) {
         // Requests with running dependencies will be sent after the dependencies are finished.
         entry.deferred = true;
         return;
       }
 
+      // Trigger the PipelineRequest AppCommand
       this.sendRequest(serial);
     });
   }
@@ -104,7 +108,7 @@ class PipelineManager {
      * @param {string} serialResult A pipeline serial.
      * @param {Object} output The pipeline response payload.
      */
-    const callback = (error, serialResult, output) => {
+    request.callback = (error, serialResult, output = undefined) => {
       // Add the relevant response properties to the request object.
       request.error = error;
       request.output = output;
@@ -119,17 +123,12 @@ class PipelineManager {
       this.handleResult(serialResult);
     };
 
-    // Take care that the callback always has the correct context.
-    request.callback = callback.bind(this);
-
-    const callbackName = request.getEventCallbackName();
-
     // Register a response listener for the request.
-    event.addCallback(callbackName, request.callback);
+    event.addCallback(request.getEventCallbackName(), request.callback);
   }
 
   /**
-   * Checks wether a pipeline request has running dependencies.
+   * Checks whether a pipeline request has running dependencies.
    * @param {string} pipelineName The name of the pipeline.
    * @return {boolean}
    */
@@ -197,27 +196,32 @@ class PipelineManager {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
 
-    const { code, message, validationErrors } = request.error || {};
+    const {
+      code,
+      message,
+      validationErrors,
+      errors,
+    } = request.error || {};
 
     const err = new Error(message);
     err.code = code;
+
+    err.message = message;
     if (validationErrors !== undefined) {
       err.validationErrors = validationErrors;
     }
-
-    request.reject(err);
-
-    // Stop if this error code was set to be suppressed.
-    if (this.suppressedErrors.includes(code)) {
-      return;
+    if (errors !== undefined) {
+      err.errors = errors;
     }
 
-    // Stop if this PipelineRequest was configured to ignore this specific error code.
-    if (request.errorBlacklist.includes(code)) {
-      return;
+    let handleError = request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT;
+
+    // Don't handle generally suppressed or via pipeline request blacklisted errors
+    if (this.suppressedErrors.includes(code) || request.errorBlacklist.includes(code)) {
+      handleError = false;
     }
 
-    if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
+    if (handleError) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
         context: pipelineName,
@@ -228,6 +232,9 @@ class PipelineManager {
         message,
       });
     }
+
+    err.handled = handleError;
+    request.reject(err);
   }
 
   /**
@@ -265,7 +272,7 @@ class PipelineManager {
     this.removeRequestFromPiplineSequence(serial);
     this.requests.delete(serial);
 
-    // Take care about requests that where deferred since depencensies where running.
+    // Take care about requests that were deferred because of running dependencies.
     this.handleDeferredRequests();
   }
 

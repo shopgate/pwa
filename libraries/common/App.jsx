@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import ErrorBoundary from './components/ErrorBoundary';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
 
@@ -30,13 +31,15 @@ class App extends Component {
    */
   render() {
     return (
-      <Provider store={this.props.store}>
-        <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
-          <div>
-            {this.props.children}
-          </div>
-        </I18n.Provider>
-      </Provider>
+      <ErrorBoundary key="error.root" store={this.props.store} isRoot>
+        <Provider store={this.props.store}>
+          <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
+            <div>
+              {this.props.children}
+            </div>
+          </I18n.Provider>
+        </Provider>
+      </ErrorBoundary>
     );
   }
 }

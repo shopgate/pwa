@@ -7,6 +7,7 @@ import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
@@ -23,6 +24,7 @@ import {
   couponsDeleted$,
   routeWithCouponWillEnter$,
   remoteCartDidUpdate$,
+  cartUpdateFailed$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH, DEEPLINK_CART_ADD_COUPON_PATTERN } from '../constants';
@@ -88,10 +90,18 @@ export default function cart(subscribe) {
       pipelines.SHOPGATE_CART_DELETE_COUPONS,
     ]);
 
+    // Push (deeplink) with coupon concurrent to get cart on app start
+    pipelineDependencies.set(pipelines.SHOPGATE_CART_ADD_COUPONS, [
+      pipelines.SHOPGATE_CART_GET_CART,
+    ]);
+    pipelineDependencies.set(pipelines.SHOPGATE_CART_DELETE_COUPONS, [
+      pipelines.SHOPGATE_CART_GET_CART,
+    ]);
+
     /**
-     * Reload the cart everytime the WebView becomes visible.
-     * This is needed, for example, when the cart is modified inside the webcheckout and
-     * the user closes the inAppBrowser before reaching the success page.
+     * Reload the cart whenever the WebView becomes visible.
+     * This is needed, for example, when the cart is modified from another inAppBrowser tab like a
+     * web-checkout and the user closes the said tab before reaching the success page.
      */
     event.addCallback('viewWillAppear', () => {
       dispatch(fetchCart());
@@ -118,19 +128,32 @@ export default function cart(subscribe) {
       .catch(e => e);
   });
 
-  subscribe(remoteCartDidUpdate$, ({ dispatch, action }) => {
-    const { errors } = action;
+  subscribe(cartUpdateFailed$, ({ dispatch, action }) => {
+    /**
+     * @type {PipelineErrorElement[]} errors
+     */
+    const { errors = [] } = action;
 
     if (Array.isArray(errors) && errors.length) {
-      errors.forEach((entry) => {
-        const { message } = entry;
+      // Supports only one error, because none of the pipelines is ever called with multiple items.
+      // Multiple errors would cause the this to overlay multiple modals on top of each other.
+      const { message, handled } = errors[0];
 
-        dispatch(showModal({
-          confirm: null,
-          title: 'modal.title_error',
-          message,
-        }));
-      });
+      // Some errors are already handled automatically before
+      if (handled) {
+        return;
+      }
+
+      dispatch(showModal({
+        confirm: 'modal.ok',
+        dismiss: null,
+        title: 'modal.title_error',
+        message,
+        type: MODAL_PIPELINE_ERROR,
+        params: {
+          ...errors[0],
+        },
+      }));
     }
   });
 

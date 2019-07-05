@@ -8,7 +8,7 @@ const { getCurrentRoute } = router;
 /**
  * @deprecated
  */
-export { getCurrentRoute };
+export { getCurrentRoute, router };
 
 /**
  * Creates the router history.
