@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OptionInfo /> should render full info with required and price element 1`] = `
+<Grid
+  className="css-k4qf09"
+  component="ul"
+  wrap={false}
+>
+  <GridItem
+    className="css-cr41pz"
+    component="li"
+    grow={0}
+    shrink={1}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="common.required"
+    />
+  </GridItem>
+  <GridItem
+    className="css-1bia360"
+    component="li"
+    grow={1}
+    shrink={1}
+  >
+    Label: 
+    <FormatPrice
+      className=""
+      currency="EUR"
+      fractions={true}
+      price={10}
+    />
+  </GridItem>
+</Grid>
+`;
+
+exports[`<OptionInfo /> should render price element 1`] = `
+<Grid
+  className="css-k4qf09"
+  component="ul"
+  wrap={false}
+>
+  <GridItem
+    className="css-1bia360"
+    component="li"
+    grow={1}
+    shrink={1}
+  >
+    Label: 
+    <FormatPrice
+      className=""
+      currency="EUR"
+      fractions={true}
+      price={10}
+    />
+  </GridItem>
+</Grid>
+`;
+
+exports[`<OptionInfo /> should render required element 1`] = `
+<Grid
+  className="css-k4qf09"
+  component="ul"
+  wrap={false}
+>
+  <GridItem
+    className="css-cr41pz"
+    component="li"
+    grow={0}
+    shrink={1}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="common.required"
+    />
+  </GridItem>
+</Grid>
+`;
