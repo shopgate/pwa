@@ -16,7 +16,7 @@ class CTAButtons extends Component {
     active: PropTypes.bool,
     addToCart: PropTypes.func,
     favoritesOnce: PropTypes.bool,
-    hasVariants: PropTypes.bool,
+    hasVariety: PropTypes.bool,
     isBaseProduct: PropTypes.bool,
     isOrderable: PropTypes.bool,
     onRippleComplete: PropTypes.func,
@@ -30,7 +30,7 @@ class CTAButtons extends Component {
     favoritesOnce: false,
     isBaseProduct: true,
     isOrderable: true,
-    hasVariants: false,
+    hasVariety: false,
     onRippleComplete: () => {},
     removeThrottle: null,
     showVariantModal: () => {},
@@ -45,7 +45,7 @@ class CTAButtons extends Component {
       handleAddToCart: this.handleAddToCart,
       isLoading: false,
       isBaseProduct: this.props.isBaseProduct,
-      isDisabled: !this.props.isOrderable && !this.props.hasVariants,
+      isDisabled: !this.props.isOrderable && !this.props.hasVariety,
       noShadow: false,
       productId: this.props.productId,
     };
@@ -56,7 +56,7 @@ class CTAButtons extends Component {
    * @param {Object} props The Component props
    */
   handleAddToCart = () => {
-    if (this.props.isBaseProduct && this.props.hasVariants) {
+    if (this.props.isBaseProduct && this.props.hasVariety) {
       this.props.showVariantModal(this.props.productId);
       return;
     }
@@ -92,7 +92,7 @@ class CTAButtons extends Component {
             className={styles.cartButton}
             onClick={this.handleAddToCart}
             isLoading={false}
-            isDisabled={!this.props.isOrderable && !this.props.hasVariants}
+            isDisabled={!this.props.isOrderable && !this.props.hasVariety}
           />
         </Portal>
         <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />

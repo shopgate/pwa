@@ -1,32 +1,24 @@
 import els from '../../elements/de';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('AndroidGMDTest CategoryPage', () => {
-  it('should check title', () => {
+  it('should check category view elements', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory)
-      .first()
-      .scrollIntoView()
-      .click();
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.allProductsCategoryTitle)
       .should('be.visible');
-  });
 
-  it('should check for Search Button', () => {
     cy.get(els.searchButton)
       .should('be.visible');
-  });
 
-  it('should check for filter Button', () => {
     cy.get(els.filterButton)
       .should('be.visible');
   });
 
   it('should check for Product in grid view', () => {
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
     cy.get(els.productWithManyProps4GridViewImage)
-      .last()
       .scrollIntoView()
       .should('be.visible');
     cy.get(els.productWithManyProps4GridViewName)
@@ -38,14 +30,12 @@ describe('AndroidGMDTest CategoryPage', () => {
   });
 
   it('should check for strike price', () => {
-    cy.visit('/category/');
-    cy.get(els.basicCategory)
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWithStrikePriceCategory)
-      .should('be.visible')
-      .last()
-      .click();
+    cy.visit('/category');
+
+    navigateCategoryBySelector(els.basicCategory);
+
+    navigateCategoryBySelector(els.productsWithStrikePriceCategory);
+
     cy.get(els.productWithStrikePrice4GridViewStrikePrice)
       .should('be.visible');
     cy.get(els.productWithStrikePrice4GridViewDiscountBadge)
@@ -54,16 +44,12 @@ describe('AndroidGMDTest CategoryPage', () => {
   });
 
   it('should check for rating stars', () => {
-    cy.visit('/category/');
-    cy.get(els.basicCategory)
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWithRatingsCategory)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
+    cy.visit('/category');
+
+    navigateCategoryBySelector(els.basicCategory);
+
+    navigateCategoryBySelector(els.productsWithRatingsCategory);
+
     cy.get(els.productWithRating4GridViewRatingStars)
       .last()
       .scrollIntoView()
