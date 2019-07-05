@@ -1,5 +1,14 @@
 # Changelog
 
+## [v6.5.4](https://github.com/shopgate/pwa/compare/v6.5.3...v6.5.4) (2019-07-05)
+
+#### :bug: Bug Fix
+* [#750](https://github.com/shopgate/pwa/pull/750) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#743](https://github.com/shopgate/pwa/pull/743) Start page renders immediately when React is ready. ([@sznowicki](https://github.com/sznowicki))
+* [#741](https://github.com/shopgate/pwa/pull/741) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#729](https://github.com/shopgate/pwa/pull/729) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.5.3](https://github.com/shopgate/pwa/compare/v6.5.2...v6.5.3) (2019-06-28)
 
 #### :bug: Bug Fix
@@ -74,12 +83,6 @@
 #### :nail_care: Polish
 * [#639](https://github.com/shopgate/pwa/pull/639) Update tax and shipping disclaimers translations ([@alexbridge](https://github.com/alexbridge))
 * [#609](https://github.com/shopgate/pwa/pull/609) Removed duplicate getUserLogin selector ([@devbucket](https://github.com/devbucket))
-
-
-## [v6.4.3](https://github.com/shopgate/pwa/compare/v6.4.2...v6.4.3) (2019-05-16)
-
-#### :bug: Bug Fix
-* Changed vimeo video player script to be loaded asynchronously. ([@devbucket](https://github.com/devbucket))
 
 
 ## [v6.4.2](https://github.com/shopgate/pwa/compare/v6.4.1...v6.4.2) (2019-05-16)
