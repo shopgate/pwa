@@ -105,9 +105,9 @@ function parseVersion(v) {
   }
 
   return {
-    major: major !== null ? parseInt(major) : null,
-    minor: minor !== null ? parseInt(minor) : null,
-    patch: patch !== null ? parseInt(patch) : null,
+    major: major !== null ? parseInt(major, 10) : null,
+    minor: minor !== null ? parseInt(minor, 10) : null,
+    patch: patch !== null ? parseInt(patch, 10) : null,
   };
 }
 
@@ -130,15 +130,18 @@ if (argv.tagTo && argv.tagTo !== 0) {
 if ((!argv.tagFrom || argv.tagFrom === 0) && tagFrom === 'v') {
   // Try to detect previous tag: Cut off pre-release bits and split into version components
   // -> use "tagTo" param if it's set, take release version otherwise
+  /* eslint-disable-next-line prefer-const */
   let { major, minor, patch } = tagTo.toLowerCase() === 'head' ? nextVersion : parseVersion(tagTo);
 
   // If there was no patch before then a previous minor must exist (except on major update)
   if (patch === 0) {
+    /* eslint-disable-next-line no-plusplus */
     minor--;
   }
   // On major version changes get the latest minor number of the previous major version
   if (minor < 0) {
     minor = 0;
+    /* eslint-disable-next-line no-plusplus */
     major--;
     if (major < 0) {
       major = 0;
@@ -230,7 +233,7 @@ async function run() {
     // This causes the "Unreleased" title to be replaced by a version that links to a github diff.
     config.nextVersion = `[${
       nextVersionString
-      }](https://github.com/shopgate/pwa/compare/${prevTag}...${nextVersionString})`;
+    }](https://github.com/shopgate/pwa/compare/${prevTag}...${nextVersionString})`;
 
     // Skip creation if the "nextVersion" title is already present.
     if (changelogContent.includes(config.nextVersion)) {
