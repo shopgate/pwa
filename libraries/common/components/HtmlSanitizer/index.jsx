@@ -91,7 +91,7 @@ class HtmlSanitizer extends Component {
 
   /**
    * Renders the component.
-   * @returns {XML}
+   * @returns {JSX}
    */
   render() {
     const innerHTML = {

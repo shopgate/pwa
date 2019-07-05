@@ -4,7 +4,7 @@ export default css({
   position: 'relative',
   height: 0,
   overflow: 'hidden',
-  padding: '0 0 56.25% 0',
+  padding: '56.25% 0 0 0',
   ' iframe, object, embed': {
     position: 'absolute',
     top: 0,

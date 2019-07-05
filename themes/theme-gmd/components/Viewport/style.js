@@ -39,7 +39,18 @@ export const updatePageInsets = (pageInsets) => {
    * determine the appropriate value for the css variables which can be used in the Engage css
    * when insets need to be considered.
    */
-  css.insert(`
+
+  const id = 'safe-area-insets';
+  let styleBlock = document.querySelector(`#${id}`);
+
+  if (!styleBlock) {
+    styleBlock = document.createElement('style');
+    styleBlock.setAttribute('type', 'text/css');
+    styleBlock.setAttribute('id', id);
+    document.querySelector('head').appendChild(styleBlock);
+  }
+
+  styleBlock.innerHTML = `
     @supports not (padding: max(0px)) {
       :root {
         --safe-area-inset-top: ${safeAreaInsetTop}px;
@@ -53,7 +64,7 @@ export const updatePageInsets = (pageInsets) => {
         --safe-area-inset-bottom: max(${safeAreaInsetBottom}px, env(safe-area-inset-bottom));
       }
     }
-  `);
+  `;
 };
 
 /**

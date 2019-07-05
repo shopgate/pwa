@@ -86,7 +86,7 @@ export default {
             id: '@shopgate/engage/product/MediaSlider',
             settings: {
               videos: {
-                controls: false,
+                controls: true,
                 autoPlay: {
                   [CONNECTIVITY_TYPE_WIFI]: true,
                   [CONNECTIVITY_TYPE_4G]: false,
