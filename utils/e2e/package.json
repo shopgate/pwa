@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-e2e-test",
-  "version": "5.10.3",
+  "version": "5.10.4-rc.3",
   "description": "E2E test setup for the Shopgate Connect PWA.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",

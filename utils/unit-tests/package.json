@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-unit-test",
-  "version": "5.10.3",
+  "version": "5.10.4-rc.3",
   "description": "Unit test setup for the Shopgate Connect PWA.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
     "react-tap-event-plugin": "^3.0.2"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "5.10.3",
+    "@shopgate/eslint-config": "5.10.4-rc.3",
     "jest": "^23.5.0",
     "react": "~16.3.2",
     "react-dom": "~16.3.2"
