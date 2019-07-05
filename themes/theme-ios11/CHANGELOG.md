@@ -1,11 +1,47 @@
 # Changelog
 
-## [v6.2.2](https://github.com/shopgate/pwa/compare/v6.2.1...v6.2.2) (2019-07-05)
+## [v6.3.4](https://github.com/shopgate/pwa/compare/v6.3.3...v6.3.4) (2019-07-05)
 
 #### :bug: Bug Fix
 * [#750](https://github.com/shopgate/pwa/pull/750) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
 * [#741](https://github.com/shopgate/pwa/pull/741) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
 * [#729](https://github.com/shopgate/pwa/pull/729) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.3.3](https://github.com/shopgate/pwa/compare/v6.3.2...v6.3.3) (2019-05-05)
+
+
+## [v6.3.2](https://github.com/shopgate/pwa/compare/v6.3.1...v6.3.2) (2019-05-05)
+
+#### :bug: Bug Fix
+* [#604](https://github.com/shopgate/pwa/pull/604) Open social media app deeplinks natively ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.3.1](https://github.com/shopgate/pwa/compare/v6.3.0...v6.3.1) (2019-03-20)
+
+#### :bug: Bug Fix
+* [#578](https://github.com/shopgate/pwa/pull/578) Sentry.io level / severity is not send correctly for PWA 6.3.1 ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.3.0](https://github.com/shopgate/pwa/compare/v6.2.1...v6.3.0) (2019-03-18)
+
+#### :rocket: Enhancement
+* [#555](https://github.com/shopgate/pwa/pull/555) Improve error behaviour for tracking core plugin calls ([@alexbridge](https://github.com/alexbridge))
+* [#554](https://github.com/shopgate/pwa/pull/554) Implement sentry.io for javascript error logging for engage app ([@alexbridge](https://github.com/alexbridge))
+* [#551](https://github.com/shopgate/pwa/pull/551) Implement sentry.io for javascript error logging for engage app ([@alexbridge](https://github.com/alexbridge))
+* [#548](https://github.com/shopgate/pwa/pull/548) Selecting a Product Variant does not replace the route anymore. ([@devbucket](https://github.com/devbucket))
+* [#550](https://github.com/shopgate/pwa/pull/550) Cleaned up Portal positions ([@fkloes](https://github.com/fkloes))
+* [#544](https://github.com/shopgate/pwa/pull/544) Added the possibility of handling a pipeline error response containing multiple errors ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :bug: Bug Fix
+* [#560](https://github.com/shopgate/pwa/pull/560) Make start page content load after window load event ([@alexbridge](https://github.com/alexbridge))
+* [#557](https://github.com/shopgate/pwa/pull/557) Expire page configs on every app start ([@alexbridge](https://github.com/alexbridge))
+* [#556](https://github.com/shopgate/pwa/pull/556) Correct handling of concurrent cart requests when adding a coupon with deeplink ([@alexbridge](https://github.com/alexbridge))
+* [#558](https://github.com/shopgate/pwa/pull/558) Fix PRODUCT_ITEM_PRICE_AFTER Portal positioning  ([@alexbridge](https://github.com/alexbridge))
+* [#549](https://github.com/shopgate/pwa/pull/549) Fix e2e tests. Run tests by webhook ([@alexbridge](https://github.com/alexbridge))
+* [#545](https://github.com/shopgate/pwa/pull/545) Fixed broken cart layout at long availability texts ([@fkloes](https://github.com/fkloes))
+* [#542](https://github.com/shopgate/pwa/pull/542) Show variants modal selection on favorite list when product has options ([@alexbridge](https://github.com/alexbridge))
+* [#543](https://github.com/shopgate/pwa/pull/543) Fix for text hint below text input options with zero rendered price ([@alexbridge](https://github.com/alexbridge))
 
 
 ## [v6.2.1](https://github.com/shopgate/pwa/compare/v6.2.0...v6.2.1) (2019-03-07)
@@ -40,14 +76,6 @@
 * [#526](https://github.com/shopgate/pwa/pull/526) Fixed the possibility of adding spaces to the end of a search term  ([@fkloes](https://github.com/fkloes))
 * [#522](https://github.com/shopgate/pwa/pull/522) Fix White page on selecting certain input option (select option) ([@alexbridge](https://github.com/alexbridge))
 
-
-## [v6.1.3](https://github.com/shopgate/pwa/compare/v6.1.2...v6.1.3) (2019-06-02)
-
-
-## [v6.1.2](https://github.com/shopgate/pwa/compare/v6.1.1...v6.1.2) (2019-06-02)
-
-#### :bug: Bug Fix
-* Added async prop to the vimeo script tag. ([@devbucket](https://github.com/devbucket))
 
 ## [v6.1.1](https://github.com/shopgate/pwa/compare/v6.1.0...v6.1.1) (2019-02-13)
 
