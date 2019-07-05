@@ -13,6 +13,7 @@ import {
   RECEIVE_FAVORITES,
   ERROR_FETCH_FAVORITES,
   ERROR_FAVORITES,
+  SYNC_FAVORITES_BUFFER_TIME,
 } from '../constants';
 
 /**
@@ -50,7 +51,9 @@ export const addRemoveFavorites$ = main$.filter(({ action }) => (
   action.type === REQUEST_ADD_FAVORITES || action.type === REQUEST_REMOVE_FAVORITES
 ));
 
-export const clearAddRemoveFavoritesBuffer$ = addRemoveFavorites$.debounceTime(2000).delay(2000);
+export const clearAddRemoveFavoritesBuffer$ = addRemoveFavorites$
+  .debounceTime(SYNC_FAVORITES_BUFFER_TIME)
+  .delay(SYNC_FAVORITES_BUFFER_TIME);
 
 export const addRemoveBufferedFavorites$ = addRemoveFavorites$
   .buffer(clearAddRemoveFavoritesBuffer$);

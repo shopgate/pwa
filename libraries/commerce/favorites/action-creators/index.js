@@ -3,9 +3,7 @@ import {
   RECEIVE_FAVORITES,
   REQUEST_FAVORITES,
   REQUEST_ADD_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
   ERROR_FAVORITES,
   REQUEST_ADD_REMOVE_FAVORITES_SYNC,
   RECEIVE_ADD_REMOVE_FAVORITES_SYNC,
@@ -45,16 +43,6 @@ export const requestAddFavorites = productId => ({
 });
 
 /**
- * Receive add favorites action.
- * @param {string} productId Product identifier.
- * @returns {Object}
- */
-export const receiveAddFavorites = productId => ({
-  type: RECEIVE_ADD_FAVORITES,
-  productId,
-});
-
-/**
  * Request remove favorites action.
  * @param {string} productId Product identifier.
  * @param {boolean} silent silent
@@ -64,16 +52,6 @@ export const requestRemoveFavorites = (productId, silent = false) => ({
   type: REQUEST_REMOVE_FAVORITES,
   productId,
   silent,
-});
-
-/**
- * Receive remove favorites action.
- * @param {string} productId Product identifier.
- * @returns {Object}
- */
-export const receiveRemoveFavorites = productId => ({
-  type: RECEIVE_REMOVE_FAVORITES,
-  productId,
 });
 
 /**
