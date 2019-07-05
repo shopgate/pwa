@@ -1,325 +1,302 @@
 # Changelog
 
-## [v6.1.1](https://github.com/shopgate/pwa/tree/v6.1.1) (2019-02-13)
-## [v6.1.0](https://github.com/shopgate/pwa/tree/v6.1.0) (2019-02-07)
-## [v6.0.1](https://github.com/shopgate/pwa/tree/v6.0.1) (2019-01-17)
-## [v5.11.0](https://github.com/shopgate/pwa/tree/v5.11.0) (2019-01-10)
-## [v5.10.3](https://github.com/shopgate/pwa/tree/v5.10.3) (2019-01-07)
-:rocket: **Enhancements:**
+## [v6.2.2](https://github.com/shopgate/pwa/compare/v6.2.1...v6.2.2) (2019-07-05)
 
-- Fixed invalid it-IT language file [\#478](https://github.com/shopgate/pwa/pull/478) ([fkloes](https://github.com/fkloes))
-- Modified HttpRequest class in core [\#462](https://github.com/shopgate/pwa/pull/462) ([DannyShopgate](https://github.com/DannyShopgate))
-- Update Spanish translations [\#459](https://github.com/shopgate/pwa/pull/459) ([Bettina-Baumert](https://github.com/Bettina-Baumert))
-- Reset margin of Register links [\#456](https://github.com/shopgate/pwa/pull/456) ([richardgorman](https://github.com/richardgorman))
-- Removed text selection for product descriptions [\#444](https://github.com/shopgate/pwa/pull/444) ([richardgorman](https://github.com/richardgorman))
+#### :bug: Bug Fix
+* [#750](https://github.com/shopgate/pwa/pull/750) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#741](https://github.com/shopgate/pwa/pull/741) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#729](https://github.com/shopgate/pwa/pull/729) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
 
-:bug: **Fixed bugs:**
 
-- Fixed invalid it-IT language file [\#478](https://github.com/shopgate/pwa/pull/478) ([fkloes](https://github.com/fkloes))
-- Fix more products load for product list widget [\#476](https://github.com/shopgate/pwa/pull/476) ([alexbridge](https://github.com/alexbridge))
-- Increased hit area of the cart item context menu [\#467](https://github.com/shopgate/pwa/pull/467) ([fkloes](https://github.com/fkloes))
-- Fixed faulty getProducts call with productIds and filters [\#466](https://github.com/shopgate/pwa/pull/466) ([fkloes](https://github.com/fkloes))
-- Modified HttpRequest class in core [\#462](https://github.com/shopgate/pwa/pull/462) ([DannyShopgate](https://github.com/DannyShopgate))
-- Changed .gitignore to only ignore the theme's config folder. [\#452](https://github.com/shopgate/pwa/pull/452) ([devbucket](https://github.com/devbucket))
-- Moved the link around the buttons on iOS UserMenu [\#448](https://github.com/shopgate/pwa/pull/448) ([richardgorman](https://github.com/richardgorman))
-- Change to getProductsById action that keeps original hash when some requested products are already cached. Make Product widget responsive to settings changes after mounting [\#425](https://github.com/shopgate/pwa/pull/425) ([aaron-martin](https://github.com/aaron-martin))
+## [v6.2.1](https://github.com/shopgate/pwa/compare/v6.2.0...v6.2.1) (2019-03-07)
+
+#### :bug: Bug Fix
+* [#553](https://github.com/shopgate/pwa/pull/553) Fixed locales in theme-gmd and theme-ios11 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#552](https://github.com/shopgate/pwa/pull/552) The pwa-benchmark npm package is now published in transpiled state. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
+## [v6.2.0](https://github.com/shopgate/pwa/compare/v6.1.1...v6.2.0) (2019-02-27)
+
+#### :rocket: Enhancement
+* [#536](https://github.com/shopgate/pwa/pull/536) Check issues of Browser Connector with Cypress Tests ([@alexbridge](https://github.com/alexbridge))
+* [#538](https://github.com/shopgate/pwa/pull/538) Added missing props to the ProductCard from the themeApi ([@fkloes](https://github.com/fkloes))
+* [#530](https://github.com/shopgate/pwa/pull/530) Implemented the NestedCategoryFilterWidget ([@fkloes](https://github.com/fkloes))
+* [#525](https://github.com/shopgate/pwa/pull/525) Added additional translations for user-privacy extension ([@fkloes](https://github.com/fkloes))
+* [#514](https://github.com/shopgate/pwa/pull/514) Force refresh product stock information after checkout ([@alexbridge](https://github.com/alexbridge))
+* [#511](https://github.com/shopgate/pwa/pull/511) Display text input options on PDP ([@alexbridge](https://github.com/alexbridge))
+* [#498](https://github.com/shopgate/pwa/pull/498) Sort order param for get highlighted products action is added ([@alexbridge](https://github.com/alexbridge))
+* [#508](https://github.com/shopgate/pwa/pull/508) Add ellipsis for product properties in a cart view ([@alexbridge](https://github.com/alexbridge))
+* [#492](https://github.com/shopgate/pwa/pull/492) Added ProductSlider to the ThemeContext ([@richardgorman](https://github.com/richardgorman))
+* [#490](https://github.com/shopgate/pwa/pull/490) Added ProductCard to ThemeAPI ([@richardgorman](https://github.com/richardgorman))
+* [#433](https://github.com/shopgate/pwa/pull/433) Added inset padding to Material AppBar. AppBar in GMD now renders outside of View content ([@richardgorman](https://github.com/richardgorman))
+
+#### :bug: Bug Fix
+* [#547](https://github.com/shopgate/pwa/pull/547) Fixed broken disabled characteristic sheet items on iOS ([@fkloes](https://github.com/fkloes))
+* [#540](https://github.com/shopgate/pwa/pull/540) Wrong page tracked when user comes back after checkout ([@alexbridge](https://github.com/alexbridge))
+* [#539](https://github.com/shopgate/pwa/pull/539) The AppBar in iOS is only rendered when its target container has mounted ([@devbucket](https://github.com/devbucket))
+* [#538](https://github.com/shopgate/pwa/pull/538) Added missing props to the ProductCard from the themeApi ([@fkloes](https://github.com/fkloes))
+* [#533](https://github.com/shopgate/pwa/pull/533) Improve commerce/product/getBaseProductId selector ([@alexbridge](https://github.com/alexbridge))
+* [#528](https://github.com/shopgate/pwa/pull/528) Enable parent product cart button when it has variants to select ([@alexbridge](https://github.com/alexbridge))
+* [#526](https://github.com/shopgate/pwa/pull/526) Fixed the possibility of adding spaces to the end of a search term  ([@fkloes](https://github.com/fkloes))
+* [#522](https://github.com/shopgate/pwa/pull/522) Fix White page on selecting certain input option (select option) ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.1.3](https://github.com/shopgate/pwa/compare/v6.1.2...v6.1.3) (2019-06-02)
+
+
+## [v6.1.2](https://github.com/shopgate/pwa/compare/v6.1.1...v6.1.2) (2019-06-02)
+
+#### :bug: Bug Fix
+* Added async prop to the vimeo script tag. ([@devbucket](https://github.com/devbucket))
+
+## [v6.1.1](https://github.com/shopgate/pwa/compare/v6.1.0...v6.1.1) (2019-02-13)
+
+#### :bug: Bug Fix
+* [#532](https://github.com/shopgate/pwa/pull/532) Fixed wrong tracking events ([@fkloes](https://github.com/fkloes))
+* [#531](https://github.com/shopgate/pwa/pull/531) Fixed a bug where the router throws an error when running a theme in standalone. ([@devbucket](https://github.com/devbucket))
+
+
+## [v6.1.0](https://github.com/shopgate/pwa/compare/v6.0.1...v6.1.0) (2019-02-07)
+
+#### :rocket: Enhancement
+* [#524](https://github.com/shopgate/pwa/pull/524) Added portals to the PaymentBar component. ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#517](https://github.com/shopgate/pwa/pull/517) Added props to the store info section portals of the NavDrawer ([@fkloes](https://github.com/fkloes))
+* [#518](https://github.com/shopgate/pwa/pull/518) Provide the ProductContext via the Theme API ([@devbucket](https://github.com/devbucket))
+* [#516](https://github.com/shopgate/pwa/pull/516) Changed getPageConfig and getUser redux actions to fetch... to match the API ([@devbucket](https://github.com/devbucket))
+* [#507](https://github.com/shopgate/pwa/pull/507) Changed more menu styling and aligned theme ios11 and gmd designs to be more compatible ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#506](https://github.com/shopgate/pwa/pull/506) Always render RATING_* portals on PDP ([@alexbridge](https://github.com/alexbridge))
+* [#503](https://github.com/shopgate/pwa/pull/503) Improved extensibility of the NavDrawer and More page ([@fkloes](https://github.com/fkloes))
+* [#491](https://github.com/shopgate/pwa/pull/491) Wrapped all AppBar presets in the themes with additional portal make it possible to extend it ([@devbucket](https://github.com/devbucket))
+* [#501](https://github.com/shopgate/pwa/pull/501) Improved PWA pre-commit hook ([@fkloes](https://github.com/fkloes))
+* [#494](https://github.com/shopgate/pwa/pull/494) Added portal props for GMD NavDrawer ([@richardgorman](https://github.com/richardgorman))
+* [#493](https://github.com/shopgate/pwa/pull/493) Re-enabled SubMenu Headers in GMD NavDrawer ([@richardgorman](https://github.com/richardgorman))
+* [#474](https://github.com/shopgate/pwa/pull/474) Add new actions to manipulate product meta data and fixed Sheet ([@Carsten89](https://github.com/Carsten89))
+* [#486](https://github.com/shopgate/pwa/pull/486) Added AppBar portals ([@richardgorman](https://github.com/richardgorman))
+* [#485](https://github.com/shopgate/pwa/pull/485) Added Drawer theme component to ThemeContext ([@richardgorman](https://github.com/richardgorman))
+* [#479](https://github.com/shopgate/pwa/pull/479) Liveshopping widget refactoring ([@richardgorman](https://github.com/richardgorman))
+* [#478](https://github.com/shopgate/pwa/pull/478) Fixed invalid it-IT language file ([@fkloes](https://github.com/fkloes))
+* [#473](https://github.com/shopgate/pwa/pull/473) Change login action to support different strategies (facebook, etc) ([@alexbridge](https://github.com/alexbridge))
+* [#468](https://github.com/shopgate/pwa/pull/468) Fixed some minor issues and hick-ups in the commerce selectors. ([@devbucket](https://github.com/devbucket))
+* [#470](https://github.com/shopgate/pwa/pull/470) Routing extensibility improvements ([@richardgorman](https://github.com/richardgorman))
+* [#441](https://github.com/shopgate/pwa/pull/441) Restore lost portal, adjust cypress tests ([@alexbridge](https://github.com/alexbridge))
+* [#459](https://github.com/shopgate/pwa/pull/459) Update Spanish translations ([@Bettina-Baumert](https://github.com/Bettina-Baumert))
+* [#462](https://github.com/shopgate/pwa/pull/462) Modified HttpRequest class in core ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#456](https://github.com/shopgate/pwa/pull/456) Reset margin of Register links ([@richardgorman](https://github.com/richardgorman))
+* [#444](https://github.com/shopgate/pwa/pull/444) Removed text selection for product descriptions ([@richardgorman](https://github.com/richardgorman))
+* [#436](https://github.com/shopgate/pwa/pull/436) Removed non-memoized function call from connector ([@richardgorman](https://github.com/richardgorman))
+* [#435](https://github.com/shopgate/pwa/pull/435) Added support to add multiple products to the cart with the addProductsToCartAction ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#523](https://github.com/shopgate/pwa/pull/523) Fixed updating of the search term on the search page ([@fkloes](https://github.com/fkloes))
+* [#520](https://github.com/shopgate/pwa/pull/520) Fixed ImageSliderWidget update when the startpage was updated ([@fkloes](https://github.com/fkloes))
+* [#519](https://github.com/shopgate/pwa/pull/519) Updated Conductor in favor of a bug fix with resetting the router stack. ([@devbucket](https://github.com/devbucket))
+* [#517](https://github.com/shopgate/pwa/pull/517) Added props to the store info section portals of the NavDrawer ([@fkloes](https://github.com/fkloes))
+* [#513](https://github.com/shopgate/pwa/pull/513) Fixed scroll position maintenance ([@devbucket](https://github.com/devbucket))
+* [#505](https://github.com/shopgate/pwa/pull/505) Update conductor module to fix history reset ([@alexbridge](https://github.com/alexbridge))
+* [#502](https://github.com/shopgate/pwa/pull/502) Introduced a reducer to receive updates from the router at the right time ([@devbucket](https://github.com/devbucket))
+* [#503](https://github.com/shopgate/pwa/pull/503) Improved extensibility of the NavDrawer and More page ([@fkloes](https://github.com/fkloes))
+* [#497](https://github.com/shopgate/pwa/pull/497) Fixed metadata addition to addProductsToCart payload ([@fkloes](https://github.com/fkloes))
+* [#496](https://github.com/shopgate/pwa/pull/496) Added fallback for renamed getProductPrice selector ([@fkloes](https://github.com/fkloes))
+* [#495](https://github.com/shopgate/pwa/pull/495) Added action fallbacks for backwards compatibility to PWA 6.0.0 ([@fkloes](https://github.com/fkloes))
+* [#489](https://github.com/shopgate/pwa/pull/489) PWA 1544: Menu selectors doesn't match the reducer name ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#488](https://github.com/shopgate/pwa/pull/488) Fixed a bug in the price display that showed the plain value if price was 0. ([@devbucket](https://github.com/devbucket))
+* [#474](https://github.com/shopgate/pwa/pull/474) Add new actions to manipulate product meta data and fixed Sheet ([@Carsten89](https://github.com/Carsten89))
+* [#483](https://github.com/shopgate/pwa/pull/483) Corrected bug where page configs were fetched on every page … ([@richardgorman](https://github.com/richardgorman))
+* [#484](https://github.com/shopgate/pwa/pull/484) Corrected bug where product reviews were not always requested ([@richardgorman](https://github.com/richardgorman))
+* [#481](https://github.com/shopgate/pwa/pull/481) Improved layout of "no product results" pages with active filters ([@fkloes](https://github.com/fkloes))
+* [#482](https://github.com/shopgate/pwa/pull/482) Updated conductor to v2.0.5 ([@richardgorman](https://github.com/richardgorman))
+* [#480](https://github.com/shopgate/pwa/pull/480) Corrected issue where page scrolling was not consistent ([@richardgorman](https://github.com/richardgorman))
+* [#477](https://github.com/shopgate/pwa/pull/477) Fixed invalid it-IT translation file ([@fkloes](https://github.com/fkloes))
+* [#478](https://github.com/shopgate/pwa/pull/478) Fixed invalid it-IT language file ([@fkloes](https://github.com/fkloes))
+* [#476](https://github.com/shopgate/pwa/pull/476) Fix more products load for product list widget ([@alexbridge](https://github.com/alexbridge))
+* [#475](https://github.com/shopgate/pwa/pull/475) App shows white page ([@richardgorman](https://github.com/richardgorman))
+* [#467](https://github.com/shopgate/pwa/pull/467) Increased hit area of the cart item context menu ([@fkloes](https://github.com/fkloes))
+* [#466](https://github.com/shopgate/pwa/pull/466) Fixed faulty getProducts call with productIds and filters ([@fkloes](https://github.com/fkloes))
+* [#462](https://github.com/shopgate/pwa/pull/462) Modified HttpRequest class in core ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#452](https://github.com/shopgate/pwa/pull/452) Changed .gitignore to only ignore the theme's config folder. ([@devbucket](https://github.com/devbucket))
+* [#448](https://github.com/shopgate/pwa/pull/448) Moved the link around the buttons on iOS UserMenu ([@richardgorman](https://github.com/richardgorman))
+* [#435](https://github.com/shopgate/pwa/pull/435) Added support to add multiple products to the cart with the addProductsToCartAction ([@fkloes](https://github.com/fkloes))
+* [#425](https://github.com/shopgate/pwa/pull/425) Change to getProductsById action that keeps original hash when some requested products are already cached. Make Product widget responsive to settings changes after mounting ([@aaron-martin](https://github.com/aaron-martin))
+
+
+## [v6.0.1](https://github.com/shopgate/pwa/compare/v6.0.0...v6.0.1) (2019-01-17)
+
+#### :rocket: Enhancement
+* [#432](https://github.com/shopgate/pwa/pull/432) Remove unnecessary redirects ([@alexbridge](https://github.com/alexbridge))
+* [#455](https://github.com/shopgate/pwa/pull/455) Reset margin on Register link ([@richardgorman](https://github.com/richardgorman))
+* [#439](https://github.com/shopgate/pwa/pull/439) rework e2e tests for ios ([@Iv3x](https://github.com/Iv3x))
+
+#### :bug: Bug Fix
+* [#472](https://github.com/shopgate/pwa/pull/472) Fixed broken terms legacy link on iOS theme ([@fkloes](https://github.com/fkloes))
+* [#471](https://github.com/shopgate/pwa/pull/471) Infinite Container component drops its scroll reference ([@richardgorman](https://github.com/richardgorman))
+* [#469](https://github.com/shopgate/pwa/pull/469) Corrected issue where login inputs are reset when blurred ([@richardgorman](https://github.com/richardgorman))
+* [#463](https://github.com/shopgate/pwa/pull/463) Increased hit area of the cart item context menu ([@fkloes](https://github.com/fkloes))
+* [#465](https://github.com/shopgate/pwa/pull/465) Fixed opening of child products on favourite list ([@fkloes](https://github.com/fkloes))
+* [#464](https://github.com/shopgate/pwa/pull/464) Fixed an issue with product variant selection ([@fkloes](https://github.com/fkloes))
+* [#460](https://github.com/shopgate/pwa/pull/460) Fixed product images fallback for variants without own images ([@fkloes](https://github.com/fkloes))
+* [#430](https://github.com/shopgate/pwa/pull/430) Added a click handler to the AppBar.Title component ([@richardgorman](https://github.com/richardgorman))
+* [#437](https://github.com/shopgate/pwa/pull/437) GMD Snackbar adjusts action color to white when accent color to black contrast is less than 4 ([@sznowicki](https://github.com/sznowicki))
+* [#451](https://github.com/shopgate/pwa/pull/451) Added missing react keys in iOS11 theme. ([@devbucket](https://github.com/devbucket))
+* [#454](https://github.com/shopgate/pwa/pull/454) Detector fix ([@sznowicki](https://github.com/sznowicki))
+* [#453](https://github.com/shopgate/pwa/pull/453) Changed .gitignore to only ignore the theme's config folder. ([@devbucket](https://github.com/devbucket))
+* [#442](https://github.com/shopgate/pwa/pull/442) Disabled text selection for product descriptions ([@richardgorman](https://github.com/richardgorman))
+* [#449](https://github.com/shopgate/pwa/pull/449) Added variant info to Favorites items ([@richardgorman](https://github.com/richardgorman))
+* [#447](https://github.com/shopgate/pwa/pull/447) Moved the button inside of the link inside iOS UserMenu ([@richardgorman](https://github.com/richardgorman))
+* [#446](https://github.com/shopgate/pwa/pull/446) Added an explicit zIndex for progress bar in GMD ([@richardgorman](https://github.com/richardgorman))
+* [#445](https://github.com/shopgate/pwa/pull/445) Adjusted Variant availability text to ignore touches ([@richardgorman](https://github.com/richardgorman))
+* [#443](https://github.com/shopgate/pwa/pull/443) Added missing react keys to to prevent errors with Fragment collections. ([@devbucket](https://github.com/devbucket))
+* [#438](https://github.com/shopgate/pwa/pull/438) Safe color contrast for toast action button ([@sznowicki](https://github.com/sznowicki))
+* [#434](https://github.com/shopgate/pwa/pull/434) Updated conductor to v1.0.0 to address scroll issue ([@richardgorman](https://github.com/richardgorman))
+* [#431](https://github.com/shopgate/pwa/pull/431) Cart information now wraps where appropriate ([@richardgorman](https://github.com/richardgorman))
+* [#426](https://github.com/shopgate/pwa/pull/426) Empty filter page after the app was in the background for a while ([@fkloes](https://github.com/fkloes))
+* [#429](https://github.com/shopgate/pwa/pull/429) Changed the ViewContent to receive the visible flag as a prop ([@richardgorman](https://github.com/richardgorman))
+
 
 ## [v6.0.0](https://github.com/shopgate/pwa/tree/v6.0.0) (2018-12-04)
-:bug: **Fixed bugs:**
 
-- GMD Snackbar adjusts action color to white when accent color to black contrast is less than 4 [\#437](https://github.com/shopgate/pwa/pull/437) ([sznowicki](https://github.com/sznowicki))
+#### :rocket: Enhancement
+* [#421](https://github.com/shopgate/pwa/pull/421) Add webcheckout register redirect action ([@alexbridge](https://github.com/alexbridge))
+* [#422](https://github.com/shopgate/pwa/pull/422) Toast messages are hidden ([@richardgorman](https://github.com/richardgorman))
+* [#417](https://github.com/shopgate/pwa/pull/417) Normalise SnackBar usage ([@richardgorman](https://github.com/richardgorman))
+* [#414](https://github.com/shopgate/pwa/pull/414) Correct add to cart bar styles ([@richardgorman](https://github.com/richardgorman))
+* [#416](https://github.com/shopgate/pwa/pull/416) GMD PaymentBar now renders outside of the route content ([@richardgorman](https://github.com/richardgorman))
+* [#419](https://github.com/shopgate/pwa/pull/419) Improved interaction with cart items and the coupon field ([@fkloes](https://github.com/fkloes))
+* [#415](https://github.com/shopgate/pwa/pull/415) Copied Viewport blocks to GMD ([@richardgorman](https://github.com/richardgorman))
+* [#413](https://github.com/shopgate/pwa/pull/413) Moved PaymentBar and SnackBar in iOS to AppFooter ([@richardgorman](https://github.com/richardgorman))
+* [#406](https://github.com/shopgate/pwa/pull/406) Changed pipeline usage to match specification ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#392](https://github.com/shopgate/pwa/pull/392) Refactored toggling of the progress bar within the app bars ([@fkloes](https://github.com/fkloes))
+* [#380](https://github.com/shopgate/pwa/pull/380) Added exports to common library for public router imports ([@richardgorman](https://github.com/richardgorman))
+* [#343](https://github.com/shopgate/pwa/pull/343) iOS More Route ([@richardgorman](https://github.com/richardgorman))
+* [#362](https://github.com/shopgate/pwa/pull/362) CartButton style adjustments ([@richardgorman](https://github.com/richardgorman))
+* [#349](https://github.com/shopgate/pwa/pull/349) Improved search suggestions on iOS and GMD theme ([@fkloes](https://github.com/fkloes))
+* [#340](https://github.com/shopgate/pwa/pull/340) Remove continue shopping button in iOS ([@richardgorman](https://github.com/richardgorman))
+* [#347](https://github.com/shopgate/pwa/pull/347) Added back browse page to ios theme ([@reneeichhorn](https://github.com/reneeichhorn))
+* [#344](https://github.com/shopgate/pwa/pull/344) Add cart button to AppBar in iOS theme ([@richardgorman](https://github.com/richardgorman))
+* [#341](https://github.com/shopgate/pwa/pull/341) Removed NavDrawer in iOS ([@richardgorman](https://github.com/richardgorman))
+* [#329](https://github.com/shopgate/pwa/pull/329) Adjusted font, notification, navigator and buttons to match iOS style. ([@devbucket](https://github.com/devbucket))
+* [#336](https://github.com/shopgate/pwa/pull/336) Applied iOS styling to products cards and product grid items of the iOS theme. ([@fkloes](https://github.com/fkloes))
+* [#325](https://github.com/shopgate/pwa/pull/325) Added iOS style AddToCart bar. ([@devbucket](https://github.com/devbucket))
+* [#323](https://github.com/shopgate/pwa/pull/323) Removed the CartButton from the default AppBar in the iOS theme. ([@devbucket](https://github.com/devbucket))
+* [#322](https://github.com/shopgate/pwa/pull/322) Added BackBar to all iOS pages expect for the Startpage and the Login. ([@devbucket](https://github.com/devbucket))
+* [#285](https://github.com/shopgate/pwa/pull/285) Added a library for benchmarking and added a public api for it. (new router) ([@reneeichhorn](https://github.com/reneeichhorn))
+* [#266](https://github.com/shopgate/pwa/pull/266) PWA-508 optimise cart route ([@richardgorman](https://github.com/richardgorman))
+* [#265](https://github.com/shopgate/pwa/pull/265) PWA-444 optomize category and search ([@devbucket](https://github.com/devbucket))
+* [#264](https://github.com/shopgate/pwa/pull/264) PWA-911 migrate user privacy extension ([@richardgorman](https://github.com/richardgorman))
+* [#262](https://github.com/shopgate/pwa/pull/262) PWA-511 optimise navigator ([@richardgorman](https://github.com/richardgorman))
+* [#259](https://github.com/shopgate/pwa/pull/259) PWA-957 optimize tax disclaimer ([@devbucket](https://github.com/devbucket))
+* [#255](https://github.com/shopgate/pwa/pull/255) PWA-953 Optimize characteristics ([@devbucket](https://github.com/devbucket))
+* [#256](https://github.com/shopgate/pwa/pull/256) PWA-831 refactor filters ([@richardgorman](https://github.com/richardgorman))
+* [#249](https://github.com/shopgate/pwa/pull/249) PWA-918 enable product fetching ([@devbucket](https://github.com/devbucket))
+* [#254](https://github.com/shopgate/pwa/pull/254) PWA-951 Optimized Portal components as much as possible. ([@devbucket](https://github.com/devbucket))
+* [#248](https://github.com/shopgate/pwa/pull/248) PWA-945 Updated conductor ([@richardgorman](https://github.com/richardgorman))
+* [#246](https://github.com/shopgate/pwa/pull/246) Pwa 922 refactor filter chips ([@richardgorman](https://github.com/richardgorman))
+* [#241](https://github.com/shopgate/pwa/pull/241) PWA-910 render ui with available filters ([@devbucket](https://github.com/devbucket))
+* [#240](https://github.com/shopgate/pwa/pull/240) PWA-906 add transitions and the chevron ([@devbucket](https://github.com/devbucket))
+* [#237](https://github.com/shopgate/pwa/pull/237) PWA-856 Added GMD styled accordion. ([@devbucket](https://github.com/devbucket))
+* [#235](https://github.com/shopgate/pwa/pull/235) Pwa 858 refactor filters feature ([@richardgorman](https://github.com/richardgorman))
+* [#233](https://github.com/shopgate/pwa/pull/233) PWA-855 UI-Shared now has an Accordion compound component ([@richardgorman](https://github.com/richardgorman))
+* [#223](https://github.com/shopgate/pwa/pull/223) PWA-830 fix timings ([@devbucket](https://github.com/devbucket))
+* [#224](https://github.com/shopgate/pwa/pull/224) PWA-860: Revised product selectors and their usages ([@fkloes](https://github.com/fkloes))
+* [#215](https://github.com/shopgate/pwa/pull/215) PWA-822 fix linting issues ([@devbucket](https://github.com/devbucket))
+* [#181](https://github.com/shopgate/pwa/pull/181) PWA-725 remove unused code from pwa common ([@devbucket](https://github.com/devbucket))
+* [#177](https://github.com/shopgate/pwa/pull/177) PWA-724 Optimized code and contents. ([@devbucket](https://github.com/devbucket))
+* [#159](https://github.com/shopgate/pwa/pull/159) PWA-629 is working with new router ([@devbucket](https://github.com/devbucket))
+* [#149](https://github.com/shopgate/pwa/pull/149) PWA-661 re enable the product sorting ([@devbucket](https://github.com/devbucket))
+* [#160](https://github.com/shopgate/pwa/pull/160) PWA-671 add support for shop links ([@richardgorman](https://github.com/richardgorman))
+* [#148](https://github.com/shopgate/pwa/pull/148) PWA-626 empty components ([@devbucket](https://github.com/devbucket))
+* [#152](https://github.com/shopgate/pwa/pull/152) PWA-624 Handle history reset. ([@devbucket](https://github.com/devbucket))
+* [#127](https://github.com/shopgate/pwa/pull/127) PWA-417 implement filters ([@devbucket](https://github.com/devbucket))
+* [#142](https://github.com/shopgate/pwa/pull/142) PWA-634 implement redux localstorage ([@devbucket](https://github.com/devbucket))
+* [#120](https://github.com/shopgate/pwa/pull/120) PWA-414 reimplement push notifications ([@devbucket](https://github.com/devbucket))
+* [#122](https://github.com/shopgate/pwa/pull/122) PWA-420 implement add reviews page ([@richardgorman](https://github.com/richardgorman))
+* [#121](https://github.com/shopgate/pwa/pull/121) PWA-561 Fixed getProductsResult bug. ([@devbucket](https://github.com/devbucket))
+* [#111](https://github.com/shopgate/pwa/pull/111) PWA-421 gmd implement new router for favorites page ([@devbucket](https://github.com/devbucket))
+* [#103](https://github.com/shopgate/pwa/pull/103) PWA-526 pdp add minor optimizations ([@devbucket](https://github.com/devbucket))
+* [#108](https://github.com/shopgate/pwa/pull/108) PWA-419 gmd implement new router for reviews page ([@devbucket](https://github.com/devbucket))
+* [#101](https://github.com/shopgate/pwa/pull/101) PWA-507 pdp implement gallery ([@devbucket](https://github.com/devbucket))
+* [#97](https://github.com/shopgate/pwa/pull/97) PWA-472 implement product reviews ([@richardgorman](https://github.com/richardgorman))
+* [#99](https://github.com/shopgate/pwa/pull/99) PWA-468 pdp implement the options ([@devbucket](https://github.com/devbucket))
+* [#84](https://github.com/shopgate/pwa/pull/84) PWA-465 pdp implement the image slider ([@devbucket](https://github.com/devbucket))
+* [#92](https://github.com/shopgate/pwa/pull/92) PWA-517 Implemented product prices. ([@devbucket](https://github.com/devbucket))
+* [#89](https://github.com/shopgate/pwa/pull/89) PWA-466 pdp implement the description ([@devbucket](https://github.com/devbucket))
+* [#88](https://github.com/shopgate/pwa/pull/88) PWA-466 implement product header ([@richardgorman](https://github.com/richardgorman))
+* [#83](https://github.com/shopgate/pwa/pull/83) PWA-464 pdp implement the basic route ([@devbucket](https://github.com/devbucket))
+* [#74](https://github.com/shopgate/pwa/pull/74) PWA-433 implement category products ([@devbucket](https://github.com/devbucket))
+* [#70](https://github.com/shopgate/pwa/pull/70) PWA-432 Implement category route ([@devbucket](https://github.com/devbucket))
+* [#66](https://github.com/shopgate/pwa/pull/66) PWA-222 Re-created ParsedLink helper mechanisms ([@devbucket](https://github.com/devbucket))
+* [#62](https://github.com/shopgate/pwa/pull/62) PWA-241 Moved to Conductor. Deleted unused Router files ([@richardgorman](https://github.com/richardgorman))
 
-:nail_care: **Others:**
-
-- Fixed structure of defaultClientInformation [\#420](https://github.com/shopgate/pwa/pull/420) ([Carsten89](https://github.com/Carsten89))
-
-## [v5.10.2](https://github.com/shopgate/pwa/tree/v5.10.2) (2018-11-23)
-## [v5.9.1](https://github.com/shopgate/pwa/tree/v5.9.1) (2018-11-23)
-:rocket: **Enhancements:**
-
-- Added portals and location prop for product-item.price [\#381](https://github.com/shopgate/pwa/pull/381) ([DannyShopgate](https://github.com/DannyShopgate))
-
-:bug: **Fixed bugs:**
-
-- Improve concurrent cart actions, when adding a coupon from deeplink [\#404](https://github.com/shopgate/pwa/pull/404) ([alexbridge](https://github.com/alexbridge))
-
-:nail_care: **Others:**
-
-- Added new portals and exported selectors [\#400](https://github.com/shopgate/pwa/pull/400) ([Carsten89](https://github.com/Carsten89))
-
-## [v5.10.1](https://github.com/shopgate/pwa/tree/v5.10.1) (2018-11-16)
-:bug: **Fixed bugs:**
-
-- Replaced deprecated FR, LV, FE and GE iso province codes [\#393](https://github.com/shopgate/pwa/pull/393) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- Added flushTab option for legacy links within the parsed-link helper [\#387](https://github.com/shopgate/pwa/pull/387) ([fkloes](https://github.com/fkloes))
-
-:nail_care: **Others:**
-
-- Fix eslint errors in the form builder [\#394](https://github.com/shopgate/pwa/pull/394) ([alexbridge](https://github.com/alexbridge))
-- Extend timeout for test stability [\#390](https://github.com/shopgate/pwa/pull/390) ([Iv3x](https://github.com/Iv3x))
-- Added spec files for e2e execution [\#389](https://github.com/shopgate/pwa/pull/389) ([Iv3x](https://github.com/Iv3x))
-
-## [v5.10.0](https://github.com/shopgate/pwa/tree/v5.10.0) (2018-11-12)
-:bug: **Fixed bugs:**
-
-- Correct price formatting on product detail page when price is 0 [\#371](https://github.com/shopgate/pwa/pull/371) ([aaron-martin](https://github.com/aaron-martin))
-- Fixed an inAppBrowser issue where previous opened pages got visible again [\#370](https://github.com/shopgate/pwa/pull/370) ([fkloes](https://github.com/fkloes))
-- Corrected a bug where the filters labels can run out of the viewport [\#368](https://github.com/shopgate/pwa/pull/368) ([richardgorman](https://github.com/richardgorman))
-- Updated `react-hot-loader` to prevent issues with newer `react` version. [\#363](https://github.com/shopgate/pwa/pull/363) ([devbucket](https://github.com/devbucket))
-
-:nail_care: **Others:**
-
-- My account menu header portal [\#359](https://github.com/shopgate/pwa/pull/359) ([alexbridge](https://github.com/alexbridge))
-- Added possibility to open legacy `user\_lost\_password` link [\#355](https://github.com/shopgate/pwa/pull/355) ([philipp-heyse](https://github.com/philipp-heyse))
-- Added automatic changelog generation and handling for stable releases. [\#350](https://github.com/shopgate/pwa/pull/350) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- fix linting errors for e2e test suite [\#334](https://github.com/shopgate/pwa/pull/334) ([Iv3x](https://github.com/Iv3x))
-
-## [v5.9.0](https://github.com/shopgate/pwa/tree/v5.9.0) (2018-10-30)
-:rocket: **Enhancements:**
-
-- Makefile improvements [\#342](https://github.com/shopgate/pwa/pull/342) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- Introduced automatic creation of github releases [\#338](https://github.com/shopgate/pwa/pull/338) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- Implemented iOS and Android Share icons and Native Share App Command [\#332](https://github.com/shopgate/pwa/pull/332) ([DannyShopgate](https://github.com/DannyShopgate))
-- The browser connector is used only in none SDK web environments. [\#331](https://github.com/shopgate/pwa/pull/331) ([devbucket](https://github.com/devbucket))
-- Added an action that allows to disable/enable the login form [\#330](https://github.com/shopgate/pwa/pull/330) ([reneeichhorn](https://github.com/reneeichhorn))
-- Sheet accepts className prop. [\#327](https://github.com/shopgate/pwa/pull/327) ([sznowicki](https://github.com/sznowicki))
-- A getProductRelations pipeline redux implementation [\#310](https://github.com/shopgate/pwa/pull/310) ([sznowicki](https://github.com/sznowicki))
-- Implemented the EmbeddedMedia collection to improve handling of playing media on navigation [\#291](https://github.com/shopgate/pwa/pull/291) ([fkloes](https://github.com/fkloes))
-- Added a library for benchmarking and added a public api for it. [\#284](https://github.com/shopgate/pwa/pull/284) ([reneeichhorn](https://github.com/reneeichhorn))
-- Portals: Sending original component down to the portal instance. [\#279](https://github.com/shopgate/pwa/pull/279) ([Carsten89](https://github.com/Carsten89))
-- Added Pull Request Template and automatic changelog creation. [\#278](https://github.com/shopgate/pwa/pull/278) ([devbucket](https://github.com/devbucket))
-- Implemented BrowserConnector to be able to call Pipelines fro a non App environment \(browser\) [\#32](https://github.com/shopgate/pwa/pull/32) ([devbucket](https://github.com/devbucket))
-
-:bug: **Fixed bugs:**
-
-- CartButton and SearchButton are now reliably hidden on cart page [\#333](https://github.com/shopgate/pwa/pull/333) ([fkloes](https://github.com/fkloes))
-- Added default limit for getProductsRelations action [\#328](https://github.com/shopgate/pwa/pull/328) ([sznowicki](https://github.com/sznowicki))
-- Fixed a broken import [\#319](https://github.com/shopgate/pwa/pull/319) ([sznowicki](https://github.com/sznowicki))
-- Fix product price in favorites to match product actual price [\#315](https://github.com/shopgate/pwa/pull/315) ([alexbridge](https://github.com/alexbridge))
-- Moved from @shopgate/react-hammerjs to react-hammerjs from npm. [\#313](https://github.com/shopgate/pwa/pull/313) ([devbucket](https://github.com/devbucket))
-- Fixed hammer.js by fixing the version to 0.5.6 [\#302](https://github.com/shopgate/pwa/pull/302) ([devbucket](https://github.com/devbucket))
-- Fix UI separating line between coupon and coupon field. [\#295](https://github.com/shopgate/pwa/pull/295) ([alexbridge](https://github.com/alexbridge))
-- Removed country codes from province province codes used by the form builder [\#293](https://github.com/shopgate/pwa/pull/293) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- Moved out the benchmarking tool out from devDependencies to the dependency list [\#289](https://github.com/shopgate/pwa/pull/289) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- A rebuildOnUpdate prop implemented to a Slider. [\#288](https://github.com/shopgate/pwa/pull/288) ([sznowicki](https://github.com/sznowicki))
-- Added iPhoneXs, XsMax and Xr support [\#287](https://github.com/shopgate/pwa/pull/287) ([Carsten89](https://github.com/Carsten89))
-
-:nail_care: **Others:**
-
-- E2E tests for user Address Book [\#326](https://github.com/shopgate/pwa/pull/326) ([alexbridge](https://github.com/alexbridge))
-- Changed Makefile to support subtrees and prepare it for additional automation [\#317](https://github.com/shopgate/pwa/pull/317) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- fixed a typo in a translation [\#305](https://github.com/shopgate/pwa/pull/305) ([chrisEff](https://github.com/chrisEff))
-- fixed a typo in a translation [\#304](https://github.com/shopgate/pwa/pull/304) ([chrisEff](https://github.com/chrisEff))
-- clientInformation is taken from window.navigator instead of webStorage [\#300](https://github.com/shopgate/pwa/pull/300) ([devbucket](https://github.com/devbucket))
-- Changed test IDs and tests to not depend on exact same data and be able to run with similar data. [\#298](https://github.com/shopgate/pwa/pull/298) ([Iv3x](https://github.com/Iv3x))
-- Move from Git submodules to Git subtree [\#294](https://github.com/shopgate/pwa/pull/294) ([devbucket](https://github.com/devbucket))
-- Added selectors for product properties and cartItemById [\#290](https://github.com/shopgate/pwa/pull/290) ([Carsten89](https://github.com/Carsten89))
-- TD-864-optimize-portal [\#281](https://github.com/shopgate/pwa/pull/281) ([Carsten89](https://github.com/Carsten89))
-- Pwa 887 [\#277](https://github.com/shopgate/pwa/pull/277) ([reneeichhorn](https://github.com/reneeichhorn))
-- PWA-706-fix-portal-usage [\#272](https://github.com/shopgate/pwa/pull/272) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- Pwa 706 address management [\#269](https://github.com/shopgate/pwa/pull/269) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-
-## [v5.8.0](https://github.com/shopgate/pwa/tree/v5.8.0) (2018-09-18)
-:rocket: **Enhancements:**
-
-- PWA-885 create deployment test [\#243](https://github.com/shopgate/pwa/pull/243) ([Iv3x](https://github.com/Iv3x))
-
-## [v5.7.4](https://github.com/shopgate/pwa/tree/v5.7.4) (2018-09-07)
-:nail_care: **Others:**
-
-- Shopify 529 create a new portal [\#239](https://github.com/shopgate/pwa/pull/239) ([awesselburg](https://github.com/awesselburg))
-- CCP-812 added portals for prices in favlist [\#238](https://github.com/shopgate/pwa/pull/238) ([Carsten89](https://github.com/Carsten89))
-- PWA-746: Fixed an issue with user review updates [\#234](https://github.com/shopgate/pwa/pull/234) ([fkloes](https://github.com/fkloes))
-- PWA-829: added second condition to determin if slider.fixLoop should … [\#226](https://github.com/shopgate/pwa/pull/226) ([Shopgate-Travis](https://github.com/Shopgate-Travis))
-
-## [v5.7.3](https://github.com/shopgate/pwa/tree/v5.7.3) (2018-08-26)
-## [v5.7.2](https://github.com/shopgate/pwa/tree/v5.7.2) (2018-08-25)
-## [v5.7.1](https://github.com/shopgate/pwa/tree/v5.7.1) (2018-08-25)
-## [v5.7.0](https://github.com/shopgate/pwa/tree/v5.7.0) (2018-08-24)
-:bug: **Fixed bugs:**
-
-- PWA-873 Fixed unit test suite and updated snapshots. [\#225](https://github.com/shopgate/pwa/pull/225) ([devbucket](https://github.com/devbucket))
-
-:nail_care: **Others:**
-
-- CCP-144-dialog-btn-txt-align [\#222](https://github.com/shopgate/pwa/pull/222) ([Carsten89](https://github.com/Carsten89))
-- PWA-723 e2e test for native checkout [\#210](https://github.com/shopgate/pwa/pull/210) ([Iv3x](https://github.com/Iv3x))
-- Pwa 773 [\#208](https://github.com/shopgate/pwa/pull/208) ([sznowicki](https://github.com/sznowicki))
-- PWA-389 Sync mock for pipeline request [\#205](https://github.com/shopgate/pwa/pull/205) ([sofib](https://github.com/sofib))
-- PWA-749 updated hashes [\#200](https://github.com/shopgate/pwa/pull/200) ([Iv3x](https://github.com/Iv3x))
-- Pwa 73 onload command clean [\#198](https://github.com/shopgate/pwa/pull/198) ([sznowicki](https://github.com/sznowicki))
-- Pwa 364 physical pixel size helper [\#192](https://github.com/shopgate/pwa/pull/192) ([sznowicki](https://github.com/sznowicki))
-
-## [v5.6.0](https://github.com/shopgate/pwa/tree/v5.6.0) (2018-08-09)
-:nail_care: **Others:**
-
-- PWA-704 fixed issue with cached items [\#206](https://github.com/shopgate/pwa/pull/206) ([Carsten89](https://github.com/Carsten89))
-- PWA-747: Extended jest.config [\#195](https://github.com/shopgate/pwa/pull/195) ([fkloes](https://github.com/fkloes))
-- PWA-747: Extended jest.config to fix tests [\#191](https://github.com/shopgate/pwa/pull/191) ([fkloes](https://github.com/fkloes))
-- Pwa 744 [\#190](https://github.com/shopgate/pwa/pull/190) ([Carsten89](https://github.com/Carsten89))
-- PWA-743 - hide loading spinner when totalItems is lower than actually… [\#188](https://github.com/shopgate/pwa/pull/188) ([sznowicki](https://github.com/sznowicki))
-- PWA-73 - hide splashscreen after app did start to make all listeners … [\#185](https://github.com/shopgate/pwa/pull/185) ([sznowicki](https://github.com/sznowicki))
-- PWA-721 - request available filters on search query change [\#184](https://github.com/shopgate/pwa/pull/184) ([sznowicki](https://github.com/sznowicki))
-- V5.7 [\#180](https://github.com/shopgate/pwa/pull/180) ([sznowicki](https://github.com/sznowicki))
-- Pwa 718 user review always on top [\#178](https://github.com/shopgate/pwa/pull/178) ([sznowicki](https://github.com/sznowicki))
-- PWA-252 - removing the valueLabels in the correct way [\#176](https://github.com/shopgate/pwa/pull/176) ([sznowicki](https://github.com/sznowicki))
-- Pwa 487 checkout action timeouts [\#174](https://github.com/shopgate/pwa/pull/174) ([sznowicki](https://github.com/sznowicki))
-- PWA-679 Fix pipeline manager issues [\#166](https://github.com/shopgate/pwa/pull/166) ([fkloes](https://github.com/fkloes))
-- PWA-690 Rectify ESLint issues for themes [\#163](https://github.com/shopgate/pwa/pull/163) ([alexbridge](https://github.com/alexbridge))
-- Pwa 656 backdrop enhancements [\#162](https://github.com/shopgate/pwa/pull/162) ([sznowicki](https://github.com/sznowicki))
-- MAGENTO-2044 - add lib version [\#161](https://github.com/shopgate/pwa/pull/161) ([awesselburg](https://github.com/awesselburg))
-- PWA-255 [\#156](https://github.com/shopgate/pwa/pull/156) ([Carsten89](https://github.com/Carsten89))
-- MAGENTO-2044 - add setCookie App command [\#155](https://github.com/shopgate/pwa/pull/155) ([awesselburg](https://github.com/awesselburg))
-- PI-8827 fixed not spinning indicator circle for search [\#153](https://github.com/shopgate/pwa/pull/153) ([Carsten89](https://github.com/Carsten89))
-- PWA-675 Prevent duplicate message modals [\#151](https://github.com/shopgate/pwa/pull/151) ([fkloes](https://github.com/fkloes))
-- PWA-639 Add Select form element to ui-shared components [\#150](https://github.com/shopgate/pwa/pull/150) ([alexbridge](https://github.com/alexbridge))
-- PWA-654 - some app events must be registered before they are used [\#147](https://github.com/shopgate/pwa/pull/147) ([sznowicki](https://github.com/sznowicki))
-- PWA-594 updated hashes [\#146](https://github.com/shopgate/pwa/pull/146) ([Iv3x](https://github.com/Iv3x))
-- Pwa 475 error handling for categories [\#144](https://github.com/shopgate/pwa/pull/144) ([sznowicki](https://github.com/sznowicki))
-- PWA-658 Suppress ENOTFOUND by default [\#143](https://github.com/shopgate/pwa/pull/143) ([alexbridge](https://github.com/alexbridge))
-- Pwa 605 sg tracking meta data [\#141](https://github.com/shopgate/pwa/pull/141) ([sznowicki](https://github.com/sznowicki))
-- PWA-593 updated hashes [\#140](https://github.com/shopgate/pwa/pull/140) ([Iv3x](https://github.com/Iv3x))
-- PWA-592 updated hashes [\#139](https://github.com/shopgate/pwa/pull/139) ([Iv3x](https://github.com/Iv3x))
-- Ccp 449 pollin order form [\#137](https://github.com/shopgate/pwa/pull/137) ([Carsten89](https://github.com/Carsten89))
-- PWA-503 - z-index fixes for PDP [\#135](https://github.com/shopgate/pwa/pull/135) ([sznowicki](https://github.com/sznowicki))
-- PWA-580 - sgapi links must not have trailing slashes [\#133](https://github.com/shopgate/pwa/pull/133) ([sznowicki](https://github.com/sznowicki))
-- CCP-684: added support for ctaPrimary and ctaPrimaryContrast to AddTo… [\#132](https://github.com/shopgate/pwa/pull/132) ([aaron-martin](https://github.com/aaron-martin))
-- PWA-584 e2e functional cart [\#131](https://github.com/shopgate/pwa/pull/131) ([Iv3x](https://github.com/Iv3x))
-
-## [v5.5.0](https://github.com/shopgate/pwa/tree/v5.5.0) (2018-07-06)
-:bug: **Fixed bugs:**
-
-- PWA-373 Add currency to app default config [\#138](https://github.com/shopgate/pwa/pull/138) ([alexbridge](https://github.com/alexbridge))
-
-:nail_care: **Others:**
-
-- PWA-659 fixed image gallery on ios10 [\#145](https://github.com/shopgate/pwa/pull/145) ([Carsten89](https://github.com/Carsten89))
-- PWA-604: Pages are tracked anymore when the user enters the checkout [\#136](https://github.com/shopgate/pwa/pull/136) ([fkloes](https://github.com/fkloes))
-- PWA-567: ProductSlider items now have equal heights [\#130](https://github.com/shopgate/pwa/pull/130) ([fkloes](https://github.com/fkloes))
-- CCP-691 - pause animation of spinner on add to cart [\#128](https://github.com/shopgate/pwa/pull/128) ([sznowicki](https://github.com/sznowicki))
-- PWA-581 e2e functional [\#126](https://github.com/shopgate/pwa/pull/126) ([Iv3x](https://github.com/Iv3x))
-- CCP-680: Added onSelect callback to the PickerComponent [\#125](https://github.com/shopgate/pwa/pull/125) ([fkloes](https://github.com/fkloes))
-- PWA-564 e2e functional [\#124](https://github.com/shopgate/pwa/pull/124) ([Iv3x](https://github.com/Iv3x))
-- PWA-552 [\#123](https://github.com/shopgate/pwa/pull/123) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- PWA-559 pass state and subscribe to tracking plugins [\#118](https://github.com/shopgate/pwa/pull/118) ([Carsten89](https://github.com/Carsten89))
-- CCP-670 added custom event [\#117](https://github.com/shopgate/pwa/pull/117) ([Carsten89](https://github.com/Carsten89))
-- Ccp 642 release items on favorite list changes [\#116](https://github.com/shopgate/pwa/pull/116) ([aaron-martin](https://github.com/aaron-martin))
-- PWA-347 Replace onTouchTap with onClick for Checkbox component [\#114](https://github.com/shopgate/pwa/pull/114) ([alexbridge](https://github.com/alexbridge))
-- CCP-656: Improved cartProductPendingCount [\#112](https://github.com/shopgate/pwa/pull/112) ([fkloes](https://github.com/fkloes))
-- PWA-502 - support for single selection filters \(constant + shared Rad… [\#110](https://github.com/shopgate/pwa/pull/110) ([sznowicki](https://github.com/sznowicki))
-- PWA-484 fix favorites add products to cart to comply with specification [\#107](https://github.com/shopgate/pwa/pull/107) ([SG-Noxoreos](https://github.com/SG-Noxoreos))
-- PWA-527 e2e test favorites [\#106](https://github.com/shopgate/pwa/pull/106) ([Iv3x](https://github.com/Iv3x))
-- CCP-446 export getProductPropertiesState selector [\#105](https://github.com/shopgate/pwa/pull/105) ([Carsten89](https://github.com/Carsten89))
-- PWA-150 Add Radio button checked, unchecked icons [\#104](https://github.com/shopgate/pwa/pull/104) ([alexbridge](https://github.com/alexbridge))
-- Pwa 378 parse internal links correctly [\#102](https://github.com/shopgate/pwa/pull/102) ([sznowicki](https://github.com/sznowicki))
-- PWA-515 e2e test reviews [\#100](https://github.com/shopgate/pwa/pull/100) ([Iv3x](https://github.com/Iv3x))
-- Ccp 637 styles in widgets [\#98](https://github.com/shopgate/pwa/pull/98) ([sznowicki](https://github.com/sznowicki))
-- PWA-428 Link has a new property disabled [\#94](https://github.com/shopgate/pwa/pull/94) ([alexbridge](https://github.com/alexbridge))
-
-## [v5.4.1](https://github.com/shopgate/pwa/tree/v5.4.1) (2018-06-11)
-## [v5.4.0](https://github.com/shopgate/pwa/tree/v5.4.0) (2018-06-11)
-:nail_care: **Others:**
-
-- PWA-177: Track pages when coming back from legacy pages [\#93](https://github.com/shopgate/pwa/pull/93) ([fkloes](https://github.com/fkloes))
-- CCP-631 - favorites portals [\#91](https://github.com/shopgate/pwa/pull/91) ([sznowicki](https://github.com/sznowicki))
-- PWA-513 e2e test filter [\#87](https://github.com/shopgate/pwa/pull/87) ([Iv3x](https://github.com/Iv3x))
-- PWA-510 e2e test login [\#85](https://github.com/shopgate/pwa/pull/85) ([Iv3x](https://github.com/Iv3x))
-- PWA-451 e2e test search [\#82](https://github.com/shopgate/pwa/pull/82) ([Iv3x](https://github.com/Iv3x))
-- PWA-488: Added new favoritesDidUpdate$ stream [\#80](https://github.com/shopgate/pwa/pull/80) ([fkloes](https://github.com/fkloes))
-- Pwa-450 e2e test cart [\#77](https://github.com/shopgate/pwa/pull/77) ([Iv3x](https://github.com/Iv3x))
-- CCP-594 - scheduled widgets support [\#76](https://github.com/shopgate/pwa/pull/76) ([sznowicki](https://github.com/sznowicki))
-- PWA-437: Favourite list has issues with "out of stock" items [\#72](https://github.com/shopgate/pwa/pull/72) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- Pwa 438 test coverage [\#71](https://github.com/shopgate/pwa/pull/71) ([Iv3x](https://github.com/Iv3x))
-- PWA-334 e2e productpage [\#69](https://github.com/shopgate/pwa/pull/69) ([Iv3x](https://github.com/Iv3x))
-- PWA-333 [\#61](https://github.com/shopgate/pwa/pull/61) ([Iv3x](https://github.com/Iv3x))
-- CCP-546 - navigator portals [\#58](https://github.com/shopgate/pwa/pull/58) ([sznowicki](https://github.com/sznowicki))
-- CCP-454-implement-plotproject-commands [\#36](https://github.com/shopgate/pwa/pull/36) ([Carsten89](https://github.com/Carsten89))
-
-## [v5.3.0](https://github.com/shopgate/pwa/tree/v5.3.0) (2018-05-24)
-:rocket: **Enhancements:**
-
-- Parameters of original url are not duplicated, added tests [\#50](https://github.com/shopgate/pwa/pull/50) ([sofib](https://github.com/sofib))
-- PWA-299: Refactored / Implemented error handling. [\#41](https://github.com/shopgate/pwa/pull/41) ([devbucket](https://github.com/devbucket))
-
-:bug: **Fixed bugs:**
-
-- PWA-424 Handling process sequencial correctly. [\#63](https://github.com/shopgate/pwa/pull/63) ([devbucket](https://github.com/devbucket))
-
-:nail_care: **Others:**
-
-- PWA-403: Error handling: Pipeline not yield a response [\#60](https://github.com/shopgate/pwa/pull/60) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- PWA-402 fix is orderable [\#59](https://github.com/shopgate/pwa/pull/59) ([devbucket](https://github.com/devbucket))
-- PWA-393 send hide splash screen command. [\#57](https://github.com/shopgate/pwa/pull/57) ([devbucket](https://github.com/devbucket))
-- PWA-396 no error on second login retry [\#56](https://github.com/shopgate/pwa/pull/56) ([devbucket](https://github.com/devbucket))
-- PWA-395 removed retries from the 'add...' Pipelines. [\#55](https://github.com/shopgate/pwa/pull/55) ([devbucket](https://github.com/devbucket))
-- PWA-332 add test ids [\#54](https://github.com/shopgate/pwa/pull/54) ([devbucket](https://github.com/devbucket))
-- TD-780 delete all readme files [\#52](https://github.com/shopgate/pwa/pull/52) ([devbucket](https://github.com/devbucket))
-- Pwa 339 request handler unit tests [\#51](https://github.com/shopgate/pwa/pull/51) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- PI-8722 - bringing back .setSuppressErrors [\#49](https://github.com/shopgate/pwa/pull/49) ([sznowicki](https://github.com/sznowicki))
-- PWA-361 PipelineManager now removes items from the pipeline sequence [\#48](https://github.com/shopgate/pwa/pull/48) ([richardgorman](https://github.com/richardgorman))
-- CCP-505 Implemented the ScannerManager to enable simple access to the app scanner [\#47](https://github.com/shopgate/pwa/pull/47) ([fkloes](https://github.com/fkloes))
-- PWA-337 integrate the cypress test suite [\#46](https://github.com/shopgate/pwa/pull/46) ([Iv3x](https://github.com/Iv3x))
-- PI-8705-purchase-legacy-checkout [\#45](https://github.com/shopgate/pwa/pull/45) ([Carsten89](https://github.com/Carsten89))
-- PI-8664 added default value to fix the purchase event [\#44](https://github.com/shopgate/pwa/pull/44) ([Carsten89](https://github.com/Carsten89))
-- PWA-148: \[ux\] Dialog buttons are in the wrong order [\#42](https://github.com/shopgate/pwa/pull/42) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- Pwa 237 add action to flush toast messages [\#40](https://github.com/shopgate/pwa/pull/40) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- Td 660 move shared components [\#39](https://github.com/shopgate/pwa/pull/39) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- PWA-313: Fixed app crash on closeInAppBrowser command dispatch [\#38](https://github.com/shopgate/pwa/pull/38) ([fkloes](https://github.com/fkloes))
-- PWA-307 add theme context [\#37](https://github.com/shopgate/pwa/pull/37) ([richardgorman](https://github.com/richardgorman))
-- PWA-152 Unsubscribe history from openedRegisterLink$ stream. Unsubscr… [\#35](https://github.com/shopgate/pwa/pull/35) ([alexbridge](https://github.com/alexbridge))
-- CCP-97: Implement AppPermissions commands [\#34](https://github.com/shopgate/pwa/pull/34) ([fkloes](https://github.com/fkloes))
-- CCP-410 Images are now centered regardless of resolution [\#33](https://github.com/shopgate/pwa/pull/33) ([richardgorman](https://github.com/richardgorman))
-- PWA-293: Fixed a bug within mergeTranslations helper [\#31](https://github.com/shopgate/pwa/pull/31) ([fkloes](https://github.com/fkloes))
-- PWA-238: Sale discounts are incorrect [\#30](https://github.com/shopgate/pwa/pull/30) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- PWA-257 update to react 16.3 [\#28](https://github.com/shopgate/pwa/pull/28) ([richardgorman](https://github.com/richardgorman))
-- CON-2887: Removed the login page from history when user gets logged-in [\#10](https://github.com/shopgate/pwa/pull/10) ([fkloes](https://github.com/fkloes))
-
-## [v5.2.0](https://github.com/shopgate/pwa/tree/v5.2.0) (2018-04-24)
-:nail_care: **Others:**
-
-- PWA-284 Product hashes only contain filters if it is not empty [\#29](https://github.com/shopgate/pwa/pull/29) ([richardgorman](https://github.com/richardgorman))
-- CCP-16: Prevent AppCommand dispatch on not supporting devices [\#27](https://github.com/shopgate/pwa/pull/27) ([fkloes](https://github.com/fkloes))
-- Pwa 120 client selectors [\#26](https://github.com/shopgate/pwa/pull/26) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- PWA-236 Get portals only on instance. [\#25](https://github.com/shopgate/pwa/pull/25) ([devbucket](https://github.com/devbucket))
-- PWA-218: Add portals to prices on category page [\#24](https://github.com/shopgate/pwa/pull/24) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- CCP-332: Added new constants for the cart.empty Portals [\#23](https://github.com/shopgate/pwa/pull/23) ([fkloes](https://github.com/fkloes))
-- PWA-14 code splitting [\#22](https://github.com/shopgate/pwa/pull/22) ([devbucket](https://github.com/devbucket))
-- Ccp 274 write review portal [\#21](https://github.com/shopgate/pwa/pull/21) ([Carsten89](https://github.com/Carsten89))
-- PWA-118: unit test [\#20](https://github.com/shopgate/pwa/pull/20) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- CCP-203: Extended client selectors [\#19](https://github.com/shopgate/pwa/pull/19) ([fkloes](https://github.com/fkloes))
-
-## [v5.1.0](https://github.com/shopgate/pwa/tree/v5.1.0) (2018-04-10)
-:bug: **Fixed bugs:**
-
-- PWA-186 Fix unit tests. [\#7](https://github.com/shopgate/pwa/pull/7) ([devbucket](https://github.com/devbucket))
-
-:nail_care: **Others:**
-
-- PWA-220 - AuthRoutes has default "to" prop. [\#17](https://github.com/shopgate/pwa/pull/17) ([sznowicki](https://github.com/sznowicki))
-- PWA-114: Add portals around category list [\#16](https://github.com/shopgate/pwa/pull/16) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- Pwa 61 navigation bar [\#15](https://github.com/shopgate/pwa/pull/15) ([CarinaHoffmann](https://github.com/CarinaHoffmann))
-- Merge remote-tracking branch 'origin/develop' into BIGC-713-tracking-fix [\#14](https://github.com/shopgate/pwa/pull/14) ([Carsten89](https://github.com/Carsten89))
-- WEBC-567: Added handling for legacy connect registration errors [\#13](https://github.com/shopgate/pwa/pull/13) ([fkloes](https://github.com/fkloes))
-- PWA-201: Added selectors for the flags of the getCart response [\#12](https://github.com/shopgate/pwa/pull/12) ([fkloes](https://github.com/fkloes))
-- PWA-13 Add support for auth route portals [\#11](https://github.com/shopgate/pwa/pull/11) ([richardgorman](https://github.com/richardgorman))
-- CCP-201 - PipelineRequest.suppressErrors [\#9](https://github.com/shopgate/pwa/pull/9) ([sznowicki](https://github.com/sznowicki))
-
-## [v5.0.3](https://github.com/shopgate/pwa/tree/v5.0.3) (2018-03-23)
-## [v5.0.2](https://github.com/shopgate/pwa/tree/v5.0.2) (2018-03-23)
-:nail_care: **Others:**
-
-- PWA-143 Pipeline names [\#8](https://github.com/shopgate/pwa/pull/8) ([devbucket](https://github.com/devbucket))
-
-## [v5.0.1](https://github.com/shopgate/pwa/tree/v5.0.1) (2018-03-23)
-## [v5.0.0](https://github.com/shopgate/pwa/tree/v5.0.0) (2018-03-23)
-:rocket: **Enhancements:**
-
-- PWA-103 add user menu portals [\#6](https://github.com/shopgate/pwa/pull/6) ([devbucket](https://github.com/devbucket))
-
-:nail_care: **Others:**
-
-- PWA-159 Arbitrary props are passed through Route [\#5](https://github.com/shopgate/pwa/pull/5) ([richardgorman](https://github.com/richardgorman))
+#### :bug: Bug Fix
+* [#428](https://github.com/shopgate/pwa/pull/428) Removed the Accordion height transition ([@richardgorman](https://github.com/richardgorman))
+* [#427](https://github.com/shopgate/pwa/pull/427) Fixed structure of defaultClientInformation ([@fkloes](https://github.com/fkloes))
+* [#398](https://github.com/shopgate/pwa/pull/398) Fixed wrong displayed tier price products ([@fkloes](https://github.com/fkloes))
+* [#423](https://github.com/shopgate/pwa/pull/423) Increased AppBar z-index to avoid overlapping elements ([@fkloes](https://github.com/fkloes))
+* [#422](https://github.com/shopgate/pwa/pull/422) Toast messages are hidden ([@richardgorman](https://github.com/richardgorman))
+* [#417](https://github.com/shopgate/pwa/pull/417) Normalise SnackBar usage ([@richardgorman](https://github.com/richardgorman))
+* [#414](https://github.com/shopgate/pwa/pull/414) Correct add to cart bar styles ([@richardgorman](https://github.com/richardgorman))
+* [#416](https://github.com/shopgate/pwa/pull/416) GMD PaymentBar now renders outside of the route content ([@richardgorman](https://github.com/richardgorman))
+* [#419](https://github.com/shopgate/pwa/pull/419) Improved interaction with cart items and the coupon field ([@fkloes](https://github.com/fkloes))
+* [#418](https://github.com/shopgate/pwa/pull/418) Updated Conductor package ([@richardgorman](https://github.com/richardgorman))
+* [#415](https://github.com/shopgate/pwa/pull/415) Copied Viewport blocks to GMD ([@richardgorman](https://github.com/richardgorman))
+* [#413](https://github.com/shopgate/pwa/pull/413) Moved PaymentBar and SnackBar in iOS to AppFooter ([@richardgorman](https://github.com/richardgorman))
+* [#405](https://github.com/shopgate/pwa/pull/405) Refactored SnackBar to use react-spring ([@richardgorman](https://github.com/richardgorman))
+* [#407](https://github.com/shopgate/pwa/pull/407) Fixed broken InfiniteContainer process ([@fkloes](https://github.com/fkloes))
+* [#410](https://github.com/shopgate/pwa/pull/410) Fixed a cached selector that caused outdated url in tracking data ([@reneeichhorn](https://github.com/reneeichhorn))
+* [#411](https://github.com/shopgate/pwa/pull/411) Page content is now below all AppBars ([@richardgorman](https://github.com/richardgorman))
+* [#409](https://github.com/shopgate/pwa/pull/409) Cart items are not visible when entering the cart ([@richardgorman](https://github.com/richardgorman))
+* [#408](https://github.com/shopgate/pwa/pull/408) Re-added hiding of the legacy menu bar on app start ([@fkloes](https://github.com/fkloes))
+* [#403](https://github.com/shopgate/pwa/pull/403) More menu buttons on iOS will now wrap on small devices ([@richardgorman](https://github.com/richardgorman))
+* [#399](https://github.com/shopgate/pwa/pull/399) Improved button appearance on small iOS devices ([@fkloes](https://github.com/fkloes))
+* [#401](https://github.com/shopgate/pwa/pull/401) Updated conductor to 1.0.0-beta.45 ([@richardgorman](https://github.com/richardgorman))
+* [#392](https://github.com/shopgate/pwa/pull/392) Refactored toggling of the progress bar within the app bars ([@fkloes](https://github.com/fkloes))
+* [#396](https://github.com/shopgate/pwa/pull/396) Image widget now hides when set to unpublished ([@richardgorman](https://github.com/richardgorman))
+* [#395](https://github.com/shopgate/pwa/pull/395) Fixed a bug that caused broken product pages ([@fkloes](https://github.com/fkloes))
+* [#388](https://github.com/shopgate/pwa/pull/388) Added flushTab option for legacy links within the handleLinks helper ([@fkloes](https://github.com/fkloes))
+* [#391](https://github.com/shopgate/pwa/pull/391) Tapping on blank area now closes Search ([@richardgorman](https://github.com/richardgorman))
+* [#385](https://github.com/shopgate/pwa/pull/385) Reverted styling changes to SnackBar ([@richardgorman](https://github.com/richardgorman))
+* [#384](https://github.com/shopgate/pwa/pull/384) Corrected an issue where the action of stacked toast messages was incorrect ([@richardgorman](https://github.com/richardgorman))
+* [#377](https://github.com/shopgate/pwa/pull/377) Removed unnecessary white space below routes ([@richardgorman](https://github.com/richardgorman))
+* [#382](https://github.com/shopgate/pwa/pull/382) Corrected a bug that prevented filter attributes from being selected ([@richardgorman](https://github.com/richardgorman))
+* [#383](https://github.com/shopgate/pwa/pull/383) Characteristic button text is now aligned on iOS ([@richardgorman](https://github.com/richardgorman))
+* [#372](https://github.com/shopgate/pwa/pull/372) Fixed an inAppBrowser issue where previous opened pages got visible again ([@fkloes](https://github.com/fkloes))
+* [#378](https://github.com/shopgate/pwa/pull/378) Corrected a bug where child product prices were not updating ([@richardgorman](https://github.com/richardgorman))
+* [#379](https://github.com/shopgate/pwa/pull/379) Added the guest registration link to the legacy link list ([@fkloes](https://github.com/fkloes))
+* [#375](https://github.com/shopgate/pwa/pull/375) Correct bug where products could not be sorted due to wrong navigation location ([@richardgorman](https://github.com/richardgorman))
+* [#376](https://github.com/shopgate/pwa/pull/376) Corrected a bug where setting a filter slider to its original value was considered a change. ([@richardgorman](https://github.com/richardgorman))
+* [#374](https://github.com/shopgate/pwa/pull/374) Forced the search input field to reset ([@richardgorman](https://github.com/richardgorman))
+* [#373](https://github.com/shopgate/pwa/pull/373) Corrected a bug where the MessageBar would shrink inside a f… ([@richardgorman](https://github.com/richardgorman))
+* [#367](https://github.com/shopgate/pwa/pull/367) Fixed product list updates when filters where applied or changed ([@fkloes](https://github.com/fkloes))
+* [#365](https://github.com/shopgate/pwa/pull/365) Corrected issue with native modals and images on iOS ([@richardgorman](https://github.com/richardgorman))
+* [#364](https://github.com/shopgate/pwa/pull/364) Corrected a visual bug caused by Safari 10.3 bug ([@richardgorman](https://github.com/richardgorman))
+* [#353](https://github.com/shopgate/pwa/pull/353) Fixed an issue where the page content was overlapped by footer components ([@fkloes](https://github.com/fkloes))
+* [#348](https://github.com/shopgate/pwa/pull/348) Added AppBar to product gallery to be able to go back ([@reneeichhorn](https://github.com/reneeichhorn))
+* [#358](https://github.com/shopgate/pwa/pull/358) iOS widget headline styling is now consistent ([@richardgorman](https://github.com/richardgorman))
+* [#360](https://github.com/shopgate/pwa/pull/360) AppBar is now rendered outside of the scrollable content ([@richardgorman](https://github.com/richardgorman))
+* [#354](https://github.com/shopgate/pwa/pull/354) Removed inline scroll polyfill in favour of the npm package ([@richardgorman](https://github.com/richardgorman))
+* [#361](https://github.com/shopgate/pwa/pull/361) Corrected visual bugs inside GMD ([@richardgorman](https://github.com/richardgorman))
+* [#357](https://github.com/shopgate/pwa/pull/357) AddToCartBar is now rendered outside of the page content ([@richardgorman](https://github.com/richardgorman))
+* [#349](https://github.com/shopgate/pwa/pull/349) Improved search suggestions on iOS and GMD theme ([@fkloes](https://github.com/fkloes))
+* [#346](https://github.com/shopgate/pwa/pull/346) Changed Viewport to split TabBar and content into 2 sections ([@richardgorman](https://github.com/richardgorman))
+* [#321](https://github.com/shopgate/pwa/pull/321) The store is not re-hydrated after the initial state was already set. ([@devbucket](https://github.com/devbucket))
+* [#318](https://github.com/shopgate/pwa/pull/318) Filters are now taken from the action when requesting ([@richardgorman](https://github.com/richardgorman))
+* [#320](https://github.com/shopgate/pwa/pull/320) Products are now requested with the exact price range from the filters ([@fkloes](https://github.com/fkloes))
+* [#316](https://github.com/shopgate/pwa/pull/316) Client Information now displays correctly inside NavDrawer ([@richardgorman](https://github.com/richardgorman))
+* [#314](https://github.com/shopgate/pwa/pull/314) Review props are not causing unnecessary updates in the component. ([@devbucket](https://github.com/devbucket))
+* [#307](https://github.com/shopgate/pwa/pull/307) User is shown a white page when navigating ([@richardgorman](https://github.com/richardgorman))
+* [#312](https://github.com/shopgate/pwa/pull/312) The checkout bar is only disabled once when the cart is busy. ([@devbucket](https://github.com/devbucket))
+* [#311](https://github.com/shopgate/pwa/pull/311) Sorting does not request products ([@richardgorman](https://github.com/richardgorman))
+* [#308](https://github.com/shopgate/pwa/pull/308) Overlapping selected filters are cut off by an ellipsis on the filter page. ([@devbucket](https://github.com/devbucket))
+* [#306](https://github.com/shopgate/pwa/pull/306) Fixed handling of deeplinks and push messages ([@fkloes](https://github.com/fkloes))
+* [#303](https://github.com/shopgate/pwa/pull/303) Fixed filter attribute deselection from within the filters page ([@fkloes](https://github.com/fkloes))
+* [#271](https://github.com/shopgate/pwa/pull/271) PWA-764: Migrate pages tracking ([@fkloes](https://github.com/fkloes))
+* [#258](https://github.com/shopgate/pwa/pull/258) PWA-970 Added new category selectors. Converted list component to be … ([@richardgorman](https://github.com/richardgorman))
+* [#253](https://github.com/shopgate/pwa/pull/253) PWA-959 remove redux props ([@devbucket](https://github.com/devbucket))
+* [#244](https://github.com/shopgate/pwa/pull/244) PWA-875: Implement dynamic redirects ([@fkloes](https://github.com/fkloes))
+* [#230](https://github.com/shopgate/pwa/pull/230) PWA-813: Improved product related selectors ([@fkloes](https://github.com/fkloes))
+* [#207](https://github.com/shopgate/pwa/pull/207) PWA-683 fix favorites route ([@richardgorman](https://github.com/richardgorman))
 
 
+## [Changelog for deprecated PWA versions before v6.0.0](https://github.com/shopgate/pwa/blob/v5.X/CHANGELOG.md)
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+
+## [Changelog for deprecated PWA versions before v5.0.0](https://github.com/shopgate/theme-gmd/blob/v4.3.0/CHANGELOG.md)
