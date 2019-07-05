@@ -355,7 +355,7 @@ define build-changelog
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
 		touch CHANGELOG.md;
-		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --release-name="$(RELEASE_VERSION)" --tagFrom=v5 --tagTo=HEAD --appendPreviousChangelog=true > CHANGELOG_NEW.md;
+		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --release-name="$(RELEASE_VERSION)" --tagTo=HEAD --appendPreviousChangelog=true > CHANGELOG_NEW.md;
 		mv CHANGELOG_NEW.md CHANGELOG.md;
 		$(foreach theme, $(THEMES), cp CHANGELOG.md themes/$(theme)/CHANGELOG.md;)
 		# Push the new changelog to GitHub (into the STABLE release branch)
