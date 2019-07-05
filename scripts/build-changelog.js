@@ -89,25 +89,25 @@ let appendPreviousChangelog = true;
 /**
  * Parses a version into its components without prerelease information.
  * @param {string} v The version to be parsed
- * @return {{sub: number, major: number, minor: number}}
+ * @return {{major: number, minor: number, patch: number}}
  */
 function parseVersion(v) {
   const [
     , // Full match of no interest.
     major = null,
-    sub = null,
     minor = null,
+    patch = null,
   ] = /^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-.*)?$/.exec(v);
-  if (major === null || sub === null || minor === null) {
+  if (major === null || minor === null || patch === null) {
     const err = new Error(`Invalid version string (${v})!`);
     logger.error(err);
     throw err;
   }
 
   return {
-    major,
-    sub,
-    minor,
+    major: major !== null ? parseInt(major) : null,
+    minor: minor !== null ? parseInt(minor) : null,
+    patch: patch !== null ? parseInt(patch) : null,
   };
 }
 
@@ -117,6 +117,8 @@ if (!argv[releaseNameParam] || argv[releaseNameParam] === 0) {
   throw err;
 }
 
+const nextVersion = parseVersion(argv[releaseNameParam]);
+
 if (argv.tagFrom && argv.tagFrom !== 0) {
   ({ tagFrom } = argv);
 }
@@ -125,9 +127,28 @@ if (argv.tagTo && argv.tagTo !== 0) {
   ({ tagTo } = argv);
 }
 
-if (tagTo.toUpperCase() !== 'HEAD' && tagTo.toUpperCase().startsWith('v')
-    && argv.tagFrom && argv.tagFrom !== 0 && tagFrom === 'v') {
-  tagFrom = tagTo.substr(0, 3);
+if ((!argv.tagFrom || argv.tagFrom === 0) && tagFrom === 'v') {
+  // Try to detect previous tag: Cut off pre-release bits and split into version components
+  // -> use "tagTo" param if it's set, take release version otherwise
+  let { major, minor, patch } = tagTo.toLowerCase() === 'head' ? nextVersion : parseVersion(tagTo);
+
+  // If there was no patch before then a previous minor must exist (except on major update)
+  if (patch === 0) {
+    minor--;
+  }
+  // On major version changes get the latest minor number of the previous major version
+  if (minor < 0) {
+    minor = 0;
+    major--;
+    if (major < 0) {
+      major = 0;
+    }
+    // limit search to latest previous major patch version
+    tagFrom = `v${major}.`;
+  } else {
+    // limit search to latest previous minor patch version
+    tagFrom = `v${major}.${minor}.`;
+  }
 }
 
 if (argv.appendPreviousChangelog === 'false') {
@@ -181,8 +202,8 @@ class Changelog extends LernaChangelog {
       // Keep higher and equal versions
       const cur = parseVersion(release.name);
       return compareVersions(
-        `${cur.major}.${cur.sub}.${cur.minor}`,
-        `${min.major}.${min.sub}.${min.minor}`
+        `${cur.major}.${cur.minor}.${cur.patch}`,
+        `${min.major}.${min.minor}.${min.patch}`
       ) >= 0;
     });
   }
@@ -197,10 +218,9 @@ async function run() {
     const { stdout } = // get last filtered tag, sorted by version numbers in ascending order
       await exec(`git tag | grep '${tagFrom}' | grep -Ev '-' | sort -bt. -k1,1 -k2,2n -k3,3n -k4,4n -k5,5n | tail -1`);
     const prevTag = stdout.trim();
-    const nextVersion = parseVersion(argv[releaseNameParam]);
 
     // Normalize the given "release-name" for the tile (strip out pre-release information).
-    const nextVersionString = `v${nextVersion.major}.${nextVersion.sub}.${nextVersion.minor}`;
+    const nextVersionString = `v${nextVersion.major}.${nextVersion.minor}.${nextVersion.patch}`;
 
     // Read previous changelog to extend it (remove ending line feeds -> added back in later)
     const changelogContent = fs.readFileSync('CHANGELOG.md', { encoding: 'utf8' }).trimRight();
@@ -235,7 +255,7 @@ async function run() {
     if (latestChanges.trim().length > 0) {
       newChangelog = newChangelog.replace(
         '# Changelog\n',
-        `# Changelog\n\n${latestChanges.trim()}\n`
+        `# Changelog\n\n${latestChanges.trim()}\n\n`
       );
       if (tagTo !== 'HEAD') {
         newChangelog = newChangelog.replace(
