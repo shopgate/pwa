@@ -9,8 +9,8 @@ import styles from '../../style';
  * @returns {JSX}
  */
 const Tier = ({ tier, price }) => {
-  // Skip tier if tier price is equal the product price
-  if (tier.unitPrice === price.totalPrice) {
+  // Skip tier with quantity 1
+  if (tier.from <= 1) {
     return null;
   }
 
