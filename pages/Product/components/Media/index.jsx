@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import { MediaSlider } from '@shopgate/engage/product';
 import { ProductContext } from '../../context';
 import ImageSlider from './components/ImageSlider';
+import MediaSlider from './components/MediaSlider';
 
 /**
  * The product media component.
