@@ -117,6 +117,8 @@ if (!argv[releaseNameParam] || argv[releaseNameParam] === 0) {
   throw err;
 }
 
+const nextVersion = parseVersion(argv[releaseNameParam]);
+
 if (argv.tagFrom && argv.tagFrom !== 0) {
   ({ tagFrom } = argv);
 }
@@ -125,17 +127,16 @@ if (argv.tagTo && argv.tagTo !== 0) {
   ({ tagTo } = argv);
 }
 
-if (tagTo.toLowerCase() !== 'head' && tagTo.toLowerCase().startsWith('v')
-    && (!argv.tagFrom || argv.tagFrom !== 0) && tagFrom === 'v') {
-  tagFrom = tagTo.substr(0, 3);
+if ((!argv.tagFrom || argv.tagFrom === 0) && tagFrom === 'v') {
   // Try to detect previous tag: Cut off pre-release bits and split into version components
-  let { major, minor, patch } = parseVersion(tagTo);
+  // -> use "tagTo" param if it's set, take release version otherwise
+  let { major, minor, patch } = tagTo.toLowerCase() === 'head' ? nextVersion : parseVersion(tagTo);
 
   // If there was no patch before then a previous minor must exist (except on major update)
   if (patch === 0) {
     minor--;
   }
-  // On m
+  // On major version changes get the latest minor number of the previous major version
   if (minor < 0) {
     minor = 0;
     major--;
@@ -217,8 +218,6 @@ async function run() {
     const { stdout } = // get last filtered tag, sorted by version numbers in ascending order
       await exec(`git tag | grep '${tagFrom}' | grep -Ev '-' | sort -bt. -k1,1 -k2,2n -k3,3n -k4,4n -k5,5n | tail -1`);
     const prevTag = stdout.trim();
-
-    const nextVersion = parseVersion(argv[releaseNameParam]);
 
     // Normalize the given "release-name" for the tile (strip out pre-release information).
     const nextVersionString = `v${nextVersion.major}.${nextVersion.minor}.${nextVersion.patch}`;
