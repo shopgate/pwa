@@ -1,5 +1,38 @@
 # Changelog
 
+## [v6.2.1](https://github.com/shopgate/pwa/compare/v6.2.0...v6.2.1) (2019-03-07)
+
+#### :bug: Bug Fix
+* [#553](https://github.com/shopgate/pwa/pull/553) Fixed locales in theme-gmd and theme-ios11 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#552](https://github.com/shopgate/pwa/pull/552) The pwa-benchmark npm package is now published in transpiled state. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
+## [v6.2.0](https://github.com/shopgate/pwa/compare/v6.1.1...v6.2.0) (2019-02-27)
+
+#### :rocket: Enhancement
+* [#536](https://github.com/shopgate/pwa/pull/536) Check issues of Browser Connector with Cypress Tests ([@alexbridge](https://github.com/alexbridge))
+* [#538](https://github.com/shopgate/pwa/pull/538) Added missing props to the ProductCard from the themeApi ([@fkloes](https://github.com/fkloes))
+* [#530](https://github.com/shopgate/pwa/pull/530) Implemented the NestedCategoryFilterWidget ([@fkloes](https://github.com/fkloes))
+* [#525](https://github.com/shopgate/pwa/pull/525) Added additional translations for user-privacy extension ([@fkloes](https://github.com/fkloes))
+* [#514](https://github.com/shopgate/pwa/pull/514) Force refresh product stock information after checkout ([@alexbridge](https://github.com/alexbridge))
+* [#511](https://github.com/shopgate/pwa/pull/511) Display text input options on PDP ([@alexbridge](https://github.com/alexbridge))
+* [#498](https://github.com/shopgate/pwa/pull/498) Sort order param for get highlighted products action is added ([@alexbridge](https://github.com/alexbridge))
+* [#508](https://github.com/shopgate/pwa/pull/508) Add ellipsis for product properties in a cart view ([@alexbridge](https://github.com/alexbridge))
+* [#492](https://github.com/shopgate/pwa/pull/492) Added ProductSlider to the ThemeContext ([@richardgorman](https://github.com/richardgorman))
+* [#490](https://github.com/shopgate/pwa/pull/490) Added ProductCard to ThemeAPI ([@richardgorman](https://github.com/richardgorman))
+* [#433](https://github.com/shopgate/pwa/pull/433) Added inset padding to Material AppBar. AppBar in GMD now renders outside of View content ([@richardgorman](https://github.com/richardgorman))
+
+#### :bug: Bug Fix
+* [#547](https://github.com/shopgate/pwa/pull/547) Fixed broken disabled characteristic sheet items on iOS ([@fkloes](https://github.com/fkloes))
+* [#540](https://github.com/shopgate/pwa/pull/540) Wrong page tracked when user comes back after checkout ([@alexbridge](https://github.com/alexbridge))
+* [#539](https://github.com/shopgate/pwa/pull/539) The AppBar in iOS is only rendered when its target container has mounted ([@devbucket](https://github.com/devbucket))
+* [#538](https://github.com/shopgate/pwa/pull/538) Added missing props to the ProductCard from the themeApi ([@fkloes](https://github.com/fkloes))
+* [#533](https://github.com/shopgate/pwa/pull/533) Improve commerce/product/getBaseProductId selector ([@alexbridge](https://github.com/alexbridge))
+* [#528](https://github.com/shopgate/pwa/pull/528) Enable parent product cart button when it has variants to select ([@alexbridge](https://github.com/alexbridge))
+* [#526](https://github.com/shopgate/pwa/pull/526) Fixed the possibility of adding spaces to the end of a search term  ([@fkloes](https://github.com/fkloes))
+* [#522](https://github.com/shopgate/pwa/pull/522) Fix White page on selecting certain input option (select option) ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.1.4](https://github.com/shopgate/pwa/compare/v6.1.3...v6.1.4) (2019-07-05)
 
 #### :bug: Bug Fix
