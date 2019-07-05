@@ -1,5 +1,25 @@
 # Changelog
 
+## [v6.4.4](https://github.com/shopgate/pwa/compare/v6.4.3...v6.4.4) (2019-07-05)
+
+#### :bug: Bug Fix
+* [#750](https://github.com/shopgate/pwa/pull/750) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#743](https://github.com/shopgate/pwa/pull/743) Start page renders immediately when React is ready. ([@sznowicki](https://github.com/sznowicki))
+* [#741](https://github.com/shopgate/pwa/pull/741) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#729](https://github.com/shopgate/pwa/pull/729) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.4.3](https://github.com/shopgate/pwa/compare/v6.4.2...v6.4.3) (2019-06-03)
+
+
+## [v6.4.2](https://github.com/shopgate/pwa/compare/v6.4.1...v6.4.2) (2019-05-16)
+
+#### :bug: Bug Fix
+* [#652](https://github.com/shopgate/pwa/pull/652) Fixed broken handling of channel urls ([@fkloes](https://github.com/fkloes))
+* [#654](https://github.com/shopgate/pwa/pull/654) Fixed an issue where product sliders widgets didn't update on state updates ([@fkloes](https://github.com/fkloes))
+* [#651](https://github.com/shopgate/pwa/pull/651) Sliders now render correctly when the slides are updated ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.4.1](https://github.com/shopgate/pwa/compare/v6.4.0...v6.4.1) (2019-04-24)
 
 #### :bug: Bug Fix
@@ -36,9 +56,6 @@
 
 #### :nail_care: Polish
 * [#586](https://github.com/shopgate/pwa/pull/586) Added changelog starting from PWA version 6.0.0 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
-
-
-## [v6.3.3](https://github.com/shopgate/pwa/compare/v6.3.2...v6.3.3) (2019-05-05)
 
 
 ## [v6.3.2](https://github.com/shopgate/pwa/compare/v6.3.1...v6.3.2) (2019-05-05)
