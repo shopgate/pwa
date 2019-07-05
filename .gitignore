@@ -7,6 +7,8 @@
 .idea/
 jsconfig.json
 
+.changelog/
+
 # Logs
 logs
 *.log
@@ -47,9 +49,9 @@ coverage/
 public/
 pipelines/
 trustedPipelines/
-extensions/
-!extensions/@shopgate-product-reviews
+extensions/*
 !extensions/@shopgate-tracking-ga-native
+!extensions/@shopgate-product-reviews
 !extensions/@shopgate-user-privacy
 themes/*/config/
 .nyc_output

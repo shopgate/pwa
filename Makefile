@@ -79,7 +79,7 @@ else
 	PRE_RELEASE = true
 endif
 
-# Causes a STABLE release not to update master if not set to true
+# Causes a STABLE release not to update master if not set to false
 UPDATE_MASTER = true
 
 # This causes the Github-API to create draft releases only, without creating tags
@@ -161,7 +161,7 @@ fix-remote:
 		git merge -s ours --no-commit --allow-unrelated-histories $(REMOTE)/master
 
 setup-frontend-with-current-ip:
-		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}')",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "cheap-module-eval-source-map"\n}\n' > ./.sgcloud/frontend.json;
+		echo '{\n  "ip": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}' | head -1)",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
 # Open cypress UI for GMD theme
@@ -174,17 +174,17 @@ e2e-ios11:
 
 # Run GMD legacy tests
 e2e-gmd-legacy:
-	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
+	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/consistency/legacy.js,themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
 
 # Run IOS legacy tests
 e2e-ios11-legacy:
 	npx cypress run -P ./themes/theme-ios11/e2e -s 'themes/theme-ios11/e2e/integration/specFiles/consistency/legacy.js,themes/theme-ios11/e2e/integration/specFiles/functional/legacy.js'
 
 e2e-checkout:
-		cd themes/theme-gmd && yarn run e2e:checkout;
+	cd themes/theme-gmd && yarn run e2e:checkout;
 
 e2e-user:
-		cd themes/theme-gmd && yarn run e2e:user;
+	cd themes/theme-gmd && yarn run e2e:user;
 
 e2e-install:
 	npm i --no-save --no-package-lock cypress symlink-dir
@@ -257,7 +257,7 @@ define update-pwa-versions
 		@echo "======================================================================"
 		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
-		lerna publish --skip-npm --skip-git --repo-version $(patsubst v%,%,$(strip $(RELEASE_NAME))) --force-publish --yes --exact;
+		lerna publish --skip-npm --skip-git --repo-version $(RELEASE_VERSION) --force-publish --yes --exact;
 
 		# Checking version
 		@if [ "$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')" != "$(RELEASE_VERSION)" ]; \
@@ -352,11 +352,8 @@ publish-to-github:
 		git add -A && git commit -m "Released $(RELEASE_VERSION)";
 		# Update remotes and push changes into dedicated release branches
 		git fetch --all;
+		$(call build-changelog)
 		git push origin "releases/$(RELEASE_NAME)";
-ifeq ("$(STABLE)","true")
-		# STABLE RELEASE
-		@# $ (call build-changelog)
-endif
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		# UPDATING MASTER FOR STABLE RELEASE
 		$(call push-subtrees-to-git, master)
@@ -367,7 +364,7 @@ ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
 		git push origin "releases/$(RELEASE_NAME)":master;
 		git status;
 else
-		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branches)
+		# PRE-RELEASE (alpha, beta, rc) or STABLE (without changing master branch)
 		$(call push-subtrees-to-git, releases/$(RELEASE_NAME))
 endif
 
@@ -375,29 +372,14 @@ define build-changelog
 		@echo "======================================================================"
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
-		# Update develop branch, first
-		git checkout origin/develop && git checkout -b develop;
-		git merge "releases/$(RELEASE_NAME)" --no-commit;
-		git status;
-		-git add . && git commit -m "Updating `develop` branch with stable release '$(RELEASE_NAME)'";
-		-git push origin develop;
-		git status;
-		git reset --hard;
-		git checkout "releases/$(RELEASE_NAME)";
-		git status;
-		# Create a dummy tag for the changelog creation tool
-		git tag "$(RELEASE_NAME)" && git push origin "releases/$(RELEASE_NAME)" --tags;
-		github_changelog_generator shopgate/pwa --token $(GITHUB_AUTH_TOKEN) --header-label "# Changelog" --exclude-tags-regex ".*\b(alpha|beta|rc)\b\.+\d{1,}" --bugs-label ":bug: **Fixed bugs:**" --pr-label ":nail_care: **Others:**" --enhancement-label ":rocket: **Enhancements:**" --release-branch "develop" --no-unreleased --no-compare-link --issue-line-labels "All" --since-tag "v2.8.1";
-		# Remove the dummy tag again, so it can be properly created with the changelog file inside
-		git push -d origin "refs/tags/$(RELEASE_NAME)";
-		git tag -d "$(RELEASE_NAME)";
-		git fetch origin;
+		touch CHANGELOG.md;
+		GITHUB_AUTH=$(GITHUB_AUTH_TOKEN) node ./scripts/build-changelog.js --release-name="$(RELEASE_VERSION)" --tagTo=HEAD --appendPreviousChangelog=true > CHANGELOG_NEW.md;
+		mv CHANGELOG_NEW.md CHANGELOG.md;
+		$(foreach theme, $(THEMES), cp CHANGELOG.md themes/$(theme)/CHANGELOG.md;)
 		# Push the new changelog to GitHub (into the STABLE release branch)
-		git add "CHANGELOG.md";
-		git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
-		git push origin "releases/$(RELEASE_NAME)" --tags;
-		# Recreate the tag with the changelog inside and push it to remote (origin)
-		git tag "$(RELEASE_NAME)" && git push origin "refs/tags/$(RELEASE_NAME)";
+		git add CHANGELOG.md;
+		$(foreach theme, $(THEMES), git add themes/$(theme)/CHANGELOG.md;)
+		-git commit -m "Created changelog for version '$(RELEASE_NAME)'.";
 
 endef
 
