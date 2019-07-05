@@ -83,5 +83,19 @@ describe('MediaProvider', () => {
       expect(container.getAttribute('width')).toBeNull();
       expect(container.closest('div').className).toBe(styles);
     });
+
+    it('should not responsify already responsive element', () => {
+      const dom = document.createElement('body');
+      dom.innerHTML = '<div style="padding:52.71% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/326436012?autoplay=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>';
+      const container = dom.querySelectorAll('iframe')[0];
+
+      const instance = new MediaProvider();
+      instance.responsify(container);
+
+      expect(dom).toMatchSnapshot();
+      expect(container.getAttribute('height')).toBeNull();
+      expect(container.getAttribute('width')).toBeNull();
+      expect(container.closest('div').className).toBe(styles);
+    });
   });
 });
