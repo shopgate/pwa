@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-benchmark",
-  "version": "5.11.1",
+  "version": "5.11.2-rc.3",
   "description": "Benchmark suite for PWA",
   "author": "Rene Eichhorn",
   "main": "index.js",
