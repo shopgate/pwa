@@ -6,7 +6,7 @@ export FORCE_COLOR = true
 # -------
 # If LIBRARIES, EXTENSIONS or UTILS is extended and the npm packacke should not be prefixed with
 # "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
-LIBRARIES = engage commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
+LIBRARIES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
 TRANSPILED_UTILS = benchmark
 UTILS = eslint-config unit-tests e2e
