@@ -189,45 +189,6 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
-"@shopgate/pwa-benchmark@6.6.0-rc.4":
-  version "6.6.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-benchmark/-/pwa-benchmark-6.6.0-rc.4.tgz#6b959637d91a17c600901ec158394e0a9ed253df"
-  integrity sha512-9fk3433otPriFsJSnXlfoayNA88SgkkhIxJrY/h5oGMF8VJv68Ro+nW33pdDEsNqOlkpPDRPX+fs1NsCBwy14w==
-
-"@shopgate/pwa-common@6.6.0-rc.4":
-  version "6.6.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-6.6.0-rc.4.tgz#93b8df91986c3605264bd5549a01e183b7aab341"
-  integrity sha512-1k+zOT6F8zgvI/akMsJqHJEm8/bvA5Xj6OoFTDVAGFtIC08xiJKA4ZJnig0M6WURJw5dMNOO7amMnb5w/3NTuQ==
-  dependencies:
-    "@sentry/browser" "^4.6.3"
-    "@shopgate/pwa-benchmark" "6.6.0-rc.4"
-    "@virtuous/conductor" "~2.3.0"
-    "@virtuous/react-conductor" "~2.3.0"
-    "@virtuous/redux-persister" "1.1.0-beta.7"
-    classnames "^2.2.5"
-    crypto-js "3.1.9-1"
-    glamor "^2.20.40"
-    gsap "^1.20.2"
-    history "^4.7.2"
-    intl-messageformat "^2.1.0"
-    jsdom "11.1.0"
-    mobile-detect "^1.4.3"
-    path-match "^1.2.4"
-    react-dotdotdot "^1.1.0"
-    react-id-swiper "~2.1.0"
-    react-inline-transition-group "^2.2.1"
-    react-portal "^3.1.0"
-    react-redux "^5.0.6"
-    recompose "^0.26.0"
-    redux "^4.0.1"
-    redux-devtools-extension "^2.13.2"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.2.0"
-    reselect "^3.0.1"
-    rxjs "^5.4.3"
-    swiper "~4.5.0"
-    url-search-params "^0.10.0"
-
 "@types/node@*":
   version "11.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
@@ -7248,10 +7209,10 @@ react-dom@~16.8.4:
     prop-types "^15.6.2"
     scheduler "^0.13.4"
 
-react-dotdotdot@^1.1.0:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/react-dotdotdot/-/react-dotdotdot-1.2.3.tgz#45bb264153cee73471f55c51c8d1542f4880a34f"
-  integrity sha512-lYCHCegi76+kqmgqkii/ma2QqsfA1Slf5jTJYWKgnT3uz8EkPaO9hRDPMDEsDHEBua2qOXSxWCHxVf4N740W1w==
+react-dotdotdot@~1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-dotdotdot/-/react-dotdotdot-1.3.0.tgz#a8208bcc819019241dbfbf45cc7440d0bf954e7b"
+  integrity sha512-yW/Dyfjv8B3FSMPEQ9JAt3o0DGacxcmbzb7UPj1NnIK9Nh9TzCNDZpOLZ6U/KGRHjFruQi3PokmhTj7XpyaBSA==
   dependencies:
     object.pick "^1.3.0"
 
