@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
+import React, { useState, useEffect } from 'react';
 import ImageComponent from '@shopgate/pwa-common/components/Image';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { PlaceholderIcon, SurroundPortals } from '../../../components';
+import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import { buildMediaImageUrl } from './helpers';
 import { defaultProps, propTypes } from './props';
-import { placeholderContainer, placeholderContent, placeholderIcon } from './style';
+import MediaPlaceholder from './MediaPlaceholder';
 
 const { colors } = themeConfig;
 
@@ -15,16 +14,14 @@ const { colors } = themeConfig;
  * @returns {JSX}
  */
 const MediaImage = ({ url, altText, className }) => {
-  const [placeholder, showPlaceholder] = useState(false);
+  const [placeholder, showPlaceholder] = useState(!url);
+
+  useEffect(() => showPlaceholder(!url), [url]);
 
   if (placeholder) {
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
-        <div className={classnames(placeholderContainer, className)}>
-          <div className={placeholderContent} data-test-id="placeHolder">
-            <PlaceholderIcon className={placeholderIcon} />
-          </div>
-        </div>
+        <MediaPlaceholder className={className} />
       </SurroundPortals>
     );
   }

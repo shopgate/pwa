@@ -1,7 +1,6 @@
 import React from 'react';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '@shopgate/pwa-common-commerce/product';
-import { NullComponent } from '../../../components';
 import { PORTAL_PRODUCT_MEDIA } from '../../../components/constants';
 import FeaturedImage from './FeaturedImage';
 import FeaturedVideo from './FeaturedVideo';
@@ -17,7 +16,7 @@ const types = {
  * @returns {JSX}
  */
 const FeaturedMedia = ({ type, url, altText }) => {
-  const TypeRenderer = types[type] || NullComponent;
+  const TypeRenderer = types[type] || FeaturedImage;
 
   return (
     <SurroundPortals portalName={PORTAL_PRODUCT_MEDIA} >
