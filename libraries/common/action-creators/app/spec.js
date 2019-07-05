@@ -7,6 +7,7 @@ import {
   DID_REGISTER_LINK_EVENTS,
   OPEN_DEEP_LINK,
   OPEN_PUSH_NOTIFICATION,
+  OPEN_UNIVERSAL_LINK,
 } from '../../constants/ActionTypes';
 import {
   appWillStart,
@@ -17,6 +18,7 @@ import {
   didRegisterLinkEvents,
   openDeepLink,
   openPushNotification,
+  openUniversalLink,
 } from './index';
 
 const dataMock = { some: 'data' };
@@ -98,5 +100,18 @@ describe('Action Creators: app', () => {
       };
       expect(openPushNotification(notificationId)).toEqual(expected);
     });
+  });
+
+  describe('openUniversalLink()', () => {
+    const expected = {
+      type: OPEN_UNIVERSAL_LINK,
+      payload: {
+        link: 'https://testshop.shopgate.com/item/313131313132',
+        wasOpenedFromSearchIndex: true,
+        linkSerial: 1003,
+      },
+    };
+
+    expect(openUniversalLink(expected.payload)).toEqual(expected);
   });
 });
