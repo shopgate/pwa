@@ -7097,7 +7097,7 @@ react-dom@~16.8.4:
     prop-types "^15.6.2"
     scheduler "^0.13.4"
 
-react-dotdotdot@^1.1.0:
+react-dotdotdot@1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/react-dotdotdot/-/react-dotdotdot-1.2.3.tgz#45bb264153cee73471f55c51c8d1542f4880a34f"
   integrity sha512-lYCHCegi76+kqmgqkii/ma2QqsfA1Slf5jTJYWKgnT3uz8EkPaO9hRDPMDEsDHEBua2qOXSxWCHxVf4N740W1w==

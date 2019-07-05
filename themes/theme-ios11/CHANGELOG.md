@@ -1,13 +1,5 @@
 # Changelog
 
-## [v6.4.2](https://github.com/shopgate/pwa/compare/...v6.4.2) (2019-05-16)
-
-#### :bug: Bug Fix
-* [#652](https://github.com/shopgate/pwa/pull/652) Fixed broken handling of channel urls ([@fkloes](https://github.com/fkloes))
-* [#654](https://github.com/shopgate/pwa/pull/654) Fixed an issue where product sliders widgets didn't update on state updates ([@fkloes](https://github.com/fkloes))
-* [#651](https://github.com/shopgate/pwa/pull/651) Sliders now render correctly when the slides are updated ([@fkloes](https://github.com/fkloes))
-
-
 ## [v6.4.1](https://github.com/shopgate/pwa/compare/v6.4.0...v6.4.1) (2019-04-24)
 
 #### :bug: Bug Fix
@@ -44,6 +36,9 @@
 
 #### :nail_care: Polish
 * [#586](https://github.com/shopgate/pwa/pull/586) Added changelog starting from PWA version 6.0.0 ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
+## [v6.3.3](https://github.com/shopgate/pwa/compare/v6.3.2...v6.3.3) (2019-05-05)
 
 
 ## [v6.3.2](https://github.com/shopgate/pwa/compare/v6.3.1...v6.3.2) (2019-05-05)
@@ -359,7 +354,7 @@
 * [#207](https://github.com/shopgate/pwa/pull/207) PWA-683 fix favorites route ([@richardgorman](https://github.com/richardgorman))
 
 
-## [Changelog for versions before v6.0.0](https://github.com/shopgate/pwa/blob/v5.X/CHANGELOG.md)
+## [Changelog for deprecated PWA versions before v6.0.0](https://github.com/shopgate/pwa/blob/v5.X/CHANGELOG.md)
 
 
-## [Changelog for versions before v5.0.0](https://github.com/shopgate/theme-gmd/blob/v4.3.0/CHANGELOG.md)
+## [Changelog for deprecated PWA versions before v5.0.0](https://github.com/shopgate/theme-gmd/blob/v4.3.0/CHANGELOG.md)
