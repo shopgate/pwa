@@ -7,7 +7,9 @@
 * [#741](https://github.com/shopgate/pwa/pull/741) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
 * [#729](https://github.com/shopgate/pwa/pull/729) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
 
+
 ## [v6.1.3](https://github.com/shopgate/pwa/compare/v6.1.2...v6.1.3) (2019-06-02)
+
 
 ## [v6.1.2](https://github.com/shopgate/pwa/compare/v6.1.1...v6.1.2) (2019-06-02)
 
