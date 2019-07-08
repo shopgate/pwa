@@ -61,7 +61,7 @@ export const requestRemoveFavorites = (productId, silent = false) => ({
  * @param {string[]} productIdsToRemove Array of product identifiers
  * @return {Object}
  */
-export const requestAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
+export const requestSyncFavorites = (productIdsToAdd, productIdsToRemove) => ({
   type: REQUEST_SYNC_FAVORITES,
   productIdsToAdd,
   productIdsToRemove,
@@ -73,7 +73,7 @@ export const requestAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemov
  * @param {string[]} productIdsToRemove Array of product identifiers
  * @return {Object}
  */
-export const receiveAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
+export const receiveSyncFavorites = (productIdsToAdd, productIdsToRemove) => ({
   type: RECEIVE_SYNC_FAVORITES,
   productIdsToAdd,
   productIdsToRemove,
@@ -86,7 +86,7 @@ export const receiveAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemov
  * @param {Object} error Error object
  * @return {Object}
  */
-export const errorAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove, error) => ({
+export const errorSyncFavorites = (productIdsToAdd, productIdsToRemove, error) => ({
   type: ERROR_SYNC_FAVORITES,
   productIdsToAdd,
   productIdsToRemove,

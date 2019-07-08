@@ -5,7 +5,7 @@ import fetchFavorites from './fetchFavorites';
 import {
   addFavorites,
   removeFavorites,
-  syncAddRemoveFavorites,
+  dispatchBufferedFavoriteActions,
 } from './toggleFavorites';
 import {
   mockedList,
@@ -184,7 +184,7 @@ describe('Favorites - actions', () => {
         resolve(mockResolveDetector());
       };
       const store = mockStore({});
-      store.dispatch(syncAddRemoveFavorites(mockBufferedActions));
+      store.dispatch(dispatchBufferedFavoriteActions(mockBufferedActions));
       setTimeout(() => {
         expect(mockResolveDetector.mock.calls.length).toEqual(productIds.length);
         expect(store.getActions()).toEqual(expectedActions);
@@ -213,7 +213,7 @@ describe('Favorites - actions', () => {
         resolve(mockResolveDetector());
       };
       const store = mockStore({});
-      store.dispatch(syncAddRemoveFavorites(mockBufferedActions));
+      store.dispatch(dispatchBufferedFavoriteActions(mockBufferedActions));
       setTimeout(() => {
         expect(mockResolveDetector.mock.calls.length).toEqual(productIds.length);
         expect(store.getActions()).toEqual(expectedActions);
@@ -229,11 +229,6 @@ describe('Favorites - actions', () => {
       ];
       const expectedActions = [
         {
-          type: REQUEST_SYNC_FAVORITES,
-          productIdsToAdd: [],
-          productIdsToRemove: [],
-        },
-        {
           type: IDLE_SYNC_FAVORITES,
         },
       ];
@@ -242,7 +237,7 @@ describe('Favorites - actions', () => {
         resolve(mockResolveDetector());
       };
       const store = mockStore({});
-      store.dispatch(syncAddRemoveFavorites(mockBufferedActions));
+      store.dispatch(dispatchBufferedFavoriteActions(mockBufferedActions));
       setTimeout(() => {
         expect(mockResolveDetector.mock.calls.length).toEqual(0);
         expect(store.getActions()).toEqual(expectedActions);
@@ -275,7 +270,7 @@ describe('Favorites - actions', () => {
         resolve(mockResolveDetector());
       };
       const store = mockStore({});
-      store.dispatch(syncAddRemoveFavorites(mockBufferedActions));
+      store.dispatch(dispatchBufferedFavoriteActions(mockBufferedActions));
       setTimeout(() => {
         expect(mockResolveDetector.mock.calls.length)
           .toEqual(productIdsToAdd.length + productIdsToRemove.length);
@@ -308,7 +303,7 @@ describe('Favorites - actions', () => {
         resolve(mockResolveDetector());
       };
       const store = mockStore({});
-      store.dispatch(syncAddRemoveFavorites(mockBufferedActions));
+      store.dispatch(dispatchBufferedFavoriteActions(mockBufferedActions));
       setTimeout(() => {
         expect(mockResolveDetector.mock.calls.length).toEqual(1);
         expect(store.getActions()).toEqual(expectedActions);
@@ -338,7 +333,7 @@ describe('Favorites - actions', () => {
         reject(mockError);
       };
       const store = mockStore({});
-      store.dispatch(syncAddRemoveFavorites(mockBufferedActions));
+      store.dispatch(dispatchBufferedFavoriteActions(mockBufferedActions));
       setTimeout(() => {
         expect(store.getActions()).toEqual(expectedActions);
         done();

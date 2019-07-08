@@ -5,9 +5,9 @@ import * as pipelines from '../constants/Pipelines';
 import {
   requestAddFavorites,
   requestRemoveFavorites,
-  requestAddRemoveFavoritesSync,
-  receiveAddRemoveFavoritesSync,
-  errorAddRemoveFavoritesSync,
+  requestSyncFavorites,
+  receiveSyncFavorites,
+  errorSyncFavorites,
   errorFavorites,
   idleSyncFavorites,
 } from '../action-creators';
@@ -42,7 +42,7 @@ const addFavorites = productId => (dispatch, getState) => {
  * @param {string} productId Product identifier
  * @returns {Promise} PipelineRequest dispatch.
  */
-const syncAddSingleFavorite = productId => (
+const dispatchAddFavorite = productId => (
   new PipelineRequest(pipelines.SHOPGATE_USER_ADD_FAVORITES)
     .setInput({ productId })
     .setRetries(0)
@@ -54,7 +54,7 @@ const syncAddSingleFavorite = productId => (
  * @param {string} productId Product identifier
  * @returns {Promise} PipelineRequest dispatch.
  */
-const syncRemoveSingleFavorite = productId => (
+const dispatchDeleteFavorite = productId => (
   new PipelineRequest(pipelines.SHOPGATE_USER_DELETE_FAVORITES)
     .setInput({ productId })
     .setRetries(0)
@@ -65,7 +65,7 @@ const syncRemoveSingleFavorite = productId => (
  * @param {Object[]} bufferedActions Actions that have been buffered
  * @return {Function}
  */
-const syncAddRemoveFavorites = bufferedActions => (dispatch) => {
+const dispatchBufferedFavoriteActions = bufferedActions => (dispatch) => {
   const uniqueProductIds = [...new Set(bufferedActions
     .filter(action => !!action.productId)
     .map(action => action.productId))];
@@ -91,21 +91,22 @@ const syncAddRemoveFavorites = bufferedActions => (dispatch) => {
     // product id is not added to either productIdsToAdd or productIdsToRemove
     // when there are as many add actions as remove actions
   });
-  dispatch(requestAddRemoveFavoritesSync(productIdsToAdd, productIdsToRemove));
+
   if (productIdsToAdd.length < 1 && productIdsToRemove.length < 1) {
     // since there are no product to add or remove bale out
     dispatch(idleSyncFavorites());
     return;
   }
 
-  const addPromises = productIdsToAdd.map(productId => syncAddSingleFavorite(productId));
+  dispatch(requestSyncFavorites(productIdsToAdd, productIdsToRemove));
+  const addPromises = productIdsToAdd.map(productId => dispatchAddFavorite(productId));
   const removePromises = productIdsToRemove
-    .map(productId => syncRemoveSingleFavorite(productId));
+    .map(productId => dispatchDeleteFavorite(productId));
   Promise.all([...addPromises, ...removePromises])
     .then(() => {
-      dispatch(receiveAddRemoveFavoritesSync(productIdsToAdd, productIdsToRemove));
+      dispatch(receiveSyncFavorites(productIdsToAdd, productIdsToRemove));
     }).catch((error) => {
-      dispatch(errorAddRemoveFavoritesSync(productIdsToAdd, productIdsToRemove, error));
+      dispatch(errorSyncFavorites(productIdsToAdd, productIdsToRemove, error));
     });
 };
 
@@ -136,5 +137,5 @@ const removeFavorites = (productId, withRelatives = false) => (dispatch, getStat
 export {
   addFavorites,
   removeFavorites,
-  syncAddRemoveFavorites,
+  dispatchBufferedFavoriteActions,
 };

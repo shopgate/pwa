@@ -9,7 +9,7 @@ import {
   addRemoveBufferedFavorites$,
 } from '../streams';
 import fetchFavorites from '../actions/fetchFavorites';
-import { syncAddRemoveFavorites } from '../actions/toggleFavorites';
+import { dispatchBufferedFavoriteActions } from '../actions/toggleFavorites';
 import { requestRemoveFavorites } from '../action-creators';
 import { FETCH_FAVORITES_THROTTLE } from '../constants';
 
@@ -75,6 +75,6 @@ export default function favorites(subscribe) {
       ))
       .map(param => param.action);
 
-    dispatch(syncAddRemoveFavorites(bufferedActions));
+    dispatch(dispatchBufferedFavoriteActions(bufferedActions));
   });
 }
