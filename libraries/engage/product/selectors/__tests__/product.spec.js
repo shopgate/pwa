@@ -9,6 +9,7 @@ import {
   makeGetProductEffectivityDates,
   makeGetProductCharacteristics,
 } from '../product';
+import { wrapMemoizedSelector } from '../helpers';
 
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProduct: jest.fn(),
@@ -35,19 +36,6 @@ const mockState = {
     properties: null,
     characteristics: null,
   },
-};
-
-/**
- * Memoization test
- * @param {Function} selector selector
- * @returns {Function}
- */
-const wrapMemoizedSelector = selector => (...args) => {
-  const result = selector(...args);
-  if (selector(...args) !== result) {
-    throw new Error('Memoization check failed.');
-  }
-  return result;
 };
 
 describe('engage > product > selectors', () => {

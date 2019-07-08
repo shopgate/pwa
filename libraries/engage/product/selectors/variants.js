@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import find from 'lodash/find';
-import { getProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/variants';
+import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
 
 /**
  * Creates a selector that retrieves a product by a characteristic.
