@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ImageComponent from '@shopgate/pwa-common/components/Image';
+import Image from '@shopgate/pwa-common/components/Image';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
@@ -29,7 +29,7 @@ const MediaImage = ({ url, altText, className }) => {
   return (
     <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
       <div className={className}>
-        <ImageComponent
+        <Image
           src={buildMediaImageUrl(url)}
           alt={altText}
           className={className}
