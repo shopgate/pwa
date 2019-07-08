@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables, colors } = themeConfig;
+const { variables } = themeConfig;
 
 export const container = css({
   position: 'relative',
@@ -32,16 +32,11 @@ export const gridCard = css({
 }).toString();
 
 export const showMore = css({
-  position: 'absolute',
-  display: 'block',
-  padding: `${variables.gap.xsmall}px ${variables.gap.small * 1.5}px`,
-  top: 0,
-  right: variables.gap.big,
-  fontSize: '0.875rem',
-  lineHeight: 1.1,
-  borderRadius: 4,
-  border: `1px solid ${colors.shade5}`,
-});
+  position: 'absolute !important',
+  top: `-${variables.gap.small / 2}`,
+  right: 0,
+  padding: `${variables.gap.small / 2}px 0 !important`,
+}).toString();
 
 export const sheet = css({
   maxHeight: `calc(100vh - ${variables.navigator.height}px)`,

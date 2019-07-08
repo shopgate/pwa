@@ -58,3 +58,28 @@ export const getRelatedProducts = params => createSelector(
     .filter(id => productsById[id] && productsById[id].productData)
     .map(id => productsById[id].productData)
 );
+
+/**
+ * @param {Object} params The selector parameters.
+ * @param {string} params.productId Product id.
+ * @param {string} params.type Relation type (see constants)
+ * @param {number} params.limit Query limit.
+ * @param {number} params.max The maximum number of products to return
+ * @returns {Function}
+ */
+export const getMaximumRelatedProducts = params => createSelector(
+  getRelatedProducts(params),
+  (products) => {
+    if (!params.max || products.length < params.max) {
+      return {
+        products,
+        productsCount: products.length,
+      };
+    }
+
+    return {
+      products: products.slice(0, (params.max)),
+      productsCount: products.length,
+    };
+  }
+);

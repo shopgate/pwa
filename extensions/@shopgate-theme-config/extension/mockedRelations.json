@@ -829,6 +829,258 @@
           ]
         }
       ]
+    },
+    {
+      "id": "954",
+      "name": "This is a product with a very very long name -4-",
+      "active": true,
+      "description": "",
+      "productUrl": "https://carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/this-is-a-product-with-a-very-very-long-name-4.html",
+      "customData": "{\"store_view_id\":\"1\",\"product_id\":\"910\",\"item_type\":\"simple\",\"exchange_rate\":1}",
+      "manufacturer": "",
+      "identifiers": {
+        "sku": "123445754"
+      },
+      "tags": [],
+      "ageRating": 0,
+      "stock": {
+        "ignoreQuantity": true,
+        "quantity": 0,
+        "info": "In stock",
+        "orderable": true,
+        "minOrderQuantity": 3,
+        "maxOrderQuantity": 10
+      },
+      "rating": {
+        "count": 0,
+        "average": 0,
+        "reviewCount": 0
+      },
+      "flags": {
+        "hasChildren": false,
+        "hasVariants": false,
+        "hasOptions": false
+      },
+      "internalLog": "c3114046fb19cd953a51feb227568045",
+      "baseProductId": null,
+      "availability": {
+        "text": "In stock",
+        "state": "ok"
+      },
+      "featuredImageUrl": "https://images.shopgate.services/fit-in/440x440/filters:upscale():quality(70):fill(fff,1):format(webp)/https://shopgate:workshop@carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/media/catalog/product/a/m/ams005a_1_2.jpg?Expires=1560556800&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9pbWFnZXMuc2hvcGdhdGUuc2VydmljZXMvZml0LWluLzQ0MHg0NDAvZmlsdGVyczp1cHNjYWxlKCk6cXVhbGl0eSg3MCk6ZmlsbChmZmYsMSk6Zm9ybWF0KHdlYnApL2h0dHBzOi8vc2hvcGdhdGU6d29ya3Nob3BAY2FydHMubG9jYWxkZXYuY2Mvc2hvcHBpbmdfY2FydHMvTWFnZW50by8xLjkuMi4xLzU4YmVhMzAyYWY0MWUvbWVkaWEvY2F0YWxvZy9wcm9kdWN0L2EvbS9hbXMwMDVhXzFfMi5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA1NTY4MDB9fX1dfQ__&Signature=Xw0C5HzboRCL4YVylZmyBX~g~M5EhdoveC8L~SapqBh7wJUAOo3RIWcEfVdEvXSdBlnB0iurLCz4YN7EjiiUQH8q6qgR95hDmzpxfNpKJ~OLUyUGqTqaGnTMIGx8ZwpsYCtc-Ykgp6dwPrssW5QO42UJS8SteuomJdI-YDMDQD5XnKrm-6wZ2sZERhqwccmxx3pfNy4sTAuK5E~kfPF8lP3uwsIKwuXif8rxhi1CXnCarXLACnQDabvgaiCWf0z0d08YdBJxRV~FnvAtZqjetJuohva0ewtYOQ4OxRCRfezx0AtbtRpbBk~2erxRXKLHPsQTzmtWR9gzCdkd1IAnNw__&Key-Pair-Id=APKAINMNDAWPE3XM2H7Q",
+      "type": "simple",
+      "price": {
+        "currency": "EUR",
+        "info": "Price info",
+        "unitPrice": 89,
+        "unitPriceStriked": 0,
+        "unitPriceMin": 0,
+        "unitPriceMax": 0,
+        "unitPriceNet": 89,
+        "unitPriceWithTax": 89,
+        "taxAmount": 0,
+        "taxPercent": 0,
+        "msrp": 0,
+        "tiers": [],
+        "discount": 0,
+        "mapPricing": {
+          "startDate": "2019-06-13T17:56:49.990Z",
+          "endDate": "2019-06-13T18:57:19.990Z",
+          "price": 99
+        }
+      },
+      "highlight": false,
+      "liveshoppings": [],
+      "characteristics": []
+    },
+    {
+      "id": "955",
+      "name": "This is a product with a very very long name -4-",
+      "active": true,
+      "description": "",
+      "productUrl": "https://carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/this-is-a-product-with-a-very-very-long-name-4.html",
+      "customData": "{\"store_view_id\":\"1\",\"product_id\":\"910\",\"item_type\":\"simple\",\"exchange_rate\":1}",
+      "manufacturer": "",
+      "identifiers": {
+        "sku": "123445754"
+      },
+      "tags": [],
+      "ageRating": 0,
+      "stock": {
+        "ignoreQuantity": true,
+        "quantity": 0,
+        "info": "In stock",
+        "orderable": true,
+        "minOrderQuantity": 3,
+        "maxOrderQuantity": 10
+      },
+      "rating": {
+        "count": 0,
+        "average": 0,
+        "reviewCount": 0
+      },
+      "flags": {
+        "hasChildren": false,
+        "hasVariants": false,
+        "hasOptions": false
+      },
+      "internalLog": "c3114046fb19cd953a51feb227568045",
+      "baseProductId": null,
+      "availability": {
+        "text": "In stock",
+        "state": "ok"
+      },
+      "featuredImageUrl": "https://images.shopgate.services/fit-in/440x440/filters:upscale():quality(70):fill(fff,1):format(webp)/https://shopgate:workshop@carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/media/catalog/product/a/m/ams005a_1_2.jpg?Expires=1560556800&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9pbWFnZXMuc2hvcGdhdGUuc2VydmljZXMvZml0LWluLzQ0MHg0NDAvZmlsdGVyczp1cHNjYWxlKCk6cXVhbGl0eSg3MCk6ZmlsbChmZmYsMSk6Zm9ybWF0KHdlYnApL2h0dHBzOi8vc2hvcGdhdGU6d29ya3Nob3BAY2FydHMubG9jYWxkZXYuY2Mvc2hvcHBpbmdfY2FydHMvTWFnZW50by8xLjkuMi4xLzU4YmVhMzAyYWY0MWUvbWVkaWEvY2F0YWxvZy9wcm9kdWN0L2EvbS9hbXMwMDVhXzFfMi5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA1NTY4MDB9fX1dfQ__&Signature=Xw0C5HzboRCL4YVylZmyBX~g~M5EhdoveC8L~SapqBh7wJUAOo3RIWcEfVdEvXSdBlnB0iurLCz4YN7EjiiUQH8q6qgR95hDmzpxfNpKJ~OLUyUGqTqaGnTMIGx8ZwpsYCtc-Ykgp6dwPrssW5QO42UJS8SteuomJdI-YDMDQD5XnKrm-6wZ2sZERhqwccmxx3pfNy4sTAuK5E~kfPF8lP3uwsIKwuXif8rxhi1CXnCarXLACnQDabvgaiCWf0z0d08YdBJxRV~FnvAtZqjetJuohva0ewtYOQ4OxRCRfezx0AtbtRpbBk~2erxRXKLHPsQTzmtWR9gzCdkd1IAnNw__&Key-Pair-Id=APKAINMNDAWPE3XM2H7Q",
+      "type": "simple",
+      "price": {
+        "currency": "EUR",
+        "info": "Price info",
+        "unitPrice": 89,
+        "unitPriceStriked": 0,
+        "unitPriceMin": 0,
+        "unitPriceMax": 0,
+        "unitPriceNet": 89,
+        "unitPriceWithTax": 89,
+        "taxAmount": 0,
+        "taxPercent": 0,
+        "msrp": 0,
+        "tiers": [],
+        "discount": 0,
+        "mapPricing": {
+          "startDate": "2019-06-13T17:56:49.990Z",
+          "endDate": "2019-06-13T18:57:19.990Z",
+          "price": 99
+        }
+      },
+      "highlight": false,
+      "liveshoppings": [],
+      "characteristics": []
+    },
+    {
+      "id": "956",
+      "name": "This is a product with a very very long name -4-",
+      "active": true,
+      "description": "",
+      "productUrl": "https://carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/this-is-a-product-with-a-very-very-long-name-4.html",
+      "customData": "{\"store_view_id\":\"1\",\"product_id\":\"910\",\"item_type\":\"simple\",\"exchange_rate\":1}",
+      "manufacturer": "",
+      "identifiers": {
+        "sku": "123445754"
+      },
+      "tags": [],
+      "ageRating": 0,
+      "stock": {
+        "ignoreQuantity": true,
+        "quantity": 0,
+        "info": "In stock",
+        "orderable": true,
+        "minOrderQuantity": 3,
+        "maxOrderQuantity": 10
+      },
+      "rating": {
+        "count": 0,
+        "average": 0,
+        "reviewCount": 0
+      },
+      "flags": {
+        "hasChildren": false,
+        "hasVariants": false,
+        "hasOptions": false
+      },
+      "internalLog": "c3114046fb19cd953a51feb227568045",
+      "baseProductId": null,
+      "availability": {
+        "text": "In stock",
+        "state": "ok"
+      },
+      "featuredImageUrl": "https://images.shopgate.services/fit-in/440x440/filters:upscale():quality(70):fill(fff,1):format(webp)/https://shopgate:workshop@carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/media/catalog/product/a/m/ams005a_1_2.jpg?Expires=1560556800&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9pbWFnZXMuc2hvcGdhdGUuc2VydmljZXMvZml0LWluLzQ0MHg0NDAvZmlsdGVyczp1cHNjYWxlKCk6cXVhbGl0eSg3MCk6ZmlsbChmZmYsMSk6Zm9ybWF0KHdlYnApL2h0dHBzOi8vc2hvcGdhdGU6d29ya3Nob3BAY2FydHMubG9jYWxkZXYuY2Mvc2hvcHBpbmdfY2FydHMvTWFnZW50by8xLjkuMi4xLzU4YmVhMzAyYWY0MWUvbWVkaWEvY2F0YWxvZy9wcm9kdWN0L2EvbS9hbXMwMDVhXzFfMi5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA1NTY4MDB9fX1dfQ__&Signature=Xw0C5HzboRCL4YVylZmyBX~g~M5EhdoveC8L~SapqBh7wJUAOo3RIWcEfVdEvXSdBlnB0iurLCz4YN7EjiiUQH8q6qgR95hDmzpxfNpKJ~OLUyUGqTqaGnTMIGx8ZwpsYCtc-Ykgp6dwPrssW5QO42UJS8SteuomJdI-YDMDQD5XnKrm-6wZ2sZERhqwccmxx3pfNy4sTAuK5E~kfPF8lP3uwsIKwuXif8rxhi1CXnCarXLACnQDabvgaiCWf0z0d08YdBJxRV~FnvAtZqjetJuohva0ewtYOQ4OxRCRfezx0AtbtRpbBk~2erxRXKLHPsQTzmtWR9gzCdkd1IAnNw__&Key-Pair-Id=APKAINMNDAWPE3XM2H7Q",
+      "type": "simple",
+      "price": {
+        "currency": "EUR",
+        "info": "Price info",
+        "unitPrice": 89,
+        "unitPriceStriked": 0,
+        "unitPriceMin": 0,
+        "unitPriceMax": 0,
+        "unitPriceNet": 89,
+        "unitPriceWithTax": 89,
+        "taxAmount": 0,
+        "taxPercent": 0,
+        "msrp": 0,
+        "tiers": [],
+        "discount": 0,
+        "mapPricing": {
+          "startDate": "2019-06-13T17:56:49.990Z",
+          "endDate": "2019-06-13T18:57:19.990Z",
+          "price": 99
+        }
+      },
+      "highlight": false,
+      "liveshoppings": [],
+      "characteristics": []
+    },
+    {
+      "id": "957",
+      "name": "This is a product with a very very long name -4-",
+      "active": true,
+      "description": "",
+      "productUrl": "https://carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/this-is-a-product-with-a-very-very-long-name-4.html",
+      "customData": "{\"store_view_id\":\"1\",\"product_id\":\"910\",\"item_type\":\"simple\",\"exchange_rate\":1}",
+      "manufacturer": "",
+      "identifiers": {
+        "sku": "123445754"
+      },
+      "tags": [],
+      "ageRating": 0,
+      "stock": {
+        "ignoreQuantity": true,
+        "quantity": 0,
+        "info": "In stock",
+        "orderable": true,
+        "minOrderQuantity": 3,
+        "maxOrderQuantity": 10
+      },
+      "rating": {
+        "count": 0,
+        "average": 0,
+        "reviewCount": 0
+      },
+      "flags": {
+        "hasChildren": false,
+        "hasVariants": false,
+        "hasOptions": false
+      },
+      "internalLog": "c3114046fb19cd953a51feb227568045",
+      "baseProductId": null,
+      "availability": {
+        "text": "In stock",
+        "state": "ok"
+      },
+      "featuredImageUrl": "https://images.shopgate.services/fit-in/440x440/filters:upscale():quality(70):fill(fff,1):format(webp)/https://shopgate:workshop@carts.localdev.cc/shopping_carts/Magento/1.9.2.1/58bea302af41e/media/catalog/product/a/m/ams005a_1_2.jpg?Expires=1560556800&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9pbWFnZXMuc2hvcGdhdGUuc2VydmljZXMvZml0LWluLzQ0MHg0NDAvZmlsdGVyczp1cHNjYWxlKCk6cXVhbGl0eSg3MCk6ZmlsbChmZmYsMSk6Zm9ybWF0KHdlYnApL2h0dHBzOi8vc2hvcGdhdGU6d29ya3Nob3BAY2FydHMubG9jYWxkZXYuY2Mvc2hvcHBpbmdfY2FydHMvTWFnZW50by8xLjkuMi4xLzU4YmVhMzAyYWY0MWUvbWVkaWEvY2F0YWxvZy9wcm9kdWN0L2EvbS9hbXMwMDVhXzFfMi5qcGciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE1NjA1NTY4MDB9fX1dfQ__&Signature=Xw0C5HzboRCL4YVylZmyBX~g~M5EhdoveC8L~SapqBh7wJUAOo3RIWcEfVdEvXSdBlnB0iurLCz4YN7EjiiUQH8q6qgR95hDmzpxfNpKJ~OLUyUGqTqaGnTMIGx8ZwpsYCtc-Ykgp6dwPrssW5QO42UJS8SteuomJdI-YDMDQD5XnKrm-6wZ2sZERhqwccmxx3pfNy4sTAuK5E~kfPF8lP3uwsIKwuXif8rxhi1CXnCarXLACnQDabvgaiCWf0z0d08YdBJxRV~FnvAtZqjetJuohva0ewtYOQ4OxRCRfezx0AtbtRpbBk~2erxRXKLHPsQTzmtWR9gzCdkd1IAnNw__&Key-Pair-Id=APKAINMNDAWPE3XM2H7Q",
+      "type": "simple",
+      "price": {
+        "currency": "EUR",
+        "info": "Price info",
+        "unitPrice": 89,
+        "unitPriceStriked": 0,
+        "unitPriceMin": 0,
+        "unitPriceMax": 0,
+        "unitPriceNet": 89,
+        "unitPriceWithTax": 89,
+        "taxAmount": 0,
+        "taxPercent": 0,
+        "msrp": 0,
+        "tiers": [],
+        "discount": 0,
+        "mapPricing": {
+          "startDate": "2019-06-13T17:56:49.990Z",
+          "endDate": "2019-06-13T18:57:19.990Z",
+          "price": 99
+        }
+      },
+      "highlight": false,
+      "liveshoppings": [],
+      "characteristics": []
     }
   ]
 }

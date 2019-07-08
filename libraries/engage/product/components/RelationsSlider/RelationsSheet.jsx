@@ -1,22 +1,19 @@
-import React, { useState, useCallback, useEffect, Fragment, memo } from 'react';
+import React, { useState, useCallback, Fragment, memo } from 'react';
+import PropTypes from 'prop-types';
 import { useWidgetSettings, useTheme } from '../../../core';
-import { SheetDrawer, I18n } from '../../../components';
+import { SheetDrawer, I18n, Button } from '../../../components';
 import { WIDGET_ID } from './constants';
 import { showMore, sheet } from './style';
-import connect from './connector';
+import connect from './RelationsSheet.connector';
 
 /**
  * Shows a Sheet Drawer with all related products.
  * @returns {JSX}
  */
-const RealtionsSheet = memo(connect(({ products, getRelations }) => {
+const RealtionsSheet = memo(({ products: { products } }) => {
   const [show, setShow] = useState(false);
   const { headline } = useWidgetSettings(WIDGET_ID);
   const { ProductGrid } = useTheme();
-
-  useEffect(() => {
-    getRelations();
-  }, []);
 
   const handleOpen = useCallback((event) => {
     event.preventDefault();
@@ -29,9 +26,9 @@ const RealtionsSheet = memo(connect(({ products, getRelations }) => {
 
   return (
     <Fragment>
-      <a href="#relations" className={showMore} onClick={handleOpen}>
+      <Button onClick={handleOpen} flat className={showMore}>
         <I18n.Text string="product.relations.showMore" />
-      </a>
+      </Button>
       <SheetDrawer isOpen={show} title={headline} onClose={handleClose}>
         <div className={sheet}>
           <ProductGrid products={products} infiniteLoad={false} />
@@ -39,6 +36,20 @@ const RealtionsSheet = memo(connect(({ products, getRelations }) => {
       </SheetDrawer>
     </Fragment>
   );
-}));
+});
 
-export default RealtionsSheet;
+RealtionsSheet.propTypes = {
+  products: PropTypes.shape({
+    products: PropTypes.arrayOf(PropTypes.shape()),
+    productCount: PropTypes.number,
+  }),
+};
+
+RealtionsSheet.defaultProps = {
+  products: {
+    products: [],
+    productCount: 0,
+  },
+};
+
+export default connect(RealtionsSheet);

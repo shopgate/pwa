@@ -4,7 +4,7 @@ import { Swiper, Card } from '@shopgate/engage/components';
 import ProductCard from '../ProductCard';
 import RelationsSheet from './RelationsSheet';
 import { useWidgetSettings, useCurrentProduct } from '../../../core';
-import connect from './connector';
+import connect from './RelationsSlider.connector';
 import { WIDGET_ID } from './constants';
 import * as styles from './style';
 
@@ -12,7 +12,7 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const RelationsSliderContent = memo(connect(({ products, getRelations }) => {
+const RelationsSliderContent = memo(({ products: { products, productsCount }, getRelations }) => {
   const {
     headline,
     hidePrice,
@@ -34,7 +34,9 @@ const RelationsSliderContent = memo(connect(({ products, getRelations }) => {
   return (
     <div className={styles.container}>
       {!!headline && <h3 className={styles.headline}>{headline}</h3>}
-      {!!showMoreButton && <RelationsSheet limit={100} productId={productId} type={type} />}
+      {!!showMoreButton && productsCount > 10 && (
+        <RelationsSheet limit={100} productId={productId} type={type} />
+      )}
       <Swiper
         slidesPerView={2.25}
         classNames={{ container: styles.sliderContainer }}
@@ -55,15 +57,21 @@ const RelationsSliderContent = memo(connect(({ products, getRelations }) => {
       </Swiper>
     </div>
   );
-}));
+});
 
 RelationsSliderContent.propTypes = {
   getRelations: PropTypes.func.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape()),
+  products: PropTypes.shape({
+    products: PropTypes.arrayOf(PropTypes.shape()),
+    productCount: PropTypes.number,
+  }),
 };
 
 RelationsSliderContent.defaultProps = {
-  products: [],
+  products: {
+    products: [],
+    productCount: 0,
+  },
 };
 
-export default RelationsSliderContent;
+export default connect(RelationsSliderContent);
