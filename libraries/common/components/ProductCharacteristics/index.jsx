@@ -18,6 +18,7 @@ class ProductCharacteristics extends Component {
     conditioner: PropTypes.shape().isRequired,
     navigate: PropTypes.func.isRequired,
     render: PropTypes.func.isRequired,
+    setCharacteristic: PropTypes.func.isRequired,
     finishTimeout: PropTypes.number,
     variantId: PropTypes.string,
     variants: PropTypes.shape(),
@@ -175,9 +176,11 @@ class ProductCharacteristics extends Component {
    * @param {Object} selection The selected item.
    */
   handleSelection = (selection) => {
+    const { variants, setCharacteristic } = this.props;
+    const { id, value } = selection;
+    setCharacteristic({ [id]: value });
+
     this.setState(({ characteristics }) => {
-      const { variants } = this.props;
-      const { id, value } = selection;
       const state = prepareState(id, characteristics, variants.characteristics);
 
       return {
