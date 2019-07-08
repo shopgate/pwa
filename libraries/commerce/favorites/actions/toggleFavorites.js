@@ -62,7 +62,7 @@ const syncRemoveSingleFavorite = productId => (
 );
 /**
  * Sync Add Favorites to backend
- * @param {[Object]} bufferedActions Actions that have been buffered
+ * @param {Object[]} bufferedActions Actions that have been buffered
  * @return {Function}
  */
 const syncAddRemoveFavorites = bufferedActions => (dispatch) => {

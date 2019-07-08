@@ -57,8 +57,8 @@ export const requestRemoveFavorites = (productId, silent = false) => ({
 
 /**
  * Request add remove favorites sync
- * @param {[string]} productIdsToAdd Array of product identifiers
- * @param {[string]} productIdsToRemove Array of product identifiers
+ * @param {string[]} productIdsToAdd Array of product identifiers
+ * @param {string[]} productIdsToRemove Array of product identifiers
  * @return {Object}
  */
 export const requestAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
@@ -69,8 +69,8 @@ export const requestAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemov
 
 /**
  * Receive add remove favorites sync
- * @param {[string]} productIdsToAdd Array of product identifiers
- * @param {[string]} productIdsToRemove Array of product identifiers
+ * @param {string[]} productIdsToAdd Array of product identifiers
+ * @param {string[]} productIdsToRemove Array of product identifiers
  * @return {Object}
  */
 export const receiveAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemove) => ({
@@ -81,8 +81,8 @@ export const receiveAddRemoveFavoritesSync = (productIdsToAdd, productIdsToRemov
 
 /**
  * Error add remove favorites sync
- * @param {[string]} productIdsToAdd Array of product identifiers
- * @param {[string]} productIdsToRemove Array of product identifiers
+ * @param {string[]} productIdsToAdd Array of product identifiers
+ * @param {string[]} productIdsToRemove Array of product identifiers
  * @param {Object} error Error object
  * @return {Object}
  */
