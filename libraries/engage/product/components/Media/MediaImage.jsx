@@ -14,9 +14,9 @@ const { colors } = themeConfig;
  * @returns {JSX}
  */
 const MediaImage = ({ url, altText, className }) => {
-  const [placeholder, enablePlaceholder] = useState(!url);
+  const [placeholder, setPlaceholderEnabled] = useState(!url);
 
-  useEffect(() => enablePlaceholder(!url), [url]);
+  useEffect(() => setPlaceholderEnabled(!url), [url]);
 
   if (placeholder) {
     return (
@@ -34,7 +34,7 @@ const MediaImage = ({ url, altText, className }) => {
           alt={altText}
           className={className}
           backgroundColor={colors.light}
-          onError={() => enablePlaceholder(true)}
+          onError={() => setPlaceholderEnabled(true)}
         />
       </div>
     </SurroundPortals>
