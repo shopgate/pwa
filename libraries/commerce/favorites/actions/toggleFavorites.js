@@ -10,6 +10,7 @@ import {
   errorSyncFavorites,
   errorFavorites,
   idleSyncFavorites,
+  forceClearFavoritesBuffer,
 } from '../action-creators';
 import {
   getProductRelativesOnFavorites,
@@ -134,8 +135,17 @@ const removeFavorites = (productId, withRelatives = false) => (dispatch, getStat
   removeProductFromFavorites(productId, dispatch);
 };
 
+/**
+ * Force the buffered add/remove favorites to be cleared.
+ * @return {Function}
+ */
+const requestForceFavoritesBufferClear = () => (dispatch) => {
+  dispatch(forceClearFavoritesBuffer());
+};
+
 export {
   addFavorites,
   removeFavorites,
   dispatchBufferedFavoriteActions,
+  requestForceFavoritesBufferClear,
 };

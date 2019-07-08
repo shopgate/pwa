@@ -9,6 +9,7 @@ import {
   RECEIVE_SYNC_FAVORITES,
   ERROR_SYNC_FAVORITES,
   IDLE_SYNC_FAVORITES,
+  FORCE_CLEAR_FAVORITE_BUFFER,
 } from '../constants';
 
 /**
@@ -77,6 +78,14 @@ export const receiveSyncFavorites = (productIdsToAdd, productIdsToRemove) => ({
   type: RECEIVE_SYNC_FAVORITES,
   productIdsToAdd,
   productIdsToRemove,
+});
+
+/**
+ * Force Clear Favorites Buffer
+ * @return {Object}
+ */
+export const forceClearFavoritesBuffer = () => ({
+  type: FORCE_CLEAR_FAVORITE_BUFFER,
 });
 
 /**

@@ -16,6 +16,7 @@ import {
   ERROR_FETCH_FAVORITES,
   IDLE_SYNC_FAVORITES,
   ERROR_FAVORITES,
+  FORCE_CLEAR_FAVORITE_BUFFER,
 } from '../constants';
 
 /**
@@ -53,9 +54,14 @@ export const addRemoveFavorites$ = main$.filter(({ action }) => (
   action.type === REQUEST_ADD_FAVORITES || action.type === REQUEST_REMOVE_FAVORITES
 ));
 
+export const forceClearFavoritesBuffer$ = main$.filter(({ action }) => (
+  action.type === FORCE_CLEAR_FAVORITE_BUFFER
+));
+
 export const clearAddRemoveFavoritesBuffer$ = addRemoveFavorites$
   .debounceTime(SYNC_FAVORITES_BUFFER_TIME)
-  .delay(SYNC_FAVORITES_BUFFER_TIME);
+  .delay(SYNC_FAVORITES_BUFFER_TIME)
+  .merge(forceClearFavoritesBuffer$);
 
 export const addRemoveBufferedFavorites$ = addRemoveFavorites$
   .buffer(clearAddRemoveFavoritesBuffer$);
