@@ -50,6 +50,7 @@ class ProductContent extends PureComponent {
       optionsPrices: {},
       productId: props.variantId ? props.baseProductId : props.productId,
       variantId: props.variantId ? props.variantId : null,
+      characteristic: null,
       quantity: 1,
     };
   }
@@ -111,6 +112,14 @@ class ProductContent extends PureComponent {
   };
 
   /**
+   * Stores the ID of the currently selected characteristic.
+   * @param {Object} characteristic The characteristic ID to set.
+   */
+  setCharacteristic = (characteristic) => {
+    this.setState({ characteristic });
+  }
+
+  /**
    * @return {JSX}
    */
   render() {
@@ -120,6 +129,7 @@ class ProductContent extends PureComponent {
       setOption: this.setOption,
       quantity: this.state.quantity,
       setQuantity: this.setQuantity,
+      setCharacteristic: this.setCharacteristic,
     };
 
     return (
@@ -127,7 +137,12 @@ class ProductContent extends PureComponent {
         <Fragment>
           <AppBar productId={this.state.productId} />
           <ProductContext.Provider value={contextValue}>
-            <Media productId={this.state.variantId || this.state.productId} aria-hidden />
+            <Media
+              productId={this.state.productId}
+              variantId={this.state.variantId}
+              characteristic={this.state.characteristic}
+              aria-hidden
+            />
             <Header />
             {/*
               This feature is currently in BETA testing.
