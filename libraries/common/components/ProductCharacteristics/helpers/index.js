@@ -7,13 +7,7 @@ import isMatch from 'lodash/isMatch';
  * @return {number}
  */
 export function findSelectionIndex(characteristics, characteristicId) {
-  const target = characteristics.findIndex(char => char.id === characteristicId);
-
-  if (!target) {
-    return -1;
-  }
-
-  return target;
+  return characteristics.findIndex(char => char.id === characteristicId);
 }
 
 /**
@@ -68,6 +62,18 @@ export function prepareState(id, value, selections, characteristics, products) {
     [id]: value,
   };
 
+  /**
+   * Determine if there are products for the current user selection.
+   */
+  const matches = products.filter(product => (
+    isMatch(product.characteristics, currentSelection)
+  ));
+
+  if (matches.length === 1) {
+    // Product found for the current selection.
+    return { ...matches[0].characteristics };
+  }
+
   if (!selections[id]) {
     // Changed value wasn't set before.
     return currentSelection;
@@ -81,18 +87,6 @@ export function prepareState(id, value, selections, characteristics, products) {
    * of characteristics then there is nothing to reset.
    */
   if (index === (characteristics.length - 1)) {
-    return currentSelection;
-  }
-
-  /**
-   * Determine if there are products for the current user selection.
-   */
-  const matches = products.filter(product => (
-    isMatch(product.characteristics, currentSelection)
-  ));
-
-  if (matches.length === 1) {
-    // Product found for the current selection.
     return currentSelection;
   }
 

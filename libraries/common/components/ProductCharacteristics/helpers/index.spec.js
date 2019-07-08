@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 
-import { prepareState } from './index';
+import { findSelectionIndex, prepareState } from './index';
 
 const products = [{
   id: '007-001',
@@ -16,6 +16,11 @@ const products = [{
   id: '007-003',
   characteristics: {
     1: '1', 2: '2', 3: '3', // equals L, Blue, Stripes
+  },
+}, {
+  id: '007-004',
+  characteristics: {
+    1: '2', 2: '2', 3: '3', // equals XL, Blue, Stripes
   },
 }];
 
@@ -44,6 +49,16 @@ const characteristics = [{
 }];
 
 describe('ProductCharacteristics helpers', () => {
+  describe('findSelectionIndex()', () => {
+    it('should return the index', () => {
+      expect(findSelectionIndex(characteristics, '2')).toBe(1);
+    });
+
+    it('should return -1 when the the characteristic was not found', () => {
+      expect(findSelectionIndex(characteristics, '5')).toBe(-1);
+    });
+  });
+
   describe('prepareState()', () => {
     it('should return the current selections, when the selected ID is not found', () => {
       const selections = { 1: '1', 2: '1', 3: '1' };
@@ -53,14 +68,9 @@ describe('ProductCharacteristics helpers', () => {
 
     it('should return partial states when a full selection was not selected yet', () => {
       const selections = {};
-      // XL
-      let result = prepareState('1', '2', selections, characteristics, products);
-      expect(result).toEqual({
-        1: '2',
-      });
 
-      // L,
-      result = prepareState('1', '1', selections, characteristics, products);
+      // L
+      let result = prepareState('1', '1', selections, characteristics, products);
       expect(result).toEqual({
         1: '1',
       });
@@ -89,6 +99,17 @@ describe('ProductCharacteristics helpers', () => {
         1: '1',
         2: '2',
         3: '1',
+      });
+    });
+
+    it('should return a full selections object when there is only one product that matches the selected characteristics', () => {
+      // XL => XL, Blue, Stripes
+      const selections = {};
+      const result = prepareState('1', '2', selections, characteristics, products);
+      expect(result).toEqual({
+        1: '2',
+        2: '2',
+        3: '3',
       });
     });
 
