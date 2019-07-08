@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductPriceData } from '@shopgate/pwa-common-commerce/product';
+import { getProductPriceData, hasProductVariants } from '@shopgate/pwa-common-commerce/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -9,6 +9,7 @@ import { getProductPriceData } from '@shopgate/pwa-common-commerce/product';
  */
 const mapStateToProps = (state, props) => ({
   price: getProductPriceData(state, props),
+  hasProductVariants: hasProductVariants(state, props),
 });
 
 /**

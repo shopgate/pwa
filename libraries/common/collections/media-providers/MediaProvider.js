@@ -1,4 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
+import { isRelativePosition, isAbsolutePosition } from '../../helpers/dom';
 import styles from './style';
 
 /**
@@ -33,6 +34,12 @@ class MediaProvider {
     // Remove fixed dimensions from the container.
     container.removeAttribute('height');
     container.removeAttribute('width');
+
+    if (isRelativePosition(container.parentNode)
+    && isAbsolutePosition(container)) {
+      // Assume responsive embed code
+      container.parentNode.removeAttribute('style');
+    }
 
     // Create the wrapper and apply styling.
     const wrapper = document.createElement('div');

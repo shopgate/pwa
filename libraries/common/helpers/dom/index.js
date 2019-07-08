@@ -51,3 +51,21 @@ export const getStyle = (element, property) => {
 
   return element.style[property];
 };
+
+/**
+ * Check if element is relative.
+ * @param {Element} element The DOM element.
+ * @returns {boolean}
+ */
+export const isRelativePosition = element => (
+  getStyle(element, 'position') === 'relative'
+);
+
+/**
+ * Check if element is relative.
+ * @param {Element} element The DOM element.
+ * @returns {boolean}
+ */
+export const isAbsolutePosition = element => (
+  getStyle(element, 'position') === 'absolute'
+);
