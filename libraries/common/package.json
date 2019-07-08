@@ -24,7 +24,7 @@
     "crypto-js": "3.1.9-1",
     "glamor": "^2.20.40",
     "gsap": "^1.20.2",
-    "history": "~4.9.0",
+    "history": "^4.7.2",
     "intl-messageformat": "^2.1.0",
     "jsdom": "11.1.0",
     "mobile-detect": "^1.4.3",
