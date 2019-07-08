@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => {
   const media = getProductMedia(state, props);
   return ({
     hasMedia: !!media && !!media.length,
-    product: getCurrentBaseProduct(state, props),
+    baseProduct: getCurrentBaseProduct(state, props),
   });
 };
 
