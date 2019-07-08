@@ -181,12 +181,17 @@ class ProductCharacteristics extends Component {
     setCharacteristic({ [id]: value });
 
     this.setState(({ characteristics }) => {
-      const state = prepareState(id, characteristics, variants.characteristics);
+      const state = prepareState(
+        id,
+        value,
+        characteristics,
+        variants.characteristics,
+        variants.products
+      );
 
       return {
         characteristics: {
           ...state,
-          [id]: value,
         },
         highlight: null,
       };
