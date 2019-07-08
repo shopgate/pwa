@@ -10,7 +10,7 @@ import connect from './RelationsSheet.connector';
  * Shows a Sheet Drawer with all related products.
  * @returns {JSX}
  */
-const RealtionsSheet = memo(({ products: { products } }) => {
+const RelationsSheet = memo(({ products: { products } }) => {
   const [show, setShow] = useState(false);
   const { headline } = useWidgetSettings(WIDGET_ID);
   const { ProductGrid } = useTheme();
@@ -38,18 +38,18 @@ const RealtionsSheet = memo(({ products: { products } }) => {
   );
 });
 
-RealtionsSheet.propTypes = {
+RelationsSheet.propTypes = {
   products: PropTypes.shape({
     products: PropTypes.arrayOf(PropTypes.shape()),
     productCount: PropTypes.number,
   }),
 };
 
-RealtionsSheet.defaultProps = {
+RelationsSheet.defaultProps = {
   products: {
     products: [],
     productCount: 0,
   },
 };
 
-export default connect(RealtionsSheet);
+export default connect(RelationsSheet);
