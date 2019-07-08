@@ -7,10 +7,10 @@ import connect from './connector';
  * The product media slider component.
  * @returns {JSX}
  */
-const MediaSlider = ({ product, productId, hasMedia }) => {
+const MediaSlider = ({ baseProduct, productId, hasMedia }) => {
   if (!hasMedia) {
     return (
-      <FeaturedMedia {...product && product.featuredMedia} />
+      <FeaturedMedia {...baseProduct && baseProduct.featuredMedia} />
     );
   }
 
@@ -20,14 +20,14 @@ const MediaSlider = ({ product, productId, hasMedia }) => {
 };
 
 MediaSlider.propTypes = {
+  baseProduct: PropTypes.shape(),
   hasMedia: PropTypes.bool,
-  product: PropTypes.shape(),
   productId: PropTypes.string,
 };
 
 MediaSlider.defaultProps = {
+  baseProduct: null,
   hasMedia: false,
-  product: null,
   productId: null,
 };
 
