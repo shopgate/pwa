@@ -1,33 +1,4 @@
-/**
- * Resets any characteristics inside a selection that come after the given index.
- * @param {Array} characteristics The characteristics of a product.
- * @param {Object} selection The current selected characteristics.
- * @param {number} index The index to reset the selection to.
- * @return {Object}
- */
-export function reduceSelection(characteristics, selection, index) {
-  const currentSelection = {
-    ...selection,
-  };
-
-  /**
-   * When the given index is the same as the complete set
-   * of characteristics then there is nothing to reset.
-   */
-  if (index === (characteristics.length - 1)) {
-    return currentSelection;
-  }
-
-  // Find the selections after the given index.
-  const after = characteristics.slice(index + 1);
-
-  // Delete the found selections.
-  after.forEach((item) => {
-    delete currentSelection[item.id];
-  });
-
-  return currentSelection;
-}
+import isMatch from 'lodash/isMatch';
 
 /**
  * Returns the index of a particular characteristic from a set of characteristics.
@@ -72,17 +43,66 @@ export function getSelectedValue(charId, characteristics) {
 /**
  * Prepares the new state after a selection has been made.
  * @param {string} id The selection ID
+ * @param {string} value The selection value.
  * @param {Object} selections The selections stored in the state.
  * @param {Array} characteristics The characteristics of a product.
+ * @param {Array} products All available products.
  * @return {Object}
  */
-export function prepareState(id, selections, characteristics) {
-  if (!selections[id]) {
+export function prepareState(id, value, selections, characteristics, products) {
+  const updateValid = !!characteristics.find(({ id: cId, values }) => {
+    if (cId !== id) {
+      return false;
+    }
+    return !!values.find(({ id: vId }) => vId === value);
+  });
+
+  if (!updateValid) {
+    // Input parameters are invalid.
     return selections;
   }
 
-  // Find the current index.
-  const currentIndex = findSelectionIndex(characteristics, id);
+  // Merge the just changed value into the previous selection.
+  const currentSelection = {
+    ...selections,
+    [id]: value,
+  };
 
-  return reduceSelection(characteristics, selections, currentIndex);
+  if (!selections[id]) {
+    // Changed value wasn't set before.
+    return currentSelection;
+  }
+
+  // Find the current index.
+  const index = findSelectionIndex(characteristics, id);
+
+  /**
+   * When the given index is the same as the complete set
+   * of characteristics then there is nothing to reset.
+   */
+  if (index === (characteristics.length - 1)) {
+    return currentSelection;
+  }
+
+  /**
+   * Determine if there are products for the current user selection.
+   */
+  const matches = products.filter(product => (
+    isMatch(product.characteristics, currentSelection)
+  ));
+
+  if (matches.length === 1) {
+    // Product found for the current selection.
+    return currentSelection;
+  }
+
+  // Find the selections after the given index.
+  const after = characteristics.slice(index + 1);
+
+  // Delete the found selections.
+  after.forEach((item) => {
+    delete currentSelection[item.id];
+  });
+
+  return currentSelection;
 }
