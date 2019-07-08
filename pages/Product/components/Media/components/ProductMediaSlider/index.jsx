@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MediaSlider as ProductMediaSlider, FeaturedMedia } from '@shopgate/engage/product';
+import { MediaSlider, FeaturedMedia } from '@shopgate/engage/product';
 import connect from './connector';
 
 /**
  * The product media slider component.
  * @returns {JSX}
  */
-const MediaSlider = ({ baseProduct, productId, hasMedia }) => {
+const ProductMediaSlider = ({ baseProduct, productId, hasMedia }) => {
   if (!hasMedia) {
     return (
       <FeaturedMedia {...baseProduct && baseProduct.featuredMedia} />
@@ -15,20 +15,20 @@ const MediaSlider = ({ baseProduct, productId, hasMedia }) => {
   }
 
   return (
-    <ProductMediaSlider productId={productId} />
+    <MediaSlider productId={productId} />
   );
 };
 
-MediaSlider.propTypes = {
+ProductMediaSlider.propTypes = {
   baseProduct: PropTypes.shape(),
   hasMedia: PropTypes.bool,
   productId: PropTypes.string,
 };
 
-MediaSlider.defaultProps = {
+ProductMediaSlider.defaultProps = {
   baseProduct: null,
   hasMedia: false,
   productId: null,
 };
 
-export default connect(MediaSlider);
+export default connect(ProductMediaSlider);

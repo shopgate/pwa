@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import { ProductContext } from '../../context';
-import ImageSlider from './components/ImageSlider';
-import MediaSlider from './components/MediaSlider';
+import ProductImageSlider from './components/ProductImageSlider';
+import ProductMediaSlider from './components/ProductMediaSlider';
 
 /**
  * The product media component.
@@ -16,11 +16,18 @@ const Media = ({ 'aria-hidden': ariaHidden }) => (
         {/* MediaSlider feature is currently in BETA testing.
             It should only be used for approved BETA Client Projects */}
         {isBeta()
-            ? <MediaSlider productId={variantId || productId} aria-hidden={ariaHidden} />
-            : <ImageSlider productId={productId} variantId={variantId} aria-hidden={ariaHidden} />
+          ? <ProductMediaSlider
+            productId={variantId || productId}
+            aria-hidden={ariaHidden}
+          />
+          : <ProductImageSlider
+            productId={productId}
+            variantId={variantId}
+            aria-hidden={ariaHidden}
+          />
         }
       </Fragment>
-      )}
+    )}
   </ProductContext.Consumer>
 );
 
