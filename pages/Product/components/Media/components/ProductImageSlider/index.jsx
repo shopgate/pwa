@@ -41,7 +41,7 @@ const getImagesByIndex = (images) => {
  * @param {number} currentSlide The index of the current visible slide.
  * @deprecated since catalog 2.0
  */
-class ImageSlider extends Component {
+class ProductImageSlider extends Component {
   static propTypes = {
     'aria-hidden': PropTypes.bool,
     images: PropTypes.arrayOf(PropTypes.shape()),
@@ -148,4 +148,4 @@ class ImageSlider extends Component {
   }
 }
 
-export default connect(ImageSlider);
+export default connect(ProductImageSlider);
