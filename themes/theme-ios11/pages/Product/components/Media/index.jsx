@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
-import { MediaSlider, ProductImage } from '@shopgate/engage/product';
+import { isBeta, useNavigation, bin2hex } from '@shopgate/engage/core';
+import { MediaSlider, ProductImage, ITEM_PATH } from '@shopgate/engage/product';
 import ImageSlider from './components/ImageSlider';
 import connect from './connector';
 
@@ -9,12 +9,26 @@ import connect from './connector';
  * The product media component.
  * @returns {JSX}
  */
-const Media = ({
-  'aria-hidden': ariaHidden, productId, variantId, imageUrl,
-}) => {
+const Media = memo((props) => {
+  const {
+    'aria-hidden': ariaHidden, productId, variantId, imageUrl,
+  } = props;
+  const { push } = useNavigation();
+  const handleClick = useCallback(() => {
+    push({ pathname: `${ITEM_PATH}/${bin2hex(productId)}/gallery/0` });
+  }, []);
+
   if (imageUrl) {
     return (
-      <ProductImage src={imageUrl} />
+      <div
+        onClick={handleClick}
+        onKeyDown={handleClick}
+        role="button"
+        tabIndex="0"
+        aria-hidden={ariaHidden}
+      >
+        <ProductImage src={imageUrl} />
+      </div>
     );
   }
 
@@ -28,7 +42,7 @@ const Media = ({
       }
     </Fragment>
   );
-};
+});
 
 Media.propTypes = {
   productId: PropTypes.string.isRequired,

@@ -117,7 +117,12 @@ class ProductContent extends PureComponent {
    * @param {Object} characteristic The characteristic ID to set.
    */
   setCharacteristic = (characteristic) => {
-    this.setState({ characteristic });
+    this.setState(prevState => ({
+      characteristic: {
+        ...prevState.characteristic,
+        ...characteristic,
+      },
+    }));
   }
 
   /**
