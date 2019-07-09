@@ -1,5 +1,5 @@
-import { getThemeConfig } from '../getThemeConfig';
 import { getThemeAssets } from '../getThemeAssets';
+import { getThemeConfig } from '../getThemeConfig';
 
 jest.mock('../getThemeConfig', () => ({
   getThemeConfig: jest.fn(),

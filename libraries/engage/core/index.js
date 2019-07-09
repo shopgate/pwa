@@ -256,6 +256,10 @@ export { getThemeConfig } from './config/getThemeConfig';
 export { getThemeSettings } from './config/getThemeSettings';
 export { getThemeColors } from './config/getThemeColors';
 export { getThemeAssets } from './config/getThemeAssets';
+export { getPageConfig } from './config/getPageConfig';
+export { getPageSettings } from './config/getPageSettings';
+export { getWidgetConfig } from './config/getWidgetConfig';
+export { getWidgetSettings } from './config/getWidgetSettings';
 
 // -------------- HELPERS -------------- //
 export { i18n } from './helpers/i18n';
