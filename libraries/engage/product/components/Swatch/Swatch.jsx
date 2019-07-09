@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { css } from 'glamor';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { isBeta, useWidgetConfig } from '../../../core';
+import { isBeta, useWidgetStyles } from '../../../core';
 import { SwatchColor } from './SwatchColor';
 import { SwatchTexture } from './SwatchTexture';
 import { swatchGrid, itemSelected } from './style';
@@ -30,7 +30,7 @@ const SwatchUnwrapped = ({
     return null;
   }
 
-  const { styles } = useWidgetConfig(widgetId, widgetPath);
+  const styles = useWidgetStyles(widgetId, widgetPath);
 
   const swatchClass = styles && styles.swatch ? css(styles.swatch).toString() : null;
   const itemClass = styles && styles.item ? css(styles.item).toString() : null;

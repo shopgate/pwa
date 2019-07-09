@@ -1,73 +1,39 @@
-import { useRoute } from '../useRoute';
 import { usePageConfig } from '../usePageConfig';
-import { getThemeSettings } from '../../config/getThemeSettings';
-
-jest.mock('react', () => ({
-  createContext: jest.fn(),
-}));
-
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  themeConfig: {
-    pages: [
-      {
-        pattern: '/test1',
-      },
-      {
-        pattern: '/test2',
-      },
-      {
-        pattern: '/test3',
-        settings: {
-          foo: 'fuzz',
-          test: true,
-        },
-      },
-    ],
-  },
-}));
+import { useRoute } from '../useRoute';
+import { getPageConfig } from '../../config/getPageConfig';
 
 jest.mock('../useRoute', () => ({
-  useRoute: jest.fn(() => ({ pattern: '/test' })),
+  useRoute: jest.fn(),
 }));
 
-jest.mock('../../config/getThemeSettings', () => ({
-  getThemeSettings: jest.fn(),
+jest.mock('../../config/getPageConfig', () => ({
+  getPageConfig: jest.fn(),
 }));
 
 describe('engage > core > hooks', () => {
   describe('usePageConfig()', () => {
     beforeEach(() => {
-      jest.resetModules();
+      jest.resetAllMocks();
     });
 
-    it('should return an empty object if no settings', () => {
-      useRoute.mockReturnValueOnce({ pattern: '/test1' });
-      getThemeSettings.mockReturnValueOnce({});
-      const config = usePageConfig();
-      expect(config).toEqual({ settings: {} });
+    it('should pass down the page pattern to the lower level helper functions.', () => {
+      useRoute.mockReturnValue({ pattern: '/page/pattern' });
+      usePageConfig();
+      expect(getPageConfig).toBeCalledWith('/page/pattern');
+      expect(getPageConfig).toBeCalledTimes(1);
+      expect(useRoute).toBeCalledTimes(1);
     });
 
-    it('should return an object having global settings only', () => {
-      useRoute.mockReturnValueOnce({ pattern: '/test2' });
-      getThemeSettings.mockReturnValueOnce({
-        foo: 'bar',
-      });
-      const config = usePageConfig();
-      expect(config).toEqual({ settings: { foo: 'bar' } });
-    });
-
-    it('should override page and global by widget settings', () => {
-      useRoute.mockReturnValueOnce({ pattern: '/test3' });
-      getThemeSettings.mockReturnValueOnce({
-        foo: 'bar',
-      });
-      const config = usePageConfig();
-      expect(config).toEqual({
-        settings: {
-          foo: 'fuzz',
-          test: true,
-        },
-      });
+    it('should return what it got from the helper function without messing with references.', () => {
+      useRoute.mockReturnValue({ pattern: '/page/pattern' });
+      const testPageConfig = {
+        pattern: '/page/pattern',
+        settings: { custom: '123' },
+        widgets: [],
+      };
+      getPageConfig.mockReturnValue(testPageConfig);
+      const result = usePageConfig();
+      expect(result === testPageConfig).toBeTruthy();
     });
   });
 });
