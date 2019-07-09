@@ -6,6 +6,7 @@ import { getProducts } from './product';
  * Returns productRelations state.
  * @param {Object} state State.
  * @returns {Object}
+ * @deprecated
  */
 export const getProductRelationsState = state => state.product.productRelationsByHash;
 
@@ -13,6 +14,7 @@ export const getProductRelationsState = state => state.product.productRelationsB
  * Factory of a function that returns selector of product relations state for given hash.
  * @param {string} hash State hash.
  * @returns {Function}
+ * @deprecated
  */
 export const getProductRelationsByHash = hash => createSelector(
   getProductRelationsState,
@@ -34,6 +36,7 @@ export const getProductRelationsByHash = hash => createSelector(
  * @param {string} type Relation type (see constants)
  * @param {number} limit Query limit.
  * @returns {Function} Selector.
+ * @deprecated Use `makeGetProductRelations` from `@shopgate/engage/products` instead.
  */
 export const getProductRelations = ({ productId, type, limit }) => (state) => {
   const hash = generateProductRelationsHash({
@@ -50,6 +53,7 @@ export const getProductRelations = ({ productId, type, limit }) => (state) => {
  *
  * @param {Object} params Params, see `.getProductRelations`
  * @returns {Array}
+ * @deprecated Use `makeGetRelatedProducts` from `@shopgate/engage/products` instead.
  */
 export const getRelatedProducts = params => createSelector(
   getProductRelations(params),
@@ -57,29 +61,4 @@ export const getRelatedProducts = params => createSelector(
   (relations = [], productsById) => relations
     .filter(id => productsById[id] && productsById[id].productData)
     .map(id => productsById[id].productData)
-);
-
-/**
- * @param {Object} params The selector parameters.
- * @param {string} params.productId Product id.
- * @param {string} params.type Relation type (see constants)
- * @param {number} params.limit Query limit.
- * @param {number} params.max The maximum number of products to return
- * @returns {Function}
- */
-export const getMaximumRelatedProducts = params => createSelector(
-  getRelatedProducts(params),
-  (products) => {
-    if (!params.max || products.length < params.max) {
-      return {
-        products,
-        productsCount: products.length,
-      };
-    }
-
-    return {
-      products: products.slice(0, (params.max)),
-      productsCount: products.length,
-    };
-  }
 );

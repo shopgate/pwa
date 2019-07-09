@@ -17,7 +17,7 @@ const RelationsSlider = ({ desiredPosition }) => {
     return null;
   }
 
-  return <RelationsSliderContent productId={productId} type={type} />;
+  return <RelationsSliderContent productId={productId} type={type} max={10} limit={100} />;
 };
 
 RelationsSlider.propTypes = {

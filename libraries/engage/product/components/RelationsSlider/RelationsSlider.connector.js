@@ -1,19 +1,22 @@
 import { connect } from 'react-redux';
-import { fetchProductRelations, getMaximumRelatedProducts } from '@shopgate/pwa-common-commerce/product';
+import { fetchProductRelations, makeGetMaximumRelatedProducts } from '@shopgate/engage/product';
 
 /**
- * @param {Object} state The application state.
- * @param {Object} props The component props.
- * @returns {Object}
+ * Creates the mapStateToProps connector function.
+ * @returns {Function}
  */
-const mapStateToProps = (state, { productId, type, limit = 100 }) => ({
-  products: getMaximumRelatedProducts({
-    productId,
-    type,
-    limit,
-    max: 10,
-  })(state),
-});
+function makeMapStateToProps() {
+  const getMaximumRelatedProducts = makeGetMaximumRelatedProducts();
+
+  /**
+  * @param {Object} state The application state.
+  * @param {Object} props The component props.
+  * @returns {Object}
+  */
+  return (state, props) => ({
+    products: getMaximumRelatedProducts(state, props),
+  });
+}
 
 /**
  * @param {Function} dispatch Dispatches an action.
@@ -28,4 +31,4 @@ const mapDispatchToProps = (dispatch, { productId, type, limit = 100 }) => ({
   })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(makeMapStateToProps, mapDispatchToProps);
