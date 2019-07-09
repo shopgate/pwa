@@ -16,7 +16,7 @@ import {
   ERROR_FETCH_FAVORITES,
   IDLE_SYNC_FAVORITES,
   ERROR_FAVORITES,
-  FORCE_CLEAR_FAVORITE_BUFFER,
+  SHOULD_FLUSH_FAVORITES_BUFFER,
 } from '../constants';
 
 /**
@@ -50,19 +50,20 @@ export const favoritesWillRemoveItem$ = main$
 
 export const favoritesSyncIdle$ = main$.filter(({ action }) => action.type === IDLE_SYNC_FAVORITES);
 
-export const addRemoveFavorites$ = main$.filter(({ action }) => (
-  action.type === REQUEST_ADD_FAVORITES || action.type === REQUEST_REMOVE_FAVORITES
+export const didRequestAddOrRemoveFavorites$ = main$.filter(({ action }) => (
+  action.type === REQUEST_ADD_FAVORITES
+  || (action.type === REQUEST_REMOVE_FAVORITES && !action.silent)
 ));
 
-export const forceClearFavoritesBuffer$ = main$.filter(({ action }) => (
-  action.type === FORCE_CLEAR_FAVORITE_BUFFER
+export const shouldFlushFavoritesBufferNow$ = main$.filter(({ action }) => (
+  action.type === SHOULD_FLUSH_FAVORITES_BUFFER
 ));
 
-export const clearAddRemoveFavoritesBuffer$ = addRemoveFavorites$
+export const flushFavoritesBuffer$ = didRequestAddOrRemoveFavorites$
   .debounceTime(SYNC_FAVORITES_BUFFER_TIME)
   .delay(SYNC_FAVORITES_BUFFER_TIME)
-  .merge(forceClearFavoritesBuffer$);
+  .merge(shouldFlushFavoritesBufferNow$);
 
-export const addRemoveBufferedFavorites$ = addRemoveFavorites$
-  .buffer(clearAddRemoveFavoritesBuffer$);
+export const shouldHandleBufferedFavorites$ = didRequestAddOrRemoveFavorites$
+  .buffer(flushFavoritesBuffer$);
 

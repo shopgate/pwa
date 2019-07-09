@@ -9,7 +9,7 @@ import {
   RECEIVE_SYNC_FAVORITES,
   ERROR_SYNC_FAVORITES,
   IDLE_SYNC_FAVORITES,
-  FORCE_CLEAR_FAVORITE_BUFFER,
+  SHOULD_FLUSH_FAVORITES_BUFFER,
 } from '../constants';
 
 /**
@@ -81,11 +81,11 @@ export const receiveSyncFavorites = (productIdsToAdd, productIdsToRemove) => ({
 });
 
 /**
- * Force Clear Favorites Buffer
+ * Return the flush favorites buffer Now action object
  * @return {Object}
  */
-export const forceClearFavoritesBuffer = () => ({
-  type: FORCE_CLEAR_FAVORITE_BUFFER,
+export const shouldFlushFavoritesBuffer = () => ({
+  type: SHOULD_FLUSH_FAVORITES_BUFFER,
 });
 
 /**

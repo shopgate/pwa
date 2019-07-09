@@ -10,7 +10,7 @@ import {
   errorSyncFavorites,
   errorFavorites,
   idleSyncFavorites,
-  forceClearFavoritesBuffer,
+  shouldFlushFavoritesBuffer,
 } from '../action-creators';
 import {
   getProductRelativesOnFavorites,
@@ -43,7 +43,7 @@ const addFavorites = productId => (dispatch, getState) => {
  * @param {string} productId Product identifier
  * @returns {Promise} PipelineRequest dispatch.
  */
-const dispatchAddFavorite = productId => (
+const sendAddFavorite = productId => (
   new PipelineRequest(pipelines.SHOPGATE_USER_ADD_FAVORITES)
     .setInput({ productId })
     .setRetries(0)
@@ -55,18 +55,18 @@ const dispatchAddFavorite = productId => (
  * @param {string} productId Product identifier
  * @returns {Promise} PipelineRequest dispatch.
  */
-const dispatchDeleteFavorite = productId => (
+const sendDeleteFavorite = productId => (
   new PipelineRequest(pipelines.SHOPGATE_USER_DELETE_FAVORITES)
     .setInput({ productId })
     .setRetries(0)
     .dispatch()
 );
 /**
- * Sync Add Favorites to backend
+ * Parse buffered actions and send net changes to the backend
  * @param {Object[]} bufferedActions Actions that have been buffered
  * @return {Function}
  */
-const dispatchBufferedFavoriteActions = bufferedActions => (dispatch) => {
+const handleBufferedFavoriteActions = bufferedActions => (dispatch) => {
   const uniqueProductIds = [...new Set(bufferedActions
     .filter(action => !!action.productId)
     .map(action => action.productId))];
@@ -100,9 +100,9 @@ const dispatchBufferedFavoriteActions = bufferedActions => (dispatch) => {
   }
 
   dispatch(requestSyncFavorites(productIdsToAdd, productIdsToRemove));
-  const addPromises = productIdsToAdd.map(productId => dispatchAddFavorite(productId));
+  const addPromises = productIdsToAdd.map(productId => sendAddFavorite(productId));
   const removePromises = productIdsToRemove
-    .map(productId => dispatchDeleteFavorite(productId));
+    .map(productId => sendDeleteFavorite(productId));
   Promise.all([...addPromises, ...removePromises])
     .then(() => {
       dispatch(receiveSyncFavorites(productIdsToAdd, productIdsToRemove));
@@ -136,16 +136,16 @@ const removeFavorites = (productId, withRelatives = false) => (dispatch, getStat
 };
 
 /**
- * Force the buffered add/remove favorites to be cleared.
+ * Force the a sync of favorites by flushing buffered addFavorites and RemoveFavorites actions.
  * @return {Function}
  */
-const requestForceFavoritesBufferClear = () => (dispatch) => {
-  dispatch(forceClearFavoritesBuffer());
+const requestSync = () => (dispatch) => {
+  dispatch(shouldFlushFavoritesBuffer());
 };
 
 export {
   addFavorites,
   removeFavorites,
-  dispatchBufferedFavoriteActions,
-  requestForceFavoritesBufferClear,
+  handleBufferedFavoriteActions,
+  requestSync,
 };

@@ -6,10 +6,10 @@ import {
   shouldFetchFreshFavorites$,
   favoritesSyncIdle$,
   favoritesError$,
-  addRemoveBufferedFavorites$,
+  shouldHandleBufferedFavorites$,
 } from '../streams';
 import fetchFavorites from '../actions/fetchFavorites';
-import { dispatchBufferedFavoriteActions } from '../actions/toggleFavorites';
+import { handleBufferedFavoriteActions } from '../actions/toggleFavorites';
 import { requestRemoveFavorites } from '../action-creators';
 import { FETCH_FAVORITES_THROTTLE } from '../constants';
 
@@ -56,7 +56,7 @@ export default function favorites(subscribe) {
     });
   });
 
-  subscribe(addRemoveBufferedFavorites$, (bufferedParams) => {
+  subscribe(shouldHandleBufferedFavorites$, (bufferedParams) => {
     if (!(Array.isArray(bufferedParams) && bufferedParams.length > 0)) {
       return;
     }
@@ -75,6 +75,6 @@ export default function favorites(subscribe) {
       ))
       .map(param => param.action);
 
-    dispatch(dispatchBufferedFavoriteActions(bufferedActions));
+    dispatch(handleBufferedFavoriteActions(bufferedActions));
   });
 }
