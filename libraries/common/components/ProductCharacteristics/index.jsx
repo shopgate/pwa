@@ -178,12 +178,18 @@ class ProductCharacteristics extends Component {
     this.setState(({ characteristics }) => {
       const { variants } = this.props;
       const { id, value } = selection;
-      const state = prepareState(id, characteristics, variants.characteristics);
+
+      const state = prepareState(
+        id,
+        value,
+        characteristics,
+        variants.characteristics,
+        variants.products
+      );
 
       return {
         characteristics: {
           ...state,
-          [id]: value,
         },
         highlight: null,
       };
