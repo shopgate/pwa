@@ -5,7 +5,7 @@ import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
 import { Pagination, Navigation, Autoplay, Zoom } from 'swiper/dist/js/swiper.esm';
 import SwiperItem from './components/SwiperItem';
-import { container, innerContainer, zoomFix, bullet, bulletActive, buttonNext, buttonPrev } from './styles';
+import { container, innerContainer, zoomFix, buttonNext, buttonPrev } from './styles';
 
 /**
  * The basic swiper component.
@@ -113,8 +113,9 @@ function Swiper(props) {
     pagination: {
       el,
       type: paginationType,
-      bulletClass: classNames.bulletClass || bullet,
-      bulletActiveClass: classNames.bulletActiveClass || bulletActive,
+      bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
+      bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
+      dynamicBullets: true,
     },
     loop,
     rebuildOnUpdate,
