@@ -43,15 +43,18 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
               "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
             }
           }
+          wrapper={[Function]}
         >
-          <div
-            className="css-7v4dr8"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<h1>Hello World!</h1>",
+          <EmbeddedMedia>
+            <div
+              className="css-7v4dr8"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<h1>Hello World!</h1>",
+                }
               }
-            }
-          />
+            />
+          </EmbeddedMedia>
         </HtmlSanitizer>
       </div>
     </Html>
@@ -106,15 +109,18 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
               "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
             }
           }
+          wrapper={[Function]}
         >
-          <div
-            className="css-7v4dr8"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<h1>Hello World!</h1>",
+          <EmbeddedMedia>
+            <div
+              className="css-7v4dr8"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<h1>Hello World!</h1>",
+                }
               }
-            }
-          />
+            />
+          </EmbeddedMedia>
         </HtmlSanitizer>
       </div>
     </Html>
