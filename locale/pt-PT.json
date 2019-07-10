@@ -52,7 +52,7 @@
       "set": "{from} itens: {price}",
       "range": "{from} ou mais: {price}"
     },
-    "msrp": "MSRP",
+    "msrp": "Preço sugerido",
     "label": "Preço {price}.",
     "label_old_price": "Preço antigo {price}."
   },

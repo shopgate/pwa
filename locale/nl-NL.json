@@ -54,7 +54,7 @@
     },
     "msrp": "MSRP",
     "label": "Prijs {price}.",
-    "label_old_price": "Oude prijs {price}."
+    "label_old_price": "Vorige prijs {price}."
   },
   "product": {
     "description_heading": "Over",
@@ -134,7 +134,7 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
-    "coupons_not_supported": "Voeg coupons en cadeaubonnen toe tijdens het afprekenproces.",
+    "coupons_not_supported": "Coupons zijn ongeldig.",
     "free_shipping": "Gratis verzending"
   },
   "login": {
