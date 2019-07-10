@@ -8,8 +8,8 @@
     "required": "Necesaria *",
     "please_choose": "Por favor, seleccione",
     "show_products": "Mostrar productos",
-    "back": "Atras",
-    "close": "Close"
+    "back": "Volver",
+    "close": "Cerrar"
   },
   "titles": {
     "categories": "Todas las categorías",
@@ -53,7 +53,7 @@
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
     },
-    "msrp": "MSRP",
+    "msrp": "PVP",
     "label": "Precio {price}.",
     "label_old_price": "Precio anterior {price}."
   },

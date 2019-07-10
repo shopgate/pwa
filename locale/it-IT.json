@@ -1,7 +1,7 @@
 {
   "common": {
     "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# giorno {time}} other {# giorni {time}}}",
-    "load_more": "Carica altro",
+    "load_more": "Carica di più",
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
     "undo": "annulla",
@@ -43,7 +43,7 @@
       "price_asc": "Prezzo: Dal Basso in Alto"
     },
     "apply": "Applica",
-    "more": "altro",
+    "more": "di più",
     "reset": "Resetta"
   },
   "price": {
@@ -55,7 +55,7 @@
     },
     "msrp": "SRP",
     "label": "Prezzo {price}.",
-    "label_old_price": "Vecchio prezzo {price}."
+    "label_old_price": "Prezzo precedente {price}."
   },
   "product": {
     "description_heading": "A riguardo",
@@ -172,7 +172,7 @@
     "return_policy": "Politica di Restituzione",
     "logout": "Esci",
     "store_information": "Informazioni del Negozio",
-    "more_menu": "Altro"
+    "more_menu": "Di più"
   },
   "reviews": {
     "rating": "valutazione",
@@ -196,7 +196,7 @@
     "home": "Pagina Iniziale",
     "browse": "Sfoglia",
     "cart": "Carrello",
-    "more": "Altro",
+    "more": "Di più",
     "favorites": "Favoriti"
   },
   "scanner": {
