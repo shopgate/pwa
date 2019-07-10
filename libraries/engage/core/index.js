@@ -113,6 +113,7 @@ export * from '@shopgate/pwa-common/streams/error';
 
 // ACTIONS
 export { default as handleDeepLink } from '@shopgate/pwa-common/actions/app/handleDeepLink';
+export { default as handleUniversalLink } from '@shopgate/pwa-common/actions/app/handleUniversalLink';
 export { default as handleLink } from '@shopgate/pwa-common/actions/app/handleLink';
 export { default as handlePushNotification } from '@shopgate/pwa-common/actions/app/handlePushNotification';
 export { default as registerLinkEvents } from '@shopgate/pwa-common/actions/app/registerLinkEvents';
@@ -255,6 +256,10 @@ export { getThemeConfig } from './config/getThemeConfig';
 export { getThemeSettings } from './config/getThemeSettings';
 export { getThemeColors } from './config/getThemeColors';
 export { getThemeAssets } from './config/getThemeAssets';
+export { getPageConfig } from './config/getPageConfig';
+export { getPageSettings } from './config/getPageSettings';
+export { getWidgetConfig } from './config/getWidgetConfig';
+export { getWidgetSettings } from './config/getWidgetSettings';
 
 // -------------- HELPERS -------------- //
 export { i18n } from './helpers/i18n';

@@ -8,6 +8,7 @@ import {
   DID_REGISTER_LINK_EVENTS,
   OPEN_DEEP_LINK,
   OPEN_PUSH_NOTIFICATION,
+  OPEN_UNIVERSAL_LINK,
 } from '../../constants/ActionTypes';
 
 /**
@@ -92,4 +93,14 @@ export const openPushNotification = (notificationId, link = '') => ({
   type: OPEN_PUSH_NOTIFICATION,
   notificationId,
   link,
+});
+
+/**
+ * Creates the dispatched OPEN_UNIVERSAL_LINK action object.
+ * @param {Object} payload The payload of the universal link.
+ * @return {Object} The dispatched action object.
+ */
+export const openUniversalLink = payload => ({
+  type: OPEN_UNIVERSAL_LINK,
+  payload,
 });

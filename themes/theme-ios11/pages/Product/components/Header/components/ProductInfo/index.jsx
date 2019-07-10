@@ -35,7 +35,7 @@ const ProductInfo = ({ productId, options }) => (
           <Portal name={PRODUCT_INFO_ROW1}>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
-                It should only be used for approved BETA Client Projects */}
+              It should only be used for approved BETA Client Projects */}
               <MapPriceHint productId={productId} />
             </div>
             <div className={styles.productInfo}>
@@ -46,7 +46,7 @@ const ProductInfo = ({ productId, options }) => (
             </div>
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
-                It should only be used for approved BETA Client Projects */}
+              It should only be used for approved BETA Client Projects */}
               <OrderQuantityHint productId={productId} />
             </div>
             <div className={styles.productInfo}>

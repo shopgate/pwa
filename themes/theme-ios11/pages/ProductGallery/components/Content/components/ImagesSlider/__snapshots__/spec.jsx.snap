@@ -87,7 +87,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-1n5i2c5 css-sa13d4 css-qb469q"
+              containerClass="css-15qycmt css-sa13d4 css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={3}
@@ -208,8 +208,9 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               }
               pagination={
                 Object {
-                  "bulletActiveClass": "css-hpsgy2",
-                  "bulletClass": "css-cvsmqf",
+                  "bulletActiveClass": "swiper-pagination-bullet-active",
+                  "bulletClass": "swiper-pagination-bullet",
+                  "dynamicBullets": true,
                   "el": ".swiper-pagination",
                   "type": "bullets",
                 }
@@ -232,7 +233,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               }
             >
               <div
-                className="css-1n5i2c5 css-sa13d4 css-qb469q"
+                className="css-15qycmt css-sa13d4 css-qb469q"
               >
                 <div
                   className="swiper-wrapper"
@@ -376,7 +377,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-1n5i2c5 css-sa13d4 css-qb469q"
+              containerClass="css-15qycmt css-sa13d4 css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={0}
@@ -497,8 +498,9 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               }
               pagination={
                 Object {
-                  "bulletActiveClass": "css-hpsgy2",
-                  "bulletClass": "css-cvsmqf",
+                  "bulletActiveClass": "swiper-pagination-bullet-active",
+                  "bulletClass": "swiper-pagination-bullet",
+                  "dynamicBullets": true,
                   "el": ".swiper-pagination",
                   "type": "bullets",
                 }
@@ -521,7 +523,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               }
             >
               <div
-                className="css-1n5i2c5 css-sa13d4 css-qb469q"
+                className="css-15qycmt css-sa13d4 css-qb469q"
               >
                 <div
                   className="swiper-wrapper"

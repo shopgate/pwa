@@ -8,7 +8,7 @@ class YouTubeMediaProvider extends MediaProvider {
   /**
    * Add a DOM container with embedded videos.
    * @override
-   * @param {NodeList} container A DOM container.
+   * @param {ParentNode} container A DOM container.
    * @returns {YouTubeMediaProvider}
    */
   add(container) {

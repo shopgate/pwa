@@ -46,6 +46,7 @@ export default {
         hideRating: false,
         showProductProperties: false,
         showAvailabilityText: true,
+        showMoreButton: true,
       },
     },
     pages: [
@@ -86,7 +87,7 @@ export default {
             id: '@shopgate/engage/product/MediaSlider',
             settings: {
               videos: {
-                controls: false,
+                controls: true,
                 autoPlay: {
                   [CONNECTIVITY_TYPE_WIFI]: true,
                   [CONNECTIVITY_TYPE_4G]: false,

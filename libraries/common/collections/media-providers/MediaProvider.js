@@ -1,4 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
+import { isRelativePosition, isAbsolutePosition } from '../../helpers/dom';
 import styles from './style';
 
 /**
@@ -10,18 +11,35 @@ class MediaProvider {
    */
   constructor() {
     this.containers = new Map();
+    this.isPending = false;
+    this.remoteScriptUrl = null;
+  }
+
+  /**
+   * Callback for when Provider script is loaded
+   * @callback
+   * @abstract
+   */
+  /* eslint-disable-next-line class-methods-use-this, require-jsdoc */
+  onScriptLoaded() {
+    logger.error('MediaProvider.onScriptLoaded() needs to be implemented within an inheriting class');
   }
 
   /**
    * Optimizes video container to make it responsive.
-   * @param {NodeList} container A DOM container.
-   * @private
+   * @param {Element} container A DOM container.
    * @returns {MediaProvider}
    */
   responsify(container) {
     // Remove fixed dimensions from the container.
     container.removeAttribute('height');
     container.removeAttribute('width');
+
+    if (isRelativePosition(container.parentNode)
+    && isAbsolutePosition(container)) {
+      // Assume responsive embed code
+      container.parentNode.removeAttribute('style');
+    }
 
     // Create the wrapper and apply styling.
     const wrapper = document.createElement('div');

@@ -3,23 +3,11 @@ import {
   makeGetProductPriceData,
   makeGetProductMapPrice,
 } from '../price';
+import { wrapMemoizedSelector } from '../helpers';
 
 jest.mock('@shopgate/pwa-common-commerce/product', () => ({
   getProductPriceData: jest.fn(),
 }));
-
-/**
- * Memoization test
- * @param {Function} selector selector
- * @returns {Function}
- */
-export const wrapMemoizedSelector = selector => (...args) => {
-  const result = selector(...args);
-  if (selector(...args) !== result) {
-    throw new Error('Memoization check failed.');
-  }
-  return result;
-};
 
 describe('engage > product > selectors > price', () => {
   describe('makeGetProductPriceData()', () => {
