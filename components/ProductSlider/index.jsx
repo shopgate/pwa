@@ -30,7 +30,7 @@ function ProductSlider(props) {
             indicators={false}
             interval={delay}
             loop={false}
-            snapItems={snap}
+            freeMode={!snap}
             slidesPerView={slidesPerView}
           >
             {productIds.map(id => <Item key={id} productId={id} style={styles} />)}
