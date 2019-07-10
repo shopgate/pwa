@@ -74,6 +74,9 @@
       "not": "Op dit moment niet beschikbaar",
       "not_search_similar": "{name} is niet beschikbaar. Zoeken naar vergelijkbare producten?"
     },
+    "relations": {
+      "showMore": "Toon alles"
+    },
     "sections": {
       "information": "Product Information",
       "options": "Choose Options",
@@ -202,7 +205,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
