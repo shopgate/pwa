@@ -1,11 +1,13 @@
 import { ELIMIT } from '@shopgate/pwa-core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { fetchProductsById } from '@shopgate/pwa-common-commerce/product';
 import {
   shouldFetchFavorites$,
   shouldFetchFreshFavorites$,
   favoritesSyncIdle$,
   favoritesError$,
+  receiveFavorites$,
 } from '../streams';
 import fetchFavorites from '../actions/fetchFavorites';
 import { requestRemoveFavorites } from '../action-creators';
@@ -52,5 +54,13 @@ export default function favorites(subscribe) {
         dispatch(requestRemoveFavorites(action.productId, true));
       }
     });
+  });
+
+  /**
+   * Fetch missing product data by received favorite Ids
+   */
+  subscribe(receiveFavorites$, ({ dispatch, action }) => {
+    const productIds = action.products.map(product => product.id);
+    dispatch(fetchProductsById(productIds));
   });
 }

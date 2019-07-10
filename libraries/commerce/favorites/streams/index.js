@@ -46,4 +46,6 @@ export const favoritesDidUpdate$ = main$.filter(({ action }) => [
 export const favoritesWillRemoveItem$ = main$
   .filter(({ action }) => action.type === REQUEST_REMOVE_FAVORITES && !action.silent);
 
+export const receiveFavorites$ = main$.filter(({ action }) => action.type === RECEIVE_FAVORITES);
+
 export const favoritesSyncIdle$ = main$.filter(({ action }) => action.type === IDLE_SYNC_FAVORITES);

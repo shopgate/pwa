@@ -3,6 +3,8 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
+import configuration from '@shopgate/pwa-common/collections/Configuration';
+import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
 import * as pipelines from '../constants/Pipelines';
 import buildRequestFilters from '../../filter/actions/helpers/buildRequestFilters';
 import requestProducts from '../action-creators/requestProducts';
@@ -72,8 +74,16 @@ const fetchProducts = ({
 
     const { sort = DEFAULT_SORT } = hashParams;
 
+    let getProductsRequestParams;
+    if (pipeline === pipelines.SHOPGATE_CATALOG_GET_PRODUCTS) {
+      getProductsRequestParams = configuration.get(DEFAULT_PRODUCTS_FETCH_PARAMS);
+    }
+
     // We need to process the params to handle edge cases in the pipeline params.
-    const requestParams = processParams(params, filters, includeSort, includeFilters);
+    const requestParams = {
+      ...getProductsRequestParams,
+      ...processParams(params, filters, includeSort, includeFilters),
+    };
 
     const hash = generateResultHash({
       pipeline,
