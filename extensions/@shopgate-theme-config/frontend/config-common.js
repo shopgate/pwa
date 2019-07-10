@@ -46,6 +46,7 @@ export default {
         hideRating: false,
         showProductProperties: false,
         showAvailabilityText: true,
+        showMoreButton: true,
       },
     },
     pages: [
