@@ -77,6 +77,9 @@
       "not": "Derzeit nicht verfügbar",
       "not_search_similar": "{name} nicht verfügbar. Nach ähnlichen Produkten suchen?"
     },
+    "relations": {
+      "showMore": "Mehr"
+    },
     "sections": {
       "information": "Produkt Informationen",
       "options": "Optionen wählen",
@@ -212,7 +215,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
