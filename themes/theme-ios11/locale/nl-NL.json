@@ -55,7 +55,7 @@
     },
     "msrp": "MSRP",
     "label": "Prijs {price}.",
-    "label_old_price": "Oude prijs {price}."
+    "label_old_price": "Vorige prijs {price}."
   },
   "product": {
     "description_heading": "Over",
@@ -64,7 +64,7 @@
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
     "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
     "pick_option_first": "Pick an option first. {option}",
-    "fill_out_required_input_first": "Fill out the required inputs first.", 
+    "fill_out_required_input_first": "Fill out the required inputs first.",
     "add_to_cart": "Voeg aan winkelwagen toe",
     "go_to_cart": "Winkelwagen",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
@@ -139,7 +139,7 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
-    "coupons_not_supported": "Voeg coupons en cadeaubonnen toe tijdens het afprekenproces.",
+    "coupons_not_supported": "Coupons zijn ongeldig.",
     "free_shipping": "Gratis verzending"
   },
   "login": {
