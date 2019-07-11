@@ -60,6 +60,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={3}
           interval={3000}
@@ -86,12 +87,26 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               WrapperEl="div"
               allowSlideNext={true}
               allowSlidePrev={true}
+              aria-hidden={null}
+              autoPlay={false}
               autoplay={false}
+              className="css-sa13d4"
+              classNames={
+                Object {
+                  "container": "css-sa13d4",
+                  "indicator": "css-vsp2nx",
+                }
+              }
               containerClass="css-15qycmt css-sa13d4 css-qb469q"
+              controls={false}
+              disabled={false}
               freeMode={false}
               getSwiper={[Function]}
+              indicators={true}
               initialSlide={3}
+              interval={3000}
               loop={true}
+              maxIndicators={null}
               modules={
                 Array [
                   Object {
@@ -206,6 +221,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                   "prevEl": null,
                 }
               }
+              onSlideChange={[Function]}
               pagination={
                 Object {
                   "bulletActiveClass": "swiper-pagination-bullet-active",
@@ -223,6 +239,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               renderScrollbar={[Function]}
               slideClass="swiper-slide"
               slidesPerView={1}
+              snapItems={true}
               wrapperClass="swiper-wrapper"
               zoom={
                 Object {
@@ -350,6 +367,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={0}
           interval={3000}
@@ -376,12 +394,26 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               WrapperEl="div"
               allowSlideNext={true}
               allowSlidePrev={true}
+              aria-hidden={null}
+              autoPlay={false}
               autoplay={false}
+              className="css-sa13d4"
+              classNames={
+                Object {
+                  "container": "css-sa13d4",
+                  "indicator": "css-vsp2nx",
+                }
+              }
               containerClass="css-15qycmt css-sa13d4 css-qb469q"
+              controls={false}
+              disabled={false}
               freeMode={false}
               getSwiper={[Function]}
+              indicators={true}
               initialSlide={0}
+              interval={3000}
               loop={true}
+              maxIndicators={null}
               modules={
                 Array [
                   Object {
@@ -496,6 +528,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                   "prevEl": null,
                 }
               }
+              onSlideChange={[Function]}
               pagination={
                 Object {
                   "bulletActiveClass": "swiper-pagination-bullet-active",
@@ -513,6 +546,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               renderScrollbar={[Function]}
               slideClass="swiper-slide"
               slidesPerView={1}
+              snapItems={true}
               wrapperClass="swiper-wrapper"
               zoom={
                 Object {

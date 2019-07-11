@@ -22,6 +22,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
@@ -30,7 +31,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     onSlideChange={[Function]}
     rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem
@@ -1192,6 +1193,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
@@ -1200,7 +1202,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     onSlideChange={[Function]}
     rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem
@@ -1419,6 +1421,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
@@ -1427,7 +1430,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     onSlideChange={[Function]}
     rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem
@@ -1639,6 +1642,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
@@ -1647,7 +1651,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     onSlideChange={[Function]}
     rebuildOnUpdate={false}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem
