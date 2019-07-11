@@ -147,7 +147,9 @@ class ProductCharacteristics extends Component {
 
   handleFinished = () => {
     const { characteristics } = this.state;
-    const { variantId, variants, finishTimeout } = this.props;
+    const {
+      variantId, variants, finishTimeout, setCharacteristic,
+    } = this.props;
     const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
 
     if (filteredValues.length !== variants.characteristics.length) {
@@ -167,6 +169,7 @@ class ProductCharacteristics extends Component {
     }
 
     setTimeout(() => {
+      setCharacteristic(null);
       this.props.navigate(products[0].id);
     }, finishTimeout);
   }
