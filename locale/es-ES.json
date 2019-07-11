@@ -8,8 +8,8 @@
     "required": "Necesaria *",
     "please_choose": "Por favor, seleccione",
     "show_products": "Mostrar productos",
-    "back": "Atras",
-    "close": "Close"
+    "back": "Volver",
+    "close": "Cerrar"
   },
   "titles": {
     "categories": "Todas las categorías",
@@ -19,7 +19,7 @@
     "reviews": "Comentarios",
     "browse": "Buscar",
     "favorites": "Favoritos",
-    "scanner": "Scanner"
+    "scanner": "Escáner"
   },
   "favorites": {
     "add": "Agregar a favoritos",
@@ -40,7 +40,7 @@
       "default": "Ordenar por",
       "most_popular": "Más popular",
       "price_desc": "Precio: mayor a Menor",
-      "price_asc": "Pricio: Menor a Mayor"
+      "price_asc": "Precio: Menor a Mayor"
     },
     "apply": "Aplicar",
     "more": "más",
@@ -53,10 +53,9 @@
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "EUR",
-    "label": "Price {price}.",
-    "label_old_price": "Old price {price}."
+    "msrp": "PVP",
+    "label": "Precio {price}.",
+    "label_old_price": "Precio anterior {price}."
   },
   "product": {
     "description_heading": "Sobre",
@@ -77,6 +76,9 @@
       "until": "Disponible hasta {endDate, date, DD} {endDate, date, MMM} a las {endDate, time, short}",
       "not": "Indisponible por el momento",
       "not_search_similar": "{name} indisponible. ¿Buscar productos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar todo"
     },
     "sections": {
       "information": "Product Information",
@@ -107,7 +109,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultado."
-    }
+    },
+    "placeholder": "Buscar"
   },
   "shipping": {
     "unknown": "más envío",
@@ -126,7 +129,7 @@
     "body_error": "Ocurrió un error inesperado. vuelva a intentarlo."
   },
   "cart": {
-    "subtotal": "Subtotal",
+    "subtotal": "Total parcial",
     "total": "Total de la cesta",
     "discount": "Descuento",
     "discount_with_label": "Descuento ({label})",
@@ -211,7 +214,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
