@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { updateInsetBackgroundColor } from './style';
+import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import UIEvents from '@shopgate/pwa-core/emitters/ui';
+import { SHEET_EVENTS } from '../Sheet';
+import { updateInsetBackgroundColor, updateFooterHeight } from './style';
 import Footer from './index';
 
 const mutationConstructorSpy = jest.fn();
@@ -20,9 +23,20 @@ jest.mock('./style', () => {
   return {
     ...actual,
     updateInsetBackgroundColor: jest.fn(),
+    updateFooterHeight: jest.fn(),
   };
 });
-
+jest.mock('@shopgate/pwa-core/emitters/ui', () => ({
+  addListener: jest.fn(),
+  removeListener: jest.fn(),
+}));
+jest.mock('@shopgate/pwa-common/helpers/dom', () => {
+  const actual = require.requireActual('@shopgate/pwa-common/helpers/dom');
+  return {
+    ...actual,
+    getAbsoluteHeight: jest.fn(),
+  };
+});
 jest.mock('@shopgate/pwa-common/components/Portal', () => {
   // eslint-disable-next-line require-jsdoc
   function Portal() {
@@ -34,7 +48,7 @@ jest.mock('@shopgate/pwa-common/components/Portal', () => {
 
 const FOOTER_CHILD_ID = 'footer-child';
 const PORTAL_CONTENT_ID = 'portal-content';
-const insetBackgroundUpdateSpy = jest.spyOn(Footer.prototype, 'performInsetBackgroundUpdate');
+const insetBackgroundUpdateSpy = jest.spyOn(Footer.prototype, 'performFooterUpdate');
 const defaultBackgroundColor = 'red';
 const defaultChildren = (<div
   id={FOOTER_CHILD_ID}
@@ -174,12 +188,12 @@ describe('<Footer />', () => {
     });
   });
 
-  describe('.performInsetBackgroundUpdate()', () => {
+  describe('.performFooterUpdate()', () => {
     it('should do nothing when the ref is empty', () => {
       const wrapper = createComponent();
       wrapper.instance().ref.current = null;
       updateInsetBackgroundColor.mockClear();
-      wrapper.instance().performInsetBackgroundUpdate();
+      wrapper.instance().performFooterUpdate();
       expect(updateInsetBackgroundColor).not.toHaveBeenCalled();
     });
 
@@ -187,7 +201,7 @@ describe('<Footer />', () => {
       const wrapper = createComponent();
       updateInsetBackgroundColor.mockClear();
       const instance = wrapper.instance();
-      instance.performInsetBackgroundUpdate();
+      instance.performFooterUpdate();
       const backgroundColor = instance.getInsetBackgroundColor(instance.ref.current.children);
       expect(updateInsetBackgroundColor).toHaveBeenCalledTimes(1);
       expect(updateInsetBackgroundColor).toHaveBeenCalledWith(backgroundColor);
@@ -227,6 +241,45 @@ describe('<Footer />', () => {
       element.setAttribute('data-footer-inset-update-ignore', 'true');
       callback([{ target: element }]);
       expect(insetBackgroundUpdateSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('UI events subscriptions', () => {
+    it('should subscribe / unsubscribe UI events', () => {
+      const wrapper = mount((
+        <Footer>
+          <div>Footer</div>
+        </Footer>
+      ));
+      const instance = wrapper.instance();
+
+      expect(UIEvents.addListener).toBeCalledTimes(2);
+      expect(UIEvents.addListener).nthCalledWith(1, SHEET_EVENTS.OPEN, instance.hide);
+      expect(UIEvents.addListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, instance.show);
+
+      wrapper.unmount();
+      expect(UIEvents.removeListener).toBeCalledTimes(2);
+      expect(UIEvents.removeListener).nthCalledWith(1, SHEET_EVENTS.OPEN, instance.hide);
+      expect(UIEvents.removeListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, instance.show);
+    });
+  });
+
+  describe('updateFooterHeight', () => {
+    let instance;
+
+    beforeEach(() => {
+      const wrapper = createComponent();
+      instance = wrapper.instance();
+    });
+
+    it('should set footer height to zero', () => {
+      instance.hide();
+      expect(updateFooterHeight).toHaveBeenCalledWith(0);
+    });
+    it('should set footer height', () => {
+      getAbsoluteHeight.mockReturnValueOnce('48px');
+      instance.show();
+      expect(updateFooterHeight).toHaveBeenCalledWith('48px');
     });
   });
 });
