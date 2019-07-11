@@ -8,8 +8,8 @@
     "required": "Necesaria *",
     "please_choose": "Por favor, seleccione",
     "show_products": "Mostrar productos",
-    "back": "Back",
-    "close": "Close"
+    "back": "Volver",
+    "close": "Cerrar"
   },
   "titles": {
     "categories": "Categorías",
@@ -18,7 +18,7 @@
     "shipping": "Envío",
     "reviews": "Comentarios",
     "favorites": "Favoritos",
-    "scanner": "Scanner"
+    "scanner": "Escáner"
   },
   "favorites": {
     "add": "Agregar a favoritos",
@@ -52,7 +52,9 @@
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "PVP",
+    "label": "Precio {price}.",
+    "label_old_price": "Precio anterior {price}."
   },
   "product": {
     "description_heading": "Sobre",
@@ -71,6 +73,9 @@
       "until": "Disponible hasta {endDate, date, DD} {endDate, date, MMM} a las {endDate, time, short}",
       "not": "Indisponible por el momento",
       "not_search_similar": "{name} indisponible. ¿Buscar productos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar todo"
     },
     "sections": {
       "information": "Product Information",
@@ -91,8 +96,8 @@
       "body": "No se encontraron productos."
     },
     "sections": {
-      "categories": "Categories",
-      "products": "Products"
+      "categories": "Categorías",
+      "products": "Productos"
     }
   },
   "search": {
@@ -119,7 +124,7 @@
     "body_error": "Ocurrió un error inesperado. Intente nuevamente."
   },
   "cart": {
-    "subtotal": "Subtotal",
+    "subtotal": "Total parcial",
     "total": "Total de la cesta",
     "discount": "Descuento",
     "discount_with_label": "Descuento ({label})",
@@ -150,20 +155,25 @@
   },
   "navigation": {
     "login_register": "Iniciar sesión / Registro",
+    "your_account": "Mi cuenta",
     "home": "Inicio",
     "categories": "Categorías",
     "favorites": "Favoritos",
     "my_orders": "Mis pedidos",
     "cart": "Cesta de la compra",
-    "scanner": "Scanner",
+    "scanner": "Escáner",
     "shipping": "Métodos de envío",
     "about": "Sobre nosotros",
     "payment": "Métodos de pago",
     "terms": "Términos",
     "privacy": "Política de privacidad",
-    "return_policy": "Política de devolución",
     "welcome_message": "Bienvenido {name}",
-    "logout": "Cerrar sesión"
+    "return_policy": "Política de devolución",
+    "logout": "Cerrar sesión",
+    "menuSubHeader": {
+      "more": "Más",
+      "about": "Sobre nosotros"
+    }
   },
   "reviews": {
     "rating": "Calificación",
@@ -195,7 +205,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
