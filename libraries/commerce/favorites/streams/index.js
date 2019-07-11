@@ -6,17 +6,22 @@ import {
   userDidLogout$,
 } from '@shopgate/pwa-common/streams/user';
 import {
+  ADD_PRODUCT_TO_FAVORITES,
+  REMOVE_PRODUCT_FROM_FAVORITES,
   FAVORITES_PATH,
   REQUEST_ADD_FAVORITES,
+  SUCCESS_ADD_FAVORITES,
+  ERROR_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
+  SUCCESS_REMOVE_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
   RECEIVE_FAVORITES,
-  RECEIVE_SYNC_FAVORITES,
-  ERROR_SYNC_FAVORITES,
-  SYNC_FAVORITES_BUFFER_TIME,
+  FAVORITE_ACTION_BUFFER_TIME,
   ERROR_FETCH_FAVORITES,
   IDLE_SYNC_FAVORITES,
   ERROR_FAVORITES,
-  SHOULD_FLUSH_FAVORITES_BUFFER,
+  REQUEST_FLUSH_FAVORITES_BUFFER,
+  FAVORITE_BUTTON_DEBOUNCE_TIME,
 } from '../constants';
 
 /**
@@ -26,10 +31,21 @@ import {
 export const favoritesWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === FAVORITES_PATH);
 
+/**
+ * Debounce favorite updates
+ */
+export const addProductsToFavoritesDebounced$ = main$
+  .filter(({ action }) => action.type === ADD_PRODUCT_TO_FAVORITES)
+  .debounceTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
+export const removeProductFromFavoritesDebounced$ = main$
+  .filter(({ action }) => action.type === REMOVE_PRODUCT_FROM_FAVORITES)
+  .debounceTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
+
 export const favoritesError$ = main$.filter(({ action }) => [
-  ERROR_SYNC_FAVORITES,
   ERROR_FETCH_FAVORITES,
-  ERROR_FAVORITES,
+  ERROR_ADD_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
+  ERROR_FAVORITES, // local favorite errors, unrelated to network requests
 ].includes(action.type));
 
 export const shouldFetchFavorites$ = favoritesWillEnter$.merge(appDidStart$);
@@ -38,32 +54,43 @@ export const shouldFetchFreshFavorites$ = userDidLogin$.merge(userDidLogout$);
 
 export const favoritesDidUpdate$ = main$.filter(({ action }) => [
   REQUEST_ADD_FAVORITES,
+  ERROR_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
   RECEIVE_FAVORITES,
-  RECEIVE_SYNC_FAVORITES,
-  ERROR_SYNC_FAVORITES,
   ERROR_FETCH_FAVORITES,
 ].includes(action.type));
 
+export const favoritesWillAddItem$ = main$
+  .filter(({ action }) => action.type === REQUEST_ADD_FAVORITES);
+
+export const favoritesDidAddItem$ = main$
+  .filter(({ action }) => action.type === SUCCESS_ADD_FAVORITES);
+
 export const favoritesWillRemoveItem$ = main$
-  .filter(({ action }) => action.type === REQUEST_REMOVE_FAVORITES && !action.silent);
+  .filter(({ action }) => action.type === REQUEST_REMOVE_FAVORITES);
 
-export const favoritesSyncIdle$ = main$.filter(({ action }) => action.type === IDLE_SYNC_FAVORITES);
+export const favoritesDidRemoveItem$ = main$
+  .filter(({ action }) => action.type === SUCCESS_REMOVE_FAVORITES);
 
+export const favoritesSyncIdle$ = main$
+  .filter(({ action }) => action.type === IDLE_SYNC_FAVORITES);
+
+/**
+ * Combines debounced add or remove requests to handle them in the same way
+ */
 export const didRequestAddOrRemoveFavorites$ = main$.filter(({ action }) => (
-  action.type === REQUEST_ADD_FAVORITES
-  || (action.type === REQUEST_REMOVE_FAVORITES && !action.silent)
+  action.type === REQUEST_ADD_FAVORITES || action.type === REQUEST_REMOVE_FAVORITES
 ));
 
-export const shouldFlushFavoritesBufferNow$ = main$.filter(({ action }) => (
-  action.type === SHOULD_FLUSH_FAVORITES_BUFFER
-));
+export const didRequestFlushFavoritesBuffer$ = main$
+  .filter(({ action }) => action.type === REQUEST_FLUSH_FAVORITES_BUFFER);
 
-export const flushFavoritesBuffer$ = didRequestAddOrRemoveFavorites$
-  .debounceTime(SYNC_FAVORITES_BUFFER_TIME)
-  .delay(SYNC_FAVORITES_BUFFER_TIME)
-  .merge(shouldFlushFavoritesBufferNow$);
-
-export const shouldHandleBufferedFavorites$ = didRequestAddOrRemoveFavorites$
-  .buffer(flushFavoritesBuffer$);
-
+/**
+ * This stream delivers events to flush the favorites buffer after some delay time or immediately
+ * by triggering the `requestFlushFavoritesBuffer` action.
+ */
+export const didReceiveFlushFavoritesBuffer$ = didRequestAddOrRemoveFavorites$
+  .buffer(didRequestAddOrRemoveFavorites$
+    .delay(FAVORITE_ACTION_BUFFER_TIME)
+    .merge(didRequestFlushFavoritesBuffer$));

@@ -1,16 +1,42 @@
 import {
+  ADD_PRODUCT_TO_FAVORITES,
+  REMOVE_PRODUCT_FROM_FAVORITES,
+  CANCEL_REQUEST_SYNC_FAVORITES,
   ERROR_FETCH_FAVORITES,
   RECEIVE_FAVORITES,
   REQUEST_FAVORITES,
   REQUEST_ADD_FAVORITES,
+  SUCCESS_ADD_FAVORITES,
+  ERROR_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
+  SUCCESS_REMOVE_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
   ERROR_FAVORITES,
-  REQUEST_SYNC_FAVORITES,
-  RECEIVE_SYNC_FAVORITES,
-  ERROR_SYNC_FAVORITES,
   IDLE_SYNC_FAVORITES,
-  SHOULD_FLUSH_FAVORITES_BUFFER,
+  REQUEST_FLUSH_FAVORITES_BUFFER,
 } from '../constants';
+
+/**
+ * First action to add one product to favorites.
+ * @param {number} productId Id of the product to add.
+ * @returns {Object}
+ */
+export const addProductToFavorites = productId => ({
+  type: ADD_PRODUCT_TO_FAVORITES,
+  productId,
+});
+
+/**
+ * First action to remove one product to favorites.
+ * @param {number} productId Id of the product to remove.
+ * @param {boolean} withRelatives States, whether to remove all relative products or not.
+ * @returns {Object}
+ */
+export const removeProductFromFavorites = (productId, withRelatives) => ({
+  type: REMOVE_PRODUCT_FROM_FAVORITES,
+  productId,
+  withRelatives,
+});
 
 /**
  * Error on fetch favorites action.
@@ -35,7 +61,7 @@ export const errorFavorites = (productId, error) => ({
 });
 
 /**
- * Request add favorites action.
+ * Request add favorites action. This action just updates the redux store.
  * @param {string} productId Product identifier.
  * @returns {Object}
  */
@@ -45,61 +71,65 @@ export const requestAddFavorites = productId => ({
 });
 
 /**
- * Request remove favorites action.
+ * Action to be triggered upon successful addFavorites pipeline call.
  * @param {string} productId Product identifier.
- * @param {boolean} silent silent
  * @returns {Object}
  */
-export const requestRemoveFavorites = (productId, silent = false) => ({
+export const successAddFavorites = productId => ({
+  type: SUCCESS_ADD_FAVORITES,
+  productId,
+});
+
+/**
+ * Action to be triggered upon a failed addFavorites pipeline call.
+ * @param {string} productId Product identifier.
+ * @param {Error} error The error that occurred.
+ * @returns {Object}
+ */
+export const errorAddFavorites = (productId, error) => ({
+  type: ERROR_ADD_FAVORITES,
+  productId,
+  error,
+});
+
+/**
+ * Request remove favorites action. This action just updates the redux store.
+ * @param {string} productId Product identifier.
+ * @returns {Object}
+ */
+export const requestRemoveFavorites = productId => ({
   type: REQUEST_REMOVE_FAVORITES,
   productId,
-  silent,
 });
 
 /**
- * Request add remove favorites sync
- * @param {string[]} productIdsToAdd Array of product identifiers
- * @param {string[]} productIdsToRemove Array of product identifiers
- * @return {Object}
+ * Action to be triggered upon successful removeFavorites (deleteFavorites)  pipeline call.
+ * @param {string} productId Product identifier.
+ * @returns {Object}
  */
-export const requestSyncFavorites = (productIdsToAdd, productIdsToRemove) => ({
-  type: REQUEST_SYNC_FAVORITES,
-  productIdsToAdd,
-  productIdsToRemove,
+export const successRemoveFavorites = productId => ({
+  type: SUCCESS_REMOVE_FAVORITES,
+  productId,
 });
 
 /**
- * Receive add remove favorites sync
- * @param {string[]} productIdsToAdd Array of product identifiers
- * @param {string[]} productIdsToRemove Array of product identifiers
- * @return {Object}
+ * Action to be triggered upon a failed removeFavorites (deleteFavorites) pipeline call.
+ * @param {string} productId Product identifier.
+ * @param {Error} error The error that occurred.
+ * @returns {Object}
  */
-export const receiveSyncFavorites = (productIdsToAdd, productIdsToRemove) => ({
-  type: RECEIVE_SYNC_FAVORITES,
-  productIdsToAdd,
-  productIdsToRemove,
+export const errorRemoveFavorites = (productId, error) => ({
+  type: ERROR_REMOVE_FAVORITES,
+  productId,
+  error,
 });
 
 /**
  * Return the flush favorites buffer Now action object
  * @return {Object}
  */
-export const shouldFlushFavoritesBuffer = () => ({
-  type: SHOULD_FLUSH_FAVORITES_BUFFER,
-});
-
-/**
- * Error add remove favorites sync
- * @param {string[]} productIdsToAdd Array of product identifiers
- * @param {string[]} productIdsToRemove Array of product identifiers
- * @param {Object} error Error object
- * @return {Object}
- */
-export const errorSyncFavorites = (productIdsToAdd, productIdsToRemove, error) => ({
-  type: ERROR_SYNC_FAVORITES,
-  productIdsToAdd,
-  productIdsToRemove,
-  error,
+export const requestFlushFavoritesBuffer = () => ({
+  type: REQUEST_FLUSH_FAVORITES_BUFFER,
 });
 
 /**
@@ -108,6 +138,16 @@ export const errorSyncFavorites = (productIdsToAdd, productIdsToRemove, error) =
  */
 export const idleSyncFavorites = () => ({
   type: IDLE_SYNC_FAVORITES,
+});
+
+/**
+ * Action to cancel one or multiple request to add or to remove favorites.
+ * @param {number} [count=1] Optional count of sync requests.
+ * @returns {Object}
+ */
+export const cancelRequestSyncFavorites = (count = 1) => ({
+  type: CANCEL_REQUEST_SYNC_FAVORITES,
+  count,
 });
 
 /**
