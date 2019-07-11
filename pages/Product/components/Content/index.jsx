@@ -117,10 +117,10 @@ class ProductContent extends PureComponent {
    */
   setCharacteristic = (characteristic) => {
     this.setState(prevState => ({
-      characteristic: {
+      characteristic: (characteristic !== null) ? {
         ...prevState.characteristic,
         ...characteristic,
-      },
+      } : null,
     }));
   }
 
