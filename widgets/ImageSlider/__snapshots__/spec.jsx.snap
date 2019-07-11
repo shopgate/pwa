@@ -41,6 +41,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
@@ -61,12 +62,21 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           WrapperEl="div"
           allowSlideNext={true}
           allowSlidePrev={true}
+          aria-hidden={null}
+          autoPlay={false}
           autoplay={false}
+          className={null}
+          classNames={Object {}}
           containerClass="css-15qycmt"
+          controls={false}
+          disabled={false}
           freeMode={false}
           getSwiper={[Function]}
+          indicators={true}
           initialSlide={0}
+          interval={7000}
           loop={false}
+          maxIndicators={null}
           modules={
             Array [
               Object {
@@ -181,6 +191,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
               "prevEl": null,
             }
           }
+          onSlideChange={[Function]}
           pagination={
             Object {
               "bulletActiveClass": "swiper-pagination-bullet-active",
@@ -198,6 +209,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           renderScrollbar={[Function]}
           slideClass="swiper-slide"
           slidesPerView={1}
+          snapItems={true}
           wrapperClass="swiper-wrapper"
           zoom={false}
         >
@@ -478,6 +490,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
@@ -498,12 +511,21 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           WrapperEl="div"
           allowSlideNext={true}
           allowSlidePrev={true}
+          aria-hidden={null}
+          autoPlay={false}
           autoplay={false}
+          className={null}
+          classNames={Object {}}
           containerClass="css-15qycmt"
+          controls={false}
+          disabled={false}
           freeMode={false}
           getSwiper={[Function]}
+          indicators={true}
           initialSlide={0}
+          interval={7000}
           loop={false}
+          maxIndicators={null}
           modules={
             Array [
               Object {
@@ -618,6 +640,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
               "prevEl": null,
             }
           }
+          onSlideChange={[Function]}
           pagination={
             Object {
               "bulletActiveClass": "swiper-pagination-bullet-active",
@@ -635,6 +658,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           renderScrollbar={[Function]}
           slideClass="swiper-slide"
           slidesPerView={1}
+          snapItems={true}
           wrapperClass="swiper-wrapper"
           zoom={false}
         >
@@ -763,6 +787,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
@@ -783,12 +808,21 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           WrapperEl="div"
           allowSlideNext={true}
           allowSlidePrev={true}
+          aria-hidden={null}
+          autoPlay={false}
           autoplay={false}
+          className={null}
+          classNames={Object {}}
           containerClass="css-15qycmt"
+          controls={false}
+          disabled={false}
           freeMode={false}
           getSwiper={[Function]}
+          indicators={true}
           initialSlide={0}
+          interval={7000}
           loop={false}
+          maxIndicators={null}
           modules={
             Array [
               Object {
@@ -903,6 +937,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
               "prevEl": null,
             }
           }
+          onSlideChange={[Function]}
           pagination={
             Object {
               "bulletActiveClass": "swiper-pagination-bullet-active",
@@ -920,6 +955,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           renderScrollbar={[Function]}
           slideClass="swiper-slide"
           slidesPerView={1}
+          snapItems={true}
           wrapperClass="swiper-wrapper"
           zoom={false}
         >
