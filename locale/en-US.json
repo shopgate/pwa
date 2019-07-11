@@ -54,7 +54,6 @@
       "range": "{from} or more: {price}"
     },
     "msrp": "MSRP",
-    "currency": "USD",
     "label": "Price {price}.",
     "label_old_price": "Old price {price}."
   },
@@ -77,6 +76,9 @@
       "until": "Available until {endDate, date, MMM} {endDate, date, DD} at {endDate, time, short}",
       "not": "Currently not available",
       "not_search_similar": "{name} not available. Search for similar products?"
+    },
+    "relations": {
+      "showMore": "Show All"
     },
     "sections": {
       "information": "Product Information",
@@ -107,7 +109,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
-    }
+    },
+    "placeholder": "Search"
   },
   "shipping": {
     "unknown": "plus shipping",
@@ -211,7 +214,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
