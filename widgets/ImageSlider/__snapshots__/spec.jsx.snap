@@ -62,7 +62,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-1n5i2c5"
+          containerClass="css-15qycmt"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -183,8 +183,9 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           }
           pagination={
             Object {
-              "bulletActiveClass": "css-hpsgy2",
-              "bulletClass": "css-cvsmqf",
+              "bulletActiveClass": "swiper-pagination-bullet-active",
+              "bulletClass": "swiper-pagination-bullet",
+              "dynamicBullets": true,
               "el": ".swiper-pagination",
               "type": "bullets",
             }
@@ -201,7 +202,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           zoom={false}
         >
           <div
-            className="css-1n5i2c5"
+            className="css-15qycmt"
           >
             <div
               className="swiper-wrapper"
@@ -498,7 +499,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-1n5i2c5"
+          containerClass="css-15qycmt"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -619,8 +620,9 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           }
           pagination={
             Object {
-              "bulletActiveClass": "css-hpsgy2",
-              "bulletClass": "css-cvsmqf",
+              "bulletActiveClass": "swiper-pagination-bullet-active",
+              "bulletClass": "swiper-pagination-bullet",
+              "dynamicBullets": true,
               "el": ".swiper-pagination",
               "type": "bullets",
             }
@@ -637,7 +639,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           zoom={false}
         >
           <div
-            className="css-1n5i2c5"
+            className="css-15qycmt"
           >
             <div
               className="swiper-wrapper"
@@ -782,7 +784,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-1n5i2c5"
+          containerClass="css-15qycmt"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -903,8 +905,9 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           }
           pagination={
             Object {
-              "bulletActiveClass": "css-hpsgy2",
-              "bulletClass": "css-cvsmqf",
+              "bulletActiveClass": "swiper-pagination-bullet-active",
+              "bulletClass": "swiper-pagination-bullet",
+              "dynamicBullets": true,
               "el": ".swiper-pagination",
               "type": "bullets",
             }
@@ -921,7 +924,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           zoom={false}
         >
           <div
-            className="css-1n5i2c5"
+            className="css-15qycmt"
           >
             <div
               className="swiper-wrapper"
