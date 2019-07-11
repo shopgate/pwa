@@ -8,8 +8,8 @@
     "required": "Necessário *",
     "please_choose": "Por favor escolha",
     "show_products": "Mostrar produtos",
-    "back": "Back",
-    "close": "Close"
+    "back": "Voltar",
+    "close": "Fechar"
   },
   "titles": {
     "categories": "Categorias",
@@ -52,7 +52,9 @@
       "set": "{from} itens: {price}",
       "range": "{from} ou mais: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "Preço sugerido",
+    "label": "Preço {price}.",
+    "label_old_price": "Preço antigo {price}."
   },
   "product": {
     "description_heading": "Sobre",
@@ -71,6 +73,9 @@
       "until": "Disponível até {endDate, date, DD} {endDate, date, MMM} às {endDate, time, short}",
       "not": "Atualmente indisponível",
       "not_search_similar": "{name} indisponível. Procurar produtos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar tudo"
     },
     "sections": {
       "information": "Product Information",
@@ -120,7 +125,10 @@
   },
   "cart": {
     "subtotal": "Subtotal",
-    "checkout": "Checkout",
+    "total": "Total do carrinho",
+    "discount": "Desconto",
+    "discount_with_label": "Desconto ({label})",
+    "checkout": "Finalizar compra agora",
     "remove": "Remover",
     "edit": "Editar",
     "empty": "Seu carrinho está vazio",
@@ -130,10 +138,7 @@
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
-    "free_shipping": "Envio Grátis",
-    "total": "Total do carrinho",
-    "discount": "Desconto",
-    "discount_with_label": "Desconto ({label})"
+    "free_shipping": "Envio Grátis"
   },
   "login": {
     "headline": "Bem vindo",
@@ -155,8 +160,8 @@
     "categories": "Categorias",
     "favorites": "Favoritos",
     "my_orders": "Meus Pedidos",
-    "scanner": "Scanner",
     "cart": "Carrinho de Compras",
+    "scanner": "Scanner",
     "shipping": "Métodos de Envio",
     "about": "Entre em Contato Conosco",
     "payment": "Métodos de Pagamento",
@@ -200,7 +205,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
