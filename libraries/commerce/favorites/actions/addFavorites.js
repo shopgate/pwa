@@ -1,10 +1,6 @@
 import { logger } from '@shopgate/pwa-core';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
-import {
-  SHOPGATE_USER_ADD_FAVORITES,
-  SHOPGATE_USER_DELETE_FAVORITES,
-} from '../constants/Pipelines';
+import { SHOPGATE_USER_ADD_FAVORITES } from '../constants/Pipelines';
 import { successAddFavorites, errorAddFavorites } from '../action-creators';
 
 /**
@@ -13,12 +9,6 @@ import { successAddFavorites, errorAddFavorites } from '../action-creators';
  * @returns {Promise} Dispatched PipelineRequest.
  */
 export default productId => (dispatch) => {
-  // This pipeline is concurrent to itself and to delete
-  pipelineDependencies.set(SHOPGATE_USER_ADD_FAVORITES, [
-    SHOPGATE_USER_ADD_FAVORITES,
-    SHOPGATE_USER_DELETE_FAVORITES,
-  ]);
-
   const promise = new PipelineRequest(SHOPGATE_USER_ADD_FAVORITES)
     .setInput({ productId })
     .setRetries(0)

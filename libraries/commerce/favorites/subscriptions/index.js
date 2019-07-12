@@ -1,15 +1,20 @@
-import { ELIMIT } from '@shopgate/pwa-core';
+import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import {
-  addProductsToFavoritesDebounced$,
-  removeProductFromFavoritesDebounced$,
   shouldFetchFavorites$,
   shouldFetchFreshFavorites$,
-  favoritesSyncIdle$,
+  addProductsToFavoritesDebounced$,
+  removeProductFromFavoritesDebounced$,
   favoritesError$,
+  favoritesSyncIdle$,
   didReceiveFlushFavoritesBuffer$,
 } from '../streams';
+import {
+  SHOPGATE_USER_ADD_FAVORITES,
+  SHOPGATE_USER_DELETE_FAVORITES,
+} from '../constants/Pipelines';
 import fetchFavorites from '../actions/fetchFavorites';
 import addFavorites from '../actions/addFavorites';
 import removeFavorites from '../actions/removeFavorites';
@@ -24,6 +29,7 @@ import {
   FETCH_FAVORITES_THROTTLE,
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
+  FAVORITES_LIMIT_ERROR,
   ERROR_FAVORITES,
 } from '../constants';
 import {
@@ -39,6 +45,19 @@ export default function favorites(subscribe) {
   if (!appConfig.hasFavorites) {
     return;
   }
+
+  /** App start only */
+  subscribe(appDidStart$, () => {
+    // Setup sync pipeline dependencies (concurrency to each other and themselves)
+    pipelineDependencies.set(SHOPGATE_USER_ADD_FAVORITES, [
+      SHOPGATE_USER_ADD_FAVORITES,
+      SHOPGATE_USER_DELETE_FAVORITES,
+    ]);
+    pipelineDependencies.set(SHOPGATE_USER_DELETE_FAVORITES, [
+      SHOPGATE_USER_ADD_FAVORITES,
+      SHOPGATE_USER_DELETE_FAVORITES,
+    ]);
+  });
 
   /** App start / favorites route enter */
   subscribe(shouldFetchFavorites$, ({ dispatch }) => {
@@ -62,11 +81,9 @@ export default function favorites(subscribe) {
 
     const count = getFavoritesCount(getState());
     if (count >= limit) {
-      // Simulate a pipeline limit error, which will clean up the store.
+      // Dispatch a local error only, because the request to add is prevented
       const error = new Error('Limit exceeded');
-      error.code = ELIMIT;
-
-      // Dispatch a local error because request to add is prevented
+      error.code = FAVORITES_LIMIT_ERROR;
       dispatch(errorFavorites(action.productId, error));
     } else {
       dispatch(requestAddFavorites(action.productId));
@@ -101,7 +118,7 @@ export default function favorites(subscribe) {
   // Catch local limit errors (backend errors are handled autonomously)
   const errorFavoritesLimit$ = favoritesError$
     .filter(({ action }) => (
-      action.type === ERROR_FAVORITES && action.error && action.error.code === ELIMIT
+      action.type === ERROR_FAVORITES && action.error && action.error.code === FAVORITES_LIMIT_ERROR
     ));
   subscribe(errorFavoritesLimit$, ({ dispatch }) => {
     dispatch(showModal({

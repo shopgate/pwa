@@ -21,6 +21,9 @@ export const CANCEL_REQUEST_SYNC_FAVORITES = 'CANCEL_REQUEST_SYNC_FAVORITES';
 export const IDLE_SYNC_FAVORITES = 'IDLE_SYNC_FAVORITES';
 export const REQUEST_FLUSH_FAVORITES_BUFFER = 'REQUEST_FLUSH_FAVORITES_BUFFER';
 
+// Defines a local error code which is not related to a backend call
+export const FAVORITES_LIMIT_ERROR = 'FAVORITES_LIMIT_ERROR';
+
 export const FAVORITES_LIFETIME = 3600000; // 1 hour
 export const FETCH_FAVORITES_THROTTLE = (process.env && process.env.NODE_ENV === 'test') ? 0 : 2000;
 export const FAVORITE_ACTION_BUFFER_TIME = 500;
