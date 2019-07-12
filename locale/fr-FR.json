@@ -9,14 +9,14 @@
     "please_choose": "Veuillez choisir",
     "show_products": "Présentation produits",
     "back": "Retour",
-    "close": "Close"
+    "close": "Fermer"
   },
   "titles": {
     "categories": "Catégories",
     "filter": "Filterer",
     "cart": "Panier",
     "shipping": "Livraison",
-    "reviews": "Commentaires",
+    "reviews": "Revues",
     "browse": "Naviger",
     "favorites": "Favorits",
     "scanner": "Scanner"
@@ -53,10 +53,9 @@
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "EUR",
-    "label": "Price {price}.",
-    "label_old_price": "Old price {price}."
+    "msrp": "PDSF",
+    "label": "Prix {price}.",
+    "label_old_price": "Ancien prix {price}."
   },
   "product": {
     "description_heading": "à propos",
@@ -110,7 +109,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
-    }
+    },
+    "placeholder": "Recherche"
   },
   "shipping": {
     "unknown": "avec frais de livraison",
@@ -142,6 +142,7 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
+    "coupons_not_supported": "Coupons non pris en charge",
     "free_shipping": "Livraison gratuite"
   },
   "login": {
@@ -180,20 +181,20 @@
   "reviews": {
     "rating": "Evaluation",
     "no_reviews": "Soyez le premier à évaluer ce produit:",
-    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
-    "button_add": "Ecrire un commentaire",
-    "button_all": "Tous les {count} commantaires",
+    "review_count": "({count} {count, plural, =1 {Revue} other {Revues}})",
+    "button_add": "Ecrire un revue",
+    "button_all": "Tous les {count} revues",
     "author": "par {author}",
     "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} sur {maxRate}",
     "review_form_rate": "Evaluer ce produit:",
     "review_form_author": "Votre nom",
-    "review_form_title": "Titre du commentaire (optional)",
+    "review_form_title": "Titre du revue (optional)",
     "review_form_text": "Produit évalué(optional)",
     "review_form_error_author_empty": "Veuillez entrer un nom.",
     "review_form_rate_error": "Veillez sélectionner une note en étoile.",
     "review_form_error_length": "Longeure caractère maximale {length}.",
     "press_to_rate_with_x_stars": "Appuyez pour noter avec{rate} {rate, plural, =1 {star} other {stars}}.",
-    "success_message": "Merci pour votre commentaire!"
+    "success_message": "Merci pour votre revue!"
   },
   "tab_bar": {
     "home": "Accueil",
