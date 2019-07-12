@@ -33,7 +33,11 @@ function ProductSlider(props) {
             snapItems={snap}
             slidesPerView={slidesPerView}
           >
-            {productIds.map(id => <Item key={id} productId={id} style={styles} />)}
+            {productIds.map(id => (
+              <Slider.Item key={id}>
+                <Item productId={id} style={styles} />
+              </Slider.Item>
+            ))}
           </Slider>
         );
       }}
