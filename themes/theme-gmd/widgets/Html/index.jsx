@@ -100,19 +100,21 @@ class Html extends Component {
   handleTap = (e) => {
     const aTag = e.target.closest('a');
 
-    const {
-      attributes: {
-        href: { value: href = '' } = {},
-        target: { value: target = '' } = {},
-      } = {},
-    } = aTag;
+    if (aTag) {
+      const {
+        attributes: {
+          href: { value: href = '' } = {},
+          target: { value: target = '' } = {},
+        } = {},
+      } = aTag;
 
-    if (href) {
-      e.preventDefault();
-      this.props.navigate({
-        pathname: href,
-        ...target && { state: { target } },
-      });
+      if (href) {
+        e.preventDefault();
+        this.props.navigate({
+          pathname: href,
+          ...target && { state: { target } },
+        });
+      }
     }
   };
 
