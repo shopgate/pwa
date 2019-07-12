@@ -1,7 +1,7 @@
 {
   "common": {
     "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# giorno {time}} other {# giorni {time}}}",
-    "load_more": "Carica altro",
+    "load_more": "Carica di più",
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
     "undo": "annulla",
@@ -9,7 +9,7 @@
     "please_choose": "Inserisci",
     "show_products": "Mostra i prodotti",
     "back": "Indietro",
-    "close": "Close"
+    "close": "Chiudi"
   },
   "titles": {
     "categories": "Categorie",
@@ -43,7 +43,7 @@
       "price_asc": "Prezzo: Dal Basso in Alto"
     },
     "apply": "Applica",
-    "more": "altro",
+    "more": "di più",
     "reset": "Resetta"
   },
   "price": {
@@ -54,9 +54,8 @@
       "range": "{from} o altro: {price}"
     },
     "msrp": "SRP",
-    "currency": "Dollari",
-    "label": "Price {price}.",
-    "label_old_price": "Old price {price}."
+    "label": "Prezzo {price}.",
+    "label_old_price": "Prezzo precedente {price}."
   },
   "product": {
     "description_heading": "A riguardo",
@@ -110,7 +109,8 @@
     "no_result": {
       "heading": "Ops!",
       "body": "La vostra ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    }
+    },
+    "placeholder": "Cerca"
   },
   "shipping": {
     "unknown": "più spedizione",
@@ -175,7 +175,7 @@
     "return_policy": "Politica di Restituzione",
     "logout": "Esci",
     "store_information": "Informazioni del Negozio",
-    "more_menu": "Altro"
+    "more_menu": "Di più"
   },
   "reviews": {
     "rating": "valutazione",
@@ -199,7 +199,7 @@
     "home": "Pagina Iniziale",
     "browse": "Sfoglia",
     "cart": "Carrello",
-    "more": "Altro",
+    "more": "Di più",
     "favorites": "Favoriti"
   },
   "scanner": {
