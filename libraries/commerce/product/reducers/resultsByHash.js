@@ -27,6 +27,9 @@ export default function resultsByHash(state = {}, action) {
         },
       };
     case RECEIVE_PRODUCTS: {
+      if (!action.hash) {
+        return state;
+      }
       const { products } = state[action.hash];
       const nextProducts = action.products || [];
 
