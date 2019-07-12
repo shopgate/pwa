@@ -1,11 +1,12 @@
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import { appDidStart$ } from '@shopgate/pwa-common/streams';
+import { fetchProductsById } from '@shopgate/pwa-common-commerce/product';
 import {
-  shouldFetchFavorites$,
+  favoritesWillEnter$,
   shouldFetchFreshFavorites$,
-  addProductsToFavoritesDebounced$,
+  addProductToFavoritesDebounced$,
   removeProductFromFavoritesDebounced$,
   favoritesError$,
   favoritesSyncIdle$,
@@ -33,10 +34,11 @@ import {
   ERROR_FAVORITES,
 } from '../constants';
 import {
+  getFavoritesProductsIds,
   getFavoritesProducts,
   getFavoritesCount,
   getProductRelativesOnFavorites,
-} from '../selectors/';
+} from '../selectors';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -46,8 +48,8 @@ export default function favorites(subscribe) {
     return;
   }
 
-  /** App start only */
-  subscribe(appDidStart$, () => {
+  /** App start */
+  subscribe(appDidStart$, ({ dispatch }) => {
     // Setup sync pipeline dependencies (concurrency to each other and themselves)
     pipelineDependencies.set(SHOPGATE_USER_ADD_FAVORITES, [
       SHOPGATE_USER_ADD_FAVORITES,
@@ -57,11 +59,16 @@ export default function favorites(subscribe) {
       SHOPGATE_USER_ADD_FAVORITES,
       SHOPGATE_USER_DELETE_FAVORITES,
     ]);
+
+    dispatch(fetchFavorites());
   });
 
-  /** App start / favorites route enter */
-  subscribe(shouldFetchFavorites$, ({ dispatch }) => {
-    dispatch(fetchFavorites());
+  /** Favorites route enter */
+  subscribe(favoritesWillEnter$, ({ dispatch, getState }) => {
+    dispatch(fetchFavorites()).then(() => {
+      const productIds = getFavoritesProductsIds(getState());
+      dispatch(fetchProductsById(productIds, null, false));
+    });
   });
 
   /** User login / logout */
@@ -69,7 +76,7 @@ export default function favorites(subscribe) {
     dispatch(fetchFavorites(true));
   });
 
-  subscribe(addProductsToFavoritesDebounced$, ({ action, dispatch, getState }) => {
+  subscribe(addProductToFavoritesDebounced$, ({ action, dispatch, getState }) => {
     // Nothing to do, when the store already contains the item
     if (getFavoritesProducts(getState()).ids.find(id => id === action.productId)) {
       // Call cancel action with "zero" count, because request was even dispatched
