@@ -17,7 +17,12 @@ import {
   ORDERS_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
-import { ITEM_PATH, productImageFormats, enableRedirectHandler } from '@shopgate/engage/product';
+import {
+  ITEM_PATH,
+  productImageFormats,
+  enableRedirectHandler,
+  setDefaultProductFetchParams,
+} from '@shopgate/engage/product';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import grantCameraPermissions from '@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
@@ -80,5 +85,11 @@ export default function app(subscribe) {
      * It should only be used for approved BETA Client Projects
      */
     enableRedirectHandler();
+
+    /**
+     * This feature is currently in BETA testing.
+     * It should only be used for approved BETA Client Projects
+     */
+    setDefaultProductFetchParams();
   });
 }
