@@ -11,7 +11,7 @@ class Price extends Component {
     price: PropTypes.shape({
       currency: PropTypes.string.isRequired,
       unitPrice: PropTypes.number.isRequired,
-      unitPriceStriked: PropTypes.number.isRequired,
+      unitPriceStriked: PropTypes.number,
       discount: PropTypes.number,
     }).isRequired,
   };
@@ -34,20 +34,24 @@ class Price extends Component {
    * @returns {JSX}
    */
   render() {
+    const {
+      unitPrice, discount, currency, unitPriceStriked,
+    } = this.props.price;
+
     return (
       <Fragment>
         {
-          this.props.price.unitPriceStriked > 0
+          !!unitPriceStriked && unitPriceStriked > 0
           && <ProductPriceStriked
             className={styles.strikedPrice}
-            value={this.props.price.unitPriceStriked}
-            currency={this.props.price.currency}
+            value={unitPriceStriked}
+            currency={currency}
           />
         }
         <ProductPrice
-          currency={this.props.price.currency}
-          unitPrice={this.props.price.unitPrice}
-          discounted={this.props.price.discount > 0}
+          currency={currency}
+          unitPrice={unitPrice}
+          discounted={discount > 0}
           smallStriked
         />
       </Fragment>
