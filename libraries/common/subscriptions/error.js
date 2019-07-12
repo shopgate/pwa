@@ -7,7 +7,6 @@ import {
   Severity as SentrySeverity,
 } from '@sentry/browser';
 import { emitter } from '@shopgate/pwa-core';
-import logGroup from '@shopgate/pwa-core/helpers/logGroup';
 import { SOURCE_TRACKING, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
   // eslint-disable-next-line import/no-named-default
@@ -72,7 +71,6 @@ export default (subscribe) => {
       sampleRate,
       beforeSend(event) {
         if (event.level && !trackedSeverities.includes(event.level)) {
-          logGroup(`SEVERITY IS SKIPPED %c: ${event.level}`, { event }, '#786c45');
           return null;
         }
         // eslint-disable-next-line no-param-reassign
@@ -81,7 +79,6 @@ export default (subscribe) => {
           routerStack: getRouterStack(getState()).slice(-5),
         };
 
-        logGroup(`SEVERITY IS LOGGED %c: ${event.level}`, { event }, '#069215');
         return event;
       },
     });
