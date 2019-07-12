@@ -21,11 +21,10 @@ import {
   idleSyncFavorites,
 } from '../action-creators';
 import {
-  ERROR_ADD_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
   FETCH_FAVORITES_THROTTLE,
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
+  ERROR_FAVORITES,
 } from '../constants';
 import {
   getFavoritesProducts,
@@ -52,6 +51,13 @@ export default function favorites(subscribe) {
   });
 
   subscribe(addProductsToFavoritesDebounced$, ({ action, dispatch, getState }) => {
+    // Nothing to do, when the store already contains the item
+    if (getFavoritesProducts(getState()).ids.find(id => id === action.productId)) {
+      // Call cancel action with "zero" count, because request was even dispatched
+      dispatch(cancelRequestSyncFavorites(0));
+      return;
+    }
+
     const { favorites: { limit = 100 } = {} } = appConfig;
 
     const count = getFavoritesCount(getState());
@@ -67,49 +73,20 @@ export default function favorites(subscribe) {
     }
   });
 
-  // Catch limit errors (either from a network call or locally detected)
-  const errorFavoritesLimit$ = favoritesError$
-    .filter(({ action }) => (action.error && action.error.code === ELIMIT));
-  subscribe(errorFavoritesLimit$, ({ dispatch }) => {
-    dispatch(showModal({
-      confirm: null,
-      dismiss: 'modal.ok',
-      title: 'modal.title_error',
-      message: 'favorites.error_limit',
-    }));
-  });
-
-  // Catch backend "add" errors (except exceeded limit)
-  const errorAddFavorites$ = favoritesError$.filter(({ action }) => (
-    action.type === ERROR_ADD_FAVORITES && action.error && action.error.code !== ELIMIT
-  ));
-  subscribe(errorAddFavorites$, ({ dispatch }) => {
-    dispatch(showModal({
-      confirm: null,
-      dismiss: 'modal.ok',
-      title: 'modal.title_error',
-      message: 'favorites.error_add',
-    }));
-  });
-
-  // Catch backend "delete" errors
-  const errorRemoveFavorites$ = favoritesError$
-    .filter(({ action }) => action.type === ERROR_REMOVE_FAVORITES);
-  subscribe(errorRemoveFavorites$, ({ dispatch }) => {
-    dispatch(showModal({
-      confirm: null,
-      dismiss: 'modal.ok',
-      title: 'modal.title_error',
-      message: 'favorites.error_remove',
-    }));
-  });
-
   subscribe(removeProductFromFavoritesDebounced$, ({ action, dispatch, getState }) => {
     const count = getFavoritesCount(getState());
     if (count > 0) {
       if (action.withRelatives) {
-        const allIds = getProductRelativesOnFavorites(getState(), { productId: action.productId });
-        allIds.forEach(id => dispatch(requestRemoveFavorites(id)));
+        // Will only handle ids which are present in the store, no additional check needed
+        getProductRelativesOnFavorites(getState(), { productId: action.productId })
+          .forEach(id => dispatch(requestRemoveFavorites(id)));
+        return;
+      }
+
+      // Avoids trying to remove something that was already removed (incoming fetch response)
+      if (!getFavoritesProducts(getState()).ids.find(id => id === action.productId)) {
+        // Call cancel action with "zero" count, because request was even dispatched
+        dispatch(cancelRequestSyncFavorites(0));
         return;
       }
 
@@ -119,6 +96,20 @@ export default function favorites(subscribe) {
       // Refresh to fix inconsistencies, by dispatching an idleSync action when not fetching
       dispatch(idleSyncFavorites(true));
     }
+  });
+
+  // Catch local limit errors (backend errors are handled autonomously)
+  const errorFavoritesLimit$ = favoritesError$
+    .filter(({ action }) => (
+      action.type === ERROR_FAVORITES && action.error && action.error.code === ELIMIT
+    ));
+  subscribe(errorFavoritesLimit$, ({ dispatch }) => {
+    dispatch(showModal({
+      confirm: null,
+      dismiss: 'modal.ok',
+      title: 'modal.title_error',
+      message: 'favorites.error_limit',
+    }));
   });
 
   /**
@@ -141,7 +132,7 @@ export default function favorites(subscribe) {
       return;
     }
 
-    // Every action has a dispatch function, they are al equal, so just take the first
+    // All actions provide the same functionality, just take the first entry
     const { dispatch, getState } = actionBuffer[0];
 
     // Compute a list of product ids that were in the action buffer
