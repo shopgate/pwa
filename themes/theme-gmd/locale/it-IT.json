@@ -60,9 +60,9 @@
     "description_heading": "A riguardo",
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
-    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
-    "pick_option_first": "Pick an option first. {option}",
-    "fill_out_required_input_first": "Fill out the required inputs first.",
+    "adding_item": "{count, plural, =1 {Aggiungendo {count} articolo} other {Aggiungendo {count} di articoli}}",
+    "pick_option_first": "Prima scegli un'opzione. {option}",
+    "fill_out_required_input_first": "Prima inserisci i dati richiesti.",
     "add_to_cart": "Aggiungi al carrello",
     "no_more_found": "L'articolo: \"{name}\" non è più disponibile.",
     "quantity": "Quantità",
@@ -78,12 +78,12 @@
       "showMore": "Mostra tutto"
     },
     "sections": {
-      "information": "Product Information",
-      "options": "Choose Options",
-      "description": "Description",
-      "properties": "Properties",
-      "ratings": "Ratings",
-      "purchase": "Purchase Item"
+      "information": "Informazioni sul prodotto",
+      "options": "Seleziona le opzioni",
+      "description": "Descrizione",
+      "properties": "Caratteristiche",
+      "ratings": "Valutazioni",
+      "purchase": "Acquista articolo"
     }
   },
   "category": {
