@@ -15,7 +15,7 @@ function SnackBarContainer(props) {
   return (
     createPortal(
       <SnackBar {...props} />,
-      document.getElementById('AppFooter')
+      document.getElementById('portals')
     )
   );
 }

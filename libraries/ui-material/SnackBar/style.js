@@ -8,14 +8,22 @@ const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
 // Button color can be anything. Fall back to white if accent is too dark.
 const safebuttonColor = buttonColorContrast > 4 ? buttonColor : '#fff';
 
+const container = css({
+  marginTop: 'calc(-80px - var(--footer-height))',
+  position: 'relative',
+  height: 80,
+  overflow: 'hidden',
+  zIndex: 6,
+});
+
 const wrapper = css({
-  top: 0,
+  top: 80,
   display: 'flex',
   justifyContent: 'center',
   left: 0,
   position: 'absolute',
   width: '100%',
-  zIndex: 1,
+  zIndex: 6,
 });
 
 const box = css({
@@ -53,6 +61,7 @@ const button = css({
 });
 
 export default {
+  container,
   wrapper,
   box,
   label,
