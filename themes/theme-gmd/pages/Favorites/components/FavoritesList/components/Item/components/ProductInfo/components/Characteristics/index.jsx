@@ -8,11 +8,10 @@ import PropTypes from 'prop-types';
  */
 const Characteristics = ({ characteristics }) => (
   <ul>
-    {characteristics.filter(({ name, value }) => !!name && !!value)
-      .map(({ name, value }) => (
-        <li key={`${name}-${value}`}>
-          {name}: {value}
-        </li>
+    {characteristics.map(({ name, value }) => (
+      <li key={`${name}-${value}`}>
+        {name}: {value}
+      </li>
     ))}
   </ul>
 );
