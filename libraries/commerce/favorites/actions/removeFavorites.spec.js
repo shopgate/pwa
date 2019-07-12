@@ -1,7 +1,7 @@
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
-import { SHOPGATE_USER_ADD_FAVORITES } from '../constants/Pipelines';
-import addFavorites from './addFavorites';
-import { successAddFavorites, errorAddFavorites } from '../action-creators';
+import { SHOPGATE_USER_DELETE_FAVORITES } from '../constants/Pipelines';
+import removeFavorites from './removeFavorites';
+import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators';
 
 // Forces the pipeline request to be mocked so each test can decide how it resolves
 let mockSuccessResponse;
@@ -30,7 +30,7 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
 }));
 
 describe('Favorites - actions', () => {
-  describe(SHOPGATE_USER_ADD_FAVORITES, () => {
+  describe(SHOPGATE_USER_DELETE_FAVORITES, () => {
     beforeEach(() => {
       // Pipeline should succeed by default
       mockSuccessResponse = {};
@@ -38,15 +38,15 @@ describe('Favorites - actions', () => {
     });
 
     it('should call the correct pipeline', async () => {
-      const result = await addFavorites('test-123')(jest.fn());
-      expect(result.mockInstance.name).toBe(SHOPGATE_USER_ADD_FAVORITES);
+      const result = await removeFavorites('test-123')(jest.fn());
+      expect(result.mockInstance.name).toBe(SHOPGATE_USER_DELETE_FAVORITES);
     });
 
     it('should dispatch the correct action on pipeline success', async () => {
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
-      await addFavorites(productId)(mockedDispatch);
-      expect(mockedDispatch).toHaveBeenCalledWith(successAddFavorites(productId));
+      await removeFavorites(productId)(mockedDispatch);
+      expect(mockedDispatch).toHaveBeenCalledWith(successRemoveFavorites(productId));
     });
 
     it('should dispatch the correct action on pipeline failure', async () => {
@@ -58,8 +58,9 @@ describe('Favorites - actions', () => {
 
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
-      await addFavorites(productId)(mockedDispatch);
-      expect(mockedDispatch).toHaveBeenCalledWith(errorAddFavorites(productId, mockErrorResponse));
+      await removeFavorites(productId)(mockedDispatch);
+      expect(mockedDispatch)
+        .toHaveBeenCalledWith(errorRemoveFavorites(productId, mockErrorResponse));
     });
   });
 });
