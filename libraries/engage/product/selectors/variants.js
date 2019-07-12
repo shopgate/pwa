@@ -27,7 +27,7 @@ export function makeGetProductByCharacteristic() {
 }
 
 /**
- * Creates a selector that retrieves the featured image URL for a selectred characteristic.
+ * Creates a selector that retrieves the featured image URL for a selected characteristic.
  * @returns {Function}
  */
 export function makeGetCharacteristicFeaturedImage() {
