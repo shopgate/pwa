@@ -60,9 +60,9 @@
     "description_heading": "Over",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
-    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
-    "pick_option_first": "Pick an option first. {option}",
-    "fill_out_required_input_first": "Fill out the required inputs first.",
+    "adding_item": "{count, plural, =1 {{count} artikel toevoegen} other {{count} artikelen toevoegen}}",
+    "pick_option_first": "Kies eerst een optie. {option}",
+    "fill_out_required_input_first": "Vul eerst de vereiste input in.",
     "add_to_cart": "Voeg aan winkelwagen toe",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
@@ -78,12 +78,12 @@
       "showMore": "Toon alles"
     },
     "sections": {
-      "information": "Product Information",
-      "options": "Choose Options",
-      "description": "Description",
-      "properties": "Properties",
+      "information": "Productinformatie",
+      "options": "Kies opties",
+      "description": "Omschrijving",
+      "properties": "Eigenschappen",
       "ratings": "Ratings",
-      "purchase": "Purchase Item"
+      "purchase": "Aankoopitem"
     }
   },
   "category": {
