@@ -1,5 +1,39 @@
 # Changelog
 
+## [v6.6.0](https://github.com/shopgate/pwa/compare/v6.5.3...v6.6.0) (2019-07-15)
+
+#### :rocket: Enhancement
+* [#704](https://github.com/shopgate/pwa/pull/704) Support featured media for product list and product details page ([@alexbridge](https://github.com/alexbridge))
+* [#701](https://github.com/shopgate/pwa/pull/701) Added functionality to access theme config entries in an easy fashion ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#684](https://github.com/shopgate/pwa/pull/684) Support Swatches on Product Details Page ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#755](https://github.com/shopgate/pwa/pull/755) Changed Ellipsis component for an update of the react-dotdotdot module ([@fkloes](https://github.com/fkloes))
+* [#753](https://github.com/shopgate/pwa/pull/753) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#754](https://github.com/shopgate/pwa/pull/754) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#752](https://github.com/shopgate/pwa/pull/752) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#751](https://github.com/shopgate/pwa/pull/751) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#750](https://github.com/shopgate/pwa/pull/750) Fixed an issue with the Ellipsis component ([@fkloes](https://github.com/fkloes))
+* [#745](https://github.com/shopgate/pwa/pull/745) Start page renders immediately when React is ready. ([@sznowicki](https://github.com/sznowicki))
+* [#744](https://github.com/shopgate/pwa/pull/744) Start page renders immediately when React is ready. ([@sznowicki](https://github.com/sznowicki))
+* [#743](https://github.com/shopgate/pwa/pull/743) Start page renders immediately when React is ready. ([@sznowicki](https://github.com/sznowicki))
+* [#742](https://github.com/shopgate/pwa/pull/742) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#741](https://github.com/shopgate/pwa/pull/741) Onload command is independent of clientInformation ([@sznowicki](https://github.com/sznowicki))
+* [#729](https://github.com/shopgate/pwa/pull/729) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+* [#728](https://github.com/shopgate/pwa/pull/728) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+* [#727](https://github.com/shopgate/pwa/pull/727) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+* [#724](https://github.com/shopgate/pwa/pull/724) Handle external media provider scripts without blocking app start  ([@alexbridge](https://github.com/alexbridge))
+* [#720](https://github.com/shopgate/pwa/pull/720) Media embed code shows incorrect preview ([@alexbridge](https://github.com/alexbridge))
+* [#706](https://github.com/shopgate/pwa/pull/706) SheetList item correct styling ([@alexbridge](https://github.com/alexbridge))
+* [#691](https://github.com/shopgate/pwa/pull/691) Prevent getProductMedia pipeline from being called in none beta environment. ([@devbucket](https://github.com/devbucket))
+* [#690](https://github.com/shopgate/pwa/pull/690) Fixed an issue with missing dependencies for the react-player module. ([@devbucket](https://github.com/devbucket))
+* [#688](https://github.com/shopgate/pwa/pull/688) Fixed secure config writer to correctly merge arrays ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :nail_care: Polish
+* [#718](https://github.com/shopgate/pwa/pull/718) Fixed an issue with changelog compare links ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#703](https://github.com/shopgate/pwa/pull/703) Polished the `Swatch` components to make them show up properly in the React DOM. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
 ## [v6.5.4](https://github.com/shopgate/pwa/compare/v6.5.3...v6.5.4) (2019-07-05)
 
 #### :bug: Bug Fix
