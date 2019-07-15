@@ -12,6 +12,18 @@ export const updateInsetBackgroundColor = (color) => {
   }
 };
 
+/**
+ * Update the footer height
+ * @param {number} height height
+ */
+export const updateFooterHeight = (height) => {
+  const inset = Number(style.getPropertyValue('--safe-area-inset-bottom').replace(/\D/g, ''));
+  const footerHeight = `${inset + height}px`;
+  if (style.getPropertyValue('--footer-height') !== footerHeight) {
+    style.setProperty('--footer-height', footerHeight);
+  }
+};
+
 export const footer = css({
   bottom: 0,
   flexShrink: 1,

@@ -6,6 +6,7 @@ import { getProducts } from './product';
  * Returns productRelations state.
  * @param {Object} state State.
  * @returns {Object}
+ * @deprecated
  */
 export const getProductRelationsState = state => state.product.productRelationsByHash;
 
@@ -13,6 +14,7 @@ export const getProductRelationsState = state => state.product.productRelationsB
  * Factory of a function that returns selector of product relations state for given hash.
  * @param {string} hash State hash.
  * @returns {Function}
+ * @deprecated
  */
 export const getProductRelationsByHash = hash => createSelector(
   getProductRelationsState,
@@ -34,6 +36,7 @@ export const getProductRelationsByHash = hash => createSelector(
  * @param {string} type Relation type (see constants)
  * @param {number} limit Query limit.
  * @returns {Function} Selector.
+ * @deprecated Use `makeGetProductRelations` from `@shopgate/engage/products` instead.
  */
 export const getProductRelations = ({ productId, type, limit }) => (state) => {
   const hash = generateProductRelationsHash({
@@ -50,6 +53,7 @@ export const getProductRelations = ({ productId, type, limit }) => (state) => {
  *
  * @param {Object} params Params, see `.getProductRelations`
  * @returns {Array}
+ * @deprecated Use `makeGetRelatedProducts` from `@shopgate/engage/products` instead.
  */
 export const getRelatedProducts = params => createSelector(
   getProductRelations(params),
