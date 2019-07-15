@@ -8,8 +8,8 @@
     "required": "Necessário *",
     "please_choose": "Por favor escolha",
     "show_products": "Mostrar produtos",
-    "back": "Back",
-    "close": "Close"
+    "back": "Voltar",
+    "close": "Fechar"
   },
   "titles": {
     "categories": "Categorias",
@@ -52,15 +52,17 @@
       "set": "{from} itens: {price}",
       "range": "{from} ou mais: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "Preço sugerido",
+    "label": "Preço {price}.",
+    "label_old_price": "Preço antigo {price}."
   },
   "product": {
     "description_heading": "Sobre",
     "pick_an_attribute": "Escolher {0}",
     "tax_disclaimer": "* Incl. IVA mais custos de envio, se aplicável",
-    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
-    "pick_option_first": "Pick an option first. {option}",
-    "fill_out_required_input_first": "Fill out the required inputs first.",
+    "adding_item": "{count, plural, =1 {Adicionando {count} item} other {Adicionando {count} items}}",
+    "pick_option_first": "Primeiro escolha uma opção. {option}",
+    "fill_out_required_input_first": "Primeiro preencha os campos obrigatórios.",
     "add_to_cart": "Adicionar ao carrinho",
     "no_more_found": "O item: \"{name}\" não está mais disponível.",
     "quantity": "Quantidade",
@@ -72,13 +74,16 @@
       "not": "Atualmente indisponível",
       "not_search_similar": "{name} indisponível. Procurar produtos similares?"
     },
+    "relations": {
+      "showMore": "Mostrar tudo"
+    },
     "sections": {
-      "information": "Product Information",
-      "options": "Choose Options",
-      "description": "Description",
-      "properties": "Properties",
-      "ratings": "Ratings",
-      "purchase": "Purchase Item"
+      "information": "Informação do produto",
+      "options": "Escolha as opções",
+      "description": "Descrição",
+      "properties": "Propriedades",
+      "ratings": "Avaliações",
+      "purchase": "Comprar Item"
     }
   },
   "category": {
@@ -120,7 +125,10 @@
   },
   "cart": {
     "subtotal": "Subtotal",
-    "checkout": "Checkout",
+    "total": "Total do carrinho",
+    "discount": "Desconto",
+    "discount_with_label": "Desconto ({label})",
+    "checkout": "Finalizar compra agora",
     "remove": "Remover",
     "edit": "Editar",
     "empty": "Seu carrinho está vazio",
@@ -130,10 +138,7 @@
     "default_coupon_label": "Cupom",
     "coupon_was_added": "O cupom foi adicionado ao carrinho!",
     "coupons_not_supported": "Adicione cupons e vales presente durante o checkout",
-    "free_shipping": "Envio Grátis",
-    "total": "Total do carrinho",
-    "discount": "Desconto",
-    "discount_with_label": "Desconto ({label})"
+    "free_shipping": "Envio Grátis"
   },
   "login": {
     "headline": "Bem vindo",
@@ -155,8 +160,8 @@
     "categories": "Categorias",
     "favorites": "Favoritos",
     "my_orders": "Meus Pedidos",
-    "scanner": "Scanner",
     "cart": "Carrinho de Compras",
+    "scanner": "Scanner",
     "shipping": "Métodos de Envio",
     "about": "Entre em Contato Conosco",
     "payment": "Métodos de Pagamento",
@@ -200,7 +205,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },
