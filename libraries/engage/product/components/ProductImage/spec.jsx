@@ -73,6 +73,6 @@ describe('<ProductImage />', () => {
     const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" widgetSettings={{ showInnerShadow: true }} />).dive();
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`.${styles.innerShadow}`).length).toBe(2);
+    expect(wrapper.find(`.${styles.innerShadow}`).length).toBe(1);
   });
 });

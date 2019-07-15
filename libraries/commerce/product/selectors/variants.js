@@ -94,6 +94,10 @@ export const getKnownRelatives = createSelector(
   getProductById,
   getKnownProductRelatives,
   (product, knownRelations) => {
+    if (!product) {
+      return [];
+    }
+
     const { productData } = product;
     let parentId = productData.id;
     // Product is parent.
