@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Slider } from '@shopgate/pwa-common/components';
+import { Swiper } from '@shopgate/engage/components';
 import { Theme } from '@shopgate/pwa-common/context';
 import styles from './style';
 
@@ -23,7 +23,7 @@ function ProductSlider(props) {
       {({ ProductCard }) => {
         const Item = props.item || ProductCard;
         return (
-          <Slider
+          <Swiper
             autoPlay={autoplay}
             className={className}
             controls={false}
@@ -33,8 +33,12 @@ function ProductSlider(props) {
             snapItems={snap}
             slidesPerView={slidesPerView}
           >
-            {productIds.map(id => <Item key={id} productId={id} style={styles} />)}
-          </Slider>
+            {productIds.map(id => (
+              <Swiper.Item key={id}>
+                <Item productId={id} style={styles} />
+              </Swiper.Item>
+            ))}
+          </Swiper>
         );
       }}
     </Theme>
