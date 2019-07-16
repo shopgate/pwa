@@ -1,18 +1,32 @@
 import { connect } from 'react-redux';
-import { getCurrentBaseProduct, getProductMedia } from '@shopgate/engage/product';
+import {
+  makeGetProductByCharacteristics,
+  makeGetProductFeaturedMedia,
+  makeGetCharacteristicsFeaturedMedia,
+  MEDIA_TYPE_IMAGE,
+} from '@shopgate/engage/product';
 
 /**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @param {Object} props The current component props.
- * @return {Object} The extended component props.
+ * Creates the mapStateToProps connector function.
+ * @returns {Function}
  */
-const mapStateToProps = (state, props) => {
-  const media = getProductMedia(state, props);
-  return ({
-    hasMedia: !!media && !!media.length,
-    baseProduct: getCurrentBaseProduct(state, props),
-  });
+const makeMapStateToProps = () => {
+  const getProductByCharacteristics = makeGetProductByCharacteristics();
+  const getProductFeaturedMedia = makeGetProductFeaturedMedia();
+  const getCharacteristicsFeaturedMedia = makeGetCharacteristicsFeaturedMedia();
+
+  return (state, props) => {
+    const product = getProductByCharacteristics(state, props) || {};
+
+    return {
+      featuredMediaBaseProduct: getProductFeaturedMedia(state, props),
+      featuredMediaCharacteristics: getCharacteristicsFeaturedMedia(state, {
+        ...props,
+        type: MEDIA_TYPE_IMAGE,
+      }),
+      productId: product.id || props.productId,
+    };
+  };
 };
 
-export default connect(mapStateToProps);
+export default connect(makeMapStateToProps);

@@ -7,28 +7,44 @@ import connect from './connector';
  * The product media slider component.
  * @returns {JSX}
  */
-const ProductMediaSlider = ({ baseProduct, productId, hasMedia }) => {
-  if (!hasMedia) {
-    return (
-      <FeaturedMedia {...baseProduct && baseProduct.featuredMedia} />
-    );
-  }
-
-  return (
-    <MediaSlider productId={productId} />
-  );
-};
+const ProductMediaSlider = ({
+  productId,
+  featuredMediaBaseProduct,
+  featuredMediaCharacteristics,
+}) => (
+  <MediaSlider
+    productId={productId}
+    renderPlaceholder={(featuredMedia) => {
+      const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
+      return (<FeaturedMedia {...props} />);
+    }}
+  />
+);
 
 ProductMediaSlider.propTypes = {
-  baseProduct: PropTypes.shape(),
-  hasMedia: PropTypes.bool,
+  featuredMediaBaseProduct: PropTypes.shape({
+    type: PropTypes.string,
+    code: PropTypes.string,
+    altText: PropTypes.string,
+    title: PropTypes.string,
+    url: PropTypes.string,
+  }),
+  featuredMediaCharacteristics: PropTypes.shape({
+    type: PropTypes.string,
+    code: PropTypes.string,
+    altText: PropTypes.string,
+    title: PropTypes.string,
+    url: PropTypes.string,
+  }),
   productId: PropTypes.string,
+  variantId: PropTypes.string,
 };
 
 ProductMediaSlider.defaultProps = {
-  baseProduct: null,
-  hasMedia: false,
+  featuredMediaCharacteristics: null,
+  featuredMediaBaseProduct: null,
   productId: null,
+  variantId: null,
 };
 
 export default connect(ProductMediaSlider);
