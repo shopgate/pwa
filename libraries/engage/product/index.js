@@ -26,6 +26,7 @@ export { default as productImageFormats } from '@shopgate/pwa-common-commerce/pr
 export * from '@shopgate/pwa-common-commerce/product/constants/index';
 export * from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
+export * from './constants';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';
@@ -40,7 +41,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/price';
 export * from '@shopgate/pwa-common-commerce/product/selectors/product';
 export * from '@shopgate/pwa-common-commerce/product/selectors/relations';
 export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
-export * from '@shopgate/pwa-common-commerce/product/selectors/media';
+export * from './selectors/media';
 export * from './selectors/product';
 export * from './selectors/price';
 export * from './selectors/variants';

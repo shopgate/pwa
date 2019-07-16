@@ -113,14 +113,14 @@ class ProductContent extends PureComponent {
   };
 
   /**
-   * Stores the ID of the currently selected characteristic.
-   * @param {Object} characteristic The characteristic ID to set.
+   * Stores the currently selected characteristics.
+   * @param {Object} characteristics The characteristics set.
    */
-  setCharacteristic = (characteristic) => {
+  setCharacteristics = (characteristics) => {
     this.setState(prevState => ({
-      characteristic: (characteristic !== null) ? {
-        ...prevState.characteristic,
-        ...characteristic,
+      characteristics: (characteristics !== null) ? {
+        ...prevState.characteristics,
+        ...characteristics,
       } : null,
     }));
   }
@@ -136,19 +136,14 @@ class ProductContent extends PureComponent {
       setOption: this.setOption,
       quantity: this.state.quantity,
       setQuantity: this.setQuantity,
-      setCharacteristic: this.setCharacteristic,
+      setCharacteristics: this.setCharacteristics,
     };
 
     return (
       <Fragment>
         <AppBar productId={this.state.productId} />
         <ProductContext.Provider value={contextValue}>
-          <Media
-            productId={this.state.productId}
-            variantId={this.state.variantId}
-            characteristic={this.state.characteristic}
-            aria-hidden
-          />
+          <Media aria-hidden />
           <Section title="product.sections.information">
             <Header />
           </Section>

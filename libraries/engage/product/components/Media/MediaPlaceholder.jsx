@@ -5,7 +5,7 @@ import { defaultProps, propTypes } from './props';
 import { placeholderContainer, placeholderContent, placeholderIcon } from './style';
 
 /**
- * The featured image component.
+ * The media placeholder component.
  * @returns {JSX}
  */
 const MediaPlaceholder = ({ className }) => (
