@@ -1,16 +1,16 @@
 {
   "name": "@shopgate/pwa-ui-shared",
-  "version": "6.4.4-rc.2",
+  "version": "6.4.4",
   "description": "Shopgate's shared UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@shopgate/pwa-ui-ios": "6.4.4-rc.2",
-    "@shopgate/pwa-ui-material": "6.4.4-rc.2"
+    "@shopgate/pwa-ui-ios": "6.4.4",
+    "@shopgate/pwa-ui-material": "6.4.4"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "6.4.4-rc.2",
-    "@shopgate/pwa-common-commerce": "6.4.4-rc.2",
+    "@shopgate/pwa-common": "6.4.4",
+    "@shopgate/pwa-common-commerce": "6.4.4",
     "classnames": "^2.2.5",
     "react": "~16.8.4"
   },
