@@ -46,9 +46,11 @@ const products = (state = {
       };
     case CANCEL_REQUEST_SYNC_FAVORITES:
       // Sync count needs to be updated, when an add or a remove favorites action is cancelled
+      // This recovers from invalid sync states when a backend call is detected to be redundant
       return {
         ...state,
         syncCount: state.syncCount - action.count,
+        // ids must remain unchanged, because it's managed by all other actions
       };
     case SUCCESS_ADD_FAVORITES:
     case SUCCESS_REMOVE_FAVORITES:
