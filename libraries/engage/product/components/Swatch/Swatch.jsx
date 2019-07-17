@@ -7,11 +7,10 @@ import { css } from 'glamor';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
 import { isBeta, useWidgetStyles } from '../../../core';
+import { WIDGET_ID } from './constants';
 import { SwatchColor } from './SwatchColor';
 import { SwatchTexture } from './SwatchTexture';
 import { swatchGrid, itemSelected } from './style';
-
-const widgetId = '@shopgate/engage/product/Swatch';
 
 /**
  * The swatch component.
@@ -19,7 +18,7 @@ const widgetId = '@shopgate/engage/product/Swatch';
  * @returns {JSX}
  */
 const SwatchUnwrapped = ({
-  testId, maxItemCount, swatch, widgetPath, onClick,
+  testId, maxItemCount, swatch, widgetId, onClick,
 }) => {
   if (!isBeta()) {
     return null;
@@ -30,7 +29,7 @@ const SwatchUnwrapped = ({
     return null;
   }
 
-  const styles = useWidgetStyles(widgetId, widgetPath);
+  const styles = useWidgetStyles(widgetId);
 
   const swatchClass = styles && styles.swatch ? css(styles.swatch).toString() : null;
   const itemClass = styles && styles.item ? css(styles.item).toString() : null;
@@ -106,16 +105,13 @@ SwatchUnwrapped.propTypes = {
       }).isRequired,
     })).isRequired,
   }),
-  widgetPath: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  widgetId: PropTypes.string,
 };
 
 SwatchUnwrapped.defaultProps = {
   maxItemCount: null,
   swatch: null,
-  widgetPath: undefined,
+  widgetId: WIDGET_ID,
   onClick: noop,
 };
 

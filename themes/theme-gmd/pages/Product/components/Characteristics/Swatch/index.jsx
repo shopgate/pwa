@@ -98,6 +98,7 @@ class Swatch extends PureComponent {
             testId={`productSwatch.${id}`}
             swatch={swatch}
             onClick={this.handleItemSelection}
+            widgetId="@shopgate/engage/product/VariantSwatch"
           />
         </div>
       </Fragment>
