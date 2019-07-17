@@ -1,5 +1,5 @@
-import 'react-id-swiper/src/styles/css/swiper.css';
-import React, { useState, useEffect } from 'react';
+import 'react-id-swiper/lib/styles/css/swiper.css';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
@@ -12,7 +12,7 @@ import { container, innerContainer, zoomFix, buttonNext, buttonPrev } from './st
  * @param {Object} props The component props.
  * @returns {React.Node}
  */
-function Swiper(props) {
+const Swiper = (props) => {
   const {
     autoPlay,
     interval,
@@ -33,7 +33,7 @@ function Swiper(props) {
     'aria-hidden': ariaHidden,
   } = props;
 
-  const [swiper, setSwiper] = useState(null);
+  const swiperInstance = useRef(null);
 
   /**
    * Updates the swiper instance reference.
@@ -41,8 +41,8 @@ function Swiper(props) {
    */
   const updateSwiper = (instance) => {
     // Only update the instance, when it differs from the current one.
-    if (instance !== null && instance !== swiper) {
-      setSwiper(instance);
+    if (instance !== null && instance !== swiperInstance.current) {
+      swiperInstance.current = instance;
 
       instance.on('slideChange', () => onSlideChange(instance.realIndex));
       instance.on('transitionEnd', () => {
@@ -66,17 +66,6 @@ function Swiper(props) {
       });
     }
   };
-
-  useEffect(() => {
-    if (swiper !== null) {
-      if (loop) {
-        // Recreate the loop on prop updates to avoid duplicated slides from the last slide set.
-        swiper.loopCreate();
-      }
-
-      swiper.update();
-    }
-  }, [children]);
 
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
@@ -127,6 +116,17 @@ function Swiper(props) {
     allowSlideNext: !disabled,
   };
 
+  useEffect(() => {
+    if (swiperInstance.current !== null && params.rebuildOnUpdate === false) {
+      if (loop) {
+        // Recreate the loop on prop updates to avoid duplicated slides from the last slide set.
+        swiperInstance.current.loopCreate();
+      }
+
+      swiperInstance.current.update();
+    }
+  }, [children]);
+
   return (
     <div className={cls(container, className)} aria-hidden={ariaHidden}>
       <IDSwiper {...params}>
@@ -134,7 +134,7 @@ function Swiper(props) {
       </IDSwiper>
     </div>
   );
-}
+};
 
 Swiper.Item = SwiperItem;
 
@@ -196,7 +196,7 @@ Swiper.defaultProps = {
   loop: false,
   maxIndicators: null,
   onSlideChange: () => { },
-  rebuildOnUpdate: false,
+  rebuildOnUpdate: true,
   slidesPerView: 1,
   snapItems: true,
   zoom: false,
