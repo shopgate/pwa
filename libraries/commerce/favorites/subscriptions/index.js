@@ -1,15 +1,18 @@
 import { ELIMIT } from '@shopgate/pwa-core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { appDidStart$ } from '@shopgate/pwa-common/streams';
+import { fetchProductsById } from '@shopgate/pwa-common-commerce/product';
 import {
-  shouldFetchFavorites$,
   shouldFetchFreshFavorites$,
+  favoritesWillEnter$,
   favoritesSyncIdle$,
   favoritesError$,
 } from '../streams';
 import fetchFavorites from '../actions/fetchFavorites';
 import { requestRemoveFavorites } from '../action-creators';
 import { FETCH_FAVORITES_THROTTLE } from '../constants';
+import { getFavoritesProductsIds } from '../selectors';
 
 /**
  * @param {Function} subscribe Subscribes to an observable.
@@ -19,9 +22,17 @@ export default function favorites(subscribe) {
     return;
   }
 
-  /** App start / favorites route enter */
-  subscribe(shouldFetchFavorites$, ({ dispatch }) => {
+  /** App start */
+  subscribe(appDidStart$, ({ dispatch }) => {
     dispatch(fetchFavorites());
+  });
+
+  /** Favorites route enter */
+  subscribe(favoritesWillEnter$, ({ dispatch, getState }) => {
+    dispatch(fetchFavorites()).then(() => {
+      const productIds = getFavoritesProductsIds(getState());
+      dispatch(fetchProductsById(productIds, null, false));
+    });
   });
 
   /** User login / logout */

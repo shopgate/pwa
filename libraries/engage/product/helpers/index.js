@@ -1,3 +1,5 @@
+import configuration from '@shopgate/pwa-common/collections/Configuration';
+import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
 import { isBeta } from '@shopgate/engage/core';
 
 import { buildShowScheduledParams } from '../components/EffectivityDates/helpers';
@@ -29,3 +31,16 @@ export const buildFetchCategoryProductsParams = () => {
  * @returns {undefined|{params: Object}}
  */
 export const buildFetchSearchResultsParams = buildFetchCategoryProductsParams;
+
+/**
+ * Set default params for fetching products
+ */
+export const setDefaultProductFetchParams = () => {
+  if (!isBeta()) {
+    return;
+  }
+  configuration.set(DEFAULT_PRODUCTS_FETCH_PARAMS, {
+    characteristics: true,
+  });
+};
+
