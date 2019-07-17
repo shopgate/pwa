@@ -111,5 +111,5 @@ export const didRequestFlushFavoritesBuffer$ = main$
  */
 export const didReceiveFlushFavoritesBuffer$ = didRequestAddOrRemoveFavorites$
   .buffer(didRequestAddOrRemoveFavorites$
-    .delay(FAVORITE_ACTION_BUFFER_TIME)
+    .debounceTime(FAVORITE_ACTION_BUFFER_TIME) // Compress delayed actions into a single one
     .merge(didRequestFlushFavoritesBuffer$));
