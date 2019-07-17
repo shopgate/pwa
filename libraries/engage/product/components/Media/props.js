@@ -8,7 +8,6 @@ export const propTypes = {
     PropTypes.string,
     PropTypes.shape,
   ]),
-  params: PropTypes.shape(),
 };
 
 export const defaultProps = {
@@ -16,5 +15,4 @@ export const defaultProps = {
   url: null,
   altText: null,
   className: null,
-  params: null,
 };

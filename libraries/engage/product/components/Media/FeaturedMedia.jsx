@@ -27,6 +27,5 @@ const FeaturedMedia = ({ type, url, altText }) => {
 
 FeaturedMedia.propTypes = propTypes;
 FeaturedMedia.defaultProps = defaultProps;
-FeaturedMedia.displayName = 'FeaturedMedia';
 
 export default FeaturedMedia;

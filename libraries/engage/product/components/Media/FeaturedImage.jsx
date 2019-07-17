@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useWidgetSettings } from '../../../core';
 import { defaultProps, propTypes } from './props';
@@ -24,7 +25,16 @@ const FeaturedImage = ({ url, altText, params }) => {
   );
 };
 
-FeaturedImage.propTypes = propTypes;
-FeaturedImage.defaultProps = defaultProps;
+FeaturedImage.propTypes = {
+  altText: propTypes.altText,
+  params: PropTypes.shape(),
+  url: propTypes.url,
+};
+
+FeaturedImage.defaultProps = {
+  url: defaultProps.url,
+  altText: defaultProps.altText,
+  params: null,
+};
 
 export default FeaturedImage;
