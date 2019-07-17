@@ -9,7 +9,7 @@ import { innerShadow } from './style';
  * The featured image component.
  * @returns {JSX}
  */
-const FeaturedImage = ({ url, altText }) => {
+const FeaturedImage = ({ url, altText, params }) => {
   const {
     showInnerShadow = !appConfig.hideProductImageShadow,
   } = useWidgetSettings('@shopgate/engage/product/FeaturedImage');
@@ -19,6 +19,7 @@ const FeaturedImage = ({ url, altText }) => {
       url={url}
       altText={altText}
       className={showInnerShadow ? innerShadow : null}
+      params={params}
     />
   );
 };

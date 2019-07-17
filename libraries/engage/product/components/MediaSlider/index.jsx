@@ -22,7 +22,7 @@ const MediaSlider = ({
   navigate, featuredMedia, media, 'aria-hidden': ariaHidden, renderPlaceholder,
 }) => {
   let currentSlide = 0;
-  console.warn('MS Render');
+
   /**
    * @param {number} slide slide
    */
