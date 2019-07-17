@@ -66,7 +66,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           loop={true}
           maxIndicators={null}
           onSlideChange={[Function]}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
           zoom={
@@ -215,7 +215,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                   "type": "bullets",
                 }
               }
-              rebuildOnUpdate={false}
+              rebuildOnUpdate={true}
               renderNextButton={[Function]}
               renderPagination={[Function]}
               renderParallax={[Function]}
@@ -356,7 +356,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           loop={true}
           maxIndicators={null}
           onSlideChange={[Function]}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
           zoom={
@@ -505,7 +505,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                   "type": "bullets",
                 }
               }
-              rebuildOnUpdate={false}
+              rebuildOnUpdate={true}
               renderNextButton={[Function]}
               renderPagination={[Function]}
               renderParallax={[Function]}
