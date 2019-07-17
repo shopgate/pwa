@@ -73,32 +73,33 @@ class Item extends Component {
         key={this.props.product.id}
       >
         {state => (
-          <CardItem
-            ref={this.saveRef}
-            className={
-              styles.getFavItemTransitionStyle(state, this.state.visible, this.height)
-            }
-          >
-            <Grid className={styles.row}>
-              <Grid.Item className={styles.leftColumn}>
-                <Image product={this.props.product} />
-                <CTAButtons
-                  productId={this.props.product.id}
-                  active={this.state.visible}
-                  removeThrottle={styles.favItemTransitionDuration + 200}
-                  onRippleComplete={(active) => {
-                    this.setState({
-                      visible: active,
-                    });
-                  }}
-                  favoritesOnce
-                />
-              </Grid.Item>
-              <Grid.Item grow={1} className={styles.rightColumn}>
-                <ProductInfo product={this.props.product} />
-              </Grid.Item>
-            </Grid>
-          </CardItem>
+          <div ref={this.saveRef}>
+            <CardItem
+              className={
+                styles.getFavItemTransitionStyle(state, this.state.visible, this.height)
+              }
+            >
+              <Grid className={styles.row}>
+                <Grid.Item className={styles.leftColumn}>
+                  <Image product={this.props.product} />
+                  <CTAButtons
+                    productId={this.props.product.id}
+                    active={this.state.visible}
+                    removeThrottle={styles.favItemTransitionDuration + 200}
+                    onRippleComplete={(active) => {
+                      this.setState({
+                        visible: active,
+                      });
+                    }}
+                    favoritesOnce
+                  />
+                </Grid.Item>
+                <Grid.Item grow={1} className={styles.rightColumn}>
+                  <ProductInfo product={this.props.product} />
+                </Grid.Item>
+              </Grid>
+            </CardItem>
+          </div>
         )}
       </Transition>
     );
