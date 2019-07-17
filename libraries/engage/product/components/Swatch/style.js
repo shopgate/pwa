@@ -3,14 +3,14 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 
-export const swatchGrid = css({
+export const swatchClass = css({
   gridTemplateColumns: 'repeat(auto-fill, minmax(12px, 1fr))',
   gridGap: '2px',
   display: 'grid',
   marginBottom: '0.2rem',
 }).toString();
 
-export const item = css({
+export const itemClass = css({
   minWidth: '12px',
   width: '12px',
   maxWidth: '12px',
@@ -23,10 +23,10 @@ export const item = css({
   borderColor: colors.shade4,
 }).toString();
 
-export const itemTexture = css({
+export const itemTextureClass = css({
   backgroundSize: 'cover',
 }).toString();
 
-export const itemSelected = css({
+export const itemSelectedClass = css({
   borderColor: colors.accent,
 }).toString();
