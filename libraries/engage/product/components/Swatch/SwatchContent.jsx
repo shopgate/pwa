@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import cls from 'classnames';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import SwatchColor from './SwatchColor';
-import SwatchTexture from './SwatchTexture';
 import { swatchClass, itemClass, itemSelectedClass } from './style';
 
 /**
@@ -24,39 +22,22 @@ const SwatchContent = ({ swatch, classNames, onClick }) => {
           [classNames.swatch]: !!classNames.swatch,
         })}
       >
-        {swatch.values.map((value) => {
-          if (value.swatch.color) {
-            return (
-              <SwatchColor
-                key={value.id}
-                valueId={value.id}
-                color={value.swatch.color}
-                onClick={onClick}
-                className={cls(itemClass, {
-                  [classNames.item]: !!classNames.item,
-                  [itemSelectedClass]: !!value.selected,
-                  [classNames.itemSelected]: !!value.selected,
-                })}
-              />
-            );
-          }
-          if (value.swatch.imageUrl) {
-            return (
-              <SwatchTexture
-                key={value.id}
-                valueId={value.id}
-                imageUrl={value.swatch.imageUrl}
-                onClick={onClick}
-                className={cls({
-                  [classNames.item]: !!classNames.item,
-                  [itemSelectedClass]: !!value.selected,
-                  [classNames.itemSelected]: !!value.selected,
-                })}
-              />
-            );
-          }
-          return null;
-        })}
+        {swatch.values.map(value => (
+          <li
+            aria-hidden
+            key={value.id}
+            onClick={() => onClick(value.id)}
+            className={cls(itemClass, {
+              [classNames.item]: !!classNames.item,
+              [itemSelectedClass]: !!value.selected,
+              [classNames.itemSelected]: !!value.selected,
+            })}
+            style={{
+              ...value.swatch.color && { backgroundColor: value.swatch.color },
+              ...value.swatch.imageUrl && { backgroundImage: `url(${value.swatch.imageUrl})` },
+            }}
+          />
+        ))}
       </ul>
     </SurroundPortals>
   );
@@ -76,7 +57,6 @@ SwatchContent.propTypes = {
       id: PropTypes.string,
       label: PropTypes.string.isRequired,
       swatch: PropTypes.shape({
-        // Contains only imageUrl or color, never both
         imageUrl: PropTypes.string,
         color: PropTypes.string,
       }).isRequired,
@@ -90,4 +70,4 @@ SwatchContent.defaultProps = {
   onClick: noop,
 };
 
-export default SwatchContent;
+export default memo(SwatchContent);

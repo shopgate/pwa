@@ -21,9 +21,6 @@ export const itemClass = css({
   borderWidth: '1px',
   borderStyle: 'solid',
   borderColor: colors.shade4,
-}).toString();
-
-export const itemTextureClass = css({
   backgroundSize: 'cover',
 }).toString();
 

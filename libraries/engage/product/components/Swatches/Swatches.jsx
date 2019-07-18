@@ -60,4 +60,4 @@ Swatches.defaultProps = {
   characteristics: null,
 };
 
-export default memo(connect(Swatches));
+export default connect(memo(Swatches));
