@@ -40,6 +40,13 @@ import {
   getProductRelativesOnFavorites,
 } from '../selectors';
 
+export const errorFavoritesLimit$ = favoritesError$
+  .filter(({ action }) => (
+    action.type === ERROR_FAVORITES && action.error && action.error.code === FAVORITES_LIMIT_ERROR
+  ));
+
+export const refreshFavorites$ = favoritesSyncIdle$.debounceTime(FETCH_FAVORITES_THROTTLE);
+
 /**
  * @param {Function} subscribe Subscribes to an observable.
  */
@@ -64,11 +71,10 @@ export default function favorites(subscribe) {
   });
 
   /** Favorites route enter */
-  subscribe(favoritesWillEnter$, ({ dispatch, getState }) => {
-    dispatch(fetchFavorites()).then(() => {
-      const productIds = getFavoritesProductsIds(getState());
-      dispatch(fetchProductsById(productIds, null, false));
-    });
+  subscribe(favoritesWillEnter$, async ({ dispatch, getState }) => {
+    await dispatch(fetchFavorites());
+    const productIds = getFavoritesProductsIds(getState());
+    dispatch(fetchProductsById(productIds, null, false));
   });
 
   /** User login / logout */
@@ -123,10 +129,6 @@ export default function favorites(subscribe) {
   });
 
   // Catch local limit errors (backend errors are handled autonomously)
-  const errorFavoritesLimit$ = favoritesError$
-    .filter(({ action }) => (
-      action.type === ERROR_FAVORITES && action.error && action.error.code === FAVORITES_LIMIT_ERROR
-    ));
   subscribe(errorFavoritesLimit$, ({ dispatch }) => {
     dispatch(showModal({
       confirm: null,
@@ -140,7 +142,6 @@ export default function favorites(subscribe) {
    * Request after N seconds since last add or remove request to make sure
    * backend did actually save it
    */
-  const refreshFavorites$ = favoritesSyncIdle$.debounceTime(FETCH_FAVORITES_THROTTLE);
   subscribe(refreshFavorites$, ({ dispatch }) => {
     dispatch(fetchFavorites(true));
   });
@@ -150,7 +151,7 @@ export default function favorites(subscribe) {
    * Pipeline requests for all of them. Errors are handled autonomously.
    * After all pipeline requests are done it resets the favorite page's state to "idle".
    */
-  subscribe(didReceiveFlushFavoritesBuffer$, (actionBuffer) => {
+  subscribe(didReceiveFlushFavoritesBuffer$, async (actionBuffer) => {
     // This subscription handles bulk actions only
     if (!Array.isArray(actionBuffer) || !actionBuffer.length) {
       return;
@@ -193,20 +194,24 @@ export default function favorites(subscribe) {
       return;
     }
 
-    // Dispatch individual add or remove (delete) pipeline requests
-    Promise.all(productIdsToSync.map(p => (
-      p.count > 0 ? dispatch(addFavorites(p.id)) : dispatch(removeFavorites(p.id))
-    )))
-      .then(() => {
-        // Add and delete handle success and failure already.
-        if (!getFavoritesProducts(getState()).isFetching) {
-          dispatch(idleSyncFavorites());
+    try {
+      // Dispatch all add or remove (delete) pipeline requests at once and wait for all to complete
+      await Promise.all(productIdsToSync.map((p) => {
+        if (p.count > 0) {
+          return dispatch(addFavorites(p.id));
         }
-      }).catch(() => {
-        // Errors are handled for each pipeline call. Just mark as idle here.
-        if (!getFavoritesProducts(getState()).isFetching) {
-          dispatch(idleSyncFavorites());
-        }
-      });
+        return dispatch(removeFavorites(p.id));
+      }));
+
+      // Add and delete handle success and failure already.
+      if (!getFavoritesProducts(getState()).isFetching) {
+        dispatch(idleSyncFavorites());
+      }
+    } catch (err) {
+      // Errors are handled for each pipeline call. Just mark as idle here.
+      if (!getFavoritesProducts(getState()).isFetching) {
+        dispatch(idleSyncFavorites());
+      }
+    }
   });
 }
