@@ -60,6 +60,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={3}
           interval={3000}
@@ -350,6 +351,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={0}
           interval={3000}
