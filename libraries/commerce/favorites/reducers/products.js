@@ -90,7 +90,7 @@ const products = (state = {
     case RECEIVE_FAVORITES:
       return {
         ...state,
-        ...(state.ready && (state.syncCount > 0 || state.lastChange > action.requestTimestamp))
+        ...(state.ready && state.lastChange > action.requestTimestamp)
           ? {}
           : {
             isFetching: false,

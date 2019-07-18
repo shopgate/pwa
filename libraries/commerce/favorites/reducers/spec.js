@@ -76,16 +76,6 @@ describe('Favorites - reducers', () => {
       Date.now = now;
     });
 
-    it('should not change current state on RECEIVE_FAVORITES when client is out of sync', () => {
-      const invalidProduct = 'invalidProduct';
-      const newState = reducers(state, {
-        type: RECEIVE_FAVORITES,
-        products: [{ id: invalidProduct }],
-        requestTimestamp: 0,
-      });
-      expect(newState.products.ids).not.toContain(invalidProduct);
-    });
-
     it('should not change current state on RECEIVE_FAVORITES when request was before last change', () => {
       const invalidProduct = 'invalidProduct';
       const newState = reducers({
