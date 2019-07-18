@@ -74,14 +74,13 @@ class ImageSlider extends Component {
 
   currentSlide = 0;
 
-  handleOpenGallery = () => {
-    const { images } = this.props;
-
-    if (!images || (Array.isArray(images) && !images.length)) {
-      return;
+  /**
+   * @param {boolean} hasImages Tells if the slider rendered images.
+   */
+  handleOpenGallery = (hasImages) => {
+    if (hasImages) {
+      this.props.navigate(this.currentSlide);
     }
-
-    this.props.navigate(this.currentSlide);
   };
 
   handleSlideChange = (currentSlide) => {
@@ -95,9 +94,10 @@ class ImageSlider extends Component {
   render() {
     const { product, images, 'aria-hidden': ariaHidden } = this.props;
     let content;
+    let imagesByIndex = [];
 
     if (product && Array.isArray(images) && images.length > 1) {
-      const imagesByIndex = getImagesByIndex(images);
+      imagesByIndex = getImagesByIndex(images);
 
       if (imagesByIndex.length) {
         content = (
@@ -133,8 +133,8 @@ class ImageSlider extends Component {
         <Portal name={PRODUCT_IMAGE}>
           <div
             data-test-id={`product: ${product ? product.name : ''}`}
-            onClick={this.handleOpenGallery}
-            onKeyDown={this.handleOpenGallery}
+            onClick={() => { this.handleOpenGallery(!!imagesByIndex.length); }}
+            onKeyDown={() => { this.handleOpenGallery(!!imagesByIndex.length); }}
             role="button"
             tabIndex="0"
             aria-hidden={ariaHidden}
