@@ -20,18 +20,22 @@ const Swiper = (props) => {
     controls,
     className,
     classNames,
-    initialSlide,
-    rebuildOnUpdate,
     slidesPerView,
     maxIndicators,
     indicators,
     loop,
-    freeMode,
     snapItems,
     onSlideChange,
-    zoom,
     disabled,
     'aria-hidden': ariaHidden,
+    ...additionalParams
+  } = props;
+
+  const {
+    zoom,
+    freeMode,
+    initialSlide,
+    rebuildOnUpdate,
   } = props;
 
   const swiperInstance = useRef(null);
@@ -111,7 +115,7 @@ const Swiper = (props) => {
     },
     loop,
     rebuildOnUpdate,
-    // looping does not work with mulitple slides per view
+    // looping does not work with multiple slides per view
     slidesPerView: loop ? 1 : slidesPerView,
     freeMode: freeMode ? true : !snapItems,
     getSwiper: updateSwiper,
@@ -133,7 +137,7 @@ const Swiper = (props) => {
 
   return (
     <div className={cls(container, className)} aria-hidden={ariaHidden}>
-      <IDSwiper {...params} {...props}>
+      <IDSwiper {...params} {...additionalParams}>
         {children}
       </IDSwiper>
     </div>
