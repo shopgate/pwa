@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import noop from 'lodash/noop';
 import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
@@ -74,13 +75,8 @@ class ImageSlider extends Component {
 
   currentSlide = 0;
 
-  /**
-   * @param {boolean} hasImages Tells if the slider rendered images.
-   */
-  handleOpenGallery = (hasImages) => {
-    if (hasImages) {
-      this.props.navigate(this.currentSlide);
-    }
+  handleOpenGallery = () => {
+    this.props.navigate(this.currentSlide);
   };
 
   handleSlideChange = (currentSlide) => {
@@ -95,6 +91,9 @@ class ImageSlider extends Component {
     const { product, images, 'aria-hidden': ariaHidden } = this.props;
     let content;
     let imagesByIndex = [];
+
+    let onClick = this.handleOpenGallery;
+    let onKeyDown = this.handleOpenGallery;
 
     if (product && Array.isArray(images) && images.length > 1) {
       imagesByIndex = getImagesByIndex(images);
@@ -125,6 +124,8 @@ class ImageSlider extends Component {
           resolutions={fallbackResolutions}
         />
       );
+      onClick = noop;
+      onKeyDown = noop;
     }
 
     return (
@@ -133,8 +134,8 @@ class ImageSlider extends Component {
         <Portal name={PRODUCT_IMAGE}>
           <div
             data-test-id={`product: ${product ? product.name : ''}`}
-            onClick={() => { this.handleOpenGallery(!!imagesByIndex.length); }}
-            onKeyDown={() => { this.handleOpenGallery(!!imagesByIndex.length); }}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
             role="button"
             tabIndex="0"
             aria-hidden={ariaHidden}
