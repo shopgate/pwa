@@ -1,34 +1,25 @@
-import React, { Fragment, memo } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import { ProductImage } from '@shopgate/engage/product';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
-import connect from './connector';
+import { ProductContext } from '../../context';
 
 /**
  * The product media component.
  * @returns {JSX}
  */
-const Media = memo((props) => {
-  const {
-    'aria-hidden': ariaHidden, productId, variantId, imageUrl,
-  } = props;
-
-  if (imageUrl) {
-    return (
-      <ProductImage src={imageUrl} />
-    );
-  }
-
-  return (
-    <Fragment>
-      {/* MediaSlider feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects */}
-      {
-        isBeta() ? (
+const Media = ({ 'aria-hidden': ariaHidden }) => (
+  <ProductContext.Consumer>
+    {({ productId, variantId, characteristics }) => (
+      <Fragment>
+        {/* MediaSlider feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects */}
+        {isBeta() ? (
           <ProductMediaSlider
-            productId={variantId || productId}
+            productId={productId}
+            variantId={variantId}
+            characteristics={characteristics}
             aria-hidden={ariaHidden}
           />
         ) : (
@@ -37,23 +28,18 @@ const Media = memo((props) => {
             variantId={variantId}
             aria-hidden={ariaHidden}
           />
-        )
-      }
-    </Fragment>
-  );
-});
+        )}
+      </Fragment>
+    )}
+  </ProductContext.Consumer>
+);
 
 Media.propTypes = {
-  productId: PropTypes.string.isRequired,
   'aria-hidden': PropTypes.bool,
-  imageUrl: PropTypes.string,
-  variantId: PropTypes.string,
 };
 
 Media.defaultProps = {
   'aria-hidden': null,
-  imageUrl: null,
-  variantId: null,
 };
 
-export default connect(Media);
+export default Media;
