@@ -1,17 +1,18 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import { css } from 'glamor';
 import { useWidgetStyles } from '../../../core';
 import SwatchContent from './SwatchContent';
 
-export const WIDGET_ID = '@shopgate/engage/product/Swatch';
+const WIDGET_ID = '@shopgate/engage/product/VariantSwatch';
 
 /**
- * The swatch component.
+ * The variant swatch component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Swatch = ({ swatch }) => {
+const VariantSwatch = ({ swatch, onClick }) => {
   if (!swatch) {
     return null;
   }
@@ -25,11 +26,12 @@ const Swatch = ({ swatch }) => {
   };
 
   return (
-    <SwatchContent swatch={swatch} classNames={classNames} />
+    <SwatchContent swatch={swatch} classNames={classNames} onClick={onClick} />
   );
 };
 
-Swatch.propTypes = {
+VariantSwatch.propTypes = {
+  onClick: PropTypes.func,
   swatch: PropTypes.shape({
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -45,8 +47,9 @@ Swatch.propTypes = {
   }),
 };
 
-Swatch.defaultProps = {
+VariantSwatch.defaultProps = {
   swatch: null,
+  onClick: noop,
 };
 
-export default memo(Swatch);
+export default memo(VariantSwatch);

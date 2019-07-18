@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import noop from 'lodash/noop';
 import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
@@ -75,12 +76,6 @@ class ImageSlider extends Component {
   currentSlide = 0;
 
   handleOpenGallery = () => {
-    const { images } = this.props;
-
-    if (!images || (Array.isArray(images) && !images.length)) {
-      return;
-    }
-
     this.props.navigate(this.currentSlide);
   };
 
@@ -95,9 +90,12 @@ class ImageSlider extends Component {
   render() {
     const { product, images, 'aria-hidden': ariaHidden } = this.props;
     let content;
+    let imagesByIndex = [];
+    let onClick = this.handleOpenGallery;
+    let onKeyDown = this.handleOpenGallery;
 
     if (product && Array.isArray(images) && images.length > 1) {
-      const imagesByIndex = getImagesByIndex(images);
+      imagesByIndex = getImagesByIndex(images);
 
       if (imagesByIndex.length) {
         content = (
@@ -125,6 +123,8 @@ class ImageSlider extends Component {
           resolutions={fallbackResolutions}
         />
       );
+      onClick = noop;
+      onKeyDown = noop;
     }
 
     return (
@@ -133,8 +133,8 @@ class ImageSlider extends Component {
         <Portal name={PRODUCT_IMAGE}>
           <div
             data-test-id={`product: ${product ? product.name : ''}`}
-            onClick={this.handleOpenGallery}
-            onKeyDown={this.handleOpenGallery}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
             role="button"
             tabIndex="0"
             aria-hidden={ariaHidden}

@@ -1,6 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ItemName /> should not render with display props set 1`] = `""`;
 
 exports[`<ItemName /> should render with minimal props 1`] = `
 <Fragment>

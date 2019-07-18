@@ -41,13 +41,14 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
       loop={false}
       maxIndicators={null}
       onSlideChange={[Function]}
-      rebuildOnUpdate={false}
+      rebuildOnUpdate={true}
       slidesPerView={1}
       snapItems={true}
       zoom={false}
@@ -190,7 +191,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
               "type": "bullets",
             }
           }
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           renderNextButton={[Function]}
           renderPagination={[Function]}
           renderParallax={[Function]}
@@ -482,13 +483,14 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
       loop={false}
       maxIndicators={null}
       onSlideChange={[Function]}
-      rebuildOnUpdate={false}
+      rebuildOnUpdate={true}
       slidesPerView={1}
       snapItems={true}
       zoom={false}
@@ -631,7 +633,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
               "type": "bullets",
             }
           }
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           renderNextButton={[Function]}
           renderPagination={[Function]}
           renderParallax={[Function]}
@@ -769,13 +771,14 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
       loop={false}
       maxIndicators={null}
       onSlideChange={[Function]}
-      rebuildOnUpdate={false}
+      rebuildOnUpdate={true}
       slidesPerView={1}
       snapItems={true}
       zoom={false}
@@ -918,7 +921,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
               "type": "bullets",
             }
           }
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           renderNextButton={[Function]}
           renderPagination={[Function]}
           renderParallax={[Function]}

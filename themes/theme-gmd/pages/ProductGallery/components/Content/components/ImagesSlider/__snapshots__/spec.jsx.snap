@@ -60,13 +60,14 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={3}
           interval={3000}
           loop={true}
           maxIndicators={null}
           onSlideChange={[Function]}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
           zoom={
@@ -215,7 +216,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                   "type": "bullets",
                 }
               }
-              rebuildOnUpdate={false}
+              rebuildOnUpdate={true}
               renderNextButton={[Function]}
               renderPagination={[Function]}
               renderParallax={[Function]}
@@ -350,13 +351,14 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={0}
           interval={3000}
           loop={true}
           maxIndicators={null}
           onSlideChange={[Function]}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
           zoom={
@@ -505,7 +507,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                   "type": "bullets",
                 }
               }
-              rebuildOnUpdate={false}
+              rebuildOnUpdate={true}
               renderNextButton={[Function]}
               renderPagination={[Function]}
               renderParallax={[Function]}
