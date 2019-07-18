@@ -10,8 +10,8 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
-import { getProductById, getProductRoute, hasProductVariety } from '@shopgate/pwa-common-commerce/product';
-import { historyReplace, historyPop } from '@shopgate/pwa-common/actions/router';
+import { getProductRoute, hasProductVariety } from '@shopgate/pwa-common-commerce/product';
+import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import { checkoutSucceeded$ } from '@shopgate/pwa-common-commerce/checkout';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
@@ -188,8 +188,7 @@ export default function cart(subscribe) {
    */
   subscribe(routeAddProductNavigate$, ({ dispatch, action, getState }) => {
     // NO product or variety
-    if (!getProductById(getState(), action)
-      || hasProductVariety(getState(), action)) {
+    if (hasProductVariety(getState(), action)) {
       // Redirect to item page to select options/variant
       dispatch(historyReplace({
         pathname: getProductRoute(action.productId),
@@ -199,7 +198,9 @@ export default function cart(subscribe) {
         productId: action.productId,
         quantity: 1,
       }]));
-      dispatch(historyPop());
+      dispatch(historyReplace({
+        pathname: CART_PATH,
+      }));
     }
   });
 
