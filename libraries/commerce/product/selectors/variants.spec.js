@@ -107,6 +107,10 @@ describe('Variants selectors', () => {
     it('should return notAChild and it\'s parent only', () => {
       expect(getKnownRelatives(mockedState, { productId: 'notAChild' })).toEqual(['notAChild', 'foo']);
     });
+
+    it('should return empty array on empty product data', () => {
+      expect(getKnownRelatives(mockedState, { productId: 'not_exist' })).toEqual([]);
+    });
   });
 });
 

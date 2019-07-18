@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductSlider /> should match snapshot 1`] = `
+<Swiper
+  autoPlay={false}
+  className={null}
+  controls={false}
+  freeMode={true}
+  indicators={false}
+  interval={10}
+  loop={false}
+  slidesPerView={2.3}
+>
+  <Swiper.Item
+    key="prod1"
+  >
+    <ProductCard
+      productId="prod1"
+      style={
+        Object {
+          "height": "100%",
+          "margin": "0 8px",
+        }
+      }
+    />
+  </Swiper.Item>
+</Swiper>
+`;

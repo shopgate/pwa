@@ -17,13 +17,14 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     classNames={Object {}}
     controls={false}
     disabled={false}
+    freeMode={false}
     indicators={true}
     initialSlide={0}
     interval={3000}
     loop={true}
     maxIndicators={null}
     onSlideChange={[Function]}
-    rebuildOnUpdate={false}
+    rebuildOnUpdate={true}
     slidesPerView={1}
     snapItems={true}
     zoom={false}
