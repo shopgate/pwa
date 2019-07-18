@@ -202,7 +202,7 @@ export const routeAddProductNavigate$ = navigate$
       action: {
         ...params.action,
         productId: decodeURIComponent(productId),
-        couponCode: decodeURIComponent(couponCode),
+        couponCode: couponCode ? decodeURIComponent(couponCode) : undefined,
       },
     };
   });

@@ -112,5 +112,16 @@ describe('Cart streams', () => {
         }),
       }));
     });
+
+    it('should emit and map event without coupon correctly', () => {
+      dispatch(navigate({ pathname: '/cart_add_product/345%2F34%23' }));
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      expect(subscriber).toHaveBeenCalledWith(expect.objectContaining({
+        action: expect.objectContaining({
+          productId: '345/34#',
+          couponCode: undefined,
+        }),
+      }));
+    });
   });
 });
