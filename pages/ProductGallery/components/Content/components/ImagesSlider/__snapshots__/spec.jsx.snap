@@ -60,13 +60,14 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={3}
           interval={3000}
           loop={true}
           maxIndicators={null}
           onSlideChange={[Function]}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
           zoom={
@@ -87,7 +88,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-15qycmt css-sa13d4 css-qb469q"
+              containerClass="css-74roak css-sa13d4 css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={3}
@@ -215,7 +216,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                   "type": "bullets",
                 }
               }
-              rebuildOnUpdate={false}
+              rebuildOnUpdate={true}
               renderNextButton={[Function]}
               renderPagination={[Function]}
               renderParallax={[Function]}
@@ -233,7 +234,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               }
             >
               <div
-                className="css-15qycmt css-sa13d4 css-qb469q"
+                className="css-74roak css-sa13d4 css-qb469q"
               >
                 <div
                   className="swiper-wrapper"
@@ -350,13 +351,14 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           }
           controls={false}
           disabled={false}
+          freeMode={false}
           indicators={true}
           initialSlide={0}
           interval={3000}
           loop={true}
           maxIndicators={null}
           onSlideChange={[Function]}
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           slidesPerView={1}
           snapItems={true}
           zoom={
@@ -377,7 +379,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-15qycmt css-sa13d4 css-qb469q"
+              containerClass="css-74roak css-sa13d4 css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={0}
@@ -505,7 +507,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                   "type": "bullets",
                 }
               }
-              rebuildOnUpdate={false}
+              rebuildOnUpdate={true}
               renderNextButton={[Function]}
               renderPagination={[Function]}
               renderParallax={[Function]}
@@ -523,7 +525,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               }
             >
               <div
-                className="css-15qycmt css-sa13d4 css-qb469q"
+                className="css-74roak css-sa13d4 css-qb469q"
               >
                 <div
                   className="swiper-wrapper"
