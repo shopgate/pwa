@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ItemPrice /> should not render with display props set 1`] = `""`;
-
 exports[`<ItemPrice /> should render with minimal props 1`] = `
 <Fragment>
   <Portal
@@ -22,7 +20,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
       }
     }
   >
-    <Component
+    <ProductGridPrice
       price={Object {}}
     />
   </Portal>

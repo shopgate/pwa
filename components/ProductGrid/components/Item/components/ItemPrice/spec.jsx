@@ -2,6 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ItemPrice from './index';
 
+jest.mock('@shopgate/engage/product', () => ({
+  ProductGridPrice: () => null,
+}));
 const props = {
   productId: '1234',
   price: {},
@@ -19,6 +22,6 @@ describe('<ItemPrice />', () => {
 
   it('should not render with display props set', () => {
     const wrapper = shallow(<ItemPrice {...props} display={display} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toBeEmptyRender();
   });
 });

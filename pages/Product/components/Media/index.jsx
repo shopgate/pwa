@@ -22,12 +22,13 @@ const Media = ({ 'aria-hidden': ariaHidden }) => (
             characteristics={characteristics}
             aria-hidden={ariaHidden}
           />
-          ) : (<ProductImageSlider
+        ) : (
+          <ProductImageSlider
             productId={productId}
             variantId={variantId}
             aria-hidden={ariaHidden}
           />
-          )}
+        )}
       </Fragment>
     )}
   </ProductContext.Consumer>
