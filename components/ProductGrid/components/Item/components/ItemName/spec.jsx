@@ -19,6 +19,6 @@ describe('<ItemName />', () => {
 
   it('should not render with display props set', () => {
     const wrapper = shallow(<ItemName {...props} display={display} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toBeEmptyRender();
   });
 });
