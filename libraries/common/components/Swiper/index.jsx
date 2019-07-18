@@ -20,17 +20,22 @@ const Swiper = (props) => {
     controls,
     className,
     classNames,
-    initialSlide,
-    rebuildOnUpdate,
     slidesPerView,
     maxIndicators,
     indicators,
     loop,
     snapItems,
     onSlideChange,
-    zoom,
     disabled,
     'aria-hidden': ariaHidden,
+    ...additionalParams
+  } = props;
+
+  const {
+    zoom,
+    freeMode,
+    initialSlide,
+    rebuildOnUpdate,
   } = props;
 
   const swiperInstance = useRef(null);
@@ -91,9 +96,11 @@ const Swiper = (props) => {
     navigation = controls;
   }
 
+  const zoomEnabled = zoom === true || (typeof zoom === 'object' && Object.keys(zoom).length);
+
   const params = {
     modules: [Pagination, Navigation, Autoplay, Zoom],
-    containerClass: cls(innerContainer, classNames.container, { [zoomFix]: zoom }),
+    containerClass: cls(innerContainer, classNames.container, { [zoomFix]: zoomEnabled }),
     autoplay: autoPlay ? {
       delay: interval,
     } : false,
@@ -108,8 +115,9 @@ const Swiper = (props) => {
     },
     loop,
     rebuildOnUpdate,
-    slidesPerView,
-    freeMode: !snapItems,
+    // looping does not work with multiple slides per view
+    slidesPerView: loop ? 1 : slidesPerView,
+    freeMode: freeMode ? true : !snapItems,
     getSwiper: updateSwiper,
     zoom,
     allowSlidePrev: !disabled,
@@ -129,7 +137,7 @@ const Swiper = (props) => {
 
   return (
     <div className={cls(container, className)} aria-hidden={ariaHidden}>
-      <IDSwiper {...params}>
+      <IDSwiper {...params} {...additionalParams}>
         {children}
       </IDSwiper>
     </div>
@@ -166,10 +174,12 @@ Swiper.propTypes = {
     PropTypes.shape(),
   ]),
   disabled: PropTypes.bool,
+  freeMode: PropTypes.bool,
   indicators: PropTypes.bool,
   initialSlide: PropTypes.number,
   interval: PropTypes.number,
   loop: PropTypes.bool,
+  // @deprecated
   maxIndicators: PropTypes.number,
   onSlideChange: PropTypes.func,
   rebuildOnUpdate: PropTypes.bool,
@@ -177,6 +187,7 @@ Swiper.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
+  // @deprecated
   snapItems: PropTypes.bool,
   zoom: PropTypes.oneOfType([
     PropTypes.bool,
@@ -194,10 +205,13 @@ Swiper.defaultProps = {
   initialSlide: 0,
   interval: 3000,
   loop: false,
+  // @deprecated
   maxIndicators: null,
   onSlideChange: () => { },
   rebuildOnUpdate: true,
   slidesPerView: 1,
+  freeMode: false,
+  // @deprecated
   snapItems: true,
   zoom: false,
   disabled: false,

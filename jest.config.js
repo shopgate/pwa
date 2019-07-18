@@ -1,5 +1,12 @@
 const jestConfig = require('@shopgate/pwa-unit-test/jest.config');
 
+const testedExtensions = [
+  '@shopgate-tracking-ga-native',
+  '@shopgate-product-reviews',
+  '@shopgate-user-privacy',
+  '@shopgate-theme-config',
+];
+
 module.exports = {
   ...jestConfig,
   moduleNameMapper: {
@@ -18,6 +25,7 @@ module.exports = {
     '/node_modules/',
     '/themes/*/extensions/',
     '/themes/*/e2e/',
+    `/extensions/(?!(${testedExtensions.join('|')}))`,
   ],
   transformIgnorePatterns: [
     'node_modules/(?!(swiper|dom7)/)',

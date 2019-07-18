@@ -9,7 +9,7 @@ import {
 } from '../../constants';
 
 import {
-  makeGetProductMediaState,
+  getProductMediaState,
   makeGetProductMedia,
 } from '../media';
 
@@ -52,16 +52,6 @@ describe('engage > product > selectors > media', () => {
   });
 
   describe('getProductMediaState()', () => {
-    let getProductMediaState;
-
-    beforeEach(() => {
-      getProductMediaState = makeGetProductMediaState();
-    });
-
-    it('should return different selector instances', () => {
-      expect(getProductMediaState).not.toBe(makeGetProductMediaState());
-    });
-
     it('should return the state', () => {
       const result = getProductMediaState({});
       expect(result).toEqual(mockedState.mediaByProductId);
