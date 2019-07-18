@@ -143,7 +143,7 @@ export default {
           },
           {
             name: 'ShopgateProductSwatch',
-            id: '@shopgate/engage/product/Swatch',
+            id: '@shopgate/engage/product/VariantSwatch',
             styles: {
               swatch: {
                 gridTemplateColumns: 'repeat(auto-fill, minmax($.variables.swatchItemSize, 1fr))',
@@ -164,6 +164,10 @@ export default {
           {
             name: 'RelationsSlider',
             id: '@shopgate/engage/product/RelationsSlider',
+          },
+          {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
           },
         ],
       },
