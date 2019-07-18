@@ -59,7 +59,7 @@ export { default as QuantityPicker } from './components/QuantityPicker';
 export { default as EffectivityDates } from './components/EffectivityDates';
 export { default as PriceDifference } from './components/PriceDifference';
 export { FeaturedMedia } from './components/Media';
-export { Swatch } from './components/Swatch';
+export { VariantSwatch } from './components/Swatch';
 export { Swatches } from './components/Swatches';
 export { RelationsSlider } from './components/RelationsSlider';
 export { default as ProductCard } from './components/ProductCard';

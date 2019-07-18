@@ -3,7 +3,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { typography } = themeConfig;
 
-export const swatches = css({
+export const swatchesClass = css({
   marginTop: '8px',
   lineHeight: typography.lineHeight,
 });
