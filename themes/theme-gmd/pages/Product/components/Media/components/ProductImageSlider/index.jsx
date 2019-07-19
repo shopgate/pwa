@@ -91,6 +91,7 @@ class ProductImageSlider extends Component {
     const { product, images, 'aria-hidden': ariaHidden } = this.props;
     let content;
     let imagesByIndex = [];
+
     let onClick = this.handleOpenGallery;
     let onKeyDown = this.handleOpenGallery;
 
