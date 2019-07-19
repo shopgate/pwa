@@ -89,17 +89,15 @@ const products = (state = {
       };
     case RECEIVE_FAVORITES:
       /**
-       * Note: When favorites are received, an add or remove request can be in progress. To avoid
-       *       turning of the favorites button off and on multiple times, the sync needs to track
-       *       actual product ids to add or remove, which then needs to be incorporated here.
+       * Note: When favorites are received, an add or remove request can be in progress. In this
+       *       case only fetching state will be updated and the received data will be discarded.
+       *       A new fetch request will be queued as soon as the sync is done, which will recover
+       *       discarded data.
        */
       return {
         ...state,
         ...(state.ready && (state.syncCount > 0 || state.lastChange > action.requestTimestamp))
-          ? {
-            // A sync might still be in progress, a new fetch request will be done later
-            isFetching: false,
-          }
+          ? { isFetching: false }
           : {
             isFetching: false,
             expires: Date.now() + FAVORITES_LIFETIME,
