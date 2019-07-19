@@ -51,7 +51,7 @@ class ProductContent extends PureComponent {
       optionsPrices: {},
       productId: props.variantId ? props.baseProductId : props.productId,
       variantId: props.variantId ? props.variantId : null,
-      characteristic: null,
+      characteristics: null,
       quantity: 1,
     };
   }
