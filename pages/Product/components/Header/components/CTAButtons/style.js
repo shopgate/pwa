@@ -8,7 +8,7 @@ const iconSize = 24;
 const buttons = css({
   position: 'absolute',
   right: variables.gap.big,
-  top: -30,
+  top: -20,
   display: 'flex',
   justifyContent: 'flex-end',
   alignItems: 'center',
