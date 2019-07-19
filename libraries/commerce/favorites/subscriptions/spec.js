@@ -13,8 +13,10 @@ import {
   addProductToFavoritesDebounced$,
   removeProductFromFavoritesDebounced$,
   didReceiveFlushFavoritesBuffer$,
+  errorFavoritesLimit$,
+  refreshFavorites$,
 } from '../streams';
-import favorites, { errorFavoritesLimit$, refreshFavorites$ } from './index';
+import favorites from './index';
 import fetchFavorites from '../actions/fetchFavorites';
 import addFavorites from '../actions/addFavorites';
 import removeFavorites from '../actions/removeFavorites';

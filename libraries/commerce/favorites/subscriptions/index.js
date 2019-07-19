@@ -8,8 +8,8 @@ import {
   shouldFetchFreshFavorites$,
   addProductToFavoritesDebounced$,
   removeProductFromFavoritesDebounced$,
-  favoritesError$,
-  favoritesSyncIdle$,
+  errorFavoritesLimit$,
+  refreshFavorites$,
   didReceiveFlushFavoritesBuffer$,
 } from '../streams';
 import {
@@ -27,11 +27,9 @@ import {
   idleSyncFavorites,
 } from '../action-creators';
 import {
-  FETCH_FAVORITES_THROTTLE,
   REQUEST_ADD_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
   FAVORITES_LIMIT_ERROR,
-  ERROR_FAVORITES,
 } from '../constants';
 import {
   getFavoritesProductsIds,
@@ -39,13 +37,6 @@ import {
   getFavoritesCount,
   getProductRelativesOnFavorites,
 } from '../selectors';
-
-export const errorFavoritesLimit$ = favoritesError$
-  .filter(({ action }) => (
-    action.type === ERROR_FAVORITES && action.error && action.error.code === FAVORITES_LIMIT_ERROR
-  ));
-
-export const refreshFavorites$ = favoritesSyncIdle$.debounceTime(FETCH_FAVORITES_THROTTLE);
 
 /**
  * @param {Function} subscribe Subscribes to an observable.

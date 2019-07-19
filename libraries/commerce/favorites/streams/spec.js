@@ -11,6 +11,7 @@ import {
   addProductToFavoritesDebounced$,
   removeProductFromFavoritesDebounced$,
   favoritesError$,
+  errorFavoritesLimit$,
   shouldFetchFavorites$,
   shouldFetchFreshFavorites$,
   favoritesDidUpdate$,
@@ -18,7 +19,9 @@ import {
   favoritesDidAddItem$,
   favoritesWillRemoveItem$,
   favoritesDidRemoveItem$,
+  receiveFavorites$,
   favoritesSyncIdle$,
+  refreshFavorites$,
   didRequestAddOrRemoveFavorites$,
   didRequestFlushFavoritesBuffer$,
   didReceiveFlushFavoritesBuffer$,
@@ -26,15 +29,16 @@ import {
 
 import {
   FAVORITES_PATH,
+  RECEIVE_FAVORITES,
+  ERROR_FAVORITES,
+  ERROR_FETCH_FAVORITES,
+  REQUEST_ADD_FAVORITES,
+  ERROR_ADD_FAVORITES,
+  REQUEST_REMOVE_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
+  FAVORITES_LIMIT_ERROR,
   FAVORITE_ACTION_BUFFER_TIME,
   FAVORITE_BUTTON_DEBOUNCE_TIME,
-  ERROR_FETCH_FAVORITES,
-  ERROR_ADD_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
-  ERROR_FAVORITES,
-  REQUEST_ADD_FAVORITES,
-  REQUEST_REMOVE_FAVORITES,
-  RECEIVE_FAVORITES,
 } from '../constants';
 import {
   addProductToFavorites,
@@ -43,6 +47,7 @@ import {
   requestRemoveFavorites,
   successAddFavorites,
   successRemoveFavorites,
+  receiveFavorites,
   idleSyncFavorites,
   requestFlushFavoritesBuffer,
 } from '../action-creators';
@@ -169,6 +174,40 @@ describe('Favorites streams', () => {
     });
   });
 
+  describe('errorFavoritesLimit$', () => {
+    it('should call subscribers only for the internal favorites limit error and no others', () => {
+      errorFavoritesLimit$.subscribe(subscriber);
+      mainSubject.next({
+        action: {
+          type: ERROR_FAVORITES,
+          error: {
+            code: FAVORITES_LIMIT_ERROR,
+          },
+        },
+      });
+      expect(subscriber).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call subscribers when the action does not match', () => {
+      errorFavoritesLimit$.subscribe(subscriber);
+      mainSubject.next({ action: { type: DUMMY_ACTION } });
+      expect(subscriber).toHaveBeenCalledTimes(0);
+    });
+
+    it('should not call subscribers on any other internal favorites error', () => {
+      errorFavoritesLimit$.subscribe(subscriber);
+      mainSubject.next({
+        action: {
+          type: ERROR_FAVORITES,
+          error: {
+            code: 'SOME_OTHER_CODE',
+          },
+        },
+      });
+      expect(subscriber).toHaveBeenCalledTimes(0);
+    });
+  });
+
   describe('shouldFetchFavorites$', () => {
     it('should call subscribers to fetch favorites on every app start and on route enter', () => {
       shouldFetchFavorites$.subscribe(subscriber);
@@ -275,6 +314,20 @@ describe('Favorites streams', () => {
     });
   });
 
+  describe('receiveFavorites$', () => {
+    it('should call subscribers for every receive favorites action', () => {
+      receiveFavorites$.subscribe(subscriber);
+      mainSubject.next({ action: receiveFavorites() });
+      expect(subscriber).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call subscribers when the action does not match', () => {
+      receiveFavorites$.subscribe(subscriber);
+      mainSubject.next({ action: { type: DUMMY_ACTION } });
+      expect(subscriber).toHaveBeenCalledTimes(0);
+    });
+  });
+
   describe('favoritesSyncIdle$', () => {
     it('should call subscribers for every sync idle call', () => {
       favoritesSyncIdle$.subscribe(subscriber);
@@ -284,6 +337,39 @@ describe('Favorites streams', () => {
 
     it('should not call subscribers when the action does not match', () => {
       favoritesSyncIdle$.subscribe(subscriber);
+      mainSubject.next({ action: { type: DUMMY_ACTION } });
+      expect(subscriber).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  describe('refreshFavorites$', () => {
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    it('should call subscribers only once, when the action is triggered multiple times', () => {
+      jest.useFakeTimers();
+      refreshFavorites$.subscribe(subscriber);
+      const action = idleSyncFavorites();
+      mainSubject.next({ action });
+      mainSubject.next({ action });
+      jest.advanceTimersByTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
+      expect(subscriber).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call subscribers twice, when debounce time has passed', () => {
+      jest.useFakeTimers();
+      refreshFavorites$.subscribe(subscriber);
+      const action = idleSyncFavorites();
+      mainSubject.next({ action });
+      jest.advanceTimersByTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
+      mainSubject.next({ action });
+      jest.advanceTimersByTime(FAVORITE_BUTTON_DEBOUNCE_TIME);
+      expect(subscriber).toHaveBeenCalledTimes(2);
+    });
+
+    it('should not call subscribers when the action does not match', () => {
+      refreshFavorites$.subscribe(subscriber);
       mainSubject.next({ action: { type: DUMMY_ACTION } });
       expect(subscriber).toHaveBeenCalledTimes(0);
     });
