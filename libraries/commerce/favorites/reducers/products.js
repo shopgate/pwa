@@ -88,6 +88,11 @@ const products = (state = {
         // `syncCount` stays untouched because this is not considered to be a sync.
       };
     case RECEIVE_FAVORITES:
+      /**
+       * Note: When favorites are received, an add or remove request can be in progress. To avoid
+       *       turning of the favorites button off and on multiple times, the sync needs to track
+       *       actual product ids to add or remove, which then needs to be incorporated here.
+       */
       return {
         ...state,
         ...(state.ready && state.lastChange > action.requestTimestamp)

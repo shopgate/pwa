@@ -149,7 +149,7 @@ export default function favorites(subscribe) {
     }
 
     // All actions provide the same functionality, just take the first entry
-    const { dispatch, getState } = actionBuffer[0];
+    const { dispatch } = actionBuffer[0];
 
     // Compute a list of product ids that were in the action buffer
     const bufferedProductIdsToSync = {};
@@ -195,14 +195,12 @@ export default function favorites(subscribe) {
       }));
 
       // Add and delete handle success and failure already.
-      if (!getFavoritesProducts(getState()).isFetching) {
-        dispatch(idleSyncFavorites());
-      }
+      // Ignore 'fetching' state and force fetch every time (fetch request can be outdated)
+      dispatch(idleSyncFavorites());
     } catch (err) {
       // Errors are handled for each pipeline call. Just mark as idle here.
-      if (!getFavoritesProducts(getState()).isFetching) {
-        dispatch(idleSyncFavorites());
-      }
+      // Ignore 'fetching' state and force fetch every time (fetch request can be outdated)
+      dispatch(idleSyncFavorites());
     }
   });
 }
