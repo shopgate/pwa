@@ -59,3 +59,20 @@ export function makeGetProductCharacteristics() {
     product => ((!product || !product.characteristics) ? null : product.characteristics)
   );
 }
+
+/**
+ * Creates a selector to return product featured media.
+ * @returns {Function}
+ */
+export function makeGetProductFeaturedMedia() {
+  return createSelector(
+    getProduct,
+    (product) => {
+      if (!product) {
+        return null;
+      }
+
+      return !product.featuredMedia ? null : product.featuredMedia;
+    }
+  );
+}
