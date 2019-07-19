@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Image from '@shopgate/pwa-common/components/Image';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import { buildMediaImageUrl } from './helpers';
+import { useWidgetSettings } from '../../../core';
 import { defaultProps, propTypes } from './props';
 import MediaPlaceholder from './MediaPlaceholder';
+import { innerShadow } from './style';
 
 const { colors } = themeConfig;
 
@@ -19,27 +22,33 @@ const MediaImage = ({
 }) => {
   const [placeholder, setPlaceholderEnabled] = useState(!url);
 
+  const {
+    showInnerShadow = !appConfig.hideProductImageShadow,
+  } = useWidgetSettings('@shopgate/engage/product/MediaImage');
+
   useEffect(() => setPlaceholderEnabled(!url), [url]);
+
+  const classes = classnames(className, {
+    [innerShadow]: showInnerShadow,
+  });
 
   if (placeholder) {
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
-        <MediaPlaceholder className={className} />
+        <MediaPlaceholder className={classes} />
       </SurroundPortals>
     );
   }
 
   return (
     <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-      <div className={className}>
-        <Image
-          src={buildMediaImageUrl(url, params)}
-          alt={altText}
-          className={className}
-          backgroundColor={colors.light}
-          onError={() => setPlaceholderEnabled(true)}
-        />
-      </div>
+      <Image
+        src={buildMediaImageUrl(url, params)}
+        alt={altText}
+        className={classes}
+        backgroundColor={colors.light}
+        onError={() => setPlaceholderEnabled(true)}
+      />
     </SurroundPortals>
   );
 };

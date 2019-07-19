@@ -5,7 +5,6 @@ import { PRODUCT_MEDIA } from '@shopgate/pwa-common-commerce/product';
 import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '../../constants';
 import MediaImage from './components/MediaImage';
 import MediaVideo from './components/MediaVideo';
-import FeaturedImage from '../Media/FeaturedImage';
 import connect from './connector';
 import { container } from './style';
 
@@ -93,7 +92,7 @@ MediaSlider.defaultProps = {
   'aria-hidden': null,
   featuredMedia: null,
   media: null,
-  renderPlaceholder: featuredMedia => (<FeaturedImage {...featuredMedia} />),
+  renderPlaceholder: featuredMedia => (<MediaImage {...featuredMedia} />),
 };
 
 export default connect(MediaSlider);
