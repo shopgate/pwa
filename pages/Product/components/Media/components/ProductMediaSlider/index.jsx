@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MediaSlider, FeaturedImage } from '@shopgate/engage/product';
+import { MediaSlider, MediaImage } from '@shopgate/engage/product';
 import connect from './connector';
 
 /**
@@ -16,7 +16,7 @@ const ProductMediaSlider = ({
     productId={productId}
     renderPlaceholder={(featuredMedia) => {
       const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
-      return (<FeaturedImage {...props} />);
+      return (<MediaImage {...props} />);
     }}
   />
 );
