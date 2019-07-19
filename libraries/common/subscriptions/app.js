@@ -42,7 +42,13 @@ import {
   routeDidUpdate,
 } from '../actions/router';
 import { receiveClientConnectivity } from '../action-creators/client';
-import { appDidStart$, appWillStart$, clientInformationDidUpdate$, pipelineError$ } from '../streams';
+import {
+  appWillStart$,
+  appDidStart$,
+  clientInformationDidUpdate$,
+  navigate$,
+  pipelineError$,
+} from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
 import { APP_PLATFORM } from '../constants/Configuration';
@@ -150,7 +156,10 @@ export default function app(subscribe) {
      * The following events are sometimes sent by the app, but don't need to be handled right now.
      * To avoid console warnings from the event system, empty handlers are registered here.
      */
-    event.addCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, () => {});
+    event.addCallback(APP_EVENT_VIEW_WILL_DISAPPEAR, () => {
+      // Stop all playing video
+      embeddedMedia.stop();
+    });
     event.addCallback('pageInsetsChanged', () => {});
 
     /*
@@ -186,5 +195,10 @@ export default function app(subscribe) {
   subscribe(clientInformationDidUpdate$, ({ getState }) => {
     const platform = getPlatform(getState());
     configuration.set(APP_PLATFORM, platform);
+  });
+
+  // Stop all playing video on navigation
+  subscribe(navigate$, () => {
+    embeddedMedia.stop();
   });
 }
