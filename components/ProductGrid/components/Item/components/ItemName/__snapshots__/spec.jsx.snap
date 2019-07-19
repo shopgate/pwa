@@ -1,6 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-
 exports[`<ItemName /> should render with minimal props 1`] = `
 <Fragment>
   <Portal
@@ -21,6 +20,11 @@ exports[`<ItemName /> should render with minimal props 1`] = `
   >
     <div
       aria-label="Foo."
+      className={
+        Object {
+          "data-css-1xzic9e": "",
+        }
+      }
       data-test-id="Productname: Foo"
     >
       <Ellipsis
