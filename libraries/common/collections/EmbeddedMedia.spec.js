@@ -1,7 +1,4 @@
-import event from '@shopgate/pwa-core/classes/Event';
 import { embeddedMedia } from './index';
-
-jest.mock('@shopgate/pwa-core/classes/Event');
 
 /**
  * Creates a mocked media provider.
@@ -19,7 +16,6 @@ describe('EmbeddedMedia collection', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    event.removeAllListeners();
     embeddedMedia.constructor();
   });
 
@@ -94,22 +90,6 @@ describe('EmbeddedMedia collection', () => {
     describe('.stop()', () => {
       it('should call the stop methods of registered providers', () => {
         embeddedMedia.stop();
-
-        expect(providerOne.stop).toHaveBeenCalledTimes(1);
-        expect(providerTwo.stop).toHaveBeenCalledTimes(1);
-      });
-    });
-
-    describe('Event handling', () => {
-      it('should call the stop methods of registered providers on routeDidChange', () => {
-        event.call('routeDidChange');
-
-        expect(providerOne.stop).toHaveBeenCalledTimes(1);
-        expect(providerTwo.stop).toHaveBeenCalledTimes(1);
-      });
-
-      it('should call the stop methods of registered providers on viewDidDisappear', () => {
-        event.call('viewDidDisappear');
 
         expect(providerOne.stop).toHaveBeenCalledTimes(1);
         expect(providerTwo.stop).toHaveBeenCalledTimes(1);
