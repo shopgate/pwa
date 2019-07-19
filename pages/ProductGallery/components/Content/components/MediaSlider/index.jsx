@@ -13,7 +13,7 @@ import connect from './connector';
  * @return {JSX}
  */
 const ProductGalleryMedia = ({ initialSlide, media }) => {
-  if (media.length === 0) {
+  if (!Array.isArray(media) || media.length === 0) {
     return <div className={styles.container} />;
   }
 
