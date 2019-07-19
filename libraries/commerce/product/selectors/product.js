@@ -437,8 +437,15 @@ export const isBaseProduct = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProduct,
-  (product) => {
+  (_, props = {}) => props.productId,
+  (_, props = {}) => props.variantId,
+  (product, productId, variantId) => {
     if (!product) {
+      // Return the productId when both ids are present, but no variant product is available yet.
+      if (typeof productId !== 'undefined' && typeof variantId !== 'undefined') {
+        return productId;
+      }
+
       return null;
     }
     // First try to determine a baseProductId for a selected product

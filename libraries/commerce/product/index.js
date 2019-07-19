@@ -32,7 +32,6 @@ export * from './selectors/price';
 export * from './selectors/product';
 export * from './selectors/relations';
 export * from './selectors/variants';
-export * from './selectors/media';
 
 // STREAMS
 export * from './streams';
