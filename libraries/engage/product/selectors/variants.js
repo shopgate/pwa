@@ -6,16 +6,16 @@ import { getProductVariants } from '@shopgate/pwa-common-commerce/product';
  * Creates a selector that retrieves a product by a characteristic.
  * @returns {Function}
  */
-export function makeGetProductByCharacteristic() {
+export function makeGetProductByCharacteristics() {
   return createSelector(
-    (_, props) => props.characteristic,
+    (_, props) => props.characteristics,
     getProductVariants,
-    (characteristic, variants) => {
-      if (!characteristic || !variants || !variants.products || variants.products.length === 0) {
+    (characteristics, variants) => {
+      if (!characteristics || !variants || !variants.products || variants.products.length === 0) {
         return null;
       }
 
-      const product = find(variants.products, { characteristics: characteristic });
+      const product = find(variants.products, { characteristics });
 
       if (!product) {
         return null;
@@ -30,17 +30,37 @@ export function makeGetProductByCharacteristic() {
  * Creates a selector that retrieves the featured image URL for a selected characteristic.
  * @returns {Function}
  */
-export function makeGetCharacteristicFeaturedImage() {
-  const getProductByCharacteristic = makeGetProductByCharacteristic();
+export function makeGetCharacteristicsFeaturedImage() {
+  const getProductByCharacteristics = makeGetProductByCharacteristics();
 
   return createSelector(
-    getProductByCharacteristic,
+    getProductByCharacteristics,
     (product) => {
       if (!product || !product.featuredImageUrl) {
         return null;
       }
 
       return product.featuredImageUrl;
+    }
+  );
+}
+
+/**
+ * Creates a selector that retrieves the featured media for a selected characteristic.
+ * @returns {Function}
+ */
+export function makeGetCharacteristicsFeaturedMedia() {
+  const getProductByCharacteristics = makeGetProductByCharacteristics();
+
+  return createSelector(
+    getProductByCharacteristics,
+    (state, props) => props.type,
+    (product, type) => {
+      if (!product || !product.featuredMedia || (type && product.featuredMedia.type !== type)) {
+        return null;
+      }
+
+      return product.featuredMedia;
     }
   );
 }

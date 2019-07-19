@@ -4,7 +4,7 @@ export default {
       '@shopgate/engage/product/ProductImage': {
         showInnerShadow: true,
       },
-      '@shopgate/engage/product/FeaturedImage': {
+      '@shopgate/engage/product/MediaImage': {
         showInnerShadow: true,
       },
     },
