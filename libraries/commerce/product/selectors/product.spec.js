@@ -754,6 +754,13 @@ describe('Product selectors', () => {
       const variantId = 'product_2';
       expect(getBaseProductId(mockedState, { productId, variantId })).toBe(productId);
     });
+
+    it('should return the id of a base product when a variantId is in props even if there is no variant product in the store', () => {
+      const productId = 'product_1';
+      const variantId = 'product_2';
+      delete mockedState.product.variantsByProductId[variantId];
+      expect(getBaseProductId(mockedState, { productId, variantId })).toBe(productId);
+    });
   });
 
   describe('getBaseProduct()', () => {

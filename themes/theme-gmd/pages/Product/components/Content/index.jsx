@@ -50,7 +50,7 @@ class ProductContent extends PureComponent {
       optionsPrices: {},
       productId: props.variantId ? props.baseProductId : props.productId,
       variantId: props.variantId ? props.variantId : null,
-      characteristic: null,
+      characteristics: null,
       quantity: 1,
     };
   }
@@ -112,14 +112,13 @@ class ProductContent extends PureComponent {
   };
 
   /**
-   * Stores the ID of the currently selected characteristic.
-   * @param {Object} characteristic The characteristic ID to set.
+   * Stores the currently selected characteristics.
+   * @param {Object} characteristics The characteristics set.
    */
-  setCharacteristic = (characteristic) => {
-    this.setState(prevState => ({
-      characteristic: (characteristic !== null) ? {
-        ...prevState.characteristic,
-        ...characteristic,
+  setCharacteristics = (characteristics) => {
+    this.setState(() => ({
+      characteristics: (characteristics !== null) ? {
+        ...characteristics,
       } : null,
     }));
   }
@@ -134,7 +133,7 @@ class ProductContent extends PureComponent {
       setOption: this.setOption,
       quantity: this.state.quantity,
       setQuantity: this.setQuantity,
-      setCharacteristic: this.setCharacteristic,
+      setCharacteristics: this.setCharacteristics,
     };
 
     return (
@@ -142,12 +141,7 @@ class ProductContent extends PureComponent {
         <Fragment>
           <AppBar productId={this.state.productId} />
           <ProductContext.Provider value={contextValue}>
-            <Media
-              productId={this.state.productId}
-              variantId={this.state.variantId}
-              characteristic={this.state.characteristic}
-              aria-hidden
-            />
+            <Media aria-hidden />
             <Header />
             {/*
               This feature is currently in BETA testing.

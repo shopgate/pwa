@@ -26,6 +26,7 @@ export { default as productImageFormats } from '@shopgate/pwa-common-commerce/pr
 export * from '@shopgate/pwa-common-commerce/product/constants/index';
 export * from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
+export * from './constants';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';
@@ -40,7 +41,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/price';
 export * from '@shopgate/pwa-common-commerce/product/selectors/product';
 export * from '@shopgate/pwa-common-commerce/product/selectors/relations';
 export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
-export * from '@shopgate/pwa-common-commerce/product/selectors/media';
+export * from './selectors/media';
 export * from './selectors/product';
 export * from './selectors/price';
 export * from './selectors/variants';
@@ -58,7 +59,7 @@ export { default as MediaSlider } from './components/MediaSlider';
 export { default as QuantityPicker } from './components/QuantityPicker';
 export { default as EffectivityDates } from './components/EffectivityDates';
 export { default as PriceDifference } from './components/PriceDifference';
-export { FeaturedMedia } from './components/Media';
+export { FeaturedMedia, MediaImage } from './components/Media';
 export { VariantSwatch } from './components/Swatch';
 export { Swatches } from './components/Swatches';
 export { RelationsSlider } from './components/RelationsSlider';

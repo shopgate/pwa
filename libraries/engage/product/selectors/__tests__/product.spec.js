@@ -8,6 +8,7 @@ import {
   makeGetProductProperties,
   makeGetProductEffectivityDates,
   makeGetProductCharacteristics,
+  makeGetProductFeaturedMedia,
 } from '../product';
 import { wrapMemoizedSelector } from '../helpers';
 
@@ -31,6 +32,14 @@ const mockState = {
       label: 'Color',
       // more properties available but of no interest for tests
     }],
+    featuredMedia: {
+      code: null,
+      type: 'image',
+      url: 'https://example.com/image',
+      altText: null,
+      title: null,
+      sequenceId: 1,
+    },
   },
   456: {
     properties: null,
@@ -59,7 +68,7 @@ describe('engage > product > selectors', () => {
       expect(result).toEqual(null);
     });
 
-    it('should renturn properties if they are set for the product', () => {
+    it('should return properties if they are set for the product', () => {
       getProductPropertiesState.mockReturnValueOnce(mockState);
       getProductId.mockReturnValueOnce('123');
       const result = getProductProperties(mockState, { productId: '123' });
@@ -114,6 +123,31 @@ describe('engage > product > selectors', () => {
         id: '01-color',
         label: 'Color',
       }]);
+    });
+  });
+
+  describe('getProductFeaturedMedia', () => {
+    let getProductFeaturedMedia;
+    beforeEach(() => {
+      getProductFeaturedMedia = makeGetProductFeaturedMedia();
+    });
+
+    it('should return null if a product state can not be found', () => {
+      getProduct.mockReturnValueOnce(null);
+      const result = getProductFeaturedMedia(mockState, { productId: '012' });
+      expect(result).toEqual(null);
+    });
+
+    it('should return null of no featured media is available for the product', () => {
+      getProduct.mockReturnValueOnce(mockState[456]);
+      const result = getProductFeaturedMedia(mockState, { productId: '456' });
+      expect(result).toEqual(null);
+    });
+
+    it('should return featured media if available for the product', () => {
+      getProduct.mockReturnValueOnce(mockState[123]);
+      const result = getProductFeaturedMedia(mockState, { productId: '123' });
+      expect(result).toEqual(mockState[123].featuredMedia);
     });
   });
 });
