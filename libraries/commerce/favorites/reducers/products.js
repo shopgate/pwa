@@ -95,8 +95,11 @@ const products = (state = {
        */
       return {
         ...state,
-        ...(state.ready && state.lastChange > action.requestTimestamp)
-          ? {}
+        ...(state.ready && (state.syncCount > 0 || state.lastChange > action.requestTimestamp))
+          ? {
+            // A sync might still be in progress, a new fetch request will be done later
+            isFetching: false,
+          }
           : {
             isFetching: false,
             expires: Date.now() + FAVORITES_LIFETIME,

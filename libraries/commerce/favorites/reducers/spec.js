@@ -63,7 +63,7 @@ describe('Favorites - reducers', () => {
     });
   });
 
-  describe('Add and remove Favorites', () => {
+  describe('Simple receiving', () => {
     const state = {
       products: {
         ready: true,
@@ -71,6 +71,27 @@ describe('Favorites - reducers', () => {
         syncCount: 2,
       },
     };
+
+    it('should only reset the fetching state on RECEIVE_FAVORITES when the client is still syncing', () => {
+      const invalidProduct = 'invalidProduct';
+      const newState = reducers(state, {
+        type: RECEIVE_FAVORITES,
+        products: [{ id: invalidProduct }],
+        requestTimestamp: 0,
+      });
+      expect(newState.products.ids).not.toContain(invalidProduct);
+    });
+  });
+
+  describe('Add and remove favorites', () => {
+    const state = {
+      products: {
+        ready: true,
+        ids: ['p1', 'p2'],
+        syncCount: 2,
+      },
+    };
+
     const { now } = Date;
     afterEach(() => {
       Date.now = now;
