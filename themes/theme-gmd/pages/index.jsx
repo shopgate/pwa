@@ -53,6 +53,9 @@ new ThemeConfigResolver().resolveAll();
  */
 const Pages = ({ store }) => (
   <App store={store}>
+    <Helmet>
+      <html lang={appConfig.language.substring(0, 2)} />
+    </Helmet>
     <NavigationHandler>
       <AppProvider>
         <ThemeContext.Provider value={themeApi}>
