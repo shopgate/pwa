@@ -12,6 +12,7 @@ exports[`<ProductSlider /> should match snapshot 1`] = `
   slidesPerView={2.3}
 >
   <Swiper.Item
+    className="css-1ufe9qk"
     key="prod1"
   >
     <ProductCard

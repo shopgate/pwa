@@ -7,7 +7,6 @@ export const container = css({
 
 export const innerContainer = css({
   overflow: 'hidden',
-  paddingBottom: 8,
   ' .swiper-wrapper': {
     alignItems: 'stretch',
   },
