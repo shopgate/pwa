@@ -1,6 +1,7 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { history } from '@shopgate/pwa-common/helpers/router';
@@ -47,6 +48,9 @@ new ThemeConfigResolver().resolveAll();
  */
 const Pages = ({ store }) => (
   <App store={store}>
+    <Helmet>
+      <html lang={appConfig.language.substring(0, 2)} />
+    </Helmet>
     <NavigationHandler>
       <AppProvider>
         <ThemeContext.Provider value={themeApi}>
