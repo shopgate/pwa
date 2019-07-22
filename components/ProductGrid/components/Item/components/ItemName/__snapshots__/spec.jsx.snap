@@ -20,6 +20,11 @@ exports[`<ItemName /> should render with minimal props 1`] = `
   >
     <div
       aria-label="Foo."
+      className={
+        Object {
+          "data-css-1xzic9e": "",
+        }
+      }
       data-test-id="Productname: Foo"
     >
       <Ellipsis
