@@ -5,7 +5,7 @@ import {
 } from '../action-creators';
 
 /**
- * UI Entry point to add a favorite.
+ * Adds a product to the favorite list (debounced and buffered).
  * @param {string} productId Product identifier.
  * @return {Function}
  */
@@ -14,7 +14,7 @@ export const addFavorite = productId => (dispatch) => {
 };
 
 /**
- * UI Entry point to add a favorite (plural name for compatibility reasons).
+ * Adds a product to the favorite list (debounced and buffered).
  * @param {string} productId Product identifier.
  * @return {Function}
  * @deprecated Please use `addFavorite` instead.
@@ -22,7 +22,7 @@ export const addFavorite = productId => (dispatch) => {
 export const addFavorites = addFavorite;
 
 /**
- * UI Entry point to remove favorites.
+ * Removes a product and optionally its relatives from the favorite list (debounced and buffered).
  * @param {string} productId Product identifier.
  * @param {boolean} withRelatives When true relatives which are on list are also removed.
  * @returns {Function}

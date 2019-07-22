@@ -4,7 +4,7 @@ import { SHOPGATE_USER_ADD_FAVORITES } from '../constants/Pipelines';
 import { successAddFavorites, errorAddFavorites } from '../action-creators';
 
 /**
- * Calls addFavorites pipeline and dispatches an action based on the result.
+ * Adds a single product to the favorite list using the `addFavorites` pipeline.
  * @param {string} productId Id of the product to be added.
  * @returns {Promise} Dispatched PipelineRequest.
  */

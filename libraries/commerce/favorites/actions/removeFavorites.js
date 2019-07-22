@@ -4,8 +4,8 @@ import { SHOPGATE_USER_DELETE_FAVORITES } from '../constants/Pipelines';
 import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators';
 
 /**
- * Calls deleteFavorites pipeline and dispatches an action based on the result.
- * @param {string} productId Id of the product to be added.
+ * Removes a single product from the favorite list using the `deleteFavorites` pipeline.
+ * @param {string} productId Id of the product to be deleted.
  * @returns {Promise} Dispatched PipelineRxequest.
  */
 export default productId => async (dispatch) => {
