@@ -1,5 +1,22 @@
 # Changelog
 
+## [v5.12.0](https://github.com/shopgate/pwa/compare/v5.11.2...v5.12.0) (2019-07-23)
+
+#### :rocket: Enhancement
+* [#515](https://github.com/shopgate/pwa/pull/515) Force refresh product stock information after checkout ([@alexbridge](https://github.com/alexbridge))
+* [#499](https://github.com/shopgate/pwa/pull/499) Sort order param for get highlighted products action is added ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#730](https://github.com/shopgate/pwa/pull/730) Handle external media provider scripts without blocking app start ([@alexbridge](https://github.com/alexbridge))
+* [#619](https://github.com/shopgate/pwa/pull/619) Add missing country ME ([@alexbridge](https://github.com/alexbridge))
+* [#613](https://github.com/shopgate/pwa/pull/613) Ignore unknown country in form builder country field ([@alexbridge](https://github.com/alexbridge))
+* [#611](https://github.com/shopgate/pwa/pull/611) Avoid screen overflow for select form element ([@alexbridge](https://github.com/alexbridge))
+* [#592](https://github.com/shopgate/pwa/pull/592) Fixed an issue with GET parameters inside of coupon deeplinks ([@fkloes](https://github.com/fkloes))
+* [#561](https://github.com/shopgate/pwa/pull/561) Liveshopping widget localization to german ([@alexbridge](https://github.com/alexbridge))
+* [#546](https://github.com/shopgate/pwa/pull/546) Fixed broken cart layout at long availability texts ([@fkloes](https://github.com/fkloes))
+* [#529](https://github.com/shopgate/pwa/pull/529) Enable parent product cart button when it has variants to select ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v5.12.0](https://github.com/shopgate/pwa/compare/v5.11.1...v5.12.0) (2019-07-05)
 
 #### :rocket: Enhancement
