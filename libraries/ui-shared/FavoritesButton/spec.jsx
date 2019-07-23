@@ -74,16 +74,6 @@ describe('<FavoritesButton />', () => {
     expect(component.find('HeartOutline').exists()).toBe(false);
   });
 
-  it('should update component state when props are updated', () => {
-    component = createComponent(mockedStateNotOnList, {
-      productId: '1',
-      active: false,
-    });
-    expect(component.find('FavoritesButton').instance().state.active).toBe(false);
-    component.find('FavoritesButton').instance().componentWillReceiveProps({ active: true });
-    expect(component.find('FavoritesButton').instance().state.active).toBe(true);
-  });
-
   it('should add to favorites on click', () => {
     component = createComponent(mockedStateNotOnList, {
       productId: '1',

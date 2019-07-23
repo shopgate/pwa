@@ -56,27 +56,14 @@ class FavoritesButton extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      active: props.active,
-    };
     this.clickedOnce = false;
-  }
-
-  /**
-   * Update active state with next active prop
-   * @param {Object} nextProps Next props
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      active: nextProps.active,
-    });
   }
 
   /**
    * Callback for the moment when the ripple animation is done.
    */
   onRippleComplete = () => {
-    this.props.onRippleComplete(this.state.active);
+    this.props.onRippleComplete(this.props.active);
   };
 
   /**
@@ -85,7 +72,7 @@ class FavoritesButton extends Component {
    */
   getLabel() {
     const { __ } = this.context.i18n();
-    const lang = this.state.active ? 'favorites.remove' : 'favorites.add';
+    const lang = this.props.active ? 'favorites.remove' : 'favorites.add';
     return __(lang);
   }
 
@@ -107,25 +94,21 @@ class FavoritesButton extends Component {
       return;
     }
 
-    if (!this.state.active) {
+    if (!this.props.active) {
       this.props.addFavorites(this.props.productId);
     } else {
       setTimeout(() => {
         this.props.removeFavorites(this.props.productId, this.props.removeWithRelatives);
       }, this.props.removeThrottle);
     }
-
-    this.setState({
-      active: !this.state.active,
-    });
   };
 
   /**
-   * Renders the heart icon as filled or outlined, depending on the favorite list state.
+   * Renders the heart icon as filled or outlined, depending on the favorite button being active.
    * @returns {JSX}
    */
   renderIcon() {
-    if (this.state.active) {
+    if (this.props.active) {
       return <HeartIcon />;
     }
 
