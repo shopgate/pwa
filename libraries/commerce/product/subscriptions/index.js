@@ -146,7 +146,7 @@ function product(subscribe) {
   subscribe(productNotAvailableEffDatesPDP$, ({
     action, getState, dispatch, events,
   }) => {
-    const { effectivityDates: { accessExpired } } = getThemeSettings('product');
+    const { effectivityDates: { accessExpired } = {} } = getThemeSettings('product') || {};
     if (accessExpired === false) {
       const { productId } = action;
       dispatch(historyPop());
