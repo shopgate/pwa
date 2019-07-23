@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/eslint-config",
-  "version": "6.5.4",
+  "version": "6.6.0",
   "description": "Eslint configuration for the Shopgate Connect projects.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
