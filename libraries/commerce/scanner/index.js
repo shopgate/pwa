@@ -2,7 +2,6 @@
 export { default as startScanner } from './action-creators/startScanner';
 
 // ACTIONS
-export { default as grantCameraPermissions } from './actions/grantCameraPermissions';
 export { default as handleBarCode } from './actions/handleBarCode';
 export { default as handleQrCode } from './actions/handleQrCode';
 
