@@ -12,7 +12,7 @@ export const enableRedirectHandler = () => {
   }
 
   /** Effectivity dates */
-  const { effectivityDates: { accessExpired } } = getThemeSettings('product');
+  const { effectivityDates: { accessExpired } = {} } = getThemeSettings('product') || {};
   if (accessExpired) {
     return;
   }

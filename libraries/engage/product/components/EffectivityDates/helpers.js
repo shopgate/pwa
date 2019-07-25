@@ -11,7 +11,7 @@ export const buildShowScheduledParams = () => {
   }
 
   let cachedTime = null;
-  let { effectivityDates: { showScheduled } } = getThemeSettings('product');
+  let { effectivityDates: { showScheduled } = {} } = getThemeSettings('product') || {};
 
   if (showScheduled === ALWAYS) {
     showScheduled = 'P1Y';
