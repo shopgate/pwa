@@ -87,6 +87,12 @@
       "properties": "Eigenschappen",
       "ratings": "Ratings",
       "purchase": "Aankoopitem"
+    },
+    "displayGroups": {
+      "general": "Algemeen",
+      "features": "Kenmerken",
+      "pricing": "Prijzen",
+      "properties": "Eigenschappen"
     }
   },
   "category": {

@@ -101,6 +101,12 @@
     "sections": {
       "categories": "Categorias",
       "products": "Produtos"
+    },
+    "displayGroups": {
+      "general": "Geral",
+      "features": "Características",
+      "pricing": "Preços",
+      "properties": "Propriedades"
     }
   },
   "search": {
