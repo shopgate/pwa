@@ -87,6 +87,12 @@
       "properties": "Properties",
       "ratings": "Ratings",
       "purchase": "Purchase Item"
+    },
+    "displayGroups": {
+      "general": "General",
+      "features": "Features",
+      "pricing": "Pricing",
+      "properties": "Properties"
     }
   },
   "category": {
