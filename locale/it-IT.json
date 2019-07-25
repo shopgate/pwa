@@ -84,6 +84,12 @@
       "properties": "Caratteristiche",
       "ratings": "Valutazioni",
       "purchase": "Acquista articolo"
+    },
+    "displayGroups": {
+      "general": "Generali",
+      "features": "Caratteristiche",
+      "pricing": "Prezzi",
+      "properties": "Proprietà"
     }
   },
   "category": {
