@@ -81,6 +81,8 @@ export const ERROR_LOGOUT = 'ERROR_LOGOUT';
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const ERROR_USER = 'ERROR_USER';
+// LOCATION
+export const SELECT_LOCATION = 'SELECT_LOCATION';
 
 /**
  * --------- URL ------------

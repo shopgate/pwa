@@ -11,6 +11,7 @@ import fetchProductShipping from '../actions/fetchProductShipping';
 import fetchProductVariants from '../actions/fetchProductVariants';
 import fetchProductOptions from '../actions/fetchProductOptions';
 import fetchProductMedia from '../actions/fetchProductMedia';
+import { fetchProductLocations } from '../actions/fetchProductLocations';
 import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
@@ -52,6 +53,11 @@ function product(subscribe) {
      * It should only be used for approved BETA Client Projects
      */
     dispatch(fetchProductMedia(id));
+    /**
+     * This feature is currently in BETA testing.
+     * It should only be used for approved BETA Client Projects
+     */
+    dispatch(fetchProductLocations(id));
   });
 
   subscribe(galleryWillEnter$, ({ action, dispatch }) => {
