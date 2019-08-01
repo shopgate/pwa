@@ -17,9 +17,10 @@ const EVENT_SET_CLOSED = 'event.setClosed';
 class StoreSelector extends PureComponent {
   /**
    * Opens the store selector sheet.
+   * @param {Function} [callback=null] A callback that will be called once the sheet closes.
    */
-  static open = () => {
-    UIEvents.trigger(EVENT_SET_OPEN);
+  static open = (callback = null) => {
+    UIEvents.trigger(EVENT_SET_OPEN, callback);
   }
 
   /**
@@ -58,6 +59,7 @@ class StoreSelector extends PureComponent {
 
     UIEvents.addListener(EVENT_SET_OPEN, this.handleSetOpen);
     UIEvents.addListener(EVENT_SET_CLOSED, this.handleSetOpen);
+    this.callback = () => { };
   }
 
   state = {
@@ -72,12 +74,25 @@ class StoreSelector extends PureComponent {
     UIEvents.removeListener(EVENT_SET_CLOSED, this.handleSetOpen);
   }
 
-  handleSetOpen = () => {
+  /**
+   * Opens the store selector sheet.
+   * @param {Function} [callback=null] A callback that will be called once the sheet closes.
+   */
+  handleSetOpen = (callback = null) => {
+    if (callback !== null) {
+      this.callback = callback;
+    }
+
     this.setState({ isOpen: true });
   }
 
+  /**
+   * Closes the store selector sheet.
+   */
   handleSetClosed = () => {
     this.setState({ isOpen: false });
+    this.callback();
+    this.callback = () => { };
   }
 
   /**
@@ -89,14 +104,15 @@ class StoreSelector extends PureComponent {
    */
   handleSelectLocation = ({ locationCode, addressCode, visibleStock }) => {
     const { selectLocation, product } = this.props;
-    const location = {
+
+    selectLocation({
       productCode: product.id,
       locationCode,
       addressCode,
       visibleStock,
-    };
+    });
 
-    selectLocation(location);
+    this.handleSetClosed();
   }
 
   /**
@@ -106,10 +122,10 @@ class StoreSelector extends PureComponent {
     const { product, locations, selectedVariants } = this.props;
     const { isOpen } = this.state;
     const { __ } = this.context.i18n();
+    const title = __('product.location.headline');
 
     const contextValue = {
       selectLocation: this.handleSelectLocation,
-      close: this.handleSetClosed,
       product,
       locations,
       selectedVariants,
@@ -117,11 +133,7 @@ class StoreSelector extends PureComponent {
 
     return (
       <StoreSelectorContext.Provider value={contextValue}>
-        <SheetDrawer
-          isOpen={isOpen}
-          title={__('product.location.headline')}
-          onClose={this.handleSetClosed}
-        >
+        <SheetDrawer isOpen={isOpen} title={title} onClose={this.handleSetClosed}>
           <div className={sheet}>
             <Product />
             <Locations />

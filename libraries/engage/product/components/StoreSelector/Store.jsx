@@ -15,7 +15,7 @@ import StoreSelectorContext from './context';
  * @returns {JSX}
  */
 const Store = ({ store }) => {
-  const { selectLocation, close } = useContext(StoreSelectorContext);
+  const { selectLocation } = useContext(StoreSelectorContext);
 
   if (!store || !store.addresses || store.addresses.length === 0) {
     return null;
@@ -29,7 +29,6 @@ const Store = ({ store }) => {
         addressCode: address.code,
         visibleStock: store.inventory.visible,
       });
-      close();
     }, [address, store]);
 
     return (
