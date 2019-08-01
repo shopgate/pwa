@@ -14,6 +14,7 @@ const ADD_TO_CART = 'add-to-cart';
 const AVAILABILITY_TEXT = 'availability-text';
 const PRODUCT_NAME = 'product-name';
 const PRODUCT_PRICE = 'product-price';
+const EMPTY = 'empty';
 
 // POSITIONS
 const BEFORE = 'before';
@@ -38,3 +39,5 @@ export const FAVORITES_PRODUCT_PRICE_AFTER = `${FAVORITES}.${PRODUCT_PRICE}.${AF
 export const FAVORITES_AVAILABILITY_TEXT_BEFORE = `${FAVORITES}.${AVAILABILITY_TEXT}.${BEFORE}`;
 export const FAVORITES_AVAILABILITY_TEXT = `${FAVORITES}.${AVAILABILITY_TEXT}`;
 export const FAVORITES_AVAILABILITY_TEXT_AFTER = `${FAVORITES}.${AVAILABILITY_TEXT}.${AFTER}`;
+
+export const FAVORITES_EMPTY = `${FAVORITES}.${EMPTY}`;
