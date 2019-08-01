@@ -1,0 +1,27 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import StoreHoursToday from '../StoreHoursToday';
+
+const hours = {
+  mon: '8:00am - 4:00pm',
+  tue: '8:00am - 4:00pm',
+  wen: '8:00am - 8:00pm',
+  thu: '8:00am - 8:00pm',
+  fri: '8:00am - 8:00pm',
+  sat: '8:00am - 8:00pm',
+  sun: '8:00am - 8:00pm',
+};
+
+describe('<StoreHoursToday />', () => {
+  it('should not render if no hours have been passed', () => {
+    const wrapper = shallow(<StoreHoursToday />);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.instance()).toEqual(null);
+  });
+
+  it('should render as expected', () => {
+    const wrapper = shallow(<StoreHoursToday hours={hours} />);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('div').getElements().length).toEqual(1);
+  });
+});

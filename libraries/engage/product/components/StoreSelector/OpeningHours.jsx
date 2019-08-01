@@ -8,27 +8,37 @@ import { openingHours, openingHoursRow, openingHoursDay } from './style';
  * @param {Object} props The compnent props.
  * @returns {JSX}
  */
-const OpeningHours = ({ hours }) => (
-  <div className={openingHours}>
-    {Object.keys(hours).map((key) => {
-      if (!hours[key] || hours[key] === '') {
-        return null;
-      }
+const OpeningHours = ({ hours }) => {
+  if (!hours) {
+    return null;
+  }
 
-      return (
-        <div className={openingHoursRow} key={key}>
-          <div className={openingHoursDay}>
-            <I18n.Text string={`product.location.${key}`} />
+  return (
+    <div className={openingHours}>
+      {Object.keys(hours).map((key) => {
+        if (!hours[key] || hours[key] === '') {
+          return null;
+        }
+
+        return (
+          <div className={openingHoursRow} key={key}>
+            <div className={openingHoursDay}>
+              <I18n.Text string={`product.location.${key}`} />
+            </div>
+            <div data-test-id={`hours-${key}`}>{hours[key]}</div>
           </div>
-          <div>{hours[key]}</div>
-        </div>
-      );
-    })}
-  </div>
-);
+        );
+      })}
+    </div>
+  );
+};
 
 OpeningHours.propTypes = {
-  hours: PropTypes.shape().isRequired,
+  hours: PropTypes.shape(),
+};
+
+OpeningHours.defaultProps = {
+  hours: null,
 };
 
 export default memo(OpeningHours);

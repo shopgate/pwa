@@ -25,8 +25,8 @@ const Product = () => {
           <div className={styles.productName}>
             <Ellipsis>{product.name}</Ellipsis>
           </div>
-          {selectedVariants.length > 0 && (
-            <div className={styles.variants}>
+          {selectedVariants && selectedVariants.length > 0 && (
+            <div className={styles.variants} data-test-id="selected-variants">
               {selectedVariants.map(({ label, value }) => (
                 <div key={`${label}-${value}`}>{`${label}: ${value}`}</div>
               ))}

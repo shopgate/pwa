@@ -15,15 +15,14 @@ import StoreSelectorContext from './context';
  * @returns {JSX}
  */
 const Store = ({ store }) => {
-  const { selectLocation } = useContext(StoreSelectorContext);
-
   if (!store || !store.addresses || store.addresses.length === 0) {
     return null;
   }
 
+  const { selectLocation } = useContext(StoreSelectorContext);
+
   return store.addresses.map((address) => {
-    const handleClick = useCallback((event) => {
-      event.preventDefault();
+    const handleClick = useCallback(() => {
       selectLocation({
         locationCode: store.code,
         addressCode: address.code,
@@ -42,7 +41,7 @@ const Store = ({ store }) => {
             role="button"
             tabIndex={0}
           >
-            <div className={storeName}>{store.name}</div>
+            <div className={storeName} data-test-id="store-name">{store.name}</div>
             <StoreHoursToday hours={store.operationHours} />
             <Address address={address} />
           </div>

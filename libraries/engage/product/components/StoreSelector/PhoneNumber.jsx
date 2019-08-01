@@ -18,7 +18,7 @@ const PhoneNumber = ({ phone }) => {
       <span className={phoneIcon}>
         <PhoneIcon />
       </span>
-      <span>{phone}</span>
+      <span data-test-id="store-phone">{phone}</span>
     </a>
   );
 };

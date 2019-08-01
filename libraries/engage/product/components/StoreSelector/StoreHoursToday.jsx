@@ -11,6 +11,10 @@ const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
  * @returns {JSX}
  */
 const StoreHoursToday = ({ hours }) => {
+  if (!hours) {
+    return null;
+  }
+
   const today = weekdays[new Date().getDay()];
   const hoursToday = hours[today] || null;
 
@@ -26,7 +30,11 @@ const StoreHoursToday = ({ hours }) => {
 };
 
 StoreHoursToday.propTypes = {
-  hours: PropTypes.shape().isRequired,
+  hours: PropTypes.shape(),
+};
+
+StoreHoursToday.defaultProps = {
+  hours: null,
 };
 
 export default memo(StoreHoursToday);

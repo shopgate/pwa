@@ -10,6 +10,10 @@ import { address as container, addressIcon } from './style';
  * @returns {JSX}
  */
 const Address = ({ address }) => {
+  if (!address) {
+    return null;
+  }
+
   const {
     street, street2, street3, street4,
   } = address;
@@ -20,10 +24,10 @@ const Address = ({ address }) => {
         <LocationIcon />
       </div>
       <div>
-        <div>{street}</div>
-        {street2 !== '' && <div>{street2}</div>}
-        {street3 !== '' && <div>{street3}</div>}
-        {street4 !== '' && <div>{street4}</div>}
+        <div data-test-id="street">{street}</div>
+        {street2 && street2 !== '' && <div data-test-id="street2">{street2}</div>}
+        {street3 && street3 !== '' && <div data-test-id="street3">{street3}</div>}
+        {street4 && street4 !== '' && <div data-test-id="street4">{street4}</div>}
         <I18n.Text string="product.location.address" params={address} />
       </div>
     </div>
@@ -39,7 +43,11 @@ Address.propTypes = {
     street2: PropTypes.string,
     street3: PropTypes.string,
     street4: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+Address.defaultProps = {
+  address: null,
 };
 
 export default memo(Address);
