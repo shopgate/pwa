@@ -11,6 +11,7 @@ exports[`<Tier /> Rendering with data should render tier prices when tier prices
   }
   role="text"
   string="price.tier.range"
+  transform={null}
 >
   <FormatPrice
     className="css-ud99sa"

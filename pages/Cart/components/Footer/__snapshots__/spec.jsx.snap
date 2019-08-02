@@ -11,6 +11,7 @@ exports[`<Footer /> should render as expected when all items are supposed to be 
       params={Object {}}
       role={null}
       string="cart.coupons_not_supported"
+      transform={null}
     >
       <span
         className="css-7apcdo"
@@ -77,6 +78,7 @@ exports[`<Footer /> should render as expected when only the the coupons hint is 
       params={Object {}}
       role={null}
       string="cart.coupons_not_supported"
+      transform={null}
     >
       <span
         className="css-7apcdo"
