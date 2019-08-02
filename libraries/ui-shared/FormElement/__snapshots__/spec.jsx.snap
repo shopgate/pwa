@@ -9,16 +9,16 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   hasValue={true}
   htmlFor="test-input"
   isFocused={false}
-  label=""
+  label="testlabel"
   placeholder=""
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv css-1klwfzq"
   >
     <Placeholder
       aria-hidden={true}
-      placeholder=""
+      placeholder="testlabel"
       visible={false}
     >
       <div
@@ -29,8 +29,15 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
           className=""
           params={Object {}}
           role={null}
-          string=""
-        />
+          string="testlabel"
+        >
+          <span
+            className=""
+            role={null}
+          >
+            testlabel
+          </span>
+        </Translate>
       </div>
     </Placeholder>
     <Label
@@ -38,7 +45,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       htmlFor="test-input"
       isFloating={true}
       isFocused={false}
-      label=""
+      label="testlabel"
     >
       <label
         className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
@@ -48,8 +55,15 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
           className=""
           params={Object {}}
           role={null}
-          string=""
-        />
+          string="testlabel"
+        >
+          <span
+            className=""
+            role={null}
+          >
+            testlabel
+          </span>
+        </Translate>
       </label>
     </Label>
     <Underline
@@ -70,22 +84,6 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         />
       </div>
     </Underline>
-    <ErrorText
-      className={null}
-      errorText=""
-      translate={true}
-    >
-      <div
-        className="css-hyvrm8"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </ErrorText>
   </div>
 </FormElement>
 `;
@@ -104,44 +102,8 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv css-1klwfzq"
   >
-    <Placeholder
-      aria-hidden={true}
-      placeholder=""
-      visible={false}
-    >
-      <div
-        aria-hidden={true}
-        className="css-rkuo1o css-1jyyyen"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </Placeholder>
-    <Label
-      hasErrorMessage={false}
-      htmlFor="test-input"
-      isFloating={true}
-      isFocused={true}
-      label=""
-    >
-      <label
-        className="css-1nn9zl4 css-1r91c0g css-nil"
-        htmlFor="test-input"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </label>
-    </Label>
     <Underline
       hasErrorMessage={false}
       isFocused={true}
@@ -159,22 +121,6 @@ exports[`<FormElement /> should render a focused form element 1`] = `
         />
       </div>
     </Underline>
-    <ErrorText
-      className={null}
-      errorText=""
-      translate={true}
-    >
-      <div
-        className="css-hyvrm8"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </ErrorText>
   </div>
 </FormElement>
 `;
@@ -193,44 +139,8 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv css-1klwfzq"
   >
-    <Placeholder
-      aria-hidden={true}
-      placeholder=""
-      visible={true}
-    >
-      <div
-        aria-hidden={true}
-        className="css-rkuo1o"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </Placeholder>
-    <Label
-      hasErrorMessage={false}
-      htmlFor="test-input"
-      isFloating={false}
-      isFocused={false}
-      label=""
-    >
-      <label
-        className="css-1nn9zl4 css-1jyyyen"
-        htmlFor="test-input"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </label>
-    </Label>
     <input
       key="test-key"
     />
@@ -252,22 +162,6 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
         />
       </div>
     </Underline>
-    <ErrorText
-      className={null}
-      errorText=""
-      translate={true}
-    >
-      <div
-        className="css-hyvrm8"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </ErrorText>
   </div>
 </FormElement>
 `;
@@ -286,44 +180,8 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv css-1klwfzq"
   >
-    <Placeholder
-      aria-hidden={true}
-      placeholder=""
-      visible={true}
-    >
-      <div
-        aria-hidden={true}
-        className="css-rkuo1o"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </Placeholder>
-    <Label
-      hasErrorMessage={false}
-      htmlFor="test-input"
-      isFloating={false}
-      isFocused={false}
-      label=""
-    >
-      <label
-        className="css-1nn9zl4 css-1jyyyen"
-        htmlFor="test-input"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </label>
-    </Label>
     <Underline
       hasErrorMessage={false}
       isFocused={false}
@@ -342,22 +200,6 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
         />
       </div>
     </Underline>
-    <ErrorText
-      className={null}
-      errorText=""
-      translate={true}
-    >
-      <div
-        className="css-hyvrm8"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </ErrorText>
   </div>
 </FormElement>
 `;
@@ -376,44 +218,8 @@ exports[`<FormElement /> should show the error message 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv css-1klwfzq"
   >
-    <Placeholder
-      aria-hidden={true}
-      placeholder=""
-      visible={true}
-    >
-      <div
-        aria-hidden={true}
-        className="css-rkuo1o"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </Placeholder>
-    <Label
-      hasErrorMessage={true}
-      htmlFor="test-input"
-      isFloating={false}
-      isFocused={false}
-      label=""
-    >
-      <label
-        className="css-1nn9zl4 css-1jyyyen"
-        htmlFor="test-input"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </label>
-    </Label>
     <Underline
       hasErrorMessage={true}
       isFocused={false}
@@ -472,7 +278,7 @@ exports[`<FormElement /> should show the label 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv css-1klwfzq"
   >
     <Placeholder
       aria-hidden={true}
@@ -542,22 +348,6 @@ exports[`<FormElement /> should show the label 1`] = `
         />
       </div>
     </Underline>
-    <ErrorText
-      className={null}
-      errorText=""
-      translate={true}
-    >
-      <div
-        className="css-hyvrm8"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </ErrorText>
   </div>
 </FormElement>
 `;
@@ -576,7 +366,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv css-1klwfzq"
   >
     <Placeholder
       aria-hidden={true}
@@ -602,25 +392,6 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         </Translate>
       </div>
     </Placeholder>
-    <Label
-      hasErrorMessage={false}
-      htmlFor="test-input"
-      isFloating={false}
-      isFocused={false}
-      label=""
-    >
-      <label
-        className="css-1nn9zl4 css-1jyyyen"
-        htmlFor="test-input"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </label>
-    </Label>
     <Underline
       hasErrorMessage={false}
       isFocused={false}
@@ -639,22 +410,6 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         />
       </div>
     </Underline>
-    <ErrorText
-      className={null}
-      errorText=""
-      translate={true}
-    >
-      <div
-        className="css-hyvrm8"
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          role={null}
-          string=""
-        />
-      </div>
-    </ErrorText>
   </div>
 </FormElement>
 `;

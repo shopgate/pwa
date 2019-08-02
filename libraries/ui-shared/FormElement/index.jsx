@@ -69,9 +69,13 @@ class FormElement extends Component {
     } = this.props;
 
     return (
-      <div className={classNames(style.formElement, className)}>
-
-        {hasPlaceholder &&
+      <div className={classNames(
+        style.formElement,
+        style.labelReservedSpace,
+        className
+      )}
+      >
+        {hasPlaceholder && (placeholder || label) &&
           <Placeholder
             visible={this.isPlaceholderVisible}
             placeholder={placeholder || label}
@@ -79,20 +83,22 @@ class FormElement extends Component {
           />
         }
 
-        <Label
-          htmlFor={htmlFor}
-          label={label}
-          isFocused={isFocused}
-          isFloating={this.isLabelFloating}
-          hasErrorMessage={this.hasErrorMessage}
-        />
+        {label &&
+          <Label
+            htmlFor={htmlFor}
+            label={label}
+            isFocused={isFocused}
+            isFloating={this.isLabelFloating}
+            hasErrorMessage={this.hasErrorMessage}
+          />
+        }
 
         {this.props.children}
 
         {this.props.hasUnderline &&
           <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />
         }
-        <ErrorText errorText={errorText} translate={translateErrorText} />
+        {errorText && <ErrorText errorText={errorText} translate={translateErrorText} />}
       </div>
     );
   }

@@ -30,44 +30,8 @@ exports[`<TextField> should focus the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -155,22 +119,6 @@ exports[`<TextField> should focus the input 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -205,44 +153,8 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -330,22 +242,6 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -380,44 +276,8 @@ exports[`<TextField> should render a simple text field 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -505,22 +365,6 @@ exports[`<TextField> should render a simple text field 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -556,44 +400,8 @@ exports[`<TextField> should render the text field as password 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -682,22 +490,6 @@ exports[`<TextField> should render the text field as password 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -732,44 +524,8 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={false}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={true}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -857,22 +613,6 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -908,44 +648,8 @@ exports[`<TextField> should sanitize the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -1034,22 +738,6 @@ exports[`<TextField> should sanitize the input 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -1084,44 +772,8 @@ exports[`<TextField> should show the error message 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={true}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -1265,7 +917,7 @@ exports[`<TextField> should show the label 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
       <Placeholder
         aria-hidden={true}
@@ -1404,22 +1056,6 @@ exports[`<TextField> should show the label 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -1454,7 +1090,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
       <Placeholder
         aria-hidden={true}
@@ -1480,25 +1116,6 @@ exports[`<TextField> should show the placeholder text 1`] = `
           </Translate>
         </div>
       </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -1586,22 +1203,6 @@ exports[`<TextField> should show the placeholder text 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -1657,44 +1258,8 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -1824,22 +1389,6 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>
@@ -1890,44 +1439,8 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv css-1klwfzq"
     >
-      <Placeholder
-        aria-hidden={true}
-        placeholder=""
-        visible={true}
-      >
-        <div
-          aria-hidden={true}
-          className="css-rkuo1o"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-1nn9zl4 css-1jyyyen"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </label>
-      </Label>
       <Grid
         className=""
         component="ul"
@@ -2046,22 +1559,6 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           />
         </div>
       </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-        translate={true}
-      >
-        <div
-          className="css-hyvrm8"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            role={null}
-            string=""
-          />
-        </div>
-      </ErrorText>
     </div>
   </FormElement>
 </TextField>

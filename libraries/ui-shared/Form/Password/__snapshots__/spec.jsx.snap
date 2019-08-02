@@ -48,44 +48,8 @@ exports[`<Password> should render a password field 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv"
+        className="css-1vjh8yv css-1klwfzq"
       >
-        <Placeholder
-          aria-hidden={true}
-          placeholder=""
-          visible={true}
-        >
-          <div
-            aria-hidden={true}
-            className="css-rkuo1o"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string=""
-            />
-          </div>
-        </Placeholder>
-        <Label
-          hasErrorMessage={false}
-          htmlFor="test-input"
-          isFloating={false}
-          isFocused={false}
-          label=""
-        >
-          <label
-            className="css-1nn9zl4 css-1jyyyen"
-            htmlFor="test-input"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string=""
-            />
-          </label>
-        </Label>
         <Grid
           className=""
           component="ul"
@@ -234,22 +198,6 @@ exports[`<Password> should render a password field 1`] = `
             />
           </div>
         </Underline>
-        <ErrorText
-          className={null}
-          errorText=""
-          translate={true}
-        >
-          <div
-            className="css-hyvrm8"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string=""
-            />
-          </div>
-        </ErrorText>
       </div>
     </FormElement>
   </TextField>
@@ -347,44 +295,8 @@ exports[`<Password> should trigger the onChange callback 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv"
+        className="css-1vjh8yv css-1klwfzq"
       >
-        <Placeholder
-          aria-hidden={true}
-          placeholder=""
-          visible={true}
-        >
-          <div
-            aria-hidden={true}
-            className="css-rkuo1o"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string=""
-            />
-          </div>
-        </Placeholder>
-        <Label
-          hasErrorMessage={false}
-          htmlFor="test-input"
-          isFloating={false}
-          isFocused={false}
-          label=""
-        >
-          <label
-            className="css-1nn9zl4 css-1jyyyen"
-            htmlFor="test-input"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string=""
-            />
-          </label>
-        </Label>
         <Grid
           className=""
           component="ul"
@@ -575,22 +487,6 @@ exports[`<Password> should trigger the onChange callback 1`] = `
             />
           </div>
         </Underline>
-        <ErrorText
-          className={null}
-          errorText=""
-          translate={true}
-        >
-          <div
-            className="css-hyvrm8"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string=""
-            />
-          </div>
-        </ErrorText>
       </div>
     </FormElement>
   </TextField>
