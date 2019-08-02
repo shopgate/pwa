@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { Section } from '@shopgate/engage/a11y';
-import { ProductProperties, RelationsSlider } from '@shopgate/engage/product';
+import { isBeta } from '@shopgate/engage/core';
+import { ProductProperties, RelationsSlider, StoreSelector } from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
@@ -178,6 +179,11 @@ class ProductContent extends PureComponent {
             options={contextValue.options}
             conditioner={contextValue.conditioner}
           />
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          {isBeta() && <StoreSelector />}
         </ProductContext.Provider>
       </Fragment>
     );
