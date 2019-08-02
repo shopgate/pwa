@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
-
 import styles from './style';
+
+const { colors } = themeConfig;
 
 /**
  * The product image component.
@@ -28,6 +29,7 @@ class ProductImage extends Component {
     className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
+    noBackground: PropTypes.bool,
     ratio: PropTypes.arrayOf(PropTypes.number),
     resolutions: PropTypes.arrayOf(PropTypes.shape({
       width: PropTypes.number.isRequired,
@@ -46,6 +48,7 @@ class ProductImage extends Component {
     className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => { },
+    noBackground: false,
     ratio: null,
     resolutions: [
       {
@@ -112,6 +115,7 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
+    const { noBackground } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
     if (typeof showInnerShadow === 'undefined') {
@@ -143,7 +147,7 @@ class ProductImage extends Component {
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}
-            backgroundColor="transparent"
+            backgroundColor={noBackground ? 'transparent' : colors.light}
             onError={this.imageLoadingFailed}
           />
         </div>
