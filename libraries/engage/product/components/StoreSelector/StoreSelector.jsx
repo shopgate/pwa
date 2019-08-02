@@ -15,21 +15,6 @@ const EVENT_SET_CLOSED = 'event.setClosed';
  * Renders the store selector sheet.
  */
 class StoreSelector extends PureComponent {
-  /**
-   * Opens the store selector sheet.
-   * @param {Function} [callback=null] A callback that will be called once the sheet closes.
-   */
-  static open = (callback = null) => {
-    UIEvents.trigger(EVENT_SET_OPEN, callback);
-  }
-
-  /**
-   * Closes the store selector sheet.
-   */
-  static close = () => {
-    UIEvents.trigger(EVENT_SET_CLOSED);
-  }
-
   static propTypes = {
     locations: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
@@ -145,4 +130,21 @@ class StoreSelector extends PureComponent {
   }
 }
 
-export default withCurrentProduct(connect(StoreSelector));
+const StoreSelectorWrapped = withCurrentProduct(connect(StoreSelector));
+
+/**
+ * Opens the store selector sheet.
+ * @param {Function} [callback=null] A callback that will be called once the sheet closes.
+ */
+StoreSelectorWrapped.open = (callback = null) => {
+  UIEvents.emit(EVENT_SET_OPEN, callback);
+};
+
+/**
+ * Closes the store selector sheet.
+ */
+StoreSelectorWrapped.close = () => {
+  UIEvents.emit(EVENT_SET_CLOSED);
+};
+
+export default StoreSelectorWrapped;
