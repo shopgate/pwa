@@ -59,7 +59,7 @@ export * from '@shopgate/pwa-core/commands/unifiedTracking';
 // TODO: Contains circular dependency!
 // export * from '@shopgate/pwa-core/commands/webStorage';
 
-// Constants
+// Core Constants
 export * from '@shopgate/pwa-core/constants/AppEvents';
 export * from '@shopgate/pwa-core/constants/AppPermissions';
 export * from '@shopgate/pwa-core/constants/ErrorHandleTypes';

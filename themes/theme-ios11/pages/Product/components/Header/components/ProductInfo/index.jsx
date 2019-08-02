@@ -1,7 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import { MapPriceHint, OrderQuantityHint, EffectivityDates } from '@shopgate/engage/product';
+import {
+  MapPriceHint,
+  OrderQuantityHint,
+  EffectivityDates,
+  Availability,
+} from '@shopgate/engage/product';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -13,7 +18,6 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Manufacturer from '../Manufacturer';
 import Shipping from '../Shipping';
-import Availability from '../Availability';
 import PriceStriked from '../PriceStriked';
 import Price from '../Price';
 import PriceInfo from '../PriceInfo';
