@@ -93,6 +93,19 @@
       "features": "Features",
       "pricing": "Pricing",
       "properties": "Properties"
+    },
+    "location": {
+      "headline": "Stores near you",
+      "details": "Store Details",
+      "today_hours": "Today: {hours}",
+      "address": "{city}, {postalCode}, {region}",
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
     }
   },
   "category": {

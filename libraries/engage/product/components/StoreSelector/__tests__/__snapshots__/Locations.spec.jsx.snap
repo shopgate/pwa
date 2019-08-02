@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Locations /> should not render if no locations have been passed 1`] = `<Locations />`;
+
+exports[`<Locations /> should render locations 1`] = `<Locations />`;
