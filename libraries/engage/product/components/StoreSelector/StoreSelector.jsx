@@ -88,10 +88,11 @@ class StoreSelector extends PureComponent {
 
   /**
    * Closes the store selector sheet.
+   * @param {Object} [location=null] The selected location.
    */
-  handleSetClosed = () => {
+  handleSetClosed = (location = null) => {
     this.setState({ isOpen: false });
-    this.callback();
+    this.callback(location);
     this.callback = () => { };
   }
 
@@ -104,15 +105,15 @@ class StoreSelector extends PureComponent {
    */
   handleSelectLocation = ({ locationCode, addressCode, visibleStock }) => {
     const { selectLocation, product } = this.props;
-
-    selectLocation({
+    const location = {
       productCode: product.id,
       locationCode,
       addressCode,
       visibleStock,
-    });
+    };
 
-    this.handleSetClosed();
+    selectLocation(location);
+    this.handleSetClosed(location);
   }
 
   /**
