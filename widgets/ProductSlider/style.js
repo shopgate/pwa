@@ -7,7 +7,7 @@ const sliderContainer = css({
   marginLeft: 'auto',
   marginRight: 'auto',
   position: 'relative',
-  paddingBottom: 8,
+  paddingBottom: 10,
 }).toString();
 
 const slider = css({
