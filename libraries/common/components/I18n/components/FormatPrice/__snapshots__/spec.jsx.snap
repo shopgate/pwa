@@ -27,6 +27,7 @@ exports[`<FormatPrice /> Given the component was mounted to the DOM should match
         params={Object {}}
         role={null}
         string="greeting"
+        transform={null}
       >
         <span
           className=""

@@ -177,6 +177,7 @@ exports[`<Content /> Check search field should render with initial search query 
                 params={Object {}}
                 role={null}
                 string="search.cancel"
+                transform={null}
               >
                 <span
                   className=""
@@ -325,6 +326,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
                 params={Object {}}
                 role={null}
                 string="search.cancel"
+                transform={null}
               >
                 <span
                   className=""

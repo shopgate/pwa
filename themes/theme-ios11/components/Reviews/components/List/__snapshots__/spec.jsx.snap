@@ -840,6 +840,7 @@ exports[`<List /> should render list with reviews 1`] = `
               }
               role={null}
               string="reviews.author"
+              transform={null}
             >
               <span
                 className=""
@@ -1233,6 +1234,7 @@ exports[`<List /> should render list with reviews 1`] = `
               }
               role={null}
               string="reviews.author"
+              transform={null}
             >
               <span
                 className=""

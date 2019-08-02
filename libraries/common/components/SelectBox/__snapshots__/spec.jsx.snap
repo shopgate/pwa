@@ -42,6 +42,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
           params={Object {}}
           role={null}
           string="filter.sort.default"
+          transform={null}
         >
           <span
             className=""
@@ -112,6 +113,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                       params={Object {}}
                       role={null}
                       string="My item #1"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -144,6 +146,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                       params={Object {}}
                       role={null}
                       string="My item #2"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -176,6 +179,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                       params={Object {}}
                       role={null}
                       string="My item #3"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -238,6 +242,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
           params={Object {}}
           role={null}
           string="Foo"
+          transform={null}
         >
           <span
             className=""
@@ -308,6 +313,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                       params={Object {}}
                       role={null}
                       string="My item #1"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -340,6 +346,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                       params={Object {}}
                       role={null}
                       string="My item #2"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -372,6 +379,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                       params={Object {}}
                       role={null}
                       string="My item #3"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -434,6 +442,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
           params={Object {}}
           role={null}
           string="My item #2"
+          transform={null}
         >
           <span
             className=""
@@ -504,6 +513,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                       params={Object {}}
                       role={null}
                       string="My item #1"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -536,6 +546,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                       params={Object {}}
                       role={null}
                       string="My item #2"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -568,6 +579,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                       params={Object {}}
                       role={null}
                       string="My item #3"
+                      transform={null}
                     >
                       <span
                         className=""

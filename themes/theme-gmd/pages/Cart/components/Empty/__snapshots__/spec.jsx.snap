@@ -29,6 +29,7 @@ exports[`<CartEmpty /> should render 1`] = `
           params={Object {}}
           role={null}
           string="cart.empty"
+          transform={null}
         />
       </div>
     </div>
@@ -56,6 +57,7 @@ exports[`<CartEmpty /> should render 1`] = `
         params={Object {}}
         role={null}
         string="cart.continue"
+        transform={null}
       />
     </RippleButton>
   </div>

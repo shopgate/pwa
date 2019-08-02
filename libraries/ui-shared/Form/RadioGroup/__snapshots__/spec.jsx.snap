@@ -81,6 +81,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
               params={Object {}}
               role={null}
               string="foo"
+              transform={null}
             >
               <span
                 className="css-1hju4sd"
@@ -178,6 +179,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               params={Object {}}
               role={null}
               string="foo"
+              transform={null}
             >
               <span
                 className="css-1hju4sd"
@@ -239,6 +241,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               params={Object {}}
               role={null}
               string="bar"
+              transform={null}
             >
               <span
                 className="css-1hju4sd"
@@ -336,6 +339,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
               params={Object {}}
               role={null}
               string="foo"
+              transform={null}
             >
               <span
                 className="css-1hju4sd"
@@ -468,6 +472,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
               params={Object {}}
               role={null}
               string="foo"
+              transform={null}
             >
               <span
                 className="css-1hju4sd"
@@ -565,6 +570,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
               params={Object {}}
               role={null}
               string="foo"
+              transform={null}
             >
               <span
                 className="css-1hju4sd"

@@ -34,6 +34,7 @@ exports[`<TextField /> should focus the input 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -53,6 +54,7 @@ exports[`<TextField /> should focus the input 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -156,6 +158,7 @@ exports[`<TextField /> should focus the input 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -197,6 +200,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -216,6 +220,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -319,6 +324,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -360,6 +366,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -379,6 +386,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -482,6 +490,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -523,6 +532,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -542,6 +552,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -645,6 +656,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -686,6 +698,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -705,6 +718,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -808,6 +822,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -849,6 +864,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -868,6 +884,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -970,6 +987,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           params={Object {}}
           role={null}
           string="Custom validation error"
+          transform={null}
         >
           <span
             className=""
@@ -1018,6 +1036,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -1037,6 +1056,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -1140,6 +1160,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -1181,6 +1202,7 @@ exports[`<TextField /> should show the error message 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -1200,6 +1222,7 @@ exports[`<TextField /> should show the error message 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -1302,6 +1325,7 @@ exports[`<TextField /> should show the error message 1`] = `
           params={Object {}}
           role={null}
           string="This is an error here"
+          transform={null}
         >
           <span
             className=""
@@ -1350,6 +1374,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           params={Object {}}
           role={null}
           string="This is the hint text"
+          transform={null}
         >
           <span
             className=""
@@ -1376,6 +1401,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -1479,6 +1505,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -1520,6 +1547,7 @@ exports[`<TextField /> should show the label 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -1539,6 +1567,7 @@ exports[`<TextField /> should show the label 1`] = `
           params={Object {}}
           role={null}
           string="This is the label"
+          transform={null}
         >
           <span
             className=""
@@ -1649,6 +1678,7 @@ exports[`<TextField /> should show the label 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -1711,6 +1741,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -1730,6 +1761,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -1833,6 +1865,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>
@@ -1888,6 +1921,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </Hint>
@@ -1907,6 +1941,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </label>
     </Label>
@@ -2010,6 +2045,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           params={Object {}}
           role={null}
           string=""
+          transform={null}
         />
       </div>
     </ErrorText>

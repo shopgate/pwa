@@ -17,6 +17,7 @@ exports[`<TextMessageDialog /> should render the actions 1`] = `
     params={Object {}}
     role={null}
     string="This is the message."
+    transform={null}
   />
 </BasicDialog>
 `;
@@ -31,6 +32,7 @@ exports[`<TextMessageDialog /> should render with minimal props 1`] = `
     params={Object {}}
     role={null}
     string="This is the message."
+    transform={null}
   />
 </BasicDialog>
 `;
@@ -45,6 +47,7 @@ exports[`<TextMessageDialog /> should render with title and message 1`] = `
     params={Object {}}
     role={null}
     string="This is the message."
+    transform={null}
   />
 </BasicDialog>
 `;
@@ -63,6 +66,7 @@ exports[`<TextMessageDialog /> should render with title, message and messagePara
     }
     role={null}
     string="Message with {name}"
+    transform={null}
   />
 </BasicDialog>
 `;

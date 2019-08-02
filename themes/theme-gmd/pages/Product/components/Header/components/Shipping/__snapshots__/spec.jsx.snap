@@ -63,6 +63,7 @@ exports[`Shipping label should render free shipping 1`] = `
                   params={Object {}}
                   role={null}
                   string="shipping.free"
+                  transform={null}
                 >
                   <span
                     className=""
@@ -148,6 +149,7 @@ exports[`Shipping label should render shipping price 1`] = `
                   params={Object {}}
                   role={null}
                   string="shipping.cost"
+                  transform={null}
                 >
                   <span
                     className=""

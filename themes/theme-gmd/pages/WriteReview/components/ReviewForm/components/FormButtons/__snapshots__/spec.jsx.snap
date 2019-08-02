@@ -38,6 +38,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 params={Object {}}
                 role={null}
                 string="common.cancel"
+                transform={null}
               >
                 <span
                   className=""
@@ -100,6 +101,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                           params={Object {}}
                           role={null}
                           string="common.submit"
+                          transform={null}
                         >
                           <span
                             className=""

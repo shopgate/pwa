@@ -113,6 +113,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -132,6 +133,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       params={Object {}}
                       role={null}
                       string="foo"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -363,6 +365,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -382,6 +385,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       params={Object {}}
                       role={null}
                       string="foo"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -571,6 +575,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -590,6 +595,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       params={Object {}}
                       role={null}
                       string="bar"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -821,6 +827,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -840,6 +847,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       params={Object {}}
                       role={null}
                       string="foo"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -1149,6 +1157,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -1168,6 +1177,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       params={Object {}}
                       role={null}
                       string="foo"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -1344,6 +1354,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -1363,6 +1374,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       params={Object {}}
                       role={null}
                       string="bar"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -1601,6 +1613,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -1620,6 +1633,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       params={Object {}}
                       role={null}
                       string="foo"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -1814,6 +1828,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -1833,6 +1848,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       params={Object {}}
                       role={null}
                       string="bar"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -2071,6 +2087,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -2090,6 +2107,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       params={Object {}}
                       role={null}
                       string="foo"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -2284,6 +2302,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -2303,6 +2322,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       params={Object {}}
                       role={null}
                       string="bar"
+                      transform={null}
                     >
                       <span
                         className=""

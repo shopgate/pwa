@@ -873,6 +873,7 @@ exports[`<TextField> should show the error message 1`] = `
             params={Object {}}
             role={null}
             string="This is an error here"
+            transform={null}
           >
             <span
               className=""
@@ -933,6 +934,7 @@ exports[`<TextField> should show the label 1`] = `
             params={Object {}}
             role={null}
             string="This is the label"
+            transform={null}
           >
             <span
               className=""
@@ -959,6 +961,7 @@ exports[`<TextField> should show the label 1`] = `
             params={Object {}}
             role={null}
             string="This is the label"
+            transform={null}
           >
             <span
               className=""
@@ -1106,6 +1109,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
             params={Object {}}
             role={null}
             string="This is the placeholder text"
+            transform={null}
           >
             <span
               className=""

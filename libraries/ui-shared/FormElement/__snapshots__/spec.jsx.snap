@@ -30,6 +30,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
           params={Object {}}
           role={null}
           string="testlabel"
+          transform={null}
         >
           <span
             className=""
@@ -56,6 +57,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
           params={Object {}}
           role={null}
           string="testlabel"
+          transform={null}
         >
           <span
             className=""
@@ -250,6 +252,7 @@ exports[`<FormElement /> should show the error message 1`] = `
           params={Object {}}
           role={null}
           string="The error text"
+          transform={null}
         >
           <span
             className=""
@@ -294,6 +297,7 @@ exports[`<FormElement /> should show the label 1`] = `
           params={Object {}}
           role={null}
           string="The label"
+          transform={null}
         >
           <span
             className=""
@@ -320,6 +324,7 @@ exports[`<FormElement /> should show the label 1`] = `
           params={Object {}}
           role={null}
           string="The label"
+          transform={null}
         >
           <span
             className=""
@@ -382,6 +387,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
           params={Object {}}
           role={null}
           string="The placeholder"
+          transform={null}
         >
           <span
             className=""

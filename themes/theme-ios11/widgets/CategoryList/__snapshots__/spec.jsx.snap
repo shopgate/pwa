@@ -56,6 +56,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         params={Object {}}
         role={null}
         string="Yay Categories"
+        transform={null}
       >
         <span
           className=""

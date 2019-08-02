@@ -66,6 +66,7 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
                     params={Object {}}
                     role={null}
                     string="price.from"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -239,6 +240,7 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
                     params={Object {}}
                     role={null}
                     string="price.from"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -377,6 +379,7 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
                     params={Object {}}
                     role={null}
                     string="price.from"
+                    transform={null}
                   >
                     <span
                       className=""

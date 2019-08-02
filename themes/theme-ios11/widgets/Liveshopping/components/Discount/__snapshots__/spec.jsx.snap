@@ -39,6 +39,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
           }
           role={null}
           string="liveshopping.discount_badge"
+          transform={null}
         >
           <span
             className="css-d38bpv css-1mk9z3i"

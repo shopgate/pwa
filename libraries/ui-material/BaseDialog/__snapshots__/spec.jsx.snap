@@ -47,6 +47,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
           params={Object {}}
           role={null}
           string="action0"
+          transform={null}
         />
       </Button>
       <Button
@@ -64,6 +65,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
           params={Object {}}
           role={null}
           string="action1"
+          transform={null}
         />
       </Button>
       <Button
@@ -81,6 +83,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
           params={Object {}}
           role={null}
           string="action2"
+          transform={null}
         />
       </Button>
     </div>
@@ -117,6 +120,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
           params={Object {}}
           role={null}
           string="action0"
+          transform={null}
         />
       </Button>
       <Button
@@ -146,6 +150,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
           params={Object {}}
           role={null}
           string="action1"
+          transform={null}
         />
       </Button>
       <Button
@@ -163,6 +168,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
           params={Object {}}
           role={null}
           string="action2"
+          transform={null}
         />
       </Button>
     </div>

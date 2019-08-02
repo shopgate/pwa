@@ -152,6 +152,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
         params={null}
         role={null}
         string="some.translation.string"
+        transform={null}
       >
         <span
           className=""
@@ -175,6 +176,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
         }
         role={null}
         string="Message with messageParams"
+        transform={null}
       >
         <span
           className=""

@@ -263,6 +263,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             params={Object {}}
                             role={null}
                             string="common.show_products"
+                            transform={null}
                           >
                             <span
                               className=""
@@ -802,6 +803,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               params={Object {}}
                               role={null}
                               string="common.show_products"
+                              transform={null}
                             >
                               <span
                                 className=""
@@ -1397,6 +1399,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               params={Object {}}
                               role={null}
                               string="common.show_products"
+                              transform={null}
                             >
                               <span
                                 className=""
@@ -2089,6 +2092,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             params={Object {}}
                             role={null}
                             string="common.show_products"
+                            transform={null}
                           >
                             <span
                               className=""
@@ -3033,6 +3037,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               params={Object {}}
                               role={null}
                               string="common.show_products"
+                              transform={null}
                             >
                               <span
                                 className=""
@@ -3314,6 +3319,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             params={Object {}}
                             role={null}
                             string="common.show_products"
+                            transform={null}
                           >
                             <span
                               className=""
@@ -3847,6 +3853,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               params={Object {}}
                               role={null}
                               string="common.show_products"
+                              transform={null}
                             >
                               <span
                                 className=""

@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { logger } from '@shopgate/pwa-core';
 import { i18n } from '@shopgate/engage/core';
+
+/* eslint-disable no-unused-vars */
+// The eslint rule is disabled beause of a falsy detection of the unused var.
+/**
+ * This helper takes a string, a react component or an array of them and calls the given transform
+ * function after the comonent is collapsed into a string. This simplifies post processing of
+ * translated text by allowing the transform function to only work with pure strings.
+ * @param {Function} transform The transform function which modifies the result.
+ * @param {Object|string|Object[]|string[]} component The component to be transformed.
+ * @returns {string}
+ */
+const transformComponent = (transform, component) => transform(`${<Fragment>component</Fragment>}`);
+/* eslint-enable no-unused-vars */
+
 /**
  * Returns a translation and replaces placeholder with children output.
  * It is possible to either pass JSX components or plain strings as replacement for
@@ -13,6 +27,7 @@ import { i18n } from '@shopgate/engage/core';
  * @param {Array} props.children Children to use as placeholders. Must be one of the components
  *                               provided by I18n.
  * @param {string} props.className Additional classes to append to the translated wrapper element.
+ * @param {Function} [props.transform] Input a function to modify the resulting string.
  * @returns {JSX} The translated string as JSX component.
  */
 const Translate = ({
@@ -21,6 +36,7 @@ const Translate = ({
   params,
   className,
   role,
+  transform,
 }) => {
   if (typeof string !== 'string' || string.length === 0) {
     return string;
@@ -30,7 +46,7 @@ const Translate = ({
     return <span className={className} role={role}>{string}</span>;
   }
 
-  // When the input string is malformed, rather return the original string then raising an error.
+  // When the input string is malformed, return the original string rather than raising an error.
   let formatted = string;
 
   try {
@@ -47,6 +63,7 @@ const Translate = ({
     const stringParts = i18n.text(string, values).split(separator);
 
     // Create a new array containing the separated chunks of the text and merge the substitutions.
+    // The result can be an array with multiple strings and will be joined together.
     formatted = stringParts.reduce((result, text, index) => [
       ...result,
       text,
@@ -57,7 +74,9 @@ const Translate = ({
   }
 
   return (
-    <span className={className} role={role}>{formatted}</span>
+    <span className={className} role={role}>
+      {!transform ? formatted : transformComponent(transform, formatted)}
+    </span>
   );
 };
 
@@ -70,6 +89,7 @@ Translate.propTypes = {
     PropTypes.array,
   ]),
   role: PropTypes.string,
+  transform: PropTypes.func,
 };
 
 Translate.defaultProps = {
@@ -77,6 +97,7 @@ Translate.defaultProps = {
   className: '',
   params: {},
   role: null,
+  transform: null,
 };
 
 export default Translate;

@@ -269,4 +269,5 @@ export { getWidgetSettings } from './config/getWidgetSettings';
 
 // -------------- HELPERS -------------- //
 export { i18n } from './helpers/i18n';
+export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';

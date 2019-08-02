@@ -48,6 +48,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                   params={Object {}}
                   role={null}
                   string="modal.title_error"
+                  transform={null}
                 >
                   <span
                     className=""
@@ -72,6 +73,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
               params={Object {}}
               role={null}
               string="Error message"
+              transform={null}
             >
               <span
                 className=""
@@ -143,6 +145,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                   params={Object {}}
                   role={null}
                   string="modal.title_error"
+                  transform={null}
                 >
                   <span
                     className=""
@@ -167,6 +170,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
               params={Object {}}
               role={null}
               string="Custom message"
+              transform={null}
             >
               <span
                 className=""
