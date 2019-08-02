@@ -379,6 +379,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                 }
                 role={null}
                 string="reviews.review_count"
+                transform={null}
               >
                 <span
                   className="css-a7xi3l css-oixusm"

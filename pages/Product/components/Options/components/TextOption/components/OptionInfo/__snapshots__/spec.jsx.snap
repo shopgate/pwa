@@ -45,6 +45,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
       params={Object {}}
       role={null}
       string="common.required"
+      transform={null}
     />
   </GridItem>
   <div

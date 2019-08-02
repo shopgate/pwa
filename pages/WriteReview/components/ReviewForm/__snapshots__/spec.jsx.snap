@@ -45,6 +45,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -292,6 +293,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         params={Object {}}
                         role={null}
                         string=""
+                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -332,6 +334,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -351,6 +354,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -461,6 +465,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -500,6 +505,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -519,6 +525,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -629,6 +636,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -668,6 +676,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -687,6 +696,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -794,6 +804,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -823,6 +834,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -885,6 +897,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""
@@ -956,6 +969,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -1203,6 +1217,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         params={Object {}}
                         role={null}
                         string=""
+                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -1243,6 +1258,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -1262,6 +1278,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -1372,6 +1389,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -1411,6 +1429,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -1430,6 +1449,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -1540,6 +1560,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -1579,6 +1600,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -1598,6 +1620,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -1705,6 +1728,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -1734,6 +1758,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -1796,6 +1821,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""
@@ -1936,6 +1962,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -2379,6 +2406,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         params={Object {}}
                         role={null}
                         string=""
+                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -2419,6 +2447,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -2438,6 +2467,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -2548,6 +2578,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -2587,6 +2618,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -2606,6 +2638,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -2716,6 +2749,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -2755,6 +2789,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -2774,6 +2809,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -2881,6 +2917,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -2910,6 +2947,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -2972,6 +3010,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""
@@ -3053,6 +3092,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -3496,6 +3536,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         params={Object {}}
                         role={null}
                         string=""
+                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -3536,6 +3577,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -3555,6 +3597,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -3665,6 +3708,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -3704,6 +3748,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -3723,6 +3768,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -3833,6 +3879,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -3872,6 +3919,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -3891,6 +3939,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -3998,6 +4047,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -4027,6 +4077,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -4089,6 +4140,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""
@@ -4170,6 +4222,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -4613,6 +4666,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         params={Object {}}
                         role={null}
                         string=""
+                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -4653,6 +4707,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -4672,6 +4727,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -4782,6 +4838,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -4821,6 +4878,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -4840,6 +4898,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -4950,6 +5009,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -4989,6 +5049,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -5008,6 +5069,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -5115,6 +5177,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -5144,6 +5207,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -5206,6 +5270,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""
@@ -5287,6 +5352,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -5730,6 +5796,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         params={Object {}}
                         role={null}
                         string=""
+                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -5770,6 +5837,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -5789,6 +5857,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -5899,6 +5968,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -5938,6 +6008,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -5957,6 +6028,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -6067,6 +6139,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -6106,6 +6179,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -6125,6 +6199,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -6231,6 +6306,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_error_length"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -6267,6 +6343,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -6329,6 +6406,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""
@@ -6410,6 +6488,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -6853,6 +6932,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         params={Object {}}
                         role={null}
                         string=""
+                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -6893,6 +6973,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -6912,6 +6993,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -7022,6 +7104,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -7061,6 +7144,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -7080,6 +7164,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -7190,6 +7275,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -7229,6 +7315,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -7248,6 +7335,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -7355,6 +7443,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -7384,6 +7473,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -7446,6 +7536,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""
@@ -7517,6 +7608,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   params={Object {}}
                   role={null}
                   string="reviews.review_form_rate"
+                  transform={null}
                 >
                   <span
                     className="css-mfy564"
@@ -7764,6 +7856,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         params={Object {}}
                         role={null}
                         string="reviews.review_form_rate_error"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -7811,6 +7904,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -7830,6 +7924,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_author"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -7940,6 +8035,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -7979,6 +8075,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -7998,6 +8095,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_title"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -8108,6 +8206,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -8147,6 +8246,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </Hint>
@@ -8166,6 +8266,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string="reviews.review_form_text"
+                      transform={null}
                     >
                       <span
                         className=""
@@ -8273,6 +8374,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       params={Object {}}
                       role={null}
                       string=""
+                      transform={null}
                     />
                   </div>
                 </ErrorText>
@@ -8302,6 +8404,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         params={Object {}}
                         role={null}
                         string="common.cancel"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -8364,6 +8467,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                   params={Object {}}
                                   role={null}
                                   string="common.submit"
+                                  transform={null}
                                 >
                                   <span
                                     className=""

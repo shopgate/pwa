@@ -90,6 +90,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     params={Object {}}
                     role={null}
                     string="navigation.your_account"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -140,6 +141,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                         params={Object {}}
                         role={null}
                         string="navigation.logout"
+                        transform={null}
                       >
                         <span
                           className=""
@@ -310,6 +312,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                     params={Object {}}
                                     role={null}
                                     string="login.button"
+                                    transform={null}
                                   >
                                     <span
                                       className=""
@@ -390,6 +393,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                     params={Object {}}
                                     role={null}
                                     string="login.signup"
+                                    transform={null}
                                   >
                                     <span
                                       className=""
@@ -550,6 +554,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                     params={Object {}}
                                     role={null}
                                     string="login.button"
+                                    transform={null}
                                   >
                                     <span
                                       className=""
@@ -630,6 +635,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                     params={Object {}}
                                     role={null}
                                     string="login.signup"
+                                    transform={null}
                                   >
                                     <span
                                       className=""

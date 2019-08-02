@@ -33,6 +33,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
         params={Object {}}
         role={null}
         string="Headline"
+        transform={null}
       >
         <span
           className=""
@@ -67,6 +68,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
             params={Object {}}
             role={null}
             string="Item One"
+            transform={null}
           >
             <span
               className=""
@@ -95,6 +97,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
             params={Object {}}
             role={null}
             string="Item Two"
+            transform={null}
           >
             <span
               className=""
@@ -147,6 +150,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
             params={Object {}}
             role={null}
             string="Item One"
+            transform={null}
           >
             <span
               className=""
@@ -175,6 +179,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
             params={Object {}}
             role={null}
             string="Item Two"
+            transform={null}
           >
             <span
               className=""

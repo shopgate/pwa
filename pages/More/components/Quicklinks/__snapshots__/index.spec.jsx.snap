@@ -75,6 +75,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
               params={Object {}}
               role={null}
               string="navigation.more_menu"
+              transform={null}
             >
               <span
                 className=""
@@ -110,6 +111,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                   params={Object {}}
                   role={null}
                   string="Some Label"
+                  transform={null}
                 >
                   <span
                     className=""
@@ -139,6 +141,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                   params={Object {}}
                   role={null}
                   string="Another Label"
+                  transform={null}
                 >
                   <span
                     className=""

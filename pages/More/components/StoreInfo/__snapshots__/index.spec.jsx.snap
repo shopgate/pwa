@@ -48,6 +48,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
             params={Object {}}
             role={null}
             string="navigation.store_information"
+            transform={null}
           >
             <span
               className=""
@@ -103,6 +104,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                     params={Object {}}
                     role={null}
                     string="navigation.shipping"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -164,6 +166,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                     params={Object {}}
                     role={null}
                     string="navigation.payment"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -225,6 +228,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                     params={Object {}}
                     role={null}
                     string="navigation.terms"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -286,6 +290,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                     params={Object {}}
                     role={null}
                     string="navigation.privacy"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -347,6 +352,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                     params={Object {}}
                     role={null}
                     string="navigation.return_policy"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -408,6 +414,7 @@ exports[`<StoreInfo /> should render as expected 1`] = `
                     params={Object {}}
                     role={null}
                     string="navigation.about"
+                    transform={null}
                   >
                     <span
                       className=""
