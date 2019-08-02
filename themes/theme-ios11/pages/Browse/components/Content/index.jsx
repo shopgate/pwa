@@ -4,7 +4,6 @@ import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import SearchField from '../SearchField';
 import RootCategories from '../RootCategories';
-import styles from './styles';
 
 /**
  * The BrowseContent component.
@@ -19,7 +18,7 @@ const BrowseContent = ({ pageId, query }, context) => {
   return (
     <Fragment>
       <BackBar />
-      <Headline style={styles.headline} text={__('titles.browse')} tag="h1" />
+      <Headline text={__('titles.browse')} tag="h1" />
       <SearchField pageId={pageId} query={query} />
       <RootCategories />
     </Fragment>
