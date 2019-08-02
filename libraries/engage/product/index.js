@@ -18,6 +18,7 @@ export { default as fetchProductsById } from '@shopgate/pwa-common-commerce/prod
 export { default as fetchProductsByQuery } from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 export { default as fetchProductShipping } from '@shopgate/pwa-common-commerce/product/actions/fetchProductShipping';
 export { default as fetchProductVariants } from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
+export { fetchProductLocations } from '@shopgate/pwa-common-commerce/product/actions/fetchProductLocations';
 
 // COLLECTIONS
 export { default as productImageFormats } from '@shopgate/pwa-common-commerce/product/collections/ProductImageFormats';
@@ -66,6 +67,7 @@ export { Swatches } from './components/Swatches';
 export { RelationsSlider } from './components/RelationsSlider';
 export { default as ProductCard } from './components/ProductCard';
 export { default as ProductGridPrice } from './components/ProductGridPrice';
+export { StoreSelector } from './components/StoreSelector';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';

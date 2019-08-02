@@ -42,8 +42,6 @@ exports[`<RootCategories /> should render category list with root categories fro
         <Headline
           style={
             Object {
-              "marginLeft": 20,
-              "marginRight": 20,
               "marginTop": 20,
             }
           }

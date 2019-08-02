@@ -9,8 +9,8 @@ const container = css({
   flexDirection: 'row',
   flexWrap: 'nowrap',
   marginBottom: 4,
-  paddingLeft: 20,
-  paddingRight: 20,
+  paddingLeft: 16,
+  paddingRight: 16,
 }).toString();
 
 const inputWrapper = css({
@@ -51,7 +51,7 @@ const button = css({
   lineHeight: '36px',
   color: colors.accent,
   paddingTop: 0,
-  paddingLeft: 20,
+  paddingLeft: 16,
   paddingRight: 0,
   marginLeft: 0,
   marginRight: 0,

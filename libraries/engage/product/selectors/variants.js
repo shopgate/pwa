@@ -64,3 +64,34 @@ export function makeGetCharacteristicsFeaturedMedia() {
     }
   );
 }
+
+/**
+ * Creates a selector that retrieves the currently selected characteristics.
+ * @returns {Function}
+ */
+export function makeGetSelectedCharacteristic() {
+  return createSelector(
+    getProductVariants,
+    (state, props) => props.characteristics,
+    (variants, characteristics) => {
+      const selected = [];
+
+      if (!variants || !characteristics) {
+        return selected;
+      }
+
+      Object.keys(characteristics).forEach((key) => {
+        const item = characteristics[key];
+        const variant = find(variants.characteristics, { id: key });
+        const value = find(variant.values, { id: item });
+
+        selected.push({
+          label: variant.label,
+          value: value.label,
+        });
+      });
+
+      return selected;
+    }
+  );
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Swiper } from '@shopgate/engage/components';
 import { Theme } from '@shopgate/pwa-common/context';
-import styles from './style';
+import { container, items } from './style';
 
 /**
  * @param {Object} props The component props.
@@ -34,8 +34,8 @@ function ProductSlider(props) {
             slidesPerView={slidesPerView}
           >
             {productIds.map(id => (
-              <Swiper.Item key={id}>
-                <Item productId={id} style={styles} />
+              <Swiper.Item key={id} className={container}>
+                <Item productId={id} style={items} />
               </Swiper.Item>
             ))}
           </Swiper>
