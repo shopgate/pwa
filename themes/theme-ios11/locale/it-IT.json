@@ -93,6 +93,19 @@
       "features": "Caratteristiche",
       "pricing": "Prezzi",
       "properties": "Proprietà"
+    },
+    "location": {
+      "headline": "Negozi vicino a te",
+      "details": "Dettagli del negozio",
+      "today_hours": "Oggi: {hours}",
+      "address": "{postalCode} {city}",
+      "mon": "Lunedì",
+      "tue": "Martedì",
+      "wed": "Mercoledì",
+      "thu": "Giovedì",
+      "fri": "Venerdì",
+      "sat": "Sabato",
+      "sun": "Domenica"
     }
   },
   "category": {
