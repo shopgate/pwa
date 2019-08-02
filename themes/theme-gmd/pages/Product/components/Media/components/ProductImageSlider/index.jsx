@@ -128,6 +128,11 @@ class ProductImageSlider extends Component {
       onKeyDown = noop;
     }
 
+    const imageStyle = product ? {
+      background: `url(${product.featuredImageUrl}?w=440&h=440&q=70&zc=resize&fillc=FFFFFF)`,
+      backgroundSize: 'contain',
+    } : null;
+
     return (
       <Fragment>
         <Portal name={PRODUCT_IMAGE_BEFORE} />
@@ -139,6 +144,7 @@ class ProductImageSlider extends Component {
             role="button"
             tabIndex="0"
             aria-hidden={ariaHidden}
+            style={imageStyle}
           >
             {content}
           </div>

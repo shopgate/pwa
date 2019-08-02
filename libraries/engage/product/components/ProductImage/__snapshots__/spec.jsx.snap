@@ -12,7 +12,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       alt={null}
       animating={true}
       aria-hidden={null}
-      backgroundColor="#f2f2f2"
+      backgroundColor="transparent"
       className="css-3hjqnz"
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
@@ -78,7 +78,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       alt={null}
       animating={true}
       aria-hidden={null}
-      backgroundColor="#f2f2f2"
+      backgroundColor="transparent"
       className=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
@@ -218,7 +218,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       alt={null}
       animating={true}
       aria-hidden={null}
-      backgroundColor="#f2f2f2"
+      backgroundColor="transparent"
       className="css-3hjqnz"
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}

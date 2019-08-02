@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
@@ -10,8 +10,6 @@ import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 
 import styles from './style';
-
-const { colors } = themeConfig;
 
 /**
  * The product image component.
@@ -126,8 +124,8 @@ class ProductImage extends Component {
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
           <div
             className={classnames(styles.placeholderContainer, {
-            [styles.innerShadow]: showInnerShadow,
-          })}
+              [styles.innerShadow]: showInnerShadow,
+            })}
             aria-hidden={this.props['aria-hidden']}
           >
             <div className={styles.placeholderContent} data-test-id="placeHolder">
@@ -145,7 +143,7 @@ class ProductImage extends Component {
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}
-            backgroundColor={colors.light}
+            backgroundColor="transparent"
             onError={this.imageLoadingFailed}
           />
         </div>
