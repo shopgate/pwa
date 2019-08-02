@@ -108,7 +108,7 @@ class ProductImageSlider extends Component {
           >
             {imagesByIndex.map(imagesInIndex => (
               <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
-                <ProductImage srcmap={imagesInIndex} animating={false} />
+                <ProductImage srcmap={imagesInIndex} animating={false} noBackground />
               </Swiper.Item>
             ))}
           </Swiper>
