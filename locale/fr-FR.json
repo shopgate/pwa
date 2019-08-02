@@ -90,6 +90,19 @@
       "features": "Caractéristiques",
       "pricing": "Tarifs",
       "properties": "Propriétés"
+    },
+    "location": {
+      "headline": "Magasins près de chez vous",
+      "details": "Détails",
+      "today_hours": "Aujourd'hui: {hours}",
+      "address": "{postalCode} {city}",
+      "mon": "Lundi",
+      "tue": "Mardi",
+      "wed": "Mercredi",
+      "thu": "Jeudi",
+      "fri": "Vendredi",
+      "sat": "Samedi",
+      "sun": "Dimanche"
     }
   },
   "category": {

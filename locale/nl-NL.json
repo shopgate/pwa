@@ -90,6 +90,19 @@
       "features": "Kenmerken",
       "pricing": "Prijzen",
       "properties": "Eigenschappen"
+    },
+    "location": {
+      "headline": "Winkels in uw buurt",
+      "details": "Winkel details",
+      "today_hours": "Vandaag: {hours}",
+      "address": "{postalCode} {city}",
+      "mon": "Maandag",
+      "tue": "Dinsdag",
+      "wed": "Woensdag",
+      "thu": "Donderdag",
+      "fri": "Vrijdag",
+      "sat": "Zaterdag",
+      "sun": "Zondag"
     }
   },
   "category": {

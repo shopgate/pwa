@@ -90,6 +90,19 @@
       "features": "Merkmale",
       "pricing": "Preisinformationen",
       "properties": "Eigenschaften"
+    },
+    "location": {
+      "headline": "Läden in Ihrer Nähe",
+      "details": "Laden-Details",
+      "today_hours": "Heute: {hours}",
+      "address": "{postalCode} {city}",
+      "mon": "Montag",
+      "tue": "Dienstag",
+      "wed": "Mittwoch",
+      "thu": "Donnerstag",
+      "fri": "Freitag",
+      "sat": "Samstag",
+      "sun": "Sonntag"
     }
   },
   "category": {
