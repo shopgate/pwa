@@ -1,20 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { renderToString } from 'react-dom/server';
 import { logger } from '@shopgate/pwa-core';
 import { i18n } from '@shopgate/engage/core';
-
-/* eslint-disable no-unused-vars */
-// The eslint rule is disabled beause of a falsy detection of the unused var.
-/**
- * This helper takes a string, a react component or an array of them and calls the given transform
- * function after the comonent is collapsed into a string. This simplifies post processing of
- * translated text by allowing the transform function to only work with pure strings.
- * @param {Function} transform The transform function which modifies the result.
- * @param {Object|string|Object[]|string[]} component The component to be transformed.
- * @returns {string}
- */
-const transformComponent = (transform, component) => transform(`${<Fragment>component</Fragment>}`);
-/* eslint-enable no-unused-vars */
 
 /**
  * Returns a translation and replaces placeholder with children output.
@@ -75,7 +63,7 @@ const Translate = ({
 
   return (
     <span className={className} role={role}>
-      {!transform ? formatted : transformComponent(transform, formatted)}
+      {!transform ? formatted : transform(renderToString(formatted))}
     </span>
   );
 };
