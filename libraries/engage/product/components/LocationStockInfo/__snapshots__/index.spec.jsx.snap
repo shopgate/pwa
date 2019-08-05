@@ -4,7 +4,7 @@ exports[`<LocationStockInfo /> should not render if no location data is passed 1
 <pure(LocationStockInfo)
   location={
     Object {
-      "storeName": "",
+      "name": "",
       "visibleInventory": null,
     }
   }
@@ -13,7 +13,7 @@ exports[`<LocationStockInfo /> should not render if no location data is passed 1
     className=""
     location={
       Object {
-        "storeName": "",
+        "name": "",
         "visibleInventory": null,
       }
     }
@@ -28,7 +28,7 @@ exports[`<LocationStockInfo /> should not render if no location data is passed 1
           "className": "",
           "inventoryBlind": undefined,
           "location": Object {
-            "storeName": "",
+            "name": "",
             "visibleInventory": null,
           },
           "visibleInventory": null,
@@ -44,7 +44,7 @@ exports[`<LocationStockInfo /> should not render if no location data is passed 1
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "",
+              "name": "",
               "visibleInventory": null,
             },
             "visibleInventory": null,
@@ -60,7 +60,7 @@ exports[`<LocationStockInfo /> should not render if no location data is passed 1
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "",
+              "name": "",
               "visibleInventory": null,
             },
             "visibleInventory": null,
@@ -76,7 +76,7 @@ exports[`<LocationStockInfo /> should not render if no location data is passed 1
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "",
+              "name": "",
               "visibleInventory": null,
             },
             "visibleInventory": null,
@@ -92,7 +92,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
 <pure(LocationStockInfo)
   location={
     Object {
-      "storeName": "Test Store",
+      "name": "Test Store",
       "visibleInventory": 15,
     }
   }
@@ -101,7 +101,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
     className=""
     location={
       Object {
-        "storeName": "Test Store",
+        "name": "Test Store",
         "visibleInventory": 15,
       }
     }
@@ -116,7 +116,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
           "className": "",
           "inventoryBlind": undefined,
           "location": Object {
-            "storeName": "Test Store",
+            "name": "Test Store",
             "visibleInventory": 15,
           },
           "visibleInventory": 15,
@@ -132,7 +132,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": 15,
             },
             "visibleInventory": 15,
@@ -148,7 +148,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": 15,
             },
             "visibleInventory": 15,
@@ -181,7 +181,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
             className=""
             params={
               Object {
-                "storeName": undefined,
+                "storeName": "Test Store",
               }
             }
             role={null}
@@ -206,7 +206,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": 15,
             },
             "visibleInventory": 15,
@@ -222,7 +222,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
 <pure(LocationStockInfo)
   location={
     Object {
-      "storeName": "Test Store",
+      "name": "Test Store",
       "visibleInventory": 15,
     }
   }
@@ -232,7 +232,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
     className=""
     location={
       Object {
-        "storeName": "Test Store",
+        "name": "Test Store",
         "visibleInventory": 15,
       }
     }
@@ -247,7 +247,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
           "className": "",
           "inventoryBlind": undefined,
           "location": Object {
-            "storeName": "Test Store",
+            "name": "Test Store",
             "visibleInventory": 15,
           },
           "visibleInventory": 15,
@@ -263,7 +263,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": 15,
             },
             "visibleInventory": 15,
@@ -279,7 +279,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": 15,
             },
             "visibleInventory": 15,
@@ -319,7 +319,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": 15,
             },
             "visibleInventory": 15,
@@ -335,7 +335,7 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
 <pure(LocationStockInfo)
   location={
     Object {
-      "storeName": "Test Store",
+      "name": "Test Store",
       "visibleInventory": null,
     }
   }
@@ -344,7 +344,7 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
     className=""
     location={
       Object {
-        "storeName": "Test Store",
+        "name": "Test Store",
         "visibleInventory": null,
       }
     }
@@ -359,7 +359,7 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
           "className": "",
           "inventoryBlind": undefined,
           "location": Object {
-            "storeName": "Test Store",
+            "name": "Test Store",
             "visibleInventory": null,
           },
           "visibleInventory": null,
@@ -375,7 +375,7 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": null,
             },
             "visibleInventory": null,
@@ -391,36 +391,13 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": null,
             },
             "visibleInventory": null,
           }
         }
-      >
-        <span
-          className="css-d3hu7n"
-        >
-          <Translate
-            className=""
-            params={
-              Object {
-                "storeName": undefined,
-              }
-            }
-            role={null}
-            string="product.location_stock_info.pick_up_at"
-            transform={[Function]}
-          >
-            <span
-              className=""
-              role={null}
-            >
-              Product.location_stock_info.pick_up_at
-            </span>
-          </Translate>
-        </span>
-      </Portal>
+      />
       <Portal
         name="product.location-stock-info.after"
         props={
@@ -430,7 +407,7 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
             "className": "",
             "inventoryBlind": undefined,
             "location": Object {
-              "storeName": "Test Store",
+              "name": "Test Store",
               "visibleInventory": null,
             },
             "visibleInventory": null,
