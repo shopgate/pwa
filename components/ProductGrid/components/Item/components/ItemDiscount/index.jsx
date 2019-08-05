@@ -34,7 +34,7 @@ class ItemDiscount extends PureComponent {
     }
 
     return (
-      <div className={styles}>
+      <div className={styles} aria-hidden>
         <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_DISCOUNT} props={props}>
           <DiscountBadge text={`-${discount}%`} />

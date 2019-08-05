@@ -1,35 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tiers /> Rendering Rendering with data should render tier prices when tier prices are available 1`] = `
-<Tiers
-  price={
-    Object {
-      "currency": "USD",
-      "tiers": Array [
-        Object {
-          "from": 1,
-          "to": 10,
-          "unitPrice": 99.99,
-        },
-        Object {
-          "from": 11,
-          "to": 9999,
-          "unitPrice": 80,
-        },
-      ],
-    }
-  }
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
+exports[`<Tiers /> Rendering with data should render tier prices when tier prices are available 1`] = `
+<Fragment>
   <Portal
     name="product.tiers.before"
     props={null}
@@ -42,20 +14,25 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
       className="css-ipvvc7"
     >
       <pure(Tier)
-        key="1_10_99.99"
+        key="1_2_92.5"
         price={
           Object {
             "currency": "USD",
             "tiers": Array [
               Object {
                 "from": 1,
-                "to": 10,
-                "unitPrice": 99.99,
+                "to": 2,
+                "unitPrice": 92.5,
               },
               Object {
-                "from": 11,
-                "to": 9999,
-                "unitPrice": 80,
+                "from": 3,
+                "to": 5,
+                "unitPrice": 77.5,
+              },
+              Object {
+                "from": 6,
+                "to": null,
+                "unitPrice": 68.5,
               },
             ],
           }
@@ -63,204 +40,80 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
         tier={
           Object {
             "from": 1,
-            "to": 10,
-            "unitPrice": 99.99,
+            "to": 2,
+            "unitPrice": 92.5,
           }
         }
-      >
-        <Tier
-          price={
-            Object {
-              "currency": "USD",
-              "tiers": Array [
-                Object {
-                  "from": 1,
-                  "to": 10,
-                  "unitPrice": 99.99,
-                },
-                Object {
-                  "from": 11,
-                  "to": 9999,
-                  "unitPrice": 80,
-                },
-              ],
-            }
-          }
-          tier={
-            Object {
-              "from": 1,
-              "to": 10,
-              "unitPrice": 99.99,
-            }
-          }
-        >
-          <Translate
-            className="css-z8ikop"
-            key="1"
-            params={
-              Object {
-                "from": 1,
-              }
-            }
-            string="price.tier.range"
-          >
-            <span
-              className="css-z8ikop"
-            >
-              price.tier.range
-            </span>
-          </Translate>
-        </Tier>
-      </pure(Tier)>
+      />
       <pure(Tier)
-        key="11_9999_80"
+        key="3_5_77.5"
         price={
           Object {
             "currency": "USD",
             "tiers": Array [
               Object {
                 "from": 1,
-                "to": 10,
-                "unitPrice": 99.99,
+                "to": 2,
+                "unitPrice": 92.5,
               },
               Object {
-                "from": 11,
-                "to": 9999,
-                "unitPrice": 80,
+                "from": 3,
+                "to": 5,
+                "unitPrice": 77.5,
+              },
+              Object {
+                "from": 6,
+                "to": null,
+                "unitPrice": 68.5,
               },
             ],
           }
         }
         tier={
           Object {
-            "from": 11,
-            "to": 9999,
-            "unitPrice": 80,
+            "from": 3,
+            "to": 5,
+            "unitPrice": 77.5,
           }
         }
-      >
-        <Tier
-          price={
-            Object {
-              "currency": "USD",
-              "tiers": Array [
-                Object {
-                  "from": 1,
-                  "to": 10,
-                  "unitPrice": 99.99,
-                },
-                Object {
-                  "from": 11,
-                  "to": 9999,
-                  "unitPrice": 80,
-                },
-              ],
-            }
-          }
-          tier={
-            Object {
-              "from": 11,
-              "to": 9999,
-              "unitPrice": 80,
-            }
-          }
-        >
-          <Translate
-            className="css-z8ikop"
-            key="11"
-            params={
+      />
+      <pure(Tier)
+        key="6__68.5"
+        price={
+          Object {
+            "currency": "USD",
+            "tiers": Array [
               Object {
-                "from": 11,
-              }
-            }
-            string="price.tier.range"
-          >
-            <span
-              className="css-z8ikop"
-            >
-              price.tier.range
-            </span>
-          </Translate>
-        </Tier>
-      </pure(Tier)>
+                "from": 1,
+                "to": 2,
+                "unitPrice": 92.5,
+              },
+              Object {
+                "from": 3,
+                "to": 5,
+                "unitPrice": 77.5,
+              },
+              Object {
+                "from": 6,
+                "to": null,
+                "unitPrice": 68.5,
+              },
+            ],
+          }
+        }
+        tier={
+          Object {
+            "from": 6,
+            "to": null,
+            "unitPrice": 68.5,
+          }
+        }
+      />
     </div>
   </Portal>
   <Portal
     name="product.tiers.after"
     props={null}
   />
-</Tiers>
-`;
-
-exports[`<Tiers /> Rendering Rendering without data should render nothing when price data are not available ({}) 1`] = `
-<Tiers
-  price={Object {}}
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
-/>
-`;
-
-exports[`<Tiers /> Rendering Rendering without data should render nothing when price data are not available (null) 1`] = `
-<Tiers
-  price={null}
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
-/>
-`;
-
-exports[`<Tiers /> Rendering Rendering without data should render nothing when tier prices are empty ([]) 1`] = `
-<Tiers
-  price={
-    Object {
-      "currency": "USD",
-      "tiers": Array [],
-    }
-  }
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
-/>
-`;
-
-exports[`<Tiers /> Rendering Rendering without data should render nothing when tier prices are not available (field missing) 1`] = `
-<Tiers
-  price={
-    Object {
-      "currency": "USD",
-    }
-  }
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
-/>
+</Fragment>
 `;

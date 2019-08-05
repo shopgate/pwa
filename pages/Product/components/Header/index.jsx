@@ -5,6 +5,7 @@ import {
   PRODUCT_HEADER_AFTER,
   PRODUCT_HEADER_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { Section } from '@shopgate/engage/a11y';
 import CTAButtons from './components/CTAButtons';
 import Rating from './components/Rating';
 import Name from './components/Name';
@@ -26,9 +27,11 @@ class ProductHeader extends PureComponent {
     return (
       <div className={styles.content}>
         <CTAButtons productId={id} />
-        <Rating productId={productId} />
-        <Name productId={id} />
-        <ProductInfo productId={id} options={options} />
+        <Section title="product.sections.information">
+          <Rating productId={productId} />
+          <Name productId={id} />
+          <ProductInfo productId={id} options={options} />
+        </Section>
       </div>
     );
   }

@@ -9,8 +9,8 @@ import styles from '../../style';
  * @returns {JSX}
  */
 const Tier = ({ tier, price }) => {
-  // Skip tier if tier price is equal the product price
-  if (tier.unitPrice === price.totalPrice) {
+  // Skip tier with quantity 1
+  if (tier.from <= 1) {
     return null;
   }
 
@@ -18,7 +18,8 @@ const Tier = ({ tier, price }) => {
   const params = { from: tier.from };
 
   return (
-    <I18n.Text string={i18nKey} params={params} key={tier.from} className={styles.tier}>
+    // eslint-disable-next-line jsx-a11y/aria-role
+    <I18n.Text string={i18nKey} params={params} key={tier.from} className={styles.tier} role="text">
       <I18n.Price forKey="price" price={tier.unitPrice} currency={price.currency} className={styles.price} />
     </I18n.Text>
   );

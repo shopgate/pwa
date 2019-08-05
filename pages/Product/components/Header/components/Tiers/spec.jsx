@@ -1,83 +1,66 @@
 import React from 'react';
-import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
-import { TiersUnconnected as Tiers } from './index';
+import { shallow } from 'enzyme';
+import Tiers from './index';
+
+jest.mock('./connector', () => cmp => cmp);
 
 describe('<Tiers />', () => {
-  const store = configureStore()({});
+  describe('Rendering with data', () => {
+    it('should render tier prices when tier prices are available', () => {
+      const price = {
+        tiers: [
+          {
+            from: 1,
+            to: 2,
+            unitPrice: 92.5,
+          },
+          {
+            from: 3,
+            to: 5,
+            unitPrice: 77.5,
+          },
+          {
+            from: 6,
+            to: null,
+            unitPrice: 68.5,
+          },
+        ],
+        currency: 'USD',
+      };
 
-  describe('Rendering', () => {
-    describe('Rendering with data', () => {
-      it('should render tier prices when tier prices are available', () => {
-        const price = {
-          tiers: [
-            {
-              from: 1,
-              to: 10,
-              unitPrice: 99.99,
-            },
-            {
-              from: 11,
-              to: 9999,
-              unitPrice: 80,
-            },
-          ],
-          currency: 'USD',
-        };
+      const wrapper = shallow((
+        <Tiers price={price} />
+      )).dive();
 
-        const wrapper = mount((
-          <Tiers price={price} store={store} />
-        ));
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
 
-        expect(wrapper).toMatchSnapshot();
-      });
+  describe('Rendering without data', () => {
+    it('should render nothing when price data are not available ({})', () => {
+      const wrapper = shallow(<Tiers price={{}} />).dive();
+      expect(wrapper).toBeEmptyRender();
     });
 
-    describe('Rendering without data', () => {
-      it('should render nothing when price data are not available ({})', () => {
-        const wrapper = mount((
-          <Tiers price={{}} store={store} />
-        ));
+    it('should render nothing when price data are not available (null)', () => {
+      const wrapper = shallow(<Tiers price={null} />).dive();
+      expect(wrapper).toBeEmptyRender();
+    });
 
-        expect(wrapper).toMatchSnapshot();
-        expect(wrapper.exists()).toBe(true);
-      });
+    it('should render nothing when tier prices are empty ([])', () => {
+      const price = {
+        tiers: [],
+        currency: 'USD',
+      };
 
-      it('should render nothing when price data are not available (null)', () => {
-        const wrapper = mount((
-          <Tiers price={null} store={store} />
-        ));
+      const wrapper = shallow(<Tiers price={price} />).dive();
+      expect(wrapper).toBeEmptyRender();
+    });
 
-        expect(wrapper).toMatchSnapshot();
-        expect(wrapper.exists()).toBe(true);
-      });
-
-      it('should render nothing when tier prices are empty ([])', () => {
-        const price = {
-          tiers: [],
-          currency: 'USD',
-        };
-
-        const wrapper = mount((
-          <Tiers price={price} store={store} />
-        ));
-
-        expect(wrapper).toMatchSnapshot();
-        expect(wrapper.exists()).toBe(true);
-      });
-
-      it('should render nothing when tier prices are not available (field missing)', () => {
-        const price = {
-          currency: 'USD',
-        };
-
-        const wrapper = mount((
-          <Tiers price={price} store={store} />
-        ));
-
-        expect(wrapper).toMatchSnapshot();
-        expect(wrapper.exists()).toBe(true);
-      });
+    it('should render nothing when tier prices are not available (field missing)', () => {
+      const price = { currency: 'USD' };
+      const wrapper = shallow(<Tiers price={price} />).dive();
+      expect(wrapper).toBeEmptyRender();
     });
   });
 });

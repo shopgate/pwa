@@ -15,7 +15,8 @@ import connect from './connector';
 
 /**
  * @param {Object} rating Rating of the product.
- * @param {Array} reviews Reviews which should be shown in the product page.
+ * @param {Object} props.productId The id of the product, the review belongs to.
+ * @param {Array} props.reviews Reviews which should be shown in the product page.
  * @returns {JSX}
  */
 const Reviews = ({ productId, reviews }) => (

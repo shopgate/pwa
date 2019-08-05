@@ -30,7 +30,7 @@ class Characteristics extends PureComponent {
    * @param {Object} props The consumer props.
    * @returns {JSX}
    */
-  consumeRenderer = ({ conditioner }) => {
+  consumeRenderer = ({ conditioner, setCharacteristics }) => {
     const { productId, variantId } = this.props;
 
     return (
@@ -40,6 +40,7 @@ class Characteristics extends PureComponent {
         render={this.renderer}
         conditioner={conditioner}
         finishTimeout={200}
+        setCharacteristics={setCharacteristics}
       />
     );
   }
