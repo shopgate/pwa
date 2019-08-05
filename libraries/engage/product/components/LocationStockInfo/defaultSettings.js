@@ -1,12 +1,12 @@
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   AVAILABILITY_TYPE_AVAILABLE,
   AVAILABILITY_TYPE_LIMITED_AVAILABILITY,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_CUSTOM_AVAILABILITY,
 } from '../../constants';
-import { getThemeConfig } from '../../../core';
 
-const { colors } = getThemeConfig();
+const { colors } = themeConfig;
 
 export default {
   [AVAILABILITY_TYPE_AVAILABLE]: {

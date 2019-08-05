@@ -7,7 +7,7 @@ import defaultsDeep from 'lodash/defaultsDeep';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { getThemeSettings } from '../../../core';
+import { getThemeSettings } from '../../../core/config/getThemeSettings';
 import { capitalize } from '../../../core/helpers/string';
 import defaultSettings from './defaultSettings';
 import getAvailabilitySettings from './getAvailabilitySettings';

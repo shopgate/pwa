@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { getThemeSettings } from '../../../core';
+import { getThemeSettings } from '../../../core/config/getThemeSettings';
 import getAvailabilitySettings from './getAvailabilitySettings';
 import LocationStockInfo from './';
 
