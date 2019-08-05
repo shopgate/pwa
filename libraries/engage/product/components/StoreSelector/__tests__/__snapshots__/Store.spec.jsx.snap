@@ -59,6 +59,15 @@ exports[`<Store /> should handle the store selection 1`] = `
           }
         }
       />
+      <pure(LocationStockInfo)
+        location={
+          Object {
+            "storeName": "SomeStore",
+            "visibleInventory": 10,
+          }
+        }
+        showStoreName={false}
+      />
     </div>
   </div>
   <Accordion
@@ -139,6 +148,15 @@ exports[`<Store /> should render as expected 1`] = `
             "phoneNumber": "000-000-0000",
           }
         }
+      />
+      <pure(LocationStockInfo)
+        location={
+          Object {
+            "storeName": "SomeStore",
+            "visibleInventory": 10,
+          }
+        }
+        showStoreName={false}
       />
     </div>
   </div>

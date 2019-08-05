@@ -85,16 +85,20 @@ class StoreSelector extends PureComponent {
    * Handles the selection of a store location from the sheet.
    * @param {Object} params The parameters to store.
    * @param {string} params.locationCode The location code.
+   * @param {string} params.locationName The location name.
    * @param {string} params.addresscode The address code.
-   * @param {number} params.visibleStock The visible stock amount.
+   * @param {number} params.visibleInventory The visible stock amount.
    */
-  handleSelectLocation = ({ locationCode, addressCode, visibleStock }) => {
+  handleSelectLocation = ({
+    code, name, addressCode, visibleInventory,
+  }) => {
     const { selectLocation, product } = this.props;
     const location = {
-      productCode: product.id,
-      locationCode,
+      code,
+      name,
       addressCode,
-      visibleStock,
+      visibleInventory,
+      productCode: product.id,
     };
 
     selectLocation(location);

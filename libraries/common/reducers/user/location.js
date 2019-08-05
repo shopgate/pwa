@@ -4,7 +4,7 @@ const defaultState = {
   productCode: null,
   locationCode: null,
   addressCode: null,
-  visibleStock: null,
+  visibleInventory: null,
 };
 
 /**

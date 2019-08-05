@@ -38,6 +38,7 @@ exports[`<Address /> should render as expected 1`] = `
       }
       role={null}
       string="product.location.address"
+      transform={null}
     />
   </div>
 </div>
@@ -85,6 +86,7 @@ exports[`<Address /> should render more streets if necessary 1`] = `
       }
       role={null}
       string="product.location.address"
+      transform={null}
     />
   </div>
 </div>
