@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
+import { getActualImageSource } from '@shopgate/engage/core';
 import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
@@ -129,7 +130,7 @@ class ProductImageSlider extends Component {
     }
 
     const imageStyle = product ? {
-      background: `url(${product.featuredImageUrl}?w=440&h=440&q=70&zc=resize&fillc=FFFFFF)`,
+      background: `url(${getActualImageSource(product.featuredImageUrl, fallbackResolutions[0])})`,
       backgroundSize: 'contain',
     } : null;
 
