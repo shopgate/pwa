@@ -7,7 +7,9 @@
     "undo": "Deshacer",
     "required": "Necesaria *",
     "please_choose": "Por favor, seleccione",
-    "show_products": "Mostrar productos"
+    "show_products": "Mostrar productos",
+    "back": "Volver",
+    "close": "Cerrar"
   },
   "titles": {
     "categories": "Categorías",
@@ -16,7 +18,7 @@
     "shipping": "Envío",
     "reviews": "Comentarios",
     "favorites": "Favoritos",
-    "scanner": "Scanner"
+    "scanner": "Escáner"
   },
   "favorites": {
     "add": "Agregar a favoritos",
@@ -50,12 +52,18 @@
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "PVP",
+    "label": "Precio {price}.",
+    "label_old_price": "Precio anterior {price}."
   },
   "product": {
     "description_heading": "Sobre",
     "pick_an_attribute": "Elija uno {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
+    "adding_item": "{count, plural, =1 {Añadiendo {count} artículo} other {Añadiendo {count} artículos}}",
+    "pick_option_first": "Seleccionar primero una opción. {option}",
+    "fill_out_required_input_first": "Rellenar primero las entradas necesarias.",
+    "add_to_cart": "Añadir a la cesta",
     "no_more_found": "El artículo: \"{name}\" ya no está disponible.",
     "quantity": "Cantidad",
     "minOrderQuantity": "Cantidad mín. del pedido:{quantity}",
@@ -65,6 +73,23 @@
       "until": "Disponible hasta {endDate, date, DD} {endDate, date, MMM} a las {endDate, time, short}",
       "not": "Indisponible por el momento",
       "not_search_similar": "{name} indisponible. ¿Buscar productos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar todo"
+    },
+    "sections": {
+      "information": "Información sobre el producto",
+      "options": "Elegir opciones",
+      "description": "Descripción",
+      "properties": "Propiedades",
+      "ratings": "Valoraciones",
+      "purchase": "Comprar artículo"
+    },
+    "displayGroups": {
+      "general": "General",
+      "features": "Características",
+      "pricing": "Precio",
+      "properties": "Propiedades"
     }
   },
   "category": {
@@ -75,6 +100,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "No se encontraron productos."
+    },
+    "sections": {
+      "categories": "Categorías",
+      "products": "Productos"
     }
   },
   "search": {
@@ -101,7 +130,7 @@
     "body_error": "Ocurrió un error inesperado. Intente nuevamente."
   },
   "cart": {
-    "subtotal": "Subtotal",
+    "subtotal": "Total parcial",
     "total": "Total de la cesta",
     "discount": "Descuento",
     "discount_with_label": "Descuento ({label})",
@@ -132,20 +161,25 @@
   },
   "navigation": {
     "login_register": "Iniciar sesión / Registro",
+    "your_account": "Mi cuenta",
     "home": "Inicio",
     "categories": "Categorías",
     "favorites": "Favoritos",
     "my_orders": "Mis pedidos",
     "cart": "Cesta de la compra",
-    "scanner": "Scanner",
+    "scanner": "Escáner",
     "shipping": "Métodos de envío",
     "about": "Sobre nosotros",
     "payment": "Métodos de pago",
     "terms": "Términos",
     "privacy": "Política de privacidad",
-    "return_policy": "Política de devolución",
     "welcome_message": "Bienvenido {name}",
-    "logout": "Cerrar sesión"
+    "return_policy": "Política de devolución",
+    "logout": "Cerrar sesión",
+    "menuSubHeader": {
+      "more": "Más",
+      "about": "Sobre nosotros"
+    }
   },
   "reviews": {
     "rating": "Calificación",
@@ -154,7 +188,7 @@
     "button_add": "Escriba un comentario",
     "button_all": "Todos los {count} Comentarios",
     "author": "por {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}}",
+    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}} de {maxRate}",
     "review_form_rate": "Calificar este producto:",
     "review_form_author": "Su Nombre",
     "review_form_title": "Título del comentario (opcional)",
@@ -177,7 +211,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },

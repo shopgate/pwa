@@ -3,6 +3,8 @@ const Adapter = require('enzyme-adapter-react-16');
 
 Enzyme.configure({ adapter: new Adapter() });
 
+jest.mock('@shopgate/engage/core/helpers/i18n');
+
 const localStorageMock = (() => {
   let store = {};
 

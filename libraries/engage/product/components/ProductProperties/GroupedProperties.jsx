@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/pwa-ui-material';
+import { i18n } from '@shopgate/engage/core';
 import Lists from './Lists';
 import Wrapper from './Wrapper';
 import { accordion } from './style';
@@ -13,7 +14,7 @@ import { accordion } from './style';
 const GroupedProperties = ({ properties, groups }) => groups
   .map(group => (
     <div key={group} className={accordion}>
-      <Accordion renderLabel={() => group} testId={`product-properties-group-${group}`}>
+      <Accordion renderLabel={() => i18n.text(`product.displayGroups.${group}`)} testId={`product-properties-group-${group}`}>
         <Wrapper dense>
           <Lists
             properties={properties.filter(property => property.displayGroup === group)}

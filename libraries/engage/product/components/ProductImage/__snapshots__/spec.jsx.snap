@@ -6,15 +6,17 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
   portalProps={null}
 >
   <div
-    className="css-3hjqnz"
+    aria-hidden={null}
   >
     <Image
       alt={null}
       animating={true}
+      aria-hidden={null}
       backgroundColor="#f2f2f2"
       className="css-3hjqnz"
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
+      noBackground={false}
       onError={[Function]}
       onLoad={null}
       ratio={null}
@@ -50,6 +52,7 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
   portalProps={null}
 >
   <div
+    aria-hidden={null}
     className="css-y5kkpq css-3hjqnz"
   >
     <div
@@ -70,15 +73,17 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   portalProps={null}
 >
   <div
-    className=""
+    aria-hidden={null}
   >
     <Image
       alt={null}
       animating={true}
+      aria-hidden={null}
       backgroundColor="#f2f2f2"
       className=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
+      noBackground={false}
       onError={[Function]}
       onLoad={null}
       ratio={null}
@@ -112,9 +117,11 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
 <ProductImage
   alt={null}
   animating={true}
+  aria-hidden={null}
   className={null}
   forcePlaceholder={false}
   highestResolutionLoaded={[Function]}
+  noBackground={false}
   ratio={null}
   resolutions={
     Array [
@@ -145,6 +152,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalProps={null}
 >
   <div
+    aria-hidden={null}
     className="css-y5kkpq"
   >
     <div
@@ -165,6 +173,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalProps={null}
 >
   <div
+    aria-hidden={null}
     className="css-y5kkpq"
   >
     <div
@@ -185,6 +194,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
   portalProps={null}
 >
   <div
+    aria-hidden={null}
     className="css-y5kkpq css-3hjqnz"
   >
     <div
@@ -205,15 +215,17 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   portalProps={null}
 >
   <div
-    className="css-3hjqnz"
+    aria-hidden={null}
   >
     <Image
       alt={null}
       animating={true}
+      aria-hidden={null}
       backgroundColor="#f2f2f2"
       className="css-3hjqnz"
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
+      noBackground={false}
       onError={[Function]}
       onLoad={null}
       ratio={null}

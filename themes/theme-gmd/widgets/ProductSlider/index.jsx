@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Swiper } from '@shopgate/pwa-common/components';
-import Card from '@shopgate/pwa-ui-shared/Card';
-import ProductCard from 'Components/ProductCard';
+import { Swiper, Card } from '@shopgate/engage/components';
+import { ProductCard } from '@shopgate/engage/product';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import connect from './connector';
 import styles from './style';
@@ -99,7 +98,7 @@ class ProductSlider extends PureComponent {
           indicators={false}
           controls={false}
           interval={Number.parseInt(sliderSettings.delay, 10)}
-          snapItems={false}
+          freeMode
           slidesPerView={2.3}
           classNames={{ container: styles.sliderContainer }}
         >

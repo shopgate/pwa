@@ -2,10 +2,12 @@
 
 exports[`<Link /> renders with children 1`] = `
 <div
+  aria-label={null}
   className="css-c6ki83 "
   data-test-id="link: /"
   onClick={[Function]}
   role="link"
+  tabIndex={null}
 >
   <span />
 </div>

@@ -7,14 +7,16 @@
     "undo": "Ongedaan maken",
     "required": "Verplicht *",
     "please_choose": "Kies",
-    "show_products": "Toon producten"
+    "show_products": "Toon producten",
+    "back": "Terug",
+    "close": "Sluiten"
   },
   "titles": {
     "categories": "Categorieën",
     "filter": "Filter",
     "cart": "Winkelwagen",
     "shipping": "Verzending",
-    "reviews": "Reviews",
+    "reviews": "Beoordelingen",
     "favorites": "Favorieten",
     "scanner": "Scanner"
   },
@@ -51,12 +53,17 @@
       "range": "{from} of meer dan: {price}"
     },
     "msrp": "MSRP",
-    "currency": "EUR"
+    "label": "Prijs {price}.",
+    "label_old_price": "Vorige prijs {price}."
   },
   "product": {
     "description_heading": "Over",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inbegrepen BTW plus verzendkosten indien van toepassing",
+    "adding_item": "{count, plural, =1 {{count} artikel toevoegen} other {{count} artikelen toevoegen}}",
+    "pick_option_first": "Kies eerst een optie. {option}",
+    "fill_out_required_input_first": "Vul eerst de vereiste input in.",
+    "add_to_cart": "Voeg aan winkelwagen toe",
     "no_more_found": "Het item: \"{name}\" is niet langer beschikbaar.",
     "quantity": "Aantal",
     "minOrderQuantity": "Min. bestelhoeveelheid:{quantity}",
@@ -66,6 +73,23 @@
       "until": "Beschikbaar tot {endDate, date, DD} {endDate, date, MMM} om {endDate, time, short}",
       "not": "Op dit moment niet beschikbaar",
       "not_search_similar": "{name} is niet beschikbaar. Zoeken naar vergelijkbare producten?"
+    },
+    "relations": {
+      "showMore": "Toon alles"
+    },
+    "sections": {
+      "information": "Productinformatie",
+      "options": "Kies opties",
+      "description": "Omschrijving",
+      "properties": "Eigenschappen",
+      "ratings": "Ratings",
+      "purchase": "Aankoopitem"
+    },
+    "displayGroups": {
+      "general": "Algemeen",
+      "features": "Kenmerken",
+      "pricing": "Prijzen",
+      "properties": "Eigenschappen"
     }
   },
   "category": {
@@ -76,6 +100,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Geen producten gevonden."
+    },
+    "sections": {
+      "categories": "Categorieën",
+      "products": "Producten"
     }
   },
   "search": {
@@ -115,7 +143,8 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon is aan winkelwagen toegevoegd!",
-    "coupons_not_supported": "Voeg coupons en cadeaubonnen toe tijdens het afprekenproces."
+    "coupons_not_supported": "Coupons zijn ongeldig.",
+    "free_shipping": "Gratis verzending"
   },
   "login": {
     "headline": "Welkom",
@@ -155,11 +184,11 @@
   "reviews": {
     "rating": "Rating",
     "no_reviews": "Wees de eerste die dit product beoordeelt:",
-    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
+    "review_count": "({count} {count, plural, =1 {Beoordeling} other {Beoordelingen}})",
     "button_add": "Schrijf een beoordeling",
     "button_all": "Alle {count} Beoordelingen",
     "author": "door {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
+    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} uit {maxRate}",
     "review_form_rate": "Beoordeel dit product:",
     "review_form_author": "Uw naam",
     "review_form_title": "Review titel (optioneel)",
@@ -182,7 +211,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },

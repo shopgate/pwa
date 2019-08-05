@@ -146,6 +146,7 @@
 "@sentry/browser@^4.6.3":
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-4.6.3.tgz#e683c46c34937d997923be7270b8f071d6957cc6"
+  integrity sha512-g7JEuU8U+pWmgdX7McUe/N8tavRZ4sskZT2tnvjz3pGwxU+TJsm/jrdbApMKQ5MaTSCp+/eDUulAbGOkzJ9uuw==
   dependencies:
     "@sentry/core" "4.6.3"
     "@sentry/types" "4.5.3"
@@ -155,6 +156,7 @@
 "@sentry/core@4.6.3":
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-4.6.3.tgz#5c120dea76d0b19757296e9c244f8c3939de744e"
+  integrity sha512-FZ+P7+Z1efDAA4OPgLpTNZM0uRmvvSSZAdfKhmDXNO+Xq3gD8RsdirxGjJHhH2lXgcVLCX8g2+0RVjBKVzuKxw==
   dependencies:
     "@sentry/hub" "4.6.3"
     "@sentry/minimal" "4.6.3"
@@ -165,6 +167,7 @@
 "@sentry/hub@4.6.3":
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-4.6.3.tgz#522c4fa5ac1434dcfbaa326ab279b81d595ec739"
+  integrity sha512-WLs5XVErDW831o/Gpj2T8Ga+7ca7nHxZmHn08JRqHQz5TkJ7U74/KUAHYsifViaI7hAHKIywWbZpIwIh3X7+Lw==
   dependencies:
     "@sentry/types" "4.5.3"
     "@sentry/utils" "4.6.3"
@@ -173,6 +176,7 @@
 "@sentry/minimal@4.6.3":
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-4.6.3.tgz#5ff78eefaa15cda6508b181d4f4e757ec1385828"
+  integrity sha512-8+K6Txme/XBlcLkLY6CjJYyEpvGVxPm/Vpxw/kerI6bYTc0uCps7e7G2lX3TxYz1O+iYPs685uN8o/v8D7+bDg==
   dependencies:
     "@sentry/hub" "4.6.3"
     "@sentry/types" "4.5.3"
@@ -181,10 +185,12 @@
 "@sentry/types@4.5.3":
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-4.5.3.tgz#3350dce2b7f9b936a8c327891c12e3aef7bd8852"
+  integrity sha512-7ll1PAFNjrBNX9rzy3P2qAQrpQwHaDO3uKj735qsnGw34OtAS8Xr8WYrjI14f9fMPa/XIeWvMPb4GMic28V/ag==
 
 "@sentry/utils@4.6.3":
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-4.6.3.tgz#0dc4748ef4ead089ceb2c4a3670339df8be71679"
+  integrity sha512-GNZjIErN99gqJfLMC1L4X4lzu3x1l562UGpuiv3iMQXoNCy8mpNeKtjizoocCGTLHmWB91m6wd2WTHH7P0POjA==
   dependencies:
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
@@ -2091,6 +2097,14 @@ color@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/color/-/color-3.1.0.tgz#d8e9fb096732875774c84bf922815df0308d0ffc"
   integrity sha512-CwyopLkuRYO5ei2EpzpIh6LqJMt6Mt+jZhO5VI5f/wJLZriXQE32/SSqzmrh+QB+AZT81Cj8yv+7zwToW8ahZg==
+  dependencies:
+    color-convert "^1.9.1"
+    color-string "^1.5.2"
+
+color@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/color/-/color-3.1.2.tgz#68148e7f85d41ad7649c5fa8c8106f098d229e10"
+  integrity sha512-vXTJhHebByxZn3lDvDJYw4lR5+uB3vuoHsuYA5AKuxRVn5wzzIfQKGLBmgdVRHKTJYeK5rvJcHnrd0Li49CFpg==
   dependencies:
     color-convert "^1.9.1"
     color-string "^1.5.2"
@@ -7240,10 +7254,10 @@ react-hot-loader@4.8.0:
     shallowequal "^1.0.2"
     source-map "^0.7.3"
 
-react-id-swiper@~2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-id-swiper/-/react-id-swiper-2.1.0.tgz#bc0ab46ee0e204b0252880a6a2bb5545803a359d"
-  integrity sha512-+bkjRINGs9ixeVGp/ftS6gPNwxhmtXCugu/aP8Ud2hhJnRi/hAUq31eyuSX4Eq9bBrtU/nbyNxUiTT/OJtssrQ==
+react-id-swiper@~2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/react-id-swiper/-/react-id-swiper-2.3.1.tgz#a5718c717f722868a2d18cf39a3db87878e48af3"
+  integrity sha512-ftdKp6l6WImE7RRPMlfByogB3fz+8c0zVla92MpPpcuewcO3znNCBcPEqaU6PIT2fDf3RWqwOFEbj6wxdey3MQ==
   dependencies:
     object-assign "^4.1.1"
 

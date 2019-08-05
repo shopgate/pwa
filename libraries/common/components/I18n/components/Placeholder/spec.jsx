@@ -1,57 +1,40 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 
+jest.unmock('@shopgate/engage/core/helpers/i18n');
+
 describe('<Placeholder />', () => {
-  let renderedElement;
-  const testLocales = {
+  const locales = {
     greeting: 'Hello {world}',
   };
+  const lang = 'en-US';
 
-  const langCode = 'en-US';
-
-  /**
-   * Renders the component.
-   * @param {Object} props The component props.
-   */
-  const renderComponent = (props) => {
-    renderedElement = mount((
-      <I18n.Provider {...props}>
-        <I18n.Text string="greeting">
-          <I18n.Placeholder forKey="world">
-            <strong>WORLD</strong>
-          </I18n.Placeholder>
-      / </I18n.Text>
-      </I18n.Provider>
-    ));
-  };
-
-  beforeEach(() => {
-    renderComponent({
-      lang: langCode,
-      locales: testLocales,
-    });
+  i18n.init({
+    locales,
+    lang,
   });
 
   describe('Given the component was mounted to the DOM', () => {
+    let renderedElement;
     it('should render', () => {
+      renderedElement = mount((
+        <I18n.Provider>
+          <I18n.Text string="greeting">
+            <I18n.Placeholder forKey="world">
+              <strong>WORLD</strong>
+            </I18n.Placeholder>
+            /
+          </I18n.Text>
+        </I18n.Provider>
+      ));
       expect(renderedElement).toMatchSnapshot();
     });
 
     it('should render with a placeholder text', () => {
       const text = renderedElement.find('strong').text();
       expect(text).toBe('WORLD');
-    });
-
-    it('should render the plain text if no placeholder is provided.', () => {
-      const wrapper = mount((
-        <I18n.Provider lang={langCode} locales={testLocales}>
-          <I18n.Text string="greeting" params={{ world: 'WORLD' }} />
-        </I18n.Provider>
-      ));
-
-      const text = wrapper.find('span').text();
-      expect(text).toBe('Hello WORLD');
     });
   });
 });

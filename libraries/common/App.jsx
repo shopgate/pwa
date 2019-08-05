@@ -14,7 +14,6 @@ import I18n from './components/I18n';
 class App extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    locale: PropTypes.shape().isRequired,
     store: PropTypes.shape().isRequired,
   };
 
@@ -33,7 +32,7 @@ class App extends Component {
     return (
       <ErrorBoundary key="error.root" store={this.props.store} isRoot>
         <Provider store={this.props.store}>
-          <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
+          <I18n.Provider>
             <div>
               {this.props.children}
             </div>

@@ -88,10 +88,12 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   <Translate
                     className=""
                     params={Object {}}
+                    role={null}
                     string="navigation.your_account"
                   >
                     <span
                       className=""
+                      role={null}
                     >
                       navigation.your_account
                     </span>
@@ -136,10 +138,12 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       <Translate
                         className=""
                         params={Object {}}
+                        role={null}
                         string="navigation.logout"
                       >
                         <span
                           className=""
+                          role={null}
                         >
                           navigation.logout
                         </span>
@@ -257,20 +261,25 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
+                        aria-label={null}
                         className=""
                         disabled={true}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/login"
                         replace={false}
+                        role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -299,10 +308,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.button"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.button
                                     </span>
@@ -330,20 +341,25 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
+                        aria-label={null}
                         className=""
                         disabled={true}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/register"
                         replace={false}
+                        role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -372,10 +388,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.signup"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.signup
                                     </span>
@@ -483,20 +501,25 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
+                        aria-label={null}
                         className=""
                         disabled={false}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/login"
                         replace={false}
+                        role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /login"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -525,10 +548,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.button"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.button
                                     </span>
@@ -556,20 +581,25 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
+                        aria-label={null}
                         className=""
                         disabled={false}
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/register"
                         replace={false}
+                        role="link"
                         state={Object {}}
+                        tabIndex={null}
                         tag="div"
                       >
                         <div
+                          aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /register"
                           onClick={[Function]}
                           role="link"
+                          tabIndex={null}
                         >
                           <Button
                             className="css-6f03lb"
@@ -598,10 +628,12 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   <Translate
                                     className=""
                                     params={Object {}}
+                                    role={null}
                                     string="login.signup"
                                   >
                                     <span
                                       className=""
+                                      role={null}
                                     >
                                       login.signup
                                     </span>

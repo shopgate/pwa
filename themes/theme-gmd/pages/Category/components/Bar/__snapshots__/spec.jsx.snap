@@ -60,14 +60,16 @@ exports[`<Bar /> should match snapshot 1`] = `
             filters={null}
             viewRef={null}
           >
-            <section>
+            <section
+              aria-hidden={true}
+            >
               <div
                 className="css-gpg0x2"
                 data-test-id="filterBar"
                 style={
                   Object {
                     "background": "#f8f8f8",
-                    "color": "inherit",
+                    "color": "#000",
                   }
                 }
               >
@@ -136,10 +138,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 <Translate
                                   className=""
                                   params={Object {}}
+                                  role={null}
                                   string="filter.sort.most_popular"
                                 >
                                   <span
                                     className=""
+                                    role={null}
                                   >
                                     filter.sort.most_popular
                                   </span>
@@ -232,7 +236,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                             size={null}
                                           >
                                             <div
-                                              aria-hidden={true}
                                               className="css-m6e8uq"
                                               data-test-id="Ripple"
                                               onClick={[Function]}
@@ -241,10 +244,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                               <Translate
                                                 className=""
                                                 params={Object {}}
+                                                role={null}
                                                 string="filter.sort.most_popular"
                                               >
                                                 <span
                                                   className=""
+                                                  role={null}
                                                 >
                                                   filter.sort.most_popular
                                                 </span>
@@ -279,7 +284,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                             size={null}
                                           >
                                             <div
-                                              aria-hidden={true}
                                               className="css-m6e8uq"
                                               data-test-id="Ripple"
                                               onClick={[Function]}
@@ -288,10 +292,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                               <Translate
                                                 className=""
                                                 params={Object {}}
+                                                role={null}
                                                 string="filter.sort.price_desc"
                                               >
                                                 <span
                                                   className=""
+                                                  role={null}
                                                 >
                                                   filter.sort.price_desc
                                                 </span>
@@ -326,7 +332,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                             size={null}
                                           >
                                             <div
-                                              aria-hidden={true}
                                               className="css-m6e8uq"
                                               data-test-id="Ripple"
                                               onClick={[Function]}
@@ -335,10 +340,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                               <Translate
                                                 className=""
                                                 params={Object {}}
+                                                role={null}
                                                 string="filter.sort.price_asc"
                                               >
                                                 <span
                                                   className=""
+                                                  role={null}
                                                 >
                                                   filter.sort.price_asc
                                                 </span>
@@ -392,7 +399,6 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 size={null}
                               >
                                 <div
-                                  aria-hidden={true}
                                   className="css-1xo5u0j"
                                   data-test-id="Ripple"
                                   onClick={[Function]}
@@ -421,10 +427,12 @@ exports[`<Bar /> should match snapshot 1`] = `
                                             <Translate
                                               className=""
                                               params={Object {}}
+                                              role={null}
                                               string="titles.filter"
                                             >
                                               <span
                                                 className=""
+                                                role={null}
                                               >
                                                 titles.filter
                                               </span>

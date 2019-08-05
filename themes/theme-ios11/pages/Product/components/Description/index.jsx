@@ -38,7 +38,7 @@ class Description extends PureComponent {
         <Portal name={PRODUCT_DESCRIPTION}>
           {(html !== '') && (
             <div className={styles.container}>
-              <div className={styles.title}>
+              <div role="heading" aria-hidden className={styles.title}>
                 <I18n.Text string="product.description_heading" />
               </div>
               <PlaceholderParagraph className={styles.placeholder} ready={!!html}>

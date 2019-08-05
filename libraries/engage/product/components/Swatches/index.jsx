@@ -1,1 +1,0 @@
-export { Swatches } from './Swatches';

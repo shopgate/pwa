@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ItemDetails /> should not render with display props set 1`] = `""`;
-
 exports[`<ItemDetails /> should render with minimal props 1`] = `
 <div
   className={
@@ -9,8 +7,10 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       "data-css-16e7pt1": "",
     }
   }
+  role="button"
+  tabIndex={-1}
 >
-  <Connect(Swatches)
+  <Swatches
     productId="1234"
   />
   <ItemName
@@ -18,10 +18,13 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     name="Foo"
     productId="1234"
   />
-  <Connect(MapPriceHint)
+  <MapPriceHint
     productId="1234"
   />
-  <Connect(OrderQuantityHint)
+  <OrderQuantityHint
+    productId="1234"
+  />
+  <EffectivityDates
     productId="1234"
   />
   <ItemPrice

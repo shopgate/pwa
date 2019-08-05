@@ -9,6 +9,12 @@ export default {
   beta: true,
   theme: {
     settings: {
+      product: {
+        effectivityDates: {
+          showScheduled: 'never',
+          accessExpired: false,
+        },
+      },
       '@shopgate/engage/product/MapPrice': {
         show: true,
         showHint: true,
@@ -18,19 +24,29 @@ export default {
         show: true,
       },
       '@shopgate/engage/product/EffectivityDates': {
-        showStartDate: {
-          strategy: 'always',
-          daysBefore: null,
+        scheduledProducts: {
+          showLabels: 'always',
         },
-        showEndDate: {
-          strategy: 'always',
-          daysBefore: null,
+        expiringProducts: {
+          showLabels: 'always',
         },
-        accessExpired: false,
       },
       '@shopgate/engage/product/Swatches': {
         maxItemCount: 10,
         filter: [],
+      },
+      '@shopgate/engage/product/RelationsSlider': {
+        type: 'upselling', // upselling, crossSelling, bonus, boughtWith, custom.
+        position: 'header', // header, description.
+        headline: 'Wird oft zusammen gekauft',
+        titleRows: 2,
+        hidePrice: false,
+        hideStrikePrice: false,
+        hideBasePrice: false,
+        hideRating: false,
+        showProductProperties: false,
+        showAvailabilityText: true,
+        showMoreButton: true,
       },
     },
     pages: [
@@ -119,10 +135,15 @@ export default {
           {
             name: 'ShopgateProductEffectivityDates',
             id: '@shopgate/engage/product/EffectivityDates',
+            styles: {
+              hint: {
+                fontSize: '0.875rem',
+              },
+            },
           },
           {
             name: 'ShopgateProductSwatch',
-            id: '@shopgate/engage/product/Swatch',
+            id: '@shopgate/engage/product/VariantSwatch',
             styles: {
               swatch: {
                 gridTemplateColumns: 'repeat(auto-fill, minmax($.variables.swatchItemSize, 1fr))',
@@ -138,6 +159,30 @@ export default {
                 borderWidth: '2px',
               },
               itemSelected: undefined,
+            },
+          },
+          {
+            name: 'RelationsSlider',
+            id: '@shopgate/engage/product/RelationsSlider',
+          },
+          {
+            name: 'ShopgateProductSwatch',
+            id: '@shopgate/engage/product/Swatch',
+          },
+        ],
+      },
+      {
+        pattern: '/item/:productId/gallery/:slide',
+        name: 'Product Gallery Page',
+        settings: {},
+        widgets: [
+          {
+            name: 'ShopgateProductGallery',
+            id: '@shopgate/engage/product/Gallery',
+            settings: {
+              zoom: {
+                maxRatio: 4,
+              },
             },
           },
         ],

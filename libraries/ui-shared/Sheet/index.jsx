@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import classNames from 'classnames';
+import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
 import Header from './components/Header';
 import styles from './style';
 
+export const SHEET_EVENTS = {
+  OPEN: 'Sheet.open',
+  CLOSE: 'Sheet.close',
+};
 /**
  * Sheet component.
  */
@@ -29,6 +34,7 @@ class Sheet extends Component {
     duration: PropTypes.number,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
+    onDidOpen: PropTypes.func,
     onOpen: PropTypes.func,
     title: Header.propTypes.title,
   };
@@ -46,6 +52,7 @@ class Sheet extends Component {
     duration: 300,
     isOpen: false,
     onClose: () => {},
+    onDidOpen: () => {},
     onOpen: () => {},
     title: '',
   };
@@ -99,6 +106,17 @@ class Sheet extends Component {
     });
   };
 
+  /** The Sheet is opened */
+  handleDidOpen = () => {
+    UIEvents.emit(SHEET_EVENTS.OPEN);
+    this.props.onDidOpen();
+  };
+
+  /** The Sheet is closed */
+  handleDidClose = () => {
+    UIEvents.emit(SHEET_EVENTS.CLOSE);
+  };
+
   /**
    * Close the Sheet.
    */
@@ -141,6 +159,8 @@ class Sheet extends Component {
         <Drawer
           className={drawerClassNames}
           isOpen={this.state.isOpen}
+          onDidOpen={this.handleDidOpen}
+          onDidClose={this.handleDidClose}
           onOpen={this.props.onOpen}
           onClose={this.handleClose}
           animation={this.animationProps}

@@ -34,7 +34,7 @@ class FilterBar extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    // Chcek if newly set filters came in.
+    // Check if newly set filters came in.
     const hasFilters = nextProps.filters !== null && Object.keys(nextProps.filters).length > 0;
 
     this.setState({
@@ -57,8 +57,8 @@ class FilterBar extends Component {
   get style() {
     const { active } = this.state;
     return {
-      background: active ? colors.accent : 'inherit',
-      color: active ? colors.accentContrast : 'inherit',
+      background: active ? colors.accent : colors.light,
+      color: active ? colors.accentContrast : colors.dark,
     };
   }
 
@@ -67,7 +67,7 @@ class FilterBar extends Component {
    */
   render() {
     return (
-      <section>
+      <section aria-hidden>
         <div
           className={styles}
           data-test-id="filterBar"

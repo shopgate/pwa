@@ -36,6 +36,7 @@ exports[`<CheckoutButton /> should render disabled button 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="cart.checkout"
         />
       </RippleButton>
@@ -88,6 +89,7 @@ exports[`<CheckoutButton /> should render enabled button 1`] = `
         <Translate
           className=""
           params={Object {}}
+          role={null}
           string="cart.checkout"
         />
       </RippleButton>

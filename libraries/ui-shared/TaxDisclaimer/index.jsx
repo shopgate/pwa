@@ -18,7 +18,7 @@ const TaxDisclaimer = () => (
     <Portal name={PRODUCT_TAX_DISCLAIMER_BEFORE} />
     <Portal name={PRODUCT_TAX_DISCLAIMER}>
       {showTaxDisclaimer && (
-        <div data-test-id="taxDisclaimer">
+        <div data-test-id="taxDisclaimer" aria-hidden>
           <I18n.Text className={styles} string="product.tax_disclaimer" />
         </div>
       )}

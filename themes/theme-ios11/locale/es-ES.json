@@ -7,7 +7,9 @@
     "undo": "Deshacer",
     "required": "Necesaria *",
     "please_choose": "Por favor, seleccione",
-    "show_products": "Mostrar productos"
+    "show_products": "Mostrar productos",
+    "back": "Volver",
+    "close": "Cerrar"
   },
   "titles": {
     "categories": "Todas las categorías",
@@ -17,7 +19,7 @@
     "reviews": "Comentarios",
     "browse": "Buscar",
     "favorites": "Favoritos",
-    "scanner": "Scanner"
+    "scanner": "Escáner"
   },
   "favorites": {
     "add": "Agregar a favoritos",
@@ -38,7 +40,7 @@
       "default": "Ordenar por",
       "most_popular": "Más popular",
       "price_desc": "Precio: mayor a Menor",
-      "price_asc": "Pricio: Menor a Mayor"
+      "price_asc": "Precio: Menor a Mayor"
     },
     "apply": "Aplicar",
     "more": "más",
@@ -51,14 +53,18 @@
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "EUR"
+    "msrp": "PVP",
+    "label": "Precio {price}.",
+    "label_old_price": "Precio anterior {price}."
   },
   "product": {
     "description_heading": "Sobre",
     "pick_an_attribute": "Elegir un {0}",
     "tax_disclaimer": "* Incl. IVA más gastos de envío si procede",
     "item_added": "{count, plural, =0 {# no se agregaron artículos} =1 {{count} artículo agregado} other {{count} artículos agregados}}",
+    "adding_item": "{count, plural, =1 {Añadiendo {count} artículo} other {Añadiendo {count} artículos}}",
+    "pick_option_first": "Seleccionar primero una opción. {option}",
+    "fill_out_required_input_first": "Rellenar primero las entradas necesarias.",
     "add_to_cart": "Añadir a la cesta",
     "go_to_cart": "Ir a la cesta",
     "no_more_found": "El artículo: \"{name}\" ya no está disponible.",
@@ -70,6 +76,23 @@
       "until": "Disponible hasta {endDate, date, DD} {endDate, date, MMM} a las {endDate, time, short}",
       "not": "Indisponible por el momento",
       "not_search_similar": "{name} indisponible. ¿Buscar productos similares?"
+    },
+    "relations": {
+      "showMore": "Mostrar todo"
+    },
+    "sections": {
+      "information": "Información sobre el producto",
+      "options": "Elegir opciones",
+      "description": "Descripción",
+      "properties": "Propiedades",
+      "ratings": "Valoraciones",
+      "purchase": "Comprar artículo"
+    },
+    "displayGroups": {
+      "general": "General",
+      "features": "Características",
+      "pricing": "Precio",
+      "properties": "Propiedades"
     }
   },
   "category": {
@@ -80,6 +103,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "No se encontraron productos."
+    },
+    "sections": {
+      "categories": "Categorías",
+      "products": "Productos"
     }
   },
   "search": {
@@ -88,7 +115,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultado."
-    }
+    },
+    "placeholder": "Buscar"
   },
   "shipping": {
     "unknown": "más envío",
@@ -107,7 +135,7 @@
     "body_error": "Ocurrió un error inesperado. vuelva a intentarlo."
   },
   "cart": {
-    "subtotal": "Subtotal",
+    "subtotal": "Total parcial",
     "total": "Total de la cesta",
     "discount": "Descuento",
     "discount_with_label": "Descuento ({label})",
@@ -162,7 +190,7 @@
     "button_add": "Escriba un comentario",
     "button_all": "Todos los {count} Comentarios",
     "author": "por {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}}",
+    "rating_stars": "{rate} {rate, plural, =1 {estrella} other {estrellas}} de {maxRate}",
     "review_form_rate": "Calificar este producto:",
     "review_form_author": "Su Nombre",
     "review_form_title": "Título del comentario (opcional)",
@@ -192,7 +220,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },

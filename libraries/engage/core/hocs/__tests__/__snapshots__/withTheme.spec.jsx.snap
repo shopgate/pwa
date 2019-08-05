@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > hocs > withTheme should inject a single property with the context into the component 1`] = `
+<WithTheme(MockComponent)
+  someProp={true}
+>
+  <Consumer>
+    <MockComponent
+      someProp={true}
+      theme={
+        Object {
+          "ComponentOne": [Function],
+          "ComponentTwo": [Function],
+        }
+      }
+    />
+  </Consumer>
+</WithTheme(MockComponent)>
+`;
+
+exports[`engage > core > hocs > withTheme should inject the context properties into the component 1`] = `
+<WithTheme(MockComponent)
+  someProp={true}
+>
+  <Consumer>
+    <MockComponent
+      ComponentOne={[Function]}
+      ComponentTwo={[Function]}
+      someProp={true}
+    />
+  </Consumer>
+</WithTheme(MockComponent)>
+`;

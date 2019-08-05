@@ -10,6 +10,7 @@ const container = css({
   boxShadow: '0 -4px 5px -2px rgba(0, 0, 0, 0.1)',
   position: 'relative',
   zIndex: 2,
+  overflow: 'hidden',
 });
 
 const innerContainer = css({

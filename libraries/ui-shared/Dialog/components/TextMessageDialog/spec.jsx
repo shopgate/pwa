@@ -45,4 +45,17 @@ describe('<TextMessageDialog />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.html()).toMatch(actions[0].label);
   });
+
+  it('should pass title through', () => {
+    const customTitle = <div>Title</div>;
+    const wrapper = shallow((
+      <TextMessageDialog
+        title={customTitle}
+        message={message}
+        params={{}}
+        actions={[]}
+      />
+    ));
+    expect(wrapper.find('BasicDialog').prop('title')).toEqual(customTitle);
+  });
 });

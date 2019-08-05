@@ -2,7 +2,11 @@
 
 // ACTIONS
 export { default as fetchFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/fetchFavorites';
-export { requestSync as toggleFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+export {
+  addFavorite,
+  removeFavorites,
+  requestSync as toggleFavorites,
+} from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/favorites/constants/index';

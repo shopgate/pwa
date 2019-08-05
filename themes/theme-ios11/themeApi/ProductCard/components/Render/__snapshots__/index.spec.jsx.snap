@@ -45,21 +45,26 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
       tagName="a"
     >
       <Link
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -69,10 +74,12 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
             <ProductImage
               alt="Product Name"
               animating={true}
+              aria-hidden={null}
               className={null}
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
               itemProp="image"
+              noBackground={false}
               ratio={null}
               resolutions={
                 Array [
@@ -108,6 +115,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                   props={null}
                 >
                   <div
+                    aria-hidden={null}
                     className="css-y5kkpq css-3hjqnz"
                   >
                     <div
@@ -170,6 +178,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo "
                 data-test-id="ratedStars: 4"
+                role="text"
               >
                 <div
                   className="css-4s85e9"
@@ -602,12 +611,12 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                       }
                     >
                       <Grid
-                        className="css-fpclhg"
+                        className="css-1glzrmu"
                         component="ul"
                         wrap={true}
                       >
                         <ul
-                          className="css-fpclhg css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -631,18 +640,23 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                   className="css-izofhs "
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
-                                  <FormatPrice
-                                    className=""
-                                    currency="EUR"
-                                    fractions={true}
-                                    price={5}
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
                                   >
-                                    <span
+                                    <FormatPrice
                                       className=""
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
                                     >
-                                      p
-                                    </span>
-                                  </FormatPrice>
+                                      <span
+                                        className=""
+                                      >
+                                        p
+                                      </span>
+                                    </FormatPrice>
+                                  </span>
                                 </div>
                               </Price>
                             </li>
@@ -657,14 +671,16 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                               className=""
                             >
                               <PriceStriked
-                                className="css-7hzrhp"
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-7hzrhp "
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -787,21 +803,26 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
       tagName="a"
     >
       <Link
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -811,10 +832,12 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
             <ProductImage
               alt="Product Name"
               animating={true}
+              aria-hidden={null}
               className={null}
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
               itemProp="image"
+              noBackground={false}
               ratio={null}
               resolutions={
                 Array [
@@ -850,6 +873,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                   props={null}
                 >
                   <div
+                    aria-hidden={null}
                     className="css-y5kkpq css-3hjqnz"
                   >
                     <div
@@ -939,10 +963,12 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                           null,
                         ]
                       }
+                      role={null}
                       string="-50%"
                     >
                       <span
                         className="css-pzju2o "
+                        role={null}
                       >
                         -50%
                       </span>
@@ -1064,12 +1090,12 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                       }
                     >
                       <Grid
-                        className="css-fpclhg"
+                        className="css-1glzrmu"
                         component="ul"
                         wrap={true}
                       >
                         <ul
-                          className="css-fpclhg css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -1093,18 +1119,23 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
-                                  <FormatPrice
-                                    className=""
-                                    currency="EUR"
-                                    fractions={true}
-                                    price={5}
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
                                   >
-                                    <span
+                                    <FormatPrice
                                       className=""
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
                                     >
-                                      p
-                                    </span>
-                                  </FormatPrice>
+                                      <span
+                                        className=""
+                                      >
+                                        p
+                                      </span>
+                                    </FormatPrice>
+                                  </span>
                                 </div>
                               </Price>
                             </li>
@@ -1119,14 +1150,16 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                               className=""
                             >
                               <PriceStriked
-                                className="css-7hzrhp"
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-7hzrhp "
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -1249,21 +1282,26 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
       tagName="a"
     >
       <Link
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -1273,10 +1311,12 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
             <ProductImage
               alt="Product Name"
               animating={true}
+              aria-hidden={null}
               className={null}
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
               itemProp="image"
+              noBackground={false}
               ratio={null}
               resolutions={
                 Array [
@@ -1312,6 +1352,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                   props={null}
                 >
                   <div
+                    aria-hidden={null}
                     className="css-y5kkpq css-3hjqnz"
                   >
                     <div
@@ -1401,10 +1442,12 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                           null,
                         ]
                       }
+                      role={null}
                       string="-50%"
                     >
                       <span
                         className="css-pzju2o "
+                        role={null}
                       >
                         -50%
                       </span>
@@ -1440,6 +1483,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo "
                 data-test-id="ratedStars: 4"
+                role="text"
               >
                 <div
                   className="css-4s85e9"
@@ -1872,12 +1916,12 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                       }
                     >
                       <Grid
-                        className="css-fpclhg"
+                        className="css-1glzrmu"
                         component="ul"
                         wrap={true}
                       >
                         <ul
-                          className="css-fpclhg css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -1901,18 +1945,23 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
-                                  <FormatPrice
-                                    className=""
-                                    currency="EUR"
-                                    fractions={true}
-                                    price={5}
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
                                   >
-                                    <span
+                                    <FormatPrice
                                       className=""
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
                                     >
-                                      p
-                                    </span>
-                                  </FormatPrice>
+                                      <span
+                                        className=""
+                                      >
+                                        p
+                                      </span>
+                                    </FormatPrice>
+                                  </span>
                                 </div>
                               </Price>
                             </li>
@@ -1927,14 +1976,16 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                               className=""
                             >
                               <PriceStriked
-                                className="css-7hzrhp"
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-7hzrhp "
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -2057,21 +2108,26 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
       tagName="a"
     >
       <Link
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -2081,10 +2137,12 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
             <ProductImage
               alt="Product Name"
               animating={true}
+              aria-hidden={null}
               className={null}
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
               itemProp="image"
+              noBackground={false}
               ratio={null}
               resolutions={
                 Array [
@@ -2120,6 +2178,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                   props={null}
                 >
                   <div
+                    aria-hidden={null}
                     className="css-y5kkpq css-3hjqnz"
                   >
                     <div
@@ -2209,10 +2268,12 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                           null,
                         ]
                       }
+                      role={null}
                       string="-50%"
                     >
                       <span
                         className="css-pzju2o "
+                        role={null}
                       >
                         -50%
                       </span>
@@ -2248,6 +2309,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo "
                 data-test-id="ratedStars: 4"
+                role="text"
               >
                 <div
                   className="css-4s85e9"
@@ -2680,12 +2742,12 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                       }
                     >
                       <Grid
-                        className="css-fpclhg"
+                        className="css-1glzrmu"
                         component="ul"
                         wrap={true}
                       >
                         <ul
-                          className="css-fpclhg css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -2709,18 +2771,23 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
-                                  <FormatPrice
-                                    className=""
-                                    currency="EUR"
-                                    fractions={true}
-                                    price={5}
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
                                   >
-                                    <span
+                                    <FormatPrice
                                       className=""
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
                                     >
-                                      p
-                                    </span>
-                                  </FormatPrice>
+                                      <span
+                                        className=""
+                                      >
+                                        p
+                                      </span>
+                                    </FormatPrice>
+                                  </span>
                                 </div>
                               </Price>
                             </li>
@@ -2735,14 +2802,16 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                               className=""
                             >
                               <PriceStriked
-                                className="css-7hzrhp"
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-7hzrhp "
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -2865,21 +2934,26 @@ exports[`<ProductCardRender /> should render without name 1`] = `
       tagName="a"
     >
       <Link
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -2889,10 +2963,12 @@ exports[`<ProductCardRender /> should render without name 1`] = `
             <ProductImage
               alt="Product Name"
               animating={true}
+              aria-hidden={null}
               className={null}
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
               itemProp="image"
+              noBackground={false}
               ratio={null}
               resolutions={
                 Array [
@@ -2928,6 +3004,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                   props={null}
                 >
                   <div
+                    aria-hidden={null}
                     className="css-y5kkpq css-3hjqnz"
                   >
                     <div
@@ -3017,10 +3094,12 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                           null,
                         ]
                       }
+                      role={null}
                       string="-50%"
                     >
                       <span
                         className="css-pzju2o "
+                        role={null}
                       >
                         -50%
                       </span>
@@ -3056,6 +3135,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo "
                 data-test-id="ratedStars: 4"
+                role="text"
               >
                 <div
                   className="css-4s85e9"
@@ -3452,12 +3532,12 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                       }
                     >
                       <Grid
-                        className="css-fpclhg"
+                        className="css-1glzrmu"
                         component="ul"
                         wrap={true}
                       >
                         <ul
-                          className="css-fpclhg css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -3481,18 +3561,23 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
-                                  <FormatPrice
-                                    className=""
-                                    currency="EUR"
-                                    fractions={true}
-                                    price={5}
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
                                   >
-                                    <span
+                                    <FormatPrice
                                       className=""
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
                                     >
-                                      p
-                                    </span>
-                                  </FormatPrice>
+                                      <span
+                                        className=""
+                                      >
+                                        p
+                                      </span>
+                                    </FormatPrice>
+                                  </span>
                                 </div>
                               </Price>
                             </li>
@@ -3507,14 +3592,16 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                               className=""
                             >
                               <PriceStriked
-                                className="css-7hzrhp"
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-7hzrhp "
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
@@ -3637,21 +3724,26 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
       tagName="a"
     >
       <Link
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -3661,10 +3753,12 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
             <ProductImage
               alt="Product Name"
               animating={true}
+              aria-hidden={null}
               className={null}
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
               itemProp="image"
+              noBackground={false}
               ratio={null}
               resolutions={
                 Array [
@@ -3700,6 +3794,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                   props={null}
                 >
                   <div
+                    aria-hidden={null}
                     className="css-y5kkpq css-3hjqnz"
                   >
                     <div
@@ -3762,6 +3857,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo "
                 data-test-id="ratedStars: 4"
+                role="text"
               >
                 <div
                   className="css-4s85e9"
@@ -4192,21 +4288,26 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
       tagName="a"
     >
       <Link
+        aria-label={null}
         className=""
         disabled={false}
         historyPush={[Function]}
         historyReplace={[Function]}
         href="/some/url"
         replace={false}
+        role="link"
         state={Object {}}
+        tabIndex={null}
         tag="div"
         tagName="a"
       >
         <div
+          aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
           onClick={[Function]}
           role="link"
+          tabIndex={null}
         >
           <Component
             alt="Product Name"
@@ -4216,10 +4317,12 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
             <ProductImage
               alt="Product Name"
               animating={true}
+              aria-hidden={null}
               className={null}
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
               itemProp="image"
+              noBackground={false}
               ratio={null}
               resolutions={
                 Array [
@@ -4255,6 +4358,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                   props={null}
                 >
                   <div
+                    aria-hidden={null}
                     className="css-y5kkpq css-3hjqnz"
                   >
                     <div
@@ -4344,10 +4448,12 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                           null,
                         ]
                       }
+                      role={null}
                       string="-50%"
                     >
                       <span
                         className="css-pzju2o "
+                        role={null}
                       >
                         -50%
                       </span>
@@ -4469,12 +4575,12 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                       }
                     >
                       <Grid
-                        className="css-fpclhg"
+                        className="css-1glzrmu"
                         component="ul"
                         wrap={true}
                       >
                         <ul
-                          className="css-fpclhg css-h7r55a css-u7q1iu"
+                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                         >
                           <GridItem
                             className=""
@@ -4498,18 +4604,23 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                   className="css-izofhs  css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
-                                  <FormatPrice
-                                    className=""
-                                    currency="EUR"
-                                    fractions={true}
-                                    price={5}
+                                  <span
+                                    aria-label="price.label"
+                                    role="text"
                                   >
-                                    <span
+                                    <FormatPrice
                                       className=""
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={5}
                                     >
-                                      p
-                                    </span>
-                                  </FormatPrice>
+                                      <span
+                                        className=""
+                                      >
+                                        p
+                                      </span>
+                                    </FormatPrice>
+                                  </span>
                                 </div>
                               </Price>
                             </li>
@@ -4524,14 +4635,16 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                               className=""
                             >
                               <PriceStriked
-                                className="css-7hzrhp"
+                                className="css-nil"
                                 currency="EUR"
                                 value={10}
                               >
                                 <div
-                                  className="css-1sagvrb css-7hzrhp "
+                                  className="css-1sagvrb css-nil "
+                                  role="text"
                                 >
                                   <span
+                                    aria-label="price.label_old_price"
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice

@@ -14,6 +14,9 @@ export default function history(subscribe) {
     dispatch(historyReset());
   });
 
+  /**
+   * @deprecated Will be removed in Next versions
+   */
   subscribe(routeDidChange$, () => {
     event.trigger('routeDidChange');
   });

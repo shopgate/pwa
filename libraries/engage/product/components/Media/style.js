@@ -31,8 +31,6 @@ export const placeholderIcon = css({
 }).toString();
 
 export const innerShadow = css({
-  position: 'relative',
-  overflow: 'hidden',
   ':after': {
     display: 'block',
     content: '""',

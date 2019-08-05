@@ -26,10 +26,11 @@ exports[`<Content /> Check search field should render with initial search query 
       submitSearch={[Function]}
     >
       <div
+        aria-hidden={true}
         data-test-id="SearchField"
       >
         <div
-          className="css-1jyozbi"
+          className="css-2ciheh"
         >
           <div
             className="css-1utu657"
@@ -168,16 +169,18 @@ exports[`<Content /> Check search field should render with initial search query 
           </div>
           <div>
             <button
-              className="css-1su7ayj css-gyrv08"
+              className="css-1ctsi2c css-gyrv08"
               onClick={[Function]}
             >
               <Translate
                 className=""
                 params={Object {}}
+                role={null}
                 string="search.cancel"
               >
                 <span
                   className=""
+                  role={null}
                 />
               </Translate>
             </button>
@@ -215,10 +218,11 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
       submitSearch={[Function]}
     >
       <div
+        aria-hidden={true}
         data-test-id="SearchField"
       >
         <div
-          className="css-1jyozbi"
+          className="css-2ciheh"
         >
           <div
             className="css-1utu657"
@@ -313,16 +317,18 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
           </div>
           <div>
             <button
-              className="css-1su7ayj"
+              className="css-1ctsi2c"
               onClick={[Function]}
             >
               <Translate
                 className=""
                 params={Object {}}
+                role={null}
                 string="search.cancel"
               >
                 <span
                   className=""
+                  role={null}
                 />
               </Translate>
             </button>

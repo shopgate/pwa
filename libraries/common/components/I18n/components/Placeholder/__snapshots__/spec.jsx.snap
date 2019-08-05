@@ -1,21 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Placeholder /> Given the component was mounted to the DOM should render 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
-    Object {
-      "greeting": "Hello {world}",
-    }
-  }
->
+<I18nProvider>
   <Translate
     className=""
     params={Object {}}
+    role={null}
     string="greeting"
   >
     <span
       className=""
+      role={null}
     >
       Hello 
       <Placeholder
@@ -28,7 +23,7 @@ exports[`<Placeholder /> Given the component was mounted to the DOM should rende
           </strong>
         </span>
       </Placeholder>
-      / 
+      /
     </span>
   </Translate>
 </I18nProvider>

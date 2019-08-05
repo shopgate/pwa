@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MediaImage as Image } from '../../../Media';
 import { full } from '../../style';
+import { PRODUCT_SLIDER_IMAGE_FORMATS } from '../../constants';
 
 /**
  * The product media video slide component.
@@ -15,7 +16,11 @@ const MediaImage = ({ media, onClick }) => (
     tabIndex="0"
     className={full}
   >
-    <Image url={media.url} altText={media.altText} />
+    <Image
+      url={media.url}
+      altText={media.altText}
+      params={PRODUCT_SLIDER_IMAGE_FORMATS[1]}
+    />
   </div>
 );
 

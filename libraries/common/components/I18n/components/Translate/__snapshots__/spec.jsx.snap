@@ -1,14 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Translate /> Given the component was mounted to the DOM should match snapshot 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
-    Object {
-      "greeting": "Hello {name}",
-    }
-  }
->
+<I18nProvider>
   <Translate
     className=""
     params={
@@ -16,10 +9,12 @@ exports[`<Translate /> Given the component was mounted to the DOM should match s
         "name": "Test",
       }
     }
+    role={null}
     string="greeting"
   >
     <span
       className=""
+      role={null}
     >
       Hello Test
     </span>

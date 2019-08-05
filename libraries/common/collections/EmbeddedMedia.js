@@ -1,6 +1,4 @@
 /* eslint-disable extra-rules/potential-point-free */
-import event from '@shopgate/pwa-core/classes/Event';
-
 /**
  * Class to maintain embedded media within DOM containers.
  */
@@ -10,9 +8,6 @@ class EmbeddedMedia {
    */
   constructor() {
     this.providers = new Set();
-
-    event.addCallback('routeDidChange', () => { this.stop(); });
-    event.addCallback('viewDidDisappear', () => { this.stop(); });
   }
 
   /**

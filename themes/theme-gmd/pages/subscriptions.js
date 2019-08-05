@@ -17,10 +17,14 @@ import {
   ORDERS_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import {
+  ITEM_PATH,
+  productImageFormats,
+  enableRedirectHandler,
+  setDefaultProductFetchParams,
+} from '@shopgate/engage/product';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import grantCameraPermissions from '@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions';
-import { productImageFormats } from '@shopgate/pwa-common-commerce/product/collections';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import {
   PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,
@@ -30,6 +34,7 @@ import {
   GALLERY_SLIDER_IMAGE_COLLECTION_KEY,
   GALLERY_SLIDER_IMAGE_FORMATS,
 } from './ProductGallery/constants';
+
 /**
  * App subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -74,5 +79,17 @@ export default function app(subscribe) {
       code: ETIMEOUT, // Should also be done for EUNKNOWN and EINTERNAL in the future.
       message: 'modal.body_error',
     });
+
+    /**
+     * This feature is currently in BETA testing.
+     * It should only be used for approved BETA Client Projects
+     */
+    enableRedirectHandler();
+
+    /**
+     * This feature is currently in BETA testing.
+     * It should only be used for approved BETA Client Projects
+     */
+    setDefaultProductFetchParams();
   });
 }

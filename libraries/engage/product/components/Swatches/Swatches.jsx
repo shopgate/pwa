@@ -1,27 +1,20 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import defaultsDeep from 'lodash/defaultsDeep';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { isBeta, useWidgetConfig } from '../../../core';
+import { isBeta, useWidgetSettings } from '../../../core';
 import { Swatch } from '../Swatch';
-import { swatches } from './style';
+import { swatchesClass } from './style';
 import connect from './connector';
 
-const widgetDefaultSettings = {
-  maxItemCount: 10,
-  // Filters out all swatches which are not in the list, no filter = [] => show all
-  filter: [/* whitelist string[] */],
-};
-
-const widgetId = '@shopgate/engage/product/Swatches';
+const WIDGET_ID = '@shopgate/engage/product/Swatches';
 
 /**
  * Renders only product swatches from a list of characteristics.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const SwatchesUnwrapped = ({ productId, characteristics, widgetPath }) => {
+const Swatches = ({ productId, characteristics }) => {
   if (!isBeta()) {
     return null;
   }
@@ -30,47 +23,41 @@ const SwatchesUnwrapped = ({ productId, characteristics, widgetPath }) => {
     return null;
   }
 
-  const { settings = {} } = useWidgetConfig(widgetId, widgetPath);
+  const settings = useWidgetSettings(WIDGET_ID);
 
-  // override default settings with configured widget settings
-  const widgetSettings = defaultsDeep(settings, widgetDefaultSettings);
+  let swatches = characteristics.filter(c => c.swatch === true);
+  if (settings.filter && settings.filter.length) {
+    swatches = swatches.filter(swatch => settings.filter.includes(swatch.id));
+  }
+  if (!swatches) {
+    return null;
+  }
 
-  const testId = `productSwatches.${productId}`;
+  if (settings.maxItemCount) {
+    swatches = swatches.map(swatch => ({
+      ...swatch,
+      values: swatch.values.slice(0, settings.maxItemCount),
+    }));
+  }
+
   return (
     <SurroundPortals portalName={PRODUCT_SWATCHES} portalProps={{ characteristics }}>
-      { widgetSettings.maxItemCount > 0 && (
-        <div data-test-id={testId} className={swatches}>
-          {characteristics
-            .filter(c => c.swatch === true)
-            .filter(c => !widgetSettings.filter.length || widgetSettings.filter.includes(c.id))
-            .map(swatch => (
-              <Swatch
-                key={`${productId}.${swatch.id}`}
-                testId={`${testId}.swatch.${swatch.id}`}
-                swatch={swatch}
-                maxItemCount={widgetSettings.maxItemCount}
-              />
+      <div className={swatchesClass}>
+        {swatches.map(swatch => (
+          <Swatch key={`${productId}.${swatch.id}`} swatch={swatch} />
           ))}
-        </div>
-      )}
+      </div>
     </SurroundPortals>
   );
 };
 
-SwatchesUnwrapped.propTypes = {
+Swatches.propTypes = {
   productId: PropTypes.string.isRequired,
   characteristics: PropTypes.arrayOf(PropTypes.shape()),
-  widgetPath: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
 };
 
-SwatchesUnwrapped.defaultProps = {
+Swatches.defaultProps = {
   characteristics: null,
-  widgetPath: undefined,
 };
 
-SwatchesUnwrapped.displayName = 'Swatches';
-
-export const Swatches = connect(SwatchesUnwrapped);
+export default connect(memo(Swatches));

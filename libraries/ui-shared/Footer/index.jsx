@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import {
   APP_FOOTER_CONTENT_BEFORE,
   APP_FOOTER_CONTENT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { getStyle } from '@shopgate/pwa-common/helpers/dom';
+import { getAbsoluteHeight, getStyle } from '@shopgate/pwa-common/helpers/dom';
+import { SHEET_EVENTS } from '../Sheet';
 import {
   footer,
   withInset,
   updateInsetBackgroundColor,
+  updateFooterHeight,
 } from './style';
 
 const APP_FOOTER_ID = 'AppFooter';
@@ -32,14 +35,14 @@ class Footer extends Component {
    * background color, which matches the background color of the last element within the footer.
    */
   componentDidMount() {
-    this.performInsetBackgroundUpdate();
+    this.performFooterUpdate();
 
     const observer = new MutationObserver((mutations) => {
       const update = mutations
         .filter(mutation => mutation.target.getAttribute(DATA_IGNORED) !== 'true').length > 0;
 
       if (update) {
-        this.performInsetBackgroundUpdate();
+        this.performFooterUpdate();
       }
     });
 
@@ -48,6 +51,14 @@ class Footer extends Component {
       childList: true,
       subtree: true,
     });
+    UIEvents.addListener(SHEET_EVENTS.OPEN, this.hide);
+    UIEvents.addListener(SHEET_EVENTS.CLOSE, this.show);
+  }
+
+  /** @inheritDoc */
+  componentWillUnmount() {
+    UIEvents.removeListener(SHEET_EVENTS.OPEN, this.hide);
+    UIEvents.removeListener(SHEET_EVENTS.CLOSE, this.show);
   }
 
   /**
@@ -89,13 +100,28 @@ class Footer extends Component {
     return color || null;
   }
 
+  /** Perform hide action */
+  hide = () => {
+    if (this.ref.current) {
+      updateFooterHeight(0);
+    }
+  }
+
+  /** Perform show action */
+  show = () => {
+    if (this.ref.current) {
+      updateFooterHeight(getAbsoluteHeight(this.ref.current));
+    }
+  }
+
   /**
-   * Performs an update of the inset background color.
+   * Performs an update of the footer: background color, height.
    */
-  performInsetBackgroundUpdate() {
+  performFooterUpdate() {
     if (this.ref.current) {
       this.ref.current.classList.toggle(withInset, this.hasVisibleContent());
 
+      updateFooterHeight(getAbsoluteHeight(this.ref.current));
       updateInsetBackgroundColor(this.getInsetBackgroundColor(this.ref.current.children));
     }
   }
@@ -107,7 +133,7 @@ class Footer extends Component {
   hasVisibleContent() {
     if (this.ref.current) {
       const elements = this.ref.current.parentElement
-        .querySelectorAll(`footer > *:not(#${APP_FOOTER_ID}), #${APP_FOOTER_ID} > *`);
+        .querySelectorAll(`div.${footer.toString()} > *:not(#${APP_FOOTER_ID}), #${APP_FOOTER_ID} > *`);
 
       return Array
         .from(elements)
@@ -125,13 +151,13 @@ class Footer extends Component {
    */
   render() {
     return (
-      <footer className={footer} ref={this.ref} >
+      <div className={footer} ref={this.ref} >
         <Portal name={APP_FOOTER_CONTENT_BEFORE} />
         <div id={APP_FOOTER_ID}>
           {this.props.children}
         </div>
         <Portal name={APP_FOOTER_CONTENT_AFTER} />
-      </footer>
+      </div>
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SheetDrawer, SheetList } from '@shopgate/engage/components';
 import VariantContext from '@shopgate/pwa-common/components/ProductCharacteristics/context';
+import { ViewContext } from 'Components/View/context';
 import Item from '../SheetItem';
 import VariantAvailability from '../VariantAvailability';
 import { ProductContext } from './../../../../../context';
@@ -15,6 +16,7 @@ class CharacteristicSheet extends PureComponent {
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     label: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
+    setViewAriaHidden: PropTypes.func.isRequired,
     onClose: PropTypes.func,
     onSelect: PropTypes.func,
     productId: PropTypes.string,
@@ -29,6 +31,28 @@ class CharacteristicSheet extends PureComponent {
     selectedValue: null,
     selection: null,
   };
+
+  /**
+   * Focuses the first selectable item and hides the view for screen readers.
+   */
+  onDidOpen = () => {
+    if (this.firstSelectableItemRef.current) {
+      this.firstSelectableItemRef.current.focus();
+    }
+
+    this.props.setViewAriaHidden(true);
+  };
+
+  /**
+   * Shows the view for screen readers.
+   * @param {Object} e The event payload.
+   */
+  onClose = (e) => {
+    this.props.onClose(e);
+    this.props.setViewAriaHidden(false);
+  }
+
+  firstSelectableItemRef = React.createRef();
 
   /**
    * @param {Object} event The event object.
@@ -65,19 +89,28 @@ class CharacteristicSheet extends PureComponent {
    */
   render() {
     const {
-      items, label, onClose, open, selectedValue,
+      items, label, open, selectedValue,
     } = this.props;
 
+    let selectedIndex;
+
+    if (selectedValue) {
+      selectedIndex = items.findIndex(item => item.id === selectedValue);
+    } else {
+      selectedIndex = items.findIndex(item => item.selectable);
+    }
+
     return (
-      <SheetDrawer title={label} isOpen={open} onClose={onClose}>
+      <SheetDrawer title={label} isOpen={open} onClose={this.onClose} onDidOpen={this.onDidOpen} >
         <SheetList>
-          {items.map(item => (
+          {items.map((item, index) => (
             <Item
               item={item}
               key={item.id}
               onClick={this.handleItemClick}
               rightComponent={() => this.renderAvailability(item.id)}
               selected={item.id === selectedValue}
+              ref={index === selectedIndex ? this.firstSelectableItemRef : null}
             />
           ))}
         </SheetList>
@@ -91,19 +124,25 @@ class CharacteristicSheet extends PureComponent {
  * @returns {JSX}
  */
 const SheetComponent = props => (
-  <ProductContext.Consumer>
-    {({ productId }) => (
-      <VariantContext.Consumer>
-        {({ characteristics }) => (
-          <CharacteristicSheet
-            productId={productId}
-            selection={characteristics}
-            {...props}
-          />
+  <ViewContext.Consumer>
+    {({ setAriaHidden }) => (
+      <ProductContext.Consumer>
+        {({ productId }) => (
+          <VariantContext.Consumer>
+            {({ characteristics }) => (
+              <CharacteristicSheet
+                productId={productId}
+                selection={characteristics}
+                setViewAriaHidden={setAriaHidden}
+                {...props}
+              />
+            )}
+          </VariantContext.Consumer>
         )}
-      </VariantContext.Consumer>
+      </ProductContext.Consumer>
     )}
-  </ProductContext.Consumer>
+  </ViewContext.Consumer>
+
 );
 
 export default SheetComponent;

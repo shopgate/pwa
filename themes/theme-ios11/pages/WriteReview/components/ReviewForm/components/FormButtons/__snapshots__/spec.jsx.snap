@@ -36,10 +36,12 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               <Translate
                 className=""
                 params={Object {}}
+                role={null}
                 string="common.cancel"
               >
                 <span
                   className=""
+                  role={null}
                 >
                   common.cancel
                 </span>
@@ -88,7 +90,6 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                       size={null}
                     >
                       <div
-                        aria-hidden={true}
                         className="css-1fscwua "
                         data-test-id="Ripple"
                         onClick={[Function]}
@@ -97,10 +98,12 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                         <Translate
                           className=""
                           params={Object {}}
+                          role={null}
                           string="common.submit"
                         >
                           <span
                             className=""
+                            role={null}
                           >
                             common.submit
                           </span>

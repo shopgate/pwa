@@ -1,30 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Glow /> should render with a smile 1`] = `
-<Glow
-  className={null}
-  color="#f7f7f7"
-  styles={
-    Object {
-      "container": null,
-      "glow": null,
-      "hover": null,
+<ForwardRef(WithForwardedRef(Glow))>
+  <Glow
+    className={null}
+    color="#f7f7f7"
+    forwardedRef={null}
+    styles={
+      Object {
+        "container": null,
+        "glow": null,
+        "hover": null,
+      }
     }
-  }
->
-  <div
-    aria-hidden={true}
-    className="css-13azwyo"
-    onClick={[Function]}
-    style={null}
   >
     <div
-      className="css-1bmd5dz"
-      style={Object {}}
-    />
-    <p>
-      Glowing!
-    </p>
-  </div>
-</Glow>
+      className="css-13azwyo"
+      onClick={[Function]}
+      style={null}
+    >
+      <div
+        className="css-1bmd5dz"
+        style={Object {}}
+      />
+      <p>
+        Glowing!
+      </p>
+    </div>
+  </Glow>
+</ForwardRef(WithForwardedRef(Glow))>
 `;

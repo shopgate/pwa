@@ -1,98 +1,35 @@
-import React, { Fragment, memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
-import noop from 'lodash/noop';
-import classNames from 'classnames';
 import { css } from 'glamor';
-import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { SurroundPortals } from '../../../components';
-import { isBeta, useWidgetConfig } from '../../../core';
-import { SwatchColor } from './SwatchColor';
-import { SwatchTexture } from './SwatchTexture';
-import { swatchGrid, itemSelected } from './style';
+import { useWidgetStyles } from '../../../core';
+import SwatchContent from './SwatchContent';
 
-const widgetId = '@shopgate/engage/product/Swatch';
+export const WIDGET_ID = '@shopgate/engage/product/Swatch';
 
 /**
  * The swatch component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const SwatchUnwrapped = ({
-  testId, maxItemCount, swatch, widgetPath, onClick,
-}) => {
-  if (!isBeta()) {
-    return null;
-  }
-
-  // Don't render if no data is set
+const Swatch = ({ swatch }) => {
   if (!swatch) {
     return null;
   }
 
-  const { styles } = useWidgetConfig(widgetId, widgetPath);
+  const styles = useWidgetStyles(WIDGET_ID);
 
-  const swatchClass = styles && styles.swatch ? css(styles.swatch).toString() : null;
-  const itemClass = styles && styles.item ? css(styles.item).toString() : null;
-  const selectedClass = styles && styles.itemSelected ? css(styles.itemSelected).toString() : null;
-
-  /** Click handler */
-  const handleClick = useCallback((event) => {
-    const { target: { dataset = {} } } = event || {};
-    onClick(dataset.valueId);
-  });
+  const classNames = {
+    swatch: styles && styles.swatch ? css(styles.swatch).toString() : null,
+    item: styles && styles.item ? css(styles.item).toString() : null,
+    itemSelected: styles && styles.itemSelected ? css(styles.itemSelected).toString() : null,
+  };
 
   return (
-    <SurroundPortals portalName={PRODUCT_SWATCH} portalProps={{ swatch }}>
-      <ul
-        data-test-id={testId}
-        className={classNames(swatchGrid, {
-          [swatchClass]: !!swatchClass,
-        })}
-      >
-        {swatch.values.map((value, i) => (
-          <Fragment key={value.id}>
-            { (maxItemCount === null || maxItemCount > i) && (
-              <Fragment>
-                {value.swatch.color && (
-                  <SwatchColor
-                    valueId={value.id}
-                    testId={`${testId}.item.${value.id}`}
-                    color={value.swatch.color}
-                    onClick={handleClick}
-                    className={classNames({
-                      [itemClass]: !!itemClass,
-                      [itemSelected]: !!value.selected && !selectedClass,
-                      [selectedClass]: !!value.selected && selectedClass,
-                    })}
-                  />
-                ) }
-                {value.swatch.imageUrl && (
-                  <SwatchTexture
-                    valueId={value.id}
-                    testId={`${testId}.item.${value.id}`}
-                    imageUrl={value.swatch.imageUrl}
-                    onClick={handleClick}
-                    className={classNames({
-                      [itemClass]: !!itemClass,
-                      [itemSelected]: !!value.selected && !selectedClass,
-                      [selectedClass]: !!value.selected && selectedClass,
-                    })}
-                  />
-                ) }
-              </Fragment>
-            ) }
-          </Fragment>
-        ))}
-      </ul>
-    </SurroundPortals>
+    <SwatchContent swatch={swatch} classNames={classNames} />
   );
 };
 
-SwatchUnwrapped.propTypes = {
-  testId: PropTypes.string.isRequired,
-  maxItemCount: PropTypes.number,
-  onClick: PropTypes.func,
+Swatch.propTypes = {
   swatch: PropTypes.shape({
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -106,21 +43,10 @@ SwatchUnwrapped.propTypes = {
       }).isRequired,
     })).isRequired,
   }),
-  widgetPath: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
 };
 
-SwatchUnwrapped.defaultProps = {
-  maxItemCount: null,
+Swatch.defaultProps = {
   swatch: null,
-  widgetPath: undefined,
-  onClick: noop,
 };
 
-SwatchUnwrapped.displayName = 'Swatch';
-
-export const Swatch = memo(SwatchUnwrapped, isEqual);
-
-Swatch.displayName = `Memo(${SwatchUnwrapped.displayName})`;
+export default memo(Swatch);

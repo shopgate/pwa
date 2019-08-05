@@ -1,20 +1,31 @@
 import { connect } from 'react-redux';
-import { getProductMedia, ITEM_PATH, MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '@shopgate/engage/product';
+import {
+  makeGetProductMedia,
+  makeGetProductFeaturedMedia,
+  ITEM_PATH,
+  MEDIA_TYPE_IMAGE,
+  MEDIA_TYPE_VIDEO,
+} from '@shopgate/engage/product';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 
 /**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @param {Object} props The current component props.
- * @return {Object} The extended component props.
+ * Creates the mapStateToProps connector function.
+ * @returns {Function}
  */
-const mapStateToProps = (state, props) => ({
-  media: getProductMedia(state, {
-    ...props,
-    types: props.types || [MEDIA_TYPE_VIDEO, MEDIA_TYPE_IMAGE],
-  }),
-});
+const makeMapStateToProps = () => {
+  const getProductMedia = makeGetProductMedia();
+  const getProductFeaturedMedia = makeGetProductFeaturedMedia();
+  const types = [MEDIA_TYPE_VIDEO, MEDIA_TYPE_IMAGE];
+
+  return (state, props) => ({
+    media: getProductMedia(state, {
+      ...props,
+      types: props.types || types,
+    }),
+    featuredMedia: getProductFeaturedMedia(state, props),
+  });
+};
 
 /**
 * Connects the dispatch function to a callable function in the props.
@@ -29,4 +40,4 @@ const mapDispatchToProps = (dispatch, props) => ({
     })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(makeMapStateToProps, mapDispatchToProps);

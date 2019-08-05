@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Slider } from '@shopgate/pwa-common/components';
+import { Swiper } from '@shopgate/engage/components';
 import { Theme } from '@shopgate/pwa-common/context';
-import styles from './style';
+import { container, items } from './style';
 
 /**
  * @param {Object} props The component props.
@@ -23,18 +23,22 @@ function ProductSlider(props) {
       {({ ProductCard }) => {
         const Item = props.item || ProductCard;
         return (
-          <Slider
+          <Swiper
             autoPlay={autoplay}
             className={className}
             controls={false}
             indicators={false}
             interval={delay}
             loop={false}
-            snapItems={snap}
+            freeMode={!snap}
             slidesPerView={slidesPerView}
           >
-            {productIds.map(id => <Item key={id} productId={id} style={styles} />)}
-          </Slider>
+            {productIds.map(id => (
+              <Swiper.Item key={id} className={container}>
+                <Item productId={id} style={items} />
+              </Swiper.Item>
+            ))}
+          </Swiper>
         );
       }}
     </Theme>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import connect from './connector';
 import VariantsContext from './context';
 import {
@@ -17,6 +18,7 @@ class ProductCharacteristics extends Component {
     conditioner: PropTypes.shape().isRequired,
     navigate: PropTypes.func.isRequired,
     render: PropTypes.func.isRequired,
+    setCharacteristics: PropTypes.func.isRequired,
     finishTimeout: PropTypes.number,
     variantId: PropTypes.string,
     variants: PropTypes.shape(),
@@ -60,7 +62,7 @@ class ProductCharacteristics extends Component {
   }
 
   /**
-   * Sets the refs to the charactersistics selects.
+   * Sets the refs to the characteristics selects.
    * @param {Object} props The props to check against.
    */
   setRefs = (props) => {
@@ -126,6 +128,15 @@ class ProductCharacteristics extends Component {
 
       if (firstUnselected) {
         const ref = this.refsStore[firstUnselected.id];
+
+        // Focus the item for screen readers and broadcast a related live message.
+        ref.current.focus();
+        const option = ref.current.innerText;
+        broadcastLiveMessage('product.pick_option_first', {
+          force: true,
+          params: { option },
+        });
+
         ref.current.scrollIntoView({ behavior: 'smooth' });
         this.setState({ highlight: firstUnselected.id });
       }
@@ -136,7 +147,9 @@ class ProductCharacteristics extends Component {
 
   handleFinished = () => {
     const { characteristics } = this.state;
-    const { variantId, variants, finishTimeout } = this.props;
+    const {
+      variantId, variants, finishTimeout,
+    } = this.props;
     const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
 
     if (filteredValues.length !== variants.characteristics.length) {
@@ -165,15 +178,23 @@ class ProductCharacteristics extends Component {
    * @param {Object} selection The selected item.
    */
   handleSelection = (selection) => {
+    const { variants, setCharacteristics } = this.props;
+    const { id, value } = selection;
+
     this.setState(({ characteristics }) => {
-      const { variants } = this.props;
-      const { id, value } = selection;
-      const state = prepareState(id, characteristics, variants.characteristics);
+      const state = prepareState(
+        id,
+        value,
+        characteristics,
+        variants.characteristics,
+        variants.products
+      );
+
+      setCharacteristics(state);
 
       return {
         characteristics: {
           ...state,
-          [id]: value,
         },
         highlight: null,
       };

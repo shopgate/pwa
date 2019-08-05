@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LiveMessenger /> should render 1`] = `
+<LiveMessenger
+  id={null}
+>
+  <div>
+    <LiveMessage
+      aria-live="assertive"
+      message=""
+      params={null}
+    >
+      <div
+        aria-live="assertive"
+        className={
+          Object {
+            "data-css-1krt3b8": "",
+          }
+        }
+        role="log"
+      >
+        <Translate
+          params={null}
+          string=""
+        />
+      </div>
+    </LiveMessage>
+    <LiveMessage
+      aria-live="polite"
+      message=""
+      params={null}
+    >
+      <div
+        aria-live="polite"
+        className={
+          Object {
+            "data-css-1krt3b8": "",
+          }
+        }
+        role="log"
+      >
+        <Translate
+          params={null}
+          string=""
+        />
+      </div>
+    </LiveMessage>
+  </div>
+</LiveMessenger>
+`;

@@ -1,7 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   getProductImages,
@@ -10,6 +11,9 @@ import {
 import { Swiper as MockSwiper } from '@shopgate/pwa-common/components';
 import Content from './index';
 
+jest.mock('@shopgate/engage/core', () => ({
+  useWidgetSettings: jest.fn(),
+}));
 jest.mock('@shopgate/engage/components', () => ({
   Swiper: MockSwiper,
 }));
@@ -72,5 +76,24 @@ describe('<ProductGallery.Content> page', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockSwiper).prop('initialSlide')).toEqual(3);
+  });
+
+  it('should use zoom from widget settings', () => {
+    useWidgetSettings.mockReturnValueOnce({
+      zoom: {
+        maxRatio: 5,
+      },
+    });
+
+    const store = mockedStore();
+
+    const wrapper = shallow(
+      <Provider store={store}>
+        <Content initialSlide={0} />
+      </Provider>,
+      mockRenderOptions
+    ).dive().dive();
+
+    expect(wrapper.find('Swiper').prop('zoom')).toHaveProperty('maxRatio', 5);
   });
 });

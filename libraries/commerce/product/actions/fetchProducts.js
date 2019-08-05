@@ -3,6 +3,8 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
+import configuration from '@shopgate/pwa-common/collections/Configuration';
+import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
 import * as pipelines from '../constants/Pipelines';
 import buildRequestFilters from '../../filter/actions/helpers/buildRequestFilters';
 import requestProducts from '../action-creators/requestProducts';
@@ -45,7 +47,8 @@ const processParams = (params, activeFilters, includeSort = true, includeFilters
  * @param {Object} options.params The params for the getProduct pipeline.
  * @param {string} [options.pipeline='getProducts'] The pipeline to call.
  * @param {boolean} [options.cached=true] If the result will be cached.
- * @param {string} [options.id=null] A unique id for the component that is using this action.
+ * @param {?number} [options.cachedTime=null] Cache TTL in ms.
+ * @param {?string} [options.id=null] A unique id for the component that is using this action.
  * @param {boolean} [options.includeSort=true] Tells if the sort parameters shall be included
  *   into the product hash and the request.
  * @param {boolean} [options.includeFilters=true] Tells if the filter parameters shall be included
@@ -59,6 +62,7 @@ const fetchProducts = ({
   filters = null,
   pipeline = pipelines.SHOPGATE_CATALOG_GET_PRODUCTS,
   cached = true,
+  cachedTime = null,
   id = null,
   includeSort = true,
   includeFilters = true,
@@ -70,8 +74,16 @@ const fetchProducts = ({
 
     const { sort = DEFAULT_SORT } = hashParams;
 
+    let getProductsRequestParams;
+    if (pipeline === pipelines.SHOPGATE_CATALOG_GET_PRODUCTS) {
+      getProductsRequestParams = configuration.get(DEFAULT_PRODUCTS_FETCH_PARAMS);
+    }
+
     // We need to process the params to handle edge cases in the pipeline params.
-    const requestParams = processParams(params, filters, includeSort, includeFilters);
+    const requestParams = {
+      ...getProductsRequestParams,
+      ...processParams(params, filters, includeSort, includeFilters),
+    };
 
     const hash = generateResultHash({
       pipeline,
@@ -110,6 +122,8 @@ const fetchProducts = ({
 
     dispatch(requestProducts({
       hash,
+      cached,
+      cachedTime,
       requestParams,
     }));
 
@@ -142,6 +156,7 @@ const fetchProducts = ({
           products: response.products,
           totalResultCount,
           cached,
+          cachedTime,
         }));
 
         return response;

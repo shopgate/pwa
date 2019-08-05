@@ -73,10 +73,12 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             <Translate
               className=""
               params={Object {}}
+              role={null}
               string="navigation.more_menu"
             >
               <span
                 className=""
+                role={null}
               >
                 navigation.more_menu
               </span>
@@ -106,10 +108,12 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 <Translate
                   className=""
                   params={Object {}}
+                  role={null}
                   string="Some Label"
                 >
                   <span
                     className=""
+                    role={null}
                   >
                     Some Label
                   </span>
@@ -133,10 +137,12 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 <Translate
                   className=""
                   params={Object {}}
+                  role={null}
                   string="Another Label"
                 >
                   <span
                     className=""
+                    role={null}
                   >
                     Another Label
                   </span>

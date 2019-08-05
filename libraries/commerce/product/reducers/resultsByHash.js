@@ -27,6 +27,9 @@ export default function resultsByHash(state = {}, action) {
         },
       };
     case RECEIVE_PRODUCTS: {
+      if (!action.hash) {
+        return state;
+      }
       const { products } = state[action.hash];
       const nextProducts = action.products || [];
 
@@ -47,7 +50,7 @@ export default function resultsByHash(state = {}, action) {
           products: stateProducts,
           totalResultCount: typeof action.totalResultCount !== 'undefined' ? action.totalResultCount : null,
           isFetching: false,
-          expires: action.cached ? (Date.now() + PRODUCT_LIFETIME) : 0,
+          expires: action.cached ? (Date.now() + action.cachedTime || PRODUCT_LIFETIME) : 0,
         },
       };
     }
@@ -60,23 +63,37 @@ export default function resultsByHash(state = {}, action) {
             && currentState[hash].products.includes(action.productId)
           ) {
             // eslint-disable-next-line no-param-reassign
-            currentState[hash].products = currentState[hash].products.filter((
-              pId => pId !== action.productId
-            ));
+            currentState[hash] = {
+              ...currentState[hash],
+              products: currentState[hash].products.filter((
+                pId => pId !== action.productId
+              )),
+            };
           }
           return currentState;
         }, { ...state });
       }
       return state;
 
-    case EXPIRE_PRODUCT_BY_ID:
+    case EXPIRE_PRODUCT_BY_ID: {
+      const productIds = [].concat(action.productId);
+
       return Object.keys(state).reduce((currentState, hash) => {
-        if (currentState[hash].products && currentState[hash].products.includes(action.productId)) {
+        if (currentState[hash].products
+          && productIds.some(id => currentState[hash].products.includes(id))) {
           // eslint-disable-next-line no-param-reassign
-          currentState[hash].expires = 0;
+          currentState[hash] = {
+            ...currentState[hash],
+            expires: 0,
+            ...action.complete && {
+              products: currentState[hash].products
+                .filter(id => !productIds.includes(id)),
+            },
+          };
         }
         return currentState;
       }, { ...state });
+    }
 
     case ERROR_PRODUCTS:
       return {

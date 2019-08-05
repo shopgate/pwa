@@ -8,7 +8,6 @@ import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
-
 import styles from './style';
 
 const { colors } = themeConfig;
@@ -26,9 +25,11 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
+    noBackground: PropTypes.bool,
     ratio: PropTypes.arrayOf(PropTypes.number),
     resolutions: PropTypes.arrayOf(PropTypes.shape({
       width: PropTypes.number.isRequired,
@@ -43,9 +44,11 @@ class ProductImage extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
+    'aria-hidden': null,
     className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => { },
+    noBackground: false,
     ratio: null,
     resolutions: [
       {
@@ -112,6 +115,7 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
+    const { noBackground } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
     if (typeof showInnerShadow === 'undefined') {
@@ -122,9 +126,11 @@ class ProductImage extends Component {
       // Image is not present or could not be loaded, show a placeholder.
       return (
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
-          <div className={classnames(styles.placeholderContainer, {
-            [styles.innerShadow]: showInnerShadow,
-          })}
+          <div
+            className={classnames(styles.placeholderContainer, {
+              [styles.innerShadow]: showInnerShadow,
+            })}
+            aria-hidden={this.props['aria-hidden']}
           >
             <div className={styles.placeholderContent} data-test-id="placeHolder">
               <PlaceholderIcon className={styles.placeholder} />
@@ -137,11 +143,11 @@ class ProductImage extends Component {
     // Return the actual image.
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <div className={showInnerShadow ? styles.innerShadow : ''}>
+        <div aria-hidden={this.props['aria-hidden']}>
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}
-            backgroundColor={colors.light}
+            backgroundColor={noBackground ? 'transparent' : colors.light}
             onError={this.imageLoadingFailed}
           />
         </div>

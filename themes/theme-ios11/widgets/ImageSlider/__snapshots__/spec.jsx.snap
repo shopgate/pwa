@@ -35,23 +35,26 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
     }
   >
     <Swiper
+      aria-hidden={null}
       autoPlay={false}
       className=""
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
       loop={false}
       maxIndicators={null}
       onSlideChange={[Function]}
-      rebuildOnUpdate={false}
+      rebuildOnUpdate={true}
       slidesPerView={1}
       snapItems={true}
       zoom={false}
     >
       <div
+        aria-hidden={null}
         className="css-1hlki0z"
       >
         <ReactIdSwiper
@@ -60,7 +63,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-1n5i2c5"
+          containerClass="css-15qycmt"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -181,13 +184,14 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           }
           pagination={
             Object {
-              "bulletActiveClass": "css-hpsgy2",
-              "bulletClass": "css-cvsmqf",
+              "bulletActiveClass": "swiper-pagination-bullet-active",
+              "bulletClass": "swiper-pagination-bullet",
+              "dynamicBullets": true,
               "el": ".swiper-pagination",
               "type": "bullets",
             }
           }
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           renderNextButton={[Function]}
           renderPagination={[Function]}
           renderParallax={[Function]}
@@ -199,7 +203,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           zoom={false}
         >
           <div
-            className="css-1n5i2c5"
+            className="css-15qycmt"
           >
             <div
               className="swiper-wrapper"
@@ -218,6 +222,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://example.com"
                   >
                     <Link
+                      aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
                       disabled={false}
@@ -225,14 +230,18 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       historyReplace={[Function]}
                       href="http://example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -262,6 +271,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
                       disabled={false}
@@ -269,14 +279,18 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       historyReplace={[Function]}
                       href="http://other.example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -343,6 +357,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         href="http://example.com"
       >
         <Link
+          aria-label={null}
           className="css-63oe3q"
           data-test-id="withLink"
           disabled={false}
@@ -350,14 +365,18 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           historyReplace={[Function]}
           href="http://example.com"
           replace={false}
+          role="link"
           state={Object {}}
+          tabIndex={null}
           tag="div"
         >
           <div
+            aria-label={null}
             className="css-c6ki83 css-63oe3q"
             data-test-id="link: http://example.com"
             onClick={[Function]}
             role="link"
+            tabIndex={null}
           >
             <img
               className={
@@ -458,23 +477,26 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
     }
   >
     <Swiper
+      aria-hidden={null}
       autoPlay={false}
       className=""
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
       loop={false}
       maxIndicators={null}
       onSlideChange={[Function]}
-      rebuildOnUpdate={false}
+      rebuildOnUpdate={true}
       slidesPerView={1}
       snapItems={true}
       zoom={false}
     >
       <div
+        aria-hidden={null}
         className="css-1hlki0z"
       >
         <ReactIdSwiper
@@ -483,7 +505,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-1n5i2c5"
+          containerClass="css-15qycmt"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -604,13 +626,14 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           }
           pagination={
             Object {
-              "bulletActiveClass": "css-hpsgy2",
-              "bulletClass": "css-cvsmqf",
+              "bulletActiveClass": "swiper-pagination-bullet-active",
+              "bulletClass": "swiper-pagination-bullet",
+              "dynamicBullets": true,
               "el": ".swiper-pagination",
               "type": "bullets",
             }
           }
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           renderNextButton={[Function]}
           renderPagination={[Function]}
           renderParallax={[Function]}
@@ -622,7 +645,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           zoom={false}
         >
           <div
-            className="css-1n5i2c5"
+            className="css-15qycmt"
           >
             <div
               className="swiper-wrapper"
@@ -660,6 +683,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
                       disabled={false}
@@ -667,14 +691,18 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       historyReplace={[Function]}
                       href="http://other.example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -737,23 +765,26 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
     }
   >
     <Swiper
+      aria-hidden={null}
       autoPlay={false}
       className=""
       classNames={Object {}}
       controls={false}
       disabled={false}
+      freeMode={false}
       indicators={true}
       initialSlide={0}
       interval={7000}
       loop={false}
       maxIndicators={null}
       onSlideChange={[Function]}
-      rebuildOnUpdate={false}
+      rebuildOnUpdate={true}
       slidesPerView={1}
       snapItems={true}
       zoom={false}
     >
       <div
+        aria-hidden={null}
         className="css-1hlki0z"
       >
         <ReactIdSwiper
@@ -762,7 +793,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-1n5i2c5"
+          containerClass="css-15qycmt"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -883,13 +914,14 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           }
           pagination={
             Object {
-              "bulletActiveClass": "css-hpsgy2",
-              "bulletClass": "css-cvsmqf",
+              "bulletActiveClass": "swiper-pagination-bullet-active",
+              "bulletClass": "swiper-pagination-bullet",
+              "dynamicBullets": true,
               "el": ".swiper-pagination",
               "type": "bullets",
             }
           }
-          rebuildOnUpdate={false}
+          rebuildOnUpdate={true}
           renderNextButton={[Function]}
           renderPagination={[Function]}
           renderParallax={[Function]}
@@ -901,7 +933,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           zoom={false}
         >
           <div
-            className="css-1n5i2c5"
+            className="css-15qycmt"
           >
             <div
               className="swiper-wrapper"
@@ -920,6 +952,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://example.com"
                   >
                     <Link
+                      aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
                       disabled={false}
@@ -927,14 +960,18 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       historyReplace={[Function]}
                       href="http://example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={
@@ -964,6 +1001,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
                       disabled={false}
@@ -971,14 +1009,18 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       historyReplace={[Function]}
                       href="http://other.example.com"
                       replace={false}
+                      role="link"
                       state={Object {}}
+                      tabIndex={null}
                       tag="div"
                     >
                       <div
+                        aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
                         onClick={[Function]}
                         role="link"
+                        tabIndex={null}
                       >
                         <img
                           className={

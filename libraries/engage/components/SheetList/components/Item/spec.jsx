@@ -87,7 +87,7 @@ describe('<SheetList.Item />', () => {
   it('should update the component when the isDisabled prop changed', () => {
     const wrapper = mount(<Item title={title} isDisabled />);
     const props = wrapper.props();
-    const updated = wrapper.instance().shouldComponentUpdate({
+    const updated = wrapper.find('Item').instance().shouldComponentUpdate({
       ...props,
       isDisabled: false,
     });
@@ -98,7 +98,7 @@ describe('<SheetList.Item />', () => {
   it('should update the component when the isSelected prop changed', () => {
     const wrapper = mount(<Item title={title} isSelected />);
     const props = wrapper.props();
-    const updated = wrapper.instance().shouldComponentUpdate({
+    const updated = wrapper.find('Item').instance().shouldComponentUpdate({
       ...props,
       isSelected: false,
     });

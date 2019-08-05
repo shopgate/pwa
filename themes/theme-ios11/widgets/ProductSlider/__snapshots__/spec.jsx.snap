@@ -12,24 +12,26 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     text="Lorem ipsum"
   />
   <Swiper
+    aria-hidden={null}
     autoPlay={false}
     className={null}
     classNames={
       Object {
-        "container": "css-y5yof0",
+        "container": "css-qsjgo7",
       }
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
     loop={false}
     maxIndicators={null}
     onSlideChange={[Function]}
-    rebuildOnUpdate={false}
+    rebuildOnUpdate={true}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem
@@ -1181,24 +1183,26 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
   className="css-1qazn57"
 >
   <Swiper
+    aria-hidden={null}
     autoPlay={false}
     className={null}
     classNames={
       Object {
-        "container": "css-y5yof0",
+        "container": "css-qsjgo7",
       }
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
     loop={false}
     maxIndicators={null}
     onSlideChange={[Function]}
-    rebuildOnUpdate={false}
+    rebuildOnUpdate={true}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem
@@ -1407,24 +1411,26 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     text="Lorem ipsum"
   />
   <Swiper
+    aria-hidden={null}
     autoPlay={false}
     className={null}
     classNames={
       Object {
-        "container": "css-y5yof0",
+        "container": "css-qsjgo7",
       }
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
     loop={false}
     maxIndicators={null}
     onSlideChange={[Function]}
-    rebuildOnUpdate={false}
+    rebuildOnUpdate={true}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem
@@ -1626,24 +1632,26 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
   className="css-1qazn57"
 >
   <Swiper
+    aria-hidden={null}
     autoPlay={false}
     className={null}
     classNames={
       Object {
-        "container": "css-y5yof0",
+        "container": "css-qsjgo7",
       }
     }
     controls={false}
     disabled={false}
+    freeMode={true}
     indicators={false}
     initialSlide={0}
     interval={1000}
     loop={false}
     maxIndicators={null}
     onSlideChange={[Function]}
-    rebuildOnUpdate={false}
+    rebuildOnUpdate={true}
     slidesPerView={2.3}
-    snapItems={false}
+    snapItems={true}
     zoom={false}
   >
     <SwiperItem

@@ -31,10 +31,12 @@ exports[`<Section /> should render with a headline and items 1`] = `
       <Translate
         className=""
         params={Object {}}
+        role={null}
         string="Headline"
       >
         <span
           className=""
+          role={null}
         >
           Headline
         </span>
@@ -63,10 +65,12 @@ exports[`<Section /> should render with a headline and items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string="Item One"
           >
             <span
               className=""
+              role={null}
             >
               Item One
             </span>
@@ -89,10 +93,12 @@ exports[`<Section /> should render with a headline and items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string="Item Two"
           >
             <span
               className=""
+              role={null}
             >
               Item Two
             </span>
@@ -139,10 +145,12 @@ exports[`<Section /> should render without a headline but items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string="Item One"
           >
             <span
               className=""
+              role={null}
             >
               Item One
             </span>
@@ -165,10 +173,12 @@ exports[`<Section /> should render without a headline but items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string="Item Two"
           >
             <span
               className=""
+              role={null}
             >
               Item Two
             </span>

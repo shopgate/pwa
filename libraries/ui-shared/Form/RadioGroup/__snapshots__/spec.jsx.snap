@@ -27,15 +27,18 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -54,6 +57,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -109,10 +113,12 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
             <Translate
               className="css-1hju4sd"
               params={Object {}}
+              role={null}
               string="foo"
             >
               <span
                 className="css-1hju4sd"
+                role={null}
               >
                 foo
               </span>
@@ -131,6 +137,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -167,15 +174,18 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -194,6 +204,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -249,10 +260,12 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             <Translate
               className="css-1hju4sd"
               params={Object {}}
+              role={null}
               string="foo"
             >
               <span
                 className="css-1hju4sd"
+                role={null}
               >
                 foo
               </span>
@@ -307,10 +320,12 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             <Translate
               className="css-1hju4sd"
               params={Object {}}
+              role={null}
               string="bar"
             >
               <span
                 className="css-1hju4sd"
+                role={null}
               >
                 bar
               </span>
@@ -329,6 +344,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -365,15 +381,18 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -392,6 +411,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -447,10 +467,12 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
             <Translate
               className="css-1hju4sd"
               params={Object {}}
+              role={null}
               string="foo"
             >
               <span
                 className="css-1hju4sd"
+                role={null}
               >
                 foo
               </span>
@@ -469,6 +491,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -505,15 +528,18 @@ exports[`<RadioGroup /> should render empty group 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -532,6 +558,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -550,6 +577,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -586,15 +614,18 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -613,6 +644,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -668,10 +700,12 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
             <Translate
               className="css-1hju4sd"
               params={Object {}}
+              role={null}
               string="foo"
             >
               <span
                 className="css-1hju4sd"
+                role={null}
               >
                 foo
               </span>
@@ -690,6 +724,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -726,15 +761,18 @@ exports[`<RadioGroup /> should use default value 1`] = `
       className="css-1vjh8yv"
     >
       <Placeholder
+        aria-hidden={true}
         placeholder=""
         visible={false}
       >
         <div
+          aria-hidden={true}
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
@@ -753,6 +791,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </label>
@@ -808,10 +847,12 @@ exports[`<RadioGroup /> should use default value 1`] = `
             <Translate
               className="css-1hju4sd"
               params={Object {}}
+              role={null}
               string="foo"
             >
               <span
                 className="css-1hju4sd"
+                role={null}
               >
                 foo
               </span>
@@ -830,6 +871,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
           <Translate
             className=""
             params={Object {}}
+            role={null}
             string=""
           />
         </div>
