@@ -74,12 +74,25 @@
       "not": "Currently not available",
       "not_search_similar": "{name} not available. Search for similar products?"
     },
+    "fulfillment_selector": {
+      "heading": "Availability",
+      "direct_ship": "Direct ship",
+      "pick_up_in_store": "Pick up in store"
+    },
+    "location_stock_info": {
+      "pick_up_at": "at {storeName}",
+      "available": "{visibleInventory} in stock",
+      "limitedAvailability": "Only {visibleInventory} left in stock",
+      "notAvailable": "Pick up within 2-3 days",
+      "customAvailability": "Not available in this store"
+    },
     "relations": {
       "showMore": "Show All"
     },
     "sections": {
       "information": "Product Information",
       "options": "Choose Options",
+      "fulfillment": "Availability",
       "description": "Description",
       "properties": "Properties",
       "ratings": "Ratings",
