@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import shouldUpdate from 'recompose/shouldUpdate';
 import Footer from '@shopgate/pwa-ui-shared/Footer';
+import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
+import { a11yNavEntries } from './constants';
 import styles from './style';
 
 /**
@@ -13,6 +15,7 @@ import styles from './style';
  */
 const Viewport = props => (
   <main className={styles.viewport} role="main" itemScope itemProp="http://schema.org/MobileApplication">
+    <LiveMessenger />
     <NavDrawer />
     <header className={styles.header} id="AppHeader" />
     <section className={styles.content}>
@@ -20,6 +23,7 @@ const Viewport = props => (
     </section>
     <Footer />
     <Search />
+    <Navigation entries={a11yNavEntries} />
   </main>
 );
 

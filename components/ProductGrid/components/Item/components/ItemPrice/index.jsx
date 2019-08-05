@@ -6,7 +6,7 @@ import {
   PRODUCT_ITEM_PRICE_AFTER,
   PRODUCT_ITEM_PRICE_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import ProductGridPrice from 'Components/ProductGridPrice';
+import { ProductGridPrice } from '@shopgate/engage/product';
 
 /**
  * The item price component.

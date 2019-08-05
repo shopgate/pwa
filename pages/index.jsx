@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { ThemeConfigResolver } from '@shopgate/engage/core';
+import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { history } from '@shopgate/pwa-common/helpers/router';
@@ -29,17 +29,17 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { transformRoute as transformItemRoute } from '@shopgate/engage/product';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { SEARCH_PATTERN, SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { NavigationHandler } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
-import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
+import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import SnackBar from 'Components/SnackBar';
 import Viewport from 'Components/Viewport';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import locale from '../locale';
 import * as routes from './routes';
 import themeApi from '../themeApi';
 
@@ -52,9 +52,12 @@ new ThemeConfigResolver().resolveAll();
  * @returns {JSX}
  */
 const Pages = ({ store }) => (
-  <App locale={locale} store={store}>
+  <App store={store}>
+    <Helmet>
+      <html lang={appConfig.language.substring(0, 2)} />
+    </Helmet>
     <NavigationHandler>
-      <AppContext.Provider value={appConfig}>
+      <AppProvider>
         <ThemeContext.Provider value={themeApi}>
           <LoadingProvider>
             <ToastProvider>
@@ -68,7 +71,11 @@ const Pages = ({ store }) => (
                   <Route pattern={ROOT_CATEGORY_PATTERN} component={routes.RootCategory} cache />
                   <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
                   <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                  <Route pattern={ITEM_PATTERN} component={routes.Product} />
+                  <Route
+                    pattern={ITEM_PATTERN}
+                    component={routes.Product}
+                    transform={transformItemRoute}
+                  />
                   <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
                   <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
                   <Route pattern={ITEM_WRITE_REVIEW_PATTERN} component={routes.WriteReview} />
@@ -92,7 +99,7 @@ const Pages = ({ store }) => (
             </ToastProvider>
           </LoadingProvider>
         </ThemeContext.Provider>
-      </AppContext.Provider>
+      </AppProvider>
     </NavigationHandler>
   </App>
 );

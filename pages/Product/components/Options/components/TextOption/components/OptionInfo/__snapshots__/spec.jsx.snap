@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<OptionInfo /> should render price element 1`] = `
-<Grid
-  className="css-jy6f7q"
-  component="ul"
-  wrap={false}
+<ul
+  className="css-jy6f7q css-h7r55a"
 >
   <GridItem
+    aria-hidden={true}
     className="css-1bia360"
     component="li"
     grow={1}
@@ -20,16 +19,22 @@ exports[`<OptionInfo /> should render price element 1`] = `
       price={10}
     />
   </GridItem>
-</Grid>
+  <div
+    hidden={true}
+    id="some-id"
+  >
+    price.label
+    Some Text
+  </div>
+</ul>
 `;
 
 exports[`<OptionInfo /> should render required element 1`] = `
-<Grid
-  className="css-jy6f7q"
-  component="ul"
-  wrap={false}
+<ul
+  className="css-jy6f7q css-h7r55a"
 >
   <GridItem
+    aria-hidden={true}
     className="css-cr41pz"
     component="li"
     grow={0}
@@ -38,8 +43,16 @@ exports[`<OptionInfo /> should render required element 1`] = `
     <Translate
       className=""
       params={Object {}}
+      role={null}
       string="common.required"
     />
   </GridItem>
-</Grid>
+  <div
+    hidden={true}
+    id="some-id"
+  >
+    common.required
+    Some Text
+  </div>
+</ul>
 `;

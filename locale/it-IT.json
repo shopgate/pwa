@@ -1,13 +1,15 @@
 {
   "common": {
     "countdown": "{days, plural, =0 {Solo {time} rimanente} =1 {# giorno {time}} other {# giorni {time}}}",
-    "load_more": "Carica altro",
+    "load_more": "Carica di più",
     "cancel": "Cancella",
     "submit": "Sottoscrivi",
     "undo": "annulla",
     "required": "Necessaria *",
     "please_choose": "Inserisci",
-    "show_products": "Mostra i prodotti"
+    "show_products": "Mostra i prodotti",
+    "back": "Indietro",
+    "close": "Chiudi"
   },
   "titles": {
     "categories": "Categorie",
@@ -40,7 +42,7 @@
       "price_asc": "Prezzo: Dal Basso in Alto"
     },
     "apply": "Applica",
-    "more": "altro",
+    "more": "di più",
     "reset": "Resetta"
   },
   "price": {
@@ -50,12 +52,18 @@
       "set": "{from} elementi: {price}",
       "range": "{from} o altro: {price}"
     },
-    "msrp": "SRP"
+    "msrp": "SRP",
+    "label": "Prezzo {price}.",
+    "label_old_price": "Prezzo precedente {price}."
   },
   "product": {
     "description_heading": "A riguardo",
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
+    "adding_item": "{count, plural, =1 {Aggiungendo {count} articolo} other {Aggiungendo {count} di articoli}}",
+    "pick_option_first": "Prima scegli un'opzione. {option}",
+    "fill_out_required_input_first": "Prima inserisci i dati richiesti.",
+    "add_to_cart": "Aggiungi al carrello",
     "no_more_found": "L'articolo: \"{name}\" non è più disponibile.",
     "quantity": "Quantità",
     "minOrderQuantity": "Quantità min. d'ordine:{quantity}",
@@ -65,6 +73,23 @@
       "until": "Disponibile fino a {endDate, date, DD} {endDate, date, MMM} alle ore {endDate, time, short}",
       "not": "Momentaneamente non disponibile",
       "not_search_similar": "{name} non disponibile. Cercare prodotti simili?"
+    },
+    "relations": {
+      "showMore": "Mostra tutto"
+    },
+    "sections": {
+      "information": "Informazioni sul prodotto",
+      "options": "Seleziona le opzioni",
+      "description": "Descrizione",
+      "properties": "Caratteristiche",
+      "ratings": "Valutazioni",
+      "purchase": "Acquista articolo"
+    },
+    "displayGroups": {
+      "general": "Generali",
+      "features": "Caratteristiche",
+      "pricing": "Prezzi",
+      "properties": "Proprietà"
     }
   },
   "category": {
@@ -75,6 +100,10 @@
     "no_result": {
       "heading": "Ops!",
       "body": "Nessun prodotto trovato."
+    },
+    "sections": {
+      "categories": "Categorie",
+      "products": "Prodotti"
     }
   },
   "search": {
@@ -132,6 +161,7 @@
   },
   "navigation": {
     "login_register": "Accedi / Registrati",
+    "your_account": "Il mio account",
     "home": "Pagina iniziale",
     "categories": "Categorie",
     "favorites": "Favoriti",
@@ -143,9 +173,13 @@
     "payment": "Modalità di pagamento",
     "terms": "Termini",
     "privacy": "Politica sulla privacy",
-    "return_policy": "Politica di restituzione",
     "welcome_message": "Benvenuto/a {name}",
-    "logout": "Abbandona"
+    "return_policy": "Politica di restituzione",
+    "logout": "Esci",
+    "menuSubHeader": {
+      "more": "Di più",
+      "about": "Su di noi"
+    }
   },
   "reviews": {
     "rating": "valutazione",
@@ -154,7 +188,7 @@
     "button_add": "Scrivi una recensione",
     "button_all": "Tutte le {count} Recensioni",
     "author": "da {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}}",
+    "rating_stars": "{rate} {rate, plural, =1 {stella} other {stelle}} su {maxRate}",
     "review_form_rate": "Vota questo prodotto:",
     "review_form_author": "Il tuo nome",
     "review_form_title": "Titolo della recensione (optional)",
@@ -177,7 +211,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },

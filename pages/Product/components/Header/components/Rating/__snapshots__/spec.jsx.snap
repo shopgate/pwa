@@ -61,6 +61,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo "
                 data-test-id="ratedStars: 2.5"
+                role="text"
               >
                 <div
                   className="css-4s85e9"
@@ -376,10 +377,12 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                     "prominent": true,
                   }
                 }
+                role={null}
                 string="reviews.review_count"
               >
                 <span
                   className="css-a7xi3l css-oixusm"
+                  role={null}
                 >
                   reviews.review_count
                 </span>

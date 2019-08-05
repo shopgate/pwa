@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import { Swiper } from '@shopgate/engage/components';
 import { buildMediaImageUrl } from '@shopgate/engage/product';
 import { GALLERY_SLIDER_ZOOM, GALLERY_SLIDER_IMAGE_FORMATS } from './../../../../constants';
@@ -12,9 +13,11 @@ import connect from './connector';
  * @return {JSX}
  */
 const ProductGalleryMedia = ({ initialSlide, media }) => {
-  if (media.length === 0) {
+  if (!Array.isArray(media) || media.length === 0) {
     return <div className={styles.container} />;
   }
+
+  const settings = useWidgetSettings('@shopgate/engage/product/Gallery');
 
   return (
     <div className={styles.container}>
@@ -25,7 +28,10 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
         indicators
         loop={media.length > 1}
         disabled={media.length === 1}
-        zoom={GALLERY_SLIDER_ZOOM}
+        zoom={{
+          ...GALLERY_SLIDER_ZOOM,
+          ...settings.zoom,
+        }}
       >
         {media.map(singleMedia => (
           <Swiper.Item key={singleMedia.url}>

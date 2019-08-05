@@ -7,7 +7,9 @@
     "undo": "Undo",
     "required": "Required *",
     "please_choose": "Please choose",
-    "show_products": "Show products"
+    "show_products": "Show products",
+    "back": "Back",
+    "close": "Close"
   },
   "titles": {
     "categories": "Categories",
@@ -50,12 +52,18 @@
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
     },
-    "msrp": "MSRP"
+    "msrp": "MSRP",
+    "label": "Price {price}.",
+    "label_old_price": "Old price {price}."
   },
   "product": {
     "description_heading": "About",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
+    "adding_item": "{count, plural, =1 {Adding {count} item} other {Adding {count} items}}",
+    "pick_option_first": "Pick an option first. {option}",
+    "fill_out_required_input_first": "Fill out the required inputs first.",
+    "add_to_cart": "Add to cart",
     "no_more_found": "The item \"{name}\" is no longer available.",
     "quantity": "Quantity",
     "minOrderQuantity": "Min. order quantity:{quantity}",
@@ -65,6 +73,23 @@
       "until": "Available until {endDate, date, MMM} {endDate, date, DD} at {endDate, time, short}",
       "not": "Currently not available",
       "not_search_similar": "{name} not available. Search for similar products?"
+    },
+    "relations": {
+      "showMore": "Show All"
+    },
+    "sections": {
+      "information": "Product Information",
+      "options": "Choose Options",
+      "description": "Description",
+      "properties": "Properties",
+      "ratings": "Ratings",
+      "purchase": "Purchase Item"
+    },
+    "displayGroups": {
+      "general": "General",
+      "features": "Features",
+      "pricing": "Pricing",
+      "properties": "Properties"
     }
   },
   "category": {
@@ -75,6 +100,10 @@
     "no_result": {
       "heading": "Oops!",
       "body": "No products found."
+    },
+    "sections": {
+      "categories": "Categories",
+      "products": "Products"
     }
   },
   "search": {
@@ -159,7 +188,7 @@
     "button_add": "Write a Review",
     "button_all": "All {count} Reviews",
     "author": "by {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
+    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}} of {maxRate}.",
     "review_form_rate": "Rate this product:",
     "review_form_author": "Your Name",
     "review_form_title": "Review title (optional)",
@@ -182,7 +211,7 @@
     }
   },
   "formats": {
-    "date" : {
+    "date": {
       "DD": {
         "day": "2-digit"
       },

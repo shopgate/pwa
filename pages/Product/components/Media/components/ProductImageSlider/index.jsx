@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import noop from 'lodash/noop';
+import { getActualImageSource } from '@shopgate/engage/core';
 import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
@@ -41,14 +43,16 @@ const getImagesByIndex = (images) => {
  * @param {number} currentSlide The index of the current visible slide.
  * @deprecated since catalog 2.0
  */
-class ImageSlider extends Component {
+class ProductImageSlider extends Component {
   static propTypes = {
+    'aria-hidden': PropTypes.bool,
     images: PropTypes.arrayOf(PropTypes.shape()),
     navigate: PropTypes.func,
     product: PropTypes.shape(),
   };
 
   static defaultProps = {
+    'aria-hidden': null,
     images: null,
     product: null,
     navigate: () => { },
@@ -73,12 +77,6 @@ class ImageSlider extends Component {
   currentSlide = 0;
 
   handleOpenGallery = () => {
-    const { images } = this.props;
-
-    if (!images || (Array.isArray(images) && !images.length)) {
-      return;
-    }
-
     this.props.navigate(this.currentSlide);
   };
 
@@ -91,11 +89,15 @@ class ImageSlider extends Component {
    * @returns {JSX}
    */
   render() {
-    const { product, images } = this.props;
+    const { product, images, 'aria-hidden': ariaHidden } = this.props;
     let content;
+    let imagesByIndex = [];
+
+    let onClick = this.handleOpenGallery;
+    let onKeyDown = this.handleOpenGallery;
 
     if (product && Array.isArray(images) && images.length > 1) {
-      const imagesByIndex = getImagesByIndex(images);
+      imagesByIndex = getImagesByIndex(images);
 
       if (imagesByIndex.length) {
         content = (
@@ -107,7 +109,7 @@ class ImageSlider extends Component {
           >
             {imagesByIndex.map(imagesInIndex => (
               <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
-                <ProductImage srcmap={imagesInIndex} animating={false} />
+                <ProductImage srcmap={imagesInIndex} animating={false} noBackground />
               </Swiper.Item>
             ))}
           </Swiper>
@@ -123,7 +125,14 @@ class ImageSlider extends Component {
           resolutions={fallbackResolutions}
         />
       );
+      onClick = noop;
+      onKeyDown = noop;
     }
+
+    const imageStyle = product ? {
+      background: `url(${getActualImageSource(product.featuredImageUrl, fallbackResolutions[0])})`,
+      backgroundSize: 'contain',
+    } : null;
 
     return (
       <Fragment>
@@ -131,10 +140,12 @@ class ImageSlider extends Component {
         <Portal name={PRODUCT_IMAGE}>
           <div
             data-test-id={`product: ${product ? product.name : ''}`}
-            onClick={this.handleOpenGallery}
-            onKeyDown={this.handleOpenGallery}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
             role="button"
             tabIndex="0"
+            aria-hidden={ariaHidden}
+            style={imageStyle}
           >
             {content}
           </div>
@@ -145,4 +156,4 @@ class ImageSlider extends Component {
   }
 }
 
-export default connect(ImageSlider);
+export default connect(ProductImageSlider);
