@@ -7,6 +7,7 @@ export { default as fetchSearchSuggestions } from '@shopgate/pwa-common-commerce
 // CONSTANTS
 export * from '@shopgate/pwa-common-commerce/search/constants/index';
 export * from '@shopgate/pwa-common-commerce/search/constants/Pipelines';
+export * from '@shopgate/pwa-common-commerce/search/constants/Portals';
 
 // HELPERS
 export { default as removeHighlightingPlaceholers } from '@shopgate/pwa-common-commerce/search/helpers/removeHighlightingPlaceholders';
