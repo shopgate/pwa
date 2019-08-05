@@ -128,3 +128,19 @@ export const isUserLoginDisabled = createSelector(
  * @return {string|null}
  */
 export const getRegisterUrl = state => getUrl(state, { type: 'register' });
+
+/**
+ * Creates the selector that retrieves the user location state.
+ * @returns {Function}
+ */
+export const makeGetUserLocationState = () => (
+  /**
+   * Retrieves the user location state.
+   * @param {Object} state The application state.
+   * @returns {Object}
+   */
+  createSelector(
+    getUserState,
+    state => state.location || {}
+  )
+);

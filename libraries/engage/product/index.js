@@ -69,6 +69,7 @@ export { RelationsSlider } from './components/RelationsSlider';
 export { default as ProductCard } from './components/ProductCard';
 export { default as ProductGridPrice } from './components/ProductGridPrice';
 export { StoreSelector } from './components/StoreSelector';
+export { default as FulfillmentSelector } from './components/FulfillmentSelector';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';

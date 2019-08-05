@@ -18,7 +18,7 @@ describe('<LocationStockInfo />', () => {
     });
     const wrapper = mount(<LocationStockInfo
       location={{
-        storeName: '',
+        name: '',
         visibleInventory: null,
       }}
     />);
@@ -34,7 +34,7 @@ describe('<LocationStockInfo />', () => {
     });
     const wrapper = mount(<LocationStockInfo
       location={{
-        storeName: 'Test Store',
+        name: 'Test Store',
         visibleInventory: 15,
       }}
     />);
@@ -51,7 +51,7 @@ describe('<LocationStockInfo />', () => {
     });
     const wrapper = mount(<LocationStockInfo
       location={{
-        storeName: 'Test Store',
+        name: 'Test Store',
         visibleInventory: 15,
       }}
       showStoreName={false}
@@ -68,7 +68,7 @@ describe('<LocationStockInfo />', () => {
     });
     const wrapper = mount(<LocationStockInfo
       location={{
-        storeName: 'Test Store',
+        name: 'Test Store',
         visibleInventory: null,
       }}
     />);

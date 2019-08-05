@@ -74,12 +74,25 @@
       "not": "Derzeit nicht verfügbar",
       "not_search_similar": "{name} nicht verfügbar. Nach ähnlichen Produkten suchen?"
     },
+    "fulfillment_selector": {
+      "heading": "Verfügbarkeit",
+      "direct_ship": "Online bestellen",
+      "pick_up_in_store": "Abholen in Filliale"
+    },
+    "location_stock_info": {
+      "pick_up_at": "bei {storeName}",
+      "available": "{visibleInventory} auf Lager",
+      "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
+      "notAvailable": "Verfügbar in 2-3 Tagen",
+      "customAvailability": "In dieser Filliale nicht verfügbar"
+    },
     "relations": {
       "showMore": "Mehr"
     },
     "sections": {
       "information": "Produkt Informationen",
       "options": "Optionen wählen",
+      "fulfillment": "Verfügbarkeit",
       "description": "Beschreibung",
       "properties": "Eingeschaften",
       "ratings": "Bewertungen",

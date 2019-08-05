@@ -10,6 +10,7 @@ import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
+import Fulfillment from '../Fulfillment';
 import Description from '../Description';
 import AppBar from '../AppBar';
 import AddToCartBar from '../AddToCartBar';
@@ -155,6 +156,13 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.options">
             <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
             <Options />
+          </Section>
+          {/*
+              This feature is currently in BETA testing.
+              It should only be used for approved BETA Client Projects
+            */}
+          <Section title="product.sections.fulfillment">
+            <Fulfillment productId={this.state.productId} variantId={this.state.variantId} />
           </Section>
           <Section title="product.sections.description">
             <Description productId={this.state.productId} variantId={this.state.variantId} />
