@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { SurroundPortals } from '@shopgate/engage/components';
+import {
+  SEARCH_SUGGESTIONS,
+  SEARCH_SUGGESTION_ITEM,
+  SEARCH_SUGGESTION_ITEM_CONTENT,
+} from '@shopgate/engage/search';
 import connect from './connector';
 import styles from './style';
 
@@ -36,19 +42,34 @@ class SuggestionList extends Component {
     }
 
     return (
-      <div className={styles.list}>
-        {suggestions.map(suggestion => (
-          <button
-            className={styles.item}
-            onClick={onClick}
-            key={suggestion}
-            value={suggestion}
-            data-test-id={`searchSuggestion ${suggestion}`}
-          >
-            {suggestion}
-          </button>
-        ))}
-      </div>
+      <SurroundPortals
+        portalName={SEARCH_SUGGESTIONS}
+        portalProps={{ suggestions }}
+      >
+        <div className={styles.list}>
+          {suggestions.map(suggestion => (
+            <SurroundPortals
+              portalName={SEARCH_SUGGESTION_ITEM}
+              portalProps={{ suggestion }}
+              key={suggestion}
+            >
+              <button
+                className={styles.item}
+                onClick={onClick}
+                value={suggestion}
+                data-test-id={`searchSuggestion ${suggestion}`}
+              >
+                <SurroundPortals
+                  portalName={SEARCH_SUGGESTION_ITEM_CONTENT}
+                  portalProps={{ suggestion }}
+                >
+                  {suggestion}
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+          ))}
+        </div>
+      </SurroundPortals>
     );
   }
 }
