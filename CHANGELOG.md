@@ -1,5 +1,54 @@
 # Changelog
 
+## [v6.7.0](https://github.com/shopgate/pwa/compare/v6.6.0...v6.7.0) (2019-08-06)
+
+#### :rocket: Enhancement
+* [#784](https://github.com/shopgate/pwa/pull/784) Added supported tracking services to the options for tracking plugins ([@fkloes](https://github.com/fkloes))
+* [#788](https://github.com/shopgate/pwa/pull/788) Added Portals to the Search Suggestions components. ([@devbucket](https://github.com/devbucket))
+* [#783](https://github.com/shopgate/pwa/pull/783) Added missing portals for empty favorites page and empty search results page ([@Carsten89](https://github.com/Carsten89))
+* [#780](https://github.com/shopgate/pwa/pull/780) Grouped properties labels are translated. ([@sznowicki](https://github.com/sznowicki))
+* [#757](https://github.com/shopgate/pwa/pull/757) Refactored favorites actions to use add and delete favorites pipelines instead of put ([@aaron-martin](https://github.com/aaron-martin))
+* [#774](https://github.com/shopgate/pwa/pull/774) Enhance Swiper Component ([@Carsten89](https://github.com/Carsten89))
+* [#760](https://github.com/shopgate/pwa/pull/760) The product image updates when a characteristic is selected. ([@devbucket](https://github.com/devbucket))
+* [#764](https://github.com/shopgate/pwa/pull/764) Added missing translations strings for a11y ([@devbucket](https://github.com/devbucket))
+* [#725](https://github.com/shopgate/pwa/pull/725) Added a sheet to show all Related Products on the PDP ([@devbucket](https://github.com/devbucket))
+* [#722](https://github.com/shopgate/pwa/pull/722) Added functionality to access widget and page configs and settings outside of the react scope. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#759](https://github.com/shopgate/pwa/pull/759) Improved product characteristics auto selection ([@fkloes](https://github.com/fkloes))
+* [#717](https://github.com/shopgate/pwa/pull/717) Added support for Universal Links ([@sznowicki](https://github.com/sznowicki))
+* [#707](https://github.com/shopgate/pwa/pull/707) Improved accessibility of the Product Details Page ([@fkloes](https://github.com/fkloes))
+* [#715](https://github.com/shopgate/pwa/pull/715) Enabled color configuration for the AppHeader ([@fkloes](https://github.com/fkloes))
+* [#709](https://github.com/shopgate/pwa/pull/709) Improved safe area insets ([@fkloes](https://github.com/fkloes))
+* [#700](https://github.com/shopgate/pwa/pull/700) Introduced a global translation helper ([@sznowicki](https://github.com/sznowicki))
+* [#702](https://github.com/shopgate/pwa/pull/702) Improved general navigation for screen readers  ([@fkloes](https://github.com/fkloes))
+* [#699](https://github.com/shopgate/pwa/pull/699) The Product Details Page can now show related products in a slider ([@devbucket](https://github.com/devbucket))
+* [#698](https://github.com/shopgate/pwa/pull/698) Make modal window title translatable with parameters ([@alexbridge](https://github.com/alexbridge))
+* [#695](https://github.com/shopgate/pwa/pull/695) Configuration added to configure zoom ratio for product gallery ([@alexbridge](https://github.com/alexbridge))
+* [#693](https://github.com/shopgate/pwa/pull/693) Support effectivity dates on Product List Page ([@alexbridge](https://github.com/alexbridge))
+* [#687](https://github.com/shopgate/pwa/pull/687) Optimized the category and browse page for screen readers ([@fkloes](https://github.com/fkloes))
+* [#683](https://github.com/shopgate/pwa/pull/683) Added accessibility tree to the TabBar in iOS ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#787](https://github.com/shopgate/pwa/pull/787) Product Image does not flicker when opening the PDP for the first time. ([@devbucket](https://github.com/devbucket))
+* [#786](https://github.com/shopgate/pwa/pull/786) Fixed inconsistent spacing from the Browse page of the iOS theme ([@fkloes](https://github.com/fkloes))
+* [#779](https://github.com/shopgate/pwa/pull/779) Fixed Padding to only apply to ProductSlider component from ThemeApi ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#777](https://github.com/shopgate/pwa/pull/777) Long product names are hyphened and cur off correctly in ProductGrid ([@devbucket](https://github.com/devbucket))
+* [#778](https://github.com/shopgate/pwa/pull/778) Fix video autoplay on cms pages ([@alexbridge](https://github.com/alexbridge))
+* [#756](https://github.com/shopgate/pwa/pull/756) Show placeholder or featured media on product details page ([@alexbridge](https://github.com/alexbridge))
+* [#776](https://github.com/shopgate/pwa/pull/776) Adding a product+coupon via qr-code redirects to cart ([@alexbridge](https://github.com/alexbridge))
+* [#771](https://github.com/shopgate/pwa/pull/771) Added padding to Swiper component in Engage library to show a shadow for product cards ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#773](https://github.com/shopgate/pwa/pull/773) Decoupled swatch content into a separate component and introduced a VariantSwatch widget component to be rendered in the PDP ([@alexbridge](https://github.com/alexbridge))
+* [#775](https://github.com/shopgate/pwa/pull/775) Prevented opening of the product gallery from placeholder images ([@fkloes](https://github.com/fkloes))
+* [#774](https://github.com/shopgate/pwa/pull/774) Enhance Swiper Component ([@Carsten89](https://github.com/Carsten89))
+* [#772](https://github.com/shopgate/pwa/pull/772) Fixed an issue where the Swiper component didn't update as expected ([@fkloes](https://github.com/fkloes))
+* [#769](https://github.com/shopgate/pwa/pull/769) Added empty data check to getKnownRelatives selector ([@Carsten89](https://github.com/Carsten89))
+* [#770](https://github.com/shopgate/pwa/pull/770) Updated ProductSlider theme component to use Slider.Item wrapper for given ProductCard ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#761](https://github.com/shopgate/pwa/pull/761) Add default fetch products parameters, fetch favorite products data ([@alexbridge](https://github.com/alexbridge))
+* [#763](https://github.com/shopgate/pwa/pull/763) Re-position toast component ([@alexbridge](https://github.com/alexbridge))
+* [#747](https://github.com/shopgate/pwa/pull/747) Translation files are incomplete and partially wrong ([@alexbridge](https://github.com/alexbridge))
+* [#758](https://github.com/shopgate/pwa/pull/758) Adjust slider navigation on product details page  ([@alexbridge](https://github.com/alexbridge))
+* [#748](https://github.com/shopgate/pwa/pull/748) Fix displaying unit price on product details page for product without variants ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.6.0](https://github.com/shopgate/pwa/compare/v6.5.4...v6.6.0) (2019-07-17)
 
 #### :rocket: Enhancement
