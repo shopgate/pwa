@@ -4,7 +4,7 @@ import { SurroundPortals } from '@shopgate/engage/components';
 import {
   SEARCH_SUGGESTIONS,
   SEARCH_SUGGESTION_ITEM,
-  SEARCG_SUGGESTION_ITEM_CONTENT,
+  SEARCH_SUGGESTION_ITEM_CONTENT,
 } from '@shopgate/engage/search';
 import connect from './connector';
 import styles from './style';
@@ -60,7 +60,7 @@ class SuggestionList extends Component {
                 data-test-id={`searchSuggestion ${suggestion}`}
               >
                 <SurroundPortals
-                  portalName={SEARCG_SUGGESTION_ITEM_CONTENT}
+                  portalName={SEARCH_SUGGESTION_ITEM_CONTENT}
                   portalProps={{ suggestion }}
                 >
                   {suggestion}
