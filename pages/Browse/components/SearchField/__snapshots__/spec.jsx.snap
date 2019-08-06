@@ -337,7 +337,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
         <div
           className="css-1su8uh1"
         />
-        <Connect(SuggestionList)
+        <Component
           bottomHeight={0}
           onClick={[Function]}
           searchPhrase="foo"
