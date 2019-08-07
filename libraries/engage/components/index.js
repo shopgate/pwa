@@ -76,6 +76,7 @@ export { default as Builder } from '@shopgate/pwa-ui-shared/Form/Builder';
 export { default as Checkbox } from '@shopgate/pwa-ui-shared/Form/Checkbox';
 export { default as Password } from '@shopgate/pwa-ui-shared/Form/Password';
 export { default as RadioGroup } from '@shopgate/pwa-ui-shared/Form/RadioGroup';
+export { default as RadioGroupItem } from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
 export { default as Select } from '@shopgate/pwa-ui-shared/Form/Select';
 export { default as TextField } from '@shopgate/pwa-ui-shared/Form/TextField';
 export { default as FormElement } from '@shopgate/pwa-ui-shared/FormElement';
