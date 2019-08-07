@@ -1,19 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import defaultsDeep from 'lodash/defaultsDeep';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants/Portals';
-import { SurroundPortals } from '../../../components';
-import { getThemeSettings } from '../../../core/config/getThemeSettings';
-import { capitalize } from '../../../core/helpers/string';
+import { getThemeSettings } from '@shopgate/engage/core';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { PRODUCT_LOCATION_STOCK_INFO } from '@shopgate/engage/product';
 import defaultSettings from './defaultSettings';
 import getAvailabilitySettings from './getAvailabilitySettings';
+import Inventory from './Inventory';
+import StoreName from './StoreName';
 
 /**
- * The Availability component.
+ * Renders visible stock information based on the given location.
  * @param {Object} props The component props.
  * @return {JSX}
  */
@@ -42,36 +41,18 @@ const LocationStockInfo = ({ location, className, showStoreName }) => {
         availabilityTextColor,
       }}
     >
-      {(location.visibleInventory !== null || location.storeName) &&
+      {(location.visibleInventory !== null || location.name) &&
         <span className={classNames(`${defaultClassName}`, `${className}`)}>
-          {location.visibleInventory !== null &&
-            <Fragment>
-              <I18n.Text
-                string={availabilityText}
-                params={{
-                  // Limit stock to max visible stock if it is set
-                  visibleInventory: (
-                    settings.maxNumberOfVisibleInventory &&
-                      location.visibleInventory > settings.maxNumberOfVisibleInventory
-                      ? `${settings.maxNumberOfVisibleInventory}${settings.aboveMaxExtension}`
-                      : location.visibleInventory
-                  ),
-                }}
-              />
-              &nbsp;
-            </Fragment>
-          }
-          { showStoreName &&
-            <I18n.Text
-              string="product.location_stock_info.pick_up_at"
-              params={{ storeName: location.name }}
-              transform={
-                (location.visibleInventory === null || !availabilityText)
-                  ? capitalize
-                  : null
-              }
-            />
-          }
+          <Inventory
+            availabilityText={availabilityText}
+            location={location}
+            maxNumberVisible={settings.maxNumberOfVisibleInventory}
+            aboveMaxExtension={settings.aboveMaxExtension}
+          />
+          <StoreName
+            name={showStoreName ? location.name : ''}
+            displayCapitalized={location.visibleInventory === null || !availabilityText}
+          />
         </span>
       }
     </SurroundPortals>
@@ -103,4 +84,4 @@ LocationStockInfo.defaultProps = {
   showStoreName: true,
 };
 
-export default pure(LocationStockInfo);
+export default memo(LocationStockInfo);

@@ -1,13 +1,16 @@
 import { css } from 'glamor';
 import classNames from 'classnames';
 import radioGroupStyles from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item/style';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables: { gap: { big: bigGap = 16 } = {} } = {} } = themeConfig;
 
 export const container = css({
-  padding: '13px 16px 16px',
+  padding: `${(bigGap * 0.8).toFixed()}px ${bigGap}px ${bigGap}px`,
 }).toString();
 
 export const title = css({
-  fontSize: 16,
+  fontSize: '1rem',
   fontWeight: 500,
   marginBottom: 8,
 }).toString();

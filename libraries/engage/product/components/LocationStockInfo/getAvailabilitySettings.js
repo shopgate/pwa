@@ -21,20 +21,22 @@ export default (settings, visibleInventory, inventoryBlind) => {
   }
 
   // Filter by inventory blind and visible inventory (must match both).
-  matchingTypes = availabilityTypes.filter(type => (
-    // When inventory blind is set in the current availability setting, then this should also
-    // account for the inventory blind from the given store. Ignore inventory blind otherwise.
-    !settings[type].includeInventoryBlind ||
-      (settings[type].includeInventoryBlind && !!inventoryBlind)
-  )).filter(type => (
-    // Don't filter, when inventoryBlind filter is already active
-    settings[type].includeInventoryBlind || (
-      // Also, inventory must be truthy or 0, or otherwise there is nothing to search for.
-      visibleInventory >= settings[type].visibleInventoryFrom &&
-      (settings[type].visibleInventoryTo === null ||
-        visibleInventory <= settings[type].visibleInventoryTo)
-    )
-  ));
+  matchingTypes = availabilityTypes
+    .filter(type => (
+      // When inventory blind is set in the current availability setting, then this should also
+      // account for the inventory blind from the given store. Ignore inventory blind otherwise.
+      !settings[type].includeInventoryBlind ||
+        (settings[type].includeInventoryBlind && !!inventoryBlind)
+    ))
+    .filter(type => (
+      // Don't filter, when inventoryBlind filter is already active
+      settings[type].includeInventoryBlind || (
+        // Also, inventory must be truthy or 0, or otherwise there is nothing to search for.
+        visibleInventory >= settings[type].visibleInventoryFrom &&
+        (settings[type].visibleInventoryTo === null ||
+          visibleInventory <= settings[type].visibleInventoryTo)
+      )
+    ));
 
   if (matchingTypes.length > 0) {
     return settings[matchingTypes[0]];

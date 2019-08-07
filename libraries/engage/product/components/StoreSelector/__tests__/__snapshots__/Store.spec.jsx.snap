@@ -59,7 +59,7 @@ exports[`<Store /> should handle the store selection 1`] = `
           }
         }
       />
-      <pure(LocationStockInfo)
+      <LocationStockInfo
         location={
           Object {
             "storeName": "SomeStore",
@@ -149,7 +149,7 @@ exports[`<Store /> should render as expected 1`] = `
           }
         }
       />
-      <pure(LocationStockInfo)
+      <LocationStockInfo
         location={
           Object {
             "storeName": "SomeStore",

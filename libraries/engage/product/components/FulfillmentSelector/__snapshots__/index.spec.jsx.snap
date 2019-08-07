@@ -17,7 +17,7 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
   >
     <div
       aria-hidden={true}
-      className="css-10lhp8m"
+      className="css-1femajq"
       role="heading"
     >
       <Translate
@@ -39,56 +39,26 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       translateErrorText={true}
       value="product.fulfillment_selector.direct_ship"
     >
-      <RadioItem
-        checked={false}
-        className="css-i8mws5"
-        label={
-          <div
-            className="css-1hju4sd css-1siwvsy"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string="product.fulfillment_selector.direct_ship"
-              transform={null}
-            />
-            <Connect(pure(Availability))
-              fulfillmentSelection="directShip"
-              productId="abc-123"
-            />
-          </div>
-        }
+      <FulfillmentSelectorItem
         name="product.fulfillment_selector.direct_ship"
-        onChange={[Function]}
-      />
-      <RadioItem
-        checked={false}
-        className="css-i8mws5"
-        label={
-          <div
-            className="css-1hju4sd css-1siwvsy"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string="product.fulfillment_selector.pick_up_in_store"
-              transform={null}
-            />
-            <pure(LocationStockInfo)
-              location={
-                Object {
-                  "name": "Test Store",
-                  "visibleInventory": 15,
-                }
-              }
-            />
-          </div>
-        }
+      >
+        <Connect(pure(Availability))
+          fulfillmentSelection="directShip"
+          productId="abc-123"
+        />
+      </FulfillmentSelectorItem>
+      <FulfillmentSelectorItem
         name="product.fulfillment_selector.pick_up_in_store"
-        onChange={[Function]}
-      />
+      >
+        <LocationStockInfo
+          location={
+            Object {
+              "name": "Test Store",
+              "visibleInventory": 15,
+            }
+          }
+        />
+      </FulfillmentSelectorItem>
     </RadioGroup>
   </div>
 </SurroundPortals>

@@ -28,6 +28,7 @@ export * from '@shopgate/pwa-common-commerce/product/constants/index';
 export * from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
 export * from './constants';
+export * from './constants/Portals';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';

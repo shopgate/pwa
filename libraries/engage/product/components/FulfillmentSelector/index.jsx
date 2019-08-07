@@ -1,25 +1,27 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { SurroundPortals } from '@shopgate/engage/components';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
-import RadioItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
-import { isBeta } from '../../../core/config/isBeta';
+import { isBeta } from '@shopgate/engage/core';
+import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
-} from '../../constants';
-import { PRODUCT_FULFILLMENT_SELECTOR } from '../../constants/Portals';
-import Availability from '../Availability';
-import { StoreSelector } from '../StoreSelector';
-import LocationStockInfo from '../LocationStockInfo';
+  PRODUCT_FULFILLMENT_SELECTOR,
+  Availability,
+  StoreSelector,
+  LocationStockInfo,
+} from '@shopgate/engage/product';
+import FulfillmentSelectorItem from './FulfillmentSelectorItem';
 import connect from './connector';
 import * as styles from './style';
 
 // TODO: Integrate a conditioner that ensures selection of characteristics and required options
 /**
- * Fulfillment/Store selector box
- * @return {JSX}
+ * Renders a fulfillment selector box for fulfillment methods direct ship and pick up in store,
+ * when fulfillment methods are set up for the product and pick up in store is one of them.
+ * @param {string} props.productCode Code to the product or a variant.
+ * @param {string[]} props.fulfillmentMethods All fulfillment methods provided for the product.
+ * @param {Object} props.location Last location that was selected for the previous product/variant.
+ * @returns {JSX}
  */
 export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location }) => {
   if (!isBeta()) { // TODO: Change to feature flag!
@@ -44,28 +46,33 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
   // Keeps track of the selector sheet being opened or not, to "debounce" open events.
   const [isSelectorOpened, setIsSelectorOpened] = useState(false);
 
-  // When the product code changes, the selection will reset
-  const [currentProductCode, setCurrentProductCode] = useState(productCode);
-  if (productCode !== currentProductCode) {
-    setCurrentProductCode(productCode);
+  // When the product code changes, the selection will reset to direct ship
+  useEffect(() => {
     setSelection(directShip);
+
+    // Force the store selector to open when "pick up" is selected on every variant change
+    setSelectedLocation(null);
 
     // Close selector sheet as well when it is currently opened
     if (isSelectorOpened) {
       StoreSelector.close();
       setIsSelectorOpened(false);
     }
-  }
+  }, [productCode]);
 
   // Whenever the pick-up selection is made, open the store selector sheet and use the new location.
   const handleChange = useCallback((elementName) => {
+    // Immediately update radio item selection for more responsiveness
+    setSelection(elementName);
+
+    // Handle selection of a location and aborting the Store Selector sheet
     if (elementName === pickUp) {
       // Debounce sheet open action
       if (isSelectorOpened) {
         return;
       }
 
-      // Open the sheet and provide a callback for when it is closed.
+      // Open the store selector sheet and provide a callback for when it is closed.
       setIsSelectorOpened(true);
 
       // TODO: Change this to open the store selector only if it wasn't yet selected for the product
@@ -73,12 +80,9 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
       StoreSelector.open((newLocation) => {
         setIsSelectorOpened(false);
         if (!newLocation) {
-          // Reset selections to what they were before the StoreSelector was opened.
-          setSelectedLocation(selectedLocation);
-
-          // Reset the UI to
-          if (!selectedLocation) {
-            setSelection(selection);
+          // Reset the UI back to directShip if there was no location selected already
+          if (selectedLocation === null) {
+            setSelection(directShip);
           }
         } else if (newLocation.productCode === productCode) {
           // Update the selected location only when the selection was done for the same product.
@@ -89,14 +93,10 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
       // Invalidate the location selection to stay in sync with the selected ui element
       setSelectedLocation(null);
     }
-    setSelection(elementName);
-  });
+  }, [isSelectorOpened, selectedLocation, productCode]);
 
   return (
-    <SurroundPortals
-      portalName={PRODUCT_FULFILLMENT_SELECTOR}
-      portalProps={{ productCode }}
-    >
+    <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR} portalProps={{ productCode }}>
       <div className={styles.container} data-test-id="product-fulfillment-selector">
         <div role="heading" aria-hidden className={styles.title}>
           <I18n.Text string="product.fulfillment_selector.heading" />
@@ -109,31 +109,15 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
           isControlled
           direction="column"
         >
-          <RadioItem
-            name={directShip}
-            className={styles.radioItem}
-            label={
-              <div className={styles.radioGroupItemLabel}>
-                <I18n.Text string={directShip} />
-                <Availability
-                  productId={productCode}
-                  fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
-                />
-              </div>
-            }
-          />
-          <RadioItem
-            name={pickUp}
-            className={styles.radioItem}
-            label={
-              <div className={styles.radioGroupItemLabel}>
-                <I18n.Text string={pickUp} />
-                {location &&
-                  <LocationStockInfo location={selectedLocation || location} />
-                }
-              </div>
-            }
-          />
+          <FulfillmentSelectorItem name={directShip}>
+            <Availability
+              productId={productCode}
+              fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
+            />
+          </FulfillmentSelectorItem>
+          <FulfillmentSelectorItem name={pickUp}>
+            {location && <LocationStockInfo location={selectedLocation || location} />}
+          </FulfillmentSelectorItem>
         </RadioGroup>
       </div>
     </SurroundPortals>

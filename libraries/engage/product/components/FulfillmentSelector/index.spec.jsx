@@ -42,7 +42,7 @@ describe('<FulfillmentSelector />', () => {
       }
     />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('RadioItem').length).toBe(2);
+    expect(wrapper.find('FulfillmentSelectorItem').length).toBe(2);
     expect(wrapper.find('[name="product.fulfillment_selector.direct_ship"]').length).toBe(1);
     expect(wrapper.find('[name="product.fulfillment_selector.pick_up_in_store"]').length).toBe(1);
   });

@@ -43,6 +43,6 @@ export default {
     availabilityTextColor: colors.error,
     allowOrderingToStore: true,
   },
-  maxNumberOfVisibleInventory: 50,
+  maxNumberOfVisibleInventory: 100,
   aboveMaxExtension: '++',
 };
