@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import {
   SurroundPortals,
   PlaceholderLabel,
@@ -49,4 +48,4 @@ Availability.defaultProps = {
   fulfillmentSelection: '',
 };
 
-export default connect(pure(Availability));
+export default connect(memo(Availability));
