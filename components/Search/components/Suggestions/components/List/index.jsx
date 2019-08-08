@@ -46,7 +46,6 @@ class SuggestionList extends Component {
         portalName={SEARCH_SUGGESTIONS}
         portalProps={{
           onClick,
-          styles,
           suggestions,
         }}
       >
@@ -55,10 +54,9 @@ class SuggestionList extends Component {
             <SurroundPortals
               portalName={SEARCH_SUGGESTION_ITEM}
               portalProps={{
-                className: styles.item,
+                className: styles.item.toString(),
                 onClick,
                 suggestion,
-                testId: `searchSuggestion ${suggestion}`,
               }}
               key={suggestion}
             >
