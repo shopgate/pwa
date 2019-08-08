@@ -49,7 +49,6 @@ class SuggestionList extends Component {
         portalName={SEARCH_SUGGESTIONS}
         portalProps={{
           onClick,
-          styles,
           suggestions,
         }}
       >
@@ -61,7 +60,6 @@ class SuggestionList extends Component {
                 className: styles.item,
                 onClick: e => onClick(e, suggestion),
                 suggestion,
-                testId: `searchSuggestion ${suggestion}`,
               }}
               key={suggestion}
             >
