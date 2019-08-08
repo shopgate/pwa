@@ -82,6 +82,6 @@ describe('<SuggestionList />', () => {
 
     wrapper.find('button').at(2).simulate('click');
     const [[event]] = onClickMock.mock.calls;
-    expect(event.target.value).toBe('foo bar buz');
+    expect(event.currentTarget.value).toBe('foo bar buz');
   });
 });
