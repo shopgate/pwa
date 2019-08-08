@@ -42,7 +42,7 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.direct_ship"
       >
-        <Connect(pure(Availability))
+        <Connect(Component)
           fulfillmentSelection="directShip"
           productId="abc-123"
         />
