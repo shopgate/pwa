@@ -105,9 +105,9 @@ function parseVersion(v) {
   }
 
   return {
-    major: major !== null ? parseInt(major, 10) : null,
-    minor: minor !== null ? parseInt(minor, 10) : null,
-    patch: patch !== null ? parseInt(patch, 10) : null,
+    major: parseInt(major, 10),
+    minor: parseInt(minor, 10),
+    patch: parseInt(patch, 10),
   };
 }
 
