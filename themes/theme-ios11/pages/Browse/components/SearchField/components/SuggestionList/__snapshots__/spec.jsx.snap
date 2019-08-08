@@ -18,6 +18,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "onClick": [Function],
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -35,6 +36,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo",
           }
         }
@@ -62,6 +65,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar",
           }
         }
@@ -89,6 +94,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar buz",
           }
         }
@@ -116,6 +123,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar buz quz",
           }
         }
@@ -161,6 +170,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "onClick": [Function],
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -178,6 +188,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo",
           }
         }
@@ -205,6 +217,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar",
           }
         }
@@ -232,6 +246,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar buz",
           }
         }
@@ -259,6 +275,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar buz quz",
           }
         }
@@ -304,6 +322,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "onClick": [Function],
         "suggestions": Array [
           "foo bar buz quz",
           "foo bar buz",
@@ -321,6 +340,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar buz quz",
           }
         }
@@ -348,6 +369,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar buz",
           }
         }
@@ -375,6 +398,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo bar",
           }
         }
@@ -402,6 +427,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         portalName="search.suggestion-item"
         portalProps={
           Object {
+            "className": "css-crua9x",
+            "onClick": [Function],
             "suggestion": "foo",
           }
         }
@@ -463,6 +490,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         portalName="search.suggestions"
         portalProps={
           Object {
+            "onClick": [Function],
             "suggestions": Array [
               "foo",
               "foo bar",
@@ -480,6 +508,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             portalName="search.suggestion-item"
             portalProps={
               Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -507,6 +537,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             portalName="search.suggestion-item"
             portalProps={
               Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -534,6 +566,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             portalName="search.suggestion-item"
             portalProps={
               Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -561,6 +595,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             portalName="search.suggestion-item"
             portalProps={
               Object {
+                "className": "css-crua9x",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }

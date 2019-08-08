@@ -18,6 +18,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "onClick": [Function],
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -31,6 +32,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       name="search.suggestions.before"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo",
             "foo bar",
@@ -44,6 +46,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       name="search.suggestions"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo",
             "foo bar",
@@ -65,6 +68,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo",
             }
           }
@@ -73,6 +78,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -81,6 +88,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -136,6 +145,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -146,6 +157,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar",
             }
           }
@@ -154,6 +167,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -162,6 +177,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -217,6 +234,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -227,6 +246,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar buz",
             }
           }
@@ -235,6 +256,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -243,6 +266,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -298,6 +323,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -308,6 +335,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar buz quz",
             }
           }
@@ -316,6 +345,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -324,6 +355,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -379,6 +412,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -390,6 +425,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       name="search.suggestions.after"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo",
             "foo bar",
@@ -421,6 +457,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "onClick": [Function],
         "suggestions": Array [
           "foo",
           "foo bar",
@@ -434,6 +471,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       name="search.suggestions.before"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo",
             "foo bar",
@@ -447,6 +485,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       name="search.suggestions"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo",
             "foo bar",
@@ -468,6 +507,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo",
             }
           }
@@ -476,6 +517,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -484,6 +527,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -539,6 +584,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -549,6 +596,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar",
             }
           }
@@ -557,6 +606,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -565,6 +616,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -620,6 +673,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -630,6 +685,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar buz",
             }
           }
@@ -638,6 +695,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -646,6 +705,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -701,6 +762,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -711,6 +774,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar buz quz",
             }
           }
@@ -719,6 +784,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -727,6 +794,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -782,6 +851,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -793,6 +864,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       name="search.suggestions.after"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo",
             "foo bar",
@@ -824,6 +896,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     portalName="search.suggestions"
     portalProps={
       Object {
+        "onClick": [Function],
         "suggestions": Array [
           "foo bar buz quz",
           "foo bar buz",
@@ -837,6 +910,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       name="search.suggestions.before"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo bar buz quz",
             "foo bar buz",
@@ -850,6 +924,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       name="search.suggestions"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo bar buz quz",
             "foo bar buz",
@@ -871,6 +946,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar buz quz",
             }
           }
@@ -879,6 +956,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -887,6 +966,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -942,6 +1023,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -952,6 +1035,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar buz",
             }
           }
@@ -960,6 +1045,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -968,6 +1055,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -1023,6 +1112,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
@@ -1033,6 +1124,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo bar",
             }
           }
@@ -1041,6 +1134,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -1049,6 +1144,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -1104,6 +1201,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
@@ -1114,6 +1213,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           portalName="search.suggestion-item"
           portalProps={
             Object {
+              "className": "css-xt0zkn",
+              "onClick": [Function],
               "suggestion": "foo",
             }
           }
@@ -1122,6 +1223,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.before"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -1130,6 +1233,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -1185,6 +1290,8 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
             name="search.suggestion-item.after"
             props={
               Object {
+                "className": "css-xt0zkn",
+                "onClick": [Function],
                 "suggestion": "foo",
               }
             }
@@ -1196,6 +1303,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       name="search.suggestions.after"
       props={
         Object {
+          "onClick": [Function],
           "suggestions": Array [
             "foo bar buz quz",
             "foo bar buz",
@@ -1243,6 +1351,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         portalName="search.suggestions"
         portalProps={
           Object {
+            "onClick": [Function],
             "suggestions": Array [
               "foo",
               "foo bar",
@@ -1256,6 +1365,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           name="search.suggestions.before"
           props={
             Object {
+              "onClick": [Function],
               "suggestions": Array [
                 "foo",
                 "foo bar",
@@ -1269,6 +1379,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           name="search.suggestions"
           props={
             Object {
+              "onClick": [Function],
               "suggestions": Array [
                 "foo",
                 "foo bar",
@@ -1290,6 +1401,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               portalName="search.suggestion-item"
               portalProps={
                 Object {
+                  "className": "css-xt0zkn",
+                  "onClick": [Function],
                   "suggestion": "foo",
                 }
               }
@@ -1298,6 +1411,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.before"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo",
                   }
                 }
@@ -1306,6 +1421,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo",
                   }
                 }
@@ -1361,6 +1478,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.after"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo",
                   }
                 }
@@ -1371,6 +1490,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               portalName="search.suggestion-item"
               portalProps={
                 Object {
+                  "className": "css-xt0zkn",
+                  "onClick": [Function],
                   "suggestion": "foo bar",
                 }
               }
@@ -1379,6 +1500,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.before"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar",
                   }
                 }
@@ -1387,6 +1510,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar",
                   }
                 }
@@ -1442,6 +1567,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.after"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar",
                   }
                 }
@@ -1452,6 +1579,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               portalName="search.suggestion-item"
               portalProps={
                 Object {
+                  "className": "css-xt0zkn",
+                  "onClick": [Function],
                   "suggestion": "foo bar buz",
                 }
               }
@@ -1460,6 +1589,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.before"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar buz",
                   }
                 }
@@ -1468,6 +1599,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar buz",
                   }
                 }
@@ -1523,6 +1656,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.after"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar buz",
                   }
                 }
@@ -1533,6 +1668,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               portalName="search.suggestion-item"
               portalProps={
                 Object {
+                  "className": "css-xt0zkn",
+                  "onClick": [Function],
                   "suggestion": "foo bar buz quz",
                 }
               }
@@ -1541,6 +1678,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.before"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar buz quz",
                   }
                 }
@@ -1549,6 +1688,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar buz quz",
                   }
                 }
@@ -1604,6 +1745,8 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
                 name="search.suggestion-item.after"
                 props={
                   Object {
+                    "className": "css-xt0zkn",
+                    "onClick": [Function],
                     "suggestion": "foo bar buz quz",
                   }
                 }
@@ -1615,6 +1758,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           name="search.suggestions.after"
           props={
             Object {
+              "onClick": [Function],
               "suggestions": Array [
                 "foo",
                 "foo bar",
