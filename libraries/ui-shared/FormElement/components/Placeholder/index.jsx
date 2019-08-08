@@ -17,7 +17,10 @@ const Placeholder = ({ placeholder, visible, 'aria-hidden': ariaHidden }) => (
 
 Placeholder.propTypes = {
   'aria-hidden': PropTypes.bool,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   visible: PropTypes.bool,
 };
 

@@ -143,6 +143,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                     params={Object {}}
                     role={null}
                     string="more"
+                    transform={null}
                   >
                     <span
                       className=""
@@ -376,6 +377,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                     params={Object {}}
                     role={null}
                     string="more"
+                    transform={null}
                   >
                     <span
                       className=""

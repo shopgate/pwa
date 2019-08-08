@@ -10,6 +10,7 @@ class RadioGroup extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     children: PropTypes.node,
+    className: PropTypes.string,
     /* Flex direction for radio group */
     direction: PropTypes.string,
     errorText: PropTypes.string,
@@ -24,6 +25,7 @@ class RadioGroup extends Component {
   static defaultProps = {
     onChange: () => {},
     children: null,
+    className: '',
     direction: 'column',
     errorText: '',
     isControlled: false,
@@ -66,11 +68,12 @@ class RadioGroup extends Component {
    */
   render() {
     const {
-      children, label, errorText, direction, name, translateErrorText,
+      children, className, label, errorText, direction, name, translateErrorText,
     } = this.props;
 
     return (
       <FormElement
+        className={className}
         label={label}
         errorText={errorText}
         translateErrorText={translateErrorText}

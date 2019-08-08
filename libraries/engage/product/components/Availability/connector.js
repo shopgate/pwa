@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getCurrentProductStock } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { AVAILABILITY_STATE_OK } from '@shopgate/pwa-common-commerce/product/constants';
 
 /**
@@ -8,18 +8,22 @@ import { AVAILABILITY_STATE_OK } from '@shopgate/pwa-common-commerce/product/con
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => {
-  const stock = getCurrentProductStock(state, props);
-  if (!stock) {
+  const product = getProduct(state, props);
+
+  if (!product) {
     return {
       availability: null,
+      fulfillmentMethods: null,
     };
   }
+
   return {
-    /* Show stock info always as availability on PDP */
-    availability: {
-      text: stock.info,
+    // Show stock info always as availability on PDP
+    availability: !product.stock ? null : {
+      text: product.stock.info,
       state: AVAILABILITY_STATE_OK,
     },
+    fulfillmentMethods: product.fulfillmentMethods || null,
   };
 };
 
@@ -28,12 +32,6 @@ const mapStateToProps = (state, props) => {
  * @param {Object} prev The previous component props.
  * @return {boolean}
  */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.availability && next.availability) {
-    return false;
-  }
-
-  return true;
-};
+const areStatePropsEqual = (next, prev) => (prev.availability || !next.availability);
 
 export default connect(mapStateToProps, null, null, { areStatePropsEqual });

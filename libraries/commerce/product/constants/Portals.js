@@ -1,5 +1,5 @@
 // FEATURES
-const PRODUCT = 'product';
+export const PRODUCT = 'product';
 
 // CONTENTS
 const IMAGE = 'image';
@@ -33,8 +33,8 @@ const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
 
 // POSITIONS
-const BEFORE = 'before';
-const AFTER = 'after';
+export const BEFORE = 'before';
+export const AFTER = 'after';
 const ROW1 = 'row1';
 const ROW2 = 'row2';
 

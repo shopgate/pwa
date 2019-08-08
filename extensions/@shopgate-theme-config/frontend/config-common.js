@@ -18,7 +18,7 @@ export default {
           available: {
             visibleInventoryFrom: 11,
             visibleInventoryTo: null,
-            includeInventoryBlind: true,
+            includeInventoryBlind: false,
             includeNoRecordStores: false,
             availabilityText: 'product.location_stock_info.available',
             availabilityTextColor: '$.colors.success',
@@ -49,9 +49,8 @@ export default {
             availabilityTextColor: '$.colors.error',
             allowOrderingToStore: true,
           },
-          maxNumberOfVisibleStock: 100,
+          maxNumberOfVisibleInventory: 100,
           aboveMaxExtension: '++',
-          storesWithoutInventory: [],
           listItem: {
             showPriceInformation: true,
             showOnlineAvailabilty: true,

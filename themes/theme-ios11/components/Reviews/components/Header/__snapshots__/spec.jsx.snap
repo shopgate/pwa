@@ -308,6 +308,7 @@ exports[`<Header /> should render empty 1`] = `
               params={Object {}}
               role={null}
               string="reviews.no_reviews"
+              transform={null}
             >
               <span
                 className=""
@@ -405,6 +406,7 @@ exports[`<Header /> should render empty 1`] = `
                                       params={Object {}}
                                       role={null}
                                       string="reviews.button_add"
+                                      transform={null}
                                     >
                                       <span
                                         className=""
@@ -847,6 +849,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       }
                       role={null}
                       string="reviews.review_count"
+                      transform={null}
                     >
                       <span
                         className="css-a7xi3l"
@@ -873,6 +876,7 @@ exports[`<Header /> should render rating summary 1`] = `
               params={Object {}}
               role={null}
               string="reviews.rating"
+              transform={null}
             >
               <span
                 className="css-1nftllw"
@@ -987,6 +991,7 @@ exports[`<Header /> should render rating summary 1`] = `
                                       params={Object {}}
                                       role={null}
                                       string="reviews.button_add"
+                                      transform={null}
                                     >
                                       <span
                                         className=""

@@ -21,6 +21,7 @@ exports[`<VariantSelectModal /> should render the actions 1`] = `
     params={Object {}}
     role={null}
     string="This is the message."
+    transform={null}
   />
 </BasicDialog>
 `;
@@ -35,6 +36,7 @@ exports[`<VariantSelectModal /> should render with minimal props 1`] = `
     params={Object {}}
     role={null}
     string="This is the message."
+    transform={null}
   />
 </BasicDialog>
 `;

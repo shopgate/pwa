@@ -36,6 +36,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
           params={Object {}}
           role={null}
           string="product.description_heading"
+          transform={null}
         >
           <span
             className=""
@@ -147,6 +148,7 @@ exports[`<ProductDescription /> should render description if data is available 1
           params={Object {}}
           role={null}
           string="product.description_heading"
+          transform={null}
         >
           <span
             className=""

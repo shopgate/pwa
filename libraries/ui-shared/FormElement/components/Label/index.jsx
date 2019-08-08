@@ -26,7 +26,10 @@ Label.propTypes = {
   htmlFor: PropTypes.string,
   isFloating: PropTypes.bool,
   isFocused: PropTypes.bool,
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 };
 
 Label.defaultProps = {

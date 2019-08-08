@@ -8,6 +8,7 @@ import PhoneNumber from './PhoneNumber';
 import OpeningHours from './OpeningHours';
 import { store as storeStyles, storeMain, storeImage, storeName, storeInfo } from './style';
 import StoreSelectorContext from './context';
+import LocationStockInfo from '../LocationStockInfo';
 
 /**
  * Renders the store's addresses as pickup locations.
@@ -24,9 +25,10 @@ const Store = ({ store }) => {
   return store.addresses.map((address) => {
     const handleClick = useCallback(() => {
       selectLocation({
-        locationCode: store.code,
+        code: store.code,
+        name: store.name,
         addressCode: address.code,
-        visibleStock: store.inventory.visible,
+        visibleInventory: store.inventory.visible,
       });
     }, [address, store]);
 
@@ -44,6 +46,13 @@ const Store = ({ store }) => {
             <div className={storeName} data-test-id="store-name">{store.name}</div>
             <StoreHoursToday hours={store.operationHours} />
             <Address address={address} />
+            <LocationStockInfo
+              location={{
+                storeName: store.name,
+                visibleInventory: store.inventory.visible,
+              }}
+              showStoreName={false}
+            />
           </div>
         </div>
         <Accordion renderLabel={() => <I18n.Text string="product.location.details" />}>

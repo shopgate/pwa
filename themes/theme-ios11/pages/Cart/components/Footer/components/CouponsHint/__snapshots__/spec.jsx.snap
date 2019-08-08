@@ -7,6 +7,7 @@ exports[`<CouponsHint /> should render as expected without any props 1`] = `
     params={Object {}}
     role={null}
     string="cart.coupons_not_supported"
+    transform={null}
   >
     <span
       className="css-7apcdo"

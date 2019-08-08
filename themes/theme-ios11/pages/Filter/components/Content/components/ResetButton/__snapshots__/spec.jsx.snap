@@ -22,6 +22,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
       params={Object {}}
       role={null}
       string="filter.reset"
+      transform={null}
     />
   </Button>
 </div>
@@ -49,6 +50,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
       params={Object {}}
       role={null}
       string="filter.reset"
+      transform={null}
     />
   </Button>
 </div>
@@ -76,6 +78,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
       params={Object {}}
       role={null}
       string="filter.reset"
+      transform={null}
     />
   </Button>
 </div>

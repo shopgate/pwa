@@ -52,9 +52,10 @@ describe('<Store />', () => {
     expect(wrapper).toMatchSnapshot();
     wrapper.find('div[role="button"]').simulate('click');
     expect(context.selectLocation).toHaveBeenCalledWith({
-      locationCode: store.code,
+      code: store.code,
+      name: store.name,
       addressCode: store.addresses[0].code,
-      visibleStock: store.inventory.visible,
+      visibleInventory: store.inventory.visible,
     });
   });
 });

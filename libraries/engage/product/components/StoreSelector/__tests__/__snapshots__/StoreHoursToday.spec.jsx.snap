@@ -14,11 +14,12 @@ exports[`<StoreHoursToday /> should render as expected 1`] = `
     className=""
     params={
       Object {
-        "hours": "8:00am - 8:00pm",
+        "hours": "8:00am - 4:00pm",
       }
     }
     role={null}
     string="product.location.today_hours"
+    transform={null}
   />
 </div>
 `;

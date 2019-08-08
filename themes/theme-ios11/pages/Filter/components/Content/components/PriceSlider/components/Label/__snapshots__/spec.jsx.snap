@@ -6,6 +6,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   params={Object {}}
   role={null}
   string="price.range"
+  transform={null}
 >
   <Placeholder
     forKey="fromPrice"

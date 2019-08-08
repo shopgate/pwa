@@ -29,7 +29,7 @@ describe('<FormElement />', () => {
   });
 
   it('Should hide placeholder with hasValue', () => {
-    const wrapper = mount(<FormElement {...inputProps} hasValue />);
+    const wrapper = mount(<FormElement label="testlabel" {...inputProps} hasValue />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Placeholder').props().visible).toEqual(false);
   });

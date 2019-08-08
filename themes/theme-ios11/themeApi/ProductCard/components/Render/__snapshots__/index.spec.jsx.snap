@@ -963,6 +963,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                       }
                       role={null}
                       string="-50%"
+                      transform={null}
                     >
                       <span
                         className="css-pzju2o "
@@ -1441,6 +1442,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                       }
                       role={null}
                       string="-50%"
+                      transform={null}
                     >
                       <span
                         className="css-pzju2o "
@@ -2266,6 +2268,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                       }
                       role={null}
                       string="-50%"
+                      transform={null}
                     >
                       <span
                         className="css-pzju2o "
@@ -3091,6 +3094,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                       }
                       role={null}
                       string="-50%"
+                      transform={null}
                     >
                       <span
                         className="css-pzju2o "
@@ -4443,6 +4447,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                       }
                       role={null}
                       string="-50%"
+                      transform={null}
                     >
                       <span
                         className="css-pzju2o "

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -10,14 +11,19 @@ import style from './style';
  */
 class RadioItem extends PureComponent {
   static propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.node,
+    ]).isRequired,
     name: PropTypes.string.isRequired,
     checked: PropTypes.bool,
+    className: PropTypes.string,
     onChange: PropTypes.func,
   }
 
   static defaultProps = {
     checked: false,
+    className: '',
     onChange: () => {},
   }
 
@@ -27,12 +33,11 @@ class RadioItem extends PureComponent {
    */
   render() {
     const {
-      label, name, onChange, checked,
+      label: ItemLabel, name, onChange, checked, className,
     } = this.props;
 
     return (
-      <label className={style.container} htmlFor={this.key}>
-
+      <label className={classNames(style.container, className)} htmlFor={this.key}>
         {checked && <CheckedIcon className={`${style.active} ${style.icon}`} />}
         {!checked && <UncheckedIcon className={style.icon} />}
 
@@ -44,7 +49,7 @@ class RadioItem extends PureComponent {
           name={name}
           onChange={onChange}
         />
-        <I18n.Text className={style.label} string={label} />
+        <I18n.Text className={style.label} string={ItemLabel} />
       </label>
     );
   }

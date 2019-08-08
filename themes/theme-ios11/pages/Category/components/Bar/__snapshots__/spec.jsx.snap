@@ -137,6 +137,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                     params={Object {}}
                                     role={null}
                                     string="filter.sort.most_popular"
+                                    transform={null}
                                   >
                                     <span
                                       className=""
@@ -243,6 +244,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                                   params={Object {}}
                                                   role={null}
                                                   string="filter.sort.most_popular"
+                                                  transform={null}
                                                 >
                                                   <span
                                                     className=""
@@ -291,6 +293,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                                   params={Object {}}
                                                   role={null}
                                                   string="filter.sort.price_desc"
+                                                  transform={null}
                                                 >
                                                   <span
                                                     className=""
@@ -339,6 +342,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                                   params={Object {}}
                                                   role={null}
                                                   string="filter.sort.price_asc"
+                                                  transform={null}
                                                 >
                                                   <span
                                                     className=""
@@ -427,6 +431,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                               params={Object {}}
                                               role={null}
                                               string="titles.filter"
+                                              transform={null}
                                             >
                                               <span
                                                 className=""

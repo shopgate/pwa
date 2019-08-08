@@ -36,6 +36,7 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
         params={Object {}}
         role={null}
         string="product.tax_disclaimer"
+        transform={null}
       />
     </div>
   </Portal>

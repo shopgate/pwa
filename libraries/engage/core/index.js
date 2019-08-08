@@ -59,7 +59,7 @@ export * from '@shopgate/pwa-core/commands/unifiedTracking';
 // TODO: Contains circular dependency!
 // export * from '@shopgate/pwa-core/commands/webStorage';
 
-// Constants
+// Core Constants
 export * from '@shopgate/pwa-core/constants/AppEvents';
 export * from '@shopgate/pwa-core/constants/AppPermissions';
 export * from '@shopgate/pwa-core/constants/ErrorHandleTypes';
@@ -76,6 +76,9 @@ export * from '@shopgate/pwa-common/constants/Pipelines';
 export * from '@shopgate/pwa-common/constants/Portals';
 export { INDEX_PATH, INDEX_PATH_DEEPLINK };
 export * from './constants/geolocationRequest';
+
+// Engage Constants
+export * from '@shopgate/engage/product/constants/Portals';
 
 // Emitters
 export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
@@ -269,4 +272,5 @@ export { getWidgetSettings } from './config/getWidgetSettings';
 
 // -------------- HELPERS -------------- //
 export { i18n } from './helpers/i18n';
+export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';

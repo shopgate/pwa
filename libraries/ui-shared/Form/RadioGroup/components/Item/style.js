@@ -13,6 +13,7 @@ const container = css({
 const icon = css({
   width: 24,
   height: 24,
+  flexShrink: 0,
 }).toString();
 
 const label = css({

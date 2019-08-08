@@ -18,7 +18,7 @@ const StoreHoursToday = ({ hours }) => {
   const today = weekdays[new Date().getDay()];
   const hoursToday = hours[today] || null;
 
-  if (!hoursToday || !hoursToday === '') {
+  if (!hoursToday || hoursToday === '') {
     return null;
   }
 

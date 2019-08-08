@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do not contain inStorePickup 1`] = `""`;
+
+exports[`<FulfillmentSelector /> should render the fulfillment selector with two radio elements 1`] = `
+<SurroundPortals
+  portalName="product.fulfillment-selector"
+  portalProps={
+    Object {
+      "productCode": "abc-123",
+    }
+  }
+>
+  <div
+    className="css-12ywm8s"
+    data-test-id="product-fulfillment-selector"
+  >
+    <div
+      aria-hidden={true}
+      className="css-1femajq"
+      role="heading"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        role={null}
+        string="product.fulfillment_selector.heading"
+        transform={null}
+      />
+    </div>
+    <RadioGroup
+      className="css-n7bvec"
+      direction="column"
+      errorText=""
+      isControlled={true}
+      label=""
+      name="product.fulfillment_selector"
+      onChange={[Function]}
+      translateErrorText={true}
+      value="product.fulfillment_selector.direct_ship"
+    >
+      <FulfillmentSelectorItem
+        name="product.fulfillment_selector.direct_ship"
+      >
+        <Connect(Component)
+          fulfillmentSelection="directShip"
+          productId="abc-123"
+        />
+      </FulfillmentSelectorItem>
+      <FulfillmentSelectorItem
+        name="product.fulfillment_selector.pick_up_in_store"
+      >
+        <LocationStockInfo
+          location={
+            Object {
+              "name": "Test Store",
+              "visibleInventory": 15,
+            }
+          }
+        />
+      </FulfillmentSelectorItem>
+    </RadioGroup>
+  </div>
+</SurroundPortals>
+`;

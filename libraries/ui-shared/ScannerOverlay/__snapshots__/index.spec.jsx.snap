@@ -173,6 +173,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                           params={Object {}}
                           role={null}
                           string="scanner.instructions"
+                          transform={null}
                         >
                           <span
                             className=""
