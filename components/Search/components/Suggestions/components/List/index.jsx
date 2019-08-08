@@ -44,13 +44,22 @@ class SuggestionList extends Component {
     return (
       <SurroundPortals
         portalName={SEARCH_SUGGESTIONS}
-        portalProps={{ suggestions }}
+        portalProps={{
+          onClick,
+          styles,
+          suggestions,
+        }}
       >
         <div className={styles.list}>
           {suggestions.map(suggestion => (
             <SurroundPortals
               portalName={SEARCH_SUGGESTION_ITEM}
-              portalProps={{ suggestion }}
+              portalProps={{
+                className: styles.item,
+                onClick,
+                suggestion,
+                testId: `searchSuggestion ${suggestion}`,
+              }}
               key={suggestion}
             >
               <button
