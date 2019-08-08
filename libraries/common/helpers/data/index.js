@@ -237,7 +237,7 @@ export function assignObjectDeep(
     if (!isObjectOrArray(dest[key]) || !isObjectOrArray(prop)) {
       // output a warning if only one of both is an object (undefined dest is fine -> no warning)
       if (warn && dest[key] !== undefined
-        && (!isObjectOrArray(dest[key]) ? isObjectOrArray(prop) : isObjectOrArray(prop))) {
+        && (!isObjectOrArray(dest[key]) ? isObjectOrArray(prop) : !isObjectOrArray(prop))) {
         logger.warn('Trying to merge object properties with mixed object types: ', prop, dest[key]);
       }
 
