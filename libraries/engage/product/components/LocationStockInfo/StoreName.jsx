@@ -9,9 +9,7 @@ import { I18n } from '@shopgate/engage/components';
  * @param {Object} props.displayCapitalized If set, the translated text will be capitalized.
  * @return {JSX}
  */
-const StoreName = ({
-  name, displayCapitalized,
-}) => {
+const StoreName = ({ name, displayCapitalized }) => {
   if (!name) {
     return null;
   }
@@ -20,11 +18,7 @@ const StoreName = ({
     <I18n.Text
       string="product.location_stock_info.pick_up_at"
       params={{ storeName: name }}
-      transform={
-        displayCapitalized
-          ? capitalize
-          : null
-      }
+      transform={displayCapitalized ? capitalize : null}
     />
   );
 };
