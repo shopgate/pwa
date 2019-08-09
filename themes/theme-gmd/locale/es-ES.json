@@ -204,10 +204,13 @@
     "noResult": {
       "qrCode": "No pudimos encontrar un resultado para este código QR.",
       "barCode": "No se encontraron productos."
-    },
-    "camera_access_denied": {
-      "message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración",
-      "settings_button": "Ir a la configuración"
+    }
+  },
+  "permissions": {
+    "access_denied": {
+      "settings_button": "Vaya a configuración",
+      "camera_message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración.",
+      "geolocation_message": "Para encontrar tiendas cerca de donde está, vaya a Configuración y habilite los permisos de ubicación."
     }
   },
   "formats": {
