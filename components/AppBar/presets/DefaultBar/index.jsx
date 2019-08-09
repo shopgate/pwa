@@ -9,7 +9,7 @@ import {
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { withRoute, withWidgetSettings, withApp } from '@shopgate/engage/core';
+import { withRoute, withWidgetSettings, withApp, INDEX_PATH } from '@shopgate/engage/core';
 import { ViewContext } from 'Components/View/context';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
@@ -68,7 +68,7 @@ class AppBarDefault extends PureComponent {
     }
 
     if (this.props.route.visible) {
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
     }
   }
 
@@ -91,7 +91,7 @@ class AppBarDefault extends PureComponent {
 
     if (routeDidEnter || engageDidEnter) {
       // Sync the colors of the app bar when the route with the bar came visible.
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
     }
 
     if (engageWillLeave) {
@@ -112,8 +112,20 @@ class AppBarDefault extends PureComponent {
     if (visible) {
       this.props.resetStatusBar();
     } else {
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
     }
+  }
+
+  /**
+   * Updates the status bar styling.
+   */
+  updateStatusBar() {
+    const { pathname } = this.props.route;
+    /**
+     * The settings for the startpage need to be preserved within the statusbar to optimize
+     * the initial rendering at the app start.
+     */
+    this.props.updateStatusBar(this.props.widgetSettings, pathname === INDEX_PATH);
   }
 
   /**
