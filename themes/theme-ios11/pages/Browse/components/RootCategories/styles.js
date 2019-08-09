@@ -1,6 +1,4 @@
 const headline = {
-  marginLeft: 20,
-  marginRight: 20,
   marginTop: 20,
 };
 

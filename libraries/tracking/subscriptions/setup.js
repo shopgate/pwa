@@ -26,6 +26,7 @@ export default function setup(subscribe) {
       type: get(clientInformationResponse, 'value.device.type', TYPE_PHONE),
       os: get(clientInformationResponse, 'value.device.os.platform', OS_ALL),
       state: getState(),
+      services: get(clientInformationResponse, 'value.device.supportedAnalyticsServices', []),
     };
 
     // TODO: instantiate the UnifiedPlugin only if a native tracker is configured (FB, AppsFlyer)

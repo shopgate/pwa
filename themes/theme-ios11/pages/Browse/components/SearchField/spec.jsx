@@ -28,7 +28,7 @@ jest.mock('@virtuous/conductor', () => ({
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyPush: jest.fn().mockReturnValue({ type: 'FOO' }),
 }));
-jest.mock('./components/SuggestionList');
+jest.mock('./components/SuggestionList', () => () => null);
 
 jest.mock('@shopgate/pwa-common/selectors/client', () => ({
   hasScannerSupport: jest.fn().mockReturnValue(true),

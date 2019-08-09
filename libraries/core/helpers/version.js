@@ -36,6 +36,7 @@ export const defaultClientInformation = {
     },
     model,
   },
+  supportedAnalyticsServices: [],
 };
 
 /**

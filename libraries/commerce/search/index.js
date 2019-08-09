@@ -5,6 +5,7 @@ export { default as fetchSearchSuggestions } from './actions/fetchSearchSuggesti
 // CONSTANTS
 export * from './constants/index';
 export * from './constants/Pipelines';
+export * from './constants/Portals';
 
 // HELPERS
 export { default as removeHighlightingPlaceholers } from './helpers/removeHighlightingPlaceholders';
