@@ -18,12 +18,7 @@ exports[`<Content /> should render 1`] = `
   >
     <Connect(BackBar) />
     <Headline
-      style={
-        Object {
-          "marginLeft": 20,
-          "marginRight": 20,
-        }
-      }
+      style={null}
       tag="h1"
       text=""
     />
