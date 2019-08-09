@@ -7,6 +7,7 @@ import { broadcastEvent } from '../index';
  */
 export const updateLegacyNavigationBar = (options = {}) => {
   const targetTab = options.targetTab || 'main';
+  const { isDefault } = options;
   const styles = {
     ...options.color && { color: options.color },
     ...options.background && { background: options.background },
@@ -31,6 +32,7 @@ export const updateLegacyNavigationBar = (options = {}) => {
     event: 'updateNavigationBarStyle',
     parameters: [{
       ...statusBarStyle && { statusBarStyle },
+      ...isDefault && { isDefault },
       targetTab,
       styles,
     }],
