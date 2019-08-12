@@ -88,4 +88,25 @@ describe('updateLegacyNavigationBar()', () => {
       }],
     });
   });
+
+  it('should broadcast when called with the isDefault option', () => {
+    const options = {
+      isDefault: true,
+      statusBarStyle: 'dark',
+      targetTab: 'cart',
+      statusBarBackground: 'red',
+    };
+    updateLegacyNavigationBar(options);
+    expect(broadcastEvent).toHaveBeenCalledWith({
+      event: 'updateNavigationBarStyle',
+      parameters: [{
+        isDefault: true,
+        targetTab: 'cart',
+        styles: {
+          statusBarBackground: 'red',
+        },
+        statusBarStyle: 'dark',
+      }],
+    });
+  });
 });

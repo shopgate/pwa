@@ -32,13 +32,23 @@ describe('engage > core > actions > updateStatusBarBackground()', () => {
     expect(updateLegacyNavigationBar).toHaveBeenCalledTimes(1);
     expect(updateLegacyNavigationBar).toHaveBeenCalledWith({
       statusBarBackground: color,
+      isDefault: false,
     });
   });
 
-  it('should call the updateLegacyNavigationBar helper with an empty object when no color was passed', () => {
+  it('should call the updateLegacyNavigationBar helper with the isDefault flag', () => {
+    updateStatusBarBackground(null, true)(null, getState);
+    expect(isIos).toHaveBeenCalledWith(state);
+    expect(updateLegacyNavigationBar).toHaveBeenCalledTimes(1);
+    expect(updateLegacyNavigationBar).toHaveBeenCalledWith({
+      isDefault: true,
+    });
+  });
+
+  it('should call the updateLegacyNavigationBar helper with just the isDefault property when no color was passed', () => {
     updateStatusBarBackground()(null, getState);
     expect(isIos).toHaveBeenCalledWith(state);
     expect(updateLegacyNavigationBar).toHaveBeenCalledTimes(1);
-    expect(updateLegacyNavigationBar).toHaveBeenCalledWith({});
+    expect(updateLegacyNavigationBar).toHaveBeenCalledWith({ isDefault: false });
   });
 });
