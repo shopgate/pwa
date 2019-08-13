@@ -85,11 +85,7 @@ function getUnifiedNumber(numericValue) {
  * @return {string}
  */
 function getStringValue(value) {
-  if (typeof value !== 'undefined' && value !== null) {
-    return `${value}`;
-  }
-
-  return '';
+  return (value || value === 0) ? `${value}` : '';
 }
 
 /**
