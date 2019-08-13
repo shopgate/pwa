@@ -80,6 +80,19 @@ function getUnifiedNumber(numericValue) {
 }
 
 /**
+ * Converts a value to a string. It returns an empty string for null or undefined.
+ * @param {*} value The value.
+ * @return {string}
+ */
+function getStringValue(value) {
+  if (typeof value !== 'undefined' && value !== null) {
+    return `${value}`;
+  }
+
+  return '';
+}
+
+/**
  * Returns the productNumber or uid from a product
  *
  * @param {Object} product Object with product data
@@ -132,7 +145,7 @@ function sanitizeTitle(title, shopName) {
  */
 function formatSgDataProduct(product) {
   return {
-    id: getProductIdentifier(product),
+    id: getStringValue(getProductIdentifier(product)),
     type: 'product',
     name: get(product, 'name'),
     priceNet: getUnifiedNumber(get(product, 'amount.net')),
@@ -169,7 +182,9 @@ function formatFavouriteListItems(products) {
   }
 
   return products.map(product => ({
-    id: get(product, 'product_number_public') || get(product, 'product_number') || get(product, 'uid'),
+    id: getStringValue(get(product, 'product_number_public') ||
+      get(product, 'product_number') ||
+      get(product, 'uid')),
     type: 'product',
     name: get(product, 'name'),
     priceNet: getUnifiedNumber(get(product, 'unit_amount_net')) / 100,
@@ -212,7 +227,7 @@ customEvents.forEach((event) => {
  * @returns {UnifiedPurchase} Data for the unified purchase event
  */
 dataFormatHelpers.purchase = rawData => ({
-  id: get(rawData, 'order.number'),
+  id: getStringValue(get(rawData, 'order.number')),
   type: 'product',
   affiliation: get(rawData, 'shop.name', ''),
   revenueGross: getUnifiedNumber(get(rawData, 'order.amount.gross')),
