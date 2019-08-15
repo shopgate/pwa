@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
+import { KeyboardConsumer } from '@shopgate/engage/components';
 import List from './components/List';
 import styles from './style';
 
