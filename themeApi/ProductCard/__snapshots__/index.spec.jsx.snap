@@ -145,6 +145,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                     forcePlaceholder={false}
                     highestResolutionLoaded={[Function]}
                     itemProp="image"
+                    noBackground={false}
                     ratio={null}
                     resolutions={
                       Array [
