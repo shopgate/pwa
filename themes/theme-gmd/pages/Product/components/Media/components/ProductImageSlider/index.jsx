@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
+import { getActualImageSource } from '@shopgate/engage/core';
 import { Swiper, Portal } from '@shopgate/pwa-common/components';
 import {
   PRODUCT_IMAGE,
@@ -108,7 +109,7 @@ class ProductImageSlider extends Component {
           >
             {imagesByIndex.map(imagesInIndex => (
               <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
-                <ProductImage srcmap={imagesInIndex} animating={false} />
+                <ProductImage srcmap={imagesInIndex} animating={false} noBackground />
               </Swiper.Item>
             ))}
           </Swiper>
@@ -128,6 +129,11 @@ class ProductImageSlider extends Component {
       onKeyDown = noop;
     }
 
+    const imageStyle = product ? {
+      background: `url(${getActualImageSource(product.featuredImageUrl, fallbackResolutions[0])})`,
+      backgroundSize: 'contain',
+    } : null;
+
     return (
       <Fragment>
         <Portal name={PRODUCT_IMAGE_BEFORE} />
@@ -139,6 +145,7 @@ class ProductImageSlider extends Component {
             role="button"
             tabIndex="0"
             aria-hidden={ariaHidden}
+            style={imageStyle}
           >
             {content}
           </div>

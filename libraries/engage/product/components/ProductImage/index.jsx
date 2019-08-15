@@ -8,7 +8,6 @@ import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
-
 import styles from './style';
 
 const { colors } = themeConfig;
@@ -30,6 +29,7 @@ class ProductImage extends Component {
     className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
+    noBackground: PropTypes.bool,
     ratio: PropTypes.arrayOf(PropTypes.number),
     resolutions: PropTypes.arrayOf(PropTypes.shape({
       width: PropTypes.number.isRequired,
@@ -48,6 +48,7 @@ class ProductImage extends Component {
     className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => { },
+    noBackground: false,
     ratio: null,
     resolutions: [
       {
@@ -114,6 +115,7 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
+    const { noBackground } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
     if (typeof showInnerShadow === 'undefined') {
@@ -126,8 +128,8 @@ class ProductImage extends Component {
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
           <div
             className={classnames(styles.placeholderContainer, {
-            [styles.innerShadow]: showInnerShadow,
-          })}
+              [styles.innerShadow]: showInnerShadow,
+            })}
             aria-hidden={this.props['aria-hidden']}
           >
             <div className={styles.placeholderContent} data-test-id="placeHolder">
@@ -145,7 +147,7 @@ class ProductImage extends Component {
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}
-            backgroundColor={colors.light}
+            backgroundColor={noBackground ? 'transparent' : colors.light}
             onError={this.imageLoadingFailed}
           />
         </div>
