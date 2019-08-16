@@ -47,20 +47,12 @@ class CharacteristicSheet extends PureComponent {
    * @return {React.Component|null}
    */
   renderAvailability = (value) => {
-    const { charId, productId, items } = this.props;
-    const lastValue = items.slice(-1)[0];
-
-    // Check if this is the last characteristic to be set.
-    if (lastValue.id !== charId) {
-      return null;
-    }
-
     const selection = {
       ...this.props.selection,
       [this.props.charId]: value,
     };
 
-    return <VariantAvailability characteristics={selection} productId={productId} />;
+    return <VariantAvailability characteristics={selection} productId={this.props.productId} />;
   }
 
   /**
