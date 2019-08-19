@@ -15,6 +15,7 @@ import {
 import { parse2dsQrCode } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import core from '@shopgate/tracking-core/core/Core';
 import { shopNumber } from '@shopgate/pwa-common/helpers/config';
+import { i18n } from '@shopgate/engage/core';
 
 /**
  * Converts a price to a formatted string.
@@ -30,7 +31,7 @@ export const convertPriceToString = (price) => {
 };
 
 /**
- * Re-format a given product form the store.
+ * Re-format a given product from the store.
  * @param {Object} productData The product data from the store
  * @returns {Object|null} The formatted product.
  */
@@ -271,6 +272,76 @@ export const buildScannerUtmUrl = ({
   return `${newPath.pathname}${newPath.search}`;
 };
 
+/**
+ * Creates tracking data for a category.
+ * @param {Object} category The category data from the store.
+ * @returns {Object|null}
+ */
+export const createCategoryData = (category) => {
+  if (!category) {
+    return null;
+  }
+
+  const { name, id: uid, path } = category;
+
+  return {
+    uid,
+    name,
+    path,
+  };
+};
+
+/**
+ * Creates tracking data for the root category.
+ * @param {Object} rootCategory The category data from the store.
+ * @return {Object|null}
+ */
+export const createRootCategoryData = (rootCategory) => {
+  if (!rootCategory) {
+    return null;
+  }
+
+  return {
+    uid: null,
+    name: i18n.text('titles.categories'),
+    path: null,
+  };
+};
+
+/**
+ * Creates tracking data for the page view event.
+ * @param {Object} data The input data.
+ * @return {Object}
+ */
+export const createPageviewData = ({
+  page = null,
+  cart = null,
+  search = null,
+  category = null,
+  product = null,
+  pageConfig,
+}) => {
+  let title = '';
+
+  if (pageConfig) {
+    ({ title } = pageConfig);
+  } else if (category && category.name) {
+    title = category.name;
+  } else if (product && product.name) {
+    title = product.name;
+  }
+
+  return {
+    page: page ? {
+      ...page,
+      title,
+    } : null,
+    cart,
+    search,
+    category,
+    product,
+  };
+};
 /**
  * Helper to pass the redux state to the tracking core
  * @param {string} eventName The name of the event.
