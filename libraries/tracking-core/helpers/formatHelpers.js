@@ -419,12 +419,12 @@ dataFormatHelpers.addedPaymentInfo = rawData => ({
 });
 
 /**
- * Converter for the logItemview event.
+ * Converter for the logItemView event.
  *
  * @param {Object} rawData Raw data from the core
- * @returns {UnifiedItemview} Data for the logItemview event
+ * @returns {UnifiedItemView} Data for the logItemView event
  */
-dataFormatHelpers.logItemview = (rawData) => {
+dataFormatHelpers.logItemView = (rawData) => {
   let product;
 
   if (rawData.product) {
