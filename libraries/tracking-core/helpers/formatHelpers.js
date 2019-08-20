@@ -148,6 +148,7 @@ function formatSgDataProduct(product) {
     priceGross: getUnifiedNumber(get(product, 'amount.gross')),
     quantity: getUnifiedNumber(get(product, 'quantity')),
     currency: get(product, 'amount.currency'),
+    brand: get(product, 'manufacturer'),
   };
 }
 
@@ -416,5 +417,29 @@ dataFormatHelpers.addedPaymentInfo = rawData => ({
   success: get(rawData, 'paymentMethodAdded.success'),
   name: get(rawData, 'paymentMethodAdded.name'),
 });
+
+/**
+ * Converter for the logItemview event.
+ *
+ * @param {Object} rawData Raw data from the core
+ * @returns {UnifiedItemview} Data for the logItemview event
+ */
+dataFormatHelpers.logItemview = (rawData) => {
+  let product;
+
+  if (rawData.product) {
+    ({ product } = rawData);
+  } else if (rawData.variant) {
+    product = rawData.variant;
+  }
+
+  product = formatSgDataProduct(product);
+  delete product.quantity;
+
+  return {
+    ...product,
+    type: '',
+  };
+};
 
 export default dataFormatHelpers;

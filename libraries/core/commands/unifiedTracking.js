@@ -120,6 +120,22 @@ import AppCommand from '../classes/AppCommand';
  */
 
 /**
+ * Data definition for a log item view command payload within the unified tracking system
+ * @typedef {Object} UnifiedItemview
+ * @property {string} id A unique identifier for the item
+ * @property {string} name A name to easier distinguish this item in the tracking tool
+ * @property {string} type An identifier for the type of the item like "simple", "configurable"
+ * @property {number} priceNet The net price of the item
+ * @property {number} priceGross The gross price of the item
+ * @property {string} currency The currency code as ISO 4217 string
+ * @property {string} variant A summary of selected item options
+ * @property {string} [brand] The brand of the item
+ * @property {string} [categoryId] A unique identifier for the category of the item
+ * @property {string} [categoryName] Category path of the item (apparel/shoes/sneakers)
+ * @property {UnifiedRestrictions} [restrictions] Restrictions for the command
+ */
+
+/**
  * Additional definitions of data for the multiple tracking events
  */
 
@@ -223,4 +239,12 @@ export function analyticsLogSearch(data) {
  */
 export function analyticsSetCampaignWithUrl(data) {
   executeCommand('analyticsSetCampaignWithUrl', data);
+}
+
+/**
+ * This command can be used to log an item view event to all installed trackers.
+ * @param {UnifiedItemview} data The payload for the command
+ */
+export function analyticsLogItemview(data) {
+  executeCommand('analyticsLogItemview', data);
 }
