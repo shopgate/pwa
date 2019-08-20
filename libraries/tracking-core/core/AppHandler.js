@@ -123,6 +123,18 @@ class AppHandler {
   }
 
   /**
+   * Log an itemview
+   *
+   * @param {UnifiedItemView} data Tracking data for this event
+   * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
+   * @returns {AppHandler} Instance of SgTrackingAppHandler
+   */
+  logItemView(data, restrictions) {
+    SGAction.analyticsLogItemView(AppHandler.prepareTrackingData(data, restrictions));
+    return this;
+  }
+
+  /**
    * Add the properties restriction, blacklist and trackers to the tracking event data if needed
    *
    * @param {Object} data The tracking event data
