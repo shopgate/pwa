@@ -1,9 +1,8 @@
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { productIsReady$ } from '../streams/product';
 import { getBaseProductFormatted, getProductFormatted } from '../selectors/product';
-import getPage from '../selectors/page';
+import { makeGetTrackingData } from '../selectors';
 import { track } from '../helpers';
 
 /**
@@ -32,14 +31,7 @@ export default function product(subscribe) {
    */
   subscribe(productIsReady$, ({ getState }) => {
     const state = getState();
-    const { params: { productId } } = getCurrentRoute(getState());
-    const props = { productId: hex2bin(productId) };
-
-    const trackingData = {
-      page: getPage(state),
-      product: getProductFormatted(state, props),
-    };
-
-    track('viewContent', trackingData, state);
+    const getTrackingData = makeGetTrackingData();
+    track('viewContent', getTrackingData(state, getCurrentRoute(state)), state);
   });
 }
