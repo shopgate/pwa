@@ -1,5 +1,17 @@
 # Changelog
 
+## [v6.7.1](https://github.com/shopgate/pwa/compare/v6.7.0...v6.7.1) (2019-08-20)
+
+#### :rocket: Enhancement
+* [#812](https://github.com/shopgate/pwa/pull/812) Implemented logItemview tracking event for the tracking core ([@fkloes](https://github.com/fkloes))
+* [#811](https://github.com/shopgate/pwa/pull/811) Extended source data for the tracking system ([@fkloes](https://github.com/fkloes))
+* [#808](https://github.com/shopgate/pwa/pull/808) Added the ability to modify the search query when using the search suggestion portals in theme ios. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#806](https://github.com/shopgate/pwa/pull/806) Improved sanitization for purchase tracking event data ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#809](https://github.com/shopgate/pwa/pull/809) Show stock warnings inside variant selection sheet ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.7.0](https://github.com/shopgate/pwa/compare/v6.6.0...v6.7.0) (2019-08-15)
 
 #### :rocket: Enhancement
