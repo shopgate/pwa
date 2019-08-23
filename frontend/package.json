@@ -22,13 +22,11 @@
       "*.{js,jsx}": "yarn run lint"
     }
   },
-  "dependencies": {
-    "@shopgate/tracking-core": "6.7.0"
-  },
   "devDependencies": {
     "@shopgate/eslint-config": "6.7.0",
     "@shopgate/pwa-common": "6.7.0",
     "@shopgate/pwa-core": "6.7.0",
+    "@shopgate/tracking-core": "6.7.0",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
@@ -41,5 +39,8 @@
     "husky": "^1.0.0-rc.13",
     "jest": "^23.6.0",
     "lint-staged": "^7.2.2"
+  },
+  "peerDependencies": {
+    "@shopgate/tracking-core": "6.7.0"
   }
 }
