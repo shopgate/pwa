@@ -23,7 +23,7 @@ import {
   setDefaultProductFetchParams,
 } from '@shopgate/engage/product';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
-import grantCameraPermissions from '@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions';
+import { grantCameraPermissions } from '@shopgate/engage/core';
 import {
   PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,
   PRODUCT_SLIDER_IMAGE_FORMATS,
