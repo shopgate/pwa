@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.7.1](https://github.com/shopgate/pwa/compare/v6.7.0...v6.7.1) (2019-08-26)
+
+#### :rocket: Enhancement
+* [#808](https://github.com/shopgate/pwa/pull/808) Added the ability to modify the search query when using the search suggestion portals in theme ios. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :house: Internal
+* Fixed react-player version to avoid issued due to babel 7 update of 1.12.0 ([@fkloes](https://github.com/fkloes))
+
 ## [v6.7.0](https://github.com/shopgate/pwa/compare/v6.6.0...v6.7.0) (2019-08-15)
 
 #### :rocket: Enhancement
