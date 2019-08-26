@@ -8,7 +8,9 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
-import { withRoute, withWidgetSettings, withApp } from '@shopgate/engage/core';
+import {
+  withRoute, withWidgetSettings, withApp, INDEX_PATH,
+} from '@shopgate/engage/core';
 import { ViewContext } from 'Components/View/context';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
@@ -52,7 +54,7 @@ class AppBarDefault extends PureComponent {
 
     if (!target) {
       target = document.getElementById('AppHeader');
-      this.setState({ target: target || null }); // eslint-disable-line react/no-did-mount-set-state
+      this.setState({ target: target || null });
     }
 
     if (this.props.setFocus) {
@@ -65,7 +67,7 @@ class AppBarDefault extends PureComponent {
     }
 
     if (this.props.route.visible) {
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
     }
   }
 
@@ -88,13 +90,25 @@ class AppBarDefault extends PureComponent {
 
     if (routeDidEnter || engageDidEnter) {
       // Sync the colors of the app bar when the route with the bar came visible.
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
     }
 
     if (engageWillLeave) {
       // Reset the status bar when Engage goes into the background.
       this.props.resetStatusBar();
     }
+  }
+
+  /**
+   * Updates the status bar styling.
+   */
+  updateStatusBar() {
+    const { pathname } = this.props.route;
+    /**
+     * The settings for the startpage need to be preserved within the statusbar to optimize
+     * the initial rendering at the app start.
+     */
+    this.props.updateStatusBar(this.props.widgetSettings, pathname === INDEX_PATH);
   }
 
   /**
@@ -144,7 +158,7 @@ const AppBarDefaultWithContext = props => (
   <ViewContext.Consumer>
     {({ ariaHidden }) => (
       <AppBarDefault {...props} aria-hidden={ariaHidden} />
-      )}
+    )}
   </ViewContext.Consumer>
 );
 
