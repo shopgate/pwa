@@ -1,6 +1,9 @@
 module.exports = {
+  extends: [
+    'plugin:eslint-comments/recommended',
+    'plugin:cypress/recommended',
+  ],
   plugins: [
-    'eslint-comments',
     'extra-rules',
     'json',
     'cypress',

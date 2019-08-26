@@ -5,12 +5,6 @@ import logGroup from '../../helpers/logGroup';
 import * as appCommands from '../../constants/AppCommands';
 import BrowserConnector from '../BrowserConnector';
 import DevServerBridge from '../DevServerBridge';
-/* eslint-disable import/named */
-import {
-  GET_PERMISSIONS_COMMAND_NAME,
-  REQUEST_PERMISSIONS_COMMAND_NAME,
-} from '../../constants/AppPermissions';
-/* eslint-enable import/named */
 
 /**
  * The app command class.
@@ -30,8 +24,6 @@ class AppCommand {
       appCommands.COMMAND_SEND_PIPELINE_REQUEST,
       appCommands.COMMAND_SEND_HTTP_REQUEST,
       appCommands.COMMAND_GET_WEBSTORAGE_ENTRY,
-      GET_PERMISSIONS_COMMAND_NAME,
-      REQUEST_PERMISSIONS_COMMAND_NAME,
     ];
   }
 
@@ -115,7 +107,9 @@ class AppCommand {
   static createBridge() {
     if (useBrowserConnector()) {
       return new BrowserConnector();
-    } else if (hasSGJavaScriptBridge()) {
+    }
+
+    if (hasSGJavaScriptBridge()) {
       return SGJavascriptBridge;
     }
 
@@ -164,7 +158,7 @@ class AppCommand {
     try {
       if ('dispatchCommandForVersion' in bridge) {
         bridge.dispatchCommandForVersion(command, appLibVersion);
-      /* istanbul ignore else */
+        /* istanbul ignore else */
       } else if ('dispatchCommandsForVersion' in bridge) {
         bridge.dispatchCommandsForVersion([command], appLibVersion);
       } else {

@@ -47,7 +47,6 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "6.6.0",
-    "@shopgate/pwa-benchmark": "6.5.4",
     "@shopgate/pwa-core": "6.6.0",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",

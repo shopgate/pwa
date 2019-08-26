@@ -11,9 +11,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
   rules: {
     'capitalized-comments': 0,
@@ -55,6 +52,8 @@ module.exports = {
         function: 'Function',
       },
     }],
+    'operator-linebreak': 0,
+    'implicit-arrow-linebreak': 0,
   },
   settings: {
     'import/extensions': [

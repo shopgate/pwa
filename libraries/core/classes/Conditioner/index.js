@@ -1,4 +1,4 @@
-import logger from '../../helpers';
+import { logger } from '../../helpers';
 /**
  * Creates an action handler API.
  */
