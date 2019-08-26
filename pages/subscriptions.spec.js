@@ -8,16 +8,16 @@ import { ORDERS_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { SCANNER_TYPE_BARCODE, SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core';
 import {
-  grantCameraPermissions,
   getScannerRoute,
   SCANNER_PATH,
 } from '@shopgate/pwa-common-commerce/scanner';
+import grantCameraPermissions from '@shopgate/engage/core/actions/grantCameraPermissions';
 
 import subscriptions from './subscriptions';
 
 jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions', () =>
+jest.mock('@shopgate/engage/core/actions/grantCameraPermissions', () =>
   jest.fn().mockResolvedValue(true));
 
 const currentPath = '/some/path';
