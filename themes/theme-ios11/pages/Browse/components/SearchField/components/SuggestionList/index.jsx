@@ -58,12 +58,13 @@ class SuggestionList extends Component {
               portalName={SEARCH_SUGGESTION_ITEM}
               portalProps={{
                 className: styles.item,
-                onClick: e => onClick(e, suggestion),
+                onClick: (e, q) => onClick(e, q && typeof q === 'string' ? q : suggestion),
                 suggestion,
               }}
               key={suggestion}
             >
               <button
+                type="button"
                 className={styles.item}
                 onClick={e => onClick(e, suggestion)}
                 value={suggestion}

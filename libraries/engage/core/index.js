@@ -25,6 +25,7 @@ export { default as HttpRequest } from '@shopgate/pwa-core/classes/HttpRequest';
 export { default as PipelineRequest } from '@shopgate/pwa-core/classes/PipelineRequest';
 export { default as ScannerManager } from '@shopgate/pwa-core/classes/ScannerManager';
 export { default as WebStorageRequest } from '@shopgate/pwa-core/classes/WebStorageRequest';
+export { default as GeolocationRequest } from './classes/GeolocationRequest';
 
 // Commands
 export { default as analyticsSetCustomValues } from '@shopgate/pwa-core/commands/analyticsSetCustomValues';
@@ -74,6 +75,7 @@ export * from '@shopgate/pwa-common/constants/DisplayOptions';
 export * from '@shopgate/pwa-common/constants/Pipelines';
 export * from '@shopgate/pwa-common/constants/Portals';
 export { INDEX_PATH, INDEX_PATH_DEEPLINK };
+export * from './constants/geolocationRequest';
 
 // Emitters
 export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
@@ -118,6 +120,10 @@ export { default as handleLink } from '@shopgate/pwa-common/actions/app/handleLi
 export { default as handlePushNotification } from '@shopgate/pwa-common/actions/app/handlePushNotification';
 export { default as registerLinkEvents } from '@shopgate/pwa-common/actions/app/registerLinkEvents';
 export { default as updateStatusBarBackground } from './actions/updateStatusBarBackground';
+export { default as grantPermissions } from './actions/grantPermissions';
+export { default as grantCameraPermissions } from './actions/grantCameraPermissions';
+export { default as grantGeolocationPermissions } from './actions/grantGeolocationPermissions';
+export { default as getGeolocation } from './actions/getGeolocation';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/app';
@@ -181,7 +187,9 @@ export {
   parseObjectToQueryString,
 };
 
-export { push, pop, replace, reset } from './router/helpers';
+export {
+  push, pop, replace, reset,
+} from './router/helpers';
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/router';

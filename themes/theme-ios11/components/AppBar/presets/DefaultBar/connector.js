@@ -17,8 +17,8 @@ function makeMapStateToProps() {
  * @returns {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  updateStatusBar: ({ background }) => {
-    dispatch(updateStatusBarBackground(background));
+  updateStatusBar: ({ background }, isDefault) => {
+    dispatch(updateStatusBarBackground(background, isDefault));
   },
   resetStatusBar: () => {
     dispatch(updateStatusBarBackground());
