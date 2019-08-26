@@ -23,8 +23,8 @@ import {
   enableRedirectHandler,
   setDefaultProductFetchParams,
 } from '@shopgate/engage/product';
+import { grantCameraPermissions } from '@shopgate/engage/core';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
-import grantCameraPermissions from '@shopgate/pwa-common-commerce/scanner/actions/grantCameraPermissions';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import {
   PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,
