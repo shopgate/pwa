@@ -39,8 +39,5 @@
     "husky": "^1.0.0-rc.13",
     "jest": "^23.6.0",
     "lint-staged": "^7.2.2"
-  },
-  "peerDependencies": {
-    "@shopgate/tracking-core": "6.7.0"
   }
 }
