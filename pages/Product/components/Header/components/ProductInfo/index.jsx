@@ -63,16 +63,16 @@ const ProductInfo = ({ productId, options }) => (
         </Grid.Item>
         <Grid.Item component="div" className={styles.priceContainer}>
           <Portal name={PRODUCT_INFO_ROW2}>
-            <div className={styles.priceInfo}>
+            <div>
               <PriceStriked productId={productId} options={options} />
             </div>
-            <div className={styles.priceInfo}>
+            <div>
               <Price productId={productId} options={options} />
             </div>
-            <div className={styles.priceInfo}>
+            <div>
               <PriceInfo productId={productId} options={options} />
             </div>
-            <div className={styles.priceInfo}>
+            <div>
               <Tiers productId={productId} options={options} />
             </div>
           </Portal>
