@@ -637,7 +637,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs "
+                                  className="css-izofhs  false"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span

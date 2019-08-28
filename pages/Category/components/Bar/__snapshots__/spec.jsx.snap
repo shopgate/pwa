@@ -150,7 +150,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 </Translate>
                               </span>
                               <div
-                                className="css-1fjm4uv"
+                                className="css-1fjm4uv false"
                               >
                                 <ArrowDrop>
                                   <Icon

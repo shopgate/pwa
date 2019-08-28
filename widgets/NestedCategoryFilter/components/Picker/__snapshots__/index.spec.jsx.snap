@@ -833,7 +833,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": undefined,
           },
         ],
@@ -859,7 +859,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           ],
           "results": Array [
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": undefined,
             },
           ],
