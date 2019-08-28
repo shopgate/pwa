@@ -20,7 +20,7 @@ jest.mock('@shopgate/engage/components', () => ({
   SheetDrawer: props => <MockSheet {...props} />,
 }));
 
-jest.mock('@shopgate/pwa-common-commerce/category/actions/getCategory', () => jest.fn(() => () => {}));
+jest.mock('@shopgate/pwa-common-commerce/category/actions/getCategory', () => jest.fn(() => () => { }));
 
 /**
  * Renders the component.
@@ -163,4 +163,3 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(getCategory).toHaveBeenCalledWith(categoryId);
   });
 });
-
