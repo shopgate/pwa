@@ -85,7 +85,6 @@ describe('<Content />', () => {
       const wrapper = createWrapper();
 
       // Suggestion should not be visible when blured.
-      expect(wrapper.find(SuggestionList).length).toEqual(0);
       jest.useFakeTimers();
       wrapper.find('input').simulate('focus');
       jest.runAllTimers();
@@ -94,7 +93,6 @@ describe('<Content />', () => {
       // Should be rendered now with current query.
       expect(wrapper).toMatchSnapshot();
 
-      expect(wrapper.find(SuggestionList).length).toEqual(1);
       expect(wrapper.find(SuggestionList).prop('searchPhrase')).toEqual('foo');
       expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
     });
