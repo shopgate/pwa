@@ -349,11 +349,11 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],

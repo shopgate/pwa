@@ -30,7 +30,6 @@ export { default as Modal } from '@shopgate/pwa-common/components/Modal';
 export { default as ModalContainer } from '@shopgate/pwa-common/components/ModalContainer';
 export { default as Picker } from '@shopgate/pwa-common/components/Picker';
 export { default as Portal } from '@shopgate/pwa-common/components/Portal';
-export { default as ProductCharacteristics } from '@shopgate/pwa-common/components/ProductCharacteristics';
 export { default as RangeSlider } from '@shopgate/pwa-common/components/RangeSlider';
 export { default as Route } from '@shopgate/pwa-common/components/Route';
 export { default as ScannerContainer } from '@shopgate/pwa-common/components/ScannerContainer';

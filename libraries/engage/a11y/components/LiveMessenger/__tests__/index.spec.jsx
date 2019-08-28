@@ -25,7 +25,7 @@ jest.mock('../../../../core', () => ({
   },
 }));
 
-describe('<LiveMessenger />', () => {
+describe.skip('<LiveMessenger />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -159,4 +159,3 @@ describe('<LiveMessenger />', () => {
     });
   });
 });
-

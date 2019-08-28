@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { UIEvents } from '../../../core';
+import { UIEvents } from '@shopgate/engage/core';
 import LiveMessage from '../LiveMessage';
 import {
   EVENT_LIVE_MESSAGE,
@@ -40,7 +40,8 @@ const LiveMessenger = ({ id }) => {
         message, params,
       });
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     UIEvents.addListener(EVENT_LIVE_MESSAGE, handleMessage);
@@ -48,6 +49,7 @@ const LiveMessenger = ({ id }) => {
     return () => {
       UIEvents.removeListener(EVENT_LIVE_MESSAGE, handleMessage);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

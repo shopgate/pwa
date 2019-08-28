@@ -1,8 +1,10 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
+import React, {
+  useRef, useState, useMemo, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import kebabCase from 'lodash/kebabCase';
-import { I18n } from '../../../components';
+import { I18n } from '@shopgate/engage/components';
 import { hidden } from './style';
 
 /**
@@ -42,9 +44,9 @@ const Section = ({
   const [hasContent, setHasContent] = useState(false);
   const id = useMemo(() => kebabCase(title), [title]);
 
-  const observer = useMemo(() => new MutationObserver(() => {
+  const observer = new MutationObserver(() => {
     setHasContent(hasChildNodes(contentRef, id));
-  }));
+  });
 
   useEffect(() => {
     setHasContent(hasChildNodes(contentRef, id));
@@ -53,7 +55,7 @@ const Section = ({
     return () => {
       observer.disconnect();
     };
-  }, [contentRef]);
+  }, [contentRef, id, observer]);
 
   const classes = classNames(className, {
     [hidden]: !hasContent,

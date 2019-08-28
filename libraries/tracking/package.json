@@ -15,7 +15,6 @@
     "connect"
   ],
   "devDependencies": {
-    "@shopgate/eslint-config": "6.7.1",
     "@shopgate/pwa-common": "6.7.1",
     "@shopgate/pwa-common-commerce": "6.7.1",
     "@shopgate/pwa-core": "6.7.1",

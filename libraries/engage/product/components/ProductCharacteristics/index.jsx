@@ -12,8 +12,6 @@ import {
 
 /**
  * The ProductCharacteristics component.
- * @deprectad Please use the component via
- *            `import { ProductCharacteristics } from '@shopgate/engage/product'`
  */
 class ProductCharacteristics extends Component {
   static propTypes = {

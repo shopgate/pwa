@@ -65,7 +65,11 @@ export { Swatches } from './components/Swatches';
 export { RelationsSlider } from './components/RelationsSlider';
 export { default as ProductCard } from './components/ProductCard';
 export { default as ProductGridPrice } from './components/ProductGridPrice';
+export { default as ProductCharacteristics } from './components/ProductCharacteristics';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
 export { default as withProductStock } from './hocs/withProductStock';
+
+// CONTEXTS
+export { default as VariantContext } from './components/ProductCharacteristics/context';

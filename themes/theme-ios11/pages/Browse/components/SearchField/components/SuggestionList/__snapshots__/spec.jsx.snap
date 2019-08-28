@@ -46,6 +46,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo"
           onClick={[Function]}
+          type="button"
           value="foo"
         >
           <SurroundPortals
@@ -75,6 +76,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar"
           onClick={[Function]}
+          type="button"
           value="foo bar"
         >
           <SurroundPortals
@@ -104,6 +106,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar buz"
           onClick={[Function]}
+          type="button"
           value="foo bar buz"
         >
           <SurroundPortals
@@ -133,6 +136,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar buz quz"
           onClick={[Function]}
+          type="button"
           value="foo bar buz quz"
         >
           <SurroundPortals
@@ -198,6 +202,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo"
           onClick={[Function]}
+          type="button"
           value="foo"
         >
           <SurroundPortals
@@ -227,6 +232,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar"
           onClick={[Function]}
+          type="button"
           value="foo bar"
         >
           <SurroundPortals
@@ -256,6 +262,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar buz"
           onClick={[Function]}
+          type="button"
           value="foo bar buz"
         >
           <SurroundPortals
@@ -285,6 +292,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar buz quz"
           onClick={[Function]}
+          type="button"
           value="foo bar buz quz"
         >
           <SurroundPortals
@@ -350,6 +358,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar buz quz"
           onClick={[Function]}
+          type="button"
           value="foo bar buz quz"
         >
           <SurroundPortals
@@ -379,6 +388,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar buz"
           onClick={[Function]}
+          type="button"
           value="foo bar buz"
         >
           <SurroundPortals
@@ -408,6 +418,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo bar"
           onClick={[Function]}
+          type="button"
           value="foo bar"
         >
           <SurroundPortals
@@ -437,6 +448,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           className="css-crua9x"
           data-test-id="searchSuggestion foo"
           onClick={[Function]}
+          type="button"
           value="foo"
         >
           <SurroundPortals
@@ -518,6 +530,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               className="css-crua9x"
               data-test-id="searchSuggestion foo"
               onClick={[Function]}
+              type="button"
               value="foo"
             >
               <SurroundPortals
@@ -547,6 +560,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               className="css-crua9x"
               data-test-id="searchSuggestion foo bar"
               onClick={[Function]}
+              type="button"
               value="foo bar"
             >
               <SurroundPortals
@@ -576,6 +590,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               className="css-crua9x"
               data-test-id="searchSuggestion foo bar buz"
               onClick={[Function]}
+              type="button"
               value="foo bar buz"
             >
               <SurroundPortals
@@ -605,6 +620,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               className="css-crua9x"
               data-test-id="searchSuggestion foo bar buz quz"
               onClick={[Function]}
+              type="button"
               value="foo bar buz quz"
             >
               <SurroundPortals

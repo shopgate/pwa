@@ -46,7 +46,9 @@ exports[`<Content /> should render grouped properties 1`] = `
 `;
 
 exports[`<Content /> should render simple rows if not in beta 1`] = `
-<Wrapper>
+<Wrapper
+  dense={false}
+>
   <Rows
     properties={
       Array [
@@ -77,7 +79,9 @@ exports[`<Content /> should render simple rows if not in beta 1`] = `
 `;
 
 exports[`<Content /> should render simple rows of no groups could be found 1`] = `
-<Wrapper>
+<Wrapper
+  dense={false}
+>
   <Rows
     properties={
       Array [

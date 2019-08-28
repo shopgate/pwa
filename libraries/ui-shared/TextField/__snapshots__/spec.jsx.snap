@@ -70,7 +70,7 @@ exports[`<TextField /> should focus the input 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -122,7 +122,7 @@ exports[`<TextField /> should focus the input 1`] = `
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -233,7 +233,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -285,7 +285,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
             value="foobar"
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -396,7 +396,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -448,7 +448,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -559,7 +559,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -611,7 +611,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -722,7 +722,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       type="text"
       value="FooBar"
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -774,7 +774,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
             value="FooBar"
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -885,7 +885,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -937,7 +937,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={true}
@@ -1054,7 +1054,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -1106,7 +1106,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
             value="FOOBAR"
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -1217,7 +1217,7 @@ exports[`<TextField /> should show the error message 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -1269,7 +1269,7 @@ exports[`<TextField /> should show the error message 1`] = `
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={true}
@@ -1393,7 +1393,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -1445,7 +1445,7 @@ exports[`<TextField /> should show the hint text 1`] = `
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -1563,7 +1563,7 @@ exports[`<TextField /> should show the label 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -1615,7 +1615,7 @@ exports[`<TextField /> should show the label 1`] = `
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -1677,11 +1677,11 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -1747,7 +1747,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -1799,7 +1799,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
             value="a"
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}
@@ -1861,7 +1861,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -1924,7 +1924,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       type="text"
       value=""
     >
-      <Component
+      <_default
         className="css-keangt"
         id="test-input"
         isControlled={false}
@@ -1976,7 +1976,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
             value=""
           />
         </SimpleInput>
-      </Component>
+      </_default>
     </FormElement>
     <Underline
       hasErrorMessage={false}

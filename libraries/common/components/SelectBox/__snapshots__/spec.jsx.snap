@@ -52,7 +52,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
         </Translate>
       </span>
       <div
-        className=""
+        className=" false"
       >
         <MockIconComponent>
           <span
@@ -248,7 +248,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
         </Translate>
       </span>
       <div
-        className=""
+        className=" false"
       >
         <MockIconComponent>
           <span
@@ -444,7 +444,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
         </Translate>
       </span>
       <div
-        className=""
+        className=" false"
       >
         <MockIconComponent>
           <span

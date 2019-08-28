@@ -87,7 +87,7 @@ exports[`<QuantityPicker /> Given onChange callback is triggered correctly shoul
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -130,11 +130,11 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -173,7 +173,7 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],

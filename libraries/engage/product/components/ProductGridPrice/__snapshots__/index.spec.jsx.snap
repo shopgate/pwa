@@ -365,7 +365,7 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
               unitPriceMin={22.95}
             >
               <div
-                className="css-izofhs "
+                className="css-izofhs  false"
                 data-test-id="minPrice: 22.95 price: 22.95 currency: EUR"
               >
                 <span

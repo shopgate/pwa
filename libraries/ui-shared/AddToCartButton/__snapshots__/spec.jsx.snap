@@ -149,7 +149,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": Promise {},
         },
       ],
@@ -174,7 +174,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],
@@ -279,7 +279,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": Promise {},
         },
       ],
@@ -304,7 +304,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],

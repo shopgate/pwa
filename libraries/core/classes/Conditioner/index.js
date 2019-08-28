@@ -43,14 +43,17 @@ class Conditioner {
    */
   check() {
     return new Promise(async (resolve, reject) => {
+      let sorted = [];
+
+      this.conditions.forEach(value => sorted.push(value));
+
       // Sort by priority
-      const sorted = [...this.conditions.values()]
-        .sort((a, b) => {
-          if (a.priority === b.priority) {
-            return 0;
-          }
-          return a.priority < b.priority ? -1 : 1;
-        });
+      sorted = sorted.sort((a, b) => {
+        if (a.priority === b.priority) {
+          return 0;
+        }
+        return a.priority < b.priority ? -1 : 1;
+      });
 
       try {
         for (let i = 0; i < sorted.length; i += 1) {

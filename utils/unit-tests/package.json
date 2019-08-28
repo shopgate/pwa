@@ -6,7 +6,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^24.3.1",
     "cheerio": "^1.0.0-rc.2",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "~1.10.0",
@@ -18,13 +17,12 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@shopgate/eslint-config": "6.7.1",
-    "jest": "^24.8.0",
+    "jest": "^24.9.0",
     "react": "~16.8.4",
     "react-dom": "~16.8.4"
   },
   "peerDependencies": {
-    "jest": "^24.8.0",
+    "jest": "^24.9.0",
     "react": "~16.8.4",
     "react-dom": "~16.8.4"
   }
