@@ -23,6 +23,7 @@ class SuggestionList extends Component {
     fetching: false,
     suggestions: [],
   };
+
   /**
    * @param { Object } nextProps Next props.
    * @return {boolean}
@@ -61,6 +62,7 @@ class SuggestionList extends Component {
               key={suggestion}
             >
               <button
+                type="button"
                 className={styles.item}
                 onClick={onClick}
                 value={suggestion}
