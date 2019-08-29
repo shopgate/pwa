@@ -100,7 +100,7 @@ class AppHandler {
   }
 
   /**
-   * Log when a search happend
+   * Log when a search happened
    *
    * @param {UnifiedSearched} data Tracking data for this event
    * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
@@ -129,8 +129,20 @@ class AppHandler {
    * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
-  logItemView(data, restrictions) {
+  itemView(data, restrictions) {
     SGAction.analyticsLogItemView(AppHandler.prepareTrackingData(data, restrictions));
+    return this;
+  }
+
+  /**
+   * Log a login
+   *
+   * @param {UnifiedLogin} data Tracking data for this event
+   * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
+   * @returns {AppHandler} Instance of SgTrackingAppHandler
+   */
+  login(data, restrictions) {
+    SGAction.analyticsLogLogin(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
 

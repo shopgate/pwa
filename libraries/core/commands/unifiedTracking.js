@@ -136,6 +136,13 @@ import AppCommand from '../classes/AppCommand';
  */
 
 /**
+ * Data definition for a log login command payload within the unified tracking system
+ * @typedef {Object} UnifiedLogin
+ * @property {string} type Defines the type of the login. “guest”, “facebook”.
+ * @property {UnifiedRestrictions} [restrictions] Restrictions for the command
+ */
+
+/**
  * Additional definitions of data for the multiple tracking events
  */
 
@@ -247,4 +254,12 @@ export function analyticsSetCampaignWithUrl(data) {
  */
 export function analyticsLogItemView(data) {
   executeCommand('analyticsLogItemView', data);
+}
+
+/**
+ * This command can be used to log a login event to all installed trackers.
+ * @param {UnifiedLogin} data The payload for the command
+ */
+export function analyticsLogLogin(data) {
+  executeCommand('analyticsLogLogin', data);
 }
