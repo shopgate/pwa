@@ -19,11 +19,13 @@ class SuggestionList extends Component {
     onClick: PropTypes.func.isRequired,
     fetching: PropTypes.bool,
     suggestions: PropTypes.arrayOf(PropTypes.string),
+    visible: PropTypes.bool,
   }
 
   static defaultProps = {
     suggestions: [],
     fetching: false,
+    visible: false,
   }
 
   /**
@@ -38,7 +40,9 @@ class SuggestionList extends Component {
    * @return {JSX}
    */
   render() {
-    const { onClick, suggestions, bottomHeight } = this.props;
+    const {
+      onClick, suggestions, bottomHeight, visible,
+    } = this.props;
 
     if (!suggestions) {
       return null;
@@ -52,7 +56,13 @@ class SuggestionList extends Component {
           suggestions,
         }}
       >
-        <div className={classnames(styles.list, styles.bottom(bottomHeight))}>
+        <div
+          className={classnames(
+            styles.list,
+            styles.bottom(bottomHeight),
+            { [styles.hidden]: !visible }
+          )}
+        >
           {suggestions.map(suggestion => (
             <SurroundPortals
               portalName={SEARCH_SUGGESTION_ITEM}

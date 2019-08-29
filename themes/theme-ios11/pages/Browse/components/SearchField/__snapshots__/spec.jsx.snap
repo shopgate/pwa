@@ -186,6 +186,12 @@ exports[`<Content /> Check search field should render with initial search query 
             </button>
           </div>
         </div>
+        <Component
+          bottomHeight={0}
+          onClick={[Function]}
+          searchPhrase="foo"
+          visible={false}
+        />
       </div>
     </SearchField>
   </Connect(SearchField)>
@@ -341,6 +347,7 @@ exports[`<Content /> Check search field should show suggestions when focused 1`]
           bottomHeight={0}
           onClick={[Function]}
           searchPhrase="foo"
+          visible={true}
         />
       </div>
     </SearchField>

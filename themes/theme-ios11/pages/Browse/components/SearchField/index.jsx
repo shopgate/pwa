@@ -257,16 +257,13 @@ class SearchField extends Component {
             {this.renderCancelButton()}
           </div>
         </div>
-        {focused && (
-          <Fragment>
-            <div className={styles.overlay} />
-            <SuggestionList
-              searchPhrase={this.state.query}
-              onClick={this.handleSubmit}
-              bottomHeight={this.state.bottomHeight}
-            />
-          </Fragment>)
-        }
+        {focused && <div className={styles.overlay} />}
+        <SuggestionList
+          visible={focused}
+          searchPhrase={this.state.query}
+          onClick={this.handleSubmit}
+          bottomHeight={this.state.bottomHeight}
+        />
       </div>
     );
   }
