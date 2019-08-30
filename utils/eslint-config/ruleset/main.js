@@ -55,6 +55,10 @@ module.exports = {
         function: 'Function',
       },
     }],
+    'no-param-reassign': [2, {
+      props: true,
+      ignorePropertyModificationsFor: ['acc', 'accumulator'],
+    }],
   },
   settings: {
     'import/extensions': [
