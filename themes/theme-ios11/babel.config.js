@@ -3,60 +3,41 @@ module.exports = (api) => {
 
   return {
     compact: true,
+    sourceType: 'unambiguous',
     presets: [
-      [
-        '@babel/preset-env',
-        {
-          modules: false,
-        },
-      ],
+      ['@babel/preset-env', {
+        modules: false,
+      }],
       '@babel/preset-react',
     ],
     plugins: [
       'lodash',
       '@babel/plugin-proposal-class-properties',
-      [
-        '@babel/plugin-proposal-object-rest-spread',
-        {
-          loose: true,
-          legacy: true,
-        },
-      ],
-      [
-        '@babel/plugin-transform-spread',
-        {
-          loose: true,
-        },
-      ],
+      ['@babel/plugin-proposal-object-rest-spread', {
+        loose: true,
+      }],
+      ['@babel/plugin-transform-spread', {
+        loose: true,
+      }],
       '@babel/plugin-proposal-export-namespace-from',
       '@babel/plugin-proposal-export-default-from',
       'transform-export-extensions',
-      [
-        '@babel/plugin-syntax-dynamic-import',
-        {
-          loose: true,
-          legacy: true,
+      ['@babel/plugin-syntax-dynamic-import', {
+        loose: true,
+      }],
+      ['module-resolver', {
+        cwd: 'packagejson',
+        alias: {
+          Components: './components',
+          Config: './config',
+          Extensions: './extensions',
+          Pages: './pages',
         },
-      ],
-      [
-        'module-resolver',
-        {
-          cwd: 'packagejson',
-          alias: {
-            Components: './components',
-            Config: './config',
-            Extensions: './extensions',
-            Pages: './pages',
-          },
-        },
-      ],
-      [
-        '@babel/plugin-transform-runtime',
-        {
-          helpers: false,
-          regenerator: true,
-        },
-      ],
+      }],
+      ['@babel/plugin-transform-runtime', {
+        helpers: false,
+        regenerator: true,
+      }],
     ],
     env: {
       test: {
@@ -72,7 +53,7 @@ module.exports = (api) => {
       },
       production: {
         plugins: [
-          'babel-plugin-transform-react-remove-prop-types',
+          'transform-react-remove-prop-types',
         ],
       },
     },
