@@ -58,19 +58,18 @@ export default function resultsByHash(state = {}, action) {
     /* Remove not found product from hash results */
     case ERROR_PRODUCT:
       if (action.errorCode === ENOTFOUND) {
-        return Object.keys(state).reduce((currentState, hash) => {
-          if (currentState[hash].products
-            && currentState[hash].products.includes(action.productId)
+        return Object.keys(state).reduce((accumulator, hash) => {
+          if (accumulator[hash].products
+            && accumulator[hash].products.includes(action.productId)
           ) {
-            // eslint-disable-next-line no-param-reassign
-            currentState[hash] = {
-              ...currentState[hash],
-              products: currentState[hash].products.filter((
+            accumulator[hash] = {
+              ...accumulator[hash],
+              products: accumulator[hash].products.filter((
                 pId => pId !== action.productId
               )),
             };
           }
-          return currentState;
+          return accumulator;
         }, { ...state });
       }
       return state;
@@ -78,20 +77,19 @@ export default function resultsByHash(state = {}, action) {
     case EXPIRE_PRODUCT_BY_ID: {
       const productIds = [].concat(action.productId);
 
-      return Object.keys(state).reduce((currentState, hash) => {
-        if (currentState[hash].products
-          && productIds.some(id => currentState[hash].products.includes(id))) {
-          // eslint-disable-next-line no-param-reassign
-          currentState[hash] = {
-            ...currentState[hash],
+      return Object.keys(state).reduce((accumulator, hash) => {
+        if (accumulator[hash].products
+          && productIds.some(id => accumulator[hash].products.includes(id))) {
+          accumulator[hash] = {
+            ...accumulator[hash],
             expires: 0,
             ...action.complete && {
-              products: currentState[hash].products
+              products: accumulator[hash].products
                 .filter(id => !productIds.includes(id)),
             },
           };
         }
-        return currentState;
+        return accumulator;
       }, { ...state });
     }
 
