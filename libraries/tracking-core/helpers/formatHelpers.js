@@ -424,7 +424,7 @@ dataFormatHelpers.addedPaymentInfo = rawData => ({
  * @param {Object} rawData Raw data from the core
  * @returns {UnifiedItemView} Data for the logItemView event
  */
-dataFormatHelpers.logItemView = (rawData) => {
+dataFormatHelpers.itemView = (rawData) => {
   let product;
 
   if (rawData.product) {

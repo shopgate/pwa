@@ -1,8 +1,6 @@
-import {
-  userDidLogin$,
-  userDataReceived$,
-  loginDidFail$,
-} from '@shopgate/pwa-common/streams/user';
+import { loginDidFail$ } from '@shopgate/engage/user';
+import { makeGetUser } from '../selectors/user';
+import { loginSuccess$ } from '../streams/user';
 import { track } from '../helpers/index';
 
 /**
@@ -10,15 +8,11 @@ import { track } from '../helpers/index';
  * @param {Function} subscribe The subscribe function.
  */
 export default function user(subscribe) {
-  /**
-   * Gets triggered if login was successful and we received the user data.
-   */
-  const loginSuccess$ = userDataReceived$
-    .zip(userDidLogin$)
-    .map(([first]) => first);
-
-  subscribe(loginSuccess$, ({ action, getState }) => (
-    track('loginSuccess', action.user, getState())));
+  subscribe(loginSuccess$, ({ getState }) => {
+    const getUser = makeGetUser();
+    const state = getState();
+    track('loginSuccess', getUser(state), state);
+  });
 
   /**
    * Gets triggered if login failed.
