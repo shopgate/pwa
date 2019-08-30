@@ -9,10 +9,12 @@ export { default as logout } from '@shopgate/pwa-common/actions/user/logout';
 
 // CONSTANTS
 export * from '@shopgate/pwa-common/constants/Registration';
+export * from '@shopgate/pwa-common/constants/user';
 export { REGISTER_PATH, LOGIN_PATH };
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/user';
+export * from './selectors/login';
 
 // STREAMS
 export * from '@shopgate/pwa-common/streams/user';

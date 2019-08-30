@@ -6,6 +6,7 @@ import {
   EINCOMPLETELOGIN,
 } from '@shopgate/pwa-core';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
+import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
 import * as actions from '../../action-creators/user';
 
 /**
@@ -17,7 +18,7 @@ import * as actions from '../../action-creators/user';
  * @param {string} strategy basic or facebook, amazon, etc
  * @return {Function} A redux thunk.
  */
-export default function login(parameters, redirect, strategy = 'basic') {
+export default function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return (dispatch) => {
     dispatch(actions.requestLogin(parameters.login, parameters.password, strategy));
 
@@ -35,7 +36,7 @@ export default function login(parameters, redirect, strategy = 'basic') {
       .dispatch()
       .then(({ success, messages }) => {
         if (success) {
-          dispatch(actions.successLogin(redirect));
+          dispatch(actions.successLogin(redirect, strategy));
         } else {
           dispatch(actions.errorLogin(messages));
         }
@@ -49,7 +50,7 @@ export default function login(parameters, redirect, strategy = 'basic') {
            * in. In that situation the success action can also dispatch to trigger the necessary
            * processes which has to happen after a successful login.
            */
-          dispatch(actions.successLogin(redirect));
+          dispatch(actions.successLogin(redirect, strategy));
         } else if (code === ELEGACYSGCONNECT) {
           /**
            * The app is connected to the shop system via the legacy shopgate connect. Login via
