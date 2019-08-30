@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.5.5",
+    "@babel/runtime-corejs3": "^7.5.5",
     "@hot-loader/react-dom": "^16.8.6",
     "@shopgate/engage": "6.7.1",
     "@shopgate/pwa-common": "6.7.1",
