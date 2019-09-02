@@ -52,6 +52,7 @@ export * from './constants/ErrorHandleTypes';
 export * from './constants/Pipeline';
 export * from './constants/ProcessTypes';
 export * from './constants/Scanner';
+export * from './constants/ErrorManager';
 
 // Emitters
 export { default as UIEvents } from './emitters/ui';
