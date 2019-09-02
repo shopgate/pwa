@@ -419,6 +419,19 @@ dataFormatHelpers.addedPaymentInfo = rawData => ({
 });
 
 /**
+ * Converter for the selectedPaymentInfo event. It's compatible to the addedPaymentInfo event, but
+ * other than this, it's also triggered when a payment method was selected which doesn't have
+ * configurable entities, like "credit card".
+ *
+ * @param {Object} rawData Raw data from the core
+ * @returns {UnifiedAddedPaymentInfo} Data for the SelectedPaymentInfo event
+ */
+dataFormatHelpers.selectedPaymentInfo = rawData => ({
+  success: get(rawData, 'paymentMethodSelected.success'),
+  name: get(rawData, 'paymentMethodSelected.name'),
+});
+
+/**
  * Converter for the logItemView event.
  *
  * @param {Object} rawData Raw data from the core

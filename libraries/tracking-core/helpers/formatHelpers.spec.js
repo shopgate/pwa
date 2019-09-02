@@ -1,6 +1,6 @@
 import helpers from './formatHelpers';
 
-const { itemView } = helpers;
+const { itemView, selectedPaymentInfo } = helpers;
 
 const mockBaseProduct = {
   uid: 'base-product',
@@ -53,6 +53,21 @@ describe('Format helpers', () => {
         priceGross: 100.99,
         currency: 'EUR',
         brand: 'Product manufacturer',
+      });
+    });
+  });
+
+  describe('selectedPaymentInfo()', () => {
+    it('should format tracking data', () => {
+      const raw = {
+        paymentMethodSelected: {
+          success: true,
+          name: 'Payment method',
+        },
+      };
+      expect(selectedPaymentInfo(raw)).toEqual({
+        success: raw.paymentMethodSelected.success,
+        name: raw.paymentMethodSelected.name,
       });
     });
   });
