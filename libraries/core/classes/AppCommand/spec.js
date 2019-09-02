@@ -13,7 +13,7 @@ jest.mock('../../helpers', () => ({
     warn: (...args) => {
       mockedLoggerWarn(...args);
     },
-    log: () => {},
+    log: () => { },
   },
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(false),
   useBrowserConnector: () => false,
@@ -31,13 +31,11 @@ jest.mock('../DevServerBridge', () => () => ({ dispatchCommandsForVersion: mocke
 
 // Mock of the client information web storage.
 let mockedClientInformation = null;
-jest.mock('../../commands/webStorage', () => ({
-  getWebStorageEntry: () => ({
-    then(cb) {
-      cb({ value: mockedClientInformation });
-    },
-  }),
-}));
+jest.mock('../../commands/getWebStorageEntry', () => jest.fn().mockImplementation(() => ({
+  then(cb) {
+    cb({ value: mockedClientInformation });
+  },
+})));
 
 const defaultLibVersion = defaultClientInformation.libVersion;
 

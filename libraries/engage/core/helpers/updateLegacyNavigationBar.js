@@ -1,5 +1,5 @@
 import Color from 'color';
-import { broadcastEvent } from '../index';
+import broadcastEvent from '@shopgate/pwa-core/commands/broadcastEvent';
 
 /**
  * Updates the styles of the navigation bar of iOS devices.
@@ -38,4 +38,3 @@ export const updateLegacyNavigationBar = (options = {}) => {
     }],
   });
 };
-

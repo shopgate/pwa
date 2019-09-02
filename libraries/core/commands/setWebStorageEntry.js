@@ -1,5 +1,4 @@
 import AppCommand from '../classes/AppCommand';
-import WebStorageRequest from '../classes/WebStorageRequest';
 
 /**
  * This commands set up entries with values in the WebStorageRequest. This storage is mainly meant
@@ -12,23 +11,9 @@ import WebStorageRequest from '../classes/WebStorageRequest';
  * @param {number} params.timeout The cache time how long the entry shall be stored in seconds
  *   0 or omitting means that the entry won't be deleted automatically
  */
-export function setWebStorageEntry(params) {
+export default function setWebStorageEntry(params) {
   const command = new AppCommand();
   command
     .setCommandName('setWebStorageEntry')
     .dispatch(params);
-}
-
-/**
- * With this command you can get the value of a WebStorageRequest, that has been set with
- * setWebStorageEntry.
- * @param {Object} params The command parameters
- * @param {string} params.name The name of the entry, that shall be given back.
- * @return {Promise}
- */
-export function getWebStorageEntry(params) {
-  const { name } = params;
-
-  const storage = new WebStorageRequest(name);
-  return storage.dispatch();
 }

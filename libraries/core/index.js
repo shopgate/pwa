@@ -42,7 +42,8 @@ export { default as setScrollingEnabled } from './commands/setScrollingEnabled';
 export { default as showNavigationBar } from './commands/showNavigationBar';
 export { default as showTab } from './commands/showTab';
 export * from './commands/unifiedTracking';
-export * from './commands/webStorage';
+export { default as getWebStorageEntry } from './commands/getWebStorageEntry';
+export { default as setWebStorageEntry } from './commands/setWebStorageEntry';
 
 // Constants
 export * from './constants/AppEvents';
