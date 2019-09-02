@@ -1,6 +1,6 @@
 // Mock some underlying classes to avoid faulty code exection.
-jest.mock('../../DevServerBridge', () => {});
-jest.mock('../../../commands/webStorage', () => {});
+jest.mock('../../DevServerBridge', () => { });
+jest.mock('../../../commands/getWebStorageEntry', () => { });
 
 // List of known "private" methods within the original class.
 const privateMethods = ['constructor', 'logCommand'];
