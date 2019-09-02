@@ -411,7 +411,7 @@ dataFormatHelpers.setCampaignWithUrl = rawData => ({
  * Converter for the addedPaymentInfo event
  *
  * @param {Object} rawData Raw data from the core
- * @returns {UnifiedAddedPaymentInfo} Data for the AddedPaymentInfo event
+ * @returns {UnifiedPaymentInfo} Data for the AddedPaymentInfo event
  */
 dataFormatHelpers.addedPaymentInfo = rawData => ({
   success: get(rawData, 'paymentMethodAdded.success'),
@@ -424,7 +424,7 @@ dataFormatHelpers.addedPaymentInfo = rawData => ({
  * configurable entities, like "credit card".
  *
  * @param {Object} rawData Raw data from the core
- * @returns {UnifiedAddedPaymentInfo} Data for the SelectedPaymentInfo event
+ * @returns {UnifiedPaymentInfo} Data for the SelectedPaymentInfo event
  */
 dataFormatHelpers.selectedPaymentInfo = rawData => ({
   success: get(rawData, 'paymentMethodSelected.success'),

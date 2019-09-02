@@ -54,7 +54,7 @@ class AppHandler {
   /**
    * Log when a payment info was added
    *
-   * @param {UnifiedAddedPaymentInfo} data Tracking data for this event
+   * @param {UnifiedPaymentInfo} data Tracking data for this event
    * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
@@ -66,7 +66,7 @@ class AppHandler {
   /**
    * Log when a payment info was selected
    *
-   * @param {UnifiedAddedPaymentInfo} data Tracking data for this event
+   * @param {UnifiedPaymentInfo} data Tracking data for this event
    * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
