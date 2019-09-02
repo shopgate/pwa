@@ -1,6 +1,9 @@
-import { logger, hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
-import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
-import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
+import {
+  logger,
+  hasSGJavaScriptBridge,
+  defaultClientInformation,
+  getWebStorageEntry,
+} from '@shopgate/pwa-core';
 import {
   requestClientInformation,
   receiveClientInformation,

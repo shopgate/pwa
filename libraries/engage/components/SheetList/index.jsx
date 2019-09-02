@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { List } from '../';
+import List from '@shopgate/pwa-common/components/List';
 import Item from './components/Item';
 import styles from './style';
 

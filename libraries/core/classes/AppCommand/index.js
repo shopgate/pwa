@@ -1,16 +1,8 @@
-/* global SGJavascriptBridge */
-import { logger, hasSGJavaScriptBridge, useBrowserConnector } from '../../helpers';
+import { logger, hasSGJavaScriptBridge } from '../../helpers';
 import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
 import * as appCommands from '../../constants/AppCommands';
-import BrowserConnector from '../BrowserConnector';
-import DevServerBridge from '../DevServerBridge';
-/* eslint-disable import/named */
-import {
-  GET_PERMISSIONS_COMMAND_NAME,
-  REQUEST_PERMISSIONS_COMMAND_NAME,
-} from '../../constants/AppPermissions';
-/* eslint-enable import/named */
+import Bridge from '../Bridge';
 
 /**
  * The app command class.
@@ -30,8 +22,6 @@ class AppCommand {
       appCommands.COMMAND_SEND_PIPELINE_REQUEST,
       appCommands.COMMAND_SEND_HTTP_REQUEST,
       appCommands.COMMAND_GET_WEBSTORAGE_ENTRY,
-      GET_PERMISSIONS_COMMAND_NAME,
-      REQUEST_PERMISSIONS_COMMAND_NAME,
     ];
   }
 
@@ -109,20 +99,6 @@ class AppCommand {
   }
 
   /**
-   * Creates a new bridge based on the current environment.
-   * @returns {Object}
-   */
-  static createBridge() {
-    if (useBrowserConnector()) {
-      return new BrowserConnector();
-    } else if (hasSGJavaScriptBridge()) {
-      return SGJavascriptBridge;
-    }
-
-    return new DevServerBridge();
-  }
-
-  /**
    * Dispatches the command to the app.
    * The returned promise will not be rejected for now in error cases to avoid the necessity
    * of refactoring within existing code. But it resolves with FALSE in those cases.
@@ -158,22 +134,10 @@ class AppCommand {
       return false;
     }
 
-    // Create a new bridge that handles this command.
-    const bridge = AppCommand.createBridge();
+    const bridge = new Bridge();
 
     try {
-      if ('dispatchCommandForVersion' in bridge) {
-        bridge.dispatchCommandForVersion(command, appLibVersion);
-      /* istanbul ignore else */
-      } else if ('dispatchCommandsForVersion' in bridge) {
-        bridge.dispatchCommandsForVersion([command], appLibVersion);
-      } else {
-        bridge.dispatchCommandsStringForVersion(
-          JSON.stringify([command]),
-          appLibVersion
-        );
-      }
-
+      bridge.dispatchCommand(command, appLibVersion);
       this.logCommand();
     } catch (exception) {
       logger.error(exception);
