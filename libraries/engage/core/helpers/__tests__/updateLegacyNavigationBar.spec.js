@@ -1,9 +1,7 @@
-import { broadcastEvent } from '../../index';
+import broadcastEvent from '@shopgate/pwa-core/commands/broadcastEvent';
 import { updateLegacyNavigationBar } from '../updateLegacyNavigationBar';
 
-jest.mock('../../index', () => ({
-  broadcastEvent: jest.fn(),
-}));
+jest.mock('@shopgate/pwa-core/commands/broadcastEvent', () => jest.fn());
 
 describe('updateLegacyNavigationBar()', () => {
   it('should broadcast when called without parameters', () => {
