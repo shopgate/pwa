@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { Sheet } from '../';
+import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 
 const node = document.getElementById('portals');
 

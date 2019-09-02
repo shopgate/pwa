@@ -1,4 +1,4 @@
-import { getWebStorageEntry } from '../commands/webStorage';
+import getWebStorageEntry from '../commands/getWebStorageEntry';
 import {
   isValidVersion,
   isVersionAtLeast,
@@ -17,14 +17,12 @@ let mockedClientInformation = null;
 
 const mockedWebStorageResponse = jest.fn();
 
-jest.mock('../commands/webStorage', () => ({
-  getWebStorageEntry: jest.fn().mockImplementation(() => ({
-    then(cb) {
-      mockedWebStorageResponse();
-      cb({ value: mockedClientInformation });
-    },
-  })),
-}));
+jest.mock('../commands/getWebStorageEntry', () => jest.fn().mockImplementation(() => ({
+  then(cb) {
+    mockedWebStorageResponse();
+    cb({ value: mockedClientInformation });
+  },
+})));
 
 const mockedErrorLogger = jest.fn();
 jest.mock('./index', () => ({
