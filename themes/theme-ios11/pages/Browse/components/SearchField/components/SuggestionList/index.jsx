@@ -64,6 +64,7 @@ class SuggestionList extends Component {
               key={suggestion}
             >
               <button
+                type="button"
                 className={styles.item}
                 onClick={e => onClick(e, suggestion)}
                 value={suggestion}

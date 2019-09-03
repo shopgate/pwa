@@ -21,6 +21,6 @@
     "@shopgate/pwa-core": "6.7.1",
     "@shopgate/tracking-core": "6.7.1",
     "reselect": "^3.0.1",
-    "rxjs": "^5.4.3"
+    "rxjs": "~5.5.12"
   }
 }

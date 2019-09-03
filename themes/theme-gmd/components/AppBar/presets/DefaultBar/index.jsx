@@ -9,7 +9,9 @@ import {
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { withRoute, withWidgetSettings, withApp, INDEX_PATH } from '@shopgate/engage/core';
+import {
+  withRoute, withWidgetSettings, withApp, INDEX_PATH,
+} from '@shopgate/engage/core';
 import { ViewContext } from 'Components/View/context';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
@@ -55,7 +57,7 @@ class AppBarDefault extends PureComponent {
 
     if (!target) {
       target = document.getElementById('AppHeader');
-      this.setState({ target: target || null }); // eslint-disable-line react/no-did-mount-set-state
+      this.setState({ target: target || null });
     }
 
     if (this.props.setFocus) {

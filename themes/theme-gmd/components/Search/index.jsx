@@ -25,6 +25,15 @@ class Search extends Component {
   }
 
   /**
+   * Fetch the search suggestions, debounced to reduce the request amount.
+   */
+  fetchSuggestions = debounce((query) => {
+    if (query.length > SUGGESTIONS_MIN) {
+      this.props.fetchSuggestions(query.trim());
+    }
+  }, 200, { maxWait: 400 });
+
+  /**
    * @param {Object} props The component props.
    */
   constructor(props) {
@@ -68,14 +77,13 @@ class Search extends Component {
    */
   toggle = (visible = true) => {
     const { route: { query } } = this.props;
-    const searchQuery = query.s || this.state.query;
 
     const wasVisible = this.state.visible;
 
-    this.setState({
-      query: searchQuery,
+    this.setState(prevState => ({
+      query: query.s || prevState.query,
       visible,
-    });
+    }));
 
     if (wasVisible && !visible) {
       UIEvents.emit(SEARCH_CLOSED);
@@ -98,15 +106,6 @@ class Search extends Component {
     this.fetchSuggestions(query);
     this.setState({ query });
   };
-
-  /**
-   * Fetch the search suggestions, debounced to reduce the request amount.
-   */
-  fetchSuggestions = debounce((query) => {
-    if (query.length > SUGGESTIONS_MIN) {
-      this.props.fetchSuggestions(query.trim());
-    }
-  }, 200, { maxWait: 400 });
 
   /**
    * @param {Event} event The event.

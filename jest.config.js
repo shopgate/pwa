@@ -7,11 +7,7 @@ const testedExtensions = [
   '@shopgate-theme-config',
 ];
 
-module.exports = {
-  ...jestConfig,
-  moduleNameMapper: {
-    '^.+\\.(css|scss)$': 'identity-obj-proxy',
-  },
+module.exports = Object.assign({}, jestConfig, {
   collectCoverageFrom: [
     'extensions/*/frontend/**/*.{js,jsx}',
     'libraries/*/**/*.{js,jsx}',
@@ -32,4 +28,4 @@ module.exports = {
     '/themes/*/extensions/',
     '/themes/*/e2e/',
   ],
-};
+});

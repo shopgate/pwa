@@ -1,6 +1,6 @@
 import React from 'react';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
-import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '@shopgate/pwa-common-commerce/product';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '@shopgate/engage/product';
 import { PORTAL_PRODUCT_MEDIA } from '../../../components/constants';
 import MediaImage from './MediaImage';
 import FeaturedVideo from './FeaturedVideo';
@@ -19,7 +19,7 @@ const FeaturedMedia = ({ type, url, altText }) => {
   const TypeRenderer = types[type] || MediaImage;
 
   return (
-    <SurroundPortals portalName={PORTAL_PRODUCT_MEDIA} >
+    <SurroundPortals portalName={PORTAL_PRODUCT_MEDIA}>
       <TypeRenderer url={url} altText={altText} />
     </SurroundPortals>
   );

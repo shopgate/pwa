@@ -1,4 +1,4 @@
-import pck from './../../package';
+import pck from '../../package';
 import { buildThemeConfig } from './theme';
 import { assignObjectDeep } from '../data';
 import { isObject } from '../validation';

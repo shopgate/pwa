@@ -92,8 +92,7 @@ let appendPreviousChangelog = true;
  * @return {{major: number, minor: number, patch: number}}
  */
 function parseVersion(v) {
-  const [
-    , // Full match of no interest.
+  const [, // Full match of no interest.
     major = null,
     minor = null,
     patch = null,
