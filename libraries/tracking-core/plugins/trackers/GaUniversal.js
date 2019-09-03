@@ -18,12 +18,15 @@ class GaUniversal {
    * Constructor
    *
    * @param {Object} options Common Tracking Configuration
+   * @param {boolean} [options.shopNumber] Shop number
+   * @param {boolean} [options.device] Device info
    * @param {boolean} [options.overrideUnified] If true -> overrides our unified tracking system
    * @param {boolean} [options.useNativeSdk] If true -> send data via our unified tracking system
    *   to the native sdk
    * @param {Object} [options.config] Configuration for facebook pixel tracking
    */
   constructor(options) {
+    this.options = options;
     this.merchantAccounts = options.config.merchant;
     this.shopgateAccount = options.config.shopgate;
 
@@ -95,10 +98,10 @@ class GaUniversal {
     ga('shopgate.set', 'forceSSL', true);
 
     // Send custom variables to sdk
-    ga('shopgate.set', DIMENSION_SHOP_NUMBER, window.sgData.shop.shop_number.toString());
+    ga('shopgate.set', DIMENSION_SHOP_NUMBER, this.options.shopNumber || window.sgData.shop.shop_number.toString());
 
-    if (window.sgData.device.access === ACCESS_TYPE_APP) {
-      ga('shopgate.set', DIMENSION_CODEBASE_VERSION, window.sgData.device.codebase);
+    if (this.options.codebaseVersion || window.sgData.device.access === ACCESS_TYPE_APP) {
+      ga('shopgate.set', DIMENSION_CODEBASE_VERSION, this.options.codebaseVersion || window.sgData.device.codebase);
     }
   }
 

@@ -1,6 +1,7 @@
 import BasePlugin from '../Base';
 import SgGAUniversalTracking from './GaUniversal';
 import SgGAClassicTracking from './GaClassic';
+import { SGLink } from '../../helpers/helper';
 
 const TRACK_PAGE_VIEW = 'pageView';
 const TRACK_EVENT = 'event';
@@ -91,7 +92,6 @@ class GaBase extends BasePlugin {
    */
   sendCommand(command, payload, scope, account) {
     if (typeof commandMapping[command] === 'undefined') {
-      console.warn(`SgGATracking: Unknown google analytics command "${command}"`);
       return;
     }
 
@@ -186,6 +186,13 @@ class GaBase extends BasePlugin {
     // Push notification
     this.register.openPushNotification((data) => {
       this.sendCommand(TRACK_EVENT, GaBase.getEventData('PushNotification', data), shopgateOnly);
+    });
+
+    // Push notification
+    this.register.setCampaignWithUrl((data, raw) => {
+      const shopgateUrl = new SGLink(data.url);
+      shopgateUrl.setUtmParams(data, raw);
+      this.sendCommand(TRACK_PAGE_VIEW, shopgateUrl.toString(), shopgateOnly);
     });
 
     // App review prompt
