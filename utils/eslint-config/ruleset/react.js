@@ -12,6 +12,6 @@ module.exports = {
     'react/jsx-wrap-multilines': 0,
     'jsx-a11y/label-has-for': 0,
     'react-hooks/rules-of-hooks': 1,
-    'react-hooks/exhaustive-deps': 2,
+    'react-hooks/exhaustive-deps': 1,
   },
 };

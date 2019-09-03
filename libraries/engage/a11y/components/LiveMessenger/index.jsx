@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useLayoutEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/engage/core';
 import LiveMessage from '../LiveMessage';
@@ -43,7 +43,7 @@ const LiveMessenger = ({ id }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     UIEvents.addListener(EVENT_LIVE_MESSAGE, handleMessage);
 
     return () => {

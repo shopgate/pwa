@@ -36,7 +36,7 @@ describe('<Section />', () => {
     jest.clearAllMocks();
   });
 
-  it.skip('should render visible', () => {
+  it('should render visible', () => {
     const wrapper = mount((
       <Section title={title} titleParams={titleParams}>
         <div id="child-component" />

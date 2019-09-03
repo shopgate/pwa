@@ -25,7 +25,7 @@ jest.mock('../../../../core', () => ({
   },
 }));
 
-describe.skip('<LiveMessenger />', () => {
+describe('<LiveMessenger />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });

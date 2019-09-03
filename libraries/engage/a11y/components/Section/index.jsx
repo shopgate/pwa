@@ -1,5 +1,5 @@
 import React, {
-  useRef, useState, useMemo, useEffect,
+  useRef, useState, useMemo, useLayoutEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -44,11 +44,11 @@ const Section = ({
   const [hasContent, setHasContent] = useState(false);
   const id = useMemo(() => kebabCase(title), [title]);
 
-  const observer = new MutationObserver(() => {
+  const observer = useMemo(() => new MutationObserver(() => {
     setHasContent(hasChildNodes(contentRef, id));
-  });
+  }));
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHasContent(hasChildNodes(contentRef, id));
     observer.observe(contentRef.current, { childList: true });
 
