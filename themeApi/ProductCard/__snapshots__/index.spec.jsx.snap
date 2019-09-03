@@ -792,7 +792,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                       unitPriceMin={0}
                                     >
                                       <div
-                                        className="css-izofhs  css-1ncyhu"
+                                        className="css-izofhs css-1ncyhu"
                                         data-test-id="minPrice: 0 price: 5 currency: EUR"
                                       >
                                         <span
