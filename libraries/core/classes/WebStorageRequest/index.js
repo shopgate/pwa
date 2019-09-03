@@ -1,8 +1,9 @@
 import event from '../Event';
+import { logger } from '../../helpers';
 import logGroup from '../../helpers/logGroup';
-import AppCommand from '../AppCommand';
 import Request from '../Request';
 import requestBuffer from '../RequestBuffer';
+import Bridge from '../Bridge';
 
 let localSerial = 0;
 
@@ -17,6 +18,7 @@ class WebStorageRequest extends Request {
     super();
 
     this.name = name;
+    this.params = null;
 
     this.createSerial(this.name);
     this.createEventCallbackName('webStorageResponse');
@@ -35,6 +37,7 @@ class WebStorageRequest extends Request {
   /**
    * Dispatches the web storage request.
    * @param {Function} resolve The resolve() callback of the request promise.
+   * @return {boolean}
    */
   onDispatch(resolve) {
     // Add the request to the buffer.
@@ -72,18 +75,25 @@ class WebStorageRequest extends Request {
       serial: this.serial,
     }, '#e67e22');
 
-    /**
-     * Send the getWebStorageEntry request.
-     * The lib version check is deactivated, since the AppCommand uses the WebStorage internally
-     * to fetch the client information, which provides the current lib version of the app.
-     */
-    const command = new AppCommand(true, false);
-    command
-      .setCommandName('getWebStorageEntry')
-      .dispatch({
-        name: this.name,
-        serial: this.serial,
-      });
+    const params = {
+      name: this.name,
+      serial: this.serial,
+    };
+    const command = {
+      c: 'getWebStorageEntry',
+      p: params,
+    };
+
+    const bridge = new Bridge();
+
+    try {
+      bridge.dispatchCommand(command, '9.0');
+    } catch (exception) {
+      logger.error(exception);
+      return false;
+    }
+
+    return true;
   }
 }
 

@@ -1,10 +1,13 @@
 import get from 'lodash/get';
-import logGroup from '@shopgate/pwa-core/helpers/logGroup';
-import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
-import { useBrowserConnector } from '@shopgate/pwa-core/helpers';
-import errorManager from '@shopgate/pwa-core/classes/ErrorManager';
-import { SOURCE_TRACKING, CODE_TRACKING } from '@shopgate/pwa-core/constants/ErrorManager';
-import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
+import {
+  logGroup,
+  getWebStorageEntry,
+  useBrowserConnector,
+  errorManager,
+  SOURCE_TRACKING,
+  CODE_TRACKING,
+  defaultClientInformation,
+} from '@shopgate/pwa-core';
 import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
 import { componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import core from '@shopgate/tracking-core/core/Core';
