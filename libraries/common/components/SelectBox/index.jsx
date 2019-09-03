@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classNames';
 import find from 'lodash/find';
 import Dropdown from '../Dropdown';
 import I18n from '../I18n';
@@ -127,10 +128,9 @@ class SelectBox extends Component {
       selectItem,
     } = this.props.classNames;
     const buttonLabel = this.state.selected ? this.state.selected.label : this.props.defaultText;
-    const iconClasses = [
-      icon,
-      ...(this.state.isOpen && iconOpen !== null) && [iconOpen],
-    ].join(' ');
+    const iconClasses = classNames(icon, {
+      [iconOpen]: (this.state.isOpen && iconOpen !== null),
+    });
 
     return (
       <div className={this.props.className} data-test-id={this.props.testId}>
