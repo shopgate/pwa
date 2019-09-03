@@ -54,11 +54,23 @@ class AppHandler {
   /**
    * Log when a payment info was added
    *
-   * @param {UnifiedAddedPaymentInfo} data Tracking data for this event
+   * @param {UnifiedPaymentInfo} data Tracking data for this event
    * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
   addedPaymentInfo(data, restrictions) {
+    SGAction.analyticsLogAddedPaymentInfo(AppHandler.prepareTrackingData(data, restrictions));
+    return this;
+  }
+
+  /**
+   * Log when a payment info was selected
+   *
+   * @param {UnifiedPaymentInfo} data Tracking data for this event
+   * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
+   * @returns {AppHandler} Instance of SgTrackingAppHandler
+   */
+  selectedPaymentInfo(data, restrictions) {
     SGAction.analyticsLogAddedPaymentInfo(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }

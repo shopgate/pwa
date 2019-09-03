@@ -411,11 +411,24 @@ dataFormatHelpers.setCampaignWithUrl = rawData => ({
  * Converter for the addedPaymentInfo event
  *
  * @param {Object} rawData Raw data from the core
- * @returns {UnifiedAddedPaymentInfo} Data for the AddedPaymentInfo event
+ * @returns {UnifiedPaymentInfo} Data for the AddedPaymentInfo event
  */
 dataFormatHelpers.addedPaymentInfo = rawData => ({
   success: get(rawData, 'paymentMethodAdded.success'),
   name: get(rawData, 'paymentMethodAdded.name'),
+});
+
+/**
+ * Converter for the selectedPaymentInfo event. It's compatible to the addedPaymentInfo event, but
+ * other than this, it's also triggered when a payment method was selected which doesn't have
+ * configurable entities, like "credit card".
+ *
+ * @param {Object} rawData Raw data from the core
+ * @returns {UnifiedPaymentInfo} Data for the SelectedPaymentInfo event
+ */
+dataFormatHelpers.selectedPaymentInfo = rawData => ({
+  success: get(rawData, 'paymentMethodSelected.success'),
+  name: get(rawData, 'paymentMethodSelected.name'),
 });
 
 /**
