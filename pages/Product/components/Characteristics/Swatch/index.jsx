@@ -91,7 +91,7 @@ class Swatch extends PureComponent {
             >
               {this.getLabel(label)}
             </div>
-        )}
+          )}
         </Transition>
         <div className={styles.items}>
           <VariantSwatch swatch={swatch} onClick={this.handleItemSelection} />

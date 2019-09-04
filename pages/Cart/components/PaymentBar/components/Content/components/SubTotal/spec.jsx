@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SubTotal from './';
+import SubTotal from '.';
 
 jest.mock('Pages/Cart/context', () => ({
   Consumer: jest.fn(({ children }) => children({

@@ -64,7 +64,7 @@ class CategoryListWidget extends Component {
             // Only show an avatar if the setting `showImages` is true.
             const Avatar = settings.showImages && item.imageUrl ? (
               <Image src={item.imageUrl} />
-              ) : null;
+            ) : null;
 
             return (
               <SheetList.Item

@@ -10,7 +10,7 @@ export default withProductStock(props => (
         setQuantity={setQuantity}
         {...props}
       />
-        )}
+    )}
   </ProductContext.Consumer>
 ));
 

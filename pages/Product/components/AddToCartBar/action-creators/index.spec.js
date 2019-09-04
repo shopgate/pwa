@@ -4,7 +4,7 @@ import {
   resetActionCount,
   showAddToCartBar,
   hideAddToCartBar,
-} from '../action-creators';
+} from '.';
 
 import {
   INCREMENT_ACTION_COUNT,
