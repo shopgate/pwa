@@ -134,7 +134,9 @@ class ChipLayout extends Component {
       if (remainingChipWidth > CHIP_MINIMUM_WIDTH) {
         element.setAttribute('style', `max-width: ${remainingChipWidth}px`);
         return false;
-      } else if (element.offsetTop !== chips[lastVisibleElement].offsetTop) {
+      }
+
+      if (element.offsetTop !== chips[lastVisibleElement].offsetTop) {
         element.setAttribute('style', 'display: none');
         return false;
       }
