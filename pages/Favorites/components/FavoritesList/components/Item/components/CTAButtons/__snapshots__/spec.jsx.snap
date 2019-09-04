@@ -81,6 +81,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           >
             <button
               onClick={[Function]}
+              type="button"
             />
           </MockedAddToCartButton>
         </Portal>

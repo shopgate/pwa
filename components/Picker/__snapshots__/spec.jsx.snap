@@ -42,6 +42,7 @@ exports[`<Picker /> should render the picker 1`] = `
               >
                 <button
                   class="css-164ggb6"
+                  type="button"
                 >
                   <span
                     class="css-1358lbd"
@@ -80,6 +81,7 @@ exports[`<Picker /> should render the picker 1`] = `
               <button
                 className="css-164ggb6"
                 onClick={[Function]}
+                type="button"
               >
                 <span
                   className="css-1358lbd"
