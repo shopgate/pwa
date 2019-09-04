@@ -134,7 +134,7 @@ class SelectBox extends Component {
 
     return (
       <div className={this.props.className} data-test-id={this.props.testId}>
-        <button className={button} onClick={this.handleOpenList} data-test-id={buttonLabel}>
+        <button className={button} onClick={this.handleOpenList} data-test-id={buttonLabel} type="button">
           <span className={selection}>
             <I18n.Text string={buttonLabel} />
           </span>
@@ -164,6 +164,7 @@ class SelectBox extends Component {
             className={styles.overlay}
             onClick={this.handleInteractionOutside}
             onTouchMove={this.handleInteractionOutside}
+            type="button"
           />
         }
       </div>

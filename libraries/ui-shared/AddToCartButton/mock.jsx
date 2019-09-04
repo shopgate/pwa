@@ -21,7 +21,7 @@ export const MockedAddToCartButton = class extends Component {
    */
   render() {
     return (
-      <button onClick={this.props.onClick} />
+      <button onClick={this.props.onClick} type="button" />
     );
   }
 };

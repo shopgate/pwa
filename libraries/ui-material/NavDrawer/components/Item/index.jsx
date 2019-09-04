@@ -63,6 +63,7 @@ class NavDrawerItem extends Component {
         onClick={this.handleClick}
         role="link"
         style={style}
+        type="button"
       >
         <div className={styles.iconWrapper}>
           {Icon && <Icon className={styles.icon} size={24} />}

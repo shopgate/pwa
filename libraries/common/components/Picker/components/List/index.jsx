@@ -26,6 +26,7 @@ const PickerList = ({
             onSelect(item.value);
             onClose();
           }}
+          type="button"
         >
           {item.label}
         </button>

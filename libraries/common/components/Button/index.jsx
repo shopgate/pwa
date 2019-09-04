@@ -46,7 +46,7 @@ class Button extends Component {
    */
   render() {
     return (
-      <button data-test-id={this.props.testId} {...this.buttonProps}>
+      <button data-test-id={this.props.testId} {...this.buttonProps} type="button">
         {this.props.children}
       </button>
     );

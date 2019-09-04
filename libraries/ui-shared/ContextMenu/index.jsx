@@ -63,9 +63,9 @@ class ContextMenu extends Component {
     }
 
     if (this.elementRef) {
-      this.setState({
-        active: !this.state.active,
-      });
+      this.setState(({ active }) => ({
+        active: !active,
+      }));
     }
   };
 
@@ -86,6 +86,7 @@ class ContextMenu extends Component {
         <button
           className={classNames(styles.button, classes.button)}
           onClick={this.handleMenuToggle}
+          type="button"
         >
           <MoreVertIcon />
         </button>

@@ -9,7 +9,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Delete = ({ handleDelete }) => (
-  <button className={styles} onClick={handleDelete} data-test-id="deleteCoupon">
+  <button className={styles} onClick={handleDelete} data-test-id="deleteCoupon" type="button">
     <CrossIcon />
   </button>
 );

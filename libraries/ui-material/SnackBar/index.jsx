@@ -117,7 +117,7 @@ class SnackBar extends Component {
                   <I18n.Text className={styles.label} string={message || ''} params={messageParams} />
                 </Ellipsis>
                 {(action && actionLabel) && (
-                  <button className={styles.button} onClick={this.handleAction}>
+                  <button className={styles.button} onClick={this.handleAction} type="button">
                     <I18n.Text string={actionLabel} />
                   </button>
                 )}

@@ -131,6 +131,7 @@ class FavoritesButton extends Component {
         className={`${className} ${this.props.className}`}
         onClick={this.handleClick}
         data-test-id="favoriteButton"
+        type="button"
       >
         <Ripple
           className={`${styles.ripple} ${this.props.rippleClassName}`}
