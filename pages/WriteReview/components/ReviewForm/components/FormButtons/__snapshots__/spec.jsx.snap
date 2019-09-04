@@ -78,7 +78,6 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                     data-test-id="sendReviewButton"
                     disabled={false}
                     onClick={null}
-                    type="button"
                   >
                     <Ripple
                       className="css-1fscwua "
