@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getShippingLine } from '@shopgate/pwa-common-commerce/cart';
-import ShippingCosts from './';
+import ShippingCosts from '.';
 
 jest.mock('@shopgate/pwa-common-commerce/cart', () => {
   const original = require.requireActual('@shopgate/pwa-common-commerce/cart');

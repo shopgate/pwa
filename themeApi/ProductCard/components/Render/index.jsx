@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import { FeaturedMedia, MapPriceHint, OrderQuantityHint, ProductImage } from '@shopgate/engage/product';
+import {
+  FeaturedMedia, MapPriceHint, OrderQuantityHint, ProductImage,
+} from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import Badge from '../Badge';
