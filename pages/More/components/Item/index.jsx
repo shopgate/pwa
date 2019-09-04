@@ -12,7 +12,7 @@ function MoreMenuItem({
 }) {
   if (!href && onClick) {
     return (
-      <button className={className || styles} onClick={onClick} data-test-id={testId}>
+      <button className={className || styles} onClick={onClick} data-test-id={testId} type="button">
         <I18n.Text string={label} />
       </button>
     );
