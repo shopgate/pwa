@@ -40,7 +40,7 @@ class ValueButton extends PureComponent {
     const { label, id, onClick } = this.props;
 
     return (
-      <button className={this.className} value={id} onClick={onClick} data-test-id={id}>
+      <button className={this.className} value={id} onClick={onClick} data-test-id={id} type="button">
         {label}
       </button>
     );

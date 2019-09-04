@@ -13,6 +13,7 @@ const Button = ({
   <button
     className={`${disabled ? styles.buttonDisabled : styles.button}`}
     onClick={openList}
+    type="button"
   >
     <span className={styles.label}>{label}</span>
     {value && <span className={styles.value}>{value}</span>}

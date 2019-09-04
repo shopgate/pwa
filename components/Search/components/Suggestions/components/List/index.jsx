@@ -66,6 +66,7 @@ class SuggestionList extends Component {
                 onClick={onClick}
                 value={suggestion}
                 data-test-id={`searchSuggestion ${suggestion}`}
+                type="button"
               >
                 <SurroundPortals
                   portalName={SEARCH_SUGGESTION_ITEM_CONTENT}
