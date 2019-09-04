@@ -130,7 +130,7 @@ class Login extends Component {
         <CloseBar shadow={false} />
         <section className={styles.container} data-test-id="LoginPage">
           <Portal name={PAGE_LOGIN_BEFORE} />
-          <Portal name={PAGE_LOGIN} >
+          <Portal name={PAGE_LOGIN}>
             <div className={styles.headline}>
               <I18n.Text string="login.headline" />
             </div>
@@ -178,7 +178,7 @@ class Login extends Component {
             <Portal name={PAGE_LOGIN_FORM_AFTER} />
             <div>
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
-              <Portal name={PAGE_LOGIN_REGISTER_LINK} >
+              <Portal name={PAGE_LOGIN_REGISTER_LINK}>
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
                 <Link
                   href={REGISTER_PATH}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Discount from './';
+import Discount from '.';
 
 describe('<LiveshoppingDiscount />', () => {
   it('should not render the widget without any data', () => {

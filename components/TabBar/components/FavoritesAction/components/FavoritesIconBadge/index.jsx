@@ -8,9 +8,11 @@ import style from './style';
  */
 export class FavoritesIconBadge extends Component {
   static MAX_NUMBER = 999;
+
   static propTypes = {
     favoritesCount: Proptypes.number,
   };
+
   static defaultProps = {
     favoritesCount: 0,
   };

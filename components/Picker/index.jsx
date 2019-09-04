@@ -75,7 +75,7 @@ class Picker extends Component {
             testId={item.label}
             ref={index === selectedIndex ? this.firstSelectableItemRef : null}
           />
-          ))}
+        ))}
       </SheetList>
     );
   }

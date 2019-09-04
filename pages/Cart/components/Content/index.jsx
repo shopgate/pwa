@@ -94,7 +94,7 @@ class CartContentContainer extends PureComponent {
                       />
                     ))}
                     <Portal name={portals.CART_COUPON_FIELD_BEFORE} />
-                    <Portal name={portals.CART_COUPON_FIELD} >
+                    <Portal name={portals.CART_COUPON_FIELD}>
                       <CouponField onFocus={this.togglePaymentBar} />
                     </Portal>
                     <Portal name={portals.CART_COUPON_FIELD_AFTER} />
