@@ -188,7 +188,9 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
             ]
           }
         >
-          <Wrapper>
+          <Wrapper
+            dense={false}
+          >
             <div
               className="css-1x8awm9"
             >

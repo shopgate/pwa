@@ -43,7 +43,6 @@ class Conditioner {
    */
   check() {
     return new Promise(async (resolve, reject) => {
-      // Sort by priority
       const sorted = Array.from(this.conditions.values())
         .sort((a, b) => {
           if (a.priority === b.priority) {

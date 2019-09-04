@@ -1,8 +1,10 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
+import React, {
+  useRef, useState, useMemo, useLayoutEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import kebabCase from 'lodash/kebabCase';
-import { I18n } from '../../../components';
+import { I18n } from '@shopgate/engage/components';
 import { hidden } from './style';
 
 /**
@@ -46,14 +48,14 @@ const Section = ({
     setHasContent(hasChildNodes(contentRef, id));
   }));
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHasContent(hasChildNodes(contentRef, id));
     observer.observe(contentRef.current, { childList: true });
 
     return () => {
       observer.disconnect();
     };
-  }, [contentRef]);
+  }, [contentRef, id, observer]);
 
   const classes = classNames(className, {
     [hidden]: !hasContent,

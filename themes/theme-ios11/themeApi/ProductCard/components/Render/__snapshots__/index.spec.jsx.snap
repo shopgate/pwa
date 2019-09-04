@@ -637,7 +637,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs "
+                                  className="css-izofhs"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -1116,7 +1116,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs  css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -1942,7 +1942,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs  css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -2768,7 +2768,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs  css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -3558,7 +3558,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs  css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span
@@ -4601,7 +4601,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                 unitPriceMin={0}
                               >
                                 <div
-                                  className="css-izofhs  css-1ncyhu"
+                                  className="css-izofhs css-1ncyhu"
                                   data-test-id="minPrice: 0 price: 5 currency: EUR"
                                 >
                                   <span

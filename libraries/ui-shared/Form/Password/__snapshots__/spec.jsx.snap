@@ -103,7 +103,7 @@ exports[`<Password> should render a password field 1`] = `
               <li
                 className="css-1kppfx4 css-1gs0ko2"
               >
-                <Component
+                <_default
                   attributes={null}
                   className="css-keangt"
                   multiLine={false}
@@ -150,7 +150,7 @@ exports[`<Password> should render a password field 1`] = `
                       value=""
                     />
                   </SimpleInput>
-                </Component>
+                </_default>
               </li>
             </GridItem>
             <GridItem
@@ -271,11 +271,11 @@ exports[`<Password> should trigger the onChange callback 1`] = `
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -303,11 +303,11 @@ exports[`<Password> should trigger the onChange callback 1`] = `
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": undefined,
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": undefined,
           },
         ],
@@ -402,7 +402,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
               <li
                 className="css-1kppfx4 css-1gs0ko2"
               >
-                <Component
+                <_default
                   attributes={null}
                   className="css-keangt"
                   multiLine={false}
@@ -419,11 +419,11 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                       ],
                       "results": Array [
                         Object {
-                          "isThrow": false,
+                          "type": "return",
                           "value": undefined,
                         },
                         Object {
-                          "isThrow": false,
+                          "type": "return",
                           "value": undefined,
                         },
                       ],
@@ -456,11 +456,11 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                         ],
                         "results": Array [
                           Object {
-                            "isThrow": false,
+                            "type": "return",
                             "value": undefined,
                           },
                           Object {
-                            "isThrow": false,
+                            "type": "return",
                             "value": undefined,
                           },
                         ],
@@ -491,7 +491,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                       value="a"
                     />
                   </SimpleInput>
-                </Component>
+                </_default>
               </li>
             </GridItem>
             <GridItem

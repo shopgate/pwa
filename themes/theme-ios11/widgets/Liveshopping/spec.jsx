@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LiveshoppingWidget } from './';
+import { LiveshoppingWidget } from '.';
 
 describe('<LiveshoppingWidget />', () => {
   /**
    * Mocks the liveshopping products pipeline request.
    */
-  const fetchProductsMock = () => {};
+  const fetchProductsMock = () => { };
   const settings = {};
   const products = ['1234', '1235'];
 

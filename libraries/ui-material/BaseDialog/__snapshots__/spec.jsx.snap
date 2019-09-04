@@ -131,7 +131,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
             ],
             "results": Array [
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": undefined,
               },
             ],

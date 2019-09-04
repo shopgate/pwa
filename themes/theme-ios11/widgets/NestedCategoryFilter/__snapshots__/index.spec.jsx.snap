@@ -605,6 +605,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                           className="css-18zobq6"
                                           key="1-1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-1"
                                         >
                                           Category 1-1
@@ -646,6 +647,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                           className="css-1k50yg4"
                                           key="1-2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-2"
                                         >
                                           Category 1-2
@@ -1790,6 +1792,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-18zobq6"
                                           key="1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1"
                                         >
                                           Category 1
@@ -1831,6 +1834,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-1k50yg4"
                                           key="2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="2"
                                         >
                                           Category 2
@@ -2497,6 +2501,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-18zobq6"
                                           key="1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1"
                                         >
                                           Category 1
@@ -2538,6 +2543,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-1k50yg4"
                                           key="2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="2"
                                         >
                                           Category 2
@@ -2884,6 +2890,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-18zobq6"
                                           key="1-1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-1"
                                         >
                                           Category 1-1
@@ -2925,6 +2932,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-1k50yg4"
                                           key="1-2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-2"
                                         >
                                           Category 1-2
@@ -3702,6 +3710,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                           className="css-1k50yg4"
                                           key="1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1"
                                         >
                                           Category 1
@@ -3743,6 +3752,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                           className="css-18zobq6"
                                           key="2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="2"
                                         >
                                           Category 2

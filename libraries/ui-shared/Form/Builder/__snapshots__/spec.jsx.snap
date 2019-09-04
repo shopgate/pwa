@@ -28,7 +28,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -156,7 +156,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   type="text"
                   value="default"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -208,7 +208,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                         value="default"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -406,7 +406,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -458,7 +458,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -614,7 +614,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.bar"
                     isControlled={true}
@@ -666,7 +666,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -864,7 +864,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   type="text"
                   value="abc"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -916,7 +916,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                         value="abc"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1192,7 +1192,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.firstName"
                     isControlled={true}
@@ -1244,7 +1244,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1387,7 +1387,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.lastName"
                     isControlled={true}
@@ -1439,7 +1439,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1644,7 +1644,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   type="text"
                   value="default"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -1696,7 +1696,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         value="default"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1857,7 +1857,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   type="text"
                   value="default"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.bar"
                     isControlled={true}
@@ -1909,7 +1909,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         value="default"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -2114,7 +2114,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   type="text"
                   value="abc"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -2166,7 +2166,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         value="abc"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -2327,7 +2327,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   type="text"
                   value="cheat"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.bar"
                     isControlled={true}
@@ -2379,7 +2379,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         value="cheat"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}

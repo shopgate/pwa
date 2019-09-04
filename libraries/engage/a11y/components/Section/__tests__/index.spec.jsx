@@ -11,7 +11,9 @@ const mutationDisconnectSpy = jest.fn();
 
 global.MutationObserver = class {
   constructor(callback) { mutationConstructorSpy(callback); }
+
   observe(element, initObject) { mutationObserveSpy(element, initObject); }
+
   disconnect() { mutationDisconnectSpy(); }
 };
 

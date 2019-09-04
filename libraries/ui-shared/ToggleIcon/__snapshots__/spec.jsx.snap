@@ -96,7 +96,7 @@ exports[`<ToggleIcon> should trigger the toggleHandler callback 1`] = `
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],

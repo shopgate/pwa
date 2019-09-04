@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Input /> should change the value on user input 1`] = `
-<Component
+<_default
   value="My initial value"
 >
   <SimpleInput
@@ -39,11 +39,11 @@ exports[`<Input /> should change the value on user input 1`] = `
       value="My initial value"
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should focus the input 1`] = `
-<Component
+<_default
   onFocusChange={[MockFunction]}
 >
   <SimpleInput
@@ -81,11 +81,11 @@ exports[`<Input /> should focus the input 1`] = `
       value=""
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should receive the correct value while typing 1`] = `
-<Component>
+<_default>
   <SimpleInput
     attributes={null}
     autoComplete={false}
@@ -121,11 +121,11 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
       value="foobar"
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should render a multiline input with empty content and react on change 1`] = `
-<Component
+<_default
   multiLine={true}
   value=""
 >
@@ -162,11 +162,11 @@ exports[`<Input /> should render a multiline input with empty content and react 
       value=""
     />
   </MultiLineInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should render a simple input field 1`] = `
-<Component>
+<_default>
   <SimpleInput
     attributes={null}
     autoComplete={false}
@@ -202,7 +202,7 @@ exports[`<Input /> should render a simple input field 1`] = `
       value=""
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should render additional html attributes 1`] = `
@@ -225,7 +225,7 @@ exports[`<Input /> should render additional html attributes 1`] = `
 `;
 
 exports[`<Input /> should render the input as password 1`] = `
-<Component
+<_default
   password={true}
 >
   <SimpleInput
@@ -263,11 +263,11 @@ exports[`<Input /> should render the input as password 1`] = `
       value=""
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should render the input with a default value 1`] = `
-<Component
+<_default
   value="FooBar"
 >
   <SimpleInput
@@ -305,11 +305,11 @@ exports[`<Input /> should render the input with a default value 1`] = `
       value="FooBar"
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should sanitize the input 1`] = `
-<Component
+<_default
   onSanitize={[Function]}
 >
   <SimpleInput
@@ -347,11 +347,11 @@ exports[`<Input /> should sanitize the input 1`] = `
       value="FOOBAR"
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should trigger the onChange callback 1`] = `
-<Component
+<_default
   onChange={
     [MockFunction] {
       "calls": Array [
@@ -364,11 +364,11 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -396,11 +396,11 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": undefined,
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": undefined,
           },
         ],
@@ -431,11 +431,11 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
       value="a"
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
 
 exports[`<Input /> should validate the input 1`] = `
-<Component
+<_default
   onValidate={[Function]}
 >
   <SimpleInput
@@ -473,5 +473,5 @@ exports[`<Input /> should validate the input 1`] = `
       value=""
     />
   </SimpleInput>
-</Component>
+</_default>
 `;
