@@ -1,5 +1,25 @@
 # Changelog
 
+## [v6.7.2](https://github.com/shopgate/pwa/compare/v6.7.1...v6.7.2) (2019-09-04)
+
+#### :rocket: Enhancement
+* [#823](https://github.com/shopgate/pwa/pull/823) Added the "selectedPaymentInfo" tracking event to the tracking-core ([@fkloes](https://github.com/fkloes))
+* [#819](https://github.com/shopgate/pwa/pull/819) Implemented login tracking event for apps ([@fkloes](https://github.com/fkloes))
+* [#812](https://github.com/shopgate/pwa/pull/812) Implemented logItemview tracking event for the tracking core ([@fkloes](https://github.com/fkloes))
+* [#811](https://github.com/shopgate/pwa/pull/811) Extended source data for the tracking system ([@fkloes](https://github.com/fkloes))
+* [#808](https://github.com/shopgate/pwa/pull/808) Added the ability to modify the search query when using the search suggestion portals in theme ios. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#806](https://github.com/shopgate/pwa/pull/806) Improved sanitization for purchase tracking event data ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#821](https://github.com/shopgate/pwa/pull/821) Reset selected options of product context, when changing a product on Product details page ([@alexbridge](https://github.com/alexbridge))
+* [#820](https://github.com/shopgate/pwa/pull/820) Extract discount amount from tracked event initiatedCheckout. ([@alexbridge](https://github.com/alexbridge))
+* [#817](https://github.com/shopgate/pwa/pull/817) The SuggestionList component is now persistent in the component tree ([@ghost](https://github.com/ghost))
+* [#809](https://github.com/shopgate/pwa/pull/809) Show stock warnings inside variant selection sheet ([@alexbridge](https://github.com/alexbridge))
+
+#### :house: Internal
+* [#813](https://github.com/shopgate/pwa/pull/813) Updated dependencies of @shopgate/tracking-ga-native package ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.7.1](https://github.com/shopgate/pwa/compare/v6.7.0...v6.7.1) (2019-08-26)
 
 #### :rocket: Enhancement
