@@ -34,7 +34,9 @@ class AppBar extends PureComponent {
   }
 
   static Field = Field;
+
   static Icon = Icon;
+
   static Title = Title;
 
   /**

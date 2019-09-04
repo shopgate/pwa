@@ -32,7 +32,7 @@ const MediaImage = ({
 
   if (placeholder) {
     return (
-      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
+      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
         <MediaPlaceholder className={classes} />
       </SurroundPortals>
     );

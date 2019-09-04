@@ -69,7 +69,7 @@ class CartButton extends PureComponent {
     return (
       <Fragment key="cart">
         <Portal name={APP_BAR_CART_BUTTON_BEFORE} />
-        <Portal name={APP_BAR_CART_BUTTON} >
+        <Portal name={APP_BAR_CART_BUTTON}>
           <div className={styles} data-test-id="CartButton" aria-hidden>
             <AppBar.Icon
               {...this.style.icon}

@@ -8,7 +8,7 @@ import {
   ELEMENT_TYPE_PASSWORD,
   ELEMENT_TYPE_DATE,
   ELEMENT_TYPE_PHONE,
-} from './../elementTypes';
+} from '../elementTypes';
 
 // Map element type to input type
 const mapping = {

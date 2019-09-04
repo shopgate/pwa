@@ -27,6 +27,7 @@ const transitionStyles = {
  */
 class ProgressBar extends Component {
   static PROGRESS_BAR_SHOW = 'PROGRESS_BAR_SHOW';
+
   static PROGRESS_BAR_HIDE = 'PROGRESS_BAR_HIDE';
 
   /**

@@ -1,6 +1,6 @@
 import { hex2bin, SGLink } from './helper';
 import sgTrackingUrlMapper from './urlMapping';
-import { customEvents } from '../helpers/events';
+import { customEvents } from './events';
 
 /**
  * Gets the value at path of object. If the resolved value is undefined,

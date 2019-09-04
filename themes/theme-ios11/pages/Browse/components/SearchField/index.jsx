@@ -57,6 +57,7 @@ class SearchField extends Component {
 
     this.input = null;
   }
+
   /**
    * Adds callback for keyboardWillChange.
    */

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FormElement from './../../FormElement';
+import FormElement from '../../FormElement';
 import styles from './style';
 
 /**
@@ -44,6 +44,7 @@ class Select extends Component {
       isFocused: false,
     };
   }
+
   /**
    * Update state with new props.
    * @param {Object} nextProps The new props.

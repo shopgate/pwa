@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Chip from '../Chip';
+import Chip from '.';
 
 describe('<Chip />', () => {
   it('should render a tag', () => {

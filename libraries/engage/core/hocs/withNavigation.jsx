@@ -1,5 +1,7 @@
 import React from 'react';
-import { push, pop, replace, reset, update } from '../router/helpers';
+import {
+  push, pop, replace, reset, update,
+} from '../router/helpers';
 
 /**
  * Gets the navigation props for the wrapped component.

@@ -151,7 +151,7 @@ class Footer extends Component {
    */
   render() {
     return (
-      <div className={footer} ref={this.ref} >
+      <div className={footer} ref={this.ref}>
         <Portal name={APP_FOOTER_CONTENT_BEFORE} />
         <div id={APP_FOOTER_ID}>
           {this.props.children}

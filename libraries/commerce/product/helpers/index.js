@@ -6,7 +6,7 @@ import {
   PROPERTIES_FILTER_BLACKLIST,
   PROPERTIES_FILTER_WHITELIST,
   PRODUCT_RELATIONS_DEFAULT_LIMIT,
-} from '../constants/';
+} from '../constants';
 import { SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS } from '../constants/Pipelines';
 
 /**

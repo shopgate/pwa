@@ -3,9 +3,13 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
-import { Pagination, Navigation, Autoplay, Zoom } from 'swiper/dist/js/swiper.esm';
+import {
+  Pagination, Navigation, Autoplay, Zoom,
+} from 'swiper/dist/js/swiper.esm';
 import SwiperItem from './components/SwiperItem';
-import { container, innerContainer, zoomFix, buttonNext, buttonPrev } from './styles';
+import {
+  container, innerContainer, zoomFix, buttonNext, buttonPrev,
+} from './styles';
 
 /**
  * The basic swiper component.

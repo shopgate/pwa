@@ -1,5 +1,5 @@
 import Request from '../Request';
-import RequestManager from '../RequestManager';
+import RequestManager from '.';
 import {
   PROCESS_ANY,
   PROCESS_LAST_REQUEST,

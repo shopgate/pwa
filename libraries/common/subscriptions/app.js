@@ -28,7 +28,9 @@ import {
   onUpdate,
 } from '@virtuous/conductor';
 import { UI_VISIBILITY_CHANGE } from '../constants/ui';
-import { appError, pipelineError, pwaDidAppear, pwaDidDisappear } from '../action-creators';
+import {
+  appError, pipelineError, pwaDidAppear, pwaDidDisappear,
+} from '../action-creators';
 import {
   historyPush,
   routeWillPush,

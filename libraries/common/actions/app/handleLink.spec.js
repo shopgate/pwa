@@ -1,4 +1,4 @@
-import { historyPush, historyReset } from '../../actions/router';
+import { historyPush, historyReset } from '../router';
 import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
 import handleLink from './handleLink';
 

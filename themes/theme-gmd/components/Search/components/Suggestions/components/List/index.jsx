@@ -23,6 +23,7 @@ class SuggestionList extends Component {
     fetching: false,
     suggestions: [],
   };
+
   /**
    * @param { Object } nextProps Next props.
    * @return {boolean}

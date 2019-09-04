@@ -10,6 +10,7 @@ import { UI_VISIBILITY_CHANGE } from '@shopgate/pwa-common/constants/ui';
  */
 class VideoPlayer extends PureComponent {
   static propTypes = ReactPlayer.propTypes
+
   static defaultProps = ReactPlayer.defaultProps
 
   state = {

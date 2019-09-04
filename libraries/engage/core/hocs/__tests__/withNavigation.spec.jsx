@@ -1,6 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { push, pop, replace, reset, update } from '../../router/helpers';
+import {
+  push, pop, replace, reset, update,
+} from '../../router/helpers';
 import { withNavigation } from '../withNavigation';
 
 const navigationProps = {

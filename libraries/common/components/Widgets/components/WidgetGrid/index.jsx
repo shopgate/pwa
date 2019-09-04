@@ -45,7 +45,7 @@ class WidgetGrid extends Component {
     const widgets = sortBy(config, ['row']).filter(w => shouldShowWidget(w.settings));
 
     return (
-      <div className={styles} >
+      <div className={styles}>
         {Object.keys(widgets).map((key) => {
           const widget = widgets[key];
           const widgetKey = `w${key}`;

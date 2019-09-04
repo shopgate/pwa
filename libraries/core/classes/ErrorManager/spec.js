@@ -1,4 +1,4 @@
-import errorManager, { emitter } from './';
+import errorManager, { emitter } from '.';
 import { DEFAULT_CONTEXT, DEFAULT_SEVERITY } from '../../constants/ErrorManager';
 
 describe('ErrorManager', () => {

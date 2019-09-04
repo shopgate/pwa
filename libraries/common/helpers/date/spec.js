@@ -4,7 +4,7 @@ import {
   isBetween,
   parseDuration,
   addDuration,
-} from './';
+} from '.';
 
 describe('helpers/date', () => {
   const date10Hours = new Date('2019-01-01T10:00:00.000Z');

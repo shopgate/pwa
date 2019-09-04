@@ -12,6 +12,7 @@ const mutationObserveSpy = jest.fn();
 /* eslint-disable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
 global.MutationObserver = class {
   constructor(callback) { mutationConstructorSpy(callback); }
+
   observe(element, initObject) { mutationObserveSpy(element, initObject); }
 };
 /* eslint-enable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */

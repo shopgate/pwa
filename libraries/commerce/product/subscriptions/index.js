@@ -1,6 +1,8 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { getThemeSettings, historyPop, historyPush, routeWillEnter$, routeWillLeave$ } from '@shopgate/engage/core';
+import {
+  getThemeSettings, historyPop, historyPush, routeWillEnter$, routeWillLeave$,
+} from '@shopgate/engage/core';
 import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search';
 import fetchProduct from '../actions/fetchProduct';

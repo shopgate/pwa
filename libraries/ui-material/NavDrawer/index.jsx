@@ -26,8 +26,11 @@ class NavDrawer extends Component {
   }
 
   static Divider = Divider;
+
   static Item = Item;
+
   static Section = Section
+
   static Title = Title;
 
   static propTypes = {

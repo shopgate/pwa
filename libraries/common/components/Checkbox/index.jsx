@@ -60,6 +60,7 @@ class Checkbox extends Component {
       }
     }
   }
+
   /**
    * Returns if the checkbox is checked or not.
    * @return {boolean} Is the checkbox checked?

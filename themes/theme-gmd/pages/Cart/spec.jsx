@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Cart from './';
+import Cart from '.';
 
 jest.mock('../../components/View/context.js');
 

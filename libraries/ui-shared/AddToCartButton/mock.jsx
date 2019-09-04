@@ -10,9 +10,11 @@ export const MockedAddToCartButton = class extends Component {
   static propTypes = {
     onClick: PropTypes.func,
   };
+
   static defaultProps = {
     onClick: () => {},
   };
+
   /**
    * Renders mocked button.
    * @return {JSX}

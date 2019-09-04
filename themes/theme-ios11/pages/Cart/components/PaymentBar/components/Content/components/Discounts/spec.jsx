@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Discounts from './';
+import Discounts from '.';
 
 jest.mock('Pages/Cart/context', () => ({
   Consumer: jest.fn(({ children }) => children({
