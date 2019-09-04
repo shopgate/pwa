@@ -46,7 +46,8 @@ class Button extends Component {
    */
   render() {
     return (
-      <button data-test-id={this.props.testId} {...this.buttonProps} type="button">
+      // eslint-disable-next-line react/button-has-type
+      <button data-test-id={this.props.testId} {...this.buttonProps}>
         {this.props.children}
       </button>
     );

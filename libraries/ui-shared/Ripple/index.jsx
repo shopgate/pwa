@@ -169,7 +169,7 @@ class Ripple extends PureComponent {
       return;
     }
 
-    this.setState(({ prevState }) => {
+    this.setState((prevState) => {
       const ripples = shift(prevState.ripples);
       this.props.onComplete();
 
