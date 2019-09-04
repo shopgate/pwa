@@ -51,7 +51,6 @@ class Select extends Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      ...this.state,
       value: nextProps.value,
     });
   }

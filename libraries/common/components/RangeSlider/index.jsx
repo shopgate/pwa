@@ -141,31 +141,6 @@ class RangeSlider extends Component {
   }
 
   /**
-   * Calls the change callback in case of a state update.
-   */
-  triggerChangeCallback() {
-    const {
-      value,
-      onChange,
-      min,
-      max,
-    } = this.props;
-
-    if (!onChange) {
-      return;
-    }
-
-    const newRange = [
-      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
-      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
-    ];
-
-    if (newRange !== value) {
-      onChange(newRange);
-    }
-  }
-
-  /**
    * Processes move events on handles.
    * @param {Object} event The touch event
    */
@@ -244,6 +219,31 @@ class RangeSlider extends Component {
     }
 
     this.handleTouchMove(event);
+  }
+
+  /**
+   * Calls the change callback in case of a state update.
+   */
+  triggerChangeCallback() {
+    const {
+      value,
+      onChange,
+      min,
+      max,
+    } = this.props;
+
+    if (!onChange) {
+      return;
+    }
+
+    const newRange = [
+      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
+      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
+    ];
+
+    if (newRange !== value) {
+      onChange(newRange);
+    }
   }
 
   /**

@@ -58,6 +58,17 @@ class Sheet extends Component {
   };
 
   /**
+   * Close the Sheet.
+   */
+  handleScroll = throttle(() => {
+    const scrolled = this.content.current.scrollTop !== 0;
+
+    if (this.state.scrolled !== scrolled) {
+      this.setState({ scrolled });
+    }
+  }, 10);
+
+  /**
    * The constructor.
    * @param {Object} props The component props.
    */
@@ -116,17 +127,6 @@ class Sheet extends Component {
   handleDidClose = () => {
     UIEvents.emit(SHEET_EVENTS.CLOSE);
   };
-
-  /**
-   * Close the Sheet.
-   */
-  handleScroll = throttle(() => {
-    const scrolled = this.content.current.scrollTop !== 0;
-
-    if (this.state.scrolled !== scrolled) {
-      this.setState({ scrolled });
-    }
-  }, 10);
 
   /**
    * Renders the component.

@@ -74,7 +74,6 @@ class GaClassic {
       })();
     }
     /* eslint-enable */
-    /* eslint-enable eslint-comments/no-unlimited-disable */
 
     // Setup merchant accounts
     this.merchantAccounts.forEach((account, index) => {

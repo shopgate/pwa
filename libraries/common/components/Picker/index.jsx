@@ -177,9 +177,14 @@ class Picker extends Component {
    * @param {boolean} [open] New open state.
    */
   toggleOpenState = (open) => {
-    const isOpen = typeof open === 'boolean' ? open : !this.state.isOpen;
-    this.triggerCloseCallback(isOpen);
-    this.setState({ isOpen });
+    this.setState(({ isOpen }) => {
+      const nextIsOpen = typeof open === 'boolean' ? open : !isOpen;
+      this.triggerCloseCallback(nextIsOpen);
+
+      return {
+        isOpen: nextIsOpen,
+      };
+    });
   };
 
   /**

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 const options = {
   context: {
     i18n: () => ({
+      // eslint-disable-next-line no-underscore-dangle
       __(input) {
         if (input) {
           return input;

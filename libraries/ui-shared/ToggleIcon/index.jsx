@@ -49,10 +49,7 @@ class ToggleIcon extends Component {
    * Toggle icon
    */
   handleToggle = () => {
-    this.setState(
-      { on: !this.state.on },
-      () => this.props.toggleHandler(this.state.on)
-    );
+    this.setState(({ on }) => ({ on: !on }), () => this.props.toggleHandler(this.state.on));
   };
 
   /**

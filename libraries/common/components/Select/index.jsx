@@ -163,8 +163,7 @@ class Select extends Component {
    * Toggles the open state of the component.
    */
   toggleOpenState = () => {
-    const isOpen = !this.state.isOpen;
-    this.setState({ isOpen });
+    this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
   };
 
   /**

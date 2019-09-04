@@ -58,6 +58,8 @@ class ProductImageSlider extends Component {
     navigate: () => { },
   };
 
+  currentSlide = 0;
+
   /**
    * @param {Object} nextProps the next props
    * @returns {boolean}
@@ -73,8 +75,6 @@ class ProductImageSlider extends Component {
 
     return !isEqual(this.props.images, nextProps.images);
   }
-
-  currentSlide = 0;
 
   handleOpenGallery = () => {
     this.props.navigate(this.currentSlide);

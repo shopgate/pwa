@@ -30,6 +30,8 @@ class Footer extends Component {
     children: null,
   }
 
+  ref = React.createRef();
+
   /**
    * Sets up the DOM Mutation Observer to take care that the footer inset always has the correct
    * background color, which matches the background color of the last element within the footer.
@@ -143,8 +145,6 @@ class Footer extends Component {
 
     return false;
   }
-
-  ref = React.createRef();
 
   /**
    * @returns {JSX}
