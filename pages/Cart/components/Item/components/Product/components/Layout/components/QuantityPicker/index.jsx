@@ -22,6 +22,12 @@ class QuantityPicker extends Component {
   };
 
   /**
+   * The default quantity.
+   * @type {number}
+   */
+  defaultQuantity = 1;
+
+  /**
    * Constructor.
    * @param {Object} props The component props.
    */
@@ -100,12 +106,6 @@ class QuantityPicker extends Component {
   setRef = (input) => {
     this.input = input;
   };
-
-  /**
-   * The default quantity.
-   * @type {number}
-   */
-  defaultQuantity = 1;
 
   /**
    * Event handler for the the onChange event of the input.

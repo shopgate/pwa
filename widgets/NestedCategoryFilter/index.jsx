@@ -145,7 +145,11 @@ class NestedCategoryFilter extends PureComponent {
 export default props => (
   <RouteContext.Consumer>
     {({ state }) => (
-      <NestedCategoryFilter {...props} persistedState={state[props.id]} />
+      <NestedCategoryFilter
+        {...props}
+        // eslint-disable-next-line react/prop-types
+        persistedState={state[props.id]}
+      />
     )}
   </RouteContext.Consumer>
 );
