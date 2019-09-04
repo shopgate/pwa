@@ -9,7 +9,9 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 */
 const Code = ({ value }) => (
   <div>
-    <I18n.Text string="cart.coupon_code" />: {value}
+    <I18n.Text string="cart.coupon_code" />
+    {': '}
+    {value}
   </div>
 );
 
