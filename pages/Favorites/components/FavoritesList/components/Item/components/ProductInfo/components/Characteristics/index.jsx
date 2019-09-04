@@ -10,7 +10,9 @@ const Characteristics = ({ characteristics }) => (
   <ul>
     {characteristics.map(({ name, value }) => (
       <li key={`${name}-${value}`}>
-        {name}: {value}
+        {name}
+        {': '}
+        {value}
       </li>
     ))}
   </ul>
