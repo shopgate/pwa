@@ -17,6 +17,7 @@ exports[`<ValueButton /> should handle click event 1`] = `
       ],
     }
   }
+  type="button"
   value="someid"
 >
   somelabel
@@ -28,6 +29,7 @@ exports[`<ValueButton /> should render as active 1`] = `
   className="css-1h48rjj"
   data-test-id="someid"
   onClick={[Function]}
+  type="button"
   value="someid"
 >
   somelabel
@@ -39,6 +41,7 @@ exports[`<ValueButton /> should render as inactive 1`] = `
   className="css-ssdcv1"
   data-test-id="someid"
   onClick={[Function]}
+  type="button"
   value="someid"
 >
   somelabel

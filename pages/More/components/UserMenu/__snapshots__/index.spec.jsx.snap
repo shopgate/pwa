@@ -134,6 +134,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       className="css-1hj8a57"
                       data-test-id="logoutButton"
                       onClick={[MockFunction]}
+                      type="button"
                     >
                       <Translate
                         className=""
@@ -301,6 +302,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                 data-test-id="UserMenuLogin"
                                 disabled={true}
                                 onClick={null}
+                                type="button"
                               >
                                 <div
                                   className="css-kwqjom"
@@ -381,6 +383,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                 data-test-id="UserMenuRegister"
                                 disabled={true}
                                 onClick={null}
+                                type="button"
                               >
                                 <div
                                   className="css-kwqjom"
@@ -541,6 +544,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                 data-test-id="UserMenuLogin"
                                 disabled={false}
                                 onClick={null}
+                                type="button"
                               >
                                 <div
                                   className="css-1fscwua"
@@ -621,6 +625,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                 data-test-id="UserMenuRegister"
                                 disabled={false}
                                 onClick={null}
+                                type="button"
                               >
                                 <div
                                   className="css-1fscwua"

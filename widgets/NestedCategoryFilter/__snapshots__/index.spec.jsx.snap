@@ -270,6 +270,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
+                        type="button"
                       >
                         <div
                           className="css-kwqjom"
@@ -488,6 +489,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -814,6 +816,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
+                        type="button"
                       >
                         <Ripple
                           className="css-1fscwua "
@@ -1425,6 +1428,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
+                        type="button"
                       >
                         <Ripple
                           className="css-1fscwua "
@@ -1675,6 +1679,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -2148,6 +2153,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
+                        type="button"
                       >
                         <div
                           className="css-kwqjom"
@@ -2384,6 +2390,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -2773,6 +2780,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -3099,6 +3107,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
+                        type="button"
                       >
                         <Ripple
                           className="css-1fscwua "
@@ -3395,6 +3404,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
+                        type="button"
                       >
                         <div
                           className="css-kwqjom"
@@ -3593,6 +3603,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -3919,6 +3930,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
+                        type="button"
                       >
                         <Ripple
                           className="css-1fscwua "
