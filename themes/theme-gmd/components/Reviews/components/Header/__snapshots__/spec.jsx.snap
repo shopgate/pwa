@@ -383,7 +383,6 @@ exports[`<Header /> should render empty 1`] = `
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
-                                type="button"
                               >
                                 <Ripple
                                   className="css-1fscwua "
@@ -966,7 +965,6 @@ exports[`<Header /> should render rating summary 1`] = `
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
-                                type="button"
                               >
                                 <Ripple
                                   className="css-1fscwua "

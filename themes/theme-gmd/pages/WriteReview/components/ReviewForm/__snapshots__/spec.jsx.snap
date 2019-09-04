@@ -863,7 +863,6 @@ exports[`<ReviewForm /> should render empty 1`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "
@@ -1775,7 +1774,6 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "
@@ -2952,7 +2950,6 @@ exports[`<ReviewForm /> should set form data 1`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "
@@ -4070,7 +4067,6 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "
@@ -5188,7 +5184,6 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "
@@ -6312,7 +6307,6 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "
@@ -7430,7 +7424,6 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "
@@ -8349,7 +8342,6 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
-                            type="button"
                           >
                             <Ripple
                               className="css-1fscwua "

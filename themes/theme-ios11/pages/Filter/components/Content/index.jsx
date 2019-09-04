@@ -34,8 +34,6 @@ class FilterContent extends PureComponent {
     parentId: null,
   }
 
-  updateDebounced = debounce(this.update, 50)
-
   /**
    * @param {Object} props The component props.
    */
@@ -143,6 +141,9 @@ class FilterContent extends PureComponent {
       ...(filter.source && { source: filter.source }),
     });
   }
+
+  // eslint-disable-next-line react/sort-comp
+  updateDebounced = debounce(this.update, 50)
 
   /**
    * @param {string} id The filter is to add.

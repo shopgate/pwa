@@ -109,7 +109,7 @@ class RangeSlider extends Component {
   }
 
   /**
-   * Get range mina and max from props.
+   * Get range min and max from props.
    * @param {Object} props The component props.
    * @returns {Object} The new state
    */

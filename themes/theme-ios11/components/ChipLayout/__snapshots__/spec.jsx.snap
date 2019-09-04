@@ -36,7 +36,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               <Cross
                 color="#5ccee3"
@@ -80,7 +79,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               foo
             </button>
@@ -123,7 +121,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               <Ripple
                 className="css-1fscwua "
@@ -201,7 +198,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               <Cross
                 color="#5ccee3"
@@ -245,7 +241,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               foo
             </button>
@@ -274,7 +269,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               <Cross
                 color="#5ccee3"
@@ -318,7 +312,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               bar
             </button>
@@ -361,7 +354,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
-              type="button"
             >
               <Ripple
                 className="css-1fscwua "
