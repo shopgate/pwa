@@ -61,6 +61,7 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
         <button
           className="css-15pexpa"
           onClick={[Function]}
+          type="button"
         >
           <span
             className="css-fisw11"

@@ -140,6 +140,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"
@@ -543,6 +544,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"
@@ -986,6 +988,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"
@@ -1390,6 +1393,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"

@@ -36,6 +36,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
         className="css-1fmoke6 "
         data-test-id="favoriteButton"
         onClick={[Function]}
+        type="button"
       >
         <Ripple
           className="css-15r2nrm "
@@ -122,6 +123,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
         className="css-1fmoke6 "
         data-test-id="favoriteButton"
         onClick={[Function]}
+        type="button"
       >
         <Ripple
           className="css-15r2nrm "

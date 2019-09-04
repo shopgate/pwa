@@ -717,6 +717,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               className="css-1hj8a57"
                               data-test-id="logoutButton"
                               onClick={[Function]}
+                              type="button"
                             >
                               <Translate
                                 className=""
@@ -948,6 +949,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                         data-test-id="UserMenuLogin"
                                         disabled={false}
                                         onClick={null}
+                                        type="button"
                                       >
                                         <div
                                           className="css-1fscwua"
@@ -1028,6 +1030,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                         data-test-id="UserMenuRegister"
                                         disabled={false}
                                         onClick={null}
+                                        type="button"
                                       >
                                         <div
                                           className="css-1fscwua"

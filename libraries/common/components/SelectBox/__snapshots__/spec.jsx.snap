@@ -35,6 +35,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
     <button
       data-test-id="filter.sort.default"
       onClick={[Function]}
+      type="button"
     >
       <span>
         <Translate
@@ -104,6 +105,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -136,6 +138,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -168,6 +171,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -231,6 +235,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
     <button
       data-test-id="Foo"
       onClick={[Function]}
+      type="button"
     >
       <span>
         <Translate
@@ -300,6 +305,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -332,6 +338,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -364,6 +371,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -427,6 +435,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
     <button
       data-test-id="My item #2"
       onClick={[Function]}
+      type="button"
     >
       <span>
         <Translate
@@ -496,6 +505,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -528,6 +538,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>
@@ -560,6 +571,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                type="button"
               >
                 <MockItemComponent>
                   <div>

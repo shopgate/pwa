@@ -2051,6 +2051,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-1fscwua "

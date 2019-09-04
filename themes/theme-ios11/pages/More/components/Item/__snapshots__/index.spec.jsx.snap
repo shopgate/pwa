@@ -12,6 +12,7 @@ exports[`<Item /> should render as a button when no href, but a click handler is
     className="css-1hj8a57"
     data-test-id={null}
     onClick={[Function]}
+    type="button"
   >
     <Translate
       className=""

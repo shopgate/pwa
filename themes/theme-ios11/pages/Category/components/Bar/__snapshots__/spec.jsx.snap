@@ -128,6 +128,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 className="css-1oszrp2"
                                 data-test-id="filter.sort.most_popular"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <span
                                   className="css-c8vppc"
@@ -220,6 +221,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                           className="css-69lc22"
                                           data-test-id="filter.sort.most_popular"
                                           onClick={[Function]}
+                                          type="button"
                                         >
                                           <Item>
                                             <Ripple
@@ -268,6 +270,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                           className="css-69lc22"
                                           data-test-id="filter.sort.price_desc"
                                           onClick={[Function]}
+                                          type="button"
                                         >
                                           <Item>
                                             <Ripple
@@ -316,6 +319,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                           className="css-69lc22"
                                           data-test-id="filter.sort.price_asc"
                                           onClick={[Function]}
+                                          type="button"
                                         >
                                           <Item>
                                             <Ripple
@@ -385,6 +389,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                               className="css-v67geb"
                               data-test-id="filterButton"
                               onClick={[Function]}
+                              type="button"
                             >
                               <Ripple
                                 className="css-10g4052"

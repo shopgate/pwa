@@ -6,6 +6,7 @@ exports[`<Button /> should not trigger the click event when disabled 1`] = `
   data-test-id="Button"
   disabled={true}
   onClick={null}
+  type="button"
 >
   My content
 </button>
@@ -17,6 +18,7 @@ exports[`<Button /> should render the button 1`] = `
   data-test-id="Button"
   disabled={false}
   onClick={null}
+  type="button"
 >
   My content
 </button>
@@ -28,6 +30,7 @@ exports[`<Button /> should render the button in disabled state 1`] = `
   data-test-id="Button"
   disabled={true}
   onClick={null}
+  type="button"
 >
   My content
 </button>
@@ -51,6 +54,7 @@ exports[`<Button /> should trigger the click event 1`] = `
       ],
     }
   }
+  type="button"
 >
   My content
 </button>
