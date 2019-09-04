@@ -51,8 +51,8 @@ class ChipLayout extends Component {
   }
 
   /**
-   * Eveyry time pathname or other prop changes this callback is called.
-   * This funtion will start processing hidden elements in order to check if "more" button
+   * Every time pathname or other prop changes this callback is called.
+   * This function will start processing hidden elements in order to check if "more" button
    * should be rendered.
    *
    * It must be done on every prop change, including the pathname.
@@ -134,7 +134,9 @@ class ChipLayout extends Component {
       if (remainingChipWidth > CHIP_MINIMUM_WIDTH) {
         element.setAttribute('style', `max-width: ${remainingChipWidth}px`);
         return false;
-      } else if (element.offsetTop !== chips[lastVisibleElement].offsetTop) {
+      }
+
+      if (element.offsetTop !== chips[lastVisibleElement].offsetTop) {
         element.setAttribute('style', 'display: none');
         return false;
       }
