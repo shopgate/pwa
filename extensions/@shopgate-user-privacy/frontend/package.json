@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/user-privacy",
-  "version": "6.7.1",
+  "version": "6.7.2-alpha.4",
   "description": "Shopgate Connect User Privacy Extension",
   "license": "Apache 2.0",
   "repository": {
@@ -11,11 +11,11 @@
     "lint": "eslint --ignore-path ../.gitignore --ext .js --ext .jsx ."
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "6.7.1",
-    "@shopgate/pwa-common": "6.7.1",
-    "@shopgate/pwa-common-commerce": "6.7.1",
-    "@shopgate/pwa-core": "6.7.1",
-    "@shopgate/pwa-ui-shared": "6.7.1",
+    "@shopgate/eslint-config": "6.7.2-alpha.4",
+    "@shopgate/pwa-common": "6.7.2-alpha.4",
+    "@shopgate/pwa-common-commerce": "6.7.2-alpha.4",
+    "@shopgate/pwa-core": "6.7.2-alpha.4",
+    "@shopgate/pwa-ui-shared": "6.7.2-alpha.4",
     "eslint": "^4.17.0",
     "prop-types": "^15.6.0",
     "react": "~16.8.4",
