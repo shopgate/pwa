@@ -57,7 +57,9 @@ const mapping = {
   payment_success: (path) => {
     if (path.length >= 2) {
       return `checkout_success/${path[1]}`;
-    } else if (path.length === 1) {
+    }
+
+    if (path.length === 1) {
       return `checkout_success/${path[0]}`;
     }
 
@@ -81,7 +83,7 @@ function sgTrackingUrlMapper(url, data) {
   const developmentPath = '/php/shopgate/';
   const appRegex = /sg_app_resources\/[0-9]*\//;
 
-  // Build regex that will remove all blacklisted paramters
+  // Build regex that will remove all blacklisted parameters
   let regex = '';
   urlParameterBlacklist.forEach((entry) => {
     regex += `((\\?|^){0,1}(${entry}=.*?(&|$)))`;

@@ -86,7 +86,9 @@ export const getHTMLContent = (nodes) => {
       // We don't care about script tags.
       if (node.tagName === 'SCRIPT') {
         return null;
-      } else if (node.tagName === 'IMG') {
+      }
+
+      if (node.tagName === 'IMG') {
         // Images with a relative path won't work so we will remove them here.
         if (!node.getAttribute('src').startsWith('http')) {
           return null;

@@ -408,8 +408,9 @@ class ActionListener {
         logger.error(`Error: Invalid FormBuilder action rule in element '${element.id}': ` +
           `data must be an 'array' for rule type '${ruleType}'`);
         return;
-        // eslint-disable-next-line valid-typeof
-      } else if (ruleDataType !== 'array' && typeof ruleData !== ruleDataType) {
+      }
+      // eslint-disable-next-line valid-typeof
+      if (ruleDataType !== 'array' && typeof ruleData !== ruleDataType) {
         logger.error(`Error: Invalid FormBuilder action rule in element '${element.id}': ` +
           `data must be '${ruleDataType}' for rule type '${ruleType}'`);
         return;

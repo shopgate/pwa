@@ -27,27 +27,27 @@ describe('<MessageBar />', () => {
     it('should render messages without frontend translation', () => {
       const wrapper = mount(<MessageBar
         messages={[
-            {
-              type: 'info',
-              message: MESSAGE1,
-            },
-            {
-              type: 'error',
-              message: MESSAGE2,
-            },
-            {
-              type: 'warning',
-              message: MESSAGE3,
-            },
-            {
-              message: MESSAGE4,
-              translated: null,
-            },
-            {
-              message: MESSAGE5,
-              translated: true,
-            },
-          ]}
+          {
+            type: 'info',
+            message: MESSAGE1,
+          },
+          {
+            type: 'error',
+            message: MESSAGE2,
+          },
+          {
+            type: 'warning',
+            message: MESSAGE3,
+          },
+          {
+            message: MESSAGE4,
+            translated: null,
+          },
+          {
+            message: MESSAGE5,
+            translated: true,
+          },
+        ]}
       />);
 
       expect(wrapper).toMatchSnapshot();
@@ -56,19 +56,19 @@ describe('<MessageBar />', () => {
     it('should translate and render all given messages', () => {
       const wrapper = mount(<MessageBar
         messages={[
-            {
-              message: MESSAGE6,
-              translated: false,
+          {
+            message: MESSAGE6,
+            translated: false,
+          },
+          {
+            message: MESSAGE7,
+            messageParams: {
+              myCustomParam1: '-> TEST-VALUE #1 <-',
+              myCustomParam2: '-> TEST-VALUE #2 <-',
             },
-            {
-              message: MESSAGE7,
-              messageParams: {
-                myCustomParam1: '-> TEST-VALUE #1 <-',
-                myCustomParam2: '-> TEST-VALUE #2 <-',
-              },
-              translated: false,
-            },
-          ]}
+            translated: false,
+          },
+        ]}
       />);
 
       expect(wrapper).toMatchSnapshot();
