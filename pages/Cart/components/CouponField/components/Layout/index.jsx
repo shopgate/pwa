@@ -13,6 +13,7 @@ import styles from './style';
 const Layout = props => (
   <div className={styles.wrapper}>
     <form className={styles.container} onSubmit={props.handleAddCoupon} data-test-id="couponField">
+      { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
       <label className={styles.label} htmlFor="coupon-code-field" style={props.labelStyle}>
         <I18n.Text string="cart.redeem_coupon" />
       </label>

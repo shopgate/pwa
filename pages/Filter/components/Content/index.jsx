@@ -34,6 +34,8 @@ class FilterContent extends PureComponent {
     parentId: null,
   }
 
+  updateDebounced = debounce(this.update, 50)
+
   /**
    * @param {Object} props The component props.
    */
@@ -147,12 +149,12 @@ class FilterContent extends PureComponent {
    * @param {Array} value The values that changed.
    */
   add = (id, value) => {
-    this.setState({
+    this.setState(({ filters }) => ({
       filters: {
-        ...this.state.filters,
+        ...filters,
         [id]: value,
       },
-    });
+    }));
   }
 
   /**
@@ -165,8 +167,6 @@ class FilterContent extends PureComponent {
       return { filters: activeFilters };
     });
   }
-
-  updateDebounced = debounce(this.update, 50)
 
   reset = () => {
     this.initialFilters = buildInitialFilters(this.props.filters, {});

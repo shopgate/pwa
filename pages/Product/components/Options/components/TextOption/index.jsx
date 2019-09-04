@@ -32,6 +32,8 @@ class TextOption extends PureComponent {
     value: null,
   }
 
+  handleDebounced = debounce(this.handleChange, 300)
+
   /**
      * @param {Object} props The component props.
      */
@@ -116,8 +118,6 @@ class TextOption extends PureComponent {
   handleChange = (val) => {
     this.props.onChange(this.props.id, val, this.props.price);
   }
-
-  handleDebounced = debounce(this.handleChange, 300)
 
   /**
    * @return {JSX}
