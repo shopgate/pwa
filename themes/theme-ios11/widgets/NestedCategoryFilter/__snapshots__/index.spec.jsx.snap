@@ -488,6 +488,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -1675,6 +1676,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -2384,6 +2386,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -2773,6 +2776,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -3593,6 +3597,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"

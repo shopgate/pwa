@@ -23,6 +23,7 @@ class SuggestionList extends Component {
     fetching: false,
     suggestions: [],
   };
+
   /**
    * @param { Object } nextProps Next props.
    * @return {boolean}
@@ -65,6 +66,7 @@ class SuggestionList extends Component {
                 onClick={onClick}
                 value={suggestion}
                 data-test-id={`searchSuggestion ${suggestion}`}
+                type="button"
               >
                 <SurroundPortals
                   portalName={SEARCH_SUGGESTION_ITEM_CONTENT}

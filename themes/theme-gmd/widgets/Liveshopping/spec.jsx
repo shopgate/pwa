@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LiveshoppingWidget } from './';
+import { LiveshoppingWidget } from '.';
 
 describe('<LiveshoppingWidget />', () => {
   /**

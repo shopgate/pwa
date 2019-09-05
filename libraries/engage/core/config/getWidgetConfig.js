@@ -1,4 +1,4 @@
-import { getPageConfig } from '../config/getPageConfig';
+import { getPageConfig } from './getPageConfig';
 
 /**
  * Retrieves the config for a specific widget by its id and an optional index on a given page.

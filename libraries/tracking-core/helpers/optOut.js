@@ -113,7 +113,9 @@ function optOut(optOutParam) {
 function getCookie() {
   if (document.cookie.indexOf(`${disableStr}=true`) > -1) {
     return true;
-  } else if (document.cookie.indexOf(`${disableStr}=false`) > -1) {
+  }
+
+  if (document.cookie.indexOf(`${disableStr}=false`) > -1) {
     return false;
   }
 
@@ -148,7 +150,7 @@ function isOptOut() {
 }
 
 /**
- * Inits cookie and synchronises localStorage
+ * Inits cookie and synchronizes localStorage
  * with information stored in cookie (if needed)
  *
  * Made for migration from SGWebStorage, but should

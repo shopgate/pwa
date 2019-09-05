@@ -10,7 +10,7 @@ import {
   initialCategoryState,
 } from '@shopgate/pwa-common-commerce/category/mock';
 import { browsePageWillEnter$ } from '../streams';
-import subscribe from './';
+import subscribe from '.';
 
 const mockedStore = configureStore([thunk]);
 

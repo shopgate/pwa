@@ -16,7 +16,7 @@ const switchModeTapTimeout = 4000 / requiredTapsToSwitchModes;
 /**
  * This component displays a pipeline error dialog.
  * The special behaviour of this message is that the user may tap the message body
- * ten times until it reveals additional information about the error that occured.
+ * ten times until it reveals additional information about the error that occurred.
  */
 class PipelineErrorDialog extends Component {
   static propTypes = {
@@ -90,9 +90,9 @@ class PipelineErrorDialog extends Component {
       // Switch modes and reset the tap counter.
       this.tapCounter = 0;
 
-      this.setState({
-        devMode: !this.state.devMode,
-      });
+      this.setState(({ devMode }) => ({
+        devMode: !devMode,
+      }));
     } else {
       this.tapTimeout = setTimeout(this.handleTapTimeout, switchModeTapTimeout);
     }

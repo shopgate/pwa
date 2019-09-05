@@ -82,6 +82,7 @@ class AddToCartButton extends PureComponent {
         onClick={this.handleClick}
         data-test-id="addToCartBarButton"
         aria-hidden={!!itemCount}
+        type="button"
       >
         <I18n.Text string={!itemCount ? 'product.add_to_cart' : 'product.go_to_cart'} />
       </button>

@@ -134,6 +134,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       className="css-1hj8a57"
                       data-test-id="logoutButton"
                       onClick={[MockFunction]}
+                      type="button"
                     >
                       <Translate
                         className=""

@@ -100,12 +100,23 @@ class ClientInformation extends Component {
     return (
       <div className={styles.wrapper} onTouchStart={this.startTimer}>
         <p className={styles.unselectable}>
-          App Version: {appVersion} ({codebaseVersion})<br />
-          Lib Version: {libVersion}
+          App Version:
+          {' '}
+          {appVersion}
+          {' '}
+(
+          {codebaseVersion}
+)
+          <br />
+          Lib Version:
+          {' '}
+          {libVersion}
         </p>
         {isDeviceIdVisible &&
           <p className={styles.deviceId}>
-            Device ID: {deviceId}
+            Device ID:
+            {' '}
+            {deviceId}
           </p>
         }
       </div>

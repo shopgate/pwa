@@ -27,10 +27,14 @@ const CouponPrice = ({ currency, savedPrice }) => {
         unitPrice={-discountValue}
       />
     );
-  } else if (discountType === COUPON_TYPE_PERCENTAGE) {
+  }
+
+  if (discountType === COUPON_TYPE_PERCENTAGE) {
     return (
       <span className={styles}>
-        -{discountValue}%
+        -
+        {discountValue}
+%
       </span>
     );
   }

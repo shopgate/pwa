@@ -179,6 +179,7 @@ class AddToCartButton extends Component {
         aria-hidden={this.props['aria-hidden']}
         aria-label={this.props['aria-label']}
         ref={this.props.forwardedRef}
+        type="button"
       >
         {
           /**

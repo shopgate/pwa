@@ -49,14 +49,25 @@ export function sendDataRequest(url) {
  * Made for general purpose. Feel free to extend it for your needs.
  */
 export class SGLink {
-  url = ''; // Complete url string
-  scheme = ''; // Any scheme we support (ex. https|shopgate-{$number}|sgapi)
+  // Complete url string
+  url = '';
+
+  // Any scheme we support (ex. https|shopgate-{$number}|sgapi)
+  scheme = '';
+
   authority = '';
+
   path = '';
+
   splittedPath = [];
+
   query = '';
-  action = ''; // Endpoint - safe for shopgate (ex. no endpoint is converted to "index")
+
+  // Endpoint - safe for shopgate (ex. no endpoint is converted to "index")
+  action = '';
+
   params = {};
+
   isDeepLink = false;
 
   /**

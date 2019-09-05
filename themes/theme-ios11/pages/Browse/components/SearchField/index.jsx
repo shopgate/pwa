@@ -43,6 +43,15 @@ class SearchField extends Component {
   };
 
   /**
+   * Fetch the search suggestions, debounced to reduce the request amount.
+   */
+  fetchSuggestions = debounce((query) => {
+    if (query.length > SUGGESTIONS_MIN) {
+      this.props.fetchSuggestions(query);
+    }
+  }, 200, { maxWait: 400 });
+
+  /**
    * Creates a new search field instance.
    * @param {Object} props The component properties.
    */
@@ -57,6 +66,7 @@ class SearchField extends Component {
 
     this.input = null;
   }
+
   /**
    * Adds callback for keyboardWillChange.
    */
@@ -116,15 +126,6 @@ class SearchField extends Component {
     this.fetchSuggestions(query);
     this.setState({ query });
   };
-
-  /**
-   * Fetch the search suggestions, debounced to reduce the request amount.
-   */
-  fetchSuggestions = debounce((query) => {
-    if (query.length > SUGGESTIONS_MIN) {
-      this.props.fetchSuggestions(query);
-    }
-  }, 200, { maxWait: 400 });
 
   /**
    * Handles changes to the focus of the input element.
@@ -187,6 +188,7 @@ class SearchField extends Component {
         [styles.hidden]: !this.state.focused,
       })}
       onClick={this.reset}
+      type="button"
     >
       <I18n.Text string="search.cancel" />
     </button>
@@ -227,7 +229,7 @@ class SearchField extends Component {
       <Fragment>
         <Portal name={SCANNER_ICON_BEFORE} />
         <Portal name={SCANNER_ICON}>
-          <button className={styles.scannerIcon} onClick={this.props.openScanner}>
+          <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button">
             <BarcodeScannerIcon />
           </button>
         </Portal>

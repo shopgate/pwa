@@ -1,4 +1,6 @@
-import { sgData, sgDataOrder, sgDataSearch, sgDataCheckout, product, addedToCartProduct } from '../data/tracking.testData';
+import {
+  sgData, sgDataOrder, sgDataSearch, sgDataCheckout, product, addedToCartProduct,
+} from '../data/tracking.testData';
 
 const SgTrackingCore = require('../../core/Core').default.reset();
 

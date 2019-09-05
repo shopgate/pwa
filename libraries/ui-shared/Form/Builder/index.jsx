@@ -159,7 +159,9 @@ class Builder extends Component {
     // Keep relative sort order when no specific sort order was set for both
     if (element2.sortOrder === undefined) {
       return -1;
-    } else if (element1.sortOrder === undefined) {
+    }
+
+    if (element1.sortOrder === undefined) {
       return 1;
     }
 

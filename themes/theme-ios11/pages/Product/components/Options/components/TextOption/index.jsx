@@ -6,7 +6,7 @@ import TextField from '@shopgate/pwa-ui-shared/Form/TextField';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import withShowModal from '@shopgate/pwa-common/helpers/modal/withShowModal';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
-import transition from './../../../Characteristics/transition';
+import transition from '../../../Characteristics/transition';
 import { ProductContext } from '../../../../context';
 import OptionInformation from './components/OptionInfo';
 import styles from './style';
@@ -117,6 +117,7 @@ class TextOption extends PureComponent {
     this.props.onChange(this.props.id, val, this.props.price);
   }
 
+  // eslint-disable-next-line react/sort-comp
   handleDebounced = debounce(this.handleChange, 300)
 
   /**

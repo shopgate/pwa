@@ -56,6 +56,7 @@ exports[`<Sheet /> should open 1`] = `
                 aria-label="common.close"
                 className="css-b3dcfs"
                 onClick={[Function]}
+                type="button"
               >
                 <Ripple
                   className="css-ugy6xl"
@@ -406,6 +407,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 aria-label="common.close"
                 className="css-b3dcfs"
                 onClick={[Function]}
+                type="button"
               >
                 <Ripple
                   className="css-ugy6xl"

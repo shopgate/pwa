@@ -77,6 +77,7 @@ ImageSliderWidget.propTypes = {
         alt: PropTypes.string, // The alternative title for images that could not be loaded.
       })
     )).isRequired,
+    link: PropTypes.string,
   }).isRequired,
   className: PropTypes.string, // Additional styles to append to the image slider.
 };

@@ -7,7 +7,7 @@ import PipelineRequest, {
   DEFAULT_MAX_TIMEOUT,
   DEFAULT_PROCESSED,
   DEFAULT_HANDLE_ERROR,
-} from '../PipelineRequest';
+} from '.';
 import * as processTypes from '../../constants/ProcessTypes';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 

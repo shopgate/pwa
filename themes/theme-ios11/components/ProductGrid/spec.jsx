@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ViewProvider from '../../providers/View';
-import ProductGrid from '../ProductGrid';
+import ProductGrid from '.';
 
 global.console.error = jest.fn();
 

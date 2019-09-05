@@ -94,7 +94,7 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
             key={item}
             onClick={() => handleSelectQuantity(parseInt(item, 10))}
           />
-          ))}
+        ))}
       </SheetList>
     </SheetDrawer>
   );

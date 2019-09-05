@@ -45,7 +45,7 @@ const Swatches = ({ productId, characteristics }) => {
       <div className={swatchesClass}>
         {swatches.map(swatch => (
           <Swatch key={`${productId}.${swatch.id}`} swatch={swatch} />
-          ))}
+        ))}
       </div>
     </SurroundPortals>
   );

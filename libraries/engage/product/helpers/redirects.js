@@ -1,4 +1,6 @@
-import { isBeta, redirects, getThemeSettings, isAfter } from '@shopgate/engage/core';
+import {
+  isBeta, redirects, getThemeSettings, isAfter,
+} from '@shopgate/engage/core';
 import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { makeGetProductEffectivityDates } from '../selectors/product';
 

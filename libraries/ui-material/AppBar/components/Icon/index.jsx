@@ -42,6 +42,7 @@ class AppBarIcon extends PureComponent {
         }}
         data-test-id={testId}
         aria-hidden={ariaHidden}
+        type="button"
       >
         <Icon />
         {Badge && <Badge />}

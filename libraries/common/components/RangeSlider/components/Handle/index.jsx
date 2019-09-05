@@ -30,7 +30,10 @@ RangeSliderHandle.propTypes = {
   index: PropTypes.number.isRequired,
   onTouchStart: PropTypes.func.isRequired,
   active: PropTypes.bool,
-  classNames: PropTypes.shape({}),
+  classNames: PropTypes.shape({
+    handleOuter: PropTypes.string,
+    handleInner: PropTypes.string,
+  }),
 };
 
 RangeSliderHandle.defaultProps = {

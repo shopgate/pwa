@@ -22,8 +22,8 @@ const BasicDialog = ({ children, actions, title }) => (
           <Ellipsis rows={3}>
             {
               typeof title === 'string'
-              ? <I18n.Text string={title} />
-              : title
+                ? <I18n.Text string={title} />
+                : title
             }
           </Ellipsis>
         </div>

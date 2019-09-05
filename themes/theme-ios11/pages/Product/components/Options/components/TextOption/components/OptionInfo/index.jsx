@@ -77,7 +77,7 @@ const OptionInfoWithProductContext = props => (
   <ProductContext.Consumer>
     {({ currency }) => (
       <OptionInfo currency={currency} {...props} />
-      )}
+    )}
   </ProductContext.Consumer>
 );
 

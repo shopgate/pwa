@@ -17,7 +17,9 @@ export default searchPhrase => async (dispatch) => {
   // Redirect to product when only one was found and to search for more. Abort on no results.
   if (!products.length) {
     return false;
-  } else if (products.length === 1) {
+  }
+
+  if (products.length === 1) {
     const [first] = products;
     const productId = typeof first === 'string' ? first : first.id;
     dispatch(historyReplace({

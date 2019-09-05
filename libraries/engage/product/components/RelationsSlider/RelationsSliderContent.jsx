@@ -25,7 +25,7 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
 
   useEffect(() => {
     getRelations();
-  }, []);
+  }, [getRelations]);
 
   if (products.length === 0) {
     return null;
@@ -63,14 +63,14 @@ RelationsSliderContent.propTypes = {
   getRelations: PropTypes.func.isRequired,
   products: PropTypes.shape({
     products: PropTypes.arrayOf(PropTypes.shape()),
-    productCount: PropTypes.number,
+    productsCount: PropTypes.number,
   }),
 };
 
 RelationsSliderContent.defaultProps = {
   products: {
     products: [],
-    productCount: 0,
+    productsCount: 0,
   },
 };
 

@@ -1,5 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
-import { historyPush, historyReset } from '../../actions/router';
+import { historyPush, historyReset } from '../router';
 import {
   INDEX_PATH_DEEPLINK,
   INDEX_PATH,

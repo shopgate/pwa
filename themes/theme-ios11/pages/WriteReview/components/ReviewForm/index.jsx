@@ -90,65 +90,6 @@ class ReviewForm extends PureComponent {
   }
 
   /**
-   * Validate rate.
-   * @param {Object} scope The data to be validated.
-   * @return {boolean} Valid or invalid data provided.
-   */
-  validateRate(scope = this.state) {
-    const { __ } = this.context.i18n();
-    const { validationErrors } = this.state;
-
-    if (!scope.rate) {
-      validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
-    } else {
-      delete validationErrors[FIELD_NAME_RATE];
-    }
-
-    return validationErrors;
-  }
-
-  /**
-   * Validates the author.
-   * @param {Object} scope The data to be validated.
-   * @return {boolean} Valid or invalid data provided.
-   */
-  validateAuthor(scope = this.state) {
-    const { __ } = this.context.i18n();
-    const { validationErrors } = this.state;
-    const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
-
-    if (!scope[FIELD_NAME_AUTHOR] || !scope[FIELD_NAME_AUTHOR].length) {
-      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
-    } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
-      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_length', { length });
-    } else {
-      delete validationErrors[FIELD_NAME_AUTHOR];
-    }
-
-    return validationErrors;
-  }
-
-  /**
-   * Length validation.
-   * @param {string} field The field name.
-   * @param {Object} scope The data to be validated.
-   * @return {boolean} Valid or invalid data provided.
-   */
-  validateLength(field, scope = this.state) {
-    const { __ } = this.context.i18n();
-    const { validationErrors } = this.state;
-    const length = this.constructor.validationLengths[field];
-
-    if (length && scope[field] && scope[field].length >= length) {
-      validationErrors[field] = __('reviews.review_form_error_length', { length });
-    } else {
-      delete validationErrors[field];
-    }
-
-    return validationErrors;
-  }
-
-  /**
    * Handles the form submit.
    * @param {SyntheticEvent} event The submit event object.
    */
@@ -208,6 +149,65 @@ class ReviewForm extends PureComponent {
       [FIELD_NAME_REVIEW]: review,
       validationErrors,
     });
+  }
+
+  /**
+   * Length validation.
+   * @param {string} field The field name.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateLength(field, scope = this.state) {
+    const { __ } = this.context.i18n();
+    const { validationErrors } = this.state;
+    const length = this.constructor.validationLengths[field];
+
+    if (length && scope[field] && scope[field].length >= length) {
+      validationErrors[field] = __('reviews.review_form_error_length', { length });
+    } else {
+      delete validationErrors[field];
+    }
+
+    return validationErrors;
+  }
+
+  /**
+   * Validates the author.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateAuthor(scope = this.state) {
+    const { __ } = this.context.i18n();
+    const { validationErrors } = this.state;
+    const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
+
+    if (!scope[FIELD_NAME_AUTHOR] || !scope[FIELD_NAME_AUTHOR].length) {
+      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
+    } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
+      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_length', { length });
+    } else {
+      delete validationErrors[FIELD_NAME_AUTHOR];
+    }
+
+    return validationErrors;
+  }
+
+  /**
+   * Validate rate.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateRate(scope = this.state) {
+    const { __ } = this.context.i18n();
+    const { validationErrors } = this.state;
+
+    if (!scope.rate) {
+      validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
+    } else {
+      delete validationErrors[FIELD_NAME_RATE];
+    }
+
+    return validationErrors;
   }
 
   /**

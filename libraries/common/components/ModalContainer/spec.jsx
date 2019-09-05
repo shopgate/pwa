@@ -33,8 +33,8 @@ const MockModal = ({
   onDismiss, // eslint-disable-line react/prop-types
 }) => (
   <div className="modal">
-    <button className="confirmBtn" onClick={onConfirm} />
-    <button className="dismissBtn" onClick={onDismiss} />
+    <button className="confirmBtn" onClick={onConfirm} type="button" />
+    <button className="dismissBtn" onClick={onDismiss} type="button" />
   </div>
 );
 

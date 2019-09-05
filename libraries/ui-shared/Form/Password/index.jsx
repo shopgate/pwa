@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ToggleIcon from './../../ToggleIcon';
-import VisibilityIcon from './../../icons/VisibilityIcon';
-import VisibilityOffIcon from './../../icons/VisibilityOffIcon';
-import TextField from './../TextField';
+import ToggleIcon from '../../ToggleIcon';
+import VisibilityIcon from '../../icons/VisibilityIcon';
+import VisibilityOffIcon from '../../icons/VisibilityOffIcon';
+import TextField from '../TextField';
 import style from './style';
 
 /**

@@ -34,16 +34,6 @@ class Portal extends PureComponent {
   }
 
   /**
-   * Catches errors.
-   * @param {Error} error The catched error.
-   * @param {Object} info The stacktrace infor.
-   */
-  componentDidCatch(error, info) {
-    this.setState({ hasError: true });
-    logger.error(error, info);
-  }
-
-  /**
    * Returns the portal components.
    * @param {string} name Name of the portal position
    * @return {Array}
@@ -106,6 +96,16 @@ class Portal extends PureComponent {
       <PortalComponent {...componentProps} key={key} />
     ));
   };
+
+  /**
+   * Catches errors.
+   * @param {Error} error The catched error.
+   * @param {Object} info The stacktrace info.
+   */
+  componentDidCatch(error, info) {
+    this.setState({ hasError: true });
+    logger.error(error, info);
+  }
 
   /**
    * Renders the component.

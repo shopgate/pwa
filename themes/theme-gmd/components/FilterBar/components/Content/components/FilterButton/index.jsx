@@ -14,7 +14,7 @@ import styles from './style';
  * @return {JSX}
  */
 const FilterButton = connect(({ navigate }) => (
-  <button className={styles.button} onClick={navigate} data-test-id="filterButton">
+  <button className={styles.button} onClick={navigate} data-test-id="filterButton" type="button">
     <Ripple className={styles.filterButtonRipple} fill>
       <Grid component="div">
         <Grid.Item className={styles.filterButton} component="div">

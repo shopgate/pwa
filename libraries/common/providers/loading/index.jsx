@@ -8,6 +8,7 @@ import LoadingContext from './context';
  */
 class LoadingProvider extends Component {
   static SET = 'loading_set';
+
   static UNSET = 'loading_unset';
 
   static propTypes = {

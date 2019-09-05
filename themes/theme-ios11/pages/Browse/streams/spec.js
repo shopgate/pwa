@@ -1,6 +1,6 @@
 import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
 import { BROWSE_PATH } from '../constants';
-import { browsePageWillEnter$ } from './';
+import { browsePageWillEnter$ } from '.';
 
 describe('RootCategory streams', () => {
   describe('browsePageWillEnter$', () => {

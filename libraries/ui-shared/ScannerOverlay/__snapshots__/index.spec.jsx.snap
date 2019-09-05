@@ -85,6 +85,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                           className="css-1yh9ja6"
                           onClick={[Function]}
                           role="link"
+                          type="button"
                         >
                           <ToggleIcon
                             offIcon={

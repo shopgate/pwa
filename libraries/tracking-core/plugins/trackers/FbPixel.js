@@ -53,7 +53,6 @@ class FbPixel extends BasePlugin {
       t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
       document,'script','https://connect.facebook.net/en_US/fbevents.js');
     /* eslint-enable */
-    /* eslint-enable eslint-comments/no-unlimited-disable */
 
     const pixelsForInit = this.options.config.pixelIds.slice(0);
     const firstPixel = pixelsForInit.shift();

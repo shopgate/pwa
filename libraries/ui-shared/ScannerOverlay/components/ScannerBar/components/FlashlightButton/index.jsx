@@ -20,6 +20,7 @@ const FlashlightButton = ({
       className={styles.button}
       onClick={onToggle}
       role="link"
+      type="button"
     >
       <ToggleIcon
         on={flashlightState}

@@ -717,6 +717,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               className="css-1hj8a57"
                               data-test-id="logoutButton"
                               onClick={[Function]}
+                              type="button"
                             >
                               <Translate
                                 className=""

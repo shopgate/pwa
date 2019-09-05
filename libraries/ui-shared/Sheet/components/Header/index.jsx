@@ -57,7 +57,7 @@ class Header extends Component {
 
     return (
       <Grid className={classes} component="div" wrap={false}>
-        <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')}>
+        <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
           <Ripple className={styles.closeIcon}>
             <CrossIcon size={24} />
           </Ripple>

@@ -20,6 +20,8 @@ class SnackBar extends Component {
     toasts: null,
   }
 
+  timer = null;
+
   /**
    * @param {Object} props The component props.
    */
@@ -56,8 +58,6 @@ class SnackBar extends Component {
   get snack() {
     return this.props.toasts.length ? this.props.toasts[0] : defaultToast;
   }
-
-  timer = null;
 
   handleAction = () => {
     clearTimeout(this.timer);
@@ -117,7 +117,7 @@ class SnackBar extends Component {
                   <I18n.Text className={styles.label} string={message || ''} params={messageParams} />
                 </Ellipsis>
                 {(action && actionLabel) && (
-                  <button className={styles.button} onClick={this.handleAction}>
+                  <button className={styles.button} onClick={this.handleAction} type="button">
                     <I18n.Text string={actionLabel} />
                   </button>
                 )}

@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { MapPriceHint, OrderQuantityHint, EffectivityDates, Swatches } from '@shopgate/engage/product';
+import {
+  MapPriceHint, OrderQuantityHint, EffectivityDates, Swatches,
+} from '@shopgate/engage/product';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';

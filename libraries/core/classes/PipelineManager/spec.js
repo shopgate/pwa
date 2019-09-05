@@ -5,7 +5,7 @@ import { mockedDispatch } from '../AppCommand';
 import event from '../Event';
 import { ERROR_HANDLE_SUPPRESS } from '../../constants/ErrorHandleTypes';
 import PipelineRequest from '../PipelineRequest';
-import pipelineManager from '../PipelineManager';
+import pipelineManager from '.';
 import pipelineDependencies from '../PipelineDependencies';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';

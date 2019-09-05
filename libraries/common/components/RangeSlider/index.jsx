@@ -109,7 +109,7 @@ class RangeSlider extends Component {
   }
 
   /**
-   * Get range mina and max from props.
+   * Get range min and max from props.
    * @param {Object} props The component props.
    * @returns {Object} The new state
    */
@@ -138,31 +138,6 @@ class RangeSlider extends Component {
     const handleCenterX = handleRect.left + (handleDOMElement.offsetWidth / 2);
     // Store the signed distanced between the current touch offset and the handle center.
     this.touchOffset = getTouchPositionX(event) - handleCenterX;
-  }
-
-  /**
-   * Calls the change callback in case of a state update.
-   */
-  triggerChangeCallback() {
-    const {
-      value,
-      onChange,
-      min,
-      max,
-    } = this.props;
-
-    if (!onChange) {
-      return;
-    }
-
-    const newRange = [
-      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
-      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
-    ];
-
-    if (newRange !== value) {
-      onChange(newRange);
-    }
   }
 
   /**
@@ -244,6 +219,31 @@ class RangeSlider extends Component {
     }
 
     this.handleTouchMove(event);
+  }
+
+  /**
+   * Calls the change callback in case of a state update.
+   */
+  triggerChangeCallback() {
+    const {
+      value,
+      onChange,
+      min,
+      max,
+    } = this.props;
+
+    if (!onChange) {
+      return;
+    }
+
+    const newRange = [
+      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
+      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
+    ];
+
+    if (newRange !== value) {
+      onChange(newRange);
+    }
   }
 
   /**

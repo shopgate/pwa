@@ -39,6 +39,7 @@ class SelectBoxItem extends Component {
         className={this.props.className}
         onClick={this.handleSelectionUpdate}
         data-test-id={this.props.label}
+        type="button"
       >
         <Wrapper>
           <I18n.Text string={this.props.label} />
