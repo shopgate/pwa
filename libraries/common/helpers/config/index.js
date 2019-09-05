@@ -40,7 +40,6 @@ const defaultAppConfig = {
   webTrackingEngage: {
     android: '',
     ios: '',
-    events: [],
   },
 };
 

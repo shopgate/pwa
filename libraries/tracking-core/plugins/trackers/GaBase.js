@@ -12,6 +12,7 @@ const TRACK_CONVERSION = {
   CURRENCY: 'currencyCode',
   END: 'trackTrans',
   START: 'addTrans',
+  PAGE: 'page',
 };
 
 const ACCOUNT_CLASSIC = 'classic';
@@ -192,6 +193,7 @@ class GaBase extends BasePlugin {
     this.register.setCampaignWithUrl((data, raw) => {
       const shopgateUrl = new SGLink(data.url);
       shopgateUrl.setUtmParams(data, raw);
+      this.sendCommand(TRACK_SET, TRACK_CONVERSION.PAGE, shopgateUrl.toString(), null);
       this.sendCommand(TRACK_PAGE_VIEW, shopgateUrl.toString(), shopgateOnly);
     });
 
