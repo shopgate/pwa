@@ -144,7 +144,7 @@ class GaUniversal {
       shopgate: true,
     };
 
-    const useSendCmd = command !== 'require' && command.indexOf(':') === -1;
+    const useSendCmd = command !== 'require' && command !== 'set' && command.indexOf(':') === -1;
     const mergedScope = {
       ...defaults,
       ...scope,
