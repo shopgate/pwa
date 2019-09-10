@@ -197,7 +197,6 @@ class GaBase extends BasePlugin {
       this.sendCommand(TRACK_SET, ['campaignName', shopgateUrl.getParam('utm_campaign')], undefined, ACCOUNT_UNIVERSAL);
       this.sendCommand(TRACK_SET, ['campaignSource', shopgateUrl.getParam('utm_source')], undefined, ACCOUNT_UNIVERSAL);
       this.sendCommand(TRACK_SET, ['campaignMedium', shopgateUrl.getParam('utm_medium')], undefined, ACCOUNT_UNIVERSAL);
-      this.sendCommand(TRACK_PAGE_VIEW, shopgateUrl.toRelativeString(), shopgateOnly);
     });
 
     // App review prompt
