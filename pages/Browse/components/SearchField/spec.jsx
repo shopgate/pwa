@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
+import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import {
   SCANNER_SCOPE_DEFAULT,
@@ -46,6 +47,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
     variables: {
       gap: {},
     },
+    icons: mockThemeConfig.icons,
   },
 }));
 

@@ -335,9 +335,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                       <Icon
                         className=""
                         color={null}
-                        content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
+                        content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs> <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath> <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
                         size="1.24em"
                         viewBox="0 0 24 24"
                       >
@@ -345,9 +343,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
                           className="css-yys9hb "
                           dangerouslySetInnerHTML={
                             Object {
-                              "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
+                              "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs> <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath> <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
                             }
                           }
                           style={
