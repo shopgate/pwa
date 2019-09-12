@@ -41,7 +41,6 @@ export default {
       error: '#ff0000',
     },
     variables: {
-      baseShadow: 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px',
       toast: {
         duration: 5000,
       },

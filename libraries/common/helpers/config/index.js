@@ -74,7 +74,7 @@ export const themeName = process.env.THEME || 'theme';
 
 /**
  * The resolved theme configuration.
- * @type {Object}
+ * @type {ThemeConfig}
  */
 export const themeConfig = buildThemeConfig(appConfig);
 

@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
+const { variables, shadows } = themeConfig;
 
 const { style } = document.documentElement;
 
@@ -26,7 +26,7 @@ export default css({
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
-  boxShadow: '0 -1px 0 0 rgba(0, 0, 0, 0.1)',
+  boxShadow: shadows.tabBar,
   background: '#fafafa',
   ':before': {
     position: 'absolute',

@@ -1,4 +1,7 @@
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { shadows } = themeConfig;
 
 const placeholderContainer = css({
   position: 'relative',
@@ -41,7 +44,7 @@ const innerShadow = css({
     right: 0,
     bottom: 0,
     left: 0,
-    boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
+    boxShadow: shadows.productImage,
     pointerEvents: 'none',
   },
 }).toString();
