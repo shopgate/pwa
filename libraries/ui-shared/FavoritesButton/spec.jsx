@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import FavoritesButton from './index';
 import {
   mockedStateEmpty,
@@ -19,6 +20,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
   themeConfig: {
     colors: {},
+    shadows: mockThemeConfig.shadows,
   },
 }));
 

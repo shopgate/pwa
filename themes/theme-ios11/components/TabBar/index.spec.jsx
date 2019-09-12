@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
+import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import {
@@ -64,7 +64,7 @@ const createComponent = (mockedState) => {
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   hasFavorites: true,
-  themeConfig: mockedConfig,
+  themeConfig: mockThemeConfig,
 }));
 
 describe.skip('<TabBar />', () => {

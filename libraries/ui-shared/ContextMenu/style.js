@@ -29,7 +29,7 @@ const menu = css({
   minWidth: 130,
   background: themeConfig.colors.light,
   borderRadius: 2,
-  boxShadow: '0 2px 6px rgba(0, 0, 0, .4)',
+  boxShadow: themeConfig.shadows.contextMenu,
 }).toString();
 
 export default {

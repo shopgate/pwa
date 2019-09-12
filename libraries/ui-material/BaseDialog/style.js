@@ -10,7 +10,7 @@ const container = css({
   width: `calc(100vw - ${outerGap * 2}px)`,
   maxHeight: `calc(100vh - ${outerGap * 2}px)`,
   borderRadius: 2,
-  boxShadow: '0 0.75em 3em 0 rgba(0, 0, 0, 0.5)',
+  boxShadow: themeConfig.shadows.dialog,
   background: themeConfig.colors.light,
 }).toString();
 
