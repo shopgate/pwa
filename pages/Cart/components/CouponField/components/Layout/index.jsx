@@ -13,7 +13,7 @@ import styles from './style';
 const Layout = props => (
   <div className={styles.wrapper}>
     <form className={styles.container} onSubmit={props.handleAddCoupon} data-test-id="couponField">
-      { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
+      { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label className={styles.label} htmlFor="coupon-code-field" style={props.labelStyle}>
         <I18n.Text string="cart.redeem_coupon" />
       </label>
@@ -32,8 +32,10 @@ const Layout = props => (
         data-test-id="CouponSubmitButton"
         style={props.iconStyle}
         className={styles.icon}
-        aria-hidden
         onClick={props.handleAddCoupon}
+        onKeyPress={props.handleAddCoupon}
+        role="button"
+        tabIndex="0"
       >
         <CouponFieldIcon disabled={props.isButtonDisabled} />
       </div>
@@ -58,15 +60,15 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  handleAddCoupon: () => {},
-  handleFocusChange: () => {},
-  handleValueChange: () => {},
+  handleAddCoupon: () => { },
+  handleFocusChange: () => { },
+  handleValueChange: () => { },
   iconStyle: null,
   isButtonDisabled: false,
   isFocused: false,
   isLoading: false,
   labelStyle: null,
-  setInputRef: () => {},
+  setInputRef: () => { },
   value: '',
 };
 
