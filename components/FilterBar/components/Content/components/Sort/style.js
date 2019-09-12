@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { shadows, colors, variables } = themeConfig;
 
 const button = css({
   color: 'inherit',
@@ -38,7 +38,7 @@ const dropdown = css({
   top: '100%',
   left: 0,
   background: colors.background,
-  boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
+  boxShadow: shadows.filter.sort,
 }).toString();
 
 const selectItem = css({
