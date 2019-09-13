@@ -25,9 +25,14 @@ const ForgotPassword = ({ showForgotPasswordPopup }) => {
   }
 
   return (
-    <div className={styles} onClick={showForgotPasswordPopup} aria-hidden data-test-id="forgotPasswordButton">
+    <button
+      type="button"
+      className={styles}
+      onClick={showForgotPasswordPopup}
+      data-test-id="forgotPasswordButton"
+    >
       <I18n.Text string={forgotPasswordString} />
-    </div>
+    </button>
   );
 };
 
