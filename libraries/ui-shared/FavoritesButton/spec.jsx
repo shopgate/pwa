@@ -21,6 +21,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   themeConfig: {
     colors: {},
     shadows: mockThemeConfig.shadows,
+    icons: mockThemeConfig.icons,
   },
 }));
 
