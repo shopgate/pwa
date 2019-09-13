@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors, variables, shadows } = themeConfig;
 
 const wrapper = css({
   padding: `${variables.gap.big * 0.75}px ${variables.gap.big}px`,
@@ -36,7 +36,7 @@ const rangeSlider = {
 
   handleInner: css({
     background: colors.light,
-    boxShadow: '0 0 8px rgba(0, 0, 0, .16)',
+    boxShadow: shadows.filter.priceSlider,
     borderRadius: '50%',
     width: variables.gap.big * 1.5,
     height: variables.gap.big * 1.5,

@@ -9,6 +9,7 @@ const defaultConfig = {
   typography: {},
   colors: {},
   variables: {},
+  shadows: {},
 };
 
 /**
@@ -45,7 +46,7 @@ export function buildThemeConfig(appConfig) {
     },
     variables: {
       ...(oldTheme.variables || {}),
-      materialShadow: theme.variables.baseShadow,
+      materialShadow: theme.shadows.material,
     },
   });
 

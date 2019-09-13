@@ -1,14 +1,12 @@
 import React from 'react';
 import Icon from '@shopgate/pwa-common/components/Icon';
-
-// SVG Content
-const content = '<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The cross icon component.
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const Cross = props => <Icon content={content} {...props} />;
+const Cross = props => <Icon content={themeConfig.icons.cross} {...props} />;
 
 export default Cross;

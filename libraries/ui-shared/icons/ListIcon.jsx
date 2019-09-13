@@ -1,14 +1,12 @@
 import React from 'react';
 import Icon from '@shopgate/pwa-common/components/Icon';
-
-// SVG Content
-const content = '<path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The list icon component.
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const List = props => <Icon content={content} {...props} />;
+const List = props => <Icon content={themeConfig.icons.list} {...props} />;
 
 export default List;
