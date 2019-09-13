@@ -2,8 +2,10 @@
 
 exports[`<BasicDialog /> should render with minimal props 1`] = `
 <div
+  aria-labelledby="basicDialogTitle basicDialogDesc"
   className="css-e1s1x1"
   data-test-id="basicDialog"
+  role="alert"
 >
   <div
     className="css-1y16c93"
@@ -16,8 +18,10 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
 
 exports[`<BasicDialog /> should show correct number of buttons 1`] = `
 <div
+  aria-labelledby="basicDialogTitle basicDialogDesc"
   className="css-e1s1x1"
   data-test-id="basicDialog"
+  role="alert"
 >
   <div
     className="css-1y16c93"
@@ -82,8 +86,10 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
 
 exports[`<BasicDialog /> should trigger correct actions 1`] = `
 <div
+  aria-labelledby="basicDialogTitle basicDialogDesc"
   className="css-e1s1x1"
   data-test-id="basicDialog"
+  role="alert"
 >
   <div
     className="css-1y16c93"

@@ -15,23 +15,28 @@ import styles from './style';
  * @return {JSX} The rendered dialog.
  */
 const BasicDialog = ({ children, actions, title }) => (
-  <div className={styles.container} data-test-id="basicDialog">
+  <div
+    className={styles.container}
+    data-test-id="basicDialog"
+    role="alert"
+    aria-labelledby="basicDialogTitle basicDialogDesc"
+  >
     <div className={styles.content}>
       {title && ( // Render the title if required.
-        <div className={styles.title}>
-          <Ellipsis rows={3}>
-            {
-              typeof title === 'string'
-                ? <I18n.Text string={title} />
-                : title
-            }
-          </Ellipsis>
-        </div>
+      <div className={styles.title} id="basicDialogTitle">
+        <Ellipsis rows={3}>
+          {
+                typeof title === 'string'
+                  ? <I18n.Text string={title} />
+                  : title
+              }
+        </Ellipsis>
+      </div>
       )}
       {children && ( // Render the children.
-        <div className={styles.body}>
-          {children}
-        </div>
+      <div className={styles.body} id="basicDialogDesc">
+        {children}
+      </div>
       )}
     </div>
     <div className={styles.actions}>
