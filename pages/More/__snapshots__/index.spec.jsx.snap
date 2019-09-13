@@ -23,7 +23,9 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
         }
       }
     >
-      <MockedView>
+      <MockedView
+        aria-hidden={false}
+      >
         <div>
           <Connect(BackBar)
             right={null}
@@ -811,7 +813,9 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
       logout={[Function]}
       user={null}
     >
-      <MockedView>
+      <MockedView
+        aria-hidden={false}
+      >
         <div>
           <Connect(BackBar)
             right={null}

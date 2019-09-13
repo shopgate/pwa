@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { UIEvents } from '@shopgate/engage/core';
+import { MODAL_EVENTS } from '@shopgate/engage/components';
 import { ViewContext } from 'Components/View/context';
 
 /**
@@ -22,6 +24,20 @@ class ViewProvider extends Component {
       contentRef: { current: null },
       ariaHidden: false,
     };
+    // Last view active element
+    this.activeElement = null;
+  }
+
+  /** @inheritDoc */
+  componentDidMount() {
+    UIEvents.addListener(MODAL_EVENTS.SHOW, this.handleModalShow);
+    UIEvents.addListener(MODAL_EVENTS.HIDE, this.handleModalHide);
+  }
+
+  /** @inheritDoc */
+  componentWillUnmount() {
+    UIEvents.removeListener(MODAL_EVENTS.SHOW, this.handleModalShow);
+    UIEvents.removeListener(MODAL_EVENTS.HIDE, this.handleModalHide);
   }
 
   /**
@@ -38,6 +54,18 @@ class ViewProvider extends Component {
       getContentRef: this.getContentRef,
       scrollTop: this.scrollTop,
     };
+  }
+
+  handleModalShow = () => {
+    this.activeElement = document.activeElement;
+    this.setAriaHidden(true);
+  }
+
+  handleModalHide = () => {
+    if (this.activeElement && this.activeElement.focus) {
+      this.activeElement.focus();
+    }
+    this.setAriaHidden(false);
   }
 
   /**
