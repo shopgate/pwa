@@ -1,13 +1,13 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors, variables, shadows } = themeConfig;
 
 const barHeight = 46;
 
 const container = css({
   background: colors.light,
-  boxShadow: '0 -4px 5px -2px rgba(0, 0, 0, 0.1)',
+  boxShadow: shadows.cart.paymentBar,
   position: 'relative',
   zIndex: 2,
   overflow: 'hidden',
