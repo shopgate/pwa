@@ -145,6 +145,7 @@
     "empty": "Your cart is empty",
     "continue": "Continue shopping",
     "redeem_coupon": "Enter coupon code",
+    "submit_coupon": "Submit coupon code",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon has been added to cart!",
