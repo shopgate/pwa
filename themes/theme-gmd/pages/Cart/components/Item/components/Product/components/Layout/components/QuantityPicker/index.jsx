@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isNumeric } from '@shopgate/pwa-common/helpers/validation';
+import { i18n } from '@shopgate/engage/core';
 import style from './style';
 
 /**
@@ -16,9 +17,9 @@ class QuantityPicker extends Component {
 
   static defaultProps = {
     editMode: false,
-    onChange: () => {},
+    onChange: () => { },
     quantity: 1,
-    onToggleEditMode: () => {},
+    onToggleEditMode: () => { },
   };
 
   /**
@@ -187,7 +188,7 @@ class QuantityPicker extends Component {
    * @param {string|number} quantity The new quantity
    * @param {Function} [callback] Callback for the setState call.
    */
-  updateQuantityInState(quantity, callback = () => {}) {
+  updateQuantityInState(quantity, callback = () => { }) {
     const sanitizedQuantity = isNumeric(quantity) ? parseInt(quantity, 10) : '';
 
     this.setState({
@@ -213,6 +214,7 @@ class QuantityPicker extends Component {
           onBlur={this.handleInputBlur}
           min={this.defaultQuantity}
           data-test-id="quantityPicker"
+          aria-label={i18n.text('product.quantity')}
         />
       </form>
     );
