@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isNumeric } from '@shopgate/pwa-common/helpers/validation';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, isNumeric } from '@shopgate/engage/core';
 import style from './style';
 
 /**

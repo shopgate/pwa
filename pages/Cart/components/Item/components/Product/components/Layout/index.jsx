@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
-import { Link } from '@shopgate/engage/components';
+import {
+  Grid, Portal, Link, Properties, PriceInfo,
+} from '@shopgate/engage/components';
+import {
+  CART_ITEM_IMAGE_BEFORE, CART_ITEM_IMAGE, CART_ITEM_IMAGE_AFTER,
+} from '@shopgate/engage/cart';
+import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex } from '@shopgate/engage/core';
 import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
-import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
@@ -31,11 +31,11 @@ const Layout = (props, context) => (
           itemScope
           itemType="http://schema.org/Product"
         >
-          <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
-          <Portal name={portals.CART_ITEM_IMAGE} props={context}>
+          <Portal name={CART_ITEM_IMAGE_BEFORE} props={context} />
+          <Portal name={CART_ITEM_IMAGE} props={context}>
             <ProductImage src={props.product.featuredImageUrl} />
           </Portal>
-          <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
+          <Portal name={CART_ITEM_IMAGE_AFTER} props={context} />
         </Link>
       </div>
       <QuantityPicker
@@ -61,11 +61,9 @@ const Layout = (props, context) => (
             defaultPrice={props.product.price.default}
             specialPrice={props.product.price.special}
           />
-          {
-            props.product.price.info && (
-              <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
-            )
-          }
+          {props.product.price.info && (
+            <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
+          )}
         </Grid.Item>
         {showTaxDisclaimer && (
           <Grid.Item
