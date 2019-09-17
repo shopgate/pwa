@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import connect from './connector';
+
+export const MODAL_EVENTS = {
+  SHOW: 'Modal.show',
+  HIDE: 'Modal.hide',
+};
 
 /**
  * The ModalContainer is connected to the modal state
@@ -14,6 +20,18 @@ const ModalContainer = ({
   dismiss,
   modal,
 }) => {
+  const ref = useRef(false);
+  useEffect(() => {
+    if (modal && !ref.current) {
+      ref.current = true;
+      UIEvents.emit(MODAL_EVENTS.SHOW);
+    }
+    if (!modal && ref.current) {
+      ref.current = false;
+      UIEvents.emit(MODAL_EVENTS.HIDE);
+    }
+  }, [modal]);
+
   if (!modal) {
     return null;
   }

@@ -2,6 +2,7 @@
 
 exports[`<ClientInformation /> App and lib version, and device ID should render the app and lib version 1`] = `
 <div
+  aria-hidden={true}
   className={
     Object {
       "data-css-1y4o210": "",
@@ -40,6 +41,7 @@ exports[`<ClientInformation /> App and lib version, and device ID should show th
   libVersion="4.5.6"
 >
   <div
+    aria-hidden={true}
     className={
       Object {
         "data-css-1y4o210": "",
@@ -85,6 +87,7 @@ exports[`<ClientInformation /> should not render if no data is available 1`] = `
 
 exports[`<ClientInformation /> should re-render when data comes available 1`] = `
 <div
+  aria-hidden={true}
   className={
     Object {
       "data-css-1y4o210": "",

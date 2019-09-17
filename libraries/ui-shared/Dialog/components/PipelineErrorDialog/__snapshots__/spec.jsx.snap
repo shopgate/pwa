@@ -18,14 +18,17 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
     title="modal.title_error"
   >
     <div
+      aria-labelledby="basicDialogTitle basicDialogDesc"
       className="css-hrxvvd"
       data-test-id="basicDialog"
+      role="alert"
     >
       <div
         className="css-1sirlct"
       >
         <div
           className="css-axwumg"
+          id="basicDialogTitle"
         >
           <Ellipsis
             className=""
@@ -62,9 +65,9 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
         </div>
         <div
           className="css-1rx8rr8"
+          id="basicDialogDesc"
         >
           <div
-            aria-hidden={true}
             onClick={[Function]}
           >
             <Translate
@@ -113,14 +116,17 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
     title="modal.title_error"
   >
     <div
+      aria-labelledby="basicDialogTitle basicDialogDesc"
       className="css-hrxvvd"
       data-test-id="basicDialog"
+      role="alert"
     >
       <div
         className="css-1sirlct"
       >
         <div
           className="css-axwumg"
+          id="basicDialogTitle"
         >
           <Ellipsis
             className=""
@@ -157,9 +163,9 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
         </div>
         <div
           className="css-1rx8rr8"
+          id="basicDialogDesc"
         >
           <div
-            aria-hidden={true}
             onClick={[Function]}
           >
             <Translate

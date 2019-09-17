@@ -12,6 +12,7 @@ export const SHEET_EVENTS = {
   OPEN: 'Sheet.open',
   CLOSE: 'Sheet.close',
 };
+
 /**
  * Sheet component.
  */

@@ -27,7 +27,7 @@ export { default as Link } from '@shopgate/pwa-common/components/Link';
 export { default as List } from '@shopgate/pwa-common/components/List';
 export { default as Loading } from '@shopgate/pwa-common/components/Loading';
 export { default as Modal } from '@shopgate/pwa-common/components/Modal';
-export { default as ModalContainer } from '@shopgate/pwa-common/components/ModalContainer';
+export { default as ModalContainer, MODAL_EVENTS } from '@shopgate/pwa-common/components/ModalContainer';
 export { default as Picker } from '@shopgate/pwa-common/components/Picker';
 export { default as Portal } from '@shopgate/pwa-common/components/Portal';
 export { default as RangeSlider } from '@shopgate/pwa-common/components/RangeSlider';
@@ -98,7 +98,7 @@ export { default as RatingStars } from '@shopgate/pwa-ui-shared/RatingStars';
 export { default as Ripple } from '@shopgate/pwa-ui-shared/Ripple';
 export { default as RippleButton } from '@shopgate/pwa-ui-shared/RippleButton';
 export { default as ScannerOverlay } from '@shopgate/pwa-ui-shared/ScannerOverlay';
-export { default as Sheet } from '@shopgate/pwa-ui-shared/Sheet';
+export { default as Sheet, SHEET_EVENTS } from '@shopgate/pwa-ui-shared/Sheet';
 export { default as TaxDisclaimer } from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 export { default as ToggleIcon } from '@shopgate/pwa-ui-shared/ToggleIcon';
 
