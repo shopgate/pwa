@@ -179,7 +179,8 @@
     "menuSubHeader": {
       "more": "Meer",
       "about": "Over ons"
-    }
+    },
+    "back": "Terug naar {title}"
   },
   "reviews": {
     "rating": "Rating",
