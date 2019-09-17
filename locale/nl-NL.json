@@ -181,7 +181,8 @@
     "return_policy": "Herroepingsrecht",
     "logout": "Log uit",
     "store_information": "Over ons",
-    "more_menu": "Meer"
+    "more_menu": "Meer",
+    "back": "Terug naar {title}"
   },
   "reviews": {
     "rating": "Rating",
