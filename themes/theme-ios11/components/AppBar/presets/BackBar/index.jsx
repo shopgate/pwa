@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { i18n } from '@shopgate/engage/core';
 import { Portal } from '@shopgate/pwa-common/components';
 import {
   APP_BAR_BACK_BEFORE,
@@ -11,13 +12,18 @@ import DefaultBar from '../DefaultBar';
 import connect from './connector';
 
 /**
+ * @param {Function} goBack goBack
+ * @param {string} prevTitle prev page title
  * @param {Object} props The component props.
- * @param {Object} context The component context.
  * @returns {JSX}
  */
-function BackBar({ goBack, ...props }, context) {
-  const { __ } = context.i18n();
-  const left = <DefaultBar.Icon icon={ArrowIcon} onClick={goBack} aria-label={__('common.back')} testId="backButton" />;
+function BackBar({ goBack, prevTitle, ...props }) {
+  const left = <DefaultBar.Icon
+    aria-label={i18n.text('navigation.back', { title: prevTitle })}
+    icon={ArrowIcon}
+    onClick={goBack}
+    testId="backButton"
+  />;
 
   return (
     <Fragment>
@@ -32,10 +38,7 @@ function BackBar({ goBack, ...props }, context) {
 
 BackBar.propTypes = {
   goBack: PropTypes.func.isRequired,
-};
-
-BackBar.contextTypes = {
-  i18n: PropTypes.func,
+  prevTitle: PropTypes.string.isRequired,
 };
 
 export default connect(BackBar);

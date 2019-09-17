@@ -126,3 +126,19 @@ export function makeIsLastStackEntry() {
     }
   );
 }
+
+/**
+ * Get the previous route from stack.
+ * @returns {null|Object}
+ */
+export const getPrevRoute = createSelector(
+  getCurrentRoute,
+  getRouterStack,
+  (route, stack) => {
+    const routeIndex = stack.findIndex(entry => entry.id === route.id);
+    if (routeIndex <= 0) {
+      return null;
+    }
+    return stack[routeIndex - 1];
+  }
+);
