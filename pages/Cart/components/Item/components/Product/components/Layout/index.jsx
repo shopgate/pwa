@@ -4,7 +4,9 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
-import { ProductImage } from '@shopgate/engage/product';
+import { Link } from '@shopgate/engage/components';
+import { bin2hex } from '@shopgate/engage/core';
+import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
 import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
 import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import QuantityPicker from './components/QuantityPicker';
@@ -21,12 +23,20 @@ import styles from './style';
 const Layout = (props, context) => (
   <Grid className={styles.item}>
     <Grid.Item className={styles.leftColumn}>
-      <div className={styles.image}>
-        <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
-        <Portal name={portals.CART_ITEM_IMAGE} props={context}>
-          <ProductImage src={props.product.featuredImageUrl} />
-        </Portal>
-        <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
+      <div className={styles.image} aria-hidden>
+        <Link
+          tagName="a"
+          href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}
+          itemProp="item"
+          itemScope
+          itemType="http://schema.org/Product"
+        >
+          <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
+          <Portal name={portals.CART_ITEM_IMAGE} props={context}>
+            <ProductImage src={props.product.featuredImageUrl} />
+          </Portal>
+          <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
+        </Link>
       </div>
       <QuantityPicker
         quantity={props.quantity}
@@ -80,9 +90,9 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  handleDelete: () => {},
-  handleUpdate: () => {},
-  toggleEditMode: () => {},
+  handleDelete: () => { },
+  handleUpdate: () => { },
+  toggleEditMode: () => { },
 };
 
 Layout.contextTypes = {
