@@ -129,16 +129,18 @@ export function makeIsLastStackEntry() {
 
 /**
  * Get the previous route from stack.
- * @returns {null|Object}
+ * @returns {Function}
  */
-export const getPrevRoute = createSelector(
-  getCurrentRoute,
-  getRouterStack,
-  (route, stack) => {
-    const routeIndex = stack.findIndex(entry => entry.id === route.id);
-    if (routeIndex <= 0) {
-      return null;
+export function makeGetPrevRoute() {
+  return createSelector(
+    (state, props = {}) => props.routeId,
+    getRouterStack,
+    (routeId, stack) => {
+      const routeIndex = stack.findIndex(entry => entry.id === routeId);
+      if (routeIndex <= 0) {
+        return null;
+      }
+      return stack[routeIndex - 1];
     }
-    return stack[routeIndex - 1];
-  }
-);
+  );
+}

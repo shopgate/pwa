@@ -1,4 +1,4 @@
-import { makeIsLastStackEntry, getPrevRoute } from './router';
+import { makeIsLastStackEntry, makeGetPrevRoute } from './router';
 
 const mockState = {
   router: {
@@ -49,13 +49,18 @@ describe('Router selectors', () => {
   });
 
   describe('getPrevRoute()', () => {
+    let getPrevRoute;
+    beforeEach(() => {
+      getPrevRoute = makeGetPrevRoute();
+    });
+
     it('should return null for index route', () => {
       const result = getPrevRoute({
         router: {
           currentRoute: mockState.router.stack[0],
           ...mockState.router,
         },
-      });
+      }, { routeId: 'abc' });
       expect(result).toBeNull();
     });
 
@@ -65,7 +70,7 @@ describe('Router selectors', () => {
           currentRoute: mockState.router.stack[2],
           ...mockState.router,
         },
-      });
+      }, { routeId: '234' });
       expect(result).toEqual(mockState.router.stack[1]);
     });
 
@@ -75,7 +80,7 @@ describe('Router selectors', () => {
           currentRoute: mockState.router.stack[1],
           ...mockState.router,
         },
-      });
+      }, { routeId: '123' });
       expect(result).toEqual(mockState.router.stack[0]);
     });
   });
