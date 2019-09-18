@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, Portal, Link, Properties, PriceInfo,
+  Grid, Portal, Link, ProductProperties, PriceInfo,
 } from '@shopgate/engage/components';
 import {
   CART_ITEM_IMAGE_BEFORE, CART_ITEM_IMAGE, CART_ITEM_IMAGE_AFTER,
@@ -53,7 +53,7 @@ const Layout = (props, context) => (
       />
       <Grid className={styles.info}>
         <Grid.Item grow={1} className={styles.properties}>
-          <Properties properties={props.product.properties} lineClamp={2} />
+          <ProductProperties properties={props.product.properties} lineClamp={2} />
         </Grid.Item>
         <Grid.Item grow={1} className={styles.price}>
           <ProductPrice
