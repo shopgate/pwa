@@ -19,79 +19,107 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
   >
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
+      aria-modal={true}
       className="css-hrxvvd"
       data-test-id="basicDialog"
-      role="alert"
+      role="alertdialog"
     >
       <div
         className="css-1sirlct"
       >
-        <div
-          className="css-axwumg"
-          id="basicDialogTitle"
+        <Title
+          title="modal.title_error"
         >
-          <Ellipsis
-            className=""
-            ellipsis="..."
-            rows={3}
+          <div
+            aria-level="2"
+            className="css-axwumg"
+            id="basicDialogTitle"
+            role="heading"
           >
-            <Dotdotdot
-              clamp={3}
+            <Ellipsis
               className=""
               ellipsis="..."
-              tagName="div"
-              truncationChar="…"
-              useNativeClamp={true}
+              rows={3}
             >
-              <div
+              <Dotdotdot
+                clamp={3}
                 className=""
+                ellipsis="..."
+                tagName="div"
+                truncationChar="…"
+                useNativeClamp={true}
               >
+                <div
+                  className=""
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    role={null}
+                    string="modal.title_error"
+                  >
+                    <span
+                      className=""
+                      role={null}
+                    >
+                      modal.title_error
+                    </span>
+                  </Translate>
+                </div>
+              </Dotdotdot>
+            </Ellipsis>
+          </div>
+        </Title>
+        <Content
+          content={
+            <div
+              onClick={[Function]}
+            >
+              <React.Fragment>
                 <Translate
                   className=""
                   params={Object {}}
                   role={null}
-                  string="modal.title_error"
-                >
-                  <span
-                    className=""
-                    role={null}
-                  >
-                    modal.title_error
-                  </span>
-                </Translate>
-              </div>
-            </Dotdotdot>
-          </Ellipsis>
-        </div>
-        <div
-          className="css-1rx8rr8"
-          id="basicDialogDesc"
+                  string="Error message"
+                />
+              </React.Fragment>
+            </div>
+          }
         >
           <div
-            onClick={[Function]}
+            className="css-1rx8rr8"
+            id="basicDialogDesc"
           >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string="Error message"
+            <div
+              onClick={[Function]}
             >
-              <span
+              <Translate
                 className=""
+                params={Object {}}
                 role={null}
+                string="Error message"
               >
-                Error message
-              </span>
-            </Translate>
+                <span
+                  className=""
+                  role={null}
+                >
+                  Error message
+                </span>
+              </Translate>
+            </div>
           </div>
-        </div>
+        </Content>
       </div>
       <div
         className="css-1h5vk0a"
       >
         <div
           className="css-hw75se"
-        />
+        >
+          <Buttons
+            actions={Array []}
+          />
+        </div>
       </div>
     </div>
   </BasicDialog>
@@ -117,79 +145,107 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
   >
     <div
       aria-labelledby="basicDialogTitle basicDialogDesc"
+      aria-modal={true}
       className="css-hrxvvd"
       data-test-id="basicDialog"
-      role="alert"
+      role="alertdialog"
     >
       <div
         className="css-1sirlct"
       >
-        <div
-          className="css-axwumg"
-          id="basicDialogTitle"
+        <Title
+          title="modal.title_error"
         >
-          <Ellipsis
-            className=""
-            ellipsis="..."
-            rows={3}
+          <div
+            aria-level="2"
+            className="css-axwumg"
+            id="basicDialogTitle"
+            role="heading"
           >
-            <Dotdotdot
-              clamp={3}
+            <Ellipsis
               className=""
               ellipsis="..."
-              tagName="div"
-              truncationChar="…"
-              useNativeClamp={true}
+              rows={3}
             >
-              <div
+              <Dotdotdot
+                clamp={3}
                 className=""
+                ellipsis="..."
+                tagName="div"
+                truncationChar="…"
+                useNativeClamp={true}
               >
+                <div
+                  className=""
+                >
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    role={null}
+                    string="modal.title_error"
+                  >
+                    <span
+                      className=""
+                      role={null}
+                    >
+                      modal.title_error
+                    </span>
+                  </Translate>
+                </div>
+              </Dotdotdot>
+            </Ellipsis>
+          </div>
+        </Title>
+        <Content
+          content={
+            <div
+              onClick={[Function]}
+            >
+              <React.Fragment>
                 <Translate
                   className=""
                   params={Object {}}
                   role={null}
-                  string="modal.title_error"
-                >
-                  <span
-                    className=""
-                    role={null}
-                  >
-                    modal.title_error
-                  </span>
-                </Translate>
-              </div>
-            </Dotdotdot>
-          </Ellipsis>
-        </div>
-        <div
-          className="css-1rx8rr8"
-          id="basicDialogDesc"
+                  string="Custom message"
+                />
+              </React.Fragment>
+            </div>
+          }
         >
           <div
-            onClick={[Function]}
+            className="css-1rx8rr8"
+            id="basicDialogDesc"
           >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string="Custom message"
+            <div
+              onClick={[Function]}
             >
-              <span
+              <Translate
                 className=""
+                params={Object {}}
                 role={null}
+                string="Custom message"
               >
-                Custom message
-              </span>
-            </Translate>
+                <span
+                  className=""
+                  role={null}
+                >
+                  Custom message
+                </span>
+              </Translate>
+            </div>
           </div>
-        </div>
+        </Content>
       </div>
       <div
         className="css-1h5vk0a"
       >
         <div
           className="css-hw75se"
-        />
+        >
+          <Buttons
+            actions={Array []}
+          />
+        </div>
       </div>
     </div>
   </BasicDialog>

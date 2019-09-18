@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Content /> should not render if no content is passed 1`] = `""`;
+
+exports[`<Content /> should render content components 1`] = `
+<div
+  className="css-1jzbd3s"
+  id="basicDialogDesc"
+>
+  Hello World
+</div>
+`;
