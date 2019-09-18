@@ -48,7 +48,7 @@ describe('Router selectors', () => {
     });
   });
 
-  describe('getPrevRoute()', () => {
+  describe('makeGetPrevRoute()', () => {
     let getPrevRoute;
     beforeEach(() => {
       getPrevRoute = makeGetPrevRoute();
