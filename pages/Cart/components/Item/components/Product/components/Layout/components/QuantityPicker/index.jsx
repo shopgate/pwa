@@ -173,7 +173,7 @@ class QuantityPicker extends Component {
       }
     };
 
-    if (!event.target.value || event.target.value < this.defaultQuantity) {
+    if (!event.target.value) {
       // Set the quantity state back to default, if the value of the input is invalid.
       this.updateQuantityInState(this.defaultQuantity, handleBlur);
     } else {
