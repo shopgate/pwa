@@ -4,7 +4,7 @@ import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
+import { MessageBar } from '@shopgate/engage/components';
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
