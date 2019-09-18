@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Title from './components/Title';
 import Content from './components/Content';
@@ -14,7 +14,7 @@ import styles from './style';
  * @param {string|ReactElement} title The title of the dialog.
  * @return {JSX} The rendered dialog.
  */
-const BasicDialog = memo(({ children, actions, title }) => (
+const BasicDialog = ({ children, actions, title }) => (
   <div
     className={styles.container}
     data-test-id="basicDialog"
@@ -30,7 +30,7 @@ const BasicDialog = memo(({ children, actions, title }) => (
       <Buttons actions={actions} />
     </div>
   </div>
-));
+);
 
 BasicDialog.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape({
