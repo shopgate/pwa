@@ -146,11 +146,15 @@
     "continue": "Continue shopping",
     "redeem_coupon": "Enter coupon code",
     "submit_coupon": "Submit coupon code",
+    "delete_coupon": "Delete coupon code",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon has been added to cart!",
     "coupons_not_supported": "Add coupons and gift certificates during checkout",
-    "free_shipping": "Free Shipping"
+    "free_shipping": "Free Shipping",
+    "message_type_info": "Info",
+    "message_type_error": "Error",
+    "message_type_warning": "Warning"
   },
   "login": {
     "headline": "Welcome",
