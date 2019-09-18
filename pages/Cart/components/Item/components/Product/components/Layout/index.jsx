@@ -23,10 +23,11 @@ import styles from './style';
 const Layout = (props, context) => (
   <Grid className={styles.item}>
     <Grid.Item className={styles.leftColumn}>
-      <div className={styles.image} aria-hidden>
+      <div className={styles.image}>
         <Link
           tagName="a"
           href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}
+          aria-label={props.product.name}
           itemProp="item"
           itemScope
           itemType="http://schema.org/Product"
