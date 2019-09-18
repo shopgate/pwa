@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { withRoute, i18n } from '@shopgate/engage/core';
 import { Portal } from '@shopgate/pwa-common/components';
 import {
   APP_BAR_BACK_BEFORE,
@@ -41,4 +41,4 @@ BackBar.propTypes = {
   prevTitle: PropTypes.string.isRequired,
 };
 
-export default connect(BackBar);
+export default withRoute(connect(BackBar), { prop: 'route' });
