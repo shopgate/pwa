@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
-import { getPrevRoute } from '@shopgate/engage/core';
+import { makeGetPrevRoute } from '@shopgate/engage/core';
 
 /**
- * @param {Object} state state
- * @returns {Object}
+ * Create exclusive component selector.
+ * @returns {Function}
  */
-const mapStateToProps = (state) => {
-  const prev = getPrevRoute(state);
-  return {
-    prevTitle: prev ? prev.state.title : null,
+function makeMapStateToProps() {
+  const getPrevRoute = makeGetPrevRoute();
+  return (state, { route }) => {
+    const prev = getPrevRoute(state, { routeId: route.id });
+    return {
+      prevTitle: prev ? prev.state.title : null,
+    };
   };
-};
+}
 
 /**
  * @param {Function} dispatch The store dispatch method.
@@ -21,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
   goBack: () => dispatch(historyPop()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { pure: () => null });
+export default connect(makeMapStateToProps, mapDispatchToProps);
