@@ -54,15 +54,6 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
       key="info-something"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_info: something
-      </span>
-      <span
         aria-hidden={true}
       >
         something
@@ -122,15 +113,6 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       key="info-This is some information"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_info: This is some information
-      </span>
-      <span
         aria-hidden={true}
       >
         This is some information
@@ -144,15 +126,6 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       }
       key="error-This is an error that happened here."
     >
-      <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_error: This is an error that happened here.
-      </span>
       <span
         aria-hidden={true}
       >
@@ -168,15 +141,6 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       key="warning-This is just a warning. Nothing to freak out about."
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_warning: This is just a warning. Nothing to freak out about.
-      </span>
-      <span
         aria-hidden={true}
       >
         This is just a warning. Nothing to freak out about.
@@ -191,15 +155,6 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       key="info-Normal pre-translated message."
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_info: Normal pre-translated message.
-      </span>
-      <span
         aria-hidden={true}
       >
         Normal pre-translated message.
@@ -213,15 +168,6 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       }
       key="info-Normal pre-translated message."
     >
-      <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_info: Normal pre-translated message.
-      </span>
       <span
         aria-hidden={true}
       >
@@ -274,15 +220,6 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       key="info-some.translation.string"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_info: some.translation.string
-      </span>
-      <span
         aria-hidden={true}
       >
         some.translation.string
@@ -296,15 +233,6 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       }
       key="info-Message with messageParams"
     >
-      <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
-      >
-        cart.message_type_info: Message with messageParams
-      </span>
       <span
         aria-hidden={true}
       >
