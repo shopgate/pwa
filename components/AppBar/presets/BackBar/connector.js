@@ -11,7 +11,7 @@ function makeMapStateToProps() {
   return (state, { route }) => {
     const prev = getPrevRoute(state, { routeId: route.id });
     return {
-      prevTitle: prev ? prev.state.title : null,
+      prevTitle: prev && prev.state.title ? prev.state.title : null,
     };
   };
 }
