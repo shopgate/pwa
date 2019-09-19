@@ -12,7 +12,10 @@ import styles from './style';
  * @return {JSX}
  */
 const MessageBar = memo(({ messages, classNames }) => (
-  <div className={css(styles.container, classNames.container)}>
+  <div
+    className={css(styles.container, classNames.container)}
+    role={messages.length > 0 ? 'alert' : null}
+  >
     {messages.map((item) => {
       const {
         type = 'info',
@@ -26,11 +29,14 @@ const MessageBar = memo(({ messages, classNames }) => (
       return (
         <div
           key={`${type}-${message}`}
-          role="alert"
           className={css(classNames.message, styles[type])}
         >
-          <span className={styles.srOnly}>{`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}</span>
-          <span aria-hidden>{messageOutput}</span>
+          <span className={styles.srOnly}>
+            {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
+          </span>
+          <span aria-hidden>
+            {messageOutput}
+          </span>
         </div>
       );
     })}
