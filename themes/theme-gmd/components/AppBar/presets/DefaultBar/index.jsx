@@ -10,7 +10,7 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import {
-  withRoute, withWidgetSettings, withApp, INDEX_PATH,
+  withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
 import { ViewContext } from 'Components/View/context';
 import AppBarIcon from './components/Icon';
@@ -71,6 +71,11 @@ class AppBarDefault extends PureComponent {
 
     if (this.props.route.visible) {
       this.updateStatusBar();
+
+      if (this.props.title) {
+        const { __ } = this.context.i18n();
+        router.update(this.props.route.id, { title: __(this.props.title) });
+      }
     }
   }
 
