@@ -1,52 +1,44 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from '@shopgate/pwa-ui-shared/Button';
+import Title from './components/Title';
+import Content from './components/Content';
+import Buttons from './components/Buttons';
 import BasicDialog from './index';
 
-describe('<BasicDialog />', () => {
-  const props = {
-    actions: [
-      {
-        label: 'action0',
-        action: jest.fn(),
-      },
-      {
-        label: 'action1',
-        action: jest.fn(),
-      },
-      {
-        label: 'action2',
-        action: jest.fn(),
-      },
-    ],
-  };
+const props = {
+  title: 'Hello World',
+  children: <div>Hello World</div>,
+  actions: [
+    {
+      label: 'action0',
+      action: jest.fn(),
+    },
+    {
+      label: 'action1',
+      action: jest.fn(),
+    },
+    {
+      label: 'action2',
+      action: jest.fn(),
+    },
+  ],
+};
 
+describe('<BasicDialog />', () => {
   it('should render with minimal props', () => {
     const wrapper = shallow(<BasicDialog actions={[]} />);
-
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should show correct number of buttons', () => {
+  it('should render as expected', () => {
     const wrapper = shallow(<BasicDialog {...props} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Button).length).toBe(props.actions.length);
-  });
-
-  it('should trigger correct actions', () => {
-    const wrapper = shallow(<BasicDialog {...props} />);
-    const button = wrapper.find(Button).at(1);
-    button.simulate('click');
-
-    expect(wrapper).toMatchSnapshot();
-    expect(props.actions[0].action).not.toBeCalled();
-    expect(props.actions[1].action).toBeCalled();
-    expect(props.actions[2].action).not.toBeCalled();
-  });
-
-  it('should render with node as a title', () => {
-    const wrapper = shallow(<BasicDialog title={<strong>My Title</strong>} />);
-    expect(wrapper.find('strong').text()).toEqual('My Title');
+    expect(wrapper.find(Title).length).toBe(1);
+    expect(wrapper.find(Title).props().title).toEqual(props.title);
+    expect(wrapper.find(Content).length).toBe(1);
+    expect(wrapper.find(Content).props().content).toEqual(props.children);
+    expect(wrapper.find(Buttons).length).toBe(1);
+    expect(wrapper.find(Buttons).props().actions).toEqual(props.actions);
   });
 });

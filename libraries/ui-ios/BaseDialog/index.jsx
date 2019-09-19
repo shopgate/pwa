@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Button from '@shopgate/pwa-ui-shared/Button';
+import Title from './components/Title';
+import Content from './components/Content';
+import Buttons from './components/Buttons';
 import styles from './style';
 
 /**
@@ -18,39 +18,16 @@ const BasicDialog = ({ children, actions, title }) => (
   <div
     className={styles.container}
     data-test-id="basicDialog"
-    role="alert"
+    role="alertdialog"
+    aria-modal
     aria-labelledby="basicDialogTitle basicDialogDesc"
   >
     <div className={styles.content}>
-      {title && ( // Render the title if required.
-        <div className={styles.title} id="basicDialogTitle">
-          <Ellipsis rows={3}>
-            {
-                typeof title === 'string'
-                  ? <I18n.Text string={title} />
-                  : title
-              }
-          </Ellipsis>
-        </div>
-      )}
-      {children && ( // Render the children.
-        <div className={styles.body} id="basicDialogDesc">
-            {children}
-        </div>
-      )}
+      <Title title={title} />
+      <Content content={children} />
     </div>
     <div className={styles.actions}>
-      {actions.map(({ label, action, type = 'normal' }) => ( // Create buttons for each action passed.
-        <Button
-          key={label}
-          className={`${styles.button} ${type === 'primary' ? styles.buttonPrimary : ''}`}
-          type="primary"
-          onClick={action}
-          flat
-        >
-          <I18n.Text className={styles.buttonText} string={label} />
-        </Button>
-      ))}
+      <Buttons actions={actions} />
     </div>
   </div>
 );
