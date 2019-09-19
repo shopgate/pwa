@@ -211,7 +211,7 @@ class QuantityPicker extends Component {
           onClick={this.handleInputClick}
           onFocus={this.handleInputFocus}
           onBlur={this.handleInputBlur}
-          min={this.defaultQuantity}
+          min={0}
           data-test-id="quantityPicker"
           aria-label={i18n.text('product.quantity')}
         />
