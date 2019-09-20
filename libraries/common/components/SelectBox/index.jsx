@@ -93,6 +93,10 @@ class SelectBox extends Component {
     this.setState({
       isOpen: true,
     });
+
+    if (this.firstItemRef) {
+      this.firstItemRef.focus();
+    }
   };
 
   /**
@@ -111,7 +115,17 @@ class SelectBox extends Component {
     setTimeout(() => {
       this.props.handleSelectionUpdate(selection.value);
     }, this.props.duration);
+
+    if (this.controlRef) {
+      this.controlRef.focus();
+    }
   };
+
+  /** @param {HTMLElement} ref The element */
+  setControlRef = (ref) => { this.controlRef = ref; }
+
+  /** @param {HTMLElement} ref The element */
+  setFirstItemRef = (ref) => { this.firstItemRef = ref; }
 
   /**
    * Renders the component
@@ -134,7 +148,16 @@ class SelectBox extends Component {
 
     return (
       <div className={this.props.className} data-test-id={this.props.testId}>
-        <button className={button} onClick={this.handleOpenList} data-test-id={buttonLabel} type="button">
+        <button
+          className={button}
+          onClick={this.handleOpenList}
+          data-test-id={buttonLabel}
+          type="button"
+          aria-haspopup
+          aria-expanded={this.state.isOpen}
+          aria-controls={buttonLabel}
+          ref={this.setControlRef}
+        >
           <span className={selection}>
             <I18n.Text string={buttonLabel} />
           </span>
@@ -146,7 +169,7 @@ class SelectBox extends Component {
           onComplete={this.onDropdownComplete}
           duration={this.props.duration}
         >
-          <div>
+          <div role="menu" id={buttonLabel}>
             {this.props.items.map(item => (
               <SelectBoxItem
                 className={selectItem}
@@ -155,6 +178,7 @@ class SelectBox extends Component {
                 value={item.value}
                 label={item.label}
                 handleSelectionUpdate={this.handleSelectionUpdate}
+                forwardedRef={buttonLabel === item.label ? this.setFirstItemRef : null}
               />
             ))}
           </div>
@@ -165,6 +189,7 @@ class SelectBox extends Component {
             onClick={this.handleInteractionOutside}
             onTouchMove={this.handleInteractionOutside}
             type="button"
+            aria-hidden
           />
         }
       </div>

@@ -14,10 +14,12 @@ class SelectBoxItem extends Component {
     value: PropTypes.string.isRequired,
     wrapper: PropTypes.func.isRequired,
     className: PropTypes.string,
+    forwardedRef: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
+    forwardedRef: null,
   };
 
   /**
@@ -34,12 +36,21 @@ class SelectBoxItem extends Component {
   render() {
     const Wrapper = this.props.wrapper;
 
+    let props = null;
+    if (this.props.forwardedRef) {
+      props = {
+        ref: this.props.forwardedRef,
+      };
+    }
+
     return (
       <button
         className={this.props.className}
         onClick={this.handleSelectionUpdate}
         data-test-id={this.props.label}
         type="button"
+        role="menuitem"
+        {...props}
       >
         <Wrapper>
           <I18n.Text string={this.props.label} />
