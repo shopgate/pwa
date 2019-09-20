@@ -67,7 +67,7 @@ class FilterBar extends Component {
    */
   render() {
     return (
-      <section className={styles.container} aria-hidden>
+      <section className={styles.container}>
         <div
           className={styles}
           data-test-id="filterBar"
