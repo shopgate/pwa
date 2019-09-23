@@ -105,6 +105,11 @@ class AppBarDefault extends PureComponent {
       // Reset the status bar when Engage goes into the background.
       this.props.resetStatusBar();
     }
+
+    if (prevProps.title !== this.props.title) {
+      const { __ } = this.context.i18n();
+      router.update(this.props.route.id, { title: __(this.props.title) });
+    }
   }
 
   /**

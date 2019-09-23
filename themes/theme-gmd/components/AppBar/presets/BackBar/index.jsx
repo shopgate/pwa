@@ -19,7 +19,7 @@ import connect from './connector';
  */
 function BackBar({ goBack, prevTitle, ...props }) {
   const left = <DefaultBar.Icon
-    aria-label={i18n.text('navigation.back', { title: prevTitle })}
+    aria-label={prevTitle ? i18n.text('navigation.back', { title: prevTitle }) : i18n.text('common.back')}
     icon={ArrowIcon}
     onClick={goBack}
     testId="backButton"
@@ -38,7 +38,11 @@ function BackBar({ goBack, prevTitle, ...props }) {
 
 BackBar.propTypes = {
   goBack: PropTypes.func.isRequired,
-  prevTitle: PropTypes.string.isRequired,
+  prevTitle: PropTypes.string,
+};
+
+BackBar.defaultProps = {
+  prevTitle: null,
 };
 
 export default withRoute(connect(BackBar), { prop: 'route' });
