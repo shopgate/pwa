@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
-import { ProductImage } from '@shopgate/engage/product';
-import Properties from '@shopgate/pwa-ui-shared/ProductProperties';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import {
+  Grid, Link, ProductProperties, PriceInfo, SurroundPortals,
+} from '@shopgate/engage/components';
+import { CART_ITEM_IMAGE } from '@shopgate/engage/cart';
+import { showTaxDisclaimer } from '@shopgate/engage/market';
+import { bin2hex } from '@shopgate/engage/core';
+import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
@@ -21,12 +21,10 @@ import styles from './style';
 const Layout = (props, context) => (
   <Grid className={styles.item}>
     <Grid.Item className={styles.leftColumn}>
-      <div className={styles.image}>
-        <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
-        <Portal name={portals.CART_ITEM_IMAGE} props={context}>
+      <div className={styles.image} aria-hidden>
+        <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
           <ProductImage src={props.product.featuredImageUrl} />
-        </Portal>
-        <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
+        </SurroundPortals>
       </div>
       <QuantityPicker
         quantity={props.quantity}
@@ -36,14 +34,16 @@ const Layout = (props, context) => (
       />
     </Grid.Item>
     <Grid.Item className={styles.content} grow={1}>
-      <Title
-        handleRemove={props.handleDelete}
-        toggleEditMode={props.toggleEditMode}
-        value={props.product.name}
-      />
+      <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
+        <Title
+          handleRemove={props.handleDelete}
+          toggleEditMode={props.toggleEditMode}
+          value={props.product.name}
+        />
+      </Link>
       <Grid className={styles.info}>
         <Grid.Item grow={1} className={styles.properties}>
-          <Properties properties={props.product.properties} lineClamp={2} />
+          <ProductProperties properties={props.product.properties} lineClamp={2} />
         </Grid.Item>
         <Grid.Item grow={1} className={styles.price}>
           <ProductPrice
@@ -51,11 +51,9 @@ const Layout = (props, context) => (
             defaultPrice={props.product.price.default}
             specialPrice={props.product.price.special}
           />
-          {
-            props.product.price.info && (
-              <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
-            )
-          }
+          {props.product.price.info && (
+            <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
+          )}
         </Grid.Item>
         {showTaxDisclaimer && (
           <Grid.Item
@@ -80,9 +78,9 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  handleDelete: () => {},
-  handleUpdate: () => {},
-  toggleEditMode: () => {},
+  handleDelete: () => { },
+  handleUpdate: () => { },
+  toggleEditMode: () => { },
 };
 
 Layout.contextTypes = {
