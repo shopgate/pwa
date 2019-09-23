@@ -11,9 +11,10 @@ exports[`<QuantityPicker /> Given editMode prop is handled correctly should blur
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -36,9 +37,10 @@ exports[`<QuantityPicker /> Given editMode prop is handled correctly should focu
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -61,9 +63,10 @@ exports[`<QuantityPicker /> Given onChange callback is triggered correctly shoul
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -100,9 +103,10 @@ exports[`<QuantityPicker /> Given onChange callback is triggered correctly shoul
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -146,9 +150,10 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -185,9 +190,10 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -210,9 +216,10 @@ exports[`<QuantityPicker /> should fall back to its default of 1, if 0 is suppli
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -235,9 +242,10 @@ exports[`<QuantityPicker /> should fall back to the previous value when the last
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -260,9 +268,10 @@ exports[`<QuantityPicker /> should have an amount of 1 by default 1`] = `
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -285,9 +294,10 @@ exports[`<QuantityPicker /> should have an amount of 3 via prop 1`] = `
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -310,9 +320,10 @@ exports[`<QuantityPicker /> should reset the amount to 1 if set to lower than 0 
     onSubmit={[Function]}
   >
     <input
+      aria-label="product.quantity"
       className="css-7rhxrg"
       data-test-id="quantityPicker"
-      min={1}
+      min={0}
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
