@@ -34,7 +34,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
   >
     <button
       aria-controls="filter.sort.default"
-      aria-expanded={false}
+      aria-expanded={null}
       aria-haspopup={true}
       data-test-id="filter.sort.default"
       onClick={[Function]}
@@ -92,6 +92,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
         }
       >
         <div
+          aria-hidden={true}
           className="css-rdsogp "
           key=".0"
         >
@@ -246,7 +247,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
   >
     <button
       aria-controls="Foo"
-      aria-expanded={false}
+      aria-expanded={null}
       aria-haspopup={true}
       data-test-id="Foo"
       onClick={[Function]}
@@ -304,6 +305,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
         }
       >
         <div
+          aria-hidden={true}
           className="css-rdsogp "
           key=".0"
         >
@@ -458,7 +460,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
   >
     <button
       aria-controls="My item #2"
-      aria-expanded={false}
+      aria-expanded={null}
       aria-haspopup={true}
       data-test-id="My item #2"
       onClick={[Function]}
@@ -516,6 +518,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
         }
       >
         <div
+          aria-hidden={true}
           className="css-rdsogp "
           key=".0"
         >

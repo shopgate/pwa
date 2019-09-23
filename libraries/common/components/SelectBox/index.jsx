@@ -29,7 +29,7 @@ class SelectBox extends Component {
     classNames: {},
     duration: 225,
     defaultText: 'filter.sort.default',
-    handleSelectionUpdate: () => {},
+    handleSelectionUpdate: () => { },
     initialValue: null,
     testId: null,
   };
@@ -154,7 +154,7 @@ class SelectBox extends Component {
           data-test-id={buttonLabel}
           type="button"
           aria-haspopup
-          aria-expanded={this.state.isOpen}
+          aria-expanded={this.state.isOpen ? true : null}
           aria-controls={buttonLabel}
           ref={this.setControlRef}
         >
