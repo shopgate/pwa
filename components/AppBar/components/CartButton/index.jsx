@@ -7,7 +7,7 @@ import {
   APP_BAR_CART_BUTTON_BEFORE,
   APP_BAR_CART_BUTTON_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { withWidgetSettings } from '@shopgate/engage/core';
+import { withWidgetSettings, i18n } from '@shopgate/engage/core';
 import Badge from './components/CartBadge';
 import connect from './connector';
 import styles from './style';
@@ -76,6 +76,7 @@ class CartButton extends PureComponent {
               badge={this.badge}
               icon={Icon}
               onClick={navigate}
+              aria-label={i18n.text('navigation.cart')}
             />
           </div>
         </Portal>
