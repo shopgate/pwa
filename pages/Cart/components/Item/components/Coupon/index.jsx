@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart/constants';
-import CardList from '@shopgate/pwa-ui-shared/CardList';
-import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
+import { MessageBar, CardList } from '@shopgate/engage/components';
 import styles from './style';
 import cartStyles from '../../style';
 import {
@@ -37,7 +36,7 @@ class Coupon extends Component {
   };
 
   static defaultProps = {
-    deleteCoupon: () => {},
+    deleteCoupon: () => { },
   };
 
   /**

@@ -145,11 +145,16 @@
     "empty": "Ihr Warenkorb ist leer.",
     "continue": "Weiter shoppen",
     "redeem_coupon": "Gutscheincode eingeben",
+    "submit_coupon": "Gutscheincode absenden",
+    "delete_coupon": "Gutscheincode löschen",
     "coupon_code": "Code",
     "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!",
     "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein",
-    "free_shipping": "Kostenloser Versand"
+    "free_shipping": "Kostenloser Versand",
+    "message_type_info": "Info",
+    "message_type_error": "Fehler",
+    "message_type_warning": "Warnung"
   },
   "login": {
     "headline": "Willkommen!",
