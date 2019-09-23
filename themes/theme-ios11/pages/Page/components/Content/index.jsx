@@ -34,7 +34,7 @@ function PageContent({ configs, pageId }) {
 
   return (
     <Fragment>
-      <Bar center={center} />
+      <Bar center={center} title={configs.title || ''} />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
         {(configs && configs.widgets) && (

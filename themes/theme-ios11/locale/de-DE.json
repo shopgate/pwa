@@ -187,7 +187,8 @@
     "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
     "store_information": "Über uns",
-    "more_menu": "Mehr"
+    "more_menu": "Mehr",
+    "back": "Zurück zu {title}"
   },
   "reviews": {
     "rating": "Bewertung",

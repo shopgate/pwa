@@ -16,7 +16,9 @@ exports[`<Content /> should render 1`] = `
     pageId="1234"
     query="foo"
   >
-    <Connect(BackBar) />
+    <BackBar>
+      <div />
+    </BackBar>
     <Headline
       style={null}
       tag="h1"
