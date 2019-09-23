@@ -10,7 +10,9 @@ import {
 import More from './index';
 
 jest.mock('Components/View');
-jest.mock('Components/AppBar/presets');
+jest.mock('Components/AppBar/presets', () => ({
+  BackBar: () => <div />,
+}));
 
 jest.mock('@shopgate/pwa-common/selectors/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),

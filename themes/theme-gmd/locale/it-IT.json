@@ -179,7 +179,8 @@
     "menuSubHeader": {
       "more": "Di più",
       "about": "Su di noi"
-    }
+    },
+    "back": "Indietro alla {title}"
   },
   "reviews": {
     "rating": "valutazione",

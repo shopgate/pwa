@@ -182,7 +182,8 @@
     "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
-    "more_menu": "Plus"
+    "more_menu": "Plus",
+    "back": "Retour à {title}"
   },
   "reviews": {
     "rating": "Evaluation",

@@ -18,7 +18,7 @@ class AppBarIcon extends PureComponent {
   };
 
   static defaultProps = {
-    'aria-hidden': false,
+    'aria-hidden': null,
     'aria-label': null,
     background: 'inherit',
     badge: null,
@@ -31,7 +31,9 @@ class AppBarIcon extends PureComponent {
    */
   render() {
     const {
-      background, badge: Badge, color, icon: Icon, onClick, testId, 'aria-hidden': ariaHidden, 'aria-label': ariaLabel,
+      background, badge: Badge, color, icon: Icon, onClick, testId,
+      'aria-hidden': ariaHidden,
+      'aria-label': ariaLabel,
     } = this.props;
 
     return (
