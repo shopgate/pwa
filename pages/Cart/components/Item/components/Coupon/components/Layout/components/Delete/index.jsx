@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
+import { CrossIcon } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
 /**
@@ -9,7 +10,13 @@ import styles from './style';
  * @returns {JSX}
  */
 const Delete = ({ handleDelete }) => (
-  <button className={styles} onClick={handleDelete} data-test-id="deleteCoupon" type="button">
+  <button
+    className={styles}
+    onClick={handleDelete}
+    data-test-id="deleteCoupon"
+    type="button"
+    aria-label={i18n.text('cart.delete_coupon')}
+  >
     <CrossIcon />
   </button>
 );
@@ -19,7 +26,7 @@ Delete.propTypes = {
 };
 
 Delete.defaultProps = {
-  handleDelete: () => {},
+  handleDelete: () => { },
 };
 
 export default Delete;
