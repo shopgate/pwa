@@ -36,13 +36,6 @@ class SelectBoxItem extends Component {
   render() {
     const Wrapper = this.props.wrapper;
 
-    let props = null;
-    if (this.props.forwardedRef) {
-      props = {
-        ref: this.props.forwardedRef,
-      };
-    }
-
     return (
       <button
         className={this.props.className}
@@ -50,7 +43,7 @@ class SelectBoxItem extends Component {
         data-test-id={this.props.label}
         type="button"
         role="menuitem"
-        {...props}
+        ref={this.props.forwardedRef}
       >
         <Wrapper>
           <I18n.Text string={this.props.label} />
