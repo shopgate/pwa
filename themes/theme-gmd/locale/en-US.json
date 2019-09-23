@@ -111,7 +111,9 @@
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
     },
-    "placeholder": "Search"
+    "placeholder": "Search",
+    "close": "End search",
+    "reset": "Reset search"
   },
   "shipping": {
     "unknown": "plus shipping",

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { UIEvents } from '@shopgate/pwa-core';
-import { MagnifierIcon } from '@shopgate/pwa-ui-shared';
+import { UIEvents, i18n } from '@shopgate/engage/core';
+import { MagnifierIcon } from '@shopgate/engage/components';
 import { TOGGLE_SEARCH, SEARCH_CLOSED } from 'Components/Search/constants';
 import Icon from '../Icon';
 
@@ -14,7 +14,7 @@ class SearchButton extends PureComponent {
   };
 
   static defaultProps = {
-    onToggle: () => {},
+    onToggle: () => { },
   }
 
   /**
@@ -50,7 +50,12 @@ class SearchButton extends PureComponent {
    */
   render() {
     return (
-      <Icon icon={MagnifierIcon} onClick={this.handleOnClick} testId="SearchButton" aria-hidden />
+      <Icon
+        icon={MagnifierIcon}
+        onClick={this.handleOnClick}
+        testId="SearchButton"
+        aria-label={i18n.text('search.placeholder')}
+      />
     );
   }
 }
