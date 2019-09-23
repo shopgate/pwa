@@ -21,10 +21,16 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   deleteProduct: cartItemId => dispatch(deleteProductsFromCart([cartItemId])),
-  updateProduct: (cartItemId, quantity) => dispatch(updateProductsInCart([{
-    cartItemId,
-    quantity,
-  }])),
+  updateProduct: (cartItemId, quantity) => {
+    if (quantity === 0) {
+      return dispatch(deleteProductsFromCart([cartItemId]));
+    }
+
+    return dispatch(updateProductsInCart([{
+      cartItemId,
+      quantity,
+    }]));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

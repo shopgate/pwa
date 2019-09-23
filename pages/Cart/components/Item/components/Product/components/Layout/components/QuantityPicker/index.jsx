@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isNumeric } from '@shopgate/pwa-common/helpers/validation';
+import { i18n, isNumeric } from '@shopgate/engage/core';
 import style from './style';
 
 /**
@@ -16,9 +16,9 @@ class QuantityPicker extends Component {
 
   static defaultProps = {
     editMode: false,
-    onChange: () => {},
+    onChange: () => { },
     quantity: 1,
-    onToggleEditMode: () => {},
+    onToggleEditMode: () => { },
   };
 
   /**
@@ -173,7 +173,7 @@ class QuantityPicker extends Component {
       }
     };
 
-    if (!event.target.value || event.target.value < this.defaultQuantity) {
+    if (!event.target.value) {
       // Set the quantity state back to default, if the value of the input is invalid.
       this.updateQuantityInState(this.defaultQuantity, handleBlur);
     } else {
@@ -187,7 +187,7 @@ class QuantityPicker extends Component {
    * @param {string|number} quantity The new quantity
    * @param {Function} [callback] Callback for the setState call.
    */
-  updateQuantityInState(quantity, callback = () => {}) {
+  updateQuantityInState(quantity, callback = () => { }) {
     const sanitizedQuantity = isNumeric(quantity) ? parseInt(quantity, 10) : '';
 
     this.setState({
@@ -211,8 +211,9 @@ class QuantityPicker extends Component {
           onClick={this.handleInputClick}
           onFocus={this.handleInputFocus}
           onBlur={this.handleInputBlur}
-          min={this.defaultQuantity}
+          min={0}
           data-test-id="quantityPicker"
+          aria-label={i18n.text('product.quantity')}
         />
       </form>
     );
