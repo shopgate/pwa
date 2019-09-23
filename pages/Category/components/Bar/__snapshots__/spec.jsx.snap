@@ -60,9 +60,7 @@ exports[`<Bar /> should match snapshot 1`] = `
             filters={null}
             viewRef={null}
           >
-            <section
-              aria-hidden={true}
-            >
+            <section>
               <div
                 className="css-gpg0x2"
                 data-test-id="filterBar"
@@ -128,6 +126,9 @@ exports[`<Bar /> should match snapshot 1`] = `
                             data-test-id="sorting"
                           >
                             <button
+                              aria-controls="filter.sort.most_popular"
+                              aria-expanded={null}
+                              aria-haspopup={true}
                               className="css-659uo0"
                               data-test-id="filter.sort.most_popular"
                               onClick={[Function]}
@@ -208,12 +209,17 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 }
                               >
                                 <div
+                                  aria-hidden={true}
                                   className="css-rdsogp css-grx4tb"
                                   key=".0"
                                 >
-                                  <div>
+                                  <div
+                                    id="filter.sort.most_popular"
+                                    role="menu"
+                                  >
                                     <SelectBoxItem
                                       className="css-69lc22"
+                                      forwardedRef={[Function]}
                                       handleSelectionUpdate={[Function]}
                                       key="relevance"
                                       label="filter.sort.most_popular"
@@ -224,6 +230,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                         className="css-69lc22"
                                         data-test-id="filter.sort.most_popular"
                                         onClick={[Function]}
+                                        role="menuitem"
                                         type="button"
                                       >
                                         <Item>
@@ -263,6 +270,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                     </SelectBoxItem>
                                     <SelectBoxItem
                                       className="css-69lc22"
+                                      forwardedRef={null}
                                       handleSelectionUpdate={[Function]}
                                       key="priceDesc"
                                       label="filter.sort.price_desc"
@@ -273,6 +281,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                         className="css-69lc22"
                                         data-test-id="filter.sort.price_desc"
                                         onClick={[Function]}
+                                        role="menuitem"
                                         type="button"
                                       >
                                         <Item>
@@ -312,6 +321,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                     </SelectBoxItem>
                                     <SelectBoxItem
                                       className="css-69lc22"
+                                      forwardedRef={null}
                                       handleSelectionUpdate={[Function]}
                                       key="priceAsc"
                                       label="filter.sort.price_asc"
@@ -322,6 +332,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                         className="css-69lc22"
                                         data-test-id="filter.sort.price_asc"
                                         onClick={[Function]}
+                                        role="menuitem"
                                         type="button"
                                       >
                                         <Item>
