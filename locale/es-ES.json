@@ -181,7 +181,8 @@
     "menuSubHeader": {
       "more": "Más",
       "about": "Sobre nosotros"
-    }
+    },
+    "back": "Volver a {title}"
   },
   "reviews": {
     "rating": "Calificación",
