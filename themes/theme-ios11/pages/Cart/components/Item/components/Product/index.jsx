@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Link from '@shopgate/pwa-common/components/Link';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
+import { MessageBar } from '@shopgate/engage/components';
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
@@ -143,23 +140,15 @@ class CartProduct extends Component {
           {messages.length > 0 && (
             <MessageBar messages={messages} classNames={messageStyles} />
           )}
-          <Link
-            tagName="a"
-            href={`${ITEM_PATH}/${bin2hex(product.id)}`}
-            itemProp="item"
-            itemScope
-            itemType="http://schema.org/Product"
-          >
-            <Layout
-              handleDelete={this.deleteProduct}
-              handleUpdate={this.updateProduct}
-              toggleEditMode={this.toggleEditMode}
-              editMode={editMode}
-              product={product}
-              currency={currency}
-              quantity={quantity}
-            />
-          </Link>
+          <Layout
+            handleDelete={this.deleteProduct}
+            handleUpdate={this.updateProduct}
+            toggleEditMode={this.toggleEditMode}
+            editMode={editMode}
+            product={product}
+            currency={currency}
+            quantity={quantity}
+          />
         </div>
       </CardListItem>
     );
