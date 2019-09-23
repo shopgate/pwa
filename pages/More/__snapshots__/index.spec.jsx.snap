@@ -27,9 +27,11 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
         aria-hidden={false}
       >
         <div>
-          <Connect(BackBar)
+          <BackBar
             right={null}
-          />
+          >
+            <div />
+          </BackBar>
           <Headline
             style={
               Object {
@@ -817,9 +819,11 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
         aria-hidden={false}
       >
         <div>
-          <Connect(BackBar)
+          <BackBar
             right={null}
-          />
+          >
+            <div />
+          </BackBar>
           <Headline
             style={
               Object {
