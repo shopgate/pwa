@@ -10,7 +10,9 @@ const store = createMockStore();
 
 jest.mock('../SearchField');
 jest.mock('../RootCategories');
-jest.mock('Components/AppBar/presets');
+jest.mock('Components/AppBar/presets', () => ({
+  BackBar: () => <div />,
+}));
 
 const mockContext = {
   context: {

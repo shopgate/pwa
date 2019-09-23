@@ -33,6 +33,9 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
     data-test-id={null}
   >
     <button
+      aria-controls="filter.sort.default"
+      aria-expanded={null}
+      aria-haspopup={true}
       data-test-id="filter.sort.default"
       onClick={[Function]}
       type="button"
@@ -89,12 +92,17 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
         }
       >
         <div
+          aria-hidden={true}
           className="css-rdsogp "
           key=".0"
         >
-          <div>
+          <div
+            id="filter.sort.default"
+            role="menu"
+          >
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_1"
               label="My item #1"
@@ -105,6 +113,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -128,6 +137,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             </SelectBoxItem>
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_2"
               label="My item #2"
@@ -138,6 +148,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -161,6 +172,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             </SelectBoxItem>
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_3"
               label="My item #3"
@@ -171,6 +183,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -233,6 +246,9 @@ exports[`<SelectBox> should render with a default text 1`] = `
     data-test-id={null}
   >
     <button
+      aria-controls="Foo"
+      aria-expanded={null}
+      aria-haspopup={true}
       data-test-id="Foo"
       onClick={[Function]}
       type="button"
@@ -289,12 +305,17 @@ exports[`<SelectBox> should render with a default text 1`] = `
         }
       >
         <div
+          aria-hidden={true}
           className="css-rdsogp "
           key=".0"
         >
-          <div>
+          <div
+            id="Foo"
+            role="menu"
+          >
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_1"
               label="My item #1"
@@ -305,6 +326,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -328,6 +350,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_2"
               label="My item #2"
@@ -338,6 +361,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -361,6 +385,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_3"
               label="My item #3"
@@ -371,6 +396,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -433,6 +459,9 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
     data-test-id={null}
   >
     <button
+      aria-controls="My item #2"
+      aria-expanded={null}
+      aria-haspopup={true}
       data-test-id="My item #2"
       onClick={[Function]}
       type="button"
@@ -489,12 +518,17 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
         }
       >
         <div
+          aria-hidden={true}
           className="css-rdsogp "
           key=".0"
         >
-          <div>
+          <div
+            id="My item #2"
+            role="menu"
+          >
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_1"
               label="My item #1"
@@ -505,6 +539,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -528,6 +563,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               className=""
+              forwardedRef={[Function]}
               handleSelectionUpdate={[Function]}
               key="item_2"
               label="My item #2"
@@ -538,6 +574,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
@@ -561,6 +598,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               className=""
+              forwardedRef={null}
               handleSelectionUpdate={[Function]}
               key="item_3"
               label="My item #3"
@@ -571,6 +609,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                role="menuitem"
                 type="button"
               >
                 <MockItemComponent>
