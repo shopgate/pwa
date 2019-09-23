@@ -127,7 +127,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                           >
                             <button
                               aria-controls="filter.sort.most_popular"
-                              aria-expanded={false}
+                              aria-expanded={null}
                               aria-haspopup={true}
                               className="css-659uo0"
                               data-test-id="filter.sort.most_popular"
@@ -209,6 +209,7 @@ exports[`<Bar /> should match snapshot 1`] = `
                                 }
                               >
                                 <div
+                                  aria-hidden={true}
                                   className="css-rdsogp css-grx4tb"
                                   key=".0"
                                 >
