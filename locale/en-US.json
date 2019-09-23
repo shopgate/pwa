@@ -186,7 +186,8 @@
     "return_policy": "Return policy",
     "logout": "Logout",
     "store_information": "Store Information",
-    "more_menu": "More"
+    "more_menu": "More",
+    "back": "Back to {title}"
   },
   "reviews": {
     "rating": "Rating",
