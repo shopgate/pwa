@@ -82,11 +82,13 @@ class ContextMenu extends Component {
         data-test-id="contextMenu"
         ref={(ref) => { this.elementRef = ref; }}
         className={classNames(styles.container, classes.container)}
+        aria-hidden
       >
         <button
           className={classNames(styles.button, classes.button)}
           onClick={this.handleMenuToggle}
           type="button"
+          aria-hidden
         >
           <MoreVertIcon />
         </button>
