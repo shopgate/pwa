@@ -179,7 +179,8 @@
     "menuSubHeader": {
       "more": "Plus",
       "about": "À propos de nous"
-    }
+    },
+    "back": "Retour à {title}"
   },
   "reviews": {
     "rating": "Evaluation",
