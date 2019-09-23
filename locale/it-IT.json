@@ -181,7 +181,8 @@
     "return_policy": "Politica di Restituzione",
     "logout": "Esci",
     "store_information": "Informazioni del Negozio",
-    "more_menu": "Di più"
+    "more_menu": "Di più",
+    "back": "Indietro alla {title}"
   },
   "reviews": {
     "rating": "valutazione",

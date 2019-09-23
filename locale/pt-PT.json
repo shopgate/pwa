@@ -181,7 +181,8 @@
     "return_policy": "Política de Devoluções",
     "logout": "Encerrar Sessão",
     "store_information": "Armazenar Informações",
-    "more_menu": "Mais"
+    "more_menu": "Mais",
+    "back": "Voltar para {title}"
   },
   "reviews": {
     "rating": "Avaliação",
