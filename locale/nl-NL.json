@@ -111,7 +111,9 @@
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
     },
-    "placeholder": "Zoek"
+    "placeholder": "Zoek",
+    "close": "Zoeken beëindigen",
+    "reset": "Reset zoekopdracht"
   },
   "shipping": {
     "unknown": "plus verzendkosten",
