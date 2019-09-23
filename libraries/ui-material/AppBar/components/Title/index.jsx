@@ -28,7 +28,7 @@ class AppBarTitle extends PureComponent {
         className={styles}
         role="heading"
         aria-labelledby="titleLabel"
-        aria-level={1}
+        aria-level="1"
         data-test-id={`title: ${title}`}
         tabIndex={0}
       >

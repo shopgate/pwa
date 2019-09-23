@@ -20,6 +20,10 @@ class AddToCartButton extends PureComponent {
     onReset: () => { },
   }
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -72,6 +76,7 @@ class AddToCartButton extends PureComponent {
    */
   render() {
     const { itemCount } = this.props;
+    const { __ } = this.context.i18n();
     const style = this.state.opened ? { width: '40%' } : null;
     const className = this.props.disabled ? styles.disabled : styles.button;
 
@@ -81,7 +86,7 @@ class AddToCartButton extends PureComponent {
         style={style}
         onClick={this.handleClick}
         data-test-id="addToCartBarButton"
-        aria-hidden={!!itemCount}
+        aria-label={__(!itemCount ? 'product.add_to_cart' : 'product.go_to_cart')}
         type="button"
       >
         <I18n.Text string={!itemCount ? 'product.add_to_cart' : 'product.go_to_cart'} />
