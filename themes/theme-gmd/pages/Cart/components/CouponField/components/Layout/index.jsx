@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '@shopgate/pwa-common/components/Input';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { Input, I18n } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
 import CouponFieldIcon from './components/CouponFieldIcon';
 import styles from './style';
 
@@ -32,8 +32,12 @@ const Layout = props => (
         data-test-id="CouponSubmitButton"
         style={props.iconStyle}
         className={styles.icon}
-        aria-hidden
+        onKeyDown={props.handleAddCoupon}
         onClick={props.handleAddCoupon}
+        role="button"
+        aria-hidden={props.isButtonDisabled}
+        tabIndex="0"
+        aria-label={i18n.text('cart.submit_coupon')}
       >
         <CouponFieldIcon disabled={props.isButtonDisabled} />
       </div>
@@ -58,9 +62,9 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  handleAddCoupon: () => {},
-  handleFocusChange: () => {},
-  handleValueChange: () => {},
+  handleAddCoupon: () => { },
+  handleFocusChange: () => { },
+  handleValueChange: () => { },
   iconStyle: null,
   isButtonDisabled: false,
   isFocused: false,

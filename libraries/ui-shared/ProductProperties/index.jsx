@@ -18,9 +18,7 @@ const Properties = ({ lineClamp, properties }) => {
         <li key={`${label}-${value}`}>
           {lineClamp &&
             <Ellipsis rows={lineClamp}>
-              {label}
-              {': '}
-              {value}
+              {`${label}: ${value}`}
             </Ellipsis>
           }
           {!lineClamp && `${label}: ${value}`}

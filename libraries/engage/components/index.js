@@ -82,7 +82,7 @@ export { default as Glow } from '@shopgate/pwa-ui-shared/Glow';
 export { default as IndicatorCircle } from '@shopgate/pwa-ui-shared/IndicatorCircle';
 export { default as LoadingIndicator } from '@shopgate/pwa-ui-shared/LoadingIndicator';
 export { default as Manufacturer } from '@shopgate/pwa-ui-shared/Manufacturer';
-export { default as MessageBar } from '@shopgate/pwa-ui-shared/MessageBar';
+export { default as MessageBar } from './MessageBar';
 export { default as NoResults } from '@shopgate/pwa-ui-shared/NoResults';
 export { default as Placeholder } from '@shopgate/pwa-ui-shared/Placeholder';
 export { default as PlaceholderLabel } from '@shopgate/pwa-ui-shared/PlaceholderLabel';
