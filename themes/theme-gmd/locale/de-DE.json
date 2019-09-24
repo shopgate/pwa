@@ -111,7 +111,9 @@
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
     },
-    "placeholder": "Suchen"
+    "placeholder": "Suchen",
+    "close": "Suche beenden",
+    "reset": "Suche zurücksetzen"
   },
   "shipping": {
     "unknown": "zzgl. Versand",
