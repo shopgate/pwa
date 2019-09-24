@@ -112,12 +112,17 @@ class SnackBar extends Component {
               style={props}
               data-footer-inset-update-ignore="true"
             >
-              <div className={styles.box} {...boxProps}>
+              <div
+                className={styles.box}
+                role="status"
+                aria-live={visible && props.top === 80 ? 'polite' : 'off'}
+                {...boxProps}
+              >
                 <Ellipsis rows={2}>
                   <I18n.Text className={styles.label} string={message || ''} params={messageParams} />
                 </Ellipsis>
                 {(action && actionLabel) && (
-                  <button className={styles.button} onClick={this.handleAction} type="button">
+                  <button className={styles.button} onClick={this.handleAction} type="button" aria-hidden>
                     <I18n.Text string={actionLabel} />
                   </button>
                 )}

@@ -34,7 +34,7 @@ class ItemFavoritesButton extends PureComponent {
       <Fragment>
         <Portal name={PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_FAVORITES_BUTTON} props={props}>
-          <div className={styles} data-test-id="favorites" aria-hidden>
+          <div className={styles} data-test-id="favorites">
             <FavoritesButton
               active={isFavorite}
               productId={productId}
