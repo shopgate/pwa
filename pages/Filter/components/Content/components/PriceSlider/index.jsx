@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import RangeSlider from '@shopgate/pwa-common/components/RangeSlider';
+import { RangeSlider } from '@shopgate/engage/components';
 import Item from '../Item';
 import Label from './components/Label';
 import styles from './style';
