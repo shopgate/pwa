@@ -98,13 +98,13 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                           style={null}
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="reviews.button_add"
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               reviews.button_add

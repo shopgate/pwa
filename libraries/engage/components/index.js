@@ -28,7 +28,7 @@ export { default as List } from '@shopgate/pwa-common/components/List';
 export { default as Loading } from '@shopgate/pwa-common/components/Loading';
 export { default as Modal } from '@shopgate/pwa-common/components/Modal';
 export { default as ModalContainer, MODAL_EVENTS } from '@shopgate/pwa-common/components/ModalContainer';
-export { default as Picker } from '@shopgate/pwa-common/components/Picker';
+export { default as Picker } from './Picker';
 export { default as Portal } from '@shopgate/pwa-common/components/Portal';
 export { default as RangeSlider } from './RangeSlider';
 export { default as Route } from '@shopgate/pwa-common/components/Route';

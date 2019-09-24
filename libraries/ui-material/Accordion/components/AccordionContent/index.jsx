@@ -1,4 +1,4 @@
-import React, { useRef, memo } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import * as styles from './style';
 
@@ -33,4 +33,4 @@ AccordionContent.defaultProps = {
   open: false,
 };
 
-export default memo(AccordionContent);
+export default AccordionContent;

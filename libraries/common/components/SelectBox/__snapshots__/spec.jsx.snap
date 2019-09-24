@@ -42,13 +42,13 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
     >
       <span>
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="filter.sort.default"
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             filter.sort.default
@@ -119,13 +119,13 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #1"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #1
@@ -154,13 +154,13 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #2"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #2
@@ -189,13 +189,13 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #3"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #3
@@ -255,13 +255,13 @@ exports[`<SelectBox> should render with a default text 1`] = `
     >
       <span>
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="Foo"
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             Foo
@@ -332,13 +332,13 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #1"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #1
@@ -367,13 +367,13 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #2"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #2
@@ -402,13 +402,13 @@ exports[`<SelectBox> should render with a default text 1`] = `
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #3"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #3
@@ -468,13 +468,13 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
     >
       <span>
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="My item #2"
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             My item #2
@@ -545,13 +545,13 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #1"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #1
@@ -580,13 +580,13 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #2"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #2
@@ -615,13 +615,13 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                 <MockItemComponent>
                   <div>
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="My item #3"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         My item #3

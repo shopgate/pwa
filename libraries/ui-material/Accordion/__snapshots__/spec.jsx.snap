@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
+<Accordion
+  handleLabel={null}
+  testId={null}
+/>
+`;
+
+exports[`<Accordion /> should not render without children 1`] = `
+<Accordion
+  handleLabel={null}
+  renderLabel={[Function]}
+  testId={null}
+/>
+`;
+
+exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
+<Accordion
+  handleLabel={null}
+  renderLabel={[Function]}
+  testId={null}
+>
+  <AccordionContainer>
+    <div
+      aria-controls="null-content"
+      aria-expanded={false}
+      aria-label={null}
+      className={
+        Object {
+          "data-css-17o6uz7": "",
+        }
+      }
+      data-test-id={null}
+      key="accordion-toggle"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex="0"
+    >
+      <div />
+      <div
+        className={
+          Object {
+            "data-css-1j1ou1w": "",
+          }
+        }
+      >
+        <Chevron
+          className="css-paji06"
+        >
+          <Icon
+            className="css-paji06"
+            color={null}
+            content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+            size="inherit"
+            viewBox="0 0 24 24"
+          >
+            <svg
+              className="css-yys9hb css-paji06"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </Chevron>
+      </div>
+    </div>
+    <AccordionContent
+      id={null}
+      key="null-content"
+      open={false}
+    >
+      <div
+        aria-hidden={true}
+        className={
+          Object {
+            "data-css-apm51k": "",
+          }
+        }
+        id="null-content"
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <div
+          className={
+            Object {
+              "data-css-yh2lvw": "",
+            }
+          }
+        >
+          Some content.
+        </div>
+      </div>
+    </AccordionContent>
+  </AccordionContainer>
+</Accordion>
+`;

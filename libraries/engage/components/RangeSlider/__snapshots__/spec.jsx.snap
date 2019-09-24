@@ -38,40 +38,62 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
           active={false}
           classNames={Object {}}
           index={0}
+          max={1000}
+          min={0}
           onTouchStart={[Function]}
+          range={
+            Array [
+              9.999999999999998,
+              450,
+            ]
+          }
         >
           <div
+            aria-label="price.range_from"
+            aria-valuemax={10}
+            aria-valuemin={0}
+            aria-valuenow={0}
             className=" css-8mlj8f"
             onTouchStart={[Function]}
+            role="slider"
             style={
               Object {
                 "zIndex": 0,
               }
             }
           >
-            <div
-              className=""
-            />
+            <div />
           </div>
         </RangeSliderHandle>
         <RangeSliderHandle
           active={false}
           classNames={Object {}}
           index={1}
+          max={1000}
+          min={0}
           onTouchStart={[Function]}
+          range={
+            Array [
+              9.999999999999998,
+              450,
+            ]
+          }
         >
           <div
+            aria-label="price.range_to"
+            aria-valuemax={10}
+            aria-valuemin={0}
+            aria-valuenow={5}
             className=" css-8mlj8f"
             onTouchStart={[Function]}
+            role="slider"
             style={
               Object {
                 "zIndex": 0,
               }
             }
           >
-            <div
-              className=""
-            />
+            <div />
           </div>
         </RangeSliderHandle>
       </div>
@@ -118,40 +140,62 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
           active={false}
           classNames={Object {}}
           index={0}
+          max={100}
+          min={0}
           onTouchStart={[Function]}
+          range={
+            Array [
+              50,
+              75,
+            ]
+          }
         >
           <div
+            aria-label="price.range_from"
+            aria-valuemax={1}
+            aria-valuemin={0}
+            aria-valuenow={0}
             className=" css-8mlj8f"
             onTouchStart={[Function]}
+            role="slider"
             style={
               Object {
                 "zIndex": 0,
               }
             }
           >
-            <div
-              className=""
-            />
+            <div />
           </div>
         </RangeSliderHandle>
         <RangeSliderHandle
           active={false}
           classNames={Object {}}
           index={1}
+          max={100}
+          min={0}
           onTouchStart={[Function]}
+          range={
+            Array [
+              50,
+              75,
+            ]
+          }
         >
           <div
+            aria-label="price.range_to"
+            aria-valuemax={1}
+            aria-valuemin={0}
+            aria-valuenow={1}
             className=" css-8mlj8f"
             onTouchStart={[Function]}
+            role="slider"
             style={
               Object {
                 "zIndex": 0,
               }
             }
           >
-            <div
-              className=""
-            />
+            <div />
           </div>
         </RangeSliderHandle>
       </div>
@@ -161,106 +205,160 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
 `;
 
 exports[`<RangeSlider /> renders with boundaries 1`] = `
-<div
-  className=""
-  onTouchStart={[Function]}
->
+<Fragment>
   <div
-    className=" css-12vo5ad"
+    className=""
+    onTouchStart={[Function]}
   >
     <div
-      className=" css-10eto0a"
-      style={
-        Object {
-          "left": "0%",
-          "right": "0%",
-          "transition": null,
-        }
-      }
+      className=" css-12vo5ad"
     >
-      <RangeSliderHandle
-        active={false}
-        classNames={Object {}}
-        index={0}
-        onTouchStart={[Function]}
-      />
-      <RangeSliderHandle
-        active={false}
-        classNames={Object {}}
-        index={1}
-        onTouchStart={[Function]}
-      />
+      <div
+        className=" css-10eto0a"
+        style={
+          Object {
+            "left": "0%",
+            "right": "0%",
+            "transition": null,
+          }
+        }
+      >
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={0}
+          max={100}
+          min={0}
+          onTouchStart={[Function]}
+          range={
+            Array [
+              0,
+              100,
+            ]
+          }
+        />
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={1}
+          max={100}
+          min={0}
+          onTouchStart={[Function]}
+          range={
+            Array [
+              0,
+              100,
+            ]
+          }
+        />
+      </div>
     </div>
   </div>
-</div>
+</Fragment>
 `;
 
 exports[`<RangeSlider /> renders without a value pair 1`] = `
-<div
-  className=""
-  onTouchStart={[Function]}
->
+<Fragment>
   <div
-    className=" css-12vo5ad"
+    className=""
+    onTouchStart={[Function]}
   >
     <div
-      className=" css-10eto0a"
-      style={
-        Object {
-          "left": "10%",
-          "right": "50%",
-          "transition": null,
-        }
-      }
+      className=" css-12vo5ad"
     >
-      <RangeSliderHandle
-        active={false}
-        classNames={Object {}}
-        index={0}
-        onTouchStart={[Function]}
-      />
-      <RangeSliderHandle
-        active={false}
-        classNames={Object {}}
-        index={1}
-        onTouchStart={[Function]}
-      />
+      <div
+        className=" css-10eto0a"
+        style={
+          Object {
+            "left": "10%",
+            "right": "50%",
+            "transition": null,
+          }
+        }
+      >
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={0}
+          max={100}
+          min={0}
+          onTouchStart={[Function]}
+          range={
+            Array [
+              10,
+              50,
+            ]
+          }
+        />
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={1}
+          max={100}
+          min={0}
+          onTouchStart={[Function]}
+          range={
+            Array [
+              10,
+              50,
+            ]
+          }
+        />
+      </div>
     </div>
   </div>
-</div>
+</Fragment>
 `;
 
 exports[`<RangeSlider /> renders without boundaries 1`] = `
-<div
-  className=""
-  onTouchStart={[Function]}
->
+<Fragment>
   <div
-    className=" css-12vo5ad"
+    className=""
+    onTouchStart={[Function]}
   >
     <div
-      className=" css-10eto0a"
-      style={
-        Object {
-          "left": "0%",
-          "right": "0%",
-          "transition": null,
-        }
-      }
+      className=" css-12vo5ad"
     >
-      <RangeSliderHandle
-        active={false}
-        classNames={Object {}}
-        index={0}
-        onTouchStart={[Function]}
-      />
-      <RangeSliderHandle
-        active={false}
-        classNames={Object {}}
-        index={1}
-        onTouchStart={[Function]}
-      />
+      <div
+        className=" css-10eto0a"
+        style={
+          Object {
+            "left": "0%",
+            "right": "0%",
+            "transition": null,
+          }
+        }
+      >
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={0}
+          max={100}
+          min={0}
+          onTouchStart={[Function]}
+          range={
+            Array [
+              0,
+              100,
+            ]
+          }
+        />
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={1}
+          max={100}
+          min={0}
+          onTouchStart={[Function]}
+          range={
+            Array [
+              0,
+              100,
+            ]
+          }
+        />
+      </div>
     </div>
   </div>
-</div>
+</Fragment>
 `;

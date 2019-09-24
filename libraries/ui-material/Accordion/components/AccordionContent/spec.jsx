@@ -12,6 +12,7 @@ describe('<AccordionContent />', () => {
 
     expect(wrapper.find('#test').text()).toEqual('Some Child');
     expect(wrapper.prop('style').height).toEqual(0);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render as open', () => {
@@ -23,5 +24,6 @@ describe('<AccordionContent />', () => {
 
     expect(wrapper.find('#test').text()).toEqual('Some Child');
     expect(wrapper.prop('style').height).toEqual('auto');
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -27,7 +27,8 @@
     "color": "^3.1.2",
     "intersection-observer": "^0.6.0",
     "lodash": "^4.17.11",
-    "react-player": "1.11.0"
+    "react-player": "1.11.0",
+    "react-portal": "^3.1.0"
   },
   "devDependencies": {
     "classnames": "^2.2.6",

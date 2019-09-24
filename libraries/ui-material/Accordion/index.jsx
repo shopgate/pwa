@@ -8,7 +8,11 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Accordion = ({ renderLabel, children, testId }) => {
+const Accordion = (props) => {
+  const {
+    renderLabel, handleLabel, children, testId,
+  } = props;
+
   if (!renderLabel || !children) {
     return null;
   }
@@ -27,6 +31,7 @@ const Accordion = ({ renderLabel, children, testId }) => {
             key="accordion-toggle"
             aria-expanded={open}
             aria-controls={`${testId}-content`}
+            aria-label={handleLabel}
           >
             {renderLabel({ open })}
             <div className={styles.chevronContainer}>
@@ -45,10 +50,12 @@ const Accordion = ({ renderLabel, children, testId }) => {
 Accordion.propTypes = {
   children: PropTypes.node.isRequired,
   renderLabel: PropTypes.func.isRequired,
+  handleLabel: PropTypes.string,
   testId: PropTypes.string,
 };
 
 Accordion.defaultProps = {
+  handleLabel: null,
   testId: null,
 };
 
