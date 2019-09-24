@@ -12,7 +12,7 @@ import styles from './style';
  * @constructor
  */
 const Image = ({ product }) => (
-  <div className={styles.image}>
+  <div className={styles.image} aria-hidden>
     <Link
       tagName="a"
       href={`${ITEM_PATH}/${bin2hex(product.id)}`}
