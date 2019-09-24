@@ -61,6 +61,7 @@ exports[`<Header /> should render empty 1`] = `
               tagName="a"
             >
               <Link
+                aria-hidden={null}
                 aria-label={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
@@ -79,6 +80,7 @@ exports[`<Header /> should render empty 1`] = `
                 tagName="a"
               >
                 <div
+                  aria-hidden={null}
                   aria-label={null}
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
@@ -493,6 +495,7 @@ exports[`<Header /> should render rating summary 1`] = `
               tagName="a"
             >
               <Link
+                aria-hidden={null}
                 aria-label={null}
                 className="css-1us3hnd"
                 data-test-id="ratedStarsAverage"
@@ -511,6 +514,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 tagName="a"
               >
                 <div
+                  aria-hidden={null}
                   aria-label={null}
                   className="css-c6ki83 css-1us3hnd"
                   data-test-id="link: /item/666f6f/write_review"
