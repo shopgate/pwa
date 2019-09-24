@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { i18n } from '@shopgate/engage/core';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
@@ -67,6 +69,11 @@ class CTAButtons extends Component {
     };
 
     this.props.addToCart(productData);
+
+    broadcastLiveMessage('product.adding_item', {
+      params: { count: 1 },
+      force: true,
+    });
   };
 
   /**
@@ -93,6 +100,7 @@ class CTAButtons extends Component {
             onClick={this.handleAddToCart}
             isLoading={false}
             isDisabled={!this.props.isOrderable && !this.props.hasVariety}
+            aria-label={i18n.text('product.add_to_cart')}
           />
         </Portal>
         <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />
