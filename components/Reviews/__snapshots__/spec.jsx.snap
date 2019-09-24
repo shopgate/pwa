@@ -621,9 +621,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         format="long"
                         timestamp={1504701531000}
                       >
-                        <span>
-                          d
-                        </span>
+                        d
                       </FormatDate>
                     </ReviewDate>
                      
@@ -1068,9 +1066,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         format="long"
                         timestamp={1504701531000}
                       >
-                        <span>
-                          d
-                        </span>
+                        d
                       </FormatDate>
                     </ReviewDate>
                      
@@ -1515,9 +1511,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         format="long"
                         timestamp={1504701531000}
                       >
-                        <span>
-                          d
-                        </span>
+                        d
                       </FormatDate>
                     </ReviewDate>
                      
@@ -1962,9 +1956,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         format="long"
                         timestamp={1504701531000}
                       >
-                        <span>
-                          d
-                        </span>
+                        d
                       </FormatDate>
                     </ReviewDate>
                      
@@ -2069,7 +2061,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                     style={null}
                                   >
                                     <Translate
-                                      className=""
+                                      className={null}
                                       params={
                                         Object {
                                           "count": 4,
@@ -2081,7 +2073,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                       string="reviews.button_all"
                                     >
                                       <span
-                                        className=""
+                                        className={null}
                                         role={null}
                                       >
                                         reviews.button_all
@@ -2627,9 +2619,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         format="long"
                         timestamp={1504701531000}
                       >
-                        <span>
-                          d
-                        </span>
+                        d
                       </FormatDate>
                     </ReviewDate>
                      
@@ -3074,9 +3064,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         format="long"
                         timestamp={1504701531000}
                       >
-                        <span>
-                          d
-                        </span>
+                        d
                       </FormatDate>
                     </ReviewDate>
                      

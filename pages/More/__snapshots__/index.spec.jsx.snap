@@ -51,13 +51,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="navigation.welcome_message"
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   navigation.welcome_message
@@ -121,13 +121,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                     }
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="navigation.store_information"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         navigation.store_information
@@ -196,13 +196,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.shipping"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.shipping
@@ -278,13 +278,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.payment"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.payment
@@ -360,13 +360,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.terms"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.terms
@@ -442,13 +442,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.privacy"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.privacy
@@ -546,13 +546,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.about"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.about
@@ -673,13 +673,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           }
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="navigation.your_account"
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               navigation.your_account
@@ -724,13 +724,13 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               type="button"
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.logout"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.logout
@@ -843,13 +843,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
               }
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="login.headline"
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   login.headline
@@ -962,13 +962,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-1fscwua"
                                         >
                                           <Translate
-                                            className=""
+                                            className={null}
                                             params={Object {}}
                                             role={null}
                                             string="login.button"
                                           >
                                             <span
-                                              className=""
+                                              className={null}
                                               role={null}
                                             >
                                               login.button
@@ -1042,13 +1042,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-1fscwua"
                                         >
                                           <Translate
-                                            className=""
+                                            className={null}
                                             params={Object {}}
                                             role={null}
                                             string="login.signup"
                                           >
                                             <span
-                                              className=""
+                                              className={null}
                                               role={null}
                                             >
                                               login.signup
@@ -1138,13 +1138,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     }
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="navigation.store_information"
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         navigation.store_information
@@ -1213,13 +1213,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.shipping"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.shipping
@@ -1295,13 +1295,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.payment"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.payment
@@ -1377,13 +1377,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.terms"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.terms
@@ -1459,13 +1459,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.privacy"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.privacy
@@ -1563,13 +1563,13 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.about"
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.about

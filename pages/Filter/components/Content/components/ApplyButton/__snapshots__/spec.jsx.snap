@@ -9,6 +9,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
   }
 >
   <Button
+    aria-hidden={false}
     className="css-1x58v7w"
     disabled={false}
     flat={true}
@@ -17,20 +18,17 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
     type="primary"
     wrapContent={true}
   >
-    <span
+    <Translate
+      className={null}
+      params={Object {}}
+      role={null}
+      string="filter.apply"
       style={
         Object {
           "color": undefined,
         }
       }
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        role={null}
-        string="filter.apply"
-      />
-    </span>
+    />
   </Button>
 </div>
 `;
@@ -44,6 +42,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
   }
 >
   <Button
+    aria-hidden={false}
     className="css-1x58v7w"
     disabled={false}
     flat={true}
@@ -52,20 +51,17 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
     type="primary"
     wrapContent={true}
   >
-    <span
+    <Translate
+      className={null}
+      params={Object {}}
+      role={null}
+      string="filter.apply"
       style={
         Object {
           "color": undefined,
         }
       }
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        role={null}
-        string="filter.apply"
-      />
-    </span>
+    />
   </Button>
 </div>
 `;
@@ -79,6 +75,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
   }
 >
   <Button
+    aria-hidden={true}
     className="css-1x58v7w"
     disabled={true}
     flat={true}
@@ -87,20 +84,17 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
     type="primary"
     wrapContent={true}
   >
-    <span
+    <Translate
+      className={null}
+      params={Object {}}
+      role={null}
+      string="filter.apply"
       style={
         Object {
           "color": undefined,
         }
       }
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        role={null}
-        string="filter.apply"
-      />
-    </span>
+    />
   </Button>
 </div>
 `;

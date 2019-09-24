@@ -1,49 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PriceSlider: <Label /> should render 1`] = `
-<Translate
-  className=""
-  params={Object {}}
-  role={null}
-  string="price.range"
->
-  <Placeholder
-    forKey="fromPrice"
-  >
-    <span
-      className="css-1l1d8mt"
-      style={
-        Object {
-          "minWidth": "5",
-        }
+<Fragment>
+  <span
+    className={
+      Object {
+        "data-css-5e1epi": "",
       }
-    >
-      <FormatPrice
-        className=""
-        currency="USD"
-        fractions={false}
-        price={25}
-      />
-    </span>
-  </Placeholder>
-  <Placeholder
-    forKey="toPrice"
+    }
   >
-    <span
-      className="css-1l1d8mt"
-      style={
-        Object {
-          "minWidth": "5",
-        }
-      }
+    price.range
+  </span>
+  <Translate
+    aria-hidden={true}
+    className={null}
+    params={Object {}}
+    role={null}
+    string="price.range"
+  >
+    <Placeholder
+      forKey="fromPrice"
     >
-      <FormatPrice
-        className=""
-        currency="USD"
-        fractions={false}
-        price={999}
-      />
-    </span>
-  </Placeholder>
-</Translate>
+      <span
+        className="css-1l1d8mt"
+        style={
+          Object {
+            "minWidth": "5",
+          }
+        }
+      >
+        <FormatPrice
+          className={null}
+          currency="USD"
+          fractions={false}
+          price={25}
+        />
+      </span>
+    </Placeholder>
+    <Placeholder
+      forKey="toPrice"
+    >
+      <span
+        className="css-1l1d8mt"
+        style={
+          Object {
+            "minWidth": "5",
+          }
+        }
+      >
+        <FormatPrice
+          className={null}
+          currency="USD"
+          fractions={false}
+          price={999}
+        />
+      </span>
+    </Placeholder>
+  </Translate>
+</Fragment>
 `;
