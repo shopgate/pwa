@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, Button } from '@shopgate/engage/components';
 import { withWidgetSettings } from '@shopgate/engage/core';
@@ -34,4 +34,4 @@ FilterApplyButton.propTypes = {
   widgetSettings: PropTypes.shape().isRequired,
 };
 
-export default withWidgetSettings(memo(FilterApplyButton), '@shopgate/engage/components/AppBar');
+export default withWidgetSettings(FilterApplyButton, '@shopgate/engage/components/AppBar');

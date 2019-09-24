@@ -32,13 +32,13 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
         role="heading"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="product.description_heading"
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             product.description_heading
@@ -143,13 +143,13 @@ exports[`<ProductDescription /> should render description if data is available 1
         role="heading"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="product.description_heading"
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             product.description_heading
