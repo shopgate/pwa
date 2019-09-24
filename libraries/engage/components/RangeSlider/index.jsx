@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { logger } from '@shopgate/pwa-core/helpers';
 import styles from './style';
 import RangeSliderHandle from './components/Handle';
 import {
@@ -14,8 +13,6 @@ import {
 
 /**
  * The range slider component.
- * @deprecated Will be remove in v7.0.0.
- *             Please use `import { RangeSlider } from '@shopgate/engage/components'` instead.
  */
 class RangeSlider extends Component {
   static propTypes = {
@@ -54,8 +51,6 @@ class RangeSlider extends Component {
    */
   constructor(props) {
     super(props);
-
-    logger.warn('===== RangeSlider deprecated =====\nThe RangeSlider component and it\'s related components (@shopgate/pwa-common/component/RangeSlider) are deprecated and will be removed in @shopgate/engage v7.0.0.\nPlease use: import { RangeSlider } from \'@shopgate/engage/components\'.\n===================================');
 
     this.draggedHandle = null; // 0 for left handle, 1 for right handle or null
     this.domElement = null;
@@ -257,12 +252,21 @@ class RangeSlider extends Component {
    * @returns {JSX}
    */
   makeHandle(index) {
+    const { min, max } = this.props;
+    const range = [
+      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
+      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
+    ];
+
     return (
       <RangeSliderHandle
         index={index}
         onTouchStart={this.handleTouchStart}
         active={this.draggedHandle === index}
         classNames={this.props.classNames}
+        range={range}
+        min={min}
+        max={max}
       />
     );
   }
@@ -283,20 +287,22 @@ class RangeSlider extends Component {
     );
 
     return (
-      <div
-        className={this.props.classNames.container || ''}
-        onTouchStart={this.handleRangeTouch}
-      >
+      <Fragment>
         <div
-          className={`${this.props.classNames.outerRange || ''} ${styles.outerRange}`}
-          ref={(ref) => { this.domElement = ref; }}
+          className={this.props.classNames.container || ''}
+          onTouchStart={this.handleRangeTouch}
         >
-          <div className={`${this.props.classNames.range || ''} ${styles.range}`} style={rangeStyle}>
-            {this.makeHandle(0)}
-            {this.makeHandle(1)}
+          <div
+            className={`${this.props.classNames.outerRange || ''} ${styles.outerRange}`}
+            ref={(ref) => { this.domElement = ref; }}
+          >
+            <div className={`${this.props.classNames.range || ''} ${styles.range}`} style={rangeStyle}>
+              {this.makeHandle(0)}
+              {this.makeHandle(1)}
+            </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

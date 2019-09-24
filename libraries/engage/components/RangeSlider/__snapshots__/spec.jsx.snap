@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] = `
+<RangeSlider
+  animationSpeed={500}
+  classNames={Object {}}
+  easing="exponential"
+  factor={0.01}
+  max={1000}
+  min={0}
+  onChange={[Function]}
+  resolution={0.01}
+  value={
+    Array [
+      10,
+      450,
+    ]
+  }
+>
+  <div
+    className=""
+    onTouchStart={[Function]}
+  >
+    <div
+      className=" css-12vo5ad"
+    >
+      <div
+        className=" css-10eto0a"
+        style={
+          Object {
+            "left": "1.0000000000000008e-198%",
+            "right": "100%",
+            "transition": null,
+          }
+        }
+      >
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={0}
+          onTouchStart={[Function]}
+        >
+          <div
+            className=" css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
+          >
+            <div
+              className=""
+            />
+          </div>
+        </RangeSliderHandle>
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={1}
+          onTouchStart={[Function]}
+        >
+          <div
+            className=" css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
+          >
+            <div
+              className=""
+            />
+          </div>
+        </RangeSliderHandle>
+      </div>
+    </div>
+  </div>
+</RangeSlider>
+`;
+
+exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
+<RangeSlider
+  animationSpeed={500}
+  classNames={Object {}}
+  easing="linear"
+  factor={0.01}
+  max={100}
+  min={0}
+  onChange={[Function]}
+  resolution={0.01}
+  value={
+    Array [
+      50,
+      75,
+    ]
+  }
+>
+  <div
+    className=""
+    onTouchStart={[Function]}
+  >
+    <div
+      className=" css-12vo5ad"
+    >
+      <div
+        className=" css-10eto0a"
+        style={
+          Object {
+            "left": "50%",
+            "right": "25%",
+            "transition": null,
+          }
+        }
+      >
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={0}
+          onTouchStart={[Function]}
+        >
+          <div
+            className=" css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
+          >
+            <div
+              className=""
+            />
+          </div>
+        </RangeSliderHandle>
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={1}
+          onTouchStart={[Function]}
+        >
+          <div
+            className=" css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
+          >
+            <div
+              className=""
+            />
+          </div>
+        </RangeSliderHandle>
+      </div>
+    </div>
+  </div>
+</RangeSlider>
+`;
+
+exports[`<RangeSlider /> renders with boundaries 1`] = `
+<div
+  className=""
+  onTouchStart={[Function]}
+>
+  <div
+    className=" css-12vo5ad"
+  >
+    <div
+      className=" css-10eto0a"
+      style={
+        Object {
+          "left": "0%",
+          "right": "0%",
+          "transition": null,
+        }
+      }
+    >
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={0}
+        onTouchStart={[Function]}
+      />
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={1}
+        onTouchStart={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<RangeSlider /> renders without a value pair 1`] = `
+<div
+  className=""
+  onTouchStart={[Function]}
+>
+  <div
+    className=" css-12vo5ad"
+  >
+    <div
+      className=" css-10eto0a"
+      style={
+        Object {
+          "left": "10%",
+          "right": "50%",
+          "transition": null,
+        }
+      }
+    >
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={0}
+        onTouchStart={[Function]}
+      />
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={1}
+        onTouchStart={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<RangeSlider /> renders without boundaries 1`] = `
+<div
+  className=""
+  onTouchStart={[Function]}
+>
+  <div
+    className=" css-12vo5ad"
+  >
+    <div
+      className=" css-10eto0a"
+      style={
+        Object {
+          "left": "0%",
+          "right": "0%",
+          "transition": null,
+        }
+      }
+    >
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={0}
+        onTouchStart={[Function]}
+      />
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={1}
+        onTouchStart={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
