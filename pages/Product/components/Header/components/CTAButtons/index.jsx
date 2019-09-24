@@ -31,7 +31,6 @@ const CTAButtons = ({ isFavorite, productId }) => (
             rippleClassName={styles.ripple}
             active={isFavorite}
             productId={productId}
-            aria-hidden
           />
         </Portal>
         <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
