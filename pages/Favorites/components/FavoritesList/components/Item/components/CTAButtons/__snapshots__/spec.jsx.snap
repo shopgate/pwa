@@ -42,7 +42,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           <FavoritesButton
             active={null}
             addFavorites={[Function]}
-            aria-hidden={null}
+            aria-hidden={false}
             className=""
             noShadow={false}
             onRippleComplete={[Function]}
@@ -74,6 +74,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           }
         >
           <MockedAddToCartButton
+            aria-label="product.add_to_cart"
             className="css-ipacgg"
             isDisabled={false}
             isLoading={false}
