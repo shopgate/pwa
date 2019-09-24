@@ -1,32 +1,31 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Button from '@shopgate/pwa-ui-shared/Button';
+import { I18n, Button } from '@shopgate/engage/components';
 import styles from './style';
 
 /**
  * The filter reset button component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class FilterResetButton extends PureComponent {
-  static propTypes = {
-    active: PropTypes.bool.isRequired,
-    onClick: PropTypes.func.isRequired,
-  };
+const FilterResetButton = ({ active, onClick }) => (
+  <div className={styles}>
+    <Button
+      flat
+      type="primary"
+      onClick={onClick}
+      disabled={!active}
+      aria-hidden={!active}
+      testId="clearAllButton"
+    >
+      <I18n.Text string="filter.reset" />
+    </Button>
+  </div>
+);
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { active, onClick } = this.props;
+FilterResetButton.propTypes = {
+  active: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
-    return (
-      <div className={styles}>
-        <Button flat type="primary" onClick={onClick} disabled={!active} testId="clearAllButton">
-          <I18n.Text string="filter.reset" />
-        </Button>
-      </div>
-    );
-  }
-}
-
-export default FilterResetButton;
+export default memo(FilterResetButton);
