@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
 import Item from '../Item';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
@@ -84,12 +85,16 @@ class Selector extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { values, id } = this.props;
+    const { values, id, label } = this.props;
     const { selected } = this.state;
 
     return (
       <Item>
-        <Accordion renderLabel={this.renderLabel} testId={id}>
+        <Accordion
+          renderLabel={this.renderLabel}
+          testId={id}
+          handleLabel={i18n.text('filter.filter_by', { label })}
+        >
           <div className={styles.content}>
             {values.map(value => (
               <ValueButton

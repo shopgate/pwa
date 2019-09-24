@@ -43,7 +43,8 @@
     },
     "apply": "Fertig",
     "more": "mehr",
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "filter_by": "Filtern nach {label}"
   },
   "price": {
     "from": "Ab {price}",
