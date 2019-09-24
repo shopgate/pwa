@@ -19,17 +19,21 @@ const Accordion = ({ renderLabel, children, testId }) => {
         <Fragment>
           <div
             onClick={open ? handleClose : handleOpen}
+            onKeyDown={open ? handleClose : handleOpen}
+            role="button"
+            tabIndex="0"
             className={styles.toggle}
             data-test-id={testId}
             key="accordion-toggle"
-            aria-hidden
+            aria-expanded={open}
+            aria-controls={`${testId}-content`}
           >
             {renderLabel({ open })}
             <div className={styles.chevronContainer}>
               <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
             </div>
           </div>
-          <AccordionContent open={open} key="accordion-content">
+          <AccordionContent open={open} id={testId} key={`${testId}-content`}>
             {children}
           </AccordionContent>
         </Fragment>

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Accordion } from '@shopgate/pwa-ui-material';
+import { Accordion } from '@shopgate/engage/components';
 import Item from '../Item';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
@@ -22,7 +22,7 @@ class Selector extends PureComponent {
 
   static defaultProps = {
     multi: false,
-    onChange() {},
+    onChange() { },
     selected: null,
   };
 
