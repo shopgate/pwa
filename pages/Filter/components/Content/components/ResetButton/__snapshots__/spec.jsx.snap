@@ -9,6 +9,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
   }
 >
   <Button
+    aria-hidden={false}
     className=""
     disabled={false}
     flat={true}
@@ -18,7 +19,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
     wrapContent={true}
   >
     <Translate
-      className=""
+      className={null}
       params={Object {}}
       role={null}
       string="filter.reset"
@@ -36,6 +37,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
   }
 >
   <Button
+    aria-hidden={false}
     className=""
     disabled={false}
     flat={true}
@@ -45,7 +47,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
     wrapContent={true}
   >
     <Translate
-      className=""
+      className={null}
       params={Object {}}
       role={null}
       string="filter.reset"
@@ -63,6 +65,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
   }
 >
   <Button
+    aria-hidden={true}
     className=""
     disabled={true}
     flat={true}
@@ -72,7 +75,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
     wrapContent={true}
   >
     <Translate
-      className=""
+      className={null}
       params={Object {}}
       role={null}
       string="filter.reset"
