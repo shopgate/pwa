@@ -18,7 +18,6 @@ const container = css({
   padding: 0,
   '> svg': {
     flexGrow: 1,
-    marginTop: 2,
     marginRight: 'auto',
     marginLeft: 'auto',
   },
@@ -36,8 +35,17 @@ const label = css({
   marginBottom: 2,
 }).toString();
 
+const item = css({
+  display: 'flex',
+  flexFlow: 'column',
+  justifyContent: 'space-between',
+  height: '100%',
+  marginTop: 5,
+}).toString();
+
 export default {
   container,
+  item,
   regular,
   highlighted,
   label,
