@@ -13,6 +13,7 @@ import {
   getIsFetching,
   getSubTotal,
   getDiscounts,
+  getDiscountsAmount,
   getTax,
   getGrandTotal,
 } from './index';
@@ -139,6 +140,9 @@ describe('Cart selectors', () => {
         mockedState.cart.totals[1],
         mockedState.cart.totals[2],
       ]);
+    });
+    it('should return discount amount', () => {
+      expect(getDiscountsAmount(mockedState)).toEqual(7);
     });
     it('should return tax', () => {
       expect(getTax(mockedState)).toEqual(mockedState.cart.totals[3]);

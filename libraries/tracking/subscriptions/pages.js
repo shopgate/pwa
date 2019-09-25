@@ -3,7 +3,8 @@ import { categoryIsReady$ } from '../streams/category';
 import { searchIsReady$ } from '../streams/search';
 import { productIsReady$ } from '../streams/product';
 import { pagesAreReady$ } from '../streams/pages';
-import getTrackingData from '../selectors';
+import { pageIsReady$ } from '../streams/page';
+import { makeGetTrackingData } from '../selectors';
 import { track } from '../helpers';
 
 /**
@@ -12,10 +13,11 @@ import { track } from '../helpers';
  */
 const callPageViewTracker = ({ getState }) => {
   const state = getState();
+  const getTrackingData = makeGetTrackingData();
 
   track(
     'pageview',
-    getTrackingData(state, getCurrentRoute(getState())),
+    getTrackingData(state, getCurrentRoute(state)),
     state
   );
 };
@@ -29,4 +31,5 @@ export default function pages(subscribe) {
   subscribe(searchIsReady$, callPageViewTracker);
   subscribe(productIsReady$, callPageViewTracker);
   subscribe(pagesAreReady$, callPageViewTracker);
+  subscribe(pageIsReady$, callPageViewTracker);
 }

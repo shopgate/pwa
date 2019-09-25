@@ -1,6 +1,19 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import core from '@shopgate/tracking-core/core/Core';
-import { createScannerEventData, buildScannerUtmUrl } from './index';
+import { i18n } from '@shopgate/engage/core';
+import {
+  createScannerEventData,
+  buildScannerUtmUrl,
+  createCategoryData,
+  createRootCategoryData,
+  createPageviewData,
+} from './index';
+
+jest.mock('@shopgate/engage/core', () => ({
+  i18n: {
+    text: jest.fn(),
+  },
+}));
 
 const scannerEvents = core.getScannerEvents();
 
@@ -189,6 +202,137 @@ describe('Tracking helpers', () => {
           referer,
         });
         expect(result).toEqual(`${location}&utm_source=shopgate&utm_term=searchPhrase&utm_content=%2F`);
+      });
+    });
+  });
+
+  describe('createCategoryData', () => {
+    it('should return null when no category was passed', () => {
+      expect(createCategoryData()).toBeNull();
+    });
+
+    it('should return tracking data', () => {
+      const category = {
+        id: '1337',
+        name: 'Category Name',
+        path: 'Segment 1=>Segment 2',
+      };
+
+      expect(createCategoryData(category)).toEqual({
+        uid: category.id,
+        name: category.name,
+        path: category.path,
+      });
+    });
+  });
+
+  describe('createRootCategoryData', () => {
+    it('should return null when no category was passed', () => {
+      expect(createRootCategoryData()).toBeNull();
+    });
+
+    it('should return tracking data', () => {
+      const categoryName = 'Root';
+      i18n.text.mockReturnValueOnce(categoryName);
+      const rootCategories = [{}, {}];
+
+      expect(createRootCategoryData(rootCategories)).toEqual({
+        uid: null,
+        name: categoryName,
+        path: null,
+      });
+    });
+  });
+
+  describe('createPageviewData()', () => {
+    it('should return the expected object when the input is an empty object', () => {
+      expect(createPageviewData({})).toEqual({
+        page: null,
+        cart: null,
+        search: null,
+        category: null,
+        product: null,
+      });
+    });
+
+    it('should return the expected object when the input contains data', () => {
+      const mockData = { some: 'value' };
+      const result = createPageviewData({
+        page: mockData,
+        category: mockData,
+        product: mockData,
+        search: mockData,
+        cart: mockData,
+      });
+      expect(result).toEqual({
+        page: {
+          ...mockData,
+          title: '',
+        },
+        category: mockData,
+        product: mockData,
+        search: mockData,
+        cart: mockData,
+      });
+    });
+
+    it('should use the title from the pageConfig as page title', () => {
+      const mockData = {
+        page: { some: 'value' },
+        pageConfig: {
+          title: 'Page Title',
+        },
+      };
+      const result = createPageviewData(mockData);
+      expect(result).toEqual({
+        page: {
+          ...mockData.page,
+          title: mockData.pageConfig.title,
+        },
+        cart: null,
+        search: null,
+        category: null,
+        product: null,
+      });
+    });
+
+    it('should use a category name as page title', () => {
+      const mockData = {
+        page: { some: 'value' },
+        category: {
+          name: 'Category Name',
+        },
+      };
+      const result = createPageviewData(mockData);
+      expect(result).toEqual({
+        page: {
+          ...mockData.page,
+          title: mockData.category.name,
+        },
+        cart: null,
+        search: null,
+        category: mockData.category,
+        product: null,
+      });
+    });
+
+    it('should use a product name as page title', () => {
+      const mockData = {
+        page: { some: 'value' },
+        product: {
+          name: 'Category Name',
+        },
+      };
+      const result = createPageviewData(mockData);
+      expect(result).toEqual({
+        page: {
+          ...mockData.page,
+          title: mockData.product.name,
+        },
+        cart: null,
+        search: null,
+        category: null,
+        product: mockData.product,
       });
     });
   });
