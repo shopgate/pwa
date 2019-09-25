@@ -22,6 +22,7 @@ import {
   ERROR_USER,
   TOGGLE_LOGGED_IN,
 } from '../../constants/ActionTypes';
+import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
 
 const messages = [{
   type: 'EUNKNOWN',
@@ -38,16 +39,31 @@ describe('Action Creators: user', () => {
         type: REQUEST_LOGIN,
         user,
         password,
-        strategy: 'basic',
+        strategy: DEFAULT_LOGIN_STRATEGY,
       };
       expect(requestLogin(user, password)).toEqual(expected);
     });
   });
 
   describe('successLogin()', () => {
-    it('should work as expected', () => {
-      const expected = { type: SUCCESS_LOGIN };
+    it('should work as expected with no parameters', () => {
+      const expected = {
+        type: SUCCESS_LOGIN,
+        redirect: undefined,
+        strategy: DEFAULT_LOGIN_STRATEGY,
+      };
       expect(successLogin()).toEqual(expected);
+    });
+
+    it('should work as expected with parameters', () => {
+      const redirect = '/some/url';
+      const strategy = 'custom';
+      const expected = {
+        type: SUCCESS_LOGIN,
+        redirect,
+        strategy,
+      };
+      expect(successLogin(redirect, strategy)).toEqual(expected);
     });
   });
 

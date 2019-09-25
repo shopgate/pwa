@@ -69,7 +69,7 @@
 
 /**
  * Data definition for an addedPaymentInfo event within the unified tracking system
- * @typedef {Object} UnifiedAddedPaymentInfo
+ * @typedef {Object} UnifiedPaymentInfo
  * @property {bool} success If it was success or not
  * @property {string} name Name of the payment method
  * @property {UnifiedRestrictions} [restrictions] Restrictions for the command

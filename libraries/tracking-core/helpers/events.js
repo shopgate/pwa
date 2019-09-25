@@ -10,6 +10,7 @@ export const TRACK_COMPLETED_REGISTRATION = 'completedRegistration';
 export const TRACK_SEARCH = 'search';
 export const TRACK_SCROLL_TOP = 'scrollTop';
 export const TRACK_ADDED_PAYMENT_INFO = 'addedPaymentInfo';
+export const TRACK_SELECTED_PAYMENT_INFO = 'selectedPaymentInfo';
 export const TRACK_SMARTBANNER = 'smartbanner';
 export const TRACK_FILTER_LIVE_SUGGEST = 'filterLiveSuggest';
 export const TRACK_QR_SCANNER = 'qrScanner';
@@ -71,6 +72,7 @@ export default [
   TRACK_SEARCH,
   TRACK_SCROLL_TOP,
   TRACK_ADDED_PAYMENT_INFO,
+  TRACK_SELECTED_PAYMENT_INFO,
   TRACK_SMARTBANNER,
   TRACK_FILTER_LIVE_SUGGEST,
   TRACK_QR_SCANNER,
