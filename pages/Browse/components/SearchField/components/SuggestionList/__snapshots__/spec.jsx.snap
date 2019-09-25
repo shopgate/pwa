@@ -13,6 +13,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       "foo bar buz quz",
     ]
   }
+  visible={false}
 >
   <SurroundPortals
     portalName="search.suggestions"
@@ -29,7 +30,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     }
   >
     <div
-      className="css-7w6rep css-90ryaa"
+      className="css-7w6rep css-90ryaa css-6zy2pv"
     >
       <SurroundPortals
         key="foo"
@@ -169,6 +170,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       "foo",
     ]
   }
+  visible={false}
 >
   <SurroundPortals
     portalName="search.suggestions"
@@ -185,7 +187,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     }
   >
     <div
-      className="css-7w6rep css-90ryaa"
+      className="css-7w6rep css-90ryaa css-6zy2pv"
     >
       <SurroundPortals
         key="foo"
@@ -325,6 +327,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       "foo",
     ]
   }
+  visible={false}
 >
   <SurroundPortals
     portalName="search.suggestions"
@@ -341,7 +344,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     }
   >
     <div
-      className="css-7w6rep css-90ryaa"
+      className="css-7w6rep css-90ryaa css-6zy2pv"
     >
       <SurroundPortals
         key="foo bar buz quz"
@@ -497,6 +500,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           "foo bar buz quz",
         ]
       }
+      visible={false}
     >
       <SurroundPortals
         portalName="search.suggestions"
@@ -513,7 +517,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         }
       >
         <div
-          className="css-7w6rep css-90ryaa"
+          className="css-7w6rep css-90ryaa css-6zy2pv"
         >
           <SurroundPortals
             key="foo"
