@@ -23,6 +23,7 @@
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
+    "added": "Das Produkt wurde Zur Merkliste hinzugefügt",
     "continue": "Weiter shoppen",
     "empty": "Sie haben noch keine Artikel in der Merkliste",
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",

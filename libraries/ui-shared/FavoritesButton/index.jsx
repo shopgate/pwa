@@ -38,7 +38,7 @@ class FavoritesButton extends Component {
   static defaultProps = {
     active: false,
     addFavorites: () => {},
-    'aria-hidden': false,
+    'aria-hidden': null,
     className: '',
     noShadow: false,
     once: false,
