@@ -62,11 +62,11 @@ class SuggestionList extends Component {
               key={suggestion}
             >
               <button
+                type="button"
                 className={styles.item}
                 onClick={onClick}
                 value={suggestion}
                 data-test-id={`searchSuggestion ${suggestion}`}
-                type="button"
               >
                 <SurroundPortals
                   portalName={SEARCH_SUGGESTION_ITEM_CONTENT}
