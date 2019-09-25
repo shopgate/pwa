@@ -1,6 +1,6 @@
-import { addFavorite } from '@shopgate/engage/favorites';
-import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
-import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { ToastProvider } from '@shopgate/engage/core';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { addFavorite, favoritesWillRemoveItem$, favoritesWillAddItem$ } from '@shopgate/engage/favorites';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**
@@ -17,5 +17,9 @@ export default function favorites(subscribe) {
         actionLabel: 'common.undo',
       });
     }, FAVORITES_SHOW_TOAST_DELAY);
+  });
+
+  subscribe(favoritesWillAddItem$, () => {
+    broadcastLiveMessage('favorites.added', { force: true });
   });
 }
