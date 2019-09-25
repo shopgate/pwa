@@ -23,6 +23,7 @@
   },
   "favorites": {
     "add": "Aggiungi ai favoriti",
+    "added": "Il prodotto è stato aggiunto ai favoriti",
     "continue": "Continua ad acquistare",
     "empty": "Non hai favoriti",
     "error_add": "Non è possibile aggiungere il prodotto ai favoriti",
