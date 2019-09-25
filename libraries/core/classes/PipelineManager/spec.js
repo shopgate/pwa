@@ -9,7 +9,7 @@ import pipelineManager from '.';
 import pipelineDependencies from '../PipelineDependencies';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';
-import { PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
+import { PROCESS_LAST, PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
 import { ETIMEOUT } from '../../constants/Pipeline';
 
 jest.mock('../../helpers/logGroup', () => jest.fn());
@@ -260,6 +260,31 @@ describe('PipelineManager', () => {
         pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
         request.callback(error, request.serial, {});
         expect(handleResultSequenceSpy).toHaveBeenCalledTimes(1);
+        expect(request.error).toEqual(error);
+        expect(request.output).toEqual({});
+      });
+    });
+
+    describe('should create a callback that invokes handleResults() for process last types', () => {
+      it('should handle the output', () => {
+        const handleResultLastSpy = jest.spyOn(pipelineManager, 'handleResultLast');
+        request.setResponseProcessed(PROCESS_LAST);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        request.callback(null, request.serial, output);
+        expect(handleResultLastSpy).toHaveBeenCalledTimes(1);
+        expect(request.error).toEqual(null);
+        expect(request.output).toEqual(output);
+      });
+
+      it('should handle the error', () => {
+        const handleResultLastSpy = jest.spyOn(pipelineManager, 'handleResultLast');
+        request.setResponseProcessed(PROCESS_LAST);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+        request.callback(error, request.serial, {});
+        expect(handleResultLastSpy).toHaveBeenCalledTimes(1);
         expect(request.error).toEqual(error);
         expect(request.output).toEqual({});
       });
