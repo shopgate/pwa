@@ -80,6 +80,15 @@ function getUnifiedNumber(numericValue) {
 }
 
 /**
+ * Converts a value to a string. It returns an empty string for null or undefined.
+ * @param {*} value The value.
+ * @return {string}
+ */
+function getStringValue(value) {
+  return (value || value === 0) ? `${value}` : '';
+}
+
+/**
  * Returns the productNumber or uid from a product
  *
  * @param {Object} product Object with product data
@@ -132,13 +141,14 @@ function sanitizeTitle(title, shopName) {
  */
 function formatSgDataProduct(product) {
   return {
-    id: getProductIdentifier(product),
+    id: getStringValue(getProductIdentifier(product)),
     type: 'product',
     name: get(product, 'name'),
     priceNet: getUnifiedNumber(get(product, 'amount.net')),
     priceGross: getUnifiedNumber(get(product, 'amount.gross')),
     quantity: getUnifiedNumber(get(product, 'quantity')),
     currency: get(product, 'amount.currency'),
+    brand: get(product, 'manufacturer'),
   };
 }
 
@@ -169,7 +179,9 @@ function formatFavouriteListItems(products) {
   }
 
   return products.map(product => ({
-    id: get(product, 'product_number_public') || get(product, 'product_number') || get(product, 'uid'),
+    id: getStringValue(get(product, 'product_number_public') ||
+      get(product, 'product_number') ||
+      get(product, 'uid')),
     type: 'product',
     name: get(product, 'name'),
     priceNet: getUnifiedNumber(get(product, 'unit_amount_net')) / 100,
@@ -212,7 +224,7 @@ customEvents.forEach((event) => {
  * @returns {UnifiedPurchase} Data for the unified purchase event
  */
 dataFormatHelpers.purchase = rawData => ({
-  id: get(rawData, 'order.number'),
+  id: getStringValue(get(rawData, 'order.number')),
   type: 'product',
   affiliation: get(rawData, 'shop.name', ''),
   revenueGross: getUnifiedNumber(get(rawData, 'order.amount.gross')),
@@ -399,11 +411,48 @@ dataFormatHelpers.setCampaignWithUrl = rawData => ({
  * Converter for the addedPaymentInfo event
  *
  * @param {Object} rawData Raw data from the core
- * @returns {UnifiedAddedPaymentInfo} Data for the AddedPaymentInfo event
+ * @returns {UnifiedPaymentInfo} Data for the AddedPaymentInfo event
  */
 dataFormatHelpers.addedPaymentInfo = rawData => ({
   success: get(rawData, 'paymentMethodAdded.success'),
   name: get(rawData, 'paymentMethodAdded.name'),
 });
+
+/**
+ * Converter for the selectedPaymentInfo event. It's compatible to the addedPaymentInfo event, but
+ * other than this, it's also triggered when a payment method was selected which doesn't have
+ * configurable entities, like "credit card".
+ *
+ * @param {Object} rawData Raw data from the core
+ * @returns {UnifiedPaymentInfo} Data for the SelectedPaymentInfo event
+ */
+dataFormatHelpers.selectedPaymentInfo = rawData => ({
+  success: get(rawData, 'paymentMethodSelected.success'),
+  name: get(rawData, 'paymentMethodSelected.name'),
+});
+
+/**
+ * Converter for the logItemView event.
+ *
+ * @param {Object} rawData Raw data from the core
+ * @returns {UnifiedItemView} Data for the logItemView event
+ */
+dataFormatHelpers.itemView = (rawData) => {
+  let product;
+
+  if (rawData.product) {
+    ({ product } = rawData);
+  } else if (rawData.variant) {
+    product = rawData.variant;
+  }
+
+  product = formatSgDataProduct(product);
+  delete product.quantity;
+
+  return {
+    ...product,
+    type: '',
+  };
+};
 
 export default dataFormatHelpers;
