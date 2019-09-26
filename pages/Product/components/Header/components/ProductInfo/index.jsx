@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import { MapPriceHint, OrderQuantityHint, EffectivityDates } from '@shopgate/engage/product';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -89,4 +88,4 @@ ProductInfo.propTypes = {
   productId: PropTypes.string.isRequired,
 };
 
-export default pure(ProductInfo);
+export default memo(ProductInfo);
