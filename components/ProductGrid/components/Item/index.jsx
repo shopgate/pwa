@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import { isBeta } from '@shopgate/engage/core';
 import { getProductRoute, FeaturedMedia } from '@shopgate/engage/product';
 import Link from '@shopgate/pwa-common/components/Link';
@@ -69,4 +68,4 @@ Item.defaultProps = {
   display: null,
 };
 
-export default pure(Item);
+export default memo(Item);
