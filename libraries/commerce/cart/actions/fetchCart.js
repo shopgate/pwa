@@ -35,6 +35,11 @@ const fetchCart = () => (dispatch, getState) => {
     .then(response => getIsFetching(getState()) && dispatch(receiveCart(response)))
     .catch((error) => {
       if (error) {
+        // Post only one error in a group of possibly multiple requests being rejected at once
+        if (!getIsFetching(getState())) {
+          return;
+        }
+
         // Check if we have an error (no error means an outdated request has been rejected).
         logger.error(error);
         dispatch(errorCart());
