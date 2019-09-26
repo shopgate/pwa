@@ -210,6 +210,20 @@ export const getDiscounts = createSelector(
 );
 
 /**
+ * Selects the discounts value of the cart.
+ * @returns {number}
+ */
+export const getDiscountsAmount = createSelector(
+  getDiscounts,
+  (discounts) => {
+    if (!discounts) {
+      return 0;
+    }
+    return discounts.reduce((acc, d) => acc + d.amount, 0);
+  }
+);
+
+/**
  * Selects the received messages from the cart.
  * @param {Object} state The current application state.
  * @return {Array}
