@@ -283,7 +283,9 @@ class PipelineManager {
 
     // Cleanup.
     event.removeCallback(callbackName, request.callback);
-    clearTimeout(entry.timer);
+    if (entry.timer) {
+      clearTimeout(entry.timer);
+    }
     this.removeRequestFromPiplineSequence(serial);
     this.requests.delete(serial);
 
@@ -445,6 +447,9 @@ class PipelineManager {
         ...previousRejectors,
       ];
 
+      // Clear out retry mechanism on bypassed requests
+      clearTimeout(entry.timer);
+
       this.requests.set(entry.request.serial, {
         ...entry,
         request: {
@@ -453,6 +458,7 @@ class PipelineManager {
           reject: () => {}, // moved over to the current request
         },
         bypass: true,
+        timer: null,
       });
     });
   }
