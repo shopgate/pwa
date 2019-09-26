@@ -97,7 +97,7 @@ class SnackBar extends Component {
     };
 
     return (
-      <div className={styles.container}>
+      <div className={styles.container} aria-live="assertive" role="status">
         <Spring
           from={{ top: 80 }}
           to={{ top: 0 }}
@@ -107,22 +107,18 @@ class SnackBar extends Component {
           onRest={this.handleRest}
         >
           {props => (
-            <div
-              className={styles.wrapper}
-              style={props}
-              data-footer-inset-update-ignore="true"
-            >
-              <div
-                className={styles.box}
-                role="status"
-                aria-live={visible && props.top === 80 ? 'polite' : 'off'}
-                {...boxProps}
-              >
+            <div className={styles.wrapper} style={props} data-footer-inset-update-ignore="true">
+              <div className={styles.box} {...boxProps}>
                 <Ellipsis rows={2}>
                   <I18n.Text className={styles.label} string={message || ''} params={messageParams} />
                 </Ellipsis>
                 {(action && actionLabel) && (
-                  <button className={styles.button} onClick={this.handleAction} type="button" aria-hidden>
+                  <button
+                    className={styles.button}
+                    onClick={this.handleAction}
+                    type="button"
+                    aria-hidden
+                  >
                     <I18n.Text string={actionLabel} />
                   </button>
                 )}
