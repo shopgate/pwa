@@ -39,8 +39,14 @@ const item = css({
   textAlign: 'left',
 }).toString();
 
+const hidden = css({
+  display: 'none',
+  visibility: 'hidden',
+});
+
 export default {
   bottom,
   list,
   item,
+  hidden,
 };
