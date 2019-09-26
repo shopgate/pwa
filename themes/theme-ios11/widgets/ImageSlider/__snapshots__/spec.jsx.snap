@@ -222,6 +222,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
@@ -236,6 +237,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
@@ -271,6 +273,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
@@ -285,6 +288,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
@@ -357,6 +361,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         href="http://example.com"
       >
         <Link
+          aria-hidden={null}
           aria-label={null}
           className="css-63oe3q"
           data-test-id="withLink"
@@ -371,6 +376,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           tag="div"
         >
           <div
+            aria-hidden={null}
             aria-label={null}
             className="css-c6ki83 css-63oe3q"
             data-test-id="link: http://example.com"
@@ -683,6 +689,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
@@ -697,6 +704,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
@@ -952,6 +960,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
@@ -966,6 +975,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
@@ -1001,6 +1011,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       data-test-id="withLink"
@@ -1015,6 +1026,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"

@@ -22,7 +22,7 @@ const Favorites = ({ initialLoading, products }) => {
   }
 
   return (
-    <View>
+    <View aria-hidden={false}>
       <DefaultBar title="titles.favorites" />
       {!products.length && <EmptyFavorites />}
       {(products.length > 0) && <FavoritesList products={products} />}

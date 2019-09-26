@@ -22,6 +22,7 @@
   },
   "favorites": {
     "add": "Add to favorites",
+    "added": "Product has been added to favorites",
     "continue": "Continue shopping",
     "empty": "You don't have any favorites",
     "error_add": "Product could not be added to favorites",

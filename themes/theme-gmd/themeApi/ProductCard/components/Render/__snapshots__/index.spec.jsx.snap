@@ -45,6 +45,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
       tagName="a"
     >
       <Link
+        aria-hidden={null}
         aria-label={null}
         className=""
         disabled={false}
@@ -59,6 +60,7 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
         tagName="a"
       >
         <div
+          aria-hidden={null}
           aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
@@ -803,6 +805,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
       tagName="a"
     >
       <Link
+        aria-hidden={null}
         aria-label={null}
         className=""
         disabled={false}
@@ -817,6 +820,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
         tagName="a"
       >
         <div
+          aria-hidden={null}
           aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
@@ -1282,6 +1286,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
       tagName="a"
     >
       <Link
+        aria-hidden={null}
         aria-label={null}
         className=""
         disabled={false}
@@ -1296,6 +1301,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
         tagName="a"
       >
         <div
+          aria-hidden={null}
           aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
@@ -2108,6 +2114,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
       tagName="a"
     >
       <Link
+        aria-hidden={null}
         aria-label={null}
         className=""
         disabled={false}
@@ -2122,6 +2129,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
         tagName="a"
       >
         <div
+          aria-hidden={null}
           aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
@@ -2934,6 +2942,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
       tagName="a"
     >
       <Link
+        aria-hidden={null}
         aria-label={null}
         className=""
         disabled={false}
@@ -2948,6 +2957,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
         tagName="a"
       >
         <div
+          aria-hidden={null}
           aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
@@ -3724,6 +3734,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
       tagName="a"
     >
       <Link
+        aria-hidden={null}
         aria-label={null}
         className=""
         disabled={false}
@@ -3738,6 +3749,7 @@ exports[`<ProductCardRender /> should render without prices 1`] = `
         tagName="a"
       >
         <div
+          aria-hidden={null}
           aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
@@ -4288,6 +4300,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
       tagName="a"
     >
       <Link
+        aria-hidden={null}
         aria-label={null}
         className=""
         disabled={false}
@@ -4302,6 +4315,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
         tagName="a"
       >
         <div
+          aria-hidden={null}
           aria-label={null}
           className="css-c6ki83 "
           data-test-id="link: /some/url"
