@@ -14,6 +14,7 @@ class Link extends Component {
     historyPush: PropTypes.func.isRequired,
     historyReplace: PropTypes.func.isRequired,
     href: PropTypes.string.isRequired,
+    'aria-hidden': PropTypes.bool,
     'aria-label': PropTypes.string,
     className: PropTypes.string,
     disabled: PropTypes.bool,
@@ -25,6 +26,7 @@ class Link extends Component {
   };
 
   static defaultProps = {
+    'aria-hidden': null,
     'aria-label': null,
     className: '',
     disabled: false,
@@ -61,7 +63,7 @@ class Link extends Component {
    */
   render() {
     const {
-      tag: Tag, className, href, children, role, 'aria-label': ariaLabel, tabIndex,
+      tag: Tag, className, href, children, role, 'aria-label': ariaLabel, 'aria-hidden': ariaHidden, tabIndex,
     } = this.props;
     return (
       <Tag
@@ -71,6 +73,7 @@ class Link extends Component {
         data-test-id={`link: ${href}`}
         aria-label={ariaLabel}
         tabIndex={tabIndex}
+        aria-hidden={ariaHidden}
       >
         {children}
       </Tag>

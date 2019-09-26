@@ -74,6 +74,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           }
         >
           <MockedAddToCartButton
+            aria-label="product.add_to_cart"
             className="css-ipacgg"
             isDisabled={false}
             isLoading={false}

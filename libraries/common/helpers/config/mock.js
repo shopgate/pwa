@@ -1,5 +1,25 @@
 /**
  * @typedef {Object} ThemeColors
+ * @property background
+ * @property light
+ * @property dark
+ * @property accent
+ * @property placeholder
+ * @property primary
+ * @property darkGray
+ * @property shade3
+ * @property shade4
+ * @property shade5
+ * @property shade6
+ * @property shade7
+ * @property shade8
+ * @property shade9
+ * @property shade10
+ * @property shade11
+ * @property shade12
+ * @property success
+ * @property warning
+ * @property error
  */
 const colors = {
   background: '#f8f8f8',
