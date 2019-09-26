@@ -13,7 +13,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
     <div
       className="css-ipvvc7"
     >
-      <pure(Tier)
+      <Tier
         key="1_2_92.5"
         price={
           Object {
@@ -45,7 +45,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
           }
         }
       />
-      <pure(Tier)
+      <Tier
         key="3_5_77.5"
         price={
           Object {
@@ -77,7 +77,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
           }
         }
       />
-      <pure(Tier)
+      <Tier
         key="6__68.5"
         price={
           Object {

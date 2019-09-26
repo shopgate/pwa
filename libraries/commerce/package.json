@@ -15,7 +15,6 @@
     "connect"
   ],
   "dependencies": {
-    "recompose": "^0.26.0",
     "reselect": "^3.0.1"
   },
   "devDependencies": {
