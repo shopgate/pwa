@@ -13,6 +13,7 @@ const defaultState = {
   disabled: false,
   isLoggedIn: false,
   errors: null,
+  strategy: null,
 };
 
 /**
@@ -36,6 +37,7 @@ export default function userLoginReducer(state = defaultState, action) {
     case REQUEST_LOGIN:
       return {
         ...state,
+        strategy: action.strategy,
         isFetching: true,
       };
     case SUCCESS_LOGIN:
@@ -44,6 +46,7 @@ export default function userLoginReducer(state = defaultState, action) {
         isLoggedIn: true,
         errors: null,
         isFetching: false,
+        strategy: action.strategy,
       };
     case ERROR_LOGIN:
       return {
@@ -56,6 +59,7 @@ export default function userLoginReducer(state = defaultState, action) {
       return {
         ...state,
         isLoggedIn: action.value,
+        strategy: null,
       };
     case SUCCESS_LOGOUT:
       return defaultState;

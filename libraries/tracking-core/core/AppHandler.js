@@ -54,11 +54,23 @@ class AppHandler {
   /**
    * Log when a payment info was added
    *
-   * @param {UnifiedAddedPaymentInfo} data Tracking data for this event
+   * @param {UnifiedPaymentInfo} data Tracking data for this event
    * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
   addedPaymentInfo(data, restrictions) {
+    SGAction.analyticsLogAddedPaymentInfo(AppHandler.prepareTrackingData(data, restrictions));
+    return this;
+  }
+
+  /**
+   * Log when a payment info was selected
+   *
+   * @param {UnifiedPaymentInfo} data Tracking data for this event
+   * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
+   * @returns {AppHandler} Instance of SgTrackingAppHandler
+   */
+  selectedPaymentInfo(data, restrictions) {
     SGAction.analyticsLogAddedPaymentInfo(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
@@ -100,7 +112,7 @@ class AppHandler {
   }
 
   /**
-   * Log when a search happend
+   * Log when a search happened
    *
    * @param {UnifiedSearched} data Tracking data for this event
    * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
@@ -119,6 +131,30 @@ class AppHandler {
    */
   setCampaignWithUrl(data, restrictions) {
     SGAction.analyticsSetCampaignWithUrl(AppHandler.prepareTrackingData(data, restrictions));
+    return this;
+  }
+
+  /**
+   * Log an itemview
+   *
+   * @param {UnifiedItemView} data Tracking data for this event
+   * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
+   * @returns {AppHandler} Instance of SgTrackingAppHandler
+   */
+  itemView(data, restrictions) {
+    SGAction.analyticsLogItemView(AppHandler.prepareTrackingData(data, restrictions));
+    return this;
+  }
+
+  /**
+   * Log a login
+   *
+   * @param {UnifiedLogin} data Tracking data for this event
+   * @param {UnifiedRestrictions} [restrictions] Info about the restrictions
+   * @returns {AppHandler} Instance of SgTrackingAppHandler
+   */
+  login(data, restrictions) {
+    SGAction.analyticsLogLogin(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
 

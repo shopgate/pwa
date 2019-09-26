@@ -13,6 +13,8 @@ import {
   DISABLE_LOGIN,
 } from '../../constants/ActionTypes';
 
+import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
+
 /**
  * Creates the dispatched REQUEST_LOGIN action object.
  * It also passes login credentials to the action,
@@ -22,7 +24,7 @@ import {
  * @param {string} strategy login strategy
  * @returns {Object} The dispatched action object.
  */
-export const requestLogin = (user, password, strategy = 'basic') => ({
+export const requestLogin = (user, password, strategy = DEFAULT_LOGIN_STRATEGY) => ({
   type: REQUEST_LOGIN,
   user,
   password,
@@ -32,11 +34,13 @@ export const requestLogin = (user, password, strategy = 'basic') => ({
 /**
  * Creates the dispatched RECEIVE_LOGIN action object.
  * @param {string} redirect The location to redirect to.
+ * @param {string} strategy The login strategy.
  * @returns {Object} The dispatched action object.
  */
-export const successLogin = redirect => ({
+export const successLogin = (redirect, strategy = DEFAULT_LOGIN_STRATEGY) => ({
   type: SUCCESS_LOGIN,
   redirect,
+  strategy,
 });
 
 /**

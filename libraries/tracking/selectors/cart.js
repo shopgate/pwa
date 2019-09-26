@@ -4,6 +4,7 @@ import {
   getSubTotal,
   getCurrency,
   getCartProducts,
+  getDiscountsAmount,
 } from '@shopgate/pwa-common-commerce/cart/selectors/index';
 import {
   convertPriceToString,
@@ -43,13 +44,14 @@ export const getAddToCartProducts = (state, products) => (
  */
 export default createSelector(
   getSubTotal,
+  getDiscountsAmount,
   getCurrency,
   getProducts,
-  (subTotal, currency, products) => ({
+  (subTotal, discounts, currency, products) => ({
     amount: {
-      gross: convertPriceToString(subTotal),
+      gross: convertPriceToString(subTotal - discounts),
       // TODO: Correct net prices are not possible atm.
-      net: convertPriceToString(subTotal),
+      net: convertPriceToString(subTotal - discounts),
       currency,
     },
     products,

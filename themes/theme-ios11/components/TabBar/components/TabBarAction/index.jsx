@@ -21,7 +21,7 @@ const TabBarAction = (props) => {
   );
 
   return (
-    <Grid.Item role="presentation">
+    <Grid.Item role="presentation" className={style.item}>
       <Button
         className={className}
         onClick={props.onClick}
