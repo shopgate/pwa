@@ -175,6 +175,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/shipping"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -188,6 +189,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
@@ -257,6 +259,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/payment"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -270,6 +273,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
@@ -339,6 +343,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/terms"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -352,6 +357,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
@@ -421,6 +427,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/privacy"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -434,6 +441,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
@@ -525,6 +533,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/imprint"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -538,6 +547,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
@@ -917,6 +927,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/login"
                             >
                               <Link
+                                aria-hidden={null}
                                 aria-label={null}
                                 className=""
                                 disabled={false}
@@ -930,6 +941,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 tag="div"
                               >
                                 <div
+                                  aria-hidden={null}
                                   aria-label={null}
                                   className="css-c6ki83 "
                                   data-test-id="link: /login"
@@ -997,6 +1009,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/register"
                             >
                               <Link
+                                aria-hidden={null}
                                 aria-label={null}
                                 className=""
                                 disabled={false}
@@ -1010,6 +1023,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 tag="div"
                               >
                                 <div
+                                  aria-hidden={null}
                                   aria-label={null}
                                   className="css-c6ki83 "
                                   data-test-id="link: /register"
@@ -1192,6 +1206,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/shipping"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1205,6 +1220,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
@@ -1274,6 +1290,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/payment"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1287,6 +1304,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
@@ -1356,6 +1374,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/terms"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1369,6 +1388,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
@@ -1438,6 +1458,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/privacy"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1451,6 +1472,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
@@ -1542,6 +1564,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/imprint"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1555,6 +1578,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
