@@ -1,7 +1,6 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cxs from 'classnames';
-import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
 /**
@@ -15,21 +14,15 @@ import styles from './style';
  */
 const RangeSliderHandle = (props) => {
   const {
-    active, index, onTouchStart, classNames, range, min, max,
+    active, index, onTouchStart, classNames,
   } = props;
-  const label = index === 0 ? i18n.text('price.range_from') : i18n.text('price.range_to');
-  const valuenow = index === 0 ? Math.floor(range[index] / 100) : Math.ceil(range[index] / 100);
+  const style = { zIndex: Number(active) || 0 };
 
   return (
     <div
-      className={cxs(`${classNames.handleOuter || ''} ${styles}`)}
-      style={{ zIndex: Number(active) || 0 }}
+      className={cxs(classNames.handleOuter, styles)}
+      style={style}
       onTouchStart={event => onTouchStart(event, index)}
-      role="slider"
-      aria-valuemin={Math.floor(min / 100)}
-      aria-valuemax={Math.ceil(max / 100)}
-      aria-valuenow={valuenow}
-      aria-label={label}
     >
       <div className={classNames.handleInner} />
     </div>
@@ -38,10 +31,7 @@ const RangeSliderHandle = (props) => {
 
 RangeSliderHandle.propTypes = {
   index: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
-  min: PropTypes.number.isRequired,
   onTouchStart: PropTypes.func.isRequired,
-  range: PropTypes.arrayOf(PropTypes.number).isRequired,
   active: PropTypes.bool,
   classNames: PropTypes.shape({
     handleOuter: PropTypes.string,
@@ -57,4 +47,4 @@ RangeSliderHandle.defaultProps = {
   },
 };
 
-export default memo(RangeSliderHandle);
+export default RangeSliderHandle;

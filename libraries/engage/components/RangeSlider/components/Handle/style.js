@@ -14,4 +14,4 @@ export default css({
     right: 0,
     transform: 'translate(50%, -50%)',
   },
-});
+}).toString();

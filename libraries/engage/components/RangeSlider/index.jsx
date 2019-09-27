@@ -1,7 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import cxs from 'classnames';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
-import RangeSliderHandle from './components/Handle';
+import Handle from './components/Handle';
 import {
   generateLinearEasingCallback,
   generateExponentialEasingCallback,
@@ -14,7 +16,7 @@ import {
 /**
  * The range slider component.
  */
-class RangeSlider extends Component {
+class RangeSlider extends PureComponent {
   static propTypes = {
     animationSpeed: PropTypes.number, // The animation speed of the handles in px/sec.
     classNames: PropTypes.shape({
@@ -53,7 +55,7 @@ class RangeSlider extends Component {
     super(props);
 
     this.draggedHandle = null; // 0 for left handle, 1 for right handle or null
-    this.domElement = null;
+    this.domElement = React.createRef();
     this.touchOffset = 0;
     this.draggedHandlePixelOffset = 0; // The absolute pixel delta of the last handle move event.
 
@@ -119,6 +121,8 @@ class RangeSlider extends Component {
     return ({
       rangeMin: this.invertedEase(getRelativeValue(value[0], min, max)),
       rangeMax: this.invertedEase(getRelativeValue(value[1], min, max)),
+      inputMinValue: Math.floor(value[0] / 100),
+      inputMaxValue: Math.ceil(value[1] / 100),
     });
   }
 
@@ -153,7 +157,7 @@ class RangeSlider extends Component {
       return;
     }
 
-    const { offsetWidth, offsetLeft } = this.domElement;
+    const { offsetWidth, offsetLeft } = this.domElement.current;
     // Calculate the absolute offset where the element was touched...
     let deltaX = (getTouchPositionX(event) - offsetLeft) - this.touchOffset;
 
@@ -188,7 +192,7 @@ class RangeSlider extends Component {
       }
     }
 
-    this.draggedHandlePixelOffset *= this.domElement.offsetWidth;
+    this.draggedHandlePixelOffset *= this.domElement.current.offsetWidth;
 
     this.setState(stateUpdate, this.triggerChangeCallback);
   }
@@ -207,7 +211,7 @@ class RangeSlider extends Component {
    * @param {Object} event The touch event
    */
   handleRangeTouch = (event) => {
-    const { offsetWidth, offsetLeft } = this.domElement;
+    const { offsetWidth, offsetLeft } = this.domElement.current;
     const dx = (getTouchPositionX(event) - offsetLeft) / offsetWidth;
     const d0 = Math.abs(this.state.rangeMin - dx);
     const d1 = Math.abs(this.state.rangeMax - dx);
@@ -222,14 +226,32 @@ class RangeSlider extends Component {
   }
 
   /**
+   * Processes the input field values.
+   * @param {Object} event The change event.
+   */
+  handleInputChange = (event) => {
+    const { max } = this.props;
+    const { value, id } = event.target;
+    const delta = Math.max(0, Math.min(1, value / (max / 100)));
+
+    // const state = id === 'price_from' ? { rangeMin: delta } : { rangeMax: delta };
+    const state = id === 'price_from' ? {
+      inputMinValue: value,
+      rangeMin: delta,
+    } : {
+      inputMaxValue: value,
+      rangeMax: delta,
+    };
+
+    this.setState(state);
+  }
+
+  /**
    * Calls the change callback in case of a state update.
    */
   triggerChangeCallback() {
     const {
-      value,
-      onChange,
-      min,
-      max,
+      value, onChange, min, max,
     } = this.props;
 
     if (!onChange) {
@@ -247,60 +269,60 @@ class RangeSlider extends Component {
   }
 
   /**
-   * Creates a new handle component.
-   * @param {number} index The index of the component. Must be either 0 or 1.
-   * @returns {JSX}
-   */
-  makeHandle(index) {
-    const { min, max } = this.props;
-    const range = [
-      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
-      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
-    ];
-
-    return (
-      <RangeSliderHandle
-        index={index}
-        onTouchStart={this.handleTouchStart}
-        active={this.draggedHandle === index}
-        classNames={this.props.classNames}
-        range={range}
-        min={min}
-        max={max}
-      />
-    );
-  }
-
-  /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
-    // Calculate the animation speed.
-    const animationSpeed = Math.round((
-      (1000 / this.props.animationSpeed) * this.draggedHandlePixelOffset
-    ));
+    const {
+      classNames, animationSpeed, min, max,
+    } = this.props;
+    const { inputMinValue, inputMaxValue } = this.state;
+    const speed = Math.round(((1000 / animationSpeed) * this.draggedHandlePixelOffset));
     const rangeStyle = getRangeStyle(
       this.state.rangeMin,
       this.state.rangeMax,
-      animationSpeed > 10 ? animationSpeed : 0
+      speed > 10 ? speed : 0
     );
 
     return (
       <Fragment>
-        <div
-          className={this.props.classNames.container || ''}
-          onTouchStart={this.handleRangeTouch}
-        >
-          <div
-            className={`${this.props.classNames.outerRange || ''} ${styles.outerRange}`}
-            ref={(ref) => { this.domElement = ref; }}
-          >
-            <div className={`${this.props.classNames.range || ''} ${styles.range}`} style={rangeStyle}>
-              {this.makeHandle(0)}
-              {this.makeHandle(1)}
+        <div className={cxs(classNames.container)} onTouchStart={this.handleRangeTouch} aria-hidden>
+          <div className={cxs(classNames.outerRange, styles.outerRange)} ref={this.domElement}>
+            <div className={cxs(classNames.range, styles.range)} style={rangeStyle}>
+              <Handle
+                index={0}
+                onTouchStart={this.handleTouchStart}
+                active={this.draggedHandle === 0}
+                classNames={classNames}
+              />
+              <Handle
+                index={1}
+                onTouchStart={this.handleTouchStart}
+                active={this.draggedHandle === 1}
+                classNames={classNames}
+              />
             </div>
           </div>
+        </div>
+        <div className={styles.srOnly}>
+          <input
+            type="number"
+            id="price_from"
+            aria-label={i18n.text('price.range_from')}
+            min={Math.floor(min / 100)}
+            max={inputMaxValue}
+            value={inputMinValue}
+            onChange={this.handleInputChange}
+          />
+          <input
+            type="number"
+            id="price_to"
+            aria-label={i18n.text('price.range_to')}
+            min={inputMinValue}
+            max={Math.ceil(max / 100)}
+            value={inputMaxValue}
+            onChange={this.handleInputChange}
+          />
         </div>
       </Fragment>
     );
