@@ -37,10 +37,20 @@ class ValueButton extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { label, id, onClick } = this.props;
+    const {
+      label, id, onClick, isActive,
+    } = this.props;
 
     return (
-      <button className={this.className} value={id} onClick={onClick} data-test-id={id} type="button">
+      <button
+        className={this.className}
+        value={id}
+        onClick={onClick}
+        data-test-id={id}
+        type="button"
+        role="checkbox"
+        aria-checked={isActive}
+      >
         {label}
       </button>
     );
