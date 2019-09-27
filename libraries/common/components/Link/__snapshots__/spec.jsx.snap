@@ -2,6 +2,7 @@
 
 exports[`<Link /> renders with children 1`] = `
 <div
+  aria-hidden={null}
   aria-label={null}
   className="css-c6ki83 "
   data-test-id="link: /"
