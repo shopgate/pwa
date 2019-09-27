@@ -45,11 +45,14 @@
     },
     "apply": "Applica",
     "more": "di più",
-    "reset": "Resetta"
+    "reset": "Resetta",
+    "filter_by": "Ordina per {label}"
   },
   "price": {
     "from": "Da {price}",
     "range": "Prezzo da {fromPrice} a {toPrice}",
+    "range_from": "Fascia di prezzo da",
+    "range_to": "Fascia di prezzo a",
     "tier": {
       "set": "{from} elementi: {price}",
       "range": "{from} o altro: {price}"

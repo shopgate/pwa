@@ -45,11 +45,14 @@
     },
     "apply": "Feito",
     "more": "mais",
-    "reset": "Reiniciar"
+    "reset": "Reiniciar",
+    "filter_by": "Filtrar por {label}"
   },
   "price": {
     "from": "De {price}",
     "range": "Preço de {fromPrice} até {toPrice}",
+    "range_from": "Faixa de preço de",
+    "range_to": "Faixa de preço até",
     "tier": {
       "set": "{from} itens: {price}",
       "range": "{from} ou mais: {price}"
