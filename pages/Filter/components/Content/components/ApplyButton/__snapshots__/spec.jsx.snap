@@ -9,7 +9,6 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
   }
 >
   <Button
-    aria-hidden={false}
     className=""
     disabled={false}
     flat={true}
@@ -42,7 +41,6 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
   }
 >
   <Button
-    aria-hidden={false}
     className=""
     disabled={false}
     flat={true}
@@ -75,7 +73,6 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
   }
 >
   <Button
-    aria-hidden={true}
     className=""
     disabled={true}
     flat={true}
