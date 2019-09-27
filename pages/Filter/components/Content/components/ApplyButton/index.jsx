@@ -20,7 +20,6 @@ const FilterApplyButton = ({ active, onClick, widgetSettings }) => {
         onClick={onClick}
         disabled={!active}
         testId="applyFilterButton"
-        aria-hidden={!active}
       >
         <I18n.Text string="filter.apply" style={{ color: buttonColor }} />
       </Button>
