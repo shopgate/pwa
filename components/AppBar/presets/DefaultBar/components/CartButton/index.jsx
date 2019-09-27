@@ -79,6 +79,7 @@ class CartButton extends PureComponent {
                   onClick={navigate}
                   testId="CartButton"
                   aria-label={i18n.text('navigation.cart')}
+                  aria-hidden={!count}
                 />
               </div>
             </Portal>

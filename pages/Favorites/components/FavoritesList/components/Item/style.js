@@ -6,6 +6,9 @@ const { variables } = themeConfig;
 const favItemTransitionDuration = 500;
 
 const row = css({
+  display: 'flex',
+  /** Row is DOM reversed for a11y navigation */
+  flexDirection: 'row-reverse',
   padding: variables.gap.big,
   justifyContent: 'space-between',
 }).toString();
