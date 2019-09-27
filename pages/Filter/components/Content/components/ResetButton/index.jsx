@@ -15,7 +15,6 @@ const FilterResetButton = ({ active, onClick }) => (
       type="primary"
       onClick={onClick}
       disabled={!active}
-      aria-hidden={!active}
       testId="clearAllButton"
     >
       <I18n.Text string="filter.reset" />
