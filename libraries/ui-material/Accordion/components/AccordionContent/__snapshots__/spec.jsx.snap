@@ -8,7 +8,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
       "data-css-apm51k": "",
     }
   }
-  id="undefined-content"
+  id="some-id"
   style={
     Object {
       "height": 0,
@@ -39,7 +39,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
       "data-css-apm51k": "",
     }
   }
-  id="undefined-content"
+  id="some-id"
   style={
     Object {
       "height": "auto",

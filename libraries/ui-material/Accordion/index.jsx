@@ -17,6 +17,8 @@ const Accordion = (props) => {
     return null;
   }
 
+  const controlsId = `${testId}-content`.replace(/[^\w\s]/gi, '-').replace(' ', '-');
+
   return (
     <AccordionContainer>
       {({ handleOpen, handleClose, open }) => (
@@ -30,7 +32,7 @@ const Accordion = (props) => {
             data-test-id={testId}
             key="accordion-toggle"
             aria-expanded={open}
-            aria-controls={`${testId}-content`}
+            aria-controls={controlsId}
             aria-label={handleLabel}
           >
             {renderLabel({ open })}
@@ -38,7 +40,7 @@ const Accordion = (props) => {
               <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
             </div>
           </div>
-          <AccordionContent open={open} id={testId} key={`${testId}-content`}>
+          <AccordionContent open={open} id={controlsId} key={controlsId}>
             {children}
           </AccordionContent>
         </Fragment>

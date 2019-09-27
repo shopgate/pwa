@@ -15,7 +15,7 @@ function AccordionContent({ children, open, id }) {
   };
 
   return (
-    <div className={styles.content} style={style} id={`${id}-content`} aria-hidden={!open}>
+    <div className={styles.content} style={style} id={id} aria-hidden={!open}>
       <div ref={ref} className={styles.contentInner}>
         {children}
       </div>

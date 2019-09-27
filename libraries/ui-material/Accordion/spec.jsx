@@ -11,7 +11,7 @@ describe('<Accordion />', () => {
 
   it('should render with renderLabel prop and children', () => {
     const wrapper = mount((
-      <Accordion renderLabel={() => <div />}>
+      <Accordion renderLabel={() => <div />} testId="Some Thing">
         Some content.
       </Accordion>
     ));
@@ -21,13 +21,13 @@ describe('<Accordion />', () => {
   });
 
   it('should not render without a renderLabel prop', () => {
-    const wrapper = mount(<Accordion />);
+    const wrapper = mount(<Accordion testId="Some Thing" />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.instance()).toEqual(null);
   });
 
   it('should not render without children', () => {
-    const wrapper = mount(<Accordion renderLabel={() => { }} />);
+    const wrapper = mount(<Accordion renderLabel={() => { }} testId="Some Thing" />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.instance()).toEqual(null);
   });
