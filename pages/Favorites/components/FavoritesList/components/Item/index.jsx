@@ -80,6 +80,9 @@ class Item extends Component {
               }
             >
               <Grid className={styles.row}>
+                <Grid.Item grow={1} className={styles.rightColumn}>
+                  <ProductInfo product={this.props.product} />
+                </Grid.Item>
                 <Grid.Item className={styles.leftColumn}>
                   <Image product={this.props.product} />
                   <CTAButtons
@@ -93,9 +96,6 @@ class Item extends Component {
                     }}
                     favoritesOnce
                   />
-                </Grid.Item>
-                <Grid.Item grow={1} className={styles.rightColumn}>
-                  <ProductInfo product={this.props.product} />
                 </Grid.Item>
               </Grid>
             </CardItem>

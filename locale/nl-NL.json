@@ -22,6 +22,7 @@
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
+    "added": "Product is aan favorieten toegevoegd",
     "continue": "Doorgaan met winkelen",
     "empty": "U heeft geen favorieten",
     "error_add": "Product kon niet aan favorieten worden toegevoegd",
