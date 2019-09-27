@@ -44,11 +44,14 @@
     },
     "apply": "Klaar",
     "more": "meer",
-    "reset": "Wis alles"
+    "reset": "Wis alles",
+    "filter_by": "Filteren op {label}"
   },
   "price": {
     "from": "Vanaf {price}",
     "range": "Prijs van {fromPrice} tot {toPrice}",
+    "range_from": "Prijsklasse van",
+    "range_to": "Prijsklasse tot",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} of meer dan: {price}"
