@@ -118,25 +118,8 @@ class SgGoogleNative extends SgTrackingPlugin {
       };
 
       if (!this.isMerchant) {
-        const shopgateUrl = new SGLink(finalData.url);
-        // Add fake params, only if it didn't come from branch.io
-        if (raw.type !== 'branchio') {
-          shopgateUrl.setParam('utm_source', 'shopgate');
-          shopgateUrl.setParam('utm_medium', raw.type);
-        }
-
-        if (raw.type === 'push_message') {
-          const campaigns = ['cart_reminder', 'inactive_app_user'];
-          const notificationId = raw.notificationId || 'not-provided';
-          const campaignName = shopgateUrl.getParam('utm_campaign');
-
-          if (campaigns.indexOf(campaignName) !== -1) {
-            // Set utm_content to distinguish the cart reminders from "normal" push messages
-            shopgateUrl.setParam('utm_content', campaignName);
-          }
-
-          shopgateUrl.setParam('utm_campaign', `push-${notificationId}`);
-        }
+        const shopgateUrl = new SGLink(data.url);
+        shopgateUrl.setUtmParams(data, raw);
         finalData.url = shopgateUrl.toString();
       }
 
