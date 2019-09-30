@@ -1,21 +1,20 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { router } from '@virtuous/conductor';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { router } from '@shopgate/engage/core';
+import { SurroundPortals } from '@shopgate/engage/components';
 import {
   FILTER_PRICE_RANGE,
-  FILTER_PRICE_RANGE_AFTER,
-  FILTER_PRICE_RANGE_BEFORE,
-} from '@shopgate/pwa-common-commerce/filter/constants/Portals';
-import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
+  FILTER_TYPE_RANGE,
+  FILTER_TYPE_MULTISELECT,
+  PriceSlider,
+  buildInitialFilters,
+  buildUpdatedFilters,
+} from '@shopgate/engage/filter';
 import { CloseBar } from 'Components/AppBar/presets';
-import PriceSlider from './components/PriceSlider';
 import Selector from './components/Selector';
 import ApplyButton from './components/ApplyButton';
 import ResetButton from './components/ResetButton';
-import buildInitialFilters from './helpers/buildInitialFilters';
-import buildUpdatedFilters from './helpers/buildUpdatedFilters';
 import connect from './connector';
 
 /**
@@ -208,7 +207,7 @@ class FilterContent extends PureComponent {
 
     return (
       <Fragment>
-        { this.renderCloseBar() }
+        {this.renderCloseBar()}
         {filters.map((filter) => {
           const portalProps = { filter };
           const value = this.getFilterValue(filter.id);
@@ -216,8 +215,7 @@ class FilterContent extends PureComponent {
           if (filter.type === FILTER_TYPE_RANGE) {
             return (
               <Fragment key={filter.id}>
-                <Portal name={FILTER_PRICE_RANGE_BEFORE} props={portalProps} />
-                <Portal name={FILTER_PRICE_RANGE} props={portalProps}>
+                <SurroundPortals portalName={FILTER_PRICE_RANGE} portalProps={portalProps}>
                   <PriceSlider
                     id={filter.id}
                     key={filter.id}
@@ -226,8 +224,7 @@ class FilterContent extends PureComponent {
                     onChange={this.updateDebounced}
                     value={value}
                   />
-                </Portal>
-                <Portal name={FILTER_PRICE_RANGE_AFTER} props={portalProps} />
+                </SurroundPortals>
               </Fragment>
             );
           }

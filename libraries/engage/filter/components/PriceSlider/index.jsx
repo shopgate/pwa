@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { RangeSlider } from '@shopgate/engage/components';
-import Item from '../Item';
+import { FilterItem } from '@shopgate/engage/filter';
 import Label from './components/Label';
 import styles from './style';
 
@@ -85,7 +85,7 @@ class PriceSlider extends PureComponent {
     const priceLength = `${(max / 100).toString().length + 2}ch`;
 
     return (
-      <Item>
+      <FilterItem>
         <div className={styles.wrapper} data-test-id="priceRangeSlider">
           <Label priceLength={priceLength} priceMax={priceMax} priceMin={priceMin} />
           <RangeSlider
@@ -98,7 +98,7 @@ class PriceSlider extends PureComponent {
             value={this.state.value}
           />
         </div>
-      </Item>
+      </FilterItem>
     );
   }
 }

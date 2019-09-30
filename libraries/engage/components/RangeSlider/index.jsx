@@ -1,7 +1,6 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cxs from 'classnames';
-import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 import Handle from './components/Handle';
 import {
@@ -121,8 +120,6 @@ class RangeSlider extends PureComponent {
     return ({
       rangeMin: this.invertedEase(getRelativeValue(value[0], min, max)),
       rangeMax: this.invertedEase(getRelativeValue(value[1], min, max)),
-      inputMinValue: Math.floor(value[0] / 100),
-      inputMaxValue: Math.ceil(value[1] / 100),
     });
   }
 
@@ -233,15 +230,7 @@ class RangeSlider extends PureComponent {
     const { max } = this.props;
     const { value, id } = event.target;
     const delta = Math.max(0, Math.min(1, value / (max / 100)));
-
-    // const state = id === 'price_from' ? { rangeMin: delta } : { rangeMax: delta };
-    const state = id === 'price_from' ? {
-      inputMinValue: value,
-      rangeMin: delta,
-    } : {
-      inputMaxValue: value,
-      rangeMax: delta,
-    };
+    const state = id === 'price_from' ? { rangeMin: delta } : { rangeMax: delta };
 
     this.setState(state);
   }
@@ -273,10 +262,7 @@ class RangeSlider extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const {
-      classNames, animationSpeed, min, max,
-    } = this.props;
-    const { inputMinValue, inputMaxValue } = this.state;
+    const { classNames, animationSpeed } = this.props;
     const speed = Math.round(((1000 / animationSpeed) * this.draggedHandlePixelOffset));
     const rangeStyle = getRangeStyle(
       this.state.rangeMin,
@@ -285,46 +271,24 @@ class RangeSlider extends PureComponent {
     );
 
     return (
-      <Fragment>
-        <div className={cxs(classNames.container)} onTouchStart={this.handleRangeTouch} aria-hidden>
-          <div className={cxs(classNames.outerRange, styles.outerRange)} ref={this.domElement}>
-            <div className={cxs(classNames.range, styles.range)} style={rangeStyle}>
-              <Handle
-                index={0}
-                onTouchStart={this.handleTouchStart}
-                active={this.draggedHandle === 0}
-                classNames={classNames}
-              />
-              <Handle
-                index={1}
-                onTouchStart={this.handleTouchStart}
-                active={this.draggedHandle === 1}
-                classNames={classNames}
-              />
-            </div>
+      <div className={cxs(classNames.container)} onTouchStart={this.handleRangeTouch} aria-hidden>
+        <div className={cxs(classNames.outerRange, styles.outerRange)} ref={this.domElement}>
+          <div className={cxs(classNames.range, styles.range)} style={rangeStyle}>
+            <Handle
+              index={0}
+              onTouchStart={this.handleTouchStart}
+              active={this.draggedHandle === 0}
+              classNames={classNames}
+            />
+            <Handle
+              index={1}
+              onTouchStart={this.handleTouchStart}
+              active={this.draggedHandle === 1}
+              classNames={classNames}
+            />
           </div>
         </div>
-        <div className={styles.srOnly}>
-          <input
-            type="number"
-            id="price_from"
-            aria-label={i18n.text('price.range_from')}
-            min={Math.floor(min / 100)}
-            max={inputMaxValue}
-            value={inputMinValue}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type="number"
-            id="price_to"
-            aria-label={i18n.text('price.range_to')}
-            min={inputMinValue}
-            max={Math.ceil(max / 100)}
-            value={inputMaxValue}
-            onChange={this.handleInputChange}
-          />
-        </div>
-      </Fragment>
+      </div>
     );
   }
 }

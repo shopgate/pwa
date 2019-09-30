@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
-<FilterContentItem>
+<FilterItem>
   <div
     className="css-vafydm"
     data-test-id="priceRangeSlider"
@@ -36,11 +36,11 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
       }
     />
   </div>
-</FilterContentItem>
+</FilterItem>
 `;
 
 exports[`Filter: <PriceSlider /> should render with default props 1`] = `
-<FilterContentItem>
+<FilterItem>
   <div
     className="css-vafydm"
     data-test-id="priceRangeSlider"
@@ -75,5 +75,5 @@ exports[`Filter: <PriceSlider /> should render with default props 1`] = `
       }
     />
   </div>
-</FilterContentItem>
+</FilterItem>
 `;

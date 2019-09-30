@@ -1,6 +1,6 @@
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
-import buildUpdatedFilters from './buildUpdatedFilters';
+import buildUpdatedFilters from '../buildUpdatedFilters';
 
 const mockedFilter = {
   display_amount: {

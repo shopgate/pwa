@@ -1,11 +1,11 @@
-import { FILTER_TYPE_RANGE } from '@shopgate/pwa-common-commerce/filter/constants';
+import { FILTER_TYPE_RANGE } from '@shopgate/engage/filter';
 
 /**
  * @param {Object} filters The available filters.
  * @param {Object} activeFilters The selected filters.
  * @returns {Object}
  */
-const buildInitialFilters = (filters, activeFilters) => {
+export default function buildInitialFilters(filters, activeFilters) {
   const defaults = {};
 
   if (!filters) {
@@ -27,6 +27,4 @@ const buildInitialFilters = (filters, activeFilters) => {
     ...defaults,
     ...activeFilters,
   };
-};
-
-export default buildInitialFilters;
+}

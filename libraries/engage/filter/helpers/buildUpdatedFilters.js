@@ -3,7 +3,7 @@
  * @param {Object} updatedFilters The filters after they where modified.
  * @return {Object}
  */
-const buildUpdatedFilters = (initialFilters, updatedFilters) => {
+export default function buildUpdatedFilters(initialFilters, updatedFilters) {
   // Create a set of active filters by combining state and updatedFilters.
   const activeFilters = {
     ...initialFilters,
@@ -33,6 +33,4 @@ const buildUpdatedFilters = (initialFilters, updatedFilters) => {
 
     return result;
   }, null);
-};
-
-export default buildUpdatedFilters;
+}

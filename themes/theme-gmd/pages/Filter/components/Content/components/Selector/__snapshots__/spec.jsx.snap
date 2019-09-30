@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <Selector /> should render with minimum props 1`] = `
-<FilterContentItem>
+<FilterItem>
   <Accordion
     handleLabel="filter.filter_by"
     renderLabel={[Function]}
@@ -30,5 +30,5 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
       />
     </div>
   </Accordion>
-</FilterContentItem>
+</FilterItem>
 `;
