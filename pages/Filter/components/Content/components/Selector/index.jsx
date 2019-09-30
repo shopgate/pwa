@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import Item from '../Item';
+import { FilterItem } from '@shopgate/engage/filter';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
@@ -89,7 +89,7 @@ class Selector extends PureComponent {
     const { selected } = this.state;
 
     return (
-      <Item>
+      <FilterItem>
         <Accordion
           renderLabel={this.renderLabel}
           testId={id}
@@ -107,7 +107,7 @@ class Selector extends PureComponent {
             ))}
           </div>
         </Accordion>
-      </Item>
+      </FilterItem>
     );
   }
 }
