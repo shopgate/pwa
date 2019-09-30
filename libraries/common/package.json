@@ -33,7 +33,6 @@
     "react-inline-transition-group": "^2.2.1",
     "react-portal": "^3.1.0",
     "react-redux": "^5.0.6",
-    "recompose": "^0.26.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",

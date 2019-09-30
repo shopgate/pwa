@@ -28,9 +28,7 @@ describe('<Tiers />', () => {
         currency: 'USD',
       };
 
-      const wrapper = shallow((
-        <Tiers price={price} />
-      )).dive();
+      const wrapper = shallow(<Tiers price={price} />);
 
       expect(wrapper).toMatchSnapshot();
     });
@@ -38,12 +36,12 @@ describe('<Tiers />', () => {
 
   describe('Rendering without data', () => {
     it('should render nothing when price data are not available ({})', () => {
-      const wrapper = shallow(<Tiers price={{}} />).dive();
+      const wrapper = shallow(<Tiers price={{}} />);
       expect(wrapper).toBeEmptyRender();
     });
 
     it('should render nothing when price data are not available (null)', () => {
-      const wrapper = shallow(<Tiers price={null} />).dive();
+      const wrapper = shallow(<Tiers price={null} />);
       expect(wrapper).toBeEmptyRender();
     });
 
@@ -53,13 +51,13 @@ describe('<Tiers />', () => {
         currency: 'USD',
       };
 
-      const wrapper = shallow(<Tiers price={price} />).dive();
+      const wrapper = shallow(<Tiers price={price} />);
       expect(wrapper).toBeEmptyRender();
     });
 
     it('should render nothing when tier prices are not available (field missing)', () => {
       const price = { currency: 'USD' };
-      const wrapper = shallow(<Tiers price={price} />).dive();
+      const wrapper = shallow(<Tiers price={price} />);
       expect(wrapper).toBeEmptyRender();
     });
   });

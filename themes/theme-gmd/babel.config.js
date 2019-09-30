@@ -1,5 +1,5 @@
 module.exports = (api) => {
-  api.cache(false);
+  api.cache(api.env('test'));
 
   return {
     compact: true,
