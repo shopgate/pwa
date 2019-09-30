@@ -1,5 +1,4 @@
-import React from 'react';
-import pure from 'recompose/pure';
+import React, { memo } from 'react';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import styles from './style';
@@ -17,4 +16,4 @@ const TaxDisclaimer = () => {
   );
 };
 
-export default pure(TaxDisclaimer);
+export default memo(TaxDisclaimer);
