@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from '../../style';
 
@@ -30,4 +29,4 @@ Tier.propTypes = {
   tier: PropTypes.shape().isRequired,
 };
 
-export default pure(Tier);
+export default memo(Tier);

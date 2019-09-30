@@ -1,5 +1,4 @@
-import React from 'react';
-import { pure } from 'recompose';
+import React, { memo } from 'react';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import connect from './connector';
 import styles from './style';
@@ -18,4 +17,4 @@ const CartButtonBadge = ({ count }) => (
   )
 );
 
-export default connect(pure(CartButtonBadge));
+export default connect(memo(CartButtonBadge));
