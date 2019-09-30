@@ -8,8 +8,8 @@ import {
   CODE_TRACKING,
   defaultClientInformation,
 } from '@shopgate/pwa-core';
-import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
-import { componentsConfig } from '@shopgate/pwa-common/helpers/config';
+import { TYPE_PHONE, OS_ALL, OS_ANDROID } from '@shopgate/pwa-common/constants/Device';
+import appConfig, { shopNumber, componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import core from '@shopgate/tracking-core/core/Core';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
@@ -37,6 +37,24 @@ export default function setup(subscribe) {
     // TODO: instantiate the UnifiedPlugin only if a native tracker is configured (FB, AppsFlyer)
     // eslint-disable-next-line no-new
     new UnifiedPlugin();
+
+    if (appConfig.tracking.hasWebTrackingEngage) {
+      // eslint-disable-next-line global-require
+      const GaBase = require('@shopgate/tracking-core/plugins/trackers/GaBase').default;
+      GaBase.createUniversal({
+        shopNumber,
+        codebaseVersion: get(clientInformationResponse, 'value.codebaseVersion'),
+        config: {
+          merchant: [],
+          shopgate: {
+            id: clientInformation.os === OS_ANDROID ?
+              appConfig.webTrackingEngage.android :
+              appConfig.webTrackingEngage.ios,
+            useNetPrices: false,
+          },
+        },
+      });
+    }
 
     try {
       // eslint-disable-next-line no-undef, global-require, import/no-dynamic-require
