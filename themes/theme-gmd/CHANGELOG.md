@@ -1,5 +1,27 @@
 # Changelog
 
+## [v6.8.0](https://github.com/shopgate/pwa/compare/v6.7.2...v6.8.0) (2019-09-30)
+
+#### :rocket: Enhancement
+* [#828](https://github.com/shopgate/pwa/pull/828) A11y: Engage Login Form accessibility adjustments ([@alexbridge](https://github.com/alexbridge))
+* [#827](https://github.com/shopgate/pwa/pull/827) Icons are now configurable via the theme configuration. ([@alexbridge](https://github.com/alexbridge))
+* [#826](https://github.com/shopgate/pwa/pull/826) Make Shadows configurable in Themes config ([@alexbridge](https://github.com/alexbridge))
+* [#815](https://github.com/shopgate/pwa/pull/815) Updated to Babel 7, eslint 5 and jest 24 ([@ghost](https://github.com/ghost))
+* [#782](https://github.com/shopgate/pwa/pull/782) Added functionality to determine geolocation coordinates ([@fkloes](https://github.com/fkloes))
+* [#781](https://github.com/shopgate/pwa/pull/781) Added the locations & availability configuration. ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#835](https://github.com/shopgate/pwa/pull/835) Fixed spacing between icons and labels of iOS TabBar entries ([@fkloes](https://github.com/fkloes))
+* [#822](https://github.com/shopgate/pwa/pull/822) Fixed circular dependencies ([@devbucket](https://github.com/devbucket))
+* [#796](https://github.com/shopgate/pwa/pull/796) Fixed XOR usage in the object merge helper to output warnings correctly. ([@DanielRuf](https://github.com/DanielRuf))
+
+#### :nail_care: Polish
+* [#814](https://github.com/shopgate/pwa/pull/814) Fixed the JSDoc type annotations ([@DanielRuf](https://github.com/DanielRuf))
+* [#795](https://github.com/shopgate/pwa/pull/795) Removed unnecessary ternary operators in the changelog generator script. ([@DanielRuf](https://github.com/DanielRuf))
+* [#798](https://github.com/shopgate/pwa/pull/798) Renamed LICENSE file ([@DanielRuf](https://github.com/DanielRuf))
+* [#794](https://github.com/shopgate/pwa/pull/794) Removed a duplicated case clause in the scanner's reducer switch. ([@DanielRuf](https://github.com/DanielRuf))
+
+
 ## [v6.7.2](https://github.com/shopgate/pwa/compare/v6.7.1...v6.7.2) (2019-09-04)
 
 #### :rocket: Enhancement
