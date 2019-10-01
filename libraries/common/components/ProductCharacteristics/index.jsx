@@ -8,6 +8,7 @@ import {
   isCharacteristicEnabled,
   getSelectedValue,
   prepareState,
+  selectCharacteristics,
 } from './helpers';
 
 /**
@@ -23,7 +24,10 @@ class ProductCharacteristics extends Component {
     setCharacteristics: PropTypes.func.isRequired,
     finishTimeout: PropTypes.number,
     variantId: PropTypes.string,
-    variants: PropTypes.shape(),
+    variants: PropTypes.shape({
+      characteristics: PropTypes.arrayOf(PropTypes.shape()),
+      products: PropTypes.arrayOf(PropTypes.shape()),
+    }),
   }
 
   static defaultProps = {
@@ -42,12 +46,17 @@ class ProductCharacteristics extends Component {
 
     this.state = {
       highlight: null,
-      characteristics: this.getCharacteristics(props),
+      characteristics: selectCharacteristics(props),
     };
 
     this.setRefs(props);
 
     props.conditioner.addConditioner('product-variants', this.checkSelection);
+  }
+
+  /** @inheritDoc */
+  componentDidMount() {
+    this.checkSelectedCharacteristics();
   }
 
   /**
@@ -58,8 +67,8 @@ class ProductCharacteristics extends Component {
       // Initialize refs and characteristics when the variants prop was updated with a valid value.
       this.setRefs(nextProps);
       this.setState({
-        characteristics: this.getCharacteristics(nextProps),
-      });
+        characteristics: selectCharacteristics(nextProps),
+      }, this.checkSelectedCharacteristics);
     }
   }
 
@@ -75,22 +84,6 @@ class ProductCharacteristics extends Component {
         this.refsStore[char.id] = React.createRef();
       });
     }
-  }
-
-  /**
-   * Creates the characteristics relative to the given props.
-   * @param {Object} props The props to check against.
-   * @return {Object}
-   */
-  getCharacteristics = (props) => {
-    const { variantId, variants } = props;
-
-    if (!variants) {
-      return {};
-    }
-
-    const { characteristics } = variants.products.find(product => product.id === variantId) || {};
-    return characteristics || {};
   }
 
   /**
@@ -130,11 +123,13 @@ class ProductCharacteristics extends Component {
     return selected;
   }
 
-  handleFinished = () => {
+  checkSelectedCharacteristics = () => {
     const { characteristics } = this.state;
-    const {
-      variantId, variants, finishTimeout,
-    } = this.props;
+    const { variantId, variants, finishTimeout } = this.props;
+
+    if (!variants) {
+      return;
+    }
     const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
 
     if (filteredValues.length !== variants.characteristics.length) {
@@ -183,7 +178,7 @@ class ProductCharacteristics extends Component {
         },
         highlight: null,
       };
-    }, this.handleFinished);
+    }, this.checkSelectedCharacteristics);
   }
 
   /**

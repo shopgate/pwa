@@ -62,10 +62,9 @@ export default function pageReducer(state = {}, action) {
       };
     }
     case APP_WILL_START: {
-      return Object.keys(state).reduce((newState, pageId) => {
-        // eslint-disable-next-line no-param-reassign
-        newState[pageId].expires = 0;
-        return newState;
+      return Object.keys(state).reduce((acc, pageId) => {
+        acc[pageId].expires = 0;
+        return acc;
       }, { ...state });
     }
 
