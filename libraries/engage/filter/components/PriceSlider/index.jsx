@@ -87,7 +87,12 @@ class PriceSlider extends PureComponent {
     return (
       <FilterItem>
         <div className={styles.wrapper} data-test-id="priceRangeSlider">
-          <Label priceLength={priceLength} priceMax={priceMax} priceMin={priceMin} />
+          <Label
+            priceLength={priceLength}
+            priceMax={priceMax}
+            priceMin={priceMin}
+            onChange={this.onChange}
+          />
           <RangeSlider
             classNames={styles.rangeSlider}
             easing="exponential"

@@ -14,6 +14,31 @@ const price = css({
   textAlign: 'center',
 }).toString();
 
+const editableContainer = css({
+  position: 'relative',
+});
+
+const editableField = css({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  textAlign: 'center',
+  background: 'transparent',
+  zIndex: 2,
+  textIndent: -800,
+  outline: 'none',
+  padding: 0,
+  margin: 0,
+  border: '1px solid transparent',
+  borderRadius: 3,
+  lineHeight: 1,
+  ':focus': {
+    background: colors.light,
+    textIndent: 0,
+    borderColor: colors.shade5,
+  },
+});
+
 const rangeSlider = {
   container: css({
     paddingTop: variables.gap.big,
@@ -46,21 +71,10 @@ const rangeSlider = {
   }).toString(),
 };
 
-const srOnly = css({
-  position: 'absolute',
-  width: 1,
-  height: 1,
-  padding: 0,
-  margin: -1,
-  overflow: 'hidden',
-  clip: 'rect(0, 0, 0, 0)',
-  whiteSpace: 'nowrap',
-  border: 0,
-});
-
 export default {
   wrapper,
   price,
   rangeSlider,
-  srOnly,
+  editableContainer,
+  editableField,
 };
