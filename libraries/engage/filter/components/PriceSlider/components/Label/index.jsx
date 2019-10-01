@@ -1,4 +1,6 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, {
+  memo, useState, useEffect, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { I18n } from '@shopgate/engage/components';
@@ -18,6 +20,8 @@ function Label(props) {
   } = props;
   const [minValue, setMinValue] = useState(priceMin);
   const [maxValue, setMaxValue] = useState(priceMax);
+  const minRef = useRef(null);
+  const maxRef = useRef(null);
 
   useEffect(() => {
     setMinValue(priceMin);
@@ -54,51 +58,56 @@ function Label(props) {
     }
   }
 
+  console.warn(minRef.current.offsetLeft);
+
   return (
-    <div
-      aria-label={i18n.text('price.range', {
-        fromPrice: i18n.price(priceMin, currency, false),
-        toPrice: i18n.price(priceMax, currency, false),
-      })}
-    >
-      <I18n.Text string="price.range">
+    <div className={styles.editableContainer}>
+      <span className={styles.srOnly}>
+        {i18n.text('price.range', {
+          fromPrice: i18n.price(priceMin, currency, false),
+          toPrice: i18n.price(priceMax, currency, false),
+        })}
+      </span>
+      <I18n.Text string="price.range" aria-hidden>
         <I18n.Placeholder forKey="fromPrice">
-          <span className={styles.editableContainer}>
-            <span className={styles.price} style={{ minWidth: priceLength }}>
-              <I18n.Price price={priceMin} currency={currency} fractions={false} />
-            </span>
-            <input
-              type="text"
-              id="priceMin"
-              name="priceMin"
-              value={minValue}
-              onChange={handleChangeMin}
-              onClick={handleFieldClick}
-              style={{ width: priceLength }}
-              className={styles.editableField}
-              aria-label={i18n.text('price.range_from')}
-            />
+          <span className={styles.price} style={{ minWidth: priceLength }} ref={minRef}>
+            <I18n.Price price={priceMin} currency={currency} fractions={false} />
           </span>
         </I18n.Placeholder>
         <I18n.Placeholder forKey="toPrice">
-          <span className={styles.editableContainer}>
-            <span className={styles.price} style={{ minWidth: priceLength }}>
-              <I18n.Price price={priceMax} currency={currency} fractions={false} />
-            </span>
-            <input
-              type="text"
-              id="priceMax"
-              name="priceMax"
-              value={maxValue}
-              onChange={handleChangeMax}
-              onClick={handleFieldClick}
-              style={{ width: priceLength }}
-              className={styles.editableField}
-              aria-label={i18n.text('price.range_to')}
-            />
+          <span className={styles.price} style={{ minWidth: priceLength }} ref={maxRef}>
+            <I18n.Price price={priceMax} currency={currency} fractions={false} />
           </span>
         </I18n.Placeholder>
       </I18n.Text>
+      <input
+        type="text"
+        id="priceMin"
+        name="priceMin"
+        value={minValue}
+        onChange={handleChangeMin}
+        onClick={handleFieldClick}
+        style={{
+          width: priceLength,
+          left: minRef.current.offsetLeft,
+        }}
+        className={styles.editableField}
+        aria-label={i18n.text('price.range_from')}
+      />
+      <input
+        type="text"
+        id="priceMax"
+        name="priceMax"
+        value={maxValue}
+        onChange={handleChangeMax}
+        onClick={handleFieldClick}
+        style={{
+          width: priceLength,
+          left: maxRef.current.offsetLeft,
+        }}
+        className={styles.editableField}
+        aria-label={i18n.text('price.range_to')}
+      />
     </div>
   );
 }
