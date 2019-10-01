@@ -428,6 +428,28 @@
         "type": "json",
         "label": "Toggle inner shadows of product images"
       }
+    },
+    "webTrackingEngage": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": {},
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/web_tracking_engage?parsed=true",
+        "key": "value"
+      }
+    },
+    "tracking": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "hasWebTrackingEngage": false
+      },
+      "params": {
+        "type": "json",
+        "label": "Tracking settings: webTrackingEngage, etc"
+      }
     }
   }
 }

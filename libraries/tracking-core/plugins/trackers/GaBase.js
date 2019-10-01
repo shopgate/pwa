@@ -1,6 +1,7 @@
 import BasePlugin from '../Base';
 import SgGAUniversalTracking from './GaUniversal';
 import SgGAClassicTracking from './GaClassic';
+import { SGLink } from '../../helpers/helper';
 
 const TRACK_PAGE_VIEW = 'pageView';
 const TRACK_EVENT = 'event';
@@ -11,6 +12,7 @@ const TRACK_CONVERSION = {
   CURRENCY: 'currencyCode',
   END: 'trackTrans',
   START: 'addTrans',
+  PAGE: 'page',
 };
 
 const ACCOUNT_CLASSIC = 'classic';
@@ -30,7 +32,7 @@ const merchantOnly = {
 const commandMapping = {};
 commandMapping[TRACK_PAGE_VIEW] = ['trackPageview', 'pageview'];
 commandMapping[TRACK_EVENT] = ['trackEvent', 'event'];
-commandMapping[TRACK_SET] = ['set'];
+commandMapping[TRACK_SET] = [undefined, 'set'];
 commandMapping[TRACK_CONVERSION.ADDITEM] = ['addItem', 'ecommerce:addItem'];
 commandMapping[TRACK_CONVERSION.CURRENCY] = ['currencyCode'];
 commandMapping[TRACK_CONVERSION.END] = ['trackTrans', 'ecommerce:send'];
@@ -91,7 +93,6 @@ class GaBase extends BasePlugin {
    */
   sendCommand(command, payload, scope, account) {
     if (typeof commandMapping[command] === 'undefined') {
-      console.warn(`SgGATracking: Unknown google analytics command "${command}"`);
       return;
     }
 
@@ -186,6 +187,16 @@ class GaBase extends BasePlugin {
     // Push notification
     this.register.openPushNotification((data) => {
       this.sendCommand(TRACK_EVENT, GaBase.getEventData('PushNotification', data), shopgateOnly);
+    });
+
+    // Push notification
+    this.register.setCampaignWithUrl((data, raw) => {
+      const shopgateUrl = new SGLink(data.url);
+      shopgateUrl.setUtmParams(data, raw);
+
+      this.sendCommand(TRACK_SET, ['campaignName', shopgateUrl.getParam('utm_campaign')], undefined, ACCOUNT_UNIVERSAL);
+      this.sendCommand(TRACK_SET, ['campaignSource', shopgateUrl.getParam('utm_source')], undefined, ACCOUNT_UNIVERSAL);
+      this.sendCommand(TRACK_SET, ['campaignMedium', shopgateUrl.getParam('utm_medium')], undefined, ACCOUNT_UNIVERSAL);
     });
 
     // App review prompt
