@@ -20,13 +20,22 @@ function Label(props) {
   } = props;
   const [minValue, setMinValue] = useState(priceMin);
   const [maxValue, setMaxValue] = useState(priceMax);
+  const [minOffset, setMinOffset] = useState(0);
+  const [maxOffset, setMMaxOffset] = useState(0);
   const minRef = useRef(null);
   const maxRef = useRef(null);
 
+  // Set new values, when prices change from outside.
   useEffect(() => {
     setMinValue(priceMin);
     setMaxValue(priceMax);
   }, [priceMin, priceMax]);
+
+  // Store the leftOffset when the reference changes.
+  useEffect(() => {
+    setMinOffset(minRef.current.offsetLeft);
+    setMMaxOffset(maxRef.current.offsetLeft);
+  }, [minRef, maxRef]);
 
   /**
    * Selects the field content on click.
@@ -58,8 +67,6 @@ function Label(props) {
     }
   }
 
-  console.warn(minRef.current.offsetLeft);
-
   return (
     <div className={styles.editableContainer}>
       <span className={styles.srOnly}>
@@ -89,7 +96,7 @@ function Label(props) {
         onClick={handleFieldClick}
         style={{
           width: priceLength,
-          left: minRef.current.offsetLeft,
+          left: minOffset,
         }}
         className={styles.editableField}
         aria-label={i18n.text('price.range_from')}
@@ -103,7 +110,7 @@ function Label(props) {
         onClick={handleFieldClick}
         style={{
           width: priceLength,
-          left: maxRef.current.offsetLeft,
+          left: maxOffset,
         }}
         className={styles.editableField}
         aria-label={i18n.text('price.range_to')}

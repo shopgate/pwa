@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PriceSlider: <Label /> should render 1`] = `
-<Fragment>
+<div
+  className={
+    Object {
+      "data-css-13azwyo": "",
+    }
+  }
+>
   <span
     className={
       Object {
@@ -57,5 +63,45 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       </span>
     </Placeholder>
   </Translate>
-</Fragment>
+  <input
+    aria-label="price.range_from"
+    className={
+      Object {
+        "data-css-1ssfuq5": "",
+      }
+    }
+    id="priceMin"
+    name="priceMin"
+    onChange={[Function]}
+    onClick={[Function]}
+    style={
+      Object {
+        "left": 0,
+        "width": "5",
+      }
+    }
+    type="text"
+    value={25}
+  />
+  <input
+    aria-label="price.range_to"
+    className={
+      Object {
+        "data-css-1ssfuq5": "",
+      }
+    }
+    id="priceMax"
+    name="priceMax"
+    onChange={[Function]}
+    onClick={[Function]}
+    style={
+      Object {
+        "left": 0,
+        "width": "5",
+      }
+    }
+    type="text"
+    value={999}
+  />
+</div>
 `;
