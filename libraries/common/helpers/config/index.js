@@ -5,7 +5,7 @@ import { isObject } from '../validation';
 
 /**
  * Provides a default app config as a fallback.
- * @type {Object}
+ * @typedef {Object} AppConfig
  */
 const defaultAppConfig = {
   appId: 'shop_30177',
@@ -34,6 +34,13 @@ const defaultAppConfig = {
   cart: {},
   scanner: {},
   favorites: {},
+  tracking: {
+    hasWebTrackingEngage: false,
+  },
+  webTrackingEngage: {
+    android: '',
+    ios: '',
+  },
 };
 
 /**
@@ -135,4 +142,5 @@ export function writeToConfig(newConfig, arrayComparator = null) {
 const { appId } = appConfig;
 export const shopNumber = appId ? appId.replace('shop_', '') : '';
 
+/** @type {AppConfig} */
 export default appConfig;
