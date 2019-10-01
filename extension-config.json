@@ -387,6 +387,28 @@
         "label": "Configure the display of cart information."
       }
     },
+    "variantSelectionMode": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/product_selection_mode?parsed=true",
+        "key": "value"
+      }
+    },
+    "product": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "variantPreselect": false
+      },
+      "params": {
+        "type": "json",
+        "label": "Product settings."
+      }
+    },
     "hasNoScanner": {
       "type": "bigApi",
       "destination": "frontend",
