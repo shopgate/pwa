@@ -15,6 +15,7 @@
     "connect"
   ],
   "dependencies": {
+    "@shopgate/pwa-benchmark": "6.7.2",
     "@sentry/browser": "^4.6.3",
     "@virtuous/conductor": "~2.3.0",
     "@virtuous/react-conductor": "~2.3.0",
@@ -43,7 +44,6 @@
     "url-search-params": "^0.10.0"
   },
   "devDependencies": {
-    "@shopgate/pwa-benchmark": "6.7.2",
     "@shopgate/pwa-core": "6.7.2",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
