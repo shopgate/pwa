@@ -25,6 +25,7 @@
     "@babel/plugin-transform-spread": "^7.2.2",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/runtime": "^7.5.5",
     "@babel/runtime-corejs3": "^7.5.5",
     "@hot-loader/react-dom": "^16.8.6",
@@ -65,7 +66,6 @@
     "smoothscroll-polyfill": "^0.4.3"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.5.5",
     "@shopgate/eslint-config": "6.7.2",
     "@shopgate/pwa-e2e-test": "6.7.2",
     "@shopgate/pwa-unit-test": "6.7.2",
