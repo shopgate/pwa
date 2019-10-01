@@ -38,15 +38,30 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
     >
       <SurroundPortals
         portalName="scanner.bar"
-        portalProps={null}
+        portalProps={
+          Object {
+            "flashlightState": false,
+            "onToggleFlashlight": [Function],
+          }
+        }
       >
         <Portal
           name="scanner.bar.before"
-          props={null}
+          props={
+            Object {
+              "flashlightState": false,
+              "onToggleFlashlight": [Function],
+            }
+          }
         />
         <Portal
           name="scanner.bar"
-          props={null}
+          props={
+            Object {
+              "flashlightState": false,
+              "onToggleFlashlight": [Function],
+            }
+          }
         >
           <Grid
             className="css-kwl6fj"
@@ -196,7 +211,12 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
         </Portal>
         <Portal
           name="scanner.bar.after"
-          props={null}
+          props={
+            Object {
+              "flashlightState": false,
+              "onToggleFlashlight": [Function],
+            }
+          }
         />
       </SurroundPortals>
     </div>
