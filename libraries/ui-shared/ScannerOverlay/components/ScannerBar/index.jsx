@@ -15,7 +15,13 @@ import styles from './style';
  */
 const ScannerBar = ({ flashlightState, onToggleFlashlight }) => createPortal(
   (
-    <SurroundPortals portalName={SCANNER_BAR}>
+    <SurroundPortals
+      portalName={SCANNER_BAR}
+      portalProps={{
+        flashlightState,
+        onToggleFlashlight,
+      }}
+    >
       <Grid className={styles.container}>
         <Grid.Item className={styles.column}>
           <FlashlightButton onToggle={onToggleFlashlight} flashlightState={flashlightState} />
