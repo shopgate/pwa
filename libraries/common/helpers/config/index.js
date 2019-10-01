@@ -5,7 +5,7 @@ import { isObject } from '../validation';
 
 /**
  * Provides a default app config as a fallback.
- * @type {Object}
+ * @mixin AppConfig
  */
 const defaultAppConfig = {
   appId: 'shop_30177',
@@ -31,6 +31,10 @@ const defaultAppConfig = {
   theme: {},
   cartShippingHideAnonymousLegacy: null,
   cartShippingTextAnonymousLegacy: null,
+  variantSelectionMode: null,
+  product: {
+    variantPreselect: false,
+  },
   cart: {},
   scanner: {},
   favorites: {},
@@ -62,7 +66,7 @@ export const componentsConfig = {
 /**
  * The app.json config from the theme which will automatically be resolved.
  * Be careful when changing existing properties on the fly, reassignments should never be done!
- * @type {Object}
+ * @mixes AppConfig
  */
 const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : defaultAppConfig;
 
@@ -135,4 +139,5 @@ export function writeToConfig(newConfig, arrayComparator = null) {
 const { appId } = appConfig;
 export const shopNumber = appId ? appId.replace('shop_', '') : '';
 
+/** @mixes AppConfig */
 export default appConfig;
