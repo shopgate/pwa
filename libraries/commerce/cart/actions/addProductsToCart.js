@@ -1,5 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
+import hook from '@shopgate/pwa-common/helpers/function/hook';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
@@ -17,7 +18,7 @@ import { messagesHaveErrors } from '../helpers';
  * @param {Array} data The options for the products to be added.
  * @return {Function} A redux thunk.
  */
-const addToCart = data => (dispatch, getState) => {
+const addToCart = hook(data => (dispatch, getState) => {
   const state = getState();
 
   const pendingProductCount = getProductPendingCount(state);
@@ -73,6 +74,7 @@ const addToCart = data => (dispatch, getState) => {
       ));
       logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
-};
+});
 
+/** @mixes {FunctionHook} */
 export default addToCart;
