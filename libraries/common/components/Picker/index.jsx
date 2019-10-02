@@ -45,6 +45,8 @@ const findItemIndexByValue = (items, value) => (
 
 /**
  * The picker component (acts like a selectbox).
+ * @deprecated Will be remove in Engage v7.0.0.
+ *             Please use `import { Picker } from '@shopgate/engage/components'` instead.
  */
 class Picker extends Component {
   static propTypes = {
@@ -87,9 +89,9 @@ class Picker extends Component {
     className: '',
     isOpen: false,
     items: [],
-    onChange: () => {},
-    onClose: () => {},
-    onSelect: () => {},
+    onChange: () => { },
+    onClose: () => { },
+    onSelect: () => { },
     placeholder: 'Pick ...',
     value: null,
   };

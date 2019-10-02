@@ -3,13 +3,13 @@
 exports[`<Placeholder /> Given the component was mounted to the DOM should render 1`] = `
 <I18nProvider>
   <Translate
-    className=""
+    className={null}
     params={Object {}}
     role={null}
     string="greeting"
   >
     <span
-      className=""
+      className={null}
       role={null}
     >
       Hello 
@@ -17,11 +17,9 @@ exports[`<Placeholder /> Given the component was mounted to the DOM should rende
         forKey="world"
         key=".0"
       >
-        <span>
-          <strong>
-            WORLD
-          </strong>
-        </span>
+        <strong>
+          WORLD
+        </strong>
       </Placeholder>
       /
     </span>

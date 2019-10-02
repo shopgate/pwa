@@ -44,11 +44,14 @@
     },
     "apply": "Done",
     "more": "more",
-    "reset": "Reset"
+    "reset": "Reset",
+    "filter_by": "Filter by {label}"
   },
   "price": {
     "from": "From {price}",
     "range": "Price from {fromPrice} to {toPrice}",
+    "range_from": "Price range from",
+    "range_to": "Price range to",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"

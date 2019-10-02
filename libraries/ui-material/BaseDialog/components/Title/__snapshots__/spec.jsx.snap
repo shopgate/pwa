@@ -15,7 +15,7 @@ exports[`<Title /> should render with a title 1`] = `
     rows={3}
   >
     <Translate
-      className=""
+      className={null}
       params={Object {}}
       role={null}
       string="Some test title"

@@ -45,11 +45,14 @@
     },
     "apply": "Terminé",
     "more": "Plus",
-    "reset": "Effacer tout"
+    "reset": "Effacer tout",
+    "filter_by": "Filtrer par {label}"
   },
   "price": {
     "from": "De {price}",
     "range": "Plage de prix de {fromPrice} à {toPrice}",
+    "range_from": "La fourchette des prix de",
+    "range_to": "La fourchette des prix jusqu'à",
     "tier": {
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"

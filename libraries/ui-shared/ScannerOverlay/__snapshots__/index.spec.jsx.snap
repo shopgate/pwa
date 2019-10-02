@@ -185,13 +185,13 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                         props={null}
                       >
                         <Translate
-                          className=""
+                          className={null}
                           params={Object {}}
                           role={null}
                           string="scanner.instructions"
                         >
                           <span
-                            className=""
+                            className={null}
                             role={null}
                           >
                             scanner.instructions

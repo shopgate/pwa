@@ -44,11 +44,14 @@
     },
     "apply": "Fertig",
     "more": "mehr",
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "filter_by": "Filtern nach {label}"
   },
   "price": {
     "from": "Ab {price}",
     "range": "Preis von {fromPrice} bis {toPrice}",
+    "range_from": "Preisspanne ab",
+    "range_to": "Preisspanne bis",
     "tier": {
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
