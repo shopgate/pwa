@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import hook from './hook';
+import hook from '../hook';
 
 describe('Hook', () => {
   let original;

@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
-import hook from '@shopgate/pwa-common/helpers/function/hook';
+import { hook } from '@shopgate/pwa-common/helpers/redux';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
