@@ -129,7 +129,7 @@ const Swiper = (props) => {
   };
 
   useEffect(() => {
-    if (swiperInstance.current !== null && params.rebuildOnUpdate === false) {
+    if (swiperInstance.current !== null) {
       if (loop) {
         // Recreate the loop on prop updates to avoid duplicated slides from the last slide set.
         swiperInstance.current.loopCreate();
@@ -137,7 +137,7 @@ const Swiper = (props) => {
 
       swiperInstance.current.update();
     }
-  }, [children]);
+  }, [children, loop, params.rebuildOnUpdate]);
 
   return (
     <div className={cls(container, className)} aria-hidden={ariaHidden}>
