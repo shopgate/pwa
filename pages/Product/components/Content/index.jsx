@@ -1,15 +1,14 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { Section } from '@shopgate/engage/a11y';
-import { ProductProperties, RelationsSlider } from '@shopgate/engage/product';
+import { ProductProperties, RelationsSlider, Description } from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
-import Description from '../Description';
 import AppBar from '../AppBar';
 import connect from './connector';
 import { ProductContext } from '../../context';
@@ -140,42 +139,42 @@ class ProductContent extends PureComponent {
       setCharacteristics: this.setCharacteristics,
     };
 
+    const { productId, variantId } = this.state;
+
     return (
-      <div data-test-id={this.state.productId}>
-        <Fragment>
-          <AppBar productId={this.state.productId} />
-          <ProductContext.Provider value={contextValue}>
-            <Media aria-hidden />
-            <Header />
-            {/*
-              This feature is currently in BETA testing.
-              It should only be used for approved BETA Client Projects
-            */}
-            <RelationsSlider desiredPosition="header" />
-            <Section title="product.sections.options">
-              <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
-              <Options />
-            </Section>
-            <Section title="product.sections.description">
-              <Description productId={this.state.productId} variantId={this.state.variantId} />
-            </Section>
-            {/*
-              This feature is currently in BETA testing.
-              It should only be used for approved BETA Client Projects
-            */}
-            <RelationsSlider desiredPosition="description" />
-            <Section title="product.sections.properties">
-              <ProductProperties
-                productId={this.state.productId}
-                variantId={this.state.variantId}
-              />
-            </Section>
-            <Section title="product.sections.ratings">
-              <Reviews productId={this.state.productId} />
-            </Section>
-            <TaxDisclaimer />
-          </ProductContext.Provider>
-        </Fragment>
+      <div data-test-id={productId}>
+        <AppBar productId={productId} />
+        <ProductContext.Provider value={contextValue}>
+          <Media aria-hidden />
+          <Header />
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          <RelationsSlider desiredPosition="header" />
+          <Section title="product.sections.options">
+            <Characteristics productId={productId} variantId={variantId} />
+            <Options />
+          </Section>
+          <Section title="product.sections.description">
+            <Description productId={productId} variantId={variantId} />
+          </Section>
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          <RelationsSlider desiredPosition="description" />
+          <Section title="product.sections.properties">
+            <ProductProperties
+              productId={productId}
+              variantId={variantId}
+            />
+          </Section>
+          <Section title="product.sections.ratings">
+            <Reviews productId={productId} />
+          </Section>
+          <TaxDisclaimer />
+        </ProductContext.Provider>
       </div>
     );
   }
