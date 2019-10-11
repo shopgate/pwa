@@ -9,6 +9,7 @@ jest.mock('@shopgate/engage/a11y', () => ({
 jest.mock('@shopgate/engage/product', () => ({
   ProductProperties: () => null,
   RelationsSlider: () => null,
+  Description: () => null,
 }));
 
 jest.mock('@shopgate/pwa-core', () => ({
@@ -21,7 +22,6 @@ jest.mock('../Media', () => () => null);
 jest.mock('../Header', () => () => null);
 jest.mock('../Characteristics', () => () => null);
 jest.mock('../Options', () => () => null);
-jest.mock('../Description', () => () => null);
 jest.mock('../AppBar', () => () => null);
 jest.mock('Components/Reviews', () => () => null);
 jest.mock('./connector', () => Component => Component);
