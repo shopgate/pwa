@@ -1,5 +1,5 @@
 import 'react-id-swiper/lib/styles/css/swiper.css';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
@@ -127,17 +127,6 @@ const Swiper = (props) => {
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
   };
-
-  useEffect(() => {
-    if (swiperInstance.current !== null) {
-      if (loop) {
-        // Recreate the loop on prop updates to avoid duplicated slides from the last slide set.
-        swiperInstance.current.loopCreate();
-      }
-
-      swiperInstance.current.update();
-    }
-  }, [children, loop, params.rebuildOnUpdate]);
 
   return (
     <div className={cls(container, className)} aria-hidden={ariaHidden}>
