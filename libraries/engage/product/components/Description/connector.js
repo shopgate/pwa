@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { getProductDescription } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { historyPush } from '@shopgate/engage/core';
+import { getProductDescription } from '@shopgate/engage/product';
 
 /**
  * Maps the contents of the state to the component props.

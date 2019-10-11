@@ -2,18 +2,18 @@ import React from 'react';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import PlaceholderParagraph from '@shopgate/pwa-ui-shared/PlaceholderParagraph';
-import ProductDescription from './index';
+import { PlaceholderParagraph } from '@shopgate/engage/components';
+import Description from '../index';
 
-jest.mock('./connector', () => obj => obj);
+jest.mock('../connector', () => obj => obj);
 
-describe('<ProductDescription />', () => {
+describe('<Description />', () => {
   const mockStore = configureStore();
   const html = '<h1>foo</h1>';
 
   it('should not render if no data is available', () => {
     const store = mockStore({});
-    const wrapper = mount(<ProductDescription store={store} html={null} />, mockRenderOptions);
+    const wrapper = mount(<Description store={store} html={null} />, mockRenderOptions);
     const foundContent = wrapper.findWhere(n =>
       typeof n.prop('dangerouslySetInnerHTML') !== 'undefined');
 
@@ -25,7 +25,7 @@ describe('<ProductDescription />', () => {
 
   it('should render description if data is available', () => {
     const store = mockStore({});
-    const wrapper = mount(<ProductDescription store={store} html={html} />, mockRenderOptions);
+    const wrapper = mount(<Description store={store} html={html} />, mockRenderOptions);
     const foundContent = wrapper.findWhere(n =>
       typeof n.prop('dangerouslySetInnerHTML') !== 'undefined');
 
