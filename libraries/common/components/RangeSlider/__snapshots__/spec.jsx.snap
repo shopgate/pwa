@@ -28,7 +28,7 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
         className=" css-10eto0a"
         style={
           Object {
-            "left": "1.000000000000002e-198%",
+            "left": "1.0000000000000008e-198%",
             "right": "100%",
             "transition": null,
           }
