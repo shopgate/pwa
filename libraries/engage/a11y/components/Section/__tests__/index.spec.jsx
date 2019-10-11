@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Section from '../index';
-import { hidden } from '../style';
 
 const mockTranslate = jest.fn();
 
@@ -22,7 +21,7 @@ describe('<Section />', () => {
     jest.clearAllMocks();
   });
 
-  it('should render visible', () => {
+  it('should render with a label', () => {
     const wrapper = mount((
       <Section title={title} titleParams={titleParams}>
         <div id="child-component" />
@@ -30,7 +29,7 @@ describe('<Section />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('section').hasClass(hidden.toString())).toBe(false);
+    expect(wrapper.find('h2').exists()).toBe(true);
     expect(mockTranslate).toHaveBeenCalledWith({
       string: title,
       params: titleParams,
@@ -40,11 +39,8 @@ describe('<Section />', () => {
   it('should render hidden when no children rendered', () => {
     const wrapper = mount(<Section title={title} />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('section').hasClass(hidden.toString())).toBe(true);
-    expect(mockTranslate).toHaveBeenCalledWith({
-      string: title,
-      params: {},
-    });
+    expect(wrapper.find('h2').exists()).toBe(false);
+    expect(mockTranslate).toHaveBeenCalledTimes(0);
   });
 
   describe('MutationObserver', () => {

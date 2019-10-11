@@ -27,123 +27,93 @@ exports[`<Description /> should not render if no data is available 1`] = `
       name="product.description"
       props={null}
     >
-      <Section
-        className={null}
-        title="product.sections.description"
-        titleParams={Object {}}
+      <div
+        className={
+          Object {
+            "data-css-1gp4e0e": "",
+          }
+        }
       >
-        <section
-          aria-labelledby="product-sections-description"
-          className=""
-        >
-          <h1
-            hidden={true}
-            id="product-sections-description"
-          >
-            <Translate
-              className=""
-              params={Object {}}
-              role={null}
-              string="product.sections.description"
-            >
-              <span
-                className=""
-                role={null}
-              >
-                product.sections.description
-              </span>
-            </Translate>
-          </h1>
-          <div
-            className={
-              Object {
-                "data-css-1gp4e0e": "",
-              }
+        <div
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-148ze83": "",
             }
+          }
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            role={null}
+            string="product.description_heading"
           >
-            <div
-              aria-hidden={true}
-              className={
+            <span
+              className=""
+              role={null}
+            >
+              product.description_heading
+            </span>
+          </Translate>
+        </div>
+        <PlaceholderParagraph
+          className="css-11lvu0k"
+          lines={3}
+          ready={false}
+        >
+          <div>
+            <PlaceholderLabel
+              className="css-11lvu0k"
+              key="0"
+              ready={false}
+              style={
                 Object {
-                  "data-css-148ze83": "",
+                  "width": "95%",
                 }
               }
-              role="heading"
             >
-              <Translate
-                className=""
-                params={Object {}}
-                role={null}
-                string="product.description_heading"
-              >
-                <span
-                  className=""
-                  role={null}
-                >
-                  product.description_heading
-                </span>
-              </Translate>
-            </div>
-            <PlaceholderParagraph
+              <div
+                className="css-qd8qpa css-11lvu0k"
+                style={
+                  Object {
+                    "width": "95%",
+                  }
+                }
+              />
+            </PlaceholderLabel>
+            <PlaceholderLabel
               className="css-11lvu0k"
-              lines={3}
+              key="1"
               ready={false}
+              style={null}
             >
-              <div>
-                <PlaceholderLabel
-                  className="css-11lvu0k"
-                  key="0"
-                  ready={false}
-                  style={
-                    Object {
-                      "width": "95%",
-                    }
+              <div
+                className="css-qd8qpa css-11lvu0k"
+                style={null}
+              />
+            </PlaceholderLabel>
+            <PlaceholderLabel
+              className="css-11lvu0k"
+              key="2"
+              ready={false}
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="css-qd8qpa css-11lvu0k"
+                style={
+                  Object {
+                    "width": "100%",
                   }
-                >
-                  <div
-                    className="css-qd8qpa css-11lvu0k"
-                    style={
-                      Object {
-                        "width": "95%",
-                      }
-                    }
-                  />
-                </PlaceholderLabel>
-                <PlaceholderLabel
-                  className="css-11lvu0k"
-                  key="1"
-                  ready={false}
-                  style={null}
-                >
-                  <div
-                    className="css-qd8qpa css-11lvu0k"
-                    style={null}
-                  />
-                </PlaceholderLabel>
-                <PlaceholderLabel
-                  className="css-11lvu0k"
-                  key="2"
-                  ready={false}
-                  style={
-                    Object {
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <div
-                    className="css-qd8qpa css-11lvu0k"
-                    style={
-                      Object {
-                        "width": "100%",
-                      }
-                    }
-                  />
-                </PlaceholderLabel>
-              </div>
-            </PlaceholderParagraph>
+                }
+              />
+            </PlaceholderLabel>
           </div>
-        </section>
-      </Section>
+        </PlaceholderParagraph>
+      </div>
     </Portal>
     <Portal
       name="product.description.after"
@@ -180,104 +150,74 @@ exports[`<Description /> should render description if data is available 1`] = `
       name="product.description"
       props={null}
     >
-      <Section
-        className={null}
-        title="product.sections.description"
-        titleParams={Object {}}
+      <div
+        className={
+          Object {
+            "data-css-1gp4e0e": "",
+          }
+        }
       >
-        <section
-          aria-labelledby="product-sections-description"
-          className=""
+        <div
+          aria-hidden={true}
+          className={
+            Object {
+              "data-css-148ze83": "",
+            }
+          }
         >
-          <h1
-            hidden={true}
-            id="product-sections-description"
+          <Translate
+            className=""
+            params={Object {}}
+            role={null}
+            string="product.description_heading"
           >
-            <Translate
+            <span
               className=""
-              params={Object {}}
               role={null}
-              string="product.sections.description"
             >
-              <span
-                className=""
-                role={null}
-              >
-                product.sections.description
-              </span>
-            </Translate>
-          </h1>
+              product.description_heading
+            </span>
+          </Translate>
+        </div>
+        <PlaceholderParagraph
+          className="css-11lvu0k"
+          lines={3}
+          ready={true}
+        >
           <div
             className={
               Object {
-                "data-css-1gp4e0e": "",
+                "data-css-jo3g31": "",
               }
             }
+            data-test-id="description"
           >
-            <div
-              aria-hidden={true}
-              className={
+            <HtmlSanitizer
+              className={null}
+              decode={false}
+              processStyles={false}
+              settings={
                 Object {
-                  "data-css-148ze83": "",
+                  "handleClick": [Function],
+                  "html": "<h1>foo</h1>",
                 }
               }
-              role="heading"
+              wrapper={[Function]}
             >
-              <Translate
-                className=""
-                params={Object {}}
-                role={null}
-                string="product.description_heading"
-              >
-                <span
-                  className=""
-                  role={null}
-                >
-                  product.description_heading
-                </span>
-              </Translate>
-            </div>
-            <PlaceholderParagraph
-              className="css-11lvu0k"
-              lines={3}
-              ready={true}
-            >
-              <div
-                className={
-                  Object {
-                    "data-css-jo3g31": "",
-                  }
-                }
-                data-test-id="description"
-              >
-                <HtmlSanitizer
+              <EmbeddedMedia>
+                <div
                   className={null}
-                  decode={false}
-                  processStyles={false}
-                  settings={
+                  dangerouslySetInnerHTML={
                     Object {
-                      "handleClick": [Function],
-                      "html": "<h1>foo</h1>",
+                      "__html": "<h1>foo</h1>",
                     }
                   }
-                  wrapper={[Function]}
-                >
-                  <EmbeddedMedia>
-                    <div
-                      className={null}
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "<h1>foo</h1>",
-                        }
-                      }
-                    />
-                  </EmbeddedMedia>
-                </HtmlSanitizer>
-              </div>
-            </PlaceholderParagraph>
+                />
+              </EmbeddedMedia>
+            </HtmlSanitizer>
           </div>
-        </section>
-      </Section>
+        </PlaceholderParagraph>
+      </div>
     </Portal>
     <Portal
       name="product.description.after"
