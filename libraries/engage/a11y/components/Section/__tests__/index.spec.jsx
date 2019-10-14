@@ -1,21 +1,6 @@
-/* eslint-disable require-jsdoc, extra-rules/potential-point-free,
-class-methods-use-this, extra-rules/no-single-line-objects */
 import React from 'react';
 import { mount } from 'enzyme';
 import Section from '../index';
-import { hidden } from '../style';
-
-const mutationConstructorSpy = jest.fn();
-const mutationObserveSpy = jest.fn();
-const mutationDisconnectSpy = jest.fn();
-
-global.MutationObserver = class {
-  constructor(callback) { mutationConstructorSpy(callback); }
-
-  observe(element, initObject) { mutationObserveSpy(element, initObject); }
-
-  disconnect() { mutationDisconnectSpy(); }
-};
 
 const mockTranslate = jest.fn();
 
@@ -36,7 +21,7 @@ describe('<Section />', () => {
     jest.clearAllMocks();
   });
 
-  it('should render visible', () => {
+  it('should render with a label', () => {
     const wrapper = mount((
       <Section title={title} titleParams={titleParams}>
         <div id="child-component" />
@@ -44,15 +29,18 @@ describe('<Section />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('section').hasClass(hidden.toString())).toBe(false);
-    expect(mockTranslate).toHaveBeenCalledWith({ string: title, params: titleParams });
+    expect(wrapper.find('h2').exists()).toBe(true);
+    expect(mockTranslate).toHaveBeenCalledWith({
+      string: title,
+      params: titleParams,
+    });
   });
 
   it('should render hidden when no children rendered', () => {
     const wrapper = mount(<Section title={title} />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('section').hasClass(hidden.toString())).toBe(true);
-    expect(mockTranslate).toHaveBeenCalledWith({ string: title, params: {} });
+    expect(wrapper.find('h2').exists()).toBe(false);
+    expect(mockTranslate).toHaveBeenCalledTimes(0);
   });
 
   describe('MutationObserver', () => {
@@ -63,13 +51,13 @@ describe('<Section />', () => {
     });
 
     it('should create an observer instance', () => {
-      expect(mutationConstructorSpy).toHaveBeenCalledTimes(1);
-      expect(mutationConstructorSpy).toHaveBeenCalledWith(expect.any(Function));
+      expect(global.mutationConstructorSpy).toHaveBeenCalledTimes(1);
+      expect(global.mutationConstructorSpy).toHaveBeenCalledWith(expect.any(Function));
     });
 
     it('should observe with the correct initialization', () => {
-      expect(mutationObserveSpy).toHaveBeenCalledTimes(1);
-      expect(mutationObserveSpy).toHaveBeenCalledWith(
+      expect(global.mutationObserveSpy).toHaveBeenCalledTimes(1);
+      expect(global.mutationObserveSpy).toHaveBeenCalledWith(
         wrapper.find('section').instance(),
         {
           childList: true,
@@ -79,10 +67,7 @@ describe('<Section />', () => {
 
     it('should call disconnect on unmount', () => {
       wrapper.unmount();
-      expect(mutationDisconnectSpy).toHaveBeenCalledTimes(1);
+      expect(global.mutationDisconnectSpy).toHaveBeenCalledTimes(1);
     });
   });
 });
-
-/* eslint-enable require-jsdoc, extra-rules/potential-point-free,
-class-methods-use-this, extra-rules/no-single-line-objects */

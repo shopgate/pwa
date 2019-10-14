@@ -3,18 +3,18 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 
-const container = css({
-  fontSize: 14,
-  padding: '13px 16px 16px',
-}).toString();
+export const container = css({
+  fontSize: '0.875rem',
+  padding: '0.8125rem 1rem 1rem',
+});
 
-const title = css({
-  fontSize: 16,
+export const title = css({
+  fontSize: '1rem',
   fontWeight: 500,
-  marginBottom: 8,
-}).toString();
+  marginBottom: '0.5rem',
+});
 
-const content = css({
+export const content = css({
   lineHeight: 1.7,
   overflow: 'hidden',
   wordBreak: ['break-all', 'break-word'],
@@ -35,15 +35,8 @@ const content = css({
     padding: '.35em',
     position: 'relative',
   },
-}).toString();
+});
 
-const placeholder = css({
-  height: 14,
+export const placeholder = css({
+  height: '0.875rem',
 }).toString();
-
-export default {
-  container,
-  title,
-  content,
-  placeholder,
-};

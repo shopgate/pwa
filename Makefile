@@ -149,6 +149,7 @@ clean:
 		find . -name "*debug.log" -type f -delete;
 		lerna clean --yes;
 		rm -rf ./node_modules/;
+		rm -rf ./.cache-loader/;
 		node ./scripts/init-subtrees.js;
 		lerna bootstrap;
 
