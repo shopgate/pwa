@@ -15,23 +15,27 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       className="css-1ck9rgi"
     >
       <Chip
+        editLabel={null}
         id="some-id"
         invert={false}
         onClick={[Function]}
         onRemove={[Function]}
         removable={true}
+        removeLabel={null}
       >
         <div
           className="css-bpa25c"
           data-test-id="some-id"
         >
           <Button
+            aria-label={null}
             className="css-hazg82"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
+              aria-label={null}
               className="css-hazg82 css-1rn65c0"
               data-test-id="removeFilter"
               disabled={false}
@@ -69,12 +73,14 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             </button>
           </Button>
           <Button
+            aria-label={null}
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
+              aria-label={null}
               className="css-1al9zi1 css-1rn65c0"
               data-test-id="Button"
               disabled={false}
@@ -177,23 +183,27 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       className="css-1ck9rgi"
     >
       <Chip
+        editLabel={null}
         id="some-id"
         invert={false}
         onClick={[Function]}
         onRemove={[Function]}
         removable={true}
+        removeLabel={null}
       >
         <div
           className="css-bpa25c"
           data-test-id="some-id"
         >
           <Button
+            aria-label={null}
             className="css-hazg82"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
+              aria-label={null}
               className="css-hazg82 css-1rn65c0"
               data-test-id="removeFilter"
               disabled={false}
@@ -231,12 +241,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             </button>
           </Button>
           <Button
+            aria-label={null}
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
+              aria-label={null}
               className="css-1al9zi1 css-1rn65c0"
               data-test-id="Button"
               disabled={false}
@@ -248,23 +260,27 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         </div>
       </Chip>
       <Chip
+        editLabel={null}
         id="some-other-id"
         invert={false}
         onClick={[Function]}
         onRemove={[Function]}
         removable={true}
+        removeLabel={null}
       >
         <div
           className="css-bpa25c"
           data-test-id="some-other-id"
         >
           <Button
+            aria-label={null}
             className="css-hazg82"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
+              aria-label={null}
               className="css-hazg82 css-1rn65c0"
               data-test-id="removeFilter"
               disabled={false}
@@ -302,12 +318,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             </button>
           </Button>
           <Button
+            aria-label={null}
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
+              aria-label={null}
               className="css-1al9zi1 css-1rn65c0"
               data-test-id="Button"
               disabled={false}

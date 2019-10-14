@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import {
-  FILTER_TYPE_RANGE,
-  FILTER_TYPE_MULTISELECT,
-} from '@shopgate/pwa-common-commerce/filter/constants';
-import Chip from '@shopgate/pwa-ui-shared/Chip';
+import { I18n, Chip } from '@shopgate/engage/components';
+import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/engage/filter';
+import { i18n } from '@shopgate/engage/core';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
 import styles from './style';
@@ -83,6 +80,8 @@ class FilterChips extends Component {
 
     Object.keys(filters).forEach((key) => {
       const filter = filters[key];
+      const removeLabel = i18n.text('filter.remove', { filter: filter.label });
+      const editLabel = i18n.text('filter.edit', { filter: filter.label });
 
       switch (filter.type) {
         case FILTER_TYPE_RANGE: {
@@ -100,6 +99,8 @@ class FilterChips extends Component {
               key={`filter-${key}`}
               onRemove={this.handleRemove}
               onClick={openFilters}
+              removeLabel={removeLabel}
+              editLabel={editLabel}
             >
               <I18n.Price price={priceMin} currency={appConfig.currency} fractions={false} />
               &nbsp;&mdash;&nbsp;
@@ -116,6 +117,8 @@ class FilterChips extends Component {
               key={`filter-${value.id}`}
               onRemove={() => this.handleRemove(filter.id, value.id)}
               onClick={openFilters}
+              removeLabel={removeLabel}
+              editLabel={editLabel}
             >
               {`${filter.label}: ${value.label}`}
             </Chip>
