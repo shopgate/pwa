@@ -45,6 +45,8 @@
     "apply": "Done",
     "more": "more",
     "reset": "Reset",
+    "remove": "Remove {filter} filter",
+    "edit": "Edit {filter} filter",
     "filter_by": "Filter by {label}"
   },
   "price": {
