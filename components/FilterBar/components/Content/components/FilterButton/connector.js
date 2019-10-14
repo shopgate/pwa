@@ -10,4 +10,4 @@ const mapDispatchToProps = dispatch => ({
   navigate: () => dispatch(openFilterRoute()),
 });
 
-export default connect(null, mapDispatchToProps, null, { pure: () => null });
+export default connect(null, mapDispatchToProps);
