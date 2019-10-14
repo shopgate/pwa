@@ -5,7 +5,7 @@ const { variables } = themeConfig;
 
 const container = css({
   marginBottom: variables.gap.small,
-}).toString();
+});
 
 export default {
   container,
