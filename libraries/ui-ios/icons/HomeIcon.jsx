@@ -7,6 +7,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const Home = props => <Icon content={themeConfig.icons.home} viewBox="-3065 1713 18 22" {...props} />;
+const Home = props => <Icon content={themeConfig.icons.home} {...props} />;
 
 export default Home;
