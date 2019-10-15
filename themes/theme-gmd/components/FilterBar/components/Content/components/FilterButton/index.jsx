@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Grid, I18n, Ripple, FilterIcon,
 } from '@shopgate/engage/components';
-import { withRoute } from '@shopgate/engage/core';
 import connect from './connector';
 import styles from './style';
 
@@ -39,4 +38,4 @@ FilterButton.defaultProps = {
   navigate() { },
 };
 
-export default withRoute(connect(FilterButton));
+export default connect(FilterButton);

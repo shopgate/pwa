@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getHistoryPathname } from '@shopgate/engage/core';
+import { getCurrentPathname } from '@shopgate/engage/core';
 import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
 import openFilterRoute from '../../actions/openFilterRoute';
 
@@ -9,12 +9,12 @@ import openFilterRoute from '../../actions/openFilterRoute';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  currentPathname: getHistoryPathname(state),
+  currentPathname: getCurrentPathname(state),
 });
 
 const mapDispatchToProps = {
   openFilters: () => openFilterRoute(),
-  updateFilters: filters => updateFilters(filters),
+  updateFilters,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps);
