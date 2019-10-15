@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useCallback, memo,
+  useState, useEffect, useMemo, memo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -20,13 +20,13 @@ function FilterBar({ filters }) {
     setActive(filters !== null && Object.keys(filters).length > 0);
   }, [filters]);
 
-  const style = useCallback(() => ({
+  const style = useMemo(() => ({
     background: active ? colors.accent : colors.background,
     color: active ? colors.accentContrast : colors.dark,
   }), [active]);
 
   return (
-    <div className={styles} data-test-id="filterBar" style={style()}>
+    <div className={styles} data-test-id="filterBar" style={style}>
       <Content />
     </div>
   );
