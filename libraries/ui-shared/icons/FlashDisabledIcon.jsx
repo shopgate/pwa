@@ -7,6 +7,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const FlashDisabled = props => <Icon content={themeConfig.icons.flashDisabled} {...props} width="24" height="24" viewBox="0 0 24 24" />;
+const FlashDisabled = props => <Icon content={themeConfig.icons.flashDisabled} {...props} />;
 
 export default FlashDisabled;
