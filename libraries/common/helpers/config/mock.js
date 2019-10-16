@@ -33,9 +33,6 @@ const shadows = {
   widget: '0 4px 8px rgba(0, 0, 0, 0.16)',
   productCard: '0 4px 8px rgba(0, 0, 0, 0.16)',
   productImage: 'inset 0 0 20px rgba(0, 0, 0, .05)',
-  appBar: {
-    cartBadge: '0 1px 1px rgba(0, 0, 0, 0.25)',
-  },
   tabBar: '0 -1px 0 0 rgba(0, 0, 0, 0.1)',
   filter: {
     sort: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
