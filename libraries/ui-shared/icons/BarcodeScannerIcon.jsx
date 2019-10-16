@@ -7,6 +7,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const BarcodeScanner = props => <Icon content={themeConfig.icons.barcodeScanner} {...props} viewBox="0 0 500 500" />;
+const BarcodeScanner = props => <Icon content={themeConfig.icons.barcodeScanner} {...props} />;
 
 export default BarcodeScanner;
