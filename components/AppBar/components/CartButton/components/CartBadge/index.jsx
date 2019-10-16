@@ -1,48 +1,39 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import styles from './style';
 
 /**
  * The CartButtonBadge component.
+ * @returns {JSX}
  */
-class CartButtonBadge extends PureComponent {
-  static propTypes = {
-    count: PropTypes.number.isRequired,
-    style: PropTypes.shape(),
+const CartButtonBadge = ({ count, style }) => {
+  const settings = useWidgetSettings('@shopgate/engage/components/AppBar');
+
+  if (!count) {
+    return null;
+  }
+
+  const badgeStyle = {
+    ...style,
+    boxShadow: settings.buttonCartBadgeShadow,
   };
 
-  static defaultProps = {
-    style: null,
-  }
+  const productCount = count > CART_MAX_ITEMS ? `${CART_MAX_ITEMS}+` : count;
 
-  /**
-   * @returns {string}
-   */
-  get productCount() {
-    const { count } = this.props;
+  return (
+    <div style={badgeStyle} className={styles} data-test-id="badge">{productCount}</div>
+  );
+};
 
-    let productCount = `${count}`;
+CartButtonBadge.propTypes = {
+  count: PropTypes.number.isRequired,
+  style: PropTypes.shape(),
+};
 
-    if (count > CART_MAX_ITEMS) {
-      productCount = `${CART_MAX_ITEMS}+`;
-    }
+CartButtonBadge.defaultProps = {
+  style: null,
+};
 
-    return productCount;
-  }
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    if (!this.props.count) {
-      return null;
-    }
-
-    return (
-      <div style={this.props.style} className={styles} data-test-id="badge">{this.productCount}</div>
-    );
-  }
-}
-
-export default CartButtonBadge;
+export default memo(CartButtonBadge);
