@@ -46,6 +46,8 @@
     "apply": "Applica",
     "more": "di più",
     "reset": "Resetta",
+    "remove": "Rimuovi {filter} filtro",
+    "edit": "Modifica {filter} filtro",
     "filter_by": "Ordina per {label}"
   },
   "price": {

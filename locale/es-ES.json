@@ -46,6 +46,8 @@
     "apply": "Aplicar",
     "more": "más",
     "reset": "Borrar",
+    "remove": "Eliminar {filter} filtro",
+    "edit": "Editar {filter} filtro",
     "filter_by": "Filtrar por {label}"
   },
   "price": {
