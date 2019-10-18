@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { shadows, colors, variables } = themeConfig;
+const { colors, variables } = themeConfig;
 
 export default css({
   position: 'absolute',
@@ -18,5 +18,4 @@ export default css({
   top: 12,
   right: 18,
   transform: 'translateX(50%)',
-  boxShadow: shadows.appBar.cartBadge,
 });
