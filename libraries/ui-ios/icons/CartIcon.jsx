@@ -7,6 +7,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const CartIcon = props => <Icon content={themeConfig.icons.cart} viewBox="-10620 6658 20.447 24" {...props} />;
+const CartIcon = props => <Icon content={themeConfig.icons.cart} {...props} />;
 
 export default CartIcon;
