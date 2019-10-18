@@ -21,7 +21,7 @@
     "@shopgate/pwa-ui-ios": "6.7.2",
     "@shopgate/pwa-ui-material": "6.7.2",
     "@shopgate/pwa-ui-shared": "6.7.2",
-    "@virtuous/conductor": "~2.3.0",
+    "@virtuous/conductor": "~2.4.0",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
     "color": "^3.1.2",
