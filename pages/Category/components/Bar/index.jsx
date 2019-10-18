@@ -14,7 +14,7 @@ function CategoryBar() {
     <FilterBar
       categoryId={params.categoryId}
       filters={state.filters}
-      viewRef={ref.current}
+      viewRef={ref ? ref.current : null}
     />
   );
 }
