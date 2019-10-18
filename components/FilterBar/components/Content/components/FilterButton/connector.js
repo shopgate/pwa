@@ -6,8 +6,8 @@ import openFilterRoute from '../../actions/openFilterRoute';
  * @param {Object} props The components props.
  * @return {Object}
  */
-const mapDispatchToProps = () => ({
-  navigate: () => openFilterRoute(),
+const mapDispatchToProps = dispatch => ({
+  navigate: () => dispatch(openFilterRoute()),
 });
 
 export default connect(null, mapDispatchToProps);
