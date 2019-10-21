@@ -13,13 +13,11 @@ const mapStateToProps = state => ({
 });
 
 /**
- * @param {Function} dispatch The redux dispatch function.
- * @param {Object} props The components props.
  * @return {Object}
  */
-const mapDispatchToProps = dispatch => ({
-  openFilters: () => dispatch(openFilterRoute()),
+const mapDispatchToProps = {
+  openFilters: () => openFilterRoute(),
   updateFilters,
-});
+};
 
 export default connect(mapStateToProps, mapDispatchToProps);
