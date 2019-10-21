@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  historyReplace: params => historyReplace(params),
+  historyReplace,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps);
