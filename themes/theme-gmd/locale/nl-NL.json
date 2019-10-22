@@ -45,6 +45,8 @@
     "apply": "Klaar",
     "more": "meer",
     "reset": "Wis alles",
+    "remove": "Verwijder {filter} filter",
+    "edit": "Bewerk {filter} filter",
     "filter_by": "Filteren op {label}"
   },
   "price": {

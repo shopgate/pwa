@@ -1,18 +1,31 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import { shallow } from 'enzyme';
 import Bar from './index';
 
-const mockedStore = configureStore();
+jest.mock('@shopgate/engage/core', () => ({
+  ...jest.requireActual('@shopgate/engage/core'),
+  useRoute: () => ({
+    state: {
+      filters: {},
+    },
+    params: {
+      categoryId: 123,
+    },
+  }),
+}));
+
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useContext: jest.fn(() => ({
+    ref: {
+      current: {},
+    },
+  })),
+}));
 
 describe('<Bar />', () => {
   it('should match snapshot', () => {
-    const wrapper = mount((
-      <Provider store={mockedStore({ router: { currentRoute: {} } })}>
-        <Bar />
-      </Provider>
-    ));
+    const wrapper = shallow(<Bar />);
     expect(wrapper).toMatchSnapshot();
   });
 });
