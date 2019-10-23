@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import hook from '../hook';
+import mutable from '../mutable';
 
 describe('Hook', () => {
   let original;
@@ -8,14 +8,14 @@ describe('Hook', () => {
   });
 
   it('should call original', () => {
-    const hooked = hook(original);
+    const hooked = mutable(original);
     const res = hooked({ id: 100 });
     expect(original).toBeCalledWith({ id: 100 });
     expect(res).toEqual({ id: 100 });
   });
 
   it('should call use and original', () => {
-    const hooked = hook(original);
+    const hooked = mutable(original);
 
     const use = jest.fn(data => ({
       ...data,
@@ -30,7 +30,7 @@ describe('Hook', () => {
   });
 
   it('should rewrite original', () => {
-    const hooked = hook(original);
+    const hooked = mutable(original);
 
     const rewrite = jest.fn(data => ({
       ...data,
@@ -45,7 +45,7 @@ describe('Hook', () => {
   });
 
   it('should restore original', () => {
-    const hooked = hook(original);
+    const hooked = mutable(original);
     const rewrite = jest.fn();
     hooked.rewrite(rewrite);
     hooked.restore();
