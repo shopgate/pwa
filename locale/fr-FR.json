@@ -230,6 +230,9 @@
       "geolocation_message": "Pour trouver des magasins près de chez vous, allez dans Paramètres et activez l’autorisation de géolocalisation."
     }
   },
+  "error": {
+    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
+  },
   "formats": {
     "date": {
       "DD": {
