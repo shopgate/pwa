@@ -149,6 +149,7 @@ clean:
 		find . -name "*debug.log" -type f -delete;
 		lerna clean --yes;
 		rm -rf ./node_modules/;
+		rm -rf ./.cache-loader/;
 		node ./scripts/init-subtrees.js;
 		lerna bootstrap;
 
@@ -164,7 +165,7 @@ fix-remote:
 		git merge -s ours --no-commit --allow-unrelated-histories $(REMOTE)/master
 
 setup-frontend-with-current-ip:
-		echo '{\n  "ip": "0.0.0.0",\n  "startpageIp": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}' | head -1)",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "source-map"\n}\n' > ./.sgcloud/frontend.json;
+		echo '{\n  "ip": "0.0.0.0",\n  "startpageIp": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}' | head -1)",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "cheap-eval-source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
 # Open cypress UI for GMD theme
