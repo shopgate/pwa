@@ -229,6 +229,9 @@
       "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione."
     }
   },
+  "error": {
+    "general": "Impossibile connettersi. Per favore verifica la connessione internet."
+  },
   "formats": {
     "date": {
       "DD": {
