@@ -1,12 +1,13 @@
 import { PipelineRequest, logger } from '@shopgate/pwa-core';
-import * as pipelines from '../../constants/Pipelines';
 import * as actions from '../../action-creators/user';
+import * as pipelines from '../../constants/Pipelines';
+import { mutable } from '../../helpers/redux';
 
 /**
  * Logout the current user.
  * @return {Function} A redux thunk.
  */
-export default function logout() {
+function logout() {
   return (dispatch) => {
     dispatch(actions.requestLogout());
 
@@ -26,3 +27,6 @@ export default function logout() {
       });
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(logout);

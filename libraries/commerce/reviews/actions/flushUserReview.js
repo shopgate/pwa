@@ -1,3 +1,5 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import flushUserReviewAction from '../action-creators/flushUserReview';
 
-export default () => dispatch => dispatch(flushUserReviewAction());
+/** @mixes {MutableFunction} */
+export default mutable(() => dispatch => dispatch(flushUserReviewAction()));

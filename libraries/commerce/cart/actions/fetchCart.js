@@ -1,6 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { PROCESS_LAST } from '@shopgate/pwa-core/constants/ProcessTypes';
+import { logger } from '@shopgate/pwa-core/helpers';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import receiveCart from '../action-creators/receiveCart';
 import requestCart from '../action-creators/requestCart';
@@ -48,4 +49,5 @@ const fetchCart = () => (dispatch, getState) => {
   return result;
 };
 
-export default fetchCart;
+/** @mixes {MutableFunction} */
+export default mutable(fetchCart);

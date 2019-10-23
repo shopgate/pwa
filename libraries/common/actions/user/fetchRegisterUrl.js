@@ -1,16 +1,16 @@
 import { PipelineRequest, logger } from '@shopgate/pwa-core';
-import * as pipelines from '../../constants/Pipelines';
 import * as actions from '../../action-creators/url';
+import * as pipelines from '../../constants/Pipelines';
+import { URL_TYPE_REGISTER } from '../../constants/Registration';
+import { shouldFetchData, mutable } from '../../helpers/redux';
 import { getEntryByType } from '../../selectors/url';
 import { getRegisterUrl } from '../../selectors/user';
-import { shouldFetchData } from '../../helpers/redux';
-import { URL_TYPE_REGISTER } from '../../constants/Registration';
 
 /**
  * Get the url for the registration.
  * @return {Function} A redux thunk.
  */
-export default function fetchRegisterUrl() {
+function fetchRegisterUrl() {
   return (dispatch, getState) => {
     const state = getState();
     const entry = getEntryByType(state, { type: URL_TYPE_REGISTER });
@@ -38,3 +38,6 @@ export default function fetchRegisterUrl() {
     });
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(fetchRegisterUrl);

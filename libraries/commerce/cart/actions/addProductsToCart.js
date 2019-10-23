@@ -1,7 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
-import { hook } from '@shopgate/pwa-common/helpers/redux';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
@@ -18,7 +18,7 @@ import { messagesHaveErrors } from '../helpers';
  * @param {Array} data The options for the products to be added.
  * @return {Function} A redux thunk.
  */
-const addToCart = hook(data => (dispatch, getState) => {
+const addToCart = data => (dispatch, getState) => {
   const state = getState();
 
   const pendingProductCount = getProductPendingCount(state);
@@ -57,7 +57,7 @@ const addToCart = hook(data => (dispatch, getState) => {
     .then(({ messages }) => {
       if (messages && messagesHaveErrors(messages)) {
         /**
-         * @Deprecated: The property "messages" is not supposed to be part of the pipeline response.
+         * @deprecated: The property "messages" is not supposed to be part of the pipeline response.
          * Specification demands errors to be returned as response object with an "error" property.
          * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
          */
@@ -74,7 +74,7 @@ const addToCart = hook(data => (dispatch, getState) => {
       ));
       logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
-});
+};
 
-/** @mixes {FunctionHook} */
-export default addToCart;
+/** @mixes {MutableFunction} */
+export default mutable(addToCart);

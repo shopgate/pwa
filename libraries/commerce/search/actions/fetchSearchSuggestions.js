@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS } from '../constants/Pipelines';
 import requestSearchSuggestions from '../action-creators/requestSearchSuggestions';
 import receiveSearchSuggestions from '../action-creators/receiveSearchSuggestions';
@@ -31,4 +32,5 @@ const fetchSearchSuggestions = searchPhrase => (dispatch, getState) => {
     });
 };
 
-export default fetchSearchSuggestions;
+/** @mixes {MutableFunction} */
+export default mutable(fetchSearchSuggestions);

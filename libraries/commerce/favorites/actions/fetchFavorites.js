@@ -1,4 +1,3 @@
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import {
@@ -7,6 +6,7 @@ import {
   EBIGAPI,
   ELIMIT,
 } from '@shopgate/pwa-core/constants/Pipeline';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import {
   receiveFavorites,
@@ -40,4 +40,5 @@ const fetchFavorites = (ignoreCache = false) => (dispatch, getState) => {
   return promise;
 };
 
-export default fetchFavorites;
+/** @mixes {MutableFunction} */
+export default mutable(fetchFavorites);

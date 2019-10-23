@@ -1,5 +1,6 @@
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import fetchProducts from '../../product/actions/fetchProducts';
 
 /**
@@ -41,4 +42,5 @@ const fetchCategoryProducts = ({
     }));
   };
 
-export default fetchCategoryProducts;
+/** @mixes {MutableFunction} */
+export default mutable(fetchCategoryProducts);

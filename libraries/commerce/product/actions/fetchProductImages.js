@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import requestProductImages from '../action-creators/requestProductImages';
 import * as pipelines from '../constants/Pipelines';
 import receiveProductImages from '../action-creators/receiveProductImages';
@@ -42,4 +42,5 @@ const fetchProductImages = (productId, formats) => (dispatch, getState) => {
     });
 };
 
-export default fetchProductImages;
+/** @mixes {MutableFunction} */
+export default mutable(fetchProductImages);

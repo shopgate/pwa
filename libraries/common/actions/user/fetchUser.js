@@ -1,13 +1,14 @@
 import { PipelineRequest, logger, EACCESS } from '@shopgate/pwa-core';
-import * as pipelines from '../../constants/Pipelines';
 import * as actions from '../../action-creators/user';
+import * as pipelines from '../../constants/Pipelines';
+import { mutable } from '../../helpers/redux';
 import { isUserLoggedIn } from '../../selectors/user';
 
 /**
  * Get the current user
  * @return {Function} A redux thunk.
  */
-export default function fetchUser() {
+function fetchUser() {
   return (dispatch, getState) => {
     dispatch(actions.requestUser());
 
@@ -35,3 +36,6 @@ export default function fetchUser() {
       });
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(fetchUser);

@@ -5,6 +5,7 @@ import {
   receiveUrl,
   errorUrl,
 } from '@shopgate/pwa-common/action-creators/url';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import { FETCH_CHECKOUT_URL_TIMEOUT } from '../constants';
 
@@ -33,4 +34,5 @@ const fetchCheckoutUrl = () => dispatch =>
       });
   });
 
-export default fetchCheckoutUrl;
+/** @mixes {MutableFunction} */
+export default mutable(fetchCheckoutUrl);

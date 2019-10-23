@@ -2,6 +2,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { EEXIST } from '@shopgate/pwa-core/constants/Pipeline';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import requestSubmitReview from '../action-creators/requestSubmitReview';
 import receiveSubmitReview from '../action-creators/receiveSubmitReview';
@@ -80,4 +81,5 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
   return request;
 };
 
-export default submitReview;
+/** @mixes {MutableFunction} */
+export default mutable(submitReview);
