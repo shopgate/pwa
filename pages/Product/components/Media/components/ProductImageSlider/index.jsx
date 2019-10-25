@@ -132,6 +132,7 @@ class ProductImageSlider extends Component {
     const imageStyle = product ? {
       background: `url(${getActualImageSource(product.featuredImageUrl, fallbackResolutions[0])})`,
       backgroundSize: 'contain',
+      transform: 'translate3d(0, 0, 0)',
     } : null;
 
     return (
