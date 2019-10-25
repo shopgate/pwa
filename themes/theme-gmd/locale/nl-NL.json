@@ -222,6 +222,9 @@
       "geolocation_message": "Ga naar Instellingen en schakel locatiemachtigingen in om winkels bij u in de buurt te vinden."
     }
   },
+  "error": {
+    "general": "Onmogelijk de se connecter. Controleer je internetverbinding en probeer opnieuw."
+  },
   "formats": {
     "date": {
       "DD": {

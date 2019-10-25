@@ -235,6 +235,9 @@
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
   },
+  "error": {
+    "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
+  },
   "formats": {
     "date": {
       "DD": {

@@ -17,8 +17,8 @@
   "dependencies": {
     "@sentry/browser": "^4.6.3",
     "@shopgate/pwa-benchmark": "6.8.0",
-    "@virtuous/conductor": "~2.3.0",
-    "@virtuous/react-conductor": "~2.3.0",
+    "@virtuous/conductor": "~2.4.0",
+    "@virtuous/react-conductor": "~2.4.0",
     "@virtuous/redux-persister": "1.1.0-beta.7",
     "classnames": "^2.2.5",
     "crypto-js": "3.1.9-1",

@@ -229,6 +229,9 @@
       "geolocation_message": "Para encontrar lojas perto de você, acesse Configurações e ative as permissões de localização."
     }
   },
+  "error": {
+    "general": "Não consigo conectar. Por favor verifique a sua ligação à internet e tente novamente."
+  },
   "formats": {
     "date": {
       "DD": {
