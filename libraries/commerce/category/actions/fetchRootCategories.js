@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import requestRootCategories from '../action-creators/requestRootCategories';
 import receiveRootCategories from '../action-creators/receiveRootCategories';
@@ -29,4 +29,5 @@ const fetchRootCategories = () => (dispatch, getState) => {
     });
 };
 
-export default fetchRootCategories;
+/** @mixes {MutableFunction} */
+export default mutable(fetchRootCategories);

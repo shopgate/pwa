@@ -5,9 +5,10 @@ import {
   ELEGACYSGCONNECT,
   EINCOMPLETELOGIN,
 } from '@shopgate/pwa-core';
+import * as actions from '../../action-creators/user';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
-import * as actions from '../../action-creators/user';
+import { mutable } from '../../helpers/redux';
 
 /**
  * Login the current user.
@@ -18,7 +19,7 @@ import * as actions from '../../action-creators/user';
  * @param {string} strategy basic or facebook, amazon, etc
  * @return {Function} A redux thunk.
  */
-export default function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
+function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return (dispatch) => {
     dispatch(actions.requestLogin(parameters.login, parameters.password, strategy));
 
@@ -65,3 +66,6 @@ export default function login(parameters, redirect, strategy = DEFAULT_LOGIN_STR
       });
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(login);

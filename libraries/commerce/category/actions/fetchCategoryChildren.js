@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import requestCategoryChildren from '../action-creators/requestCategoryChildren';
 import receiveCategoryChildren from '../action-creators/receiveCategoryChildren';
@@ -31,4 +31,5 @@ const fetchCategoryChildren = categoryId => (dispatch, getState) => {
     });
 };
 
-export default fetchCategoryChildren;
+/** @mixes {MutableFunction} */
+export default mutable(fetchCategoryChildren);

@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import requestProductDescription from '../action-creators/requestProductDescription';
 import * as pipelines from '../constants/Pipelines';
 import receiveProductDescription from '../action-creators/receiveProductDescription';
@@ -31,4 +31,5 @@ const fetchProductDescription = productId => (dispatch, getState) => {
     });
 };
 
-export default fetchProductDescription;
+/** @mixes {MutableFunction} */
+export default mutable(fetchProductDescription);

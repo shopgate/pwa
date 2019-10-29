@@ -1,3 +1,4 @@
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   addProductToFavorites,
   removeProductFromFavorites,
@@ -6,12 +7,13 @@ import {
 
 /**
  * Adds a product to the favorite list (debounced and buffered).
+ * @mixes {MutableFunction}
  * @param {string} productId Product identifier.
  * @return {Function}
  */
-export const addFavorite = productId => (dispatch) => {
+export const addFavorite = mutable(productId => (dispatch) => {
   dispatch(addProductToFavorites(productId));
-};
+});
 
 /**
  * Adds a product to the favorite list (debounced and buffered).
@@ -23,18 +25,20 @@ export const addFavorites = addFavorite;
 
 /**
  * Removes a product and optionally its relatives from the favorite list (debounced and buffered).
+ * @mixes {MutableFunction}
  * @param {string} productId Product identifier.
  * @param {boolean} withRelatives When true relatives which are on list are also removed.
  * @returns {Function}
  */
-export const removeFavorites = (productId, withRelatives = false) => (dispatch) => {
+export const removeFavorites = mutable((productId, withRelatives = false) => (dispatch) => {
   dispatch(removeProductFromFavorites(productId, withRelatives));
-};
+});
 
 /**
  * Triggers a sync of favorites by immediately flushing buffered favorite update actions.
+ * @mixes {MutableFunction}
  * @return {Function}
  */
-export const requestSync = () => (dispatch) => {
+export const requestSync = mutable(() => (dispatch) => {
   dispatch(requestFlushFavoritesBuffer());
-};
+});
