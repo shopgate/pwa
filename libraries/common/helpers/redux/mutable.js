@@ -5,7 +5,7 @@ import { isObject } from '../validation';
  * @property {Function} replace Replaces the original functionality with a custom function.
  * @property {Function} restore Restores the original function.
  * @property {Function} reset Restores the original function and removes all pre-processes steps.
- * @property {Function} addPreprocessStep Adds a pre-processing step func.
+ * @property {Function} useBefore Adds a pre-processing step func.
  * @property {Function} original Original function
  */
 
