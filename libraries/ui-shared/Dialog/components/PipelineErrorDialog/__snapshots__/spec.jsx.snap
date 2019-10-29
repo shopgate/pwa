@@ -53,13 +53,13 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                   className=""
                 >
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="modal.title_error"
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       modal.title_error
@@ -77,7 +77,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             >
               <React.Fragment>
                 <Translate
-                  className=""
+                  className={null}
                   params={Object {}}
                   role={null}
                   string="Error message"
@@ -94,13 +94,13 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
               onClick={[Function]}
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="Error message"
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   Error message
@@ -179,13 +179,13 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                   className=""
                 >
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="modal.title_error"
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       modal.title_error
@@ -203,7 +203,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             >
               <React.Fragment>
                 <Translate
-                  className=""
+                  className={null}
                   params={Object {}}
                   role={null}
                   string="Custom message"
@@ -220,13 +220,13 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
               onClick={[Function]}
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="Custom message"
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   Custom message

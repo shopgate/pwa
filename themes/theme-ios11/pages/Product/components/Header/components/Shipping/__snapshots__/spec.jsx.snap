@@ -49,13 +49,13 @@ exports[`Shipping label should render free shipping 1`] = `
               role="text"
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="shipping.free"
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   shipping.free
@@ -123,29 +123,25 @@ exports[`Shipping label should render shipping price 1`] = `
               role="text"
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="shipping.cost"
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   shipping.cost
                   <FormatPrice
-                    className=""
+                    className={null}
                     currency="EUR"
                     forKey="price"
                     fractions={true}
                     key=".0"
                     price={1}
                   >
-                    <span
-                      className=""
-                    >
-                      p
-                    </span>
+                    p
                   </FormatPrice>
                 </span>
               </Translate>

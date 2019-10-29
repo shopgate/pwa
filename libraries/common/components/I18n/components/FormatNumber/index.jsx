@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 /**
@@ -6,28 +6,41 @@ import { i18n } from '@shopgate/engage/core';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const FormatNumber = props => (
-  <span className={props.className}>
-    {FormatNumber.format(props)}
-  </span>
-);
+const FormatNumber = ({ className, number, fractions }) => {
+  if (!className) {
+    FormatNumber.format({
+      number,
+      fractions,
+    });
+  }
+
+  return (
+    <span className={className}>
+      {FormatNumber.format({
+        number,
+        fractions,
+      })}
+    </span>
+  );
+};
 
 FormatNumber.format = (props) => {
   if (!i18n.ready) {
     return props.number;
   }
+
   return i18n.number(props.number, props.fractions);
 };
 
 FormatNumber.propTypes = {
-  number: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  number: PropTypes.number.isRequired,
   className: PropTypes.string,
-  fractions: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  fractions: PropTypes.number,
 };
 
 FormatNumber.defaultProps = {
-  className: '',
+  className: null,
   fractions: 0,
 };
 
-export default FormatNumber;
+export default memo(FormatNumber);

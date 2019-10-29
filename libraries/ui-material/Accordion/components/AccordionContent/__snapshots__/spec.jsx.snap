@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccordionContent /> should render as closed 1`] = `
+<div
+  aria-hidden={true}
+  className={
+    Object {
+      "data-css-apm51k": "",
+    }
+  }
+  id="some-id"
+  style={
+    Object {
+      "height": 0,
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-yh2lvw": "",
+      }
+    }
+  >
+    <div
+      id="test"
+    >
+      Some Child
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<AccordionContent /> should render as open 1`] = `
+<div
+  aria-hidden={false}
+  className={
+    Object {
+      "data-css-apm51k": "",
+    }
+  }
+  id="some-id"
+  style={
+    Object {
+      "height": "auto",
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-yh2lvw": "",
+      }
+    }
+  >
+    <div
+      id="test"
+    >
+      Some Child
+    </div>
+  </div>
+</div>
+`;

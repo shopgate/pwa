@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
-import { getFiltersByHash } from '@shopgate/pwa-common-commerce/filter/selectors';
+import { getFiltersByHash } from '@shopgate/engage/filter';
 
 /**
  * @param {Object} state The application state.

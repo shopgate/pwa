@@ -1,3 +1,6 @@
+import after from 'lodash/after';
+import before from 'lodash/before';
+import over from 'lodash/over';
 import {
   init,
   configureScope,
@@ -6,7 +9,7 @@ import {
   withScope,
   Severity as SentrySeverity,
 } from '@sentry/browser';
-import { emitter } from '@shopgate/pwa-core';
+import { emitter, errorManager, EUNKNOWN } from '@shopgate/pwa-core';
 import { SOURCE_TRACKING, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
   // eslint-disable-next-line import/no-named-default
@@ -15,20 +18,73 @@ import {
   pckVersion,
 } from '../helpers/config';
 import { env } from '../helpers/environment';
+import { transformGeneralPipelineError } from './helpers/pipeline';
 import { historyPop } from '../actions/router';
 import showModal from '../actions/modal/showModal';
 import { getUserData } from '../selectors/user';
 import { userDidUpdate$ } from '../streams/user';
 import { clientInformationDidUpdate$ } from '../streams/client';
 import { appWillStart$, appDidStart$ } from '../streams/app';
-import { appError$ } from '../streams/error';
+import { appError$, pipelineError$ } from '../streams/error';
 import { getRouterStack } from '../selectors/router';
+import { MODAL_PIPELINE_ERROR } from '../constants/ModalTypes';
+import ToastProvider from '../providers/toast';
 
 /**
  * App errors subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default (subscribe) => {
+  /** Set general error transformations */
+  subscribe(appWillStart$, () => {
+    errorManager.setMessage({
+      code: EUNKNOWN,
+      message: transformGeneralPipelineError,
+    });
+  });
+
+  /** Show a message to the user in case of pipeline error */
+  subscribe(pipelineError$, ({ dispatch, action, events }) => {
+    const { error } = action;
+    const {
+      message, code, context, meta,
+    } = error;
+
+    /** Show modal thunk */
+    const showModalError = () => {
+      dispatch(showModal({
+        confirm: 'modal.ok',
+        dismiss: null,
+        title: null,
+        message,
+        type: MODAL_PIPELINE_ERROR,
+        params: {
+          pipeline: context,
+          request: meta.input,
+          message: meta.message,
+          code,
+        },
+      }));
+    };
+
+    // It was transformed general error. let it popup after 10 toast clicks
+    if (message === 'error.general') {
+      const showToastAfter = after(9, showModalError);
+      // Recursively show same toast message until clicked 10 times
+      const showToast = before(10, () => {
+        events.emit(ToastProvider.ADD, {
+          id: 'pipeline.error',
+          message: 'error.general',
+          action: over([showToast, showToastAfter]),
+        });
+      });
+      showToast();
+      return;
+    }
+
+    showModalError();
+  });
+
   // This subscription is always active despite sentry activation
   subscribe(appError$, ({ dispatch }) => {
     // Show modal to user

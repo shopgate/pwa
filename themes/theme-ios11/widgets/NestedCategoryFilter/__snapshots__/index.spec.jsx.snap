@@ -42,13 +42,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -275,13 +275,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           className="css-kwqjom"
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="common.show_products"
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               common.show_products
@@ -344,13 +344,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -833,13 +833,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products
@@ -921,13 +921,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -1444,13 +1444,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products
@@ -1532,13 +1532,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -2155,13 +2155,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           className="css-kwqjom"
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="common.show_products"
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               common.show_products
@@ -2242,13 +2242,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -3121,13 +3121,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products
@@ -3404,13 +3404,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           className="css-kwqjom"
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="common.show_products"
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               common.show_products
@@ -3942,13 +3942,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products

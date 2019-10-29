@@ -14,6 +14,7 @@ export const innerContainer = css({
     height: 'auto',
   },
   ' .swiper-pagination': {
+    transform: 'translate3d(-50%,0,0) !important',
     ' .swiper-pagination-bullet': {
       background: '#808080',
       opacity: '.5',

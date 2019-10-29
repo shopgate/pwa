@@ -62,29 +62,25 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
                   role="text"
                 >
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="price.from"
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       price.from
                       <FormatPrice
-                        className=""
+                        className={null}
                         currency="EUR"
                         forKey="price"
                         fractions={true}
                         key=".0"
                         price={10.95}
                       >
-                        <span
-                          className=""
-                        >
-                          10.95
-                        </span>
+                        10.95
                       </FormatPrice>
                     </span>
                   </Translate>
@@ -116,16 +112,12 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
                   data-test-id="strikedPrice: 22.95"
                 >
                   <FormatPrice
-                    className=""
+                    className={null}
                     currency="EUR"
                     fractions={true}
                     price={22.95}
                   >
-                    <span
-                      className=""
-                    >
-                      22.95
-                    </span>
+                    22.95
                   </FormatPrice>
                 </span>
               </div>
@@ -235,29 +227,25 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
                   role="text"
                 >
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="price.from"
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       price.from
                       <FormatPrice
-                        className=""
+                        className={null}
                         currency="EUR"
                         forKey="price"
                         fractions={true}
                         key=".0"
                         price={10.95}
                       >
-                        <span
-                          className=""
-                        >
-                          10.95
-                        </span>
+                        10.95
                       </FormatPrice>
                     </span>
                   </Translate>
@@ -289,16 +277,12 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
                   data-test-id="strikedPrice: 22.95"
                 >
                   <FormatPrice
-                    className=""
+                    className={null}
                     currency="EUR"
                     fractions={true}
                     price={22.95}
                   >
-                    <span
-                      className=""
-                    >
-                      22.95
-                    </span>
+                    22.95
                   </FormatPrice>
                 </span>
               </div>
@@ -373,29 +357,25 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
                   role="text"
                 >
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="price.from"
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       price.from
                       <FormatPrice
-                        className=""
+                        className={null}
                         currency="EUR"
                         forKey="price"
                         fractions={true}
                         key=".0"
                         price={22.95}
                       >
-                        <span
-                          className=""
-                        >
-                          22.95
-                        </span>
+                        22.95
                       </FormatPrice>
                     </span>
                   </Translate>

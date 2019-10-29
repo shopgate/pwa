@@ -36,7 +36,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -55,7 +55,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           htmlFor="none"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -135,7 +135,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -183,7 +183,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -202,7 +202,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           htmlFor="none"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -342,7 +342,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -390,7 +390,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -409,7 +409,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           htmlFor="none"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -489,7 +489,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -537,7 +537,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -556,7 +556,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
           htmlFor="none"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -575,7 +575,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -623,7 +623,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -642,7 +642,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           htmlFor="none"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -722,7 +722,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -770,7 +770,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -789,7 +789,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
           htmlFor="none"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -869,7 +869,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""

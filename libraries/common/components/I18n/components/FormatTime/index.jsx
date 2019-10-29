@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 
@@ -7,27 +7,30 @@ import { i18n } from '@shopgate/engage/core';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const FormatTime = props => (
-  <span>
-    {FormatTime.format(props)}
-  </span>
+const FormatTime = ({ timestamp, format }) => (
+  <Fragment>
+    {FormatTime.format({
+      timestamp,
+      format,
+    })}
+  </Fragment>
 );
 
-FormatTime.format = (props) => {
+FormatTime.format = ({ timestamp, format }) => {
   if (!i18n.ready) {
-    return props.timestamp;
+    return timestamp;
   }
 
-  return i18n.time(props.timestamp, props.format);
+  return i18n.time(timestamp, format);
 };
 
 FormatTime.propTypes = {
-  timestamp: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
-  format: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
+  timestamp: PropTypes.number.isRequired,
+  format: PropTypes.string,
 };
 
 FormatTime.defaultProps = {
   format: 'medium',
 };
 
-export default FormatTime;
+export default memo(FormatTime);

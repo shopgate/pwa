@@ -5,6 +5,7 @@ import ApplyButton from './index';
 const clickMock = jest.fn();
 
 jest.mock('@shopgate/engage/core', () => ({
+  ...jest.requireActual('@shopgate/engage/core'),
   withWidgetSettings: function withWidgetSettings(Comp) {
     return props => (<Comp widgetSettings={{}} {...props} />);
   },
@@ -12,7 +13,7 @@ jest.mock('@shopgate/engage/core', () => ({
 
 describe('Filter: <ApplyButton />', () => {
   it('should render as activated', () => {
-    const wrapper = shallow(<ApplyButton active onClick={() => {}} />).dive();
+    const wrapper = shallow(<ApplyButton active onClick={() => { }} />).dive();
     expect(wrapper).toMatchSnapshot();
   });
 

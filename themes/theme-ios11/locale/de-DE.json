@@ -45,11 +45,16 @@
     },
     "apply": "Fertig",
     "more": "mehr",
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "remove": "{filter} Filter entfernen",
+    "edit": "{filter} Filter bearbeiten",
+    "filter_by": "Filtern nach {label}"
   },
   "price": {
     "from": "Ab {price}",
     "range": "Preis von {fromPrice} bis {toPrice}",
+    "range_from": "Preisspanne ab",
+    "range_to": "Preisspanne bis",
     "tier": {
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
@@ -229,6 +234,9 @@
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
+  },
+  "error": {
+    "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
   },
   "formats": {
     "date": {

@@ -8,10 +8,16 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Accordion = ({ renderLabel, children, testId }) => {
+const Accordion = (props) => {
+  const {
+    renderLabel, handleLabel, children, testId,
+  } = props;
+
   if (!renderLabel || !children) {
     return null;
   }
+
+  const controlsId = `${testId}-content`.replace(/[^\w\s]/gi, '-').replace(' ', '-');
 
   return (
     <AccordionContainer>
@@ -19,17 +25,22 @@ const Accordion = ({ renderLabel, children, testId }) => {
         <Fragment>
           <div
             onClick={open ? handleClose : handleOpen}
+            onKeyDown={open ? handleClose : handleOpen}
+            role="button"
+            tabIndex="0"
             className={styles.toggle}
             data-test-id={testId}
             key="accordion-toggle"
-            aria-hidden
+            aria-expanded={open}
+            aria-controls={controlsId}
+            aria-label={handleLabel}
           >
             {renderLabel({ open })}
             <div className={styles.chevronContainer}>
               <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
             </div>
           </div>
-          <AccordionContent open={open} key="accordion-content">
+          <AccordionContent open={open} id={controlsId} key={controlsId}>
             {children}
           </AccordionContent>
         </Fragment>
@@ -41,10 +52,12 @@ const Accordion = ({ renderLabel, children, testId }) => {
 Accordion.propTypes = {
   children: PropTypes.node.isRequired,
   renderLabel: PropTypes.func.isRequired,
+  handleLabel: PropTypes.string,
   testId: PropTypes.string,
 };
 
 Accordion.defaultProps = {
+  handleLabel: null,
   testId: null,
 };
 

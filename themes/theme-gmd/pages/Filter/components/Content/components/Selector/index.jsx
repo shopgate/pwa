@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Accordion } from '@shopgate/pwa-ui-material';
-import Item from '../Item';
+import { Accordion } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
+import { FilterItem } from '@shopgate/engage/filter';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
@@ -22,7 +23,7 @@ class Selector extends PureComponent {
 
   static defaultProps = {
     multi: false,
-    onChange() {},
+    onChange() { },
     selected: null,
   };
 
@@ -84,12 +85,16 @@ class Selector extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { values, id } = this.props;
+    const { values, id, label } = this.props;
     const { selected } = this.state;
 
     return (
-      <Item>
-        <Accordion renderLabel={this.renderLabel} testId={id}>
+      <FilterItem>
+        <Accordion
+          renderLabel={this.renderLabel}
+          testId={id}
+          handleLabel={i18n.text('filter.filter_by', { label })}
+        >
           <div className={styles.content}>
             {values.map(value => (
               <ValueButton
@@ -102,7 +107,7 @@ class Selector extends PureComponent {
             ))}
           </div>
         </Accordion>
-      </Item>
+      </FilterItem>
     );
   }
 }

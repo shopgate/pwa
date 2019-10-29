@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { historyReplace } from '@shopgate/pwa-common/actions/router';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { historyReplace, getCurrentRoute } from '@shopgate/engage/core';
 
 /**
  * @param {Object} state The application state.
@@ -10,12 +9,8 @@ const mapStateToProps = state => ({
   route: getCurrentRoute(state),
 });
 
-/**
- * @param {Function} dispatch Dispatches a redux action.
- * @returns {Object}
- */
-const mapDispatchToProps = dispatch => ({
-  historyReplace: params => dispatch(historyReplace(params)),
-});
+const mapDispatchToProps = {
+  historyReplace,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps);

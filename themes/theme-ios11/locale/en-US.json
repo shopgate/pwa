@@ -45,11 +45,16 @@
     },
     "apply": "Done",
     "more": "more",
-    "reset": "Reset"
+    "reset": "Reset",
+    "remove": "Remove {filter} filter",
+    "edit": "Edit {filter} filter",
+    "filter_by": "Filter by {label}"
   },
   "price": {
     "from": "From {price}",
     "range": "Price from {fromPrice} to {toPrice}",
+    "range_from": "Price range from",
+    "range_to": "Price range to",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
@@ -228,6 +233,9 @@
       "camera_message": "This feature requires access to your camera. Please allow access in the settings.",
       "geolocation_message": "To find stores near you, please go to Settings and enable location permissions."
     }
+  },
+  "error": {
+    "general": "Connectivity problems. Please check your internet connection or try again later."
   },
   "formats": {
     "date": {
