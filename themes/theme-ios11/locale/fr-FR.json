@@ -45,11 +45,16 @@
     },
     "apply": "Terminé",
     "more": "Plus",
-    "reset": "Effacer tout"
+    "reset": "Effacer tout",
+    "remove": "Supprimer {filter} filtre",
+    "edit": "Modifier {filter} filtrer",
+    "filter_by": "Filtrer par {label}"
   },
   "price": {
     "from": "De {price}",
     "range": "Plage de prix de {fromPrice} à {toPrice}",
+    "range_from": "La fourchette des prix de",
+    "range_to": "La fourchette des prix jusqu'à",
     "tier": {
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"
@@ -224,6 +229,9 @@
       "camera_message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
       "geolocation_message": "Pour trouver des magasins près de chez vous, allez dans Paramètres et activez l’autorisation de géolocalisation."
     }
+  },
+  "error": {
+    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
   "formats": {
     "date": {

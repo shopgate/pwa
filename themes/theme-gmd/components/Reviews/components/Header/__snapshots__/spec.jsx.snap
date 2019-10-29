@@ -306,13 +306,13 @@ exports[`<Header /> should render empty 1`] = `
             }
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string="reviews.no_reviews"
             >
               <span
-                className=""
+                className={null}
                 role={null}
               >
                 reviews.no_reviews
@@ -403,13 +403,13 @@ exports[`<Header /> should render empty 1`] = `
                                     style={null}
                                   >
                                     <Translate
-                                      className=""
+                                      className={null}
                                       params={Object {}}
                                       role={null}
                                       string="reviews.button_add"
                                     >
                                       <span
-                                        className=""
+                                        className={null}
                                         role={null}
                                       >
                                         reviews.button_add
@@ -983,13 +983,13 @@ exports[`<Header /> should render rating summary 1`] = `
                                     style={null}
                                   >
                                     <Translate
-                                      className=""
+                                      className={null}
                                       params={Object {}}
                                       role={null}
                                       string="reviews.button_add"
                                     >
                                       <span
-                                        className=""
+                                        className={null}
                                         role={null}
                                       >
                                         reviews.button_add

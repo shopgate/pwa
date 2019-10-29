@@ -60,7 +60,7 @@ exports[`<Password> should render a password field 1`] = `
             className="css-rkuo1o"
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string=""
@@ -79,7 +79,7 @@ exports[`<Password> should render a password field 1`] = `
             htmlFor="test-input"
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string=""
@@ -243,7 +243,7 @@ exports[`<Password> should render a password field 1`] = `
             className="css-hyvrm8"
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string=""
@@ -359,7 +359,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
             className="css-rkuo1o"
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string=""
@@ -378,7 +378,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
             htmlFor="test-input"
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string=""
@@ -584,7 +584,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
             className="css-hyvrm8"
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string=""

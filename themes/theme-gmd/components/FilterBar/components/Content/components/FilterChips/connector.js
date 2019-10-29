@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentPathname } from '@shopgate/engage/core';
 import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
 import openFilterRoute from '../../actions/openFilterRoute';
 
@@ -9,17 +9,17 @@ import openFilterRoute from '../../actions/openFilterRoute';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  currentPathname: getHistoryPathname(state),
+  currentPathname: getCurrentPathname(state),
 });
 
 /**
- * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
+ * @param {Object} props The components props.
+ * @return {Object}
  */
-const mapDispatchToProps = dispatch => ({
-  openFilters: () => dispatch(openFilterRoute()),
-  updateFilters: filters => dispatch(updateFilters(filters)),
-});
+const mapDispatchToProps = {
+  openFilters: () => openFilterRoute(),
+  updateFilters,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps);

@@ -1,6 +1,4 @@
-/* eslint-disable extra-rules/no-single-line-objects */
-
-import { findSelectionIndex, prepareState } from './index';
+/* eslint-disable extra-rules/no-single-line-objects,global-require */
 
 const products = [{
   id: '007-001',
@@ -28,6 +26,7 @@ const characteristics = [{
   id: '1',
   label: 'Size',
   values: [
+    { id: '0', label: 'Resilient' },
     { id: '1', label: 'L' },
     { id: '2', label: 'XL' },
   ],
@@ -35,6 +34,7 @@ const characteristics = [{
   id: '2',
   label: 'Color',
   values: [
+    { id: '0', label: 'Transparent' },
     { id: '1', label: 'Black' },
     { id: '2', label: 'Blue' },
   ],
@@ -42,6 +42,7 @@ const characteristics = [{
   id: '3',
   label: 'Pattern',
   values: [
+    { id: '0', label: 'No pattern' },
     { id: '1', label: 'None' },
     { id: '2', label: 'Checked' },
     { id: '3', label: 'Stripes' },
@@ -49,7 +50,13 @@ const characteristics = [{
 }];
 
 describe('ProductCharacteristics helpers', () => {
+  afterEach(() => {
+    jest.resetModules();
+  });
+
   describe('findSelectionIndex()', () => {
+    const { findSelectionIndex } = require('./index');
+
     it('should return the index', () => {
       expect(findSelectionIndex(characteristics, '2')).toBe(1);
     });
@@ -60,6 +67,8 @@ describe('ProductCharacteristics helpers', () => {
   });
 
   describe('prepareState()', () => {
+    const { prepareState } = require('./index');
+
     it('should return the current selections, when the selected ID is not found', () => {
       const selections = { 1: '1', 2: '1', 3: '1' };
       const result = prepareState('4', '2', selections, characteristics, products);
@@ -134,6 +143,41 @@ describe('ProductCharacteristics helpers', () => {
       });
     });
   });
+
+  describe('selectCharacteristics()', () => {
+    describe('default config', () => {
+      const { selectCharacteristics } = require('./index');
+
+      it('should return empty characteristics', () => {
+        expect(selectCharacteristics({})).toEqual({});
+      });
+
+      it('should return characteristics for selected variant', () => {
+        expect(selectCharacteristics({ variantId: '007-001', variants: { products } }))
+          .toEqual(products[0].characteristics);
+      });
+
+      it('should preselect characteristics for only 1 variant', () => {
+        expect(selectCharacteristics({ variants: { products: [products[0]] } }))
+          .toEqual(products[0].characteristics);
+      });
+
+      it('should not preselect characteristics by config', () => {
+        expect(selectCharacteristics({ variants: { products } })).toEqual({});
+      });
+    });
+
+    describe('preselect config', () => {
+      jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
+        product: { variantPreselect: true },
+      }));
+      it('should preselect characteristics for selectable product', () => {
+        const { selectCharacteristics: selectCharacteristicsPreselect } = require('./index');
+        expect(selectCharacteristicsPreselect({ variants: { characteristics, products } }))
+          .toEqual(products[0].characteristics);
+      });
+    });
+  });
 });
 
-/* eslint-enable extra-rules/no-single-line-objects */
+/* eslint-enable extra-rules/no-single-line-objects,global-require */

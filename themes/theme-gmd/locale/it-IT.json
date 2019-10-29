@@ -44,11 +44,16 @@
     },
     "apply": "Applica",
     "more": "di più",
-    "reset": "Resetta"
+    "reset": "Resetta",
+    "remove": "Rimuovi {filter} filtro",
+    "edit": "Modifica {filter} filtro",
+    "filter_by": "Ordina per {label}"
   },
   "price": {
     "from": "Da {price}",
     "range": "Prezzo da {fromPrice} a {toPrice}",
+    "range_from": "Fascia di prezzo da",
+    "range_to": "Fascia di prezzo a",
     "tier": {
       "set": "{from} elementi: {price}",
       "range": "{from} o altro: {price}"
@@ -216,6 +221,9 @@
       "camera_message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
       "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione."
     }
+  },
+  "error": {
+    "general": "Impossibile connettersi. Per favore verifica la connessione internet."
   },
   "formats": {
     "date": {

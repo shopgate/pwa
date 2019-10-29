@@ -3,7 +3,7 @@
 exports[`<Translate /> Given the component was mounted to the DOM should match snapshot 1`] = `
 <I18nProvider>
   <Translate
-    className=""
+    className={null}
     params={
       Object {
         "name": "Test",
@@ -13,7 +13,7 @@ exports[`<Translate /> Given the component was mounted to the DOM should match s
     string="greeting"
   >
     <span
-      className=""
+      className={null}
       role={null}
     >
       Hello Test

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 /**
@@ -6,30 +6,38 @@ import { i18n } from '@shopgate/engage/core';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const FormatPrice = props => (
-  <span className={props.className}>
-    {FormatPrice.format(props)}
-  </span>
-);
+const FormatPrice = (props) => {
+  const { className, ...formatProps } = props;
 
-FormatPrice.format = (props) => {
-  if (!i18n.ready) {
-    return props.price;
+  if (!className) {
+    return FormatPrice.format(formatProps);
   }
 
-  return i18n.price(props.price, props.currency, props.fractions);
+  return (
+    <span className={className}>
+      {FormatPrice.format(formatProps)}
+    </span>
+  );
+};
+
+FormatPrice.format = ({ price, currency, fractions }) => {
+  if (!i18n.ready) {
+    return price;
+  }
+
+  return i18n.price(price, currency, fractions);
 };
 
 FormatPrice.propTypes = {
-  currency: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
-  price: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  currency: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   className: PropTypes.string,
-  fractions: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
+  fractions: PropTypes.bool,
 };
 
 FormatPrice.defaultProps = {
-  className: '',
+  className: null,
   fractions: true,
 };
 
-export default FormatPrice;
+export default memo(FormatPrice);

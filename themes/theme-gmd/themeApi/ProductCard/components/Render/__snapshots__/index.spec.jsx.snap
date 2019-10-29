@@ -647,16 +647,12 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                     role="text"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={5}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -686,16 +682,12 @@ exports[`<ProductCardRender /> should not render the discount badge when the is 
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={10}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -1128,16 +1120,12 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                     role="text"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={5}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -1167,16 +1155,12 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={10}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -1956,16 +1940,12 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                     role="text"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={5}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -1995,16 +1975,12 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={10}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -2784,16 +2760,12 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                     role="text"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={5}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -2823,16 +2795,12 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={10}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -3576,16 +3544,12 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                     role="text"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={5}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -3615,16 +3579,12 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={10}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -4623,16 +4583,12 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                     role="text"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={5}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>
@@ -4662,16 +4618,12 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                                     data-test-id="strikedPrice: 10"
                                   >
                                     <FormatPrice
-                                      className=""
+                                      className={null}
                                       currency="EUR"
                                       fractions={true}
                                       price={10}
                                     >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
+                                      p
                                     </FormatPrice>
                                   </span>
                                 </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { logger } from '@shopgate/pwa-core/helpers';
 import styles from './style';
 import RangeSliderHandle from './components/Handle';
 import {
@@ -13,6 +14,8 @@ import {
 
 /**
  * The range slider component.
+ * @deprecated Will be remove in v7.0.0.
+ *             Please use `import { RangeSlider } from '@shopgate/engage/components'` instead.
  */
 class RangeSlider extends Component {
   static propTypes = {
@@ -51,6 +54,8 @@ class RangeSlider extends Component {
    */
   constructor(props) {
     super(props);
+
+    logger.warn('===== RangeSlider deprecated =====\nThe RangeSlider component and it\'s related components (@shopgate/pwa-common/component/RangeSlider) are deprecated and will be removed in @shopgate/engage v7.0.0.\nPlease use: import { RangeSlider } from \'@shopgate/engage/components\'.\n===================================');
 
     this.draggedHandle = null; // 0 for left handle, 1 for right handle or null
     this.domElement = null;

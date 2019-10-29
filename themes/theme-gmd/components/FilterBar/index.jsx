@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useEffect, useMemo, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from './components/Content';
@@ -8,76 +10,34 @@ const { colors } = themeConfig;
 
 /**
  * The FilterBar component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class FilterBar extends Component {
-  static propTypes = {
-    filters: PropTypes.shape(),
-  };
+function FilterBar({ filters }) {
+  const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
-  static defaultProps = {
-    filters: null,
-  };
+  useEffect(() => {
+    setActive(filters !== null && Object.keys(filters).length > 0);
+  }, [filters]);
 
-  /**
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
+  const style = useMemo(() => ({
+    background: active ? colors.accent : colors.background,
+    color: active ? colors.accentContrast : colors.dark,
+  }), [active]);
 
-    this.state = {
-      active: props.filters !== null,
-    };
-  }
-
-  /**
-   * Check for a new viewRef and update the scroll element.
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    // Check if newly set filters came in.
-    const hasFilters = nextProps.filters !== null && Object.keys(nextProps.filters).length > 0;
-
-    this.setState({
-      active: hasFilters,
-    });
-  }
-
-  /**
-   * @param {Object} nextProps The next set of component props.
-   * @param {Object} nextState The next state of the component.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.active !== nextState.active;
-  }
-
-  /**
-   * @returns {Object}
-   */
-  get style() {
-    const { active } = this.state;
-    return {
-      background: active ? colors.accent : colors.background,
-      color: active ? colors.accentContrast : colors.dark,
-    };
-  }
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <section className={styles.container}>
-        <div
-          className={styles}
-          data-test-id="filterBar"
-          style={this.style}
-        >
-          <Content />
-        </div>
-      </section>
-    );
-  }
+  return (
+    <div className={styles} data-test-id="filterBar" style={style}>
+      <Content />
+    </div>
+  );
 }
 
-export default FilterBar;
+FilterBar.propTypes = {
+  filters: PropTypes.shape(),
+};
+
+FilterBar.defaultProps = {
+  filters: null,
+};
+
+export default memo(FilterBar);

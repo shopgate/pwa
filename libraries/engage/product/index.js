@@ -66,6 +66,7 @@ export { RelationsSlider } from './components/RelationsSlider';
 export { default as ProductCard } from './components/ProductCard';
 export { default as ProductGridPrice } from './components/ProductGridPrice';
 export { default as ProductCharacteristics } from './components/ProductCharacteristics';
+export { default as Description } from './components/Description';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';

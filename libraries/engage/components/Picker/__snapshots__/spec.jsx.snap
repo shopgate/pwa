@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Picker /> Given the component was mounted to the DOM should match snapshot 1`] = `
+<ForwardRef(WithForwardedRef(Picker))
+  items={
+    Array [
+      "String only",
+      Object {
+        "value": "Value only",
+      },
+      Object {
+        "label": "Value and label",
+        "value": "value",
+      },
+    ]
+  }
+  onChange={[MockFunction]}
+  onSelect={[MockFunction]}
+>
+  <Picker
+    buttonComponent={[Function]}
+    buttonProps={Object {}}
+    className=""
+    disabled={false}
+    duration={300}
+    forwardedRef={null}
+    isOpen={false}
+    items={
+      Array [
+        "String only",
+        Object {
+          "value": "Value only",
+        },
+        Object {
+          "label": "Value and label",
+          "value": "value",
+        },
+      ]
+    }
+    label=""
+    listComponent={[Function]}
+    modalComponent={[Function]}
+    onChange={[MockFunction]}
+    onClose={[Function]}
+    onSelect={[MockFunction]}
+    placeholder="Pick ..."
+    value={null}
+  >
+    <div
+      aria-haspopup={true}
+      className=""
+      role="button"
+      tabIndex={0}
+    >
+      <PickerButton
+        disabled={false}
+        label="Pick ..."
+        openList={[Function]}
+        value=""
+      >
+        <button
+          className="css-15pexpa"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            className="css-fisw11"
+          >
+            Pick ...
+          </span>
+          <span
+            className="css-fd89ih"
+          />
+        </button>
+      </PickerButton>
+      <Component
+        isOpened={true}
+        onClose={[Function]}
+      >
+        <PickerModal
+          duration={300}
+          isOpen={false}
+          onClose={[Function]}
+        />
+      </Component>
+    </div>
+  </Picker>
+</ForwardRef(WithForwardedRef(Picker))>
+`;
