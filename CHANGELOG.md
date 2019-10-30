@@ -1,5 +1,29 @@
 # Changelog
 
+## [v6.9.0](https://github.com/shopgate/pwa/compare/v6.8.0...v6.9.0) (2019-10-30)
+
+#### :rocket: Enhancement
+* [#850](https://github.com/shopgate/pwa/pull/850) Implemented a way to extend and replace actions and updated public action definitions for mutability. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#844](https://github.com/shopgate/pwa/pull/844) a11y: The filter bar is now fully optimised. ([@devbucket](https://github.com/devbucket))
+* [#837](https://github.com/shopgate/pwa/pull/837) Enabled a11y in the filter feature ([@devbucket](https://github.com/devbucket))
+* [#840](https://github.com/shopgate/pwa/pull/840) New theme config "product.variantPreselect" is added. ([@alexbridge](https://github.com/alexbridge))
+* [#838](https://github.com/shopgate/pwa/pull/838) Implemented the process type `PROCESS_LAST` in the `PipelineManager` and changed the `fetchCart` action accordingly. `fetchCart` now returns a promise. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#836](https://github.com/shopgate/pwa/pull/836) A11y: accessibility for favorites buttons and favorites page ([@alexbridge](https://github.com/alexbridge))
+* [#834](https://github.com/shopgate/pwa/pull/834) Enabled a11y in Search feature ([@devbucket](https://github.com/devbucket))
+* [#833](https://github.com/shopgate/pwa/pull/833) A11y: accessibility of sort menu for category and search page ([@alexbridge](https://github.com/alexbridge))
+* [#831](https://github.com/shopgate/pwa/pull/831) A11y: accessible aria label for back navigation ([@alexbridge](https://github.com/alexbridge))
+* [#829](https://github.com/shopgate/pwa/pull/829) Optimised accessibility (a11y) in the cart view. ([@devbucket](https://github.com/devbucket))
+* [#832](https://github.com/shopgate/pwa/pull/832) Optimised modals for accessibility ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#849](https://github.com/shopgate/pwa/pull/849) Improved extensibility of CTA button portals ([@fkloes](https://github.com/fkloes))
+* [#847](https://github.com/shopgate/pwa/pull/847) Fixed history imports to eliminate error warnings. ([@devbucket](https://github.com/devbucket))
+
+#### :nail_care: Polish
+* [#848](https://github.com/shopgate/pwa/pull/848) Show generic message for irrelevant errors as toast messages ([@alexbridge](https://github.com/alexbridge))
+* [#839](https://github.com/shopgate/pwa/pull/839) Remove recompose library in favor of React 16.6 memo ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.8.0](https://github.com/shopgate/pwa/compare/v6.7.2...v6.8.0) (2019-10-17)
 
 #### :rocket: Enhancement
