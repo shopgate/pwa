@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import {
   getCategoryProductCount,
-  getCurrentCategoryChildCount,
+  getCategoryChildCount,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
@@ -11,7 +11,7 @@ import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selecto
  */
 export const isCategoryEmpty = createSelector(
   getCategoryProductCount,
-  getCurrentCategoryChildCount,
+  getCategoryChildCount,
   getProductsResult,
   (productCount, childrenCount, { products, totalProductCount }) => {
     if (childrenCount !== 0) {
