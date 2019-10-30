@@ -2,9 +2,10 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import requestProductImages from '../action-creators/requestProductImages';
-import * as pipelines from '../constants/Pipelines';
+import { SHOPGATE_CATALOG_GET_PRODUCT_IMAGES } from '../constants/Pipelines';
 import receiveProductImages from '../action-creators/receiveProductImages';
 import errorProductImages from '../action-creators/errorProductImages';
+import { getProductImages } from '../selectors/product';
 
 /**
  * Maybe requests images for a product from server.
@@ -12,35 +13,39 @@ import errorProductImages from '../action-creators/errorProductImages';
  * @param {Array} [formats] The requested formats.
  * @return {Function} The dispatched action.
  */
-const fetchProductImages = (productId, formats) => (dispatch, getState) => {
-  const state = getState();
-  const productImages = state.product.imagesByProductId[productId];
+function fetchProductImages(productId, formats) {
+  return (dispatch, getState) => {
+    const productImages = getProductImages(getState(), { productId });
 
-  if (!shouldFetchData(productImages)) {
-    return;
-  }
+    if (!shouldFetchData(productImages)) {
+      return Promise.resolve(null);
+    }
 
-  let version = 1;
-  const input = { productId };
-  if (formats) {
-    input.formats = formats;
-    version = 2;
-  }
+    let version = 1;
+    const input = { productId };
 
-  dispatch(requestProductImages(productId, formats));
+    if (formats) {
+      input.formats = formats;
+      version = 2;
+    }
 
-  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
-    .setInput(input)
-    .setVersion(version)
-    .dispatch()
-    .then((result) => {
-      dispatch(receiveProductImages(productId, result.images));
-    })
-    .catch((error) => {
-      logger.error(error);
-      dispatch(errorProductImages(productId, error.code));
-    });
-};
+    dispatch(requestProductImages(productId, formats));
+
+    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
+      .setInput(input)
+      .setVersion(version)
+      .dispatch()
+      .then((result) => {
+        dispatch(receiveProductImages(productId, result.images));
+        return result;
+      })
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorProductImages(productId, error.code));
+        return error;
+      });
+  };
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchProductImages);

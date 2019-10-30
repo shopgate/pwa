@@ -5,7 +5,12 @@ import {
   ELEGACYSGCONNECT,
   EINCOMPLETELOGIN,
 } from '@shopgate/pwa-core';
-import * as actions from '../../action-creators/user';
+import {
+  requestLogin,
+  successLogin,
+  errorLogin,
+  errorLegacyConnectRegister,
+} from '../../action-creators/user';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
 import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
 import { mutable } from '../../helpers/redux';
@@ -21,9 +26,9 @@ import { mutable } from '../../helpers/redux';
  */
 function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return (dispatch) => {
-    dispatch(actions.requestLogin(parameters.login, parameters.password, strategy));
+    dispatch(requestLogin(parameters.login, parameters.password, strategy));
 
-    new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
+    return new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
       .setTrusted()
       .setErrorBlacklist([
         EINVALIDCALL,
@@ -35,12 +40,16 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
         parameters,
       })
       .dispatch()
-      .then(({ success, messages }) => {
+      .then((result) => {
+        const { success, messages } = result;
+
         if (success) {
-          dispatch(actions.successLogin(redirect, strategy));
+          dispatch(successLogin(redirect, strategy));
         } else {
-          dispatch(actions.errorLogin(messages));
+          dispatch(errorLogin(messages));
         }
+
+        return result;
       })
       .catch((error) => {
         const { code } = error;
@@ -51,18 +60,20 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
            * in. In that situation the success action can also dispatch to trigger the necessary
            * processes which has to happen after a successful login.
            */
-          dispatch(actions.successLogin(redirect, strategy));
+          dispatch(successLogin(redirect, strategy));
         } else if (code === ELEGACYSGCONNECT) {
           /**
            * The app is connected to the shop system via the legacy shopgate connect. Login via
            * the shop system credentials failed and further steps are necessary to login the user.
            */
-          dispatch(actions.errorLegacyConnectRegister());
-          dispatch(actions.errorLogin([], ELEGACYSGCONNECT));
+          dispatch(errorLegacyConnectRegister());
+          dispatch(errorLogin([], ELEGACYSGCONNECT));
         } else {
           logger.error(error);
-          dispatch(actions.errorLogin([], code));
+          dispatch(errorLogin([], code));
         }
+
+        return error;
       });
   };
 }

@@ -7,7 +7,7 @@ import {
   ELIMIT,
 } from '@shopgate/pwa-core/constants/Pipeline';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
-import * as pipelines from '../constants/Pipelines';
+import { SHOPGATE_USER_GET_FAVORITES } from '../constants/Pipelines';
 import {
   receiveFavorites,
   requestFavorites,
@@ -17,28 +17,33 @@ import {
 /**
  * Fetch favorites action.
  * @param {boolean} ignoreCache Ignores cache when true
- * @returns {Promise|undefined}
+ * @returns {Function} A redux thunk.
  */
-const fetchFavorites = (ignoreCache = false) => (dispatch, getState) => {
-  const data = getState().favorites.products;
-  if (!ignoreCache && !shouldFetchData(data)) {
-    return Promise.resolve();
-  }
-  const timestamp = Date.now();
-  dispatch(requestFavorites());
-  const promise = new PipelineRequest(pipelines.SHOPGATE_USER_GET_FAVORITES)
-    .setErrorBlacklist([EFAVORITE, EUNKNOWN, EBIGAPI, ELIMIT])
-    .dispatch();
-  promise
-    .then((result) => {
-      dispatch(receiveFavorites(result.products, timestamp));
-    })
-    .catch((err) => {
-      logger.error(err);
-      dispatch(errorFetchFavorites(err));
-    });
-  return promise;
-};
+function fetchFavorites(ignoreCache = false) {
+  return (dispatch, getState) => {
+    const data = getState().favorites.products;
+
+    if (!ignoreCache && !shouldFetchData(data)) {
+      return Promise.resolve(null);
+    }
+
+    const timestamp = Date.now();
+    dispatch(requestFavorites());
+
+    return new PipelineRequest(SHOPGATE_USER_GET_FAVORITES)
+      .setErrorBlacklist([EFAVORITE, EUNKNOWN, EBIGAPI, ELIMIT])
+      .dispatch()
+      .then((result) => {
+        dispatch(receiveFavorites(result.products, timestamp));
+        return result;
+      })
+      .catch((err) => {
+        logger.error(err);
+        dispatch(errorFetchFavorites(err));
+        return err;
+      });
+  };
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchFavorites);

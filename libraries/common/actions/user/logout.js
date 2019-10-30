@@ -1,6 +1,10 @@
 import { PipelineRequest, logger } from '@shopgate/pwa-core';
-import * as actions from '../../action-creators/user';
-import * as pipelines from '../../constants/Pipelines';
+import {
+  requestLogout,
+  successLogout,
+  errorLogout,
+} from '../../action-creators/user';
+import { SHOPGATE_USER_LOGOUT_USER } from '../../constants/Pipelines';
 import { mutable } from '../../helpers/redux';
 
 /**
@@ -9,21 +13,26 @@ import { mutable } from '../../helpers/redux';
  */
 function logout() {
   return (dispatch) => {
-    dispatch(actions.requestLogout());
+    dispatch(requestLogout());
 
-    new PipelineRequest(pipelines.SHOPGATE_USER_LOGOUT_USER)
+    return new PipelineRequest(SHOPGATE_USER_LOGOUT_USER)
       .setTrusted()
       .dispatch()
-      .then(({ success, messages }) => {
+      .then((result) => {
+        const { success, messages } = result;
+
         if (success) {
-          dispatch(actions.successLogout());
+          dispatch(successLogout());
         } else {
-          dispatch(actions.errorLogout(messages));
+          dispatch(errorLogout(messages));
         }
+
+        return result;
       })
       .catch((error) => {
         logger.error(error);
-        dispatch(actions.errorLogout());
+        dispatch(errorLogout());
+        return error;
       });
   };
 }

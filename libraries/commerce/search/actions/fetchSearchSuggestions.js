@@ -9,28 +9,33 @@ import removeHighlightingPlaceholders from '../helpers/removeHighlightingPlaceho
 /**
  * Get suggestions from cache or pipeline.
  * @param {string} searchPhrase The search phrase.
- * @returns {undefined}
+ * @returns {Function} A redux thunk.
  */
-const fetchSearchSuggestions = searchPhrase => (dispatch, getState) => {
-  if (searchPhrase.length < 3) {
-    return;
-  }
+function fetchSearchSuggestions(searchPhrase) {
+  return (dispatch, getState) => {
+    if (searchPhrase.length < 3) {
+      return Promise.resolve(null);
+    }
 
-  const cached = getSuggestionsState(getState())[searchPhrase];
+    const cached = getSuggestionsState(getState())[searchPhrase];
 
-  if (cached && (cached.isFetching || cached.expires >= Date.now())) {
-    return;
-  }
+    if (cached && (cached.isFetching || cached.expires >= Date.now())) {
+      return Promise.resolve(null);
+    }
 
-  dispatch(requestSearchSuggestions(searchPhrase));
+    dispatch(requestSearchSuggestions(searchPhrase));
 
-  new PipelineRequest(SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS)
-    .setInput({ searchPhrase })
-    .dispatch()
-    .then(({ suggestions }) => {
-      dispatch(receiveSearchSuggestions(searchPhrase, removeHighlightingPlaceholders(suggestions)));
-    });
-};
+    return new PipelineRequest(SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS)
+      .setInput({ searchPhrase })
+      .dispatch()
+      .then((result) => {
+        const { suggestions } = result;
+        const suggestionsWithoutPlaceholders = removeHighlightingPlaceholders(suggestions);
+        dispatch(receiveSearchSuggestions(searchPhrase, suggestionsWithoutPlaceholders));
+        return result;
+      });
+  };
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchSearchSuggestions);

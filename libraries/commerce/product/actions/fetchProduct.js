@@ -3,7 +3,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
-import * as pipelines from '../constants/Pipelines';
+import { SHOPGATE_CATALOG_GET_PRODUCT } from '../constants/Pipelines';
 import requestProduct from '../action-creators/requestProduct';
 import receiveProduct from '../action-creators/receiveProduct';
 import errorProduct from '../action-creators/errorProduct';
@@ -16,36 +16,40 @@ import { getProductById } from '../selectors/product';
  * @param {boolean} forceFetch Skips shouldFetchData check. Always fetches.
  * @return {Function} A redux thunk.
  */
-const fetchProduct = (productId, forceFetch = false) => (dispatch, getState) => {
-  const state = getState();
-  const product = getProductById(state, { productId });
+function fetchProduct(productId, forceFetch = false) {
+  return (dispatch, getState) => {
+    const state = getState();
+    const product = getProductById(state, { productId });
 
-  if (!forceFetch && !shouldFetchData(product)) {
-    if (product.productData) {
-      dispatch(receiveProductCached(product.productData));
+    if (!forceFetch && !shouldFetchData(product)) {
+      if (product.productData) {
+        dispatch(receiveProductCached(product.productData));
+      }
+
+      return Promise.resolve(null);
     }
 
-    return;
-  }
+    const requestParams = {
+      ...configuration.get(DEFAULT_PRODUCTS_FETCH_PARAMS),
+      productId,
+    };
 
-  const requestParams = {
-    ...configuration.get(DEFAULT_PRODUCTS_FETCH_PARAMS),
-    productId,
+    dispatch(requestProduct(productId, forceFetch));
+
+    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT)
+      .setInput(requestParams)
+      .dispatch()
+      .then((result) => {
+        dispatch(receiveProduct(productId, result));
+        return result;
+      })
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorProduct(productId, error.code));
+        return error;
+      });
   };
-
-  dispatch(requestProduct(productId, forceFetch));
-
-  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT)
-    .setInput(requestParams)
-    .dispatch()
-    .then((result) => {
-      dispatch(receiveProduct(productId, result));
-    })
-    .catch((error) => {
-      logger.error(error);
-      dispatch(errorProduct(productId, error.code));
-    });
-};
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchProduct);

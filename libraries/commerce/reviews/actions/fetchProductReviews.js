@@ -2,11 +2,12 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
-import * as pipelines from '../constants/Pipelines';
+import { SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS } from '../constants/Pipelines';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
 import requestProductReviews from '../action-creators/requestProductReviews';
 import receiveProductReviews from '../action-creators/receiveProductReviews';
 import errorProductReviews from '../action-creators/errorProductReviews';
+import { getProductReviews } from '../selectors';
 
 /**
  * Request product reviews for a product from server.
@@ -15,37 +16,34 @@ import errorProductReviews from '../action-creators/errorProductReviews';
  * @param {('relevance'|'dateDesc'|'dateAsc'|'rateDesc'|'rateAsc')} [sort=SORT_RELEVANCE] Sorting.
  * @returns {Promise} The dispatched action.
  */
-const fetchProductReviews = (
-  productId,
-  limit = REVIEW_PREVIEW_COUNT,
-  sort = SORT_RELEVANCE
-) => (dispatch, getState) => {
-  const data = getState().reviews.reviewsByProductId[productId];
-  if (!shouldFetchData(data)) {
-    return new Promise(resolve => resolve());
-  }
-  dispatch(requestProductReviews(productId, limit));
+function fetchProductReviews(productId, limit = REVIEW_PREVIEW_COUNT, sort = SORT_RELEVANCE) {
+  return (dispatch, getState) => {
+    const data = getProductReviews(getState(), { productId });
 
-  const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS)
-    .setInput({
-      productId,
-      limit,
-      sort,
-    })
-    .dispatch();
+    if (!shouldFetchData(data)) {
+      return Promise.resolve(null);
+    }
 
-  request
-    .then((result) => {
-      dispatch(receiveProductReviews(productId, result.reviews, result.totalReviewCount));
-    })
-    .catch((error) => {
-      logger.error(error);
-      dispatch(errorProductReviews(productId));
-    });
+    dispatch(requestProductReviews(productId, limit));
 
-  return request;
-};
+    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS)
+      .setInput({
+        productId,
+        limit,
+        sort,
+      })
+      .dispatch()
+      .then((result) => {
+        dispatch(receiveProductReviews(productId, result.reviews, result.totalReviewCount));
+        return result;
+      })
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorProductReviews(productId));
+        return error;
+      });
+  };
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchProductReviews);
-

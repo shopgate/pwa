@@ -18,8 +18,8 @@ import { PRODUCT_RELATIONS_DEFAULT_LIMIT } from '../constants';
  * @param {number} params.limit Query limit.
  * @returns {Function}
  */
-const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAULT_LIMIT }) =>
-  (dispatch, getState) => {
+function fetchProductRelations({ productId, type, limit = PRODUCT_RELATIONS_DEFAULT_LIMIT }) {
+  return (dispatch, getState) => {
     const pipeline = SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS;
     const hash = generateProductRelationsHash({
       productId,
@@ -29,40 +29,41 @@ const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFA
 
     const currentState = getProductRelationsState(getState())[hash];
     if (!shouldFetchData(currentState, 'productIds')) {
-      return null;
+      return Promise.resolve(null);
     }
 
     dispatch(requestProductRelations({ hash }));
 
-    const request = new PipelineRequest(pipeline)
+    return new PipelineRequest(pipeline)
       .setInput({
         productId,
         type,
         limit,
       })
-      .dispatch();
-
-    request
+      .dispatch()
       .then((payload) => {
         const { relations } = payload;
+
         if (!Array.isArray(relations)) {
           logger.error(new Error(`Invalid ${pipeline} pipeline response`), payload);
           dispatch(errorProductRelations({ hash }));
-          return;
+          return payload;
         }
 
         dispatch(receiveProductRelations({
           hash,
           payload,
         }));
+
+        return payload;
       })
       .catch((err) => {
         logger.error(err);
         dispatch(errorProductRelations({ hash }));
+        return err;
       });
-
-    return request;
   };
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchProductRelations);
