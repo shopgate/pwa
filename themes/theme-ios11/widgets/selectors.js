@@ -7,7 +7,7 @@ import {
   getProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
-  getChildCategoriesById,
+  getCategoryChildren,
   getRootCategories,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
@@ -163,7 +163,7 @@ export const getProductsFetchingState = createSelector(
  * @returns {Object[]} The categories collection.
  */
 export const getCategoriesById = createSelector(
-  getChildCategoriesById,
+  getCategoryChildren,
   getRootCategories,
   (state, props) => props.categoryId,
   (childCategories, rootCategories, categoryId) => {

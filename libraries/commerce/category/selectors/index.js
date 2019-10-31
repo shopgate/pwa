@@ -3,65 +3,109 @@ import { getCurrentRoute, getCurrentParams } from '@shopgate/pwa-common/selector
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
 /**
- * Retrieves the category state from the global state.
- * @param {Object} state The global state.
+ * Retrieves the category state from the state.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
  * @returns {Object} The category state.
  */
 const getCategoryState = state => state.category;
 
-const getCategoriesState = createSelector(
+/**
+ * Retrieves the categoriesById state from the category state.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @returns {Object} The categoriesById state.
+ */
+const getCategoriesByIdState = createSelector(
   getCategoryState,
-  state => state.categoriesById
+  (state = {}) => state.categoriesById || {}
 );
 
 /**
- * Retrieves a category by id from state.
- * @param {Object} state The current application state.
+ * Retrieves the childrenByCategoryId state from the category state.
+ * @param {Object} state The application state.
  * @param {Object} props The component props.
- * @return {Object|null} The category.
+ * @returns {Object} The childrenByCategoryId state.
  */
-export const getCategoryById = createSelector(
-  getCategoriesState,
-  (state, props) => props.categoryId,
-  (categoriesState, categoryId) => {
-    if (!categoriesState || !categoriesState[categoryId]) {
+const getChildrenByCategoryIdState = createSelector(
+  getCategoryState,
+  (state = {}) => state.childrenByCategoryId || {}
+);
+
+/**
+ * Retrieves the rootCategories state from the category state.
+ * @param {Object} state The application state.
+ * @returns {Object}
+ */
+const getRootCategoriesState = createSelector(
+  getCategoryState,
+  (state = {}) => state.rootCategories || {}
+);
+
+/**
+ * Retrieves a category id either from the selector props, or the params of the active route.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @returns {string|null} The category ID.
+ */
+export const getCategoryId = createSelector(
+  (state, props = {}) => props.categoryId,
+  getCurrentParams,
+  (categoryId, routeParams) => {
+    if (typeof categoryId !== 'undefined') {
+      return categoryId;
+    }
+
+    if (!routeParams || !routeParams.categoryId) {
       return null;
     }
 
-    return categoriesState[categoryId];
+    return hex2bin(routeParams.categoryId);
   }
 );
 
 /**
- * Retrieves the full category children collection from the state.
+ * Retrieves the child categories for a specific parent category from the state.
  * @param {Object} state The application state.
- * @returns {Object} The category children collection.
+ * @param {Object} props The component props.
+ * @returns {Object}
  */
-const getChildCategoriesState = createSelector(
-  getCategoryState,
-  state => state.childrenByCategoryId
+const getChildCategoriesForCategory = createSelector(
+  getCategoryId,
+  getChildrenByCategoryIdState,
+  (categoryId, childCategories) => childCategories[categoryId]
 );
 
 /**
- * Retrieves the root categories collection from the state.
- * @param {Object} state The application state.
- * @returns {Array} The root categories collection.
+ * Retrieves a category from state.
+ * The category can either be referenced by a categoryId within the props,
+ * or by a categoryId within the params of the active route state.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
  */
-const getRootCategoriesState = createSelector(
-  getCategoryState,
-  state => state.rootCategories
+export const getCategory = createSelector(
+  getCategoryId,
+  getCategoriesByIdState,
+  (categoryId, categoriesById) => {
+    if (!categoriesById || !categoriesById[categoryId]) {
+      return null;
+    }
+
+    return categoriesById[categoryId];
+  }
 );
 
 /**
  * Retrieves the root categories.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
- * @returns {Object} The child categories state.
+ * @returns {Array}
  */
 export const getRootCategories = createSelector(
   getRootCategoriesState,
-  getCategoriesState,
-  (rootCategories, categoryState) => {
+  getCategoriesByIdState,
+  (rootCategories, categoriesById) => {
     if (Object.keys(rootCategories).length === 0) {
       return null;
     }
@@ -70,141 +114,126 @@ export const getRootCategories = createSelector(
       return null;
     }
 
-    return rootCategories.categories.map(id => categoryState[id]);
+    return rootCategories.categories.map(id => categoriesById[id]).filter(Boolean);
   }
 );
 
 /**
- * Retrieves the current category ID from the current route params.
- * @param {Object} state The application state.
- * @returns {string|null} The category ID.
- */
-export const getCurrentCategoryId = createSelector(
-  (state, props = {}) => props.categoryId,
-  getCurrentParams,
-  (categoryId, params) => {
-    if (typeof categoryId !== 'undefined') {
-      return categoryId;
-    }
-
-    if (!params || !params.categoryId) {
-      return null;
-    }
-
-    return hex2bin(params.categoryId);
-  }
-);
-
-/**
- * Retrieves the child categories for a specific parent category from the state.
- * @param {Object} state The application state.
+ * Retrieves the number of child categories for a category.
+ * The category can either be referenced by a categoryId within the props,
+ * or by a categoryId within the params of the active route state.
+ * @param {Object} state The current application state.
  * @param {Object} props The component props.
- * @returns {Object} The child categories state.
+ * @returns {number|null}
  */
-const getCurrentChildCategories = createSelector(
-  getCurrentCategoryId,
-  getChildCategoriesState,
-  (categoryId, childCategories) => childCategories[categoryId]
-);
-
-/**
- * Retrieves the current category from the state.
- * @param {Object} state The application state.
- * @param {Object} props The component props.
- * @returns {Object|null} The current category.
- */
-export const getCurrentCategory = createSelector(
-  getCategoriesState,
-  getCurrentCategoryId,
-  (state, categoryId) => state[categoryId] || null
-);
-
-/**
- * Selects the number of child categories from the current category.
- * @type {number}
- */
-export const getCurrentCategoryChildCount = createSelector(
-  getCurrentCategory,
+export const getCategoryChildCount = createSelector(
+  getCategory,
   category => (category ? category.childrenCount : null)
 );
 
 /**
- * Returns true when the given category id contains children.
+ * Determines if a category has child categories.
+ * The category can either be referenced by a categoryId within the props,
+ * or by a categoryId within the params of the active route state.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @returns {boolean}
  */
-export const hasChildren = createSelector(
-  getCurrentCategoryChildCount,
+export const hasCategoryChildren = createSelector(
+  getCategoryChildCount,
   count => count > 0
 );
 
 /**
- * Retrieves the current categories collection from the state.
+ * Retrieves the child categories of a category.
+ * The category can either be referenced by a categoryId within the props,
+ * or by a categoryId within the params of the active route state.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
- * @returns {Array|null} The current categories collection.
+ * @returns {Array|null}
  */
-export const getCurrentCategories = createSelector(
-  [getCurrentChildCategories, getCategoriesState],
-  (childCategories, categoryState) => {
+export const getCategoryChildren = createSelector(
+  [getChildCategoriesForCategory, getCategoriesByIdState],
+  (childCategories, categoriesById) => {
     if (!childCategories || !childCategories.children) {
       return null;
     }
 
-    return childCategories.children.map(id => categoryState[id]);
-  }
-);
-
-export const getCategoryProductCount = createSelector(
-  getCategoriesState,
-  (state, props) => props.categoryId,
-  (categories, categoryId) => {
-    if (
-      !categories[categoryId]
-      || (!categories[categoryId].productCount && categories[categoryId].productCount !== 0)
-    ) {
-      return null;
-    }
-
-    return categories[categoryId].productCount;
+    return childCategories.children.map(id => categoriesById[id]).filter(Boolean);
   }
 );
 
 /**
- * Returns true when the given category id contains products.
+ * Retrieves the number of products inside a category.
+ * The category can either be referenced by a categoryId within the props,
+ * or by a categoryId within the params of the active route state.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @returns {number|null}
+ */
+export const getCategoryProductCount = createSelector(
+  getCategoriesByIdState,
+  getCategoryId,
+  (categoriesById, categoryId) => {
+    if (
+      !categoriesById[categoryId]
+      || (!categoriesById[categoryId].productCount && categoriesById[categoryId].productCount !== 0)
+    ) {
+      return null;
+    }
+
+    return categoriesById[categoryId].productCount;
+  }
+);
+
+/**
+ * Determines if a category has products.
+ * The category can either be referenced by a categoryId within the props,
+ * or by a categoryId within the params of the active route state.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @returns {boolean}
  */
-export const hasProducts = createSelector(
+export const hasCategoryProducts = createSelector(
   getCategoryProductCount,
   count => count > 0
 );
 
-export const getChildCategoriesById = createSelector(
-  getCategoriesState,
-  getChildCategoriesState,
-  (state, props) => props.categoryId,
-  (categories, childCategories, categoryId) => {
-    // Check if there are any children of the given category id.
-    if (!childCategories[categoryId] || !childCategories[categoryId].children) {
-      return null;
-    }
-
-    // Map the child ids over the category state.
-    return childCategories[categoryId].children.map(id => categories[id]);
-  }
-);
-
+/**
+ * Retrieves the name of a category. When no category can be determined it return the title of
+ * the active route.
+ * The category can either be referenced by a categoryId within the props,
+ * or by a categoryId within the params of the active route state.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @returns {number|null}
+ */
 export const getCategoryName = createSelector(
   getCurrentRoute,
-  getCurrentCategory,
+  getCategory,
   (route, category) => {
+    if (category) {
+      return category.name;
+    }
+
     if (route.state.title) {
       return route.state.title;
     }
 
-    return category ? category.name : null;
+    return null;
   }
 );
+
+/**
+ * Selector mappings for PWA < 6.10
+ * @deprecated
+ */
+export const getCategoryById = getCategory;
+export const getCurrentCategoryId = getCategory;
+export const getCurrentCategory = getCategory;
+export const getCurrentCategoryChildCount = getCategoryChildCount;
+export const getCurrentCategories = getCategoryChildren;
+export const getChildCategoriesById = getCategoryChildren;
+
+export const hasChildren = hasCategoryChildren;
+export const hasProducts = hasCategoryProducts;
