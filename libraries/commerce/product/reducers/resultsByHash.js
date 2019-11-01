@@ -50,7 +50,7 @@ export default function resultsByHash(state = {}, action) {
           products: stateProducts,
           totalResultCount: typeof action.totalResultCount !== 'undefined' ? action.totalResultCount : null,
           isFetching: false,
-          expires: action.cached ? (Date.now() + action.cachedTime || PRODUCT_LIFETIME) : 0,
+          expires: action.cached ? (Date.now() + (action.cachedTime || PRODUCT_LIFETIME)) : 0,
         },
       };
     }
