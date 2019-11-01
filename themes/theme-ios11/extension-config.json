@@ -70,7 +70,7 @@
       "params": {
         "method": "GET",
         "service": "shop",
-        "path": "/v1/%(shopId)s",
+        "path": "/v1/%(shopId)s?noCache=true",
         "key": "languageId"
       }
     },
