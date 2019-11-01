@@ -2,23 +2,27 @@
 
 exports[`<Chip /> should render a tag 1`] = `
 <Chip
+  editLabel={null}
   id="some-id"
   invert={false}
   onClick={[Function]}
   onRemove={[Function]}
   removable={true}
+  removeLabel={null}
 >
   <div
     className="css-bpa25c"
     data-test-id="some-id"
   >
     <Button
+      aria-label={null}
       className="css-hazg82"
       disabled={false}
       onClick={[Function]}
       testId="removeFilter"
     >
       <button
+        aria-label={null}
         className="css-hazg82 css-1rn65c0"
         data-test-id="removeFilter"
         disabled={false}
@@ -56,12 +60,14 @@ exports[`<Chip /> should render a tag 1`] = `
       </button>
     </Button>
     <Button
+      aria-label={null}
       className="css-1al9zi1"
       disabled={false}
       onClick={[Function]}
       testId="Button"
     >
       <button
+        aria-label={null}
         className="css-1al9zi1 css-1rn65c0"
         data-test-id="Button"
         disabled={false}
@@ -76,23 +82,27 @@ exports[`<Chip /> should render a tag 1`] = `
 
 exports[`<Chip /> should render a without removable icon 1`] = `
 <Chip
+  editLabel={null}
   id="some-id"
   invert={false}
   onClick={[Function]}
   onRemove={[Function]}
   removable={false}
+  removeLabel={null}
 >
   <div
     className="css-19sltcj"
     data-test-id="some-id"
   >
     <Button
+      aria-label={null}
       className="css-1al9zi1"
       disabled={false}
       onClick={[Function]}
       testId="Button"
     >
       <button
+        aria-label={null}
         className="css-1al9zi1 css-1rn65c0"
         data-test-id="Button"
         disabled={false}

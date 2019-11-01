@@ -24,8 +24,15 @@ class AppBarTitle extends PureComponent {
     /* eslint-disable jsx-a11y/no-static-element-interactions,
     jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
     return (
-      <div className={styles} role="heading" data-test-id={`title: ${title}`} tabIndex={0}>
-        <span onClick={onClick}>
+      <div
+        className={styles}
+        role="heading"
+        aria-labelledby="titleLabel"
+        aria-level="1"
+        data-test-id={`title: ${title}`}
+        tabIndex={0}
+      >
+        <span onClick={onClick} id="titleLabel">
           {title}
         </span>
       </div>

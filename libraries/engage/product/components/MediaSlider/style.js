@@ -3,6 +3,7 @@ import { css } from 'glamor';
 export const full = css({
   width: '100%',
   height: '100%',
+  transform: 'translate3d(0, 0, 0)',
 });
 
 export const videoWrapper = css({
@@ -27,6 +28,7 @@ export const video = css({
 });
 
 export const container = css({
+  transform: 'translate3d(0, 0, 0)',
   position: 'relative',
   top: 0,
   bottom: 0,

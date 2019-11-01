@@ -1,4 +1,8 @@
 import isMatch from 'lodash/isMatch';
+import appConfig from '@shopgate/pwa-common/helpers/config';
+
+const { variantSelectionMode, product: { variantPreselect } = {} } = appConfig;
+const preselectVariant = variantPreselect || parseInt(variantSelectionMode, 10) === 1;
 
 /**
  * Returns the index of a particular characteristic from a set of characteristics.
@@ -99,4 +103,50 @@ export function prepareState(id, value, selections, characteristics, products) {
   });
 
   return currentSelection;
+}
+
+/**
+ * Preselect characteristics for variant
+ * or pre-select the first available product
+ * @param {string} [variantId=null] The selected variant
+ * @param {{products: Object[], characteristics: Object[]}} [variants=null] All possible variants.
+ * @return {Object}
+ */
+export function selectCharacteristics({ variantId, variants = {} }) {
+  if (!variants || !variants.products || !variants.products.length) {
+    return {};
+  }
+
+  if (variantId) {
+    const variant = variants.products.find(product => product.id === variantId) || {};
+    return { ...variant.characteristics };
+  }
+
+  // If product has only 1 variant preselect no matter if "preselect" is chosen or not.
+  if (variants.products.length === 1) {
+    return { ...variants.products[0].characteristics };
+  }
+
+  // Pre-selection is off
+  if (!preselectVariant) {
+    return {};
+  }
+
+  // Find the first selectable product by characteristics
+  return variants.characteristics.reduce((acc, char) => {
+    // Find the first char value with selectable products
+    const firstVal = char.values.find((val) => {
+      // eslint-disable-next-line extra-rules/no-single-line-objects
+      const source = { ...acc, [char.id]: val.id };
+      return variants.products.filter(p => (
+        isMatch(p.characteristics, source)
+      )).length > 0;
+    });
+
+    if (!firstVal) {
+      return acc;
+    }
+    // eslint-disable-next-line extra-rules/no-single-line-objects
+    return { ...acc, [char.id]: firstVal.id };
+  }, {});
 }

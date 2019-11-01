@@ -1,6 +1,7 @@
 import CryptoJs from 'crypto-js';
 import { logger } from '@shopgate/pwa-core';
 import { createModal } from '../../action-creators/modal';
+import { mutable } from '../../helpers/redux';
 import { getModalById } from '../../selectors/modal';
 import promiseMap from './promiseMap';
 
@@ -30,7 +31,7 @@ const defaultModalOptions = {
  * @param {Object} options The modal options.
  * @return {Function} A Redux thunk.
  */
-export default function showModal(options) {
+function showModal(options) {
   return (dispatch, getState) => {
     const id = getModalId(options);
 
@@ -64,3 +65,6 @@ export default function showModal(options) {
     });
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(showModal);

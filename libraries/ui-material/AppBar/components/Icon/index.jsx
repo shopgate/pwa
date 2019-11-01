@@ -10,6 +10,7 @@ class AppBarIcon extends PureComponent {
     icon: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
     'aria-hidden': PropTypes.bool,
+    'aria-label': PropTypes.string,
     background: PropTypes.string,
     badge: PropTypes.func,
     color: PropTypes.string,
@@ -18,6 +19,7 @@ class AppBarIcon extends PureComponent {
 
   static defaultProps = {
     'aria-hidden': null,
+    'aria-label': null,
     background: 'inherit',
     badge: null,
     color: 'inherit',
@@ -29,7 +31,9 @@ class AppBarIcon extends PureComponent {
    */
   render() {
     const {
-      background, badge: Badge, color, icon: Icon, onClick, testId, 'aria-hidden': ariaHidden,
+      background, badge: Badge, color, icon: Icon, onClick, testId,
+      'aria-hidden': ariaHidden,
+      'aria-label': ariaLabel,
     } = this.props;
 
     return (
@@ -42,6 +46,7 @@ class AppBarIcon extends PureComponent {
         }}
         data-test-id={testId}
         aria-hidden={ariaHidden}
+        aria-label={ariaLabel}
         type="button"
       >
         <Icon />

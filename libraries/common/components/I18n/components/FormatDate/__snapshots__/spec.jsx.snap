@@ -10,22 +10,20 @@ exports[`<FormatDate /> Given the component was mounted to the DOM should match 
         format="medium"
         timestamp={123456789000}
       >
-        <span>
-          Nov 29, 1973
-        </span>
+        Nov 29, 1973
       </FormatDate>
     </span>
     <span
       className="text-with-date"
     >
       <Translate
-        className=""
+        className={null}
         params={Object {}}
         role={null}
         string="greeting"
       >
         <span
-          className=""
+          className={null}
           role={null}
         >
           Hello 
@@ -35,9 +33,7 @@ exports[`<FormatDate /> Given the component was mounted to the DOM should match 
             key=".0"
             timestamp={123456789000}
           >
-            <span>
-              Nov 29, 1973
-            </span>
+            Nov 29, 1973
           </FormatDate>
         </span>
       </Translate>

@@ -1,7 +1,7 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SHOPGATE_CATALOG_GET_PRODUCT_MEDIA } from '../constants/Pipelines';
 import requestProductMedia from '../action-creators/requestProductMedia';
 import receiveProductMedia from '../action-creators/receiveProductMedia';
@@ -36,4 +36,5 @@ const fetchProductMedia = productId => (dispatch, getState) => {
     });
 };
 
-export default fetchProductMedia;
+/** @mixes {MutableFunction} */
+export default mutable(fetchProductMedia);

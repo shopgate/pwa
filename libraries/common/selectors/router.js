@@ -129,6 +129,24 @@ export function makeIsLastStackEntry() {
 }
 
 /**
+ * Get the previous route from stack.
+ * @returns {Function}
+ */
+export function makeGetPrevRoute() {
+  return createSelector(
+    (state, props = {}) => props.routeId,
+    getRouterStack,
+    (routeId, stack) => {
+      const routeIndex = stack.findIndex(entry => entry.id === routeId);
+      if (routeIndex <= 0) {
+        return null;
+      }
+      return stack[routeIndex - 1];
+    }
+  );
+}
+
+/**
  * Creates a selector that retrieves the pattern of the route.
  * @returns {Function}
  */

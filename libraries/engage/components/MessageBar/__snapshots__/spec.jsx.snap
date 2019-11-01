@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MessageBar /> General rendering should be empty if no messages have been set 1`] = `
+<Component
+  classNames={
+    Object {
+      "container": null,
+      "message": null,
+    }
+  }
+  messages={Array []}
+>
+  <div
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role={null}
+  />
+</Component>
+`;
+
+exports[`<MessageBar /> General rendering should render a message as info if type is missing 1`] = `
+<Component
+  classNames={
+    Object {
+      "container": null,
+      "message": null,
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "something",
+      },
+    ]
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role="alert"
+  >
+    <div
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
+      key="info-something"
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_info: something
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        something
+      </span>
+    </div>
+  </div>
+</Component>
+`;
+
+exports[`<MessageBar /> Multiple messages rendering should render messages without frontend translation 1`] = `
+<Component
+  classNames={
+    Object {
+      "container": null,
+      "message": null,
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "This is some information",
+        "type": "info",
+      },
+      Object {
+        "message": "This is an error that happened here.",
+        "type": "error",
+      },
+      Object {
+        "message": "This is just a warning. Nothing to freak out about.",
+        "type": "warning",
+      },
+      Object {
+        "message": "Normal pre-translated message.",
+        "translated": null,
+      },
+      Object {
+        "message": "Normal pre-translated message.",
+        "translated": true,
+      },
+    ]
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role="alert"
+  >
+    <div
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
+      key="info-This is some information"
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_info: This is some information
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        This is some information
+      </span>
+    </div>
+    <div
+      className={
+        Object {
+          "data-css-1t4ceri": "",
+        }
+      }
+      key="error-This is an error that happened here."
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_error: This is an error that happened here.
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        This is an error that happened here.
+      </span>
+    </div>
+    <div
+      className={
+        Object {
+          "data-css-y06bhm": "",
+        }
+      }
+      key="warning-This is just a warning. Nothing to freak out about."
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_warning: This is just a warning. Nothing to freak out about.
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        This is just a warning. Nothing to freak out about.
+      </span>
+    </div>
+    <div
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
+      key="info-Normal pre-translated message."
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_info: Normal pre-translated message.
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        Normal pre-translated message.
+      </span>
+    </div>
+    <div
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
+      key="info-Normal pre-translated message."
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_info: Normal pre-translated message.
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        Normal pre-translated message.
+      </span>
+    </div>
+  </div>
+</Component>
+`;
+
+exports[`<MessageBar /> Multiple messages rendering should translate and render all given messages 1`] = `
+<Component
+  classNames={
+    Object {
+      "container": null,
+      "message": null,
+    }
+  }
+  messages={
+    Array [
+      Object {
+        "message": "some.translation.string",
+        "translated": false,
+      },
+      Object {
+        "message": "Message with messageParams",
+        "messageParams": Object {
+          "myCustomParam1": "-> TEST-VALUE #1 <-",
+          "myCustomParam2": "-> TEST-VALUE #2 <-",
+        },
+        "translated": false,
+      },
+    ]
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role="alert"
+  >
+    <div
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
+      key="info-some.translation.string"
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_info: some.translation.string
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        some.translation.string
+      </span>
+    </div>
+    <div
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
+      key="info-Message with messageParams"
+    >
+      <span
+        className={
+          Object {
+            "data-css-5e1epi": "",
+          }
+        }
+      >
+        cart.message_type_info: Message with messageParams
+      </span>
+      <span
+        aria-hidden={true}
+      >
+        Message with messageParams
+      </span>
+    </div>
+  </div>
+</Component>
+`;

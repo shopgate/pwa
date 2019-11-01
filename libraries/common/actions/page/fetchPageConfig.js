@@ -1,7 +1,7 @@
 import { PipelineRequest, logger } from '@shopgate/pwa-core';
 import * as pipelines from '../../constants/Pipelines';
-import { shouldFetchData } from '../../helpers/redux';
 import * as actions from '../../action-creators/page';
+import { shouldFetchData, mutable } from '../../helpers/redux';
 import { getPageConfigById } from '../../selectors/page';
 
 /**
@@ -9,7 +9,7 @@ import { getPageConfigById } from '../../selectors/page';
  * @param {string} pageId The ID of the page to request.
  * @return {Function} The dispatched action.
  */
-export default function fetchPageConfig(pageId) {
+function fetchPageConfig(pageId) {
   return (dispatch, getState) => {
     const state = getState();
     const pageConfig = getPageConfigById(state, { pageId });
@@ -30,3 +30,6 @@ export default function fetchPageConfig(pageId) {
       });
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(fetchPageConfig);

@@ -42,7 +42,7 @@ exports[`<TextField> should focus the input 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -61,7 +61,7 @@ exports[`<TextField> should focus the input 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -164,7 +164,7 @@ exports[`<TextField> should focus the input 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -217,7 +217,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -236,7 +236,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -339,7 +339,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -392,7 +392,7 @@ exports[`<TextField> should render a simple text field 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -411,7 +411,7 @@ exports[`<TextField> should render a simple text field 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -514,7 +514,7 @@ exports[`<TextField> should render a simple text field 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -568,7 +568,7 @@ exports[`<TextField> should render the text field as password 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -587,7 +587,7 @@ exports[`<TextField> should render the text field as password 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -691,7 +691,7 @@ exports[`<TextField> should render the text field as password 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -744,7 +744,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           className="css-rkuo1o css-1jyyyen"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -763,7 +763,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -866,7 +866,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -920,7 +920,7 @@ exports[`<TextField> should sanitize the input 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -939,7 +939,7 @@ exports[`<TextField> should sanitize the input 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1043,7 +1043,7 @@ exports[`<TextField> should sanitize the input 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1096,7 +1096,7 @@ exports[`<TextField> should show the error message 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1115,7 +1115,7 @@ exports[`<TextField> should show the error message 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1217,13 +1217,13 @@ exports[`<TextField> should show the error message 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="This is an error here"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               This is an error here
@@ -1277,13 +1277,13 @@ exports[`<TextField> should show the label 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="This is the label"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               This is the label
@@ -1303,13 +1303,13 @@ exports[`<TextField> should show the label 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="This is the label"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               This is the label
@@ -1413,7 +1413,7 @@ exports[`<TextField> should show the label 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1466,13 +1466,13 @@ exports[`<TextField> should show the placeholder text 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="This is the placeholder text"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               This is the placeholder text
@@ -1492,7 +1492,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1595,7 +1595,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1669,7 +1669,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1688,7 +1688,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1833,7 +1833,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1902,7 +1902,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           className="css-rkuo1o"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -1921,7 +1921,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           htmlFor="test-input"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""
@@ -2055,7 +2055,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           className="css-hyvrm8"
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string=""

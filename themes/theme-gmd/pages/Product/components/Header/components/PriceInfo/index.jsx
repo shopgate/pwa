@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PRODUCT_PRICE_INFO,
@@ -39,4 +38,4 @@ PriceInfo.defaultProps = {
   price: '',
 };
 
-export default connect(pure(PriceInfo));
+export default connect(memo(PriceInfo));

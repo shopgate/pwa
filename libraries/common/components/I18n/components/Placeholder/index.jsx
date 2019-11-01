@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
  * @returns {JSX}
  */
 const Placeholder = props => (
-  <span>
+  <Fragment>
     {props.children}
-  </span>
+  </Fragment>
 );
 
 Placeholder.format = props => <Placeholder {...props} />;

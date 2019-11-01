@@ -1,7 +1,7 @@
-import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { generateResultHash, mutable } from '@shopgate/pwa-common/helpers/redux';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
 import * as pipelines from '../constants/Pipelines';
 import requestProductReviewsList from '../action-creators/requestReviews';
@@ -56,5 +56,6 @@ const fetchReviews = (
   return request;
 };
 
-export default fetchReviews;
+/** @mixes {MutableFunction} */
+export default mutable(fetchReviews);
 

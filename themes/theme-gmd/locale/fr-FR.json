@@ -22,6 +22,7 @@
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
+    "added": "Le produit a été ajouté aux favorits",
     "continue": "Continuer l'achat",
     "empty": "Vous n'avez rien dans vos favorits",
     "error_add": "Le produit n'a pas pu être ajouté aux favorits",
@@ -43,11 +44,16 @@
     },
     "apply": "Terminé",
     "more": "Plus",
-    "reset": "Effacer tout"
+    "reset": "Effacer tout",
+    "remove": "Supprimer {filter} filtre",
+    "edit": "Modifier {filter} filtrer",
+    "filter_by": "Filtrer par {label}"
   },
   "price": {
     "from": "De {price}",
     "range": "Plage de prix de {fromPrice} à {toPrice}",
+    "range_from": "La fourchette des prix de",
+    "range_to": "La fourchette des prix jusqu'à",
     "tier": {
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"
@@ -111,7 +117,9 @@
       "heading": "Oops!",
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
     },
-    "placeholder": "Recherche"
+    "placeholder": "Recherche",
+    "close": "Mettre fin à la recherche",
+    "reset": "Réinitialiser la recherche"
   },
   "shipping": {
     "unknown": "avec frais de livraison",
@@ -179,7 +187,8 @@
     "menuSubHeader": {
       "more": "Plus",
       "about": "À propos de nous"
-    }
+    },
+    "back": "Retour à {title}"
   },
   "reviews": {
     "rating": "Evaluation",
@@ -212,6 +221,9 @@
       "camera_message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
       "geolocation_message": "Pour trouver des magasins près de chez vous, allez dans Paramètres et activez l’autorisation de géolocalisation."
     }
+  },
+  "error": {
+    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
   "formats": {
     "date": {

@@ -14,10 +14,12 @@ class SelectBoxItem extends Component {
     value: PropTypes.string.isRequired,
     wrapper: PropTypes.func.isRequired,
     className: PropTypes.string,
+    forwardedRef: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
+    forwardedRef: null,
   };
 
   /**
@@ -40,6 +42,8 @@ class SelectBoxItem extends Component {
         onClick={this.handleSelectionUpdate}
         data-test-id={this.props.label}
         type="button"
+        role="menuitem"
+        ref={this.props.forwardedRef}
       >
         <Wrapper>
           <I18n.Text string={this.props.label} />

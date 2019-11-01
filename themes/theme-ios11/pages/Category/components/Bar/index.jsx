@@ -1,35 +1,22 @@
-import React from 'react';
-import Consume from '@shopgate/pwa-common/components/Consume';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import React, { useContext } from 'react';
+import { useRoute } from '@shopgate/engage/core';
 import { ViewContext } from 'Components/View/context';
 import FilterBar from 'Components/FilterBar';
-
-const routeMap = {
-  filters: 'state.filters',
-  categoryId: 'params.categoryId',
-};
-
-const viewMap = {
-  ref: 'ref.current',
-};
 
 /**
  * @returns {JSX}
  */
-const CategoryBar = () => (
-  <Consume context={RouteContext} props={routeMap}>
-    {({ categoryId, filters }) => (
-      <Consume context={ViewContext} props={viewMap}>
-        {({ ref }) => (
-          <FilterBar
-            categoryId={categoryId}
-            filters={filters}
-            viewRef={ref}
-          />
-        )}
-      </Consume>
-    )}
-  </Consume>
-);
+function CategoryBar() {
+  const { state, params } = useRoute();
+  const { ref } = useContext(ViewContext);
+
+  return (
+    <FilterBar
+      categoryId={params.categoryId}
+      filters={state.filters}
+      viewRef={ref ? ref.current : null}
+    />
+  );
+}
 
 export default CategoryBar;

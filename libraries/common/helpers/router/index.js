@@ -1,5 +1,5 @@
 import URLSearchParams from 'url-search-params';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import { router } from '@virtuous/conductor';
 
 const match = /^(.*)index.html/.exec(window.location.pathname);

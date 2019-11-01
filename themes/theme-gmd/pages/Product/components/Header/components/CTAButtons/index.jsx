@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import { isBeta } from '@shopgate/engage/core';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -37,7 +36,6 @@ const CTAButtons = ({ isFavorite, productId }) => (
             rippleClassName={styles.ripple}
             active={isFavorite}
             productId={productId}
-            aria-hidden
           />
         </Portal>
         <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
@@ -64,4 +62,4 @@ CTAButtons.defaultProps = {
   productId: null,
 };
 
-export default connect(pure(CTAButtons));
+export default connect(memo(CTAButtons));

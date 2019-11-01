@@ -28,43 +28,41 @@ class ErrorManager {
   }
 
   /**
-   * Gets a message by the given id.
-   * @param {string} code The error code.
-   * @param {string} context The error context.
-   * @param {string} source The error source.
+   * Gets a message by the given error.
+   * @param {{ code: string, context: string, source: string }} error The error object.
    * @returns {string|null}
    */
-  getMessage(code, context, source) {
+  getMessage(error) {
+    if (!this.validate(error)) {
+      return null;
+    }
+    const { code, context = DEFAULT_CONTEXT, source } = error;
+
     const id = `${source}-${context}-${code}`;
-    if (this.messages[id]) {
-      return this.messages[id];
-    }
-
-    const unversionedId = `${source}-${context.replace(pipelineVersionSuffix, '')}-${code}`;
-    if (this.messages[unversionedId]) {
-      return this.messages[unversionedId];
-    }
-
+    const unvId = `${source}-${context.replace(pipelineVersionSuffix, '')}-${code}`;
     const defaultId = `${source}-${DEFAULT_CONTEXT}-${code}`;
-    if (this.messages[defaultId]) {
-      return this.messages[defaultId];
+
+    let message = this.messages[id] || this.messages[unvId] || this.messages[defaultId] || null;
+
+    if (typeof message === 'function') {
+      message = message(error);
     }
 
-    return null;
+    return message;
   }
 
   /**
    * Sets an override for a specific error message.
-   * @param {Object} params The error object.
-   * @param {string} params.code The error code.
-   * @param {string} params.context The context of the error, relative to the source..
-   * @param {string} params.message The default error message.
-   * @param {string} [params.source=SOURCE_PIPELINE] The source of the error.
+   * @param {Object} errorTemplate The error object.
+   * @param {string} errorTemplate.code The error code.
+   * @param {string} errorTemplate.context The context of the error, relative to the source..
+   * @param {string} errorTemplate.message The default error message.
+   * @param {string} [errorTemplate.source=SOURCE_PIPELINE] The source of the error.
    */
-  setMessage(params = {}) {
+  setMessage(errorTemplate = {}) {
     const error = {
       source: SOURCE_PIPELINE,
-      ...params,
+      ...errorTemplate,
     };
 
     if (!this.validate(error)) {
@@ -101,7 +99,7 @@ class ErrorManager {
     } = error;
 
     const id = `${source}-${context}-${code}`;
-    const overrideMessage = this.getMessage(code, context, source) || message;
+    const overrideMessage = this.getMessage(error) || message;
     this.errorQueue.set(id, {
       id,
       code,
@@ -166,12 +164,12 @@ class ErrorManager {
       return false;
     }
 
-    if (typeof code !== 'string' || typeof message !== 'string' || typeof source !== 'string') {
+    if (typeof code !== 'string' || typeof source !== 'string') {
       return false;
     }
 
-    return true;
+    return typeof message === 'string' || typeof message === 'function';
   }
 }
-
+/** @type {ErrorManager} */
 export default new ErrorManager();

@@ -1,27 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MessageBar /> General rendering should be empty if no messages have been set 1`] = `
-<MessageBar
+<Component
   classNames={
     Object {
-      "container": "",
-      "message": "",
+      "container": null,
+      "message": null,
     }
   }
   messages={Array []}
 >
   <div
-    className=" css-1gmese"
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role={null}
   />
-</MessageBar>
+</Component>
 `;
 
 exports[`<MessageBar /> General rendering should render a message as info if type is missing 1`] = `
-<MessageBar
+<Component
   classNames={
     Object {
-      "container": "",
-      "message": "",
+      "container": null,
+      "message": null,
     }
   }
   messages={
@@ -33,24 +38,37 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   }
 >
   <div
-    className=" css-1gmese"
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role="alert"
   >
     <div
-      className=" css-1psau2c"
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
       key="info-something"
     >
-      something
+      <span
+        aria-hidden={true}
+      >
+        something
+      </span>
     </div>
   </div>
-</MessageBar>
+</Component>
 `;
 
 exports[`<MessageBar /> Multiple messages rendering should render messages without frontend translation 1`] = `
-<MessageBar
+<Component
   classNames={
     Object {
-      "container": "",
-      "message": "",
+      "container": null,
+      "message": null,
     }
   }
   messages={
@@ -79,48 +97,93 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   }
 >
   <div
-    className=" css-1gmese"
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role="alert"
   >
     <div
-      className=" css-1psau2c"
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
       key="info-This is some information"
     >
-      This is some information
+      <span
+        aria-hidden={true}
+      >
+        This is some information
+      </span>
     </div>
     <div
-      className=" css-1t4ceri"
+      className={
+        Object {
+          "data-css-1t4ceri": "",
+        }
+      }
       key="error-This is an error that happened here."
     >
-      This is an error that happened here.
+      <span
+        aria-hidden={true}
+      >
+        This is an error that happened here.
+      </span>
     </div>
     <div
-      className=" css-y06bhm"
+      className={
+        Object {
+          "data-css-y06bhm": "",
+        }
+      }
       key="warning-This is just a warning. Nothing to freak out about."
     >
-      This is just a warning. Nothing to freak out about.
+      <span
+        aria-hidden={true}
+      >
+        This is just a warning. Nothing to freak out about.
+      </span>
     </div>
     <div
-      className=" css-1psau2c"
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
       key="info-Normal pre-translated message."
     >
-      Normal pre-translated message.
+      <span
+        aria-hidden={true}
+      >
+        Normal pre-translated message.
+      </span>
     </div>
     <div
-      className=" css-1psau2c"
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
       key="info-Normal pre-translated message."
     >
-      Normal pre-translated message.
+      <span
+        aria-hidden={true}
+      >
+        Normal pre-translated message.
+      </span>
     </div>
   </div>
-</MessageBar>
+</Component>
 `;
 
 exports[`<MessageBar /> Multiple messages rendering should translate and render all given messages 1`] = `
-<MessageBar
+<Component
   classNames={
     Object {
-      "container": "",
-      "message": "",
+      "container": null,
+      "message": null,
     }
   }
   messages={
@@ -141,49 +204,41 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   }
 >
   <div
-    className=" css-1gmese"
+    className={
+      Object {
+        "data-css-1gmese": "",
+      }
+    }
+    role="alert"
   >
     <div
-      className=" css-1psau2c"
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
       key="info-some.translation.string"
     >
-      <Translate
-        className=""
-        params={null}
-        role={null}
-        string="some.translation.string"
+      <span
+        aria-hidden={true}
       >
-        <span
-          className=""
-          role={null}
-        >
-          some.translation.string
-        </span>
-      </Translate>
+        some.translation.string
+      </span>
     </div>
     <div
-      className=" css-1psau2c"
+      className={
+        Object {
+          "data-css-1psau2c": "",
+        }
+      }
       key="info-Message with messageParams"
     >
-      <Translate
-        className=""
-        params={
-          Object {
-            "myCustomParam1": "-> TEST-VALUE #1 <-",
-            "myCustomParam2": "-> TEST-VALUE #2 <-",
-          }
-        }
-        role={null}
-        string="Message with messageParams"
+      <span
+        aria-hidden={true}
       >
-        <span
-          className=""
-          role={null}
-        >
-          Message with messageParams
-        </span>
-      </Translate>
+        Message with messageParams
+      </span>
     </div>
   </div>
-</MessageBar>
+</Component>
 `;

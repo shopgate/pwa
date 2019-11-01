@@ -30,7 +30,7 @@ class Search extends PureComponent {
    */
   render() {
     return (
-      <View>
+      <View aria-hidden={false}>
         <Consume context={RouteContext} props={map}>
           {this.consumeRenderer}
         </Consume>

@@ -23,6 +23,7 @@
   },
   "favorites": {
     "add": "Agregar a favoritos",
+    "added": "El producto ha sido añadido a favoritos",
     "continue": "Continuar comprando",
     "empty": "No tiene favoritos",
     "error_add": "El producto no se pudo agregar a favoritos",
@@ -44,11 +45,16 @@
     },
     "apply": "Aplicar",
     "more": "más",
-    "reset": "Borrar"
+    "reset": "Borrar",
+    "remove": "Eliminar {filter} filtro",
+    "edit": "Editar {filter} filtro",
+    "filter_by": "Filtrar por {label}"
   },
   "price": {
     "from": "Desde {price}",
     "range": "Precio desde {fromPrice} a {toPrice}",
+    "range_from": "Rango de precio desde",
+    "range_to": "Rango de precio hasta",
     "tier": {
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
@@ -181,7 +187,8 @@
     "return_policy": "Política de devolución",
     "logout": "Cerrar sesión",
     "store_information": "Store Information",
-    "more_menu": "Más"
+    "more_menu": "Más",
+    "back": "Volver a {title}"
   },
   "reviews": {
     "rating": "Calificación",
@@ -221,6 +228,9 @@
       "camera_message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración.",
       "geolocation_message": "Para encontrar tiendas cerca de donde está, vaya a Configuración y habilite los permisos de ubicación."
     }
+  },
+  "error": {
+    "general": "No se puede conectar. Por favor, compruebe su conexión a Internet."
   },
   "formats": {
     "date": {

@@ -1,4 +1,5 @@
 import { DEFAULT_SORT, ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import fetchProducts from '../../product/actions/fetchProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
 import receiveSearchResults from '../action-creators/receiveSearchResults';
@@ -59,4 +60,5 @@ const fetchSearchResults = params => (dispatch) => {
   }
 };
 
-export default fetchSearchResults;
+/** @mixes {MutableFunction} */
+export default mutable(fetchSearchResults);

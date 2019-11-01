@@ -56,6 +56,7 @@ class PipelineManager {
       retries: request.retries,
       finished: false,
       deferred: false,
+      bypass: false,
       timer: null,
     });
 
@@ -115,12 +116,16 @@ class PipelineManager {
 
       entry.finished = true;
 
-      if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-        this.handleResultSequence();
-        return;
+      switch (request.process) {
+        case processTypes.PROCESS_SEQUENTIAL:
+          this.handleResultSequence();
+          break;
+        case processTypes.PROCESS_LAST:
+          this.handleResultLast(serialResult);
+          break;
+        default:
+          this.handleResult(serialResult);
       }
-
-      this.handleResult(serialResult);
     };
 
     // Register a response listener for the request.
@@ -234,7 +239,13 @@ class PipelineManager {
     }
 
     err.handled = handleError;
-    request.reject(err);
+    if (!Array.isArray(request.reject)) {
+      request.reject(err);
+    } else {
+      request.reject.forEach((reject) => {
+        reject(err);
+      });
+    }
   }
 
   /**
@@ -255,8 +266,12 @@ class PipelineManager {
     if (request.error) {
       logColor = '#ff0000';
       this.handleError(serial);
-    } else {
+    } else if (!Array.isArray(request.resolve)) {
       request.resolve(request.output);
+    } else {
+      request.resolve.forEach((resolve) => {
+        resolve(request.output);
+      });
     }
 
     logGroup(`PipelineResponse %c${pipelineName}`, {
@@ -268,7 +283,9 @@ class PipelineManager {
 
     // Cleanup.
     event.removeCallback(callbackName, request.callback);
-    clearTimeout(entry.timer);
+    if (entry.timer) {
+      clearTimeout(entry.timer);
+    }
     this.removeRequestFromPiplineSequence(serial);
     this.requests.delete(serial);
 
@@ -300,6 +317,23 @@ class PipelineManager {
   }
 
   /**
+   * Handles only the last result of a list of calls to the same pipeline.
+   * @param {string} serial The serial of the incoming response
+   */
+  handleResultLast(serial) {
+    const entry = this.requests.get(serial);
+
+    // Requests which are queried later mark all previous ones to be bypassed ...
+    if (entry.bypass) {
+      // ... like this one - just clean up
+      this.requests.delete(serial);
+      return;
+    }
+
+    this.handleResult(serial);
+  }
+
+  /**
    * Sends the actual request command.
    * @param {string} serial The pipeline request serial.
    */
@@ -313,6 +347,7 @@ class PipelineManager {
     this.incrementPipelineOngoing(serial);
     this.handleTimeout(serial);
     this.addRequestToPipelineSequence(serial);
+    this.bypassOutdatedRequests(serial);
 
     const prefix = this.getRetriesPrefix(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
@@ -346,6 +381,86 @@ class PipelineManager {
     if (request.process === processTypes.PROCESS_SEQUENTIAL) {
       pipelineSequence.set(serial);
     }
+  }
+
+  /**
+   * When a new request is added with the "PROCESS_LAST" type it causes previous requests with the
+   * same pipeline name (with the flag being set as well) to be marked as bypassed.
+   * When a response of a bypassed request comes in, it will be ignored.
+   * @param {string} serial The pipeline request serial.
+   */
+  bypassOutdatedRequests(serial) {
+    const { request } = this.requests.get(serial);
+
+    if (request.process !== processTypes.PROCESS_LAST) {
+      return;
+    }
+
+    // Get only those pipelines with the same name
+    const groupedRequests = Array.from(this.requests.values())
+      .filter(entry => entry.request.name === request.name)
+      // Single requests in the group can still be interested in the result, so don't bypass the
+      // ones without the "PROCESS_LAST" flag
+      .filter(entry => entry.request.process === processTypes.PROCESS_LAST);
+
+    // Nothing to do, if there is only one request, because it is logically the last one
+    if (groupedRequests.length <= 1) {
+      return;
+    }
+
+    // Convert to a list of resolvers and rejectors, because it will need to resolve all previous
+    // promises, because they will be bypassed, as they don't have any valid data to resolve with.
+    if (!Array.isArray(request.resolve)) {
+      request.resolve = [request.resolve];
+    }
+    if (!Array.isArray(request.reject)) {
+      request.reject = [request.reject];
+    }
+
+    // Bypass only the requests up to, but excluding the current one
+    const currentIndex = groupedRequests.length - 1; // The current one is the last in the group
+    groupedRequests.forEach((entry, i) => {
+      // Keep the last one
+      if (i >= currentIndex) {
+        return;
+      }
+
+      // Collect and move over all resolvers of the previous requests to the current one
+      const previousResolvers = Array.isArray(entry.request.resolve)
+        ? entry.request.resolve
+        : [entry.request.resolve];
+
+      // Attach to current
+      request.resolve = [
+        ...request.resolve,
+        ...previousResolvers,
+      ];
+
+      // Collect and move over all rejectors of the previous requests to the current one
+      const previousRejectors = Array.isArray(entry.request.reject)
+        ? entry.request.reject
+        : [entry.request.reject];
+
+      // Attach to current
+      request.reject = [
+        ...request.reject,
+        ...previousRejectors,
+      ];
+
+      // Clear out retry mechanism on bypassed requests
+      clearTimeout(entry.timer);
+
+      this.requests.set(entry.request.serial, {
+        ...entry,
+        request: {
+          ...entry.request,
+          resolve: () => {}, // moved over to the current request
+          reject: () => {}, // moved over to the current request
+        },
+        bypass: true,
+        timer: null,
+      });
+    });
   }
 
   /**

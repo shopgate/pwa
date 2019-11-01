@@ -29,13 +29,13 @@ exports[`<Section /> should render with a headline and items 1`] = `
       }
     >
       <Translate
-        className=""
+        className={null}
         params={Object {}}
         role={null}
         string="Headline"
       >
         <span
-          className=""
+          className={null}
           role={null}
         >
           Headline
@@ -63,13 +63,13 @@ exports[`<Section /> should render with a headline and items 1`] = `
       >
         <div>
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Item One"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Item One
@@ -91,13 +91,13 @@ exports[`<Section /> should render with a headline and items 1`] = `
       >
         <div>
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Item Two"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Item Two
@@ -143,13 +143,13 @@ exports[`<Section /> should render without a headline but items 1`] = `
       >
         <div>
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Item One"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Item One
@@ -171,13 +171,13 @@ exports[`<Section /> should render without a headline but items 1`] = `
       >
         <div>
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Item Two"
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Item Two

@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { I18n, RippleButton } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
 
@@ -22,7 +21,7 @@ export const CHIP_MINIMUM_WIDTH = 60;
 /**
  * The ChipLayout component.
  */
-class ChipLayout extends Component {
+class ChipLayout extends PureComponent {
   static propTypes = {
     children: PropTypes.node,
     handleMoreButton: PropTypes.func,

@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import receiveProductRelations from '../action-creators/receiveProductRelations';
 import requestProductRelations from '../action-creators/requestProductRelations';
 import errorProductRelations from '../action-creators/errorProductRelations';
@@ -64,4 +64,5 @@ const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFA
     return request;
   };
 
-export default fetchProductRelations;
+/** @mixes {MutableFunction} */
+export default mutable(fetchProductRelations);

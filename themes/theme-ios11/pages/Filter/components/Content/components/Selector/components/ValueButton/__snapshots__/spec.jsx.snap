@@ -2,6 +2,7 @@
 
 exports[`<ValueButton /> should handle click event 1`] = `
 <button
+  aria-checked={false}
   className="css-ssdcv1"
   data-test-id="someid"
   onClick={
@@ -17,6 +18,7 @@ exports[`<ValueButton /> should handle click event 1`] = `
       ],
     }
   }
+  role="checkbox"
   type="button"
   value="someid"
 >
@@ -26,9 +28,11 @@ exports[`<ValueButton /> should handle click event 1`] = `
 
 exports[`<ValueButton /> should render as active 1`] = `
 <button
+  aria-checked={true}
   className="css-1h48rjj"
   data-test-id="someid"
   onClick={[Function]}
+  role="checkbox"
   type="button"
   value="someid"
 >
@@ -38,9 +42,11 @@ exports[`<ValueButton /> should render as active 1`] = `
 
 exports[`<ValueButton /> should render as inactive 1`] = `
 <button
+  aria-checked={false}
   className="css-ssdcv1"
   data-test-id="someid"
   onClick={[Function]}
+  role="checkbox"
   type="button"
   value="someid"
 >

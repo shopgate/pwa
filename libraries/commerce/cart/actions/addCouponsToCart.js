@@ -1,4 +1,5 @@
 import { PipelineRequest, PROCESS_SEQUENTIAL, logger } from '@shopgate/pwa-core';
+import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
@@ -24,7 +25,7 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
     .dispatch()
     .then(({ messages }) => {
       /**
-       * @Deprecated: The property "messages" is not supposed to be part of the pipeline response.
+       * @deprecated: The property "messages" is not supposed to be part of the pipeline response.
        * Specification demands errors to be returned as response object with an "error" property.
        * This code snippet needs to be removed after fixing the `@shopgate/legacy-cart` extension.
        */
@@ -58,4 +59,5 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
     });
 });
 
-export default addCouponsToCart;
+/** @mixes {MutableFunction} */
+export default mutable(addCouponsToCart);

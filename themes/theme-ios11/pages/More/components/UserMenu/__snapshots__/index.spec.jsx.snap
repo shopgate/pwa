@@ -86,13 +86,13 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   }
                 >
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="navigation.your_account"
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       navigation.your_account
@@ -137,13 +137,13 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                       type="button"
                     >
                       <Translate
-                        className=""
+                        className={null}
                         params={Object {}}
                         role={null}
                         string="navigation.logout"
                       >
                         <span
-                          className=""
+                          className={null}
                           role={null}
                         >
                           navigation.logout
@@ -262,6 +262,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
+                        aria-hidden={null}
                         aria-label={null}
                         className=""
                         disabled={true}
@@ -275,6 +276,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         tag="div"
                       >
                         <div
+                          aria-hidden={null}
                           aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /login"
@@ -307,13 +309,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   className="css-kwqjom"
                                 >
                                   <Translate
-                                    className=""
+                                    className={null}
                                     params={Object {}}
                                     role={null}
                                     string="login.button"
                                   >
                                     <span
-                                      className=""
+                                      className={null}
                                       role={null}
                                     >
                                       login.button
@@ -342,6 +344,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
+                        aria-hidden={null}
                         aria-label={null}
                         className=""
                         disabled={true}
@@ -355,6 +358,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         tag="div"
                       >
                         <div
+                          aria-hidden={null}
                           aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /register"
@@ -387,13 +391,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   className="css-kwqjom"
                                 >
                                   <Translate
-                                    className=""
+                                    className={null}
                                     params={Object {}}
                                     role={null}
                                     string="login.signup"
                                   >
                                     <span
-                                      className=""
+                                      className={null}
                                       role={null}
                                     >
                                       login.signup
@@ -502,6 +506,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/login"
                     >
                       <Link
+                        aria-hidden={null}
                         aria-label={null}
                         className=""
                         disabled={false}
@@ -515,6 +520,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         tag="div"
                       >
                         <div
+                          aria-hidden={null}
                           aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /login"
@@ -547,13 +553,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   className="css-1fscwua"
                                 >
                                   <Translate
-                                    className=""
+                                    className={null}
                                     params={Object {}}
                                     role={null}
                                     string="login.button"
                                   >
                                     <span
-                                      className=""
+                                      className={null}
                                       role={null}
                                     >
                                       login.button
@@ -582,6 +588,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                       href="/register"
                     >
                       <Link
+                        aria-hidden={null}
                         aria-label={null}
                         className=""
                         disabled={false}
@@ -595,6 +602,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         tag="div"
                       >
                         <div
+                          aria-hidden={null}
                           aria-label={null}
                           className="css-c6ki83 "
                           data-test-id="link: /register"
@@ -627,13 +635,13 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                                   className="css-1fscwua"
                                 >
                                   <Translate
-                                    className=""
+                                    className={null}
                                     params={Object {}}
                                     role={null}
                                     string="login.signup"
                                   >
                                     <span
-                                      className=""
+                                      className={null}
                                       role={null}
                                     >
                                       login.signup

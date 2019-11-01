@@ -1,6 +1,6 @@
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { EUNKNOWN, EACCESS } from '@shopgate/pwa-core/constants/Pipeline';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import * as pipelines from '../constants/Pipelines';
 import requestUserReview from '../action-creators/requestUserReview';
 import receiveUserReview from '../action-creators/receiveUserReview';
@@ -33,4 +33,5 @@ const fetchUserReview = productId => (dispatch, getState) => {
   return request;
 };
 
-export default fetchUserReview;
+/** @mixes {MutableFunction} */
+export default mutable(fetchUserReview);

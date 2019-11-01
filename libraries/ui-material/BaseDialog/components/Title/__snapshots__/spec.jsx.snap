@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title /> should not render without a title 1`] = `""`;
+
+exports[`<Title /> should render with a title 1`] = `
+<div
+  aria-level="2"
+  className="css-axwumg"
+  id="basicDialogTitle"
+  role="heading"
+>
+  <Ellipsis
+    className=""
+    ellipsis="..."
+    rows={3}
+  >
+    <Translate
+      className={null}
+      params={Object {}}
+      role={null}
+      string="Some test title"
+    />
+  </Ellipsis>
+</div>
+`;

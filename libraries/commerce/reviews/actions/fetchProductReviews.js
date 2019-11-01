@@ -1,6 +1,6 @@
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import * as pipelines from '../constants/Pipelines';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
@@ -46,5 +46,6 @@ const fetchProductReviews = (
   return request;
 };
 
-export default fetchProductReviews;
+/** @mixes {MutableFunction} */
+export default mutable(fetchProductReviews);
 

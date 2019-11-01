@@ -111,6 +111,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
             tagName="a"
           >
             <Link
+              aria-hidden={null}
               aria-label={null}
               className=""
               disabled={false}
@@ -125,6 +126,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
               tagName="a"
             >
               <div
+                aria-hidden={null}
                 aria-label={null}
                 className="css-c6ki83 "
                 data-test-id="link: /item/505230445543544944"
@@ -800,16 +802,12 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                           role="text"
                                         >
                                           <FormatPrice
-                                            className=""
+                                            className={null}
                                             currency="EUR"
                                             fractions={true}
                                             price={5}
                                           >
-                                            <span
-                                              className=""
-                                            >
-                                              p
-                                            </span>
+                                            p
                                           </FormatPrice>
                                         </span>
                                       </div>
@@ -839,16 +837,12 @@ exports[`<ProductCard /> should render as expected 1`] = `
                                           data-test-id="strikedPrice: 10"
                                         >
                                           <FormatPrice
-                                            className=""
+                                            className={null}
                                             currency="EUR"
                                             fractions={true}
                                             price={10}
                                           >
-                                            <span
-                                              className=""
-                                            >
-                                              p
-                                            </span>
+                                            p
                                           </FormatPrice>
                                         </span>
                                       </div>

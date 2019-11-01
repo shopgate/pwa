@@ -22,6 +22,7 @@
   },
   "favorites": {
     "add": "Add to favorites",
+    "added": "Product has been added to favorites",
     "continue": "Continue shopping",
     "empty": "You don't have any favorites",
     "error_add": "Product could not be added to favorites",
@@ -43,11 +44,16 @@
     },
     "apply": "Done",
     "more": "more",
-    "reset": "Reset"
+    "reset": "Reset",
+    "remove": "Remove {filter} filter",
+    "edit": "Edit {filter} filter",
+    "filter_by": "Filter by {label}"
   },
   "price": {
     "from": "From {price}",
     "range": "Price from {fromPrice} to {toPrice}",
+    "range_from": "Price range from",
+    "range_to": "Price range to",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
@@ -111,7 +117,9 @@
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
     },
-    "placeholder": "Search"
+    "placeholder": "Search",
+    "close": "End search",
+    "reset": "Reset search"
   },
   "shipping": {
     "unknown": "plus shipping",
@@ -140,11 +148,16 @@
     "empty": "Your cart is empty",
     "continue": "Continue shopping",
     "redeem_coupon": "Enter coupon code",
+    "submit_coupon": "Submit coupon code",
+    "delete_coupon": "Delete coupon code",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon has been added to cart!",
     "coupons_not_supported": "Add coupons and gift certificates during checkout",
-    "free_shipping": "Free Shipping"
+    "free_shipping": "Free Shipping",
+    "message_type_info": "Info",
+    "message_type_error": "Error",
+    "message_type_warning": "Warning"
   },
   "login": {
     "headline": "Welcome",
@@ -179,7 +192,8 @@
     "menuSubHeader": {
       "more": "More",
       "about": "About us"
-    }
+    },
+    "back": "Back to {title}"
   },
   "reviews": {
     "rating": "Rating",
@@ -212,6 +226,9 @@
       "camera_message": "This feature requires access to your camera. Please allow access in the settings.",
       "geolocation_message": "To find stores near you, please go to Settings and enable location permissions."
     }
+  },
+  "error": {
+    "general": "Connectivity problems. Please check your internet connection or try again later."
   },
   "formats": {
     "date": {

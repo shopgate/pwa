@@ -22,6 +22,7 @@
   },
   "favorites": {
     "add": "Voeg aan favorieten toe",
+    "added": "Product is aan favorieten toegevoegd",
     "continue": "Doorgaan met winkelen",
     "empty": "U heeft geen favorieten",
     "error_add": "Product kon niet aan favorieten worden toegevoegd",
@@ -43,11 +44,16 @@
     },
     "apply": "Klaar",
     "more": "meer",
-    "reset": "Wis alles"
+    "reset": "Wis alles",
+    "remove": "Verwijder {filter} filter",
+    "edit": "Bewerk {filter} filter",
+    "filter_by": "Filteren op {label}"
   },
   "price": {
     "from": "Vanaf {price}",
     "range": "Prijs van {fromPrice} tot {toPrice}",
+    "range_from": "Prijsklasse van",
+    "range_to": "Prijsklasse tot",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} of meer dan: {price}"
@@ -111,7 +117,9 @@
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
     },
-    "placeholder": "Zoek"
+    "placeholder": "Zoek",
+    "close": "Zoeken beëindigen",
+    "reset": "Reset zoekopdracht"
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -179,7 +187,8 @@
     "menuSubHeader": {
       "more": "Meer",
       "about": "Over ons"
-    }
+    },
+    "back": "Terug naar {title}"
   },
   "reviews": {
     "rating": "Rating",
@@ -212,6 +221,9 @@
       "camera_message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
       "geolocation_message": "Ga naar Instellingen en schakel locatiemachtigingen in om winkels bij u in de buurt te vinden."
     }
+  },
+  "error": {
+    "general": "Onmogelijk de se connecter. Controleer je internetverbinding en probeer opnieuw."
   },
   "formats": {
     "date": {
