@@ -72,7 +72,6 @@ class CTAButtons extends Component {
 
     broadcastLiveMessage('product.adding_item', {
       params: { count: 1 },
-      force: true,
     });
   };
 
