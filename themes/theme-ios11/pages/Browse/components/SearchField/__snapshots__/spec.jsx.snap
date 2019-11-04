@@ -129,6 +129,7 @@ exports[`<Content /> Check search field should render with initial search query 
                 props={null}
               >
                 <button
+                  aria-hidden={true}
                   className="css-10ml0si"
                   onClick={[Function]}
                   type="button"
