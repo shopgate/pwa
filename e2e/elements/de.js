@@ -69,7 +69,7 @@ export default {
   contextMenu: "[data-test-id='contextMenu']",
   contextMenuButton: "[data-test-id='contextMenuButton'] span",
   productWithManyProps4CartitemPrice: "[data-test-id='cartItem'] [data-test-id='minPrice: 0 price: 199 currency: EUR']",
-  productWithManyProps4CartSubTotal: "[data-test-id='subTotalCartTotal'] div:nth-child(2) span",
+  productWithManyProps4CartSubTotal: "[data-test-id='subTotalCartTotal'] div:nth-child(2)",
   shippingLabel: "[data-test-id='shippingCartTotal'] div:nth-child(1)",
   taxDisclaimerFooter: "[data-test-id='taxDisclaimer'] span",
   couponFieldInput: "[data-test-id='couponField'] input",
