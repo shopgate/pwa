@@ -90,12 +90,13 @@ class FilterChips extends Component {
           const [minimum, maximum] = filter.value;
           const priceMin = Math.floor(minimum / 100);
           const priceMax = Math.ceil(maximum / 100);
-          const pricesFormatted = [
-            i18n.price(priceMin, appConfig.currency, false),
-            '-',
-            i18n.price(priceMax, appConfig.currency, false),
-          ].join(' ');
-          const labelValue = `${filter.label}: ${pricesFormatted}`;
+          const fromPrice = i18n.price(priceMin, appConfig.currency, false);
+          const toPrice = i18n.price(priceMax, appConfig.currency, false);
+          const pricesFormatted = `${fromPrice} - ${toPrice}`;
+          const labelValue = i18n.text('price.range', {
+            fromPrice,
+            toPrice,
+          });
           const removeLabel = i18n.text('filter.remove', { filter: labelValue });
           const editLabel = i18n.text('filter.edit', { filter: labelValue });
 
