@@ -12,6 +12,8 @@ jest.mock('../../../../core', () => ({
   },
 }));
 
+jest.useFakeTimers();
+
 describe('LiveMessenger helpers', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -23,11 +25,11 @@ describe('LiveMessenger helpers', () => {
       type: LIVE_MESSAGE_TYPE_POLITE,
       params: null,
       id: null,
-      force: false,
     };
 
     it('should not broadcast without a message', () => {
       broadcastLiveMessage();
+      jest.runAllTimers();
       expect(UIEvents.emit).not.toHaveBeenCalled();
     });
 
@@ -35,6 +37,10 @@ describe('LiveMessenger helpers', () => {
       broadcastLiveMessage(message);
       expect(UIEvents.emit).toHaveBeenCalledTimes(1);
       expect(UIEvents.emit).toHaveBeenCalledWith(EVENT_LIVE_MESSAGE, message, defaultOptions);
+
+      jest.runAllTimers();
+      expect(UIEvents.emit).toHaveBeenCalledTimes(2);
+      expect(UIEvents.emit).toHaveBeenCalledWith(EVENT_LIVE_MESSAGE, '', defaultOptions);
     });
 
     it('should broadcast with some options', () => {
@@ -48,28 +54,13 @@ describe('LiveMessenger helpers', () => {
       expect(UIEvents.emit).toHaveBeenCalledTimes(1);
       expect(UIEvents.emit).toHaveBeenCalledWith(EVENT_LIVE_MESSAGE, message, {
         ...options,
-        force: false,
       });
-    });
 
-    it('should broadcast an empty message when the FORCE option is set', (done) => {
-      const options = {
-        force: true,
-      };
-
-      broadcastLiveMessage(message, options);
-      setTimeout(() => {
-        expect(UIEvents.emit).toHaveBeenCalledTimes(2);
-        expect(UIEvents.emit).toHaveBeenCalledWith(EVENT_LIVE_MESSAGE, '', {
-          ...defaultOptions,
-          force: true,
-        });
-        expect(UIEvents.emit).toHaveBeenCalledWith(EVENT_LIVE_MESSAGE, message, {
-          ...defaultOptions,
-          force: true,
-        });
-        done();
-      }, 0);
+      jest.runAllTimers();
+      expect(UIEvents.emit).toHaveBeenCalledTimes(2);
+      expect(UIEvents.emit).toHaveBeenCalledWith(EVENT_LIVE_MESSAGE, '', {
+        ...options,
+      });
     });
   });
 });

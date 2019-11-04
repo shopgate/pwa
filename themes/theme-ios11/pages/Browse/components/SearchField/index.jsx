@@ -229,7 +229,7 @@ class SearchField extends Component {
       <Fragment>
         <Portal name={SCANNER_ICON_BEFORE} />
         <Portal name={SCANNER_ICON}>
-          <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button">
+          <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button" aria-hidden>
             <BarcodeScannerIcon />
           </button>
         </Portal>
