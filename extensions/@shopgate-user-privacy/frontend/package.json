@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/user-privacy",
-  "version": "6.8.0",
+  "version": "6.9.0-rc.2",
   "description": "Shopgate Connect User Privacy Extension",
   "license": "Apache 2.0",
   "repository": {
@@ -8,10 +8,10 @@
     "url": "https://github.com/shopgate/ext-user-privacy"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "6.8.0",
-    "@shopgate/pwa-common-commerce": "6.8.0",
-    "@shopgate/pwa-core": "6.8.0",
-    "@shopgate/pwa-ui-shared": "6.8.0",
+    "@shopgate/pwa-common": "6.9.0-rc.2",
+    "@shopgate/pwa-common-commerce": "6.9.0-rc.2",
+    "@shopgate/pwa-core": "6.9.0-rc.2",
+    "@shopgate/pwa-ui-shared": "6.9.0-rc.2",
     "prop-types": "^15.6.0",
     "react": "~16.8.4",
     "react-redux": "^5.0.6",
