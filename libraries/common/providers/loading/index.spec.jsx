@@ -79,9 +79,11 @@ describe('LoadingProvider', () => {
 
   it('should register event listeners within the constructor', () => {
     const wrapper = createWrapper();
-    expect(UIEvents.addListener).toHaveBeenCalledTimes(2);
+    expect(UIEvents.addListener).toHaveBeenCalledTimes(3);
     expect(UIEvents.addListener)
       .toHaveBeenCalledWith(LoadingProvider.SET, wrapper.instance().setLoading);
+    expect(UIEvents.addListener)
+      .toHaveBeenCalledWith(LoadingProvider.RESET, wrapper.instance().resetLoading);
     expect(UIEvents.addListener)
       .toHaveBeenCalledWith(LoadingProvider.UNSET, wrapper.instance().unsetLoading);
   });
@@ -89,9 +91,11 @@ describe('LoadingProvider', () => {
   it('should remove event listeners within componentWillUnmount', () => {
     const wrapper = createWrapper();
     wrapper.unmount();
-    expect(UIEvents.removeListener).toHaveBeenCalledTimes(2);
+    expect(UIEvents.removeListener).toHaveBeenCalledTimes(3);
     expect(UIEvents.removeListener)
       .toHaveBeenCalledWith(LoadingProvider.SET, expect.any(Function));
+    expect(UIEvents.removeListener)
+      .toHaveBeenCalledWith(LoadingProvider.RESET, expect.any(Function));
     expect(UIEvents.removeListener)
       .toHaveBeenCalledWith(LoadingProvider.UNSET, expect.any(Function));
   });
@@ -101,6 +105,14 @@ describe('LoadingProvider', () => {
       LoadingProvider.setLoading(MOCKED_PATH);
       expect(UIEvents.emit).toHaveBeenCalledTimes(1);
       expect(UIEvents.emit).toHaveBeenCalledWith(LoadingProvider.SET, MOCKED_PATH);
+    });
+  });
+
+  describe('LoadingProvider.resetLoading()', () => {
+    it('should emit the RESET event', () => {
+      LoadingProvider.resetLoading(MOCKED_PATH);
+      expect(UIEvents.emit).toHaveBeenCalledTimes(1);
+      expect(UIEvents.emit).toHaveBeenCalledWith(LoadingProvider.RESET, MOCKED_PATH);
     });
   });
 
@@ -125,6 +137,25 @@ describe('LoadingProvider', () => {
       instance.setLoading(MOCKED_PATH);
       expect(loading.has(MOCKED_PATH)).toBe(true);
       expect(loading.get(MOCKED_PATH)).toBe(2);
+    });
+  });
+
+  describe('.resetLoading()', () => {
+    it('should resets the loading counter for a path', () => {
+      const instance = createWrapper().instance();
+      const { loading } = instance.state;
+      expect(loading.has(MOCKED_PATH)).toBe(false);
+
+      instance.resetLoading(MOCKED_PATH);
+      expect(loading.has(MOCKED_PATH)).toBe(false);
+
+      instance.setLoading(MOCKED_PATH);
+      instance.setLoading(MOCKED_PATH);
+      expect(loading.has(MOCKED_PATH)).toBe(true);
+      expect(loading.get(MOCKED_PATH)).toBe(2);
+
+      instance.resetLoading(MOCKED_PATH);
+      expect(loading.has(MOCKED_PATH)).toBe(false);
     });
   });
 

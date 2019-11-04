@@ -111,7 +111,6 @@ class ProductCharacteristics extends Component {
         ref.current.focus();
         const option = ref.current.innerText;
         broadcastLiveMessage('product.pick_option_first', {
-          force: true,
           params: { option },
         });
 
