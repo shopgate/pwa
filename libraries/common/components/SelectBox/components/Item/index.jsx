@@ -25,7 +25,6 @@ class SelectBoxItem extends Component {
 
   /**
    * Calls the handleSelectionUpdate prop and prevents further events.
-   * @param {Object} e An event object.
    */
   handleSelectionUpdate = () => {
     this.props.handleSelectionUpdate(this.props.value);
