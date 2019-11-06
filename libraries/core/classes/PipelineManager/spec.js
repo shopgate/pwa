@@ -538,6 +538,43 @@ describe('PipelineManager', () => {
     });
   });
 
+  describe('.handleResultLast()', () => {
+    let requests;
+    let handleResultSpy;
+    let decrementSpy;
+
+    beforeEach(() => {
+      pipelineManager.constructor();
+      handleResultSpy = jest.spyOn(pipelineManager, 'handleResult');
+      decrementSpy = jest.spyOn(pipelineManager, 'decrementPipelineOngoing');
+      requests = [1, 2, 3, 4].map(() =>
+        createRequest(PIPELINE_NAME).setResponseProcessed(PROCESS_LAST));
+
+      requests.forEach((entry) => {
+        pipelineManager.add(entry);
+      });
+    });
+
+    it('should the last request as expected', () => {
+      expect(pipelineManager.pipelines.get(PIPELINE_NAME)).toBe(requests.length);
+
+      const serials = requests.map((entry) => {
+        pipelineManager.handleResultLast(entry.serial);
+        return entry.serial;
+      });
+
+      expect(decrementSpy).toHaveBeenCalledTimes(serials.length);
+
+      serials.slice(0, -1).forEach((serial) => {
+        expect(decrementSpy).toHaveBeenCalledWith(serial);
+      });
+
+      expect(handleResultSpy).toHaveBeenCalledTimes(1);
+      expect(handleResultSpy).toHaveBeenCalledWith(serials[serials.length - 1]);
+      expect(pipelineManager.pipelines.get(PIPELINE_NAME)).toBeUndefined();
+    });
+  });
+
   describe('.sendRequest()', () => {
     beforeEach(() => {
       // Reset the manager to remove the request from the global beforeEach.
@@ -608,18 +645,18 @@ describe('PipelineManager', () => {
     });
   });
 
-  describe('.removeRequestFromPiplineSequence()', () => {
+  describe('.removeRequestFromPipelineSequence()', () => {
     it('should remove a serial from the sequence when no matching request exists', () => {
       const serial = '1337';
       pipelineSequence.set(serial);
       expect(pipelineSequence.get()).toHaveLength(1);
-      pipelineManager.removeRequestFromPiplineSequence(serial);
+      pipelineManager.removeRequestFromPipelineSequence(serial);
       expect(pipelineSequence.get()).toHaveLength(0);
     });
 
     it('should not remove a request from the pipeline sequence when it is not sequential', () => {
       pipelineSequence.set(request.serial);
-      pipelineManager.removeRequestFromPiplineSequence(request.serial);
+      pipelineManager.removeRequestFromPipelineSequence(request.serial);
       expect(pipelineSequence.get()).toHaveLength(1);
     });
 
@@ -627,7 +664,7 @@ describe('PipelineManager', () => {
       request.setResponseProcessed(PROCESS_SEQUENTIAL);
       pipelineManager.addRequestToPipelineSequence(request.serial);
       expect(pipelineSequence.get()).toHaveLength(1);
-      pipelineManager.removeRequestFromPiplineSequence(request.serial);
+      pipelineManager.removeRequestFromPipelineSequence(request.serial);
       expect(pipelineSequence.get()).toHaveLength(0);
     });
   });

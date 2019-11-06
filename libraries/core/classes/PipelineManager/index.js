@@ -152,7 +152,7 @@ class PipelineManager {
   }
 
   /**
-   * Sends deferred requests when they dont' have running dependencies anymore.
+   * Sends deferred requests when they don't have running dependencies anymore.
    */
   handleDeferredRequests() {
     this.requests.forEach((entry) => {
@@ -286,7 +286,7 @@ class PipelineManager {
     if (entry.timer) {
       clearTimeout(entry.timer);
     }
-    this.removeRequestFromPiplineSequence(serial);
+    this.removeRequestFromPipelineSequence(serial);
     this.requests.delete(serial);
 
     // Take care about requests that were deferred because of running dependencies.
@@ -306,7 +306,7 @@ class PipelineManager {
 
       if (!entry) {
         // Remove sequence entries without request.
-        this.removeRequestFromPiplineSequence(serial);
+        this.removeRequestFromPipelineSequence(serial);
       } else if (!entry.finished) {
         // Stop sequence procession at the first not finished request.
         break;
@@ -326,6 +326,7 @@ class PipelineManager {
     // Requests which are queried later mark all previous ones to be bypassed ...
     if (entry.bypass) {
       // ... like this one - just clean up
+      this.decrementPipelineOngoing(serial);
       this.requests.delete(serial);
       return;
     }
@@ -421,7 +422,7 @@ class PipelineManager {
     const currentIndex = groupedRequests.length - 1; // The current one is the last in the group
     groupedRequests.forEach((entry, i) => {
       // Keep the last one
-      if (i >= currentIndex) {
+      if (i >= currentIndex || entry.bypass === true) {
         return;
       }
 
@@ -467,7 +468,7 @@ class PipelineManager {
    * Removes sequentially processed requests from the pipeline sequence.
    * @param {string} serial The pipeline request serial.
    */
-  removeRequestFromPiplineSequence(serial) {
+  removeRequestFromPipelineSequence(serial) {
     const { request } = this.requests.get(serial) || {};
 
     if (request && request.process === processTypes.PROCESS_SEQUENTIAL) {
