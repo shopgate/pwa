@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/engage",
-  "version": "6.8.0",
+  "version": "6.9.0-rc.4",
   "description": "Shopgate's ENGAGE library.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -15,12 +15,12 @@
     "connect"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "6.8.0",
-    "@shopgate/pwa-common-commerce": "6.8.0",
-    "@shopgate/pwa-core": "6.8.0",
-    "@shopgate/pwa-ui-ios": "6.8.0",
-    "@shopgate/pwa-ui-material": "6.8.0",
-    "@shopgate/pwa-ui-shared": "6.8.0",
+    "@shopgate/pwa-common": "6.9.0-rc.4",
+    "@shopgate/pwa-common-commerce": "6.9.0-rc.4",
+    "@shopgate/pwa-core": "6.9.0-rc.4",
+    "@shopgate/pwa-ui-ios": "6.9.0-rc.4",
+    "@shopgate/pwa-ui-material": "6.9.0-rc.4",
+    "@shopgate/pwa-ui-shared": "6.9.0-rc.4",
     "@virtuous/conductor": "~2.4.0",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
