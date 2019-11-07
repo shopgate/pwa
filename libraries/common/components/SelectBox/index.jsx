@@ -169,7 +169,7 @@ class SelectBox extends Component {
           onComplete={this.onDropdownComplete}
           duration={this.props.duration}
         >
-          <div role="menu" id={buttonLabel}>
+          <ul role="menu" id={buttonLabel} tabIndex="-1">
             {this.props.items.map(item => (
               <SelectBoxItem
                 className={selectItem}
@@ -178,10 +178,11 @@ class SelectBox extends Component {
                 value={item.value}
                 label={item.label}
                 handleSelectionUpdate={this.handleSelectionUpdate}
+                isSelected={buttonLabel === item.label}
                 forwardedRef={buttonLabel === item.label ? this.setFirstItemRef : null}
               />
             ))}
-          </div>
+          </ul>
         </Dropdown>
         {this.state.isOpen &&
           <button
