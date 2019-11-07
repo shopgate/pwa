@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { hasChildren, hasProducts } from '@shopgate/pwa-common-commerce/category/selectors';
+import { hasCategoryChildren, hasCategoryProducts } from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,8 +8,8 @@ import { hasChildren, hasProducts } from '@shopgate/pwa-common-commerce/category
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  hasProducts: hasProducts(state, props),
-  hasChildren: hasChildren(state, props),
+  hasProducts: hasCategoryProducts(state, props),
+  hasChildren: hasCategoryChildren(state, props),
 });
 
 /**
