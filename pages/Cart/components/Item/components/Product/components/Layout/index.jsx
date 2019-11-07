@@ -20,19 +20,6 @@ import styles from './style';
  */
 const Layout = (props, context) => (
   <Grid className={styles.item}>
-    <Grid.Item className={styles.leftColumn}>
-      <div className={styles.image} aria-hidden>
-        <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
-          <ProductImage src={props.product.featuredImageUrl} />
-        </SurroundPortals>
-      </div>
-      <QuantityPicker
-        quantity={props.quantity}
-        editMode={props.editMode}
-        onChange={props.handleUpdate}
-        onToggleEditMode={props.toggleEditMode}
-      />
-    </Grid.Item>
     <Grid.Item className={styles.content} grow={1}>
       <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(props.product.id)}`}>
         <Title
@@ -63,6 +50,20 @@ const Layout = (props, context) => (
           />
         )}
       </Grid>
+    </Grid.Item>
+    {/** DOM reversed for a11y navigation */}
+    <Grid.Item className={styles.leftColumn}>
+      <div className={styles.image} aria-hidden>
+        <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
+          <ProductImage src={props.product.featuredImageUrl} />
+        </SurroundPortals>
+      </div>
+      <QuantityPicker
+        quantity={props.quantity}
+        editMode={props.editMode}
+        onChange={props.handleUpdate}
+        onToggleEditMode={props.toggleEditMode}
+      />
     </Grid.Item>
   </Grid>
 );
