@@ -20,6 +20,6 @@ export default function favorites(subscribe) {
   });
 
   subscribe(favoritesWillAddItem$, () => {
-    broadcastLiveMessage('favorites.added', { force: true });
+    broadcastLiveMessage('favorites.added');
   });
 }

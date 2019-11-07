@@ -135,7 +135,7 @@ export default function cart(subscribe) {
   });
 
   subscribe(cartIdle$, () => {
-    LoadingProvider.unsetLoading(CART_PATH);
+    LoadingProvider.resetLoading(CART_PATH);
   });
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {

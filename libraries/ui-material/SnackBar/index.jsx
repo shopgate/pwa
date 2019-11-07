@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Spring, config } from 'react-spring';
+import { config } from 'react-spring';
+import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';

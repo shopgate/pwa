@@ -67,6 +67,11 @@ function Label(props) {
     }
   }
 
+  const currencySymbol = Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format('0').replace('0.00', '');
+
   return (
     <div className={styles.editableContainer}>
       <span className={styles.srOnly}>
@@ -87,6 +92,9 @@ function Label(props) {
           </span>
         </I18n.Placeholder>
       </I18n.Text>
+      <span aria-hidden hidden id="price-slider-currency-label">
+        {currencySymbol}
+      </span>
       <input
         type="text"
         id="priceMin"
@@ -100,6 +108,7 @@ function Label(props) {
         }}
         className={styles.editableField}
         aria-label={i18n.text('price.range_from')}
+        aria-describedby="price-slider-currency-label"
       />
       <input
         type="text"
@@ -114,6 +123,7 @@ function Label(props) {
         }}
         className={styles.editableField}
         aria-label={i18n.text('price.range_to')}
+        aria-describedby="price-slider-currency-label"
       />
     </div>
   );
