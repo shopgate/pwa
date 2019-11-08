@@ -1,9 +1,4 @@
-import {
-  errorManager,
-  registerEvents,
-  ETIMEOUT,
-  APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
-} from '@shopgate/pwa-core';
+import { registerEvents, APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND } from '@shopgate/pwa-core';
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
 import redirects from '@shopgate/pwa-common/collections/Redirects';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
@@ -68,12 +63,6 @@ export default function app(subscribe) {
 
     productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, PRODUCT_SLIDER_IMAGE_FORMATS);
     productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, GALLERY_SLIDER_IMAGE_FORMATS);
-
-    // Hide technical details from the user (will be visible in the dev view)
-    errorManager.setMessage({
-      code: ETIMEOUT, // Should also be done for EUNKNOWN and EINTERNAL in the future.
-      message: 'modal.body_error',
-    });
 
     /**
      * This feature is currently in BETA testing.
