@@ -7,6 +7,8 @@ const leftColumnWidth = 72;
 
 const item = css({
   padding: variables.gap.big,
+  /** Row is DOM reversed for a11y navigation */
+  flexDirection: 'row-reverse',
 }).toString();
 
 const leftColumn = css({
