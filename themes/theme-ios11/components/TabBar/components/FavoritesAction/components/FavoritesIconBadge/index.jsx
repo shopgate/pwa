@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import connect from './connector';
 import style from './style';
 
@@ -10,7 +10,7 @@ export class FavoritesIconBadge extends Component {
   static MAX_NUMBER = 999;
 
   static propTypes = {
-    favoritesCount: Proptypes.number,
+    favoritesCount: PropTypes.number,
   };
 
   static defaultProps = {
@@ -18,7 +18,7 @@ export class FavoritesIconBadge extends Component {
   };
 
   /**
-   * Disallows component to udpate when favorites count is the same or above the maximum limit.
+   * Disallows component to update when favorites count is the same or above the maximum limit.
    * @param {Object} nextProps Next props.
    * @returns {boolean}
    */
