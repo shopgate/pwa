@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import CartIcon from '@shopgate/pwa-ui-ios/icons/CartIcon';
+import { i18n } from '@shopgate/engage/core';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import CartItemBadge from './components/CartItemBadge';
 import connect from '../connector';
+import connectBadge from './components/CartItemBadge/connector';
 import styles from './style';
 
 /**
@@ -33,6 +35,8 @@ class TabBarCartAction extends Component {
    * @return {JSX}
    */
   render() {
+    const { label, cartProductCount } = this.props;
+    const ariaLabel = `${i18n.text(label)}. ${i18n.text('common.products')}: ${cartProductCount}.`;
     return (
       <Fragment>
         <Portal name={portals.TAB_BAR_CART_BEFORE} props={this.props} />
@@ -45,6 +49,7 @@ class TabBarCartAction extends Component {
         >
           <TabBarAction
             {...this.props}
+            aria-label={ariaLabel}
             icon={(
               <Portal name={portals.TAB_BAR_CART_ICON}>
                 <CartIcon className={styles} />
@@ -67,4 +72,4 @@ class TabBarCartAction extends Component {
   }
 }
 
-export default connect(TabBarCartAction);
+export default connect(connectBadge(TabBarCartAction));
