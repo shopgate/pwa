@@ -9,7 +9,8 @@
     "please_choose": "Kies",
     "show_products": "Toon producten",
     "back": "Terug",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "products": "Producten"
   },
   "titles": {
     "categories": "Categorieën",
@@ -188,7 +189,8 @@
       "more": "Meer",
       "about": "Over ons"
     },
-    "back": "Terug naar {title}"
+    "back": "Terug naar {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "Rating",

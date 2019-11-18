@@ -12,6 +12,7 @@ const QuickLinks = ({ links, navigate }) => (
     <NavDrawer.Section>
       {links.map(link => (
         <NavDrawer.Item
+          aria-hidden
           key={link.url}
           label={link.label}
           onClick={() => navigate(link.url, link.label)}
