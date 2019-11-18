@@ -9,7 +9,8 @@
     "please_choose": "Please choose",
     "show_products": "Show products",
     "back": "Back",
-    "close": "Close"
+    "close": "Close",
+    "products": "Products"
   },
   "titles": {
     "categories": "Categories",
@@ -193,7 +194,8 @@
       "more": "More",
       "about": "About us"
     },
-    "back": "Back to {title}"
+    "back": "Back to {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "Rating",
