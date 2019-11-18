@@ -9,7 +9,8 @@
     "please_choose": "Inserisci",
     "show_products": "Mostra i prodotti",
     "back": "Indietro",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "products": "Prodotti"
   },
   "titles": {
     "categories": "Categorie",
@@ -188,7 +189,8 @@
       "more": "Di più",
       "about": "Su di noi"
     },
-    "back": "Indietro alla {title}"
+    "back": "Indietro alla {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "valutazione",

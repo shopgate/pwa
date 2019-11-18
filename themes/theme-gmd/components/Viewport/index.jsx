@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Footer from '@shopgate/pwa-ui-shared/Footer';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
@@ -12,19 +12,24 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Viewport = props => (
-  <main className={styles.viewport} role="main" itemScope itemProp="http://schema.org/MobileApplication">
-    <LiveMessenger />
-    <NavDrawer />
-    <header className={styles.header} id="AppHeader" />
-    <section className={styles.content}>
-      {props.children}
-    </section>
-    <Footer />
-    <Search />
-    <Navigation entries={a11yNavEntries} />
-  </main>
-);
+const Viewport = (props) => {
+  const [hidden, setHidden] = useState(false);
+  return (
+    <main role="main" itemScope itemProp="http://schema.org/MobileApplication">
+      <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
+      <div className={styles.viewport} aria-hidden={hidden} tabIndex="-1">
+        <LiveMessenger />
+        <header className={styles.header} id="AppHeader" />
+        <section className={styles.content}>
+          {props.children}
+        </section>
+        <Footer />
+        <Search />
+        <Navigation entries={a11yNavEntries} />
+      </div>
+    </main>
+  );
+};
 
 Viewport.propTypes = {
   children: PropTypes.node.isRequired,
