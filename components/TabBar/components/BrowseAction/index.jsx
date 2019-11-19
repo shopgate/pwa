@@ -13,7 +13,7 @@ import styles from './style';
  */
 class TabBarBrowseAction extends Component {
   static propTypes = {
-    historyPush: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
     ...TabBarAction.propTypes,
   };
@@ -24,7 +24,7 @@ class TabBarBrowseAction extends Component {
    * Handles the click action.
    */
   handleClick = () => {
-    this.props.historyPush({ pathname: BROWSE_PATH });
+    this.props.navigate({ pathname: BROWSE_PATH });
   };
 
   /**

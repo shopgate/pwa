@@ -13,7 +13,7 @@ import styles from './style';
  */
 class TabBarHomeAction extends Component {
   static propTypes = {
-    historyPush: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
     ...TabBarAction.propTypes,
   };
@@ -21,7 +21,7 @@ class TabBarHomeAction extends Component {
   static defaultProps = TabBarAction.defaultProps;
 
   handleClick = () => {
-    this.props.historyPush({ pathname: INDEX_PATH });
+    this.props.navigate({ pathname: INDEX_PATH });
   };
 
   /**
