@@ -16,7 +16,7 @@ import styles from './style';
  */
 class TabBarFavoritesAction extends Component {
   static propTypes = {
-    historyPush: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
     ...TabBarAction.propTypes,
   };
@@ -27,7 +27,7 @@ class TabBarFavoritesAction extends Component {
    * Handles the click action.
    */
   handleClick = () => {
-    this.props.historyPush({ pathname: FAVORITES_PATH });
+    this.props.navigate({ pathname: FAVORITES_PATH });
   };
 
   /**

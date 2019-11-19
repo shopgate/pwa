@@ -1,20 +1,12 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { navigate } from './actions';
 
 /**
- * @param {Function} dispatch The store dispatch method.
  * @return {Object} The extended component props.
  */
-const mapDispatchToProps = dispatch => ({
-  historyPush: (params) => {
-    dispatch(historyPush({
-      ...params,
-      state: {
-        preventA11yFocus: true,
-      },
-    }));
-  },
-});
+const mapDispatchToProps = {
+  navigate,
+};
 
 export default connect(null, mapDispatchToProps);
 
