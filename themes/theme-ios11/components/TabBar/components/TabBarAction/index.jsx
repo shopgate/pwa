@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import Button from '@shopgate/pwa-common/components/Button';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import style from './style';
@@ -21,40 +20,43 @@ const TabBarAction = (props) => {
   );
 
   return (
-    <Grid.Item role="presentation" className={style.item}>
-      <Button
-        className={className}
-        onClick={props.onClick}
-        aria-selected={!props['aria-hidden'] && props.isHighlighted}
-        aria-hidden={props['aria-hidden']}
-        tabIndex={props.tabIndex}
-        role="tab"
-      >
-        {Icon}
-        <div className={style.label} data-test-id={props.label}>
-          <I18n.Text string={props.label} />
-        </div>
-        {props.children}
-      </Button>
-    </Grid.Item>
+    <Button
+      className={className}
+      onClick={props.onClick}
+      aria-selected={!props['aria-hidden'] && props.isHighlighted}
+      aria-hidden={props['aria-hidden']}
+      aria-label={props['aria-label']}
+      tabIndex={props.tabIndex}
+      role="tab"
+    >
+      {Icon}
+      <div className={style.label} data-test-id={props.label}>
+        <I18n.Text string={props.label} />
+      </div>
+      {props.children}
+    </Button>
   );
 };
 
 TabBarAction.propTypes = {
-  'aria-hidden': PropTypes.bool.isRequired,
   label: PropTypes.node.isRequired,
-  tabIndex: PropTypes.number.isRequired,
+  'aria-hidden': PropTypes.bool,
+  'aria-label': PropTypes.string,
   children: PropTypes.node,
   icon: PropTypes.element,
   isHighlighted: PropTypes.bool,
   onClick: PropTypes.func,
+  tabIndex: PropTypes.number,
 };
 
 TabBarAction.defaultProps = {
+  'aria-hidden': null,
+  'aria-label': null,
   children: null,
   icon: null,
   isHighlighted: false,
   onClick: null,
+  tabIndex: null,
 };
 
 export default TabBarAction;
