@@ -1,5 +1,5 @@
 {
-  "version": "6.8.0",
+  "version": "6.9.0",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -416,17 +416,6 @@
         "service": "config",
         "path": "/v1/shop/%(shopId)s/has_no_scanner?parsed=true",
         "key": "value"
-      }
-    },
-    "scanner": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": {
-        "showSearchFieldIcon": true
-      },
-      "params": {
-        "type": "json",
-        "label": "Scanner settings: icon on/off, etc"
       }
     },
     "favorites": {
