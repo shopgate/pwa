@@ -4,6 +4,6 @@ import styles from './style';
 /**
  * @returns {JSX}
  */
-const NavDrawerDivider = () => <hr className={styles} />;
+const NavDrawerDivider = () => <hr aria-hidden className={styles} />;
 
 export default NavDrawerDivider;

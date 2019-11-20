@@ -10,8 +10,9 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import {
-  withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
+  withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
 } from '@shopgate/engage/core';
+
 import { ViewContext } from 'Components/View/context';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
@@ -50,6 +51,16 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
+   * Constructor
+   * @param {Object} props The component properties
+   */
+  constructor(props) {
+    super(props);
+
+    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
+  /**
    * Sets the target if it hasn't been set before.
    */
   componentDidMount() {
@@ -61,12 +72,7 @@ class AppBarDefault extends PureComponent {
     }
 
     if (this.props.setFocus) {
-      // Set the focus to the first focusable element for screen readers.
-      const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
-
-      if (focusable) {
-        focusable.focus();
-      }
+      this.setFocus();
     }
 
     if (this.props.route.visible) {
@@ -113,6 +119,27 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
+   * Removes the event listeners when the component unmounts.
+   */
+  componentWillUnmount() {
+    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
+  /**
+   * Sets the a11y focus to the first focusable element within the AppBar.
+   */
+  setFocus = () => {
+    const { target } = this.state;
+
+    // Set the focus to the first focusable element for screen readers.
+    const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+
+    if (focusable) {
+      focusable.focus();
+    }
+  }
+
+  /**
    * Maintains the status bar based on the visibility of the global SearchComponent.
    * @param {bool} visible The current state.
    */
@@ -150,7 +177,7 @@ class AppBarDefault extends PureComponent {
 
     const { background, color } = this.props.widgetSettings;
     const { __ } = this.context.i18n();
-    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
+    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label={__('navigation.open_menu')} />;
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const right = (
       <Fragment>

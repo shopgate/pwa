@@ -7,6 +7,8 @@ jest.mock('../../../../core', () => ({
   isBeta: jest.fn(),
 }));
 
+jest.mock('../GroupedProperties', () => function GroupedProperties() { return 'GroupedProperties'; });
+
 const properties = [
   {
     name: 'test1',
