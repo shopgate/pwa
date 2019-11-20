@@ -103,7 +103,6 @@ class CartButton extends Component {
 
       broadcastLiveMessage('product.adding_item', {
         params: { count: this.context.quantity },
-        force: true,
       });
     });
   }

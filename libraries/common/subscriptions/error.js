@@ -9,7 +9,13 @@ import {
   withScope,
   Severity as SentrySeverity,
 } from '@sentry/browser';
-import { emitter, errorManager, EUNKNOWN } from '@shopgate/pwa-core';
+import {
+  EBIGAPI,
+  emitter,
+  errorManager,
+  ETIMEOUT,
+  EUNKNOWN,
+} from '@shopgate/pwa-core';
 import { SOURCE_TRACKING, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
   // eslint-disable-next-line import/no-named-default
@@ -40,6 +46,12 @@ export default (subscribe) => {
     errorManager.setMessage({
       code: EUNKNOWN,
       message: transformGeneralPipelineError,
+    }).setMessage({
+      code: EBIGAPI,
+      message: transformGeneralPipelineError,
+    }).setMessage({
+      code: ETIMEOUT,
+      message: 'modal.body_error',
     });
   });
 
@@ -67,8 +79,12 @@ export default (subscribe) => {
       }));
     };
 
+    let shouldShowToast = message === 'error.general';
+    if (code === ETIMEOUT && message === 'modal.body_error') {
+      shouldShowToast = true;
+    }
     // It was transformed general error. let it popup after 10 toast clicks
-    if (message === 'error.general') {
+    if (shouldShowToast) {
       const showToastAfter = after(9, showModalError);
       // Recursively show same toast message until clicked 10 times
       const showToast = before(10, () => {

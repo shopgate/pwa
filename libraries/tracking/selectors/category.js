@@ -8,7 +8,7 @@ import {
   CATEGORY_PATTERN,
   ROOT_CATEGORY_PATTERN,
   getRootCategories,
-  getCategoryById,
+  getCategory,
 } from '@shopgate/engage/category';
 import {
   createCategoryData,
@@ -34,7 +34,7 @@ export const makeGetRouteCategory = () => {
       if (pattern === ROOT_CATEGORY_PATTERN) {
         return createRootCategoryData(rootCategories);
       } if (pattern === CATEGORY_PATTERN && decodedCategoryId) {
-        return createCategoryData(getCategoryById(state, { categoryId: decodedCategoryId }));
+        return createCategoryData(getCategory(state, { categoryId: decodedCategoryId }));
       }
 
       return null;

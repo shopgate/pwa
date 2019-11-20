@@ -9,7 +9,8 @@
     "please_choose": "Por favor, seleccione",
     "show_products": "Mostrar productos",
     "back": "Volver",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "products": "Productos"
   },
   "titles": {
     "categories": "Categorías",
@@ -188,7 +189,8 @@
       "more": "Más",
       "about": "Sobre nosotros"
     },
-    "back": "Volver a {title}"
+    "back": "Volver a {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "Calificación",
