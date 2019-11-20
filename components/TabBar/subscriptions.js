@@ -1,5 +1,4 @@
 import { LOGIN_PATH, CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import {
   ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
@@ -9,7 +8,6 @@ import {
 import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
-import { getCartItems } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -20,6 +18,8 @@ import {
   enableTabBar,
   disableTabBar,
 } from './actions';
+import shouldCartHaveTabBar from './helpers/shouldCartHaveTabBar';
+import isTabBarVisible from './helpers/isTabBarVisible';
 
 const blacklist = [
   ITEM_PATTERN,
@@ -34,13 +34,6 @@ const blacklist = [
 ];
 
 /**
- * Whether the TabBar should be visible for the cart page.
- * @param {Object} state The application state
- * @returns {bool}
- */
-const shouldCartHaveTabBar = state => getCartItems(state).length === 0;
-
-/**
  * TabBar subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
@@ -50,20 +43,10 @@ export default function tabBar(subscribe) {
     configuration.set(TAB_BAR_PATTERNS_BLACK_LIST, blacklist);
   });
 
-  // When a route enters we update the tabbar visibility.
+  // When a route enters we update the tab bar visibility.
   subscribe(routeDidEnter$, ({ dispatch, getState }) => {
     const { pattern } = getCurrentRoute(getState());
-    let enable = false;
-
-    if (pattern === CART_PATH) {
-      // Enable tabbar for empty cart page.
-      enable = shouldCartHaveTabBar(getState());
-    } else if (!configuration.get(TAB_BAR_PATTERNS_BLACK_LIST).includes(pattern)) {
-      // Enable tabbar for those that are not blacklisted.
-      enable = true;
-    }
-
-    dispatch(enable ? enableTabBar() : disableTabBar());
+    dispatch(isTabBarVisible(getState(), pattern) ? enableTabBar() : disableTabBar());
   });
 
   // When the cart update we need reevaluate the decision.

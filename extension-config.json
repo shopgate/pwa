@@ -1,5 +1,5 @@
 {
-  "version": "6.8.0",
+  "version": "6.9.0",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -70,7 +70,7 @@
       "params": {
         "method": "GET",
         "service": "shop",
-        "path": "/v1/%(shopId)s",
+        "path": "/v1/%(shopId)s?noCache=true",
         "key": "languageId"
       }
     },
