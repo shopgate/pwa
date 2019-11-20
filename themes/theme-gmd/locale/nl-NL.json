@@ -189,7 +189,8 @@
       "more": "Meer",
       "about": "Over ons"
     },
-    "back": "Terug naar {title}"
+    "back": "Terug naar {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "Rating",
