@@ -16,7 +16,6 @@ export function broadcastLiveMessage(message, options = {}) {
     type: LIVE_MESSAGE_TYPE_POLITE,
     params: null,
     id: null,
-    force: false,
   };
 
   if (!message) {
@@ -28,15 +27,10 @@ export function broadcastLiveMessage(message, options = {}) {
     ...options,
   };
 
-  if (params.force) {
-    // Clear the text first, so that the message will be read in any case.
-    UIEvents.emit(EVENT_LIVE_MESSAGE, '', params);
-
-    setTimeout(() => {
-      UIEvents.emit(EVENT_LIVE_MESSAGE, message, params);
-    }, 0);
-    return;
-  }
-
   UIEvents.emit(EVENT_LIVE_MESSAGE, message, params);
+
+  setTimeout(() => {
+    // Clear the live area after a short time, so that the screen reader can't focus the element.
+    UIEvents.emit(EVENT_LIVE_MESSAGE, '', params);
+  }, 100);
 }

@@ -72,7 +72,7 @@ class TextOption extends PureComponent {
       return true;
     }
 
-    broadcastLiveMessage('product.fill_out_required_input_first', { force: true });
+    broadcastLiveMessage('product.fill_out_required_input_first');
     this.ref.scrollIntoView({ behavior: 'smooth' });
     this.setState({ highlight: true });
     return false;

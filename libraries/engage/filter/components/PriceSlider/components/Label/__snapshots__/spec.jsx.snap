@@ -63,7 +63,15 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       </span>
     </Placeholder>
   </Translate>
+  <span
+    aria-hidden={true}
+    hidden={true}
+    id="price-slider-currency-label"
+  >
+    $
+  </span>
   <input
+    aria-describedby="price-slider-currency-label"
     aria-label="price.range_from"
     className={
       Object {
@@ -84,6 +92,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     value={25}
   />
   <input
+    aria-describedby="price-slider-currency-label"
     aria-label="price.range_to"
     className={
       Object {

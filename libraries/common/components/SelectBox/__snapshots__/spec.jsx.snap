@@ -96,25 +96,28 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
           className="css-rdsogp "
           key=".0"
         >
-          <div
+          <ul
             id="filter.sort.default"
             role="menu"
+            tabIndex="-1"
           >
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_1"
               label="My item #1"
               value="item_1"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -133,23 +136,25 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_2"
               label="My item #2"
               value="item_2"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -168,23 +173,25 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_3"
               label="My item #3"
               value="item_3"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -203,9 +210,9 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
-          </div>
+          </ul>
         </div>
       </Transition>
     </Dropdown>
@@ -309,25 +316,28 @@ exports[`<SelectBox> should render with a default text 1`] = `
           className="css-rdsogp "
           key=".0"
         >
-          <div
+          <ul
             id="Foo"
             role="menu"
+            tabIndex="-1"
           >
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_1"
               label="My item #1"
               value="item_1"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -346,23 +356,25 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_2"
               label="My item #2"
               value="item_2"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -381,23 +393,25 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_3"
               label="My item #3"
               value="item_3"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -416,9 +430,9 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
-          </div>
+          </ul>
         </div>
       </Transition>
     </Dropdown>
@@ -522,25 +536,28 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
           className="css-rdsogp "
           key=".0"
         >
-          <div
+          <ul
             id="My item #2"
             role="menu"
+            tabIndex="-1"
           >
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_1"
               label="My item #1"
               value="item_1"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #1"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -559,23 +576,25 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
             <SelectBoxItem
               className=""
               forwardedRef={[Function]}
               handleSelectionUpdate={[Function]}
+              isSelected={true}
               key="item_2"
               label="My item #2"
               value="item_2"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #2"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="0"
               >
                 <MockItemComponent>
                   <div>
@@ -594,23 +613,25 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
             <SelectBoxItem
               className=""
               forwardedRef={null}
               handleSelectionUpdate={[Function]}
+              isSelected={false}
               key="item_3"
               label="My item #3"
               value="item_3"
               wrapper={[Function]}
             >
-              <button
+              <li
                 className=""
                 data-test-id="My item #3"
                 onClick={[Function]}
+                onKeyUp={[Function]}
                 role="menuitem"
-                type="button"
+                tabIndex="-1"
               >
                 <MockItemComponent>
                   <div>
@@ -629,9 +650,9 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     </Translate>
                   </div>
                 </MockItemComponent>
-              </button>
+              </li>
             </SelectBoxItem>
-          </div>
+          </ul>
         </div>
       </Transition>
     </Dropdown>

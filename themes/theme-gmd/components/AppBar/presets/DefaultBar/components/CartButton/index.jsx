@@ -64,7 +64,7 @@ class CartButton extends PureComponent {
    */
   render() {
     const { count, navigate } = this.props;
-
+    const ariaLabel = `${i18n.text('navigation.cart')}. ${i18n.text('common.products')}: ${count}.`;
     return (
       <Transition in={count > 0} timeout={250}>
         {state => (
@@ -78,7 +78,7 @@ class CartButton extends PureComponent {
                   icon={CartIcon}
                   onClick={navigate}
                   testId="CartButton"
-                  aria-label={i18n.text('navigation.cart')}
+                  aria-label={ariaLabel}
                   aria-hidden={!count}
                 />
               </div>
