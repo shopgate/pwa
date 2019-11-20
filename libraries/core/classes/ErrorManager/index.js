@@ -58,6 +58,7 @@ class ErrorManager {
    * @param {string} errorTemplate.context The context of the error, relative to the source..
    * @param {string} errorTemplate.message The default error message.
    * @param {string} [errorTemplate.source=SOURCE_PIPELINE] The source of the error.
+   * @returns {ErrorManager}
    */
   setMessage(errorTemplate = {}) {
     const error = {
@@ -66,13 +67,15 @@ class ErrorManager {
     };
 
     if (!this.validate(error)) {
-      return;
+      return this;
     }
 
     const { context = DEFAULT_CONTEXT } = error;
     const id = `${error.source}-${context}-${error.code}`;
 
     this.messages[id] = error.message;
+
+    return this;
   }
 
   /**
