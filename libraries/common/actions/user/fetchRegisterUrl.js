@@ -25,18 +25,20 @@ function fetchRegisterUrl() {
 
     dispatch(requestUrl(URL_TYPE_REGISTER));
 
-    return new PipelineRequest(SHOPGATE_USER_GET_REGISTRATION_URL)
+    const request = new PipelineRequest(SHOPGATE_USER_GET_REGISTRATION_URL)
       .setTrusted()
-      .dispatch()
+      .dispatch();
+
+    request
       .then(({ url, expires }) => {
         dispatch(receiveUrl(URL_TYPE_REGISTER, url, expires));
-        return url;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorUrl(URL_TYPE_REGISTER));
-        return error;
       });
+
+    return request;
   };
 }
 

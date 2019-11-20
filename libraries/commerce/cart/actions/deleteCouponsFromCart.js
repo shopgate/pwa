@@ -19,11 +19,13 @@ function deleteCouponsFromCart(couponIds) {
   return (dispatch) => {
     dispatch(deleteCoupons(couponIds));
 
-    return new PipelineRequest(SHOPGATE_CART_DELETE_COUPONS)
+    const request = new PipelineRequest(SHOPGATE_CART_DELETE_COUPONS)
       .setInput({ couponCodes: couponIds })
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setErrorBlacklist(ECART)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         /**
          * @deprecated: The property "messages" is not supposed to be part of the pipeline response.
@@ -32,11 +34,10 @@ function deleteCouponsFromCart(couponIds) {
          */
         if (result.messages && messagesHaveErrors(result.messages)) {
           dispatch(errorDeleteCouponsFromCart(couponIds, result.messages));
-          return result;
+          return;
         }
 
         dispatch(successDeleteCouponsFromCart());
-        return result;
       })
       .catch((error) => {
         dispatch(errorDeleteCouponsFromCart(
@@ -44,8 +45,9 @@ function deleteCouponsFromCart(couponIds) {
           createPipelineErrorList(SHOPGATE_CART_DELETE_COUPONS, error)
         ));
         logger.error(SHOPGATE_CART_DELETE_COUPONS, error);
-        return error;
       });
+
+    return request;
   };
 }
 

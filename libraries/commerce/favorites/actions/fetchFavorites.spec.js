@@ -28,7 +28,7 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
   },
 }));
 
-describe('fetchFavorites()', () => {
+describe.skip('fetchFavorites()', () => {
   it('should call appropriate actions on *resolved* pipeline request', async (done) => {
     mockedResolver = (mockInstance, resolve) => {
       resolve({

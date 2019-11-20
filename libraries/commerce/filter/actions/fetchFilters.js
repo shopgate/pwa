@@ -40,18 +40,20 @@ function fetchFilters() {
 
     dispatch(requestFilters(hash));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_FILTERS)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_FILTERS)
       .setInput(requestParams)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((response) => {
         dispatch(receiveFilters(hash, response.filters));
-        return response;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorFilters(hash));
-        return error;
       });
+
+    return request;
   };
 }
 

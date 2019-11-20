@@ -9,20 +9,23 @@ import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators
  * @returns {Function} A redux thunk.
  */
 function removeFavorites(productId) {
-  return dispatch => (
-    new PipelineRequest(SHOPGATE_USER_DELETE_FAVORITES)
+  return (dispatch) => {
+    const request = new PipelineRequest(SHOPGATE_USER_DELETE_FAVORITES)
       .setInput({ productId })
       .setRetries(0)
-      .dispatch()
-      .then((result) => {
+      .dispatch();
+
+    request
+      .then(() => {
         dispatch(successRemoveFavorites(productId));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorRemoveFavorites(productId, error));
-      })
-  );
+      });
+
+    return request;
+  };
 }
 
 export default removeFavorites;

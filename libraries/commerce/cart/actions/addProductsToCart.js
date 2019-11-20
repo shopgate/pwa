@@ -48,12 +48,14 @@ function addToCart(data) {
     dispatch(addProductsToCart(products));
     dispatch(setCartProductPendingCount(pendingProductCount + quantity));
 
-    return new PipelineRequest(SHOPGATE_CART_ADD_PRODUCTS)
+    const request = new PipelineRequest(SHOPGATE_CART_ADD_PRODUCTS)
       .setInput({ products })
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setRetries(0)
       .setErrorBlacklist(ECART)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         if (result.messages && messagesHaveErrors(result.messages)) {
           /**
@@ -63,11 +65,10 @@ function addToCart(data) {
            * fixing the `@shopgate/legacy-cart` extension.
            */
           dispatch(errorAddProductsToCart(products, result.messages));
-          return result;
+          return;
         }
 
         dispatch(successAddProductsToCart());
-        return result;
       })
       .catch((error) => {
         dispatch(errorAddProductsToCart(
@@ -75,8 +76,9 @@ function addToCart(data) {
           createPipelineErrorList(SHOPGATE_CART_ADD_PRODUCTS, error)
         ));
         logger.error(SHOPGATE_CART_ADD_PRODUCTS, error);
-        return error;
       });
+
+    return request;
   };
 }
 

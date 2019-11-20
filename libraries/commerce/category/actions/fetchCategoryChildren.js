@@ -22,18 +22,20 @@ function fetchCategoryChildren(categoryId) {
 
     dispatch(requestCategoryChildren(categoryId));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_CATEGORY_CHILDREN)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_CATEGORY_CHILDREN)
       .setInput({ categoryId })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveCategoryChildren(categoryId, result.categories));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorCategoryChildren(categoryId));
-        return error;
       });
+
+    return request;
   };
 }
 

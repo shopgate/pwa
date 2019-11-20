@@ -21,17 +21,20 @@ function fetchUserReview(productId) {
 
     dispatch(requestUserReview(productId));
 
-    return new PipelineRequest(SHOPGATE_USER_GET_REVIEW)
+    const request = new PipelineRequest(SHOPGATE_USER_GET_REVIEW)
       .setErrorBlacklist([EUNKNOWN, EACCESS])
       .setInput({ productId })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveUserReview(productId, result));
-        return result;
       })
       .catch(() => {
         dispatch(errorUserReview(productId));
       });
+
+    return request;
   };
 }
 

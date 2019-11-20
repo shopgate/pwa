@@ -19,19 +19,21 @@ function fetchCheckoutUrl() {
   return (dispatch) => {
     dispatch(requestUrl(URL_TYPE_CHECKOUT));
 
-    return new PipelineRequest(SHOPGATE_CHECKOUT_GET_URL)
+    const request = new PipelineRequest(SHOPGATE_CHECKOUT_GET_URL)
       .setTimeout(FETCH_CHECKOUT_URL_TIMEOUT) // 12 seconds timeout
       .setRetries(0)
-      .dispatch()
+      .dispatch();
+
+    request
       .then(({ url, expires }) => {
         dispatch(receiveUrl(URL_TYPE_CHECKOUT, url, expires));
-        return url;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorUrl(URL_TYPE_CHECKOUT));
-        return error;
       });
+
+    return request;
   };
 }
 

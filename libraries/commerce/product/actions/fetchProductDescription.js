@@ -22,18 +22,20 @@ function fetchProductDescription(productId) {
 
     dispatch(requestProductDescription(productId));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_DESCRIPTION)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_DESCRIPTION)
       .setInput({ productId })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveProductDescription(productId, result.description));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorProductDescription(productId, error.code));
-        return error;
       });
+
+    return request;
   };
 }
 

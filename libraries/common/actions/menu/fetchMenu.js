@@ -15,18 +15,20 @@ function fetchMenu(id) {
   return (dispatch) => {
     dispatch(requestMenu(id));
 
-    return new PipelineRequest(SHOPGATE_CMS_GET_MENU)
+    const request = new PipelineRequest(SHOPGATE_CMS_GET_MENU)
       .setInput({ id })
-      .dispatch()
-      .then((response) => {
-        dispatch(receiveMenu(id, response.entries));
-        return response;
+      .dispatch();
+
+    request
+      .then(({ entries }) => {
+        dispatch(receiveMenu(id, entries));
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorMenu(id));
-        return error;
       });
+
+    return request;
   };
 }
 

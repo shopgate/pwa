@@ -19,11 +19,13 @@ function deleteProductsFromCart(cartItemIds) {
   return (dispatch) => {
     dispatch(deleteProducts(cartItemIds));
 
-    return new PipelineRequest(SHOPGATE_CART_DELETE_PRODUCTS)
+    const request = new PipelineRequest(SHOPGATE_CART_DELETE_PRODUCTS)
       .setInput({ cartItemIds })
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setErrorBlacklist(ECART)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         /**
          * @deprecated: The property "messages" is not supposed to be part of the pipeline response.
@@ -35,7 +37,6 @@ function deleteProductsFromCart(cartItemIds) {
         }
 
         dispatch(successDeleteProductsFromCart());
-        return result;
       })
       .catch((error) => {
         dispatch(errorDeleteProductsFromCart(
@@ -43,8 +44,9 @@ function deleteProductsFromCart(cartItemIds) {
           createPipelineErrorList(SHOPGATE_CART_DELETE_PRODUCTS, error)
         ));
         logger.error(SHOPGATE_CART_DELETE_PRODUCTS, error);
-        return error;
       });
+
+    return request;
   };
 }
 

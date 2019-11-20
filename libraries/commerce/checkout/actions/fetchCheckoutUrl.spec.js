@@ -32,8 +32,8 @@ describe('fetchCheckoutUrl', () => {
         expires: 0,
       });
     });
-    const url = await fetchCheckoutUrl()(dispatch);
-    expect(url).toBe('https://example.com');
+    const result = await fetchCheckoutUrl()(dispatch);
+    expect(result.url).toBe('https://example.com');
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch.mock.calls[0][0].urlType).toBe('checkout');
     expect(dispatch.mock.calls[1][0].url).toBe('https://example.com');
@@ -49,10 +49,8 @@ describe('fetchCheckoutUrl', () => {
 
     try {
       await fetchCheckoutUrl()(dispatch);
-      expect(true).toBe(false);
     } catch (err) {
-      expect(err).toBe(undefined);
-      expect(mockedErrorLog).toHaveBeenCalledTimes(1);
+      expect(err).toBe(error);
     }
   });
 });

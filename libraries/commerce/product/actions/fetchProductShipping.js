@@ -22,18 +22,20 @@ function fetchProductShipping(productId) {
 
     dispatch(requestProductShipping(productId));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_SHIPPING)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_SHIPPING)
       .setInput({ productId })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveProductShipping(productId, result.shipping));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorProductShipping(productId, error.code));
-        return error;
       });
+
+    return request;
   };
 }
 

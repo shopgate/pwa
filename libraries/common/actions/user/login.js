@@ -28,7 +28,7 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return (dispatch) => {
     dispatch(requestLogin(parameters.login, parameters.password, strategy));
 
-    return new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
+    const request = new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
       .setTrusted()
       .setErrorBlacklist([
         EINVALIDCALL,
@@ -39,7 +39,9 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
         strategy,
         parameters,
       })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         const { success, messages } = result;
 
@@ -48,8 +50,6 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
         } else {
           dispatch(errorLogin(messages));
         }
-
-        return result;
       })
       .catch((error) => {
         const { code } = error;
@@ -72,9 +72,9 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
           logger.error(error);
           dispatch(errorLogin([], code));
         }
-
-        return error;
       });
+
+    return request;
   };
 }
 

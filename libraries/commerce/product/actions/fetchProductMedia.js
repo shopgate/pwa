@@ -27,18 +27,20 @@ function fetchProductMedia(productId) {
 
     dispatch(requestProductMedia(productId));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_MEDIA)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_MEDIA)
       .setInput({ productId })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveProductMedia(productId, result.media));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorProductMedia(productId, error.code));
-        return error;
       });
+
+    return request;
   };
 }
 

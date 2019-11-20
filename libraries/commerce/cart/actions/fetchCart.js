@@ -31,7 +31,7 @@ function fetchCart() {
 
     dispatch(requestCart());
 
-    return request
+    const promise = request
       .dispatch()
       /**
        * Dispatch "receiveCart" only when the cart is still
@@ -41,22 +41,21 @@ function fetchCart() {
         if (getIsFetching(getState())) {
           dispatch(receiveCart(response));
         }
-        return response;
       })
       .catch((error) => {
         if (error) {
           // Post only one error in a group of possibly multiple requests being rejected at once
           if (!getIsFetching(getState())) {
-            return error;
+            return;
           }
 
           // Check if we have an error (no error means an outdated request has been rejected).
           logger.error(error);
           dispatch(errorCart());
         }
-
-        return error;
       });
+
+    return promise;
   };
 }
 

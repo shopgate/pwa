@@ -15,9 +15,11 @@ function logout() {
   return (dispatch) => {
     dispatch(requestLogout());
 
-    return new PipelineRequest(SHOPGATE_USER_LOGOUT_USER)
+    const request = new PipelineRequest(SHOPGATE_USER_LOGOUT_USER)
       .setTrusted()
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         const { success, messages } = result;
 
@@ -26,14 +28,13 @@ function logout() {
         } else {
           dispatch(errorLogout(messages));
         }
-
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorLogout());
-        return error;
       });
+
+    return request;
   };
 }
 

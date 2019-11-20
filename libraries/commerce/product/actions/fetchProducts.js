@@ -133,9 +133,11 @@ function fetchProducts(options) {
       requestParams,
     }));
 
-    return new PipelineRequest(pipeline)
+    const request = new PipelineRequest(pipeline)
       .setInput(requestParams)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((response) => {
         let totalResultCount = response.totalProductCount;
 
@@ -164,20 +166,17 @@ function fetchProducts(options) {
           cached,
           cachedTime,
         }));
-
-        return response;
       })
       .catch((error) => {
         logger.error(error);
-
         dispatch(errorProducts({
           errorCode: error.code,
           hash,
           requestParams,
         }));
-
-        return error;
       });
+
+    return request;
   };
 }
 

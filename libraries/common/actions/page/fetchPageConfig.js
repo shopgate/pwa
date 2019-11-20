@@ -24,18 +24,20 @@ function fetchPageConfig(pageId) {
 
     dispatch(requestPageConfig(pageId));
 
-    return new PipelineRequest(SHOPGATE_CMS_GET_PAGE_CONFIG)
+    const request = new PipelineRequest(SHOPGATE_CMS_GET_PAGE_CONFIG)
       .setInput({ pageId })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receivePageConfig(pageId, result));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorPageConfig(pageId, error.code));
-        return error;
       });
+
+    return request;
   };
 }
 

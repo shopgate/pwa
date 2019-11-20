@@ -31,19 +31,21 @@ function fetchProductImages(productId, formats) {
 
     dispatch(requestProductImages(productId, formats));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
       .setInput(input)
       .setVersion(version)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveProductImages(productId, result.images));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorProductImages(productId, error.code));
-        return error;
       });
+
+    return request;
   };
 }
 

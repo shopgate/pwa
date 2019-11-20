@@ -26,42 +26,43 @@ function fetchProductRelations({ productId, type, limit = PRODUCT_RELATIONS_DEFA
       type,
       limit,
     });
-
     const currentState = getProductRelationsState(getState())[hash];
+
     if (!shouldFetchData(currentState, 'productIds')) {
       return Promise.resolve(null);
     }
 
     dispatch(requestProductRelations({ hash }));
 
-    return new PipelineRequest(pipeline)
+    const request = new PipelineRequest(pipeline)
       .setInput({
         productId,
         type,
         limit,
       })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((payload) => {
         const { relations } = payload;
 
         if (!Array.isArray(relations)) {
           logger.error(new Error(`Invalid ${pipeline} pipeline response`), payload);
           dispatch(errorProductRelations({ hash }));
-          return payload;
+          return;
         }
 
         dispatch(receiveProductRelations({
           hash,
           payload,
         }));
-
-        return payload;
       })
       .catch((err) => {
         logger.error(err);
         dispatch(errorProductRelations({ hash }));
-        return err;
       });
+
+    return request;
   };
 }
 

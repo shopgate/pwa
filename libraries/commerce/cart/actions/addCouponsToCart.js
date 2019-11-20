@@ -18,12 +18,14 @@ function addCouponsToCart(couponIds) {
   return (dispatch) => {
     dispatch(addCoupons(couponIds));
 
-    return new PipelineRequest(SHOPGATE_CART_ADD_COUPONS)
+    const request = new PipelineRequest(SHOPGATE_CART_ADD_COUPONS)
       .setInput({ couponCodes: couponIds })
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setRetries(0)
       .setErrorBlacklist(ECART)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         /**
          * @deprecated: The property "messages" is not supposed to be part of the pipeline response.
@@ -43,11 +45,10 @@ function addCouponsToCart(couponIds) {
             couponIds,
             createPipelineErrorList(SHOPGATE_CART_ADD_COUPONS, error)
           ));
-          return result;
+          return;
         }
 
         dispatch(successAddCouponsToCart(couponIds));
-        return result;
       })
       .catch((error) => {
         dispatch(errorAddCouponsToCart(
@@ -55,8 +56,9 @@ function addCouponsToCart(couponIds) {
           createPipelineErrorList(SHOPGATE_CART_ADD_COUPONS, error)
         ));
         logger.error(SHOPGATE_CART_ADD_COUPONS, error);
-        return error;
       });
+
+    return request;
   };
 }
 

@@ -41,10 +41,12 @@ function submitReview(review, update = false) {
     dispatch(requestSubmitReview(review));
 
     if (update) {
-      return new PipelineRequest(SHOPGATE_CATALOG_UPDATE_PRODUCT_REVIEW)
+      const request = new PipelineRequest(SHOPGATE_CATALOG_UPDATE_PRODUCT_REVIEW)
         .setInput(pipelineData)
         .setRetries(0)
-        .dispatch()
+        .dispatch();
+
+      request
         .then(() => {
           dispatch(receiveSubmitReview(newReview));
           dispatch(fetchProduct(newReview.productId, true));
@@ -52,15 +54,18 @@ function submitReview(review, update = false) {
         .catch((error) => {
           logger.error(error);
           dispatch(resetSubmittedReview(originalReview));
-          return error;
         });
+
+      return request;
     }
 
-    return new PipelineRequest(SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW)
       .setRetries(0)
       .setErrorBlacklist([EEXIST])
       .setInput(pipelineData)
-      .dispatch()
+      .dispatch();
+
+    request
       .then(() => {
         dispatch(receiveSubmitReview(newReview));
         dispatch(fetchProduct(newReview.productId, true));
@@ -75,8 +80,9 @@ function submitReview(review, update = false) {
         }
         logger.error(error);
         dispatch(errorSubmitReview(newReview.productId));
-        return error;
       });
+
+    return request;
   };
 }
 

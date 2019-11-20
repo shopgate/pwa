@@ -25,15 +25,18 @@ function fetchSearchSuggestions(searchPhrase) {
 
     dispatch(requestSearchSuggestions(searchPhrase));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS)
       .setInput({ searchPhrase })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         const { suggestions } = result;
         const suggestionsWithoutPlaceholders = removeHighlightingPlaceholders(suggestions);
         dispatch(receiveSearchSuggestions(searchPhrase, suggestionsWithoutPlaceholders));
-        return result;
       });
+
+    return request;
   };
 }
 

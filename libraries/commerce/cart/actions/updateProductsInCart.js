@@ -19,11 +19,13 @@ function updateProductsInCart(updateData) {
   return (dispatch) => {
     dispatch(updateProducts(updateData));
 
-    return new PipelineRequest(SHOPGATE_CART_UPDATE_PRODUCTS)
+    const request = new PipelineRequest(SHOPGATE_CART_UPDATE_PRODUCTS)
       .setInput({ cartItems: updateData })
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setErrorBlacklist(ECART)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         /**
          * @deprecated: The property "messages" is not supposed to be part of the pipeline response.
@@ -32,11 +34,10 @@ function updateProductsInCart(updateData) {
          */
         if (result.messages && messagesHaveErrors(result.messages)) {
           dispatch(errorUpdateProductsInCart(updateData, result.messages));
-          return result;
+          return;
         }
 
         dispatch(successUpdateProductsInCart());
-        return result;
       })
       .catch((error) => {
         dispatch(errorUpdateProductsInCart(
@@ -44,8 +45,9 @@ function updateProductsInCart(updateData) {
           createPipelineErrorList(SHOPGATE_CART_UPDATE_PRODUCTS, error)
         ));
         logger.error(SHOPGATE_CART_UPDATE_PRODUCTS, error);
-        return error;
       });
+
+    return request;
   };
 }
 

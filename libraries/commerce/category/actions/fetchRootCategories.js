@@ -21,17 +21,19 @@ function fetchRootCategories() {
 
     dispatch(requestRootCategories());
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_ROOT_CATEGORIES)
-      .dispatch()
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_ROOT_CATEGORIES)
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveRootCategories(result.categories));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorRootCategories());
-        return error;
       });
+
+    return request;
   };
 }
 

@@ -9,21 +9,23 @@ import { successAddFavorites, errorAddFavorites } from '../action-creators';
  * @returns {Function} A redux thunk.
  */
 function addFavorites(productId) {
-  return dispatch => (
-    new PipelineRequest(SHOPGATE_USER_ADD_FAVORITES)
+  return (dispatch) => {
+    const request = new PipelineRequest(SHOPGATE_USER_ADD_FAVORITES)
       .setInput({ productId })
       .setRetries(0)
-      .dispatch()
-      .then((result) => {
+      .dispatch();
+
+    request
+      .then(() => {
         dispatch(successAddFavorites(productId));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorAddFavorites(productId, error));
-        return error;
-      })
-  );
+      });
+
+    return request;
+  };
 }
 
 export default addFavorites;

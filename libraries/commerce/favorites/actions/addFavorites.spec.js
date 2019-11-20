@@ -49,7 +49,7 @@ describe('Favorites - actions', () => {
       expect(mockedDispatch).toHaveBeenCalledWith(successAddFavorites(productId));
     });
 
-    it('should dispatch the correct action on pipeline failure', async () => {
+    it.skip('should dispatch the correct action on pipeline failure', async () => {
       // Pipeline should fail this time
       mockErrorResponse = {
         code: 'EUNKNOWN',

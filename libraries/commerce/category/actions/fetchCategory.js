@@ -34,22 +34,24 @@ function fetchCategory(categoryId) {
     // No data at all. So we have the fetch the category with children included
     dispatch(requestCategory(categoryId));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_CATEGORY)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_CATEGORY)
       .setInput({
         categoryId,
         includeChildren: true,
       })
       .setHandleErrors(ERROR_HANDLE_SUPPRESS)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveCategory(categoryId, result, (result.children || [])));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorCategory(categoryId, error.code));
-        return error;
       });
+
+    return request;
   };
 }
 

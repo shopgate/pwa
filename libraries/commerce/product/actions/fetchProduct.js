@@ -36,18 +36,20 @@ function fetchProduct(productId, forceFetch = false) {
 
     dispatch(requestProduct(productId, forceFetch));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT)
       .setInput(requestParams)
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveProduct(productId, result));
-        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorProduct(productId, error.code));
-        return error;
       });
+
+    return request;
   };
 }
 

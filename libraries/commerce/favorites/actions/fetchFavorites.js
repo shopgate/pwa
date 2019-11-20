@@ -35,12 +35,10 @@ function fetchFavorites(ignoreCache = false) {
       .dispatch()
       .then((result) => {
         dispatch(receiveFavorites(result.products, timestamp));
-        return result;
       })
       .catch((err) => {
         logger.error(err);
         dispatch(errorFetchFavorites(err));
-        return err;
       });
   };
 }

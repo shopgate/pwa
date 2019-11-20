@@ -26,22 +26,24 @@ function fetchProductReviews(productId, limit = REVIEW_PREVIEW_COUNT, sort = SOR
 
     dispatch(requestProductReviews(productId, limit));
 
-    return new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS)
       .setInput({
         productId,
         limit,
         sort,
       })
-      .dispatch()
-      .then((result) => {
-        dispatch(receiveProductReviews(productId, result.reviews, result.totalReviewCount));
-        return result;
+      .dispatch();
+
+    request
+      .then(({ reviews, totalReviewCount }) => {
+        dispatch(receiveProductReviews(productId, reviews, totalReviewCount));
       })
       .catch((error) => {
         logger.error(error);
         dispatch(errorProductReviews(productId));
-        return error;
       });
+
+    return request;
   };
 }
 

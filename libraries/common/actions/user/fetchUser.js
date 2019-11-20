@@ -17,10 +17,12 @@ function fetchUser() {
   return (dispatch, getState) => {
     dispatch(requestUser());
 
-    return new PipelineRequest(SHOPGATE_USER_GET_USER)
+    const request = new PipelineRequest(SHOPGATE_USER_GET_USER)
       .setTrusted()
       .setErrorBlacklist([EACCESS])
-      .dispatch()
+      .dispatch();
+
+    request
       .then((user) => {
         dispatch(receiveUser(user));
 
@@ -28,8 +30,6 @@ function fetchUser() {
         if (!isUserLoggedIn(getState())) {
           dispatch(toggleLoggedIn(true));
         }
-
-        return user;
       })
       .catch((error) => {
         if (error.code !== EACCESS) {
@@ -38,8 +38,9 @@ function fetchUser() {
 
         dispatch(toggleLoggedIn(false));
         dispatch(errorUser(error));
-        return error;
       });
+
+    return request;
   };
 }
 
