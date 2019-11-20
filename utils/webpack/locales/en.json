@@ -1,0 +1,31 @@
+{
+  "lib/getExtensionsNodeModulesPaths": {
+    "NO_EXTENSIONS_ATTACHED": "No extensions attached"
+  },
+  "getThemeLanguage": {
+    "THEME_LANGUAGE_SET_TO": "Theme file language set to {fileLocale} (locale {guruLocale})"
+  },
+  "plugins/ShopgateIndexerPlugin": {
+    "SUPPLIED_CONFIG_IS_NOT_AN_OBJECT": "The supplied component config is not an object. Received {typeofConfig}",
+    "EXTENSION_COULD_NOT_BE_VALIDATED": "Extension could not be validated",
+    "STRINGS_COULD_NOT_BE_CREATED": "Strings could not be created",
+    "INDEXING_TYPE": "Indexing {type}...",
+    "INDEXED_TYPE": "... {type} indexed.",
+    "NO_EXTENSIONS_FOUND_FOR_TYPE": "No extensions found for ''{type}''",
+    "TYPE_PORTALS": "portals",
+    "TYPE_REDUCERS": "reducers",
+    "TYPE_SUBSCRIBERS": "subscribers",
+    "TYPE_TRACKERS": "trackers",
+    "TYPE_TRANSLATIONS": "translations",
+    "TYPE_WIDGETS": "widgets"
+  },
+  "webpack.config": {
+    "WEBPACK_PROGRESS": "building [{bar}] [{message}] {percent} ({elapsed} seconds)"
+  },
+  "logger": {
+    "BUILD_STARTING": "Starting {server}",
+    "SERVER": "Webpack Development Server",
+    "BUILD_FINISHED": "{prefix}: Your project built successfully",
+    "PREFIX": "SUCCESS"
+  }
+}

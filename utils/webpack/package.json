@@ -1,0 +1,26 @@
+{
+  "name": "@shopgate/webpack",
+  "version": "6.8.0",
+  "description": "The webpack configuration for Shopgate's Engage.",
+  "main": "webpack.config.js",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "babel-loader": "8.0.6",
+    "chalk": "^2.4.2",
+    "color": "^3.1.2",
+    "css-loader": "1.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "import-fresh": "3.0.0",
+    "intl": "1.2.5",
+    "lodash": "^4.17.4",
+    "messageformat": "^2.3.0",
+    "progress-bar-webpack-plugin": "^1.12.1",
+    "style-loader": "0.23.1",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "4.39.1",
+    "webpack-cli": "3.3.6"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "3.7.2"
+  }
+}
