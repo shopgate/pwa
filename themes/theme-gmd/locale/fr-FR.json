@@ -189,7 +189,8 @@
       "more": "Plus",
       "about": "À propos de nous"
     },
-    "back": "Retour à {title}"
+    "back": "Retour à {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "Evaluation",

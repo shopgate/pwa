@@ -189,7 +189,8 @@
       "more": "Di più",
       "about": "Su di noi"
     },
-    "back": "Indietro alla {title}"
+    "back": "Indietro alla {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "valutazione",

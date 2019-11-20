@@ -6,13 +6,8 @@ exports[`<NavDrawerSection /> should render with a title and dividers 1`] = `
   <NavDrawerTitle
     text="Section title"
   />
-  <NavDrawerItem
-    badge={null}
-    icon={null}
+  <ForwardRef(WithForwardedRef(NavDrawerItem))
     label="Item Label"
-    onClick={[Function]}
-    style={Object {}}
-    testId={null}
   />
   <NavDrawerDivider />
 </Fragment>

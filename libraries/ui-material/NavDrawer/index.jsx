@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import Transition from 'react-transition-group/Transition';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { UIEvents } from '@shopgate/pwa-core';
@@ -25,6 +26,10 @@ class NavDrawer extends Component {
     UIEvents.emit(OPEN);
   }
 
+  static EVENT_OPEN = OPEN;
+
+  static EVENT_CLOSE = CLOSE;
+
   static Divider = Divider;
 
   static Item = Item;
@@ -36,10 +41,14 @@ class NavDrawer extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     'aria-hidden': PropTypes.bool,
+    onClose: PropTypes.func,
+    onOpen: PropTypes.func,
   }
 
   static defaultProps = {
     'aria-hidden': false,
+    onClose: noop,
+    onOpen: noop,
   }
 
   /**
@@ -49,6 +58,7 @@ class NavDrawer extends Component {
     super(props);
 
     this.contentRef = React.createRef();
+    this.a11yCloseRef = React.createRef();
     this.state = {
       open: false,
     };
@@ -66,8 +76,22 @@ class NavDrawer extends Component {
     return this.state.open !== nextState.open;
   }
 
-  onClose = () => {
+  onEntering = () => {
+    this.props.onOpen();
+  }
+
+  onEntered = () => {
+    if (this.a11yCloseRef.current) {
+      this.a11yCloseRef.current.focus();
+    }
+  }
+
+  onExited = () => {
     this.contentRef.current.scrollTop = 0;
+  }
+
+  onExiting = () => {
+    this.props.onClose();
   }
 
   open = () => {
@@ -89,22 +113,31 @@ class NavDrawer extends Component {
     return (
       <Fragment>
         <Transition
-          onExited={this.onClose}
+          onEntering={this.onEntering}
+          onEntered={this.onEntered}
+          onExited={this.onExited}
+          onExiting={this.onExiting}
           in={this.state.open}
           timeout={300}
         >
-          {state => (
-            <section
-              className={drawerStyle}
-              data-test-id="NavDrawer"
-              style={transition[state]}
-              aria-hidden={this.props['aria-hidden']}
-            >
-              <nav className={contentStyle} ref={this.contentRef}>
-                {this.props.children}
-              </nav>
-            </section>
-          )}
+          {(state) => {
+            const ariaHidden = this.props['aria-hidden'] || state === 'exited';
+
+            return (
+              <section
+                className={drawerStyle}
+                data-test-id="NavDrawer"
+                style={transition[state]}
+                aria-hidden={ariaHidden}
+                tabIndex="-1"
+              >
+                <Item label="common.close" ref={this.a11yCloseRef} srOnly />
+                <nav className={contentStyle} ref={this.contentRef}>
+                  {this.props.children}
+                </nav>
+              </section>
+            );
+          }}
         </Transition>
         <Backdrop
           isVisible={this.state.open}

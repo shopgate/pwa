@@ -1,5 +1,20 @@
 import { css } from 'glamor';
 
+const srOnly = css({
+  clip: 'rect(1px, 1px, 1px, 1px)',
+  height: '1px',
+  margin: 0,
+  overflow: 'hidden',
+  padding: 0,
+  position: 'absolute',
+  whiteSpace: 'nowrap',
+  width: '1px',
+  zIndex: -1000,
+  ':first-child': {
+    marginTop: 'calc(16px + var(--safe-area-inset-top))',
+  },
+}).toString();
+
 const button = css({
   alignItems: 'flex-start',
   color: 'inherit',
@@ -29,6 +44,7 @@ const icon = css({
 }).toString();
 
 export default {
+  srOnly,
   button,
   label,
   iconWrapper,
