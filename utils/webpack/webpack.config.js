@@ -152,7 +152,6 @@ const config = {
     headers: { 'Access-Control-Allow-Origin': '*' },
     publicPath: '/',
     contentBase: path.resolve(themePath, PUBLIC_FOLDER),
-    // progress: true,
     host: process.env.optionsHost,
     port: process.env.optionsPort,
     historyApiFallback: true,
