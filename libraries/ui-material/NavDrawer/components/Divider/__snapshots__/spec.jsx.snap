@@ -3,6 +3,7 @@
 exports[`<NavDrawerDivider /> should match the snapshot 1`] = `
 <NavDrawerDivider>
   <hr
+    aria-hidden={true}
     className={
       Object {
         "data-css-d9or0h": "",
