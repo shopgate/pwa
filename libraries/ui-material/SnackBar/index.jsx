@@ -65,7 +65,7 @@ class SnackBar extends Component {
 
     return {
       ...snack,
-      message: __(snack.message || '', snack.actionParams || {}),
+      message: __(snack.message || '', snack.messageParams || {}),
       actionLabel: __(snack.actionLabel || ''),
     };
   }
@@ -103,7 +103,7 @@ class SnackBar extends Component {
     /**
      * Calculates the amount of rows for a passed text.
      * @param {string} text The input text.
-     * @return {string}
+     * @return {number}
      */
     const calc = text => Math.max(2, Math.ceil(text.length / 40));
     /**
