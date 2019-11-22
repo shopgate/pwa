@@ -10,7 +10,7 @@ import pipelineDependencies from '../PipelineDependencies';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';
 import { PROCESS_LAST, PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
-import { ETIMEOUT } from '../../constants/Pipeline';
+import { ETIMEOUT, ENETUNREACH } from '../../constants/Pipeline';
 
 jest.mock('../../helpers/logGroup', () => jest.fn());
 
@@ -384,6 +384,19 @@ describe('PipelineManager', () => {
       expect(errorManager.queue).toHaveBeenCalledTimes(0);
     });
 
+    it('should ignore when the original error code was sanitized to an error code that should be suppressed', () => {
+      pipelineManager.addSuppressedErrors(ENETUNREACH);
+      request.reject = jest.fn();
+      request.error = {
+        code: '-1000',
+      };
+
+      pipelineManager.handleError(request.serial);
+
+      expect(request.reject).toHaveBeenCalledTimes(1);
+      expect(errorManager.queue).toHaveBeenCalledTimes(0);
+    });
+
     it('should ignore when pipeline is set to ignore specific error code', () => {
       const req = createRequest(PIPELINE_NAME).setErrorBlacklist(['MY_ERROR']);
       pipelineManager.add(req);
@@ -422,6 +435,49 @@ describe('PipelineManager', () => {
 
       expect(request.reject).toHaveBeenCalledTimes(1);
       expect(errorManager.queue).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('.sanitizeError()', () => {
+    it('should convert a numeric -999 code to ETIMEOUT', () => {
+      expect(pipelineManager.sanitizeError({
+        code: -999,
+      })).toEqual({ code: ETIMEOUT });
+    });
+
+    it('should convert a string -999 code to ETIMEOUT', () => {
+      expect(pipelineManager.sanitizeError({
+        code: '-999',
+      })).toEqual({ code: ETIMEOUT });
+    });
+
+    it('should convert a numeric -1000 code to ENETUNREACH', () => {
+      expect(pipelineManager.sanitizeError({
+        code: -1000,
+      })).toEqual({ code: ENETUNREACH });
+    });
+
+    it('should convert a string -1000 code to ENETUNREACH', () => {
+      expect(pipelineManager.sanitizeError({
+        code: '-1000',
+      })).toEqual({ code: ENETUNREACH });
+    });
+
+    it('should handle undefined as input', () => {
+      expect(pipelineManager.sanitizeError()).toEqual({});
+    });
+
+    it('should handle errors without code', () => {
+      const message = 'Message';
+      expect(pipelineManager.sanitizeError({ message })).toEqual({ message });
+    });
+
+    it('should handle a normal error', () => {
+      const error = {
+        code: 'MY_ERROR',
+        message: 'My message',
+      };
+      expect(pipelineManager.sanitizeError(error)).toEqual(error);
     });
   });
 

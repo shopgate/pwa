@@ -6,7 +6,7 @@ import pipelineSequence from '../PipelineSequence';
 import * as errorSources from '../../constants/ErrorManager';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
-import { ETIMEOUT } from '../../constants/Pipeline';
+import { ETIMEOUT, ENETUNREACH } from '../../constants/Pipeline';
 import logGroup from '../../helpers/logGroup';
 
 /**
@@ -194,12 +194,40 @@ class PipelineManager {
   }
 
   /**
+   * Sanitizes error objects.
+   * @param {Object} error An error object.
+   * @return {Object}
+   */
+  sanitizeError = (error = {}) => {
+    let sanitizedCode = error.code;
+
+    if (sanitizedCode) {
+      sanitizedCode = sanitizedCode.toString();
+    }
+
+    if (sanitizedCode === '-999') {
+      // Pipeline / socket timeout code from the OS.
+      sanitizedCode = ETIMEOUT;
+    } else if (sanitizedCode === '-1000') {
+      // Network IO exception
+      sanitizedCode = ENETUNREACH;
+    }
+
+    return {
+      ...error,
+      code: sanitizedCode,
+    };
+  }
+
+  /**
    * Handles a pipeline error.
    * @param {string} serial The pipeline request serial.
    */
   handleError(serial) {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
+
+    request.error = this.sanitizeError(request.error);
 
     const {
       code,

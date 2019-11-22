@@ -14,6 +14,7 @@ import {
   emitter,
   errorManager,
   ETIMEOUT,
+  ENETUNREACH,
   EUNKNOWN,
 } from '@shopgate/pwa-core';
 import { SOURCE_TRACKING, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
@@ -52,6 +53,9 @@ export default (subscribe) => {
     }).setMessage({
       code: ETIMEOUT,
       message: 'modal.body_error',
+    }).setMessage({
+      code: ENETUNREACH,
+      message: 'modal.body_error',
     });
   });
 
@@ -80,7 +84,7 @@ export default (subscribe) => {
     };
 
     let shouldShowToast = message === 'error.general';
-    if (code === ETIMEOUT && message === 'modal.body_error') {
+    if ([ETIMEOUT, ENETUNREACH].includes(code) && message === 'modal.body_error') {
       shouldShowToast = true;
     }
     // It was transformed general error. let it popup after 10 toast clicks

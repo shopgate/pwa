@@ -15,8 +15,10 @@ import { historyRedirect } from '../actions/router';
 import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
+import { getIsConnected } from '../selectors/client';
 import appConfig from '../helpers/config';
 import authRoutes from '../collections/AuthRoutes';
+import ToastProvider from '../providers/toast';
 
 /**
  * Router subscriptions.
@@ -25,7 +27,7 @@ import authRoutes from '../collections/AuthRoutes';
 export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
     const {
-      action, dispatch, getState,
+      action, dispatch, getState, events,
     } = params;
     const { params: { action: historyAction, silent, state: routeState } } = action;
 
@@ -56,6 +58,16 @@ export default function routerSubscriptions(subscribe) {
 
     // Prevent the current route from being pushed again.
     if (historyAction === ACTION_PUSH && location === currentPathname) {
+      return;
+    }
+
+    // Abort navigation when the internet connection got lost.
+    if (!getIsConnected(state)) {
+      events.emit(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
+
       return;
     }
 
