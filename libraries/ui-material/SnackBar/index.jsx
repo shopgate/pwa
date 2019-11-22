@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
 const defaultToast = {};
@@ -20,6 +19,10 @@ class SnackBar extends Component {
   static defaultProps = {
     toasts: null,
   }
+
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
 
   timer = null;
 
@@ -57,7 +60,14 @@ class SnackBar extends Component {
    * @returns {Object}
    */
   get snack() {
-    return this.props.toasts.length ? this.props.toasts[0] : defaultToast;
+    const { __ } = this.context.i18n();
+    const snack = this.props.toasts.length ? this.props.toasts[0] : defaultToast;
+
+    return {
+      ...snack,
+      message: __(snack.message || '', snack.messageParams || {}),
+      actionLabel: __(snack.actionLabel || ''),
+    };
   }
 
   handleAction = () => {
@@ -84,12 +94,35 @@ class SnackBar extends Component {
   }
 
   /**
+   * Calculates the required amount of rows for the snack bar.
+   * @param {string} message The snack bar message.
+   * @param {string} actionLabel The snack bar action label.
+   * @return {number}
+   */
+  calcRows = (message, actionLabel) => {
+    /**
+     * Calculates the amount of rows for a passed text.
+     * @param {string} text The input text.
+     * @return {number}
+     */
+    const calc = text => Math.max(2, Math.ceil(text.length / 40));
+    /**
+     * First calculate the required amount of rows for the message. Then append the action label
+     * once per line and calculate the rows again. Since the action label occupies an own column,
+     * we'll get an approximated number for the required rows.
+     */
+    return calc(`${message}${actionLabel.repeat(calc(message))}`);
+  };
+
+  /**
    * @returns {JSX}
    */
   render() {
     const { visible } = this.state;
     const {
-      action = null, actionLabel = null, message = null, messageParams = {},
+      action = null,
+      actionLabel = null,
+      message = null,
     } = this.snack;
 
     // Action exits without actionLabel. Handle the whole box
@@ -97,10 +130,14 @@ class SnackBar extends Component {
       ...(action && !actionLabel) && { onClick: this.handleAction },
     };
 
+    // Calculate the required amount of rows and the height of the snack bar.
+    const rows = this.calcRows(message, actionLabel);
+    const snackBarHeight = 40 + (rows * 20);
+
     return (
-      <div className={styles.container}>
+      <div className={styles.container} style={{ '--snack-bar-height': `${snackBarHeight}px` }}>
         <Spring
-          from={{ top: 80 }}
+          from={{ top: snackBarHeight }}
           to={{ top: 0 }}
           config={config.stiff}
           reverse={!visible}
@@ -110,8 +147,10 @@ class SnackBar extends Component {
           {props => (
             <div className={styles.wrapper} style={props} data-footer-inset-update-ignore="true">
               <div className={styles.box} {...boxProps}>
-                <Ellipsis rows={2}>
-                  <I18n.Text className={styles.label} string={message || ''} params={messageParams} aria-live="assertive" role="status" />
+                <Ellipsis rows={rows}>
+                  <span className={styles.label} aria-live="assertive" role="status">
+                    {message}
+                  </span>
                 </Ellipsis>
                 {(action && actionLabel) && (
                   <button
@@ -120,7 +159,7 @@ class SnackBar extends Component {
                     type="button"
                     aria-hidden
                   >
-                    <I18n.Text string={actionLabel} />
+                    {actionLabel}
                   </button>
                 )}
               </div>

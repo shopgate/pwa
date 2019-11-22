@@ -7,6 +7,9 @@ export const E999 = '-999';
 // Pipeline timeout error.
 export const ETIMEOUT = 'ETIMEOUT';
 
+// Network is unreachable.
+export const ENETUNREACH = 'ENETUNREACH';
+
 // A pipeline response was rejected by the request manager.
 export const EPIPELINERESPONSEREJECTED = 'EPIPELINERESPONSEREJECTED';
 
