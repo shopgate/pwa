@@ -88,7 +88,6 @@ export default function app(subscribe) {
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
       errorCodes.EACCESS,
-      errorCodes.E999,
       errorCodes.ENOTFOUND,
       errorCodes.EVALIDATION,
     ]);

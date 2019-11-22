@@ -9,15 +9,15 @@ const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
 const safebuttonColor = buttonColorContrast > 4 ? buttonColor : '#fff';
 
 const container = css({
-  marginTop: 'calc(-80px - var(--footer-height))',
+  marginTop: 'calc((var(--snack-bar-height, 80px) * -1) - var(--footer-height))',
   position: 'relative',
-  height: 80,
+  height: 'var(--snack-bar-height, 80px)',
   overflow: 'hidden',
   zIndex: 6,
 });
 
 const wrapper = css({
-  top: 80,
+  top: 'var(--snack-bar-height, 80px)',
   display: 'flex',
   justifyContent: 'center',
   left: 0,
