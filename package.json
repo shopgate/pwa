@@ -41,8 +41,7 @@
     "e2e:checkout": "make e2e-checkout",
     "start-cloud": "sgconnect backend start & sgconnect frontend start",
     "lint-staged": "lint-staged",
-    "postinstall": "patch-package",
-    "start:gmd": "THEME=theme-gmd webpack-dev-server"
+    "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {

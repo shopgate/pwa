@@ -4,7 +4,7 @@ const fs = require('fs');
 const {
   camelCase, has, upperFirst, isPlainObject,
 } = require('lodash');
-const { isDev, EXTENSIONS_PATH } = require('../lib/variables');
+const { isDev } = require('../lib/variables');
 const logger = require('../lib/logger');
 const getComponentsSettings = require('../lib/getComponentsSettings');
 const i18n = require('../lib/i18n');
@@ -35,7 +35,7 @@ function getExtensionsPath() {
  * @return {boolean}
  */
 function componentExists(componentPath) {
-  const existsInExtensions = fs.existsSync(path.resolve(EXTENSIONS_PATH, componentPath));
+  const existsInExtensions = fs.existsSync(path.resolve(themePath, '..', '..', 'extensions', componentPath));
   const existsInWidgets = fs.existsSync(path.resolve(themePath, 'widgets', componentPath));
 
   return !(!existsInExtensions && !existsInWidgets);
