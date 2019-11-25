@@ -7,7 +7,6 @@ import {
   SEARCH_SUGGESTION_ITEM,
   SEARCH_SUGGESTION_ITEM_CONTENT,
 } from '@shopgate/engage/search';
-import { withForwardedRef } from '@shopgate/engage/core';
 import connect from './connector';
 import styles from './style';
 
@@ -19,7 +18,6 @@ class SuggestionList extends Component {
     bottomHeight: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
     fetching: PropTypes.bool,
-    forwardedRef: PropTypes.shape(),
     suggestions: PropTypes.arrayOf(PropTypes.string),
     visible: PropTypes.bool,
   }
@@ -27,7 +25,6 @@ class SuggestionList extends Component {
   static defaultProps = {
     suggestions: [],
     fetching: false,
-    forwardedRef: null,
     visible: false,
   }
 
@@ -36,7 +33,8 @@ class SuggestionList extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return nextProps.fetching === false && nextProps.suggestions;
+    return (nextProps.fetching === false && nextProps.suggestions) ||
+      (this.props.visible !== nextProps.visible);
   }
 
   /**
@@ -44,7 +42,7 @@ class SuggestionList extends Component {
    */
   render() {
     const {
-      onClick, suggestions, bottomHeight, visible, forwardedRef,
+      onClick, suggestions, bottomHeight, visible,
     } = this.props;
 
     if (!suggestions) {
@@ -65,7 +63,6 @@ class SuggestionList extends Component {
             styles.bottom(bottomHeight),
             { [styles.hidden]: !visible }
           )}
-          ref={forwardedRef}
         >
           {suggestions.map(suggestion => (
             <SurroundPortals
@@ -101,4 +98,4 @@ class SuggestionList extends Component {
 
 export { SuggestionList as UnwrappedSuggestionList };
 
-export default withForwardedRef(connect(SuggestionList));
+export default connect(SuggestionList);
