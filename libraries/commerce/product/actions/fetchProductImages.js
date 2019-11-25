@@ -5,7 +5,6 @@ import requestProductImages from '../action-creators/requestProductImages';
 import { SHOPGATE_CATALOG_GET_PRODUCT_IMAGES } from '../constants/Pipelines';
 import receiveProductImages from '../action-creators/receiveProductImages';
 import errorProductImages from '../action-creators/errorProductImages';
-import { getProductImages } from '../selectors/product';
 
 /**
  * Maybe requests images for a product from server.
@@ -15,7 +14,7 @@ import { getProductImages } from '../selectors/product';
  */
 function fetchProductImages(productId, formats) {
   return (dispatch, getState) => {
-    const productImages = getProductImages(getState(), { productId });
+    const productImages = getState().product.imagesByProductId[productId];
 
     if (!shouldFetchData(productImages)) {
       return Promise.resolve(null);

@@ -5,7 +5,6 @@ import requestProductVariants from '../action-creators/requestProductVariants';
 import { SHOPGATE_CATALOG_GET_PRODUCT_VARIANTS } from '../constants/Pipelines';
 import receiveProductVariants from '../action-creators/receiveProductVariants';
 import errorProductVariants from '../action-creators/errorProductVariants';
-import { getProductVariants } from '../selectors/product';
 
 /**
  * Retrieves product variants from store.
@@ -14,7 +13,8 @@ import { getProductVariants } from '../selectors/product';
  */
 function fetchProductVariants(productId) {
   return (dispatch, getState) => {
-    const cachedData = getProductVariants(getState(), { productId });
+    const state = getState();
+    const cachedData = state.product.variantsByProductId[productId];
 
     if (!shouldFetchData(cachedData)) {
       return Promise.resolve(null);

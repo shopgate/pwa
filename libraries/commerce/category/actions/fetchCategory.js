@@ -7,7 +7,7 @@ import fetchCategoryChildren from './fetchCategoryChildren';
 import requestCategory from '../action-creators/requestCategory';
 import receiveCategory from '../action-creators/receiveCategory';
 import errorCategory from '../action-creators/errorCategory';
-import { getCategoryById } from '../selectors';
+import { getCategory } from '../selectors';
 
 /**
  * Fetches the data for a given category ID (including child categories).
@@ -16,7 +16,7 @@ import { getCategoryById } from '../selectors';
  */
 function fetchCategory(categoryId) {
   return (dispatch, getState) => {
-    const category = getCategoryById(getState(), { categoryId });
+    const category = getCategory(getState(), { categoryId });
 
     if (!shouldFetchData(category)) {
       /**

@@ -32,12 +32,14 @@ function fetchCart() {
     dispatch(requestCart());
 
     const promise = request
-      .dispatch()
-      /**
-       * Dispatch "receiveCart" only when the cart is still
-       * fetching (in case of stacked fetch calls)
-       */
+      .dispatch();
+
+    promise
       .then((response) => {
+        /**
+         * Dispatch "receiveCart" only when the cart is still
+         * fetching (in case of stacked fetch calls)
+         */
         if (getIsFetching(getState())) {
           dispatch(receiveCart(response));
         }

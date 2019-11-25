@@ -5,7 +5,6 @@ import requestProductProperties from '../action-creators/requestProductPropertie
 import { SHOPGATE_CATALOG_GET_PRODUCT_PROPERTIES } from '../constants/Pipelines';
 import receiveProductProperties from '../action-creators/receiveProductProperties';
 import errorProductProperties from '../action-creators/errorProductProperties';
-import { getProductProperties } from '../selectors/product';
 
 /**
  * Maybe requests a product description from server.
@@ -14,7 +13,7 @@ import { getProductProperties } from '../selectors/product';
  */
 function fetchProductProperties(productId) {
   return (dispatch, getState) => {
-    const properties = getProductProperties(getState(), { productId });
+    const properties = getState().product.propertiesByProductId[productId];
 
     if (!shouldFetchData(properties)) {
       return Promise.resolve(null);

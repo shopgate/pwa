@@ -5,7 +5,6 @@ import requestProductDescription from '../action-creators/requestProductDescript
 import { SHOPGATE_CATALOG_GET_PRODUCT_DESCRIPTION } from '../constants/Pipelines';
 import receiveProductDescription from '../action-creators/receiveProductDescription';
 import errorProductDescription from '../action-creators/errorProductDescription';
-import { getProductDescription } from '../selectors/product';
 
 /**
  * Maybe requests a product description from server.
@@ -14,7 +13,7 @@ import { getProductDescription } from '../selectors/product';
  */
 function fetchProductDescription(productId) {
   return (dispatch, getState) => {
-    const description = getProductDescription(getState(), { productId });
+    const description = getState().product.descriptionsByProductId[productId];
 
     if (!shouldFetchData(description)) {
       return Promise.resolve(null);

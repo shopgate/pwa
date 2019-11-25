@@ -5,7 +5,6 @@ import { SHOPGATE_CATALOG_GET_PRODUCT_SHIPPING } from '../constants/Pipelines';
 import requestProductShipping from '../action-creators/requestProductShipping';
 import receiveProductShipping from '../action-creators/receiveProductShipping';
 import errorProductShipping from '../action-creators/errorProductShipping';
-import { getProductShipping } from '../selectors/product';
 
 /**
  * Retrieves product shipping from the store.
@@ -14,7 +13,8 @@ import { getProductShipping } from '../selectors/product';
  */
 function fetchProductShipping(productId) {
   return (dispatch, getState) => {
-    const shipping = getProductShipping(getState(), { productId });
+    const state = getState();
+    const shipping = state.product.shippingByProductId[productId];
 
     if (!shouldFetchData(shipping)) {
       return Promise.resolve(null);

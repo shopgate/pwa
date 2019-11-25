@@ -7,7 +7,6 @@ import { REVIEW_PREVIEW_COUNT } from '../constants';
 import requestProductReviews from '../action-creators/requestProductReviews';
 import receiveProductReviews from '../action-creators/receiveProductReviews';
 import errorProductReviews from '../action-creators/errorProductReviews';
-import { getProductReviews } from '../selectors';
 
 /**
  * Request product reviews for a product from server.
@@ -18,7 +17,7 @@ import { getProductReviews } from '../selectors';
  */
 function fetchProductReviews(productId, limit = REVIEW_PREVIEW_COUNT, sort = SORT_RELEVANCE) {
   return (dispatch, getState) => {
-    const data = getProductReviews(getState(), { productId });
+    const data = getState().reviews.reviewsByProductId[productId];
 
     if (!shouldFetchData(data)) {
       return Promise.resolve(null);

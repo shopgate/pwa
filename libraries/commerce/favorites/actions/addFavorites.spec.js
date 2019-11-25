@@ -49,7 +49,7 @@ describe('Favorites - actions', () => {
       expect(mockedDispatch).toHaveBeenCalledWith(successAddFavorites(productId));
     });
 
-    it.skip('should dispatch the correct action on pipeline failure', async () => {
+    it('should dispatch the correct action on pipeline failure', (done) => {
       // Pipeline should fail this time
       mockErrorResponse = {
         code: 'EUNKNOWN',
@@ -58,8 +58,15 @@ describe('Favorites - actions', () => {
 
       const mockedDispatch = jest.fn();
       const productId = 'test-123';
-      await addFavorites(productId)(mockedDispatch);
-      expect(mockedDispatch).toHaveBeenCalledWith(errorAddFavorites(productId, mockErrorResponse));
+      addFavorites(productId)(mockedDispatch)
+        .then(() => {
+          done('resolved!');
+        })
+        .catch(() => {
+          expect(mockedDispatch)
+            .toHaveBeenCalledWith(errorAddFavorites(productId, mockErrorResponse));
+          done();
+        });
     });
   });
 });

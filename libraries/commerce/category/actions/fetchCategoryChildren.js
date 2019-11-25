@@ -5,7 +5,6 @@ import { SHOPGATE_CATALOG_GET_CATEGORY_CHILDREN } from '../constants/Pipelines';
 import requestCategoryChildren from '../action-creators/requestCategoryChildren';
 import receiveCategoryChildren from '../action-creators/receiveCategoryChildren';
 import errorCategoryChildren from '../action-creators/errorCategoryChildren';
-import { getChildCategoriesById } from '../selectors';
 
 /**
  * Retrieves category children for a certain category by ID.
@@ -14,7 +13,7 @@ import { getChildCategoriesById } from '../selectors';
  */
 function fetchCategoryChildren(categoryId) {
   return (dispatch, getState) => {
-    const category = getChildCategoriesById(getState(), { categoryId });
+    const category = getState().category.childrenByCategoryId[categoryId];
 
     if (!shouldFetchData(category, 'children')) {
       return Promise.resolve(null);
