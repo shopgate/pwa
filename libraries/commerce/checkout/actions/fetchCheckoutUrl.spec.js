@@ -32,8 +32,8 @@ describe('fetchCheckoutUrl', () => {
         expires: 0,
       });
     });
-    const result = await fetchCheckoutUrl()(dispatch);
-    expect(result).toBe('https://example.com');
+    const url = await fetchCheckoutUrl()(dispatch);
+    expect(url).toBe('https://example.com');
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch.mock.calls[0][0].urlType).toBe('checkout');
     expect(dispatch.mock.calls[1][0].url).toBe('https://example.com');
@@ -41,6 +41,7 @@ describe('fetchCheckoutUrl', () => {
   });
 
   it('should call the pipeline and reject', async () => {
+    expect.assertions(2);
     const dispatch = jest.fn();
     const error = new Error('Test');
     mockedResolver = (mockInstance, resolve, reject) => {
@@ -50,7 +51,8 @@ describe('fetchCheckoutUrl', () => {
     try {
       await fetchCheckoutUrl()(dispatch);
     } catch (err) {
-      expect(err).toBe(error);
+      expect(err).toBe(undefined);
+      expect(mockedErrorLog).toHaveBeenCalledTimes(1);
     }
   });
 });
