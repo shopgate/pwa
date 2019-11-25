@@ -16,25 +16,25 @@ const URL_TYPE_CHECKOUT = 'checkout';
  * @return {Function} A redux thunk.
  */
 function fetchCheckoutUrl() {
-  return (dispatch) => {
-    dispatch(requestUrl(URL_TYPE_CHECKOUT));
+  return dispatch => (
+    new Promise((resolve, reject) => {
+      dispatch(requestUrl(URL_TYPE_CHECKOUT));
 
-    const request = new PipelineRequest(SHOPGATE_CHECKOUT_GET_URL)
-      .setTimeout(FETCH_CHECKOUT_URL_TIMEOUT) // 12 seconds timeout
-      .setRetries(0)
-      .dispatch();
-
-    request
-      .then(({ url, expires }) => {
-        dispatch(receiveUrl(URL_TYPE_CHECKOUT, url, expires));
-      })
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorUrl(URL_TYPE_CHECKOUT));
-      });
-
-    return request;
-  };
+      new PipelineRequest(SHOPGATE_CHECKOUT_GET_URL)
+        .setTimeout(FETCH_CHECKOUT_URL_TIMEOUT) // 12 seconds timeout
+        .setRetries(0)
+        .dispatch()
+        .then(({ url, expires }) => {
+          dispatch(receiveUrl(URL_TYPE_CHECKOUT, url, expires));
+          resolve(url);
+        })
+        .catch((error) => {
+          logger.error(error);
+          dispatch(errorUrl(URL_TYPE_CHECKOUT));
+          reject();
+        });
+    })
+  );
 }
 
 /** @mixes {MutableFunction} */

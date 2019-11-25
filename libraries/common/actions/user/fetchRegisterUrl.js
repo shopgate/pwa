@@ -15,31 +15,32 @@ import { getRegisterUrl } from '../../selectors/user';
  * @return {Function} A redux thunk.
  */
 function fetchRegisterUrl() {
-  return (dispatch, getState) => {
-    const state = getState();
-    const entry = getEntryByType(state, { type: URL_TYPE_REGISTER });
+  return (dispatch, getState) => (
+    new Promise((resolve, reject) => {
+      const state = getState();
+      const entry = getEntryByType(state, { type: URL_TYPE_REGISTER });
 
-    if (!shouldFetchData(entry, 'url')) {
-      return Promise.resolve(getRegisterUrl(state));
-    }
+      if (!shouldFetchData(entry, 'url')) {
+        resolve(getRegisterUrl(state));
+        return;
+      }
 
-    dispatch(requestUrl(URL_TYPE_REGISTER));
+      dispatch(requestUrl(URL_TYPE_REGISTER));
 
-    const request = new PipelineRequest(SHOPGATE_USER_GET_REGISTRATION_URL)
-      .setTrusted()
-      .dispatch();
-
-    request
-      .then(({ url, expires }) => {
-        dispatch(receiveUrl(URL_TYPE_REGISTER, url, expires));
-      })
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorUrl(URL_TYPE_REGISTER));
-      });
-
-    return request;
-  };
+      new PipelineRequest(SHOPGATE_USER_GET_REGISTRATION_URL)
+        .setTrusted()
+        .dispatch()
+        .then(({ url, expires }) => {
+          dispatch(receiveUrl(URL_TYPE_REGISTER, url, expires));
+          resolve(url);
+        })
+        .catch((error) => {
+          logger.error(error);
+          dispatch(errorUrl(URL_TYPE_REGISTER));
+          reject();
+        });
+    })
+  );
 }
 
 /** @mixes {MutableFunction} */
