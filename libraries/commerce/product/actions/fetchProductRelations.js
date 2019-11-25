@@ -18,18 +18,18 @@ import { PRODUCT_RELATIONS_DEFAULT_LIMIT } from '../constants';
  * @param {number} params.limit Query limit.
  * @returns {Function}
  */
-const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFAULT_LIMIT }) =>
-  (dispatch, getState) => {
+function fetchProductRelations({ productId, type, limit = PRODUCT_RELATIONS_DEFAULT_LIMIT }) {
+  return (dispatch, getState) => {
     const pipeline = SHOPGATE_CATALOG_GET_PRODUCT_RELATIONS;
     const hash = generateProductRelationsHash({
       productId,
       type,
       limit,
     });
-
     const currentState = getProductRelationsState(getState())[hash];
+
     if (!shouldFetchData(currentState, 'productIds')) {
-      return null;
+      return Promise.resolve(null);
     }
 
     dispatch(requestProductRelations({ hash }));
@@ -45,6 +45,7 @@ const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFA
     request
       .then((payload) => {
         const { relations } = payload;
+
         if (!Array.isArray(relations)) {
           logger.error(new Error(`Invalid ${pipeline} pipeline response`), payload);
           dispatch(errorProductRelations({ hash }));
@@ -63,6 +64,7 @@ const fetchProductRelations = ({ productId, type, limit = PRODUCT_RELATIONS_DEFA
 
     return request;
   };
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchProductRelations);
