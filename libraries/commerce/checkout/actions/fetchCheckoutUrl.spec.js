@@ -33,7 +33,7 @@ describe('fetchCheckoutUrl', () => {
       });
     });
     const result = await fetchCheckoutUrl()(dispatch);
-    expect(result.url).toBe('https://example.com');
+    expect(result).toBe('https://example.com');
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch.mock.calls[0][0].urlType).toBe('checkout');
     expect(dispatch.mock.calls[1][0].url).toBe('https://example.com');
