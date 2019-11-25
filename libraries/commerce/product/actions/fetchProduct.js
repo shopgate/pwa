@@ -26,7 +26,7 @@ function fetchProduct(productId, forceFetch = false) {
         dispatch(receiveProductCached(product.productData));
       }
 
-      return Promise.resolve(null);
+      return undefined;
     }
 
     const requestParams = {
