@@ -4,6 +4,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
 <SuggestionList
   bottomHeight={10}
   fetching={false}
+  forwardedRef={null}
   onClick={[Function]}
   suggestions={
     Array [
@@ -161,6 +162,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
 <SuggestionList
   bottomHeight={10}
   fetching={true}
+  forwardedRef={null}
   onClick={[Function]}
   suggestions={
     Array [
@@ -318,6 +320,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
 <SuggestionList
   bottomHeight={10}
   fetching={false}
+  forwardedRef={null}
   onClick={[Function]}
   suggestions={
     Array [
@@ -483,165 +486,172 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
     }
   }
 >
-  <Connect(SuggestionList)
+  <ForwardRef(WithForwardedRef(Connect(SuggestionList)))
     bottomHeight={10}
     onClick={[Function]}
   >
-    <SuggestionList
+    <Connect(SuggestionList)
       bottomHeight={10}
-      dispatch={[Function]}
-      fetching={false}
+      forwardedRef={null}
       onClick={[Function]}
-      suggestions={
-        Array [
-          "foo",
-          "foo bar",
-          "foo bar buz",
-          "foo bar buz quz",
-        ]
-      }
-      visible={false}
     >
-      <SurroundPortals
-        portalName="search.suggestions"
-        portalProps={
-          Object {
-            "onClick": [Function],
-            "suggestions": Array [
-              "foo",
-              "foo bar",
-              "foo bar buz",
-              "foo bar buz quz",
-            ],
-          }
+      <SuggestionList
+        bottomHeight={10}
+        dispatch={[Function]}
+        fetching={false}
+        forwardedRef={null}
+        onClick={[Function]}
+        suggestions={
+          Array [
+            "foo",
+            "foo bar",
+            "foo bar buz",
+            "foo bar buz quz",
+          ]
         }
+        visible={false}
       >
-        <div
-          className="css-7w6rep css-90ryaa css-6zy2pv"
+        <SurroundPortals
+          portalName="search.suggestions"
+          portalProps={
+            Object {
+              "onClick": [Function],
+              "suggestions": Array [
+                "foo",
+                "foo bar",
+                "foo bar buz",
+                "foo bar buz quz",
+              ],
+            }
+          }
         >
-          <SurroundPortals
-            key="foo"
-            portalName="search.suggestion-item"
-            portalProps={
-              Object {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
+          <div
+            className="css-7w6rep css-90ryaa css-6zy2pv"
           >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo"
-              onClick={[Function]}
-              type="button"
-              value="foo"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo",
-                  }
+            <SurroundPortals
+              key="foo"
+              portalName="search.suggestion-item"
+              portalProps={
+                Object {
+                  "className": "css-crua9x",
+                  "onClick": [Function],
+                  "suggestion": "foo",
                 }
-              >
-                foo
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-          <SurroundPortals
-            key="foo bar"
-            portalName="search.suggestion-item"
-            portalProps={
-              Object {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo bar",
               }
-            }
-          >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo bar"
-              onClick={[Function]}
-              type="button"
-              value="foo bar"
             >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar",
-                  }
-                }
+              <button
+                className="css-crua9x"
+                data-test-id="searchSuggestion foo"
+                onClick={[Function]}
+                type="button"
+                value="foo"
               >
-                foo bar
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-          <SurroundPortals
-            key="foo bar buz"
-            portalName="search.suggestion-item"
-            portalProps={
-              Object {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    Object {
+                      "suggestion": "foo",
+                    }
+                  }
+                >
+                  foo
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+            <SurroundPortals
+              key="foo bar"
+              portalName="search.suggestion-item"
+              portalProps={
+                Object {
+                  "className": "css-crua9x",
+                  "onClick": [Function],
+                  "suggestion": "foo bar",
+                }
               }
-            }
-          >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo bar buz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz"
             >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz",
-                  }
-                }
+              <button
+                className="css-crua9x"
+                data-test-id="searchSuggestion foo bar"
+                onClick={[Function]}
+                type="button"
+                value="foo bar"
               >
-                foo bar buz
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-          <SurroundPortals
-            key="foo bar buz quz"
-            portalName="search.suggestion-item"
-            portalProps={
-              Object {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    Object {
+                      "suggestion": "foo bar",
+                    }
+                  }
+                >
+                  foo bar
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+            <SurroundPortals
+              key="foo bar buz"
+              portalName="search.suggestion-item"
+              portalProps={
+                Object {
+                  "className": "css-crua9x",
+                  "onClick": [Function],
+                  "suggestion": "foo bar buz",
+                }
               }
-            }
-          >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo bar buz quz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz quz"
             >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  Object {
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
+              <button
+                className="css-crua9x"
+                data-test-id="searchSuggestion foo bar buz"
+                onClick={[Function]}
+                type="button"
+                value="foo bar buz"
               >
-                foo bar buz quz
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-        </div>
-      </SurroundPortals>
-    </SuggestionList>
-  </Connect(SuggestionList)>
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    Object {
+                      "suggestion": "foo bar buz",
+                    }
+                  }
+                >
+                  foo bar buz
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+            <SurroundPortals
+              key="foo bar buz quz"
+              portalName="search.suggestion-item"
+              portalProps={
+                Object {
+                  "className": "css-crua9x",
+                  "onClick": [Function],
+                  "suggestion": "foo bar buz quz",
+                }
+              }
+            >
+              <button
+                className="css-crua9x"
+                data-test-id="searchSuggestion foo bar buz quz"
+                onClick={[Function]}
+                type="button"
+                value="foo bar buz quz"
+              >
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    Object {
+                      "suggestion": "foo bar buz quz",
+                    }
+                  }
+                >
+                  foo bar buz quz
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+          </div>
+        </SurroundPortals>
+      </SuggestionList>
+    </Connect(SuggestionList)>
+  </ForwardRef(WithForwardedRef(Connect(SuggestionList)))>
 </Provider>
 `;
