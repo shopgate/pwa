@@ -120,7 +120,7 @@ function fetchProducts(options) {
         return Promise.resolve(result);
       }
 
-      return Promise.resolve(null);
+      return null;
     }
 
     // Fire the onBeforeDispatch callback to inform a caller that fetchProducts will return data.
