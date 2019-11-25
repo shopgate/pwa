@@ -1,4 +1,4 @@
-import React, { Component, Fragment, createRef } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
@@ -65,7 +65,7 @@ class SearchField extends Component {
     };
 
     this.input = null;
-    this.suggestionListRef = createRef();
+    this.onBlurTimeout = null;
   }
 
   /**
@@ -81,6 +81,7 @@ class SearchField extends Component {
    */
   componentWillUnmount() {
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+    clearTimeout(this.onBlurTimeout);
   }
 
   /**
@@ -131,20 +132,17 @@ class SearchField extends Component {
   /**
    * Handles changes to the focus of the input element.
    * @param {boolean} focused Whether the element currently became focused.
-   * @param {Object} e Focus event payload.
    */
-  handleFocusChange = (focused, e) => {
-    const suggestionListRef = this.suggestionListRef.current;
-
-    if (e.relatedTarget && suggestionListRef && suggestionListRef.contains(e.relatedTarget)) {
-      /**
-       * Do nothing when the focusChange was caused due to a click on a suggestion. The necessary
-       * actions will take place within handleSubmit.
-       */
-      return;
-    }
-
-    this.setState({ focused });
+  handleFocusChange = (focused) => {
+    clearTimeout(this.onBlurTimeout);
+    this.onBlurTimeout = !focused ?
+      setTimeout(() => {
+        /*
+         * Delay the execution of the state change until the next cycle
+         * to give pending click events a chance to run.
+         */
+        this.setState({ focused });
+      }, 200) : this.setState({ focused });
   };
 
   /**
@@ -276,7 +274,6 @@ class SearchField extends Component {
           searchPhrase={this.state.query}
           onClick={this.handleSubmit}
           bottomHeight={this.state.bottomHeight}
-          ref={this.suggestionListRef}
         />
       </div>
     );
