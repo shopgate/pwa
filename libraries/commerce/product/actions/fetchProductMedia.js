@@ -12,29 +12,37 @@ import errorProductMedia from '../action-creators/errorProductMedia';
  * @param {string} productId The product ID for which the product options are requested.
  * @return {Function} A Redux Thunk
  */
-const fetchProductMedia = productId => (dispatch, getState) => {
-  if (!appConfig.beta) {
-    return;
-  }
+function fetchProductMedia(productId) {
+  return (dispatch, getState) => {
+    if (!appConfig.beta) {
+      return Promise.resolve(null);
+    }
 
-  const state = getState();
-  const cachedData = state.product.mediaByProductId[productId];
+    const state = getState();
+    const cachedData = state.product.mediaByProductId[productId];
 
-  if (!shouldFetchData(cachedData)) {
-    return;
-  }
+    if (!shouldFetchData(cachedData)) {
+      return Promise.resolve(null);
+    }
 
-  dispatch(requestProductMedia(productId));
+    dispatch(requestProductMedia(productId));
 
-  new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_MEDIA)
-    .setInput({ productId })
-    .dispatch()
-    .then(result => dispatch(receiveProductMedia(productId, result.media)))
-    .catch((error) => {
-      logger.error(error);
-      dispatch(errorProductMedia(productId, error.code));
-    });
-};
+    const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_MEDIA)
+      .setInput({ productId })
+      .dispatch();
+
+    request
+      .then((result) => {
+        dispatch(receiveProductMedia(productId, result.media));
+      })
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorProductMedia(productId, error.code));
+      });
+
+    return request;
+  };
+}
 
 /** @mixes {MutableFunction} */
 export default mutable(fetchProductMedia);
