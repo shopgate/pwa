@@ -65,6 +65,7 @@ class SearchField extends Component {
     };
 
     this.input = null;
+    this.onBlurTimeout = null;
   }
 
   /**
@@ -80,6 +81,7 @@ class SearchField extends Component {
    */
   componentWillUnmount() {
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+    clearTimeout(this.onBlurTimeout);
   }
 
   /**
@@ -132,13 +134,15 @@ class SearchField extends Component {
    * @param {boolean} focused Whether the element currently became focused.
    */
   handleFocusChange = (focused) => {
-    setTimeout(() => {
-      /*
-       * Delay the execution of the state change until the next cycle
-       * to give pending click events a chance to run.
-       */
-      this.setState({ focused });
-    }, 0);
+    clearTimeout(this.onBlurTimeout);
+    this.onBlurTimeout = !focused ?
+      setTimeout(() => {
+        /*
+         * Delay the execution of the state change until the next cycle
+         * to give pending click events a chance to run.
+         */
+        this.setState({ focused });
+      }, 200) : this.setState({ focused });
   };
 
   /**
@@ -157,9 +161,14 @@ class SearchField extends Component {
 
     router.update(this.props.pageId, { query });
 
-    this.setState({ focused: false });
-    this.input.blur();
-    this.props.submitSearch(query);
+    this.setState({ focused: false }, () => {
+      /**
+       * "submitSearch" might cause a component unmount. So we take care that the state update
+       * happens before to avoid errors about state updates on unmounted components.
+       */
+      this.input.blur();
+      this.props.submitSearch(query);
+    });
   };
 
   /**

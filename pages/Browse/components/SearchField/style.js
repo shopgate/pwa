@@ -48,7 +48,7 @@ const labelHidden = css({
 }).toString();
 
 const button = css({
-  lineHeight: '36px',
+  lineHeight: '34px',
   color: colors.accent,
   paddingTop: 0,
   paddingLeft: 16,
