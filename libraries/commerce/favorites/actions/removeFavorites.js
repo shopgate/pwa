@@ -6,23 +6,26 @@ import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators
 /**
  * Removes a single product from the favorite list using the `deleteFavorites` pipeline.
  * @param {string} productId Id of the product to be deleted.
- * @returns {Promise} Dispatched PipelineRxequest.
+ * @returns {Function} A redux thunk.
  */
-export default productId => async (dispatch) => {
-  let result;
-  try {
-    // This is an exception to the rule of calling the action by the pipeline name,
-    // because of consistency reasons
-    result = await new PipelineRequest(SHOPGATE_USER_DELETE_FAVORITES)
+function removeFavorites(productId) {
+  return (dispatch) => {
+    const request = new PipelineRequest(SHOPGATE_USER_DELETE_FAVORITES)
       .setInput({ productId })
       .setRetries(0)
       .dispatch();
 
-    dispatch(successRemoveFavorites(productId));
-  } catch (err) {
-    logger.error(err);
-    dispatch(errorRemoveFavorites(productId, err));
-  }
+    request
+      .then(() => {
+        dispatch(successRemoveFavorites(productId));
+      })
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorRemoveFavorites(productId, error));
+      });
 
-  return result;
-};
+    return request;
+  };
+}
+
+export default removeFavorites;

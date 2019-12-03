@@ -1,6 +1,11 @@
 import { PipelineRequest, logger, EACCESS } from '@shopgate/pwa-core';
-import * as actions from '../../action-creators/user';
-import * as pipelines from '../../constants/Pipelines';
+import {
+  requestUser,
+  receiveUser,
+  errorUser,
+  toggleLoggedIn,
+} from '../../action-creators/user';
+import { SHOPGATE_USER_GET_USER } from '../../constants/Pipelines';
 import { mutable } from '../../helpers/redux';
 import { isUserLoggedIn } from '../../selectors/user';
 
@@ -10,30 +15,32 @@ import { isUserLoggedIn } from '../../selectors/user';
  */
 function fetchUser() {
   return (dispatch, getState) => {
-    dispatch(actions.requestUser());
+    dispatch(requestUser());
 
-    return new PipelineRequest(pipelines.SHOPGATE_USER_GET_USER)
+    const request = new PipelineRequest(SHOPGATE_USER_GET_USER)
       .setTrusted()
       .setErrorBlacklist([EACCESS])
-      .dispatch()
+      .dispatch();
+
+    request
       .then((user) => {
-        dispatch(actions.receiveUser(user));
+        dispatch(receiveUser(user));
 
         // If the user's login state was incorrectly set false then set to true.
         if (!isUserLoggedIn(getState())) {
-          dispatch(actions.toggleLoggedIn(true));
+          dispatch(toggleLoggedIn(true));
         }
-
-        return user;
       })
       .catch((error) => {
         if (error.code !== EACCESS) {
           logger.error(error);
         }
 
-        dispatch(actions.toggleLoggedIn(false));
-        dispatch(actions.errorUser(error));
+        dispatch(toggleLoggedIn(false));
+        dispatch(errorUser(error));
       });
+
+    return request;
   };
 }
 

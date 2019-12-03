@@ -1,6 +1,10 @@
 import { PipelineRequest, logger } from '@shopgate/pwa-core';
-import * as actions from '../../action-creators/url';
-import * as pipelines from '../../constants/Pipelines';
+import {
+  requestUrl,
+  receiveUrl,
+  errorUrl,
+} from '../../action-creators/url';
+import { SHOPGATE_USER_GET_REGISTRATION_URL } from '../../constants/Pipelines';
 import { URL_TYPE_REGISTER } from '../../constants/Registration';
 import { shouldFetchData, mutable } from '../../helpers/redux';
 import { getEntryByType } from '../../selectors/url';
@@ -11,32 +15,32 @@ import { getRegisterUrl } from '../../selectors/user';
  * @return {Function} A redux thunk.
  */
 function fetchRegisterUrl() {
-  return (dispatch, getState) => {
-    const state = getState();
-    const entry = getEntryByType(state, { type: URL_TYPE_REGISTER });
+  return (dispatch, getState) => (
+    new Promise((resolve, reject) => {
+      const state = getState();
+      const entry = getEntryByType(state, { type: URL_TYPE_REGISTER });
 
-    return new Promise((resolve, reject) => {
       if (!shouldFetchData(entry, 'url')) {
         resolve(getRegisterUrl(state));
         return;
       }
 
-      dispatch(actions.requestUrl(URL_TYPE_REGISTER));
+      dispatch(requestUrl(URL_TYPE_REGISTER));
 
-      new PipelineRequest(pipelines.SHOPGATE_USER_GET_REGISTRATION_URL)
+      new PipelineRequest(SHOPGATE_USER_GET_REGISTRATION_URL)
         .setTrusted()
         .dispatch()
         .then(({ url, expires }) => {
-          dispatch(actions.receiveUrl(URL_TYPE_REGISTER, url, expires));
+          dispatch(receiveUrl(URL_TYPE_REGISTER, url, expires));
           resolve(url);
         })
         .catch((error) => {
           logger.error(error);
-          dispatch(actions.errorUrl(URL_TYPE_REGISTER));
+          dispatch(errorUrl(URL_TYPE_REGISTER));
           reject();
         });
-    });
-  };
+    })
+  );
 }
 
 /** @mixes {MutableFunction} */
