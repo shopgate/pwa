@@ -4,6 +4,10 @@ const chalk = require('chalk');
 const TerserPlugin = require('terser-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
+const rxPaths = require('rxjs/_esm5/path-mapping');
 const ShopgateIndexerPlugin = require('./plugins/ShopgateIndexerPlugin');
 const { ENV, isDev, PUBLIC_FOLDER } = require('./lib/variables');
 const getAppSettings = require('./lib/getAppSettings');
@@ -27,8 +31,11 @@ const config = {
   mode: ENV,
   entry: {
     app: [
+      ...(!isDev ? [
+        path.resolve(__dirname, 'lib', 'offline.js'),
+      ] : []),
       path.resolve(__dirname, 'lib', 'polyfill.js'),
-      `${themePath}/index.jsx`,
+      path.resolve(themePath, 'index.jsx'),
     ],
     common: [
       'intl',
@@ -49,6 +56,7 @@ const config = {
   resolve: {
     extensions: ['.json', '.js', '.jsx'],
     alias: {
+      ...rxPaths(),
       'react-dom': '@hot-loader/react-dom',
     },
     modules: [
@@ -105,6 +113,11 @@ const config = {
         minifyCSS: true,
       } : false,
     }),
+    new ScriptExtHtmlWebpackPlugin({
+      sync: ['app', 'common'],
+      prefetch: /\.js$/,
+      defaultAttribute: 'async',
+    }),
     new ProgressBarWebpackPlugin({
       format: `  ${t('WEBPACK_PROGRESS', {
         bar: chalk.blue(':bar'),
@@ -114,6 +127,19 @@ const config = {
       })}`,
       clear: false,
     }),
+    ...(!isDev ? [
+      new CompressionWebpackPlugin({
+        filename: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$/,
+        minRatio: 1,
+      }),
+      new GenerateSW({
+        swDest: 'sw.js',
+        clientsClaim: true,
+        skipWaiting: true,
+      }),
+    ] : []),
   ],
   module: {
     rules: [
