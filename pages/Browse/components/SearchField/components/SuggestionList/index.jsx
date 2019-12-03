@@ -33,7 +33,8 @@ class SuggestionList extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return nextProps.fetching === false && nextProps.suggestions;
+    return (nextProps.fetching === false && nextProps.suggestions) ||
+      (this.props.visible !== nextProps.visible);
   }
 
   /**
