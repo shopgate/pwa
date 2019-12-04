@@ -35,11 +35,16 @@ const getMessageFromCache = (locales, langCode, key) => {
     return pureReturn(key);
   }
 
-  messageCache[hash] = new IntlMessageFormat(
-    message,
-    langCode,
-    getPath(locales, 'formats')
-  );
+  // Prevent the app from crashing when strings (like product names) don't comply with the format
+  try {
+    messageCache[hash] = new IntlMessageFormat(
+      message,
+      langCode,
+      getPath(locales, 'formats')
+    );
+  } catch (e) {
+    messageCache[hash] = pureReturn(key);
+  }
 
   return messageCache[hash];
 };
