@@ -30,7 +30,7 @@ const getMessageFromCache = (locales, langCode, key) => {
     return messageCache[hash];
   }
 
-  const message = getPath(locales, key, key);
+  const message = getPath(locales, key);
   if (typeof message !== 'string' || message.length === 0) {
     return pureReturn(key);
   }
