@@ -70,6 +70,16 @@ describe('plotprojects commands', () => {
         },
         {
           key: 'key3',
+          type: 'string',
+          value: null,
+        },
+        {
+          key: 'key3',
+          type: 'string',
+        },
+        // invalid
+        {
+          key: 'key3',
           type: null,
         },
         {
@@ -79,7 +89,6 @@ describe('plotprojects commands', () => {
           key: 'key5',
           value: null,
         },
-        // invalid
         {
           key: 1,
           type: 'integer',
@@ -88,6 +97,16 @@ describe('plotprojects commands', () => {
         {
           type: 'integer',
           value: 123,
+        },
+        {
+          key: '111111111111111111111111111111111111111111111111111111111111111111111111',
+          type: 'string',
+          value: 'foo',
+        },
+        {
+          key: 'key6',
+          type: 'string',
+          value: '111111111111111111111111111111111111111111111111111111111111111111111111',
         },
       ];
 
@@ -105,14 +124,12 @@ describe('plotprojects commands', () => {
           },
           {
             key: 'key3',
-            type: null,
-          },
-          {
-            key: 'key4',
-          },
-          {
-            key: 'key5',
+            type: 'string',
             value: null,
+          },
+          {
+            key: 'key3',
+            type: 'string',
           },
         ],
       };
@@ -130,7 +147,7 @@ describe('plotprojects commands', () => {
 
       expect(mockedDispatch).toHaveBeenCalledTimes(1);
 
-      expect(logger.error).toHaveBeenCalledTimes(2);
+      expect(logger.error).toHaveBeenCalledTimes(7);
     });
   });
 });
