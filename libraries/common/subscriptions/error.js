@@ -6,6 +6,7 @@ import {
   configureScope,
   captureException,
   captureMessage,
+  captureEvent,
   withScope,
   Severity as SentrySeverity,
 } from '@sentry/browser';
@@ -215,6 +216,20 @@ export default (subscribe) => {
         scope.setExtra('stack', action.error.stack);
       }
       captureException(action.error);
+    });
+  });
+
+  const allErrors$ = pipelineError$.merge(appError$);
+  // Log all error messages which are presented to the user
+  subscribe(allErrors$, ({ action }) => {
+    withScope((scope) => {
+      scope.setTag('error', 'E_USER');
+      scope.setTag('errorCode', action.error.code);
+      scope.setTag('errorMessage', action.error.message);
+      captureEvent({
+        message: action.error.meta.message,
+        extra: action.error,
+      });
     });
   });
 };
