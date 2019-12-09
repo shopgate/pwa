@@ -1,5 +1,23 @@
 # Changelog
 
+## [v6.10.0](https://github.com/shopgate/pwa/compare/v6.9.0...v6.10.0) (2019-12-09)
+
+#### :rocket: Enhancement
+* [#872](https://github.com/shopgate/pwa/pull/872) Added plotProjectsSetSegmentationProperties app command ([@Carsten89](https://github.com/Carsten89))
+* [#870](https://github.com/shopgate/pwa/pull/870) Implemented error handling for broken internet connections ([@fkloes](https://github.com/fkloes))
+* [#867](https://github.com/shopgate/pwa/pull/867) Enabled the NavDrawer of the GMD theme for screen readers (a11y) ([@fkloes](https://github.com/fkloes))
+* [#866](https://github.com/shopgate/pwa/pull/866) Enabled the TabBar of the iOS theme for screen readers (a11y) ([@fkloes](https://github.com/fkloes))
+* [#852](https://github.com/shopgate/pwa/pull/852) Refactored category selectors ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#871](https://github.com/shopgate/pwa/pull/871) Fixed onClick handers for custom SearchSuggestionItem components within the iOS 11 theme ([@fkloes](https://github.com/fkloes))
+* [#863](https://github.com/shopgate/pwa/pull/863) A11y: fix a cart item quantity to read before item name ([@alexbridge](https://github.com/alexbridge))
+* [#864](https://github.com/shopgate/pwa/pull/864) Removed SnackBar button from a11y tree ([@fkloes](https://github.com/fkloes))
+
+#### :house: Internal
+* [#868](https://github.com/shopgate/pwa/pull/868) Removed unused setting from gmd extension-config ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.9.0](https://github.com/shopgate/pwa/compare/v6.8.0...v6.9.0) (2019-11-12)
 
 #### :rocket: Enhancement
