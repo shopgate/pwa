@@ -82,6 +82,7 @@ function readConfig(options) {
     (type === TYPE_PORTALS || type === TYPE_WIDGETS) &&
     has(themePackage.dependencies, 'react-loadable')
   ) {
+    imports.push('import { hot } from \'react-hot-loader/root\';');
     imports.push('import Loadable from \'react-loadable\';');
     imports.push('import Loading from \'@shopgate/pwa-common/components/Loading\';');
     imports.push('');
@@ -113,7 +114,11 @@ function readConfig(options) {
       return;
     }
 
-    exports.push(`  '${id}': ${variableName},`);
+    if (isPortalsOrWidgets) {
+      exports.push(`  '${id}': hot(${variableName}),`);
+    } else {
+      exports.push(`  '${id}': ${variableName},`);
+    }
   });
 
   if (importsEnd) {

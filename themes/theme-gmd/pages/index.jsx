@@ -1,4 +1,5 @@
 import { hot } from 'react-hot-loader/root';
+import 'Extensions/portals';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
