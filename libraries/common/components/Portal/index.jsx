@@ -40,6 +40,10 @@ class Portal extends PureComponent {
    */
   getPortalComponents = (name) => {
     const portals = portalCollection.getPortals();
+    let config = portalCollection.getConfig();
+    if (!config) {
+      config = componentsConfig.portals;
+    }
 
     const components = [];
 
@@ -48,8 +52,8 @@ class Portal extends PureComponent {
     }
 
     // Loop over the portal keys.
-    Object.keys(componentsConfig.portals).forEach((key, index) => {
-      const { target: sourceTarget } = componentsConfig.portals[key];
+    Object.keys(config).forEach((key, index) => {
+      const { target: sourceTarget } = config[key];
       const portalTarget = Array.isArray(sourceTarget) ? sourceTarget : [sourceTarget];
 
       if (portalTarget.length === 0) {

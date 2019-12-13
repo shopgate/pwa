@@ -291,6 +291,7 @@ function indexPortals() {
       importsStart: 'import portalCollection from \'@shopgate/pwa-common/helpers/portals/portalCollection\';',
       exportsStart: 'portalCollection.registerPortals({',
       exportsEnd: '});',
+      importsEnd: `portalCollection.registerConfig(${JSON.stringify(portals, null, ' ')});`,
     },
     ...getIndexLogTranslations(TYPE_PORTALS),
   });
