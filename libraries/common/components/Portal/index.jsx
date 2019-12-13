@@ -39,16 +39,15 @@ class Portal extends PureComponent {
    * @return {Array}
    */
   getPortalComponents = (name) => {
+    const components = [];
     const portals = portalCollection.getPortals();
+    if (!portals) {
+      return components;
+    }
+
     let config = portalCollection.getConfig();
     if (!config) {
       config = componentsConfig.portals;
-    }
-
-    const components = [];
-
-    if (!portals) {
-      return components;
     }
 
     // Loop over the portal keys.
