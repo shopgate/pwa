@@ -12,7 +12,7 @@
     "icon": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^(<([^>]+)>)$"
+      "pattern": "^\\s*<[A-Za-z]+.+?(\/>|\/[A-Za-z]+>)\\s*$"
     }
   },
   "type": "object",
@@ -78,6 +78,9 @@
               "$ref": "#/definitions/color"
             },
             "ctaContrast": {
+              "$ref": "#/definitions/color"
+            },
+            "darkGray": {
               "$ref": "#/definitions/color"
             },
             "focus": {
