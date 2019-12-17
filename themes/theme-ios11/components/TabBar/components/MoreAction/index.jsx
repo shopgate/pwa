@@ -13,7 +13,7 @@ import styles from './style';
  */
 class TabBarMoreAction extends Component {
   static propTypes = {
-    navigate: PropTypes.func.isRequired,
+    historyPush: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
     ...TabBarAction.propTypes,
   };
@@ -24,7 +24,7 @@ class TabBarMoreAction extends Component {
    * Handles the click action.
    */
   handleClick = () => {
-    this.props.navigate({ pathname: MORE_PATH });
+    this.props.historyPush({ pathname: MORE_PATH });
   };
 
   /**
