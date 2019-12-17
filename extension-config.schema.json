@@ -12,7 +12,7 @@
     "icon": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^\\s*<[A-Za-z]+.+?(\/>|\/[A-Za-z]+>)\\s*$"
+      "pattern": "^\\s*<([A-Za-z]+).+?(\\/>|\\/\\1>)\\s*$"
     }
   },
   "type": "object",
