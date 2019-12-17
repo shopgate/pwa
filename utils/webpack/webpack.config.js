@@ -21,7 +21,6 @@ const getExtensionsNodeModulesPaths = require('./lib/getExtensionsNodeModulesPat
 
 const themePath = process.cwd();
 const appConfig = getAppSettings(themePath);
-const componentsConfig = getComponentsSettings(themePath);
 const themeConfig = getThemeConfig(themePath, appConfig);
 const isoLang = convertLanguageToISO(appConfig.language);
 const { sourceMap, ip, apiPort } = getDevConfig();
@@ -73,7 +72,7 @@ const config = {
       'process.env': {
         NODE_ENV: JSON.stringify(ENV),
         APP_CONFIG: JSON.stringify(appConfig),
-        COMPONENTS_CONFIG: JSON.stringify(componentsConfig),
+        COMPONENTS_CONFIG: JSON.stringify(getComponentsSettings(themePath)),
         THEME_CONFIG: JSON.stringify(themeConfig),
         THEME: JSON.stringify(process.env.theme),
         // @deprecated Replaced by LOCALE and LOCALE_FILE - kept for now for theme compatibility.

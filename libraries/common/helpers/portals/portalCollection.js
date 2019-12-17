@@ -3,6 +3,14 @@
  */
 class PortalCollection {
   /**
+   * Returns the portal definitions.
+   * @return {Object}
+   */
+  getPortals() {
+    return this.portals;
+  }
+
+  /**
    * Registers the portal definitions.
    * @param {Object} [portals={}] The portals to register.
    */
@@ -11,11 +19,19 @@ class PortalCollection {
   }
 
   /**
-   * Returns the portal definitions.
+   * Registers the portal config.
+   * @param {Object} [config={}] The portals config.
+   */
+  registerConfig(config = {}) {
+    this.config = config;
+  }
+
+  /**
+   * Returns the portal config.
    * @return {Object}
    */
-  getPortals() {
-    return this.portals;
+  getConfig() {
+    return this.config;
   }
 }
 
