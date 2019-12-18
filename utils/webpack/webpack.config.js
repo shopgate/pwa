@@ -75,6 +75,7 @@ const config = {
         COMPONENTS_CONFIG: JSON.stringify(getComponentsSettings(themePath)),
         THEME_CONFIG: JSON.stringify(themeConfig),
         THEME: JSON.stringify(process.env.theme),
+        THEME_PATH: JSON.stringify(themePath),
         // @deprecated Replaced by LOCALE and LOCALE_FILE - kept for now for theme compatibility.
         LANG: JSON.stringify(isoLang),
         LOCALE: JSON.stringify(isoLang),
