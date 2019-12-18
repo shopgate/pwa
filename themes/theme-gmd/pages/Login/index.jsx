@@ -137,12 +137,10 @@ class Login extends Component {
             <div className={styles.subline}>
               <I18n.Text string="login.subline" />
             </div>
-            <Portal name={PAGE_LOGIN_FORM_BEFORE}>
-              <div className={styles.padLine} />
-            </Portal>
+            <Portal name={PAGE_LOGIN_FORM_BEFORE} />
             <Portal name={PAGE_LOGIN_FORM}>
               { /* No validate, browsers reject IDN emails! */}
-              <form onSubmit={this.handleSubmitForm} noValidate>
+              <form onSubmit={this.handleSubmitForm} noValidate className={styles.form}>
                 <TextField
                   type="email"
                   name="email"
