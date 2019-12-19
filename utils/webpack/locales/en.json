@@ -22,7 +22,7 @@
   "plugins/ShopgateThemeConfigValidatorPlugin": {
     "VALIDATING_CONFIG": "Validating theme configuration ...",
     "INVALID": "... invalid:",
-    "VALID": "... theme configuartion is valid"
+    "VALID": "... theme configuration is valid"
   },
   "webpack.config": {
     "WEBPACK_PROGRESS": "building [{bar}] [{message}] {percent} ({elapsed} seconds)"

@@ -31,7 +31,7 @@ class ShopgateThemeConfigValidatorPlugin {
 
       if (!valid) {
         logger.error(red(`\n  ${t('INVALID')}`));
-        logger.error(ajv.errors);
+        logger.error(JSON.stringify(ajv.errors, null, '  '));
         process.kill(process.pid, 'SIGINT');
         process.kill(process.ppid, 'SIGINT');
         process.exit(1);
