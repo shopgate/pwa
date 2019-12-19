@@ -9,6 +9,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const ShopgateIndexerPlugin = require('./plugins/ShopgateIndexerPlugin');
+const ShopgateThemeConfigValidatorPlugin = require('./plugins/ShopgateThemeConfigValidatorPlugin');
 const { ENV, isDev, PUBLIC_FOLDER } = require('./lib/variables');
 const getAppSettings = require('./lib/getAppSettings');
 const convertLanguageToISO = require('./lib/convertLanguageToISO');
@@ -67,6 +68,7 @@ const config = {
     ],
   },
   plugins: [
+    new ShopgateThemeConfigValidatorPlugin(),
     new ShopgateIndexerPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
