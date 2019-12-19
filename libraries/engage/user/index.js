@@ -1,6 +1,9 @@
 /** @module user */
 import { REGISTER_PATH, LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
+// ACTION-CREATORS
+export { disableLogin } from '@shopgate/pwa-common/action-creators/user';
+
 // ACTIONS
 export { default as fetchRegisterUrl } from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 export { default as fetchUser } from '@shopgate/pwa-common/actions/user/fetchUser';

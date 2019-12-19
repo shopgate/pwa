@@ -57,8 +57,8 @@ export default function setup(subscribe) {
     }
 
     try {
-      // eslint-disable-next-line no-undef, global-require, import/no-dynamic-require
-      const extensionsIndex = require(`${__THEME_PATH__}/extensions/tracking`).default;
+      // eslint-disable-next-line global-require, import/no-dynamic-require
+      const extensionsIndex = require(`${process.env.THEME_PATH}/extensions/tracking`).default;
       const trackingExtensions = componentsConfig.tracking || {};
 
       Object.keys(trackingExtensions).forEach((key) => {
