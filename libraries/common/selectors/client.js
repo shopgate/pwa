@@ -52,6 +52,31 @@ export const getDeviceInformation = createSelector(
 );
 
 /**
+ * Creates the `getSupportedIdentityServices()` selector.
+ * @returns {Function}
+ */
+export function makeGetSupportedIdentityServices() {
+  return createSelector(
+    getDeviceInformation,
+    info => info.supportedIdentityServices || []
+  );
+}
+
+/**
+ * Creates the `supportsIdentityService()` selector.
+ * @param {string} service The identity service to check.
+ * @returns {Function}
+ */
+export function makeSupportsIdentityService(service) {
+  const getSupportedIdentityServices = makeGetSupportedIdentityServices();
+
+  return createSelector(
+    getSupportedIdentityServices,
+    services => services.includes(service)
+  );
+}
+
+/**
  * Checks if the currently stored lib version is one that supports the scanner.
  * @param {Object} state The application state.
  * @returns {boolean}
