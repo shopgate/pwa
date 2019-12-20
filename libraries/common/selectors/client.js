@@ -57,7 +57,7 @@ export const getDeviceInformation = createSelector(
  */
 export function makeGetSupportedIdentityServices() {
   return createSelector(
-    getDeviceInformation,
+    getClientInformation,
     info => info.supportedIdentityServices || []
   );
 }
