@@ -156,13 +156,9 @@ class Builder extends Component {
    * @returns {number}
    */
   elementSortFunc = (element1, element2) => {
-    // Keep relative sort order when no specific sort order was set for both
-    if (element2.sortOrder === undefined) {
-      return 1;
-    }
-
-    if (element1.sortOrder === undefined) {
-      return -1;
+    // Keep current sort order when no specific sort order was set for both
+    if (element1.sortOrder === undefined || element2.sortOrder === undefined) {
+      return 0;
     }
 
     // Sort in ascending order of sortOrder otherwise
