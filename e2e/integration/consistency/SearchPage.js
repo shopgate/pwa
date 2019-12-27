@@ -1,9 +1,10 @@
 import els from '../../elements/de';
+import { goHomePage } from '../../helper/navigation';
 
 describe('AndroidGMDTest searchPage', () => {
-  it('should check for search input', () => {
-    cy.visit('');
+  before(goHomePage);
 
+  it('should check for search input', () => {
     cy.get(els.searchButton)
       .should('be.visible')
       .first()

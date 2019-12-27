@@ -1,9 +1,11 @@
 import els from '../../elements/de';
+import { closeNavDrawer, goHomePage } from '../../helper/navigation';
 
 describe('AndroidGMDTest navDrawer', () => {
-  it('should check for login button', () => {
-    cy.visit('');
+  before(goHomePage);
+  after(closeNavDrawer);
 
+  it('should check for login button', () => {
     cy.get(els.navigatorButton)
       .should('be.visible')
       .click();

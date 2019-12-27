@@ -1,18 +1,21 @@
 import els from '../../elements/de';
 import { clearProductsFromCart } from '../../helper/cart';
+import { goCategoriesPage } from '../../helper/navigation';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional test product page', () => {
+  before(goCategoriesPage);
+
   after(clearProductsFromCart);
 
   it('should check for options select', () => {
-    cy.visit('');
+    navigateCategoryBySelector(els.productWithOptionsCategory);
 
-    cy.get(els.productWithOptionsCategory)
-      .scrollIntoView()
-      .click();
-    cy.get(els.simpleProductWithOptionsNameProductGrid)
-      .should('be.visible')
-      .click();
+    cy.get(els.visiblePage).within(() => {
+      cy.get(els.simpleProductWithOptionsNameProductGrid)
+        .should('be.visible')
+        .click();
+    });
     cy.get(els.optionPickerBallColor)
       .should('be.visible')
       .click();

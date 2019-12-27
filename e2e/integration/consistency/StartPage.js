@@ -1,43 +1,11 @@
 import els from '../../elements/de';
-import { openNavDrawer, closeNavDrawer } from '../../helper/navigation';
+import { goHomePage } from '../../helper/navigation';
 
 describe('AndroidGMDTest startPage', () => {
+  before(goHomePage);
+
   afterEach(() => {
     cy.get(els.shopLogo).scrollIntoView();
-  });
-
-  it('should check Navigation Drawer', () => {
-    // Open page
-    cy.visit('');
-
-    openNavDrawer();
-
-    // Check for drawer entries
-    cy.get(els.navigationDrawerLoginButton)
-      .should('be.visible');
-    cy.get(els.navDrawerStartPage)
-      .should('be.visible');
-    cy.get(els.navDrawerCategoriesButton)
-      .should('be.visible');
-    cy.get(els.navDrawerFavoritesButton)
-      .should('be.visible');
-    cy.get(els.navDrawerCartButton)
-      .contains('Warenkorb')
-      .should('be.visible');
-    cy.get(els.navDrawerShippingButton)
-      .should('be.visible');
-    cy.get(els.navDrawerPaymentButton)
-      .should('be.visible');
-    cy.get(els.navDrawerTermsButton)
-      .should('be.visible');
-    cy.get(els.navDrawerPrivacyButton)
-      .should('be.visible');
-    cy.get(els.navDrawerReturnPolicy)
-      .should('be.visible');
-    cy.get(els.navDrawerImprintButton)
-      .scrollIntoView()
-      .should('be.visible');
-    closeNavDrawer();
   });
 
   it('should check for shop logo', () => {
@@ -78,6 +46,7 @@ describe('AndroidGMDTest startPage', () => {
   it('should check for Product grid widget', () => {
     // Check for ProductgridWidget and first product
     cy.get(els.productGridWidgetSecondProduct)
+      .first()
       .scrollIntoView()
       .should('be.visible');
   });
