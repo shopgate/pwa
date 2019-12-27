@@ -1,27 +1,19 @@
 import els from '../elements/de';
+import { goCartPage } from './navigation';
 
 /**
  * Helper function that clears the Cart
  */
 export function clearProductsFromCart() {
-  try {
-    // Delete single product from cart
-    cy.visit('cart');
-    cy.get(els.contextMenu).each(($el) => {
-      cy.window().spyAction('RECEIVE_CART', () => {
-        cy.wrap($el).should('be.visible').click();
-        cy.get(els.contextMenuButton)
-          .contains('Entfernen')
-          .click();
-      });
-    });
+  goCartPage();
 
-    // Check for empty cart
-    cy.get(els.emptyCartPlaceHolderString)
-      .scrollIntoView()
-      .should('be.visible');
-  } catch (err) {
-    /* eslint-disable-next-line */
-    console.log('cart seems to be empty');
-  }
+  cy.get(els.contextMenu).each(($el) => {
+    cy.spyAction('RECEIVE_CART', () => {
+      cy.wrap($el).scrollIntoView().click();
+      cy.get(els.contextMenuButton)
+        .first()
+        .contains('Entfernen')
+        .click();
+    });
+  });
 }
