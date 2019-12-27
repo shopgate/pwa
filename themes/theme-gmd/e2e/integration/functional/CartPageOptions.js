@@ -1,20 +1,17 @@
 import els from '../../elements/de';
 
 import { clearProductsFromCart } from '../../helper/cart';
+import { goCategoriesPage } from '../../helper/navigation';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional test cart page options', () => {
+  before(goCategoriesPage);
+
   after(clearProductsFromCart);
 
   it('should check for product with options', () => {
-    cy.visit('');
+    navigateCategoryBySelector(els.productsWithOptionsCategory);
 
-    cy.get(els.productWithOptionsCategory)
-      .first()
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
     cy.get(els.simpleProductWithOptionsNameProductGrid)
       .last()
       .should('be.visible')

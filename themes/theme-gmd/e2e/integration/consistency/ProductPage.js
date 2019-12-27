@@ -1,10 +1,11 @@
 import els from '../../elements/de';
 import { navigateCategoryBySelector } from '../../helper/category';
+import { goCategoriesPage } from '../../helper/navigation';
 
 describe('AndroidGMDTest productPage', () => {
-  it('should check for productImage', () => {
-    cy.visit('');
+  before(goCategoriesPage);
 
+  it('should check for productImage', () => {
     navigateCategoryBySelector(els.allProductCategory);
 
     cy.get(els.productWithManyProps4GridViewName)
@@ -33,7 +34,7 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for manufacturer', () => {
-    cy.visit('/category');
+    goCategoriesPage();
 
     navigateCategoryBySelector(els.basicCategory);
 
@@ -79,7 +80,7 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for reviewSection', () => {
-    cy.visit('/category');
+    goCategoriesPage();
 
     navigateCategoryBySelector(els.basicCategory);
 
@@ -120,7 +121,7 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for variants', () => {
-    cy.visit('/category');
+    goCategoriesPage();
 
     navigateCategoryBySelector(els.productVariantsCategory);
 
@@ -137,7 +138,7 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for strike price', () => {
-    cy.visit('/category');
+    goCategoriesPage();
 
     navigateCategoryBySelector(els.basicCategory);
 

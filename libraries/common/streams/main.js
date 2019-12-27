@@ -22,3 +22,7 @@ import { mainSubject } from '../store/middelwares/streams';
  * @type {Observable}
  */
 export const main$ = Observable.from(mainSubject);
+
+if (window.Cypress) {
+  window.main$ = main$;
+}
