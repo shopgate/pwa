@@ -1,5 +1,6 @@
 /* global SGJavascriptBridge */
-import { useBrowserConnector, hasSGJavaScriptBridge } from '../../helpers';
+import { useBrowserConnector, useReactNativeBridge, hasSGJavaScriptBridge } from '../../helpers';
+import ReactNativeBridge from '../ReactNativeBridge';
 import BrowserConnector from '../BrowserConnector';
 import DevServerBridge from '../DevServerBridge';
 
@@ -12,7 +13,9 @@ class Bridge {
    * Initializes the Bridge.
    */
   constructor() {
-    if (useBrowserConnector()) {
+    if (useReactNativeBridge()) {
+      this.bridge = new ReactNativeBridge();
+    } else if (useBrowserConnector()) {
       this.bridge = new BrowserConnector();
     } else if (hasSGJavaScriptBridge()) {
       this.bridge = SGJavascriptBridge;

@@ -44,6 +44,14 @@ export function hasSGJavaScriptBridge() {
 }
 
 /**
+ * Checks if react native bridge should be used.
+ * @returns {boolean}
+ */
+export function useReactNativeBridge() {
+  return !!window.ReactNativeWebView;
+}
+
+/**
  * Checks whether the browser connector should be used.
  * @return {boolean}
  */
