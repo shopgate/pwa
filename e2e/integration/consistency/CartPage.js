@@ -6,7 +6,11 @@ import { navigateCategoryBySelector } from '../../helper/category';
 describe('IOS11Test CartPage', () => {
   before(goCartPage);
 
-  after(clearProductsFromCart);
+  after(() => {
+    cy.go('back');
+    cy.go('back');
+    clearProductsFromCart();
+  });
 
   it('it should check for empty cart', () => {
     cy.get(els.emptyCartPlaceHolderString).should('be.visible');

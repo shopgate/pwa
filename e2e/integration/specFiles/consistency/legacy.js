@@ -1,11 +1,13 @@
 import els from '../../../elements/de';
 import { goHomePage } from '../../../helper/navigation';
+
 /* eslint-disable global-require */
 describe('Consistency test for legacy', () => {
   before(() => {
     goHomePage();
     cy.get(els.shopLogo).should('be.visible');
   });
+
   require('../../consistency/StartPage.js');
   require('../../consistency/CartPage.js');
   require('../../consistency/CartPageCoupon.js');

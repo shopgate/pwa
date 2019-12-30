@@ -1,24 +1,13 @@
 import els from '../../elements/de';
+import { goBrowsePage } from '../../helper/navigation'
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional tests category page', () => {
+  before(goBrowsePage);
+
   it('should check for back button', () => {
-    cy.visit('');
+    navigateCategoryBySelector(els.allProductCategory);
 
-    cy.get(els.allProductCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.backButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.shopLogo)
-      .should('be.visible');
-  });
-
-  it('should check for sorting', () => {
-    cy.get(els.allProductCategory)
-      .scrollIntoView()
-      .click();
     cy.get(els.sortingDropDown)
       .first()
       .click();
@@ -32,16 +21,6 @@ describe('functional tests category page', () => {
     cy.get(els.sortingDescButton)
       .click();
     cy.get(els.productWithLongDesciption4GridPrice)
-      .should('be.visible');
-  });
-
-  it('should check for sorting reset', () => {
-    cy.get(els.backButton)
-      .click();
-    cy.get(els.allProductCategory)
-      .should('be.visible')
-      .click();
-    cy.get("[data-test-id='sorting'] [data-test-id='filter.sort.most_popular']")
       .should('be.visible');
   });
 });

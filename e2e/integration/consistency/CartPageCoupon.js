@@ -6,7 +6,11 @@ import { navigateCategoryBySelector } from '../../helper/category'
 describe('IOS11Test CartPageCoupon', () => {
   before(goBrowsePage);
 
-  after(clearProductsFromCart);
+  after(() => {
+    cy.go('back');
+    cy.go('back');
+    clearProductsFromCart();
+  });
 
   it('should check for product in cart', () => {
     navigateCategoryBySelector(els.allProductCategory);
