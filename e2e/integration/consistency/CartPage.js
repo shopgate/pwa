@@ -1,28 +1,29 @@
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
 import els from '../../elements/de';
+import { goCartPage, goBrowsePage } from '../../helper/navigation';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('IOS11Test CartPage', () => {
+  before(goCartPage);
+
+  after(clearProductsFromCart);
+
   it('it should check for empty cart', () => {
-    cy.visit('');
-    cy.get(els.tabBarCart)
-      .click();
-    cy.get(els.emptyCartPlaceHolderString)
-      .should('be.visible');
+    cy.get(els.emptyCartPlaceHolderString).should('be.visible');
   });
 
   it('should check for product in cart', () => {
-    cy.visit('');
-    cy.get(els.allProductCategory)
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
+    goBrowsePage();
+
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.productWithManyProps4GridViewName)
       .last()
       .click();
-    cy.get(els.addToCartBarButton)
-      .click();
-    cy.get(els.cartButton)
-      .click();
+
+    cy.spyAction('RECEIVE_CART', () => cy.get(els.addToCartBarButton).click());
+    cy.spyAction('ROUTE_DID_ENTER', () => cy.get(els.cartButton).click());
+
     cy.get(els.cartItem)
       .contains('Product with many Properties - 4 -')
       .should('be.visible');
@@ -34,25 +35,14 @@ describe('IOS11Test CartPage', () => {
   });
 
   it('should check for correct sub total', () => {
-    cy.get(els.productWithManyProps4CartSubTotal)
-      .should('be.visible');
-  });
-
-  it('should check for shipping label', () => {
-    cy.get(els.shippingLabel)
-      .contains('Versand')
-      .should('be.visible')
-      .wait(3000);
+    cy.get(els.cart.subTotal).should('be.visible').contains('199,00');
+    cy.get(els.cart.shipping).should('be.visible').contains('Kostenlos');
   });
 
   it('should check for TaxDisclaimer', () => {
     cy.get(els.taxDisclaimerFooter)
       .last()
-      .contains('* Alle Preise inkl. MwSt. evtl. zzgl. Versand')
+      .contains('* Inkl. MwSt. evtl. zzgl. Versandkosten')
       .should('be.visible');
-  });
-
-  it('should clear Cart', () => {
-    clearProductFromCart();
   });
 });
