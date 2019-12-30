@@ -97,7 +97,7 @@ export default {
   productWithManyProps4Link: "[data-test-id='link: /item/393939']",
   productWithManyProps4FavListPrice: "[data-test-id='minPrice: 0 price: 199 currency: EUR']",
   availabilityTextInStock: "[data-test-id='availabilityText: In stock']",
-  basicDialogText: "[data-test-id='basicDialog'] span",
+  basicDialogText: "#basicDialogDesc",
   productWithManyProps4SearchResult: "[data-test-id='productGrid'] [data-test-id='Productname: Product with many Properties - 4 -']",
   noResultText: "[data-test-id='noResults'] span",
   productWithManyProps3SearchResult: "[data-test-id='productGrid'] [data-test-id='Productname: Product with many properties - 3 -']",

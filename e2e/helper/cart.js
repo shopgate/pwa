@@ -16,4 +16,6 @@ export function clearProductsFromCart() {
         .click();
     });
   });
+
+  cy.go('back');
 }
