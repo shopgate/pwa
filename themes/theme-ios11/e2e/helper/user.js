@@ -1,36 +1,60 @@
 import els from '../elements/de';
+import { goMorePage } from './navigation'
 
 /**
  * Helper function that log out the user
  */
 export function logOutUser() {
-  cy.visit('');
+  goMorePage();
 
-  cy.get(els.tabBarMore)
-    .should('be.visible')
-    .click();
+  cy.get(els.loginWelcomeText).then(($loginWelcomeText) => {
+    if ($loginWelcomeText.text().includes('Hallo Dennis')) {
+      cy.get(els.logOutButtonMoreMenu)
+        .wait(2000)
+        .scrollIntoView()
+        .should('be.visible')
+        .click();
+      cy.get(els.basicDialogOkButton)
+        .should('be.visible')
+        .click();
+    } else if ($loginWelcomeText.text().includes('Anmelden')) {
+      cy.log('User is not logged');
+    }
+  });
+}
 
-  cy.wait(3000);
+/**
+ * Helper function that log in the user
+ */
+export function logInUser() {
+  goMorePage();
 
-  cy.window()
-    .its('store')
-    .invoke('getState')
-    .its('user')
-    .its('login')
-    .its('isLoggedIn')
-    .then(($value) => {
-      try {
-        /* eslint-disable-next-line */
-        expect($value).to.be.true;
+  cy.get(els.loginWelcomeText)
+    .then((loginWelcomeText) => {
+      const needLogin = loginWelcomeText.text().includes('Anmelden');
 
-        cy.get(els.logOutButtonMoreMenu)
-          .should('be.visible')
-          .click();
-        cy.get(els.basicDialogOkButton)
-          .should('be.visible')
-          .click();
-      } catch (err) {
-        console.log(`isLoggedIn returned ${$value}`);
+      cy.log(`Use need login: ${JSON.stringify(needLogin)}`);
+      if (!needLogin) {
+        return;
       }
+
+      cy.window().spyAction('ROUTE_DID_ENTER', () => {
+        loginWelcomeText.click();
+      });
+
+      cy.fixture('userCredentials').then((credentials) => {
+        cy.window().spyAction('RECEIVE_USER', () => {
+          cy.get(els.loginPageEmailInput)
+            .should('be.visible')
+            .clear()
+            .type(credentials.username);
+
+          cy.get(els.loginPagePasswordInput)
+            .should('be.visible')
+            .clear()
+            .type(credentials.password)
+            .type('{enter}');
+        });
+      });
     });
 }

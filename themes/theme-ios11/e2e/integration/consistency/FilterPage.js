@@ -1,13 +1,17 @@
 import els from '../../elements/de';
+import { goBrowsePage } from '../../helper/navigation'
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('IOS11Test filter page', () => {
-  it('should check for price range slider', () => {
-    cy.visit('');
+  before(goBrowsePage);
 
-    cy.get(els.allProductCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
+  after(() => {
+    cy.go('back');
+  });
+
+  it('should check for price range slider', () => {
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.filterButton)
       .should('be.visible')
       .click();
@@ -23,7 +27,7 @@ describe('IOS11Test filter page', () => {
 
   it('should check for filter options', () => {
     cy.get(els.filterListItemManufacturer)
-      .first()
+      .last()
       .click();
     cy.get(els.filterAttributeManufacturer1)
       .first()
