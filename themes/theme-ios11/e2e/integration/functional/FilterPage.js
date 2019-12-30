@@ -1,13 +1,17 @@
 import els from '../../elements/de';
+import { goBrowsePage } from '../../helper/navigation'
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional tests filter page', () => {
-  it('check for singe filter selection', () => {
-    cy.visit('');
+  before(goBrowsePage);
 
-    cy.get(els.allProductCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
+  after(() => {
+    cy.go('back');
+  });
+
+  it('check for singe filter selection', () => {
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.filterButton)
       .should('be.visible')
       .click();

@@ -1,12 +1,13 @@
 import els from '../../elements/de';
 import { logOutUser } from '../../helper/user';
+import { goMorePage } from '../../helper/navigation'
 
 describe('functional tests login page', () => {
+  before(goMorePage);
+
+  after(logOutUser);
+
   it('should check for wrong credentials', () => {
-    cy.visit('');
-    cy.get(els.tabBarMore)
-      .should('be.visible')
-      .click();
     cy.get(els.userMenuLogin)
       .should('be.visible')
       .click();
@@ -39,23 +40,23 @@ describe('functional tests login page', () => {
     cy.get('@user').then((user) => {
       const userC = user;
 
-      cy.get(els.loginPageEmailInput)
-        .should('be.visible')
-        .clear()
-        .type(userC.username);
-      cy.get(els.loginPagePasswordInput)
-        .should('be.visible')
-        .clear()
-        .type(userC.password)
-        .type('{enter}');
-      cy.wait(10000);
-      cy.get(els.tabBarMore)
-        .should('be.visible')
-        .click();
+      cy.spyAction('SUCCESS_LOGIN', () => {
+        cy.get(els.loginPageEmailInput)
+          .should('be.visible')
+          .clear()
+          .type(userC.username);
+        cy.get(els.loginPagePasswordInput)
+          .should('be.visible')
+          .clear()
+          .type(userC.password)
+          .type('{enter}');
+      });
+
+      goMorePage();
+
       cy.get(els.loginWelcomeText)
         .should('be.visible')
         .contains('Hallo Dennis');
     });
-    logOutUser();
   });
 });
