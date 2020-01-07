@@ -5,7 +5,7 @@ import { navigate } from './actions';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = {
-  navigate,
+  historyPush: navigate,
 };
 
 export default connect(null, mapDispatchToProps);

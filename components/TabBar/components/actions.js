@@ -9,6 +9,7 @@ export const navigate = params => (dispatch, getState) => {
   dispatch(historyPush({
     ...params,
     state: {
+      ...params.state,
       preventA11yFocus: isTabBarVisible(getState(), params.pathname),
     },
   }));
