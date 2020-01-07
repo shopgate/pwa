@@ -5,12 +5,7 @@ import { openNavDrawer, closeNavDrawer } from './navigation';
  * Helper function that log out the user
  */
 export function logOutUser() {
-  cy.visit('');
-
-  cy.get(els.navigatorButton)
-    .should('be.visible')
-    .click();
-  cy.wait(3000);
+  openNavDrawer();
 
   cy.get(els.welcomeText).then(($loginWelcomeText) => {
     if ($loginWelcomeText.text().includes('Hallo Dennis')) {
@@ -23,8 +18,7 @@ export function logOutUser() {
         .should('be.visible')
         .click();
     } else if ($loginWelcomeText.text().includes('Anmelden')) {
-      cy.visit('');
-      cy.wait(2000);
+      closeNavDrawer();
       cy.log('User is not logged');
     }
   });

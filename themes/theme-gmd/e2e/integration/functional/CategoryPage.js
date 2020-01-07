@@ -1,24 +1,13 @@
 import els from '../../elements/de';
+import { goCategoriesPage } from '../../helper/navigation';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional tests category page', () => {
-  it('check for navigation', () => {
-    cy.visit('');
-
-    cy.get(els.allProductCategory).first()
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.go('back');
-    cy.get(els.shopLogo)
-      .should('be.visible');
-  });
+  before(goCategoriesPage);
 
   it('check for sorting', () => {
-    cy.get(els.allProductCategory)
-      .first()
-      .scrollIntoView()
-      .click()
-      .wait(3000);
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.sortingDropDown)
       .first()
       .click();
@@ -34,12 +23,6 @@ describe('functional tests category page', () => {
     cy.get(els.loadingIndicator)
       .should('not.be.visible');
     cy.get(els.productWithLongDesciption4GridPrice)
-      .should('be.visible');
-  });
-
-  it('check for sorting reset', () => {
-    cy.go('back');
-    cy.get(els.shopLogo)
       .should('be.visible');
   });
 });
