@@ -1,16 +1,22 @@
 import els from '../../elements/de';
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
+import { goBrowsePage } from '../../helper/navigation'
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional test product page options', () => {
-  it('should check for options select', () => {
-    cy.visit('');
+  before(goBrowsePage);
 
-    cy.get(els.productWithOptionsCategory)
-      .scrollIntoView()
-      .click();
-    cy.get(els.simpleProductWithOptionsNameProductGrid)
-      .should('be.visible')
-      .click();
+  after(clearProductsFromCart);
+
+  it('should check for options select', () => {
+    navigateCategoryBySelector(els.productWithOptionsCategory);
+
+    cy.get(els.visiblePage).within(() => {
+      cy.get(els.simpleProductWithOptionsNameProductGrid)
+        .should('be.visible')
+        .click();
+    });
+
     cy.get(els.optionPickerBallColor)
       .should('be.visible')
       .click();
@@ -38,9 +44,7 @@ describe('functional test product page options', () => {
       .click();
     cy.get(els.cartButton += ' div')
       .contains('1');
-  });
 
-  it('should clear cart', () => {
-    clearProductFromCart();
+    cy.go('back');
   });
 });

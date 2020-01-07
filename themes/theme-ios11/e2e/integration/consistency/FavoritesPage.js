@@ -1,58 +1,51 @@
 import els from '../../elements/de';
+import { goBrowsePage, goFavoritesPage } from '../../helper/navigation'
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('IOS11Test FavoritesPage', () => {
-  it('should check for favorites placeholder', () => {
-    cy.visit('');
+  before(goFavoritesPage);
 
-    cy.get(els.tabBarFavorites)
-      .should('be.visible')
-      .click();
+  it('should check for favorites placeholder', () => {
     cy.get(els.favoritesPageEmptyFavComponent)
       .should('be.visible');
   });
 
-  it.skip('should check for continue shopping button', () => {
-    cy.get(els.favoritesPageContinueShoppingButton)
-      .should('be.visible');
-  });
-
   it('should check for back button', () => {
-    cy.get(els.backButton)
-      .should('be.visible');
+    cy.get(els.backButton).should('be.visible');
   });
 
   it('should check for Item', () => {
-    cy.visit('');
+    goBrowsePage();
 
-    cy.get(els.allProductCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
-    cy.get(els.productWithManyProps4GridViewName)
-      .last()
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.reload();
-    cy.get(els.favoriteButton)
-      .should('be.visible')
-      .wait(1000)
-      .click();
-    cy.visit('');
+    navigateCategoryBySelector(els.allProductCategory);
 
-    cy.get(els.tabBarFavorites)
-      .should('be.visible')
-      .click();
+    cy.spyAction('RECEIVE_PRODUCT_CACHED', () => {
+      cy.get(els.productWithManyProps4GridViewName)
+        .last()
+        .scrollIntoView()
+        .should('be.visible')
+        .click();
+    });
+
+    cy.spyAction('SUCCESS_ADD_FAVORITES', () => {
+      cy.get(els.visiblePage).within(() => {
+        cy.get(els.favoriteButton)
+          .should('be.visible')
+          .first()
+          .click();
+      });
+    });
+
+    cy.go('back');
+  });
+
+  it('should check for price', () => {
+    goFavoritesPage();
 
     cy.get(els.favoriteListItemProductWithManyProbs4)
       .scrollIntoView()
       .should('be.visible');
-    cy.reload();
-  });
 
-  it('should check for price', () => {
     cy.get(els.productWithManyProps4FavListPrice)
       .should('be.visible');
   });
@@ -68,9 +61,13 @@ describe('IOS11Test FavoritesPage', () => {
   });
 
   it('should check for favButton', () => {
-    cy.get(els.favoriteButton)
-      .should('be.visible')
-      .click();
+    cy.spyAction('SUCCESS_REMOVE_FAVORITES', () => {
+      cy.get(els.visiblePage).within(() => {
+        cy.get(els.favoriteButton)
+          .should('be.visible')
+          .click();
+      });
+    });
     cy.get(els.favoritesPageEmptyFavComponent)
       .should('be.visible');
   });

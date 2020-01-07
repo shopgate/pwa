@@ -1,33 +1,36 @@
 import els from '../../elements/de';
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
+import { goBrowsePage } from '../../helper/navigation'
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional tests cart page', () => {
-  it('should add sescond product to cart and delete it', () => {
-    cy.visit('');
-    cy.get(els.basicCategory)
-      .last()
-      .scrollIntoView()
-      .click();
-    cy.get(els.productsWithLongNamesCat)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
-    cy.get(els.productWithVeryLongName5Name)
-      .last()
-      .click();
-    cy.get(els.addToCartBarButton)
-      .click();
-    cy.get(els.cartButton)
-      .click();
+  before(goBrowsePage);
+
+  after(() => {
+    cy.go('back');
+    cy.go('back');
+    clearProductsFromCart();
+  });
+
+  it('should add second product to cart and delete it', () => {
+    navigateCategoryBySelector(els.basicCategory);
+    navigateCategoryBySelector(els.productsWithLongNamesCat);
+
+    cy.get(els.visiblePage).within(() => {
+      cy.get(els.productWithVeryLongName5Name)
+        .last()
+        .click();
+    });
+
+    cy.spyAction('RECEIVE_CART', () => cy.get(els.addToCartBarButton).click());
+    cy.spyAction('ROUTE_DID_ENTER', () => cy.get(els.cartButton).click());
   });
 
   it('should check for wrong coupon', () => {
     cy.get(els.couponFieldInput)
       .type('wrongCoupon {enter}');
     cy.get(els.basicDialogText)
-      .contains('Coupon code "wrongCoupon" is not valid.');
+      .contains('Der Gutscheincode ist ungültig!');
     cy.get(els.basicDialogOkButton)
       .click();
   });
@@ -40,8 +43,9 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.basicDialogOkButton)
       .click();
-    cy.get('[data-test-id="subTotal: 84"]')
-      .should('be.visible');
+    cy.get(els.cart.subTotal).should('be.visible').contains('89,00');
+    cy.get(els.cart.discount).should('be.visible').contains('-5,00');
+    cy.get(els.cart.grandTotal).should('be.visible').contains('84,00');
   });
 
   it('should delete coupon from cart', () => {
@@ -49,9 +53,5 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.deleteCouponButton)
       .should('not.exist');
-  });
-
-  it('should check for delete product from cart', () => {
-    clearProductFromCart();
   });
 });
