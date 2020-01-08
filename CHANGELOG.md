@@ -1,5 +1,33 @@
 # Changelog
 
+## [v6.11.0](https://github.com/shopgate/pwa/compare/...v6.11.0) (2020-01-08)
+
+#### :rocket: Enhancement
+* [#882](https://github.com/shopgate/pwa/pull/882) Added new device info selector factories to determine information about supported identity services ([@devbucket](https://github.com/devbucket))
+* [#880](https://github.com/shopgate/pwa/pull/880) The frontend process now validates the theme configuration based on the JSON schema. ([@devbucket](https://github.com/devbucket))
+* [#875](https://github.com/shopgate/pwa/pull/875) Added JSON schema definition for the theme configuration. ([@devbucket](https://github.com/devbucket))
+* [#876](https://github.com/shopgate/pwa/pull/876) Optimized Hot-Module-Replacement for portal components from extensions. ([@devbucket](https://github.com/devbucket))
+* [#869](https://github.com/shopgate/pwa/pull/869) The theme now provides the webpack configuration for the compilation process. ([@devbucket](https://github.com/devbucket))
+* [#872](https://github.com/shopgate/pwa/pull/872) Added plotProjectsSetSegmentationProperties app command ([@Carsten89](https://github.com/Carsten89))
+* [#870](https://github.com/shopgate/pwa/pull/870) Implemented error handling for broken internet connections ([@fkloes](https://github.com/fkloes))
+* [#867](https://github.com/shopgate/pwa/pull/867) Enabled the NavDrawer of the GMD theme for screen readers (a11y) ([@fkloes](https://github.com/fkloes))
+* [#866](https://github.com/shopgate/pwa/pull/866) Enabled the TabBar of the iOS theme for screen readers (a11y) ([@fkloes](https://github.com/fkloes))
+* [#852](https://github.com/shopgate/pwa/pull/852) Refactored category selectors ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#884](https://github.com/shopgate/pwa/pull/884) Fixed the wrong ordering of fields rendered by the FormBuilder, when no sortIndex is provided. ([@alexbridge](https://github.com/alexbridge))
+* [#873](https://github.com/shopgate/pwa/pull/873)  Changed the translation system to prevent the app from crashing for invalid translation messages. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#871](https://github.com/shopgate/pwa/pull/871) Fixed onClick handers for custom SearchSuggestionItem components within the iOS 11 theme ([@fkloes](https://github.com/fkloes))
+* [#863](https://github.com/shopgate/pwa/pull/863) A11y: fix a cart item quantity to read before item name ([@alexbridge](https://github.com/alexbridge))
+* [#864](https://github.com/shopgate/pwa/pull/864) Removed SnackBar button from a11y tree ([@fkloes](https://github.com/fkloes))
+
+#### :house: Internal
+* [#886](https://github.com/shopgate/pwa/pull/886) Speeded up the e2e test suite execution for the iOS 11 theme ([@alexbridge](https://github.com/alexbridge))
+* [#885](https://github.com/shopgate/pwa/pull/885) Speeded up the e2e test suite execution for the GMD theme ([@alexbridge](https://github.com/alexbridge))
+* [#874](https://github.com/shopgate/pwa/pull/874) Log generic errors to sentry ([@alexbridge](https://github.com/alexbridge))
+* [#868](https://github.com/shopgate/pwa/pull/868) Removed unused setting from gmd extension-config ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.9.0](https://github.com/shopgate/pwa/compare/v6.8.0...v6.9.0) (2019-11-12)
 
 #### :rocket: Enhancement
