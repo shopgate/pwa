@@ -115,6 +115,22 @@ const config = {
         minifyCSS: true,
       } : false,
     }),
+    new HTMLWebpackPlugin({
+      title: appConfig.shopName || process.env.theme,
+      filename: path.resolve(themePath, PUBLIC_FOLDER, 'navigation-bar.html'),
+      template: path.resolve(__dirname, 'templates', 'navigation-bar.html'),
+      inject: false,
+      cache: !isDev,
+      minify: !isDev ? {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+        minifyCSS: true,
+      } : false,
+    }),
     new ScriptExtHtmlWebpackPlugin({
       sync: ['app', 'common'],
       prefetch: /\.js$/,

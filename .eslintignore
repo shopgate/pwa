@@ -9,6 +9,8 @@ coverage
 !/extensions/@shopgate-tracking-native
 !/extensions/@shopgate-user-privacy
 !/extensions/@shopgate-theme-config
+**/*.html
+**/*.ejs
 offline.js
 polyfill.js
 template.ejs
