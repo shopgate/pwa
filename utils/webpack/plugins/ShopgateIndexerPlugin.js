@@ -51,6 +51,28 @@ function getVariableName(id) {
 }
 
 /**
+ * Returns the generated bundle variable name.
+ * @param {string} id The component ID.
+ * @param {string} type The component type.
+ * @return {string}
+ */
+function getBundleName(id, type) {
+  const name = id
+    .replace(/@/g, '')
+    .replace(/\//g, '-')
+    .replace(/_/g, '-')
+    .replace('shopgate-commerce-', '')
+    .replace('widgets-', 'widget-')
+    .toLowerCase();
+
+  if (type === TYPE_PORTALS) {
+    return `portal-${name}`;
+  }
+
+  return name;
+}
+
+/**
  * Reads the components config and creates import and export variables.
  * @param {Object} options The read config options.
  * @return {Object}
@@ -83,8 +105,7 @@ function readConfig(options) {
     has(themePackage.dependencies, 'react-loadable')
   ) {
     imports.push('import { hot } from \'react-hot-loader/root\';');
-    imports.push('import Loadable from \'react-loadable\';');
-    imports.push('import Loading from \'@shopgate/pwa-common/components/Loading\';');
+    imports.push('import { lazy } from \'react\';');
     imports.push('');
   }
 
@@ -97,6 +118,7 @@ function readConfig(options) {
     }
 
     const variableName = getVariableName(id);
+    const bundleName = getBundleName(id, type);
 
     const isPortalsOrWidgets = (
       (type === TYPE_PORTALS && component.target !== 'app.routes')
@@ -104,7 +126,7 @@ function readConfig(options) {
     );
 
     if (isPortalsOrWidgets && has(themePackage.dependencies, 'react-loadable')) {
-      imports.push(`const ${variableName} = Loadable({\n  loader: () => import('${componentPath}'),\n  loading: Loading,\n});\n`);
+      imports.push(`const ${variableName} = lazy(() => import(/* webpackChunkName: "${bundleName}" */ '${componentPath}'));\n`);
     } else {
       imports.push(`import ${variableName} from '${componentPath}';`);
     }

@@ -49,7 +49,7 @@ const config = {
   },
   output: {
     filename: !isDev ? '[name].[hash].js' : '[name].js',
-    chunkFilename: '[name].[chunkhash].js',
+    chunkFilename: !isDev ? '[name].[chunkhash].js' : '[name].js',
     path: path.resolve(themePath, PUBLIC_FOLDER),
     publicPath: isDev ? '/' : (process.env.publicPath || './'),
   },
