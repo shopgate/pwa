@@ -1,140 +1,86 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 /**
  * Base checkbox component.
- * @type {Object}
+ * @param {Object} props The Checkbox properties.
+ * @returns {JSX}
  */
-class Checkbox extends Component {
-  static propTypes = {
-    checkedIcon: PropTypes.node.isRequired,
-    uncheckedIcon: PropTypes.node.isRequired,
-    checked: PropTypes.bool,
-    className: PropTypes.string,
-    defaultChecked: PropTypes.bool,
-    disabled: PropTypes.bool,
-    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-    labelPosition: PropTypes.oneOf(['left', 'right']),
-    name: PropTypes.string,
-    onCheck: PropTypes.func,
-  };
+function Checkbox(props) {
+  const {
+    checkedIcon, uncheckedIcon, checked, className, defaultChecked,
+    disabled, label, labelPosition, name, onCheck,
+  } = props;
+  const [checkedState, setCheckedState] = useState(defaultChecked || checked);
 
-  static defaultProps = {
-    checked: undefined,
-    className: undefined,
-    defaultChecked: undefined,
-    disabled: false,
-    label: null,
-    labelPosition: 'left',
-    name: undefined,
-    onCheck: () => {},
-  };
-
-  /**
-   * The checkbox component contructor.
-   * It checks if the checkbox is a controlled or uncontrolled input and sets an internal state if
-   * uncontrolled to keep track of th checked-state.
-   * @param {Object} props The Checkbox properties.
-   */
-  constructor(props) {
-    super(props);
-
-    if (typeof props.defaultChecked !== 'undefined') {
-      // Uncontrolled input.
-      this.state = { checked: props.defaultChecked };
-    } else {
-      // Controlled input
-      this.state = { checked: props.checked };
+  useEffect(() => {
+    if (typeof defaultChecked !== 'undefined') {
+      return;
     }
-  }
 
-  /**
-   * Make sure state is updated with new checked value when input is controlled
-   * @param {Object} nextProps Contains the new "checked" status
-   */
-  componentWillReceiveProps(nextProps) {
-    // Update only for controlled input
-    if (typeof this.props.defaultChecked === 'undefined') {
-      if (this.state.checked !== nextProps.checked) {
-        this.setState({ checked: nextProps.checked });
-      }
+    if (checkedState !== checked) {
+      setCheckedState(checked);
     }
-  }
+  }, [checked, defaultChecked, checkedState]);
 
   /**
    * Returns if the checkbox is checked or not.
    * @return {boolean} Is the checkbox checked?
    */
-  isChecked = () => (
-    typeof this.props.defaultChecked === 'undefined'
-      ? this.props.checked // Controlled.
-      : this.state.checked // Uncontrolled.
-  );
+  function isChecked() {
+    return (typeof defaultChecked === 'undefined') ? checked : checkedState;
+  }
 
   /**
-   * Inverts the current "checked" value and calls the callback function with it.
-   * If the checkbox is uncontrolled, it keeps track of the value.
-   */
-  handleCheck = () => {
-    if (this.props.disabled) {
+  * Inverts the current "checked" value and calls the callback function with it.
+  * If the checkbox is uncontrolled, it keeps track of the value.
+  */
+  function handleCheck() {
+    if (disabled) {
       return;
     }
 
-    const checked = !this.isChecked();
+    const checkedResult = !isChecked();
 
-    if (typeof this.props.defaultChecked !== 'undefined') {
-      // Uncontrolled.
-      this.setState({ checked });
+    if (typeof defaultChecked !== 'undefined') {
+      setCheckedState(checkedResult);
     }
 
-    this.props.onCheck(checked);
-  };
-
-  /**
-   * Renders the checked/unchecked icon.
-   * @returns {JSX}
-   */
-  renderIcon = () => (
-    this.isChecked()
-      ? this.props.checkedIcon
-      : this.props.uncheckedIcon
-  );
-
-  /**
-   * Renders an input if a "name" prop is provided.
-   * @returns {JSX}
-   */
-  renderInput = () => (
-    this.props.name
-      ? <input type="hidden" name={this.props.name} value={this.isChecked() ? 1 : 0} />
-      : null
-  );
-
-  /**
-   * Renders the label if "side" matches he labelPosition prop.
-   * @param {string} side Used to check against which side to render the label on.
-   * @returns {JSX}
-   */
-  renderLabelIfItIsOnThe = side => (
-    this.props.labelPosition === side
-      ? this.props.label
-      : null
-  );
-
-  /**
-   * Renders the checkbox component.
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <div className={this.props.className} onClick={this.handleCheck} aria-hidden>
-        {this.renderInput()}
-        {this.renderLabelIfItIsOnThe('left')}
-        {this.renderIcon()}
-        {this.renderLabelIfItIsOnThe('right')}
-      </div>
-    );
+    onCheck(checkedResult);
   }
+
+  return (
+    <div className={className} onClick={handleCheck} aria-hidden>
+      {name && <input type="hidden" name={name} value={isChecked() ? 1 : 0} />}
+      {labelPosition === 'left' && label}
+      {isChecked() ? checkedIcon : uncheckedIcon}
+      {labelPosition === 'right' && label}
+    </div>
+  );
 }
+
+Checkbox.propTypes = {
+  checkedIcon: PropTypes.node.isRequired,
+  uncheckedIcon: PropTypes.node.isRequired,
+  checked: PropTypes.bool,
+  className: PropTypes.string,
+  defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  labelPosition: PropTypes.oneOf(['left', 'right']),
+  name: PropTypes.string,
+  onCheck: PropTypes.func,
+};
+
+Checkbox.defaultProps = {
+  checked: undefined,
+  className: undefined,
+  defaultChecked: undefined,
+  disabled: false,
+  label: null,
+  labelPosition: 'left',
+  name: undefined,
+  onCheck: () => { },
+};
 
 export default Checkbox;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Checkbox from './index';
 
 /**
@@ -124,16 +124,18 @@ describe('<Checkbox />', () => {
   });
 
   it('should work as an uncontrolled input', () => {
-    const wrapper = shallow((
+    const wrapper = mount((
       <Checkbox
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
         uncheckedIcon={<Unchecked />}
         defaultChecked={false}
+        name="myCheckbox"
       />
     ));
 
+    expect(wrapper.find('input').prop('value')).toEqual(0);
     wrapper.simulate('click');
-    expect(wrapper.state('checked')).toBe(true);
+    expect(wrapper.find('input').prop('value')).toEqual(1);
   });
 });
