@@ -1,22 +1,5 @@
 // eslint-disable-next-line import/named
-import els, { navigatorButton, backButton, navigationDrawerBackdrop } from '../elements/de';
-
-/**
- * Open the navDrawer
- */
-export function openNavDrawer() {
-  cy.get(navigatorButton)
-    .scrollIntoView()
-    .should('be.visible')
-    .click({ force: true });
-}
-
-/**
- * Close the navDrawer
- */
-export function closeNavDrawer() {
-  cy.get(navigationDrawerBackdrop).click({ force: true });
-}
+import els from '../elements/de';
 
 /**
  * Navigate by selector asserting current path
@@ -39,7 +22,6 @@ function navigate(path, selector) {
       }
 
       if (pathName !== path) {
-        openNavDrawer();
         cy.spyAction(
           'ROUTE_DID_ENTER',
           () => cy.get(selector).scrollIntoView().click()
@@ -53,27 +35,27 @@ function navigate(path, selector) {
 
 /** Go home page */
 export function goHomePage() {
-  navigate('/', els.navDrawerStartPage);
-}
-
-/** Go categories page */
-export function goCategoriesPage() {
-  navigate('/category', els.navDrawerCategoriesButton);
+  navigate('/', els.tabBarHome);
 }
 
 /** Go cart page */
 export function goCartPage() {
-  navigate('/cart', els.navDrawerCartButton);
+  navigate('/cart', els.tabBarCart);
 }
 
 /** Go fav page */
 export function goFavoritesPage() {
-  navigate('/favorites', els.navDrawerFavoritesButton);
+  navigate('/favourite_list', els.tabBarFavorites);
 }
 
 /** Go fav page */
-export function goLoginPage() {
-  navigate('/login', els.navigationDrawerLoginButton);
+export function goMorePage() {
+  navigate('/more', els.tabBarMore);
+}
+
+/** Go fav page */
+export function goBrowsePage() {
+  navigate('/browse', els.tabBarBrowse);
 }
 
 /**
@@ -81,6 +63,6 @@ export function goLoginPage() {
  */
 export function goBack() {
   cy.spyAction('ROUTE_DID_ENTER', () => {
-    cy.get(backButton).last().should('be.visible').click();
+    cy.get(els.backButton).last().should('be.visible').click();
   });
 }

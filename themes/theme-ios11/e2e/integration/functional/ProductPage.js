@@ -1,45 +1,47 @@
 import els from '../../elements/de';
-import { clearProductFromCart } from '../../helper/cart';
+import { clearProductsFromCart } from '../../helper/cart';
+import { goBrowsePage } from '../../helper/navigation'
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional test product page', () => {
-  it('should check for correct error message if no variant are selected', () => {
-    cy.visit('');
+  before(goBrowsePage);
 
-    cy.get(els.productVariantsCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWith2VariantsCategory)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.productWithChild1MotherNameProductGrid)
-      .should('be.visible')
-      .last()
-      .click();
+  after(clearProductsFromCart);
+
+  it('should check for correct error message if no variant are selected', () => {
+    navigateCategoryBySelector(els.productVariantsCategory);
+    navigateCategoryBySelector(els.productsWith2VariantsCategory);
+
+    cy.get(els.visiblePage).within(() => {
+      cy.get(els.productWithChild1MotherNameProductGrid)
+        .should('be.visible')
+        .last()
+        .click();
+    });
+
     cy.get(els.addToCartBarButton)
       .should('be.visible')
       .click()
       .wait(1000);
     cy.get(els.cartBadge)
       .should('not.exist');
+
+    cy.go('back');
   });
 
   it('should check for variant  select', () => {
-    cy.visit('');
+    goBrowsePage();
 
-    cy.get(els.productVariantsCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWith2VariantsCategory)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.productWithChild1MotherNameProductGrid)
-      .should('be.visible')
-      .last()
-      .click();
+    navigateCategoryBySelector(els.productVariantsCategory);
+    navigateCategoryBySelector(els.productsWith2VariantsCategory);
+
+    cy.get(els.visiblePage).within(() => {
+      cy.get(els.productWithChild1MotherNameProductGrid)
+        .should('be.visible')
+        .last()
+        .click();
+    });
+
     cy.get(els.variantPickerColor)
       .should('be.visible')
       .click();
@@ -67,9 +69,7 @@ describe('functional test product page', () => {
     cy.get(els.cartButton += ' div')
       .should('be.visible')
       .contains('1');
-  });
 
-  it('should clear cart', () => {
-    clearProductFromCart();
+    cy.go('back');
   });
 });

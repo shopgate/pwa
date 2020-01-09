@@ -1,46 +1,34 @@
 import els from '../../elements/de';
 import { clearProductsFromCart } from '../../helper/cart';
+import { goCategoriesPage } from '../../helper/navigation';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('functional test product page', () => {
+  before(goCategoriesPage);
+
   after(clearProductsFromCart);
 
   it('should check for correct error message if no variant are selected', () => {
-    cy.visit('');
+    navigateCategoryBySelector(els.productVariantsCategory);
 
-    cy.get(els.productVariantsCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWith2VariantsCategory)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.productWithChild1MotherNameProductGrid)
-      .should('be.visible')
-      .last()
-      .click();
+    navigateCategoryBySelector(els.productsWith2VariantsCategory);
+
+    cy.get(els.visiblePage).within(() => {
+      cy.get(els.productWithChild1MotherNameProductGrid)
+        .should('be.visible')
+        .last()
+        .click();
+    });
     cy.get(els.addToCartButton)
       .should('be.visible')
       .click()
       .wait(1000);
+
     cy.get(els.cartButton)
       .should('not.be.visible');
   });
-  it('should check for variant  select', () => {
-    cy.visit('');
 
-    cy.get(els.productVariantsCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.productsWith2VariantsCategory)
-      .should('be.visible')
-      .last()
-      .click();
-    cy.get(els.productWithChild1MotherNameProductGrid)
-      .should('be.visible')
-      .last()
-      .click();
+  it('should check for variant  select', () => {
     cy.get(els.variantPickerColor)
       .should('be.visible')
       .click();

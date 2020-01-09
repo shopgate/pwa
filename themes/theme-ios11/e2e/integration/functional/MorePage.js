@@ -1,17 +1,12 @@
 import els from '../../elements/de';
+import { goMorePage } from '../../helper/navigation'
 
 describe('functional tests more page', () => {
+  before(goMorePage);
+
   it('should check for back button', () => {
-    cy.visit('');
-
-    cy.get(els.tabBarMore)
-      .should('be.visible')
-      .click();
-
     cy.get(els.backButton)
       .should('be.visible')
       .click();
-    cy.get(els.shopLogo)
-      .should('be.visible');
   });
 });

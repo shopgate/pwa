@@ -25,6 +25,8 @@ Cypress.Cookies.defaults({
   whitelist: 'SGCONNECT',
 });
 
+Cypress.on('uncaught:exception', () => false);
+
 if (process.env.COVERAGE_REPORT) {
   const istanbul = require('istanbul-lib-coverage');
   const map = istanbul.createCoverageMap({});

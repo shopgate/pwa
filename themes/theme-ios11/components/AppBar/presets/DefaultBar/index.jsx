@@ -57,7 +57,7 @@ class AppBarDefault extends PureComponent {
       this.setState({ target: target || null });
     }
 
-    if (this.props.setFocus) {
+    if (this.props.setFocus && target) {
       // Set the focus to the first focusable element for screen readers.
       const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 

@@ -375,13 +375,15 @@ class ShopgateIndexerPlugin {
    * @param {Object} compiler The webpack compiler
    */
   apply(compiler) {
-    const watcher = fs.watch(`${themePath}/config/components.json`, () => {
-      exports.createIndexes();
-    });
+    if (process.env.NODE_ENV !== 'production') {
+      const watcher = fs.watch(`${themePath}/config/components.json`, () => {
+        exports.createIndexes();
+      });
 
-    process.on('exit', () => {
-      watcher.close();
-    });
+      process.on('exit', () => {
+        watcher.close();
+      });
+    }
 
     compiler.hooks.environment.tap('ShopgateIndexerPlugin', () => {
       exports.createIndexes();
