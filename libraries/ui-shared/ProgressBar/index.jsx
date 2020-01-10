@@ -55,6 +55,24 @@ class ProgressBar extends Component {
   };
 
   /**
+   * Update the state based on props.
+   * @param {Object} props The next set of props.
+   * @param {Object} state The current state.
+   * @returns {Object} The derived state.
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (state.isVisible === props.isVisible) {
+      return null;
+    }
+
+    return {
+      ...state,
+      ...(props.isVisible ? { isAnimating: true } : {}),
+      isVisible: props.isVisible,
+    };
+  }
+
+  /**
    * The constructor
    * @param {Object} props The component props.
    */
@@ -65,21 +83,6 @@ class ProgressBar extends Component {
       isAnimating: props.isVisible,
       isVisible: props.isVisible,
     };
-  }
-
-  /**
-   * Update the state based on props.
-   * @param {Object} nextProps The next set of props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isVisible === nextProps.isVisible) {
-      return;
-    }
-
-    this.setState({
-      ...nextProps.isVisible && { isAnimating: true },
-      isVisible: nextProps.isVisible,
-    });
   }
 
   /**
