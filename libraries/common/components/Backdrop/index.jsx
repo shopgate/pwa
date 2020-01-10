@@ -1,83 +1,70 @@
-import React, { Component } from 'react';
+import React, { useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
-import Transition from 'react-inline-transition-group';
+import { Transition } from 'react-transition-group';
 import style from './style';
 
 /**
  * Backdrop component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class Backdrop extends Component {
-  /**
-   * The component prop types.
-   * @type {Object}
-   */
-  static propTypes = {
-    className: PropTypes.string,
-    color: PropTypes.string,
-    duration: PropTypes.number,
-    isVisible: PropTypes.bool,
-    level: PropTypes.number,
-    onClick: PropTypes.func,
-    opacity: PropTypes.number,
-  };
+function Backdrop(props) {
+  const {
+    className, color, duration, isVisible, level, onClick, opacity,
+  } = props;
 
-  /**
-   * The component default props.
-   * @type {Object}
-   */
-  static defaultProps = {
-    className: '',
-    color: '#000',
-    duration: 200,
-    isVisible: false,
-    level: 2,
-    onClick: () => {},
-    opacity: 50,
-  };
+  const floatedOpacity = useMemo(() => (opacity / 100), [opacity]);
 
-  /**
-   * Only update when the `isVisible` prop changes.
-   * @param {Object} nextProps The next set of component props.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return (this.props.isVisible !== nextProps.isVisible);
-  }
+  const defaultStyles = useMemo(() => ({
+    background: color,
+    opacity: 0,
+    transition: `opacity ${duration}ms ease-out`,
+    zIndex: level,
+  }), [color, duration, level]);
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const opacity = (this.props.opacity / 100);
-    const transition = {
-      base: {
-        background: this.props.color,
-        opacity: 0,
-        transition: `opacity ${this.props.duration}ms ease-out`,
-        zIndex: this.props.level,
-      },
-      appear: {
-        opacity,
-      },
-      enter: {
-        opacity,
-      },
-      leave: {
-        opacity: 0,
-      },
-    };
+  const transitionStyles = useMemo(() => ({
+    entering: { opacity: 0 },
+    entered: { opacity: floatedOpacity },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0 },
+  }), [floatedOpacity]);
 
-    const className = `${style} ${this.props.className}`;
-
-    return (
-      <Transition childrenStyles={transition}>
-        {this.props.isVisible ?
-          <div data-test-id="Backdrop" aria-hidden className={className} onClick={this.props.onClick} /> : null
-        }
-      </Transition>
-    );
-  }
+  return (
+    <Transition in={isVisible} timeout={duration} mountOnEnter unmountOnExit>
+      {state => (
+        <div
+          data-test-id="Backdrop"
+          aria-hidden
+          className={`${style} ${className}`.trim()}
+          onClick={onClick}
+          style={{
+            ...defaultStyles,
+            ...transitionStyles[state],
+          }}
+        />
+      )}
+    </Transition>
+  );
 }
 
-export default Backdrop;
+Backdrop.propTypes = {
+  className: PropTypes.string,
+  color: PropTypes.string,
+  duration: PropTypes.number,
+  isVisible: PropTypes.bool,
+  level: PropTypes.number,
+  onClick: PropTypes.func,
+  opacity: PropTypes.number,
+};
+
+Backdrop.defaultProps = {
+  className: '',
+  color: '#000',
+  duration: 200,
+  isVisible: false,
+  level: 2,
+  onClick: () => { },
+  opacity: 50,
+};
+
+export default memo(Backdrop);
