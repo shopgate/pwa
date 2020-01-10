@@ -60,10 +60,25 @@ class Select extends Component {
   static defaultProps = {
     className: '',
     items: [],
-    onChange: () => {},
+    onChange: () => { },
     placeholder: DEFAULT_PLACEHOLDER_TEXT,
     value: null,
   };
+
+  /**
+   * @param {Object} props The next props.
+   * @param {Object} state The component state.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (!state.selected || props.value !== state.selected.value) {
+      return {
+        selected: normalizeItem(findItemByValue(props.items, props.value)),
+      };
+    }
+
+    return null;
+  }
 
   /**
    * The constructor.
@@ -90,21 +105,6 @@ class Select extends Component {
    */
   componentDidMount() {
     document.addEventListener('touchstart', this.handleInteractionOutside);
-  }
-
-  /**
-   * Updates the selected item when the value prop changes.
-   * @param {Object} nextProps - The next props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (
-      !this.state.selected ||
-      nextProps.value !== this.state.selected.value
-    ) {
-      this.state.selected = normalizeItem((
-        findItemByValue(nextProps.items, nextProps.value)
-      ));
-    }
   }
 
   /**

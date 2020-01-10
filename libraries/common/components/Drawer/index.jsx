@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -36,16 +37,44 @@ class Drawer extends Component {
     className: '',
     children: null,
     isOpen: false,
-    onOpen: () => {},
-    onClose: () => {},
-    onDidClose: () => {},
-    onDidOpen: () => {},
+    onOpen: () => { },
+    onClose: () => { },
+    onDidClose: () => { },
+    onDidOpen: () => { },
     animation: {
       duration: null,
       in: '',
       out: '',
     },
   };
+
+  /**
+   * Update state when isOpen changes.
+   * @param {Object} props The next component props.
+   * @param {Object} state The component state.
+   * @returns {Object} The new state.
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (state.active === props.isOpen) {
+      return null;
+    }
+
+    if (props.isOpen) {
+      if (typeof props.onOpen === 'function') {
+        props.onOpen();
+      }
+
+      return {
+        active: true,
+      };
+    }
+
+    if (typeof props.onClose === 'function') {
+      props.onClose();
+    }
+
+    return null;
+  }
 
   /**
    * Initializes the Drawer component.
@@ -57,23 +86,6 @@ class Drawer extends Component {
     this.state = {
       active: props.isOpen,
     };
-  }
-
-  /**
-   * Update state when isOpen changes.
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isOpen !== nextProps.isOpen) {
-      if (nextProps.isOpen) {
-        if (typeof nextProps.onOpen === 'function') {
-          nextProps.onOpen();
-        }
-        this.setState({ active: true });
-      } else if (typeof nextProps.onClose === 'function') {
-        nextProps.onClose();
-      }
-    }
   }
 
   /**
@@ -130,3 +142,5 @@ class Drawer extends Component {
 }
 
 export default Drawer;
+
+/* eslint-enable react/no-unused-prop-types */

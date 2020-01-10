@@ -22,7 +22,7 @@ class RadioGroup extends Component {
   }
 
   static defaultProps = {
-    onChange: () => {},
+    onChange: () => { },
     children: null,
     direction: 'column',
     errorText: '',
@@ -33,21 +33,27 @@ class RadioGroup extends Component {
   }
 
   /**
+   * @param {Object} props The component props.
+   * @param {Object} state The component state.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (props.isControlled && state.value !== props.value) {
+      return {
+        value: props.value,
+      };
+    }
+
+    return null;
+  }
+
+  /**
    * Initializes the component.
    * @param {Object} props The components props.
    */
   constructor(props) {
     super(props);
     this.state = { value: props.value };
-  }
-
-  /**
-   * @param {Object} nextProps props
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isControlled && this.state.value !== nextProps.value) {
-      this.setState({ value: nextProps.value });
-    }
   }
 
   /**

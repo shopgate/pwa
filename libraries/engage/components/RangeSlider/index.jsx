@@ -70,14 +70,6 @@ class RangeSlider extends PureComponent {
   }
 
   /**
-   * Updates the component properties.
-   * @param {Object} newProps The new component properties.
-   */
-  componentWillReceiveProps(newProps) {
-    this.setState(this.getRange(newProps));
-  }
-
-  /**
    * Removes the global event listeners when component unmounts.
    */
   componentWillUnmount() {
@@ -233,6 +225,14 @@ class RangeSlider extends PureComponent {
     const state = id === 'price_from' ? { rangeMin: delta } : { rangeMax: delta };
 
     this.setState(state);
+  }
+
+  /**
+   * Updates the component properties.
+   * @param {Object} newProps The new component properties.
+   */
+  UNSAFE_componentWillReceiveProps(newProps) { // eslint-disable-line camelcase
+    this.setState(this.getRange(newProps));
   }
 
   /**

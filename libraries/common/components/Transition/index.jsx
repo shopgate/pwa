@@ -25,7 +25,7 @@ class Transition extends Component {
     origin: '0 0 0',
     duration: 150,
     from: null,
-    onComplete: () => {},
+    onComplete: () => { },
     set: null,
     to: null,
   };
@@ -38,19 +38,6 @@ class Transition extends Component {
   }
 
   /**
-   * Checks if transition related props (from/to) have updated and runs the animation.
-   * @param {Object} nextProps - The received props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (
-      !isEqual(this.props.from, nextProps.from) ||
-      !isEqual(this.props.to, nextProps.to)
-    ) {
-      this.animate(nextProps);
-    }
-  }
-
-  /**
    * Returns the first child of children.
    * @returns {React.Element}
    */
@@ -58,6 +45,19 @@ class Transition extends Component {
     return React.Children.map(this.props.children, (element, idx) => (
       React.cloneElement(element, { ref: idx })
     ))[0];
+  }
+
+  /**
+   * Checks if transition related props (from/to) have updated and runs the animation.
+   * @param {Object} nextProps - The received props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (
+      !isEqual(this.props.from, nextProps.from) ||
+      !isEqual(this.props.to, nextProps.to)
+    ) {
+      this.animate(nextProps);
+    }
   }
 
   /**

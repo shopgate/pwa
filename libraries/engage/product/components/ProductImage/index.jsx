@@ -67,6 +67,17 @@ class ProductImage extends Component {
   };
 
   /**
+  * Called when the component props change.
+  * @param {Object} props The new component properties
+  * @returns {Object} The new state.
+  */
+  static getDerivedStateFromProps(props) {
+    return {
+      showPlaceholder: !props.src && (!props.srcmap || props.srcmap.length === 0),
+    };
+  }
+
+  /**
    * Component constructor
    * @param {Object} props The component properties
    */
@@ -77,19 +88,6 @@ class ProductImage extends Component {
     this.state = {
       showPlaceholder,
     };
-  }
-
-  /**
-   * Called when the component props change.
-   * @param {Object} nextProps The new component properties
-   */
-  componentWillReceiveProps(nextProps) {
-    // Disable the placeholder to give the real image a new chance to load.
-    // If we do not have a src property set then just show the placeholder instead.
-    const showPlaceholder = !nextProps.src && (!nextProps.srcmap || nextProps.srcmap.length === 0);
-    this.setState({
-      showPlaceholder,
-    });
   }
 
   /**

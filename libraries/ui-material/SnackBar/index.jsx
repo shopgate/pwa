@@ -27,6 +27,16 @@ class SnackBar extends Component {
   timer = null;
 
   /**
+   * @param {Object} props The next component props.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props) {
+    return {
+      visible: props.toasts.length > 0,
+    };
+  }
+
+  /**
    * @param {Object} props The component props.
    */
   constructor(props) {
@@ -35,15 +45,6 @@ class SnackBar extends Component {
     this.state = {
       visible: true,
     };
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    const hasToast = nextProps.toasts.length > 0;
-
-    this.setState({ visible: hasToast });
   }
 
   /**

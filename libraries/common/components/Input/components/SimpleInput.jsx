@@ -41,13 +41,13 @@ class SimpleInput extends Component {
     id: null,
     isControlled: false,
     name: null,
-    onChange: () => {},
-    onFocusChange: () => {},
-    onKeyPress: () => {},
+    onChange: () => { },
+    onFocusChange: () => { },
+    onKeyPress: () => { },
     onSanitize: value => value,
     onValidate: () => true,
     password: false,
-    setRef: () => {},
+    setRef: () => { },
     type: 'text',
     validateOnBlur: true,
     value: '',
@@ -76,21 +76,6 @@ class SimpleInput extends Component {
   componentDidMount() {
     const sanitizedValue = this.props.onSanitize(this.props.value || '');
     this.props.onChange(sanitizedValue);
-  }
-
-  /**
-   * Updates the value of the input field if the props has been modified.
-   * @param {Object} nextProps The new properties.
-   */
-  componentWillReceiveProps(nextProps) {
-    /**
-     * Only set the state value if the value prop has been changed,
-     * otherwise use the current input state.
-     */
-    const sanitizedValue = this.props.onSanitize(nextProps.value || '');
-    if (sanitizedValue !== this.state.value) {
-      this.updateValue(sanitizedValue, true);
-    }
   }
 
   /**
@@ -156,6 +141,21 @@ class SimpleInput extends Component {
     // Emit an event.
     this.props.onChange(sanitizedValue);
   };
+
+  /**
+   * Updates the value of the input field if the props has been modified.
+   * @param {Object} nextProps The new properties.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    /**
+     * Only set the state value if the value prop has been changed,
+     * otherwise use the current input state.
+     */
+    const sanitizedValue = this.props.onSanitize(nextProps.value || '');
+    if (sanitizedValue !== this.state.value) {
+      this.updateValue(sanitizedValue, true);
+    }
+  }
 
   /**
    * Handles reference passing to callback and assignation.

@@ -95,41 +95,6 @@ class InfiniteContainer extends Component {
   }
 
   /**
-   * Checks if the component received new items or already received all items.
-   * @param {Object} nextProps The next props.
-   */
-  componentWillReceiveProps(nextProps) {
-    /**
-     * Downstream logic to process the props. It's wrapped into a separate function, since it might
-     * beed to be executed after the state was updated to avoid race conditions.
-     */
-    const finalize = () => {
-      const { current } = nextProps.containerRef;
-      if (!this.domScrollContainer && current) {
-        this.domScrollContainer = current;
-        this.bindEvents();
-      }
-
-      if (this.receivedTotalItems(nextProps)) {
-        // Trigger loading if totalItems are available
-        this.handleLoading(true, nextProps);
-      }
-
-      this.verifyAllDone(nextProps);
-    };
-
-    if (nextProps.requestHash !== this.props.requestHash) {
-      this.resetComponent(() => {
-        finalize();
-      });
-
-      return;
-    }
-
-    finalize();
-  }
-
-  /**
    * Let the component only update when props.items or state changes.
    * @param {Object} nextProps The next component props.
    * @param {Object} nextState The next component state.
@@ -158,6 +123,41 @@ class InfiniteContainer extends Component {
       offset: this.state.offset[0],
     }, false);
     this.unbindEvents();
+  }
+
+  /**
+   * Checks if the component received new items or already received all items.
+   * @param {Object} nextProps The next props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    /**
+     * Downstream logic to process the props. It's wrapped into a separate function, since it might
+     * beed to be executed after the state was updated to avoid race conditions.
+     */
+    const finalize = () => {
+      const { current } = nextProps.containerRef;
+      if (!this.domScrollContainer && current) {
+        this.domScrollContainer = current;
+        this.bindEvents();
+      }
+
+      if (this.receivedTotalItems(nextProps)) {
+        // Trigger loading if totalItems are available
+        this.handleLoading(true, nextProps);
+      }
+
+      this.verifyAllDone(nextProps);
+    };
+
+    if (nextProps.requestHash !== this.props.requestHash) {
+      this.resetComponent(() => {
+        finalize();
+      });
+
+      return;
+    }
+
+    finalize();
   }
 
   /**

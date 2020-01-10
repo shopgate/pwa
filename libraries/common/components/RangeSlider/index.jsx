@@ -74,14 +74,6 @@ class RangeSlider extends Component {
   }
 
   /**
-   * Updates the component properties.
-   * @param {Object} newProps The new component properties.
-   */
-  componentWillReceiveProps(newProps) {
-    this.setState(this.getRange(newProps));
-  }
-
-  /**
    * Removes the global event listeners when component unmounts.
    */
   componentWillUnmount() {
@@ -224,6 +216,14 @@ class RangeSlider extends Component {
     }
 
     this.handleTouchMove(event);
+  }
+
+  /**
+   * Updates the component properties.
+   * @param {Object} newProps The new component properties.
+   */
+  UNSAFE_componentWillReceiveProps(newProps) { // eslint-disable-line camelcase
+    this.setState(this.getRange(newProps));
   }
 
   /**

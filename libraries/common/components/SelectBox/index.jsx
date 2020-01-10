@@ -35,6 +35,21 @@ class SelectBox extends Component {
   };
 
   /**
+   * @param {Object} props The next props.
+   * @param {Object} state The component props.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (state.selected.value === props.initialValue) {
+      return null;
+    }
+
+    return {
+      select: find(props.items, { value: props.initialValue }),
+    };
+  }
+
+  /**
    * Initializes the component.
    * @param {Object} props The components props.
    */
@@ -46,18 +61,6 @@ class SelectBox extends Component {
       isOpen: false,
       selected: find(props.items, { value: props.initialValue }),
     };
-  }
-
-  /**
-   * Reset selected when changing the initial value.
-    * @param {Object} nextProps The next props the component will receive.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.initialValue !== nextProps.initialValue) {
-      this.setState({
-        selected: find(nextProps.items, { value: nextProps.initialValue }),
-      });
-    }
   }
 
   /**

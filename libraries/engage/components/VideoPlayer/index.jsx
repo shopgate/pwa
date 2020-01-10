@@ -29,17 +29,6 @@ class VideoPlayer extends PureComponent {
   /**
    * @inheritDoc
    */
-  componentWillReceiveProps(nextProps) {
-    const nextState = { playing: nextProps.playing };
-    if (this.props.url !== nextProps.url) {
-      nextState.ready = false;
-    }
-    this.setState(nextState);
-  }
-
-  /**
-   * @inheritDoc
-   */
   componentWillUnmount() {
     UIEvents.removeListener(UI_VISIBILITY_CHANGE, this.handleVisibilityChange);
   }
@@ -88,6 +77,17 @@ class VideoPlayer extends PureComponent {
   /** @returns {undefined} */
   handleVisibilityChange = () => {
     this.setState({ playing: false });
+  }
+
+  /**
+   * @inheritDoc
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    const nextState = { playing: nextProps.playing };
+    if (this.props.url !== nextProps.url) {
+      nextState.ready = false;
+    }
+    this.setState(nextState);
   }
 
   /**

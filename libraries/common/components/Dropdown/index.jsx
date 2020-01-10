@@ -30,6 +30,22 @@ class Dropdown extends Component {
   };
 
   /**
+  * Update the initialRender state if the isOpen state changes from false to true
+  * @param {Object} props The new props
+  * @param {Object} state The component state.
+  * @returns {Object} The derived state.
+  */
+  static getDerivedStateFromProps(props, state) {
+    if (state.initialRender && props.isOpen) {
+      return {
+        initialRender: false,
+      };
+    }
+
+    return null;
+  }
+
+  /**
    * Constructor
    * @param {Object} props Props of the Component
    */
@@ -39,18 +55,6 @@ class Dropdown extends Component {
     this.state = {
       initialRender: true,
     };
-  }
-
-  /**
-   * Update the initialRender state if the isOpen state changes from false to true
-   * @param {Object} nextProps The new props
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isOpen === false && nextProps.isOpen === true) {
-      this.setState({
-        initialRender: false,
-      });
-    }
   }
 
   /**

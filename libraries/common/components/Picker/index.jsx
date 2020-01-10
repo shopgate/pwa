@@ -110,28 +110,6 @@ class Picker extends Component {
   }
 
   /**
-   * Updates the selected item when the value prop changes.
-   * @param {Object} nextProps - The next props.
-   */
-  componentWillReceiveProps(nextProps) {
-    // Only update if a value is present and also changed.
-    if (
-      !this.selectedItem ||
-      nextProps.value !== this.selectedItem.value
-    ) {
-      this.setState({
-        selectedIndex: findItemIndexByValue(nextProps.items, nextProps.value),
-      });
-    }
-
-    if (this.props.isOpen !== nextProps.isOpen && nextProps.isOpen !== this.state.isOpen) {
-      this.setState({
-        isOpen: nextProps.isOpen,
-      });
-    }
-  }
-
-  /**
    * Getter for the selected item.
    */
   get selectedItem() {
@@ -188,6 +166,28 @@ class Picker extends Component {
       };
     });
   };
+
+  /**
+   * Updates the selected item when the value prop changes.
+   * @param {Object} nextProps - The next props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    // Only update if a value is present and also changed.
+    if (
+      !this.selectedItem ||
+      nextProps.value !== this.selectedItem.value
+    ) {
+      this.setState({
+        selectedIndex: findItemIndexByValue(nextProps.items, nextProps.value),
+      });
+    }
+
+    if (this.props.isOpen !== nextProps.isOpen && nextProps.isOpen !== this.state.isOpen) {
+      this.setState({
+        isOpen: nextProps.isOpen,
+      });
+    }
+  }
 
   /**
    * Renders the component.

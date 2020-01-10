@@ -70,7 +70,7 @@ class Builder extends Component {
   static defaultProps = {
     className: '',
     defaults: {},
-    onSubmit: () => {},
+    onSubmit: () => { },
     validationErrors: [],
   }
 
@@ -131,18 +131,6 @@ class Builder extends Component {
       newState = this.actionListener.notify(element.id, this.state, newState);
     });
     this.state = newState;
-  }
-
-  /**
-   * Handles response of validation errors
-   * @param {Object} nextProps The new props object with changed data
-   */
-  componentWillReceiveProps(nextProps) {
-    const oldValidationErrors = buildValidationErrorList(this.props.validationErrors);
-    const newValidationErrors = buildValidationErrorList(nextProps.validationErrors);
-    if (!isEqual(oldValidationErrors, newValidationErrors)) {
-      this.setState({ errors: newValidationErrors });
-    }
   }
 
   /**
@@ -228,6 +216,18 @@ class Builder extends Component {
     // Trigger the given update action
     this.props.handleUpdate(updateData, hasErrors || hasValidationErrors);
   };
+
+  /**
+   * Handles response of validation errors
+   * @param {Object} nextProps The new props object with changed data
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    const oldValidationErrors = buildValidationErrorList(this.props.validationErrors);
+    const newValidationErrors = buildValidationErrorList(nextProps.validationErrors);
+    if (!isEqual(oldValidationErrors, newValidationErrors)) {
+      this.setState({ errors: newValidationErrors });
+    }
+  }
 
   /**
    * Takes an element of any type and renders it depending on type.
@@ -357,7 +357,7 @@ class Builder extends Component {
                   name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
                 />
                 <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
-                  { this.renderElement(element) }
+                  {this.renderElement(element)}
                 </Portal>
                 <Portal
                   name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}

@@ -58,19 +58,6 @@ class ProductCharacteristics extends Component {
   }
 
   /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.variants && nextProps.variants) {
-      // Initialize refs and characteristics when the variants prop was updated with a valid value.
-      this.setRefs(nextProps);
-      this.setState({
-        characteristics: selectCharacteristics(nextProps),
-      }, this.checkSelectedCharacteristics);
-    }
-  }
-
-  /**
    * Sets the refs to the characteristics selects.
    * @param {Object} props The props to check against.
    */
@@ -223,6 +210,19 @@ class ProductCharacteristics extends Component {
         selected: selectedValue === value.id,
       });
     });
+  }
+
+  /**
+  * @param {Object} nextProps The next component props.
+  */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (!this.props.variants && nextProps.variants) {
+      // Initialize refs and characteristics when the variants prop was updated with a valid value.
+      this.setRefs(nextProps);
+      this.setState({
+        characteristics: selectCharacteristics(nextProps),
+      }, this.checkSelectedCharacteristics);
+    }
   }
 
   /**
