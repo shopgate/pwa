@@ -1,71 +1,16 @@
-import Loadable from 'react-loadable';
+import { lazy } from 'react';
 
-export const StartPage = Loadable({
-  loader: () => import('./StartPage'),
-  loading: () => null,
-});
-
-export const Page = Loadable({
-  loader: () => import('./Page'),
-  loading: () => null,
-});
-
-export const RootCategory = Loadable({
-  loader: () => import('./RootCategory'),
-  loading: () => null,
-});
-
-export const Category = Loadable({
-  loader: () => import('./Category'),
-  loading: () => null,
-});
-
-export const Filter = Loadable({
-  loader: () => import('./Filter'),
-  loading: () => null,
-});
-
-export const Product = Loadable({
-  loader: () => import('./Product'),
-  loading: () => null,
-});
-
-export const ProductGallery = Loadable({
-  loader: () => import('./ProductGallery'),
-  loading: () => null,
-});
-
-export const Reviews = Loadable({
-  loader: () => import('./Reviews'),
-  loading: () => null,
-});
-
-export const Cart = Loadable({
-  loader: () => import('./Cart'),
-  loading: () => null,
-});
-
-export const Favorites = Loadable({
-  loader: () => import('./Favorites'),
-  loading: () => null,
-});
-
-export const Search = Loadable({
-  loader: () => import('./Search'),
-  loading: () => null,
-});
-
-export const Login = Loadable({
-  loader: () => import('./Login'),
-  loading: () => null,
-});
-
-export const WriteReview = Loadable({
-  loader: () => import('./WriteReview'),
-  loading: () => null,
-});
-
-export const Scanner = Loadable({
-  loader: () => import('./Scanner'),
-  loading: () => null,
-});
+export const StartPage = lazy(() => import('./StartPage'));
+export const Page = lazy(() => import('./Page'));
+export const RootCategory = lazy(() => import('./RootCategory'));
+export const Category = lazy(() => import('./Category'));
+export const Filter = lazy(() => import('./Filter'));
+export const Product = lazy(() => import('./Product'));
+export const ProductGallery = lazy(() => import('./ProductGallery'));
+export const Reviews = lazy(() => import('./Reviews'));
+export const Cart = lazy(() => import('./Cart'));
+export const Favorites = lazy(() => import('./Favorites'));
+export const Search = lazy(() => import('./Search'));
+export const Login = lazy(() => import('./Login'));
+export const WriteReview = lazy(() => import('./WriteReview'));
+export const Scanner = lazy(() => import('./Scanner'));

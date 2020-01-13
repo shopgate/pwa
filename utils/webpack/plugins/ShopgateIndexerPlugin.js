@@ -1,9 +1,7 @@
 /* eslint-disable class-methods-use-this */
 const path = require('path');
 const fs = require('fs');
-const {
-  camelCase, has, upperFirst, isPlainObject,
-} = require('lodash');
+const { camelCase, upperFirst, isPlainObject } = require('lodash');
 const { isDev } = require('../lib/variables');
 const logger = require('../lib/logger');
 const getComponentsSettings = require('../lib/getComponentsSettings');
@@ -75,16 +73,9 @@ function readConfig(options) {
   const imports = importsStart ? [importsStart] : []; // Holds the import strings.
   const exports = [exportsStart]; // Holds the export strings.
 
-  // eslint-disable-next-line global-require, import/no-dynamic-require
-  const themePackage = require(`${themePath}/package.json`);
-
-  if (
-    (type === TYPE_PORTALS || type === TYPE_WIDGETS) &&
-    has(themePackage.dependencies, 'react-loadable')
-  ) {
+  if (type === TYPE_PORTALS || type === TYPE_WIDGETS) {
     imports.push('import { hot } from \'react-hot-loader/root\';');
-    imports.push('import Loadable from \'react-loadable\';');
-    imports.push('import Loading from \'@shopgate/pwa-common/components/Loading\';');
+    imports.push('import { lazy } from \'react\';');
     imports.push('');
   }
 
@@ -103,8 +94,8 @@ function readConfig(options) {
       || type === TYPE_WIDGETS
     );
 
-    if (isPortalsOrWidgets && has(themePackage.dependencies, 'react-loadable')) {
-      imports.push(`const ${variableName} = Loadable({\n  loader: () => import('${componentPath}'),\n  loading: Loading,\n});\n`);
+    if (isPortalsOrWidgets) {
+      imports.push(`const ${variableName} = lazy({() => import('${componentPath}');\n`);
     } else {
       imports.push(`import ${variableName} from '${componentPath}';`);
     }
