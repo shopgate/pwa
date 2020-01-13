@@ -52,22 +52,11 @@ class Sheet extends Component {
     contentClassName: null,
     duration: 300,
     isOpen: false,
-    onClose: () => {},
-    onDidOpen: () => {},
-    onOpen: () => {},
+    onClose: () => { },
+    onDidOpen: () => { },
+    onOpen: () => { },
     title: '',
   };
-
-  /**
-   * Close the Sheet.
-   */
-  handleScroll = throttle(() => {
-    const scrolled = this.content.current.scrollTop !== 0;
-
-    if (this.state.scrolled !== scrolled) {
-      this.setState({ scrolled });
-    }
-  }, 10);
 
   /**
    * The constructor.
@@ -88,11 +77,22 @@ class Sheet extends Component {
    * Change isOpen state for new incoming props.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps({ isOpen }) {
+  UNSAFE_componentWillReceiveProps({ isOpen }) {
     if (this.state.isOpen !== isOpen) {
       this.setState({ isOpen });
     }
   }
+
+  /**
+   * Close the Sheet.
+   */
+  handleScroll = throttle(() => {
+    const scrolled = this.content.current.scrollTop !== 0;
+
+    if (this.state.scrolled !== scrolled) {
+      this.setState({ scrolled });
+    }
+  }, 10);
 
   /**
    * Getter for the animation props of the Sheet.

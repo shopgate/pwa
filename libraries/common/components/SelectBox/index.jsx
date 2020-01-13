@@ -52,7 +52,7 @@ class SelectBox extends Component {
    * Reset selected when changing the initial value.
     * @param {Object} nextProps The next props the component will receive.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.initialValue !== nextProps.initialValue) {
       this.setState({
         selected: find(nextProps.items, { value: nextProps.initialValue }),

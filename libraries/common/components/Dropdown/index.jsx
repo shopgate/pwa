@@ -45,7 +45,7 @@ class Dropdown extends Component {
    * Update the initialRender state if the isOpen state changes from false to true
    * @param {Object} nextProps The new props
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isOpen === false && nextProps.isOpen === true) {
       this.setState({
         initialRender: false,

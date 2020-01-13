@@ -83,7 +83,7 @@ class ProductImage extends Component {
    * Called when the component props change.
    * @param {Object} nextProps The new component properties
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Disable the placeholder to give the real image a new chance to load.
     // If we do not have a src property set then just show the placeholder instead.
     const showPlaceholder = !nextProps.src && (!nextProps.srcmap || nextProps.srcmap.length === 0);

@@ -21,9 +21,11 @@ class Drawer extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     isOpen: PropTypes.bool,
+    // eslint-disable-next-line react/no-unused-prop-types
     onClose: PropTypes.func,
     onDidClose: PropTypes.func,
     onDidOpen: PropTypes.func,
+    // eslint-disable-next-line react/no-unused-prop-types
     onOpen: PropTypes.func,
   };
 
@@ -36,10 +38,10 @@ class Drawer extends Component {
     className: '',
     children: null,
     isOpen: false,
-    onOpen: () => {},
-    onClose: () => {},
-    onDidClose: () => {},
-    onDidOpen: () => {},
+    onOpen: () => { },
+    onClose: () => { },
+    onDidClose: () => { },
+    onDidOpen: () => { },
     animation: {
       duration: null,
       in: '',
@@ -63,7 +65,7 @@ class Drawer extends Component {
    * Update state when isOpen changes.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isOpen !== nextProps.isOpen) {
       if (nextProps.isOpen) {
         if (typeof nextProps.onOpen === 'function') {

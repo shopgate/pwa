@@ -82,7 +82,7 @@ class SimpleInput extends Component {
    * Updates the value of the input field if the props has been modified.
    * @param {Object} nextProps The new properties.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     /**
      * Only set the state value if the value prop has been changed,
      * otherwise use the current input state.

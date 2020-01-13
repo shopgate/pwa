@@ -98,7 +98,7 @@ class InfiniteContainer extends Component {
    * Checks if the component received new items or already received all items.
    * @param {Object} nextProps The next props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     /**
      * Downstream logic to process the props. It's wrapped into a separate function, since it might
      * beed to be executed after the state was updated to avoid race conditions.

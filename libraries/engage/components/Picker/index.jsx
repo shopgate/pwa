@@ -111,7 +111,7 @@ class Picker extends Component {
    * Updates the selected item when the value prop changes.
    * @param {Object} nextProps - The next props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Only update if a value is present and also changed.
     if (
       !this.selectedItem ||

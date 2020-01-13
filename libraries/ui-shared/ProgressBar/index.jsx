@@ -71,13 +71,13 @@ class ProgressBar extends Component {
    * Update the state based on props.
    * @param {Object} nextProps The next set of props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isVisible === nextProps.isVisible) {
       return;
     }
 
     this.setState({
-      ...nextProps.isVisible && { isAnimating: true },
+      ...(nextProps.isVisible && { isAnimating: true }),
       isVisible: nextProps.isVisible,
     });
   }

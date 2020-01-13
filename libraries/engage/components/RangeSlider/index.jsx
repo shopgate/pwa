@@ -73,7 +73,7 @@ class RangeSlider extends PureComponent {
    * Updates the component properties.
    * @param {Object} newProps The new component properties.
    */
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     this.setState(this.getRange(newProps));
   }
 

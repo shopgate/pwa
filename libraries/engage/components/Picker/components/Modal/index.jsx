@@ -30,7 +30,7 @@ class PickerModal extends Component {
    * Update state when isOpen changes.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isOpen !== nextProps.isOpen) {
       this.setState({ active: nextProps.isOpen });
     }
