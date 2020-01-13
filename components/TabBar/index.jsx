@@ -71,7 +71,7 @@ class TabBar extends PureComponent {
   /**
    * @param {Object} nextProps next props
    */
-  componentWillReceiveProps({ isVisible }) {
+  UNSAFE_componentWillReceiveProps({ isVisible }) {
     if (this.state.isVisible !== isVisible) {
       this.setState({ isVisible });
     }
