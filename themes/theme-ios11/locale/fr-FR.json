@@ -14,11 +14,11 @@
   },
   "titles": {
     "categories": "Catégories",
-    "filter": "Filterer",
+    "filter": "Filtre",
     "cart": "Panier",
     "shipping": "Livraison",
     "reviews": "Revues",
-    "browse": "Naviger",
+    "browse": "Naviguer",
     "favorites": "Favorits",
     "scanner": "Scanner"
   },
@@ -169,7 +169,7 @@
     "no_account": "Vous n'êtes pas inscrit?",
     "signup": "S'enregistrer",
     "register": "Créer un compte ici!",
-    "logout_message": "Vous avez été déconnecté",
+    "logout_message": "Vous avez été déconnecté(e)",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte"
   },
   "navigation": {
@@ -185,7 +185,7 @@
     "payment": "Méthodes de paiement",
     "terms": "Termes",
     "privacy": "Politique de confidentialité",
-    "welcome_message": "Bienvenue {name}",
+    "welcome_message": "Bienvenue, {name}",
     "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
@@ -212,7 +212,7 @@
   },
   "tab_bar": {
     "home": "Accueil",
-    "browse": "Naviger",
+    "browse": "Naviguer",
     "cart": "Panier",
     "more": "Plus",
     "favorites": "Favorits"
