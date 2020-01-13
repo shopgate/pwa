@@ -54,7 +54,7 @@ class ProductsWidget extends Component {
    * When we receive new products then we can adjust the state.
    * @param {Object} nextProps The next set of component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Set the total product count.
     this.totalProductCount = nextProps.totalProductCount;
 
@@ -179,7 +179,7 @@ class ProductsWidget extends Component {
       name: isList ? true : showName,
       price: showPrice,
       reviews: showReviews,
-      ...isList && { manufacturer: false },
+      ...(isList && { manufacturer: false }),
     };
 
     // Determine which component to render.

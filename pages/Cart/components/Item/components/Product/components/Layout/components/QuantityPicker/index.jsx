@@ -22,12 +22,6 @@ class QuantityPicker extends Component {
   };
 
   /**
-   * The default quantity.
-   * @type {number}
-   */
-  defaultQuantity = 1;
-
-  /**
    * Constructor.
    * @param {Object} props The component props.
    */
@@ -64,7 +58,7 @@ class QuantityPicker extends Component {
    * The componentWillReceiveProps lifecycle hook. I will bring the input into the correct state.
    * @param {Object} nextProps The next set of props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.editMode) {
       this.input.focus();
     } else {
@@ -85,6 +79,12 @@ class QuantityPicker extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.quantity !== nextState.quality;
   }
+
+  /**
+   * The default quantity.
+   * @type {number}
+   */
+  defaultQuantity = 1;
 
   /**
    * Returns the initial quantity based on the props.
