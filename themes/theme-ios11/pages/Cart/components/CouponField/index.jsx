@@ -38,7 +38,7 @@ class CouponField extends PureComponent {
   /**
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     /**
      * Reset the form values when the page is not visible to the user.
      */
