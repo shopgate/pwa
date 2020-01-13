@@ -37,7 +37,7 @@ class Options extends PureComponent {
    * it will set the first value of each option as active
    * @param {Object} nextProps The incoming props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.props.options && nextProps.options) {
       this.handleStoreSelection(nextProps);
     }
