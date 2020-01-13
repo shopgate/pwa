@@ -39,7 +39,7 @@ class RatingScale extends Component {
    * Update state with next props.
    * @param {Object} nextProps The next props
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ value: nextProps.value });
   }
 

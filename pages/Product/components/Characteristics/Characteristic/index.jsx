@@ -16,6 +16,7 @@ class Characteristic extends PureComponent {
       PropTypes.shape(),
     ]).isRequired,
     disabled: PropTypes.bool.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     highlight: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -40,7 +41,7 @@ class Characteristic extends PureComponent {
   /**
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ highlight: nextProps.highlight });
   }
 
@@ -116,7 +117,7 @@ class Characteristic extends PureComponent {
         tabIndex={0}
         className={classes}
         onClick={this.handleButtonClick}
-        onKeyDown={() => {}}
+        onKeyDown={() => { }}
         ref={charRef}
         style={transition[state]}
         data-test-id={label}

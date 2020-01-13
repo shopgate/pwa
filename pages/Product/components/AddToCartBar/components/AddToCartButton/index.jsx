@@ -40,7 +40,7 @@ class AddToCartButton extends PureComponent {
    * Resets to not open when the count is 0.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       opened: !!nextProps.itemCount,
     });
