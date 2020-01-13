@@ -33,17 +33,6 @@ class Options extends PureComponent {
   }
 
   /**
-   * When the component receives the product options
-   * it will set the first value of each option as active
-   * @param {Object} nextProps The incoming props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.options && nextProps.options) {
-      this.handleStoreSelection(nextProps);
-    }
-  }
-
-  /**
    * @param {Object} props The component props.
    */
   handleStoreSelection = (props) => {
@@ -55,6 +44,17 @@ class Options extends PureComponent {
 
       this.context.setOption(option.id, option.items[0].value, option.items[0].price);
     });
+  }
+
+  /**
+   * When the component receives the product options
+   * it will set the first value of each option as active
+   * @param {Object} nextProps The incoming props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (!this.props.options && nextProps.options) {
+      this.handleStoreSelection(nextProps);
+    }
   }
 
   /**

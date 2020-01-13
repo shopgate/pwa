@@ -51,32 +51,6 @@ class ProductsWidget extends Component {
   }
 
   /**
-   * When we receive new products then we can adjust the state.
-   * @param {Object} nextProps The next set of component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    // Set the total product count.
-    this.totalProductCount = nextProps.totalProductCount;
-
-    /**
-     * Only update to stop 'fetching' when we receive new products or
-     * if we have received all expected products.
-     */
-    if (
-      this.props.products.length !== nextProps.products.length ||
-      nextProps.products.length === this.totalProductCount
-    ) {
-      this.productCount = Math.min(nextProps.products.length, this.totalProductCount);
-    }
-    // React to case when widget settings change after component mounted
-    if (JSON.stringify(this.props.settings.queryParams)
-      !== JSON.stringify(nextProps.settings.queryParams)
-      && (!nextProps.products || !nextProps.products.length)) {
-      this.getProducts(nextProps.settings);
-    }
-  }
-
-  /**
    * Only update when we are fetching products or we have new products.
    * @param {Object} nextProps The next set of component props.
    * @returns {boolean}
@@ -127,6 +101,32 @@ class ProductsWidget extends Component {
     this.props.totalProductCount !== null &&
     this.props.products.length >= this.props.totalProductCount
   );
+
+  /**
+   * When we receive new products then we can adjust the state.
+   * @param {Object} nextProps The next set of component props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    // Set the total product count.
+    this.totalProductCount = nextProps.totalProductCount;
+
+    /**
+     * Only update to stop 'fetching' when we receive new products or
+     * if we have received all expected products.
+     */
+    if (
+      this.props.products.length !== nextProps.products.length ||
+      nextProps.products.length === this.totalProductCount
+    ) {
+      this.productCount = Math.min(nextProps.products.length, this.totalProductCount);
+    }
+    // React to case when widget settings change after component mounted
+    if (JSON.stringify(this.props.settings.queryParams)
+      !== JSON.stringify(nextProps.settings.queryParams)
+      && (!nextProps.products || !nextProps.products.length)) {
+      this.getProducts(nextProps.settings);
+    }
+  }
 
   /**
    * Renders a 'Load More' button if there are more products to load.

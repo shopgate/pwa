@@ -26,19 +26,6 @@ class Count extends Component {
   }
 
   /**
-   * Sets the animation state if props change.
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.count !== nextProps.count) {
-      this.setState({
-        in: false,
-        numItems: nextProps.count,
-      });
-    }
-  }
-
-  /**
    * Only update if the cart product count changed.
    * @param {Object} nextProps The next props.
    * @param {Object} nextState The next state.
@@ -53,6 +40,19 @@ class Count extends Component {
 
   handleOnExited = () => {
     this.setState({ in: true });
+  }
+
+  /**
+   * Sets the animation state if props change.
+   * @param {Object} nextProps The next component props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (this.props.count !== nextProps.count) {
+      this.setState({
+        in: false,
+        numItems: nextProps.count,
+      });
+    }
   }
 
   /**

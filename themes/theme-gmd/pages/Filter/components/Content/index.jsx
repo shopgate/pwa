@@ -47,17 +47,6 @@ class FilterContent extends PureComponent {
   }
 
   /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps({ activeFilters, filters }) {
-    if (Object.keys(this.initialFilters).length > 0) {
-      return;
-    }
-
-    this.initialFilters = buildInitialFilters(filters, activeFilters);
-  }
-
-  /**
    * Determine if there are filters that have been changed.
    * @returns {boolean}
    */
@@ -184,6 +173,17 @@ class FilterContent extends PureComponent {
       { filters: buildUpdatedFilters(currentFilters, filters) }
     );
     setTimeout(router.pop, 250);
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  UNSAFE_componentWillReceiveProps({ activeFilters, filters }) { // eslint-disable-line camelcase
+    if (Object.keys(this.initialFilters).length > 0) {
+      return;
+    }
+
+    this.initialFilters = buildInitialFilters(filters, activeFilters);
   }
 
   /**

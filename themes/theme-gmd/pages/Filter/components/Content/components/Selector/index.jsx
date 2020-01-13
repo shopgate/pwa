@@ -27,18 +27,24 @@ class Selector extends PureComponent {
     selected: null,
   };
 
+  /**
+   * @param {Object} props The new incoming props.
+   * @param {Object} state The component state.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (props.selected === state.selected) {
+      return null;
+    }
+
+    return {
+      selected: props.selected,
+    };
+  }
+
   state = {
     selected: this.props.selected || [],
   };
-
-  /**
-   * @param {Object} nextProps The new incoming props.
-   */
-  componentWillReceiveProps({ selected }) {
-    if (selected !== this.state.selected) {
-      this.setState({ selected });
-    }
-  }
 
   /**
    * @param {SyntheticEvent} event The button click event.

@@ -25,6 +25,16 @@ class AddToCartButton extends PureComponent {
   };
 
   /**
+   * @param {Object} props The next props.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props) {
+    return {
+      opened: !!props.itemCount,
+    };
+  }
+
+  /**
    * Constructor.
    * @param {Object} props The component props.
    */
@@ -34,16 +44,6 @@ class AddToCartButton extends PureComponent {
     this.state = {
       opened: !!props.itemCount,
     };
-  }
-
-  /**
-   * Resets to not open when the count is 0.
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      opened: !!nextProps.itemCount,
-    });
   }
 
   /**

@@ -36,6 +36,7 @@ const defaultState = {
 class Login extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     visible: PropTypes.bool.isRequired,
     isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
@@ -49,6 +50,18 @@ class Login extends Component {
   };
 
   /**
+   * @param {Object} props The new component props.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props) {
+    if (props.visible) {
+      return null;
+    }
+
+    return defaultState;
+  }
+
+  /**
    * Constructor.
    * @param {Object} props The component props.
    */
@@ -59,18 +72,6 @@ class Login extends Component {
     this.passwordField = null;
 
     this.state = defaultState;
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    /**
-     * Reset the form values when the page is not visible to the user.
-     */
-    if (this.props.visible && !nextProps.visible) {
-      this.setState(defaultState);
-    }
   }
 
   /**

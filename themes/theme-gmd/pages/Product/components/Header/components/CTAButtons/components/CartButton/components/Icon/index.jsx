@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
@@ -8,55 +8,39 @@ import transition from './transition';
 
 /**
  * The CartButtonIcon component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class CartButtonIcon extends PureComponent {
-  static propTypes = {
-    onSuccess: PropTypes.func.isRequired,
-    success: PropTypes.bool.isRequired,
-  }
+function CartButtonIcon(props) {
+  const [success, setSuccess] = useState(false);
 
-  state = {
-    success: false,
-  }
+  useEffect(() => {
+    setSuccess(props.success);
+  }, [props.success]);
 
   /**
-   * Set the success state when it is recieved as true.
-   * @param {Object} nextProps The next component props.
+   * Performs a reset of the component.
    */
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.success) {
-      return;
-    }
-
-    this.setState({
-      success: nextProps.success,
-    });
+  function reset() {
+    setSuccess(false);
+    props.onSuccess();
   }
 
-  reset = () => {
-    this.setState({ success: false });
-    this.props.onSuccess();
-  }
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <Transition
-        in={this.state.success}
-        timeout={800}
-        onEntered={this.reset}
-      >
-        {state => (
-          <div className={styles.container} style={transition[state]}>
-            <CartPlusIcon className={styles.iconCart} size={24} />
-            <TickIcon className={styles.iconTick} size={24} />
-          </div>
-        )}
-      </Transition>
-    );
-  }
+  return (
+    <Transition in={success} timeout={800} onEntered={reset}>
+      {state => (
+        <div className={styles.container} style={transition[state]}>
+          <CartPlusIcon className={styles.iconCart} size={24} />
+          <TickIcon className={styles.iconTick} size={24} />
+        </div>
+      )}
+    </Transition>
+  );
 }
 
-export default CartButtonIcon;
+CartButtonIcon.propTypes = {
+  onSuccess: PropTypes.func.isRequired,
+  success: PropTypes.bool.isRequired,
+};
+
+export default memo(CartButtonIcon);

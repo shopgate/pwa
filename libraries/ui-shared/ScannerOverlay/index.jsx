@@ -1,4 +1,6 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, {
+  Fragment, useState, useEffect, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import AppScanner from '@shopgate/pwa-core/classes/Scanner';
 import CameraOverlay from './components/CameraOverlay';
@@ -6,56 +8,37 @@ import ScannerBar from './components/ScannerBar';
 
 /**
  * The scanner overlay component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class ScannerOverlay extends PureComponent {
-  static propTypes = {
-    flashlight: PropTypes.bool,
-  }
+function ScannerOverlay(props) {
+  const [flashlight, setFlashlight] = useState(props.flashlight);
 
-  static defaultProps = {
-    flashlight: false,
-  }
+  useEffect(() => {
+    setFlashlight(props.flashlight);
+  }, [props.flashlight]);
 
   /**
-   * Initializes the component.
-   * @param {Object} props The components props.
+   * Handles toggling the flashlight.
    */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      flashlight: props.flashlight,
-    };
+  function handleToggleFlashlight() {
+    setFlashlight(AppScanner.toggleFlashlight());
   }
 
-  /**
-   * @param {Object} nextProps New props to apply.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.state.flashlight !== nextProps.flashlight) {
-      this.setState({ flashlight: nextProps.flashlight });
-    }
-  }
-
-  handleToggleFlashlight = () => {
-    this.setState({ flashlight: AppScanner.toggleFlashlight() });
-  }
-
-  /**
-   * Render the camera overlay and the bottom bar with its contents.
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <Fragment>
-        <CameraOverlay />
-        <ScannerBar
-          flashlightState={this.state.flashlight}
-          onToggleFlashlight={this.handleToggleFlashlight}
-        />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <CameraOverlay />
+      <ScannerBar flashlightState={flashlight} onToggleFlashlight={handleToggleFlashlight} />
+    </Fragment>
+  );
 }
 
-export default ScannerOverlay;
+ScannerOverlay.propTypes = {
+  flashlight: PropTypes.bool,
+};
+
+ScannerOverlay.defaultProps = {
+  flashlight: false,
+};
+
+export default memo(ScannerOverlay);

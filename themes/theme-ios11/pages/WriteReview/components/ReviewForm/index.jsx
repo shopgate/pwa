@@ -28,6 +28,7 @@ class ReviewForm extends PureComponent {
   static propTypes = {
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     authorName: PropTypes.string,
     productId: PropTypes.string,
     review: PropTypes.shape(),
@@ -55,20 +56,6 @@ class ReviewForm extends PureComponent {
       productId: props.productId,
       validationErrors: {},
     };
-  }
-
-  /**
-   * Update state with next props.
-   * @param {Object} nextProps The next props.
-   */
-  componentWillReceiveProps({ productId, review, authorName }) {
-    const author = review[FIELD_NAME_AUTHOR];
-
-    this.setState(prevState => ({
-      productId,
-      ...review,
-      ...!prevState[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || authorName) },
-    }));
   }
 
   /**
@@ -149,6 +136,21 @@ class ReviewForm extends PureComponent {
       [FIELD_NAME_REVIEW]: review,
       validationErrors,
     });
+  }
+
+  /**
+   * Update state with next props.
+   * @param {Object} nextProps The next props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    const { productId, review, authorName } = nextProps;
+    const author = review[FIELD_NAME_AUTHOR];
+
+    this.setState(prevState => ({
+      productId,
+      ...review,
+      ...!prevState[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || authorName) },
+    }));
   }
 
   /**

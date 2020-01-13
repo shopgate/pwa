@@ -22,6 +22,16 @@ class RatingScale extends Component {
   };
 
   /**
+   * @param {Object} props The next props.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props) {
+    return {
+      value: props.value,
+    };
+  }
+
+  /**
    * Construct and bind methods.
    * @param {Object} props Received props.
    */
@@ -33,14 +43,6 @@ class RatingScale extends Component {
     };
 
     this.updateValue = this.updateValue.bind(this);
-  }
-
-  /**
-   * Update state with next props.
-   * @param {Object} nextProps The next props
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({ value: nextProps.value });
   }
 
   /**

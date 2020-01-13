@@ -59,6 +59,21 @@ class TabBar extends PureComponent {
     isVisible: true,
   };
 
+  /**
+   * @param {Object} props The next props.
+   * @param {Object} state The component state.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (state.isVisible === props.isVisible) {
+      return null;
+    }
+
+    return {
+      isVisible: props.isVisible,
+    };
+  }
+
   state = { isVisible: this.props.isVisible };
 
   /** Did mount hook */
@@ -66,15 +81,6 @@ class TabBar extends PureComponent {
     UIEvents.addListener(SHOW_TAB_BAR, this.show);
     UIEvents.addListener(HIDE_TAB_BAR, this.hide);
     updateHeightCSSProperty(this.props.isVisible);
-  }
-
-  /**
-   * @param {Object} nextProps next props
-   */
-  componentWillReceiveProps({ isVisible }) {
-    if (this.state.isVisible !== isVisible) {
-      this.setState({ isVisible });
-    }
   }
 
   /** Will unmount hook */

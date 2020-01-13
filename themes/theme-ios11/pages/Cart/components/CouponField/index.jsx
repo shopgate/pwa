@@ -26,26 +26,14 @@ class CouponField extends PureComponent {
   };
 
   static defaultProps = {
-    addCoupon: () => {},
+    addCoupon: () => { },
     isIos: false,
     isLoading: false,
     isSupported: true,
-    onFocus: () => {},
+    onFocus: () => { },
   };
 
   state = defaultState;
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    /**
-     * Reset the form values when the page is not visible to the user.
-     */
-    if (this.props.visible && !nextProps.visible) {
-      this.setState(defaultState);
-    }
-  }
 
   /**
    * Checks if the icon button should be visible.
@@ -88,7 +76,7 @@ class CouponField extends PureComponent {
 
     this.props.addCoupon(this.state.value)
       .then(this.reset)
-      .catch(() => {});
+      .catch(() => { });
   };
 
   /**
@@ -138,6 +126,18 @@ class CouponField extends PureComponent {
 
   reset = () => {
     this.setState(defaultState);
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  USAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    /**
+     * Reset the form values when the page is not visible to the user.
+     */
+    if (this.props.visible && !nextProps.visible) {
+      this.setState(defaultState);
+    }
   }
 
   /**

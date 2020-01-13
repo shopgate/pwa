@@ -26,11 +26,21 @@ class Select extends Component {
     isControlled: false,
     placeholder: '',
     label: '',
-    onChange: () => {},
+    onChange: () => { },
     options: {},
     translateErrorText: true,
     value: '',
   };
+
+  /**
+   * @param {Object} props The next props.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props) {
+    return {
+      value: props.value,
+    };
+  }
 
   /**
    * Creates a new text field component.
@@ -43,16 +53,6 @@ class Select extends Component {
       value: props.value,
       isFocused: false,
     };
-  }
-
-  /**
-   * Update state with new props.
-   * @param {Object} nextProps The new props.
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      value: nextProps.value,
-    });
   }
 
   /**

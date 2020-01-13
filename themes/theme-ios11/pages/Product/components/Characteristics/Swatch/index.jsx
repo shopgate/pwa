@@ -16,6 +16,7 @@ class Swatch extends PureComponent {
       PropTypes.shape(),
     ]).isRequired,
     disabled: PropTypes.bool.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     highlight: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -28,14 +29,17 @@ class Swatch extends PureComponent {
     selected: null,
   };
 
-  state = { highlight: false };
-
   /**
-   * @param {Object} nextProps The next component props.
+   * @param {Object} props The next props.
+   * @returns {Object}
    */
-  componentWillReceiveProps(nextProps) {
-    this.setState({ highlight: nextProps.highlight });
+  static getDerivedStateFromProps(props) {
+    return {
+      highlight: props.highlight,
+    };
   }
+
+  state = { highlight: false };
 
   /**
    * @param {string} charLabel The default button label.

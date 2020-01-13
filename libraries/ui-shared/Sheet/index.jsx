@@ -52,11 +52,26 @@ class Sheet extends Component {
     contentClassName: null,
     duration: 300,
     isOpen: false,
-    onClose: () => {},
-    onDidOpen: () => {},
-    onOpen: () => {},
+    onClose: () => { },
+    onDidOpen: () => { },
+    onOpen: () => { },
     title: '',
   };
+
+  /**
+   * @param {Object} props The next props.
+   * @param {Object} state The component state.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    if (state.isOpen !== props.isOpen) {
+      return {
+        isOpen: props.isOpen,
+      };
+    }
+
+    return null;
+  }
 
   /**
    * Close the Sheet.
@@ -82,16 +97,6 @@ class Sheet extends Component {
       isOpen: props.isOpen,
       scrolled: false,
     };
-  }
-
-  /**
-   * Change isOpen state for new incoming props.
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps({ isOpen }) {
-    if (this.state.isOpen !== isOpen) {
-      this.setState({ isOpen });
-    }
   }
 
   /**

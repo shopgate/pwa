@@ -36,18 +36,6 @@ class CouponField extends PureComponent {
   state = defaultState;
 
   /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    /**
-     * Reset the form values when the page is not visible to the user.
-     */
-    if (this.props.visible && !nextProps.visible) {
-      this.setState(defaultState);
-    }
-  }
-
-  /**
    * Checks if the icon button should be visible.
    * @returns {boolean}
    */
@@ -138,6 +126,16 @@ class CouponField extends PureComponent {
 
   reset = () => {
     this.setState(defaultState);
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    // Reset the form values when the page is not visible to the user.
+    if (this.props.visible && !nextProps.visible) {
+      this.setState(defaultState);
+    }
   }
 
   /**

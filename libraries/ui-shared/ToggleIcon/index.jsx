@@ -1,70 +1,52 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 /**
  * No operational default handler
  */
-const noop = () => {};
+const noop = () => { };
 
 /**
  * An toggle icon with toggle handlers.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class ToggleIcon extends Component {
-  static propTypes = {
-    /* Off icon from icons library */
-    offIcon: PropTypes.element.isRequired,
-    /* On icon from icons library */
-    onIcon: PropTypes.element.isRequired,
-    /* Initial state, default is true */
-    on: PropTypes.bool,
-    /** Will be called with true|false whe toggle is changed. Default is noop */
-    toggleHandler: PropTypes.func,
-  };
+function ToggleIcon(props) {
+  const [on, setOn] = useState(props.on);
 
-  static defaultProps = {
-    on: true,
-    toggleHandler: noop,
-  };
+  useEffect(() => {
+    setOn(props.on);
+  }, [props.on]);
 
   /**
-   * @param {Object} props The component properties.
+   * Handles toggle.
    */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      on: props.on,
-    };
+  function handleToggle() {
+    setOn(!on);
+    props.toggleHandler(!on);
   }
 
-  /**
-   * Reset state to received props
-   * @param {Object} nextProps next props
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({ on: nextProps.on });
-  }
-
-  /**
-   * Toggle icon
-   */
-  handleToggle = () => {
-    this.setState(({ on }) => ({ on: !on }), () => this.props.toggleHandler(this.state.on));
-  };
-
-  /**
-   * @return {*}
-   */
-  render() {
-    const { onIcon, offIcon } = this.props;
-    const { on } = this.state;
-    return (
-      <div onClick={this.handleToggle} aria-hidden>
-        {on && onIcon}
-        {!on && offIcon}
-      </div>
-    );
-  }
+  return (
+    <div onClick={handleToggle} aria-hidden>
+      {on ? props.onIcon : props.offIcon}
+    </div>
+  );
 }
+
+ToggleIcon.propTypes = {
+  /* Off icon from icons library */
+  offIcon: PropTypes.element.isRequired,
+  /* On icon from icons library */
+  onIcon: PropTypes.element.isRequired,
+  /* Initial state, default is true */
+  on: PropTypes.bool,
+  /** Will be called with true|false whe toggle is changed. Default is noop */
+  toggleHandler: PropTypes.func,
+};
+
+ToggleIcon.defaultProps = {
+  on: true,
+  toggleHandler: noop,
+};
 
 export default ToggleIcon;

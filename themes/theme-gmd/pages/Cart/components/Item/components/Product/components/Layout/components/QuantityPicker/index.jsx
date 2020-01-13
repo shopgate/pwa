@@ -61,22 +61,6 @@ class QuantityPicker extends Component {
   }
 
   /**
-   * The componentWillReceiveProps lifecycle hook. I will bring the input into the correct state.
-   * @param {Object} nextProps The next set of props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.editMode) {
-      this.input.focus();
-    } else {
-      this.input.blur();
-    }
-
-    if (nextProps.quantity && this.props.quantity !== nextProps.quantity) {
-      this.updateQuantityInState(nextProps.quantity);
-    }
-  }
-
-  /**
    * Only update when certain state changes are made.
    * @param {Object} nextProps The next set of props.
    * @param {Object} nextState The next component state.
@@ -180,6 +164,22 @@ class QuantityPicker extends Component {
       handleBlur();
     }
   };
+
+  /**
+   * The componentWillReceiveProps lifecycle hook. I will bring the input into the correct state.
+   * @param {Object} nextProps The next set of props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (nextProps.editMode) {
+      this.input.focus();
+    } else {
+      this.input.blur();
+    }
+
+    if (nextProps.quantity && this.props.quantity !== nextProps.quantity) {
+      this.updateQuantityInState(nextProps.quantity);
+    }
+  }
 
   /**
    * Updates the quantity within the component state. It takes care,

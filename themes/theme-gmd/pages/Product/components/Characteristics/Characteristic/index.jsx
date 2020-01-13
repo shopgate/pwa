@@ -16,6 +16,7 @@ class Characteristic extends PureComponent {
       PropTypes.shape(),
     ]).isRequired,
     disabled: PropTypes.bool.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     highlight: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -32,17 +33,20 @@ class Characteristic extends PureComponent {
     selected: null,
   };
 
+  /**
+   * @param {Object} props The next props.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props) {
+    return {
+      highlight: props.highlight,
+    };
+  }
+
   state = {
     highlight: false,
     sheet: false,
   };
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    this.setState({ highlight: nextProps.highlight });
-  }
 
   /**
    * @param {string} defaultLabel The default button label.

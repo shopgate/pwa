@@ -15,6 +15,40 @@ class CartItemsCount extends Component {
   };
 
   /**
+   * @param {Object} props The next props.
+   * @param {Object} state The component state.
+   * @returns {Object}
+   */
+  static getDerivedStateFromProps(props, state) {
+    const numItems = props.itemCount;
+
+    // When there are no items, reset this element to hide.
+    if (numItems === 0) {
+      return {
+        isVisible: false,
+        numItems,
+      };
+    }
+
+    // Set to visible when is currently invisible and has items.
+    if (!state.isVisible && numItems > 0) {
+      return {
+        isVisible: true,
+        numItems,
+      };
+    }
+
+    // Just update the value if the number of items changed.
+    if (state.numItems !== numItems) {
+      return {
+        numItems,
+      };
+    }
+
+    return null;
+  }
+
+  /**
    * Constructor.
    * @param {Object} props The component props.
    */
@@ -25,33 +59,6 @@ class CartItemsCount extends Component {
       numItems: props.itemCount,
       isVisible: props.itemCount > 0,
     };
-  }
-
-  /**
-   * Decides on how to animate when the component props change.
-   * @param {Object} nextProps Incoming component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    const numItems = nextProps.itemCount;
-
-    if (numItems === 0) {
-      // When there are no items, reset this element to hide.
-      this.setState({
-        isVisible: false,
-        numItems,
-      });
-    } else if (!this.state.isVisible && numItems > 0) {
-      // Set to visible when is currently invisible and has items.
-      this.setState({
-        isVisible: true,
-        numItems,
-      });
-    } else if (this.state.numItems !== numItems) {
-      // Just update the value if the number of items changed.
-      this.setState({
-        numItems,
-      });
-    }
   }
 
   /**
