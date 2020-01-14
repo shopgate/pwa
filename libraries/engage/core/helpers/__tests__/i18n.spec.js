@@ -43,6 +43,16 @@ describe('i18n', () => {
     expect(i18n.number(1000, 2)).toBe('1,000.00');
   });
 
+  it('should consider a custom currency locale', () => {
+    i18n.init({
+      locales: {},
+      lang: 'en-US',
+      priceLocale: 'en-IL',
+    });
+
+    expect(i18n.price(1000, 'EUR', 2)).toBe('€1,000.00');
+  });
+
   it('should warn on another init', () => {
     i18n.init({});
     expect(mockedWarn).toHaveBeenCalled();
