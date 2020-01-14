@@ -95,7 +95,7 @@ function readConfig(options) {
     );
 
     if (isPortalsOrWidgets) {
-      imports.push(`const ${variableName} = lazy({() => import('${componentPath}');\n`);
+      imports.push(`const ${variableName} = lazy(() => import('${componentPath}'))\n`);
     } else {
       imports.push(`import ${variableName} from '${componentPath}';`);
     }
