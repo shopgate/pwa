@@ -1,0 +1,21 @@
+<!doctype html>
+<html data-disallow-pull-to-refresh="1">
+
+<head>
+  <meta charset="utf-8">
+  <meta id="libshopgate">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <script src="<%= htmlWebpackPlugin.files.chunks.common.entry %>"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div id="portals"></div>
+  <script src="<%= htmlWebpackPlugin.files.chunks.app.entry %>"></script>
+</body>
+
+</html>

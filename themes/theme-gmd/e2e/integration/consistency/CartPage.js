@@ -1,18 +1,17 @@
 import { clearProductsFromCart } from '../../helper/cart';
 import els from '../../elements/de';
+import { goCartPage, goHomePage } from '../../helper/navigation';
 
 describe('AndroidGMDTest CartPage', () => {
   after(clearProductsFromCart);
 
   it('it should check for empty cart', () => {
-    cy.visit('');
-    cy.get(els.navigatorButton).click();
-    cy.get(els.navDrawerCartButton).click();
+    goCartPage();
     cy.get(els.emptyCartPlaceHolderString).should('be.visible');
   });
 
   it('it should check for product in cart', () => {
-    cy.visit('');
+    goHomePage();
     cy.get(els.allProductCategory)
       .click();
     cy.get(els.loadingIndicator)
@@ -20,12 +19,12 @@ describe('AndroidGMDTest CartPage', () => {
     cy.get(els.productWithManyProps4GridViewName)
       .last()
       .click();
-    cy.window().spyAction('RECEIVE_CART', () => {
-      cy.get(els.addToCartButton).click();
-    });
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
-      cy.get(els.cartButton).last().click();
-    });
+
+    cy.spyAction('RECEIVE_CART', () => cy.get(els.addToCartButton).click())
+      .then(() => (
+        cy.spyAction('ROUTE_DID_ENTER', () => cy.get(els.cartButton).last().click())
+      ));
+
     cy.get(els.cartItem)
       .contains('Product with many Properties - 4 -')
       .should('be.visible');

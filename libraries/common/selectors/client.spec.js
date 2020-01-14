@@ -12,6 +12,8 @@ import {
   getIsConnected,
   getClientConnectivityNetwork,
   getClientConnectivityType,
+  makeGetSupportedIdentityServices,
+  makeSupportsIdentityService,
 } from './client';
 
 import {
@@ -56,6 +58,7 @@ describe('Client selectors', () => {
           ver: '11.0',
         },
       },
+      supportedIdentityServices: ['apple', 'facebook'],
     };
 
     /**
@@ -224,6 +227,19 @@ describe('Client selectors', () => {
       it('should return the iPhone X insets on an iPhone X', () => {
         const result = getPageInsets(createMockState(mockedStateIPhoneX));
         expect(result).toEqual(PAGE_INSETS_IPHONE_X);
+      });
+    });
+
+    describe('supportedIdentityServices()', () => {
+      it('should return identity services', () => {
+        const selector = makeGetSupportedIdentityServices();
+        const result = selector(createMockState(mockedStateIPhoneX));
+        expect(result).toEqual(mockedStateIPhoneX.supportedIdentityServices);
+      });
+      it('should support identity service apple', () => {
+        const selector = makeSupportsIdentityService('apple');
+        const result = selector(createMockState(mockedStateIPhoneX));
+        expect(result).toEqual(true);
       });
     });
   });

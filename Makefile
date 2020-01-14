@@ -9,7 +9,7 @@ export FORCE_COLOR = true
 LIBRARIES = engage commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
 TRANSPILED_UTILS = benchmark
-UTILS = eslint-config unit-tests e2e
+UTILS = eslint-config unit-tests e2e webpack
 THEMES = theme-gmd theme-ios11
 
 # Adds "@shopgate/pwa-" in front of all package names except "@shopgate/eslint-config" and "@shopgate/tracking-core".

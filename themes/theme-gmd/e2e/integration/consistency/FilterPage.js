@@ -1,13 +1,18 @@
 import els from '../../elements/de';
+import { goCategoriesPage } from '../../helper/navigation';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('AndroidGMDTest filter page', () => {
-  it('should check for price range slider', () => {
-    cy.visit('');
+  before(goCategoriesPage);
 
-    cy.get(els.allProductCategory)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
+  after(() => {
+    // CloseBar
+    cy.get(els.navigateButton).first().click();
+  });
+
+  it('should check for price range slider', () => {
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.filterButton)
       .should('be.visible')
       .click();

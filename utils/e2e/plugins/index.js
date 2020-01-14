@@ -35,6 +35,13 @@ module.exports = (on, config) => {
     newConfig.baseUrl = process.env.BC;
   }
 
+  on('task', {
+    log(message) {
+      console.log(`${'='.repeat(20)}\n${message}\n${'='.repeat(20)}`);
+      return null;
+    },
+  });
+
   return newConfig;
 };
 
