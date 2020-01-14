@@ -59,12 +59,12 @@ const Pages = ({ store }) => (
         <ThemeContext.Provider value={themeApi}>
           <LoadingProvider>
             <ToastProvider>
-              <Portal name={APP_GLOBALS} />
-              <Viewport>
-                <ModalContainer component={Dialog} />
-                <Toaster render={props => <SnackBar {...props} />} />
-                <Router history={history}>
-                  <Suspense fallback={<Loading />}>
+              <Suspense fallback={<Loading />}>
+                <Portal name={APP_GLOBALS} />
+                <Viewport>
+                  <ModalContainer component={Dialog} />
+                  <Toaster render={props => <SnackBar {...props} />} />
+                  <Router history={history}>
                     <Route
                       pattern={INDEX_PATH}
                       component={routes.StartPage}
@@ -118,9 +118,9 @@ const Pages = ({ store }) => (
                     />
                     <Route pattern={SCANNER_PATH} component={routes.Scanner} />
                     {React.Children.map(routePortals, Component => Component)}
-                  </Suspense>
-                </Router>
-              </Viewport>
+                  </Router>
+                </Viewport>
+              </Suspense>
             </ToastProvider>
           </LoadingProvider>
         </ThemeContext.Provider>
