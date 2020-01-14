@@ -19,12 +19,12 @@ import reducers from './pages/reducers';
 import subscribers from './pages/subscribers';
 import Pages from './pages';
 
-const { locales: { currency: currencyLocale = null } = {} } = appConfig;
+const { locales: { price: priceLocale = null } = {} } = appConfig;
 
 i18n.init({
   locales,
   lang: process.env.LOCALE,
-  currencyLocale,
+  priceLocale,
 });
 
 smoothscroll.polyfill();

@@ -77,7 +77,9 @@
     "locales": {
       "type": "admin",
       "destination": "frontend",
-      "default": { "currency": null },
+      "default": {
+        "price": null
+      },
       "params": {
         "type": "json",
         "label": "Custom locales for various features of the app"
