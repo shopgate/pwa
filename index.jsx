@@ -13,15 +13,19 @@ import { configureStore } from '@shopgate/pwa-common/store';
 import { appWillStart } from '@shopgate/pwa-common/action-creators/app';
 import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchClientInformation';
 import { i18n } from '@shopgate/engage/core';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import smoothscroll from 'smoothscroll-polyfill';
 import locales from './locale';
 import reducers from './pages/reducers';
 import subscribers from './pages/subscribers';
 import Pages from './pages';
 
+const { locales: { currency: currencyLocale = null } = {} } = appConfig;
+
 i18n.init({
   locales,
   lang: process.env.LOCALE,
+  currencyLocale,
 });
 
 smoothscroll.polyfill();
