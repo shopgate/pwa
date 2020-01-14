@@ -43,7 +43,7 @@ class PriceSlider extends PureComponent {
    * Updates the value state.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!isEqual(nextProps.value, this.props.value)) {
       this.setState({ value: nextProps.value });
     }

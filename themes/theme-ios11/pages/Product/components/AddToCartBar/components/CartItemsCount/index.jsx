@@ -31,7 +31,7 @@ class CartItemsCount extends Component {
    * Decides on how to animate when the component props change.
    * @param {Object} nextProps Incoming component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const numItems = nextProps.itemCount;
 
     if (numItems === 0) {

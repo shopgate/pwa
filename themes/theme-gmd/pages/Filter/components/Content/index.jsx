@@ -49,7 +49,7 @@ class FilterContent extends PureComponent {
   /**
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps({ activeFilters, filters }) {
+  UNSAFE_componentWillReceiveProps({ activeFilters, filters }) {
     if (Object.keys(this.initialFilters).length > 0) {
       return;
     }
@@ -141,7 +141,6 @@ class FilterContent extends PureComponent {
     });
   }
 
-  // eslint-disable-next-line react/sort-comp
   updateDebounced = debounce(this.update, 50)
 
   /**

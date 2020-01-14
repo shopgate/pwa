@@ -96,7 +96,7 @@ class Select extends Component {
    * Updates the selected item when the value prop changes.
    * @param {Object} nextProps - The next props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       !this.state.selected ||
       nextProps.value !== this.state.selected.value

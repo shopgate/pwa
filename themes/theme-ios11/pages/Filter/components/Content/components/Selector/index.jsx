@@ -34,7 +34,7 @@ class Selector extends PureComponent {
   /**
    * @param {Object} nextProps The new incoming props.
    */
-  componentWillReceiveProps({ selected }) {
+  UNSAFE_componentWillReceiveProps({ selected }) {
     if (selected !== this.state.selected) {
       this.setState({ selected });
     }
