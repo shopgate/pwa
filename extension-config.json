@@ -78,7 +78,7 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "currency": null
+        "price": null
       },
       "params": {
         "type": "json",
