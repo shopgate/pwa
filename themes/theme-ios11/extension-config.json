@@ -74,6 +74,17 @@
         "key": "languageId"
       }
     },
+    "locales": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "currency": null
+      },
+      "params": {
+        "type": "json",
+        "label": "Custom locales for various features of the app"
+      }
+    },
     "logo": {
       "type": "bigApi",
       "destination": "frontend",
