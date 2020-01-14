@@ -47,7 +47,7 @@ describe('i18n', () => {
     i18n.init({
       locales: {},
       lang: 'en-US',
-      currencyLocale: 'en-IL',
+      priceLocale: 'en-IL',
     });
 
     expect(i18n.price(1000, 'EUR', 2)).toBe('€1,000.00');
