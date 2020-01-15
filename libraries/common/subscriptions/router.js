@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import {
   router,
   ACTION_POP,
@@ -29,6 +30,17 @@ export default function routerSubscriptions(subscribe) {
     const {
       action, dispatch, getState, events,
     } = params;
+
+    /**
+     * Triggers a connectivity error toast message
+     */
+    const showConnectivityError = () => {
+      events.emit(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
+    };
+
     const { params: { action: historyAction, silent, state: routeState } } = action;
 
     switch (historyAction) {
@@ -63,11 +75,7 @@ export default function routerSubscriptions(subscribe) {
 
     // Abort navigation when the internet connection got lost.
     if (!getIsConnected(state)) {
-      events.emit(ToastProvider.ADD, {
-        id: 'navigate.error',
-        message: 'error.general',
-      });
-
+      showConnectivityError();
       return;
     }
 
@@ -136,6 +144,14 @@ export default function routerSubscriptions(subscribe) {
       }
 
       location = redirect;
+    }
+
+    const parsed = queryString.parseUrl(location);
+
+    if (!parsed.url) {
+      // The URL is not valid - show a toast message
+      showConnectivityError();
+      return;
     }
 
     // Override the location if is Shop link is found.
