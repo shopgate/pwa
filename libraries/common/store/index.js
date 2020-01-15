@@ -15,7 +15,7 @@ import logger from './middelwares/logger';
  * The current version of the state created by this reducer.
  * @type {string}
  */
-const STATE_VERSION = 'v1';
+const STATE_VERSION = 'v2';
 const storeKey = `shopgate-connect_${shopNumber}-${themeName}_${STATE_VERSION}`;
 
 /**

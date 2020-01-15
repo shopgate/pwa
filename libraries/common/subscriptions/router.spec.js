@@ -335,6 +335,41 @@ describe('Router subscriptions', () => {
       expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
 
+    it('should abort navigation when the url is invalid', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '?foo=bar',
+      };
+
+      await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
+      testExpectedCall(events.emit);
+      expect(events.emit).toHaveBeenCalledWith(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
+    });
+
+    it('should abort navigation when the redirect url is invalid', async () => {
+      /**
+       * @return {Promise}
+       */
+      const redirectHandler = () => Promise.resolve('?foo=bar');
+
+      redirects.set('/some_route', redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route',
+      };
+
+      await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
+      testExpectedCall(events.emit);
+      expect(events.emit).toHaveBeenCalledWith(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
+    });
+
     it('should convert shop links as expected', async () => {
       mockedShopCNAME = 'm.awesomeshop.com';
 
