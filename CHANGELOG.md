@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.9.1](https://github.com/shopgate/pwa/compare/v6.9.0...v6.9.1) (2020-01-16)
+
+#### :bug: Bug Fix
+* [#896](https://github.com/shopgate/pwa/pull/896) Fixed a react package version incompatibility ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
 ## [v6.9.0](https://github.com/shopgate/pwa/compare/v6.8.0...v6.9.0) (2019-11-12)
 
 #### :rocket: Enhancement
