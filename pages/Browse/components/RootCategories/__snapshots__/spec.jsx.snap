@@ -242,6 +242,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       tabIndex={0}
                                     >
                                       <Link
+                                        aria-hidden={null}
                                         aria-label={null}
                                         className=""
                                         disabled={false}
@@ -261,6 +262,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         tag="div"
                                       >
                                         <div
+                                          aria-hidden={null}
                                           aria-label={null}
                                           className="css-c6ki83 "
                                           data-test-id="link: /category/3132332d313233"
@@ -402,6 +404,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       tabIndex={0}
                                     >
                                       <Link
+                                        aria-hidden={null}
                                         aria-label={null}
                                         className=""
                                         disabled={false}
@@ -421,6 +424,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         tag="div"
                                       >
                                         <div
+                                          aria-hidden={null}
                                           aria-label={null}
                                           className="css-c6ki83 "
                                           data-test-id="link: /category/3435362d313233"
@@ -562,6 +566,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       tabIndex={0}
                                     >
                                       <Link
+                                        aria-hidden={null}
                                         aria-label={null}
                                         className=""
                                         disabled={false}
@@ -581,6 +586,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         tag="div"
                                       >
                                         <div
+                                          aria-hidden={null}
                                           aria-label={null}
                                           className="css-c6ki83 "
                                           data-test-id="link: /category/3738392d313233"
@@ -722,6 +728,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                       tabIndex={0}
                                     >
                                       <Link
+                                        aria-hidden={null}
                                         aria-label={null}
                                         className=""
                                         disabled={false}
@@ -741,6 +748,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         tag="div"
                                       >
                                         <div
+                                          aria-hidden={null}
                                           aria-label={null}
                                           className="css-c6ki83 "
                                           data-test-id="link: /category/3738392d343536"

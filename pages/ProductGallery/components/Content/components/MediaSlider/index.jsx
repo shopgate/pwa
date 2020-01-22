@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import { Swiper } from '@shopgate/engage/components';
 import { buildMediaImageUrl } from '@shopgate/engage/product';
-import { GALLERY_SLIDER_ZOOM, GALLERY_SLIDER_IMAGE_FORMATS } from './../../../../constants';
+import { GALLERY_SLIDER_ZOOM, GALLERY_SLIDER_IMAGE_FORMATS } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
 

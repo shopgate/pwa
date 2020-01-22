@@ -1,44 +1,30 @@
 import els from '../../elements/de';
+import { goBrowsePage } from '../../helper/navigation'
 
 describe('functional tests search page', () => {
-  it('check for navigation', () => {
-    cy.visit('');
+  before(goBrowsePage);
 
-    cy.get(els.tabBarBrowse)
-      .should('be.visible')
-      .click();
-    cy.get(els.searchFieldInput)
-      .should('be.visible');
-    cy.get(els.backButton)
-      .click();
-    cy.get(els.shopLogo)
-      .should('be.visible');
-    cy.get(els.tabBarBrowse)
-      .click();
-    cy.get(els.searchFieldInput)
-      .should('be.visible')
-      .click();
+  after(() => {
+    // CloseBar
+    cy.go('back');
   });
 
   it('should search with fitting products', () => {
-    cy.get(els.tabBarBrowse)
-      .should('be.visible')
-      .click();
     cy.get(els.searchFieldInput)
       .should('be.visible')
       .type('product with many properties -4- {enter}');
     cy.get(els.productWithManyProps4SearchResult)
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+
+    cy.get(els.backButton).click();
+
     cy.get(els.searchFieldInput)
       .should('be.visible')
       .clear()
       .type('product with many properties -3- {enter}');
     cy.get(els.productWithManyProps3SearchResult)
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+    cy.get(els.backButton).click();
   });
 
   it('should search with no fitting products', () => {
@@ -46,11 +32,10 @@ describe('functional tests search page', () => {
       .clear()
       .type('kfkfkf {enter}');
     cy.get(els.noResultText)
-      .contains('Ihre Suche nach "kfkfkf " liefert keine Ergebnisse.')
+      .contains('Ihre Suche nach "kfkfkf" liefert keine Ergebnisse.')
       .last()
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+    cy.get(els.backButton).click();
   });
 
   it('it should check for suggestions', () => {
@@ -64,5 +49,7 @@ describe('functional tests search page', () => {
       .should('be.visible');
     cy.get("[data-test-id='searchSuggestion Product with many']")
       .should('be.visible');
+
+    cy.get(els.backButton).click();
   });
 });

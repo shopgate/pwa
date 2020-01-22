@@ -25,6 +25,7 @@ import styles from './style';
  */
 class AddToCartBar extends Component {
   static contextType = ProductContext;
+
   static propTypes = {
     conditioner: PropTypes.shape().isRequired,
     options: PropTypes.shape().isRequired,
@@ -134,7 +135,6 @@ class AddToCartBar extends Component {
 
       broadcastLiveMessage('product.adding_item', {
         params: { count: this.context.quantity },
-        force: true,
       });
 
       if (this.moreButtonRef.current) {
@@ -169,7 +169,7 @@ class AddToCartBar extends Component {
           <Portal name={PRODUCT_ADD_TO_CART_BAR_BEFORE} />
           <Portal name={PRODUCT_ADD_TO_CART_BAR}>
             <Section title="product.sections.purchase">
-              <div className={styles.container} >
+              <div className={styles.container}>
                 <div className={styles.innerContainer} ref={this.ref}>
                   <div className={styles.base}>
                     <div className={styles.statusBar}>

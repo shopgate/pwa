@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import { isBeta } from '@shopgate/engage/core';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -52,4 +51,4 @@ Name.defaultProps = {
   name: null,
 };
 
-export default connect(pure(Name));
+export default connect(memo(Name));

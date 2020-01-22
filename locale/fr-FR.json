@@ -9,20 +9,22 @@
     "please_choose": "Veuillez choisir",
     "show_products": "Présentation produits",
     "back": "Retour",
-    "close": "Fermer"
+    "close": "Fermer",
+    "products": "Produits"
   },
   "titles": {
     "categories": "Catégories",
-    "filter": "Filterer",
+    "filter": "Filtre",
     "cart": "Panier",
     "shipping": "Livraison",
     "reviews": "Revues",
-    "browse": "Naviger",
+    "browse": "Naviguer",
     "favorites": "Favorits",
     "scanner": "Scanner"
   },
   "favorites": {
     "add": "Ajouter aux Favoris",
+    "added": "Le produit a été ajouté aux favorits",
     "continue": "Continuer l'achat",
     "empty": "Vous n'avez rien dans vos favorits",
     "error_add": "Le produit n'a pas pu être ajouté aux favorits",
@@ -44,11 +46,16 @@
     },
     "apply": "Terminé",
     "more": "Plus",
-    "reset": "Effacer tout"
+    "reset": "Effacer tout",
+    "remove": "Supprimer {filter} filtre",
+    "edit": "Modifier {filter} filtrer",
+    "filter_by": "Filtrer par {label}"
   },
   "price": {
     "from": "De {price}",
     "range": "Plage de prix de {fromPrice} à {toPrice}",
+    "range_from": "La fourchette des prix de",
+    "range_to": "La fourchette des prix jusqu'à",
     "tier": {
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"
@@ -175,7 +182,7 @@
     "no_account": "Vous n'êtes pas inscrit?",
     "signup": "S'enregistrer",
     "register": "Créer un compte ici!",
-    "logout_message": "Vous avez été déconnecté",
+    "logout_message": "Vous avez été déconnecté(e)",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte"
   },
   "navigation": {
@@ -191,11 +198,12 @@
     "payment": "Méthodes de paiement",
     "terms": "Termes",
     "privacy": "Politique de confidentialité",
-    "welcome_message": "Bienvenue {name}",
+    "welcome_message": "Bienvenue, {name}",
     "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
-    "more_menu": "Plus"
+    "more_menu": "Plus",
+    "back": "Retour à {title}"
   },
   "reviews": {
     "rating": "Evaluation",
@@ -217,7 +225,7 @@
   },
   "tab_bar": {
     "home": "Accueil",
-    "browse": "Naviger",
+    "browse": "Naviguer",
     "cart": "Panier",
     "more": "Plus",
     "favorites": "Favorits"
@@ -235,6 +243,9 @@
       "camera_message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
       "geolocation_message": "Pour trouver des magasins près de chez vous, allez dans Paramètres et activez l’autorisation de géolocalisation."
     }
+  },
+  "error": {
+    "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
   "formats": {
     "date": {

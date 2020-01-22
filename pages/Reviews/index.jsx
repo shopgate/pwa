@@ -10,7 +10,7 @@ import ReviewsContent from './components/Content';
  * @return {JSX}
  */
 const Reviews = ({ id }) => (
-  <View aria-hidden={false} >
+  <View aria-hidden={false}>
     {id && <ReviewsContent productId={id} />}
   </View>
 );

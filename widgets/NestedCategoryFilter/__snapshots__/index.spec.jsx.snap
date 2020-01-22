@@ -42,14 +42,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -276,14 +276,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           className="css-kwqjom"
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="common.show_products"
                             transform={null}
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               common.show_products
@@ -346,14 +346,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -491,6 +491,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -608,6 +609,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                           className="css-18zobq6"
                                           key="1-1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-1"
                                         >
                                           Category 1-1
@@ -649,6 +651,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                           className="css-1k50yg4"
                                           key="1-2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-2"
                                         >
                                           Category 1-2
@@ -833,14 +836,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                               transform={null}
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products
@@ -922,14 +925,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -1446,14 +1449,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                               transform={null}
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products
@@ -1535,14 +1538,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -1680,6 +1683,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -1797,6 +1801,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-18zobq6"
                                           key="1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1"
                                         >
                                           Category 1
@@ -1838,6 +1843,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-1k50yg4"
                                           key="2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="2"
                                         >
                                           Category 2
@@ -2156,14 +2162,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           className="css-kwqjom"
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="common.show_products"
                             transform={null}
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               common.show_products
@@ -2244,14 +2250,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           style={null}
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="Widget Headline"
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Widget Headline
@@ -2389,6 +2395,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -2506,6 +2513,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-18zobq6"
                                           key="1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1"
                                         >
                                           Category 1
@@ -2547,6 +2555,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-1k50yg4"
                                           key="2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="2"
                                         >
                                           Category 2
@@ -2776,6 +2785,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -2893,6 +2903,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-18zobq6"
                                           key="1-1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-1"
                                         >
                                           Category 1-1
@@ -2934,6 +2945,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           className="css-1k50yg4"
                                           key="1-2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1-2"
                                         >
                                           Category 1-2
@@ -3118,14 +3130,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                               transform={null}
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products
@@ -3402,14 +3414,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           className="css-kwqjom"
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="common.show_products"
                             transform={null}
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               common.show_products
@@ -3596,6 +3608,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 aria-label="common.close"
                                 className="css-b3dcfs"
                                 onClick={[Function]}
+                                type="button"
                               >
                                 <Ripple
                                   className="css-ugy6xl"
@@ -3713,6 +3726,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                           className="css-1k50yg4"
                                           key="1"
                                           onClick={[Function]}
+                                          type="button"
                                           value="1"
                                         >
                                           Category 1
@@ -3754,6 +3768,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                           className="css-18zobq6"
                                           key="2"
                                           onClick={[Function]}
+                                          type="button"
                                           value="2"
                                         >
                                           Category 2
@@ -3938,14 +3953,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             style={null}
                           >
                             <Translate
-                              className=""
+                              className={null}
                               params={Object {}}
                               role={null}
                               string="common.show_products"
                               transform={null}
                             >
                               <span
-                                className=""
+                                className={null}
                                 role={null}
                               >
                                 common.show_products

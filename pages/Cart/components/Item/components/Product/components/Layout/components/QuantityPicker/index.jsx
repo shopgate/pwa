@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isNumeric } from '@shopgate/pwa-common/helpers/validation';
+import { i18n, isNumeric } from '@shopgate/engage/core';
 import style from './style';
 
 /**
@@ -16,9 +16,9 @@ class QuantityPicker extends Component {
 
   static defaultProps = {
     editMode: false,
-    onChange: () => {},
+    onChange: () => { },
     quantity: 1,
-    onToggleEditMode: () => {},
+    onToggleEditMode: () => { },
   };
 
   /**
@@ -58,7 +58,7 @@ class QuantityPicker extends Component {
    * The componentWillReceiveProps lifecycle hook. I will bring the input into the correct state.
    * @param {Object} nextProps The next set of props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.editMode) {
       this.input.focus();
     } else {
@@ -81,6 +81,12 @@ class QuantityPicker extends Component {
   }
 
   /**
+   * The default quantity.
+   * @type {number}
+   */
+  defaultQuantity = 1;
+
+  /**
    * Returns the initial quantity based on the props.
    * If the props are set to 0 or lower, it will fall back to 1.
    * @return {number}
@@ -100,12 +106,6 @@ class QuantityPicker extends Component {
   setRef = (input) => {
     this.input = input;
   };
-
-  /**
-   * The default quantity.
-   * @type {number}
-   */
-  defaultQuantity = 1;
 
   /**
    * Event handler for the the onChange event of the input.
@@ -173,7 +173,7 @@ class QuantityPicker extends Component {
       }
     };
 
-    if (!event.target.value || event.target.value < this.defaultQuantity) {
+    if (!event.target.value) {
       // Set the quantity state back to default, if the value of the input is invalid.
       this.updateQuantityInState(this.defaultQuantity, handleBlur);
     } else {
@@ -187,7 +187,7 @@ class QuantityPicker extends Component {
    * @param {string|number} quantity The new quantity
    * @param {Function} [callback] Callback for the setState call.
    */
-  updateQuantityInState(quantity, callback = () => {}) {
+  updateQuantityInState(quantity, callback = () => { }) {
     const sanitizedQuantity = isNumeric(quantity) ? parseInt(quantity, 10) : '';
 
     this.setState({
@@ -211,8 +211,9 @@ class QuantityPicker extends Component {
           onClick={this.handleInputClick}
           onFocus={this.handleInputFocus}
           onBlur={this.handleInputBlur}
-          min={this.defaultQuantity}
+          min={0}
           data-test-id="quantityPicker"
+          aria-label={i18n.text('product.quantity')}
         />
       </form>
     );

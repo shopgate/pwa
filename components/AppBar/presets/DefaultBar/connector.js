@@ -7,9 +7,15 @@ import { makeIsLastStackEntry, updateStatusBarBackground } from '@shopgate/engag
  */
 function makeMapStateToProps() {
   const isLastStackEntry = makeIsLastStackEntry();
-  return (state, { route }) => ({
-    setFocus: route.visible && isLastStackEntry(state, { routeId: route.id }),
-  });
+  return (state, { route }) => {
+    const { visible, state: routeState } = route;
+
+    return {
+      setFocus: visible && !routeState.preventA11yFocus && isLastStackEntry(state, {
+        routeId: route.id,
+      }),
+    };
+  };
 }
 
 /**
@@ -17,8 +23,8 @@ function makeMapStateToProps() {
  * @returns {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  updateStatusBar: ({ background }) => {
-    dispatch(updateStatusBarBackground(background));
+  updateStatusBar: ({ background }, isDefault) => {
+    dispatch(updateStatusBarBackground(background, isDefault));
   },
   resetStatusBar: () => {
     dispatch(updateStatusBarBackground());

@@ -13,7 +13,7 @@ exports[`<OptionInfo /> should render price element 1`] = `
   >
     Label: 
     <FormatPrice
-      className=""
+      className={null}
       currency="EUR"
       fractions={true}
       price={10}
@@ -41,7 +41,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
     shrink={1}
   >
     <Translate
-      className=""
+      className={null}
       params={Object {}}
       role={null}
       string="common.required"

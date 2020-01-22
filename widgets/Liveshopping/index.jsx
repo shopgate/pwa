@@ -40,7 +40,7 @@ export class LiveshoppingWidget extends Component {
       <div className={styles.wrapper}>
         <Swiper indicators loop={products.length > 1}>
           {products.map(id => (
-            <Swiper.Item key={id} >
+            <Swiper.Item key={id}>
               <Item productId={id} />
             </Swiper.Item>
           ))}

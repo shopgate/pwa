@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import {
-  FILTER_TYPE_RANGE,
-  FILTER_TYPE_MULTISELECT,
-} from '@shopgate/pwa-common-commerce/filter/constants';
-import Chip from '@shopgate/pwa-ui-shared/Chip';
+import { Chip } from '@shopgate/engage/components';
+import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/engage/filter';
+import { i18n } from '@shopgate/engage/core';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
 import styles from './style';
@@ -93,6 +90,15 @@ class FilterChips extends Component {
           const [minimum, maximum] = filter.value;
           const priceMin = Math.floor(minimum / 100);
           const priceMax = Math.ceil(maximum / 100);
+          const fromPrice = i18n.price(priceMin, appConfig.currency, false);
+          const toPrice = i18n.price(priceMax, appConfig.currency, false);
+          const pricesFormatted = `${fromPrice} - ${toPrice}`;
+          const labelValue = i18n.text('price.range', {
+            fromPrice,
+            toPrice,
+          });
+          const removeLabel = i18n.text('filter.remove', { filter: labelValue });
+          const editLabel = i18n.text('filter.edit', { filter: labelValue });
 
           chips.push((
             <Chip
@@ -100,26 +106,34 @@ class FilterChips extends Component {
               key={`filter-${key}`}
               onRemove={this.handleRemove}
               onClick={openFilters}
+              removeLabel={removeLabel}
+              editLabel={editLabel}
             >
-              <I18n.Price price={priceMin} currency={appConfig.currency} fractions={false} />
-              &nbsp;&mdash;&nbsp;
-              <I18n.Price price={priceMax} currency={appConfig.currency} fractions={false} />
+              {pricesFormatted}
             </Chip>
           ));
 
           break;
         }
         default:
-          filter.value.forEach(value => chips.push((
-            <Chip
-              id={value.id}
-              key={`filter-${value.id}`}
-              onRemove={() => this.handleRemove(filter.id, value.id)}
-              onClick={openFilters}
-            >
-              {`${filter.label}: ${value.label}`}
-            </Chip>
-          )));
+          filter.value.forEach((value) => {
+            const filterFormatted = `${filter.label}: ${value.label}`;
+            const removeLabel = i18n.text('filter.remove', { filter: filterFormatted });
+            const editLabel = i18n.text('filter.edit', { filter: filterFormatted });
+
+            chips.push((
+              <Chip
+                id={value.id}
+                key={`filter-${value.id}`}
+                onRemove={() => this.handleRemove(filter.id, value.id)}
+                onClick={openFilters}
+                removeLabel={removeLabel}
+                editLabel={editLabel}
+              >
+                {filterFormatted}
+              </Chip>
+            ));
+          });
 
           break;
       }

@@ -44,14 +44,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
           }
         >
           <Translate
-            className=""
+            className={null}
             params={Object {}}
             role={null}
             string="navigation.store_information"
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               navigation.store_information
@@ -100,14 +100,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="navigation.shipping"
                     transform={null}
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       navigation.shipping
@@ -162,14 +162,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="navigation.payment"
                     transform={null}
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       navigation.payment
@@ -224,14 +224,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="navigation.terms"
                     transform={null}
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       navigation.terms
@@ -286,14 +286,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="navigation.privacy"
                     transform={null}
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       navigation.privacy
@@ -348,14 +348,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="navigation.return_policy"
                     transform={null}
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       navigation.return_policy
@@ -410,14 +410,14 @@ exports[`<StoreInfo /> should render as expected 1`] = `
               >
                 <div>
                   <Translate
-                    className=""
+                    className={null}
                     params={Object {}}
                     role={null}
                     string="navigation.about"
                     transform={null}
                   >
                     <span
-                      className=""
+                      className={null}
                       role={null}
                     >
                       navigation.about

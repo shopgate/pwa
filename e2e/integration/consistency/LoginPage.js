@@ -1,12 +1,15 @@
 import els from '../../elements/de';
+import { goMorePage } from '../../helper/navigation'
 
 describe('IOS11Test login page', () => {
-  it('should check for user menu', () => {
-    cy.visit('');
+  before(goMorePage);
 
-    cy.get(els.tabBarMore)
-      .should('be.visible')
-      .click();
+  after(() => {
+    // CloseBar
+    cy.go('back');
+  });
+
+  it('should check for user menu', () => {
     cy.get(els.userMenuLogin)
       .should('be.visible');
     cy.get(els.userMenuRegister)

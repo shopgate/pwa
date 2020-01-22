@@ -23,11 +23,15 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
         }
       }
     >
-      <MockedView>
+      <MockedView
+        aria-hidden={false}
+      >
         <div>
-          <Connect(BackBar)
+          <BackBar
             right={null}
-          />
+          >
+            <div />
+          </BackBar>
           <Headline
             style={
               Object {
@@ -47,14 +51,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
               }
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="navigation.welcome_message"
                 transform={null}
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   navigation.welcome_message
@@ -118,14 +122,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                     }
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="navigation.store_information"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         navigation.store_information
@@ -173,6 +177,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/shipping"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -186,6 +191,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
@@ -194,14 +200,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.shipping"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.shipping
@@ -256,6 +262,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/payment"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -269,6 +276,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
@@ -277,14 +285,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.payment"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.payment
@@ -339,6 +347,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/terms"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -352,6 +361,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
@@ -360,14 +370,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.terms"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.terms
@@ -422,6 +432,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/privacy"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -435,6 +446,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
@@ -443,14 +455,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.privacy"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.privacy
@@ -527,6 +539,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           href="/page/imprint"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -540,6 +553,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
@@ -548,14 +562,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.about"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.about
@@ -676,14 +690,14 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                           }
                         >
                           <Translate
-                            className=""
+                            className={null}
                             params={Object {}}
                             role={null}
                             string="navigation.your_account"
                             transform={null}
                           >
                             <span
-                              className=""
+                              className={null}
                               role={null}
                             >
                               navigation.your_account
@@ -725,16 +739,17 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                               className="css-1hj8a57"
                               data-test-id="logoutButton"
                               onClick={[Function]}
+                              type="button"
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.logout"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.logout
@@ -819,11 +834,15 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
       logout={[Function]}
       user={null}
     >
-      <MockedView>
+      <MockedView
+        aria-hidden={false}
+      >
         <div>
-          <Connect(BackBar)
+          <BackBar
             right={null}
-          />
+          >
+            <div />
+          </BackBar>
           <Headline
             style={
               Object {
@@ -843,14 +862,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
               }
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="login.headline"
                 transform={null}
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   login.headline
@@ -918,6 +937,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/login"
                             >
                               <Link
+                                aria-hidden={null}
                                 aria-label={null}
                                 className=""
                                 disabled={false}
@@ -931,6 +951,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 tag="div"
                               >
                                 <div
+                                  aria-hidden={null}
                                   aria-label={null}
                                   className="css-c6ki83 "
                                   data-test-id="link: /login"
@@ -963,14 +984,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-1fscwua"
                                         >
                                           <Translate
-                                            className=""
+                                            className={null}
                                             params={Object {}}
                                             role={null}
                                             string="login.button"
                                             transform={null}
                                           >
                                             <span
-                                              className=""
+                                              className={null}
                                               role={null}
                                             >
                                               login.button
@@ -999,6 +1020,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               href="/register"
                             >
                               <Link
+                                aria-hidden={null}
                                 aria-label={null}
                                 className=""
                                 disabled={false}
@@ -1012,6 +1034,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 tag="div"
                               >
                                 <div
+                                  aria-hidden={null}
                                   aria-label={null}
                                   className="css-c6ki83 "
                                   data-test-id="link: /register"
@@ -1044,14 +1067,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                           className="css-1fscwua"
                                         >
                                           <Translate
-                                            className=""
+                                            className={null}
                                             params={Object {}}
                                             role={null}
                                             string="login.signup"
                                             transform={null}
                                           >
                                             <span
-                                              className=""
+                                              className={null}
                                               role={null}
                                             >
                                               login.signup
@@ -1141,14 +1164,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     }
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="navigation.store_information"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         navigation.store_information
@@ -1196,6 +1219,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/shipping"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1209,6 +1233,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/shipping"
@@ -1217,14 +1242,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.shipping"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.shipping
@@ -1279,6 +1304,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/payment"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1292,6 +1318,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/payment"
@@ -1300,14 +1327,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.payment"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.payment
@@ -1362,6 +1389,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/terms"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1375,6 +1403,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/terms"
@@ -1383,14 +1412,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.terms"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.terms
@@ -1445,6 +1474,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/privacy"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1458,6 +1488,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/privacy"
@@ -1466,14 +1497,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.privacy"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.privacy
@@ -1550,6 +1581,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           href="/page/imprint"
                         >
                           <Link
+                            aria-hidden={null}
                             aria-label={null}
                             className="css-1hj8a57"
                             disabled={false}
@@ -1563,6 +1595,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             tag="div"
                           >
                             <div
+                              aria-hidden={null}
                               aria-label={null}
                               className="css-c6ki83 css-1hj8a57"
                               data-test-id="link: /page/imprint"
@@ -1571,14 +1604,14 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                               tabIndex={null}
                             >
                               <Translate
-                                className=""
+                                className={null}
                                 params={Object {}}
                                 role={null}
                                 string="navigation.about"
                                 transform={null}
                               >
                                 <span
-                                  className=""
+                                  className={null}
                                   role={null}
                                 >
                                   navigation.about

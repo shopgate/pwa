@@ -26,7 +26,7 @@ const CheckoutButton = ({ isOrderable }) => (
       return (
         <Fragment>
           <Portal name={CART_CHECKOUT_BUTTON_BEFORE} props={{ isActive }} />
-          <Portal name={CART_CHECKOUT_BUTTON} props={{ isActive }} >
+          <Portal name={CART_CHECKOUT_BUTTON} props={{ isActive }}>
             <Link href={CHECKOUT_PATH} disabled={!isActive}>
               <RippleButton
                 disabled={!isActive}

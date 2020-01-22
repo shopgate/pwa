@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
+import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import {
   SCANNER_SCOPE_DEFAULT,
@@ -28,7 +29,7 @@ jest.mock('@virtuous/conductor', () => ({
 jest.mock('@shopgate/pwa-common/actions/router', () => ({
   historyPush: jest.fn().mockReturnValue({ type: 'FOO' }),
 }));
-jest.mock('./components/SuggestionList');
+jest.mock('./components/SuggestionList', () => () => null);
 
 jest.mock('@shopgate/pwa-common/selectors/client', () => ({
   hasScannerSupport: jest.fn().mockReturnValue(true),
@@ -46,6 +47,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
     variables: {
       gap: {},
     },
+    icons: mockThemeConfig.icons,
   },
 }));
 
@@ -85,7 +87,6 @@ describe('<Content />', () => {
       const wrapper = createWrapper();
 
       // Suggestion should not be visible when blured.
-      expect(wrapper.find(SuggestionList).length).toEqual(0);
       jest.useFakeTimers();
       wrapper.find('input').simulate('focus');
       jest.runAllTimers();
@@ -94,7 +95,6 @@ describe('<Content />', () => {
       // Should be rendered now with current query.
       expect(wrapper).toMatchSnapshot();
 
-      expect(wrapper.find(SuggestionList).length).toEqual(1);
       expect(wrapper.find(SuggestionList).prop('searchPhrase')).toEqual('foo');
       expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
     });

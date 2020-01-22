@@ -16,7 +16,7 @@ const propsMap = {
  * @returns {JSX}
  */
 const Cart = () => (
-  <View background={colors.background}>
+  <View background={colors.background} aria-hidden={false}>
     <Consume context={RouteContext} props={propsMap}>
       {({ visible }) => visible && <Content />}
     </Consume>

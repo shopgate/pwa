@@ -52,14 +52,14 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       style={null}
     >
       <Translate
-        className=""
+        className={null}
         params={Object {}}
         role={null}
         string="Yay Categories"
         transform={null}
       >
         <span
-          className=""
+          className={null}
           role={null}
         >
           Yay Categories
