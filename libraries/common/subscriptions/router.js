@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import {
   router,
   ACTION_POP,
@@ -15,8 +16,10 @@ import { historyRedirect } from '../actions/router';
 import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
+import { getIsConnected } from '../selectors/client';
 import appConfig from '../helpers/config';
 import authRoutes from '../collections/AuthRoutes';
+import ToastProvider from '../providers/toast';
 
 /**
  * Router subscriptions.
@@ -25,8 +28,19 @@ import authRoutes from '../collections/AuthRoutes';
 export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
     const {
-      action, dispatch, getState,
+      action, dispatch, getState, events,
     } = params;
+
+    /**
+     * Triggers a connectivity error toast message
+     */
+    const showConnectivityError = () => {
+      events.emit(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
+    };
+
     const { params: { action: historyAction, silent, state: routeState } } = action;
 
     switch (historyAction) {
@@ -56,6 +70,12 @@ export default function routerSubscriptions(subscribe) {
 
     // Prevent the current route from being pushed again.
     if (historyAction === ACTION_PUSH && location === currentPathname) {
+      return;
+    }
+
+    // Abort navigation when the internet connection got lost.
+    if (!getIsConnected(state)) {
+      showConnectivityError();
       return;
     }
 
@@ -124,6 +144,14 @@ export default function routerSubscriptions(subscribe) {
       }
 
       location = redirect;
+    }
+
+    const parsed = queryString.parseUrl(location);
+
+    if (!parsed.url) {
+      // The URL is not valid - show a toast message
+      showConnectivityError();
+      return;
     }
 
     // Override the location if is Shop link is found.

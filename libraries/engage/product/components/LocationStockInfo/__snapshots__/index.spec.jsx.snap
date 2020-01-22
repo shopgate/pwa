@@ -2,12 +2,14 @@
 
 exports[`<LocationStockInfo /> should not render if no location data is passed 1`] = `
 <LocationStockInfo
+  className=""
   location={
     Object {
       "name": "",
       "visibleInventory": null,
     }
   }
+  showStoreName={true}
 >
   <SurroundPortals
     portalName="product.location-stock-info"
@@ -79,12 +81,14 @@ exports[`<LocationStockInfo /> should not render if no location data is passed 1
 
 exports[`<LocationStockInfo /> should render with the visible inventory and with the store name 1`] = `
 <LocationStockInfo
+  className=""
   location={
     Object {
       "name": "Test Store",
       "visibleInventory": 15,
     }
   }
+  showStoreName={true}
 >
   <SurroundPortals
     portalName="product.location-stock-info"
@@ -149,7 +153,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
           maxNumberVisible={100}
         >
           <Translate
-            className=""
+            className={null}
             params={
               Object {
                 "visibleInventory": 15,
@@ -160,7 +164,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               demo_availability_text
@@ -173,7 +177,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
           name="Test Store"
         >
           <Translate
-            className=""
+            className={null}
             params={
               Object {
                 "storeName": "Test Store",
@@ -184,7 +188,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               product.location_stock_info.pick_up_at
@@ -215,6 +219,7 @@ exports[`<LocationStockInfo /> should render with the visible inventory and with
 
 exports[`<LocationStockInfo /> should render without store name 1`] = `
 <LocationStockInfo
+  className=""
   location={
     Object {
       "name": "Test Store",
@@ -286,7 +291,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
           maxNumberVisible={100}
         >
           <Translate
-            className=""
+            className={null}
             params={
               Object {
                 "visibleInventory": 15,
@@ -297,7 +302,7 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
             transform={null}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               demo_availability_text
@@ -333,12 +338,14 @@ exports[`<LocationStockInfo /> should render without store name 1`] = `
 
 exports[`<LocationStockInfo /> should render without the visible inventory 1`] = `
 <LocationStockInfo
+  className=""
   location={
     Object {
       "name": "Test Store",
       "visibleInventory": null,
     }
   }
+  showStoreName={true}
 >
   <SurroundPortals
     portalName="product.location-stock-info"
@@ -407,7 +414,7 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
           name="Test Store"
         >
           <Translate
-            className=""
+            className={null}
             params={
               Object {
                 "storeName": "Test Store",
@@ -418,7 +425,7 @@ exports[`<LocationStockInfo /> should render without the visible inventory 1`] =
             transform={[Function]}
           >
             <span
-              className=""
+              className={null}
               role={null}
             >
               Product.location_stock_info.pick_up_at

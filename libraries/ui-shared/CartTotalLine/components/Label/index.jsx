@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
 /**
@@ -8,12 +8,17 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const Label = ({ label, showSeparator, labelParams }) => (
-  <div className={styles.label}>
-    {label && <I18n.Text string={label} params={labelParams} />}
-    {label && showSeparator && ':'}
-  </div>
-);
+function Label({ label, showSeparator, labelParams }) {
+  if (!label) {
+    return <div className={styles.label} />;
+  }
+
+  return (
+    <div className={styles.label}>
+      {`${i18n.text(label, labelParams)}${showSeparator ? ':' : ''}`}
+    </div>
+  );
+}
 
 Label.propTypes = {
   label: PropTypes.string,

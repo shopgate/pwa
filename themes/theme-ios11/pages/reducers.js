@@ -19,7 +19,6 @@ import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import extensions from 'Extensions/reducers';
-import viewSwitch from 'Components/FilterBar/components/Content/components/ViewSwitch/reducer';
 import tabBar from 'Components/TabBar/reducer';
 
 persistedReducers.set([
@@ -56,7 +55,6 @@ const reducers = combineReducers({
   search,
   ui: combineReducers({
     tabBar,
-    viewSwitch,
   }),
   url,
   user,

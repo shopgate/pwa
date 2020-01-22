@@ -34,6 +34,7 @@ describe('handleLinks helpers', () => {
       'http://example.com',
       'https://example.com',
       'https://example.com/page/cms',
+      '?foo=bar',
     ];
 
     positives.forEach((href) => {

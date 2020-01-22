@@ -11,6 +11,7 @@ const { variables: { toast: { duration = 5000 } = {} } = {} } = themeConfig;
  */
 class ToastProvider extends Component {
   static ADD = 'toast_add';
+
   static FLUSH = 'toast_flush';
 
   static propTypes = {

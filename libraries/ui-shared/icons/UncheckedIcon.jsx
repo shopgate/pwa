@@ -1,14 +1,12 @@
 import React from 'react';
 import Icon from '@shopgate/pwa-common/components/Icon';
-
-// SVG Content
-const content = '<path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The unchecked icon component.
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const Unchecked = props => <Icon content={content} {...props} />;
+const Unchecked = props => <Icon content={themeConfig.icons.unchecked} {...props} />;
 
 export default Unchecked;

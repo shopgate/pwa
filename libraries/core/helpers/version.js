@@ -1,7 +1,7 @@
 import MobileDetect from 'mobile-detect';
 import detector from 'detector';
 import { logger, hasSGJavaScriptBridge } from './index';
-import { getWebStorageEntry } from '../commands/webStorage';
+import getWebStorageEntry from '../commands/getWebStorageEntry';
 
 const MODE_AT_MOST = 'at_most';
 const MODE_AT_LEAST = 'at_least';
@@ -36,6 +36,7 @@ export const defaultClientInformation = {
     },
     model,
   },
+  supportedAnalyticsServices: [],
 };
 
 /**

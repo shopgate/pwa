@@ -49,14 +49,25 @@ export function sendDataRequest(url) {
  * Made for general purpose. Feel free to extend it for your needs.
  */
 export class SGLink {
-  url = ''; // Complete url string
-  scheme = ''; // Any scheme we support (ex. https|shopgate-{$number}|sgapi)
+  // Complete url string
+  url = '';
+
+  // Any scheme we support (ex. https|shopgate-{$number}|sgapi)
+  scheme = '';
+
   authority = '';
+
   path = '';
+
   splittedPath = [];
+
   query = '';
-  action = ''; // Endpoint - safe for shopgate (ex. no endpoint is converted to "index")
+
+  // Endpoint - safe for shopgate (ex. no endpoint is converted to "index")
+  action = '';
+
   params = {};
+
   isDeepLink = false;
 
   /**
@@ -287,5 +298,31 @@ export class SGLink {
     }
 
     return outputUrl;
+  }
+
+  /**
+   * Sets utm param from event.
+   * @param {Object} data event data
+   * @param {Object} raw event raw data
+   */
+  setUtmParams(data, raw) {
+    // Add fake params, only if it didn't come from branch.io
+    if (raw.type !== 'branchio') {
+      this.setParam('utm_source', 'shopgate');
+      this.setParam('utm_medium', raw.type);
+    }
+
+    if (raw.type === 'push_message') {
+      const campaigns = ['cart_reminder', 'inactive_app_user'];
+      const notificationId = raw.notificationId || 'not-provided';
+      const campaignName = this.getParam('utm_campaign');
+
+      if (campaigns.indexOf(campaignName) !== -1) {
+        // Set utm_content to distinguish the cart reminders from "normal" push messages
+        this.setParam('utm_content', campaignName);
+      }
+
+      this.setParam('utm_campaign', `push-${notificationId}`);
+    }
   }
 }

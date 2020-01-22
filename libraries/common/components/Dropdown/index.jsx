@@ -25,8 +25,8 @@ class Dropdown extends Component {
     duration: 150,
     easing: null,
     isOpen: false,
-    onComplete: () => {},
-    onStart: () => {},
+    onComplete: () => { },
+    onStart: () => { },
   };
 
   /**
@@ -45,7 +45,7 @@ class Dropdown extends Component {
    * Update the initialRender state if the isOpen state changes from false to true
    * @param {Object} nextProps The new props
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isOpen === false && nextProps.isOpen === true) {
       this.setState({
         initialRender: false,
@@ -83,7 +83,7 @@ class Dropdown extends Component {
         duration={this.props.duration}
         easing={this.props.easing}
       >
-        <div className={`${styles} ${this.props.className}`}>
+        <div className={`${styles} ${this.props.className}`} aria-hidden={!this.props.isOpen}>
           {this.props.children}
         </div>
       </Transition>
@@ -92,4 +92,3 @@ class Dropdown extends Component {
 }
 
 export default Dropdown;
-

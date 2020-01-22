@@ -12,6 +12,7 @@ const Label = (props) => {
   const labelStyles = styles.labelStyles(props.isFocused, props.isFloating, props.hasErrorMessage);
 
   return (
+    /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
     <label
       htmlFor={props.htmlFor}
       className={labelStyles}

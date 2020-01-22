@@ -1,4 +1,4 @@
-import iso3166 from './../iso-3166-2';
+import iso3166 from '../iso-3166-2';
 
 /**
  * Returns a list of provinces based on the given country id

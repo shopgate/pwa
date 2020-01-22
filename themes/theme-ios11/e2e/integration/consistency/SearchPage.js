@@ -1,12 +1,10 @@
 import els from '../../elements/de';
+import { goBrowsePage } from '../../helper/navigation'
 
 describe('IOS11Test searchPage', () => {
-  it('should check for search input', () => {
-    cy.visit('');
+  before(goBrowsePage);
 
-    cy.get(els.tabBarBrowse)
-      .should('be.visible')
-      .click();
+  it('should check for search input', () => {
     cy.get(els.searchFieldInput)
       .should('be.visible');
   });

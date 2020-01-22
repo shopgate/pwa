@@ -9,7 +9,8 @@
     "please_choose": "Por favor escolha",
     "show_products": "Mostrar produtos",
     "back": "Voltar",
-    "close": "Close"
+    "close": "Close",
+    "products": "Produtos"
   },
   "titles": {
     "categories": "Todas as Categorias",
@@ -23,6 +24,7 @@
   },
   "favorites": {
     "add": "Adicionar aos favoritos",
+    "added": "O produto foi adicionado aos favoritos",
     "continue": "Continuar comprando",
     "empty": "Você não tem nenhum favorito",
     "error_add": "O produto não pode ser adicionado aos favoritos",
@@ -44,11 +46,16 @@
     },
     "apply": "Feito",
     "more": "mais",
-    "reset": "Reiniciar"
+    "reset": "Reiniciar",
+    "remove": "Remover {filter} filtro",
+    "edit": "Editar {filter} filtro",
+    "filter_by": "Filtrar por {label}"
   },
   "price": {
     "from": "De {price}",
     "range": "Preço de {fromPrice} até {toPrice}",
+    "range_from": "Faixa de preço de",
+    "range_to": "Faixa de preço até",
     "tier": {
       "set": "{from} itens: {price}",
       "range": "{from} ou mais: {price}"
@@ -194,7 +201,8 @@
     "return_policy": "Política de Devoluções",
     "logout": "Encerrar Sessão",
     "store_information": "Armazenar Informações",
-    "more_menu": "Mais"
+    "more_menu": "Mais",
+    "back": "Voltar para {title}"
   },
   "reviews": {
     "rating": "Avaliação",
@@ -234,6 +242,9 @@
       "camera_message": "Esta funcionalidade requer acesso à sua câmara. Por favor autorize o acesso nas configurações.",
       "geolocation_message": "Para encontrar lojas perto de você, acesse Configurações e ative as permissões de localização."
     }
+  },
+  "error": {
+    "general": "Não consigo conectar. Por favor verifique a sua ligação à internet e tente novamente."
   },
   "formats": {
     "date": {

@@ -1,4 +1,6 @@
-import { getThemeSettings, isBeta, isAfter, isBefore, addDuration } from '@shopgate/engage/core';
+import {
+  getThemeSettings, isBeta, isAfter, isBefore, addDuration,
+} from '@shopgate/engage/core';
 import { ALWAYS, NEVER } from './constants';
 
 /**

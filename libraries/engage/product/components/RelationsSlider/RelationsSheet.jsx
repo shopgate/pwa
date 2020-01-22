@@ -1,4 +1,6 @@
-import React, { useState, useCallback, Fragment, memo } from 'react';
+import React, {
+  useState, useCallback, Fragment, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings, useTheme } from '../../../core';
 import { SheetDrawer, I18n, Button } from '../../../components';

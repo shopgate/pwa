@@ -101,7 +101,9 @@ class BrowserConnector {
   get suffix() {
     if (this.command.c === appCommands.COMMAND_GET_WEBSTORAGE_ENTRY) {
       return 'web_storage';
-    } else if (this.command.c === appCommands.COMMAND_SEND_HTTP_REQUEST) {
+    }
+
+    if (this.command.c === appCommands.COMMAND_SEND_HTTP_REQUEST) {
       return 'http_request';
     }
 

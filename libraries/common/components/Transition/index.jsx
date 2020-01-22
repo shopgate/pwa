@@ -41,7 +41,7 @@ class Transition extends Component {
    * Checks if transition related props (from/to) have updated and runs the animation.
    * @param {Object} nextProps - The received props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       !isEqual(this.props.from, nextProps.from) ||
       !isEqual(this.props.to, nextProps.to)

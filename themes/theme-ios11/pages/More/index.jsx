@@ -57,7 +57,7 @@ class More extends Component {
     const { isLoggedIn } = this.props;
 
     return (
-      <View>
+      <View aria-hidden={false}>
         <BackBar right={null} />
         <Headline style={styles.headline} tag="h1" text={this.welcomeMessage} />
 

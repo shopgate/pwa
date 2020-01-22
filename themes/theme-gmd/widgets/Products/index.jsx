@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
-import { LIST_VIEW } from 'Components/FilterBar/components/Content/components/ViewSwitch/constants';
 import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
 import Headline from 'Components/Headline';
 import ProductGrid from 'Components/ProductGrid';
@@ -55,7 +54,7 @@ class ProductsWidget extends Component {
    * When we receive new products then we can adjust the state.
    * @param {Object} nextProps The next set of component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Set the total product count.
     this.totalProductCount = nextProps.totalProductCount;
 
@@ -173,14 +172,14 @@ class ProductsWidget extends Component {
       showReviews,
     } = this.props.settings;
 
-    const isList = layout === LIST_VIEW;
+    const isList = layout === 'list';
 
     // Flags to enable/disable elements when displaying the products.
     const flags = {
       name: isList ? true : showName,
       price: showPrice,
       reviews: showReviews,
-      ...isList && { manufacturer: false },
+      ...(isList && { manufacturer: false }),
     };
 
     // Determine which component to render.

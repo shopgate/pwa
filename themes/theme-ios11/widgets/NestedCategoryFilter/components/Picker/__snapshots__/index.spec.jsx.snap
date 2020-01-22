@@ -140,6 +140,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"
@@ -257,6 +258,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                     className="css-1k50yg4"
                                     key="1"
                                     onClick={[Function]}
+                                    type="button"
                                     value="1"
                                   >
                                     Category 1
@@ -298,6 +300,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                     className="css-1k50yg4"
                                     key="2"
                                     onClick={[Function]}
+                                    type="button"
                                     value="2"
                                   >
                                     Category 2
@@ -541,6 +544,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"
@@ -658,6 +662,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                     className="css-1k50yg4"
                                     key="1-1"
                                     onClick={[Function]}
+                                    type="button"
                                     value="1-1"
                                   >
                                     Category 1-1
@@ -699,6 +704,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                     className="css-1k50yg4"
                                     key="1-2"
                                     onClick={[Function]}
+                                    type="button"
                                     value="1-2"
                                   >
                                     Category 1-2
@@ -833,7 +839,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": undefined,
           },
         ],
@@ -859,7 +865,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
           ],
           "results": Array [
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": undefined,
             },
           ],
@@ -982,6 +988,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"
@@ -1099,6 +1106,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                     className="css-1k50yg4"
                                     key="1-1"
                                     onClick={[Function]}
+                                    type="button"
                                     value="1-1"
                                   >
                                     Category 1-1
@@ -1140,6 +1148,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                     className="css-1k50yg4"
                                     key="1-2"
                                     onClick={[Function]}
+                                    type="button"
                                     value="1-2"
                                   >
                                     Category 1-2
@@ -1384,6 +1393,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           aria-label="common.close"
                           className="css-b3dcfs"
                           onClick={[Function]}
+                          type="button"
                         >
                           <Ripple
                             className="css-ugy6xl"
@@ -1501,6 +1511,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                     className="css-18zobq6"
                                     key="1-1"
                                     onClick={[Function]}
+                                    type="button"
                                     value="1-1"
                                   >
                                     Category 1-1
@@ -1542,6 +1553,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                     className="css-1k50yg4"
                                     key="1-2"
                                     onClick={[Function]}
+                                    type="button"
                                     value="1-2"
                                   >
                                     Category 1-2

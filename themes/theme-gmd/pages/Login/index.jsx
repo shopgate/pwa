@@ -64,7 +64,7 @@ class Login extends Component {
   /**
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     /**
      * Reset the form values when the page is not visible to the user.
      */
@@ -126,23 +126,21 @@ class Login extends Component {
    */
   render() {
     return (
-      <View>
+      <View aria-hidden={false}>
         <CloseBar shadow={false} />
         <section className={styles.container} data-test-id="LoginPage">
           <Portal name={PAGE_LOGIN_BEFORE} />
-          <Portal name={PAGE_LOGIN} >
+          <Portal name={PAGE_LOGIN}>
             <div className={styles.headline}>
               <I18n.Text string="login.headline" />
             </div>
             <div className={styles.subline}>
               <I18n.Text string="login.subline" />
             </div>
-            <Portal name={PAGE_LOGIN_FORM_BEFORE}>
-              <div className={styles.padLine} />
-            </Portal>
+            <Portal name={PAGE_LOGIN_FORM_BEFORE} />
             <Portal name={PAGE_LOGIN_FORM}>
               { /* No validate, browsers reject IDN emails! */}
-              <form onSubmit={this.handleSubmitForm} noValidate>
+              <form onSubmit={this.handleSubmitForm} noValidate className={styles.form}>
                 <TextField
                   type="email"
                   name="email"
@@ -178,7 +176,7 @@ class Login extends Component {
             <Portal name={PAGE_LOGIN_FORM_AFTER} />
             <div>
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
-              <Portal name={PAGE_LOGIN_REGISTER_LINK} >
+              <Portal name={PAGE_LOGIN_REGISTER_LINK}>
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
                 <Link
                   href={REGISTER_PATH}

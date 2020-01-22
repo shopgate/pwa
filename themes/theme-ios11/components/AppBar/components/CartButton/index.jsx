@@ -7,7 +7,7 @@ import {
   APP_BAR_CART_BUTTON_BEFORE,
   APP_BAR_CART_BUTTON_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { withWidgetSettings } from '@shopgate/engage/core';
+import { withWidgetSettings, i18n } from '@shopgate/engage/core';
 import Badge from './components/CartBadge';
 import connect from './connector';
 import styles from './style';
@@ -69,13 +69,14 @@ class CartButton extends PureComponent {
     return (
       <Fragment key="cart">
         <Portal name={APP_BAR_CART_BUTTON_BEFORE} />
-        <Portal name={APP_BAR_CART_BUTTON} >
+        <Portal name={APP_BAR_CART_BUTTON}>
           <div className={styles} data-test-id="CartButton" aria-hidden>
             <AppBar.Icon
               {...this.style.icon}
               badge={this.badge}
               icon={Icon}
               onClick={navigate}
+              aria-label={i18n.text('navigation.cart')}
             />
           </div>
         </Portal>

@@ -6,7 +6,9 @@ import Address from './Address';
 import StoreHoursToday from './StoreHoursToday';
 import PhoneNumber from './PhoneNumber';
 import OpeningHours from './OpeningHours';
-import { store as storeStyles, storeMain, storeImage, storeName, storeInfo } from './style';
+import {
+  store as storeStyles, storeMain, storeImage, storeName, storeInfo,
+} from './style';
 import StoreSelectorContext from './context';
 import LocationStockInfo from '../LocationStockInfo';
 
@@ -30,7 +32,7 @@ const Store = ({ store }) => {
         addressCode: address.code,
         visibleInventory: store.inventory.visible,
       });
-    }, [address, store]);
+    }, [address]);
 
     return (
       <div className={storeStyles} key={address.code}>

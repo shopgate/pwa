@@ -81,9 +81,7 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
           <div
             className=""
           >
-            Label One
-            : 
-            Value One
+            Label One: Value One
           </div>
         </Dotdotdot>
       </Ellipsis>
@@ -107,9 +105,7 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
           <div
             className=""
           >
-            Label Two
-            : 
-            Value Two
+            Label Two: Value Two
           </div>
         </Dotdotdot>
       </Ellipsis>

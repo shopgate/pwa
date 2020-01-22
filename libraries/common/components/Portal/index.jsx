@@ -35,8 +35,8 @@ class Portal extends PureComponent {
 
   /**
    * Catches errors.
-   * @param {Error} error The catched error.
-   * @param {Object} info The stacktrace infor.
+   * @param {Error} error The caught error.
+   * @param {Object} info The stacktrace info.
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true });
@@ -45,21 +45,42 @@ class Portal extends PureComponent {
 
   /**
    * Returns the portal components.
+   * @param {Object} props - The props to pass to the component.
+   * @return {Array}
+   */
+  getRenderedComponents = (props) => {
+    const { props: propsFromProps, ...reducedProps } = props;
+
+    const componentProps = {
+      ...propsFromProps,
+      ...reducedProps,
+    };
+
+    return this.components.map(({ PortalComponent, key }) => (
+      <PortalComponent {...componentProps} key={key} />
+    ));
+  };
+
+  /**
+   * Returns the portal components.
    * @param {string} name Name of the portal position
    * @return {Array}
    */
   getPortalComponents = (name) => {
-    const portals = portalCollection.getPortals();
-
     const components = [];
-
+    const portals = portalCollection.getPortals();
     if (!portals) {
       return components;
     }
 
+    let config = portalCollection.getConfig();
+    if (!config) {
+      config = componentsConfig.portals;
+    }
+
     // Loop over the portal keys.
-    Object.keys(componentsConfig.portals).forEach((key, index) => {
-      const { target: sourceTarget } = componentsConfig.portals[key];
+    Object.keys(config).forEach((key, index) => {
+      const { target: sourceTarget } = config[key];
       const portalTarget = Array.isArray(sourceTarget) ? sourceTarget : [sourceTarget];
 
       if (portalTarget.length === 0) {
@@ -87,24 +108,6 @@ class Portal extends PureComponent {
     });
 
     return components;
-  };
-
-  /**
-   * Returns the portal components.
-   * @param {Object} props - The props to pass to the component.
-   * @return {Array}
-   */
-  getRenderedComponents = (props) => {
-    const { props: propsFromProps, ...reducedProps } = props;
-
-    const componentProps = {
-      ...propsFromProps,
-      ...reducedProps,
-    };
-
-    return this.components.map(({ PortalComponent, key }) => (
-      <PortalComponent {...componentProps} key={key} />
-    ));
   };
 
   /**

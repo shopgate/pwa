@@ -1,4 +1,7 @@
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { shadows } = themeConfig;
 
 const button = css({
   borderRadius: '50%',
@@ -20,7 +23,7 @@ const buttonLarge = css({
 });
 
 const buttonShadow = css({
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
+  boxShadow: shadows.buttons.elevated,
 });
 
 export default {

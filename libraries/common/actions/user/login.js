@@ -5,8 +5,15 @@ import {
   ELEGACYSGCONNECT,
   EINCOMPLETELOGIN,
 } from '@shopgate/pwa-core';
+import {
+  requestLogin,
+  successLogin,
+  errorLogin,
+  errorLegacyConnectRegister,
+} from '../../action-creators/user';
 import { SHOPGATE_USER_LOGIN_USER } from '../../constants/Pipelines';
-import * as actions from '../../action-creators/user';
+import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
+import { mutable } from '../../helpers/redux';
 
 /**
  * Login the current user.
@@ -17,11 +24,11 @@ import * as actions from '../../action-creators/user';
  * @param {string} strategy basic or facebook, amazon, etc
  * @return {Function} A redux thunk.
  */
-export default function login(parameters, redirect, strategy = 'basic') {
+function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
   return (dispatch) => {
-    dispatch(actions.requestLogin(parameters.login, parameters.password, strategy));
+    dispatch(requestLogin(parameters.login, parameters.password, strategy));
 
-    new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
+    const request = new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
       .setTrusted()
       .setErrorBlacklist([
         EINVALIDCALL,
@@ -32,12 +39,16 @@ export default function login(parameters, redirect, strategy = 'basic') {
         strategy,
         parameters,
       })
-      .dispatch()
-      .then(({ success, messages }) => {
+      .dispatch();
+
+    request
+      .then((result) => {
+        const { success, messages } = result;
+
         if (success) {
-          dispatch(actions.successLogin(redirect));
+          dispatch(successLogin(redirect, strategy));
         } else {
-          dispatch(actions.errorLogin(messages));
+          dispatch(errorLogin(messages));
         }
       })
       .catch((error) => {
@@ -49,18 +60,23 @@ export default function login(parameters, redirect, strategy = 'basic') {
            * in. In that situation the success action can also dispatch to trigger the necessary
            * processes which has to happen after a successful login.
            */
-          dispatch(actions.successLogin(redirect));
+          dispatch(successLogin(redirect, strategy));
         } else if (code === ELEGACYSGCONNECT) {
           /**
            * The app is connected to the shop system via the legacy shopgate connect. Login via
            * the shop system credentials failed and further steps are necessary to login the user.
            */
-          dispatch(actions.errorLegacyConnectRegister());
-          dispatch(actions.errorLogin([], ELEGACYSGCONNECT));
+          dispatch(errorLegacyConnectRegister());
+          dispatch(errorLogin([], ELEGACYSGCONNECT));
         } else {
           logger.error(error);
-          dispatch(actions.errorLogin([], code));
+          dispatch(errorLogin([], code));
         }
       });
+
+    return request;
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(login);

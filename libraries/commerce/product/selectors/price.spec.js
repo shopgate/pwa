@@ -18,7 +18,7 @@ import {
   productWithVariants,
   productWithSelectedVariant,
   productWithVariantsAndOptions,
-} from './../mock';
+} from '../mock';
 
 describe('Product.Price selectors', () => {
   describe('Simple data selectors', () => {

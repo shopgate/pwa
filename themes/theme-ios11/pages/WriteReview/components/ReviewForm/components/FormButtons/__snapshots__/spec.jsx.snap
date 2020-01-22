@@ -34,14 +34,14 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               type="button"
             >
               <Translate
-                className=""
+                className={null}
                 params={Object {}}
                 role={null}
                 string="common.cancel"
                 transform={null}
               >
                 <span
-                  className=""
+                  className={null}
                   role={null}
                 >
                   common.cancel
@@ -97,14 +97,14 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                         style={null}
                       >
                         <Translate
-                          className=""
+                          className={null}
                           params={Object {}}
                           role={null}
                           string="common.submit"
                           transform={null}
                         >
                           <span
-                            className=""
+                            className={null}
                             role={null}
                           >
                             common.submit

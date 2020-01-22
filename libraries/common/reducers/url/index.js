@@ -4,7 +4,7 @@ import {
   ERROR_URL,
 } from '../../constants/ActionTypes';
 
-const URL_LIFETIME = 31536000000; // 1 year in milliseconds
+const URL_LIFETIME = 300000; // 5 minutes in milliseconds
 const defaultState = {};
 
 /**

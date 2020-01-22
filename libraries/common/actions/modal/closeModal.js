@@ -1,3 +1,4 @@
+import { mutable } from '../../helpers/redux';
 import { removeModal } from '../../action-creators/modal';
 import promiseMap from './promiseMap';
 
@@ -7,7 +8,7 @@ import promiseMap from './promiseMap';
  * @param {boolean} confirmed A flag whether the modal was confirmed or not.
  * @returns {Function} A redux thunk.
  */
-export default function closeModal(id, confirmed = false) {
+function closeModal(id, confirmed = false) {
   return (dispatch) => {
     const promise = promiseMap.get(id);
 
@@ -18,3 +19,6 @@ export default function closeModal(id, confirmed = false) {
     dispatch(removeModal(id));
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(closeModal);

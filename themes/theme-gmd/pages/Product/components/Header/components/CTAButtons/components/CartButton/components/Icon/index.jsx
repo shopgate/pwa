@@ -12,6 +12,7 @@ import transition from './transition';
 class CartButtonIcon extends PureComponent {
   static propTypes = {
     onSuccess: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     success: PropTypes.bool.isRequired,
   }
 
@@ -23,7 +24,7 @@ class CartButtonIcon extends PureComponent {
    * Set the success state when it is recieved as true.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!nextProps.success) {
       return;
     }

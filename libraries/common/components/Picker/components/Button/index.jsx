@@ -9,7 +9,7 @@ import styles from './style';
 const PickerButton = ({ value, label, openList }) => {
   if (value !== null) {
     return (
-      <button className={styles.button} onClick={openList}>
+      <button className={styles.button} onClick={openList} type="button">
         <span className={styles.label}>{label}</span>
         <span className={styles.value}>{value}</span>
       </button>
@@ -17,7 +17,7 @@ const PickerButton = ({ value, label, openList }) => {
   }
 
   return (
-    <button className={styles.button} onClick={openList}>
+    <button className={styles.button} onClick={openList} type="button">
       <span className={styles.label}>{label}</span>
     </button>
   );

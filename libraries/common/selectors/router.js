@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { isObject } from '../helpers/validation';
 
 /**
  * @param {Object} state The application state.
@@ -126,3 +127,66 @@ export function makeIsLastStackEntry() {
     }
   );
 }
+
+/**
+ * Get the previous route from stack.
+ * @returns {Function}
+ */
+export function makeGetPrevRoute() {
+  return createSelector(
+    (state, props = {}) => props.routeId,
+    getRouterStack,
+    (routeId, stack) => {
+      const routeIndex = stack.findIndex(entry => entry.id === routeId);
+      if (routeIndex <= 0) {
+        return null;
+      }
+      return stack[routeIndex - 1];
+    }
+  );
+}
+
+/**
+ * Creates a selector that retrieves the pattern of the route.
+ * @returns {Function}
+ */
+export const makeGetRoutePattern = () =>
+  /**
+   * Retrieves the route pattern.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @returns {string|null} The pattern.
+   */
+  createSelector(
+    getCurrentRoute,
+    (route) => {
+      if (!route || !route.pattern) {
+        return null;
+      }
+
+      return route.pattern;
+    }
+  );
+
+/**
+ * Creates a selector that retrieves the value of a specific parameter from the route.
+ * @param {string} name The name of the desired parameter.
+ * @returns {Function}
+ */
+export const makeGetRouteParam = (name = '') =>
+  /**
+   * Retrieves a parameter from the route.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @returns {string|null} The parameter value.
+   */
+  createSelector(
+    getCurrentParams,
+    (params) => {
+      if (!isObject(params)) {
+        return null;
+      }
+
+      return params[name] || null;
+    }
+  );

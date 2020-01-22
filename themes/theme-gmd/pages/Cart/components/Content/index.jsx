@@ -1,12 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { getCartConfig } from '@shopgate/pwa-common-commerce/cart';
-import CardList from '@shopgate/pwa-ui-shared/CardList';
-import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
+import { MessageBar, CardList, Portal } from '@shopgate/engage/components';
 import { SimpleBar } from 'Components/AppBar/presets';
 import Item from '../Item';
 import CouponField from '../CouponField';
@@ -94,7 +92,7 @@ class CartContentContainer extends PureComponent {
                       />
                     ))}
                     <Portal name={portals.CART_COUPON_FIELD_BEFORE} />
-                    <Portal name={portals.CART_COUPON_FIELD} >
+                    <Portal name={portals.CART_COUPON_FIELD}>
                       <CouponField onFocus={this.togglePaymentBar} />
                     </Portal>
                     <Portal name={portals.CART_COUPON_FIELD_AFTER} />

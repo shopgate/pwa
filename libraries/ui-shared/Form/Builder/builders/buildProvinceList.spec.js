@@ -1,4 +1,4 @@
-import iso3166 from './../iso-3166-2';
+import iso3166 from '../iso-3166-2';
 import buildProvinceList from './buildProvinceList';
 
 describe('buildProvinceList', () => {

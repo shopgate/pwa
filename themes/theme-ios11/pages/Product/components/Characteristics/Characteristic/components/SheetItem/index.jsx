@@ -65,7 +65,7 @@ class SheetItem extends PureComponent {
     const { item, rightComponent: Right, selected } = this.props;
 
     return (
-      <button {...this.buildProps()} data-test-id={item.label} aria-selected={selected} role="option">
+      <button {...this.buildProps()} data-test-id={item.label} aria-selected={selected} role="option" type="button">
         {item.label}
         {item.selectable && <Right />}
       </button>

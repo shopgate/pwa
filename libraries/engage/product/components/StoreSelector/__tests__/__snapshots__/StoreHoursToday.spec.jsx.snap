@@ -11,7 +11,7 @@ exports[`<StoreHoursToday /> should render as expected 1`] = `
   }
 >
   <Translate
-    className=""
+    className={null}
     params={
       Object {
         "hours": "8:00am - 4:00pm",

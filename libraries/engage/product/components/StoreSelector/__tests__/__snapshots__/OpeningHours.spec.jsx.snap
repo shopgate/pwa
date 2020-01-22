@@ -24,7 +24,7 @@ exports[`<OpeningHours /> should not render hours that are empty 1`] = `
       }
     >
       <Translate
-        className=""
+        className={null}
         params={Object {}}
         role={null}
         string="product.location.mon"
@@ -53,7 +53,7 @@ exports[`<OpeningHours /> should not render hours that are empty 1`] = `
       }
     >
       <Translate
-        className=""
+        className={null}
         params={Object {}}
         role={null}
         string="product.location.wen"

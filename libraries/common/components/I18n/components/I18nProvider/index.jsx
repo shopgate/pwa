@@ -31,6 +31,7 @@ export default class I18nProvider extends Component {
       `);
     }
   }
+
   /**
    * Provides context for child components.
    * @returns {Object}

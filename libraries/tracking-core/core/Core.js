@@ -217,7 +217,9 @@ class Core {
         return;
 
         // Shopgate only command
-      } else if (!scopeOptions.merchant && scopeOptions.shopgate && !entry.shopgate) {
+      }
+
+      if (!scopeOptions.merchant && scopeOptions.shopgate && !entry.shopgate) {
         return;
       }
 

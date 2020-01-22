@@ -1,9 +1,7 @@
-import { broadcastEvent } from '../../index';
+import broadcastEvent from '@shopgate/pwa-core/commands/broadcastEvent';
 import { updateLegacyNavigationBar } from '../updateLegacyNavigationBar';
 
-jest.mock('../../index', () => ({
-  broadcastEvent: jest.fn(),
-}));
+jest.mock('@shopgate/pwa-core/commands/broadcastEvent', () => jest.fn());
 
 describe('updateLegacyNavigationBar()', () => {
   it('should broadcast when called without parameters', () => {
@@ -84,6 +82,27 @@ describe('updateLegacyNavigationBar()', () => {
       parameters: [{
         targetTab: 'cart',
         styles: {},
+        statusBarStyle: 'dark',
+      }],
+    });
+  });
+
+  it('should broadcast when called with the isDefault option', () => {
+    const options = {
+      isDefault: true,
+      statusBarStyle: 'dark',
+      targetTab: 'cart',
+      statusBarBackground: 'red',
+    };
+    updateLegacyNavigationBar(options);
+    expect(broadcastEvent).toHaveBeenCalledWith({
+      event: 'updateNavigationBarStyle',
+      parameters: [{
+        isDefault: true,
+        targetTab: 'cart',
+        styles: {
+          statusBarBackground: 'red',
+        },
         statusBarStyle: 'dark',
       }],
     });

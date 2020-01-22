@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { onlyUpdateForKeys } from 'recompose';
 import {
   NAV_MENU_LOGOUT,
   NAV_MENU_LOGOUT_AFTER,
@@ -11,8 +10,6 @@ import LogoutIcon from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import connect from './connector';
 import portalProps from '../../portalProps';
-
-const enhance = onlyUpdateForKeys(['loggedIn']);
 
 /**
  * @returns {JSX}
@@ -39,4 +36,4 @@ LogoutButton.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
-export default connect(enhance(LogoutButton));
+export default connect(memo(LogoutButton));

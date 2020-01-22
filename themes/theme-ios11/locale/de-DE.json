@@ -9,7 +9,8 @@
     "please_choose": "Bitte wählen",
     "show_products": "Produkte anzeigen",
     "back": "Zurück",
-    "close": "Schließen"
+    "close": "Schließen",
+    "products": "Produkte"
   },
   "titles": {
     "categories": "Alle Kategorien",
@@ -23,6 +24,7 @@
   },
   "favorites": {
     "add": "Zur Merkliste hinzufügen",
+    "added": "Das Produkt wurde Zur Merkliste hinzugefügt",
     "continue": "Weiter shoppen",
     "empty": "Sie haben noch keine Artikel in der Merkliste",
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
@@ -44,11 +46,16 @@
     },
     "apply": "Fertig",
     "more": "mehr",
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "remove": "{filter} Filter entfernen",
+    "edit": "{filter} Filter bearbeiten",
+    "filter_by": "Filtern nach {label}"
   },
   "price": {
     "from": "Ab {price}",
     "range": "Preis von {fromPrice} bis {toPrice}",
+    "range_from": "Preisspanne ab",
+    "range_to": "Preisspanne bis",
     "tier": {
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
@@ -171,11 +178,16 @@
     "empty": "Ihr Warenkorb ist leer.",
     "continue": "Weiter shoppen",
     "redeem_coupon": "Gutscheincode eingeben",
+    "submit_coupon": "Gutscheincode absenden",
+    "delete_coupon": "Gutscheincode löschen",
     "coupon_code": "Code",
     "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!",
     "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein",
-    "free_shipping": "Kostenloser Versand"
+    "free_shipping": "Kostenloser Versand",
+    "message_type_info": "Info",
+    "message_type_error": "Fehler",
+    "message_type_warning": "Warnung"
   },
   "login": {
     "headline": "Willkommen!",
@@ -208,7 +220,8 @@
     "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
     "store_information": "Über uns",
-    "more_menu": "Mehr"
+    "more_menu": "Mehr",
+    "back": "Zurück zu {title}"
   },
   "reviews": {
     "rating": "Bewertung",
@@ -248,6 +261,9 @@
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "geolocation_message": "Wir benötigen Zugriff auf den Standort um Filialen in der Nähe zu zeigen."
     }
+  },
+  "error": {
+    "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
   },
   "formats": {
     "date": {

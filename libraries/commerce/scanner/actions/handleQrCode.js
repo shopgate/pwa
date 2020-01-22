@@ -2,7 +2,7 @@ import { historyPop, historyReplace } from '@shopgate/pwa-common/actions/router'
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
 import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
-import { fetchCategory, getCategoryById } from '@shopgate/pwa-common-commerce/category';
+import { fetchCategory, getCategory } from '@shopgate/pwa-common-commerce/category';
 import successHandleScanner from '../action-creators/successHandleScanner';
 import {
   QR_CODE_TYPE_CATEGORY,
@@ -59,20 +59,8 @@ export default ({ scope, format, payload }) => async (dispatch, getState) => {
       dispatch(historyPop());
       break;
     case QR_CODE_TYPE_PRODUCT:
-      // Force to fetch missing products
-      await dispatch(fetchProductsById([data.productId]));
-
-      // Check from a store
-      if (!getProductById(getState(), data)) {
-        notFound();
-      } else {
-        dispatch(successHandleScanner(scope, format, payload));
-        dispatch(historyReplace({
-          pathname: link,
-        }));
-      }
-      break;
     case QR_CODE_TYPE_PRODUCT_WITH_COUPON:
+      // Force to fetch missing products
       await dispatch(fetchProductsById([data.productId]));
 
       // Check from a store
@@ -88,7 +76,7 @@ export default ({ scope, format, payload }) => async (dispatch, getState) => {
     case QR_CODE_TYPE_CATEGORY:
       await dispatch(fetchCategory(data.categoryId));
 
-      if (!getCategoryById(getState(), data)) {
+      if (!getCategory(getState(), data)) {
         notFound();
       } else {
         dispatch(successHandleScanner(scope, format, payload));

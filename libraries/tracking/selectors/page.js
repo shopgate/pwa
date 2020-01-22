@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 import { shopNumber } from '@shopgate/pwa-common/helpers/config';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
-
+import { getPageConfigById } from '@shopgate/engage/page';
+import { makeGetRouteParam } from '@shopgate/engage/core';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 
 /**
@@ -50,6 +51,21 @@ const getPageTrackingName = createSelector(
   getPageName,
   pageName => pageNameMap[pageName] || pageName
 );
+
+/**
+ * Creates a selector that retrieves a page config for the current route from the store.
+ * @param {string} name The name of the desired parameter.
+ * @returns {Function}
+ */
+export const makeGetRoutePageConfig = () => {
+  const getPageIdRouteParam = makeGetRouteParam('pageId');
+
+  return createSelector(
+    state => state,
+    getPageIdRouteParam,
+    (state, pageId) => (pageId ? getPageConfigById(state, { pageId }) : null)
+  );
+};
 
 /**
  * Selects the page information.

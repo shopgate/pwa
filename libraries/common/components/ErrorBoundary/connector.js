@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { appError } from './../../action-creators/error';
+import { appError } from '../../action-creators/error';
 
 /**
  * Connects the dispatch function to a callable function in the props.

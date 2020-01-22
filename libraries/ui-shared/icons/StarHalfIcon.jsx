@@ -1,20 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@shopgate/pwa-common/components/Icon';
-
-// SVG Content
-const content = (
-  `<defs><path id="a" d="M0 0h24v24H0z"/></defs>
-  <clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath>
-  <path clip-path="ul(#b)" d="M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3"/>`
-);
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The half-filled star icon component
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const StarHalfIcon = props => <Icon content={content} {...props} />;
+const StarHalfIcon = props => <Icon content={themeConfig.icons.starHalf} {...props} />;
 
 StarHalfIcon.propTypes = {
   className: PropTypes.string,

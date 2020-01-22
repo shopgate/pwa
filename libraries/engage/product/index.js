@@ -71,7 +71,12 @@ export { default as ProductCard } from './components/ProductCard';
 export { default as ProductGridPrice } from './components/ProductGridPrice';
 export { StoreSelector } from './components/StoreSelector';
 export { default as FulfillmentSelector } from './components/FulfillmentSelector';
+export { default as ProductCharacteristics } from './components/ProductCharacteristics';
+export { default as Description } from './components/Description';
 
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
 export { default as withProductStock } from './hocs/withProductStock';
+
+// CONTEXTS
+export { default as VariantContext } from './components/ProductCharacteristics/context';

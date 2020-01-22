@@ -41,7 +41,7 @@ class ToggleIcon extends Component {
    * Reset state to received props
    * @param {Object} nextProps next props
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ on: nextProps.on });
   }
 
@@ -49,10 +49,7 @@ class ToggleIcon extends Component {
    * Toggle icon
    */
   handleToggle = () => {
-    this.setState(
-      { on: !this.state.on },
-      () => this.props.toggleHandler(this.state.on)
-    );
+    this.setState(({ on }) => ({ on: !on }), () => this.props.toggleHandler(this.state.on));
   };
 
   /**

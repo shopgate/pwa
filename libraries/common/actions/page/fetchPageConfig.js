@@ -1,7 +1,11 @@
 import { PipelineRequest, logger } from '@shopgate/pwa-core';
-import * as pipelines from '../../constants/Pipelines';
-import { shouldFetchData } from '../../helpers/redux';
-import * as actions from '../../action-creators/page';
+import { SHOPGATE_CMS_GET_PAGE_CONFIG } from '../../constants/Pipelines';
+import {
+  requestPageConfig,
+  receivePageConfig,
+  errorPageConfig,
+} from '../../action-creators/page';
+import { shouldFetchData, mutable } from '../../helpers/redux';
 import { getPageConfigById } from '../../selectors/page';
 
 /**
@@ -9,24 +13,33 @@ import { getPageConfigById } from '../../selectors/page';
  * @param {string} pageId The ID of the page to request.
  * @return {Function} The dispatched action.
  */
-export default function fetchPageConfig(pageId) {
+function fetchPageConfig(pageId) {
   return (dispatch, getState) => {
     const state = getState();
     const pageConfig = getPageConfigById(state, { pageId });
 
     if (!shouldFetchData(pageConfig)) {
-      return null;
+      return Promise.resolve(null);
     }
 
-    dispatch(actions.requestPageConfig(pageId));
+    dispatch(requestPageConfig(pageId));
 
-    return new PipelineRequest(pipelines.SHOPGATE_CMS_GET_PAGE_CONFIG)
+    const request = new PipelineRequest(SHOPGATE_CMS_GET_PAGE_CONFIG)
       .setInput({ pageId })
-      .dispatch()
-      .then(result => dispatch(actions.receivePageConfig(pageId, result)))
+      .dispatch();
+
+    request
+      .then((result) => {
+        dispatch(receivePageConfig(pageId, result));
+      })
       .catch((error) => {
         logger.error(error);
-        dispatch(actions.errorPageConfig(pageId, error.code));
+        dispatch(errorPageConfig(pageId, error.code));
       });
+
+    return request;
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(fetchPageConfig);

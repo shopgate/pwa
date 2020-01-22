@@ -82,7 +82,7 @@ const buttonWrapperDefault = (bSize, iSize) => ({
  */
 const buttonWrapper = (bSize, iSize) => css({
   ...buttonWrapperDefault(bSize, iSize),
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
+  boxShadow: themeConfig.shadows.buttons.elevated,
 }).toString();
 
 /**
@@ -118,7 +118,7 @@ const buttonSuccess = css({
 const buttonDisabled = css({
   background: themeConfig.colors.shade5,
   color: themeConfig.colors.ctaContrast,
-  boxShadow: '0 3px 4px rgba(0, 0, 0, 0.13)',
+  boxShadow: themeConfig.shadows.buttons.disabled,
 }).toString();
 
 /**

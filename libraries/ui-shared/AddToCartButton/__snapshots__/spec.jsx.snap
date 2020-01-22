@@ -27,6 +27,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       className="null css-68omm3 css-nil"
       data-test-id="addToCartButton"
       onClick={[Function]}
+      type="button"
     >
       <div
         className="css-rukjns css-1gleer"
@@ -149,7 +150,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": Promise {},
         },
       ],
@@ -174,7 +175,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],
@@ -188,6 +189,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       className="null css-68omm3 css-nil"
       data-test-id="addToCartButton"
       onClick={[Function]}
+      type="button"
     >
       <div
         className="css-rukjns"
@@ -279,7 +281,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": Promise {},
         },
       ],
@@ -304,7 +306,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],
@@ -318,6 +320,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       className="null css-68omm3 css-nil"
       data-test-id="addToCartButton"
       onClick={[Function]}
+      type="button"
     >
       <div
         className="css-rukjns css-1tg5aiu"

@@ -98,14 +98,25 @@ class ClientInformation extends Component {
     } = this.props;
 
     return (
-      <div className={styles.wrapper} onTouchStart={this.startTimer}>
+      <div className={styles.wrapper} onTouchStart={this.startTimer} aria-hidden>
         <p className={styles.unselectable}>
-          App Version: {appVersion} ({codebaseVersion})<br />
-          Lib Version: {libVersion}
+          App Version:
+          {' '}
+          {appVersion}
+          {' '}
+(
+          {codebaseVersion}
+)
+          <br />
+          Lib Version:
+          {' '}
+          {libVersion}
         </p>
         {isDeviceIdVisible &&
           <p className={styles.deviceId}>
-            Device ID: {deviceId}
+            Device ID:
+            {' '}
+            {deviceId}
           </p>
         }
       </div>

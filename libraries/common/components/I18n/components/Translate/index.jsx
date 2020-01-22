@@ -25,13 +25,14 @@ const Translate = ({
   className,
   role,
   transform,
+  ...rest
 }) => {
   if (typeof string !== 'string' || string.length === 0) {
     return string;
   }
 
   if (!i18n.ready) {
-    return <span className={className} role={role}>{string}</span>;
+    return <span className={className} role={role} {...rest}>{string}</span>;
   }
 
   // When the input string is malformed, return the original string rather than raising an error.
@@ -62,7 +63,7 @@ const Translate = ({
   }
 
   return (
-    <span className={className} role={role}>
+    <span className={className} role={role} {...rest}>
       {!transform ? formatted : transform(renderToString(formatted))}
     </span>
   );
@@ -82,7 +83,7 @@ Translate.propTypes = {
 
 Translate.defaultProps = {
   children: null,
-  className: '',
+  className: null,
   params: {},
   role: null,
   transform: null,

@@ -6,7 +6,7 @@ import pipelineSequence from '../PipelineSequence';
 import * as errorSources from '../../constants/ErrorManager';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
-import { ETIMEOUT } from '../../constants/Pipeline';
+import { ETIMEOUT, ENETUNREACH } from '../../constants/Pipeline';
 import logGroup from '../../helpers/logGroup';
 
 /**
@@ -56,6 +56,7 @@ class PipelineManager {
       retries: request.retries,
       finished: false,
       deferred: false,
+      bypass: false,
       timer: null,
     });
 
@@ -115,12 +116,16 @@ class PipelineManager {
 
       entry.finished = true;
 
-      if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-        this.handleResultSequence();
-        return;
+      switch (request.process) {
+        case processTypes.PROCESS_SEQUENTIAL:
+          this.handleResultSequence();
+          break;
+        case processTypes.PROCESS_LAST:
+          this.handleResultLast(serialResult);
+          break;
+        default:
+          this.handleResult(serialResult);
       }
-
-      this.handleResult(serialResult);
     };
 
     // Register a response listener for the request.
@@ -147,7 +152,7 @@ class PipelineManager {
   }
 
   /**
-   * Sends deferred requests when they dont' have running dependencies anymore.
+   * Sends deferred requests when they don't have running dependencies anymore.
    */
   handleDeferredRequests() {
     this.requests.forEach((entry) => {
@@ -189,12 +194,40 @@ class PipelineManager {
   }
 
   /**
+   * Sanitizes error objects.
+   * @param {Object} error An error object.
+   * @return {Object}
+   */
+  sanitizeError = (error = {}) => {
+    let sanitizedCode = error.code;
+
+    if (sanitizedCode) {
+      sanitizedCode = sanitizedCode.toString();
+    }
+
+    if (sanitizedCode === '-999') {
+      // Pipeline / socket timeout code from the OS.
+      sanitizedCode = ETIMEOUT;
+    } else if (sanitizedCode === '-1000') {
+      // Network IO exception
+      sanitizedCode = ENETUNREACH;
+    }
+
+    return {
+      ...error,
+      code: sanitizedCode,
+    };
+  }
+
+  /**
    * Handles a pipeline error.
    * @param {string} serial The pipeline request serial.
    */
   handleError(serial) {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
+
+    request.error = this.sanitizeError(request.error);
 
     const {
       code,
@@ -234,7 +267,13 @@ class PipelineManager {
     }
 
     err.handled = handleError;
-    request.reject(err);
+    if (!Array.isArray(request.reject)) {
+      request.reject(err);
+    } else {
+      request.reject.forEach((reject) => {
+        reject(err);
+      });
+    }
   }
 
   /**
@@ -255,8 +294,12 @@ class PipelineManager {
     if (request.error) {
       logColor = '#ff0000';
       this.handleError(serial);
-    } else {
+    } else if (!Array.isArray(request.resolve)) {
       request.resolve(request.output);
+    } else {
+      request.resolve.forEach((resolve) => {
+        resolve(request.output);
+      });
     }
 
     logGroup(`PipelineResponse %c${pipelineName}`, {
@@ -268,8 +311,10 @@ class PipelineManager {
 
     // Cleanup.
     event.removeCallback(callbackName, request.callback);
-    clearTimeout(entry.timer);
-    this.removeRequestFromPiplineSequence(serial);
+    if (entry.timer) {
+      clearTimeout(entry.timer);
+    }
+    this.removeRequestFromPipelineSequence(serial);
     this.requests.delete(serial);
 
     // Take care about requests that were deferred because of running dependencies.
@@ -289,7 +334,7 @@ class PipelineManager {
 
       if (!entry) {
         // Remove sequence entries without request.
-        this.removeRequestFromPiplineSequence(serial);
+        this.removeRequestFromPipelineSequence(serial);
       } else if (!entry.finished) {
         // Stop sequence procession at the first not finished request.
         break;
@@ -297,6 +342,24 @@ class PipelineManager {
         this.handleResult(serial);
       }
     }
+  }
+
+  /**
+   * Handles only the last result of a list of calls to the same pipeline.
+   * @param {string} serial The serial of the incoming response
+   */
+  handleResultLast(serial) {
+    const entry = this.requests.get(serial);
+
+    // Requests which are queried later mark all previous ones to be bypassed ...
+    if (entry.bypass) {
+      // ... like this one - just clean up
+      this.decrementPipelineOngoing(serial);
+      this.requests.delete(serial);
+      return;
+    }
+
+    this.handleResult(serial);
   }
 
   /**
@@ -313,6 +376,7 @@ class PipelineManager {
     this.incrementPipelineOngoing(serial);
     this.handleTimeout(serial);
     this.addRequestToPipelineSequence(serial);
+    this.bypassOutdatedRequests(serial);
 
     const prefix = this.getRetriesPrefix(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
@@ -349,10 +413,90 @@ class PipelineManager {
   }
 
   /**
+   * When a new request is added with the "PROCESS_LAST" type it causes previous requests with the
+   * same pipeline name (with the flag being set as well) to be marked as bypassed.
+   * When a response of a bypassed request comes in, it will be ignored.
+   * @param {string} serial The pipeline request serial.
+   */
+  bypassOutdatedRequests(serial) {
+    const { request } = this.requests.get(serial);
+
+    if (request.process !== processTypes.PROCESS_LAST) {
+      return;
+    }
+
+    // Get only those pipelines with the same name
+    const groupedRequests = Array.from(this.requests.values())
+      .filter(entry => entry.request.name === request.name)
+      // Single requests in the group can still be interested in the result, so don't bypass the
+      // ones without the "PROCESS_LAST" flag
+      .filter(entry => entry.request.process === processTypes.PROCESS_LAST);
+
+    // Nothing to do, if there is only one request, because it is logically the last one
+    if (groupedRequests.length <= 1) {
+      return;
+    }
+
+    // Convert to a list of resolvers and rejectors, because it will need to resolve all previous
+    // promises, because they will be bypassed, as they don't have any valid data to resolve with.
+    if (!Array.isArray(request.resolve)) {
+      request.resolve = [request.resolve];
+    }
+    if (!Array.isArray(request.reject)) {
+      request.reject = [request.reject];
+    }
+
+    // Bypass only the requests up to, but excluding the current one
+    const currentIndex = groupedRequests.length - 1; // The current one is the last in the group
+    groupedRequests.forEach((entry, i) => {
+      // Keep the last one
+      if (i >= currentIndex || entry.bypass === true) {
+        return;
+      }
+
+      // Collect and move over all resolvers of the previous requests to the current one
+      const previousResolvers = Array.isArray(entry.request.resolve)
+        ? entry.request.resolve
+        : [entry.request.resolve];
+
+      // Attach to current
+      request.resolve = [
+        ...request.resolve,
+        ...previousResolvers,
+      ];
+
+      // Collect and move over all rejectors of the previous requests to the current one
+      const previousRejectors = Array.isArray(entry.request.reject)
+        ? entry.request.reject
+        : [entry.request.reject];
+
+      // Attach to current
+      request.reject = [
+        ...request.reject,
+        ...previousRejectors,
+      ];
+
+      // Clear out retry mechanism on bypassed requests
+      clearTimeout(entry.timer);
+
+      this.requests.set(entry.request.serial, {
+        ...entry,
+        request: {
+          ...entry.request,
+          resolve: () => {}, // moved over to the current request
+          reject: () => {}, // moved over to the current request
+        },
+        bypass: true,
+        timer: null,
+      });
+    });
+  }
+
+  /**
    * Removes sequentially processed requests from the pipeline sequence.
    * @param {string} serial The pipeline request serial.
    */
-  removeRequestFromPiplineSequence(serial) {
+  removeRequestFromPipelineSequence(serial) {
     const { request } = this.requests.get(serial) || {};
 
     if (request && request.process === processTypes.PROCESS_SEQUENTIAL) {

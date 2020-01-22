@@ -47,7 +47,7 @@ class SheetItem extends PureComponent {
     const { item } = this.props;
 
     return (
-      <button {...this.buildProps()}>
+      <button {...this.buildProps()} type="button">
         {item.name}
       </button>
     );

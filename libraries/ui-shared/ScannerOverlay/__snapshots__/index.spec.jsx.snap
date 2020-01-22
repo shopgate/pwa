@@ -38,15 +38,30 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
     >
       <SurroundPortals
         portalName="scanner.bar"
-        portalProps={null}
+        portalProps={
+          Object {
+            "flashlightState": false,
+            "onToggleFlashlight": [Function],
+          }
+        }
       >
         <Portal
           name="scanner.bar.before"
-          props={null}
+          props={
+            Object {
+              "flashlightState": false,
+              "onToggleFlashlight": [Function],
+            }
+          }
         />
         <Portal
           name="scanner.bar"
-          props={null}
+          props={
+            Object {
+              "flashlightState": false,
+              "onToggleFlashlight": [Function],
+            }
+          }
         >
           <Grid
             className="css-kwl6fj"
@@ -85,6 +100,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                           className="css-1yh9ja6"
                           onClick={[Function]}
                           role="link"
+                          type="button"
                         >
                           <ToggleIcon
                             offIcon={
@@ -111,10 +127,8 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                                   className="css-k6n0ls"
                                   color={null}
                                   content="<path d=\\"M15.22,3.1,12,9.51l-.8,1.59h3.86l-4,6.83v-6h-3V3.1h7.12M17,2h0Zm0,0H7V13h3v9l7-12H13l4-8Z\\" />"
-                                  height="24"
                                   size="inherit"
                                   viewBox="0 0 24 24"
-                                  width="24"
                                 >
                                   <svg
                                     className="css-yys9hb css-k6n0ls"
@@ -169,14 +183,14 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                         props={null}
                       >
                         <Translate
-                          className=""
+                          className={null}
                           params={Object {}}
                           role={null}
                           string="scanner.instructions"
                           transform={null}
                         >
                           <span
-                            className=""
+                            className={null}
                             role={null}
                           >
                             scanner.instructions
@@ -196,7 +210,12 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
         </Portal>
         <Portal
           name="scanner.bar.after"
-          props={null}
+          props={
+            Object {
+              "flashlightState": false,
+              "onToggleFlashlight": [Function],
+            }
+          }
         />
       </SurroundPortals>
     </div>

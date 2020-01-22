@@ -61,6 +61,8 @@ class Footer extends Component {
     UIEvents.removeListener(SHEET_EVENTS.CLOSE, this.show);
   }
 
+  ref = React.createRef();
+
   /**
    * Retrieves the background color for the footer inset.
    * @param {NodeList} elements The DOM elements to inspect.
@@ -144,14 +146,12 @@ class Footer extends Component {
     return false;
   }
 
-  ref = React.createRef();
-
   /**
    * @returns {JSX}
    */
   render() {
     return (
-      <div className={footer} ref={this.ref} >
+      <div className={footer} ref={this.ref}>
         <Portal name={APP_FOOTER_CONTENT_BEFORE} />
         <div id={APP_FOOTER_ID}>
           {this.props.children}

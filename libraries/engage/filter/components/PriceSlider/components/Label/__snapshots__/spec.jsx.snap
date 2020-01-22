@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PriceSlider: <Label /> should render 1`] = `
+<div
+  className={
+    Object {
+      "data-css-13azwyo": "",
+    }
+  }
+>
+  <span
+    className={
+      Object {
+        "data-css-5e1epi": "",
+      }
+    }
+  >
+    price.range
+  </span>
+  <Translate
+    aria-hidden={true}
+    className={null}
+    params={Object {}}
+    role={null}
+    string="price.range"
+    transform={null}
+  >
+    <Placeholder
+      forKey="fromPrice"
+    >
+      <span
+        className="css-1l1d8mt"
+        style={
+          Object {
+            "minWidth": "5",
+          }
+        }
+      >
+        <FormatPrice
+          className={null}
+          currency="USD"
+          fractions={false}
+          price={25}
+        />
+      </span>
+    </Placeholder>
+    <Placeholder
+      forKey="toPrice"
+    >
+      <span
+        className="css-1l1d8mt"
+        style={
+          Object {
+            "minWidth": "5",
+          }
+        }
+      >
+        <FormatPrice
+          className={null}
+          currency="USD"
+          fractions={false}
+          price={999}
+        />
+      </span>
+    </Placeholder>
+  </Translate>
+  <span
+    aria-hidden={true}
+    hidden={true}
+    id="price-slider-currency-label"
+  >
+    $
+  </span>
+  <input
+    aria-describedby="price-slider-currency-label"
+    aria-label="price.range_from"
+    className={
+      Object {
+        "data-css-1ssfuq5": "",
+      }
+    }
+    id="priceMin"
+    name="priceMin"
+    onChange={[Function]}
+    onClick={[Function]}
+    style={
+      Object {
+        "left": 0,
+        "width": "5",
+      }
+    }
+    type="text"
+    value={25}
+  />
+  <input
+    aria-describedby="price-slider-currency-label"
+    aria-label="price.range_to"
+    className={
+      Object {
+        "data-css-1ssfuq5": "",
+      }
+    }
+    id="priceMax"
+    name="priceMax"
+    onChange={[Function]}
+    onClick={[Function]}
+    style={
+      Object {
+        "left": 0,
+        "width": "5",
+      }
+    }
+    type="text"
+    value={999}
+  />
+</div>
+`;

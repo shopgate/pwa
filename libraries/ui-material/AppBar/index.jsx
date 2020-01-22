@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
@@ -8,6 +9,8 @@ import Center from './components/Center';
 import Left from './components/Left';
 import Below from './components/Below';
 import styles from './style';
+
+const { shadows } = themeConfig;
 
 /**
  * The AppBar component.
@@ -34,7 +37,9 @@ class AppBar extends PureComponent {
   }
 
   static Field = Field;
+
   static Icon = Icon;
+
   static Title = Title;
 
   /**
@@ -46,7 +51,7 @@ class AppBar extends PureComponent {
     return {
       background: backgroundColor,
       color: textColor,
-      boxShadow: !shadow ? 'none' : 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px',
+      boxShadow: !shadow ? 'none' : shadows.material,
     };
   }
 

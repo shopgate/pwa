@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@shopgate/pwa-common/components/Icon';
-
-// SVG Content
-const content = '<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The star icon component
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const Star = props => <Icon content={content} {...props} />;
+const Star = props => <Icon content={themeConfig.icons.star} {...props} />;
 
 Star.propTypes = {
   className: PropTypes.string,

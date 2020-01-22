@@ -10,14 +10,17 @@ import I18n from '../../../I18n';
 class SelectBoxItem extends Component {
   static propTypes = {
     handleSelectionUpdate: PropTypes.func.isRequired,
+    isSelected: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     wrapper: PropTypes.func.isRequired,
     className: PropTypes.string,
+    forwardedRef: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
+    forwardedRef: null,
   };
 
   /**
@@ -35,15 +38,19 @@ class SelectBoxItem extends Component {
     const Wrapper = this.props.wrapper;
 
     return (
-      <button
+      <li
         className={this.props.className}
+        onKeyUp={() => {}}
         onClick={this.handleSelectionUpdate}
         data-test-id={this.props.label}
+        role="menuitem"
+        ref={this.props.forwardedRef}
+        tabIndex={this.props.isSelected ? '0' : '-1'}
       >
         <Wrapper>
           <I18n.Text string={this.props.label} />
         </Wrapper>
-      </button>
+      </li>
     );
   }
 }

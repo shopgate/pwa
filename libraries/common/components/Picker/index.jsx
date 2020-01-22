@@ -45,6 +45,8 @@ const findItemIndexByValue = (items, value) => (
 
 /**
  * The picker component (acts like a selectbox).
+ * @deprecated Will be remove in Engage v7.0.0.
+ *             Please use `import { Picker } from '@shopgate/engage/components'` instead.
  */
 class Picker extends Component {
   static propTypes = {
@@ -87,9 +89,9 @@ class Picker extends Component {
     className: '',
     isOpen: false,
     items: [],
-    onChange: () => {},
-    onClose: () => {},
-    onSelect: () => {},
+    onChange: () => { },
+    onClose: () => { },
+    onSelect: () => { },
     placeholder: 'Pick ...',
     value: null,
   };
@@ -111,7 +113,7 @@ class Picker extends Component {
    * Updates the selected item when the value prop changes.
    * @param {Object} nextProps - The next props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Only update if a value is present and also changed.
     if (
       !this.selectedItem ||
@@ -177,9 +179,14 @@ class Picker extends Component {
    * @param {boolean} [open] New open state.
    */
   toggleOpenState = (open) => {
-    const isOpen = typeof open === 'boolean' ? open : !this.state.isOpen;
-    this.triggerCloseCallback(isOpen);
-    this.setState({ isOpen });
+    this.setState(({ isOpen }) => {
+      const nextIsOpen = typeof open === 'boolean' ? open : !isOpen;
+      this.triggerCloseCallback(nextIsOpen);
+
+      return {
+        isOpen: nextIsOpen,
+      };
+    });
   };
 
   /**

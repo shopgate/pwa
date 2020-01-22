@@ -4,7 +4,7 @@ import { RECEIVE_REVIEWS } from '../constants';
  * Dispatches the RECEIVE_REVIEWS action.
  * @param {string} hash Generated hash for an entity.
  * @param {string} productId The ID of the product.
- * @param {Object} reviews The received review data.
+ * @param {Array} reviews The received review data.
  * @param {number} totalReviewCount The total number of reviews for a product.
  * @returns {Object} The RECEIVE_PRODUCT_REVIEWS action.
  */

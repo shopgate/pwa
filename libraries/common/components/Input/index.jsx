@@ -24,4 +24,4 @@ Factory.defaultProps = {
   multiLine: false,
 };
 
-module.exports = props => Factory(props);
+export default props => Factory(props);

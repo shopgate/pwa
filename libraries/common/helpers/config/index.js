@@ -1,11 +1,11 @@
-import pck from './../../package';
+import pck from '../../package';
 import { buildThemeConfig } from './theme';
 import { assignObjectDeep } from '../data';
 import { isObject } from '../validation';
 
 /**
  * Provides a default app config as a fallback.
- * @type {Object}
+ * @mixin AppConfig
  */
 const defaultAppConfig = {
   appId: 'shop_30177',
@@ -31,9 +31,20 @@ const defaultAppConfig = {
   theme: {},
   cartShippingHideAnonymousLegacy: null,
   cartShippingTextAnonymousLegacy: null,
+  variantSelectionMode: null,
+  product: {
+    variantPreselect: false,
+  },
   cart: {},
   scanner: {},
   favorites: {},
+  tracking: {
+    hasWebTrackingEngage: false,
+  },
+  webTrackingEngage: {
+    android: '',
+    ios: '',
+  },
 };
 
 /**
@@ -52,7 +63,7 @@ const defaultComponentsConfig = {
 
 /**
  * The components.json config from the theme.
- * @typedef {Object}
+ * @type {Object}
  */
 export const componentsConfig = {
   ...defaultComponentsConfig,
@@ -62,19 +73,19 @@ export const componentsConfig = {
 /**
  * The app.json config from the theme which will automatically be resolved.
  * Be careful when changing existing properties on the fly, reassignments should never be done!
- * @typedef {Object}
+ * @mixes AppConfig
  */
 const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : defaultAppConfig;
 
 /**
  * The theme name.
- * @typedef {string}
+ * @type {string}
  */
 export const themeName = process.env.THEME || 'theme';
 
 /**
  * The resolved theme configuration.
- * @typedef {Object}
+ * @type {ThemeConfig}
  */
 export const themeConfig = buildThemeConfig(appConfig);
 
@@ -130,9 +141,10 @@ export function writeToConfig(newConfig, arrayComparator = null) {
 
 /**
  * The shop number.
- * @typedef {string}
+ * @type {string}
  */
 const { appId } = appConfig;
 export const shopNumber = appId ? appId.replace('shop_', '') : '';
 
+/** @mixes AppConfig */
 export default appConfig;

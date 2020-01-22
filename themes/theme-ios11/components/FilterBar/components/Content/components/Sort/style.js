@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
+const { variables, shadows } = themeConfig;
 
 const button = css({
   color: 'inherit',
@@ -31,7 +31,7 @@ const iconOpen = css({
 
 const dropdown = css({
   background: '#fff',
-  boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
+  boxShadow: shadows.filter.sort,
   left: 0,
   position: 'absolute',
   top: '100%',

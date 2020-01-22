@@ -1,7 +1,7 @@
 const util = require('util');
 const fs = require('fs');
-const repos = require('../repos.json');
 const exec = util.promisify(require('child_process').exec);
+const repos = require('../repos.json');
 const logger = require('./logger');
 
 const { themes, extensions } = repos;

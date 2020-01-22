@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
 import { mount } from 'enzyme';
 import FormBuilder from '.';
@@ -263,4 +264,28 @@ describe('<FormBuilder />', () => {
       }, true);
     });
   });
+
+  describe('FormBuilder::elementSortFunc', () => {
+    const builder = new FormBuilder({
+      validationErrors: [{}],
+      config: { fields: {} },
+      handleUpdate: jest.fn(),
+    });
+
+    const field1 = { id: 'foo', label: 'foo' };
+    const field2 = { id: 'foo2', label: 'foo2' };
+
+    it('should keep sortOrder for undefined', () => {
+      expect([field2, field1].sort(builder.elementSortFunc)).toEqual([field2, field1]);
+    });
+    it('should sort elements', () => {
+      const fields = [{ ...field1, sortOrder: 2 }, { ...field2, sortOrder: 1 }];
+      expect(fields.sort(builder.elementSortFunc)).toEqual(fields.reverse());
+    });
+    it('should keep sortOrder', () => {
+      const fields = [{ ...field2, sortOrder: 1 }, { ...field1, sortOrder: 2 }];
+      expect(fields.sort(builder.elementSortFunc)).toEqual([...fields]);
+    });
+  });
 });
+/* eslint-enable extra-rules/no-single-line-objects */

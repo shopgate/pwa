@@ -1,8 +1,11 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { navigate } from './actions';
 
+/**
+ * @return {Object} The extended component props.
+ */
 const mapDispatchToProps = {
-  historyPush: params => historyPush(params),
+  historyPush: navigate,
 };
 
 export default connect(null, mapDispatchToProps);

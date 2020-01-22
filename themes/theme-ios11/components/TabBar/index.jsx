@@ -71,7 +71,7 @@ class TabBar extends PureComponent {
   /**
    * @param {Object} nextProps next props
    */
-  componentWillReceiveProps({ isVisible }) {
+  UNSAFE_componentWillReceiveProps({ isVisible }) {
     if (this.state.isVisible !== isVisible) {
       this.setState({ isVisible });
     }
@@ -118,7 +118,7 @@ class TabBar extends PureComponent {
             <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
             {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
             <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-              <Grid className={styles} data-test-id="tabBar" role="tablist" aria-hidden>
+              <Grid className={styles} data-test-id="tabBar" role="tablist" component="div">
                 {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
               </Grid>
             </Portal>

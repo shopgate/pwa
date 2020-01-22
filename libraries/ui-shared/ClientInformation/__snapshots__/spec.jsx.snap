@@ -2,6 +2,7 @@
 
 exports[`<ClientInformation /> App and lib version, and device ID should render the app and lib version 1`] = `
 <div
+  aria-hidden={true}
   className={
     Object {
       "data-css-1y4o210": "",
@@ -16,13 +17,16 @@ exports[`<ClientInformation /> App and lib version, and device ID should render 
       }
     }
   >
-    App Version: 
+    App Version:
+     
     1.2.3
-     (
+     
+    (
     7.8.9
     )
     <br />
-    Lib Version: 
+    Lib Version:
+     
     4.5.6
   </p>
 </div>
@@ -37,6 +41,7 @@ exports[`<ClientInformation /> App and lib version, and device ID should show th
   libVersion="4.5.6"
 >
   <div
+    aria-hidden={true}
     className={
       Object {
         "data-css-1y4o210": "",
@@ -51,13 +56,16 @@ exports[`<ClientInformation /> App and lib version, and device ID should show th
         }
       }
     >
-      App Version: 
+      App Version:
+       
       1.2.3
-       (
+       
+      (
       7.8.9
       )
       <br />
-      Lib Version: 
+      Lib Version:
+       
       4.5.6
     </p>
     <p
@@ -67,7 +75,8 @@ exports[`<ClientInformation /> App and lib version, and device ID should show th
         }
       }
     >
-      Device ID: 
+      Device ID:
+       
       my-awesome-device-id
     </p>
   </div>
@@ -78,6 +87,7 @@ exports[`<ClientInformation /> should not render if no data is available 1`] = `
 
 exports[`<ClientInformation /> should re-render when data comes available 1`] = `
 <div
+  aria-hidden={true}
   className={
     Object {
       "data-css-1y4o210": "",
@@ -92,13 +102,16 @@ exports[`<ClientInformation /> should re-render when data comes available 1`] = 
       }
     }
   >
-    App Version: 
+    App Version:
+     
     1.2.3
-     (
+     
+    (
     7.8.9
     )
     <br />
-    Lib Version: 
+    Lib Version:
+     
     4.5.6
   </p>
 </div>

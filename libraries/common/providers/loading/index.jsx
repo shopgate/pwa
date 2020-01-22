@@ -8,6 +8,9 @@ import LoadingContext from './context';
  */
 class LoadingProvider extends Component {
   static SET = 'loading_set';
+
+  static RESET = 'loading_reset';
+
   static UNSET = 'loading_unset';
 
   static propTypes = {
@@ -15,7 +18,7 @@ class LoadingProvider extends Component {
   }
 
   /**
-   * Adds or increases a loading counter for a path.
+   * Adds or increases the loading counter for a path.
    * @param {string} path The path which loads.
    */
   static setLoading(path) {
@@ -23,7 +26,15 @@ class LoadingProvider extends Component {
   }
 
   /**
-   * Decreases a loading counter for a path.
+   * Resets the loading counter for a path.
+   * @param {string} path The path which loads.
+   */
+  static resetLoading(path) {
+    UIEvents.emit(LoadingProvider.RESET, path);
+  }
+
+  /**
+   * Decreases the loading counter for a path.
    * @param {string} path The path which loads.
    */
   static unsetLoading(path) {
@@ -42,6 +53,7 @@ class LoadingProvider extends Component {
     };
 
     UIEvents.addListener(this.constructor.SET, this.setLoading);
+    UIEvents.addListener(this.constructor.RESET, this.resetLoading);
     UIEvents.addListener(this.constructor.UNSET, this.unsetLoading);
   }
 
@@ -60,6 +72,7 @@ class LoadingProvider extends Component {
    */
   componentWillUnmount() {
     UIEvents.removeListener(this.constructor.SET, this.setLoading);
+    UIEvents.removeListener(this.constructor.RESET, this.resetLoading);
     UIEvents.removeListener(this.constructor.UNSET, this.unsetLoading);
   }
 
@@ -77,7 +90,7 @@ class LoadingProvider extends Component {
   }
 
   /**
-   * Adds or increases a loading counter for a path.
+   * Adds or increases the loading counter for a path.
    * @param {string} path The path which loads.
    */
   setLoading = (path) => {
@@ -97,7 +110,24 @@ class LoadingProvider extends Component {
   }
 
   /**
-   * Decreases a loading counter for a path.
+   * Resets the loading counter for a path.
+   * @param {string} path The path which loads.
+   */
+  resetLoading = (path) => {
+    const { loading } = this.state;
+
+    if (loading.has(path)) {
+      loading.delete(path);
+    }
+
+    this.setState({
+      lastUpdate: Date.now(),
+      loading,
+    });
+  }
+
+  /**
+   * Decreases the loading counter for a path.
    * @param {string} path The path which loads.
    */
   unsetLoading = (path) => {

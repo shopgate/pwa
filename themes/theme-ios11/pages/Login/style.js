@@ -16,13 +16,13 @@ const headline = css({
 
 const subline = css({
   fontSize: '1.125rem',
-  marginBottom: variables.gap.big,
+  marginBottom: variables.gap.big * 1.5,
   marginTop: 4,
-}).toString();
+});
 
-const padLine = css({
-  marginBottom: variables.gap.xxbig - variables.gap.big,
-}).toString();
+const form = css({
+  paddingTop: variables.gap.big * 1.5,
+});
 
 const input = css({
   width: '100%',
@@ -60,11 +60,11 @@ export default {
   container,
   headline,
   subline,
+  form,
   input,
   forgotWrapper,
   buttonWrapper,
   button,
   noAccount,
   signup,
-  padLine,
 };

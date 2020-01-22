@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import shouldUpdate from 'recompose/shouldUpdate';
 import Footer from '@shopgate/pwa-ui-shared/Footer';
-import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
+import { LiveMessenger } from '@shopgate/engage/a11y';
 import TabBar from 'Components/TabBar';
-import { a11yNavEntries } from './constants';
 import styles from './style';
 
 /**
@@ -22,7 +20,6 @@ const Viewport = props => (
     <Footer>
       <TabBar />
     </Footer>
-    <Navigation entries={a11yNavEntries} />
   </main>
 );
 
@@ -30,17 +27,4 @@ Viewport.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-/**
- * @param {Object} prev The previous component props.
- * @param {Object} next The next component props.
- * @return {boolean}
- */
-function viewportShouldUpdate(prev, next) {
-  if (!prev.children && next.children) {
-    return true;
-  }
-
-  return false;
-}
-
-export default shouldUpdate(viewportShouldUpdate)(Viewport);
+export default Viewport;

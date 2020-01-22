@@ -16,6 +16,7 @@ import styles from './style';
 class NestedCategoryFilter extends PureComponent {
   static contextType = RouteContext;
 
+  /* eslint-disable camelcase */
   static propTypes = {
     id: PropTypes.string.isRequired,
     settings: PropTypes.shape({
@@ -29,6 +30,7 @@ class NestedCategoryFilter extends PureComponent {
     }).isRequired,
     persistedState: PropTypes.shape(),
   }
+  /* eslint-enable camelcase */
 
   static defaultProps = {
     persistedState: null,
@@ -145,7 +147,11 @@ class NestedCategoryFilter extends PureComponent {
 export default props => (
   <RouteContext.Consumer>
     {({ state }) => (
-      <NestedCategoryFilter {...props} persistedState={state[props.id]} />
+      <NestedCategoryFilter
+        {...props}
+        // eslint-disable-next-line react/prop-types
+        persistedState={state[props.id]}
+      />
     )}
   </RouteContext.Consumer>
 );

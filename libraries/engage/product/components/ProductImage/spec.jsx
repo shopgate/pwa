@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Image from '@shopgate/pwa-common/components/Image';
+import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import styles from './style';
 import ProductImage from './index';
@@ -12,6 +13,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hideProductImageShadow() { return mockHideProductImageShadow; },
   themeConfig: {
     colors: {},
+    shadows: mockThemeConfig.shadows,
   },
 }));
 

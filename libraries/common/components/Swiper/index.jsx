@@ -1,11 +1,15 @@
 import 'react-id-swiper/lib/styles/css/swiper.css';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import IDSwiper from 'react-id-swiper';
-import { Pagination, Navigation, Autoplay, Zoom } from 'swiper/dist/js/swiper.esm';
+import {
+  Pagination, Navigation, Autoplay, Zoom,
+} from 'swiper/dist/js/swiper.esm';
 import SwiperItem from './components/SwiperItem';
-import { container, innerContainer, zoomFix, buttonNext, buttonPrev } from './styles';
+import {
+  container, innerContainer, zoomFix, buttonNext, buttonPrev,
+} from './styles';
 
 /**
  * The basic swiper component.
@@ -123,17 +127,6 @@ const Swiper = (props) => {
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
   };
-
-  useEffect(() => {
-    if (swiperInstance.current !== null && params.rebuildOnUpdate === false) {
-      if (loop) {
-        // Recreate the loop on prop updates to avoid duplicated slides from the last slide set.
-        swiperInstance.current.loopCreate();
-      }
-
-      swiperInstance.current.update();
-    }
-  }, [children]);
 
   return (
     <div className={cls(container, className)} aria-hidden={ariaHidden}>

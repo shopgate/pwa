@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { css } from 'glamor';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
 /**
@@ -8,22 +9,37 @@ import styles from './style';
  * @param {Object} props The component props.
  * @param {Array} props.messages The message content.
  * @param {Object} props.classNames Styling.
- * @return {JSX}
+ * @returns {JSX}
+ * @deprecated Please import from `@shopgate/engage/components` instead.
  */
-const MessageBar = ({ messages, classNames }) => (
-  <div className={`${classNames.container} ${styles.container}`}>
-    {messages.map(({
-      type = 'info',
-      message,
-      messageParams = null,
-      translated,
-    }) => (
-      <div key={`${type}-${message}`} className={`${classNames.message} ${styles[type]}`}>
-        { translated === false ? <I18n.Text string={message} params={messageParams} /> : message }
-      </div>
-    ))}
+const MessageBar = memo(({ messages, classNames }) => (
+  <div
+    className={css(styles.container, classNames.container)}
+    role={messages.length > 0 ? 'alert' : null}
+  >
+    {messages.map((item) => {
+      const {
+        type = 'info',
+        message,
+        messageParams = null,
+        translated,
+      } = item;
+
+      const messageOutput = !translated ? i18n.text(message, messageParams) : message;
+
+      return (
+        <div
+          key={`${type}-${message}`}
+          className={css(classNames.message, styles[type])}
+        >
+          <span aria-hidden>
+            {messageOutput}
+          </span>
+        </div>
+      );
+    })}
   </div>
-);
+));
 
 MessageBar.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.shape({
@@ -38,8 +54,8 @@ MessageBar.propTypes = {
 
 MessageBar.defaultProps = {
   classNames: {
-    container: '',
-    message: '',
+    container: null,
+    message: null,
   },
 };
 

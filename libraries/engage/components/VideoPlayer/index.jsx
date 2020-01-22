@@ -10,6 +10,7 @@ import { UI_VISIBILITY_CHANGE } from '@shopgate/pwa-common/constants/ui';
  */
 class VideoPlayer extends PureComponent {
   static propTypes = ReactPlayer.propTypes
+
   static defaultProps = ReactPlayer.defaultProps
 
   state = {
@@ -28,7 +29,7 @@ class VideoPlayer extends PureComponent {
   /**
    * @inheritDoc
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const nextState = { playing: nextProps.playing };
     if (this.props.url !== nextProps.url) {
       nextState.ready = false;

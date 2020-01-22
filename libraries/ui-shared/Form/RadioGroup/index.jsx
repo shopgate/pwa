@@ -46,7 +46,7 @@ class RadioGroup extends Component {
   /**
    * @param {Object} nextProps props
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isControlled && this.state.value !== nextProps.value) {
       this.setState({ value: nextProps.value });
     }

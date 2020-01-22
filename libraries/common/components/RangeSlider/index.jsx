@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { logger } from '@shopgate/pwa-core/helpers';
 import styles from './style';
 import RangeSliderHandle from './components/Handle';
 import {
@@ -13,6 +14,8 @@ import {
 
 /**
  * The range slider component.
+ * @deprecated Will be remove in v7.0.0.
+ *             Please use `import { RangeSlider } from '@shopgate/engage/components'` instead.
  */
 class RangeSlider extends Component {
   static propTypes = {
@@ -52,6 +55,8 @@ class RangeSlider extends Component {
   constructor(props) {
     super(props);
 
+    logger.warn('===== RangeSlider deprecated =====\nThe RangeSlider component and it\'s related components (@shopgate/pwa-common/component/RangeSlider) are deprecated and will be removed in @shopgate/engage v7.0.0.\nPlease use: import { RangeSlider } from \'@shopgate/engage/components\'.\n===================================');
+
     this.draggedHandle = null; // 0 for left handle, 1 for right handle or null
     this.domElement = null;
     this.touchOffset = 0;
@@ -72,7 +77,7 @@ class RangeSlider extends Component {
    * Updates the component properties.
    * @param {Object} newProps The new component properties.
    */
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     this.setState(this.getRange(newProps));
   }
 
@@ -109,7 +114,7 @@ class RangeSlider extends Component {
   }
 
   /**
-   * Get range mina and max from props.
+   * Get range min and max from props.
    * @param {Object} props The component props.
    * @returns {Object} The new state
    */
@@ -138,31 +143,6 @@ class RangeSlider extends Component {
     const handleCenterX = handleRect.left + (handleDOMElement.offsetWidth / 2);
     // Store the signed distanced between the current touch offset and the handle center.
     this.touchOffset = getTouchPositionX(event) - handleCenterX;
-  }
-
-  /**
-   * Calls the change callback in case of a state update.
-   */
-  triggerChangeCallback() {
-    const {
-      value,
-      onChange,
-      min,
-      max,
-    } = this.props;
-
-    if (!onChange) {
-      return;
-    }
-
-    const newRange = [
-      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
-      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
-    ];
-
-    if (newRange !== value) {
-      onChange(newRange);
-    }
   }
 
   /**
@@ -244,6 +224,31 @@ class RangeSlider extends Component {
     }
 
     this.handleTouchMove(event);
+  }
+
+  /**
+   * Calls the change callback in case of a state update.
+   */
+  triggerChangeCallback() {
+    const {
+      value,
+      onChange,
+      min,
+      max,
+    } = this.props;
+
+    if (!onChange) {
+      return;
+    }
+
+    const newRange = [
+      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
+      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
+    ];
+
+    if (newRange !== value) {
+      onChange(newRange);
+    }
   }
 
   /**

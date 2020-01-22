@@ -1,5 +1,8 @@
 module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json'],
+  moduleNameMapper: {
+    '^.+\\.(css|scss)$': 'identity-obj-proxy',
+  },
   snapshotSerializers: [
     'enzyme-to-json/serializer',
   ],
@@ -14,8 +17,8 @@ module.exports = {
     '/node_modules/',
   ],
   unmockedModulePathPatterns: [
-    '<rootDir>/node_modules/react/',
-    '<rootDir>/node_modules/enzyme/',
+    'node_modules/react/',
+    'node_modules/enzyme/',
   ],
   collectCoverageFrom: [
     '**/*.{js,jsx}',
@@ -27,6 +30,8 @@ module.exports = {
   setupFiles: [
     '@shopgate/pwa-unit-test/testSetup.js',
   ],
-  setupTestFrameworkScriptFile: '@shopgate/pwa-unit-test/envSetup.js',
+  setupFilesAfterEnv: [
+    '@shopgate/pwa-unit-test/envSetup.js',
+  ],
   testURL: 'http://localhost',
 };

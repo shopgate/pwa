@@ -126,7 +126,9 @@ class Widgets extends Component {
         if (widget.type === WIDGET_GRID_TYPE) {
           // If it's a grid just create it and pass the child widgets.
           return createGridWrapper(key, widget.settings.widgets, components);
-        } else if (widget.height) {
+        }
+
+        if (widget.height) {
           // If it has a definite height wrap the widget in a grid.
           return createGridWrapper(
             key,

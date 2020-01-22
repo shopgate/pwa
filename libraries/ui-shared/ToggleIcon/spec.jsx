@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ToggleIcon from './index';
-import VisibilityIcon from './../icons/VisibilityIcon';
-import VisibilityOffIcon from './../icons/VisibilityOffIcon';
+import VisibilityIcon from '../icons/VisibilityIcon';
+import VisibilityOffIcon from '../icons/VisibilityOffIcon';
 
 const inputProps = {
   onIcon: <VisibilityIcon />,

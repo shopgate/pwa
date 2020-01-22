@@ -5,12 +5,12 @@ import { mockedDispatch } from '../AppCommand';
 import event from '../Event';
 import { ERROR_HANDLE_SUPPRESS } from '../../constants/ErrorHandleTypes';
 import PipelineRequest from '../PipelineRequest';
-import pipelineManager from '../PipelineManager';
+import pipelineManager from '.';
 import pipelineDependencies from '../PipelineDependencies';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';
-import { PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
-import { ETIMEOUT } from '../../constants/Pipeline';
+import { PROCESS_LAST, PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
+import { ETIMEOUT, ENETUNREACH } from '../../constants/Pipeline';
 
 jest.mock('../../helpers/logGroup', () => jest.fn());
 
@@ -264,6 +264,31 @@ describe('PipelineManager', () => {
         expect(request.output).toEqual({});
       });
     });
+
+    describe('should create a callback that invokes handleResults() for process last types', () => {
+      it('should handle the output', () => {
+        const handleResultLastSpy = jest.spyOn(pipelineManager, 'handleResultLast');
+        request.setResponseProcessed(PROCESS_LAST);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        request.callback(null, request.serial, output);
+        expect(handleResultLastSpy).toHaveBeenCalledTimes(1);
+        expect(request.error).toEqual(null);
+        expect(request.output).toEqual(output);
+      });
+
+      it('should handle the error', () => {
+        const handleResultLastSpy = jest.spyOn(pipelineManager, 'handleResultLast');
+        request.setResponseProcessed(PROCESS_LAST);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+        request.callback(error, request.serial, {});
+        expect(handleResultLastSpy).toHaveBeenCalledTimes(1);
+        expect(request.error).toEqual(error);
+        expect(request.output).toEqual({});
+      });
+    });
   });
 
   describe('.hasRunningDependencies()', () => {
@@ -359,6 +384,19 @@ describe('PipelineManager', () => {
       expect(errorManager.queue).toHaveBeenCalledTimes(0);
     });
 
+    it('should ignore when the original error code was sanitized to an error code that should be suppressed', () => {
+      pipelineManager.addSuppressedErrors(ENETUNREACH);
+      request.reject = jest.fn();
+      request.error = {
+        code: '-1000',
+      };
+
+      pipelineManager.handleError(request.serial);
+
+      expect(request.reject).toHaveBeenCalledTimes(1);
+      expect(errorManager.queue).toHaveBeenCalledTimes(0);
+    });
+
     it('should ignore when pipeline is set to ignore specific error code', () => {
       const req = createRequest(PIPELINE_NAME).setErrorBlacklist(['MY_ERROR']);
       pipelineManager.add(req);
@@ -397,6 +435,49 @@ describe('PipelineManager', () => {
 
       expect(request.reject).toHaveBeenCalledTimes(1);
       expect(errorManager.queue).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('.sanitizeError()', () => {
+    it('should convert a numeric -999 code to ETIMEOUT', () => {
+      expect(pipelineManager.sanitizeError({
+        code: -999,
+      })).toEqual({ code: ETIMEOUT });
+    });
+
+    it('should convert a string -999 code to ETIMEOUT', () => {
+      expect(pipelineManager.sanitizeError({
+        code: '-999',
+      })).toEqual({ code: ETIMEOUT });
+    });
+
+    it('should convert a numeric -1000 code to ENETUNREACH', () => {
+      expect(pipelineManager.sanitizeError({
+        code: -1000,
+      })).toEqual({ code: ENETUNREACH });
+    });
+
+    it('should convert a string -1000 code to ENETUNREACH', () => {
+      expect(pipelineManager.sanitizeError({
+        code: '-1000',
+      })).toEqual({ code: ENETUNREACH });
+    });
+
+    it('should handle undefined as input', () => {
+      expect(pipelineManager.sanitizeError()).toEqual({});
+    });
+
+    it('should handle errors without code', () => {
+      const message = 'Message';
+      expect(pipelineManager.sanitizeError({ message })).toEqual({ message });
+    });
+
+    it('should handle a normal error', () => {
+      const error = {
+        code: 'MY_ERROR',
+        message: 'My message',
+      };
+      expect(pipelineManager.sanitizeError(error)).toEqual(error);
     });
   });
 
@@ -513,6 +594,43 @@ describe('PipelineManager', () => {
     });
   });
 
+  describe('.handleResultLast()', () => {
+    let requests;
+    let handleResultSpy;
+    let decrementSpy;
+
+    beforeEach(() => {
+      pipelineManager.constructor();
+      handleResultSpy = jest.spyOn(pipelineManager, 'handleResult');
+      decrementSpy = jest.spyOn(pipelineManager, 'decrementPipelineOngoing');
+      requests = [1, 2, 3, 4].map(() =>
+        createRequest(PIPELINE_NAME).setResponseProcessed(PROCESS_LAST));
+
+      requests.forEach((entry) => {
+        pipelineManager.add(entry);
+      });
+    });
+
+    it('should the last request as expected', () => {
+      expect(pipelineManager.pipelines.get(PIPELINE_NAME)).toBe(requests.length);
+
+      const serials = requests.map((entry) => {
+        pipelineManager.handleResultLast(entry.serial);
+        return entry.serial;
+      });
+
+      expect(decrementSpy).toHaveBeenCalledTimes(serials.length);
+
+      serials.slice(0, -1).forEach((serial) => {
+        expect(decrementSpy).toHaveBeenCalledWith(serial);
+      });
+
+      expect(handleResultSpy).toHaveBeenCalledTimes(1);
+      expect(handleResultSpy).toHaveBeenCalledWith(serials[serials.length - 1]);
+      expect(pipelineManager.pipelines.get(PIPELINE_NAME)).toBeUndefined();
+    });
+  });
+
   describe('.sendRequest()', () => {
     beforeEach(() => {
       // Reset the manager to remove the request from the global beforeEach.
@@ -583,18 +701,18 @@ describe('PipelineManager', () => {
     });
   });
 
-  describe('.removeRequestFromPiplineSequence()', () => {
+  describe('.removeRequestFromPipelineSequence()', () => {
     it('should remove a serial from the sequence when no matching request exists', () => {
       const serial = '1337';
       pipelineSequence.set(serial);
       expect(pipelineSequence.get()).toHaveLength(1);
-      pipelineManager.removeRequestFromPiplineSequence(serial);
+      pipelineManager.removeRequestFromPipelineSequence(serial);
       expect(pipelineSequence.get()).toHaveLength(0);
     });
 
     it('should not remove a request from the pipeline sequence when it is not sequential', () => {
       pipelineSequence.set(request.serial);
-      pipelineManager.removeRequestFromPiplineSequence(request.serial);
+      pipelineManager.removeRequestFromPipelineSequence(request.serial);
       expect(pipelineSequence.get()).toHaveLength(1);
     });
 
@@ -602,7 +720,7 @@ describe('PipelineManager', () => {
       request.setResponseProcessed(PROCESS_SEQUENTIAL);
       pipelineManager.addRequestToPipelineSequence(request.serial);
       expect(pipelineSequence.get()).toHaveLength(1);
-      pipelineManager.removeRequestFromPiplineSequence(request.serial);
+      pipelineManager.removeRequestFromPipelineSequence(request.serial);
       expect(pipelineSequence.get()).toHaveLength(0);
     });
   });

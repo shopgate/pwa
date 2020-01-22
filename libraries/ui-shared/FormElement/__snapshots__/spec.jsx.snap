@@ -26,14 +26,14 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         className="css-rkuo1o css-1jyyyen"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="testlabel"
           transform={null}
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             testlabel
@@ -53,14 +53,14 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         htmlFor="test-input"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="testlabel"
           transform={null}
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             testlabel
@@ -248,14 +248,14 @@ exports[`<FormElement /> should show the error message 1`] = `
         className="css-hyvrm8"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="The error text"
           transform={null}
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             The error text
@@ -293,14 +293,14 @@ exports[`<FormElement /> should show the label 1`] = `
         className="css-rkuo1o"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="The label"
           transform={null}
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             The label
@@ -320,14 +320,14 @@ exports[`<FormElement /> should show the label 1`] = `
         htmlFor="test-input"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="The label"
           transform={null}
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             The label
@@ -383,14 +383,14 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         className="css-rkuo1o"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="The placeholder"
           transform={null}
         >
           <span
-            className=""
+            className={null}
             role={null}
           >
             The placeholder

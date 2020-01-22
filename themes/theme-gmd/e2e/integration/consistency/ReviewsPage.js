@@ -1,19 +1,23 @@
 import els from '../../elements/de';
 import { logOutUser } from '../../helper/user';
+import { goCategoriesPage } from '../../helper/navigation';
+import { navigateCategoryBySelector } from '../../helper/category';
 
 describe('AndroidGMDTest reviews page', () => {
-  it('should check for review name', () => {
-    cy.visit('');
+  before(goCategoriesPage);
 
-    cy.get(els.allProductCategory)
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
-    cy.get(els.productWithManyProps4GridViewName)
-      .last()
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
+  after(logOutUser);
+
+  it('should check for review name', () => {
+    navigateCategoryBySelector(els.allProductCategory);
+
+    cy.get(els.visiblePage).within(() => {
+      cy.get(els.productWithManyProps4GridViewName)
+        .last()
+        .scrollIntoView()
+        .should('be.visible')
+        .click();
+    });
     cy.get(els.writeReviewButton)
       .click();
 
@@ -64,7 +68,7 @@ describe('AndroidGMDTest reviews page', () => {
 
   it('should check for back button', () => {
     cy.get(els.backButton)
-      .should('be.visible');
-    logOutUser();
+      .should('be.visible')
+      .click();
   });
 });

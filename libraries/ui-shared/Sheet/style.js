@@ -12,7 +12,7 @@ const container = css({
 }).toString();
 
 const shadow = css({
-  boxShadow: '0 -2px 4px rgba(0, 0, 0, 0.1)',
+  boxShadow: themeConfig.shadows.sheet,
 }).toString();
 
 const content = css({

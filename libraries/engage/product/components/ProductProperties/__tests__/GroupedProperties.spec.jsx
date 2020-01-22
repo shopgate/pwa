@@ -30,9 +30,9 @@ const groups = ['Group 1', 'Group 2'];
 describe('<GroupedProperties />', () => {
   it('should render as expected', () => {
     const wrapper = shallow(<GroupedProperties properties={properties} groups={groups} />);
-    expect(wrapper.find('Accordion').length).toEqual(2);
     expect(wrapper.find('Wrapper').length).toEqual(2);
     expect(wrapper.find('Wrapper').at(0).prop('dense')).toEqual(true);
+    expect(wrapper.find('Accordion').length).toEqual(2);
     expect(wrapper.find('Lists').length).toEqual(2);
     expect(wrapper).toMatchSnapshot();
   });

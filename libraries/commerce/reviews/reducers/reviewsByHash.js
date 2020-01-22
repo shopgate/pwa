@@ -24,7 +24,7 @@ function reviewsByHash(state = {}, action) {
         },
       };
     case RECEIVE_REVIEWS: {
-      const reviews = state[action.hash].reviews || {};
+      const reviews = state[action.hash].reviews || [];
       const nextReviews = action.reviews || [];
 
       /**

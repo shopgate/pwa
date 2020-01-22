@@ -12,7 +12,9 @@ import Author from './components/Author';
 const Info = ({ review }) => (
   // eslint-disable-next-line jsx-a11y/aria-role
   <div className={styles} role="text">
-    <ReviewDate date={review.date} /> <Author author={review.author} />
+    <ReviewDate date={review.date} />
+    {' '}
+    <Author author={review.author} />
   </div>
 );
 

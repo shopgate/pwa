@@ -21,7 +21,7 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       role="heading"
     >
       <Translate
-        className=""
+        className={null}
         params={Object {}}
         role={null}
         string="product.fulfillment_selector.heading"
@@ -42,7 +42,7 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.direct_ship"
       >
-        <Connect(Component)
+        <Connect(Availability)
           fulfillmentSelection="directShip"
           productId="abc-123"
         />
@@ -51,12 +51,14 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
         name="product.fulfillment_selector.pick_up_in_store"
       >
         <LocationStockInfo
+          className=""
           location={
             Object {
               "name": "Test Store",
               "visibleInventory": 15,
             }
           }
+          showStoreName={true}
         />
       </FulfillmentSelectorItem>
     </RadioGroup>

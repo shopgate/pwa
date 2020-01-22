@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Buttons /> should not render if no actions are passed 1`] = `null`;
+
+exports[`<Buttons /> should render buttons 1`] = `
+Array [
+  <Button
+    className="css-7vankg"
+    disabled={false}
+    flat={true}
+    key="action0"
+    onClick={[MockFunction]}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    <Translate
+      className={null}
+      params={Object {}}
+      role={null}
+      string="action0"
+      transform={null}
+    />
+  </Button>,
+  <Button
+    className="css-7vankg"
+    disabled={false}
+    flat={true}
+    key="action1"
+    onClick={[MockFunction]}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    <Translate
+      className={null}
+      params={Object {}}
+      role={null}
+      string="action1"
+      transform={null}
+    />
+  </Button>,
+  <Button
+    className="css-7vankg"
+    disabled={false}
+    flat={true}
+    key="action2"
+    onClick={[MockFunction]}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    <Translate
+      className={null}
+      params={Object {}}
+      role={null}
+      string="action2"
+      transform={null}
+    />
+  </Button>,
+]
+`;

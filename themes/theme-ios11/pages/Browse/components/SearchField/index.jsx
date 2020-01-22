@@ -56,7 +56,9 @@ class SearchField extends Component {
     };
 
     this.input = null;
+    this.onBlurTimeout = null;
   }
+
   /**
    * Adds callback for keyboardWillChange.
    */
@@ -70,7 +72,17 @@ class SearchField extends Component {
    */
   componentWillUnmount() {
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+    clearTimeout(this.onBlurTimeout);
   }
+
+  /**
+   * Fetch the search suggestions, debounced to reduce the request amount.
+   */
+  fetchSuggestions = debounce((query) => {
+    if (query.length > SUGGESTIONS_MIN) {
+      this.props.fetchSuggestions(query);
+    }
+  }, 200, { maxWait: 400 });
 
   /**
    * Sets a reference to the input fields DOM element.
@@ -118,26 +130,19 @@ class SearchField extends Component {
   };
 
   /**
-   * Fetch the search suggestions, debounced to reduce the request amount.
-   */
-  fetchSuggestions = debounce((query) => {
-    if (query.length > SUGGESTIONS_MIN) {
-      this.props.fetchSuggestions(query);
-    }
-  }, 200, { maxWait: 400 });
-
-  /**
    * Handles changes to the focus of the input element.
    * @param {boolean} focused Whether the element currently became focused.
    */
   handleFocusChange = (focused) => {
-    setTimeout(() => {
-      /*
-       * Delay the execution of the state change until the next cycle
-       * to give pending click events a chance to run.
-       */
-      this.setState({ focused });
-    }, 0);
+    clearTimeout(this.onBlurTimeout);
+    this.onBlurTimeout = !focused ?
+      setTimeout(() => {
+        /*
+         * Delay the execution of the state change until the next cycle
+         * to give pending click events a chance to run.
+         */
+        this.setState({ focused });
+      }, 200) : this.setState({ focused });
   };
 
   /**
@@ -156,9 +161,14 @@ class SearchField extends Component {
 
     router.update(this.props.pageId, { query });
 
-    this.setState({ focused: false });
-    this.input.blur();
-    this.props.submitSearch(query);
+    this.setState({ focused: false }, () => {
+      /**
+       * "submitSearch" might cause a component unmount. So we take care that the state update
+       * happens before to avoid errors about state updates on unmounted components.
+       */
+      this.input.blur();
+      this.props.submitSearch(query);
+    });
   };
 
   /**
@@ -187,6 +197,7 @@ class SearchField extends Component {
         [styles.hidden]: !this.state.focused,
       })}
       onClick={this.reset}
+      type="button"
     >
       <I18n.Text string="search.cancel" />
     </button>
@@ -227,7 +238,7 @@ class SearchField extends Component {
       <Fragment>
         <Portal name={SCANNER_ICON_BEFORE} />
         <Portal name={SCANNER_ICON}>
-          <button className={styles.scannerIcon} onClick={this.props.openScanner}>
+          <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button" aria-hidden>
             <BarcodeScannerIcon />
           </button>
         </Portal>
@@ -244,7 +255,7 @@ class SearchField extends Component {
     const { focused } = this.state;
 
     return (
-      <div data-test-id="SearchField" aria-hidden>
+      <div data-test-id="SearchField">
         <div className={styles.container}>
           <div className={styles.inputWrapper}>
             <form onSubmit={this.handleSubmit} action=".">
@@ -257,16 +268,13 @@ class SearchField extends Component {
             {this.renderCancelButton()}
           </div>
         </div>
-        {focused && (
-          <Fragment>
-            <div className={styles.overlay} />
-            <SuggestionList
-              searchPhrase={this.state.query}
-              onClick={this.handleSubmit}
-              bottomHeight={this.state.bottomHeight}
-            />
-          </Fragment>)
-        }
+        {focused && <div className={styles.overlay} />}
+        <SuggestionList
+          visible={focused}
+          searchPhrase={this.state.query}
+          onClick={this.handleSubmit}
+          bottomHeight={this.state.bottomHeight}
+        />
       </div>
     );
   }

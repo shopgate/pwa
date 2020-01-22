@@ -1,165 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BasicDialog /> should render with minimal props 1`] = `
+exports[`<BasicDialog /> should render as expected 1`] = `
 <div
+  aria-labelledby="basicDialogTitle basicDialogDesc"
+  aria-modal={true}
   className="css-e1s1x1"
   data-test-id="basicDialog"
+  role="alertdialog"
 >
   <div
     className="css-1y16c93"
-  />
-  <div
-    className="css-1rlrgd0"
-  />
-</div>
-`;
-
-exports[`<BasicDialog /> should show correct number of buttons 1`] = `
-<div
-  className="css-e1s1x1"
-  data-test-id="basicDialog"
->
-  <div
-    className="css-1y16c93"
-  />
+  >
+    <Title
+      title="Hello World"
+    />
+    <Content
+      content={
+        <div>
+          Hello World
+        </div>
+      }
+    />
+  </div>
   <div
     className="css-1rlrgd0"
   >
-    <Button
-      className="css-yc1xgj "
-      disabled={false}
-      flat={true}
-      key="action0"
-      onClick={[MockFunction]}
-      testId="Button"
-      type="primary"
-      wrapContent={true}
-    >
-      <Translate
-        className="css-auznqr"
-        params={Object {}}
-        role={null}
-        string="action0"
-        transform={null}
-      />
-    </Button>
-    <Button
-      className="css-yc1xgj "
-      disabled={false}
-      flat={true}
-      key="action1"
-      onClick={[MockFunction]}
-      testId="Button"
-      type="primary"
-      wrapContent={true}
-    >
-      <Translate
-        className="css-auznqr"
-        params={Object {}}
-        role={null}
-        string="action1"
-        transform={null}
-      />
-    </Button>
-    <Button
-      className="css-yc1xgj "
-      disabled={false}
-      flat={true}
-      key="action2"
-      onClick={[MockFunction]}
-      testId="Button"
-      type="primary"
-      wrapContent={true}
-    >
-      <Translate
-        className="css-auznqr"
-        params={Object {}}
-        role={null}
-        string="action2"
-        transform={null}
-      />
-    </Button>
+    <Buttons
+      actions={
+        Array [
+          Object {
+            "action": [MockFunction],
+            "label": "action0",
+          },
+          Object {
+            "action": [MockFunction],
+            "label": "action1",
+          },
+          Object {
+            "action": [MockFunction],
+            "label": "action2",
+          },
+        ]
+      }
+    />
   </div>
 </div>
 `;
 
-exports[`<BasicDialog /> should trigger correct actions 1`] = `
+exports[`<BasicDialog /> should render with minimal props 1`] = `
 <div
+  aria-labelledby="basicDialogTitle basicDialogDesc"
+  aria-modal={true}
   className="css-e1s1x1"
   data-test-id="basicDialog"
+  role="alertdialog"
 >
   <div
     className="css-1y16c93"
-  />
+  >
+    <Title
+      title={null}
+    />
+    <Content
+      content={null}
+    />
+  </div>
   <div
     className="css-1rlrgd0"
   >
-    <Button
-      className="css-yc1xgj "
-      disabled={false}
-      flat={true}
-      key="action0"
-      onClick={[MockFunction]}
-      testId="Button"
-      type="primary"
-      wrapContent={true}
-    >
-      <Translate
-        className="css-auznqr"
-        params={Object {}}
-        role={null}
-        string="action0"
-        transform={null}
-      />
-    </Button>
-    <Button
-      className="css-yc1xgj "
-      disabled={false}
-      flat={true}
-      key="action1"
-      onClick={
-        [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-          "results": Array [
-            Object {
-              "isThrow": false,
-              "value": undefined,
-            },
-          ],
-        }
-      }
-      testId="Button"
-      type="primary"
-      wrapContent={true}
-    >
-      <Translate
-        className="css-auznqr"
-        params={Object {}}
-        role={null}
-        string="action1"
-        transform={null}
-      />
-    </Button>
-    <Button
-      className="css-yc1xgj "
-      disabled={false}
-      flat={true}
-      key="action2"
-      onClick={[MockFunction]}
-      testId="Button"
-      type="primary"
-      wrapContent={true}
-    >
-      <Translate
-        className="css-auznqr"
-        params={Object {}}
-        role={null}
-        string="action2"
-        transform={null}
-      />
-    </Button>
+    <Buttons
+      actions={Array []}
+    />
   </div>
 </div>
 `;

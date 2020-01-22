@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import ContextMenu from '@shopgate/pwa-ui-shared/ContextMenu';
+import {
+  Grid, I18n, SurroundPortals, ContextMenu,
+} from '@shopgate/engage/components';
+import { CART_ITEM_NAME } from '@shopgate/engage/cart';
 import styles from './style';
 
 const contextMenuClasses = {
@@ -21,13 +20,11 @@ const contextMenuClasses = {
 const Title = ({ value, handleRemove, toggleEditMode }, context) => (
   <Grid>
     <Grid.Item grow={1}>
-      <Portal name={portals.CART_ITEM_NAME_BEFORE} props={context} />
-      <Portal name={portals.CART_ITEM_NAME} props={context} >
+      <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
         <div className={styles.title} data-test-id={value}>
           {value}
         </div>
-      </Portal>
-      <Portal name={portals.CART_ITEM_NAME_AFTER} props={context} />
+      </SurroundPortals>
     </Grid.Item>
     <Grid.Item className={styles.menuContainer} shrink={0}>
       <ContextMenu classes={contextMenuClasses}>

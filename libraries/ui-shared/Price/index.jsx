@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import styles from './style';
@@ -16,11 +17,13 @@ import styles from './style';
  * @return {JSX}
  */
 const Price = (props, context) => {
-  const containerClasses = [
+  const containerClasses = classNames(
     styles.container,
     props.className,
-    ...props.discounted && [styles.discounted],
-  ].join(' ');
+    {
+      [styles.discounted]: props.discounted,
+    }
+  );
 
   const { __, _p } = context.i18n();
 

@@ -1,8 +1,8 @@
 {
   "user": {
-    "delete_account": "Supprimez mon compte",
+    "delete_account": "Supprimer mon compte",
     "delete_account_success": "Nous avons reçu votre demande de suppression de votre compte.",
     "delete_account_error": "Une erreur inopinée s'est produite. Veuillez réessayer ultérieurement.",
-    "delete_account_confirm": "Appuyez sur la touche Confirmation pour supprimer toutes les données du compte. Cette opération ne pourra être annulée."
+    "delete_account_confirm": "Appuyez sur la touche Confirmer pour supprimer toutes les données du compte. Cette opération ne pourra être annulée."
   }
 }

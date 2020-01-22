@@ -7,7 +7,7 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function AccordionContent({ children, open }) {
+function AccordionContent({ children, open, id }) {
   const ref = useRef(null);
   const height = (ref.current === null) ? 'auto' : ref.current.clientHeight;
   const style = {
@@ -15,7 +15,7 @@ function AccordionContent({ children, open }) {
   };
 
   return (
-    <div className={styles.content} style={style}>
+    <div className={styles.content} style={style} id={id} aria-hidden={!open}>
       <div ref={ref} className={styles.contentInner}>
         {children}
       </div>
@@ -25,6 +25,7 @@ function AccordionContent({ children, open }) {
 
 AccordionContent.propTypes = {
   children: PropTypes.node.isRequired,
+  id: PropTypes.string.isRequired,
   open: PropTypes.bool,
 };
 

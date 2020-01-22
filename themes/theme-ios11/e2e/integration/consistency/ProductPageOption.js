@@ -10,11 +10,4 @@ describe('IOS11Test productPageOption', () => {
     cy.get(els.optionPickerBallColor)
       .should('be.visible');
   });
-
-  it('should check for base price', () => {
-    cy.visit('/item/393132');
-    cy.get(els.productWithBasePrice1basePrice)
-      .scrollIntoView()
-      .should('be.visible');
-  });
 });

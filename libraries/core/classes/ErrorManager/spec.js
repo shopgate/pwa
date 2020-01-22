@@ -1,4 +1,4 @@
-import errorManager, { emitter } from './';
+import errorManager, { emitter } from '.';
 import { DEFAULT_CONTEXT, DEFAULT_SEVERITY } from '../../constants/ErrorManager';
 
 describe('ErrorManager', () => {
@@ -6,185 +6,218 @@ describe('ErrorManager', () => {
     errorManager.constructor();
   });
 
-  it('should accept a valid error object', () => {
-    const code = 'EUNKNOWN';
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
+  describe('errorManager.validate', () => {
+    it('should accept a valid error object', () => {
+      const code = 'EUNKNOWN';
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
 
-    const response = errorManager.validate({
-      code,
-      message,
-      source,
+      const response = errorManager.validate({
+        code,
+        message,
+        source,
+      });
+      expect(response).toEqual(true);
     });
 
-    expect(response).toEqual(true);
-  });
+    it('should accept a valid error object with cb message', () => {
+      const code = 'EUNKNOWN';
+      const message = jest.fn();
+      const source = 'pipeline';
 
-  it('should reject an error object with missing mandatory fields', () => {
-    const response = errorManager.validate();
-
-    expect(response).toEqual(false);
-  });
-
-  it('should reject an error object with fields that are not a string', () => {
-    const code = 404;
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
-
-    const response = errorManager.validate({
-      code,
-      message,
-      source,
+      const response = errorManager.validate({
+        code,
+        message,
+        source,
+      });
+      expect(response).toEqual(true);
     });
 
-    expect(response).toEqual(false);
+    it('should reject an error object with missing mandatory fields', () => {
+      const response = errorManager.validate();
+      expect(response).toEqual(false);
+    });
+
+    it('should reject an error object with fields that are not a string', () => {
+      const code = 404;
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
+
+      const response = errorManager.validate({
+        code,
+        message,
+        source,
+      });
+      expect(response).toEqual(false);
+    });
   });
 
-  it('should return the null when no override message is found', () => {
+  describe('errorManager.getMessage', () => {
     const code = 'EUNKNOWN';
-    const context = 'shopgate.catalog.getUser';
     const source = 'pipeline';
-
-    const errorMessage = errorManager.getMessage(
-      code,
-      context,
-      source
-    );
-
-    expect(errorMessage).toBeNull();
-  });
-
-  it('should return the message', () => {
-    const code = 'EUNKNOWN';
     const context = 'shopgate.catalog.getFoo';
     const message = 'Test Message';
 
-    errorManager.setMessage({
-      code,
-      context,
-      message,
+    it('should return the null when no override message is found', () => {
+      const errorMessage = errorManager.getMessage({
+        code,
+        context,
+        source,
+      });
+      expect(errorMessage).toBeNull();
     });
 
-    const errorMessage = errorManager.getMessage(
-      code,
-      `${context}.v1`,
-      'pipeline'
-    );
+    it('should return the message', () => {
+      errorManager.setMessage({
+        code,
+        context,
+        message,
+      });
 
-    expect(errorMessage).toBe(message);
-  });
-
-  it('should add an override message', () => {
-    const code = 'EUNKNOWN';
-    const context = 'shopgate.catalog.getUser';
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
-
-    errorManager.setMessage({
-      code,
-      context,
-      message,
-      source,
+      const errorMessage = errorManager.getMessage({
+        code,
+        context,
+        source,
+        message,
+      });
+      expect(errorMessage).toBe(message);
     });
 
-    expect(errorManager.messages[`${source}-${context}-${code}`]).toEqual(message);
+    it('should use callback for error message', () => {
+      const overrideMessage = jest.fn().mockReturnValue('CB Error');
+
+      errorManager.setMessage({
+        code,
+        context,
+        message: overrideMessage,
+      });
+
+      const error = {
+        code,
+        context,
+        source,
+        message,
+      };
+      expect(errorManager.getMessage(error)).toBe('CB Error');
+      expect(overrideMessage).toBeCalledWith(error);
+    });
   });
 
-  it('should add an override message with no set context', () => {
-    const code = 'EUNKNOWN';
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
+  describe('errorManager.setMessage', () => {
+    it('should add an override message', () => {
+      const code = 'EUNKNOWN';
+      const context = 'shopgate.catalog.getUser';
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
 
-    errorManager.setMessage({
-      code,
-      message,
-      source,
+      errorManager.setMessage({
+        code,
+        context,
+        message,
+        source,
+      });
+
+      expect(errorManager.messages[`${source}-${context}-${code}`]).toEqual(message);
     });
 
-    expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toEqual(message);
-  });
+    it('should add an override message with no set context', () => {
+      const code = 'EUNKNOWN';
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
 
-  it('should ignore setting a message with missing error object', () => {
-    const code = 'EUNKNOWN';
-    const source = 'pipeline';
+      errorManager.setMessage({
+        code,
+        message,
+        source,
+      });
 
-    errorManager.setMessage();
-
-    expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
-  });
-
-  it('should ignore setting a message with missing mandatory fields', () => {
-    const code = 'EUNKNOWN';
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
-
-    errorManager.setMessage({
-      message,
-      source,
+      expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toEqual(message);
     });
 
-    expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
-  });
+    it('should ignore setting a message with missing error object', () => {
+      const code = 'EUNKNOWN';
+      const source = 'pipeline';
 
-  it('should ignore setting a message with invalid input', () => {
-    const code = 404;
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
+      errorManager.setMessage();
 
-    errorManager.setMessage({
-      code,
-      message,
-      source,
+      expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
     });
 
-    expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
-  });
+    it('should ignore setting a message with missing mandatory fields', () => {
+      const code = 'EUNKNOWN';
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
 
-  it('should not queue a missing error', () => {
-    const code = 'EUNKNOWN';
-    const source = 'pipeline';
+      errorManager.setMessage({
+        message,
+        source,
+      });
 
-    errorManager.queue();
-
-    expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
-  });
-
-  it('should not queue an invalid error', () => {
-    const code = 404;
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
-
-    errorManager.queue({
-      code,
-      message,
-      source,
+      expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
     });
 
-    expect(errorManager.errorQueue.has(`${source}-${DEFAULT_CONTEXT}-${code}`)).toEqual(false);
+    it('should ignore setting a message with invalid input', () => {
+      const code = 404;
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
+
+      errorManager.setMessage({
+        code,
+        message,
+        source,
+      });
+
+      expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
+    });
   });
 
-  it('should queue errors only once', () => {
-    const code = 'EUNKNOWN';
-    const message = 'Something went horribly wrong!';
-    const source = 'pipeline';
+  describe('errorManager.queue', () => {
+    it('should not queue a missing error', () => {
+      const code = 'EUNKNOWN';
+      const source = 'pipeline';
 
-    const callback = jest.fn();
-    emitter.addListener('pipeline', callback);
+      errorManager.queue();
 
-    errorManager.queue({
-      code,
-      message,
-      source,
+      expect(errorManager.messages[`${source}-${DEFAULT_CONTEXT}-${code}`]).toBeUndefined();
     });
 
-    errorManager.queue({
-      code,
-      message,
-      source,
+    it('should not queue an invalid error', () => {
+      const code = 404;
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
+
+      errorManager.queue({
+        code,
+        message,
+        source,
+      });
+
+      expect(errorManager.errorQueue.has(`${source}-${DEFAULT_CONTEXT}-${code}`)).toEqual(false);
     });
 
-    expect(errorManager.errorQueue.has(`${source}-${DEFAULT_CONTEXT}-${code}`)).toEqual(true);
-    expect(errorManager.errorQueue.size).toEqual(1);
+    it('should queue errors only once', () => {
+      const code = 'EUNKNOWN';
+      const message = 'Something went horribly wrong!';
+      const source = 'pipeline';
+
+      const callback = jest.fn();
+      emitter.addListener('pipeline', callback);
+
+      errorManager.queue({
+        code,
+        message,
+        source,
+      });
+
+      errorManager.queue({
+        code,
+        message,
+        source,
+      });
+
+      expect(errorManager.errorQueue.has(`${source}-${DEFAULT_CONTEXT}-${code}`)).toEqual(true);
+      expect(errorManager.errorQueue.size).toEqual(1);
+    });
   });
 
   it('should not dispatch when there are no errors', async () => {

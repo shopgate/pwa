@@ -19,8 +19,8 @@ const SwatchContent = ({ swatch, classNames, onClick }) => {
   return (
     <SurroundPortals portalName={PRODUCT_SWATCH} portalProps={{ swatch }}>
       <ul className={cls(swatchClass, {
-          [classNames.swatch]: !!classNames.swatch,
-        })}
+        [classNames.swatch]: !!classNames.swatch,
+      })}
       >
         {swatch.values.map(value => (
           <li

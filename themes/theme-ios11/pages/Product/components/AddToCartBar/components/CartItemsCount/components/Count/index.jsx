@@ -29,7 +29,7 @@ class Count extends Component {
    * Sets the animation state if props change.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.count !== nextProps.count) {
       this.setState({
         in: false,

@@ -44,14 +44,14 @@ exports[`<Store /> should handle the store selection 1`] = `
       >
         SomeStore
       </div>
-      <StoreHoursToday
+      <Component
         hours={
           Object {
             "mon": "8:00am - 4:00pm",
           }
         }
       />
-      <Address
+      <Component
         address={
           Object {
             "code": "address",
@@ -59,7 +59,7 @@ exports[`<Store /> should handle the store selection 1`] = `
           }
         }
       />
-      <LocationStockInfo
+      <Component
         location={
           Object {
             "storeName": "SomeStore",
@@ -71,17 +71,18 @@ exports[`<Store /> should handle the store selection 1`] = `
     </div>
   </div>
   <Accordion
+    handleLabel={null}
     renderLabel={[Function]}
     testId={null}
   >
-    <OpeningHours
+    <Component
       hours={
         Object {
           "mon": "8:00am - 4:00pm",
         }
       }
     />
-    <PhoneNumber
+    <Component
       phone="000-000-0000"
     />
   </Accordion>
@@ -134,14 +135,14 @@ exports[`<Store /> should render as expected 1`] = `
       >
         SomeStore
       </div>
-      <StoreHoursToday
+      <Component
         hours={
           Object {
             "mon": "8:00am - 4:00pm",
           }
         }
       />
-      <Address
+      <Component
         address={
           Object {
             "code": "address",
@@ -149,7 +150,7 @@ exports[`<Store /> should render as expected 1`] = `
           }
         }
       />
-      <LocationStockInfo
+      <Component
         location={
           Object {
             "storeName": "SomeStore",
@@ -161,17 +162,18 @@ exports[`<Store /> should render as expected 1`] = `
     </div>
   </div>
   <Accordion
+    handleLabel={null}
     renderLabel={[Function]}
     testId={null}
   >
-    <OpeningHours
+    <Component
       hours={
         Object {
           "mon": "8:00am - 4:00pm",
         }
       }
     />
-    <PhoneNumber
+    <Component
       phone="000-000-0000"
     />
   </Accordion>

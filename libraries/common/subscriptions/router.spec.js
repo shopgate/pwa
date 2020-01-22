@@ -13,6 +13,8 @@ import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
 import { navigate$ } from '../streams';
 import { navigate } from '../action-creators';
+import { getIsConnected } from '../selectors/client';
+import ToastProvider from '../providers/toast';
 import subscriptions from './router';
 
 jest.unmock('@shopgate/pwa-core');
@@ -46,6 +48,9 @@ jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
 jest.mock('../actions/router', () => ({
   historyRedirect: jest.fn(),
 }));
+jest.mock('../selectors/client', () => ({
+  getIsConnected: jest.fn().mockReturnValue(true),
+}));
 
 describe('Router subscriptions', () => {
   const protectedRoute = '/protected';
@@ -54,6 +59,9 @@ describe('Router subscriptions', () => {
   const subscribe = jest.fn();
   const dispatch = jest.fn();
   const getState = jest.fn().mockReturnValue(mockedRouterState);
+  const events = {
+    emit: jest.fn(),
+  };
 
   /**
    * @param {Object} action The action object for the callback payload.
@@ -63,6 +71,7 @@ describe('Router subscriptions', () => {
     dispatch,
     getState,
     action,
+    events,
   });
 
   beforeAll(() => {
@@ -113,6 +122,7 @@ describe('Router subscriptions', () => {
         router.push,
         router.reset,
         router.replace,
+        events.emit,
       ];
 
       // Split the expected function from the haystack.
@@ -325,6 +335,41 @@ describe('Router subscriptions', () => {
       expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith(protectorRoute);
     });
 
+    it('should abort navigation when the url is invalid', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '?foo=bar',
+      };
+
+      await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
+      testExpectedCall(events.emit);
+      expect(events.emit).toHaveBeenCalledWith(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
+    });
+
+    it('should abort navigation when the redirect url is invalid', async () => {
+      /**
+       * @return {Promise}
+       */
+      const redirectHandler = () => Promise.resolve('?foo=bar');
+
+      redirects.set('/some_route', redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route',
+      };
+
+      await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
+      testExpectedCall(events.emit);
+      expect(events.emit).toHaveBeenCalledWith(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
+    });
+
     it('should convert shop links as expected', async () => {
       mockedShopCNAME = 'm.awesomeshop.com';
 
@@ -416,6 +461,21 @@ describe('Router subscriptions', () => {
         params.action,
         mockedRouterState
       );
+    });
+
+    it('should cancel navigation when not connected to the internet', async () => {
+      getIsConnected.mockReturnValueOnce(false);
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall(events.emit);
+      expect(events.emit).toHaveBeenCalledWith(ToastProvider.ADD, {
+        id: 'navigate.error',
+        message: 'error.general',
+      });
     });
   });
 

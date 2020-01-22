@@ -28,7 +28,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
       ],
       "results": Array [
         Object {
-          "isThrow": false,
+          "type": "return",
           "value": undefined,
         },
       ],
@@ -109,7 +109,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -129,14 +129,14 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     htmlFor="foo.foo"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="foo"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         foo
@@ -158,7 +158,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   type="text"
                   value="default"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -210,7 +210,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                         value="default"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -361,7 +361,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -381,14 +381,14 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     htmlFor="foo.foo"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="foo"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         foo
@@ -410,7 +410,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -462,7 +462,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -571,7 +571,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -591,14 +591,14 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     htmlFor="foo.bar"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="bar"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         bar
@@ -620,7 +620,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.bar"
                     isControlled={true}
@@ -672,7 +672,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -823,7 +823,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -843,14 +843,14 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     htmlFor="foo.foo"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="foo"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         foo
@@ -872,7 +872,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   type="text"
                   value="abc"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -924,7 +924,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                         value="abc"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1153,7 +1153,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -1173,14 +1173,14 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     htmlFor="foo.firstName"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="foo"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         foo
@@ -1202,7 +1202,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.firstName"
                     isControlled={true}
@@ -1254,7 +1254,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1350,7 +1350,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -1370,14 +1370,14 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     htmlFor="foo.lastName"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="bar"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         bar
@@ -1399,7 +1399,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   type="text"
                   value=""
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.lastName"
                     isControlled={true}
@@ -1451,7 +1451,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         value=""
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1609,7 +1609,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -1629,14 +1629,14 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     htmlFor="foo.foo"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="foo"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         foo
@@ -1658,7 +1658,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   type="text"
                   value="default"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -1710,7 +1710,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         value="default"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -1824,7 +1824,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -1844,14 +1844,14 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     htmlFor="foo.bar"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="bar"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         bar
@@ -1873,7 +1873,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   type="text"
                   value="default"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.bar"
                     isControlled={true}
@@ -1925,7 +1925,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         value="default"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -2083,7 +2083,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -2103,14 +2103,14 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     htmlFor="foo.foo"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="foo"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         foo
@@ -2132,7 +2132,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   type="text"
                   value="abc"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.foo"
                     isControlled={true}
@@ -2184,7 +2184,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         value="abc"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}
@@ -2298,7 +2298,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     className="css-tnfb18 css-1jyyyen"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string=""
@@ -2318,14 +2318,14 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     htmlFor="foo.bar"
                   >
                     <Translate
-                      className=""
+                      className={null}
                       params={Object {}}
                       role={null}
                       string="bar"
                       transform={null}
                     >
                       <span
-                        className=""
+                        className={null}
                         role={null}
                       >
                         bar
@@ -2347,7 +2347,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   type="text"
                   value="cheat"
                 >
-                  <Component
+                  <_default
                     className="css-keangt"
                     id="foo.bar"
                     isControlled={true}
@@ -2399,7 +2399,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         value="cheat"
                       />
                     </SimpleInput>
-                  </Component>
+                  </_default>
                 </FormElement>
                 <Underline
                   hasErrorMessage={false}

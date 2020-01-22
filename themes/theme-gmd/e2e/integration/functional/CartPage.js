@@ -1,31 +1,32 @@
 import els from '../../elements/de';
 import { clearProductsFromCart } from '../../helper/cart';
 import { navigateCategoryBySelector } from '../../helper/category';
+import { goHomePage } from '../../helper/navigation';
 
 describe('functional tests cart page', () => {
+  before(goHomePage);
+
   after(clearProductsFromCart);
 
   it('check for increase / decrease quanitity', () => {
-    cy.visit('');
-
     navigateCategoryBySelector(els.allProductCategory);
 
     cy.get(els.productWithManyProps4GridViewName)
       .should('be.visible')
       .click();
-    cy.window().spyAction('RECEIVE_CART', () => {
+    cy.spyAction('RECEIVE_CART', () => {
       cy.get(els.addToCartButton)
         .last()
         .should('be.visible')
         .click();
     });
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.cartButton)
         .last()
         .should('be.visible')
         .click();
     });
-    cy.window().spyAction('RECEIVE_CART', () => {
+    cy.spyAction('RECEIVE_CART', () => {
       cy.get(els.quantityPicker)
         .should('be.visible')
         .click()
@@ -35,7 +36,7 @@ describe('functional tests cart page', () => {
     });
     cy.get('[data-test-id="minPrice: 0 price: 398 currency: EUR"]')
       .should('be.visible');
-    cy.window().spyAction('RECEIVE_CART', () => {
+    cy.spyAction('RECEIVE_CART', () => {
       cy.get(els.quantityPicker)
         .clear()
         .type('1')
@@ -47,15 +48,15 @@ describe('functional tests cart page', () => {
   });
 
   it('should add second product to cart', () => {
-    cy.visit('');
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    goHomePage();
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.basicCategory)
         .last()
         .scrollIntoView()
         .should('be.visible')
         .click();
     });
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.productsWithLongNamesCat)
         .should('be.visible')
         .last()
@@ -64,19 +65,19 @@ describe('functional tests cart page', () => {
 
     cy.get(els.loadingIndicator).should('not.be.visible');
 
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.productWithVeryLongName5Name)
         .last()
         .should('be.visible')
         .click();
     });
-    cy.window().spyAction('RECEIVE_CART', () => {
+    cy.spyAction('RECEIVE_CART', () => {
       cy.get(els.addToCartButton)
         .last()
         .should('be.visible')
         .click();
     });
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.cartButtonProductPage)
         .last()
         .click();
@@ -84,16 +85,16 @@ describe('functional tests cart page', () => {
   });
 
   it('should check for products with variants', () => {
-    cy.visit('');
+    goHomePage();
 
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.productVariantsCategory)
         .last()
         .scrollIntoView()
         .should('be.visible')
         .click();
     });
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.productsWith2VariantsCategory)
         .should('be.visible')
         .last()
@@ -102,7 +103,7 @@ describe('functional tests cart page', () => {
 
     cy.get(els.loadingIndicator).should('not.be.visible');
 
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.productWithChild1MotherNameProductGrid)
         .last()
         .should('be.visible')
@@ -124,21 +125,21 @@ describe('functional tests cart page', () => {
       .wait(2000);
 
     // Wait until variant selection and data received
-    cy.window().spyAction('RECEIVE_PRODUCT', () => {
+    cy.spyAction('RECEIVE_PRODUCT', () => {
       cy.get(els.size5ShoeSizeVariant)
         .should('be.visible')
         .last()
         .click();
     });
 
-    cy.window().spyAction('RECEIVE_CART', () => {
+    cy.spyAction('RECEIVE_CART', () => {
       cy.get(els.addToCartButton)
         .last()
         .should('be.visible')
         .click();
     });
 
-    cy.window().spyAction('ROUTE_DID_ENTER', () => {
+    cy.spyAction('ROUTE_DID_ENTER', () => {
       cy.get(els.cartButtonProductPage)
         .last()
         .should('be.visible')

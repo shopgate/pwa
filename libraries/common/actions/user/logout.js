@@ -1,28 +1,42 @@
 import { PipelineRequest, logger } from '@shopgate/pwa-core';
-import * as pipelines from '../../constants/Pipelines';
-import * as actions from '../../action-creators/user';
+import {
+  requestLogout,
+  successLogout,
+  errorLogout,
+} from '../../action-creators/user';
+import { SHOPGATE_USER_LOGOUT_USER } from '../../constants/Pipelines';
+import { mutable } from '../../helpers/redux';
 
 /**
  * Logout the current user.
  * @return {Function} A redux thunk.
  */
-export default function logout() {
+function logout() {
   return (dispatch) => {
-    dispatch(actions.requestLogout());
+    dispatch(requestLogout());
 
-    new PipelineRequest(pipelines.SHOPGATE_USER_LOGOUT_USER)
+    const request = new PipelineRequest(SHOPGATE_USER_LOGOUT_USER)
       .setTrusted()
-      .dispatch()
-      .then(({ success, messages }) => {
+      .dispatch();
+
+    request
+      .then((result) => {
+        const { success, messages } = result;
+
         if (success) {
-          dispatch(actions.successLogout());
+          dispatch(successLogout());
         } else {
-          dispatch(actions.errorLogout(messages));
+          dispatch(errorLogout(messages));
         }
       })
       .catch((error) => {
         logger.error(error);
-        dispatch(actions.errorLogout());
+        dispatch(errorLogout());
       });
+
+    return request;
   };
 }
+
+/** @mixes {MutableFunction} */
+export default mutable(logout);

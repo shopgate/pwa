@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -6,94 +6,64 @@ import CrossIcon from '../icons/CrossIcon';
 import styles from './style';
 
 /**
- * The Chip component.
+ * The chip component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class Chip extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    id: PropTypes.string.isRequired,
-    invert: PropTypes.bool,
-    onClick: PropTypes.func,
-    onRemove: PropTypes.func,
-    removable: PropTypes.bool,
-  };
+function Chip(props) {
+  const {
+    removable, children, id, onClick, onRemove, invert, removeLabel, editLabel,
+  } = props;
+  const ref = useRef(null);
 
-  static defaultProps = {
-    invert: false,
-    onClick: () => {},
-    onRemove: () => {},
-    removable: true,
-  };
+  const handleRemove = useCallback(() => {
+    onRemove(id);
+  }, [onRemove, id]);
 
-  /**
-   * When the component updates make sure that inline styles are removed.
-   * This is required because even when re-rendering the component, react doesn't
-   * check the inline stylings.
-   * We therefore explicitly force to remove the styling after rendering.
-   * ChipsLayout will add custom styles and expects the component to not have any styling
-   * after re-rendering.
-   */
-  componentDidUpdate() {
-    this.elementRef.removeAttribute('style');
-  }
+  useEffect(() => {
+    ref.current.removeAttribute('style');
+  });
 
-  /**
-   * Returns a class name for the wrapper.
-   * @returns {string}
-   */
-  get wrapperStyle() {
-    return styles.chip(this.props.removable, this.props.invert);
-  }
-
-  /**
-   * Returns the chip's font color.
-   * @returns {string}
-   */
-  get crossFontColor() {
-    if (this.props.invert) {
-      return themeConfig.colors.light;
-    }
-
-    return themeConfig.colors.accent;
-  }
-
-  handleRemove = () => {
-    this.props.onRemove(this.props.id);
-  }
-
-  /**
-   * Renders the remove icon of the chip if it can be removable.
-   * @returns {JSX|null}
-   */
-  renderRemoveIcon() {
-    if (!this.props.removable) {
-      return null;
-    }
-
-    return (
-      <Button className={styles.removeButton} onClick={this.handleRemove} testId="removeFilter">
-        <CrossIcon size={16} color={this.crossFontColor} />
-      </Button>
-    );
-  }
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <div
-        ref={(element) => { this.elementRef = element; }}
-        className={this.wrapperStyle}
-        data-test-id={this.props.id}
-      >
-        {this.renderRemoveIcon()}
-        <Button className={styles.name} onClick={this.props.onClick}>
-          {this.props.children}
+  return (
+    <div ref={ref} className={styles.chip(removable, invert)} data-test-id={id}>
+      {removable && (
+        <Button
+          className={styles.removeButton}
+          onClick={handleRemove}
+          testId="removeFilter"
+          aria-label={removeLabel}
+        >
+          <CrossIcon
+            size={16}
+            color={invert ? themeConfig.colors.light : themeConfig.colors.accent}
+          />
         </Button>
-      </div>
-    );
-  }
+      )}
+      <Button className={styles.name} onClick={onClick} aria-label={editLabel}>
+        {children}
+      </Button>
+    </div>
+  );
 }
+
+Chip.propTypes = {
+  children: PropTypes.node.isRequired,
+  id: PropTypes.string.isRequired,
+  editLabel: PropTypes.string,
+  invert: PropTypes.bool,
+  onClick: PropTypes.func,
+  onRemove: PropTypes.func,
+  removable: PropTypes.bool,
+  removeLabel: PropTypes.string,
+};
+
+Chip.defaultProps = {
+  invert: false,
+  onClick: () => { },
+  onRemove: () => { },
+  removable: true,
+  removeLabel: null,
+  editLabel: null,
+};
 
 export default Chip;

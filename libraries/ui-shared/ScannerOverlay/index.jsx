@@ -31,7 +31,7 @@ class ScannerOverlay extends PureComponent {
   /**
    * @param {Object} nextProps New props to apply.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.flashlight !== nextProps.flashlight) {
       this.setState({ flashlight: nextProps.flashlight });
     }

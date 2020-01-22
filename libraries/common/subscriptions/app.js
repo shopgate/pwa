@@ -13,7 +13,6 @@ import {
   APP_EVENT_VIEW_DID_DISAPPEAR,
 } from '@shopgate/pwa-core/constants/AppEvents';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/constants/ErrorManager';
-import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
 import {
@@ -28,7 +27,9 @@ import {
   onUpdate,
 } from '@virtuous/conductor';
 import { UI_VISIBILITY_CHANGE } from '../constants/ui';
-import { appError, pipelineError, pwaDidAppear, pwaDidDisappear } from '../action-creators';
+import {
+  appError, pipelineError, pwaDidAppear, pwaDidDisappear,
+} from '../action-creators';
 import {
   historyPush,
   routeWillPush,
@@ -47,10 +48,8 @@ import {
   appDidStart$,
   clientInformationDidUpdate$,
   navigate$,
-  pipelineError$,
 } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
-import showModal from '../actions/modal/showModal';
 import { APP_PLATFORM } from '../constants/Configuration';
 import { getPlatform, isAndroid } from '../selectors/client';
 import {
@@ -89,7 +88,6 @@ export default function app(subscribe) {
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
       errorCodes.EACCESS,
-      errorCodes.E999,
       errorCodes.ENOTFOUND,
       errorCodes.EVALIDATION,
     ]);
@@ -168,27 +166,6 @@ export default function app(subscribe) {
      * before registering to interjections.
      */
     onload();
-  });
-
-  subscribe(pipelineError$, ({ dispatch, action }) => {
-    const { error } = action;
-    const {
-      message, code, context, meta,
-    } = error;
-
-    dispatch(showModal({
-      confirm: 'modal.ok',
-      dismiss: null,
-      title: null,
-      message,
-      type: MODAL_PIPELINE_ERROR,
-      params: {
-        pipeline: context,
-        request: meta.input,
-        message: meta.message,
-        code,
-      },
-    }));
   });
 
   // Add platform to runtime config

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Image from '@shopgate/pwa-common/components/Image';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import { buildMediaImageUrl } from './helpers';
@@ -10,8 +10,6 @@ import { useWidgetSettings } from '../../../core';
 import { defaultProps, propTypes } from './props';
 import MediaPlaceholder from './MediaPlaceholder';
 import { innerShadow } from './style';
-
-const { colors } = themeConfig;
 
 /**
  * The featured image component.
@@ -34,7 +32,7 @@ const MediaImage = ({
 
   if (placeholder) {
     return (
-      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE} >
+      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
         <MediaPlaceholder className={classes} />
       </SurroundPortals>
     );
@@ -46,7 +44,7 @@ const MediaImage = ({
         src={buildMediaImageUrl(url, params)}
         alt={altText}
         className={classes}
-        backgroundColor={colors.light}
+        backgroundColor="transparent"
         onError={() => setPlaceholderEnabled(true)}
       />
     </SurroundPortals>

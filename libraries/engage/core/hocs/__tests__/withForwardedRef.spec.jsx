@@ -15,7 +15,7 @@ describe('engage > core > hocs > withForwardedRef', () => {
     const ComposedComponent = withForwardedRef(MockComponent);
     const ref = createRef();
     const wrapper = shallow((
-      <ComposedComponent className="foo" ref={ref} >
+      <ComposedComponent className="foo" ref={ref}>
         Testing 123
       </ComposedComponent>
     ));
@@ -31,7 +31,7 @@ describe('engage > core > hocs > withForwardedRef', () => {
     const ComposedComponent = withForwardedRef(MockComponent, { prop: 'custom' });
     const ref = createRef();
     const wrapper = shallow((
-      <ComposedComponent className="foo" ref={ref} >
+      <ComposedComponent className="foo" ref={ref}>
         Testing 123
       </ComposedComponent>
     ));
@@ -47,7 +47,7 @@ describe('engage > core > hocs > withForwardedRef', () => {
     const ComposedComponent = withForwardedRef(MockComponent);
     const ref = createRef();
     renderIntoDocument((
-      <ComposedComponent className="foo" ref={ref} >
+      <ComposedComponent className="foo" ref={ref}>
         Testing 123
       </ComposedComponent>
     ));

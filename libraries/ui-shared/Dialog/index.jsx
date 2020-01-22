@@ -90,6 +90,7 @@ Dialog.propTypes = {
     dismiss: PropTypes.string,
     message: PropTypes.string,
     params: PropTypes.shape(),
+    type: PropTypes.string,
   }).isRequired,
   onConfirm: PropTypes.func,
   onDismiss: PropTypes.func,

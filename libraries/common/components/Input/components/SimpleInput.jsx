@@ -82,7 +82,7 @@ class SimpleInput extends Component {
    * Updates the value of the input field if the props has been modified.
    * @param {Object} nextProps The new properties.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     /**
      * Only set the state value if the value prop has been changed,
      * otherwise use the current input state.
@@ -116,16 +116,18 @@ class SimpleInput extends Component {
 
   /**
    * Internal focus event handler.
+   * @param {Object} e The event object.
    */
-  handleFocus = () => {
+  handleFocus = (e) => {
     this.setState({ isFocused: true });
-    this.props.onFocusChange(true);
+    this.props.onFocusChange(true, e);
   };
 
   /**
    * Internal blur event handler.
+   * @param {Object} e The event object.
    */
-  handleBlur = () => {
+  handleBlur = (e) => {
     const newState = {
       isFocused: false,
     };
@@ -137,7 +139,7 @@ class SimpleInput extends Component {
 
     this.setState(newState);
 
-    this.props.onFocusChange(false);
+    this.props.onFocusChange(false, e);
   };
 
   /**

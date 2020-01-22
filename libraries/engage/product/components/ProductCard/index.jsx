@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
-import { Link, Ellipsis, Portal, RatingStars, DiscountBadge } from '@shopgate/engage/components';
+import {
+  Link, Ellipsis, Portal, RatingStars, DiscountBadge,
+} from '@shopgate/engage/components';
 import {
   getProductRoute,
   MapPriceHint,

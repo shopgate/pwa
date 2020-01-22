@@ -1,4 +1,4 @@
-import { assignObjectDeep } from './';
+import { assignObjectDeep } from '.';
 import { isObject } from '../validation';
 
 describe('helpers/data', () => {

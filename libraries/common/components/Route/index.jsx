@@ -11,7 +11,11 @@ class Route extends React.Component {
   static contextType = RouterContext;
 
   static propTypes = {
-    component: PropTypes.func.isRequired,
+    component: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      PropTypes.elementType,
+    ]).isRequired,
     pattern: PropTypes.string.isRequired,
     cache: PropTypes.bool,
     transform: PropTypes.func,

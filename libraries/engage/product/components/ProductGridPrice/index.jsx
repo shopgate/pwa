@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Price, PriceStriked, PriceInfo } from '@shopgate/engage/components';
+import {
+  Grid, Price, PriceStriked, PriceInfo,
+} from '@shopgate/engage/components';
 import withPriceCalculation from '../../hocs/withPriceCalculation';
 import styles from './style';
 

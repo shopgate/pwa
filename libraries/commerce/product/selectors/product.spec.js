@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import upperFirst from 'lodash/upperFirst';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { PROPERTIES_FILTER_BLACKLIST, PROPERTIES_FILTER_WHITELIST } from '../constants/';
+import { PROPERTIES_FILTER_BLACKLIST, PROPERTIES_FILTER_WHITELIST } from '../constants';
 
 import {
   mockedState as mockedProductState,

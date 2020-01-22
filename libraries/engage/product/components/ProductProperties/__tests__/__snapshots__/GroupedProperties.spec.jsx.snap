@@ -11,6 +11,7 @@ Array [
     key="Group 1"
   >
     <Accordion
+      handleLabel={null}
       renderLabel={[Function]}
       testId="product-properties-group-Group 1"
     >
@@ -45,6 +46,7 @@ Array [
     key="Group 2"
   >
     <Accordion
+      handleLabel={null}
       renderLabel={[Function]}
       testId="product-properties-group-Group 2"
     >

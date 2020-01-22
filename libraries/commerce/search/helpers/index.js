@@ -1,4 +1,4 @@
-import { SEARCH_PATH } from '../constants/';
+import { SEARCH_PATH } from '../constants';
 
 /**
  * Generate product route for navigation.

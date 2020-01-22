@@ -1,4 +1,4 @@
-import logger from '../../helpers';
+import { logger } from '../../helpers';
 /**
  * Creates an action handler API.
  */
@@ -43,8 +43,7 @@ class Conditioner {
    */
   check() {
     return new Promise(async (resolve, reject) => {
-      // Sort by priority
-      const sorted = [...this.conditions.values()]
+      const sorted = Array.from(this.conditions.values())
         .sort((a, b) => {
           if (a.priority === b.priority) {
             return 0;

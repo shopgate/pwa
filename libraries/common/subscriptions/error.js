@@ -1,12 +1,23 @@
+import after from 'lodash/after';
+import before from 'lodash/before';
+import over from 'lodash/over';
 import {
   init,
   configureScope,
   captureException,
   captureMessage,
+  captureEvent,
   withScope,
   Severity as SentrySeverity,
 } from '@sentry/browser';
-import { emitter } from '@shopgate/pwa-core';
+import {
+  EBIGAPI,
+  emitter,
+  errorManager,
+  ETIMEOUT,
+  ENETUNREACH,
+  EUNKNOWN,
+} from '@shopgate/pwa-core';
 import { SOURCE_TRACKING, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
   // eslint-disable-next-line import/no-named-default
@@ -15,20 +26,86 @@ import {
   pckVersion,
 } from '../helpers/config';
 import { env } from '../helpers/environment';
+import { transformGeneralPipelineError } from './helpers/pipeline';
 import { historyPop } from '../actions/router';
 import showModal from '../actions/modal/showModal';
 import { getUserData } from '../selectors/user';
 import { userDidUpdate$ } from '../streams/user';
 import { clientInformationDidUpdate$ } from '../streams/client';
 import { appWillStart$, appDidStart$ } from '../streams/app';
-import { appError$ } from '../streams/error';
+import { appError$, pipelineError$ } from '../streams/error';
 import { getRouterStack } from '../selectors/router';
+import { MODAL_PIPELINE_ERROR } from '../constants/ModalTypes';
+import ToastProvider from '../providers/toast';
 
 /**
  * App errors subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default (subscribe) => {
+  /** Set general error transformations */
+  subscribe(appWillStart$, () => {
+    errorManager.setMessage({
+      code: EUNKNOWN,
+      message: transformGeneralPipelineError,
+    }).setMessage({
+      code: EBIGAPI,
+      message: transformGeneralPipelineError,
+    }).setMessage({
+      code: ETIMEOUT,
+      message: 'modal.body_error',
+    }).setMessage({
+      code: ENETUNREACH,
+      message: 'modal.body_error',
+    });
+  });
+
+  /** Show a message to the user in case of pipeline error */
+  subscribe(pipelineError$, ({ dispatch, action, events }) => {
+    const { error } = action;
+    const {
+      message, code, context, meta,
+    } = error;
+
+    /** Show modal thunk */
+    const showModalError = () => {
+      dispatch(showModal({
+        confirm: 'modal.ok',
+        dismiss: null,
+        title: null,
+        message,
+        type: MODAL_PIPELINE_ERROR,
+        params: {
+          pipeline: context,
+          request: meta.input,
+          message: meta.message,
+          code,
+        },
+      }));
+    };
+
+    let shouldShowToast = message === 'error.general';
+    if ([ETIMEOUT, ENETUNREACH].includes(code) && message === 'modal.body_error') {
+      shouldShowToast = true;
+    }
+    // It was transformed general error. let it popup after 10 toast clicks
+    if (shouldShowToast) {
+      const showToastAfter = after(9, showModalError);
+      // Recursively show same toast message until clicked 10 times
+      const showToast = before(10, () => {
+        events.emit(ToastProvider.ADD, {
+          id: 'pipeline.error',
+          message: 'error.general',
+          action: over([showToast, showToastAfter]),
+        });
+      });
+      showToast();
+      return;
+    }
+
+    showModalError();
+  });
+
   // This subscription is always active despite sentry activation
   subscribe(appError$, ({ dispatch }) => {
     // Show modal to user
@@ -139,6 +216,20 @@ export default (subscribe) => {
         scope.setExtra('stack', action.error.stack);
       }
       captureException(action.error);
+    });
+  });
+
+  const allErrors$ = pipelineError$.merge(appError$);
+  // Log all error messages which are presented to the user
+  subscribe(allErrors$, ({ action }) => {
+    withScope((scope) => {
+      scope.setTag('error', 'E_USER');
+      scope.setTag('errorCode', action.error.code);
+      scope.setTag('errorMessage', action.error.message);
+      captureEvent({
+        message: action.error.meta.message,
+        extra: action.error,
+      });
     });
   });
 };

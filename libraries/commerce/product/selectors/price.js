@@ -28,14 +28,16 @@ export const getProductPriceAddition = createSelector(
       if (productOption.type === 'select') {
         const optionItems = productOptions.find(item => item.id === optionId).values;
         return optionItems.find(item => item.id === itemId).unitPriceModifier;
-      } else if (productOption.type === 'text' && itemId) {
+      }
+
+      if (productOption.type === 'text' && itemId) {
         return productOption.unitPriceModifier;
       }
+
       return 0;
     })
       // Sum up all active option item modifiers to calculate the additional price of the product.
-      .reduce((a, b) => a + b, 0)
-    ,
+      .reduce((a, b) => a + b, 0),
     // If product has no options return 0
     0
   )

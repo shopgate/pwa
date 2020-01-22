@@ -62,7 +62,7 @@ class Image extends Component {
     super(props);
     /**
      * The initial component state.
-     * Preloads all resolutions if already cached will
+     * Pre-loads all resolutions if already cached will
      * set the state for the resolution to true.
      * @type {Object}
      */
@@ -118,15 +118,15 @@ class Image extends Component {
       return;
     }
 
-    this.setState({
-      loaded: this.state.loaded.map((loaded, index) => {
+    this.setState(({ loaded }) => ({
+      loaded: loaded.map((entry, index) => {
         if (resolutionIndex === index) {
           return true;
         }
 
-        return loaded;
+        return entry;
       }),
-    });
+    }));
 
     if (!this.props.srcmap && resolutionIndex === this.props.resolutions.length - 1) {
       this.props.highestResolutionLoaded();
@@ -138,7 +138,7 @@ class Image extends Component {
   }
 
   /**
-   * Preloads the given image in given resolution
+   * Pre-loads the given image in given resolution
    * @param {string} src Source to the image.
    * @param {number} resolutionIndex The index of the loaded resolution.
    * @returns {number} true if image is already in cache.

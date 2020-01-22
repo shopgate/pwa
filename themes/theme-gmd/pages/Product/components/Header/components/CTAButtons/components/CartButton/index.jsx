@@ -18,6 +18,7 @@ const { colors } = themeConfig;
  */
 class CartButton extends Component {
   static contextType = ProductContext;
+
   static propTypes = {
     addToCart: PropTypes.func.isRequired,
     conditioner: PropTypes.shape().isRequired,
@@ -102,7 +103,6 @@ class CartButton extends Component {
 
       broadcastLiveMessage('product.adding_item', {
         params: { count: this.context.quantity },
-        force: true,
       });
     });
   }

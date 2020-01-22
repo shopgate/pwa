@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import find from 'lodash/find';
 import Dropdown from '../Dropdown';
 import I18n from '../I18n';
@@ -28,7 +29,7 @@ class SelectBox extends Component {
     classNames: {},
     duration: 225,
     defaultText: 'filter.sort.default',
-    handleSelectionUpdate: () => {},
+    handleSelectionUpdate: () => { },
     initialValue: null,
     testId: null,
   };
@@ -51,7 +52,7 @@ class SelectBox extends Component {
    * Reset selected when changing the initial value.
     * @param {Object} nextProps The next props the component will receive.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.initialValue !== nextProps.initialValue) {
       this.setState({
         selected: find(nextProps.items, { value: nextProps.initialValue }),
@@ -92,6 +93,10 @@ class SelectBox extends Component {
     this.setState({
       isOpen: true,
     });
+
+    if (this.firstItemRef) {
+      this.firstItemRef.focus();
+    }
   };
 
   /**
@@ -110,7 +115,17 @@ class SelectBox extends Component {
     setTimeout(() => {
       this.props.handleSelectionUpdate(selection.value);
     }, this.props.duration);
+
+    if (this.controlRef) {
+      this.controlRef.focus();
+    }
   };
+
+  /** @param {HTMLElement} ref The element */
+  setControlRef = (ref) => { this.controlRef = ref; }
+
+  /** @param {HTMLElement} ref The element */
+  setFirstItemRef = (ref) => { this.firstItemRef = ref; }
 
   /**
    * Renders the component
@@ -127,14 +142,22 @@ class SelectBox extends Component {
       selectItem,
     } = this.props.classNames;
     const buttonLabel = this.state.selected ? this.state.selected.label : this.props.defaultText;
-    const iconClasses = [
-      icon,
-      ...(this.state.isOpen && iconOpen !== null) && [iconOpen],
-    ].join(' ');
+    const iconClasses = classNames(icon, {
+      [iconOpen]: (this.state.isOpen && iconOpen !== null),
+    });
 
     return (
       <div className={this.props.className} data-test-id={this.props.testId}>
-        <button className={button} onClick={this.handleOpenList} data-test-id={buttonLabel}>
+        <button
+          className={button}
+          onClick={this.handleOpenList}
+          data-test-id={buttonLabel}
+          type="button"
+          aria-haspopup
+          aria-expanded={this.state.isOpen ? true : null}
+          aria-controls={buttonLabel}
+          ref={this.setControlRef}
+        >
           <span className={selection}>
             <I18n.Text string={buttonLabel} />
           </span>
@@ -146,7 +169,7 @@ class SelectBox extends Component {
           onComplete={this.onDropdownComplete}
           duration={this.props.duration}
         >
-          <div>
+          <ul role="menu" id={buttonLabel} tabIndex="-1">
             {this.props.items.map(item => (
               <SelectBoxItem
                 className={selectItem}
@@ -155,15 +178,19 @@ class SelectBox extends Component {
                 value={item.value}
                 label={item.label}
                 handleSelectionUpdate={this.handleSelectionUpdate}
+                isSelected={buttonLabel === item.label}
+                forwardedRef={buttonLabel === item.label ? this.setFirstItemRef : null}
               />
             ))}
-          </div>
+          </ul>
         </Dropdown>
         {this.state.isOpen &&
           <button
             className={styles.overlay}
             onClick={this.handleInteractionOutside}
             onTouchMove={this.handleInteractionOutside}
+            type="button"
+            aria-hidden
           />
         }
       </div>

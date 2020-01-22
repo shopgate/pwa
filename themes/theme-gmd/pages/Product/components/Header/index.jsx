@@ -11,7 +11,7 @@ import Rating from './components/Rating';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
 import styles from './style';
-import { ProductContext } from './../../context';
+import { ProductContext } from '../../context';
 
 /**
  * The product header component.
@@ -43,7 +43,7 @@ class ProductHeader extends PureComponent {
     return (
       <Fragment>
         <Portal name={PRODUCT_HEADER_BEFORE} />
-        <Portal name={PRODUCT_HEADER} >
+        <Portal name={PRODUCT_HEADER}>
           <ProductContext.Consumer>
             {this.consumeRenderer}
           </ProductContext.Consumer>

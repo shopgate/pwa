@@ -4,7 +4,7 @@ import { historyReplace, historyPop } from '@shopgate/pwa-common/actions/router'
 import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
 import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
 import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
-import { fetchCategory, getCategoryById } from '@shopgate/pwa-common-commerce/category';
+import { fetchCategory, getCategory } from '@shopgate/pwa-common-commerce/category';
 import {
   QR_CODE_TYPE_HOMEPAGE,
   QR_CODE_TYPE_PRODUCT,
@@ -36,7 +36,7 @@ jest.mock('@shopgate/pwa-common-commerce/product', () => ({
 }));
 jest.mock('@shopgate/pwa-common-commerce/category', () => ({
   fetchCategory: jest.fn().mockResolvedValue(null),
-  getCategoryById: jest.fn(),
+  getCategory: jest.fn(),
 }));
 jest.mock('../helpers', () => ({
   parse2dsQrCode: jest.fn(),
@@ -186,14 +186,14 @@ describe('handleQrCode', () => {
     });
 
     it('should trigger "no result" handling when the category is not found', async () => {
-      getCategoryById.mockReturnValue(null);
+      getCategory.mockReturnValue(null);
       const event = { scope, format, payload };
       await handleQrCode(event)(dispatch, getState);
       expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
     it('should navigate to PLP when category exists', async () => {
-      getCategoryById.mockReturnValue(true);
+      getCategory.mockReturnValue(true);
       await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/category/SG2',

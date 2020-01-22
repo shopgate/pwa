@@ -1,9 +1,10 @@
 import els from '../../elements/de';
+import { goHomePage } from '../../helper/navigation';
 
 describe('functional test start page', () => {
-  it('check for live shopping widget', () => {
-    cy.visit('');
+  before(goHomePage);
 
+  it('check for live shopping widget', () => {
     cy.get(els.liveShoppingWidgetWithExpectedProduct)
       .should('be.visible')
       .click();
@@ -63,12 +64,13 @@ describe('functional test start page', () => {
   });
 
   it('should check for product list', () => {
-    cy.wait(1000);
     cy.get(els.productListWidgetSecondProduct)
       .scrollIntoView()
       .should('be.visible')
       .click();
     cy.get(els.productWithManyProps4ProductPagName)
       .should('be.visible');
+
+    cy.go('back');
   });
 });

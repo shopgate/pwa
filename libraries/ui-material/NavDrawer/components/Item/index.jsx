@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
+import { withForwardedRef } from '@shopgate/engage/core';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -10,17 +11,25 @@ import styles from './style';
 class NavDrawerItem extends Component {
   static propTypes = {
     label: PropTypes.string.isRequired,
+    'aria-hidden': PropTypes.bool,
+    'aria-label': PropTypes.string,
     badge: PropTypes.func,
+    forwardedRef: PropTypes.shape(),
     icon: PropTypes.func,
     onClick: PropTypes.func,
+    srOnly: PropTypes.bool,
     style: PropTypes.shape(),
     testId: PropTypes.string,
   };
 
   static defaultProps = {
+    'aria-hidden': null,
+    'aria-label': null,
     badge: null,
+    forwardedRef: null,
     icon: null,
     onClick: () => {},
+    srOnly: false,
     style: {},
     testId: null,
   };
@@ -31,7 +40,8 @@ class NavDrawerItem extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return this.props.label !== nextProps.label;
+    return this.props.label !== nextProps.label ||
+      this.props['aria-label'] !== nextProps['aria-label'];
   }
 
   /**
@@ -49,20 +59,28 @@ class NavDrawerItem extends Component {
    */
   render() {
     const {
+      'aria-hidden': ariaHidden,
+      'aria-label': ariaLabel,
       badge: Badge,
+      forwardedRef,
       icon: Icon,
       label,
+      srOnly,
       style,
       testId,
     } = this.props;
 
     return (
       <button
-        className={styles.button}
+        ref={forwardedRef}
+        className={srOnly ? styles.srOnly : styles.button}
         data-test-id={testId}
         onClick={this.handleClick}
-        role="link"
         style={style}
+        type="button"
+        aria-hidden={ariaHidden}
+        aria-label={ariaLabel}
+        tabIndex="0"
       >
         <div className={styles.iconWrapper}>
           {Icon && <Icon className={styles.icon} size={24} />}
@@ -74,4 +92,4 @@ class NavDrawerItem extends Component {
   }
 }
 
-export default NavDrawerItem;
+export default withForwardedRef(NavDrawerItem);

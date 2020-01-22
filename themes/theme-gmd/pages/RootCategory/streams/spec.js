@@ -1,6 +1,6 @@
 import { ROUTE_WILL_ENTER } from '@shopgate/pwa-common/constants/ActionTypes';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { rootCategoryWillEnter$ } from './';
+import { rootCategoryWillEnter$ } from '.';
 
 describe('RootCategory streams', () => {
   describe('rootCategoryWillEnter$', () => {

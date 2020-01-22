@@ -5,6 +5,15 @@ import { default as getPath } from 'lodash/get';
 import messageCache from './messageCache';
 
 /**
+ * Pure function to return original key whet Intl message not found
+ * @param {*} key origin intl key to return
+ * @returns {*}
+ */
+const pureReturn = key => ({
+  format: () => key,
+});
+
+/**
  * Returns an instance of IntlMessageFormat from cache based on a hash.
  * The hash is generated from given language code and translation key.
  * If no instance exists yet, a new instance will be created and returned.
@@ -21,17 +30,21 @@ const getMessageFromCache = (locales, langCode, key) => {
     return messageCache[hash];
   }
 
-  let message = getPath(locales, key, key);
-
-  if (typeof message !== 'string') {
-    message = key;
+  const message = getPath(locales, key);
+  if (typeof message !== 'string' || message.length === 0) {
+    return pureReturn(key);
   }
 
-  messageCache[hash] = new IntlMessageFormat(
-    message,
-    langCode,
-    getPath(locales, 'formats')
-  );
+  // Prevent the app from crashing when strings (like product names) don't comply with the format
+  try {
+    messageCache[hash] = new IntlMessageFormat(
+      message,
+      langCode,
+      getPath(locales, 'formats')
+    );
+  } catch (e) {
+    messageCache[hash] = pureReturn(key);
+  }
 
   return messageCache[hash];
 };

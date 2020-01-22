@@ -26,7 +26,7 @@ exports[`<Address /> should render as expected 1`] = `
       Test Street 123
     </div>
     <Translate
-      className=""
+      className={null}
       params={
         Object {
           "city": "Testcity",
@@ -73,7 +73,7 @@ exports[`<Address /> should render more streets if necessary 1`] = `
       Some additional street info
     </div>
     <Translate
-      className=""
+      className={null}
       params={
         Object {
           "city": "Testcity",

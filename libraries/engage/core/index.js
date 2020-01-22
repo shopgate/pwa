@@ -190,7 +190,9 @@ export {
   parseObjectToQueryString,
 };
 
-export { push, pop, replace, reset } from './router/helpers';
+export {
+  push, pop, replace, reset,
+} from './router/helpers';
 
 // SELECTORS
 export * from '@shopgate/pwa-common/selectors/router';

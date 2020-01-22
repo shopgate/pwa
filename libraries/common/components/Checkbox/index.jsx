@@ -52,7 +52,7 @@ class Checkbox extends Component {
    * Make sure state is updated with new checked value when input is controlled
    * @param {Object} nextProps Contains the new "checked" status
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Update only for controlled input
     if (typeof this.props.defaultChecked === 'undefined') {
       if (this.state.checked !== nextProps.checked) {
@@ -60,6 +60,7 @@ class Checkbox extends Component {
       }
     }
   }
+
   /**
    * Returns if the checkbox is checked or not.
    * @return {boolean} Is the checkbox checked?

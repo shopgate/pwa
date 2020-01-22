@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/engage",
-  "version": "6.6.0",
+  "version": "6.9.1",
   "description": "Shopgate's ENGAGE library.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -15,27 +15,28 @@
     "connect"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "6.6.0",
-    "@shopgate/pwa-common-commerce": "6.6.0",
-    "@shopgate/pwa-core": "6.6.0",
-    "@shopgate/pwa-ui-ios": "6.6.0",
-    "@shopgate/pwa-ui-material": "6.6.0",
-    "@shopgate/pwa-ui-shared": "6.6.0",
-    "@virtuous/conductor": "~2.3.0",
+    "@shopgate/pwa-common": "6.9.1",
+    "@shopgate/pwa-common-commerce": "6.9.1",
+    "@shopgate/pwa-core": "6.9.1",
+    "@shopgate/pwa-ui-ios": "6.9.1",
+    "@shopgate/pwa-ui-material": "6.9.1",
+    "@shopgate/pwa-ui-shared": "6.9.1",
+    "@virtuous/conductor": "~2.4.0",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
     "color": "^3.1.2",
     "intersection-observer": "^0.6.0",
     "lodash": "^4.17.11",
-    "react-player": "^1.11.0"
+    "react-player": "1.11.0",
+    "react-portal": "^3.1.0"
   },
   "devDependencies": {
     "classnames": "^2.2.6",
     "jest-mock-console": "^0.4.2",
     "lodash": "^4.17.11",
-    "prop-types": "^15.6.0",
-    "react": "~16.8.4",
-    "react-redux": "^5.0.6",
+    "prop-types": "~15.7.2",
+    "react": "~16.12.0",
+    "react-redux": "^5.1.2",
     "redux": "^4.0.1",
     "redux-mock-store": "^1.5.3",
     "reselect": "^3.0.1"

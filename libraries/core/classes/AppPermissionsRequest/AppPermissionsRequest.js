@@ -54,6 +54,7 @@ class AppPermissionsRequest extends Request {
     requestBuffer.remove(this.serial);
     return this;
   }
+
   /* eslint-disable class-methods-use-this */
   /**
    * Validates the command params before dispatch.

@@ -10,6 +10,7 @@ exports[`<Header /> should render with correct title 1`] = `
     aria-label="common.close"
     className="css-b3dcfs"
     onClick={[Function]}
+    type="button"
   >
     <Ripple
       className="css-ugy6xl"

@@ -1,4 +1,6 @@
-import { push, pop, replace, reset, update } from '../router/helpers';
+import {
+  push, pop, replace, reset, update,
+} from '../router/helpers';
 
 /**
  * Provides functions for navigation.

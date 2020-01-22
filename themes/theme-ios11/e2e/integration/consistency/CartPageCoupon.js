@@ -1,20 +1,27 @@
-import { clearProductFromCart } from '../../helper/cart';
 import els from '../../elements/de';
+import { goBrowsePage } from '../../helper/navigation'
+import { clearProductsFromCart } from '../../helper/cart'
+import { navigateCategoryBySelector } from '../../helper/category'
 
 describe('IOS11Test CartPageCoupon', () => {
+  before(goBrowsePage);
+
+  after(() => {
+    cy.go('back');
+    cy.go('back');
+    clearProductsFromCart();
+  });
+
   it('should check for product in cart', () => {
-    cy.visit('');
-    cy.get(els.allProductCategory)
-      .click();
-    cy.get(els.loadingIndicator)
-      .should('not.be.visible');
+    navigateCategoryBySelector(els.allProductCategory);
+
     cy.get(els.productWithManyProps4GridViewName)
       .last()
       .click();
-    cy.get(els.addToCartBarButton)
-      .click();
-    cy.get(els.cartButton)
-      .click();
+
+    cy.spyAction('RECEIVE_CART', () => cy.get(els.addToCartBarButton).click());
+
+    cy.get(els.cartButton).click();
     cy.get(els.cartItem)
       .contains('Product with many Properties - 4 -')
       .should('be.visible');
@@ -22,18 +29,11 @@ describe('IOS11Test CartPageCoupon', () => {
 
   it('should check for couponField', () => {
     cy.get(els.couponFieldInput)
-      .should('be.visible');
-  });
-
-  it('should check for submit coupon button', () => {
-    cy.get(els.couponFieldInput)
+      .should('be.visible')
       .type('test');
+
     cy.get(els.couponSubmitButton)
       .should('be.visible');
-  });
-
-  it('should clear Cart', () => {
-    clearProductFromCart();
   });
 });
 

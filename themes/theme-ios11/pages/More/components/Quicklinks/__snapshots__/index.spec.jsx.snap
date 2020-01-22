@@ -71,14 +71,14 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             }
           >
             <Translate
-              className=""
+              className={null}
               params={Object {}}
               role={null}
               string="navigation.more_menu"
               transform={null}
             >
               <span
-                className=""
+                className={null}
                 role={null}
               >
                 navigation.more_menu
@@ -107,14 +107,14 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             >
               <div>
                 <Translate
-                  className=""
+                  className={null}
                   params={Object {}}
                   role={null}
                   string="Some Label"
                   transform={null}
                 >
                   <span
-                    className=""
+                    className={null}
                     role={null}
                   >
                     Some Label
@@ -137,14 +137,14 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             >
               <div>
                 <Translate
-                  className=""
+                  className={null}
                   params={Object {}}
                   role={null}
                   string="Another Label"
                   transform={null}
                 >
                   <span
-                    className=""
+                    className={null}
                     role={null}
                   >
                     Another Label

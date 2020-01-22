@@ -11,11 +11,16 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
   rules: {
+    // Added this according to: https://eslint.org/docs/rules/camelcase#allow
+    camelcase: ['error', {
+      allow: [
+        'UNSAFE_componentWillMount',
+        'UNSAFE_componentWillReceiveProps',
+        'UNSAFE_componentWillUpdate',
+      ],
+    }],
     'capitalized-comments': 0,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
@@ -55,6 +60,8 @@ module.exports = {
         function: 'Function',
       },
     }],
+    'operator-linebreak': 0,
+    'implicit-arrow-linebreak': 0,
   },
   settings: {
     'import/extensions': [

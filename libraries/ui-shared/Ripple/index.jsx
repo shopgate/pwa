@@ -149,6 +149,38 @@ class Ripple extends PureComponent {
   }
 
   /**
+   * Triggers adding of a new ripple on touch start event.
+   * @param {Object} event The even object.
+   */
+  handleClick = (event) => {
+    if (this.props.disabled) {
+      return;
+    }
+    this.addRipple(event, true);
+    this.props.onClick();
+  };
+
+  /**
+   * Will be triggered from the ripple animation component, when the
+   * ripple animation is over. It removes the ripple from the queue again.
+   */
+  removeRipple = () => {
+    if (!this.mounted) {
+      return;
+    }
+
+    this.setState((prevState) => {
+      const ripples = shift(prevState.ripples);
+      this.props.onComplete();
+
+      return {
+        ripples,
+        hasRipples: !!(ripples.length),
+      };
+    });
+  };
+
+  /**
    * Adds a new Ripple to the queue.
    * @param {Object} event The event object.
    * @param {boolean} isTouchGenerated Whether the action was triggered by a touch or click.
@@ -184,42 +216,12 @@ class Ripple extends PureComponent {
     this.ignoreNextMouseDown = isTouchGenerated;
 
     // Update the state.
-    this.setState({
+    this.setState(({ nextKey }) => ({
       ripples,
-      nextKey: this.state.nextKey + 1,
+      nextKey: nextKey + 1,
       hasRipples: true,
-    });
+    }));
   }
-
-  /**
-   * Will be triggered from the ripple animation component, when the
-   * ripple animation is over. It removes the ripple from the queue again.
-   */
-  removeRipple = () => {
-    if (!this.mounted) {
-      return;
-    }
-
-    const ripples = shift(this.state.ripples);
-    this.props.onComplete();
-
-    this.setState({
-      ripples,
-      hasRipples: !!(ripples.length),
-    });
-  };
-
-  /**
-   * Triggers adding of a new ripple on touch start event.
-   * @param {Object} event The even object.
-   */
-  handleClick = (event) => {
-    if (this.props.disabled) {
-      return;
-    }
-    this.addRipple(event, true);
-    this.props.onClick();
-  };
 
   /**
    * Renders all the ripples in the queue.

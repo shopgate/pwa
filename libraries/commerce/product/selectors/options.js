@@ -5,7 +5,7 @@ import {
   getProductId,
   getProductState,
   getProductCurrency,
-} from '../selectors/product';
+} from './product';
 import { OPTION_TYPE_SELECT, OPTION_TYPE_TEXT } from '../constants';
 
 /**

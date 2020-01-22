@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Button from '@shopgate/pwa-ui-shared/Button';
+import Title from './components/Title';
+import Content from './components/Content';
+import Buttons from './components/Buttons';
 import styles from './style';
 
 /**
@@ -15,32 +15,20 @@ import styles from './style';
  * @return {JSX} The rendered dialog.
  */
 const BasicDialog = ({ children, actions, title }) => (
-  <div className={styles.container} data-test-id="basicDialog">
+  <div
+    className={styles.container}
+    data-test-id="basicDialog"
+    role="alertdialog"
+    aria-modal
+    aria-labelledby="basicDialogTitle basicDialogDesc"
+  >
     <div className={styles.content}>
-      {title && ( // Render the title if required.
-        <div className={styles.title}>
-          <Ellipsis rows={3}>
-            {
-              typeof title === 'string'
-              ? <I18n.Text string={title} />
-              : title
-            }
-          </Ellipsis>
-        </div>
-      )}
-      {children && ( // Render the children.
-        <div className={styles.body}>
-          {children}
-        </div>
-      )}
+      <Title title={title} />
+      <Content content={children} />
     </div>
     <div className={styles.actions}>
       <div className={styles.innerActions}>
-        {actions.map(({ label, action }) => ( // Create buttons for each action passed.
-          <Button key={label} className={styles.button} flat type="primary" onClick={action}>
-            <I18n.Text string={label} />
-          </Button>
-        ))}
+        <Buttons actions={actions} />
       </div>
     </div>
   </div>
