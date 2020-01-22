@@ -31,14 +31,14 @@ const I18n = () => {
   };
 
   return {
-    init({ locales, lang }) {
+    init({ locales, lang, currencyLocale = null }) {
       if (didInit) {
         logger.warn('Looks like i18n locales are already inited. Changing locales now may lead to inconsistent translations.');
       }
       didInit = true;
 
       this.text = getTranslator(locales, lang);
-      this.price = getPriceFormatter(lang);
+      this.price = getPriceFormatter(currencyLocale || lang);
       this.date = getDateFormatter(lang);
       this.time = getTimeFormatter(lang);
       this.number = getNumberFormatter(lang);

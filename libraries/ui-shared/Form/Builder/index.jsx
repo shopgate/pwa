@@ -137,7 +137,7 @@ class Builder extends Component {
    * Handles response of validation errors
    * @param {Object} nextProps The new props object with changed data
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const oldValidationErrors = buildValidationErrorList(this.props.validationErrors);
     const newValidationErrors = buildValidationErrorList(nextProps.validationErrors);
     if (!isEqual(oldValidationErrors, newValidationErrors)) {

@@ -13,6 +13,14 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    // Added this according to: https://eslint.org/docs/rules/camelcase#allow
+    camelcase: ['error', {
+      allow: [
+        'UNSAFE_componentWillMount',
+        'UNSAFE_componentWillReceiveProps',
+        'UNSAFE_componentWillUpdate',
+      ],
+    }],
     'capitalized-comments': 0,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',

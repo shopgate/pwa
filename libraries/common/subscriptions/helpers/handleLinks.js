@@ -109,7 +109,12 @@ export const isShopLink = (location) => {
   }
 
   // Dissect the hostname form the given location.
-  const { hostname } = new URL(location);
+  let hostname;
+  try {
+    ({ hostname } = new URL(location));
+  } catch (e) {
+    return false;
+  }
 
   // Check for an exact match against the shop CNAME.
   if (hostname === appConfig.shopCNAME.toLowerCase()) {

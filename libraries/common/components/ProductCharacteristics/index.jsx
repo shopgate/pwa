@@ -62,7 +62,7 @@ class ProductCharacteristics extends Component {
   /**
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.props.variants && nextProps.variants) {
       // Initialize refs and characteristics when the variants prop was updated with a valid value.
       this.setRefs(nextProps);

@@ -1,5 +1,5 @@
 {
-  "version": "6.9.0",
+  "version": "6.9.1",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -72,6 +72,17 @@
         "service": "shop",
         "path": "/v1/%(shopId)s?noCache=true",
         "key": "languageId"
+      }
+    },
+    "locales": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "currency": null
+      },
+      "params": {
+        "type": "json",
+        "label": "Custom locales for various features of the app"
       }
     },
     "logo": {

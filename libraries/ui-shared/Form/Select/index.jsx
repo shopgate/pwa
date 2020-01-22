@@ -49,7 +49,7 @@ class Select extends Component {
    * Update state with new props.
    * @param {Object} nextProps The new props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       value: nextProps.value,
     });

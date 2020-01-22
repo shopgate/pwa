@@ -24,8 +24,6 @@ class SnackBar extends Component {
     i18n: PropTypes.func,
   };
 
-  timer = null;
-
   /**
    * @param {Object} props The component props.
    */
@@ -40,7 +38,7 @@ class SnackBar extends Component {
   /**
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const hasToast = nextProps.toasts.length > 0;
 
     this.setState({ visible: hasToast });
@@ -54,6 +52,8 @@ class SnackBar extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.visible !== nextState.visible;
   }
+
+  timer = null;
 
   /**
    * Returns the first snack from the state.
@@ -127,7 +127,7 @@ class SnackBar extends Component {
 
     // Action exits without actionLabel. Handle the whole box
     const boxProps = {
-      ...(action && !actionLabel) && { onClick: this.handleAction },
+      ...(action && !actionLabel && { onClick: this.handleAction }),
     };
 
     // Calculate the required amount of rows and the height of the snack bar.

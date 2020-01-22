@@ -20,6 +20,7 @@ class ProductContent extends PureComponent {
   static propTypes = {
     baseProductId: PropTypes.string,
     currency: PropTypes.string,
+    // eslint-disable-next-line react/no-unused-prop-types
     isVariant: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
@@ -59,7 +60,7 @@ class ProductContent extends PureComponent {
    * selectors to a productId and a variantId and updates the component state with them.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let productId = nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId;
     let { variantId } = nextProps;
     const productIdChanged = this.props.productId !== nextProps.productId;
@@ -79,10 +80,10 @@ class ProductContent extends PureComponent {
       variantId,
       currency: nextProps.currency,
       quantity: 1,
-      ...productIdChanged && {
+      ...(productIdChanged && {
         options: {},
         optionsPrices: {},
-      },
+      }),
     });
   }
 
