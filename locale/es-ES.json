@@ -9,7 +9,8 @@
     "please_choose": "Por favor, seleccione",
     "show_products": "Mostrar productos",
     "back": "Volver",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "products": "Productos"
   },
   "titles": {
     "categories": "Categorías",
@@ -22,6 +23,7 @@
   },
   "favorites": {
     "add": "Agregar a favoritos",
+    "added": "El producto ha sido añadido a favoritos",
     "continue": "Continuar comprando",
     "empty": "No tiene favoritos",
     "error_add": "El producto no pudo agregarse a favoritos",
@@ -43,11 +45,16 @@
     },
     "apply": "Aplicar",
     "more": "más",
-    "reset": "Borrar"
+    "reset": "Borrar",
+    "remove": "Eliminar {filter} filtro",
+    "edit": "Editar {filter} filtro",
+    "filter_by": "Filtrar por {label}"
   },
   "price": {
     "from": "Desde {price}",
     "range": "Precio desde {fromPrice} a {toPrice}",
+    "range_from": "Rango de precio desde",
+    "range_to": "Rango de precio hasta",
     "tier": {
       "set": "artículos {from}: {price}",
       "range": "{from} o más: {price}"
@@ -124,7 +131,9 @@
       "heading": "Oops!",
       "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultados."
     },
-    "placeholder": "Buscar"
+    "placeholder": "Buscar",
+    "close": "Fin de búsqueda",
+    "reset": "Restablecer búsqueda"
   },
   "shipping": {
     "unknown": "más envío",
@@ -192,7 +201,9 @@
     "menuSubHeader": {
       "more": "Más",
       "about": "Sobre nosotros"
-    }
+    },
+    "back": "Volver a {title}",
+    "open_menu": "Open menu"
   },
   "reviews": {
     "rating": "Calificación",
@@ -225,6 +236,9 @@
       "camera_message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración.",
       "geolocation_message": "Para encontrar tiendas cerca de donde está, vaya a Configuración y habilite los permisos de ubicación."
     }
+  },
+  "error": {
+    "general": "No se puede conectar. Por favor, compruebe su conexión a Internet."
   },
   "formats": {
     "date": {

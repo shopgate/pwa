@@ -481,9 +481,7 @@ exports[`<List /> should render list with reviews 1`] = `
               format="long"
               timestamp={1504701531000}
             >
-              <span>
-                d
-              </span>
+              d
             </FormatDate>
           </ReviewDate>
            
@@ -822,9 +820,7 @@ exports[`<List /> should render list with reviews 1`] = `
               format="long"
               timestamp={1504701460000}
             >
-              <span>
-                d
-              </span>
+              d
             </FormatDate>
           </ReviewDate>
            
@@ -832,7 +828,7 @@ exports[`<List /> should render list with reviews 1`] = `
             author="username123"
           >
             <Translate
-              className=""
+              className={null}
               params={
                 Object {
                   "author": "username123",
@@ -843,7 +839,7 @@ exports[`<List /> should render list with reviews 1`] = `
               transform={null}
             >
               <span
-                className=""
+                className={null}
                 role={null}
               >
                 reviews.author
@@ -1216,9 +1212,7 @@ exports[`<List /> should render list with reviews 1`] = `
               format="long"
               timestamp={1504701023000}
             >
-              <span>
-                d
-              </span>
+              d
             </FormatDate>
           </ReviewDate>
            
@@ -1226,7 +1220,7 @@ exports[`<List /> should render list with reviews 1`] = `
             author="Carina Hoffmann"
           >
             <Translate
-              className=""
+              className={null}
               params={
                 Object {
                   "author": "Carina Hoffmann",
@@ -1237,7 +1231,7 @@ exports[`<List /> should render list with reviews 1`] = `
               transform={null}
             >
               <span
-                className=""
+                className={null}
                 role={null}
               >
                 reviews.author
@@ -1532,9 +1526,7 @@ exports[`<List /> should render list with reviews 1`] = `
               format="long"
               timestamp={1504701023000}
             >
-              <span>
-                d
-              </span>
+              d
             </FormatDate>
           </ReviewDate>
            

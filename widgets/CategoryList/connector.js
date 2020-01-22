@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
-import { getCategoriesById } from './../selectors';
+import { getCategoriesById } from '../selectors';
 
 /**
  * Connects the dispatch function to a calleble function in the props.

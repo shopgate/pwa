@@ -22,10 +22,12 @@ class NestedCategoryFilter extends PureComponent {
       categoryNumber: PropTypes.string.isRequired,
       limit: PropTypes.string.isRequired,
       headline: PropTypes.string.isRequired,
+      /* eslint-disable camelcase */
       label_1: PropTypes.string.isRequired,
       label_2: PropTypes.string.isRequired,
       label_3: PropTypes.string.isRequired,
       label_4: PropTypes.string.isRequired,
+      /* eslint-enable camelcase */
     }).isRequired,
     persistedState: PropTypes.shape(),
   }
@@ -145,7 +147,11 @@ class NestedCategoryFilter extends PureComponent {
 export default props => (
   <RouteContext.Consumer>
     {({ state }) => (
-      <NestedCategoryFilter {...props} persistedState={state[props.id]} />
+      <NestedCategoryFilter
+        {...props}
+        // eslint-disable-next-line react/prop-types
+        persistedState={state[props.id]}
+      />
     )}
   </RouteContext.Consumer>
 );

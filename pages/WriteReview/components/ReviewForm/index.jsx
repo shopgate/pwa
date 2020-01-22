@@ -28,6 +28,7 @@ class ReviewForm extends PureComponent {
   static propTypes = {
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     authorName: PropTypes.string,
     productId: PropTypes.string,
     review: PropTypes.shape(),
@@ -61,13 +62,13 @@ class ReviewForm extends PureComponent {
    * Update state with next props.
    * @param {Object} nextProps The next props.
    */
-  componentWillReceiveProps({ productId, review, authorName }) {
+  UNSAFE_componentWillReceiveProps({ productId, review, authorName }) {
     const author = review[FIELD_NAME_AUTHOR];
 
     this.setState(prevState => ({
       productId,
       ...review,
-      ...!prevState[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || authorName) },
+      ...(!prevState[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || authorName) }),
     }));
   }
 
@@ -87,65 +88,6 @@ class ReviewForm extends PureComponent {
     this.setState({ validationErrors });
 
     return !Object.keys(validationErrors).length;
-  }
-
-  /**
-   * Validate rate.
-   * @param {Object} scope The data to be validated.
-   * @return {boolean} Valid or invalid data provided.
-   */
-  validateRate(scope = this.state) {
-    const { __ } = this.context.i18n();
-    const { validationErrors } = this.state;
-
-    if (!scope.rate) {
-      validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
-    } else {
-      delete validationErrors[FIELD_NAME_RATE];
-    }
-
-    return validationErrors;
-  }
-
-  /**
-   * Validates the author.
-   * @param {Object} scope The data to be validated.
-   * @return {boolean} Valid or invalid data provided.
-   */
-  validateAuthor(scope = this.state) {
-    const { __ } = this.context.i18n();
-    const { validationErrors } = this.state;
-    const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
-
-    if (!scope[FIELD_NAME_AUTHOR] || !scope[FIELD_NAME_AUTHOR].length) {
-      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
-    } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
-      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_length', { length });
-    } else {
-      delete validationErrors[FIELD_NAME_AUTHOR];
-    }
-
-    return validationErrors;
-  }
-
-  /**
-   * Length validation.
-   * @param {string} field The field name.
-   * @param {Object} scope The data to be validated.
-   * @return {boolean} Valid or invalid data provided.
-   */
-  validateLength(field, scope = this.state) {
-    const { __ } = this.context.i18n();
-    const { validationErrors } = this.state;
-    const length = this.constructor.validationLengths[field];
-
-    if (length && scope[field] && scope[field].length >= length) {
-      validationErrors[field] = __('reviews.review_form_error_length', { length });
-    } else {
-      delete validationErrors[field];
-    }
-
-    return validationErrors;
   }
 
   /**
@@ -208,6 +150,65 @@ class ReviewForm extends PureComponent {
       [FIELD_NAME_REVIEW]: review,
       validationErrors,
     });
+  }
+
+  /**
+   * Validate rate.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateRate(scope = this.state) {
+    const { __ } = this.context.i18n();
+    const { validationErrors } = this.state;
+
+    if (!scope.rate) {
+      validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
+    } else {
+      delete validationErrors[FIELD_NAME_RATE];
+    }
+
+    return validationErrors;
+  }
+
+  /**
+   * Validates the author.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateAuthor(scope = this.state) {
+    const { __ } = this.context.i18n();
+    const { validationErrors } = this.state;
+    const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
+
+    if (!scope[FIELD_NAME_AUTHOR] || !scope[FIELD_NAME_AUTHOR].length) {
+      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
+    } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
+      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_length', { length });
+    } else {
+      delete validationErrors[FIELD_NAME_AUTHOR];
+    }
+
+    return validationErrors;
+  }
+
+  /**
+   * Length validation.
+   * @param {string} field The field name.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateLength(field, scope = this.state) {
+    const { __ } = this.context.i18n();
+    const { validationErrors } = this.state;
+    const length = this.constructor.validationLengths[field];
+
+    if (length && scope[field] && scope[field].length >= length) {
+      validationErrors[field] = __('reviews.review_form_error_length', { length });
+    } else {
+      delete validationErrors[field];
+    }
+
+    return validationErrors;
   }
 
   /**

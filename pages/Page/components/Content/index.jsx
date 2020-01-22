@@ -33,7 +33,7 @@ function PageContent({ configs, pageId }) {
 
   return (
     <Fragment>
-      <DefaultBar center={center} />
+      <DefaultBar center={center} title={configs.title || ''} />
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
         <div key="widgetWrapper" className={styles.widgetWrapper}>

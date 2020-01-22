@@ -1,17 +1,21 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { Section } from '@shopgate/engage/a11y';
 import { isBeta } from '@shopgate/engage/core';
-import { ProductProperties, RelationsSlider, StoreSelector } from '@shopgate/engage/product';
+import {
+  ProductProperties,
+  RelationsSlider,
+  Description,
+  StoreSelector,
+} from '@shopgate/engage/product';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
 import Fulfillment from '../Fulfillment';
-import Description from '../Description';
 import AppBar from '../AppBar';
 import connect from './connector';
 import { ProductContext } from '../../context';
@@ -23,6 +27,7 @@ class ProductContent extends PureComponent {
   static propTypes = {
     baseProductId: PropTypes.string,
     currency: PropTypes.string,
+    // eslint-disable-next-line react/no-unused-prop-types
     isVariant: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
@@ -62,7 +67,7 @@ class ProductContent extends PureComponent {
    * selectors to a productId and a variantId and updates the component state with them.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let productId = nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId;
     let { variantId } = nextProps;
     const productIdChanged = this.props.productId !== nextProps.productId;
@@ -82,6 +87,10 @@ class ProductContent extends PureComponent {
       variantId,
       currency: nextProps.currency,
       quantity: 1,
+      ...(productIdChanged && {
+        options: {},
+        optionsPrices: {},
+      }),
     });
   }
 
@@ -138,54 +147,54 @@ class ProductContent extends PureComponent {
       setCharacteristics: this.setCharacteristics,
     };
 
+    const { productId, variantId } = this.state;
+
     return (
-      <div data-test-id={this.state.productId}>
-        <Fragment>
-          <AppBar productId={this.state.productId} />
-          <ProductContext.Provider value={contextValue}>
-            <Media aria-hidden />
-            <Header />
-            {/*
-              This feature is currently in BETA testing.
-              It should only be used for approved BETA Client Projects
-            */}
-            <RelationsSlider desiredPosition="header" />
-            <Section title="product.sections.options">
-              <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
-              <Options />
-            </Section>
-            {/*
-              This feature is currently in BETA testing.
-              It should only be used for approved BETA Client Projects
-            */}
-            <Section title="product.sections.fulfillment">
-              <Fulfillment productId={this.state.productId} variantId={this.state.variantId} />
-            </Section>
-            <Section title="product.sections.description">
-              <Description productId={this.state.productId} variantId={this.state.variantId} />
-            </Section>
-            {/*
-              This feature is currently in BETA testing.
-              It should only be used for approved BETA Client Projects
-            */}
-            <RelationsSlider desiredPosition="description" />
-            <Section title="product.sections.properties">
-              <ProductProperties
-                productId={this.state.productId}
-                variantId={this.state.variantId}
-              />
-            </Section>
-            <Section title="product.sections.ratings">
-              <Reviews productId={this.state.productId} />
-            </Section>
-            <TaxDisclaimer />
-            {/*
-              This feature is currently in BETA testing.
-              It should only be used for approved BETA Client Projects
-            */}
-            {isBeta() && <StoreSelector />}
-          </ProductContext.Provider>
-        </Fragment>
+      <div data-test-id={productId}>
+        <AppBar productId={productId} />
+        <ProductContext.Provider value={contextValue}>
+          <Media aria-hidden />
+          <Header />
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          <RelationsSlider desiredPosition="header" />
+          <Section title="product.sections.options">
+            <Characteristics productId={productId} variantId={variantId} />
+            <Options />
+          </Section>
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          <Section title="product.sections.fulfillment">
+            <Fulfillment productId={productId} variantId={variantId} />
+          </Section>
+          <Section title="product.sections.description">
+            <Description productId={productId} variantId={variantId} />
+          </Section>
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          <RelationsSlider desiredPosition="description" />
+          <Section title="product.sections.properties">
+            <ProductProperties
+              productId={productId}
+              variantId={variantId}
+            />
+          </Section>
+          <Section title="product.sections.ratings">
+            <Reviews productId={productId} />
+          </Section>
+          <TaxDisclaimer />
+          {/*
+            This feature is currently in BETA testing.
+            It should only be used for approved BETA Client Projects
+          */}
+          {isBeta() && <StoreSelector />}
+        </ProductContext.Provider>
       </div>
     );
   }

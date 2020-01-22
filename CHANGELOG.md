@@ -1,5 +1,152 @@
 # Changelog
 
+## [v6.9.1](https://github.com/shopgate/pwa/compare/v6.9.0...v6.9.1) (2020-01-16)
+
+#### :bug: Bug Fix
+* [#896](https://github.com/shopgate/pwa/pull/896) Fixed a react package version incompatibility ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+
+## [v6.9.0](https://github.com/shopgate/pwa/compare/v6.8.0...v6.9.0) (2019-11-12)
+
+#### :rocket: Enhancement
+* [#861](https://github.com/shopgate/pwa/pull/861) A11y: Enhanced hidden price range filter inputs with a currency symbol ([@fkloes](https://github.com/fkloes))
+* [#860](https://github.com/shopgate/pwa/pull/860) Improved a11y of the SelectBox component ([@fkloes](https://github.com/fkloes))
+* [#857](https://github.com/shopgate/pwa/pull/857) Improved a11y labels of price range filter chips ([@fkloes](https://github.com/fkloes))
+* [#853](https://github.com/shopgate/pwa/pull/853) Updated react-spring module to the latest version ([@fkloes](https://github.com/fkloes))
+* [#850](https://github.com/shopgate/pwa/pull/850) Implemented a way to extend and replace actions and updated public action definitions for mutability. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#844](https://github.com/shopgate/pwa/pull/844) a11y: The filter bar is now fully optimised. ([@devbucket](https://github.com/devbucket))
+* [#837](https://github.com/shopgate/pwa/pull/837) Enabled a11y in the filter feature ([@devbucket](https://github.com/devbucket))
+* [#840](https://github.com/shopgate/pwa/pull/840) New theme config "product.variantPreselect" is added. ([@alexbridge](https://github.com/alexbridge))
+* [#838](https://github.com/shopgate/pwa/pull/838) Implemented the process type `PROCESS_LAST` in the `PipelineManager` and changed the `fetchCart` action accordingly. `fetchCart` now returns a promise. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#836](https://github.com/shopgate/pwa/pull/836) A11y: accessibility for favorites buttons and favorites page ([@alexbridge](https://github.com/alexbridge))
+* [#834](https://github.com/shopgate/pwa/pull/834) Enabled a11y in Search feature ([@devbucket](https://github.com/devbucket))
+* [#833](https://github.com/shopgate/pwa/pull/833) A11y: accessibility of sort menu for category and search page ([@alexbridge](https://github.com/alexbridge))
+* [#831](https://github.com/shopgate/pwa/pull/831) A11y: accessible aria label for back navigation ([@alexbridge](https://github.com/alexbridge))
+* [#829](https://github.com/shopgate/pwa/pull/829) Optimised accessibility (a11y) in the cart view. ([@devbucket](https://github.com/devbucket))
+* [#832](https://github.com/shopgate/pwa/pull/832) Optimised modals for accessibility ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#858](https://github.com/shopgate/pwa/pull/858) Added noCache param to language config. To avoid outdated language settings ([@Carsten89](https://github.com/Carsten89))
+* [#859](https://github.com/shopgate/pwa/pull/859) A11y: Live messages are cleared after reading ([@fkloes](https://github.com/fkloes))
+* [#855](https://github.com/shopgate/pwa/pull/855) Fixed an issue where the cart loading indicator didn't stop ([@fkloes](https://github.com/fkloes))
+* [#854](https://github.com/shopgate/pwa/pull/854) Fixed wrong expires calculation for resultsByHash reducer ([@Carsten89](https://github.com/Carsten89))
+* [#849](https://github.com/shopgate/pwa/pull/849) Improved extensibility of CTA button portals ([@fkloes](https://github.com/fkloes))
+* [#847](https://github.com/shopgate/pwa/pull/847) Fixed history imports to eliminate error warnings. ([@devbucket](https://github.com/devbucket))
+
+#### :nail_care: Polish
+* [#848](https://github.com/shopgate/pwa/pull/848) Show generic message for irrelevant errors as toast messages ([@alexbridge](https://github.com/alexbridge))
+* [#839](https://github.com/shopgate/pwa/pull/839) Remove recompose library in favor of React 16.6 memo ([@alexbridge](https://github.com/alexbridge))
+
+#### :house: Internal
+* [#865](https://github.com/shopgate/pwa/pull/865) Error handling: Generic error didn't appear for "EBIGAPI" ([@alexbridge](https://github.com/alexbridge))
+
+
+## [v6.8.0](https://github.com/shopgate/pwa/compare/v6.7.2...v6.8.0) (2019-10-17)
+
+#### :rocket: Enhancement
+* [#828](https://github.com/shopgate/pwa/pull/828) A11y: Engage Login Form accessibility adjustments ([@alexbridge](https://github.com/alexbridge))
+* [#827](https://github.com/shopgate/pwa/pull/827) Icons are now configurable via the theme configuration. ([@alexbridge](https://github.com/alexbridge))
+* [#826](https://github.com/shopgate/pwa/pull/826) Make Shadows configurable in Themes config ([@alexbridge](https://github.com/alexbridge))
+* [#815](https://github.com/shopgate/pwa/pull/815) Updated to Babel 7, eslint 5 and jest 24 ([@ghost](https://github.com/ghost))
+* [#782](https://github.com/shopgate/pwa/pull/782) Added functionality to determine geolocation coordinates ([@fkloes](https://github.com/fkloes))
+* [#781](https://github.com/shopgate/pwa/pull/781) Added the locations & availability configuration. ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#846](https://github.com/shopgate/pwa/pull/846) Move Shadow config for App bar to App Bar component settings ([@alexbridge](https://github.com/alexbridge))
+* [#845](https://github.com/shopgate/pwa/pull/845) Replaced IOS TabBar icons for consistent sized ones and removed redundant viewBox definitions. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#843](https://github.com/shopgate/pwa/pull/843) Fixed a bug in the Swiper and Section components using hooks. ([@devbucket](https://github.com/devbucket))
+* [#842](https://github.com/shopgate/pwa/pull/842) Fixed flickering pdp ui elements on iOS 13 ([@fkloes](https://github.com/fkloes))
+* [#835](https://github.com/shopgate/pwa/pull/835) Fixed spacing between icons and labels of iOS TabBar entries ([@fkloes](https://github.com/fkloes))
+* [#822](https://github.com/shopgate/pwa/pull/822) Fixed circular dependencies ([@devbucket](https://github.com/devbucket))
+* [#796](https://github.com/shopgate/pwa/pull/796) Fixed XOR usage in the object merge helper to output warnings correctly. ([@DanielRuf](https://github.com/DanielRuf))
+
+#### :nail_care: Polish
+* [#814](https://github.com/shopgate/pwa/pull/814) Fixed the JSDoc type annotations ([@DanielRuf](https://github.com/DanielRuf))
+* [#795](https://github.com/shopgate/pwa/pull/795) Removed unnecessary ternary operators in the changelog generator script. ([@DanielRuf](https://github.com/DanielRuf))
+* [#798](https://github.com/shopgate/pwa/pull/798) Renamed LICENSE file ([@DanielRuf](https://github.com/DanielRuf))
+* [#794](https://github.com/shopgate/pwa/pull/794) Removed a duplicated case clause in the scanner's reducer switch. ([@DanielRuf](https://github.com/DanielRuf))
+
+
+## [v6.7.2](https://github.com/shopgate/pwa/compare/v6.7.1...v6.7.2) (2019-09-04)
+
+#### :rocket: Enhancement
+* [#823](https://github.com/shopgate/pwa/pull/823) Added the "selectedPaymentInfo" tracking event to the tracking-core ([@fkloes](https://github.com/fkloes))
+* [#819](https://github.com/shopgate/pwa/pull/819) Implemented login tracking event for apps ([@fkloes](https://github.com/fkloes))
+* [#812](https://github.com/shopgate/pwa/pull/812) Implemented logItemview tracking event for the tracking core ([@fkloes](https://github.com/fkloes))
+* [#811](https://github.com/shopgate/pwa/pull/811) Extended source data for the tracking system ([@fkloes](https://github.com/fkloes))
+* [#808](https://github.com/shopgate/pwa/pull/808) Added the ability to modify the search query when using the search suggestion portals in theme ios. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#806](https://github.com/shopgate/pwa/pull/806) Improved sanitization for purchase tracking event data ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#821](https://github.com/shopgate/pwa/pull/821) Reset selected options of product context, when changing a product on Product details page ([@alexbridge](https://github.com/alexbridge))
+* [#820](https://github.com/shopgate/pwa/pull/820) Extract discount amount from tracked event initiatedCheckout. ([@alexbridge](https://github.com/alexbridge))
+* [#817](https://github.com/shopgate/pwa/pull/817) The SuggestionList component is now persistent in the component tree ([@ghost](https://github.com/ghost))
+* [#809](https://github.com/shopgate/pwa/pull/809) Show stock warnings inside variant selection sheet ([@alexbridge](https://github.com/alexbridge))
+
+#### :house: Internal
+* [#813](https://github.com/shopgate/pwa/pull/813) Updated dependencies of @shopgate/tracking-ga-native package ([@fkloes](https://github.com/fkloes))
+
+
+## [v6.7.1](https://github.com/shopgate/pwa/compare/v6.7.0...v6.7.1) (2019-08-26)
+
+#### :rocket: Enhancement
+* [#808](https://github.com/shopgate/pwa/pull/808) Added the ability to modify the search query when using the search suggestion portals in theme ios. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :house: Internal
+* Fixed react-player version to avoid issued due to babel 7 update of 1.12.0 ([@fkloes](https://github.com/fkloes))
+
+## [v6.7.0](https://github.com/shopgate/pwa/compare/v6.6.0...v6.7.0) (2019-08-15)
+
+#### :rocket: Enhancement
+* [#791](https://github.com/shopgate/pwa/pull/791) Included additional portal props in the SuggestionList component for both themes. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#784](https://github.com/shopgate/pwa/pull/784) Added supported tracking services to the options for tracking plugins ([@fkloes](https://github.com/fkloes))
+* [#788](https://github.com/shopgate/pwa/pull/788) Added Portals to the Search Suggestions components. ([@devbucket](https://github.com/devbucket))
+* [#783](https://github.com/shopgate/pwa/pull/783) Added missing portals for empty favorites page and empty search results page ([@Carsten89](https://github.com/Carsten89))
+* [#780](https://github.com/shopgate/pwa/pull/780) Grouped properties labels are translated. ([@sznowicki](https://github.com/sznowicki))
+* [#757](https://github.com/shopgate/pwa/pull/757) Refactored favorites actions to use add and delete favorites pipelines instead of put ([@aaron-martin](https://github.com/aaron-martin))
+* [#774](https://github.com/shopgate/pwa/pull/774) Enhance Swiper Component ([@Carsten89](https://github.com/Carsten89))
+* [#760](https://github.com/shopgate/pwa/pull/760) The product image updates when a characteristic is selected. ([@devbucket](https://github.com/devbucket))
+* [#764](https://github.com/shopgate/pwa/pull/764) Added missing translations strings for a11y ([@devbucket](https://github.com/devbucket))
+* [#725](https://github.com/shopgate/pwa/pull/725) Added a sheet to show all Related Products on the PDP ([@devbucket](https://github.com/devbucket))
+* [#722](https://github.com/shopgate/pwa/pull/722) Added functionality to access widget and page configs and settings outside of the react scope. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#759](https://github.com/shopgate/pwa/pull/759) Improved product characteristics auto selection ([@fkloes](https://github.com/fkloes))
+* [#717](https://github.com/shopgate/pwa/pull/717) Added support for Universal Links ([@sznowicki](https://github.com/sznowicki))
+* [#707](https://github.com/shopgate/pwa/pull/707) Improved accessibility of the Product Details Page ([@fkloes](https://github.com/fkloes))
+* [#715](https://github.com/shopgate/pwa/pull/715) Enabled color configuration for the AppHeader ([@fkloes](https://github.com/fkloes))
+* [#709](https://github.com/shopgate/pwa/pull/709) Improved safe area insets ([@fkloes](https://github.com/fkloes))
+* [#700](https://github.com/shopgate/pwa/pull/700) Introduced a global translation helper ([@sznowicki](https://github.com/sznowicki))
+* [#702](https://github.com/shopgate/pwa/pull/702) Improved general navigation for screen readers  ([@fkloes](https://github.com/fkloes))
+* [#699](https://github.com/shopgate/pwa/pull/699) The Product Details Page can now show related products in a slider ([@devbucket](https://github.com/devbucket))
+* [#698](https://github.com/shopgate/pwa/pull/698) Make modal window title translatable with parameters ([@alexbridge](https://github.com/alexbridge))
+* [#695](https://github.com/shopgate/pwa/pull/695) Configuration added to configure zoom ratio for product gallery ([@alexbridge](https://github.com/alexbridge))
+* [#693](https://github.com/shopgate/pwa/pull/693) Support effectivity dates on Product List Page ([@alexbridge](https://github.com/alexbridge))
+* [#687](https://github.com/shopgate/pwa/pull/687) Optimized the category and browse page for screen readers ([@fkloes](https://github.com/fkloes))
+* [#683](https://github.com/shopgate/pwa/pull/683) Added accessibility tree to the TabBar in iOS ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#799](https://github.com/shopgate/pwa/pull/799) Changed the search component in theme-gmd to use the event's currentTarget propery over the target to obtain the updated query. ([@DanielRuf](https://github.com/DanielRuf))
+* [#792](https://github.com/shopgate/pwa/pull/792) Padding to the bottom of the Product Grid is only added if the Grid is not empty. ([@devbucket](https://github.com/devbucket))
+* [#787](https://github.com/shopgate/pwa/pull/787) Product Image does not flicker when opening the PDP for the first time. ([@devbucket](https://github.com/devbucket))
+* [#786](https://github.com/shopgate/pwa/pull/786) Fixed inconsistent spacing from the Browse page of the iOS theme ([@fkloes](https://github.com/fkloes))
+* [#779](https://github.com/shopgate/pwa/pull/779) Fixed Padding to only apply to ProductSlider component from ThemeApi ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#777](https://github.com/shopgate/pwa/pull/777) Long product names are hyphened and cur off correctly in ProductGrid ([@devbucket](https://github.com/devbucket))
+* [#778](https://github.com/shopgate/pwa/pull/778) Fix video autoplay on cms pages ([@alexbridge](https://github.com/alexbridge))
+* [#756](https://github.com/shopgate/pwa/pull/756) Show placeholder or featured media on product details page ([@alexbridge](https://github.com/alexbridge))
+* [#776](https://github.com/shopgate/pwa/pull/776) Adding a product+coupon via qr-code redirects to cart ([@alexbridge](https://github.com/alexbridge))
+* [#771](https://github.com/shopgate/pwa/pull/771) Added padding to Swiper component in Engage library to show a shadow for product cards ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#773](https://github.com/shopgate/pwa/pull/773) Decoupled swatch content into a separate component and introduced a VariantSwatch widget component to be rendered in the PDP ([@alexbridge](https://github.com/alexbridge))
+* [#775](https://github.com/shopgate/pwa/pull/775) Prevented opening of the product gallery from placeholder images ([@fkloes](https://github.com/fkloes))
+* [#774](https://github.com/shopgate/pwa/pull/774) Enhance Swiper Component ([@Carsten89](https://github.com/Carsten89))
+* [#772](https://github.com/shopgate/pwa/pull/772) Fixed an issue where the Swiper component didn't update as expected ([@fkloes](https://github.com/fkloes))
+* [#769](https://github.com/shopgate/pwa/pull/769) Added empty data check to getKnownRelatives selector ([@Carsten89](https://github.com/Carsten89))
+* [#770](https://github.com/shopgate/pwa/pull/770) Updated ProductSlider theme component to use Slider.Item wrapper for given ProductCard ([@DannyShopgate](https://github.com/DannyShopgate))
+* [#761](https://github.com/shopgate/pwa/pull/761) Add default fetch products parameters, fetch favorite products data ([@alexbridge](https://github.com/alexbridge))
+* [#763](https://github.com/shopgate/pwa/pull/763) Re-position toast component ([@alexbridge](https://github.com/alexbridge))
+* [#747](https://github.com/shopgate/pwa/pull/747) Translation files are incomplete and partially wrong ([@alexbridge](https://github.com/alexbridge))
+* [#758](https://github.com/shopgate/pwa/pull/758) Adjust slider navigation on product details page  ([@alexbridge](https://github.com/alexbridge))
+* [#748](https://github.com/shopgate/pwa/pull/748) Fix displaying unit price on product details page for product without variants ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.6.0](https://github.com/shopgate/pwa/compare/v6.5.4...v6.6.0) (2019-07-17)
 
 #### :rocket: Enhancement

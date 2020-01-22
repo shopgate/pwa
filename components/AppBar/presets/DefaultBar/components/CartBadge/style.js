@@ -18,5 +18,4 @@ export default css({
   top: 12,
   right: 18,
   transform: 'translateX(50%)',
-  boxShadow: '0 1px 1px rgba(0, 0, 0, 0.25)',
 });

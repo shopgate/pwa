@@ -14,7 +14,7 @@ const button = css({
   position: 'relative',
   zIndex: 1,
   overflow: 'hidden',
-}).toString();
+});
 
 const filterButton = css({
   display: 'flex',

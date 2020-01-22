@@ -9,7 +9,10 @@ import {
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { withRoute, withWidgetSettings, withApp } from '@shopgate/engage/core';
+import {
+  withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
+} from '@shopgate/engage/core';
+
 import { ViewContext } from 'Components/View/context';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
@@ -43,6 +46,16 @@ class AppBarDefault extends PureComponent {
     i18n: PropTypes.func,
   };
 
+  /**
+   * Constructor
+   * @param {Object} props The component properties
+   */
+  constructor(props) {
+    super(props);
+
+    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
   state = {
     target: document.getElementById('AppHeader'),
   }
@@ -55,20 +68,20 @@ class AppBarDefault extends PureComponent {
 
     if (!target) {
       target = document.getElementById('AppHeader');
-      this.setState({ target: target || null }); // eslint-disable-line react/no-did-mount-set-state
+      this.setState({ target: target || null });
     }
 
     if (this.props.setFocus) {
-      // Set the focus to the first focusable element for screen readers.
-      const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
-
-      if (focusable) {
-        focusable.focus();
-      }
+      this.setFocus();
     }
 
     if (this.props.route.visible) {
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
+
+      if (this.props.title) {
+        const { __ } = this.context.i18n();
+        router.update(this.props.route.id, { title: __(this.props.title) });
+      }
     }
   }
 
@@ -91,12 +104,42 @@ class AppBarDefault extends PureComponent {
 
     if (routeDidEnter || engageDidEnter) {
       // Sync the colors of the app bar when the route with the bar came visible.
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
     }
 
     if (engageWillLeave) {
       // Reset the status bar when Engage goes into the background.
       this.props.resetStatusBar();
+    }
+
+    if (prevProps.title !== this.props.title) {
+      const { __ } = this.context.i18n();
+      router.update(this.props.route.id, { title: __(this.props.title) });
+    }
+  }
+
+  /**
+   * Removes the event listeners when the component unmounts.
+   */
+  componentWillUnmount() {
+    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
+  /**
+   * Sets the a11y focus to the first focusable element within the AppBar.
+   */
+  setFocus = () => {
+    const { target } = this.state;
+
+    if (!target) {
+      return;
+    }
+
+    // Set the focus to the first focusable element for screen readers.
+    const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+
+    if (focusable) {
+      focusable.focus();
     }
   }
 
@@ -112,8 +155,20 @@ class AppBarDefault extends PureComponent {
     if (visible) {
       this.props.resetStatusBar();
     } else {
-      this.props.updateStatusBar(this.props.widgetSettings);
+      this.updateStatusBar();
     }
+  }
+
+  /**
+   * Updates the status bar styling.
+   */
+  updateStatusBar() {
+    const { pathname } = this.props.route;
+    /**
+     * The settings for the startpage need to be preserved within the statusbar to optimize
+     * the initial rendering at the app start.
+     */
+    this.props.updateStatusBar(this.props.widgetSettings, pathname === INDEX_PATH);
   }
 
   /**
@@ -126,7 +181,7 @@ class AppBarDefault extends PureComponent {
 
     const { background, color } = this.props.widgetSettings;
     const { __ } = this.context.i18n();
-    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-hidden />;
+    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label={__('navigation.open_menu')} />;
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const right = (
       <Fragment>

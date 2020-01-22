@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductContext } from './../../../../../../context';
+import { ProductContext } from '../../../../../../context';
 
 export default Component => () => (
   <ProductContext.Consumer>
@@ -8,12 +8,12 @@ export default Component => () => (
       options,
       productId,
       variantId,
-     }) => (
-       <Component
-         conditioner={conditioner}
-         options={options}
-         productId={variantId || productId}
-       />
+    }) => (
+      <Component
+        conditioner={conditioner}
+        options={options}
+        productId={variantId || productId}
+      />
     )}
   </ProductContext.Consumer>
 );

@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PRODUCT_SHIPPING,
@@ -39,4 +38,4 @@ Shipping.defaultProps = {
   shipping: null,
 };
 
-export default connect(pure(Shipping));
+export default connect(memo(Shipping));

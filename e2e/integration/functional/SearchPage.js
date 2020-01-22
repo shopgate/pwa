@@ -1,9 +1,15 @@
 import els from '../../elements/de';
+import { goHomePage } from '../../helper/navigation';
 
 describe('function tests search page', () => {
-  it('should search with fitting products', () => {
-    cy.visit('');
+  before(goHomePage);
 
+  after(() => {
+    // CloseBar
+    cy.go('back');
+  });
+
+  it('should search with fitting products', () => {
     cy.get(els.searchButton)
       .should('be.visible')
       .click()

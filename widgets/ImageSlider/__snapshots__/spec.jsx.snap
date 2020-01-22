@@ -63,7 +63,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-15qycmt"
+          containerClass="css-xvw7af"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -203,7 +203,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           zoom={false}
         >
           <div
-            className="css-15qycmt"
+            className="css-xvw7af"
           >
             <div
               className="swiper-wrapper"
@@ -221,6 +221,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
@@ -234,6 +235,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
@@ -268,6 +270,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
@@ -281,6 +284,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
@@ -353,6 +357,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
         href="http://example.com"
       >
         <Link
+          aria-hidden={null}
           aria-label={null}
           className="css-63oe3q"
           data-test-id="withLink"
@@ -367,6 +372,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           tag="div"
         >
           <div
+            aria-hidden={null}
             aria-label={null}
             className="css-c6ki83 css-63oe3q"
             data-test-id="link: http://example.com"
@@ -501,7 +507,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-15qycmt"
+          containerClass="css-xvw7af"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -641,7 +647,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           zoom={false}
         >
           <div
-            className="css-15qycmt"
+            className="css-xvw7af"
           >
             <div
               className="swiper-wrapper"
@@ -678,6 +684,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
@@ -691,6 +698,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"
@@ -787,7 +795,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-15qycmt"
+          containerClass="css-xvw7af"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -927,7 +935,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           zoom={false}
         >
           <div
-            className="css-15qycmt"
+            className="css-xvw7af"
           >
             <div
               className="swiper-wrapper"
@@ -945,6 +953,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
@@ -958,6 +967,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://example.com"
@@ -992,6 +1002,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                     href="http://other.example.com"
                   >
                     <Link
+                      aria-hidden={null}
                       aria-label={null}
                       className="css-63oe3q"
                       disabled={false}
@@ -1005,6 +1016,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       tag="div"
                     >
                       <div
+                        aria-hidden={null}
                         aria-label={null}
                         className="css-c6ki83 css-63oe3q"
                         data-test-id="link: http://other.example.com"

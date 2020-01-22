@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SheetDrawer, SheetList } from '@shopgate/engage/components';
-import VariantContext from '@shopgate/pwa-common/components/ProductCharacteristics/context';
+import { VariantContext } from '@shopgate/engage/product';
 import { ViewContext } from 'Components/View/context';
 import Item from '../SheetItem';
 import VariantAvailability from '../VariantAvailability';
-import { ProductContext } from './../../../../../context';
+import { ProductContext } from '../../../../../context';
 
 /**
  * The CharacteristicSheet component.
@@ -32,6 +32,8 @@ class CharacteristicSheet extends PureComponent {
     selection: null,
   };
 
+  firstSelectableItemRef = React.createRef();
+
   /**
    * Focuses the first selectable item and hides the view for screen readers.
    */
@@ -52,8 +54,6 @@ class CharacteristicSheet extends PureComponent {
     this.props.setViewAriaHidden(false);
   }
 
-  firstSelectableItemRef = React.createRef();
-
   /**
    * @param {Object} event The event object.
    */
@@ -68,20 +68,12 @@ class CharacteristicSheet extends PureComponent {
    * @return {React.Component|null}
    */
   renderAvailability = (value) => {
-    const { charId, productId, items } = this.props;
-    const lastValue = items.slice(-1)[0];
-
-    // Check if this is the last characteristic to be set.
-    if (lastValue.id !== charId) {
-      return null;
-    }
-
     const selection = {
       ...this.props.selection,
       [this.props.charId]: value,
     };
 
-    return <VariantAvailability characteristics={selection} productId={productId} />;
+    return <VariantAvailability characteristics={selection} productId={this.props.productId} />;
   }
 
   /**
@@ -101,7 +93,7 @@ class CharacteristicSheet extends PureComponent {
     }
 
     return (
-      <SheetDrawer title={label} isOpen={open} onClose={this.onClose} onDidOpen={this.onDidOpen} >
+      <SheetDrawer title={label} isOpen={open} onClose={this.onClose} onDidOpen={this.onDidOpen}>
         <SheetList>
           {items.map((item, index) => (
             <Item

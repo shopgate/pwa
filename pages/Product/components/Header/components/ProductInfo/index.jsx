@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import {
   MapPriceHint,
   OrderQuantityHint,
@@ -67,16 +66,16 @@ const ProductInfo = ({ productId, options }) => (
         </Grid.Item>
         <Grid.Item component="div" className={styles.priceContainer}>
           <Portal name={PRODUCT_INFO_ROW2}>
-            <div className={styles.priceInfo}>
+            <div>
               <PriceStriked productId={productId} options={options} />
             </div>
-            <div className={styles.priceInfo}>
+            <div>
               <Price productId={productId} options={options} />
             </div>
-            <div className={styles.priceInfo}>
+            <div>
               <PriceInfo productId={productId} options={options} />
             </div>
-            <div className={styles.priceInfo}>
+            <div>
               <Tiers productId={productId} options={options} />
             </div>
           </Portal>
@@ -93,4 +92,4 @@ ProductInfo.propTypes = {
   productId: PropTypes.string.isRequired,
 };
 
-export default pure(ProductInfo);
+export default memo(ProductInfo);

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import BasePicker from '@shopgate/pwa-common/components/Picker';
-import Sheet from '@shopgate/pwa-ui-shared/Sheet';
-import { SheetList } from '@shopgate/engage/components';
+import { SheetList, Picker as BasePicker, Sheet } from '@shopgate/engage/components';
 import { ViewContext } from 'Components/View/context';
 import Button from './components/Button';
 import styles from './style';
@@ -55,25 +53,23 @@ class Picker extends Component {
     this.pickerRef = React.createRef();
     this.firstSelectableItemRef = React.createRef();
 
-    this.listComponent = ({
-      items, onSelect, selectedIndex, onClose,
-    }) => (
+    this.listComponent = prps => (
       <SheetList>
-        {items.map((item, index) => (
+        {prps.items.map((item, index) => (
           <SheetList.Item
             key={item.value}
             title={item.label}
             onClick={() => {
               setTimeout(() => {
-                onSelect(item.value);
-                onClose();
+                prps.onSelect(item.value);
+                prps.onClose();
               }, this.props.clickDelay);
             }}
             isDisabled={item.disabled}
-            isSelected={index === selectedIndex}
+            isSelected={index === prps.selectedIndex}
             rightComponent={item.rightComponent}
             testId={item.label}
-            ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+            ref={index === prps.selectedIndex ? this.firstSelectableItemRef : null}
           />
         ))}
       </SheetList>

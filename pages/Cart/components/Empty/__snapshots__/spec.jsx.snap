@@ -25,7 +25,7 @@ exports[`<CartEmpty /> should render 1`] = `
         data-test-id="emptyCartPlaceHolderString"
       >
         <Translate
-          className=""
+          className={null}
           params={Object {}}
           role={null}
           string="cart.empty"
@@ -53,7 +53,7 @@ exports[`<CartEmpty /> should render 1`] = `
       wrapContent={true}
     >
       <Translate
-        className=""
+        className={null}
         params={Object {}}
         role={null}
         string="cart.continue"
