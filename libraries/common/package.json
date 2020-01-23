@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common",
-  "version": "6.9.1",
+  "version": "6.10.0",
   "description": "Common library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "@sentry/browser": "^4.6.3",
-    "@shopgate/pwa-benchmark": "6.9.1",
+    "@shopgate/pwa-benchmark": "6.10.0",
     "@virtuous/conductor": "~2.4.0",
     "@virtuous/react-conductor": "~2.4.0",
     "@virtuous/redux-persister": "1.1.0-beta.7",
@@ -44,7 +44,7 @@
     "url-search-params": "^0.10.0"
   },
   "devDependencies": {
-    "@shopgate/pwa-core": "6.9.1",
+    "@shopgate/pwa-core": "6.10.0",
     "lodash": "^4.17.4",
     "prop-types": "~15.7.2",
     "react": "~16.12.0",
