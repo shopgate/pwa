@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Conditioner } from '@shopgate/pwa-core';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { Section } from '@shopgate/engage/a11y';
-import { isBeta } from '@shopgate/engage/core';
 import {
   ProductProperties,
   RelationsSlider,
@@ -164,10 +163,6 @@ class ProductContent extends PureComponent {
             <Characteristics productId={productId} variantId={variantId} />
             <Options />
           </Section>
-          {/*
-            This feature is currently in BETA testing.
-            It should only be used for approved BETA Client Projects
-          */}
           <Section title="product.sections.fulfillment">
             <Fulfillment productId={productId} variantId={variantId} />
           </Section>
@@ -189,11 +184,7 @@ class ProductContent extends PureComponent {
             <Reviews productId={productId} />
           </Section>
           <TaxDisclaimer />
-          {/*
-            This feature is currently in BETA testing.
-            It should only be used for approved BETA Client Projects
-          */}
-          {isBeta() && <StoreSelector />}
+          <StoreSelector />
         </ProductContext.Provider>
       </div>
     );

@@ -11,22 +11,19 @@ import * as styles from './style';
  * @param {JSX} props.children The child components to be rendered besides the label.
  * @returns {JSX}
  */
-const FulfillmentSelectorItem = (props) => {
-  const { name, children, ...restProps } = props;
-  return (
-    <RadioItem
-      name={name}
-      className={styles.radioItem}
-      label={
-        <div className={styles.radioGroupItemLabel}>
-          <I18n.Text string={name} />
-          {children}
-        </div>
-      }
-      {... restProps}
-    />
-  );
-};
+const FulfillmentSelectorItem = ({ name, children, ...restProps }) => (
+  <RadioItem
+    name={name}
+    className={styles.radioItem}
+    label={(
+      <div className={styles.radioGroupItemLabel}>
+        <I18n.Text string={name} />
+        {children}
+      </div>
+    )}
+    {...restProps}
+  />
+);
 
 FulfillmentSelectorItem.propTypes = {
   name: PropTypes.string.isRequired,

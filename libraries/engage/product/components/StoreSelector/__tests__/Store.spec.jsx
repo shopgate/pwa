@@ -30,6 +30,7 @@ jest.mock('react', () => ({
 
 describe('<Store />', () => {
   it('should not render if no store is passed', () => {
+    useContext.mockReturnValueOnce(context);
     const wrapper = shallow(<Store />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.instance()).toEqual(null);
@@ -38,6 +39,7 @@ describe('<Store />', () => {
   it('should render as expected', () => {
     useContext.mockReturnValueOnce(context);
     const wrapper = shallow(<Store store={store} />);
+    console.warn(wrapper.debug());
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('[data-test-id="store-name"]').text()).toEqual(store.name);
     expect(wrapper.find('StoreHoursToday').props().hours).toEqual(store.operationHours);

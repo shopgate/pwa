@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
 import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
@@ -24,25 +23,13 @@ import * as styles from './style';
  * @returns {JSX}
  */
 export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location }) => {
-  if (!isBeta()) { // TODO: Change to feature flag!
-    return null;
-  }
-
-  // Don't render, when no pick up in store is available for the given product.
-  if (!fulfillmentMethods
-    || fulfillmentMethods.indexOf(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP) === -1) {
-    return null;
-  }
-
   const directShip = 'product.fulfillment_selector.direct_ship';
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
   // Pre-select direct ship on entering the PDP
   const [selection, setSelection] = useState(directShip);
-
   // Keep the selected location in the state
   const [selectedLocation, setSelectedLocation] = useState(null);
-
   // Keeps track of the selector sheet being opened or not, to "debounce" open events.
   const [isSelectorOpened, setIsSelectorOpened] = useState(false);
 
@@ -58,7 +45,7 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
       StoreSelector.close();
       setIsSelectorOpened(false);
     }
-  }, [productCode]);
+  }, [isSelectorOpened, productCode]);
 
   // Whenever the pick-up selection is made, open the store selector sheet and use the new location.
   const handleChange = useCallback((elementName) => {
@@ -94,6 +81,12 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
       setSelectedLocation(null);
     }
   }, [isSelectorOpened, selectedLocation, productCode]);
+
+  // Don't render, when no pick up in store is available for the given product.
+  if (!fulfillmentMethods
+    || fulfillmentMethods.indexOf(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP) === -1) {
+    return null;
+  }
 
   return (
     <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR} portalProps={{ productCode }}>
