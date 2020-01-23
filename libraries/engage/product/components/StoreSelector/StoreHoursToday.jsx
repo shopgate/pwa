@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { storeHoursToday } from './style';
@@ -10,7 +10,7 @@ const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const StoreHoursToday = ({ hours }) => {
+function StoreHoursToday({ hours }) {
   if (!hours) {
     return null;
   }
@@ -27,7 +27,7 @@ const StoreHoursToday = ({ hours }) => {
       <I18n.Text string="product.location.today_hours" params={{ hours: hoursToday }} />
     </div>
   );
-};
+}
 
 StoreHoursToday.propTypes = {
   hours: PropTypes.shape(),
@@ -37,4 +37,4 @@ StoreHoursToday.defaultProps = {
   hours: null,
 };
 
-export default memo(StoreHoursToday);
+export default StoreHoursToday;

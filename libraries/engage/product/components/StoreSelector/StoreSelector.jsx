@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { UIEvents, withCurrentProduct } from '../../../core';
-import { SheetDrawer } from '../../../components';
+import UIEvents from '@shopgate/pwa-core/emitters/ui';
+import { withCurrentProduct } from '../../../core/hocs/withCurrentProduct';
+import SheetDrawer from '../../../components/SheetDrawer';
 import { sheet } from './style';
 import Product from './Product';
 import Locations from './Locations';

@@ -44,14 +44,14 @@ exports[`<Store /> should handle the store selection 1`] = `
       >
         SomeStore
       </div>
-      <Memo(StoreHoursToday)
+      <StoreHoursToday
         hours={
           Object {
             "mon": "8:00am - 4:00pm",
           }
         }
       />
-      <Memo(Address)
+      <Address
         address={
           Object {
             "code": "address",
@@ -59,7 +59,7 @@ exports[`<Store /> should handle the store selection 1`] = `
           }
         }
       />
-      <Memo(LocationStockInfo)
+      <Component
         location={
           Object {
             "storeName": "SomeStore",
@@ -75,14 +75,14 @@ exports[`<Store /> should handle the store selection 1`] = `
     renderLabel={[Function]}
     testId={null}
   >
-    <Memo(OpeningHours)
+    <OpeningHours
       hours={
         Object {
           "mon": "8:00am - 4:00pm",
         }
       }
     />
-    <Memo(PhoneNumber)
+    <PhoneNumber
       phone="000-000-0000"
     />
   </Accordion>
@@ -135,14 +135,14 @@ exports[`<Store /> should render as expected 1`] = `
       >
         SomeStore
       </div>
-      <Memo(StoreHoursToday)
+      <StoreHoursToday
         hours={
           Object {
             "mon": "8:00am - 4:00pm",
           }
         }
       />
-      <Memo(Address)
+      <Address
         address={
           Object {
             "code": "address",
@@ -150,7 +150,7 @@ exports[`<Store /> should render as expected 1`] = `
           }
         }
       />
-      <Memo(LocationStockInfo)
+      <Component
         location={
           Object {
             "storeName": "SomeStore",
@@ -166,14 +166,14 @@ exports[`<Store /> should render as expected 1`] = `
     renderLabel={[Function]}
     testId={null}
   >
-    <Memo(OpeningHours)
+    <OpeningHours
       hours={
         Object {
           "mon": "8:00am - 4:00pm",
         }
       }
     />
-    <Memo(PhoneNumber)
+    <PhoneNumber
       phone="000-000-0000"
     />
   </Accordion>

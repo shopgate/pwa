@@ -1,6 +1,6 @@
-import React, { memo, useContext } from 'react';
+import React, { useContext } from 'react';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import { ProductImage } from '../../index';
+import ProductImage from '../ProductImage';
 import StoreSelectorContext from './context';
 import * as styles from './style';
 
@@ -8,7 +8,7 @@ import * as styles from './style';
  * Renders the product information.
  * @returns {JSX}
  */
-const Product = () => {
+function Product() {
   const { product, selectedVariants } = useContext(StoreSelectorContext);
 
   if (!product) {
@@ -40,6 +40,6 @@ const Product = () => {
       </div>
     </div>
   );
-};
+}
 
-export default memo(Product);
+export default Product;

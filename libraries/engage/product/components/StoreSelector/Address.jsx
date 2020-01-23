@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import LocationIcon from '@shopgate/pwa-ui-shared/icons/LocationIcon';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -9,7 +9,7 @@ import { address as container, addressIcon } from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Address = ({ address }) => {
+function Address({ address }) {
   if (!address) {
     return null;
   }
@@ -32,7 +32,7 @@ const Address = ({ address }) => {
       </div>
     </div>
   );
-};
+}
 
 Address.propTypes = {
   address: PropTypes.shape({
@@ -50,4 +50,4 @@ Address.defaultProps = {
   address: null,
 };
 
-export default memo(Address);
+export default Address;
