@@ -4,6 +4,7 @@ import {
   registerEvents,
   closeInAppBrowser,
   onload,
+  AppCommand,
 } from '@shopgate/pwa-core';
 import {
   EVENT_KEYBOARD_WILL_CHANGE,
@@ -57,9 +58,13 @@ import {
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
+import appConfig from '../helpers/config';
+import { isDev } from '../helpers/environment';
 import { embeddedMedia, configuration } from '../collections';
 import { Vimeo, YouTube } from '../collections/media-providers';
 import clearUpInAppBrowser from './helpers/clearUpInAppBrowser';
+
+const navBarURL = isDev ? 'http://localhost:8080' : appConfig.publicPath;
 
 /**
  * App subscriptions.
@@ -70,6 +75,19 @@ export default function app(subscribe) {
   subscribe(appWillStart$, ({
     dispatch, action, getState, events,
   }) => {
+    new AppCommand()
+      .setCommandName('setNavigationBar')
+      .dispatch({
+        targetTab: 'legacy',
+        src: 'sgapi:pwa_navigation_bar',
+      });
+    new AppCommand()
+      .setCommandName('setNavigationBar')
+      .dispatch({
+        targetTab: 'main',
+        src: `${navBarURL}/navigation-bar.html`,
+      });
+
     embeddedMedia.addProvider(new Vimeo());
     embeddedMedia.addProvider(new YouTube());
 
@@ -158,7 +176,7 @@ export default function app(subscribe) {
       // Stop all playing video
       embeddedMedia.stop();
     });
-    event.addCallback('pageInsetsChanged', () => {});
+    event.addCallback('pageInsetsChanged', () => { });
 
     /*
      * Onload must be send AFTER app did start.

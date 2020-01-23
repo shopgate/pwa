@@ -237,6 +237,7 @@ export const handleLegacyLink = (options, state) => {
       previewSrc: 'sgapi:page_preview',
       targetTab: options.targetTab,
       animated: false,
+      backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       navigationBarParams: {
         type: options.navigationType ? options.navigationType : 'default',
         leftButtonCallback: options.backCallback ? options.backCallback : '',
@@ -267,7 +268,8 @@ export const handleLegacyLink = (options, state) => {
  */
 export const openLegacy = (location, historyAction, state) => {
   handleLegacyLink({
-    targetTab: 'main',
+    targetTab: 'legacy',
+    backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
     location,
     historyAction,
   }, state);
@@ -299,7 +301,7 @@ export const openLegacyLink = (location, historyAction, state) => {
       break;
     case LEGACY_LINK_ORDERS:
       handleLegacyLink({
-        targetTab: 'main',
+        targetTab: 'legacy',
         location: '/orders',
         historyAction,
       }, state);
@@ -316,14 +318,14 @@ export const openLegacyLink = (location, historyAction, state) => {
       break;
     case LEGACY_LINK_REGISTER:
       handleLegacyLink({
-        targetTab: 'main',
+        targetTab: 'legacy',
         location: '/register/default',
         historyAction,
       }, state);
       break;
     case LEGACY_LINK_REGISTER_GUEST:
       handleLegacyLink({
-        targetTab: 'main',
+        targetTab: 'legacy',
         location: '/register/guest',
         historyAction,
       });
@@ -331,7 +333,7 @@ export const openLegacyLink = (location, historyAction, state) => {
     case LEGACY_LINK_CONNECT_REGISTER:
       handleLegacyLink({
         location: `/${LEGACY_LINK_CONNECT_REGISTER}`,
-        targetTab: 'main',
+        targetTab: 'legacy',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
         historyAction,
       }, state);
