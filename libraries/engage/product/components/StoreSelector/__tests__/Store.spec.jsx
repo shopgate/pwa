@@ -39,7 +39,6 @@ describe('<Store />', () => {
   it('should render as expected', () => {
     useContext.mockReturnValueOnce(context);
     const wrapper = shallow(<Store store={store} />);
-    console.warn(wrapper.debug());
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('[data-test-id="store-name"]').text()).toEqual(store.name);
     expect(wrapper.find('StoreHoursToday').props().hours).toEqual(store.operationHours);
