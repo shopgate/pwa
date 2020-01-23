@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { openingHours, openingHoursRow, openingHoursDay } from './style';
@@ -8,7 +8,7 @@ import { openingHours, openingHoursRow, openingHoursDay } from './style';
  * @param {Object} props The compnent props.
  * @returns {JSX}
  */
-const OpeningHours = ({ hours }) => {
+function OpeningHours({ hours }) {
   if (!hours) {
     return null;
   }
@@ -31,7 +31,7 @@ const OpeningHours = ({ hours }) => {
       })}
     </div>
   );
-};
+}
 
 OpeningHours.propTypes = {
   hours: PropTypes.shape(),
@@ -41,4 +41,4 @@ OpeningHours.defaultProps = {
   hours: null,
 };
 
-export default memo(OpeningHours);
+export default OpeningHours;

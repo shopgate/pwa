@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import PhoneIcon from '@shopgate/pwa-ui-shared/icons/PhoneIcon';
 import { phone as phoneStyle, phoneIcon } from './style';
@@ -8,7 +8,7 @@ import { phone as phoneStyle, phoneIcon } from './style';
  * @param {Object} props The compnent props.
  * @returns {JSX}
  */
-const PhoneNumber = ({ phone }) => {
+function PhoneNumber({ phone }) {
   if (!phone) {
     return null;
   }
@@ -21,7 +21,7 @@ const PhoneNumber = ({ phone }) => {
       <span data-test-id="store-phone">{phone}</span>
     </a>
   );
-};
+}
 
 PhoneNumber.propTypes = {
   phone: PropTypes.string,
@@ -31,4 +31,4 @@ PhoneNumber.defaultProps = {
   phone: null,
 };
 
-export default memo(PhoneNumber);
+export default PhoneNumber;

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/pwa-ui-material';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -17,22 +17,25 @@ import LocationStockInfo from '../LocationStockInfo';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Store = ({ store }) => {
+function Store({ store }) {
+  const { selectLocation } = useContext(StoreSelectorContext);
+
   if (!store || !store.addresses || store.addresses.length === 0) {
     return null;
   }
 
-  const { selectLocation } = useContext(StoreSelectorContext);
-
   return store.addresses.map((address) => {
-    const handleClick = useCallback(() => {
+    /**
+     * Handles the click action.
+     */
+    const handleClick = () => {
       selectLocation({
         code: store.code,
         name: store.name,
         addressCode: address.code,
         visibleInventory: store.inventory.visible,
       });
-    }, [address]);
+    };
 
     return (
       <div className={storeStyles} key={address.code}>
@@ -64,7 +67,7 @@ const Store = ({ store }) => {
       </div>
     );
   });
-};
+}
 
 Store.propTypes = {
   store: PropTypes.shape(),
@@ -74,4 +77,4 @@ Store.defaultProps = {
   store: null,
 };
 
-export default memo(Store);
+export default Store;

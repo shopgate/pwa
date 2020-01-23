@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Locations from '../Locations';
 import StoreSelectorContext from '../context';
 
@@ -16,8 +16,8 @@ const locations = [
 
 describe('<Locations />', () => {
   it('should not render if no locations have been passed', () => {
-    const wrapper = shallow((
-      <StoreSelectorContext.Provider>
+    const wrapper = mount((
+      <StoreSelectorContext.Provider value={{}}>
         <Locations />
       </StoreSelectorContext.Provider>
     ));
@@ -27,7 +27,7 @@ describe('<Locations />', () => {
 
   it('should render locations', () => {
     const wrapper = mount((
-      <StoreSelectorContext.Provider value={locations}>
+      <StoreSelectorContext.Provider value={{ locations }}>
         <Locations />
       </StoreSelectorContext.Provider>
     ));

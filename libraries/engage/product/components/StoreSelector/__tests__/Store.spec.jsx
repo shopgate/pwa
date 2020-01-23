@@ -30,6 +30,7 @@ jest.mock('react', () => ({
 
 describe('<Store />', () => {
   it('should not render if no store is passed', () => {
+    useContext.mockReturnValueOnce(context);
     const wrapper = shallow(<Store />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.instance()).toEqual(null);
