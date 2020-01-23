@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.1.1",
   "id": "@shopgate/theme-config",
   "components": [
     {
@@ -9,6 +9,16 @@
     }
   ],
   "configuration": {
+    "beta": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Enables or disables the beta features of the themes.",
+        "required": false
+      }
+    },
     "themeIos": {
       "type": "admin",
       "destination": "frontend",
@@ -61,11 +71,24 @@
   "steps": [
     {
       "path": "extension/mockCatalog2Data.js",
-      "hooks": ["shopgate.catalog.getProducts.v1:after"],
+      "hooks": [
+        "shopgate.catalog.getProducts.v1:after"
+      ],
       "input": [
-        {"key": "showScheduled", "optional": true, "addPipelineInput": true},
-        {"key": "products"}],
-      "output": [{"key": "products"}]
+        {
+          "key": "showScheduled",
+          "optional": true,
+          "addPipelineInput": true
+        },
+        {
+          "key": "products"
+        }
+      ],
+      "output": [
+        {
+          "key": "products"
+        }
+      ]
     },
     {
       "path": "extension/mockSwatches.js",
@@ -73,26 +96,64 @@
         "shopgate.catalog.getProducts.v1:after",
         "shopgate.catalog.getHighlightProducts.v1:after"
       ],
-      "input": [{"key": "products"}],
-      "output": [{"key": "products"}]
+      "input": [
+        {
+          "key": "products"
+        }
+      ],
+      "output": [
+        {
+          "key": "products"
+        }
+      ]
     },
     {
       "path": "extension/mockSwatchesVariants.js",
-      "hooks": ["shopgate.catalog.getProductVariants.v1:after"],
-      "input": [{"key": "characteristics"}],
-      "output": [{"key": "characteristics"}]
+      "hooks": [
+        "shopgate.catalog.getProductVariants.v1:after"
+      ],
+      "input": [
+        {
+          "key": "characteristics"
+        }
+      ],
+      "output": [
+        {
+          "key": "characteristics"
+        }
+      ]
     },
     {
       "path": "extension/mockProductRelations.js",
-      "hooks": ["shopgate.catalog.getProductRelations.v1:after"],
-      "input": [{"key": "relations"}],
-      "output": [{"key": "relations"}]
+      "hooks": [
+        "shopgate.catalog.getProductRelations.v1:after"
+      ],
+      "input": [
+        {
+          "key": "relations"
+        }
+      ],
+      "output": [
+        {
+          "key": "relations"
+        }
+      ]
     },
     {
       "path": "extension/mockProductMedia.js",
-      "hooks": ["shopgate.catalog.getProductMedia.v1:after"],
-      "input": [{"key": "media"}],
-      "output": [{"key": "media"}]
+      "hooks": [
+        "shopgate.catalog.getProductMedia.v1:after"
+      ],
+      "input": [
+        {
+          "key": "media"
+        }
+      ],
+      "output": [
+        {
+          "key": "media"
+        }
+      ]
     }
   ]
 }
