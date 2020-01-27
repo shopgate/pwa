@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables, shadows } = themeConfig;
+const { variables, colors, shadows } = themeConfig;
 
 const button = css({
   color: 'inherit',
@@ -45,6 +45,7 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
+  color: colors.dark,
   ':first-child': {
     marginTop: variables.gap.big / 2,
   },
