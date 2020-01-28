@@ -25,7 +25,6 @@ export function fetchProductLocations(productId) {
     const request = new PipelineRequest(pipelines.SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS)
       .setInput({
         productCode: productId,
-        // postalCode: '35510', // TODO: only temporary until the zipcode search is implemented.
       })
       .dispatch()
       .then((result) => {
