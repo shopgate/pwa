@@ -3,6 +3,7 @@
     "delete_account": "Mijn account verwijderen",
     "delete_account_success": "Wij hebben uw verzoek om uw account te verwijderen ontvangen.",
     "delete_account_error": "Er is een onverwachte fout opgetreden. Probeer het later nog eens.",
-    "delete_account_confirm": "Druk op Bevestigen om alle accountgegevens te verwijderen. Deze operatie kan niet ongedaan worden gemaakt."
+    "delete_account_confirm": "Druk op Bevestigen om alle accountgegevens te verwijderen. Deze operatie kan niet ongedaan worden gemaakt.",
+    "contact_us": "Contact us"
   }
 }
