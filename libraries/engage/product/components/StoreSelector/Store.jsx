@@ -33,7 +33,7 @@ function Store({ store }) {
         code: store.code,
         name: store.name,
         addressCode: address.code,
-        visibleInventory: store.inventory.visible,
+        visibleInventory: store.productInventory.visible,
       });
     };
 
@@ -54,7 +54,7 @@ function Store({ store }) {
             <LocationStockInfo
               location={{
                 storeName: store.name,
-                visibleInventory: store.inventory.visible,
+                visibleInventory: store.productInventory.visible,
               }}
               showStoreName={false}
             />

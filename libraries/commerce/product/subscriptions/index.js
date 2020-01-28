@@ -46,6 +46,7 @@ function product(subscribe) {
     const id = variantId || hex2bin(productId);
 
     dispatch(fetchProduct(id));
+    dispatch(fetchProductLocations(id));
     dispatch(fetchProductDescription(id));
     dispatch(fetchProductProperties(id));
     dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));
@@ -55,11 +56,6 @@ function product(subscribe) {
      * It should only be used for approved BETA Client Projects
      */
     dispatch(fetchProductMedia(id));
-    /**
-     * This feature is currently in BETA testing.
-     * It should only be used for approved BETA Client Projects
-     */
-    dispatch(fetchProductLocations(id));
   });
 
   subscribe(galleryWillEnter$, ({ action, dispatch }) => {

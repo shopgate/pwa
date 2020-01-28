@@ -1,4 +1,3 @@
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
@@ -14,24 +13,19 @@ import * as pipelines from '../constants/Pipelines';
  */
 export function fetchProductLocations(productId) {
   return (dispatch, getState) => {
-    if (!appConfig.beta) {
-      return;
-    }
-
     const getProductLocations = makeGetProductLocations();
     const productLocations = getProductLocations(getState(), { productId });
 
     if (!shouldFetchData(productLocations)) {
-      return;
+      return Promise.resolve(null);
     }
 
     dispatch(requestProductLocations(productId));
 
-    new PipelineRequest(pipelines.SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS)
+    const request = new PipelineRequest(pipelines.SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS)
       .setInput({
-        // productCode: productId,
-        productCode: 'WJ10-S-Yellow-WJ10', // TODO: Remove. Only temporary.
-        postalCode: '35510', // TODO: only temporary until the zipcode search is implemented.
+        productCode: productId,
+        // postalCode: '35510', // TODO: only temporary until the zipcode search is implemented.
       })
       .dispatch()
       .then((result) => {
@@ -41,5 +35,7 @@ export function fetchProductLocations(productId) {
         logger.error(error);
         dispatch(errorProductLocations(productId, error.code));
       });
+
+    return request;
   };
 }

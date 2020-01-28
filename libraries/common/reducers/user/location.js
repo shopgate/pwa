@@ -1,10 +1,11 @@
 import { SELECT_LOCATION } from '../../constants/ActionTypes';
 
 const defaultState = {
+  code: null,
+  name: null,
   productCode: null,
-  locationCode: null,
-  addressCode: null,
   visibleInventory: null,
+  addressCode: null,
 };
 
 /**
