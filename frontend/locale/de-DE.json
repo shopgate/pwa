@@ -3,6 +3,7 @@
     "delete_account": "Kontodaten löschen",
     "delete_account_success": "Wir haben Ihre Anfrage zum Löschen Ihrer Kontodaten erhalten.",
     "delete_account_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut",
-    "delete_account_confirm": "Bitte bestätigen Sie die Löschung aller Kontodaten. Dies kann nicht rückgängig gemacht werden."
+    "delete_account_confirm": "Bitte bestätigen Sie die Löschung aller Kontodaten. Dies kann nicht rückgängig gemacht werden.",
+    "contact_us": "Kontakt"
   }
 }
