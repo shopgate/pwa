@@ -3,6 +3,7 @@
     "delete_account": "Deletar minha conta",
     "delete_account_success": "Recebemos o seu pedido de eliminação da sua conta.",
     "delete_account_error": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
-    "delete_account_confirm": "Pressione Confirmar para excluir todos os dados da conta. Esta operação não pode ser desfeita."
+    "delete_account_confirm": "Pressione Confirmar para excluir todos os dados da conta. Esta operação não pode ser desfeita.",
+    "contact_us": "Contact us"
   }
 }
