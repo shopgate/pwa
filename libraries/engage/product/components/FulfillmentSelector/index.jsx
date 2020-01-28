@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
   PRODUCT_FULFILLMENT_SELECTOR,
   Availability,
   StoreSelector,
@@ -22,7 +21,7 @@ import * as styles from './style';
  * @param {Object} props.location Last location that was selected for the previous product/variant.
  * @returns {JSX}
  */
-export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location }) => {
+export const FulfillmentSelector = ({ productId: productCode, fulfillmentMethods, location }) => {
   const directShip = 'product.fulfillment_selector.direct_ship';
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
@@ -82,9 +81,7 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
     }
   }, [isSelectorOpened, selectedLocation, productCode]);
 
-  // Don't render, when no pick up in store is available for the given product.
-  if (!fulfillmentMethods
-    || fulfillmentMethods.indexOf(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP) === -1) {
+  if (!fulfillmentMethods) {
     return null;
   }
 
@@ -118,7 +115,7 @@ export const FulfillmentSelector = ({ productCode, fulfillmentMethods, location 
 };
 
 FulfillmentSelector.propTypes = {
-  productCode: PropTypes.string.isRequired,
+  productId: PropTypes.string.isRequired,
   fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
   location: PropTypes.shape({
     name: PropTypes.string,

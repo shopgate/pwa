@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FulfillmentSelector } from '@shopgate/engage/product';
 import { ProductContext } from '../../context';
 
@@ -6,10 +6,12 @@ import { ProductContext } from '../../context';
  * The Product Options component.
  * @returns {JSX}
  */
-export default () => (
-  <ProductContext.Consumer>
-    {({ productId, variantId }) => (
-      <FulfillmentSelector productCode={variantId || variantId === 0 ? variantId : productId} />
-    )}
-  </ProductContext.Consumer>
-);
+function Fulfillment() {
+  const { productId, variantId } = useContext(ProductContext);
+
+  return (
+    <FulfillmentSelector productId={variantId || variantId === 0 ? variantId : productId} />
+  );
+}
+
+export default Fulfillment;
