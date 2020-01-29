@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CategoryContent from './components/Content';
 
