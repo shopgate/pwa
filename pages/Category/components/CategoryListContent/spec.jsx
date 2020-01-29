@@ -6,7 +6,6 @@ import reducers from 'Pages/reducers';
 import CategoryListContent from './index';
 
 const store = createMockStore(reducers);
-jest.mock('../../../../components/View/context.js');
 
 describe('<CategoryListContent />', () => {
   it('should render', () => {
