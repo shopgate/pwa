@@ -9,7 +9,7 @@ import {
 } from '@shopgate/pwa-common/selectors/user';
 import More from './index';
 
-jest.mock('Components/View');
+jest.mock('@shopgate/engage/components');
 jest.mock('Components/AppBar/presets', () => ({
   BackBar: () => <div />,
 }));
