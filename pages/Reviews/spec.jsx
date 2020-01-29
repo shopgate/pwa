@@ -7,7 +7,7 @@ import { mockedStateWithAll } from '@shopgate/pwa-common-commerce/reviews/mock';
 import { UnwrappedReviews as Reviews } from './index';
 
 const mockedStore = configureStore();
-jest.mock('Components/View');
+jest.mock('@shopgate/engage/components');
 jest.mock('Components/Reviews/components/Header', () => () => 'div');
 
 /**
