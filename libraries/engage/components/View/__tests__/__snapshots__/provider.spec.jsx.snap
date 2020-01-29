@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > components > view > provider should initialize and provider context 1`] = `
+<Component
+  value={
+    Object {
+      "ariaHidden": false,
+      "bottom": 0,
+      "contentRef": Object {
+        "current": null,
+      },
+      "getContentRef": [Function],
+      "scrollTop": [Function],
+      "set": [Function],
+      "setAriaHidden": [Function],
+      "setBottom": [Function],
+      "setContentRef": [Function],
+      "setTop": [Function],
+      "top": 0,
+    }
+  }
+>
+  <div>
+    Page #1
+  </div>
+</Component>
+`;
