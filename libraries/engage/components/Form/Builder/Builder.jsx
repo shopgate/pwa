@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 import { logger } from '@shopgate/pwa-core/helpers';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import Form from '@shopgate/pwa-ui-shared/Form';
 import {
   BEFORE,
   AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
+import { Form } from '../Form';
 import ActionListener from './classes/ActionListener';
 import {
   ELEMENT_TYPE_EMAIL,
