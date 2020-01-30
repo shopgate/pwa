@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import {
@@ -21,54 +21,52 @@ const mapping = {
 };
 
 /**
- * React component that takes the element and additional data and renders a configured text input.
+ * Takes an element and renders it, if the type matches
+ * @param {Object} props Component props.
+ * @param {Object} props.element The data of the element to be rendered
+ * @returns {JSX}
  */
-class ElementText extends PureComponent {
-  static propTypes = {
-    element: PropTypes.shape().isRequired,
-    errorText: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    style: PropTypes.shape(),
-    value: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.bool.isRequired,
-      PropTypes.number.isRequired,
-    ]),
-  };
+const ElementText = (props) => {
+  const {
+    element,
+    errorText,
+    name,
+    style,
+    value,
+  } = props;
 
-  static defaultProps = {
-    value: '',
-    style: { field: '' },
-  };
+  const type = mapping[element.type];
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const {
-      element,
-      errorText,
-      name,
-      style,
-      value,
-    } = this.props;
+  return (
+    <TextField
+      type={type}
+      name={name}
+      className={style.fields}
+      label={element.label}
+      value={value}
+      onChange={element.handleChange}
+      errorText={errorText}
+      isControlled
+      translateErrorText={false}
+    />
+  );
+};
 
-    const type = mapping[element.type];
+ElementText.propTypes = {
+  element: PropTypes.shape().isRequired,
+  errorText: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  style: PropTypes.shape(),
+  value: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.bool.isRequired,
+    PropTypes.number.isRequired,
+  ]),
+};
 
-    return (
-      <TextField
-        type={type}
-        name={name}
-        className={style.fields}
-        label={element.label}
-        value={value}
-        onChange={element.handleChange}
-        errorText={errorText}
-        isControlled
-        translateErrorText={false}
-      />
-    );
-  }
-}
+ElementText.defaultProps = {
+  value: '',
+  style: { field: '' },
+};
 
 export default ElementText;
