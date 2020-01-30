@@ -13,7 +13,7 @@ import {
   withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
 } from '@shopgate/engage/core';
 
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
@@ -46,10 +46,6 @@ class AppBarDefault extends PureComponent {
     i18n: PropTypes.func,
   };
 
-  state = {
-    target: document.getElementById('AppHeader'),
-  }
-
   /**
    * Constructor
    * @param {Object} props The component properties
@@ -58,6 +54,10 @@ class AppBarDefault extends PureComponent {
     super(props);
 
     UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
+  state = {
+    target: document.getElementById('AppHeader'),
   }
 
   /**
