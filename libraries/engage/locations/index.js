@@ -4,6 +4,7 @@ export { fetchProductLocations } from './actions';
 // COMPONENTS
 export {
   FulfillmentSelector,
+  FulfillmentSheet,
   StoreList,
 } from './components';
 

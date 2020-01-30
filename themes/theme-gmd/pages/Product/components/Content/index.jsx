@@ -7,14 +7,16 @@ import {
   ProductProperties,
   RelationsSlider,
   Description,
-  StoreSelector,
 } from '@shopgate/engage/product';
+import {
+  FulfillmentSelector,
+  FulfillmentSheet,
+} from '@shopgate/engage/locations';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
-import Fulfillment from '../Fulfillment';
 import AppBar from '../AppBar';
 import connect from './connector';
 import { ProductContext } from '../../context';
@@ -164,7 +166,7 @@ class ProductContent extends PureComponent {
             <Options />
           </Section>
           <Section title="product.sections.fulfillment">
-            <Fulfillment productId={productId} variantId={variantId} />
+            <FulfillmentSelector productId={variantId || variantId === 0 ? variantId : productId} />
           </Section>
           <Section title="product.sections.description">
             <Description productId={productId} variantId={variantId} />
@@ -184,7 +186,7 @@ class ProductContent extends PureComponent {
             <Reviews productId={productId} />
           </Section>
           <TaxDisclaimer />
-          <StoreSelector />
+          <FulfillmentSheet />
         </ProductContext.Provider>
       </div>
     );

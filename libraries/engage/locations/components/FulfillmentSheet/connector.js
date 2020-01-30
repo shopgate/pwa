@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import { selectLocation } from '@shopgate/pwa-common/action-creators';
 import {
   makeGetSelectedCharacteristic,
-  makeGetProductLocations,
   getProduct,
 } from '@shopgate/engage/product';
+import { makeGetProductLocations } from '../../selectors';
 
 /**
  * @returns {Function}

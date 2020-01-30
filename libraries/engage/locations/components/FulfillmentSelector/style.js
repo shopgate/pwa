@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import classNames from 'classnames';
 import radioGroupStyles from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item/style';
-import { themeConfig } from '@shopgate/engage/core';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { variables: { gap: { big: bigGap = 16 } = {} } = {} } = themeConfig;
 

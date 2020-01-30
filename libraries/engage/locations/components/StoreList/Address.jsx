@@ -38,7 +38,7 @@ function Address({ address }) {
             {address.street4}
           </div>
         )}
-        {i18n.text('product.location.address', { address })}
+        {i18n.text('product.location.address', address)}
       </div>
     </div>
   );

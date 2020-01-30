@@ -7,7 +7,7 @@ import { i18n } from '../../../core/helpers/i18n';
 import SheetDrawer from '../../../components/SheetDrawer';
 import { sheet } from './style';
 import { StoreList } from '../StoreList';
-import ReserveForm from '../ReserveForm';
+import { ReserveForm } from '../ReserveForm';
 import connect from './connector';
 import FulfillmentContext from './context';
 
@@ -133,7 +133,7 @@ class StoreSelector extends PureComponent {
         <SheetDrawer isOpen={isOpen} title={title} onClose={this.handleSetClosed}>
           <div className={sheet}>
             {stage === STAGES[0] && (
-              <StoreList content={FulfillmentContext} />
+              <StoreList context={FulfillmentContext} />
             )}
             {stage === STAGES[1] && (
               <ReserveForm />

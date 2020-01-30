@@ -17,7 +17,7 @@ function Locations({ context: Context }) {
   return (
     <div className={stores}>
       {locations.map(location => (
-        <Store store={location} key={location.code} />
+        <Store store={location} key={location.code} context={Context} />
       ))}
     </div>
   );

@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { getThemeSettings } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
-import { PRODUCT_LOCATION_STOCK_INFO } from '@shopgate/engage/product';
+import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
 import defaultSettings from './defaultSettings';
 import getAvailabilitySettings from './getAvailabilitySettings';
 import Inventory from './Inventory';
