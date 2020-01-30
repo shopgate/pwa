@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import { useRoute } from '@shopgate/engage/core';
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import Sort from './components/Sort';
 import FilterButton from './components/FilterButton';
 import FilterChips from './components/FilterChips';

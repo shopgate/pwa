@@ -1,7 +1,7 @@
 import React from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import FilterBar from 'Components/FilterBar';
 
 const routeMap = {

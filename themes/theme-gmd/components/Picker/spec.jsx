@@ -2,11 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Picker from './index';
 
-jest.mock('Components/View/context', () => ({
-  ViewContext: {
-    Consumer: ({ children }) => children({ setAriaHidden: () => { } }),
-  },
-}));
+jest.mock('@shopgate/engage/components/View');
 
 describe('<Picker />', () => {
   it('should render the picker', () => {
