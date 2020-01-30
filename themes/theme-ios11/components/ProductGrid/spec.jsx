@@ -1,16 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ViewProvider from '../../providers/View';
 import ProductGrid from '.';
 
 global.console.error = jest.fn();
 
+jest.mock('@shopgate/engage/components/View');
+
 describe('<ProductGrid />', () => {
   it('should render with the InfineteContainer', () => {
     const wrapper = mount((
-      <ViewProvider>
-        <ProductGrid products={[]} />
-      </ViewProvider>
+      <ProductGrid products={[]} />
     ));
 
     expect(wrapper).toMatchSnapshot();
@@ -20,9 +19,7 @@ describe('<ProductGrid />', () => {
 
   it('should render the original layout', () => {
     const wrapper = mount((
-      <ViewProvider>
-        <ProductGrid infiniteLoad={false} products={[]} />
-      </ViewProvider>
+      <ProductGrid infiniteLoad={false} products={[]} />
     ));
 
     expect(wrapper).toMatchSnapshot();
