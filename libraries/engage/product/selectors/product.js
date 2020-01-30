@@ -76,20 +76,3 @@ export function makeGetProductFeaturedMedia() {
     }
   );
 }
-
-/**
- * Creates a selector to retriev a product's fulfillment methods.
- * @returns {Function}
- */
-export function makeGetFulfillmentMethods() {
-  return createSelector(
-    getProduct,
-    (product) => {
-      if (!product || !product.fulfillmentMethods || product.fulfillmentMethods.length === 0) {
-        return null;
-      }
-
-      return product.fulfillmentMethods;
-    }
-  );
-}
