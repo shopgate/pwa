@@ -13,7 +13,6 @@ export { default as fetchProductsById } from './actions/fetchProductsById';
 export { default as fetchProductsByQuery } from './actions/fetchProductsByQuery';
 export { default as fetchProductShipping } from './actions/fetchProductShipping';
 export { default as fetchProductVariants } from './actions/fetchProductVariants';
-export { fetchProductLocations } from './actions/fetchProductLocations';
 
 // COLLECTIONS
 export { default as productImageFormats } from './collections/ProductImageFormats';
@@ -33,7 +32,6 @@ export * from './selectors/price';
 export * from './selectors/product';
 export * from './selectors/relations';
 export * from './selectors/variants';
-export * from './selectors/locations';
 
 // STREAMS
 export * from './streams';

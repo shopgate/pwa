@@ -1,5 +1,14 @@
 import { createSelector } from 'reselect';
-import { getProductState, getProduct } from '@shopgate/engage/product';
+import { getProduct } from '@shopgate/engage/product';
+
+/**
+ * Retrieves the locations state from the store.
+ * @param {Object} state The current application state.
+ * @return {Object} The locations state.
+ */
+function getLocationsState(state) {
+  return state.locations || {};
+}
 
 /**
  * Creates the selector that retrieves the product locations state.
@@ -12,7 +21,7 @@ function makeGetProductLocationsState() {
    * @returns {Object}
    */
   return createSelector(
-    getProductState,
+    getLocationsState,
     state => state.locationsByProductId || {}
   );
 }
