@@ -1,42 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProductGrid /> should render the original layout 1`] = `
-<ViewProvider>
-  <ProductGrid
-    flags={null}
-    handleGetProducts={[Function]}
-    infiniteLoad={false}
-    products={Array []}
-    requestHash={null}
-    totalProductCount={null}
-  >
-    <Layout>
-      <Grid
-        className="css-pfqjus"
-        component="ul"
+<ProductGrid
+  flags={null}
+  handleGetProducts={[Function]}
+  infiniteLoad={false}
+  products={Array []}
+  requestHash={null}
+  totalProductCount={null}
+>
+  <Layout>
+    <Grid
+      className="css-pfqjus"
+      component="ul"
+      data-test-id="productGrid"
+      wrap={true}
+    >
+      <ul
+        className="css-pfqjus css-h7r55a css-u7q1iu"
         data-test-id="productGrid"
-        wrap={true}
-      >
-        <ul
-          className="css-pfqjus css-h7r55a css-u7q1iu"
-          data-test-id="productGrid"
-        />
-      </Grid>
-    </Layout>
-  </ProductGrid>
-</ViewProvider>
+      />
+    </Grid>
+  </Layout>
+</ProductGrid>
 `;
 
 exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
-<ViewProvider>
-  <ProductGrid
-    flags={null}
-    handleGetProducts={[Function]}
-    infiniteLoad={true}
-    products={Array []}
-    requestHash={null}
-    totalProductCount={null}
-  >
+<ProductGrid
+  flags={null}
+  handleGetProducts={[Function]}
+  infiniteLoad={true}
+  products={Array []}
+  requestHash={null}
+  totalProductCount={null}
+>
+  <Consumer>
     <InfiniteContainer
       containerRef={
         Object {
@@ -98,6 +96,6 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
         </LoadingIndicator>
       </div>
     </InfiniteContainer>
-  </ProductGrid>
-</ViewProvider>
+  </Consumer>
+</ProductGrid>
 `;
