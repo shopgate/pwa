@@ -1,5 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
-import iso3166 from '../iso-3166-2';
+import iso3166 from './iso-3166-2';
 
 /**
  * Get country list for

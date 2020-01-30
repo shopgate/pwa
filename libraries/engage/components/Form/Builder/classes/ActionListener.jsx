@@ -24,7 +24,7 @@ import {
   ACTION_RULES_CONCAT_METHOD_ALL,
   ACTION_RULES_CONCAT_METHOD_ANY,
   ACTION_RULES_CONCAT_METHOD_NONE,
-} from './constants';
+} from './ActionListener.constants';
 
 /**
  * ActionListener and handler for the FormBuilder component

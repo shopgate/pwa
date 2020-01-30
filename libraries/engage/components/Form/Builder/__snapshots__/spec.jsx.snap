@@ -16,6 +16,21 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={
     [MockFunction] {
       "calls": Array [
@@ -285,6 +300,21 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
@@ -743,6 +773,21 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
@@ -987,6 +1032,21 @@ exports[`<FormBuilder /> should not render invisible field 1`] = `
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
@@ -1030,6 +1090,21 @@ exports[`<FormBuilder /> should render empty form 1`] = `
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
@@ -1071,6 +1146,21 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
@@ -1522,6 +1612,21 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
@@ -1992,6 +2097,21 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
     }
   }
   defaults={Object {}}
+  elements={
+    Object {
+      "checkbox": [Function],
+      "country": [Function],
+      "date": [Function],
+      "email": [Function],
+      "number": [Function],
+      "password": [Function],
+      "phone": [Function],
+      "province": [Function],
+      "radio": [Function],
+      "select": [Function],
+      "text": [Function],
+    }
+  }
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}

@@ -1,12 +1,12 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
 import { mount } from 'enzyme';
-import FormBuilder from '.';
+import { Builder } from '.';
 
-describe('<FormBuilder />', () => {
+describe('<Builder />', () => {
   it('should render empty form', () => {
     const wrapper = mount((
-      <FormBuilder
+      <Builder
         config={{
           fields: {
           },
@@ -21,7 +21,7 @@ describe('<FormBuilder />', () => {
 
   it('should render two text fields', () => {
     const wrapper = mount((
-      <FormBuilder
+      <Builder
         config={{
           fields: {
             firstName: {
@@ -47,7 +47,7 @@ describe('<FormBuilder />', () => {
 
   it('should not render invisible field', () => {
     const wrapper = mount((
-      <FormBuilder
+      <Builder
         config={{
           fields: {
             firstName: {
@@ -68,7 +68,7 @@ describe('<FormBuilder />', () => {
 
   it('should hide element if setVisibilty rule applies', () => {
     const wrapper = mount((
-      <FormBuilder
+      <Builder
         config={{
           fields: {
             foo: {
@@ -109,7 +109,7 @@ describe('<FormBuilder />', () => {
 
   it('should reset value when rule applies', () => {
     const wrapper = mount((
-      <FormBuilder
+      <Builder
         config={{
           fields: {
             foo: {
@@ -162,7 +162,7 @@ describe('<FormBuilder />', () => {
   it('should call onChange callback when input is changed', () => {
     const handleUpdate = jest.fn();
     const wrapper = mount((
-      <FormBuilder
+      <Builder
         config={{
           fields: {
             foo: {
@@ -191,11 +191,11 @@ describe('<FormBuilder />', () => {
     expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false);
   });
 
-  describe('FormBuilder::elementChangeHandler', () => {
+  describe('Builder::elementChangeHandler', () => {
     it('should take the updated state from action listener', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
-      const builder = new FormBuilder({
+      const builder = new Builder({
         validationErrors: [],
         config: {
           fields: {
@@ -231,7 +231,7 @@ describe('<FormBuilder />', () => {
     it('should consider backend validations', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
-      const builder = new FormBuilder({
+      const builder = new Builder({
         validationErrors: [{}],
         config: {
           fields: {
@@ -265,8 +265,8 @@ describe('<FormBuilder />', () => {
     });
   });
 
-  describe('FormBuilder::elementSortFunc', () => {
-    const builder = new FormBuilder({
+  describe('Builder::elementSortFunc', () => {
+    const builder = new Builder({
       validationErrors: [{}],
       config: { fields: {} },
       handleUpdate: jest.fn(),
