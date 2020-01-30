@@ -122,7 +122,8 @@
       "thu": "Thursday",
       "fri": "Friday",
       "sat": "Saturday",
-      "sun": "Sunday"
+      "sun": "Sunday",
+      "place_reservation": "Place Reservation"
     }
   },
   "category": {
