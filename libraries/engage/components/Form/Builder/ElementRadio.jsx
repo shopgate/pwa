@@ -8,7 +8,7 @@ import RadioItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
  * with a list of radio items.
  * @returns {JSX}
  */
-class RadioElement extends PureComponent {
+class ElementRadio extends PureComponent {
   static propTypes = {
     element: PropTypes.shape().isRequired,
     errorText: PropTypes.string.isRequired,
@@ -61,4 +61,4 @@ class RadioElement extends PureComponent {
   }
 }
 
-export default RadioElement;
+export default ElementRadio;

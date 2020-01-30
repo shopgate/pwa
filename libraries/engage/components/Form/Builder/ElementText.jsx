@@ -8,7 +8,7 @@ import {
   ELEMENT_TYPE_PASSWORD,
   ELEMENT_TYPE_DATE,
   ELEMENT_TYPE_PHONE,
-} from '../elementTypes';
+} from './elementTypes';
 
 // Map element type to input type
 const mapping = {
@@ -23,7 +23,7 @@ const mapping = {
 /**
  * React component that takes the element and additional data and renders a configured text input.
  */
-class TextElement extends PureComponent {
+class ElementText extends PureComponent {
   static propTypes = {
     element: PropTypes.shape().isRequired,
     errorText: PropTypes.string.isRequired,
@@ -71,4 +71,4 @@ class TextElement extends PureComponent {
   }
 }
 
-export default TextElement;
+export default ElementText;

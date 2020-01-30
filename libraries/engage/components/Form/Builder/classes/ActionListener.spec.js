@@ -1,11 +1,11 @@
-import ActionListener from './index';
+import ActionListener from './ActionListener';
 import {
   ACTION_TYPE_SET_VISIBILITY,
   ACTION_TYPE_SET_VALUE,
   ACTION_TYPE_TRANSFORM,
   ACTION_SET_VALUE_COPY_FROM,
   ACTION_RULE_TYPE_ONE_OF,
-} from './constants';
+} from './ActionListener.constants';
 
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   logger: {

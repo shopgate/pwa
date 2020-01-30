@@ -6,7 +6,7 @@ import Select from '@shopgate/pwa-ui-shared/Form/Select';
  * React component that takes the element and additional data and renders a configured select box.
  * @returns {JSX}
  */
-class SelectElement extends PureComponent {
+class ElementSelect extends PureComponent {
   static propTypes = {
     element: PropTypes.shape().isRequired,
     errorText: PropTypes.string.isRequired,
@@ -53,4 +53,4 @@ class SelectElement extends PureComponent {
   }
 }
 
-export default SelectElement;
+export default ElementSelect;

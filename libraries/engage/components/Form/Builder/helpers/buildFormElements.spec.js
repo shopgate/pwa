@@ -29,7 +29,7 @@ const formElement = {
   custom: false,
 };
 
-describe('buildFormElements', () => {
+describe('Builder/helpers/buildFormElements', () => {
   it('should not build custom field', () => {
     const config = {
       fields: {

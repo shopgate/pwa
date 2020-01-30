@@ -7,7 +7,7 @@ import Checkbox from '@shopgate/pwa-ui-shared/Form/Checkbox';
  * @param {Object} element The data of the element to be rendered
  * @returns {JSX}
  */
-class CheckboxElement extends PureComponent {
+class ElementCheckbox extends PureComponent {
   static propTypes = {
     element: PropTypes.shape().isRequired,
     errorText: PropTypes.string.isRequired,
@@ -51,4 +51,4 @@ class CheckboxElement extends PureComponent {
   }
 }
 
-export default CheckboxElement;
+export default ElementCheckbox;

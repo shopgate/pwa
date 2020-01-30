@@ -1,7 +1,7 @@
 import iso3166 from './iso-3166-2';
 import buildProvinceList from './buildProvinceList';
 
-describe('buildProvinceList', () => {
+describe('Builder/helpers/buildProvinceList', () => {
   it('should return empty list when country is unknown', () => {
     expect(buildProvinceList('SOME')).toEqual({});
   });

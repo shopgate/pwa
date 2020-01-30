@@ -10,7 +10,7 @@ const countryElement = {
   countries: ['DE', 'US'],
 };
 
-describe('buildCountryList', () => {
+describe('Builder/helpers/buildCountryList', () => {
   it('should return empty list when config is wrong', () => {
     expect(buildCountryList({ countries: '' })).toEqual({});
   });

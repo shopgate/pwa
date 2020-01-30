@@ -13,7 +13,7 @@ const defaults = {
   customAttributes: {},
 };
 
-describe('buildFormDefaults', () => {
+describe('Builder/helpers/buildFormDefaults', () => {
   it('should build defaults from element defaults', () => {
     const expected = {
       field: 'foo',
