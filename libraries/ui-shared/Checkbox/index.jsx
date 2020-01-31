@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormContext } from '@shopgate/pwa-common/context';
 import BaseCheckbox from '@shopgate/pwa-common/components/Checkbox';
 import CheckedIcon from '../icons/CheckedIcon';
 import UncheckedIcon from '../icons/UncheckedIcon';
@@ -13,13 +14,24 @@ import styles from './style';
  * @param {Object} props The component properties.
  * @returns {JSX}
  */
-const Checkbox = ({ checkedClassName, unCheckedClassName, ...props }) => (
-  <BaseCheckbox
-    {...props}
-    checkedIcon={<CheckedIcon className={classNames(styles.icon, checkedClassName)} />}
-    uncheckedIcon={<UncheckedIcon className={classNames(styles.icon, unCheckedClassName)} />}
-  />
-);
+const Checkbox = ({ checkedClassName, unCheckedClassName, ...props }) => {
+  const { checkbox: { icon: { checked = {}, unchecked = {} } = {} } = {} }
+    = useContext(FormContext) || {};
+
+  return (
+    <BaseCheckbox
+      {...props}
+      checkedIcon={
+        <CheckedIcon className={classNames(styles.icon, checkedClassName, checked.className)} />
+      }
+      uncheckedIcon={
+        <UncheckedIcon
+          className={classNames(styles.icon, unCheckedClassName, unchecked.className)}
+        />
+      }
+    />
+  );
+};
 
 Checkbox.propTypes = {
   checkedClassName: PropTypes.string,

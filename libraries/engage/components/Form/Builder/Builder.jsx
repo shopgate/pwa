@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isEqual } from 'lodash';
+import { isEqual, startCase, camelCase } from 'lodash';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { FormContext } from '@shopgate/pwa-common/context';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   BEFORE,
   AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { Form } from '../Form';
+import { Form } from '..';
 import ActionListener from './classes/ActionListener';
 import {
   ELEMENT_TYPE_EMAIL,
@@ -31,6 +32,7 @@ import buildFormDefaults from './helpers/buildFormDefaults';
 import buildCountryList from './helpers/buildCountryList';
 import buildProvinceList from './helpers/buildProvinceList';
 import buildValidationErrorList from './helpers/buildValidationErrorList';
+import { getElementStyles } from './Builder.styles';
 
 /**
  * Takes a string and converts it to a part to be used in a portal name
@@ -259,7 +261,7 @@ class Builder extends Component {
    * @returns {JSX}
    */
   renderElement = (element) => {
-    const elementName = `${this.props.name}.${element.id}`;
+    const elementName = `${this.props.name}_${element.id}`;
     const elementErrorText = this.state.errors[element.id] || '';
     const elementValue = this.state.formData[element.id];
     const elementVisible = this.state.elementVisibility[element.id] || false;
@@ -316,11 +318,13 @@ class Builder extends Component {
    */
   render() {
     return (
-      <Fragment>
+      <FormContext.Provider
+        value={getElementStyles(startCase(camelCase(this.props.name)).replace(/ /g, ''))}
+      >
         <Form onSubmit={this.props.onSubmit}>
           <div className={this.props.className}>
             {this.formElements.map(element => (
-              <Fragment key={`${this.props.name}.${element.id}`}>
+              <Fragment key={`${this.props.name}_${element.id}`}>
                 <Portal
                   name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
                 />
@@ -334,7 +338,7 @@ class Builder extends Component {
             ))}
           </div>
         </Form>
-      </Fragment>
+      </FormContext.Provider>
     );
   }
 }

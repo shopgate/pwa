@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { camelCase } from 'lodash';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
 
@@ -31,7 +32,8 @@ const ElementRadio = (props) => {
     >
       {Object.keys(element.options).map(itemName => (
         <RadioItem
-          key={itemName}
+          key={`${name}_${itemName}`}
+          id={`${name}_${camelCase(itemName)}`}
           name={itemName}
           label={element.options[itemName]}
         />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FormContext } from '@shopgate/pwa-common/context';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
@@ -69,31 +70,44 @@ class FormElement extends Component {
     } = this.props;
 
     return (
-      <div className={classNames(style.formElement, className)}>
+      <FormContext.Consumer>
+        {({ formElement = {} } = {}) => (
+          <div className={classNames(style.formElement, className, formElement.className)}>
+            {hasPlaceholder &&
+              <Placeholder
+                className={formElement.placeholder && formElement.placeholder.className}
+                visible={this.isPlaceholderVisible}
+                placeholder={placeholder || label}
+                aria-hidden
+              />
+            }
 
-        {hasPlaceholder &&
-          <Placeholder
-            visible={this.isPlaceholderVisible}
-            placeholder={placeholder || label}
-            aria-hidden
-          />
-        }
+            <Label
+              htmlFor={htmlFor}
+              label={label}
+              className={formElement.label && formElement.label.className}
+              isFocused={isFocused}
+              isFloating={this.isLabelFloating}
+              hasErrorMessage={this.hasErrorMessage}
+            />
 
-        <Label
-          htmlFor={htmlFor}
-          label={label}
-          isFocused={isFocused}
-          isFloating={this.isLabelFloating}
-          hasErrorMessage={this.hasErrorMessage}
-        />
+            {this.props.children}
 
-        {this.props.children}
-
-        {this.props.hasUnderline &&
-          <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />
-        }
-        <ErrorText errorText={errorText} translate={translateErrorText} />
-      </div>
+            {this.props.hasUnderline &&
+              <Underline
+                className={formElement.underline && formElement.underline.className}
+                isFocused={isFocused}
+                hasErrorMessage={this.hasErrorMessage}
+              />
+            }
+            <ErrorText
+              className={formElement.errorText && formElement.errorText.className}
+              errorText={errorText}
+              translate={translateErrorText}
+            />
+          </div>
+        )}
+      </FormContext.Consumer>
     );
   }
 }

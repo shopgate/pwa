@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Input from '@shopgate/pwa-common/components/Input';
 import styles from './style';
 
@@ -13,16 +14,21 @@ const FormElement = (props) => {
   return (
     <Input
       {...props}
-      className={styles[styleType]}
+      className={classNames(styles[styleType], props.className)}
       validateOnBlur
     />);
 };
 
 FormElement.propTypes = {
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape(),
+  ]),
   multiLine: PropTypes.bool,
 };
 
 FormElement.defaultProps = {
+  className: null,
   multiLine: false,
 };
 

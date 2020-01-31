@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { FormContext } from '@shopgate/pwa-common/context';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
@@ -146,36 +148,51 @@ class TextField extends Component {
     const style = styles.container[styleType];
 
     return (
-      <div className={`${style} ${this.props.className}`}>
-        <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
-        <Label
-          name={this.props.name}
-          label={this.props.label}
-          isFocused={this.isFocused}
-          isFloating={this.isLabelFloating}
-          hasErrorMessage={this.hasErrorMessage}
-        />
-        <FormElement
-          id={this.props.name}
-          multiLine={this.props.multiLine}
-          name={this.props.name}
-          setRef={this.props.setRef}
-          onFocusChange={this.handleFocusChange}
-          onChange={this.handleChange}
-          onSanitize={this.props.onSanitize}
-          onValidate={this.handleValidate}
-          password={this.props.password}
-          type={this.props.type}
-          value={this.props.value}
-          isControlled={this.props.isControlled}
-        />
-        <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
-        <ErrorText
-          validationError={this.state.validationError}
-          errorText={this.props.errorText}
-          translate={this.props.translateErrorText}
-        />
-      </div>
+      <FormContext.Consumer>
+        {({ textField = {} } = {}) => (
+          <div className={classNames(style, this.props.className, textField.className)}>
+            <Hint
+              className={textField.hint && textField.hint.className}
+              visible={this.isHintVisible}
+              hintText={this.props.hintText}
+            />
+            <Label
+              className={textField.label && textField.label.className}
+              name={this.props.name}
+              label={this.props.label}
+              isFocused={this.isFocused}
+              isFloating={this.isLabelFloating}
+              hasErrorMessage={this.hasErrorMessage}
+            />
+            <FormElement
+              id={this.props.name}
+              className={textField[styleType] && textField[styleType].className}
+              multiLine={this.props.multiLine}
+              name={this.props.name}
+              setRef={this.props.setRef}
+              onFocusChange={this.handleFocusChange}
+              onChange={this.handleChange}
+              onSanitize={this.props.onSanitize}
+              onValidate={this.handleValidate}
+              password={this.props.password}
+              type={this.props.type}
+              value={this.props.value}
+              isControlled={this.props.isControlled}
+            />
+            <Underline
+              className={textField.underline && textField.underline.className}
+              isFocused={this.isFocused}
+              hasErrorMessage={this.hasErrorMessage}
+            />
+            <ErrorText
+              className={textField.errorText && textField.errorText.className}
+              validationError={this.state.validationError}
+              errorText={this.props.errorText}
+              translate={this.props.translateErrorText}
+            />
+          </div>
+        )}
+      </FormContext.Consumer>
     );
   }
 }

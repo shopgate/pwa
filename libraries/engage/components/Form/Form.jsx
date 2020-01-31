@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { FormContext } from '@shopgate/pwa-common/context';
 
 /**
  * Form component that handles keyboard submit, next buttons, ...
  */
-export class Form extends PureComponent {
+class Form extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     onSubmit: PropTypes.func,
@@ -59,15 +60,22 @@ export class Form extends PureComponent {
   render() {
     /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
     return (
-      <form
-        action="#"
-        onSubmit={this.handleSubmit}
-        onKeyPress={this.handleKeyPress}
-        ref={this.formElement}
-      >
-        {this.props.children}
-      </form>
+      <FormContext.Consumer>
+        {({ form = {} } = {}) => (
+          <form
+            action="#"
+            className={form.className}
+            onSubmit={this.handleSubmit}
+            onKeyPress={this.handleKeyPress}
+            ref={this.formElement}
+          >
+            {this.props.children}
+          </form>
+        )}
+      </FormContext.Consumer>
     );
     /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
   }
 }
+
+export default Form;

@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { FormContext } from '@shopgate/pwa-common/context';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
@@ -37,28 +39,37 @@ class Checkbox extends PureComponent {
       name, label, onChange, className, errorText, translateErrorText, ...restProps
     } = this.props;
     return (
-      <FormElement
-        className={`${className} ${style.root}`}
-        htmlFor={name}
-        errorText={errorText}
-        translateErrorText={translateErrorText}
-        hasUnderline={false}
-        hasPlaceholder={false}
-      >
-        <UICheckbox
-          {...restProps}
-          name={name}
-          onCheck={onChange}
-          checkedClassName={`${className} ${style.checked}`}
-          unCheckedClassName={className}
-          labelPosition="right"
-          label={
-            <div className={style.labelWrapper}>
-              <I18n.Text className={style.label} string={label} />
-            </div>
-          }
-        />
-      </FormElement>
+      <FormContext.Consumer>
+        {({ checkbox = {} } = {}) => (
+          <FormElement
+            className={`${className} ${style.root}`}
+            htmlFor={name}
+            errorText={errorText}
+            translateErrorText={translateErrorText}
+            hasUnderline={false}
+            hasPlaceholder={false}
+          >
+            <UICheckbox
+              {...restProps}
+              name={name}
+              onCheck={onChange}
+              checkedClassName={`${className} ${style.checked}`}
+              unCheckedClassName={className}
+              labelPosition="right"
+              label={
+                <div
+                  className={classNames(
+                    style.labelWrapper,
+                    checkbox.label && checkbox.label.className
+                  )}
+                >
+                  <I18n.Text className={style.label} string={label} />
+                </div>
+              }
+            />
+          </FormElement>
+        )}
+      </FormContext.Consumer>
     );
   }
 }

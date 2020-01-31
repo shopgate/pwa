@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { FormContext } from '@shopgate/pwa-common/context';
 import FormElement from '../../FormElement';
 import styles from './style';
 
@@ -88,21 +90,29 @@ class Select extends Component {
         isFocused={this.state.isFocused}
         hasValue={!!this.state.value}
       >
-        <select
-          id={this.props.name}
-          name={this.props.name}
-          onChange={this.handleChange}
-          onFocus={() => this.handleFocusChange(true)}
-          onBlur={() => this.handleFocusChange(false)}
-          value={this.state.value}
-          className={styles.select}
-        >
-          {
-            Object.keys(options).map(key => (
-              <option value={key} key={`${name}_${key}`}>{options[key]}</option>
-            ))
-          }
-        </select>
+        <FormContext.Consumer>
+          {({ select = {} } = {}) => (
+            <select
+              id={this.props.name}
+              name={this.props.name}
+              onChange={this.handleChange}
+              onFocus={() => this.handleFocusChange(true)}
+              onBlur={() => this.handleFocusChange(false)}
+              value={this.state.value}
+              className={classNames(styles.select, select.className)}
+            >
+              {Object.keys(options).map(key => (
+                <option
+                  className={select.item && select.item.className}
+                  value={key}
+                  key={`${name}_${key}`}
+                >
+                  {options[key]}
+                </option>
+              ))}
+            </select>
+          )}
+        </FormContext.Consumer>
       </FormElement>
     );
   }

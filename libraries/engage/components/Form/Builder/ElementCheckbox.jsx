@@ -21,7 +21,7 @@ const ElementCheckbox = (props) => {
     <Checkbox
       name={name}
       errorText={errorText}
-      checked={value}
+      checked={!!value}
       className={style.fields}
       label={element.label}
       onChange={element.handleChange}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -15,7 +16,7 @@ const Label = (props) => {
     /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
     <label
       htmlFor={props.htmlFor}
-      className={labelStyles}
+      className={classNames(labelStyles, props.className)}
     >
       <I18n.Text string={props.label} />
     </label>
@@ -23,6 +24,10 @@ const Label = (props) => {
 };
 
 Label.propTypes = {
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape(),
+  ]),
   hasErrorMessage: PropTypes.bool,
   htmlFor: PropTypes.string,
   isFloating: PropTypes.bool,
@@ -31,6 +36,7 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
+  className: null,
   htmlFor: '',
   isFocused: false,
   isFloating: false,

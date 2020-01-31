@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { FormContext } from '@shopgate/pwa-common/context';
 
 /**
  * Base checkbox component.
@@ -127,12 +129,20 @@ class Checkbox extends Component {
    */
   render() {
     return (
-      <div className={this.props.className} onClick={this.handleCheck} aria-hidden>
-        {this.renderInput()}
-        {this.renderLabelIfItIsOnThe('left')}
-        {this.renderIcon()}
-        {this.renderLabelIfItIsOnThe('right')}
-      </div>
+      <FormContext.Consumer>
+        {({ checkbox = {} } = {}) => (
+          <div
+            className={classNames(this.props.className, checkbox.className)}
+            onClick={this.handleCheck}
+            aria-hidden
+          >
+            {this.renderInput(checkbox.input && checkbox.input.className)}
+            {this.renderLabelIfItIsOnThe('left')}
+            {this.renderIcon()}
+            {this.renderLabelIfItIsOnThe('right')}
+          </div>
+        )}
+      </FormContext.Consumer>
     );
   }
 }
