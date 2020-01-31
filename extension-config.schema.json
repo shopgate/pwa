@@ -346,6 +346,9 @@
             "localShipping": {
               "$ref": "#/definitions/icon"
             },
+            "locator": {
+              "$ref": "#/definitions/icon"
+            },
             "lock": {
               "$ref": "#/definitions/icon"
             },
