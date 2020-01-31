@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import Content from './components/Content';
 

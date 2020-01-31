@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > components > view > components > below should render below 1`] = `
+<div
+  aria-hidden={true}
+  style={
+    Object {
+      "flexShrink": 0,
+      "height": "calc(40px + var(--safe-area-inset-bottom))",
+    }
+  }
+/>
+`;

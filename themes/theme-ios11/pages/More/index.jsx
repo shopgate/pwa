@@ -6,7 +6,7 @@ import {
   NAV_MENU_CONTENT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import Quicklinks from './components/Quicklinks';

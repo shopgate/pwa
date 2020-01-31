@@ -11,7 +11,7 @@ import { AppBar } from '@shopgate/pwa-ui-ios';
 import {
   withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';

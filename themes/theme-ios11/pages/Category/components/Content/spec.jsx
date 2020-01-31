@@ -5,7 +5,6 @@ import { createMockStore } from '@shopgate/pwa-common/store';
 import Content from './index';
 
 const store = createMockStore();
-jest.mock('../../../../components/View/context.js');
 
 describe.skip('<Content />', () => {
   it('should render', () => {

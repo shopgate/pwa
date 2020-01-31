@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > components > view > index should have structured content 1`] = `
+<section
+  aria-hidden={true}
+  className={
+    Object {
+      "data-css-296fln": "",
+    }
+  }
+  style={
+    Object {
+      "display": "block",
+    }
+  }
+>
+  <_default
+    noScrollOnKeyboard={false}
+    setContentRef={[MockFunction]}
+  >
+    <div>
+      Page #1
+    </div>
+  </_default>
+</section>
+`;
+
+exports[`engage > components > view > index should initialize with visible route 1`] = `
+<ViewContainer
+  aria-hidden={true}
+  background="#fff"
+  noScrollOnKeyboard={false}
+  visible={true}
+>
+  <div>
+    Page #1
+  </div>
+</ViewContainer>
+`;
