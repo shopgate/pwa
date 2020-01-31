@@ -122,7 +122,8 @@
       "thu": "Donnerstag",
       "fri": "Freitag",
       "sat": "Samstag",
-      "sun": "Sonntag"
+      "sun": "Sonntag",
+      "place_reservation": "Reservierung absenden"
     }
   },
   "category": {
