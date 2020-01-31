@@ -28,6 +28,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     >
       <Placeholder
         aria-hidden={true}
+        className={null}
         placeholder=""
         visible={false}
       >
@@ -44,6 +45,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         </div>
       </Placeholder>
       <Label
+        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -67,6 +69,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
       >
         <RadioItem
           checked={false}
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -74,6 +77,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         >
           <label
             className="css-15broj4"
+            htmlFor={null}
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -106,6 +110,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
+              id={null}
               name="foo"
               onChange={[Function]}
               type="radio"
@@ -175,6 +180,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     >
       <Placeholder
         aria-hidden={true}
+        className={null}
         placeholder=""
         visible={false}
       >
@@ -191,6 +197,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         </div>
       </Placeholder>
       <Label
+        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -214,6 +221,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
       >
         <RadioItem
           checked={false}
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -221,6 +229,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         >
           <label
             className="css-15broj4"
+            htmlFor={null}
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -253,6 +262,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
+              id={null}
               name="foo"
               onChange={[Function]}
               type="radio"
@@ -274,6 +284,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         </RadioItem>
         <RadioItem
           checked={false}
+          id={null}
           key="radio_bar/.1"
           label="bar"
           name="bar"
@@ -281,6 +292,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         >
           <label
             className="css-15broj4"
+            htmlFor={null}
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -313,6 +325,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
+              id={null}
               name="bar"
               onChange={[Function]}
               type="radio"
@@ -382,6 +395,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     >
       <Placeholder
         aria-hidden={true}
+        className={null}
         placeholder=""
         visible={false}
       >
@@ -398,6 +412,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         </div>
       </Placeholder>
       <Label
+        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -421,6 +436,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
       >
         <RadioItem
           checked={false}
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -428,6 +444,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         >
           <label
             className="css-15broj4"
+            htmlFor={null}
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -460,6 +477,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
+              id={null}
               name="foo"
               onChange={[Function]}
               type="radio"
@@ -529,6 +547,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     >
       <Placeholder
         aria-hidden={true}
+        className={null}
         placeholder=""
         visible={false}
       >
@@ -545,6 +564,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
         </div>
       </Placeholder>
       <Label
+        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -615,6 +635,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     >
       <Placeholder
         aria-hidden={true}
+        className={null}
         placeholder=""
         visible={false}
       >
@@ -631,6 +652,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         </div>
       </Placeholder>
       <Label
+        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -654,6 +676,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
       >
         <RadioItem
           checked={false}
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -661,6 +684,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         >
           <label
             className="css-15broj4"
+            htmlFor={null}
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -693,6 +717,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
+              id={null}
               name="foo"
               onChange={[Function]}
               type="radio"
@@ -762,6 +787,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
     >
       <Placeholder
         aria-hidden={true}
+        className={null}
         placeholder=""
         visible={false}
       >
@@ -778,6 +804,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
         </div>
       </Placeholder>
       <Label
+        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -801,6 +828,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
       >
         <RadioItem
           checked={true}
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -808,6 +836,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
         >
           <label
             className="css-15broj4"
+            htmlFor={null}
           >
             <RadioChecked
               className="css-1ncyhu css-37nc4w"
@@ -840,6 +869,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
             <input
               checked={true}
               className="css-gyrv08"
+              id={null}
               name="foo"
               onChange={[Function]}
               type="radio"

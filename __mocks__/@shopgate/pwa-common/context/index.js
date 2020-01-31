@@ -19,3 +19,9 @@ export const RouteContext = ({
     return props.children(context);
   },
 });
+
+export const FormContext = ({
+  Provider(props) {
+    return props.children;
+  },
+});

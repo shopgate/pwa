@@ -20,9 +20,10 @@ exports[`<TextField /> should focus the input 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -38,6 +39,7 @@ exports[`<TextField /> should focus the input 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -57,6 +59,7 @@ exports[`<TextField /> should focus the input 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -125,6 +128,7 @@ exports[`<TextField /> should focus the input 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -183,9 +187,10 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -201,6 +206,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -220,6 +226,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -288,6 +295,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -346,9 +354,10 @@ exports[`<TextField /> should render a simple text field 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -364,6 +373,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -383,6 +393,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -451,6 +462,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -509,9 +521,10 @@ exports[`<TextField /> should render the text field as password 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -527,6 +540,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -546,6 +560,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -614,6 +629,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -672,9 +688,10 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   value="FooBar"
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -690,6 +707,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={true}
       isFocused={false}
@@ -709,6 +727,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -777,6 +796,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -835,9 +855,10 @@ exports[`<TextField /> should replace the error text with custom validation erro
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -853,6 +874,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={true}
       isFloating={false}
       isFocused={false}
@@ -872,6 +894,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -940,6 +963,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={true}
       isFocused={false}
     >
@@ -1004,9 +1028,10 @@ exports[`<TextField /> should sanitize the input 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -1022,6 +1047,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -1041,6 +1067,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -1109,6 +1136,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -1167,9 +1195,10 @@ exports[`<TextField /> should show the error message 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -1185,6 +1214,7 @@ exports[`<TextField /> should show the error message 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={true}
       isFloating={false}
       isFocused={false}
@@ -1204,6 +1234,7 @@ exports[`<TextField /> should show the error message 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -1272,6 +1303,7 @@ exports[`<TextField /> should show the error message 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={true}
       isFocused={false}
     >
@@ -1336,9 +1368,10 @@ exports[`<TextField /> should show the hint text 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText="This is the hint text"
       visible={false}
     >
@@ -1361,6 +1394,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -1380,6 +1414,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -1448,6 +1483,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -1506,9 +1542,10 @@ exports[`<TextField /> should show the label 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -1524,6 +1561,7 @@ exports[`<TextField /> should show the label 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -1550,6 +1588,7 @@ exports[`<TextField /> should show the label 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -1618,6 +1657,7 @@ exports[`<TextField /> should show the label 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -1697,9 +1737,10 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -1715,6 +1756,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -1734,6 +1776,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -1802,6 +1845,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -1874,9 +1918,10 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 "
+    className="css-e4z0u6"
   >
     <Hint
+      className={null}
       hintText=""
       visible={false}
     >
@@ -1892,6 +1937,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </div>
     </Hint>
     <Label
+      className={null}
       hasErrorMessage={false}
       isFloating={false}
       isFocused={false}
@@ -1911,6 +1957,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </label>
     </Label>
     <FormElement
+      className={null}
       id="test-input"
       isControlled={false}
       multiLine={false}
@@ -1979,6 +2026,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </_default>
     </FormElement>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >

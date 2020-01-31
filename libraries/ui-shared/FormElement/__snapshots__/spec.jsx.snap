@@ -18,6 +18,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   >
     <Placeholder
       aria-hidden={true}
+      className={null}
       placeholder=""
       visible={false}
     >
@@ -34,6 +35,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       </div>
     </Placeholder>
     <Label
+      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={true}
@@ -53,6 +55,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       </label>
     </Label>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -108,6 +111,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   >
     <Placeholder
       aria-hidden={true}
+      className={null}
       placeholder=""
       visible={false}
     >
@@ -124,6 +128,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       </div>
     </Placeholder>
     <Label
+      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={true}
@@ -143,6 +148,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       </label>
     </Label>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={true}
     >
@@ -197,6 +203,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   >
     <Placeholder
       aria-hidden={true}
+      className={null}
       placeholder=""
       visible={true}
     >
@@ -213,6 +220,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       </div>
     </Placeholder>
     <Label
+      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -235,6 +243,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       key="test-key"
     />
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -290,6 +299,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   >
     <Placeholder
       aria-hidden={true}
+      className={null}
       placeholder=""
       visible={true}
     >
@@ -306,6 +316,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       </div>
     </Placeholder>
     <Label
+      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -325,6 +336,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       </label>
     </Label>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -380,6 +392,7 @@ exports[`<FormElement /> should show the error message 1`] = `
   >
     <Placeholder
       aria-hidden={true}
+      className={null}
       placeholder=""
       visible={true}
     >
@@ -396,6 +409,7 @@ exports[`<FormElement /> should show the error message 1`] = `
       </div>
     </Placeholder>
     <Label
+      className={null}
       hasErrorMessage={true}
       htmlFor="test-input"
       isFloating={false}
@@ -415,6 +429,7 @@ exports[`<FormElement /> should show the error message 1`] = `
       </label>
     </Label>
     <Underline
+      className={null}
       hasErrorMessage={true}
       isFocused={false}
     >
@@ -476,6 +491,7 @@ exports[`<FormElement /> should show the label 1`] = `
   >
     <Placeholder
       aria-hidden={true}
+      className={null}
       placeholder="The label"
       visible={true}
     >
@@ -499,6 +515,7 @@ exports[`<FormElement /> should show the label 1`] = `
       </div>
     </Placeholder>
     <Label
+      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -525,6 +542,7 @@ exports[`<FormElement /> should show the label 1`] = `
       </label>
     </Label>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
@@ -580,6 +598,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   >
     <Placeholder
       aria-hidden={true}
+      className={null}
       placeholder="The placeholder"
       visible={true}
     >
@@ -603,6 +622,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       </div>
     </Placeholder>
     <Label
+      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -622,6 +642,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       </label>
     </Label>
     <Underline
+      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >

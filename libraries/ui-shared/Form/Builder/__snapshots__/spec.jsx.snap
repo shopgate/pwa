@@ -99,9 +99,10 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
               value="default"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -117,6 +118,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={true}
                   isFocused={false}
@@ -143,6 +145,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.foo"
                   isControlled={true}
                   multiLine={false}
@@ -211,6 +214,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -349,9 +353,10 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -367,6 +372,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={false}
                   isFocused={false}
@@ -393,6 +399,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.foo"
                   isControlled={true}
                   multiLine={false}
@@ -461,6 +468,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -557,9 +565,10 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -575,6 +584,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={false}
                   isFocused={false}
@@ -601,6 +611,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.bar"
                   isControlled={true}
                   multiLine={false}
@@ -669,6 +680,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -807,9 +819,10 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
               value="abc"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -825,6 +838,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={true}
                   isFocused={false}
@@ -851,6 +865,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.foo"
                   isControlled={true}
                   multiLine={false}
@@ -919,6 +934,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -1135,9 +1151,10 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -1153,6 +1170,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={false}
                   isFocused={false}
@@ -1179,6 +1197,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.firstName"
                   isControlled={true}
                   multiLine={false}
@@ -1247,6 +1266,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -1330,9 +1350,10 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -1348,6 +1369,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={false}
                   isFocused={false}
@@ -1374,6 +1396,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.lastName"
                   isControlled={true}
                   multiLine={false}
@@ -1442,6 +1465,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -1587,9 +1611,10 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -1605,6 +1630,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={true}
                   isFocused={false}
@@ -1631,6 +1657,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.foo"
                   isControlled={true}
                   multiLine={false}
@@ -1699,6 +1726,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -1800,9 +1828,10 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -1818,6 +1847,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={true}
                   isFocused={false}
@@ -1844,6 +1874,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.bar"
                   isControlled={true}
                   multiLine={false}
@@ -1912,6 +1943,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -2057,9 +2089,10 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="abc"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -2075,6 +2108,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={true}
                   isFocused={false}
@@ -2101,6 +2135,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.foo"
                   isControlled={true}
                   multiLine={false}
@@ -2169,6 +2204,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >
@@ -2270,9 +2306,10 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="cheat"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6"
               >
                 <Hint
+                  className={null}
                   hintText=""
                   visible={false}
                 >
@@ -2288,6 +2325,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   </div>
                 </Hint>
                 <Label
+                  className={null}
                   hasErrorMessage={false}
                   isFloating={true}
                   isFocused={false}
@@ -2314,6 +2352,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   </label>
                 </Label>
                 <FormElement
+                  className={null}
                   id="foo.bar"
                   isControlled={true}
                   multiLine={false}
@@ -2382,6 +2421,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   </_default>
                 </FormElement>
                 <Underline
+                  className={null}
                   hasErrorMessage={false}
                   isFocused={false}
                 >

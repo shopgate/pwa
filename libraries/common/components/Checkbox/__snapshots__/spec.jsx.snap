@@ -3,6 +3,7 @@
 exports[`<Checkbox /> should render the checkbox with the label after the icon 1`] = `
 <div
   aria-hidden={true}
+  className=""
   onClick={[Function]}
 >
   <Unchecked />
@@ -15,6 +16,7 @@ exports[`<Checkbox /> should render the checkbox with the label after the icon 1
 exports[`<Checkbox /> should render the checkbox with the label before the icon 1`] = `
 <div
   aria-hidden={true}
+  className=""
   onClick={[Function]}
 >
   <span>
@@ -27,6 +29,7 @@ exports[`<Checkbox /> should render the checkbox with the label before the icon 
 exports[`<Checkbox /> should render the unchecked icon if "checked" is false 1`] = `
 <div
   aria-hidden={true}
+  className=""
   onClick={[Function]}
 >
   Test Label Deluxe
@@ -37,6 +40,7 @@ exports[`<Checkbox /> should render the unchecked icon if "checked" is false 1`]
 exports[`<Checkbox /> should render the unchecked icon if "checked" is false 2`] = `
 <div
   aria-hidden={true}
+  className=""
   onClick={[Function]}
 >
   Test Label Deluxe

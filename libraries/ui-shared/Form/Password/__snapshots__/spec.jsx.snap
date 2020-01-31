@@ -52,6 +52,7 @@ exports[`<Password> should render a password field 1`] = `
       >
         <Placeholder
           aria-hidden={true}
+          className={null}
           placeholder=""
           visible={true}
         >
@@ -68,6 +69,7 @@ exports[`<Password> should render a password field 1`] = `
           </div>
         </Placeholder>
         <Label
+          className={null}
           hasErrorMessage={false}
           htmlFor="test-input"
           isFloating={false}
@@ -217,6 +219,7 @@ exports[`<Password> should render a password field 1`] = `
           </ul>
         </Grid>
         <Underline
+          className={null}
           hasErrorMessage={false}
           isFocused={false}
         >
@@ -351,6 +354,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
       >
         <Placeholder
           aria-hidden={true}
+          className={null}
           placeholder=""
           visible={true}
         >
@@ -367,6 +371,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           </div>
         </Placeholder>
         <Label
+          className={null}
           hasErrorMessage={false}
           htmlFor="test-input"
           isFloating={false}
@@ -558,6 +563,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           </ul>
         </Grid>
         <Underline
+          className={null}
           hasErrorMessage={false}
           isFocused={false}
         >
