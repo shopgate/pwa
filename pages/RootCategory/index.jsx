@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import CategoryList from 'Components/CategoryList';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import { DefaultBar } from 'Components/AppBar/presets';
 import connect from './connector';
 
