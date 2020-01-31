@@ -47,6 +47,7 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
+  color: colors.dark,
   ':first-child': {
     marginTop: variables.gap.big / 2,
   },
