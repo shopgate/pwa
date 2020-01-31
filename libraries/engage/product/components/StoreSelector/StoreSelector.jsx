@@ -5,6 +5,7 @@ import { withCurrentProduct } from '../../../core/hocs/withCurrentProduct';
 import SheetDrawer from '../../../components/SheetDrawer';
 import { sheet } from './style';
 import Product from './Product';
+import SearchField from './SearchField';
 import Locations from './Locations';
 import connect from './connector';
 import StoreSelectorContext from './context';
@@ -127,6 +128,7 @@ class StoreSelector extends PureComponent {
         <SheetDrawer isOpen={isOpen} title={title} onClose={this.handleSetClosed}>
           <div className={sheet}>
             <Product />
+            <SearchField />
             <Locations />
           </div>
         </SheetDrawer>

@@ -78,6 +78,7 @@
     "quantity": "Quantidade",
     "minOrderQuantity": "Quantidade mín. do pedido:{quantity}",
     "maxOrderQuantity": "Quantidade máx. do pedido:{quantity}",
+    "zip_search": "ZIP code",
     "available": {
       "at": "Disponível {startDate, date, DD} {startDate, date, MMM} às {startDate, time, short}",
       "until": "Disponível até {endDate, date, DD} {endDate, date, MMM} às {endDate, time, short}",

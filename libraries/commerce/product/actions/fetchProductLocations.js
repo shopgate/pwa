@@ -4,17 +4,18 @@ import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import requestProductLocations from '../action-creators/requestProductLocations';
 import receiveProductLocations from '../action-creators/receiveProductLocations';
 import errorProductLocations from '../action-creators/errorProductLocations';
-import { makeGetProductLocations } from '../selectors/locations';
+import { makeGetProductLocationsState } from '../selectors/locations';
 import * as pipelines from '../constants/Pipelines';
 
 /**
  * @param {string} productId The product ID to fetch locations for.
+ * @param {Object} [params={}] Optional params for the location request.
  * @returns {Function} A redux thunk.
  */
-export function fetchProductLocations(productId) {
+export function fetchProductLocations(productId, params = {}) {
   return (dispatch, getState) => {
-    const getProductLocations = makeGetProductLocations();
-    const productLocations = getProductLocations(getState(), { productId });
+    const getProductLocationsState = makeGetProductLocationsState();
+    const productLocations = getProductLocationsState(getState())[productId];
 
     if (!shouldFetchData(productLocations)) {
       return Promise.resolve(null);
@@ -22,9 +23,14 @@ export function fetchProductLocations(productId) {
 
     dispatch(requestProductLocations(productId));
 
+    const { postalCode, longitude, latitude } = params;
+
     const request = new PipelineRequest(pipelines.SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS)
       .setInput({
         productCode: productId,
+        postalCode,
+        longitude,
+        latitude,
       })
       .dispatch()
       .then((result) => {
