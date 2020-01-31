@@ -5,32 +5,33 @@ exports[`<SearchField /> should call getLocationsByGeolocation after clicking th
   <div
     className={
       Object {
-        "data-css-bzu7bj": "",
+        "data-css-z3aef1": "",
       }
     }
   >
     <div
       className={
         Object {
-          "data-css-1snfvjv": "",
+          "data-css-bpbkyq": "",
         }
       }
     >
       <span
+        aria-hidden={true}
         className={
           Object {
-            "data-css-qxmm1e": "",
+            "data-css-gy1p1e": "",
           }
         }
       >
-        <SearchIcon />
+        <MagnifierIcon />
       </span>
       <input
         autoComplete="off"
         autoCorrect="off"
         className={
           Object {
-            "data-css-8mvu36": "",
+            "data-css-2h0g54": "",
           }
         }
         disabled={false}
@@ -43,7 +44,7 @@ exports[`<SearchField /> should call getLocationsByGeolocation after clicking th
       <button
         className={
           Object {
-            "data-css-qxmm1e": "",
+            "data-css-gy1p1e": "",
           }
         }
         onClick={[Function]}
@@ -92,32 +93,33 @@ exports[`<SearchField /> should call getLocationsByPostalCode after filling the 
   <div
     className={
       Object {
-        "data-css-bzu7bj": "",
+        "data-css-z3aef1": "",
       }
     }
   >
     <div
       className={
         Object {
-          "data-css-1snfvjv": "",
+          "data-css-bpbkyq": "",
         }
       }
     >
       <span
+        aria-hidden={true}
         className={
           Object {
-            "data-css-qxmm1e": "",
+            "data-css-gy1p1e": "",
           }
         }
       >
-        <SearchIcon />
+        <MagnifierIcon />
       </span>
       <input
         autoComplete="off"
         autoCorrect="off"
         className={
           Object {
-            "data-css-8mvu36": "",
+            "data-css-2h0g54": "",
           }
         }
         disabled={false}
@@ -130,7 +132,7 @@ exports[`<SearchField /> should call getLocationsByPostalCode after filling the 
       <button
         className={
           Object {
-            "data-css-qxmm1e": "",
+            "data-css-gy1p1e": "",
           }
         }
         onClick={[Function]}
@@ -227,32 +229,33 @@ exports[`<SearchField /> should render as expected 1`] = `
   <div
     className={
       Object {
-        "data-css-bzu7bj": "",
+        "data-css-z3aef1": "",
       }
     }
   >
     <div
       className={
         Object {
-          "data-css-1snfvjv": "",
+          "data-css-bpbkyq": "",
         }
       }
     >
       <span
+        aria-hidden={true}
         className={
           Object {
-            "data-css-qxmm1e": "",
+            "data-css-gy1p1e": "",
           }
         }
       >
-        <SearchIcon />
+        <MagnifierIcon />
       </span>
       <input
         autoComplete="off"
         autoCorrect="off"
         className={
           Object {
-            "data-css-8mvu36": "",
+            "data-css-2h0g54": "",
           }
         }
         disabled={false}
@@ -265,7 +268,7 @@ exports[`<SearchField /> should render as expected 1`] = `
       <button
         className={
           Object {
-            "data-css-qxmm1e": "",
+            "data-css-gy1p1e": "",
           }
         }
         onClick={[Function]}

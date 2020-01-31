@@ -32,7 +32,7 @@ describe('<SearchField />', () => {
     expect(wrapper.find('input').prop('disabled')).toEqual(false);
   });
 
-  it.only('should react on updates of the loading prop', () => {
+  it('should react on updates of the loading prop', () => {
     const wrapper = shallow((
       <SearchField {...defaultProps} />
     ));
