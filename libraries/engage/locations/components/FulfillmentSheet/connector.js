@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
-import { selectLocation } from '@shopgate/pwa-common/action-creators';
+import { selectLocation, storeFormInput } from '@shopgate/pwa-common/action-creators';
 import {
   makeGetSelectedCharacteristic,
   getProduct,
 } from '@shopgate/engage/product';
+import { makeGetUserFormInput } from '@shopgate/engage/user';
 import { makeGetProductLocations } from '../../selectors';
+import { submitReservation } from '../../actions';
 
 /**
  * @returns {Function}
@@ -12,6 +14,7 @@ import { makeGetProductLocations } from '../../selectors';
 function makeMapStateToProps() {
   const getProductLocations = makeGetProductLocations();
   const getSelectedCharacteristic = makeGetSelectedCharacteristic();
+  const getUserFormInput = makeGetUserFormInput();
 
   /**
    * @param {Object} state The application state.
@@ -22,6 +25,7 @@ function makeMapStateToProps() {
     locations: getProductLocations(state, props),
     product: getProduct(state, props),
     selectedVariants: getSelectedCharacteristic(state, props),
+    userInput: getUserFormInput(state),
   });
 }
 
@@ -29,8 +33,10 @@ function makeMapStateToProps() {
  * @param {Function} dispatch The dispatch function.
  * @returns {Object}
  */
-const mapDispatchToProps = dispatch => ({
-  selectLocation: location => dispatch(selectLocation(location)),
-});
+const mapDispatchToProps = {
+  selectLocation,
+  submitReservation,
+  storeFormInput,
+};
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

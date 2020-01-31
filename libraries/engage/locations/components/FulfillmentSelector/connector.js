@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { makeGetUserLocationState } from '@shopgate/engage/user';
+import { makeGetUserLocation } from '@shopgate/engage/user';
 import { makeGetFulfillmentMethods } from '../../selectors';
 
 /**
@@ -8,7 +8,7 @@ import { makeGetFulfillmentMethods } from '../../selectors';
  * @return {Object} The extended component props.
  */
 function makeMapStateToProps() {
-  const getUserLocation = makeGetUserLocationState();
+  const getUserLocation = makeGetUserLocation();
   const getFulfillmentMethods = makeGetFulfillmentMethods();
 
   /**

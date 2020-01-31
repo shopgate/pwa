@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
@@ -7,6 +7,7 @@ import Address from './Address';
 import StoreHoursToday from './StoreHoursToday';
 import PhoneNumber from './PhoneNumber';
 import OpeningHours from './OpeningHours';
+import FulfillmentContext from '../context';
 import {
   store as storeStyles, storeMain, storeImage, storeName, storeInfo,
 } from './style';
@@ -16,8 +17,8 @@ import {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function Store({ store, context: Context }) {
-  const { selectLocation } = useContext(Context);
+function Store({ store }) {
+  const { selectLocation } = useContext(FulfillmentContext);
 
   if (!store || !store.addresses || store.addresses.length === 0) {
     return null;
@@ -69,7 +70,6 @@ function Store({ store, context: Context }) {
 }
 
 Store.propTypes = {
-  context: PropTypes.elementType.isRequired,
   store: PropTypes.shape(),
 };
 
@@ -77,4 +77,4 @@ Store.defaultProps = {
   store: null,
 };
 
-export default Store;
+export default memo(Store);

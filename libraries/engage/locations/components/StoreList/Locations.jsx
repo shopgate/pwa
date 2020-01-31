@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import Store from './Store';
+import FulfillmentContext from '../context';
 import { stores } from './style';
 
 /**
  * Renders the locations where the product can be picked up.
  * @returns {JSX}
  */
-function Locations({ context: Context }) {
-  const { locations } = useContext(Context);
+function Locations() {
+  const { locations } = useContext(FulfillmentContext);
 
   if (!locations || locations.length === 0) {
     return null;
@@ -17,14 +17,10 @@ function Locations({ context: Context }) {
   return (
     <div className={stores}>
       {locations.map(location => (
-        <Store store={location} key={location.code} context={Context} />
+        <Store store={location} key={location.code} />
       ))}
     </div>
   );
 }
-
-Locations.propTypes = {
-  context: PropTypes.elementType.isRequired,
-};
 
 export default Locations;

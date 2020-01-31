@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > actions-creators requestProductLocations 1`] = `
+Object {
+  "productId": "id123",
+  "type": "REQUEST_PRODUCT_LOCATIONS",
+}
+`;

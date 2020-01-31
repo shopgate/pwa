@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioGroupItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { useFormState } from '../../../core/hooks/useFormState';
 import { i18n } from '../../../core/helpers/i18n';
+import FulfillmentContext from '../context';
 import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button,
 } from './style';
@@ -13,9 +14,10 @@ import {
  * @returns {JSX}
  */
 function ReserveForm() {
+  const { sendReservation, userInput } = useContext(FulfillmentContext);
   const [picker, setPicker] = useState('me');
 
-  const initialState = {
+  const defaultState = {
     firstName: '',
     lastName: '',
     cellPhone: '',
@@ -25,12 +27,31 @@ function ReserveForm() {
     cellPhone2: '',
     email2: '',
   };
+  const initialState = userInput ? {
+    ...defaultState,
+    ...userInput,
+  } : defaultState;
 
   /**
    * @param {Object} values The form values.
    */
   const complete = (values) => {
-    console.warn(values);
+    const response = values;
+
+    if (response.firstName2 === '') {
+      response.firstName2 = response.firstName;
+    }
+    if (response.lastName2 === '') {
+      response.lastName2 = response.lastName;
+    }
+    if (response.cellPhone2 === '') {
+      response.cellPhone2 = response.cellPhone;
+    }
+    if (response.email2 === '') {
+      response.email2 = response.email;
+    }
+
+    sendReservation(values);
   };
 
   const {

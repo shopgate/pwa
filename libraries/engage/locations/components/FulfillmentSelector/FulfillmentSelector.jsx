@@ -26,44 +26,45 @@ export const FulfillmentSelector = ({ productId: productCode, fulfillmentMethods
   const directShip = 'product.fulfillment_selector.direct_ship';
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
-  // Pre-select direct ship on entering the PDP
   const [selection, setSelection] = useState(location.code !== null ? pickUp : directShip);
-  // Keep the selected location in the state
   const [selectedLocation, setSelectedLocation] = useState(null);
-  // Keeps track of the selector sheet being opened or not, to "debounce" open events.
   const [isSelectorOpened, setIsSelectorOpened] = useState(false);
 
-  // Whenever the pick-up selection is made, open the store selector sheet and use the new location.
+  const handleSelectorClose = useCallback((newLocation) => {
+    setIsSelectorOpened(false);
+    if (!newLocation) {
+      // Reset the UI back to directShip if there was no location selected already
+      if (selectedLocation === null) {
+        setSelection(directShip);
+      }
+    } else if (newLocation.productCode === productCode) {
+      // Update the selected location only when the selection was done for the same product.
+      setSelectedLocation(newLocation);
+    }
+  }, [productCode, selectedLocation]);
+
+  /**
+   * Whenever the pick-up selection is made, open the
+   * store selector sheet and use the new location.
+   */
   const handleChange = useCallback((elementName) => {
     setSelection(elementName);
+
+    if (isSelectorOpened) {
+      return;
+    }
 
     if (elementName === directShip) {
       setSelectedLocation(null);
       return;
     }
 
-    if (isSelectorOpened) {
-      return;
-    }
-
-    // Open the store selector sheet and provide a callback for when it is closed.
     setIsSelectorOpened(true);
 
     // TODO: Change this to open the store selector only if it wasn't yet selected for the product
     // TODO: Opening the selector to change selection should be done with a "Choose Location" link
-    FulfillmentSheet.open((newLocation) => {
-      setIsSelectorOpened(false);
-      if (!newLocation) {
-        // Reset the UI back to directShip if there was no location selected already
-        if (selectedLocation === null) {
-          setSelection(directShip);
-        }
-      } else if (newLocation.productCode === productCode) {
-        // Update the selected location only when the selection was done for the same product.
-        setSelectedLocation(newLocation);
-      }
-    });
-  }, [isSelectorOpened, selectedLocation, productCode]);
+    FulfillmentSheet.open(handleSelectorClose);
+  }, [isSelectorOpened, handleSelectorClose]);
 
   if (!fulfillmentMethods) {
     return null;
@@ -90,7 +91,9 @@ export const FulfillmentSelector = ({ productId: productCode, fulfillmentMethods
             />
           </FulfillmentSelectorItem>
           <FulfillmentSelectorItem name={pickUp}>
-            {location && <StockInfo location={selectedLocation || location} />}
+            {location && (
+              <StockInfo location={selectedLocation || location} />
+            )}
           </FulfillmentSelectorItem>
         </RadioGroup>
       </div>

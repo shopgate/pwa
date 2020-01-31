@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > actions-creators submitReservationRequest 1`] = `
+Object {
+  "order": Object {
+    "code": "product123",
+  },
+  "type": "SUBMIT_RESERVATION_REQUEST",
+}
+`;

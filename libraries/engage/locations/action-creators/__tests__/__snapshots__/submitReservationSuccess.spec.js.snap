@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > actions-creators submitReservationSuccess 1`] = `
+Object {
+  "orderNumbers": Array [
+    "123",
+    "456",
+  ],
+  "type": "SUBMIT_RESERVATION_SUCCESS",
+}
+`;

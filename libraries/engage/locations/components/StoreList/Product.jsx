@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { Ellipsis } from '@shopgate/engage/components';
 import { ProductImage } from '@shopgate/engage/product';
+import FulfillmentContext from '../context';
 import * as styles from './style';
 
 /**
  * Renders the product information.
  * @returns {JSX}
  */
-function Product({ context: Context }) {
-  const { product, selectedVariants } = useContext(Context);
+function Product() {
+  const { product, selectedVariants } = useContext(FulfillmentContext);
 
   if (!product) {
     return null;
@@ -41,9 +41,5 @@ function Product({ context: Context }) {
     </div>
   );
 }
-
-Product.propTypes = {
-  context: PropTypes.elementType.isRequired,
-};
 
 export default Product;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > actions-creators receiveProductLocations 1`] = `
+Object {
+  "locations": Array [
+    "a",
+    "b",
+    "c",
+  ],
+  "productId": "id123",
+  "type": "RECEIVE_PRODUCT_LOCATIONS",
+}
+`;

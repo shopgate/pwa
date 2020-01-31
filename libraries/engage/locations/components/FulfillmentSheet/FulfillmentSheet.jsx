@@ -9,7 +9,7 @@ import { sheet } from './style';
 import { StoreList } from '../StoreList';
 import { ReserveForm } from '../ReserveForm';
 import connect from './connector';
-import FulfillmentContext from './context';
+import FulfillmentContext from '../context';
 
 const EVENT_SET_OPEN = 'event.setOpen';
 const EVENT_SET_CLOSED = 'event.setClosed';
@@ -22,7 +22,7 @@ const STAGES = [
 /**
  * Renders the store selector sheet.
  */
-class StoreSelector extends PureComponent {
+class FulfillmentSheet extends PureComponent {
   static propTypes = {
     locations: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
@@ -31,6 +31,9 @@ class StoreSelector extends PureComponent {
       value: PropTypes.string,
     })),
     selectLocation: PropTypes.func,
+    storeFormInput: PropTypes.func,
+    submitReservation: PropTypes.func,
+    userInput: PropTypes.shape(),
   }
 
   static defaultProps = {
@@ -38,6 +41,9 @@ class StoreSelector extends PureComponent {
     product: null,
     selectedVariants: [],
     selectLocation: () => { },
+    submitReservation: () => { },
+    storeFormInput: () => { },
+    userInput: null,
   }
 
   /**
@@ -115,17 +121,39 @@ class StoreSelector extends PureComponent {
   }
 
   /**
+   * Handles the sending of the reservation.
+   * @param {Object} values The form values.
+   */
+  handleSendReservation = async (values) => {
+    const { submitReservation, product, storeFormInput } = this.props;
+
+    // Store the user's form in the user data.
+    storeFormInput(values);
+
+    try {
+      const response = await submitReservation(values, product);
+      console.warn('handleSendReservation', response);
+    } catch (error) {
+      console.error('handleSendReservation', error);
+    }
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
-    const { product, locations, selectedVariants } = this.props;
+    const {
+      product, locations, selectedVariants, userInput,
+    } = this.props;
     const { isOpen, stage, title } = this.state;
 
     const contextValue = {
       selectLocation: this.handleSelectLocation,
+      sendReservation: this.handleSendReservation,
       product,
       locations,
       selectedVariants,
+      userInput,
     };
 
     return (
@@ -133,7 +161,7 @@ class StoreSelector extends PureComponent {
         <SheetDrawer isOpen={isOpen} title={title} onClose={this.handleSetClosed}>
           <div className={sheet}>
             {stage === STAGES[0] && (
-              <StoreList context={FulfillmentContext} />
+              <StoreList />
             )}
             {stage === STAGES[1] && (
               <ReserveForm />
@@ -148,21 +176,21 @@ class StoreSelector extends PureComponent {
   }
 }
 
-const StoreSelectorWrapped = withCurrentProduct(connect(StoreSelector));
+const FulfillmentSheetWrapped = withCurrentProduct(connect(FulfillmentSheet));
 
 /**
  * Opens the store selector sheet.
  * @param {Function} [callback=null] A callback that will be called once the sheet closes.
  */
-StoreSelectorWrapped.open = (callback = null) => {
+FulfillmentSheetWrapped.open = (callback = null) => {
   UIEvents.emit(EVENT_SET_OPEN, callback);
 };
 
 /**
  * Closes the store selector sheet.
  */
-StoreSelectorWrapped.close = () => {
+FulfillmentSheetWrapped.close = () => {
   UIEvents.emit(EVENT_SET_CLOSED);
 };
 
-export default hot(StoreSelectorWrapped);
+export default hot(FulfillmentSheetWrapped);
