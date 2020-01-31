@@ -22,6 +22,6 @@ export const RouteContext = ({
 
 export const FormContext = ({
   Provider(props) {
-    return props.children;
+    return typeof props.children === 'function' ? props.children() : props.children;
   },
 });
