@@ -1,9 +1,9 @@
 {
   "user": {
     "delete_account": "Eliminar mi cuenta",
-    "delete_account_success": "Hemos recibido la solicitud de eliminar tu cuenta.",
+    "delete_account_success": "Solicitud de eliminación recibida. Se ha cerrado la sesión y eliminaremos sus datos en nuestro sistema siempre que sea legalmente posible. Este proceso puede tardar algunos días.",
     "delete_account_error": "Se ha producido un error inesperado. Inténtalo de nuevo más tarde.",
     "delete_account_confirm": "Pulsa Confirmar para eliminar todos los datos de tu cuenta. Esta operación no se puede deshacer.",
-    "contact_us": "Contact us"
+    "contact_us": "Contáctenos"
   }
 }
