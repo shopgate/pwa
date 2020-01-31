@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import Content from './components/Content';
 
 const { colors } = themeConfig;

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SheetDrawer, SheetList } from '@shopgate/engage/components';
 import { VariantContext } from '@shopgate/engage/product';
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import Item from '../SheetItem';
 import VariantAvailability from '../VariantAvailability';
 import { ProductContext } from '../../../../../context';

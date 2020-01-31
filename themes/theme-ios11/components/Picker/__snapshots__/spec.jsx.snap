@@ -11,7 +11,7 @@ exports[`<Picker /> should render the picker 1`] = `
       clickDelay={150}
       hasButton={true}
       label="Picker label"
-      setViewAriaHidden={[Function]}
+      setViewAriaHidden={[MockFunction]}
       sheetProps={Object {}}
     >
       <ForwardRef(WithForwardedRef(Picker))
@@ -23,7 +23,7 @@ exports[`<Picker /> should render the picker 1`] = `
         listComponent={[Function]}
         modalComponent={[Function]}
         onClose={[Function]}
-        setViewAriaHidden={[Function]}
+        setViewAriaHidden={[MockFunction]}
       >
         <Picker
           buttonComponent={[Function]}
@@ -63,7 +63,7 @@ exports[`<Picker /> should render the picker 1`] = `
           onClose={[Function]}
           onSelect={[Function]}
           placeholder="Pick ..."
-          setViewAriaHidden={[Function]}
+          setViewAriaHidden={[MockFunction]}
           value={null}
         >
           <div
