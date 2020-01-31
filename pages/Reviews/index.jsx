@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import ReviewsContent from './components/Content';
 
 /**

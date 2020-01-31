@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
 import connect from './connector';
 import EmptyFavorites from './components/EmptyFavorites';
