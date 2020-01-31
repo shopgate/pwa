@@ -1,7 +1,7 @@
 {
   "user": {
     "delete_account": "Kontodaten löschen",
-    "delete_account_success": "Wir haben Ihre Anfrage zum Löschen Ihrer Kontodaten erhalten.",
+    "delete_account_success": "Löschanfrage erhalten. Sie wurden ausgeloggt und wir werden Ihre Daten löschen, soweit das rechtlich möglich ist. Dieser Prozess kann einige Tage in Anspruch nehmen.",
     "delete_account_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut",
     "delete_account_confirm": "Bitte bestätigen Sie die Löschung aller Kontodaten. Dies kann nicht rückgängig gemacht werden.",
     "contact_us": "Kontakt"
