@@ -39,6 +39,8 @@ class FormElement extends Component {
     translateErrorText: true,
   };
 
+  static contextType = FormContext;
+
   /**
    * @returns {boolean} Whether the label is currently floating.
    */
@@ -69,45 +71,43 @@ class FormElement extends Component {
       placeholder, hasPlaceholder, htmlFor, label, className,
     } = this.props;
 
+    const { formElement = {} } = this.context || {};
+
     return (
-      <FormContext.Consumer>
-        {({ formElement = {} } = {}) => (
-          <div className={classNames(style.formElement, className, formElement.className)}>
-            {hasPlaceholder &&
-              <Placeholder
-                className={formElement.placeholder && formElement.placeholder.className}
-                visible={this.isPlaceholderVisible}
-                placeholder={placeholder || label}
-                aria-hidden
-              />
-            }
+      <div className={classNames(style.formElement, className, formElement.className)}>
+        {hasPlaceholder &&
+          <Placeholder
+            className={formElement.placeholder && formElement.placeholder.className}
+            visible={this.isPlaceholderVisible}
+            placeholder={placeholder || label}
+            aria-hidden
+          />
+        }
 
-            <Label
-              htmlFor={htmlFor}
-              label={label}
-              className={formElement.label && formElement.label.className}
-              isFocused={isFocused}
-              isFloating={this.isLabelFloating}
-              hasErrorMessage={this.hasErrorMessage}
-            />
+        <Label
+          htmlFor={htmlFor}
+          label={label}
+          className={formElement.label && formElement.label.className}
+          isFocused={isFocused}
+          isFloating={this.isLabelFloating}
+          hasErrorMessage={this.hasErrorMessage}
+        />
 
-            {this.props.children}
+        {this.props.children}
 
-            {this.props.hasUnderline &&
-              <Underline
-                className={formElement.underline && formElement.underline.className}
-                isFocused={isFocused}
-                hasErrorMessage={this.hasErrorMessage}
-              />
-            }
-            <ErrorText
-              className={formElement.errorText && formElement.errorText.className}
-              errorText={errorText}
-              translate={translateErrorText}
-            />
-          </div>
-        )}
-      </FormContext.Consumer>
+        {this.props.hasUnderline &&
+          <Underline
+            className={formElement.underline && formElement.underline.className}
+            isFocused={isFocused}
+            hasErrorMessage={this.hasErrorMessage}
+          />
+        }
+        <ErrorText
+          className={formElement.errorText && formElement.errorText.className}
+          errorText={errorText}
+          translate={translateErrorText}
+        />
+      </div>
     );
   }
 }

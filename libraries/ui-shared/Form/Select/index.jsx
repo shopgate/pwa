@@ -34,6 +34,8 @@ class Select extends Component {
     value: '',
   };
 
+  static contextType = FormContext;
+
   /**
    * Creates a new text field component.
    * @param {Object} props The component properties.
@@ -79,6 +81,8 @@ class Select extends Component {
    */
   render() {
     const { name, options, translateErrorText } = this.props;
+    const { select = {} } = this.context || {};
+
     return (
       <FormElement
         className={this.props.className}
@@ -90,29 +94,25 @@ class Select extends Component {
         isFocused={this.state.isFocused}
         hasValue={!!this.state.value}
       >
-        <FormContext.Consumer>
-          {({ select = {} } = {}) => (
-            <select
-              id={this.props.name}
-              name={this.props.name}
-              onChange={this.handleChange}
-              onFocus={() => this.handleFocusChange(true)}
-              onBlur={() => this.handleFocusChange(false)}
-              value={this.state.value}
-              className={classNames(styles.select, select.className)}
+        <select
+          id={this.props.name}
+          name={this.props.name}
+          onChange={this.handleChange}
+          onFocus={() => this.handleFocusChange(true)}
+          onBlur={() => this.handleFocusChange(false)}
+          value={this.state.value}
+          className={classNames(styles.select, select.className)}
+        >
+          {Object.keys(options).map(key => (
+            <option
+              className={select.item && select.item.className}
+              value={key}
+              key={`${name}_${key}`}
             >
-              {Object.keys(options).map(key => (
-                <option
-                  className={select.item && select.item.className}
-                  value={key}
-                  key={`${name}_${key}`}
-                >
-                  {options[key]}
-                </option>
-              ))}
-            </select>
-          )}
-        </FormContext.Consumer>
+              {options[key]}
+            </option>
+          ))}
+        </select>
       </FormElement>
     );
   }

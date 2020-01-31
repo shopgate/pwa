@@ -32,6 +32,8 @@ class Checkbox extends Component {
     onCheck: () => {},
   };
 
+  static contextType = FormContext;
+
   /**
    * The checkbox component contructor.
    * It checks if the checkbox is a controlled or uncontrolled input and sets an internal state if
@@ -128,21 +130,19 @@ class Checkbox extends Component {
    * @returns {JSX}
    */
   render() {
+    const { checkbox = {} } = this.context || {};
+
     return (
-      <FormContext.Consumer>
-        {({ checkbox = {} } = {}) => (
-          <div
-            className={classNames(this.props.className, checkbox.className)}
-            onClick={this.handleCheck}
-            aria-hidden
-          >
-            {this.renderInput(checkbox.input && checkbox.input.className)}
-            {this.renderLabelIfItIsOnThe('left')}
-            {this.renderIcon()}
-            {this.renderLabelIfItIsOnThe('right')}
-          </div>
-        )}
-      </FormContext.Consumer>
+      <div
+        className={classNames(this.props.className, checkbox.className)}
+        onClick={this.handleCheck}
+        aria-hidden
+      >
+        {this.renderInput()}
+        {this.renderLabelIfItIsOnThe('left')}
+        {this.renderIcon()}
+        {this.renderLabelIfItIsOnThe('right')}
+      </div>
     );
   }
 }

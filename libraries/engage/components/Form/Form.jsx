@@ -15,6 +15,8 @@ class Form extends PureComponent {
     onSubmit: () => {},
   }
 
+  static contextType = FormContext;
+
   /**
    * Initializes the form component.
    * @param {Object} props The components props.
@@ -58,21 +60,19 @@ class Form extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const { form = {} } = this.context || {};
+
     /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
     return (
-      <FormContext.Consumer>
-        {({ form = {} } = {}) => (
-          <form
-            action="#"
-            className={form.className}
-            onSubmit={this.handleSubmit}
-            onKeyPress={this.handleKeyPress}
-            ref={this.formElement}
-          >
-            {this.props.children}
-          </form>
-        )}
-      </FormContext.Consumer>
+      <form
+        action="#"
+        className={form.className}
+        onSubmit={this.handleSubmit}
+        onKeyPress={this.handleKeyPress}
+        ref={this.formElement}
+      >
+        {this.props.children}
+      </form>
     );
     /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
   }

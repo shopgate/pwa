@@ -34,6 +34,8 @@ class RadioGroup extends Component {
     value: null,
   }
 
+  static contextType = FormContext;
+
   /**
    * Initializes the component.
    * @param {Object} props The components props.
@@ -71,6 +73,8 @@ class RadioGroup extends Component {
       children, label, errorText, direction, name, translateErrorText,
     } = this.props;
 
+    const { radio = {} } = this.context || {};
+
     return (
       <FormElement
         label={label}
@@ -80,18 +84,14 @@ class RadioGroup extends Component {
         hasUnderline={false}
         hasValue
       >
-        <FormContext.Consumer>
-          {({ radio = {} } = {}) => (
-            <div className={classNames(style.container(direction), radio.className)}>
-              {Children.map(children, child => cloneElement(child, {
-                key: `${name}_${child.props.name}`,
-                checked: this.state.value === child.props.name,
-                onChange: this.handleChange,
-              }))
-              }
-            </div>
-          )}
-        </FormContext.Consumer>
+        <div className={classNames(style.container(direction), radio.className)}>
+          {Children.map(children, child => cloneElement(child, {
+            key: `${name}_${child.props.name}`,
+            checked: this.state.value === child.props.name,
+            onChange: this.handleChange,
+          }))
+          }
+        </div>
       </FormElement>
     );
   }

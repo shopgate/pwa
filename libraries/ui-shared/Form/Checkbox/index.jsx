@@ -31,6 +31,8 @@ class Checkbox extends PureComponent {
     translateErrorText: true,
   };
 
+  static contextType = FormContext;
+
   /**
    * @return {JSX}
    */
@@ -38,38 +40,37 @@ class Checkbox extends PureComponent {
     const {
       name, label, onChange, className, errorText, translateErrorText, ...restProps
     } = this.props;
+
+    const { checkbox = {} } = this.context || {};
+
     return (
-      <FormContext.Consumer>
-        {({ checkbox = {} } = {}) => (
-          <FormElement
-            className={`${className} ${style.root}`}
-            htmlFor={name}
-            errorText={errorText}
-            translateErrorText={translateErrorText}
-            hasUnderline={false}
-            hasPlaceholder={false}
-          >
-            <UICheckbox
-              {...restProps}
-              name={name}
-              onCheck={onChange}
-              checkedClassName={`${className} ${style.checked}`}
-              unCheckedClassName={className}
-              labelPosition="right"
-              label={
-                <div
-                  className={classNames(
-                    style.labelWrapper,
-                    checkbox.label && checkbox.label.className
-                  )}
-                >
-                  <I18n.Text className={style.label} string={label} />
-                </div>
-              }
-            />
-          </FormElement>
-        )}
-      </FormContext.Consumer>
+      <FormElement
+        className={`${className} ${style.root}`}
+        htmlFor={name}
+        errorText={errorText}
+        translateErrorText={translateErrorText}
+        hasUnderline={false}
+        hasPlaceholder={false}
+      >
+        <UICheckbox
+          {...restProps}
+          name={name}
+          onCheck={onChange}
+          checkedClassName={`${className} ${style.checked}`}
+          unCheckedClassName={className}
+          labelPosition="right"
+          label={
+            <div
+              className={classNames(
+                style.labelWrapper,
+                checkbox.label && checkbox.label.className
+              )}
+            >
+              <I18n.Text className={style.label} string={label} />
+            </div>
+          }
+        />
+      </FormElement>
     );
   }
 }

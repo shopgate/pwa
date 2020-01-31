@@ -50,6 +50,8 @@ class TextField extends Component {
     value: '',
   };
 
+  static contextType = FormContext;
+
   /**
    * Creates a new text field component.
    * @param {Object} props The component properties.
@@ -146,53 +148,50 @@ class TextField extends Component {
   render() {
     const styleType = this.props.multiLine ? 'multiLine' : 'input';
     const style = styles.container[styleType];
+    const { textField = {} } = this.context || {};
 
     return (
-      <FormContext.Consumer>
-        {({ textField = {} } = {}) => (
-          <div className={classNames(style, this.props.className, textField.className)}>
-            <Hint
-              className={textField.hint && textField.hint.className}
-              visible={this.isHintVisible}
-              hintText={this.props.hintText}
-            />
-            <Label
-              className={textField.label && textField.label.className}
-              name={this.props.name}
-              label={this.props.label}
-              isFocused={this.isFocused}
-              isFloating={this.isLabelFloating}
-              hasErrorMessage={this.hasErrorMessage}
-            />
-            <FormElement
-              id={this.props.name}
-              className={textField[styleType] && textField[styleType].className}
-              multiLine={this.props.multiLine}
-              name={this.props.name}
-              setRef={this.props.setRef}
-              onFocusChange={this.handleFocusChange}
-              onChange={this.handleChange}
-              onSanitize={this.props.onSanitize}
-              onValidate={this.handleValidate}
-              password={this.props.password}
-              type={this.props.type}
-              value={this.props.value}
-              isControlled={this.props.isControlled}
-            />
-            <Underline
-              className={textField.underline && textField.underline.className}
-              isFocused={this.isFocused}
-              hasErrorMessage={this.hasErrorMessage}
-            />
-            <ErrorText
-              className={textField.errorText && textField.errorText.className}
-              validationError={this.state.validationError}
-              errorText={this.props.errorText}
-              translate={this.props.translateErrorText}
-            />
-          </div>
-        )}
-      </FormContext.Consumer>
+      <div className={classNames(style, this.props.className, textField.className)}>
+        <Hint
+          className={textField.hint && textField.hint.className}
+          visible={this.isHintVisible}
+          hintText={this.props.hintText}
+        />
+        <Label
+          className={textField.label && textField.label.className}
+          name={this.props.name}
+          label={this.props.label}
+          isFocused={this.isFocused}
+          isFloating={this.isLabelFloating}
+          hasErrorMessage={this.hasErrorMessage}
+        />
+        <FormElement
+          id={this.props.name}
+          className={textField[styleType] && textField[styleType].className}
+          multiLine={this.props.multiLine}
+          name={this.props.name}
+          setRef={this.props.setRef}
+          onFocusChange={this.handleFocusChange}
+          onChange={this.handleChange}
+          onSanitize={this.props.onSanitize}
+          onValidate={this.handleValidate}
+          password={this.props.password}
+          type={this.props.type}
+          value={this.props.value}
+          isControlled={this.props.isControlled}
+        />
+        <Underline
+          className={textField.underline && textField.underline.className}
+          isFocused={this.isFocused}
+          hasErrorMessage={this.hasErrorMessage}
+        />
+        <ErrorText
+          className={textField.errorText && textField.errorText.className}
+          validationError={this.state.validationError}
+          errorText={this.props.errorText}
+          translate={this.props.translateErrorText}
+        />
+      </div>
     );
   }
 }
