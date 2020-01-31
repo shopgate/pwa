@@ -78,6 +78,7 @@
     "quantity": "Aantal",
     "minOrderQuantity": "Min. bestelhoeveelheid:{quantity}",
     "maxOrderQuantity": "Max. bestelhoeveelheid:{quantity}",
+    "zip_search": "ZIP code",
     "available": {
       "at": "Beschikbaar op {startDate, date, DD} {startDate, date, MMM} om {startDate, time, short}",
       "until": "Beschikbaar tot {endDate, date, DD} {endDate, date, MMM} om {endDate, time, short}",
