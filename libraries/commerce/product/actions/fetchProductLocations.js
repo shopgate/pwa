@@ -32,7 +32,9 @@ export function fetchProductLocations(productId, params = {}) {
         longitude,
         latitude,
       })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveProductLocations(productId, result.locations));
       })

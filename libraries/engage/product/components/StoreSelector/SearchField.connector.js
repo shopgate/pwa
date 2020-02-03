@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { getGeolocation } from '@shopgate/engage/core';
 import {
   makeGetIsFetchingProductLocations,
-  fetchProductLocations,
   getProduct,
 } from '@shopgate/engage/product';
+import { getProductLocations } from './SearchField.actions';
 
 /**
  * @returns {Function}
@@ -23,29 +22,6 @@ const makeMapStateToProps = () => {
   });
 };
 
-/**
- * @param {Function} dispatch The dispatch function.
- * @param {Object} ownProps The component props.
- * @returns {Object}
- */
-const mapDispatchToProps = dispatch => ({
-  getLocationsByGeolocation: async (productId) => {
-    try {
-      const location = await dispatch(getGeolocation({ useSettingsModal: true }));
-      dispatch(fetchProductLocations(productId, location));
-    } catch (e) {
-      // Nothing to do here.
-    }
-  },
-  getLocationsByPostalCode: (productId, postalCode) => {
-    if (!postalCode) {
-      return;
-    }
-
-    dispatch(fetchProductLocations(productId, {
-      postalCode,
-    }));
-  },
-});
+const mapDispatchToProps = ({ getProductLocations });
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

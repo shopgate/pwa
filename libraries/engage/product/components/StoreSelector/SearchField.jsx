@@ -1,7 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, {
+  Fragment, useState, useRef, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import { i18n, withCurrentProduct } from '@shopgate/engage/core';
-import { ProgressBar, MagnifierIcon, LocatorIcon } from '@shopgate/engage/components';
+import {
+  ProgressBar, MagnifierIcon, LocatorIcon, MessageBar,
+} from '@shopgate/engage/components';
 import connect from './SearchField.connector';
 import {
   container, search, input, icon, progressBar,
@@ -16,36 +20,48 @@ function SearchField(props) {
   const {
     productId,
     loading,
-    getLocationsByPostalCode,
-    getLocationsByGeolocation,
+    getProductLocations,
   } = props;
 
   const [query, setQuery] = useState('');
+  const [message, setMessage] = useState('');
+  const inputEl = useRef(null);
+
+  /**
+   * Triggers a location update.
+   * @param {string} [postalCode=null] An optional postal code.
+   */
+  const updateProductLocations = useCallback(async (postalCode = null) => {
+    const error = await getProductLocations(productId, postalCode);
+    setMessage(error || '');
+  }, [getProductLocations, productId]);
 
   /**
    * Updates the query state of the component when the input changes.
    * @param {Object} e A React event object.
    */
-  const handleOnChange = (e) => {
+  const handleOnChange = useCallback((e) => {
     setQuery(e.target.value);
-  };
+  }, []);
 
   /**
-   * Queries locations by postal codes.
+   * Triggers a locations update by postal codes when the Enter key is pressed.
    * @param {Object} e A React event object.
    */
-  const handleOnKeyDown = (e) => {
+  const handleOnKeyDown = useCallback((e) => {
     if (e.keyCode === 13) {
-      getLocationsByPostalCode(productId, query);
+      inputEl.current.blur();
+      updateProductLocations(query);
     }
-  };
+  }, [query, updateProductLocations]);
 
   /**
-   * Queries locations by geo coordinates.
+   * Triggers a locations update by geolocation.
    */
-  const handleLocate = () => {
-    getLocationsByGeolocation(productId);
-  };
+  const handleLocateMeButton = useCallback(() => {
+    setQuery('');
+    updateProductLocations();
+  }, [updateProductLocations]);
 
   return (
     <Fragment>
@@ -55,6 +71,7 @@ function SearchField(props) {
             <MagnifierIcon />
           </span>
           <input
+            ref={inputEl}
             className={input}
             value={query}
             onChange={handleOnChange}
@@ -65,7 +82,7 @@ function SearchField(props) {
             autoCorrect="off"
             placeholder={i18n.text('product.zip_search')}
           />
-          <button onClick={handleLocate} type="button" className={icon}>
+          <button onClick={handleLocateMeButton} type="button" className={icon}>
             <LocatorIcon />
           </button>
         </div>
@@ -73,13 +90,19 @@ function SearchField(props) {
       <div className={progressBar}>
         <ProgressBar isVisible={loading} />
       </div>
+      { message &&
+        <MessageBar messages={[{
+          type: 'error',
+          message,
+        }]}
+        />
+      }
     </Fragment>
   );
 }
 
 SearchField.propTypes = {
-  getLocationsByGeolocation: PropTypes.func.isRequired,
-  getLocationsByPostalCode: PropTypes.func.isRequired,
+  getProductLocations: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   productId: PropTypes.string,
 };
