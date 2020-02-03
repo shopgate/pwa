@@ -1,3 +1,5 @@
+import { createContext } from 'react';
+
 const context = {
   params: {
     categoryId: '1234',
@@ -14,14 +16,5 @@ const context = {
   open: true,
 };
 
-export const RouteContext = ({
-  Consumer(props) {
-    return props.children(context);
-  },
-});
-
-export const FormContext = ({
-  Provider(props) {
-    return typeof props.children === 'function' ? props.children() : props.children;
-  },
-});
+export const RouteContext = createContext(context);
+export const FormContext = createContext();
