@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import Store from './Store';
 import FulfillmentContext from '../context';
+import StoreContext from './Store.context';
 import { stores } from './style';
 
 /**
  * Renders the locations where the product can be picked up.
  * @returns {JSX}
  */
-function Locations() {
+function StoreListLocations() {
   const { locations } = useContext(FulfillmentContext);
 
   if (!locations || locations.length === 0) {
@@ -17,10 +18,12 @@ function Locations() {
   return (
     <div className={stores}>
       {locations.map(location => (
-        <Store store={location} key={location.code} />
+        <StoreContext.Provider value={location} key={location.code}>
+          <Store />
+        </StoreContext.Provider>
       ))}
     </div>
   );
 }
 
-export default Locations;
+export default StoreListLocations;

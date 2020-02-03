@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PhoneIcon } from '@shopgate/engage/components';
+import { PhoneIcon } from '../../../components';
 import { phone as phoneStyle, phoneIcon } from './style';
 
 /**
@@ -8,7 +8,7 @@ import { phone as phoneStyle, phoneIcon } from './style';
  * @param {Object} props The compnent props.
  * @returns {JSX}
  */
-function PhoneNumber({ phone }) {
+function StoreAddressPhoneNumber({ phone }) {
   if (!phone) {
     return null;
   }
@@ -23,12 +23,12 @@ function PhoneNumber({ phone }) {
   );
 }
 
-PhoneNumber.propTypes = {
+StoreAddressPhoneNumber.propTypes = {
   phone: PropTypes.string,
 };
 
-PhoneNumber.defaultProps = {
+StoreAddressPhoneNumber.defaultProps = {
   phone: null,
 };
 
-export default PhoneNumber;
+export default StoreAddressPhoneNumber;

@@ -2,13 +2,16 @@ import { hot } from 'react-hot-loader/root';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
+// eslint-disable-next-line import/named
+import { logger } from '../../../core';
 import { withCurrentProduct } from '../../../core/hocs/withCurrentProduct';
 import { i18n } from '../../../core/helpers/i18n';
 import SheetDrawer from '../../../components/SheetDrawer';
-import { sheet } from './style';
 import { StoreList } from '../StoreList';
 import { ReserveForm } from '../ReserveForm';
-import connect from './connector';
+import { ReservationSuccess, ReservationError } from '../ReservationResponses';
+import { sheet } from './FulfillmentSheet.style';
+import connect from './FulfillmentSheet.connector';
 import FulfillmentContext from '../context';
 
 const EVENT_SET_OPEN = 'event.setOpen';
@@ -61,6 +64,8 @@ class FulfillmentSheet extends PureComponent {
     isOpen: false,
     stage: STAGES[0],
     title: i18n.text('product.location.headline'),
+    orderNumbers: null,
+    errors: null,
   };
 
   /**
@@ -88,7 +93,13 @@ class FulfillmentSheet extends PureComponent {
    * @param {Object} [location=null] The selected location.
    */
   handleSetClosed = (location = null) => {
-    this.setState({ isOpen: false });
+    this.setState({
+      isOpen: false,
+      stage: STAGES[0],
+      title: i18n.text('product.location.headline'),
+      orderNumbers: null,
+      errors: null,
+    });
     this.callback(location);
     this.callback = () => { };
   }
@@ -101,10 +112,14 @@ class FulfillmentSheet extends PureComponent {
    * @param {string} params.addresscode The address code.
    * @param {number} params.visibleInventory The visible stock amount.
    */
-  handleSelectLocation = ({
-    code, name, addressCode, visibleInventory,
-  }) => {
-    const { selectLocation, product } = this.props;
+  handleSelectLocation = (params) => {
+    const {
+      code, name, addressCode, visibleInventory,
+    } = params;
+    const {
+      selectLocation,
+      product,
+    } = this.props;
     const location = {
       code,
       name,
@@ -121,6 +136,30 @@ class FulfillmentSheet extends PureComponent {
   }
 
   /**
+   * Handle a success response.
+   * @param {Array} orderNumbers The order numbers.
+   */
+  handleSuccess = (orderNumbers) => {
+    this.setState({
+      stage: STAGES[2],
+      title: i18n.text('product.location.success_heading'),
+      orderNumbers,
+    });
+  }
+
+  /**
+   * @param {Array} errors The errors.
+   */
+  handleError = (errors) => {
+    this.setState({
+      stage: STAGES[2],
+      title: i18n.text('product.location.error_heading'),
+      orderNumbers: null,
+      errors,
+    });
+  }
+
+  /**
    * Handles the sending of the reservation.
    * @param {Object} values The form values.
    */
@@ -132,9 +171,16 @@ class FulfillmentSheet extends PureComponent {
 
     try {
       const response = await submitReservation(values, product);
-      console.warn('handleSendReservation', response);
+
+      if (response.errors.length > 0) {
+        this.handleError(response.errors);
+        return;
+      }
+
+      this.handleSuccess(response.orderNumbers);
     } catch (error) {
-      console.error('handleSendReservation', error);
+      logger.error(error);
+      this.handleError([error.message]);
     }
   }
 
@@ -145,7 +191,9 @@ class FulfillmentSheet extends PureComponent {
     const {
       product, locations, selectedVariants, userInput,
     } = this.props;
-    const { isOpen, stage, title } = this.state;
+    const {
+      isOpen, stage, title, orderNumbers, errors,
+    } = this.state;
 
     const contextValue = {
       selectLocation: this.handleSelectLocation,
@@ -154,6 +202,7 @@ class FulfillmentSheet extends PureComponent {
       locations,
       selectedVariants,
       userInput,
+      orderNumbers,
     };
 
     return (
@@ -166,8 +215,11 @@ class FulfillmentSheet extends PureComponent {
             {stage === STAGES[1] && (
               <ReserveForm />
             )}
-            {stage === STAGES[2] && (
-              <div>result</div>
+            {(stage === STAGES[2] && orderNumbers !== null) && (
+              <ReservationSuccess />
+            )}
+            {(stage === STAGES[2] && errors !== null) && (
+              <ReservationError />
             )}
           </div>
         </SheetDrawer>

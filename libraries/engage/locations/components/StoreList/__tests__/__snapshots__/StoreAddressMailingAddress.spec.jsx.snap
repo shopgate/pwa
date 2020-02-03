@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Address /> should not render if no address is passed in 1`] = `""`;
+exports[`<StoreAddressMailingAddress /> should not render if no address is passed in 1`] = `""`;
 
-exports[`<Address /> should render as expected 1`] = `
+exports[`<StoreAddressMailingAddress /> should render as expected 1`] = `
 <div
   className={
     Object {
@@ -30,7 +30,7 @@ exports[`<Address /> should render as expected 1`] = `
 </div>
 `;
 
-exports[`<Address /> should render more streets if necessary 1`] = `
+exports[`<StoreAddressMailingAddress /> should render more streets if necessary 1`] = `
 <div
   className={
     Object {

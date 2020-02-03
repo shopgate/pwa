@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PhoneNumber /> should not render if no phone number is passed 1`] = `""`;
+exports[`<StoreAddressPhoneNumber /> should not render if no phone number is passed 1`] = `""`;
 
-exports[`<PhoneNumber /> should render as expected 1`] = `
+exports[`<StoreAddressPhoneNumber /> should render as expected 1`] = `
 <a
   className={
     Object {

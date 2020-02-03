@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize } from '@shopgate/engage/core';
-import { I18n } from '@shopgate/engage/components';
+import { capitalize } from '../../../core';
+import { I18n } from '../../../components';
 
 /**
  * Renders the given store name if one is set and capitalizes the resulting text if asked for.

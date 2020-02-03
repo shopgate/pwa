@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { mockDate, resetMockDate } from '@shopgate/engage/mocks';
-import StoreHoursToday from '../StoreHoursToday';
+import { mockDate, resetMockDate } from '../../../../mocks';
+import StoreAddressHoursToday from '../StoreAddressHoursToday';
 
 const hours = {
   mon: '8:00am - 4:00pm',
@@ -19,14 +19,14 @@ describe('<StoreHoursToday />', () => {
   });
 
   it('should not render if no hours have been passed', () => {
-    const wrapper = shallow(<StoreHoursToday />);
+    const wrapper = shallow(<StoreAddressHoursToday />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.instance()).toEqual(null);
   });
 
   it('should render as expected', () => {
     mockDate('2019-01-01T10:00:00.000Z');
-    const wrapper = shallow(<StoreHoursToday hours={hours} />);
+    const wrapper = shallow(<StoreAddressHoursToday hours={hours} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('div').getElements().length).toEqual(1);
   });

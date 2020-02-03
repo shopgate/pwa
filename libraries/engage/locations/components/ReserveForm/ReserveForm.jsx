@@ -8,7 +8,7 @@ import { i18n } from '../../../core/helpers/i18n';
 import FulfillmentContext from '../context';
 import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button,
-} from './style';
+} from './ReserveForm.style';
 
 /**
  * @returns {JSX}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '../../../core';
 import { storeHoursToday } from './style';
 
 const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
@@ -10,7 +10,7 @@ const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function StoreHoursToday({ hours }) {
+function StoreAddressHoursToday({ hours }) {
   if (!hours) {
     return null;
   }
@@ -29,12 +29,12 @@ function StoreHoursToday({ hours }) {
   );
 }
 
-StoreHoursToday.propTypes = {
+StoreAddressHoursToday.propTypes = {
   hours: PropTypes.shape(),
 };
 
-StoreHoursToday.defaultProps = {
+StoreAddressHoursToday.defaultProps = {
   hours: null,
 };
 
-export default StoreHoursToday;
+export default StoreAddressHoursToday;

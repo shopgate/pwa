@@ -25,14 +25,16 @@ function submitReservation(values, product) {
         if (result.errors && result.errors.length > 0) {
           logger.error(result.errors);
           dispatch(submitReservationError(result.errors));
-          return;
+          return result;
         }
 
-        dispatch(submitReservationSuccess());
+        dispatch(submitReservationSuccess(result.orderNumbers));
+        return result;
       })
       .catch((error) => {
         logger.error(error);
         dispatch(submitReservationError([error]));
+        return error;
       });
 
     return request;

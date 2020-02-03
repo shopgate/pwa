@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StoreAddressOpeningHours /> should not render hours that are empty 1`] = `
+<StoreAddressOpeningHours
+  hours={
+    Object {
+      "mon": "8:00am - 4:00pm",
+      "tue": "",
+      "wen": "8:00am - 8:00pm",
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-1xm8nj0": "",
+      }
+    }
+  >
+    <StoreAddressOpeningHoursLine
+      code="mon"
+      hours="8:00am - 4:00pm"
+      key="mon"
+    >
+      <div
+        className={
+          Object {
+            "data-css-9shxm7": "",
+          }
+        }
+      >
+        <div
+          className={
+            Object {
+              "data-css-1ppc7ry": "",
+            }
+          }
+        >
+          product.location.mon
+        </div>
+        <div
+          data-test-id="hours-mon"
+        >
+          8:00am - 4:00pm
+        </div>
+      </div>
+    </StoreAddressOpeningHoursLine>
+    <StoreAddressOpeningHoursLine
+      code="tue"
+      hours=""
+      key="tue"
+    />
+    <StoreAddressOpeningHoursLine
+      code="wen"
+      hours="8:00am - 8:00pm"
+      key="wen"
+    >
+      <div
+        className={
+          Object {
+            "data-css-9shxm7": "",
+          }
+        }
+      >
+        <div
+          className={
+            Object {
+              "data-css-1ppc7ry": "",
+            }
+          }
+        >
+          product.location.wen
+        </div>
+        <div
+          data-test-id="hours-wen"
+        >
+          8:00am - 8:00pm
+        </div>
+      </div>
+    </StoreAddressOpeningHoursLine>
+  </div>
+</StoreAddressOpeningHours>
+`;
+
+exports[`<StoreAddressOpeningHours /> should not render if no hours are passed 1`] = `""`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Address from '../Address';
+import StoreAddressMailingAddress from '../StoreAddressMailingAddress';
 
 const dummyAddress = {
   street: 'Test Street 123',
@@ -10,15 +10,15 @@ const dummyAddress = {
   street3: '',
 };
 
-describe('<Address />', () => {
+describe('<StoreAddressMailingAddress />', () => {
   it('should not render if no address is passed in', () => {
-    const wrapper = shallow(<Address />);
+    const wrapper = shallow(<StoreAddressMailingAddress />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.instance()).toEqual(null);
   });
 
   it('should render as expected', () => {
-    const wrapper = shallow(<Address address={dummyAddress} />);
+    const wrapper = shallow(<StoreAddressMailingAddress address={dummyAddress} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('LocationIcon')).toBeTruthy();
     expect(wrapper.find('[data-test-id="street"]').text()).toEqual(dummyAddress.street);
@@ -29,7 +29,7 @@ describe('<Address />', () => {
   });
 
   it('should render more streets if necessary', () => {
-    const wrapper = shallow(<Address
+    const wrapper = shallow(<StoreAddressMailingAddress
       address={{
         ...dummyAddress,
         street2: 'Some additional street info',

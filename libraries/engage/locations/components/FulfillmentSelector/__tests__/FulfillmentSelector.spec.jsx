@@ -7,9 +7,6 @@ import {
 import { FulfillmentSheet } from '../../FulfillmentSheet';
 import { FulfillmentSelector } from '../FulfillmentSelector';
 
-jest.mock('../../../core/config/isBeta', () => ({
-  isBeta: jest.fn().mockReturnValue(true),
-}));
 jest.mock('../../FulfillmentSheet', () => ({
   FulfillmentSheet: {
     open: jest.fn(),
@@ -20,7 +17,7 @@ describe('<FulfillmentSelector />', () => {
   it('should not render if the fulfillmentMethods do not contain inStorePickup', () => {
     const wrapper = shallow((
       <FulfillmentSelector
-        productCode="abc-123"
+        productId="abc-123"
         location={{
           name: 'Test Store',
           visibleInventory: 15,
@@ -36,7 +33,7 @@ describe('<FulfillmentSelector />', () => {
   it('should render the fulfillment selector with two radio elements', () => {
     const wrapper = shallow((
       <FulfillmentSelector
-        productCode="abc-123"
+        productId="abc-123"
         location={{
           name: 'Test Store',
           visibleInventory: 15,
@@ -57,7 +54,7 @@ describe('<FulfillmentSelector />', () => {
   it('should open the store selector sheet on selecting pick_up_in_store', () => {
     const wrapper = shallow((
       <FulfillmentSelector
-        productCode="abc-123"
+        productId="abc-123"
         location={{
           name: 'Test Store',
           visibleInventory: 15,

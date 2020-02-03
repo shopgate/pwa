@@ -1,7 +1,7 @@
 import { hot } from 'react-hot-loader/root';
 import React, { Fragment } from 'react';
-import Product from './Product';
-import Locations from './Locations';
+import StoreListProduct from './StoreListProduct';
+import StoreListLocations from './StoreListLocations';
 
 /**
  * Renders the store list.
@@ -10,8 +10,8 @@ import Locations from './Locations';
 function StoreList() {
   return (
     <Fragment>
-      <Product />
-      <Locations />
+      <StoreListProduct />
+      <StoreListLocations />
     </Fragment>
   );
 }

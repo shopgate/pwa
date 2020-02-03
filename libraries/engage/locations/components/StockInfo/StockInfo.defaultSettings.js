@@ -4,7 +4,7 @@ import {
   AVAILABILITY_TYPE_LIMITED_AVAILABILITY,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_CUSTOM_AVAILABILITY,
-} from '@shopgate/engage/product';
+} from '../../../product';
 
 const { colors } = themeConfig;
 

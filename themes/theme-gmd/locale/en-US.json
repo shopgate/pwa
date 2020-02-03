@@ -123,7 +123,14 @@
       "fri": "Friday",
       "sat": "Saturday",
       "sun": "Sunday",
-      "place_reservation": "Submit Reservation"
+      "place_reservation": "Submit Reservation",
+      "success_heading": "Reservation Confirmation",
+      "success_title": "Thank you for your reservation",
+      "success_copy": "We will send you an email/text message shortly when your order is ready for pickup.",
+      "success_order_num": "Reservation no.",
+      "error_heading": "An error has occurred",
+      "error_title": "We're sorry but your reservation could not be placed.",
+      "error_copy": "There was an issue when trying to place your reservation. Probably some items have sold out meanwhile. Please check availability at a different location."
     }
   },
   "category": {

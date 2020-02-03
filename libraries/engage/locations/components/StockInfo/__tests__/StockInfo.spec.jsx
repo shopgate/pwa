@@ -1,14 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { getThemeSettings } from '@shopgate/engage/core';
-import getAvailabilitySettings from '../getAvailabilitySettings';
+import { getThemeSettings } from '../../../../core';
+import { getAvailabilitySettings } from '../../../helpers';
 import StockInfo from '../StockInfo';
 
-jest.mock('@shopgate/engage/core', () => ({
-  ...jest.requireActual('@shopgate/engage/core'),
+jest.mock('../../../../core', () => ({
+  ...jest.requireActual('../../../../core'),
   getThemeSettings: jest.fn(),
 }));
-jest.mock('../getAvailabilitySettings', () => jest.fn());
+jest.mock('../../../helpers', () => ({
+  getAvailabilitySettings: jest.fn(),
+}));
 
 describe('<StockInfo />', () => {
   it('should not render if no location data is passed', () => {

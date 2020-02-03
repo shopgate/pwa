@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, RadioGroupItem as RadioItem } from '@shopgate/engage/components';
-import * as styles from './style';
+import { I18n, RadioGroupItem as RadioItem } from '../../../components';
+import * as styles from './FulfillmentSelector.style';
 
 /**
  * Renders a RadioItem element to be used by the FulfillmentSelector component.

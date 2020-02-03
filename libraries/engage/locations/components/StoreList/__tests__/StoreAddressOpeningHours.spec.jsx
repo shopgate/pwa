@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import OpeningHours from '../OpeningHours';
+import { shallow, mount } from 'enzyme';
+import StoreAddressOpeningHours from '../StoreAddressOpeningHours';
 
 const hours = {
   mon: '8:00am - 4:00pm',
@@ -8,15 +8,15 @@ const hours = {
   wen: '8:00am - 8:00pm',
 };
 
-describe('<OpeningHours />', () => {
+describe('<StoreAddressOpeningHours />', () => {
   it('should not render if no hours are passed', () => {
-    const wrapper = shallow(<OpeningHours />);
+    const wrapper = shallow(<StoreAddressOpeningHours />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.instance()).toEqual(null);
   });
 
   it('should not render hours that are empty', () => {
-    const wrapper = shallow(<OpeningHours hours={hours} />);
+    const wrapper = mount(<StoreAddressOpeningHours hours={hours} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('[data-test-id="hours-mon"]').text()).toEqual(hours.mon);
     expect(wrapper.find('[data-test-id="hours-tue"]').getElements().length).toEqual(0);

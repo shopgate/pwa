@@ -1,4 +1,4 @@
-import { availabilityTypes } from '@shopgate/engage/product';
+import { availabilityTypes } from '../../product';
 
 /**
  * Takes the location stock info settings and finds the matching settings for the given inventory.

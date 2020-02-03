@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
+import { I18n } from '../../../components';
 
 /**
  * Renders the inventory given by the location into a given translation string.

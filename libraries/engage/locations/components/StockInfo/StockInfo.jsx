@@ -1,16 +1,15 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import defaultsDeep from 'lodash/defaultsDeep';
-import { getThemeSettings } from '@shopgate/engage/core';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { getThemeSettings } from '../../../core';
+import { SurroundPortals } from '../../../components';
 import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
-import defaultSettings from './defaultSettings';
-import getAvailabilitySettings from './getAvailabilitySettings';
-import Inventory from './Inventory';
-import StoreName from './StoreName';
+import { getAvailabilitySettings } from '../../helpers';
+import defaultSettings from './StockInfo.defaultSettings';
+import Inventory from './StockInfoInventory';
+import StoreName from './StockInfoStoreName';
 
 /**
  * Renders visible stock information based on the given location.
@@ -85,4 +84,4 @@ StockInfo.defaultProps = {
   showStoreName: true,
 };
 
-export default hot(StockInfo);
+export default StockInfo;

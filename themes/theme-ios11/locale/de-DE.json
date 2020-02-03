@@ -125,7 +125,15 @@
       "thu": "Donnerstag",
       "fri": "Freitag",
       "sat": "Samstag",
-      "sun": "Sonntag"
+      "sun": "Sonntag",
+      "place_reservation": "Reservierung absenden",
+      "success_heading": "Reservation Confirmation",
+      "success_title": "Thank you for your reservation",
+      "success_copy": "We will send you an email/text message shortly when your order is ready for pickup.",
+      "success_order_num": "Reservation no.",
+      "error_heading": "Es ist ein Fehler aufgetreten",
+      "error_title": "Leider konnte Ihre Reservierung nicht abgeschlossen werden.",
+      "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfen Sie die Verfügbarkeit in anderen Filialen im Warenkorb."
     }
   },
   "category": {

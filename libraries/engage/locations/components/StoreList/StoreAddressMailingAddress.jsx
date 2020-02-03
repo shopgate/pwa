@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LocationIcon } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { LocationIcon } from '../../../components';
+import { i18n } from '../../../core';
 import { address as container, addressIcon } from './style';
 
 /**
@@ -9,7 +9,7 @@ import { address as container, addressIcon } from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function Address({ address }) {
+function StoreAddressMailingAddress({ address }) {
   if (!address) {
     return null;
   }
@@ -44,7 +44,7 @@ function Address({ address }) {
   );
 }
 
-Address.propTypes = {
+StoreAddressMailingAddress.propTypes = {
   address: PropTypes.shape({
     city: PropTypes.string,
     postalCode: PropTypes.string,
@@ -56,8 +56,8 @@ Address.propTypes = {
   }),
 };
 
-Address.defaultProps = {
+StoreAddressMailingAddress.defaultProps = {
   address: null,
 };
 
-export default Address;
+export default StoreAddressMailingAddress;

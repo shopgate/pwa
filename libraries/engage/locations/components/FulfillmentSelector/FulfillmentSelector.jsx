@@ -10,8 +10,8 @@ import {
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
-import connect from './connector';
-import * as styles from './style';
+import connect from './FulfillmentSelector.connector';
+import * as styles from './FulfillmentSelector.style';
 
 // TODO: Integrate a conditioner that ensures selection of characteristics and required options
 /**
