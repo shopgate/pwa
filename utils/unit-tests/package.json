@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-unit-test",
-  "version": "6.9.1",
+  "version": "6.10.0",
   "description": "The unit tests setup for Shopgate's ENGAGE.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
