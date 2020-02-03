@@ -76,6 +76,10 @@
     "minOrderQuantity": "Min. Bestellmenge:{quantity}",
     "maxOrderQuantity": "Max. Bestellmenge:{quantity}",
     "zip_search": "Postleitzahl",
+    "error": {
+      "wrong_zip_code": "Bitte geben Sie eine gültige Postleitzahl ein.",
+      "no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe."
+    },
     "available": {
       "at": "Verfügbar am {startDate, date, DD} {startDate, date, MMM} um {startDate, time, short} Uhr",
       "until": "Verfügbar bis {endDate, date, DD} {endDate, date, MMM} um {endDate, time, short} Uhr",
@@ -85,14 +89,14 @@
     "fulfillment_selector": {
       "heading": "Verfügbarkeit",
       "direct_ship": "Online bestellen",
-      "pick_up_in_store": "Abholen in Filliale"
+      "pick_up_in_store": "Abholen in Filiale"
     },
     "location_stock_info": {
       "pick_up_at": "bei {storeName}",
       "available": "{visibleInventory} auf Lager",
       "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
       "notAvailable": "Verfügbar in 2-3 Tagen",
-      "customAvailability": "In dieser Filliale nicht verfügbar"
+      "customAvailability": "In dieser Filiale nicht verfügbar"
     },
     "relations": {
       "showMore": "Mehr"

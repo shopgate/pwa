@@ -76,6 +76,10 @@
     "minOrderQuantity": "Min. bestelhoeveelheid:{quantity}",
     "maxOrderQuantity": "Max. bestelhoeveelheid:{quantity}",
     "zip_search": "ZIP code",
+    "error": {
+      "wrong_zip_code": "Please enter a valid ZIP code.",
+      "no_store_found": "We don’t have any stores matching this location, please check your inputs."
+    },
     "available": {
       "at": "Beschikbaar op {startDate, date, DD} {startDate, date, MMM} om {startDate, time, short}",
       "until": "Beschikbaar tot {endDate, date, DD} {endDate, date, MMM} om {endDate, time, short}",
