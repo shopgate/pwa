@@ -104,9 +104,27 @@ describe('Action Creators: user', () => {
   });
 
   describe('successLogout()', () => {
-    it('should work as expected', () => {
-      const expected = { type: SUCCESS_LOGOUT };
+    it('should work as expected when called without parameter', () => {
+      const expected = {
+        type: SUCCESS_LOGOUT,
+        notify: true,
+      };
       expect(successLogout()).toEqual(expected);
+    });
+
+    it('should work as expected when called with true', () => {
+      const expected = {
+        type: SUCCESS_LOGOUT,
+        notify: true,
+      };
+      expect(successLogout(true)).toEqual(expected);
+    });
+    it('should work as expected when called with false', () => {
+      const expected = {
+        type: SUCCESS_LOGOUT,
+        notify: false,
+      };
+      expect(successLogout(false)).toEqual(expected);
     });
   });
 

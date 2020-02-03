@@ -1,8 +1,9 @@
 {
   "user": {
     "delete_account": "Cancella il mio account",
-    "delete_account_success": "Abbiamo ricevuto la tua richiesta di cancellazione dell'account.",
+    "delete_account_success": "Richiesta di cancellazione ricevuta. Sei stato disconnesso e cancelleremo i tuoi dati nel nostro sistema qualora fosse possibile legalmente. Questo processo potrebbe richiedere alcuni giorni.",
     "delete_account_error": "Si è verificato un errore imprevisto. Riprova più tardi per favore.",
-    "delete_account_confirm": "Premi Conferma per cancellare tutti i dati dell'account. Questa operazione non può essere annullata."
+    "delete_account_confirm": "Premi Conferma per cancellare tutti i dati dell'account. Questa operazione non può essere annullata.",
+    "contact_us": "Contattaci"
   }
 }

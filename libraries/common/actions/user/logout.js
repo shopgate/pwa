@@ -9,9 +9,10 @@ import { mutable } from '../../helpers/redux';
 
 /**
  * Logout the current user.
+ * @param {boolean} [notify=true] If set to TRUE users are notified when the logout was successful.
  * @return {Function} A redux thunk.
  */
-function logout() {
+function logout(notify = true) {
   return (dispatch) => {
     dispatch(requestLogout());
 
@@ -24,7 +25,7 @@ function logout() {
         const { success, messages } = result;
 
         if (success) {
-          dispatch(successLogout());
+          dispatch(successLogout(notify));
         } else {
           dispatch(errorLogout(messages));
         }
