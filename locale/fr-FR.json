@@ -79,6 +79,10 @@
     "minOrderQuantity": "Quantité min. par commande:{quantity}",
     "maxOrderQuantity": "Quantité max. par commande:{quantity}",
     "zip_search": "ZIP code",
+    "error": {
+      "wrong_zip_code": "Please enter a valid ZIP code.",
+      "no_store_found": "We don’t have any stores matching this location, please check your inputs."
+    },
     "available": {
       "at": "Disponible le {startDate, date, DD} {startDate, date, MMM} à {startDate, time, short}",
       "until": "Disponible jusqu'au {endDate, date, DD} {endDate, date, MMM} à {endDate, time, short}",
