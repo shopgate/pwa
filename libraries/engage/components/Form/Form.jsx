@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext } from '@shopgate/pwa-common/context';
+import classNames from 'classnames';
 
 /**
  * Form component that handles keyboard submit, next buttons, ...
@@ -8,14 +8,14 @@ import { FormContext } from '@shopgate/pwa-common/context';
 class Form extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     onSubmit: PropTypes.func,
   }
 
   static defaultProps = {
+    className: null,
     onSubmit: () => {},
   }
-
-  static contextType = FormContext;
 
   /**
    * Initializes the form component.
@@ -60,13 +60,11 @@ class Form extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    const { form = {} } = this.context || {};
-
     /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
     return (
       <form
         action="#"
-        className={form.className}
+        className={classNames(this.props.className, 'form')}
         onSubmit={this.handleSubmit}
         onKeyPress={this.handleKeyPress}
         ref={this.formElement}

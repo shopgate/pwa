@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormContext } from '@shopgate/pwa-common/context';
 import FormElement from '../../FormElement';
 import styles from './style';
 
@@ -33,8 +32,6 @@ class Select extends Component {
     translateErrorText: true,
     value: '',
   };
-
-  static contextType = FormContext;
 
   /**
    * Creates a new text field component.
@@ -81,8 +78,6 @@ class Select extends Component {
    */
   render() {
     const { name, options, translateErrorText } = this.props;
-    const { select = {} } = this.context || {};
-
     return (
       <FormElement
         className={this.props.className}
@@ -101,17 +96,13 @@ class Select extends Component {
           onFocus={() => this.handleFocusChange(true)}
           onBlur={() => this.handleFocusChange(false)}
           value={this.state.value}
-          className={classNames(styles.select, select.className)}
+          className={classNames(styles.select, 'select')}
         >
-          {Object.keys(options).map(key => (
-            <option
-              className={select.item && select.item.className}
-              value={key}
-              key={`${name}_${key}`}
-            >
-              {options[key]}
-            </option>
-          ))}
+          {
+            Object.keys(options).map(key => (
+              <option className="option" value={key} key={`${name}_${key}`}>{options[key]}</option>
+            ))
+          }
         </select>
       </FormElement>
     );

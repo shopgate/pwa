@@ -1,4 +1,4 @@
-import { ELEMENT_TYPE_CHECKBOX, ELEMENT_TYPE_SELECT } from '../elementTypes';
+import { ELEMENT_TYPE_CHECKBOX, ELEMENT_TYPE_SELECT } from '../Builder.constants';
 
 /**
  * Prepare state of formData for form builder

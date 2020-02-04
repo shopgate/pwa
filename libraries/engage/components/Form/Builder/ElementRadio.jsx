@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
@@ -15,30 +15,32 @@ const ElementRadio = (props) => {
     element,
     errorText,
     name,
-    style,
     value,
   } = props;
 
   return (
-    <RadioGroup
-      name={name}
-      className={style.fields}
-      label={element.label}
-      value={value}
-      onChange={element.handleChange}
-      errorText={errorText}
-      isControlled
-      translateErrorText={false}
-    >
-      {Object.keys(element.options).map(itemName => (
-        <RadioItem
-          key={`${name}_${itemName}`}
-          id={`${name}_${camelCase(itemName)}`}
-          name={itemName}
-          label={element.options[itemName]}
-        />
-      ))}
-    </RadioGroup>
+    <div className={camelCase(name)}>
+      <RadioGroup
+        name={name}
+        label={element.label}
+        value={value}
+        onChange={element.handleChange}
+        errorText={errorText}
+        isControlled
+        translateErrorText={false}
+      >
+        {Object.keys(element.options).map(itemName => (
+          <div className={`${camelCase(name)}_${camelCase(itemName)}`}>
+            <RadioItem
+              key={`${name}_${itemName}`}
+              id={`${name}_${camelCase(itemName)}`}
+              name={itemName}
+              label={element.options[itemName]}
+            />
+          </div>
+        ))}
+      </RadioGroup>
+    </div>
   );
 };
 
@@ -46,7 +48,6 @@ ElementRadio.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  style: PropTypes.shape(),
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,
     PropTypes.bool.isRequired,
@@ -56,7 +57,6 @@ ElementRadio.propTypes = {
 
 ElementRadio.defaultProps = {
   value: '',
-  style: { fields: '' },
 };
 
-export default ElementRadio;
+export default memo(ElementRadio);

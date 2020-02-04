@@ -1,7 +1,6 @@
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormContext } from '@shopgate/pwa-common/context';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import style from './style';
 
@@ -33,8 +32,6 @@ class RadioGroup extends Component {
     translateErrorText: true,
     value: null,
   }
-
-  static contextType = FormContext;
 
   /**
    * Initializes the component.
@@ -73,8 +70,6 @@ class RadioGroup extends Component {
       children, label, errorText, direction, name, translateErrorText,
     } = this.props;
 
-    const { radio = {} } = this.context || {};
-
     return (
       <FormElement
         label={label}
@@ -84,7 +79,7 @@ class RadioGroup extends Component {
         hasUnderline={false}
         hasValue
       >
-        <div className={classNames(style.container(direction), radio.className)}>
+        <div className={classNames(style.container(direction), 'radioGroup')}>
           {Children.map(children, child => cloneElement(child, {
             key: `${name}_${child.props.name}`,
             checked: this.state.value === child.props.name,

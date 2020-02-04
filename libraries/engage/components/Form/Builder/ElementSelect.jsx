@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { camelCase } from 'lodash';
 import Select from '@shopgate/pwa-ui-shared/Form/Select';
 
 /**
@@ -13,23 +14,23 @@ const ElementSelect = (props) => {
     element,
     errorText,
     name,
-    style,
     value,
   } = props;
 
   return (
-    <Select
-      name={name}
-      className={style.fields}
-      label={element.label}
-      placeholder={element.placeholder}
-      value={value}
-      options={element.options}
-      onChange={element.handleChange}
-      errorText={errorText}
-      isControlled
-      translateErrorText={false}
-    />
+    <div className={camelCase(name)}>
+      <Select
+        name={name}
+        label={element.label}
+        placeholder={element.placeholder}
+        value={value}
+        options={element.options}
+        onChange={element.handleChange}
+        errorText={errorText}
+        isControlled
+        translateErrorText={false}
+      />
+    </div>
   );
 };
 
@@ -37,7 +38,6 @@ ElementSelect.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  style: PropTypes.shape(),
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,
     PropTypes.bool.isRequired,
@@ -47,7 +47,6 @@ ElementSelect.propTypes = {
 
 ElementSelect.defaultProps = {
   value: '',
-  style: { fields: '' },
 };
 
-export default ElementSelect;
+export default memo(ElementSelect);

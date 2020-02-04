@@ -14,17 +14,16 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
-      className={null}
       placeholder=""
       visible={false}
     >
       <div
         aria-hidden={true}
-        className="css-rkuo1o css-1jyyyen"
+        className="css-rkuo1o css-1jyyyen placeholder"
       >
         <Translate
           className={null}
@@ -35,7 +34,6 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       </div>
     </Placeholder>
     <Label
-      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={true}
@@ -43,7 +41,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       label=""
     >
       <label
-        className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+        className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
         htmlFor="test-input"
       >
         <Translate
@@ -55,12 +53,11 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       </label>
     </Label>
     <Underline
-      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
       <div
-        className="css-ycal4l"
+        className="css-ycal4l underline"
       >
         <div
           className="css-1tpmuef"
@@ -79,7 +76,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       translate={true}
     >
       <div
-        className="css-hyvrm8"
+        className="css-hyvrm8 errorText"
       >
         <Translate
           className={null}
@@ -107,17 +104,16 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
-      className={null}
       placeholder=""
       visible={false}
     >
       <div
         aria-hidden={true}
-        className="css-rkuo1o css-1jyyyen"
+        className="css-rkuo1o css-1jyyyen placeholder"
       >
         <Translate
           className={null}
@@ -128,7 +124,6 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       </div>
     </Placeholder>
     <Label
-      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={true}
@@ -136,7 +131,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       label=""
     >
       <label
-        className="css-1nn9zl4 css-1r91c0g css-nil"
+        className="css-1nn9zl4 css-1r91c0g css-nil label"
         htmlFor="test-input"
       >
         <Translate
@@ -148,12 +143,11 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       </label>
     </Label>
     <Underline
-      className={null}
       hasErrorMessage={false}
       isFocused={true}
     >
       <div
-        className="css-ycal4l"
+        className="css-ycal4l underline"
       >
         <div
           className="css-1tpmuef"
@@ -171,7 +165,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       translate={true}
     >
       <div
-        className="css-hyvrm8"
+        className="css-hyvrm8 errorText"
       >
         <Translate
           className={null}
@@ -199,17 +193,16 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
-      className={null}
       placeholder=""
       visible={true}
     >
       <div
         aria-hidden={true}
-        className="css-rkuo1o"
+        className="css-rkuo1o placeholder"
       >
         <Translate
           className={null}
@@ -220,7 +213,6 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       </div>
     </Placeholder>
     <Label
-      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -228,7 +220,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       label=""
     >
       <label
-        className="css-1nn9zl4 css-1jyyyen"
+        className="css-1nn9zl4 css-1jyyyen label"
         htmlFor="test-input"
       >
         <Translate
@@ -243,12 +235,11 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       key="test-key"
     />
     <Underline
-      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
       <div
-        className="css-ycal4l"
+        className="css-ycal4l underline"
       >
         <div
           className="css-1tpmuef"
@@ -267,7 +258,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       translate={true}
     >
       <div
-        className="css-hyvrm8"
+        className="css-hyvrm8 errorText"
       >
         <Translate
           className={null}
@@ -295,17 +286,16 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
-      className={null}
       placeholder=""
       visible={true}
     >
       <div
         aria-hidden={true}
-        className="css-rkuo1o"
+        className="css-rkuo1o placeholder"
       >
         <Translate
           className={null}
@@ -316,7 +306,6 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       </div>
     </Placeholder>
     <Label
-      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -324,7 +313,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       label=""
     >
       <label
-        className="css-1nn9zl4 css-1jyyyen"
+        className="css-1nn9zl4 css-1jyyyen label"
         htmlFor="test-input"
       >
         <Translate
@@ -336,12 +325,11 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       </label>
     </Label>
     <Underline
-      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
       <div
-        className="css-ycal4l"
+        className="css-ycal4l underline"
       >
         <div
           className="css-1tpmuef"
@@ -360,7 +348,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       translate={true}
     >
       <div
-        className="css-hyvrm8"
+        className="css-hyvrm8 errorText"
       >
         <Translate
           className={null}
@@ -388,17 +376,16 @@ exports[`<FormElement /> should show the error message 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
-      className={null}
       placeholder=""
       visible={true}
     >
       <div
         aria-hidden={true}
-        className="css-rkuo1o"
+        className="css-rkuo1o placeholder"
       >
         <Translate
           className={null}
@@ -409,7 +396,6 @@ exports[`<FormElement /> should show the error message 1`] = `
       </div>
     </Placeholder>
     <Label
-      className={null}
       hasErrorMessage={true}
       htmlFor="test-input"
       isFloating={false}
@@ -417,7 +403,7 @@ exports[`<FormElement /> should show the error message 1`] = `
       label=""
     >
       <label
-        className="css-1nn9zl4 css-1jyyyen"
+        className="css-1nn9zl4 css-1jyyyen label"
         htmlFor="test-input"
       >
         <Translate
@@ -429,12 +415,11 @@ exports[`<FormElement /> should show the error message 1`] = `
       </label>
     </Label>
     <Underline
-      className={null}
       hasErrorMessage={true}
       isFocused={false}
     >
       <div
-        className="css-ycal4l"
+        className="css-ycal4l underline"
       >
         <div
           className="css-1tpmuef"
@@ -452,7 +437,7 @@ exports[`<FormElement /> should show the error message 1`] = `
       translate={true}
     >
       <div
-        className="css-hyvrm8"
+        className="css-hyvrm8 errorText"
       >
         <Translate
           className={null}
@@ -487,17 +472,16 @@ exports[`<FormElement /> should show the label 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
-      className={null}
       placeholder="The label"
       visible={true}
     >
       <div
         aria-hidden={true}
-        className="css-rkuo1o"
+        className="css-rkuo1o placeholder"
       >
         <Translate
           className={null}
@@ -515,7 +499,6 @@ exports[`<FormElement /> should show the label 1`] = `
       </div>
     </Placeholder>
     <Label
-      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -523,7 +506,7 @@ exports[`<FormElement /> should show the label 1`] = `
       label="The label"
     >
       <label
-        className="css-1nn9zl4 css-1jyyyen"
+        className="css-1nn9zl4 css-1jyyyen label"
         htmlFor="test-input"
       >
         <Translate
@@ -542,12 +525,11 @@ exports[`<FormElement /> should show the label 1`] = `
       </label>
     </Label>
     <Underline
-      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
       <div
-        className="css-ycal4l"
+        className="css-ycal4l underline"
       >
         <div
           className="css-1tpmuef"
@@ -566,7 +548,7 @@ exports[`<FormElement /> should show the label 1`] = `
       translate={true}
     >
       <div
-        className="css-hyvrm8"
+        className="css-hyvrm8 errorText"
       >
         <Translate
           className={null}
@@ -594,17 +576,16 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv"
+    className="css-1vjh8yv formElement"
   >
     <Placeholder
       aria-hidden={true}
-      className={null}
       placeholder="The placeholder"
       visible={true}
     >
       <div
         aria-hidden={true}
-        className="css-rkuo1o"
+        className="css-rkuo1o placeholder"
       >
         <Translate
           className={null}
@@ -622,7 +603,6 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       </div>
     </Placeholder>
     <Label
-      className={null}
       hasErrorMessage={false}
       htmlFor="test-input"
       isFloating={false}
@@ -630,7 +610,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       label=""
     >
       <label
-        className="css-1nn9zl4 css-1jyyyen"
+        className="css-1nn9zl4 css-1jyyyen label"
         htmlFor="test-input"
       >
         <Translate
@@ -642,12 +622,11 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       </label>
     </Label>
     <Underline
-      className={null}
       hasErrorMessage={false}
       isFocused={false}
     >
       <div
-        className="css-ycal4l"
+        className="css-ycal4l underline"
       >
         <div
           className="css-1tpmuef"
@@ -666,7 +645,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       translate={true}
     >
       <div
-        className="css-hyvrm8"
+        className="css-hyvrm8 errorText"
       >
         <Translate
           className={null}

@@ -1,5 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
-import { ELEMENT_TYPE_COUNTRY, ELEMENT_TYPE_PROVINCE } from '../elementTypes';
+import { ELEMENT_TYPE_COUNTRY, ELEMENT_TYPE_PROVINCE } from '../Builder.constants';
 
 /** Noop function */
 const noop = () => {};

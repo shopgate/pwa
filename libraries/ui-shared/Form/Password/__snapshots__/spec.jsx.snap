@@ -48,17 +48,16 @@ exports[`<Password> should render a password field 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv"
+        className="css-1vjh8yv formElement"
       >
         <Placeholder
           aria-hidden={true}
-          className={null}
           placeholder=""
           visible={true}
         >
           <div
             aria-hidden={true}
-            className="css-rkuo1o"
+            className="css-rkuo1o placeholder"
           >
             <Translate
               className={null}
@@ -69,7 +68,6 @@ exports[`<Password> should render a password field 1`] = `
           </div>
         </Placeholder>
         <Label
-          className={null}
           hasErrorMessage={false}
           htmlFor="test-input"
           isFloating={false}
@@ -77,7 +75,7 @@ exports[`<Password> should render a password field 1`] = `
           label=""
         >
           <label
-            className="css-1nn9zl4 css-1jyyyen"
+            className="css-1nn9zl4 css-1jyyyen label"
             htmlFor="test-input"
           >
             <Translate
@@ -140,7 +138,7 @@ exports[`<Password> should render a password field 1`] = `
                     <input
                       autoComplete="off"
                       autoCorrect="off"
-                      className="css-keangt"
+                      className="css-keangt simpleInput"
                       disabled={false}
                       id={null}
                       name="test-input"
@@ -219,12 +217,11 @@ exports[`<Password> should render a password field 1`] = `
           </ul>
         </Grid>
         <Underline
-          className={null}
           hasErrorMessage={false}
           isFocused={false}
         >
           <div
-            className="css-ycal4l"
+            className="css-ycal4l underline"
           >
             <div
               className="css-1tpmuef"
@@ -243,7 +240,7 @@ exports[`<Password> should render a password field 1`] = `
           translate={true}
         >
           <div
-            className="css-hyvrm8"
+            className="css-hyvrm8 errorText"
           >
             <Translate
               className={null}
@@ -350,17 +347,16 @@ exports[`<Password> should trigger the onChange callback 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv"
+        className="css-1vjh8yv formElement"
       >
         <Placeholder
           aria-hidden={true}
-          className={null}
           placeholder=""
           visible={true}
         >
           <div
             aria-hidden={true}
-            className="css-rkuo1o"
+            className="css-rkuo1o placeholder"
           >
             <Translate
               className={null}
@@ -371,7 +367,6 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           </div>
         </Placeholder>
         <Label
-          className={null}
           hasErrorMessage={false}
           htmlFor="test-input"
           isFloating={false}
@@ -379,7 +374,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           label=""
         >
           <label
-            className="css-1nn9zl4 css-1jyyyen"
+            className="css-1nn9zl4 css-1jyyyen label"
             htmlFor="test-input"
           >
             <Translate
@@ -484,7 +479,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
                     <input
                       autoComplete="off"
                       autoCorrect="off"
-                      className="css-keangt"
+                      className="css-keangt simpleInput"
                       disabled={false}
                       id={null}
                       name="test-input"
@@ -563,12 +558,11 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           </ul>
         </Grid>
         <Underline
-          className={null}
           hasErrorMessage={false}
           isFocused={false}
         >
           <div
-            className="css-ycal4l"
+            className="css-ycal4l underline"
           >
             <div
               className="css-1tpmuef"
@@ -587,7 +581,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
           translate={true}
         >
           <div
-            className="css-hyvrm8"
+            className="css-hyvrm8 errorText"
           >
             <Translate
               className={null}

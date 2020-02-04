@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import { ELEMENT_TYPE_SELECT } from '../elementTypes';
+import { ELEMENT_TYPE_SELECT } from '../Builder.constants';
 import buildFormDefaults from './buildFormDefaults';
 
 const formElement = {

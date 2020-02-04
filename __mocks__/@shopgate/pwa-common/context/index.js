@@ -17,4 +17,3 @@ const context = {
 };
 
 export const RouteContext = createContext(context);
-export const FormContext = createContext();

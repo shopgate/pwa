@@ -30,17 +30,16 @@ exports[`<TextField> should focus the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -51,7 +50,6 @@ exports[`<TextField> should focus the input 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -59,7 +57,7 @@ exports[`<TextField> should focus the input 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -122,7 +120,7 @@ exports[`<TextField> should focus the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -140,12 +138,11 @@ exports[`<TextField> should focus the input 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -164,7 +161,7 @@ exports[`<TextField> should focus the input 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -208,17 +205,16 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -229,7 +225,6 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -237,7 +232,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -300,7 +295,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -318,12 +313,11 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -342,7 +336,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -386,17 +380,16 @@ exports[`<TextField> should render a simple text field 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -407,7 +400,6 @@ exports[`<TextField> should render a simple text field 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -415,7 +407,7 @@ exports[`<TextField> should render a simple text field 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -478,7 +470,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -496,12 +488,11 @@ exports[`<TextField> should render a simple text field 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -520,7 +511,7 @@ exports[`<TextField> should render a simple text field 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -565,17 +556,16 @@ exports[`<TextField> should render the text field as password 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -586,7 +576,6 @@ exports[`<TextField> should render the text field as password 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -594,7 +583,7 @@ exports[`<TextField> should render the text field as password 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -658,7 +647,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -676,12 +665,11 @@ exports[`<TextField> should render the text field as password 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -700,7 +688,7 @@ exports[`<TextField> should render the text field as password 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -744,17 +732,16 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={false}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -765,7 +752,6 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={true}
@@ -773,7 +759,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -836,7 +822,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -854,12 +840,11 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -878,7 +863,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -923,17 +908,16 @@ exports[`<TextField> should sanitize the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -944,7 +928,6 @@ exports[`<TextField> should sanitize the input 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -952,7 +935,7 @@ exports[`<TextField> should sanitize the input 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -1016,7 +999,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1034,12 +1017,11 @@ exports[`<TextField> should sanitize the input 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -1058,7 +1040,7 @@ exports[`<TextField> should sanitize the input 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -1102,17 +1084,16 @@ exports[`<TextField> should show the error message 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -1123,7 +1104,6 @@ exports[`<TextField> should show the error message 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={true}
         htmlFor="test-input"
         isFloating={false}
@@ -1131,7 +1111,7 @@ exports[`<TextField> should show the error message 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -1194,7 +1174,7 @@ exports[`<TextField> should show the error message 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1212,12 +1192,11 @@ exports[`<TextField> should show the error message 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={true}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -1235,7 +1214,7 @@ exports[`<TextField> should show the error message 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -1286,17 +1265,16 @@ exports[`<TextField> should show the label 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder="This is the label"
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -1314,7 +1292,6 @@ exports[`<TextField> should show the label 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -1322,7 +1299,7 @@ exports[`<TextField> should show the label 1`] = `
         label="This is the label"
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -1392,7 +1369,7 @@ exports[`<TextField> should show the label 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1410,12 +1387,11 @@ exports[`<TextField> should show the label 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -1434,7 +1410,7 @@ exports[`<TextField> should show the label 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -1478,17 +1454,16 @@ exports[`<TextField> should show the placeholder text 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder="This is the placeholder text"
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -1506,7 +1481,6 @@ exports[`<TextField> should show the placeholder text 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -1514,7 +1488,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -1577,7 +1551,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1595,12 +1569,11 @@ exports[`<TextField> should show the placeholder text 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -1619,7 +1592,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -1684,17 +1657,16 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -1705,7 +1677,6 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -1713,7 +1684,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -1818,7 +1789,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1836,12 +1807,11 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -1860,7 +1830,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -1920,17 +1890,16 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={true}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o"
+          className="css-rkuo1o placeholder"
         >
           <Translate
             className={null}
@@ -1941,7 +1910,6 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="test-input"
         isFloating={false}
@@ -1949,7 +1917,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen"
+          className="css-1nn9zl4 css-1jyyyen label"
           htmlFor="test-input"
         >
           <Translate
@@ -2043,7 +2011,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-keangt simpleInput"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -2061,12 +2029,11 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         </ul>
       </Grid>
       <Underline
-        className={null}
         hasErrorMessage={false}
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -2085,7 +2052,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}

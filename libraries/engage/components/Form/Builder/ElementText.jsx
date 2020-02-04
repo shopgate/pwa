@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { camelCase } from 'lodash';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import {
   ELEMENT_TYPE_TEXT,
@@ -8,7 +9,7 @@ import {
   ELEMENT_TYPE_PASSWORD,
   ELEMENT_TYPE_DATE,
   ELEMENT_TYPE_PHONE,
-} from './elementTypes';
+} from './Builder.constants';
 
 // Map element type to input type
 const mapping = {
@@ -31,24 +32,24 @@ const ElementText = (props) => {
     element,
     errorText,
     name,
-    style,
     value,
   } = props;
 
   const type = mapping[element.type];
 
   return (
-    <TextField
-      type={type}
-      name={name}
-      className={style.fields}
-      label={element.label}
-      value={value}
-      onChange={element.handleChange}
-      errorText={errorText}
-      isControlled
-      translateErrorText={false}
-    />
+    <div className={camelCase(name)}>
+      <TextField
+        type={type}
+        name={name}
+        label={element.label}
+        value={value}
+        onChange={element.handleChange}
+        errorText={errorText}
+        isControlled
+        translateErrorText={false}
+      />
+    </div>
   );
 };
 
@@ -56,7 +57,6 @@ ElementText.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  style: PropTypes.shape(),
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,
     PropTypes.bool.isRequired,
@@ -66,7 +66,6 @@ ElementText.propTypes = {
 
 ElementText.defaultProps = {
   value: '',
-  style: { field: '' },
 };
 
-export default ElementText;
+export default memo(ElementText);

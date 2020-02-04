@@ -6,5 +6,3 @@ export { RouteContext };
 
 export const ThemeContext = React.createContext();
 export const Theme = ThemeContext.Consumer;
-
-export const FormContext = React.createContext();

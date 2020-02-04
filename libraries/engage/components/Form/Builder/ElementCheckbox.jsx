@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { camelCase } from 'lodash';
 import Checkbox from '@shopgate/pwa-ui-shared/Form/Checkbox';
 
 /**
@@ -11,22 +12,22 @@ import Checkbox from '@shopgate/pwa-ui-shared/Form/Checkbox';
 const ElementCheckbox = (props) => {
   const {
     element,
-    style,
     errorText,
     value,
     name,
   } = props;
 
   return (
-    <Checkbox
-      name={name}
-      errorText={errorText}
-      checked={!!value}
-      className={style.fields}
-      label={element.label}
-      onChange={element.handleChange}
-      translateErrorText={false}
-    />
+    <div className={camelCase(name)}>
+      <Checkbox
+        name={name}
+        errorText={errorText}
+        checked={!!value}
+        label={element.label}
+        onChange={element.handleChange}
+        translateErrorText={false}
+      />
+    </div>
   );
 };
 
@@ -34,7 +35,6 @@ ElementCheckbox.propTypes = {
   element: PropTypes.shape().isRequired,
   errorText: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  style: PropTypes.shape(),
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,
     PropTypes.bool.isRequired,
@@ -44,7 +44,6 @@ ElementCheckbox.propTypes = {
 
 ElementCheckbox.defaultProps = {
   value: false,
-  style: { fields: '' },
 };
 
-export default ElementCheckbox;
+export default memo(ElementCheckbox);

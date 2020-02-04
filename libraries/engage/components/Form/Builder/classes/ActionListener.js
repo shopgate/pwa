@@ -4,7 +4,7 @@ import {
   ELEMENT_TYPE_COUNTRY,
   ELEMENT_TYPE_PROVINCE,
   ELEMENT_TYPE_CHECKBOX,
-} from '../elementTypes';
+} from '../Builder.constants';
 import {
   ACTION_TYPE_UPDATE_PROVINCE_ELEMENT,
   ACTION_TYPE_SET_VISIBILITY,

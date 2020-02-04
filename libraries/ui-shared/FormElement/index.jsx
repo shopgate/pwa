@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormContext } from '@shopgate/pwa-common/context';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
@@ -39,8 +38,6 @@ class FormElement extends Component {
     translateErrorText: true,
   };
 
-  static contextType = FormContext;
-
   /**
    * @returns {boolean} Whether the label is currently floating.
    */
@@ -71,13 +68,10 @@ class FormElement extends Component {
       placeholder, hasPlaceholder, htmlFor, label, className,
     } = this.props;
 
-    const { formElement = {} } = this.context || {};
-
     return (
-      <div className={classNames(style.formElement, className, formElement.className)}>
+      <div className={classNames(style.formElement, className, 'formElement')}>
         {hasPlaceholder &&
           <Placeholder
-            className={formElement.placeholder && formElement.placeholder.className}
             visible={this.isPlaceholderVisible}
             placeholder={placeholder || label}
             aria-hidden
@@ -87,7 +81,6 @@ class FormElement extends Component {
         <Label
           htmlFor={htmlFor}
           label={label}
-          className={formElement.label && formElement.label.className}
           isFocused={isFocused}
           isFloating={this.isLabelFloating}
           hasErrorMessage={this.hasErrorMessage}
@@ -96,17 +89,9 @@ class FormElement extends Component {
         {this.props.children}
 
         {this.props.hasUnderline &&
-          <Underline
-            className={formElement.underline && formElement.underline.className}
-            isFocused={isFocused}
-            hasErrorMessage={this.hasErrorMessage}
-          />
+          <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />
         }
-        <ErrorText
-          className={formElement.errorText && formElement.errorText.className}
-          errorText={errorText}
-          translate={translateErrorText}
-        />
+        <ErrorText errorText={errorText} translate={translateErrorText} />
       </div>
     );
   }

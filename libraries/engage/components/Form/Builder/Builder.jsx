@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isEqual, startCase, camelCase } from 'lodash';
+import { isEqual, camelCase } from 'lodash';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { FormContext } from '@shopgate/pwa-common/context';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   BEFORE,
@@ -22,7 +21,7 @@ import {
   ELEMENT_TYPE_RADIO,
   ELEMENT_TYPE_DATE,
   ELEMENT_TYPE_PHONE,
-} from './elementTypes';
+} from './Builder.constants';
 import ElementText from './ElementText';
 import ElementSelect from './ElementSelect';
 import ElementRadio from './ElementRadio';
@@ -32,7 +31,6 @@ import buildFormDefaults from './helpers/buildFormDefaults';
 import buildCountryList from './helpers/buildCountryList';
 import buildProvinceList from './helpers/buildProvinceList';
 import buildValidationErrorList from './helpers/buildValidationErrorList';
-import { getElementStyles } from './Builder.styles';
 
 /**
  * Takes a string and converts it to a part to be used in a portal name
@@ -84,7 +82,7 @@ class Builder extends Component {
   }
 
   static defaultProps = {
-    className: '',
+    className: null,
     defaults: {},
     elements: Builder.defaultElements,
     onSubmit: () => {},
@@ -318,27 +316,23 @@ class Builder extends Component {
    */
   render() {
     return (
-      <FormContext.Provider
-        value={getElementStyles(startCase(camelCase(this.props.name)).replace(/ /g, ''))}
-      >
-        <Form onSubmit={this.props.onSubmit}>
-          <div className={this.props.className}>
-            {this.formElements.map(element => (
-              <Fragment key={`${this.props.name}_${element.id}`}>
-                <Portal
-                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
-                />
-                <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
-                  { this.renderElement(element) }
-                </Portal>
-                <Portal
-                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}
-                />
-              </Fragment>
-            ))}
-          </div>
-        </Form>
-      </FormContext.Provider>
+      <Form className={camelCase(this.props.name)} onSubmit={this.props.onSubmit}>
+        <div className={this.props.className}>
+          {this.formElements.map(element => (
+            <Fragment key={`${this.props.name}_${element.id}`}>
+              <Portal
+                name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
+              />
+              <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
+                { this.renderElement(element) }
+              </Portal>
+              <Portal
+                name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}
+              />
+            </Fragment>
+          ))}
+        </div>
+      </Form>
     );
   }
 }

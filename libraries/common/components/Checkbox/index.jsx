@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormContext } from '@shopgate/pwa-common/context';
 
 /**
  * Base checkbox component.
@@ -31,8 +30,6 @@ class Checkbox extends Component {
     name: undefined,
     onCheck: () => {},
   };
-
-  static contextType = FormContext;
 
   /**
    * The checkbox component contructor.
@@ -130,11 +127,9 @@ class Checkbox extends Component {
    * @returns {JSX}
    */
   render() {
-    const { checkbox = {} } = this.context || {};
-
     return (
       <div
-        className={classNames(this.props.className, checkbox.className)}
+        className={classNames(this.props.className, 'checkbox')}
         onClick={this.handleCheck}
         aria-hidden
       >

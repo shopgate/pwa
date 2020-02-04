@@ -14,20 +14,13 @@ const Label = (props) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label
-      htmlFor={props.name}
-      className={classNames(labelStyles, props.className)}
-    >
+    <label htmlFor={props.name} className={classNames(labelStyles, 'label')}>
       <I18n.Text string={props.label} />
     </label>
   );
 };
 
 Label.propTypes = {
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape(),
-  ]),
   hasErrorMessage: PropTypes.bool,
   isFloating: PropTypes.bool,
   isFocused: PropTypes.bool,
@@ -36,7 +29,6 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
-  className: null,
   name: '',
   label: '',
   isFocused: false,

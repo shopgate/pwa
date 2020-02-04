@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormContext } from '@shopgate/pwa-common/context';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
@@ -31,8 +30,6 @@ class Checkbox extends PureComponent {
     translateErrorText: true,
   };
 
-  static contextType = FormContext;
-
   /**
    * @return {JSX}
    */
@@ -40,9 +37,6 @@ class Checkbox extends PureComponent {
     const {
       name, label, onChange, className, errorText, translateErrorText, ...restProps
     } = this.props;
-
-    const { checkbox = {} } = this.context || {};
-
     return (
       <FormElement
         className={`${className} ${style.root}`}
@@ -60,12 +54,7 @@ class Checkbox extends PureComponent {
           unCheckedClassName={className}
           labelPosition="right"
           label={
-            <div
-              className={classNames(
-                style.labelWrapper,
-                checkbox.label && checkbox.label.className
-              )}
-            >
+            <div className={classNames(style.labelWrapper, 'label')}>
               <I18n.Text className={style.label} string={label} />
             </div>
           }

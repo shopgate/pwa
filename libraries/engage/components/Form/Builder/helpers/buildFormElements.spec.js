@@ -1,4 +1,4 @@
-import { ELEMENT_TYPE_COUNTRY } from '../elementTypes';
+import { ELEMENT_TYPE_COUNTRY } from '../Builder.constants';
 import buildFormElements from './buildFormElements';
 
 jest.mock('@shopgate/pwa-core/helpers', () => ({

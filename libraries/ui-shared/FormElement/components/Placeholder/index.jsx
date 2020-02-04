@@ -10,11 +10,9 @@ import styles from './style';
  * @param {boolean} visible Sets the placeholder visibility.
  * @return {JSX}
  */
-const Placeholder = ({
-  className, placeholder, visible, 'aria-hidden': ariaHidden,
-}) => (
+const Placeholder = ({ placeholder, visible, 'aria-hidden': ariaHidden }) => (
   <div
-    className={classNames(styles.placeholderStyles(visible), className)}
+    className={classNames(styles.placeholderStyles(visible), 'placeholder')}
     aria-hidden={ariaHidden}
   >
     <I18n.Text string={placeholder} />
@@ -23,17 +21,12 @@ const Placeholder = ({
 
 Placeholder.propTypes = {
   'aria-hidden': PropTypes.bool,
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape(),
-  ]),
   placeholder: PropTypes.string,
   visible: PropTypes.bool,
 };
 
 Placeholder.defaultProps = {
   'aria-hidden': null,
-  className: null,
   placeholder: '',
   visible: false,
 };

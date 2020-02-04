@@ -24,17 +24,16 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={false}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -45,7 +44,6 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -53,7 +51,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="none"
         >
           <Translate
@@ -65,19 +63,17 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         </label>
       </Label>
       <div
-        className="css-zbxrv7"
+        className="css-zbxrv7 radioGroup"
       >
         <RadioItem
           checked={false}
-          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
-            className="css-15broj4"
-            htmlFor={null}
+            className="css-15broj4 radioItem"
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -109,20 +105,19 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
             </RadioUnchecked>
             <input
               checked={false}
-              className="css-gyrv08"
-              id={null}
+              className="css-gyrv08 input"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
             <Translate
-              className="css-1hju4sd"
+              className="css-1hju4sd label"
               params={Object {}}
               role={null}
               string="foo"
             >
               <span
-                className="css-1hju4sd"
+                className="css-1hju4sd label"
                 role={null}
               >
                 foo
@@ -137,7 +132,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -176,17 +171,16 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={false}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -197,7 +191,6 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -205,7 +198,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="none"
         >
           <Translate
@@ -217,19 +210,17 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         </label>
       </Label>
       <div
-        className="css-zbxrv7"
+        className="css-zbxrv7 radioGroup"
       >
         <RadioItem
           checked={false}
-          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
-            className="css-15broj4"
-            htmlFor={null}
+            className="css-15broj4 radioItem"
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -261,20 +252,19 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             </RadioUnchecked>
             <input
               checked={false}
-              className="css-gyrv08"
-              id={null}
+              className="css-gyrv08 input"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
             <Translate
-              className="css-1hju4sd"
+              className="css-1hju4sd label"
               params={Object {}}
               role={null}
               string="foo"
             >
               <span
-                className="css-1hju4sd"
+                className="css-1hju4sd label"
                 role={null}
               >
                 foo
@@ -284,15 +274,13 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         </RadioItem>
         <RadioItem
           checked={false}
-          id={null}
           key="radio_bar/.1"
           label="bar"
           name="bar"
           onChange={[Function]}
         >
           <label
-            className="css-15broj4"
-            htmlFor={null}
+            className="css-15broj4 radioItem"
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -324,20 +312,19 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             </RadioUnchecked>
             <input
               checked={false}
-              className="css-gyrv08"
-              id={null}
+              className="css-gyrv08 input"
               name="bar"
               onChange={[Function]}
               type="radio"
             />
             <Translate
-              className="css-1hju4sd"
+              className="css-1hju4sd label"
               params={Object {}}
               role={null}
               string="bar"
             >
               <span
-                className="css-1hju4sd"
+                className="css-1hju4sd label"
                 role={null}
               >
                 bar
@@ -352,7 +339,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -391,17 +378,16 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={false}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -412,7 +398,6 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -420,7 +405,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="none"
         >
           <Translate
@@ -432,19 +417,17 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         </label>
       </Label>
       <div
-        className="css-zbxrv7"
+        className="css-zbxrv7 radioGroup"
       >
         <RadioItem
           checked={false}
-          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
-            className="css-15broj4"
-            htmlFor={null}
+            className="css-15broj4 radioItem"
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -476,20 +459,19 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
             </RadioUnchecked>
             <input
               checked={false}
-              className="css-gyrv08"
-              id={null}
+              className="css-gyrv08 input"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
             <Translate
-              className="css-1hju4sd"
+              className="css-1hju4sd label"
               params={Object {}}
               role={null}
               string="foo"
             >
               <span
-                className="css-1hju4sd"
+                className="css-1hju4sd label"
                 role={null}
               >
                 foo
@@ -504,7 +486,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -543,17 +525,16 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={false}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -564,7 +545,6 @@ exports[`<RadioGroup /> should render empty group 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -572,7 +552,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="none"
         >
           <Translate
@@ -584,7 +564,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
         </label>
       </Label>
       <div
-        className="css-zbxrv7"
+        className="css-zbxrv7 radioGroup"
       />
       <ErrorText
         className={null}
@@ -592,7 +572,7 @@ exports[`<RadioGroup /> should render empty group 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -631,17 +611,16 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={false}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -652,7 +631,6 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -660,7 +638,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="none"
         >
           <Translate
@@ -672,19 +650,17 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         </label>
       </Label>
       <div
-        className="css-ij4y8v"
+        className="css-ij4y8v radioGroup"
       >
         <RadioItem
           checked={false}
-          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
-            className="css-15broj4"
-            htmlFor={null}
+            className="css-15broj4 radioItem"
           >
             <RadioUnchecked
               className="css-37nc4w"
@@ -716,20 +692,19 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
             </RadioUnchecked>
             <input
               checked={false}
-              className="css-gyrv08"
-              id={null}
+              className="css-gyrv08 input"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
             <Translate
-              className="css-1hju4sd"
+              className="css-1hju4sd label"
               params={Object {}}
               role={null}
               string="foo"
             >
               <span
-                className="css-1hju4sd"
+                className="css-1hju4sd label"
                 role={null}
               >
                 foo
@@ -744,7 +719,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}
@@ -783,17 +758,16 @@ exports[`<RadioGroup /> should use default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv"
+      className="css-1vjh8yv formElement"
     >
       <Placeholder
         aria-hidden={true}
-        className={null}
         placeholder=""
         visible={false}
       >
         <div
           aria-hidden={true}
-          className="css-rkuo1o css-1jyyyen"
+          className="css-rkuo1o css-1jyyyen placeholder"
         >
           <Translate
             className={null}
@@ -804,7 +778,6 @@ exports[`<RadioGroup /> should use default value 1`] = `
         </div>
       </Placeholder>
       <Label
-        className={null}
         hasErrorMessage={false}
         htmlFor="none"
         isFloating={true}
@@ -812,7 +785,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
         label=""
       >
         <label
-          className="css-1nn9zl4 css-1r91c0g css-1jyyyen"
+          className="css-1nn9zl4 css-1r91c0g css-1jyyyen label"
           htmlFor="none"
         >
           <Translate
@@ -824,19 +797,17 @@ exports[`<RadioGroup /> should use default value 1`] = `
         </label>
       </Label>
       <div
-        className="css-zbxrv7"
+        className="css-zbxrv7 radioGroup"
       >
         <RadioItem
           checked={true}
-          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
-            className="css-15broj4"
-            htmlFor={null}
+            className="css-15broj4 radioItem"
           >
             <RadioChecked
               className="css-1ncyhu css-37nc4w"
@@ -868,20 +839,19 @@ exports[`<RadioGroup /> should use default value 1`] = `
             </RadioChecked>
             <input
               checked={true}
-              className="css-gyrv08"
-              id={null}
+              className="css-gyrv08 input"
               name="foo"
               onChange={[Function]}
               type="radio"
             />
             <Translate
-              className="css-1hju4sd"
+              className="css-1hju4sd label"
               params={Object {}}
               role={null}
               string="foo"
             >
               <span
-                className="css-1hju4sd"
+                className="css-1hju4sd label"
                 role={null}
               >
                 foo
@@ -896,7 +866,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
         translate={true}
       >
         <div
-          className="css-hyvrm8"
+          className="css-hyvrm8 errorText"
         >
           <Translate
             className={null}

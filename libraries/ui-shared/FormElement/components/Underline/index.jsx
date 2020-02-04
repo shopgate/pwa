@@ -9,7 +9,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Underline = props => (
-  <div className={classNames(styles.underlineWrapper, props.className)}>
+  <div className={classNames(styles.underlineWrapper, 'underline')}>
     <div
       className={styles.underline}
       style={styles.underlineStyle(props.isFocused, props.hasErrorMessage)}
@@ -18,16 +18,11 @@ const Underline = props => (
 );
 
 Underline.propTypes = {
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape(),
-  ]),
   hasErrorMessage: PropTypes.bool,
   isFocused: PropTypes.bool,
 };
 
 Underline.defaultProps = {
-  className: null,
   isFocused: false,
   hasErrorMessage: false,
 };
