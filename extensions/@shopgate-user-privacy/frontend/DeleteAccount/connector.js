@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import config from './../config';
+import config from '../config';
 
 /**
  * @param {Object} state The current application state
