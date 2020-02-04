@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Footer from '@shopgate/pwa-ui-shared/Footer';
+import { Footer } from '@shopgate/engage/components';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
