@@ -4,9 +4,4 @@ export { shouldFetchFilters } from './shouldFetchFilters';
 export { compareObjects } from './compareObjects';
 export { generateSortedHash } from './generateSortedHash';
 export { generateResultHash } from './generateResultHash';
-export {
-  mutable,
-  next,
-  skipRest,
-  stop,
-} from './mutable';
+export { mutable, mutableActions } from './mutable';
