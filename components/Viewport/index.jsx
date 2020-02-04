@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Footer from '@shopgate/pwa-ui-shared/Footer';
+import { Footer } from '@shopgate/engage/components';
 import { LiveMessenger } from '@shopgate/engage/a11y';
 import TabBar from 'Components/TabBar';
 import styles from './style';
