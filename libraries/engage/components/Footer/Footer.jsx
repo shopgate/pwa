@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import { logger } from '@shopgate/pwa-core/helpers';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import {
   APP_FOOTER_CONTENT_BEFORE,
   APP_FOOTER_CONTENT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { getAbsoluteHeight, getStyle } from '@shopgate/pwa-common/helpers/dom';
-import { SHEET_EVENTS } from '../Sheet';
+import { SHEET_EVENTS } from '@shopgate/pwa-ui-shared/Sheet';
 import {
   footer,
-  withInset,
   updateInsetBackgroundColor,
   updateFooterHeight,
-} from './style';
+} from './Footer.style';
 
 const APP_FOOTER_ID = 'AppFooter';
 const DATA_IGNORED = 'data-footer-inset-update-ignore';
 
 /**
- * The Footer Component
- * @deprecated
+ * The footer component.
  */
-class Footer extends Component {
+class Footer extends PureComponent {
   static propTypes = {
     children: PropTypes.node,
   };
@@ -37,7 +34,6 @@ class Footer extends Component {
    * background color, which matches the background color of the last element within the footer.
    */
   componentDidMount() {
-    logger.warn('DEPRECATED: @shopgate/pwa-ui-shared/Footer is deprecated. Please use: import { Footer } from \'@shopgate/engage/components.\'');
     this.performFooterUpdate();
 
     const observer = new MutationObserver((mutations) => {
@@ -89,7 +85,7 @@ class Footer extends Component {
         return this.getInsetBackgroundColor(element.children);
       }
 
-      if (element.clientHeight) {
+      if ('clientHeight' in element) {
         // Take the background color of the last visible element from the end of the footer.
         return getStyle(element, 'backgroundColor');
       }
@@ -124,8 +120,6 @@ class Footer extends Component {
    */
   performFooterUpdate() {
     if (this.ref.current) {
-      this.ref.current.classList.toggle(withInset, this.hasVisibleContent());
-
       updateFooterHeight(getAbsoluteHeight(this.ref.current));
       updateInsetBackgroundColor(this.getInsetBackgroundColor(this.ref.current.children));
     }

@@ -160,6 +160,7 @@ export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListI
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 
+// LOCAL
 export { default as NavigationHandler } from './NavigationHandler';
 export { default as TimeBoundary } from './TimeBoundary';
 export { default as IntersectionVisibility } from './IntersectionVisibility';
@@ -167,3 +168,4 @@ export { default as VideoPlayer } from './VideoPlayer';
 export { default as SheetDrawer } from './SheetDrawer';
 export { default as SheetList } from './SheetList';
 export { default as NullComponent } from './NullComponent';
+export { Footer } from './Footer';

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should render the component 1`] = `
+<Footer>
+  <div
+    className={
+      Object {
+        "data-css-halw4h": "",
+      }
+    }
+  >
+    <Portal
+      name="app.footer.content.before"
+    />
+    <div
+      id="AppFooter"
+    >
+      <div
+        id="footer-child"
+        style={
+          Object {
+            "backgroundColor": "red",
+          }
+        }
+      />
+    </div>
+    <Portal
+      name="app.footer.content.after"
+    />
+  </div>
+</Footer>
+`;
