@@ -5,7 +5,7 @@ import { i18n } from '../../../core';
 import { address as container, addressIcon } from './style';
 
 /**
- * Renders the a pickup location's address information.
+ * Renders the pickup location's address information.
  * @param {Object} props The component props.
  * @returns {JSX}
  */

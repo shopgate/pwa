@@ -20,7 +20,9 @@ function submitReservation(values, product) {
 
     const request = new PipelineRequest(SHOPGATE_STOREFRONT_CREATE_ORDER)
       .setInput({ orders: [order] })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         if (result.errors && result.errors.length > 0) {
           logger.error(result.errors);

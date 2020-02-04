@@ -27,7 +27,9 @@ function fetchProductLocations(productId) {
         productCode: productId,
         // postalCode: '35510', // TODO: only temporary until the zipcode search is implemented.
       })
-      .dispatch()
+      .dispatch();
+
+    request
       .then((result) => {
         dispatch(receiveProductLocations(productId, result.locations));
       })

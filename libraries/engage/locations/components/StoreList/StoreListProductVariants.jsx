@@ -15,7 +15,7 @@ function StoreListProductVariants() {
 
   return (
     <div className={variants} data-test-id="selected-variants">
-      {variants.map(({ label, value }) => (
+      {selectedVariants.map(({ label, value }) => (
         <div key={`${label}-${value}`}>
           {`${label}: ${value}`}
         </div>
