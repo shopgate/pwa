@@ -7,14 +7,16 @@ import {
   ProductProperties,
   RelationsSlider,
   Description,
-  StoreSelector,
 } from '@shopgate/engage/product';
+import {
+  FulfillmentSelector,
+  FulfillmentSheet,
+} from '@shopgate/engage/locations';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
 import Header from '../Header';
 import Characteristics from '../Characteristics';
 import Options from '../Options';
-import Fulfillment from '../Fulfillment';
 import AppBar from '../AppBar';
 import AddToCartBar from '../AddToCartBar';
 import connect from './connector';
@@ -158,6 +160,12 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.information">
             <Header />
           </Section>
+          <Section title="product.sections.fulfillment">
+            <FulfillmentSelector
+              productId={variantId || variantId === 0 ? variantId : productId}
+              conditioner={this.baseContextValue.conditioner}
+            />
+          </Section>
           {/*
             This feature is currently in BETA testing.
             It should only be used for approved BETA Client Projects
@@ -166,9 +174,6 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.options">
             <Characteristics productId={productId} variantId={variantId} />
             <Options />
-          </Section>
-          <Section title="product.sections.fulfillment">
-            <Fulfillment productId={this.state.productId} variantId={this.state.variantId} />
           </Section>
           <Section title="product.sections.description">
             <Description productId={productId} variantId={variantId} />
@@ -193,7 +198,7 @@ class ProductContent extends PureComponent {
             options={contextValue.options}
             conditioner={contextValue.conditioner}
           />
-          <StoreSelector />
+          <FulfillmentSheet />
         </ProductContext.Provider>
       </div>
     );

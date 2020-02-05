@@ -10,4 +10,3 @@ export const SHOPGATE_CATALOG_GET_PRODUCTS = 'shopgate.catalog.getProducts';
 export const SHOPGATE_CATALOG_GET_PRODUCT_SHIPPING = 'shopgate.catalog.getProductShipping';
 export const SHOPGATE_CATALOG_GET_PRODUCT_VARIANTS = 'shopgate.catalog.getProductVariants';
 export const SHOPGATE_CATALOG_GET_PRODUCT_MEDIA = 'shopgate.catalog.getProductMedia';
-export const SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS = 'shopgate.storefront.getProductLocations';

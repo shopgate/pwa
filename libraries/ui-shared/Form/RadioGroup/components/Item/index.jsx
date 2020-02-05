@@ -17,14 +17,17 @@ class RadioItem extends PureComponent {
     ]).isRequired,
     name: PropTypes.string.isRequired,
     checked: PropTypes.bool,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
     onChange: PropTypes.func,
   }
 
   static defaultProps = {
     checked: false,
     className: '',
-    onChange: () => {},
+    onChange: () => { },
   }
 
   /**

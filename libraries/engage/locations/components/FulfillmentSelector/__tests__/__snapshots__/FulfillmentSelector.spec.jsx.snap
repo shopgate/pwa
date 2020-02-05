@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do not contain inStorePickup 1`] = `
+<SurroundPortals
+  portalName="product.fulfillment-selector"
+  portalProps={
+    Object {
+      "productCode": "abc-123",
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-12ywm8s": "",
+      }
+    }
+    data-test-id="product-fulfillment-selector"
+  >
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-1femajq": "",
+        }
+      }
+      role="heading"
+    >
+      <Translate
+        className={null}
+        params={Object {}}
+        role={null}
+        string="product.fulfillment_selector.heading"
+        transform={null}
+      />
+    </div>
+    <RadioGroup
+      className="css-11ghxnx"
+      direction="column"
+      errorText=""
+      isControlled={true}
+      label=""
+      name="product.fulfillment_selector"
+      onChange={[Function]}
+      translateErrorText={true}
+      value="product.fulfillment_selector.pick_up_in_store"
+    >
+      <FulfillmentSelectorItem
+        name="product.fulfillment_selector.direct_ship"
+      >
+        <Connect(Availability)
+          fulfillmentSelection="directShip"
+          productId="abc-123"
+        />
+      </FulfillmentSelectorItem>
+      <FulfillmentSelectorItem
+        name="product.fulfillment_selector.pick_up_in_store"
+      >
+        <StockInfo
+          className=""
+          location={
+            Object {
+              "name": "Test Store",
+              "visibleInventory": 15,
+            }
+          }
+          showStoreName={true}
+        />
+      </FulfillmentSelectorItem>
+    </RadioGroup>
+  </div>
+</SurroundPortals>
+`;
+
+exports[`<FulfillmentSelector /> should render the fulfillment selector with two radio elements 1`] = `
+<SurroundPortals
+  portalName="product.fulfillment-selector"
+  portalProps={
+    Object {
+      "productCode": "abc-123",
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-12ywm8s": "",
+      }
+    }
+    data-test-id="product-fulfillment-selector"
+  >
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-1femajq": "",
+        }
+      }
+      role="heading"
+    >
+      <Translate
+        className={null}
+        params={Object {}}
+        role={null}
+        string="product.fulfillment_selector.heading"
+        transform={null}
+      />
+    </div>
+    <RadioGroup
+      className="css-11ghxnx"
+      direction="column"
+      errorText=""
+      isControlled={true}
+      label=""
+      name="product.fulfillment_selector"
+      onChange={[Function]}
+      translateErrorText={true}
+      value="product.fulfillment_selector.pick_up_in_store"
+    >
+      <FulfillmentSelectorItem
+        name="product.fulfillment_selector.direct_ship"
+      >
+        <Connect(Availability)
+          fulfillmentSelection="directShip"
+          productId="abc-123"
+        />
+      </FulfillmentSelectorItem>
+      <FulfillmentSelectorItem
+        name="product.fulfillment_selector.pick_up_in_store"
+      >
+        <StockInfo
+          className=""
+          location={
+            Object {
+              "name": "Test Store",
+              "visibleInventory": 15,
+            }
+          }
+          showStoreName={true}
+        />
+      </FulfillmentSelectorItem>
+    </RadioGroup>
+  </div>
+</SurroundPortals>
+`;

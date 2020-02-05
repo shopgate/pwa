@@ -18,7 +18,6 @@ export { default as fetchProductsById } from '@shopgate/pwa-common-commerce/prod
 export { default as fetchProductsByQuery } from '@shopgate/pwa-common-commerce/product/actions/fetchProductsByQuery';
 export { default as fetchProductShipping } from '@shopgate/pwa-common-commerce/product/actions/fetchProductShipping';
 export { default as fetchProductVariants } from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
-export { fetchProductLocations } from '@shopgate/pwa-common-commerce/product/actions/fetchProductLocations';
 
 // COLLECTIONS
 export { default as productImageFormats } from '@shopgate/pwa-common-commerce/product/collections/ProductImageFormats';
@@ -28,7 +27,6 @@ export * from '@shopgate/pwa-common-commerce/product/constants/index';
 export * from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 export * from '@shopgate/pwa-common-commerce/product/constants/Portals';
 export * from './constants';
-export * from './constants/Portals';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/product/helpers';
@@ -62,15 +60,12 @@ export { default as QuantityPicker } from './components/QuantityPicker';
 export { default as EffectivityDates } from './components/EffectivityDates';
 export { default as Availability } from './components/Availability';
 export { default as PriceDifference } from './components/PriceDifference';
-export { default as LocationStockInfo } from './components/LocationStockInfo';
 export { FeaturedMedia, MediaImage } from './components/Media';
 export { VariantSwatch } from './components/Swatch';
 export { Swatches } from './components/Swatches';
 export { RelationsSlider } from './components/RelationsSlider';
 export { default as ProductCard } from './components/ProductCard';
 export { default as ProductGridPrice } from './components/ProductGridPrice';
-export { StoreSelector } from './components/StoreSelector';
-export { default as FulfillmentSelector } from './components/FulfillmentSelector';
 export { default as ProductCharacteristics } from './components/ProductCharacteristics';
 export { default as Description } from './components/Description';
 

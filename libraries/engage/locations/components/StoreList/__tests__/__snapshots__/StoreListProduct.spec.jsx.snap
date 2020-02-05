@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StoreListProduct /> should not render if not product is supplied 1`] = `""`;
+
+exports[`<StoreListProduct /> should render a product without selected variants. 1`] = `
+<div
+  className={
+    Object {
+      "data-css-g4i9nv": "",
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-1f7wp8g": "",
+      }
+    }
+  >
+    <div
+      className={
+        Object {
+          "data-css-19shpyr": "",
+        }
+      }
+    >
+      <WithWidgetSettings(ProductImage)
+        src="http://www.some.com"
+      />
+    </div>
+    <div
+      className={
+        Object {
+          "data-css-yp5sfk": "",
+        }
+      }
+    >
+      <StoreListProductName />
+      <StoreListProductVariants />
+      <StoreListProductAvailability />
+    </div>
+  </div>
+</div>
+`;

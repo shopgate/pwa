@@ -130,17 +130,50 @@ export const isUserLoginDisabled = createSelector(
 export const getRegisterUrl = state => getUrl(state, { type: 'register' });
 
 /**
+ * Create a selector to retrieve the user's location state.
+ * @returns {Function}
+ */
+function makeGetUserLocationState() {
+  return createSelector(
+    getUserState,
+    state => state.location || {}
+  );
+}
+
+/**
  * Creates the selector that retrieves the user location state.
  * @returns {Function}
  */
-export const makeGetUserLocationState = () => (
-  /**
-   * Retrieves the user location state.
-   * @param {Object} state The application state.
-   * @returns {Object}
-   */
-  createSelector(
-    getUserState,
-    state => state.location || {}
-  )
-);
+export function makeGetUserLocation() {
+  const getUserLocationState = makeGetUserLocationState();
+
+  return createSelector(
+    getUserLocationState,
+    (location) => {
+      if (!location || !location.data) {
+        return null;
+      }
+
+      return location.data;
+    }
+  );
+}
+
+/**
+ * Creates the selector that retrieves the user's reserve form input.
+ * @returns {Function}
+ */
+export function makeGetUserFormInput() {
+  const getUserLocationState = makeGetUserLocationState();
+
+  return createSelector(
+    getUserLocationState,
+    (location) => {
+      if (!location || !location.formInput) {
+        return null;
+      }
+
+      return location.formInput;
+    }
+  );
+}

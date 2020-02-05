@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > actions-creators errorProductLocations 1`] = `
+Object {
+  "errorCode": "error123",
+  "productId": "id123",
+  "type": "ERROR_PRODUCT_LOCATIONS",
+}
+`;

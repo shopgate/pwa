@@ -14,7 +14,10 @@ class FormElement extends Component {
   static propTypes = {
     htmlFor: PropTypes.string.isRequired,
     children: PropTypes.node,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
     errorText: PropTypes.node,
     hasPlaceholder: PropTypes.bool,
     hasUnderline: PropTypes.bool,
