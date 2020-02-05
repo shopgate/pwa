@@ -17,21 +17,25 @@ import * as styles from './FulfillmentSelector.style';
 /**
  * Renders a fulfillment selector box for fulfillment methods direct ship and pick up in store,
  * when fulfillment methods are set up for the product and pick up in store is one of them.
+ * @param {Object} props The component props.
  * @param {string} props.productCode Code to the product or a variant.
  * @param {string[]} props.fulfillmentMethods All fulfillment methods provided for the product.
  * @param {Object} props.location Last location that was selected for the previous product/variant.
  * @returns {JSX}
  */
-export const FulfillmentSelector = ({ productId: productCode, fulfillmentMethods, location }) => {
+export const FulfillmentSelector = (props) => {
+  const {
+    productId: productCode, fulfillmentMethods, location, conditioner, disabled,
+  } = props;
   const directShip = 'product.fulfillment_selector.direct_ship';
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
   const [selection, setSelection] = useState(location.code !== null ? pickUp : directShip);
   const [selectedLocation, setSelectedLocation] = useState(null);
-  const [isSelectorOpened, setIsSelectorOpened] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelectorClose = useCallback((newLocation) => {
-    setIsSelectorOpened(false);
+  const handleClose = useCallback((newLocation) => {
+    setIsOpen(false);
     if (!newLocation) {
       // Reset the UI back to directShip if there was no location selected already
       if (selectedLocation === null) {
@@ -48,23 +52,29 @@ export const FulfillmentSelector = ({ productId: productCode, fulfillmentMethods
    * store selector sheet and use the new location.
    */
   const handleChange = useCallback((elementName) => {
-    setSelection(elementName);
+    conditioner.check().then((passed) => {
+      if (!passed) {
+        return;
+      }
 
-    if (isSelectorOpened) {
-      return;
-    }
+      setSelection(elementName);
 
-    if (elementName === directShip) {
-      setSelectedLocation(null);
-      return;
-    }
+      if (isOpen) {
+        return;
+      }
 
-    setIsSelectorOpened(true);
+      if (elementName === directShip) {
+        setSelectedLocation(null);
+        return;
+      }
 
-    // TODO: Change this to open the store selector only if it wasn't yet selected for the product
-    // TODO: Opening the selector to change selection should be done with a "Choose Location" link
-    FulfillmentSheet.open(handleSelectorClose);
-  }, [isSelectorOpened, handleSelectorClose]);
+      setIsOpen(true);
+
+      // TODO: Change this to open the store selector only if it wasn't yet selected for the product
+      // TODO: Opening the selector to change selection should be done with a "Choose Location" link
+      FulfillmentSheet.open(handleClose);
+    });
+  }, [conditioner, isOpen, handleClose]);
 
   if (!fulfillmentMethods) {
     return null;
@@ -72,14 +82,17 @@ export const FulfillmentSelector = ({ productId: productCode, fulfillmentMethods
 
   return (
     <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR} portalProps={{ productCode }}>
-      <div className={styles.container} data-test-id="product-fulfillment-selector">
+      <div
+        className={styles.container}
+        data-test-id="product-fulfillment-selector"
+      >
         <div role="heading" aria-hidden className={styles.title}>
           <I18n.Text string="product.fulfillment_selector.heading" />
         </div>
         <RadioGroup
           name="product.fulfillment_selector"
           value={selection}
-          className={styles.radioGroup}
+          className={disabled ? styles.radioGroupDisabled : styles.radioGroup}
           onChange={handleChange}
           isControlled
           direction="column"
@@ -102,7 +115,9 @@ export const FulfillmentSelector = ({ productId: productCode, fulfillmentMethods
 };
 
 FulfillmentSelector.propTypes = {
+  conditioner: PropTypes.shape().isRequired,
   productId: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
   fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
   location: PropTypes.shape({
     code: PropTypes.string,
@@ -120,6 +135,7 @@ FulfillmentSelector.propTypes = {
 };
 
 FulfillmentSelector.defaultProps = {
+  disabled: true,
   fulfillmentMethods: null,
   location: null,
 };

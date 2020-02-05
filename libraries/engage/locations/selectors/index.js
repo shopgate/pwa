@@ -60,6 +60,13 @@ export function makeGetProductLocations() {
  * @returns {Function}
  */
 export function makeGetFulfillmentMethods() {
+  /**
+   * Retrieves a product's fulfillment methods.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @param {string} props.productId The ID of the product to look for.
+   * @returns {Array|null}
+   */
   return createSelector(
     getProduct,
     (product) => {
@@ -68,6 +75,34 @@ export function makeGetFulfillmentMethods() {
       }
 
       return product.fulfillmentMethods;
+    }
+  );
+}
+
+/**
+ * Creates a selector that checks if the Fulfillment Selector should be disabled.
+ * @returns {Function}
+ */
+export function makeIsFulfillmentSelectorDisabled() {
+  const getProductLocations = makeGetProductLocations();
+  const getFulfillmentMethods = makeGetFulfillmentMethods();
+
+  /**
+   * Retrieves whether the Fulfillment Selector should be disabled.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @param {string} props.productId The ID of the product to look for.
+   * @returns {boolean}
+   */
+  return createSelector(
+    getProductLocations,
+    getFulfillmentMethods,
+    (locations, methods) => {
+      if (methods && (!locations || locations.length === 0)) {
+        return true;
+      }
+
+      return false;
     }
   );
 }

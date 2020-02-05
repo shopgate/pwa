@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { makeGetUserLocation } from '@shopgate/engage/user';
-import { makeGetFulfillmentMethods } from '../../selectors';
+import { makeGetFulfillmentMethods, makeIsFulfillmentSelectorDisabled } from '../../selectors';
 
 /**
  * @param {Object} state The current application state.
@@ -10,6 +10,7 @@ import { makeGetFulfillmentMethods } from '../../selectors';
 function makeMapStateToProps() {
   const getUserLocation = makeGetUserLocation();
   const getFulfillmentMethods = makeGetFulfillmentMethods();
+  const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
 
   /**
    * @param {Object} state The application state.
@@ -19,6 +20,7 @@ function makeMapStateToProps() {
   return (state, props) => ({
     fulfillmentMethods: getFulfillmentMethods(state, props),
     location: getUserLocation(state),
+    disabled: isFulfillmentSelectorDisabled(state, props),
   });
 }
 

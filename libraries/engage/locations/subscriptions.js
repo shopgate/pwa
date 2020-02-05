@@ -1,5 +1,4 @@
-import { hex2bin } from '@shopgate/engage/core';
-import { productWillEnter$ } from '@shopgate/engage/product';
+import { productReceived$ } from '@shopgate/engage/product';
 import { fetchProductLocations } from './actions';
 
 /**
@@ -7,12 +6,18 @@ import { fetchProductLocations } from './actions';
  * @param {Function} subscribe The subscribe function.
  */
 function locations(subscribe) {
-  subscribe(productWillEnter$, ({ action, dispatch }) => {
-    const { productId } = action.route.params;
-    const { productId: variantId } = action.route.state;
-    const id = variantId || hex2bin(productId);
+  subscribe(productReceived$, ({ action, dispatch }) => {
+    const { productData } = action;
 
-    dispatch(fetchProductLocations(id));
+    if (
+      !productData
+      || !productData.fulfillmentMethods
+      || productData.fulfillmentMethods.lengt === 0
+    ) {
+      return;
+    }
+
+    dispatch(fetchProductLocations(action.productData.id));
   });
 }
 

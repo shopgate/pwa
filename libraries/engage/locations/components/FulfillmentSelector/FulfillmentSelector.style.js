@@ -15,10 +15,18 @@ export const title = css({
   marginBottom: 8,
 });
 
-export const radioGroup = css({
+const radioBase = css({
   // Removes the vertical padding, which are applied by default around radio groups
   paddingTop: 0,
   paddingBottom: 0,
+  transition: 'opacity 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+});
+
+export const radioGroup = radioBase.toString();
+
+export const radioGroupDisabled = css(radioBase, {
+  opacity: 0.25,
+  pointerEvents: 'none',
 }).toString();
 
 export const radioItem = css({
