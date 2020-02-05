@@ -13,7 +13,7 @@ import {
   withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
 } from '@shopgate/engage/core';
 
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';

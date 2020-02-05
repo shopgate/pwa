@@ -6,7 +6,6 @@ import reducers from 'Pages/reducers';
 import ItemFavoritesButton from './index';
 
 const store = createMockStore(reducers);
-jest.mock('../../../../../View/context.js');
 
 describe('<ItemFavoritesButton />', () => {
   it('should not render when its not a favorite', () => {

@@ -14,7 +14,7 @@ import Favorites from './index';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 const mockedStore = configureStore([]);
-jest.mock('Components/View');
+jest.mock('@shopgate/engage/components');
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => {
   const originalConfig = require.requireActual('@shopgate/pwa-common/helpers/config');

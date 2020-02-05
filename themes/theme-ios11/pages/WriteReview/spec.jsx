@@ -6,7 +6,7 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 // eslint-disable-next-line import/named
 import { mockedState } from './mock';
 
-jest.mock('Components/View');
+jest.mock('@shopgate/engage/components');
 jest.mock('./components/ReviewForm', () => () => '');
 const mockedStore = configureStore();
 /**

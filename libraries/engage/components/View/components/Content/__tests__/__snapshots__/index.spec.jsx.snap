@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > components > view > components > content should render content 1`] = `
+<Swipeable
+  delta={10}
+  disabled={false}
+  flickThreshold={0.6}
+  nodeName="div"
+  onSwiped={[Function]}
+  preventDefaultTouchmoveEvent={false}
+  rotationAngle={0}
+  stopPropagation={false}
+>
+  <article
+    className={
+      Object {
+        "data-css-15ujrix": "",
+      }
+    }
+    style={
+      Object {
+        "overflow": "auto",
+        "paddingBottom": 0,
+      }
+    }
+  >
+    <HelmetWrapper
+      defer={true}
+      encodeSpecialCharacters={true}
+      title="Test Shop"
+    />
+    <ViewAbove />
+    <SurroundPortals
+      portalName="view.content"
+      portalProps={null}
+    >
+      <div>
+        Page #1
+      </div>
+    </SurroundPortals>
+    <ViewBelow />
+  </article>
+</Swipeable>
+`;

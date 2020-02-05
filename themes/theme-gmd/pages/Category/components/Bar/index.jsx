@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useRoute } from '@shopgate/engage/core';
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import FilterBar from 'Components/FilterBar';
 
 /**
