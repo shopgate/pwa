@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pages: <Category /> should render 1`] = `<Category />`;
+exports[`Pages: <Category /> should render 1`] = `
+<MockedView
+  aria-hidden={false}
+  background="#f8f8f8"
+>
+  <Consume
+    context={
+      Object {
+        "Consumer": [Function],
+      }
+    }
+    props={
+      Object {
+        "id": "params.categoryId",
+        "open": "open",
+      }
+    }
+  >
+    <Component />
+  </Consume>
+</MockedView>
+`;
