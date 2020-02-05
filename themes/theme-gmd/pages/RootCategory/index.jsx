@@ -27,7 +27,7 @@ class RootCategory extends PureComponent {
       <View aria-hidden={false}>
         <DefaultBar title="titles.categories" />
         <SurroundPortals portalName={CATEGORY_LIST} portalProps={{ categories }}>
-          <CategoryList categories={this.props.categories} prerender={8} />
+          <CategoryList categories={categories} prerender={8} />
         </SurroundPortals>
       </View>
     );
