@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { camelCase } from 'lodash';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -32,15 +33,17 @@ class RadioItem extends PureComponent {
     } = this.props;
 
     return (
-      <label className={classNames(style.container, 'radioItem')} htmlFor={this.key}>
-        {checked && <CheckedIcon className={`${style.active} ${style.icon}`} />}
-        {!checked && <UncheckedIcon className={style.icon} />}
+      <label
+        className={classNames(style.container, camelCase(name), 'radioItem')}
+        htmlFor={this.key}
+      >
+        {checked && <CheckedIcon className={classNames(style.active, style.icon, 'checkedIcon')} />}
+        {!checked && <UncheckedIcon className={classNames(style.icon, 'uncheckedIcon')} />}
 
         <input
           className={classNames(style.input, 'input')}
           checked={checked}
           type="radio"
-          id={this.key}
           name={name}
           onChange={onChange}
         />

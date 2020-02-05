@@ -73,20 +73,20 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 radioItem"
+            className="css-15broj4 foo radioItem"
           >
             <RadioUnchecked
-              className="css-37nc4w"
+              className="css-37nc4w uncheckedIcon"
             >
               <Icon
-                className="css-37nc4w"
+                className="css-37nc4w uncheckedIcon"
                 color={null}
                 content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w"
+                  className="css-yys9hb css-37nc4w uncheckedIcon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -220,20 +220,20 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 radioItem"
+            className="css-15broj4 foo radioItem"
           >
             <RadioUnchecked
-              className="css-37nc4w"
+              className="css-37nc4w uncheckedIcon"
             >
               <Icon
-                className="css-37nc4w"
+                className="css-37nc4w uncheckedIcon"
                 color={null}
                 content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w"
+                  className="css-yys9hb css-37nc4w uncheckedIcon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -280,20 +280,20 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 radioItem"
+            className="css-15broj4 bar radioItem"
           >
             <RadioUnchecked
-              className="css-37nc4w"
+              className="css-37nc4w uncheckedIcon"
             >
               <Icon
-                className="css-37nc4w"
+                className="css-37nc4w uncheckedIcon"
                 color={null}
                 content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w"
+                  className="css-yys9hb css-37nc4w uncheckedIcon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -427,20 +427,20 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 radioItem"
+            className="css-15broj4 foo radioItem"
           >
             <RadioUnchecked
-              className="css-37nc4w"
+              className="css-37nc4w uncheckedIcon"
             >
               <Icon
-                className="css-37nc4w"
+                className="css-37nc4w uncheckedIcon"
                 color={null}
                 content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w"
+                  className="css-yys9hb css-37nc4w uncheckedIcon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -660,20 +660,20 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 radioItem"
+            className="css-15broj4 foo radioItem"
           >
             <RadioUnchecked
-              className="css-37nc4w"
+              className="css-37nc4w uncheckedIcon"
             >
               <Icon
-                className="css-37nc4w"
+                className="css-37nc4w uncheckedIcon"
                 color={null}
                 content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-37nc4w"
+                  className="css-yys9hb css-37nc4w uncheckedIcon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
@@ -807,20 +807,20 @@ exports[`<RadioGroup /> should use default value 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 radioItem"
+            className="css-15broj4 foo radioItem"
           >
             <RadioChecked
-              className="css-1ncyhu css-37nc4w"
+              className="css-1ncyhu css-37nc4w checkedIcon"
             >
               <Icon
-                className="css-1ncyhu css-37nc4w"
+                className="css-1ncyhu css-37nc4w checkedIcon"
                 color={null}
                 content="<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-1ncyhu css-37nc4w"
+                  className="css-yys9hb css-1ncyhu css-37nc4w checkedIcon"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": "<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",

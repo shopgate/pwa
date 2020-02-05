@@ -105,11 +105,14 @@ class Checkbox extends Component {
    * Renders an input if a "name" prop is provided.
    * @returns {JSX}
    */
-  renderInput = () => (
-    this.props.name
-      ? <input type="hidden" name={this.props.name} value={this.isChecked() ? 1 : 0} />
-      : null
-  );
+  renderInput = () => {
+    const { props: { name }, isChecked } = this;
+    return (
+      this.props.name
+        ? <input className="input" type="hidden" name={name} value={isChecked() ? 1 : 0} />
+        : null
+    );
+  };
 
   /**
    * Renders the label if "side" matches he labelPosition prop.

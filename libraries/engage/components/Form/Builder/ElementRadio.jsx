@@ -30,14 +30,12 @@ const ElementRadio = (props) => {
         translateErrorText={false}
       >
         {Object.keys(element.options).map(itemName => (
-          <div className={`${camelCase(name)}_${camelCase(itemName)}`}>
-            <RadioItem
-              key={`${name}_${itemName}`}
-              id={`${name}_${camelCase(itemName)}`}
-              name={itemName}
-              label={element.options[itemName]}
-            />
-          </div>
+          <RadioItem
+            key={`${name}_${itemName}`}
+            id={`${name}_${camelCase(itemName)}`}
+            name={itemName}
+            label={element.options[itemName]}
+          />
         ))}
       </RadioGroup>
     </div>
