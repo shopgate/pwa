@@ -56,4 +56,7 @@ export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListI
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 
+/** @returns {ReactElement} */
+export const SurroundPortals = ({ children }) => children;
+
 export { default as View, ViewContext } from '../View/__mocks__/index';
