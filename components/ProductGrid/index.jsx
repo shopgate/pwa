@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import Iterator from './components/Iterator';
 import Layout from './components/Layout';
 
