@@ -58,3 +58,12 @@ export function useBrowserConnector() {
 
   return true;
 }
+
+/**
+ * Logs a deprecation warning.
+ * @param {string} element The deperecated element.
+ * @param {string} [version='v7.0.0'] The engage version of removal.
+ */
+export function logDeprecationMessage(element, version = 'v7.0.0') {
+  logger.warn(`DEPRECATED: ${element} is deprecated. It will be removed in Engage ${version}`);
+}
