@@ -8,7 +8,50 @@ exports[`<Cart> page should match snapshot 1`] = `
   <Consume
     context={
       Object {
-        "Consumer": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": Object {
+          "$$typeof": Symbol(react.context),
+          "_calculateChangedBits": null,
+          "_context": [Circular],
+        },
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": Object {
+          "id": "",
+          "open": true,
+          "params": Object {
+            "categoryId": "1234",
+            "productId": "1234",
+          },
+          "pathname": "",
+          "pattern": "",
+          "query": Object {
+            "s": "abc",
+          },
+          "state": Object {},
+          "visible": true,
+        },
+        "_currentValue2": Object {
+          "id": "",
+          "open": true,
+          "params": Object {
+            "categoryId": "1234",
+            "productId": "1234",
+          },
+          "pathname": "",
+          "pattern": "",
+          "query": Object {
+            "s": "abc",
+          },
+          "state": Object {},
+          "visible": true,
+        },
+        "_threadCount": 0,
       }
     }
     props={
