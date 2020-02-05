@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -9,7 +10,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const ErrorText = props => (
-  <div className={`${props.className} ${styles.error}`}>
+  <div className={classNames(props.className, styles.error, 'errorText')}>
     { props.translate && <I18n.Text string={props.validationError || props.errorText} /> }
     { !props.translate && (props.validationError || props.errorText) }
   </div>

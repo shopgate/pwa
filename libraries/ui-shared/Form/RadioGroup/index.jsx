@@ -1,5 +1,6 @@
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import style from './style';
 
@@ -78,7 +79,7 @@ class RadioGroup extends Component {
         hasUnderline={false}
         hasValue
       >
-        <div className={style.container(direction)}>
+        <div className={classNames(style.container(direction), 'radioGroup')}>
           {Children.map(children, child => cloneElement(child, {
             key: `${name}_${child.props.name}`,
             checked: this.state.value === child.props.name,

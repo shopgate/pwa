@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -10,7 +11,10 @@ import styles from './style';
  * @return {JSX}
  */
 const Placeholder = ({ placeholder, visible, 'aria-hidden': ariaHidden }) => (
-  <div className={styles.placeholderStyles(visible)} aria-hidden={ariaHidden}>
+  <div
+    className={classNames(styles.placeholderStyles(visible), 'placeholder')}
+    aria-hidden={ariaHidden}
+  >
     <I18n.Text string={placeholder} />
   </div>
 );
