@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Label from './components/Label';
@@ -13,7 +14,10 @@ import FormElement from './components/FormElement/index';
 class TextField extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
     errorText: PropTypes.node,
     hintText: PropTypes.node,
     isControlled: PropTypes.bool,
@@ -33,13 +37,13 @@ class TextField extends Component {
   static defaultProps = {
     className: '',
     errorText: '',
-    setRef: () => {},
+    setRef: () => { },
     hintText: '',
     isControlled: false,
     label: '',
     multiLine: false,
-    onChange: () => {},
-    onFocusChange: () => {},
+    onChange: () => { },
+    onFocusChange: () => { },
     onSanitize: value => value,
     onValidate: () => true,
     password: false,
@@ -103,9 +107,10 @@ class TextField extends Component {
   /**
    * Updates the state if the input value has been changed.
    * @param {string} value The entered text.
+   * @param {Object} event The original event object.
    */
-  handleChange = (value) => {
-    this.props.onChange(value);
+  handleChange = (value, event) => {
+    this.props.onChange(value, event);
   };
 
   /**
@@ -180,4 +185,4 @@ class TextField extends Component {
   }
 }
 
-export default TextField;
+export default hot(TextField);

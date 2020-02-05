@@ -13,7 +13,6 @@ import fetchProductShipping from '../actions/fetchProductShipping';
 import fetchProductVariants from '../actions/fetchProductVariants';
 import fetchProductOptions from '../actions/fetchProductOptions';
 import fetchProductMedia from '../actions/fetchProductMedia';
-import { fetchProductLocations } from '../actions/fetchProductLocations';
 import { productImageFormats } from '../collections';
 import {
   productWillEnter$,
@@ -46,7 +45,6 @@ function product(subscribe) {
     const id = variantId || hex2bin(productId);
 
     dispatch(fetchProduct(id));
-    dispatch(fetchProductLocations(id));
     dispatch(fetchProductDescription(id));
     dispatch(fetchProductProperties(id));
     dispatch(fetchProductImages(id, productImageFormats.getAllUniqueFormats()));

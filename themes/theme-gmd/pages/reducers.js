@@ -16,6 +16,7 @@ import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
+import locations from '@shopgate/engage/locations/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import extensions from 'Extensions/reducers';
@@ -50,6 +51,7 @@ const reducers = combineReducers({
   modal,
   page,
   product,
+  locations,
   reviews,
   search,
   url,

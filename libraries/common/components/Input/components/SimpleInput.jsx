@@ -41,13 +41,13 @@ class SimpleInput extends Component {
     id: null,
     isControlled: false,
     name: null,
-    onChange: () => {},
-    onFocusChange: () => {},
-    onKeyPress: () => {},
+    onChange: () => { },
+    onFocusChange: () => { },
+    onKeyPress: () => { },
     onSanitize: value => value,
     onValidate: () => true,
     password: false,
-    setRef: () => {},
+    setRef: () => { },
     type: 'text',
     validateOnBlur: true,
     value: '',
@@ -154,7 +154,7 @@ class SimpleInput extends Component {
     this.updateValue(sanitizedValue, !this.props.isControlled);
 
     // Emit an event.
-    this.props.onChange(sanitizedValue);
+    this.props.onChange(sanitizedValue, event);
   };
 
   /**

@@ -12,6 +12,7 @@ import {
   TOGGLE_LOGGED_IN,
   DISABLE_LOGIN,
   SELECT_LOCATION,
+  STORE_FORM_INPUT,
 } from '../../constants/ActionTypes';
 
 import { DEFAULT_LOGIN_STRATEGY } from '../../constants/user';
@@ -146,4 +147,14 @@ export const disableLogin = value => ({
 export const selectLocation = location => ({
   type: SELECT_LOCATION,
   location,
+});
+
+/**
+ * Creates the dispatched STORE_FORM_INPUT action object.
+ * @param {Object} input The user form input.
+ * @returns {Object}
+ */
+export const storeFormInput = input => ({
+  type: STORE_FORM_INPUT,
+  input,
 });

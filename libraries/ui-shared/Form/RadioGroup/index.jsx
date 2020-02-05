@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root';
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
@@ -10,7 +11,10 @@ class RadioGroup extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     children: PropTypes.node,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
     /* Flex direction for radio group */
     direction: PropTypes.string,
     errorText: PropTypes.string,
@@ -23,7 +27,7 @@ class RadioGroup extends Component {
   }
 
   static defaultProps = {
-    onChange: () => {},
+    onChange: () => { },
     children: null,
     className: '',
     direction: 'column',
@@ -94,4 +98,4 @@ class RadioGroup extends Component {
   }
 }
 
-export default RadioGroup;
+export default hot(RadioGroup);

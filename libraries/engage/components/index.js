@@ -141,11 +141,13 @@ export { default as InfoOutlineIcon } from '@shopgate/pwa-ui-shared/icons/InfoOu
 export { default as ListIcon } from '@shopgate/pwa-ui-shared/icons/ListIcon';
 export { default as LocatorIcon } from '@shopgate/pwa-ui-shared/icons/LocatorIcon';
 export { default as LocalShippingIcon } from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
+export { default as LocationIcon } from '@shopgate/pwa-ui-shared/icons/LocationIcon';
 export { default as LockIcon } from '@shopgate/pwa-ui-shared/icons/LockIcon';
 export { default as LogoutIcon } from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
 export { default as MagnifierIcon } from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
 export { default as MoreIcon } from '@shopgate/pwa-ui-shared/icons/MoreIcon';
 export { default as MoreVertIcon } from '@shopgate/pwa-ui-shared/icons/MoreVertIcon';
+export { default as PhoneIcon } from '@shopgate/pwa-ui-shared/icons/PhoneIcon';
 export { default as PlaceholderIcon } from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 export { default as RadioCheckedIcon } from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 export { default as RadioUncheckedIcon } from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';

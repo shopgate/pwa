@@ -30,8 +30,8 @@ describe('<Input />', () => {
 
     wrapper.find('input').simulate('change', { target: { value: 'a' } });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(onChangeMock.mock.calls.length).toBe(2);
+    expect(onChangeMock).toHaveBeenCalledTimes(2);
+    expect(wrapper.find('input').props().value).toEqual('a');
   });
 
   it('should receive the correct value while typing', () => {

@@ -77,9 +77,6 @@ export * from '@shopgate/pwa-common/constants/Portals';
 export { INDEX_PATH, INDEX_PATH_DEEPLINK };
 export * from './constants/geolocationRequest';
 
-// Engage Constants
-export * from '@shopgate/engage/product/constants/Portals';
-
 // Emitters
 export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
 
