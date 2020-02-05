@@ -1,5 +1,5 @@
 import React from 'react';
-import View from 'Components/View';
+import { View } from '@shopgate/engage/components';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import PageContent from '../Page/components/Content';
 

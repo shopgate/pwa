@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SheetList, Picker as BasePicker, Sheet } from '@shopgate/engage/components';
-import { ViewContext } from 'Components/View/context';
+import { ViewContext } from '@shopgate/engage/components/View';
 import Button from './components/Button';
 import styles from './style';
 
