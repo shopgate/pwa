@@ -13,6 +13,10 @@ jest.mock('../../FulfillmentSheet', () => ({
   },
 }));
 
+const conditioner = {
+  check: () => Promise.resolve(true),
+};
+
 describe('<FulfillmentSelector />', () => {
   it('should not render if the fulfillmentMethods do not contain inStorePickup', () => {
     const wrapper = shallow((
@@ -22,7 +26,9 @@ describe('<FulfillmentSelector />', () => {
           name: 'Test Store',
           visibleInventory: 15,
         }}
+        conditioner={conditioner}
         fulfillmentMethods={[]}
+        disabled={false}
       />
     ));
 
@@ -38,10 +44,12 @@ describe('<FulfillmentSelector />', () => {
           name: 'Test Store',
           visibleInventory: 15,
         }}
+        conditioner={conditioner}
         fulfillmentMethods={[
           PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
           PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
         ]}
+        disabled={false}
       />
     ));
 
@@ -51,7 +59,7 @@ describe('<FulfillmentSelector />', () => {
     expect(wrapper.find('[name="product.fulfillment_selector.pick_up_in_store"]').length).toBe(1);
   });
 
-  it('should open the store selector sheet on selecting pick_up_in_store', () => {
+  it('should open the store selector sheet on selecting pick_up_in_store', async () => {
     const wrapper = shallow((
       <FulfillmentSelector
         productId="abc-123"
@@ -59,16 +67,20 @@ describe('<FulfillmentSelector />', () => {
           name: 'Test Store',
           visibleInventory: 15,
         }}
+        conditioner={conditioner}
         fulfillmentMethods={[
           PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
           PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
         ]}
+        disabled={false}
       />
     ));
 
     wrapper
       .find('[name="product.fulfillment_selector"]')
       .simulate('change', 'product.fulfillment_selector.pick_up_in_store');
+
+    await new Promise(resolve => setImmediate(resolve));
 
     expect(FulfillmentSheet.open).toHaveBeenCalledTimes(1);
   });

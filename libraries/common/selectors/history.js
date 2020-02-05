@@ -3,7 +3,7 @@ import {
   getCurrentPathname,
   getCurrentQuery,
   getRouterStack,
-} from '@shopgate/pwa-common/selectors/router';
+} from './router';
 import { parseObjectToQueryString } from '../helpers/router';
 import { DEFAULT_SORT } from '../constants/DisplayOptions';
 

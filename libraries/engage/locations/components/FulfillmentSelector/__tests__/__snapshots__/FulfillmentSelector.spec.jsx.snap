@@ -35,7 +35,7 @@ exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do 
       />
     </div>
     <RadioGroup
-      className="css-n7bvec"
+      className="css-11ghxnx"
       direction="column"
       errorText=""
       isControlled={true}
@@ -107,7 +107,7 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       />
     </div>
     <RadioGroup
-      className="css-n7bvec"
+      className="css-11ghxnx"
       direction="column"
       errorText=""
       isControlled={true}
