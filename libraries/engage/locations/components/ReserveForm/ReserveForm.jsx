@@ -61,7 +61,7 @@ function ReserveForm() {
   return (
     <form onSubmit={handleSubmit} className={form}>
       <p className={formHeading}>
-        {i18n.text('locations.createOrder')}
+        {i18n.text('locations.create_order')}
       </p>
       <fieldset className={fieldset}>
         <TextField
