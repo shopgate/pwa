@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { logger } from '@shopgate/pwa-core';
 import SimpleInput from './SimpleInput';
 
@@ -93,7 +94,7 @@ class MultiLineInput extends SimpleInput {
         id={this.props.id}
         name={this.props.name}
         ref={ref => this.handleRef(ref)}
-        className={className}
+        className={classNames(className, 'multiLineInput')}
         type={type}
         value={value}
         onChange={this.handleChange}

@@ -10,7 +10,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const ErrorText = ({ className, errorText, translate }) => (
-  <div className={classNames(className, styles)}>
+  <div className={classNames(className, styles, 'errorText')}>
     {translate && <I18n.Text string={errorText} />}
     {!translate && errorText}
   </div>

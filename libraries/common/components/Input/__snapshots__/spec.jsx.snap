@@ -27,7 +27,7 @@ exports[`<Input /> should change the value on user input 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -69,7 +69,7 @@ exports[`<Input /> should focus the input 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -109,7 +109,7 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -151,7 +151,7 @@ exports[`<Input /> should render a multiline input with empty content and react 
     value=""
   >
     <textarea
-      className=""
+      className="multiLineInput"
       disabled={false}
       id={null}
       name={null}
@@ -190,7 +190,7 @@ exports[`<Input /> should render a simple input field 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -209,7 +209,7 @@ exports[`<Input /> should render additional html attributes 1`] = `
 <input
   autoComplete="off"
   autoCorrect="off"
-  className=""
+  className="simpleInput"
   disabled={false}
   id={null}
   max="2010-01-01"
@@ -251,7 +251,7 @@ exports[`<Input /> should render the input as password 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -293,7 +293,7 @@ exports[`<Input /> should render the input with a default value 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -335,7 +335,7 @@ exports[`<Input /> should sanitize the input 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -419,7 +419,7 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}
@@ -461,7 +461,7 @@ exports[`<Input /> should validate the input 1`] = `
     <input
       autoComplete="off"
       autoCorrect="off"
-      className=""
+      className="simpleInput"
       disabled={false}
       id={null}
       name={null}

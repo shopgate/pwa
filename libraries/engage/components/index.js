@@ -70,8 +70,6 @@ export { default as ContextMenu } from '@shopgate/pwa-ui-shared/ContextMenu';
 export { default as Dialog } from '@shopgate/pwa-ui-shared/Dialog';
 export { default as DiscountBadge } from '@shopgate/pwa-ui-shared/DiscountBadge';
 export { default as FavoritesButton } from '@shopgate/pwa-ui-shared/FavoritesButton';
-export { default as Form } from '@shopgate/pwa-ui-shared/Form';
-export { default as Builder } from '@shopgate/pwa-ui-shared/Form/Builder';
 export { default as Checkbox } from '@shopgate/pwa-ui-shared/Form/Checkbox';
 export { default as Password } from '@shopgate/pwa-ui-shared/Form/Password';
 export { default as RadioGroup } from '@shopgate/pwa-ui-shared/Form/RadioGroup';
@@ -160,6 +158,8 @@ export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListI
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 
+export { Form } from './Form';
+export { FormBuilder } from './Form';
 export { default as NavigationHandler } from './NavigationHandler';
 export { default as TimeBoundary } from './TimeBoundary';
 export { default as IntersectionVisibility } from './IntersectionVisibility';
