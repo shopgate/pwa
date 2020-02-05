@@ -25,7 +25,7 @@ exports[`<StoreAddressMailingAddress /> should render as expected 1`] = `
     >
       Test Street 123
     </div>
-    product.location.address
+    locations.address
   </div>
 </div>
 `;
@@ -58,7 +58,7 @@ exports[`<StoreAddressMailingAddress /> should render more streets if necessary 
     >
       Some additional street info
     </div>
-    product.location.address
+    locations.address
   </div>
 </div>
 `;

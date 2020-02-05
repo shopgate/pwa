@@ -24,7 +24,7 @@ function StoreAddressHoursToday({ hours }) {
 
   return (
     <div className={storeHoursToday}>
-      {i18n.text('product.location.today_hours', { hours: hoursToday })}
+      {i18n.text('locations.today_hours', { hours: hoursToday })}
     </div>
   );
 }

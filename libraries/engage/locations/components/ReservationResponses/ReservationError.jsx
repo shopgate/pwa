@@ -12,10 +12,10 @@ function ReservationError() {
   return (
     <div className={container}>
       <h2 className={heading}>
-        {i18n.text('product.location.error_title')}
+        {i18n.text('locations.error_title')}
       </h2>
       <p className={body}>
-        {i18n.text('product.location.error_copy')}
+        {i18n.text('locations.error_copy')}
       </p>
     </div>
   );
