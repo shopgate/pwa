@@ -3,9 +3,8 @@ import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import requestSubmitReview from '@shopgate/pwa-common-commerce/reviews/action-creators/requestSubmitReview';
 import subscriber from './subscriptions';
-import reducers from '../reducers';
 
-const store = createMockStore(reducers, subscriber);
+const store = createMockStore(() => { }, subscriber);
 
 jest.mock('@shopgate/engage/core', () => ({
   persistedReducers: {
