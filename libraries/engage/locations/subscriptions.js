@@ -1,4 +1,4 @@
-import { productReceived$ } from '@shopgate/engage/product';
+import { receivedVisibleProduct$ } from '@shopgate/engage/product';
 import { fetchProductLocations } from './actions';
 
 /**
@@ -6,13 +6,13 @@ import { fetchProductLocations } from './actions';
  * @param {Function} subscribe The subscribe function.
  */
 function locations(subscribe) {
-  subscribe(productReceived$, ({ action, dispatch }) => {
+  subscribe(receivedVisibleProduct$, ({ action, dispatch }) => {
     const { productData } = action;
 
     if (
       !productData
       || !productData.fulfillmentMethods
-      || productData.fulfillmentMethods.lengt === 0
+      || productData.fulfillmentMethods.length === 0
     ) {
       return;
     }
