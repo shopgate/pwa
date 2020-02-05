@@ -71,7 +71,10 @@ class Builder extends Component {
     config: PropTypes.shape().isRequired,
     handleUpdate: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([
+      PropTypes.shape(),
+      PropTypes.string,
+    ]),
     defaults: PropTypes.shape(),
     elements: PropTypes.shape(),
     onSubmit: PropTypes.func,
