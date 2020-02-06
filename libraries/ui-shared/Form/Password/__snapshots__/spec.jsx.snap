@@ -48,7 +48,7 @@ exports[`<Password> should render a password field 1`] = `
       translateErrorText={true}
     >
       <div
-        className="css-1vjh8yv css-1klwfzq"
+        className="css-1vjh8yv css-1klwfzq formElement"
       >
         <Grid
           className=""
@@ -102,7 +102,7 @@ exports[`<Password> should render a password field 1`] = `
                     <input
                       autoComplete="off"
                       autoCorrect="off"
-                      className="css-keangt"
+                      className="css-keangt simpleInput"
                       disabled={false}
                       id={null}
                       name="test-input"
@@ -185,7 +185,7 @@ exports[`<Password> should render a password field 1`] = `
           isFocused={false}
         >
           <div
-            className="css-ycal4l"
+            className="css-ycal4l underline"
           >
             <div
               className="css-1tpmuef"

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 /**
  * Form component that handles keyboard submit, next buttons, ...
+ * @deprecated Use `@shopgate/engage/components/Form` instead.
  */
 class Form extends PureComponent {
   static propTypes = {

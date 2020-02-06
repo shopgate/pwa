@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useTheme } from '../useTheme';
 
 jest.mock('react', () => ({
+  ...jest.requireActual('react'),
   useContext: jest.fn(),
 }));
 

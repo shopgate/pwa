@@ -31,10 +31,10 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq"
+      className="css-1vjh8yv css-1klwfzq formElement"
     >
       <select
-        className="css-zao20y"
+        className="css-zao20y select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -43,12 +43,14 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         value="DE"
       >
         <option
+          className="option"
           key="test-name_DE"
           value="DE"
         >
           Germany
         </option>
         <option
+          className="option"
           key="test-name_US"
           value="US"
         >
@@ -60,7 +62,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -109,10 +111,10 @@ exports[`<Select /> should render select with 2 options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq"
+      className="css-1vjh8yv css-1klwfzq formElement"
     >
       <select
-        className="css-zao20y"
+        className="css-zao20y select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -121,12 +123,14 @@ exports[`<Select /> should render select with 2 options 1`] = `
         value=""
       >
         <option
+          className="option"
           key="test-name_DE"
           value="DE"
         >
           Germany
         </option>
         <option
+          className="option"
           key="test-name_US"
           value="US"
         >
@@ -138,7 +142,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
@@ -182,10 +186,10 @@ exports[`<Select /> should render select with no options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv css-1klwfzq"
+      className="css-1vjh8yv css-1klwfzq formElement"
     >
       <select
-        className="css-zao20y"
+        className="css-zao20y select"
         id="test-name"
         name="test-name"
         onBlur={[Function]}
@@ -198,7 +202,7 @@ exports[`<Select /> should render select with no options 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l"
+          className="css-ycal4l underline"
         >
           <div
             className="css-1tpmuef"
