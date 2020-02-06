@@ -1,11 +1,8 @@
-/* eslint-disable require-jsdoc */
-import React from 'react';
-
 // Shim memo
+// eslint-disable-next-line require-jsdoc
 const memo = Component => Component;
 
 module.exports = {
-  ...React,
+  ...jest.requireActual('react'),
   memo,
 };
-/* eslint-enable */

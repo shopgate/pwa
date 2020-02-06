@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import FormElement from '../../FormElement';
 import styles from './style';
 
@@ -95,11 +96,11 @@ class Select extends Component {
           onFocus={() => this.handleFocusChange(true)}
           onBlur={() => this.handleFocusChange(false)}
           value={this.state.value}
-          className={styles.select}
+          className={classNames(styles.select, 'select')}
         >
           {
             Object.keys(options).map(key => (
-              <option value={key} key={`${name}_${key}`}>{options[key]}</option>
+              <option className="option" value={key} key={`${name}_${key}`}>{options[key]}</option>
             ))
           }
         </select>

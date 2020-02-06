@@ -75,7 +75,8 @@ class FormElement extends Component {
       <div className={classNames(
         style.formElement,
         style.labelReservedSpace,
-        className
+        className,
+        'formElement'
       )}
       >
         {hasPlaceholder && (placeholder || label) &&

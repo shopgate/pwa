@@ -75,10 +75,12 @@ export const requestLogout = () => ({
 
 /**
  * Creates the dispatched RECEIVE_LOGOUT action object.
+ * @param {boolean} [notify=true] If set to TRUE users are notified when the logout was successful.
  * @returns {Object} The dispatched action object.
  */
-export const successLogout = () => ({
+export const successLogout = (notify = true) => ({
   type: SUCCESS_LOGOUT,
+  notify,
 });
 
 /**

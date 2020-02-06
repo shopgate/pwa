@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -15,7 +16,7 @@ const Label = (props) => {
     /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
     <label
       htmlFor={props.htmlFor}
-      className={labelStyles}
+      className={classNames(labelStyles, 'label')}
     >
       <I18n.Text string={props.label} />
     </label>

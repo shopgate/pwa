@@ -99,14 +99,14 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
               value="default"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -125,7 +125,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   name="foo.foo"
                 >
                   <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao label"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -198,7 +198,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -217,7 +217,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -237,7 +237,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -351,14 +351,14 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -377,7 +377,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   name="foo.foo"
                 >
                   <label
-                    className="css-u7lqu6 css-1fekhao"
+                    className="css-u7lqu6 css-1fekhao label"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -450,7 +450,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -469,7 +469,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -489,7 +489,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -561,14 +561,14 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -587,7 +587,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   name="foo.bar"
                 >
                   <label
-                    className="css-u7lqu6 css-1fekhao"
+                    className="css-u7lqu6 css-1fekhao label"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -660,7 +660,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.bar"
                         name="foo.bar"
@@ -679,7 +679,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -699,7 +699,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -813,14 +813,14 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
               value="abc"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -839,7 +839,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   name="foo.foo"
                 >
                   <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao label"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -912,7 +912,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -931,7 +931,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -951,7 +951,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -1143,14 +1143,14 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -1169,7 +1169,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   name="foo.firstName"
                 >
                   <label
-                    className="css-u7lqu6 css-1fekhao"
+                    className="css-u7lqu6 css-1fekhao label"
                     htmlFor="foo.firstName"
                   >
                     <Translate
@@ -1242,7 +1242,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.firstName"
                         name="foo.firstName"
@@ -1261,7 +1261,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -1281,7 +1281,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -1340,14 +1340,14 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -1366,7 +1366,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   name="foo.lastName"
                 >
                   <label
-                    className="css-u7lqu6 css-1fekhao"
+                    className="css-u7lqu6 css-1fekhao label"
                     htmlFor="foo.lastName"
                   >
                     <Translate
@@ -1439,7 +1439,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.lastName"
                         name="foo.lastName"
@@ -1458,7 +1458,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -1478,7 +1478,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -1599,14 +1599,14 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -1625,7 +1625,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   name="foo.foo"
                 >
                   <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao label"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -1698,7 +1698,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -1717,7 +1717,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -1737,7 +1737,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -1814,14 +1814,14 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -1840,7 +1840,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   name="foo.bar"
                 >
                   <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao label"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -1913,7 +1913,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.bar"
                         name="foo.bar"
@@ -1932,7 +1932,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -1952,7 +1952,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -2073,14 +2073,14 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="abc"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -2099,7 +2099,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   name="foo.foo"
                 >
                   <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao label"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -2172,7 +2172,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.foo"
                         name="foo.foo"
@@ -2191,7 +2191,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -2211,7 +2211,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>
@@ -2288,14 +2288,14 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="cheat"
             >
               <div
-                className="css-e4z0u6 "
+                className="css-e4z0u6 textField"
               >
                 <Hint
                   hintText=""
                   visible={false}
                 >
                   <div
-                    className="css-tnfb18 css-1jyyyen"
+                    className="css-tnfb18 css-1jyyyen hint"
                   >
                     <Translate
                       className={null}
@@ -2314,7 +2314,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   name="foo.bar"
                 >
                   <label
-                    className="css-u7lqu6 css-16msjt6 css-1fekhao"
+                    className="css-u7lqu6 css-16msjt6 css-1fekhao label"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -2387,7 +2387,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       <input
                         autoComplete="off"
                         autoCorrect="off"
-                        className="css-keangt"
+                        className="css-keangt simpleInput"
                         disabled={false}
                         id="foo.bar"
                         name="foo.bar"
@@ -2406,7 +2406,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   isFocused={false}
                 >
                   <div
-                    className="css-ycal4l"
+                    className="css-ycal4l underline"
                   >
                     <div
                       className="css-1tpmuef"
@@ -2426,7 +2426,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   validationError={null}
                 >
                   <div
-                    className=" css-hmgfge"
+                    className="css-hmgfge errorText"
                   />
                 </ErrorText>
               </div>

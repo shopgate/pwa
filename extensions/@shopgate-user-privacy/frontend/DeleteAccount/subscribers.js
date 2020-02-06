@@ -1,5 +1,6 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { logout, userDidLogout$ } from '@shopgate/engage/user';
+import { historyPush } from '@shopgate/engage/core';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import deleteAccountAction from './action';
@@ -9,23 +10,35 @@ export default (subscribe) => {
   const deleteAccountSuccess$ = main$.filter(({ action }) => action.type === 'DELETE_ACCOUNT_SUCCESS');
   const deleteAccountFailed$ = main$.filter(({ action }) => action.type === 'DELETE_ACCOUNT_FAILED');
 
+  const processSuccess$ = deleteAccountSuccess$.zip(userDidLogout$).map(([first]) => first);
+
   subscribe(deleteAccountRequested$, async ({ dispatch }) => {
     const confirmed = await dispatch(showModal({
       message: 'user.delete_account_confirm',
       title: null,
     }));
     if (confirmed) {
-      deleteAccountAction()(dispatch);
+      dispatch(deleteAccountAction());
+      dispatch(logout(false));
     }
   });
 
-  subscribe(deleteAccountSuccess$, ({ events }) => {
+  subscribe(processSuccess$, async ({ dispatch }) => {
     NavDrawer.close();
 
-    events.emit(ToastProvider.ADD, {
-      id: 'user.account.deleted',
+    const confirmed = await dispatch(showModal({
+      confirm: 'modal.ok',
+      dismiss: 'user.contact_us',
       message: 'user.delete_account_success',
-    });
+      title: null,
+    }));
+
+    if (confirmed === false) {
+      // User pressed the "contact us" button
+      dispatch(historyPush({
+        pathname: '/page/imprint',
+      }));
+    }
   });
 
   subscribe(deleteAccountFailed$, ({ dispatch }) => {
