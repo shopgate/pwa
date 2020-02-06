@@ -16,8 +16,12 @@ import styles from './style';
 const Checkbox = ({ checkedClassName, unCheckedClassName, ...props }) => (
   <BaseCheckbox
     {...props}
-    checkedIcon={<CheckedIcon className={classNames(styles.icon, checkedClassName)} />}
-    uncheckedIcon={<UncheckedIcon className={classNames(styles.icon, unCheckedClassName)} />}
+    checkedIcon={
+      <CheckedIcon className={classNames(styles.icon, checkedClassName, 'checkedIcon')} />
+    }
+    uncheckedIcon={
+      <UncheckedIcon className={classNames(styles.icon, unCheckedClassName, 'uncheckedIcon')} />
+    }
   />
 );
 

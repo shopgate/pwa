@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Base checkbox component.
@@ -104,11 +105,14 @@ class Checkbox extends Component {
    * Renders an input if a "name" prop is provided.
    * @returns {JSX}
    */
-  renderInput = () => (
-    this.props.name
-      ? <input type="hidden" name={this.props.name} value={this.isChecked() ? 1 : 0} />
-      : null
-  );
+  renderInput = () => {
+    const { props: { name }, isChecked } = this;
+    return (
+      this.props.name
+        ? <input className="input" type="hidden" name={name} value={isChecked() ? 1 : 0} />
+        : null
+    );
+  };
 
   /**
    * Renders the label if "side" matches he labelPosition prop.
@@ -127,7 +131,11 @@ class Checkbox extends Component {
    */
   render() {
     return (
-      <div className={this.props.className} onClick={this.handleCheck} aria-hidden>
+      <div
+        className={classNames(this.props.className, 'checkbox')}
+        onClick={this.handleCheck}
+        aria-hidden
+      >
         {this.renderInput()}
         {this.renderLabelIfItIsOnThe('left')}
         {this.renderIcon()}

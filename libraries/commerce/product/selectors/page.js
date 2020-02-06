@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { logDeprecationMessage } from '@shopgate/pwa-core/helpers';
 
 import {
   getProduct,
@@ -53,6 +54,7 @@ export const isProductPageLoading = createSelector(
  * @todo Consider the real orderable state of the products.
  * @param {Object} state The application state.
  * @return {boolean}
+ * @deprecated
  */
 export const isProductPageOrderable = createSelector(
   getBaseProduct,
@@ -61,6 +63,7 @@ export const isProductPageOrderable = createSelector(
   getVariantProductId,
   getProduct,
   (baseProduct, hasVariants, variants, variantId, product) => {
+    logDeprecationMessage('The selector isProductPageOrderable()');
     // Check if the base product is already present.
     if (!baseProduct) {
       return false;

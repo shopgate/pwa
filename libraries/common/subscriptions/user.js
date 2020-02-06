@@ -39,7 +39,11 @@ export default function user(subscribe) {
     dispatch(fetchUser());
   });
 
-  subscribe(userDidLogout$, ({ dispatch }) => {
+  subscribe(userDidLogout$, ({ dispatch, action }) => {
+    if (action.notify === false) {
+      return;
+    }
+
     dispatch(showModal({
       confirm: 'modal.ok',
       dismiss: null,

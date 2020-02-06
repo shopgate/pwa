@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * A component that takes care of rendering and validation of input fields.
@@ -208,7 +209,7 @@ class SimpleInput extends Component {
         id={this.props.id}
         name={this.props.name}
         ref={ref => this.handleRef(ref)}
-        className={className}
+        className={classNames(className, 'simpleInput')}
         type={type}
         value={value}
         onKeyPress={onKeyPress}

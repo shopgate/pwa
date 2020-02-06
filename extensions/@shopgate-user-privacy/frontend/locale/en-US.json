@@ -1,8 +1,9 @@
 {
   "user": {
     "delete_account": "Delete my account",
-    "delete_account_success": "We received your request to delete your account.",
+    "delete_account_success": "Deletion request received. You have been logged out and we will take care of deleting your data in our system where legally possible. This process might take a few days.",
     "delete_account_error": "An unexpected error occurred. Please try again later.",
-    "delete_account_confirm": "Press Confirm to delete all account data. This operation cannot be undone."
+    "delete_account_confirm": "Press Confirm to delete all account data. This operation cannot be undone.",
+    "contact_us": "Contact us"
   }
 }

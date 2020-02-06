@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { ERROR_HANDLE_SUPPRESS } from '@shopgate/pwa-core/constants/ErrorHandleTypes';
-import config from './../config';
+import config from '../config';
 
 export default () => (dispatch) => {
   if (!config.isActive) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './style';
 
 /**
@@ -8,7 +9,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Underline = props => (
-  <div className={styles.underlineWrapper}>
+  <div className={classNames(styles.underlineWrapper, 'underline')}>
     <div
       className={styles.underline}
       style={styles.underlineStyle(props.isFocused, props.hasErrorMessage)}

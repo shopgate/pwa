@@ -5,31 +5,29 @@ exports[`<ProductsContent /> should render 1`] = `
   categoryId="1234"
   hasProducts={false}
 >
-  <Consumer>
-    <Portal
-      name="product.list.before"
-      props={
-        Object {
-          "categoryId": "1234",
-        }
+  <Portal
+    name="product.list.before"
+    props={
+      Object {
+        "categoryId": "1234",
       }
-    />
-    <Portal
-      name="product.list"
-      props={
-        Object {
-          "categoryId": "1234",
-        }
+    }
+  />
+  <Portal
+    name="product.list"
+    props={
+      Object {
+        "categoryId": "1234",
       }
-    />
-    <Portal
-      name="product.list.after"
-      props={
-        Object {
-          "categoryId": "1234",
-        }
+    }
+  />
+  <Portal
+    name="product.list.after"
+    props={
+      Object {
+        "categoryId": "1234",
       }
-    />
-  </Consumer>
+    }
+  />
 </ProductsContent>
 `;

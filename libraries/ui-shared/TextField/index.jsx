@@ -1,6 +1,7 @@
 import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
@@ -151,7 +152,7 @@ class TextField extends Component {
     const style = styles.container[styleType];
 
     return (
-      <div className={`${style} ${this.props.className}`}>
+      <div className={classNames(style, this.props.className, 'textField')}>
         <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
         <Label
           name={this.props.name}
