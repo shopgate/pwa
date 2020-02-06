@@ -1,3 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pages: <RootCategory /> should render 1`] = `<Connect(RootCategory) />`;
+exports[`Pages: <RootCategory /> should render  1`] = `
+<MockedView
+  aria-hidden={false}
+>
+  <DefaultBar
+    title="titles.categories"
+  />
+  <SurroundPortals
+    portalName="category.list"
+    portalProps={
+      Object {
+        "categories": Array [
+          Object {
+            "id": "cat1",
+            "name": "Cat Name",
+          },
+        ],
+      }
+    }
+  >
+    <CategoryList
+      categories={
+        Array [
+          Object {
+            "id": "cat1",
+            "name": "Cat Name",
+          },
+        ]
+      }
+      prerender={8}
+    />
+  </SurroundPortals>
+</MockedView>
+`;
