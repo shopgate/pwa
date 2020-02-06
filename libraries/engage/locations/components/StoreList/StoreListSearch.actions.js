@@ -1,5 +1,5 @@
 import { getGeolocation } from '@shopgate/engage/core';
-import { fetchProductLocations } from '@shopgate/engage/locations';
+import { fetchProductLocations } from '../../actions';
 
 /**
  * @param {string} productId The product ID to fetch locations for.
@@ -17,7 +17,10 @@ export function getProductLocations(productId, postalCode = null) {
         return;
       }
     } else {
-      params = { postalCode };
+      // Set empty postal codes to undefined to avoid that the parameter is added to the request.
+      params = {
+        ...(postalCode && { postalCode }),
+      };
     }
 
     try {
@@ -25,7 +28,7 @@ export function getProductLocations(productId, postalCode = null) {
     } catch (e) {
       if (e.code === 'ENOTFOUND') {
         // eslint-disable-next-line consistent-return
-        return 'product.error.wrong_zip_code';
+        return 'locations.error_invalid_zip_code';
       }
     }
   };

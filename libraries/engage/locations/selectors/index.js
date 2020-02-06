@@ -9,6 +9,16 @@ import { getProduct } from '@shopgate/engage/product';
 function getLocationsState(state) {
   return state.locations || {};
 }
+/**
+ * Determines the currently relevant productId from the props.
+ * @param {Object} props The component props.
+ * @param {string} props.productId The ID of a product (simple product id or parent product id)
+ * @param {string} props.variantId The ID of a variant.
+ * @returns {string|null}
+ */
+function getProductId(props) {
+  return props.variantId || props.productId || null;
+}
 
 /**
  * Creates the selector that retrieves the product locations state.
@@ -42,7 +52,7 @@ export function makeGetProductLocations() {
    */
   return createSelector(
     getProductLocationsState,
-    (state, props) => props.productId || null,
+    (state, props) => getProductId(props),
     (locationsState, productId) => {
       if (!productId || !locationsState[productId]) {
         return null;
@@ -71,7 +81,7 @@ export function makeGetIsFetchingProductLocations() {
    */
   return createSelector(
     getProductLocationsState,
-    (state, props) => props.productId || null,
+    (state, props) => getProductId(props),
     (locationsState, productId) => {
       if (!productId || !locationsState[productId]) {
         return null;

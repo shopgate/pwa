@@ -1,7 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchField /> should call getLocationsByGeolocation after clicking the locate button 1`] = `
-<Fragment>
+exports[`<StoreListSearch /> should call getProductLocations after clicking the locate button 1`] = `
+<StoreListSearch
+  getProductLocations={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "ABC123",
+          null,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  loading={false}
+  productId="ABC123"
+>
   <div
     className={
       Object {
@@ -37,7 +56,7 @@ exports[`<SearchField /> should call getLocationsByGeolocation after clicking th
         disabled={false}
         onChange={[Function]}
         onKeyDown={[Function]}
-        placeholder="product.zip_search"
+        placeholder="locations.search_placeholder"
         type="search"
         value=""
       />
@@ -65,13 +84,12 @@ exports[`<SearchField /> should call getLocationsByGeolocation after clicking th
       isVisible={false}
     />
   </div>
-</Fragment>
+</StoreListSearch>
 `;
 
-exports[`<SearchField /> should call getLocationsByPostalCode after filling the input and pressing enter 1`] = `
-<SearchField
-  getLocationsByGeolocation={[MockFunction]}
-  getLocationsByPostalCode={
+exports[`<StoreListSearch /> should call getProductLocations with a postal code after filling the input and pressing enter 1`] = `
+<StoreListSearch
+  getProductLocations={
     [MockFunction] {
       "calls": Array [
         Array [
@@ -125,7 +143,7 @@ exports[`<SearchField /> should call getLocationsByPostalCode after filling the 
         disabled={false}
         onChange={[Function]}
         onKeyDown={[Function]}
-        placeholder="product.zip_search"
+        placeholder="locations.search_placeholder"
         type="search"
         value="ACME"
       />
@@ -153,10 +171,10 @@ exports[`<SearchField /> should call getLocationsByPostalCode after filling the 
       isVisible={false}
     />
   </div>
-</SearchField>
+</StoreListSearch>
 `;
 
-exports[`<SearchField /> should react on updates of the loading prop 1`] = `
+exports[`<StoreListSearch /> should react on updates of the loading prop 1`] = `
 <Fragment>
   <div
     className={
@@ -193,7 +211,7 @@ exports[`<SearchField /> should react on updates of the loading prop 1`] = `
         disabled={false}
         onChange={[Function]}
         onKeyDown={[Function]}
-        placeholder="product.zip_search"
+        placeholder="locations.search_placeholder"
         type="search"
         value=""
       />
@@ -224,7 +242,7 @@ exports[`<SearchField /> should react on updates of the loading prop 1`] = `
 </Fragment>
 `;
 
-exports[`<SearchField /> should render as expected 1`] = `
+exports[`<StoreListSearch /> should render as expected 1`] = `
 <Fragment>
   <div
     className={
@@ -261,7 +279,7 @@ exports[`<SearchField /> should render as expected 1`] = `
         disabled={false}
         onChange={[Function]}
         onKeyDown={[Function]}
-        placeholder="product.zip_search"
+        placeholder="locations.search_placeholder"
         type="search"
         value=""
       />

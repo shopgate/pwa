@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { shallow, mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import { StoreListSearchUnwrapped as StoreListSearch } from '../StoreListSearch';
 
 jest.mock('@shopgate/engage/components', () => ({
@@ -8,16 +9,27 @@ jest.mock('@shopgate/engage/components', () => ({
   ProgressBar: () => '',
 }));
 
-describe.skip('<StoreListSearch />', () => {
-  const getLocationsByGeolocation = jest.fn();
-  const getLocationsByPostalCode = jest.fn();
+jest.mock('react', () => ({
+  ...require.requireActual('react'),
+  useContext: jest.fn(),
+}));
+
+describe('<StoreListSearch />', () => {
+  const getProductLocations = jest.fn();
 
   const productId = 'ABC123';
+  const postalCode = 'ACME';
   const defaultProps = {
     productId,
-    getLocationsByGeolocation,
-    getLocationsByPostalCode,
+    getProductLocations,
   };
+  const context = {
+    locations: [{ code: 'LOCCODE' }],
+  };
+
+  beforeAll(() => {
+    useContext.mockReturnValue(context);
+  });
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -50,27 +62,36 @@ describe.skip('<StoreListSearch />', () => {
     expect(wrapper.find('input').prop('disabled')).toEqual(false);
   });
 
-  it('should call getLocationsByPostalCode after filling the input and pressing enter', () => {
+  it('should call getProductLocations with a postal code after filling the input and pressing enter', async () => {
     const wrapper = mount((
       <StoreListSearch {...defaultProps} />
     ));
-    const mockValue = 'ACME';
-    const input = wrapper.find('input');
-    input.simulate('change', { target: { value: mockValue } });
-    input.simulate('keyDown', { keyCode: 13 });
+
+    await act(async () => {
+      await wrapper.find('input').simulate('change', { target: { value: postalCode } });
+      await wrapper.find('input').simulate('keyDown', { keyCode: 13 });
+    });
+
     expect(wrapper).toMatchSnapshot();
-    expect(getLocationsByPostalCode).toHaveBeenCalledTimes(1);
-    expect(getLocationsByPostalCode).toHaveBeenCalledWith(productId, mockValue);
+    expect(getProductLocations).toHaveBeenCalledTimes(1);
+    expect(getProductLocations).toHaveBeenCalledWith(productId, postalCode);
+    expect(wrapper.find('input').prop('value')).toEqual(postalCode);
   });
 
-  it('should call getLocationsByGeolocation after clicking the locate button', () => {
-    const wrapper = shallow((
+  it('should call getProductLocations after clicking the locate button', async () => {
+    const wrapper = mount((
       <StoreListSearch {...defaultProps} />
     ));
-    const button = wrapper.find('button');
-    button.simulate('click');
+
+    await act(async () => {
+      await wrapper.find('input').simulate('change', { target: { value: postalCode } });
+      await wrapper.find('button').simulate('click');
+      await wrapper.update();
+    });
+
     expect(wrapper).toMatchSnapshot();
-    expect(getLocationsByGeolocation).toHaveBeenCalledTimes(1);
-    expect(getLocationsByGeolocation).toHaveBeenCalledWith(productId);
+    expect(getProductLocations).toHaveBeenCalledTimes(1);
+    expect(getProductLocations).toHaveBeenCalledWith(productId, null);
+    expect(wrapper.find('input').prop('value')).toEqual('');
   });
 });
