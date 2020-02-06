@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > core > config > actions-creators errorConfig 1`] = `
+Object {
+  "error": [Error: Pipeline failed],
+  "type": "ERROR_CORE_CONFIG",
+}
+`;
+
+exports[`engage > core > config > actions-creators receiveConfig 1`] = `
+Object {
+  "config": Object {
+    "merchantSettings": Object {
+      "foo": "bar",
+    },
+  },
+  "type": "RECEIVE_CORE_CONFIG",
+}
+`;
+
+exports[`engage > core > config > actions-creators requestConfig 1`] = `
+Object {
+  "type": "REQUEST_CORE_CONFIG",
+}
+`;
