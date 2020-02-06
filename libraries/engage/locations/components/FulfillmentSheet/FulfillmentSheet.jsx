@@ -63,7 +63,7 @@ class FulfillmentSheet extends PureComponent {
   state = {
     isOpen: false,
     stage: STAGES[0],
-    title: i18n.text('product.location.headline'),
+    title: i18n.text('locations.headline'),
     orderNumbers: null,
     errors: null,
   };
@@ -96,7 +96,7 @@ class FulfillmentSheet extends PureComponent {
     this.setState({
       isOpen: false,
       stage: STAGES[0],
-      title: i18n.text('product.location.headline'),
+      title: i18n.text('locations.headline'),
       orderNumbers: null,
       errors: null,
     });
@@ -131,7 +131,7 @@ class FulfillmentSheet extends PureComponent {
     selectLocation(location);
     this.setState({
       stage: STAGES[1],
-      title: i18n.text('product.location.place_reservation'),
+      title: i18n.text('locations.place_reservation'),
     });
   }
 
@@ -142,7 +142,7 @@ class FulfillmentSheet extends PureComponent {
   handleSuccess = (orderNumbers) => {
     this.setState({
       stage: STAGES[2],
-      title: i18n.text('product.location.success_heading'),
+      title: i18n.text('locations.success_heading'),
       orderNumbers,
     });
   }
@@ -153,7 +153,7 @@ class FulfillmentSheet extends PureComponent {
   handleError = (errors) => {
     this.setState({
       stage: STAGES[2],
-      title: i18n.text('product.location.error_heading'),
+      title: i18n.text('locations.error_heading'),
       orderNumbers: null,
       errors,
     });

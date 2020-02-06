@@ -16,7 +16,7 @@ function StoreAddressOpeningHoursLine({ hours, code }) {
   return (
     <div className={openingHoursRow}>
       <div className={openingHoursDay}>
-        {i18n.text(`product.location.${code}`)}
+        {i18n.text(`locations.${code}`)}
       </div>
       <div data-test-id={`hours-${code}`}>{hours}</div>
     </div>

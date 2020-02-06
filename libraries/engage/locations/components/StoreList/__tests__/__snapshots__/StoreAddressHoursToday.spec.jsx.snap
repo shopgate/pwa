@@ -10,6 +10,6 @@ exports[`<StoreHoursToday /> should render as expected 1`] = `
     }
   }
 >
-  product.location.today_hours
+  locations.today_hours
 </div>
 `;

@@ -60,47 +60,51 @@ function ReserveForm() {
 
   return (
     <form onSubmit={handleSubmit} className={form}>
-      <p className={formHeading}>Reservation Contact Information</p>
+      <p className={formHeading}>
+        {i18n.text('locations.create_order')}
+      </p>
       <fieldset className={fieldset}>
         <TextField
           name="firstName"
           value={values.firstName}
           onChange={handleChange}
-          label="First Name"
+          label={i18n.text('locations.firstName')}
           className={formField}
         />
         <TextField
           name="lastName"
           value={values.lastName}
           onChange={handleChange}
-          label="Last Name"
+          label={i18n.text('locations.lastName')}
           className={formField}
         />
         <TextField
           name="cellPhone"
           value={values.cellPhone}
           onChange={handleChange}
-          label="Cell Number"
+          label={i18n.text('locations.cellPhone')}
           className={formField}
         />
         <TextField
           name="email"
           value={values.email}
           onChange={handleChange}
-          label="Email Address"
+          label={i18n.text('locations.emailAddress')}
           className={formField}
         />
       </fieldset>
-      <p className={formHeading}>Who will pick up this order?</p>
+      <p className={formHeading}>
+        {i18n.text('locations.who_will_pickup')}
+      </p>
       <div className={pickerSwitch}>
         <RadioGroup name="picker" direction="row" value="me" onChange={setPicker}>
           <RadioGroupItem
-            label="Me"
+            label={i18n.text('locations.me')}
             name="me"
             className={pickerItem}
           />
           <RadioGroupItem
-            label="Someone else"
+            label={i18n.text('locations.someone_else')}
             name="someoneelse"
             className={pickerItem}
           />
@@ -112,28 +116,28 @@ function ReserveForm() {
             name="firstName2"
             value={values.firstName2}
             onChange={handleChange}
-            label="First Name"
+            label={i18n.text('locations.firstName')}
             className={formField}
           />
           <TextField
             name="lastName2"
             value={values.lastName2}
             onChange={handleChange}
-            label="Last Name"
+            label={i18n.text('locations.lastName')}
             className={formField}
           />
           <TextField
             name="cellPhone2"
             value={values.cellPhone2}
             onChange={handleChange}
-            label="Cell Number"
+            label={i18n.text('locations.cellPhone')}
             className={formField}
           />
           <TextField
             name="email2"
             value={values.email2}
             onChange={handleChange}
-            label="Email Address"
+            label={i18n.text('locations.emailAddress')}
             className={formField}
           />
         </fieldset>
@@ -143,7 +147,7 @@ function ReserveForm() {
         disabled={changed}
         className={button}
       >
-        {i18n.text('product.location.place_reservation')}
+        {i18n.text('locations.place_reservation')}
       </RippleButton>
     </form>
   );

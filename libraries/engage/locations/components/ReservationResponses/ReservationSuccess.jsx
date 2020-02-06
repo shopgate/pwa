@@ -15,13 +15,13 @@ function ReservationSuccess() {
   return (
     <div className={container}>
       <h2 className={heading}>
-        {i18n.text('product.location.success_title')}
+        {i18n.text('locations.success_title')}
       </h2>
       <p className={body}>
-        {i18n.text('product.location.success_copy')}
+        {i18n.text('locations.success_copy')}
       </p>
       <p className={body}>
-        {i18n.text('product.location.success_order_num')}
+        {i18n.text('locations.success_order_num')}
       </p>
       <p className={orderNum}>
         {orderNumbers[0]}

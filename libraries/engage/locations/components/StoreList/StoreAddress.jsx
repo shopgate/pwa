@@ -54,7 +54,7 @@ function StoreAddress({ address }) {
           />
         </div>
       </div>
-      <Accordion renderLabel={() => i18n.text('product.location.details')}>
+      <Accordion renderLabel={() => i18n.text('locations.details')}>
         <StoreAddressOpeningHours hours={store.operationHours} />
         <StoreAddressPhoneNumber phone={address.phoneNumber} />
       </Accordion>
