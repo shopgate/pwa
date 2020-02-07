@@ -137,6 +137,7 @@ export { default as HomeIcon } from '@shopgate/pwa-ui-shared/icons/HomeIcon';
 export { default as InfoIcon } from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 export { default as InfoOutlineIcon } from '@shopgate/pwa-ui-shared/icons/InfoOutlineIcon';
 export { default as ListIcon } from '@shopgate/pwa-ui-shared/icons/ListIcon';
+export { default as LocatorIcon } from '@shopgate/pwa-ui-shared/icons/LocatorIcon';
 export { default as LocalShippingIcon } from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
 export { default as LocationIcon } from '@shopgate/pwa-ui-shared/icons/LocationIcon';
 export { default as LockIcon } from '@shopgate/pwa-ui-shared/icons/LockIcon';

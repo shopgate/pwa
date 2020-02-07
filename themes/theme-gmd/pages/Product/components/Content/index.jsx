@@ -158,7 +158,7 @@ class ProductContent extends PureComponent {
           <Header />
           <Section title="product.sections.fulfillment">
             <FulfillmentSelector
-              productId={variantId || variantId === 0 ? variantId : productId}
+              productId={variantId || productId}
               conditioner={this.baseContextValue.conditioner}
             />
           </Section>

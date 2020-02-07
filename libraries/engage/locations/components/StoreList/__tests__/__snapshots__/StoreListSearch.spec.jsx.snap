@@ -1,0 +1,311 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StoreListSearch /> should call getProductLocations after clicking the locate button 1`] = `
+<StoreListSearch
+  getProductLocations={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "ABC123",
+          null,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  loading={false}
+  productId="ABC123"
+>
+  <div
+    className={
+      Object {
+        "data-css-z3aef1": "",
+      }
+    }
+  >
+    <div
+      className={
+        Object {
+          "data-css-bpbkyq": "",
+        }
+      }
+    >
+      <span
+        aria-hidden={true}
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+      >
+        <MagnifierIcon />
+      </span>
+      <input
+        autoComplete="off"
+        autoCorrect="off"
+        className={
+          Object {
+            "data-css-2h0g54": "",
+          }
+        }
+        disabled={false}
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="locations.search_placeholder"
+        type="search"
+        value=""
+      />
+      <button
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+        onClick={[Function]}
+        type="button"
+      >
+        <LocatorIcon />
+      </button>
+    </div>
+  </div>
+  <div
+    className={
+      Object {
+        "data-css-13azwyo": "",
+      }
+    }
+  >
+    <ProgressBar
+      isVisible={false}
+    />
+  </div>
+</StoreListSearch>
+`;
+
+exports[`<StoreListSearch /> should call getProductLocations with a postal code after filling the input and pressing enter 1`] = `
+<StoreListSearch
+  getProductLocations={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "ABC123",
+          "ACME",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  loading={false}
+  productId="ABC123"
+>
+  <div
+    className={
+      Object {
+        "data-css-z3aef1": "",
+      }
+    }
+  >
+    <div
+      className={
+        Object {
+          "data-css-bpbkyq": "",
+        }
+      }
+    >
+      <span
+        aria-hidden={true}
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+      >
+        <MagnifierIcon />
+      </span>
+      <input
+        autoComplete="off"
+        autoCorrect="off"
+        className={
+          Object {
+            "data-css-2h0g54": "",
+          }
+        }
+        disabled={false}
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="locations.search_placeholder"
+        type="search"
+        value="ACME"
+      />
+      <button
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+        onClick={[Function]}
+        type="button"
+      >
+        <LocatorIcon />
+      </button>
+    </div>
+  </div>
+  <div
+    className={
+      Object {
+        "data-css-13azwyo": "",
+      }
+    }
+  >
+    <ProgressBar
+      isVisible={false}
+    />
+  </div>
+</StoreListSearch>
+`;
+
+exports[`<StoreListSearch /> should react on updates of the loading prop 1`] = `
+<Fragment>
+  <div
+    className={
+      Object {
+        "data-css-z3aef1": "",
+      }
+    }
+  >
+    <div
+      className={
+        Object {
+          "data-css-bpbkyq": "",
+        }
+      }
+    >
+      <span
+        aria-hidden={true}
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+      >
+        <MagnifierIcon />
+      </span>
+      <input
+        autoComplete="off"
+        autoCorrect="off"
+        className={
+          Object {
+            "data-css-2h0g54": "",
+          }
+        }
+        disabled={false}
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="locations.search_placeholder"
+        type="search"
+        value=""
+      />
+      <button
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+        onClick={[Function]}
+        type="button"
+      >
+        <LocatorIcon />
+      </button>
+    </div>
+  </div>
+  <div
+    className={
+      Object {
+        "data-css-13azwyo": "",
+      }
+    }
+  >
+    <ProgressBar
+      isVisible={false}
+    />
+  </div>
+</Fragment>
+`;
+
+exports[`<StoreListSearch /> should render as expected 1`] = `
+<Fragment>
+  <div
+    className={
+      Object {
+        "data-css-z3aef1": "",
+      }
+    }
+  >
+    <div
+      className={
+        Object {
+          "data-css-bpbkyq": "",
+        }
+      }
+    >
+      <span
+        aria-hidden={true}
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+      >
+        <MagnifierIcon />
+      </span>
+      <input
+        autoComplete="off"
+        autoCorrect="off"
+        className={
+          Object {
+            "data-css-2h0g54": "",
+          }
+        }
+        disabled={false}
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="locations.search_placeholder"
+        type="search"
+        value=""
+      />
+      <button
+        className={
+          Object {
+            "data-css-gy1p1e": "",
+          }
+        }
+        onClick={[Function]}
+        type="button"
+      >
+        <LocatorIcon />
+      </button>
+    </div>
+  </div>
+  <div
+    className={
+      Object {
+        "data-css-13azwyo": "",
+      }
+    }
+  >
+    <ProgressBar
+      isVisible={false}
+    />
+  </div>
+</Fragment>
+`;
