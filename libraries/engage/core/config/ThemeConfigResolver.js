@@ -39,9 +39,7 @@ export class ThemeConfigResolver {
    */
   resolveAll() {
     this.config = appConfig.theme;
-    console.log('BEFORE:', JSON.parse(JSON.stringify(appConfig.theme)));
     writeToConfig({ theme: this.resolve() }, equalStructureComparator);
-    console.log('AFTER', JSON.parse(JSON.stringify(appConfig.theme)));
   }
 
   /**
