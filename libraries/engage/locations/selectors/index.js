@@ -11,12 +11,13 @@ function getLocationsState(state) {
 }
 /**
  * Determines the currently relevant productId from the props.
+ * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @param {string} props.productId The ID of a product (simple product id or parent product id)
  * @param {string} props.variantId The ID of a variant.
  * @returns {string|null}
  */
-function getProductId(props) {
+function getProductId(state, props) {
   return props.variantId || props.productId || null;
 }
 
@@ -52,7 +53,7 @@ export function makeGetProductLocations() {
    */
   return createSelector(
     getProductLocationsState,
-    (state, props) => getProductId(props),
+    getProductId,
     (locationsState, productId) => {
       if (!productId || !locationsState[productId]) {
         return null;
@@ -81,7 +82,7 @@ export function makeGetIsFetchingProductLocations() {
    */
   return createSelector(
     getProductLocationsState,
-    (state, props) => getProductId(props),
+    getProductId,
     (locationsState, productId) => {
       if (!productId || !locationsState[productId]) {
         return null;
