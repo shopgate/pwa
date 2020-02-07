@@ -87,14 +87,14 @@
     "fulfillment_selector": {
       "heading": "Verfügbarkeit",
       "direct_ship": "Online bestellen",
-      "pick_up_in_store": "Abholen in Filliale"
+      "pick_up_in_store": "Abholen in Filiale"
     },
     "location_stock_info": {
       "pick_up_at": "bei {storeName}",
       "available": "{visibleInventory} auf Lager",
       "limitedAvailability": "Nur noch {visibleInventory} auf Lager",
       "notAvailable": "Verfügbar in 2-3 Tagen",
-      "customAvailability": "In dieser Filliale nicht verfügbar"
+      "customAvailability": "In dieser Filiale nicht verfügbar"
     },
     "relations": {
       "showMore": "Mehr"
@@ -142,7 +142,10 @@
     "success_order_num": "Reservierungs-Nr.",
     "error_heading": "Es ist ein Fehler aufgetreten",
     "error_title": "Leider konnte Ihre Reservierung nicht abgeschlossen werden.",
-    "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfen Sie die Verfügbarkeit in anderen Filialen im Warenkorb."
+    "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfen Sie die Verfügbarkeit in anderen Filialen im Warenkorb.",
+    "error_invalid_zip_code": "Bitte geben Sie eine gültige Postleitzahl ein.",
+    "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe.",
+    "search_placeholder": "Postleitzahl"
   },
   "category": {
     "error": {
