@@ -1,5 +1,5 @@
 {
-  "version": "6.10.0",
+  "version": "6.10.1-rc.1",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
