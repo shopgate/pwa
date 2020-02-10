@@ -1,5 +1,30 @@
 # Changelog
 
+## [v6.11.0](https://github.com/shopgate/pwa/compare/v6.10.0...v6.11.0) (2020-02-10)
+
+#### :rocket: Enhancement
+* [#894](https://github.com/shopgate/pwa/pull/894) Introduced new app setting to configure a individual locale for price formatting ([@fkloes](https://github.com/fkloes))
+* [#882](https://github.com/shopgate/pwa/pull/882) Added new device info selector factories to determine information about supported identity services ([@devbucket](https://github.com/devbucket))
+* [#880](https://github.com/shopgate/pwa/pull/880) The frontend process now validates the theme configuration based on the JSON schema. ([@devbucket](https://github.com/devbucket))
+* [#875](https://github.com/shopgate/pwa/pull/875) Added JSON schema definition for the theme configuration. ([@devbucket](https://github.com/devbucket))
+* [#876](https://github.com/shopgate/pwa/pull/876) Optimized Hot-Module-Replacement for portal components from extensions. ([@devbucket](https://github.com/devbucket))
+* [#869](https://github.com/shopgate/pwa/pull/869) The theme now provides the webpack configuration for the compilation process. ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#919](https://github.com/shopgate/pwa/pull/919) Fixed broken image sliders on Chrome > 80 ([@fkloes](https://github.com/fkloes))
+* [#910](https://github.com/shopgate/pwa/pull/910) On iOS, the pageInsets are now considered always. ([@devbucket](https://github.com/devbucket))
+* [#904](https://github.com/shopgate/pwa/pull/904) Fixed sort filter entries text color ([@fkloes](https://github.com/fkloes))
+* [#901](https://github.com/shopgate/pwa/pull/901) Update routes portals collection when extension config, containing routes, is changed ([@alexbridge](https://github.com/alexbridge))
+* [#895](https://github.com/shopgate/pwa/pull/895) Fixed issues with long cached and wrong checkout related urls ([@fkloes](https://github.com/fkloes))
+* [#884](https://github.com/shopgate/pwa/pull/884) Fixed the wrong ordering of fields rendered by the FormBuilder, when no sortIndex is provided. ([@alexbridge](https://github.com/alexbridge))
+* [#873](https://github.com/shopgate/pwa/pull/873)  Changed the translation system to prevent the app from crashing for invalid translation messages. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :house: Internal
+* [#886](https://github.com/shopgate/pwa/pull/886) Speeded up the e2e test suite execution for the iOS 11 theme ([@alexbridge](https://github.com/alexbridge))
+* [#885](https://github.com/shopgate/pwa/pull/885) Speeded up the e2e test suite execution for the GMD theme ([@alexbridge](https://github.com/alexbridge))
+* [#874](https://github.com/shopgate/pwa/pull/874) Log generic errors to sentry ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.10.0](https://github.com/shopgate/pwa/compare/v6.9.1...v6.10.0) (2020-01-20)
 
 #### :rocket: Enhancement
