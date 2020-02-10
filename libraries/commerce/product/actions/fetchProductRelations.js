@@ -57,8 +57,7 @@ function fetchProductRelations({ productId, type, limit = PRODUCT_RELATIONS_DEFA
           payload,
         }));
       })
-      .catch((err) => {
-        logger.error(err);
+      .catch(() => {
         dispatch(errorProductRelations({ hash }));
       });
 
