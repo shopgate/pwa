@@ -9,12 +9,23 @@ import { getProduct } from '@shopgate/engage/product';
 function getLocationsState(state) {
   return state.locations || {};
 }
+/**
+ * Determines the currently relevant productId from the props.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @param {string} props.productId The ID of a product (simple product id or parent product id)
+ * @param {string} props.variantId The ID of a variant.
+ * @returns {string|null}
+ */
+function getProductId(state, props) {
+  return props.variantId || props.productId || null;
+}
 
 /**
  * Creates the selector that retrieves the product locations state.
  * @returns {Function}
  */
-function makeGetProductLocationsState() {
+export function makeGetProductLocationsState() {
   /**
    * Retrieves the product locations state.
    * @param {Object} state The application state.
@@ -42,7 +53,7 @@ export function makeGetProductLocations() {
    */
   return createSelector(
     getProductLocationsState,
-    (state, props) => props.productId || null,
+    getProductId,
     (locationsState, productId) => {
       if (!productId || !locationsState[productId]) {
         return null;
@@ -56,7 +67,36 @@ export function makeGetProductLocations() {
 }
 
 /**
- * Creates a selector to retriev a product's fulfillment methods.
+ * Creates the selector that determines, if products locations for a specific product are fetching.
+ * @returns {Function}
+ */
+export function makeGetIsFetchingProductLocations() {
+  const getProductLocationsState = makeGetProductLocationsState();
+
+  /**
+   * Retrieves the isFetching state of locations for a specific product.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @param {string} props.productId The ID of the product to look for.
+   * @returns {Array|null}
+   */
+  return createSelector(
+    getProductLocationsState,
+    getProductId,
+    (locationsState, productId) => {
+      if (!productId || !locationsState[productId]) {
+        return null;
+      }
+
+      const { isFetching = false } = locationsState[productId];
+
+      return isFetching;
+    }
+  );
+}
+
+/**
+ * Creates a selector to retrieve a product's fulfillment methods.
  * @returns {Function}
  */
 export function makeGetFulfillmentMethods() {

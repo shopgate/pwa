@@ -273,3 +273,8 @@ export { getWidgetSettings } from './config/getWidgetSettings';
 export { i18n } from './helpers/i18n';
 export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
+
+// -------------- CONFIG -------------- //
+export * from './config/config.actions';
+export * from './config/config.selectors';
+export * from './config/config.streams';
