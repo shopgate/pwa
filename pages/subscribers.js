@@ -12,6 +12,7 @@ import commerceFavorites from '@shopgate/pwa-common-commerce/favorites/subscript
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
 import locations from '@shopgate/engage/locations/subscriptions';
+import { subscriptions as coreConfig } from '@shopgate/engage/core/config';
 import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import commerceScanner from '@shopgate/pwa-common-commerce/scanner/subscriptions';
@@ -67,6 +68,7 @@ const subscriptions = [
   commerceFilter,
   commerceProduct,
   locations,
+  coreConfig,
   commerceReviews,
   commerceSearch,
   commerceScanner,
