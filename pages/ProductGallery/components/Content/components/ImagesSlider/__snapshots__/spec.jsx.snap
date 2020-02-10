@@ -80,7 +80,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
         >
           <div
             aria-hidden={null}
-            className="css-1hlki0z css-sa13d4"
+            className="css-u3lnhr css-sa13d4"
           >
             <ReactIdSwiper
               ContainerEl="div"
@@ -371,7 +371,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
         >
           <div
             aria-hidden={null}
-            className="css-1hlki0z css-sa13d4"
+            className="css-u3lnhr css-sa13d4"
           >
             <ReactIdSwiper
               ContainerEl="div"
