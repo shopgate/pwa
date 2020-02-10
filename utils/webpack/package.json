@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/webpack",
-  "version": "6.10.0",
+  "version": "6.11.0-rc.5",
   "description": "The webpack configuration for Shopgate's Engage.",
   "main": "webpack.config.js",
   "license": "Apache-2.0",
