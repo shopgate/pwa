@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.9.2](https://github.com/shopgate/pwa/compare/v6.9.1...v6.9.2) (2020-02-10)
+
+#### :bug: Bug Fix
+* [#917](https://github.com/shopgate/pwa/pull/917) Fixed broken image sliders on Chrome > 80 ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.9.1](https://github.com/shopgate/pwa/compare/v6.9.0...v6.9.1) (2020-01-16)
 
 #### :bug: Bug Fix
