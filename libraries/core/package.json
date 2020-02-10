@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-core",
-  "version": "6.10.0",
+  "version": "6.11.0-rc.3",
   "description": "Core library for the Shopgate Connect PWA.",
   "author": "Support <support@shopgate.com>",
   "license": "Apache-2.0",
