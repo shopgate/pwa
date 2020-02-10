@@ -1,11 +1,7 @@
 import { connect } from 'react-redux';
-import { selectLocation, storeFormInput } from '@shopgate/pwa-common/action-creators';
-import {
-  makeGetSelectedCharacteristic,
-  getProduct,
-} from '@shopgate/engage/product';
-import { makeGetUserFormInput } from '@shopgate/engage/user';
-import { makeGetProductLocations } from '../../selectors';
+import { makeGetSelectedCharacteristic, getProduct } from '@shopgate/engage/product';
+import { selectLocation, storeFormInput } from '../../action-creators';
+import { makeGetProductLocations, makeGetUserFormInput } from '../../selectors';
 import { submitReservation } from '../../actions';
 
 /**
