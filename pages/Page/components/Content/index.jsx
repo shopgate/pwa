@@ -30,7 +30,7 @@ function PageContent({ configs, pageId }) {
   if (pageId !== PAGE_ID_INDEX) {
     center = <AppBar.Title key="center" title={configs.title || ''} />;
   }
-  console.warn('Page render', pageId);
+
   return (
     <Fragment>
       <DefaultBar center={center} title={configs.title || ''} />
