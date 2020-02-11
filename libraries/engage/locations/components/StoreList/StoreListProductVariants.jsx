@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
-import FulfillmentContext from '../context';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { variants } from './style';
+import connect from './StoreListProductVariants.connector';
 
 /**
  * Renders the reserved product's selected variants.
  * @returns {JSX}
  */
-function StoreListProductVariants() {
-  const { selectedVariants } = useContext(FulfillmentContext);
-
+function StoreListProductVariants({ selectedVariants }) {
   if (!selectedVariants || selectedVariants.length === 0) {
     return null;
   }
@@ -24,4 +23,15 @@ function StoreListProductVariants() {
   );
 }
 
-export default StoreListProductVariants;
+StoreListProductVariants.propTypes = {
+  selectedVariants: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.string,
+  })),
+};
+
+StoreListProductVariants.defaultProps = {
+  selectedVariants: [],
+};
+
+export default connect(StoreListProductVariants);

@@ -17,7 +17,7 @@ import StoreName from './StockInfoStoreName';
  * @return {JSX}
  */
 function StockInfo({ location, className, showStoreName }) {
-  const { locationStockInfo } = getThemeSettings('product');
+  const { locationStockInfo } = getThemeSettings('product') || {};
   const settings = defaultsDeep(locationStockInfo, defaultSettings);
 
   const { availabilityText = '', availabilityTextColor = 'inherit' } =
