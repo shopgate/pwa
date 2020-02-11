@@ -1,6 +1,5 @@
 import {
   PipelineRequest,
-  logger,
   EINVALIDCALL,
   ELEGACYSGCONNECT,
   EINCOMPLETELOGIN,
@@ -69,7 +68,6 @@ function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
           dispatch(errorLegacyConnectRegister());
           dispatch(errorLogin([], ELEGACYSGCONNECT));
         } else {
-          logger.error(error);
           dispatch(errorLogin([], code));
         }
       });

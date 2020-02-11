@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import requestProductOptions from '../action-creators/requestProductOptions';
 import { SHOPGATE_CATALOG_GET_PRODUCT_OPTIONS } from '../constants/Pipelines';
@@ -31,7 +30,6 @@ function fetchProductOptions(productId) {
         dispatch(receiveProductOptions(productId, result.options));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorProductOptions(productId, error.code));
       });
 

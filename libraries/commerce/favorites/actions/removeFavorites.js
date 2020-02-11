@@ -1,4 +1,3 @@
-import { logger } from '@shopgate/pwa-core/helpers';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { SHOPGATE_USER_DELETE_FAVORITES } from '../constants/Pipelines';
 import { successRemoveFavorites, errorRemoveFavorites } from '../action-creators';
@@ -20,7 +19,6 @@ function removeFavorites(productId) {
         dispatch(successRemoveFavorites(productId));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorRemoveFavorites(productId, error));
       });
 

@@ -1,6 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SHOPGATE_CART_ADD_PRODUCTS } from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
@@ -75,7 +74,6 @@ function addToCart(data) {
           products,
           createPipelineErrorList(SHOPGATE_CART_ADD_PRODUCTS, error)
         ));
-        logger.error(SHOPGATE_CART_ADD_PRODUCTS, error);
       });
 
     return request;

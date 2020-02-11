@@ -1,4 +1,4 @@
-import { PipelineRequest, PROCESS_SEQUENTIAL, logger } from '@shopgate/pwa-core';
+import { PipelineRequest, PROCESS_SEQUENTIAL } from '@shopgate/pwa-core';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SHOPGATE_CART_ADD_COUPONS } from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
@@ -55,7 +55,6 @@ function addCouponsToCart(couponIds) {
           couponIds,
           createPipelineErrorList(SHOPGATE_CART_ADD_COUPONS, error)
         ));
-        logger.error(SHOPGATE_CART_ADD_COUPONS, error);
       });
 
     return request;
