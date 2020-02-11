@@ -35,13 +35,11 @@ const STAGE_TITLES = [
  */
 class FulfillmentSheet extends PureComponent {
   static propTypes = {
+    addProductsToCart: PropTypes.func,
     locations: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
-    selectedVariants: PropTypes.arrayOf(PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.string,
-    })),
     selectLocation: PropTypes.func,
+    settings: PropTypes.shape(),
     stage: PropTypes.number,
     storeFormInput: PropTypes.func,
     submitReservation: PropTypes.func,
@@ -49,10 +47,11 @@ class FulfillmentSheet extends PureComponent {
   }
 
   static defaultProps = {
+    addProductsToCart: () => { },
     locations: null,
     product: null,
-    selectedVariants: [],
     selectLocation: () => { },
+    settings: {},
     submitReservation: () => { },
     stage: 1,
     storeFormInput: () => { },
@@ -130,8 +129,10 @@ class FulfillmentSheet extends PureComponent {
       code, name, addressCode, visibleInventory,
     } = params;
     const {
+      addProductsToCart,
       selectLocation,
       product,
+      settings: { enabledFulfillmentMethodSelectionForEngage: fulfillmentMethods = [] },
     } = this.props;
     const location = {
       code,
@@ -142,6 +143,23 @@ class FulfillmentSheet extends PureComponent {
     };
 
     selectLocation(location);
+
+    if (fulfillmentMethods.includes('multiLineReserve')) {
+      addProductsToCart([{
+        productId: product.id,
+        quantity: 1,
+        fulfillment: {
+          method: 'ROPIS', // TODO: make this dynamic.
+          location: {
+            code,
+            name,
+          },
+        },
+      }]);
+      this.handleSetClosed(location);
+      return;
+    }
+
     setTimeout(() => {
       this.setState({
         stage: STAGES[1],
@@ -204,7 +222,7 @@ class FulfillmentSheet extends PureComponent {
    */
   render() {
     const {
-      product, locations, selectedVariants, userInput,
+      product, locations, userInput,
     } = this.props;
     const {
       isOpen, stage, title, orderNumbers, errors,
@@ -215,7 +233,6 @@ class FulfillmentSheet extends PureComponent {
       sendReservation: this.handleSendReservation,
       product,
       locations,
-      selectedVariants,
       userInput,
       orderNumbers,
     };
