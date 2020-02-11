@@ -21,4 +21,7 @@ export {
 } from './constants';
 
 // SELECTORS
-export { makeGetFulfillmentMethods } from './selectors';
+export {
+  makeGetFulfillmentMethods,
+  makeGetUserLocation,
+} from './selectors';
