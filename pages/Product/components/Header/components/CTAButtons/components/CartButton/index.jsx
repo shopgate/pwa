@@ -26,6 +26,11 @@ class CartButton extends Component {
     loading: PropTypes.bool.isRequired,
     options: PropTypes.shape().isRequired,
     productId: PropTypes.string.isRequired,
+    userLocation: PropTypes.shape(),
+  }
+
+  static defaultProps = {
+    userLocation: null,
   }
 
   state = {
@@ -80,26 +85,43 @@ class CartButton extends Component {
    * all criteria set by the conditioner are met.
    */
   handleClick = () => {
+    const {
+      disabled, conditioner, addToCart, productId, options, userLocation,
+    } = this.props;
+
     if (this.state.clicked) {
       return;
     }
 
-    if (this.props.disabled) {
+    if (disabled) {
       return;
     }
 
-    this.props.conditioner.check().then((fulfilled) => {
+    conditioner.check().then((fulfilled) => {
       if (!fulfilled) {
         return;
       }
 
       this.setState({ clicked: true });
 
-      this.props.addToCart({
-        productId: this.props.productId,
-        options: this.props.options,
+      const addToCartData = {
+        productId,
+        options,
         quantity: this.context.quantity,
-      });
+      };
+
+      // Add the user location for ROPIS if it is set.
+      if (userLocation !== null) {
+        addToCartData.fulfillment = {
+          method: 'ROPIS',
+          location: {
+            code: userLocation.code,
+            name: userLocation.name,
+          },
+        };
+      }
+
+      addToCart(addToCartData);
 
       broadcastLiveMessage('product.adding_item', {
         params: { count: this.context.quantity },
