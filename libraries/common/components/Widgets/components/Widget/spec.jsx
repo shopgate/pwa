@@ -3,6 +3,11 @@ import { mount } from 'enzyme';
 import Grid from '../../../Grid';
 import Widget from './index';
 
+jest.mock('react', () => ({
+  ...require.requireActual('react'),
+  Suspense: function Suspense({ children }) { return children; },
+}));
+
 /**
  * A dummy component.
  * @returns {JSX}
