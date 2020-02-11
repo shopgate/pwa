@@ -5,7 +5,7 @@ import React, { Fragment } from 'react';
  */
 const Loading = () => (
   <Fragment>
-    {null}
+    <div style={{ background: 'red', height: '50px', width: '50px' }} />
   </Fragment>
 );
 
