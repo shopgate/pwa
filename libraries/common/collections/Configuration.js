@@ -14,10 +14,11 @@ class Configuration {
   /**
    * Get a config value
    * @param {*} key config key
+   * @param {*} defaultValue defaultValue
    * @returns {*|undefined}
    */
-  get(key) {
-    return this.store.get(key);
+  get(key, defaultValue) {
+    return this.store.get(key) || defaultValue;
   }
 
   /**
@@ -38,11 +39,8 @@ class Configuration {
    * @returns {Configuration}
    */
   update(key, updater) {
-    if (!this.store.has(key)) {
-      logGroup('CONFIGURATION%c not found', { key }, '#e0061e');
-      return this;
-    }
     if (typeof updater !== 'function') {
+      logGroup('CONFIGURATION%c updater is not function', { key }, '#e0061e');
       return this;
     }
     const prevValue = this.store.get(key);
@@ -54,4 +52,5 @@ class Configuration {
   }
 }
 
+/** @type {Configuration} */
 export default new Configuration();

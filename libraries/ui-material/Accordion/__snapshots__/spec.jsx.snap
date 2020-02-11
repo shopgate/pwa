@@ -2,6 +2,7 @@
 
 exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 <Accordion
+  className={null}
   handleLabel={null}
   testId="Some Thing"
 />
@@ -9,6 +10,7 @@ exports[`<Accordion /> should not render without a renderLabel prop 1`] = `
 
 exports[`<Accordion /> should not render without children 1`] = `
 <Accordion
+  className={null}
   handleLabel={null}
   renderLabel={[Function]}
   testId="Some Thing"
@@ -17,6 +19,7 @@ exports[`<Accordion /> should not render without children 1`] = `
 
 exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
 <Accordion
+  className={null}
   handleLabel={null}
   renderLabel={[Function]}
   testId="Some Thing"
@@ -26,11 +29,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       aria-controls="Some-Thing-content"
       aria-expanded={false}
       aria-label={null}
-      className={
-        Object {
-          "data-css-17o6uz7": "",
-        }
-      }
+      className="css-17o6uz7"
       data-test-id="Some Thing"
       key="accordion-toggle"
       onClick={[Function]}

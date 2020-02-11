@@ -22,6 +22,33 @@ function getProductId(state, props) {
 }
 
 /**
+ * Determines the currently relevant locationId from the props.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @param {string} props.locationId The ID of the location
+ * @returns {string|null}
+ */
+function getLocationId(state, props) {
+  return props.locationId || null;
+}
+
+/**
+ * Creates the selector that retrieves the locations state.
+ * @returns {Function}
+ */
+export function makeGetLocationsState() {
+  /**
+   * Retrieves the product locations state.
+   * @param {Object} state The application state.
+   * @returns {Object}
+   */
+  return createSelector(
+    getLocationsState,
+    state => state.locationsById || {}
+  );
+}
+
+/**
  * Creates the selector that retrieves the product locations state.
  * @returns {Function}
  */
@@ -34,6 +61,32 @@ export function makeGetProductLocationsState() {
   return createSelector(
     getLocationsState,
     state => state.locationsByProductId || {}
+  );
+}
+
+/**
+ * Creates the selector that returns the location.
+ * @returns {Function}
+ */
+export function makeGetLocation() {
+  const getLocationsStateSelector = makeGetLocationsState();
+
+  /**
+   * Retrieves the locations.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @param {string} props.code The ID of the location.
+   * @returns {Array|null}
+   */
+  return createSelector(
+    getLocationsStateSelector,
+    getLocationId,
+    (locationsState, locationId) => {
+      if (!locationId) {
+        return null;
+      }
+      return locationsState[locationId] || null;
+    }
   );
 }
 

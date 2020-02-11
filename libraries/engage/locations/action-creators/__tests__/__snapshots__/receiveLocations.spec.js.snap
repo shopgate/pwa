@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > actions-creators receiveLocations 1`] = `
+Object {
+  "locations": Array [
+    Object {
+      "code": "code1",
+      "name": "Location name",
+    },
+  ],
+  "type": "RECEIVE_LOCATIONS",
+}
+`;
