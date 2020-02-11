@@ -18,6 +18,7 @@ export * from './cart.constants';
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/cart/helpers';
 export * from '@shopgate/pwa-common-commerce/cart/helpers/config';
+export * from '@shopgate/pwa-common-commerce/cart/helpers/cartItems';
 export { default as createPipelineErrorList } from '@shopgate/pwa-common-commerce/cart/helpers/createPipelineErrorList';
 export * from '@shopgate/pwa-common-commerce/cart/helpers/shipping';
 export * from '@shopgate/pwa-common-commerce/cart/helpers/tax';

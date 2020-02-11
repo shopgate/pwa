@@ -142,7 +142,10 @@
     "error_copy": "Während des Reservierungsprozesses, ist ein Fehler aufgetreten. Eventuell sind einige Artikel mittlerweile ausverkauft. Bitte prüfen Sie die Verfügbarkeit in anderen Filialen im Warenkorb.",
     "error_invalid_zip_code": "Bitte geben Sie eine gültige Postleitzahl ein.",
     "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe.",
-    "search_placeholder": "Postleitzahl"
+    "search_placeholder": "Postleitzahl",
+    "method": {
+      "ropis" : "Reserve online, pick up in store"
+    }
   },
   "category": {
     "error": {
@@ -189,6 +192,7 @@
     "discount": "Rabatt",
     "discount_with_label": "Rabatt ({label})",
     "checkout": "Zur Kasse",
+    "reserve": "Reserve",
     "remove": "Entfernen",
     "edit": "Bearbeiten",
     "empty": "Ihr Warenkorb ist leer.",
@@ -203,7 +207,8 @@
     "free_shipping": "Kostenloser Versand",
     "message_type_info": "Info",
     "message_type_error": "Fehler",
-    "message_type_warning": "Warnung"
+    "message_type_warning": "Warnung",
+    "reservation_hint": "*Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality."
   },
   "login": {
     "headline": "Willkommen!",

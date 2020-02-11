@@ -111,7 +111,7 @@ class CartButton extends Component {
       };
 
       // Add the user location for ROPIS if it is set.
-      if (userLocation !== null) {
+      if (userLocation !== null && userLocation.code) {
         addToCartData.fulfillment = {
           method: 'ROPIS',
           location: {

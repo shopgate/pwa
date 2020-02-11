@@ -14,6 +14,7 @@ export default function locationsById(state = {}, action) {
           ...accumulator[location.code],
           isFetching: false,
           ...location,
+          address: location.addresses.find(a => a.isPrimary) || location.addresses[0],
         };
         return accumulator;
       }, { ...state });

@@ -26,7 +26,9 @@ function locations(subscribe) {
   // Core config and cart subscriptions
   subscribe(receiveCoreConfig$, ({ action }) => {
     const {
-      merchantSettings: { enabledFulfillmentMethodSelectionForEngage = [] } = {},
+      config: {
+        merchantSettings: { enabledFulfillmentMethodSelectionForEngage = [] } = {},
+      },
     } = action;
 
     if (enabledFulfillmentMethodSelectionForEngage.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)) {

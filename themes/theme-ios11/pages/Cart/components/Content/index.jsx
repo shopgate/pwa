@@ -1,12 +1,20 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { getCartConfig } from '@shopgate/pwa-common-commerce/cart';
+import {
+  getCartConfig,
+  groupCartItems,
+  CART_PATH,
+  CART_ITEM_LIST_BEFORE,
+  CART_ITEM_LIST,
+  CART_COUPON_FIELD_BEFORE,
+  CART_COUPON_FIELD,
+  CART_COUPON_FIELD_AFTER,
+  CART_ITEM_LIST_AFTER,
+} from '@shopgate/engage/cart';
 import { MessageBar, CardList, Portal } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
-import Item from '../Item';
+import ItemsGroup from '../ItemsGroup';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
@@ -26,11 +34,13 @@ class CartContentContainer extends PureComponent {
     isLoading: PropTypes.bool.isRequired,
     isUserLoggedIn: PropTypes.bool.isRequired,
     cartItems: PropTypes.arrayOf(PropTypes.shape()),
+    flags: PropTypes.shape(),
     messages: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
     cartItems: [],
+    flags: {},
     messages: [],
   };
 
@@ -61,18 +71,20 @@ class CartContentContainer extends PureComponent {
    */
   render() {
     const {
-      cartItems, isLoading, messages, isUserLoggedIn, currency,
+      cartItems, isLoading, messages, isUserLoggedIn, currency, flags,
     } = this.props;
     const { isPaymentBarVisible } = this.state;
     const hasItems = (cartItems.length > 0);
     const hasMessages = (messages.length > 0);
 
+    const cartItemGroups = groupCartItems(cartItems);
     return (
       <CartContext.Provider value={{
         currency,
         config,
         isUserLoggedIn,
         isLoading,
+        flags,
       }}
       >
         <BackBar title="titles.cart" />
@@ -81,24 +93,25 @@ class CartContentContainer extends PureComponent {
             {hasMessages && <MessageBar messages={messages} />}
             {hasItems && (
               <Fragment>
-                <Portal name={portals.CART_ITEM_LIST_BEFORE} />
-                <Portal name={portals.CART_ITEM_LIST}>
+                <Portal name={CART_ITEM_LIST_BEFORE} />
+                <Portal name={CART_ITEM_LIST}>
                   <CardList className={styles}>
-                    {cartItems.map(cartItem => (
-                      <Item
-                        item={cartItem}
-                        key={cartItem.id}
+                    {Object.keys(cartItemGroups).map(groupKey => (
+                      <ItemsGroup
+                        key={groupKey}
+                        items={cartItemGroups[groupKey].items}
+                        group={cartItemGroups[groupKey].group}
                         onFocus={this.togglePaymentBar}
                       />
                     ))}
-                    <Portal name={portals.CART_COUPON_FIELD_BEFORE} />
-                    <Portal name={portals.CART_COUPON_FIELD}>
+                    <Portal name={CART_COUPON_FIELD_BEFORE} />
+                    <Portal name={CART_COUPON_FIELD}>
                       <CouponField onFocus={this.togglePaymentBar} />
                     </Portal>
-                    <Portal name={portals.CART_COUPON_FIELD_AFTER} />
+                    <Portal name={CART_COUPON_FIELD_AFTER} />
                   </CardList>
                 </Portal>
-                <Portal name={portals.CART_ITEM_LIST_AFTER} />
+                <Portal name={CART_ITEM_LIST_AFTER} />
                 <PaymentBar visible={isPaymentBarVisible} />
               </Fragment>
             )}
