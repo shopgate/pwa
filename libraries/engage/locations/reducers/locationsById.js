@@ -12,7 +12,6 @@ export default function locationsById(state = {}, action) {
       return action.locations.reduce((accumulator, location) => {
         accumulator[location.code] = {
           ...accumulator[location.code],
-          isFetching: false,
           ...location,
           address: location.addresses.find(a => a.isPrimary) || location.addresses[0],
         };

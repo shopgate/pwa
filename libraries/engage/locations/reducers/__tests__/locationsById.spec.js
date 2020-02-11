@@ -13,11 +13,23 @@ describe('engage > locations > reducers > locationsById', () => {
     state = reducer(state, receiveLocations([{
       code: 'code1',
       name: 'Code 1',
+      addresses: [{
+        street: 'Street',
+        isPrimary: true,
+      }],
     }]));
     expect(state).toEqual({
       code1: {
         code: 'code1',
         name: 'Code 1',
+        addresses: [{
+          street: 'Street',
+          isPrimary: true,
+        }],
+        address: {
+          street: 'Street',
+          isPrimary: true,
+        },
       },
     });
   });

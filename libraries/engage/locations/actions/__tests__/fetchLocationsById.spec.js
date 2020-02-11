@@ -12,12 +12,15 @@ describe('engage > locations > actions > fetchLocationsById', () => {
   const getState = jest.fn();
 
   test('fetchLocationsById', () => {
+    expect.assertions(2);
     const getLocationsState = jest.fn().mockReturnValue({
       code1: { code: 'code1' },
     });
     makeGetLocationsState.mockReturnValue(getLocationsState);
 
-    fetchLocations.mockReturnValue([{ code: 'code2' }]);
+    fetchLocations.mockReturnValue(Promise.resolve({
+      locations: [{ code: 'code2' }],
+    }));
 
     const result = fetchLocationsById(['code1', 'code2'])(dispatch, getState);
 
