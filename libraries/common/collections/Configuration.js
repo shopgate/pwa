@@ -54,4 +54,5 @@ class Configuration {
   }
 }
 
+/** @type {Configuration} */
 export default new Configuration();

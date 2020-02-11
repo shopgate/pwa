@@ -13,6 +13,7 @@ export * from '@shopgate/pwa-common-commerce/cart/constants/index';
 export * from '@shopgate/pwa-common-commerce/cart/constants/PipelineErrors';
 export * from '@shopgate/pwa-common-commerce/cart/constants/Pipelines';
 export * from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+export * from './cart.constants';
 
 // HELPERS
 export * from '@shopgate/pwa-common-commerce/cart/helpers';
