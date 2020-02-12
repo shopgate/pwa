@@ -6,6 +6,8 @@ export {
   FulfillmentSelector,
   FulfillmentSheet,
   StoreList,
+  StoreAddressOpeningHours,
+  StoreAddressPhoneNumber,
 } from './components';
 
 // CONSTANTS
@@ -25,4 +27,5 @@ export {
   makeGetFulfillmentMethods,
   makeIsFulfillmentSelectorDisabled,
   makeGetUserLocation,
+  makeGetLocation,
 } from './selectors';

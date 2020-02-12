@@ -129,7 +129,10 @@
     "error_copy": "There was an issue when trying to place your reservation. Probably some items have sold out meanwhile. Please check availability at a different location.",
     "error_invalid_zip_code": "Please enter a valid ZIP code.",
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
-    "search_placeholder": "ZIP code"
+    "search_placeholder": "ZIP code",
+    "method": {
+      "ropis" : "Reserve online, pick up in store"
+    }
   },
   "category": {
     "error": {
@@ -176,6 +179,7 @@
     "discount": "Descuento",
     "discount_with_label": "Descuento ({label})",
     "checkout": "Pagar",
+    "reserve": "Reserve",
     "remove": "Quitar",
     "edit": "Editar",
     "empty": "Su cesta está vacía",
@@ -185,7 +189,8 @@
     "default_coupon_label": "Cupón",
     "coupon_was_added": "¡El cupón ha sido añadido a su cesta!",
     "coupons_not_supported": "Agregue los cupones y vales de regalo mientras realiza el pago",
-    "free_shipping": "Envío gratuito"
+    "free_shipping": "Envío gratuito",
+    "reservation_hint": "*Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality."
   },
   "login": {
     "headline": "Bienvenido",

@@ -1,3 +1,3 @@
 export { FulfillmentSelector } from './FulfillmentSelector';
 export { FulfillmentSheet } from './FulfillmentSheet';
-export { StoreList } from './StoreList';
+export { StoreList, StoreAddressOpeningHours, StoreAddressPhoneNumber } from './StoreList';

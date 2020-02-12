@@ -1,12 +1,16 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { getCartConfig } from '@shopgate/pwa-common-commerce/cart';
-import { MessageBar, CardList, Portal } from '@shopgate/engage/components';
+import {
+  getCartConfig,
+  groupCartItems,
+  CART_PATH,
+  CART_ITEM_LIST,
+  CART_COUPON_FIELD,
+} from '@shopgate/engage/cart';
+import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
-import Item from '../Item';
+import ItemsGroup from '../ItemsGroup';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
@@ -26,11 +30,13 @@ class CartContentContainer extends PureComponent {
     isLoading: PropTypes.bool.isRequired,
     isUserLoggedIn: PropTypes.bool.isRequired,
     cartItems: PropTypes.arrayOf(PropTypes.shape()),
+    flags: PropTypes.shape(),
     messages: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
     cartItems: [],
+    flags: {},
     messages: [],
   };
 
@@ -61,18 +67,20 @@ class CartContentContainer extends PureComponent {
    */
   render() {
     const {
-      cartItems, isLoading, messages, isUserLoggedIn, currency,
+      cartItems, isLoading, messages, isUserLoggedIn, currency, flags,
     } = this.props;
     const { isPaymentBarVisible } = this.state;
     const hasItems = (cartItems.length > 0);
     const hasMessages = (messages.length > 0);
 
+    const cartItemGroups = groupCartItems(cartItems);
     return (
       <CartContext.Provider value={{
         currency,
         config,
         isUserLoggedIn,
         isLoading,
+        flags,
       }}
       >
         <BackBar title="titles.cart" />
@@ -81,24 +89,21 @@ class CartContentContainer extends PureComponent {
             {hasMessages && <MessageBar messages={messages} />}
             {hasItems && (
               <Fragment>
-                <Portal name={portals.CART_ITEM_LIST_BEFORE} />
-                <Portal name={portals.CART_ITEM_LIST}>
+                <SurroundPortals portalName={CART_ITEM_LIST}>
                   <CardList className={styles}>
-                    {cartItems.map(cartItem => (
-                      <Item
-                        item={cartItem}
-                        key={cartItem.id}
+                    {Object.keys(cartItemGroups).map(groupKey => (
+                      <ItemsGroup
+                        key={groupKey}
+                        items={cartItemGroups[groupKey].items}
+                        fulfillmentLocationId={cartItemGroups[groupKey].fulfillmentLocationId}
                         onFocus={this.togglePaymentBar}
                       />
                     ))}
-                    <Portal name={portals.CART_COUPON_FIELD_BEFORE} />
-                    <Portal name={portals.CART_COUPON_FIELD}>
+                    <SurroundPortals portalName={CART_COUPON_FIELD}>
                       <CouponField onFocus={this.togglePaymentBar} />
-                    </Portal>
-                    <Portal name={portals.CART_COUPON_FIELD_AFTER} />
+                    </SurroundPortals>
                   </CardList>
-                </Portal>
-                <Portal name={portals.CART_ITEM_LIST_AFTER} />
+                </SurroundPortals>
                 <PaymentBar visible={isPaymentBarVisible} />
               </Fragment>
             )}
