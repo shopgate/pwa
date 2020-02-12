@@ -21,30 +21,39 @@ const STAGES = [
   'form',
   'user',
 ];
+const STAGE_TITLES = [
+  i18n.text('locations.headline'),
+  i18n.text('locations.place_reservation'),
+  {
+    success: i18n.text('locations.success_heading'),
+    error: i18n.text('locations.error_heading'),
+  },
+];
 
 /**
  * Renders the store selector sheet.
  */
 class FulfillmentSheet extends PureComponent {
   static propTypes = {
+    addProductsToCart: PropTypes.func,
     locations: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
-    selectedVariants: PropTypes.arrayOf(PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.string,
-    })),
     selectLocation: PropTypes.func,
+    settings: PropTypes.shape(),
+    stage: PropTypes.number,
     storeFormInput: PropTypes.func,
     submitReservation: PropTypes.func,
     userInput: PropTypes.shape(),
   }
 
   static defaultProps = {
+    addProductsToCart: () => { },
     locations: null,
     product: null,
-    selectedVariants: [],
     selectLocation: () => { },
+    settings: {},
     submitReservation: () => { },
+    stage: 1,
     storeFormInput: () => { },
     userInput: null,
   }
@@ -56,14 +65,14 @@ class FulfillmentSheet extends PureComponent {
     super(props);
 
     UIEvents.addListener(EVENT_SET_OPEN, this.handleSetOpen);
-    UIEvents.addListener(EVENT_SET_CLOSED, this.handleSetOpen);
+    UIEvents.addListener(EVENT_SET_CLOSED, this.handleSetClosed);
     this.callback = () => { };
   }
 
   state = {
     isOpen: false,
-    stage: STAGES[0],
-    title: i18n.text('locations.headline'),
+    stage: STAGES[this.props.stage - 1],
+    title: STAGE_TITLES[this.props.stage - 1],
     orderNumbers: null,
     errors: null,
   };
@@ -73,7 +82,7 @@ class FulfillmentSheet extends PureComponent {
    */
   componentWillUnmount() {
     UIEvents.removeListener(EVENT_SET_OPEN, this.handleSetOpen);
-    UIEvents.removeListener(EVENT_SET_CLOSED, this.handleSetOpen);
+    UIEvents.removeListener(EVENT_SET_CLOSED, this.handleSetClosed);
   }
 
   /**
@@ -93,13 +102,16 @@ class FulfillmentSheet extends PureComponent {
    * @param {Object} [location=null] The selected location.
    */
   handleSetClosed = (location = null) => {
+    const { stage } = this.props;
+
     this.setState({
       isOpen: false,
-      stage: STAGES[0],
-      title: i18n.text('locations.headline'),
+      stage: STAGES[stage - 1],
+      title: STAGE_TITLES[stage - 1],
       orderNumbers: null,
       errors: null,
     });
+
     this.callback(location);
     this.callback = () => { };
   }
@@ -117,8 +129,10 @@ class FulfillmentSheet extends PureComponent {
       code, name, addressCode, visibleInventory,
     } = params;
     const {
+      addProductsToCart,
       selectLocation,
       product,
+      settings: { enabledFulfillmentMethodSelectionForEngage: fulfillmentMethods = [] },
     } = this.props;
     const location = {
       code,
@@ -129,10 +143,29 @@ class FulfillmentSheet extends PureComponent {
     };
 
     selectLocation(location);
-    this.setState({
-      stage: STAGES[1],
-      title: i18n.text('locations.place_reservation'),
-    });
+
+    if (fulfillmentMethods.includes('multiLineReserve')) {
+      addProductsToCart([{
+        productId: product.id,
+        quantity: 1,
+        fulfillment: {
+          method: 'ROPIS', // TODO: make this dynamic.
+          location: {
+            code,
+            name,
+          },
+        },
+      }]);
+      this.handleSetClosed(location);
+      return;
+    }
+
+    setTimeout(() => {
+      this.setState({
+        stage: STAGES[1],
+        title: STAGE_TITLES[1],
+      });
+    }, 300);
   }
 
   /**
@@ -142,7 +175,7 @@ class FulfillmentSheet extends PureComponent {
   handleSuccess = (orderNumbers) => {
     this.setState({
       stage: STAGES[2],
-      title: i18n.text('locations.success_heading'),
+      title: STAGE_TITLES[2].success,
       orderNumbers,
     });
   }
@@ -153,7 +186,7 @@ class FulfillmentSheet extends PureComponent {
   handleError = (errors) => {
     this.setState({
       stage: STAGES[2],
-      title: i18n.text('locations.error_heading'),
+      title: STAGE_TITLES[2].error,
       orderNumbers: null,
       errors,
     });
@@ -189,7 +222,7 @@ class FulfillmentSheet extends PureComponent {
    */
   render() {
     const {
-      product, locations, selectedVariants, userInput,
+      product, locations, userInput,
     } = this.props;
     const {
       isOpen, stage, title, orderNumbers, errors,
@@ -200,7 +233,6 @@ class FulfillmentSheet extends PureComponent {
       sendReservation: this.handleSendReservation,
       product,
       locations,
-      selectedVariants,
       userInput,
       orderNumbers,
     };

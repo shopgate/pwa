@@ -146,3 +146,37 @@ export function makeIsFulfillmentSelectorDisabled() {
     }
   );
 }
+
+/**
+ * Creates the selector that retrieves the user location state.
+ * @returns {Function}
+ */
+export function makeGetUserLocation() {
+  return createSelector(
+    getLocationsState,
+    (locations) => {
+      if (!locations || !locations.userLocation) {
+        return null;
+      }
+
+      return locations.userLocation;
+    }
+  );
+}
+
+/**
+ * Creates a selector that retrieves the user's reserve form input.
+ * @returns {Function}
+ */
+export function makeGetUserFormInput() {
+  return createSelector(
+    getLocationsState,
+    (locations) => {
+      if (!locations || !locations.userFormInput) {
+        return null;
+      }
+
+      return locations.userFormInput;
+    }
+  );
+}

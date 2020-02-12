@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
-import { makeGetUserLocation } from '@shopgate/engage/user';
-import { makeGetFulfillmentMethods, makeIsFulfillmentSelectorDisabled } from '../../selectors';
+import {
+  makeGetFulfillmentMethods,
+  makeIsFulfillmentSelectorDisabled,
+  makeGetUserLocation,
+} from '../../selectors';
 
 /**
  * @param {Object} state The current application state.
