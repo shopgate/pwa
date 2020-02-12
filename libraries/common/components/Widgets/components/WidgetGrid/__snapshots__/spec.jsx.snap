@@ -68,22 +68,26 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
           className="css-1v59zcp"
         >
           <div>
-            <Image
-              ratio={
-                Array [
-                  12,
-                  3,
-                ]
-              }
-              settings={
-                Object {
-                  "id": 83535,
-                  "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-                }
-              }
+            <Suspense
+              fallback={<Loading />}
             >
-              <div />
-            </Image>
+              <Image
+                ratio={
+                  Array [
+                    12,
+                    3,
+                  ]
+                }
+                settings={
+                  Object {
+                    "id": 83535,
+                    "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+                  }
+                }
+              >
+                <div />
+              </Image>
+            </Suspense>
           </div>
         </div>
       </GridItem>

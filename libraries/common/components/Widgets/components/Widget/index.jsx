@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import Loading from '../../../Loading';
 import Grid from '../../../Grid';
 import styles from './style';
 /**
@@ -53,10 +54,12 @@ class Widget extends Component {
         component="div"
       >
         <div className={styles.content}>
-          {React.createElement(this.props.component, {
-            settings,
-            ratio: [width, height],
-          })}
+          <Suspense fallback={<Loading />}>
+            {React.createElement(this.props.component, {
+              settings,
+              ratio: [width, height],
+            })}
+          </Suspense>
         </div>
       </Grid.Item>
     );
