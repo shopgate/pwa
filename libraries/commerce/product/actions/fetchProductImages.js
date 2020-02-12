@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import requestProductImages from '../action-creators/requestProductImages';
 import { SHOPGATE_CATALOG_GET_PRODUCT_IMAGES } from '../constants/Pipelines';
@@ -40,7 +39,6 @@ function fetchProductImages(productId, formats) {
         dispatch(receiveProductImages(productId, result.images));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorProductImages(productId, error.code));
       });
 

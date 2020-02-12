@@ -1,6 +1,9 @@
 /* eslint-disable class-methods-use-this */
 import get from 'lodash/get';
-import appConfig, { writeToConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig, {
+  writeToConfig,
+  equalStructureComparator,
+} from '@shopgate/pwa-common/helpers/config';
 
 /**
  * Parses a JSON object and resolves placeholders with values from the object.
@@ -9,11 +12,14 @@ export class ThemeConfigResolver {
   /**
    * @param {Object} config The configuration to resolve references for.
    * @param {string} [delimiter='$.'] What the replaceable starts with.
+   * @param {string} [endDelimiter='.$'] What the replaceable ends with. Useful within some strings.
    * @constructor
    */
-  constructor(config = {}, delimiter = '$.') {
+  constructor(config = {}, delimiter = '$.', endDelimiter = '.$') {
     this.config = config;
     this.delimiter = delimiter;
+    // Some references require an ending delimiter. E.g.: "size: $.theme.reference.value.$rem"
+    this.endDelimiter = endDelimiter;
   }
 
   /**
@@ -33,7 +39,7 @@ export class ThemeConfigResolver {
    */
   resolveAll() {
     this.config = appConfig.theme;
-    writeToConfig({ theme: this.resolve() });
+    writeToConfig({ theme: this.resolve() }, equalStructureComparator);
   }
 
   /**
@@ -103,17 +109,36 @@ export class ThemeConfigResolver {
   processString(input) {
     // Replace all variable references in the given string if any exist
     let value = input;
+    let replacementValue;
     const preRegex = new RegExp(`.*${
       // Escape delimiter to use within another reg exp.
       this.delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     }`, 'g');
     const postRegex = new RegExp(/[^a-zA-Z0-9_$.].*$/, 'g');
-    while (value.includes(this.delimiter)) {
-      // Get next reference
-      const path = value.replace(preRegex, '').replace(postRegex, '');
+    const partials = value.split(this.delimiter).map((partial, index) => {
+      // The first entry can never contain references
+      if (index === 0) {
+        return partial;
+      }
 
-      // replace reference (including its delimiter) with the actual value
-      value = value.replace(`${this.delimiter}${path}`, get(this.config, path));
+      const partialValue = `${this.delimiter}${partial}`;
+      return partialValue.split(this.endDelimiter).map((s, i) => {
+        // Can only have two parts with the first being either a path or plain text
+        if (i > 0) {
+          return s;
+        }
+
+        // Replace reference if this part contains one
+        const path = s.replace(preRegex, '').replace(postRegex, '');
+        replacementValue = get(this.config, path);
+        return s.replace(`${this.delimiter}${path}`, replacementValue);
+      }).join('');
+    });
+    value = partials.join('');
+
+    // Keep the original type if it's not a combined value
+    if (replacementValue !== undefined && replacementValue.toString() === value) {
+      return replacementValue;
     }
 
     return value;

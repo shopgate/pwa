@@ -22,13 +22,6 @@ jest.mock(
   )
 );
 
-// Prevent console output on pipeline error test scenario
-jest.mock('@shopgate/pwa-core/helpers', () => ({
-  logger: {
-    error: jest.fn(),
-  },
-}));
-
 describe('Favorites - actions', () => {
   describe(SHOPGATE_USER_ADD_FAVORITES, () => {
     beforeEach(() => {

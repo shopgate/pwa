@@ -1,6 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_LAST } from '@shopgate/pwa-core/constants/ProcessTypes';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SHOPGATE_CART_GET_CART } from '../constants/Pipelines';
 import receiveCart from '../action-creators/receiveCart';
@@ -52,7 +51,6 @@ function fetchCart() {
           }
 
           // Check if we have an error (no error means an outdated request has been rejected).
-          logger.error(error);
           dispatch(errorCart());
         }
       });

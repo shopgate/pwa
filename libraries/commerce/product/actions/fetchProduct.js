@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
@@ -45,7 +44,6 @@ function fetchProduct(productId, forceFetch = false) {
         dispatch(receiveProduct(productId, result));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorProduct(productId, error.code));
       });
 

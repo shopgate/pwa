@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import requestProductProperties from '../action-creators/requestProductProperties';
 import { SHOPGATE_CATALOG_GET_PRODUCT_PROPERTIES } from '../constants/Pipelines';
@@ -30,7 +29,6 @@ function fetchProductProperties(productId) {
         dispatch(receiveProductProperties(productId, result.properties));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorProductProperties(productId, error.code));
       });
 

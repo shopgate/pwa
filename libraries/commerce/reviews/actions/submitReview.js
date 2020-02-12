@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { EEXIST } from '@shopgate/pwa-core/constants/Pipeline';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
@@ -51,8 +50,7 @@ function submitReview(review, update = false) {
           dispatch(receiveSubmitReview(newReview));
           dispatch(fetchProduct(newReview.productId, true));
         })
-        .catch((error) => {
-          logger.error(error);
+        .catch(() => {
           dispatch(resetSubmittedReview(originalReview));
         });
 
@@ -78,7 +76,6 @@ function submitReview(review, update = false) {
             message: 'modal.body_error',
           }));
         }
-        logger.error(error);
         dispatch(errorSubmitReview(newReview.productId));
       });
 

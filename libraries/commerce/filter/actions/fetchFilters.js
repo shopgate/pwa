@@ -48,8 +48,7 @@ function fetchFilters() {
       .then((response) => {
         dispatch(receiveFilters(hash, response.filters));
       })
-      .catch((error) => {
-        logger.error(error);
+      .catch(() => {
         dispatch(errorFilters(hash));
       });
 
