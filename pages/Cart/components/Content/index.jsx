@@ -5,14 +5,10 @@ import {
   getCartConfig,
   groupCartItems,
   CART_PATH,
-  CART_ITEM_LIST_BEFORE,
   CART_ITEM_LIST,
-  CART_COUPON_FIELD_BEFORE,
   CART_COUPON_FIELD,
-  CART_COUPON_FIELD_AFTER,
-  CART_ITEM_LIST_AFTER,
 } from '@shopgate/engage/cart';
-import { MessageBar, CardList, Portal } from '@shopgate/engage/components';
+import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { SimpleBar } from 'Components/AppBar/presets';
 import ItemsGroup from '../ItemsGroup';
 import CouponField from '../CouponField';
@@ -94,8 +90,7 @@ class CartContentContainer extends PureComponent {
             {hasMessages && <MessageBar messages={messages} />}
             {hasItems && (
               <Fragment>
-                <Portal name={CART_ITEM_LIST_BEFORE} />
-                <Portal name={CART_ITEM_LIST}>
+                <SurroundPortals portalName={CART_ITEM_LIST}>
                   <CardList className={styles}>
                     {Object.keys(cartItemGroups).map(groupKey => (
                       <ItemsGroup
@@ -105,14 +100,11 @@ class CartContentContainer extends PureComponent {
                         onFocus={this.togglePaymentBar}
                       />
                     ))}
-                    <Portal name={CART_COUPON_FIELD_BEFORE} />
-                    <Portal name={CART_COUPON_FIELD}>
+                    <SurroundPortals portalName={CART_COUPON_FIELD}>
                       <CouponField onFocus={this.togglePaymentBar} />
-                    </Portal>
-                    <Portal name={CART_COUPON_FIELD_AFTER} />
+                    </SurroundPortals>
                   </CardList>
-                </Portal>
-                <Portal name={CART_ITEM_LIST_AFTER} />
+                </SurroundPortals>
                 <PaymentBar visible={isPaymentBarVisible} />
               </Fragment>
             )}
