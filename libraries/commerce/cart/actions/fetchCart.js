@@ -1,6 +1,8 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_LAST } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
+import { PIPELINES } from '@shopgate/pwa-common/constants/Configuration';
+import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { SHOPGATE_CART_GET_CART } from '../constants/Pipelines';
 import receiveCart from '../action-creators/receiveCart';
 import requestCart from '../action-creators/requestCart';
@@ -14,7 +16,11 @@ import { getIsFetching } from '../selectors/index';
  */
 function fetchCart() {
   return (dispatch, getState) => {
-    const request = new PipelineRequest(SHOPGATE_CART_GET_CART)
+    const {
+      [SHOPGATE_CART_GET_CART]: pipeline = SHOPGATE_CART_GET_CART,
+    } = configuration.get(PIPELINES, {});
+
+    const request = new PipelineRequest(pipeline)
       .setResponseProcessed(PROCESS_LAST);
 
     /**

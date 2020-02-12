@@ -66,7 +66,7 @@ export const getCartItemById = createSelector(
 /**
  * Selects the products from the cart.
  * @param {Object} state The current state.
- * @return {Array} The cart products.
+ * @return {Object[]} The cart products.
  */
 export const getCartProducts = createSelector(
   cartItemsSelector,
