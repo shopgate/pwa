@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import {
   EFAVORITE,
   EUNKNOWN,
@@ -37,7 +36,6 @@ function fetchFavorites(ignoreCache = false) {
         dispatch(receiveFavorites(result.products, timestamp));
       })
       .catch((err) => {
-        logger.error(err);
         dispatch(errorFetchFavorites(err));
       });
   };

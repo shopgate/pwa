@@ -1,4 +1,4 @@
-import { PipelineRequest, logger } from '@shopgate/pwa-core';
+import { PipelineRequest } from '@shopgate/pwa-core';
 import {
   requestLogout,
   successLogout,
@@ -30,8 +30,7 @@ function logout(notify = true) {
           dispatch(errorLogout(messages));
         }
       })
-      .catch((error) => {
-        logger.error(error);
+      .catch(() => {
         dispatch(errorLogout());
       });
 

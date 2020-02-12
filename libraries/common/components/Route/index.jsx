@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import { RouteContext, RouterContext } from '@virtuous/react-conductor';
+import Loading from '../Loading';
 import ErrorBoundary from '../ErrorBoundary';
 
 /**
@@ -73,7 +74,9 @@ class Route extends React.Component {
       return (
         <ErrorBoundary key={`error.${route.id}`}>
           <RouteContext.Provider key={route.id} value={context}>
-            <Component />
+            <Suspense fallback={<Loading />}>
+              <Component />
+            </Suspense>
           </RouteContext.Provider>
         </ErrorBoundary>
       );

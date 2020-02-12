@@ -101,7 +101,7 @@ appConfig.theme = themeConfig;
  * @param {string} path Allows identification of the current elements to be compared
  * @param {*} prev Item that already exists in the config.
  * @param {*} next Item to be compared against.
- * @returns {boolean}
+ * @returns {boolean} Returns true if the items are considered equal and false if not
  */
 export const appConfigArrayItemComparator = (path, prev, next) => {
   // Replaces object paths with array indices to a structure with easy comparisons
@@ -128,6 +128,18 @@ export const appConfigArrayItemComparator = (path, prev, next) => {
   // => Custom defined array items must be handled using the given arrayComparator!
   return false;
 };
+
+/**
+ * Comparator which treats items to be equal arrays by the position of the item in the array.
+ * @param {string} [path] Unused param
+ * @param {*} [prev] Unused param
+ * @param {*} [next] Unused param
+ * @param {number} prevIndex Position of the prev item in the array which is currently compared
+ * @param {number} nextIndex Position of the next item in the array which is currently compared
+ * @returns {boolean} Returns true if the items are considered equal and false if not
+ */
+export const equalStructureComparator = (path, prev, next, prevIndex, nextIndex) =>
+  prevIndex === nextIndex;
 
 /**
  * Takes an object with app config values and safely injects it into the current app config.

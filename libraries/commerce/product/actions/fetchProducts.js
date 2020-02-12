@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
@@ -168,7 +167,6 @@ function fetchProducts(options) {
         }));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorProducts({
           errorCode: error.code,
           hash,
