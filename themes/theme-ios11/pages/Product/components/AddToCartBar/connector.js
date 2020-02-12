@@ -27,7 +27,7 @@ function makeMapStateToProps() {
     disabled: !isProductOrderable(state, props) && !hasProductVariants(state, props),
     loading: isProductPageLoading(state, props),
     userLocation: getUserLocation(state),
-    hasFulfillmentMethods: isFulfillmentSelectorDisabled(state, props),
+    hasFulfillmentMethods: !isFulfillmentSelectorDisabled(state, props),
   });
 }
 
@@ -51,6 +51,14 @@ const areStatePropsEqual = (next, prev) => {
   }
 
   if (prev.loading !== next.loading) {
+    return false;
+  }
+
+  if (prev.hasFulfillmentMethods !== next.hasFulfillmentMethods) {
+    return false;
+  }
+
+  if (prev.userLocation !== next.userLocation) {
     return false;
   }
 
