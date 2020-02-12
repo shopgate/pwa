@@ -3,6 +3,7 @@ import { css } from 'glamor';
 export const container = css({
   position: 'relative',
   maxHeight: '100%',
+  width: '100vw',
 }).toString();
 
 export const innerContainer = css({
