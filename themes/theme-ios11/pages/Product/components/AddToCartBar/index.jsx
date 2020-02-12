@@ -11,6 +11,7 @@ import {
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
+import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '@shopgate/engage/locations';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -33,13 +34,17 @@ class AddToCartBar extends Component {
     visible: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     disabled: PropTypes.bool,
+    hasFulfillmentMethods: PropTypes.bool,
     loading: PropTypes.bool,
+    userLocation: PropTypes.shape(),
   };
 
   static defaultProps = {
-    addToCart: () => {},
+    addToCart: () => { },
     disabled: false,
     loading: false,
+    hasFulfillmentMethods: false,
+    userLocation: null,
   };
 
   /**
@@ -112,26 +117,54 @@ class AddToCartBar extends Component {
    * all criteria set by the conditioner are met.
    */
   handleAddToCart = () => {
+    const {
+      loading,
+      disabled,
+      conditioner,
+      addToCart,
+      productId,
+      options,
+      userLocation,
+      hasFulfillmentMethods,
+    } = this.props;
+
     if (this.state.clicked) {
       return;
     }
 
-    if (this.props.loading || this.props.disabled) {
+    if (loading || disabled) {
       return;
     }
 
-    this.props.conditioner.check().then((fullfilled) => {
+    conditioner.check().then((fullfilled) => {
       if (!fullfilled) {
         return;
       }
 
       this.setState({ clicked: true });
 
-      this.props.addToCart({
-        productId: this.props.productId,
-        options: this.props.options,
+      const addToCartData = {
+        productId,
+        options,
         quantity: this.context.quantity,
-      });
+      };
+
+      // Add the user location for ROPIS if it is set.
+      if (
+        userLocation !== null
+        && userLocation.fulfillmentMethod !== PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+        && hasFulfillmentMethods
+      ) {
+        addToCartData.fulfillment = {
+          method: 'ROPIS',
+          location: {
+            code: userLocation.code,
+            name: userLocation.name,
+          },
+        };
+      }
+
+      addToCart(addToCartData);
 
       broadcastLiveMessage('product.adding_item', {
         params: { count: this.context.quantity },

@@ -1,27 +1,44 @@
 import { connect } from 'react-redux';
-import { isProductOrderable, hasProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  isProductOrderable,
+  hasProductVariants,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
-import { addProductToCart } from './actions';
+import { makeGetUserLocation, makeIsFulfillmentSelectorDisabled } from '@shopgate/engage/locations';
+import { addProductToCart as addToCart } from './actions';
 
 /**
- * Connects the current application state to the component props.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {Object} The extended component props.
+ * @returns {Function}
  */
-const mapStateToProps = (state, props) => ({
-  disabled: !isProductOrderable(state, props) && !hasProductVariants(state, props),
-  loading: isProductPageLoading(state, props),
-});
+function makeMapStateToProps() {
+  const getUserLocation = makeGetUserLocation();
+  const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
+
+  /**
+   * @param {Object} state The current application state.
+   * @param {Object} props The component props.
+   * @return {Object} The extended component props.
+   */
+  return (state, props) => ({
+    /**
+     * 1. Product has no variants and not orderable
+     * 2. Parent product can be not orderable but having orderable variants
+     */
+    disabled: !isProductOrderable(state, props) && !hasProductVariants(state, props),
+    loading: isProductPageLoading(state, props),
+    userLocation: getUserLocation(state),
+    hasFulfillmentMethods: !isFulfillmentSelectorDisabled(state, props),
+  });
+}
 
 /**
  * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
  * @return {Object} The extended component props.
  */
-const mapDispatchToProps = dispatch => ({
-  addToCart: data => dispatch(addProductToCart(data)),
-});
+const mapDispatchToProps = {
+  addToCart,
+};
 
 /**
  * @param {Object} next The next component props.
@@ -37,7 +54,15 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
+  if (prev.hasFulfillmentMethods !== next.hasFulfillmentMethods) {
+    return false;
+  }
+
+  if (prev.userLocation !== next.userLocation) {
+    return false;
+  }
+
   return true;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
+export default connect(makeMapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

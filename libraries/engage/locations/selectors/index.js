@@ -191,7 +191,7 @@ export function makeIsFulfillmentSelectorDisabled() {
     getProductLocations,
     getFulfillmentMethods,
     (locations, methods) => {
-      if (methods && (!locations || locations.length === 0)) {
+      if (!methods || !locations || !locations.length === 0) {
         return true;
       }
 

@@ -7,6 +7,7 @@ import { FulfillmentSheet } from '../FulfillmentSheet';
 import { StockInfo } from '../StockInfo';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
@@ -25,7 +26,12 @@ import * as styles from './FulfillmentSelector.style';
  */
 export const FulfillmentSelector = (props) => {
   const {
-    productId: productCode, fulfillmentMethods, location, conditioner, disabled,
+    productId: productCode,
+    fulfillmentMethods,
+    location,
+    conditioner,
+    disabled,
+    storeFulfillmentMethod,
   } = props;
   const directShip = 'product.fulfillment_selector.direct_ship';
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
@@ -46,7 +52,6 @@ export const FulfillmentSelector = (props) => {
       setSelectedLocation(newLocation);
     }
   }, [productCode, selectedLocation]);
-
   /**
    * Whenever the pick-up selection is made, open the
    * store selector sheet and use the new location.
@@ -57,7 +62,14 @@ export const FulfillmentSelector = (props) => {
         return;
       }
 
+      let method = PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP;
+
+      if (elementName === pickUp) {
+        method = PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
+      }
+
       setSelection(elementName);
+      storeFulfillmentMethod(method);
 
       if (isOpen) {
         return;
@@ -74,7 +86,7 @@ export const FulfillmentSelector = (props) => {
       // TODO: Opening the selector to change selection should be done with a "Choose Location" link
       FulfillmentSheet.open(handleClose);
     });
-  }, [conditioner, isOpen, handleClose]);
+  }, [conditioner, storeFulfillmentMethod, isOpen, handleClose]);
 
   if (!fulfillmentMethods) {
     return null;
@@ -132,12 +144,14 @@ FulfillmentSelector.propTypes = {
       PropTypes.string,
     ]),
   }),
+  storeFulfillmentMethod: PropTypes.func,
 };
 
 FulfillmentSelector.defaultProps = {
   disabled: true,
   fulfillmentMethods: null,
   location: null,
+  storeFulfillmentMethod() { },
 };
 
 export default hot(connect(FulfillmentSelector));

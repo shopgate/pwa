@@ -25,5 +25,7 @@ export {
 // SELECTORS
 export {
   makeGetFulfillmentMethods,
+  makeIsFulfillmentSelectorDisabled,
+  makeGetUserLocation,
   makeGetLocation,
 } from './selectors';

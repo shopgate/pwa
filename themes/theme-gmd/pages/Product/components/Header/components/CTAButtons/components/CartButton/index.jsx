@@ -5,6 +5,7 @@ import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { I18n } from '@shopgate/engage/components';
+import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '@shopgate/engage/locations';
 import { ProductContext } from '../../../../../../context';
 import Icon from './components/Icon';
 import connect from './connector';
@@ -26,6 +27,13 @@ class CartButton extends Component {
     loading: PropTypes.bool.isRequired,
     options: PropTypes.shape().isRequired,
     productId: PropTypes.string.isRequired,
+    hasFulfillmentMethods: PropTypes.bool,
+    userLocation: PropTypes.shape(),
+  }
+
+  static defaultProps = {
+    hasFulfillmentMethods: false,
+    userLocation: null,
   }
 
   state = {
@@ -80,26 +88,47 @@ class CartButton extends Component {
    * all criteria set by the conditioner are met.
    */
   handleClick = () => {
+    const {
+      disabled, conditioner, addToCart, productId, options, userLocation, hasFulfillmentMethods,
+    } = this.props;
+
     if (this.state.clicked) {
       return;
     }
 
-    if (this.props.disabled) {
+    if (disabled) {
       return;
     }
 
-    this.props.conditioner.check().then((fulfilled) => {
+    conditioner.check().then((fulfilled) => {
       if (!fulfilled) {
         return;
       }
 
       this.setState({ clicked: true });
 
-      this.props.addToCart({
-        productId: this.props.productId,
-        options: this.props.options,
+      const addToCartData = {
+        productId,
+        options,
         quantity: this.context.quantity,
-      });
+      };
+
+      // Add the user location for ROPIS if it is set.
+      if (
+        userLocation !== null
+        && userLocation.fulfillmentMethod !== PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+        && hasFulfillmentMethods
+      ) {
+        addToCartData.fulfillment = {
+          method: 'ROPIS',
+          location: {
+            code: userLocation.code,
+            name: userLocation.name,
+          },
+        };
+      }
+
+      addToCart(addToCartData);
 
       broadcastLiveMessage('product.adding_item', {
         params: { count: this.context.quantity },

@@ -4,6 +4,7 @@ import {
   makeIsFulfillmentSelectorDisabled,
   makeGetUserLocation,
 } from '../../selectors';
+import { storeFulfillmentMethod } from '../../action-creators';
 
 /**
  * @param {Object} state The current application state.
@@ -27,4 +28,8 @@ function makeMapStateToProps() {
   });
 }
 
-export default connect(makeMapStateToProps);
+const mapDispatchToProps = {
+  storeFulfillmentMethod,
+};
+
+export default connect(makeMapStateToProps, mapDispatchToProps);

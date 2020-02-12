@@ -10,12 +10,15 @@ export const addProductToCart = data => (dispatch, getState) => {
   const state = getState();
 
   // Transform the options to the required format for the pipeline request.
-  const options = getAddToCartOptions(state, data);
-  const { productId, quantity } = data;
+  const transformedOptions = getAddToCartOptions(state, data);
+  const {
+    productId, quantity, options, ...rest
+  } = data;
 
   dispatch(addProductsToCart([{
     productId,
     quantity,
-    ...(options) && { options },
+    ...(transformedOptions) && { options: transformedOptions },
+    ...rest,
   }]));
 };
