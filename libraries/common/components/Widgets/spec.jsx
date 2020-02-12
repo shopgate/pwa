@@ -3,6 +3,12 @@ import { mount } from 'enzyme';
 import Widgets from './index';
 
 jest.useFakeTimers();
+
+jest.mock('react', () => ({
+  ...require.requireActual('react'),
+  Suspense: function Suspense({ children }) { return children; },
+}));
+
 /**
  * A mock Image component.
  * @returns {JSX}
@@ -153,6 +159,7 @@ describe('<Widgets />', () => {
     const msToNextFullHour = minutesToNextFullHour * 60000;
     const scheduledFromMs = (Date.now() + msToNextFullHour) - 1;
     const scheduledToMs = Date.now() + minutesToNextFullHour + 1000;
+    /* eslint-disable camelcase */
     const widgets = [
       {
         col: 0,
@@ -171,6 +178,7 @@ describe('<Widgets />', () => {
         type: '@shopgate/commerce-widgets/image',
       },
     ];
+    /* eslint-enable camelcase */
     const wrapper = mount((
       <Widgets
         components={components}

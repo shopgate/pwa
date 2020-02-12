@@ -1,4 +1,3 @@
-import { logger } from '@shopgate/pwa-core/helpers';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { SHOPGATE_USER_ADD_FAVORITES } from '../constants/Pipelines';
 import { successAddFavorites, errorAddFavorites } from '../action-creators';
@@ -20,7 +19,6 @@ function addFavorites(productId) {
         dispatch(successAddFavorites(productId));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorAddFavorites(productId, error));
       });
 

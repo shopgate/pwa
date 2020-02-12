@@ -38,16 +38,20 @@ exports[`<Widget /> should render an image widget 1`] = `
       className="css-11tky1j"
     >
       <div>
-        <MyComponent
-          ratio={
-            Array [
-              12,
-              6,
-            ]
-          }
+        <Suspense
+          fallback={<Loading />}
         >
-          <div />
-        </MyComponent>
+          <MyComponent
+            ratio={
+              Array [
+                12,
+                6,
+              ]
+            }
+          >
+            <div />
+          </MyComponent>
+        </Suspense>
       </div>
     </div>
   </GridItem>
@@ -78,16 +82,20 @@ exports[`<Widget /> should render an image widget with offset 1`] = `
       className="css-1fy9kc8"
     >
       <div>
-        <MyComponent
-          ratio={
-            Array [
-              6,
-              6,
-            ]
-          }
+        <Suspense
+          fallback={<Loading />}
         >
-          <div />
-        </MyComponent>
+          <MyComponent
+            ratio={
+              Array [
+                6,
+                6,
+              ]
+            }
+          >
+            <div />
+          </MyComponent>
+        </Suspense>
       </div>
     </div>
   </GridItem>

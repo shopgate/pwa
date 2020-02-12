@@ -1,5 +1,4 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS } from '../constants/Pipelines';
@@ -37,8 +36,7 @@ function fetchProductReviews(productId, limit = REVIEW_PREVIEW_COUNT, sort = SOR
       .then(({ reviews, totalReviewCount }) => {
         dispatch(receiveProductReviews(productId, reviews, totalReviewCount));
       })
-      .catch((error) => {
-        logger.error(error);
+      .catch(() => {
         dispatch(errorProductReviews(productId));
       });
 
