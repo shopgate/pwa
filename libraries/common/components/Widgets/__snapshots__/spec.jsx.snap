@@ -141,26 +141,30 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
               className="css-14cdwhd"
             >
               <div>
-                <Image
-                  ratio={
-                    Array [
-                      12,
-                      5,
-                    ]
-                  }
-                  settings={
-                    Object {
-                      "alt": "",
-                      "id": "84961",
-                      "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
-                      "link": "/category/",
-                    }
-                  }
+                <Suspense
+                  fallback={<Loading />}
                 >
-                  <img
-                    alt=""
-                  />
-                </Image>
+                  <Image
+                    ratio={
+                      Array [
+                        12,
+                        5,
+                      ]
+                    }
+                    settings={
+                      Object {
+                        "alt": "",
+                        "id": "84961",
+                        "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                        "link": "/category/",
+                      }
+                    }
+                  >
+                    <img
+                      alt=""
+                    />
+                  </Image>
+                </Suspense>
               </div>
             </div>
           </GridItem>
