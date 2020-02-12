@@ -186,7 +186,7 @@ export default (subscribe) => {
       withScope((scope) => {
         scope.setLevel(SentrySeverity.Error);
         scope.setExtra('error', args);
-        captureMessage(args[0]);
+        captureMessage('Console error');
       });
     });
   });

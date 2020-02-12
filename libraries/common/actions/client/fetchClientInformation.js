@@ -1,5 +1,4 @@
 import {
-  logger,
   hasSGJavaScriptBridge,
   defaultClientInformation,
   getWebStorageEntry,
@@ -25,8 +24,7 @@ function fetchClientInformation() {
 
     getWebStorageEntry({ name: 'clientInformation' })
       .then(response => dispatch(receiveClientInformation(response.value)))
-      .catch((error) => {
-        logger.error(error);
+      .catch(() => {
         dispatch(errorClientInformation());
       });
   };
