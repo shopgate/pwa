@@ -2,6 +2,11 @@ import React from 'react';
 import { mount } from 'enzyme';
 import WidgetGrid from './index';
 
+jest.mock('react', () => ({
+  ...require.requireActual('react'),
+  Suspense: function Suspense({ children }) { return children; },
+}));
+
 /**
  * A mock Image component.
  * @returns {JSX}
