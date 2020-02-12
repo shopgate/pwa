@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { logger } from '@shopgate/pwa-core/helpers';
+import Loading from '../Loading';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig } from '../../helpers/config';
 
@@ -32,6 +33,36 @@ class Portal extends PureComponent {
 
     this.components = this.getPortalComponents(props.name);
   }
+
+  /**
+   * Catches errors.
+   * @param {Error} error The caught error.
+   * @param {Object} info The stacktrace info.
+   */
+  componentDidCatch(error, info) {
+    this.setState({ hasError: true });
+    logger.error(error, info);
+  }
+
+  /**
+   * Returns the portal components.
+   * @param {Object} props - The props to pass to the component.
+   * @return {Array}
+   */
+  getRenderedComponents = (props) => {
+    const { props: propsFromProps, ...reducedProps } = props;
+
+    const componentProps = {
+      ...propsFromProps,
+      ...reducedProps,
+    };
+
+    return this.components.map(({ PortalComponent, key }) => (
+      <Suspense fallback={<Loading />} key={key}>
+        <PortalComponent {...componentProps} />
+      </Suspense>
+    ));
+  };
 
   /**
    * Returns the portal components.
@@ -83,34 +114,6 @@ class Portal extends PureComponent {
   };
 
   /**
-   * Returns the portal components.
-   * @param {Object} props - The props to pass to the component.
-   * @return {Array}
-   */
-  getRenderedComponents = (props) => {
-    const { props: propsFromProps, ...reducedProps } = props;
-
-    const componentProps = {
-      ...propsFromProps,
-      ...reducedProps,
-    };
-
-    return this.components.map(({ PortalComponent, key }) => (
-      <PortalComponent {...componentProps} key={key} />
-    ));
-  };
-
-  /**
-   * Catches errors.
-   * @param {Error} error The catched error.
-   * @param {Object} info The stacktrace info.
-   */
-  componentDidCatch(error, info) {
-    this.setState({ hasError: true });
-    logger.error(error, info);
-  }
-
-  /**
    * Renders the component.
    * @return {JSX}
    */
@@ -122,7 +125,7 @@ class Portal extends PureComponent {
 
     /**
      * Render nothing if there are no children, matching components
-     * via name or an error occured.
+     * via name or an error occurred.
      */
     if (hasError || !(hasComponents || children)) {
       return null;
