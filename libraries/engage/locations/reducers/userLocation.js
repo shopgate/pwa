@@ -1,4 +1,8 @@
-import { SELECT_LOCATION } from '../constants';
+import {
+  SELECT_LOCATION,
+  STORE_FULFILLMENT_METHOD,
+  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+} from '../constants';
 
 const defaultState = {
   code: null,
@@ -6,6 +10,7 @@ const defaultState = {
   productCode: null,
   visibleInventory: null,
   addressCode: null,
+  fulfillmentMethod: PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
 };
 
 /**
@@ -20,6 +25,11 @@ export default function userLocation(state = defaultState, action) {
       return {
         ...state,
         ...action.location,
+      };
+    case STORE_FULFILLMENT_METHOD:
+      return {
+        ...state,
+        fulfillmentMethod: action.method,
       };
     default:
       return state;

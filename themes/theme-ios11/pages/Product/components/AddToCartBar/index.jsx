@@ -11,6 +11,7 @@ import {
   PRODUCT_ADD_TO_CART_BAR_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
+import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '@shopgate/engage/locations';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
@@ -33,6 +34,7 @@ class AddToCartBar extends Component {
     visible: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     disabled: PropTypes.bool,
+    fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     userLocation: PropTypes.shape(),
   };
@@ -41,6 +43,7 @@ class AddToCartBar extends Component {
     addToCart: () => { },
     disabled: false,
     loading: false,
+    fulfillmentMethods: null,
     userLocation: null,
   };
 
@@ -115,7 +118,14 @@ class AddToCartBar extends Component {
    */
   handleAddToCart = () => {
     const {
-      loading, disabled, conditioner, addToCart, productId, options, userLocation,
+      loading,
+      disabled,
+      conditioner,
+      addToCart,
+      productId,
+      options,
+      userLocation,
+      fulfillmentMethods,
     } = this.props;
 
     if (this.state.clicked) {
@@ -140,7 +150,11 @@ class AddToCartBar extends Component {
       };
 
       // Add the user location for ROPIS if it is set.
-      if (userLocation !== null) {
+      if (
+        userLocation !== null
+        && userLocation.fulfillmentMethod !== PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+        && fulfillmentMethods !== null
+      ) {
         addToCartData.fulfillment = {
           method: 'ROPIS',
           location: {
