@@ -14,7 +14,7 @@ import {
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const FulfillmentLocationGroup = ({ location }) => (
+const FulfillmentLocation = ({ location }) => (
   <Fragment>
     {location && (
     <CardListItem>
@@ -44,12 +44,12 @@ const FulfillmentLocationGroup = ({ location }) => (
   </Fragment>
 );
 
-FulfillmentLocationGroup.propTypes = {
+FulfillmentLocation.propTypes = {
   location: PropTypes.shape(),
 };
 
-FulfillmentLocationGroup.defaultProps = {
+FulfillmentLocation.defaultProps = {
   location: null,
 };
 
-export default connect(FulfillmentLocationGroup);
+export default connect(FulfillmentLocation);

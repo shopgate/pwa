@@ -101,7 +101,7 @@ class CartContentContainer extends PureComponent {
                       <ItemsGroup
                         key={groupKey}
                         items={cartItemGroups[groupKey].items}
-                        group={cartItemGroups[groupKey].group}
+                        fulfillmentLocationId={cartItemGroups[groupKey].fulfillmentLocationId}
                         onFocus={this.togglePaymentBar}
                       />
                     ))}

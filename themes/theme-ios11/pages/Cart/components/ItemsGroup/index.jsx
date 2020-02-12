@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Item from '../Item';
-import FulfillmentLocationGroup from './components/FulfillmentLocationGroup';
+import FulfillmentLocation from './components/FulfillmentLocation';
 
 /**
  * Renders the product group.
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const ItemsGroup = ({ group, items, onFocus }) => (
+const ItemsGroup = ({ fulfillmentLocationId, items, onFocus }) => (
   <Fragment>
-    {group.fulfillment.locationId &&
-      <FulfillmentLocationGroup locationId={group.fulfillment.locationId} />
+    {fulfillmentLocationId &&
+      <FulfillmentLocation locationId={fulfillmentLocationId} />
     }
     {items.map(cartItem => (
       <Item
@@ -24,9 +24,11 @@ const ItemsGroup = ({ group, items, onFocus }) => (
 );
 
 ItemsGroup.propTypes = {
-  group: PropTypes.shape().isRequired,
   items: PropTypes.arrayOf(PropTypes.shape).isRequired,
   onFocus: PropTypes.func.isRequired,
+  fulfillmentLocationId: PropTypes.string,
 };
-
+ItemsGroup.defaultProps = {
+  fulfillmentLocationId: null,
+};
 export default ItemsGroup;

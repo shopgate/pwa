@@ -15,9 +15,7 @@ export function groupCartItems(cartItems) {
 
     if (!acc[groupType]) {
       acc[groupType] = {
-        group: {
-          fulfillment: code ? { locationId: code } : {},
-        },
+        fulfillmentLocationId: code,
         items: [],
       };
     }
