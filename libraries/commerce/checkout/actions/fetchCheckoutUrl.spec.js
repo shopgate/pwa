@@ -10,18 +10,7 @@ jest.mock(
   })
 );
 
-const mockedErrorLog = jest.fn();
-jest.mock('@shopgate/pwa-core/helpers/index', () => ({
-  logger: {
-    error: (...args) => mockedErrorLog(...args),
-  },
-}));
-
 describe('fetchCheckoutUrl', () => {
-  beforeEach(() => {
-    mockedErrorLog.mockClear();
-  });
-
   it('should call the pipeline and resolve', async () => {
     const dispatch = jest.fn();
     mockedResolver = ((mockInstance, resolve) => {
@@ -41,7 +30,7 @@ describe('fetchCheckoutUrl', () => {
   });
 
   it('should call the pipeline and reject', async () => {
-    expect.assertions(2);
+    expect.assertions(1);
     const dispatch = jest.fn();
     const error = new Error('Test');
     mockedResolver = (mockInstance, resolve, reject) => {
@@ -52,7 +41,6 @@ describe('fetchCheckoutUrl', () => {
       await fetchCheckoutUrl()(dispatch);
     } catch (err) {
       expect(err).toBe(undefined);
-      expect(mockedErrorLog).toHaveBeenCalledTimes(1);
     }
   });
 });

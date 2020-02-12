@@ -1,4 +1,4 @@
-import { PipelineRequest, logger } from '@shopgate/pwa-core';
+import { PipelineRequest } from '@shopgate/pwa-core';
 import { SHOPGATE_CMS_GET_PAGE_CONFIG } from '../../constants/Pipelines';
 import {
   requestPageConfig,
@@ -33,7 +33,6 @@ function fetchPageConfig(pageId) {
         dispatch(receivePageConfig(pageId, result));
       })
       .catch((error) => {
-        logger.error(error);
         dispatch(errorPageConfig(pageId, error.code));
       });
 
