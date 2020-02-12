@@ -18,7 +18,7 @@ import {
   ENETUNREACH,
   EUNKNOWN,
 } from '@shopgate/pwa-core';
-import { SOURCE_TRACKING, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
+import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
 import {
   // eslint-disable-next-line import/no-named-default
   default as appConfig,
@@ -180,6 +180,13 @@ export default (subscribe) => {
           scope.setExtra('trackerName', error.context);
         }
         captureException(error);
+      });
+    });
+    emitter.addListener(SOURCE_CONSOLE, (args) => {
+      withScope((scope) => {
+        scope.setLevel(SentrySeverity.Error);
+        scope.setExtra('error', args);
+        captureMessage(args[0]);
       });
     });
   });
