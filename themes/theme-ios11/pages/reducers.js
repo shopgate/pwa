@@ -27,6 +27,7 @@ persistedReducers.set([
   'cart',
   'client.info',
   'page',
+  'locations',
   'url',
   'user',
 ]);

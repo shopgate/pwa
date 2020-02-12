@@ -1,5 +1,5 @@
-import { makeGetUserLocation } from '@shopgate/engage/user';
 import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { makeGetUserLocation } from '../selectors';
 
 /**
  * Creates the address sequence.
