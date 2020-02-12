@@ -1,20 +1,18 @@
-import React from 'react';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import React, { useContext } from 'react';
+import { SurroundPortals, Grid } from '@shopgate/engage/components';
 import {
   CART_PAYMENT_BAR,
-  CART_PAYMENT_BAR_BEFORE,
-  CART_PAYMENT_BAR_AFTER,
   CART_PAYMENT_BAR_TOTALS,
-  CART_PAYMENT_BAR_TOTALS_BEFORE,
-  CART_PAYMENT_BAR_TOTALS_AFTER,
-} from '@shopgate/pwa-common-commerce/cart';
+  FLAG_MULTI_LINE_RESERVE,
+} from '@shopgate/engage/cart';
+import CartContext from '../../../../context';
 import ShippingCosts from './components/ShippingCosts';
 import Discounts from './components/Discounts';
 import Tax from './components/Tax';
 import SubTotal from './components/SubTotal';
 import GrandTotal from './components/GrandTotal';
 import CheckoutButton from './components/CheckoutButton';
+import ReserveButton from './components/ReserveButton';
 import styles from './style';
 
 /**
@@ -22,28 +20,27 @@ import styles from './style';
  * @returns {JSX}
  */
 function PaymentBarContent() {
+  const { flags } = useContext(CartContext);
+
   return (
     <div className={styles.wrapper}>
-      <Portal name={CART_PAYMENT_BAR_BEFORE} />
-      <Portal name={CART_PAYMENT_BAR}>
+      <SurroundPortals portalName={CART_PAYMENT_BAR}>
         <Grid className={styles.container}>
-          <Portal name={CART_PAYMENT_BAR_TOTALS_BEFORE} />
-          <Portal name={CART_PAYMENT_BAR_TOTALS}>
+          <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS}>
             <SubTotal />
             <Discounts />
             <ShippingCosts />
             <Tax />
             <GrandTotal />
-          </Portal>
-          <Portal name={CART_PAYMENT_BAR_TOTALS_AFTER} />
+          </SurroundPortals>
         </Grid>
         <div className={styles.checkoutButtonContainer}>
           <div className={styles.checkoutButton}>
-            <CheckoutButton />
+            {!flags[FLAG_MULTI_LINE_RESERVE] && <CheckoutButton /> }
+            {flags[FLAG_MULTI_LINE_RESERVE] && <ReserveButton /> }
           </div>
         </div>
-      </Portal>
-      <Portal name={CART_PAYMENT_BAR_AFTER} />
+      </SurroundPortals>
     </div>
   );
 }
