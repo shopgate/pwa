@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
-import { isProductOrderable, hasProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  isProductOrderable,
+  hasProductVariants,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
-import { makeGetUserLocation } from '@shopgate/engage/locations';
+import { makeGetUserLocation, makeIsFulfillmentSelectorDisabled } from '@shopgate/engage/locations';
 import { addProductToCart as addToCart } from './actions';
 
 /**
@@ -9,6 +12,7 @@ import { addProductToCart as addToCart } from './actions';
  */
 function makeMapStateToProps() {
   const getUserLocation = makeGetUserLocation();
+  const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
 
   /**
    * @param {Object} state The current application state.
@@ -23,6 +27,7 @@ function makeMapStateToProps() {
     disabled: !isProductOrderable(state, props) && !hasProductVariants(state, props),
     loading: isProductPageLoading(state, props),
     userLocation: getUserLocation(state),
+    hasFulfillmentMethods: isFulfillmentSelectorDisabled(state, props),
   });
 }
 
