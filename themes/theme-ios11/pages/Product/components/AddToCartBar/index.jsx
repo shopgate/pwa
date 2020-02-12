@@ -34,7 +34,7 @@ class AddToCartBar extends Component {
     visible: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     disabled: PropTypes.bool,
-    fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+    hasFulfillmentMethods: PropTypes.bool,
     loading: PropTypes.bool,
     userLocation: PropTypes.shape(),
   };
@@ -43,7 +43,7 @@ class AddToCartBar extends Component {
     addToCart: () => { },
     disabled: false,
     loading: false,
-    fulfillmentMethods: null,
+    hasFulfillmentMethods: false,
     userLocation: null,
   };
 
@@ -125,7 +125,7 @@ class AddToCartBar extends Component {
       productId,
       options,
       userLocation,
-      fulfillmentMethods,
+      hasFulfillmentMethods,
     } = this.props;
 
     if (this.state.clicked) {
@@ -153,7 +153,7 @@ class AddToCartBar extends Component {
       if (
         userLocation !== null
         && userLocation.fulfillmentMethod !== PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
-        && fulfillmentMethods !== null
+        && hasFulfillmentMethods
       ) {
         addToCartData.fulfillment = {
           method: 'ROPIS',

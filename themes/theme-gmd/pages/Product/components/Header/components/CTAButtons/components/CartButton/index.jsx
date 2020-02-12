@@ -27,12 +27,12 @@ class CartButton extends Component {
     loading: PropTypes.bool.isRequired,
     options: PropTypes.shape().isRequired,
     productId: PropTypes.string.isRequired,
-    fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+    hasFulfillmentMethods: PropTypes.bool,
     userLocation: PropTypes.shape(),
   }
 
   static defaultProps = {
-    fulfillmentMethods: null,
+    hasFulfillmentMethods: false,
     userLocation: null,
   }
 
@@ -89,7 +89,7 @@ class CartButton extends Component {
    */
   handleClick = () => {
     const {
-      disabled, conditioner, addToCart, productId, options, userLocation, fulfillmentMethods,
+      disabled, conditioner, addToCart, productId, options, userLocation, hasFulfillmentMethods,
     } = this.props;
 
     if (this.state.clicked) {
@@ -117,7 +117,7 @@ class CartButton extends Component {
       if (
         userLocation !== null
         && userLocation.fulfillmentMethod !== PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
-        && fulfillmentMethods !== null
+        && hasFulfillmentMethods
       ) {
         addToCartData.fulfillment = {
           method: 'ROPIS',
