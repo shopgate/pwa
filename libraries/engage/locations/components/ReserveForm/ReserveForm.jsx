@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useMemo } from 'react';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioGroupItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { useFormState } from '../../../core/hooks/useFormState';
+import { VALIDATION_EMAIL, VALIDATION_PHONE, VALIDATION_REQUIRED } from '../../../core/validation';
 import { i18n } from '../../../core/helpers/i18n';
 import FulfillmentContext from '../context';
 import {
@@ -27,6 +28,20 @@ function ReserveForm() {
     cellPhone2: '',
     email2: '',
   };
+
+  const validationRules = useMemo(() => ({
+    firstName: VALIDATION_REQUIRED,
+    lastName: VALIDATION_REQUIRED,
+    cellPhone: [VALIDATION_REQUIRED, VALIDATION_PHONE],
+    email: [VALIDATION_REQUIRED, VALIDATION_EMAIL],
+    ...picker === 'someoneelse' && {
+      firstName2: VALIDATION_REQUIRED,
+      lastName2: VALIDATION_REQUIRED,
+      cellPhone2: [VALIDATION_REQUIRED, VALIDATION_PHONE],
+      email2: [VALIDATION_REQUIRED, VALIDATION_EMAIL],
+    },
+  }), [picker]);
+
   const initialState = userInput ? {
     ...defaultState,
     ...userInput,
@@ -51,12 +66,12 @@ function ReserveForm() {
       response.email2 = response.email;
     }
 
-    sendReservation(values);
+    sendReservation(response);
   };
 
   const {
-    values, handleChange, handleSubmit, changed,
-  } = useFormState(initialState, complete);
+    values, handleChange, handleSubmit, changed, valid, validationErrors,
+  } = useFormState(initialState, complete, validationRules);
 
   return (
     <form onSubmit={handleSubmit} className={form}>
@@ -70,6 +85,7 @@ function ReserveForm() {
           onChange={handleChange}
           label={i18n.text('locations.firstName')}
           className={formField}
+          errorText={i18n.text(validationErrors.firstName)}
         />
         <TextField
           name="lastName"
@@ -77,6 +93,7 @@ function ReserveForm() {
           onChange={handleChange}
           label={i18n.text('locations.lastName')}
           className={formField}
+          errorText={i18n.text(validationErrors.lastName)}
         />
         <TextField
           name="cellPhone"
@@ -84,6 +101,7 @@ function ReserveForm() {
           onChange={handleChange}
           label={i18n.text('locations.cellPhone')}
           className={formField}
+          errorText={i18n.text(validationErrors.cellPhone)}
         />
         <TextField
           name="email"
@@ -91,6 +109,7 @@ function ReserveForm() {
           onChange={handleChange}
           label={i18n.text('locations.emailAddress')}
           className={formField}
+          errorText={i18n.text(validationErrors.email)}
         />
       </fieldset>
       <p className={formHeading}>
@@ -118,6 +137,7 @@ function ReserveForm() {
             onChange={handleChange}
             label={i18n.text('locations.firstName')}
             className={formField}
+            errorText={i18n.text(validationErrors.firstName2)}
           />
           <TextField
             name="lastName2"
@@ -125,6 +145,7 @@ function ReserveForm() {
             onChange={handleChange}
             label={i18n.text('locations.lastName')}
             className={formField}
+            errorText={i18n.text(validationErrors.lastName2)}
           />
           <TextField
             name="cellPhone2"
@@ -132,6 +153,7 @@ function ReserveForm() {
             onChange={handleChange}
             label={i18n.text('locations.cellPhone')}
             className={formField}
+            errorText={i18n.text(validationErrors.cellPhone2)}
           />
           <TextField
             name="email2"
@@ -139,12 +161,13 @@ function ReserveForm() {
             onChange={handleChange}
             label={i18n.text('locations.emailAddress')}
             className={formField}
+            errorText={i18n.text(validationErrors.email2)}
           />
         </fieldset>
       )}
       <RippleButton
         type="secondary"
-        disabled={changed}
+        disabled={changed || !valid}
         className={button}
       >
         {i18n.text('locations.place_reservation')}

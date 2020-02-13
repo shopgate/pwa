@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useValidation } from '../validation';
 
 /**
  * @param {Object} initialState The initial form state.
  * @param {Function} complete The completion callback.
- * @returns {Object}
+ * @param {Object} validationRules validationRules
+ * @returns {{ handleChange, handleSubmit, values, valid, validationErrors }}
  */
-export function useFormState(initialState, complete) {
+export function useFormState(initialState, complete, validationRules = {}) {
   const [values, setValues] = useState(initialState);
   const [isSubmitting, setSubmitting] = useState(false);
   const [changed, setChanged] = useState(false);
+  const { valid, validationErrors, validate } = useValidation(validationRules);
 
   // -- CHANGED ---------------
   useEffect(() => {
@@ -26,11 +29,21 @@ export function useFormState(initialState, complete) {
     if (!isSubmitting) {
       return;
     }
+    if (valid) {
+      complete(values);
+    }
 
-    complete(values);
     setChanged(false);
     setSubmitting(false);
-  }, [complete, isSubmitting, values]);
+  }, [complete, isSubmitting, values, valid]);
+
+  // -- VALIDATION ---------
+  useEffect(() => {
+    if (!changed) {
+      return;
+    }
+    validate(values);
+  }, [changed, validate, values]);
 
   /**
    * @param {string} sanitized The sanitized field value.
@@ -52,6 +65,7 @@ export function useFormState(initialState, complete) {
    */
   function handleSubmit(event) {
     event.preventDefault();
+    validate(values);
     setSubmitting(true);
   }
 
@@ -59,5 +73,7 @@ export function useFormState(initialState, complete) {
     handleChange,
     handleSubmit,
     values,
+    valid,
+    validationErrors,
   };
 }
