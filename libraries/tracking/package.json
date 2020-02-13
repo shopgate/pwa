@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-tracking",
-  "version": "6.11.0-rc.8",
+  "version": "6.11.0",
   "description": "Tracking library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -15,10 +15,10 @@
     "connect"
   ],
   "devDependencies": {
-    "@shopgate/pwa-common": "6.11.0-rc.8",
-    "@shopgate/pwa-common-commerce": "6.11.0-rc.8",
-    "@shopgate/pwa-core": "6.11.0-rc.8",
-    "@shopgate/tracking-core": "6.11.0-rc.8",
+    "@shopgate/pwa-common": "6.11.0",
+    "@shopgate/pwa-common-commerce": "6.11.0",
+    "@shopgate/pwa-core": "6.11.0",
+    "@shopgate/tracking-core": "6.11.0",
     "reselect": "^3.0.1",
     "rxjs": "~5.5.12"
   }
