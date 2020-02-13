@@ -270,6 +270,13 @@
   "error": {
     "general": "No se puede conectar. Por favor, compruebe su conexión a Internet."
   },
+  "validation": {
+    "required": "Por favor, completa este campo",
+    "email": "Introduce una dirección de correo electrónico válida",
+    "numeric": "Por favor introduce solo números",
+    "alphaNumeric": "Por favor, introduce solo letras y números",
+    "mobileNumber": "Por favor, introduce un número de móvil válido"
+  },
   "formats": {
     "date": {
       "DD": {
