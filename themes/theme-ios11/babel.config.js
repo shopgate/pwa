@@ -9,6 +9,7 @@ module.exports = (api) => {
         modules: false,
       }],
       '@babel/preset-react',
+      '@babel/preset-flow',
     ],
     plugins: [
       'lodash',
