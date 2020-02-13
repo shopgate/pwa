@@ -1,8 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { FLAG_MULTI_LINE_RESERVE } from '@shopgate/engage/cart';
+import { FLAG_MULTI_LINE_RESERVE, CartContext } from '@shopgate/engage/cart';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-import CartContext from '../../context';
 import CouponsHint from './components/CouponsHint';
 import ReservationHint from './components/ReservationHint';
 import connect from './connector';

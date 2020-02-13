@@ -7,6 +7,8 @@ import {
   CART_PATH,
   CART_ITEM_LIST,
   CART_COUPON_FIELD,
+  CartContext,
+  PaymentBar,
 } from '@shopgate/engage/cart';
 import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { BackBar } from 'Components/AppBar/presets';
@@ -14,10 +16,8 @@ import ItemsGroup from '../ItemsGroup';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
-import PaymentBar from '../PaymentBar';
 import connect from './connector';
 import styles from './style';
-import CartContext from '../../context';
 
 const config = getCartConfig();
 
@@ -72,17 +72,18 @@ class CartContentContainer extends PureComponent {
     const { isPaymentBarVisible } = this.state;
     const hasItems = (cartItems.length > 0);
     const hasMessages = (messages.length > 0);
-
     const cartItemGroups = groupCartItems(cartItems);
+
+    const contextValues = {
+      currency,
+      config,
+      isUserLoggedIn,
+      isLoading,
+      flags,
+    };
+
     return (
-      <CartContext.Provider value={{
-        currency,
-        config,
-        isUserLoggedIn,
-        isLoading,
-        flags,
-      }}
-      >
+      <CartContext.Provider value={contextValues}>
         <BackBar title="titles.cart" />
         {(hasItems || hasMessages) && (
           <Fragment>
