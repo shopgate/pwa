@@ -1,3 +1,4 @@
+// @flow
 /** @module cart */
 
 // ACTIONS
@@ -28,3 +29,9 @@ export * from '@shopgate/pwa-common-commerce/cart/selectors';
 
 // STREAMS
 export * from '@shopgate/pwa-common-commerce/cart/streams';
+
+// CONTEXTS
+export { CartContext } from './cart.context';
+
+// COMPONENTS
+export { PaymentBar } from './components/PaymentBar';
