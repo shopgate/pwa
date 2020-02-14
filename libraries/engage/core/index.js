@@ -278,3 +278,6 @@ export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
 export * from './config/config.actions';
 export * from './config/config.selectors';
 export * from './config/config.streams';
+
+// -------------- VALIDATION -------------- //
+export * from './validation';
