@@ -265,6 +265,13 @@
   "error": {
     "general": "Onmogelijk de se connecter. Controleer je internetverbinding en probeer opnieuw."
   },
+  "validation": {
+    "required": "Gelieve het veld compleet in te vullen",
+    "email": "Voer a.u.b. een geldig e-mail adres in",
+    "numeric": "Gelieve alleen cijfers in te voeren",
+    "alphaNumeric": "Gelieve alleen letters en cijfers in te vullen",
+    "mobileNumber": "Voer een geldig GSM nummer in"
+  },
   "formats": {
     "date": {
       "DD": {

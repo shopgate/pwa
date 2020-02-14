@@ -265,6 +265,13 @@
   "error": {
     "general": "Impossible de se connecter. Veuillez vérifier votre connection internet."
   },
+  "validation": {
+    "required": "Veuillez remplir ce champ",
+    "email": "Veuillez saisir une adresse e-mail valide",
+    "numeric": "Veuillez saisir uniquement des chiffres",
+    "alphaNumeric": "Saisissez uniquement des lettres et des chiffres",
+    "mobileNumber": "Veuillez saisir un numéro de portable valide"
+  },
   "formats": {
     "date": {
       "DD": {
