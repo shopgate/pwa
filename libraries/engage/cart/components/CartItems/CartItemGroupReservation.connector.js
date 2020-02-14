@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { makeGetLocation } from '@shopgate/engage/locations';
+import { makeGetLocation } from '../../../locations';
 
 /**
  * Creates the mapStateToProps connector function.

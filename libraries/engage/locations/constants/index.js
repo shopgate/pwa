@@ -34,6 +34,7 @@ export {
 
 export const PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP = 'directShip';
 export const PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP = 'inStorePickup';
+export const PRODUCT_FULFILLMENT_METHOD_ROPIS = 'ROPIS';
 
 export const FULFILLMENT_PATH_QUICK_RESERVE = 'quickReserve';
 export const FULFILLMENT_PATH_MULTI_LINE_RESERVE = 'multiLineReserve';
