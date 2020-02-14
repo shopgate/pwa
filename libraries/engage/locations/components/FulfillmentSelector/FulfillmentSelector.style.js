@@ -44,3 +44,15 @@ export const radioGroupItemLabel = classNames(radioGroupStyles.label, css({
   justifyContent: 'space-between',
   alignItems: 'baseline',
 }).toString());
+
+export const pickUpGroupContainer = css({
+  display: 'flex',
+  flexDirection: 'column',
+  textAlign: 'right',
+});
+
+export const pickUpButtonChangeLocation = css({
+  marginRight: -16,
+  fontSize: '0.875rem !important',
+  textAlign: 'right',
+}).toString();

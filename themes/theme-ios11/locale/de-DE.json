@@ -146,6 +146,7 @@
     "error_invalid_zip_code": "Bitte geben Sie eine gültige Postleitzahl ein.",
     "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe.",
     "search_placeholder": "Postleitzahl",
+    "change_location": "Filiale ändern",
     "method": {
       "ropis" : "Reserve online, pick up in store"
     }

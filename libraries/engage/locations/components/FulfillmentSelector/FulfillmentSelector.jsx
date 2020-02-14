@@ -11,6 +11,7 @@ import {
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
+import FulfillmentSelectorButtonChangeLocation from './FulfillmentSelectorButtonChangeLocation';
 import connect from './FulfillmentSelector.connector';
 import * as styles from './FulfillmentSelector.style';
 
@@ -117,7 +118,14 @@ export const FulfillmentSelector = (props) => {
           </FulfillmentSelectorItem>
           <FulfillmentSelectorItem name={pickUp}>
             {location && (
-              <StockInfo location={selectedLocation || location} />
+              <div className={styles.pickUpGroupContainer}>
+                <StockInfo location={selectedLocation || location} />
+                {(selection === pickUp) && (
+                  <FulfillmentSelectorButtonChangeLocation
+                    onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP)}
+                  />
+                )}
+              </div>
             )}
           </FulfillmentSelectorItem>
         </RadioGroup>

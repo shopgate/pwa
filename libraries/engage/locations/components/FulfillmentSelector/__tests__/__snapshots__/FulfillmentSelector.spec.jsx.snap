@@ -56,16 +56,27 @@ exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do 
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.pick_up_in_store"
       >
-        <StockInfo
-          className=""
-          location={
+        <div
+          className={
             Object {
-              "name": "Test Store",
-              "visibleInventory": 15,
+              "data-css-15mvxgc": "",
             }
           }
-          showStoreName={true}
-        />
+        >
+          <StockInfo
+            className=""
+            location={
+              Object {
+                "name": "Test Store",
+                "visibleInventory": 15,
+              }
+            }
+            showStoreName={true}
+          />
+          <FulfillmentSelectorButtonChangeLocation
+            onClick={[Function]}
+          />
+        </div>
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>
@@ -128,16 +139,27 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.pick_up_in_store"
       >
-        <StockInfo
-          className=""
-          location={
+        <div
+          className={
             Object {
-              "name": "Test Store",
-              "visibleInventory": 15,
+              "data-css-15mvxgc": "",
             }
           }
-          showStoreName={true}
-        />
+        >
+          <StockInfo
+            className=""
+            location={
+              Object {
+                "name": "Test Store",
+                "visibleInventory": 15,
+              }
+            }
+            showStoreName={true}
+          />
+          <FulfillmentSelectorButtonChangeLocation
+            onClick={[Function]}
+          />
+        </div>
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>
