@@ -1,36 +1,49 @@
-import {
-  VALIDATION_EMAIL,
-  VALIDATION_REQUIRED,
-  validationErrors as constValidationErrors,
-} from '../validation.constants';
 import { validate } from '../validation';
 
-describe('engage > core > validation > hooks', () => {
+describe('engage > core > validation', () => {
+  const constraints = {
+    email: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+      email: {
+        message: 'validation.email',
+      },
+    },
+    firstName: {
+      presence: {
+        message: 'validation.required',
+        allowEmpty: false,
+      },
+      format: {
+        pattern: '^[a-zA-Z0-9\\u00c4\\u00e4\\u00d6\\u00f6\\u00dc\\u00fc\\u00df\\s]+',
+        flags: 'i',
+        message: 'validation.alphaNumeric',
+      },
+    },
+  };
+
   it('should not validate', () => {
     const { valid, validationErrors } = validate({
       firstName: '',
       email: 'mail @ mail',
-    }, {
-      firstName: VALIDATION_REQUIRED,
-      email: [VALIDATION_REQUIRED, VALIDATION_EMAIL],
-    });
+    }, constraints);
 
     expect(valid).toEqual(false);
     expect(validationErrors).toEqual({
-      firstName: constValidationErrors[VALIDATION_REQUIRED],
-      email: constValidationErrors[VALIDATION_EMAIL],
+      firstName: 'validation.required',
+      email: 'validation.email',
     });
   });
+
   it('should validate', () => {
     const { valid, validationErrors } = validate({
       firstName: 'Name',
       email: 'mail@mail.com',
-    }, {
-      firstName: VALIDATION_REQUIRED,
-      email: [VALIDATION_REQUIRED, VALIDATION_EMAIL],
-    });
+    }, constraints);
 
     expect(valid).toEqual(true);
-    expect(validationErrors).toEqual({});
+    expect(validationErrors).toEqual(undefined);
   });
 });

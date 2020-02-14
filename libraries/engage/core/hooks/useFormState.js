@@ -4,14 +4,14 @@ import { useValidation } from '../validation';
 /**
  * @param {Object} initialState The initial form state.
  * @param {Function} complete The completion callback.
- * @param {Object} validationRules validationRules
- * @returns {{ handleChange, handleSubmit, values, valid, validationErrors }}
+ * @param {Object} validationConstraints validationConstraints
+ * @returns {{ handleChange, handleSubmit, values, valid, validationErrors: ?Object }}
  */
-export function useFormState(initialState, complete, validationRules = {}) {
+export function useFormState(initialState, complete, validationConstraints = {}) {
   const [values, setValues] = useState(initialState);
   const [isSubmitting, setSubmitting] = useState(false);
   const [changed, setChanged] = useState(false);
-  const { valid, validationErrors, validate } = useValidation(validationRules);
+  const { valid, validationErrors, validate } = useValidation(validationConstraints);
 
   // -- CHANGED ---------------
   useEffect(() => {
@@ -29,21 +29,26 @@ export function useFormState(initialState, complete, validationRules = {}) {
     if (!isSubmitting) {
       return;
     }
-    if (valid) {
+    if (valid === true) {
       complete(values);
+      setChanged(false);
+      setSubmitting(false);
     }
-
-    setChanged(false);
-    setSubmitting(false);
   }, [complete, isSubmitting, values, valid]);
 
-  // -- VALIDATION ---------
+  // -- VALIDATION ON SUBMIT ---------
   useEffect(() => {
-    if (!changed) {
-      return;
+    // Yest no validation on submit
+    if (changed) {
+      validate(values);
     }
-    validate(values);
-  }, [changed, validate, values]);
+    if (isSubmitting && valid === null) {
+      validate(values);
+    }
+    if (isSubmitting && valid === false) {
+      setSubmitting(false);
+    }
+  }, [changed, validate, values, isSubmitting, valid]);
 
   /**
    * @param {string} sanitized The sanitized field value.
@@ -65,7 +70,6 @@ export function useFormState(initialState, complete, validationRules = {}) {
    */
   function handleSubmit(event) {
     event.preventDefault();
-    validate(values);
     setSubmitting(true);
   }
 

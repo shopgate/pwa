@@ -4,9 +4,9 @@ import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioGroupItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { useFormState } from '../../../core/hooks/useFormState';
-import { VALIDATION_EMAIL, VALIDATION_PHONE, VALIDATION_REQUIRED } from '../../../core/validation';
 import { i18n } from '../../../core/helpers/i18n';
 import FulfillmentContext from '../context';
+import { constraints } from './ReserveForm.constraints';
 import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button,
 } from './ReserveForm.style';
@@ -29,16 +29,13 @@ function ReserveForm() {
     email2: '',
   };
 
-  const validationRules = useMemo(() => ({
-    firstName: VALIDATION_REQUIRED,
-    lastName: VALIDATION_REQUIRED,
-    cellPhone: [VALIDATION_REQUIRED, VALIDATION_PHONE],
-    email: [VALIDATION_REQUIRED, VALIDATION_EMAIL],
+  const validationConstraints = useMemo(() => ({
+    ...constraints,
     ...picker === 'someoneelse' && {
-      firstName2: VALIDATION_REQUIRED,
-      lastName2: VALIDATION_REQUIRED,
-      cellPhone2: [VALIDATION_REQUIRED, VALIDATION_PHONE],
-      email2: [VALIDATION_REQUIRED, VALIDATION_EMAIL],
+      firstName2: constraints.firstName,
+      lastName2: constraints.lastName,
+      cellPhone2: constraints.cellPhone,
+      email2: constraints.email,
     },
   }), [picker]);
 
@@ -70,8 +67,8 @@ function ReserveForm() {
   };
 
   const {
-    values, handleChange, handleSubmit, changed, valid, validationErrors,
-  } = useFormState(initialState, complete, validationRules);
+    values, handleChange, handleSubmit, changed, valid, validationErrors = {},
+  } = useFormState(initialState, complete, validationConstraints);
 
   return (
     <form onSubmit={handleSubmit} className={form}>
@@ -167,7 +164,7 @@ function ReserveForm() {
       )}
       <RippleButton
         type="secondary"
-        disabled={changed || !valid}
+        disabled={changed || valid === false}
         className={button}
       >
         {i18n.text('locations.place_reservation')}

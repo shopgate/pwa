@@ -1,33 +1,29 @@
-import { validationRules as validators } from './validation.rules';
-import { validationErrors } from './validation.constants';
+import validateJs from 'validate.js';
+
+validateJs.options = { format: 'detailed' };
 
 /**
  * @param {Object} values The values to validate.
- * @param {Object} validationRules The rules.
+ * @param {Object} constraints The constraints.
  * @returns {{ valid: boolean, validationErrors: Object }}
  */
-export function validate(values, validationRules) {
-  const errors = Object.keys(values).reduce((acc, field) => {
-    if (!validationRules[field]) {
-      // No rule for a field
-      return acc;
-    }
+export function validate(values, constraints) {
+  let errors = validateJs(values, constraints);
 
-    const failedRule = [].concat(validationRules[field]).find((rule) => {
-      if (!validators[rule]) {
-        return false;
+  if (errors && Object.keys(errors).length > 0) {
+    errors = errors.reduce((obj, item) => {
+      if (obj[item.attribute]) {
+        return obj;
       }
-      return !validators[rule](values[field]);
-    });
-
-    if (failedRule) {
-      acc[field] = validationErrors[failedRule];
-    }
-    return acc;
-  }, {});
+      return {
+        ...obj,
+        [item.attribute]: item.options.message,
+      };
+    }, {});
+  }
 
   return {
-    valid: Object.keys(errors).length === 0,
+    valid: !errors,
     validationErrors: errors,
   };
 }
