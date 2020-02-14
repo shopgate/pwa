@@ -128,7 +128,8 @@
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
     "search_placeholder": "ZIP code",
     "method": {
-      "ropis" : "Reserve online, pick up in store"
+      "ropis" : "Reserve online, pick up in store",
+      "direct_ship" : "Ship to address"
     }
   },
   "category": {
