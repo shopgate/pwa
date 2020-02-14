@@ -16,19 +16,6 @@ import FulfillmentContext from '../context';
 
 const EVENT_SET_OPEN = 'event.setOpen';
 const EVENT_SET_CLOSED = 'event.setClosed';
-const STAGES = [
-  'select-store',
-  'form',
-  'user',
-];
-const STAGE_TITLES = [
-  i18n.text('locations.headline'),
-  i18n.text('locations.place_reservation'),
-  {
-    success: i18n.text('locations.success_heading'),
-    error: i18n.text('locations.error_heading'),
-  },
-];
 
 /**
  * Renders the store selector sheet.
@@ -67,15 +54,29 @@ class FulfillmentSheet extends PureComponent {
     UIEvents.addListener(EVENT_SET_OPEN, this.handleSetOpen);
     UIEvents.addListener(EVENT_SET_CLOSED, this.handleSetClosed);
     this.callback = () => { };
-  }
 
-  state = {
-    isOpen: false,
-    stage: STAGES[this.props.stage - 1],
-    title: STAGE_TITLES[this.props.stage - 1],
-    orderNumbers: null,
-    errors: null,
-  };
+    this.STAGES = [
+      'select-store',
+      'form',
+      'user',
+    ];
+    this.STAGE_TITLES = [
+      i18n.text('locations.headline'),
+      i18n.text('locations.place_reservation'),
+      {
+        success: i18n.text('locations.success_heading'),
+        error: i18n.text('locations.error_heading'),
+      },
+    ];
+
+    this.state = {
+      isOpen: false,
+      stage: this.STAGES[this.props.stage - 1],
+      title: this.STAGE_TITLES[this.props.stage - 1],
+      orderNumbers: null,
+      errors: null,
+    };
+  }
 
   /**
    * Deregisters the event listeners.
@@ -88,13 +89,18 @@ class FulfillmentSheet extends PureComponent {
   /**
    * Opens the store selector sheet.
    * @param {Function} [callback=null] A callback that will be called once the sheet closes.
+   * @param {number} [stage=0] The stage to start on.
    */
-  handleSetOpen = (callback = null) => {
+  handleSetOpen = (callback = null, stage = 0) => {
     if (callback !== null) {
       this.callback = callback;
     }
 
-    this.setState({ isOpen: true });
+    this.setState({
+      isOpen: true,
+      stage: this.STAGES[stage],
+      title: this.STAGE_TITLES[stage],
+    });
   }
 
   /**
@@ -106,8 +112,8 @@ class FulfillmentSheet extends PureComponent {
 
     this.setState({
       isOpen: false,
-      stage: STAGES[stage - 1],
-      title: STAGE_TITLES[stage - 1],
+      stage: this.STAGES[stage - 1],
+      title: this.STAGE_TITLES[stage - 1],
       orderNumbers: null,
       errors: null,
     });
@@ -162,8 +168,8 @@ class FulfillmentSheet extends PureComponent {
 
     setTimeout(() => {
       this.setState({
-        stage: STAGES[1],
-        title: STAGE_TITLES[1],
+        stage: this.STAGES[1],
+        title: this.STAGE_TITLES[1],
       });
     }, 300);
   }
@@ -174,8 +180,8 @@ class FulfillmentSheet extends PureComponent {
    */
   handleSuccess = (orderNumbers) => {
     this.setState({
-      stage: STAGES[2],
-      title: STAGE_TITLES[2].success,
+      stage: this.STAGES[2],
+      title: this.STAGE_TITLES[2].success,
       orderNumbers,
     });
   }
@@ -185,8 +191,8 @@ class FulfillmentSheet extends PureComponent {
    */
   handleError = (errors) => {
     this.setState({
-      stage: STAGES[2],
-      title: STAGE_TITLES[2].error,
+      stage: this.STAGES[2],
+      title: this.STAGE_TITLES[2].error,
       orderNumbers: null,
       errors,
     });
@@ -197,7 +203,9 @@ class FulfillmentSheet extends PureComponent {
    * @param {Object} values The form values.
    */
   handleSendReservation = async (values) => {
-    const { submitReservation, product, storeFormInput } = this.props;
+    const {
+      submitReservation, product, storeFormInput,
+    } = this.props;
 
     // Store the user's form in the user data.
     storeFormInput(values);
@@ -207,7 +215,6 @@ class FulfillmentSheet extends PureComponent {
 
       if (response.errors.length > 0) {
         this.handleError(response.errors);
-        return;
       }
 
       this.handleSuccess(response.orderNumbers);
@@ -241,16 +248,16 @@ class FulfillmentSheet extends PureComponent {
       <FulfillmentContext.Provider value={contextValue}>
         <SheetDrawer isOpen={isOpen} title={title} onClose={this.handleSetClosed}>
           <div className={sheet}>
-            {stage === STAGES[0] && (
+            {stage === this.STAGES[0] && (
               <StoreList />
             )}
-            {stage === STAGES[1] && (
+            {stage === this.STAGES[1] && (
               <ReserveForm />
             )}
-            {(stage === STAGES[2] && orderNumbers !== null) && (
+            {(stage === this.STAGES[2] && orderNumbers !== null) && (
               <ReservationSuccess />
             )}
-            {(stage === STAGES[2] && errors !== null) && (
+            {(stage === this.STAGES[2] && errors !== null) && (
               <ReservationError />
             )}
           </div>
@@ -265,9 +272,10 @@ const FulfillmentSheetWrapped = withCurrentProduct(connect(FulfillmentSheet));
 /**
  * Opens the store selector sheet.
  * @param {Function} [callback=null] A callback that will be called once the sheet closes.
+ * @param {number} [stage=0] The stage to start on.
  */
-FulfillmentSheetWrapped.open = (callback = null) => {
-  UIEvents.emit(EVENT_SET_OPEN, callback);
+FulfillmentSheetWrapped.open = (callback = null, stage = 0) => {
+  UIEvents.emit(EVENT_SET_OPEN, callback, stage);
 };
 
 /**

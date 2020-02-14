@@ -1,9 +1,8 @@
 // @flow
 import * as React from 'react';
+import { hot } from 'react-hot-loader/root';
 import { createPortal } from 'react-dom';
 import PaymentBarContent from './PaymentBarContent';
-
-const domElement = document.getElementById('AppFooter');
 
 type PaymentBarProps = {
   visible?: boolean;
@@ -15,7 +14,9 @@ type PaymentBarProps = {
  * @returns {JSX}
  */
 function PaymentBar({ visible }: PaymentBarProps) {
-  if (!visible || domElement === null) {
+  const domElement = document.getElementById('AppFooter');
+
+  if (!visible || !domElement) {
     return null;
   }
 
@@ -26,4 +27,4 @@ PaymentBar.defaultProps = {
   visible: true,
 };
 
-export default PaymentBar;
+export default hot(PaymentBar);

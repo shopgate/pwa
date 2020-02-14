@@ -31,7 +31,7 @@ function StoreListSearch(props) {
   const inputEl = useRef(null);
 
   useLayoutEffect(() => {
-    if (locations.length === 0) {
+    if (!locations || locations.length === 0) {
       // Set a message when a location search resulted in zero locations.
       setMessage('locations.error_no_store_found');
     }
@@ -107,7 +107,7 @@ function StoreListSearch(props) {
       <div className={progressBar}>
         <ProgressBar isVisible={loading} />
       </div>
-      { message &&
+      {message &&
         <MessageBar messages={[{
           type: 'error',
           message,

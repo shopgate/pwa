@@ -5,8 +5,8 @@ import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_PAYMENT_BAR,
   CART_PAYMENT_BAR_TOTALS,
-  FLAG_MULTI_LINE_RESERVE,
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { FLAG_MULTI_LINE_RESERVE } from '../../cart.constants';
 import { CartContext } from '../../cart.context';
 import PaymentBarShippingCost from './PaymentBarShippingCost';
 import PaymentBarDiscounts from './PaymentBarDiscounts';

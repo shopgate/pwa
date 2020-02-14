@@ -1,3 +1,6 @@
+import {
+  getCurrency, getCartItems, getSubTotal, getGrandTotal,
+} from '@shopgate/pwa-common-commerce/cart/selectors';
 import { getProductDataById } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { makeGetUserLocation } from '../selectors';
 
@@ -47,17 +50,18 @@ function getProductImage(product, getState) {
 }
 
 /**
- * Creates the order line items.
+ * Creates a single order line item (from quick reserve).
  * @param {Object} product The current product.
- * @param {Object} location The selected user location.
  * @param {Function} getState The redux getState function.
  * @returns {Array}
  */
-function createLineItems(product, location, getState) {
+function createSingleProductItems(product, getState) {
+  const location = makeGetUserLocation()(getState());
+
   return [
     {
       code: product.id,
-      quantity: 1, // TODO: can be different from cart, once we implement reserve to cart.
+      quantity: 1,
       fulfillmentMethod: 'ROPIS', // TODO: Change based on the selected method.
       fulfillmentLocationCode: location.code,
       price: product.price.unitPrice,
@@ -75,28 +79,64 @@ function createLineItems(product, location, getState) {
 }
 
 /**
- * Creates a fulfillment order out of the reserve form values and the current product.
+ * Creates the order line items.
+ * @param {Function} getState The redux getState function.
+ * @returns {Array}
+ */
+function createCartLineItems(getState) {
+  const items = getCartItems(getState());
+  const currencyCode = getCurrency(getState());
+
+  return items.map(item => ({
+    code: item.id,
+    quantity: item.quantity,
+    fulfillmentMethod: item.fulfillment.method,
+    fulfillmentLocationCode: item.fulfillment.location.code,
+    price: item.product.price.unit,
+    shipToAddressSequenceIndex: 0,
+    currencyCode,
+    product: {
+      code: item.product.id,
+      name: item.product.name,
+      image: item.product.featuredImageUrl,
+      price: item.product.price.unit,
+      currencyCode,
+    },
+  }));
+}
+
+/**
+ * Creates a fulfillment order out of the reserve form values and the current product or the cart.
  * @param {Object} formValues The reserve form values.
  * @param {Object} product The current product.
  * @param {Function} getState The redux getState function.
  * @returns {Object}
  */
 function createOrder(formValues, product, getState) {
-  const location = makeGetUserLocation()(getState());
+  // If no individual product was submitted, we handle the cart.
+  if (product === null) {
+    return {
+      // localeCode: process.env.LOCALE_FILE.replace('-', '_'),
+      localeCode: 'de_DE',
+      currencyCode: getCurrency(getState()),
+      addressSequences: createAddressSequence(formValues),
+      primaryBillToAddressSequenceIndex: 0,
+      lineItems: createCartLineItems(getState),
+      subTotal: getSubTotal(getState()),
+      total: getGrandTotal(getState()),
+    };
+  }
 
-  // create order
-  const order = {
+  return {
     // localeCode: process.env.LOCALE_FILE.replace('-', '_'),
     localeCode: 'de_DE',
     currencyCode: product.price.currency,
     addressSequences: createAddressSequence(formValues),
     primaryBillToAddressSequenceIndex: 0,
-    lineItems: createLineItems(product, location, getState),
+    lineItems: createSingleProductItems(product, getState),
     subTotal: product.price.unitPrice,
     total: product.price.unitPrice,
   };
-
-  return order;
 }
 
 export default createOrder;

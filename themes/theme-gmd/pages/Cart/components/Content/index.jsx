@@ -11,6 +11,7 @@ import {
   CartContext,
 } from '@shopgate/engage/cart';
 import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
+import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
 import ItemsGroup from '../ItemsGroup';
 import CouponField from '../CouponField';
@@ -112,6 +113,7 @@ class CartContentContainer extends PureComponent {
           </Fragment>
         )}
         {(!isLoading && !hasItems) && <Empty />}
+        <FulfillmentSheet />
       </CartContext.Provider>
     );
   }

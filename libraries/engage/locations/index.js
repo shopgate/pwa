@@ -29,3 +29,8 @@ export {
   makeGetUserLocation,
   makeGetLocation,
 } from './selectors';
+
+// STREAMS
+export {
+  submitReservationSuccess$,
+} from './locations.streams';
