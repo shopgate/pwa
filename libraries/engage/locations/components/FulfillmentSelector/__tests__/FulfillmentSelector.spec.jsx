@@ -15,6 +15,7 @@ jest.mock('../../FulfillmentSheet', () => ({
 
 const conditioner = {
   check: () => Promise.resolve(true),
+  without: () => conditioner,
 };
 
 describe('<FulfillmentSelector />', () => {
@@ -24,7 +25,6 @@ describe('<FulfillmentSelector />', () => {
         productId="abc-123"
         location={{
           name: 'Test Store',
-          visibleInventory: 15,
         }}
         conditioner={conditioner}
         fulfillmentMethods={[]}
@@ -42,7 +42,6 @@ describe('<FulfillmentSelector />', () => {
         productId="abc-123"
         location={{
           name: 'Test Store',
-          visibleInventory: 15,
         }}
         conditioner={conditioner}
         fulfillmentMethods={[
@@ -65,7 +64,6 @@ describe('<FulfillmentSelector />', () => {
         productId="abc-123"
         location={{
           name: 'Test Store',
-          visibleInventory: 15,
         }}
         conditioner={conditioner}
         fulfillmentMethods={[

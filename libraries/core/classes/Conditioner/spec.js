@@ -64,4 +64,16 @@ describe('Conditioner', () => {
     expect(cond2).toBeCalledTimes(1);
     expect(cond3).toBeCalledTimes(1);
   });
+
+  it('should return cloned conditioner', async () => {
+    conditioner.addConditioner('one', cond1);
+    conditioner.addConditioner('two', cond2);
+
+    const newConditioner = conditioner.without('one');
+
+    expect(newConditioner).not.toBe(conditioner);
+    expect(newConditioner.conditions).not.toBe(conditioner.conditions);
+    expect(newConditioner.conditions.has('one')).toBeFalsy();
+    expect(newConditioner.conditions.has('two')).toBeTruthy();
+  });
 });

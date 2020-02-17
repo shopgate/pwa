@@ -43,7 +43,7 @@ exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do 
       name="product.fulfillment_selector"
       onChange={[Function]}
       translateErrorText={true}
-      value="product.fulfillment_selector.pick_up_in_store"
+      value="product.fulfillment_selector.direct_ship"
     >
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.direct_ship"
@@ -56,16 +56,23 @@ exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do 
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.pick_up_in_store"
       >
-        <StockInfo
-          className=""
-          location={
+        <div
+          className={
             Object {
-              "name": "Test Store",
-              "visibleInventory": 15,
+              "data-css-15mvxgc": "",
             }
           }
-          showStoreName={true}
-        />
+        >
+          <StockInfo
+            className=""
+            location={
+              Object {
+                "name": "Test Store",
+              }
+            }
+            showStoreName={true}
+          />
+        </div>
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>
@@ -115,7 +122,7 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       name="product.fulfillment_selector"
       onChange={[Function]}
       translateErrorText={true}
-      value="product.fulfillment_selector.pick_up_in_store"
+      value="product.fulfillment_selector.direct_ship"
     >
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.direct_ship"
@@ -128,16 +135,23 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.pick_up_in_store"
       >
-        <StockInfo
-          className=""
-          location={
+        <div
+          className={
             Object {
-              "name": "Test Store",
-              "visibleInventory": 15,
+              "data-css-15mvxgc": "",
             }
           }
-          showStoreName={true}
-        />
+        >
+          <StockInfo
+            className=""
+            location={
+              Object {
+                "name": "Test Store",
+              }
+            }
+            showStoreName={true}
+          />
+        </div>
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>

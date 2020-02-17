@@ -3,7 +3,12 @@ import { logger } from '../../helpers';
  * Creates an action handler API.
  */
 class Conditioner {
-  conditions = new Map();
+  /**
+   * @param {Map} conditions conditions
+   */
+  constructor(conditions) {
+    this.conditions = conditions || new Map();
+  }
 
   /**
    * @param {string} name The name of the registered conditioner.
@@ -35,6 +40,16 @@ class Conditioner {
 
     this.conditions.delete(name);
     return this;
+  }
+
+  /**
+   * @param {string} name The name of the conditioner to eliminate.
+   * @return {Conditioner} new instance with cloned conditions
+   */
+  without(name) {
+    const clonedConditions = new Map(this.conditions);
+    clonedConditions.delete(name);
+    return new Conditioner(clonedConditions);
   }
 
   /**

@@ -146,6 +146,7 @@
     "error_invalid_zip_code": "Please enter a valid ZIP code.",
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
     "search_placeholder": "ZIP code",
+    "change_location": "Change location",
     "method": {
       "ropis" : "Reserve online, pick up in store",
       "direct_ship" : "Ship to address"
