@@ -23,13 +23,8 @@ function StoreAddress({ address }) {
   const { selectLocation } = useContext(FulfillmentContext);
 
   const handleClick = useCallback(() => {
-    selectLocation({
-      code: store.code,
-      name: store.name,
-      addressCode: address.code,
-      visibleInventory: store.productInventory.visible,
-    });
-  }, [selectLocation, store.code, store.name, store.productInventory.visible, address.code]);
+    selectLocation(store);
+  }, [selectLocation, store]);
 
   return (
     <div className={storeStyles} key={address.code}>
@@ -46,10 +41,7 @@ function StoreAddress({ address }) {
           <StoreAddressHoursToday hours={store.operationHours} />
           <StoreAddressMailingAddress address={address} />
           <StockInfo
-            location={{
-              storeName: store.name,
-              visibleInventory: store.productInventory.visible,
-            }}
+            location={store}
             showStoreName={false}
           />
         </div>

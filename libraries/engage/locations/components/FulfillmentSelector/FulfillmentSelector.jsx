@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import { Availability } from '@shopgate/engage/product';
@@ -10,6 +10,7 @@ import {
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
+import { isProductAvailable } from '../../helpers';
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
 import FulfillmentSelectorButtonChangeLocation from './FulfillmentSelectorButtonChangeLocation';
 import connect from './FulfillmentSelector.connector';
@@ -37,28 +38,44 @@ export const FulfillmentSelector = (props) => {
   const directShip = 'product.fulfillment_selector.direct_ship';
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
-  const [selection, setSelection] = useState(location.code !== null ? pickUp : directShip);
+  const [selection, setSelection] = useState(location.productInventory ? pickUp : directShip);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClose = useCallback((newLocation) => {
+  // Add to cart effect to validate inventory
+  useEffect(() => {
+    // Add most late conditioner
+    conditioner.addConditioner('fulfillment-inventory', () => {
+      if (!fulfillmentMethods.includes('multiLineReserve')) {
+        // @TODO Open Fulfillment Sheet / Reservation Form
+        return false;
+      }
+      return isProductAvailable(selectedLocation || location);
+    }, 100);
+    return () => conditioner.removeConditioner('fulfillment-inventory');
+  }, [conditioner, location, selectedLocation, fulfillmentMethods]);
+
+  // Update selected location for sheet close
+  const handleClose = useCallback((newLocationData) => {
     setIsOpen(false);
-    if (!newLocation) {
+    if (!newLocationData) {
       // Reset the UI back to directShip if there was no location selected already
       if (selectedLocation === null) {
         setSelection(directShip);
       }
-    } else if (newLocation.productCode === productCode) {
+    } else if (newLocationData.productCode === productCode) {
       // Update the selected location only when the selection was done for the same product.
-      setSelectedLocation(newLocation);
+      setSelectedLocation(newLocationData.location);
     }
-  }, [productCode, selectedLocation]);
+  }, [selectedLocation, productCode]);
+
   /**
    * Whenever the pick-up selection is made, open the
    * store selector sheet and use the new location.
    */
   const handleChange = useCallback((elementName) => {
-    conditioner.check().then((passed) => {
+    // Run only external conditions
+    conditioner.without('fulfillment-inventory').check().then((passed) => {
       if (!passed) {
         return;
       }
@@ -139,19 +156,7 @@ FulfillmentSelector.propTypes = {
   productId: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
-  location: PropTypes.shape({
-    code: PropTypes.string,
-    name: PropTypes.string,
-    productCode: PropTypes.string,
-    visibleInventory: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    inventoryBlind: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-  }),
+  location: PropTypes.shape(),
   storeFulfillmentMethod: PropTypes.func,
 };
 

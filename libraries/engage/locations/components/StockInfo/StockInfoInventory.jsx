@@ -16,7 +16,7 @@ function Inventory(props) {
     availabilityText, location, maxNumberVisible, aboveMaxExtension,
   } = props;
 
-  if (!location || location.visibleInventory === null) {
+  if (!location || !availabilityText || !location.productInventory) {
     return null;
   }
 
@@ -28,9 +28,9 @@ function Inventory(props) {
           // Limit stock to max visible stock if it is set
           visibleInventory: (
             maxNumberVisible &&
-              location.visibleInventory > maxNumberVisible
+              location.productInventory.visible > maxNumberVisible
               ? `${maxNumberVisible}${aboveMaxExtension}`
-              : location.visibleInventory
+              : location.productInventory.visible
           ),
         }}
       />
@@ -44,15 +44,9 @@ Inventory.propTypes = {
   availabilityText: PropTypes.string,
   location: PropTypes.shape({
     name: PropTypes.string,
-    productCode: PropTypes.string,
-    visibleInventory: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    inventoryBlind: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
+    productInventory: PropTypes.shape({
+      visible: PropTypes.number,
+    }),
   }),
   maxNumberVisible: PropTypes.number,
 };

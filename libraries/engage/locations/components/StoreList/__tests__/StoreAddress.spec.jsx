@@ -69,8 +69,6 @@ describe.skip('<StoreAddress />', () => {
     expect(context.selectLocation).toHaveBeenCalledWith({
       code: store.code,
       name: store.name,
-      addressCode: store.addresses[0].code,
-      visibleInventory: store.productInventory.visible,
     });
   });
 });

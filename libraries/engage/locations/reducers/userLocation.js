@@ -7,9 +7,6 @@ import {
 const defaultState = {
   code: null,
   name: null,
-  productCode: null,
-  visibleInventory: null,
-  addressCode: null,
   fulfillmentMethod: PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
 };
 

@@ -29,4 +29,5 @@ export {
   makeIsFulfillmentSelectorDisabled,
   makeGetUserLocation,
   makeGetLocation,
+  makeGetProductLocation,
 } from './selectors';
