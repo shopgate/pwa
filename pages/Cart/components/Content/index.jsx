@@ -7,14 +7,16 @@ import {
   CART_PATH,
   CART_ITEM_LIST,
   CART_COUPON_FIELD,
+  FLAG_MULTI_LINE_RESERVE,
+  CartItemGroup,
 } from '@shopgate/engage/cart';
 import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { SimpleBar } from 'Components/AppBar/presets';
-import ItemsGroup from '../ItemsGroup';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import PaymentBar from '../PaymentBar';
+import Item from '../Item';
 import connect from './connector';
 import styles from './style';
 import CartContext from '../../context';
@@ -93,12 +95,19 @@ class CartContentContainer extends PureComponent {
                 <SurroundPortals portalName={CART_ITEM_LIST}>
                   <CardList className={styles}>
                     {Object.keys(cartItemGroups).map(groupKey => (
-                      <ItemsGroup
+                      <CartItemGroup
                         key={groupKey}
-                        items={cartItemGroups[groupKey].items}
                         fulfillmentLocationId={cartItemGroups[groupKey].fulfillmentLocationId}
-                        onFocus={this.togglePaymentBar}
-                      />
+                        multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
+                      >
+                        {cartItemGroups[groupKey].items.map(cartItem => (
+                          <Item
+                            item={cartItem}
+                            key={cartItem.id}
+                            onFocus={this.togglePaymentBar}
+                          />
+                        ))}
+                      </CartItemGroup>
                     ))}
                     <SurroundPortals portalName={CART_COUPON_FIELD}>
                       <CouponField onFocus={this.togglePaymentBar} />
