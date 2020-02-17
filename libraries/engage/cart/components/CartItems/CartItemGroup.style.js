@@ -16,12 +16,23 @@ export const address = css({
 
 export const addressIcon = css({
   fontSize: '1.25rem',
-  padding: `2px ${variables.gap.small}px 0 0`,
+  padding: `${variables.gap.small}px ${variables.gap.small}px 0 0`,
   paddingTop: variables.gap.small,
+});
+
+export const shippingIcon = css({
+  fontSize: '1.25rem',
+  padding: `${variables.gap.small}px ${variables.gap.big}px ${variables.gap.small}px 0`,
+  transform: 'rotateY(180deg)',
 });
 
 export const title = css({
   fontWeight: 600,
+});
+
+export const shippingTitle = css({
+  fontWeight: 600,
+  padding: variables.gap.small,
 });
 
 export const addressDetails = css({

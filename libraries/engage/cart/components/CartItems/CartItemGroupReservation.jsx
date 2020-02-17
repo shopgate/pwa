@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Accordion, LocationIcon } from '@shopgate/engage/components';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import { i18n } from '@shopgate/engage/core/helpers/i18n';
-import { StoreAddressOpeningHours, StoreAddressPhoneNumber } from '@shopgate/engage/locations';
-import connect from './connector';
+import { Accordion, LocationIcon } from '../../../components';
+import { i18n } from '../../../core';
+import { StoreAddressOpeningHours, StoreAddressPhoneNumber } from '../../../locations';
+import connect from './CartItemGroupReservation.connector';
 import {
   address, addressIcon, title, accordionToggle, addressDetails,
-} from './style';
+} from './CartItemGroup.style';
 
 /**
  * Renders the product group.
