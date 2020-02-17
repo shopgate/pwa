@@ -148,7 +148,8 @@
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
     "method": {
-      "ropis" : "Reserve online, pick up in store"
+      "ropis" : "Reserve online, pick up in store",
+      "direct_ship" : "Ship to address"
     }
   },
   "category": {
@@ -289,6 +290,13 @@
   },
   "error": {
     "general": "Verbindungsproblem. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal."
+  },
+  "validation": {
+    "required": "Bitte vervollständigen Sie dieses Feld",
+    "email": "Geben Sie bitte eine gültige E-Mail-Adresse ein",
+    "numeric": "Bitte geben Sie nur Zahlen ein",
+    "alphaNumeric": "Geben Sie bitte nur Buchstaben und Zahlen ein",
+    "mobileNumber": "Geben Sie bitte eine gültige Handynummer ein"
   },
   "formats": {
     "date": {

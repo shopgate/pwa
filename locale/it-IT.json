@@ -135,7 +135,8 @@
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
     "method": {
-      "ropis" : "Reserve online, pick up in store"
+      "ropis" : "Reserve online, pick up in store",
+      "direct_ship" : "Ship to address"
     }
   },
   "category": {
@@ -270,6 +271,13 @@
   },
   "error": {
     "general": "Impossibile connettersi. Per favore verifica la connessione internet."
+  },
+  "validation": {
+    "required": "Per favore completa questo campo",
+    "email": "Per favore inserisci un indirizzo e-mail valido",
+    "numeric": "Per favore inserire solo numeri",
+    "alphaNumeric": "Per favore inserire solo lettere o numeri",
+    "mobileNumber": "Per favore inserire un numero di cellulare valido"
   },
   "formats": {
     "date": {
