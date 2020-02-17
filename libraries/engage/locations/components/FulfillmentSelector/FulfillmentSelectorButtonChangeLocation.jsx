@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RippleButton, I18n } from '@shopgate/engage/components';
-import { pickUpButtonChangeLocation } from './FulfillmentSelector.style';
+import { pickUpButtonChangeLocation, pickUpButtonChangeLocationRipple } from './FulfillmentSelector.style';
 
 /**
  * Renders a RadioItem element to be used by the FulfillmentSelector component.
@@ -15,6 +15,7 @@ const FulfillmentSelectorButtonChangeLocation = ({ onClick }) => (
   <RippleButton
     onClick={onClick}
     className={pickUpButtonChangeLocation}
+    rippleClassName={pickUpButtonChangeLocationRipple}
     type="secondary"
     flat
   >

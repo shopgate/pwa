@@ -52,7 +52,11 @@ export const pickUpGroupContainer = css({
 });
 
 export const pickUpButtonChangeLocation = css({
-  marginRight: -16,
   fontSize: '0.875rem !important',
   textAlign: 'right',
+  padding: '8px 0 !important',
+}).toString();
+
+export const pickUpButtonChangeLocationRipple = css({
+  padding: 0,
 }).toString();
