@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import { ViewContext } from '@shopgate/engage/components/View';
 import Iterator from './components/Iterator';
 import Layout from './components/Layout';
+
+export const WIDGET_ID = '@shopgate/engage/product/ProductGrid';
 
 /**
  * The Product Grid component.
@@ -20,6 +23,10 @@ const ProductGrid = ({
   totalProductCount,
   requestHash,
 }) => {
+  // TODO: Integrate the setting into underlying components and remove the eslint-disable rule!
+  // eslint-disable-next-line no-unused-vars
+  const { columns = 2 } = useWidgetSettings(WIDGET_ID) || {};
+
   if (!infiniteLoad) {
     return (
       <Layout>
