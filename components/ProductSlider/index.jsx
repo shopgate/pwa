@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useWidgetSettings } from '@shopgate/engage/core';
 import { Swiper } from '@shopgate/engage/components';
 import { Theme } from '@shopgate/pwa-common/context';
 import { container, items } from './style';
+
+export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
 
 /**
  * @param {Object} props The component props.
@@ -14,9 +17,10 @@ function ProductSlider(props) {
     className,
     delay,
     productIds,
-    slidesPerView,
     snap,
   } = props;
+
+  const { slidesPerView = props.slidesPerView } = useWidgetSettings(WIDGET_ID) || {};
 
   return (
     <Theme>
