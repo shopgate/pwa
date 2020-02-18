@@ -130,8 +130,10 @@
     "error_invalid_zip_code": "Please enter a valid ZIP code.",
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
     "search_placeholder": "ZIP code",
+    "change_location": "Change location",
     "method": {
-      "ropis" : "Reserve online, pick up in store"
+      "ropis" : "Reserve online, pick up in store",
+      "direct_ship" : "Ship to address"
     }
   },
   "category": {
@@ -263,6 +265,13 @@
   },
   "error": {
     "general": "No se puede conectar. Por favor, compruebe su conexión a Internet."
+  },
+  "validation": {
+    "required": "Por favor, completa este campo",
+    "email": "Introduce una dirección de correo electrónico válida",
+    "numeric": "Por favor introduce solo números",
+    "alphaNumeric": "Por favor, introduce solo letras y números",
+    "mobileNumber": "Por favor, introduce un número de móvil válido"
   },
   "formats": {
     "date": {
