@@ -3,7 +3,7 @@
  * Checks if current theme is an iOS theme.
  * @returns {boolean}
  */
-export function isIOS() {
+export function isIOSTheme() {
   if (!process.env.THEME) {
     return false;
   }

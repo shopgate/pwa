@@ -1,6 +1,6 @@
 // @flow
 import { css } from 'glamor';
-import { isIOS } from '@shopgate/engage/core';
+import { isIOSTheme } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors, variables, shadows } = themeConfig;
@@ -13,7 +13,7 @@ export const wrapper = css({
 });
 
 export const container = css({
-  padding: isIOS() ? variables.gap.small : variables.gap.big,
+  padding: isIOSTheme() ? variables.gap.small : variables.gap.big,
   paddingBottom: 0,
   lineHeight: 1.45,
   flexWrap: 'wrap',
@@ -29,7 +29,7 @@ export const checkoutButton = css({
 export const checkoutButtonContainer = css({
   background: colors.light,
   alignItems: 'center',
-  padding: isIOS() ? variables.gap.small : variables.gap.big,
+  padding: isIOSTheme() ? variables.gap.small : variables.gap.big,
   position: 'relative',
   zIndex: 2,
 });
