@@ -1,5 +1,5 @@
 [ignore]
- .*/extensions/.*
+  .*/extensions/.*
 [include]
 
 [libs]
