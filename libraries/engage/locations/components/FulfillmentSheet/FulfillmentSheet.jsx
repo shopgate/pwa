@@ -110,6 +110,15 @@ class FulfillmentSheet extends PureComponent {
   handleSetClosed = (location = null) => {
     const { stage } = this.props;
 
+    let orderSuccess;
+
+    if (this.state.stage === this.STAGES[2]) {
+      orderSuccess = this.state.errors === null;
+    }
+
+    this.callback(location, orderSuccess);
+    this.callback = () => { };
+
     this.setState({
       isOpen: false,
       stage: this.STAGES[stage - 1],
@@ -117,9 +126,6 @@ class FulfillmentSheet extends PureComponent {
       orderNumbers: null,
       errors: null,
     });
-
-    this.callback(location);
-    this.callback = () => { };
   }
 
   /**
@@ -254,7 +260,9 @@ class FulfillmentSheet extends PureComponent {
             {stage === this.STAGES[1] && (
               <ReserveForm />
             )}
-            {(stage === this.STAGES[2] && orderNumbers !== null) && (
+            {(stage === this.STAGES[2] &&
+              orderNumbers !== null &&
+              !!orderNumbers.find(Boolean)) && (
               <ReservationSuccess />
             )}
             {(stage === this.STAGES[2] && errors !== null) && (
