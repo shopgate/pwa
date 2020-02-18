@@ -35,6 +35,7 @@ class Sheet extends Component {
     duration: PropTypes.number,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
+    onDidClose: PropTypes.func,
     onDidOpen: PropTypes.func,
     onOpen: PropTypes.func,
     title: Header.propTypes.title,
@@ -53,6 +54,7 @@ class Sheet extends Component {
     duration: 300,
     isOpen: false,
     onClose: () => { },
+    onDidClose: () => { },
     onDidOpen: () => { },
     onOpen: () => { },
     title: '',
@@ -127,6 +129,7 @@ class Sheet extends Component {
   /** The Sheet is closed */
   handleDidClose = () => {
     UIEvents.emit(SHEET_EVENTS.CLOSE);
+    this.props.onDidClose();
   };
 
   /**

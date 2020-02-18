@@ -9,6 +9,7 @@ exports[`<Sheet /> should open 1`] = `
   duration={300}
   isOpen={true}
   onClose={[Function]}
+  onDidClose={[Function]}
   onDidOpen={[Function]}
   onOpen={[Function]}
   title="Test-Title"
@@ -360,6 +361,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       ],
     }
   }
+  onDidClose={[Function]}
   onDidOpen={[Function]}
   onOpen={[Function]}
   title="Test-Title"

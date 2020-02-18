@@ -252,7 +252,7 @@ class FulfillmentSheet extends PureComponent {
 
     return (
       <FulfillmentContext.Provider value={contextValue}>
-        <SheetDrawer isOpen={isOpen} title={title} onClose={this.handleSetClosed}>
+        <SheetDrawer isOpen={isOpen} title={title} onDidClose={this.handleSetClosed}>
           <div className={sheet}>
             {stage === this.STAGES[0] && (
               <StoreList />

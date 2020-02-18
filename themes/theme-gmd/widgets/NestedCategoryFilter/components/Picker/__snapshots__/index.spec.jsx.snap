@@ -93,6 +93,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             duration={300}
             isOpen={true}
             onClose={[Function]}
+            onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -497,6 +498,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             duration={300}
             isOpen={true}
             onClose={[Function]}
+            onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -941,6 +943,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -1346,6 +1349,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             duration={300}
             isOpen={true}
             onClose={[Function]}
+            onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -1749,6 +1753,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -1910,6 +1915,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
             title="Picker Label"
@@ -2066,6 +2072,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             duration={300}
             isOpen={false}
             onClose={[Function]}
+            onDidClose={[Function]}
             onDidOpen={[Function]}
             onOpen={[Function]}
             title=""

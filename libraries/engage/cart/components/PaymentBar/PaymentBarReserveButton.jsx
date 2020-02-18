@@ -23,7 +23,7 @@ function PaymentBarReserveButton({ historyReset }: Props) {
 
   const handleClick = React.useCallback(() => {
     FulfillmentSheet.open((location, orderSuccess) => {
-      historyReset(); if (orderSuccess === true) {
+      if (orderSuccess === true) {
         historyReset();
       }
     }, 1);
