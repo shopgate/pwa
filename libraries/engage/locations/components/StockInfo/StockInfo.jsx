@@ -21,7 +21,7 @@ function StockInfo({ location, className, showStoreName }) {
   const settings = defaultsDeep(locationStockInfo, defaultSettings);
 
   const { availabilityText = '', availabilityTextColor = 'inherit' } =
-    getAvailabilitySettings(settings, location.visibleInventory, location.inventoryBlind);
+    getAvailabilitySettings(settings, location);
 
   const defaultClassName = css({
     color: availabilityTextColor,
@@ -29,32 +29,31 @@ function StockInfo({ location, className, showStoreName }) {
     margin: 0,
   });
 
+  let displayCapitalized = location.productInventory && location.productInventory.visible === null;
+  displayCapitalized = displayCapitalized || !availabilityText;
+
   return (
     <SurroundPortals
       portalName={PRODUCT_LOCATION_STOCK_INFO}
       portalProps={{
         location,
         className,
-        visibleInventory: location.visibleInventory,
-        inventoryBlind: location.inventoryBlind,
         availabilityText,
         availabilityTextColor,
       }}
     >
-      {(location.visibleInventory !== null || location.name) && (
-        <span className={classNames(`${defaultClassName}`, `${className}`)}>
-          <Inventory
-            availabilityText={availabilityText}
-            location={location}
-            maxNumberVisible={settings.maxNumberOfVisibleInventory}
-            aboveMaxExtension={settings.aboveMaxExtension}
-          />
-          <StoreName
-            name={showStoreName ? location.name : ''}
-            displayCapitalized={location.visibleInventory === null || !availabilityText}
-          />
-        </span>
-      )}
+      <span className={classNames(`${defaultClassName}`, `${className}`)}>
+        <Inventory
+          availabilityText={availabilityText}
+          location={location}
+          maxNumberVisible={settings.maxNumberOfVisibleInventory}
+          aboveMaxExtension={settings.aboveMaxExtension}
+        />
+        <StoreName
+          name={showStoreName ? location.name : ''}
+          displayCapitalized={displayCapitalized}
+        />
+      </span>
     </SurroundPortals>
   );
 }
@@ -62,15 +61,9 @@ function StockInfo({ location, className, showStoreName }) {
 StockInfo.propTypes = {
   location: PropTypes.shape({
     name: PropTypes.string,
-    productCode: PropTypes.string,
-    visibleInventory: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    inventoryBlind: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
+    productInventory: PropTypes.shape({
+      visible: PropTypes.number,
+    }),
   }).isRequired,
   className: PropTypes.oneOfType([
     PropTypes.string,

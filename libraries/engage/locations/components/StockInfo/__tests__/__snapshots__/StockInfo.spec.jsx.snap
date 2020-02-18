@@ -1,91 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StockInfo /> should not render if no location data is passed 1`] = `
-<StockInfo
-  className=""
-  location={
-    Object {
-      "name": "",
-      "visibleInventory": null,
-    }
-  }
-  showStoreName={true}
->
-  <SurroundPortals
-    portalName="product.location-stock-info"
-    portalProps={
-      Object {
-        "availabilityText": "demo_availability_text",
-        "availabilityTextColor": "green",
-        "className": "",
-        "inventoryBlind": undefined,
-        "location": Object {
-          "name": "",
-          "visibleInventory": null,
-        },
-        "visibleInventory": null,
-      }
-    }
-  >
-    <Portal
-      name="product.location-stock-info.before"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": "",
-          "inventoryBlind": undefined,
-          "location": Object {
-            "name": "",
-            "visibleInventory": null,
-          },
-          "visibleInventory": null,
-        }
-      }
-    />
-    <Portal
-      name="product.location-stock-info"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": "",
-          "inventoryBlind": undefined,
-          "location": Object {
-            "name": "",
-            "visibleInventory": null,
-          },
-          "visibleInventory": null,
-        }
-      }
-    />
-    <Portal
-      name="product.location-stock-info.after"
-      props={
-        Object {
-          "availabilityText": "demo_availability_text",
-          "availabilityTextColor": "green",
-          "className": "",
-          "inventoryBlind": undefined,
-          "location": Object {
-            "name": "",
-            "visibleInventory": null,
-          },
-          "visibleInventory": null,
-        }
-      }
-    />
-  </SurroundPortals>
-</StockInfo>
-`;
-
 exports[`<StockInfo /> should render with the visible inventory and with the store name 1`] = `
 <StockInfo
   className=""
   location={
     Object {
       "name": "Test Store",
-      "visibleInventory": 15,
     }
   }
   showStoreName={true}
@@ -97,12 +17,9 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
         "availabilityText": "demo_availability_text",
         "availabilityTextColor": "green",
         "className": "",
-        "inventoryBlind": undefined,
         "location": Object {
           "name": "Test Store",
-          "visibleInventory": 15,
         },
-        "visibleInventory": 15,
       }
     }
   >
@@ -113,12 +30,9 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": 15,
           },
-          "visibleInventory": 15,
         }
       }
     />
@@ -129,12 +43,9 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": 15,
           },
-          "visibleInventory": 15,
         }
       }
     >
@@ -147,31 +58,10 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
           location={
             Object {
               "name": "Test Store",
-              "visibleInventory": 15,
             }
           }
           maxNumberVisible={100}
-        >
-          <Translate
-            className={null}
-            params={
-              Object {
-                "visibleInventory": 15,
-              }
-            }
-            role={null}
-            string="demo_availability_text"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              demo_availability_text
-            </span>
-          </Translate>
-           
-        </Inventory>
+        />
         <StoreName
           displayCapitalized={false}
           name="Test Store"
@@ -204,12 +94,9 @@ exports[`<StockInfo /> should render with the visible inventory and with the sto
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": 15,
           },
-          "visibleInventory": 15,
         }
       }
     />
@@ -223,7 +110,6 @@ exports[`<StockInfo /> should render without store name 1`] = `
   location={
     Object {
       "name": "Test Store",
-      "visibleInventory": 15,
     }
   }
   showStoreName={false}
@@ -235,12 +121,9 @@ exports[`<StockInfo /> should render without store name 1`] = `
         "availabilityText": "demo_availability_text",
         "availabilityTextColor": "green",
         "className": "",
-        "inventoryBlind": undefined,
         "location": Object {
           "name": "Test Store",
-          "visibleInventory": 15,
         },
-        "visibleInventory": 15,
       }
     }
   >
@@ -251,12 +134,9 @@ exports[`<StockInfo /> should render without store name 1`] = `
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": 15,
           },
-          "visibleInventory": 15,
         }
       }
     />
@@ -267,12 +147,9 @@ exports[`<StockInfo /> should render without store name 1`] = `
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": 15,
           },
-          "visibleInventory": 15,
         }
       }
     >
@@ -285,31 +162,10 @@ exports[`<StockInfo /> should render without store name 1`] = `
           location={
             Object {
               "name": "Test Store",
-              "visibleInventory": 15,
             }
           }
           maxNumberVisible={100}
-        >
-          <Translate
-            className={null}
-            params={
-              Object {
-                "visibleInventory": 15,
-              }
-            }
-            role={null}
-            string="demo_availability_text"
-            transform={null}
-          >
-            <span
-              className={null}
-              role={null}
-            >
-              demo_availability_text
-            </span>
-          </Translate>
-           
-        </Inventory>
+        />
         <StoreName
           displayCapitalized={false}
           name=""
@@ -323,12 +179,9 @@ exports[`<StockInfo /> should render without store name 1`] = `
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": 15,
           },
-          "visibleInventory": 15,
         }
       }
     />
@@ -342,7 +195,6 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
   location={
     Object {
       "name": "Test Store",
-      "visibleInventory": null,
     }
   }
   showStoreName={true}
@@ -354,12 +206,9 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
         "availabilityText": "demo_availability_text",
         "availabilityTextColor": "green",
         "className": "",
-        "inventoryBlind": undefined,
         "location": Object {
           "name": "Test Store",
-          "visibleInventory": null,
         },
-        "visibleInventory": null,
       }
     }
   >
@@ -370,12 +219,9 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": null,
           },
-          "visibleInventory": null,
         }
       }
     />
@@ -386,12 +232,9 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": null,
           },
-          "visibleInventory": null,
         }
       }
     >
@@ -404,13 +247,12 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
           location={
             Object {
               "name": "Test Store",
-              "visibleInventory": null,
             }
           }
           maxNumberVisible={100}
         />
         <StoreName
-          displayCapitalized={true}
+          displayCapitalized={false}
           name="Test Store"
         >
           <Translate
@@ -422,13 +264,13 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
             }
             role={null}
             string="product.location_stock_info.pick_up_at"
-            transform={[Function]}
+            transform={null}
           >
             <span
               className={null}
               role={null}
             >
-              Product.location_stock_info.pick_up_at
+              product.location_stock_info.pick_up_at
             </span>
           </Translate>
         </StoreName>
@@ -441,12 +283,9 @@ exports[`<StockInfo /> should render without the visible inventory 1`] = `
           "availabilityText": "demo_availability_text",
           "availabilityTextColor": "green",
           "className": "",
-          "inventoryBlind": undefined,
           "location": Object {
             "name": "Test Store",
-            "visibleInventory": null,
           },
-          "visibleInventory": null,
         }
       }
     />

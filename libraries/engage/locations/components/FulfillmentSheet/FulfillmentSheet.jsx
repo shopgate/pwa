@@ -130,31 +130,21 @@ class FulfillmentSheet extends PureComponent {
 
   /**
    * Handles the selection of a store location from the sheet.
-   * @param {Object} params The parameters to store.
-   * @param {string} params.locationCode The location code.
-   * @param {string} params.locationName The location name.
-   * @param {string} params.addresscode The address code.
-   * @param {number} params.visibleInventory The visible stock amount.
+   * @param {Object} location The selected location.
    */
-  handleSelectLocation = (params) => {
-    const {
-      code, name, addressCode, visibleInventory,
-    } = params;
+  handleSelectLocation = (location) => {
     const {
       addProductsToCart,
       selectLocation,
       product,
       settings: { enabledFulfillmentMethodSelectionForEngage: fulfillmentMethods = [] },
     } = this.props;
-    const location = {
-      code,
-      name,
-      addressCode,
-      visibleInventory,
-      productCode: product.id,
-    };
 
-    selectLocation(location);
+    // Dispatch action for user selection
+    selectLocation({
+      code: location.code,
+      name: location.name,
+    });
 
     if (fulfillmentMethods.includes('multiLineReserve')) {
       addProductsToCart([{
@@ -163,12 +153,15 @@ class FulfillmentSheet extends PureComponent {
         fulfillment: {
           method: 'ROPIS', // TODO: make this dynamic.
           location: {
-            code,
-            name,
+            code: location.code,
+            name: location.name,
           },
         },
       }]);
-      this.handleSetClosed(location);
+      this.handleSetClosed({
+        productCode: product.id,
+        location,
+      });
       return;
     }
 

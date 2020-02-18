@@ -20,6 +20,7 @@ export {
   PRODUCT_LOCATION_STOCK_INFO_AFTER,
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+  PRODUCT_FULFILLMENT_METHOD_ROPIS,
 } from './constants';
 
 // SELECTORS
@@ -28,6 +29,7 @@ export {
   makeIsFulfillmentSelectorDisabled,
   makeGetUserLocation,
   makeGetLocation,
+  makeGetProductLocation,
 } from './selectors';
 
 // STREAMS

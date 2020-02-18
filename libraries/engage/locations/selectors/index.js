@@ -120,6 +120,34 @@ export function makeGetProductLocations() {
 }
 
 /**
+ * Creates the selector that returns the single product location.
+ * @returns {Function}
+ */
+export function makeGetProductLocation() {
+  const getProductLocationsState = makeGetProductLocationsState();
+
+  /**
+   * Retrieves the locations for a specific product.
+   * @param {Object} state The application state.
+   * @param {Object} props The component props.
+   * @param {string} props.productId The ID of the product to look for.
+   * @returns {Array|null}
+   */
+  return createSelector(
+    getProductLocationsState,
+    getLocationId,
+    getProductId,
+    (locationsState, locationId, productId) => {
+      if (!productId || !locationId || !locationsState[productId]) {
+        return null;
+      }
+
+      return locationsState[productId].locations.find(l => l.code === locationId);
+    }
+  );
+}
+
+/**
  * Creates the selector that determines, if products locations for a specific product are fetching.
  * @returns {Function}
  */
