@@ -4,156 +4,198 @@ exports[`<InfiniteContainer /> Given that the initialLimit is used in the correc
 <div>
   <div>
     <div>
-      <li
+      <mockConstructor
+        columns={2}
+        id={0}
         key="0"
-      >
-        Item 0
-      </li>
-      <li
+        title="Item 0"
+      />
+      <mockConstructor
+        columns={2}
+        id={1}
         key="1"
-      >
-        Item 1
-      </li>
-      <li
+        title="Item 1"
+      />
+      <mockConstructor
+        columns={2}
+        id={2}
         key="2"
-      >
-        Item 2
-      </li>
-      <li
+        title="Item 2"
+      />
+      <mockConstructor
+        columns={2}
+        id={3}
         key="3"
-      >
-        Item 3
-      </li>
-      <li
+        title="Item 3"
+      />
+      <mockConstructor
+        columns={2}
+        id={4}
         key="4"
-      >
-        Item 4
-      </li>
-      <li
+        title="Item 4"
+      />
+      <mockConstructor
+        columns={2}
+        id={5}
         key="5"
-      >
-        Item 5
-      </li>
-      <li
+        title="Item 5"
+      />
+      <mockConstructor
+        columns={2}
+        id={6}
         key="6"
-      >
-        Item 6
-      </li>
-      <li
+        title="Item 6"
+      />
+      <mockConstructor
+        columns={2}
+        id={7}
         key="7"
-      >
-        Item 7
-      </li>
-      <li
+        title="Item 7"
+      />
+      <mockConstructor
+        columns={2}
+        id={8}
         key="8"
-      >
-        Item 8
-      </li>
-      <li
+        title="Item 8"
+      />
+      <mockConstructor
+        columns={2}
+        id={9}
         key="9"
-      >
-        Item 9
-      </li>
-      <li
+        title="Item 9"
+      />
+      <mockConstructor
+        columns={2}
+        id={10}
         key="10"
-      >
-        Item 10
-      </li>
-      <li
+        title="Item 10"
+      />
+      <mockConstructor
+        columns={2}
+        id={11}
         key="11"
-      >
-        Item 11
-      </li>
-      <li
+        title="Item 11"
+      />
+      <mockConstructor
+        columns={2}
+        id={12}
         key="12"
-      >
-        Item 12
-      </li>
-      <li
+        title="Item 12"
+      />
+      <mockConstructor
+        columns={2}
+        id={13}
         key="13"
-      >
-        Item 13
-      </li>
-      <li
+        title="Item 13"
+      />
+      <mockConstructor
+        columns={2}
+        id={14}
         key="14"
-      >
-        Item 14
-      </li>
-      <li
+        title="Item 14"
+      />
+      <mockConstructor
+        columns={2}
+        id={15}
         key="15"
-      >
-        Item 15
-      </li>
-      <li
+        title="Item 15"
+      />
+      <mockConstructor
+        columns={2}
+        id={16}
         key="16"
-      >
-        Item 16
-      </li>
-      <li
+        title="Item 16"
+      />
+      <mockConstructor
+        columns={2}
+        id={17}
         key="17"
-      >
-        Item 17
-      </li>
-      <li
+        title="Item 17"
+      />
+      <mockConstructor
+        columns={2}
+        id={18}
         key="18"
-      >
-        Item 18
-      </li>
-      <li
+        title="Item 18"
+      />
+      <mockConstructor
+        columns={2}
+        id={19}
         key="19"
-      >
-        Item 19
-      </li>
-      <li
+        title="Item 19"
+      />
+      <mockConstructor
+        columns={2}
+        id={20}
         key="20"
-      >
-        Item 20
-      </li>
-      <li
+        title="Item 20"
+      />
+      <mockConstructor
+        columns={2}
+        id={21}
         key="21"
-      >
-        Item 21
-      </li>
-      <li
+        title="Item 21"
+      />
+      <mockConstructor
+        columns={2}
+        id={22}
         key="22"
-      >
-        Item 22
-      </li>
-      <li
+        title="Item 22"
+      />
+      <mockConstructor
+        columns={2}
+        id={23}
         key="23"
-      >
-        Item 23
-      </li>
-      <li
+        title="Item 23"
+      />
+      <mockConstructor
+        columns={2}
+        id={24}
         key="24"
-      >
-        Item 24
-      </li>
-      <li
+        title="Item 24"
+      />
+      <mockConstructor
+        columns={2}
+        id={25}
         key="25"
-      >
-        Item 25
-      </li>
-      <li
+        title="Item 25"
+      />
+      <mockConstructor
+        columns={2}
+        id={26}
         key="26"
-      >
-        Item 26
-      </li>
-      <li
+        title="Item 26"
+      />
+      <mockConstructor
+        columns={2}
+        id={27}
         key="27"
-      >
-        Item 27
-      </li>
-      <li
+        title="Item 27"
+      />
+      <mockConstructor
+        columns={2}
+        id={28}
         key="28"
-      >
-        Item 28
-      </li>
-      <li
+        title="Item 28"
+      />
+      <mockConstructor
+        columns={2}
+        id={29}
         key="29"
-      >
-        Item 29
-      </li>
+        title="Item 29"
+      />
+      <mockConstructor
+        columns={2}
+        id={30}
+        key="30"
+        title="Item 30"
+      />
+      <mockConstructor
+        columns={2}
+        id={31}
+        key="31"
+        title="Item 31"
+      />
     </div>
   </div>
 </div>
