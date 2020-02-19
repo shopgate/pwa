@@ -18,6 +18,7 @@ class InfiniteContainer extends Component {
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     iterator: PropTypes.func.isRequired,
     loader: PropTypes.func.isRequired,
+    columns: PropTypes.number,
     containerRef: PropTypes.shape(),
     initialLimit: PropTypes.number,
     limit: PropTypes.number,
@@ -32,6 +33,7 @@ class InfiniteContainer extends Component {
   };
 
   static defaultProps = {
+    columns: 2,
     containerRef: { current: null },
     initialLimit: 10,
     limit: ITEMS_PER_LOAD,
@@ -339,11 +341,20 @@ class InfiniteContainer extends Component {
       items,
       iterator,
       loadingIndicator,
+      columns,
     } = this.props;
     const { awaitingItems } = this.state;
     const [start, length] = this.state.offset;
     // Only show items in offset range.
-    const children = items.slice(0, start + length).map(iterator);
+    const children = items.slice(0, start + length).map(item => React.createElement(
+      iterator,
+      {
+        ...item,
+        columns,
+        key: item.id,
+      }
+    ));
+
     const content = (typeof wrapper === 'function') ? (
       wrapper({ children })
     ) : (
