@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root';
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import { Availability } from '@shopgate/engage/product';
@@ -10,13 +10,12 @@ import {
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
-import { isProductAvailable } from '../../helpers';
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
 import FulfillmentSelectorButtonChangeLocation from './FulfillmentSelectorButtonChangeLocation';
+import FulfillmentSelectorAddToCart from './FulfillmentSelectorAddToCart';
 import connect from './FulfillmentSelector.connector';
 import * as styles from './FulfillmentSelector.style';
 
-// TODO: Integrate a conditioner that ensures selection of characteristics and required options
 /**
  * Renders a fulfillment selector box for fulfillment methods direct ship and pick up in store,
  * when fulfillment methods are set up for the product and pick up in store is one of them.
@@ -41,20 +40,6 @@ export const FulfillmentSelector = (props) => {
   const [selection, setSelection] = useState(location.productInventory ? pickUp : directShip);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
-  // Add to cart effect to validate inventory
-  useEffect(() => {
-    if (fulfillmentMethods) {
-      // Add most late conditioner
-      conditioner.addConditioner('fulfillment-inventory', () => {
-        if (!fulfillmentMethods.includes('multiLineReserve')) {
-          // @TODO Open Fulfillment Sheet / Reservation Form
-          return false;
-        }
-        return isProductAvailable(selectedLocation || location);
-      }, 100);
-    }
-  }, [conditioner, location, selectedLocation, fulfillmentMethods]);
 
   // Update selected location for sheet close
   const handleClose = useCallback((newLocationData) => {
@@ -148,6 +133,10 @@ export const FulfillmentSelector = (props) => {
           </FulfillmentSelectorItem>
         </RadioGroup>
       </div>
+      <FulfillmentSelectorAddToCart
+        conditioner={conditioner}
+        location={selectedLocation || location}
+      />
     </SurroundPortals>
   );
 };
