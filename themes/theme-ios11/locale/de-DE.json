@@ -213,7 +213,14 @@
     "message_type_info": "Info",
     "message_type_error": "Fehler",
     "message_type_warning": "Warnung",
-    "reservation_hint": "*Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality."
+    "reservation_hint": "*Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
+    "errors": {
+      "mixed_cart": "Reservierungen und Online Bestellungen müssen in separaten Bestellungen aufgegeben werden. Bitte aktualisieren Sie die Produkte, sodass im Warenkorb entweder nur Online Bestellungen oder Reservierungen sind.",
+      "direct_ship_item": "Prüfen Sie, ob dieses Produkt in einer Filiale in Ihrer Nähe reserviert werden kann.",
+      "ropis_cart_inventory": "Nicht alle Produkte können reserviert werden. Bitte überprüfen Sie die Fehler und ändern Sie die Lieferoptionen.",
+      "ropis_item_inventory": "Dieses Produkt kann in der gewünschten Filiale nicht reserviert werden. Prüfen Sie, ob es in einer anderen Filiale vorrätig ist.\nCart reserve button is disabled.",
+      "ropis_item_inventory_exceed": "Gewünschte Anzahl nicht verfügbar bei {storeName}. Die maximale Anzahl von {inventory} wird reserviert."
+    }
   },
   "login": {
     "headline": "Willkommen!",

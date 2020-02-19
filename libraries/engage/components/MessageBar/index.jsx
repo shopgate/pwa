@@ -49,8 +49,8 @@ MessageBar.propTypes = {
     type: PropTypes.string,
   })).isRequired,
   classNames: PropTypes.shape({
-    container: PropTypes.string,
-    message: PropTypes.string,
+    container: PropTypes.shape(),
+    message: PropTypes.shape(),
   }),
 };
 
