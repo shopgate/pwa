@@ -140,6 +140,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
@@ -444,6 +445,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
@@ -1023,6 +1025,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
@@ -1170,6 +1173,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label Two"
@@ -1300,6 +1304,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title=""
@@ -1636,6 +1641,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
@@ -2026,6 +2032,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label Two"
@@ -2348,6 +2355,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
@@ -2738,6 +2746,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label Two"
@@ -3278,6 +3287,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"
@@ -3561,6 +3571,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
+                  onDidClose={[Function]}
                   onDidOpen={[Function]}
                   onOpen={[Function]}
                   title="Label One"

@@ -7,19 +7,20 @@ import {
   CART_PATH,
   CART_ITEM_LIST,
   CART_COUPON_FIELD,
+  PaymentBar,
+  CartContext,
   FLAG_MULTI_LINE_RESERVE,
   CartItemGroup,
 } from '@shopgate/engage/cart';
 import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
+import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
-import PaymentBar from '../PaymentBar';
 import Item from '../Item';
 import connect from './connector';
 import styles from './style';
-import CartContext from '../../context';
 
 const config = getCartConfig();
 
@@ -74,18 +75,18 @@ class CartContentContainer extends PureComponent {
     const { isPaymentBarVisible } = this.state;
     const hasItems = (cartItems.length > 0);
     const hasMessages = (messages.length > 0);
-
     const cartItemGroups = groupCartItems(cartItems);
 
+    const contextValue = {
+      currency,
+      config,
+      isUserLoggedIn,
+      isLoading,
+      flags,
+    };
+
     return (
-      <CartContext.Provider value={{
-        currency,
-        config,
-        isUserLoggedIn,
-        isLoading,
-        flags,
-      }}
-      >
+      <CartContext.Provider value={contextValue}>
         <SimpleBar title="titles.cart" />
         {(hasItems || hasMessages) && (
           <Fragment>
@@ -121,6 +122,7 @@ class CartContentContainer extends PureComponent {
           </Fragment>
         )}
         {(!isLoading && !hasItems) && <Empty />}
+        <FulfillmentSheet />
       </CartContext.Provider>
     );
   }

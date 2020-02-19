@@ -31,3 +31,8 @@ export {
   makeGetLocation,
   makeGetProductLocation,
 } from './selectors';
+
+// STREAMS
+export {
+  submitReservationSuccess$,
+} from './locations.streams';

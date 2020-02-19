@@ -273,6 +273,7 @@ export { getWidgetSettings } from './config/getWidgetSettings';
 export { i18n } from './helpers/i18n';
 export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
+export { isIOSTheme } from './helpers/isIOSTheme';
 
 // -------------- CONFIG -------------- //
 export * from './config/config.actions';

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PaymentBarShippingCost> should not render shipping line 1`] = `
+<Fragment>
+  <Portal
+    name="cart.payment-bar.totals.shipping.before"
+    props={null}
+  />
+  <Portal
+    name="cart.payment-bar.totals.shipping"
+    props={null}
+  />
+  <Portal
+    name="cart.payment-bar.totals.shipping.after"
+    props={null}
+  />
+</Fragment>
+`;
+
+exports[`<PaymentBarShippingCost> should render shipping line 1`] = `
+<Fragment>
+  <Portal
+    name="cart.payment-bar.totals.shipping.before"
+    props={null}
+  />
+  <Portal
+    name="cart.payment-bar.totals.shipping"
+    props={null}
+  >
+    <CartTotalLine
+      isDisabled={false}
+      type="shipping"
+    >
+      <Label
+        label="My label"
+        labelParams={Object {}}
+        showSeparator={true}
+      />
+      <Amount
+        amount={10}
+        currency="EUR"
+      />
+      <Hint
+        hint={null}
+      />
+    </CartTotalLine>
+  </Portal>
+  <Portal
+    name="cart.payment-bar.totals.shipping.after"
+    props={null}
+  />
+</Fragment>
+`;

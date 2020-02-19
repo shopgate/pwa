@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
+<Fragment>
+  <Portal
+    name="cart.checkout-button.before"
+    props={null}
+  />
+  <Portal
+    name="cart.checkout-button"
+    props={null}
+  >
+    <Connect(Link)
+      disabled={true}
+      href="/checkout"
+    >
+      <RippleButton
+        className="css-ce5yef"
+        disabled={true}
+        flat={false}
+        onClick={null}
+        rippleClassName=""
+        rippleSize={null}
+        testId="Button"
+        type="regular"
+        wrapContent={true}
+      >
+        <Translate
+          className={null}
+          params={Object {}}
+          role={null}
+          string="cart.checkout"
+          transform={null}
+        />
+      </RippleButton>
+    </Connect(Link)>
+  </Portal>
+  <Portal
+    name="cart.checkout-button.after"
+    props={null}
+  />
+</Fragment>
+`;
+
+exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
+<Fragment>
+  <Portal
+    name="cart.checkout-button.before"
+    props={null}
+  />
+  <Portal
+    name="cart.checkout-button"
+    props={null}
+  >
+    <Connect(Link)
+      disabled={false}
+      href="/checkout"
+    >
+      <RippleButton
+        className="css-1mlc9hd"
+        disabled={false}
+        flat={false}
+        onClick={null}
+        rippleClassName=""
+        rippleSize={null}
+        testId="Button"
+        type="regular"
+        wrapContent={true}
+      >
+        <Translate
+          className={null}
+          params={Object {}}
+          role={null}
+          string="cart.checkout"
+          transform={null}
+        />
+      </RippleButton>
+    </Connect(Link)>
+  </Portal>
+  <Portal
+    name="cart.checkout-button.after"
+    props={null}
+  />
+</Fragment>
+`;
