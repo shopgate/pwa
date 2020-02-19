@@ -23,8 +23,6 @@ const ProductGrid = ({
   totalProductCount,
   requestHash,
 }) => {
-  // TODO: Integrate the setting into underlying components and remove the eslint-disable rule!
-  // eslint-disable-next-line no-unused-vars
   const { columns = 2 } = useWidgetSettings(WIDGET_ID) || {};
 
   if (!infiniteLoad) {
@@ -32,6 +30,7 @@ const ProductGrid = ({
       <Layout>
         {products.map(product => (
           <Iterator
+            columns={columns}
             display={flags}
             id={product.id}
             key={product.id}
@@ -49,6 +48,7 @@ const ProductGrid = ({
           containerRef={getContentRef()}
           wrapper={Layout}
           iterator={Iterator}
+          columns={columns}
           loader={handleGetProducts}
           items={products}
           loadingIndicator={<LoadingIndicator />}
