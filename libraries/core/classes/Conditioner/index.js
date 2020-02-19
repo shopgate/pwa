@@ -48,7 +48,10 @@ class Conditioner {
    */
   without(name) {
     const clonedConditions = new Map(this.conditions);
-    clonedConditions.delete(name);
+
+    if (clonedConditions.has(name)) {
+      clonedConditions.delete(name);
+    }
     return new Conditioner(clonedConditions);
   }
 

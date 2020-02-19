@@ -44,15 +44,16 @@ export const FulfillmentSelector = (props) => {
 
   // Add to cart effect to validate inventory
   useEffect(() => {
-    // Add most late conditioner
-    conditioner.addConditioner('fulfillment-inventory', () => {
-      if (!fulfillmentMethods.includes('multiLineReserve')) {
-        // @TODO Open Fulfillment Sheet / Reservation Form
-        return false;
-      }
-      return isProductAvailable(selectedLocation || location);
-    }, 100);
-    return () => conditioner.removeConditioner('fulfillment-inventory');
+    if (fulfillmentMethods) {
+      // Add most late conditioner
+      conditioner.addConditioner('fulfillment-inventory', () => {
+        if (!fulfillmentMethods.includes('multiLineReserve')) {
+          // @TODO Open Fulfillment Sheet / Reservation Form
+          return false;
+        }
+        return isProductAvailable(selectedLocation || location);
+      }, 100);
+    }
   }, [conditioner, location, selectedLocation, fulfillmentMethods]);
 
   // Update selected location for sheet close
