@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { makeGetMerchantSettings } from '../../../core/config';
+import { makeGetMerchantSettings } from '@shopgate/engage/core';
 import { makeGetUserLocation } from '../../selectors';
 import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../../constants';
 
@@ -16,7 +16,9 @@ function makeMapStateToProps() {
    */
   return (state) => {
     const { enabledFulfillmentMethodSelectionForEngage = [] } = getMerchantSettings(state);
-    const { fulfillmentMethod = PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } = getUserLocation(state);
+    const {
+      fulfillmentMethod = PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+    } = getUserLocation(state) || {};
 
     return {
       fulfillmentPaths: enabledFulfillmentMethodSelectionForEngage,
