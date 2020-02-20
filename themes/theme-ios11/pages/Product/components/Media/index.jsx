@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
@@ -18,24 +18,22 @@ const Media = ({ 'aria-hidden': ariaHidden }) => (
         portalName={PORTAL_PRODUCT_MEDIA_SECTION}
         portalProps={{ productId, variantId }}
       >
-        <Fragment>
-          {/* MediaSlider feature is currently in BETA testing.
+        {/* MediaSlider feature is currently in BETA testing.
               It should only be used for approved BETA Client Projects */}
-          {isBeta() ? (
-            <ProductMediaSlider
-              productId={productId}
-              variantId={variantId}
-              characteristics={characteristics}
-              aria-hidden={ariaHidden}
-            />
-          ) : (
-            <ProductImageSlider
-              productId={productId}
-              variantId={variantId}
-              aria-hidden={ariaHidden}
-            />
-          )}
-        </Fragment>
+        {isBeta() ? (
+          <ProductMediaSlider
+            productId={productId}
+            variantId={variantId}
+            characteristics={characteristics}
+            aria-hidden={ariaHidden}
+          />
+        ) : (
+          <ProductImageSlider
+            productId={productId}
+            variantId={variantId}
+            aria-hidden={ariaHidden}
+          />
+        )}
       </SurroundPortals>
     )}
   </ProductContext.Consumer>
