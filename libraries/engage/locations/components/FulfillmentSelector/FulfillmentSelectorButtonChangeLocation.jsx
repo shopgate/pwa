@@ -4,11 +4,7 @@ import { RippleButton, I18n } from '@shopgate/engage/components';
 import { pickUpButtonChangeLocation, pickUpButtonChangeLocationRipple } from './FulfillmentSelector.style';
 
 /**
- * Renders a RadioItem element to be used by the FulfillmentSelector component.
- * This component is meant to be rendered as child of a RadioGroup.
- * @param {Object} props All props required by the component to work.
- * @param {string} props.name The item to be rendered and identified by on selection.
- * @param {JSX} props.children The child components to be rendered besides the label.
+ * @param {Function} onClick callback.
  * @returns {JSX}
  */
 const FulfillmentSelectorButtonChangeLocation = ({ onClick }) => (
