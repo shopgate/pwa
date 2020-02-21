@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Cart from '.';
+import Cart from './index';
 
 describe('<Cart> page', () => {
   it('should match snapshot', () => {

@@ -28,19 +28,24 @@ class CartProduct extends Component {
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
     deleteProduct: PropTypes.func,
+    fulfillment: PropTypes.shape(),
     isIos: PropTypes.bool,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
   };
 
   static childContextTypes = {
+    cartItem: PropTypes.shape(),
     cartItemId: PropTypes.string,
     type: PropTypes.string,
     product: PropTypes.shape(),
+    registerAction: PropTypes.func,
+    invokeAction: PropTypes.func,
   };
 
   static defaultProps = {
     isIos: false,
+    fulfillment: null,
     deleteProduct: () => { },
     onToggleFocus: () => { },
     updateProduct: () => { },
@@ -56,6 +61,7 @@ class CartProduct extends Component {
     this.state = {
       editMode: false,
     };
+    this.actions = {};
   }
 
   /**
@@ -65,10 +71,37 @@ class CartProduct extends Component {
    */
   getChildContext() {
     return {
+      cartItem: {
+        id: this.props.id,
+        product: this.props.product,
+        quantity: this.props.quantity,
+        fulfillment: this.props.fulfillment,
+      },
       cartItemId: this.props.id,
       type: CART_ITEM_TYPE_PRODUCT,
       product: this.props.product,
+      registerAction: this.registerAction,
+      invokeAction: this.invokeAction,
     };
+  }
+
+  /**
+   * @param {boolean} action The action to register.
+   * @param {Function} cb action callback
+   */
+  registerAction = (action, cb) => {
+    this.actions[action] = cb;
+  }
+
+  /**
+   * @param {boolean} action The action to call.
+   * @param {Function} args action args
+   */
+  invokeAction = (action, ...args) => {
+    if (!this.actions[action]) {
+      return;
+    }
+    this.actions[action](...args);
   }
 
   /**

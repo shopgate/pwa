@@ -1,5 +1,5 @@
 import { receivedVisibleProduct$ } from '@shopgate/engage/product';
-import { cartWillEnter$, SHOPGATE_CART_GET_CART, getCartProducts } from '@shopgate/engage/cart';
+import { SHOPGATE_CART_GET_CART, getCartProducts, cartReceived$ } from '@shopgate/engage/cart';
 import { receiveCoreConfig$, configuration, PIPELINES } from '@shopgate/engage/core';
 import { FULFILLMENT_PATH_MULTI_LINE_RESERVE, SHOPGATE_STOREFRONT_GET_CART } from './constants';
 import { fetchLocationsById, fetchProductLocations } from './actions';
@@ -39,7 +39,7 @@ function locations(subscribe) {
       }));
 
       // 2. Subscribe to cart updates
-      subscribe(cartWillEnter$, ({ dispatch, getState }) => {
+      subscribe(cartReceived$, ({ dispatch, getState }) => {
         const cartItems = getCartProducts(getState());
         const locationIds = cartItems.map(item => (
           item.fulfillment && item.fulfillment.location && item.fulfillment.location.code

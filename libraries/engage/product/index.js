@@ -72,6 +72,7 @@ export { default as Description } from './components/Description';
 // HOCs
 export { default as withPriceCalculation } from './hocs/withPriceCalculation';
 export { default as withProductStock } from './hocs/withProductStock';
+export { default as withProduct } from './hocs/withProduct';
 
 // CONTEXTS
 export { default as VariantContext } from './components/ProductCharacteristics/context';

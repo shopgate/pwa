@@ -8,6 +8,10 @@ export {
   StoreList,
   StoreAddressOpeningHours,
   StoreAddressPhoneNumber,
+  CartItemProductChangeLocation,
+  CartItemProductContextMenuItem,
+  Fulfillment,
+  ProductLocations,
 } from './components';
 
 // CONSTANTS

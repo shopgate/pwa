@@ -18,8 +18,6 @@ exports[`<StoreListSearch /> should call getProductLocations after clicking the 
       ],
     }
   }
-  loading={false}
-  productId="ABC123"
 >
   <div
     className={
@@ -105,8 +103,6 @@ exports[`<StoreListSearch /> should call getProductLocations with a postal code 
       ],
     }
   }
-  loading={false}
-  productId="ABC123"
 >
   <div
     className={
