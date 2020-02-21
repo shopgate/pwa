@@ -346,12 +346,10 @@ class InfiniteContainer extends Component {
     const { awaitingItems } = this.state;
     const [start, length] = this.state.offset;
     // Only show items in offset range.
-    const children = items.slice(0, start + length).map(item => React.createElement(
-      iterator,
+    const children = items.slice(0, start + length).map(item => React.cloneElement(
+      iterator(item),
       {
-        ...item,
         columns,
-        key: item.id,
       }
     ));
 
