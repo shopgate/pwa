@@ -1,16 +1,14 @@
 import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '../../../core';
-import { Accordion } from '../../../components';
 import FulfillmentContext from '../context';
 import { StockInfo } from '../StockInfo';
 import StoreContext from './Store.context';
+import StoreAddressHeading from './StoreAddressHeading';
 import StoreAddressHoursToday from './StoreAddressHoursToday';
-import StoreAddressMailingAddress from './StoreAddressMailingAddress';
-import StoreAddressOpeningHours from './StoreAddressOpeningHours';
-import StoreAddressPhoneNumber from './StoreAddressPhoneNumber';
+import StoreAddressStoreDetails from './StoreAddressStoreDetails';
+
 import {
-  store as storeStyles, storeMain, storeImage, storeName, storeInfo,
+  store as storeStyles, storeMain, storeInfo,
 } from './style';
 
 /**
@@ -29,7 +27,6 @@ function StoreAddress({ address }) {
   return (
     <div className={storeStyles} key={address.code}>
       <div className={storeMain}>
-        <div className={storeImage} />
         <div
           className={storeInfo}
           onClick={handleClick}
@@ -37,19 +34,15 @@ function StoreAddress({ address }) {
           role="button"
           tabIndex={0}
         >
-          <div className={storeName} data-test-id="store-name">{store.name}</div>
+          <StoreAddressHeading store={store} />
           <StoreAddressHoursToday hours={store.operationHours} />
-          <StoreAddressMailingAddress address={address} />
           <StockInfo
             location={store}
             showStoreName={false}
           />
         </div>
       </div>
-      <Accordion renderLabel={() => i18n.text('locations.details')}>
-        <StoreAddressOpeningHours hours={store.operationHours} />
-        <StoreAddressPhoneNumber phone={address.phoneNumber} />
-      </Accordion>
+      <StoreAddressStoreDetails store={store} address={address} />
     </div>
   );
 }

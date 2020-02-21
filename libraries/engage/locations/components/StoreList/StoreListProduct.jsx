@@ -3,7 +3,6 @@ import { ProductImage } from '../../../product';
 import FulfillmentContext from '../context';
 import StoreListProductName from './StoreListProductName';
 import StoreListProductVariants from './StoreListProductVariants';
-import StoreListProductAvailability from './StoreListProductAvailability';
 import * as styles from './style';
 
 /**
@@ -26,7 +25,6 @@ function StoreListProduct() {
         <div className={styles.productContent}>
           <StoreListProductName />
           <StoreListProductVariants />
-          <StoreListProductAvailability />
         </div>
       </div>
     </div>

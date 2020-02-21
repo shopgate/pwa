@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import * as styles from './style';
 
@@ -8,15 +8,13 @@ import * as styles from './style';
  * @returns {JSX}
  */
 function AccordionContent({ children, open, id }) {
-  const ref = useRef(null);
-  const height = (ref.current === null) ? 'auto' : ref.current.clientHeight;
   const style = {
-    height: !open ? 0 : height,
+    height: !open ? 0 : 'auto',
   };
 
   return (
     <div className={styles.content} style={style} id={id} aria-hidden={!open}>
-      <div ref={ref} className={styles.contentInner}>
+      <div className={styles.contentInner}>
         {children}
       </div>
     </div>

@@ -37,7 +37,6 @@ exports[`<StoreListProduct /> should render a product without selected variants.
     >
       <StoreListProductName />
       <Connect(StoreListProductVariants) />
-      <StoreListProductAvailability />
     </div>
   </div>
 </div>
