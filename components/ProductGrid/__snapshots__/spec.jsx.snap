@@ -36,15 +36,16 @@ exports[`<ProductGrid /> should render with the InfineteContainer 1`] = `
 >
   <Consumer>
     <InfiniteContainer
+      columns={2}
       containerRef={
         Object {
           "current": null,
         }
       }
-      initialLimit={30}
+      initialLimit={32}
       items={Array []}
       iterator={[Function]}
-      limit={30}
+      limit={32}
       loader={[Function]}
       loadingIndicator={<LoadingIndicator />}
       preloadMultiplier={2}
