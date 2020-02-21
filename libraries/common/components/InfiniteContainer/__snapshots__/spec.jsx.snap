@@ -5,193 +5,161 @@ exports[`<InfiniteContainer /> Given that the initialLimit is used in the correc
   <div>
     <div>
       <li
-        columns={2}
         key="0"
       >
         Item 0
       </li>
       <li
-        columns={2}
         key="1"
       >
         Item 1
       </li>
       <li
-        columns={2}
         key="2"
       >
         Item 2
       </li>
       <li
-        columns={2}
         key="3"
       >
         Item 3
       </li>
       <li
-        columns={2}
         key="4"
       >
         Item 4
       </li>
       <li
-        columns={2}
         key="5"
       >
         Item 5
       </li>
       <li
-        columns={2}
         key="6"
       >
         Item 6
       </li>
       <li
-        columns={2}
         key="7"
       >
         Item 7
       </li>
       <li
-        columns={2}
         key="8"
       >
         Item 8
       </li>
       <li
-        columns={2}
         key="9"
       >
         Item 9
       </li>
       <li
-        columns={2}
         key="10"
       >
         Item 10
       </li>
       <li
-        columns={2}
         key="11"
       >
         Item 11
       </li>
       <li
-        columns={2}
         key="12"
       >
         Item 12
       </li>
       <li
-        columns={2}
         key="13"
       >
         Item 13
       </li>
       <li
-        columns={2}
         key="14"
       >
         Item 14
       </li>
       <li
-        columns={2}
         key="15"
       >
         Item 15
       </li>
       <li
-        columns={2}
         key="16"
       >
         Item 16
       </li>
       <li
-        columns={2}
         key="17"
       >
         Item 17
       </li>
       <li
-        columns={2}
         key="18"
       >
         Item 18
       </li>
       <li
-        columns={2}
         key="19"
       >
         Item 19
       </li>
       <li
-        columns={2}
         key="20"
       >
         Item 20
       </li>
       <li
-        columns={2}
         key="21"
       >
         Item 21
       </li>
       <li
-        columns={2}
         key="22"
       >
         Item 22
       </li>
       <li
-        columns={2}
         key="23"
       >
         Item 23
       </li>
       <li
-        columns={2}
         key="24"
       >
         Item 24
       </li>
       <li
-        columns={2}
         key="25"
       >
         Item 25
       </li>
       <li
-        columns={2}
         key="26"
       >
         Item 26
       </li>
       <li
-        columns={2}
         key="27"
       >
         Item 27
       </li>
       <li
-        columns={2}
         key="28"
       >
         Item 28
       </li>
       <li
-        columns={2}
         key="29"
       >
         Item 29
       </li>
       <li
-        columns={2}
         key="30"
       >
         Item 30
       </li>
       <li
-        columns={2}
         key="31"
       >
         Item 31
