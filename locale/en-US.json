@@ -213,7 +213,14 @@
     "message_type_info": "Info",
     "message_type_error": "Error",
     "message_type_warning": "Warning",
-    "reservation_hint": "*Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality."
+    "reservation_hint": "*Prices may vary from store to store and online. For Reserve Online orders certain state and local fees may not be reflected in the total. {shopName} is not responsible for the errors or omissions in pricing and quality.",
+    "errors": {
+      "mixed_cart": "We currently do not support Ship to Address and Reserve to Cart within the same transaction. Please update your delivery options and continue shopping or proceed to checkout.",
+      "direct_ship_item": "Check if this item is available for reserve at a store near you.",
+      "ropis_cart_inventory": "Not all of your items can be reserved. Please check the products in cart and change fulfilment options.",
+      "ropis_item_inventory": "This item is not available for reservation at the selected location. Check for availability at a different location.",
+      "ropis_item_inventory_exceed": "This item is not available in the desired quantity at {storeName}. {inventory} will be reserved."
+    }
   },
   "login": {
     "headline": "Welcome",
