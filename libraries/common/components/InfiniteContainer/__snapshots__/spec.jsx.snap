@@ -154,6 +154,16 @@ exports[`<InfiniteContainer /> Given that the initialLimit is used in the correc
       >
         Item 29
       </li>
+      <li
+        key="30"
+      >
+        Item 30
+      </li>
+      <li
+        key="31"
+      >
+        Item 31
+      </li>
     </div>
   </div>
 </div>
