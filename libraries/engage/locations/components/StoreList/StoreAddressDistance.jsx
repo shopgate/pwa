@@ -24,7 +24,7 @@ const StoreAddressDistance = ({ distance, unitSystem = UNIT_SYSTEM_METRIC }: Pro
 
   return (
     <I18n.Text
-      className={storeDistance}
+      className={storeDistance.toString()}
       string={`locations.distance_${unitSystem}`}
       params={{ distance: i18n.number(distance, 2) }}
     />
