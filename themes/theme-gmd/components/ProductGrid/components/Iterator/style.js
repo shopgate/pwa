@@ -1,20 +1,22 @@
 import { css } from 'glamor';
 
-const item = css({
-  ':nth-child(even)': {
-    padding: '2px 0 2px 2px',
+/**
+ * Styling of the GridItems for variable columns
+ * @param {number} columns count of the columns in Grid
+ * @return {string}
+ */
+const item = columns => css({
+  [`:nth-child(${columns}n)`]: {
+    paddingRight: 0,
   },
-  ':nth-child(odd)': {
-    padding: '2px 2px 2px 0',
+  [`:nth-child(${columns}n+1)`]: {
+    paddingLeft: 0,
   },
-  ':first-child': {
-    padding: '0 2px 2px 0',
-  },
-  ':nth-child(2)': {
-    padding: '0 0 2px 2px',
+  [`:nth-child(-n+${columns})`]: {
+    paddingTop: 0,
   },
   padding: 2,
-  width: '50%',
+  width: `${100 / columns}%`,
 }).toString();
 
 export default {

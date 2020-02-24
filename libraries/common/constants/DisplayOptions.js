@@ -5,4 +5,4 @@ export const SORT_DATE_ASC = 'dateAsc';
 export const SORT_DATE_DESC = 'dateDesc';
 export const SORT_RANDOM = 'random';
 export const DEFAULT_SORT = SORT_RELEVANCE;
-export const ITEMS_PER_LOAD = 30;
+export const ITEMS_PER_LOAD = 32;
