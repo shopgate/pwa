@@ -1,1324 +1,1849 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductSlider /> should call the products callback on mount 1`] = `
-<ProductSlider
-  getProducts={[MockFunction]}
-  id="some-slider-id"
-  products={Array []}
-  settings={
-    Object {
-      "headline": "",
-      "layout": "",
-      "queryParams": "",
-      "queryType": 1,
-      "showName": true,
-      "showPrice": true,
-      "showReviews": true,
-      "sliderSettings": Object {
-        "autostart": false,
-        "delay": "1000",
-        "loop": false,
-      },
-      "sortOrder": "asc",
-    }
-  }
-  widgetSettings={Object {}}
-/>
-`;
+exports[`<ProductSlider /> should call the products callback on mount 1`] = `""`;
 
 exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] = `
-<ProductSlider
-  getProducts={[Function]}
-  id="some-slider-id"
-  products={
-    Array [
+<div
+  className="css-1qazn57"
+>
+  <h3
+    className="css-rsku8h"
+  >
+    Lorem ipsum
+  </h3>
+  <Swiper
+    aria-hidden={null}
+    autoPlay={false}
+    className={null}
+    classNames={
       Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-    ]
-  }
-  settings={
-    Object {
-      "headline": "Lorem ipsum",
-      "layout": "",
-      "queryParams": "",
-      "queryType": 1,
-      "showName": true,
-      "showPrice": true,
-      "showReviews": true,
-      "sliderSettings": Object {
-        "autostart": false,
-        "delay": "1000",
-        "loop": false,
-      },
-      "sortOrder": "asc",
+        "container": "css-qsjgo7",
+      }
     }
-  }
-  widgetSettings={Object {}}
-/>
+    controls={false}
+    disabled={false}
+    freeMode={true}
+    indicators={false}
+    initialSlide={0}
+    interval={1000}
+    loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={true}
+    slidesPerView={2.3}
+    snapItems={true}
+    zoom={false}
+  >
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+  </Swiper>
+</div>
 `;
 
 exports[`<ProductSlider /> should not render an empty headline 1`] = `
-<ProductSlider
-  getProducts={[Function]}
-  id="some-slider-id"
-  products={
-    Array [
+<div
+  className="css-1qazn57"
+>
+  <Swiper
+    aria-hidden={null}
+    autoPlay={false}
+    className={null}
+    classNames={
       Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-    ]
-  }
-  settings={
-    Object {
-      "headline": "",
-      "layout": "",
-      "queryParams": "",
-      "queryType": 1,
-      "showName": true,
-      "showPrice": true,
-      "showReviews": true,
-      "sliderSettings": Object {
-        "autostart": false,
-        "delay": "1000",
-        "loop": false,
-      },
-      "sortOrder": "asc",
+        "container": "css-qsjgo7",
+      }
     }
-  }
-  widgetSettings={Object {}}
-/>
+    controls={false}
+    disabled={false}
+    freeMode={true}
+    indicators={false}
+    initialSlide={0}
+    interval={1000}
+    loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={true}
+    slidesPerView={2.3}
+    snapItems={true}
+    zoom={false}
+  >
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+  </Swiper>
+</div>
 `;
 
-exports[`<ProductSlider /> should not render the widget without any data 1`] = `
-<ProductSlider
-  getProducts={[Function]}
-  id="some-slider-id"
-  products={Array []}
-  settings={
-    Object {
-      "headline": "",
-      "layout": "",
-      "queryParams": "",
-      "queryType": 1,
-      "showName": true,
-      "showPrice": true,
-      "showReviews": true,
-      "sliderSettings": Object {
-        "autostart": false,
-        "delay": "1000",
-        "loop": false,
-      },
-      "sortOrder": "asc",
-    }
-  }
-  widgetSettings={Object {}}
-/>
-`;
+exports[`<ProductSlider /> should not render the widget without any data 1`] = `""`;
 
 exports[`<ProductSlider /> should render the headline 1`] = `
-<ProductSlider
-  getProducts={[Function]}
-  id="some-slider-id"
-  products={
-    Array [
+<div
+  className="css-1qazn57"
+>
+  <h3
+    className="css-rsku8h"
+  >
+    Lorem ipsum
+  </h3>
+  <Swiper
+    aria-hidden={null}
+    autoPlay={false}
+    className={null}
+    classNames={
       Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-    ]
-  }
-  settings={
-    Object {
-      "headline": "Lorem ipsum",
-      "layout": "",
-      "queryParams": "",
-      "queryType": 1,
-      "showName": true,
-      "showPrice": true,
-      "showReviews": true,
-      "sliderSettings": Object {
-        "autostart": false,
-        "delay": "1000",
-        "loop": false,
-      },
-      "sortOrder": "asc",
+        "container": "css-qsjgo7",
+      }
     }
-  }
-  widgetSettings={Object {}}
-/>
+    controls={false}
+    disabled={false}
+    freeMode={true}
+    indicators={false}
+    initialSlide={0}
+    interval={1000}
+    loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={true}
+    slidesPerView={2.3}
+    snapItems={true}
+    zoom={false}
+  >
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+  </Swiper>
+</div>
 `;
 
 exports[`<ProductSlider /> should render the widget with data 1`] = `
-<ProductSlider
-  getProducts={[Function]}
-  id="some-slider-id"
-  products={
-    Array [
+<div
+  className="css-1qazn57"
+>
+  <Swiper
+    aria-hidden={null}
+    autoPlay={false}
+    className={null}
+    classNames={
       Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-        "rating": Object {
-          "average": 0.5,
-          "count": 100,
-        },
-      },
-    ]
-  }
-  settings={
-    Object {
-      "headline": "",
-      "layout": "",
-      "queryParams": "",
-      "queryType": 1,
-      "showName": true,
-      "showPrice": true,
-      "showReviews": true,
-      "sliderSettings": Object {
-        "autostart": false,
-        "delay": "1000",
-        "loop": false,
-      },
-      "sortOrder": "asc",
+        "container": "css-qsjgo7",
+      }
     }
-  }
-  widgetSettings={Object {}}
-/>
+    controls={false}
+    disabled={false}
+    freeMode={true}
+    indicators={false}
+    initialSlide={0}
+    interval={1000}
+    loop={false}
+    maxIndicators={null}
+    onSlideChange={[Function]}
+    rebuildOnUpdate={true}
+    slidesPerView={2.3}
+    snapItems={true}
+    zoom={false}
+  >
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+    <SwiperItem
+      className="css-j85wo1"
+      key="1234"
+    >
+      <Card
+        className="css-6r0d5j"
+      >
+        <ProductCard
+          hideName={false}
+          hidePrice={false}
+          hideRating={false}
+          product={
+            Object {
+              "featuredImageUrl": "http://placekitten.com/300/300",
+              "id": "1234",
+              "liveshoppings": Array [
+                Object {
+                  "from": 0,
+                  "to": 123456789,
+                },
+              ],
+              "name": "First product",
+              "price": Object {
+                "currency": "EUR",
+                "unitPrice": 100,
+                "unitPriceMin": 0,
+                "unitPriceStriked": 20,
+              },
+              "rating": Object {
+                "average": 0.5,
+                "count": 100,
+              },
+            }
+          }
+          titleRows={2}
+        />
+      </Card>
+    </SwiperItem>
+  </Swiper>
+</div>
 `;
