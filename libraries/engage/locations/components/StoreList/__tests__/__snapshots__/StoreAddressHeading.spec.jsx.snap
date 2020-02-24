@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StoreAddressHeading> should render as expected 1`] = `
+<div
+  className={
+    Object {
+      "data-css-1bvvjxu": "",
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-1qlb3ci": "",
+      }
+    }
+    data-test-id="store-name"
+  >
+    ACME
+  </div>
+  <StoreAddressDistance
+    distance={5.3}
+    unitSystem="system"
+  />
+</div>
+`;

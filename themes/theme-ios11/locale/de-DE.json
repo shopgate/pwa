@@ -147,6 +147,8 @@
     "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe.",
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
+    "distance_metric": "{distance} km",
+    "distance_imperial": "{distance} mi",
     "method": {
       "ropis" : "Reserve online, pick up in store",
       "direct_ship" : "Ship to address"

@@ -144,6 +144,8 @@
     "error_no_store_found": "We don’t have any stores matching this location, please check your inputs.",
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
+    "distance_metric": "{distance} km",
+    "distance_imperial": "{distance} mi",
     "method": {
       "ropis" : "Reserve online, pick up in store",
       "direct_ship" : "Ship to address"

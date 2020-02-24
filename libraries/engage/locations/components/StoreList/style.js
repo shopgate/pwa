@@ -39,20 +39,6 @@ export const variants = css({
   marginBottom: variables.gap.small,
 });
 
-export const availability = css({
-  display: 'flex',
-  flexFlow: 'row nowrap',
-});
-
-export const availabilityText = css({
-  color: colors.warning,
-});
-
-export const availabilityStores = css({
-  flexGrow: 1,
-  textAlign: 'right',
-});
-
 export const stores = css({
   background: colors.background,
   padding: contentPadding,
@@ -76,16 +62,6 @@ export const storeMain = css({
   boxShadow: `inset 0 -1px 0 ${colors.shade7}`,
 });
 
-export const storeImage = css({
-  borderRadius: '100%',
-  flexGrow: 1,
-  flexShrink: 0,
-  background: colors.placeholder,
-  marginRight: variables.gap.big,
-  width: 48,
-  height: 48,
-});
-
 export const storeInfo = css({
   cursor: 'pointer',
   padding: 0,
@@ -93,20 +69,39 @@ export const storeInfo = css({
   width: '100%',
 });
 
+export const storeHeading = css({
+  display: 'flex',
+  justifyContent: 'space-between',
+  paddingBottom: variables.gap.small,
+});
+
 export const storeName = css({
   fontSize: '1rem',
   fontWeight: 500,
+});
+
+export const storeDistance = css({
+  whiteSpace: 'nowrap',
+  color: colors.shade3,
 });
 
 export const storeHoursToday = css({
   color: colors.shade3,
 });
 
+export const storeDetails = css({
+  display: 'flex',
+  flexWrap: 'wrap',
+});
+
+export const storeDetailsOperationHours = css({
+  padding: `0 ${variables.gap.big}px ${variables.gap.big}px 0`,
+  flexShrink: 0,
+});
+
 export const address = css({
   display: 'flex',
   flexFlow: 'row nowrap',
-  paddingTop: variables.gap.small * 0.5,
-  color: colors.shade3,
 });
 
 export const addressIcon = css({

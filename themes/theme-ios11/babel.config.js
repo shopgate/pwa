@@ -51,6 +51,7 @@ module.exports = (api) => {
       development: {
         plugins: [
           'react-hot-loader/babel',
+          'flow-react-proptypes',
         ],
       },
       production: {

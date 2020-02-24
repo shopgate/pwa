@@ -6,7 +6,7 @@ exports[`<StoreAddressMailingAddress /> should render as expected 1`] = `
 <div
   className={
     Object {
-      "data-css-1npkmgj": "",
+      "data-css-1f7wp8g": "",
     }
   }
 >
@@ -34,7 +34,7 @@ exports[`<StoreAddressMailingAddress /> should render more streets if necessary 
 <div
   className={
     Object {
-      "data-css-1npkmgj": "",
+      "data-css-1f7wp8g": "",
     }
   }
 >
