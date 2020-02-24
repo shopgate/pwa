@@ -20,8 +20,8 @@ function ProductSlider(props) {
     snap,
   } = props;
 
-  const widgetSetting = useWidgetSettings(WIDGET_ID) || {};
-  const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSetting;
+  const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
+  const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
 
   return (
     <Theme>
