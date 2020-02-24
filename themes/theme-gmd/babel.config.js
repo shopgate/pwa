@@ -39,7 +39,6 @@ module.exports = (api) => {
         helpers: false,
         regenerator: true,
       }],
-      'flow-react-proptypes',
     ],
     env: {
       test: {
@@ -52,6 +51,7 @@ module.exports = (api) => {
       development: {
         plugins: [
           'react-hot-loader/babel',
+          'flow-react-proptypes',
         ],
       },
       production: {
