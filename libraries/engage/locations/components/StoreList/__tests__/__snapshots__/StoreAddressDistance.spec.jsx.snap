@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StoreAddressDistance should not render when no distance was passed 1`] = `""`;
+
+exports[`<StoreAddressDistance should render when a unit system is set 1`] = `
+<Translate
+  className={
+    Object {
+      "data-css-1fxtar0": "",
+    }
+  }
+  params={
+    Object {
+      "distance": "5.4",
+    }
+  }
+  string="locations.distance_imperial"
+/>
+`;
+
+exports[`<StoreAddressDistance should render when the distance is 0 1`] = `
+<Translate
+  className={
+    Object {
+      "data-css-1fxtar0": "",
+    }
+  }
+  params={
+    Object {
+      "distance": "0",
+    }
+  }
+  string="locations.distance_metric"
+/>
+`;

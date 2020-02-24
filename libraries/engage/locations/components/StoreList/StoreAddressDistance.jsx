@@ -5,7 +5,7 @@ import { i18n } from '@shopgate/engage/core';
 import { storeDistance } from './style';
 
 type Props = {
-  distance?: string;
+  distance?: number;
   unitSystem?: string;
 }
 
@@ -17,8 +17,8 @@ export const UNIT_SYSTEM_IMPERIAL = 'imperial';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const StoreAddressDistance = ({ distance, unitSystem }: Props) => {
-  if (!distance) {
+const StoreAddressDistance = ({ distance, unitSystem = UNIT_SYSTEM_METRIC }: Props) => {
+  if (distance === null) {
     return null;
   }
 
