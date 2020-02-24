@@ -129,3 +129,5 @@ class ProductSlider extends PureComponent {
 }
 
 export default withWidgetSettings(connect(ProductSlider), WIDGET_ID);
+
+export { ProductSlider as UnwrappedProductSlider };
