@@ -39,6 +39,7 @@ module.exports = (api) => {
         helpers: false,
         regenerator: true,
       }],
+      'flow-react-proptypes',
     ],
     env: {
       test: {
