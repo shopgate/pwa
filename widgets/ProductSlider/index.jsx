@@ -139,3 +139,5 @@ class ProductSlider extends Component {
 }
 
 export default withWidgetSettings(connect(ProductSlider), WIDGET_ID);
+
+export { ProductSlider as UnwrappedProductSlider };
