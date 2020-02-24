@@ -248,6 +248,8 @@ const icons = {
  * @property {ThemeVariables} variables
  * @property {ThemeIcons} icons
  */
+
+/** @type {ThemeConfig} */
 export const themeConfig = {
   typography: {
     family: 'Roboto, Arial, sans-serif',

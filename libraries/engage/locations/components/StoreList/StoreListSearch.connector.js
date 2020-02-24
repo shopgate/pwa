@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { getProductId } from '@shopgate/engage/product';
 import { makeGetIsFetchingProductLocations } from '../../selectors';
 import { getProductLocations } from './StoreListSearch.actions';
 
@@ -15,7 +14,6 @@ const makeMapStateToProps = () => {
    * @returns {Object}
    */
   return (state, props) => ({
-    productId: getProductId(state, props),
     loading: getIsFetchingProductLocations(state, props),
   });
 };

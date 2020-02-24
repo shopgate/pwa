@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { shallow, mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import { StoreListSearchUnwrapped as StoreListSearch } from '../StoreListSearch';
+import StoreListSearch from '../StoreListSearch';
 
 jest.mock('@shopgate/engage/components', () => ({
   LocatorIcon: () => '',
@@ -13,21 +13,21 @@ jest.mock('react', () => ({
   ...require.requireActual('react'),
   useContext: jest.fn(),
 }));
+jest.mock('../StoreListSearch.connector', () => cmp => cmp);
 
 describe('<StoreListSearch />', () => {
   const getProductLocations = jest.fn();
 
   const productId = 'ABC123';
   const postalCode = 'ACME';
-  const defaultProps = {
-    productId,
-    getProductLocations,
-  };
+  const defaultProps = { getProductLocations };
   const context = {
+    product: { id: productId },
+    loading: false,
     locations: [{ code: 'LOCCODE' }],
   };
 
-  beforeAll(() => {
+  beforeEach(() => {
     useContext.mockReturnValue(context);
   });
 
@@ -44,7 +44,7 @@ describe('<StoreListSearch />', () => {
     expect(wrapper.find('input').prop('disabled')).toEqual(false);
   });
 
-  it('should react on updates of the loading prop', () => {
+  it('should react on updates of the loading prop', async () => {
     const wrapper = shallow((
       <StoreListSearch {...defaultProps} />
     ));
@@ -53,11 +53,15 @@ describe('<StoreListSearch />', () => {
     expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(false);
     expect(wrapper.find('input').prop('disabled')).toEqual(false);
 
-    wrapper.setProps({ loading: true });
+    useContext.mockReturnValueOnce({
+      ...context,
+      loading: true,
+    });
+    wrapper.setProps({}).update();
     expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(true);
     expect(wrapper.find('input').prop('disabled')).toEqual(true);
 
-    wrapper.setProps({ loading: false });
+    wrapper.setProps({}).update();
     expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(false);
     expect(wrapper.find('input').prop('disabled')).toEqual(false);
   });

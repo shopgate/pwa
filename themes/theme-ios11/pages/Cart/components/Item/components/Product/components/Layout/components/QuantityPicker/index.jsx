@@ -100,7 +100,7 @@ class QuantityPicker extends Component {
   }
 
   /**
-   * Sets the comoponent ref.
+   * Sets the component ref.
    * @param {HTMLElement} input The input field ref.
    */
   setRef = (input) => {

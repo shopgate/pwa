@@ -1,3 +1,4 @@
+// @flow
 // ACTIONS
 export { fetchProductLocations } from './actions';
 
@@ -8,6 +9,10 @@ export {
   StoreList,
   StoreAddressOpeningHours,
   StoreAddressPhoneNumber,
+  CartItemProductChangeLocation,
+  CartItemProductContextMenuItem,
+  Fulfillment,
+  ProductLocations,
 } from './components';
 
 // CONSTANTS
