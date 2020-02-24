@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Swiper, Card } from '@shopgate/engage/components';
 import { ProductCard } from '@shopgate/engage/product';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
-import { useWidgetSettings } from '@shopgate/engage/core';
+import { withWidgetSettings } from '@shopgate/engage/core';
 import { WIDGET_ID } from 'Components/ProductSlider';
 import connect from './connector';
 import styles from './style';
@@ -37,10 +37,14 @@ class ProductSlider extends PureComponent {
       }).isRequired,
     }).isRequired,
     products: PropTypes.arrayOf(PropTypes.shape()),
+    widgetSettings: PropTypes.shape({
+      slidesPerView: PropTypes.number,
+    }),
   };
 
   static defaultProps = {
     products: [],
+    widgetSettings: {},
   };
 
   /**
@@ -74,18 +78,18 @@ class ProductSlider extends PureComponent {
     }
 
     return null;
-  }
+  };
 
   /**
    * Renders the widget.
    * @return {JSX}
    */
   render() {
-    const { settings, products } = this.props;
+    const { settings, products, widgetSettings } = this.props;
     const {
       sliderSettings, showName, showPrice, showReviews,
     } = settings;
-    const { slidesPerView = 2.3 } = useWidgetSettings(WIDGET_ID) || {};
+    const { slidesPerView = 2.3 } = widgetSettings;
 
     if (!products.length) {
       return null;
@@ -124,4 +128,4 @@ class ProductSlider extends PureComponent {
   }
 }
 
-export default connect(ProductSlider);
+export default withWidgetSettings(connect(ProductSlider), WIDGET_ID);
