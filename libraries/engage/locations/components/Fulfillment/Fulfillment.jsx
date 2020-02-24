@@ -1,10 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import SheetDrawer from '../../../components/SheetDrawer';
 import { i18n } from '../../../core/helpers/i18n';
 import FulfillmentContext from '../context';
 import connect from './Fulfillment.connector';
 import { sheet } from './Fulfillment.style';
+import { type OwnProps, type StateProps } from './Fulfillment.types';
+
+type Props = OwnProps & StateProps;
 
 /**
  * Renders the store selector sheet.
@@ -14,7 +17,7 @@ import { sheet } from './Fulfillment.style';
  * @param {boolean} loading loading
  * @returns {JSX}
  */
-const Fulfillment = ({ settings, title, children }) => (
+const Fulfillment = ({ settings, title, children }: Props) => (
   <FulfillmentContext.Provider value={{ settings }}>
     <SheetDrawer isOpen title={i18n.text(title)}>
       <div className={sheet}>
@@ -23,12 +26,6 @@ const Fulfillment = ({ settings, title, children }) => (
     </SheetDrawer>
   </FulfillmentContext.Provider>
 );
-
-Fulfillment.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  settings: PropTypes.shape(),
-};
 
 Fulfillment.defaultProps = {
   settings: null,

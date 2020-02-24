@@ -1,6 +1,8 @@
+// @flow
 import { connect } from 'react-redux';
 import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { makeGetProductLocations, makeGetIsFetchingProductLocations } from '../../selectors';
+import { type OwnProps, type StateProps } from './ProductLocations.types';
 
 /**
  * @returns {Function}
@@ -21,4 +23,4 @@ function makeMapStateToProps() {
   });
 }
 
-export default connect(makeMapStateToProps);
+export default connect<StateProps, any, OwnProps>(makeMapStateToProps);

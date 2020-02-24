@@ -1,3 +1,4 @@
+// @flow
 // ACTIONS
 export { fetchProductLocations } from './actions';
 

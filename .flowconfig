@@ -1,5 +1,9 @@
 [ignore]
   .*/extensions/.*
+  .*/patches/.*
+  .*/scripts/.*
+  .*/utils/.*
+
 [include]
 
 [libs]

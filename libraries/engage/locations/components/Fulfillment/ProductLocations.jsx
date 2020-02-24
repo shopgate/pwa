@@ -1,8 +1,11 @@
+// @flow
 import React, { useContext, useMemo } from 'react';
-import PropTypes from 'prop-types';
 import FulfillmentContext from '../context';
 import connect from './ProductLocations.connector';
 import { StoreList } from '../StoreList';
+import { type OwnProps, type StateProps } from './ProductLocations.types';
+
+type Props = OwnProps & StateProps;
 
 /**
  * @param {Function} onLocationSelect onLocationSelect callback
@@ -14,7 +17,7 @@ import { StoreList } from '../StoreList';
  */
 const ProductLocations = ({
   onLocationSelect, product, locationId, locations, loading,
-}) => {
+}: Props) => {
   const context = useContext(FulfillmentContext);
 
   const sortedLocations = useMemo(() => (
@@ -39,14 +42,6 @@ const ProductLocations = ({
       <StoreList />
     </FulfillmentContext.Provider>
   );
-};
-
-ProductLocations.propTypes = {
-  onLocationSelect: PropTypes.func.isRequired,
-  loading: PropTypes.bool,
-  locationId: PropTypes.string,
-  locations: PropTypes.arrayOf(PropTypes.shape()),
-  product: PropTypes.shape(),
 };
 
 ProductLocations.defaultProps = {

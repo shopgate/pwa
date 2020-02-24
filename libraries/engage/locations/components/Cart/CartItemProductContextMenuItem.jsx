@@ -1,7 +1,13 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import { I18n, ContextMenu } from '@shopgate/engage/components';
+
+type Props = {
+  cartItem: Object;
+  onClick?: Function;
+  closeMenu?: Function;
+}
 
 /**
  * @param {Object} cartItem cartItem
@@ -9,7 +15,7 @@ import { I18n, ContextMenu } from '@shopgate/engage/components';
  * @param {Function} closeMenu closeMenu
  * @returns {JSX}
  */
-const CartItemProductContextMenuItem = ({ cartItem, onClick, closeMenu }) => {
+const CartItemProductContextMenuItem = ({ cartItem, onClick, closeMenu }: Props) => {
   const { fulfillment } = cartItem;
   if (!fulfillment) {
     return null;
@@ -20,12 +26,6 @@ const CartItemProductContextMenuItem = ({ cartItem, onClick, closeMenu }) => {
       <I18n.Text string="locations.change_location" />
     </ContextMenu.Item>
   );
-};
-
-CartItemProductContextMenuItem.propTypes = {
-  cartItem: PropTypes.shape().isRequired,
-  closeMenu: PropTypes.func,
-  onClick: PropTypes.func,
 };
 
 CartItemProductContextMenuItem.defaultProps = {

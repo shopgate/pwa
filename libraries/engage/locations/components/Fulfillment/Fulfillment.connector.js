@@ -1,6 +1,8 @@
+// @flow
 import { connect } from 'react-redux';
 import { makeGetMerchantSettings } from '@shopgate/engage/core';
 import { makeGetUserFormInput } from '../../selectors';
+import { type OwnProps, type StateProps } from './Fulfillment.types';
 
 /**
  * @returns {Function}
@@ -20,4 +22,4 @@ function makeMapStateToProps() {
   });
 }
 
-export default connect(makeMapStateToProps);
+export default connect<StateProps, any, OwnProps>(makeMapStateToProps);

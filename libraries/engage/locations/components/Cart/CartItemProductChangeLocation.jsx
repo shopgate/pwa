@@ -1,20 +1,25 @@
+// @flow
 import React, { useCallback, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import Fulfillment from '../Fulfillment/Fulfillment';
 import { isProductAvailable } from '../../helpers';
 import ProductLocations from '../Fulfillment/ProductLocations';
 import connect from './CartItemProductChangeLocation.connector';
+import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
+
+type Props = OwnProps & DispatchProps;
 
 /**
+ * @param {Object} props The component props.
  * @param {Object} cartItem cartItem
  * @param {Function} updateProduct updateProduct
  * @param {Function} fetchProductLocations fetchProductLocations
  * @returns {JSX}
  */
-const CartItemProductChangeLocation = ({
-  cartItem, updateProductInCart, fetchProductLocations, registerAction,
-}) => {
+const CartItemProductChangeLocation = (props: Props) => {
+  const {
+    cartItem, updateProductInCart, fetchProductLocations, registerAction,
+  } = props;
   const [opened, setOpened] = useState(false);
 
   /** Register cart item action */
@@ -26,7 +31,7 @@ const CartItemProductChangeLocation = ({
       fetchProductLocations(cartItem.product.id);
       setOpened(true);
     });
-  }, [cartItem, registerAction, fetchProductLocations]);
+  }, [cartItem, fetchProductLocations, registerAction]);
 
   /** Select location callback */
   const onLocationSelect = useCallback((location) => {
@@ -35,7 +40,7 @@ const CartItemProductChangeLocation = ({
     }
     updateProductInCart(cartItem.id, cartItem.quantity, location);
     setTimeout(() => setOpened(false), 500);
-  }, [cartItem, updateProductInCart]);
+  }, [cartItem.id, cartItem.quantity, updateProductInCart]);
 
   const { fulfillment } = cartItem;
   if (!opened || !fulfillment) {
@@ -53,17 +58,8 @@ const CartItemProductChangeLocation = ({
   );
 };
 
-CartItemProductChangeLocation.propTypes = {
-  cartItem: PropTypes.shape().isRequired,
-  fetchProductLocations: PropTypes.func,
-  registerAction: PropTypes.func,
-  updateProductInCart: PropTypes.func,
-};
-
 CartItemProductChangeLocation.defaultProps = {
-  fetchProductLocations: noop,
   registerAction: noop,
-  updateProductInCart: noop,
 };
 
 export default connect(CartItemProductChangeLocation);
