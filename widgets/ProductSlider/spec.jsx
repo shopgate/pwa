@@ -3,9 +3,6 @@ import { shallow } from 'enzyme';
 import Card from '@shopgate/pwa-ui-shared/Card';
 import { UnwrappedProductSlider as ProductSlider } from './index';
 
-// Mock the redux connect() method instead of providing a fake store.
-jest.mock('./connector', () => obj => obj);
-
 describe('<ProductSlider />', () => {
   /**
    * Mocks the products pipeline request.
