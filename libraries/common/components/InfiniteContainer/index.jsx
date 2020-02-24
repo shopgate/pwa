@@ -345,7 +345,7 @@ class InfiniteContainer extends Component {
     } = this.props;
     const { awaitingItems } = this.state;
     const [start, length] = this.state.offset;
-    // Only show items in offset range.
+    // Only show items in offset range. uses iterator component as item factory
     const children = items.slice(0, start + length).map(item => iterator({
       ...item,
       columns,
