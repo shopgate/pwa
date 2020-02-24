@@ -7,8 +7,8 @@ import {
   CART_PATH,
   CART_ITEM_LIST,
   CART_COUPON_FIELD,
-  CartContext,
   PaymentBar,
+  CartContext,
   FLAG_MULTI_LINE_RESERVE,
   CartItemGroup,
 } from '@shopgate/engage/cart';

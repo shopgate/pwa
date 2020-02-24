@@ -10,7 +10,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
-import { getProductRoute, hasProductVariety } from '@shopgate/pwa-common-commerce/product';
+import { fetchProductsById, getProductRoute, hasProductVariety } from '@shopgate/pwa-common-commerce/product';
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import { checkoutSucceeded$ } from '@shopgate/pwa-common-commerce/checkout';
 import * as pipelines from '../constants/Pipelines';
@@ -40,6 +40,7 @@ import {
   DEEPLINK_CART_ADD_PRODUCT_PATTERN,
   CART_ITEM_TYPE_PRODUCT,
 } from '../constants';
+import { getCartProducts } from '../selectors';
 
 /**
  * Cart subscriptions.
@@ -134,7 +135,12 @@ export default function cart(subscribe) {
     LoadingProvider.setLoading(CART_PATH);
   });
 
-  subscribe(cartIdle$, () => {
+  subscribe(cartIdle$, ({ dispatch, getState }) => {
+    /** Fetch missing products of a cart */
+    const productIds = getCartProducts(getState()).map(cartItem => cartItem.product.id);
+    if (productIds.length) {
+      dispatch(fetchProductsById(productIds));
+    }
     LoadingProvider.resetLoading(CART_PATH);
   });
 

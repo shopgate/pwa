@@ -6,7 +6,6 @@ import { i18n } from '@shopgate/engage/core';
 import {
   ProgressBar, MagnifierIcon, LocatorIcon, MessageBar,
 } from '@shopgate/engage/components';
-import { withCurrentProduct } from '../../../core/hocs/withCurrentProduct';
 import FulfillmentContext from '../context';
 import connect from './StoreListSearch.connector';
 import {
@@ -14,18 +13,11 @@ import {
 } from './StoreListSearch.style';
 
 /**
- * The StoreListSearch component.
- * @param {Object} props The component props.
+ * @param {Function} getProductLocations getProductLocations.
  * @returns {JSX}
  */
-function StoreListSearch(props) {
-  const {
-    productId,
-    loading,
-    getProductLocations,
-  } = props;
-
-  const { locations } = useContext(FulfillmentContext);
+function StoreListSearch({ getProductLocations }) {
+  const { product, loading, locations } = useContext(FulfillmentContext);
   const [query, setQuery] = useState('');
   const [message, setMessage] = useState('');
   const inputEl = useRef(null);
@@ -45,13 +37,13 @@ function StoreListSearch(props) {
     // Clear old error messages.
     setMessage('');
     // Request new locations.
-    const error = await getProductLocations(productId, postalCode);
+    const error = await getProductLocations(product.id, postalCode);
 
     if (error) {
       // Show a message when the locations request failed.
       setMessage(error);
     }
-  }, [getProductLocations, productId]);
+  }, [getProductLocations, product]);
 
   /**
    * Updates the query state of the component when the input changes.
@@ -120,15 +112,6 @@ function StoreListSearch(props) {
 
 StoreListSearch.propTypes = {
   getProductLocations: PropTypes.func.isRequired,
-  loading: PropTypes.bool,
-  productId: PropTypes.string,
 };
 
-StoreListSearch.defaultProps = {
-  productId: null,
-  loading: false,
-};
-
-export const StoreListSearchUnwrapped = StoreListSearch;
-
-export default withCurrentProduct(connect(StoreListSearch));
+export default connect(StoreListSearch);

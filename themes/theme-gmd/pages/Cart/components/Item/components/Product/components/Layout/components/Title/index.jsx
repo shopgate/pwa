@@ -4,6 +4,7 @@ import {
   Grid, I18n, SurroundPortals, ContextMenu,
 } from '@shopgate/engage/components';
 import { CART_ITEM_NAME } from '@shopgate/engage/cart';
+import { CartItemProductContextMenuItem } from '@shopgate/engage/locations';
 import styles from './style';
 
 const contextMenuClasses = {
@@ -17,27 +18,35 @@ const contextMenuClasses = {
  * @param {Object} context The component context.
  * @returns {JSX}
  */
-const Title = ({ value, handleRemove, toggleEditMode }, context) => (
-  <Grid>
-    <Grid.Item grow={1}>
-      <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
-        <div className={styles.title} data-test-id={value}>
-          {value}
-        </div>
-      </SurroundPortals>
-    </Grid.Item>
-    <Grid.Item className={styles.menuContainer} shrink={0}>
-      <ContextMenu classes={contextMenuClasses}>
-        <ContextMenu.Item onClick={handleRemove}>
-          <I18n.Text string="cart.remove" />
-        </ContextMenu.Item>
-        <ContextMenu.Item onClick={() => toggleEditMode(true)}>
-          <I18n.Text string="cart.edit" />
-        </ContextMenu.Item>
-      </ContextMenu>
-    </Grid.Item>
-  </Grid>
-);
+const Title = ({ value, handleRemove, toggleEditMode }, context) => {
+  const { invokeAction } = context;
+
+  return (
+    <Grid>
+      <Grid.Item grow={1}>
+        <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
+          <div className={styles.title} data-test-id={value}>
+            {value}
+          </div>
+        </SurroundPortals>
+      </Grid.Item>
+      <Grid.Item className={styles.menuContainer} shrink={0}>
+        <ContextMenu classes={contextMenuClasses}>
+          <ContextMenu.Item onClick={handleRemove}>
+            <I18n.Text string="cart.remove" />
+          </ContextMenu.Item>
+          <ContextMenu.Item onClick={() => toggleEditMode(true)}>
+            <I18n.Text string="cart.edit" />
+          </ContextMenu.Item>
+          <CartItemProductContextMenuItem
+            cartItem={context.cartItem}
+            onClick={() => invokeAction('changeLocation')}
+          />
+        </ContextMenu>
+      </Grid.Item>
+    </Grid>
+  );
+};
 
 Title.propTypes = {
   value: PropTypes.string.isRequired,
@@ -51,6 +60,8 @@ Title.defaultProps = {
 };
 
 Title.contextTypes = {
+  cartItem: PropTypes.shape(),
+  invokeAction: PropTypes.func,
   cartItemId: PropTypes.string,
   type: PropTypes.string,
 };

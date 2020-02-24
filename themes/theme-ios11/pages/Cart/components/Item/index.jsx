@@ -34,11 +34,12 @@ const CartItem = ({ item, onFocus }) => {
       <Portal name={CART_ITEM} props={props}>
         {isProduct ? (
           <Product
-            id={item.id}
             key={item.id}
+            id={item.id}
             product={item.product}
             quantity={item.quantity}
             messages={item.messages}
+            fulfillment={item.fulfillment}
             onToggleFocus={onFocus}
           />
         ) : (

@@ -1,5 +1,5 @@
 import { receivedVisibleProduct$ } from '@shopgate/engage/product';
-import { cartWillEnter$, SHOPGATE_CART_GET_CART, getCartProducts } from '@shopgate/engage/cart';
+import { SHOPGATE_CART_GET_CART, getCartProducts, cartReceived$ } from '@shopgate/engage/cart';
 import { receiveCoreConfig$, configuration, PIPELINES } from '@shopgate/engage/core';
 import { fetchCart } from '../cart';
 import {
@@ -44,8 +44,7 @@ function locations(subscribe) {
       }));
 
       // 2. Subscribe to cart updates
-      subscribe(cartWillEnter$, ({ dispatch, getState }) => {
-        // 1. Fetch missing locations information
+      subscribe(cartReceived$, ({ dispatch, getState }) => {
         const cartItems = getCartProducts(getState());
         const locationIds = cartItems.map(item => (
           item.fulfillment && item.fulfillment.location && item.fulfillment.location.code
