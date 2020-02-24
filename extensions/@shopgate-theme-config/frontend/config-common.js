@@ -47,6 +47,7 @@ export default {
         showProductProperties: false,
         showAvailabilityText: true,
         showMoreButton: true,
+        slidesPerView: 2.3,
       },
       '@shopgate/LocationList': {
         available: {

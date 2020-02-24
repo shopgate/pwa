@@ -20,6 +20,7 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
     titleRows,
     showMoreButton,
     type,
+    slidesPerView = 2.3,
   } = useWidgetSettings(WIDGET_ID);
   const { productId } = useCurrentProduct();
 
@@ -38,7 +39,7 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
         <RelationsSheet limit={100} productId={productId} type={type} />
       )}
       <Swiper
-        slidesPerView={2.25}
+        slidesPerView={slidesPerView}
         classNames={{ container: styles.sliderContainer }}
       >
         {products.map(product => (
