@@ -4,6 +4,8 @@ import { Swiper, Card } from '@shopgate/engage/components';
 import { ProductCard } from '@shopgate/engage/product';
 import Headline from 'Components/Headline';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
+import { withWidgetSettings } from '@shopgate/engage/core';
+import { WIDGET_ID } from 'Components/ProductSlider';
 import connect from './connector';
 import styles from './style';
 
@@ -62,10 +64,14 @@ class ProductSlider extends Component {
       }).isRequired,
     }).isRequired,
     products: PropTypes.arrayOf(PropTypes.shape()),
+    widgetSettings: PropTypes.shape({
+      slidesPerView: PropTypes.number,
+    }),
   };
 
   static defaultProps = {
     products: [],
+    widgetSettings: {},
   };
 
   /**
@@ -98,8 +104,9 @@ class ProductSlider extends Component {
    * @return {JSX}
    */
   render() {
-    const { settings } = this.props;
+    const { settings, widgetSettings } = this.props;
     const { sliderSettings } = settings;
+    const { slidesPerView = 2.3 } = widgetSettings;
 
     // Create the slides for each product, only displays the first 30 products.
     const items = this.props.products.slice(0, 30).map((
@@ -121,7 +128,7 @@ class ProductSlider extends Component {
           controls={false}
           interval={Number.parseInt(sliderSettings.delay, 10)}
           freeMode
-          slidesPerView={2.3}
+          slidesPerView={slidesPerView}
           classNames={{ container: styles.sliderContainer }}
         >
           {items}
@@ -131,4 +138,6 @@ class ProductSlider extends Component {
   }
 }
 
-export default connect(ProductSlider);
+export default withWidgetSettings(connect(ProductSlider), WIDGET_ID);
+
+export { ProductSlider as UnwrappedProductSlider };

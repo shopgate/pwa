@@ -216,6 +216,9 @@
           },
           "@shopgate/engage/product/ProductGrid": {
             "columns": 2
+          },
+          "@shopgate/engage/product/ProductSlider": {
+            "slidesPerView": 2.3
           }
         },
         "typography": {
