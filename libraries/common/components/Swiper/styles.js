@@ -3,6 +3,7 @@ import { css } from 'glamor';
 export const container = css({
   position: 'relative',
   maxHeight: '100%',
+  // This needs to be 100vw to compensate a chrome 80 bug - see related ticket / pr.
   width: '100vw',
 }).toString();
 
