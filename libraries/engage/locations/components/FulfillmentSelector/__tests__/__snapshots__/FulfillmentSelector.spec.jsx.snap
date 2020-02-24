@@ -76,6 +76,19 @@ exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do 
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>
+  <FulfillmentSelectorAddToCart
+    conditioner={
+      Object {
+        "check": [Function],
+        "without": [Function],
+      }
+    }
+    location={
+      Object {
+        "name": "Test Store",
+      }
+    }
+  />
 </SurroundPortals>
 `;
 
@@ -155,5 +168,18 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>
+  <FulfillmentSelectorAddToCart
+    conditioner={
+      Object {
+        "check": [Function],
+        "without": [Function],
+      }
+    }
+    location={
+      Object {
+        "name": "Test Store",
+      }
+    }
+  />
 </SurroundPortals>
 `;

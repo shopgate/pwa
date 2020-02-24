@@ -1,7 +1,12 @@
 import { receivedVisibleProduct$ } from '@shopgate/engage/product';
 import { SHOPGATE_CART_GET_CART, getCartProducts, cartReceived$ } from '@shopgate/engage/cart';
 import { receiveCoreConfig$, configuration, PIPELINES } from '@shopgate/engage/core';
-import { FULFILLMENT_PATH_MULTI_LINE_RESERVE, SHOPGATE_STOREFRONT_GET_CART } from './constants';
+import { fetchCart } from '../cart';
+import {
+  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  PRODUCT_FULFILLMENT_METHOD_ROPIS,
+  SHOPGATE_STOREFRONT_GET_CART,
+} from './constants';
 import { fetchLocationsById, fetchProductLocations } from './actions';
 
 /**
@@ -46,6 +51,14 @@ function locations(subscribe) {
         )).filter(Boolean);
         if (locationIds) {
           dispatch(fetchLocationsById(locationIds));
+        }
+
+        // 2. Load cart information every cart page view with ropis items (inventory updates)
+        const hasRopis = cartItems.some(cartItem => (
+          cartItem.fulfillment && cartItem.fulfillment.method === PRODUCT_FULFILLMENT_METHOD_ROPIS
+        ));
+        if (hasRopis) {
+          dispatch(fetchCart());
         }
       });
     }

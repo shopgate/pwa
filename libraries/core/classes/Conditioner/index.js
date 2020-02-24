@@ -1,4 +1,3 @@
-import { logger } from '../../helpers';
 /**
  * Creates an action handler API.
  */
@@ -34,7 +33,6 @@ class Conditioner {
    */
   removeConditioner(name) {
     if (!this.conditions.has(name)) {
-      logger.warn(`Couldn't remove conditioner. '${name}' no found.`);
       return this;
     }
 

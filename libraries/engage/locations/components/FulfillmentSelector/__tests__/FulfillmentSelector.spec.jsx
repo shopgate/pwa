@@ -12,6 +12,7 @@ jest.mock('../../FulfillmentSheet', () => ({
     open: jest.fn(),
   },
 }));
+jest.mock('../FulfillmentSelectorAddToCart', () => 'FulfillmentSelectorAddToCart');
 
 const conditioner = {
   check: () => Promise.resolve(true),
