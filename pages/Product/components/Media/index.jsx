@@ -11,12 +11,15 @@ import { ProductContext } from '../../context';
  * The product media component.
  * @returns {JSX}
  */
-const Media = ({ 'aria-hidden': ariaHidden }) => (
+const Media = ({ 'aria-hidden': ariaHidden, className }) => (
   <ProductContext.Consumer>
     {({ productId, variantId, characteristics }) => (
       <SurroundPortals
         portalName={PORTAL_PRODUCT_MEDIA_SECTION}
-        portalProps={{ productId, variantId }}
+        portalProps={{
+          productId,
+          variantId,
+        }}
       >
         {/* MediaSlider feature is currently in BETA testing.
               It should only be used for approved BETA Client Projects */}
@@ -26,12 +29,14 @@ const Media = ({ 'aria-hidden': ariaHidden }) => (
             variantId={variantId}
             characteristics={characteristics}
             aria-hidden={ariaHidden}
+            className={className}
           />
         ) : (
           <ProductImageSlider
             productId={productId}
             variantId={variantId}
             aria-hidden={ariaHidden}
+            className={className}
           />
         )}
       </SurroundPortals>
@@ -41,10 +46,12 @@ const Media = ({ 'aria-hidden': ariaHidden }) => (
 
 Media.propTypes = {
   'aria-hidden': PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Media.defaultProps = {
   'aria-hidden': null,
+  className: null,
 };
 
 export default Media;

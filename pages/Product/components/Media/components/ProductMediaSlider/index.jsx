@@ -11,17 +11,20 @@ const ProductMediaSlider = ({
   productId,
   featuredMediaBaseProduct,
   featuredMediaCharacteristics,
+  className,
 }) => (
   <MediaSlider
     productId={productId}
+    className={className}
     renderPlaceholder={(featuredMedia) => {
       const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
-      return (<MediaImage {...props} />);
+      return (<MediaImage {...props} className={className} />);
     }}
   />
 );
 
 ProductMediaSlider.propTypes = {
+  className: PropTypes.string,
   featuredMediaBaseProduct: PropTypes.shape({
     type: PropTypes.string,
     code: PropTypes.string,
@@ -41,6 +44,7 @@ ProductMediaSlider.propTypes = {
 };
 
 ProductMediaSlider.defaultProps = {
+  className: null,
   featuredMediaCharacteristics: null,
   featuredMediaBaseProduct: null,
   productId: null,
