@@ -115,7 +115,7 @@ class ProductImage extends Component {
    * @returns {JSX}
    */
   render() {
-    const { noBackground } = this.props;
+    const { noBackground, className } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
     if (typeof showInnerShadow === 'undefined') {
@@ -129,6 +129,7 @@ class ProductImage extends Component {
           <div
             className={classnames(styles.placeholderContainer, {
               [styles.innerShadow]: showInnerShadow,
+              [className]: !!className,
             })}
             aria-hidden={this.props['aria-hidden']}
           >
@@ -143,7 +144,7 @@ class ProductImage extends Component {
     // Return the actual image.
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <div aria-hidden={this.props['aria-hidden']}>
+        <div aria-hidden={this.props['aria-hidden']} className={className}>
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}
