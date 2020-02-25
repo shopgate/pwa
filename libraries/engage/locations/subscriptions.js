@@ -1,12 +1,10 @@
 import { receivedVisibleProduct$ } from '@shopgate/engage/product';
-import { SHOPGATE_CART_GET_CART, getCartProducts, cartReceived$ } from '@shopgate/engage/cart';
-import { receiveCoreConfig$, configuration, PIPELINES } from '@shopgate/engage/core';
-import { fetchCart } from '../cart';
 import {
-  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
-  PRODUCT_FULFILLMENT_METHOD_ROPIS,
-  SHOPGATE_STOREFRONT_GET_CART,
-} from './constants';
+  cartReceived$, cartWillEnter$, getCartProducts, SHOPGATE_CART_GET_CART,
+} from '@shopgate/engage/cart';
+import { configuration, PIPELINES, receiveCoreConfig$ } from '@shopgate/engage/core';
+import { fetchCart } from '../cart';
+import { FULFILLMENT_PATH_MULTI_LINE_RESERVE, SHOPGATE_STOREFRONT_GET_CART } from './constants';
 import { fetchLocationsById, fetchProductLocations } from './actions';
 
 /**
@@ -43,8 +41,17 @@ function locations(subscribe) {
         [SHOPGATE_CART_GET_CART]: SHOPGATE_STOREFRONT_GET_CART,
       }));
 
-      // 2. Subscribe to cart updates
-      subscribe(cartReceived$, ({ dispatch, getState }) => {
+      // Cart with ropis products
+      const cartReceivedWithRopis$ = cartReceived$.filter(
+        ({ action: { cart: { cartItems } } }) => (
+          cartItems.some(item => (
+            item.fulfillment && item.fulfillment.location && item.fulfillment.location.code
+          ))
+        )
+      );
+
+      // 2. Fetch missing locations
+      subscribe(cartReceivedWithRopis$, ({ dispatch, getState }) => {
         const cartItems = getCartProducts(getState());
         const locationIds = cartItems.map(item => (
           item.fulfillment && item.fulfillment.location && item.fulfillment.location.code
@@ -52,14 +59,12 @@ function locations(subscribe) {
         if (locationIds) {
           dispatch(fetchLocationsById(locationIds));
         }
+      });
 
-        // 2. Load cart information every cart page view with ropis items (inventory updates)
-        const hasRopis = cartItems.some(cartItem => (
-          cartItem.fulfillment && cartItem.fulfillment.method === PRODUCT_FULFILLMENT_METHOD_ROPIS
-        ));
-        if (hasRopis) {
-          dispatch(fetchCart());
-        }
+      // 3. Refresh ropis and mixed cart on every cart enter
+      const cartRefresh$ = cartReceivedWithRopis$.switchMap(() => cartWillEnter$.first());
+      subscribe(cartRefresh$, ({ dispatch }) => {
+        dispatch(fetchCart());
       });
     }
   });
