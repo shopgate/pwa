@@ -5,6 +5,7 @@ import ProductGrid from 'Components/ProductGrid';
 import ProductSlider from 'Components/ProductSlider';
 import { ProductContext } from '../pages/Product/context';
 import { TextOption, SelectOption } from '../pages/Product/components/Options';
+import ProductHeader from '../pages/Product/components/Header';
 import ProductCard from './ProductCard';
 
 export default {
@@ -13,6 +14,7 @@ export default {
   ProductCard,
   ProductGrid,
   ProductSlider,
+  ProductHeader,
   View,
   TextOption,
   SelectOption,
