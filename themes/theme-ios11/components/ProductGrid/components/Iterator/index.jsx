@@ -16,10 +16,10 @@ import styles from './style';
  */
 const Iterator = (props) => {
   const portalProps = { productId: props.id };
-  const { id, display } = props;
+  const { id, display, columns } = props;
 
   return (
-    <Grid.Item key={id} className={styles.item} data-test-id={props.name}>
+    <Grid.Item key={id} className={styles.item(columns)} data-test-id={props.name}>
       <Portal name={PRODUCT_ITEM_BEFORE} props={portalProps} />
       <Portal name={PRODUCT_ITEM} props={portalProps}>
         <Item product={props} display={display} />
@@ -31,11 +31,13 @@ const Iterator = (props) => {
 
 Iterator.propTypes = {
   id: PropTypes.string.isRequired,
+  columns: PropTypes.number,
   display: PropTypes.shape(),
   name: PropTypes.string,
 };
 
 Iterator.defaultProps = {
+  columns: 2,
   display: null,
   name: null,
 };
