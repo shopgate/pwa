@@ -3,6 +3,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ProductSlider from './index';
 
+jest.mock('@shopgate/engage/core', () => ({
+  useWidgetSettings: jest.fn(),
+}));
+
 jest.mock('@shopgate/engage/components', () => {
   const Swiper = ({ children }) => children;
   Swiper.Item = ({ children }) => children;

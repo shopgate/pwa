@@ -224,7 +224,7 @@ describe('<InfiniteContainer />', () => {
       });
 
       expect(wrapper.state()).toEqual({
-        offset: [0, 30],
+        offset: [0, 32],
         awaitingItems: true,
       });
     });
