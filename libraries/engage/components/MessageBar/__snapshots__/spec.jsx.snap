@@ -48,7 +48,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
     <div
       className={
         Object {
-          "data-css-1psau2c": "",
+          "data-css-1kmpcvg": "",
         }
       }
       key="info-something"
@@ -116,7 +116,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-1psau2c": "",
+          "data-css-1kmpcvg": "",
         }
       }
       key="info-This is some information"
@@ -185,7 +185,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-1psau2c": "",
+          "data-css-1kmpcvg": "",
         }
       }
       key="info-Normal pre-translated message."
@@ -208,7 +208,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       className={
         Object {
-          "data-css-1psau2c": "",
+          "data-css-1kmpcvg": "",
         }
       }
       key="info-Normal pre-translated message."
@@ -268,7 +268,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     <div
       className={
         Object {
-          "data-css-1psau2c": "",
+          "data-css-1kmpcvg": "",
         }
       }
       key="info-some.translation.string"
@@ -291,7 +291,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     <div
       className={
         Object {
-          "data-css-1psau2c": "",
+          "data-css-1kmpcvg": "",
         }
       }
       key="info-Message with messageParams"

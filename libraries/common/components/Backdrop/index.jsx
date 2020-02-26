@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-inline-transition-group';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import style from './style';
 
 /**
@@ -28,7 +27,7 @@ class Backdrop extends Component {
    */
   static defaultProps = {
     className: '',
-    color: themeColors.dark,
+    color: '#000',
     duration: 200,
     isVisible: false,
     level: 2,

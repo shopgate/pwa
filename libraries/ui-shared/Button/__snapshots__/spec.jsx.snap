@@ -2,13 +2,13 @@
 
 exports[`<Button /> should render as a primary button 1`] = `
 <Button
-  className="css-cimv5k "
+  className="css-3939p1 "
   disabled={false}
   onClick={null}
   testId="Button"
 >
   <div
-    className="css-1fscwua"
+    className="css-mocsp5"
   >
     Press me
   </div>
@@ -32,13 +32,13 @@ exports[`<Button /> should render as a regular button if type is explicitly defi
 
 exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 <Button
-  className="css-cimv5k "
+  className="css-3939p1 "
   disabled={false}
   onClick={null}
   testId="Button"
 >
   <div
-    className="css-1fscwua"
+    className="css-mocsp5"
   >
     Press me
   </div>
@@ -47,13 +47,13 @@ exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 
 exports[`<Button /> should render as a secondary button 1`] = `
 <Button
-  className="css-187rja2 "
+  className="css-19m2k92 "
   disabled={false}
   onClick={null}
   testId="Button"
 >
   <div
-    className="css-1fscwua"
+    className="css-mocsp5"
   >
     Press me
   </div>

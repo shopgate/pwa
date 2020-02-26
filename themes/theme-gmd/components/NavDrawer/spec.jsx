@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 // eslint-disable-next-line import/named
 import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';
 import headerStyles from './components/Header/style';
@@ -15,6 +14,7 @@ jest.mock('react-portal', () => (
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
+jest.mock('@shopgate/pwa-ui-shared/ClientInformation', () => () => 'ClientInformation');
 jest.mock('@shopgate/pwa-ui-shared/ClientInformation/connector', () => (obj) => {
   const newObj = obj;
 
@@ -25,12 +25,15 @@ jest.mock('@shopgate/pwa-ui-shared/ClientInformation/connector', () => (obj) => 
 
   return newObj;
 });
+
+jest.mock('@shopgate/pwa-common/helpers/config');
+/*
 let mockedHasFavorites = true;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   componentsConfig: { portals: {} },
   get hasFavorites() { return mockedHasFavorites; },
-  themeConfig: mockedConfig,
 }));
+*/
 describe.skip('<NavDrawer />', () => {
   let toggleNavDrawerMock;
 
@@ -159,7 +162,6 @@ describe.skip('<NavDrawer />', () => {
   });
 
   it('should not render a favorites link at all when feature flag is off', () => {
-    mockedHasFavorites = false;
     const Component = (<NavDrawer toggleNavDrawer={toggleNavDrawerMock} />);
     const wrapper = mount(Component);
     expect(wrapper).toMatchSnapshot();
