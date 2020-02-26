@@ -24,7 +24,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removeLabel={null}
       >
         <div
-          className="css-bpa25c"
+          className="css-100k0w4"
           data-test-id="some-id"
         >
           <Button
@@ -192,7 +192,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="css-bpa25c"
+          className="css-100k0w4"
           data-test-id="some-id"
         >
           <Button
@@ -269,7 +269,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="css-bpa25c"
+          className="css-100k0w4"
           data-test-id="some-other-id"
         >
           <Button
