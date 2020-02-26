@@ -1,5 +1,43 @@
 # Changelog
 
+## [v6.13.0](https://github.com/shopgate/pwa/compare/...v6.13.0) (2020-02-26)
+
+#### :rocket: Enhancement
+* [#939](https://github.com/shopgate/pwa/pull/939) Introduced a className prop to the Media component of the themes to enable custom component widths via classes ([@fkloes](https://github.com/fkloes))
+* [#941](https://github.com/shopgate/pwa/pull/941) Added ProductHeader to themeApi ([@Carsten89](https://github.com/Carsten89))
+* [#938](https://github.com/shopgate/pwa/pull/938) Applied UI tweaks to the StoreListAddress entries within FulfillmentSheet ([@fkloes](https://github.com/fkloes))
+* [#936](https://github.com/shopgate/pwa/pull/936) Added widget config for ProductSlider to configure slidesPerView ([@Carsten89](https://github.com/Carsten89))
+* [#934](https://github.com/shopgate/pwa/pull/934) Made number of columns in ProductGrid configurable via theme config ([@Carsten89](https://github.com/Carsten89))
+* [#933](https://github.com/shopgate/pwa/pull/933) Added product media section portal ([@aaron-martin](https://github.com/aaron-martin))
+* [#931](https://github.com/shopgate/pwa/pull/931) Added handling of reservation placement from the cart. ([@devbucket](https://github.com/devbucket))
+* [#932](https://github.com/shopgate/pwa/pull/932) Extended the FulfillmentSelector with a button to change location when the pickup option is selected ([@fkloes](https://github.com/fkloes))
+* [#929](https://github.com/shopgate/pwa/pull/929) Reservation form validation  ([@alexbridge](https://github.com/alexbridge))
+* [#930](https://github.com/shopgate/pwa/pull/930) Add "Direct Ship" cart items group ([@alexbridge](https://github.com/alexbridge))
+* [#922](https://github.com/shopgate/pwa/pull/922) Added fulfillment location to the add to cart action from PDP if user location is selected. ([@devbucket](https://github.com/devbucket))
+* [#921](https://github.com/shopgate/pwa/pull/921) Added reserve to cart user path. ([@devbucket](https://github.com/devbucket))
+* [#909](https://github.com/shopgate/pwa/pull/909) Implemented "quick reserve" on the product detail page (PDP) ([@devbucket](https://github.com/devbucket))
+* [#913](https://github.com/shopgate/pwa/pull/913) Added missing portals to root category page of gmd theme ([@alexbridge](https://github.com/alexbridge))
+* [#908](https://github.com/shopgate/pwa/pull/908) Refactored the FormBuilder to support replacing of existing and adding custom elements. Also added class names to form elements for advanced component styling. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#912](https://github.com/shopgate/pwa/pull/912) Export mutable actions as a part of engage api ([@alexbridge](https://github.com/alexbridge))
+* [#906](https://github.com/shopgate/pwa/pull/906) Implemented auto logout after account deletion was requested ([@fkloes](https://github.com/fkloes))
+* [#907](https://github.com/shopgate/pwa/pull/907) Moved View and ViewContext to engage package ([@alexbridge](https://github.com/alexbridge))
+* [#789](https://github.com/shopgate/pwa/pull/789) Implemented the fulfillment selector on the Product Detail Page and improved the translation functionality ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#785](https://github.com/shopgate/pwa/pull/785) Added store selector sheet to the Product Detail Page ([@devbucket](https://github.com/devbucket))
+
+#### :bug: Bug Fix
+* [#914](https://github.com/shopgate/pwa/pull/914) Fixed duplication of new array config entries on reference resolving. Further improved the config resolve algorithm to also support concatenated configs using references and custom text. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :nail_care: Polish
+* [#911](https://github.com/shopgate/pwa/pull/911) Some unused selectors have been removed or deprecated. ([@devbucket](https://github.com/devbucket))
+
+#### :house: Internal
+* [#940](https://github.com/shopgate/pwa/pull/940) Alert Shoppers if coupons of direct ship cart is removed. ([@alexbridge](https://github.com/alexbridge))
+* [#937](https://github.com/shopgate/pwa/pull/937) Change location for reserve cart item ([@alexbridge](https://github.com/alexbridge))
+* [#935](https://github.com/shopgate/pwa/pull/935) Show reservation cart errors ([@alexbridge](https://github.com/alexbridge))
+* [#926](https://github.com/shopgate/pwa/pull/926) Log every console.error log into sentry.io ([@alexbridge](https://github.com/alexbridge))
+* [#920](https://github.com/shopgate/pwa/pull/920) Removed error logs from pipeline request actions ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.11.0](https://github.com/shopgate/pwa/compare/v6.10.1...v6.11.0) (2020-02-12)
 
 #### :rocket: Enhancement
