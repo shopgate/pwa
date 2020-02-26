@@ -1,8 +1,11 @@
+// @flow
 import {
   availabilityTypes,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_AVAILABLE,
 } from '../../product';
+import { type MerchantSettings } from '../../core/config/config.types';
+import { type Location } from '../locations.types';
 
 /**
  * Takes the location stock info settings and finds the matching settings for the given inventory.
@@ -10,7 +13,7 @@ import {
  * @param {Object|null} location The location object.
  * @returns {Object}
  */
-export default (settings, location = {}) => {
+export default (settings: MerchantSettings, location: Location = {}) => {
   const { productInventory } = location;
   if (!productInventory) {
     return {};

@@ -1,14 +1,17 @@
+// @flow
+import * as Redux from 'redux';
 import {
   REQUEST_CORE_CONFIG,
   RECEIVE_CORE_CONFIG,
   ERROR_CORE_CONFIG,
 } from './config.constants';
+import { type MerchantSettings } from './config.types';
 
 /**
  * Dispatches the REQUEST_CORE_CONFIG action.
  * @return {Object} The REQUEST_CORE_CONFIG action.
  */
-export const requestConfig = () => ({
+export const requestConfig = (): Redux.Action<typeof REQUEST_CORE_CONFIG> => ({
   type: REQUEST_CORE_CONFIG,
 });
 
@@ -17,7 +20,9 @@ export const requestConfig = () => ({
  * @param {Object} config config
  * @return {Object} The RECEIVE_CORE_CONFIG action.
  */
-export const receiveConfig = config => ({
+export const receiveConfig = (
+  config: MerchantSettings
+): Redux.Action<typeof RECEIVE_CORE_CONFIG> => ({
   type: RECEIVE_CORE_CONFIG,
   config,
 });
@@ -27,7 +32,7 @@ export const receiveConfig = config => ({
  * @param {Error} error error
  * @return {Object} The ERROR_CORE_CONFIG action.
  */
-export const errorConfig = error => ({
+export const errorConfig = (error: {}): Redux.Action<typeof ERROR_CORE_CONFIG> => ({
   type: ERROR_CORE_CONFIG,
   error,
 });

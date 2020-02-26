@@ -1,9 +1,12 @@
+// @flow
+import * as Redux from 'redux';
 import {
   REQUEST_CORE_CONFIG,
   RECEIVE_CORE_CONFIG,
   ERROR_CORE_CONFIG,
   CONFIG_LIFETIME,
 } from './config.constants';
+import { type ConfigState } from './config.types';
 
 /**
  * Stores the product locations by the ID of the product.
@@ -11,7 +14,7 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function config(state = {}, action) {
+export default function config(state: ConfigState = {}, action: Redux.Action): ConfigState {
   switch (action.type) {
     case REQUEST_CORE_CONFIG:
       return {

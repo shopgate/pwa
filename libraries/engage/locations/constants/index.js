@@ -1,3 +1,4 @@
+// @flow
 // ACTION TYPES
 export {
   REQUEST_LOCATIONS,

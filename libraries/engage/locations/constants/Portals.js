@@ -1,3 +1,4 @@
+// @flow
 import { PRODUCT, BEFORE, AFTER } from '@shopgate/engage/product';
 
 // CONTENTS

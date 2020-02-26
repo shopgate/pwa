@@ -1,10 +1,13 @@
+// @flow
+import * as Redux from 'redux';
 import {
   SELECT_LOCATION,
   STORE_FULFILLMENT_METHOD,
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
 } from '../constants';
+import { type UserFormInputState } from '../locations.types';
 
-const defaultState = {
+const defaultState: UserFormInputState = {
   code: null,
   name: null,
   fulfillmentMethod: PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
@@ -16,7 +19,10 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function userLocation(state = defaultState, action) {
+export default function userLocation(
+  state: UserFormInputState = defaultState,
+  action: Redux.Action
+): UserFormInputState {
   switch (action.type) {
     case SELECT_LOCATION:
       return {
