@@ -1,7 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
   display: 'flex',
@@ -24,7 +22,7 @@ const input = css({
   padding: '4px 10px 4px 30px',
   lineHeight: '28px',
   outline: 'none',
-  background: '#eaebed',
+  background: themeColors.shade7,
   verticalAlign: 'middle',
   WebkitAppearance: 'none',
 }).toString();
@@ -35,7 +33,7 @@ const inputWithScannerIcon = css({
 
 const label = css({
   alignItems: 'center',
-  color: '#8a8a8f',
+  color: themeColors.lightGray,
   display: 'flex',
   height: '36px',
   position: 'absolute',
@@ -49,7 +47,7 @@ const labelHidden = css({
 
 const button = css({
   lineHeight: '34px',
-  color: colors.accent,
+  color: themeColors.accent,
   paddingTop: 0,
   paddingLeft: 16,
   paddingRight: 0,
@@ -65,20 +63,20 @@ const hidden = css({
 
 const icon = css({
   padding: '0 6px',
-  color: '#8a8a8f',
+  color: themeColors.lightGray,
   fontSize: '1.235rem',
 }).toString();
 
 const scannerIcon = css({
   padding: '4px 6px 4px 4px',
-  color: '#8a8a8f',
+  color: themeColors.lightGray,
   fontSize: '1.7rem',
   position: 'absolute',
   right: 0,
 }).toString();
 
 const overlay = css({
-  background: 'rgba(0,0,0, 0.4)',
+  background: themeColors.lightGrayTransparent,
   position: 'absolute',
   left: 0,
   width: '100%',

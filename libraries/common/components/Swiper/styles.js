@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 export const container = css({
   position: 'relative',
@@ -18,7 +19,7 @@ export const innerContainer = css({
   ' .swiper-pagination': {
     transform: 'translate3d(-50%,0,0) !important',
     ' .swiper-pagination-bullet': {
-      background: '#808080',
+      background: themeColors.gray,
       opacity: '.5',
       margin: '0 4px',
       transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',

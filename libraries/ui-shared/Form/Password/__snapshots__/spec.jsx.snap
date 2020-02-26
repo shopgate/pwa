@@ -227,7 +227,7 @@ exports[`<Password> should render a password field 1`] = `
               className="css-1tpmuef"
               style={
                 Object {
-                  "borderBottomColor": undefined,
+                  "borderBottomColor": "#fa5400",
                   "transform": "scale3d(0,1,1)",
                 }
               }
@@ -568,7 +568,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
               className="css-1tpmuef"
               style={
                 Object {
-                  "borderBottomColor": undefined,
+                  "borderBottomColor": "#fa5400",
                   "transform": "scale3d(0,1,1)",
                 }
               }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { getActualImageSource } from '../../helpers/data';
 import Transition from '../Transition';
 import styles from './style';
@@ -31,7 +32,7 @@ class Image extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: themeColors.placeholder,
     className: '',
     forcePlaceholder: false,
     highestResolutionLoaded: () => {},

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
@@ -30,7 +31,7 @@ class AppBar extends PureComponent {
 
   static defaultProps = {
     'aria-hidden': null,
-    backgroundColor: '#fff',
+    backgroundColor: themeColors.light,
     below: null,
     center: null,
     classes: {
@@ -39,7 +40,7 @@ class AppBar extends PureComponent {
     },
     left: null,
     right: null,
-    textColor: '#000',
+    textColor: themeColors.dark,
   }
 
   static Field = Field;

@@ -1,5 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const basic = css({
   whiteSpace: 'nowrap',
@@ -14,7 +14,7 @@ const basic = css({
       top: '50%',
     },
   },
-  ...themeConfig.variables.priceStrikedBase,
+  color: themeColors.lightGray,
 }).toString();
 
 /**

@@ -88,6 +88,14 @@ export const themeName = process.env.THEME || 'theme';
  * @type {ThemeConfig}
  */
 export const themeConfig = buildThemeConfig(appConfig);
+/** @mixes ThemeColors */
+export const themeColors = themeConfig.colors;
+/** @mixes ThemeShadows */
+export const themeShadows = themeConfig.shadows;
+/** @mixes ThemeVariables */
+export const themeVariables = themeConfig.variables;
+/** @mixes ThemeIcons */
+export const themeIcons = themeConfig.icons;
 
 // Fix theme config reference
 appConfig.theme = themeConfig;

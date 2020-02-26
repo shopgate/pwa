@@ -63,7 +63,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -131,7 +131,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       label=""
     >
       <label
-        className="css-1nn9zl4 css-1r91c0g css-nil label"
+        className="css-1nn9zl4 css-1r91c0g css-1ncyhu label"
         htmlFor="test-input"
       >
         <Translate
@@ -153,7 +153,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
             }
           }
         />
@@ -245,7 +245,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -335,7 +335,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -535,7 +535,7 @@ exports[`<FormElement /> should show the label 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -632,7 +632,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
