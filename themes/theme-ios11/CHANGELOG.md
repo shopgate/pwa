@@ -1,5 +1,30 @@
 # Changelog
 
+## [v6.12.0](https://github.com/shopgate/pwa/compare/v6.11.0...v6.12.0) (2020-02-26)
+
+#### :rocket: Enhancement
+* [#939](https://github.com/shopgate/pwa/pull/939) Introduced a className prop to the Media component of the themes to enable custom component widths via classes ([@fkloes](https://github.com/fkloes))
+* [#941](https://github.com/shopgate/pwa/pull/941) Added ProductHeader to themeApi ([@Carsten89](https://github.com/Carsten89))
+* [#936](https://github.com/shopgate/pwa/pull/936) Added widget config for ProductSlider to configure slidesPerView ([@Carsten89](https://github.com/Carsten89))
+* [#934](https://github.com/shopgate/pwa/pull/934) Made number of columns in ProductGrid configurable via theme config ([@Carsten89](https://github.com/Carsten89))
+* [#933](https://github.com/shopgate/pwa/pull/933) Added product media section portal ([@aaron-martin](https://github.com/aaron-martin))
+* [#913](https://github.com/shopgate/pwa/pull/913) Added missing portals to root category page of gmd theme ([@alexbridge](https://github.com/alexbridge))
+* [#908](https://github.com/shopgate/pwa/pull/908) Refactored the FormBuilder to support replacing of existing and adding custom elements. Also added class names to form elements for advanced component styling. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+* [#912](https://github.com/shopgate/pwa/pull/912) Export mutable actions as a part of engage api ([@alexbridge](https://github.com/alexbridge))
+* [#906](https://github.com/shopgate/pwa/pull/906) Implemented auto logout after account deletion was requested ([@fkloes](https://github.com/fkloes))
+* [#907](https://github.com/shopgate/pwa/pull/907) Moved View and ViewContext to engage package ([@alexbridge](https://github.com/alexbridge))
+
+#### :bug: Bug Fix
+* [#914](https://github.com/shopgate/pwa/pull/914) Fixed duplication of new array config entries on reference resolving. Further improved the config resolve algorithm to also support concatenated configs using references and custom text. ([@SG-Noxoreos](https://github.com/SG-Noxoreos))
+
+#### :nail_care: Polish
+* [#911](https://github.com/shopgate/pwa/pull/911) Some unused selectors have been removed or deprecated. ([@devbucket](https://github.com/devbucket))
+
+#### :house: Internal
+* [#926](https://github.com/shopgate/pwa/pull/926) Log every console.error log into sentry.io ([@alexbridge](https://github.com/alexbridge))
+* [#920](https://github.com/shopgate/pwa/pull/920) Removed error logs from pipeline request actions ([@fkloes](https://github.com/fkloes))
+
+
 ## [v6.11.0](https://github.com/shopgate/pwa/compare/v6.10.1...v6.11.0) (2020-02-12)
 
 #### :rocket: Enhancement
