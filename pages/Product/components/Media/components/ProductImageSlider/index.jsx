@@ -46,6 +46,7 @@ const getImagesByIndex = (images) => {
 class ProductImageSlider extends Component {
   static propTypes = {
     'aria-hidden': PropTypes.bool,
+    className: PropTypes.string,
     images: PropTypes.arrayOf(PropTypes.shape()),
     navigate: PropTypes.func,
     product: PropTypes.shape(),
@@ -53,6 +54,7 @@ class ProductImageSlider extends Component {
 
   static defaultProps = {
     'aria-hidden': null,
+    className: null,
     images: null,
     product: null,
     navigate: () => { },
@@ -84,12 +86,16 @@ class ProductImageSlider extends Component {
     this.currentSlide = currentSlide;
   };
 
+  currentSlide = 0;
+
   /**
    * Renders the product image slider component.
    * @returns {JSX}
    */
   render() {
-    const { product, images, 'aria-hidden': ariaHidden } = this.props;
+    const {
+      product, images, 'aria-hidden': ariaHidden, className,
+    } = this.props;
     let content;
     let imagesByIndex = [];
 
@@ -106,6 +112,7 @@ class ProductImageSlider extends Component {
             indicators
             onSlideChange={this.handleSlideChange}
             disabled={imagesByIndex.length === 1}
+            className={className}
           >
             {imagesByIndex.map(imagesInIndex => (
               <Swiper.Item key={`${product.id}-${imagesInIndex[0]}`}>
@@ -121,6 +128,7 @@ class ProductImageSlider extends Component {
       content = (
         <ProductImage
           src={product ? product.featuredImageUrl : null}
+          className={className}
           forcePlaceholder={!product}
           resolutions={fallbackResolutions}
         />
