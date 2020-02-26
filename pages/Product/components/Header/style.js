@@ -1,13 +1,11 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors, variables } = themeConfig;
+import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const content = css({
   position: 'relative',
-  backgroundColor: colors.light,
-  padding: variables.gap.big,
-  borderTop: 'rgba(0, 0, 0, 0.05) 2px solid',
+  backgroundColor: themeColors.light,
+  padding: themeVariables.gap.big,
+  borderTop: `${themeColors.placeholder} 2px solid`,
 }).toString();
 
 const price = css({
@@ -22,15 +20,15 @@ const priceInfo = css({
 }).toString();
 
 const productInfo = css({
-  marginTop: `${variables.gap.small / 2}px`,
+  marginTop: `${themeVariables.gap.small / 2}px`,
   ':not(:last-child)': {
-    marginBottom: `${variables.gap.small / 2}px`,
+    marginBottom: `${themeVariables.gap.small / 2}px`,
   },
 }).toString();
 
 const priceContainer = css({
   textAlign: 'right',
-  marginLeft: variables.gap.big,
+  marginLeft: themeVariables.gap.big,
 }).toString();
 
 const placeholder = {
