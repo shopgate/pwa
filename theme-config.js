@@ -18,14 +18,13 @@ module.exports = {
     light,
     dark,
     /** Backward compatibility for newly added extension config values */
+    darkTransparent: 'rgba(0,0,0, 0.4)',
     lightTransparent: 'rgba(255, 255, 255, 0.82)',
     lightDark: '#323232',
     overlay: '#fafafa',
     lightOverlay: '#fafafa',
     darkOverlay: '#f0f0f0',
     gray: '#747474',
-    lightGray: '#9a9a9a',
-    lightGrayTransparent: 'rgba(0,0,0, 0.4)',
   },
   variables: {
     blur: {
@@ -78,7 +77,7 @@ module.exports = {
       borderRadius: 2,
       fontSize: '0.75rem',
     },
-    /** @deprecated use ThemeColors.lightGray */
+    /** @deprecated use ThemeColors.shade3 */
     priceStrikedBase: {
       color: '#9a9a9a',
     },

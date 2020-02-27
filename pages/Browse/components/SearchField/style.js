@@ -33,7 +33,7 @@ const inputWithScannerIcon = css({
 
 const label = css({
   alignItems: 'center',
-  color: themeColors.lightGray,
+  color: themeColors.shade3,
   display: 'flex',
   height: '36px',
   position: 'absolute',
@@ -63,20 +63,20 @@ const hidden = css({
 
 const icon = css({
   padding: '0 6px',
-  color: themeColors.lightGray,
+  color: themeColors.shade3,
   fontSize: '1.235rem',
 }).toString();
 
 const scannerIcon = css({
   padding: '4px 6px 4px 4px',
-  color: themeColors.lightGray,
+  color: themeColors.shade3,
   fontSize: '1.7rem',
   position: 'absolute',
   right: 0,
 }).toString();
 
 const overlay = css({
-  background: themeColors.lightGrayTransparent,
+  background: themeColors.darkTransparent,
   position: 'absolute',
   left: 0,
   width: '100%',
