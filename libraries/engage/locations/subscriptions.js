@@ -43,7 +43,7 @@ function locations(subscribe) {
 
       // Cart with ropis products
       const cartReceivedWithRopis$ = cartReceived$.filter(
-        ({ action: { cart: { cartItems } } }) => (
+        ({ action: { cart: { cartItems = [] } = {} } }) => (
           cartItems.some(item => (
             item.fulfillment && item.fulfillment.location && item.fulfillment.location.code
           ))
