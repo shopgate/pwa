@@ -41,7 +41,7 @@ const background = {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: themeColors.dark,
+    backgroundColor: 'black',
     animation: `${fadeInPickerBackground} ${fadeDuration}ms 1 both`,
   }).toString(),
   inactive: css({

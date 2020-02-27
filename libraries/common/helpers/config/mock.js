@@ -6,6 +6,7 @@ const colors = {
   light: '#fff',
   lightTransparent: 'rgba(255, 255, 255, 0.82)',
   dark: '#000',
+  darkTransparent: 'rgba(0,0,0, 0.4)',
   lightDark: '#323232',
   accent: '#5ccee3',
   placeholder: '#f2f2f2',
@@ -19,9 +20,6 @@ const colors = {
   ctaContrast: '#fff',
   focus: '#fa5400',
   gray: '#747474',
-  lightGray: '#9a9a9a',
-  lightGrayTransparent: 'rgba(0,0,0, 0.4)',
-  /** @TODO COLORS IS IT DARK GRAY ? */
   darkGray: '#eaeaea',
   shade3: '#9a9a9a',
   shade4: '#b5b5b5',
