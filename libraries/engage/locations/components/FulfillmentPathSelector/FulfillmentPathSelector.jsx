@@ -6,6 +6,7 @@ import {
   FULFILLMENT_PATH_QUICK_RESERVE,
   FULFILLMENT_PATH_MULTI_LINE_RESERVE,
 } from '../../constants';
+import { sheetDrawer } from './FulfillmentPathSelector.style';
 
 let callback = null;
 
@@ -49,7 +50,7 @@ function FulfillmentPathSelector() {
   }
 
   return (
-    <SheetDrawer isOpen={isOpen} title="Choose Reservation Type">
+    <SheetDrawer isOpen={isOpen} title="Choose Reservation Type" className={sheetDrawer}>
       <SheetList>
         <SheetList.Item title="Quick Reserve" onClick={handleQuickReserve} />
         <SheetList.Item title="Reserve to cart" onClick={handleReserveToCart} />

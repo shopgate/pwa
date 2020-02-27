@@ -1,4 +1,6 @@
+// @flow
 import { connect } from 'react-redux';
+import { makeGetMerchantSettings } from '@shopgate/engage/core';
 import {
   makeGetFulfillmentMethods,
   makeIsFulfillmentSelectorDisabled,
@@ -6,6 +8,7 @@ import {
   makeGetProductLocation,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
+import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
 
 /**
  * @param {Object} state The current application state.
@@ -17,6 +20,7 @@ function makeMapStateToProps() {
   const getFulfillmentMethods = makeGetFulfillmentMethods();
   const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
   const getProductLocation = makeGetProductLocation();
+  const getMerchantSettings = makeGetMerchantSettings();
 
   /**
    * @param {Object} state The application state.
@@ -29,8 +33,10 @@ function makeMapStateToProps() {
       ...props,
       locationId,
     });
+    const { enabledFulfillmentMethodSelectionForEngage = [] } = getMerchantSettings(state);
 
     return {
+      fulfillmentPaths: enabledFulfillmentMethodSelectionForEngage,
       fulfillmentMethods: getFulfillmentMethods(state, props),
       location: productLocation || getUserLocation(state),
       disabled: isFulfillmentSelectorDisabled(state, props),
@@ -42,4 +48,7 @@ const mapDispatchToProps = {
   storeFulfillmentMethod,
 };
 
-export default connect(makeMapStateToProps, mapDispatchToProps);
+export default connect<StateProps, DispatchProps, OwnProps>(
+  makeMapStateToProps,
+  mapDispatchToProps
+);

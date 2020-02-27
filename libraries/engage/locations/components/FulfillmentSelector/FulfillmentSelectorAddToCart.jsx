@@ -1,8 +1,12 @@
 import { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { isProductAvailable } from '../../helpers';
-import { FULFILLMENT_PATH_MULTI_LINE_RESERVE, PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../../constants';
+import {
+  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+} from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
+import { FulfillmentPathSelector } from '../FulfillmentPathSelector';
 import connect from './FulfillmentSelectorAddToCart.connector';
 
 /**
@@ -24,6 +28,15 @@ const FulfillmentSelectorAddToCart = ({
       if (fulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP) {
         return true;
       }
+
+      if (fulfillmentPaths.length > 1) {
+        FulfillmentPathSelector.open((selectedPath) => {
+          FulfillmentSheet.open(null, 0, selectedPath);
+        });
+
+        return false;
+      }
+
       if (!fulfillmentPaths.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)) {
         if (isProductAvailable(location)) {
           // Open reservation form. Stop adding to a cart
@@ -31,6 +44,7 @@ const FulfillmentSelectorAddToCart = ({
         }
         return false;
       }
+
       return isProductAvailable(location);
     }, 100);
 
