@@ -31,7 +31,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         data-test-id="liveshopping.discount_badge"
       >
         <Translate
-          className="css-d38bpv css-1mk9z3i"
+          className="css-hw727r css-1mk9z3i"
           params={
             Array [
               50,
@@ -41,7 +41,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
           string="liveshopping.discount_badge"
         >
           <span
-            className="css-d38bpv css-1mk9z3i"
+            className="css-hw727r css-1mk9z3i"
             role={null}
           >
             liveshopping.discount_badge
