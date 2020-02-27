@@ -1,14 +1,12 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { shadows } = themeConfig;
+import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 export const shadowStyle = {
-  boxShadow: shadows.productCard,
+  boxShadow: themeShadows.productCard,
 };
 
 export const itemClass = css({
-  background: '#fff',
+  background: themeColors.light,
   borderRadius: 10,
   overflow: 'hidden',
   position: 'relative',
