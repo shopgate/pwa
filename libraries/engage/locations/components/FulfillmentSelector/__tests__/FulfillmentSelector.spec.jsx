@@ -29,6 +29,7 @@ describe('<FulfillmentSelector />', () => {
         }}
         conditioner={conditioner}
         fulfillmentMethods={[]}
+        fulfillmentPaths={[]}
         disabled={false}
       />
     ));
@@ -49,6 +50,7 @@ describe('<FulfillmentSelector />', () => {
           PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
           PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
         ]}
+        fulfillmentPaths={[]}
         disabled={false}
       />
     ));
@@ -71,6 +73,7 @@ describe('<FulfillmentSelector />', () => {
           PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
           PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
         ]}
+        fulfillmentPaths={[]}
         disabled={false}
       />
     ));

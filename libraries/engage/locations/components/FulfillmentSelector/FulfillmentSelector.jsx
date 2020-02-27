@@ -103,7 +103,7 @@ export const FulfillmentSelector = (props: Props) => {
       setIsOpen(true);
       FulfillmentSheet.open(handleClose);
     });
-  }, [conditioner, storeFulfillmentMethod, isOpen, fulfillmentPaths.length, handleClose]);
+  }, [conditioner, storeFulfillmentMethod, isOpen, fulfillmentPaths, handleClose]);
 
   if (!fulfillmentMethods) {
     return null;
