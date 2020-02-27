@@ -88,7 +88,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-xvw7af css-sa13d4 css-qb469q"
+              containerClass="css-18n9gca css-sa13d4 css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={3}
@@ -234,7 +234,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               }
             >
               <div
-                className="css-xvw7af css-sa13d4 css-qb469q"
+                className="css-18n9gca css-sa13d4 css-qb469q"
               >
                 <div
                   className="swiper-wrapper"
@@ -379,7 +379,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               allowSlideNext={true}
               allowSlidePrev={true}
               autoplay={false}
-              containerClass="css-xvw7af css-sa13d4 css-qb469q"
+              containerClass="css-18n9gca css-sa13d4 css-qb469q"
               freeMode={false}
               getSwiper={[Function]}
               initialSlide={0}
@@ -525,7 +525,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               }
             >
               <div
-                className="css-xvw7af css-sa13d4 css-qb469q"
+                className="css-18n9gca css-sa13d4 css-qb469q"
               >
                 <div
                   className="swiper-wrapper"

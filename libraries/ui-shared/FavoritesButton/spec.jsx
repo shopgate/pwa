@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import FavoritesButton from './index';
 import {
   mockedStateEmpty,
@@ -14,17 +14,7 @@ import {
 const mockedStore = configureStore();
 const dispatcher = jest.fn();
 
-let mockedHasFavorites = true;
-
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasFavorites() { return mockedHasFavorites; },
-  themeConfig: {
-    colors: {},
-    shadows: mockThemeConfig.shadows,
-    icons: mockThemeConfig.icons,
-  },
-}));
-
+jest.mock('@shopgate/pwa-common/helpers/config');
 jest.mock('@shopgate/pwa-common-commerce/favorites/selectors/index', () => ({
   isFetching: () => false,
 }));
@@ -149,7 +139,7 @@ describe('<FavoritesButton />', () => {
   });
 
   it('should render null when feature flag is off', () => {
-    mockedHasFavorites = false;
+    jest.spyOn(appConfig, 'hasFavorites', 'get').mockReturnValue(false);
     component = createComponent(mockedStateOnList);
     expect(component.html()).toBe(null);
   });

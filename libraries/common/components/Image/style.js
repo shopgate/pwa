@@ -1,11 +1,12 @@
 import { css } from 'glamor';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 /**
- * @param {string} [background='#f2f2f2'] The background color.
+ * @param {string} [background=themeColors.placeholder] The background color.
  * @param {string} [paddingTop='100%'] The padding top value.
  * @returns {string} The compiled class names.
  */
-const container = (background = '#f2f2f2', paddingTop = '100%') => css({
+const container = (background = themeColors.placeholder, paddingTop = '100%') => css({
   background,
   position: 'relative',
   zIndex: 0,

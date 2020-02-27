@@ -236,7 +236,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -502,7 +502,7 @@ exports[`<Builder /> should hide element if setVisibilty rule applies 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -709,7 +709,7 @@ exports[`<Builder /> should hide element if setVisibilty rule applies 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -975,7 +975,7 @@ exports[`<Builder /> should hide element if setVisibilty rule applies 2`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -1353,7 +1353,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -1547,7 +1547,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -1820,7 +1820,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -2032,7 +2032,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -2305,7 +2305,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }
@@ -2517,7 +2517,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": undefined,
+                            "borderBottomColor": "#fa5400",
                             "transform": "scale3d(0,1,1)",
                           }
                         }

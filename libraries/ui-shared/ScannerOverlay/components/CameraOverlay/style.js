@@ -1,11 +1,11 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const edgeHeight = 45;
 const edgeWidth = 35;
 const edgeBorderWidth = 3;
-const edgeOffsetHorizontal = themeConfig.variables.gap.xbig;
-const edgeOffsetVertical = themeConfig.variables.gap.xxbig;
+const edgeOffsetHorizontal = themeVariables.gap.xbig;
+const edgeOffsetVertical = themeVariables.gap.xxbig;
 
 export default css({
   position: 'relative',
@@ -18,7 +18,7 @@ export default css({
     height: edgeHeight,
     position: 'absolute',
     borderStyle: 'solid',
-    borderColor: '#FFF',
+    borderColor: themeColors.light,
   },
   ':before': {
     top: edgeOffsetVertical,
