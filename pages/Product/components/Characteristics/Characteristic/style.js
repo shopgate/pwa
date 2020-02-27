@@ -1,10 +1,8 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const button = css({
-  background: '#f7f7f7',
+  background: themeColors.overlay,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -16,7 +14,7 @@ const button = css({
 }).toString();
 
 const buttonDisabled = css({
-  color: colors.shade4,
+  color: themeColors.shade4,
 }).toString();
 
 const label = css({
