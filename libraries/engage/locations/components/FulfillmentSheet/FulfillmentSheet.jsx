@@ -81,6 +81,7 @@ class FulfillmentSheet extends PureComponent {
       orderNumbers: null,
       errors: null,
       fulfillmentPath: null,
+      changeOnly: false,
     };
   }
 
@@ -97,8 +98,9 @@ class FulfillmentSheet extends PureComponent {
    * @param {Function} [callback=null] A callback that will be called once the sheet closes.
    * @param {number} [stage=0] The stage to start on.
    * @param {string} [fulfillmentPath=null] The fulfillment path.
+   * @param {boolean} [changeOnly=false] Whether to only change location.
    */
-  handleSetOpen = (callback = null, stage = 0, fulfillmentPath = null) => {
+  handleSetOpen = (callback = null, stage = 0, fulfillmentPath = null, changeOnly = false) => {
     if (callback !== null) {
       this.callback = callback;
     }
@@ -108,6 +110,7 @@ class FulfillmentSheet extends PureComponent {
       stage: this.STAGES[stage],
       title: this.STAGE_TITLES[stage],
       fulfillmentPath,
+      changeOnly,
     });
   }
 
@@ -182,16 +185,25 @@ class FulfillmentSheet extends PureComponent {
    */
   handleSelectLocation = (location) => {
     const {
+      product,
       selectLocation,
       settings: { enabledFulfillmentMethodSelectionForEngage: fulfillmentMethods = [] },
     } = this.props;
-    const { fulfillmentPath } = this.state;
+    const { fulfillmentPath, changeOnly } = this.state;
 
     // Dispatch action for user selection
     selectLocation({
       code: location.code,
       name: location.name,
     });
+
+    if (changeOnly) {
+      this.handleSetClosed({
+        productCode: product.id,
+        location,
+      });
+      return;
+    }
 
     // No fulfillment path selected yet.
     if (fulfillmentPath === null && fulfillmentMethods.length > 1) {
@@ -353,9 +365,15 @@ const FulfillmentSheetWrapped = withCurrentProduct(connect(FulfillmentSheet));
  * @param {Function} [callback=null] A callback that will be called once the sheet closes.
  * @param {number} [stage=0] The stage to start on.
  * @param {string} [fulfillmentPath= null] Determines the fulfillment path
+ * @param {boolean} [changeOnly=false] Whether to only change
  */
-FulfillmentSheetWrapped.open = (callback = null, stage = 0, fulfillmentPath = null) => {
-  UIEvents.emit(EVENT_SET_OPEN, callback, stage, fulfillmentPath);
+FulfillmentSheetWrapped.open = (
+  callback = null,
+  stage = 0,
+  fulfillmentPath = null,
+  changeOnly = false
+) => {
+  UIEvents.emit(EVENT_SET_OPEN, callback, stage, fulfillmentPath, changeOnly);
 };
 
 /**
