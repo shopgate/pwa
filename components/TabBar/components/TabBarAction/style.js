@@ -20,7 +20,7 @@ const container = css({
 }).toString();
 
 const regular = css({
-  color: themeColors.lightGray,
+  color: themeColors.shade3,
 }).toString();
 
 const highlighted = css({
