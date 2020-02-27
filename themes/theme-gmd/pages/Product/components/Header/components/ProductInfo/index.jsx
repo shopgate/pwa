@@ -24,12 +24,13 @@ import Tiers from '../Tiers';
 import TaxDisclaimer from '../TaxDisclaimer';
 import StockInfo from '../StockInfo';
 import * as styles from './style';
+import connect from './connector';
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductInfo = ({ productId, options }) => (
+const ProductInfo = ({ productId, options, showAvailablity }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
@@ -55,9 +56,11 @@ const ProductInfo = ({ productId, options }) => (
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
                 It should only be used for approved BETA Client Projects */}
-              <EffectivityDates productId={productId}>
-                <Availability productId={productId} />
-              </EffectivityDates>
+              {showAvailablity && (
+                <EffectivityDates productId={productId}>
+                  <Availability productId={productId} />
+                </EffectivityDates>
+              )}
             </div>
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
@@ -90,6 +93,7 @@ const ProductInfo = ({ productId, options }) => (
 ProductInfo.propTypes = {
   options: PropTypes.shape().isRequired,
   productId: PropTypes.string.isRequired,
+  showAvailablity: PropTypes.bool.isRequired,
 };
 
-export default memo(ProductInfo);
+export default connect(memo(ProductInfo));
