@@ -28,10 +28,10 @@ const EVENT_SET_CLOSED = 'FulfillmentSheet.setClosed';
 class FulfillmentSheet extends PureComponent {
   static propTypes = {
     addProductsToCart: PropTypes.func,
+    fulfillmentPaths: PropTypes.arrayOf(PropTypes.string),
     locations: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
     selectLocation: PropTypes.func,
-    settings: PropTypes.shape(),
     stage: PropTypes.number,
     storeFormInput: PropTypes.func,
     submitReservation: PropTypes.func,
@@ -43,7 +43,7 @@ class FulfillmentSheet extends PureComponent {
     locations: null,
     product: null,
     selectLocation: () => { },
-    settings: {},
+    fulfillmentPaths: [],
     submitReservation: () => { },
     stage: 1,
     storeFormInput: () => { },
@@ -183,7 +183,7 @@ class FulfillmentSheet extends PureComponent {
   handleSelectLocation = (location) => {
     const {
       selectLocation,
-      settings: { enabledFulfillmentMethodSelectionForEngage: fulfillmentMethods = [] },
+      fulfillmentPaths,
     } = this.props;
     const { fulfillmentPath } = this.state;
 
@@ -194,7 +194,7 @@ class FulfillmentSheet extends PureComponent {
     });
 
     // No fulfillment path selected yet.
-    if (fulfillmentPath === null && fulfillmentMethods.length > 1) {
+    if (fulfillmentPath === null && fulfillmentPaths.length > 1) {
       FulfillmentPathSelector.open((method) => {
         if (method === FULFILLMENT_PATH_QUICK_RESERVE) {
           this.handleQuickReservation();
@@ -210,7 +210,7 @@ class FulfillmentSheet extends PureComponent {
 
     if (
       fulfillmentPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE
-      && fulfillmentMethods.includes('multiLineReserve')
+      && fulfillmentPaths.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)
     ) {
       this.handleMultilineReservation(location);
       return;

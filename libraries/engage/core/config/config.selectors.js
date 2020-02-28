@@ -40,3 +40,23 @@ export function makeGetMerchantSettings(): Selector<any, MerchantSettings> {
     state => state.merchantSettings || {}
   );
 }
+
+/**
+ * Creates a selector that retrieves the enabled fulfillment paths.
+ * @returns {Function}
+ */
+export function makeGetFulfillmentPaths(): Selector<any, string[]> {
+  const getMerchantSettings = makeGetMerchantSettings();
+
+  return createSelector(
+    getMerchantSettings,
+    (settings): string[] => {
+      if (!settings || Object.keys(settings).length === 0) {
+        return [];
+      }
+
+      const { enabledFulfillmentMethodSelectionForEngage = [] } = settings;
+      return enabledFulfillmentMethodSelectionForEngage;
+    }
+  );
+}
