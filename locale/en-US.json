@@ -147,9 +147,12 @@
     "distance_metric": "{distance} km",
     "distance_imperial": "{distance} mi",
     "method": {
-      "ropis" : "Reserve online, pick up in store",
-      "direct_ship" : "Ship to address"
-    }
+      "ropis": "Reserve online, pick up in store",
+      "direct_ship": "Ship to address"
+    },
+    "choose_reservation_type": "Choose Reservation Type",
+    "quick_reserve": "Quick reservation",
+    "reserve_to_cart": "Reserve to cart"
   },
   "category": {
     "error": {
@@ -295,11 +298,11 @@
     "general": "Connectivity problems. Please check your internet connection or try again later."
   },
   "validation": {
-      "required": "Please complete this field",
-      "email": "Please enter a valid e-mail address",
-      "numeric": "Please enter only numbers",
-      "alphaNumeric": "Please enter only letters and numbers",
-      "mobileNumber": "Please enter a valid mobile phone number"
+    "required": "Please complete this field",
+    "email": "Please enter a valid e-mail address",
+    "numeric": "Please enter only numbers",
+    "alphaNumeric": "Please enter only letters and numbers",
+    "mobileNumber": "Please enter a valid mobile phone number"
   },
   "formats": {
     "date": {
