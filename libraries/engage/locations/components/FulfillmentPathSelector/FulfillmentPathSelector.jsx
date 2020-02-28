@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { UIEvents } from '@shopgate/engage/core';
 import { SheetList } from '@shopgate/engage/components';
 import SheetDrawer from '../../../components/SheetDrawer';
 import {
@@ -10,6 +11,8 @@ import { sheetDrawer } from './FulfillmentPathSelector.style';
 
 let callback = null;
 
+const EVENT_SET_OPEN = 'FulfillmentPathSelector.setOpen';
+
 /**
  * @param {Object} props The component props.
  * @returns {JSX.Element}
@@ -17,10 +20,19 @@ let callback = null;
 function FulfillmentPathSelector() {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  FulfillmentPathSelector.open = (callbackFn: (value: string) => void) => {
-    callback = callbackFn;
+  /**
+   * Handles opening of the sheet.
+   */
+  function handleOpen() {
     setIsOpen(true);
-  };
+  }
+
+  React.useEffect(() => {
+    UIEvents.addListener(EVENT_SET_OPEN, handleOpen);
+    return () => {
+      UIEvents.removeListener(EVENT_SET_OPEN, handleOpen);
+    };
+  }, []);
 
   /**
    * @param {string} value The selected value.
@@ -58,5 +70,10 @@ function FulfillmentPathSelector() {
     </SheetDrawer>
   );
 }
+
+FulfillmentPathSelector.open = (callbackFn: (value: string) => void) => {
+  callback = callbackFn;
+  UIEvents.emit(EVENT_SET_OPEN);
+};
 
 export default FulfillmentPathSelector;

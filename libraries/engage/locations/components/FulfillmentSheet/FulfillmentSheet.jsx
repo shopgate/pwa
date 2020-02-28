@@ -19,8 +19,8 @@ import {
 } from '../../constants';
 import { FulfillmentPathSelector } from '../FulfillmentPathSelector';
 
-const EVENT_SET_OPEN = 'event.setOpen';
-const EVENT_SET_CLOSED = 'event.setClosed';
+const EVENT_SET_OPEN = 'FulfillmentSheet.setOpen';
+const EVENT_SET_CLOSED = 'FulfillmentSheet.setClosed';
 
 /**
  * Renders the store selector sheet.
