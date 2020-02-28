@@ -4,7 +4,6 @@ import React, { useCallback, useState } from 'react';
 import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import { Availability } from '@shopgate/engage/product';
 import { FulfillmentSheet } from '../FulfillmentSheet';
-import { FulfillmentPathSelector } from '../FulfillmentPathSelector';
 import { StockInfo } from '../StockInfo';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
@@ -33,7 +32,6 @@ export const FulfillmentSelector = (props: Props) => {
   const {
     productId: productCode,
     fulfillmentMethods,
-    fulfillmentPaths,
     location,
     conditioner,
     disabled,
@@ -89,13 +87,15 @@ export const FulfillmentSelector = (props: Props) => {
         return;
       }
 
-      if (!changeOnly && fulfillmentPaths.length > 1) {
-        FulfillmentPathSelector.open((selectedPath) => {
-          setTimeout(() => {
-            setIsOpen(true);
-            FulfillmentSheet.open(handleClose, 0, selectedPath, changeOnly);
-          }, 300);
-        });
+      if (elementName === pickUp && location.code !== null) {
+        return;
+      }
+
+      if (!changeOnly) {
+        setTimeout(() => {
+          setIsOpen(true);
+          FulfillmentSheet.open(handleClose, 0, null, changeOnly);
+        }, 300);
 
         return;
       }
@@ -103,7 +103,7 @@ export const FulfillmentSelector = (props: Props) => {
       setIsOpen(true);
       FulfillmentSheet.open(handleClose, 0, null, changeOnly);
     });
-  }, [conditioner, storeFulfillmentMethod, isOpen, fulfillmentPaths, handleClose]);
+  }, [conditioner, storeFulfillmentMethod, isOpen, location, handleClose]);
 
   if (!fulfillmentMethods) {
     return null;

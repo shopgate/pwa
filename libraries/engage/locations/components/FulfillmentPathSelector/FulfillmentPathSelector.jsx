@@ -64,16 +64,16 @@ function FulfillmentPathSelector() {
   return (
     <SheetDrawer
       isOpen={isOpen}
-      title={i18n.text('location.choose_reservation_type')}
+      title={i18n.text('locations.choose_reservation_type')}
       className={sheetDrawer}
     >
       <SheetList>
         <SheetList.Item
-          title={i18n.text('location.quick_reserve')}
+          title={i18n.text('locations.quick_reserve')}
           onClick={handleQuickReserve}
         />
         <SheetList.Item
-          title={i18n.text('location.reserve_to_cart')}
+          title={i18n.text('locations.reserve_to_cart')}
           onClick={handleReserveToCart}
         />
       </SheetList>

@@ -1,6 +1,5 @@
 // @flow
 import { connect } from 'react-redux';
-import { makeGetFulfillmentPaths } from '@shopgate/engage/core/config';
 import {
   makeGetFulfillmentMethods,
   makeIsFulfillmentSelectorDisabled,
@@ -20,7 +19,6 @@ function makeMapStateToProps() {
   const getFulfillmentMethods = makeGetFulfillmentMethods();
   const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
   const getProductLocation = makeGetProductLocation();
-  const getFulfillmentPaths = makeGetFulfillmentPaths();
 
   /**
    * @param {Object} state The application state.
@@ -35,7 +33,6 @@ function makeMapStateToProps() {
     });
 
     return {
-      fulfillmentPaths: getFulfillmentPaths(state),
       fulfillmentMethods: getFulfillmentMethods(state, props),
       location: productLocation || getUserLocation(state),
       disabled: isFulfillmentSelectorDisabled(state, props),

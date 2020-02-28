@@ -7,7 +7,6 @@ export type OwnProps = {
 }
 
 export type StateProps = {
-  fulfillmentPaths: string[];
   fulfillmentMethods?: string[] | null;
   disabled?: boolean;
   location?: Location | null;
