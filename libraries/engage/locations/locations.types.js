@@ -53,7 +53,7 @@ export type Location = {
   isComingSoon: boolean;
   isDefault: boolean;
   type: LocationType;
-  operationHours: LocationOperationHours;
+  operationHours?: LocationOperationHours;
   addresses: LocationAddress[];
   productInventory: LocationProductInventory;
   unitSystem: string;
