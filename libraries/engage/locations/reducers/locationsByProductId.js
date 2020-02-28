@@ -15,7 +15,7 @@ import { type LocationsByProductIdState } from '../locations.types';
  */
 export default function locationsByProductId(
   state: LocationsByProductIdState = {},
-  action: Redux.Actio
+  action: Redux.Action
 ): LocationsByProductIdState {
   switch (action.type) {
     case REQUEST_PRODUCT_LOCATIONS:
