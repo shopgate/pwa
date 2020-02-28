@@ -21,7 +21,7 @@ type LocationOperationHours = {
 
 type LocationProductInventory = {
   isAvailable: boolean;
-  visible: number;
+  visible: number | null;
 }
 
 export type LocationAddress = {
