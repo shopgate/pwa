@@ -64,7 +64,7 @@ export const FulfillmentSelector = (props: Props) => {
    * Whenever the pick-up selection is made, open the
    * store selector sheet and use the new location.
    */
-  const handleChange = useCallback((elementName) => {
+  const handleChange = useCallback((elementName, changeOnly = false) => {
     // Run only external conditions
     conditioner.without('fulfillment-inventory').check().then((passed) => {
       if (!passed) {
@@ -89,11 +89,11 @@ export const FulfillmentSelector = (props: Props) => {
         return;
       }
 
-      if (fulfillmentPaths.length > 1) {
+      if (!changeOnly && fulfillmentPaths.length > 1) {
         FulfillmentPathSelector.open((selectedPath) => {
           setTimeout(() => {
             setIsOpen(true);
-            FulfillmentSheet.open(handleClose, 0, selectedPath);
+            FulfillmentSheet.open(handleClose, 0, selectedPath, changeOnly);
           }, 300);
         });
 
@@ -101,7 +101,7 @@ export const FulfillmentSelector = (props: Props) => {
       }
 
       setIsOpen(true);
-      FulfillmentSheet.open(handleClose);
+      FulfillmentSheet.open(handleClose, 0, null, changeOnly);
     });
   }, [conditioner, storeFulfillmentMethod, isOpen, fulfillmentPaths, handleClose]);
 
@@ -138,7 +138,7 @@ export const FulfillmentSelector = (props: Props) => {
                 <StockInfo location={selectedLocation || location} />
                 {(selection === pickUp) && (
                   <FulfillmentSelectorButtonChangeLocation
-                    onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP)}
+                    onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP, true)}
                   />
                 )}
               </div>
