@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { UIEvents } from '@shopgate/engage/core';
+import { UIEvents, i18n } from '@shopgate/engage/core';
 import { SheetList } from '@shopgate/engage/components';
 import SheetDrawer from '../../../components/SheetDrawer';
 import {
@@ -62,10 +62,20 @@ function FulfillmentPathSelector() {
   }
 
   return (
-    <SheetDrawer isOpen={isOpen} title="Choose Reservation Type" className={sheetDrawer}>
+    <SheetDrawer
+      isOpen={isOpen}
+      title={i18n.text('location.choose_reservation_type')}
+      className={sheetDrawer}
+    >
       <SheetList>
-        <SheetList.Item title="Quick Reserve" onClick={handleQuickReserve} />
-        <SheetList.Item title="Reserve to cart" onClick={handleReserveToCart} />
+        <SheetList.Item
+          title={i18n.text('location.quick_reserve')}
+          onClick={handleQuickReserve}
+        />
+        <SheetList.Item
+          title={i18n.text('location.reserve_to_cart')}
+          onClick={handleReserveToCart}
+        />
       </SheetList>
     </SheetDrawer>
   );
