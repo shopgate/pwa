@@ -42,21 +42,21 @@ export type LocationAddress = {
 }
 
 export type Location = {
-  code: string;
-  name: string;
-  status: string;
-  supportedFulfillmentMethods: string[];
-  latitude: number;
-  longitude: number;
-  timeZone: string;
-  localeCode: string;
-  isComingSoon: boolean;
-  isDefault: boolean;
-  type: LocationType;
+  code: string | null;
+  name: string | null;
+  status?: string;
+  supportedFulfillmentMethods?: string[];
+  latitude?: number;
+  longitude?: number;
+  timeZone?: string;
+  localeCode?: string;
+  isComingSoon?: boolean;
+  isDefault?: boolean;
+  type?: LocationType;
   operationHours?: LocationOperationHours;
-  addresses: LocationAddress[];
-  productInventory: LocationProductInventory;
-  unitSystem: string;
+  addresses?: LocationAddress[];
+  productInventory?: LocationProductInventory;
+  unitSystem?: string;
 }
 
 type ProductLocations = {
@@ -74,11 +74,11 @@ export type LocationsByProductIdState = {
 }
 
 export type UserLocationState = {
-  code: string;
-  name: string;
-  productCode: string;
-  visibleInventory: number;
-  addressCode: string;
+  code: string | null;
+  name: string | null;
+  productCode: string | null;
+  visibleInventory: number | null;
+  addressCode: string | null;
   fulfillmentMethod: typeof PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
   | typeof PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
 }

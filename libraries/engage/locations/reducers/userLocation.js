@@ -5,12 +5,15 @@ import {
   STORE_FULFILLMENT_METHOD,
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
 } from '../constants';
-import { type UserFormInputState } from '../locations.types';
+import { type UserLocationState } from '../locations.types';
 
-const defaultState: UserFormInputState = {
+const defaultState: UserLocationState = {
   code: null,
   name: null,
   fulfillmentMethod: PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+  productCode: null,
+  visibleInventory: null,
+  addressCode: null,
 };
 
 /**
@@ -20,9 +23,9 @@ const defaultState: UserFormInputState = {
  * @return {Object} The new state.
  */
 export default function userLocation(
-  state: UserFormInputState = defaultState,
+  state: UserLocationState = defaultState,
   action: Redux.Action
-): UserFormInputState {
+): UserLocationState {
   switch (action.type) {
     case SELECT_LOCATION:
       return {
