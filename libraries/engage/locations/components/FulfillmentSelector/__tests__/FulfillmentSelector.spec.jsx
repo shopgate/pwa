@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
 } from '../../../constants';
 import { FulfillmentSheet } from '../../FulfillmentSheet';
 import { FulfillmentSelector } from '../FulfillmentSelector';
@@ -65,15 +66,13 @@ describe('<FulfillmentSelector />', () => {
     const wrapper = shallow((
       <FulfillmentSelector
         productId="abc-123"
-        location={{
-          name: 'Test Store',
-        }}
+        location={{}}
         conditioner={conditioner}
         fulfillmentMethods={[
           PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
           PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
         ]}
-        fulfillmentPaths={[]}
+        fulfillmentPaths={[FULFILLMENT_PATH_MULTI_LINE_RESERVE]}
         disabled={false}
       />
     ));

@@ -87,16 +87,7 @@ export const FulfillmentSelector = (props: Props) => {
         return;
       }
 
-      if (elementName === pickUp && location.code !== null) {
-        return;
-      }
-
-      if (!changeOnly) {
-        setTimeout(() => {
-          setIsOpen(true);
-          FulfillmentSheet.open(handleClose, 0, null, changeOnly);
-        }, 300);
-
+      if (elementName === pickUp && location.code) {
         return;
       }
 
