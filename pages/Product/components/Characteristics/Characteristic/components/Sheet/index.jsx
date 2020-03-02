@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SheetDrawer, SheetList } from '@shopgate/engage/components';
-import { VariantContext } from '@shopgate/engage/product';
+import { VariantContext, VariantAvailability, ProductContext } from '@shopgate/engage/product';
 import { ViewContext } from '@shopgate/engage/components/View';
 import Item from '../SheetItem';
-import VariantAvailability from '../VariantAvailability';
-import { ProductContext } from '../../../../../context';
 
 /**
  * The CharacteristicSheet component.
