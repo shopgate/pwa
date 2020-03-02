@@ -136,7 +136,7 @@ exports[`<StoreListSearch /> should call getProductLocations with a postal code 
             "data-css-2h0g54": "",
           }
         }
-        disabled={false}
+        disabled={true}
         onChange={[Function]}
         onKeyDown={[Function]}
         placeholder="locations.search_placeholder"
@@ -164,78 +164,10 @@ exports[`<StoreListSearch /> should call getProductLocations with a postal code 
     }
   >
     <ProgressBar
-      isVisible={false}
+      isVisible={true}
     />
   </div>
 </StoreListSearch>
-`;
-
-exports[`<StoreListSearch /> should react on updates of the loading prop 1`] = `
-<Fragment>
-  <div
-    className={
-      Object {
-        "data-css-z3aef1": "",
-      }
-    }
-  >
-    <div
-      className={
-        Object {
-          "data-css-bpbkyq": "",
-        }
-      }
-    >
-      <span
-        aria-hidden={true}
-        className={
-          Object {
-            "data-css-gy1p1e": "",
-          }
-        }
-      >
-        <MagnifierIcon />
-      </span>
-      <input
-        autoComplete="off"
-        autoCorrect="off"
-        className={
-          Object {
-            "data-css-2h0g54": "",
-          }
-        }
-        disabled={false}
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="locations.search_placeholder"
-        type="search"
-        value=""
-      />
-      <button
-        className={
-          Object {
-            "data-css-gy1p1e": "",
-          }
-        }
-        onClick={[Function]}
-        type="button"
-      >
-        <LocatorIcon />
-      </button>
-    </div>
-  </div>
-  <div
-    className={
-      Object {
-        "data-css-13azwyo": "",
-      }
-    }
-  >
-    <ProgressBar
-      isVisible={false}
-    />
-  </div>
-</Fragment>
 `;
 
 exports[`<StoreListSearch /> should render as expected 1`] = `

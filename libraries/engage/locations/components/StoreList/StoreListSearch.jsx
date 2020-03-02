@@ -17,7 +17,8 @@ import {
  * @returns {JSX}
  */
 function StoreListSearch({ getProductLocations }) {
-  const { product, loading, locations } = useContext(FulfillmentContext);
+  const { product, locations } = useContext(FulfillmentContext);
+  const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [message, setMessage] = useState('');
   const inputEl = useRef(null);
@@ -36,6 +37,7 @@ function StoreListSearch({ getProductLocations }) {
   const updateProductLocations = useCallback(async (postalCode = null) => {
     // Clear old error messages.
     setMessage('');
+    setLoading(true);
     // Request new locations.
     const error = await getProductLocations(product.id, postalCode);
 
@@ -43,6 +45,8 @@ function StoreListSearch({ getProductLocations }) {
       // Show a message when the locations request failed.
       setMessage(error);
     }
+
+    setLoading(false);
   }, [getProductLocations, product]);
 
   /**

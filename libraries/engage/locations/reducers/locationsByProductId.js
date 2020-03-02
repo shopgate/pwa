@@ -1,8 +1,11 @@
+// @flow
+import * as Redux from 'redux';
 import {
   REQUEST_PRODUCT_LOCATIONS,
   RECEIVE_PRODUCT_LOCATIONS,
   ERROR_PRODUCT_LOCATIONS,
 } from '../constants';
+import { type LocationsByProductIdState } from '../locations.types';
 
 /**
  * Stores the product locations by the ID of the product.
@@ -10,7 +13,10 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function locationsByProductId(state = {}, action) {
+export default function locationsByProductId(
+  state: LocationsByProductIdState = {},
+  action: Redux.Action
+): LocationsByProductIdState {
   switch (action.type) {
     case REQUEST_PRODUCT_LOCATIONS:
       return {

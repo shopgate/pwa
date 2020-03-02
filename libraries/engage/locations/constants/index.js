@@ -1,3 +1,4 @@
+// @flow
 // ACTION TYPES
 export {
   REQUEST_LOCATIONS,
@@ -38,3 +39,10 @@ export const PRODUCT_FULFILLMENT_METHOD_ROPIS = 'ROPIS';
 
 export const FULFILLMENT_PATH_QUICK_RESERVE = 'quickReserve';
 export const FULFILLMENT_PATH_MULTI_LINE_RESERVE = 'multiLineReserve';
+
+export {
+  STAGE_SELECT_STORE,
+  STAGE_RESERVE_FORM,
+  STAGE_RESPONSE_SUCCESS,
+  STAGE_RESPONSE_ERROR,
+} from './Stages';

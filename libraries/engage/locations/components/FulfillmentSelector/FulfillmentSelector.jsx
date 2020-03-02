@@ -1,6 +1,6 @@
+// @flow
 import { hot } from 'react-hot-loader/root';
 import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
 import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import { Availability } from '@shopgate/engage/product';
 import { FulfillmentSheet } from '../FulfillmentSheet';
@@ -15,6 +15,9 @@ import FulfillmentSelectorButtonChangeLocation from './FulfillmentSelectorButton
 import FulfillmentSelectorAddToCart from './FulfillmentSelectorAddToCart';
 import connect from './FulfillmentSelector.connector';
 import * as styles from './FulfillmentSelector.style';
+import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
+
+type Props = OwnProps & StateProps & DispatchProps;
 
 /**
  * Renders a fulfillment selector box for fulfillment methods direct ship and pick up in store,
@@ -25,7 +28,7 @@ import * as styles from './FulfillmentSelector.style';
  * @param {Object} props.location Last location that was selected for the previous product/variant.
  * @returns {JSX}
  */
-export const FulfillmentSelector = (props) => {
+export const FulfillmentSelector = (props: Props) => {
   const {
     productId: productCode,
     fulfillmentMethods,
@@ -59,7 +62,7 @@ export const FulfillmentSelector = (props) => {
    * Whenever the pick-up selection is made, open the
    * store selector sheet and use the new location.
    */
-  const handleChange = useCallback((elementName) => {
+  const handleChange = useCallback((elementName, changeOnly = false) => {
     // Run only external conditions
     conditioner.without('fulfillment-inventory').check().then((passed) => {
       if (!passed) {
@@ -84,13 +87,14 @@ export const FulfillmentSelector = (props) => {
         return;
       }
 
-      setIsOpen(true);
+      if (elementName === pickUp && location.code) {
+        return;
+      }
 
-      // TODO: Change this to open the store selector only if it wasn't yet selected for the product
-      // TODO: Opening the selector to change selection should be done with a "Choose Location" link
-      FulfillmentSheet.open(handleClose);
+      setIsOpen(true);
+      FulfillmentSheet.open(handleClose, 0, null, changeOnly);
     });
-  }, [conditioner, storeFulfillmentMethod, isOpen, handleClose]);
+  }, [conditioner, storeFulfillmentMethod, isOpen, location, handleClose]);
 
   if (!fulfillmentMethods) {
     return null;
@@ -125,7 +129,7 @@ export const FulfillmentSelector = (props) => {
                 <StockInfo location={selectedLocation || location} />
                 {(selection === pickUp) && (
                   <FulfillmentSelectorButtonChangeLocation
-                    onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP)}
+                    onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP, true)}
                   />
                 )}
               </div>
@@ -139,15 +143,6 @@ export const FulfillmentSelector = (props) => {
       />
     </SurroundPortals>
   );
-};
-
-FulfillmentSelector.propTypes = {
-  conditioner: PropTypes.shape().isRequired,
-  productId: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
-  fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
-  location: PropTypes.shape(),
-  storeFulfillmentMethod: PropTypes.func,
 };
 
 FulfillmentSelector.defaultProps = {

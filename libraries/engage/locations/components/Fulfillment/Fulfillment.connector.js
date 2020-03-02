@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { makeGetMerchantSettings } from '@shopgate/engage/core';
 import { makeGetUserFormInput } from '../../selectors';
 import { type OwnProps, type StateProps } from './Fulfillment.types';
+import { type State } from '../../../types';
 
 /**
  * @returns {Function}
@@ -16,7 +17,7 @@ function makeMapStateToProps() {
    * @param {Object} props The component props.
    * @returns {Object}
    */
-  return state => ({
+  return (state: State) => ({
     userInput: getUserFormInput(state),
     settings: getMerchantSettings(state),
   });

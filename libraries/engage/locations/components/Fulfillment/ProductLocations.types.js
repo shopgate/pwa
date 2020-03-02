@@ -1,12 +1,13 @@
 // @flow
+import { type Location } from '../../locations.types';
 
 export type OwnProps = {
-  onLocationSelect: Function;
+  onLocationSelect: () => void;
   locationId?: string | null;
 }
 
 export type StateProps = {
   product: Object | null;
-  locations: Object[];
+  locations: Location[];
   loading: boolean;
 }
