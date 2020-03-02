@@ -28,6 +28,7 @@ class ProductContent extends PureComponent {
   static propTypes = {
     baseProductId: PropTypes.string,
     currency: PropTypes.string,
+    hasFulfillmentMethods: PropTypes.bool,
     // eslint-disable-next-line react/no-unused-prop-types
     isVariant: PropTypes.bool,
     productId: PropTypes.string,
@@ -37,6 +38,7 @@ class ProductContent extends PureComponent {
   static defaultProps = {
     baseProductId: null,
     currency: null,
+    hasFulfillmentMethods: false,
     isVariant: false,
     productId: null,
     variantId: null,
@@ -58,6 +60,7 @@ class ProductContent extends PureComponent {
       optionsPrices: {},
       productId: props.variantId ? props.baseProductId : props.productId,
       variantId: props.variantId ? props.variantId : null,
+      hasFulfillmentMethods: props.hasFulfillmentMethods,
       characteristics: null,
       quantity: 1,
     };
@@ -89,6 +92,7 @@ class ProductContent extends PureComponent {
       currency: nextProps.currency,
       quantity: 1,
       ...(productIdChanged && {
+        hasFulfillmentMethods: nextProps.hasFulfillmentMethods,
         options: {},
         optionsPrices: {},
       }),
