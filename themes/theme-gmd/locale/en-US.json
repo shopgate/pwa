@@ -310,5 +310,10 @@
         "month": "short"
       }
     }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "sun"
+    }
   }
 }

@@ -270,7 +270,7 @@ export { getWidgetConfig } from './config/getWidgetConfig';
 export { getWidgetSettings } from './config/getWidgetSettings';
 
 // -------------- HELPERS -------------- //
-export { i18n } from './helpers/i18n';
+export { i18n, getWeekDaysOrder } from './helpers/i18n';
 export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
 export { isIOSTheme } from './helpers/isIOSTheme';
