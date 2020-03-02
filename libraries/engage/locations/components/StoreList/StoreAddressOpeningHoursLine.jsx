@@ -25,7 +25,11 @@ function StoreAddressOpeningHoursLine({ hours, code }) {
 
 StoreAddressOpeningHoursLine.propTypes = {
   code: PropTypes.string.isRequired,
-  hours: PropTypes.string.isRequired,
+  hours: PropTypes.string,
+};
+
+StoreAddressOpeningHoursLine.defaultProps = {
+  hours: null,
 };
 
 export default StoreAddressOpeningHoursLine;
