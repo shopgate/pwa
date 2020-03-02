@@ -1,5 +1,7 @@
 import * as core from '.';
 
+jest.unmock('@shopgate/engage/core/helpers/i18n');
+
 describe('engage > core', () => {
   it('should have exports', () => {
     expect(typeof core).toEqual('object');
