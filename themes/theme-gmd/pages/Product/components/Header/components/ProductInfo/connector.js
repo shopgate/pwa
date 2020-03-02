@@ -15,7 +15,7 @@ function makeMapStateToProps() {
    * @returns {Object}
    */
   return (state, props) => ({
-    showAvailablity: !getFulfillmentMethods(state, props),
+    showAvailability: !getFulfillmentMethods(state, props),
   });
 }
 

@@ -30,7 +30,7 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductInfo = ({ productId, options, showAvailablity }) => (
+const ProductInfo = ({ productId, options, showAvailability }) => (
   <Fragment>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
@@ -56,7 +56,7 @@ const ProductInfo = ({ productId, options, showAvailablity }) => (
             <div className={styles.productInfo}>
               {/* This feature is currently in BETA testing.
                 It should only be used for approved BETA Client Projects */}
-              {showAvailablity && (
+              {showAvailability && (
                 <EffectivityDates productId={productId}>
                   <Availability productId={productId} />
                 </EffectivityDates>
@@ -93,7 +93,7 @@ const ProductInfo = ({ productId, options, showAvailablity }) => (
 ProductInfo.propTypes = {
   options: PropTypes.shape().isRequired,
   productId: PropTypes.string.isRequired,
-  showAvailablity: PropTypes.bool.isRequired,
+  showAvailability: PropTypes.bool.isRequired,
 };
 
 export default connect(memo(ProductInfo));
