@@ -148,7 +148,12 @@ export function makeGetProductLocation(): Selector<State, Location | null> {
     getLocationId,
     getProductId,
     (locationsState, locationId, productId) => {
-      if (!productId || !locationId || !locationsState[productId]) {
+      if (
+        !productId ||
+        !locationId ||
+        !locationsState[productId] ||
+        !Array.isArray(locationsState[productId].locations)
+      ) {
         return null;
       }
 

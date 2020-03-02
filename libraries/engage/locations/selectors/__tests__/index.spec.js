@@ -1,4 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
+import cloneDeep from 'lodash/cloneDeep';
+import set from 'lodash/set';
 import { makeGetLocation, makeGetProductLocation } from '../index';
 
 jest.mock('@shopgate/engage/product', () => ({
@@ -17,6 +19,8 @@ describe('engage > locations > selectors', () => {
       locationsByProductId: {
         sg1: {
           locations: [{ code: 'SG1' }],
+          isFetching: false,
+          expires: 5,
         },
       },
     },
@@ -52,6 +56,20 @@ describe('engage > locations > selectors', () => {
 
     it('should return location', () => {
       expect(getProductLocation(mockedState, { locationId: 'SG1', productId: 'sg1' })).toEqual({
+        ...mockedState.locations.locationsByProductId.sg1.locations[0],
+      });
+    });
+
+    it('should return null when fetching and location data is not available yet', () => {
+      const localState = cloneDeep(mockedState);
+      set(localState, 'locations.locationsByProductId.sg1.locations', undefined);
+      expect(getProductLocation(localState, { locationId: 'SG1', productId: 'sg1' })).toBeNull();
+    });
+
+    it('should return locations when locations are currently fetching', () => {
+      const localState = cloneDeep(mockedState);
+      set(localState, 'locations.locationsByProductId.sg1.isFetching', true);
+      expect(getProductLocation(localState, { locationId: 'SG1', productId: 'sg1' })).toEqual({
         ...mockedState.locations.locationsByProductId.sg1.locations[0],
       });
     });
