@@ -292,5 +292,10 @@
         "month": "short"
       }
     }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "mon"
+    }
   }
 }

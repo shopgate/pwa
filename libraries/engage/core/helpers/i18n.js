@@ -14,8 +14,9 @@ import { logger } from '@shopgate/pwa-core/helpers';
  * @property {Function} price - Price translator.
  * @property {Function} date - Date translator.
  * @property {Function} time - Time translator.
- * @property {Function} number - Number translator
+ * @property {Function} getSupplementalData - Get Supplemental Data
  */
+
 /**
  * I18n helpers.
  * @returns {I18nHelpers}
@@ -42,6 +43,7 @@ const I18n = () => {
       this.date = getDateFormatter(lang);
       this.time = getTimeFormatter(lang);
       this.number = getNumberFormatter(lang);
+      this.getSupplementalData = () => locales.supplementalData || {};
       // If component decides to act accordingly this information should be exposed.
       this.ready = true;
     },
@@ -50,12 +52,24 @@ const I18n = () => {
     date: notReadyCb,
     time: notReadyCb,
     number: notReadyCb,
+    getSupplementalData: notReadyCb,
     ready: false,
   };
 };
 
 /**
- *
  * @type {I18nHelpers}
  */
 export const i18n = I18n();
+
+/**
+ * Return order of week days, based on firstDay of week locale settings
+ * @returns {string[]}
+ */
+export const getWeekDaysOrder = () => {
+  const { weekData: { firstDay = 'sun' } = {} } = i18n.getSupplementalData();
+  const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+  const dayIndex = days.findIndex(d => d === firstDay);
+
+  return days.slice(dayIndex).concat(days.slice(0, dayIndex));
+};
