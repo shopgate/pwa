@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SheetDrawer, SheetList } from '@shopgate/engage/components';
-import { VariantContext } from '@shopgate/engage/product';
+import { VariantContext, VariantAvailability, ProductContext } from '@shopgate/engage/product';
 import { ViewContext } from '@shopgate/engage/components/View';
 import Item from '../SheetItem';
-import VariantAvailability from '../VariantAvailability';
-import { ProductContext } from '../../../../../context';
 
 /**
  * The CharacteristicSheet component.
@@ -17,6 +15,7 @@ class CharacteristicSheet extends PureComponent {
     label: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     setViewAriaHidden: PropTypes.func.isRequired,
+    hasFulfillmentMethods: PropTypes.bool,
     onClose: PropTypes.func,
     onSelect: PropTypes.func,
     productId: PropTypes.string,
@@ -25,6 +24,7 @@ class CharacteristicSheet extends PureComponent {
   };
 
   static defaultProps = {
+    hasFulfillmentMethods: false,
     onClose() { },
     onSelect() { },
     productId: null,
@@ -68,6 +68,11 @@ class CharacteristicSheet extends PureComponent {
    * @return {React.Component|null}
    */
   renderAvailability = (value) => {
+    const { hasFulfillmentMethods } = this.props;
+    if (hasFulfillmentMethods) {
+      return null;
+    }
+
     const selection = {
       ...this.props.selection,
       [this.props.charId]: value,
@@ -119,13 +124,14 @@ const SheetComponent = props => (
   <ViewContext.Consumer>
     {({ setAriaHidden }) => (
       <ProductContext.Consumer>
-        {({ productId }) => (
+        {({ productId, hasFulfillmentMethods }) => (
           <VariantContext.Consumer>
             {({ characteristics }) => (
               <CharacteristicSheet
                 productId={productId}
                 selection={characteristics}
                 setViewAriaHidden={setAriaHidden}
+                hasFulfillmentMethods={hasFulfillmentMethods}
                 {...props}
               />
             )}

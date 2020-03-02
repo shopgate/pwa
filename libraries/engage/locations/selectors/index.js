@@ -142,7 +142,8 @@ export function makeGetProductLocation() {
         return null;
       }
 
-      return locationsState[productId].locations.find(l => l.code === locationId);
+      const { locations = [] } = locationsState[productId];
+      return locations.find(l => l.code === locationId);
     }
   );
 }
