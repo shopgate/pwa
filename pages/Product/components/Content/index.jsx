@@ -11,6 +11,7 @@ import {
 import {
   FulfillmentSelector,
   FulfillmentSheet,
+  FulfillmentPathSelector,
 } from '@shopgate/engage/locations';
 import Reviews from 'Components/Reviews';
 import Media from '../Media';
@@ -194,6 +195,7 @@ class ProductContent extends PureComponent {
           </Section>
           <TaxDisclaimer />
           <FulfillmentSheet />
+          <FulfillmentPathSelector />
         </ProductContext.Provider>
       </div>
     );

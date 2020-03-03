@@ -151,9 +151,12 @@
     "distance_metric": "{distance} km",
     "distance_imperial": "{distance} mi",
     "method": {
-      "ropis" : "Reserve online, pick up in store",
-      "direct_ship" : "Ship to address"
-    }
+      "ropis": "Reserve online, pick up in store",
+      "direct_ship": "Ship to address"
+    },
+    "choose_reservation_type": "Reservierungs-Art wählen",
+    "quick_reserve": "Sofort reservieren",
+    "reserve_to_cart": "In den Warenkorb reservieren"
   },
   "category": {
     "error": {
@@ -313,6 +316,11 @@
       "MMM": {
         "month": "short"
       }
+    }
+  },
+  "supplementalData": {
+    "weekData": {
+      "firstDay": "mon"
     }
   }
 }
