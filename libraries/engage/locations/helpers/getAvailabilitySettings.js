@@ -1,8 +1,11 @@
+// @flow
 import {
   availabilityTypes,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_AVAILABLE,
 } from '../../product/constants';
+import { type MerchantSettings } from '../../core/config/config.types';
+import { type Location } from '../locations.types';
 
 /**
  * Takes the location stock info settings and finds the matching settings for the given inventory.
@@ -10,7 +13,7 @@ import {
  * @param {Object|null} location The location object.
  * @returns {Object}
  */
-export default (settings, location = {}) => {
+export default (settings: MerchantSettings, location: Location = {}) => {
   const { productInventory } = location;
   if (!productInventory) {
     return {};
@@ -18,16 +21,15 @@ export default (settings, location = {}) => {
 
   const { isAvailable = false, visible = 0 } = productInventory;
   if (isAvailable === false) {
-    return settings[AVAILABILITY_TYPE_NOT_AVAILABLE] || {};
+    return settings[AVAILABILITY_TYPE_NOT_AVAILABLE];
   }
 
   if (visible === null) {
-    return settings[AVAILABILITY_TYPE_AVAILABLE] || {};
+    return settings[AVAILABILITY_TYPE_AVAILABLE];
   }
 
   // Filter by inventory blind and visible inventory (must match both).
   const matchingTypes = availabilityTypes
-    .filter(type => !!settings[type])
     .filter(type => (
       // When inventory blind is set in the current availability setting, then this should also
       // account for the inventory blind from the given store. Ignore inventory blind otherwise.
@@ -45,7 +47,7 @@ export default (settings, location = {}) => {
     ));
 
   if (matchingTypes.length > 0) {
-    return settings[matchingTypes[0]] || {};
+    return settings[matchingTypes[0]];
   }
 
   return {};

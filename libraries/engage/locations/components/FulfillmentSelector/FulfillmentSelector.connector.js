@@ -1,3 +1,4 @@
+// @flow
 import { connect } from 'react-redux';
 import {
   makeGetFulfillmentMethods,
@@ -6,6 +7,7 @@ import {
   makeGetProductLocation,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
+import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
 
 /**
  * @param {Object} state The current application state.
@@ -42,4 +44,7 @@ const mapDispatchToProps = {
   storeFulfillmentMethod,
 };
 
-export default connect(makeMapStateToProps, mapDispatchToProps);
+export default connect<StateProps, DispatchProps, OwnProps>(
+  makeMapStateToProps,
+  mapDispatchToProps
+);

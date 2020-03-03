@@ -23,7 +23,6 @@ describe('<StoreListSearch />', () => {
   const defaultProps = { getProductLocations };
   const context = {
     product: { id: productId },
-    loading: false,
     locations: [{ code: 'LOCCODE' }],
   };
 
@@ -40,28 +39,6 @@ describe('<StoreListSearch />', () => {
       <StoreListSearch {...defaultProps} />
     ));
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(false);
-    expect(wrapper.find('input').prop('disabled')).toEqual(false);
-  });
-
-  it('should react on updates of the loading prop', async () => {
-    const wrapper = shallow((
-      <StoreListSearch {...defaultProps} />
-    ));
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(false);
-    expect(wrapper.find('input').prop('disabled')).toEqual(false);
-
-    useContext.mockReturnValueOnce({
-      ...context,
-      loading: true,
-    });
-    wrapper.setProps({}).update();
-    expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(true);
-    expect(wrapper.find('input').prop('disabled')).toEqual(true);
-
-    wrapper.setProps({}).update();
     expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(false);
     expect(wrapper.find('input').prop('disabled')).toEqual(false);
   });

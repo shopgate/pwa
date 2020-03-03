@@ -1,12 +1,22 @@
-import { createSelector } from 'reselect';
+// @flow
+import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
+import { type State } from '../../types';
+import {
+  type LocationsState,
+  type LocationsByIdState,
+  type LocationsByProductIdState,
+  type Location,
+  type UserLocationState,
+  type UserFormInputState,
+} from '../locations.types';
 
 /**
  * Retrieves the locations state from the store.
  * @param {Object} state The current application state.
  * @return {Object} The locations state.
  */
-function getLocationsState(state) {
+function getLocationsState(state: State): LocationsState {
   return state.locations || {};
 }
 /**
@@ -36,7 +46,7 @@ function getLocationId(state, props) {
  * Creates the selector that retrieves the locations state.
  * @returns {Function}
  */
-export function makeGetLocationsState() {
+export function makeGetLocationsState(): Selector<State, LocationsByIdState> {
   /**
    * Retrieves the product locations state.
    * @param {Object} state The application state.
@@ -52,7 +62,7 @@ export function makeGetLocationsState() {
  * Creates the selector that retrieves the product locations state.
  * @returns {Function}
  */
-export function makeGetProductLocationsState() {
+export function makeGetProductLocationsState(): Selector<State, LocationsByProductIdState> {
   /**
    * Retrieves the product locations state.
    * @param {Object} state The application state.
@@ -68,7 +78,7 @@ export function makeGetProductLocationsState() {
  * Creates the selector that returns the location.
  * @returns {Function}
  */
-export function makeGetLocation() {
+export function makeGetLocation(): Selector<State, Location | null> {
   const getLocationsStateSelector = makeGetLocationsState();
 
   /**
@@ -94,7 +104,7 @@ export function makeGetLocation() {
  * Creates the selector that returns the locations for a specific product.
  * @returns {Function}
  */
-export function makeGetProductLocations() {
+export function makeGetProductLocations(): Selector<State, Location[] | null> {
   const getProductLocationsState = makeGetProductLocationsState();
 
   /**
@@ -123,7 +133,7 @@ export function makeGetProductLocations() {
  * Creates the selector that returns the single product location.
  * @returns {Function}
  */
-export function makeGetProductLocation() {
+export function makeGetProductLocation(): Selector<State, Location | null> {
   const getProductLocationsState = makeGetProductLocationsState();
 
   /**
@@ -138,7 +148,12 @@ export function makeGetProductLocation() {
     getLocationId,
     getProductId,
     (locationsState, locationId, productId) => {
-      if (!productId || !locationId || !locationsState[productId]) {
+      if (
+        !productId ||
+        !locationId ||
+        !locationsState[productId] ||
+        !Array.isArray(locationsState[productId].locations)
+      ) {
         return null;
       }
 
@@ -152,7 +167,7 @@ export function makeGetProductLocation() {
  * Creates the selector that determines, if products locations for a specific product are fetching.
  * @returns {Function}
  */
-export function makeGetIsFetchingProductLocations() {
+export function makeGetIsFetchingProductLocations(): Selector<State, boolean | null> {
   const getProductLocationsState = makeGetProductLocationsState();
 
   /**
@@ -181,7 +196,7 @@ export function makeGetIsFetchingProductLocations() {
  * Creates a selector to retrieve a product's fulfillment methods.
  * @returns {Function}
  */
-export function makeGetFulfillmentMethods() {
+export function makeGetFulfillmentMethods(): Selector<State, string[] | null> {
   /**
    * Retrieves a product's fulfillment methods.
    * @param {Object} state The application state.
@@ -205,7 +220,7 @@ export function makeGetFulfillmentMethods() {
  * Creates a selector that checks if the Fulfillment Selector should be disabled.
  * @returns {Function}
  */
-export function makeIsFulfillmentSelectorDisabled() {
+export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
   const getProductLocations = makeGetProductLocations();
   const getFulfillmentMethods = makeGetFulfillmentMethods();
 
@@ -233,7 +248,7 @@ export function makeIsFulfillmentSelectorDisabled() {
  * Creates the selector that retrieves the user location state.
  * @returns {Function}
  */
-export function makeGetUserLocation() {
+export function makeGetUserLocation(): Selector<State, UserLocationState> {
   return createSelector(
     getLocationsState,
     (locations) => {
@@ -250,7 +265,7 @@ export function makeGetUserLocation() {
  * Creates a selector that retrieves the user's reserve form input.
  * @returns {Function}
  */
-export function makeGetUserFormInput() {
+export function makeGetUserFormInput(): Selector<State, UserFormInputState> {
   return createSelector(
     getLocationsState,
     (locations) => {

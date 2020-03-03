@@ -6,7 +6,7 @@ exports[`<StoreAddressOpeningHours /> should not render hours that are empty 1`]
     Object {
       "mon": "8:00am - 4:00pm",
       "tue": "",
-      "wen": "8:00am - 8:00pm",
+      "wed": "8:00am - 8:00pm",
     }
   }
 >
@@ -51,9 +51,9 @@ exports[`<StoreAddressOpeningHours /> should not render hours that are empty 1`]
       key="tue"
     />
     <StoreAddressOpeningHoursLine
-      code="wen"
+      code="wed"
       hours="8:00am - 8:00pm"
-      key="wen"
+      key="wed"
     >
       <div
         className={
@@ -69,15 +69,35 @@ exports[`<StoreAddressOpeningHours /> should not render hours that are empty 1`]
             }
           }
         >
-          locations.wen
+          locations.wed
         </div>
         <div
-          data-test-id="hours-wen"
+          data-test-id="hours-wed"
         >
           8:00am - 8:00pm
         </div>
       </div>
     </StoreAddressOpeningHoursLine>
+    <StoreAddressOpeningHoursLine
+      code="thu"
+      hours={null}
+      key="thu"
+    />
+    <StoreAddressOpeningHoursLine
+      code="fri"
+      hours={null}
+      key="fri"
+    />
+    <StoreAddressOpeningHoursLine
+      code="sat"
+      hours={null}
+      key="sat"
+    />
+    <StoreAddressOpeningHoursLine
+      code="sun"
+      hours={null}
+      key="sun"
+    />
   </div>
 </StoreAddressOpeningHours>
 `;

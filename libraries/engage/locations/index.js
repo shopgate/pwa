@@ -6,6 +6,7 @@ export { fetchProductLocations } from './actions';
 export {
   FulfillmentSelector,
   FulfillmentSheet,
+  FulfillmentPathSelector,
   StoreList,
   StoreAddressOpeningHours,
   StoreAddressPhoneNumber,

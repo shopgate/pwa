@@ -13,9 +13,14 @@ import { ReservationSuccess, ReservationError } from '../ReservationResponses';
 import { sheet } from './FulfillmentSheet.style';
 import connect from './FulfillmentSheet.connector';
 import FulfillmentContext from '../context';
+import {
+  FULFILLMENT_PATH_QUICK_RESERVE,
+  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+} from '../../constants';
+import { FulfillmentPathSelector } from '../FulfillmentPathSelector';
 
-const EVENT_SET_OPEN = 'event.setOpen';
-const EVENT_SET_CLOSED = 'event.setClosed';
+const EVENT_SET_OPEN = 'FulfillmentSheet.setOpen';
+const EVENT_SET_CLOSED = 'FulfillmentSheet.setClosed';
 
 /**
  * Renders the store selector sheet.
@@ -23,10 +28,10 @@ const EVENT_SET_CLOSED = 'event.setClosed';
 class FulfillmentSheet extends PureComponent {
   static propTypes = {
     addProductsToCart: PropTypes.func,
+    fulfillmentPaths: PropTypes.arrayOf(PropTypes.string),
     locations: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
     selectLocation: PropTypes.func,
-    settings: PropTypes.shape(),
     stage: PropTypes.number,
     storeFormInput: PropTypes.func,
     submitReservation: PropTypes.func,
@@ -38,7 +43,7 @@ class FulfillmentSheet extends PureComponent {
     locations: null,
     product: null,
     selectLocation: () => { },
-    settings: {},
+    fulfillmentPaths: [],
     submitReservation: () => { },
     stage: 1,
     storeFormInput: () => { },
@@ -75,6 +80,8 @@ class FulfillmentSheet extends PureComponent {
       title: this.STAGE_TITLES[this.props.stage - 1],
       orderNumbers: null,
       errors: null,
+      fulfillmentPath: null,
+      changeOnly: false,
     };
   }
 
@@ -90,8 +97,10 @@ class FulfillmentSheet extends PureComponent {
    * Opens the store selector sheet.
    * @param {Function} [callback=null] A callback that will be called once the sheet closes.
    * @param {number} [stage=0] The stage to start on.
+   * @param {string} [fulfillmentPath=null] The fulfillment path.
+   * @param {boolean} [changeOnly=false] Whether to only change location.
    */
-  handleSetOpen = (callback = null, stage = 0) => {
+  handleSetOpen = (callback = null, stage = 0, fulfillmentPath = null, changeOnly = false) => {
     if (callback !== null) {
       this.callback = callback;
     }
@@ -100,6 +109,8 @@ class FulfillmentSheet extends PureComponent {
       isOpen: true,
       stage: this.STAGES[stage],
       title: this.STAGE_TITLES[stage],
+      fulfillmentPath,
+      changeOnly,
     });
   }
 
@@ -129,16 +140,56 @@ class FulfillmentSheet extends PureComponent {
   }
 
   /**
+   * Handles multiline reservation.
+   * @param {Object} location The selected location.
+   */
+  handleMultilineReservation = (location) => {
+    const {
+      addProductsToCart,
+      product,
+    } = this.props;
+
+    addProductsToCart([{
+      productId: product.id,
+      quantity: 1,
+      fulfillment: {
+        method: 'ROPIS', // TODO: make this dynamic.
+        location: {
+          code: location.code,
+          name: location.name,
+        },
+      },
+    }]);
+
+    this.handleSetClosed({
+      productCode: product.id,
+      location,
+    });
+  }
+
+  /**
+   * Handles quick reservation.
+   */
+  handleQuickReservation = () => {
+    setTimeout(() => {
+      this.setState({
+        stage: this.STAGES[1],
+        title: this.STAGE_TITLES[1],
+      });
+    }, 300);
+  }
+
+  /**
    * Handles the selection of a store location from the sheet.
    * @param {Object} location The selected location.
    */
   handleSelectLocation = (location) => {
     const {
-      addProductsToCart,
-      selectLocation,
       product,
-      settings: { enabledFulfillmentMethodSelectionForEngage: fulfillmentMethods = [] },
+      selectLocation,
+      fulfillmentPaths,
     } = this.props;
+    const { fulfillmentPath, changeOnly } = this.state;
 
     // Dispatch action for user selection
     selectLocation({
@@ -146,18 +197,7 @@ class FulfillmentSheet extends PureComponent {
       name: location.name,
     });
 
-    if (fulfillmentMethods.includes('multiLineReserve')) {
-      addProductsToCart([{
-        productId: product.id,
-        quantity: 1,
-        fulfillment: {
-          method: 'ROPIS', // TODO: make this dynamic.
-          location: {
-            code: location.code,
-            name: location.name,
-          },
-        },
-      }]);
+    if (changeOnly) {
       this.handleSetClosed({
         productCode: product.id,
         location,
@@ -165,12 +205,32 @@ class FulfillmentSheet extends PureComponent {
       return;
     }
 
-    setTimeout(() => {
-      this.setState({
-        stage: this.STAGES[1],
-        title: this.STAGE_TITLES[1],
+    // No fulfillment path selected yet.
+    if (fulfillmentPath === null && fulfillmentPaths.length > 1) {
+      FulfillmentPathSelector.open((method) => {
+        if (method === FULFILLMENT_PATH_QUICK_RESERVE) {
+          this.handleQuickReservation();
+        }
+
+        if (method === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
+          this.handleMultilineReservation(location);
+        }
       });
-    }, 300);
+
+      return;
+    }
+
+    if (
+      fulfillmentPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE
+      && fulfillmentPaths.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)
+    ) {
+      this.handleMultilineReservation(location);
+      return;
+    }
+
+    if (fulfillmentPath === FULFILLMENT_PATH_QUICK_RESERVE) {
+      this.handleQuickReservation();
+    }
   }
 
   /**
@@ -224,15 +284,47 @@ class FulfillmentSheet extends PureComponent {
   }
 
   /**
+   * Whether to show the store list.
+   * @returns {boolean}
+   */
+  isStoreList = () => {
+    const { stage } = this.state;
+    return (stage === this.STAGES[0]);
+  }
+
+  /**
+   * Whether to show the reservation form.
+   * @returns {boolean}
+   */
+  isReservationForm = () => {
+    const { stage } = this.state;
+    return (stage === this.STAGES[1]);
+  }
+
+  /**
+   * Whether to show the reservation success page.
+   * @returns {boolean}
+   */
+  isReservationSuccess = () => {
+    const { stage, orderNumbers } = this.state;
+    return (stage === this.STAGES[2] && orderNumbers !== null && !!orderNumbers.find(Boolean));
+  }
+
+  /**
+  * Whether to show the reservation error page.
+  * @returns {boolean}
+  */
+  isReservationError = () => {
+    const { stage, errors } = this.state;
+    return (stage === this.STAGES[2] && errors !== null);
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
-    const {
-      product, locations, userInput,
-    } = this.props;
-    const {
-      isOpen, stage, title, orderNumbers, errors,
-    } = this.state;
+    const { product, locations, userInput } = this.props;
+    const { isOpen, title, orderNumbers } = this.state;
 
     const contextValue = {
       selectLocation: this.handleSelectLocation,
@@ -247,18 +339,16 @@ class FulfillmentSheet extends PureComponent {
       <FulfillmentContext.Provider value={contextValue}>
         <SheetDrawer isOpen={isOpen} title={title} onDidClose={this.handleSetClosed}>
           <div className={sheet}>
-            {stage === this.STAGES[0] && (
+            {this.isStoreList() && (
               <StoreList />
             )}
-            {stage === this.STAGES[1] && (
+            {this.isReservationForm() && (
               <ReserveForm />
             )}
-            {(stage === this.STAGES[2] &&
-              orderNumbers !== null &&
-              !!orderNumbers.find(Boolean)) && (
+            {this.isReservationSuccess() && (
               <ReservationSuccess />
             )}
-            {(stage === this.STAGES[2] && errors !== null) && (
+            {this.isReservationError() && (
               <ReservationError />
             )}
           </div>
@@ -274,9 +364,16 @@ const FulfillmentSheetWrapped = withCurrentProduct(connect(FulfillmentSheet));
  * Opens the store selector sheet.
  * @param {Function} [callback=null] A callback that will be called once the sheet closes.
  * @param {number} [stage=0] The stage to start on.
+ * @param {string} [fulfillmentPath= null] Determines the fulfillment path
+ * @param {boolean} [changeOnly=false] Whether to only change
  */
-FulfillmentSheetWrapped.open = (callback = null, stage = 0) => {
-  UIEvents.emit(EVENT_SET_OPEN, callback, stage);
+FulfillmentSheetWrapped.open = (
+  callback = null,
+  stage = 0,
+  fulfillmentPath = null,
+  changeOnly = false
+) => {
+  UIEvents.emit(EVENT_SET_OPEN, callback, stage, fulfillmentPath, changeOnly);
 };
 
 /**

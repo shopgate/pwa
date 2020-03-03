@@ -1,9 +1,26 @@
 import { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { isProductAvailable } from '../../helpers';
-import { FULFILLMENT_PATH_MULTI_LINE_RESERVE, PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../../constants';
+import {
+  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  FULFILLMENT_PATH_QUICK_RESERVE,
+  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+} from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
+import { FulfillmentPathSelector } from '../FulfillmentPathSelector';
 import connect from './FulfillmentSelectorAddToCart.connector';
+
+/**
+ * Opens the fulfillment path selector and returns a promise that resolves after selection.
+ * @returns {Promise}
+ */
+function promisifiedFulfillmentPathSelector() {
+  return new Promise((resolve) => {
+    FulfillmentPathSelector.open((selectedPath) => {
+      resolve(selectedPath);
+    });
+  });
+}
 
 /**
  * Interject add to cart flow.
@@ -19,11 +36,27 @@ const FulfillmentSelectorAddToCart = ({
   // Add to cart effect to validate inventory
   useEffect(() => {
     // Add most late conditioner
-    conditioner.addConditioner('fulfillment-inventory', () => {
+    conditioner.addConditioner('fulfillment-inventory', async () => {
       // Allow direct ship item
       if (fulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP) {
         return true;
       }
+
+      if (fulfillmentPaths.length > 1) {
+        const selectedPath = await promisifiedFulfillmentPathSelector();
+
+        if (selectedPath === FULFILLMENT_PATH_QUICK_RESERVE) {
+          FulfillmentSheet.open(null, 1, selectedPath);
+          return false;
+        }
+
+        if (selectedPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
+          return isProductAvailable(location);
+        }
+
+        return false;
+      }
+
       if (!fulfillmentPaths.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)) {
         if (isProductAvailable(location)) {
           // Open reservation form. Stop adding to a cart
@@ -31,6 +64,7 @@ const FulfillmentSelectorAddToCart = ({
         }
         return false;
       }
+
       return isProductAvailable(location);
     }, 100);
 

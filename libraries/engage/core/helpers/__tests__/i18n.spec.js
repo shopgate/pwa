@@ -1,4 +1,4 @@
-import { i18n } from '../i18n';
+import { i18n, getWeekDaysOrder } from '../i18n';
 
 jest.unmock('../i18n');
 
@@ -56,5 +56,16 @@ describe('i18n', () => {
   it('should warn on another init', () => {
     i18n.init({});
     expect(mockedWarn).toHaveBeenCalled();
+  });
+
+  describe('getWeekDaysOrder', () => {
+    it('should set mon to first day', () => {
+      i18n.init({ locales: { supplementalData: { weekData: { firstDay: 'mon' } } } });
+      expect(getWeekDaysOrder()).toEqual(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']);
+    });
+    it('should set sat to first day', () => {
+      i18n.init({ locales: { supplementalData: { weekData: { firstDay: 'sat' } } } });
+      expect(getWeekDaysOrder()).toEqual(['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri']);
+    });
   });
 });

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { makeGetMerchantSettings } from '@shopgate/engage/core';
+import { makeGetFulfillmentPaths } from '@shopgate/engage/core/config';
 import { selectLocation, storeFormInput } from '../../action-creators';
 import { makeGetProductLocations, makeGetUserFormInput } from '../../selectors';
 import { submitReservation } from '../../actions';
@@ -12,7 +12,7 @@ import { submitReservation } from '../../actions';
 function makeMapStateToProps() {
   const getProductLocations = makeGetProductLocations();
   const getUserFormInput = makeGetUserFormInput();
-  const getMerchantSettings = makeGetMerchantSettings();
+  const getFulfillmentPaths = makeGetFulfillmentPaths();
 
   /**
    * @param {Object} state The application state.
@@ -23,7 +23,7 @@ function makeMapStateToProps() {
     locations: getProductLocations(state, props),
     product: getProduct(state, props),
     userInput: getUserFormInput(state),
-    settings: getMerchantSettings(state),
+    fulfillmentPaths: getFulfillmentPaths(state),
   });
 }
 

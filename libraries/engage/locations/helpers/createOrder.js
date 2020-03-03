@@ -1,3 +1,4 @@
+// @flow
 import {
   getCurrency, getCartItems, getSubTotal, getGrandTotal,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
@@ -112,7 +113,7 @@ function createCartLineItems(getState) {
  * @param {Function} getState The redux getState function.
  * @returns {Object}
  */
-function createOrder(formValues, product, getState) {
+function createOrder(formValues: { [string]: string }, product: any, getState: () => any) {
   // If no individual product was submitted, we handle the cart.
   if (product === null) {
     return {

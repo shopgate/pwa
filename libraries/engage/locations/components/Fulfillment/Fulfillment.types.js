@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { type MerchantSettings } from '../../../core/config/config.types';
 
 export type OwnProps = {
   title: string;
@@ -7,5 +8,5 @@ export type OwnProps = {
 }
 
 export type StateProps = {
-  settings?: Object | null;
+  settings?: MerchantSettings | null;
 }
