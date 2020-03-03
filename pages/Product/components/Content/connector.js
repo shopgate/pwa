@@ -22,7 +22,7 @@ function makeMapStateToProps() {
     baseProductId: getBaseProductId(state, props),
     variantId: getVariantId(state, props),
     currency: getProductCurrency(state, props),
-    hasFulfillmentMethods: !getFulfillmentMethods(state, props),
+    fulfillmentMethods: getFulfillmentMethods(state, props),
   });
 }
 
