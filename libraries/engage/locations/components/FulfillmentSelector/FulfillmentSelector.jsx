@@ -11,6 +11,8 @@ import {
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
+import FulfillmentSelectorItemDirectShip from './FulfillmentSelectorItemDirectShip';
+import FulfillmentSelectorItemReserve from './FulfillmentSelectorItemReserve';
 import FulfillmentSelectorButtonChangeLocation from './FulfillmentSelectorButtonChangeLocation';
 import FulfillmentSelectorAddToCart from './FulfillmentSelectorAddToCart';
 import connect from './FulfillmentSelector.connector';
@@ -114,22 +116,32 @@ export const FulfillmentSelector = (props) => {
           direction="column"
         >
           <FulfillmentSelectorItem name={directShip}>
-            <Availability
+            <FulfillmentSelectorItemDirectShip
+              selected={selection === directShip}
               productId={productCode}
-              fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
-            />
+            >
+              <Availability
+                productId={productCode}
+                fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
+              />
+            </FulfillmentSelectorItemDirectShip>
           </FulfillmentSelectorItem>
           <FulfillmentSelectorItem name={pickUp}>
-            {location && (
-              <div className={styles.pickUpGroupContainer}>
-                <StockInfo location={selectedLocation || location} />
-                {(selection === pickUp) && (
-                  <FulfillmentSelectorButtonChangeLocation
-                    onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP)}
-                  />
-                )}
-              </div>
-            )}
+            <FulfillmentSelectorItemReserve
+              location={selectedLocation || location}
+              selected={selection === pickUp}
+            >
+              {location && (
+                <div className={styles.pickUpGroupContainer}>
+                  <StockInfo location={selectedLocation || location} />
+                  {(selection === pickUp) && (
+                    <FulfillmentSelectorButtonChangeLocation
+                      onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP)}
+                    />
+                  )}
+                </div>
+              )}
+            </FulfillmentSelectorItemReserve>
           </FulfillmentSelectorItem>
         </RadioGroup>
       </div>

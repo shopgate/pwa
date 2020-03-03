@@ -15,6 +15,7 @@ class CharacteristicSheet extends PureComponent {
     label: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     setViewAriaHidden: PropTypes.func.isRequired,
+    fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
     onClose: PropTypes.func,
     onSelect: PropTypes.func,
     productId: PropTypes.string,
@@ -23,6 +24,7 @@ class CharacteristicSheet extends PureComponent {
   };
 
   static defaultProps = {
+    fulfillmentMethods: null,
     onClose() { },
     onSelect() { },
     productId: null,
@@ -66,6 +68,10 @@ class CharacteristicSheet extends PureComponent {
    * @return {React.Component|null}
    */
   renderAvailability = (value) => {
+    const { fulfillmentMethods } = this.props;
+    if (fulfillmentMethods) {
+      return null;
+    }
     const selection = {
       ...this.props.selection,
       [this.props.charId]: value,
@@ -117,13 +123,14 @@ const SheetComponent = props => (
   <ViewContext.Consumer>
     {({ setAriaHidden }) => (
       <ProductContext.Consumer>
-        {({ productId }) => (
+        {({ productId, fulfillmentMethods }) => (
           <VariantContext.Consumer>
             {({ characteristics }) => (
               <CharacteristicSheet
                 productId={productId}
                 selection={characteristics}
                 setViewAriaHidden={setAriaHidden}
+                fulfillmentMethods={fulfillmentMethods}
                 {...props}
               />
             )}
