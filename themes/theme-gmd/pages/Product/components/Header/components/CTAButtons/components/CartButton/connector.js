@@ -30,7 +30,7 @@ function makeMapStateToProps() {
      * 2. Parent product can be not orderable but having orderable variants
      * 3. A ROPE fulfillment method is selected and the product is orderable at the location
      */
-    disabled: (!isProductOrderable(state, props) && !hasProductVariants(state, props)) ||
+    disabled: (!isProductOrderable(state, props) && !hasProductVariants(state, props)) &&
       !isRopeProductOrderable(state, props),
     loading: isProductPageLoading(state, props),
     userLocation: getUserLocation(state),
