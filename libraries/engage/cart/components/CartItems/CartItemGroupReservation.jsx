@@ -28,7 +28,7 @@ const FulfillmentLocation = ({ location }) => (
               <div className={title}>
                 {i18n.text('locations.method.ropis')}
               </div>
-              {`${location.address.street}, ${location.address.city}`}
+              {location.name}
             </div>
           </div>
         )}
