@@ -250,7 +250,7 @@ function FulfillmentProvider(props: Props) {
   );
 }
 
-const FulfillmentProviderWrapped = withCurrentProduct(connect(FulfillmentProvider));
+const FulfillmentProviderWrapped = withCurrentProduct<Props>(connect(FulfillmentProvider));
 
 /**
  * Opens the sheet that is wrapped inside the provider.
@@ -260,8 +260,8 @@ const FulfillmentProviderWrapped = withCurrentProduct(connect(FulfillmentProvide
  * @property {string} [params.fulfillmentPath] The fulfillment path that was chosen.
  * @property {boolean} [params.changeOnly=false] Whether only the location will be changed.
  */
-FulfillmentProviderWrapped.openSheet = function openSheet(params: SheetOpenParams): void {
+export function openSheen(params: SheetOpenParams): void {
   UIEvents.emit(EVENT_SET_OPEN, params);
-};
+}
 
 export default FulfillmentProviderWrapped;
