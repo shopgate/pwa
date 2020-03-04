@@ -132,7 +132,7 @@ class AddToCartBar extends Component {
       return;
     }
 
-    if (loading || (disabled && !hasFulfillmentMethods)) {
+    if (loading || disabled) {
       return;
     }
 
@@ -209,7 +209,7 @@ class AddToCartBar extends Component {
                       <CartItemsCount itemCount={added} />
                       <AddMoreButton
                         handleAddToCart={this.handleAddToCart}
-                        disabled={this.props.disabled && !this.props.hasFulfillmentMethods}
+                        disabled={this.props.disabled}
                         loading={this.props.loading}
                         onReset={this.resetClicked}
                         visible={added > 0}
@@ -217,7 +217,7 @@ class AddToCartBar extends Component {
                       />
                     </div>
                     <AddToCartButton
-                      disabled={this.props.disabled && !this.props.hasFulfillmentMethods}
+                      disabled={this.props.disabled}
                       itemCount={added}
                       handleAddToCart={this.handleAddToCart}
                       onReset={this.resetClicked}

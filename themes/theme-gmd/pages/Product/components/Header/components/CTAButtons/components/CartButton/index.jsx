@@ -62,12 +62,7 @@ class CartButton extends Component {
       return colors.light;
     }
 
-    // Both combinations are not available
-    if (this.props.disabled && !this.props.hasFulfillmentMethods) {
-      return colors.shade5;
-    }
-
-    return colors.primary;
+    return (this.props.disabled && !this.props.loading) ? colors.shade5 : colors.primary;
   }
 
   /**
@@ -101,7 +96,7 @@ class CartButton extends Component {
       return;
     }
 
-    if (disabled && !hasFulfillmentMethods) {
+    if (disabled) {
       return;
     }
 
