@@ -5,6 +5,7 @@ import {
   makeIsFulfillmentSelectorDisabled,
   makeGetUserLocation,
   makeGetProductLocation,
+  makeGetUserLocationFulfillmentMethod,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
@@ -18,26 +19,20 @@ function makeMapStateToProps() {
   const getUserLocation = makeGetUserLocation();
   const getFulfillmentMethods = makeGetFulfillmentMethods();
   const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
-  const getProductLocation = makeGetProductLocation();
+  const getProductLocation = makeGetProductLocation(true);
+  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
 
   /**
    * @param {Object} state The application state.
    * @param {Object} props The component props.
    * @returns {Object}
    */
-  return (state, props) => {
-    const { code: locationId } = getUserLocation(state);
-    const productLocation = getProductLocation(state, {
-      ...props,
-      locationId,
-    });
-
-    return {
-      fulfillmentMethods: getFulfillmentMethods(state, props),
-      location: productLocation || getUserLocation(state),
-      disabled: isFulfillmentSelectorDisabled(state, props),
-    };
-  };
+  return (state, props) => ({
+    fulfillmentMethods: getFulfillmentMethods(state, props),
+    userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
+    location: getProductLocation(state, props) || getUserLocation(state),
+    disabled: isFulfillmentSelectorDisabled(state, props),
+  });
 }
 
 const mapDispatchToProps = {
