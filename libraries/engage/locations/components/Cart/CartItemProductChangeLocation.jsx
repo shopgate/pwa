@@ -1,5 +1,5 @@
 // @flow
-import React, { useCallback, useState, useEffect } from 'react';
+import * as React from 'react';
 import noop from 'lodash/noop';
 import Fulfillment from '../Fulfillment/Fulfillment';
 import { isProductAvailable } from '../../helpers';
@@ -20,10 +20,10 @@ const CartItemProductChangeLocation = (props: Props) => {
   const {
     cartItem, updateProductInCart, fetchProductLocations, registerAction,
   } = props;
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = React.useState(false);
 
   /** Register cart item action */
-  useEffect(() => {
+  React.useEffect(() => {
     if (!registerAction || !cartItem) {
       return;
     }
@@ -34,7 +34,7 @@ const CartItemProductChangeLocation = (props: Props) => {
   }, [cartItem, fetchProductLocations, registerAction]);
 
   /** Select location callback */
-  const onLocationSelect = useCallback((location) => {
+  const onLocationSelect = React.useCallback((location) => {
     if (!location || !isProductAvailable(location)) {
       return;
     }

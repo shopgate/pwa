@@ -8,7 +8,7 @@ import {
   type LocationsByProductIdState,
   type Location,
   type UserLocationState,
-  type UserFormInputState,
+  type ReservationFormValues,
 } from '../locations.types';
 
 /**
@@ -264,7 +264,7 @@ export function makeGetUserLocation(): Selector<State, UserLocationState> {
  * Creates a selector that retrieves the user's reserve form input.
  * @returns {Function}
  */
-export function makeGetUserFormInput(): Selector<State, UserFormInputState> {
+export function makeGetUserFormInput(): Selector<State, ReservationFormValues> {
   return createSelector(
     getLocationsState,
     (locations) => {

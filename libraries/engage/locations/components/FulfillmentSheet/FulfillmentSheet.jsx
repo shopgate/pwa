@@ -2,7 +2,6 @@ import { hot } from 'react-hot-loader/root';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-// eslint-disable-next-line import/named
 import { logger } from '../../../core';
 import { withCurrentProduct } from '../../../core/hocs/withCurrentProduct';
 import { i18n } from '../../../core/helpers/i18n';
