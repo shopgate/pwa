@@ -36,6 +36,7 @@ export {
   makeGetUserLocation,
   makeGetLocation,
   makeGetProductLocation,
+  makeIsRopeProductOrderable,
 } from './selectors';
 
 // STREAMS

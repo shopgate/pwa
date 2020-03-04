@@ -38,11 +38,16 @@ export const FulfillmentSelector = (props: Props) => {
     conditioner,
     disabled,
     storeFulfillmentMethod,
+    userFulfillmentMethod,
   } = props;
   const directShip = 'product.fulfillment_selector.direct_ship';
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
-  const [selection, setSelection] = useState(location.productInventory ? pickUp : directShip);
+  const [selection, setSelection] = useState(
+    userFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
+      ? pickUp
+      : directShip
+  );
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
