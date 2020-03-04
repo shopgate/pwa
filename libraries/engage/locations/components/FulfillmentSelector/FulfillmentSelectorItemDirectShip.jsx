@@ -13,11 +13,7 @@ import { radioItemLabel } from './FulfillmentSelector.style';
  * @returns {JSX}
  */
 const FulfillmentSelectorItemDirectShip = ({ children, selected, isOrderable }) => {
-  if (!selected) {
-    return null;
-  }
-
-  if (!isOrderable) {
+  if (selected && !isOrderable) {
     return (
       <Availability
         className={radioItemLabel}

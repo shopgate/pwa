@@ -1,5 +1,9 @@
-export const ProductProperties = jest.fn().mockReturnValue('ProductProperties');
-export const RelationsSlider = jest.fn().mockReturnValue('RelationsSlider');
-export const Description = jest.fn().mockReturnValue('Description');
+/* eslint-disable require-jsdoc */
+
+export const ProductProperties = () => 'ProductProperties';
+export const RelationsSlider = () => 'RelationsSlider';
+export const Description = () => 'Description';
 
 export { ProductContext, VariantContext } from '../components/context';
+
+/* eslint-enable require-jsdoc */

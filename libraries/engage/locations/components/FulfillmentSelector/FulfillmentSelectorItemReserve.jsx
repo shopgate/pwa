@@ -13,11 +13,11 @@ import { isProductAvailable } from '../../helpers';
  * @returns {JSX}
  */
 const FulfillmentSelectorItemReserve = ({ children, selected, location }) => {
-  if (!selected || !location) {
+  if (!location) {
     return null;
   }
 
-  if (isProductAvailable(location)) {
+  if (!selected || isProductAvailable(location)) {
     return children;
   }
 

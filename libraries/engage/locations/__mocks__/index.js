@@ -1,2 +1,5 @@
-export const FulfillmentSelector = jest.fn().mockReturnValue('FulfillmentSelector');
-export const FulfillmentSheet = jest.fn().mockReturnValue('FulfillmentSheet');
+/* eslint-disable require-jsdoc */
+export const FulfillmentSelector = () => 'FulfillmentSelector';
+export const FulfillmentSheet = () => 'FulfillmentSheet';
+
+/* eslint-enable require-jsdoc */
