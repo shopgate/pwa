@@ -3,25 +3,25 @@
 exports[`<StoreAddressDistance should not render when no distance was passed 1`] = `""`;
 
 exports[`<StoreAddressDistance should render when a unit system is set 1`] = `
-<Translate
-  className="css-1fxtar0"
-  params={
+<span
+  className={
     Object {
-      "distance": "5.4",
+      "data-css-1fxtar0": "",
     }
   }
-  string="locations.distance_imperial"
-/>
+>
+  5.4 imperial
+</span>
 `;
 
 exports[`<StoreAddressDistance should render when the distance is 0 1`] = `
-<Translate
-  className="css-1fxtar0"
-  params={
+<span
+  className={
     Object {
-      "distance": "0",
+      "data-css-1fxtar0": "",
     }
   }
-  string="locations.distance_metric"
-/>
+>
+  0 metric
+</span>
 `;
