@@ -339,7 +339,7 @@ export function makeIsRopeProductOrderable(
       if (
         userLocationFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
       ) {
-        return true;
+        return null;
       }
 
       if (productLocation === null) {

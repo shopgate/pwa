@@ -187,7 +187,7 @@ describe('engage > locations > selectors', () => {
       it('should return true when "direct ship" is selected as user fulfillment method', () => {
         const localState = cloneDeep(mockedState);
         set(localState, 'locations.userLocation.fulfillmentMethod', PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP);
-        expect(isRopeProductOrderable(localState, { locationId: 'SG1', productId: 'sg1' })).toBe(true);
+        expect(isRopeProductOrderable(localState, { locationId: 'SG1', productId: 'sg1' })).toBe(null);
       });
 
       it('should return false when no maching location was found at the product', () => {
@@ -214,7 +214,7 @@ describe('engage > locations > selectors', () => {
       it('should return true when "direct ship" is selected as user fulfillment method', () => {
         const localState = cloneDeep(mockedState);
         set(localState, 'locations.userLocation.fulfillmentMethod', PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP);
-        expect(isRopeProductOrderable(localState, { locationId: 'SG2', productId: 'sg2' })).toBe(true);
+        expect(isRopeProductOrderable(localState, { locationId: 'SG2', productId: 'sg2' })).toBe(null);
       });
 
       it('should return false when no maching location was found at the product', () => {
