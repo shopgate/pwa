@@ -29,11 +29,6 @@ export const radioGroupDisabled = css(radioBase, {
   pointerEvents: 'none',
 }).toString();
 
-export const radioItem = css({
-  overflow: 'hidden',
-  whiteSpace: 'pre',
-}).toString();
-
 export const radioItemLabelSpacer = css({
   whiteSpace: 'pre',
 }).toString();
@@ -44,6 +39,10 @@ export const radioGroupItemLabel = classNames(radioGroupStyles.label, css({
   justifyContent: 'space-between',
   alignItems: 'baseline',
 }).toString());
+
+export const radioItemLabel = css({
+  fontSize: '0.875rem',
+}).toString();
 
 export const pickUpGroupContainer = css({
   display: 'flex',

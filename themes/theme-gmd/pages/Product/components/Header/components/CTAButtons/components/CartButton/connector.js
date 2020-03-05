@@ -31,7 +31,7 @@ function makeMapStateToProps() {
      * 3. A ROPE fulfillment method is selected and the product is orderable at the location
      */
     disabled: (!isProductOrderable(state, props) && !hasProductVariants(state, props)) &&
-      !isRopeProductOrderable(state, props),
+      isRopeProductOrderable(state, props) === false,
     loading: isProductPageLoading(state, props),
     userLocation: getUserLocation(state),
     hasFulfillmentMethods: !isFulfillmentSelectorDisabled(state, props),

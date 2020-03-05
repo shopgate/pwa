@@ -217,7 +217,8 @@ export function makeGetProductLocation(
         return null;
       }
 
-      return locationsState[productId].locations.find(l => l.code === locationId) || null;
+      const { locations = [] } = locationsState[productId];
+      return locations.find(l => l.code === locationId) || null;
     }
   );
 }
@@ -338,7 +339,7 @@ export function makeIsRopeProductOrderable(
       if (
         userLocationFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
       ) {
-        return true;
+        return null;
       }
 
       if (productLocation === null) {

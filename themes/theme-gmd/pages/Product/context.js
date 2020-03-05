@@ -1,3 +1,4 @@
-import React from 'react';
-
-export const ProductContext = React.createContext();
+/**
+ * @deprecated use ProductContext from @shopgate/engage/product
+ */
+export { ProductContext } from '@shopgate/engage/product';

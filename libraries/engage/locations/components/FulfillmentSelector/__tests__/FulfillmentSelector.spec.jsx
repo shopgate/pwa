@@ -14,6 +14,8 @@ jest.mock('../../FulfillmentSheet', () => ({
   },
 }));
 jest.mock('../FulfillmentSelectorAddToCart', () => 'FulfillmentSelectorAddToCart');
+jest.mock('../FulfillmentSelectorItemDirectShip', () => 'FulfillmentSelectorItemDirectShip');
+jest.mock('../FulfillmentSelectorItemReserve', () => 'FulfillmentSelectorItemReserve');
 
 const conditioner = {
   check: () => Promise.resolve(true),
