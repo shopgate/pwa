@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { LocationIcon } from '../../../components';
-import { i18n } from '../../../core';
+import { LocationIcon, Link } from '../../../components';
+import { i18n, generateGoogleMapsDirectionsUrl } from '../../../core';
 import { address as container, addressIcon } from './style';
 
 /**
@@ -10,12 +10,14 @@ import { address as container, addressIcon } from './style';
  * @returns {JSX}
  */
 function StoreAddressMailingAddress({ address }) {
+  const mapsUrl = useMemo(() => address && generateGoogleMapsDirectionsUrl(address), [address]);
+
   if (!address) {
     return null;
   }
 
   return (
-    <div className={container}>
+    <Link openExtern href={mapsUrl} className={container}>
       <div className={addressIcon}>
         <LocationIcon />
       </div>
@@ -40,7 +42,7 @@ function StoreAddressMailingAddress({ address }) {
         )}
         {i18n.text('locations.address', address)}
       </div>
-    </div>
+    </Link>
   );
 }
 

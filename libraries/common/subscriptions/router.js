@@ -41,7 +41,13 @@ export default function routerSubscriptions(subscribe) {
       });
     };
 
-    const { params: { action: historyAction, silent, state: routeState } } = action;
+    const {
+      params: {
+        silent,
+        action: historyAction,
+        state: routeState,
+      },
+    } = action;
 
     switch (historyAction) {
       case ACTION_POP: {

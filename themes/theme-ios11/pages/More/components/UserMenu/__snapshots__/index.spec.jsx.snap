@@ -271,6 +271,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/login"
+                        openExtern={false}
                         replace={false}
                         role="link"
                         state={Object {}}
@@ -354,6 +355,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/register"
+                        openExtern={false}
                         replace={false}
                         role="link"
                         state={Object {}}
@@ -517,6 +519,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/login"
+                        openExtern={false}
                         replace={false}
                         role="link"
                         state={Object {}}
@@ -600,6 +603,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         historyPush={[Function]}
                         historyReplace={[Function]}
                         href="/register"
+                        openExtern={false}
                         replace={false}
                         role="link"
                         state={Object {}}
