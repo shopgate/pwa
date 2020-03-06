@@ -118,6 +118,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
               historyPush={[Function]}
               historyReplace={[Function]}
               href="/item/505230445543544944"
+              openExtern={false}
               replace={false}
               role="link"
               state={Object {}}
