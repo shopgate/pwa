@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import cloneDeep from 'lodash/cloneDeep';
 import set from 'lodash/set';
+import { getUserData } from '@shopgate/engage/user';
 import {
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
@@ -12,11 +13,15 @@ import {
   makeGetLocation,
   makeGetProductLocation,
   makeIsRopeProductOrderable,
+  makeGetUserFormInput,
 } from '../index';
 import { isProductAvailable } from '../../helpers';
 
 jest.mock('@shopgate/engage/product', () => ({
   getProduct: jest.fn(),
+}));
+jest.mock('@shopgate/engage/user', () => ({
+  getUserData: jest.fn(),
 }));
 
 jest.mock('../../helpers', () => ({
@@ -231,6 +236,48 @@ describe('engage > locations > selectors', () => {
       it('should return true when the product is available at the location', () => {
         expect(isRopeProductOrderable(mockedState, { locationId: 'SG2', productId: 'sg2' })).toBe(true);
       });
+    });
+  });
+
+  describe('makeGetUserFormInput()', () => {
+    const user = { firstName: 'firstName', lastName: 'lastName', email: 'E-mail' };
+
+    let getUserFormInput;
+    beforeEach(() => {
+      getUserFormInput = makeGetUserFormInput();
+    });
+
+    it('should return null when the locations state is empty', () => {
+      getUserData.mockReturnValueOnce(null);
+      expect(getUserFormInput({ locations: {} })).toBeNull();
+    });
+
+    it('should return null when the userFormInput state is empty', () => {
+      getUserData.mockReturnValueOnce(null);
+      expect(getUserFormInput({ locations: { userFormInput: null } })).toBeNull();
+    });
+
+    it('should return user data when userFormInput state is empty', () => {
+      getUserData.mockReturnValueOnce({
+        firstName: 'firstName',
+        lastName: 'lastName',
+        mail: 'E-mail',
+      });
+      expect(getUserFormInput({ locations: { userFormInput: null } })).toEqual({ ...user });
+    });
+
+    it('should return userFormInput state', () => {
+      getUserData.mockReturnValueOnce(null);
+      expect(getUserFormInput({ locations: { userFormInput: { ...user } } })).toEqual({ ...user });
+    });
+
+    it('should return userFormInput when userData is defined', () => {
+      getUserData.mockReturnValueOnce({
+        firstName: 'first Name',
+        lastName: 'last Name',
+        mail: 'E - mail',
+      });
+      expect(getUserFormInput({ locations: { userFormInput: { ...user } } })).toEqual({ ...user });
     });
   });
 });
