@@ -250,6 +250,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         historyReplace={[Function]}
                                         href="/category/3132332d313233"
                                         onClick={null}
+                                        openExtern={false}
                                         replace={false}
                                         role="link"
                                         state={
@@ -412,6 +413,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         historyReplace={[Function]}
                                         href="/category/3435362d313233"
                                         onClick={null}
+                                        openExtern={false}
                                         replace={false}
                                         role="link"
                                         state={
@@ -574,6 +576,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         historyReplace={[Function]}
                                         href="/category/3738392d313233"
                                         onClick={null}
+                                        openExtern={false}
                                         replace={false}
                                         role="link"
                                         state={
@@ -736,6 +739,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         historyReplace={[Function]}
                                         href="/category/3738392d343536"
                                         onClick={null}
+                                        openExtern={false}
                                         replace={false}
                                         role="link"
                                         state={
