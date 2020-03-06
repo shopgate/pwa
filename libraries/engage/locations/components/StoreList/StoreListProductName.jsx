@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Ellipsis } from '../../../components';
-import FulfillmentContext from '../context';
+import { FulfillmentContext } from '../../locations.context';
 import { productName } from './style';
 
 /**

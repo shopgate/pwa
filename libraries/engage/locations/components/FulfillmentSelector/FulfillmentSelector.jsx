@@ -92,7 +92,10 @@ export const FulfillmentSelector = (props: Props) => {
       }
 
       setIsOpen(true);
-      FulfillmentSheet.open(handleClose, 0, null, changeOnly);
+      FulfillmentSheet.open({
+        callback: handleClose,
+        changeOnly,
+      });
     });
   }, [conditioner, storeFulfillmentMethod, isOpen, location, handleClose]);
 

@@ -1,4 +1,5 @@
 // @flow
+
 // ACTIONS
 export { fetchProductLocations } from './actions';
 
@@ -11,9 +12,9 @@ export {
   StoreAddressOpeningHours,
   StoreAddressPhoneNumber,
   CartItemProductChangeLocation,
-  CartItemProductContextMenuItem,
-  Fulfillment,
-  ProductLocations,
+  CartChangeFulfillmentMethod,
+  CartContextMenuItemChangeLocation,
+  CartContextMenuItemChangeFulfillment,
 } from './components';
 
 // CONSTANTS
@@ -42,3 +43,8 @@ export {
 export {
   submitReservationSuccess$,
 } from './locations.streams';
+
+// HOOKS
+export {
+  useFulfillmentState,
+} from './locations.hooks';

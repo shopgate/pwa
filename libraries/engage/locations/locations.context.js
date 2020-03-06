@@ -17,7 +17,7 @@ export type FulfillmentContextProps = {
   isStage: (stage: SheetStage) => boolean,
   handleOpen: (params: SheetOpenParams) => void,
   handleClose: SheetCallbackFn,
-  locations: Location[],
+  locations: Location[] | null,
   orderNumbers: string[] | null,
   product: Product | null,
   userInput: ReservationFormValues | null,
@@ -26,6 +26,7 @@ export type FulfillmentContextProps = {
   fulfillmentPath: FulfillmentPath | null,
   isOpen: boolean,
   errors: string[] | null,
+  meta?: { [string]: any },
 }
 
 export const FulfillmentContext = React.createContext<FulfillmentContextProps>({

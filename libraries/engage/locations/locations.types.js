@@ -93,14 +93,14 @@ export type UserLocationState = {
 }
 
 export type ReservationFormValues = {
-  firstName: string;
-  lastName: string;
-  cellPhone: string;
-  email: string;
-  firstName2: string;
-  lastName2: string;
-  cellPhone2: string;
-  email2: string;
+  firstName?: string;
+  lastName?: string;
+  cellPhone?: string;
+  email?: string;
+  firstName2?: string;
+  lastName2?: string;
+  cellPhone2?: string;
+  email2?: string;
 }
 
 export type LocationsState = {

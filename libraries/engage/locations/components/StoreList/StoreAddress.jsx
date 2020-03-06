@@ -1,6 +1,6 @@
 import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import FulfillmentContext from '../context';
+import { FulfillmentContext } from '../../locations.context';
 import { StockInfo } from '../StockInfo';
 import StoreContext from './Store.context';
 import StoreAddressHeading from './StoreAddressHeading';

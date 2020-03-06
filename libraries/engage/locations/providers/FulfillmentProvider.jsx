@@ -1,6 +1,8 @@
 // @flow
 import * as React from 'react';
-import { logger, i18n, UIEvents } from '../../core';
+import {
+  logger, i18n, UIEvents,
+} from '../../core';
 import { withCurrentProduct } from '../../core/hocs/withCurrentProduct';
 import { type AddToCartProduct } from '../../product/product.types';
 import { FulfillmentContext, type FulfillmentContextProps } from '../locations.context';
@@ -10,6 +12,7 @@ import {
   STAGE_RESERVE_FORM,
   STAGE_RESPONSE_SUCCESS,
   STAGE_RESPONSE_ERROR,
+  STAGE_FULFILLMENT_METHOD,
   FULFILLMENT_PATH_QUICK_RESERVE,
   FULFILLMENT_PATH_MULTI_LINE_RESERVE,
 } from '../constants';
@@ -50,14 +53,20 @@ function FulfillmentProvider(props: Props) {
     submitReservation,
     storeFormInput,
     addProductsToCart,
+    open = false,
   } = props;
   const [fulfillmentPath, setFulfillmentPath] = React.useState<FulfillmentPath | null>(null);
-  const [changeOnly, setChangeOnly] = React.useState(false);
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [stage, setStage] = React.useState<SheetStage>(STAGE_SELECT_STORE);
+  const [changeOnly, setChangeOnly] = React.useState(props.changeOnly);
+  const [isOpen, setIsOpen] = React.useState(open);
+  const [stage, setStage] = React.useState<SheetStage>(props.stage || STAGE_SELECT_STORE);
   const [orderNumbers, setOrderNumbers] = React.useState<string[] | null>(null);
   const [errors, setErrors] = React.useState<string[] | null>(null);
+
   const title = React.useMemo<string>(() => {
+    if (props.title !== null) {
+      return i18n.text(props.title);
+    }
+
     switch (stage) {
       default:
       case STAGE_SELECT_STORE:
@@ -68,8 +77,14 @@ function FulfillmentProvider(props: Props) {
         return i18n.text('locations.success_heading');
       case STAGE_RESPONSE_ERROR:
         return i18n.text('locations.error_heading');
+      case STAGE_FULFILLMENT_METHOD:
+        return i18n.text('locations.change_fulfillment_method');
     }
-  }, [stage]);
+  }, [props.title, stage]);
+
+  React.useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
 
   /**
    * Checks whether the given stage is currently set.
@@ -104,7 +119,9 @@ function FulfillmentProvider(props: Props) {
       orderSuccess = errors === null;
     }
 
-    if (callback !== null) {
+    if (props.onClose) {
+      props.onClose(location, productId, orderSuccess);
+    } else if (callback) {
       callback(location, productId, orderSuccess);
       callback = null;
     }
@@ -201,11 +218,11 @@ function FulfillmentProvider(props: Props) {
     if (fulfillmentPath === null && fulfillmentPaths.length > 1) {
       FulfillmentPathSelector.open((method: FulfillmentPath) => {
         if (method === FULFILLMENT_PATH_QUICK_RESERVE) {
-          this.handleQuickReservation();
+          handleQuickReservation();
         }
 
         if (method === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
-          this.handleMultilineReservation(location);
+          handleMultilineReservation(location);
         }
       });
       return;
@@ -241,6 +258,7 @@ function FulfillmentProvider(props: Props) {
     sendReservation,
     orderNumbers,
     errors,
+    meta: props.meta || undefined,
   };
 
   return (
@@ -249,6 +267,12 @@ function FulfillmentProvider(props: Props) {
     </FulfillmentContext.Provider>
   );
 }
+
+FulfillmentProvider.defaultProps = {
+  open: false,
+  changeOnly: false,
+  title: null,
+};
 
 const FulfillmentProviderWrapped = withCurrentProduct<Props>(connect(FulfillmentProvider));
 
@@ -260,7 +284,7 @@ const FulfillmentProviderWrapped = withCurrentProduct<Props>(connect(Fulfillment
  * @property {string} [params.fulfillmentPath] The fulfillment path that was chosen.
  * @property {boolean} [params.changeOnly=false] Whether only the location will be changed.
  */
-export function openSheen(params: SheetOpenParams): void {
+export function openSheet(params: SheetOpenParams): void {
   UIEvents.emit(EVENT_SET_OPEN, params);
 }
 

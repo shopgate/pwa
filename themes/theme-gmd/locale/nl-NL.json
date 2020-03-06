@@ -139,7 +139,8 @@
     },
     "choose_reservation_type": "Choose Reservation Type",
     "quick_reserve": "Quick reservation",
-    "reserve_to_cart": "Reserve to cart"
+    "reserve_to_cart": "Reserve to cart",
+    "change_fulfillment_method": "Change fulfillment method"
   },
   "category": {
     "error": {

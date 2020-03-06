@@ -6,7 +6,7 @@ import { i18n } from '@shopgate/engage/core';
 import {
   ProgressBar, MagnifierIcon, LocatorIcon, MessageBar,
 } from '@shopgate/engage/components';
-import FulfillmentContext from '../context';
+import { FulfillmentContext } from '../../locations.context';
 import connect from './StoreListSearch.connector';
 import {
   container, search, input, icon, progressBar,

@@ -1,22 +1,19 @@
 // @flow
 import * as React from 'react';
-import noop from 'lodash/noop';
-import { FulfillmentSheet } from '../FulfillmentSheet';
 import { isProductAvailable } from '../../helpers';
-import connect from './CartItemProductChangeLocation.connector';
-import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
+import { FulfillmentSheet } from '../FulfillmentSheet';
+import connect from './CartChangeFulfillmentMethod.connector';
+import { type OwnProps, type DispatchProps } from './CartChangeFulfillmentMethod.types';
 import { type Location } from '../../locations.types';
+import { STAGE_FULFILLMENT_METHOD } from '../../constants';
 
 type Props = OwnProps & DispatchProps;
 
 /**
  * @param {Object} props The component props.
- * @param {Object} cartItem cartItem
- * @param {Function} updateProduct updateProduct
- * @param {Function} fetchProductLocations fetchProductLocations
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-const CartItemProductChangeLocation = (props: Props) => {
+function CartChangeFulfillmentMethod(props: Props) {
   const {
     cartItem, updateProductInCart, fetchProductLocations, registerAction,
   } = props;
@@ -30,7 +27,7 @@ const CartItemProductChangeLocation = (props: Props) => {
       return;
     }
 
-    registerAction('changeLocation', () => {
+    registerAction('changeFulfillment', () => {
       fetchProductLocations(cartItem.product.id);
       setOpened(true);
     });
@@ -48,25 +45,18 @@ const CartItemProductChangeLocation = (props: Props) => {
     setTimeout(() => setOpened(false), 500);
   }, [cartItem.id, cartItem.quantity, updateProductInCart]);
 
-  const { fulfillment } = cartItem;
-
-  if (!opened || !fulfillment) {
+  if (!opened) {
     return null;
   }
 
   return (
     <FulfillmentSheet
       open
-      title="locations.headline"
-      changeOnly
       productId={cartItem.product.id}
       onClose={onLocationSelect}
+      stage={STAGE_FULFILLMENT_METHOD}
     />
   );
-};
+}
 
-CartItemProductChangeLocation.defaultProps = {
-  registerAction: noop,
-};
-
-export default connect(CartItemProductChangeLocation);
+export default connect(CartChangeFulfillmentMethod);

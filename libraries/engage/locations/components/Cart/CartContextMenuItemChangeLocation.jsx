@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import noop from 'lodash/noop';
 import { I18n, ContextMenu } from '@shopgate/engage/components';
 
@@ -10,14 +10,16 @@ type Props = {
 }
 
 /**
- * @param {Object} cartItem cartItem
- * @param {Function} onClick onClick
- * @param {Function} closeMenu closeMenu
+ * @param {Object} props The component props.
+ * @property {Object} props.cartItem cartItem
+ * @property {Function} props.onClick onClick
+ * @property {Function} props.closeMenu closeMenu
  * @returns {JSX}
  */
-const CartItemProductContextMenuItem = ({ cartItem, onClick, closeMenu }: Props) => {
-  const { fulfillment } = cartItem;
-  if (!fulfillment) {
+export const CartContextMenuItemChangeLocation = (props: Props) => {
+  const { cartItem, onClick, closeMenu } = props;
+
+  if (!cartItem.fulfillment) {
     return null;
   }
 
@@ -28,9 +30,7 @@ const CartItemProductContextMenuItem = ({ cartItem, onClick, closeMenu }: Props)
   );
 };
 
-CartItemProductContextMenuItem.defaultProps = {
+CartContextMenuItemChangeLocation.defaultProps = {
   onClick: noop,
   closeMenu: noop,
 };
-
-export default CartItemProductContextMenuItem;

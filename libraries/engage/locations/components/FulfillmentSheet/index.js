@@ -1,1 +1,1 @@
-export { default as FulfillmentSheet } from './FulfillmentSheet';
+export { FulfillmentSheet } from './FulfillmentSheet';
