@@ -1,6 +1,7 @@
 // @flow
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
+import { getUserData } from '@shopgate/engage/user';
 import { isProductAvailable } from '../helpers';
 import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../constants';
 import { type State } from '../../types';
@@ -217,7 +218,8 @@ export function makeGetProductLocation(
         return null;
       }
 
-      return locationsState[productId].locations.find(l => l.code === locationId) || null;
+      const { locations = [] } = locationsState[productId];
+      return locations.find(l => l.code === locationId) || null;
     }
   );
 }
@@ -310,12 +312,20 @@ export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
 export function makeGetUserFormInput(): Selector<State, UserFormInputState> {
   return createSelector(
     getLocationsState,
-    (locations) => {
-      if (!locations || !locations.userFormInput) {
+    getUserData,
+    (locations, userData) => {
+      if ((!locations || !locations.userFormInput) && !userData) {
         return null;
       }
+      const { firstName, lastName, mail: email } = userData || {};
+      const { userFormInput = {} } = locations || {};
 
-      return locations.userFormInput;
+      return {
+        firstName,
+        lastName,
+        email,
+        ...userFormInput,
+      };
     }
   );
 }
@@ -338,7 +348,7 @@ export function makeIsRopeProductOrderable(
       if (
         userLocationFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
       ) {
-        return true;
+        return null;
       }
 
       if (productLocation === null) {

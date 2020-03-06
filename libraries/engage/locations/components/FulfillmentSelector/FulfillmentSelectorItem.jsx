@@ -14,7 +14,6 @@ import * as styles from './FulfillmentSelector.style';
 const FulfillmentSelectorItem = ({ name, children, ...restProps }) => (
   <RadioItem
     name={name}
-    className={styles.radioItem}
     label={(
       <div className={styles.radioGroupItemLabel}>
         <I18n.Text string={name} />
