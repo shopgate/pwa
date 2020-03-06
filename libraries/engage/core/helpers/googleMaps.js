@@ -1,4 +1,3 @@
-// https://www.google.com/maps/dir/?api=1&destination=Schlossstrasse%2010%2C%20Butzbach%2035510
 const BASE_URL = 'https://www.google.com/maps';
 
 /**
