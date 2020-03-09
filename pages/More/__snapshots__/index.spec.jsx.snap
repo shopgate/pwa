@@ -184,12 +184,12 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/shipping"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -270,12 +270,12 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/payment"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -356,12 +356,12 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/terms"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -442,12 +442,12 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/privacy"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -550,12 +550,12 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/imprint"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -949,12 +949,12 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 historyPush={[Function]}
                                 historyReplace={[Function]}
                                 href="/login"
-                                openExtern={false}
                                 replace={false}
                                 role="link"
                                 state={Object {}}
                                 tabIndex={null}
                                 tag="div"
+                                target={null}
                               >
                                 <div
                                   aria-hidden={null}
@@ -1033,12 +1033,12 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 historyPush={[Function]}
                                 historyReplace={[Function]}
                                 href="/register"
-                                openExtern={false}
                                 replace={false}
                                 role="link"
                                 state={Object {}}
                                 tabIndex={null}
                                 tag="div"
+                                target={null}
                               >
                                 <div
                                   aria-hidden={null}
@@ -1233,12 +1233,12 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/shipping"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1319,12 +1319,12 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/payment"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1405,12 +1405,12 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/terms"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1491,12 +1491,12 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/privacy"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1599,12 +1599,12 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             historyPush={[Function]}
                             historyReplace={[Function]}
                             href="/page/imprint"
-                            openExtern={false}
                             replace={false}
                             role="link"
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
