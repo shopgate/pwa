@@ -13,6 +13,7 @@ import { STAGE_SELECT_STORE } from './constants';
 
 export type FulfillmentContextProps = {
   selectLocation: (location: Location) => void,
+  changeFulfillment: (method: string, cartItem: { [string]: any }) => void,
   sendReservation: (values: ReservationFormValues) => Promise<void>,
   isStage: (stage: SheetStage) => boolean,
   handleOpen: (params: SheetOpenParams) => void,
@@ -31,6 +32,7 @@ export type FulfillmentContextProps = {
 
 export const FulfillmentContext = React.createContext<FulfillmentContextProps>({
   selectLocation() { },
+  changeFulfillment() { },
   sendReservation() { return Promise.resolve(); },
   isStage() { return false; },
   handleOpen() { },

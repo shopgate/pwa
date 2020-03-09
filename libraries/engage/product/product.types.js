@@ -18,3 +18,15 @@ export type AddToCartProduct = {
     }
   }
 }
+
+export type CartItem = {
+  cartItemId: string,
+  quantity: number,
+  fulfillment?: {
+    method: string;
+    location: {
+      code: string;
+      name: string;
+    }
+  }
+}

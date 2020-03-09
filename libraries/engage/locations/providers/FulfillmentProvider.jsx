@@ -4,7 +4,6 @@ import {
   logger, i18n, UIEvents,
 } from '../../core';
 import { withCurrentProduct } from '../../core/hocs/withCurrentProduct';
-import { type AddToCartProduct } from '../../product/product.types';
 import { FulfillmentContext, type FulfillmentContextProps } from '../locations.context';
 import { FulfillmentPathSelector } from '../components/FulfillmentPathSelector';
 import {
@@ -15,6 +14,8 @@ import {
   STAGE_FULFILLMENT_METHOD,
   FULFILLMENT_PATH_QUICK_RESERVE,
   FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
 } from '../constants';
 import {
   type Location,
@@ -46,13 +47,14 @@ function FulfillmentProvider(props: Props) {
   const {
     children,
     locations,
-    product,
+    product: propsProduct,
     userInput,
     fulfillmentPaths,
     selectLocation,
     submitReservation,
     storeFormInput,
     addProductsToCart,
+    updateProductsInCart,
     open = false,
   } = props;
   const [fulfillmentPath, setFulfillmentPath] = React.useState<FulfillmentPath | null>(null);
@@ -61,6 +63,9 @@ function FulfillmentProvider(props: Props) {
   const [stage, setStage] = React.useState<SheetStage>(props.stage || STAGE_SELECT_STORE);
   const [orderNumbers, setOrderNumbers] = React.useState<string[] | null>(null);
   const [errors, setErrors] = React.useState<string[] | null>(null);
+  const [product, setProduct] = React.useState(propsProduct);
+  const [isChangeFulfillment, setIsChangeFulfillment] = React.useState(false);
+  const [cartItem, setCartItem] = React.useState(null);
 
   const title = React.useMemo<string>(() => {
     if (props.title !== null) {
@@ -130,6 +135,7 @@ function FulfillmentProvider(props: Props) {
     setStage(STAGE_SELECT_STORE);
     setOrderNumbers(null);
     setErrors(null);
+    setIsChangeFulfillment(false);
   }
 
   React.useEffect(() => {
@@ -176,19 +182,28 @@ function FulfillmentProvider(props: Props) {
       return;
     }
 
-    const cartProduct: AddToCartProduct = {
-      productId: product.id,
-      quantity: 1,
-      fulfillment: {
-        method: 'ROPIS', // TODO: make this dynamic.
-        location: {
-          code: location.code,
-          name: location.name || '',
-        },
+    const fulfillment = {
+      method: 'ROPIS', // TODO: make this dynamic.
+      location: {
+        code: location.code,
+        name: location.name || '',
       },
     };
 
-    addProductsToCart([cartProduct]);
+    if (isChangeFulfillment && cartItem) {
+      updateProductsInCart([{
+        quantity: 1,
+        cartItemId: cartItem.id,
+        fulfillment,
+      }]);
+    } else {
+      addProductsToCart([{
+        productId: product.id,
+        quantity: 1,
+        fulfillment,
+      }]);
+    }
+
     handleClose(location, product.id);
   }
 
@@ -241,6 +256,34 @@ function FulfillmentProvider(props: Props) {
     }
   }
 
+  /**
+   * @param {string} method The selected fulfillment method.
+   * @param {Object} item The cart item to change.
+   */
+  function handleChangeFulfillmentMethod(method, item) {
+    setIsChangeFulfillment(true);
+    setProduct(item.product);
+    setCartItem(item);
+
+    if (
+      method === PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
+      && (item.fulfillment === null || item.fulfillment.method === 'DIRECT_SHIP')
+    ) {
+      setFulfillmentPath(FULFILLMENT_PATH_MULTI_LINE_RESERVE);
+      setStage(STAGE_SELECT_STORE);
+      return;
+    }
+
+    if (method === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP) {
+      updateProductsInCart([{
+        quantity: 1,
+        cartItemId: item.id,
+      }]);
+
+      handleClose(null, item.product.id);
+    }
+  }
+
   const context: FulfillmentContextProps = {
     stage,
     title,
@@ -255,6 +298,7 @@ function FulfillmentProvider(props: Props) {
     userInput,
     fulfillmentPaths,
     selectLocation: handleSelectLocation,
+    changeFulfillment: handleChangeFulfillmentMethod,
     sendReservation,
     orderNumbers,
     errors,

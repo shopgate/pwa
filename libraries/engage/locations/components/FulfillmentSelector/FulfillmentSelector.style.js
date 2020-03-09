@@ -50,13 +50,3 @@ export const pickUpGroupContainer = css({
   flexDirection: 'column',
   textAlign: 'right',
 });
-
-export const pickUpButtonChangeLocation = css({
-  fontSize: '0.875rem !important',
-  textAlign: 'right',
-  padding: '8px 0 !important',
-}).toString();
-
-export const pickUpButtonChangeLocationRipple = css({
-  padding: 0,
-}).toString();

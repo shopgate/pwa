@@ -1,10 +1,8 @@
 // @flow
 import * as React from 'react';
-import { isProductAvailable } from '../../helpers';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import connect from './CartChangeFulfillmentMethod.connector';
 import { type OwnProps, type DispatchProps } from './CartChangeFulfillmentMethod.types';
-import { type Location } from '../../locations.types';
 import { STAGE_FULFILLMENT_METHOD } from '../../constants';
 
 type Props = OwnProps & DispatchProps;
@@ -15,7 +13,7 @@ type Props = OwnProps & DispatchProps;
  */
 function CartChangeFulfillmentMethod(props: Props) {
   const {
-    cartItem, updateProductInCart, fetchProductLocations, registerAction,
+    cartItem, fetchProductLocations, registerAction,
   } = props;
   const [opened, setOpened] = React.useState(false);
 
@@ -34,16 +32,11 @@ function CartChangeFulfillmentMethod(props: Props) {
   }, [cartItem, fetchProductLocations, registerAction]);
 
   /**
-   * Select location callback
+   * Handles closing of the sheet.
    */
-  const onLocationSelect = React.useCallback((location: Location | null) => {
-    if (!location || !isProductAvailable(location)) {
-      return;
-    }
-
-    updateProductInCart(cartItem.id, cartItem.quantity, location);
-    setTimeout(() => setOpened(false), 500);
-  }, [cartItem.id, cartItem.quantity, updateProductInCart]);
+  function handleClose() {
+    setOpened(false);
+  }
 
   if (!opened) {
     return null;
@@ -53,8 +46,9 @@ function CartChangeFulfillmentMethod(props: Props) {
     <FulfillmentSheet
       open
       productId={cartItem.product.id}
-      onClose={onLocationSelect}
       stage={STAGE_FULFILLMENT_METHOD}
+      meta={{ cartItem }}
+      onClose={handleClose}
     />
   );
 }

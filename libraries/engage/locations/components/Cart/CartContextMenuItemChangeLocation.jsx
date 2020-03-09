@@ -19,7 +19,7 @@ type Props = {
 export const CartContextMenuItemChangeLocation = (props: Props) => {
   const { cartItem, onClick, closeMenu } = props;
 
-  if (!cartItem.fulfillment) {
+  if (!cartItem.fulfillment || cartItem.fulfillment.method === 'DIRECT_SHIP') {
     return null;
   }
 
