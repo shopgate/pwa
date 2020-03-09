@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > cart > components > CartItemGroupReservation should render accordion 1`] = `
+<CardListItem>
+  <Accordion
+    className="css-m7h5wp"
+    renderLabel={[Function]}
+  >
+    <div
+      className={
+        Object {
+          "data-css-17vr7yg": "",
+        }
+      }
+    >
+      <StoreAddressOpeningHours />
+      <StoreAddressPhoneNumber
+        phone="012456789"
+      />
+    </div>
+  </Accordion>
+</CardListItem>
+`;
+
+exports[`engage > cart > components > CartItemGroupReservation should render accordion 2`] = `
+<div
+  className={
+    Object {
+      "data-css-1bk0nqb": "",
+    }
+  }
+>
+  <div
+    className={
+      Object {
+        "data-css-1u11ya1": "",
+      }
+    }
+  >
+    <Location />
+  </div>
+  <div>
+    <div
+      className={
+        Object {
+          "data-css-193taon": "",
+        }
+      }
+    >
+      locations.method.ropis
+    </div>
+    Location name
+  </div>
+</div>
+`;
+
+exports[`engage > cart > components > CartItemGroupReservation should render only label 1`] = `
+<CardListItem
+  className="css-u4u0p5"
+>
+  <div
+    className={
+      Object {
+        "data-css-1bk0nqb": "",
+      }
+    }
+  >
+    <div
+      className={
+        Object {
+          "data-css-1u11ya1": "",
+        }
+      }
+    >
+      <Location />
+    </div>
+    <div>
+      <div
+        className={
+          Object {
+            "data-css-193taon": "",
+          }
+        }
+      >
+        locations.method.ropis
+      </div>
+      Location name
+    </div>
+  </div>
+</CardListItem>
+`;
