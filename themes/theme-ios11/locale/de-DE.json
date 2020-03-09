@@ -87,7 +87,11 @@
     "fulfillment_selector": {
       "heading": "Verfügbarkeit",
       "direct_ship": "Online bestellen",
-      "pick_up_in_store": "Abholen in Filiale"
+      "pick_up_in_store": "Abholen in Filiale",
+      "error": {
+        "direct_ship_not_orderable": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
+        "reserve_not_orderable": "This combination is not available at your chosen location, select a different location or other variants."
+      }
     },
     "location_stock_info": {
       "pick_up_at": "bei {storeName}",
@@ -147,8 +151,6 @@
     "error_no_store_found": "In dieser Gegend haben wir leider keine Filialen, bitte überprüfen Sie Ihre Eingabe.",
     "search_placeholder": "Postleitzahl",
     "change_location": "Filiale ändern",
-    "distance_metric": "{distance} km",
-    "distance_imperial": "{distance} mi",
     "method": {
       "ropis": "Reserve online, pick up in store",
       "direct_ship": "Ship to address"
@@ -318,6 +320,15 @@
       },
       "MMM": {
         "month": "short"
+      }
+    },
+    "distance": {
+      "pattern": "{distance} {unit}",
+      "units": {
+        "m": "m",
+        "km": "km",
+        "ft": "ft",
+        "mi": "mi"
       }
     }
   },

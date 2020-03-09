@@ -4,7 +4,7 @@ import {
   AVAILABILITY_TYPE_LIMITED_AVAILABILITY,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_CUSTOM_AVAILABILITY,
-} from '../../../product';
+} from '../../../product/constants';
 
 const { colors } = themeConfig;
 

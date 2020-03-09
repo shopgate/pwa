@@ -3,7 +3,7 @@ import {
   availabilityTypes,
   AVAILABILITY_TYPE_NOT_AVAILABLE,
   AVAILABILITY_TYPE_AVAILABLE,
-} from '../../product';
+} from '../../product/constants';
 import { type MerchantSettings } from '../../core/config/config.types';
 import { type Location } from '../locations.types';
 
