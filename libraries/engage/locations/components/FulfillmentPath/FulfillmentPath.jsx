@@ -8,7 +8,7 @@ import {
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
 } from '../../constants';
 import { StockInfo } from '../StockInfo';
-import { container, pickUpContainer } from './FulfillmentPath.style';
+import { container, pickUpContainer, radioGroup } from './FulfillmentPath.style';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
 
 const directShip = 'product.fulfillment_selector.direct_ship';
@@ -24,8 +24,6 @@ export function FulfillmentPath() {
   const isPickUp = !!(cartItem
     && (cartItem.fulfillment !== null && cartItem.fulfillment.method !== 'DIRECT_SHIP'));
   const [selection, setSelection] = React.useState(isPickUp ? pickUp : directShip);
-
-  console.warn(cartItem);
 
   if (!product || !cartItem) {
     return null;
@@ -49,6 +47,7 @@ export function FulfillmentPath() {
         name="cartItem.fulfillment_selector"
         value={selection}
         onChange={handleChange}
+        className={radioGroup}
         isControlled
         direction="column"
       >
