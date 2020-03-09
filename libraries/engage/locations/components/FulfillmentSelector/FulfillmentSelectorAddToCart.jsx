@@ -28,23 +28,31 @@ function promisifiedFulfillmentPathSelector() {
  * @param {Object} location The selected location.
  * @param {Conditioner} conditioner conditioner.
  * @param {string[]} fulfillmentPaths fulfillmentPaths
- * @param {string} fulfillmentMethod fulfillmentMethod
+ * @param {string} userFulfillmentMethod The currenly selected fulfillment method of the user.
  * @returns {JSX}
  */
 const FulfillmentSelectorAddToCart = ({
-  location, conditioner, fulfillmentPaths, fulfillmentMethod,
+  location, conditioner, fulfillmentPaths, userFulfillmentMethod,
 }) => {
   // Add to cart effect to validate inventory
   useEffect(() => {
     // Add most late conditioner
     conditioner.addConditioner('fulfillment-inventory', async () => {
       // Allow direct ship item
-      if (fulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP) {
+      if (userFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP) {
         return true;
+      }
+
+      if (!isProductAvailable(location)) {
+        return false;
       }
 
       if (fulfillmentPaths.length > 1) {
         const selectedPath = await promisifiedFulfillmentPathSelector();
+
+        if (selectedPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
+          return true;
+        }
 
         if (selectedPath === FULFILLMENT_PATH_QUICK_RESERVE) {
           FulfillmentSheet.open({
@@ -54,20 +62,14 @@ const FulfillmentSelectorAddToCart = ({
           return false;
         }
 
-        if (selectedPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
-          return isProductAvailable(location);
-        }
-
         return false;
       }
 
       if (!fulfillmentPaths.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)) {
-        if (isProductAvailable(location)) {
-          // Open reservation form. Stop adding to a cart
-          FulfillmentSheet.open({
-            stage: STAGE_RESERVE_FORM,
-          });
-        }
+        // Open reservation form. Stop adding to a cart
+        FulfillmentSheet.open({
+          stage: STAGE_RESERVE_FORM,
+        });
         return false;
       }
 
@@ -75,20 +77,20 @@ const FulfillmentSelectorAddToCart = ({
     }, 100);
 
     return () => conditioner.removeConditioner('fulfillment-inventory');
-  }, [conditioner, location, fulfillmentPaths, fulfillmentMethod]);
+  }, [conditioner, location, fulfillmentPaths, userFulfillmentMethod]);
 
   return null;
 };
 
 FulfillmentSelectorAddToCart.propTypes = {
   conditioner: PropTypes.shape().isRequired,
-  fulfillmentMethod: PropTypes.string,
   fulfillmentPaths: PropTypes.arrayOf(PropTypes.string),
   location: PropTypes.shape(),
+  userFulfillmentMethod: PropTypes.string,
 };
 
 FulfillmentSelectorAddToCart.defaultProps = {
-  fulfillmentMethod: PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+  userFulfillmentMethod: PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
   fulfillmentPaths: [],
   location: null,
 };

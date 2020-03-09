@@ -10,6 +10,7 @@ export type StateProps = {
   fulfillmentMethods?: string[] | null;
   disabled?: boolean;
   location?: Location | null;
+  userFulfillmentMethod: string | null;
 }
 
 export type DispatchProps = {

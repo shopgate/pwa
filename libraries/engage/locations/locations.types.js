@@ -103,6 +103,15 @@ export type ReservationFormValues = {
   email2?: string;
 }
 
+export type UserLocationFulfillmentMethod = typeof PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+  | typeof PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
+
+export type UserLocationLocationCode = string | null;
+
+export type UserFormInputState = {
+  [string]: string | null;
+}
+
 export type LocationsState = {
   locationsById: LocationsByIdState | {};
   locationsByProductId: LocationsByProductIdState | {};

@@ -48,31 +48,45 @@ exports[`<FulfillmentSelector /> should not render if the fulfillmentMethods do 
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.direct_ship"
       >
-        <Connect(Availability)
-          fulfillmentSelection="directShip"
+        <FulfillmentSelectorItemDirectShip
           productId="abc-123"
-        />
+          selected={true}
+        >
+          <Connect(Availability)
+            fulfillmentSelection="directShip"
+            productId="abc-123"
+          />
+        </FulfillmentSelectorItemDirectShip>
       </FulfillmentSelectorItem>
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.pick_up_in_store"
       >
-        <div
-          className={
+        <FulfillmentSelectorItemReserve
+          location={
             Object {
-              "data-css-15mvxgc": "",
+              "name": "Test Store",
             }
           }
+          selected={false}
         >
-          <StockInfo
-            className=""
-            location={
+          <div
+            className={
               Object {
-                "name": "Test Store",
+                "data-css-15mvxgc": "",
               }
             }
-            showStoreName={true}
-          />
-        </div>
+          >
+            <StockInfo
+              className=""
+              location={
+                Object {
+                  "name": "Test Store",
+                }
+              }
+              showStoreName={true}
+            />
+          </div>
+        </FulfillmentSelectorItemReserve>
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>
@@ -140,31 +154,45 @@ exports[`<FulfillmentSelector /> should render the fulfillment selector with two
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.direct_ship"
       >
-        <Connect(Availability)
-          fulfillmentSelection="directShip"
+        <FulfillmentSelectorItemDirectShip
           productId="abc-123"
-        />
+          selected={true}
+        >
+          <Connect(Availability)
+            fulfillmentSelection="directShip"
+            productId="abc-123"
+          />
+        </FulfillmentSelectorItemDirectShip>
       </FulfillmentSelectorItem>
       <FulfillmentSelectorItem
         name="product.fulfillment_selector.pick_up_in_store"
       >
-        <div
-          className={
+        <FulfillmentSelectorItemReserve
+          location={
             Object {
-              "data-css-15mvxgc": "",
+              "name": "Test Store",
             }
           }
+          selected={false}
         >
-          <StockInfo
-            className=""
-            location={
+          <div
+            className={
               Object {
-                "name": "Test Store",
+                "data-css-15mvxgc": "",
               }
             }
-            showStoreName={true}
-          />
-        </div>
+          >
+            <StockInfo
+              className=""
+              location={
+                Object {
+                  "name": "Test Store",
+                }
+              }
+              showStoreName={true}
+            />
+          </div>
+        </FulfillmentSelectorItemReserve>
       </FulfillmentSelectorItem>
     </RadioGroup>
   </div>

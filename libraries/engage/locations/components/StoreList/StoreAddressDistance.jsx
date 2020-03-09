@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
-import { I18n } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import formatDistance from '../../helpers/formatDistance';
 import { storeDistance } from './style';
 
 type Props = {
@@ -17,17 +16,15 @@ export const UNIT_SYSTEM_IMPERIAL = 'imperial';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const StoreAddressDistance = ({ distance, unitSystem = UNIT_SYSTEM_METRIC }: Props) => {
+const StoreAddressDistance = ({ distance = null, unitSystem = UNIT_SYSTEM_METRIC }: Props) => {
   if (distance === null) {
     return null;
   }
 
   return (
-    <I18n.Text
-      className={storeDistance.toString()}
-      string={`locations.distance_${unitSystem}`}
-      params={{ distance: i18n.number(distance, 2) }}
-    />
+    <span className={storeDistance}>
+      {formatDistance(distance, unitSystem === UNIT_SYSTEM_IMPERIAL)}
+    </span>
   );
 };
 

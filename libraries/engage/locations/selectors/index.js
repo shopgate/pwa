@@ -1,6 +1,9 @@
 // @flow
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
+import { getUserData } from '@shopgate/engage/user';
+import { isProductAvailable } from '../helpers';
+import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../constants';
 import { type State } from '../../types';
 import {
   type LocationsState,
@@ -9,6 +12,8 @@ import {
   type Location,
   type UserLocationState,
   type ReservationFormValues,
+  type UserLocationFulfillmentMethod,
+  type UserLocationLocationCode,
 } from '../locations.types';
 
 /**
@@ -55,6 +60,55 @@ export function makeGetLocationsState(): Selector<State, LocationsByIdState> {
   return createSelector(
     getLocationsState,
     state => state.locationsById || {}
+  );
+}
+
+/**
+ * Creates the selector that retrieves the user location state.
+ * @returns {Function}
+ */
+export function makeGetUserLocation(): Selector<State, UserLocationState> {
+  return createSelector(
+    getLocationsState,
+    (locations) => {
+      if (!locations || !locations.userLocation) {
+        return null;
+      }
+
+      return locations.userLocation;
+    }
+  );
+}
+
+/**
+ * Creates the selector that retrieves the fulfillment method from the user location state.
+ * @returns {Function}
+ */
+function makeGetUserLocationFulfillmentMethod(): Selector<State, UserLocationFulfillmentMethod> {
+  const getUserLocation = makeGetUserLocation();
+  return createSelector(
+    getUserLocation,
+    (userLocation) => {
+      const { fulfillmentMethod = PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } = userLocation || {};
+      return fulfillmentMethod;
+    }
+  );
+}
+
+export { makeGetUserLocationFulfillmentMethod };
+
+/**
+ * Creates the selector that retrieves the location code from the user location state.
+ * @returns {Function}
+ */
+export function makeGetUserLocationCode(): Selector<State, UserLocationLocationCode> {
+  const getUserLocation = makeGetUserLocation();
+  return createSelector(
+    getUserLocation,
+    (userLocation) => {
+      const { code = null } = userLocation || {};
+      return code;
+    }
   );
 }
 
@@ -131,10 +185,16 @@ export function makeGetProductLocations(): Selector<State, Location[] | null> {
 
 /**
  * Creates the selector that returns the single product location.
+ * @param {boolean} useUserLocation Whether the location code is taken from the userLocation state.
  * @returns {Function}
  */
-export function makeGetProductLocation(): Selector<State, Location | null> {
+export function makeGetProductLocation(
+  useUserLocation: boolean = false
+): Selector<State, Location | null> {
   const getProductLocationsState = makeGetProductLocationsState();
+  const getLocationCodeSelector = useUserLocation
+    ? makeGetUserLocationCode()
+    : getLocationId;
 
   /**
    * Retrieves the locations for a specific product.
@@ -145,7 +205,7 @@ export function makeGetProductLocation(): Selector<State, Location | null> {
    */
   return createSelector(
     getProductLocationsState,
-    getLocationId,
+    getLocationCodeSelector,
     getProductId,
     (locationsState, locationId, productId) => {
       if (
@@ -157,7 +217,8 @@ export function makeGetProductLocation(): Selector<State, Location | null> {
         return null;
       }
 
-      return locationsState[productId].locations.find(l => l.code === locationId);
+      const { locations = [] } = locationsState[productId];
+      return locations.find(l => l.code === locationId) || null;
     }
   );
 }
@@ -244,35 +305,56 @@ export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
 }
 
 /**
- * Creates the selector that retrieves the user location state.
- * @returns {Function}
- */
-export function makeGetUserLocation(): Selector<State, UserLocationState> {
-  return createSelector(
-    getLocationsState,
-    (locations) => {
-      if (!locations || !locations.userLocation) {
-        return null;
-      }
-
-      return locations.userLocation;
-    }
-  );
-}
-
-/**
  * Creates a selector that retrieves the user's reserve form input.
  * @returns {Function}
  */
 export function makeGetUserFormInput(): Selector<State, ReservationFormValues> {
   return createSelector(
     getLocationsState,
-    (locations) => {
-      if (!locations || !locations.userFormInput) {
+    getUserData,
+    (locations, userData) => {
+      if ((!locations || !locations.userFormInput) && !userData) {
+        return null;
+      }
+      const { firstName, lastName, mail: email } = userData || {};
+      const { userFormInput = {} } = locations || {};
+
+      return {
+        firstName,
+        lastName,
+        email,
+        ...userFormInput,
+      };
+    }
+  );
+}
+
+/**
+ * Creates a selector
+ * @param {boolean} useUserLocation Whether the location code is taken from the userLocation state.
+ * @returns {Function}
+ */
+export function makeIsRopeProductOrderable(
+  useUserLocation: boolean = false
+): Selector<State, boolean> {
+  const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
+  const getProductLocation = makeGetProductLocation(useUserLocation);
+
+  return createSelector(
+    getUserLocationFulfillmentMethod,
+    getProductLocation,
+    (userLocationFulfillmentMethod, productLocation) => {
+      if (
+        userLocationFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+      ) {
         return null;
       }
 
-      return locations.userFormInput;
+      if (productLocation === null) {
+        return false;
+      }
+
+      return isProductAvailable(productLocation);
     }
   );
 }
