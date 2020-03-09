@@ -228,12 +228,12 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://example.com"
-                      openExtern={false}
                       replace={false}
                       role="link"
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -278,12 +278,12 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://other.example.com"
-                      openExtern={false}
                       replace={false}
                       role="link"
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -367,12 +367,12 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           historyPush={[Function]}
           historyReplace={[Function]}
           href="http://example.com"
-          openExtern={false}
           replace={false}
           role="link"
           state={Object {}}
           tabIndex={null}
           tag="div"
+          target={null}
         >
           <div
             aria-hidden={null}
@@ -694,12 +694,12 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://other.example.com"
-                      openExtern={false}
                       replace={false}
                       role="link"
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -964,12 +964,12 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://example.com"
-                      openExtern={false}
                       replace={false}
                       role="link"
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -1014,12 +1014,12 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       historyPush={[Function]}
                       historyReplace={[Function]}
                       href="http://other.example.com"
-                      openExtern={false}
                       replace={false}
                       role="link"
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
