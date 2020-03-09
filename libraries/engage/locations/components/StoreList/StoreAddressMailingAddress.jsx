@@ -17,7 +17,7 @@ function StoreAddressMailingAddress({ address }) {
   }
 
   return (
-    <Link openExtern href={mapsUrl} className={container}>
+    <Link target="_blank" href={mapsUrl} className={container}>
       <div className={addressIcon}>
         <LocationIcon />
       </div>

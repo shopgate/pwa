@@ -72,13 +72,13 @@ exports[`<Header /> should render empty 1`] = `
                 itemProp="item"
                 itemScope={true}
                 itemType="http://schema.org/Review"
-                openExtern={false}
                 replace={false}
                 role="text"
                 state={Object {}}
                 tabIndex={null}
                 tag="div"
                 tagName="a"
+                target={null}
               >
                 <div
                   aria-hidden={null}
@@ -509,13 +509,13 @@ exports[`<Header /> should render rating summary 1`] = `
                 itemProp="item"
                 itemScope={true}
                 itemType="http://schema.org/Review"
-                openExtern={false}
                 replace={false}
                 role="text"
                 state={Object {}}
                 tabIndex={null}
                 tag="div"
                 tagName="a"
+                target={null}
               >
                 <div
                   aria-hidden={null}

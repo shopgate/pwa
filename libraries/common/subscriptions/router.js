@@ -65,6 +65,11 @@ export default function routerSubscriptions(subscribe) {
     const state = getState();
     let { pathname: location } = action.params;
 
+    /**
+     * Further on we will only use the sanitized location except when link is external.
+     * In that case we want to preserve the original location.
+     */
+    const originalLocation = location;
     location = handler.sanitizeLink(location);
 
     // Stop further processing if the location is empty.
@@ -168,8 +173,8 @@ export default function routerSubscriptions(subscribe) {
 
     // If there is one of the known protocols in the url.
     if (location && handler.hasKnownProtocols(location)) {
-      if (handler.isExternalLink(location)) {
-        handler.openExternalLink(location, historyAction, state, routeState);
+      if (handler.isExternalLink(originalLocation)) {
+        handler.openExternalLink(originalLocation, historyAction, state, routeState);
       } else if (handler.isNativeLink(location)) {
         handler.openNativeLink(location);
       }

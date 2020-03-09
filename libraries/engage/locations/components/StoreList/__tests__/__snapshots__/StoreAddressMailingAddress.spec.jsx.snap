@@ -4,20 +4,12 @@ exports[`<StoreAddressMailingAddress /> should not render if no address is passe
 
 exports[`<StoreAddressMailingAddress /> should render as expected 1`] = `
 <Connect(Link)
-  className={
-    Object {
-      "data-css-1f7wp8g": "",
-    }
-  }
+  className="css-1f7wp8g"
   href="https://www.google.com/maps/dir/?api=1&destination=Test%20Street%20123%2C%20Testcity%2012345"
-  openExtern={true}
+  target="_blank"
 >
   <div
-    className={
-      Object {
-        "data-css-1rqdg8e": "",
-      }
-    }
+    className="css-1rqdg8e"
   >
     <Location />
   </div>
@@ -34,20 +26,12 @@ exports[`<StoreAddressMailingAddress /> should render as expected 1`] = `
 
 exports[`<StoreAddressMailingAddress /> should render more streets if necessary 1`] = `
 <Connect(Link)
-  className={
-    Object {
-      "data-css-1f7wp8g": "",
-    }
-  }
+  className="css-1f7wp8g"
   href="https://www.google.com/maps/dir/?api=1&destination=Test%20Street%20123%2C%20Testcity%2012345"
-  openExtern={true}
+  target="_blank"
 >
   <div
-    className={
-      Object {
-        "data-css-1rqdg8e": "",
-      }
-    }
+    className="css-1rqdg8e"
   >
     <Location />
   </div>

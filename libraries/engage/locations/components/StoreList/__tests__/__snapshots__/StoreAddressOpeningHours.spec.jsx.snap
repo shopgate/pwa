@@ -11,11 +11,7 @@ exports[`<StoreAddressOpeningHours /> should not render hours that are empty 1`]
   }
 >
   <div
-    className={
-      Object {
-        "data-css-1xm8nj0": "",
-      }
-    }
+    className="css-1xm8nj0"
   >
     <StoreAddressOpeningHoursLine
       code="mon"
@@ -23,18 +19,10 @@ exports[`<StoreAddressOpeningHours /> should not render hours that are empty 1`]
       key="mon"
     >
       <div
-        className={
-          Object {
-            "data-css-9shxm7": "",
-          }
-        }
+        className="css-9shxm7"
       >
         <div
-          className={
-            Object {
-              "data-css-1ppc7ry": "",
-            }
-          }
+          className="css-1ppc7ry"
         >
           locations.mon
         </div>
@@ -56,18 +44,10 @@ exports[`<StoreAddressOpeningHours /> should not render hours that are empty 1`]
       key="wed"
     >
       <div
-        className={
-          Object {
-            "data-css-9shxm7": "",
-          }
-        }
+        className="css-9shxm7"
       >
         <div
-          className={
-            Object {
-              "data-css-1ppc7ry": "",
-            }
-          }
+          className="css-1ppc7ry"
         >
           locations.wed
         </div>

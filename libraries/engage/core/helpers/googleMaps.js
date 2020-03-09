@@ -8,7 +8,7 @@ const BASE_URL = 'https://www.google.com/maps';
  * @param {string} address.postalCode Postal code.
  * @returns {string}
  */
-export const generateGoogleMapsDirectionsUrl = (address) => {
+export const generateGoogleMapsDirectionsUrl = (address = {}) => {
   const mapDestination = encodeURIComponent(`${address.street}, ${address.city} ${address.postalCode}`);
   const url = `${BASE_URL}/dir/?api=1&destination=${mapDestination}`;
   return url;
