@@ -4,19 +4,11 @@ exports[`<StoreAddressPhoneNumber /> should not render if no phone number is pas
 
 exports[`<StoreAddressPhoneNumber /> should render as expected 1`] = `
 <a
-  className={
-    Object {
-      "data-css-1tfe2bz": "",
-    }
-  }
+  className="css-1tfe2bz"
   href="tel:800-100-0000"
 >
   <span
-    className={
-      Object {
-        "data-css-u30qo6": "",
-      }
-    }
+    className="css-u30qo6"
   >
     <Phone />
   </span>

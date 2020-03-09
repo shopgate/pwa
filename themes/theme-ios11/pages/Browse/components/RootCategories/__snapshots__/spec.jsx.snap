@@ -260,6 +260,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         }
                                         tabIndex={0}
                                         tag="div"
+                                        target={null}
                                       >
                                         <div
                                           aria-hidden={null}
@@ -422,6 +423,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         }
                                         tabIndex={0}
                                         tag="div"
+                                        target={null}
                                       >
                                         <div
                                           aria-hidden={null}
@@ -584,6 +586,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         }
                                         tabIndex={0}
                                         tag="div"
+                                        target={null}
                                       >
                                         <div
                                           aria-hidden={null}
@@ -746,6 +749,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                                         }
                                         tabIndex={0}
                                         tag="div"
+                                        target={null}
                                       >
                                         <div
                                           aria-hidden={null}

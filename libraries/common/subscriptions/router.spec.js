@@ -385,6 +385,22 @@ describe('Router subscriptions', () => {
       });
     });
 
+    it('should handle external link with trailing slash (G map)', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: 'https://www.google.com/maps/dir/?api=1&amp;destination=Gro',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall(openExternalLinkSpy);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState,
+        undefined
+      );
+    });
+
     it('should handle external links like expected', async () => {
       const params = {
         action: ACTION_PUSH,

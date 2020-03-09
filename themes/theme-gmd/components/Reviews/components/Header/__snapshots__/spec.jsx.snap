@@ -78,6 +78,7 @@ exports[`<Header /> should render empty 1`] = `
                 tabIndex={null}
                 tag="div"
                 tagName="a"
+                target={null}
               >
                 <div
                   aria-hidden={null}
@@ -514,6 +515,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 tabIndex={null}
                 tag="div"
                 tagName="a"
+                target={null}
               >
                 <div
                   aria-hidden={null}
