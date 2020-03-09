@@ -2,16 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Content from './index';
 
-jest.mock('@shopgate/engage/a11y', () => ({
-  Section: () => null,
-}));
-
-jest.mock('@shopgate/engage/product', () => ({
-  ProductProperties: () => null,
-  RelationsSlider: () => null,
-  Description: () => null,
-}));
-
+jest.mock('@shopgate/engage/a11y');
+jest.mock('@shopgate/engage/product');
+jest.mock('@shopgate/engage/locations');
 jest.mock('@shopgate/pwa-core', () => ({
   Conditioner: jest.fn(),
 }));
