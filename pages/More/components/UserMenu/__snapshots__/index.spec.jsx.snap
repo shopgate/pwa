@@ -276,6 +276,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         state={Object {}}
                         tabIndex={null}
                         tag="div"
+                        target={null}
                       >
                         <div
                           aria-hidden={null}
@@ -359,6 +360,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         state={Object {}}
                         tabIndex={null}
                         tag="div"
+                        target={null}
                       >
                         <div
                           aria-hidden={null}
@@ -522,6 +524,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         state={Object {}}
                         tabIndex={null}
                         tag="div"
+                        target={null}
                       >
                         <div
                           aria-hidden={null}
@@ -605,6 +608,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                         state={Object {}}
                         tabIndex={null}
                         tag="div"
+                        target={null}
                       >
                         <div
                           aria-hidden={null}

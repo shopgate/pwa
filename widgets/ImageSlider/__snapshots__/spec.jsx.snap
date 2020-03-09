@@ -235,6 +235,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -286,6 +287,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -374,6 +376,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           state={Object {}}
           tabIndex={null}
           tag="div"
+          target={null}
         >
           <div
             aria-hidden={null}
@@ -702,6 +705,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -973,6 +977,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
@@ -1024,6 +1029,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                       state={Object {}}
                       tabIndex={null}
                       tag="div"
+                      target={null}
                     >
                       <div
                         aria-hidden={null}
