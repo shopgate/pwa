@@ -124,6 +124,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
               tabIndex={null}
               tag="div"
               tagName="a"
+              target={null}
             >
               <div
                 aria-hidden={null}
