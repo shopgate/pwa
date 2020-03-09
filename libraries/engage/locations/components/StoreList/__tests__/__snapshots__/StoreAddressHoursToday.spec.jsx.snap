@@ -4,11 +4,7 @@ exports[`<StoreHoursToday /> should not render if no hours have been passed 1`] 
 
 exports[`<StoreHoursToday /> should render as expected 1`] = `
 <div
-  className={
-    Object {
-      "data-css-1kqiarg": "",
-    }
-  }
+  className="css-1kqiarg"
 >
   locations.today_hours
 </div>

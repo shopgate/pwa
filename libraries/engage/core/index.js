@@ -274,6 +274,7 @@ export { i18n, getWeekDaysOrder } from './helpers/i18n';
 export * from './helpers/string';
 export { updateLegacyNavigationBar } from './helpers/updateLegacyNavigationBar';
 export { isIOSTheme } from './helpers/isIOSTheme';
+export { generateGoogleMapsDirectionsUrl } from './helpers/googleMaps';
 
 // -------------- CONFIG -------------- //
 export * from './config/config.actions';

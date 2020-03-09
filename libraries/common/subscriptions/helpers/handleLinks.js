@@ -185,6 +185,7 @@ export const handleAppRedirect = (historyAction, state) => {
  */
 export const openExternalLink = (location, historyAction, state, locationState = {}) => {
   const { target } = locationState;
+
   if (target === '_blank') {
     // Deeplinks to social apps: fb, whatsapp, etc. Treat as native links
     openPageExtern({
