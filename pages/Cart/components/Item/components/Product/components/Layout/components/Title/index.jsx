@@ -4,7 +4,10 @@ import {
   Grid, I18n, SurroundPortals, ContextMenu,
 } from '@shopgate/engage/components';
 import { CART_ITEM_NAME } from '@shopgate/engage/cart';
-import { CartItemProductContextMenuItem } from '@shopgate/engage/locations';
+import {
+  CartContextMenuItemChangeLocation,
+  CartContextMenuItemChangeFulfillment,
+} from '@shopgate/engage/locations';
 import styles from './style';
 
 const contextMenuClasses = {
@@ -38,9 +41,13 @@ const Title = ({ value, handleRemove, toggleEditMode }, context) => {
           <ContextMenu.Item onClick={() => toggleEditMode(true)}>
             <I18n.Text string="cart.edit" />
           </ContextMenu.Item>
-          <CartItemProductContextMenuItem
+          <CartContextMenuItemChangeLocation
             cartItem={context.cartItem}
             onClick={() => invokeAction('changeLocation')}
+          />
+          <CartContextMenuItemChangeFulfillment
+            cartItem={context.cartItem}
+            onClick={() => invokeAction('changeFulfillment')}
           />
         </ContextMenu>
       </Grid.Item>
