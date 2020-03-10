@@ -4,36 +4,20 @@ exports[`<StoreListProduct /> should not render if not product is supplied 1`] =
 
 exports[`<StoreListProduct /> should render a product without selected variants. 1`] = `
 <div
-  className={
-    Object {
-      "data-css-g4i9nv": "",
-    }
-  }
+  className="css-g4i9nv"
 >
   <div
-    className={
-      Object {
-        "data-css-1f7wp8g": "",
-      }
-    }
+    className="css-1f7wp8g"
   >
     <div
-      className={
-        Object {
-          "data-css-19shpyr": "",
-        }
-      }
+      className="css-19shpyr"
     >
       <WithWidgetSettings(ProductImage)
         src="http://www.some.com"
       />
     </div>
     <div
-      className={
-        Object {
-          "data-css-yp5sfk": "",
-        }
-      }
+      className="css-yp5sfk"
     >
       <StoreListProductName />
       <Connect(StoreListProductVariants) />

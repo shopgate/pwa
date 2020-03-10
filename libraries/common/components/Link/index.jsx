@@ -23,6 +23,7 @@ class Link extends Component {
     state: PropTypes.shape(),
     tabIndex: PropTypes.number,
     tag: PropTypes.string,
+    target: PropTypes.string,
   };
 
   static defaultProps = {
@@ -34,6 +35,7 @@ class Link extends Component {
     role: 'link',
     tag: 'div',
     tabIndex: null,
+    target: null,
     state: {},
   };
 
@@ -47,7 +49,10 @@ class Link extends Component {
 
     const params = {
       pathname: this.props.href,
-      state: this.props.state || {},
+      state: {
+        ...(this.props.state || {}),
+        ...(this.props.target ? { target: this.props.target } : {}),
+      },
     };
 
     if (this.props.replace) {

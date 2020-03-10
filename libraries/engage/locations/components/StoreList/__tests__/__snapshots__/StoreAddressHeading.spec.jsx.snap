@@ -2,18 +2,10 @@
 
 exports[`<StoreAddressHeading> should render as expected 1`] = `
 <div
-  className={
-    Object {
-      "data-css-1bvvjxu": "",
-    }
-  }
+  className="css-1bvvjxu"
 >
   <div
-    className={
-      Object {
-        "data-css-1qlb3ci": "",
-      }
-    }
+    className="css-1qlb3ci"
     data-test-id="store-name"
   >
     ACME

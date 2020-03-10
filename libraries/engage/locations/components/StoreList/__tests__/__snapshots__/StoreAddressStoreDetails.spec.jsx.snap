@@ -5,11 +5,7 @@ exports[`<StoreAddressStoreDetails /> should not render opening hours when the o
   renderLabel={[Function]}
 >
   <div
-    className={
-      Object {
-        "data-css-1t9uipm": "",
-      }
-    }
+    className="css-1t9uipm"
   >
     <div>
       <StoreAddressMailingAddress
@@ -32,11 +28,7 @@ exports[`<StoreAddressStoreDetails /> should not render opening hours when the p
   renderLabel={[Function]}
 >
   <div
-    className={
-      Object {
-        "data-css-1t9uipm": "",
-      }
-    }
+    className="css-1t9uipm"
   >
     <div>
       <StoreAddressMailingAddress
@@ -59,18 +51,10 @@ exports[`<StoreAddressStoreDetails /> should render as expected 1`] = `
   renderLabel={[Function]}
 >
   <div
-    className={
-      Object {
-        "data-css-1t9uipm": "",
-      }
-    }
+    className="css-1t9uipm"
   >
     <div
-      className={
-        Object {
-          "data-css-1ir6nuc": "",
-        }
-      }
+      className="css-1ir6nuc"
     >
       <StoreAddressOpeningHours
         hours={

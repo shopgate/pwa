@@ -189,6 +189,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -274,6 +275,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -359,6 +361,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -444,6 +447,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -551,6 +555,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -949,6 +954,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 state={Object {}}
                                 tabIndex={null}
                                 tag="div"
+                                target={null}
                               >
                                 <div
                                   aria-hidden={null}
@@ -1032,6 +1038,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                                 state={Object {}}
                                 tabIndex={null}
                                 tag="div"
+                                target={null}
                               >
                                 <div
                                   aria-hidden={null}
@@ -1231,6 +1238,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1316,6 +1324,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1401,6 +1410,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1486,6 +1496,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
@@ -1593,6 +1604,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             state={Object {}}
                             tabIndex={null}
                             tag="div"
+                            target={null}
                           >
                             <div
                               aria-hidden={null}
