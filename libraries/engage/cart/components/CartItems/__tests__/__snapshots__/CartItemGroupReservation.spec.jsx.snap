@@ -23,69 +23,29 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
 `;
 
 exports[`engage > cart > components > CartItemGroupReservation should render accordion 2`] = `
-<div
-  className={
+<CartItemGroupReservationLabel
+  location={
     Object {
-      "data-css-1bk0nqb": "",
+      "address": Object {
+        "phoneNumber": "012456789",
+      },
+      "name": "Location name",
     }
   }
->
-  <div
-    className={
-      Object {
-        "data-css-1u11ya1": "",
-      }
-    }
-  >
-    <Location />
-  </div>
-  <div>
-    <div
-      className={
-        Object {
-          "data-css-193taon": "",
-        }
-      }
-    >
-      locations.method.ropis
-    </div>
-    Location name
-  </div>
-</div>
+/>
 `;
 
 exports[`engage > cart > components > CartItemGroupReservation should render only label 1`] = `
 <CardListItem
   className="css-u4u0p5"
 >
-  <div
-    className={
+  <CartItemGroupReservationLabel
+    location={null}
+    loction={
       Object {
-        "data-css-1bk0nqb": "",
+        "name": "Location name",
       }
     }
-  >
-    <div
-      className={
-        Object {
-          "data-css-1u11ya1": "",
-        }
-      }
-    >
-      <Location />
-    </div>
-    <div>
-      <div
-        className={
-          Object {
-            "data-css-193taon": "",
-          }
-        }
-      >
-        locations.method.ropis
-      </div>
-      Location name
-    </div>
-  </div>
+  />
 </CardListItem>
 `;
