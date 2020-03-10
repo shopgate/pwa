@@ -1,55 +1,52 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React from 'react';
+import { every, isEmpty } from 'lodash';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import { Accordion, LocationIcon } from '../../../components';
-import { i18n } from '../../../core';
-import { StoreAddressOpeningHours, StoreAddressPhoneNumber } from '../../../locations';
+import { Accordion } from '@shopgate/engage/components';
+import { StoreAddressOpeningHours, StoreAddressPhoneNumber } from '@shopgate/engage/locations';
+import type { OptionalLocationAware } from '@shopgate/engage/locations/locations.types';
+import { CartItemGroupReservationLabel } from './CartItemGroupReservationLabel';
 import connect from './CartItemGroupReservation.connector';
-import {
-  address, addressIcon, title, accordionToggle, addressDetails,
-} from './CartItemGroup.style';
+import { accordionToggle, addressDetails, simpleLabel } from './CartItemGroup.style';
+
+type Props = OptionalLocationAware;
 
 /**
  * Renders the product group.
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const FulfillmentLocation = ({ location }) => (
-  <Fragment>
-    {location && (
+function CartItemGroupReservation({ location }: Props) {
+  if (!location) {
+    return null;
+  }
+
+  const { operationHours, address: { phoneNumber } = {} } = location;
+  if ((!operationHours || every(operationHours, isEmpty)) && !phoneNumber) {
+    return (
+      <CardListItem className={simpleLabel.toString()}>
+        <CartItemGroupReservationLabel location={location} />
+      </CardListItem>
+    );
+  }
+
+  return (
     <CardListItem>
       <Accordion
-        renderLabel={() => (
-          <div className={address}>
-            <div className={addressIcon}>
-              <LocationIcon />
-            </div>
-            <div>
-              <div className={title}>
-                {i18n.text('locations.method.ropis')}
-              </div>
-              {location.name}
-            </div>
-          </div>
-        )}
+        renderLabel={() => <CartItemGroupReservationLabel location={location} />}
         className={accordionToggle}
       >
         <div className={addressDetails}>
-          <StoreAddressOpeningHours hours={location.operationHours} />
-          <StoreAddressPhoneNumber phone={address.phoneNumber} />
+          <StoreAddressOpeningHours hours={operationHours} />
+          <StoreAddressPhoneNumber phone={phoneNumber} />
         </div>
       </Accordion>
     </CardListItem>
-    )}
-  </Fragment>
-);
+  );
+}
 
-FulfillmentLocation.propTypes = {
-  location: PropTypes.shape(),
-};
-
-FulfillmentLocation.defaultProps = {
+CartItemGroupReservation.defaultProps = {
   location: null,
 };
 
-export default connect(FulfillmentLocation);
+export default connect<Props>(CartItemGroupReservation);

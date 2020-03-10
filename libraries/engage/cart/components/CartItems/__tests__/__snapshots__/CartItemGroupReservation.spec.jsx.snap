@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > cart > components > CartItemGroupReservation should render accordion 1`] = `
+<CardListItem>
+  <Accordion
+    className="css-m7h5wp"
+    renderLabel={[Function]}
+  >
+    <div
+      className={
+        Object {
+          "data-css-17vr7yg": "",
+        }
+      }
+    >
+      <StoreAddressOpeningHours />
+      <StoreAddressPhoneNumber
+        phone="012456789"
+      />
+    </div>
+  </Accordion>
+</CardListItem>
+`;
+
+exports[`engage > cart > components > CartItemGroupReservation should render accordion 2`] = `
+<CartItemGroupReservationLabel
+  location={
+    Object {
+      "address": Object {
+        "phoneNumber": "012456789",
+      },
+      "name": "Location name",
+    }
+  }
+/>
+`;
+
+exports[`engage > cart > components > CartItemGroupReservation should render only label 1`] = `
+<CardListItem
+  className="css-u4u0p5"
+>
+  <CartItemGroupReservationLabel
+    location={
+      Object {
+        "name": "Location name",
+      }
+    }
+  />
+</CardListItem>
+`;

@@ -1,5 +1,7 @@
+// @flow
 import { connect } from 'react-redux';
-import { makeGetLocation } from '../../../locations';
+import { makeGetLocation } from '@shopgate/engage/locations';
+import type { OptionalLocationAware } from '@shopgate/engage/locations/locations.types';
 
 /**
  * Creates the mapStateToProps connector function.
@@ -7,9 +9,9 @@ import { makeGetLocation } from '../../../locations';
  */
 const makeMapStateToProps = () => {
   const getLocation = makeGetLocation();
-  return (state, props) => ({
+  return (state, props) : OptionalLocationAware => ({
     location: getLocation(state, props),
   });
 };
 
-export default connect(makeMapStateToProps);
+export default connect<OptionalLocationAware>(makeMapStateToProps);
