@@ -18,6 +18,36 @@ exports[`<StoreListSearch /> should call getProductLocations after clicking the 
       ],
     }
   }
+  searchQuery=""
+  storeSearchQuery={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+        Array [
+          "ACME",
+        ],
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
 >
   <div
     className={
@@ -96,6 +126,29 @@ exports[`<StoreListSearch /> should call getProductLocations with a postal code 
         ],
       ],
       "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  searchQuery=""
+  storeSearchQuery={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+        Array [
+          "ACME",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
         Object {
           "type": "return",
           "value": undefined,

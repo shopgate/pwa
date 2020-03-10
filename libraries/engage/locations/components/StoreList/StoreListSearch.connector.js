@@ -1,12 +1,18 @@
+// @flow
 import { connect } from 'react-redux';
-import { makeGetIsFetchingProductLocations } from '../../selectors';
+import {
+  makeGetIsFetchingProductLocations,
+  makeGetUserSearchQuery,
+} from '../../selectors';
+import { storeSearchQuery } from '../../action-creators';
 import { getProductLocations } from './StoreListSearch.actions';
 
 /**
  * @returns {Function}
  */
-const makeMapStateToProps = () => {
+function makeMapStateToProps() {
   const getIsFetchingProductLocations = makeGetIsFetchingProductLocations();
+  const getUserSearchQuery = makeGetUserSearchQuery();
 
   /**
    * @param {Object} state The application state.
@@ -15,9 +21,13 @@ const makeMapStateToProps = () => {
    */
   return (state, props) => ({
     loading: getIsFetchingProductLocations(state, props),
+    searchQuery: getUserSearchQuery(state),
   });
-};
+}
 
-const mapDispatchToProps = { getProductLocations };
+const mapDispatchToProps = {
+  getProductLocations,
+  storeSearchQuery,
+};
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

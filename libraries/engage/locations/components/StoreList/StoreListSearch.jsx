@@ -1,5 +1,5 @@
 import React, {
-  Fragment, useState, useRef, useCallback, useContext, useLayoutEffect,
+  Fragment, useState, useRef, useCallback, useContext, useLayoutEffect, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
@@ -16,10 +16,10 @@ import {
  * @param {Function} getProductLocations getProductLocations.
  * @returns {JSX}
  */
-function StoreListSearch({ getProductLocations }) {
+function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery }) {
   const { product, locations } = useContext(FulfillmentContext);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(searchQuery);
   const [message, setMessage] = useState('');
   const inputEl = useRef(null);
 
@@ -29,6 +29,10 @@ function StoreListSearch({ getProductLocations }) {
       setMessage('locations.error_no_store_found');
     }
   }, [locations]);
+
+  useEffect(() => {
+    storeSearchQuery(query);
+  }, [query, storeSearchQuery]);
 
   /**
    * Triggers a location update.
@@ -42,12 +46,18 @@ function StoreListSearch({ getProductLocations }) {
     const error = await getProductLocations(product.id, postalCode);
 
     if (error) {
-      // Show a message when the locations request failed.
       setMessage(error);
     }
 
     setLoading(false);
   }, [getProductLocations, product]);
+
+  useEffect(() => {
+    if (query !== '') {
+      updateProductLocations(query);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * Updates the query state of the component when the input changes.
@@ -116,6 +126,8 @@ function StoreListSearch({ getProductLocations }) {
 
 StoreListSearch.propTypes = {
   getProductLocations: PropTypes.func.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  storeSearchQuery: PropTypes.func.isRequired,
 };
 
 export default connect(StoreListSearch);

@@ -117,6 +117,7 @@ export type LocationsState = {
   locationsByProductId: LocationsByProductIdState | {};
   userLocation: UserLocationState | {};
   userFormInput: ReservationFormValues;
+  userSearchQuery: string;
 }
 
 export type SheetStage = typeof STAGE_SELECT_STORE
