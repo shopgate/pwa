@@ -52,10 +52,14 @@ function StoreListSearch({ getProductLocations, storeSearchQuery, searchQuery })
     setLoading(false);
   }, [getProductLocations, product]);
 
-  useEffect(() => {
-    if (query !== '') {
-      updateProductLocations(query);
+  useLayoutEffect(() => {
+    if (!product) {
+      return;
     }
+
+    setTimeout(() => { // wait for the sheet to be opened.
+      updateProductLocations(query !== '' ? query : null);
+    }, 300);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
