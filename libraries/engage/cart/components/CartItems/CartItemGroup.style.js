@@ -8,6 +8,10 @@ export const accordionToggle = css({
   paddingBottom: variables.gap.xsmall,
 }).toString();
 
+export const simpleLabel = css({
+  padding: `${variables.gap.xsmall}px ${variables.gap.xbig}px ${variables.gap.xsmall}px ${variables.gap.big}px`,
+});
+
 export const address = css({
   display: 'flex',
   flexFlow: 'row nowrap',
@@ -18,6 +22,7 @@ export const addressIcon = css({
   fontSize: '1.25rem',
   padding: `${variables.gap.small}px ${variables.gap.small}px 0 0`,
   paddingTop: variables.gap.small,
+  flexShrink: 0,
 });
 
 export const shippingIcon = css({
