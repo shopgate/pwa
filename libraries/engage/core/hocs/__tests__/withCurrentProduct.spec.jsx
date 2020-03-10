@@ -2,29 +2,26 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { withCurrentProduct } from '../withCurrentProduct';
 
-const mockCurrentProduct = {
-  id: '123',
-  name: 'acme',
-  price: {
-    currency: 'EUR',
-    unitPrice: 22.95,
-    unitPriceStriked: 25.95,
-  },
-};
+jest.mock('@shopgate/pwa-common/context', () => {
+  // eslint-disable-next-line global-require
+  const { createContext } = require('react');
 
-const mockContext = jest.fn().mockReturnValue(mockCurrentProduct);
-
-jest.mock('@shopgate/pwa-common/context', () => ({
-  ThemeContext: {
-    Consumer: ({ children: themeChildren }) => themeChildren({
+  return {
+    ThemeContext: createContext({
       contexts: {
-        ProductContext: {
-          Consumer: ({ children: productChildren }) => productChildren(mockContext()),
-        },
+        ProductContext: createContext({
+          id: '123',
+          name: 'acme',
+          price: {
+            currency: 'EUR',
+            unitPrice: 22.95,
+            unitPriceStriked: 25.95,
+          },
+        }),
       },
     }),
-  },
-}));
+  };
+});
 
 // eslint-disable-next-line require-jsdoc
 const MockComponent = () => null;
@@ -40,7 +37,13 @@ describe('engage > core > hocs > withCurrentProduct', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockComponent).props()).toEqual({
       someProp: true,
-      ...mockCurrentProduct,
+      id: '123',
+      name: 'acme',
+      price: {
+        currency: 'EUR',
+        unitPrice: 22.95,
+        unitPriceStriked: 25.95,
+      },
     });
   });
 
@@ -51,7 +54,13 @@ describe('engage > core > hocs > withCurrentProduct', () => {
     expect(wrapper.find(MockComponent).props()).toEqual({
       someProp: true,
       product: {
-        ...mockCurrentProduct,
+        id: '123',
+        name: 'acme',
+        price: {
+          currency: 'EUR',
+          unitPrice: 22.95,
+          unitPriceStriked: 25.95,
+        },
       },
     });
   });
