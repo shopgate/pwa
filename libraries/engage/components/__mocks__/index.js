@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 // ICONS IOS
 export { default as CartIconIOS } from '@shopgate/pwa-ui-ios/icons/CartIcon';
 export { default as FilterIconIOS } from '@shopgate/pwa-ui-ios/icons/FilterIcon';
@@ -35,6 +36,7 @@ export { default as InfoIcon } from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 export { default as InfoOutlineIcon } from '@shopgate/pwa-ui-shared/icons/InfoOutlineIcon';
 export { default as ListIcon } from '@shopgate/pwa-ui-shared/icons/ListIcon';
 export { default as LocalShippingIcon } from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
+export { default as LocationIcon } from '@shopgate/pwa-ui-shared/icons/LocationIcon';
 export { default as LockIcon } from '@shopgate/pwa-ui-shared/icons/LockIcon';
 export { default as LogoutIcon } from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
 export { default as MagnifierIcon } from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
@@ -56,7 +58,9 @@ export { default as ViewListIcon } from '@shopgate/pwa-ui-shared/icons/ViewListI
 export { default as VisibilityIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityIcon';
 export { default as VisibilityOffIcon } from '@shopgate/pwa-ui-shared/icons/VisibilityOffIcon';
 
-/** @returns {ReactElement} */
-export const SurroundPortals = ({ children }) => children;
+export const SurroundPortals = () => 'SurroundPortals';
+export const Accordion = () => 'Accordion';
 
 export { default as View, ViewContext } from '../View/__mocks__/index';
+
+/* eslint-enable require-jsdoc */
