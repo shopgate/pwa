@@ -50,6 +50,10 @@ const FulfillmentSelectorAddToCart = ({
       if (fulfillmentPaths.length > 1) {
         const selectedPath = await promisifiedFulfillmentPathSelector();
 
+        if (selectedPath === '') {
+          return false;
+        }
+
         if (selectedPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
           return true;
         }

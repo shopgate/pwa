@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
-import { type Product, type AddToCartProduct, type CartItem } from '../../product/product.types';
+import { type AddToCartProduct, type CartItem } from '../../cart';
+import { type Product } from '../../product';
 import {
   type Location,
   type ReservationFormValues,

@@ -1,29 +1,31 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { Accordion } from '@shopgate/engage/components';
 import { StoreAddressOpeningHours, StoreAddressPhoneNumber } from '@shopgate/engage/locations';
+import { type OptionalLocationAware } from '@shopgate/engage/locations/locations.types';
+import { CartItemGroupReservationLabel } from './CartItemGroupReservationLabel';
 import connect from './CartItemGroupReservation.connector';
 import { accordionToggle, addressDetails, simpleLabel } from './CartItemGroup.style';
-import { CartItemGroupReservationLabel } from './CartItemGroupReservationLabel';
+
+type Props = OptionalLocationAware;
 
 /**
  * Renders the product group.
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-function CartItemGroupReservation({ location }) {
+function CartItemGroupReservation({ location }: Props) {
   if (!location) {
     return null;
   }
 
   const { operationHours, address: { phoneNumber } = {} } = location;
-
   if ((!operationHours || every(operationHours, isEmpty)) && !phoneNumber) {
     return (
       <CardListItem className={simpleLabel.toString()}>
-        <CartItemGroupReservationLabel loction={location} />
+        <CartItemGroupReservationLabel location={location} />
       </CardListItem>
     );
   }
@@ -43,12 +45,8 @@ function CartItemGroupReservation({ location }) {
   );
 }
 
-CartItemGroupReservation.propTypes = {
-  location: PropTypes.shape(),
-};
-
 CartItemGroupReservation.defaultProps = {
   location: null,
 };
 
-export default connect(CartItemGroupReservation);
+export default connect<Props>(CartItemGroupReservation);

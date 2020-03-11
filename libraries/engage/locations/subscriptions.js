@@ -1,10 +1,18 @@
 import { receivedVisibleProduct$ } from '@shopgate/engage/product';
 import {
-  cartReceived$, cartWillEnter$, getCartProducts, SHOPGATE_CART_GET_CART,
+  cartReceived$,
+  cartWillEnter$,
+  getCartProducts,
+  SHOPGATE_CART_GET_CART,
+  SHOPGATE_CART_UPDATE_PRODUCTS,
 } from '@shopgate/engage/cart';
 import { configuration, PIPELINES, receiveCoreConfig$ } from '@shopgate/engage/core';
 import { fetchCart } from '../cart';
-import { FULFILLMENT_PATH_MULTI_LINE_RESERVE, SHOPGATE_STOREFRONT_GET_CART } from './constants';
+import {
+  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  SHOPGATE_STOREFRONT_GET_CART,
+  SHOPGATE_STOREFRONT_UPDATE_CART,
+} from './constants';
 import { fetchLocationsById, fetchProductLocations } from './actions';
 
 /**
@@ -35,10 +43,11 @@ function locations(subscribe) {
     } = action;
 
     if (enabledFulfillmentMethodSelectionForEngage.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)) {
-      // 1. Exchange pipeline for get cart
+      // 1. Exchange pipeline for get/update cart
       configuration.update(PIPELINES, pipelines => ({
         ...pipelines,
         [SHOPGATE_CART_GET_CART]: SHOPGATE_STOREFRONT_GET_CART,
+        [SHOPGATE_CART_UPDATE_PRODUCTS]: SHOPGATE_STOREFRONT_UPDATE_CART,
       }));
 
       // Cart with ropis products

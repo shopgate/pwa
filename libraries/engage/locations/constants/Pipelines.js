@@ -4,3 +4,4 @@ export const SHOPGATE_STOREFRONT_GET_PRODUCT_LOCATIONS = 'shopgate.storefront.ge
 export const SHOPGATE_STOREFRONT_CREATE_ORDER = 'shopgate.storefront.createOrders';
 
 export const SHOPGATE_STOREFRONT_GET_CART = 'shopgate.storefront.getCart';
+export const SHOPGATE_STOREFRONT_UPDATE_CART = 'shopgate.storefront.updateProducts';

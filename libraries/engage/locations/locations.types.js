@@ -60,9 +60,18 @@ export type Location = {
   isDefault?: boolean;
   type?: LocationType;
   operationHours?: LocationOperationHours;
+  address?: LocationAddress;
   addresses?: LocationAddress[];
   productInventory?: LocationProductInventory;
   unitSystem?: string;
+}
+
+export type LocationAware = {
+  location: Location
+}
+
+export type OptionalLocationAware = {
+  location?: Location | null
 }
 
 type ProductLocations = {
