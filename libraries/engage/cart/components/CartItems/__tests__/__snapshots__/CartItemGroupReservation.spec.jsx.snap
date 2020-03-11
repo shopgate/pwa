@@ -40,8 +40,7 @@ exports[`engage > cart > components > CartItemGroupReservation should render onl
   className="css-u4u0p5"
 >
   <CartItemGroupReservationLabel
-    location={null}
-    loction={
+    location={
       Object {
         "name": "Location name",
       }
