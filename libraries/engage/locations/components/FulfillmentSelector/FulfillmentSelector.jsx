@@ -33,7 +33,7 @@ type Props = OwnProps & StateProps & DispatchProps;
 export const FulfillmentSelector = (props: Props) => {
   const {
     productId: productCode,
-    fulfillmentMethods,
+    shopFulfillmentMethods,
     location,
     conditioner,
     disabled,
@@ -44,7 +44,10 @@ export const FulfillmentSelector = (props: Props) => {
   const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
   const [selection, setSelection] = useState(
-    userFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
+    (
+      userFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
+      && !disabled
+    )
       ? pickUp
       : directShip
   );
@@ -106,8 +109,15 @@ export const FulfillmentSelector = (props: Props) => {
     });
   }, [conditioner, storeFulfillmentMethod, isOpen, location, handleClose]);
 
-  if (!fulfillmentMethods) {
+  if (!shopFulfillmentMethods || shopFulfillmentMethods.length === 0) {
     return null;
+  }
+
+  /**
+   * Click handler for pick up in store.
+   */
+  function handleChangePickup() {
+    handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP, true);
   }
 
   return (
@@ -139,28 +149,30 @@ export const FulfillmentSelector = (props: Props) => {
             </FulfillmentSelectorItemDirectShip>
           </FulfillmentSelectorItem>
           <FulfillmentSelectorItem name={pickUp}>
-            <FulfillmentSelectorItemReserve
-              location={selectedLocation || location}
-              selected={selection === pickUp}
-            >
-              {location && (
-                <div className={styles.pickUpGroupContainer}>
-                  <StockInfo location={selectedLocation || location} />
-                  {(selection === pickUp) && (
-                    <ChangeLocationButton
-                      onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP, true)}
-                    />
-                  )}
-                </div>
-              )}
-            </FulfillmentSelectorItemReserve>
+            {!disabled && (
+              <FulfillmentSelectorItemReserve
+                location={selectedLocation || location}
+                selected={selection === pickUp}
+              >
+                {location && (
+                  <div className={styles.pickUpGroupContainer}>
+                    <StockInfo location={selectedLocation || location} />
+                    {(selection === pickUp) && (
+                      <ChangeLocationButton onClick={handleChangePickup} />
+                    )}
+                  </div>
+                )}
+              </FulfillmentSelectorItemReserve>
+            )}
           </FulfillmentSelectorItem>
         </RadioGroup>
       </div>
-      <FulfillmentSelectorAddToCart
-        conditioner={conditioner}
-        location={selectedLocation || location}
-      />
+      {!disabled && (
+        <FulfillmentSelectorAddToCart
+          conditioner={conditioner}
+          location={selectedLocation || location}
+        />
+      )}
     </SurroundPortals>
   );
 };
