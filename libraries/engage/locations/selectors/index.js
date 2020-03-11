@@ -2,8 +2,11 @@
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
 import { getUserData } from '@shopgate/engage/user';
-import { isProductAvailable } from '../helpers';
-import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../constants';
+import { isProductAvailable } from '../helpers/productInventory';
+import {
+  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+  PRODUCT_FULFILLMENT_METHOD_ROPIS,
+} from '../constants';
 import { type State } from '../../types';
 import {
   type LocationsState,
@@ -84,7 +87,8 @@ export function makeGetUserLocation(): Selector<State, UserLocationState> {
  * Creates the selector that retrieves the fulfillment method from the user location state.
  * @returns {Function}
  */
-function makeGetUserLocationFulfillmentMethod(): Selector<State, UserLocationFulfillmentMethod> {
+export function makeGetUserLocationFulfillmentMethod():
+  Selector<State, UserLocationFulfillmentMethod> {
   const getUserLocation = makeGetUserLocation();
   return createSelector(
     getUserLocation,
@@ -94,8 +98,6 @@ function makeGetUserLocationFulfillmentMethod(): Selector<State, UserLocationFul
     }
   );
 }
-
-export { makeGetUserLocationFulfillmentMethod };
 
 /**
  * Creates the selector that retrieves the location code from the user location state.
@@ -295,7 +297,12 @@ export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
     getProductLocations,
     getFulfillmentMethods,
     (locations, methods) => {
-      if (!methods || !locations || !locations.length === 0) {
+      if (
+        !methods
+        || !methods.includes(PRODUCT_FULFILLMENT_METHOD_ROPIS)
+        || !locations
+        || !locations.length === 0
+      ) {
         return true;
       }
 

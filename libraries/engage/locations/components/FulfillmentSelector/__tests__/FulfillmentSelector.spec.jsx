@@ -1,9 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
-  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  PRODUCT_FULFILLMENT_METHOD_ROPIS,
 } from '../../../constants';
 import { FulfillmentSheet } from '../../FulfillmentSheet';
 import { FulfillmentSelector } from '../FulfillmentSelector';
@@ -31,8 +29,7 @@ describe('<FulfillmentSelector />', () => {
           name: 'Test Store',
         }}
         conditioner={conditioner}
-        fulfillmentMethods={[]}
-        fulfillmentPaths={[]}
+        shopFulfillmentMethods={[]}
         disabled={false}
       />
     ));
@@ -49,9 +46,8 @@ describe('<FulfillmentSelector />', () => {
           name: 'Test Store',
         }}
         conditioner={conditioner}
-        fulfillmentMethods={[
-          PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-          PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+        shopFulfillmentMethods={[
+          PRODUCT_FULFILLMENT_METHOD_ROPIS,
         ]}
         fulfillmentPaths={[]}
         disabled={false}
@@ -70,11 +66,9 @@ describe('<FulfillmentSelector />', () => {
         productId="abc-123"
         location={{}}
         conditioner={conditioner}
-        fulfillmentMethods={[
-          PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-          PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+        shopFulfillmentMethods={[
+          PRODUCT_FULFILLMENT_METHOD_ROPIS,
         ]}
-        fulfillmentPaths={[FULFILLMENT_PATH_MULTI_LINE_RESERVE]}
         disabled={false}
       />
     ));

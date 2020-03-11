@@ -1,7 +1,9 @@
 // @flow
 import { connect } from 'react-redux';
 import {
-  makeGetFulfillmentMethods,
+  makeGetEnabledFulfillmentMethods,
+} from '../../../core/config';
+import {
   makeIsFulfillmentSelectorDisabled,
   makeGetUserLocation,
   makeGetProductLocation,
@@ -17,10 +19,10 @@ import { type OwnProps, type StateProps, type DispatchProps } from './Fulfillmen
  */
 function makeMapStateToProps() {
   const getUserLocation = makeGetUserLocation();
-  const getFulfillmentMethods = makeGetFulfillmentMethods();
   const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
   const getProductLocation = makeGetProductLocation(true);
   const getUserLocationFulfillmentMethod = makeGetUserLocationFulfillmentMethod();
+  const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
 
   /**
    * @param {Object} state The application state.
@@ -28,7 +30,7 @@ function makeMapStateToProps() {
    * @returns {Object}
    */
   return (state, props) => ({
-    fulfillmentMethods: getFulfillmentMethods(state, props),
+    shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
     userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
     location: getProductLocation(state, props) || getUserLocation(state),
     disabled: isFulfillmentSelectorDisabled(state, props),
