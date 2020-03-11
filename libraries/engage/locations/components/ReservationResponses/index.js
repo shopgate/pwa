@@ -1,2 +1,3 @@
-export { default as ReservationSuccess } from './ReservationSuccess';
-export { default as ReservationError } from './ReservationError';
+// @flow
+export { ReservationSuccess } from './ReservationSuccess';
+export { ReservationError } from './ReservationError';

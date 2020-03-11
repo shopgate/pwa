@@ -1,3 +1,4 @@
+// @flow
 import React, { useState, useContext, useMemo } from 'react';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
@@ -5,20 +6,22 @@ import RadioGroupItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/I
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { useFormState } from '../../../core/hooks/useFormState';
 import { i18n } from '../../../core/helpers/i18n';
-import FulfillmentContext from '../context';
+import { FulfillmentContext } from '../../locations.context';
+import { type ReservationFormValues } from '../../locations.types';
 import { constraints } from './ReserveForm.constraints';
 import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button,
 } from './ReserveForm.style';
 
 /**
+ * Renders the quick reservation form.
  * @returns {JSX}
  */
-function ReserveForm() {
+export function ReserveForm() {
   const { sendReservation, userInput } = useContext(FulfillmentContext);
   const [picker, setPicker] = useState('me');
 
-  const defaultState = {
+  const defaultState: ReservationFormValues = {
     firstName: '',
     lastName: '',
     cellPhone: '',
@@ -39,7 +42,7 @@ function ReserveForm() {
     },
   }), [picker]);
 
-  const initialState = userInput ? {
+  const initialState: ReservationFormValues = userInput ? {
     ...defaultState,
     ...userInput,
   } : defaultState;
@@ -47,7 +50,7 @@ function ReserveForm() {
   /**
    * @param {Object} values The form values.
    */
-  const complete = (values) => {
+  const complete = (values: ReservationFormValues) => {
     const response = values;
 
     if (response.firstName2 === '') {
@@ -169,5 +172,3 @@ function ReserveForm() {
     </form>
   );
 }
-
-export default ReserveForm;

@@ -1,1 +1,2 @@
-export { default as ReserveForm } from './ReserveForm';
+// @flow
+export { ReserveForm } from './ReserveForm';
