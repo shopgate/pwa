@@ -61,11 +61,24 @@ function FulfillmentPathSelector() {
     handleSelect(FULFILLMENT_PATH_MULTI_LINE_RESERVE);
   }
 
+  /**
+   * Handles the case when the sheet is closed manually.
+   */
+  function handleClose() {
+    if (callback !== null) {
+      callback('');
+    }
+
+    setIsOpen(false);
+    callback = null;
+  }
+
   return (
     <SheetDrawer
       isOpen={isOpen}
       title={i18n.text('locations.choose_reservation_type')}
       className={sheetDrawer}
+      onDidClose={handleClose}
     >
       <SheetList>
         <SheetList.Item

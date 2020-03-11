@@ -233,6 +233,10 @@ function FulfillmentProvider(props: Props) {
     // No fulfillment path selected yet.
     if (fulfillmentPath === null && fulfillmentPaths.length > 1) {
       FulfillmentPathSelector.open((method: FulfillmentPath) => {
+        if (!method) {
+          return;
+        }
+
         if (method === FULFILLMENT_PATH_QUICK_RESERVE) {
           handleQuickReservation();
         }
