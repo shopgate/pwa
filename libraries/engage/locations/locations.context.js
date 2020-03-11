@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { type Product } from '../product/product.types';
+import { type Product } from '../product';
 import {
   type Location,
   type ReservationFormValues,

@@ -49,3 +49,22 @@ export {
 export {
   useFulfillmentState,
 } from './locations.hooks';
+
+// TYPES
+export type {
+  LocationAddress,
+  Location,
+  LocationsByIdState,
+  LocationsByProductIdState,
+  FulfillmentPath,
+  UserLocationState,
+  ReservationFormValues,
+  UserLocationFulfillmentMethod,
+  UserLocationLocationCode,
+  UserFormInputState,
+  LocationsState,
+  SheetStage,
+  SheetCallbackFn,
+  SheetOpenParams,
+  ReservationResponse,
+} from './locations.types';

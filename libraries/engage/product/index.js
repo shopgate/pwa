@@ -77,3 +77,9 @@ export { default as withProduct } from './hocs/withProduct';
 
 // CONTEXTS
 export { ProductContext, VariantContext } from './components/context';
+
+// TYPES
+export type {
+  ProductId,
+  Product,
+} from './product.types';

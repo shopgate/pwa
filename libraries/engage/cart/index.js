@@ -37,3 +37,9 @@ export { CartContext } from './cart.context';
 export { PaymentBar } from './components/PaymentBar';
 // COMPONENTS / CART ITEMS
 export * from './components/CartItems';
+
+// TYPES
+export type {
+  CartItem,
+  AddToCartProduct,
+} from './cart.types';
