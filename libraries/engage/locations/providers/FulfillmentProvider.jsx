@@ -16,6 +16,7 @@ import {
   FULFILLMENT_PATH_MULTI_LINE_RESERVE,
   PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+  PRODUCT_FULFILLMENT_METHOD_ROPIS,
 } from '../constants';
 import {
   type Location,
@@ -183,7 +184,7 @@ function FulfillmentProvider(props: Props) {
     }
 
     const fulfillment = {
-      method: 'ROPIS', // TODO: make this dynamic.
+      method: PRODUCT_FULFILLMENT_METHOD_ROPIS, // TODO: make this dynamic.
       location: {
         code: location.code,
         name: location.name || '',
