@@ -7,5 +7,4 @@ export type OwnProps = {
 
 export type DispatchProps = {
   fetchProductLocations: Function,
-  updateProductInCart: Function,
 }
