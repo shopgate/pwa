@@ -19,10 +19,9 @@ const pickUp = 'product.fulfillment_selector.pick_up_in_store';
  * @returns {JSX}
  */
 export function FulfillmentPath() {
-  const { product, meta, changeFulfillment } = useFulfillmentState();
-  const cartItem = (meta && meta.cartItem) ? meta.cartItem : undefined;
-  const isPickUp = !!(cartItem
-    && (cartItem.fulfillment !== null && cartItem.fulfillment.method !== 'DIRECT_SHIP'));
+  const { product, meta: { cartItem = undefined } = {}, changeFulfillment } = useFulfillmentState();
+  const { fulfillment } = cartItem || {};
+  const isPickUp = !!(cartItem && (fulfillment !== null && fulfillment.method !== 'DIRECT_SHIP'));
   const [selection, setSelection] = React.useState(isPickUp ? pickUp : directShip);
 
   if (!product || !cartItem) {
@@ -59,8 +58,8 @@ export function FulfillmentPath() {
         </FulfillmentPathItem>
         <FulfillmentPathItem name={pickUp}>
           <div className={pickUpContainer}>
-            {cartItem.fulfillment && (
-              <StockInfo location={cartItem.fulfillment.location} />
+            {fulfillment && (
+              <StockInfo location={fulfillment.location} />
             )}
           </div>
         </FulfillmentPathItem>
