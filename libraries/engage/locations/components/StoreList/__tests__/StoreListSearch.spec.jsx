@@ -17,10 +17,15 @@ jest.mock('../StoreListSearch.connector', () => cmp => cmp);
 
 describe('<StoreListSearch />', () => {
   const getProductLocations = jest.fn();
+  const storeSearchQuery = jest.fn();
 
   const productId = 'ABC123';
   const postalCode = 'ACME';
-  const defaultProps = { getProductLocations };
+  const defaultProps = {
+    getProductLocations,
+    storeSearchQuery,
+    searchQuery: '',
+  };
   const context = {
     product: { id: productId },
     locations: [{ code: 'LOCCODE' }],

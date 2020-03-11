@@ -337,6 +337,17 @@ export function makeGetUserFormInput(): Selector<State, ReservationFormValues> {
 }
 
 /**
+ * Create a selector that retrieves the user's search query input.
+ * @returns {Function}
+ */
+export function makeGetUserSearchQuery(): Selector<State, string> {
+  return createSelector(
+    getLocationsState,
+    locations => locations.userSearchQuery
+  );
+}
+
+/**
  * Creates a selector
  * @param {boolean} useUserLocation Whether the location code is taken from the userLocation state.
  * @returns {Function}
