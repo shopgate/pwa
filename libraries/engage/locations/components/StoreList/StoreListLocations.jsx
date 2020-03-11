@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Store from './Store';
-import FulfillmentContext from '../context';
+import { FulfillmentContext } from '../../locations.context';
 import StoreContext from './Store.context';
 import { stores } from './style';
 

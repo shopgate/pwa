@@ -1,6 +1,7 @@
 module.exports = {
   plugins: [
     'react-hooks',
+    'flowtype',
   ],
   rules: {
     'react/sort-prop-types': [2, {
@@ -51,5 +52,7 @@ module.exports = {
         ],
       },
     }],
+    'flowtype/define-flow-type': 1,
+    'flowtype/use-flow-type': 1,
   },
 };

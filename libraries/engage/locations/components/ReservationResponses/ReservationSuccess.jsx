@@ -1,6 +1,7 @@
+// @flow
 import React, { useContext } from 'react';
 import { i18n } from '../../../core/helpers/i18n';
-import FulfillmentContext from '../context';
+import { FulfillmentContext } from '../../locations.context';
 import {
   container, heading, body, orderNum,
 } from './ReservationResponse.style';
@@ -9,7 +10,7 @@ import {
  * Renders the reservation success screen.
  * @returns {JSX}
  */
-function ReservationSuccess() {
+export function ReservationSuccess() {
   const { orderNumbers } = useContext(FulfillmentContext);
 
   return (
@@ -23,11 +24,11 @@ function ReservationSuccess() {
       <p className={body}>
         {i18n.text('locations.success_order_num')}
       </p>
-      <p className={orderNum}>
-        {orderNumbers[0]}
-      </p>
+      {orderNumbers !== null && (
+        <p className={orderNum}>
+          {orderNumbers[0]}
+        </p>
+      )}
     </div>
   );
 }
-
-export default ReservationSuccess;

@@ -1,5 +1,6 @@
+// @flow
 import { hot } from 'react-hot-loader/root';
-import React, { Fragment } from 'react';
+import * as React from 'react';
 import StoreListProduct from './StoreListProduct';
 import StoreListSearch from './StoreListSearch';
 import StoreListLocations from './StoreListLocations';
@@ -8,14 +9,12 @@ import StoreListLocations from './StoreListLocations';
  * Renders the store list.
  * @returns {JSX}
  */
-function StoreList() {
-  return (
-    <Fragment>
-      <StoreListProduct />
-      <StoreListSearch />
-      <StoreListLocations />
-    </Fragment>
-  );
-}
+const StoreList = () => (
+  <React.Fragment>
+    <StoreListProduct />
+    <StoreListSearch />
+    <StoreListLocations />
+  </React.Fragment>
+);
 
 export default hot(StoreList);

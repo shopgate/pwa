@@ -4,24 +4,20 @@ exports[`engage > core > hocs > withCurrentProduct should inject a single proper
 <WithCurrentProduct(MockComponent)
   someProp={true}
 >
-  <Consumer>
-    <Consumer>
-      <MockComponent
-        product={
-          Object {
-            "id": "123",
-            "name": "acme",
-            "price": Object {
-              "currency": "EUR",
-              "unitPrice": 22.95,
-              "unitPriceStriked": 25.95,
-            },
-          }
-        }
-        someProp={true}
-      />
-    </Consumer>
-  </Consumer>
+  <MockComponent
+    product={
+      Object {
+        "id": "123",
+        "name": "acme",
+        "price": Object {
+          "currency": "EUR",
+          "unitPrice": 22.95,
+          "unitPriceStriked": 25.95,
+        },
+      }
+    }
+    someProp={true}
+  />
 </WithCurrentProduct(MockComponent)>
 `;
 
@@ -29,21 +25,17 @@ exports[`engage > core > hocs > withCurrentProduct should inject the context pro
 <WithCurrentProduct(MockComponent)
   someProp={true}
 >
-  <Consumer>
-    <Consumer>
-      <MockComponent
-        id="123"
-        name="acme"
-        price={
-          Object {
-            "currency": "EUR",
-            "unitPrice": 22.95,
-            "unitPriceStriked": 25.95,
-          }
-        }
-        someProp={true}
-      />
-    </Consumer>
-  </Consumer>
+  <MockComponent
+    id="123"
+    name="acme"
+    price={
+      Object {
+        "currency": "EUR",
+        "unitPrice": 22.95,
+        "unitPriceStriked": 25.95,
+      }
+    }
+    someProp={true}
+  />
 </WithCurrentProduct(MockComponent)>
 `;

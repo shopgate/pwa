@@ -101,6 +101,17 @@ export type UserLocationState = {
   | typeof PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
 }
 
+export type ReservationFormValues = {
+  firstName?: string;
+  lastName?: string;
+  cellPhone?: string;
+  email?: string;
+  firstName2?: string;
+  lastName2?: string;
+  cellPhone2?: string;
+  email2?: string;
+}
+
 export type UserLocationFulfillmentMethod = typeof PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
   | typeof PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
 
@@ -114,15 +125,26 @@ export type LocationsState = {
   locationsById: LocationsByIdState | {};
   locationsByProductId: LocationsByProductIdState | {};
   userLocation: UserLocationState | {};
-  userFormInput: UserFormInputState | {};
+  userFormInput: ReservationFormValues;
 }
 
 export type SheetStage = typeof STAGE_SELECT_STORE
   | typeof STAGE_RESERVE_FORM | typeof STAGE_RESPONSE_SUCCESS | typeof STAGE_RESPONSE_ERROR;
 
+export type SheetCallbackFn = (
+  location: Location | null,
+  productId: string | null,
+  orderSuccess: boolean
+) => void;
+
 export type SheetOpenParams = {
-  callback: (location: Location, orderSuccess: boolean) => void;
-  stage: SheetStage;
-  fulfillmentPath: FulfillmentPath;
-  changeOnly: boolean;
+  callback?: SheetCallbackFn;
+  stage?: SheetStage;
+  fulfillmentPath?: FulfillmentPath;
+  changeOnly?: boolean;
+}
+
+export type ReservationResponse = {
+  orderNumbers: string[] | null;
+  errors: string[] | null;
 }

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ProductImage } from '../../../product';
-import FulfillmentContext from '../context';
+import { FulfillmentContext } from '../../locations.context';
 import StoreListProductName from './StoreListProductName';
 import StoreListProductVariants from './StoreListProductVariants';
 import * as styles from './style';

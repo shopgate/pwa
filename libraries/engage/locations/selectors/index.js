@@ -2,7 +2,7 @@
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
 import { getUserData } from '@shopgate/engage/user';
-import { isProductAvailable } from '../helpers';
+import { isProductAvailable } from '../helpers/productInventory';
 import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../constants';
 import { type State } from '../../types';
 import {
@@ -11,7 +11,7 @@ import {
   type LocationsByProductIdState,
   type Location,
   type UserLocationState,
-  type UserFormInputState,
+  type ReservationFormValues,
   type UserLocationFulfillmentMethod,
   type UserLocationLocationCode,
 } from '../locations.types';
@@ -84,10 +84,8 @@ export function makeGetUserLocation(): Selector<State, UserLocationState> {
  * Creates the selector that retrieves the fulfillment method from the user location state.
  * @returns {Function}
  */
-export function makeGetUserLocationFulfillmentMethod(): Selector<
-  State,
-  UserLocationFulfillmentMethod
-  > {
+export function makeGetUserLocationFulfillmentMethod():
+  Selector<State, UserLocationFulfillmentMethod> {
   const getUserLocation = makeGetUserLocation();
   return createSelector(
     getUserLocation,
@@ -309,7 +307,7 @@ export function makeIsFulfillmentSelectorDisabled(): Selector<State, boolean> {
  * Creates a selector that retrieves the user's reserve form input.
  * @returns {Function}
  */
-export function makeGetUserFormInput(): Selector<State, UserFormInputState> {
+export function makeGetUserFormInput(): Selector<State, ReservationFormValues> {
   return createSelector(
     getLocationsState,
     getUserData,

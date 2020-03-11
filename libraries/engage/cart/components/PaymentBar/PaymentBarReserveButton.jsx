@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 import { I18n, SurroundPortals, RippleButton } from '@shopgate/engage/components';
-import { FulfillmentSheet } from '@shopgate/engage/locations';
 import {
   CART_CHECKOUT_BUTTON,
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { FulfillmentSheet, STAGE_RESERVE_FORM } from '../../../locations';
 import { CartContext } from '../../cart.context';
 import { button, disabledButton } from './PaymentBarCheckoutButton.style';
 import connect from './PaymentBarReserveButton.connector';
@@ -21,13 +21,19 @@ type Props = {
 function PaymentBarReserveButton({ historyReset }: Props) {
   const { flags: { orderable } } = React.useContext(CartContext);
 
-  const handleClick = React.useCallback(() => {
-    FulfillmentSheet.open((location, orderSuccess) => {
-      if (orderSuccess === true) {
-        historyReset();
-      }
-    }, 1);
-  }, [historyReset]);
+  /**
+   * Handles the click on the button.
+   */
+  function handleClick() {
+    FulfillmentSheet.open({
+      stage: STAGE_RESERVE_FORM,
+      callback: (l, p, orderSuccess) => {
+        if (orderSuccess === true) {
+          historyReset();
+        }
+      },
+    });
+  }
 
   return (
     <SurroundPortals portalName={CART_CHECKOUT_BUTTON} props={{ isActive: orderable }}>

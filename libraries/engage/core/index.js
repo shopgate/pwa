@@ -81,7 +81,13 @@ export * from './constants/geolocationRequest';
 export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
 
 // Helpers
-export * from '@shopgate/pwa-core/helpers';
+export {
+  logger,
+  ajaxUrl,
+  hasSGJavaScriptBridge,
+  useBrowserConnector,
+  logDeprecationMessage,
+} from '@shopgate/pwa-core/helpers';
 export { default as logGroup } from '@shopgate/pwa-core/helpers/logGroup';
 export * from '@shopgate/pwa-core/helpers/version';
 export * from '@shopgate/pwa-common/helpers/data';

@@ -7,7 +7,10 @@ import { CART_ITEM_IMAGE } from '@shopgate/engage/cart';
 import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex } from '@shopgate/engage/core';
 import { ProductImage, ITEM_PATH } from '@shopgate/engage/product';
-import { CartItemProductChangeLocation } from '@shopgate/engage/locations';
+import {
+  CartItemProductChangeLocation,
+  CartChangeFulfillmentMethod,
+} from '@shopgate/engage/locations';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
@@ -43,15 +46,15 @@ const Layout = (props, context) => {
                 specialPrice={props.product.price.special}
               />
               {props.product.price.info && (
-              <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
+                <PriceInfo className={styles.priceInfo} text={props.product.price.info} />
               )}
             </Grid.Item>
             {showTaxDisclaimer && (
-            <Grid.Item
-              className={styles.disclaimerSpacer}
-              grow={0}
-              shrink={0}
-            />
+              <Grid.Item
+                className={styles.disclaimerSpacer}
+                grow={0}
+                shrink={0}
+              />
             )}
           </Grid>
         </Grid.Item>
@@ -71,6 +74,7 @@ const Layout = (props, context) => {
         </Grid.Item>
       </Grid>
       <CartItemProductChangeLocation cartItem={cartItem} registerAction={registerAction} />
+      <CartChangeFulfillmentMethod cartItem={cartItem} registerAction={registerAction} />
     </Fragment>
   );
 };

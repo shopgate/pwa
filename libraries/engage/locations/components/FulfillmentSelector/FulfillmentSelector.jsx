@@ -13,8 +13,8 @@ import {
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
 import FulfillmentSelectorItemDirectShip from './FulfillmentSelectorItemDirectShip';
 import FulfillmentSelectorItemReserve from './FulfillmentSelectorItemReserve';
-import FulfillmentSelectorButtonChangeLocation from './FulfillmentSelectorButtonChangeLocation';
 import FulfillmentSelectorAddToCart from './FulfillmentSelectorAddToCart';
+import { ChangeLocationButton } from '../ChangeLocationButton';
 import connect from './FulfillmentSelector.connector';
 import * as styles from './FulfillmentSelector.style';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
@@ -99,7 +99,10 @@ export const FulfillmentSelector = (props: Props) => {
       }
 
       setIsOpen(true);
-      FulfillmentSheet.open(handleClose, 0, null, changeOnly);
+      FulfillmentSheet.open({
+        callback: handleClose,
+        changeOnly,
+      });
     });
   }, [conditioner, storeFulfillmentMethod, isOpen, location, handleClose]);
 
@@ -144,7 +147,7 @@ export const FulfillmentSelector = (props: Props) => {
                 <div className={styles.pickUpGroupContainer}>
                   <StockInfo location={selectedLocation || location} />
                   {(selection === pickUp) && (
-                    <FulfillmentSelectorButtonChangeLocation
+                    <ChangeLocationButton
                       onClick={() => handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP, true)}
                     />
                   )}

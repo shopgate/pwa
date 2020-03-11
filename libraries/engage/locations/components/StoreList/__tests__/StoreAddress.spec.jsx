@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import FulfillmentContext from '../../context';
+import { FulfillmentContext } from '../../../locations.context';
 import StoreContext from '../Store.context';
 import StoreAddress from '../StoreAddress';
 

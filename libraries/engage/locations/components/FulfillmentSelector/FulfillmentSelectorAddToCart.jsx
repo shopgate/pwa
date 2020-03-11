@@ -5,6 +5,7 @@ import {
   FULFILLMENT_PATH_MULTI_LINE_RESERVE,
   FULFILLMENT_PATH_QUICK_RESERVE,
   PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
+  STAGE_RESERVE_FORM,
 } from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import { FulfillmentPathSelector } from '../FulfillmentPathSelector';
@@ -49,12 +50,19 @@ const FulfillmentSelectorAddToCart = ({
       if (fulfillmentPaths.length > 1) {
         const selectedPath = await promisifiedFulfillmentPathSelector();
 
+        if (selectedPath === '') {
+          return false;
+        }
+
         if (selectedPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
           return true;
         }
 
         if (selectedPath === FULFILLMENT_PATH_QUICK_RESERVE) {
-          FulfillmentSheet.open(null, 1, selectedPath);
+          FulfillmentSheet.open({
+            stage: STAGE_RESERVE_FORM,
+            fulfillmentPath: selectedPath,
+          });
           return false;
         }
 
@@ -63,7 +71,9 @@ const FulfillmentSelectorAddToCart = ({
 
       if (!fulfillmentPaths.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)) {
         // Open reservation form. Stop adding to a cart
-        FulfillmentSheet.open(null, 1);
+        FulfillmentSheet.open({
+          stage: STAGE_RESERVE_FORM,
+        });
         return false;
       }
 
