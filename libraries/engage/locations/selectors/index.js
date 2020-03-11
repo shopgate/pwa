@@ -2,7 +2,7 @@
 import { createSelector, type Selector } from 'reselect';
 import { getProduct } from '@shopgate/engage/product';
 import { getUserData } from '@shopgate/engage/user';
-import { isProductAvailable } from '../helpers';
+import { isProductAvailable } from '../helpers/productInventory';
 import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '../constants';
 import { type State } from '../../types';
 import {
