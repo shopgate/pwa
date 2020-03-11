@@ -1,6 +1,8 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
+import configuration from '@shopgate/pwa-common/collections/Configuration';
+import { PIPELINES } from '@shopgate/pwa-common/constants/Configuration';
 import { SHOPGATE_CART_UPDATE_PRODUCTS } from '../constants/Pipelines';
 import createPipelineErrorList from '../helpers/createPipelineErrorList';
 import { ECART } from '../constants/PipelineErrors';
@@ -16,9 +18,13 @@ import { messagesHaveErrors } from '../helpers';
  */
 function updateProductsInCart(updateData) {
   return (dispatch) => {
+    const {
+      [SHOPGATE_CART_UPDATE_PRODUCTS]: pipeline = SHOPGATE_CART_UPDATE_PRODUCTS,
+    } = configuration.get(PIPELINES, {});
+
     dispatch(updateProducts(updateData));
 
-    const request = new PipelineRequest(SHOPGATE_CART_UPDATE_PRODUCTS)
+    const request = new PipelineRequest(pipeline)
       .setInput({ cartItems: updateData })
       .setResponseProcessed(PROCESS_SEQUENTIAL)
       .setErrorBlacklist(ECART)

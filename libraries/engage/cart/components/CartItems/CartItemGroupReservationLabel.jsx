@@ -1,13 +1,11 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import { i18n } from '@shopgate/engage/core';
 import { LocationIcon } from '@shopgate/engage/components';
-import { type Location } from '@shopgate/engage/locations';
+import { type LocationAware } from '@shopgate/engage/locations/locations.types';
 import { address, addressIcon, title } from './CartItemGroup.style';
 
-type Props = {
-  location?: Location | null,
-}
+type Props = LocationAware;
 
 /**
  * Renders the cart reservation group label.
@@ -33,7 +31,3 @@ export function CartItemGroupReservationLabel({ location }: Props) {
     </div>
   );
 }
-
-CartItemGroupReservationLabel.defaultProps = {
-  location: null,
-};
