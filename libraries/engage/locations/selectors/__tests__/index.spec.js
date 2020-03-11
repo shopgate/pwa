@@ -15,7 +15,7 @@ import {
   makeIsRopeProductOrderable,
   makeGetUserFormInput,
 } from '../index';
-import { isProductAvailable } from '../../helpers';
+import { isProductAvailable } from '../../helpers/productInventory';
 
 jest.mock('@shopgate/engage/product', () => ({
   getProduct: jest.fn(),
@@ -24,7 +24,7 @@ jest.mock('@shopgate/engage/user', () => ({
   getUserData: jest.fn(),
 }));
 
-jest.mock('../../helpers', () => ({
+jest.mock('../../helpers/productInventory', () => ({
   isProductAvailable: jest.fn().mockReturnValue(true),
 }));
 
