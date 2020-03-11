@@ -84,7 +84,8 @@ export function makeGetUserLocation(): Selector<State, UserLocationState> {
  * Creates the selector that retrieves the fulfillment method from the user location state.
  * @returns {Function}
  */
-function makeGetUserLocationFulfillmentMethod(): Selector<State, UserLocationFulfillmentMethod> {
+export function makeGetUserLocationFulfillmentMethod():
+  Selector<State, UserLocationFulfillmentMethod> {
   const getUserLocation = makeGetUserLocation();
   return createSelector(
     getUserLocation,
@@ -94,8 +95,6 @@ function makeGetUserLocationFulfillmentMethod(): Selector<State, UserLocationFul
     }
   );
 }
-
-export { makeGetUserLocationFulfillmentMethod };
 
 /**
  * Creates the selector that retrieves the location code from the user location state.
