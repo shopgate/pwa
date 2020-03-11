@@ -1,5 +1,11 @@
 # Changelog
 
+## [v6.12.1](https://github.com/shopgate/pwa/compare/v6.12.0...v6.12.1) (2020-03-11)
+
+#### :rocket: Enhancement
+* [#943](https://github.com/shopgate/pwa/pull/943) Making hardcoded colors configurable ([@alexbridge](https://github.com/alexbridge))
+
+
 ## [v6.11.0](https://github.com/shopgate/pwa/compare/v6.10.1...v6.11.0) (2020-02-12)
 
 #### :rocket: Enhancement
