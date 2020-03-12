@@ -1,5 +1,7 @@
 // @flow
-import React, { useState, useContext, useMemo } from 'react';
+import React, {
+  useState, useContext, useMemo, useRef, useLayoutEffect,
+} from 'react';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import RadioGroup from '@shopgate/pwa-ui-shared/Form/RadioGroup';
 import RadioGroupItem from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item';
@@ -53,18 +55,10 @@ export function ReserveForm() {
   const complete = (values: ReservationFormValues) => {
     const response = values;
 
-    if (response.firstName2 === '') {
-      response.firstName2 = response.firstName;
-    }
-    if (response.lastName2 === '') {
-      response.lastName2 = response.lastName;
-    }
-    if (response.cellPhone2 === '') {
-      response.cellPhone2 = response.cellPhone;
-    }
-    if (response.email2 === '') {
-      response.email2 = response.email;
-    }
+    response.firstName2 = response.firstName2 || response.firstName;
+    response.lastName2 = response.lastName2 || response.lastName;
+    response.cellPhone2 = response.cellPhone2 || response.cellPhone;
+    response.email2 = response.email2 || response.email;
 
     sendReservation(response);
   };
@@ -72,6 +66,13 @@ export function ReserveForm() {
   const {
     values, handleChange, handleSubmit, changed, valid, validationErrors = {},
   } = useFormState(initialState, complete, validationConstraints);
+
+  const someoneElseRef = useRef(null);
+  useLayoutEffect(() => {
+    if (picker === 'someoneelse') {
+      someoneElseRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [picker, someoneElseRef]);
 
   return (
     <form onSubmit={handleSubmit} className={form}>
@@ -127,7 +128,7 @@ export function ReserveForm() {
         </RadioGroup>
       </div>
       {(picker === 'someoneelse') && (
-        <fieldset className={fieldset}>
+        <fieldset className={fieldset} ref={someoneElseRef}>
           <TextField
             name="firstName2"
             value={values.firstName2}
