@@ -84,22 +84,6 @@
       "not": "Atualmente indisponível",
       "not_search_similar": "{name} indisponível. Procurar produtos similares?"
     },
-    "fulfillment_selector": {
-      "heading": "Availability",
-      "direct_ship": "Direct ship",
-      "pick_up_in_store": "Pick up in store",
-      "error": {
-        "direct_ship_not_orderable": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
-        "reserve_not_orderable": "This combination is not available at your chosen location, select a different location or other variants."
-      }
-    },
-    "location_stock_info": {
-      "pick_up_at": "at {storeName}",
-      "available": "{visibleInventory} in stock",
-      "limitedAvailability": "Only {visibleInventory} left in stock",
-      "notAvailable": "Pick up within 2-3 days",
-      "customAvailability": "Not available in this store"
-    },
     "relations": {
       "showMore": "Mostrar tudo"
     },
@@ -150,7 +134,23 @@
     "choose_reservation_type": "Choose Reservation Type",
     "quick_reserve": "Quick reservation",
     "reserve_to_cart": "Reserve to cart",
-    "change_fulfillment_method": "Change fulfillment method"
+    "change_fulfillment_method": "Change fulfillment method",
+    "fulfillment": {
+      "heading": "Availability",
+      "direct_ship": "Direct ship",
+      "pick_up_in_store": "Pick up in store",
+      "error": {
+        "direct_ship": "This combination is not available for direct ship, select a different option or check if it's available at a store near you.",
+        "reserve": "This combination is not available at your chosen location, select a different location or other variants."
+      }
+    },
+    "stock_info": {
+      "pick_up_at": "at {storeName}",
+      "available": "{visibleInventory} in stock",
+      "limitedAvailability": "Only {visibleInventory} left in stock",
+      "notAvailable": "Pick up within 2-3 days",
+      "customAvailability": "Not available in this store"
+    }
   },
   "category": {
     "error": {
