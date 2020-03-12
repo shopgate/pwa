@@ -13,7 +13,8 @@
     "cover": "jest --coverage",
     "e2e": "cypress open -P ./e2e",
     "e2e:checkout": "cypress open -P ./e2e/extensions/checkout",
-    "e2e:user": "cypress open -P ./e2e/extensions/user"
+    "e2e:user": "cypress open -P ./e2e/extensions/user",
+    "postinstall": "npx rimraf ../../.cache-loader"
   },
   "dependencies": {
     "@babel/core": "^7.5.5",

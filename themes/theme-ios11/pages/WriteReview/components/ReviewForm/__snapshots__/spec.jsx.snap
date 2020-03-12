@@ -444,7 +444,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -615,7 +615,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -783,7 +783,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -865,13 +865,13 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -1368,7 +1368,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -1539,7 +1539,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -1707,7 +1707,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -1789,13 +1789,13 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -2557,7 +2557,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -2728,7 +2728,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -2896,7 +2896,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -2978,13 +2978,13 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -3687,7 +3687,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -3858,7 +3858,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -4026,7 +4026,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -4108,13 +4108,13 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -4817,7 +4817,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -4988,7 +4988,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -5156,7 +5156,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -5238,13 +5238,13 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -5947,7 +5947,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -6118,7 +6118,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -6374,13 +6374,13 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -7083,7 +7083,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -7254,7 +7254,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -7422,7 +7422,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -7504,13 +7504,13 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}
@@ -8014,7 +8014,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -8185,7 +8185,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -8353,7 +8353,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="css-1tpmuef"
                       style={
                         Object {
-                          "borderBottomColor": undefined,
+                          "borderBottomColor": "#fa5400",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -8435,13 +8435,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-187rja2 "
+                          className="css-19m2k92 "
                           disabled={false}
                           onClick={null}
                           testId="sendReviewButton"
                         >
                           <button
-                            className="css-187rja2  css-1rn65c0"
+                            className="css-19m2k92  css-1rn65c0"
                             data-test-id="sendReviewButton"
                             disabled={false}
                             onClick={null}

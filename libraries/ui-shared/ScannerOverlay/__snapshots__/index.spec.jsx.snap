@@ -18,7 +18,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
         props={null}
       >
         <div
-          className="css-64y2bs"
+          className="css-njxfh"
         >
           <div />
         </div>
@@ -64,12 +64,12 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
           }
         >
           <Grid
-            className="css-kwl6fj"
+            className="css-1je6emb"
             component="ul"
             wrap={false}
           >
             <ul
-              className="css-kwl6fj css-h7r55a"
+              className="css-1je6emb css-h7r55a"
             >
               <GridItem
                 className="css-1uot7vp"

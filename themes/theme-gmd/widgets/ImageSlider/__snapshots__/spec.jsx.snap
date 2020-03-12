@@ -63,7 +63,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-xvw7af"
+          containerClass="css-18n9gca"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -203,7 +203,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
           zoom={false}
         >
           <div
-            className="css-xvw7af"
+            className="css-18n9gca"
           >
             <div
               className="swiper-wrapper"
@@ -510,7 +510,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-xvw7af"
+          containerClass="css-18n9gca"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -650,7 +650,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
           zoom={false}
         >
           <div
-            className="css-xvw7af"
+            className="css-18n9gca"
           >
             <div
               className="swiper-wrapper"
@@ -799,7 +799,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           allowSlideNext={true}
           allowSlidePrev={true}
           autoplay={false}
-          containerClass="css-xvw7af"
+          containerClass="css-18n9gca"
           freeMode={false}
           getSwiper={[Function]}
           initialSlide={0}
@@ -939,7 +939,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
           zoom={false}
         >
           <div
-            className="css-xvw7af"
+            className="css-18n9gca"
           >
             <div
               className="swiper-wrapper"

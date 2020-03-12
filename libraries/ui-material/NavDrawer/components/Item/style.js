@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const srOnly = css({
   clip: 'rect(1px, 1px, 1px, 1px)',
@@ -39,7 +40,7 @@ const iconWrapper = css({
 
 const icon = css({
   boxSizing: 'content-box',
-  color: '#747474',
+  color: themeColors.gray,
   padding: '0 32px 0 16px',
 }).toString();
 

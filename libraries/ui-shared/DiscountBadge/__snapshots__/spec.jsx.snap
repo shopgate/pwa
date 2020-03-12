@@ -5,7 +5,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
   data-test-id="foo"
 >
   <Translate
-    className="css-pzju2o "
+    className="css-1815nu9 "
     params={
       Array [
         null,
@@ -23,7 +23,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
   data-test-id="SAVE {0}%"
 >
   <Translate
-    className="css-pzju2o "
+    className="css-1815nu9 "
     params={
       Array [
         20,

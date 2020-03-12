@@ -1,21 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Image from '@shopgate/pwa-common/components/Image';
-import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import styles from './style';
 import ProductImage from './index';
 
 jest.mock('../../../core/hocs/withWidgetSettings');
-
-let mockHideProductImageShadow;
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hideProductImageShadow() { return mockHideProductImageShadow; },
-  themeConfig: {
-    colors: {},
-    shadows: mockThemeConfig.shadows,
-  },
-}));
+jest.mock('@shopgate/pwa-common/helpers/config');
 
 describe('<ProductImage />', () => {
   it('should render a placeholder if no src prop is provided', () => {
@@ -35,7 +27,7 @@ describe('<ProductImage />', () => {
   });
 
   it('should not apply an inner shadow to the placeholder if turned off via the app config', () => {
-    mockHideProductImageShadow = true;
+    jest.spyOn(appConfig, 'hideProductImageShadow', 'get').mockReturnValue(true);
     const wrapper = shallow(<ProductImage />).dive();
 
     expect(wrapper).toMatchSnapshot();
@@ -43,7 +35,7 @@ describe('<ProductImage />', () => {
   });
 
   it('should not apply an inner shadow to the image if turned off via the app config', () => {
-    mockHideProductImageShadow = true;
+    jest.spyOn(appConfig, 'hideProductImageShadow', 'get').mockReturnValue(true);
     const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
 
     expect(wrapper).toMatchSnapshot();

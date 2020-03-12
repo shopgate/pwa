@@ -24,7 +24,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
     <button
       aria-hidden={false}
       aria-label={null}
-      className="null css-68omm3 css-nil"
+      className="null css-68omm3 css-16iirry"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -38,7 +38,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
         }
       >
         <IndicatorCircle
-          color="#5ccee3"
+          color="#fff"
           paused={false}
           size={32}
           strokeWidth={5}
@@ -52,7 +52,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle
-              className="css-1e1be6z"
+              className="css-iisjyj"
               cx="50"
               cy="50"
               r="20"
@@ -186,7 +186,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
     <button
       aria-hidden={false}
       aria-label={null}
-      className="null css-68omm3 css-nil"
+      className="null css-68omm3 css-16iirry"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
@@ -317,7 +317,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
     <button
       aria-hidden={false}
       aria-label={null}
-      className="null css-68omm3 css-nil"
+      className="null css-68omm3 css-oo1pf9"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
