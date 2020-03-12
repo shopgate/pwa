@@ -1,7 +1,5 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors, variables } = themeConfig;
+import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const sliderContainer = css({
   marginLeft: 'auto',
@@ -53,12 +51,12 @@ const priceStriked = css({
 
 const price = css({
   ...priceBase,
-  color: colors.primary,
+  color: themeColors.primary,
   fontSize: '1rem',
 }).toString();
 
 const card = css({
-  background: '#FFF',
+  background: themeColors.light,
   height: '100%',
   margin: '0px 8px',
   borderRadius: 11,
@@ -66,7 +64,7 @@ const card = css({
 
 const headline = css({
   fontSize: 18,
-  margin: `0 0 ${variables.gap.big}px`,
+  margin: `0 0 ${themeVariables.gap.big}px`,
   textAlign: 'center',
 }).toString();
 

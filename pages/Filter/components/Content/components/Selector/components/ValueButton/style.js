@@ -1,10 +1,8 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 export const inactive = css({
-  border: '1px solid #ebebeb',
+  border: `1px solid ${themeColors.darkGray}`,
   borderRadius: 2,
   color: 'inherit',
   height: 42,
@@ -22,6 +20,6 @@ export const inactive = css({
 });
 
 export const active = css(inactive, {
-  borderColor: colors.accent,
-  color: colors.accent,
+  borderColor: themeColors.accent,
+  color: themeColors.accent,
 });
