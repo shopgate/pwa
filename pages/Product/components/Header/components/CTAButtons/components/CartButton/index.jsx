@@ -6,7 +6,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { I18n } from '@shopgate/engage/components';
 import { ProductContext } from '@shopgate/engage/product';
-import { PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP } from '@shopgate/engage/locations';
+import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import Icon from './components/Icon';
 import connect from './connector';
 import inject from './injector';
@@ -116,7 +116,7 @@ class CartButton extends Component {
       // Add the user location for ROPIS if it is set.
       if (
         userLocation !== null
-        && userLocation.fulfillmentMethod !== PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP
+        && userLocation.fulfillmentMethod !== DIRECT_SHIP
         && hasFulfillmentMethods
       ) {
         addToCartData.fulfillment = {
