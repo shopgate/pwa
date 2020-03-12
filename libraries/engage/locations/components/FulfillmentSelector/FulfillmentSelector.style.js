@@ -1,6 +1,4 @@
 import { css } from 'glamor';
-import classNames from 'classnames';
-import radioGroupStyles from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item/style';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { variables: { gap: { big: bigGap = 16 } = {} } = {} } = themeConfig;
@@ -33,13 +31,6 @@ export const radioItemLabelSpacer = css({
   whiteSpace: 'pre',
 }).toString();
 
-export const radioGroupItemLabel = classNames(radioGroupStyles.label, css({
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-between',
-  alignItems: 'baseline',
-}).toString());
-
 export const radioItemLabel = css({
   fontSize: '0.875rem',
 }).toString();
@@ -47,5 +38,4 @@ export const radioItemLabel = css({
 export const pickUpGroupContainer = css({
   display: 'flex',
   flexDirection: 'column',
-  textAlign: 'right',
 });

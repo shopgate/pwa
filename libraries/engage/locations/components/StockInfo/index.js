@@ -1,1 +1,2 @@
-export { default as StockInfo } from './StockInfo';
+// @flow
+export { StockInfo } from './StockInfo';

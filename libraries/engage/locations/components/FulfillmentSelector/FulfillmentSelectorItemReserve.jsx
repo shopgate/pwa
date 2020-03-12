@@ -1,18 +1,27 @@
-import React, { Fragment, memo } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import { i18n } from '@shopgate/engage/core';
 import { Availability } from '@shopgate/engage/components';
 import { AVAILABILITY_STATE_ALERT } from '@shopgate/engage/product';
 import { radioItemLabel } from './FulfillmentSelector.style';
 import { isProductAvailable } from '../../helpers';
+import { type Location } from '../../locations.types';
+
+type Props = {
+  children: React.Node,
+  selected: boolean,
+  location?: Location | null,
+}
 
 /**
- * @param {ReactNode} children .
- * @param {boolean} selected .
- * @param {Object} location .
+ * Renders the reserve item of the fulfillment selector.
+ * @param {Object} props The component props.
+ * @property {React.Node} props.children The component children.
+ * @property {boolean} props.selected Whether the item is selected.
+ * @property {Object|null} props.location The product location.
  * @returns {JSX}
  */
-const FulfillmentSelectorItemReserve = ({ children, selected, location }) => {
+export const FulfillmentSelectorItemReserve = ({ children, selected, location }: Props) => {
   if (!location) {
     return null;
   }
@@ -22,26 +31,18 @@ const FulfillmentSelectorItemReserve = ({ children, selected, location }) => {
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       <Availability
         className={radioItemLabel}
         showWhenAvailable
-        text={i18n.text('product.fulfillment_selector.error.reserve_not_orderable')}
+        text={i18n.text('locations.fulfillment.error.reserve')}
         state={AVAILABILITY_STATE_ALERT}
       />
       {children}
-    </Fragment>
+    </React.Fragment>
   );
-};
-
-FulfillmentSelectorItemReserve.propTypes = {
-  children: PropTypes.node.isRequired,
-  selected: PropTypes.bool.isRequired,
-  location: PropTypes.shape(),
 };
 
 FulfillmentSelectorItemReserve.defaultProps = {
   location: null,
 };
-
-export default memo(FulfillmentSelectorItemReserve);

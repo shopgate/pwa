@@ -1,25 +1,27 @@
 // @flow
-import { hot } from 'react-hot-loader/root';
 import React, { useCallback, useState } from 'react';
-import { I18n, SurroundPortals, RadioGroup } from '@shopgate/engage/components';
-import { Availability } from '@shopgate/engage/product';
+import { SurroundPortals, RadioGroup } from '@shopgate/engage/components';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import { StockInfo } from '../StockInfo';
 import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
+  DIRECT_SHIP,
+  IN_STORE_PICKUP,
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
 import FulfillmentSelectorItem from './FulfillmentSelectorItem';
 import FulfillmentSelectorItemDirectShip from './FulfillmentSelectorItemDirectShip';
-import FulfillmentSelectorItemReserve from './FulfillmentSelectorItemReserve';
+import { FulfillmentSelectorItemReserve } from './FulfillmentSelectorItemReserve';
 import FulfillmentSelectorAddToCart from './FulfillmentSelectorAddToCart';
+import { FulfillmentSelectorTitle } from './FulfillmentSelectorTitle';
 import { ChangeLocationButton } from '../ChangeLocationButton';
 import connect from './FulfillmentSelector.connector';
 import * as styles from './FulfillmentSelector.style';
 import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
 
 type Props = OwnProps & StateProps & DispatchProps;
+
+const directShip = 'locations.fulfillment.direct_ship';
+const pickUp = 'locations.fulfillment.pick_up_in_store';
 
 /**
  * Renders a fulfillment selector box for fulfillment methods direct ship and pick up in store,
@@ -40,17 +42,10 @@ export const FulfillmentSelector = (props: Props) => {
     storeFulfillmentMethod,
     userFulfillmentMethod,
   } = props;
-  const directShip = 'product.fulfillment_selector.direct_ship';
-  const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
-  const [selection, setSelection] = useState(
-    (
-      userFulfillmentMethod === PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
-      && !disabled
-    )
-      ? pickUp
-      : directShip
-  );
+  const isInStoreAndActive = userFulfillmentMethod === IN_STORE_PICKUP && !disabled;
+
+  const [selection, setSelection] = useState(isInStoreAndActive ? pickUp : directShip);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -79,11 +74,7 @@ export const FulfillmentSelector = (props: Props) => {
         return;
       }
 
-      let method = PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP;
-
-      if (elementName === pickUp) {
-        method = PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP;
-      }
+      const method = (elementName === pickUp) ? IN_STORE_PICKUP : DIRECT_SHIP;
 
       setSelection(elementName);
       storeFulfillmentMethod(method);
@@ -117,18 +108,13 @@ export const FulfillmentSelector = (props: Props) => {
    * Click handler for pick up in store.
    */
   function handleChangePickup() {
-    handleChange(PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP, true);
+    handleChange(IN_STORE_PICKUP, true);
   }
 
   return (
     <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR} portalProps={{ productCode }}>
-      <div
-        className={styles.container}
-        data-test-id="product-fulfillment-selector"
-      >
-        <div role="heading" aria-hidden className={styles.title}>
-          <I18n.Text string="product.fulfillment_selector.heading" />
-        </div>
+      <div className={styles.container} data-test-id="product-fulfillment-selector">
+        <FulfillmentSelectorTitle />
         <RadioGroup
           name="product.fulfillment_selector"
           value={selection}
@@ -141,12 +127,7 @@ export const FulfillmentSelector = (props: Props) => {
             <FulfillmentSelectorItemDirectShip
               selected={selection === directShip}
               productId={productCode}
-            >
-              <Availability
-                productId={productCode}
-                fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
-              />
-            </FulfillmentSelectorItemDirectShip>
+            />
           </FulfillmentSelectorItem>
           <FulfillmentSelectorItem name={pickUp}>
             {!disabled && (
@@ -184,4 +165,4 @@ FulfillmentSelector.defaultProps = {
   storeFulfillmentMethod() { },
 };
 
-export default hot(connect(FulfillmentSelector));
+export default connect(FulfillmentSelector);

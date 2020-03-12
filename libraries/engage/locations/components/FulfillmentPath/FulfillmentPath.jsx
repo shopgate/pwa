@@ -3,10 +3,7 @@ import * as React from 'react';
 import { Availability } from '@shopgate/engage/product';
 import { RadioGroup } from '../../../components';
 import { useFulfillmentState } from '../../locations.hooks';
-import {
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
-} from '../../constants';
+import { DIRECT_SHIP, IN_STORE_PICKUP } from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { container, pickUpContainer, radioGroup } from './FulfillmentPath.style';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
@@ -32,9 +29,7 @@ export function FulfillmentPath() {
  * @param {string} elementName The name of the selected element.
  */
   function handleChange(elementName) {
-    const method = elementName === pickUp
-      ? PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
-      : PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP;
+    const method = elementName === pickUp ? IN_STORE_PICKUP : DIRECT_SHIP;
 
     setSelection(elementName);
     changeFulfillment(method, cartItem);
@@ -51,10 +46,7 @@ export function FulfillmentPath() {
         direction="column"
       >
         <FulfillmentPathItem name={directShip}>
-          <Availability
-            productId={product.id}
-            fulfillmentSelection={PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP}
-          />
+          <Availability productId={product.id} fulfillmentSelection={DIRECT_SHIP} />
         </FulfillmentPathItem>
         <FulfillmentPathItem name={pickUp}>
           <div className={pickUpContainer}>

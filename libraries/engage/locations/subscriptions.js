@@ -9,7 +9,7 @@ import {
 import { configuration, PIPELINES, receiveCoreConfig$ } from '@shopgate/engage/core';
 import { fetchCart } from '../cart';
 import {
-  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
+  MULTI_LINE_RESERVE,
   SHOPGATE_STOREFRONT_GET_CART,
   SHOPGATE_STOREFRONT_UPDATE_CART,
 } from './constants';
@@ -42,7 +42,7 @@ function locations(subscribe) {
       },
     } = action;
 
-    if (enabledFulfillmentMethodSelectionForEngage.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)) {
+    if (enabledFulfillmentMethodSelectionForEngage.includes(MULTI_LINE_RESERVE)) {
       // 1. Exchange pipeline for get/update cart
       configuration.update(PIPELINES, pipelines => ({
         ...pipelines,

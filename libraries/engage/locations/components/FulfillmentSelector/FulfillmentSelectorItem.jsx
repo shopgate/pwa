@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, RadioGroupItem as RadioItem } from '../../../components';
-import * as styles from './FulfillmentSelector.style';
+import { i18n } from '@shopgate/engage/core';
+import { RadioGroupItem as RadioItem } from '../../../components';
+import { labelContainer, label } from './FulfillmentSelectorItem.style';
 
 /**
  * Renders a RadioItem element to be used by the FulfillmentSelector component.
@@ -15,8 +16,10 @@ const FulfillmentSelectorItem = ({ name, children, ...restProps }) => (
   <RadioItem
     name={name}
     label={(
-      <div className={styles.radioGroupItemLabel}>
-        <I18n.Text string={name} />
+      <div className={labelContainer}>
+        <div className={label}>
+          {i18n.text(name)}
+        </div>
         {children}
       </div>
     )}

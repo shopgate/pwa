@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import { css } from 'glamor';
 import classNames from 'classnames';
 import defaultsDeep from 'lodash/defaultsDeep';
@@ -10,13 +10,20 @@ import { getAvailabilitySettings } from '../../helpers';
 import defaultSettings from './StockInfo.defaultSettings';
 import Inventory from './StockInfoInventory';
 import StoreName from './StockInfoStoreName';
+import { type Location } from '../../locations.types';
+
+type Props = {
+  location: Location,
+  className?: string | {} | null,
+  showStoreName?: boolean,
+}
 
 /**
  * Renders visible stock information based on the given location.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-function StockInfo({ location, className, showStoreName }) {
+export function StockInfo({ location, className, showStoreName }: Props) {
   const { locationStockInfo } = getThemeSettings('product') || {};
   const settings = defaultsDeep(locationStockInfo, defaultSettings);
 
@@ -27,22 +34,22 @@ function StockInfo({ location, className, showStoreName }) {
     color: availabilityTextColor,
     fontSize: '0.875rem',
     margin: 0,
-  });
+  }).toString();
 
-  let displayCapitalized = location.productInventory && location.productInventory.visible === null;
-  displayCapitalized = displayCapitalized || !availabilityText;
+  const displayCapitalized = React.useMemo(() => (
+    location.productInventory && location.productInventory.visible === null
+  ) || !availabilityText, [availabilityText, location.productInventory]);
+
+  const portalProps = React.useMemo(() => ({
+    location,
+    className,
+    availabilityText,
+    availabilityTextColor,
+  }), [availabilityText, availabilityTextColor, className, location]);
 
   return (
-    <SurroundPortals
-      portalName={PRODUCT_LOCATION_STOCK_INFO}
-      portalProps={{
-        location,
-        className,
-        availabilityText,
-        availabilityTextColor,
-      }}
-    >
-      <span className={classNames(`${defaultClassName}`, `${className}`)}>
+    <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO} portalProps={portalProps}>
+      <span className={classNames(defaultClassName, css(className).toString())}>
         <Inventory
           availabilityText={availabilityText}
           location={location}
@@ -50,7 +57,7 @@ function StockInfo({ location, className, showStoreName }) {
           aboveMaxExtension={settings.aboveMaxExtension}
         />
         <StoreName
-          name={showStoreName ? location.name : ''}
+          name={showStoreName && location.name}
           displayCapitalized={displayCapitalized}
         />
       </span>
@@ -58,23 +65,7 @@ function StockInfo({ location, className, showStoreName }) {
   );
 }
 
-StockInfo.propTypes = {
-  location: PropTypes.shape({
-    name: PropTypes.string,
-    productInventory: PropTypes.shape({
-      visible: PropTypes.number,
-    }),
-  }).isRequired,
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape(),
-  ]),
-  showStoreName: PropTypes.bool,
-};
-
 StockInfo.defaultProps = {
-  className: '',
+  className: null,
   showStoreName: true,
 };
-
-export default StockInfo;

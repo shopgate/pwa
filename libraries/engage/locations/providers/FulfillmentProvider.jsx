@@ -12,11 +12,11 @@ import {
   STAGE_RESPONSE_SUCCESS,
   STAGE_RESPONSE_ERROR,
   STAGE_FULFILLMENT_METHOD,
-  FULFILLMENT_PATH_QUICK_RESERVE,
-  FULFILLMENT_PATH_MULTI_LINE_RESERVE,
-  PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP,
-  PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP,
-  PRODUCT_FULFILLMENT_METHOD_ROPIS,
+  QUICK_RESERVE,
+  MULTI_LINE_RESERVE,
+  IN_STORE_PICKUP,
+  DIRECT_SHIP,
+  ROPIS,
 } from '../constants';
 import {
   type Location,
@@ -184,7 +184,7 @@ function FulfillmentProvider(props: Props) {
     }
 
     const fulfillment = {
-      method: PRODUCT_FULFILLMENT_METHOD_ROPIS, // TODO: make this dynamic.
+      method: ROPIS, // TODO: make this dynamic.
       location: {
         code: location.code,
         name: location.name || '',
@@ -237,11 +237,11 @@ function FulfillmentProvider(props: Props) {
           return;
         }
 
-        if (method === FULFILLMENT_PATH_QUICK_RESERVE) {
+        if (method === QUICK_RESERVE) {
           handleQuickReservation();
         }
 
-        if (method === FULFILLMENT_PATH_MULTI_LINE_RESERVE) {
+        if (method === MULTI_LINE_RESERVE) {
           handleMultilineReservation(location);
         }
       });
@@ -249,14 +249,14 @@ function FulfillmentProvider(props: Props) {
     }
 
     if (
-      fulfillmentPath === FULFILLMENT_PATH_MULTI_LINE_RESERVE
-      && fulfillmentPaths.includes(FULFILLMENT_PATH_MULTI_LINE_RESERVE)
+      fulfillmentPath === MULTI_LINE_RESERVE
+      && fulfillmentPaths.includes(MULTI_LINE_RESERVE)
     ) {
       handleMultilineReservation(location);
       return;
     }
 
-    if (fulfillmentPath === FULFILLMENT_PATH_QUICK_RESERVE) {
+    if (fulfillmentPath === QUICK_RESERVE) {
       handleQuickReservation();
     }
   }
@@ -271,15 +271,15 @@ function FulfillmentProvider(props: Props) {
     setCartItem(item);
 
     if (
-      method === PRODUCT_FULFILLMENT_METHOD_IN_STORE_PICKUP
+      method === IN_STORE_PICKUP
       && (item.fulfillment === null || item.fulfillment.method === 'DIRECT_SHIP')
     ) {
-      setFulfillmentPath(FULFILLMENT_PATH_MULTI_LINE_RESERVE);
+      setFulfillmentPath(MULTI_LINE_RESERVE);
       setStage(STAGE_SELECT_STORE);
       return;
     }
 
-    if (method === PRODUCT_FULFILLMENT_METHOD_DIRECT_SHIP) {
+    if (method === DIRECT_SHIP) {
       updateProductsInCart([{
         quantity: 1,
         cartItemId: item.id,

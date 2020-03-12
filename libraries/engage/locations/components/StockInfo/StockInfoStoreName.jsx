@@ -16,7 +16,7 @@ function StoreName({ name, displayCapitalized }) {
 
   return (
     <I18n.Text
-      string="product.location_stock_info.pick_up_at"
+      string="locations.stock_info.pick_up_at"
       params={{ storeName: name }}
       transform={displayCapitalized ? capitalize : null}
     />

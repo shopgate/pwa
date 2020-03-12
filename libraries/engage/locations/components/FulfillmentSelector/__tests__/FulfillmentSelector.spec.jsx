@@ -1,8 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {
-  PRODUCT_FULFILLMENT_METHOD_ROPIS,
-} from '../../../constants';
+import { ROPIS } from '../../../constants';
 import { FulfillmentSheet } from '../../FulfillmentSheet';
 import { FulfillmentSelector } from '../FulfillmentSelector';
 
@@ -47,7 +45,7 @@ describe('<FulfillmentSelector />', () => {
         }}
         conditioner={conditioner}
         shopFulfillmentMethods={[
-          PRODUCT_FULFILLMENT_METHOD_ROPIS,
+          ROPIS,
         ]}
         fulfillmentPaths={[]}
         disabled={false}
@@ -67,7 +65,7 @@ describe('<FulfillmentSelector />', () => {
         location={{}}
         conditioner={conditioner}
         shopFulfillmentMethods={[
-          PRODUCT_FULFILLMENT_METHOD_ROPIS,
+          ROPIS,
         ]}
         disabled={false}
       />

@@ -2,7 +2,7 @@
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import { updateProductsInCart } from '@shopgate/engage/cart';
-import { PRODUCT_FULFILLMENT_METHOD_ROPIS } from '../../constants';
+import { ROPIS } from '../../constants';
 import { fetchProductLocations } from '../../actions';
 import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
 
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): DispatchProps => ({
       cartItemId,
       quantity,
       fulfillment: {
-        method: PRODUCT_FULFILLMENT_METHOD_ROPIS,
+        method: ROPIS,
         location: {
           code: location.code,
           name: location.name,
