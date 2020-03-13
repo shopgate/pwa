@@ -1,15 +1,15 @@
 // @flow
 import React from 'react';
 import { i18n } from '@shopgate/engage/core';
-import { title } from './FulfillmentSelector.style';
+import { container } from './FulfillmentSelectorHeader.style';
 
 /**
  * Renders the fulfillment selector title.
  * @returns {JSX}
  */
-export function FulfillmentSelectorTitle() {
+export function FulfillmentSelectorHeader() {
   return (
-    <div role="heading" aria-hidden className={title}>
+    <div role="heading" aria-hidden className={container}>
       {i18n.text('locations.fulfillment.heading')}
     </div>
   );

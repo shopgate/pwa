@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import {
   makeGetEnabledFulfillmentMethods,
+  makeGetFulfillmentPaths,
 } from '../../../core/config';
 import {
   makeIsFulfillmentSelectorDisabled,
@@ -18,6 +19,7 @@ import { type OwnProps, type StateProps, type DispatchProps } from './Fulfillmen
  * @return {Object} The extended component props.
  */
 function makeMapStateToProps() {
+  const getFulfillmentPaths = makeGetFulfillmentPaths();
   const getUserLocation = makeGetUserLocation();
   const isFulfillmentSelectorDisabled = makeIsFulfillmentSelectorDisabled();
   const getProductLocation = makeGetProductLocation(true);
@@ -30,6 +32,7 @@ function makeMapStateToProps() {
    * @returns {Object}
    */
   return (state, props) => ({
+    fulfillmentPaths: getFulfillmentPaths(state),
     shopFulfillmentMethods: getEnabledFulfillmentMethods(state),
     userFulfillmentMethod: getUserLocationFulfillmentMethod(state, props),
     location: getProductLocation(state, props) || getUserLocation(state),

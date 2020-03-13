@@ -11,7 +11,7 @@ import { I18n } from '../../../components';
  * @param {string} props.aboveMaxExtension The component props.
  * @return {JSX}
  */
-function Inventory(props) {
+export function StockInfoInventory(props) {
   const {
     availabilityText, location, maxNumberVisible, aboveMaxExtension,
   } = props;
@@ -39,7 +39,7 @@ function Inventory(props) {
   );
 }
 
-Inventory.propTypes = {
+StockInfoInventory.propTypes = {
   aboveMaxExtension: PropTypes.string,
   availabilityText: PropTypes.string,
   location: PropTypes.shape({
@@ -51,11 +51,9 @@ Inventory.propTypes = {
   maxNumberVisible: PropTypes.number,
 };
 
-Inventory.defaultProps = {
+StockInfoInventory.defaultProps = {
   aboveMaxExtension: '',
   availabilityText: '',
   location: null,
   maxNumberVisible: null,
 };
-
-export default Inventory;

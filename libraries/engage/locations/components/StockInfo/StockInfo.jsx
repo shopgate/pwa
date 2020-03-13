@@ -8,7 +8,7 @@ import { SurroundPortals } from '../../../components';
 import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
 import { getAvailabilitySettings } from '../../helpers';
 import defaultSettings from './StockInfo.defaultSettings';
-import Inventory from './StockInfoInventory';
+import { StockInfoInventory } from './StockInfoInventory';
 import StoreName from './StockInfoStoreName';
 import { type Location } from '../../locations.types';
 
@@ -50,14 +50,14 @@ export function StockInfo({ location, className, showStoreName }: Props) {
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO} portalProps={portalProps}>
       <span className={classNames(defaultClassName, css(className).toString())}>
-        <Inventory
+        <StockInfoInventory
           availabilityText={availabilityText}
           location={location}
           maxNumberVisible={settings.maxNumberOfVisibleInventory}
           aboveMaxExtension={settings.aboveMaxExtension}
         />
         <StoreName
-          name={showStoreName && location.name}
+          name={showStoreName ? location.name : null}
           displayCapitalized={displayCapitalized}
         />
       </span>

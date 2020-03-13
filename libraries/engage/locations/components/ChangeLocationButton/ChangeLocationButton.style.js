@@ -2,9 +2,9 @@
 import { css } from 'glamor';
 
 export const button = css({
-  fontSize: '0.875rem !important',
+  fontSize: '0.75rem !important',
   textAlign: 'right',
-  padding: '8px 0 !important',
+  padding: '4px 0 !important',
 }).toString();
 
 export const ripple = css({

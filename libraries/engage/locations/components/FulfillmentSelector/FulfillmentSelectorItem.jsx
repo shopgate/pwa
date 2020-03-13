@@ -1,39 +1,68 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
-import { RadioGroupItem as RadioItem } from '../../../components';
-import { labelContainer, label } from './FulfillmentSelectorItem.style';
+// @flow
+import * as React from 'react';
+import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
+import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
+import { type Selection } from './FulfillmentSelector.types';
+import {
+  radioContainer,
+  activeIcon,
+  activeIconDisabled,
+  inactiveIcon,
+  inactiveIconDisabled,
+  radio,
+  content,
+} from './FulfillmentSelectorItem.style';
+import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
+
+type Props = {
+  name: Selection,
+  children: React.Node,
+  onChange: (name: Selection) => Promise<void>,
+  disabled?: boolean,
+}
 
 /**
- * Renders a RadioItem element to be used by the FulfillmentSelector component.
- * This component is meant to be rendered as child of a RadioGroup.
- * @param {Object} props All props required by the RadioGroupItem component to work.
- * @param {string} props.name The item to be rendered and identified by on selection.
- * @param {JSX} props.children The child components to be rendered besides the label.
+ * Renders a fulfillment selector radio item.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
-const FulfillmentSelectorItem = ({ name, children, ...restProps }) => (
-  <RadioItem
-    name={name}
-    label={(
-      <div className={labelContainer}>
-        <div className={label}>
-          {i18n.text(name)}
-        </div>
+export function FulfillmentSelectorItem(props: Props) {
+  const {
+    name, children, onChange, disabled,
+  } = props;
+  const {
+    selection,
+  } = useFulfillmentSelectorState();
+  const checked = selection === name;
+
+  /**
+   * Handle the change to the radio item.
+   * @param {Object} event The change event.
+   */
+  function handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
+    event.preventDefault();
+
+    if (disabled) {
+      return;
+    }
+
+    onChange(name);
+  }
+
+  return (
+    <label htmlFor={name} className={radioContainer} onClick={handleChange}>
+      {checked
+        ? <CheckedIcon className={disabled ? activeIconDisabled : activeIcon} />
+        : <UncheckedIcon className={disabled ? inactiveIconDisabled : inactiveIcon} />
+      }
+      <input type="radio" checked={checked} name={name} className={radio} readOnly />
+      <div className={content}>
         {children}
       </div>
-    )}
-    {...restProps}
-  />
-);
-
-FulfillmentSelectorItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  children: PropTypes.node,
-};
+    </label>
+  );
+}
 
 FulfillmentSelectorItem.defaultProps = {
-  children: null,
+  disabled: false,
 };
-
-export default memo(FulfillmentSelectorItem);
