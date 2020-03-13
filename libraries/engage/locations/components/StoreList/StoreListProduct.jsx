@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext } from 'react';
 import { ProductImage } from '../../../product';
-import { type FulfillmentContextProps, FulfillmentContext } from '../../locations.context';
+import { FulfillmentContext } from '../../locations.context';
 import StoreListProductName from './StoreListProductName';
 import StoreListProductInfo from './StoreListProductInfo';
 import * as styles from './StoreListProduct.style';
@@ -11,7 +11,7 @@ import * as styles from './StoreListProduct.style';
  * @returns {JSX}
  */
 function StoreListProduct() {
-  const { product } : FulfillmentContextProps = useContext(FulfillmentContext);
+  const { product } = useContext(FulfillmentContext);
   if (!product) {
     return null;
   }

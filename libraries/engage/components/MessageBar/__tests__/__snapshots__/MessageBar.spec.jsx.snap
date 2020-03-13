@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MessageBar /> General rendering should be empty if no messages have been set 1`] = `
-<Component
+<MessageBar
   classNames={
     Object {
       "container": null,
@@ -19,11 +19,11 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
     }
     role={null}
   />
-</Component>
+</MessageBar>
 `;
 
 exports[`<MessageBar /> General rendering should render a message as info if type is missing 1`] = `
-<Component
+<MessageBar
   classNames={
     Object {
       "container": null,
@@ -66,16 +66,17 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         something
       </span>
     </div>
   </div>
-</Component>
+</MessageBar>
 `;
 
 exports[`<MessageBar /> Multiple messages rendering should render messages without frontend translation 1`] = `
-<Component
+<MessageBar
   classNames={
     Object {
       "container": null,
@@ -135,6 +136,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         This is some information
       </span>
@@ -158,6 +160,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         This is an error that happened here.
       </span>
@@ -181,6 +184,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         This is just a warning. Nothing to freak out about.
       </span>
@@ -204,6 +208,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         Normal pre-translated message.
       </span>
@@ -227,16 +232,17 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         Normal pre-translated message.
       </span>
     </div>
   </div>
-</Component>
+</MessageBar>
 `;
 
 exports[`<MessageBar /> Multiple messages rendering should translate and render all given messages 1`] = `
-<Component
+<MessageBar
   classNames={
     Object {
       "container": null,
@@ -288,6 +294,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         some.translation.string
       </span>
@@ -311,10 +318,11 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
       <span
         aria-hidden={true}
+        className={null}
       >
         Message with messageParams
       </span>
     </div>
   </div>
-</Component>
+</MessageBar>
 `;

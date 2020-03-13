@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext } from 'react';
 import { Ellipsis } from '../../../components';
-import { FulfillmentContext, type FulfillmentContextProps } from '../../locations.context';
+import { FulfillmentContext } from '../../locations.context';
 import { productName } from './StoreListProduct.style';
 
 /**
@@ -9,7 +9,10 @@ import { productName } from './StoreListProduct.style';
  * @returns {JSX}
  */
 function StoreListProductName() {
-  const { baseProduct } : FulfillmentContextProps = useContext(FulfillmentContext);
+  const { baseProduct } = useContext(FulfillmentContext);
+  if (!baseProduct) {
+    return null;
+  }
 
   return (
     <div className={productName}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { MessageBar } from '../MessageBar';
+import { MessageBar } from '../index';
 
 const MESSAGE1 = 'This is some information';
 const MESSAGE2 = 'This is an error that happened here.';

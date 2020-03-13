@@ -1,13 +1,17 @@
 // @flow
-import React, { memo } from 'react';
+import * as React from 'react';
 import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import * as styles from './MessageBar.style';
-import type { ClassNames, Message } from './MessageBar.types';
+import { type ClassNames, type Message } from './MessageBar.types';
 
-type Props = {
+type DefaultProps = {
+  classNames: ClassNames,
+};
+
+type Props = DefaultProps & {
   messages: Message[],
-  classNames?: ClassNames,
+  classNames?: ClassNames
 };
 
 /**
@@ -17,7 +21,7 @@ type Props = {
  * @param {Object} props.classNames Styling.
  * @return {JSX}
  */
-export const MessageBar = memo(({ messages, classNames }: Props) => (
+const MessageBar = ({ messages, classNames }: Props) => (
   <div
     className={css(styles.container, classNames.container)}
     role={messages.length > 0 ? 'alert' : null}
@@ -27,7 +31,7 @@ export const MessageBar = memo(({ messages, classNames }: Props) => (
         type = 'info',
         message,
         messageParams = null,
-        translated,
+        translated = false,
         icon: Icon = null,
       } = item;
 
@@ -53,7 +57,7 @@ export const MessageBar = memo(({ messages, classNames }: Props) => (
       );
     })}
   </div>
-));
+);
 
 MessageBar.defaultProps = {
   classNames: {
@@ -62,3 +66,5 @@ MessageBar.defaultProps = {
     icon: null,
   },
 };
+
+export default React.memo<Props>(MessageBar);

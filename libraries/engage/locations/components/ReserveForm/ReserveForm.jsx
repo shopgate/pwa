@@ -69,7 +69,7 @@ export function ReserveForm() {
 
   const someoneElseRef = useRef(null);
   useLayoutEffect(() => {
-    if (picker === 'someoneelse') {
+    if (someoneElseRef.current && picker === 'someoneelse') {
       someoneElseRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [picker, someoneElseRef]);

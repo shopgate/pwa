@@ -1,4 +1,4 @@
-export { MessageBar } from './MessageBar';
+export { default as MessageBar } from './MessageBar';
 
 // TYPES
 export type {

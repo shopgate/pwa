@@ -1,11 +1,15 @@
 // @flow
-
 export type Message = {
   message: string,
-  type: string,
+  type?: string,
+  messageParams?: {
+    [string]: any,
+  } | null,
+  translated?: boolean,
+  icon?: any | null,
 }
 
-export type ClassName = {
+type ClassName = {
   [string]: any,
 }
 

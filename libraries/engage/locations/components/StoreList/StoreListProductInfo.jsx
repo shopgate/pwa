@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Grid, ProductProperties } from '@shopgate/engage/components';
 import { ProductGridPrice } from '../../../product';
-import { type FulfillmentContextProps, FulfillmentContext } from '../../locations.context';
+import { FulfillmentContext } from '../../locations.context';
 import { productInfo, productInfoLeft, priceInfo } from './StoreListProduct.style';
 
 /**
@@ -10,7 +10,7 @@ import { productInfo, productInfoLeft, priceInfo } from './StoreListProduct.styl
  * @returns {JSX}
  */
 function StoreListProductInfo() {
-  const { product } : FulfillmentContextProps = useContext(FulfillmentContext);
+  const { product } = useContext(FulfillmentContext);
   if (!product) {
     return null;
   }
