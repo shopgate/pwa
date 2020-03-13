@@ -137,7 +137,7 @@ exports[`<TextField /> should focus the input 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -303,7 +303,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -469,7 +469,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -635,7 +635,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -801,7 +801,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -1139,7 +1139,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -1484,7 +1484,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -1657,7 +1657,7 @@ exports[`<TextField /> should show the label 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -1837,7 +1837,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": undefined,
+              "borderBottomColor": "#fa5400",
               "transform": "scale3d(0,1,1)",
             }
           }
