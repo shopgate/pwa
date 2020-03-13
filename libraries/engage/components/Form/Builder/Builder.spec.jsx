@@ -45,6 +45,70 @@ describe('<Builder />', () => {
     expect(wrapper.find('TextField').length).toEqual(2);
   });
 
+  it('should render invisible field with visibility prop set to false', () => {
+    const wrapper = mount((
+      <Builder
+        config={{
+          fields: {
+            firstName: {
+              label: 'foo',
+              type: 'text',
+              visible: false,
+            },
+          },
+        }}
+        name="foo"
+        handleUpdate={() => {}}
+      />
+    ));
+
+    // The TextField component is hidden by the ElementText component
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('TextField').length).toEqual(0);
+  });
+
+  it('should modify the element visibility if setVisibilty rule applies', () => {
+    const wrapper = mount((
+      <Builder
+        config={{
+          fields: {
+            foo: {
+              label: 'foo',
+              type: 'text',
+              visible: true,
+            },
+            bar: {
+              label: 'bar',
+              type: 'text',
+              actions: [{
+                type: 'setVisibility',
+                rules: [{
+                  context: 'foo',
+                  type: 'notIn',
+                  data: ['abc'],
+                }],
+              }],
+            },
+          },
+        }}
+        name="foo"
+        handleUpdate={() => {}}
+      />
+    ));
+
+    // Both should be marked visible at the beginning.
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('TextField').length).toEqual(2);
+
+    // Simulate user input to the text field.
+    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
+
+    // Second field should be marked as hidden but be still rendered.
+    // The TextField component is only rendered when the ElementText is visible.
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('TextField').length).toEqual(1);
+  });
+
   it('should reset value when rule applies', () => {
     const wrapper = mount((
       <Builder
