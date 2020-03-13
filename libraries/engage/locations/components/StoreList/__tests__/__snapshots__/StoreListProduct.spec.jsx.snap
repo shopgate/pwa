@@ -21,7 +21,6 @@ exports[`<StoreListProduct /> should render a product without selected variants.
     >
       <StoreListProductName />
       <StoreListProductInfo />
-      <StoreListProductAvailability />
     </div>
   </div>
 </div>
