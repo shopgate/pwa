@@ -45,68 +45,6 @@ describe('<Builder />', () => {
     expect(wrapper.find('TextField').length).toEqual(2);
   });
 
-  it('should not render invisible field', () => {
-    const wrapper = mount((
-      <Builder
-        config={{
-          fields: {
-            firstName: {
-              label: 'foo',
-              type: 'text',
-              visible: false,
-            },
-          },
-        }}
-        name="foo"
-        handleUpdate={() => {}}
-      />
-    ));
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(0);
-  });
-
-  it('should hide element if setVisibilty rule applies', () => {
-    const wrapper = mount((
-      <Builder
-        config={{
-          fields: {
-            foo: {
-              label: 'foo',
-              type: 'text',
-              visible: true,
-            },
-            bar: {
-              label: 'bar',
-              type: 'text',
-              actions: [{
-                type: 'setVisibility',
-                rules: [{
-                  context: 'foo',
-                  type: 'notIn',
-                  data: ['abc'],
-                }],
-              }],
-            },
-          },
-        }}
-        name="foo"
-        handleUpdate={() => {}}
-      />
-    ));
-
-    // Both should be visible at the beginning.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
-
-    // Simulate user input to the text field.
-    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
-
-    // Second field should be hidden now.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(1);
-  });
-
   it('should reset value when rule applies', () => {
     const wrapper = mount((
       <Builder

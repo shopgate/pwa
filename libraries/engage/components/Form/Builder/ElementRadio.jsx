@@ -16,7 +16,12 @@ const ElementRadio = (props) => {
     errorText,
     name,
     value,
+    visible,
   } = props;
+
+  if (!visible) {
+    return null;
+  }
 
   return (
     <div className={camelCase(name)}>
@@ -51,10 +56,12 @@ ElementRadio.propTypes = {
     PropTypes.bool.isRequired,
     PropTypes.number.isRequired,
   ]),
+  visible: PropTypes.bool,
 };
 
 ElementRadio.defaultProps = {
   value: '',
+  visible: true,
 };
 
 export default memo(ElementRadio);
