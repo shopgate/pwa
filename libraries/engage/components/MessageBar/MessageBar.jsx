@@ -1,8 +1,14 @@
+// @flow
 import React, { memo } from 'react';
 import { css } from 'glamor';
-import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
-import styles from './style';
+import * as styles from './MessageBar.style';
+import type { ClassNames, Message } from './MessageBar.types';
+
+type Props = {
+  messages: Message[],
+  classNames?: ClassNames,
+};
 
 /**
  * The MessageBar component.
@@ -11,7 +17,7 @@ import styles from './style';
  * @param {Object} props.classNames Styling.
  * @return {JSX}
  */
-const MessageBar = memo(({ messages, classNames }) => (
+export const MessageBar = memo(({ messages, classNames }: Props) => (
   <div
     className={css(styles.container, classNames.container)}
     role={messages.length > 0 ? 'alert' : null}
@@ -40,7 +46,7 @@ const MessageBar = memo(({ messages, classNames }) => (
           <span className={styles.srOnly}>
             {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
           </span>
-          <span aria-hidden className={Icon ? styles.messageToIcon : undefined}>
+          <span aria-hidden className={Icon ? styles.messageToIcon : null}>
             {messageOutput}
           </span>
         </div>
@@ -49,18 +55,6 @@ const MessageBar = memo(({ messages, classNames }) => (
   </div>
 ));
 
-MessageBar.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.shape({
-    message: PropTypes.string,
-    type: PropTypes.string,
-  })).isRequired,
-  classNames: PropTypes.shape({
-    container: PropTypes.shape(),
-    message: PropTypes.shape(),
-    icon: PropTypes.shape(),
-  }),
-};
-
 MessageBar.defaultProps = {
   classNames: {
     container: null,
@@ -68,5 +62,3 @@ MessageBar.defaultProps = {
     icon: null,
   },
 };
-
-export default MessageBar;

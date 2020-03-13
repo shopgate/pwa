@@ -39,7 +39,7 @@ export const progressBar = css({
 });
 
 export const iconClass = css({
-  fontSize: '1.25rem!important',
+  fontSize: '1.25rem !important',
 });
 
 export const messageClass = css({

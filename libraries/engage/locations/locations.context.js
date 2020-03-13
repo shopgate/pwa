@@ -39,7 +39,7 @@ export const FulfillmentContext = React.createContext<FulfillmentContextProps>({
   isStage() { return false; },
   handleOpen() { },
   handleClose() { },
-  location: {},
+  location: null,
   locations: [],
   orderNumbers: [],
   baseProduct: null,

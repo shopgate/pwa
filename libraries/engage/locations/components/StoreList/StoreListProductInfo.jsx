@@ -1,8 +1,8 @@
 // @flow
 import React, { useContext } from 'react';
 import { Grid, ProductProperties } from '@shopgate/engage/components';
-import { ProductGridPrice, type ProductAware } from '../../../product';
-import { FulfillmentContext } from '../../locations.context';
+import { ProductGridPrice } from '../../../product';
+import { type FulfillmentContextProps, FulfillmentContext } from '../../locations.context';
 import { productInfo, productInfoLeft, priceInfo } from './StoreListProduct.style';
 
 /**
@@ -10,7 +10,7 @@ import { productInfo, productInfoLeft, priceInfo } from './StoreListProduct.styl
  * @returns {JSX}
  */
 function StoreListProductInfo() {
-  const { product } : ProductAware = useContext(FulfillmentContext);
+  const { product } : FulfillmentContextProps = useContext(FulfillmentContext);
   if (!product) {
     return null;
   }
