@@ -82,4 +82,8 @@ export { ProductContext, VariantContext } from './components/context';
 export type {
   ProductId,
   Product,
+  ProductAware,
+  BaseProductAware,
+  ProductCharacteristic,
+  ProductCharacteristicsAware,
 } from './product.types';

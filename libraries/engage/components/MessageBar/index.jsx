@@ -22,6 +22,7 @@ const MessageBar = memo(({ messages, classNames }) => (
         message,
         messageParams = null,
         translated,
+        icon: Icon = null,
       } = item;
 
       const messageOutput = !translated ? i18n.text(message, messageParams) : message;
@@ -29,12 +30,17 @@ const MessageBar = memo(({ messages, classNames }) => (
       return (
         <div
           key={`${type}-${message}`}
-          className={css(classNames.message, styles[type])}
+          className={css(
+            classNames.message,
+            styles[type],
+            Icon ? styles.withIcon : null
+          )}
         >
+          {Icon && <Icon className={css(classNames.icon, styles.icon).toString()} /> }
           <span className={styles.srOnly}>
             {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
           </span>
-          <span aria-hidden>
+          <span aria-hidden className={Icon ? styles.messageToIcon : undefined}>
             {messageOutput}
           </span>
         </div>
@@ -51,6 +57,7 @@ MessageBar.propTypes = {
   classNames: PropTypes.shape({
     container: PropTypes.shape(),
     message: PropTypes.shape(),
+    icon: PropTypes.shape(),
   }),
 };
 
@@ -58,6 +65,7 @@ MessageBar.defaultProps = {
   classNames: {
     container: null,
     message: null,
+    icon: null,
   },
 };
 

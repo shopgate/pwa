@@ -1,18 +1,19 @@
+// @flow
 import React, { useContext } from 'react';
 import { Ellipsis } from '../../../components';
-import { FulfillmentContext } from '../../locations.context';
-import { productName } from './style';
+import { FulfillmentContext, type FulfillmentContextProps } from '../../locations.context';
+import { productName } from './StoreListProduct.style';
 
 /**
  * Renders the product's name.
  * @returns {JSX}
  */
 function StoreListProductName() {
-  const { product } = useContext(FulfillmentContext);
+  const { baseProduct } : FulfillmentContextProps = useContext(FulfillmentContext);
 
   return (
     <div className={productName}>
-      <Ellipsis>{product.name}</Ellipsis>
+      <Ellipsis>{baseProduct.name}</Ellipsis>
     </div>
   );
 }

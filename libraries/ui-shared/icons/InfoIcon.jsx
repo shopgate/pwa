@@ -7,6 +7,6 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
  * @param {Object} props The component properties.
  * @returns {JSX}
  */
-const Info = props => <Icon content={themeConfig.icons.info} {...props} />;
+const InfoIcon = props => <Icon content={themeConfig.icons.info} {...props} />;
 
-export default Info;
+export default InfoIcon;

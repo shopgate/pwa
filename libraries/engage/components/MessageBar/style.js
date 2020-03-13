@@ -45,10 +45,27 @@ const srOnly = css({
   border: 0,
 });
 
+const withIcon = css({
+  display: 'flex',
+  minWidth: '100%',
+  alignItems: 'center',
+});
+
+const icon = css({
+  flexGrow: 0,
+  flexShrink: 0,
+});
+const messageToIcon = css({
+  flexGrow: 1,
+});
+
 export default {
   container,
   info,
   error,
   warning,
   srOnly,
+  withIcon,
+  icon,
+  messageToIcon,
 };

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { type AddToCartProduct, type CartItem } from '../../cart';
-import { type Product } from '../../product';
+import { type Product, type BaseProductAware, type ProductAware } from '../../product';
 import {
   type Location,
   type ReservationFormValues,
@@ -21,10 +21,9 @@ export type OwnProps = {
 
 export type StateProps = {
   locations: Location[] | null,
-  product: Product | null,
   userInput: ReservationFormValues | null,
   fulfillmentPaths: string[],
-}
+} & ProductAware & BaseProductAware
 
 export type DispatchProps = {
   selectLocation: (location: Location) => void,

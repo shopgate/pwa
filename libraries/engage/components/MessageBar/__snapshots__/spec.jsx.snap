@@ -5,6 +5,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   classNames={
     Object {
       "container": null,
+      "icon": null,
       "message": null,
     }
   }
@@ -26,6 +27,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   classNames={
     Object {
       "container": null,
+      "icon": null,
       "message": null,
     }
   }
@@ -77,6 +79,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   classNames={
     Object {
       "container": null,
+      "icon": null,
       "message": null,
     }
   }
@@ -237,6 +240,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   classNames={
     Object {
       "container": null,
+      "icon": null,
       "message": null,
     }
   }

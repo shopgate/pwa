@@ -1,17 +1,17 @@
+// @flow
 import React, { useContext } from 'react';
 import { ProductImage } from '../../../product';
-import { FulfillmentContext } from '../../locations.context';
+import { type FulfillmentContextProps, FulfillmentContext } from '../../locations.context';
 import StoreListProductName from './StoreListProductName';
-import StoreListProductVariants from './StoreListProductVariants';
-import * as styles from './style';
+import StoreListProductInfo from './StoreListProductInfo';
+import * as styles from './StoreListProduct.style';
 
 /**
  * Renders the product information of the store list.
  * @returns {JSX}
  */
 function StoreListProduct() {
-  const { product } = useContext(FulfillmentContext);
-
+  const { product } : FulfillmentContextProps = useContext(FulfillmentContext);
   if (!product) {
     return null;
   }
@@ -24,7 +24,7 @@ function StoreListProduct() {
         </div>
         <div className={styles.productContent}>
           <StoreListProductName />
-          <StoreListProductVariants />
+          <StoreListProductInfo />
         </div>
       </div>
     </div>
