@@ -3,13 +3,15 @@ import * as React from 'react';
 import { Availability } from '@shopgate/engage/product';
 import { RadioGroup } from '../../../components';
 import { useFulfillmentState } from '../../locations.hooks';
-import { DIRECT_SHIP, IN_STORE_PICKUP } from '../../constants';
+import {
+  DIRECT_SHIP,
+  DIRECT_SHIP_LABEL,
+  IN_STORE_PICKUP,
+  IN_STORE_PICKUP_LABEL,
+} from '../../constants';
 import { StockInfo } from '../StockInfo';
 import { container, pickUpContainer, radioGroup } from './FulfillmentPath.style';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
-
-const directShip = 'product.fulfillment_selector.direct_ship';
-const pickUp = 'product.fulfillment_selector.pick_up_in_store';
 
 /**
  * Renders the fulfillment path selector stage.
@@ -19,7 +21,9 @@ export function FulfillmentPath() {
   const { product, meta: { cartItem = undefined } = {}, changeFulfillment } = useFulfillmentState();
   const { fulfillment } = cartItem || {};
   const isPickUp = !!(cartItem && (fulfillment !== null && fulfillment.method !== 'DIRECT_SHIP'));
-  const [selection, setSelection] = React.useState(isPickUp ? pickUp : directShip);
+  const [selection, setSelection] = React.useState(
+    isPickUp ? IN_STORE_PICKUP_LABEL : DIRECT_SHIP_LABEL
+  );
 
   if (!product || !cartItem) {
     return null;
@@ -29,7 +33,7 @@ export function FulfillmentPath() {
  * @param {string} elementName The name of the selected element.
  */
   function handleChange(elementName) {
-    const method = elementName === pickUp ? IN_STORE_PICKUP : DIRECT_SHIP;
+    const method = (elementName === IN_STORE_PICKUP_LABEL) ? IN_STORE_PICKUP : DIRECT_SHIP;
 
     setSelection(elementName);
     changeFulfillment(method, cartItem);
@@ -45,10 +49,10 @@ export function FulfillmentPath() {
         isControlled
         direction="column"
       >
-        <FulfillmentPathItem name={directShip}>
+        <FulfillmentPathItem name={DIRECT_SHIP_LABEL}>
           <Availability productId={product.id} fulfillmentSelection={DIRECT_SHIP} />
         </FulfillmentPathItem>
-        <FulfillmentPathItem name={pickUp}>
+        <FulfillmentPathItem name={IN_STORE_PICKUP_LABEL}>
           <div className={pickUpContainer}>
             {fulfillment && (
               <StockInfo location={fulfillment.location} />
