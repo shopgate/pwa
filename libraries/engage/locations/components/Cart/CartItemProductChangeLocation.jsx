@@ -40,12 +40,11 @@ const CartItemProductChangeLocation = (props: Props) => {
    * Select location callback
    */
   const onLocationSelect = React.useCallback((location: Location | null) => {
+    setTimeout(() => setOpened(false), 500);
     if (!location || !isProductAvailable(location)) {
       return;
     }
-
     updateProductInCart(cartItem.id, cartItem.quantity, location);
-    setTimeout(() => setOpened(false), 500);
   }, [cartItem.id, cartItem.quantity, updateProductInCart]);
 
   const { fulfillment } = cartItem;
