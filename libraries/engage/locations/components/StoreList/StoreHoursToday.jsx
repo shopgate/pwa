@@ -1,16 +1,21 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { i18n } from '../../../core';
-import { storeHoursToday } from './style';
+import { type LocationOperationHours } from '../../locations.types';
+import { storeHoursToday } from './Store.style';
 
 const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
+type Props = {
+  hours?: LocationOperationHours,
+};
 
 /**
  * Renders the store's opening hours for "today".
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function StoreAddressHoursToday({ hours }) {
+export function StoreHoursToday({ hours }: Props) {
   if (!hours) {
     return null;
   }
@@ -29,12 +34,6 @@ function StoreAddressHoursToday({ hours }) {
   );
 }
 
-StoreAddressHoursToday.propTypes = {
-  hours: PropTypes.shape(),
-};
-
-StoreAddressHoursToday.defaultProps = {
+StoreHoursToday.defaultProps = {
   hours: null,
 };
-
-export default StoreAddressHoursToday;

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import formatDistance from '../../helpers/formatDistance';
-import { storeDistance } from './style';
+import { storeDistance } from './Store.style';
 
 type Props = {
   distance?: number;
@@ -16,7 +16,7 @@ export const UNIT_SYSTEM_IMPERIAL = 'imperial';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const StoreAddressDistance = ({ distance = null, unitSystem = UNIT_SYSTEM_METRIC }: Props) => {
+export function StoreDistance({ distance = null, unitSystem = UNIT_SYSTEM_METRIC }: Props) {
   if (distance === null) {
     return null;
   }
@@ -26,11 +26,9 @@ const StoreAddressDistance = ({ distance = null, unitSystem = UNIT_SYSTEM_METRIC
       {formatDistance(distance, unitSystem === UNIT_SYSTEM_IMPERIAL)}
     </span>
   );
-};
+}
 
-StoreAddressDistance.defaultProps = {
+StoreDistance.defaultProps = {
   distance: null,
   unitSystem: UNIT_SYSTEM_METRIC,
 };
-
-export default StoreAddressDistance;

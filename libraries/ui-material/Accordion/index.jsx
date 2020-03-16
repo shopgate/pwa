@@ -11,7 +11,7 @@ import * as styles from './style';
  */
 const Accordion = (props) => {
   const {
-    renderLabel, handleLabel, children, testId, className,
+    renderLabel, handleLabel, children, testId, className, contentClassName,
   } = props;
 
   if (!renderLabel || !children) {
@@ -41,7 +41,12 @@ const Accordion = (props) => {
               <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
             </div>
           </div>
-          <AccordionContent open={open} id={controlsId} key={controlsId}>
+          <AccordionContent
+            open={open}
+            id={controlsId}
+            key={controlsId}
+            className={contentClassName}
+          >
             {children}
           </AccordionContent>
         </Fragment>
@@ -54,12 +59,14 @@ Accordion.propTypes = {
   children: PropTypes.node.isRequired,
   renderLabel: PropTypes.func.isRequired,
   className: PropTypes.string,
+  contentClassName: PropTypes.string,
   handleLabel: PropTypes.string,
   testId: PropTypes.string,
 };
 
 Accordion.defaultProps = {
   className: null,
+  contentClassName: null,
   handleLabel: null,
   testId: null,
 };

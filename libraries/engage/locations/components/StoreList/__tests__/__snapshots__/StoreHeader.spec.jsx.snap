@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`engage > locations > StoreList > StoreHeader should render as expected 1`] = `
+<StoreHeader>
+  <div
+    className="css-1qplxu7"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <Grid>
+      <Grid.Item
+        className="css-1qlb3ci"
+        grow={1}
+      >
+        SomeStore
+      </Grid.Item>
+      <Grid.Item
+        shrink={0}
+      >
+        <StoreDistance
+          distance={0.02}
+          unitSystem="metric"
+        >
+          <span
+            className="css-12obfh7"
+          >
+            formats.distance.pattern
+          </span>
+        </StoreDistance>
+      </Grid.Item>
+    </Grid>
+    <StoreHoursToday
+      hours={
+        Object {
+          "mon": "8:00am - 4:00pm",
+        }
+      }
+    >
+      <div
+        className="css-fh02i8"
+      >
+        locations.today_hours
+      </div>
+    </StoreHoursToday>
+  </div>
+</StoreHeader>
+`;

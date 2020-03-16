@@ -121,8 +121,11 @@
   "locations": {
     "headline": "Winkels in uw buurt",
     "details": "Winkel details",
+    "hours_details": "Store opening details",
     "today_hours": "Vandaag: {hours}",
     "address": "{postalCode} {city}",
+    "map_open": "Open in maps",
+    "phone": "Phone",
     "mon": "Maandag",
     "tue": "Dinsdag",
     "wed": "Woensdag",
